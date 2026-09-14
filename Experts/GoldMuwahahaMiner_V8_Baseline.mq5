@@ -1,5 +1,5 @@
 #property copyright "Clean-room behavioral reconstruction for AnhTranHarris"
-#property version   "0.20"
+#property version   "1.20"
 #property strict
 #property description "Gold Hunter V8-style XAUUSD M1 breakout / reversal-rearm / trailing baseline."
 
