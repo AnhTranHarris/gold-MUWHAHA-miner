@@ -1,0 +1,25 @@
+{
+  "candidate": "R1_adaptive_quality_gate",
+  "status": "python_promoted_mt5_pending",
+  "baseline_file": "Experts/GoldMuwahahaMiner_V8_Baseline.mq5",
+  "do_not_modify_baseline": true,
+  "inputs": {
+    "lots": 0.01,
+    "gap_pips": 100,
+    "stop_loss_pips": 50,
+    "trail_pips": 15,
+    "trail_activation_pips": 15,
+    "hunter_pip_price": 0.01,
+    "m5_atr_period": 14,
+    "minimum_m5_atr_price": 2.0,
+    "maximum_spread_points": 25
+  },
+  "session_modes_to_certify": [
+    "all_sessions_quality_gated",
+    "new_york_quality_gated",
+    "london_new_york_overlap_quality_gated"
+  ],
+  "python_proxy_note": "M1 OHLC simulator is a ranking/falsification model, not tick-execution truth.",
+  "promotion_reason": "Outranked fixed V8 proxy in every year 2020-2026 and remained positive under 0.10 price-unit adverse execution stress.",
+  "next_gate": "MT5 real-tick Strategy Tester and forward split comparison against frozen V8 baseline"
+}
