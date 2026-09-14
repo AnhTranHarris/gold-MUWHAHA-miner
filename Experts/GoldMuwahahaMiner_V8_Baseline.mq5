@@ -1,44 +1,45 @@
 #property copyright "Clean-room behavioral reconstruction for AnhTranHarris"
-#property version   "0.10"
+#property version   "0.20"
 #property strict
-#property description "Gold Hunter V8-style XAUUSD M1 breakout/trailing baseline."
+#property description "Gold Hunter V8-style XAUUSD M1 breakout / reversal-rearm / trailing baseline."
 
 #include <Trade/Trade.mqh>
 
 CTrade trade;
 
-input group "V8 fingerprint"
-input double InpLots                  = 0.01;
-input int    InpGapPips               = 50;
-input int    InpStopLossPips          = 50;
-input bool   InpTrailingEnabled       = true;
-input int    InpTrailPips             = 20;
-input int    InpTrailActivationPips   = 20;
-input ulong  InpMagic                 = 5555;
+input group "Observed V8 fingerprint"
+input double InpLots                = 0.01;
+input int    InpGapPips             = 50;
+input int    InpStopLossPips        = 50;
+input bool   InpTrailingEnabled     = true;
+input int    InpTrailPips           = 20;
+input int    InpTrailActivationPips = 20;
+input ulong  InpMagic               = 5555;
 
 input group "Price normalization"
-input double InpHunterPipPrice        = 0.01;   // 50 -> $0.50 on XAUUSD in the reference report
-input bool   InpGapIsTotalBandWidth   = true;   // observed first buy/sell stop separation was $0.50
-input bool   InpRespectBrokerStops    = true;
+input double InpHunterPipPrice      = 0.01;  // reference XAUUSD report: 50 -> $0.50
+input bool   InpRespectBrokerStops  = true;
 
-input group "Behavior switches"
-input bool   InpCancelOppositeOnFill  = true;
-input bool   InpRearmImmediately      = true;
-input bool   InpRefreshOnNewM1Bar     = false;  // unknown V8 behavior; keep false for baseline fingerprint
-input bool   InpUseDailyProfitTarget  = false;  // report exposed 100, but strict $100/day is inconsistent with results
-input double InpDailyProfitTarget     = 100.0;
+input group "Unresolved V8 input"
+input bool   InpUseDailyProfitTarget = false; // strict $100/day contradicts reference report
+input double InpDailyProfitTarget    = 100.0;
 
 input group "Execution"
-input int    InpDeviationPoints       = 20;
-input bool   InpVerbose               = true;
+input int    InpDeviationPoints     = 20;
+input bool   InpVerbose             = true;
 
-string   EA_TAG = "GM_V8_BASE";
-datetime g_lastM1Bar = 0;
-double   g_cycleCenter = 0.0;
-bool     g_reconcileBusy = false;
+string EA_TAG = "GM_V8_BASE";
+
+bool               g_reconcileBusy   = false;
+bool               g_wasInPosition   = false;
+ENUM_POSITION_TYPE g_lastPositionType = POSITION_TYPE_BUY;
+
+datetime g_cycleBar       = 0;
+double   g_cycleBuyPrice  = 0.0;
+double   g_cycleSellPrice = 0.0;
 
 //+------------------------------------------------------------------+
-//| Helpers                                                          |
+//| Logging / normalization                                           |
 //+------------------------------------------------------------------+
 void Log(const string text)
 {
@@ -53,10 +54,10 @@ int DigitsForSymbol()
 
 double TickSize()
 {
-   double v = SymbolInfoDouble(_Symbol, SYMBOL_TRADE_TICK_SIZE);
-   if(v <= 0.0)
-      v = SymbolInfoDouble(_Symbol, SYMBOL_POINT);
-   return v;
+   double value = SymbolInfoDouble(_Symbol, SYMBOL_TRADE_TICK_SIZE);
+   if(value <= 0.0)
+      value = SymbolInfoDouble(_Symbol, SYMBOL_POINT);
+   return value;
 }
 
 double NormalizePrice(const double price)
@@ -64,40 +65,42 @@ double NormalizePrice(const double price)
    const double tick = TickSize();
    if(tick <= 0.0)
       return NormalizeDouble(price, DigitsForSymbol());
+
    return NormalizeDouble(MathRound(price / tick) * tick, DigitsForSymbol());
 }
 
 double NormalizeVolume(const double requested)
 {
-   const double vmin  = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
-   const double vmax  = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MAX);
-   const double vstep = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_STEP);
+   const double minimum = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
+   const double maximum = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MAX);
+   const double step    = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_STEP);
 
-   double volume = MathMax(vmin, MathMin(vmax, requested));
-   if(vstep > 0.0)
-      volume = vmin + MathRound((volume - vmin) / vstep) * vstep;
+   double volume = MathMax(minimum, MathMin(maximum, requested));
+   if(step > 0.0)
+      volume = minimum + MathRound((volume - minimum) / step) * step;
 
-   return NormalizeDouble(MathMax(vmin, MathMin(vmax, volume)), 8);
+   return NormalizeDouble(MathMax(minimum, MathMin(maximum, volume)), 8);
 }
 
 double HunterDistance(const int pips)
 {
-   return ((double)pips) * InpHunterPipPrice;
+   return (double)pips * InpHunterPipPrice;
 }
 
 double BrokerStopsDistance()
 {
    const long stops = SymbolInfoInteger(_Symbol, SYMBOL_TRADE_STOPS_LEVEL);
-   return ((double)MathMax((long)0, stops)) * SymbolInfoDouble(_Symbol, SYMBOL_POINT);
+   const double point = SymbolInfoDouble(_Symbol, SYMBOL_POINT);
+   return (double)MathMax((long)0, stops) * point;
 }
 
 bool ResultAccepted()
 {
-   const uint rc = trade.ResultRetcode();
-   return (rc == TRADE_RETCODE_DONE ||
-           rc == TRADE_RETCODE_PLACED ||
-           rc == TRADE_RETCODE_DONE_PARTIAL ||
-           rc == TRADE_RETCODE_NO_CHANGES);
+   const uint code = trade.ResultRetcode();
+   return (code == TRADE_RETCODE_DONE ||
+           code == TRADE_RETCODE_PLACED ||
+           code == TRADE_RETCODE_DONE_PARTIAL ||
+           code == TRADE_RETCODE_NO_CHANGES);
 }
 
 void LogTradeFailure(const string action)
@@ -110,7 +113,10 @@ void LogTradeFailure(const string action)
                GetLastError());
 }
 
-bool IsOurPendingOrderSelected()
+//+------------------------------------------------------------------+
+//| Order / position discovery                                        |
+//+------------------------------------------------------------------+
+bool IsOurPendingSelected()
 {
    if(OrderGetString(ORDER_SYMBOL) != _Symbol)
       return false;
@@ -121,15 +127,15 @@ bool IsOurPendingOrderSelected()
    return (type == ORDER_TYPE_BUY_STOP || type == ORDER_TYPE_SELL_STOP);
 }
 
-bool FindOurPending(ulong &buyTicket, ulong &sellTicket)
+void FindOurPending(ulong &buyTicket, ulong &sellTicket)
 {
    buyTicket = 0;
    sellTicket = 0;
 
-   for(int i = OrdersTotal() - 1; i >= 0; --i)
+   for(int index = OrdersTotal() - 1; index >= 0; --index)
    {
-      const ulong ticket = OrderGetTicket(i);
-      if(ticket == 0 || !IsOurPendingOrderSelected())
+      const ulong ticket = OrderGetTicket(index);
+      if(ticket == 0 || !IsOurPendingSelected())
          continue;
 
       const ENUM_ORDER_TYPE type = (ENUM_ORDER_TYPE)OrderGetInteger(ORDER_TYPE);
@@ -138,32 +144,35 @@ bool FindOurPending(ulong &buyTicket, ulong &sellTicket)
       else if(type == ORDER_TYPE_SELL_STOP && sellTicket == 0)
          sellTicket = ticket;
    }
-   return (buyTicket != 0 || sellTicket != 0);
 }
 
-bool FindOurPosition(ulong &ticket, ENUM_POSITION_TYPE &type, double &openPrice, double &sl)
+bool FindOurPosition(ulong &ticket,
+                     ENUM_POSITION_TYPE &type,
+                     double &openPrice,
+                     double &stopLoss)
 {
    ticket = 0;
    openPrice = 0.0;
-   sl = 0.0;
+   stopLoss = 0.0;
    type = POSITION_TYPE_BUY;
 
-   for(int i = PositionsTotal() - 1; i >= 0; --i)
+   for(int index = PositionsTotal() - 1; index >= 0; --index)
    {
-      const ulong t = PositionGetTicket(i);
-      if(t == 0)
+      const ulong currentTicket = PositionGetTicket(index);
+      if(currentTicket == 0)
          continue;
       if(PositionGetString(POSITION_SYMBOL) != _Symbol)
          continue;
       if((ulong)PositionGetInteger(POSITION_MAGIC) != InpMagic)
          continue;
 
-      ticket = t;
+      ticket = currentTicket;
       type = (ENUM_POSITION_TYPE)PositionGetInteger(POSITION_TYPE);
       openPrice = PositionGetDouble(POSITION_PRICE_OPEN);
-      sl = PositionGetDouble(POSITION_SL);
+      stopLoss = PositionGetDouble(POSITION_SL);
       return true;
    }
+
    return false;
 }
 
@@ -178,6 +187,7 @@ bool DeletePending(const ulong ticket)
       LogTradeFailure(StringFormat("OrderDelete #%I64u", ticket));
       return false;
    }
+
    return true;
 }
 
@@ -185,6 +195,7 @@ void DeleteAllOurPending()
 {
    ulong buyTicket, sellTicket;
    FindOurPending(buyTicket, sellTicket);
+
    if(buyTicket != 0)
       DeletePending(buyTicket);
    if(sellTicket != 0)
@@ -192,25 +203,26 @@ void DeleteAllOurPending()
 }
 
 //+------------------------------------------------------------------+
-//| Daily target (optional research switch)                          |
+//| Optional daily target                                             |
 //+------------------------------------------------------------------+
 double ClosedProfitToday()
 {
-   MqlDateTime nowStruct;
-   TimeToStruct(TimeCurrent(), nowStruct);
-   nowStruct.hour = 0;
-   nowStruct.min = 0;
-   nowStruct.sec = 0;
-   const datetime dayStart = StructToTime(nowStruct);
+   MqlDateTime now;
+   TimeToStruct(TimeCurrent(), now);
+   now.hour = 0;
+   now.min = 0;
+   now.sec = 0;
 
+   const datetime dayStart = StructToTime(now);
    if(!HistorySelect(dayStart, TimeCurrent()))
       return 0.0;
 
    double total = 0.0;
-   const int deals = HistoryDealsTotal();
-   for(int i = 0; i < deals; ++i)
+   const int count = HistoryDealsTotal();
+
+   for(int index = 0; index < count; ++index)
    {
-      const ulong deal = HistoryDealGetTicket(i);
+      const ulong deal = HistoryDealGetTicket(index);
       if(deal == 0)
          continue;
       if(HistoryDealGetString(deal, DEAL_SYMBOL) != _Symbol)
@@ -224,90 +236,163 @@ double ClosedProfitToday()
       total += HistoryDealGetDouble(deal, DEAL_SWAP);
       total += HistoryDealGetDouble(deal, DEAL_COMMISSION);
    }
+
    return total;
 }
 
 bool DailyTargetReached()
 {
-   return (InpUseDailyProfitTarget && InpDailyProfitTarget > 0.0 &&
+   return (InpUseDailyProfitTarget &&
+           InpDailyProfitTarget > 0.0 &&
            ClosedProfitToday() >= InpDailyProfitTarget);
 }
 
 //+------------------------------------------------------------------+
-//| Build the observed stop-entry bracket                            |
+//| Pending-order placement                                           |
 //+------------------------------------------------------------------+
-bool PlaceFreshBracket()
+bool PlaceBuyStopAtCycleBoundary()
+{
+   if(g_cycleBuyPrice <= 0.0 || g_cycleSellPrice <= 0.0)
+      return false;
+
+   const double volume = NormalizeVolume(InpLots);
+   const double stopDistance = HunterDistance(InpStopLossPips);
+   const double sl = NormalizePrice(g_cycleBuyPrice - stopDistance);
+
+   ResetLastError();
+   const bool sent = trade.BuyStop(volume,
+                                   g_cycleBuyPrice,
+                                   _Symbol,
+                                   sl,
+                                   0.0,
+                                   ORDER_TIME_GTC,
+                                   0,
+                                   EA_TAG + " BUY");
+
+   if(!sent || !ResultAccepted())
+   {
+      LogTradeFailure("re-arm BuyStop");
+      return false;
+   }
+
+   Log(StringFormat("re-armed BUY %.2f SL %.2f", g_cycleBuyPrice, sl));
+   return true;
+}
+
+bool PlaceSellStopAtCycleBoundary()
+{
+   if(g_cycleBuyPrice <= 0.0 || g_cycleSellPrice <= 0.0)
+      return false;
+
+   const double volume = NormalizeVolume(InpLots);
+   const double stopDistance = HunterDistance(InpStopLossPips);
+   const double sl = NormalizePrice(g_cycleSellPrice + stopDistance);
+
+   ResetLastError();
+   const bool sent = trade.SellStop(volume,
+                                    g_cycleSellPrice,
+                                    _Symbol,
+                                    sl,
+                                    0.0,
+                                    ORDER_TIME_GTC,
+                                    0,
+                                    EA_TAG + " SELL");
+
+   if(!sent || !ResultAccepted())
+   {
+      LogTradeFailure("re-arm SellStop");
+      return false;
+   }
+
+   Log(StringFormat("re-armed SELL %.2f SL %.2f", g_cycleSellPrice, sl));
+   return true;
+}
+
+bool PlaceFreshMinuteBracket(const datetime barTime)
 {
    MqlTick tick;
    if(!SymbolInfoTick(_Symbol, tick) || tick.ask <= 0.0 || tick.bid <= 0.0)
       return false;
 
    if(DailyTargetReached())
-   {
-      DeleteAllOurPending();
-      return false;
-   }
-
-   double band = HunterDistance(InpGapPips);
-   if(band <= 0.0)
       return false;
 
-   double half = (InpGapIsTotalBandWidth ? band * 0.5 : band);
+   const double requestedBand = HunterDistance(InpGapPips);
+   if(requestedBand <= 0.0)
+      return false;
+
    double center = (tick.ask + tick.bid) * 0.5;
+   double halfBand = requestedBand * 0.5;
 
    if(InpRespectBrokerStops)
    {
-      const double minDist = BrokerStopsDistance() + TickSize();
-      const double requiredHalfBuy  = (tick.ask - center) + minDist;
-      const double requiredHalfSell = (center - tick.bid) + minDist;
-      half = MathMax(half, MathMax(requiredHalfBuy, requiredHalfSell));
+      const double minimumDistance = BrokerStopsDistance() + TickSize();
+      const double buyNeed  = (tick.ask - center) + minimumDistance;
+      const double sellNeed = (center - tick.bid) + minimumDistance;
+      halfBand = MathMax(halfBand, MathMax(buyNeed, sellNeed));
    }
 
-   const double buyPrice  = NormalizePrice(center + half);
-   const double sellPrice = NormalizePrice(center - half);
-
-   // The reference report's first bracket showed each initial stop at the
-   // opposite trigger. If StopLossPips differs from GapPips, honor the input.
-   const double stopDist = HunterDistance(InpStopLossPips);
-   const double buySL  = NormalizePrice(buyPrice  - stopDist);
-   const double sellSL = NormalizePrice(sellPrice + stopDist);
+   const double buyPrice  = NormalizePrice(center + halfBand);
+   const double sellPrice = NormalizePrice(center - halfBand);
+   const double stopDistance = HunterDistance(InpStopLossPips);
+   const double buySL  = NormalizePrice(buyPrice - stopDistance);
+   const double sellSL = NormalizePrice(sellPrice + stopDistance);
    const double volume = NormalizeVolume(InpLots);
 
    if(buyPrice <= tick.ask || sellPrice >= tick.bid || volume <= 0.0)
    {
-      PrintFormat("%s: invalid bracket bid=%.5f ask=%.5f buy=%.5f sell=%.5f",
+      PrintFormat("%s: invalid fresh bracket bid=%.5f ask=%.5f buy=%.5f sell=%.5f",
                   EA_TAG, tick.bid, tick.ask, buyPrice, sellPrice);
       return false;
    }
 
    ResetLastError();
-   const bool buySent = trade.BuyStop(volume, buyPrice, _Symbol, buySL, 0.0,
-                                      ORDER_TIME_GTC, 0, EA_TAG + " BUY");
+   const bool buySent = trade.BuyStop(volume,
+                                      buyPrice,
+                                      _Symbol,
+                                      buySL,
+                                      0.0,
+                                      ORDER_TIME_GTC,
+                                      0,
+                                      EA_TAG + " BUY");
+
    if(!buySent || !ResultAccepted())
    {
-      LogTradeFailure("BuyStop");
+      LogTradeFailure("fresh BuyStop");
       return false;
    }
    const ulong buyTicket = trade.ResultOrder();
 
    ResetLastError();
-   const bool sellSent = trade.SellStop(volume, sellPrice, _Symbol, sellSL, 0.0,
-                                        ORDER_TIME_GTC, 0, EA_TAG + " SELL");
+   const bool sellSent = trade.SellStop(volume,
+                                        sellPrice,
+                                        _Symbol,
+                                        sellSL,
+                                        0.0,
+                                        ORDER_TIME_GTC,
+                                        0,
+                                        EA_TAG + " SELL");
+
    if(!sellSent || !ResultAccepted())
    {
-      LogTradeFailure("SellStop");
+      LogTradeFailure("fresh SellStop");
       DeletePending(buyTicket);
       return false;
    }
 
-   g_cycleCenter = center;
-   Log(StringFormat("armed buy %.2f / sell %.2f / buySL %.2f / sellSL %.2f",
-                    buyPrice, sellPrice, buySL, sellSL));
+   g_cycleBar = barTime;
+   g_cycleBuyPrice = buyPrice;
+   g_cycleSellPrice = sellPrice;
+
+   Log(StringFormat("new M1 bracket BUY %.2f / SELL %.2f / width %.2f",
+                    buyPrice,
+                    sellPrice,
+                    buyPrice - sellPrice));
    return true;
 }
 
 //+------------------------------------------------------------------+
-//| Trailing                                                         |
+//| Trailing                                                          |
 //+------------------------------------------------------------------+
 void ManageTrailing(const ulong positionTicket,
                     const ENUM_POSITION_TYPE type,
@@ -321,29 +406,34 @@ void ManageTrailing(const ulong positionTicket,
    if(!SymbolInfoTick(_Symbol, tick))
       return;
 
-   const double trailDist = HunterDistance(InpTrailPips);
-   const double activationDist = HunterDistance(MathMax(InpTrailActivationPips, 0));
-   const double minDist = (InpRespectBrokerStops ? BrokerStopsDistance() : 0.0);
+   const double trailDistance = HunterDistance(InpTrailPips);
+   const int activationPips = (InpTrailActivationPips < 0 ? 0 : InpTrailActivationPips);
+   const double activationDistance = HunterDistance(activationPips);
+   const double brokerDistance = (InpRespectBrokerStops ? BrokerStopsDistance() : 0.0);
    const double tickSize = TickSize();
    double candidate = 0.0;
 
    if(type == POSITION_TYPE_BUY)
    {
-      if((tick.bid - openPrice) < activationDist)
+      if((tick.bid - openPrice) < activationDistance)
          return;
-      candidate = NormalizePrice(tick.bid - trailDist);
-      const double maxAllowed = NormalizePrice(tick.bid - minDist - tickSize);
-      candidate = MathMin(candidate, maxAllowed);
+
+      candidate = NormalizePrice(tick.bid - trailDistance);
+      const double brokerMaximum = NormalizePrice(tick.bid - brokerDistance - tickSize);
+      candidate = MathMin(candidate, brokerMaximum);
+
       if(candidate <= 0.0 || candidate <= currentSL + tickSize * 0.5)
          return;
    }
    else if(type == POSITION_TYPE_SELL)
    {
-      if((openPrice - tick.ask) < activationDist)
+      if((openPrice - tick.ask) < activationDistance)
          return;
-      candidate = NormalizePrice(tick.ask + trailDist);
-      const double minAllowed = NormalizePrice(tick.ask + minDist + tickSize);
-      candidate = MathMax(candidate, minAllowed);
+
+      candidate = NormalizePrice(tick.ask + trailDistance);
+      const double brokerMinimum = NormalizePrice(tick.ask + brokerDistance + tickSize);
+      candidate = MathMax(candidate, brokerMinimum);
+
       if(candidate <= 0.0 || (currentSL > 0.0 && candidate >= currentSL - tickSize * 0.5))
          return;
    }
@@ -356,31 +446,40 @@ void ManageTrailing(const ulong positionTicket,
 }
 
 //+------------------------------------------------------------------+
-//| State reconciliation                                              |
+//| V8 state machine                                                  |
 //+------------------------------------------------------------------+
 void Reconcile()
 {
    if(g_reconcileBusy)
       return;
+
    g_reconcileBusy = true;
+
+   const datetime currentBar = iTime(_Symbol, PERIOD_M1, 0);
 
    ulong positionTicket;
    ENUM_POSITION_TYPE positionType;
    double openPrice, currentSL;
-   const bool havePosition = FindOurPosition(positionTicket, positionType, openPrice, currentSL);
+   const bool havePosition = FindOurPosition(positionTicket,
+                                             positionType,
+                                             openPrice,
+                                             currentSL);
 
    ulong buyTicket, sellTicket;
    FindOurPending(buyTicket, sellTicket);
 
    if(havePosition)
    {
-      if(InpCancelOppositeOnFill)
-      {
-         if(positionType == POSITION_TYPE_BUY && sellTicket != 0)
-            DeletePending(sellTicket);
-         else if(positionType == POSITION_TYPE_SELL && buyTicket != 0)
-            DeletePending(buyTicket);
-      }
+      g_wasInPosition = true;
+      g_lastPositionType = positionType;
+
+      // Observed V8 fingerprint: once one side fills, the opposite pending
+      // order is canceled immediately.
+      if(positionType == POSITION_TYPE_BUY && sellTicket != 0)
+         DeletePending(sellTicket);
+      else if(positionType == POSITION_TYPE_SELL && buyTicket != 0)
+         DeletePending(buyTicket);
+
       ManageTrailing(positionTicket, positionType, openPrice, currentSL);
       g_reconcileBusy = false;
       return;
@@ -393,19 +492,46 @@ void Reconcile()
       return;
    }
 
-   // A one-sided orphan is not a valid OCO bracket. Rebuild atomically.
-   if((buyTicket == 0) != (sellTicket == 0))
+   // Observed V8 fingerprint: after a position exits inside the same M1 bar,
+   // only the opposite boundary is re-armed at the original minute price.
+   if(g_wasInPosition)
    {
-      if(buyTicket != 0)
-         DeletePending(buyTicket);
-      if(sellTicket != 0)
-         DeletePending(sellTicket);
-      buyTicket = 0;
-      sellTicket = 0;
+      g_wasInPosition = false;
+      FindOurPending(buyTicket, sellTicket);
+
+      if(currentBar == g_cycleBar && g_cycleBuyPrice > 0.0 && g_cycleSellPrice > 0.0)
+      {
+         if(buyTicket != 0)
+            DeletePending(buyTicket);
+         if(sellTicket != 0)
+            DeletePending(sellTicket);
+
+         if(g_lastPositionType == POSITION_TYPE_SELL)
+            PlaceBuyStopAtCycleBoundary();
+         else
+            PlaceSellStopAtCycleBoundary();
+
+         g_reconcileBusy = false;
+         return;
+      }
    }
 
-   if(buyTicket == 0 && sellTicket == 0 && InpRearmImmediately)
-      PlaceFreshBracket();
+   FindOurPending(buyTicket, sellTicket);
+
+   // Every new M1 bar resets the old one-sided reversal order and creates a
+   // fresh symmetric bracket. This exact pattern is visible in the report.
+   if(currentBar != 0 && currentBar != g_cycleBar)
+   {
+      DeleteAllOurPending();
+      PlaceFreshMinuteBracket(currentBar);
+      g_reconcileBusy = false;
+      return;
+   }
+
+   // Mid-bar startup/recovery: if state was lost, reconstruct a safe fresh
+   // bracket rather than guessing which reversal leg V8 was on.
+   if(buyTicket == 0 && sellTicket == 0)
+      PlaceFreshMinuteBracket(currentBar);
 
    g_reconcileBusy = false;
 }
@@ -415,7 +541,10 @@ void Reconcile()
 //+------------------------------------------------------------------+
 int OnInit()
 {
-   if(InpLots <= 0.0 || InpGapPips <= 0 || InpStopLossPips <= 0 || InpHunterPipPrice <= 0.0)
+   if(InpLots <= 0.0 ||
+      InpGapPips <= 0 ||
+      InpStopLossPips <= 0 ||
+      InpHunterPipPrice <= 0.0)
    {
       Print(EA_TAG, ": invalid inputs");
       return INIT_PARAMETERS_INCORRECT;
@@ -424,10 +553,9 @@ int OnInit()
    trade.SetExpertMagicNumber(InpMagic);
    trade.SetDeviationInPoints(InpDeviationPoints);
    trade.SetAsyncMode(false);
+
    if(!trade.SetTypeFillingBySymbol(_Symbol))
       Log("warning: unable to derive symbol filling mode");
-
-   g_lastM1Bar = iTime(_Symbol, PERIOD_M1, 0);
 
    PrintFormat("%s initialized on %s; point=%g tick=%g stops=%d freeze=%d",
                EA_TAG,
@@ -448,21 +576,6 @@ void OnDeinit(const int reason)
 
 void OnTick()
 {
-   if(InpRefreshOnNewM1Bar)
-   {
-      const datetime bar = iTime(_Symbol, PERIOD_M1, 0);
-      if(bar != 0 && bar != g_lastM1Bar)
-      {
-         g_lastM1Bar = bar;
-
-         ulong positionTicket;
-         ENUM_POSITION_TYPE positionType;
-         double openPrice, currentSL;
-         if(!FindOurPosition(positionTicket, positionType, openPrice, currentSL))
-            DeleteAllOurPending();
-      }
-   }
-
    Reconcile();
 }
 
@@ -470,9 +583,9 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
                         const MqlTradeRequest &request,
                         const MqlTradeResult &result)
 {
-   // MetaQuotes documents that transaction arrival order is not guaranteed.
-   // We therefore treat this handler as a wake-up signal and reconstruct the
-   // current state from terminal orders/positions instead of trusting sequence.
+   // MetaQuotes explicitly warns that trade-transaction arrival order is not
+   // guaranteed. Treat this only as a wake-up signal and rebuild truth from
+   // current terminal orders/positions in Reconcile().
    if(trans.symbol == _Symbol || request.symbol == _Symbol)
       Reconcile();
 }
