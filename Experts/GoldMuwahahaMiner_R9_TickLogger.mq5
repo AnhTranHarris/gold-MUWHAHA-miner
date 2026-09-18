@@ -1,5 +1,5 @@
 #property copyright "Clean-room behavioral reconstruction for AnhTranHarris"
-#property version   "1.91"
+#property version   "1.92"
 #property strict
 #property description "Gold MUWHAHA R9 LOGGER: trading logic identical to R9, plus per-tick tester instrumentation."
 
@@ -352,7 +352,11 @@ string SafeRunLabel()
 bool OpenTickLogger()
 {
    if(!InpTickLoggerEnabled) return true;
-   g_tickFileName="GoldMuwahaha_R9_TickLog_"+SafeRunLabel()+".csv";
+   MqlDateTime now={};
+   TimeToStruct(TimeLocal(),now);
+   const string mode=(bool)MQLInfoInteger(MQL_TESTER)?"TESTER":"LIVE";
+   const string stamp=StringFormat("%04d%02d%02d_%02d%02d%02d",now.year,now.mon,now.day,now.hour,now.min,now.sec);
+   g_tickFileName="GoldMuwahaha_R9_TickLog_"+SafeRunLabel()+"_"+mode+"_"+stamp+".csv";
    ResetLastError();
    g_tickFile=FileOpen(g_tickFileName,FILE_WRITE|FILE_CSV|FILE_ANSI|FILE_COMMON,',');
    if(g_tickFile==INVALID_HANDLE)
@@ -366,7 +370,7 @@ bool OpenTickLogger()
       "s1_disp","s1_eff","s1_range","s1_turns","atr","session","gate_open",
       "position_open","position_side","entry_price","mfe","mae","current_sl","trail_armed","event");
    FileFlush(g_tickFile);
-   PrintFormat("%s: tick logger enabled -> FILE_COMMON\\%s",EA_TAG,g_tickFileName);
+   PrintFormat("%s: tick logger enabled -> %s\\Files\\%s",EA_TAG,TerminalInfoString(TERMINAL_COMMONDATA_PATH),g_tickFileName);
    return true;
 }
 
