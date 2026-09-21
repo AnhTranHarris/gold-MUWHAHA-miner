@@ -1,7 +1,7 @@
 #property copyright "Clean-room behavioral reconstruction for AnhTranHarris"
-#property version   "2.01"
+#property version   "2.02"
 #property strict
-#property description "Gold MUWHAHA R10-from-R9 checkpoint 01: R9 event chassis plus causal CONTINUE/FADE/ABSTAIN routing, immediate harvest, and failed-thesis memory."
+#property description "Gold MUWHAHA R10-from-R9 checkpoint 02: R9 chassis plus causal router/lifecycle and reconstructed P3 failure, P4 rotation, P6 expansion state specialists."
 
 #include <Trade/Trade.mqh>
 CTrade trade;
@@ -40,6 +40,18 @@ input ENUM_TIMEFRAMES InpAtrTimeframe      = PERIOD_M5;
 input int             InpAtrPeriod         = 14;
 input int             InpQuoteUtcOffsetMinutes = 0;
 input bool            InpFailClosedOnNoATR = true;
+
+input group "R10 P3/P4/P6 state specialists"
+input bool   InpUseP4P6Overlay         = true;
+input double InpP4MaxAtrRatio          = 1.05; // reconstructed tester default; re-certify
+input double InpP4MaxEfficiency        = 0.78; // low/normal persistence within R9-qualified events
+input double InpP6MinAtrRatio          = 1.20; // reconstructed tester default; re-certify
+input double InpP6MinEfficiency        = 0.90; // strongly efficient expansion
+input int    InpAtrBaselineBars        = 50;
+input bool   InpUseP3FailedIgnition    = true;
+input int    InpP3EvaluateAfterSeconds = 12;
+input double InpP3MinMFEToKeep         = 0.01;
+input double InpP3AdverseExitPrice     = 0.10;
 
 input group "R10 broker normalization"
 input double InpHunterPipPrice     = 0.01;
@@ -498,6 +510,59 @@ int RouteAuctionEvent(const int eventSide,double &alignedRet1,double &range1,int
    return 0;
 }
 
+bool GetAtrRatio(double &ratio)
+{
+   ratio=1.0;
+   if(g_atrHandle==INVALID_HANDLE || InpAtrBaselineBars<5)
+      return false;
+   const int need=InpAtrBaselineBars;
+   double values[];
+   ArrayResize(values,need);
+   const int copied=CopyBuffer(g_atrHandle,0,1,need,values);
+   if(copied!=need)
+      return false;
+   double sum=0.0;
+   for(int i=0;i<need;i++)
+   {
+      if(!MathIsValidNumber(values[i]) || values[i]<=0.0)
+         return false;
+      sum+=values[i];
+   }
+   const double mean=sum/(double)need;
+   if(mean<=0.0)
+      return false;
+   ratio=values[0]/mean;
+   return MathIsValidNumber(ratio);
+}
+
+int ApplyP4P6StateOverlay(const int eventSide,const double eff10,const int baseTradeSide,
+                          string &state,double &atrRatio)
+{
+   atrRatio=1.0;
+   if(!InpUseP4P6Overlay)
+      return baseTradeSide;
+
+   const bool haveRatio=GetAtrRatio(atrRatio);
+   if(!haveRatio)
+      atrRatio=1.0;
+
+   // P4: lower/normal volatility plus relatively inefficient travel -> rotate/fade.
+   if(atrRatio<=InpP4MaxAtrRatio && eff10<=InpP4MaxEfficiency)
+   {
+      state="P4_ROTATION";
+      return -eventSide;
+   }
+
+   // P6: high-volatility or very efficient displacement -> expansion/continue.
+   if(atrRatio>=InpP6MinAtrRatio || eff10>=InpP6MinEfficiency)
+   {
+      state="P6_EXPANSION";
+      return eventSide;
+   }
+
+   return baseTradeSide;
+}
+
 bool CatastropheMemoryAllows(const int tradeSide,const datetime now)
 {
    if(g_catastropheBlockedSide==0 || now>=g_catastropheBlockedUntil)
@@ -588,6 +653,21 @@ void ManagePosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_T
 {
    UpdateExcursion(tick,type,openPrice);
 
+   // P3 delayed failed-ignition exit. Immediate reversal was rejected in research;
+   // this checkpoint only exits a thesis that still has not produced meaningful MFE.
+   if(InpUseP3FailedIgnition && !g_tradeHarvestArmed && g_positionOpenedAt>0 &&
+      (tick.time-g_positionOpenedAt)>=InpP3EvaluateAfterSeconds &&
+      g_tradeMFE+1e-12<InpP3MinMFEToKeep && g_tradeMAE>=InpP3AdverseExitPrice)
+   {
+      ResetLastError();
+      if(!trade.PositionClose(ticket) || !ResultAccepted())
+         LogTradeFailure("P3 failed-ignition close");
+      else if(InpVerbose)
+         PrintFormat("%s: P3_FAILED_EXIT MFE=%.3f MAE=%.3f age=%d",
+                     EA_TAG,g_tradeMFE,g_tradeMAE,(int)(tick.time-g_positionOpenedAt));
+      return;
+   }
+
    if(g_positionOpenedAt>0 && (tick.time-g_positionOpenedAt)>=R10_MAX_HOLD_SECONDS)
    {
       ResetLastError();
@@ -676,12 +756,14 @@ void ProcessEntries(const MqlTick &tick)
    double alignedRet1=0.0,range1=0.0;
    int ticks1=0;
    string routerState="ABSTAIN";
-   const int tradeSide=RouteAuctionEvent(eventSide,alignedRet1,range1,ticks1,routerState);
+   int tradeSide=RouteAuctionEvent(eventSide,alignedRet1,range1,ticks1,routerState);
+   double atrRatio=1.0;
+   tradeSide=ApplyP4P6StateOverlay(eventSide,eff10,tradeSide,routerState,atrRatio);
    if(tradeSide==0)
    {
       if(InpVerbose)
-         PrintFormat("%s: ABSTAIN eventSide=%d ret1=%.3f range1=%.3f ticks1=%d disp10=%.3f eff10=%.3f range10=%.3f turns10=%d",
-                     EA_TAG,eventSide,alignedRet1,range1,ticks1,disp10,eff10,range10,turns10);
+         PrintFormat("%s: ABSTAIN eventSide=%d ret1=%.3f range1=%.3f ticks1=%d disp10=%.3f eff10=%.3f range10=%.3f turns10=%d atrRatio=%.3f",
+                     EA_TAG,eventSide,alignedRet1,range1,ticks1,disp10,eff10,range10,turns10,atrRatio);
       // The same boundary crossing is not repeatedly reconsidered on every tick.
       // It remains an observed event, but no trade is forced from the ambiguous state.
       g_pendingMode=0;
@@ -747,7 +829,10 @@ void Reconcile(const MqlTick &tick)
 
 int OnInit()
 {
-   if(InpLots<=0.0 || InpHunterPipPrice<=0.0 || InpAtrPeriod<=0 || InpDeviationPoints<0)
+   if(InpLots<=0.0 || InpHunterPipPrice<=0.0 || InpAtrPeriod<=0 || InpDeviationPoints<0 ||
+      InpAtrBaselineBars<5 || InpP3EvaluateAfterSeconds<1 || InpP3MinMFEToKeep<0.0 ||
+      InpP3AdverseExitPrice<0.0 || InpP4MaxEfficiency<0.0 || InpP4MaxEfficiency>1.0 ||
+      InpP6MinEfficiency<0.0 || InpP6MinEfficiency>1.0)
    {
       Print(EA_TAG,": invalid inputs");
       return INIT_PARAMETERS_INCORRECT;
