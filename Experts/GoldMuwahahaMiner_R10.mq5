@@ -205,15 +205,12 @@ int g_pendingMode=0; // 2 both R9 event directions, 1 buy event, -1 sell event, 
 int g_rearms=0;
 
 bool g_hadPosition=false;
-ENUM_POSITION_TYPE g_lastPositionType=POSITION_TYPE_BUY;
 int g_lastEventSide=0; // original boundary-event direction, not necessarily traded direction
 datetime g_positionOpenedAt=0;
 datetime g_tradeCycleMinute=0;
 bool g_tradeHarvestArmed=false;
 double g_tradeMFE=0.0;
 double g_tradeMAE=0.0;
-ENUM_R10_SLEEVE g_activeSleeve=R10_SLEEVE_CORE;
-double g_structAtrAtEntry=0.0;
 datetime g_lastP5H1Bar=0;
 datetime g_lastP5H4Bar=0;
 
@@ -1174,12 +1171,9 @@ bool OpenTrade(const int tradeSide,const int eventSide,const string routerState,
    }
 
    RegisterRuntimeState(InpMagic,1,0.0,tick.time);
-   g_activeSleeve=R10_SLEEVE_CORE;
-   g_structAtrAtEntry=0.0;
    g_positionOpenedAt=tick.time;
    g_tradeCycleMinute=g_cycleMinute;
    g_lastEventSide=eventSide;
-   g_lastPositionType=(tradeSide>0?POSITION_TYPE_BUY:POSITION_TYPE_SELL);
    g_pendingMode=0;
    g_tradeHarvestArmed=false;
    g_tradeMFE=0.0;
@@ -1280,49 +1274,6 @@ void ManagePosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_T
 {
    const ulong positionId=(ulong)PositionGetInteger(POSITION_IDENTIFIER);
    UpdateExcursion(tick,type,openPrice,positionId);
-
-   if(g_activeSleeve==R10_SLEEVE_P5_H1 || g_activeSleeve==R10_SLEEVE_P5_H4)
-   {
-      const int maxHold=(g_activeSleeve==R10_SLEEVE_P5_H1?InpP5H1MaxHoldSeconds:InpP5H4MaxHoldSeconds);
-      if(g_positionOpenedAt>0 && (tick.time-g_positionOpenedAt)>=maxHold)
-      {
-         ResetLastError();
-         if(!trade.PositionClose(ticket) || !ResultAccepted()) LogTradeFailure("P5 max-hold close");
-         return;
-      }
-
-      const double atr=(g_structAtrAtEntry>0.0?g_structAtrAtEntry:1.0);
-      const double activation=atr*InpP5ActivationAtr;
-      const double trail=atr*InpP5TrailAtr;
-      const double brokerDistance=InpRespectBrokerStops?BrokerStopsDistance():0.0;
-      const double ts=TickSize();
-      double candidate=0.0;
-
-      if(type==POSITION_TYPE_BUY)
-      {
-         if((tick.bid-openPrice)+1e-12<activation) return;
-         candidate=NormalizePrice(tick.bid-trail);
-         candidate=MathMin(candidate,NormalizePrice(tick.bid-brokerDistance-ts));
-         if(candidate<=0.0 || candidate<=currentSL+ts*0.5) return;
-      }
-      else
-      {
-         if((openPrice-tick.ask)+1e-12<activation) return;
-         candidate=NormalizePrice(tick.ask+trail);
-         candidate=MathMax(candidate,NormalizePrice(tick.ask+brokerDistance+ts));
-         if(candidate<=0.0 || (currentSL>0.0 && candidate>=currentSL-ts*0.5)) return;
-      }
-
-      ResetLastError();
-      if(!trade.PositionModify(ticket,candidate,0.0) || !ResultAccepted())
-         LogTradeFailure("P5 trail modify");
-      else
-      {
-         g_tradeHarvestArmed=true;
-         MarkRuntimeHarvest(positionId);
-      }
-      return;
-   }
 
    // P3 failed-ignition control: wait for the auction to declare itself, then
    // require near-zero MFE + ATR-normalized MAE + efficient adverse displacement.
@@ -1957,8 +1908,6 @@ void Reconcile(const MqlTick &tick)
    if(havePosition)
    {
       g_hadPosition=true;
-      g_activeSleeve=R10_SLEEVE_CORE;
-      g_lastPositionType=type;
       if(g_positionOpenedAt<=0)
          g_positionOpenedAt=(datetime)PositionGetInteger(POSITION_TIME);
       ManagePosition(tick,ticket,type,openPrice,currentSL);
@@ -1971,8 +1920,6 @@ void Reconcile(const MqlTick &tick)
       if(nowMinute==g_tradeCycleMinute && nowMinute==g_cycleMinute)
          ArmOppositeEventAfterExit();
       g_tradeCycleMinute=0;
-      g_activeSleeve=R10_SLEEVE_CORE;
-      g_structAtrAtEntry=0.0;
    }
 
    // Every non-core sleeve is managed independently.
