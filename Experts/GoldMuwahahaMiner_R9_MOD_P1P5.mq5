@@ -748,3 +748,214 @@ void ManageHftPosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITIO
 
 void ManagePosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_TYPE type,const double openPrice,const double currentSL)
 {
+   UpdateExcursion(tick,type,openPrice);
+   if(g_activeSleeve==GMM_SLEEVE_R9){ ManageR9Position(tick,ticket,type,openPrice,currentSL); return; }
+   if(g_activeSleeve==GMM_SLEEVE_P5_H1 || g_activeSleeve==GMM_SLEEVE_P5_H4){ ManageP5Position(tick,ticket,type,openPrice,currentSL); return; }
+   ManageHftPosition(tick,ticket,type,openPrice,currentSL);
+}
+
+void StartMinuteCycle(const MqlTick &tick)
+{
+   const datetime m=(datetime)((long)tick.time-((long)tick.time%60));
+   if(m==g_cycleMinute) return;
+   g_cycleMinute=m;g_rearms=0;g_pendingMode=2;
+   const double mid=(tick.ask+tick.bid)*0.5;
+   const double half=HunterDistance(InpGapPips)*0.5;
+   g_cycleBuy=NormalizePrice(mid+half);g_cycleSell=NormalizePrice(mid-half);
+}
+
+void ArmOppositeAfterExit()
+{
+   if(g_rearms>=InpMaxSameMinuteRearms){ g_pendingMode=0;return; }
+   g_rearms++;
+   g_pendingMode=(g_lastPositionType==POSITION_TYPE_SELL)?1:-1;
+}
+
+void ProcessEntries(const MqlTick &tick)
+{
+   if(g_pendingMode==0) return;
+   if(!GateAllowsEntry(tick)) return;
+
+   int eventSide=0;
+   if((g_pendingMode==2 || g_pendingMode==1) && tick.ask>=g_cycleBuy) eventSide=1;
+   else if((g_pendingMode==2 || g_pendingMode==-1) && tick.bid<=g_cycleSell) eventSide=-1;
+   if(eventSide==0) return;
+
+   double disp10=0.0,eff10=0.0,rng10=0.0;int turns10=0;
+   if(!S1QualityForSide(eventSide,disp10,eff10,rng10,turns10)) return;
+
+   if(!InpUseP1Harvester)
+   {
+      OpenR9Trade(eventSide,tick);
+      return;
+   }
+
+   double alignedRet1=0.0,range1=0.0;int ticks1=0;string p1Label="ABSTAIN";
+   const int p1Side=RouteP1Event(eventSide,alignedRet1,range1,ticks1,p1Label);
+   if(p1Side!=0)
+   {
+      OpenHftTrade(p1Side,eventSide,GMM_SLEEVE_P1,false,tick,p1Label);
+      return;
+   }
+
+   double atrRatio=1.0;
+   if(P4Qualifies(eff10,atrRatio))
+   {
+      OpenHftTrade(-eventSide,eventSide,GMM_SLEEVE_P4,false,tick,"P4_ROT");
+      if(InpVerbose) PrintFormat("%s: P4_ROTATION eventSide=%d eff10=%.3f atrRatio=%.3f",EA_TAG,eventSide,eff10,atrRatio);
+      return;
+   }
+
+   if(InpVerbose)
+      PrintFormat("%s: ABSTAIN eventSide=%d ret1=%.3f range1=%.3f ticks1=%d disp10=%.3f eff10=%.3f range10=%.3f turns10=%d",
+                  EA_TAG,eventSide,alignedRet1,range1,ticks1,disp10,eff10,rng10,turns10);
+   g_pendingMode=0;
+}
+
+bool P5Signal(const ENUM_TIMEFRAMES tf,const int breakoutBars,const double maxVolRatio,const int atrHandle,datetime &lastProcessedBar,int &side,double &atr)
+{
+   side=0;atr=0.0;
+   const datetime currentBar=iTime(_Symbol,tf,0);
+   if(currentBar<=0 || currentBar==lastProcessedBar) return false;
+   lastProcessedBar=currentBar;
+   if(breakoutBars<2 || atrHandle==INVALID_HANDLE) return false;
+
+   MqlRates rates[]; ArraySetAsSeries(rates,true);
+   const int need=breakoutBars+2;
+   if(CopyRates(_Symbol,tf,1,need,rates)!=need) return false;
+   double priorHigh=-DBL_MAX,priorLow=DBL_MAX;
+   for(int i=1;i<=breakoutBars;i++)
+   {
+      if(rates[i].high>priorHigh) priorHigh=rates[i].high;
+      if(rates[i].low<priorLow) priorLow=rates[i].low;
+   }
+
+   double currentAtr[1];
+   if(CopyBuffer(atrHandle,0,1,1,currentAtr)!=1 || !MathIsValidNumber(currentAtr[0]) || currentAtr[0]<=0.0) return false;
+   atr=currentAtr[0];
+   const int n=MathMax(InpP5AtrBaselineBars,5);
+   double hist[]; ArrayResize(hist,n);
+   if(CopyBuffer(atrHandle,0,2,n,hist)!=n) return false;
+   double mean=0.0;
+   for(int i=0;i<n;i++)
+   {
+      if(!MathIsValidNumber(hist[i]) || hist[i]<=0.0) return false;
+      mean+=hist[i];
+   }
+   mean/=(double)n;
+   if(mean<=0.0 || atr/mean>maxVolRatio) return false;
+
+   const double close1=rates[0].close;
+   if(close1>priorHigh) side=1;
+   else if(close1<priorLow) side=-1;
+   return side!=0;
+}
+
+bool ProcessP5Structural(const MqlTick &tick)
+{
+   if(!InpUseP5Structural) return false;
+   int side=0;double atr=0.0;
+   if(P5Signal(PERIOD_H4,InpP5H4BreakoutBars,InpP5H4MaxVolRatio,g_p5H4AtrHandle,g_lastP5H4Bar,side,atr))
+      return OpenP5Trade(side,GMM_SLEEVE_P5_H4,atr,tick);
+   if(P5Signal(PERIOD_H1,InpP5H1BreakoutBars,InpP5H1MaxVolRatio,g_p5H1AtrHandle,g_lastP5H1Bar,side,atr))
+      return OpenP5Trade(side,GMM_SLEEVE_P5_H1,atr,tick);
+   return false;
+}
+
+void Reconcile(const MqlTick &tick)
+{
+   UpdateSecondBucket(tick);
+   StartMinuteCycle(tick);
+
+   ulong ticket;ENUM_POSITION_TYPE type;double openPrice,currentSL;
+   const bool have=FindOurPosition(ticket,type,openPrice,currentSL);
+   if(have)
+   {
+      g_hadPosition=true;g_lastPositionType=type;
+      if(g_positionOpenedAt<=0) g_positionOpenedAt=(datetime)PositionGetInteger(POSITION_TIME);
+      ManagePosition(tick,ticket,type,openPrice,currentSL);
+      return;
+   }
+
+   if(g_hadPosition)
+   {
+      const ENUM_GMM_SLEEVE closedSleeve=g_activeSleeve;
+      g_hadPosition=false;
+      const datetime tradeMinute=g_tradeCycleMinute;
+      ResetTradeRuntime();
+      const datetime nowMinute=(datetime)((long)tick.time-((long)tick.time%60));
+      if(closedSleeve!=GMM_SLEEVE_P5_H1 && closedSleeve!=GMM_SLEEVE_P5_H4 && nowMinute==tradeMinute && nowMinute==g_cycleMinute)
+         ArmOppositeAfterExit();
+      else if(closedSleeve==GMM_SLEEVE_P5_H1 || closedSleeve==GMM_SLEEVE_P5_H4)
+         g_pendingMode=0;
+      return;
+   }
+
+   ProcessEntries(tick);
+   ulong checkTicket;ENUM_POSITION_TYPE checkType;double checkOpen,checkSL;
+   if(!FindOurPosition(checkTicket,checkType,checkOpen,checkSL)) ProcessP5Structural(tick);
+}
+
+int OnInit()
+{
+   if(InpLots<=0.0 || InpGapPips<=0 || InpStopLossPips<=0 || InpTrailPips<0 || InpTrailActivationPips<0 ||
+      InpMaxHoldSeconds<=0 || InpMaxSameMinuteRearms<0 || InpVelocityLookbackSec<2 || InpRangeLookbackSec<2 ||
+      InpVelocityLookbackSec>=MICRO_CAPACITY || InpRangeLookbackSec>=MICRO_CAPACITY || InpMinVelocityPips<0 ||
+      InpMinDirectionalEff<0.0 || InpMinDirectionalEff>1.0 || InpMinRangePips<0 || InpMaxTurns<0 ||
+      InpHunterPipPrice<=0.0 || InpAtrPeriod<=0 || InpMaxSpreadPoints<0 ||
+      InpP1EmergencyStopPrice<=0.0 || InpP1HarvestActivationPrice<0.0 || InpP1HarvestTrailPrice<=0.0 || InpP1MaxHoldSeconds<=0 ||
+      InpP2LookbackSeconds<2 || InpP2LookbackSeconds>=MICRO_CAPACITY || InpP2MinDirectionalFlow<0.0 || InpP2MinDirectionalFlow>1.0 ||
+      InpP2MinPathEfficiency<0.0 || InpP2MinPathEfficiency>1.0 || InpP2RunnerTrailAtr<=0.0 || InpP2RunnerMaxHoldSeconds<=0 ||
+      InpP3EvaluateAfterSeconds<1 || InpP3MaxMFEToFail<0.0 || InpP3MinMAEAtr<=0.0 || InpP3AdverseLookbackSeconds<2 ||
+      InpP3AdverseLookbackSeconds>=MICRO_CAPACITY || InpP3MinAdverseEfficiency<0.0 || InpP3MinAdverseEfficiency>1.0 ||
+      InpP3MaxAlignedTickFlow<-1.0 || InpP3MaxAlignedTickFlow>0.0 || InpP4AtrBaselineBars<5 || InpP4MaxAtrRatio<=0.0 ||
+      InpP4MaxEfficiency<0.0 || InpP4MaxEfficiency>1.0 || InpP5H1BreakoutBars<2 || InpP5H4BreakoutBars<2 ||
+      InpP5AtrBaselineBars<5 || InpP5StopAtr<=0.0 || InpP5ActivationAtr<0.0 || InpP5TrailAtr<=0.0 ||
+      InpP5H1MaxHoldSeconds<=0 || InpP5H4MaxHoldSeconds<=0)
+   {
+      Print(EA_TAG,": invalid inputs");return INIT_PARAMETERS_INCORRECT;
+   }
+   if(InpRequireXAUUSD && StringFind(_Symbol,"XAUUSD")<0)
+   {
+      PrintFormat("%s: symbol guard rejected %s; expected XAUUSD",EA_TAG,_Symbol);return INIT_FAILED;
+   }
+
+   trade.SetExpertMagicNumber(InpMagic);trade.SetDeviationInPoints(InpDeviationPoints);trade.SetAsyncMode(false);
+   if(!trade.SetTypeFillingBySymbol(_Symbol)) Log("warning: unable to derive filling mode");
+
+   const bool needM5Atr=(InpUseRegimeGate || InpUseP2Runner || InpUseP3FailedIgnition || InpUseP4Rotation);
+   if(needM5Atr)
+   {
+      g_atrHandle=iATR(_Symbol,InpAtrTimeframe,InpAtrPeriod);
+      if(g_atrHandle==INVALID_HANDLE){ PrintFormat("%s: M5 ATR handle failed lastError=%d",EA_TAG,GetLastError());return INIT_FAILED; }
+   }
+   if(InpUseP5Structural)
+   {
+      g_p5H1AtrHandle=iATR(_Symbol,PERIOD_H1,14);
+      g_p5H4AtrHandle=iATR(_Symbol,PERIOD_H4,14);
+      if(g_p5H1AtrHandle==INVALID_HANDLE || g_p5H4AtrHandle==INVALID_HANDLE)
+      {
+         PrintFormat("%s: P5 ATR handle failed lastError=%d",EA_TAG,GetLastError());return INIT_FAILED;
+      }
+   }
+
+   PrintFormat("%s initialized P1=%s P2=%s P3=%s P4=%s P5=%s magic=%I64u",
+               EA_TAG,(InpUseP1Harvester?"ON":"OFF"),(InpUseP2Runner?"ON":"OFF"),(InpUseP3FailedIgnition?"ON":"OFF"),
+               (InpUseP4Rotation?"ON":"OFF"),(InpUseP5Structural?"ON":"OFF"),InpMagic);
+   return INIT_SUCCEEDED;
+}
+
+void OnDeinit(const int reason)
+{
+   if(g_atrHandle!=INVALID_HANDLE){ IndicatorRelease(g_atrHandle);g_atrHandle=INVALID_HANDLE; }
+   if(g_p5H1AtrHandle!=INVALID_HANDLE){ IndicatorRelease(g_p5H1AtrHandle);g_p5H1AtrHandle=INVALID_HANDLE; }
+   if(g_p5H4AtrHandle!=INVALID_HANDLE){ IndicatorRelease(g_p5H4AtrHandle);g_p5H4AtrHandle=INVALID_HANDLE; }
+   Log(StringFormat("deinit reason=%d",reason));
+}
+
+void OnTick()
+{
+   MqlTick tick;
+   if(!SymbolInfoTick(_Symbol,tick) || tick.bid<=0.0 || tick.ask<=0.0) return;
+   Reconcile(tick);
+}
