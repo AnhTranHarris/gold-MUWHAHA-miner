@@ -1,7 +1,7 @@
 #property copyright "Clean-room behavioral reconstruction for AnhTranHarris"
-#property version   "2.08"
+#property version   "2.09"
 #property strict
-#property description "Gold MUWHAHA R10-from-R9 checkpoint 08: R9-derived R10 loss-priority build with opposition heat, state stability, catastrophe memory, and post-stop KEEP/FLIP routing."
+#property description "Gold MUWHAHA R10-from-R9 checkpoint 09: R9-derived R10 loss-priority build plus reconstructed P7 volatility-normalized compression-break event source."
 
 #include <Trade/Trade.mqh>
 CTrade trade;
@@ -75,6 +75,13 @@ input double InpP5TrailAtr            = 1.00;
 input int    InpP5H1MaxHoldSeconds    = 43200;
 input int    InpP5H4MaxHoldSeconds    = 86400;
 
+input group "R10 P7 compression break"
+input bool   InpUseP7Compression        = true;
+input int    InpP7CompressionSeconds    = 60;
+input double InpP7MinRangeAtrFrac       = 0.15;
+input double InpP7MaxRangeAtrFrac       = 0.70;
+input double InpP7BreakoutAtrFrac       = 0.15;
+
 input group "R10 P8/P9 one-minute boundary auctions"
 input bool   InpUseBoundaryAuctions       = true;
 input int    InpBoundaryLookbackSeconds   = 60;
@@ -118,7 +125,7 @@ input group "R10 broker normalization"
 input double InpHunterPipPrice     = 0.01;
 input bool   InpRespectBrokerStops = true;
 
-string EA_TAG = "GM_R10_FROM_R9_08";
+string EA_TAG = "GM_R10_FROM_R9_09";
 
 // -----------------------------------------------------------------------------
 // Frozen research geometry carried from the causal R9 event population.
@@ -196,6 +203,7 @@ bool g_boundaryActive=false;
 int g_boundarySide=0;
 double g_boundaryPrice=0.0;
 datetime g_boundaryStartedAt=0;
+datetime g_lastP7TriggerMinute=0;
 
 #define MS_BOUNDARY_COUNT 4
 int      g_msMinutes[MS_BOUNDARY_COUNT]={3,5,10,20};
@@ -1068,6 +1076,49 @@ void ResetBoundaryState()
    g_boundaryStartedAt=0;
 }
 
+bool ProcessP7Compression(const MqlTick &tick)
+{
+   if(!InpUseP7Compression)
+      return false;
+
+   const datetime minute=(datetime)((long)tick.time-((long)tick.time%60));
+   if(minute==g_lastP7TriggerMinute)
+      return false;
+
+   double hi=0.0,lo=0.0;
+   if(!ComputeMicroBoundary(InpP7CompressionSeconds,hi,lo))
+      return false;
+
+   double atr=0.0;
+   if(!GetCompletedAtr(atr) || atr<=0.0)
+      return false;
+
+   const double range=hi-lo;
+   const double frac=range/atr;
+   if(frac<InpP7MinRangeAtrFrac || frac>InpP7MaxRangeAtrFrac)
+      return false;
+
+   const double buffer=atr*InpP7BreakoutAtrFrac;
+   int eventSide=0;
+   if(tick.ask>=hi+buffer) eventSide=1;
+   else if(tick.bid<=lo-buffer) eventSide=-1;
+   if(eventSide==0)
+      return false;
+
+   string state="P7_COMPRESSION_BREAK";
+   double alignedRet1=0.0,range1=0.0;
+   int ticks1=0;
+   int tradeSide=RouteAuctionEvent(eventSide,alignedRet1,range1,ticks1,state);
+   tradeSide=ApplyPostCatastropheKeepFlip(tradeSide,eventSide,state,tick.time);
+
+   g_lastP7TriggerMinute=minute; // consume the compression event once per minute
+   if(tradeSide==0 || !CatastropheMemoryAllows(tradeSide,tick.time))
+      return false;
+
+   return OpenBoundaryTrade(tradeSide,eventSide,R10_SLEEVE_P9_ACCEPT,1,state,tick,
+                            alignedRet1,range1,ticks1);
+}
+
 bool ProcessBoundaryAuctions(const MqlTick &tick)
 {
    if(!InpUseBoundaryAuctions)
@@ -1545,7 +1596,8 @@ void Reconcile(const MqlTick &tick)
    if(!havePosition)
       ProcessEntries(tick);
 
-   // Independent boundary scales can coexist subject to the portfolio governor.
+   // Independent auction sources can coexist subject to scale and portfolio limits.
+   ProcessP7Compression(tick);
    ProcessMultiscaleBoundaries(tick);
    ProcessBoundaryAuctions(tick);
 
@@ -1560,6 +1612,9 @@ int OnInit()
       InpP5H1BreakoutBars<2 || InpP5H4BreakoutBars<2 || InpP5AtrBaselineBars<5 ||
       InpP5StopAtr<=0.0 || InpP5ActivationAtr<0.0 || InpP5TrailAtr<=0.0 ||
       InpP5H1MaxHoldSeconds<=0 || InpP5H4MaxHoldSeconds<=0 ||
+      InpP7CompressionSeconds<5 || InpP7CompressionSeconds>=MICRO_CAPACITY ||
+      InpP7MinRangeAtrFrac<0.0 || InpP7MaxRangeAtrFrac<=InpP7MinRangeAtrFrac ||
+      InpP7BreakoutAtrFrac<0.0 ||
       InpBoundaryLookbackSeconds<5 || InpBoundaryLookbackSeconds>=MICRO_CAPACITY ||
       InpBoundaryMinPenetration<0.0 || InpBoundaryReclaimBuffer<0.0 ||
       InpBoundaryAcceptanceBuffer<0.0 || InpBoundaryAcceptanceSeconds<1 ||
