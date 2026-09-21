@@ -1,30 +1,48 @@
+> **SUPERSEDED:** This branch is not the Gold MUWHAHA Miner R10 replacement. The corrected executable R10 is rebuilt cumulatively from R9 on `carson/r10-from-r9-code-10-r10-replacement-candidate`, with authoritative EA `Experts/GoldMuwahahaMiner_R10.mq5`. This branch is retained only for historical traceability.
+
 # gold-MUWHAHA-miner
 
-Clean-room MT5 research project to reproduce the **observable trading behavior** of Gold Hunter V8 from Strategy Tester evidence and public performance records.
+Clean-room MT5 research project for the **Gold MUWHAHA Miner** XAUUSD Expert Advisor.
 
-## Current baseline
+## Current R10 branch
 
-Development branch: `carson/v8-cleanroom-baseline`
+Branch: `carson/mt5-r10-session-regime-certification`
 
-EA source:
+Authoritative R10 EA:
 
-- `Experts/GoldMuwahahaMiner_V8_Baseline.mq5`
+- `Experts/GoldMuwahahaMiner_R10_AuctionState.mq5`
 
-Research notes:
+Current architecture notes:
 
-- `docs/V8_RECONSTRUCTION.md`
+- `docs/R10_AUCTION_STATE_REBUILD.md`
 
-The current baseline implements the report-derived M1 state machine:
+Historical R1-R9 EAs and their certification notes remain in the branch for lineage and comparison.
 
-- fixed 0.01 lot default
-- two stop orders separated by a 50-Hunter-pip band
-- 50-Hunter-pip initial stop
-- 20-Hunter-pip trailing stop
-- opposite pending order canceled after a fill
-- after a position closes inside the same minute, only the **opposite original boundary** is re-armed
-- each new M1 bar resets the old boundary and creates a fresh two-sided bracket
+## R10 architecture
+
+The current R10 compile/test candidate replaces the obsolete server-time profile strategy with the later causal research stack that is reconstructible from project evidence:
+
+- R9 minute-boundary event population and S1 eligibility gate
+- transparent **CONTINUE / FADE / ABSTAIN** action router
+- balanced-strengthened and defensive auction-state profiles
+- wide `$5.00` emergency room
+- near-immediate `$0.01` ignition / `$0.01` high-water harvest
+- 10-second **same-direction catastrophe memory** after an unharvested losing stop
+- XAUUSD-only execution guard
 - broker tick-size, volume-step, stop-level, filling-mode and trade-retcode handling
 
-## Status
+The old five server-time R10 execution profiles are no longer the active design.
 
-This is **v0.20, behavioral baseline**, not yet claimed as an exact clone. The next gate is MetaEditor compilation followed by an MT5 Strategy Tester order-sequence comparison against the supplied Gold Hunter V8 report. We should compare order fingerprints before optimizing profitability.
+## Important limitation
+
+The later five-scale 1m/3m/5m/10m/20m auction portfolio and opposition-heat governor are **not claimed as implemented** here because their exact event-generator source is not present in the repository. Their research results remain part of the project history, but R10 will not fabricate missing rules from summary metrics.
+
+## Next gate
+
+1. Compile the authoritative R10 EA in MetaEditor with zero errors.
+2. Run XAUUSD **Every tick based on real ticks** from January 1 through July 31, 2026.
+3. Test `$100` and `$200` starting balances separately.
+4. Record monthly net profit, gross loss and maximum dollar drawdown, plus overall Jan-July metrics and account survivability.
+5. Keep **August 2026 sealed** until the Jan-July system is frozen.
+
+No Python result or generated-tick result overrides the MT5 real-tick test.
