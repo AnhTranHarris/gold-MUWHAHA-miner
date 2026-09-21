@@ -1,7 +1,7 @@
 #property copyright "Clean-room behavioral reconstruction for AnhTranHarris"
-#property version   "2.02"
+#property version   "2.03"
 #property strict
-#property description "Gold MUWHAHA R10-from-R9 checkpoint 02: R9 chassis plus causal router/lifecycle and reconstructed P3 failure, P4 rotation, P6 expansion state specialists."
+#property description "Gold MUWHAHA R10-from-R9 checkpoint 03: R9-derived R10 plus P3/P4/P6 and independent H1/H4 P5 structural trend sleeve."
 
 #include <Trade/Trade.mqh>
 CTrade trade;
@@ -12,6 +12,13 @@ enum ENUM_GMM_SESSION
    GMM_SESSION_LONDON = 1,
    GMM_SESSION_OVERLAP = 2,
    GMM_SESSION_NEWYORK = 3
+};
+
+enum ENUM_R10_SLEEVE
+{
+   R10_SLEEVE_CORE = 0,
+   R10_SLEEVE_P5_H1 = 51,
+   R10_SLEEVE_P5_H4 = 54
 };
 
 enum ENUM_R10_ROUTER_PROFILE
@@ -52,6 +59,19 @@ input bool   InpUseP3FailedIgnition    = true;
 input int    InpP3EvaluateAfterSeconds = 12;
 input double InpP3MinMFEToKeep         = 0.01;
 input double InpP3AdverseExitPrice     = 0.10;
+
+input group "R10 P5 structural trend"
+input bool   InpUseP5Structural       = true;
+input int    InpP5H1BreakoutBars      = 5;
+input int    InpP5H4BreakoutBars      = 6;
+input int    InpP5AtrBaselineBars     = 20;
+input double InpP5H1MaxVolRatio       = 1.20;
+input double InpP5H4MaxVolRatio       = 2.00;
+input double InpP5StopAtr             = 1.50;
+input double InpP5ActivationAtr       = 0.25;
+input double InpP5TrailAtr            = 1.00;
+input int    InpP5H1MaxHoldSeconds    = 43200;
+input int    InpP5H4MaxHoldSeconds    = 86400;
 
 input group "R10 broker normalization"
 input double InpHunterPipPrice     = 0.01;
@@ -126,11 +146,17 @@ datetime g_tradeCycleMinute=0;
 bool g_tradeHarvestArmed=false;
 double g_tradeMFE=0.0;
 double g_tradeMAE=0.0;
+ENUM_R10_SLEEVE g_activeSleeve=R10_SLEEVE_CORE;
+double g_structAtrAtEntry=0.0;
+datetime g_lastP5H1Bar=0;
+datetime g_lastP5H4Bar=0;
 
 int g_catastropheBlockedSide=0;
 datetime g_catastropheBlockedUntil=0;
 
 int g_atrHandle=INVALID_HANDLE;
+int g_p5H1AtrHandle=INVALID_HANDLE;
+int g_p5H4AtrHandle=INVALID_HANDLE;
 datetime g_lastGateLogBar=0;
 
 void Log(const string text)
@@ -588,6 +614,45 @@ bool FindOurPosition(ulong &ticket,ENUM_POSITION_TYPE &type,double &openPrice,do
    return false;
 }
 
+bool OpenStructuralTrade(const int side,const ENUM_R10_SLEEVE sleeve,const double atr,const MqlTick &tick)
+{
+   const double volume=NormalizeVolume(InpLots);
+   const double brokerMinimum=InpRespectBrokerStops?BrokerStopsDistance()+TickSize():0.0;
+   const double stopDistance=MathMax(atr*InpP5StopAtr,brokerMinimum);
+   double sl=0.0;
+   bool sent=false;
+   const string label=(sleeve==R10_SLEEVE_P5_H1?"P5_H1":"P5_H4");
+   ResetLastError();
+   if(side>0)
+   {
+      sl=NormalizePrice(tick.bid-stopDistance);
+      sent=trade.Buy(volume,_Symbol,0.0,sl,0.0,EA_TAG+" "+label);
+   }
+   else
+   {
+      sl=NormalizePrice(tick.ask+stopDistance);
+      sent=trade.Sell(volume,_Symbol,0.0,sl,0.0,EA_TAG+" "+label);
+   }
+   if(!sent || !ResultAccepted())
+   {
+      LogTradeFailure(label);
+      return false;
+   }
+
+   g_activeSleeve=sleeve;
+   g_structAtrAtEntry=atr;
+   g_positionOpenedAt=tick.time;
+   g_tradeCycleMinute=0;
+   g_lastEventSide=0;
+   g_lastPositionType=(side>0?POSITION_TYPE_BUY:POSITION_TYPE_SELL);
+   g_tradeHarvestArmed=false;
+   g_tradeMFE=0.0;
+   g_tradeMAE=0.0;
+   if(InpVerbose)
+      PrintFormat("%s: %s ENTRY side=%d ATR=%.3f SLdist=%.3f",EA_TAG,label,side,atr,stopDistance);
+   return true;
+}
+
 bool OpenTrade(const int tradeSide,const int eventSide,const string routerState,const MqlTick &tick,
                const double alignedRet1,const double range1,const int ticks1)
 {
@@ -615,6 +680,8 @@ bool OpenTrade(const int tradeSide,const int eventSide,const string routerState,
       return false;
    }
 
+   g_activeSleeve=R10_SLEEVE_CORE;
+   g_structAtrAtEntry=0.0;
    g_positionOpenedAt=tick.time;
    g_tradeCycleMinute=g_cycleMinute;
    g_lastEventSide=eventSide;
@@ -652,6 +719,46 @@ void UpdateExcursion(const MqlTick &tick,const ENUM_POSITION_TYPE type,const dou
 void ManagePosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_TYPE type,const double openPrice,const double currentSL)
 {
    UpdateExcursion(tick,type,openPrice);
+
+   if(g_activeSleeve==R10_SLEEVE_P5_H1 || g_activeSleeve==R10_SLEEVE_P5_H4)
+   {
+      const int maxHold=(g_activeSleeve==R10_SLEEVE_P5_H1?InpP5H1MaxHoldSeconds:InpP5H4MaxHoldSeconds);
+      if(g_positionOpenedAt>0 && (tick.time-g_positionOpenedAt)>=maxHold)
+      {
+         ResetLastError();
+         if(!trade.PositionClose(ticket) || !ResultAccepted()) LogTradeFailure("P5 max-hold close");
+         return;
+      }
+
+      const double atr=(g_structAtrAtEntry>0.0?g_structAtrAtEntry:1.0);
+      const double activation=atr*InpP5ActivationAtr;
+      const double trail=atr*InpP5TrailAtr;
+      const double brokerDistance=InpRespectBrokerStops?BrokerStopsDistance():0.0;
+      const double ts=TickSize();
+      double candidate=0.0;
+
+      if(type==POSITION_TYPE_BUY)
+      {
+         if((tick.bid-openPrice)+1e-12<activation) return;
+         g_tradeHarvestArmed=true;
+         candidate=NormalizePrice(tick.bid-trail);
+         candidate=MathMin(candidate,NormalizePrice(tick.bid-brokerDistance-ts));
+         if(candidate<=0.0 || candidate<=currentSL+ts*0.5) return;
+      }
+      else
+      {
+         if((openPrice-tick.ask)+1e-12<activation) return;
+         g_tradeHarvestArmed=true;
+         candidate=NormalizePrice(tick.ask+trail);
+         candidate=MathMax(candidate,NormalizePrice(tick.ask+brokerDistance+ts));
+         if(candidate<=0.0 || (currentSL>0.0 && candidate>=currentSL-ts*0.5)) return;
+      }
+
+      ResetLastError();
+      if(!trade.PositionModify(ticket,candidate,0.0) || !ResultAccepted())
+         LogTradeFailure("P5 trail modify");
+      return;
+   }
 
    // P3 delayed failed-ignition exit. Immediate reversal was rejected in research;
    // this checkpoint only exits a thesis that still has not produced meaningful MFE.
@@ -704,6 +811,75 @@ void ManagePosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_T
    ResetLastError();
    if(!trade.PositionModify(ticket,candidate,0.0) || !ResultAccepted())
       LogTradeFailure("harvest trail modify");
+}
+
+bool P5Signal(const ENUM_TIMEFRAMES tf,const int breakoutBars,const double maxVolRatio,
+              const int atrHandle,datetime &lastProcessedBar,int &side,double &atr)
+{
+   side=0;
+   atr=0.0;
+   const datetime currentBar=iTime(_Symbol,tf,0);
+   if(currentBar<=0 || currentBar==lastProcessedBar)
+      return false;
+   lastProcessedBar=currentBar;
+
+   if(breakoutBars<2 || atrHandle==INVALID_HANDLE)
+      return false;
+
+   MqlRates rates[];
+   ArraySetAsSeries(rates,true);
+   const int need=breakoutBars+2;
+   if(CopyRates(_Symbol,tf,1,need,rates)!=need)
+      return false;
+
+   double priorHigh=-DBL_MAX;
+   double priorLow=DBL_MAX;
+   for(int i=1;i<=breakoutBars;i++)
+   {
+      if(rates[i].high>priorHigh) priorHigh=rates[i].high;
+      if(rates[i].low<priorLow) priorLow=rates[i].low;
+   }
+
+   double av[];
+   ArraySetAsSeries(av,true);
+   const int n=MathMax(InpP5AtrBaselineBars,5);
+   ArrayResize(av,n+1);
+   if(CopyBuffer(atrHandle,0,1,n+1,av)!=n+1)
+      return false;
+   atr=av[0];
+   if(!MathIsValidNumber(atr) || atr<=0.0)
+      return false;
+
+   double mean=0.0;
+   for(int i=1;i<=n;i++)
+   {
+      if(!MathIsValidNumber(av[i]) || av[i]<=0.0) return false;
+      mean+=av[i];
+   }
+   mean/=(double)n;
+   if(mean<=0.0 || atr/mean>maxVolRatio)
+      return false;
+
+   const double close1=rates[0].close;
+   if(close1>priorHigh) side=1;
+   else if(close1<priorLow) side=-1;
+   return (side!=0);
+}
+
+bool ProcessP5Structural(const MqlTick &tick)
+{
+   if(!InpUseP5Structural)
+      return false;
+
+   int side=0;
+   double atr=0.0;
+   if(P5Signal(PERIOD_H4,InpP5H4BreakoutBars,InpP5H4MaxVolRatio,g_p5H4AtrHandle,g_lastP5H4Bar,side,atr))
+      return OpenStructuralTrade(side,R10_SLEEVE_P5_H4,atr,tick);
+
+   if(P5Signal(PERIOD_H1,InpP5H1BreakoutBars,InpP5H1MaxVolRatio,g_p5H1AtrHandle,g_lastP5H1Bar,side,atr))
+      return OpenStructuralTrade(side,R10_SLEEVE_P5_H1,atr,tick);
+
+   return false;
 }
 
 void StartMinuteCycle(const MqlTick &tick)
@@ -812,7 +988,7 @@ void Reconcile(const MqlTick &tick)
       // entry. TradeTransaction delivery ordering is not guaranteed by MT5.
 
       const datetime nowMinute=(datetime)((long)tick.time-((long)tick.time%60));
-      if(nowMinute==g_tradeCycleMinute && nowMinute==g_cycleMinute)
+      if(g_activeSleeve==R10_SLEEVE_CORE && nowMinute==g_tradeCycleMinute && nowMinute==g_cycleMinute)
          ArmOppositeEventAfterExit();
       else
       {
@@ -820,17 +996,29 @@ void Reconcile(const MqlTick &tick)
          StartMinuteCycle(tick);
       }
       g_tradeCycleMinute=0;
+      g_activeSleeve=R10_SLEEVE_CORE;
+      g_structAtrAtEntry=0.0;
       return;
    }
 
    StartMinuteCycle(tick);
    ProcessEntries(tick);
+
+   // Structural sleeve is intentionally subordinate at this one-position checkpoint.
+   // It enters only when the R9-derived core did not open a position on this tick.
+   ulong postTicket=0; ENUM_POSITION_TYPE postType=POSITION_TYPE_BUY;
+   double postOpen=0.0,postSL=0.0;
+   if(!FindOurPosition(postTicket,postType,postOpen,postSL))
+      ProcessP5Structural(tick);
 }
 
 int OnInit()
 {
    if(InpLots<=0.0 || InpHunterPipPrice<=0.0 || InpAtrPeriod<=0 || InpDeviationPoints<0 ||
       InpAtrBaselineBars<5 || InpP3EvaluateAfterSeconds<1 || InpP3MinMFEToKeep<0.0 ||
+      InpP5H1BreakoutBars<2 || InpP5H4BreakoutBars<2 || InpP5AtrBaselineBars<5 ||
+      InpP5StopAtr<=0.0 || InpP5ActivationAtr<0.0 || InpP5TrailAtr<=0.0 ||
+      InpP5H1MaxHoldSeconds<=0 || InpP5H4MaxHoldSeconds<=0 ||
       InpP3AdverseExitPrice<0.0 || InpP4MaxEfficiency<0.0 || InpP4MaxEfficiency>1.0 ||
       InpP6MinEfficiency<0.0 || InpP6MinEfficiency>1.0)
    {
@@ -860,6 +1048,17 @@ int OnInit()
       }
    }
 
+   if(InpUseP5Structural)
+   {
+      g_p5H1AtrHandle=iATR(_Symbol,PERIOD_H1,14);
+      g_p5H4AtrHandle=iATR(_Symbol,PERIOD_H4,14);
+      if(g_p5H1AtrHandle==INVALID_HANDLE || g_p5H4AtrHandle==INVALID_HANDLE)
+      {
+         PrintFormat("%s: P5 ATR handle creation failed lastError=%d",EA_TAG,GetLastError());
+         return INIT_FAILED;
+      }
+   }
+
    double cont=0.0,fade=0.0;
    RouterThresholds(cont,fade);
    PrintFormat("%s initialized profile=%d CONT<=%.3f FADE>=%.3f range1>=0.285 fadeTicks>=5 emergency=%.2f activation=%.2f trail=%.2f memory=%ds",
@@ -874,6 +1073,16 @@ void OnDeinit(const int reason)
    {
       IndicatorRelease(g_atrHandle);
       g_atrHandle=INVALID_HANDLE;
+   }
+   if(g_p5H1AtrHandle!=INVALID_HANDLE)
+   {
+      IndicatorRelease(g_p5H1AtrHandle);
+      g_p5H1AtrHandle=INVALID_HANDLE;
+   }
+   if(g_p5H4AtrHandle!=INVALID_HANDLE)
+   {
+      IndicatorRelease(g_p5H4AtrHandle);
+      g_p5H4AtrHandle=INVALID_HANDLE;
    }
    Log(StringFormat("deinit reason=%d",reason));
 }
