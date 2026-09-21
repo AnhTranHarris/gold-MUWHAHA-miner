@@ -159,6 +159,12 @@ bool ResultAccepted()
    return (c==TRADE_RETCODE_DONE || c==TRADE_RETCODE_PLACED || c==TRADE_RETCODE_DONE_PARTIAL || c==TRADE_RETCODE_NO_CHANGES);
 }
 
+bool StructuralResultAccepted()
+{
+   const uint c=structuralTrade.ResultRetcode();
+   return (c==TRADE_RETCODE_DONE || c==TRADE_RETCODE_PLACED || c==TRADE_RETCODE_DONE_PARTIAL || c==TRADE_RETCODE_NO_CHANGES);
+}
+
 void LogTradeFailure(const string action)
 {
    PrintFormat("%s: %s failed; retcode=%u (%s), lastError=%d",EA_TAG,action,trade.ResultRetcode(),trade.ResultRetcodeDescription(),GetLastError());
@@ -534,7 +540,7 @@ bool OpenStructuralTrade(const int side,const MqlTick &tick)
       sent=structuralTrade.Sell(volume,_Symbol,0.0,sl,0.0,STRUCT_TAG+" SELL");
    }
 
-   if(!sent || !ResultAccepted())
+   if(!sent || !StructuralResultAccepted())
    {
       PrintFormat("%s: %s failed; retcode=%u (%s), lastError=%d",
                   STRUCT_TAG,side>0?"BUY":"SELL",
@@ -582,7 +588,7 @@ void ManageStructuralPosition(const MqlTick &tick,const ulong ticket,const ENUM_
 
    structuralTrade.SetExpertMagicNumber(InpStructuralMagic);
    ResetLastError();
-   if(!structuralTrade.PositionModify(ticket,cand,0.0) || !ResultAccepted())
+   if(!structuralTrade.PositionModify(ticket,cand,0.0) || !StructuralResultAccepted())
       PrintFormat("%s: trail modify failed; retcode=%u (%s), lastError=%d",
                   STRUCT_TAG,structuralTrade.ResultRetcode(),structuralTrade.ResultRetcodeDescription(),GetLastError());
 }
