@@ -64,7 +64,7 @@ input double InpP3MinMAEAtr              = 2.00; // source-supported severe-fail
 input int    InpP3AdverseLookbackSec     = 5;
 input double InpP3MinAdverseEfficiency   = 0.70;
 input double InpP3MinAdverseDispAtr      = 0.15;
-input bool   InpP3AllowSelectiveFlip     = false; // mechanism retained; default off until exact flip thresholds are re-fit
+input double InpP3MaxAlignedTickFlow     = -0.30; // negative means tick flow opposes the trade
 
 input group "R10 P5 structural trend"
 input bool   InpUseP5Structural       = true;
@@ -179,6 +179,8 @@ struct MicroBar
    double low;
    double close;
    int ticks;
+   int upTicks;
+   int downTicks;
 };
 
 MicroBar g_micro[MICRO_CAPACITY];
@@ -192,6 +194,9 @@ double g_bucketHigh=0.0;
 double g_bucketLow=0.0;
 double g_bucketClose=0.0;
 int g_bucketTicks=0;
+int g_bucketUpTicks=0;
+int g_bucketDownTicks=0;
+double g_bucketPreviousBid=0.0;
 
 datetime g_cycleMinute=0;
 double g_cycleBuy=0.0;
@@ -605,7 +610,8 @@ bool GateAllowsEntry(const MqlTick &tick)
    return true;
 }
 
-void PushCompletedSecond(const datetime sec,const double o,const double h,const double l,const double c,const int ticks)
+void PushCompletedSecond(const datetime sec,const double o,const double h,const double l,const double c,
+                         const int ticks,const int upTicks,const int downTicks)
 {
    g_micro[g_microHead].second=sec;
    g_micro[g_microHead].open=o;
@@ -613,6 +619,8 @@ void PushCompletedSecond(const datetime sec,const double o,const double h,const 
    g_micro[g_microHead].low=l;
    g_micro[g_microHead].close=c;
    g_micro[g_microHead].ticks=ticks;
+   g_micro[g_microHead].upTicks=upTicks;
+   g_micro[g_microHead].downTicks=downTicks;
    g_microHead=(g_microHead+1)%MICRO_CAPACITY;
    if(g_microCount<MICRO_CAPACITY)
       g_microCount++;
@@ -637,23 +645,36 @@ void UpdateSecondBucket(const MqlTick &tick)
       g_bucketLow=tick.bid;
       g_bucketClose=tick.bid;
       g_bucketTicks=1;
+      g_bucketUpTicks=0;
+      g_bucketDownTicks=0;
+      g_bucketPreviousBid=tick.bid;
       return;
    }
 
    if(sec!=g_bucketSecond)
    {
-      PushCompletedSecond(g_bucketSecond,g_bucketOpen,g_bucketHigh,g_bucketLow,g_bucketClose,g_bucketTicks);
+      PushCompletedSecond(g_bucketSecond,g_bucketOpen,g_bucketHigh,g_bucketLow,g_bucketClose,
+                          g_bucketTicks,g_bucketUpTicks,g_bucketDownTicks);
       g_bucketSecond=sec;
       g_bucketOpen=tick.bid;
       g_bucketHigh=tick.bid;
       g_bucketLow=tick.bid;
       g_bucketClose=tick.bid;
       g_bucketTicks=1;
+      g_bucketUpTicks=0;
+      g_bucketDownTicks=0;
+      g_bucketPreviousBid=tick.bid;
       return;
    }
 
    if(tick.bid>g_bucketHigh) g_bucketHigh=tick.bid;
    if(tick.bid<g_bucketLow) g_bucketLow=tick.bid;
+   if(g_bucketPreviousBid>0.0)
+   {
+      if(tick.bid>g_bucketPreviousBid) g_bucketUpTicks++;
+      else if(tick.bid<g_bucketPreviousBid) g_bucketDownTicks++;
+   }
+   g_bucketPreviousBid=tick.bid;
    g_bucketClose=tick.bid;
    g_bucketTicks++;
 }
@@ -891,6 +912,26 @@ bool FindOurPosition(ulong &ticket,ENUM_POSITION_TYPE &type,double &openPrice,do
    return false;
 }
 
+string CompactTradeComment(string state)
+{
+   StringReplace(state,"R9_ACTIVITY","R9");
+   StringReplace(state,"P7_COMPRESSION_BREAK","P7");
+   StringReplace(state,"P8_SWEEP_RECLAIM","P8R");
+   StringReplace(state,"P9_ACCEPTANCE","P9A");
+   StringReplace(state,"P11_3M_ACCEPT","P11A");
+   StringReplace(state,"P12_3M_SWEEP","P12R");
+   StringReplace(state,"POSTSTOP_ABSTAIN_","PSA_");
+   StringReplace(state,"POSTSTOP_FLIP_","PSF_");
+   StringReplace(state,"POSTSTOP_KEEP_","PSK_");
+   StringReplace(state,"CONTINUE","C");
+   StringReplace(state,"FADE","F");
+   StringReplace(state,"P4_ROTATION","P4R");
+   StringReplace(state,"P6_EXPANSION","P6E");
+   if(StringLen(state)>30)
+      state=StringSubstr(state,0,30);
+   return state;
+}
+
 bool OpenBoundaryTrade(const int tradeSide,const int eventSide,const ENUM_R10_SLEEVE sleeve,
                        const int scaleMinutes,const string state,const double stateWeight,
                        const MqlTick &tick,const double alignedRet1,const double range1,const int ticks1)
@@ -911,12 +952,12 @@ bool OpenBoundaryTrade(const int tradeSide,const int eventSide,const ENUM_R10_SL
    if(tradeSide>0)
    {
       sl=NormalizePrice(tick.bid-stopDistance);
-      sent=trade.Buy(volume,_Symbol,0.0,sl,0.0,state);
+      sent=trade.Buy(volume,_Symbol,0.0,sl,0.0,CompactTradeComment(state));
    }
    else
    {
       sl=NormalizePrice(tick.ask+stopDistance);
-      sent=trade.Sell(volume,_Symbol,0.0,sl,0.0,state);
+      sent=trade.Sell(volume,_Symbol,0.0,sl,0.0,CompactTradeComment(state));
    }
 
    trade.SetExpertMagicNumber(InpMagic);
@@ -1003,12 +1044,12 @@ bool OpenTrade(const int tradeSide,const int eventSide,const string routerState,
    if(tradeSide>0)
    {
       sl=NormalizePrice(tick.bid-stopDistance);
-      sent=trade.Buy(volume,_Symbol,0.0,sl,0.0,EA_TAG+" "+routerState);
+      sent=trade.Buy(volume,_Symbol,0.0,sl,0.0,CompactTradeComment(routerState));
    }
    else
    {
       sl=NormalizePrice(tick.ask+stopDistance);
-      sent=trade.Sell(volume,_Symbol,0.0,sl,0.0,EA_TAG+" "+routerState);
+      sent=trade.Sell(volume,_Symbol,0.0,sl,0.0,CompactTradeComment(routerState));
    }
 
    if(!sent || !ResultAccepted())
@@ -1035,10 +1076,12 @@ bool OpenTrade(const int tradeSide,const int eventSide,const string routerState,
    return true;
 }
 
-bool RecentAdversePathState(const int tradeSide,const double atr,double &alignedDisp,double &efficiency)
+bool RecentAdversePathState(const int tradeSide,const double atr,double &alignedDisp,
+                            double &efficiency,double &alignedTickFlow)
 {
    alignedDisp=0.0;
    efficiency=0.0;
+   alignedTickFlow=0.0;
    if(atr<=0.0 || InpP3AdverseLookbackSec<2 || g_microCount<InpP3AdverseLookbackSec)
       return false;
 
@@ -1046,30 +1089,43 @@ bool RecentAdversePathState(const int tradeSide,const double atr,double &aligned
    double previous=g_micro[oldest].close;
    const double start=previous;
    double travel=0.0;
+   long upTicks=0;
+   long downTicks=0;
 
-   for(int offset=InpP3AdverseLookbackSec-2;offset>=0;--offset)
+   for(int offset=InpP3AdverseLookbackSec-1;offset>=0;--offset)
    {
       const int idx=RingIndexFromNewest(offset);
-      const double value=g_micro[idx].close;
-      travel+=MathAbs(value-previous);
-      previous=value;
+      upTicks+=g_micro[idx].upTicks;
+      downTicks+=g_micro[idx].downTicks;
+      if(offset<InpP3AdverseLookbackSec-1)
+      {
+         const double value=g_micro[idx].close;
+         travel+=MathAbs(value-previous);
+         previous=value;
+      }
    }
 
    const int newest=RingIndexFromNewest(0);
    alignedDisp=(g_micro[newest].close-start)*(double)tradeSide;
    efficiency=MathAbs(alignedDisp)/(travel+1e-9);
+   const long directionalTicks=upTicks+downTicks;
+   if(directionalTicks>0)
+      alignedTickFlow=((double)(upTicks-downTicks)/(double)directionalTicks)*(double)tradeSide;
 
    return (alignedDisp<=-InpP3MinAdverseDispAtr*atr &&
-           efficiency+1e-12>=InpP3MinAdverseEfficiency);
+           efficiency+1e-12>=InpP3MinAdverseEfficiency &&
+           alignedTickFlow<=InpP3MaxAlignedTickFlow+1e-12);
 }
 
 bool FailedIgnitionState(const int tradeSide,const int ageSeconds,
                          const double mfe,const double mae,
-                         double &atr,double &alignedDisp,double &adverseEfficiency)
+                         double &atr,double &alignedDisp,double &adverseEfficiency,
+                         double &alignedTickFlow)
 {
    atr=0.0;
    alignedDisp=0.0;
    adverseEfficiency=0.0;
+   alignedTickFlow=0.0;
 
    if(!InpUseP3FailedIgnition || ageSeconds<InpP3EvaluateAfterSeconds ||
       mfe+1e-12>=InpP3MinMFEToKeep)
@@ -1081,7 +1137,7 @@ bool FailedIgnitionState(const int tradeSide,const int ageSeconds,
    if(mae+1e-12<InpP3MinMAEAtr*atr)
       return false;
 
-   return RecentAdversePathState(tradeSide,atr,alignedDisp,adverseEfficiency);
+   return RecentAdversePathState(tradeSide,atr,alignedDisp,adverseEfficiency,alignedTickFlow);
 }
 
 void UpdateExcursion(const MqlTick &tick,const ENUM_POSITION_TYPE type,const double openPrice)
@@ -1152,15 +1208,15 @@ void ManagePosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_T
    {
       const int age=(int)(tick.time-g_positionOpenedAt);
       const int tradeSide=(type==POSITION_TYPE_BUY?1:-1);
-      double p3Atr=0.0,p3Disp=0.0,p3Eff=0.0;
-      if(FailedIgnitionState(tradeSide,age,g_tradeMFE,g_tradeMAE,p3Atr,p3Disp,p3Eff))
+      double p3Atr=0.0,p3Disp=0.0,p3Eff=0.0,p3Flow=0.0;
+      if(FailedIgnitionState(tradeSide,age,g_tradeMFE,g_tradeMAE,p3Atr,p3Disp,p3Eff,p3Flow))
       {
          ResetLastError();
          if(!trade.PositionClose(ticket) || !ResultAccepted())
             LogTradeFailure("P3 failed-ignition close");
          else if(InpVerbose)
-            PrintFormat("%s: P3_FAILED_EXIT MFE=%.3f MAE=%.3f ATR=%.3f adverseDisp=%.3f eff=%.3f age=%d",
-                        EA_TAG,g_tradeMFE,g_tradeMAE,p3Atr,p3Disp,p3Eff,age);
+            PrintFormat("%s: P3_FAILED_EXIT MFE=%.3f MAE=%.3f ATR=%.3f adverseDisp=%.3f eff=%.3f flow=%.3f age=%d",
+                        EA_TAG,g_tradeMFE,g_tradeMAE,p3Atr,p3Disp,p3Eff,p3Flow,age);
          return;
       }
    }
@@ -1716,18 +1772,18 @@ void ManageAuxPositions(const MqlTick &tick)
       // Apply P3 only to HFT auction sleeves. H1/H4 structural P5 has its own lifecycle.
       if(scale<=20 && auxSlot>=0 && !g_auxHarvestArmed[auxSlot])
       {
-         double p3Atr=0.0,p3Disp=0.0,p3Eff=0.0;
+         double p3Atr=0.0,p3Disp=0.0,p3Eff=0.0,p3Flow=0.0;
          const int age=(int)(tick.time-opened);
          if(FailedIgnitionState(tradeSide,age,g_auxMFE[auxSlot],g_auxMAE[auxSlot],
-                                p3Atr,p3Disp,p3Eff))
+                                p3Atr,p3Disp,p3Eff,p3Flow))
          {
             ResetLastError();
             if(!trade.PositionClose(ticket) || !ResultAccepted())
                LogTradeFailure("aux P3 failed-ignition close");
             else if(InpVerbose)
-               PrintFormat("%s: AUX_P3_FAILED_EXIT scale=%d MFE=%.3f MAE=%.3f ATR=%.3f adverseDisp=%.3f eff=%.3f age=%d",
+               PrintFormat("%s: AUX_P3_FAILED_EXIT scale=%d MFE=%.3f MAE=%.3f ATR=%.3f adverseDisp=%.3f eff=%.3f flow=%.3f age=%d",
                            EA_TAG,scale,g_auxMFE[auxSlot],g_auxMAE[auxSlot],
-                           p3Atr,p3Disp,p3Eff,age);
+                           p3Atr,p3Disp,p3Eff,p3Flow,age);
             continue;
          }
       }
@@ -1813,6 +1869,7 @@ int OnInit()
       InpP3AdverseLookbackSec>=MICRO_CAPACITY ||
       InpP3MinAdverseEfficiency<0.0 || InpP3MinAdverseEfficiency>1.0 ||
       InpP3MinAdverseDispAtr<0.0 ||
+      InpP3MaxAlignedTickFlow<-1.0 || InpP3MaxAlignedTickFlow>0.0 ||
       InpP5H1BreakoutBars<2 || InpP5H4BreakoutBars<2 || InpP5AtrBaselineBars<5 ||
       InpP5StopAtr<=0.0 || InpP5ActivationAtr<0.0 || InpP5TrailAtr<=0.0 ||
       InpP5H1MaxHoldSeconds<=0 || InpP5H4MaxHoldSeconds<=0 ||
