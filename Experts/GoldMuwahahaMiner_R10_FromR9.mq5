@@ -1,7 +1,7 @@
 #property copyright "Clean-room behavioral reconstruction for AnhTranHarris"
-#property version   "2.05"
+#property version   "2.06"
 #property strict
-#property description "Gold MUWHAHA R10-from-R9 checkpoint 05: R9-derived R10 with P8/P9 propagated through the 1m/3m/5m/10m/20m P11/P12/P13 boundary hierarchy."
+#property description "Gold MUWHAHA R10-from-R9 checkpoint 06: R9-derived R10 with multiscale auction sleeves integrated into the four-position portfolio-knee architecture."
 
 #include <Trade/Trade.mqh>
 CTrade trade;
@@ -90,6 +90,11 @@ input bool InpUseScale3m  = true;
 input bool InpUseScale5m  = true;
 input bool InpUseScale10m = true;
 input bool InpUseScale20m = true;
+
+input group "R10 portfolio integration"
+input int  InpMaxPortfolioPositions = 4;
+input int  InpMaxOpposingPositions  = 1;
+input bool InpRequireHedgingForConcurrency = true;
 
 input group "R10 broker normalization"
 input double InpHunterPipPrice     = 0.01;
@@ -237,6 +242,70 @@ double BrokerStopsDistance()
    const long stops=SymbolInfoInteger(_Symbol,SYMBOL_TRADE_STOPS_LEVEL);
    const double point=SymbolInfoDouble(_Symbol,SYMBOL_POINT);
    return (double)MathMax((long)0,stops)*point;
+}
+
+ulong MagicForScale(const int scaleMinutes)
+{
+   if(scaleMinutes<=1) return InpMagic+1;
+   if(scaleMinutes==3) return InpMagic+3;
+   if(scaleMinutes==5) return InpMagic+5;
+   if(scaleMinutes==10) return InpMagic+10;
+   if(scaleMinutes==20) return InpMagic+20;
+   if(scaleMinutes==60) return InpMagic+60;
+   if(scaleMinutes==240) return InpMagic+240;
+   return InpMagic+500+(ulong)MathAbs(scaleMinutes);
+}
+
+bool IsOurMagic(const ulong magic)
+{
+   if(magic==InpMagic) return true;
+   const int scales[7]={1,3,5,10,20,60,240};
+   for(int i=0;i<7;i++)
+      if(magic==MagicForScale(scales[i])) return true;
+   return false;
+}
+
+int ScaleFromMagic(const ulong magic)
+{
+   if(magic==InpMagic) return 1;
+   const int scales[7]={1,3,5,10,20,60,240};
+   for(int i=0;i<7;i++)
+      if(magic==MagicForScale(scales[i])) return scales[i];
+   return 0;
+}
+
+int DirectionFromPositionType(const ENUM_POSITION_TYPE type)
+{
+   return (type==POSITION_TYPE_BUY?1:-1);
+}
+
+bool PortfolioAllows(const int side,const int scaleMinutes)
+{
+   int total=0;
+   int opposing=0;
+   for(int i=PositionsTotal()-1;i>=0;--i)
+   {
+      const ulong ticket=PositionGetTicket(i);
+      if(ticket==0) continue;
+      if(PositionGetString(POSITION_SYMBOL)!=_Symbol) continue;
+      const ulong magic=(ulong)PositionGetInteger(POSITION_MAGIC);
+      if(!IsOurMagic(magic)) continue;
+
+      total++;
+      const int existingScale=ScaleFromMagic(magic);
+      if(existingScale==scaleMinutes)
+         return false;
+
+      const ENUM_POSITION_TYPE pt=(ENUM_POSITION_TYPE)PositionGetInteger(POSITION_TYPE);
+      if(DirectionFromPositionType(pt)!=side)
+         opposing++;
+   }
+
+   if(total>=InpMaxPortfolioPositions)
+      return false;
+   if(opposing>=InpMaxOpposingPositions)
+      return false;
+   return true;
 }
 
 bool ResultAccepted()
@@ -645,19 +714,55 @@ bool FindOurPosition(ulong &ticket,ENUM_POSITION_TYPE &type,double &openPrice,do
 }
 
 bool OpenBoundaryTrade(const int tradeSide,const int eventSide,const ENUM_R10_SLEEVE sleeve,
-                       const string state,const MqlTick &tick,const double alignedRet1,
-                       const double range1,const int ticks1)
+                       const int scaleMinutes,const string state,const MqlTick &tick,
+                       const double alignedRet1,const double range1,const int ticks1)
 {
-   const bool ok=OpenTrade(tradeSide,eventSide,state,tick,alignedRet1,range1,ticks1);
-   if(!ok) return false;
-   g_activeSleeve=sleeve;
-   g_tradeCycleMinute=0;
-   g_lastEventSide=0;
+   if(!PortfolioAllows(tradeSide,scaleMinutes))
+      return false;
+
+   const ulong magic=MagicForScale(scaleMinutes);
+   trade.SetExpertMagicNumber(magic);
+
+   const double volume=NormalizeVolume(InpLots);
+   const double brokerMinimum=InpRespectBrokerStops?BrokerStopsDistance()+TickSize():0.0;
+   const double stopDistance=MathMax(R10_EMERGENCY_STOP_PRICE,brokerMinimum);
+   double sl=0.0;
+   bool sent=false;
+   ResetLastError();
+
+   if(tradeSide>0)
+   {
+      sl=NormalizePrice(tick.bid-stopDistance);
+      sent=trade.Buy(volume,_Symbol,0.0,sl,0.0,state);
+   }
+   else
+   {
+      sl=NormalizePrice(tick.ask+stopDistance);
+      sent=trade.Sell(volume,_Symbol,0.0,sl,0.0,state);
+   }
+
+   trade.SetExpertMagicNumber(InpMagic);
+
+   if(!sent || !ResultAccepted())
+   {
+      LogTradeFailure(state);
+      return false;
+   }
+
+   if(InpVerbose)
+      PrintFormat("%s: BOUNDARY ENTRY scale=%dm state=%s side=%d ret1=%.3f range1=%.3f ticks1=%d",
+                  EA_TAG,scaleMinutes,state,tradeSide,alignedRet1,range1,ticks1);
    return true;
 }
 
 bool OpenStructuralTrade(const int side,const ENUM_R10_SLEEVE sleeve,const double atr,const MqlTick &tick)
 {
+   const int scaleMinutes=(sleeve==R10_SLEEVE_P5_H1?60:240);
+   if(!PortfolioAllows(side,scaleMinutes))
+      return false;
+
+   const ulong magic=MagicForScale(scaleMinutes);
+   trade.SetExpertMagicNumber(magic);
    const double volume=NormalizeVolume(InpLots);
    const double brokerMinimum=InpRespectBrokerStops?BrokerStopsDistance()+TickSize():0.0;
    const double stopDistance=MathMax(atr*InpP5StopAtr,brokerMinimum);
@@ -675,12 +780,15 @@ bool OpenStructuralTrade(const int side,const ENUM_R10_SLEEVE sleeve,const doubl
       sl=NormalizePrice(tick.ask+stopDistance);
       sent=trade.Sell(volume,_Symbol,0.0,sl,0.0,EA_TAG+" "+label);
    }
+   trade.SetExpertMagicNumber(InpMagic);
    if(!sent || !ResultAccepted())
    {
       LogTradeFailure(label);
       return false;
    }
 
+   // Structural sleeves now live independently from the R9 core. The globals
+   // below are retained only for the core one-position state machine.
    g_activeSleeve=sleeve;
    g_structAtrAtEntry=atr;
    g_positionOpenedAt=tick.time;
@@ -956,7 +1064,7 @@ bool ProcessBoundaryAuctions(const MqlTick &tick)
       return false;
    }
 
-   const bool opened=OpenBoundaryTrade(tradeSide,eventSide,sleeve,state,tick,alignedRet1,range1,ticks1);
+   const bool opened=OpenBoundaryTrade(tradeSide,eventSide,sleeve,1,state,tick,alignedRet1,range1,ticks1);
    ResetBoundaryState();
    return opened;
 }
@@ -1071,7 +1179,7 @@ bool ProcessOneScaleBoundary(const int idx,const MqlTick &tick)
    }
 
    const ENUM_R10_SLEEVE sleeve=(isSweep?R10_SLEEVE_P8_SWEEP:R10_SLEEVE_P9_ACCEPT);
-   const bool opened=OpenBoundaryTrade(tradeSide,eventSide,sleeve,state,tick,alignedRet1,range1,ticks1);
+   const bool opened=OpenBoundaryTrade(tradeSide,eventSide,sleeve,minutes,state,tick,alignedRet1,range1,ticks1);
    ResetScaleBoundary(idx);
    return opened;
 }
@@ -1235,7 +1343,76 @@ void ProcessEntries(const MqlTick &tick)
       return;
    }
 
-   OpenTrade(tradeSide,eventSide,routerState,tick,alignedRet1,range1,ticks1);
+   if(PortfolioAllows(tradeSide,1))
+      OpenTrade(tradeSide,eventSide,routerState,tick,alignedRet1,range1,ticks1);
+}
+
+void ManageAuxPositions(const MqlTick &tick)
+{
+   for(int i=PositionsTotal()-1;i>=0;--i)
+   {
+      const ulong ticket=PositionGetTicket(i);
+      if(ticket==0) continue;
+      if(PositionGetString(POSITION_SYMBOL)!=_Symbol) continue;
+
+      const ulong magic=(ulong)PositionGetInteger(POSITION_MAGIC);
+      if(!IsOurMagic(magic) || magic==InpMagic)
+         continue;
+
+      const int scale=ScaleFromMagic(magic);
+      const ENUM_POSITION_TYPE type=(ENUM_POSITION_TYPE)PositionGetInteger(POSITION_TYPE);
+      const double openPrice=PositionGetDouble(POSITION_PRICE_OPEN);
+      const double currentSL=PositionGetDouble(POSITION_SL);
+      const datetime opened=(datetime)PositionGetInteger(POSITION_TIME);
+
+      int maxHold=R10_MAX_HOLD_SECONDS;
+      double activation=R10_HARVEST_ACTIVATION_PRICE;
+      double trail=R10_HARVEST_TRAIL_PRICE;
+
+      if(scale==60 || scale==240)
+      {
+         maxHold=(scale==60?InpP5H1MaxHoldSeconds:InpP5H4MaxHoldSeconds);
+         const int handle=(scale==60?g_p5H1AtrHandle:g_p5H4AtrHandle);
+         double av[1];
+         if(handle!=INVALID_HANDLE && CopyBuffer(handle,0,1,1,av)==1 && av[0]>0.0)
+         {
+            activation=av[0]*InpP5ActivationAtr;
+            trail=av[0]*InpP5TrailAtr;
+         }
+      }
+
+      if(opened>0 && (tick.time-opened)>=maxHold)
+      {
+         ResetLastError();
+         if(!trade.PositionClose(ticket) || !ResultAccepted())
+            LogTradeFailure("aux max-hold close");
+         continue;
+      }
+
+      const double favorable=(type==POSITION_TYPE_BUY?(tick.bid-openPrice):(openPrice-tick.ask));
+      if(favorable+1e-12<activation)
+         continue;
+
+      const double brokerDistance=InpRespectBrokerStops?BrokerStopsDistance():0.0;
+      const double ts=TickSize();
+      double candidate=0.0;
+      if(type==POSITION_TYPE_BUY)
+      {
+         candidate=NormalizePrice(tick.bid-trail);
+         candidate=MathMin(candidate,NormalizePrice(tick.bid-brokerDistance-ts));
+         if(candidate<=0.0 || candidate<=currentSL+ts*0.5) continue;
+      }
+      else
+      {
+         candidate=NormalizePrice(tick.ask+trail);
+         candidate=MathMax(candidate,NormalizePrice(tick.ask+brokerDistance+ts));
+         if(candidate<=0.0 || (currentSL>0.0 && candidate>=currentSL-ts*0.5)) continue;
+      }
+
+      ResetLastError();
+      if(!trade.PositionModify(ticket,candidate,0.0) || !ResultAccepted())
+         LogTradeFailure("aux harvest modify");
+   }
 }
 
 void Reconcile(const MqlTick &tick)
@@ -1250,57 +1427,37 @@ void Reconcile(const MqlTick &tick)
    if(havePosition)
    {
       g_hadPosition=true;
+      g_activeSleeve=R10_SLEEVE_CORE;
       g_lastPositionType=type;
       if(g_positionOpenedAt<=0)
          g_positionOpenedAt=(datetime)PositionGetInteger(POSITION_TIME);
       ManagePosition(tick,ticket,type,openPrice,currentSL);
-      return;
    }
-
-   if(g_hadPosition)
+   else if(g_hadPosition)
    {
       g_hadPosition=false;
       g_positionOpenedAt=0;
-      // Preserve the just-closed trade's harvest/MFE/MAE state until the next
-      // entry. TradeTransaction delivery ordering is not guaranteed by MT5.
-
       const datetime nowMinute=(datetime)((long)tick.time-((long)tick.time%60));
-      if(g_activeSleeve==R10_SLEEVE_CORE && nowMinute==g_tradeCycleMinute && nowMinute==g_cycleMinute)
+      if(nowMinute==g_tradeCycleMinute && nowMinute==g_cycleMinute)
          ArmOppositeEventAfterExit();
-      else
-      {
-         g_cycleMinute=0;
-         StartMinuteCycle(tick);
-      }
       g_tradeCycleMinute=0;
       g_activeSleeve=R10_SLEEVE_CORE;
       g_structAtrAtEntry=0.0;
-      return;
    }
 
+   // Every non-core sleeve is managed independently.
+   ManageAuxPositions(tick);
+
    StartMinuteCycle(tick);
-   ProcessEntries(tick);
+   if(!havePosition)
+      ProcessEntries(tick);
 
-   // P8/P9 become an independent causal opportunity family once the R9 core
-   // remains flat on this tick. P11/P12/P13 propagate the same event family
-   // across 3m/5m/10m/20m completed boundaries.
-   ulong msTicket=0; ENUM_POSITION_TYPE msType=POSITION_TYPE_BUY;
-   double msOpen=0.0,msSL=0.0;
-   if(!FindOurPosition(msTicket,msType,msOpen,msSL))
-      ProcessMultiscaleBoundaries(tick);
+   // Independent boundary scales can coexist subject to the portfolio governor.
+   ProcessMultiscaleBoundaries(tick);
+   ProcessBoundaryAuctions(tick);
 
-   // One-minute P8/P9 family.
-   ulong boundaryTicket=0; ENUM_POSITION_TYPE boundaryType=POSITION_TYPE_BUY;
-   double boundaryOpen=0.0,boundarySL=0.0;
-   if(!FindOurPosition(boundaryTicket,boundaryType,boundaryOpen,boundarySL))
-      ProcessBoundaryAuctions(tick);
-
-   // Structural sleeve is intentionally subordinate at this one-position checkpoint.
-   // It enters only when the R9-derived core did not open a position on this tick.
-   ulong postTicket=0; ENUM_POSITION_TYPE postType=POSITION_TYPE_BUY;
-   double postOpen=0.0,postSL=0.0;
-   if(!FindOurPosition(postTicket,postType,postOpen,postSL))
-      ProcessP5Structural(tick);
+   // P5 can coexist with HFT sleeves after the concurrency breakthrough.
+   ProcessP5Structural(tick);
 }
 
 int OnInit()
@@ -1314,6 +1471,8 @@ int OnInit()
       InpBoundaryMinPenetration<0.0 || InpBoundaryReclaimBuffer<0.0 ||
       InpBoundaryAcceptanceBuffer<0.0 || InpBoundaryAcceptanceSeconds<1 ||
       InpBoundaryExpirySeconds<InpBoundaryAcceptanceSeconds ||
+      InpMaxPortfolioPositions<1 || InpMaxPortfolioPositions>8 ||
+      InpMaxOpposingPositions<0 || InpMaxOpposingPositions>InpMaxPortfolioPositions ||
       InpP3AdverseExitPrice<0.0 || InpP4MaxEfficiency<0.0 || InpP4MaxEfficiency>1.0 ||
       InpP6MinEfficiency<0.0 || InpP6MinEfficiency>1.0)
    {
@@ -1325,6 +1484,16 @@ int OnInit()
    {
       PrintFormat("%s: symbol guard rejected %s; R10 is XAUUSD-only",EA_TAG,_Symbol);
       return INIT_FAILED;
+   }
+
+   if(InpRequireHedgingForConcurrency && InpMaxPortfolioPositions>1)
+   {
+      const ENUM_ACCOUNT_MARGIN_MODE mm=(ENUM_ACCOUNT_MARGIN_MODE)AccountInfoInteger(ACCOUNT_MARGIN_MODE);
+      if(mm!=ACCOUNT_MARGIN_MODE_RETAIL_HEDGING)
+      {
+         PrintFormat("%s: portfolio concurrency requires hedging mode; account margin mode=%d",EA_TAG,(int)mm);
+         return INIT_FAILED;
+      }
    }
 
    trade.SetExpertMagicNumber(InpMagic);
@@ -1401,7 +1570,7 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
 
    const string symbol=HistoryDealGetString(trans.deal,DEAL_SYMBOL);
    const ulong magic=(ulong)HistoryDealGetInteger(trans.deal,DEAL_MAGIC);
-   if(symbol!=_Symbol || magic!=InpMagic)
+   if(symbol!=_Symbol || !IsOurMagic(magic))
       return;
 
    const ENUM_DEAL_ENTRY entry=(ENUM_DEAL_ENTRY)HistoryDealGetInteger(trans.deal,DEAL_ENTRY);
@@ -1413,9 +1582,13 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
 
    // Catastrophe memory is intentionally narrow: only an unharvested losing SL
    // blocks the same traded direction. Opposite-direction auctions remain eligible.
-   if(reason==DEAL_REASON_SL && profit<0.0 && !g_tradeHarvestArmed)
+   const ENUM_DEAL_TYPE dealType=(ENUM_DEAL_TYPE)HistoryDealGetInteger(trans.deal,DEAL_TYPE);
+   const int closedSide=(dealType==DEAL_TYPE_SELL?1:(dealType==DEAL_TYPE_BUY?-1:0));
+   const bool harvestCondition=(magic==InpMagic?!g_tradeHarvestArmed:true);
+
+   if(reason==DEAL_REASON_SL && profit<0.0 && harvestCondition && closedSide!=0)
    {
-      g_catastropheBlockedSide=(g_lastPositionType==POSITION_TYPE_BUY?1:-1);
+      g_catastropheBlockedSide=closedSide;
       const datetime dealTime=(datetime)HistoryDealGetInteger(trans.deal,DEAL_TIME);
       g_catastropheBlockedUntil=dealTime+R10_CATASTROPHE_MEMORY_SEC;
       if(InpVerbose)
