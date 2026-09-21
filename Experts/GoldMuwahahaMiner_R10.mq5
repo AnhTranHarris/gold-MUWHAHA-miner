@@ -235,6 +235,22 @@ bool   g_auxHarvestArmed[AUX_SCALE_COUNT];
 double g_auxAtrAtEntry[AUX_SCALE_COUNT];
 double g_auxMFE[AUX_SCALE_COUNT];
 double g_auxMAE[AUX_SCALE_COUNT];
+ulong  g_auxCurrentPositionId[AUX_SCALE_COUNT];
+
+#define RUNTIME_STATE_CAPACITY 16
+struct RuntimeTradeState
+{
+   bool active;
+   ulong positionId;
+   ulong magic;
+   int scale;
+   bool harvestArmed;
+   double atrAtEntry;
+   double mfe;
+   double mae;
+   datetime openedAt;
+};
+RuntimeTradeState g_runtime[RUNTIME_STATE_CAPACITY];
 
 int g_catastropheBlockedSide=0;
 datetime g_catastropheBlockedUntil=0;
@@ -340,6 +356,101 @@ int AuxSlotFromMagic(const ulong magic)
 int DirectionFromPositionType(const ENUM_POSITION_TYPE type)
 {
    return (type==POSITION_TYPE_BUY?1:-1);
+}
+
+int FindRuntimeState(const ulong positionId)
+{
+   if(positionId==0) return -1;
+   for(int i=0;i<RUNTIME_STATE_CAPACITY;i++)
+      if(g_runtime[i].active && g_runtime[i].positionId==positionId)
+         return i;
+   return -1;
+}
+
+int FreeRuntimeState()
+{
+   for(int i=0;i<RUNTIME_STATE_CAPACITY;i++)
+      if(!g_runtime[i].active)
+         return i;
+   return -1;
+}
+
+ulong ResolveLastOpenedPositionId(const ulong magic)
+{
+   const ulong deal=trade.ResultDeal();
+   if(deal>0 && HistoryDealSelect(deal))
+   {
+      const ulong id=(ulong)HistoryDealGetInteger(deal,DEAL_POSITION_ID);
+      if(id>0) return id;
+   }
+
+   // Fallback for brokers that do not immediately expose ResultDeal().
+   for(int i=PositionsTotal()-1;i>=0;--i)
+   {
+      const ulong ticket=PositionGetTicket(i);
+      if(ticket==0) continue;
+      if(PositionGetString(POSITION_SYMBOL)!=_Symbol) continue;
+      if((ulong)PositionGetInteger(POSITION_MAGIC)!=magic) continue;
+      const ulong id=(ulong)PositionGetInteger(POSITION_IDENTIFIER);
+      if(id>0) return id;
+   }
+   return 0;
+}
+
+ulong RegisterRuntimeState(const ulong magic,const int scale,const double atrAtEntry,
+                           const datetime openedAt)
+{
+   const ulong positionId=ResolveLastOpenedPositionId(magic);
+   if(positionId==0)
+      return 0;
+
+   int idx=FindRuntimeState(positionId);
+   if(idx<0) idx=FreeRuntimeState();
+   if(idx<0)
+   {
+      if(InpVerbose) PrintFormat("%s: runtime-state capacity exhausted positionId=%I64u",EA_TAG,positionId);
+      return positionId;
+   }
+
+   g_runtime[idx].active=true;
+   g_runtime[idx].positionId=positionId;
+   g_runtime[idx].magic=magic;
+   g_runtime[idx].scale=scale;
+   g_runtime[idx].harvestArmed=false;
+   g_runtime[idx].atrAtEntry=atrAtEntry;
+   g_runtime[idx].mfe=0.0;
+   g_runtime[idx].mae=0.0;
+   g_runtime[idx].openedAt=openedAt;
+   return positionId;
+}
+
+void UpdateRuntimeExcursion(const ulong positionId,const double favorable,const double adverse)
+{
+   const int idx=FindRuntimeState(positionId);
+   if(idx<0) return;
+   if(favorable>g_runtime[idx].mfe) g_runtime[idx].mfe=favorable;
+   if(adverse>g_runtime[idx].mae) g_runtime[idx].mae=adverse;
+}
+
+void MarkRuntimeHarvest(const ulong positionId)
+{
+   const int idx=FindRuntimeState(positionId);
+   if(idx>=0) g_runtime[idx].harvestArmed=true;
+}
+
+void ClearRuntimeState(const ulong positionId)
+{
+   const int idx=FindRuntimeState(positionId);
+   if(idx<0) return;
+   g_runtime[idx].active=false;
+   g_runtime[idx].positionId=0;
+   g_runtime[idx].magic=0;
+   g_runtime[idx].scale=0;
+   g_runtime[idx].harvestArmed=false;
+   g_runtime[idx].atrAtEntry=0.0;
+   g_runtime[idx].mfe=0.0;
+   g_runtime[idx].mae=0.0;
+   g_runtime[idx].openedAt=0;
 }
 
 double StabilityWeightForScale(const int scaleMinutes)
@@ -968,6 +1079,7 @@ bool OpenBoundaryTrade(const int tradeSide,const int eventSide,const ENUM_R10_SL
       return false;
    }
 
+   const ulong positionId=RegisterRuntimeState(magic,scaleMinutes,0.0,tick.time);
    const int auxSlot=AuxSlotFromMagic(magic);
    if(auxSlot>=0)
    {
@@ -975,6 +1087,7 @@ bool OpenBoundaryTrade(const int tradeSide,const int eventSide,const ENUM_R10_SL
       g_auxAtrAtEntry[auxSlot]=0.0;
       g_auxMFE[auxSlot]=0.0;
       g_auxMAE[auxSlot]=0.0;
+      g_auxCurrentPositionId[auxSlot]=positionId;
    }
 
    if(InpVerbose)
@@ -1015,6 +1128,7 @@ bool OpenStructuralTrade(const int side,const ENUM_R10_SLEEVE sleeve,const doubl
       return false;
    }
 
+   const ulong positionId=RegisterRuntimeState(magic,scaleMinutes,atr,tick.time);
    const int auxSlot=AuxSlotFromMagic(magic);
    if(auxSlot>=0)
    {
@@ -1022,6 +1136,7 @@ bool OpenStructuralTrade(const int side,const ENUM_R10_SLEEVE sleeve,const doubl
       g_auxAtrAtEntry[auxSlot]=atr;
       g_auxMFE[auxSlot]=0.0;
       g_auxMAE[auxSlot]=0.0;
+      g_auxCurrentPositionId[auxSlot]=positionId;
    }
 
    // Structural sleeves are independent portfolio positions. Do not mutate
@@ -1058,6 +1173,7 @@ bool OpenTrade(const int tradeSide,const int eventSide,const string routerState,
       return false;
    }
 
+   RegisterRuntimeState(InpMagic,1,0.0,tick.time);
    g_activeSleeve=R10_SLEEVE_CORE;
    g_structAtrAtEntry=0.0;
    g_positionOpenedAt=tick.time;
@@ -1140,7 +1256,8 @@ bool FailedIgnitionState(const int tradeSide,const int ageSeconds,
    return RecentAdversePathState(tradeSide,atr,alignedDisp,adverseEfficiency,alignedTickFlow);
 }
 
-void UpdateExcursion(const MqlTick &tick,const ENUM_POSITION_TYPE type,const double openPrice)
+void UpdateExcursion(const MqlTick &tick,const ENUM_POSITION_TYPE type,const double openPrice,
+                     const ulong positionId)
 {
    double favorable=0.0;
    double adverse=0.0;
@@ -1156,11 +1273,13 @@ void UpdateExcursion(const MqlTick &tick,const ENUM_POSITION_TYPE type,const dou
    }
    if(favorable>g_tradeMFE) g_tradeMFE=favorable;
    if(adverse>g_tradeMAE) g_tradeMAE=adverse;
+   UpdateRuntimeExcursion(positionId,favorable,adverse);
 }
 
 void ManagePosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_TYPE type,const double openPrice,const double currentSL)
 {
-   UpdateExcursion(tick,type,openPrice);
+   const ulong positionId=(ulong)PositionGetInteger(POSITION_IDENTIFIER);
+   UpdateExcursion(tick,type,openPrice,positionId);
 
    if(g_activeSleeve==R10_SLEEVE_P5_H1 || g_activeSleeve==R10_SLEEVE_P5_H4)
    {
@@ -1198,7 +1317,10 @@ void ManagePosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_T
       if(!trade.PositionModify(ticket,candidate,0.0) || !ResultAccepted())
          LogTradeFailure("P5 trail modify");
       else
+      {
          g_tradeHarvestArmed=true;
+         MarkRuntimeHarvest(positionId);
+      }
       return;
    }
 
@@ -1256,7 +1378,10 @@ void ManagePosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_T
    if(!trade.PositionModify(ticket,candidate,0.0) || !ResultAccepted())
       LogTradeFailure("harvest trail modify");
    else
+   {
       g_tradeHarvestArmed=true;
+      MarkRuntimeHarvest(positionId);
+   }
 }
 
 bool ComputeMicroBoundary(const int seconds,double &hi,double &lo)
@@ -1725,6 +1850,7 @@ void ManageAuxPositions(const MqlTick &tick)
 
       const int scale=ScaleFromMagic(magic);
       const int auxSlot=AuxSlotFromMagic(magic);
+      const ulong positionId=(ulong)PositionGetInteger(POSITION_IDENTIFIER);
       const ENUM_POSITION_TYPE type=(ENUM_POSITION_TYPE)PositionGetInteger(POSITION_TYPE);
       const double openPrice=PositionGetDouble(POSITION_PRICE_OPEN);
       const double currentSL=PositionGetDouble(POSITION_SL);
@@ -1768,6 +1894,7 @@ void ManageAuxPositions(const MqlTick &tick)
          if(favorable>g_auxMFE[auxSlot]) g_auxMFE[auxSlot]=favorable;
          if(adverse>g_auxMAE[auxSlot]) g_auxMAE[auxSlot]=adverse;
       }
+      UpdateRuntimeExcursion(positionId,favorable,adverse);
 
       // Apply P3 only to HFT auction sleeves. H1/H4 structural P5 has its own lifecycle.
       if(scale<=20 && auxSlot>=0 && !g_auxHarvestArmed[auxSlot])
@@ -1811,7 +1938,10 @@ void ManageAuxPositions(const MqlTick &tick)
       if(!trade.PositionModify(ticket,candidate,0.0) || !ResultAccepted())
          LogTradeFailure("aux harvest modify");
       else if(auxSlot>=0)
+      {
          g_auxHarvestArmed[auxSlot]=true;
+         MarkRuntimeHarvest(positionId);
+      }
    }
 }
 
@@ -2010,13 +2140,18 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
    const ENUM_DEAL_TYPE dealType=(ENUM_DEAL_TYPE)HistoryDealGetInteger(trans.deal,DEAL_TYPE);
    const int closedSide=(dealType==DEAL_TYPE_SELL?1:(dealType==DEAL_TYPE_BUY?-1:0));
    const int auxSlot=AuxSlotFromMagic(magic);
-   const int closedScale=ScaleFromMagic(magic);
-   const bool harvestCondition=(magic==InpMagic ? !g_tradeHarvestArmed :
-                                (auxSlot>=0 ? !g_auxHarvestArmed[auxSlot] : true));
-   const double closedMFE=(magic==InpMagic ? g_tradeMFE :
-                           (auxSlot>=0 ? g_auxMFE[auxSlot] : 0.0));
-   const double closedMAE=(magic==InpMagic ? g_tradeMAE :
-                           (auxSlot>=0 ? g_auxMAE[auxSlot] : 0.0));
+   const ulong dealPositionId=(ulong)HistoryDealGetInteger(trans.deal,DEAL_POSITION_ID);
+   const int runtimeIdx=FindRuntimeState(dealPositionId);
+   const int closedScale=(runtimeIdx>=0 ? g_runtime[runtimeIdx].scale : ScaleFromMagic(magic));
+   const bool harvestCondition=(runtimeIdx>=0 ? !g_runtime[runtimeIdx].harvestArmed :
+                                (magic==InpMagic ? !g_tradeHarvestArmed :
+                                 (auxSlot>=0 ? !g_auxHarvestArmed[auxSlot] : true)));
+   const double closedMFE=(runtimeIdx>=0 ? g_runtime[runtimeIdx].mfe :
+                           (magic==InpMagic ? g_tradeMFE :
+                            (auxSlot>=0 ? g_auxMFE[auxSlot] : 0.0)));
+   const double closedMAE=(runtimeIdx>=0 ? g_runtime[runtimeIdx].mae :
+                           (magic==InpMagic ? g_tradeMAE :
+                            (auxSlot>=0 ? g_auxMAE[auxSlot] : 0.0)));
 
    if(reason==DEAL_REASON_SL && profit<0.0 && harvestCondition && closedSide!=0)
    {
@@ -2033,11 +2168,18 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
                      closedMFE,closedMAE);
    }
 
-   if(auxSlot>=0)
+   // Clear scale-local mirrors only if this close belongs to the currently
+   // registered position on that scale. Late old notifications cannot erase a
+   // newer trade's state.
+   if(auxSlot>=0 && (g_auxCurrentPositionId[auxSlot]==0 ||
+                     g_auxCurrentPositionId[auxSlot]==dealPositionId))
    {
       g_auxHarvestArmed[auxSlot]=false;
       g_auxAtrAtEntry[auxSlot]=0.0;
       g_auxMFE[auxSlot]=0.0;
       g_auxMAE[auxSlot]=0.0;
+      g_auxCurrentPositionId[auxSlot]=0;
    }
+
+   ClearRuntimeState(dealPositionId);
 }
