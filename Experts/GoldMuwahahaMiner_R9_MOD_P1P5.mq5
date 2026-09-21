@@ -248,3 +248,253 @@ datetime MakeUtc(const int year,const int month,const int day,const int hour,con
 
 bool IsLondonDstUtc(const datetime utc)
 {
+   MqlDateTime n={};if(!TimeToStruct(utc,n)) return false;
+   return (utc>=MakeUtc(n.year,3,LastSunday(n.year,3),1,0) && utc<MakeUtc(n.year,10,LastSunday(n.year,10),1,0));
+}
+
+bool IsNewYorkDstUtc(const datetime utc)
+{
+   MqlDateTime n={};if(!TimeToStruct(utc,n)) return false;
+   return (utc>=MakeUtc(n.year,3,NthSunday(n.year,3,2),7,0) && utc<MakeUtc(n.year,11,NthSunday(n.year,11,1),6,0));
+}
+
+int LocalMinuteOfDay(const datetime utc,const int offsetMinutes)
+{
+   MqlDateTime v={}; if(!TimeToStruct(utc+(datetime)(offsetMinutes*60),v)) return -1; return v.hour*60+v.min;
+}
+
+ENUM_GMM_SESSION CurrentSession()
+{
+   const datetime quote=TimeCurrent();
+   const datetime utc=quote-(datetime)(InpQuoteUtcOffsetMinutes*60);
+   const int lo=IsLondonDstUtc(utc)?60:0;
+   const int no=IsNewYorkDstUtc(utc)?-240:-300;
+   const int lm=LocalMinuteOfDay(utc,lo), nm=LocalMinuteOfDay(utc,no);
+   const bool l=(lm>=8*60 && lm<16*60+30);
+   const bool n=(nm>=8*60 && nm<17*60);
+   if(l&&n) return GMM_SESSION_OVERLAP;
+   if(l) return GMM_SESSION_LONDON;
+   if(n) return GMM_SESSION_NEWYORK;
+   return GMM_SESSION_OFF;
+}
+
+double SessionAtrMinimum(const ENUM_GMM_SESSION s)
+{
+   if(!InpUseSessionAdaptiveAtr) return InpAtrLondonPrice;
+   if(s==GMM_SESSION_OVERLAP) return InpAtrOverlapPrice;
+   if(s==GMM_SESSION_NEWYORK) return InpAtrNewYorkPrice;
+   if(s==GMM_SESSION_LONDON) return InpAtrLondonPrice;
+   return InpAtrOffSessionPrice;
+}
+
+bool GetCompletedAtr(double &atr)
+{
+   atr=0.0;
+   if(g_atrHandle==INVALID_HANDLE || BarsCalculated(g_atrHandle)<InpAtrPeriod+2) return false;
+   double b[1]; ResetLastError();
+   if(CopyBuffer(g_atrHandle,0,1,1,b)!=1 || !MathIsValidNumber(b[0]) || b[0]<=0.0) return false;
+   atr=b[0]; return true;
+}
+
+bool GetAtrRatio(double &ratio,double &atr)
+{
+   ratio=1.0; atr=0.0;
+   if(!GetCompletedAtr(atr)) return false;
+   const int n=MathMax(InpP4AtrBaselineBars,5);
+   double hist[]; ArrayResize(hist,n);
+   if(CopyBuffer(g_atrHandle,0,2,n,hist)!=n) return false;
+   double mean=0.0;
+   for(int i=0;i<n;i++)
+   {
+      if(!MathIsValidNumber(hist[i]) || hist[i]<=0.0) return false;
+      mean+=hist[i];
+   }
+   mean/=(double)n;
+   if(mean<=0.0) return false;
+   ratio=atr/mean;
+   return MathIsValidNumber(ratio) && ratio>0.0;
+}
+
+bool GateAllowsEntry(const MqlTick &tick)
+{
+   if(!InpUseRegimeGate) return true;
+   const double point=SymbolInfoDouble(_Symbol,SYMBOL_POINT);
+   if(point<=0.0 || tick.ask<=0.0 || tick.bid<=0.0) return false;
+   const double sp=(tick.ask-tick.bid)/point;
+   if(InpMaxSpreadPoints>0 && sp>(double)InpMaxSpreadPoints+1e-9) return false;
+   double atr=0.0; const bool have=GetCompletedAtr(atr);
+   if(!have) return !InpFailClosedOnNoATR;
+   const double mn=SessionAtrMinimum(CurrentSession());
+   if(mn>0.0 && atr+1e-12<mn)
+   {
+      const datetime bar=iTime(_Symbol,PERIOD_M1,0);
+      if(InpVerbose && bar!=g_lastGateLogBar){ PrintFormat("%s: gate CLOSED ATR=%.5f min=%.5f spread=%.1f",EA_TAG,atr,mn,sp);g_lastGateLogBar=bar; }
+      return false;
+   }
+   return true;
+}
+
+void PushCompletedSecond(const datetime sec,const double o,const double h,const double l,const double c,const int ticks,const int upTicks,const int downTicks)
+{
+   g_micro[g_microHead].second=sec;
+   g_micro[g_microHead].open=o;
+   g_micro[g_microHead].high=h;
+   g_micro[g_microHead].low=l;
+   g_micro[g_microHead].close=c;
+   g_micro[g_microHead].ticks=ticks;
+   g_micro[g_microHead].upTicks=upTicks;
+   g_micro[g_microHead].downTicks=downTicks;
+   g_microHead=(g_microHead+1)%MICRO_CAPACITY;
+   if(g_microCount<MICRO_CAPACITY) g_microCount++;
+}
+
+int RingIndexFromNewest(const int offset)
+{
+   int idx=g_microHead-1-offset;while(idx<0) idx+=MICRO_CAPACITY;return idx%MICRO_CAPACITY;
+}
+
+void UpdateSecondBucket(const MqlTick &tick)
+{
+   const datetime sec=tick.time;
+   if(!g_bucketReady)
+   {
+      g_bucketReady=true;g_bucketSecond=sec;
+      g_bucketOpen=tick.bid;g_bucketHigh=tick.bid;g_bucketLow=tick.bid;g_bucketClose=tick.bid;g_bucketPrevBid=tick.bid;
+      g_bucketTicks=1;g_bucketUpTicks=0;g_bucketDownTicks=0;return;
+   }
+   if(sec!=g_bucketSecond)
+   {
+      PushCompletedSecond(g_bucketSecond,g_bucketOpen,g_bucketHigh,g_bucketLow,g_bucketClose,g_bucketTicks,g_bucketUpTicks,g_bucketDownTicks);
+      g_bucketSecond=sec;g_bucketOpen=tick.bid;g_bucketHigh=tick.bid;g_bucketLow=tick.bid;g_bucketClose=tick.bid;g_bucketPrevBid=tick.bid;
+      g_bucketTicks=1;g_bucketUpTicks=0;g_bucketDownTicks=0;return;
+   }
+   if(tick.bid>g_bucketPrevBid) g_bucketUpTicks++;
+   else if(tick.bid<g_bucketPrevBid) g_bucketDownTicks++;
+   g_bucketTicks++;
+   if(tick.bid>g_bucketHigh) g_bucketHigh=tick.bid;
+   if(tick.bid<g_bucketLow) g_bucketLow=tick.bid;
+   g_bucketClose=tick.bid;
+   g_bucketPrevBid=tick.bid;
+}
+
+bool S1QualityForSide(const int side,double &disp,double &eff,double &range10,int &turns)
+{
+   disp=0.0;eff=0.0;range10=0.0;turns=0;
+   const int need=MathMax(InpVelocityLookbackSec,InpRangeLookbackSec)+1;
+   if(g_microCount<need) return false;
+
+   const int oldest=RingIndexFromNewest(InpVelocityLookbackSec-1);
+   double prev=g_micro[oldest].close;
+   const double start=prev;
+   double travel=0.0;
+   double prevSign=0.0;
+
+   for(int off=InpVelocityLookbackSec-2;off>=0;--off)
+   {
+      const int idx=RingIndexFromNewest(off);
+      const double v=g_micro[idx].close;
+      const double d=v-prev;
+      travel+=MathAbs(d);
+      const double s=(d>0.0?1.0:(d<0.0?-1.0:0.0));
+      if(s!=0.0)
+      {
+         if(prevSign!=0.0 && s!=prevSign) turns++;
+         prevSign=s;
+      }
+      prev=v;
+   }
+   const int newest=RingIndexFromNewest(0);
+   disp=g_micro[newest].close-start;
+   eff=MathAbs(disp)/(travel+1e-9);
+
+   double hi=-DBL_MAX,lo=DBL_MAX;
+   for(int off=0;off<InpRangeLookbackSec;++off)
+   {
+      const int idx=RingIndexFromNewest(off);
+      if(g_micro[idx].high>hi) hi=g_micro[idx].high;
+      if(g_micro[idx].low<lo) lo=g_micro[idx].low;
+   }
+   range10=hi-lo;
+
+   if(eff+1e-12<InpMinDirectionalEff) return false;
+   if(turns>InpMaxTurns) return false;
+   if(range10+1e-12<HunterDistance(InpMinRangePips)) return false;
+   const double minv=HunterDistance(InpMinVelocityPips);
+   if(side>0 && disp+1e-12<minv) return false;
+   if(side<0 && disp-1e-12>-minv) return false;
+   return true;
+}
+
+bool RecentPathForSide(const int side,const int seconds,double &alignedDisp,double &eff,double &alignedFlow)
+{
+   alignedDisp=0.0;eff=0.0;alignedFlow=0.0;
+   if(seconds<2 || g_microCount<seconds) return false;
+   const int oldest=RingIndexFromNewest(seconds-1);
+   double prev=g_micro[oldest].open;
+   const double start=prev;
+   double travel=0.0;
+   long up=0,down=0;
+   for(int off=seconds-1;off>=0;--off)
+   {
+      const int idx=RingIndexFromNewest(off);
+      const double v=g_micro[idx].close;
+      travel+=MathAbs(v-prev);
+      prev=v;
+      up+=g_micro[idx].upTicks;
+      down+=g_micro[idx].downTicks;
+   }
+   const double rawDisp=prev-start;
+   alignedDisp=rawDisp*(double)side;
+   eff=MathAbs(rawDisp)/(travel+1e-9);
+   const long directional=up+down;
+   if(directional>0) alignedFlow=((double)(up-down)/(double)directional)*(double)side;
+   return true;
+}
+
+bool CompletedBarDirection(const ENUM_TIMEFRAMES tf,const int side,double &score)
+{
+   score=0.0;
+   MqlRates r[]; ArraySetAsSeries(r,true); ArrayResize(r,1);
+   if(CopyRates(_Symbol,tf,1,1,r)!=1) return false;
+   const double d=r[0].close-r[0].open;
+   if(d>0.0) score=(double)side;
+   else if(d<0.0) score=-(double)side;
+   return true;
+}
+
+double StructuralAgreementForSide(const int side)
+{
+   double a=0.0,b=0.0;
+   const bool ha=CompletedBarDirection(PERIOD_M1,side,a);
+   const bool hb=CompletedBarDirection(PERIOD_M5,side,b);
+   if(!ha && !hb) return -1.0;
+   if(ha && hb) return (a+b)*0.5;
+   return ha?a:b;
+}
+
+bool FindOurPosition(ulong &ticket,ENUM_POSITION_TYPE &type,double &openPrice,double &stopLoss)
+{
+   ticket=0;openPrice=0.0;stopLoss=0.0;type=POSITION_TYPE_BUY;
+   for(int i=PositionsTotal()-1;i>=0;--i)
+   {
+      const ulong t=PositionGetTicket(i);if(t==0) continue;
+      if(PositionGetString(POSITION_SYMBOL)!=_Symbol) continue;
+      if((ulong)PositionGetInteger(POSITION_MAGIC)!=InpMagic) continue;
+      ticket=t;type=(ENUM_POSITION_TYPE)PositionGetInteger(POSITION_TYPE);openPrice=PositionGetDouble(POSITION_PRICE_OPEN);stopLoss=PositionGetDouble(POSITION_SL);return true;
+   }
+   return false;
+}
+
+void ResetTradeRuntime()
+{
+   g_positionOpenedAt=0;
+   g_tradeCycleMinute=0;
+   g_lastEventSide=0;
+   g_activeSleeve=GMM_SLEEVE_R9;
+   g_tradeHarvestArmed=false;
+   g_tradeRunner=false;
+   g_tradeP3Flip=false;
+   g_tradeMFE=0.0;
+   g_tradeMAE=0.0;
+   g_entryAtr=0.0;
+}
