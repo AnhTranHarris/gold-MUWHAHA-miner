@@ -2,45 +2,76 @@
 
 Clean-room MT5 research project for the **Gold MUWHAHA Miner** XAUUSD Expert Advisor.
 
-## Current R10 branch
+## Active R10 reconstruction lineage
 
-Branch: `carson/mt5-r10-session-regime-certification`
+Canonical post-R9 integration branch:
 
-Authoritative R10 EA:
+`carson/r10-r9-breakthrough-research-14-integration`
+
+Research index:
+
+- `docs/R9_BREAKTHROUGH_RESEARCH/README.md`
+- `docs/R10_MASTER_REBUILD.md`
+
+Authoritative current compile/test EA:
 
 - `Experts/GoldMuwahahaMiner_R10_AuctionState.mq5`
 
-Current architecture notes:
+Historical R1-R9 EAs and certification notes remain preserved for lineage.
 
-- `docs/R10_AUCTION_STATE_REBUILD.md`
+## What the current EA actually implements
 
-Historical R1-R9 EAs and their certification notes remain in the branch for lineage and comparison.
+- R9 causal event population and completed-S1 eligibility
+- transparent **CONTINUE / FADE / ABSTAIN** action routing
+- balanced-strengthened and defensive S1 profiles
+- wide $5.00 emergency room
+- near-immediate $0.01 favorable ignition
+- $0.01 high-water harvest trail
+- 120-second maximum lifecycle
+- 10-second same-direction catastrophe memory after an unharvested losing stop
+- XAUUSD-only guard
+- broker tick-size, volume-step, stop-level, filling-mode and retcode handling
 
-## R10 architecture
+## What has been reconstructed as post-R9 research but is not yet integrated into the EA
 
-The current R10 compile/test candidate replaces the obsolete server-time profile strategy with the later causal research stack that is reconstructible from project evidence:
+- P4 low-volatility rotation
+- P6 expansion continuation
+- P5 H1/H4 structural trend
+- P8 sweep/reclaim
+- P9 acceptance
+- P11/P12 3-minute propagation
+- P13 1m/3m/5m/10m/20m boundary ladder
+- four-sleeve portfolio-knee logic
+- worst-month-PF state-stability filter
+- opposition-aware portfolio heat
+- KEEP-vs-FLIP post-catastrophe routing
 
-- R9 minute-boundary event population and S1 eligibility gate
-- transparent **CONTINUE / FADE / ABSTAIN** action router
-- balanced-strengthened and defensive auction-state profiles
-- wide `$5.00` emergency room
-- near-immediate `$0.01` ignition / `$0.01` high-water harvest
-- 10-second **same-direction catastrophe memory** after an unharvested losing stop
-- XAUUSD-only execution guard
-- broker tick-size, volume-step, stop-level, filling-mode and trade-retcode handling
+Each mechanism has its own cumulative research branch named:
 
-The old five server-time R10 execution profiles are no longer the active design.
+`carson/r10-r9-breakthrough-research-XX-...`
 
-## Important limitation
+The documentation records whether a mechanism is **implemented**, **faithfully reconstructed**, or **research-only / pending MT5 certification**.
 
-The later five-scale 1m/3m/5m/10m/20m auction portfolio and opposition-heat governor are **not claimed as implemented** here because their exact event-generator source is not present in the repository. Their research results remain part of the project history, but R10 will not fabricate missing rules from summary metrics.
+## Scientific rules
 
-## Next gate
+- R9 SYNTH is a teacher/reference ceiling, not deployment truth.
+- REAL ticks and broker-native MT5 testing determine execution validity.
+- Invalidated look-ahead and retrospective-order experiments remain rejected.
+- No Martingale or grid is introduced.
+- Fixed 0.01 remains the research exposure until the strategy itself is certified.
+- August 2026 remains the sealed holdout.
 
-1. Compile the authoritative R10 EA in MetaEditor with zero errors.
-2. Run XAUUSD **Every tick based on real ticks** from January 1 through July 31, 2026.
-3. Test `$100` and `$200` starting balances separately.
-4. Record monthly net profit, gross loss and maximum dollar drawdown, plus overall Jan-July metrics and account survivability.
-5. Keep **August 2026 sealed** until the Jan-July system is frozen.
+## Next engineering gate
 
-No Python result or generated-tick result overrides the MT5 real-tick test.
+1. Rebuild the multiscale boundary generators as independent MQL5 modules.
+2. Reproduce their Jan-Jul research ledgers before integration.
+3. Add four-slot portfolio state and opposition heat.
+4. Add worst-month-PF capital priority.
+5. Propagate catastrophe memory across scales.
+6. Compile with zero errors/warnings.
+7. Run XAUUSD **Every tick based on real ticks**, Jan 1-Jul 31, 2026.
+8. Report monthly net profit, gross loss and max dollar drawdown.
+9. Test $100 and $200 starting balances including marked-equity and broker-margin survivability.
+10. Only after freeze: open August once.
+
+No Python result or generated-tick result overrides MT5 real-tick certification.
