@@ -100,7 +100,7 @@ input group "R10 broker normalization"
 input double InpHunterPipPrice     = 0.01;
 input bool   InpRespectBrokerStops = true;
 
-string EA_TAG = "GM_R10_FROM_R9_01";
+string EA_TAG = "GM_R10_FROM_R9_06";
 
 // -----------------------------------------------------------------------------
 // Frozen research geometry carried from the causal R9 event population.
@@ -646,6 +646,9 @@ bool GetAtrRatio(double &ratio)
    const int copied=CopyBuffer(g_atrHandle,0,1,need,values);
    if(copied!=need)
       return false;
+   double current[1];
+   if(CopyBuffer(g_atrHandle,0,1,1,current)!=1 || !MathIsValidNumber(current[0]) || current[0]<=0.0)
+      return false;
    double sum=0.0;
    for(int i=0;i<need;i++)
    {
@@ -656,7 +659,7 @@ bool GetAtrRatio(double &ratio)
    const double mean=sum/(double)need;
    if(mean<=0.0)
       return false;
-   ratio=values[0]/mean;
+   ratio=current[0]/mean;
    return MathIsValidNumber(ratio);
 }
 
@@ -787,17 +790,8 @@ bool OpenStructuralTrade(const int side,const ENUM_R10_SLEEVE sleeve,const doubl
       return false;
    }
 
-   // Structural sleeves now live independently from the R9 core. The globals
-   // below are retained only for the core one-position state machine.
-   g_activeSleeve=sleeve;
-   g_structAtrAtEntry=atr;
-   g_positionOpenedAt=tick.time;
-   g_tradeCycleMinute=0;
-   g_lastEventSide=0;
-   g_lastPositionType=(side>0?POSITION_TYPE_BUY:POSITION_TYPE_SELL);
-   g_tradeHarvestArmed=false;
-   g_tradeMFE=0.0;
-   g_tradeMAE=0.0;
+   // Structural sleeves are independent portfolio positions. Do not mutate
+   // the R9 core's lifecycle globals here.
    if(InpVerbose)
       PrintFormat("%s: %s ENTRY side=%d ATR=%.3f SLdist=%.3f",EA_TAG,label,side,atr,stopDistance);
    return true;
@@ -1189,13 +1183,13 @@ bool ProcessMultiscaleBoundaries(const MqlTick &tick)
    if(!InpUseMultiscaleBoundaries)
       return false;
 
-   // Larger scales first only establishes deterministic event ordering while
-   // this checkpoint is still one-position-at-a-time. It is removed by the
-   // later portfolio/concurrency checkpoint.
+   bool opened=false;
+   // In portfolio mode each scale may open independently on the same tick,
+   // subject to the four-slot governor and one-position-per-scale rule.
    for(int idx=MS_BOUNDARY_COUNT-1;idx>=0;--idx)
       if(ProcessOneScaleBoundary(idx,tick))
-         return true;
-   return false;
+         opened=true;
+   return opened;
 }
 
 bool P5Signal(const ENUM_TIMEFRAMES tf,const int breakoutBars,const double maxVolRatio,
