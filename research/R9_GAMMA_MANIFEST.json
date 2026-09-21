@@ -1,11 +1,78 @@
 {
   "series": "R9 GAMMA",
-  "checkpoint": 0,
-  "status": "BASELINE",
-  "parent_branch": "carson/mt5-r9-hybrid-gate-certification",
+  "checkpoint": 1,
+  "status": "PYTHON_VALIDATED_MT5_REAL_TICK_CERTIFICATION_PENDING",
+  "parent_branch": "carson/r9-gamma-00-baseline",
   "parent_ea": "Experts/GoldMuwahahaMiner_R9_HybridGate.mq5",
-  "branch": "carson/r9-gamma-00-baseline",
-  "strategy_change": false,
+  "branch": "carson/r9-gamma-01-relative-volatility-gate",
+  "ea": "Experts/GoldMuwahahaMiner_R9_GAMMA_01_RelVolGate.mq5",
+  "strategy_change": true,
+  "breakthrough": "Session-normalized completed-M5 ATR relative-volatility gate",
+  "formula": "completed_M5_ATR14 / R9_session_ATR_floor >= 1.50",
+  "python_window": "2026-01-01 through 2026-07-31",
   "august_2026": "SEALED",
-  "rule": "Each promoted breakthrough must branch from the immediately preceding successful GAMMA checkpoint and receive a dedicated Markdown research note."
+  "modeled_spread_primary": 0.2,
+  "python_isolated_months": {
+    "baseline": {
+      "net": -48033.2767,
+      "gross_profit": 29218.0459,
+      "gross_loss": -77251.3225,
+      "pf": 0.378221,
+      "trades": 234852,
+      "max_month_dd": 7618.6265
+    },
+    "gamma01": {
+      "net": -44227.6071,
+      "gross_profit": 27724.6539,
+      "gross_loss": -71952.261,
+      "pf": 0.38532,
+      "trades": 217849,
+      "max_month_dd": 7467.6543
+    },
+    "improvements": {
+      "net_loss_pct": 7.923,
+      "gross_loss_pct": 6.86,
+      "trade_count_pct": -7.24
+    }
+  },
+  "python_continuous_jan_jul": {
+    "baseline": {
+      "net": -48159.3388,
+      "gross_profit": 29299.776,
+      "gross_loss": -77459.1148,
+      "pf": 0.378261,
+      "trades": 235381,
+      "max_drawdown": 48159.6988
+    },
+    "gamma01": {
+      "net": -44334.0202,
+      "gross_profit": 27799.0171,
+      "gross_loss": -72133.0373,
+      "pf": 0.385385,
+      "trades": 218282,
+      "max_drawdown": 44334.3803
+    }
+  },
+  "parameter_neighborhood": [
+    1.4,
+    1.45,
+    1.5,
+    1.55,
+    1.6
+  ],
+  "spread_stress": [
+    0.18,
+    0.2,
+    0.23,
+    0.25
+  ],
+  "four_objective_state": {
+    "high_trade_count": "IMPROVED_QUALITY_WITH_7.24_PERCENT_ACTIVITY_COST_NOT_LOCKED",
+    "net_profit": "IMPROVED_NOT_LOCKED",
+    "gross_loss": "IMPROVED_NOT_LOCKED",
+    "drawdown": "IMPROVED_NOT_LOCKED",
+    "small_account_daily_dd": "DEFERRED_UNTIL_AT_LEAST_ONE_CORE_OBJECTIVE_LOCKS"
+  },
+  "required_next_gate": "Coinexx MT5 Strategy Tester, Every tick based on real ticks, Jan-Jul 2026, direct comparison to certified R9",
+  "rule": "No next GAMMA checkpoint may treat GAMMA-01 as MT5-certified until real-tick MT5 evidence is attached. Each later checkpoint must branch from the latest successful GAMMA checkpoint."
 }
