@@ -1,3 +1,5 @@
+> **SUPERSEDED:** This branch is not the Gold MUWHAHA Miner R10 replacement. The corrected executable R10 is rebuilt cumulatively from R9 on `carson/r10-from-r9-code-10-r10-replacement-candidate`, with authoritative EA `Experts/GoldMuwahahaMiner_R10.mq5`. This branch is retained only for historical traceability.
+
 # gold-MUWHAHA-miner
 
 Clean-room MT5 research project for the **Gold MUWHAHA Miner** XAUUSD Expert Advisor.
