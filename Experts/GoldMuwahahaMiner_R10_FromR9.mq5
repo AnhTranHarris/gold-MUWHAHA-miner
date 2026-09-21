@@ -1,7 +1,7 @@
 #property copyright "Clean-room behavioral reconstruction for AnhTranHarris"
-#property version   "2.07"
+#property version   "2.08"
 #property strict
-#property description "Gold MUWHAHA R10-from-R9 checkpoint 07: R9-derived R10 four-sleeve portfolio plus opposition-aware heat and explicit state-stability priorities."
+#property description "Gold MUWHAHA R10-from-R9 checkpoint 08: R9-derived R10 loss-priority build with opposition heat, state stability, catastrophe memory, and post-stop KEEP/FLIP routing."
 
 #include <Trade/Trade.mqh>
 CTrade trade;
@@ -109,11 +109,16 @@ input double InpStability20m            = 1.00;
 input double InpStabilityH1             = 1.00;
 input double InpStabilityH4             = 1.00;
 
+input group "R10 post-catastrophe KEEP/FLIP"
+input bool   InpUseKeepFlipRouter       = true;
+input int    InpKeepFlipWindowSeconds   = 30;
+input double InpKeepFlipMinStrength     = 1.00;
+
 input group "R10 broker normalization"
 input double InpHunterPipPrice     = 0.01;
 input bool   InpRespectBrokerStops = true;
 
-string EA_TAG = "GM_R10_FROM_R9_07";
+string EA_TAG = "GM_R10_FROM_R9_08";
 
 // -----------------------------------------------------------------------------
 // Frozen research geometry carried from the causal R9 event population.
@@ -201,6 +206,8 @@ datetime g_msStartedAt[MS_BOUNDARY_COUNT];
 
 int g_catastropheBlockedSide=0;
 datetime g_catastropheBlockedUntil=0;
+int g_lastCatastropheSide=0;
+datetime g_lastCatastropheAt=0;
 
 int g_atrHandle=INVALID_HANDLE;
 int g_p5H1AtrHandle=INVALID_HANDLE;
@@ -330,7 +337,7 @@ bool PortfolioAllows(const int side,const int scaleMinutes,const double signalSt
 
    if(total>=InpMaxPortfolioPositions)
       return false;
-   if(opposing>=InpMaxOpposingPositions)
+   if(opposing>InpMaxOpposingPositions)
       return false;
 
    const double stability=MathMax(0.0,MathMin(1.0,StabilityWeightForScale(scaleMinutes)));
@@ -740,6 +747,38 @@ int ApplyP4P6StateOverlay(const int eventSide,const double eff10,const int baseT
    return baseTradeSide;
 }
 
+int ApplyPostCatastropheKeepFlip(const int tradeSide,const int eventSide,string &state,const datetime now)
+{
+   if(!InpUseKeepFlipRouter || g_lastCatastropheAt<=0 || g_lastCatastropheSide==0)
+      return tradeSide;
+
+   const int age=(int)(now-g_lastCatastropheAt);
+   if(age<0 || age>InpKeepFlipWindowSeconds)
+      return tradeSide;
+
+   // The post-stop router is intentionally selective. Weak follow-up events are
+   // ignored rather than automatically reversing.
+   if(g_lastRouterStrength+1e-12<InpKeepFlipMinStrength)
+   {
+      state="POSTSTOP_ABSTAIN_"+state;
+      return 0;
+   }
+
+   if(tradeSide==-g_lastCatastropheSide)
+   {
+      state="POSTSTOP_FLIP_"+state;
+      return tradeSide;
+   }
+
+   if(tradeSide==g_lastCatastropheSide)
+   {
+      state="POSTSTOP_KEEP_"+state;
+      return tradeSide;
+   }
+
+   return tradeSide;
+}
+
 bool CatastropheMemoryAllows(const int tradeSide,const datetime now)
 {
    if(g_catastropheBlockedSide==0 || now>=g_catastropheBlockedUntil)
@@ -1089,6 +1128,7 @@ bool ProcessBoundaryAuctions(const MqlTick &tick)
    double alignedRet1=0.0,range1=0.0;
    int ticks1=0;
    int tradeSide=RouteAuctionEvent(eventSide,alignedRet1,range1,ticks1,state);
+   tradeSide=ApplyPostCatastropheKeepFlip(tradeSide,eventSide,state,tick.time);
 
    // Boundary event type is primary context, but action selection remains causal.
    // If the S1 action layer abstains, do not force a reversal or continuation.
@@ -1215,6 +1255,7 @@ bool ProcessOneScaleBoundary(const int idx,const MqlTick &tick)
    double alignedRet1=0.0,range1=0.0;
    int ticks1=0;
    int tradeSide=RouteAuctionEvent(eventSide,alignedRet1,range1,ticks1,state);
+   tradeSide=ApplyPostCatastropheKeepFlip(tradeSide,eventSide,state,tick.time);
    if(tradeSide==0 || !CatastropheMemoryAllows(tradeSide,tick.time))
    {
       ResetScaleBoundary(idx);
@@ -1363,6 +1404,7 @@ void ProcessEntries(const MqlTick &tick)
    int tradeSide=RouteAuctionEvent(eventSide,alignedRet1,range1,ticks1,routerState);
    double atrRatio=1.0;
    tradeSide=ApplyP4P6StateOverlay(eventSide,eff10,tradeSide,routerState,atrRatio);
+   tradeSide=ApplyPostCatastropheKeepFlip(tradeSide,eventSide,routerState,tick.time);
    if(tradeSide==0)
    {
       if(InpVerbose)
@@ -1387,7 +1429,15 @@ void ProcessEntries(const MqlTick &tick)
    }
 
    if(PortfolioAllows(tradeSide,1,g_lastRouterStrength))
+   {
       OpenTrade(tradeSide,eventSide,routerState,tick,alignedRet1,range1,ticks1);
+   }
+   else
+   {
+      // A blocked event is consumed; never let a stale R9 crossing execute later
+      // simply because portfolio capacity changed.
+      g_pendingMode=-eventSide;
+   }
 }
 
 void ManageAuxPositions(const MqlTick &tick)
@@ -1517,6 +1567,7 @@ int OnInit()
       InpMaxPortfolioPositions<1 || InpMaxPortfolioPositions>8 ||
       InpMaxOpposingPositions<0 || InpMaxOpposingPositions>InpMaxPortfolioPositions ||
       InpOppositionPenalty<0.0 || InpMinPortfolioEntryScore<0.0 ||
+      InpKeepFlipWindowSeconds<0 || InpKeepFlipMinStrength<0.0 ||
       InpStability1m<0.0 || InpStability1m>1.0 ||
       InpStability3m<0.0 || InpStability3m>1.0 ||
       InpStability5m<0.0 || InpStability5m>1.0 ||
@@ -1642,6 +1693,8 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
       g_catastropheBlockedSide=closedSide;
       const datetime dealTime=(datetime)HistoryDealGetInteger(trans.deal,DEAL_TIME);
       g_catastropheBlockedUntil=dealTime+R10_CATASTROPHE_MEMORY_SEC;
+      g_lastCatastropheSide=closedSide;
+      g_lastCatastropheAt=dealTime;
       if(InpVerbose)
          PrintFormat("%s: CATASTROPHE side=%d profit=%.2f blockUntil=%s MFE=%.3f MAE=%.3f",
                      EA_TAG,g_catastropheBlockedSide,profit,
