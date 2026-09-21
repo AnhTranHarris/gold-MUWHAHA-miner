@@ -394,10 +394,9 @@ ulong ResolveLastOpenedPositionId(const ulong magic)
    return 0;
 }
 
-ulong RegisterRuntimeState(const ulong magic,const int scale,const double atrAtEntry,
-                           const datetime openedAt)
+ulong RegisterRuntimeStateById(const ulong positionId,const ulong magic,const int scale,
+                               const double atrAtEntry,const datetime openedAt)
 {
-   const ulong positionId=ResolveLastOpenedPositionId(magic);
    if(positionId==0)
       return 0;
 
@@ -409,16 +408,28 @@ ulong RegisterRuntimeState(const ulong magic,const int scale,const double atrAtE
       return positionId;
    }
 
-   g_runtime[idx].active=true;
-   g_runtime[idx].positionId=positionId;
-   g_runtime[idx].magic=magic;
-   g_runtime[idx].scale=scale;
-   g_runtime[idx].harvestArmed=false;
-   g_runtime[idx].atrAtEntry=atrAtEntry;
-   g_runtime[idx].mfe=0.0;
-   g_runtime[idx].mae=0.0;
-   g_runtime[idx].openedAt=openedAt;
+   // Do not wipe an existing record when an entry is reported in multiple deal
+   // fragments. Only initialize a newly allocated record.
+   if(!g_runtime[idx].active)
+   {
+      g_runtime[idx].active=true;
+      g_runtime[idx].positionId=positionId;
+      g_runtime[idx].magic=magic;
+      g_runtime[idx].scale=scale;
+      g_runtime[idx].harvestArmed=false;
+      g_runtime[idx].atrAtEntry=atrAtEntry;
+      g_runtime[idx].mfe=0.0;
+      g_runtime[idx].mae=0.0;
+      g_runtime[idx].openedAt=openedAt;
+   }
    return positionId;
+}
+
+ulong RegisterRuntimeState(const ulong magic,const int scale,const double atrAtEntry,
+                           const datetime openedAt)
+{
+   const ulong positionId=ResolveLastOpenedPositionId(magic);
+   return RegisterRuntimeStateById(positionId,magic,scale,atrAtEntry,openedAt);
 }
 
 void UpdateRuntimeExcursion(const ulong positionId,const double favorable,const double adverse)
@@ -433,6 +444,20 @@ void MarkRuntimeHarvest(const ulong positionId)
 {
    const int idx=FindRuntimeState(positionId);
    if(idx>=0) g_runtime[idx].harvestArmed=true;
+}
+
+bool PositionIdentifierIsOpen(const ulong positionId)
+{
+   if(positionId==0) return false;
+   for(int i=PositionsTotal()-1;i>=0;--i)
+   {
+      const ulong ticket=PositionGetTicket(i);
+      if(ticket==0) continue;
+      if(PositionGetString(POSITION_SYMBOL)!=_Symbol) continue;
+      if((ulong)PositionGetInteger(POSITION_IDENTIFIER)==positionId)
+         return true;
+   }
+   return false;
 }
 
 void ClearRuntimeState(const ulong positionId)
@@ -2076,7 +2101,29 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
       return;
 
    const ENUM_DEAL_ENTRY entry=(ENUM_DEAL_ENTRY)HistoryDealGetInteger(trans.deal,DEAL_ENTRY);
+   const ulong dealPositionId=(ulong)HistoryDealGetInteger(trans.deal,DEAL_POSITION_ID);
+   const int auxSlot=AuxSlotFromMagic(magic);
+   const int dealScale=ScaleFromMagic(magic);
+
+   // Fallback registration for brokers where the synchronous CTrade result did
+   // not expose an entry deal by the time the open function returned.
+   if(entry==DEAL_ENTRY_IN)
+   {
+      double atrAtEntry=0.0;
+      if(auxSlot>=0) atrAtEntry=g_auxAtrAtEntry[auxSlot];
+      RegisterRuntimeStateById(dealPositionId,magic,dealScale,atrAtEntry,
+                               (datetime)HistoryDealGetInteger(trans.deal,DEAL_TIME));
+      if(auxSlot>=0 && g_auxCurrentPositionId[auxSlot]==0)
+         g_auxCurrentPositionId[auxSlot]=dealPositionId;
+      return;
+   }
+
    if(entry!=DEAL_ENTRY_OUT && entry!=DEAL_ENTRY_OUT_BY)
+      return;
+
+   // A close request can be filled in more than one deal. Do not classify or
+   // clear the trade until the position identifier has actually disappeared.
+   if(PositionIdentifierIsOpen(dealPositionId))
       return;
 
    const ENUM_DEAL_REASON reason=(ENUM_DEAL_REASON)HistoryDealGetInteger(trans.deal,DEAL_REASON);
@@ -2086,8 +2133,6 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
    // blocks the same traded direction. Opposite-direction auctions remain eligible.
    const ENUM_DEAL_TYPE dealType=(ENUM_DEAL_TYPE)HistoryDealGetInteger(trans.deal,DEAL_TYPE);
    const int closedSide=(dealType==DEAL_TYPE_SELL?1:(dealType==DEAL_TYPE_BUY?-1:0));
-   const int auxSlot=AuxSlotFromMagic(magic);
-   const ulong dealPositionId=(ulong)HistoryDealGetInteger(trans.deal,DEAL_POSITION_ID);
    const int runtimeIdx=FindRuntimeState(dealPositionId);
    const int closedScale=(runtimeIdx>=0 ? g_runtime[runtimeIdx].scale : ScaleFromMagic(magic));
    const bool harvestCondition=(runtimeIdx>=0 ? !g_runtime[runtimeIdx].harvestArmed :
