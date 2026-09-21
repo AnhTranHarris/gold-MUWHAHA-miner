@@ -1,3 +1,5 @@
+> **DOCUMENTATION-ONLY / SUPERSEDED AS EXECUTABLE R10:** This branch preserves the post-R9 research map but is not the replacement EA lineage. The corrected executable codeline starts from R9 and culminates at `carson/r10-from-r9-code-10-r10-replacement-candidate` / `Experts/GoldMuwahahaMiner_R10.mq5`.
+
 # gold-MUWHAHA-miner
 
 Clean-room MT5 research project for the **Gold MUWHAHA Miner** XAUUSD Expert Advisor.
