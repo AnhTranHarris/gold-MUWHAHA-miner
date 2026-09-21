@@ -14,11 +14,12 @@ Every branch below is cumulative and starts from the prior checkpoint. The purpo
 | 07 | `carson/r10-from-r9-code-07-opposition-heat-stability` | Opposition heat and state-stability priority |
 | 08 | `carson/r10-from-r9-code-08-keep-flip-loss-priority` | Post-catastrophe KEEP/FLIP/ABSTAIN and stale-event fixes |
 | 09 | `carson/r10-from-r9-code-09-p7-compression-break` | P7 ATR-normalized compression break |
-| 10 | `carson/r10-from-r9-code-10-r10-replacement-candidate` | Per-sleeve lifecycle isolation and canonical R10 candidate |
+| 10 | `carson/r10-from-r9-code-10-r10-replacement-candidate` | Per-sleeve lifecycle isolation and prior candidate |
+| **11** | `carson/r10-from-r9-code-11-source-audited-rebuild` | **Source-audited event identity, failed-state, transaction-safe runtime state, canonical candidate** |
 
 ## Authoritative source
 
-`Experts/GoldMuwahahaMiner_R10.mq5`
+`Experts/GoldMuwahahaMiner_R10.mq5` on `carson/r10-from-r9-code-11-source-audited-rebuild`
 
 ## Important distinction
 
