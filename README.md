@@ -1,3 +1,5 @@
+> **SUPERSEDED BY SOURCE-AUDITED CHECKPOINT 11:** The authoritative compile/test candidate is now `carson/r10-from-r9-code-11-source-audited-rebuild`. Checkpoint 10 is retained as a rollback/comparison point only.
+
 # gold-MUWHAHA-miner
 
 Clean-room MT5 research project for the **Gold MUWHAHA Miner** XAUUSD Expert Advisor.
