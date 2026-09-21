@@ -1,7 +1,7 @@
 #property copyright "Clean-room behavioral reconstruction for AnhTranHarris"
-#property version   "2.10"
+#property version   "2.11"
 #property strict
-#property description "Gold MUWHAHA R10-from-R9 Gold MUWHAHA R10 replacement candidate: cumulative R9 upgrade with validated post-R9 auction, lifecycle, multiscale and loss-priority mechanisms."
+#property description "Gold MUWHAHA R10 source-audited replacement candidate: cumulative R9 upgrade with preserved auction-state identity, REAL-path lifecycle controls, multiscale portfolio logic, and loss-priority governance."
 
 #include <Trade/Trade.mqh>
 CTrade trade;
@@ -57,10 +57,14 @@ input double InpP4MaxEfficiency        = 0.78; // low/normal persistence within 
 input double InpP6MinAtrRatio          = 1.20; // reconstructed tester default; re-certify
 input double InpP6MinEfficiency        = 0.90; // strongly efficient expansion
 input int    InpAtrBaselineBars        = 50;
-input bool   InpUseP3FailedIgnition    = true;
-input int    InpP3EvaluateAfterSeconds = 12;
-input double InpP3MinMFEToKeep         = 0.01;
-input double InpP3AdverseExitPrice     = 0.10;
+input bool   InpUseP3FailedIgnition      = true;
+input int    InpP3EvaluateAfterSeconds   = 12;
+input double InpP3MinMFEToKeep           = 0.01;
+input double InpP3MinMAEAtr              = 2.00; // source-supported severe-failure shape; re-certify
+input int    InpP3AdverseLookbackSec     = 5;
+input double InpP3MinAdverseEfficiency   = 0.70;
+input double InpP3MinAdverseDispAtr      = 0.15;
+input bool   InpP3AllowSelectiveFlip     = false; // mechanism retained; default off until exact flip thresholds are re-fit
 
 input group "R10 P5 structural trend"
 input bool   InpUseP5Structural       = true;
@@ -116,6 +120,15 @@ input double InpStability20m            = 1.00;
 input double InpStabilityH1             = 1.00;
 input double InpStabilityH4             = 1.00;
 
+input group "R10 auction-state stability reconstruction"
+input bool   InpUseKnownStateGuard                = true;
+input double InpStateWeightDefault                = 1.00;
+input double InpWeight1mUpAcceptContinue          = 0.00; // source-identified toxic state
+input double InpWeightDownAcceptFade              = 1.00;
+input double InpWeightUpReclaimFade               = 1.00;
+input double InpWeightShortDownReclaimContinue    = 1.00;
+input double InpWeightLongDownAcceptFade          = 1.00;
+
 input group "R10 post-catastrophe KEEP/FLIP"
 input bool   InpUseKeepFlipRouter       = true;
 input int    InpKeepFlipWindowSeconds   = 30;
@@ -125,7 +138,7 @@ input group "R10 broker normalization"
 input double InpHunterPipPrice     = 0.01;
 input bool   InpRespectBrokerStops = true;
 
-string EA_TAG = "GM_R10_FINAL_CANDIDATE";
+string EA_TAG = "GM_R10_SOURCE_AUDITED";
 
 // -----------------------------------------------------------------------------
 // Frozen research geometry carried from the causal R9 event population.
@@ -215,10 +228,13 @@ datetime g_msStartedAt[MS_BOUNDARY_COUNT];
 #define AUX_SCALE_COUNT 7
 bool   g_auxHarvestArmed[AUX_SCALE_COUNT];
 double g_auxAtrAtEntry[AUX_SCALE_COUNT];
+double g_auxMFE[AUX_SCALE_COUNT];
+double g_auxMAE[AUX_SCALE_COUNT];
 
 int g_catastropheBlockedSide=0;
 datetime g_catastropheBlockedUntil=0;
 int g_lastCatastropheSide=0;
+int g_lastCatastropheScale=0;
 datetime g_lastCatastropheAt=0;
 
 int g_atrHandle=INVALID_HANDLE;
@@ -334,7 +350,48 @@ double StabilityWeightForScale(const int scaleMinutes)
    return 1.0;
 }
 
-bool PortfolioAllows(const int side,const int scaleMinutes,const double signalStrength=1.0)
+string DirectionTag(const int side)
+{
+   return (side>0?"UP":"DOWN");
+}
+
+string ComposeStateLabel(const string eventLabel,const int eventSide,const string actionLabel)
+{
+   return eventLabel+"_"+DirectionTag(eventSide)+"|"+actionLabel;
+}
+
+double StabilityWeightForAuctionState(const int scaleMinutes,const int eventSide,
+                                      const string eventLabel,const string actionLabel)
+{
+   double weight=InpStateWeightDefault;
+   if(!InpUseKnownStateGuard)
+      return weight;
+
+   const bool isAccept=(StringFind(eventLabel,"ACCEPT")>=0);
+   const bool isReclaim=(StringFind(eventLabel,"SWEEP")>=0 || StringFind(eventLabel,"RECLAIM")>=0);
+   const bool isContinue=(StringFind(actionLabel,"CONTINUE")>=0);
+   const bool isFade=(StringFind(actionLabel,"FADE")>=0);
+
+   // Exact source-supported toxic state from the Jan-Apr worst-month-PF study.
+   if(scaleMinutes<=1 && eventSide>0 && isAccept && isContinue)
+      return InpWeight1mUpAcceptContinue;
+
+   // Source-supported durable state families. Defaults are neutral 1.0 because
+   // the complete historical rank table did not survive the research handoff.
+   if(eventSide<0 && isAccept && isFade)
+      weight=InpWeightDownAcceptFade;
+   else if(eventSide>0 && isReclaim && isFade)
+      weight=InpWeightUpReclaimFade;
+   else if(scaleMinutes<=3 && eventSide<0 && isReclaim && isContinue)
+      weight=InpWeightShortDownReclaimContinue;
+   else if(scaleMinutes>=10 && eventSide<0 && isAccept && isFade)
+      weight=InpWeightLongDownAcceptFade;
+
+   return MathMax(0.0,MathMin(1.0,weight));
+}
+
+bool PortfolioAllows(const int side,const int scaleMinutes,const double signalStrength=1.0,
+                     const double stateWeight=1.0)
 {
    int total=0;
    int opposing=0;
@@ -361,7 +418,9 @@ bool PortfolioAllows(const int side,const int scaleMinutes,const double signalSt
    if(opposing>InpMaxOpposingPositions)
       return false;
 
-   const double stability=MathMax(0.0,MathMin(1.0,StabilityWeightForScale(scaleMinutes)));
+   const double scaleStability=MathMax(0.0,MathMin(1.0,StabilityWeightForScale(scaleMinutes)));
+   const double auctionStability=MathMax(0.0,MathMin(1.0,stateWeight));
+   const double stability=scaleStability*auctionStability;
    double score=MathMax(0.0,signalStrength)*stability;
    if(InpUseOppositionHeat)
       score-=InpOppositionPenalty*(double)opposing;
@@ -666,12 +725,12 @@ void RouterThresholds(double &continueMaxAligned,double &fadeMinAligned)
    fadeMinAligned=0.275;
 }
 
-int RouteAuctionEvent(const int eventSide,double &alignedRet1,double &range1,int &ticks1,string &state)
+int RouteAuctionEvent(const int eventSide,double &alignedRet1,double &range1,int &ticks1,string &action)
 {
    alignedRet1=0.0;
    range1=0.0;
    ticks1=0;
-   state="ABSTAIN";
+   action="ABSTAIN";
    g_lastRouterStrength=0.0;
 
    if(g_microCount<1)
@@ -690,7 +749,7 @@ int RouteAuctionEvent(const int eventSide,double &alignedRet1,double &range1,int
    // Pullback against a still-valid ten-second break: continue the original event.
    if(alignedRet1<=continueMaxAligned && range1+1e-12>=0.285)
    {
-      state="CONTINUE";
+      action="CONTINUE";
       g_lastRouterStrength=MathMin(1.50,MathAbs(alignedRet1)/(MathAbs(continueMaxAligned)+1e-9));
       return eventSide;
    }
@@ -698,7 +757,7 @@ int RouteAuctionEvent(const int eventSide,double &alignedRet1,double &range1,int
    // Late/chased impulse exhaustion: fade the original event.
    if(alignedRet1>=fadeMinAligned && ticks1>=5)
    {
-      state="FADE";
+      action="FADE";
       g_lastRouterStrength=MathMin(1.50,alignedRet1/(fadeMinAligned+1e-9));
       return -eventSide;
    }
@@ -735,7 +794,7 @@ bool GetAtrRatio(double &ratio)
 }
 
 int ApplyP4P6StateOverlay(const int eventSide,const double eff10,const int baseTradeSide,
-                          string &state,double &atrRatio)
+                          string &action,double &atrRatio)
 {
    atrRatio=1.0;
    if(!InpUseP4P6Overlay)
@@ -748,7 +807,7 @@ int ApplyP4P6StateOverlay(const int eventSide,const double eff10,const int baseT
    // P4: lower/normal volatility plus relatively inefficient travel -> rotate/fade.
    if(atrRatio<=InpP4MaxAtrRatio && eff10<=InpP4MaxEfficiency)
    {
-      state="P4_ROTATION";
+      action="P4_ROTATION";
       const double effStrength=(InpP4MaxEfficiency-eff10)/(InpP4MaxEfficiency+1e-9);
       const double volStrength=(InpP4MaxAtrRatio-atrRatio)/(InpP4MaxAtrRatio+1e-9);
       g_lastRouterStrength=MathMax(g_lastRouterStrength,0.80+MathMin(0.50,MathMax(0.0,effStrength+volStrength)));
@@ -758,7 +817,7 @@ int ApplyP4P6StateOverlay(const int eventSide,const double eff10,const int baseT
    // P6: high-volatility or very efficient displacement -> expansion/continue.
    if(atrRatio>=InpP6MinAtrRatio || eff10>=InpP6MinEfficiency)
    {
-      state="P6_EXPANSION";
+      action="P6_EXPANSION";
       const double volStrength=(atrRatio-InpP6MinAtrRatio)/(InpP6MinAtrRatio+1e-9);
       const double effStrength=(eff10-InpP6MinEfficiency)/(InpP6MinEfficiency+1e-9);
       g_lastRouterStrength=MathMax(g_lastRouterStrength,0.80+MathMin(0.50,MathMax(0.0,volStrength+effStrength)));
@@ -768,9 +827,16 @@ int ApplyP4P6StateOverlay(const int eventSide,const double eff10,const int baseT
    return baseTradeSide;
 }
 
-int ApplyPostCatastropheKeepFlip(const int tradeSide,const int eventSide,string &state,const datetime now)
+int ApplyPostCatastropheKeepFlip(const int tradeSide,const int eventSide,const int scaleMinutes,
+                                 string &action,const datetime now)
 {
-   if(!InpUseKeepFlipRouter || g_lastCatastropheAt<=0 || g_lastCatastropheSide==0)
+   if(!InpUseKeepFlipRouter || g_lastCatastropheAt<=0 || g_lastCatastropheSide==0 ||
+      g_lastCatastropheScale<=0)
+      return tradeSide;
+
+   // The research KEEP/FLIP transition is a SAME-SCALE post-catastrophe policy.
+   // Cross-scale failed-thesis distrust is handled separately by the 10s memory.
+   if(scaleMinutes!=g_lastCatastropheScale)
       return tradeSide;
 
    const int age=(int)(now-g_lastCatastropheAt);
@@ -781,19 +847,19 @@ int ApplyPostCatastropheKeepFlip(const int tradeSide,const int eventSide,string 
    // ignored rather than automatically reversing.
    if(g_lastRouterStrength+1e-12<InpKeepFlipMinStrength)
    {
-      state="POSTSTOP_ABSTAIN_"+state;
+      action="POSTSTOP_ABSTAIN_"+action;
       return 0;
    }
 
    if(tradeSide==-g_lastCatastropheSide)
    {
-      state="POSTSTOP_FLIP_"+state;
+      action="POSTSTOP_FLIP_"+action;
       return tradeSide;
    }
 
    if(tradeSide==g_lastCatastropheSide)
    {
-      state="POSTSTOP_KEEP_"+state;
+      action="POSTSTOP_KEEP_"+action;
       return tradeSide;
    }
 
@@ -826,10 +892,10 @@ bool FindOurPosition(ulong &ticket,ENUM_POSITION_TYPE &type,double &openPrice,do
 }
 
 bool OpenBoundaryTrade(const int tradeSide,const int eventSide,const ENUM_R10_SLEEVE sleeve,
-                       const int scaleMinutes,const string state,const MqlTick &tick,
-                       const double alignedRet1,const double range1,const int ticks1)
+                       const int scaleMinutes,const string state,const double stateWeight,
+                       const MqlTick &tick,const double alignedRet1,const double range1,const int ticks1)
 {
-   if(!PortfolioAllows(tradeSide,scaleMinutes,g_lastRouterStrength))
+   if(!PortfolioAllows(tradeSide,scaleMinutes,g_lastRouterStrength,stateWeight))
       return false;
 
    const ulong magic=MagicForScale(scaleMinutes);
@@ -866,6 +932,8 @@ bool OpenBoundaryTrade(const int tradeSide,const int eventSide,const ENUM_R10_SL
    {
       g_auxHarvestArmed[auxSlot]=false;
       g_auxAtrAtEntry[auxSlot]=0.0;
+      g_auxMFE[auxSlot]=0.0;
+      g_auxMAE[auxSlot]=0.0;
    }
 
    if(InpVerbose)
@@ -911,6 +979,8 @@ bool OpenStructuralTrade(const int side,const ENUM_R10_SLEEVE sleeve,const doubl
    {
       g_auxHarvestArmed[auxSlot]=false;
       g_auxAtrAtEntry[auxSlot]=atr;
+      g_auxMFE[auxSlot]=0.0;
+      g_auxMAE[auxSlot]=0.0;
    }
 
    // Structural sleeves are independent portfolio positions. Do not mutate
@@ -965,6 +1035,55 @@ bool OpenTrade(const int tradeSide,const int eventSide,const string routerState,
    return true;
 }
 
+bool RecentAdversePathState(const int tradeSide,const double atr,double &alignedDisp,double &efficiency)
+{
+   alignedDisp=0.0;
+   efficiency=0.0;
+   if(atr<=0.0 || InpP3AdverseLookbackSec<2 || g_microCount<InpP3AdverseLookbackSec)
+      return false;
+
+   const int oldest=RingIndexFromNewest(InpP3AdverseLookbackSec-1);
+   double previous=g_micro[oldest].close;
+   const double start=previous;
+   double travel=0.0;
+
+   for(int offset=InpP3AdverseLookbackSec-2;offset>=0;--offset)
+   {
+      const int idx=RingIndexFromNewest(offset);
+      const double value=g_micro[idx].close;
+      travel+=MathAbs(value-previous);
+      previous=value;
+   }
+
+   const int newest=RingIndexFromNewest(0);
+   alignedDisp=(g_micro[newest].close-start)*(double)tradeSide;
+   efficiency=MathAbs(alignedDisp)/(travel+1e-9);
+
+   return (alignedDisp<=-InpP3MinAdverseDispAtr*atr &&
+           efficiency+1e-12>=InpP3MinAdverseEfficiency);
+}
+
+bool FailedIgnitionState(const int tradeSide,const int ageSeconds,
+                         const double mfe,const double mae,
+                         double &atr,double &alignedDisp,double &adverseEfficiency)
+{
+   atr=0.0;
+   alignedDisp=0.0;
+   adverseEfficiency=0.0;
+
+   if(!InpUseP3FailedIgnition || ageSeconds<InpP3EvaluateAfterSeconds ||
+      mfe+1e-12>=InpP3MinMFEToKeep)
+      return false;
+
+   if(!GetCompletedAtr(atr) || atr<=0.0)
+      return false;
+
+   if(mae+1e-12<InpP3MinMAEAtr*atr)
+      return false;
+
+   return RecentAdversePathState(tradeSide,atr,alignedDisp,adverseEfficiency);
+}
+
 void UpdateExcursion(const MqlTick &tick,const ENUM_POSITION_TYPE type,const double openPrice)
 {
    double favorable=0.0;
@@ -1007,7 +1126,6 @@ void ManagePosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_T
       if(type==POSITION_TYPE_BUY)
       {
          if((tick.bid-openPrice)+1e-12<activation) return;
-         g_tradeHarvestArmed=true;
          candidate=NormalizePrice(tick.bid-trail);
          candidate=MathMin(candidate,NormalizePrice(tick.bid-brokerDistance-ts));
          if(candidate<=0.0 || candidate<=currentSL+ts*0.5) return;
@@ -1015,7 +1133,6 @@ void ManagePosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_T
       else
       {
          if((openPrice-tick.ask)+1e-12<activation) return;
-         g_tradeHarvestArmed=true;
          candidate=NormalizePrice(tick.ask+trail);
          candidate=MathMax(candidate,NormalizePrice(tick.ask+brokerDistance+ts));
          if(candidate<=0.0 || (currentSL>0.0 && candidate>=currentSL-ts*0.5)) return;
@@ -1024,22 +1141,28 @@ void ManagePosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_T
       ResetLastError();
       if(!trade.PositionModify(ticket,candidate,0.0) || !ResultAccepted())
          LogTradeFailure("P5 trail modify");
+      else
+         g_tradeHarvestArmed=true;
       return;
    }
 
-   // P3 delayed failed-ignition exit. Immediate reversal was rejected in research;
-   // this checkpoint only exits a thesis that still has not produced meaningful MFE.
-   if(InpUseP3FailedIgnition && !g_tradeHarvestArmed && g_positionOpenedAt>0 &&
-      (tick.time-g_positionOpenedAt)>=InpP3EvaluateAfterSeconds &&
-      g_tradeMFE+1e-12<InpP3MinMFEToKeep && g_tradeMAE>=InpP3AdverseExitPrice)
+   // P3 failed-ignition control: wait for the auction to declare itself, then
+   // require near-zero MFE + ATR-normalized MAE + efficient adverse displacement.
+   if(!g_tradeHarvestArmed && g_positionOpenedAt>0)
    {
-      ResetLastError();
-      if(!trade.PositionClose(ticket) || !ResultAccepted())
-         LogTradeFailure("P3 failed-ignition close");
-      else if(InpVerbose)
-         PrintFormat("%s: P3_FAILED_EXIT MFE=%.3f MAE=%.3f age=%d",
-                     EA_TAG,g_tradeMFE,g_tradeMAE,(int)(tick.time-g_positionOpenedAt));
-      return;
+      const int age=(int)(tick.time-g_positionOpenedAt);
+      const int tradeSide=(type==POSITION_TYPE_BUY?1:-1);
+      double p3Atr=0.0,p3Disp=0.0,p3Eff=0.0;
+      if(FailedIgnitionState(tradeSide,age,g_tradeMFE,g_tradeMAE,p3Atr,p3Disp,p3Eff))
+      {
+         ResetLastError();
+         if(!trade.PositionClose(ticket) || !ResultAccepted())
+            LogTradeFailure("P3 failed-ignition close");
+         else if(InpVerbose)
+            PrintFormat("%s: P3_FAILED_EXIT MFE=%.3f MAE=%.3f ATR=%.3f adverseDisp=%.3f eff=%.3f age=%d",
+                        EA_TAG,g_tradeMFE,g_tradeMAE,p3Atr,p3Disp,p3Eff,age);
+         return;
+      }
    }
 
    if(g_positionOpenedAt>0 && (tick.time-g_positionOpenedAt)>=R10_MAX_HOLD_SECONDS)
@@ -1058,7 +1181,6 @@ void ManagePosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_T
    {
       if((tick.bid-openPrice)+1e-12<R10_HARVEST_ACTIVATION_PRICE)
          return;
-      g_tradeHarvestArmed=true;
       candidate=NormalizePrice(tick.bid-R10_HARVEST_TRAIL_PRICE);
       candidate=MathMin(candidate,NormalizePrice(tick.bid-brokerDistance-tickSize));
       if(candidate<=0.0 || candidate<=currentSL+tickSize*0.5)
@@ -1068,7 +1190,6 @@ void ManagePosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_T
    {
       if((openPrice-tick.ask)+1e-12<R10_HARVEST_ACTIVATION_PRICE)
          return;
-      g_tradeHarvestArmed=true;
       candidate=NormalizePrice(tick.ask+R10_HARVEST_TRAIL_PRICE);
       candidate=MathMax(candidate,NormalizePrice(tick.ask+brokerDistance+tickSize));
       if(candidate<=0.0 || (currentSL>0.0 && candidate>=currentSL-tickSize*0.5))
@@ -1078,6 +1199,8 @@ void ManagePosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_T
    ResetLastError();
    if(!trade.PositionModify(ticket,candidate,0.0) || !ResultAccepted())
       LogTradeFailure("harvest trail modify");
+   else
+      g_tradeHarvestArmed=true;
 }
 
 bool ComputeMicroBoundary(const int seconds,double &hi,double &lo)
@@ -1132,17 +1255,20 @@ bool ProcessP7Compression(const MqlTick &tick)
    if(eventSide==0)
       return false;
 
-   string state="P7_COMPRESSION_BREAK";
+   const string eventLabel="P7_COMPRESSION_BREAK";
+   string action="ABSTAIN";
    double alignedRet1=0.0,range1=0.0;
    int ticks1=0;
-   int tradeSide=RouteAuctionEvent(eventSide,alignedRet1,range1,ticks1,state);
-   tradeSide=ApplyPostCatastropheKeepFlip(tradeSide,eventSide,state,tick.time);
+   int tradeSide=RouteAuctionEvent(eventSide,alignedRet1,range1,ticks1,action);
+   tradeSide=ApplyPostCatastropheKeepFlip(tradeSide,eventSide,1,action,tick.time);
 
    g_lastP7TriggerMinute=minute; // consume the compression event once per minute
    if(tradeSide==0 || !CatastropheMemoryAllows(tradeSide,tick.time))
       return false;
 
-   return OpenBoundaryTrade(tradeSide,eventSide,R10_SLEEVE_P9_ACCEPT,1,state,tick,
+   const string state=ComposeStateLabel(eventLabel,eventSide,action);
+   const double stateWeight=StabilityWeightForAuctionState(1,eventSide,eventLabel,action);
+   return OpenBoundaryTrade(tradeSide,eventSide,R10_SLEEVE_P9_ACCEPT,1,state,stateWeight,tick,
                             alignedRet1,range1,ticks1);
 }
 
@@ -1202,19 +1328,20 @@ bool ProcessBoundaryAuctions(const MqlTick &tick)
 
    const int eventSide=g_boundarySide;
    const ENUM_R10_SLEEVE sleeve=(isSweep?R10_SLEEVE_P8_SWEEP:R10_SLEEVE_P9_ACCEPT);
-   string state=(isSweep?"P8_SWEEP_RECLAIM":"P9_ACCEPTANCE");
+   const string eventLabel=(isSweep?"P8_SWEEP_RECLAIM":"P9_ACCEPTANCE");
+   string action="ABSTAIN";
    double alignedRet1=0.0,range1=0.0;
    int ticks1=0;
-   int tradeSide=RouteAuctionEvent(eventSide,alignedRet1,range1,ticks1,state);
-   tradeSide=ApplyPostCatastropheKeepFlip(tradeSide,eventSide,state,tick.time);
+   int tradeSide=RouteAuctionEvent(eventSide,alignedRet1,range1,ticks1,action);
+   tradeSide=ApplyPostCatastropheKeepFlip(tradeSide,eventSide,1,action,tick.time);
 
-   // Boundary event type is primary context, but action selection remains causal.
-   // If the S1 action layer abstains, do not force a reversal or continuation.
+   // Boundary identity and action identity remain separate through the governor.
    if(tradeSide==0)
    {
       if(InpVerbose)
-         PrintFormat("%s: %s ABSTAIN boundary=%.3f eventSide=%d ret1=%.3f range1=%.3f ticks1=%d",
-                     EA_TAG,state,g_boundaryPrice,eventSide,alignedRet1,range1,ticks1);
+         PrintFormat("%s: %s_%s|%s ABSTAIN boundary=%.3f ret1=%.3f range1=%.3f ticks1=%d",
+                     EA_TAG,eventLabel,DirectionTag(eventSide),action,
+                     g_boundaryPrice,alignedRet1,range1,ticks1);
       ResetBoundaryState();
       return false;
    }
@@ -1225,7 +1352,10 @@ bool ProcessBoundaryAuctions(const MqlTick &tick)
       return false;
    }
 
-   const bool opened=OpenBoundaryTrade(tradeSide,eventSide,sleeve,1,state,tick,alignedRet1,range1,ticks1);
+   const string state=ComposeStateLabel(eventLabel,eventSide,action);
+   const double stateWeight=StabilityWeightForAuctionState(1,eventSide,eventLabel,action);
+   const bool opened=OpenBoundaryTrade(tradeSide,eventSide,sleeve,1,state,stateWeight,tick,
+                                       alignedRet1,range1,ticks1);
    ResetBoundaryState();
    return opened;
 }
@@ -1324,24 +1454,28 @@ bool ProcessOneScaleBoundary(const int idx,const MqlTick &tick)
       return false;
 
    const int eventSide=g_msSide[idx];
-   string state="";
+   string eventLabel="";
    if(minutes==3)
-      state=(isSweep?"P12_3M_SWEEP":"P11_3M_ACCEPT");
+      eventLabel=(isSweep?"P12_3M_SWEEP":"P11_3M_ACCEPT");
    else
-      state=StringFormat("P13_%dM_%s",minutes,(isSweep?"SWEEP":"ACCEPT"));
+      eventLabel=StringFormat("P13_%dM_%s",minutes,(isSweep?"SWEEP":"ACCEPT"));
 
+   string action="ABSTAIN";
    double alignedRet1=0.0,range1=0.0;
    int ticks1=0;
-   int tradeSide=RouteAuctionEvent(eventSide,alignedRet1,range1,ticks1,state);
-   tradeSide=ApplyPostCatastropheKeepFlip(tradeSide,eventSide,state,tick.time);
+   int tradeSide=RouteAuctionEvent(eventSide,alignedRet1,range1,ticks1,action);
+   tradeSide=ApplyPostCatastropheKeepFlip(tradeSide,eventSide,minutes,action,tick.time);
    if(tradeSide==0 || !CatastropheMemoryAllows(tradeSide,tick.time))
    {
       ResetScaleBoundary(idx);
       return false;
    }
 
+   const string state=ComposeStateLabel(eventLabel,eventSide,action);
+   const double stateWeight=StabilityWeightForAuctionState(minutes,eventSide,eventLabel,action);
    const ENUM_R10_SLEEVE sleeve=(isSweep?R10_SLEEVE_P8_SWEEP:R10_SLEEVE_P9_ACCEPT);
-   const bool opened=OpenBoundaryTrade(tradeSide,eventSide,sleeve,minutes,state,tick,alignedRet1,range1,ticks1);
+   const bool opened=OpenBoundaryTrade(tradeSide,eventSide,sleeve,minutes,state,stateWeight,tick,
+                                       alignedRet1,range1,ticks1);
    ResetScaleBoundary(idx);
    return opened;
 }
@@ -1476,13 +1610,16 @@ void ProcessEntries(const MqlTick &tick)
    if(!R9EventQualityForSide(eventSide,disp10,eff10,range10,turns10))
       return;
 
+   const string eventLabel="R9_ACTIVITY";
    double alignedRet1=0.0,range1=0.0;
    int ticks1=0;
-   string routerState="ABSTAIN";
-   int tradeSide=RouteAuctionEvent(eventSide,alignedRet1,range1,ticks1,routerState);
+   string action="ABSTAIN";
+   int tradeSide=RouteAuctionEvent(eventSide,alignedRet1,range1,ticks1,action);
    double atrRatio=1.0;
-   tradeSide=ApplyP4P6StateOverlay(eventSide,eff10,tradeSide,routerState,atrRatio);
-   tradeSide=ApplyPostCatastropheKeepFlip(tradeSide,eventSide,routerState,tick.time);
+   tradeSide=ApplyP4P6StateOverlay(eventSide,eff10,tradeSide,action,atrRatio);
+   tradeSide=ApplyPostCatastropheKeepFlip(tradeSide,eventSide,1,action,tick.time);
+   const string routerState=ComposeStateLabel(eventLabel,eventSide,action);
+   const double stateWeight=StabilityWeightForAuctionState(1,eventSide,eventLabel,action);
    if(tradeSide==0)
    {
       if(InpVerbose)
@@ -1506,7 +1643,7 @@ void ProcessEntries(const MqlTick &tick)
       return;
    }
 
-   if(PortfolioAllows(tradeSide,1,g_lastRouterStrength))
+   if(PortfolioAllows(tradeSide,1,g_lastRouterStrength,stateWeight))
    {
       OpenTrade(tradeSide,eventSide,routerState,tick,alignedRet1,range1,ticks1);
    }
@@ -1567,12 +1704,36 @@ void ManageAuxPositions(const MqlTick &tick)
          continue;
       }
 
+      const int tradeSide=(type==POSITION_TYPE_BUY?1:-1);
       const double favorable=(type==POSITION_TYPE_BUY?(tick.bid-openPrice):(openPrice-tick.ask));
+      const double adverse=(type==POSITION_TYPE_BUY?(openPrice-tick.bid):(tick.ask-openPrice));
+      if(auxSlot>=0)
+      {
+         if(favorable>g_auxMFE[auxSlot]) g_auxMFE[auxSlot]=favorable;
+         if(adverse>g_auxMAE[auxSlot]) g_auxMAE[auxSlot]=adverse;
+      }
+
+      // Apply P3 only to HFT auction sleeves. H1/H4 structural P5 has its own lifecycle.
+      if(scale<=20 && auxSlot>=0 && !g_auxHarvestArmed[auxSlot])
+      {
+         double p3Atr=0.0,p3Disp=0.0,p3Eff=0.0;
+         const int age=(int)(tick.time-opened);
+         if(FailedIgnitionState(tradeSide,age,g_auxMFE[auxSlot],g_auxMAE[auxSlot],
+                                p3Atr,p3Disp,p3Eff))
+         {
+            ResetLastError();
+            if(!trade.PositionClose(ticket) || !ResultAccepted())
+               LogTradeFailure("aux P3 failed-ignition close");
+            else if(InpVerbose)
+               PrintFormat("%s: AUX_P3_FAILED_EXIT scale=%d MFE=%.3f MAE=%.3f ATR=%.3f adverseDisp=%.3f eff=%.3f age=%d",
+                           EA_TAG,scale,g_auxMFE[auxSlot],g_auxMAE[auxSlot],
+                           p3Atr,p3Disp,p3Eff,age);
+            continue;
+         }
+      }
+
       if(favorable+1e-12<activation)
          continue;
-
-      if(auxSlot>=0)
-         g_auxHarvestArmed[auxSlot]=true;
 
       const double brokerDistance=InpRespectBrokerStops?BrokerStopsDistance():0.0;
       const double ts=TickSize();
@@ -1593,6 +1754,8 @@ void ManageAuxPositions(const MqlTick &tick)
       ResetLastError();
       if(!trade.PositionModify(ticket,candidate,0.0) || !ResultAccepted())
          LogTradeFailure("aux harvest modify");
+      else if(auxSlot>=0)
+         g_auxHarvestArmed[auxSlot]=true;
    }
 }
 
@@ -1646,6 +1809,10 @@ int OnInit()
 {
    if(InpLots<=0.0 || InpHunterPipPrice<=0.0 || InpAtrPeriod<=0 || InpDeviationPoints<0 ||
       InpAtrBaselineBars<5 || InpP3EvaluateAfterSeconds<1 || InpP3MinMFEToKeep<0.0 ||
+      InpP3MinMAEAtr<=0.0 || InpP3AdverseLookbackSec<2 ||
+      InpP3AdverseLookbackSec>=MICRO_CAPACITY ||
+      InpP3MinAdverseEfficiency<0.0 || InpP3MinAdverseEfficiency>1.0 ||
+      InpP3MinAdverseDispAtr<0.0 ||
       InpP5H1BreakoutBars<2 || InpP5H4BreakoutBars<2 || InpP5AtrBaselineBars<5 ||
       InpP5StopAtr<=0.0 || InpP5ActivationAtr<0.0 || InpP5TrailAtr<=0.0 ||
       InpP5H1MaxHoldSeconds<=0 || InpP5H4MaxHoldSeconds<=0 ||
@@ -1660,6 +1827,12 @@ int OnInit()
       InpMaxOpposingPositions<0 || InpMaxOpposingPositions>InpMaxPortfolioPositions ||
       InpOppositionPenalty<0.0 || InpMinPortfolioEntryScore<0.0 ||
       InpKeepFlipWindowSeconds<0 || InpKeepFlipMinStrength<0.0 ||
+      InpStateWeightDefault<0.0 || InpStateWeightDefault>1.0 ||
+      InpWeight1mUpAcceptContinue<0.0 || InpWeight1mUpAcceptContinue>1.0 ||
+      InpWeightDownAcceptFade<0.0 || InpWeightDownAcceptFade>1.0 ||
+      InpWeightUpReclaimFade<0.0 || InpWeightUpReclaimFade>1.0 ||
+      InpWeightShortDownReclaimContinue<0.0 || InpWeightShortDownReclaimContinue>1.0 ||
+      InpWeightLongDownAcceptFade<0.0 || InpWeightLongDownAcceptFade>1.0 ||
       InpStability1m<0.0 || InpStability1m>1.0 ||
       InpStability3m<0.0 || InpStability3m>1.0 ||
       InpStability5m<0.0 || InpStability5m>1.0 ||
@@ -1667,7 +1840,7 @@ int OnInit()
       InpStability20m<0.0 || InpStability20m>1.0 ||
       InpStabilityH1<0.0 || InpStabilityH1>1.0 ||
       InpStabilityH4<0.0 || InpStabilityH4>1.0 ||
-      InpP3AdverseExitPrice<0.0 || InpP4MaxEfficiency<0.0 || InpP4MaxEfficiency>1.0 ||
+      InpP4MaxEfficiency<0.0 || InpP4MaxEfficiency>1.0 ||
       InpP6MinEfficiency<0.0 || InpP6MinEfficiency>1.0)
    {
       Print(EA_TAG,": invalid inputs");
@@ -1719,9 +1892,10 @@ int OnInit()
 
    double cont=0.0,fade=0.0;
    RouterThresholds(cont,fade);
-   PrintFormat("%s initialized profile=%d CONT<=%.3f FADE>=%.3f range1>=0.285 fadeTicks>=5 emergency=%.2f activation=%.2f trail=%.2f memory=%ds",
+   PrintFormat("%s initialized profile=%d CONT<=%.3f FADE>=%.3f range1>=0.285 fadeTicks>=5 emergency=%.2f activation=%.2f trail=%.2f memory=%ds P3_age=%ds P3_MAE=%.2fATR stateGuard=%s",
                EA_TAG,(int)InpRouterProfile,cont,fade,R10_EMERGENCY_STOP_PRICE,
-               R10_HARVEST_ACTIVATION_PRICE,R10_HARVEST_TRAIL_PRICE,R10_CATASTROPHE_MEMORY_SEC);
+               R10_HARVEST_ACTIVATION_PRICE,R10_HARVEST_TRAIL_PRICE,R10_CATASTROPHE_MEMORY_SEC,
+               InpP3EvaluateAfterSeconds,InpP3MinMAEAtr,(InpUseKnownStateGuard?"ON":"OFF"));
    return INIT_SUCCEEDED;
 }
 
@@ -1779,8 +1953,13 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
    const ENUM_DEAL_TYPE dealType=(ENUM_DEAL_TYPE)HistoryDealGetInteger(trans.deal,DEAL_TYPE);
    const int closedSide=(dealType==DEAL_TYPE_SELL?1:(dealType==DEAL_TYPE_BUY?-1:0));
    const int auxSlot=AuxSlotFromMagic(magic);
+   const int closedScale=ScaleFromMagic(magic);
    const bool harvestCondition=(magic==InpMagic ? !g_tradeHarvestArmed :
                                 (auxSlot>=0 ? !g_auxHarvestArmed[auxSlot] : true));
+   const double closedMFE=(magic==InpMagic ? g_tradeMFE :
+                           (auxSlot>=0 ? g_auxMFE[auxSlot] : 0.0));
+   const double closedMAE=(magic==InpMagic ? g_tradeMAE :
+                           (auxSlot>=0 ? g_auxMAE[auxSlot] : 0.0));
 
    if(reason==DEAL_REASON_SL && profit<0.0 && harvestCondition && closedSide!=0)
    {
@@ -1788,17 +1967,20 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
       const datetime dealTime=(datetime)HistoryDealGetInteger(trans.deal,DEAL_TIME);
       g_catastropheBlockedUntil=dealTime+R10_CATASTROPHE_MEMORY_SEC;
       g_lastCatastropheSide=closedSide;
+      g_lastCatastropheScale=closedScale;
       g_lastCatastropheAt=dealTime;
       if(InpVerbose)
-         PrintFormat("%s: CATASTROPHE side=%d profit=%.2f blockUntil=%s MFE=%.3f MAE=%.3f",
-                     EA_TAG,g_catastropheBlockedSide,profit,
+         PrintFormat("%s: CATASTROPHE scale=%d side=%d profit=%.2f blockUntil=%s MFE=%.3f MAE=%.3f",
+                     EA_TAG,closedScale,g_catastropheBlockedSide,profit,
                      TimeToString(g_catastropheBlockedUntil,TIME_DATE|TIME_SECONDS),
-                     g_tradeMFE,g_tradeMAE);
+                     closedMFE,closedMAE);
    }
 
    if(auxSlot>=0)
    {
       g_auxHarvestArmed[auxSlot]=false;
       g_auxAtrAtEntry[auxSlot]=0.0;
+      g_auxMFE[auxSlot]=0.0;
+      g_auxMAE[auxSlot]=0.0;
    }
 }
