@@ -1,7 +1,7 @@
 #property copyright "Clean-room behavioral reconstruction for AnhTranHarris"
-#property version   "2.04"
+#property version   "2.05"
 #property strict
-#property description "Gold MUWHAHA R10-from-R9 checkpoint 04: R9-derived R10 plus P3/P4/P5/P6 and causal P8 sweep/reclaim + P9 acceptance boundary auctions."
+#property description "Gold MUWHAHA R10-from-R9 checkpoint 05: R9-derived R10 with P8/P9 propagated through the 1m/3m/5m/10m/20m P11/P12/P13 boundary hierarchy."
 
 #include <Trade/Trade.mqh>
 CTrade trade;
@@ -83,6 +83,13 @@ input double InpBoundaryReclaimBuffer     = 0.01;
 input double InpBoundaryAcceptanceBuffer  = 0.05;
 input int    InpBoundaryAcceptanceSeconds = 2;
 input int    InpBoundaryExpirySeconds     = 15;
+
+input group "R10 P11/P12/P13 multiscale boundary hierarchy"
+input bool InpUseMultiscaleBoundaries = true;
+input bool InpUseScale3m  = true;
+input bool InpUseScale5m  = true;
+input bool InpUseScale10m = true;
+input bool InpUseScale20m = true;
 
 input group "R10 broker normalization"
 input double InpHunterPipPrice     = 0.01;
@@ -166,6 +173,13 @@ bool g_boundaryActive=false;
 int g_boundarySide=0;
 double g_boundaryPrice=0.0;
 datetime g_boundaryStartedAt=0;
+
+#define MS_BOUNDARY_COUNT 4
+int      g_msMinutes[MS_BOUNDARY_COUNT]={3,5,10,20};
+bool     g_msActive[MS_BOUNDARY_COUNT];
+int      g_msSide[MS_BOUNDARY_COUNT];
+double   g_msPrice[MS_BOUNDARY_COUNT];
+datetime g_msStartedAt[MS_BOUNDARY_COUNT];
 
 int g_catastropheBlockedSide=0;
 datetime g_catastropheBlockedUntil=0;
@@ -947,6 +961,135 @@ bool ProcessBoundaryAuctions(const MqlTick &tick)
    return opened;
 }
 
+bool ScaleEnabled(const int minutes)
+{
+   if(minutes==3) return InpUseScale3m;
+   if(minutes==5) return InpUseScale5m;
+   if(minutes==10) return InpUseScale10m;
+   if(minutes==20) return InpUseScale20m;
+   return false;
+}
+
+bool ComputeCompletedMinuteBoundary(const int minutes,double &hi,double &lo)
+{
+   hi=-DBL_MAX;
+   lo=DBL_MAX;
+   if(minutes<1)
+      return false;
+
+   MqlRates rates[];
+   ArraySetAsSeries(rates,true);
+   if(CopyRates(_Symbol,PERIOD_M1,1,minutes,rates)!=minutes)
+      return false;
+
+   for(int i=0;i<minutes;i++)
+   {
+      if(rates[i].high>hi) hi=rates[i].high;
+      if(rates[i].low<lo) lo=rates[i].low;
+   }
+   return (hi>-DBL_MAX/2.0 && lo<DBL_MAX/2.0 && hi>lo);
+}
+
+void ResetScaleBoundary(const int idx)
+{
+   if(idx<0 || idx>=MS_BOUNDARY_COUNT) return;
+   g_msActive[idx]=false;
+   g_msSide[idx]=0;
+   g_msPrice[idx]=0.0;
+   g_msStartedAt[idx]=0;
+}
+
+bool ProcessOneScaleBoundary(const int idx,const MqlTick &tick)
+{
+   if(idx<0 || idx>=MS_BOUNDARY_COUNT)
+      return false;
+   const int minutes=g_msMinutes[idx];
+   if(!ScaleEnabled(minutes))
+      return false;
+
+   double hi=0.0,lo=0.0;
+   if(!ComputeCompletedMinuteBoundary(minutes,hi,lo))
+      return false;
+
+   if(!g_msActive[idx])
+   {
+      if(tick.ask>=hi+InpBoundaryMinPenetration)
+      {
+         g_msActive[idx]=true;
+         g_msSide[idx]=1;
+         g_msPrice[idx]=hi;
+         g_msStartedAt[idx]=tick.time;
+      }
+      else if(tick.bid<=lo-InpBoundaryMinPenetration)
+      {
+         g_msActive[idx]=true;
+         g_msSide[idx]=-1;
+         g_msPrice[idx]=lo;
+         g_msStartedAt[idx]=tick.time;
+      }
+      return false;
+   }
+
+   if((tick.time-g_msStartedAt[idx])>InpBoundaryExpirySeconds)
+   {
+      ResetScaleBoundary(idx);
+      return false;
+   }
+
+   bool isSweep=false;
+   bool isAccept=false;
+   if(g_msSide[idx]>0)
+   {
+      isSweep=(tick.bid<=g_msPrice[idx]-InpBoundaryReclaimBuffer);
+      isAccept=((tick.time-g_msStartedAt[idx])>=InpBoundaryAcceptanceSeconds &&
+                tick.bid>=g_msPrice[idx]+InpBoundaryAcceptanceBuffer);
+   }
+   else
+   {
+      isSweep=(tick.ask>=g_msPrice[idx]+InpBoundaryReclaimBuffer);
+      isAccept=((tick.time-g_msStartedAt[idx])>=InpBoundaryAcceptanceSeconds &&
+                tick.ask<=g_msPrice[idx]-InpBoundaryAcceptanceBuffer);
+   }
+
+   if(!isSweep && !isAccept)
+      return false;
+
+   const int eventSide=g_msSide[idx];
+   string state="";
+   if(minutes==3)
+      state=(isSweep?"P12_3M_SWEEP":"P11_3M_ACCEPT");
+   else
+      state=StringFormat("P13_%dM_%s",minutes,(isSweep?"SWEEP":"ACCEPT"));
+
+   double alignedRet1=0.0,range1=0.0;
+   int ticks1=0;
+   int tradeSide=RouteAuctionEvent(eventSide,alignedRet1,range1,ticks1,state);
+   if(tradeSide==0 || !CatastropheMemoryAllows(tradeSide,tick.time))
+   {
+      ResetScaleBoundary(idx);
+      return false;
+   }
+
+   const ENUM_R10_SLEEVE sleeve=(isSweep?R10_SLEEVE_P8_SWEEP:R10_SLEEVE_P9_ACCEPT);
+   const bool opened=OpenBoundaryTrade(tradeSide,eventSide,sleeve,state,tick,alignedRet1,range1,ticks1);
+   ResetScaleBoundary(idx);
+   return opened;
+}
+
+bool ProcessMultiscaleBoundaries(const MqlTick &tick)
+{
+   if(!InpUseMultiscaleBoundaries)
+      return false;
+
+   // Larger scales first only establishes deterministic event ordering while
+   // this checkpoint is still one-position-at-a-time. It is removed by the
+   // later portfolio/concurrency checkpoint.
+   for(int idx=MS_BOUNDARY_COUNT-1;idx>=0;--idx)
+      if(ProcessOneScaleBoundary(idx,tick))
+         return true;
+   return false;
+}
+
 bool P5Signal(const ENUM_TIMEFRAMES tf,const int breakoutBars,const double maxVolRatio,
               const int atrHandle,datetime &lastProcessedBar,int &side,double &atr)
 {
@@ -1139,7 +1282,14 @@ void Reconcile(const MqlTick &tick)
    ProcessEntries(tick);
 
    // P8/P9 become an independent causal opportunity family once the R9 core
-   // remains flat on this tick.
+   // remains flat on this tick. P11/P12/P13 propagate the same event family
+   // across 3m/5m/10m/20m completed boundaries.
+   ulong msTicket=0; ENUM_POSITION_TYPE msType=POSITION_TYPE_BUY;
+   double msOpen=0.0,msSL=0.0;
+   if(!FindOurPosition(msTicket,msType,msOpen,msSL))
+      ProcessMultiscaleBoundaries(tick);
+
+   // One-minute P8/P9 family.
    ulong boundaryTicket=0; ENUM_POSITION_TYPE boundaryType=POSITION_TYPE_BUY;
    double boundaryOpen=0.0,boundarySL=0.0;
    if(!FindOurPosition(boundaryTicket,boundaryType,boundaryOpen,boundarySL))
