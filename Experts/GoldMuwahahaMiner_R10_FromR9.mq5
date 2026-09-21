@@ -1,7 +1,7 @@
 #property copyright "Clean-room behavioral reconstruction for AnhTranHarris"
-#property version   "2.03"
+#property version   "2.04"
 #property strict
-#property description "Gold MUWHAHA R10-from-R9 checkpoint 03: R9-derived R10 plus P3/P4/P6 and independent H1/H4 P5 structural trend sleeve."
+#property description "Gold MUWHAHA R10-from-R9 checkpoint 04: R9-derived R10 plus P3/P4/P5/P6 and causal P8 sweep/reclaim + P9 acceptance boundary auctions."
 
 #include <Trade/Trade.mqh>
 CTrade trade;
@@ -18,7 +18,9 @@ enum ENUM_R10_SLEEVE
 {
    R10_SLEEVE_CORE = 0,
    R10_SLEEVE_P5_H1 = 51,
-   R10_SLEEVE_P5_H4 = 54
+   R10_SLEEVE_P5_H4 = 54,
+   R10_SLEEVE_P8_SWEEP = 81,
+   R10_SLEEVE_P9_ACCEPT = 91
 };
 
 enum ENUM_R10_ROUTER_PROFILE
@@ -72,6 +74,15 @@ input double InpP5ActivationAtr       = 0.25;
 input double InpP5TrailAtr            = 1.00;
 input int    InpP5H1MaxHoldSeconds    = 43200;
 input int    InpP5H4MaxHoldSeconds    = 86400;
+
+input group "R10 P8/P9 one-minute boundary auctions"
+input bool   InpUseBoundaryAuctions       = true;
+input int    InpBoundaryLookbackSeconds   = 60;
+input double InpBoundaryMinPenetration    = 0.05;
+input double InpBoundaryReclaimBuffer     = 0.01;
+input double InpBoundaryAcceptanceBuffer  = 0.05;
+input int    InpBoundaryAcceptanceSeconds = 2;
+input int    InpBoundaryExpirySeconds     = 15;
 
 input group "R10 broker normalization"
 input double InpHunterPipPrice     = 0.01;
@@ -150,6 +161,11 @@ ENUM_R10_SLEEVE g_activeSleeve=R10_SLEEVE_CORE;
 double g_structAtrAtEntry=0.0;
 datetime g_lastP5H1Bar=0;
 datetime g_lastP5H4Bar=0;
+
+bool g_boundaryActive=false;
+int g_boundarySide=0;
+double g_boundaryPrice=0.0;
+datetime g_boundaryStartedAt=0;
 
 int g_catastropheBlockedSide=0;
 datetime g_catastropheBlockedUntil=0;
@@ -614,6 +630,18 @@ bool FindOurPosition(ulong &ticket,ENUM_POSITION_TYPE &type,double &openPrice,do
    return false;
 }
 
+bool OpenBoundaryTrade(const int tradeSide,const int eventSide,const ENUM_R10_SLEEVE sleeve,
+                       const string state,const MqlTick &tick,const double alignedRet1,
+                       const double range1,const int ticks1)
+{
+   const bool ok=OpenTrade(tradeSide,eventSide,state,tick,alignedRet1,range1,ticks1);
+   if(!ok) return false;
+   g_activeSleeve=sleeve;
+   g_tradeCycleMinute=0;
+   g_lastEventSide=0;
+   return true;
+}
+
 bool OpenStructuralTrade(const int side,const ENUM_R10_SLEEVE sleeve,const double atr,const MqlTick &tick)
 {
    const double volume=NormalizeVolume(InpLots);
@@ -813,6 +841,112 @@ void ManagePosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_T
       LogTradeFailure("harvest trail modify");
 }
 
+bool ComputeMicroBoundary(const int seconds,double &hi,double &lo)
+{
+   hi=-DBL_MAX;
+   lo=DBL_MAX;
+   if(seconds<5 || g_microCount<seconds)
+      return false;
+   for(int offset=0;offset<seconds;offset++)
+   {
+      const int idx=RingIndexFromNewest(offset);
+      if(g_micro[idx].high>hi) hi=g_micro[idx].high;
+      if(g_micro[idx].low<lo) lo=g_micro[idx].low;
+   }
+   return (hi>-DBL_MAX/2.0 && lo<DBL_MAX/2.0 && hi>lo);
+}
+
+void ResetBoundaryState()
+{
+   g_boundaryActive=false;
+   g_boundarySide=0;
+   g_boundaryPrice=0.0;
+   g_boundaryStartedAt=0;
+}
+
+bool ProcessBoundaryAuctions(const MqlTick &tick)
+{
+   if(!InpUseBoundaryAuctions)
+      return false;
+
+   double hi=0.0,lo=0.0;
+   if(!ComputeMicroBoundary(InpBoundaryLookbackSeconds,hi,lo))
+      return false;
+
+   if(!g_boundaryActive)
+   {
+      if(tick.ask>=hi+InpBoundaryMinPenetration)
+      {
+         g_boundaryActive=true;
+         g_boundarySide=1;
+         g_boundaryPrice=hi;
+         g_boundaryStartedAt=tick.time;
+         return false;
+      }
+      if(tick.bid<=lo-InpBoundaryMinPenetration)
+      {
+         g_boundaryActive=true;
+         g_boundarySide=-1;
+         g_boundaryPrice=lo;
+         g_boundaryStartedAt=tick.time;
+         return false;
+      }
+      return false;
+   }
+
+   if((tick.time-g_boundaryStartedAt)>InpBoundaryExpirySeconds)
+   {
+      ResetBoundaryState();
+      return false;
+   }
+
+   bool isSweep=false;
+   bool isAccept=false;
+   if(g_boundarySide>0)
+   {
+      isSweep=(tick.bid<=g_boundaryPrice-InpBoundaryReclaimBuffer);
+      isAccept=((tick.time-g_boundaryStartedAt)>=InpBoundaryAcceptanceSeconds &&
+                tick.bid>=g_boundaryPrice+InpBoundaryAcceptanceBuffer);
+   }
+   else
+   {
+      isSweep=(tick.ask>=g_boundaryPrice+InpBoundaryReclaimBuffer);
+      isAccept=((tick.time-g_boundaryStartedAt)>=InpBoundaryAcceptanceSeconds &&
+                tick.ask<=g_boundaryPrice-InpBoundaryAcceptanceBuffer);
+   }
+
+   if(!isSweep && !isAccept)
+      return false;
+
+   const int eventSide=g_boundarySide;
+   const ENUM_R10_SLEEVE sleeve=(isSweep?R10_SLEEVE_P8_SWEEP:R10_SLEEVE_P9_ACCEPT);
+   string state=(isSweep?"P8_SWEEP_RECLAIM":"P9_ACCEPTANCE");
+   double alignedRet1=0.0,range1=0.0;
+   int ticks1=0;
+   int tradeSide=RouteAuctionEvent(eventSide,alignedRet1,range1,ticks1,state);
+
+   // Boundary event type is primary context, but action selection remains causal.
+   // If the S1 action layer abstains, do not force a reversal or continuation.
+   if(tradeSide==0)
+   {
+      if(InpVerbose)
+         PrintFormat("%s: %s ABSTAIN boundary=%.3f eventSide=%d ret1=%.3f range1=%.3f ticks1=%d",
+                     EA_TAG,state,g_boundaryPrice,eventSide,alignedRet1,range1,ticks1);
+      ResetBoundaryState();
+      return false;
+   }
+
+   if(!CatastropheMemoryAllows(tradeSide,tick.time))
+   {
+      ResetBoundaryState();
+      return false;
+   }
+
+   const bool opened=OpenBoundaryTrade(tradeSide,eventSide,sleeve,state,tick,alignedRet1,range1,ticks1);
+   ResetBoundaryState();
+   return opened;
+}
+
 bool P5Signal(const ENUM_TIMEFRAMES tf,const int breakoutBars,const double maxVolRatio,
               const int atrHandle,datetime &lastProcessedBar,int &side,double &atr)
 {
@@ -1004,6 +1138,13 @@ void Reconcile(const MqlTick &tick)
    StartMinuteCycle(tick);
    ProcessEntries(tick);
 
+   // P8/P9 become an independent causal opportunity family once the R9 core
+   // remains flat on this tick.
+   ulong boundaryTicket=0; ENUM_POSITION_TYPE boundaryType=POSITION_TYPE_BUY;
+   double boundaryOpen=0.0,boundarySL=0.0;
+   if(!FindOurPosition(boundaryTicket,boundaryType,boundaryOpen,boundarySL))
+      ProcessBoundaryAuctions(tick);
+
    // Structural sleeve is intentionally subordinate at this one-position checkpoint.
    // It enters only when the R9-derived core did not open a position on this tick.
    ulong postTicket=0; ENUM_POSITION_TYPE postType=POSITION_TYPE_BUY;
@@ -1019,6 +1160,10 @@ int OnInit()
       InpP5H1BreakoutBars<2 || InpP5H4BreakoutBars<2 || InpP5AtrBaselineBars<5 ||
       InpP5StopAtr<=0.0 || InpP5ActivationAtr<0.0 || InpP5TrailAtr<=0.0 ||
       InpP5H1MaxHoldSeconds<=0 || InpP5H4MaxHoldSeconds<=0 ||
+      InpBoundaryLookbackSeconds<5 || InpBoundaryLookbackSeconds>=MICRO_CAPACITY ||
+      InpBoundaryMinPenetration<0.0 || InpBoundaryReclaimBuffer<0.0 ||
+      InpBoundaryAcceptanceBuffer<0.0 || InpBoundaryAcceptanceSeconds<1 ||
+      InpBoundaryExpirySeconds<InpBoundaryAcceptanceSeconds ||
       InpP3AdverseExitPrice<0.0 || InpP4MaxEfficiency<0.0 || InpP4MaxEfficiency>1.0 ||
       InpP6MinEfficiency<0.0 || InpP6MinEfficiency>1.0)
    {
