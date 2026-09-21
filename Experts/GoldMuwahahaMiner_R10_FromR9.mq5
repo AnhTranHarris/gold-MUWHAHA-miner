@@ -1,7 +1,7 @@
 #property copyright "Clean-room behavioral reconstruction for AnhTranHarris"
-#property version   "2.09"
+#property version   "2.10"
 #property strict
-#property description "Gold MUWHAHA R10-from-R9 checkpoint 09: R9-derived R10 loss-priority build plus reconstructed P7 volatility-normalized compression-break event source."
+#property description "Gold MUWHAHA R10-from-R9 Gold MUWHAHA R10 replacement candidate: cumulative R9 upgrade with validated post-R9 auction, lifecycle, multiscale and loss-priority mechanisms."
 
 #include <Trade/Trade.mqh>
 CTrade trade;
@@ -125,7 +125,7 @@ input group "R10 broker normalization"
 input double InpHunterPipPrice     = 0.01;
 input bool   InpRespectBrokerStops = true;
 
-string EA_TAG = "GM_R10_FROM_R9_09";
+string EA_TAG = "GM_R10_FINAL_CANDIDATE";
 
 // -----------------------------------------------------------------------------
 // Frozen research geometry carried from the causal R9 event population.
@@ -212,6 +212,10 @@ int      g_msSide[MS_BOUNDARY_COUNT];
 double   g_msPrice[MS_BOUNDARY_COUNT];
 datetime g_msStartedAt[MS_BOUNDARY_COUNT];
 
+#define AUX_SCALE_COUNT 7
+bool   g_auxHarvestArmed[AUX_SCALE_COUNT];
+double g_auxAtrAtEntry[AUX_SCALE_COUNT];
+
 int g_catastropheBlockedSide=0;
 datetime g_catastropheBlockedUntil=0;
 int g_lastCatastropheSide=0;
@@ -297,10 +301,19 @@ bool IsOurMagic(const ulong magic)
 int ScaleFromMagic(const ulong magic)
 {
    if(magic==InpMagic) return 1;
-   const int scales[7]={1,3,5,10,20,60,240};
-   for(int i=0;i<7;i++)
+   const int scales[AUX_SCALE_COUNT]={1,3,5,10,20,60,240};
+   for(int i=0;i<AUX_SCALE_COUNT;i++)
       if(magic==MagicForScale(scales[i])) return scales[i];
    return 0;
+}
+
+int AuxSlotFromMagic(const ulong magic)
+{
+   if(magic==InpMagic) return -1;
+   const int scales[AUX_SCALE_COUNT]={1,3,5,10,20,60,240};
+   for(int i=0;i<AUX_SCALE_COUNT;i++)
+      if(magic==MagicForScale(scales[i])) return i;
+   return -1;
 }
 
 int DirectionFromPositionType(const ENUM_POSITION_TYPE type)
@@ -848,6 +861,13 @@ bool OpenBoundaryTrade(const int tradeSide,const int eventSide,const ENUM_R10_SL
       return false;
    }
 
+   const int auxSlot=AuxSlotFromMagic(magic);
+   if(auxSlot>=0)
+   {
+      g_auxHarvestArmed[auxSlot]=false;
+      g_auxAtrAtEntry[auxSlot]=0.0;
+   }
+
    if(InpVerbose)
       PrintFormat("%s: BOUNDARY ENTRY scale=%dm state=%s side=%d ret1=%.3f range1=%.3f ticks1=%d",
                   EA_TAG,scaleMinutes,state,tradeSide,alignedRet1,range1,ticks1);
@@ -884,6 +904,13 @@ bool OpenStructuralTrade(const int side,const ENUM_R10_SLEEVE sleeve,const doubl
    {
       LogTradeFailure(label);
       return false;
+   }
+
+   const int auxSlot=AuxSlotFromMagic(magic);
+   if(auxSlot>=0)
+   {
+      g_auxHarvestArmed[auxSlot]=false;
+      g_auxAtrAtEntry[auxSlot]=atr;
    }
 
    // Structural sleeves are independent portfolio positions. Do not mutate
@@ -1504,6 +1531,7 @@ void ManageAuxPositions(const MqlTick &tick)
          continue;
 
       const int scale=ScaleFromMagic(magic);
+      const int auxSlot=AuxSlotFromMagic(magic);
       const ENUM_POSITION_TYPE type=(ENUM_POSITION_TYPE)PositionGetInteger(POSITION_TYPE);
       const double openPrice=PositionGetDouble(POSITION_PRICE_OPEN);
       const double currentSL=PositionGetDouble(POSITION_SL);
@@ -1516,12 +1544,18 @@ void ManageAuxPositions(const MqlTick &tick)
       if(scale==60 || scale==240)
       {
          maxHold=(scale==60?InpP5H1MaxHoldSeconds:InpP5H4MaxHoldSeconds);
-         const int handle=(scale==60?g_p5H1AtrHandle:g_p5H4AtrHandle);
-         double av[1];
-         if(handle!=INVALID_HANDLE && CopyBuffer(handle,0,1,1,av)==1 && av[0]>0.0)
+         double atrAtEntry=(auxSlot>=0?g_auxAtrAtEntry[auxSlot]:0.0);
+         if(atrAtEntry<=0.0)
          {
-            activation=av[0]*InpP5ActivationAtr;
-            trail=av[0]*InpP5TrailAtr;
+            const int handle=(scale==60?g_p5H1AtrHandle:g_p5H4AtrHandle);
+            double av[1];
+            if(handle!=INVALID_HANDLE && CopyBuffer(handle,0,1,1,av)==1 && av[0]>0.0)
+               atrAtEntry=av[0];
+         }
+         if(atrAtEntry>0.0)
+         {
+            activation=atrAtEntry*InpP5ActivationAtr;
+            trail=atrAtEntry*InpP5TrailAtr;
          }
       }
 
@@ -1536,6 +1570,9 @@ void ManageAuxPositions(const MqlTick &tick)
       const double favorable=(type==POSITION_TYPE_BUY?(tick.bid-openPrice):(openPrice-tick.ask));
       if(favorable+1e-12<activation)
          continue;
+
+      if(auxSlot>=0)
+         g_auxHarvestArmed[auxSlot]=true;
 
       const double brokerDistance=InpRespectBrokerStops?BrokerStopsDistance():0.0;
       const double ts=TickSize();
@@ -1741,7 +1778,9 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
    // blocks the same traded direction. Opposite-direction auctions remain eligible.
    const ENUM_DEAL_TYPE dealType=(ENUM_DEAL_TYPE)HistoryDealGetInteger(trans.deal,DEAL_TYPE);
    const int closedSide=(dealType==DEAL_TYPE_SELL?1:(dealType==DEAL_TYPE_BUY?-1:0));
-   const bool harvestCondition=(magic==InpMagic?!g_tradeHarvestArmed:true);
+   const int auxSlot=AuxSlotFromMagic(magic);
+   const bool harvestCondition=(magic==InpMagic ? !g_tradeHarvestArmed :
+                                (auxSlot>=0 ? !g_auxHarvestArmed[auxSlot] : true));
 
    if(reason==DEAL_REASON_SL && profit<0.0 && harvestCondition && closedSide!=0)
    {
@@ -1755,5 +1794,11 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
                      EA_TAG,g_catastropheBlockedSide,profit,
                      TimeToString(g_catastropheBlockedUntil,TIME_DATE|TIME_SECONDS),
                      g_tradeMFE,g_tradeMAE);
+   }
+
+   if(auxSlot>=0)
+   {
+      g_auxHarvestArmed[auxSlot]=false;
+      g_auxAtrAtEntry[auxSlot]=0.0;
    }
 }
