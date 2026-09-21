@@ -158,6 +158,8 @@ bool g_tradeP3Flip=false;
 double g_tradeMFE=0.0;
 double g_tradeMAE=0.0;
 double g_entryAtr=0.0;
+int g_pendingP3FlipSide=0;
+int g_pendingP3FlipEventSide=0;
 
 int g_atrHandle=INVALID_HANDLE;
 int g_p5H1AtrHandle=INVALID_HANDLE;
@@ -703,9 +705,10 @@ void ManageHftPosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITIO
                      EA_TAG,tradeSide,g_tradeMFE,g_tradeMAE,atr,p3Disp,p3Eff,p3Flow,age);
       if(InpP3FlipAfterExit)
       {
-         MqlTick fresh;
-         if(SymbolInfoTick(_Symbol,fresh) && fresh.bid>0.0 && fresh.ask>0.0)
-            OpenHftTrade(-tradeSide,-oldEventSide,GMM_SLEEVE_P3_FLIP,true,fresh,"P3_FLIP");
+         // Queue the reversal until the next tick confirms the failed position is gone.
+         // This avoids close/open overlap or netting-account race conditions.
+         g_pendingP3FlipSide=-tradeSide;
+         g_pendingP3FlipEventSide=-oldEventSide;
       }
       return;
    }
@@ -732,14 +735,18 @@ void ManageHftPosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITIO
       double flow=0.0,eff=0.0,disp=0.0,structural=0.0;
       if(ShouldPromoteP2Runner(tradeSide,flow,eff,disp,structural))
       {
-         g_tradeRunner=true;
          double runnerAtr=(g_entryAtr>0.0?g_entryAtr:0.0);
          if(runnerAtr<=0.0) GetCompletedAtr(runnerAtr);
-         if(InpVerbose)
-            PrintFormat("%s: P2_RUNNER_PROMOTE side=%d flow=%.3f eff=%.3f disp=%.3f structural=%.2f ATR=%.3f",
-                        EA_TAG,tradeSide,flow,eff,disp,structural,runnerAtr);
-         if(runnerAtr>0.0) ModifyTrailingStop(ticket,type,tick,runnerAtr*InpP2RunnerTrailAtr,currentSL);
-         return;
+         // Never abandon the P1 harvest lifecycle unless the runner trail can be normalized.
+         if(runnerAtr>0.0)
+         {
+            g_tradeRunner=true;
+            if(InpVerbose)
+               PrintFormat("%s: P2_RUNNER_PROMOTE side=%d flow=%.3f eff=%.3f disp=%.3f structural=%.2f ATR=%.3f",
+                           EA_TAG,tradeSide,flow,eff,disp,structural,runnerAtr);
+            ModifyTrailingStop(ticket,type,tick,runnerAtr*InpP2RunnerTrailAtr,currentSL);
+            return;
+         }
       }
    }
 
@@ -817,7 +824,6 @@ bool P5Signal(const ENUM_TIMEFRAMES tf,const int breakoutBars,const double maxVo
    side=0;atr=0.0;
    const datetime currentBar=iTime(_Symbol,tf,0);
    if(currentBar<=0 || currentBar==lastProcessedBar) return false;
-   lastProcessedBar=currentBar;
    if(breakoutBars<2 || atrHandle==INVALID_HANDLE) return false;
 
    MqlRates rates[]; ArraySetAsSeries(rates,true);
@@ -843,6 +849,8 @@ bool P5Signal(const ENUM_TIMEFRAMES tf,const int breakoutBars,const double maxVo
       mean+=hist[i];
    }
    mean/=(double)n;
+   // From this point the completed bar and ATR context were read successfully; consume it once.
+   lastProcessedBar=currentBar;
    if(mean<=0.0 || atr/mean>maxVolRatio) return false;
 
    const double close1=rates[0].close;
@@ -883,6 +891,19 @@ void Reconcile(const MqlTick &tick)
       g_hadPosition=false;
       const datetime tradeMinute=g_tradeCycleMinute;
       ResetTradeRuntime();
+
+      // Execute a P3 thesis reversal only after the terminal confirms flat state.
+      if(g_pendingP3FlipSide!=0)
+      {
+         const int flipSide=g_pendingP3FlipSide;
+         const int flipEventSide=g_pendingP3FlipEventSide;
+         g_pendingP3FlipSide=0;
+         g_pendingP3FlipEventSide=0;
+         if(GateAllowsEntry(tick))
+            OpenHftTrade(flipSide,flipEventSide,GMM_SLEEVE_P3_FLIP,true,tick,"P3_FLIP");
+         return;
+      }
+
       const datetime nowMinute=(datetime)((long)tick.time-((long)tick.time%60));
       if(closedSleeve!=GMM_SLEEVE_P5_H1 && closedSleeve!=GMM_SLEEVE_P5_H4 && nowMinute==tradeMinute && nowMinute==g_cycleMinute)
          ArmOppositeAfterExit();
