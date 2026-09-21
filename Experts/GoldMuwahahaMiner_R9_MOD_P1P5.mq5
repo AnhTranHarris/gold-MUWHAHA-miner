@@ -498,3 +498,253 @@ void ResetTradeRuntime()
    g_tradeMAE=0.0;
    g_entryAtr=0.0;
 }
+
+void InitializeTradeRuntime(const ENUM_GMM_SLEEVE sleeve,const int eventSide,const bool isP3Flip,const MqlTick &tick)
+{
+   g_activeSleeve=sleeve;
+   g_positionOpenedAt=tick.time;
+   g_tradeCycleMinute=g_cycleMinute;
+   g_lastEventSide=eventSide;
+   g_tradeHarvestArmed=false;
+   g_tradeRunner=false;
+   g_tradeP3Flip=isP3Flip;
+   g_tradeMFE=0.0;
+   g_tradeMAE=0.0;
+   double atr=0.0;
+   g_entryAtr=(GetCompletedAtr(atr)?atr:0.0);
+}
+
+bool OpenR9Trade(const int side,const MqlTick &tick)
+{
+   const double volume=NormalizeVolume(InpLots);
+   const double brokerMin=InpRespectBrokerStops?BrokerStopsDistance()+TickSize():0.0;
+   const double sd=MathMax(HunterDistance(InpStopLossPips),brokerMin);
+   double sl=0.0;bool sent=false;
+   ResetLastError();
+   if(side>0){ sl=NormalizePrice(tick.bid-sd);sent=trade.Buy(volume,_Symbol,0.0,sl,0.0,EA_TAG+" R9"); }
+   else{ sl=NormalizePrice(tick.ask+sd);sent=trade.Sell(volume,_Symbol,0.0,sl,0.0,EA_TAG+" R9"); }
+   if(!sent || !ResultAccepted()){ LogTradeFailure(side>0?"R9 BUY":"R9 SELL");return false; }
+   InitializeTradeRuntime(GMM_SLEEVE_R9,side,false,tick);
+   g_pendingMode=0;
+   return true;
+}
+
+bool OpenHftTrade(const int tradeSide,const int eventSide,const ENUM_GMM_SLEEVE sleeve,const bool isP3Flip,const MqlTick &tick,const string label)
+{
+   const double volume=NormalizeVolume(InpLots);
+   const double brokerMin=InpRespectBrokerStops?BrokerStopsDistance()+TickSize():0.0;
+   const double sd=MathMax(InpP1EmergencyStopPrice,brokerMin);
+   double sl=0.0;bool sent=false;
+   ResetLastError();
+   if(tradeSide>0){ sl=NormalizePrice(tick.bid-sd);sent=trade.Buy(volume,_Symbol,0.0,sl,0.0,EA_TAG+" "+label); }
+   else{ sl=NormalizePrice(tick.ask+sd);sent=trade.Sell(volume,_Symbol,0.0,sl,0.0,EA_TAG+" "+label); }
+   if(!sent || !ResultAccepted()){ LogTradeFailure(label);return false; }
+   InitializeTradeRuntime(sleeve,eventSide,isP3Flip,tick);
+   g_lastPositionType=(tradeSide>0?POSITION_TYPE_BUY:POSITION_TYPE_SELL);
+   g_pendingMode=0;
+   if(InpVerbose) PrintFormat("%s: %s ENTRY tradeSide=%d eventSide=%d",EA_TAG,label,tradeSide,eventSide);
+   return true;
+}
+
+bool OpenP5Trade(const int side,const ENUM_GMM_SLEEVE sleeve,const double atr,const MqlTick &tick)
+{
+   const double volume=NormalizeVolume(InpLots);
+   const double brokerMin=InpRespectBrokerStops?BrokerStopsDistance()+TickSize():0.0;
+   const double sd=MathMax(atr*InpP5StopAtr,brokerMin);
+   const string label=(sleeve==GMM_SLEEVE_P5_H4?"P5_H4":"P5_H1");
+   double sl=0.0;bool sent=false;
+   ResetLastError();
+   if(side>0){ sl=NormalizePrice(tick.bid-sd);sent=trade.Buy(volume,_Symbol,0.0,sl,0.0,EA_TAG+" "+label); }
+   else{ sl=NormalizePrice(tick.ask+sd);sent=trade.Sell(volume,_Symbol,0.0,sl,0.0,EA_TAG+" "+label); }
+   if(!sent || !ResultAccepted()){ LogTradeFailure(label);return false; }
+   InitializeTradeRuntime(sleeve,0,false,tick);
+   g_entryAtr=atr;
+   g_lastPositionType=(side>0?POSITION_TYPE_BUY:POSITION_TYPE_SELL);
+   g_pendingMode=0;
+   if(InpVerbose) PrintFormat("%s: %s ENTRY side=%d ATR=%.3f",EA_TAG,label,side,atr);
+   return true;
+}
+
+void UpdateExcursion(const MqlTick &tick,const ENUM_POSITION_TYPE type,const double openPrice)
+{
+   const double favorable=(type==POSITION_TYPE_BUY?(tick.bid-openPrice):(openPrice-tick.ask));
+   const double adverse=(type==POSITION_TYPE_BUY?(openPrice-tick.bid):(tick.ask-openPrice));
+   if(favorable>g_tradeMFE) g_tradeMFE=favorable;
+   if(adverse>g_tradeMAE) g_tradeMAE=adverse;
+}
+
+int RouteP1Event(const int eventSide,double &alignedRet1,double &range1,int &ticks1,string &label)
+{
+   alignedRet1=0.0;range1=0.0;ticks1=0;label="ABSTAIN";
+   if(g_microCount<1) return 0;
+   const int idx=RingIndexFromNewest(0);
+   const MicroBar bar=g_micro[idx];
+   alignedRet1=(bar.close-bar.open)*(double)eventSide;
+   range1=bar.high-bar.low;
+   ticks1=bar.ticks;
+   if(alignedRet1<=InpP1ContinueMaxAligned && range1+1e-12>=InpP1MinCompletedS1Range)
+   {
+      label="P1_CONT";
+      return eventSide;
+   }
+   if(alignedRet1>=InpP1FadeMinAligned && ticks1>=InpP1MinFadeTicks)
+   {
+      label="P1_FADE";
+      return -eventSide;
+   }
+   return 0;
+}
+
+bool P4Qualifies(const double eff10,double &atrRatio)
+{
+   atrRatio=1.0;
+   if(!InpUseP4Rotation) return false;
+   double atr=0.0;
+   if(!GetAtrRatio(atrRatio,atr)) return false;
+   return (atrRatio<=InpP4MaxAtrRatio+1e-12 && eff10<=InpP4MaxEfficiency+1e-12);
+}
+
+bool ShouldPromoteP2Runner(const int tradeSide,double &flow,double &eff,double &disp,double &structural)
+{
+   flow=0.0;eff=0.0;disp=0.0;structural=-1.0;
+   if(!InpUseP2Runner || g_activeSleeve!=GMM_SLEEVE_P1) return false;
+   if(!RecentPathForSide(tradeSide,InpP2LookbackSeconds,disp,eff,flow)) return false;
+   structural=StructuralAgreementForSide(tradeSide);
+   if(structural<=InpP2MinStructuralScore) return false;
+   if(flow+1e-12<InpP2MinDirectionalFlow) return false;
+   if(eff+1e-12<InpP2MinPathEfficiency) return false;
+   if(disp+1e-12<InpP2MinAlignedDispPrice) return false;
+   return true;
+}
+
+bool P3FailedIgnition(const int tradeSide,const datetime now,double &atr,double &disp,double &eff,double &flow)
+{
+   atr=0.0;disp=0.0;eff=0.0;flow=0.0;
+   if(!InpUseP3FailedIgnition || g_tradeP3Flip || g_tradeHarvestArmed || g_tradeRunner || g_positionOpenedAt<=0) return false;
+   const int age=(int)(now-g_positionOpenedAt);
+   if(age<InpP3EvaluateAfterSeconds || g_tradeMFE+1e-12>=InpP3MaxMFEToFail) return false;
+   if(!GetCompletedAtr(atr) || atr<=0.0) return false;
+   if(g_tradeMAE+1e-12<InpP3MinMAEAtr*atr) return false;
+   if(!RecentPathForSide(tradeSide,InpP3AdverseLookbackSeconds,disp,eff,flow)) return false;
+   if(disp>-InpP3MinAdverseDispAtr*atr+1e-12) return false;
+   if(eff+1e-12<InpP3MinAdverseEfficiency) return false;
+   if(flow>InpP3MaxAlignedTickFlow+1e-12) return false;
+   return true;
+}
+
+int ModifyTrailingStop(const ulong ticket,const ENUM_POSITION_TYPE type,const MqlTick &tick,const double trailDistance,const double currentSL)
+{
+   const double broker=InpRespectBrokerStops?BrokerStopsDistance():0.0;
+   const double ts=TickSize();
+   double cand=0.0;
+   if(type==POSITION_TYPE_BUY)
+   {
+      cand=NormalizePrice(tick.bid-trailDistance);
+      cand=MathMin(cand,NormalizePrice(tick.bid-broker-ts));
+      if(cand<=0.0 || cand<=currentSL+ts*0.5) return 0;
+   }
+   else
+   {
+      cand=NormalizePrice(tick.ask+trailDistance);
+      cand=MathMax(cand,NormalizePrice(tick.ask+broker+ts));
+      if(cand<=0.0 || (currentSL>0.0 && cand>=currentSL-ts*0.5)) return 0;
+   }
+   ResetLastError();
+   if(!trade.PositionModify(ticket,cand,0.0) || !ResultAccepted())
+   {
+      LogTradeFailure("trail modify");
+      return -1;
+   }
+   return 1;
+}
+
+void ManageR9Position(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_TYPE type,const double openPrice,const double currentSL)
+{
+   if(g_positionOpenedAt>0 && (tick.time-g_positionOpenedAt)>=InpMaxHoldSeconds)
+   {
+      ResetLastError();if(!trade.PositionClose(ticket) || !ResultAccepted()) LogTradeFailure("R9 max-hold close");return;
+   }
+   if(!InpTrailingEnabled || InpTrailPips<=0) return;
+   const double activation=HunterDistance(InpTrailActivationPips);
+   const double favorable=(type==POSITION_TYPE_BUY?(tick.bid-openPrice):(openPrice-tick.ask));
+   if(favorable<activation) return;
+   ModifyTrailingStop(ticket,type,tick,HunterDistance(InpTrailPips),currentSL);
+}
+
+void ManageP5Position(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_TYPE type,const double openPrice,const double currentSL)
+{
+   const int maxHold=(g_activeSleeve==GMM_SLEEVE_P5_H4?InpP5H4MaxHoldSeconds:InpP5H1MaxHoldSeconds);
+   if(g_positionOpenedAt>0 && (tick.time-g_positionOpenedAt)>=maxHold)
+   {
+      ResetLastError();if(!trade.PositionClose(ticket) || !ResultAccepted()) LogTradeFailure("P5 max-hold close");return;
+   }
+   if(g_entryAtr<=0.0) return;
+   const double favorable=(type==POSITION_TYPE_BUY?(tick.bid-openPrice):(openPrice-tick.ask));
+   if(favorable+1e-12<g_entryAtr*InpP5ActivationAtr) return;
+   if(ModifyTrailingStop(ticket,type,tick,g_entryAtr*InpP5TrailAtr,currentSL)>0) g_tradeHarvestArmed=true;
+}
+
+void ManageHftPosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_TYPE type,const double openPrice,const double currentSL)
+{
+   const int tradeSide=(type==POSITION_TYPE_BUY?1:-1);
+   double atr=0.0,p3Disp=0.0,p3Eff=0.0,p3Flow=0.0;
+   if(P3FailedIgnition(tradeSide,tick.time,atr,p3Disp,p3Eff,p3Flow))
+   {
+      const int oldEventSide=g_lastEventSide;
+      const int age=(int)(tick.time-g_positionOpenedAt);
+      ResetLastError();
+      if(!trade.PositionClose(ticket) || !ResultAccepted())
+      {
+         LogTradeFailure("P3 failed-ignition close");
+         return;
+      }
+      if(InpVerbose)
+         PrintFormat("%s: P3_FAILED_EXIT side=%d MFE=%.3f MAE=%.3f ATR=%.3f disp=%.3f eff=%.3f flow=%.3f age=%d",
+                     EA_TAG,tradeSide,g_tradeMFE,g_tradeMAE,atr,p3Disp,p3Eff,p3Flow,age);
+      if(InpP3FlipAfterExit)
+      {
+         MqlTick fresh;
+         if(SymbolInfoTick(_Symbol,fresh) && fresh.bid>0.0 && fresh.ask>0.0)
+            OpenHftTrade(-tradeSide,-oldEventSide,GMM_SLEEVE_P3_FLIP,true,fresh,"P3_FLIP");
+      }
+      return;
+   }
+
+   const int maxHold=(g_tradeRunner?InpP2RunnerMaxHoldSeconds:InpP1MaxHoldSeconds);
+   if(g_positionOpenedAt>0 && (tick.time-g_positionOpenedAt)>=maxHold)
+   {
+      ResetLastError();if(!trade.PositionClose(ticket) || !ResultAccepted()) LogTradeFailure("HFT max-hold close");return;
+   }
+
+   const double favorable=(type==POSITION_TYPE_BUY?(tick.bid-openPrice):(openPrice-tick.ask));
+   if(g_tradeRunner)
+   {
+      double runnerAtr=(g_entryAtr>0.0?g_entryAtr:0.0);
+      if(runnerAtr<=0.0) GetCompletedAtr(runnerAtr);
+      if(runnerAtr>0.0) ModifyTrailingStop(ticket,type,tick,runnerAtr*InpP2RunnerTrailAtr,currentSL);
+      return;
+   }
+
+   if(favorable+1e-12<InpP1HarvestActivationPrice) return;
+
+   if(g_activeSleeve==GMM_SLEEVE_P1 && InpUseP2Runner)
+   {
+      double flow=0.0,eff=0.0,disp=0.0,structural=0.0;
+      if(ShouldPromoteP2Runner(tradeSide,flow,eff,disp,structural))
+      {
+         g_tradeRunner=true;
+         double runnerAtr=(g_entryAtr>0.0?g_entryAtr:0.0);
+         if(runnerAtr<=0.0) GetCompletedAtr(runnerAtr);
+         if(InpVerbose)
+            PrintFormat("%s: P2_RUNNER_PROMOTE side=%d flow=%.3f eff=%.3f disp=%.3f structural=%.2f ATR=%.3f",
+                        EA_TAG,tradeSide,flow,eff,disp,structural,runnerAtr);
+         if(runnerAtr>0.0) ModifyTrailingStop(ticket,type,tick,runnerAtr*InpP2RunnerTrailAtr,currentSL);
+         return;
+      }
+   }
+
+   if(ModifyTrailingStop(ticket,type,tick,InpP1HarvestTrailPrice,currentSL)>0) g_tradeHarvestArmed=true;
+}
+
+void ManagePosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_TYPE type,const double openPrice,const double currentSL)
+{
