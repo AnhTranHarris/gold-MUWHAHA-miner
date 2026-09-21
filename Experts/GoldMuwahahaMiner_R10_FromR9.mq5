@@ -1,7 +1,7 @@
 #property copyright "Clean-room behavioral reconstruction for AnhTranHarris"
-#property version   "2.06"
+#property version   "2.07"
 #property strict
-#property description "Gold MUWHAHA R10-from-R9 checkpoint 06: R9-derived R10 with multiscale auction sleeves integrated into the four-position portfolio-knee architecture."
+#property description "Gold MUWHAHA R10-from-R9 checkpoint 07: R9-derived R10 four-sleeve portfolio plus opposition-aware heat and explicit state-stability priorities."
 
 #include <Trade/Trade.mqh>
 CTrade trade;
@@ -96,11 +96,24 @@ input int  InpMaxPortfolioPositions = 4;
 input int  InpMaxOpposingPositions  = 1;
 input bool InpRequireHedgingForConcurrency = true;
 
+input group "R10 loss-priority portfolio governor"
+input bool   InpUseOppositionHeat       = true;
+input double InpOppositionPenalty       = 0.35;
+input double InpMinPortfolioEntryScore  = 0.55;
+input bool   InpUseStateStabilityWeight = true;
+input double InpStability1m             = 1.00;
+input double InpStability3m             = 1.00;
+input double InpStability5m             = 1.00;
+input double InpStability10m            = 1.00;
+input double InpStability20m            = 1.00;
+input double InpStabilityH1             = 1.00;
+input double InpStabilityH4             = 1.00;
+
 input group "R10 broker normalization"
 input double InpHunterPipPrice     = 0.01;
 input bool   InpRespectBrokerStops = true;
 
-string EA_TAG = "GM_R10_FROM_R9_06";
+string EA_TAG = "GM_R10_FROM_R9_07";
 
 // -----------------------------------------------------------------------------
 // Frozen research geometry carried from the causal R9 event population.
@@ -193,6 +206,7 @@ int g_atrHandle=INVALID_HANDLE;
 int g_p5H1AtrHandle=INVALID_HANDLE;
 int g_p5H4AtrHandle=INVALID_HANDLE;
 datetime g_lastGateLogBar=0;
+double g_lastRouterStrength=0.0;
 
 void Log(const string text)
 {
@@ -279,7 +293,20 @@ int DirectionFromPositionType(const ENUM_POSITION_TYPE type)
    return (type==POSITION_TYPE_BUY?1:-1);
 }
 
-bool PortfolioAllows(const int side,const int scaleMinutes)
+double StabilityWeightForScale(const int scaleMinutes)
+{
+   if(!InpUseStateStabilityWeight) return 1.0;
+   if(scaleMinutes<=1) return InpStability1m;
+   if(scaleMinutes==3) return InpStability3m;
+   if(scaleMinutes==5) return InpStability5m;
+   if(scaleMinutes==10) return InpStability10m;
+   if(scaleMinutes==20) return InpStability20m;
+   if(scaleMinutes==60) return InpStabilityH1;
+   if(scaleMinutes==240) return InpStabilityH4;
+   return 1.0;
+}
+
+bool PortfolioAllows(const int side,const int scaleMinutes,const double signalStrength=1.0)
 {
    int total=0;
    int opposing=0;
@@ -305,6 +332,19 @@ bool PortfolioAllows(const int side,const int scaleMinutes)
       return false;
    if(opposing>=InpMaxOpposingPositions)
       return false;
+
+   const double stability=MathMax(0.0,MathMin(1.0,StabilityWeightForScale(scaleMinutes)));
+   double score=MathMax(0.0,signalStrength)*stability;
+   if(InpUseOppositionHeat)
+      score-=InpOppositionPenalty*(double)opposing;
+
+   if(score+1e-12<InpMinPortfolioEntryScore)
+   {
+      if(InpVerbose)
+         PrintFormat("%s: portfolio heat BLOCK scale=%d side=%d strength=%.3f stability=%.3f opposing=%d score=%.3f",
+                     EA_TAG,scaleMinutes,side,signalStrength,stability,opposing,score);
+      return false;
+   }
    return true;
 }
 
@@ -604,6 +644,7 @@ int RouteAuctionEvent(const int eventSide,double &alignedRet1,double &range1,int
    range1=0.0;
    ticks1=0;
    state="ABSTAIN";
+   g_lastRouterStrength=0.0;
 
    if(g_microCount<1)
       return 0;
@@ -622,6 +663,7 @@ int RouteAuctionEvent(const int eventSide,double &alignedRet1,double &range1,int
    if(alignedRet1<=continueMaxAligned && range1+1e-12>=0.285)
    {
       state="CONTINUE";
+      g_lastRouterStrength=MathMin(1.50,MathAbs(alignedRet1)/(MathAbs(continueMaxAligned)+1e-9));
       return eventSide;
    }
 
@@ -629,6 +671,7 @@ int RouteAuctionEvent(const int eventSide,double &alignedRet1,double &range1,int
    if(alignedRet1>=fadeMinAligned && ticks1>=5)
    {
       state="FADE";
+      g_lastRouterStrength=MathMin(1.50,alignedRet1/(fadeMinAligned+1e-9));
       return -eventSide;
    }
 
@@ -678,6 +721,9 @@ int ApplyP4P6StateOverlay(const int eventSide,const double eff10,const int baseT
    if(atrRatio<=InpP4MaxAtrRatio && eff10<=InpP4MaxEfficiency)
    {
       state="P4_ROTATION";
+      const double effStrength=(InpP4MaxEfficiency-eff10)/(InpP4MaxEfficiency+1e-9);
+      const double volStrength=(InpP4MaxAtrRatio-atrRatio)/(InpP4MaxAtrRatio+1e-9);
+      g_lastRouterStrength=MathMax(g_lastRouterStrength,0.80+MathMin(0.50,MathMax(0.0,effStrength+volStrength)));
       return -eventSide;
    }
 
@@ -685,6 +731,9 @@ int ApplyP4P6StateOverlay(const int eventSide,const double eff10,const int baseT
    if(atrRatio>=InpP6MinAtrRatio || eff10>=InpP6MinEfficiency)
    {
       state="P6_EXPANSION";
+      const double volStrength=(atrRatio-InpP6MinAtrRatio)/(InpP6MinAtrRatio+1e-9);
+      const double effStrength=(eff10-InpP6MinEfficiency)/(InpP6MinEfficiency+1e-9);
+      g_lastRouterStrength=MathMax(g_lastRouterStrength,0.80+MathMin(0.50,MathMax(0.0,volStrength+effStrength)));
       return eventSide;
    }
 
@@ -720,7 +769,7 @@ bool OpenBoundaryTrade(const int tradeSide,const int eventSide,const ENUM_R10_SL
                        const int scaleMinutes,const string state,const MqlTick &tick,
                        const double alignedRet1,const double range1,const int ticks1)
 {
-   if(!PortfolioAllows(tradeSide,scaleMinutes))
+   if(!PortfolioAllows(tradeSide,scaleMinutes,g_lastRouterStrength))
       return false;
 
    const ulong magic=MagicForScale(scaleMinutes);
@@ -761,7 +810,7 @@ bool OpenBoundaryTrade(const int tradeSide,const int eventSide,const ENUM_R10_SL
 bool OpenStructuralTrade(const int side,const ENUM_R10_SLEEVE sleeve,const double atr,const MqlTick &tick)
 {
    const int scaleMinutes=(sleeve==R10_SLEEVE_P5_H1?60:240);
-   if(!PortfolioAllows(side,scaleMinutes))
+   if(!PortfolioAllows(side,scaleMinutes,1.0))
       return false;
 
    const ulong magic=MagicForScale(scaleMinutes);
@@ -1337,7 +1386,7 @@ void ProcessEntries(const MqlTick &tick)
       return;
    }
 
-   if(PortfolioAllows(tradeSide,1))
+   if(PortfolioAllows(tradeSide,1,g_lastRouterStrength))
       OpenTrade(tradeSide,eventSide,routerState,tick,alignedRet1,range1,ticks1);
 }
 
@@ -1467,6 +1516,14 @@ int OnInit()
       InpBoundaryExpirySeconds<InpBoundaryAcceptanceSeconds ||
       InpMaxPortfolioPositions<1 || InpMaxPortfolioPositions>8 ||
       InpMaxOpposingPositions<0 || InpMaxOpposingPositions>InpMaxPortfolioPositions ||
+      InpOppositionPenalty<0.0 || InpMinPortfolioEntryScore<0.0 ||
+      InpStability1m<0.0 || InpStability1m>1.0 ||
+      InpStability3m<0.0 || InpStability3m>1.0 ||
+      InpStability5m<0.0 || InpStability5m>1.0 ||
+      InpStability10m<0.0 || InpStability10m>1.0 ||
+      InpStability20m<0.0 || InpStability20m>1.0 ||
+      InpStabilityH1<0.0 || InpStabilityH1>1.0 ||
+      InpStabilityH4<0.0 || InpStabilityH4>1.0 ||
       InpP3AdverseExitPrice<0.0 || InpP4MaxEfficiency<0.0 || InpP4MaxEfficiency>1.0 ||
       InpP6MinEfficiency<0.0 || InpP6MinEfficiency>1.0)
    {
