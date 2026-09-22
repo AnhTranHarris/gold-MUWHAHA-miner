@@ -1,0 +1,110 @@
+{
+  "project": "Gold MUWHAHA Miner R9 GAMMA",
+  "candidate": "GAMMA-01 Session-Adaptive Dual-Horizon Temporal Expansion",
+  "status": "MT5_CERTIFICATION_CANDIDATE_NOT_PRODUCTION_PROMOTION",
+  "created_local_date": "2026-09-22",
+  "base_branch": "carson/r9-gamma-00-baseline",
+  "base_r9_blob_sha": "7eecb5f1947017a01ce85b2520725de54749e523",
+  "candidate_branch": "carson/r9-gamma-01-temporal-expansion-candidate",
+  "candidate_ea": "Experts/GoldMuwahahaMiner_R9_GAMMA01_TemporalExpansion.mq5",
+  "hypothesis": {
+    "min_range_10_active_seconds_price": 4,
+    "context_lookback_active_seconds": 45,
+    "context_min_range_price": {
+      "off": 8,
+      "london": 8,
+      "overlap": 14,
+      "new_york": 14
+    },
+    "lifecycle": {
+      "trail_activation_price": 0.15,
+      "trail_gap_price": 0.1,
+      "max_hold_seconds": 20
+    }
+  },
+  "python_lab": {
+    "source_path": "Dukascopy XAUUSD Jan-Jul 2026 tick stream",
+    "execution_model": "Dukascopy mid-price path plus fixed Coinexx-like modeled spread and 0.02 round-trip commission",
+    "causal": true,
+    "spread_stress": {
+      "0.18": {
+        "net": 979.6659999965335,
+        "pf": 1.6359402791273387,
+        "trades": 6188,
+        "monthly": [
+          250.40149999919893,
+          418.9799999986951,
+          229.3919999990229,
+          55.34449999979505,
+          2.1764999999315546,
+          7.2004999999143795,
+          16.170999999975585
+        ]
+      },
+      "0.20": {
+        "net": 867.254499993921,
+        "pf": 1.5309764773544035,
+        "trades": 6193,
+        "monthly": [
+          230.45099999858786,
+          367.3894999976627,
+          200.30499999827984,
+          47.56749999963452,
+          1.6549999998826026,
+          4.875499999886811,
+          15.010999999986645
+        ]
+      },
+      "0.23": {
+        "net": 683.071000001059,
+        "pf": 1.3867789700186546,
+        "trades": 6201,
+        "monthly": [
+          184.0325000002408,
+          298.60750000039803,
+          151.72850000027293,
+          38.63950000006896,
+          0.06650000001645485,
+          -1.5794999999558015,
+          11.576000000017622
+        ]
+      },
+      "0.25": {
+        "net": 555.9394999983706,
+        "pf": 1.298358047151207,
+        "trades": 6210,
+        "monthly": [
+          156.81799999963036,
+          245.47549999936484,
+          117.94999999954094,
+          31.089499999908803,
+          -2.225000000032921,
+          -4.744500000033991,
+          11.57599999999261
+        ]
+      }
+    },
+    "entry_only_0_20": {
+      "net": 676.9344999958263,
+      "pf": 1.4332103545339288,
+      "trades": 6194
+    },
+    "baseline_r9_lab_0_20": {
+      "net": -24691.52
+    },
+    "lifecycle_increment_vs_entry_only_pct": 28.115
+  },
+  "anti_leakage_notes": [
+    "Features use only completed active-second bars prior to entry.",
+    "Higher-horizon range is computed from the same causal bid second-bar ring used by R9.",
+    "All candidate filters were re-run through full tick replay because event-subset filtering changes R9 rearm sequencing."
+  ],
+  "limitations": [
+    "This is not Coinexx MT5 certification.",
+    "Dukascopy native spread is not used; spread is explicitly modeled.",
+    "May-Jul have been inspected during hypothesis development and are diagnostic rather than pristine holdout.",
+    "August remains sealed.",
+    "Full R9 logger reconstruction is pending because Drive connector rejects 367001600-byte parts above its 268435456-byte per-file download limit.",
+    "Candidate EA has been statically verified in GitHub but has not been compiled in MetaEditor in this environment."
+  ]
+}
