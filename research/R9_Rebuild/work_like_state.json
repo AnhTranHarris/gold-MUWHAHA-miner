@@ -1,0 +1,29 @@
+{
+  "schema": "r9-work-like-state-v1",
+  "controller_mode": "WORK_LIKE",
+  "state": "READY",
+  "last_verified_durable_unit": "WL-C29-JAN-HIST-H120",
+  "current_unit": "WL-C29-JAN-R10-H120",
+  "last_result": {
+    "month": 1,
+    "variant": "HIST_H120",
+    "rows": 33793,
+    "output_sha256": "676840a93417fc73d10e6e1b1041c0422267351b1252458a2f2d5ec693fdb556",
+    "continue": {
+      "net": -6567.005500024879,
+      "pf": 0.4928119848557581,
+      "delta_vs_v2": 155.2609999999895
+    },
+    "fade": {
+      "net": -6343.057500024979,
+      "pf": 0.4891488401237214,
+      "delta_vs_v2": 144.27749999996013
+    },
+    "interpretation": "Meaningful lifecycle specialist improvement; still negative overall."
+  },
+  "next_pointer": "WL-C29-JAN-R10-H120",
+  "hold_back": "Do not open February until January V2_H90/HIST_H120/R10_H120 comparison is durable.",
+  "drive_sync_status": "PENDING_RECONCILIATION",
+  "drive_sync_error": "Google Docs batch-update connector rejected small append requests during this turn.",
+  "durable_artifact_path": "/R9_Rebuild/C29_lifecycle_recert/C29_M01_HIST_H120.pkl.gz"
+}
