@@ -267,7 +267,7 @@ def dc_features_at_events(t,mid,ev_i,ev_side,ths):
     return pol,age,osx,rate
 
 def build_month(month):
-    outp=f'{OUT}/events_{month:02d}.parquet'; sump=f'{OUT}/summary_{month:02d}.json'
+    outp=f'{OUT}/events_{month:02d}.pkl.gz'; sump=f'{OUT}/summary_{month:02d}.json'
     if os.path.exists(outp) and os.path.exists(sump): print('EXISTS',month,flush=True); return
     t,mid,av,bv=load_ticks(month); print('loaded',month,len(t),flush=True)
     sec_ids,o,h,l,c,n,am,bm=aggregate_active_seconds(t,mid,av,bv)
