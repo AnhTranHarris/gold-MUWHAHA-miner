@@ -1,36 +1,43 @@
 {
-  "schema": "r9-work-like-state-v1",
-  "controller_mode": "WORK_LIKE",
+  "schema": "r9-work-like-state-v2",
+  "controller_mode": "MACRO_MICRO_CAMPAIGN",
   "state": "READY",
-  "last_verified_durable_unit": "WL-C29-JAN-R10-H120",
-  "current_unit": "WL-C29-JAN-COMPARE",
-  "january_lifecycle": {
-    "v2_h90": {
-      "continue_net": -6722.266500024869,
-      "fade_net": -6487.335000024939,
-      "continue_pf": 0.4624038926092521,
-      "fade_pf": 0.4586401169499697
-    },
-    "hist_h120": {
-      "continue_net": -6567.005500024879,
-      "fade_net": -6343.057500024979,
-      "continue_pf": 0.4928119848557581,
-      "fade_pf": 0.4891488401237214,
-      "delta_vs_v2_continue": 155.2609999999895,
-      "delta_vs_v2_fade": 144.27749999996013
-    },
-    "r10_h120": {
-      "continue_net": -6666.242000024653,
-      "fade_net": -6499.249500024701,
-      "continue_pf": 0.44441073191643804,
-      "fade_pf": 0.4384630687415429,
-      "delta_vs_v2_continue": 56.024500000215994,
-      "delta_vs_v2_fade": -11.914499999761574
-    }
+  "campaign_id": "MM-C30-BRIDGE-CORRELATION",
+  "primary_period": "2026-01 through 2026-07",
+  "human_month_gating": false,
+  "per_month_checkpointing": true,
+  "august_sealed": true,
+  "research_priority": {
+    "hold_persistence": 0.4,
+    "action_entry_ownership": 0.35,
+    "exit_harvest_tail": 0.25
   },
-  "interpretation": "HIST_H120 is the strongest January lifecycle specialist; all variants remain negative overall.",
-  "next_pointer": "WL-C29-JAN-COMPARE",
-  "hold_back": "Do not open February until January three-way lifecycle comparison is VERIFIED_DURABLE.",
-  "drive_sync_status": "RECONCILED",
-  "durable_artifact_path": "/R9_Rebuild/C29_lifecycle_recert/C29_M01_R10_H120.pkl.gz"
+  "source_views": [
+    "Dukascopy tick OOS",
+    "Coinexx/MT5 R9 REAL",
+    "R9 SYNTH teacher/reference",
+    "MT5 tester reports/logs"
+  ],
+  "diagnostic_views": [
+    "global Jan-Jul",
+    "month",
+    "day",
+    "hour/session",
+    "volatility/efficiency/regime",
+    "entry/action ownership",
+    "hold/persistence",
+    "exit/MFE/MAE/capture",
+    "specialist portfolio interaction"
+  ],
+  "known_macro_insight": {
+    "real_more_trades_than_synth": true,
+    "real_to_synth_trade_count_ratio": 1.0788950588578567,
+    "real_to_synth_mean_hold_ratio": 0.3125,
+    "real_to_synth_average_winner_ratio": 0.17316600195858306,
+    "payoff_only_direct_expectancy_lift": 0.656388924,
+    "winrate_only_direct_expectancy_lift": 0.3845919644,
+    "payoff_to_winrate_direct_lift_ratio": 1.7067151286533746
+  },
+  "next_campaign_objective": "Recertify strongest complementary specialists across Jan-Jul in one campaign, automatically aggregate global/month/day/hour/regime metrics, then integrate complementary survivors in one chronological portfolio.",
+  "durable_drive_sync_status": "RECONCILED"
 }
