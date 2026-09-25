@@ -1,0 +1,15 @@
+{
+  "job_id": "C20_LONG_ACTION_01",
+  "script": "research/R9_Rebuild/c20_long_delayed_action_portable.py",
+  "args": ["--month", "1"],
+  "env": {
+    "R9_DATA_DIR": "C:\\Users\\lord1\\XAUUSD-Tick-Research",
+    "R9_SNAPSHOT_DIR": "C:\\Users\\lord1\\XAUUSD-Tick-Research\\R9_Durable_Inputs",
+    "R9_ACTION_OUT_DIR": "C:\\Users\\lord1\\XAUUSD-Tick-Research\\R9_Durable_Results\\pullback_action"
+  },
+  "artifact_globs": [
+    "research/R9_Rebuild/jobs/results/C20_LONG_ACTION_01/*"
+  ],
+  "publish_files": [],
+  "publish_max_mb": 20
+}
