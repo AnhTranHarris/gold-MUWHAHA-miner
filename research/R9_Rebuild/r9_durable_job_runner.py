@@ -42,6 +42,7 @@ def main():
     ns=ap.parse_args()
     repo=Path(ns.repo_root).resolve(); cp=Path(ns.checkpoint_root).resolve(); cp.mkdir(parents=True,exist_ok=True)
     spec_path=Path(ns.job_spec).resolve(); spec=json.loads(spec_path.read_text(encoding="utf-8"))
+    profile=dict(spec.get("execution_profile",{}))
     job_id=spec["job_id"]; safe="".join(c for c in job_id if c.isalnum() or c in "-_.")
     if safe!=job_id or not job_id: raise SystemExit("invalid job_id")
     job_dir=cp/job_id; job_dir.mkdir(parents=True,exist_ok=True)
@@ -65,6 +66,10 @@ def main():
     atomic_json(lock_path,{"job_id":job_id,"pid":os.getpid(),"host":socket.gethostname(),"attempt":attempt,"created_utc":utcnow()})
 
     env=os.environ.copy()
+    max_threads=int(profile.get("max_compute_threads",0) or 0)
+    if max_threads>0:
+        for key in ("OMP_NUM_THREADS","OPENBLAS_NUM_THREADS","MKL_NUM_THREADS","NUMEXPR_MAX_THREADS","NUMBA_NUM_THREADS"):
+            env[key]=str(max_threads)
     for k,v in spec.get("env",{}).items():
         if not str(k).startswith("R9_"): raise SystemExit(f"env key not allowed: {k}")
         env[str(k)]=str(v)
@@ -74,7 +79,8 @@ def main():
 
     failures=[]; checked_inputs=[]
     free_gb=shutil.disk_usage(cp).free/(1024**3)
-    if free_gb<float(spec.get("min_free_gb",1.0)): failures.append(f"free_disk_gb={free_gb:.2f}")
+    min_free_gb=float(spec.get("min_free_gb",profile.get("min_free_disk_gb",1.0)))
+    if free_gb<min_free_gb: failures.append(f"free_disk_gb={free_gb:.2f}<required={min_free_gb:.2f}")
     for mod in spec.get("required_modules",[]):
         if importlib.util.find_spec(str(mod)) is None: failures.append(f"missing_module:{mod}")
     for item in spec.get("required_inputs",[]):
@@ -90,7 +96,8 @@ def main():
 
     base={"job_id":job_id,"attempt":attempt,"host":socket.gethostname(),"platform":platform.platform(),"python":sys.version,
           "repo_root":str(repo),"git_branch":git(repo,"branch","--show-current"),"git_sha":git(repo,"rev-parse","HEAD"),
-          "script":str(script_rel),"args":[str(x) for x in spec.get("args",[])],"source_spec":str(spec_path),"inputs":checked_inputs}
+          "script":str(script_rel),"args":[str(x) for x in spec.get("args",[])],"source_spec":str(spec_path),"inputs":checked_inputs,
+          "execution_profile":profile,"free_disk_gb":free_gb}
     atomic_json(stage,{**base,"phase":"PREFLIGHT","status":"PASS" if not failures else "FAIL","utc":utcnow(),"failures":failures})
     if failures:
         final={**base,"status":"FAILED_RECOVERABLE","failure_reason":"PREFLIGHT","failures":failures,"completed_utc":utcnow()}
@@ -114,7 +121,8 @@ def main():
             log.write(f"[{utcnow()}] ATTEMPT {attempt} START {shlex.join(cmd)}\n")
             proc=subprocess.Popen(cmd,cwd=str(repo),stdout=log,stderr=subprocess.STDOUT,env=env)
             state["child_pid"]=proc.pid; state["status"]="RUNNING_VERIFIED"; atomic_json(manifest,state)
-            try: rc=proc.wait(timeout=int(spec.get("timeout_seconds",21600)))
+            timeout_seconds=int(spec.get("timeout_seconds",profile.get("timeout_seconds",21600)))
+            try: rc=proc.wait(timeout=timeout_seconds)
             except subprocess.TimeoutExpired:
                 reason="TIMEOUT"; proc.terminate()
                 try: rc=proc.wait(timeout=30)
