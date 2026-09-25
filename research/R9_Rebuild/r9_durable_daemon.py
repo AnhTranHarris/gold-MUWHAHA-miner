@@ -55,6 +55,14 @@ def main():
                 result_dir=results/jid; remote_manifest=result_dir/"manifest.json"; rm=read_json(remote_manifest)
                 if rm.get("status") in ("COMPLETED_LOCAL","VERIFIED_DURABLE"): continue
 
+                blocked=False
+                for dep in job.get("depends_on",[]):
+                    dm=read_json(results/str(dep)/"manifest.json")
+                    if dm.get("status") not in ("COMPLETED_LOCAL","VERIFIED_DURABLE"):
+                        blocked=True
+                        break
+                if blocked: continue
+
                 local_manifest=cp/jid/"manifest.json"; lm=read_json(local_manifest)
                 attempt=int(lm.get("attempt",rm.get("attempt",0)))
                 max_attempts=int(job.get("max_attempts",3))
