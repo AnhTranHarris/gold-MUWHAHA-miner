@@ -39,5 +39,13 @@
     "payoff_to_winrate_direct_lift_ratio": 1.7067151286533746
   },
   "next_campaign_objective": "Recertify strongest complementary specialists across Jan-Jul in one campaign, automatically aggregate global/month/day/hour/regime metrics, then integrate complementary survivors in one chronological portfolio.",
-  "durable_drive_sync_status": "RECONCILED"
+  "durable_drive_sync_status": "RECONCILED",
+  "execution_guardrails": {
+    "artifact_gated_progress": true,
+    "local_pc_profile": "research/R9_Rebuild/LOCAL_PC_EXECUTION_PROFILE.json",
+    "local_max_heavy_workers": 1,
+    "local_max_compute_threads": 3,
+    "local_min_free_disk_gb": 15,
+    "local_max_materialized_months": 1
+  }
 }
