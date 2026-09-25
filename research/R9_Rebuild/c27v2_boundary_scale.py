@@ -217,10 +217,15 @@ def main():
     et,es,typ,bp=detect_events_exact(t,ask,bid,row,bhi,blo)
     cp,ce,ch,fp,fe,fh=sim_actions(t,mid,et,es)
     events=pd.DataFrame({
-        "month":m,"scale":sc,"event_ms":et,"event_side":es,
-        "event_type":np.where(typ>0,"ACCEPT","RECLAIM"),"boundary":bp,
-        "cont_pnl":cp,"cont_exit_ms":ce,"cont_hold":ch,
-        "fade_pnl":fp,"fade_exit_ms":fe,"fade_hold":fh
+        "month":np.full(len(et),m,dtype=np.int8),
+        "scale":np.full(len(et),sc,dtype=np.int8),
+        "event_ms":et,
+        "event_side":es.astype(np.int8),
+        "event_type":np.where(typ>0,"ACCEPT","RECLAIM"),
+        "cont_pnl":cp,
+        "cont_exit_ms":ce,
+        "fade_pnl":fp,
+        "fade_exit_ms":fe
     }).sort_values("event_ms").reset_index(drop=True)
 
     summary=[]
@@ -232,9 +237,11 @@ def main():
                                 "action":act,"boundary_kind":boundary_kind,**metrics(q[col].to_numpy())})
     states=pd.DataFrame(summary)
 
+    persist_events=events.copy()
+    persist_events["event_type"]=np.where(persist_events["event_type"].to_numpy()=="ACCEPT",1,-1).astype(np.int8)
     evp=out/f"{job}.pkl.gz"
     tmp=Path(str(evp)+".tmp")
-    events.to_pickle(tmp,compression="gzip")
+    persist_events.to_pickle(tmp,compression={"method":"gzip","compresslevel":1,"mtime":1})
     os.replace(tmp,evp)
 
     smp=out/f"{job}_states.csv"
@@ -245,6 +252,8 @@ def main():
     final={
         "job_id":job,"status":"COMPLETED_LOCAL","month":m,"scale":sc,
         "ticks":int(len(t)),"events":int(len(events)),"state_rows":int(len(states)),
+        "event_artifact_schema":["month","scale","event_ms","event_side","event_type_code","cont_pnl","cont_exit_ms","fade_pnl","fade_exit_ms"],
+        "event_type_codes":{"ACCEPT":1,"RECLAIM":-1},
         "source":Path(raw).name,"source_sha256":sha256(raw),
         "events_sha256":sha256(evp),"states_sha256":sha256(smp),
         "elapsed_seconds":time.time()-started,
