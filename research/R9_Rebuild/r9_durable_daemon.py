@@ -36,7 +36,7 @@ def main():
     ap.add_argument("--checkpoint-root",required=True); ap.add_argument("--poll-seconds",type=int,default=60); ap.add_argument("--once",action="store_true")
     ns=ap.parse_args()
     repo=Path(ns.repo_root).resolve(); cp=Path(ns.checkpoint_root).resolve(); cp.mkdir(parents=True,exist_ok=True)
-    queue=repo/"research"/"R9_Rebuild"/"jobs"/"pending"; results=repo/"research"/"R9_Rebuild"/"jobs"/"results"; results.mkdir(parents=True,exist_ok=True)
+    queue=repo/"research"/"R9_Rebuild"/"jobs"/"pending"; results=repo/"research"/"R9_Rebuild"/"jobs"/"results"; dead=repo/"research"/"R9_Rebuild"/"jobs"/"deadletter"; results.mkdir(parents=True,exist_ok=True); dead.mkdir(parents=True,exist_ok=True)
     runner=repo/"research"/"R9_Rebuild"/"r9_durable_job_runner.py"; health=cp/"daemon_health.json"
     current={"job_id":None,"phase":"IDLE"}; stop=threading.Event()
 
@@ -58,7 +58,14 @@ def main():
                 local_manifest=cp/jid/"manifest.json"; lm=read_json(local_manifest)
                 attempt=int(lm.get("attempt",rm.get("attempt",0)))
                 max_attempts=int(job.get("max_attempts",3))
-                if lm.get("status")=="FAILED_RECOVERABLE" and attempt>=max_attempts: continue
+                if lm.get("status")=="FAILED_RECOVERABLE" and attempt>=max_attempts:
+                    dl=dead/f"{jid}.json"
+                    if not dl.exists():
+                        atomic_json(dl,{"job_id":jid,"status":"DEADLETTER","attempt":attempt,"max_attempts":max_attempts,"last_manifest":lm,"job_spec":job,"utc":utcnow()})
+                        run(["git","add",str(dl.relative_to(repo))],cwd=repo)
+                        if run(["git","diff","--cached","--quiet"],cwd=repo).returncode!=0:
+                            run(["git","commit","-m",f"research: deadletter {jid} after {attempt} attempts"],cwd=repo); push_with_retry(repo,ns.branch)
+                    continue
                 backoff=int(job.get("retry_backoff_seconds",120))
                 if lm.get("status")=="FAILED_RECOVERABLE" and local_manifest.exists() and time.time()-local_manifest.stat().st_mtime<backoff: continue
 
