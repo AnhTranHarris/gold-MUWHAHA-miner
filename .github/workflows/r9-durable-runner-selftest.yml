@@ -1,0 +1,105 @@
+name: R9 Durable Runner Self-Test
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - carson/r9-durable-runner
+    paths:
+      - "research/R9_Rebuild/r9_durable_job_runner.py"
+      - "research/R9_Rebuild/r9_durable_daemon.py"
+      - "research/R9_Rebuild/r9_daemon_watchdog.ps1"
+      - "research/R9_Rebuild/install_r9_durable_daemon.ps1"
+      - "research/R9_Rebuild/runner_smoke_fixture.py"
+      - ".github/workflows/r9-durable-runner-selftest.yml"
+
+concurrency:
+  group: r9-durable-runner-selftest
+  cancel-in-progress: false
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Syntax checks
+        run: |
+          python -m py_compile research/R9_Rebuild/r9_durable_job_runner.py
+          python -m py_compile research/R9_Rebuild/r9_durable_daemon.py
+          python -m py_compile research/R9_Rebuild/runner_smoke_fixture.py
+      - name: State-machine smoke tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          R="$RUNNER_TEMP/r9self"
+          mkdir -p "$R/in" "$R/out" "$R/cp"
+          printf source > "$R/in/source.txt"
+
+          cat > "$R/ok.json" <<EOF
+          {
+            "job_id":"SMOKE_OK",
+            "script":"research/R9_Rebuild/runner_smoke_fixture.py",
+            "env":{"R9_TEST_OUT":"$R/out"},
+            "required_inputs":[{"path":"$R/in/source.txt","min_bytes":1}],
+            "required_outputs":[{"path":"\${R9_TEST_OUT}/fixture.json","min_bytes":2}],
+            "timeout_seconds":60,
+            "stale_lock_seconds":1
+          }
+          EOF
+          python research/R9_Rebuild/r9_durable_job_runner.py --job-spec "$R/ok.json" --repo-root "$GITHUB_WORKSPACE" --checkpoint-root "$R/cp"
+          python - "$R/cp/SMOKE_OK/manifest.json" <<'PY'
+          import json,sys
+          j=json.load(open(sys.argv[1]))
+          assert j["status"]=="COMPLETED_LOCAL",j
+          assert j["required_outputs"][0]["exists"],j
+          PY
+          python research/R9_Rebuild/r9_durable_job_runner.py --job-spec "$R/ok.json" --repo-root "$GITHUB_WORKSPACE" --checkpoint-root "$R/cp" | grep ALREADY_COMPLETED_LOCAL
+
+          mkdir -p "$R/cp/SMOKE_STALE" "$R/out2"
+          python - "$R/cp/SMOKE_STALE/RUNNING.lock.json" <<'PY'
+          import json,os,socket,sys,time
+          p=sys.argv[1]
+          json.dump({"job_id":"SMOKE_STALE","pid":999999,"host":socket.gethostname()},open(p,"w"))
+          os.utime(p,(time.time()-10,time.time()-10))
+          PY
+          cat > "$R/stale.json" <<EOF
+          {
+            "job_id":"SMOKE_STALE",
+            "script":"research/R9_Rebuild/runner_smoke_fixture.py",
+            "env":{"R9_TEST_OUT":"$R/out2"},
+            "required_outputs":[{"path":"\${R9_TEST_OUT}/fixture.json","min_bytes":2}],
+            "timeout_seconds":60,
+            "stale_lock_seconds":1
+          }
+          EOF
+          python research/R9_Rebuild/r9_durable_job_runner.py --job-spec "$R/stale.json" --repo-root "$GITHUB_WORKSPACE" --checkpoint-root "$R/cp"
+          test -n "$(find "$R/cp/SMOKE_STALE" -name 'STALE_LOCK_*.json' -print -quit)"
+
+          cat > "$R/fail.json" <<EOF
+          {
+            "job_id":"SMOKE_PREFLIGHT_FAIL",
+            "script":"research/R9_Rebuild/runner_smoke_fixture.py",
+            "required_inputs":[{"path":"$R/in/DOES_NOT_EXIST","min_bytes":1}]
+          }
+          EOF
+          set +e
+          python research/R9_Rebuild/r9_durable_job_runner.py --job-spec "$R/fail.json" --repo-root "$GITHUB_WORKSPACE" --checkpoint-root "$R/cp"
+          rc=$?
+          set -e
+          test "$rc" -ne 0
+          python - "$R/cp/SMOKE_PREFLIGHT_FAIL/manifest.json" <<'PY'
+          import json,sys
+          j=json.load(open(sys.argv[1]))
+          assert j["status"]=="FAILED_RECOVERABLE",j
+          assert j["failure_reason"]=="PREFLIGHT",j
+          PY
+      - name: Preserve self-test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r9-durable-runner-selftest
+          path: ${{ runner.temp }}/r9self
+          retention-days: 30
