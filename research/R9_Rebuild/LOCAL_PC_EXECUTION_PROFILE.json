@@ -1,0 +1,34 @@
+{
+  "schema": "r9-local-pc-execution-profile-v1",
+  "purpose": "Optional local acceleration profile; scientific authority remains durable Drive/Library/GitHub state.",
+  "machine": {
+    "os": "Windows 10 Pro 64-bit",
+    "cpu": "Intel Core i5-2400 3.10 GHz",
+    "physical_cores": 4,
+    "logical_processors": 4,
+    "ram_gb": 23.96,
+    "gpu": "NVIDIA GeForce GT 710 2 GB",
+    "storage": "465.76 GB SATA HDD",
+    "observed_free_disk_gb": 43.58
+  },
+  "execution": {
+    "max_heavy_workers": 1,
+    "max_compute_threads": 3,
+    "min_free_disk_gb": 15,
+    "timeout_seconds": 1800,
+    "memory_soft_cap_gb": 10,
+    "max_materialized_months": 1,
+    "csv_chunksize_rows": 500000,
+    "gpu_required": false
+  },
+  "implementation_rules": [
+    "Process one month per heavyweight worker and checkpoint before aggregation.",
+    "Stream/chunk gzip CSV; do not materialize the full Jan-Jul corpus in pandas.",
+    "Convert required columns to compact NumPy arrays immediately.",
+    "Use Numba for inner tick traversal and keep pandas/groupby out of tick loops.",
+    "Reuse precomputed event indices/features instead of rescanning ticks for every parameter.",
+    "Avoid repeated decompression; cache only compact derived artifacts when disk headroom permits.",
+    "Do not run more than one heavyweight research worker while MT5 and Chrome are active.",
+    "Narrative/UI progress is non-authoritative until a validated artifact manifest exists."
+  ]
+}
