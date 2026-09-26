@@ -58,5 +58,29 @@
     "baseline_gross_loss_jan_mar": -16717.321000021024,
     "conclusion": "Generic early closure is not the bridge; tail containment must act after conditional promotion/stall/reclaim evidence."
   },
-  "next_unit_id": "MM-C30-B1-PROMOTED-STALL-RECLAIM"
+  "next_unit_id": "MM-C30-B1-PROMOTED-STALL-RECLAIM",
+  "queued_next_campaign": {
+    "campaign_id": "MM-C31-DUKASCOPY-MULTIRESOLUTION",
+    "status": "QUEUED_AFTER_MM-C30-B1",
+    "data": "XAUUSD Dukascopy ticks only",
+    "lattice": [
+      "tick",
+      "250ms",
+      "1s",
+      "5s",
+      "15s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "4h",
+      "12h",
+      "1d"
+    ],
+    "principle": "higher horizons own regime/setup; lower horizons own trigger/execution; post-entry state owns persistence/harvest",
+    "drive_spec": "https://docs.google.com/document/d/1m2I5-VE5tXcGFXuEXdRlzBIgHGGL-G6DpR7i-bIvF4s/edit",
+    "github_spec_commit": "c9068f0a19d64ec5ff45ba7727b4573e582da576"
+  }
 }
