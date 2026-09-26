@@ -38,8 +38,8 @@
     "winrate_only_direct_expectancy_lift": 0.3845919644,
     "payoff_to_winrate_direct_lift_ratio": 1.7067151286533746
   },
-  "next_campaign_objective": "Reconstruct the exact Section-73 two-second promotion ownership/lifecycle sufficiently to create an extended promoted-runner population, then test +3s/+5s stall-reclaim harvesting using rolling120 as infrastructure/context. Do not use rolling120 as a standalone exit rule.",
-  "durable_drive_sync_status": "RECONCILED",
+  "next_campaign_objective": "Refactor the January Rule10/Section73 lifecycle source-equivalence into bounded compact precompute and replay shards; preserve the +$63.60 January Rule10 checksum and documented 60s/+0.20/$0.08 extension geometry. Do not alter scientific thresholds from timeout.",
+  "durable_drive_sync_status": "PENDING_CURRENT_TURN",
   "execution_guardrails": {
     "artifact_gated_progress": true,
     "local_pc_profile": "research/R9_Rebuild/LOCAL_PC_EXECUTION_PROFILE.json",
@@ -48,22 +48,16 @@
     "local_min_free_disk_gb": 15,
     "local_max_materialized_months": 1
   },
-  "last_durable_unit": "MM-C30-B1A-LATE-FAILURE-OBSERVABILITY",
-  "last_durable_classification": "MECHANISTIC_SIGNAL_FOUND_NO_ECONOMIC_PROMOTION",
+  "last_durable_unit": "MM-C30-B1B-M01-LIFECYCLE-SOURCE-EQUIVALENCE",
+  "last_durable_classification": "TIMEOUT_NO_SCIENTIFIC_RESULT",
   "last_durable_summary": {
-    "checkpoint_3s_auc": {
-      "jan": 0.579530289999156,
-      "feb": 0.5291250776550478,
-      "mar": 0.5601796016910252
-    },
-    "checkpoint_3s_best_net_delta": 49.79900001294254,
-    "checkpoint_3s_best_gl_improvement": 1741.7065000078546,
-    "checkpoint_3s_min_gp_retention": 0.5602191191527603,
-    "checkpoint_3s_all_month_pass": false,
-    "checkpoint_5s_total_base_r9_survivors": 67,
-    "conclusion": "Failure/stall becomes more observable by +3s, with giveback/giveback-growth dominant, but universal 3s harvesting sacrifices too much GP and fails February. +5s is too late for base R9 because almost all trades have already exited."
+    "scientific_result": null,
+    "historical_rule10_january_checksum_delta": 63.6,
+    "runtime_status": "January source-equivalence replay exceeded runtime ceiling before producing a validated result",
+    "oos_exposure": "NONE",
+    "august": "SEALED"
   },
-  "next_unit_id": "MM-C30-B1B-SECTION73-PROMOTION-RECONSTRUCTION",
+  "next_unit_id": "MM-C30-B1B-M01-PRECOMPUTE-OPT",
   "queued_next_campaign": {
     "campaign_id": "MM-C31-DUKASCOPY-MULTIRESOLUTION",
     "status": "QUEUED_AFTER_MM-C30-B1",
