@@ -1,0 +1,65 @@
+{
+  "job_id": "MM-C30-B1B-M01-V2-EQUIV-ARCHAEOLOGY",
+  "status": "VERIFIED_DURABLE",
+  "scientific_result": "EXACT_V2_BASELINE_EQUIVALENCE_RESTORED",
+  "root_cause": "optimized precompute used cumulative-sum subtraction for 9-step S1 travel while authoritative V2 uses local np.abs(diff(window)).sum(); floating drift at the exact 0.70 efficiency threshold created 166 classification flips and ultimately two extra baseline trades",
+  "s1_eff_threshold_flip_count": 166,
+  "baseline_exact_v2_match": true,
+  "baseline": {
+    "trades": 33793,
+    "net": -6253.808000024798,
+    "gp": 4301.471499988871,
+    "gl": -10555.279500013668,
+    "pf": 0.407518483994981,
+    "win": 0.44630544787382004,
+    "maxdd": 6256.753000024797,
+    "avg_hold": 5.547792087118634,
+    "promoted_trades": 0
+  },
+  "v2_reference": {
+    "trades": 33793,
+    "net": -6253.808000024798,
+    "gp": 4301.471499988871,
+    "gl": -10555.279500013668,
+    "pf": 0.407518483994981,
+    "win": 0.44630544787382004,
+    "avg_hold": 5.547792087118634
+  },
+  "rule10": {
+    "preserve_stop": {
+      "trades": 33642,
+      "promoted_trades": 9567,
+      "net": -6185.517000024621,
+      "gp": 4628.0534999891825,
+      "gl": -10813.570500013804,
+      "pf": 0.42798569630477507,
+      "win": 0.4379049997027525,
+      "maxdd": 6188.46200002462,
+      "avg_hold": 6.1686884846323045,
+      "delta_vs_baseline": 68.29100000017752,
+      "target_error_vs_63_60": 4.691000000177517
+    },
+    "reset_stop": {
+      "trades": 33851,
+      "promoted_trades": 9706,
+      "net": -6194.198500024766,
+      "gp": 4193.186999990134,
+      "gl": -10387.3855000149,
+      "pf": 0.4036806952032462,
+      "win": 0.39635461286224927,
+      "maxdd": 6197.143500024765,
+      "avg_hold": 4.90138737408053,
+      "delta_vs_baseline": 59.60950000003231,
+      "target_error_vs_63_60": -3.990499999967689
+    }
+  },
+  "rule10_historical_63_60_bound": false,
+  "source_archaeology": "No exact historical Rule10 source artifact or GitHub commit was recovered by repository commit search or Project/Library search in this unit; +$63.60 remains narrative-only.",
+  "raw_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "cache_inner_npz_sha256": "71fc132e208589857dfe5dd6b8b1a204bd626d65c249890e842b6d5647ba65a5",
+  "local_result_sha256": "d2c9e5966633fcf9d6540a610ca4393836b39f06b1e9f19bb2dbc9e056c033c7",
+  "forward_opened": false,
+  "august_sealed": true,
+  "section73_fitted": false,
+  "next_unit": "MM-C30-B1B-RULE10-LINEAGE-ARCHAEOLOGY"
+}
