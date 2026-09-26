@@ -1,0 +1,26 @@
+{
+  "job_id": "MM-C30-B1B-M01-LIFECYCLE-SOURCE-EQUIVALENCE",
+  "status": "TIMEOUT_NO_SCIENTIFIC_RESULT",
+  "month": "2026-01",
+  "scientific_result": null,
+  "historical_checksum_target": {
+    "rule": "Rule10 >=3/5 completed scales aligned + alive at +2s + >=6 post-entry ticks",
+    "expected_january_net_delta": 63.60,
+    "extension": "60s max hold, +$0.20 activation, $0.08 trail"
+  },
+  "attempts": [
+    {
+      "type": "MECHANICAL_PRELAUNCH_FAILURE",
+      "detail": "shell log redirection targeted output directory before it existed; Python did not launch"
+    },
+    {
+      "type": "RUNTIME_CEILING_EXCEEDED",
+      "detail": "unchanged January replay exceeded 45-second tool ceiling and was terminated before any validated result or artifact was produced"
+    }
+  ],
+  "oos_exposure": "NONE; May-July were not opened",
+  "august": "SEALED",
+  "next_unit": "MM-C30-B1B-M01-PRECOMPUTE-OPT",
+  "next_action": "refactor January source-equivalence into compact deterministic precompute + replay shards; optimize active-second feature construction with Numba/vectorization; do not alter Rule10 checksum target or lifecycle hypotheses",
+  "promotion": "NONE"
+}
