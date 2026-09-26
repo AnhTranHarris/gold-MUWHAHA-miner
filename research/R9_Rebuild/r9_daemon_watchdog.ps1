@@ -14,7 +14,7 @@ else {
     if ((([DateTimeOffset]::UtcNow-$last).TotalSeconds) -gt $StaleSeconds) { $Restart=$true }
   } catch { $Restart=$true }
 }
-$task=Get-ScheduledTask -TaskName $TaskName -ErrorAction SilentlyContinue
+$task=Get-ScheduledTask -TaskName $TaskName -ErrorAction SilentlyContinue\n# A newly-started running daemon may not yet have emitted its periodic heartbeat.\n# Do not kill a running task solely because the prior health file is stale; the daemon now writes an immediate startup heartbeat.\nif ($null -ne $task -and $task.State -eq "Running" -and $Restart) {\n  try {\n    $info=Get-ScheduledTaskInfo -TaskName $TaskName\n    if ($info.LastRunTime -and ((Get-Date)-$info.LastRunTime).TotalSeconds -lt 90) { $Restart=$false }\n  } catch {}\n}
 if ($null -eq $task) { exit 2 }
 if ($task.State -eq "Disabled") { Enable-ScheduledTask -TaskName $TaskName | Out-Null; $Restart=$true }
 if ($task.State -ne "Running") { $Restart=$true }
