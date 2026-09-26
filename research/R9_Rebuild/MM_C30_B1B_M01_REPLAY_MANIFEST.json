@@ -1,0 +1,87 @@
+{
+  "artifacts": {
+    "MM_C30_B1B_M01_REPLAY_RESULT.json": {
+      "bytes": 2140,
+      "sha256": "35eb3d1303d4de51db4badb90636985cef9bf47db83470193cbdc9019e64a802"
+    },
+    "mm_c30_b1b_m01_replay_equiv.py": {
+      "bytes": 7288,
+      "sha256": "6ea580488b1991693731d6cf213f155c05b784649be98c3797a33c4ea422062a"
+    }
+  },
+  "forensic_root_cause_candidate": {
+    "authoritative_r9_research_v2_initial_stop": "long stop = bid - 0.30; short stop = ask + 0.30 at entry",
+    "classification": "AUTHORITATIVE_BASELINE_STOP_SEMANTIC_MISMATCH",
+    "failed_replay_initial_stop": "long stop = entry - 0.30; short stop = entry + 0.30",
+    "implication": "With modeled $0.20 spread, these are not equivalent; baseline must match authoritative engine before Rule10 lifecycle delta can be interpreted.",
+    "observed_baseline_error": 65.04699997495936,
+    "observed_preserve_stop_delta_error": -14.056499999932022
+  },
+  "historical_baseline_january_net": -6245.249,
+  "historical_expected_rule10_net": -6181.649,
+  "job_id": "MM-C30-B1B-M01-REPLAY-EQUIV",
+  "next_contract": "Correct baseline initial-stop semantics to the authoritative r9_research_v2 implementation, rerun January only, and require baseline net equivalence before judging Rule10 delta. Preserve all other frozen rules.",
+  "next_unit": "MM-C30-B1B-M01-REPLAY-EQUIV-FIX1",
+  "observed": {
+    "cache_sha256": "71fc132e208589857dfe5dd6b8b1a204bd626d65c249890e842b6d5647ba65a5",
+    "candidate_transition_semantics": {
+      "preserve_stop": "retain the live R9 stop at +2s, switch only future activation/trail/maxhold",
+      "reset_stop": "reset emergency stop to entry +/-$0.30 at +2s, then apply extension"
+    },
+    "checksum_tolerance": 0.5,
+    "closest_abs_target_error": 14.056499999932022,
+    "closest_semantic": "promote_preserve_stop",
+    "elapsed_seconds": 8.37908124923706,
+    "historical_rule10_target_delta": 63.6,
+    "job_id": "MM-C30-B1B-M01-REPLAY-EQUIV",
+    "metrics": {
+      "baseline": {
+        "avg_hold": 2.7248539650989447,
+        "gl": -9199.919500017399,
+        "gp": 3019.717499992358,
+        "maxdd": 6183.147000025039,
+        "net": -6180.20200002504,
+        "pf": 0.32823303508108387,
+        "promoted_trades": 0,
+        "trades": 34211,
+        "win": 0.30382040864049575
+      },
+      "promote_preserve_stop": {
+        "avg_hold": 2.9704013587513547,
+        "delta_vs_baseline": 49.54350000006798,
+        "gl": -9308.017000017566,
+        "gp": 3177.3584999925934,
+        "maxdd": 6133.603500024971,
+        "net": -6130.658500024972,
+        "pf": 0.34135718703420903,
+        "promoted_trades": 5692,
+        "target_delta_error": -14.056499999932022,
+        "trades": 34149,
+        "win": 0.29626050543207705
+      },
+      "promote_reset_stop": {
+        "avg_hold": 2.9929945523240487,
+        "delta_vs_baseline": 46.79000000005999,
+        "gl": -9320.847500017584,
+        "gp": 3187.4354999926036,
+        "maxdd": 6136.357000024979,
+        "net": -6133.41200002498,
+        "pf": 0.3419684207886236,
+        "promoted_trades": 5688,
+        "target_delta_error": -16.80999999994001,
+        "trades": 34143,
+        "win": 0.29543391031836685
+      }
+    },
+    "month": "2026-01",
+    "promotion": "SOURCE_EQUIVALENCE_ONLY_NOT_STRATEGY_PROMOTION",
+    "raw_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "rule10_definition": ">=3/5 completed 1m/3m/5m/10m/20m returns aligned at entry; alive +2s; >=6 post-entry ticks; extension 60s max hold, +$0.20 activation, $0.08 trail",
+    "source_equivalent": false,
+    "status": "COMPLETED_LOCAL"
+  },
+  "oos_access": "NONE; April/May-Jul not opened by this replay; August sealed",
+  "scientific_result": "NO_STRATEGY_RESULT_SOURCE_EQUIVALENCE_BLOCKER",
+  "status": "VERIFIED_EXECUTION_SOURCE_EQUIVALENCE_FAILED",
+  "target_january_rule10_delta": 63.6
+}
