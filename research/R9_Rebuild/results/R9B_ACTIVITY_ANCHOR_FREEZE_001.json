@@ -1,0 +1,72 @@
+{
+  "job_id": "R9B_ACTIVITY_ANCHOR_FREEZE_001",
+  "status": "FROZEN_BEFORE_FORWARD",
+  "candidate_id": "ACTIVITY_ANCHOR_256_G20_E70_R75_T7_H60",
+  "discovery": "Jan-Mar",
+  "calibration": "April",
+  "forward": "May-Jul unopened at freeze",
+  "rule": {
+    "ticks_per_anchor": 256,
+    "breakout_gap_price": 0.2,
+    "s1_eff_min": 0.7,
+    "s1_range_min": 0.75,
+    "s1_turns_max": 7,
+    "stop_price": 0.6,
+    "trail_activation_price": 0.1,
+    "trail_price": 0.05,
+    "max_hold_sec": 60
+  },
+  "jan_mar": {
+    "trades": 83193,
+    "net": 7109.16349993844,
+    "gp": 26482.992499957436,
+    "gl": -19373.829000019,
+    "monthly": [
+      {
+        "month": 1,
+        "trades": 27747,
+        "net": 1404.4329999796137,
+        "gl": -6043.688500006106,
+        "maxdd": 231.15000000991313,
+        "pf": 1.2346532454377368
+      },
+      {
+        "month": 2,
+        "trades": 24913,
+        "net": 3181.377999981506,
+        "gl": -6164.066500005841,
+        "maxdd": 91.62100000243117,
+        "pf": 1.516116755063965
+      },
+      {
+        "month": 3,
+        "trades": 30533,
+        "net": 2523.35249997732,
+        "gl": -7166.074000007072,
+        "maxdd": 61.86750000158463,
+        "pf": 1.352124817574425
+      }
+    ]
+  },
+  "april": {
+    "trades": 23641,
+    "net": 446.6959999822184,
+    "gp": 5644.810499987595,
+    "gl": -5198.114500005377,
+    "pf": 1.0859342363431503,
+    "maxdd": 95.41150000497873
+  },
+  "plateau": "N=128/256/512 and gap 0.15/0.20 with the same S1 quality state all remained profitable in April after all were profitable Jan-Mar.",
+  "community_basis": [
+    "https://www.mql5.com/en/articles/22460",
+    "https://www.mql5.com/en/articles/17520",
+    "https://www.tandfonline.com/doi/full/10.1080/14697688.2019.1669809"
+  ],
+  "local_hashes": {
+    "source": "1dcb7b60f1af1d87e5777d14f676a8ddb11ac1cee3e2c8e9a86e026d3e8b5549",
+    "jan_mar_screen": "7c03c48c48f561b2369a4a8ccc8872096612d5732b6264334e9f67acc8c655f7",
+    "april_calibration": "e571b650d6764c3f773df8b36dd197c40411457ffa31e3716eb2f573c04d9759",
+    "freeze_manifest": "a97ac9d2c111f93f475b6a01a93dd3470fe69f2e90ba60e28d8918de4abccb5e"
+  },
+  "august_sealed": true
+}
