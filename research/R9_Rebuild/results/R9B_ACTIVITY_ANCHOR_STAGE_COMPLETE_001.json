@@ -1,0 +1,141 @@
+{
+  "job_id": "R9B_ACTIVITY_ANCHOR_STAGE_COMPLETE_001",
+  "status": "VERIFIED_DURABLE_STAGE_COMPLETE",
+  "classification": "FORMAL_GAMMA_PROMOTION_REJECTED_REGIME_DEPENDENT_MECHANISM_PRESERVED",
+  "frozen_candidate": "ACTIVITY_ANCHOR_256_G20_E70_R75_T7_H60",
+  "rule": {
+    "ticks_per_anchor": 256,
+    "breakout_gap_price": 0.2,
+    "s1_eff_min": 0.7,
+    "s1_range_min": 0.75,
+    "s1_turns_max": 7,
+    "stop_price": 0.6,
+    "trail_activation_price": 0.1,
+    "trail_price": 0.05,
+    "max_hold_sec": 60
+  },
+  "aggregate": {
+    "trades": 178962,
+    "net": 6438.321499887939,
+    "gross_profit": 46677.33049992229,
+    "gross_loss": -40239.00900003435,
+    "profit_factor": 1.1600019896087015,
+    "max_drawdown": 1182.230000028494,
+    "win_rate": 0.6884925291402644
+  },
+  "discovery_calibration": {
+    "jan_apr_trades": 106834,
+    "jan_apr_net": 7555.859499920658
+  },
+  "forward": {
+    "may_jul_trades": 72128,
+    "may_jul_net": -1117.538000032719,
+    "may_jul_gross_profit": 14549.527499977257,
+    "may_jul_gross_loss": -15667.065500009976,
+    "may_jul_profit_factor": 0.9286696031217839
+  },
+  "monthly": [
+    {
+      "month": "Jan",
+      "trades": 27747,
+      "net": 1404.4329999796137,
+      "gross_loss": -6043.688500006086,
+      "max_drawdown": 231.15000000991313,
+      "pf": 1.232380110255219
+    },
+    {
+      "month": "Feb",
+      "trades": 24913,
+      "net": 3181.377999981506,
+      "gross_loss": -6164.066500005841,
+      "max_drawdown": 91.62100000243117,
+      "pf": 1.516116755063965
+    },
+    {
+      "month": "Mar",
+      "trades": 30533,
+      "net": 2523.35249997732,
+      "gross_loss": -7166.074000007072,
+      "max_drawdown": 61.86750000158463,
+      "pf": 1.352124817574425
+    },
+    {
+      "month": "Apr",
+      "trades": 23641,
+      "net": 446.6959999822184,
+      "gross_loss": -5198.114500005377,
+      "max_drawdown": 95.41150000497873,
+      "pf": 1.0859342363431503
+    },
+    {
+      "month": "May",
+      "trades": 25016,
+      "net": -50.434500018493964,
+      "gross_loss": -5545.076000005633,
+      "max_drawdown": 182.08400001058817,
+      "pf": 0.9909046332244242
+    },
+    {
+      "month": "Jun",
+      "trades": 25328,
+      "net": -0.3025000118304888,
+      "gross_loss": -5369.862500003583,
+      "max_drawdown": 74.27850000173385,
+      "pf": 0.9999436670842446
+    },
+    {
+      "month": "Jul",
+      "trades": 21784,
+      "net": -1066.8010000023946,
+      "gross_loss": -4752.12700000076,
+      "max_drawdown": 1067.8220000024044,
+      "pf": 0.7755108396719566
+    }
+  ],
+  "neighborhood_forward": [
+    {
+      "N": 512,
+      "gap": 0.15,
+      "trades": 43376,
+      "net": -561.8940000196367,
+      "pf": 0.9399555255778378
+    },
+    {
+      "N": 512,
+      "gap": 0.2,
+      "trades": 43263,
+      "net": -647.7965000196068,
+      "pf": 0.930845686138046
+    },
+    {
+      "N": 256,
+      "gap": 0.15,
+      "trades": 72511,
+      "net": -948.9100000328785,
+      "pf": 0.939360554227301
+    },
+    {
+      "N": 256,
+      "gap": 0.2,
+      "trades": 72128,
+      "net": -1117.538000032719,
+      "pf": 0.9286696031217839
+    },
+    {
+      "N": 128,
+      "gap": 0.15,
+      "trades": 103147,
+      "net": -1616.4380000468423,
+      "pf": 0.9281562643608728
+    },
+    {
+      "N": 128,
+      "gap": 0.2,
+      "trades": 102057,
+      "net": -1811.9675000464276,
+      "pf": 0.9190657094133815
+    }
+  ],
+  "decision": "Do not promote as R9B_Gamma_2. Preserve event-time activity-anchor mechanism as a regime-dependent positive-opportunity specialist hypothesis. Forward failure is family-wide across the predeclared N/gap neighborhood, concentrated in July, so do not repair by choosing a different forward parameter. Next research should add a causal regime owner derived from Jan-Mar/April and reconstructible event-time/directional-change community mechanisms, then freeze before any new May-Jul evaluation.",
+  "august_sealed": true
+}
