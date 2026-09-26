@@ -1,0 +1,190 @@
+{
+  "canonical_id": "R9B_Gamma_2_Structure_Aware_Sweep_Reclaim",
+  "classification": "FORMAL_SPECIALIST_BREAKTHROUGH",
+  "status": "PROMOTED_HIGH_DENSITY_SPECIALIST_NOT_FULL_R9_SYNTH_ECONOMIC_REPLACEMENT",
+  "parent_lineage": [
+    "R8-style microstructure SWEEP/RECLAIM reconstruction",
+    "current Dukascopy exact-tick recertification",
+    "multiscale completed-structure lifecycle ownership"
+  ],
+  "period": "2026-01-01..2026-07-31",
+  "discovery": "Jan-Mar",
+  "calibration": "April",
+  "forward": "May-Jul frozen after Jan-Apr",
+  "august_sealed": true,
+  "mechanism": {
+    "signal": "20s liquidity structure; 5s velocity; 2s persistence; 20s state expiry; $0.10 break; $0.15 reclaim; $0.15 min 5s displacement; efficiency >=0.30; max 5 entries/min; sweep-and-reclaim routes opposite the swept side",
+    "lifecycle": "if completed 1m/3m/5m/10m/20m directional alignment count >=3: stop $1.00, trail activation $0.10, trail $0.04, max hold 60s; otherwise stop $3.00, activation $0.18, trail $0.05, max hold 60s",
+    "principle": "market structure owns hold/exit geometry; structure does not vote direction"
+  },
+  "aggregate": {
+    "trades": 215725,
+    "winners": 175143,
+    "win_rate": 0.811880866844362,
+    "net": 29583.116499865526,
+    "gross_profit": 75039.30549988998,
+    "gross_loss": -45456.18900002444,
+    "profit_factor": 1.6508050311883742,
+    "max_drawdown": 217.28999999962616,
+    "r9_synth_trade_density_pct": 98.35097701306636,
+    "r9_synth_winner_count_pct": 91.63265946760421,
+    "r9_synth_net_pct": 9.57001933045892,
+    "r9_real_to_synth_bridge_closed_pct": 22.22220084444543
+  },
+  "monthly": [
+    {
+      "month": "Jan",
+      "trades": 30943,
+      "winners": 25368,
+      "net": 5131.0509999771375,
+      "gross_loss": -6091.20650000407,
+      "max_drawdown": 40.79750000011154
+    },
+    {
+      "month": "Feb",
+      "trades": 31072,
+      "winners": 25556,
+      "net": 9545.091499977125,
+      "gross_loss": -6886.700000004033,
+      "max_drawdown": 29.053500000096392
+    },
+    {
+      "month": "Mar",
+      "trades": 39690,
+      "winners": 32778,
+      "net": 8076.73349997082,
+      "gross_loss": -8347.92050000502,
+      "max_drawdown": 28.720000000083928
+    },
+    {
+      "month": "Apr",
+      "trades": 29320,
+      "winners": 23554,
+      "net": 2683.3624999780477,
+      "gross_loss": -6403.306000004261,
+      "max_drawdown": 48.32750000068336
+    },
+    {
+      "month": "May",
+      "trades": 27964,
+      "winners": 22795,
+      "net": 2109.483499979171,
+      "gross_loss": -5781.2580000038115,
+      "max_drawdown": 47.53100000005452
+    },
+    {
+      "month": "Jun",
+      "trades": 30023,
+      "winners": 24342,
+      "net": 1969.9154999859102,
+      "gross_loss": -6261.386000002673,
+      "max_drawdown": 37.47550000073534
+    },
+    {
+      "month": "Jul",
+      "trades": 26713,
+      "winners": 20750,
+      "net": 67.47899999731635,
+      "gross_loss": -5684.41200000057,
+      "max_drawdown": 217.2899999995534
+    }
+  ],
+  "robustness": {
+    "aligned_trail_neighborhood": [
+      {
+        "trail": 0.03,
+        "trades": 215741,
+        "net": 29376.955499865493,
+        "pf": 1.6478716379872547,
+        "maxdd": 219.07499999962965,
+        "min_month_net": 59.11399999727837
+      },
+      {
+        "trail": 0.04,
+        "trades": 215725,
+        "net": 29583.116499865526,
+        "pf": 1.6508050311883742,
+        "maxdd": 217.28999999962616,
+        "min_month_net": 67.47899999731635
+      },
+      {
+        "trail": 0.05,
+        "trades": 215702,
+        "net": 29712.234999865286,
+        "pf": 1.6516465503349542,
+        "maxdd": 220.63499999963824,
+        "min_month_net": 63.163999997281735
+      }
+    ],
+    "structure_threshold_neighbor": {
+      "align_threshold": 4,
+      "half_spread": 0.1,
+      "trail": 0.04,
+      "trades": 210596,
+      "net": 29510.918499868487,
+      "pf": 1.6255647886169136,
+      "winners": 172845,
+      "maxdd": 183.4255000005469,
+      "min_month_net": 84.49849999734397
+    },
+    "spread_stress": [
+      {
+        "align_threshold": 3,
+        "half_spread": 0.11,
+        "trades": 214480,
+        "net": 25522.945500113794,
+        "pf": 1.5343445383420289,
+        "maxdd": 535.4810000017351,
+        "min_month_net": -435.8824999994199
+      },
+      {
+        "align_threshold": 3,
+        "half_spread": 0.125,
+        "trades": 212255,
+        "net": 19691.911499997812,
+        "pf": 1.3813481329039805,
+        "maxdd": 1212.6030000002283,
+        "min_month_net": -1178.8520000000613
+      },
+      {
+        "align_threshold": 4,
+        "half_spread": 0.11,
+        "trades": 209192,
+        "net": 25488.75050011091,
+        "pf": 1.5158361309665371,
+        "maxdd": 564.5300000012248,
+        "min_month_net": -433.56849999946235
+      }
+    ]
+  },
+  "system_value": {
+    "gamma1_plus_gamma2_single_slot": {
+      "trades": 301220,
+      "winners": 211878,
+      "net": 12933.632999809563,
+      "gross_loss": -74651.31050005613,
+      "pf": 1.1732539310183956,
+      "maxdd": 1897.5290000670757
+    },
+    "gamma1_plus_gamma2_two_sleeve": {
+      "trades": 309936,
+      "winners": 215796,
+      "net": 11332.63249980397,
+      "gross_loss": -77509.72150005924,
+      "pf": 1.146209175836031,
+      "maxdd": 2700.16700007243
+    },
+    "decision": "Do not force Gamma_1 and Gamma_2 together in the same active HFT ownership path. Both tested integration forms are materially worse than Gamma_2 alone. Gamma_1 remains a valid historical specialist; Gamma_2 is the stronger current high-density active owner."
+  },
+  "limitations": [
+    "Net economics remain far below R9 SYNTH despite near-matching trade density and winner count.",
+    "July is only marginally profitable at baseline cost and becomes negative under wider spread stress.",
+    "The next breakthrough must improve hold/exit monetization and July/event-regime resilience without materially reducing density."
+  ],
+  "next_research": [
+    "Preserve Gamma_2 entry density and sweep/reclaim ownership.",
+    "Research state-dependent HARVEST/MEDIUM/RUNNER exits using structure, event-time persistence, MFE renewal, giveback, directional-change overshoot, and activity duration.",
+    "Add event/regime awareness specifically to protect July-like slow/low-volatility states without converting the engine back into a low-frequency sniper.",
+    "Use rejected Gamma_2 events as candidates for orthogonal CONTINUE/FADE/rotation sleeves rather than simple abstention."
+  ]
+}
