@@ -1,0 +1,21 @@
+{
+  "job_id": "MM-C30-B1B-S73-SOURCE-EQUIV-RECONSTRUCTION",
+  "status": "FAILED_RECOVERABLE",
+  "error": "concurrent.futures.process.BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.",
+  "completed_month_artifacts": [],
+  "scientific_result": "NONE",
+  "data_loss": "NONE",
+  "forward_exposure": "NONE",
+  "april_opened": false,
+  "may_july_opened": false,
+  "august_opened": false,
+  "source_script": "/mnt/data/mm_c30_b1b_s73_reconstruction.py",
+  "source_script_sha256": "ac34cb83ce00be3983e59e162cb3be82d266f11148bb2f8aa15114934186868a",
+  "root_cause_status": "PROVISIONAL",
+  "root_cause_candidates": [
+    "parallel raw-month decompression/array construction exceeded a worker resource limit",
+    "Numba plus ProcessPoolExecutor worker incompatibility/non-clean process termination"
+  ],
+  "recovery": "Do not rerun 3 months in one process pool. Resume smallest unit with January-only serialized worker, exact V2 checksum gate, bounded memory, then checkpoint before February.",
+  "next_unit": "MM-C30-B1B-S73-RECOVERY-JAN-SERIAL"
+}
