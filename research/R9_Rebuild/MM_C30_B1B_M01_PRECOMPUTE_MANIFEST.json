@@ -1,0 +1,48 @@
+{
+  "artifacts": {
+    "MM_C30_B1B_M01_CAUSAL_CACHE.npz.gz": {
+      "bytes": 40210705,
+      "sha256": "8ea56721aae647d7d9143e5c4cd77e7e4e2d32128b03f774c3c72dddc7205c85"
+    },
+    "MM_C30_B1B_M01_PRECOMPUTE_RESULT.json": {
+      "bytes": 2551,
+      "sha256": "e22182efdfaa846bd99073372bef1306d16d94e466160c9f51ba3b412971db0a"
+    },
+    "mm_c30_b1b_m01_precompute_opt.py": {
+      "bytes": 5692,
+      "sha256": "67b4161aa025a8bc5ffc452e354bc44abb8b4f76030d79d42a776ed0724b80e7"
+    }
+  },
+  "frozen_next_checksum": {
+    "extension": "60s max hold; +$0.20 activation; $0.08 trail",
+    "rule": ">=3/5 completed 1m/3m/5m/10m/20m returns aligned at entry; alive +2s; >=6 post-entry ticks",
+    "rule10_january_net_delta": 63.6
+  },
+  "job_id": "MM-C30-B1B-M01-PRECOMPUTE-OPT",
+  "purpose": "Optimize and durably cache January causal active-second, S1, M5 ATR and five-scale alignment arrays before exact lifecycle replay.",
+  "scientific_result": "NO_STRATEGY_ECONOMICS_BY_DESIGN",
+  "status": "VERIFIED_LOCAL_PRECOMPUTE_ONLY",
+  "timing_seconds": {
+    "active_seconds": 0.7416031360626221,
+    "csv_load": 5.651813745498657,
+    "s1_features": 7.512773036956787,
+    "save": 0.28153324127197266,
+    "tf_features": 0.4664757251739502,
+    "total": 14.670356035232544
+  },
+  "validation": {
+    "align_long_hist_sum_matches_active_seconds": true,
+    "align_short_hist_sum_matches_active_seconds": true,
+    "august_accessed": false,
+    "chronology_strict": true,
+    "may_july_accessed": false,
+    "s1_sample_max_abs_diff": {
+      "disp": 0.0,
+      "eff": 3.15538706274765e-11,
+      "range": 0.0,
+      "turns": 0.0
+    },
+    "s1_sample_points": 256,
+    "scientific_economics_executed": false
+  }
+}
