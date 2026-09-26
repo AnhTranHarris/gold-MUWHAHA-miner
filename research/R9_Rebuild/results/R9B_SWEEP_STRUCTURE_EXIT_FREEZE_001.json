@@ -1,0 +1,76 @@
+{
+  "job_id": "R9B_SWEEP_STRUCTURE_EXIT_FREEZE_001",
+  "status": "FROZEN_BEFORE_MAY_JUL",
+  "objective": "high-density sweep/reclaim specialist with market-structure-dependent lifecycle",
+  "signal_contract": {
+    "family": "R8-style sweep/reclaim reconstruction",
+    "liquidity_lookback_sec": 20,
+    "velocity_lookback_sec": 5,
+    "state_expiry_sec": 20,
+    "break_buffer": 0.1,
+    "reclaim_buffer": 0.15,
+    "min_velocity_displacement": 0.15,
+    "min_directional_efficiency": 0.3,
+    "cooldown_sec": 1,
+    "max_entries_per_minute": 5,
+    "regime": "session-adaptive completed-M5 ATR gate; fixed $0.20 modeled spread",
+    "action": "upper liquidity sweep + reclaim -> short; lower liquidity sweep + reclaim -> long"
+  },
+  "lifecycle_contract": {
+    "weak_or_ambiguous_structure": "align_count <=2 => stop $3.00, activation $0.18, trail $0.05, max hold 60s",
+    "aligned_structure": "align_count >=3 => stop $1.00, activation $0.10, trail $0.04, max hold 60s",
+    "alignment_scales": "completed 1m/3m/5m/10m/20m directional state; structure controls lifecycle, not direction voting",
+    "concurrency": "one live position in this specialist during exact non-overlap replay"
+  },
+  "jan_apr": [
+    {
+      "month": "Jan",
+      "trades": 30943,
+      "net": 5131.0509999771375,
+      "gl": -6091.20650000407,
+      "pf": 1.8423702266494675,
+      "win": 0.8198300100184209,
+      "maxdd": 40.79750000011154
+    },
+    {
+      "month": "Feb",
+      "trades": 31072,
+      "net": 9545.091499977125,
+      "gl": -6886.700000004033,
+      "pf": 2.386018194486697,
+      "win": 0.8224768280123584,
+      "maxdd": 29.053500000096392
+    },
+    {
+      "month": "Mar",
+      "trades": 39690,
+      "net": 8076.73349997082,
+      "gl": -8347.92050000502,
+      "pf": 1.9675144246960619,
+      "win": 0.8258503401360544,
+      "maxdd": 28.720000000083928
+    },
+    {
+      "month": "Apr",
+      "trades": 29320,
+      "net": 2683.3624999780477,
+      "gl": -6403.306000004261,
+      "pf": 1.4190589204976713,
+      "win": 0.8033424283765348,
+      "maxdd": 48.32750000068336
+    }
+  ],
+  "jan_apr_total": {
+    "trades": 131025,
+    "net": 25436.23849990313
+  },
+  "robustness_note": "Five materially different lifecycle geometries were positive in every Jan-Apr month. Structure-aware hybrid chosen from pre-forward evidence: original R8 room when structure weak/ambiguous; tighter MID harvest when >=3 completed scales align.",
+  "source_hashes": {
+    "hybrid": "59ce14e5e877be9af7d60daad60035deac46f79794d09e4d80cc558b1799f297",
+    "sweep_generator": "e9ae373f037abd2617471fda366ed73956db7ed7db595d4d162df982769e1e6c",
+    "r8_recert": "0fb6156d36cdc6b475911466816c6c0af1c8fcc345300463e8973b3116b3704c",
+    "freeze_result": "02a42501440db70db9710989b5d9abf34975bf2a3ba407846f462a26055e43b3"
+  },
+  "forward": "May-Jul unopened for this frozen lifecycle at commit time",
+  "august_sealed": true
+}
