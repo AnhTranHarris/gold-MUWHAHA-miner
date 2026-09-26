@@ -1,0 +1,174 @@
+{
+  "job_id": "R9B_SWEEP_STRUCTURE_EXIT_STAGE_001",
+  "status": "VERIFIED_DURABLE_MAJOR_GAMMA2_CANDIDATE_NOT_YET_FORMAL",
+  "source_commit": "a314bf6114453e5175c2468d173d865c69099d16",
+  "freeze_commit": "f76cbc5c1640f7714297f9857289b44c77239b3d",
+  "rule": "R8-style sweep/reclaim; align_count<=2 uses R8 lifecycle SL3/act.18/trail.05/H60; align_count>=3 uses MID lifecycle SL1/act.10/trail.04/H60",
+  "aggregate": {
+    "trades": 215725,
+    "winners": 175143,
+    "win_rate": 0.81188,
+    "net": 29583.12,
+    "gp": 75039.31,
+    "gl": -45456.19,
+    "pf": 1.6508,
+    "maxdd": 217.29
+  },
+  "synth_density": {
+    "r9_synth_trades": 219342,
+    "r9_synth_winners": 191136,
+    "trade_count_pct": 98.35,
+    "winner_count_pct": 91.63
+  },
+  "monthly": [
+    {
+      "month": "Jan",
+      "trades": 30943,
+      "net": 5131.051,
+      "gl": -6091.207,
+      "pf": 1.842,
+      "win_rate": 0.8198,
+      "maxdd": 40.8
+    },
+    {
+      "month": "Feb",
+      "trades": 31072,
+      "net": 9545.0915,
+      "gl": -6886.7,
+      "pf": 2.386,
+      "win_rate": 0.8225,
+      "maxdd": 29.05
+    },
+    {
+      "month": "Mar",
+      "trades": 39690,
+      "net": 8076.7335,
+      "gl": -8347.921,
+      "pf": 1.968,
+      "win_rate": 0.8259,
+      "maxdd": 28.72
+    },
+    {
+      "month": "Apr",
+      "trades": 29320,
+      "net": 2683.3625,
+      "gl": -6403.306,
+      "pf": 1.419,
+      "win_rate": 0.8033,
+      "maxdd": 48.33
+    },
+    {
+      "month": "May",
+      "trades": 27964,
+      "net": 2109.4835,
+      "gl": -5781.258,
+      "pf": 1.365,
+      "win_rate": 0.8152,
+      "maxdd": 47.53
+    },
+    {
+      "month": "Jun",
+      "trades": 30023,
+      "net": 1969.9155,
+      "gl": -6261.386,
+      "pf": 1.315,
+      "win_rate": 0.8108,
+      "maxdd": 37.48
+    },
+    {
+      "month": "Jul",
+      "trades": 26713,
+      "net": 67.479,
+      "gl": -5684.412,
+      "pf": 1.0119,
+      "win_rate": 0.7768,
+      "maxdd": 217.29
+    }
+  ],
+  "robustness": {
+    "trail_plateau": [
+      {
+        "align_threshold": 3,
+        "halfspread": 0.1,
+        "trail": 0.03,
+        "trades": 215741,
+        "net": 29376.96,
+        "pf": 1.648,
+        "maxdd": 219.07,
+        "min_month_net": 59.11
+      },
+      {
+        "align_threshold": 3,
+        "halfspread": 0.1,
+        "trail": 0.04,
+        "trades": 215725,
+        "net": 29583.12,
+        "pf": 1.651,
+        "maxdd": 217.29,
+        "min_month_net": 67.48
+      },
+      {
+        "align_threshold": 3,
+        "halfspread": 0.1,
+        "trail": 0.05,
+        "trades": 215702,
+        "net": 29712.23,
+        "pf": 1.652,
+        "maxdd": 220.63,
+        "min_month_net": 63.16
+      }
+    ],
+    "structural_threshold": [
+      {
+        "align_threshold": 4,
+        "halfspread": 0.1,
+        "trail": 0.04,
+        "trades": 210596,
+        "winners": 172845,
+        "win_rate": 0.8207,
+        "net": 29510.92,
+        "pf": 1.626,
+        "maxdd": 183.43,
+        "min_month_net": 84.5
+      },
+      {
+        "align_threshold": 2,
+        "halfspread": 0.1,
+        "classification": "fails July"
+      }
+    ],
+    "spread_stress": [
+      {
+        "align_threshold": 3,
+        "halfspread": 0.11,
+        "trades": 214480,
+        "net": 25522.95,
+        "pf": 1.534,
+        "winners": 172578,
+        "win_rate": 0.8046,
+        "maxdd": 535.48,
+        "july_net": -435.88
+      },
+      {
+        "align_threshold": 3,
+        "halfspread": 0.125,
+        "trades": 212255,
+        "net": 19691.91,
+        "pf": 1.381,
+        "maxdd": 1212.6,
+        "july_net": -1178.85
+      },
+      {
+        "align_threshold": 4,
+        "halfspread": 0.11,
+        "trades": 209192,
+        "net": 25488.75,
+        "pf": 1.516,
+        "maxdd": 564.53,
+        "july_net": -433.57
+      }
+    ]
+  },
+  "formal_promotion_blocker": "Section 94 integrated system-value gate not yet passed. Gamma1 combination degrades forward months.",
+  "august_sealed": true
+}
