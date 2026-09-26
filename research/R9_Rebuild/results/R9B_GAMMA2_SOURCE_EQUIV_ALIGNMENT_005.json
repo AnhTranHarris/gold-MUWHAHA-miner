@@ -1,0 +1,15 @@
+{
+  "unit": "R9B_GAMMA2_SOURCE_EQUIV_ALIGNMENT_005",
+  "status": "VERIFIED_DURABLE_DIAGNOSTIC",
+  "target": {"trades":30943,"winners":25368,"win":0.8198300100184209,"net":5131.0509999771375,"gl":-6091.20650000407},
+  "frozen_alignment_cache_sha256": "71fc132e208589857dfe5dd6b8b1a204bd626d65c249890e842b6d5647ba65a5",
+  "rows": [
+    {"variant":"quota_only_frozen_align","trades":27749,"winners":18982,"win":0.6840606868715989,"net":-4355.35150002035,"gl":-11377.748500006403,"pf":0.6172044495430797,"maxdd":4400.540000020068,"raw_signals":33756,"aligned_trades":13441,"weak_trades":14308},
+    {"variant":"cooldown_only_frozen_align","trades":34164,"winners":23340,"win":0.6831752722163681,"net":-5494.389500025083,"gl":-13972.923500007932,"pf":0.6067831116357316,"maxdd":5515.426000024776,"raw_signals":44115,"aligned_trades":17078,"weak_trades":17086}
+  ],
+  "source_sha256": "5b71250376d7d6ae98ebcc1735e6c2c26585c005992f9e90c239bb7e912c236c",
+  "result_sha256": "5dfa9807f11f34864e15d9948f3c5a4c75bd3e72cba4128954ff2eee320ba062",
+  "interpretation": "Using the exact frozen MM-C30 five-scale alignment cache changes only single-digit trade counts versus reconstructed alignment. The 68% winner profile remains. Alignment-cache arithmetic is not the missing Gamma_2 source-equivalence mechanism.",
+  "next_unit": "R9B_GAMMA2_SOURCE_EQUIV_OWNERSHIP_006",
+  "august_sealed": true
+}
