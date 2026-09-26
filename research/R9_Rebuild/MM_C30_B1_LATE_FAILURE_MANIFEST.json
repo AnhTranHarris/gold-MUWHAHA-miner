@@ -1,0 +1,39 @@
+{
+  "job_id": "MM-C30-B1A-LATE-FAILURE-OBSERVABILITY",
+  "status": "VERIFIED_LOCAL_REJECTED_AS_STANDALONE",
+  "classification": "MECHANISTIC_SIGNAL_FOUND_NO_ECONOMIC_PROMOTION",
+  "scientific_result": {
+    "checkpoint_3s_auc": {
+      "1": 0.579530289999156,
+      "2": 0.5291250776550478,
+      "3": 0.5601796016910252
+    },
+    "checkpoint_5s_auc": {
+      "1": 0.5,
+      "2": 0.5,
+      "3": 0.5
+    },
+    "3s_best_total_net_delta": 49.79900001294254,
+    "3s_best_total_gl_improvement": 1741.7065000078546,
+    "3s_min_gp_retention": 0.5602191191527603,
+    "3s_all_month_pass": false,
+    "5s_total_survivors": 67,
+    "5s_all_month_pass": false
+  },
+  "interpretation": "Three-second failure/stall state is more observable than two-second state, with giveback and giveback-growth among the dominant cross-month features. However universal 3s harvesting destroys too much gross profit and worsens February. Five-second base-R9 survivor population is too small to support the mechanism. Apply 3s+ failure logic only after Section-73-style promotion has explicitly extended eligible runners.",
+  "next": "Reconstruct Section-73 promotion ownership exactly enough to create an extended promoted population, then test 3s/5s stall-reclaim harvesting within promoted runners using rolling120 context. Do not open May-Jul before Jan-Mar/April freeze.",
+  "artifacts": {
+    "MM_C30_B1_LATE_FAILURE_GRID.csv": {
+      "bytes": 26412,
+      "sha256": "1b397670a2c3c0d30325e0c7080502046c469cb9dc92fcc67b2ab53106588603"
+    },
+    "MM_C30_B1_LATE_FAILURE_RESULT.json": {
+      "bytes": 7389,
+      "sha256": "cf235c645918e59b0974ff5cb2177d21b0ba3eb0844308d83dff0c64752dfcfd"
+    },
+    "mm_c30_b1_late_failure.py": {
+      "bytes": 6595,
+      "sha256": "1e024971785511fc0df81400c6de2930ba3ff5b342d665241b8a2d7321a191e9"
+    }
+  }
+}
