@@ -1,0 +1,79 @@
+{
+  "job_id": "MM-C30-B1B-M01-REPLAY-EQUIV-FIX1",
+  "status": "COMPLETED_DIAGNOSTIC_NEAR_SOURCE_EQUIVALENCE_EXACT_BINDING_UNRESOLVED",
+  "scientific_result": "NO_STRATEGY_PROMOTION",
+  "scope": "JANUARY_ONLY",
+  "oos_exposure": "NONE; April/May-July unopened by this unit; August sealed",
+  "source_commit": "eb5fdfd0efbf7f283f43ae636086f6fd3862ca92",
+  "source_blob_sha": "aa91f0ad93d4ef958cfca1d4c31300695e2eb832",
+  "raw_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "cache_inner_npz_sha256": "71fc132e208589857dfe5dd6b8b1a204bd626d65c249890e842b6d5647ba65a5",
+  "cache_gzip_sha256": "8ea56721aae647d7d9143e5c4cd77e7e4e2d32128b03f774c3c72dddc7205c85",
+  "local_result_sha256": "dfaed9f0faa8a793a99cacea4a44e44063c85fc34377d7636ba170915967f2e6",
+  "elapsed_seconds": 6.311468124389648,
+  "fix": "authoritative initial stop restored: long Bid-$0.30; short Ask+$0.30",
+  "fix1_baseline": {
+    "trades": 33795,
+    "net": -6252.3230000248,
+    "gp": 4302.047999988868,
+    "gl": -10554.371000013667,
+    "pf": 0.40760818432318674,
+    "win": 0.44636780588844505,
+    "maxdd": 6255.268000024799,
+    "avg_hold": 5.547632578783844
+  },
+  "source_bound_v2_reference": {
+    "trades": 33793,
+    "net": -6253.808000024798,
+    "gp": 4301.471499988871,
+    "gl": -10555.279500013668,
+    "pf": 0.407518,
+    "win": 0.446305,
+    "avg_hold": 5.54779
+  },
+  "fix1_minus_v2": {
+    "trades": 2,
+    "net": 1.4849999999978536,
+    "gp": 0.5764999999964857,
+    "gl": 0.9085000000013679,
+    "avg_hold": -0.00015742121615591742
+  },
+  "historical_unbound_narrative_reference": {
+    "net": -6245.249,
+    "rule10_delta": 63.6
+  },
+  "fix1_minus_historical_net": -7.074000024800625,
+  "rule10_preserve_stop": {
+    "trades": 33644,
+    "promoted_trades": 9567,
+    "net": -6185.425500024621,
+    "gp": 4627.90499998918,
+    "gl": -10813.330500013803,
+    "pf": 0.4279814623240521,
+    "win": 0.43793841398169064,
+    "maxdd": 6188.37050002462,
+    "avg_hold": 6.168598085839972,
+    "delta_vs_baseline": 66.8975000001792,
+    "target_delta_error": 3.2975000001792054
+  },
+  "rule10_reset_stop": {
+    "trades": 33853,
+    "promoted_trades": 9706,
+    "net": -6194.695000024764,
+    "gp": 4192.608499990131,
+    "gl": -10387.303500014896,
+    "pf": 0.40362818896974745,
+    "win": 0.3963607361238295,
+    "maxdd": 6197.640000024763,
+    "avg_hold": 4.901285646766904,
+    "delta_vs_baseline": 57.62800000003608,
+    "target_delta_error": -5.97199999996392
+  },
+  "interpretation": [
+    "FIX1 substantially restores source equivalence to the source-bound V2 January checkpoint: only +2 trades and +$1.485 net difference remain.",
+    "The historical -$6,245.249 baseline and +$63.60 Rule10 delta are not currently bound to the exact recovered V2 source; do not tune toward them.",
+    "Preserve-stop adds +$66.8975 net but worsens gross loss; reset-stop adds +$57.628 and improves gross loss slightly. Neither is a promoted strategy result while lineage remains unresolved.",
+    "Next unit is source archaeology for the remaining two-trade/$1.485 discrepancy and Rule10 implementation binding; do not fit Section-73 or open forward months yet."
+  ],
+  "next_unit": "MM-C30-B1B-M01-V2-EQUIV-ARCHAEOLOGY"
+}
