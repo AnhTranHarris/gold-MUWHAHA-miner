@@ -1,0 +1,248 @@
+{
+  "job_id": "R9B_EVENT_TIME_ACCURACY_OWNER_CANDIDATE_001",
+  "status": "VERIFIED_DURABLE_MAJOR_CANDIDATE_NOT_FORMAL_GAMMA",
+  "parent": "R9B_ACTIVITY_ANCHOR_STAGE_COMPLETE_001",
+  "research_goal": "mitigate losses and improve entry accuracy/continuation quality before optimizing profitability",
+  "scientific_caveat": "May-Jul activity-anchor failure had already been examined during post-mortem before this exact owner was durably frozen. Model/rule selection used Jan-Mar discovery and April calibration only, but May-Jul should be treated as repeated forward diagnostic rather than pristine holdout. Do not assign R9B_Gamma_2 without a fresh certification gate.",
+  "diagnosis": {
+    "primary_failure": "winner compression / continuation failure, not a simple win-rate collapse or exploding average loss",
+    "july": {
+      "win_rate": 0.670813441057657,
+      "avg_win": 0.25219503182086944,
+      "avg_loss": -0.669690952649487,
+      "fav20_rate": 0.47052882849798017,
+      "fav30_rate": 0.3023319867792876,
+      "trail_activation_rate": 0.7562890194638267,
+      "median_anchor_duration_sec": 53.0355,
+      "mean_tick_rate_per_sec": 5.075422787233324,
+      "mean_signal_delay_sec": 47.91089758538377
+    },
+    "structural_loss_concentrations": {
+      "false_reclaim_within_5s": {
+        "jan_mar_trade_share": 0.1698,
+        "jan_mar_gross_loss_share": 0.423,
+        "july_trade_share": 0.1793,
+        "july_gross_loss_share": 0.3864
+      },
+      "low_activity_tick_rate_below_4_965": {
+        "july_trade_share": 0.5237,
+        "july_gross_loss_share": 0.546
+      },
+      "low_m5_atr_below_6_924": {
+        "july_trade_share": 0.8709,
+        "july_gross_loss_share": 0.8834
+      },
+      "late_break_signal_delay_above_25_153s": {
+        "july_trade_share": 0.3192,
+        "july_net": -437.0685
+      }
+    },
+    "interpretation": [
+      "The 256-tick anchor became much slower in physical time during July, making the reference level older and first-break entries less continuation-capable.",
+      "Most entries still achieved the first +$0.10 activation, but far fewer extended to +$0.20/+0.30, so the system harvested many small winners while still carrying materially larger losers.",
+      "Quick sweep/reclaim events remained only ~17-18% of trades but generated roughly 39-42% of gross loss; this is a persistent structural loss population.",
+      "Simple higher-timeframe vote count did not solve July; regime ownership must be state-specific rather than another majority-vote filter."
+    ]
+  },
+  "owner_rule": {
+    "deterministic_logic": [
+      "reject if aligned S1 displacement <= 1.040500",
+      "if 1.040500 < displacement <= 1.426750, require signal_delay_s > 4.374500",
+      "if 1.426750 < displacement <= 2.502500 and signal_delay_s <= 1.663500, require range_atr <= 0.194659",
+      "otherwise accept"
+    ],
+    "interpretation": [
+      "weak ignition rejected",
+      "medium ignition must prove persistence",
+      "instantaneous strong/wide spike treated as possible exhaustion/sweep",
+      "strong sustained ignition accepted"
+    ]
+  },
+  "aggregate_candidate": {
+    "trades": 94191,
+    "net": 12788.01549993806,
+    "gross_profit": 31879.624999955297,
+    "gross_loss": -19091.609500017243,
+    "profit_factor": 1.6698238563870953,
+    "global_max_drawdown": 19.00050000009287,
+    "win_rate": 0.7199095454979775,
+    "sustained_fav20_rate": 0.6184454990391863,
+    "false_reclaim5_rate": 0.10861971950610992
+  },
+  "parent_activity_anchor": {
+    "trades": 178962,
+    "net": 6438.321499887939,
+    "gross_loss": -40239.00900003435,
+    "profit_factor": 1.1600019896087015,
+    "global_max_drawdown": 1182.230000028494,
+    "win_rate": 0.6884925291402644,
+    "sustained_fav20_rate": 0.5500136901336046,
+    "false_reclaim5_rate": 0.17204865864629723
+  },
+  "deltas": {
+    "net_delta": 6349.69400005012,
+    "net_improvement_pct": 98.62343780379152,
+    "gross_loss_reduction_pct": 52.554473943429,
+    "trade_retention_pct": 52.631843631608945,
+    "win_rate_delta_pp": 3.14170163577131,
+    "fav20_delta_pp": 6.843180890558176,
+    "false_reclaim5_delta_pp": -6.342893914018731,
+    "max_drawdown_reduction_pct": 98.3928254231719
+  },
+  "monthly": [
+    {
+      "month": "Jan",
+      "trades": 14685,
+      "net": 2455.807499989228,
+      "gross_loss": -2827.1775000028647,
+      "max_drawdown": 15.973000000091815,
+      "pf": 1.8686428425476431,
+      "win": 0.7321075927817501
+    },
+    {
+      "month": "Feb",
+      "trades": 16935,
+      "net": 3694.2494999874325,
+      "gross_loss": -3900.193500003651,
+      "max_drawdown": 12.987500000033833,
+      "pf": 1.9471964660173846,
+      "win": 0.7059935045763213
+    },
+    {
+      "month": "Mar",
+      "trades": 21906,
+      "net": 3195.034999983697,
+      "gross_loss": -4692.366000004719,
+      "max_drawdown": 19.00050000009287,
+      "pf": 1.6809006373289048,
+      "win": 0.7064274627955811
+    },
+    {
+      "month": "Apr",
+      "trades": 11663,
+      "net": 1148.3129999912699,
+      "gross_loss": -2315.8815000024088,
+      "max_drawdown": 17.501000000002023,
+      "pf": 1.4958427277000466,
+      "win": 0.7224556289119437
+    },
+    {
+      "month": "May",
+      "trades": 10430,
+      "net": 950.079999992301,
+      "gross_loss": -1988.6115000020482,
+      "max_drawdown": 16.543500000045242,
+      "pf": 1.4777604876524764,
+      "win": 0.7323106423777564
+    },
+    {
+      "month": "Jun",
+      "trades": 11380,
+      "net": 952.5094999948515,
+      "gross_loss": -2083.2455000013574,
+      "max_drawdown": 12.093500000135464,
+      "pf": 1.4572238365541799,
+      "win": 0.7339191564147628
+    },
+    {
+      "month": "Jul",
+      "trades": 7192,
+      "net": 392.02099999927805,
+      "gross_loss": -1284.134000000191,
+      "max_drawdown": 18.803999999966436,
+      "pf": 1.3052804458095648,
+      "win": 0.7245550611790879
+    }
+  ],
+  "threshold_plateau": "Exact threshold stress at 0.51, 0.52 and 0.54 produced identical monthly results; 0.56 was nearly identical and slightly more selective. This is a discrete leaf plateau rather than a single numeric point.",
+  "community_research_basis": [
+    {
+      "language": "English",
+      "source": "MQL5 Creating a Custom Tick Chart",
+      "url": "https://www.mql5.com/en/articles/22460",
+      "mechanism": "fixed-N tick bars expose activity density; tick-bar physical duration should be treated as state"
+    },
+    {
+      "language": "Chinese",
+      "source": "MQL5 ATR techniques",
+      "url": "https://www.mql5.com/zh/articles/16213",
+      "mechanism": "ATR-normalized breakout confirmation to distinguish meaningful movement from noise"
+    },
+    {
+      "language": "Chinese",
+      "source": "MQL5 Opening Range Breakout tool",
+      "url": "https://www.mql5.com/zh/articles/18486",
+      "mechanism": "breakout -> retest -> second breakout state machine instead of first-cross entry"
+    },
+    {
+      "language": "Chinese",
+      "source": "GQL Gold False Breakout Expert",
+      "url": "https://www.mql5.com/zh/market/product/195686",
+      "mechanism": "sweep -> reclaim -> reversal state separation for XAUUSD"
+    },
+    {
+      "language": "Japanese",
+      "source": "MQL5 ATR breakout confirmation",
+      "url": "https://www.mql5.com/ja/articles/16213",
+      "mechanism": "volatility threshold to filter transient false breaks"
+    },
+    {
+      "language": "Japanese",
+      "source": "Asa Gold Break",
+      "url": "https://www.mql5.com/ja/market/product/182419",
+      "mechanism": "low-volatility false-break mitigation using ATR momentum and time filters"
+    },
+    {
+      "language": "Korean",
+      "source": "Gold breakout or failed breakout guide",
+      "url": "https://www.mcmarkets.com/ko/insights/gold-4650-breakout-or-failed-breakout",
+      "mechanism": "acceptance versus rejection requires close/retest context rather than one touch"
+    },
+    {
+      "language": "Korean",
+      "source": "Gold cost/payoff post-mortem",
+      "url": "https://note.com/goldflow_chqos/n/n55826211b89c?hl=ko",
+      "mechanism": "high win rate can still lose when winners are small and occasional losses dominate"
+    },
+    {
+      "language": "English",
+      "source": "TradingView Sweep Reclaim Retest",
+      "url": "https://www.tradingview.com/script/pqn79edL-Sweep-Reclaim-Retest-Clean-v1/",
+      "mechanism": "bias -> level -> sweep -> reclaim -> retest -> signal"
+    },
+    {
+      "language": "English",
+      "source": "ForexFactory breakout/false breakout/retest discussion",
+      "url": "https://www.forexfactory.com/thread/post/15431218",
+      "mechanism": "close-confirmed breakout plus retest; failure to close/hold defines false breakout"
+    },
+    {
+      "language": "Academic",
+      "source": "Algorithmic trading with directional changes",
+      "url": "https://link.springer.com/article/10.1007/s10462-022-10307-0",
+      "mechanism": "intrinsic/event time samples significant market movement instead of fixed physical intervals"
+    },
+    {
+      "language": "Academic",
+      "source": "Improved directional change and regime detection in FX",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0378437123003655",
+      "mechanism": "directional-change indicators can feed explicit regime-change detection in FX"
+    }
+  ],
+  "next_stage": [
+    "Accuracy first: convert the owner into a transparent state machine and test neighboring displacement/delay/range boundaries on Jan-Mar + April only.",
+    "Add an explicit acceptance/reclaim confirmation layer: first break arms the setup; quick reclaim aborts; accepted hold/renewal permits entry; sweep-reclaim may route to a separate FADE specialist rather than being financed as CONTINUE.",
+    "Build directional-change/intrinsic-time regime state from DC event count, overshoot age/size, renewal rate and activity acceleration.",
+    "Use fixed-N tick-bar physical duration itself as a regime variable so 256 ticks in 20 seconds is not treated the same as 256 ticks in 60-90 seconds.",
+    "Keep Gamma_1 toxicity ownership separate; later combine chronologically only after the accuracy owner is independently certified.",
+    "Do not optimize profitability/lifecycle until entry accuracy and false-break containment are stable."
+  ],
+  "local_artifacts": {
+    "activity_diag_source_sha256": "3302d6352bd003ecd855de114cf9333fea1c671b56d4bbaee9679ec5a3227d9c",
+    "activity_diag_summary_sha256": "4508ee6be14790df98fd967c756980e42b4825e76f7da4130d9c933307e7b6e2",
+    "exact_owner_source_sha256": "8d49c029477ef1b71863f6de61431ca25ea607806fdf14cf8a85d920a4912229",
+    "owner_result_sha256": "e6ba5c7dfe9515fc84c4d984a11f1748b30b096d77207933d8085611ad4d7ad4",
+    "threshold_stress_sha256": "f97f06fe04669381c4ae0206f375bce23830e1c75589a2b290289eacf06b4797"
+  },
+  "august_sealed": true
+}
