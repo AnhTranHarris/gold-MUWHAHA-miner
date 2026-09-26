@@ -38,8 +38,8 @@
     "winrate_only_direct_expectancy_lift": 0.3845919644,
     "payoff_to_winrate_direct_lift_ratio": 1.7067151286533746
   },
-  "next_campaign_objective": "Refactor the January Rule10/Section73 lifecycle source-equivalence into bounded compact precompute and replay shards; preserve the +$63.60 January Rule10 checksum and documented 60s/+0.20/$0.08 extension geometry. Do not alter scientific thresholds from timeout.",
-  "durable_drive_sync_status": "RECONCILED",
+  "next_campaign_objective": "Replay unchanged January Rule10 lifecycle semantics against the frozen +$63.60 checksum using the new compact causal cache; test preserve-current-stop vs reset-emergency-stop transition semantics without opening May-Jul.",
+  "durable_drive_sync_status": "PENDING_CURRENT_TURN",
   "execution_guardrails": {
     "artifact_gated_progress": true,
     "local_pc_profile": "research/R9_Rebuild/LOCAL_PC_EXECUTION_PROFILE.json",
@@ -48,16 +48,21 @@
     "local_min_free_disk_gb": 15,
     "local_max_materialized_months": 1
   },
-  "last_durable_unit": "MM-C30-B1B-M01-LIFECYCLE-SOURCE-EQUIVALENCE",
-  "last_durable_classification": "TIMEOUT_NO_SCIENTIFIC_RESULT",
+  "last_durable_unit": "MM-C30-B1B-M01-PRECOMPUTE-OPT",
+  "last_durable_classification": "VERIFIED_ENGINEERING_PRECOMPUTE_NO_ECONOMICS",
   "last_durable_summary": {
-    "scientific_result": null,
-    "historical_rule10_january_checksum_delta": 63.6,
-    "runtime_status": "January source-equivalence replay exceeded runtime ceiling before producing a validated result",
-    "oos_exposure": "NONE",
-    "august": "SEALED"
+    "raw_rows": 9135062,
+    "active_seconds": 1526214,
+    "elapsed_seconds": 14.670356035232544,
+    "cache_gzip_bytes": 40210705,
+    "raw_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "compressed_cache_sha256": "8ea56721aae647d7d9143e5c4cd77e7e4e2d32128b03f774c3c72dddc7205c85",
+    "validation": "chronology strict; 256 S1 sample checks; max abs diff disp/range/turns 0 and eff 3.16e-11; alignment histograms sum exactly to active-second count",
+    "scientific_economics_executed": false,
+    "may_july_accessed": false,
+    "august_accessed": false
   },
-  "next_unit_id": "MM-C30-B1B-M01-PRECOMPUTE-OPT",
+  "next_unit_id": "MM-C30-B1B-M01-REPLAY-EQUIV",
   "queued_next_campaign": {
     "campaign_id": "MM-C31-DUKASCOPY-MULTIRESOLUTION",
     "status": "QUEUED_AFTER_MM-C30-B1",
