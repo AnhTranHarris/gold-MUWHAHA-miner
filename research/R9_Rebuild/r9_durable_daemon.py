@@ -43,7 +43,7 @@ def main():
     def daemon_beat():
         while not stop.wait(20):
             atomic_json(health,{"status":"ALIVE","host":socket.gethostname(),"pid":os.getpid(),"heartbeat_utc":utcnow(),**current})
-    th=threading.Thread(target=daemon_beat,daemon=True); th.start()
+    atomic_json(health,{"status":"ALIVE","host":socket.gethostname(),"pid":os.getpid(),"heartbeat_utc":utcnow(),**current})\n    th=threading.Thread(target=daemon_beat,daemon=True); th.start()
 
     try:
         while True:
