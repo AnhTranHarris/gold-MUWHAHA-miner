@@ -1,0 +1,58 @@
+{
+  "job_id": "MM-C30-B1B-RULE10-LINEAGE-ARCHAEOLOGY",
+  "status": "VERIFIED_DURABLE",
+  "conclusion": "FORMALLY_RETIRE_HISTORICAL_RULE10_63_60_CHECKSUM",
+  "evidence": {
+    "github_branch_history": "No pre-reconstruction executable/source artifact found for historical Rule10. First recovered Rule10 code is mm_c30_b1b_jan_source_equivalence_v1.py, committed b0272a416d2bb0031adc2948aa3d3126c91eb70b, and it begins from TARGET_DELTA=63.60 plus two reconstructed candidate semantics.",
+    "project_library_history": "Search recovered narrative descriptions of selective +2s survivor promotion and later Section-73 model results, but no exact original Rule10 code, event-order trace, stop-state semantics, repeatability rule, or completed-scale alignment implementation.",
+    "chat_history": "Historical conversation retrieval likewise preserved result claims and reconstruction intent, not an original executable implementation."
+  },
+  "retired_claim": {
+    "january_incremental_net": 63.6,
+    "classification": "HISTORICAL_NARRATIVE_UNVERIFIABLE",
+    "rule": "Must not be used as tuning target, promotion criterion, or equivalence checksum."
+  },
+  "source_equivalent_v2_baseline": {
+    "trades": 33793,
+    "net": -6253.808000024798,
+    "gp": 4301.471499988871,
+    "gl": -10555.279500013668,
+    "pf": 0.407518483994981,
+    "win": 0.44630544787382004,
+    "avg_hold": 5.547792087118634
+  },
+  "reconstructed_rule10_candidates": {
+    "preserve_stop": {
+      "rationale": "Minimal state mutation: promotion changes future max-hold/activation/trail only and never loosens or overwrites a protective stop already advanced by the base R9 lifecycle.",
+      "delta_vs_baseline": 68.29100000017752,
+      "net": -6185.517000024621,
+      "gp": 4628.0534999891825,
+      "gl": -10813.570500013804,
+      "maxdd": 6188.46200002462,
+      "promoted_trades": 9567
+    },
+    "reset_stop": {
+      "rejection_reason": "At promotion it can overwrite/loosen an already-ratcheted protective stop, breaking stop monotonicity and creating an avoidable lifecycle discontinuity.",
+      "delta_vs_baseline": 59.60950000003231,
+      "net": -6194.198500024766,
+      "gp": 4193.186999990134,
+      "gl": -10387.3855000149,
+      "maxdd": 6197.143500024765,
+      "promoted_trades": 9706
+    }
+  },
+  "precommitted_reference": {
+    "name": "V2-P2-PRESERVE-STOP-REFERENCE",
+    "status": "REFERENCE_ONLY_NOT_STRATEGY_PROMOTION",
+    "selection_basis": "mechanical/source-equivalence and monotonic protective-stop semantics; explicitly not selected by profitability or closeness to +63.60",
+    "rule": ">=3 of 5 completed 1m/3m/5m/10m/20m returns aligned at entry; trade alive at first causal tick on/after +2s; >=6 post-entry ticks; one-time promotion; retain current stop; after promotion max hold 60s, activation $0.20, trail $0.08.",
+    "january_checksum_delta": 68.29100000017752
+  },
+  "next_unit": "MM-C30-B1B-S73-SOURCE-EQUIV-RECONSTRUCTION-PREFLIGHT",
+  "constraints": {
+    "no_mt5": true,
+    "august_sealed": true,
+    "may_july_closed_until_freeze": true,
+    "historical_63_60_not_target": true
+  }
+}
