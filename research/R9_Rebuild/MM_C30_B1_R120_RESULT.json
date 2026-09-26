@@ -1,0 +1,243 @@
+{
+  "job_id": "MM-C30-B1-R120-CONTEXT-AUDIT",
+  "status": "COMPLETED_LOCAL",
+  "scope": "original R9 +2s survivors, rolling trailing tick context only",
+  "rolling_horizons_ms": [
+    250,
+    1000,
+    5000,
+    15000,
+    30000,
+    60000,
+    120000
+  ],
+  "months": {
+    "1": {
+      "survivors": 19803,
+      "baseline": {
+        "trades": 19803,
+        "net": -3317.7965000145905,
+        "gp": 2353.6079999931044,
+        "gl": -5671.404500007695,
+        "pf": 0.4149956152818779,
+        "win": 0.46972680906933295,
+        "maxdd": 3341.8985000144694
+      }
+    },
+    "2": {
+      "survivors": 17467,
+      "baseline": {
+        "trades": 17467,
+        "net": -2206.10950001288,
+        "gp": 3339.797999993735,
+        "gl": -5545.907500006615,
+        "pf": 0.6022094670691409,
+        "win": 0.48336863800309154,
+        "maxdd": 2227.505000012862
+      }
+    },
+    "3": {
+      "survivors": 17704,
+      "baseline": {
+        "trades": 17704,
+        "net": -2432.6085000131216,
+        "gp": 3067.4004999935914,
+        "gl": -5500.009000006713,
+        "pf": 0.5577082692028045,
+        "win": 0.48746046091278805,
+        "maxdd": 2434.102000013115
+      }
+    }
+  },
+  "best": {
+    "depth": 4,
+    "leaf": 1000,
+    "threshold": 0.03,
+    "m1_net": -3313.1495000126306,
+    "m1_delta": 4.647000001959896,
+    "m1_gl_improve": 214.932500001275,
+    "m1_gp_ret": 0.9106539831612012,
+    "m1_dd_delta": -6.600500002100944,
+    "m1_close": 2681,
+    "m2_net": -2206.10950001288,
+    "m2_delta": 0.0,
+    "m2_gl_improve": 0.0,
+    "m2_gp_ret": 1.0,
+    "m2_dd_delta": 0.0,
+    "m2_close": 0,
+    "m3_net": -2396.969500012391,
+    "m3_delta": 35.63900000073045,
+    "m3_gl_improve": 125.34050000045772,
+    "m3_gp_ret": 0.9707565086463552,
+    "m3_dd_delta": -35.59400000070809,
+    "m3_close": 984,
+    "all_month_pass": false,
+    "total_delta": 40.28600000269034,
+    "total_gl_improvement": 340.2730000017327,
+    "min_gp_ret": 0.9106539831612012,
+    "total_close": 3665
+  },
+  "pass": false,
+  "oof_auc_close2_better": {
+    "1": 0.559444752371418,
+    "2": 0.5506166333918745,
+    "3": 0.5329909076764343
+  },
+  "elapsed_seconds": 51.400161266326904,
+  "top_features_by_holdout": {
+    "1": [
+      [
+        "r120_15s_close_loc_al",
+        0.45857878753176223
+      ],
+      [
+        "5s_travel_share",
+        0.08468960399465829
+      ],
+      [
+        "r120_1s_disp_al",
+        0.08122318052176367
+      ],
+      [
+        "15s_range_share",
+        0.07653942084931945
+      ],
+      [
+        "r120_5s_close_loc_al",
+        0.07510860418594736
+      ],
+      [
+        "r120_30s_turnrate",
+        0.05413109202816687
+      ],
+      [
+        "r120_60s_range",
+        0.0511771952977345
+      ],
+      [
+        "r120_1s_tickrate",
+        0.04992486221585581
+      ],
+      [
+        "r120_1s_eff",
+        0.04645765437414813
+      ],
+      [
+        "15s_travel_share",
+        0.022169599000643646
+      ]
+    ],
+    "2": [
+      [
+        "r120_5s_close_loc_al",
+        0.30621493089550256
+      ],
+      [
+        "r120_30s_turnrate",
+        0.1417573915913677
+      ],
+      [
+        "r120_30s_mean_spread",
+        0.08901954557178945
+      ],
+      [
+        "r120_120s_disp_al",
+        0.0800155391435261
+      ],
+      [
+        "disp_15s_minus_60s_rate",
+        0.07420995095014732
+      ],
+      [
+        "r120_30s_eff",
+        0.07341609621856725
+      ],
+      [
+        "r120_1s_close_loc_al",
+        0.0628699130363866
+      ],
+      [
+        "1s_range_share",
+        0.05772868823971537
+      ],
+      [
+        "r120_60s_disp_al",
+        0.04278198651946696
+      ],
+      [
+        "5s_travel_share",
+        0.037312707320397036
+      ]
+    ],
+    "3": [
+      [
+        "r120_15s_close_loc_al",
+        0.3094690612144259
+      ],
+      [
+        "r120_5s_mean_spread",
+        0.144465946169788
+      ],
+      [
+        "r120_30s_range",
+        0.08675282218166125
+      ],
+      [
+        "30s_travel_share",
+        0.07485116619348102
+      ],
+      [
+        "r120_1s_close_loc_al",
+        0.07335656082635575
+      ],
+      [
+        "5s_range_share",
+        0.06535273929557173
+      ],
+      [
+        "r120_120s_turnrate",
+        0.06471432822335164
+      ],
+      [
+        "r120_120s_eff",
+        0.06434817382068149
+      ],
+      [
+        "r120_30s_turnrate",
+        0.06382724682201449
+      ],
+      [
+        "r120_15s_travel",
+        0.0295968961014041
+      ]
+    ]
+  },
+  "interpretation": {
+    "rolling_120s_contains_incremental_signal": true,
+    "signal_strength": "weak",
+    "universal_plus2s_hazard_gate_supported": false,
+    "recommended_use": "context/ownership feature layer for later promoted-runner stall/reclaim decisions, not standalone universal exit gate"
+  },
+  "artifacts": {
+    "MM_C30_B1_R120_GRID.csv": {
+      "bytes": 12285,
+      "sha256": "5bb8d184960e4ce8f6366138502e9752b0a59edda6a44b06ecf6d586c4a0e279"
+    },
+    "MM_C30_B1_R120_RESULT.json": {
+      "bytes": 2178,
+      "sha256": "90e3ff52270a0a88019a2f763a5201cfc6a5f888f556dd502b3f6df509101c98"
+    },
+    "MM_C30_B1_R120_M02.pkl.gz": {
+      "bytes": 5166225,
+      "sha256": "5c15bb781bbb55d22e7c94514bb03014d70aef92849281cb317fcf2963bac5b3"
+    },
+    "MM_C30_B1_R120_M01.pkl.gz": {
+      "bytes": 5967926,
+      "sha256": "233cb3e596654c38ed34f4110cc6106a0f5a30f1c6593870f9a5455f03c64e88"
+    },
+    "MM_C30_B1_R120_M03.pkl.gz": {
+      "bytes": 5255375,
+      "sha256": "3ea25417fdf64a5119be9026c5550bfc2a5e37d69c559244323baf4edb088bc7"
+    }
+  }
+}
