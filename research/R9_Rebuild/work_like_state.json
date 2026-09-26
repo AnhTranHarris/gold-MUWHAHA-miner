@@ -38,8 +38,8 @@
     "winrate_only_direct_expectancy_lift": 0.3845919644,
     "payoff_to_winrate_direct_lift_ratio": 1.7067151286533746
   },
-  "next_campaign_objective": "Replay unchanged January Rule10 lifecycle semantics against the frozen +$63.60 checksum using the new compact causal cache; test preserve-current-stop vs reset-emergency-stop transition semantics without opening May-Jul.",
-  "durable_drive_sync_status": "RECONCILED",
+  "next_campaign_objective": "Run January-only corrected replay with authoritative baseline initial-stop semantics, preserve all frozen Rule10 promotion/lifecycle semantics, and require baseline equivalence before interpreting Rule10 delta. Do not open May-Jul.",
+  "durable_drive_sync_status": "PENDING_CURRENT_TURN",
   "execution_guardrails": {
     "artifact_gated_progress": true,
     "local_pc_profile": "research/R9_Rebuild/LOCAL_PC_EXECUTION_PROFILE.json",
@@ -48,21 +48,21 @@
     "local_min_free_disk_gb": 15,
     "local_max_materialized_months": 1
   },
-  "last_durable_unit": "MM-C30-B1B-M01-PRECOMPUTE-OPT",
-  "last_durable_classification": "VERIFIED_ENGINEERING_PRECOMPUTE_NO_ECONOMICS",
+  "last_durable_unit": "MM-C30-B1B-M01-REPLAY-EQUIV",
+  "last_durable_classification": "SOURCE_EQUIVALENCE_FAILED_ROOT_CAUSE_IDENTIFIED",
   "last_durable_summary": {
-    "raw_rows": 9135062,
-    "active_seconds": 1526214,
-    "elapsed_seconds": 14.670356035232544,
-    "cache_gzip_bytes": 40210705,
-    "raw_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
-    "compressed_cache_sha256": "8ea56721aae647d7d9143e5c4cd77e7e4e2d32128b03f774c3c72dddc7205c85",
-    "validation": "chronology strict; 256 S1 sample checks; max abs diff disp/range/turns 0 and eff 3.16e-11; alignment histograms sum exactly to active-second count",
-    "scientific_economics_executed": false,
-    "may_july_accessed": false,
-    "august_accessed": false
+    "historical_baseline_january_net": -6245.249,
+    "observed_baseline_january_net": -6180.20200002504,
+    "baseline_error": 65.04699997495936,
+    "historical_rule10_delta": 63.6,
+    "observed_preserve_stop_delta": 49.54350000006798,
+    "observed_reset_stop_delta": 46.79000000005999,
+    "closest_checksum_error": 14.056499999932022,
+    "source_equivalent": false,
+    "forensic_root_cause": "Failed replay initialized stop at entry±0.30; authoritative r9_research_v2 initializes long stop=bid-0.30 and short stop=ask+0.30. With modeled $0.20 spread these differ materially.",
+    "oos_access": "NONE; May-Jul unopened; August sealed"
   },
-  "next_unit_id": "MM-C30-B1B-M01-REPLAY-EQUIV",
+  "next_unit_id": "MM-C30-B1B-M01-REPLAY-EQUIV-FIX1",
   "queued_next_campaign": {
     "campaign_id": "MM-C31-DUKASCOPY-MULTIRESOLUTION",
     "status": "QUEUED_AFTER_MM-C30-B1",
@@ -101,5 +101,12 @@
       "120s"
     ],
     "eventual_mql5_requirement": "identical causal bucket semantics to Python/Dukascopy research"
+  },
+  "current_blocker": "Baseline source equivalence repair validation pending",
+  "github_artifacts": {
+    "failed_replay_source_commit": "47e2815eb75083e520838710d733f6f80ae13323",
+    "fix1_unexecuted_commit": "eb5fdfd0efbf7f283f43ae636086f6fd3862ca92",
+    "replay_manifest_commit": "13e59504c39a9fbc2b4277b8a4bab97510bca482",
+    "replay_result_commit": "7652061b82779cf2548b2bcfbe743aea0301d8d5"
   }
 }
