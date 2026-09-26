@@ -1,0 +1,35 @@
+{
+  "job_id": "MM-C30-B1B-S73-RECOVERY-JAN-SERIAL",
+  "script": "research/R9_Rebuild/r9_jan_v2_multires_cert_portable.py",
+  "env": {
+    "R9_DATA_DIR": "C:\\Users\\lord1\\XAUUSD-Tick-Research",
+    "R9_CACHE_DIR": "C:\\Users\\lord1\\XAUUSD-Tick-Research\\R9_Durable_Caches\\MM_C30_B1B_S73_JAN_SERIAL",
+    "R9_PUBLISH_RESULT": "research/R9_Rebuild/jobs/local_outputs/MM_C30_B1B_S73_RECOVERY_JAN_SERIAL/CERT_RESULT.json"
+  },
+  "execution_profile": {
+    "max_compute_threads": 3,
+    "min_free_disk_gb": 15,
+    "timeout_seconds": 1800
+  },
+  "heartbeat_seconds": 20,
+  "stale_lock_seconds": 300,
+  "max_attempts": 1,
+  "retry_backoff_seconds": 120,
+  "required_modules": ["numpy", "pandas", "numba"],
+  "required_inputs": [
+    {"path": "${R9_DATA_DIR}"}
+  ],
+  "required_outputs": [
+    {"path": "${R9_CACHE_DIR}\\CERT_RESULT.json", "min_bytes": 1000},
+    {"path": "${R9_CACHE_DIR}\\V2_JAN_CAUSAL_STATE.npz", "min_bytes": 1000000},
+    {"path": "${R9_CACHE_DIR}\\bars\\S025.npz", "min_bytes": 1000000},
+    {"path": "${R9_CACHE_DIR}\\bars\\D1.npz", "min_bytes": 100}
+  ],
+  "artifact_globs": [
+    "research/R9_Rebuild/jobs/local_outputs/MM_C30_B1B_S73_RECOVERY_JAN_SERIAL/*"
+  ],
+  "publish_files": [
+    "research/R9_Rebuild/jobs/local_outputs/MM_C30_B1B_S73_RECOVERY_JAN_SERIAL/CERT_RESULT.json"
+  ],
+  "publish_max_mb": 20
+}
