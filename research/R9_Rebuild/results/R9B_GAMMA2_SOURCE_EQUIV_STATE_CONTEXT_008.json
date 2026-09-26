@@ -1,0 +1,16 @@
+{
+  "unit": "R9B_GAMMA2_SOURCE_EQUIV_STATE_CONTEXT_008",
+  "status": "VERIFIED_DURABLE_DIAGNOSTIC",
+  "target": {"trades":30943,"winners":25368,"win":0.8198300100184209,"net":5131.0509999771375,"gl":-6091.20650000407},
+  "baseline_liberal": {"trades":37580,"winners":25767,"win":0.6856572645023948,"net":-5961.9680000275985,"gp":9362.395499981056,"gl":-15324.363500008654,"pf":0.6109484090465336,"maxdd":5989.706000027235},
+  "best_dense_win_candidate": {"rule":"age<=5 & penetration<=1.0","trades":25269,"winners":17568,"win":0.6952392259290039,"net":-3987.26200001858,"gl":-10091.182500005627,"pf":0.6048766336337335,"maxdd":4017.8710000183846},
+  "best_target_winner_count_candidate": {"rule":"age<=20 & activity>=0.7","trades":36909,"winners":25323,"win":0.6860928228887263,"net":-5847.865500027107,"gl":-15069.53850000849,"pf":0.6119413013196249,"maxdd":5876.2055000267455},
+  "best_dense_gl_candidate": {"rule":"align>=2 & penetration<=1.0","trades":24869,"winners":16806,"win":0.6757810929269371,"net":-4088.098500018229,"gl":-9573.510500005872,"pf":0.572978114975095,"maxdd":4094.7080000180385},
+  "features_tested": ["liquidity-source hierarchy across 60/180/300/600/1200 completed seconds","break-to-signal age","causal penetration depth","level recross count","completed tick-activity ratio","60s range / completed-M5 ATR","30s direction-aligned displacement","frozen 1m/3m/5m/10m/20m structural alignment"],
+  "interpretation": "Simple transparent pre-entry state/context gating does not recover certified Gamma_2. At substantial density the best win-rate candidate reaches only 69.52%; gross-loss reductions come mainly from deleting trades while the reconstruction remains negative. Missing source semantics are deeper than simple context gating and likely involve event-population identity and/or lifecycle/state transition ownership.",
+  "source_sha256": "a62b441b56d52c0130c09edd054af61e3f7b84fea0495394bcffbb9f7e06cb0a",
+  "full_result_sha256": "967430adb93270356454f0f71032c39aa6cd092550cd8f2b594813fdf710f9ff",
+  "raw_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "cache_sha256": "71fc132e208589857dfe5dd6b8b1a204bd626d65c249890e842b6d5647ba65a5",
+  "august_sealed": true
+}
