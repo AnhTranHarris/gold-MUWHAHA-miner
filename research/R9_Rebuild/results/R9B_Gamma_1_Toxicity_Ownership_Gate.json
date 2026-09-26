@@ -1,0 +1,151 @@
+{
+  "canonical_id": "R9B_Gamma_1_Toxicity_Ownership_Gate",
+  "classification": "FORMAL_SPECIALIST_BREAKTHROUGH",
+  "status": "PROMOTED_RESEARCH_SPECIALIST_NOT_STANDALONE_EA",
+  "period": "2026-01-01..2026-07-31",
+  "parent_baseline": "certified source-equivalent original-R9 exact chronology",
+  "discovery": "Jan-Mar",
+  "calibration": "April",
+  "forward": "May-Jul frozen and opened once after source/manifest freeze",
+  "august_sealed": true,
+  "rule": {
+    "execution": "At an otherwise valid R9 entry trigger, evaluate deterministic causal toxicity tree. If predicted clipped-PnL < -0.17526659364804825, ABSTAIN and consume that opportunity; otherwise execute original R9 lifecycle.",
+    "features": [
+      "rearm ordinal",
+      "aligned S1 displacement",
+      "S1 efficiency",
+      "S1 range",
+      "S1 turns",
+      "completed M5 ATR",
+      "completed 1m/3m/5m/10m/20m alignment count",
+      "session"
+    ],
+    "deterministic_tree": [
+      "if atr_m5 <= 14.155770:",
+      "  if session <= 1:",
+      "    if atr_m5 <= 4.964402: KEEP iff s1_disp_al > 1.042500",
+      "    else: KEEP",
+      "  else:",
+      "    if s1_range <= 2.980750: KEEP iff atr_m5 > 11.730434",
+      "    else: ABSTAIN",
+      "else:",
+      "  if atr_m5 <= 24.628465: KEEP iff s1_turns <= 4.5",
+      "  else: KEEP"
+    ]
+  },
+  "aggregate": {
+    "baseline": {
+      "trades": 236374,
+      "net": -43693.01150014648,
+      "gp": 31461.480499934136,
+      "gl": -75154.49200008062,
+      "pf": 0.41862408570202814,
+      "maxdd": 43694.85150014423,
+      "avg_hold": 6.274876340037399
+    },
+    "candidate": {
+      "trades": 105358,
+      "net": -18383.295000068705,
+      "gp": 16601.94299996876,
+      "gl": -34985.23800003746,
+      "pf": 0.47454137656433787,
+      "maxdd": 18385.750000068605,
+      "avg_hold": 4.122380094534824
+    },
+    "delta_net": 25309.716500077775,
+    "net_loss_reduction_pct": 57.9262349540565,
+    "gross_loss_reduction_pct": 53.448906287597644,
+    "trade_retention_pct": 44.57258412515759,
+    "full_real_to_synth_bridge_closed_pct": 7.04205453006246
+  },
+  "monthly": [
+    {
+      "month": "Jan",
+      "net": -2184.671500009661,
+      "gl": -4283.841500005247,
+      "maxdd": 2187.61650000966,
+      "improvement_pct": 65.06654025833542
+    },
+    {
+      "month": "Feb",
+      "net": -2939.033500015308,
+      "gl": -7354.574000008185,
+      "maxdd": 2939.1335000153076,
+      "improvement_pct": 46.40186743318094
+    },
+    {
+      "month": "Mar",
+      "net": -4084.6370000179913,
+      "gl": -8441.095500009738,
+      "maxdd": 4086.627000017983,
+      "improvement_pct": 40.59598070279588
+    },
+    {
+      "month": "Apr",
+      "net": -2469.620500009869,
+      "gl": -4331.741500005426,
+      "maxdd": 2469.855500009862,
+      "improvement_pct": 58.77441196934661
+    },
+    {
+      "month": "May",
+      "net": -2540.2070000088906,
+      "gl": -3959.8160000050266,
+      "maxdd": 2540.88700000889,
+      "improvement_pct": 60.87222564905418
+    },
+    {
+      "month": "Jun",
+      "net": -2660.462000006255,
+      "gl": -4436.105000003427,
+      "maxdd": 2660.462000006255,
+      "improvement_pct": 57.23707538245462
+    },
+    {
+      "month": "Jul",
+      "net": -1504.663500000729,
+      "gl": -2178.0645000004115,
+      "maxdd": 1505.8685000007335,
+      "improvement_pct": 76.40004702224944
+    }
+  ],
+  "robustness": {
+    "parameter_neighborhood": "Depth-4 leaf 800/1500/3000 at frozen threshold produced Jan-Jul net approximately -18.19k/-18.38k/-18.41k; depth-5 leaf3000 approximately -17.98k. Edge is a plateau, not a single point.",
+    "half_spread_stress": [
+      {
+        "half_spread": 0.1,
+        "improvement_pct": 57.9262349540565,
+        "gl_reduction_pct": 53.448906287597644
+      },
+      {
+        "half_spread": 0.11,
+        "improvement_pct": 57.64005674147485,
+        "gl_reduction_pct": 53.553611503109586
+      },
+      {
+        "half_spread": 0.12,
+        "improvement_pct": 57.46217729862102,
+        "gl_reduction_pct": 53.66609488792496
+      },
+      {
+        "half_spread": 0.125,
+        "improvement_pct": 57.37792583925804,
+        "gl_reduction_pct": 53.729012711808934
+      }
+    ]
+  },
+  "limitations": [
+    "Still negative in every month and Jan-Jul aggregate; this is a loss-avoidance/ownership specialist, not a profitable standalone EA.",
+    "Retains only 44.57% of source-equivalent R9 trades, so later specialists must restore positive opportunity rather than simply delete more trades.",
+    "Closes only 7.04% of the full MT5 R9 REAL to R9 SYNTH net bridge despite large loss reduction."
+  ],
+  "provenance": {
+    "frozen_source_commit": "85f166ff0a3f6a686b7c56b949eb63ae6e896857",
+    "frozen_manifest_commit": "4be54c8190bbacd6e4c0f116f6c30ae972b58794",
+    "july_raw_sha256": "e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7",
+    "aggregate_sha256": "09eeb1a42ab5c5bc2db5c696b5548126bae089444584e278b7e6cfef3b6498a7",
+    "parameter_stress_sha256": "8af226442c4f906b90b936bbb35e51fe8c9ace4358d97644bb8351b50ae784c8",
+    "spread_stress_sha256": "7d1e0f92471acc94116867d98243435a9abb8c8ea3c73cf4a96d1723ed42ddea"
+  },
+  "next_research": "Combine this gate with a positive opportunity/action owner and separate survivor HARVEST/RUNNER lifecycle; do not tighten the gate further merely to delete losses."
+}
