@@ -1,0 +1,14 @@
+{
+  "unit":"R9B_GAMMA2_SOURCE_EQUIV_SEMANTICS_004",
+  "status":"SOURCE_EQUIVALENCE_DIAGNOSTIC",
+  "target":{"trades":30943,"winners":25368,"win":0.8198300100184209,"net":5131.0509999771375,"gl":-6091.20650000407},
+  "rows":[
+    {"trades":27756,"winners":18987,"win":0.6840683095546909,"net":-4354.489500020355,"gl":-11377.218000006404,"pf":0.6172623658949047,"maxdd":4399.678000020073,"variant":"quota_only","bidbars":true,"cont_resets":true,"cont_consumes_sweep_quota":true,"cont_sets_sweep_cooldown":false,"raw_signals":33756,"trade_count_delta":-3187,"winner_delta":-6381,"net_delta":-9485.540499997493,"gl_delta":-5286.011500002333},
+    {"trades":34174,"winners":23346,"win":0.6831509334581846,"net":-5494.68600002509,"gl":-13975.133500007934,"pf":0.6068240779222632,"maxdd":5515.722500024783,"variant":"cooldown_only","bidbars":true,"cont_resets":true,"cont_consumes_sweep_quota":false,"cont_sets_sweep_cooldown":true,"raw_signals":44115,"trade_count_delta":3231,"winner_delta":-2022,"net_delta":-10625.737000002227,"gl_delta":-7883.927000003864}
+  ],
+  "elapsed_s":8.49132227897644,
+  "source_sha256":"0d50a48034eef062fb898730b011115ebea5990517d14e1ff513f6d456c2b941",
+  "result_sha256":"cc842110512edbff5eaab5e1673936168cc19bfb07aae192607b623c0dd5e74b",
+  "interpretation":"Separating CONT quota from cooldown brackets certified trade density but leaves win conversion near 68%. Side-effect semantics alone do not recover Gamma_2. Next recover exact completed multiscale alignment-cache/lifecycle semantics.",
+  "august_sealed":true
+}
