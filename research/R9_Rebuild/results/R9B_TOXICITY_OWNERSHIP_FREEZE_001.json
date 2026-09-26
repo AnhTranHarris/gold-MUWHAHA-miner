@@ -1,0 +1,97 @@
+{
+  "job_id": "R9B_TOXICITY_OWNERSHIP_FREEZE_001",
+  "status": "FROZEN_BEFORE_FORWARD",
+  "script_sha256": "433946b913f9ed9beaf97382352b875670237263f34e5aaf18efb2ec9db5c352",
+  "discovery": "Jan-Mar",
+  "calibration": "April",
+  "forward": "May-Jul unopened at freeze",
+  "feature_contract": [
+    "rearm",
+    "s1_disp_al",
+    "s1_eff",
+    "s1_range",
+    "s1_turns",
+    "atr_m5",
+    "align_count",
+    "session"
+  ],
+  "model": "DecisionTreeRegressor(max_depth=4,min_samples_leaf=1500,random_state=1); target clipped pnl [-3,3]; prediction threshold -0.17526659364804825",
+  "execution_rule": "At an otherwise valid R9 entry trigger, if tree prediction < threshold, ABSTAIN and consume that opportunity; otherwise execute original R9 trade/lifecycle.",
+  "baseline": {
+    "1": {
+      "net": -6253.808000024798,
+      "gp": 4301.471499988871,
+      "gl": -10555.279500013668,
+      "maxdd": 6256.753000024797,
+      "trades": 33793
+    },
+    "2": {
+      "net": -5483.462500025183,
+      "gp": 6410.8104999885445,
+      "gl": -11894.273000013727,
+      "maxdd": 5483.462500025183,
+      "trades": 34094
+    },
+    "3": {
+      "net": -6876.0280000283365,
+      "gp": 6190.683999987164,
+      "gl": -13066.712000015501,
+      "maxdd": 6878.018000028328,
+      "trades": 38427
+    },
+    "4": {
+      "net": -5990.5040000243935,
+      "gp": 4149.622999988967,
+      "gl": -10140.12700001336,
+      "trades": 32800
+    }
+  },
+  "candidate": {
+    "1": {
+      "trades": 13170,
+      "net": -2184.671500009661,
+      "gp": 2099.1699999955863,
+      "gl": -4283.841500005247,
+      "pf": 0.49002046410751077,
+      "maxdd": 2187.61650000966,
+      "net_improvement_pct": 65.06654025833542,
+      "gl_reduction_pct": 59.415177021132415
+    },
+    "2": {
+      "trades": 20738,
+      "net": -2939.033500015308,
+      "gp": 4415.540499992877,
+      "gl": -7354.574000008185,
+      "pf": 0.6003801851729227,
+      "maxdd": 2939.1335000153076,
+      "net_improvement_pct": 46.40186743318094,
+      "gl_reduction_pct": 38.167099409945465
+    },
+    "3": {
+      "trades": 24530,
+      "net": -4084.6370000179913,
+      "gp": 4356.458499991748,
+      "gl": -8441.095500009738,
+      "pf": 0.5161010795324756,
+      "maxdd": 4086.627000017983,
+      "net_improvement_pct": 40.59598070279588,
+      "gl_reduction_pct": 35.40000345917378
+    },
+    "4": {
+      "trades": 13350,
+      "net": -2469.620500009869,
+      "gp": 1862.1209999955572,
+      "gl": -4331.741500005426,
+      "pf": 0.42987814485080067,
+      "maxdd": 2469.855500009862,
+      "net_improvement_pct": 58.77441196934661,
+      "gl_reduction_pct": 57.28119085688258
+    }
+  },
+  "jan_mar": {
+    "baseline_net": -18613.298500078316,
+    "candidate_net": -9208.342000042961,
+    "improvement_pct": 50.52815598479648
+  },
+  "august_sealed": true
+}
