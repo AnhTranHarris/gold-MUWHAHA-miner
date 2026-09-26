@@ -1,0 +1,88 @@
+{
+  "job_id": "R9B_GAMMA1_SWEEP_INTEGRATION_001",
+  "status": "VERIFIED_DURABLE_INTEGRATION_REJECTION",
+  "components": [
+    "R9B_Gamma_1_Toxicity_Ownership_Gate",
+    "R9B_SWEEP_STRUCTURE_EXIT_STAGE_001"
+  ],
+  "single_slot_total": {
+    "trades": 301220,
+    "winners": 211878,
+    "win_rate": 0.7033995086647633,
+    "net": 12933.632999809563,
+    "gp": 87584.9434998657,
+    "gl": -74651.31050005613,
+    "pf": 1.1732539310183956,
+    "maxdd": 1897.5290000670757
+  },
+  "two_sleeve_total": {
+    "trades": 309936,
+    "winners": 215796,
+    "win_rate": 0.69625987300604,
+    "net": 11332.63249980397,
+    "gp": 88842.3539998632,
+    "gl": -77509.72150005924,
+    "pf": 1.146209175836031,
+    "maxdd": 2700.16700007243
+  },
+  "single_slot_monthly": [
+    {
+      "month": "Jan",
+      "trades": 42021,
+      "net": 3167.7415,
+      "pf": 1.3244,
+      "winners": 30218,
+      "maxdd": 131.59
+    },
+    {
+      "month": "Feb",
+      "trades": 48277,
+      "net": 6719.6615,
+      "pf": 1.5105,
+      "winners": 33183,
+      "maxdd": 63.83
+    },
+    {
+      "month": "Mar",
+      "trades": 60212,
+      "net": 4199.5475,
+      "pf": 1.2693,
+      "winners": 41754,
+      "maxdd": 140.73
+    },
+    {
+      "month": "Apr",
+      "trades": 39842,
+      "net": 518.1145,
+      "pf": 1.0523,
+      "winners": 27999,
+      "maxdd": 359.13
+    },
+    {
+      "month": "May",
+      "trades": 37410,
+      "net": -134.776,
+      "pf": 0.985,
+      "winners": 26574,
+      "maxdd": 281.42
+    },
+    {
+      "month": "Jun",
+      "trades": 41247,
+      "net": -315.874,
+      "pf": 0.9678,
+      "winners": 29163,
+      "maxdd": 336.64
+    },
+    {
+      "month": "Jul",
+      "trades": 32211,
+      "net": -1220.782,
+      "pf": 0.8361,
+      "winners": 22987,
+      "maxdd": 1236.05
+    }
+  ],
+  "decision": "REJECT automatic Gamma1 + sweep integration. Gamma1 is not complementary in sweep-owned states; it dilutes the sweep specialist and makes May-Jul negative. Preserve sweep specialist as primary owner. Next integration should use a genuinely distinct accepted-continuation owner, not universal Gamma1.",
+  "august_sealed": true
+}
