@@ -38,8 +38,8 @@
     "winrate_only_direct_expectancy_lift": 0.3845919644,
     "payoff_to_winrate_direct_lift_ratio": 1.7067151286533746
   },
-  "next_campaign_objective": "Reconstruct the exact Section-73 selective 2-second promoted population and extension lifecycle, then evaluate later causal stall/giveback/reclaim/failure checkpoints. Include rolling-120 sub-minute context only as auxiliary state, not as a universal exit gate.",
-  "durable_drive_sync_status": "RECONCILED",
+  "next_campaign_objective": "Reconstruct the exact Section-73 two-second promotion ownership/lifecycle sufficiently to create an extended promoted-runner population, then test +3s/+5s stall-reclaim harvesting using rolling120 as infrastructure/context. Do not use rolling120 as a standalone exit rule.",
+  "durable_drive_sync_status": "PENDING_CURRENT_TURN",
   "execution_guardrails": {
     "artifact_gated_progress": true,
     "local_pc_profile": "research/R9_Rebuild/LOCAL_PC_EXECUTION_PROFILE.json",
@@ -48,31 +48,22 @@
     "local_min_free_disk_gb": 15,
     "local_max_materialized_months": 1
   },
-  "last_durable_unit": "MM-C30-B1-R120-CONTEXT-AUDIT",
-  "last_durable_classification": "WEAK_INCREMENTAL_CONTEXT_REJECTED_AS_STANDALONE_GATE",
+  "last_durable_unit": "MM-C30-B1A-LATE-FAILURE-OBSERVABILITY",
+  "last_durable_classification": "MECHANISTIC_SIGNAL_FOUND_NO_ECONOMIC_PROMOTION",
   "last_durable_summary": {
-    "scope": "Original R9 +2s survivors, Jan-Mar leave-one-month-out, rolling trailing tick context only",
-    "horizons": [
-      "250ms",
-      "1s",
-      "5s",
-      "15s",
-      "30s",
-      "60s",
-      "120s"
-    ],
-    "oof_auc_close2_better": {
-      "jan": 0.559444752371418,
-      "feb": 0.5506166333918745,
-      "mar": 0.5329909076764343
+    "checkpoint_3s_auc": {
+      "jan": 0.579530289999156,
+      "feb": 0.5291250776550478,
+      "mar": 0.5601796016910252
     },
-    "best_total_net_delta_jan_mar": 40.28600000269034,
-    "best_total_gross_loss_improvement": 340.2730000017327,
-    "jan_gp_retention": 0.9106539831612012,
-    "feb_actions": 0,
-    "conclusion": "Rolling120 has weak contextual information but fails standalone +2s hazard promotion criteria; retain as auxiliary ownership/context for later promoted-runner stall/reclaim logic."
+    "checkpoint_3s_best_net_delta": 49.79900001294254,
+    "checkpoint_3s_best_gl_improvement": 1741.7065000078546,
+    "checkpoint_3s_min_gp_retention": 0.5602191191527603,
+    "checkpoint_3s_all_month_pass": false,
+    "checkpoint_5s_total_base_r9_survivors": 67,
+    "conclusion": "Failure/stall becomes more observable by +3s, with giveback/giveback-growth dominant, but universal 3s harvesting sacrifices too much GP and fails February. +5s is too late for base R9 because almost all trades have already exited."
   },
-  "next_unit_id": "MM-C30-B1-PROMOTED-STALL-RECLAIM-RECONSTRUCTION",
+  "next_unit_id": "MM-C30-B1B-SECTION73-PROMOTION-RECONSTRUCTION",
   "queued_next_campaign": {
     "campaign_id": "MM-C31-DUKASCOPY-MULTIRESOLUTION",
     "status": "QUEUED_AFTER_MM-C30-B1",
@@ -96,5 +87,20 @@
     "principle": "higher horizons own regime/setup; lower horizons own trigger/execution; post-entry state owns persistence/harvest",
     "drive_spec": "https://docs.google.com/document/d/1m2I5-VE5tXcGFXuEXdRlzBIgHGGL-G6DpR7i-bIvF4s/edit",
     "github_spec_commit": "c9068f0a19d64ec5ff45ba7727b4573e582da576"
+  },
+  "rolling120_infrastructure": {
+    "window_ms": 120000,
+    "role": "sub-minute candle/state builder and process-memory context; never entry/hold/exit rule by itself",
+    "subminute_lattice": [
+      "250ms",
+      "1s",
+      "5s",
+      "15s",
+      "30s",
+      "45s",
+      "60s",
+      "120s"
+    ],
+    "eventual_mql5_requirement": "identical causal bucket semantics to Python/Dukascopy research"
   }
 }
