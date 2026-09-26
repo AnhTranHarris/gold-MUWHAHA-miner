@@ -1,0 +1,58 @@
+{
+  "cache_sha256": "71fc132e208589857dfe5dd6b8b1a204bd626d65c249890e842b6d5647ba65a5",
+  "candidate_transition_semantics": {
+    "preserve_stop": "retain the live R9 stop at +2s, switch only future activation/trail/maxhold",
+    "reset_stop": "reset emergency stop to entry +/-$0.30 at +2s, then apply extension"
+  },
+  "checksum_tolerance": 0.5,
+  "closest_abs_target_error": 14.056499999932022,
+  "closest_semantic": "promote_preserve_stop",
+  "elapsed_seconds": 8.37908124923706,
+  "historical_rule10_target_delta": 63.6,
+  "job_id": "MM-C30-B1B-M01-REPLAY-EQUIV",
+  "metrics": {
+    "baseline": {
+      "avg_hold": 2.7248539650989447,
+      "gl": -9199.919500017399,
+      "gp": 3019.717499992358,
+      "maxdd": 6183.147000025039,
+      "net": -6180.20200002504,
+      "pf": 0.32823303508108387,
+      "promoted_trades": 0,
+      "trades": 34211,
+      "win": 0.30382040864049575
+    },
+    "promote_preserve_stop": {
+      "avg_hold": 2.9704013587513547,
+      "delta_vs_baseline": 49.54350000006798,
+      "gl": -9308.017000017566,
+      "gp": 3177.3584999925934,
+      "maxdd": 6133.603500024971,
+      "net": -6130.658500024972,
+      "pf": 0.34135718703420903,
+      "promoted_trades": 5692,
+      "target_delta_error": -14.056499999932022,
+      "trades": 34149,
+      "win": 0.29626050543207705
+    },
+    "promote_reset_stop": {
+      "avg_hold": 2.9929945523240487,
+      "delta_vs_baseline": 46.79000000005999,
+      "gl": -9320.847500017584,
+      "gp": 3187.4354999926036,
+      "maxdd": 6136.357000024979,
+      "net": -6133.41200002498,
+      "pf": 0.3419684207886236,
+      "promoted_trades": 5688,
+      "target_delta_error": -16.80999999994001,
+      "trades": 34143,
+      "win": 0.29543391031836685
+    }
+  },
+  "month": "2026-01",
+  "promotion": "SOURCE_EQUIVALENCE_ONLY_NOT_STRATEGY_PROMOTION",
+  "raw_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "rule10_definition": ">=3/5 completed 1m/3m/5m/10m/20m returns aligned at entry; alive +2s; >=6 post-entry ticks; extension 60s max hold, +$0.20 activation, $0.08 trail",
+  "source_equivalent": false,
+  "status": "COMPLETED_LOCAL"
+}
