@@ -1,0 +1,29 @@
+{
+  "status": "REBUILT_CAUSAL_HELPER_CHAIN_JANUARY_GOLDEN_FAILS_HISTORICAL_EQUIVALENCE",
+  "helper_sha256": {
+    "r9b_screen": "9abce59c3dadf9c4ce06341fde74fd8063d348573ec6a27be88ff042b296037e",
+    "r9b_r8_recert": "09835f46484816b139504294403c9d197228bfa12523080a0294e689c348110c",
+    "r8_sweep_lifecycle_screen": "1df9fdbc56f181648a5411444ae3f713d4a9305bedb2ee3831f2a51f946942df",
+    "golden_runner": "3a5f5272dd0355e46efbdd66316fd90cf2f11aaef15c089de53b9a885290f968"
+  },
+  "target": {
+    "trades": 30943,
+    "winners": 25368,
+    "win_rate": 0.8198300100184209,
+    "net": 5131.0509999771375,
+    "gross_loss": -6091.20650000407
+  },
+  "causal_rebuilt": {
+    "raw_signals": 34362,
+    "trades": 28088,
+    "winners": 19087,
+    "win_rate": 0.6795428652805469,
+    "net": -4510.0870000207515,
+    "gross_profit": 7001.463999985857,
+    "gross_loss": -11511.55100000661,
+    "profit_factor": 0.6082120471847657,
+    "max_drawdown": 4554.885500020489
+  },
+  "conclusion": "The three rebuilt causal helper modules are executable and internally coherent, but exact certified Gamma_2 source equivalence remains unresolved. Continue dual-clock compatibility archaeology; do not replace historical benchmark.",
+  "august_accessed": false
+}
