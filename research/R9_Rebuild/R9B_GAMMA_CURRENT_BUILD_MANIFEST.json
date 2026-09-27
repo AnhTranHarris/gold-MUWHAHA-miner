@@ -1,0 +1,73 @@
+{
+  "schema":"r9b-gamma-current-build-v1",
+  "canonical_id":"R9B_Gamma_2_Structure_Aware_Sweep_Reclaim",
+  "status":"FORMAL_CURRENT_BUILD_WITH_SOURCE_EQUIVALENCE_BLOCKER",
+  "formal_result_commit":"e32ddfd25cfd412188376732d8dc61bf0ac71ea3",
+  "formal_whitepaper_commit":"22facb69e4efa01a4459cad8d901b8953bcc64be",
+  "formal_result_path":"research/R9_Rebuild/results/R9B_Gamma_2_Structure_Aware_Sweep_Reclaim.json",
+  "formal_whitepaper_path":"research/R9_Rebuild/whitepapers/R9B_Gamma_2_Structure_Aware_Sweep_Reclaim_WHITEPAPER.md",
+  "data":{
+    "schema":["timestamp_ms_utc","ask_raw","bid_raw","ask_volume","bid_volume"],
+    "price_scale":1000,
+    "hashes":{
+      "2026-01":"d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "2026-02":"ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+      "2026-03":"814ba35e72f219a58badd806ed5c0f30ef0fb4ffe56a48205d873706513bd177",
+      "2026-04":"30375098f62aed6cabc32ec6b67c57c20baec9b6d9be1ce0a204e09806c1ec0f",
+      "2026-05":"3a50e0f1eba3076154238290ec02842cf3744ab192e5c9a2acc1cc07367c6a0d",
+      "2026-06":"34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2",
+      "2026-07":"e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7"
+    },
+    "august_sealed":true
+  },
+  "baseline":{
+    "half_spread":0.10,
+    "lots":0.01,
+    "liquidity_lookback_s":20,
+    "velocity_lookback_s":5,
+    "state_persistence_s":2,
+    "state_expiry_s":20,
+    "break_buffer":0.10,
+    "reclaim":0.15,
+    "cont_confirm":0.08,
+    "min_displacement":0.15,
+    "min_efficiency":0.30,
+    "cooldown_s":1,
+    "max_entries_per_minute":5,
+    "atr_tf_s":300,
+    "atr_period":14,
+    "atr_floors":{"london":2.0,"overlap":1.75,"new_york":1.75,"off":2.5},
+    "structure_tfs_s":[60,180,300,600,1200],
+    "alignment_threshold":3,
+    "aligned":{"stop":1.0,"activation":0.10,"trail":0.04,"max_hold_s":60},
+    "weak":{"stop":3.0,"activation":0.18,"trail":0.05,"max_hold_s":60}
+  },
+  "certified":{
+    "trades":215725,
+    "winners":175143,
+    "win_rate":0.811880866844362,
+    "net":29583.116499865526,
+    "gross_profit":75039.30549988998,
+    "gross_loss":-45456.18900002444,
+    "profit_factor":1.6508050311883742,
+    "max_drawdown":217.28999999962616
+  },
+  "january_equivalence_target":{
+    "trades":30943,
+    "winners":25368,
+    "net":5131.0509999771375,
+    "gross_loss":-6091.20650000407,
+    "win_rate":0.8198300100184209
+  },
+  "source_equivalence":{
+    "resolved":false,
+    "warning":"Do not build MT5 or claim Gamma_2 reproduction until January and then Jan-Jul exact equivalence passes.",
+    "missing_runtime_helpers":["r9b_screen.py","r9b_r8_recert.py","r8_sweep_lifecycle_screen.py"],
+    "frozen_alignment_cache_sha256":"71fc132e208589857dfe5dd6b8b1a204bd626d65c249890e842b6d5647ba65a5"
+  },
+  "excluded_from_current_build":[
+    "Gamma_1 stacking","010 shadow router","011 early loss exit","012 regime gate","013 generic experts",
+    "P4/P6/P7/P5 sleeves","016 meta ownership","017 confidence router","018 delayed proof",
+    "news blackout","019 leading-tick research","lot ladder","percent risk sizing"
+  ]
+}
