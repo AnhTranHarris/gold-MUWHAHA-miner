@@ -1,0 +1,112 @@
+{
+  "unit": "R9B_GAMMA2_SOURCE_EQUIV_DISCRETE_TIMESTAMP_SEMANTICS_009",
+  "status": "VERIFIED_DURABLE_DIAGNOSTIC_SOURCE_EQUIVALENCE_UNRESOLVED",
+  "date": "2026-09-27",
+  "scope": "January 2026 Dukascopy only; August sealed",
+  "certified_target": {
+    "trades": 30943,
+    "winners": 25368,
+    "win_rate": 0.8198300100184209,
+    "net": 5131.0509999771375,
+    "gross_loss": -6091.20650000407
+  },
+  "formal_gamma2": {
+    "id": "R9B_Gamma_2_Structure_Aware_Sweep_Reclaim",
+    "result_commit": "e32ddfd25cfd412188376732d8dc61bf0ac71ea3",
+    "freeze_wrapper_commit": "a314bf6114453e5175c2468d173d865c69099d16",
+    "freeze_result_commit": "f76cbc5c1640f7714297f9857289b44c77239b3d"
+  },
+  "missing_original_runtime_helpers": {
+    "r9b_screen.py": null,
+    "r9b_r8_recert.py": "0fb6156d36cdc6b475911466816c6c0af1c8fcc345300463e8973b3116b3704c",
+    "r8_sweep_lifecycle_screen.py": "e9ae373f037abd2617471fda366ed73956db7ed7db595d4d162df982769e1e6c",
+    "r9b_sweep_structure_exit_candidate.py": "59ce14e5e877be9af7d60daad60035deac46f79794d09e4d80cc558b1799f297"
+  },
+  "recovery_sources": [
+    {
+      "path": "research/R9_Rebuild/source_equiv/recovery/gamma2_recovery_jan_variants.py",
+      "sha256": "277aa427189ab5d5db9c9db954903ac3983e15acfc68a67cff56c54b345b4ec3",
+      "commit": "2624977b9a365206db14d00e73a68defaa37e986"
+    },
+    {
+      "path": "research/R9_Rebuild/source_equiv/recovery/gamma2_recovery_retro_timestamp.py",
+      "sha256": "d8f68dfb282410accc76f5b110f3279eebd1de831d87e21d03a6b11732581e47",
+      "commit": "6e38eada801a07aaf76d0dcadcf38cabfdeef579"
+    },
+    {
+      "path": "research/R9_Rebuild/source_equiv/recovery/gamma2_recovery_break_lag.py",
+      "sha256": "8ba7488bdaa2c1c43070b72bc706b62353219668d6405763d6a38b200434e752",
+      "commit": "fc47114d3e9d01da08920995b04631d89db473c8"
+    },
+    {
+      "path": "research/R9_Rebuild/source_equiv/recovery/gamma2_recovery_same_second_ohlc.py",
+      "sha256": "a89e867695b502c5a67d8d20c553ad1e24002fd1068a8db284489a33128814fc",
+      "commit": "0cc75754879b6261fe8ecb12aefbbf0415a4c237"
+    },
+    {
+      "path": "research/R9_Rebuild/source_equiv/recovery/gamma2_recovery_timestamp_alignment.py",
+      "sha256": "4e01d3a46589e1311c88dc0de445edbdbd6c73751340abf31ea855861ca2d8ad",
+      "commit": "14b5c5fed273cb96775044c9d65ffe4a5cfaf5da"
+    },
+    {
+      "path": "research/R9_Rebuild/source_equiv/recovery/gamma2_recovery_alignment_mapping.py",
+      "sha256": "0b079ce6dceb1802c466ad53b89a4b46d41793891533c14556cdc1849f5a9002",
+      "commit": "da203f661a64cf8700045ef566af41608f3d63ee"
+    },
+    {
+      "path": "research/R9_Rebuild/source_equiv/recovery/gamma2_recovery_discrete_timestamp_semantics.py",
+      "sha256": "dfe94a3896972bada11552b16e7b9c3f31b411bdadbdd093e60e4161af79cc53",
+      "commit": "59709842ecef9790bcb28f53bfaf6c81b5041580"
+    }
+  ],
+  "result_artifact_hashes": {
+    "GAMMA2_JAN_VARIANTS": "3caa92ea1a1098ac30713583718ee131f7c540a2f5846be2da4af2d3a79336b6",
+    "GAMMA2_RETRO_TS": "014b6fdbb4485fc5c34e21f3d6b18ee2d66aed7ab0215e5fca0c1681329baad3",
+    "GAMMA2_BREAK_LAG": "3ef937a28730861bf6d98f0b3140c57057d2d89c3689118f3f037fadbec096bb",
+    "GAMMA2_SAME_SECOND_OHLC_FORENSIC": "d78181b3561fdc78fc944c6767f59cbb6ec5a6cdba4dddc5df2df523500c2056",
+    "GAMMA2_TIMESTAMP_ALIGNMENT_FORENSIC": "7795ff32167a47b9a483dc3d81bddb884a48fcd7de55ac93df8d0889b2da4d37",
+    "GAMMA2_ALIGNMENT_MAPPING_FORENSIC": "7bd6fec0fe3e9f0eda27d87762f5dcf1cec82a07a05cb62072cbd1a1408af6c2",
+    "GAMMA2_DISCRETE_TIMESTAMP_SEMANTICS": "4c9611ad880bf933a78adc79ced107157dbc5f95a8353f8d23d823bd4b2a18a5"
+  },
+  "discrete_timestamp_findings": {
+    "best_causal": {
+      "label": "lv-1_cont2_confirm_tick_alignsignal",
+      "trades": 27149,
+      "winners": 18513,
+      "win_rate": 0.6819035691922355,
+      "net": -4236.7540000199815,
+      "gross_loss": -11006.274000006313,
+      "retro_share": 0
+    },
+    "closest_density_retro": {
+      "label": "lv0_cont3_break_next_first_alignsignal",
+      "trades": 30923,
+      "winners": 25812,
+      "win_rate": 0.8347184943246128,
+      "net": 3495.233499977213,
+      "gross_loss": -5779.152500003691,
+      "retro_share": 0.9588008925395337,
+      "mean_entry_before_confirmation_ms": 4490.082107169421
+    },
+    "near_winner_retro": {
+      "label": "lv-1_cont2_break_next_first_alignsignal",
+      "trades": 30285,
+      "winners": 25308,
+      "win_rate": 0.8356612184249629,
+      "net": 3577.7079999776342,
+      "gross_loss": -5494.265500003603,
+      "retro_share": 0.9505035496120191,
+      "mean_entry_before_confirmation_ms": 4375.20019811788
+    }
+  },
+  "conclusion": [
+    "All tested source-like causal timestamp conventions remain near 68% winners and negative economics.",
+    "Variants that approach the certified 82% region overwhelmingly replay entries before the later confirmation that selected the event.",
+    "Retrospective event timestamp ownership is therefore the leading source-equivalence hypothesis, but it is not proven because the exact January fingerprint is not reproduced.",
+    "The certified 81.19% result remains the historical recovery benchmark and must not be silently replaced by the 67-69% reconstruction family.",
+    "No retrospective variant is deployable or investor-valid unless historical source recovery proves its semantics and a causality audit passes."
+  ],
+  "next_unit": "R9B_GAMMA2_SOURCE_EQUIV_TIMESTAMP_ORIGIN_010",
+  "next_unit_scope": "January only. Recover historically supported timestamp origin/event identity from older R8/S1 Python lineage or durable artifacts; do not fit arbitrary timing offsets. Require exact January fingerprint plus causality audit before Jan-Jul.",
+  "august_accessed": false
+}
