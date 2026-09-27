@@ -1,0 +1,163 @@
+{
+  "unit": "R9B_GAMMA2_SOURCE_EQUIV_RECOVERY_CHECKPOINT_STAGES_7_TO_12",
+  "status": "VERIFIED_DURABLE_DIAGNOSTIC_CHECKPOINT",
+  "date": "2026-09-27",
+  "benchmark": {
+    "jan": {
+      "trades": 30943,
+      "winners": 25368,
+      "win_rate": 0.8198300100184209,
+      "net": 5131.0509999771375,
+      "gross_loss": -6091.20650000407,
+      "max_drawdown": 40.79750000011154
+    },
+    "jan_jul": {
+      "trades": 215725,
+      "winners": 175143,
+      "win_rate": 0.811880866844362,
+      "net": 29583.116499865526,
+      "gross_loss": -45456.18900002444,
+      "pf": 1.6508050311883742
+    }
+  },
+  "rebuilt_helpers": [
+    {
+      "name": "r9b_screen.py",
+      "path": "research/R9_Rebuild/source_equiv/recovery/rebuilt_helpers/r9b_screen.py",
+      "local_sha256": "9abce59c3dadf9c4ce06341fde74fd8063d348573ec6a27be88ff042b296037e",
+      "commit": "24125d9b3eb32243349385903b2e63e5d5cfad11",
+      "classification": "reconstructed causal helper; not historical source-equivalent yet"
+    },
+    {
+      "name": "r9b_r8_recert.py",
+      "path": "research/R9_Rebuild/source_equiv/recovery/rebuilt_helpers/r9b_r8_recert.py",
+      "local_sha256": "09835f46484816b139504294403c9d197228bfa12523080a0294e689c348110c",
+      "commit": "40e83b7dfbf59ef37459728dd625ed5e98a7ff96",
+      "classification": "reconstructed causal helper; not historical source-equivalent yet"
+    },
+    {
+      "name": "r8_sweep_lifecycle_screen.py",
+      "path": "research/R9_Rebuild/source_equiv/recovery/rebuilt_helpers/r8_sweep_lifecycle_screen.py",
+      "local_sha256": "1df9fdbc56f181648a5411444ae3f713d4a9305bedb2ee3831f2a51f946942df",
+      "commit": "5676801a6842eeb627cc12d272f17c2642d50c7e",
+      "classification": "default causal R8 translation plus isolated forensic compatibility path; not historical source-equivalent yet"
+    }
+  ],
+  "historical_original_helper_hashes": {
+    "r8_sweep_lifecycle_screen": "e9ae373f037abd2617471fda366ed73956db7ed7db595d4d162df982769e1e6c",
+    "r9b_r8_recert": "0fb6156d36cdc6b475911466816c6c0af1c8fcc345300463e8973b3116b3704c",
+    "wrapper": "59ce14e5e877be9af7d60daad60035deac46f79794d09e4d80cc558b1799f297",
+    "r9b_screen": null
+  },
+  "stages": [
+    {
+      "stage": "7-state-timestamp-origin",
+      "source_sha256": "58d17a4a75e2b9df22b7e45c1293be4f79066df4f45e2186f9ab9769bc4711e0",
+      "result_sha256": "a4d6b2caae566e1e25c3440d85d284fb717133dfa91a96c8effd61840c1309e5",
+      "best": {
+        "label": "B0 reclaim_feature_first",
+        "trades": 31337,
+        "winners": 25585,
+        "win_rate": 0.816447,
+        "net": 3758.5695,
+        "gross_loss": -6048.0635,
+        "max_drawdown": 39.722
+      },
+      "conclusion": "state timestamp origin changes can approach some target dimensions but do not reproduce the fingerprint"
+    },
+    {
+      "stage": "7-exact-tick-origin-B0",
+      "source_sha256": "39fec5ebcfb59db1a61107b74c3a2720428a955f1d5688e54fefeef1f386e3fd",
+      "result_sha256": "30b1a9a2ee8cae5c6eac3fd3ee30eabfd6864e7f379f89303ee61cd7b98ab941",
+      "source_commit": "2ac1d15b3cdb08b7826c933fd8976c1fde444ce1",
+      "result_commit": "1e9c1ac5bf41a64e25b2abf3a5db45544fe6c998",
+      "best": {
+        "label": "break_k",
+        "trades": 31001,
+        "winners": 25514,
+        "win_rate": 0.8230057094932421,
+        "net": 4647.505999977261,
+        "gross_loss": -5673.65400000397,
+        "max_drawdown": 32.03850000018065,
+        "future_feature_share": 1
+      },
+      "conclusion": "exact tick landmarks do not solve equivalence; near-target candidates still depend on future feature ownership"
+    },
+    {
+      "stage": "8-alignment-owner",
+      "source_sha256": "2964c1a7650ff6da1490cfc395c0bfb8943ca1455a5d378d3a516a37d87c06b5",
+      "result_sha256": "06d08d09d80f7e2c7f055ceb6e11be9c9a4e1da5072c61894b42fc2a2c3242eb",
+      "best": {
+        "trades": 31337,
+        "winners": 25585,
+        "win_rate": 0.816447,
+        "net": 3758.5695,
+        "gross_loss": -6048.0635,
+        "max_drawdown": 39.722
+      },
+      "conclusion": "alignment ownership does not restore certified January economics"
+    },
+    {
+      "stage": "9-OHLC-component-alignment",
+      "source_sha256": "2a79673c0d287f94762d2f5920a1bbb2d42f09acb3b23f5fb3a6bd793469aa5e",
+      "result_sha256": "cfb9eeb39e88360fea52838334854beaef5882cf4bec1254422b3735809e197e",
+      "best_approx": {
+        "trades": 29339,
+        "winners": 23760,
+        "win_rate": 0.8098,
+        "net": 2883,
+        "gross_loss": -5888,
+        "max_drawdown": 42.6
+      },
+      "conclusion": "OHLC component/index shifts do not reproduce benchmark"
+    },
+    {
+      "stage": "10-tick-localized-state-clocks",
+      "source_sha256": "21381683a634d4f54b00b1d09a75ac92b0393093c3446b2fc957889233e8864c",
+      "result_sha256": "4960b95ec3b31e3faa4b6d1a89cb0d85f0a1cf196b060570d3d92b748558542f",
+      "artifact_example": {
+        "label": "break_cross B0",
+        "trades": 34485,
+        "winners": 32256,
+        "win_rate": 0.9354,
+        "net": 10483,
+        "gross_loss": -1036,
+        "max_drawdown": 8
+      },
+      "conclusion": "extreme performance variants expose retrospective timing artifacts; no source-equivalent causal result"
+    },
+    {
+      "stage": "11-dense-calendar-second",
+      "source_sha256": "3ca5352db8b5944f9173a3256e631f98014c52f647f74f43b215cf08ac046b18",
+      "result_sha256": "924e822819fc6f9ac8c70e869e6c2104880f39c94d9ae4151f171562f694321d",
+      "best": {
+        "trades": 31389,
+        "winners": 25754,
+        "win_rate": 0.82048,
+        "net": 4481.1375,
+        "gross_loss": -5852.133,
+        "max_drawdown": 34.593
+      },
+      "conclusion": "dense/calendar-second interpretation does not reproduce benchmark"
+    },
+    {
+      "stage": "12-spread-gate-feasibility",
+      "result_sha256": "17d2633c141ffe7630a231815266141f4d0af3c5814015faff12285f884c4421",
+      "result_commit": "f99f48481ce630ba5ef3d3066f448e62396a7f6d",
+      "raw_rows": 9135062,
+      "ticks_raw_spread_le_0_25": 4346,
+      "share": 0.000475749,
+      "conclusion": "literal raw <=$0.25 pre-cache R8 spread gate impossible because surviving raw ticks are fewer than certified January trades"
+    }
+  ],
+  "core_conclusions": [
+    "The preserved Gamma_2 wrapper is byte/logic identical to the freeze commit.",
+    "Frozen multiscale alignment arithmetic is not the missing 82% mechanism.",
+    "All three missing helper roles now have durable causal reconstructed source bodies, preventing future helper loss.",
+    "The historical 81.98% January fingerprint is still not source-equivalent.",
+    "Near-82% historical-compatibility variants consistently depend on future-completed-second or retrospective timestamp ownership; these remain forensic only.",
+    "Further work must remain source-supported; arbitrary millisecond/threshold fitting is prohibited."
+  ],
+  "next_research": "Continue historical R8/S1 Python source-lineage archaeology and exact arithmetic/index semantics only. January remains the sole equivalence month until exact fingerprint plus causality audit passes.",
+  "august_accessed": false
+}
