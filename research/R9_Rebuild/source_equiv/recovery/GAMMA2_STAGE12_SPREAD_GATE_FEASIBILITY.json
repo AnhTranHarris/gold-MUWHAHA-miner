@@ -1,0 +1,25 @@
+{
+  "unit": "R9B_GAMMA2_SOURCE_EQUIV_SPREAD_GATE_010L",
+  "status": "VERIFIED_DURABLE_DIAGNOSTIC_REJECTED",
+  "scope": "January 2026 only",
+  "hypothesis": "The original r9b_screen.py may have applied the certified R8 max-spread permission of 25 symbol points to raw Dukascopy ticks before building the Gamma_2 fast cache.",
+  "jan_raw_rows": 9135062,
+  "raw_spread_price_quantiles": {
+    "min": 0.001,
+    "p10": 0.54,
+    "p25": 0.6,
+    "p50": 0.7,
+    "p75": 0.83,
+    "p90": 1.36,
+    "p95": 1.88,
+    "p99": 2.78,
+    "max": 6
+  },
+  "ticks_at_or_below_0_25": 4346,
+  "tick_share_at_or_below_0_25": 0.000475749,
+  "certified_january_trades": 30943,
+  "conclusion": "A literal raw-Dukascopy <=$0.25 pre-cache spread gate is impossible as the hidden Gamma_2 mechanism because fewer raw ticks survive the gate (4,346) than the certified Gamma_2 January trade count (30,943). In the promoted Python path the R8 spread gate was therefore absent, bypassed, or evaluated on the fixed modeled $0.20 spread, which always passes a $0.25 ceiling.",
+  "source_support": "Certified R8 MQL5 source has InpMaxSpreadPoints=25. Gamma_2 durable build spec marks its Python interaction unresolved.",
+  "local_result_sha256": "17d2633c141ffe7630a231815266141f4d0af3c5814015faff12285f884c4421",
+  "august_accessed": false
+}
