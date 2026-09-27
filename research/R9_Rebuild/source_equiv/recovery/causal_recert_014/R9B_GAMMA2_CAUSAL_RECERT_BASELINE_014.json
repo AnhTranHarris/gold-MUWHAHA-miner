@@ -1,0 +1,122 @@
+{
+  "unit": "R9B_GAMMA2_CAUSAL_RECERT_BASELINE_014",
+  "status": "VERIFIED_DURABLE_CAUSAL_BASELINE",
+  "classification": "corrected reproducible causal Gamma recovery baseline; historical Gamma_2 remains forensic comparison benchmark",
+  "frozen_helper_commits": [
+    "24125d9b3eb32243349385903b2e63e5d5cfad11",
+    "40e83b7dfbf59ef37459728dd625ed5e98a7ff96",
+    "5676801a6842eeb627cc12d272f17c2642d50c7e"
+  ],
+  "source_lineage_verdict_commit": "86550b5d0a990f6a23d7dc85a5850583e03a3312",
+  "months": {
+    "2026-01": {
+      "commit": "fe59b6ee97bc4ee36fd46cfdf453af765fb5d07b",
+      "trades": 28088,
+      "winners": 19087,
+      "win_rate": 0.6795428652805469,
+      "net": -4510.0870000207515,
+      "gross_profit": 7001.463999985857,
+      "gross_loss": -11511.55100000661,
+      "profit_factor": 0.6082120471847657,
+      "max_drawdown": 4554.885500020489,
+      "raw_signals": 34362
+    },
+    "2026-02": {
+      "commit": "f0236071e4652992450a4f944d5fb0cd24890435",
+      "trades": 28188,
+      "winners": 18834,
+      "win_rate": 0.668156662409536,
+      "net": -4450.956500020821,
+      "gross_profit": 9217.45099998596,
+      "gross_loss": -13668.407500006782,
+      "profit_factor": 0.6743617352629695,
+      "max_drawdown": 4472.950500020631,
+      "raw_signals": 32862
+    },
+    "2026-03": {
+      "commit": "5633e1a3b975f4311b2b9654381ceaed5126c3ef",
+      "trades": 35573,
+      "winners": 24169,
+      "win_rate": 0.6794197846681472,
+      "net": -6589.631500026144,
+      "gross_profit": 9916.168999982045,
+      "gross_loss": -16505.80050000819,
+      "profit_factor": 0.6007687418721148,
+      "max_drawdown": 6594.313500026137,
+      "raw_signals": 41595
+    },
+    "2026-04": {
+      "commit": "25841e9a1563cf43cda4e4a28ce9e1da8950dfb7",
+      "trades": 26683,
+      "winners": 18068,
+      "win_rate": 0.6771352546565229,
+      "net": -4735.74550001993,
+      "gross_profit": 6147.829499986381,
+      "gross_loss": -10883.57500000631,
+      "profit_factor": 0.564872250155194,
+      "max_drawdown": 4744.660500019903,
+      "raw_signals": 33302
+    },
+    "2026-05": {
+      "commit": "15b12718ea1eae20de484a076db4e8a3aa07eb50",
+      "trades": 25525,
+      "winners": 17412,
+      "win_rate": 0.6821547502448579,
+      "net": -4425.295500019026,
+      "gross_profit": 5326.449999987048,
+      "gross_loss": -9751.745500006073,
+      "profit_factor": 0.5462047794401249,
+      "max_drawdown": 4425.645000019011,
+      "raw_signals": 32556
+    },
+    "2026-06": {
+      "commit": "b248853807f81f82a9f55ae39f8d7d595ef8fe0b",
+      "trades": 27710,
+      "winners": 18828,
+      "win_rate": 0.6794658967881632,
+      "net": -5345.316000013228,
+      "gross_profit": 5530.436999991063,
+      "gross_loss": -10875.75300000429,
+      "profit_factor": 0.5085107210497408,
+      "max_drawdown": 5346.366000013231,
+      "raw_signals": 35381
+    },
+    "2026-07": {
+      "commit": "889be3bb2af344c687ef8e88a541709fa436c33a",
+      "trades": 25807,
+      "winners": 16744,
+      "win_rate": 0.6488162126554811,
+      "net": -5342.881000002722,
+      "gross_profit": 4185.668499998216,
+      "gross_loss": -9528.549500000938,
+      "profit_factor": 0.43927656565123624,
+      "max_drawdown": 5344.821000002775,
+      "raw_signals": 34734
+    }
+  },
+  "aggregate": {
+    "trades": 197574,
+    "winners": 133142,
+    "win_rate": 0.6738842155344327,
+    "net": -35399.91300012262,
+    "gross_profit": 47325.46899991657,
+    "gross_loss": -82725.38200003919,
+    "profit_factor": 0.5720791836282383,
+    "raw_signals": 244792,
+    "max_month_drawdown": 6594.313500026137
+  },
+  "benchmark_comparison": {
+    "historical_gamma2_trades": 215725,
+    "historical_gamma2_winners": 175143,
+    "historical_gamma2_win_rate": 0.811880866844362,
+    "historical_gamma2_net": 29583.116499865526,
+    "historical_gamma2_gross_loss": -45456.18900002444
+  },
+  "restrictions": [
+    "Do not relabel the historical 81.188% curve as causal or deployable.",
+    "Do not use retrospective/future-completed-second timestamp ownership.",
+    "Use this recertified baseline for reproducible causal Gamma research unless a superior causal source is independently certified."
+  ],
+  "next_unit": "R9B_GAMMA2_CAUSAL_BRIDGE_RECOVERY_015",
+  "august_accessed": false
+}
