@@ -1,0 +1,53 @@
+{
+  "unit": "R9B_GAMMA2_SOURCE_EQUIV_COMPLETED_SECOND_SHIFT_FORENSIC",
+  "status": "VERIFIED_LOCAL_FORENSIC_NONCAUSAL",
+  "full_local_result_sha256": "c70524b5667d3c448f70d7951bf93523acd961a0c13708c0e1f3773828663e94",
+  "source_sha256": "84ce4bf18eba653a09ca0282c01b268f4b1a624e5e6104d3e447ae7e96a9c15d",
+  "target": {
+    "trades": 30943,
+    "winners": 25368,
+    "win_rate": 0.8198300100184209,
+    "net": 5131.0509999771375,
+    "gross_loss": -6091.20650000407
+  },
+  "best": [
+    {
+      "label": "lv0_c2_lead1_lag0",
+      "trades": 32016,
+      "winners": 27017,
+      "win_rate": 0.8438593203398301,
+      "net": 5409.366499976398,
+      "gross_loss": -5143.77550000365,
+      "future_feature_share": 1
+    },
+    {
+      "label": "lv-1_c2_lead1_lag0",
+      "trades": 31641,
+      "winners": 26837,
+      "win_rate": 0.848171675990013,
+      "net": 5695.765499976636,
+      "gross_loss": -4941.579000003514,
+      "future_feature_share": 1
+    },
+    {
+      "label": "lv0_c2_lead0_lag1",
+      "trades": 33287,
+      "winners": 27987,
+      "win_rate": 0.8407786823684922,
+      "net": 5293.708499975509,
+      "gross_loss": -5485.795500003828,
+      "future_feature_share": 1
+    },
+    {
+      "label": "lv-1_c2_lead3_lag1",
+      "trades": 30463,
+      "winners": 25925,
+      "win_rate": 0.851032399960608,
+      "net": 3756.8039999775747,
+      "gross_loss": -5277.2665000032885,
+      "future_feature_share": 1
+    }
+  ],
+  "conclusion": "A one-completed-second lead or a one-second backdated event timestamp can move the reconstruction into the historical Gamma_2 density/accuracy/economic region, but all such variants are explicitly noncausal. This is a source-equivalence clue only, not a deployable reconstruction.",
+  "august_accessed": false
+}
