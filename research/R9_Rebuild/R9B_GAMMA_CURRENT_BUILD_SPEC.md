@@ -18,6 +18,9 @@ Formal result path:
 Formal whitepaper path:
 `research/R9_Rebuild/whitepapers/R9B_Gamma_2_Structure_Aware_Sweep_Reclaim_WHITEPAPER.md`
 
+Canonical Gamma build Google Doc:
+`https://docs.google.com/document/d/1ckoRAa6AGOI9FbsAXa3gippWwnrGz92bSrTJVowZsHc/edit`
+
 ROI Google Doc:
 `https://docs.google.com/document/d/1Pv4ydRjg1Iek7e_JIuwlFSH5FdJMxMOe_9ci5-wneDA/edit`
 
