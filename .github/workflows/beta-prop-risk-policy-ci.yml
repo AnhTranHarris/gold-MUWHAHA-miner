@@ -1,0 +1,31 @@
+name: BETA research risk-policy contract
+
+on:
+  push:
+    branches: [beta]
+    paths:
+      - 'research/risk/**'
+      - '.github/workflows/beta-prop-risk-policy-ci.yml'
+  pull_request:
+    branches: [beta]
+    paths:
+      - 'research/risk/**'
+      - '.github/workflows/beta-prop-risk-policy-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mandatory-research-policy:
+    name: Verify fixed-size and prop-style safeguards
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run policy and manifest regression tests (22 + 8)
+        working-directory: research/risk
+        run: |
+          python -m unittest -v BETA_015_PROP_POLICY_TESTS BETA_015_RUN_GATE_TESTS
