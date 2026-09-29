@@ -2,9 +2,9 @@
   "schema": "beta-research-status-v2",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "lineage": "INDEPENDENT_BETA",
-  "last_verified_durable_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__000_DAY_2026-01-01_UTC_BOUNDARY",
+  "last_verified_durable_unit": "BETA_007_ENTRY_FIRST_RESEARCH_PASS__JAN02_2026__001",
   "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FULL_MONTH_SOURCE_CRC_AND_FEATURE_AUDIT",
-  "last_recorded_milestone": "BETA_005_PARTIAL_SOURCE_AUDIT",
+  "last_recorded_milestone": "BETA_007_FIRST_PASS_RESEARCH_ONLY",
   "research_scope": [
     "ENTRY",
     "HOLD",
@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "BETA 005 Jan 1 and Jan 2 bounded source checks verified; Jan full-month CRC/cache remains incomplete; no approved EA",
+  "current_status": "BETA 007 first five-language community entry research pass + one-day raw-tick negative pilot durably recorded. No winner/approved EA. Next BETA 005 Jan full-month CRC and causal cache audit.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -90,6 +90,20 @@
       "full_month_certified": false,
       "gzip_crc_to_eof_verified": false,
       "feature_cache_certified": false
+    },
+    {
+      "unit_id": "BETA_007_ENTRY_FIRST_RESEARCH_PASS__JAN02_2026__001",
+      "status": "VERIFIED_DURABLE",
+      "research_record_path": "research/BETA_007_ENTRY_FIRST_RESEARCH_PASS.md",
+      "github_manifest_path": "research/checkpoints/BETA_007_ENTRY_FIRST_PASS_JAN02_MANIFEST.json",
+      "research_record_drive": "https://drive.google.com/file/d/1AHiHCV32ocJZ0vxhRYrTdoLm0-auK2yZ/view",
+      "preregistration_drive": "https://drive.google.com/file/d/137lkDRCCBfCoYTbl_9DMKkVQAfD2KS7m/view",
+      "one_day_report_drive": "https://drive.google.com/file/d/1mzQ8oNlZnB-RZUWLKrgwhSzu3QEtZQPM/view",
+      "raw_tick_count": 336704,
+      "run_identical": true,
+      "outcomes": "NEGATIVE_ALL_TESTED_COHORTS_NO_PROMOTABLE_CANDIDATE",
+      "full_month_cache_certified": false,
+      "august_sealed": true
     }
   ],
   "design_hypotheses": {
