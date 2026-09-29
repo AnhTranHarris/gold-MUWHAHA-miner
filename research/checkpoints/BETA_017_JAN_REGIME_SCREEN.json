@@ -1,0 +1,111 @@
+{
+  "execution_limitations": [
+    "Dukascopy spread not Coinexx spread",
+    "BETA014 inherited SMA M5 ATR, not Wilder ATR",
+    "provisional news filter untested",
+    "100:1 margin illustrative",
+    "0 slippage",
+    "January discovered/evaluated in-sample"
+  ],
+  "experiments": {
+    "H1_3BAR_DIRECTION_AND_M5_EFF_GE_035": {
+      "daily_hard_lockouts": 0,
+      "daily_soft_lockouts": 0,
+      "end_balance_usd": 94601.4,
+      "gross_loss_usd": -6051.38,
+      "gross_profit_usd": 652.78,
+      "max_floating_equity_drawdown_usd": 5399.47,
+      "min_marked_equity_usd": 94600.53,
+      "net_profit_usd": -5398.6,
+      "overall_floor_breach_utc": null,
+      "terminal_stop": false,
+      "trade_count": 8017,
+      "win_rate_percent": 27.5041,
+      "winning_trades": 2205
+    },
+    "M5_COMPRESSION_VOLRATIO_LE_080": {
+      "daily_hard_lockouts": 0,
+      "daily_soft_lockouts": 0,
+      "end_balance_usd": 96695.01,
+      "gross_loss_usd": -3747.26,
+      "gross_profit_usd": 442.28,
+      "max_floating_equity_drawdown_usd": 3304.99,
+      "min_marked_equity_usd": 96695.01,
+      "net_profit_usd": -3304.99,
+      "overall_floor_breach_utc": null,
+      "terminal_stop": false,
+      "trade_count": 5208,
+      "win_rate_percent": 28.6866,
+      "winning_trades": 1494
+    },
+    "M5_DIRECTIONAL_EFF_GE_045": {
+      "daily_hard_lockouts": 0,
+      "daily_soft_lockouts": 0,
+      "end_balance_usd": 91646.17,
+      "gross_loss_usd": -9377.86,
+      "gross_profit_usd": 1024.03,
+      "max_floating_equity_drawdown_usd": 8353.83,
+      "min_marked_equity_usd": 91646.17,
+      "net_profit_usd": -8353.83,
+      "overall_floor_breach_utc": null,
+      "terminal_stop": false,
+      "trade_count": 12501,
+      "win_rate_percent": 27.5498,
+      "winning_trades": 3444
+    },
+    "M5_EFF_GE_035_AND_VOLRATIO_GE_095": {
+      "daily_hard_lockouts": 0,
+      "daily_soft_lockouts": 0,
+      "end_balance_usd": 92866.09,
+      "gross_loss_usd": -8008.38,
+      "gross_profit_usd": 874.47,
+      "max_floating_equity_drawdown_usd": 7134.13,
+      "min_marked_equity_usd": 92866.09,
+      "net_profit_usd": -7133.91,
+      "overall_floor_breach_utc": null,
+      "terminal_stop": false,
+      "trade_count": 10440,
+      "win_rate_percent": 27.4617,
+      "winning_trades": 2867
+    },
+    "M5_EXPANSION_VOLRATIO_GE_110": {
+      "daily_hard_lockouts": 0,
+      "daily_soft_lockouts": 0,
+      "end_balance_usd": 90750.55,
+      "gross_loss_usd": -10307.51,
+      "gross_profit_usd": 1058.06,
+      "max_floating_equity_drawdown_usd": 9249.45,
+      "min_marked_equity_usd": 90750.55,
+      "net_profit_usd": -9249.46,
+      "overall_floor_breach_utc": null,
+      "terminal_stop": false,
+      "trade_count": 13257,
+      "win_rate_percent": 26.9065,
+      "winning_trades": 3567
+    },
+    "R09_BETA_001_UNFILTERED": {
+      "daily_hard_lockouts": 0,
+      "daily_soft_lockouts": 0,
+      "end_balance_usd": 89999.42,
+      "gross_loss_usd": -10951.58,
+      "gross_profit_usd": 951.01,
+      "max_floating_equity_drawdown_usd": 10000.73,
+      "min_marked_equity_usd": 89999.27,
+      "net_profit_usd": -10000.58,
+      "overall_floor_breach_utc": "2026-01-21T23:24:08.421000+00:00",
+      "terminal_stop": true,
+      "trade_count": 14719,
+      "win_rate_percent": 26.3333,
+      "winning_trades": 3876
+    }
+  },
+  "risk": "BETA013/BETA015-house equivalent via inherited BETA014 original tick governor, 0.01 lot, $100k, $0.02 per roundtrip, permanent 90k floor; not the new BETA015 guard object itself",
+  "sources": {
+    "august_read": false,
+    "january_source_compressed_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "source_sanity_problems": {},
+    "ticks": 9135062
+  },
+  "status": "JAN_IN_SAMPLE_EXPLORATION_ONLY_NO_MQL5_PROMOTION",
+  "unit": "BETA_017_JAN_2026_CAUSAL_M5_H1_ENTRY_FILTER_ABLATION"
+}
