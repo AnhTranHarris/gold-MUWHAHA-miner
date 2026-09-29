@@ -4,7 +4,7 @@
   "lineage": "INDEPENDENT_BETA",
   "last_verified_durable_unit": "BETA_014_PROP_001LOT_FUNDED_RERUN__JAN2026_TERMINAL_JANJUL_ZERO_FUNDING",
   "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
-  "last_recorded_milestone": "BETA_014_BETA013_FUNDED_PROP_RISK_REPLAY_COMPLETED",
+  "last_recorded_milestone": "BETA_015_PROP_POLICY_CODIFIED_AND_016_MTF_REGIME_HYPOTHESES_REGISTERED__NO_NEW_STRATEGY_BACKTEST",
   "research_scope": [
     "ENTRY",
     "HOLD",
@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "BETA014 original Dukascopy January full-source replay: R9 control and R09_BETA_001 candidate both breach $90,000 prop-house overall equity floor in Jan 2026 (Jan14 and Jan21 respectively). Neither produces any more funded trades Jan-Jul. 0.01 lots, $0.02 roundtrip fee, floating equity risk gating, NY5pm daily reset; optional economic-news gate not evaluated. Formal winner not established; no MQL5 coded; August SEALED.",
+  "current_status": "BETA015 owner-required prop-house risk config and Python guard with 29 passing policy/gate unit tests; BETA016 public/reconstructible multi-timeframe structure and seven independent entry hypotheses documented. BETA014 last verified MARKET backtest still terminates both control/candidate under $90k overall floor in January. No new BETA016 strategy backtest, no newly approved EA, no owner-authorized MQL5. August SEALED.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -286,8 +286,8 @@
     "title": "BETA RESEARCH JOURNAL — Conversation History, Decisions & Durable Continuity (Checkpoint 006)",
     "url": "https://docs.google.com/document/d/1_zuLcHwsPnul8XtfLLlrK9-Mogk120qk0xWdlVWAzPQ/edit",
     "folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
-    "documented_milestones": "BETA_000 through BETA_014",
-    "recovery_priority": "Read living journal and LIVE beta/CURRENT_STATE.json. BETA014 prop-house replay: both R9-like and candidate terminate under $90k floor in January; zero funded trades Feb-Jul. Preserve BETA011 shadow separately. Read source evidence and resume BETA005 pending feature-parity audit or new owner-authorized entry research, not old defeated funded strategy.",
+    "documented_milestones": "BETA_000 through BETA_016",
+    "recovery_priority": "BETA014 is last tick-strategy proof; BETA015 risk module compiled + 29 tests but NOT integrated into legacy JIT/MQL5; BETA016 future entry-regime prereg only. Keep first_incomplete_scientific_unit and MQL5 owner gates unchanged. Resume 17-layer parity or implement causally timestamped entry features, first January tick tests, then Jan-Jul if qualified; August SEALED.",
     "note": "This journal checkpoint is documentation only, not full-month cache certification, profitable candidate, EA coding or approved baseline."
   },
   "historical_reference_control": {
@@ -306,8 +306,8 @@
     "notes": "R9 REAL original Coinexx tester is historical research control; full January R9-like Dukascopy Python simplification IS NOT exact original broker EA. Mean observed Dukascopy spread ~$0.84/oz, point-size and execution different. Hold/Exit approximate frozen, no MQL5."
   },
   "last_verified_research_document": "BETA_014_PROP_001LOT_FUNDED_RERUN__JAN2026_TERMINAL_JANJUL_ZERO_FUNDING",
-  "latest_research_record": "research/BETA_014_PROP_RISK_REPLAY_REPORT.md",
-  "latest_research_record_drive": "https://drive.google.com/file/d/1H2t2RJibfMGD2-AMmlPtwl8dA-Zq7j0_/view",
+  "latest_research_record": "research/BETA_016_REPRODUCIBLE_MTF_REGIME_AND_SPECIALIST_RESEARCH.md",
+  "latest_research_record_drive": "https://drive.google.com/file/d/1QIwXM_fKzKTok1kwyjWzWBVNQ_05S0qq/view",
   "last_scientific_campaign": {
     "name": "BETA014 funded prop-house risk overlay of R9 feed-normalized and R09_BETA_001 entry",
     "status": "BOTH_TERMINAL_EQUITY_FLOOR_FAILED_IN_JANUARY",
@@ -416,7 +416,61 @@
       "notes": "Existing BETA 009-012 results remain unchanged until a new risk-overlay tick backtest; actual target prop firm's rules supersede house profile if selected.",
       "evidence": "research/BETA_014_PROP_RISK_REPLAY_REPORT.md",
       "news_gate_status": "NOT_EVALUATED",
-      "prop_funded_viable_candidate": false
+      "prop_funded_viable_candidate": false,
+      "policy_engine": "BETA_015_PROP_V1",
+      "policy_engine_status": "CODIFIED_29_UNIT_TESTS_PASS_LEGACY_JIT_AND_MQL5_NOT_WIRED"
+    }
+  },
+  "current_research_mandates": {
+    "prop_firm_like_day_trading": {
+      "policy": "BETA_015_PROP_V1",
+      "owner_authoritative": true,
+      "active_for": "NEW_FUTURE_BETA_FUNDED_RESEARCH_AND_FUTURE_AUTHORIZED_EA_PORT_NOT_HISTORICAL_RUNS",
+      "source": "research/risk/BETA_015_PROP_POLICY_V1.json",
+      "implementation": "research/risk/BETA_015_PROP_POLICY_V1.py",
+      "validator": "research/risk/BETA_015_RESEARCH_RUN_GATE.py",
+      "versioned_document": "research/BETA_015_RISK_GOVERNANCE_IMPLEMENTATION.md",
+      "full_document_drive": "https://drive.google.com/file/d/12owvkyaTA5O5GrC4zY5yN8DlRk_caICe/view",
+      "unit_test_source_drive": "https://drive.google.com/file/d/1s37WQ2VVWHrUZpKlmoHhGWafZNEIwNIh/view",
+      "gate_test_source_repo": "research/risk/BETA_015_RUN_GATE_TESTS.py",
+      "unit_tests_passed": 29,
+      "unit_tests_run_in_session": true,
+      "starting_usd": 100000,
+      "fixed_lot": 0.01,
+      "one_position_max": true,
+      "daily_soft_stop_usd": 4000,
+      "daily_hard_stop_usd": 5000,
+      "overall_floor_usd": 90000,
+      "risk_day_timezone": "America/New_York",
+      "news_blackout_status": "NOT_EVALUATED",
+      "user_request_to_modify_when_mature_required": true,
+      "migration_rule": "EXPLICIT_OWNER_REQUEST_NEW_VERSION_NO_AUTOMATIC_TIGHTENING",
+      "enforcement_scope_status": "RESEARCH_RISK_MODULE_AND_REPORT_PRECHECK_DONE_LEGACY_JIT_BACKTEST_AND_MQL5_NOT_WIRED",
+      "no_new_mql5_without_owner": true,
+      "august_sealed": true
+    },
+    "multi_timeframe_entry_hypotheses": {
+      "status": "SOURCE_VALIDATED_RECONSTRUCTIBLE_PROPOSALS_NOT_BACKTESTED",
+      "source": "research/BETA_016_REPRODUCIBLE_MTF_REGIME_AND_SPECIALIST_RESEARCH.md",
+      "source_drive": "https://drive.google.com/file/d/1QIwXM_fKzKTok1kwyjWzWBVNQ_05S0qq/view",
+      "scope": [
+        "structure H1/H4",
+        "M15/M5 volatility and setup",
+        "M1/S1/S250 ignition",
+        "tick Bid/Ask cost/prop gate"
+      ],
+      "specialist_families": [
+        "structure continuation",
+        "failed-break reclaim",
+        "compression expansion",
+        "structural pullback/reacceleration",
+        "NY opening range",
+        "range-edge rotation",
+        "toxic-execution abstention"
+      ],
+      "evidence_status": "PUBLIC_IDEA_SOURCES_ONLY",
+      "candidate_profitability_verified": false,
+      "approved_candidate": false
     }
   }
 }
