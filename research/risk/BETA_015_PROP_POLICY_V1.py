@@ -210,7 +210,7 @@ class PropRiskGuard:
         return TickResult(self.equity,self.balance,self.daily_reference,self.soft_locked,self.hard_locked,self.terminated,closed,reason)
 
     def can_enter(self, timestamp: datetime, bid: float, ask: float, side: int, stop: float, lots: float=0.01,
-                  additional_adverse_slippage_per_oz: float=0.0, broker_trading_enabled=True,
+                  additional_adverse_slippage_per_oz: float=0.0, broker_trading_enabled=False,
                   economic_calendar_certified=False, is_high_impact_window=False):
         """Return (allowed,reason). News and real symbol sessions require live provider inputs.
 
@@ -224,7 +224,7 @@ class PropRiskGuard:
         if self.position is not None:return False,"ONE_POSITION_MAX"
         if side not in (-1,1):return False,"INVALID_SIDE"
         if lots!=self.policy.fixed_lots:return False,"FIXED_LOT_ONLY"
-        if not broker_trading_enabled:return False,"BROKER_SESSION_UNAVAILABLE"
+        if broker_trading_enabled is not True:return False,"BROKER_SESSION_UNAVAILABLE"
         ny=timestamp.astimezone(ZoneInfo(self.policy.timezone))
         minute=ny.hour*60+ny.minute
         # FX week normally resumes on Sunday evening; the broker session flag
