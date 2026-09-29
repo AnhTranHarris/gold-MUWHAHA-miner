@@ -62,11 +62,11 @@ Every study preregisters one primary KPI (including sign, units, comparator, cos
 5. Owner tests the approved-to-code EA locally in Coinexx MT5, M1 report with **`Every tick based on real ticks`**. Accept **compact normal Strategy Tester reports only**, no huge tick-log uploads. The owner explicitly accepts/rejects the incremental system update before it becomes the next cumulative EA parent.
 6. Do not confuse an in-sample / theoretical research diagnostic, a Python result, or a synthetic-tick oracle result with MT5-approved system P&L.
 
-### Breakthrough naming versus clean lineage
+### Breakthrough naming and public white-paper contract
 
-The owner's requested human-facing breakthrough label is **`R9B_Gamma_<order>_<breakthrough-name>`**. If/when earned, reproduce this exact naming convention in the compact owner alert **and in the dedicated public white-paper filename**. Because R9B/Gamma work is retired and BETA is independently parentless, this is **an output label only**, not permission to import/revive Gamma branches, code, models, approvals, governance, or experiment ancestry. The operative repository and internal experiment/candidate provenance must remain `beta` / `BETA_*`. Every white paper must visibly state the distinction and the scientific limitations of the name. If the name would collide with an older published white paper, use the next unique order rather than overwriting history.
+Every formally established independent Beta breakthrough uses the owner's **exact native BETA identifier**: `R09_BETA_<order>_<breakthrough-name>`. Never use a Gamma/R9B label or inherit a retired Gamma implementation. Internal GitHub provenance remains the independent `beta` branch.
 
-For every genuinely promoted breakthrough, publish one **public, reproducible white paper** under `beta/research/whitepapers/R9B_Gamma_<order>_<breakthrough-name>.md` (owner-facing filename only). Include: aim, independent prior art with source URLs, causal equations, 17-layer time semantics, source/model/commit hashes, predeclared primary KPI, comparison control, full Jan–Jul monthly Net/Gross Loss/Max DD, drawdown definition, cost/capital assumptions, test-to-holdout boundaries, rejected alternatives, sensitivity, incremental contribution, R9 aspirational reference limits, implementation parity notes, and exact owner approval/testing state. Put full compact evidence and excluded failures in Drive; no false public performance claim.
+Publish a **dedicated public, reproducible white paper** at `beta/research/whitepapers/R09_BETA_<order>_<breakthrough-name>.md` for each formal breakthrough, subject to the BETA 003 owner gates. Include: aim, transparent multilingual source URLs, fully reconstructible causal equations, 17-layer tick/candle semantics, versioned source/data/code hashes, preregistered primary KPI, same-feed incumbent comparator, full Jan–Jul monthly Net/Gross Loss/Max DD, drawdown definition, cost/capital assumptions, discovery/forward-wall integrity, failure cases, stress and parameter sensitivity, incremental attribution, R9 aspirational-reference caveats, MQL5 parity notes and actual owner approval/testing state. Store concise reproducibility assets, rejected/null tests and diagnostics in Drive; do not publicize uncross-validated or oracle-derived financial figures as independently tradeable results.
 
 ## 6. Durable checkpoint / crash-recovery protocol
 
@@ -98,7 +98,7 @@ Interrupt the owner only for:
 3. A blocker requiring the owner's action.
 
 For an actual breakthrough, the compact chat contains **only**:
-- `R9B_Gamma_<order>_<breakthrough-name>` name (user-requested label; independent Beta record);
+- `R09_BETA_<order>_<breakthrough-name>` ID/name;
 - Jan–Jul net profit, gross loss, maximum drawdown;
 - comparable primary-KPI percent gain and REAL→SYNTH bridge status/percent with denominator and non-comparability warnings;
 - compact Jan–Jul monthly **Net / Gross Loss / Max DD**;
