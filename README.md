@@ -28,3 +28,7 @@ Complete verified BETA 000–003 artifacts, scripts and evidence are in the [own
 - Each month/bounded unit is persisted to Drive plus GitHub manifest before a `VERIFIED_DURABLE` mark; execute Jan–Mar, Apr–Jun and Jul in recovery spans without changing predefined discovery/forward walls.
 - No BETA full-month cache yet certified and no BETA approved EA; next task is BETA 005 cache/source integrity certification.
 - Formal breakthroughs use the independent `R09_BETA_<order>_<breakthrough-name>` identifier, a dedicated public white paper, and the owner’s explicit MQL5 and MT5 acceptance gates.
+
+## BETA 005 — Multi-specialist design hypothesis
+
+- [High-velocity, multi-structure architecture hypothesis](research/BETA_005_MULTI_SPECIALIST_ARCHITECTURE_HYPOTHESIS.md): complementary simple/complex specialists and causal regime routing are **hypotheses to falsify**, not approved profit claims. Preserve the existing BETA 005 source-integrity recovery unit and all BETA 004 scientific/owner gates.
