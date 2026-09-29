@@ -1,0 +1,98 @@
+{
+  "schema": "beta-research-correction-v1",
+  "unit_id": "BETA_011_PNL_001_LOT_100K_FUNDED_MATH_AUDIT_2026_01_07",
+  "status": "VERIFIED_LOCAL_AND_DRIVE_RESEARCH_PENDING_GITHUB_CHECKPOINT_READBACK",
+  "historical_candidate": "R09_BETA_001_ADAPTIVE_IGNITION_ENTRY",
+  "correction": "ARCHIVED_UNLIMITED_CREDIT_USD_TRADES_ARE_NOT_FUNDED_COINEXX_100K_ACCOUNT_PERFORMANCE",
+  "accounted_lot_size": 0.01,
+  "assumed_gold_contract_oz_per_lot": 100,
+  "open_exposure_oz": 1,
+  "initial_balance_usd": 100000,
+  "exact_coinexx_symbol_properties_proven": false,
+  "replayed_original_ticks_months": [
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04"
+  ],
+  "source_months_may_jul_during_stopped_account": "NOT_REPLAYED_AFTER_ALL_SCENARIOS_STOPPED",
+  "original_unfunded_7month": {
+    "trades": 226696,
+    "wins": 31704,
+    "net_usd": -198021.63,
+    "gross_profit_usd": 10372.04,
+    "gross_loss_usd": -208393.67,
+    "simulated_realized_balance_dd_usd": 198021.63,
+    "hypothetical_deposit_balance_after_march_usd": 491.92,
+    "hypothetical_unfunded_account_balance_after_jul_usd": -98021.63,
+    "feasible_100k_account_result": false
+  },
+  "accounting_rerun": {
+    "kind": "EXPLICIT_CAPITAL_AND_VOLUME_SCENARIO_NOT_COINEXX_PARITY",
+    "commissions_per_closed_trade_usd": 0.2,
+    "source_quotes": "ORIGINAL_DUKASCOPY_BID_ASK",
+    "stopout_margin_ratio_assumption": 0.5,
+    "margin_model": "notional / leverage; block next eligible entry when insufficient margin; tick floating equity stopout check",
+    "leverage_100_to_1": {
+      "r9_control": {
+        "trades": 94002,
+        "wins": 11794,
+        "net_usd": -99951.926,
+        "GP": 4392.002,
+        "GL": -104343.928,
+        "realized_DD": 99951.926,
+        "remaining_balance": 48.074,
+        "blocked_at_utc": "2026-03-18T15:26:59.147Z"
+      },
+      "candidate": {
+        "trades": 108230,
+        "wins": 16540,
+        "net_usd": -99953.378,
+        "GP": 6286.099,
+        "GL": -106239.477,
+        "realized_DD": 99953.378,
+        "remaining_balance": 46.622,
+        "blocked_at_utc": "2026-04-01T05:49:51.745Z"
+      }
+    },
+    "leverage_500_to_1": {
+      "r9_control": {
+        "trades": 94039,
+        "wins": 11798,
+        "net_usd": -99990.15,
+        "remaining_balance": 9.85,
+        "blocked_at_utc": "2026-03-18T15:53:25.129Z"
+      },
+      "candidate": {
+        "trades": 108260,
+        "wins": 16542,
+        "net_usd": -99990.784,
+        "remaining_balance": 9.216,
+        "blocked_at_utc": "2026-04-01T06:09:14.759Z"
+      }
+    },
+    "uncertainty": [
+      "Leverage, broker stopout, stop-level, commission NOT confirmed from owner Coinexx terminal",
+      "gross profit/loss includes assumed flat fee in win/loss classification",
+      "drawdown here REALIZED BALANCE only, no mark-to-market equity",
+      "R9 feed-normalized control disabled 25-point Coinexx-specific original spread gate"
+    ]
+  },
+  "verdict": "HALT_OLD_BROKER_ECONOMIC_PROMOTION_CLAIM_PRESERVE_ENTRY_IDEA",
+  "candidate_owner_mql5_approval": false,
+  "owner_approved_baseline": null,
+  "github_audit_path": "research/BETA_011_LOT_001_100K_PNL_AND_DRAWDOWN_CORRECTION.md",
+  "drive_audit_url": "https://drive.google.com/file/d/1-eIru78qMGjQME7539Z0EEouJzE88otV/view",
+  "drive_arithmetic_script": "https://drive.google.com/file/d/16ss1cIJLyL2W2kQ29ZNnBrwiAYK9apXh/view",
+  "drive_arithmetic_json": "https://drive.google.com/file/d/1eeSAiKde8O3UKAd3dqD5L_b28S-XV8KS/view",
+  "drive_funded_tick_script": "https://drive.google.com/file/d/1PWuxogilHblkWDGCfN8J_81DOp1lk0jB/view",
+  "drive_funded_tick_json": "https://drive.google.com/file/d/1b8U8YUGii9zGTrBFmgb5-dG646WCWV5c/view",
+  "sha256": {
+    "audit_md": "2bf3d493d0413e802d6450ade79e3802c3dbe07a770f21fddc68c0cccce2dcee",
+    "arithmetic_script": "7f71ae6c20b4ec6b1f5b89353beaf6eb1fcc23186b39e49685a344aadc58db76",
+    "arithmetic_json": "c0b986adcf7a8935ab07761eeb999771a10c350ca2ce3fc97d51b63a72a17723",
+    "funded_tick_script": "cfb23ac557c8e53129ce78db8db8050b5ed5389852b48c39fea67b159e5607e4",
+    "funded_tick_json": "242124cc70d3d5f394a7358900d2ce6a251f83a4f0098606dff6bbad19dd10cd"
+  },
+  "august_sealed": true
+}
