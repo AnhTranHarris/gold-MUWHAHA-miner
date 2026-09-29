@@ -85,3 +85,9 @@ Complete verified BETA 000–003 artifacts, scripts and evidence are in the [own
 
 - [BETA 013 fixed-0.01-lot prop-style daily risk charter](research/BETA_013_PROP_STYLE_DAYTRADING_RISK_CHARTER.md): $100,000 research equity; one 0.01-lot XAUUSD position shared across specialists; 4% early daily no-entry pause, 5% hard daily loss limit, 10% static maximum total loss, point-in-time equity accounting, New-York 5pm risk-day reset, market/news/rollover gates and separate feasible versus shadow accounting.
 - **Not yet implemented or backtested as an overlay.** Reddit suggestions are research context; official FTMO and The5ers rule formulas vary, so this is a BETA HOUSE profile rather than firm-certified compliance. The previously approved-BETA-EA status and scientific checkpoint are unchanged.
+
+## BETA 014 — Prop-rule 0.01-lot funded replay
+
+- [R9 same-feed versus R09_BETA_001: January tick-based funded study](research/BETA_014_PROP_RISK_REPLAY_REPORT.md), [original-tick simulator](research/experiments/BETA_014_PROP_RISK_REPLAY.py), [raw QA/scorecard](research/checkpoints/BETA_014_PROP_001LOT_FUNDED_RERUN.json) and [nine-test QA result](research/checkpoints/BETA_014_PROP_RISK_QA.json).
+- With BETA013 house 0.01 lot / $100,000 capital / $0.02 roundtrip / 4% daily pause / 5% daily hard / 10% lifetime hard, **both strategies violate the $90,000 lifetime equity floor in January**: R9-like control Jan 14; adaptive entry candidate Jan 21. There are **zero new funded trades February–July**; the latter months were not reread in this funded replay after both terminated. Daily caps did not activate.
+- Candidate is more selective on a common-calendar comparison but has fewer absolute winning trades; no winner/owner-approved BETA EA. Exact Coinexx session rules and news-calendar gate are not certified. August remains SEALED. Preserve all older unrestricted research outcomes with SHADOW/COUNTERFACTUAL labels.
