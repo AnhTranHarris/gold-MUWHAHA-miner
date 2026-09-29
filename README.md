@@ -20,3 +20,11 @@ Complete verified BETA 000–003 artifacts, scripts and evidence are in the [own
 - Preserve failed tests; develop reconstructible mechanisms independently; no unapproved MQL5 coding or live trading.
 
 **Branch creation:** This root is intended to be an orphan (no parents). If that cannot be verified, do not treat an inherited branch as an independent BETA root.
+
+## BETA 004 — Durable quant-research protocol
+
+- Seven research lenses: ENTRY/ACTION, HOLD/PERSISTENCE, EXIT/HARVEST, STRUCTURAL OWNERSHIP, FAILED IGNITION, TAIL CONTAINMENT, and OPPORTUNITY QUALITY.
+- Research protocol: [BETA 004](research/BETA_004_DURABLE_QUANT_CAMPAIGN_PROTOCOL.md). Compact [durable checkpoint](research/checkpoints/BETA_004_DURABLE_CHECKPOINT.json).
+- Each month/bounded unit is persisted to Drive plus GitHub manifest before a `VERIFIED_DURABLE` mark; execute Jan–Mar, Apr–Jun and Jul in recovery spans without changing predefined discovery/forward walls.
+- No BETA full-month cache yet certified and no BETA approved EA; next task is BETA 005 cache/source integrity certification.
+- The owner-specified `R9B_Gamma_<order>_<name>` output identifier is an **output label only**, NOT revival of retired Gamma provenance.
