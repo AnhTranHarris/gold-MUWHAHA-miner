@@ -1,0 +1,9 @@
+# BETA040 — Remove stacked confirmation gates
+
+**Owner directive (2026-09-29).** In new BETA research, M1/M5 accepted-close, sweep/reclaim, trend-vote, micro-impulse, ATR, quote-pressure and regime indicators are **model features**, not mandatory conjunctive confirmations. Keep old experiments as read-only evidence. No change to approved EA (none exists). Broker order validity, Bid/Ask costs, one-open-position and funded protection are distinct and must stay enforced. The historical R9 E060 parent opportunity generator still has its own original eligibility rules and is retained solely for identical-source tests; future unfiltered clock schedulers are additional experiments, not yet validated.
+
+Research proposal: continuous multi-timeframe causal state-belief (250ms–M1/M5/M15/H1), costed BUY/SELL/FLAT action values and an independently updating HOLD/EXIT expected-value/competing-risks head. Original R9 direction is a soft prior, not fixed or indiscriminately reversed. Re-evaluate after fill using live observed quotes; prevent hindsight-optimal trailing or positions on synthetic paths. Avoid any claim of reliable profits, exact MT5 fills or future knowledge.
+
+Initial Jan1–18 noon 2026 test on real Dukascopy original quote ticks, strict >10% combined-system gate with original same-event winner preservation and one-position net/DD; Jan–Jul only for qualified frozen candidates, all previously inspected, August SEALED. BETA005 full 17-layer parity and BETA015 capital survival still required; owner must approve production MQL5 source separately.
+
+Full executed BETA040 result record and exact Python, model manifest, source SHA, independent 150-check QA, source-event fixture in research conversation artifact `BETA040_NO_CONFIRMATION_REPRO_BUNDLE.zip`, SHA256 `5c3e2b5ff9111834c284482a1611e2d9ac9dfa6758decafc14afc261304c0a4b`. All tested models remain net-negative and failed incumbent-winning-event preservation: **NO PROMOTION**.
