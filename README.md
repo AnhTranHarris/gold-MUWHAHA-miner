@@ -36,3 +36,7 @@ Complete verified BETA 000–003 artifacts, scripts and evidence are in the [own
 ## BETA 006 — MT5 winner → next cumulative baseline
 
 - [Coinexx real-tick winner promotion protocol](research/BETA_006_MT5_WINNER_TO_CUMULATIVE_BASELINE_PROTOCOL.md): only after a causal Python winner, explicit authorization to code, owner-run MT5 **Every tick based on real ticks**, preregistered economically comparable Python/MT5 performance and risk, **and final affirmative owner acceptance** may a versioned candidate become the next cumulative BETA EA parent. Freeze prior approvals for rollback. No approved EA presently exists.
+
+## Living research journal (checkpoint through BETA 006)
+
+- **[BETA Research Journal — chat decisions, science record and continuity](https://docs.google.com/document/d/1_zuLcHwsPnul8XtfLLlrK9-Mogk120qk0xWdlVWAzPQ/edit)** is a continuing Google Doc in the existing BETA_RESEARCH folder, **not a hand-off**. It documents BETA 000–006, data/owner constraints, exact verified/incomplete science units, and how to resume after a chat-length/stream failure. Read this journal AND live `beta/CURRENT_STATE.json`; confirm Drive/GitHub durability before resuming the first incomplete work unit. No background research is implied by storing the journal.
