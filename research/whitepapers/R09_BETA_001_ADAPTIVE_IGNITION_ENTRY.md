@@ -1,21 +1,19 @@
 # R09_BETA_001_ADAPTIVE_IGNITION_ENTRY
 
-> **BETA 011 monetary audit (2026-09-29):** The original Jan–Jul P&L was independently re-replayed and the 0.01-lot conversion is arithmetically correct **only under the assumed standard 100-oz/lot XAUUSD contract and $0.20 per-0.01-lot roundtrip fee**. At a $0.07 fee, candidate winning-trade-count gain falls from +10.13% to **+6.80%** (relative win-rate still +16.09%, net-loss reduction +17.43%). Candidate remains **loss-making even at zero fee**. Reported max DD is **closed-trade balance drawdown**, not MT5 mark-to-market or margin-feasible DD; actual Coinexx contract/fees not confirmed. No MQL5 code is approved. [Full reconciliation](../BETA_011_LOT01_MONETARY_RECONCILIATION.md).
-
-**Status:** Formal BETA ENTRY/ACTION breakthrough; owner review pending. **No MQL5 candidate has been coded.**
+**Status:** CORRECTED 0.01-LOT PNL AUDIT COMPLETE. Entry candidate remains promising, but prior formal-breakthrough promotion is SUSPENDED pending requalification because the original Python model overstated roundtrip commission by 10x. **No MQL5 candidate has been coded.**
 
 ## Executive result
 
 This breakthrough keeps the R9 hold/exit geometry fixed and replaces the immediate R9-style entry trigger with a causal **early-ignition + opportunity-cost gate**. On the same Dukascopy Jan–Jul 2026 feed, relative to the feed-normalized R9 control, the primary candidate produced:
 
-- **Winning trades:** 31,704 vs 28,789 (**+10.13%**)
-- **Win rate:** 13.99% vs 11.68% (**+19.70% relative**)
-- **Net:** $-198,021.63 vs $-236,165.84; loss reduced **16.15%**
-- **Gross loss:** $-208,393.67 vs $-245,050.95; absolute gross loss reduced **14.96%**
-- **Max drawdown:** $198,021.63 vs $236,165.84; reduced **16.15%**
-- **Fee stress:** still improves net vs the same baseline by **15.38%** at $0.30 and **14.74%** at $0.40 additional roundtrip fee.
+- **Winning trades:** 61,650 vs 58,279 (**+5.78%**)
+- **Win rate:** 27.20% vs 23.65% (**+14.98% relative**)
+- **Net:** $-157,216.35 vs $-191,813.12; loss reduced **18.04%**
+- **Gross loss:** $-175,992.52 vs $-208,514.23; absolute gross loss reduced **15.60%**
+- **Max drawdown:** $157,216.35 vs $191,813.12; reduced **18.04%**
+- **Commission basis:** original Coinexx R9 REAL deal history shows $0.01 entry commission + $0.01 exit commission at 0.01 lot = **$0.02 roundtrip**. The prior Python model used $0.20 roundtrip and was therefore 10x too punitive.
 
-The strategy is **still loss-making**, so this is not a profitable EA claim. It is a material entry-quality breakthrough under the owner's category-specific >10% rule.
+The strategy is **still loss-making**, so this is not a profitable EA claim. The corrected entry accuracy and economics remain materially better than the same-feed R9 control, but **winning-trade count improves only 5.78%**. Because the prior BETA 010 conjunctive gate required >10% winning-count as well as entry-quality/economic improvement, formal breakthrough promotion is suspended until the candidate is requalified or the owner explicitly changes that gate.
 
 ## Mechanism
 
@@ -36,13 +34,15 @@ The result supports a specific diagnosis: R9 REAL's entry hole is not simply “
 
 | Month | Trades | Wins | Win rate | Net | Gross loss | Max DD |
 |---|---:|---:|---:|---:|---:|---:|
-| 2026-01 | 31,250 | 4,189 | 13.40% | $-26,651.53 | $-27,981.41 | $26,651.53 |
-| 2026-02 | 27,117 | 4,350 | 16.04% | $-26,369.97 | $-28,263.33 | $26,369.97 |
-| 2026-03 | 49,444 | 7,938 | 16.05% | $-46,486.59 | $-49,529.22 | $46,486.59 |
-| 2026-04 | 30,134 | 4,064 | 13.49% | $-26,622.60 | $-27,866.45 | $26,622.60 |
-| 2026-05 | 31,178 | 4,138 | 13.27% | $-24,605.62 | $-25,679.14 | $24,605.62 |
-| 2026-06 | 34,522 | 4,662 | 13.50% | $-27,614.39 | $-28,827.34 | $27,614.39 |
-| 2026-07 | 23,051 | 2,363 | 10.25% | $-19,670.94 | $-20,246.77 | $19,670.94 |
+| 2026-01 | 31,250 | 8,606 | 27.54% | $-21,026.53 | $-23,496.48 | $21,026.53* |
+| 2026-02 | 27,117 | 7,278 | 26.84% | $-21,488.91 | $-24,438.06 | $42,515.43* |
+| 2026-03 | 49,444 | 13,607 | 27.52% | $-37,586.67 | $-42,581.33 | $80,102.60* |
+| 2026-04 | 30,134 | 8,032 | 26.65% | $-21,198.48 | $-23,534.21 | $101,300.58* |
+| 2026-05 | 31,178 | 8,787 | 28.18% | $-18,993.58 | $-21,231.68 | $120,294.16* |
+| 2026-06 | 34,522 | 9,763 | 28.28% | $-21,400.43 | $-23,909.88 | $141,694.59* |
+| 2026-07 | 23,051 | 5,577 | 24.19% | $-15,521.76 | $-16,800.89 | $157,216.35* |
+
+*The DD values above are **cumulative Jan-to-month-end drawdown**, not month-local reset drawdown. The full Jan–Jul maximum drawdown is $157,216.35.*
 
 ## Nearby robustness
 
@@ -52,8 +52,8 @@ The higher-volume sibling `ADAPT_110_065` also passed the complete Jan–Jul ent
 
 Historical Coinexx R9 REAL and generated SYNTH are different tester processes from the Dukascopy Python experiment. They cannot be treated as directly additive dollars or identical trades. For the owner's requested bridge bookkeeping only:
 
-- historical REAL→SYNTH net gap = **$359,408.13**; the candidate's same-feed net improvement of **$38,144.21** equals **10.61%** of that historical gap as a purely arithmetic cross-feed proxy;
-- historical REAL→SYNTH winner-count gap = **88,751**; the candidate adds **2,915** same-feed wins, an arithmetic proxy of **3.28%** of that historical count gap.
+- historical REAL→SYNTH net gap = **$359,408.13**; the corrected candidate same-feed net improvement of **$34,596.77** equals **9.63%** of that historical gap as a purely arithmetic cross-feed proxy;
+- historical REAL→SYNTH winner-count gap = **88,751**; the corrected candidate adds **3,371** same-feed wins, an arithmetic proxy of **3.80%** of that historical count gap.
 
 These percentages are **not claims of executable REAL→SYNTH gap closure**. Coinexx MT5 must determine translation.
 
@@ -74,7 +74,7 @@ No source's profitability claim was imported. Only reconstructible mechanism ide
 
 - Original Dukascopy Jan–Jul monthly SHA256 values match the frozen BETA source manifest.
 - January full gzip was read through EOF/CRC; 9,135,062 rows and all 17 resolution layers were causally reconstructible.
-- Jan–Jul validation uses original ordered Bid/Ask ticks, prior-month warm-up only, actual observed spread in fills, plus $0.20 extra roundtrip commission.
+- Jan–Jul validation uses original ordered Bid/Ask ticks, prior-month warm-up only, actual observed spread in fills, plus **$0.02 roundtrip commission**, reconciled directly to the owner's Coinexx MT5 R9 REAL deal history ($0.01 on entry + $0.01 on exit at 0.01 lot).
 - R9 fixed Hold/Exit: $0.30 initial stop, $0.10 trailing activation, $0.03 trail, 30-second max hold.
 - August 2026 was not accessed.
 - January was discovery, so Jan–Jul is not represented as pristine untouched OOS. The later MT5 broker test is an independent translation gate, not proof of OOS research purity.
@@ -82,3 +82,8 @@ No source's profitability claim was imported. Only reconstructible mechanism ide
 ## Owner gate
 
 This record authorizes **nothing automatically**. Per BETA 003/BETA 006, explicit owner approval is required before any MQL5 candidate is written. If authorized, the first MT5 implementation should be this exact entry mechanism layered over the historical R9 logic with Hold/Exit unchanged, then tested locally on Coinexx XAUUSD M1 using **Every tick based on real ticks**. The ordinary compact tester report is sufficient; no giant tick log is requested.
+
+
+## 0.01-lot PnL audit correction
+
+The owner requested an explicit lot-value audit before discarding or promoting this candidate. The Coinexx R9 REAL MT5 report confirms `InpLots=0.01`; a 0.01-lot XAUUSD buy at 4332.34 closed at 4331.68 records trading Profit = -$0.66, so a $1.00 XAUUSD price move corresponds to $1.00 PnL at 0.01 lot. The same deal pair charges Commission = -$0.01 on entry and -$0.01 on exit. Therefore the simulator's **price-delta-to-USD conversion was correct**, while its extra roundtrip commission was **10x too large**. Corrected metrics were recomputed trade-by-trade with $0.02 roundtrip commission; gross loss and drawdown were not merely arithmetically rescaled.
