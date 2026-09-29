@@ -2,9 +2,9 @@
   "schema": "beta-research-status-v2",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "lineage": "INDEPENDENT_BETA",
-  "last_verified_durable_unit": "BETA_031_DURATION_AWARE_STATE_MIXTURE_AI_28_QA",
+  "last_verified_durable_unit": "BETA_031_DURATION_AWARE_STATE_MIXTURE_AND_MANIFEST_PARITY_57527562_TICKS",
   "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
-  "last_recorded_milestone": "BETA031_REAL_FEED_UTILITY_IMPROVES_MODESTLY_SYNTH_TEACHER_ALIGNMENT_REGRESSES",
+  "last_recorded_milestone": "BETA031_DIRECTION_UTILITY_GAIN_BUT_SYNTH_TEACHER_ALIGNMENT_REGRESSES_NO_PROMOTION",
   "research_scope": [
     "ENTRY",
     "HOLD",
@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "BETA031 tested a deterministic duration-aware mixture-of-experts on BETA030 causal event cohorts. Jan-Mar fit, April threshold calibration, May-Jul frozen historical diagnostic (NOT pristine OOS), August SEALED. Formula adds regime age, event gap, state-change flag and empirical state survival to 59 causal BETA030 features; global + state ridge experts blend with lambda=clip(0.10+0.65*survival-0.35*state_changed,0.05,0.75), flip R9 side only if predicted opposite-minus-parent +15s utility > $0.20/oz. May-Jul: +138 absolute correct +15s outcomes (13,650->13,788, +1.01%) and +$80.32 aggregate costed markout relative, but all outcomes remain deeply negative. Integrated one-position May-Jul relative net improves only +$33.78 L15 / +$105.72 L30 / +$109.59 L45, still negative. Selected paired SYNTH same-side +/-5s worsens 13,495->12,885 May-Jul and 34,394->32,957 Jan-Jul. Four full unselected original logger days SYNTH same-side 1,022->951, REAL 2,976->2,812. Therefore state-aware AI can recover modest real-feed utility but has NOT bridged R9 SYNTH/OVERFIT behavior or entry clock. Preserve as research component only; next architecture separates clock/eligibility, directional owner, dynamic proof, and lifecycle owner, with formal BOCPD/HSMM router ablations and full unselected 149-day teacher reconstruction. 28 BETA031 QA PASS. No MQL5 EA promotion.",
+  "current_status": "BETA031 completed a causal, transparent 63-feature GLOBAL+4 SEMANTIC-RIDGE duration-weighted inverse-side utility model on previously inspected Jan-Jul Dukascopy original XAUUSD ticks. Jan-Mar fitted, April threshold chosen, May-Jul frozen historical NONBLIND diagnostic. Parent May-Jul +15s correct 13,650, BETA031 13,788 (+138), aggregate after-cost markout -$52,550.62 -> -$52,470.30 (+$80.32, still deeply negative); integrated shadow L15/L30/L45 gains $34/$106/$110 but all lose money. Four complete original Coinexx full unselected SYNTH days same-side ±5s correspondences DROP 1,022 -> 951; selected-pair 165,630 cohort teacher Jan-Jul 34,394 -> 32,957. This direction-only model does not predict entry clocks or bridge SYNTH/OVERFIT. Zero owner-approved EA, no official MQL5 compiled, no BETA015 funded run. Full export model 63-feature manifest, source scripts, exact results and audits in user conversation ZIP. Independent 7-month Python JSON-manifest inference verified zero disagreements/zero numerical error, 14 added assertions. Original 28 QA passed; fold-isolated duration-reference CV audit still selects ridge alpha 300 and exposes event-sampled state-age and censored-tail limits. First-incomplete BETA005 17-layer full cache parity unchanged. August SEALED. Gold Hunter V8 secondary unverified clue, old Gamma quarantined.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -602,6 +602,55 @@
       "report": "research/BETA_031_DURATION_AWARE_STATE_MIXTURE_AI.md",
       "local_bundle_sha256": "8318dd12dd54ee4f364cb78715053546a03c363884b74a99b0abaa1b81cf3e1c",
       "August": "SEALED"
+    },
+    {
+      "unit_id": "BETA_031_DURATION_AWARE_STATE_MIXTURE_AND_MANIFEST_PARITY_57527562_TICKS",
+      "status": "COMPLETED_BOUNDED_NONBLIND_HISTORICAL_RESEARCH__NO_PROMOTION",
+      "source": "original Jan-Jul 2026 Dukascopy ordered XAUUSD Bid/Ask",
+      "original_tick_count": 57527562,
+      "firstcycle_parent_events": 191674,
+      "original_15s_valid": 183222,
+      "parent_correct_15s": 34784,
+      "model_correct_15s": 35397,
+      "mayjul_valid": 80165,
+      "mayjul_parent_correct": 13650,
+      "mayjul_model_correct": 13788,
+      "mayjul_parent_costed_markout_sum": -52550.617,
+      "mayjul_model_costed_markout_sum": -52470.295,
+      "mayjul_delta_dollars": 80.322,
+      "full_sample_SYNTH_selected_parent": 34394,
+      "full_sample_SYNTH_selected_model": 32957,
+      "four_full_logger_days_SYNTH_parent_same5": 1022,
+      "four_full_logger_days_SYNTH_model_same5": 951,
+      "entry_clock_changed": false,
+      "ai_model": "regularized global+state ridge; 63 explicit causal event-source features; lambda clip(0.10+0.65*S(age)-0.35*changed,.05,.75); flip on 0.20 predicted utility difference",
+      "fitted_months": "Jan-Mar 2026",
+      "threshold_selection": "April 2026",
+      "historical_examined_MayJul": "NOT_UNTOUCHED_OOS",
+      "shadow_integrated_lifecycle_tested": true,
+      "all_shadow_net_negative": true,
+      "funded_BETA015": false,
+      "approved_beta_ea": false,
+      "official_MQL5_code_written": false,
+      "saved_manifest_feature_count": 63,
+      "QA_original": 28,
+      "QA_export_manifest_numerical": 14,
+      "manifest_action_mismatches": 0,
+      "fold_local_duration_CV_audit": "PASS selected ridge alpha=300 unchanged",
+      "source_repository_path": "research/experiments/BETA_031_PURE_MANIFEST_OWNER.py",
+      "source_git_blob_sha": "d5c0e3dafb06946ae1cdb5184644a2e6631b4c21",
+      "full_research_doc": "research/BETA_031_DURATION_AWARE_STATE_MIXTURE_CAUSAL_TICK_RESEARCH.md",
+      "bundle": "BETA031_STATE_AWARE_AI_RESEARCH_BUNDLE_VERIFIED.zip",
+      "bundle_sha256": "7873ed9d6eed1f8c6f075ec5ecb914f6d5b512cee61d7807e4f25db4b520e577",
+      "original_market_ticks_not_bundled": true,
+      "pending_prerequisites": [
+        "BETA005 materialized 17-layer feature parity",
+        "full unselected original SYNTH 149-day evaluation",
+        "BETA015 integrated funded system economics",
+        "new untouched forward validation explicit owner release",
+        "specific owner consent prior to official MQL5"
+      ],
+      "August": "SEALED"
     }
   ],
   "design_hypotheses": {
@@ -654,8 +703,8 @@
     "owner_study_goal": "Repair real-tick ENTRY quality and absolute winning-trade count first; freeze Hold/Exit for controlled isolation; preserve separate BETA cumulative approval gates",
     "notes": "R9 REAL original Coinexx tester is historical research control; full January R9-like Dukascopy Python simplification IS NOT exact original broker EA. Mean observed Dukascopy spread ~$0.84/oz, point-size and execution different. Hold/Exit approximate frozen, no MQL5."
   },
-  "last_verified_research_document": "research/BETA_031_DURATION_AWARE_STATE_MIXTURE_AI.md",
-  "latest_research_record": "research/BETA_031_DURATION_AWARE_STATE_MIXTURE_AI.md",
+  "last_verified_research_document": "research/BETA_031_DURATION_AWARE_STATE_MIXTURE_CAUSAL_TICK_RESEARCH.md",
+  "latest_research_record": "research/BETA_031_DURATION_AWARE_STATE_MIXTURE_CAUSAL_TICK_RESEARCH.md",
   "latest_research_record_drive": "https://drive.google.com/file/d/1xLx4uJK8pSpRez68vS2k59--cWgiF96B/view",
   "last_scientific_campaign": {
     "name": "BETA017 completed-bar M5/H1 regime exploratory screen",
@@ -1090,5 +1139,18 @@
     "bundle_name": "BETA031_STATE_AWARE_AI_RESEARCH_BUNDLE.zip",
     "source_ticks_in_bundle": false,
     "exact_formula_document": "research/BETA_031_DURATION_AWARE_STATE_MIXTURE_AI.md"
+  },
+  "BETA031_dual_track_research": {
+    "checkpoint_doc": "research/BETA_031_DURATION_AWARE_STATE_MIXTURE_CAUSAL_TICK_RESEARCH.md",
+    "inference_source": "research/experiments/BETA_031_PURE_MANIFEST_OWNER.py",
+    "quant_result": "small positive correct-count lift on independent source but negative after costs and greater divergence from teacher actions",
+    "micro_next": "predict causal first observed future executable entry CLOCK and direction separately using BOCPD or actual HSMM duration posterior; evaluate full unpaired SYNTH / actual Dukascopy markout",
+    "integrated_next": "conditional failed ignition exits vs runner persistence; BETA015 PropRiskGuard and exact one-position chronology required; entry priority with downside safety",
+    "evidence_separation": "retired Gamma historical clues not production, Gold Hunter V8 owner-reported genealogy secondary, OVERFIT diagnostics future labels never live, R9 SYNTH different generated tick tester, Dukascopy original raw quote feed independent, May-Jul previously inspected",
+    "model_manifest_zip": "BETA031_STATE_AWARE_AI_RESEARCH_BUNDLE_VERIFIED.zip",
+    "model_manifest_sha256": "98a892d1776f33558be20dce4dcbea5116c3b8607cb09f823ce082ba1861056b",
+    "model_zip_sha256": "7873ed9d6eed1f8c6f075ec5ecb914f6d5b512cee61d7807e4f25db4b520e577",
+    "entry_percent_not_comparable_to_R9_SYNTH_winrate": true,
+    "august": "SEALED"
   }
 }
