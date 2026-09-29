@@ -2,9 +2,9 @@
   "schema": "beta-research-status-v2",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "lineage": "INDEPENDENT_BETA",
-  "last_verified_durable_unit": "BETA_009_JAN_32_ENTRY_SCENARIOS_QA_CORRECTED_001",
+  "last_verified_durable_unit": "R09_BETA_001_ADAPTIVE_IGNITION_ENTRY__JAN_JUL_001",
   "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
-  "last_recorded_milestone": "BETA_009_32_NEGATIVE_JAN_ENTRY_SCENARIOS_AND_FULL_JAN_SOURCE_QA",
+  "last_recorded_milestone": "BETA_010_FORMAL_ENTRY_BREAKTHROUGH_OWNER_REVIEW_PENDING",
   "research_scope": [
     "ENTRY",
     "HOLD",
@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "BETA009 Jan original source 9.135m quote CRC/grid identity verified; 2 preregistered waves of 16 variants each on original Bid/Ask ticks ALL negative net. No qualifying >10% owner gate. Jan 17-layer derived-feature cache parity pending, approved BETA EA null, August SEALED.",
+  "current_status": "BETA 010: R09_BETA_001_ADAPTIVE_IGNITION_ENTRY passed Jan-Jul category-specific >10% ENTRY gate vs same-feed R9 control: +10.13% wins, +19.70% relative win rate, 16.15% net-loss/DD reduction, 14.96% gross-loss reduction. Still loss-making; no MQL5 coded; owner review pending; August SEALED.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -129,6 +129,45 @@
       "evidence_manifest": "research/checkpoints/BETA_009_JAN_32_ENTRY_CASES_CORRECTED_DD.json",
       "research_record": "research/BETA_009_JAN_ENTRY_SCALPING_RESEARCH_RECORD.md",
       "research_document_drive_url": "https://drive.google.com/file/d/1YIJSnajiFDnPwPV4FNeZHY5y1pxBAI04/view"
+    },
+    {
+      "unit_id": "R09_BETA_001_ADAPTIVE_IGNITION_ENTRY__JAN_JUL_001",
+      "status": "VERIFIED_DURABLE",
+      "category": "ENTRY_ACTION",
+      "formal_breakthrough_id": "R09_BETA_001_ADAPTIVE_IGNITION_ENTRY",
+      "same_feed_baseline": {
+        "trades": 246404,
+        "wins": 28789,
+        "net_usd": -236165.83600004023,
+        "gross_loss_usd": -245050.9480000362,
+        "max_drawdown_usd": 236165.8360000386
+      },
+      "candidate": {
+        "trades": 226696,
+        "wins": 31704,
+        "win_rate": 0.1398524896778064,
+        "net_usd": -198021.6300000341,
+        "gross_loss_usd": -208393.66800002972,
+        "max_drawdown_usd": 198021.63000004247,
+        "wins_change_pct": 10.125395116190216,
+        "win_rate_change_pct": 19.69923535576159,
+        "net_loss_reduction_pct": 16.151449611026557,
+        "gross_loss_reduction_pct": 14.959044353503614,
+        "max_dd_reduction_pct": 16.15144961102244
+      },
+      "robustness": {
+        "neighbor_ADAPT_110_065_passed": true,
+        "fee_030_improvement_pct": 15.381152926113284,
+        "fee_040_improvement_pct": 14.743843749484638
+      },
+      "github_whitepaper": "research/whitepapers/R09_BETA_001_ADAPTIVE_IGNITION_ENTRY.md",
+      "github_scorecard": "research/checkpoints/R09_BETA_001_ADAPTIVE_IGNITION_ENTRY_SCORECARD.json",
+      "drive_whitepaper": "https://drive.google.com/file/d/16SQ45-f70RDOf1zI0736MukfrCU4CIVA/view",
+      "drive_scorecard": "https://drive.google.com/file/d/1PRZRCWNnFDeHk1o0c5sF6yaUEc3vZjJb/view",
+      "candidate_mql5_written": false,
+      "owner_review_status": "PENDING",
+      "approved_beta_ea": false,
+      "august_sealed": true
     }
   ],
   "design_hypotheses": {
@@ -160,8 +199,8 @@
     "title": "BETA RESEARCH JOURNAL — Conversation History, Decisions & Durable Continuity (Checkpoint 006)",
     "url": "https://docs.google.com/document/d/1_zuLcHwsPnul8XtfLLlrK9-Mogk120qk0xWdlVWAzPQ/edit",
     "folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
-    "documented_milestones": "BETA_000 through BETA_006",
-    "recovery_priority": "Read living journal and LIVE beta/CURRENT_STATE.json; compare last VERIFIED_DURABLE artifacts on Drive/GitHub; resume first_incomplete_scientific_unit without rerunning already verified identical units.",
+    "documented_milestones": "BETA_000 through BETA_010",
+    "recovery_priority": "Read living journal and LIVE beta/CURRENT_STATE.json. R09_BETA_001 is owner-review pending; do not re-run completed Jan-Jul identical evidence. If owner authorizes, implement exact MQL5 candidate; otherwise continue entry research from this baseline while Hold/Exit stay frozen.",
     "note": "This journal checkpoint is documentation only, not full-month cache certification, profitable candidate, EA coding or approved baseline."
   },
   "historical_reference_control": {
@@ -179,32 +218,27 @@
     "owner_study_goal": "Repair real-tick ENTRY quality and absolute winning-trade count first; freeze Hold/Exit for controlled isolation; preserve separate BETA cumulative approval gates",
     "notes": "R9 REAL original Coinexx tester is historical research control; full January R9-like Dukascopy Python simplification IS NOT exact original broker EA. Mean observed Dukascopy spread ~$0.84/oz, point-size and execution different. Hold/Exit approximate frozen, no MQL5."
   },
-  "last_verified_research_document": "BETA_009_JAN_32_ENTRY_SCENARIOS_QA_CORRECTED_001",
-  "latest_research_record": "research/BETA_009_JAN_ENTRY_SCALPING_RESEARCH_RECORD.md",
-  "latest_research_record_drive": "https://drive.google.com/file/d/1YIJSnajiFDnPwPV4FNeZHY5y1pxBAI04/view",
+  "last_verified_research_document": "R09_BETA_001_ADAPTIVE_IGNITION_ENTRY__JAN_JUL_001",
+  "latest_research_record": "research/whitepapers/R09_BETA_001_ADAPTIVE_IGNITION_ENTRY.md",
+  "latest_research_record_drive": "https://drive.google.com/file/d/16SQ45-f70RDOf1zI0736MukfrCU4CIVA/view",
   "last_scientific_campaign": {
-    "name": "BETA009 entry-first scalping 32-case January tick screen",
-    "status": "REJECTED_NO_VALID_WINNING_CANDIDATE",
-    "month_scanned": "2026-01",
-    "month_ticks": 9135062,
-    "cases": 32,
-    "positive_net_cases": 0,
-    "same_feed_reference": {
-      "trades": 32084,
-      "wins": 3430,
-      "net_usd": -28563.72,
-      "gross_loss_abs_usd": 29537.82,
-      "peak_to_trough_equity_dd_usd": 28564.61
-    },
-    "one_account_router": {
-      "trades": 64825,
-      "wins": 7554,
-      "win_count_gain_percent_vs_same_feed_r9_like": 120.23,
-      "net_usd": -55897.49,
-      "gross_loss_abs_usd": 57998.19,
-      "peak_to_trough_equity_dd_usd": 55899.08
-    },
-    "script_and_report_manifests": "research/checkpoints/BETA_009_JAN_32_ENTRY_CASES_CORRECTED_DD.json",
+    "name": "BETA010 adaptive ignition entry family Jan-Jul direct tick validation",
+    "status": "FORMAL_ENTRY_BREAKTHROUGH_OWNER_REVIEW_PENDING",
+    "primary": "R09_BETA_001_ADAPTIVE_IGNITION_ENTRY",
+    "months": "2026-01 through 2026-07",
+    "same_feed_win_count_gain_pct": 10.125395116190216,
+    "same_feed_win_rate_gain_pct": 19.69923535576159,
+    "same_feed_net_loss_reduction_pct": 16.151449611026557,
+    "same_feed_gross_loss_reduction_pct": 14.959044353503614,
+    "same_feed_max_dd_reduction_pct": 16.15144961102244,
+    "still_negative_net": true,
+    "mql5_written": false,
     "august_sealed": true
+  },
+  "owner_review_pending_candidate": {
+    "id": "R09_BETA_001_ADAPTIVE_IGNITION_ENTRY",
+    "gate": "CATEGORY_SPECIFIC_ENTRY_GREATER_THAN_10_PERCENT",
+    "requested_next_action": "Owner decides whether to authorize MQL5 candidate implementation under BETA 003/006. No code before explicit approval.",
+    "approved": false
   }
 }
