@@ -347,8 +347,8 @@
     "title": "BETA RESEARCH JOURNAL — Conversation History, Decisions & Durable Continuity (Checkpoint 006)",
     "url": "https://docs.google.com/document/d/1_zuLcHwsPnul8XtfLLlrK9-Mogk120qk0xWdlVWAzPQ/edit",
     "folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
-    "documented_milestones": "BETA_000 through BETA_017 (BETA017 IN-SAMPLE research only; neither approved EA nor completed science cache)",
-    "recovery_priority": "BETA014 is last tick-strategy proof; BETA015 risk module compiled + 29 tests but NOT integrated into legacy JIT/MQL5; BETA016 future entry-regime prereg only. Keep first_incomplete_scientific_unit and MQL5 owner gates unchanged. Resume 17-layer parity or implement causally timestamped entry features, first January tick tests, then Jan-Jul if qualified; August SEALED.",
+    "documented_milestones": "BETA_000 through BETA_018 (BETA018 is entry-first governance, not a strategy experiment)",
+    "recovery_priority": "Read LIVE beta/CURRENT_STATE.json and BETA018 owner ENTRY-FIRST mandate. Preserve frozen R9-style HOLD/EXIT controls until owner authorizes entry maturity transition. BETA015 prop policy mandatory for future funded evaluations. August sealed; BETA005 feature-parity pending; BETA017 remains last performed market experiment.",
     "note": "This journal checkpoint is documentation only, not full-month cache certification, profitable candidate, EA coding or approved baseline."
   },
   "historical_reference_control": {
@@ -539,6 +539,21 @@
     },
     "owner_policy": "BETA015 V1 owner-locked prop-style $100k/.01lot/4k daily soft/5k daily hard/90k lifetime; modify only on explicit owner request with version bump and retest",
     "future_strategy_research": "BETA ONLY: causal confirmed pivot H1/H4, M15/M5 structure/volatility, M1/S1/S250 independent ignition/sweep/retest/NR compression, spread cost veto and one-position router; source documents BETA016 and BETA017; no new EA without human approval",
-    "research_ci": ".github/workflows/beta-prop-risk-policy-ci.yml"
+    "research_ci": ".github/workflows/beta-prop-risk-policy-ci.yml",
+    "entry_first_priority": {
+      "status": "OWNER_DIRECTIVE_DOCUMENTED_BETA018_NOT_NEW_STRATEGY_RESULT",
+      "path": "research/BETA_018_ENTRY_FIRST_R9_TEACHER_AND_BLIND_VALIDATION_PROTOCOL.md",
+      "scope": "BETA_ONLY",
+      "primary": "ENTRY: causal direction, timing, precision and recall, matched-candidate opportunities, absolute correct-entry count, after-cost markouts",
+      "secondary_current": "HOLD and EXIT: frozen experimental controls until owner explicitly promotes their priority",
+      "aspiration": "R9 SYNTH/OVERFIT offline teacher only, not real tick-executable truth",
+      "validation": "original Dukascopy ordered bid-ask quotes; teacher labels offline only, strictly completed historical feature inputs; same-feed comparisons",
+      "fairness": "report precision AND recall AND absolute winners/opportunity retention, identical clock cohorts; no tiny-trade filters counted as breakthrough",
+      "phases": "January discovery; February-July already previously consulted therefore NOT pristine OOS; August SEALED until owner expressly authorizes one blind run after parameter freeze",
+      "proposed_hierarchy": "H4/H1 confirmed structure; M15/M5 volatility/regime; M1/S15/S5 setups; S1/S250 ignition; tick quote fill & BETA015 risk",
+      "owner_transition": "Only explicit owner request to weight HOLD/EXIT more after ENTRY matures",
+      "risk_profile": "BETA_015_PROP_V1 remains unchanged, including fixed 0.01 lot, $100k reference and lifetime $90k floor",
+      "execution_status": "NO_NEW_BACKTEST_NO_MQL5_NO_CANDIDATE_PROMOTION"
+    }
   }
 }
