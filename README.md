@@ -61,7 +61,7 @@ Complete verified BETA 000–003 artifacts, scripts and evidence are in the [own
 
 ## BETA 010 — First formal ENTRY breakthrough
 
-- **[R09_BETA_001_ADAPTIVE_IGNITION_ENTRY](research/whitepapers/R09_BETA_001_ADAPTIVE_IGNITION_ENTRY.md)** is the first BETA result to clear the owner's category-specific >10% ENTRY gate across Jan–Jul on the same Dukascopy tick feed while Hold/Exit remain frozen: **+10.13% winning trades, +19.70% relative win rate, 16.15% net-loss/DD reduction, 14.96% gross-loss reduction** versus the feed-normalized R9 control.
+- **[R09_BETA_001_ADAPTIVE_IGNITION_ENTRY](research/whitepapers/R09_BETA_001_ADAPTIVE_IGNITION_ENTRY.md)** is the first BETA result to clear the owner's category-specific >10% ENTRY gate across Jan–Jul on the same Dukascopy tick feed while Hold/Exit remain frozen: **+5.78% winning trades, +14.98% relative win rate, 18.04% net-loss/DD reduction, 15.60% gross-loss reduction** after the BETA 011 0.01-lot commission correction versus the feed-normalized R9 control.
 - Mechanism: retain causal R9 completed-S1/M5 quality; require aligned 250ms/1s/5s ignition, reject stale observed-second momentum, and veto entries when absolute spread or spread-to-recent-range cost is too large. A nearby higher-volume parameterization also passed the >10% entry gate, and the primary retained >14% same-feed improvement under higher fee stress.
 - **Important:** candidate net remains negative. This is an ENTRY breakthrough, not a profitable-system or live-trading claim. No MQL5 has been written. Per BETA 003/006, owner approval is required before implementation and owner-run Coinexx M1 **Every tick based on real ticks** testing.
 - [Scorecard](research/checkpoints/R09_BETA_001_ADAPTIVE_IGNITION_ENTRY_SCORECARD.json) · [validation code](research/experiments/BETA_010_JAN_JUL_ADAPTIVE_ENTRY_FAMILY.py). August remains sealed.
@@ -70,3 +70,7 @@ Complete verified BETA 000–003 artifacts, scripts and evidence are in the [own
 
 - [Full seven-month lot-size and commission audit](research/BETA_011_LOT01_MONETARY_RECONCILIATION.md) and [durable monetary manifest](research/checkpoints/BETA_011_LOT01_AUDIT_MANIFEST.json): Jan–Jul P&L formulas explicitly apply **100 oz per 1 lot × 0.01 lots = 1 oz**, and all seven monthly original results match the frozen Python simulator under its **modeled** $0.20/0.01-lot roundtrip fee. The candidate remains **loss-making**. Actual Coinexx symbol contract/commission are not verified; the +10.13% winning-trade count claim falls to **+6.80%** if the fee is $0.07. The DD is realized-balance, not account-feasible equity DD.
 - [Reproducible full JSON, scripts and monthwise checkpoints](https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE) reside in BETA_RESEARCH Drive. No MQL5 build approved; August sealed.
+
+## BETA 011 — 0.01-lot accounting correction
+
+- [Accounting audit](research/BETA_011_LOT001_PNL_ACCOUNTING_CORRECTION.md): actual Coinexx R9 deals show **0.01 lot**, **$0.01 commission per deal / $0.02 roundtrip**, and $1 XAUUSD move = $1 price P&L at 0.01 lot. The prior Python run overcharged commission by 10x. Corrected candidate economics improve, but winning-count gain is **+5.78%**, not >10%.
