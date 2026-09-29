@@ -1,0 +1,86 @@
+{
+  "unit_id": "BETA_012_FUNDED_REPLAY_001LOT_FEE002_100K_CHECK__001",
+  "status": "DRIVE_AND_GITHUB_SOURCE_READBACK_VERIFIED",
+  "kind": "EXPLICIT_CAPITAL_ACCOUNTING_SCENARIO_NOT_BROKER_MT5_PARITY",
+  "owner_requested_volume_lots": 0.01,
+  "assumed_contract_oz_per_lot": 100,
+  "deposit_usd": 100000,
+  "commission_usd_per_closed_trade": 0.02,
+  "commission_evidence": "BETA_011_LOT001_PNL_ACCOUNTING_CORRECTION.md: R9 REAL historic ledger -0.01 entry, -0.01 exit at .01 lots",
+  "full_jan_jul_unfunded_reference": {
+    "candidate": {
+      "trades": 226696,
+      "wins": 61650,
+      "win_rate": 0.27195,
+      "net": -157216.35,
+      "gross_profit": 18776.18,
+      "gross_loss": -175992.53,
+      "realized_balance_dd": 157216.35
+    },
+    "control": {
+      "trades": 246404,
+      "wins": 58279,
+      "net": -191813.12
+    },
+    "cross_feed_broker_parity": false
+  },
+  "fed_100_to_1_scenario": {
+    "candidate": {
+      "trades": 135633,
+      "wins": 36832,
+      "net_usd": -99954.9,
+      "gross_profit_usd": 12591.55,
+      "gross_loss_usd": -112546.45,
+      "realized_balance_dd_usd": 99954.9,
+      "ending_balance_usd": 45.1,
+      "first_entry_blocked_utc": "2026-04-29T14:12:31.038Z"
+    },
+    "control": {
+      "trades": 113492,
+      "wins": 26679,
+      "net_usd": -99954.96,
+      "gross_profit_usd": 9230.85,
+      "gross_loss_usd": -109185.81,
+      "realized_balance_dd_usd": 99954.96,
+      "ending_balance_usd": 45.04,
+      "first_entry_blocked_utc": "2026-04-02T06:15:49.435Z"
+    }
+  },
+  "fed_500_to_1_scenario": {
+    "candidate": {
+      "trades": 135694,
+      "net_usd": -99991.77,
+      "ending_balance_usd": 8.23,
+      "first_entry_blocked_utc": "2026-04-29T14:38:53.042Z"
+    },
+    "control": {
+      "trades": 113560,
+      "net_usd": -99991.29,
+      "ending_balance_usd": 8.71,
+      "first_entry_blocked_utc": "2026-04-02T07:01:19.084Z"
+    }
+  },
+  "science_limits": [
+    "both $100k funded scenarios lose essentially all capital",
+    "5x leverage contrast scenario 100:1 and 500:1 unverified against owner Coinexx",
+    "realized balance DD only, tick-mark-to-market equity DD not computed",
+    "Jan-Apr quotes read; May-Jul not replayed after all funded scenarios stopped",
+    "no exact original R9 broker point spread filter on feed-normalized Python control",
+    "archived fee020 result superseded and doc flagged",
+    "BETA012 adds accounting checks not a new winning strategy",
+    "no MQL5 written"
+  ],
+  "github_report": "research/BETA_012_FUNDED_001LOT_FEE002_REAL_TICK_RECHECK.md",
+  "drive_report": "https://drive.google.com/file/d/1rSVSFh-o5wASG885Lldi0zksIcrVWnxP/view",
+  "drive_code": "https://drive.google.com/file/d/1Fimu57lNL_zdR9DkZu_DQNPanjxuueys/view",
+  "drive_output": "https://drive.google.com/file/d/1YjnUnatVru-iVMoJj7W_UedmdiOAB7yy/view",
+  "sha256": {
+    "report": "f25599136beca566c3cba056d4b9e32a8d583a42b446315c39ed0229109c33eb",
+    "code": "f9aaae73839bbe23b6526073e8fe578c604165e425826b8dbffcce7b5abae664",
+    "output": "f76ab56bc085db4e52a79dae5e51d7de41c8ffa8bd17823e1e5b75eaffaea25e"
+  },
+  "august_read": false,
+  "approved_beta_ea": null,
+  "owner_mql5_authorization": false,
+  "preserve_first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION"
+}
