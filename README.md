@@ -32,3 +32,7 @@ Complete verified BETA 000–003 artifacts, scripts and evidence are in the [own
 ## BETA 005 — Multi-specialist design hypothesis
 
 - [High-velocity, multi-structure architecture hypothesis](research/BETA_005_MULTI_SPECIALIST_ARCHITECTURE_HYPOTHESIS.md): complementary simple/complex specialists and causal regime routing are **hypotheses to falsify**, not approved profit claims. Preserve the existing BETA 005 source-integrity recovery unit and all BETA 004 scientific/owner gates.
+
+## BETA 006 — MT5 winner → next cumulative baseline
+
+- [Coinexx real-tick winner promotion protocol](research/BETA_006_MT5_WINNER_TO_CUMULATIVE_BASELINE_PROTOCOL.md): only after a causal Python winner, explicit authorization to code, owner-run MT5 **Every tick based on real ticks**, preregistered economically comparable Python/MT5 performance and risk, **and final affirmative owner acceptance** may a versioned candidate become the next cumulative BETA EA parent. Freeze prior approvals for rollback. No approved EA presently exists.
