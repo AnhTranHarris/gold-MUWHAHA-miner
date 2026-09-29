@@ -2,9 +2,9 @@
   "schema": "beta-research-status-v2",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "lineage": "INDEPENDENT_BETA",
-  "last_verified_durable_unit": "BETA_007_ENTRY_FIRST_RESEARCH_PASS__JAN02_2026__001",
-  "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FULL_MONTH_SOURCE_CRC_AND_FEATURE_AUDIT",
-  "last_recorded_milestone": "BETA_007_FIRST_PASS_RESEARCH_ONLY",
+  "last_verified_durable_unit": "BETA_009_JAN_32_ENTRY_SCENARIOS_QA_CORRECTED_001",
+  "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
+  "last_recorded_milestone": "BETA_009_32_NEGATIVE_JAN_ENTRY_SCENARIOS_AND_FULL_JAN_SOURCE_QA",
   "research_scope": [
     "ENTRY",
     "HOLD",
@@ -43,8 +43,8 @@
   "august": "SEALED",
   "approved_beta_ea": null,
   "approved_beta_mql5_builds": 0,
-  "first_completed_full_month_backtest": null,
-  "cache_certification": "NOT_ESTABLISHED__BETA_002_ONLY_100K_PER_MONTH_SMOKE",
+  "first_completed_full_month_backtest": "BETA_009_JAN_EXPLORATORY_SIMPLIFIED_R9_REFERENCE_AND_32_VARIANTS__NOT_REAL_COINEXX_PARITY",
+  "cache_certification": "JAN_2026_ORIGINAL_SOURCE_CRC_AND_UTC_FRAME_BUCKET_COUNTS_PASS__MATERIALIZED_17LAYER_FEATURE_PARITY_PENDING",
   "scientific_data_walls": "UNSPECIFIED_DO_NOT_TREAT_EXECUTION_SPANS_AS_FORWARD_SPLITS",
   "durable_execution_spans": [
     "JAN_MAR",
@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "BETA 008 R9 REAL/SYNTH baseline forensic entry source review saved; no candidate tested/approved; January full-month source/cache audit still incomplete.",
+  "current_status": "BETA009 Jan original source 9.135m quote CRC/grid identity verified; 2 preregistered waves of 16 variants each on original Bid/Ask ticks ALL negative net. No qualifying >10% owner gate. Jan 17-layer derived-feature cache parity pending, approved BETA EA null, August SEALED.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -104,6 +104,31 @@
       "outcomes": "NEGATIVE_ALL_TESTED_COHORTS_NO_PROMOTABLE_CANDIDATE",
       "full_month_cache_certified": false,
       "august_sealed": true
+    },
+    {
+      "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FULL_MONTH_SOURCE_CRC_AND_UTC_GRID_AUDIT",
+      "status": "VERIFIED_DURABLE",
+      "source_file_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "original_raw_quotes": 9135062,
+      "full_gzip_crc_verified": true,
+      "quote_monotonicity_verified": true,
+      "grid_identity_counts_17layers": true,
+      "materialized_feature_cache_certified": false,
+      "artifact_url": "https://drive.google.com/file/d/1U-R-Wbi_lqIE7wEVEqRMXiIPU7i70LEp/view"
+    },
+    {
+      "unit_id": "BETA_009_JAN_32_ENTRY_SCENARIOS_QA_CORRECTED_001",
+      "status": "VERIFIED_DURABLE",
+      "source_file_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "jan_scenarios": 32,
+      "jan_positive_net_scenarios": 0,
+      "owner_review_trigger": false,
+      "science_gate": "NEGATIVE_ALL_32_EXPLORATORY_CASES",
+      "full_january_audited": true,
+      "materialized_feature_cache_certified": false,
+      "evidence_manifest": "research/checkpoints/BETA_009_JAN_32_ENTRY_CASES_CORRECTED_DD.json",
+      "research_record": "research/BETA_009_JAN_ENTRY_SCALPING_RESEARCH_RECORD.md",
+      "research_document_drive_url": "https://drive.google.com/file/d/1YIJSnajiFDnPwPV4FNeZHY5y1pxBAI04/view"
     }
   ],
   "design_hypotheses": {
@@ -151,9 +176,35 @@
     "winning_trades": 102385,
     "synthetic_oracle_role": "retrospective capacity and missing component diagnostic ONLY",
     "synth_winning_trades": 191136,
-    "owner_study_goal": "Repair real-tick ENTRY quality and absolute winning-trade count first; freeze Hold/Exit for controlled isolation; preserve separate BETA cumulative approval gates"
+    "owner_study_goal": "Repair real-tick ENTRY quality and absolute winning-trade count first; freeze Hold/Exit for controlled isolation; preserve separate BETA cumulative approval gates",
+    "notes": "R9 REAL original Coinexx tester is historical research control; full January R9-like Dukascopy Python simplification IS NOT exact original broker EA. Mean observed Dukascopy spread ~$0.84/oz, point-size and execution different. Hold/Exit approximate frozen, no MQL5."
   },
-  "last_verified_research_document": "BETA_008_R9_REAL_SYNTH_ENTRY_FORENSIC_BASELINE_REVIEW__001",
-  "latest_research_record": "research/BETA_008_R9_REAL_VS_SYNTH_ENTRY_FAILURE_MAP.md",
-  "latest_research_record_drive": "https://drive.google.com/file/d/1bpG2a4gBiSSJ7hJYO7Od3RNszztGOLpE/view"
+  "last_verified_research_document": "BETA_009_JAN_32_ENTRY_SCENARIOS_QA_CORRECTED_001",
+  "latest_research_record": "research/BETA_009_JAN_ENTRY_SCALPING_RESEARCH_RECORD.md",
+  "latest_research_record_drive": "https://drive.google.com/file/d/1YIJSnajiFDnPwPV4FNeZHY5y1pxBAI04/view",
+  "last_scientific_campaign": {
+    "name": "BETA009 entry-first scalping 32-case January tick screen",
+    "status": "REJECTED_NO_VALID_WINNING_CANDIDATE",
+    "month_scanned": "2026-01",
+    "month_ticks": 9135062,
+    "cases": 32,
+    "positive_net_cases": 0,
+    "same_feed_reference": {
+      "trades": 32084,
+      "wins": 3430,
+      "net_usd": -28563.72,
+      "gross_loss_abs_usd": 29537.82,
+      "peak_to_trough_equity_dd_usd": 28564.61
+    },
+    "one_account_router": {
+      "trades": 64825,
+      "wins": 7554,
+      "win_count_gain_percent_vs_same_feed_r9_like": 120.23,
+      "net_usd": -55897.49,
+      "gross_loss_abs_usd": 57998.19,
+      "peak_to_trough_equity_dd_usd": 55899.08
+    },
+    "script_and_report_manifests": "research/checkpoints/BETA_009_JAN_32_ENTRY_CASES_CORRECTED_DD.json",
+    "august_sealed": true
+  }
 }
