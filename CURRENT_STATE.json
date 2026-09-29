@@ -2,9 +2,9 @@
   "schema": "beta-research-status-v2",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "lineage": "INDEPENDENT_BETA",
-  "last_verified_durable_unit": "BETA_011_LOT001_PNL_AUDIT__001",
+  "last_verified_durable_unit": "BETA_012_FUNDED_REPLAY_001LOT_FEE002_100K_CHECK__001",
   "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
-  "last_recorded_milestone": "BETA_011_001LOT_ACCOUNTING_CORRECTION",
+  "last_recorded_milestone": "BETA_012_EXPLICIT_001LOT_100K_FUNDED_MARGIN_REPLAY_FEE002",
   "research_scope": [
     "ENTRY",
     "HOLD",
@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "BETA 011 corrected 0.01-lot accounting: actual Coinexx R9 commission is $0.01/deal ($0.02 roundtrip), not $0.20. R09_BETA_001 Jan-Jul corrected net -157,216.35, gross loss -175,992.53, DD 157,216.35; win count +5.78%, relative win rate +14.98%, net-loss/DD reduction 18.04%, gross-loss reduction 15.60%. No MQL5 coded; owner review remains pending.",
+  "current_status": "BETA012 validates explicit $100k initial capital/0.01 lots and R9 historic $0.02 fees: candidate stops before May in both illustrative 100:1/500:1 leverage scenarios after losing nearly $100k. Corrected Jan–Jul unlimited-credit -$157,216.35 and 61,650 winners remain RESEARCH-ONLY, NOT funded equity PnL/DD. Candidate entry precision remains interesting but broker-equivalent promotion suspended pending contract/fee/spread/margin/true equity DD. No MQL5 coded, August sealed.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -186,6 +186,19 @@
       "drive_report": "https://drive.google.com/file/d/1HUBm_qR_-HVVDUojfdIbb3rEcP7Ybbxs/view",
       "drive_json": "https://drive.google.com/file/d/10XXarxKgxREPObec7GufrNivX0Ej5cVP/view",
       "august_sealed": true
+    },
+    {
+      "unit_id": "BETA_012_FUNDED_REPLAY_001LOT_FEE002_100K_CHECK__001",
+      "status": "VERIFIED_DURABLE_ACCOUNTING_SCENARIO_NOT_MT5_BROKER_CERTIFIED",
+      "evidence_record": "research/BETA_012_FUNDED_001LOT_FEE002_REAL_TICK_RECHECK.md",
+      "github_manifest": "research/checkpoints/BETA_012_FUNDED_001LOT_FEE002_100K_CHECKPOINT.json",
+      "drive_record": "https://drive.google.com/file/d/1rSVSFh-o5wASG885Lldi0zksIcrVWnxP/view",
+      "drive_code": "https://drive.google.com/file/d/1Fimu57lNL_zdR9DkZu_DQNPanjxuueys/view",
+      "drive_output": "https://drive.google.com/file/d/1YjnUnatVru-iVMoJj7W_UedmdiOAB7yy/view",
+      "candidate_capital_exhaustion_100_to_1": "2026-04-29T14:12:31.038Z",
+      "candidate_capital_exhaustion_500_to_1": "2026-04-29T14:38:53.042Z",
+      "august_sealed": true,
+      "approved_beta_ea": false
     }
   ],
   "design_hypotheses": {
@@ -217,7 +230,7 @@
     "title": "BETA RESEARCH JOURNAL — Conversation History, Decisions & Durable Continuity (Checkpoint 006)",
     "url": "https://docs.google.com/document/d/1_zuLcHwsPnul8XtfLLlrK9-Mogk120qk0xWdlVWAzPQ/edit",
     "folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
-    "documented_milestones": "BETA_000 through BETA_010",
+    "documented_milestones": "BETA_000 through BETA_012",
     "recovery_priority": "Read living journal and LIVE beta/CURRENT_STATE.json. R09_BETA_001 is owner-review pending; do not re-run completed Jan-Jul identical evidence. If owner authorizes, implement exact MQL5 candidate; otherwise continue entry research from this baseline while Hold/Exit stay frozen.",
     "note": "This journal checkpoint is documentation only, not full-month cache certification, profitable candidate, EA coding or approved baseline."
   },
@@ -237,8 +250,8 @@
     "notes": "R9 REAL original Coinexx tester is historical research control; full January R9-like Dukascopy Python simplification IS NOT exact original broker EA. Mean observed Dukascopy spread ~$0.84/oz, point-size and execution different. Hold/Exit approximate frozen, no MQL5."
   },
   "last_verified_research_document": "BETA_011_LOT001_PNL_AUDIT__001",
-  "latest_research_record": "research/BETA_011_LOT001_PNL_ACCOUNTING_CORRECTION.md",
-  "latest_research_record_drive": "https://drive.google.com/file/d/1lY1JPsRPK0cC1Ji84Dhi5R0Ns1CwTFm9/view",
+  "latest_research_record": "research/BETA_012_FUNDED_001LOT_FEE002_REAL_TICK_RECHECK.md",
+  "latest_research_record_drive": "https://drive.google.com/file/d/1rSVSFh-o5wASG885Lldi0zksIcrVWnxP/view",
   "last_scientific_campaign": {
     "name": "BETA011 0.01-lot PnL accounting audit",
     "status": "CORRECTED_COMMISSION_10X_OVERCHARGE_FOUND",
@@ -259,9 +272,9 @@
   },
   "owner_review_pending_candidate": {
     "id": "R09_BETA_001_ADAPTIVE_IGNITION_ENTRY",
-    "gate": "ENTRY_ACCURACY_AND_ECONOMIC_IMPROVEMENT_GT10; ABSOLUTE_WIN_COUNT_GT10_NOT_MET_AFTER_BETA011_CORRECTION",
+    "gate": "ON_HOLD_FUNDED_100K_ACCOUNTING_PARITY_REVALIDATION",
     "approved": false,
-    "requested_next_action": "Owner may keep candidate for further entry research or authorize MT5 implementation; no code before explicit approval."
+    "requested_next_action": "Rebuild Jan-funded source-accurate R9 control and candidate with broker spread/lot/tick/margin/slippage verified; owner does not automatically approve MT5 coding."
   },
   "monetary_audit_001": {
     "status": "FULL_JAN_JUL_ARITHMETIC_VERIFIED_CONDITIONAL_ON_COINEXX_SPEC",
@@ -308,5 +321,27 @@
       "win_count_change_pct": 5.784244753684864,
       "win_rate_change_pct": 14.980683577508923
     }
+  },
+  "capital_accounting_status": {
+    "baseline_start_balance_usd": 100000,
+    "lots_per_entry": 0.01,
+    "assumed_contract_troy_ounces_per_lot": 100,
+    "actual_r9_demo_roundtrip_commission_001_lot_usd": 0.02,
+    "status": "UNLIMITED_SERIES_REPRICED_CORRECTLY_BUT_FUNDED_ACCOUNT_REPLAY_STOPS_BEFORE_MAY_NOT_PROMOTABLE",
+    "funded_100_to_1_candidate": {
+      "ending_balance_usd": 45.1,
+      "margin_block_utc": "2026-04-29T14:12:31.038Z",
+      "net_usd": -99954.9,
+      "trade_count": 135633
+    },
+    "funded_500_to_1_candidate": {
+      "ending_balance_usd": 8.23,
+      "margin_block_utc": "2026-04-29T14:38:53.042Z",
+      "net_usd": -99991.77,
+      "trade_count": 135694
+    },
+    "sampled_broker_ledger_commission_source": "research/BETA_011_LOT001_PNL_ACCOUNTING_CORRECTION.md",
+    "scientific_limits": "illustrative leverage/stopout, historical R9 point-spread and Coinexx intratick fills not reproduced; mark-to-market equity DD and actual broker stopout remain unknown",
+    "owner_decision": "NO_MQL5_OWNER_AUTHORIZATION; retain entry research mechanism but suspend economic promotion claim"
   }
 }
