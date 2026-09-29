@@ -74,3 +74,9 @@ Complete verified BETA 000–003 artifacts, scripts and evidence are in the [own
 ## BETA 011 — 0.01-lot accounting correction
 
 - [Accounting audit](research/BETA_011_LOT001_PNL_ACCOUNTING_CORRECTION.md): actual Coinexx R9 deals show **0.01 lot**, **$0.01 commission per deal / $0.02 roundtrip**, and $1 XAUUSD move = $1 price P&L at 0.01 lot. The prior Python run overcharged commission by 10x. Corrected candidate economics improve, but winning-count gain is **+5.78%**, not >10%.
+
+## BETA 012 — $100k / 0.01-lot funded-account correction
+
+- [BETA 012 funded replay at historically evidenced $0.02/0.01-lot roundtrip fee](research/BETA_012_FUNDED_001LOT_FEE002_REAL_TICK_RECHECK.md) and [readback-verified checkpoint](research/checkpoints/BETA_012_FUNDED_001LOT_FEE002_100K_CHECKPOINT.json).
+- The [BETA 011 corrected fee evidence](research/BETA_011_LOT001_PNL_ACCOUNTING_CORRECTION.md) replaces the old $0.20/trade assumption with historical R9 REAL deal-ledger $0.01/side. Corrected unlimited-credit Jan–Jul candidate net −$157,216.35, GL −$175,992.53, closed-balance DD $157,216.35 and 61,650 winners are **not feasible equity/MT5 results on a $100k funded account**.
+- Under explicitly funded 100:1 / 500:1 hypothetical leverage and stop-out checks, **both the feed-normalized R9 control and candidate run out of entry margin in April**. The old formal >10% absolute winner count is withdrawn (+5.78% at $0.02 fee); the entry design is retained for study and broker-parity revalidation, not EA promotion. No MQL5 authorization/approval. August sealed.
