@@ -2,9 +2,9 @@
   "schema": "beta-research-status-v2",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "lineage": "INDEPENDENT_BETA",
-  "last_verified_durable_unit": "BETA_025_CAUSAL_DUKASCOPY_R9_ENTRY_RETEST_JANJUL_57527562_TICKS",
+  "last_verified_durable_unit": "BETA_026_COMPLEX_R9_ENTRY_ARCHETYPES_AND_FULL_TEACHER_SAMPLE_AUDIT",
   "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
-  "last_recorded_milestone": "BETA025_R9_TEACHER_ENTRY_ALIGNMENT_AND_EXECUTABLE_15S_PRECISION_FRONTIER_2026_01_07",
+  "last_recorded_milestone": "BETA026_4_FULL_SOURCE_DAYS_UNPAIRED_CORRELATION_FALSIFIES_SELECTED_TEACHER_OVERLAP_OVERCLAIM",
   "research_scope": [
     "ENTRY",
     "HOLD",
@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "BETA025 re-executed 57,527,562 original Dukascopy ordered Jan-Jul XAUUSD Bid/Ask ticks, reconstructed causal completed S1/M5 ATR, and scored all entry candidates against corrected BETA024 original Coinexx REAL/SYNTH selected historical teacher-clock bridge (165,630 paired source entries). S1 0.60 plus midpoint ambiguous-bracket routing raises selected-teacher +/-5sec same-side matches 32,957 to 34,394 (+1,437, +4.36% relative) across all 7 months, but 15sec executable after-cost positive-entry fraction slightly declines from 19.034% (control) to 18.985%, despite more correct events and more trades. 250ms weak-S1 micro-reversal balances selected teacher count 33,279 with 19.128% positive entries; 500ms quote-pressure correction yields 19.272% positives but teacher matches fall to 30,779. ALL mean 15s markouts remain NEGATIVE. This is entry-only first-cycle spread1.20 nonparity research, NOT original full 236647 REAL/219342 SYNTH trade population/MT5 fill parity, BETA015 funded replay, or MQL5 promotion. 654 QA PASS. BETA005 17-layer materialized cache certification incomplete, August SEALED, no approved BETA EA. Next: causal strategy research requiring larger true precision and teacher-alignment gain without count elimination; do not optimize hold/exit without owner request.",
+  "current_status": "BETA026 causal entry exploration: 57,527,562 original Dukascopy Jan-Jul tick quotes, 242 Jan-Feb structural sweep/MSS, timed FSM, intraminute reset, shallow-tree variant configurations, March-July previously inspected historical diagnostics, 2,275 QA PASS. Original R9 REAL/SYNTH selected 165,630 paired source entries have median |time difference| 10.115s and low efficiency correlation 0.0236. Selected same-side source pair SYNTH matches for baseline vs 2-event source-aware reset 34,394→41,670 (+7,276) overcounts real teacher benefit: independent FULL ORIGINAL R9 unpaired 4-day source audit (Jan02 Feb20 May20 Jul20) all SYNTH 5,105 and REAL 6,192 events yields SYNTH selected side-time matches only 1,022→1,102 (+80) while REAL 2,976→3,855 (+879). Extra signals reproduce REAL's entry churn more than SYNTH high-quality timing; no validated SYNTH entry breakthrough. 2-event scanner signals are opportunity markers not single-position trades. All mean 15s Bid/Ask-aftercost markouts negative. Full 149-day original all-entry source teacher audit, exact original R9 broker fill/rearm parity, BETA015 account guard, BETA005 17-layer cache parity INCOMPLETE. August SEALED, no MQL5 authorization, no approved BETA EA.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -368,6 +368,39 @@
       "mql5_authorized": false,
       "research_doc": "research/BETA_025_CAUSAL_DUKASCOPY_R9_ENTRY_AND_TEACHER_ALIGNMENT_RETEST.md",
       "local_repro_bundle_sha256": "ca65b8f571e338dcd9b101b250ee2ecd5df50f78f96c52bcd393283afb497f70"
+    },
+    {
+      "unit_id": "BETA_026_COMPLEX_R9_ENTRY_ARCHETYPES_AND_FULL_TEACHER_SAMPLE_AUDIT",
+      "status": "COMPLETED_DIAGNOSTIC_NO_PROMOTION",
+      "source_ticks": 57527562,
+      "JanJul_only": true,
+      "assessed_configurations": 242,
+      "paired_source_research_events": 165630,
+      "selected_same_side_teacher_matches_control": 34394,
+      "selected_same_side_teacher_matches_extra_events": 41670,
+      "full_original_source_sample_days": [
+        "2026-01-02",
+        "2026-02-20",
+        "2026-05-20",
+        "2026-07-20"
+      ],
+      "original_synth_full_sample_entries": 5105,
+      "original_real_full_sample_entries": 6192,
+      "all_source_synth_teacher_matches_first": 1022,
+      "all_source_synth_teacher_matches_two_events": 1102,
+      "all_source_real_entry_matches_first": 2976,
+      "all_source_real_entry_matches_two_events": 3855,
+      "extra_events_not_real_executable_oneposition_trades": true,
+      "all_mean_markouts_negative": true,
+      "full_149day_all_entry_teacher_audit_complete": false,
+      "exact_R9_rearm_fill_parity": false,
+      "BETA015_funded_replay": false,
+      "BETA005_layer_cache_parity": false,
+      "QA_assertions_passed": 2275,
+      "August": "SEALED",
+      "mql5_authorized": false,
+      "bundle_sha256": "fb95c0f3b7396a35ae322ff061c26dfe0e697ba70f626e7ebfd44ff51fb730e2",
+      "report": "research/BETA_026_COMPLEX_R9_ENTRY_ARCHETYPES_AND_FULL_TEACHER_SAMPLE_AUDIT.md"
     }
   ],
   "design_hypotheses": {
@@ -420,8 +453,8 @@
     "owner_study_goal": "Repair real-tick ENTRY quality and absolute winning-trade count first; freeze Hold/Exit for controlled isolation; preserve separate BETA cumulative approval gates",
     "notes": "R9 REAL original Coinexx tester is historical research control; full January R9-like Dukascopy Python simplification IS NOT exact original broker EA. Mean observed Dukascopy spread ~$0.84/oz, point-size and execution different. Hold/Exit approximate frozen, no MQL5."
   },
-  "last_verified_research_document": "research/BETA_025_CAUSAL_DUKASCOPY_R9_ENTRY_AND_TEACHER_ALIGNMENT_RETEST.md",
-  "latest_research_record": "research/BETA_025_CAUSAL_DUKASCOPY_R9_ENTRY_AND_TEACHER_ALIGNMENT_RETEST.md",
+  "last_verified_research_document": "research/BETA_026_COMPLEX_R9_ENTRY_ARCHETYPES_AND_FULL_TEACHER_SAMPLE_AUDIT.md",
+  "latest_research_record": "research/BETA_026_COMPLEX_R9_ENTRY_ARCHETYPES_AND_FULL_TEACHER_SAMPLE_AUDIT.md",
   "latest_research_record_drive": "https://drive.google.com/file/d/1xLx4uJK8pSpRez68vS2k59--cWgiF96B/view",
   "last_scientific_campaign": {
     "name": "BETA017 completed-bar M5/H1 regime exploratory screen",
@@ -756,5 +789,15 @@
     "QA_assertions_passed": 654,
     "August": "SEALED",
     "approved_beta_ea": false
+  },
+  "entry_research_BETA026": {
+    "status": "DIAGNOSTIC_NOT_PROMOTED",
+    "full_source_teacher_unpaired_days": 4,
+    "unpaired_149_day_all_teacher_parity": false,
+    "first_cycle_teacher_proxy_bias": "CORRECTED",
+    "pending_BETA005_feature_parity": true,
+    "no_risk_funded_test": true,
+    "august": "SEALED",
+    "source": "research/BETA_026_COMPLEX_R9_ENTRY_ARCHETYPES_AND_FULL_TEACHER_SAMPLE_AUDIT.md"
   }
 }
