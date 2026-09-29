@@ -2,9 +2,9 @@
   "schema": "beta-research-status-v2",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "lineage": "INDEPENDENT_BETA",
-  "last_verified_durable_unit": "BETA_014_PROP_001LOT_FUNDED_RERUN__JAN2026_TERMINAL_JANJUL_ZERO_FUNDING",
+  "last_verified_durable_unit": "BETA_017_COMPLETED_M5_H1_JAN_2026_REGIME_SCREEN_AND_QA_7",
   "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
-  "last_recorded_milestone": "BETA_015_PROP_POLICY_CODIFIED_AND_016_MTF_REGIME_HYPOTHESES_REGISTERED__NO_NEW_STRATEGY_BACKTEST",
+  "last_recorded_milestone": "BETA_017_JAN_REGIME_FILTER_EXPLORATORY_SCREEN_NEGATIVE_NET_ALL_TESTS",
   "research_scope": [
     "ENTRY",
     "HOLD",
@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "BETA015 owner-required prop-house risk config and Python guard with 30 passing policy/gate unit tests with broker-session default denied; BETA016 public/reconstructible multi-timeframe structure and seven independent entry hypotheses documented. BETA014 last verified MARKET backtest still terminates both control/candidate under $90k overall floor in January. No new BETA016 strategy backtest, no newly approved EA, no owner-authorized MQL5. August SEALED.",
+  "current_status": "BETA017 January original Dukascopy in-sample completed-M5/H1 regime filter exploration: five independently simulated entry filters all lose money; unfiltered R09_BETA_001 breaches 90k Jan21; filtered variants stay above 90k through Jan30 but suppress many trades and absolute winners. NOT >10% entry winner count/after-cost profit; BETA015 owner-fixed guard plus run manifest mandatory for next promotable funded experiment. Zero MQL5 approved, August SEALED.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -255,6 +255,67 @@
       "risk_profile_applied": "BETA 013 initial house profile excluding unevaluated news and broker-specific trading-session parity",
       "august_sealed": true,
       "approved_beta_ea": false
+    },
+    {
+      "unit_id": "BETA_017_COMPLETED_M5_H1_JAN_2026_REGIME_SCREEN_AND_QA_7",
+      "status": "JAN_2026_EXPLORATORY_REGIME_FILTERS_NEGATIVE_NET_ALL__NO_PROMOTION",
+      "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "ticks": 9135062,
+      "controls": {
+        "initial_usd": 100000,
+        "lots": 0.01,
+        "roundtrip_fee_usd": 0.02,
+        "equity_floor_usd": 90000,
+        "account_count_per_variant": 1
+      },
+      "comparison_warning": "Baseline terminates Jan21 while filtered runs continue through Jan30; different horizons and reduced trading activity invalidate simple winning-count/NET winner interpretation.",
+      "outcomes": {
+        "BETA001": {
+          "trades": 14719,
+          "wins": 3876,
+          "net": -10000.58,
+          "terminal": true
+        },
+        "m5_eff_ge045": {
+          "trades": 12501,
+          "wins": 3444,
+          "net": -8353.83,
+          "terminal": false
+        },
+        "m5_eff_ge035_volratio_ge095": {
+          "trades": 10440,
+          "wins": 2867,
+          "net": -7133.91,
+          "terminal": false
+        },
+        "m5_compression_volratio_le080": {
+          "trades": 5208,
+          "wins": 1494,
+          "net": -3304.99,
+          "terminal": false
+        },
+        "h1_last_3_closed_direction_and_m5_eff_ge035": {
+          "trades": 8017,
+          "wins": 2205,
+          "net": -5398.6,
+          "terminal": false
+        },
+        "m5_expansion_volratio_ge110": {
+          "trades": 13257,
+          "wins": 3567,
+          "net": -9249.46,
+          "terminal": false
+        }
+      },
+      "tests_passed": 7,
+      "tests_note": "7 independence/unit checks including BETA014 bit-exact monetary baseline and past closed-bar prefix invariance; no BETA015 guard object in this in-sample screen",
+      "sources": "research/BETA_017_CAUSAL_REGIME_JAN_SCREEN_AND_SOURCE_RESEARCH.md",
+      "code": "research/experiments/BETA_017_JAN_REGIME_SCREEN.py",
+      "results": "research/checkpoints/BETA_017_JAN_REGIME_SCREEN.json",
+      "qa": "research/qa/BETA_017_JAN_REGIME_SCREEN_TESTS.py",
+      "august_sealed": true,
+      "promoted": false,
+      "mql5_authorization": false
     }
   ],
   "design_hypotheses": {
@@ -286,7 +347,7 @@
     "title": "BETA RESEARCH JOURNAL — Conversation History, Decisions & Durable Continuity (Checkpoint 006)",
     "url": "https://docs.google.com/document/d/1_zuLcHwsPnul8XtfLLlrK9-Mogk120qk0xWdlVWAzPQ/edit",
     "folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
-    "documented_milestones": "BETA_000 through BETA_016",
+    "documented_milestones": "BETA_000 through BETA_017 (BETA017 IN-SAMPLE research only; neither approved EA nor completed science cache)",
     "recovery_priority": "BETA014 is last tick-strategy proof; BETA015 risk module compiled + 29 tests but NOT integrated into legacy JIT/MQL5; BETA016 future entry-regime prereg only. Keep first_incomplete_scientific_unit and MQL5 owner gates unchanged. Resume 17-layer parity or implement causally timestamped entry features, first January tick tests, then Jan-Jul if qualified; August SEALED.",
     "note": "This journal checkpoint is documentation only, not full-month cache certification, profitable candidate, EA coding or approved baseline."
   },
@@ -305,19 +366,18 @@
     "owner_study_goal": "Repair real-tick ENTRY quality and absolute winning-trade count first; freeze Hold/Exit for controlled isolation; preserve separate BETA cumulative approval gates",
     "notes": "R9 REAL original Coinexx tester is historical research control; full January R9-like Dukascopy Python simplification IS NOT exact original broker EA. Mean observed Dukascopy spread ~$0.84/oz, point-size and execution different. Hold/Exit approximate frozen, no MQL5."
   },
-  "last_verified_research_document": "BETA_014_PROP_001LOT_FUNDED_RERUN__JAN2026_TERMINAL_JANJUL_ZERO_FUNDING",
-  "latest_research_record": "research/BETA_016_REPRODUCIBLE_MTF_REGIME_AND_SPECIALIST_RESEARCH.md",
-  "latest_research_record_drive": "https://drive.google.com/file/d/1QIwXM_fKzKTok1kwyjWzWBVNQ_05S0qq/view",
+  "last_verified_research_document": "research/BETA_017_CAUSAL_REGIME_JAN_SCREEN_AND_SOURCE_RESEARCH.md",
+  "latest_research_record": "research/BETA_017_CAUSAL_REGIME_JAN_SCREEN_AND_SOURCE_RESEARCH.md",
+  "latest_research_record_drive": "https://drive.google.com/file/d/1xLx4uJK8pSpRez68vS2k59--cWgiF96B/view",
   "last_scientific_campaign": {
-    "name": "BETA014 funded prop-house risk overlay of R9 feed-normalized and R09_BETA_001 entry",
-    "status": "BOTH_TERMINAL_EQUITY_FLOOR_FAILED_IN_JANUARY",
-    "month_scanned": "2026-01",
-    "jan_ticks": 9135062,
-    "evidence": "research/BETA_014_PROP_RISK_REPLAY_REPORT.md",
-    "zero_additional_funded_trades_after_january": true,
-    "control_terminated": "2026-01-14T23:03:37.369Z",
-    "candidate_terminated": "2026-01-21T23:24:08.421Z",
-    "candidate_mql5_written": false,
+    "name": "BETA017 completed-bar M5/H1 regime exploratory screen",
+    "status": "ALL_VARIANTS_NEGATIVE_NET_NO_PROMOTABLE_BREAKTHROUGH",
+    "source_month": "2026-01",
+    "source_ticks": 9135062,
+    "source": "research/BETA_017_CAUSAL_REGIME_JAN_SCREEN_AND_SOURCE_RESEARCH.md",
+    "funded_survival_full_JanJul_unverified": true,
+    "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
+    "policy_integration": "BETA014 governor equivalent, BETA015 guard object not wired in BETA017",
     "august_sealed": true
   },
   "owner_review_pending_candidate": null,
@@ -476,6 +536,9 @@
       "candidate_profitability_verified": false,
       "approved_candidate": false,
       "policy_guard_test_count": 30
-    }
+    },
+    "owner_policy": "BETA015 V1 owner-locked prop-style $100k/.01lot/4k daily soft/5k daily hard/90k lifetime; modify only on explicit owner request with version bump and retest",
+    "future_strategy_research": "BETA ONLY: causal confirmed pivot H1/H4, M15/M5 structure/volatility, M1/S1/S250 independent ignition/sweep/retest/NR compression, spread cost veto and one-position router; source documents BETA016 and BETA017; no new EA without human approval",
+    "research_ci": ".github/workflows/beta-prop-risk-policy-ci.yml"
   }
 }
