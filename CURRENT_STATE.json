@@ -2,9 +2,9 @@
   "schema": "beta-research-status-v2",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "lineage": "INDEPENDENT_BETA",
-  "last_verified_durable_unit": "BETA_034_V8_ORDER_STATE_CLEANROOM_SOURCE_AND_DUKA_SPREAD_FEASIBILITY_JAN17P5",
+  "last_verified_durable_unit": "BETA_035_GH8_CLEANROOM_V8_OCO_REARM_R9_REAL_VS_SYNTH_CROSSFEED_81QA",
   "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
-  "last_recorded_milestone": "BETA034_V8_ORIGINAL_OPPOSITE_BOUNDARY_REARM_CONFIRMED_SPREAD_FEASIBILITY_OBSTACLE_35_CASES_NO_PROMOTION",
+  "last_recorded_milestone": "BETA035_SAME_V8_STOP_OCO_REARM_RULE_REAL_MINUS539_SYNTH_PLUS922_JAN02_NO_PROMOTION",
   "research_scope": [
     "ENTRY",
     "HOLD",
@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "BETA034 owner V8 original MT5 forensic source rediscovered in existing historical read-only branch carson/v8-cleanroom-baseline docs/V8_RECONSTRUCTION.md: high-confidence M1 $0.50 fixed 2-stop band, OCO, $0.50 initial SL, $0.20 trailing, after exit only opposite ORIGINAL same-minute level rearm, new minute fresh bracket. Third-party M15/H1 oscillator, news, grid claims contradictory/unverified. Original Dukascopy Jan1-Jan18 noon 4,205,709 ordered Bid/Ask ticks, 14,174 BETA033 source origins: median source spread $0.687, only 193/14,174 <= V8 $0.50 bracket. Original R9 Coinexx Jan2 REAL 1525 entries median spread $0.19, SYNTH 1083 median $0.18. Existing BETA033 13395 closed positions -$10375.738 decomposed $-490.6965 midpath edge -$9617.1415 observed spread -$267.9 assumed commission; spread 92.69% abs net but pre-cost negative. 20 state-aware lifecycle variations best PRIORITY_TRAIL_3 net -$10247.41, improvement 1.237%, only 74.7% incumbent-winner event preservation; ZERO >10, zero >20. Separate 15 independent literal/stop-safe original-M1 OCO/opposite-rearm approximations all negative; original $.50 pending two-stop band infeasible with most original Duka ask-bid, literal only 43 closes due 14956 invalid minute brackets; adaptive band plus SL changed strategy and lost money. 222 independent bounded QA PASS. Jan–Jul NOT expanded because no initial strong candidate. This is independent beta research only, NOT actual original V8 source, NOT MQL5 EA, NOT BETA015 funded, original BETA005 full17 feature parity open, August SEALED.",
+  "current_status": "BETA035 user V8 cleanroom source forensic + independent Jan2 R9 REAL vs generated SYNTH cross-quote reconstruction after BETA034 Jan17.5d five-family lifecycle + five-family V8 OCO/rearm screen. Preserved owner-supplied V8 high-confidence order flow from carson/v8-cleanroom-baseline, exact M1 50 Hunter pip/$0.50 old stop-band, $.50 original stop, $.20 trailing and opposite original-level same-minute only rearm; unknowable hidden indicators, center, activation/news/session left unverified. Jan1–Jan18 12UTC 4,205,709 original Dukascopy ticks BETA034 20 lifecycle +15 V8 order FSM all after-cost negative, 0 >10%, 222QA. Median at E060 14,174 source Dukascopy entry events observed Ask-Bid $0.687; only 193 entries <= $.50, literal V8 two-sided simultaneous pending bracket invalid in most minutes. Original R9 Coinexx REAL Jan02 341,569 ticklogger quotes vs SYNTH 330,217. BETA035 replay same literal simple V8/OCO/rearm/trailing logic on independently preserved quote streams: REAL 2662 closes, 960 wins, net -$539.42; SYNTH 1693 closes, 1186 wins, net +$921.62. All five parallel analogous settings negative REAL and positive SYNTH, confirming modeled quote-path sensitivity. THIS IS NOT REAL V8 EXE OR ORIGINAL R9 TRACE PARITY (source R9 actual entry events REAL1525,SYNTH1083). No BETA015 funded, no source-authorized .mq5, August SEALED; BETA005 17-layer feature-parity incomplete. Original full 17.5day Coinexx unselected teacher logs not all locally available. Next scientific unit BETA036 paired actual original order event-state attribution and structural M1 owner FSM with conditional hold/exits, genuine existing feed quotes, no oracle lookahead.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -677,6 +677,60 @@
       "report": "research/BETA_034_V8_OWNER_FINGERPRINT_SPREAD_OBSTACLE_AND_MODULAR_SCREEN.md",
       "bundle_sha256": "07edede0fa62e0bcf468e9fa6bce7291f23bc4fe5bb2f79c630f163e55a67e01",
       "august": "SEALED"
+    },
+    {
+      "unit_id": "BETA_035_GH8_CLEANROOM_V8_OCO_REARM_R9_REAL_VS_SYNTH_CROSSFEED_81QA",
+      "status": "COMPLETED_BOUNDED_MULTISOURCE_DIAGNOSTIC_NO_PROMOTION",
+      "historical_V8_cleanroom_doc": "carson/v8-cleanroom-baseline/docs/V8_RECONSTRUCTION.md",
+      "historical_V8_cleanroom_doc_blob": "18a4a429616bdfd867cb05de53035c756a5083c0",
+      "historical_V8_reconstructed_source": "carson/v8-cleanroom-baseline/Experts/GoldMuwahahaMiner_V8_Baseline.mq5",
+      "historical_GH8_formula_status": "ORDER_STATE_OBSERVED__HIDDEN_DIRECTIONAL_FILTERS_UNKNOWN",
+      "initial_diagnosis_BETA034": {
+        "window_UTC": "2026-01-01T00:00Z–2026-01-18T12:00Z",
+        "original_DUKA_ticks": 4205709,
+        "source_original_E060_events": 14174,
+        "median_source_spread_usd": 0.687,
+        "events_with_source_spread_LE_050": 193,
+        "state_aware_lifecycle_cases": 20,
+        "literal_v8_bracket_cases": 15,
+        "passing_realized_net_gate_gt10": 0,
+        "qa_passed": 222
+      },
+      "one_day_R9_original_ticker": {
+        "date": "2026-01-02",
+        "REAL_tick_rows": 341569,
+        "SYNTH_tick_rows": 330217,
+        "REAL_source_sha256": "6bb8d01f928e5a06f864b87c274f2916c3a6554a2352208191830d685e28655d",
+        "SYNTH_source_sha256": "8d1d3bb796686b284b1b6136f7fbd22db270b2f5229268c010a68ab6d885b2c7",
+        "original_R9_log_entry_events_REAL": 1525,
+        "original_R9_log_entry_events_SYNTH": 1083
+      },
+      "crossfeed_V8_OCO_original_param_approx": {
+        "source_type": "INDEPENDENT_MQL5_STYLE_FSM_OBSERVED_QUOTE_BACKTEST_NOT_EXACT_ORIGINAL_EA",
+        "REAL_closed": 2662,
+        "REAL_winners": 960,
+        "REAL_net_usd": -539.42,
+        "SYNTH_closed": 1693,
+        "SYNTH_winners": 1186,
+        "SYNTH_net_usd": 921.62,
+        "comparison_count": 5,
+        "REAL_all_negative": true,
+        "SYNTH_all_positive": true,
+        "beta035_qa_pass": 81
+      },
+      "research_document": "research/BETA_035_GOLD_HUNTER_V8_ORDER_STATE_AND_REAL_SYNTH_FORENSIC.md",
+      "self_contained_replay_script_sha256": "c7adf0e8f0e7d53c6e9b2e0f1a356310a4c595030d88ccbebd3c17fb0f3c5c1c",
+      "full_report_sha256": "c38dafccab2bf6efb349a3bab7ecce111168281cc9b78d0f9ff9876fb605ad25",
+      "full_repro_bundle_name": "BETA035_GOLD_HUNTER_R9_FORENSIC_REPRO_BUNDLE.zip",
+      "full_repro_bundle_sha256": "1018f42fcaa7555d94b4f7a0ee3bb7828cbb1242238d11bf9616fae97d1b3c3c",
+      "requirements_pending": [
+        "BETA005 17-layer cache feature parity",
+        "full original R9 log population for Jan 17.5day",
+        "BETA015 100k funded risk replay",
+        "strict >10% initial Jan 17.5d source-economics criterion",
+        "authorized MQL5 compile + Coinexx tester user report"
+      ],
+      "August": "SEALED"
     }
   ],
   "design_hypotheses": {
@@ -729,8 +783,8 @@
     "owner_study_goal": "Repair real-tick ENTRY quality and absolute winning-trade count first; freeze Hold/Exit for controlled isolation; preserve separate BETA cumulative approval gates",
     "notes": "R9 REAL original Coinexx tester is historical research control; full January R9-like Dukascopy Python simplification IS NOT exact original broker EA. Mean observed Dukascopy spread ~$0.84/oz, point-size and execution different. Hold/Exit approximate frozen, no MQL5."
   },
-  "last_verified_research_document": "research/BETA_034_V8_OWNER_FINGERPRINT_SPREAD_OBSTACLE_AND_MODULAR_SCREEN.md",
-  "latest_research_record": "research/BETA_034_V8_OWNER_FINGERPRINT_SPREAD_OBSTACLE_AND_MODULAR_SCREEN.md",
+  "last_verified_research_document": "research/BETA_035_GOLD_HUNTER_V8_ORDER_STATE_AND_REAL_SYNTH_FORENSIC.md",
+  "latest_research_record": "research/BETA_035_GOLD_HUNTER_V8_ORDER_STATE_AND_REAL_SYNTH_FORENSIC.md",
   "latest_research_record_drive": "https://drive.google.com/file/d/1xLx4uJK8pSpRez68vS2k59--cWgiF96B/view",
   "last_scientific_campaign": {
     "name": "BETA017 completed-bar M5/H1 regime exploratory screen",
@@ -1179,7 +1233,7 @@
     "entry_percent_not_comparable_to_R9_SYNTH_winrate": true,
     "august": "SEALED"
   },
-  "next_bounded_unit": "BETA_035_COINEXX_VS_DUKASCOPY_BRACKET_VALIDITY_AND_STRUCTURAL_ORIGINAL_LEVEL_REARM",
+  "next_bounded_unit": "BETA_036_BROKER_COMPATIBLE_M1_ORDER_STATE_CONDITIONAL_ROUTER_AND_ORIGINAL_R9_CLOCK_FORENSICS",
   "active_beta_research_funnel": {
     "protocol": "research/BETA_033_OWNER_MODULAR_ADAPTIVE_TRIPLE_LANE_POLICY.md",
     "entry_hold_exit_research_weights": {
