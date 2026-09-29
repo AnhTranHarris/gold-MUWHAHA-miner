@@ -2,8 +2,8 @@
   "schema": "beta-research-status-v2",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "lineage": "INDEPENDENT_BETA",
-  "last_verified_durable_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
-  "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__000_DAY_2026-01-01_UTC_BOUNDARY",
+  "last_verified_durable_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__000_DAY_2026-01-01_UTC_BOUNDARY",
+  "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FULL_MONTH_SOURCE_CRC_AND_FEATURE_AUDIT",
   "last_recorded_milestone": "BETA_005_PARTIAL_SOURCE_AUDIT",
   "research_scope": [
     "ENTRY",
@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "BETA 004 documented; first bounded BETA 005 source scan persisted; no full-month cache, certified performance, EA or candidate",
+  "current_status": "BETA 005 Jan 1 and Jan 2 bounded source checks verified; Jan full-month CRC/cache remains incomplete; no approved EA",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -75,6 +75,21 @@
       "drive_code_url": "https://drive.google.com/file/d/1UtDE-fN6JiGfsURNBP2bMxIhe6P0gwzY/view",
       "github_artifact_path": "research/checkpoints/BETA_005_2026_01_02_001_DAY_SOURCE_AUDIT.json",
       "github_code_path": "research/qa/BETA_005_SOURCE_INTEGRITY_2026_01_001.py"
+    },
+    {
+      "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__000_DAY_2026-01-01_UTC_BOUNDARY",
+      "status": "VERIFIED_DURABLE",
+      "scope": "DAY_SOURCE_SCAN_ONLY",
+      "raw_tick_rows": 7245,
+      "source_compressed_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "script_sha256": "706ce3e9b9a8ad7c2ae4faeda4efb03429d3080b1143c3a9bfb2e83d480b1416",
+      "report_sha256": "76d7f77be26b81ab72442f8ff8ec4551cb9821f6cd906c74c7a6141d6b646b3a",
+      "drive_code_url": "https://drive.google.com/file/d/1fWK6utw2BP7ll24KAlUkFmBTPkNShSBs/view",
+      "drive_report_url": "https://drive.google.com/file/d/1t5aRs_zQHE5kpMiwmXK573niR652orzC/view",
+      "github_manifest_path": "research/checkpoints/BETA_005_2026_01_01_BOUNDARY_SOURCE_MANIFEST.json",
+      "full_month_certified": false,
+      "gzip_crc_to_eof_verified": false,
+      "feature_cache_certified": false
     }
   ],
   "design_hypotheses": {
