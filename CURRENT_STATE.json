@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "BETA012 validates explicit $100k initial capital/0.01 lots and R9 historic $0.02 fees: candidate stops before May in both illustrative 100:1/500:1 leverage scenarios after losing nearly $100k. Corrected Jan–Jul unlimited-credit -$157,216.35 and 61,650 winners remain RESEARCH-ONLY, NOT funded equity PnL/DD. Candidate entry precision remains interesting but broker-equivalent promotion suspended pending contract/fee/spread/margin/true equity DD. No MQL5 coded, August sealed.",
+  "current_status": "BETA011 corrected monetary audit: 0.01-lot price scaling was correct, but prior Python commission was 10x too high ($0.20 vs historical R9 Coinexx ~$0.02 roundtrip). R09_BETA_001 remains promising but formal breakthrough classification retracted pending corrected >10% winner-count gate. $100k account becomes insolvent during April under current Dukascopy-cost model. No MQL5 coded; August SEALED.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -249,33 +249,32 @@
     "owner_study_goal": "Repair real-tick ENTRY quality and absolute winning-trade count first; freeze Hold/Exit for controlled isolation; preserve separate BETA cumulative approval gates",
     "notes": "R9 REAL original Coinexx tester is historical research control; full January R9-like Dukascopy Python simplification IS NOT exact original broker EA. Mean observed Dukascopy spread ~$0.84/oz, point-size and execution different. Hold/Exit approximate frozen, no MQL5."
   },
-  "last_verified_research_document": "BETA_011_LOT001_PNL_AUDIT__001",
-  "latest_research_record": "research/BETA_012_FUNDED_001LOT_FEE002_REAL_TICK_RECHECK.md",
-  "latest_research_record_drive": "https://drive.google.com/file/d/1rSVSFh-o5wASG885Lldi0zksIcrVWnxP/view",
+  "last_verified_research_document": "BETA_011_PNL_LOT_AUDIT_CORRECTED",
+  "latest_research_record": "research/BETA_011_PNL_LOT_AUDIT_CORRECTED.md",
+  "latest_research_record_drive": "https://drive.google.com/file/d/1IjGMZD1XAyQ2zo_B76EPAG7j94nCyqGC/view",
   "last_scientific_campaign": {
-    "name": "BETA011 0.01-lot PnL accounting audit",
-    "status": "CORRECTED_COMMISSION_10X_OVERCHARGE_FOUND",
-    "candidate": "R09_BETA_001_ADAPTIVE_IGNITION_ENTRY",
+    "name": "BETA011 0.01-lot and R9 commission reconciliation",
+    "status": "CORRECTED_RESEARCH_CANDIDATE_ONLY",
+    "corrected_candidate": {
+      "trades": 226696,
+      "wins": 61650,
+      "win_rate": 0.2719501005752197,
+      "net_usd_counterfactual": -157216.35,
+      "gross_profit_usd": 18776.181,
+      "gross_loss_usd": -175992.531,
+      "win_count_gain_pct": 5.784244753684864,
+      "win_rate_gain_pct": 14.980683577508923,
+      "net_loss_reduction_pct": 18.036705060354823,
+      "starting_capital_usd": 100000,
+      "ending_march_equity_usd": 19897.899,
+      "april_insolvency": true
+    },
+    "commission_roundtrip_usd": 0.02,
     "lot_size": 0.01,
-    "coinexx_commission_per_deal_usd": 0.01,
-    "roundtrip_commission_usd": 0.02,
-    "corrected_net_usd": -157216.35,
-    "corrected_gross_loss_usd": -175992.53,
-    "corrected_max_dd_usd": 157216.35,
-    "wins_change_pct": 5.784244753684864,
-    "win_rate_change_pct": 14.980683577508923,
-    "net_loss_reduction_pct": 18.036705060354823,
-    "gross_loss_reduction_pct": 15.596869050000258,
-    "max_dd_reduction_pct": 18.036705060358795,
     "mql5_written": false,
     "august_sealed": true
   },
-  "owner_review_pending_candidate": {
-    "id": "R09_BETA_001_ADAPTIVE_IGNITION_ENTRY",
-    "gate": "ON_HOLD_FUNDED_100K_ACCOUNTING_PARITY_REVALIDATION",
-    "approved": false,
-    "requested_next_action": "Rebuild Jan-funded source-accurate R9 control and candidate with broker spread/lot/tick/margin/slippage verified; owner does not automatically approve MT5 coding."
-  },
+  "owner_review_pending_candidate": null,
   "monetary_audit_001": {
     "status": "FULL_JAN_JUL_ARITHMETIC_VERIFIED_CONDITIONAL_ON_COINEXX_SPEC",
     "lot": 0.01,
@@ -343,5 +342,13 @@
     "sampled_broker_ledger_commission_source": "research/BETA_011_LOT001_PNL_ACCOUNTING_CORRECTION.md",
     "scientific_limits": "illustrative leverage/stopout, historical R9 point-spread and Coinexx intratick fills not reproduced; mark-to-market equity DD and actual broker stopout remain unknown",
     "owner_decision": "NO_MQL5_OWNER_AUTHORIZATION; retain entry research mechanism but suspend economic promotion claim"
-  }
+  },
+  "formal_breakthroughs_retracted": [
+    {
+      "id": "R09_BETA_001_ADAPTIVE_IGNITION_ENTRY",
+      "reason": "Corrected commission changes winner classification; corrected win-count gain +5.7842% (<10% owner target). $100k capital path insolvent during April under Dukascopy cost model.",
+      "correction_record": "research/BETA_011_PNL_LOT_AUDIT_CORRECTED.md",
+      "status": "RESEARCH_CANDIDATE_ONLY_NOT_FORMAL_BREAKTHROUGH"
+    }
+  ]
 }
