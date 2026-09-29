@@ -1,0 +1,80 @@
+{
+  "unit_id": "BETA_011_LOT01_MONETARY_RECONCILIATION_JAN_JUL",
+  "status": "VERIFIED_DURABLE_CONDITIONAL_CONTRACT_SPEC",
+  "scientific_scope": "SOURCE_IDENTICAL Jan-Jul direct-tick trade-replay monetary audit, no new strategy or MT5 model",
+  "volume_lots": 0.01,
+  "assumed_contract_size_troy_ounces_per_lot": 100,
+  "assumed_account_currency": "USD",
+  "usd_per_1usd_xauusd_price_change": 1,
+  "formula": "Pnl_USD = signed_price_move_per_oz * 100 * 0.01 - modeled_roundtrip_fee_per_trade",
+  "total_raw_ticks": 57527562,
+  "source_baseline": "research/experiments/BETA_009_JAN_JUL_ENTRY_CANDIDATE_VALIDATION.py",
+  "reconstructed_audit": {
+    "prior_scorecard_lot01_fee020_reconciliation": "PASS_EXACT_ALL_SEVEN_MONTHS_NET_GROSS_PROFIT_GROSS_LOSS_REALIZED_DD",
+    "roundtrip_fee_020": {
+      "control": {
+        "trades": 246404,
+        "wins": 28789,
+        "net": -236165.836,
+        "gross_loss": -245050.948,
+        "max_realized_dd": 236165.836
+      },
+      "candidate": {
+        "trades": 226696,
+        "wins": 31704,
+        "net": -198021.63,
+        "gross_profit": 10372.038,
+        "gross_loss": -208393.668,
+        "max_realized_dd": 198021.63
+      },
+      "win_count_gain_pct": 10.1254,
+      "win_rate_relative_gain_pct": 19.6992,
+      "net_loss_reduction_pct": 16.15145
+    },
+    "roundtrip_fee_007": {
+      "control": {
+        "trades": 246404,
+        "wins": 50947,
+        "net": -204133.316
+      },
+      "candidate": {
+        "trades": 226696,
+        "wins": 54412,
+        "net": -168551.15,
+        "gross_loss": -184392.368,
+        "max_realized_dd": 168551.15
+      },
+      "win_count_gain_pct": 6.8,
+      "win_rate_relative_gain_pct": 16.09,
+      "net_loss_reduction_pct": 17.43
+    },
+    "roundtrip_fee_zero": {
+      "candidate_net": -152682.43,
+      "winners": 63064
+    },
+    "price_move_multiplier_01_100oz": 1
+  },
+  "critical_limitations": [
+    "Coinexx contract size, tick value, account currency and per-0.01-lot commission unverified from owner terminal",
+    "Original sim called price delta USD without explicitly asserting lots; under 100 oz/lot x0.01 this matches exact monetary conversion",
+    "$0.20/0.01-lot roundtrip assumed not actual Coinexx, equals $20/standard-lot roundtrip",
+    "Actual >10% absolute winning trade count depends on fee; with $0.07 only +6.80%",
+    "Drawdown is realized-balance closed-trade series; not intra-trade equity, margin stop-out or feasible deposit",
+    "Both strategies negative under all tested fees; no broker-certified winning EA or successful small-account survival",
+    "Unchanged open-source trade chronology; no MQL5 created"
+  ],
+  "research_document_github": "research/BETA_011_LOT01_MONETARY_RECONCILIATION.md",
+  "research_document_drive": "https://drive.google.com/file/d/1HUBm_qR_-HVVDUojfdIbb3rEcP7Ybbxs/view",
+  "full_json_drive": "https://drive.google.com/file/d/10XXarxKgxREPObec7GufrNivX0Ej5cVP/view",
+  "auditor_source_drive": "https://drive.google.com/file/d/1k4vqb4F6zRy8up3PfRiz1MnDEpPfZQ_d/view",
+  "derivative_sim_source_drive": "https://drive.google.com/file/d/1jIA4sjcmbzuUm6cfz-Jj9Y0p6cpe1FSj/view",
+  "source_sha256": {
+    "auditor": "881a41ec87f350faa12d658f2bd4e5549a1e0b51036e7707856088f93194c64c",
+    "derivative": "ebb63eecc3006f01f7ee4824915f694133e89530c1cbe6f588347c51852da218",
+    "final_json": "648c95ed502317f6f6ae7e8998194c4e2bfc50615243f4e7edb6a7010a1e2ad2"
+  },
+  "owner_approval_status": "PENDING_ACTUAL_COINEXX_SPEC_AND_OWNER_DECISION",
+  "approved_beta_ea": false,
+  "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
+  "august_read": false
+}
