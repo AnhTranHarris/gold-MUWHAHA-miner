@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "BETA015 owner-required prop-house risk config and Python guard with 29 passing policy/gate unit tests; BETA016 public/reconstructible multi-timeframe structure and seven independent entry hypotheses documented. BETA014 last verified MARKET backtest still terminates both control/candidate under $90k overall floor in January. No new BETA016 strategy backtest, no newly approved EA, no owner-authorized MQL5. August SEALED.",
+  "current_status": "BETA015 owner-required prop-house risk config and Python guard with 30 passing policy/gate unit tests with broker-session default denied; BETA016 public/reconstructible multi-timeframe structure and seven independent entry hypotheses documented. BETA014 last verified MARKET backtest still terminates both control/candidate under $90k overall floor in January. No new BETA016 strategy backtest, no newly approved EA, no owner-authorized MQL5. August SEALED.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -418,7 +418,7 @@
       "news_gate_status": "NOT_EVALUATED",
       "prop_funded_viable_candidate": false,
       "policy_engine": "BETA_015_PROP_V1",
-      "policy_engine_status": "CODIFIED_29_UNIT_TESTS_PASS_LEGACY_JIT_AND_MQL5_NOT_WIRED"
+      "policy_engine_status": "CODIFIED_30_UNIT_TESTS_PASS_BROKER_OPEN_DEFAULT_DENY_LEGACY_JIT_AND_MQL5_NOT_WIRED"
     }
   },
   "current_research_mandates": {
@@ -433,7 +433,7 @@
       "full_document_drive": "https://drive.google.com/file/d/12owvkyaTA5O5GrC4zY5yN8DlRk_caICe/view",
       "unit_test_source_drive": "https://drive.google.com/file/d/1s37WQ2VVWHrUZpKlmoHhGWafZNEIwNIh/view",
       "gate_test_source_repo": "research/risk/BETA_015_RUN_GATE_TESTS.py",
-      "unit_tests_passed": 29,
+      "unit_tests_passed": 30,
       "unit_tests_run_in_session": true,
       "starting_usd": 100000,
       "fixed_lot": 0.01,
@@ -447,7 +447,11 @@
       "migration_rule": "EXPLICIT_OWNER_REQUEST_NEW_VERSION_NO_AUTOMATIC_TIGHTENING",
       "enforcement_scope_status": "RESEARCH_RISK_MODULE_AND_REPORT_PRECHECK_DONE_LEGACY_JIT_BACKTEST_AND_MQL5_NOT_WIRED",
       "no_new_mql5_without_owner": true,
-      "august_sealed": true
+      "august_sealed": true,
+      "broker_session_open_default": "DENY_UNLESS_EXPLICIT_TRUE",
+      "final_code_drive": "https://drive.google.com/file/d/1tFsG7gUsgFP1ka62hs7As0k-_RU5G3gN/view",
+      "final_policy_unit_tests_drive": "https://drive.google.com/file/d/15UG7jmIf8Ujmw1RV4f3-Wbh16koPgVYF/view",
+      "new_equity_after_trade_status": "RISK_GUARD_PRESENT_BETA014_JIT_NOT_WIRED_NO_MT5"
     },
     "multi_timeframe_entry_hypotheses": {
       "status": "SOURCE_VALIDATED_RECONSTRUCTIBLE_PROPOSALS_NOT_BACKTESTED",
@@ -470,7 +474,8 @@
       ],
       "evidence_status": "PUBLIC_IDEA_SOURCES_ONLY",
       "candidate_profitability_verified": false,
-      "approved_candidate": false
+      "approved_candidate": false,
+      "policy_guard_test_count": 30
     }
   }
 }
