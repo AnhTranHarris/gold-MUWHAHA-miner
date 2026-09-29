@@ -1,3 +1,5 @@
+> **BETA 011 accounting correction (2026-09-29):** the earlier Python scorecard used the correct 0.01-lot price multiplier but overcharged commission at $0.20 round-trip. The actual Coinexx R9 deal ledger shows $0.01 per deal, or $0.02 round-trip at 0.01 lot. Corrected Jan–Jul: net **-$157,216.35**, gross loss **-$175,992.53**, max DD **$157,216.35**, 61,650 wins / 226,696 trades (27.20%). Versus the same-feed R9 control: wins **+5.78%**, relative win rate **+14.98%**, net-loss/DD reduction **18.04%**, gross-loss reduction **15.60%**. Therefore the old +10.13% winning-count claim is withdrawn; the candidate still clears >10% on entry accuracy and loss/DD economics. See [BETA 011](../BETA_011_LOT001_PNL_ACCOUNTING_CORRECTION.md).
+
 # R09_BETA_001_ADAPTIVE_IGNITION_ENTRY
 
 **Status:** CORRECTED 0.01-LOT PNL AUDIT COMPLETE. Entry candidate remains promising, but prior formal-breakthrough promotion is SUSPENDED pending requalification because the original Python model overstated roundtrip commission by 10x. **No MQL5 candidate has been coded.**
