@@ -2,9 +2,9 @@
   "schema": "beta-research-status-v2",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "lineage": "INDEPENDENT_BETA",
-  "last_verified_durable_unit": "BETA_030_CAUSAL_STATE_AWARE_AI_DUKAS_57527562_TICKS_126QA_NO_PROMOTION",
+  "last_verified_durable_unit": "BETA_031_DURATION_AWARE_STATE_MIXTURE_AI_28_QA",
   "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
-  "last_recorded_milestone": "BETA030_59_FEATURE_CUSTOM_QUANT_GATE_FALSE_FORWARD_UPlIFT_AND_UNPAIRED_SYNTH_FAILURE",
+  "last_recorded_milestone": "BETA031_REAL_FEED_UTILITY_IMPROVES_MODESTLY_SYNTH_TEACHER_ALIGNMENT_REGRESSES",
   "research_scope": [
     "ENTRY",
     "HOLD",
@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "BETA030 completed independent Jan-Jul original Dukascopy 57,527,562 tick study. E060 first-cycle parent 191,674 signals, 183,222 evaluable costed +15s, 34,784 positive. Jan-Mar fitted 59-feature global and 4-state gated LightGBM side-specific after-cost regressors, April selection GLOBAL threshold $0.20, May-Jul previously seen historical diagnostic NOT pristine OOS. Global AI +640 correct positives over Jan-Jul, but May-Jul just +52 (13,702 vs parent 13,650), 0 extra from added ordinal entropy/CUSUM/variance/quote-shape features vs 52-feature ablation or gating, May-Jul costed markout loses $46.68 and selected SYNTH same-side +/-5s matches 13,495 ->13,338. Unpaired four ORIGINAL R9 SYNTH logger complete days matches 1,022 ->1,012 and REAL 2,976 ->2,930. Four delayed causal two-lane proof versions reduce correct count and teacher match, no recovered edge. One-position L15 May-Jul net parent -$45,483.77 and Global AI -$45,542.76; L30 ~$0; L45 -$28.18 AI differential; all negative. 126 new QA PASS including exact original source ordinal for all 191,674 first-cycle signals, prefix/no-future quote-shape, after-cost outcome and full four-day unpaired source audit. Entire BETA005 multi-layer feature cache parity still incomplete; BETA015 FUNDED risk guard NOT run (lifecycle shadow only). Jan-Jul already inspected; August SEALED, approved_beta_ea=null. Gold Hunter V8 owner-reported genealogy secondary only. BOCPD and HSMM are NOT implemented in this unit; finite CUSUM and 3-point ordinal entropy only. Next: truly causal state-duration + action clock NOW/WAIT/SKIP and realistic triple-barrier labels, source-data and funded gates; no official MQL5 code without explicit owner authorization.",
+  "current_status": "BETA031 tested a deterministic duration-aware mixture-of-experts on BETA030 causal event cohorts. Jan-Mar fit, April threshold calibration, May-Jul frozen historical diagnostic (NOT pristine OOS), August SEALED. Formula adds regime age, event gap, state-change flag and empirical state survival to 59 causal BETA030 features; global + state ridge experts blend with lambda=clip(0.10+0.65*survival-0.35*state_changed,0.05,0.75), flip R9 side only if predicted opposite-minus-parent +15s utility > $0.20/oz. May-Jul: +138 absolute correct +15s outcomes (13,650->13,788, +1.01%) and +$80.32 aggregate costed markout relative, but all outcomes remain deeply negative. Integrated one-position May-Jul relative net improves only +$33.78 L15 / +$105.72 L30 / +$109.59 L45, still negative. Selected paired SYNTH same-side +/-5s worsens 13,495->12,885 May-Jul and 34,394->32,957 Jan-Jul. Four full unselected original logger days SYNTH same-side 1,022->951, REAL 2,976->2,812. Therefore state-aware AI can recover modest real-feed utility but has NOT bridged R9 SYNTH/OVERFIT behavior or entry clock. Preserve as research component only; next architecture separates clock/eligibility, directional owner, dynamic proof, and lifecycle owner, with formal BOCPD/HSMM router ablations and full unselected 149-day teacher reconstruction. 28 BETA031 QA PASS. No MQL5 EA promotion.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -563,6 +563,45 @@
       "handoff": "research/BETA_030_RESTART_SCIENCE_HANDOFF.md",
       "repro_bundle": "BETA030_STATE_AWARE_AI_REPRODUCIBILITY_BUNDLE.zip",
       "repro_bundle_sha256": "e8854e6925cbbbe2f26a28632a4ebdcffc949bbc434ad8e4e417719cc75f17d4"
+    },
+    {
+      "unit_id": "BETA_031_DURATION_AWARE_STATE_MIXTURE_AI_28_QA",
+      "status": "VERIFIED_BOUNDED_RESEARCH_COMPONENT_NO_PROMOTION",
+      "parent": "BETA030_STATE_AWARE_QUANT",
+      "training": "Jan-Mar discovery",
+      "calibration": "April threshold",
+      "later_diagnostic": "May-Jul previously inspected NOT pristine OOS",
+      "features": 63,
+      "formula": "global ridge utility-difference + semantic-state ridge; lambda=clip(0.10+0.65*empirical_state_survival-0.35*state_changed,0.05,0.75); flip if DeltaU>0.20",
+      "selected_alpha": 300,
+      "selected_threshold_usd_per_oz": 0.2,
+      "parent_valid15": 183222,
+      "parent_correct15": 34784,
+      "BETA031_correct15": 35397,
+      "mayjul_parent_correct15": 13650,
+      "mayjul_BETA031_correct15": 13788,
+      "mayjul_correct_delta": 138,
+      "mayjul_correct_delta_pct": 1.01099,
+      "mayjul_markout_relative_usd": 80.322,
+      "mayjul_shadow_L15_relative_net_usd": 33.783,
+      "mayjul_shadow_L30_relative_net_usd": 105.718,
+      "mayjul_shadow_L45_relative_net_usd": 109.592,
+      "selected_SYNTH_same5_full_parent": 34394,
+      "selected_SYNTH_same5_full_BETA031": 32957,
+      "selected_SYNTH_same5_mayjul_parent": 13495,
+      "selected_SYNTH_same5_mayjul_BETA031": 12885,
+      "full_unselected_4day_SYNTH_parent": 1022,
+      "full_unselected_4day_SYNTH_BETA031": 951,
+      "full_unselected_4day_REAL_parent": 2976,
+      "full_unselected_4day_REAL_BETA031": 2812,
+      "teacher_clock_changed": false,
+      "all_economics_positive": false,
+      "funded_BETA015_replay": false,
+      "native_MQL5_parity": false,
+      "QA_assertions_passed": 28,
+      "report": "research/BETA_031_DURATION_AWARE_STATE_MIXTURE_AI.md",
+      "local_bundle_sha256": "8318dd12dd54ee4f364cb78715053546a03c363884b74a99b0abaa1b81cf3e1c",
+      "August": "SEALED"
     }
   ],
   "design_hypotheses": {
@@ -615,8 +654,8 @@
     "owner_study_goal": "Repair real-tick ENTRY quality and absolute winning-trade count first; freeze Hold/Exit for controlled isolation; preserve separate BETA cumulative approval gates",
     "notes": "R9 REAL original Coinexx tester is historical research control; full January R9-like Dukascopy Python simplification IS NOT exact original broker EA. Mean observed Dukascopy spread ~$0.84/oz, point-size and execution different. Hold/Exit approximate frozen, no MQL5."
   },
-  "last_verified_research_document": "research/BETA_030_STATE_AWARE_AI_TICK_GAP_RESEARCH.md",
-  "latest_research_record": "research/BETA_030_STATE_AWARE_AI_TICK_GAP_RESEARCH.md",
+  "last_verified_research_document": "research/BETA_031_DURATION_AWARE_STATE_MIXTURE_AI.md",
+  "latest_research_record": "research/BETA_031_DURATION_AWARE_STATE_MIXTURE_AI.md",
   "latest_research_record_drive": "https://drive.google.com/file/d/1xLx4uJK8pSpRez68vS2k59--cWgiF96B/view",
   "last_scientific_campaign": {
     "name": "BETA017 completed-bar M5/H1 regime exploratory screen",
@@ -1027,5 +1066,29 @@
     "original_R9_FULL_149day_teacher": false,
     "August": "SEALED",
     "next": "BETA031_MARKET_STATE_DURATION_AND_ENTRY_CLOCK_CUSUM_BOCPD_HSMM_CAUSAL_PATH_LABEL_EXPERIMENT"
+  },
+  "ai_bridge_research": {
+    "status": "PARTIAL_REAL_FEED_UTILITY_ONLY_NOT_TEACHER_BRIDGE",
+    "conclusion": "Do not enlarge black-box model. Separate causal clock/eligibility, direction ownership, proof timing and lifecycle. Test BOCPD + explicit duration posterior as router features; full unselected teacher ledger required before teacher-emulation fitting.",
+    "BETA030": "59-feature LightGBM; new seven shape/CUSUM features zero incremental May-Jul correct-count at locked threshold; Global +52 correct but -$46.68 markout delta and teacher regression.",
+    "BETA031": "Duration-aware ridge mixture +138 May-Jul correct, +$80.32 markout relative, modest integrated improvement but worse SYNTH alignment.",
+    "next_unit": "BETA032_CLOCK_OWNER_BOCPD_HSMM_ROUTER_AND_FULL_TEACHER_LEDGER_PREP",
+    "community_sources": [
+      "https://www.mql5.com/en/articles/24460",
+      "https://www.mql5.com/en/articles/23482",
+      "https://www.mql5.com/en/articles/23451",
+      "https://www.mql5.com/en/articles/23043",
+      "https://www.mql5.com/en/articles/23103"
+    ]
+  },
+  "BETA031_reproducibility": {
+    "script_sha256": "df91d2f091f880dedf0a4b05f4804f39c7b970ed8d520ba81dad87e67c31b7c9",
+    "results_sha256": "b862c9850e91e20ff81b5f2a412340fcde048ec8befcd30c10fd935fcd969221",
+    "mt5_manifest_sha256": "98a892d1776f33558be20dce4dcbea5116c3b8607cb09f823ce082ba1861056b",
+    "qa_results_sha256": "db6be01badcf8859fe0ed53d067e9dd5ba0887a5716cc24dd0bfb08bb8e2f4b2",
+    "bundle_sha256": "8318dd12dd54ee4f364cb78715053546a03c363884b74a99b0abaa1b81cf3e1c",
+    "bundle_name": "BETA031_STATE_AWARE_AI_RESEARCH_BUNDLE.zip",
+    "source_ticks_in_bundle": false,
+    "exact_formula_document": "research/BETA_031_DURATION_AWARE_STATE_MIXTURE_AI.md"
   }
 }
