@@ -1,5 +1,7 @@
 # R09_BETA_001_ADAPTIVE_IGNITION_ENTRY
 
+> **BETA 011 monetary audit (2026-09-29):** The original Jan–Jul P&L was independently re-replayed and the 0.01-lot conversion is arithmetically correct **only under the assumed standard 100-oz/lot XAUUSD contract and $0.20 per-0.01-lot roundtrip fee**. At a $0.07 fee, candidate winning-trade-count gain falls from +10.13% to **+6.80%** (relative win-rate still +16.09%, net-loss reduction +17.43%). Candidate remains **loss-making even at zero fee**. Reported max DD is **closed-trade balance drawdown**, not MT5 mark-to-market or margin-feasible DD; actual Coinexx contract/fees not confirmed. No MQL5 code is approved. [Full reconciliation](../BETA_011_LOT01_MONETARY_RECONCILIATION.md).
+
 **Status:** Formal BETA ENTRY/ACTION breakthrough; owner review pending. **No MQL5 candidate has been coded.**
 
 ## Executive result
