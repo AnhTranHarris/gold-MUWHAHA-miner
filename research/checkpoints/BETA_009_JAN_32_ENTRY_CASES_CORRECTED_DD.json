@@ -1,0 +1,121 @@
+{
+  "schema": "beta-009-durable-evidence-v2",
+  "unit_id": "BETA_009_JAN_32_ENTRY_SCENARIOS_QA_CORRECTED_001",
+  "state": "VERIFIED_DURABLE",
+  "scope": "full original January 2026 XAUUSD Bid/Ask event tape; no August",
+  "market_source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "source_month_ticks": 9135062,
+  "source_compressed_sha_match": true,
+  "source_gzip_crc_to_eof_pass": true,
+  "event_tick_chronology_qa_pass": true,
+  "grid_17_bucket_identity_audited": true,
+  "materialized_17layer_feature_cache_certified": false,
+  "source_evidence": [
+    {
+      "name": "wave1_code",
+      "id": "1J9Kx3sJdGmm-nnoz-VF2PozpkPxnjey7",
+      "title": "BETA_009_JAN_R9_ENTRY_PARALLEL.py",
+      "size": 16022,
+      "local_sha256": "de81c44ef2c0cee739f801d98f177db286dd0492bfbcf9e0a18c03114f001fec",
+      "verified_metadata": true
+    },
+    {
+      "name": "wave1_report",
+      "id": "1qcLwFiMER8oGXigySeh5Td41j6mLqnGT",
+      "title": "BETA_009_JAN_R9_ENTRY_PARALLEL_SCREEN.json",
+      "size": 103271,
+      "local_sha256": "f83a5e6f7060326c8107d37b9741d277a4476319bfa2f22e440274326c4cbbb4",
+      "verified_metadata": true
+    },
+    {
+      "name": "wave2_code",
+      "id": "1fRKg1NNWUgnXwZlk5YcRU-HvAM80-21H",
+      "title": "BETA_009_JAN_SECONDARY_SCALP_PARALLEL.py",
+      "size": 18570,
+      "local_sha256": "439535ad7670cf30d661ba229bc16b16383061b388f83a677cf1738fc810b18c",
+      "verified_metadata": true
+    },
+    {
+      "name": "wave2_report",
+      "id": "17Yig-3LJqNZwC_Ly2f3Jl0O7Hxg9T0Su",
+      "title": "BETA_009_JAN_SECONDARY_SCALP_SCREEN.json",
+      "size": 101797,
+      "local_sha256": "9a4b3850199b1d9ba0f8a9524c8a812053ec7457b1f2c73f1fc7aa64405c0315",
+      "verified_metadata": true
+    },
+    {
+      "name": "main_document",
+      "id": "1YIJSnajiFDnPwPV4FNeZHY5y1pxBAI04",
+      "title": "BETA_009_JAN_ENTRY_SCALPING_RESEARCH_RECORD.md",
+      "size": 16789,
+      "local_sha256": "99f52f85fedd90956b2e14ec65bbaa900f70017c00237febb5adde2e5d14ea15",
+      "verified_metadata": true
+    },
+    {
+      "name": "causal_test",
+      "id": "16_wmtrDkDqC7p2r6N_8nQ3w9aqOl2HDo",
+      "title": "BETA_009_CAUSAL_PREFIX_TEST.py",
+      "size": 1559,
+      "local_sha256": "6cc109613596e72a50a14c4633014768dbb5ff4abb77378c451d43fbdb61a738",
+      "verified_metadata": true
+    },
+    {
+      "name": "source_cert_py",
+      "id": "1fOiTegb_33nxRgEWuI9j8S3k2QUuHbYn",
+      "title": "BETA_009_JAN_FULL_SOURCE_CERT.py",
+      "size": 3842,
+      "local_sha256": "4b7d8795f761fd986892242b4ae5d1c51af6b7e393c56c4f57e6414f3e5dacc9",
+      "verified_metadata": true
+    },
+    {
+      "name": "source_cert_report",
+      "id": "1U-R-Wbi_lqIE7wEVEqRMXiIPU7i70LEp",
+      "title": "BETA_009_JAN_FULL_SOURCE_CERT.json",
+      "size": 1600,
+      "local_sha256": "88c0e652f00bfb81faf191e9cb3a6f384b69b2d43934d0fbf054439ce92f597a",
+      "verified_metadata": true
+    }
+  ],
+  "preregistered_two_sequential_wave_records": [
+    {
+      "wave": 1,
+      "url": "https://drive.google.com/file/d/1QSTroG_5Iv59Zb9itABndlpwCl5Yggwf/view"
+    },
+    {
+      "wave": 2,
+      "url": "https://drive.google.com/file/d/1aKF7jRJkXgMCL6aRZ9s4vf3ExP4Vfw1s/view"
+    }
+  ],
+  "method": "32 independent configurations from 2 independent preregistered Python waves, exact ordered Dukascopy quote event replay, simplified R9-style unchanged exits in each scenario, one position per account and single exclusive one-account combined router; both scripts have corrected day-local drawdown calculation",
+  "scenarios_total": 32,
+  "negative_net_scenarios": 32,
+  "same_feed_r9_like_cap_100": {
+    "trades": 32084,
+    "wins": 3430,
+    "net_usd": -28563.72,
+    "gross_loss_abs_usd": 29537.82,
+    "peak_to_trough_equity_dd_usd": 28564.61
+  },
+  "combined_joint_router_cap_100": {
+    "trades": 64825,
+    "wins": 7554,
+    "win_count_gain_percent_vs_same_feed_r9_like": 120.23,
+    "net_usd": -55897.49,
+    "gross_loss_abs_usd": 57998.19,
+    "peak_to_trough_equity_dd_usd": 55899.08
+  },
+  "five_language_community_hypotheses": "Russian, Chinese, Japanese, Korean and English public algorithmic/scalping sources; bibliography in research md",
+  "broker_price_point_verified": false,
+  "broker_trade_term_parity_verified": false,
+  "slippage_filled_realistically": false,
+  "positive_net_candidate": false,
+  "preliminary_research_only": true,
+  "owner_10pct_review_trigger": false,
+  "owner_MQL5_authorization": false,
+  "approved_beta_ea": false,
+  "prefix_causality_stability": "4 paths verified Jan1–Jan2 exact early-day stats invariant to future Jan ticks",
+  "old_manifest_wave1": "research/checkpoints/BETA_009_JAN_ENTRY_PARALLEL_WAVE1.json",
+  "old_manifest_wave2": "research/checkpoints/BETA_009_JAN_ENTRY_PARALLEL_WAVE2.json",
+  "previous_outputs": "Four pre-QA Drive script/output versions explicitly renamed ZZ_SUPERSEDED_DAILY_DD_BASIS__*",
+  "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION"
+}
