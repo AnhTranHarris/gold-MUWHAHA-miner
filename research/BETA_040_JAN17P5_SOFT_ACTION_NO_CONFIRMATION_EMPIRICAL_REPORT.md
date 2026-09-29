@@ -1,0 +1,20 @@
+# BETA040 — original-quote adaptive side/exit pilot (NO PROMOTION)
+
+**Date:** 2026-09-29. Source: 4,205,709 original XAUUSD Dukascopy Bid/Ask ticks Jan1 00UTC–Jan18 12UTC, original January gzip SHA256 `d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5`. R9-like E060 source events 14,174 (original eligibility remains: this is only *no additional technical confirmations*). August SEALED. No broker execution/funded BETA015, no approved MQL5 EA.
+
+**Model:** 60 as-of original source features (26 subsecond/M1/M5 quote, 26 prior-confirmed M1/M5 registry, 7 quote-path/variation, prior completed H1 owner). Six BUY/SELL×15/30/60s stop/target/trail alternatives. Ridge regressions fit Jan1–9 on 6,466 exact later-executable training PnL labels, 48h+ embargo, frozen Jan11–18 historical (previously inspected) diagnostics. Four market-state regressors mixed 35% with 65% global; NO extra stacked regime/structure filters, no P89 admission veto, always rank an executable side/exit at an unoccupied E060 source event; there is no learned FLAT decision in this test. Future outcomes are training labels, not runtime features.
+
+| Jan11–Jan18 shadow one-position | Closes / positive | USD net | Loss reduction | Old SAME-EVENT positive retained | SELECTED SYNTH ±5s same-side |
+|---|---|---:|---:|---:|---:|
+| Original E060 30s/$2 stop/$2 target | 6114/1196 | -4516.45 | — | 100% | 1114 |
+| Global six-action soft utility | 5372/1330 | -3688.39 | **18.334%** | **21.656%** | **444** |
+| Four-state mixed six-action utility | 5382/1303 | -3752.82 | **16.908%** | **19.649%** | **445** |
+| State mixed direction only, unchanged L30 | 6122/1299 | -4297.47 | 4.848% | 27.09% | 445 |
+| State mixed HOLD/EXIT only, unchanged side | 5623/1144 | -4095.46 | 9.321% | 65.134% | 1114 |
+| All 15s scalp | 6389/912 | -4579.25 | -1.390% | 49.08% | 1114 |
+
+**Critical:** Both six-action models reversed ~4,400/6,473 evaluated origins. They found additional absolute winners but destroyed more than 78% of original same-event winners and ~60% of historically selected SYNTH side matches. Teacher score compares only preselected R9 REAL↔SYNTH ordinal pairs, NOT complete 219,342 synthetic trades. Neither candidate meets full original winner-identity or teacher/portfolio gate; all after-fee nets NEGATIVE. The model's exit policy is selected at ENTRY (then real stop/target/trail), not a learned live continually updating optimal-stopping model. Earlier training-segment in-sample figures are not external validation.
+
+**Repro:** `BETA040_NO_CONFIRMATION_REPRO_BUNDLE.zip`, SHA256 `5c3e2b5ff9111834c284482a1611e2d9ac9dfa6758decafc14afc261304c0a4b`. Includes full source `BETA040_NO_CONFIRMATION_SOFT_ACTION_RESEARCH.py` SHA256 `fc7f4f52bfd2a961c4f78c3c18f29c047d3ac4c30f4579cafd0a1010e682456d`, results JSON SHA `6f141d4a69e388a8b7122ab3920c57b7fd24480b3d24cd662d120c1ac39ac95c`, exportable 60-feature coefficient+scaler JSON SHA `5ba95f9f22222578747c086ae00591d9974f42514080b278cfb2ce16941da759`, exact 14,174-row model/replay NPZ SHA `d1a99e65fc147b26fc6df01ad0be43228589dd688a019e745fe96fde3c85cdad`, independent QA source/results/manifest and compact investor brief; large original XAUUSD source gzip not inside ZIP. **150 independent bounded QA assertions PASS**, model JSON global/4-state arithmetic max error **0.0**, seven independent spots × six direction/exit policy paths match source quote-side/fill/stop/trail/expiry results. BETA005 17-layer cache parity not established.
+
+**Owner recommendation:** move from mandatory confirmations to a *continuous cost-aware calibrated action-value model* using original R9 direction as a soft stabilizing PRIOR, rather than indiscriminately flipping most opportunities. Add a *sequential competing-risks hold-vs-exit* head updated from actual postentry Bid/Ask, age of trend, structural position and realized market regime; FLAT is permitted only as economic action when expected trade utility after costs is negative, not a stack of technical vetoes. Reassess on Jan 17.5d before any Jan–Jul escalation; August SEALED, owner permission before official MQL5.
