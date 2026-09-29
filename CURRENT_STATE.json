@@ -2,9 +2,9 @@
   "schema": "beta-research-status-v2",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "lineage": "INDEPENDENT_BETA",
-  "last_verified_durable_unit": "BETA_017_COMPLETED_M5_H1_JAN_2026_REGIME_SCREEN_AND_QA_7",
+  "last_verified_durable_unit": "BETA_024_R9_REAL_SYNTH_OVERFIT_DUKASCOPY_CROSSFEED_CLOCK_AND_ENTRY_AUDIT_165630",
   "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
-  "last_recorded_milestone": "BETA_017_JAN_REGIME_FILTER_EXPLORATORY_SCREEN_NEGATIVE_NET_ALL_TESTS",
+  "last_recorded_milestone": "BETA024_HISTORICAL_PAIRED_R9_TEACHER_DUKA_EVENT_ALIGNMENT_RESTORED_NOT_FULL_POPULATION_PARITY",
   "research_scope": [
     "ENTRY",
     "HOLD",
@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "BETA019 multi-pass community source campaign preregisters reconstructible entry mechanisms focused on precision + correct-entry count: fast-or-first-retest structure, sweep/reclaim/shift, geometric-asymmetry compression release, quote-imbalance microtiming, momentum-preserved pullback, compression release, fractal anchors and range-edge false breaks. No BETA019 tick test yet; BETA017 remains latest market experiment. BETA015 risk policy mandatory, BETA005 feature parity pending, August SEALED, no MQL5 authorized.",
+  "current_status": "BETA024 has restored the historical REAL/SYNTH/OVERFIT-to-original-Dukascopy tick event-clock diagnostic using 165630 original same-minute/side/ordinal paired Coinexx R9 entries, 149 server dates and date-specific -2h/-3h UTC correction, with Jan02 full-original logger check and 16 QA groups PASS. This resolves the mistaken claim that the independent Dukascopy research feed lacked cross-broker calibration; it does NOT establish identical source ticks, exact all-entry R9 broker fills/rearms or causal availability of SYNTH/OVERFIT entry clocks. BETA023 first-cycle relaxed-spread R9-like control remains not Coinexx-parity certified. BETA005 materialized feature cache incomplete. BETA015 mandatory for future funded replay. Last performed strategy test remains BETA017 on beta repo; later BETA019/BETA022/BETA023 local diagnostic screens are not promoted. August SEALED, no approved BETA EA, no MQL5 authorization.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -316,6 +316,25 @@
       "august_sealed": true,
       "promoted": false,
       "mql5_authorization": false
+    },
+    {
+      "unit_id": "BETA_024_R9_REAL_SYNTH_OVERFIT_DUKASCOPY_CROSSFEED_CLOCK_AND_ENTRY_AUDIT_165630",
+      "status": "COMPLETED_OFFLINE_DIAGNOSTIC_NOT_STRATEGY_PROMOTION",
+      "original_paired_events": 165630,
+      "original_coinexx_source_days": 149,
+      "original_jan02_R9_ticklogger_real_entries": 1525,
+      "original_jan02_R9_ticklogger_synth_entries": 1083,
+      "time_offset": "-2h January-February, March DST transition to -3h March 9, -3h April-July",
+      "dukascopy_raw_tick_source_valid_for_independent_execution_research": true,
+      "event_alignment_is_selected_pair_subset": true,
+      "full_original_all_entry_crossfeed_parity": false,
+      "synthetic_teacher_is_offline_only": true,
+      "original_r9_full_fills_and_rearms_replay_certified": false,
+      "BETA015_funded_replay": false,
+      "QA_test_groups_passed": 16,
+      "research_doc": "research/BETA_024_R9_REAL_SYNTH_OVERFIT_DUKASCOPY_CROSSFEED_AUDIT.md",
+      "August": "SEALED",
+      "approved_beta_ea": false
     }
   ],
   "design_hypotheses": {
@@ -368,8 +387,8 @@
     "owner_study_goal": "Repair real-tick ENTRY quality and absolute winning-trade count first; freeze Hold/Exit for controlled isolation; preserve separate BETA cumulative approval gates",
     "notes": "R9 REAL original Coinexx tester is historical research control; full January R9-like Dukascopy Python simplification IS NOT exact original broker EA. Mean observed Dukascopy spread ~$0.84/oz, point-size and execution different. Hold/Exit approximate frozen, no MQL5."
   },
-  "last_verified_research_document": "research/BETA_017_CAUSAL_REGIME_JAN_SCREEN_AND_SOURCE_RESEARCH.md",
-  "latest_research_record": "research/BETA_019_COMMUNITY_ENTRY_MECHANISM_BREAKTHROUGH_CAMPAIGN.md",
+  "last_verified_research_document": "research/BETA_024_R9_REAL_SYNTH_OVERFIT_DUKASCOPY_CROSSFEED_AUDIT.md",
+  "latest_research_record": "research/BETA_024_R9_REAL_SYNTH_OVERFIT_DUKASCOPY_CROSSFEED_AUDIT.md",
   "latest_research_record_drive": "https://drive.google.com/file/d/1xLx4uJK8pSpRez68vS2k59--cWgiF96B/view",
   "last_scientific_campaign": {
     "name": "BETA017 completed-bar M5/H1 regime exploratory screen",
@@ -663,5 +682,27 @@
     "key_next_step": "Finish BETA005 17-layer feature-parity/cache certification, then construct entry-event ledger and test finite-state break-retest-rebreak, sweep-reclaim-retest, second-entry pullback, compression-release under BETA015.",
     "august": "SEALED_UNTIL_OWNER_EXPLICIT_BLIND_AUTHORIZATION",
     "mql5": "NO_CANDIDATE_CODE_BEFORE_OWNER_EXPLICIT_APPROVAL"
+  },
+  "cross_feed_event_alignment": {
+    "status": "PARTIAL_HISTORICAL_PAIRED_SOURCE_COHORT_VERIFIED_NOT_FULL_ORIGINAL_LOGGER_POPULATION",
+    "provenance": "R9 original historical REAL/SYNTH same-minute/same-side/ordinal paired source, matched one-to-one to overfit teacher score; original Dukascopy raw source is independent execution research feed",
+    "pairs": 165630,
+    "source_server_dates": 149,
+    "source_months": "2026-01..2026-07",
+    "clock": "Jan-Feb Coinexx server minus 2h; March switches minus 2h to minus 3h beginning 2026-03-09; Apr-Jul minus 3h",
+    "original_logger_jan02": {
+      "real_rows": 341569,
+      "synth_rows": 330217,
+      "real_entry_markers": 1525,
+      "synth_entry_markers": 1083
+    },
+    "qa_groups_passed": 16,
+    "backend_research_record": "research/BETA_024_R9_REAL_SYNTH_OVERFIT_DUKASCOPY_CROSSFEED_AUDIT.md",
+    "full_236647_real_and_219342_synth_entry_population_join": false,
+    "synthetic_teacher_clock_causal_signal": false,
+    "funded_BETA015_replay": false,
+    "duplicate_event_identification_verified": false,
+    "independent_Dukascopy_tick_feed_validity": "VALID_CAUSAL_RESEARCH_FEED_DISTINCT_FROM_EXACT_BROKER_MT5_PARITY",
+    "August": "SEALED"
   }
 }
