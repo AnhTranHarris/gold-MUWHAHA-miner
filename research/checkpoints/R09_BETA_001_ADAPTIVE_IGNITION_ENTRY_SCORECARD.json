@@ -1,0 +1,145 @@
+{
+  "august_read": false,
+  "baseline_same_feed": {
+    "equity": -236165.8360000386,
+    "gl": -245050.9480000362,
+    "gp": 8885.111999999497,
+    "maxdd": 236165.8360000386,
+    "net": -236165.83600004023,
+    "peak": 0.0,
+    "trades": 246404,
+    "wins": 28789
+  },
+  "category": "ENTRY/ACTION",
+  "entry_logic": {
+    "cost_opportunity_gate": "Dukascopy spread <= $1.00 and spread / recent R9 S1 range <=0.65",
+    "early_ignition": "250ms direction aligned; 1s displacement > $0.04; 5s displacement > $0.18; observed 10-second-bar span <=12s",
+    "fee": "actual Bid/Ask spread embedded + $0.20 roundtrip extra commission",
+    "hold_exit": "R9 fixed: $0.30 initial stop, $0.10 trail activation, $0.03 trail, 30s max hold",
+    "r9_quality_gate": "completed S1 displacement/efficiency/range + completed M5 ATR retained"
+  },
+  "fee_stress": {
+    "extra_roundtrip_fee_base_usd": 0.2,
+    "net_improvement_pct_if_fee_0.30": 15.381152926113284,
+    "net_improvement_pct_if_fee_0.40": 14.743843749484638
+  },
+  "historical_R9_reference": {
+    "REAL_net_usd": -50285.28,
+    "SYNTH_net_usd": 309122.85,
+    "arithmetic_cross_feed_net_gap_proxy_closed_pct": 10.61306153536541,
+    "arithmetic_cross_feed_winner_gap_proxy_closed_pct": 3.2844700341404605,
+    "historical_net_gap_usd": 359408.13,
+    "historical_winning_trade_count_gap": 88751,
+    "warning": "Arithmetic proxies only. Dukascopy same-feed candidate P&L/wins are not directly comparable to Coinexx REAL/SYNTH tester outputs."
+  },
+  "id": "R09_BETA_001_ADAPTIVE_IGNITION_ENTRY",
+  "jan_jul": {
+    "gross_loss_reduction_pct_vs_same_feed_R9_control": 14.959044353503614,
+    "gross_loss_usd": -208393.66800002972,
+    "max_dd_reduction_pct_vs_same_feed_R9_control": 16.15144961102244,
+    "max_drawdown_usd": 198021.63000004247,
+    "net_loss_reduction_pct_vs_abs_same_feed_R9_control": 16.151449611026557,
+    "net_usd": -198021.6300000341,
+    "trades": 226696,
+    "win_rate": 0.1398524896778064,
+    "win_rate_change_pct_vs_same_feed_R9_control": 19.69923535576159,
+    "wins": 31704,
+    "wins_change_pct_vs_same_feed_R9_control": 10.125395116190216
+  },
+  "monthly": [
+    {
+      "gross_loss_usd": -27981.41200000438,
+      "gross_profit_usd": 1329.885999999909,
+      "max_drawdown_usd": 26651.52600000515,
+      "month": "2026-01",
+      "net_usd": -26651.52600000515,
+      "trades": 31250,
+      "win_rate": 0.134048,
+      "wins": 4189
+    },
+    {
+      "gross_loss_usd": -28263.326000003875,
+      "gross_profit_usd": 1893.358999999829,
+      "max_drawdown_usd": 26369.967000004384,
+      "month": "2026-02",
+      "net_usd": -26369.967000004384,
+      "trades": 27117,
+      "win_rate": 0.16041597521849763,
+      "wins": 4350
+    },
+    {
+      "gross_loss_usd": -49529.22400000933,
+      "gross_profit_usd": 3042.6360000002455,
+      "max_drawdown_usd": 46486.58800001094,
+      "month": "2026-03",
+      "net_usd": -46486.58800001094,
+      "trades": 49444,
+      "win_rate": 0.1605452633282097,
+      "wins": 7938
+    },
+    {
+      "gross_loss_usd": -27866.449000004675,
+      "gross_profit_usd": 1243.8529999998655,
+      "max_drawdown_usd": 26622.596000005266,
+      "month": "2026-04",
+      "net_usd": -26622.596000005266,
+      "trades": 30134,
+      "win_rate": 0.13486427291431605,
+      "wins": 4064
+    },
+    {
+      "gross_loss_usd": -25679.143000004264,
+      "gross_profit_usd": 1073.5209999998908,
+      "max_drawdown_usd": 24605.62200000478,
+      "month": "2026-05",
+      "net_usd": -24605.62200000478,
+      "trades": 31178,
+      "win_rate": 0.13272179100647893,
+      "wins": 4138
+    },
+    {
+      "gross_loss_usd": -28827.341000002725,
+      "gross_profit_usd": 1212.946999999886,
+      "max_drawdown_usd": 27614.394000003074,
+      "month": "2026-06",
+      "net_usd": -27614.394000003074,
+      "trades": 34522,
+      "win_rate": 0.1350443195643358,
+      "wins": 4662
+    },
+    {
+      "gross_loss_usd": -20246.77300000048,
+      "gross_profit_usd": 575.8360000000158,
+      "max_drawdown_usd": 19670.937000000526,
+      "month": "2026-07",
+      "net_usd": -19670.937000000526,
+      "trades": 23051,
+      "win_rate": 0.10251182161294521,
+      "wins": 2363
+    }
+  ],
+  "owner_gate": "Explicit owner approval required before MQL5 implementation; then owner-run Coinexx MT5 M1 Every tick based on real ticks and explicit final acceptance.",
+  "robustness_sibling_ADAPT_110_065": {
+    "dd_change_pct": -13.604513059201228,
+    "equity": -204036.6240000416,
+    "fee_030_improve_pct": 12.906214405087937,
+    "fee_030_net": -227146.0240000354,
+    "fee_040_improve_pct": 12.328473193146992,
+    "fee_040_net": -250255.4240000354,
+    "gl": -214728.13700003087,
+    "gp": 10691.512999999668,
+    "gross_loss_change_pct": -12.37408434755407,
+    "maxdd": 204036.6240000416,
+    "net": -204036.6240000354,
+    "net_improve_pct_abs_base": 13.604513059204447,
+    "net_improvement_usd": 32129.21200000483,
+    "passes_entry_10pct_gate": true,
+    "peak": 0.0,
+    "trades": 231094,
+    "win_rate": 0.140168070135962,
+    "win_rate_change_pct": 19.969339517807416,
+    "wins": 32392,
+    "wins_change_pct": 12.515196776546599
+  },
+  "status": "FORMAL_BETA_ENTRY_BREAKTHROUGH__OWNER_REVIEW_PENDING__NO_MQL5_YET"
+}
