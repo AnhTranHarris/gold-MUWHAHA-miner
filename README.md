@@ -40,3 +40,9 @@ Complete verified BETA 000–003 artifacts, scripts and evidence are in the [own
 ## Living research journal (checkpoint through BETA 006)
 
 - **[BETA Research Journal — chat decisions, science record and continuity](https://docs.google.com/document/d/1_zuLcHwsPnul8XtfLLlrK9-Mogk120qk0xWdlVWAzPQ/edit)** is a continuing Google Doc in the existing BETA_RESEARCH folder, **not a hand-off**. It documents BETA 000–006, data/owner constraints, exact verified/incomplete science units, and how to resume after a chat-length/stream failure. Read this journal AND live `beta/CURRENT_STATE.json`; confirm Drive/GitHub durability before resuming the first incomplete work unit. No background research is implied by storing the journal.
+
+## BETA 007 — Entry-first community research and bounded raw-tick diagnostic
+
+- [First-pass multilingual source reconstruction and negative entry controls](research/BETA_007_ENTRY_FIRST_RESEARCH_PASS.md): English/Russian/Chinese/Japanese/Korean sources, entry–hold–exit joint study, continuation vs failed-ignition reversal, ATR/spread gates, original tick-based one-day exploratory results. **Not an approved breakthrough.**
+- [Preregistered Jan 2 control](research/experiments/BETA_007_ENTRY_FIRST_PASS_PREREG.md) and [durable negative-result manifest](research/checkpoints/BETA_007_ENTRY_FIRST_PASS_JAN02_MANIFEST.json). Original pilot code/result and Jan 1 UTC source audit are in BETA_RESEARCH Drive.
+- Resume **`BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FULL_MONTH_SOURCE_CRC_AND_FEATURE_AUDIT`** as the first scientifically incomplete source/cache unit before claiming monthly or January–July robust tests; August sealed.
