@@ -1,3 +1,5 @@
+> **SUPERSEDED FEE ASSUMPTION / READ UPDATED BETA 011 AND BETA 012 FIRST.** This early $0.20 per 0.01-lot research scenario was written before the historical R9 Coinexx deal ledger's $0.01-per-side commission was reconciled. The archive arithmetic and zero-capital pathology are still meaningful *only under that old assumed fee*. Corrected Jan–Jul unlimited-credit P&L/winners use **$0.02 roundtrip** in [the verified fee revaluation](BETA_011_LOT001_PNL_ACCOUNTING_CORRECTION.md); the updated explicitly funded replay is [BETA 012](BETA_012_FUNDED_001LOT_FEE002_REAL_TICK_RECHECK.md). This older report MUST NOT be cited as the final commission-normalized result.
+
 # BETA 011 — 0.01-lot / $100,000 accounting audit of R09_BETA_001
 
 **Scope:** audit and correct interpretation of the previously published BETA 010 P&L, gross loss, and maximum drawdown. **No owner authorization of MQL5 and no approval of a BETA cumulative baseline.** Full January–July original Dukascopy execution from the archived research is preserved as a **counterfactual unlimited-credit sequence**, not a funded Coinexx Strategy Tester outcome. August sealed.
