@@ -4,7 +4,7 @@
   "lineage": "INDEPENDENT_BETA",
   "last_verified_durable_unit": "BETA_011_LOT01_MONETARY_RECONCILIATION_JAN_JUL",
   "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
-  "last_recorded_milestone": "BETA_011_FULL_SEVEN_MONTH_LOT_0_01_CASH_RECONCILIATION",
+  "last_recorded_milestone": "BETA_010_0.01_LOT_PNL_AUDIT_CORRECTED",
   "research_scope": [
     "ENTRY",
     "HOLD",
@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "0.01-lot PnL arithmetic reverified Jan-Jul on 57,527,562 raw Dukascopy ticks under 100 oz per 1 lot and $0.20/0.01 lot roundtrip: original scorecard exactly matches. Candidate remains highly loss-making; winning-trade count +10.13% at $0.20 fee but only +6.80% at $0.07; Coinexx account specs and margin/equity DD unverified, owner approval pending.",
+  "current_status": "R09_BETA_001 0.01-lot PnL audit corrected: Coinexx report shows $0.02 roundtrip commission, not $0.20. Corrected Jan-Jul candidate: net -$157,216.35; gross loss -$175,992.52; max DD $157,216.35. Economics improve >10% vs same-feed R9 control, win rate +14.98%, but winning-count +5.78%; prior formal promotion suspended pending requalification. No MQL5.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -236,9 +236,9 @@
     "owner_study_goal": "Repair real-tick ENTRY quality and absolute winning-trade count first; freeze Hold/Exit for controlled isolation; preserve separate BETA cumulative approval gates",
     "notes": "R9 REAL original Coinexx tester is historical research control; full January R9-like Dukascopy Python simplification IS NOT exact original broker EA. Mean observed Dukascopy spread ~$0.84/oz, point-size and execution different. Hold/Exit approximate frozen, no MQL5."
   },
-  "last_verified_research_document": "BETA_011_LOT01_MONETARY_RECONCILIATION_JAN_JUL",
-  "latest_research_record": "research/BETA_011_LOT01_MONETARY_RECONCILIATION.md",
-  "latest_research_record_drive": "https://drive.google.com/file/d/1HUBm_qR_-HVVDUojfdIbb3rEcP7Ybbxs/view",
+  "last_verified_research_document": "R09_BETA_001_LOT001_PNL_AUDIT_CORRECTED",
+  "latest_research_record": "research/whitepapers/R09_BETA_001_ADAPTIVE_IGNITION_ENTRY.md",
+  "latest_research_record_drive": "https://drive.google.com/file/d/1MRBjR6WKxyPwwvwk2JONBotFFnmuXNST/view",
   "last_scientific_campaign": {
     "name": "BETA010 adaptive ignition entry family Jan-Jul direct tick validation",
     "status": "FORMAL_ENTRY_BREAKTHROUGH_OWNER_REVIEW_PENDING",
@@ -255,11 +255,9 @@
   },
   "owner_review_pending_candidate": {
     "id": "R09_BETA_001_ADAPTIVE_IGNITION_ENTRY",
-    "gate": "CATEGORY_ENTRY_CANDIDATE__DOLLAR_ARITHMETIC_RECHECKED__FEE_SENSITIVE_WINNER_COUNT",
-    "requested_next_action": "Owner decides whether to authorize MQL5 candidate implementation under BETA 003/006. No code before explicit approval.",
-    "approved": false,
-    "broker_terms_verified": false,
-    "remark": "Do not automatically code MQL5; owner decides after receiving 0.01-lot conditional audit and Coinexx contract/commission checks."
+    "gate": "REQUALIFICATION_REQUIRED_AFTER_0.01_LOT_COMMISSION_CORRECTION",
+    "requested_next_action": "Do not code MQL5 yet. Requalify winning-count or owner explicitly revises entry-category gate.",
+    "approved": false
   },
   "monetary_audit_001": {
     "status": "FULL_JAN_JUL_ARITHMETIC_VERIFIED_CONDITIONAL_ON_COINEXX_SPEC",
@@ -277,5 +275,34 @@
     "margin_stopout_simulated": false,
     "actual_coinexx_account_contract_and_commission": "UNVERIFIED",
     "report": "research/BETA_011_LOT01_MONETARY_RECONCILIATION.md"
+  },
+  "pnl_audit_0_01_lot": {
+    "verified_from_mt5_report": true,
+    "lot": 0.01,
+    "commission_roundtrip_usd": 0.02,
+    "prior_wrong_commission_roundtrip_usd": 0.2,
+    "candidate": {
+      "net_usd": -157216.3510000078,
+      "gross_loss_usd": -175992.520000006,
+      "max_drawdown_usd": 157216.35100000314,
+      "wins": 61650,
+      "trades": 226696,
+      "win_rate": 0.2719501005752197
+    },
+    "same_feed_r9_control": {
+      "net_usd": -191813.12000001004,
+      "gross_loss_usd": -208514.2260000076,
+      "max_drawdown_usd": 191813.12000000573,
+      "wins": 58279,
+      "trades": 246404,
+      "win_rate": 0.23651807600525965
+    },
+    "improvement": {
+      "net_loss_reduction_pct": 18.036706248248517,
+      "gross_loss_reduction_pct": 15.596876349338572,
+      "max_dd_reduction_pct": 18.0367062482491,
+      "win_count_change_pct": 5.784244753684864,
+      "win_rate_change_pct": 14.980683577508923
+    }
   }
 }
