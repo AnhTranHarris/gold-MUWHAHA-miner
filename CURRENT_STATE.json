@@ -230,7 +230,7 @@
     "title": "BETA RESEARCH JOURNAL — Conversation History, Decisions & Durable Continuity (Checkpoint 006)",
     "url": "https://docs.google.com/document/d/1_zuLcHwsPnul8XtfLLlrK9-Mogk120qk0xWdlVWAzPQ/edit",
     "folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
-    "documented_milestones": "BETA_000 through BETA_012",
+    "documented_milestones": "BETA_000 through BETA_013 (documentation; science cursor unchanged)",
     "recovery_priority": "Read living journal and LIVE beta/CURRENT_STATE.json. R09_BETA_001 is owner-review pending; do not re-run completed Jan-Jul identical evidence. If owner authorizes, implement exact MQL5 candidate; otherwise continue entry research from this baseline while Hold/Exit stay frozen.",
     "note": "This journal checkpoint is documentation only, not full-month cache certification, profitable candidate, EA coding or approved baseline."
   },
@@ -350,5 +350,24 @@
       "correction_record": "research/BETA_011_PNL_LOT_AUDIT_CORRECTED.md",
       "status": "RESEARCH_CANDIDATE_ONLY_NOT_FORMAL_BREAKTHROUGH"
     }
-  ]
+  ],
+  "research_risk_profiles": {
+    "BETA_013": {
+      "status": "DOCUMENTED_HOUSE_RESEARCH_POLICY_NOT_CODED_OR_BACKTESTED",
+      "path": "research/BETA_013_PROP_STYLE_DAYTRADING_RISK_CHARTER.md",
+      "lot_size": 0.01,
+      "starting_capital_usd": 100000,
+      "concurrent_positions": 1,
+      "daily_soft_pause_usd": 4000,
+      "daily_hard_loss_usd": 5000,
+      "lifetime_equity_floor_usd": 90000,
+      "risk_day": "17:00 America/New_York DST-aware, NOT identical to published prop-firm reset clocks",
+      "per_trade_planned_risk_cap": "0.25% of current modeled equity; veto only, never vary 0.01 lot",
+      "high_impact_news_gate": "PROPOSED +/-5 min new-entry pause; requires verified point-in-time event calendar before simulation",
+      "shadow_replay_label": "UNFUNDED_COUNTERFACTUAL_ONLY",
+      "owner_directive": "initial relatively permissive prop-style rules; become stricter only after mature evidence and explicit owner decision",
+      "month_data": "Jan-Jul 2026; August SEALED",
+      "notes": "Existing BETA 009-012 results remain unchanged until a new risk-overlay tick backtest; actual target prop firm's rules supersede house profile if selected."
+    }
+  }
 }
