@@ -2,9 +2,9 @@
   "schema": "beta-research-status-v2",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "lineage": "INDEPENDENT_BETA",
-  "last_verified_durable_unit": "BETA_035_GH8_CLEANROOM_V8_OCO_REARM_R9_REAL_VS_SYNTH_CROSSFEED_81QA",
+  "last_verified_durable_unit": "BETA_039_SIGN_CORRECTED_CAUSAL_ROLLING_QUOTE_FRICTION_JANJUL_160QA_RESEARCH_ONLY",
   "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
-  "last_recorded_milestone": "BETA035_SAME_V8_STOP_OCO_REARM_RULE_REAL_MINUS539_SYNTH_PLUS922_JAN02_NO_PROMOTION",
+  "last_recorded_milestone": "BETA039_11P881PCT_SIGN_CORRECTED_COSTED_SHADOW_LOSS_REDUCTION_ALL7_NEGATIVE_NO_EA",
   "research_scope": [
     "ENTRY",
     "HOLD",
@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "BETA035 user V8 cleanroom source forensic + independent Jan2 R9 REAL vs generated SYNTH cross-quote reconstruction after BETA034 Jan17.5d five-family lifecycle + five-family V8 OCO/rearm screen. Preserved owner-supplied V8 high-confidence order flow from carson/v8-cleanroom-baseline, exact M1 50 Hunter pip/$0.50 old stop-band, $.50 original stop, $.20 trailing and opposite original-level same-minute only rearm; unknowable hidden indicators, center, activation/news/session left unverified. Jan1–Jan18 12UTC 4,205,709 original Dukascopy ticks BETA034 20 lifecycle +15 V8 order FSM all after-cost negative, 0 >10%, 222QA. Median at E060 14,174 source Dukascopy entry events observed Ask-Bid $0.687; only 193 entries <= $.50, literal V8 two-sided simultaneous pending bracket invalid in most minutes. Original R9 Coinexx REAL Jan02 341,569 ticklogger quotes vs SYNTH 330,217. BETA035 replay same literal simple V8/OCO/rearm/trailing logic on independently preserved quote streams: REAL 2662 closes, 960 wins, net -$539.42; SYNTH 1693 closes, 1186 wins, net +$921.62. All five parallel analogous settings negative REAL and positive SYNTH, confirming modeled quote-path sensitivity. THIS IS NOT REAL V8 EXE OR ORIGINAL R9 TRACE PARITY (source R9 actual entry events REAL1525,SYNTH1083). No BETA015 funded, no source-authorized .mq5, August SEALED; BETA005 17-layer feature-parity incomplete. Original full 17.5day Coinexx unselected teacher logs not all locally available. Next scientific unit BETA036 paired actual original order event-state attribution and structural M1 owner FSM with conditional hold/exits, genuine existing feed quotes, no oracle lookahead.",
+  "current_status": "BETA039 public/community-source modular research: 5 distinct Jan 17.5d specialist families x 3 cases + 4 adaptive cost methods x3 + 5 risky combos, using original Dukascopy Jan1-Jan18 12UTC 4,205,709 quote ticks. BETA039 source audit revealed BETA026 quote_pressure1 already signed by original entry side; BETA036-038 historical raw-quote after second side multiply was improperly labelled directional. Repeated short-Jan and full Jan-Jul with sign CORRECTED and NO threshold retune. Rolling P89 of previous256 qualified E060 spreads shift1, min128, fallback .87, clamp .73..1.50; veto if current spread>cap OR spread>cap-.05 with ORIGINAL signed1s quote_pressure<-.30 AND completed 15s efficiency<.25. Jan corrected +11.403% loss reduction and 91.283% winners retained. Jan-Jul 57,527,562 original quotes; E060/L30 0.01lot 1oz .02rt baseline -$134000.72 /183120 closes/43282 positive; corrected rolling P89 -$118080.34 /166394 closes/39708 positive; +$15920.38/11.881% less negative net, 91.743% original winner count retained/90.866% trade count, GL improves $20543.51; 7/7 individual months still loss-making, February local winner retention 87.945%. Funded POST-CLOSE $100k->90k proxy hits on Jan16 control /Jan20 candidate, true equity floor earlier possible, NOT BETA015 funded and Jan-Jul shadow not capital feasible. 318 previous and 160 repaired-sign independent QA pass, ZIP 49-file all entries checksum/CRC pass, 7 compressed original market source files external. NO official MQL5 or Coinexx tester parity, no original R9 full teacher or BETA005 17-layer cache parity; August SEALED. Candidate is unapproved supportive cost gate only; no positive-edge strategy, owner must authorize MQL5.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -731,6 +731,66 @@
         "authorized MQL5 compile + Coinexx tester user report"
       ],
       "August": "SEALED"
+    },
+    {
+      "unit_id": "BETA_039_SIGN_CORRECTED_CAUSAL_ROLLING_QUOTE_FRICTION_JANJUL_160QA_RESEARCH_ONLY",
+      "status": "FULL_JANJUL_ORIGINAL_TICK_BOUNDED_HISTORICAL_SOURCE_RESEARCH_PASS_ONLY__ZERO_EA_PROMOTION",
+      "study_dates_utc": "2026-01-01T00:00:00Z through 2026-07-31T23:59:59Z",
+      "stage1_window_start_utc": "2026-01-01T00:00:00Z",
+      "stage1_window_end_exclusive_utc": "2026-01-18T12:00:00Z",
+      "original_Jan_stage1_tick_rows": 4205709,
+      "original_JanJul_quote_rows": 57527562,
+      "source": "Dukascopy original XAUUSD bid/ask recorded quote ticks",
+      "first_cycle_E060_research_control_only": true,
+      "input_source_semantic_fix": "BETA026 quote_pressure1 already original_side-signed, remove second side multiplication in BETA037 gate helper by passing original signed input directly",
+      "student_source_formula": "rolling observed previous 256 E060 eligible spreads, lag1, 89th empirical pct, min128 fallback .87 clamp[.73,1.50], veto current spread>cap or edge spread>cap-.05 and original signed quote_pressure1<-.30 and complete eff15<.25",
+      "initial_corrected_Jan_loss_reduction_pct": 11.403,
+      "source_baseline": {
+        "net_usd": -134000.72,
+        "close_count": 183120,
+        "winning_closes": 43282,
+        "gross_loss_usd": -178111.21
+      },
+      "corrected_candidate": {
+        "net_usd": -118080.34,
+        "close_count": 166394,
+        "winning_closes": 39708,
+        "gross_loss_usd": -157567.69,
+        "less_negative_net_usd": 15920.38,
+        "less_negative_net_pct": 11.881,
+        "absolute_winner_retention_pct": 91.743,
+        "trade_retention_pct": 90.866,
+        "February_local_winner_retention_pct": 87.945
+      },
+      "seven_month_profitable_months": 0,
+      "all_month_net_improved": true,
+      "optimistic_closed_trade_January_90k_floor_crossing": {
+        "control": "2026-01-16T13:09:30.704Z",
+        "candidate": "2026-01-20T03:41:35.452Z",
+        "floating_equity_not_modelled": true
+      },
+      "prior_p89_raw_quote_rule_retired_as_directional_result": {
+        "measured_full7pct": 12.388,
+        "reinterpreted_as_raw_market_pressure_not_corrected_direction": false
+      },
+      "bETA038_rejected_compound_best": {
+        "Jan_loss_reduction_pct": 24.789,
+        "winner_count_retention_pct": 80.751,
+        "model_historical_sign_bug_unfixed": true
+      },
+      "qa_independent_old": 318,
+      "qa_independent_sign_corrected": 160,
+      "funded_BETA015_implemented": false,
+      "MT5_native_same_broker_equivalence": false,
+      "BETA005_materialized_17layer_feature_parity": false,
+      "research_doc": "research/BETA_039_SIGN_CORRECTED_ADAPTIVE_FRICTION_AND_FIVE_FAMILY_JANJUL_RESULTS.md",
+      "full_repro_bundle": "BETA039_CAUSAL_MULTISTRATEGY_REPRO_BUNDLE.zip",
+      "repro_bundle_files": 49,
+      "repro_bundle_sha256": "e920b115d54d8e5f0ffae811a792dcfbb23545c8932a1b038c9a5b71c790ab0b",
+      "repro_manifest_sha256": "3725e5b86ab9ee2ea121a8e513c004cd65af6654127ceb43f0579f8f3dbb9d88",
+      "original_market_bytes_included": false,
+      "August": "SEALED",
+      "owner_approved_beta_ea": false
     }
   ],
   "design_hypotheses": {
@@ -783,8 +843,8 @@
     "owner_study_goal": "Repair real-tick ENTRY quality and absolute winning-trade count first; freeze Hold/Exit for controlled isolation; preserve separate BETA cumulative approval gates",
     "notes": "R9 REAL original Coinexx tester is historical research control; full January R9-like Dukascopy Python simplification IS NOT exact original broker EA. Mean observed Dukascopy spread ~$0.84/oz, point-size and execution different. Hold/Exit approximate frozen, no MQL5."
   },
-  "last_verified_research_document": "research/BETA_035_GOLD_HUNTER_V8_ORDER_STATE_AND_REAL_SYNTH_FORENSIC.md",
-  "latest_research_record": "research/BETA_035_GOLD_HUNTER_V8_ORDER_STATE_AND_REAL_SYNTH_FORENSIC.md",
+  "last_verified_research_document": "research/BETA_039_SIGN_CORRECTED_ADAPTIVE_FRICTION_AND_FIVE_FAMILY_JANJUL_RESULTS.md",
+  "latest_research_record": "research/BETA_039_SIGN_CORRECTED_ADAPTIVE_FRICTION_AND_FIVE_FAMILY_JANJUL_RESULTS.md",
   "latest_research_record_drive": "https://drive.google.com/file/d/1xLx4uJK8pSpRez68vS2k59--cWgiF96B/view",
   "last_scientific_campaign": {
     "name": "BETA017 completed-bar M5/H1 regime exploratory screen",
@@ -1233,7 +1293,7 @@
     "entry_percent_not_comparable_to_R9_SYNTH_winrate": true,
     "august": "SEALED"
   },
-  "next_bounded_unit": "BETA_036_BROKER_COMPATIBLE_M1_ORDER_STATE_CONDITIONAL_ROUTER_AND_ORIGINAL_R9_CLOCK_FORENSICS",
+  "next_bounded_unit": "BETA_040_PRICE_ACTION_POSITIVE_EXPECTANCY_ON_ADMITTED_TRADES_WITH_STATE_AWARE_HOLD_EXIT_AND_BETA015_RISK",
   "active_beta_research_funnel": {
     "protocol": "research/BETA_033_OWNER_MODULAR_ADAPTIVE_TRIPLE_LANE_POLICY.md",
     "entry_hold_exit_research_weights": {
@@ -1345,6 +1405,26 @@
     "BETA005_feature_parity_certified": false,
     "BETA015_funded_replay": false,
     "approved_new_MQL5": false,
+    "August": "SEALED"
+  },
+  "BETA039_research_handoff": {
+    "protocol": "research/BETA_033_OWNER_MODULAR_ADAPTIVE_TRIPLE_LANE_POLICY.md",
+    "report": "research/BETA_039_SIGN_CORRECTED_ADAPTIVE_FRICTION_AND_FIVE_FAMILY_JANJUL_RESULTS.md",
+    "full_repro_bundle": "BETA039_CAUSAL_MULTISTRATEGY_REPRO_BUNDLE.zip",
+    "zip_sha256": "e920b115d54d8e5f0ffae811a792dcfbb23545c8932a1b038c9a5b71c790ab0b",
+    "manifest_in_zip": "BETA039_BUNDLE_MANIFEST.json",
+    "investor_brief_in_zip": "BETA039_INVESTOR_DECISION_BRIEF.md",
+    "mt5_engineering_spec_in_zip": "BETA039_SOURCE_THEORY_AND_MT5_ENGINEERING.md",
+    "reproducibility_commands_in_zip": "BETA039_REPRODUCIBILITY_HANDOFF.md",
+    "conditional_research_accepted_only": "SOURCE_SIGNED_TRAILING_EVENT_P89_SPREAD_VETO_11P881PCT_LOSS_REDUCTION_ALLNETNEGATIVE",
+    "unresolved": [
+      "BETA015-funded exact floating equity/NY17 guard",
+      "BETA005 17-layer cached feature parity",
+      "full original Coinexx R9 rearm/ticklogger unselected 149day",
+      "native Coinexx M1 tester after owner approval",
+      "positive realized return/expectancy model",
+      "untouched chronological independent forward validation"
+    ],
     "August": "SEALED"
   }
 }
