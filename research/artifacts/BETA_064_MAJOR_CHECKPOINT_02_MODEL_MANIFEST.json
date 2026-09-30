@@ -1,0 +1,230 @@
+{
+  "schema": "beta064-major-checkpoint-02-model-manifest-v1",
+  "checkpoint": "BETA064_MAJOR_CHECKPOINT_02_SESSION_AWARE_ENTRY_HOLD",
+  "branch": "beta",
+  "status": "FROZEN_RESEARCH_MODELS__MT5_PRODUCTION_REQUIRES_DURABLE_EXACT_MODEL_EXPORT",
+  "base_router": {
+    "artifact_runtime_name": "beta064_causal_router_janfit.joblib",
+    "sha256": "ba68874a69ce19db0768e8ebe8feefd3a6ec34c1bb076437815452366f9057cf",
+    "durable_binary_in_repo": false,
+    "class": "lightgbm.sklearn.LGBMClassifier",
+    "outputs": {
+      "ms": "P_survive",
+      "mw": "P_first_passage"
+    },
+    "params": {
+      "n_estimators": 180,
+      "num_leaves": 23,
+      "max_depth": -1,
+      "learning_rate": 0.045,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "reg_lambda": 2,
+      "min_child_samples": 80,
+      "n_jobs": 4,
+      "verbosity": -1
+    },
+    "feature_order": [
+      "spread",
+      "r15",
+      "r30",
+      "r60",
+      "r300",
+      "r900",
+      "r3600",
+      "r14400",
+      "eff15",
+      "eff60",
+      "eff300",
+      "eff900",
+      "eff3600",
+      "vol60",
+      "vol300",
+      "atr60",
+      "atr300",
+      "tick_z",
+      "qp",
+      "qv",
+      "vwap_z",
+      "range_ratio",
+      "body",
+      "range",
+      "side",
+      "raw_score",
+      "sp_E10_COMPRESSION_RELEASE",
+      "sp_E11_KINETIC_IGNITION",
+      "sp_E12_FAILED_EXPANSION",
+      "sp_E1_MACRO_TREND",
+      "sp_E2_PULLBACK_REACCEL",
+      "sp_E3_ORB",
+      "sp_E4_VWAP_PULLBACK",
+      "sp_E5_VWAP_RECLAIM",
+      "sp_E6_VALUE_REVERSION",
+      "sp_E7_SWEEP_RECLAIM",
+      "sp_E8_LEVEL_BOUNCE",
+      "sp_E9_LEVEL_BREAK"
+    ],
+    "gates": {
+      "p_survive_min": 0.88,
+      "entry_score_min": 0.3,
+      "entry_score_formula": "P_survive * P_first_passage"
+    }
+  },
+  "session_models": {
+    "artifact_runtime_name": "beta064_session_entry_models.joblib",
+    "sha256": "67290bb0f7039c4bbf0dd0233194d689837829d724700b56ab1e902639fa3ea8",
+    "durable_binary_in_repo": false,
+    "sessions": [
+      "AUSTRALIA",
+      "ASIA",
+      "MIDEAST",
+      "EUROPE",
+      "UK",
+      "NY"
+    ],
+    "model_pair": [
+      "P_survive",
+      "P_first_passage"
+    ],
+    "common_params": {
+      "n_estimators": 140,
+      "num_leaves": 15,
+      "learning_rate": 0.04,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "reg_lambda": 4,
+      "min_child_samples": 60,
+      "n_jobs": 4,
+      "verbosity": -1
+    },
+    "common_features": [
+      "spread",
+      "r15",
+      "r30",
+      "r60",
+      "r300",
+      "r900",
+      "r3600",
+      "r14400",
+      "eff15",
+      "eff60",
+      "eff300",
+      "eff900",
+      "eff3600",
+      "vol60",
+      "vol300",
+      "atr60",
+      "atr300",
+      "tick_z",
+      "qp",
+      "qv",
+      "vwap_z",
+      "range_ratio",
+      "body",
+      "range",
+      "side",
+      "raw_score",
+      "rel_open"
+    ],
+    "archetype_features": {
+      "AUSTRALIA": [
+        "a_FAILED_BREAK",
+        "a_ORB_ACCEPT",
+        "a_SVWAP_RECLAIM",
+        "a_SWEEP_RECLAIM"
+      ],
+      "ASIA": [
+        "a_COMPRESSION_RELEASE",
+        "a_FAILED_BREAK",
+        "a_ORB_ACCEPT",
+        "a_SVWAP_RECLAIM",
+        "a_SWEEP_RECLAIM"
+      ],
+      "MIDEAST": [
+        "a_FAILED_BREAK",
+        "a_ORB_ACCEPT",
+        "a_SVWAP_RECLAIM",
+        "a_SWEEP_RECLAIM"
+      ],
+      "EUROPE": [
+        "a_FAILED_BREAK",
+        "a_ORB_ACCEPT",
+        "a_SVWAP_RECLAIM",
+        "a_SWEEP_RECLAIM"
+      ],
+      "UK": [
+        "a_FAILED_BREAK",
+        "a_ORB_ACCEPT",
+        "a_SVWAP_RECLAIM",
+        "a_SWEEP_RECLAIM"
+      ],
+      "NY": [
+        "a_COMPRESSION_RELEASE",
+        "a_FAILED_BREAK",
+        "a_ORB_ACCEPT",
+        "a_SVWAP_RECLAIM",
+        "a_SWEEP_RECLAIM"
+      ]
+    },
+    "thresholds": {
+      "AUSTRALIA": 0.92,
+      "ASIA": 0.9,
+      "MIDEAST": 0.915,
+      "EUROPE": 0.91,
+      "UK": 0.925,
+      "NY": 0.925
+    },
+    "precheck": {
+      "p_survive_min": 0.89,
+      "economic_score_min": 0.08
+    },
+    "eligible_specialists": [
+      "E5_VWAP_RECLAIM",
+      "E6_VALUE_REVERSION",
+      "E7_SWEEP_RECLAIM",
+      "E9_LEVEL_BREAK",
+      "E10_COMPRESSION_RELEASE",
+      "E11_KINETIC_IGNITION",
+      "E12_FAILED_EXPANSION"
+    ]
+  },
+  "hold_model": {
+    "durable_binary_in_repo": false,
+    "training_population": "Jan FIT; proposals with P_survive >= 0.80 and entry_score >= 0.30; unresolved at checkpoint; survived to checkpoint",
+    "class": "lightgbm.sklearn.LGBMClassifier",
+    "params": {
+      "n_estimators": 140,
+      "num_leaves": 15,
+      "learning_rate": 0.04,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "reg_lambda": 3,
+      "min_child_samples": 50,
+      "n_jobs": 4,
+      "verbosity": -1
+    },
+    "threshold": 0.6185642603486833,
+    "output": "P(favorable first passage post-checkpoint | unresolved survivor)",
+    "mt5_blocker": "Exact frozen Hold model/tree export and hash must be created before official MQL5 encoding."
+  },
+  "research_script_sha256": {
+    "beta064_causal_core.py": "0193bb6ce957ab6ff93a6b4875c3f086c99275483f6205070e9cc49e55797e57",
+    "beta064_multidesk_v2.py": "9382fcd88ad794bbddc420e9f52eb8f11b2d87a0f3f11cdd4a577906fe9fc3a8",
+    "beta064_frozen_monthly_ps088_hold08.py": "28e6ae245be3adef5a92116d425206ff3194b839c9b2a6ee6eeed2d0e607eaa8",
+    "beta064_session_entries.py": "424794df3e87404330f825f7b506ca485546e50823cd185aaa63603e092de319",
+    "beta064_session_gapfill_opt.py": "1d74a42122b7373c8e71ba8abc66f6ae2549c74faf5e1e4d91bfab1cee8e17d2",
+    "beta064_session_gapfill_lomo.py": "3fed99d72f2521823f8335bc749459ada80fbc96c3829bd3e9fec652e597cdb3"
+  },
+  "result_sha256": {
+    "BETA064_SESSION_GAPFILL_MONTHLY.csv": "a8c05531178d8fd154a90802e9c4ad82a311933fea84b36cf5f0f1f79ce78226",
+    "BETA064_SESSION_GAPFILL_LOMO.csv": "7631470b0f9e9fa9e0427102be5affa6ee6db9fd3c89b009c81f34c2ec96aee0",
+    "BETA064_SESSION_GAPFILL_CONFIG.txt": "55c354a0df8c24dc2b6cb85250443038533a04c7a5ac23ed6c7d876bdf9c2eae"
+  },
+  "production_hard_stops": [
+    "Do not retrain or replace frozen models and still call result Major Checkpoint 02.",
+    "Do not begin official MQL5 encoding until exact Entry/session model exports are durably archived.",
+    "Do not encode Hold model until exact frozen Hold tree/model is exported and hashed.",
+    "Do not invent Hold+Exit.",
+    "Do not open August."
+  ]
+}
