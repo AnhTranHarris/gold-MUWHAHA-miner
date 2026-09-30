@@ -1,8 +1,8 @@
 {
-  "schema": "beta064-major-checkpoint-02-model-manifest-v1",
+  "schema": "beta064-major-checkpoint-02-model-manifest-v2",
   "checkpoint": "BETA064_MAJOR_CHECKPOINT_02_SESSION_AWARE_ENTRY_HOLD",
   "branch": "beta",
-  "status": "FROZEN_RESEARCH_MODELS__DURABLY_ARCHIVED_IN_GOOGLE_DRIVE__MT5_PARITY_REQUIRED",
+  "status": "FROZEN_RESEARCH_MODELS__CORRECTED_V2_DURABLY_ARCHIVED__MT5_PARITY_REQUIRED",
   "base_router": {
     "artifact_runtime_name": "beta064_causal_router_janfit.joblib",
     "sha256": "ba68874a69ce19db0768e8ebe8feefd3a6ec34c1bb076437815452366f9057cf",
@@ -71,9 +71,12 @@
     }
   },
   "session_models": {
-    "artifact_runtime_name": "beta064_session_entry_models.joblib",
-    "sha256": "67290bb0f7039c4bbf0dd0233194d689837829d724700b56ab1e902639fa3ea8",
+    "role": "AUTHORITATIVE_FINAL_SESSION_CONTEXT_ROUTER_USED_BY_5070_TRADE_CHECKPOINT",
+    "artifact_runtime_name": "beta064_ckpt02b_session_router_models.joblib",
+    "sha256": "bb985b1461da3f44eff43742d1b67fb8875f6b5742333df09ccade9a5250dc78",
     "durable_binary_in_repo": false,
+    "durable_in_freeze_bundle_v2": true,
+    "class": "lightgbm.sklearn.LGBMClassifier",
     "sessions": [
       "AUSTRALIA",
       "ASIA",
@@ -82,89 +85,44 @@
       "UK",
       "NY"
     ],
-    "model_pair": [
-      "P_survive",
-      "P_first_passage"
+    "outputs": [
+      "session_p_surv",
+      "session_p_win"
     ],
     "common_params": {
-      "n_estimators": 140,
+      "n_estimators": 120,
       "num_leaves": 15,
       "learning_rate": 0.04,
       "subsample": 0.8,
       "colsample_bytree": 0.8,
       "reg_lambda": 4,
-      "min_child_samples": 60,
+      "min_child_samples": 100,
       "n_jobs": 4,
       "verbosity": -1
     },
-    "common_features": [
-      "spread",
-      "r15",
-      "r30",
-      "r60",
-      "r300",
-      "r900",
-      "r3600",
-      "r14400",
-      "eff15",
-      "eff60",
-      "eff300",
-      "eff900",
-      "eff3600",
-      "vol60",
-      "vol300",
-      "atr60",
-      "atr300",
-      "tick_z",
-      "qp",
-      "qv",
-      "vwap_z",
-      "range_ratio",
-      "body",
-      "range",
-      "side",
-      "raw_score",
-      "rel_open"
+    "feature_contract": [
+      "p_surv",
+      "p_win",
+      "entry_score",
+      "rel_open",
+      "open90",
+      "session_count",
+      "ov_AUSTRALIA",
+      "ov_ASIA",
+      "ov_MIDEAST",
+      "ov_EUROPE",
+      "ov_UK",
+      "ov_NY",
+      "specialist one-hot columns present in the frozen per-session training matrix"
     ],
-    "archetype_features": {
-      "AUSTRALIA": [
-        "a_FAILED_BREAK",
-        "a_ORB_ACCEPT",
-        "a_SVWAP_RECLAIM",
-        "a_SWEEP_RECLAIM"
-      ],
-      "ASIA": [
-        "a_COMPRESSION_RELEASE",
-        "a_FAILED_BREAK",
-        "a_ORB_ACCEPT",
-        "a_SVWAP_RECLAIM",
-        "a_SWEEP_RECLAIM"
-      ],
-      "MIDEAST": [
-        "a_FAILED_BREAK",
-        "a_ORB_ACCEPT",
-        "a_SVWAP_RECLAIM",
-        "a_SWEEP_RECLAIM"
-      ],
-      "EUROPE": [
-        "a_FAILED_BREAK",
-        "a_ORB_ACCEPT",
-        "a_SVWAP_RECLAIM",
-        "a_SWEEP_RECLAIM"
-      ],
-      "UK": [
-        "a_FAILED_BREAK",
-        "a_ORB_ACCEPT",
-        "a_SVWAP_RECLAIM",
-        "a_SWEEP_RECLAIM"
-      ],
-      "NY": [
-        "a_COMPRESSION_RELEASE",
-        "a_FAILED_BREAK",
-        "a_ORB_ACCEPT",
-        "a_SVWAP_RECLAIM",
-        "a_SWEEP_RECLAIM"
-      ]
+    "authority_rule": "Among active session models, choose the session with maximum session_p_surv * session_p_win; if no active session, fallback to base probabilities.",
+    "blend": "ps_b75 = 0.25*p_surv + 0.75*session_p_surv; pw_b75 = 0.25*p_win + 0.75*session_p_win; es_b75 = ps_b75*pw_b75",
+    "verification": {
+      "authority_identity_match": 1,
+      "max_abs_session_p_surv_difference": 0,
+      "max_abs_ps_b75_difference": 0,
+      "max_abs_es_b75_difference": 0,
+      "reference_state": "beta064_session_meta_all.pkl"
     },
     "thresholds": {
       "AUSTRALIA": 0.92,
@@ -272,18 +230,27 @@
     "BETA064_SESSION_GAPFILL_CONFIG.txt": "55c354a0df8c24dc2b6cb85250443038533a04c7a5ac23ed6c7d876bdf9c2eae"
   },
   "production_hard_stops": [
-    "Verify the Google Drive model-freeze bundle SHA-256 before use.",
+    "Use only the corrected V2 model-freeze bundle; V1 is superseded.",
+    "Verify V2 SHA-256 ccfc0d18d733e97b18bbd183c6cc56b6bcac0f1c2c6c525bda596d0406eb98d3 before use.",
     "Translate/load the exact frozen model trees; do not retrain or approximate and still call result Major Checkpoint 02.",
     "Do not invent HOLD→EXIT.",
     "Do not substitute Alpha/GAMMA behavior.",
     "Do not open August."
   ],
   "model_freeze_bundle": {
-    "drive_file_id": "1lDtCAJQfPlmiH-6Kneo4PyF_4FCFs3tm",
-    "drive_url": "https://drive.google.com/file/d/1lDtCAJQfPlmiH-6Kneo4PyF_4FCFs3tm/view",
+    "drive_file_id": "1phzsMX0SKESoqJ4O53vI9nE7fffrX6T-",
+    "drive_url": "https://drive.google.com/file/d/1phzsMX0SKESoqJ4O53vI9nE7fffrX6T-/view",
     "folder_id": "11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
-    "filename": "BETA064_MAJOR_CHECKPOINT_02_ENTRY_HOLD_MODEL_FREEZE_BUNDLE.zip",
-    "sha256": "b6980a4a7a0f771349837619e1c3c2eda1cd512a77fbd3e0c0ab8d6c8a1bd830",
-    "contents": "exact base Entry joblib; exact six-session Entry model joblib; exact Hold model joblib; deterministic LightGBM tree text exports; key Python scripts; monthly/LOMO results; SHA256SUMS"
+    "filename": "BETA064_MAJOR_CHECKPOINT_02_ENTRY_HOLD_MODEL_FREEZE_BUNDLE_V2.zip",
+    "sha256": "ccfc0d18d733e97b18bbd183c6cc56b6bcac0f1c2c6c525bda596d0406eb98d3",
+    "status": "AUTHORITATIVE_CORRECTED_V2",
+    "supersedes_v1_sha256": "b6980a4a7a0f771349837619e1c3c2eda1cd512a77fbd3e0c0ab8d6c8a1bd830",
+    "contents": "exact base Entry models; exact final six-session context-router models; exact Hold model; deterministic LightGBM tree exports; scripts; frozen result tables; SHA256SUMS"
+  },
+  "non_authoritative_session_archetype_prototype": {
+    "artifact_runtime_name": "beta064_session_entry_models.joblib",
+    "sha256": "67290bb0f7039c4bbf0dd0233194d689837829d724700b56ab1e902639fa3ea8",
+    "status": "SUPERSEDED_PROTOTYPE__NOT_THE_MODEL_USED_BY_MAJOR_CHECKPOINT_02_GAPFILL",
+    "warning": "Do not use this prototype for MT5 parity of Major Checkpoint 02."
   }
 }
