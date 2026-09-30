@@ -267,6 +267,8 @@ Current Python checkpoint uses LightGBM classifiers.
 The exact model classes, feature orders, parameters and current artifact hashes are recorded in:
 `research/artifacts/BETA_064_MAJOR_CHECKPOINT_02_MODEL_MANIFEST.json`
 
+Exact frozen model artifacts are durably archived in the project Google Drive research folder. Verify the bundle SHA-256 before use.
+
 MT5 production may proceed only by one of these verified routes:
 
 1. exact deterministic translation of every frozen tree to MQL5 and parity check against Python probabilities; or
@@ -336,8 +338,7 @@ A future implementation is invalid if it:
 These are explicit blockers, not invitations to guess:
 
 - Hold→Exit production policy is not researched/frozen.
-- Exact learned model binaries are not yet durably stored in the repository; hashes and training/feature manifest are frozen, but binary/tree export must be durably archived before official MQL5 encoding.
-- The current Hold classifier itself must be exported/fingerprinted durably before coding.
+- Exact Entry, six-session Entry, and Hold model binaries plus deterministic LightGBM tree exports are now frozen in Google Drive bundle `BETA064_MAJOR_CHECKPOINT_02_ENTRY_HOLD_MODEL_FREEZE_BUNDLE.zip`, Drive file ID `1lDtCAJQfPlmiH-6Kneo4PyF_4FCFs3tm`, SHA-256 `b6980a4a7a0f771349837619e1c3c2eda1cd512a77fbd3e0c0ab8d6c8a1bd830`. The bundle hash must be verified before MT5 translation.
 - Full BETA005 feature/cache parity remains an unresolved historical gate.
 - Coinexx exact contract/tick-value/commission/slippage/stop-level parity remains to be certified.
 - BETA015 funded exact-risk proof remains mandatory before any investor-facing claim.
