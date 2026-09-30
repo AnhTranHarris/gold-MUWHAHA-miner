@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "Major Checkpoint 02 remains the immutable BETA Entry→Hold control at 5,070 Jan-Jul trades / 88.44% weighted survivability / 7 of 7 months >85%. C02C remains a promising 5,519-trade child but is not freeze-ready; C02D introduced E13 as probationary shadow only and E14-E16 as shadow-only. C02G validates first/second/third derivative state as useful session-aware pre-entry context, not as standalone entry authority: global D1 5s has best mean AUC, D2 has best weighted selected-tail survival, but all broad held-out derivative tails remain far below 85%. E6 derivative order is session-specific: Australia D3 5s; Asia D2 5s; Middle East D3+1s micro; Europe no derivative authority; UK D1 5s; NY D3+1s micro. Waiting after a parent signal for derivative confirmation reduced survival in every month and is rejected. Next unit is a same-timestamp session derivative-state router plus coverage-deficit/novelty opportunity bus. Hold→Exit deferred; August SEALED; Alpha/GAMMA prohibited. Complete end-of-chat Google Drive handoff created and verified: https://docs.google.com/document/d/11CMSl5Zj8HgFawK5mczHg0xjwhglEKY_i418-XCMCj8/edit?usp=drivesdk",
+  "current_status": "Major Checkpoint 02 remains the immutable BETA Entry→Hold control at 5,070 trades / 88.44% weighted survivability / 7 of 7 months >85%. C02E derivative research is complete but is NOT a new checkpoint. Raw session-aware D2/D3 Entry clocks failed (about 17–26% survival). Derivative microstructure becomes useful only after a valid parent Entry thesis: on C02C selected trades, cross-fitted derivative meta-admission improves weighted survivability from 88.20% to 89.20% while retaining ~92.3% of trades and fixes February held-out survival to ~87.14%. Global derivative order is D1>D3≈D2; stable session pairs are MIDEAST-D2, NY-D1 and UK-D3. Parent-specific evidence favors E6-D1, E9-D1, E10-D3 and E12-D3; derivatives hurt E5/E7, and E11 must not be expanded because it is already saturated. Next unit is C02F derivative coverage-utility expansion: spend derivative-created survivability reserve only on independently validated under-covered E6/E9/E10/E12 cells. Alpha/GAMMA prohibited; Hold→Exit deferred; August sealed; no MQL5 change.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -941,76 +941,108 @@
     "owner_study_goal": "Repair real-tick ENTRY quality and absolute winning-trade count first; freeze Hold/Exit for controlled isolation; preserve separate BETA cumulative approval gates",
     "notes": "R9 REAL original Coinexx tester is historical research control; full January R9-like Dukascopy Python simplification IS NOT exact original broker EA. Mean observed Dukascopy spread ~$0.84/oz, point-size and execution different. Hold/Exit approximate frozen, no MQL5."
   },
-  "last_verified_research_document": "research/BETA_064_CHECKPOINT_02G_SESSION_DERIVATIVE_STATE_OPPORTUNITY_RESEARCH.md",
-  "latest_research_record": "research/BETA_064_CHECKPOINT_02G_SESSION_DERIVATIVE_STATE_OPPORTUNITY_RESEARCH.md",
+  "last_verified_research_document": "research/BETA_064_CHECKPOINT_02E_SESSION_AWARE_DERIVATIVE_ENTRY_CHILDREN_AND_HANDOFF.md",
+  "latest_research_record": "research/BETA_064_CHECKPOINT_02E_SESSION_AWARE_DERIVATIVE_ENTRY_CHILDREN_AND_HANDOFF.md",
   "latest_research_record_drive": "https://drive.google.com/file/d/1xLx4uJK8pSpRez68vS2k59--cWgiF96B/view",
   "last_scientific_campaign": {
-    "id": "BETA064_CHECKPOINT_02G_SESSION_DERIVATIVE_STATE_OPPORTUNITY_RESEARCH",
-    "status": "DIAGNOSTIC_COMPLETE__MAJOR_CHECKPOINT_02_UNCHANGED",
-    "parent": "BETA064_CHECKPOINT_02D_OPPORTUNITY_EXPANSION_AND_FOUR_SHADOW_SPECIALISTS",
-    "alpha_gamma_dependencies": "NONE__PROHIBITED",
-    "raw_tick_months": "2026-01 through 2026-07 only",
-    "raw_quote_rows": {
-      "Jan": 9135063,
-      "Feb": 7538340,
-      "Mar": 9433180,
-      "Apr": 7470571,
-      "May": 8333166,
-      "Jun": 8201407,
-      "Jul": 7415842
-    },
-    "global_derivative_order_lomo": {
-      "BASE": {
-        "mean_auc": 0.598637,
-        "weighted_selected_survival": 0.677903
+    "id": "BETA064_CHECKPOINT_02E_SESSION_AWARE_DERIVATIVE_ENTRY_CHILDREN",
+    "status": "RESEARCH_COMPLETE__ARCHITECTURAL_DIRECTION_ACCEPTED__MAJOR_CHECKPOINT_02_UNCHANGED",
+    "frozen_control": "BETA064_MAJOR_CHECKPOINT_02_SESSION_AWARE_ENTRY_HOLD",
+    "research_parent": "BETA064_CHECKPOINT_02C_SESSION_E6_AND_DEFICIT_ROUTER_REFINEMENT",
+    "owner_question": "Do second/third-order derivatives of Entry specialists help opportunity discovery while preserving preferred >=85% Entry->Hold survivability, especially when session-aware like their parents?",
+    "conclusion": "YES as parent-aware/session-aware admission/timing children; NO as standalone Entry clocks.",
+    "raw_derivative_children": {
+      "E5D2": {
+        "candidates": 19425,
+        "survival": 0.214003,
+        "fp": 0.119485
       },
-      "D1_5S": {
-        "mean_auc": 0.608021,
-        "weighted_selected_survival": 0.679496
+      "E5D3": {
+        "candidates": 14881,
+        "survival": 0.236006,
+        "fp": 0.130368
       },
-      "D2_5S": {
-        "mean_auc": 0.604455,
-        "weighted_selected_survival": 0.685487
+      "E6D2": {
+        "candidates": 677702,
+        "survival": 0.188483,
+        "fp": 0.127506
       },
-      "D3_5S": {
-        "mean_auc": 0.603413,
-        "weighted_selected_survival": 0.680156
+      "E6D3": {
+        "candidates": 212854,
+        "survival": 0.241006,
+        "fp": 0.156239
       },
-      "D3_PLUS_1S_MICRO": {
-        "mean_auc": 0.607413,
-        "weighted_selected_survival": 0.678407
+      "E7D2": {
+        "candidates": 8099,
+        "survival": 0.228423,
+        "fp": 0.127423
+      },
+      "E7D3": {
+        "candidates": 5631,
+        "survival": 0.258391,
+        "fp": 0.141893
+      },
+      "E9D2": {
+        "candidates": 4792,
+        "survival": 0.171327,
+        "fp": 0.141903
+      },
+      "E9D3": {
+        "candidates": 4017,
+        "survival": 0.186955,
+        "fp": 0.15285
       }
     },
-    "derivative_authority_matrix": {
-      "AUSTRALIA": "D3_5S",
-      "ASIA": "D2_5S",
-      "MIDEAST": "D3_PLUS_1S_MICRO",
-      "EUROPE": "NONE_PARENT_STATE",
-      "UK": "D1_5S",
-      "NY": "D3_PLUS_1S_MICRO"
+    "raw_decision": "REJECT standalone derivative Entry clocks; no stable >=85% cross-month tail.",
+    "selected_parent_meta_admission": {
+      "before_trades": 5519,
+      "before_weighted_survival": 0.882044,
+      "after_trades": 5094,
+      "after_weighted_survival": 0.89203,
+      "retention": 0.923,
+      "rejected": 425,
+      "february_after_survival": 0.87143,
+      "interpretation": "SURVIVABILITY_RESERVE_ONLY__NOT_AN_OPPORTUNITY_EXPANSION_ENDPOINT"
     },
-    "conclusion": "Second/third-order derivative state adds discrimination, but no derivative order produced a standalone >=85% opportunity population. Use derivatives as session-aware same-timestamp parent-specialist context/admission features, not independent entry clocks.",
-    "delayed_confirmation": {
-      "status": "REJECTED",
-      "result": "Waiting up to 8 seconds for session-specific derivative confirmation reduced Entry→Hold survival in every observed month; derivative state must be pre-entry/same-timestamp context."
+    "global_order_ablation": {
+      "base_auc": 0.647149,
+      "D1_velocity_auc": 0.670813,
+      "D2_acceleration_auc": 0.663357,
+      "D3_jerk_auc": 0.664049,
+      "best": "D1"
     },
-    "shadow_specialist_status": {
-      "E13": "PROBATIONARY_SHADOW_GAPFILL_ONLY",
-      "E14": "SHADOW_ONLY",
-      "E15": "SHADOW_ONLY",
-      "E16": "SHADOW_ONLY"
+    "stable_session_derivative_pairs": {
+      "MIDEAST": "D2",
+      "NY": "D1",
+      "UK": "D3",
+      "AUSTRALIA": "D2 observational only",
+      "ASIA": "unstable",
+      "EUROPE": "unstable"
     },
-    "reproducibility": {
-      "surviving_exact_results": [
-        "research/results/BETA_064_C02G_DERIVATIVE_ORDER_LOMO.csv",
-        "research/results/BETA_064_C02G_SESSION_E6_DERIVATIVE_ORDER_LOMO.csv",
-        "research/results/BETA_064_C02G_DERIVATIVE_CONFIRMATION_DELAY_REJECTION.csv"
-      ],
-      "reconstruction_spec": "research/experiments/BETA_064_C02G_DERIVATIVE_STATE_SPEC.py",
-      "caveat": "Some transient trainer scripts were lost in a runtime reset. Future work must reproduce committed C02G tables before extending the derivative router; do not silently infer missing implementation details."
+    "parent_derivative_recommendation": {
+      "E6_VALUE_REVERSION": "D1 primary; MIDEAST D2; UK D3; NY D1",
+      "E9_LEVEL_BREAK": "D1",
+      "E10_COMPRESSION_RELEASE": "D3",
+      "E12_FAILED_EXPANSION": "D3",
+      "E5_VWAP_RECLAIM": "no derivative child; derivatives hurt",
+      "E7_SWEEP_RECLAIM": "no derivative child; derivatives hurt",
+      "E11_KINETIC_IGNITION": "D1 quality information only; do not expand saturated desk"
     },
+    "proposed_architecture": "parent Entry thesis -> session authority -> parent-aware D1/D2/D3 adapter -> derivative admission/timing -> coverage-utility router -> ownership -> Entry->Hold",
+    "coverage_utility_formula": "p_survive * deficit_weight * novelty_weight * execution_feasibility",
+    "repro_bundle": {
+      "drive_file_id": "1ASmoWdV6x3kRhryY-2elIWGdt9rPTHJq",
+      "sha256": "4cccedcf3aab353f1719afa29e08c1f9e743e252c7ee9bd1e2788fb86b24cd7c",
+      "filename": "BETA064_CKPT02E_DERIVATIVE_ENTRY_HOLD_REPRO_BUNDLE.zip"
+    },
+    "handoff_google_doc": {
+      "id": "16Z9kW7Y6JCI4GYKOeg4BqpWdy94DMGMhJvZMm6D6T9E",
+      "title": "BETA064 C02E — Derivative Entry→Hold Research & New-Chat Handoff — 2026-09-30"
+    },
+    "alpha_gamma_dependencies": "NONE__PROHIBITED",
     "hold_exit": "DEFERRED",
-    "august": "SEALED"
+    "august": "SEALED",
+    "mql5": "NO_CHANGE_NO_AUTHORIZATION"
   },
   "owner_review_pending_candidate": null,
   "monetary_audit_001": {
@@ -1287,17 +1319,30 @@
     "BETA027_owner_request": "Carry forward entry-first controls; reconstruct older transparent structural owner and pattern/time opportunity registry, genuine post-exit rearm and broker-neutral quote-side cost gates; hold/exit unfrozen for RESEARCH ONLY with lower weight; do not promote before genuine raw-tick, BETA015 risk and MT5 owner gate."
   },
   "chat_handoff": {
-    "status": "CURRENT_COMPLETE_HANDOFF_2026_09_30",
-    "title": "BETA064 — Major Checkpoint 02 Through C02G Derivative Opportunity Research — Complete New-Chat Handoff",
-    "google_doc_id": "11CMSl5Zj8HgFawK5mczHg0xjwhglEKY_i418-XCMCj8",
-    "google_doc_url": "https://docs.google.com/document/d/11CMSl5Zj8HgFawK5mczHg0xjwhglEKY_i418-XCMCj8/edit?usp=drivesdk",
-    "drive_folder_id": "11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
-    "purpose": "Authoritative end-of-chat research continuity through C02G. Continue Entry→Hold opportunity expansion from frozen Major Checkpoint 02.",
-    "next_unit": "BETA064_CHECKPOINT_02H_SESSION_DERIVATIVE_STATE_ROUTER_AND_COVERAGE_WEIGHTED_OPPORTUNITY_BUS",
-    "anti_pollution": "ALPHA_AND_GAMMA_DEAD__DO_NOT_IMPORT",
-    "hold_exit": "DEFERRED",
-    "august": "SEALED",
-    "mql5": "NO_OFFICIAL_MQ5_WITHOUT_OWNER_APPROVAL"
+    "status": "CURRENT_NEW_CHAT_HANDOFF__BETA064_C02E",
+    "title": "BETA064 C02E — Derivative Entry→Hold Research & New-Chat Handoff",
+    "google_doc": "https://docs.google.com/document/d/16Z9kW7Y6JCI4GYKOeg4BqpWdy94DMGMhJvZMm6D6T9E/edit",
+    "google_doc_id": "16Z9kW7Y6JCI4GYKOeg4BqpWdy94DMGMhJvZMm6D6T9E",
+    "purpose": "End-of-chat authoritative recovery record through C02E; Major Checkpoint 02 remains frozen control.",
+    "key_next_step": "Run C02F derivative coverage-utility expansion: use derivative meta-admission survivability reserve to add independently validated under-covered E6/E9/E10/E12 opportunities; require >=85% monthly and LOMO survival.",
+    "read_first": [
+      "CURRENT_STATE.json",
+      "research/BETA_064_MAJOR_CHECKPOINT_02_SESSION_AWARE_ENTRY_HOLD_FREEZE.md",
+      "research/mt5/BETA_064_MAJOR_CHECKPOINT_02_ENTRY_HOLD_MT5_PRODUCTION_CONTRACT.md",
+      "research/artifacts/BETA_064_MAJOR_CHECKPOINT_02_MODEL_MANIFEST.json",
+      "research/BETA_064_CHECKPOINT_02B_SYNTH_CONDITION_MATCHED_SESSION_SPECIALIST_DIAGNOSTIC.md",
+      "research/BETA_064_CHECKPOINT_02C_SESSION_E6_AND_DEFICIT_ROUTER_REFINEMENT.md",
+      "research/BETA_064_CHECKPOINT_02D_OPPORTUNITY_EXPANSION_AND_FOUR_SHADOW_SPECIALISTS.md",
+      "research/BETA_064_CHECKPOINT_02E_SESSION_AWARE_DERIVATIVE_ENTRY_CHILDREN_AND_HANDOFF.md",
+      "C02E Google Drive handoff"
+    ],
+    "hard_rules": [
+      "Major Checkpoint 02 immutable.",
+      "Alpha/GAMMA dead and prohibited.",
+      "HOLD->EXIT deferred.",
+      "August sealed.",
+      "No official MQL5 without owner approval."
+    ]
   },
   "cross_feed_event_alignment": {
     "status": "PARTIAL_HISTORICAL_PAIRED_SOURCE_COHORT_VERIFIED_NOT_FULL_ORIGINAL_LOGGER_POPULATION",
@@ -1449,7 +1494,7 @@
     "entry_percent_not_comparable_to_R9_SYNTH_winrate": true,
     "august": "SEALED"
   },
-  "next_bounded_unit": "BETA064_CHECKPOINT_02H_SESSION_DERIVATIVE_STATE_ROUTER_AND_COVERAGE_WEIGHTED_OPPORTUNITY_BUS",
+  "next_bounded_unit": "BETA064_CHECKPOINT_02F_DERIVATIVE_COVERAGE_UTILITY_EXPANSION",
   "active_beta_research_funnel": {
     "protocol": "research/BETA_040_NO_STACKED_CONFIRMATION_OWNER_DIRECTIVE.md",
     "comparison_report": "research/BETA_040_JAN17P5_SOFT_ACTION_NO_CONFIRMATION_EMPIRICAL_REPORT.md",
