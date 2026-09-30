@@ -970,9 +970,18 @@
     "rejected": [
       "independent session-value-only reversion clock"
     ],
-    "caveat": "Jan-Jul inspected during rule/threshold selection; not blind certification. LOMO robustness not yet completed.",
+    "caveat": "Jan-Jul were inspected during initial child design. LOMO robustness subsequently passed 6/7 held-out months; February missed 85% by ~0.05 percentage point. Child remains promising but not freeze-ready.",
     "hold_exit": "DEFERRED",
-    "august": "SEALED"
+    "august": "SEALED",
+    "lomo": {
+      "status": "COMPLETED",
+      "heldout_trades": 6048,
+      "weighted_heldout_survivability": 0.8786375661,
+      "passing_months": "6/7",
+      "failed_month": "February",
+      "february_survivability": 0.8494809689,
+      "shortfall_pp": 0.0519
+    }
   },
   "owner_review_pending_candidate": null,
   "monetary_audit_001": {
@@ -1414,7 +1423,7 @@
     "entry_percent_not_comparable_to_R9_SYNTH_winrate": true,
     "august": "SEALED"
   },
-  "next_bounded_unit": "BETA064_CHECKPOINT_02C_LOMO_ROBUSTNESS_AND_SESSION_SPECIALIST_ATTRIBUTION",
+  "next_bounded_unit": "BETA064_CHECKPOINT_02D_FEBRUARY_REGIME_DISCRIMINATION_AND_CONDITION_COVERAGE_RECOVERY",
   "active_beta_research_funnel": {
     "protocol": "research/BETA_040_NO_STACKED_CONFIRMATION_OWNER_DIRECTIVE.md",
     "comparison_report": "research/BETA_040_JAN17P5_SOFT_ACTION_NO_CONFIRMATION_EMPIRICAL_REPORT.md",
