@@ -174,3 +174,27 @@ Next work:
 6. keep August sealed.
 
 No MQL5 change.
+
+
+## Leave-one-month-out robustness — completed
+
+The fixed causal child rules were retained. For the shared non-E6/non-E11 authority, each held-out month used the most permissive threshold selected from the other six months while requiring every training month to remain >=85% survivability.
+
+| Held-out month | Chosen authority | Held-out trades | Held-out survivability |
+|---|---:|---:|---:|
+| Jan | 0.9105 | 824 | 88.71% |
+| Feb | 0.9100 | 1,156 | **84.95%** |
+| Mar | 0.9105 | 1,613 | 87.54% |
+| Apr | 0.9105 | 737 | 87.79% |
+| May | 0.9105 | 638 | 90.28% |
+| Jun | 0.9105 | 705 | 89.50% |
+| Jul | 0.9105 | 375 | 89.33% |
+
+Weighted held-out survivability: **87.86%** across **6,048** held-out trades.
+
+Result:
+- 6/7 held-out months pass >=85%;
+- February misses by approximately 0.05 percentage point;
+- therefore C02C remains **promising but not freeze-ready**.
+
+The next refinement should target the February failure regime specifically through causal state discrimination, not by raising the universal threshold so high that the coverage gain disappears.
