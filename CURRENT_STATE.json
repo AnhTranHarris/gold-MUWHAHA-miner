@@ -1391,7 +1391,7 @@
     "entry_percent_not_comparable_to_R9_SYNTH_winrate": true,
     "august": "SEALED"
   },
-  "next_bounded_unit": "BETA_064_ORIGINAL_BROKER_REAL_QUOTE_POSITIVE_DIRECTIONAL_UTILITY_VALIDATION_BEFORE_SEPARATE_HOLD_EXIT",
+  "next_bounded_unit": "BETA_040A_FIVE_EXPERT_ENTRY_HOLD_MOE_CROSSFIT_CONTINUATION_JAN17P5",
   "active_beta_research_funnel": {
     "protocol": "research/BETA_040_NO_STACKED_CONFIRMATION_OWNER_DIRECTIVE.md",
     "comparison_report": "research/BETA_040_JAN17P5_SOFT_ACTION_NO_CONFIRMATION_EMPIRICAL_REPORT.md",
@@ -1831,5 +1831,26 @@
     "owner_approved_mql5": false,
     "first_incomplete_source_infra": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
     "August": "SEALED"
+  },
+  "BETA040_architecture": {
+    "status": "PLANNED_NOT_YET_EXECUTED",
+    "design": "research/BETA_040_ENTRY_HOLD_MOE_SHARED_CONTINUATION_VALUE_DESIGN.md",
+    "focus": "ENTRY+HOLD state-conditioned soft mixture-of-experts with one shared continuation-value model; EXIT consumes continuation value but is not independently hard-gated",
+    "experts": [
+      "IMPULSE_FAST_CONTINUATION",
+      "PULLBACK_REACCELERATION",
+      "SWEEP_ROTATION",
+      "RANGE_BOUNDARY_REARM",
+      "LEADUP_SEQUENCE_PREDICTOR"
+    ],
+    "no_hard_confirmation_stack": true,
+    "router": "soft state weights using HSMM regime posterior/residual duration + BOCPD change probability + structure/micro/cost state",
+    "friction": "BETA039 rolling friction converted from binary veto to continuous expected execution-cost penalty",
+    "continuation": "cross-fitted dynamic continuation regression or multiple fixed-horizon net distributions; compare HOLD value against executable EXIT value",
+    "stage1": "2026-01-01T00:00:00Z to 2026-01-18T12:00:00Z original Dukascopy ticks",
+    "breakthrough_gate": ">10% guarded whole-system realized improvement; >20% preferred",
+    "failed_experiments_chat_policy": "failed screens stay in durable research logs; user-facing chat focuses on breakthroughs/findings unless asked",
+    "August": "SEALED",
+    "MQL5": "NOT_AUTHORIZED"
   }
 }
