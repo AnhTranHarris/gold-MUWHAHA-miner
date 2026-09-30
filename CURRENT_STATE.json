@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "Major Checkpoint 02 is the current frozen BETA empirical state: session-aware two-floor ENTRY→HOLD architecture, Jan-Jul 5,070 one-position Entry→Hold trades, 88.44% weighted survivability, every month >85%, leave-one-month-out every held-out month >85% (weakest February ~86.36%). Major Checkpoint 01 remains immutable control inside the architecture. Six timezone-aware session authorities may gap-fill only when base ownership is idle; E5/E6/E7/E9/E10/E11/E12 are session-gap eligible. HOLD→EXIT remains intentionally incomplete. Exact learned Entry/session model binaries and frozen Hold model export are hard MT5-production blockers until durably archived/fingerprinted. BETA005 feature parity, Coinexx native parity and BETA015 funded proof remain unresolved. No approved EA; August SEALED.",
+  "current_status": "Major Checkpoint 02 is the current frozen BETA empirical state: session-aware two-floor ENTRY→HOLD architecture, Jan-Jul 5,070 one-position Entry→Hold trades, 88.44% weighted survivability, every month >85%, leave-one-month-out every held-out month >85% (weakest February ~86.36%). Major Checkpoint 01 remains immutable control inside the architecture. Six timezone-aware session authorities may gap-fill only when base ownership is idle; E5/E6/E7/E9/E10/E11/E12 are session-gap eligible. HOLD→EXIT remains intentionally incomplete. Exact frozen Entry/session/Hold model binaries and deterministic LightGBM tree exports are now durably archived in the Google Drive model-freeze bundle; future MT5 work must verify its SHA-256 and pass Python↔MQL5 parity. BETA005 feature parity, Coinexx native parity and BETA015 funded proof remain unresolved. No approved EA; August SEALED.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -1234,7 +1234,7 @@
     "title": "BETA Major Checkpoint 02 — Session-Aware Entry→Hold MT5 Production Handoff",
     "google_doc": "https://docs.google.com/document/d/11i_q0MGhxxF6qamycPq6uGHliNVBVF1MlmWx4JmkkFQ/edit",
     "purpose": "Authoritative frozen Entry+Hold production specification and new-chat recovery point. HOLD+EXIT intentionally absent.",
-    "key_next_step": "Continue Checkpoint-02 condition-matched SYNTH coverage diagnostics/refinement without changing frozen Major Checkpoint 02; before any official MQL5 coding, durably export exact Entry/session and Hold model trees and certify Python-to-MT5 parity.",
+    "key_next_step": "Continue Checkpoint-02 condition-matched SYNTH coverage diagnostics/refinement without changing frozen Major Checkpoint 02. Exact Entry/session/Hold model artifacts are durably frozen in Google Drive; before any official MQL5 coding, verify bundle SHA-256 and certify Python-to-MT5 state/candidate/probability/ownership parity.",
     "august": "SEALED_UNTIL_OWNER_EXPLICIT_BLIND_AUTHORIZATION",
     "mql5": "NO_OFFICIAL_MQ5_UNTIL_OWNER_EXPLICIT_APPROVAL_AND_MODEL_EXPORT_PARITY_PREREQUISITES",
     "read_first": [
@@ -1711,7 +1711,9 @@
     "full_campaign": "Original Jan-Jul only for >10% guarded initial month-screen, data already inspected (not pristine forward)",
     "August": "SEALED",
     "checkpoint_freeze": "BETA064_MAJOR_CHECKPOINT_02_SESSION_AWARE_ENTRY_HOLD",
-    "mt5_future_rule": "Google Doc + GitHub production contract must be sufficient to reconstruct exact Entry+Hold behavior; gaps are blockers, never guessed."
+    "mt5_future_rule": "Google Doc + GitHub production contract must be sufficient to reconstruct exact Entry+Hold behavior; gaps are blockers, never guessed.",
+    "model_freeze_bundle_sha256": "b6980a4a7a0f771349837619e1c3c2eda1cd512a77fbd3e0c0ab8d6c8a1bd830",
+    "model_freeze_drive_file_id": "1lDtCAJQfPlmiH-6Kneo4PyF_4FCFs3tm"
   },
   "BETA046_private_reproducibility": {
     "status": "SCIENTIFIC_SCREEN_ONLY_NO_PROMOTION",
@@ -1907,12 +1909,20 @@
     "august": "SEALED",
     "mql5_authorized": false,
     "mt5_production_hard_stops": [
-      "Do not start official encoding until exact frozen Entry/session model exports are durably archived.",
-      "Do not encode the Hold classifier until exact frozen Hold model/tree export and hash exist.",
+      "Verify exact Google Drive model-freeze bundle SHA-256 before model translation.",
+      "Translate/load exact frozen trees; do not retrain or approximate and call it the same checkpoint.",
       "Do not invent HOLD→EXIT.",
       "Do not substitute Alpha/GAMMA behavior.",
-      "Do not retrain and call it the same checkpoint."
-    ]
+      "Do not open August."
+    ],
+    "model_freeze_bundle": {
+      "drive_file_id": "1lDtCAJQfPlmiH-6Kneo4PyF_4FCFs3tm",
+      "drive_url": "https://drive.google.com/file/d/1lDtCAJQfPlmiH-6Kneo4PyF_4FCFs3tm/view",
+      "sha256": "b6980a4a7a0f771349837619e1c3c2eda1cd512a77fbd3e0c0ab8d6c8a1bd830",
+      "hold_joblib_sha256": "0f24f18dffabf681157dfef14bc4c67898b561f26d8fe7d372fa72623b99eef1",
+      "hold_tree_sha256": "06214dc6b08b37e64ad26626471c46c2cf9bb21327554ce99c8ea6d69d41718e",
+      "status": "DURABLY_ARCHIVED"
+    }
   },
   "current_research_architecture": "BETA064_MAJOR_CHECKPOINT_02_SESSION_AWARE_ENTRY_HOLD_TWO_FLOOR_MOE",
   "BETA040_architecture_handoff": {
@@ -1970,6 +1980,14 @@
     "hold_exit": "DEFERRED_PHASE_TWO",
     "August": "SEALED",
     "mql5_owner_approval_required": true,
-    "no_daily_automation": true
+    "no_daily_automation": true,
+    "model_freeze_bundle": {
+      "drive_file_id": "1lDtCAJQfPlmiH-6Kneo4PyF_4FCFs3tm",
+      "drive_url": "https://drive.google.com/file/d/1lDtCAJQfPlmiH-6Kneo4PyF_4FCFs3tm/view",
+      "sha256": "b6980a4a7a0f771349837619e1c3c2eda1cd512a77fbd3e0c0ab8d6c8a1bd830",
+      "hold_joblib_sha256": "0f24f18dffabf681157dfef14bc4c67898b561f26d8fe7d372fa72623b99eef1",
+      "hold_tree_sha256": "06214dc6b08b37e64ad26626471c46c2cf9bb21327554ce99c8ea6d69d41718e",
+      "status": "DURABLY_ARCHIVED"
+    }
   }
 }
