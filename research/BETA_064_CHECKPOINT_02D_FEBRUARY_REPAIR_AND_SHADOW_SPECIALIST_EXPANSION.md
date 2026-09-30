@@ -226,3 +226,39 @@ They may not:
 
 No Alpha/GAMMA imports.
 No MQL5 change.
+
+
+## E15/E16 bounded gap-fill graduation test — rejected
+
+After the initial shadow evaluation, E15 Regime-Shift First Pullback and E16 Second-Entry Trend Pullback were given one additional opportunity to qualify without changing C02D.
+
+Method:
+- reserve every C02D active trade interval first;
+- consider only E15/E16 proposals that occur while C02D is flat;
+- use leave-one-month-out survival probabilities already generated without the proposal's month in model training;
+- test bounded survival thresholds and session-specific tails;
+- preserve one-position chronology;
+- require the combined portfolio to remain >=85% survivability in every month.
+
+Idle shadow pool:
+- E15: 1,472 proposals;
+- E16: 2,617 proposals;
+- total: **4,089** proposals.
+
+A post-hoc grid can force approximately 150 additional proposals into the combined portfolio while keeping the headline minimum month barely above 85%. However the added trades themselves have only roughly 40–46% Entry→Hold survival and negative diagnostic path value.
+
+Representative maximum-count admissible combination:
+- 157 added trades;
+- added-trade survivability ~44.6%;
+- added diagnostic value approximately -$211.70;
+- combined minimum-month survival ~85.02%.
+
+A separate specialist × session scan found **no** E15/E16 gap-fill subset with at least five added trades that simultaneously achieved:
+- >=85% own Entry→Hold survivability; and
+- positive diagnostic path-resolution value.
+
+Therefore the apparent portfolio-level admissibility is rejected as survivability-buffer dilution.
+
+**Decision:** E15 and E16 remain high-priority shadow research desks only. They may not own positions in C02D or Major Checkpoint 02.
+
+This reinforces a hard BETA principle: a strong parent portfolio may not be used to hide a weak specialist.
