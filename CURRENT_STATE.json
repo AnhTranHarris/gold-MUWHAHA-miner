@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "Major Checkpoint 02 is the current frozen BETA empirical state: session-aware two-floor ENTRY→HOLD architecture, Jan-Jul 5,070 one-position Entry→Hold trades, 88.44% weighted survivability, every month >85%, leave-one-month-out every held-out month >85% (weakest February ~86.36%). Major Checkpoint 01 remains immutable control inside the architecture. Six timezone-aware session authorities may gap-fill only when base ownership is idle; E5/E6/E7/E9/E10/E11/E12 are session-gap eligible. HOLD→EXIT remains intentionally incomplete. Exact frozen Entry/session/Hold model binaries and deterministic LightGBM tree exports are now durably archived in the Google Drive model-freeze bundle; future MT5 work must verify its SHA-256 and pass Python↔MQL5 parity. BETA005 feature parity, Coinexx native parity and BETA015 funded proof remain unresolved. No approved EA; August SEALED.",
+  "current_status": "Major Checkpoint 02 remains the current frozen BETA empirical state: session-aware two-floor ENTRY→HOLD architecture, Jan-Jul 5,070 one-position Entry→Hold trades, 88.44% weighted survivability, every month >85%, leave-one-month-out every held-out month >85% (weakest February ~86.36%). Major Checkpoint 01 remains immutable control inside the architecture. Six timezone-aware session authorities may gap-fill only when base ownership is idle; E5/E6/E7/E9/E10/E11/E12 are session-gap eligible. HOLD→EXIT remains intentionally incomplete. Exact frozen Entry/session/Hold model binaries and deterministic LightGBM tree exports are now durably archived in the Google Drive model-freeze bundle; future MT5 work must verify its SHA-256 and pass Python↔MQL5 parity. BETA005 feature parity, Coinexx native parity and BETA015 funded proof remain unresolved. No approved EA; August SEALED. Checkpoint 02B diagnostic completed: session×specialist capped SYNTH condition-matched coverage is 3,044/71,810 = 4.24% versus Checkpoint 01 1,127/71,810 = 1.57%; dominant deficit is E6 Value Reversion (45,333 gap) whose selected survivability is ~82.05%, so E6 cannot be expanded by threshold loosening. Priority child research is E7/E12/E10/E5 high-quality undercoverage before E6 structural decomposition.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -942,18 +942,35 @@
     "notes": "R9 REAL original Coinexx tester is historical research control; full January R9-like Dukascopy Python simplification IS NOT exact original broker EA. Mean observed Dukascopy spread ~$0.84/oz, point-size and execution different. Hold/Exit approximate frozen, no MQL5."
   },
   "last_verified_research_document": "research/BETA_064_MAJOR_CHECKPOINT_02_SESSION_AWARE_ENTRY_HOLD_FREEZE.md",
-  "latest_research_record": "research/BETA_064_MAJOR_CHECKPOINT_02_SESSION_AWARE_ENTRY_HOLD_FREEZE.md",
+  "latest_research_record": "research/BETA_064_CHECKPOINT_02B_SESSION_SPECIALIST_SYNTH_CONDITION_MATCHED_COVERAGE.md",
   "latest_research_record_drive": "https://drive.google.com/file/d/1xLx4uJK8pSpRez68vS2k59--cWgiF96B/view",
   "last_scientific_campaign": {
-    "name": "BETA017 completed-bar M5/H1 regime exploratory screen",
-    "status": "ALL_VARIANTS_NEGATIVE_NET_NO_PROMOTABLE_BREAKTHROUGH",
-    "source_month": "2026-01",
-    "source_ticks": 9135062,
-    "source": "research/BETA_017_CAUSAL_REGIME_JAN_SCREEN_AND_SOURCE_RESEARCH.md",
-    "funded_survival_full_JanJul_unverified": true,
-    "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
-    "policy_integration": "BETA014 governor equivalent, BETA015 guard object not wired in BETA017",
-    "august_sealed": true
+    "id": "BETA064_CHECKPOINT_02B_SESSION_SPECIALIST_SYNTH_CONDITION_MATCHED_COVERAGE",
+    "status": "DIAGNOSTIC_CHILD_COMPLETE__PARENT_CHECKPOINT_UNCHANGED",
+    "record": "research/BETA_064_CHECKPOINT_02B_SESSION_SPECIALIST_SYNTH_CONDITION_MATCHED_COVERAGE.md",
+    "synth_entry_hold_denominator": 71810,
+    "checkpoint01_capped_condition_matched": 1127,
+    "checkpoint01_capped_coverage": 0.015694193009330178,
+    "checkpoint02_capped_condition_matched": 3044,
+    "checkpoint02_capped_coverage": 0.042389639325999165,
+    "checkpoint02_gross_trade_ratio": 0.07060298008633895,
+    "remaining_to_85pct_matched_target": 57995,
+    "main_blocker": "E6_VALUE_REVERSION__45333_REMAINING_GAP__CURRENT_SELECTED_SURVIVAL_82P05_BELOW_85_GATE",
+    "high_quality_undercoverage_gap": 13839,
+    "high_quality_priority_specialists": [
+      "E12_FAILED_EXPANSION",
+      "E7_SWEEP_RECLAIM",
+      "E10_COMPRESSION_RELEASE",
+      "E5_VWAP_RECLAIM"
+    ],
+    "checkpoint_only_capacity_diagnostic": {
+      "quality_preserving_trades": 5952,
+      "weighted_survivability": 0.8850806451612904,
+      "all_months_ge_85": true,
+      "interpretation": "Deferred Hold->Exit/full-horizon ownership explains only a modest portion of the SYNTH coverage deficit."
+    },
+    "August": "SEALED",
+    "parent_checkpoint": "BETA064_MAJOR_CHECKPOINT_02_SESSION_AWARE_ENTRY_HOLD"
   },
   "owner_review_pending_candidate": null,
   "monetary_audit_001": {
@@ -1395,7 +1412,7 @@
     "entry_percent_not_comparable_to_R9_SYNTH_winrate": true,
     "august": "SEALED"
   },
-  "next_bounded_unit": "BETA_064_CHECKPOINT_02B_CONDITION_MATCHED_SYNTH_COVERAGE_AND_SESSION_SPECIALIST_REFINEMENT_ENTRY_HOLD_ONLY",
+  "next_bounded_unit": "BETA_064_CHECKPOINT_02C_HIGH_QUALITY_SESSION_SPECIALIST_COVERAGE_EXPANSION_E7_E12_E10_E5_THEN_E6_DECOMPOSITION",
   "active_beta_research_funnel": {
     "protocol": "research/BETA_040_NO_STACKED_CONFIRMATION_OWNER_DIRECTIVE.md",
     "comparison_report": "research/BETA_040_JAN17P5_SOFT_ACTION_NO_CONFIRMATION_EMPIRICAL_REPORT.md",
@@ -1712,8 +1729,8 @@
     "August": "SEALED",
     "checkpoint_freeze": "BETA064_MAJOR_CHECKPOINT_02_SESSION_AWARE_ENTRY_HOLD",
     "mt5_future_rule": "Google Doc + GitHub production contract must be sufficient to reconstruct exact Entry+Hold behavior; gaps are blockers, never guessed.",
-    "model_freeze_bundle_sha256": "b6980a4a7a0f771349837619e1c3c2eda1cd512a77fbd3e0c0ab8d6c8a1bd830",
-    "model_freeze_drive_file_id": "1lDtCAJQfPlmiH-6Kneo4PyF_4FCFs3tm"
+    "model_freeze_bundle_sha256": "ccfc0d18d733e97b18bbd183c6cc56b6bcac0f1c2c6c525bda596d0406eb98d3",
+    "model_freeze_drive_file_id": "1phzsMX0SKESoqJ4O53vI9nE7fffrX6T-"
   },
   "BETA046_private_reproducibility": {
     "status": "SCIENTIFIC_SCREEN_ONLY_NO_PROMOTION",
@@ -1916,12 +1933,19 @@
       "Do not open August."
     ],
     "model_freeze_bundle": {
-      "drive_file_id": "1lDtCAJQfPlmiH-6Kneo4PyF_4FCFs3tm",
-      "drive_url": "https://drive.google.com/file/d/1lDtCAJQfPlmiH-6Kneo4PyF_4FCFs3tm/view",
-      "sha256": "b6980a4a7a0f771349837619e1c3c2eda1cd512a77fbd3e0c0ab8d6c8a1bd830",
+      "drive_file_id": "1phzsMX0SKESoqJ4O53vI9nE7fffrX6T-",
+      "drive_url": "https://drive.google.com/file/d/1phzsMX0SKESoqJ4O53vI9nE7fffrX6T-/view",
+      "sha256": "ccfc0d18d733e97b18bbd183c6cc56b6bcac0f1c2c6c525bda596d0406eb98d3",
       "hold_joblib_sha256": "0f24f18dffabf681157dfef14bc4c67898b561f26d8fe7d372fa72623b99eef1",
       "hold_tree_sha256": "06214dc6b08b37e64ad26626471c46c2cf9bb21327554ce99c8ea6d69d41718e",
       "status": "DURABLY_ARCHIVED"
+    },
+    "model_freeze_bundle_v2": {
+      "filename": "BETA064_MAJOR_CHECKPOINT_02_ENTRY_HOLD_MODEL_FREEZE_BUNDLE_V2.zip",
+      "drive_file_id": "1phzsMX0SKESoqJ4O53vI9nE7fffrX6T-",
+      "sha256": "ccfc0d18d733e97b18bbd183c6cc56b6bcac0f1c2c6c525bda596d0406eb98d3",
+      "status": "AUTHORITATIVE_CORRECTED_V2",
+      "session_router_joblib_sha256": "bb985b1461da3f44eff43742d1b67fb8875f6b5742333df09ccade9a5250dc78"
     }
   },
   "current_research_architecture": "BETA064_MAJOR_CHECKPOINT_02_SESSION_AWARE_ENTRY_HOLD_TWO_FLOOR_MOE",
@@ -1982,9 +2006,9 @@
     "mql5_owner_approval_required": true,
     "no_daily_automation": true,
     "model_freeze_bundle": {
-      "drive_file_id": "1lDtCAJQfPlmiH-6Kneo4PyF_4FCFs3tm",
-      "drive_url": "https://drive.google.com/file/d/1lDtCAJQfPlmiH-6Kneo4PyF_4FCFs3tm/view",
-      "sha256": "b6980a4a7a0f771349837619e1c3c2eda1cd512a77fbd3e0c0ab8d6c8a1bd830",
+      "drive_file_id": "1phzsMX0SKESoqJ4O53vI9nE7fffrX6T-",
+      "drive_url": "https://drive.google.com/file/d/1phzsMX0SKESoqJ4O53vI9nE7fffrX6T-/view",
+      "sha256": "ccfc0d18d733e97b18bbd183c6cc56b6bcac0f1c2c6c525bda596d0406eb98d3",
       "hold_joblib_sha256": "0f24f18dffabf681157dfef14bc4c67898b561f26d8fe7d372fa72623b99eef1",
       "hold_tree_sha256": "06214dc6b08b37e64ad26626471c46c2cf9bb21327554ce99c8ea6d69d41718e",
       "status": "DURABLY_ARCHIVED"
