@@ -1048,7 +1048,13 @@
     },
     "architecture_decision": "DERIVATIVES_SHADOW_OPPORTUNITY_BUS_ONLY",
     "hold_exit": "DEFERRED",
-    "august": "SEALED"
+    "august": "SEALED",
+    "c02f_reproducibility_prerequisite": {
+      "exact_source": "beta064_multidesk_loop.py",
+      "status": "NOT_RECOVERED_FROM_MODEL_FREEZE_BUNDLE_OR_CURRENT_DRIVE_PROJECT_SEARCH",
+      "impact": "Does not invalidate frozen checkpoint; blocks exact unused/rejected E6/E7/E9 candidate-universe claims until recovery/reconstruction parity.",
+      "required_parity": "Reproduce known January specialist counts and frozen downstream selections before opportunity mining."
+    }
   },
   "owner_review_pending_candidate": null,
   "monetary_audit_001": {
@@ -1490,7 +1496,7 @@
     "entry_percent_not_comparable_to_R9_SYNTH_winrate": true,
     "august": "SEALED"
   },
-  "next_bounded_unit": "BETA064_CHECKPOINT_02F_EXACT_PARENT_CANDIDATE_UNIVERSE_AND_COVERAGE_UTILITY_E6_E7_E9",
+  "next_bounded_unit": "BETA064_CHECKPOINT_02F_PARENT_GENERATOR_PARITY_THEN_COVERAGE_UTILITY_E6_E7_E9",
   "active_beta_research_funnel": {
     "protocol": "research/BETA_040_NO_STACKED_CONFIRMATION_OWNER_DIRECTIVE.md",
     "comparison_report": "research/BETA_040_JAN17P5_SOFT_ACTION_NO_CONFIRMATION_EMPIRICAL_REPORT.md",
