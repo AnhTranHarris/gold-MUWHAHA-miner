@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "User explicitly directed five-soft-specialist ENTRY+HOLD mixture-of-experts with a shared +5s observed continuation value, deferring HOLD+EXIT next phase. BETA057 fitted Jan1–Jan9, BETA058 Jan9–Jan11 calibrated; five families TREND, SWEEP, COMPRESSION, ROTATION, PREENTRY_LEADUP; 48 BETA057/058/060 bounded policy/entry scheduling variants, Jan11–18 held as historically consulted; BETA060 CAL selection LIQUIDITY_SPREAD_SNAP_0 unchanged after fixing first observed +5s max/min feature parity. BETA062 observed Jan17.5d original Dukascopy 4,205,709 quotes hypothetical BETA015-style $100k exact tick floating risk one-account: corrected incumbent P89 12,130 closes, 2,263 wins, -$9,192.589 vs MoE+leadup 11,866 closes, 2,571 wins, -$7,894.889, 14.12% less loss but both money-losing and daily locks not exercised. BETA059/061 frozen Jan–Jul 57,527,562 original ordered quotes: incumbent P89 -$118080.34 /166394/39708 wins/PF .2506; five-soft-expert+leadup+P89 -$116008.007 /162899/38774/PF .2353; only 1.755% negative loss reduction vs correctly matched incumbent, 2/7 months regress, zero profitable months and not funded viable through July. Initial apparent >10% loss reduction vs old raw E060 mostly inherited P89. All after-cost results negative. Independent 62/62 bounded QA pass, source price float32 semantics and first5 feature parity corrected, replay ZIP 26 CRC/hash checked. No new approved beta EA nor MQL5 source. August SEALED; BETA005 exact materialized17layer cache parity unresolved. Negative full internal research stored Google BETA Research Journal, not investor report. No daily automation. BETA040 architecture handoff ADDED without advancing empirical science: remove stacked confirmations; unify entry+hold through five-specialist state-conditioned soft MoE and shared continuation value. BETA039 remains latest verified empirical result. Hold+Exit deferred to phase two. New-chat canonical BETA040 Google Doc and GitHub handoff indexed.",
+  "current_status": "Latest verified empirical unit is BETA063: first-generation five-soft-specialist Entry+Hold MoE with shared continuation-value, frozen Jan-Jul, research-only/no promotion. BETA064 architecture handoff now supersedes preliminary BETA040 handoff: E060 is no longer mandatory entry clock; use five heterogeneous specialists, independent transition precursor, learned expert-regret gating, bounded lagged online reliability, and multi-age shared continuation value; BETA039 friction is primarily an expected-cost input. This architecture is NOT a new empirical result. Hold+Exit remains phase two. BETA005 full 17-layer feature parity incomplete; BETA015 funded proof and Coinexx native parity unresolved; no approved EA; August SEALED; no daily automation.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -1391,7 +1391,7 @@
     "entry_percent_not_comparable_to_R9_SYNTH_winrate": true,
     "august": "SEALED"
   },
-  "next_bounded_unit": "BETA_040_ENTRY_HOLD_STATE_CONDITIONED_MOE_JAN17P5",
+  "next_bounded_unit": "BETA_064_HIERARCHICAL_INDEPENDENT_CLOCK_ENTRY_HOLD_MOE_JAN17P5",
   "active_beta_research_funnel": {
     "protocol": "research/BETA_040_NO_STACKED_CONFIRMATION_OWNER_DIRECTIVE.md",
     "comparison_report": "research/BETA_040_JAN17P5_SOFT_ACTION_NO_CONFIRMATION_EMPIRICAL_REPORT.md",
@@ -1880,9 +1880,9 @@
     "August": "SEALED",
     "mql5_authorized": false
   },
-  "current_research_architecture": "STATE_CONDITIONED_ENTRY_TO_HOLD_MIXTURE_OF_EXPERTS",
+  "current_research_architecture": "BETA064_HIERARCHICAL_INDEPENDENT_CLOCK_ENTRY_TO_HOLD_MOE",
   "BETA040_architecture_handoff": {
-    "status": "ARCHITECTURE_ONLY_NO_NEW_EMPIRICAL_RESULT",
+    "status": "SUPERSEDED_AFTER_LIVE_STATE_RECONCILIATION_BY_BETA064",
     "google_doc_id": "11i_q0MGhxxF6qamycPq6uGHliNVBVF1MlmWx4JmkkFQ",
     "google_doc_url": "https://docs.google.com/document/d/11i_q0MGhxxF6qamycPq6uGHliNVBVF1MlmWx4JmkkFQ/edit?usp=drivesdk",
     "github_handoff": "research/BETA_040_ENTRY_HOLD_STATE_CONDITIONED_MOE_ARCHITECTURE_AND_HANDOFF.md",
@@ -1911,6 +1911,41 @@
     "full_validation_if_pass": "freeze then Jan-Jul original Dukascopy; historically inspected, not pristine OOS",
     "August": "SEALED",
     "MQL5_owner_approval_required": true,
+    "no_daily_automation": true,
+    "superseded_by": "research/BETA_064_HIERARCHICAL_ENTRY_HOLD_MOE_ARCHITECTURE_AND_HANDOFF.md"
+  },
+  "BETA064_architecture_handoff": {
+    "status": "NEXT_ARCHITECTURE_ONLY__NO_NEW_EMPIRICAL_RESULT",
+    "google_doc_id": "11i_q0MGhxxF6qamycPq6uGHliNVBVF1MlmWx4JmkkFQ",
+    "google_doc_url": "https://docs.google.com/document/d/11i_q0MGhxxF6qamycPq6uGHliNVBVF1MlmWx4JmkkFQ/edit?usp=drivesdk",
+    "github_handoff": "research/BETA_064_HIERARCHICAL_ENTRY_HOLD_MOE_ARCHITECTURE_AND_HANDOFF.md",
+    "empirical_parent": "BETA_063_FIVE_SPECIALIST_SHARED_CONTINUATION_ENTRY_HOLD_FROZEN_7MO_62QA_NO_PROMOTION",
+    "key_pivot": "E060 becomes feature/benchmark rather than master entry clock; independent causal event clock plus learned regret router",
+    "five_experts": [
+      "TREND_IGNITION_SEQUENCE",
+      "STRUCTURAL_RETRACE_TREE",
+      "RANGE_SWEEP_HAZARD",
+      "V8_M1_AUCTION_FSM",
+      "INDEPENDENT_TRANSITION_PRECURSOR"
+    ],
+    "improvements_over_BETA063": [
+      "independent pre-E060/at-E060/post-E060 causal action clock",
+      "heterogeneous expert model classes and feature ownership",
+      "learned state-conditioned gate trained on expert counterfactual regret",
+      "bounded lagged online expert reliability aggregation",
+      "multi-age continuation-value surface instead of principal +5s-only refresh",
+      "BETA039 friction treated primarily as expected cost rather than stacked directional admission"
+    ],
+    "stage1_window": "2026-01-01T00:00:00Z/2026-01-18T12:00:00Z",
+    "fit": "Jan1-Jan9 historically inspected",
+    "cal": "Jan9-Jan11 historically inspected",
+    "diagnostic": "Jan11-Jan18 noon historically inspected",
+    "internal_continue_gate": ">10% guarded incremental improvement vs current incumbent",
+    "chat_breakthrough_gate": ">20% guarded realized after-cost incremental improvement vs current integrated incumbent",
+    "failures": "archive in BETA Research Journal/reproducibility; do not issue failure-status chat reports; change mechanism/source before rerun",
+    "hold_exit": "DEFERRED_PHASE_TWO",
+    "August": "SEALED",
+    "mql5_owner_approval_required": true,
     "no_daily_automation": true
   }
 }
