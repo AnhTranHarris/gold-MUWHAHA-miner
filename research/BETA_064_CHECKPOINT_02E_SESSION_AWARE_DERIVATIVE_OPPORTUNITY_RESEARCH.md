@@ -341,3 +341,39 @@ These sources informed reconstructible mechanics only. Their reported performanc
   - concept reference only: separate session VWAP/equilibrium rather than one daily value anchor.
 
 All BETA decisions above come from independent Dukascopy tick replay, not these sources' outcome claims.
+
+
+## C02F reproducibility prerequisite discovered
+
+During preparation for the next exact parent-candidate-universe rebuild, a source-artifact gap was found:
+
+- later frozen scripts import `/mnt/data/beta064_multidesk_loop.py`;
+- that exact first-generation candidate-generator source is **not present in the Major Checkpoint-02 exact-model freeze ZIP**;
+- exact filename search in the connected Drive/project sources did not recover it in this session.
+
+This does **not** invalidate the frozen Major Checkpoint-02 results or model artifacts, which are already durably fingerprinted and reproduced.
+
+It **does** mean the next C02F claim about the unused/rejected E6/E7/E9 candidate universe must not be made from a guessed reconstruction.
+
+C02F must first:
+1. recover the exact source if possible; or
+2. reconstruct the generator strictly from durable definitions;
+3. reproduce the known January specialist candidate counts and frozen selected outputs;
+4. hash and commit the reconstructed generator;
+5. only then mine unused/rejected E6/E7/E9 opportunities.
+
+Known January parity anchors from the original R1B2 work include:
+- E6 Value Reversion: 38,328 candidates;
+- E7 Sweep/Reclaim: 4,905;
+- E10 Compression Release: 3,150;
+- E8 Level Bounce: 3,038;
+- E12 Failed Expansion: 2,349;
+- E9 Level Break: 1,868;
+- E5 VWAP Reclaim: 1,381;
+- E11 Kinetic Ignition: 1,294;
+- E3 ORB: 219;
+- E2 Pullback/Reaccel: 144;
+- E1 Macro Trend: 77;
+- E4 VWAP Pullback: 68.
+
+No approximate candidate generator may be promoted as exact until those parity anchors and downstream Checkpoint-02 selections reconcile.
