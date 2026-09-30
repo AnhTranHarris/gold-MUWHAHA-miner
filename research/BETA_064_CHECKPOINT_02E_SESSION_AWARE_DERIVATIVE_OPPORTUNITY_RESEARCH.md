@@ -321,3 +321,23 @@ Required tests:
 - rank idle opportunities by coverage utility;
 - validate month-by-month and leave-one-month-out;
 - require >=85% survivability in every accepted validation slice before any new executable-child promotion.
+
+
+## Public source traceability
+
+These sources informed reconstructible mechanics only. Their reported performance, optimization claims, or marketing language were not imported as BETA evidence.
+
+- TradingView open-source — Session Sweep System: https://www.tradingview.com/script/RY1SZR8x-Session-Sweep-System-WarRoomXYZ-V1/
+  - session range mapping, sweep detection, expansion/trend context.
+- TradingView open-source — Liquidity Sweep Mean Reversion [XAUUSD/XAGUSD]: https://www.tradingview.com/script/fVu5DNuk/
+  - sweep/reclaim, market-structure confirmation, session VWAP/value filter.
+- TradingView open-source — Gold Session Map & Sweep Signals: https://www.tradingview.com/script/bo1WdFiL-Gold-Session-Map-Sweep-Signals/
+  - Asian range locking, session handoff context, sweep-reclaim framing, ADR/fuel context.
+- TradingView open-source — Session Liquidity Killzones: https://www.tradingview.com/script/KWBKc4CI-Session-Liquidity-Killzones/
+  - completed-session high/low references, later-session sweeps, close-back confirmation, post-sweep expansion and compression state.
+- TradingView open-source — Session Sweeps and Levels: https://www.tradingview.com/script/MB26GNhx-Session-Sweeps-and-Levels/
+  - confirmed session levels, wick-beyond/close-back sweep definition, per-session sweep controls.
+- MQL5 Market reference — Multi Session VWAP: https://www.mql5.com/en/market/product/179847
+  - concept reference only: separate session VWAP/equilibrium rather than one daily value anchor.
+
+All BETA decisions above come from independent Dukascopy tick replay, not these sources' outcome claims.
