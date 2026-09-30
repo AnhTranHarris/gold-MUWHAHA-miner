@@ -1391,7 +1391,7 @@
     "entry_percent_not_comparable_to_R9_SYNTH_winrate": true,
     "august": "SEALED"
   },
-  "next_bounded_unit": "BETA_040A_FIVE_EXPERT_ENTRY_HOLD_MOE_CROSSFIT_CONTINUATION_JAN17P5",
+  "next_bounded_unit": "BETA_064A_SELF_ADAPTIVE_NONLINEAR_FIVE_EXPERT_ENTRY_HOLD_POLICY_ITERATION_JAN17P5",
   "active_beta_research_funnel": {
     "protocol": "research/BETA_040_NO_STACKED_CONFIRMATION_OWNER_DIRECTIVE.md",
     "comparison_report": "research/BETA_040_JAN17P5_SOFT_ACTION_NO_CONFIRMATION_EMPIRICAL_REPORT.md",
@@ -1833,7 +1833,7 @@
     "August": "SEALED"
   },
   "BETA040_architecture": {
-    "status": "PLANNED_NOT_YET_EXECUTED",
+    "status": "SUPERSEDED_BY_EXISTING_BETA063_EVIDENCE_AND_BETA064_DESIGN",
     "design": "research/BETA_040_ENTRY_HOLD_MOE_SHARED_CONTINUATION_VALUE_DESIGN.md",
     "focus": "ENTRY+HOLD state-conditioned soft mixture-of-experts with one shared continuation-value model; EXIT consumes continuation value but is not independently hard-gated",
     "experts": [
@@ -1852,5 +1852,32 @@
     "failed_experiments_chat_policy": "failed screens stay in durable research logs; user-facing chat focuses on breakthroughs/findings unless asked",
     "August": "SEALED",
     "MQL5": "NOT_AUTHORIZED"
+  },
+  "BETA064_architecture": {
+    "status": "PLANNED_NOT_YET_EXECUTED",
+    "design": "research/BETA_064_SELF_ADAPTIVE_ENTRY_HOLD_MOE_POLICY_ITERATION_DESIGN.md",
+    "parent_evidence": "BETA063 already tested five soft Ridge experts + preentry leadup + single +5s shared continuation; short-Jan +14.12% less loss but frozen Jan-Jul only +1.755% vs BETA039 incumbent, PF worse, no profitable months",
+    "modifications": [
+      "replace fixed 60/40 global-specialist Ridge blend with nonlinear expert heads and learned economic gate",
+      "replace 350ms spread-snap leadup with genuine causal recurrent preentry sequence model",
+      "replace one-time +5s continuation/horizon selection with recurrent fitted optimal-stopping continuation value",
+      "convert P89 from binary admission veto to continuous execution-cost term except broker invalidity",
+      "treat R9 side as prior not direction authority",
+      "state-conditioned causal shadow-expert online trust adaptation with shrinkage and BOCPD reset toward neutral",
+      "HSMM regime posterior and residual duration as soft router/hold features",
+      "cross-fitted policy iteration with full one-position after-cost reward"
+    ],
+    "community_basis": [
+      "MQL5 adaptive virtual strategy ledgers",
+      "MQL5 ensemble performance weighting",
+      "HSMM duration-aware regime inference",
+      "BOCPD causal change probability",
+      "HMM+GRU regime-specific sequence forecasting",
+      "PID interaction screening",
+      "optimal stopping continuation-value literature"
+    ],
+    "breakthrough_gate": ">10% guarded whole-system vs current BETA039 incumbent; >20% target; frozen Jan-Jul only after stage1",
+    "August": "SEALED",
+    "mql5_authorized": false
   }
 }
