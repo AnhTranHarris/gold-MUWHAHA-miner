@@ -203,3 +203,17 @@ The missing production layer is HOLD→EXIT.
 Until HOLD→EXIT is researched, frozen, implemented and parity-certified, any MQL5 build created from this checkpoint must be labeled **ENTRY+HOLD PARITY / RESEARCH BUILD ONLY**, not a finished trading EA.
 
 August remains sealed.
+
+
+## Durable exact-model freeze bundle
+
+The exact current learned-model artifacts are durably archived in the BETA Google Drive research folder:
+
+- file: `BETA064_MAJOR_CHECKPOINT_02_ENTRY_HOLD_MODEL_FREEZE_BUNDLE.zip`
+- Drive file ID: `1lDtCAJQfPlmiH-6Kneo4PyF_4FCFs3tm`
+- SHA-256: `b6980a4a7a0f771349837619e1c3c2eda1cd512a77fbd3e0c0ab8d6c8a1bd830`
+- includes exact base Entry joblib, six-session Entry joblib, exact Hold joblib, deterministic LightGBM text-tree exports, key Python scripts, result tables, and SHA256SUMS.
+
+The Hold joblib SHA-256 is `0f24f18dffabf681157dfef14bc4c67898b561f26d8fe7d372fa72623b99eef1`. The Hold tree export SHA-256 is `06214dc6b08b37e64ad26626471c46c2cf9bb21327554ce99c8ea6d69d41718e`. The frozen Hold training recipe was executed twice and produced byte-identical joblib outputs.
+
+Future MT5 parity work must verify the bundle hash before model translation.
