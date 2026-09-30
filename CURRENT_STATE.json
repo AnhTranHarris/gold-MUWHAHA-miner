@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "Major Checkpoint 02 remains the frozen active BETA baseline. Checkpoint-02D is a robust research child and major-checkpoint candidate, not frozen: 5,469 Jan-Jul Entry→Hold trades (+399 / +7.87% vs frozen parent), 88.39% weighted survivability, 7/7 observed months >=85%, and 7/7 leave-one-month-out months >=85%; February is 85.99%. SYNTH session×specialist condition-cell coverage is 4.35% vs frozen parent 4.24%. The C02D repair raises only E9 and E7 child ps_b75 authority to 0.915; all other C02C rules remain unchanged. Four orthogonal Entry clocks E13-E16 were researched and added to the taxonomy as shadow-only desks; none currently has position ownership authority because no stable >=85% tail was found. E15 Regime-Shift First Pullback and E16 Second-Entry Trend Pullback are the highest-priority shadows for further session/state refinement. Alpha/GAMMA are prohibited and were not used. Hold→Exit deferred; August SEALED; no MQL5 change.",
+  "current_status": "Major Checkpoint 02 remains the frozen active BETA baseline. Checkpoint-02D is a robust research child and major-checkpoint candidate, not frozen: 5,469 Jan-Jul Entry→Hold trades (+399 / +7.87% vs frozen parent), 88.39% weighted survivability, 7/7 observed months >=85%, and 7/7 leave-one-month-out months >=85%; February is 85.99%. SYNTH session×specialist condition-cell coverage is 4.35% vs frozen parent 4.24%. The C02D repair raises only E9 and E7 child ps_b75 authority to 0.915; all other C02C rules remain unchanged. Four orthogonal Entry clocks E13-E16 were researched and added to the taxonomy as shadow-only desks; none currently has position ownership authority because no stable >=85% tail was found. E15 Regime-Shift First Pullback and E16 Second-Entry Trend Pullback are the highest-priority shadows for further session/state refinement. Alpha/GAMMA are prohibited and were not used. Hold→Exit deferred; August SEALED; no MQL5 change. Checkpoint-02D expanded opportunity research without changing Major Checkpoint 02. Four new shadow desks were evaluated with no Alpha/GAMMA dependency. E13 Absorption-Divergence is probationary shadow/gap-fill only: 40-rule candidates at 85% survival; only 10 fit idle C02C gaps, all 10 survived in-panel, taking the research child to 5,529 trades / 88.23% weighted survivability / 7 of 7 months >85%. E14 Session Sweep→MSS, E15 Compression Sweep-Reclaim and E16 Spread-Contraction Ignition failed standalone quality and remain shadow-only. Universal gate tightening was rejected because it reduced condition-matched coverage. Next research should use coverage-deficit weighting and improve E6/E9/E7 state discrimination.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -941,77 +941,69 @@
     "owner_study_goal": "Repair real-tick ENTRY quality and absolute winning-trade count first; freeze Hold/Exit for controlled isolation; preserve separate BETA cumulative approval gates",
     "notes": "R9 REAL original Coinexx tester is historical research control; full January R9-like Dukascopy Python simplification IS NOT exact original broker EA. Mean observed Dukascopy spread ~$0.84/oz, point-size and execution different. Hold/Exit approximate frozen, no MQL5."
   },
-  "last_verified_research_document": "research/BETA_064_CHECKPOINT_02D_FEBRUARY_REPAIR_AND_SHADOW_SPECIALIST_EXPANSION.md",
-  "latest_research_record": "research/BETA_064_CHECKPOINT_02D_FEBRUARY_REPAIR_AND_SHADOW_SPECIALIST_EXPANSION.md",
+  "last_verified_research_document": "research/BETA_064_CHECKPOINT_02D_OPPORTUNITY_EXPANSION_AND_FOUR_SHADOW_SPECIALISTS.md",
+  "latest_research_record": "research/BETA_064_CHECKPOINT_02D_OPPORTUNITY_EXPANSION_AND_FOUR_SHADOW_SPECIALISTS.md",
   "latest_research_record_drive": "https://drive.google.com/file/d/1xLx4uJK8pSpRez68vS2k59--cWgiF96B/view",
   "last_scientific_campaign": {
-    "id": "BETA064_CHECKPOINT_02D_FEBRUARY_REPAIR_AND_SHADOW_SPECIALIST_EXPANSION",
-    "status": "ROBUST_RESEARCH_CHILD__MAJOR_CHECKPOINT_CANDIDATE__NOT_FROZEN",
-    "parent": "BETA064_MAJOR_CHECKPOINT_02_SESSION_AWARE_ENTRY_HOLD",
-    "trades": 5469,
-    "delta_trades_vs_parent": 399,
-    "delta_trade_pct": 0.0787,
-    "weighted_survivability": 0.8838910221,
-    "weighted_fp_success": 0.6081550558,
-    "diagnostic_path_resolution_value": 5981.669,
-    "observed_months_pass": "7/7",
-    "lomo_months_pass": "7/7",
-    "weakest_month": "February",
-    "weakest_month_survivability": 0.8599412341,
-    "synth_denominator": 71810,
-    "condition_cell_matched": 3127,
-    "condition_cell_coverage": 0.043545,
-    "active_child_adjustments": {
-      "E9_LEVEL_BREAK_MIN_PS_B75": 0.915,
-      "E7_SWEEP_RECLAIM_MIN_PS_B75": 0.915,
-      "all_other_C02C_rules": "UNCHANGED"
-    },
-    "shadow_entry_specialists": {
-      "E13_OPENING_DRIVE_FIRST_PULLBACK": {
+    "id": "BETA064_CHECKPOINT_02D_OPPORTUNITY_EXPANSION_AND_FOUR_SHADOW_SPECIALISTS",
+    "status": "RESEARCH_CHILD__MAJOR_CHECKPOINT_02_UNCHANGED",
+    "parent": "BETA064_CHECKPOINT_02C_SESSION_E6_AND_DEFICIT_ROUTER_REFINEMENT",
+    "alpha_gamma_dependencies": "NONE_PROHIBITED",
+    "four_shadow_specialists": {
+      "E13_ABSORPTION_DIVERGENCE_REVERSAL": {
+        "status": "PROBATIONARY_SHADOW_GAPFILL_ONLY",
+        "raw_candidates": 40,
+        "raw_survivability": 0.85,
+        "raw_fp": 0.375,
+        "raw_diagnostic_value": 21.936,
+        "idle_gap_adds": 10,
+        "idle_gap_survivability": 1,
+        "idle_gap_fp": 0.4,
+        "idle_gap_diagnostic_value": 10.298,
+        "caveat": "Post-panel rule; leave-one-month-out standalone robustness insufficient."
+      },
+      "E14_SESSION_SWEEP_MSS": {
         "status": "SHADOW_ONLY",
-        "raw_candidates": 699,
-        "raw_survival": 0.1173
+        "candidates": 386,
+        "survivability": 0.34456,
+        "fp": 0.212435,
+        "diagnostic_value": -361.591
       },
-      "E14_SWEEP_FVG_RETEST": {
+      "E15_COMPRESSION_SWEEP_RECLAIM": {
         "status": "SHADOW_ONLY",
-        "raw_candidates": 18416,
-        "raw_survival": 0.1268
+        "candidates": 296,
+        "survivability": 0.310811,
+        "fp": 0.192568,
+        "diagnostic_value": -282.307
       },
-      "E15_REGIME_SHIFT_FIRST_PULLBACK": {
-        "status": "HIGH_PRIORITY_SHADOW",
-        "raw_candidates": 3206,
-        "raw_survival": 0.3546
-      },
-      "E16_SECOND_ENTRY_TREND_PULLBACK": {
-        "status": "HIGH_PRIORITY_SHADOW",
-        "raw_candidates": 4461,
-        "raw_survival": 0.2416
+      "E16_SPREAD_CONTRACTION_IGNITION": {
+        "status": "SHADOW_ONLY",
+        "candidates": 372,
+        "survivability": 0.389785,
+        "fp": 0.193548,
+        "diagnostic_value": -475.966
       }
     },
-    "rejected_active_variants": [
-      "broad FVG retest",
-      "quote-pressure absorption as standalone Entry",
-      "broad session-handoff retest",
-      "independent session-value-only reversion",
-      "ORB retest/re-break first tested form"
+    "c02c_plus_probationary_e13": {
+      "trades": 5529,
+      "weighted_survivability": 0.8822571894,
+      "weighted_fp": 0.6073431,
+      "diagnostic_value": 6022.475,
+      "months_over_0_85": "7/7"
+    },
+    "rejected_refinement": {
+      "rule": "universal non-E6/non-E11 threshold 0.916",
+      "reason": "raises observed quality but reduces SYNTH session×specialist condition-cell coverage to ~4.19%, below frozen parent ~4.24%; deletes opportunity instead of discriminating it"
+    },
+    "next_focus": [
+      "E6 session-state discrimination",
+      "E9 accepted-break quality discrimination",
+      "E7 sweep-quality discrimination",
+      "formal coverage-utility router",
+      "E13 shadow evidence accumulation"
     ],
-    "alpha_gamma": "PROHIBITED__NOT_USED",
     "hold_exit": "DEFERRED",
-    "august": "SEALED",
-    "shadow_gapfill_graduation": {
-      "status": "REJECTED",
-      "idle_e15_proposals": 1472,
-      "idle_e16_proposals": 2617,
-      "idle_total": 4089,
-      "representative_max_count_overlay": {
-        "additions": 157,
-        "added_survivability_approx": 0.4459,
-        "added_diagnostic_value_approx": -211.7,
-        "combined_min_month_survivability_approx": 0.8502
-      },
-      "session_specific_result": "No E15/E16 specialist-session subset with >=5 additions achieved both >=85% own survivability and positive diagnostic path value.",
-      "decision": "E15/E16 remain shadow-only; parent survivability buffer may not hide a weak desk."
-    }
+    "august": "SEALED"
   },
   "owner_review_pending_candidate": null,
   "monetary_audit_001": {
@@ -1453,7 +1445,7 @@
     "entry_percent_not_comparable_to_R9_SYNTH_winrate": true,
     "august": "SEALED"
   },
-  "next_bounded_unit": "BETA064_CHECKPOINT_02E_PROVEN_E5_E10_E12_CAPACITY_RECOVERY_AND_E15_E16_FEATURE_REUSE",
+  "next_bounded_unit": "BETA064_CHECKPOINT_02E_COVERAGE_UTILITY_ROUTER_AND_E6_E9_E7_STATE_DISCRIMINATION",
   "active_beta_research_funnel": {
     "protocol": "research/BETA_040_NO_STACKED_CONFIRMATION_OWNER_DIRECTIVE.md",
     "comparison_report": "research/BETA_040_JAN17P5_SOFT_ACTION_NO_CONFIRMATION_EMPIRICAL_REPORT.md",
