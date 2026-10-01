@@ -1,0 +1,149 @@
+{
+  "schema": "beta-research-unit-rebuild-manifest-v1",
+  "unit_id": "BETA_073_STRUCTURAL_BRACKET_LIFECYCLE",
+  "status": "PLANNED",
+  "date_utc": "2026-10-01",
+  "lineage": "INDEPENDENT_BETA",
+  "parent_checkpoint": "BETA_071_STRUCTURAL_ACCEPTANCE_SWEEP_COMPRESSION_CLOCKS",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "producing source",
+    "lifecycle candidate table",
+    "frozen bracket policy if any",
+    "selected ledger",
+    "QA",
+    "report/hashes/readback"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "source_code": [
+    "research/experiments/BETA_073_STRUCTURAL_BRACKET_LIFECYCLE.py"
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "entry_bus": "BETA071 structural events, no BETA072 score filter",
+      "stop_loss_usd": [
+        1,
+        1.5,
+        2,
+        3
+      ],
+      "take_profit_usd": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "max_life_seconds": [
+        120,
+        300
+      ],
+      "fee_roundtrip_usd": 0.02,
+      "same_tick_collision": "conservative: if stop and target could both be crossed on same quote update, stop wins",
+      "one_position": true,
+      "min_cal_trades": 50
+    },
+    "feature_order": [
+      "mechanism",
+      "side",
+      "entry quote/time",
+      "frozen structural event identity"
+    ],
+    "horizons_checkpoints": {
+      "max_life_seconds": [
+        120,
+        300
+      ]
+    },
+    "train_cal_eval_boundaries": {
+      "fit": "BETA071 FIT for descriptive path diagnostics only",
+      "cal": "bracket selection",
+      "diagnostic": "locked until CAL freeze"
+    },
+    "timezone_session_definitions": {
+      "source": "UTC",
+      "hard_session_gate": false
+    },
+    "execution_cost_assumptions": {
+      "entry": "BETA071 executable entry",
+      "exit": "actual opposite executable quote on first stop/target/time event",
+      "commission_roundtrip_usd": 0.02
+    },
+    "runtime_dependencies": [
+      "python>=3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "BETA071 event ledger",
+      "path": "BETA_071_STRUCTURAL_EVENT_LEDGER.npz"
+    },
+    {
+      "role": "January source",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "inherited BETA071 deduplicated causal events"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "research/results/BETA_073_SELECTED_LEDGER.csv.gz"
+    ],
+    "caches": []
+  },
+  "models": [],
+  "outputs": [
+    "research/checkpoints/BETA_073_RESULTS.json",
+    "research/BETA_073_STRUCTURAL_BRACKET_LIFECYCLE_REPORT.md"
+  ],
+  "qa": [
+    "research/qa/BETA_073_STRUCTURAL_BRACKET_LIFECYCLE_QA.py",
+    "research/checkpoints/BETA_073_QA.json"
+  ],
+  "reconstruction": {
+    "entry_point": "research/experiments/BETA_073_STRUCTURAL_BRACKET_LIFECYCLE.py",
+    "command": "python research/experiments/BETA_073_STRUCTURAL_BRACKET_LIFECYCLE.py --beta071-dir <DIR> --source <JAN_GZ> --out-dir <OUT>",
+    "required_artifact_order": [
+      "BETA071 events",
+      "January source",
+      "source",
+      "CAL table",
+      "frozen policy",
+      "ledger",
+      "results",
+      "QA"
+    ],
+    "expected_fingerprints": {},
+    "timing_semantics": "Entry identity/timing is frozen from BETA071. Stop/target is evaluated only on later executable quotes. DIAGNOSTIC is unopened until CAL bracket freeze.",
+    "notes": "Lifecycle attribution unit; does not change entry clocks or add technical confirmations."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "BETA071 event timing unchanged",
+    "state_machine_spec": "entry -> bracket/time lifecycle",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "actual Bid/Ask",
+    "ownership_scheduler_spec": "chronological one-position",
+    "session_dst_spec": "UTC research",
+    "risk_spec": "BETA015 required",
+    "parity_fixtures": []
+  },
+  "supersedes": [],
+  "rollback_target": "BETA_071_STRUCTURAL_ACCEPTANCE_SWEEP_COMPRESSION_CLOCKS",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
