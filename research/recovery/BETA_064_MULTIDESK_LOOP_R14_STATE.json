@@ -1,0 +1,45 @@
+{
+  "schema": "beta064-multidesk-recovery-r14-v1",
+  "date": "2026-10-01",
+  "status": "ACTIVE_RECOVERY_RECOVERY_UNCERTIFIED",
+  "lineage": "BETA_ONLY",
+  "alpha_gamma_allowed": false,
+  "august": "SEALED",
+  "mql5_during_recovery": false,
+  "authoritative_recovery_doc_id": "1VJaUMULaTonJxTRCiWKsof_bHSsjg1ouSfLVCKDepi8",
+  "scope": "QP_QV_SOURCE_ARCHAEOLOGY",
+  "freeze_bundle": {
+    "drive_file_id": "1phzsMX0SKESoqJ4O53vI9nE7fffrX6T-",
+    "sha256_verified": "ccfc0d18d733e97b18bbd183c6cc56b6bcac0f1c2c6c525bda596d0406eb98d3"
+  },
+  "recovered_semantics": {
+    "beta026_quote_pressure1": {
+      "classification": "EXACT_FOR_BETA026_PREDECESSOR",
+      "formula": "original_side * (up_quote_count - down_quote_count) / max(1, up_quote_count + down_quote_count)",
+      "already_side_signed": true,
+      "beta064_formula_identity_proven": false
+    },
+    "beta064_qp_5s": {
+      "classification": "EXACT",
+      "formula": "sum(quote_pressure_1s * tick_count_1s) / max(1, sum(tick_count_1s))",
+      "timestamp_semantics": "RIGHT_EDGE_T_PLUS_5S"
+    },
+    "beta064_qv_5s": {
+      "classification": "EXACT",
+      "formula": "sum(qv_imb_1s * tick_count_1s) / max(1, sum(tick_count_1s))"
+    },
+    "beta064_quote_pressure_1s": {
+      "classification": "UNKNOWN_FORMULA_PREDECESSOR_LINEAGE_CONSTRAINED",
+      "must_not_double_sign": true
+    },
+    "beta064_qv_imb_1s": {
+      "classification": "UNKNOWN"
+    }
+  },
+  "certification": {
+    "historical_checkpoint03_preserved": true,
+    "causal_mt5_entry_parity": "BLOCKED",
+    "recovered_helper_authoritative": false
+  },
+  "next_action": "Search/materialize BETA-only one-second cache fixtures or predecessor source exposing qv_imb/cache-builder semantics; if none exists, preserve qv_imb as UNKNOWN and continue desk-specific E6/E11 persistence/debounce reconstruction using LEFT-edge state for forensics only, then build a newly named RIGHT-edge replacement checkpoint before MT5."
+}
