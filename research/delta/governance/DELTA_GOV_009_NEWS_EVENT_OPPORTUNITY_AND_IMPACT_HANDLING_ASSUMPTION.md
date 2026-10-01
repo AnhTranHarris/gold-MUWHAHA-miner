@@ -182,6 +182,12 @@ This assumption does not yet freeze:
 
 Those details require a later dedicated event-data contract before any news feature is used in promotion-grade research or MT5 translation.
 
+## 11A. Event contribution to opportunity density
+
+Under GOV-010, news/event specialists must report the unique opportunities and realized activity they add to the composite separately from ordinary session activity.
+
+An event stand-down rule may still be valid when evidence supports it, but DELTA must quantify the opportunity capacity removed by the stand-down rather than treating avoided opportunities as costless.
+
 ## 12. Human-review authority
 
 The owner may later:
