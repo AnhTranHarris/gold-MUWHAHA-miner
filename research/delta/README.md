@@ -22,11 +22,12 @@ Prior internal research lineages are outside DELTA scope. Do not read, import, c
 6. Read `research/delta/governance/DELTA_GOV_004_BENCHMARK_ROLES_AND_HUMAN_GOAL_METRICS_CONTRACT.md`.
 7. Read `research/delta/governance/DELTA_GOV_005_PROVISIONAL_CANDIDATE_IMPROVEMENT_GATE.md`.
 8. Read `research/delta/governance/DELTA_GOV_006_SYNTH_METRIC_LOCK_AND_CUMULATIVE_RATCHET_CONTRACT.md`.
-9. Read `research/delta/reference/R9_EVIDENCE_REGISTRY.json`.
-10. Read `research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json`.
-11. Read `research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md`.
-12. Verify GitHub branch is `delta` and Drive target is `DELTA_RESEARCH`.
-13. Resume exactly from `CURRENT_STATE.next_action`.
+9. Read `research/delta/governance/DELTA_GOV_007_CREATIVE_REFINEMENT_ESCALATION_AND_DUKASCOPY_PLAYGROUND.md`.
+10. Read `research/delta/reference/R9_EVIDENCE_REGISTRY.json`.
+11. Read `research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json`.
+12. Read `research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md`.
+13. Verify GitHub branch is `delta` and Drive target is `DELTA_RESEARCH`.
+14. Resume exactly from `CURRENT_STATE.next_action`.
 
 The first DELTA unit is an evidence/source/parity preflight. No new trading result may become a parent before it passes the DELTA manifest gate.
 
@@ -51,3 +52,7 @@ Read `research/delta/governance/DELTA_GOV_005_PROVISIONAL_CANDIDATE_IMPROVEMENT_
 ## Cumulative performance locks
 
 `DELTA_GOV_006_SYNTH_METRIC_LOCK_AND_CUMULATIVE_RATCHET_CONTRACT.md` creates a monotonic research ratchet. When a primary metric reaches at least 87% of its directional progress from R9 REAL toward R9 SYNTH, that metric and candidate version become a protected anchor. Descendants must preserve every accumulated lock and hard-fail if a locked metric deteriorates by 5% or more from its lock value. Research priority then shifts toward the remaining unlocked metrics.
+
+## Creative refinement escalation
+
+`DELTA_GOV_007_CREATIVE_REFINEMENT_ESCALATION_AND_DUKASCOPY_PLAYGROUND.md` authorizes broad candidate redesign and repeated bounded Python experimentation. If a refinement remains below goal and gains less than 10 percentage points of SYNTH-gap closure versus its parent, DELTA must materially broaden the search rather than remain trapped in minor parameter tuning. Once authorized for data use, Dukascopy tick replay is the primary experimental playground. All causality, versioning, and metric-lock rules remain mandatory.
