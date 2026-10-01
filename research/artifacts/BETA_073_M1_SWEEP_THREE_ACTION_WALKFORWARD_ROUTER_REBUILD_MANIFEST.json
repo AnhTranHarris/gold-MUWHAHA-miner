@@ -1,0 +1,190 @@
+{
+  "schema": "beta-research-unit-rebuild-manifest-v1",
+  "unit_id": "BETA_073_M1_SWEEP_THREE_ACTION_WALKFORWARD_ROUTER",
+  "status": "PLANNED",
+  "date_utc": "2026-10-01",
+  "lineage": "INDEPENDENT_BETA",
+  "parent_checkpoint": "BETA063",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "producing source and structural helper",
+    "January walk-forward OOF predictions",
+    "frozen router configuration",
+    "final serialized models",
+    "February replay/predictions/ledger",
+    "QA and human-facing trace packet"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "source_code": [
+    "research/experiments/BETA_073_M1_SWEEP_THREE_ACTION_WALKFORWARD_ROUTER.py"
+  ],
+  "helpers": [
+    "research/experiments/BETA_071_STRUCTURAL_ACCEPTANCE_SWEEP_COMPRESSION_CLOCKS.py"
+  ],
+  "config": {
+    "parameters": {
+      "opportunity_clock": "BETA071 M1 confirmed-pivot SWEEP_RECLAIM",
+      "actions": [
+        "FADE_RECLAIM",
+        "CONTINUE_SWEEP",
+        "SKIP"
+      ],
+      "fixed_hold_seconds": 300,
+      "model": "two low-capacity LightGBM after-cost action-value regressors",
+      "model_grid": [
+        {
+          "num_leaves": 7,
+          "min_child_samples": 30,
+          "learning_rate": 0.05,
+          "n_estimators": 80
+        },
+        {
+          "num_leaves": 7,
+          "min_child_samples": 60,
+          "learning_rate": 0.05,
+          "n_estimators": 80
+        },
+        {
+          "num_leaves": 15,
+          "min_child_samples": 30,
+          "learning_rate": 0.05,
+          "n_estimators": 80
+        }
+      ],
+      "action_value_thresholds_usd": [
+        0,
+        0.1,
+        0.2,
+        0.3
+      ],
+      "purge_seconds": 300,
+      "one_position": true
+    },
+    "feature_order": [
+      "entry_spread",
+      "overshoot_atr",
+      "body_fraction",
+      "reclaim_strength",
+      "m1_range_atr",
+      "m5_context_return_atr",
+      "trend_align_to_fade",
+      "level_age_bars",
+      "recent_mid_return_1s_side",
+      "recent_mid_return_5s_side",
+      "log_recent_quote_count_5s",
+      "UTC_hour_sin",
+      "UTC_hour_cos"
+    ],
+    "horizons_checkpoints": {
+      "hold_seconds": 300
+    },
+    "train_cal_eval_boundaries": {
+      "selection": "Jan05-Jan18 four expanding walk-forward validation blocks",
+      "final_fit": "all Jan1-Jan18T12 after configuration freeze",
+      "robustness": "full February 2026 loaded only after Jan configuration freeze"
+    },
+    "timezone_session_definitions": {
+      "source": "UTC",
+      "hard_session_gate": false
+    },
+    "execution_cost_assumptions": {
+      "entry": "first tick after completed M1 reclaim, actual Ask/Bid",
+      "exit": "opposite executable quote at +300s",
+      "commission_roundtrip_usd": 0.02,
+      "slippage": "not modeled"
+    },
+    "runtime_dependencies": [
+      "python>=3.11",
+      "numpy",
+      "pandas",
+      "lightgbm"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "January source",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    },
+    {
+      "role": "February source",
+      "sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d"
+    },
+    {
+      "role": "structural helper",
+      "path": "research/experiments/BETA_071_STRUCTURAL_ACCEPTANCE_SWEEP_COMPRESSION_CLOCKS.py"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "research/results/BETA_073_JAN_SWEEP_CANDIDATES.npz",
+      "research/results/BETA_073_FEB_SWEEP_CANDIDATES.npz"
+    ],
+    "predictions": [
+      "research/results/BETA_073_JAN_OOF_PREDICTIONS.npz",
+      "research/results/BETA_073_FEB_PREDICTIONS.npz"
+    ],
+    "selected_owned_ledger": [
+      "research/results/BETA_073_FEB_SELECTED_LEDGER.csv.gz"
+    ],
+    "caches": []
+  },
+  "models": [
+    "research/artifacts/BETA_073_FINAL_FADE_MODEL.json",
+    "research/artifacts/BETA_073_FINAL_CONTINUE_MODEL.json",
+    "research/artifacts/BETA_073_FROZEN_ROUTER.json"
+  ],
+  "outputs": [
+    "research/checkpoints/BETA_073_RESULTS.json",
+    "research/BETA_073_M1_SWEEP_THREE_ACTION_WALKFORWARD_ROUTER_REPORT.md",
+    "research/checkpoints/BETA_073_HUMAN_QA_TRACE_PACKET.json"
+  ],
+  "qa": [
+    "research/qa/BETA_073_M1_SWEEP_THREE_ACTION_WALKFORWARD_ROUTER_QA.py",
+    "research/checkpoints/BETA_073_QA.json"
+  ],
+  "reconstruction": {
+    "entry_point": "research/experiments/BETA_073_M1_SWEEP_THREE_ACTION_WALKFORWARD_ROUTER.py",
+    "command": "python research/experiments/BETA_073_M1_SWEEP_THREE_ACTION_WALKFORWARD_ROUTER.py --jan <JAN_GZ> --feb <FEB_GZ> --out-dir <OUT>",
+    "required_artifact_order": [
+      "BETA071 helper",
+      "January source",
+      "BETA073 source",
+      "Jan candidates",
+      "OOF predictions",
+      "frozen router",
+      "final models",
+      "February source",
+      "Feb predictions",
+      "selected ledger",
+      "results",
+      "QA"
+    ],
+    "expected_fingerprints": {},
+    "timing_semantics": "M1 reclaim event is RIGHT-edge causal. Each Jan validation fold trains only on labels ending at least 300s before validation starts. February is inaccessible until the Jan router configuration is serialized.",
+    "notes": "BETA072 fixed FADE failed. BETA073 learns economic FADE/CONTINUE/SKIP routing at the same sparse structural event."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "M1 right-edge structural state plus entry-tick cost state",
+    "state_machine_spec": "PIVOT -> SWEEP -> RECLAIM -> FADE/CONTINUE/SKIP -> HOLD300",
+    "model_inference_spec": "LightGBM JSON dumps plus exact feature order; MT5 parity deferred",
+    "execution_quote_side_spec": "actual Bid/Ask",
+    "ownership_scheduler_spec": "single chronological open position",
+    "session_dst_spec": "UTC continuous time features",
+    "risk_spec": "BETA015 required before funded/MT5 claims",
+    "parity_fixtures": []
+  },
+  "supersedes": [],
+  "rollback_target": "BETA063",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
