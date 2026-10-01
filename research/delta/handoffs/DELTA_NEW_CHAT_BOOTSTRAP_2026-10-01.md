@@ -64,6 +64,15 @@ DELTA uses one tick-rooted market chronology across Python research and any even
 
 Every candle is rebuilt directly from the ordered tick stream for accuracy. The sequence expresses progressively slower analytical context; it does not permit timestamp approximation or chained aggregation where boundaries do not align exactly.
 
+## Research-speed stage gate
+
+DELTA uses a two-stage development funnel:
+
+1. Screen every new candidate on the owner's first 2.5 weeks of January. The exact ending tick boundary and acceptance thresholds are frozen before compute once the owner supplies the next requirements.
+2. Only qualifying candidates advance to bounded month-by-month January-through-July replay.
+
+Each month is a separate durable job so a long replay cannot crash the entire campaign. Refinement between months is permitted for research, but any behavior-changing change creates a new candidate/version and never rewrites prior results. A stable promotion candidate is ultimately replayed as one frozen version across all seven monthly jobs.
+
 ## Research objective
 
 Rebuild a high-activity causal Entry+Hold architecture around the R9 evidence base while preserving real chronology, causal execution, and trade velocity.
