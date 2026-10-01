@@ -1,0 +1,202 @@
+{
+  "schema": "beta-research-unit-rebuild-manifest-v1",
+  "unit_id": "BETA_067_CAUSAL_STATE_ENRICHED_HURDLE_ACTIONABILITY",
+  "status": "PLANNED",
+  "date_utc": "2026-10-01",
+  "lineage": "INDEPENDENT_BETA",
+  "parent_checkpoint": "BETA063",
+  "research_inputs": [
+    "BETA065 exact proposal surface",
+    "BETA066 exact delayed-action labels; null/demoted research only"
+  ],
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "BETA067 authoritative source",
+    "BETA067 QA",
+    "enriched feature surface",
+    "hurdle probability surfaces",
+    "selected ledger",
+    "results/report",
+    "Drive archive/readback"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "source_code": [
+    "research/experiments/BETA_067_CAUSAL_STATE_ENRICHED_HURDLE_ACTIONABILITY.py"
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "base_features": 28,
+      "added_causal_state_features": [
+        "minute_of_day_sin",
+        "minute_of_day_cos",
+        "second_of_minute_sin",
+        "second_of_minute_cos",
+        "weekday_norm",
+        "spread_rank_prev256_same_specialist",
+        "spread_to_prev256_median_same_specialist",
+        "gap_ms_prev_same_specialist",
+        "gap_ms_prev_same_side",
+        "gap_ms_prev_opposite_side",
+        "count_same_specialist_prev1s",
+        "count_same_specialist_prev5s",
+        "count_same_specialist_prev30s",
+        "pressure_divergence_250_vs_1s",
+        "micro_accel_250_500",
+        "micro_accel_1s_3s",
+        "micro_accel_5s_15s",
+        "abs_ret1s_over_range1s",
+        "abs_ret5s_over_range5s",
+        "spread_over_range1s",
+        "state_index_delta_same_specialist",
+        "minute_phase_distance_ms"
+      ],
+      "hurdle": "P(any of 8 delayed actions has realized after-cost reward >0)",
+      "action_models": "8 binary P(action_j >0) models",
+      "q_proxy": "p_j*FIT_mean_positive_reward_j + (1-p_j)*FIT_mean_nonpositive_reward_j",
+      "p_any_thresholds": [
+        0.55,
+        0.6,
+        0.65,
+        0.7
+      ],
+      "q_thresholds_usd": [
+        0,
+        0.05,
+        0.1
+      ],
+      "min_cal_trades": 100,
+      "model_families": [
+        {
+          "name": "HGB_HURDLE",
+          "family": "HistGradientBoostingClassifier",
+          "max_iter": 100,
+          "max_leaf_nodes": 15,
+          "l2_regularization": 10,
+          "learning_rate": 0.05,
+          "min_samples_leaf": 200
+        },
+        {
+          "name": "EXTRA_HURDLE",
+          "family": "ExtraTreesClassifier",
+          "n_estimators": 128,
+          "max_depth": 10,
+          "min_samples_leaf": 100,
+          "max_features": 0.75,
+          "n_jobs": -1
+        }
+      ]
+    },
+    "feature_order": "BETA065 exact 28 followed by listed BETA067 causal state features",
+    "horizons_checkpoints": {
+      "action_horizon_seconds": 30,
+      "delays_ms": [
+        0,
+        250,
+        1000,
+        3000
+      ]
+    },
+    "train_cal_eval_boundaries": {
+      "fit": "2026-01-01T00:00:00Z/2026-01-09T00:00:00Z",
+      "cal": "2026-01-09T00:00:00Z/2026-01-11T00:00:00Z",
+      "diagnostic": "2026-01-11T00:00:00Z/2026-01-18T12:00:00Z"
+    },
+    "timezone_session_definitions": {
+      "feature_clock": "UTC cyclical time features only; no hard session veto"
+    },
+    "execution_cost_assumptions": {
+      "labels": "reuse exact BETA066 executable delayed-action labels",
+      "fee_roundtrip_usd_0p01lot": 0.02,
+      "slippage": "0 bounded research"
+    },
+    "runtime_dependencies": [
+      "python>=3.11",
+      "numpy",
+      "pandas",
+      "scikit-learn"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "proposals",
+      "drive_file_id": "1IMKKM_-LfnZ_7MoKs5116JbFrPwK8bfb",
+      "member": "BETA_065_PREOWNERSHIP_CANDIDATES.npz",
+      "sha256": "600e3b73d7d053f6ed0785a5dd68aadad72f1e8928054a61b3eb1b2840be8773"
+    },
+    {
+      "role": "delayed_labels",
+      "drive_file_id": "1fGljQskvI1T4qDS9VygpWZsDcXqRkisw",
+      "member": "BETA_066_DELAYED_ACTION_LABELS.npz",
+      "sha256": "94a04eeb5e66109efdc300090be80b2731d633d8af70c02191250d21a83f359d"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "BETA065 exact input"
+    ],
+    "predictions": [
+      "research/results/BETA_067_HURDLE_PREDICTIONS.npz"
+    ],
+    "selected_owned_ledger": [
+      "research/results/BETA_067_SELECTED_LEDGER.csv.gz"
+    ],
+    "caches": [
+      "research/results/BETA_067_ENRICHED_FEATURES.npz"
+    ]
+  },
+  "models": [
+    "two preregistered hurdle families; selection on CAL only"
+  ],
+  "outputs": [
+    "research/checkpoints/BETA_067_RESULTS.json",
+    "research/BETA_067_CAUSAL_STATE_ENRICHED_HURDLE_ACTIONABILITY_REPORT.md"
+  ],
+  "qa": [
+    "research/qa/BETA_067_CAUSAL_STATE_ENRICHED_HURDLE_ACTIONABILITY_QA.py",
+    "research/checkpoints/BETA_067_QA.json"
+  ],
+  "reconstruction": {
+    "entry_point": "research/experiments/BETA_067_CAUSAL_STATE_ENRICHED_HURDLE_ACTIONABILITY.py",
+    "command": "python research/experiments/BETA_067_CAUSAL_STATE_ENRICHED_HURDLE_ACTIONABILITY.py --proposals <BETA065_NPZ> --labels <BETA066_LABELS_NPZ> --out-dir <OUT>",
+    "required_artifact_order": [
+      "BETA065 proposals",
+      "BETA066 labels",
+      "BETA067 source",
+      "enriched features",
+      "probabilities",
+      "selected ledger",
+      "results",
+      "QA"
+    ],
+    "expected_fingerprints": {
+      "proposal_rows": 371013
+    },
+    "timing_semantics": "All new state features use proposal time and strictly prior proposal/state history only. Current proposal values are allowed; no future label/state enters features.",
+    "notes": "Diagnostic excluded from all selection. No hard session confirmations."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "RIGHT-edge plus prior-event causal state",
+    "state_machine_spec": "pending",
+    "model_inference_spec": "pending owner review only after science gate",
+    "execution_quote_side_spec": "inherits BETA066 delayed action execution",
+    "ownership_scheduler_spec": "one-position chronological",
+    "session_dst_spec": "UTC cyclical features; no broker-session claim",
+    "risk_spec": "BETA015 required before MT5/investor claim",
+    "parity_fixtures": []
+  },
+  "supersedes": [],
+  "rollback_target": "BETA063",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
