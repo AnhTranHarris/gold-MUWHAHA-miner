@@ -1,0 +1,161 @@
+{
+  "schema": "beta-research-unit-rebuild-manifest-v1",
+  "unit_id": "BETA_070_WAIT_RESOLUTION_META_LABEL",
+  "status": "PLANNED",
+  "date_utc": "2026-10-01",
+  "lineage": "INDEPENDENT_BETA",
+  "parent_checkpoint": "BETA_069_CAUSAL_WAIT_RESOLUTION_ENTRY",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "producing source",
+    "meta candidate feature schema",
+    "frozen model/config",
+    "CAL table",
+    "prediction surface",
+    "selected ledger",
+    "QA",
+    "report/hashes/readback"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "source_code": [
+    "research/experiments/BETA_070_WAIT_RESOLUTION_META_LABEL.py"
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "primary_side": "BETA069 causal continuation side after 1/3/5s WAIT observation",
+      "candidate_bus": "all valid WAIT1/WAIT3/WAIT5 delayed states sorted by executable entry time",
+      "meta_models": [
+        "LightGBM calibrated profitability classifier",
+        "LightGBM realized-PnL regressor"
+      ],
+      "calibration": "chronological last 20% of FIT via isotonic regression; CAL not used for calibration",
+      "one_position": true,
+      "min_cal_trades": 50
+    },
+    "feature_order": [
+      "BETA065 28 as-of proposal features",
+      "wait age",
+      "observed displacement",
+      "resolution strength",
+      "entry spread",
+      "spread change",
+      "wait-window efficiency",
+      "wait-window quote pressure",
+      "wait-window tick intensity",
+      "time-of-day cyclic terms"
+    ],
+    "horizons_checkpoints": {
+      "wait": [
+        1,
+        3,
+        5
+      ],
+      "hold_after_entry": 30
+    },
+    "train_cal_eval_boundaries": {
+      "fit_train": "first 80% chronological FIT delayed candidates",
+      "fit_calibration": "last 20% chronological FIT delayed candidates",
+      "cal": "policy threshold selection",
+      "diagnostic": "locked until CAL freeze"
+    },
+    "timezone_session_definitions": {
+      "source": "UTC",
+      "time_features_only": true,
+      "hard_session_gate": false
+    },
+    "execution_cost_assumptions": {
+      "entry_exit": "BETA069 next-tick delayed executable Bid/Ask",
+      "commission_roundtrip_usd": 0.02
+    },
+    "runtime_dependencies": [
+      "python>=3.11",
+      "numpy",
+      "pandas",
+      "lightgbm",
+      "scikit-learn"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "BETA065 proposals",
+      "sha256": "600e3b73d7d053f6ed0785a5dd68aadad72f1e8928054a61b3eb1b2840be8773"
+    },
+    {
+      "role": "BETA069 delayed candidates",
+      "path": "BETA_069_DELAYED_CANDIDATES.npz"
+    },
+    {
+      "role": "January source",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "research/results/BETA_070_META_CANDIDATES.npz"
+    ],
+    "predictions": [
+      "research/results/BETA_070_POLICY_PREDICTIONS.npz"
+    ],
+    "selected_owned_ledger": [
+      "research/results/BETA_070_SELECTED_LEDGER.csv.gz"
+    ],
+    "caches": [
+      "research/results/BETA_070_FEATURE_SCHEMA.json"
+    ]
+  },
+  "models": [
+    "research/artifacts/BETA_070_FROZEN_MODEL.json"
+  ],
+  "outputs": [
+    "research/checkpoints/BETA_070_RESULTS.json",
+    "research/BETA_070_WAIT_RESOLUTION_META_LABEL_REPORT.md"
+  ],
+  "qa": [
+    "research/qa/BETA_070_WAIT_RESOLUTION_META_LABEL_QA.py",
+    "research/checkpoints/BETA_070_QA.json"
+  ],
+  "reconstruction": {
+    "entry_point": "research/experiments/BETA_070_WAIT_RESOLUTION_META_LABEL.py",
+    "command": "python research/experiments/BETA_070_WAIT_RESOLUTION_META_LABEL.py --beta065-dir <DIR> --beta069-dir <DIR> --source <JAN_GZ> --out-dir <OUT>",
+    "required_artifact_order": [
+      "BETA065 proposal",
+      "BETA069 delayed candidates",
+      "January source",
+      "source",
+      "feature schema",
+      "model",
+      "predictions",
+      "ledger",
+      "results",
+      "QA"
+    ],
+    "expected_fingerprints": {},
+    "timing_semantics": "Primary side is known only after the WAIT observation; execution remains one source ordinal later. Meta features use only information through that observation/entry decision. DIAGNOSTIC is inaccessible to threshold selection.",
+    "notes": "Direction and bet/no-bet are separated per meta-labeling; no extra hard technical confirmation stack."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "proposal -> delayed observation -> next-tick decision",
+    "state_machine_spec": "pending wait timers feeding one-position meta gate",
+    "model_inference_spec": "research LightGBM + isotonic map",
+    "execution_quote_side_spec": "actual Bid/Ask",
+    "ownership_scheduler_spec": "global chronological delayed candidate bus",
+    "session_dst_spec": "UTC research",
+    "risk_spec": "BETA015 required",
+    "parity_fixtures": []
+  },
+  "supersedes": [],
+  "rollback_target": "BETA_069_CAUSAL_WAIT_RESOLUTION_ENTRY",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
