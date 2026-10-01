@@ -1,17 +1,26 @@
 # DELTA Research
 
-DELTA is the fresh strict research lineage for Gold MUWHAHA Miner.
+DELTA is the standalone clean-room research lineage for Gold MUWHAHA Miner.
+
+## Clean-room scope
+
+Only the following are authoritative inputs for DELTA:
+- the preserved R9 engineering/evidence baseline explicitly registered under `research/delta/reference/`;
+- DELTA-created code, manifests, checkpoints, reports and QA artifacts;
+- the registered ordered market-data corpus;
+- reconstructible public research used only to generate testable causal hypotheses.
+
+Prior internal research lineages are outside DELTA scope. Do not read, import, cite, compare, port, merge, reconstruct, or use their code, documents, metrics, hypotheses, candidate logic, or results.
 
 ## New-chat bootstrap order
 
 1. Read `CURRENT_STATE.json`.
-2. Read `research/delta/governance/DELTA_GOV_001_CAUSAL_DURABLE_MT5_RESEARCH_CONTRACT.md`.
-3. Read `research/delta/reference/R9_EVIDENCE_REGISTRY.json`.
-4. Read `research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json`.
-5. Read `research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md`.
-6. Verify GitHub branch is `delta` and Drive target is `DELTA_RESEARCH`.
-7. Resume exactly from `CURRENT_STATE.next_action`.
-
-BETA is historical only. Do not resume BETA scientific descendants.
+2. Read `research/delta/governance/DELTA_CLEAN_ROOM_LOCK.md`.
+3. Read `research/delta/governance/DELTA_GOV_001_CAUSAL_DURABLE_MT5_RESEARCH_CONTRACT.md`.
+4. Read `research/delta/reference/R9_EVIDENCE_REGISTRY.json`.
+5. Read `research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json`.
+6. Read `research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md`.
+7. Verify GitHub branch is `delta` and Drive target is `DELTA_RESEARCH`.
+8. Resume exactly from `CURRENT_STATE.next_action`.
 
 The first DELTA unit is an evidence/source/parity preflight. No new trading result may become a parent before it passes the DELTA manifest gate.
