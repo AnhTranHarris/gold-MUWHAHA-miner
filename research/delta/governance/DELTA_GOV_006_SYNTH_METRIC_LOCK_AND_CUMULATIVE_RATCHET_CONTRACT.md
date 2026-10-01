@@ -156,6 +156,12 @@ Therefore:
 - after a metric is locked, GOV-006's **5% locked-metric deterioration hard floor** applies to that metric;
 - the stricter applicable rule wins.
 
+## 9A. Interaction with creative refinement
+
+GOV-007 grants broad freedom to restructure and recombine candidate logic, but it does not weaken a locked metric.
+
+Creative experiments remain valid research attempts only if their lineage and results are preserved. A descendant that breaches an inherited 5% lock floor cannot become the accepted lineage parent unless the owner explicitly relaxes that lock.
+
 ## 10. Human-review authority
 
 This lock policy is human-revisable.
