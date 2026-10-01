@@ -1,0 +1,72 @@
+{
+  "schema": "beta064-recovery-state-v1",
+  "id": "BETA_064_MULTIDESK_LOOP_RECOVERY_R14",
+  "date": "2026-10-01",
+  "status": "COMPLETE_SAFE_ROLLBACK",
+  "source_recovery": {
+    "historical_beta064_multidesk_loop": "NOT_RECOVERED_EXACTLY",
+    "historical_beta064_allmonths_predictions": "NOT_RECOVERED_EXACTLY",
+    "quote_pressure": "SUPPORTED_RECONSTRUCTION_NOT_HISTORICAL_PARITY",
+    "qv_imb": "SUPPORTED_RECONSTRUCTION_NOT_HISTORICAL_PARITY",
+    "emission_density_forensic_checksum": {
+      "frozen_jan_fit_rows": 30579,
+      "event_edge_rows": 30618,
+      "delta_rows": 39,
+      "delta_pct": 0.1275
+    }
+  },
+  "historical_checkpoint03": {
+    "status": "FORENSIC_ONLY_CAUSAL_CERTIFICATION_SUSPENDED",
+    "observed_trades": 5469,
+    "observed_weighted_survivability": 0.883891,
+    "observed_first_passage_success": 0.608155,
+    "observed_diagnostic_path_value_usd": 5981.669,
+    "causal_mt5_entry_parity": false
+  },
+  "right_edge_r14": {
+    "status": "EXECUTED_REJECTED_FOR_PROMOTION",
+    "jan_total_candidates": 128369,
+    "jan_fit_rows": 30616,
+    "jan_cal_rows": 5749,
+    "jan_diag_rows": 92004,
+    "jan_fit_survival": 0.11944734779200418,
+    "jan_cal_survival": 0.11567229083318838,
+    "jan_diag_survival": 0.19125255423677232,
+    "jan_cal_fp": 0.03704992172551748,
+    "jan_cal_net_usd": -4266.005000000081,
+    "best_jan_cal_threshold_min20": {
+      "trades": 21,
+      "survival": 0.5714285714285714,
+      "first_passage": 0.14285714285714285,
+      "net_usd": -18.5529999999989,
+      "profit_factor": 0.26694061401084473
+    },
+    "historical_base_gate": {
+      "p_surv_min": 0.88,
+      "entry_score_min": 0.3,
+      "selected_trades_janjul": 0
+    }
+  },
+  "safe_active_causal_base": "BETA063",
+  "decision": "ROLL_BACK_ACTIVE_CAUSAL_RESEARCH_BASE_TO_BETA063_PRESERVE_BETA064_CKPTS_AS_FORENSICS",
+  "august": "SEALED",
+  "alpha_gamma_use": false,
+  "mql5_authorized": false,
+  "next_action": "Start a new explicitly named causal Entry architecture from corrected right-edge chronology. Do not restore or reuse the Checkpoint-03 name without independent causal certification.",
+  "github": {
+    "helper": "research/recovery/beta064_multidesk_loop_RIGHTEDGE_R14.py",
+    "report": "research/recovery/BETA_064_MULTIDESK_LOOP_R14_SOURCE_ARCHAEOLOGY_AND_RIGHTEDGE_REBUILD.md",
+    "state": "research/recovery/BETA_064_MULTIDESK_LOOP_R14_STATE.json",
+    "gate_summary": "research/results/BETA_064_R14_RIGHTEDGE_GATE_SUMMARY.csv",
+    "jan_diagnostic": "research/results/BETA_064_R14_JAN_MODEL_DIAGNOSTIC.csv",
+    "jan_threshold_audit": "research/results/BETA_064_R14_JAN_CAL_THRESHOLD_AUDIT_TOP20.csv"
+  },
+  "local_executed_artifact_hashes": {
+    "rebuild_runner_sha256": "75beaf3aac12c28b79cb0fcca1174cff73b0b78bc1ebaff404e73e74e0644780",
+    "gate_summary_sha256": "114cc9e0282d3dafe98788f834d134118e03ebf7ec45556c3564375f31f9c69d",
+    "jan_cal_threshold_audit_sha256": "695435f97aacc41598c29534ea01d9c443477ad6adb14f5c33eacce7e89d1b78",
+    "jan_model_diagnostic_sha256": "7ef86d7300de6ac13cdc65c71bef0ca49ac52f7d207087b497229e412b260af1",
+    "retrained_entry_models_sha256": "13f0b03c626a9c90faba0a61773fc892f3b6cd2c4be97de92255992caa837cc9",
+    "allmonths_prediction_table_sha256": "e7f9325dabe6c65944bc3104bf9d6670c7b103d7a923eca8841dc9d04bebdd1f"
+  }
+}
