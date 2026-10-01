@@ -2,9 +2,9 @@
   "schema": "beta-research-status-v2",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "lineage": "INDEPENDENT_BETA",
-  "last_verified_durable_unit": "BETA_064_MULTIDESK_LOOP_RECOVERY_R18_STATE_MACHINE_TOPOLOGY_FINAL",
+  "last_verified_durable_unit": "BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD",
   "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
-  "last_recorded_milestone": "BETA064_RECOVERY_R18__SAFE_CLOSURE__EXACT_HELPER_NOT_RECOVERED__BETA063_ACTIVE_CAUSAL_BASE",
+  "last_recorded_milestone": "BETA078_HUMAN_QA_RESEARCH_CANDIDATE__SELF_CONTAINED_REBUILD__QA_V2_102_OF_102",
   "research_scope": [
     "ENTRY",
     "HOLD",
@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "BETA064 missing-helper repair/rebuild is CLOSED SAFELY at R18. Exact historical beta064_multidesk_loop.py source/parity was not recovered. R18 strongly constrains the missing emitter topology to specialist-specific in-state finite-state sub-clocks, while rejecting both universal broad-mask edge-only and every-active-row emission and rejecting the later Sep-30 all-12 child formulas as historical source identity. Historical BETA064 Checkpoints 01/02/03 remain FORENSIC ONLY / causal certification suspended. R14 corrected RIGHT-edge rebuild was executed and rejected for promotion. Safe active causal research base is BETA063. BETA only; August SEALED; no MQL5.",
+  "current_status": "BETA078 is the current durable human-facing engineering-QA candidate. Frozen research policy: causal M5 FIRST_RETEST, confirmed-level maturity 7-9 completed M5 bars, one global position, fixed 1800-second executable hold. Jan-Jul is explicitly nonblind discovery/selection data: 420 trades, +$509.207 net, PF 1.3500, avg +$1.2124/trade, max DD ~$99.70, 5/7 positive months; one exact-flat July trade is normalized as flat for win-count classification only. Engineering QA V2 passes 102/102 assertions with seven canonical source SHA checks and exact quote/timing/PnL parity. August remains SEALED and must not be opened before human QA disposition. No MQL5 authorization.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -908,6 +908,76 @@
       "no_mql5": true,
       "hold_exit": "DEFERRED",
       "august": "SEALED"
+    },
+    {
+      "unit_id": "BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD",
+      "status": "VERIFIED_DURABLE__HUMAN_QA_RESEARCH_CANDIDATE_NONBLIND",
+      "category": "ENTRY_HOLD_ENGINEERING_QA",
+      "frozen_policy": {
+        "mechanism": "M5_FIRST_RETEST",
+        "level_age_m5_bars": [
+          7,
+          9
+        ],
+        "hold_seconds": 1800,
+        "ownership": "one global position",
+        "entry": "first canonical source tick strictly after completed causal retest",
+        "exit": "first canonical source tick at/after 1800 seconds from actual entry",
+        "fee_roundtrip_usd": 0.02
+      },
+      "janjul_nonblind": {
+        "trades": 420,
+        "wins": 203,
+        "flats": 1,
+        "net_usd": 509.2069999999969,
+        "pf": 1.3500243336431146,
+        "avg_usd": 1.2123976190476118,
+        "max_dd_usd": 99.70300000000314,
+        "positive_months": 5
+      },
+      "neighbor_support": [
+        {
+          "window": "AGE_7_9",
+          "hold_seconds": 1200,
+          "trades": 422,
+          "net_usd": 167.23799999999454,
+          "pf": 1.1198629916079095
+        },
+        {
+          "window": "AGE_7_10",
+          "hold_seconds": 1800,
+          "trades": 476,
+          "net_usd": 487.9669999999989,
+          "pf": 1.2890250136081938
+        },
+        {
+          "window": "AGE_8_9",
+          "hold_seconds": 1800,
+          "trades": 252,
+          "net_usd": 296.2379999999948,
+          "pf": 1.3167484097783733
+        }
+      ],
+      "engineering_qa": {
+        "assertions": 102,
+        "passed": 102,
+        "failed": 0,
+        "human_qa_cases": 50,
+        "exact_flat_trades": 1
+      },
+      "source_self_contained": true,
+      "manifest": "research/artifacts/BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD_REBUILD_MANIFEST.json",
+      "source": "research/experiments/BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD.py",
+      "qa_source": "research/qa/BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD_QA.py",
+      "results": "research/checkpoints/BETA_078_RESULTS.json",
+      "qa_results": "research/checkpoints/BETA_078_QA.json",
+      "human_qa_dashboard": "research/human_qa/BETA_078_HUMAN_QA_DASHBOARD.html",
+      "human_qa_cases": "research/human_qa/BETA_078_HUMAN_QA_CASES.csv",
+      "drive_bundle_file_id": "1sJb_pxECAViys-Ar7VL87l7rjy9CSyqL",
+      "drive_bundle_url": "https://drive.google.com/file/d/1sJb_pxECAViys-Ar7VL87l7rjy9CSyqL/view?usp=drivesdk",
+      "august": "SEALED_NOT_READ",
+      "independently_validated_alpha": false,
+      "mql5_authorized": false
     }
   ],
   "design_hypotheses": {
@@ -2189,7 +2259,7 @@
     "jan_cal_survivability": 0.11567229083318838,
     "best_jan_cal_min20_survivability": 0.5714285714285714,
     "historical_gate_selected_janjul": 0,
-    "next_action": "Begin the next causal Entry research unit from BETA063 on corrected RIGHT-edge chronology under a new checkpoint identity. Carry forward verified causal infrastructure and R18 topology lessons only; do not inherit historical BETA064 Checkpoint-01/02/03 economics or guessed helper logic.",
+    "next_action": "Historical BETA064 recovery remains closed. Current research next action is BETA078 human-facing engineering QA; do not resume BETA064 archaeology and do not open August before QA disposition.",
     "alpha_gamma_use": false,
     "august": "SEALED",
     "mql5_authorized_during_recovery": false,
@@ -2307,5 +2377,22 @@
       "Preserve all helpers/candidate/prediction/model artifacts under BETA GOV-001.",
       "Keep August sealed and do not write MQL5 without explicit owner authorization."
     ]
+  },
+  "active_rebuild_manifest_path": "research/artifacts/BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD_REBUILD_MANIFEST.json",
+  "human_qa_gate": {
+    "status": "READY_FOR_OWNER_ENGINEERING_QA",
+    "candidate_unit": "BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD",
+    "dashboard": "research/human_qa/BETA_078_HUMAN_QA_DASHBOARD.html",
+    "checklist": "research/human_qa/BETA_078_HUMAN_QA_CHECKLIST.md",
+    "cases": "research/human_qa/BETA_078_HUMAN_QA_CASES.csv",
+    "review_packet": "research/human_qa/BETA_078_HUMAN_QA_REVIEW_PACKET.md",
+    "required_owner_disposition": [
+      "PASS",
+      "PASS_WITH_CORRECTIONS",
+      "FAIL"
+    ],
+    "next_action": "Perform human-facing engineering QA on BETA078. Do not open August during QA. If QA passes, freeze any corrections, verify rebuild parity again, then request explicit owner approval before spending August as the sealed blind gate.",
+    "august": "SEALED",
+    "mql5_authorized": false
   }
 }
