@@ -8,7 +8,7 @@
   "active_science_parent": null,
   "last_verified_durable_unit": "DELTA_BOOTSTRAP_000",
   "first_incomplete_unit": "DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT",
-  "current_phase": "BOOTSTRAPPED_AWAITING_NEW_CHAT_PREFLIGHT",
+  "current_phase": "DELTA_001_PREREGISTERED_AWAITING_EXECUTION",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -57,8 +57,16 @@
     "google_doc_url": "https://docs.google.com/document/d/1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g/edit?usp=drivesdk",
     "status": "READY"
   },
-  "next_action": "Run DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT. Verify R9 MT5 source identities/defaults, REAL/SYNTH reports and tick indexes/manifests, paired corpus, OVERFIT quarantine, Dukascopy Jan-Jul hashes, DELTA Drive/GitHub readback, and freeze initial data walls/metric schema. No strategy optimization in DELTA_001.",
+  "next_action": "Execute DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT exactly as preregistered. No strategy optimization. Close its manifest/readback durability transaction before starting DELTA_002.",
   "mql5_authorized": false,
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_BOOTSTRAP_000_MANIFEST.json",
-  "bootstrap_manifest_commit": "cc06a13b2e27aab6c7f9a5e3a2cb115c16c25bcb"
+  "bootstrap_manifest_commit": "cc06a13b2e27aab6c7f9a5e3a2cb115c16c25bcb",
+  "first_incomplete_manifest_path": "research/delta/artifacts/DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT_MANIFEST.json",
+  "first_incomplete_preregistration_path": "research/delta/DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT_PREREGISTRATION.md",
+  "delta_001_preregistration": {
+    "status": "PREREGISTERED",
+    "manifest_commit": "9da2edb5ae94c439ec2d7631de8f0c203036e788",
+    "preregistration_commit": "eafc9e9902601306f249df5d38ca38b8d2a67ad8",
+    "strategy_optimization_allowed": false
+  }
 }
