@@ -127,3 +127,52 @@ The exact call-chain recovery further confirms that the inherited 2,097 Checkpoi
 
 Authoritative crash/retry log:
 Google Doc `BETA064 beta064_multidesk_loop.py Recovery Log — Crash/Retry Continuity`, ID `1VJaUMULaTonJxTRCiWKsof_bHSsjg1ouSfLVCKDepi8`.
+
+
+## R11 cross-month replication and edge-emission correction
+
+The current source-grounded parent mechanism masks were replayed on original Dukascopy historical-left-edge five-second state at the frozen C02C selected timestamps for February and March.
+
+Selected-mask recall remained high:
+
+| Specialist | Feb recall | Mar recall |
+|---|---:|---:|
+| E3 ORB | 100.00% | 100.00% |
+| E5 VWAP Reclaim | 98.39% | 92.59% |
+| E6 Value Reversion | 99.23% | 99.57% |
+| E7 Sweep/Reclaim | 100.00% | 100.00% |
+| E8 Level Bounce | 100.00% | 100.00% |
+| E9 Level Break | 94.41% | 95.83% |
+| E10 Compression Release | 100.00% | 100.00% |
+| E11 Kinetic Ignition | 100.00% | 100.00% |
+| E12 Failed Expansion | 100.00% | 100.00% |
+
+This strongly corroborates the recovered mechanism families beyond January.
+
+However, the prior universal FALSE->TRUE edge-emission hypothesis is rejected:
+
+- E6 edge recall = 0/130 Feb and 0/231 Mar;
+- E11 edge recall = 166/403 (41.19%) Feb and 200/592 (33.78%) Mar;
+- E9 edge recall = 125/161 (77.64%) Feb and 161/216 (74.54%) Mar;
+- E10 edge recall = 71/80 (88.75%) Feb and 62/78 (79.49%) Mar.
+
+Therefore the earlier Jan-FIT 30,613 versus frozen 30,579 count is a numerical clue only, not near-source certification. The lost helper likely used specialist-specific persistence/debounce/gating semantics.
+
+### Session-lineage escalation
+
+Git chronology after the causal erratum is now explicit:
+
+- 12:47:22Z b23d3fb...: Checkpoint-01 causal timestamp erratum.
+- 12:47:25Z / 12:54:30Z: right-edge dual-tick diagnostic records.
+- 13:27:00Z 5e3f5d...: session authority child is added explicitly over frozen Checkpoint-01.
+- 13:27:03Z aef6187...: record says all 2,097 frozen Checkpoint-01 positions are reserved first and session trades gap-fill around them.
+- preserved beta064_session_router.py loads beta064_allmonths_predictions.pkl as its upstream candidate/probability table.
+
+No durable BETA source has yet been found proving beta064_allmonths_predictions.pkl was regenerated from corrected right-edge state after the erratum.
+
+Current classification:
+- 2,097 base positions: confirmed historical-left-edge contaminated.
+- 2,973 session additions: high-risk / presumed inherited from the same frozen prediction lineage unless contrary BETA evidence is recovered.
+- Checkpoint02/03 remain historical observed artifacts, not causal MT5-certified systems.
+
+The recovery scaffold has been amended so its universal edge-emission hypothesis cannot be mistaken for recovered source.
