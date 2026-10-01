@@ -1,0 +1,156 @@
+{
+  "schema": "beta-research-unit-rebuild-manifest-v1",
+  "unit_id": "BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1",
+  "status": "PLANNED",
+  "date_utc": "2026-10-01",
+  "lineage": "INDEPENDENT_BETA",
+  "parent_checkpoint": "BETA063",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "authoritative BETA065 producing Python source",
+    "BETA065 QA source and results",
+    "pre-ownership candidate ledger or exact deterministic generator verification",
+    "prediction/action-value surface",
+    "selected one-position ledger",
+    "result report and hashes",
+    "GitHub readback of all produced artifacts"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "source_code": [
+    "research/experiments/BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1.py"
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "research_parent": "BETA063 specification only; no historical BETA064 economics/helpers",
+      "candidate_clocks": [
+        "completed_250ms_state_update",
+        "V8_M1_original_boundary_interaction",
+        "specialist_FSM_persistence_retest_rearm"
+      ],
+      "actions": [
+        "LONG_NOW",
+        "SHORT_NOW",
+        "WAIT_SHORT",
+        "SKIP"
+      ],
+      "ownership": "one_position_at_a_time",
+      "lot": "0.01 nominal research convention"
+    },
+    "feature_order": [],
+    "horizons_checkpoints": {
+      "entry_utility_seconds": [
+        1,
+        3,
+        5,
+        10,
+        15,
+        30
+      ]
+    },
+    "train_cal_eval_boundaries": {
+      "fit": "2026-01-01T00:00:00Z/2026-01-09T00:00:00Z",
+      "cal": "2026-01-09T00:00:00Z/2026-01-11T00:00:00Z",
+      "diagnostic": "2026-01-11T00:00:00Z/2026-01-18T12:00:00Z"
+    },
+    "timezone_session_definitions": {
+      "source": "UTC",
+      "note": "No session-specific decision threshold in initial bounded unit unless explicitly preregistered from FIT/CAL."
+    },
+    "execution_cost_assumptions": {
+      "quote_execution": "BUY Ask / SELL Bid; exits on opposite executable quote",
+      "commission_roundtrip_usd_0p01lot": 0.02,
+      "slippage": "not modeled in Stage-1; report separately as certification blocker"
+    },
+    "runtime_dependencies": [
+      "python>=3.11",
+      "numpy",
+      "pandas"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "canonical_market_source",
+      "month": "2026-01",
+      "identity": "XAUUSD_DUKAS_2026_01_ticks.csv.gz",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage1_use": "Jan1-Jan18 12UTC only"
+    },
+    {
+      "role": "parent_spec",
+      "path": "research/BETA_063_FIVE_SOFT_EXPERT_ENTRY_HOLD_SHARED_CONTINUATION_VALUE_SPEC.md"
+    },
+    {
+      "role": "design_hypothesis",
+      "path": "research/BETA_063A_ENTRY_HOLD_UNIFIED_CONTINUATION_ADVANTAGE_BLUEPRINT.md"
+    },
+    {
+      "role": "topology_lesson_only",
+      "path": "research/recovery/BETA_064_MULTIDESK_LOOP_R18_STATE_MACHINE_TOPOLOGY_FINAL.md"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "research/results/BETA_065_PREOWNERSHIP_CANDIDATES.csv.gz"
+    ],
+    "predictions": [
+      "research/results/BETA_065_ACTION_VALUE_PREDICTIONS.csv.gz"
+    ],
+    "selected_owned_ledger": [
+      "research/results/BETA_065_SELECTED_LEDGER.csv.gz"
+    ],
+    "caches": [
+      "research/results/BETA_065_RIGHT_EDGE_STATE_CACHE.csv.gz"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    "research/checkpoints/BETA_065_STAGE1_RESULTS.json",
+    "research/BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1_REPORT.md"
+  ],
+  "qa": [
+    "research/qa/BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1_QA.py",
+    "research/checkpoints/BETA_065_STAGE1_QA.json"
+  ],
+  "reconstruction": {
+    "entry_point": "research/experiments/BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1.py",
+    "command": "python research/experiments/BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1.py --source <JAN_DUKASCOPY_GZ> --out-dir <OUT>",
+    "required_artifact_order": [
+      "canonical January source",
+      "producing Python source",
+      "RIGHT-edge state cache",
+      "pre-ownership candidates",
+      "action-value predictions",
+      "selected ledger",
+      "result JSON",
+      "QA JSON/report"
+    ],
+    "expected_fingerprints": {},
+    "timing_semantics": "All time bars are observable only at RIGHT-edge completion; same-millisecond source ordinal is the deterministic tie-breaker. No [t,t+bucket) observation is visible at t.",
+    "notes": "New post-R18 science. Historical BETA064 checkpoint economics, left-edge caches, missing beta064_multidesk_loop.py, guessed thresholds, and September-30 child formulas are prohibited as parents."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "RIGHT-edge only; unresolved until research unit passes.",
+    "state_machine_spec": "Must be executable and frozen before mt5_translation_ready=true.",
+    "model_inference_spec": "Research-only action-value model; export contract pending.",
+    "execution_quote_side_spec": "BUY Ask / SELL Bid; exit opposite quote.",
+    "ownership_scheduler_spec": "one position at a time; chronological source ordinal.",
+    "session_dst_spec": "UTC research surface; MT5 broker/session translation unresolved.",
+    "risk_spec": "BETA015 funded-risk certification required before owner MT5 review.",
+    "parity_fixtures": []
+  },
+  "supersedes": [],
+  "rollback_target": "BETA063",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
