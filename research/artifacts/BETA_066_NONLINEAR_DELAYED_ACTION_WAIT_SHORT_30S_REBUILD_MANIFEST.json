@@ -1,28 +1,31 @@
 {
   "schema": "beta-research-unit-rebuild-manifest-v1",
   "unit_id": "BETA_066_NONLINEAR_DELAYED_ACTION_WAIT_SHORT_30S",
-  "status": "PLANNED",
+  "status": "COMPLETED_DURABLE_NULL_NOT_PROMOTED__CLOCK_SURFACE_DEMOTED",
   "date_utc": "2026-10-01",
   "lineage": "INDEPENDENT_BETA",
   "parent_checkpoint": "BETA063",
   "research_input_parent": "BETA065 durable RIGHT-edge proposal surface (null result; not promoted parent)",
-  "python_rebuild_ready": false,
+  "python_rebuild_ready": true,
   "mt5_translation_ready": false,
-  "missing_required_artifacts": [
-    "authoritative BETA066 producing Python source",
-    "BETA066 QA source/results",
-    "delayed-action label/prediction surface",
-    "selected one-position replay ledger",
-    "model freeze/config/hashes",
-    "durable Drive archive and readback"
-  ],
+  "missing_required_artifacts": [],
   "sealed_data_status": {
     "august_2026": "SEALED"
   },
   "source_code": [
-    "research/experiments/BETA_066_NONLINEAR_DELAYED_ACTION_WAIT_SHORT_30S.py"
+    {
+      "path": "research/experiments/BETA_066_NONLINEAR_DELAYED_ACTION_WAIT_SHORT_30S.py",
+      "commit": "fb4ce35dc3af53a4b6db3596ec9c5fc2b5f0ff6f",
+      "sha256": "a4b08480d320b682e4d7976f9262ded18a3f198a038e333f281a3c877232f446"
+    }
   ],
-  "helpers": [],
+  "helpers": [
+    {
+      "path": "research/qa/BETA_066_NONLINEAR_DELAYED_ACTION_WAIT_SHORT_30S_QA.py",
+      "commit": "a562e302ea7e9eeb02a2f0b0869740f335a51120",
+      "sha256": "a520b2ca14f8e3e895a7da5d75d602cfa6146bd61d3bd162985e942be688983d"
+    }
+  ],
   "config": {
     "parameters": {
       "proposal_surface": "BETA065 exact 371013 RIGHT-edge proposals",
@@ -131,28 +134,86 @@
   ],
   "intermediate_surfaces": {
     "pre_ownership_candidates": [
-      "BETA065 exact surface; byte-identical input"
+      {
+        "role": "input",
+        "source": "BETA065 exact durable surface",
+        "drive_archive_file_id": "1IMKKM_-LfnZ_7MoKs5116JbFrPwK8bfb",
+        "member": "BETA_065_PREOWNERSHIP_CANDIDATES.npz",
+        "sha256": "600e3b73d7d053f6ed0785a5dd68aadad72f1e8928054a61b3eb1b2840be8773",
+        "rows": 371013
+      }
     ],
     "predictions": [
-      "research/results/BETA_066_DELAYED_ACTION_PREDICTIONS.npz"
+      {
+        "drive_archive_file_id": "1fGljQskvI1T4qDS9VygpWZsDcXqRkisw",
+        "member": "BETA_066_DELAYED_ACTION_PREDICTIONS.npz",
+        "sha256": "198f6803a567afa301bdfa05c6d91727ee598a0f7d00ab88babe4df51c6eeba4"
+      }
     ],
     "selected_owned_ledger": [
-      "research/results/BETA_066_SELECTED_LEDGER.csv.gz"
+      {
+        "drive_archive_file_id": "1fGljQskvI1T4qDS9VygpWZsDcXqRkisw",
+        "member": "BETA_066_SELECTED_LEDGER_FIT.csv.gz",
+        "sha256": "5b062ab1632a09f6d0c43e2d6c50ad53801e0781f17e8d457868f1f1c15ddbc7",
+        "trades": 0
+      },
+      {
+        "drive_archive_file_id": "1fGljQskvI1T4qDS9VygpWZsDcXqRkisw",
+        "member": "BETA_066_SELECTED_LEDGER_CAL.csv.gz",
+        "sha256": "46e90c106073939bfac85cb95bd24fd6c476c082b5db19da5f1ca0c76a15c9c7",
+        "trades": 0
+      },
+      {
+        "drive_archive_file_id": "1fGljQskvI1T4qDS9VygpWZsDcXqRkisw",
+        "member": "BETA_066_SELECTED_LEDGER_DIAGNOSTIC.csv.gz",
+        "sha256": "a23d48e49c738be4125175d3fb2384dde5c408fa86f5a5225806eebf18128553",
+        "trades": 0
+      }
     ],
     "caches": [
-      "research/results/BETA_066_DELAYED_ACTION_LABELS.npz"
+      {
+        "drive_archive_file_id": "1fGljQskvI1T4qDS9VygpWZsDcXqRkisw",
+        "member": "BETA_066_DELAYED_ACTION_LABELS.npz",
+        "sha256": "94a04eeb5e66109efdc300090be80b2731d633d8af70c02191250d21a83f359d",
+        "semantics": "exact delayed executable labels; 30s measured from actual delayed entry tick"
+      }
     ]
   },
   "models": [
-    "three preregistered bounded nonlinear families; winning family/config selected on CAL only"
+    {
+      "status": "rejected_null_grid",
+      "configs": [
+        "HGB_D3_L2_5",
+        "HGB_D4_L2_10",
+        "EXTRA_D8_L150"
+      ],
+      "rebuild": "deterministic from FIT via authoritative source and fixed random_state; no model promoted"
+    }
   ],
   "outputs": [
-    "research/checkpoints/BETA_066_RESULTS.json",
-    "research/BETA_066_NONLINEAR_DELAYED_ACTION_WAIT_SHORT_30S_REPORT.md"
+    {
+      "path": "research/BETA_066_NONLINEAR_DELAYED_ACTION_WAIT_SHORT_30S_REPORT.md",
+      "commit": "c840e0d9444eb92818e5ec6546375f4e55964afe",
+      "sha256": "953004090fbc1d9a5e8e2960f95c792bafea683e953a1f03fcb5f0bbf06fdecf"
+    },
+    {
+      "drive_archive_file_id": "1fGljQskvI1T4qDS9VygpWZsDcXqRkisw",
+      "member": "BETA_066_RESULTS.json",
+      "sha256": "88a45e13423be318e9f726718753538595fc853208735789df1fdbe32020f3e5"
+    }
   ],
   "qa": [
-    "research/qa/BETA_066_NONLINEAR_DELAYED_ACTION_WAIT_SHORT_30S_QA.py",
-    "research/checkpoints/BETA_066_QA.json"
+    {
+      "path": "research/qa/BETA_066_NONLINEAR_DELAYED_ACTION_WAIT_SHORT_30S_QA.py",
+      "commit": "a562e302ea7e9eeb02a2f0b0869740f335a51120",
+      "sha256": "a520b2ca14f8e3e895a7da5d75d602cfa6146bd61d3bd162985e942be688983d"
+    },
+    {
+      "drive_archive_file_id": "1fGljQskvI1T4qDS9VygpWZsDcXqRkisw",
+      "member": "BETA_066_QA.json",
+      "sha256": "c7b4bff07d41e7ed40aa5b885e3b951eada8d162b79375aa8cac9ab5354b86a1",
+      "status": "33/33 PASS"
+    }
   ],
   "reconstruction": {
     "entry_point": "research/experiments/BETA_066_NONLINEAR_DELAYED_ACTION_WAIT_SHORT_30S.py",
@@ -168,8 +229,14 @@
       "QA"
     ],
     "expected_fingerprints": {
+      "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "beta065_proposal_sha256": "600e3b73d7d053f6ed0785a5dd68aadad72f1e8928054a61b3eb1b2840be8773",
       "proposal_rows": 371013,
-      "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+      "cal_rows": 29976,
+      "cal_oracle_now_mean": 0.10746844151925167,
+      "cal_oracle_all_mean": 0.3261381771279948,
+      "selected_policy": "SKIP_ALL",
+      "qa": "33/33 PASS"
     },
     "timing_semantics": "All model inputs are the BETA065 RIGHT-edge state at proposal time. WAIT actions may only enter at the first observed source tick at/after their fixed delay; no future state is inspected at inference time.",
     "notes": "CAL selects model/config/threshold. DIAGNOSTIC is not used for feature, model, delay, threshold, or action selection. August remains sealed."
@@ -187,12 +254,26 @@
   },
   "supersedes": [],
   "rollback_target": "BETA063",
-  "github_commits": [],
-  "drive_artifacts": [],
+  "github_commits": [
+    "0cd5c58c22e94469e18d1b707adfbacf213fa9c8",
+    "cbdfbf40b28a6e00de836e9e887bd19fbfb32a80",
+    "fb4ce35dc3af53a4b6db3596ec9c5fc2b5f0ff6f",
+    "a562e302ea7e9eeb02a2f0b0869740f335a51120",
+    "c840e0d9444eb92818e5ec6546375f4e55964afe"
+  ],
+  "drive_artifacts": [
+    {
+      "file_id": "1fGljQskvI1T4qDS9VygpWZsDcXqRkisw",
+      "url": "https://drive.google.com/file/d/1fGljQskvI1T4qDS9VygpWZsDcXqRkisw/view?usp=drivesdk",
+      "parent_folder_id": "11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
+      "name": "BETA_066_REPRODUCIBILITY_SURFACES.zip",
+      "sha256": "a2cecc7401c0dc33ba513add8e782c1b7b2b7c46c9db0fe9eb3b9f0c3aa461e4"
+    }
+  ],
   "verification": {
-    "github_readback": false,
-    "drive_readback": false,
-    "hashes_verified": false,
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
     "current_state_advanced": false
   }
 }
