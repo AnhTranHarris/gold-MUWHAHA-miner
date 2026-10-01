@@ -138,6 +138,8 @@ The second answers: **How much of the desirable performance/capacity gap have we
 
 Dukascopy then answers: **Does the candidate behavior survive an independent tick environment rather than existing only inside the Coinexx evidence stream?**
 
+Primary metrics that reach the owner-defined SYNTH attainment threshold are governed by `DELTA_GOV_006_SYNTH_METRIC_LOCK_AND_CUMULATIVE_RATCHET_CONTRACT.md` and become cumulative protected anchors for later research.
+
 ## 10. No file-load authorization
 
 This contract records benchmark semantics only.
