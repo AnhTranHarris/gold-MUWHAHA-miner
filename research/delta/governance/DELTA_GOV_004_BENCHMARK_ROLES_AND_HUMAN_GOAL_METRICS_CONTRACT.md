@@ -41,7 +41,7 @@ Where mathematically meaningful, DELTA should report both:
 - absolute change from R9 REAL; and
 - progress/gap closure toward the corresponding R9 SYNTH metric.
 
-No numeric promotion threshold is implied by this contract. The owner will define the required Stage-A goals separately.
+Numeric Stage-A promotion thresholds are defined separately in `DELTA_GOV_005_PROVISIONAL_CANDIDATE_IMPROVEMENT_GATE.md` so benchmark roles and threshold policy remain independently human-revisable.
 
 ## 4. Human-priority metrics
 
