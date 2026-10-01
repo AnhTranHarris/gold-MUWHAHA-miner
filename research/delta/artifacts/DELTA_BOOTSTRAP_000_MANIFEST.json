@@ -5,7 +5,7 @@
   "date_utc": "2026-10-01",
   "lineage": "DELTA",
   "parent_checkpoint": null,
-  "hypothesis": "Infrastructure bootstrap only: establish a fresh DELTA lineage from authoritative R9 evidence while preserving stricter durability/causality/MT5-readiness procedures and explicitly closing BETA as a scientific parent.",
+  "hypothesis": "Infrastructure bootstrap only: establish a standalone DELTA clean-room lineage from authoritative R9 evidence with strict durability, causality, and MT5-readiness procedures.",
   "falsification_condition": "Any missing R9 source identity, missing core evidence registry, failed GitHub/Drive readback, or inability to reconstruct the bootstrap state invalidates the bootstrap.",
   "python_rebuild_ready": true,
   "mt5_translation_ready": false,
@@ -108,7 +108,7 @@
       "r9_ticklogger_blob_sha": "5c7655cd3357f9126e8bffd97c34374dfb29f83e"
     },
     "timing_semantics": "No trading computation in bootstrap. Future units default to strict as-of/RIGHT-edge timing under DELTA GOV-001.",
-    "notes": "BETA history remains in Git ancestry for forensic evidence but is not an active scientific parent."
+    "notes": "DELTA is standalone. Prior internal research lineages are outside scope and prohibited from active DELTA research."
   },
   "mt5_translation_contract": {
     "authoritative_python_parent": "",
@@ -128,7 +128,7 @@
     "status": "NOT_APPLICABLE_BOOTSTRAP"
   },
   "supersedes": [],
-  "rollback_target": "BETA branch remains historical/forensic only; do not resume as parent.",
+  "rollback_target": "NONE_STANDALONE_BOOTSTRAP",
   "github_commits": [
     "4317e50bc806479c903bc269a92397fd2704c0ca",
     "bc2df09e80cc9101bd35eb2f40c7b6b788478cb7",
