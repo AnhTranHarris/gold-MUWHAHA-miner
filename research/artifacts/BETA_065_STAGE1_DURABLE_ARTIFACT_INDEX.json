@@ -1,0 +1,81 @@
+{
+  "unit_id": "BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1",
+  "date_utc": "2026-10-01",
+  "status": "COMPLETED_DURABLE_NULL_NOT_PROMOTED",
+  "parent_checkpoint": "BETA063",
+  "rollback_target": "BETA063",
+  "promotion_gate_passed": false,
+  "current_state_advanced": false,
+  "august_2026": "SEALED_NOT_READ",
+  "github": {
+    "report_path": "research/BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1_REPORT.md",
+    "report_commit": "ecb72d8ae8b114f92664ef3dd3468e48dc730a1d",
+    "preregistration_path": "research/BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1_PREREGISTRATION.md",
+    "preregistration_commit": "747dfa4841dc2bd849e5942c6ae80d93de4d6578",
+    "manifest_path": "research/artifacts/BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1_REBUILD_MANIFEST.json",
+    "initial_manifest_commit": "32bd8fd3e0fa9d4d14814369f1f869a39e5a36c4"
+  },
+  "drive": {
+    "folder_id": "11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
+    "archive_file_id": "1IMKKM_-LfnZ_7MoKs5116JbFrPwK8bfb",
+    "archive_url": "https://drive.google.com/file/d/1IMKKM_-LfnZ_7MoKs5116JbFrPwK8bfb/view?usp=drivesdk",
+    "archive_name": "BETA_065_STAGE1_REPRODUCIBILITY_SURFACES.zip",
+    "archive_sha256": "96fc5de879ad0f40b345aa4f96afca1c8876fcea68bc467c24a9c638628d2557"
+  },
+  "contained_artifacts": {
+    "producing_python": {
+      "name": "BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1.py",
+      "sha256": "86a6f1d2c631239e9be8a634930967c2bc949ad489748f1eeab8d169235bdc6a"
+    },
+    "qa_python": {
+      "name": "BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1_QA.py",
+      "sha256": "8de40c664f30ebd64c866f365247b5e358f08c4a8246c92be4d3dc78564a5342"
+    },
+    "preownership_surface": {
+      "name": "BETA_065_PREOWNERSHIP_CANDIDATES.npz",
+      "sha256": "600e3b73d7d053f6ed0785a5dd68aadad72f1e8928054a61b3eb1b2840be8773"
+    },
+    "action_value_surface": {
+      "name": "BETA_065_ACTION_VALUE_PREDICTIONS.npz",
+      "sha256": "a4a2b99e4fc91ee863d1cd9dbf51d6a6080369ce0690e78232442f256771933e"
+    },
+    "selected_ledger": {
+      "name": "BETA_065_SELECTED_LEDGER.csv",
+      "sha256": "09953fd345589fd8a4430f141f6a7a530f632b51996dd51daaf7b5be8c84bd20"
+    },
+    "state_cache_meta": {
+      "name": "BETA_065_RIGHT_EDGE_STATE_CACHE.json",
+      "sha256": "f2530c578c806bf059080f2ae97eeb9bb4908c723c49b3f3f7a3f81dffec4a8a"
+    },
+    "results": {
+      "name": "BETA_065_STAGE1_RESULTS.json",
+      "sha256": "b4ccd5843476728084b7d96079f2d74d814f81e0e1551de4017e80d332525f3f"
+    },
+    "qa_results": {
+      "name": "BETA_065_STAGE1_QA.json",
+      "sha256": "354e6b8c155f61061dd8aacde94868ab5ca8e0aa0218ae7432d02f60ae2aa105"
+    },
+    "action_capacity": {
+      "name": "BETA_065_STAGE1_ACTION_CAPACITY.json",
+      "sha256": "0e1f76a356e79cd6a810d23f5d1a0aa9343fafb6c09c0f3368997c605b184fcf"
+    },
+    "report": {
+      "name": "BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1_REPORT.md",
+      "sha256": "3d96332689dc74bbcf89f5a83d3dd55543132671a41c099f7c95d7a3071ff74b"
+    }
+  },
+  "qa": {
+    "status": "PASS",
+    "checks": "25/25"
+  },
+  "scientific_result": {
+    "proposals": 371013,
+    "fit": 164448,
+    "cal": 29976,
+    "diagnostic": 176589,
+    "cal_best_predicted_executable_value_max_usd": -0.07726510168567313,
+    "selected_policy": "SKIP_ALL",
+    "interpretation": "Initial low-capacity heterogeneous RIGHT-edge action-value experts found no positive CAL executable value. 30-second hindsight action capacity exists in MICRO250 and RETEST/RENEW clocks, so the next bottleneck is causal side/phase discrimination and WAIT_SHORT timing rather than movement scarcity."
+  },
+  "next_bounded_unit": "Preregister a new unit from the preserved BETA065 pre-ownership surface to test bounded nonlinear 30-second action discrimination plus explicit WAIT_SHORT option value; FIT only for model learning, CAL only for selection, diagnostic not used for feature/threshold choice."
+}
