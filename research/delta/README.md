@@ -25,11 +25,12 @@ Prior internal research lineages are outside DELTA scope. Do not read, import, c
 9. Read `research/delta/governance/DELTA_GOV_007_CREATIVE_REFINEMENT_ESCALATION_AND_DUKASCOPY_PLAYGROUND.md`.
 10. Read `research/delta/governance/DELTA_GOV_008_MULTI_SPECIALIST_COMPOSITE_AND_SESSION_AWARE_ASSUMPTION.md`.
 11. Read `research/delta/governance/DELTA_GOV_009_NEWS_EVENT_OPPORTUNITY_AND_IMPACT_HANDLING_ASSUMPTION.md`.
-12. Read `research/delta/reference/R9_EVIDENCE_REGISTRY.json`.
-13. Read `research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json`.
-14. Read `research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md`.
-15. Verify GitHub branch is `delta` and Drive target is `DELTA_RESEARCH`.
-16. Resume exactly from `CURRENT_STATE.next_action`.
+12. Read `research/delta/governance/DELTA_GOV_010_HIGH_OPPORTUNITY_DENSITY_AND_CANDIDATE_TRADE_CONTRIBUTION_ASSUMPTION.md`.
+13. Read `research/delta/reference/R9_EVIDENCE_REGISTRY.json`.
+14. Read `research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json`.
+15. Read `research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md`.
+16. Verify GitHub branch is `delta` and Drive target is `DELTA_RESEARCH`.
+17. Resume exactly from `CURRENT_STATE.next_action`.
 
 The first DELTA unit is an evidence/source/parity preflight. No new trading result may become a parent before it passes the DELTA manifest gate.
 
@@ -66,3 +67,7 @@ Read `research/delta/governance/DELTA_GOV_005_PROVISIONAL_CANDIDATE_IMPROVEMENT_
 ## News/event opportunity assumption
 
 `DELTA_GOV_009_NEWS_EVENT_OPPORTUNITY_AND_IMPACT_HANDLING_ASSUMPTION.md` treats medium/high-impact monetary-policy, macro-financial, and gold-specific news as a first-class opportunity regime rather than an automatic blackout. DELTA may build dedicated pre-event, release-reaction, post-event, liquidity-protection, continuation, reversal, or stand-down specialists. Exact news providers, impact taxonomy, timestamps, and event windows remain pending a dedicated event-data contract.
+
+## High opportunity-density assumption
+
+`DELTA_GOV_010_HIGH_OPPORTUNITY_DENSITY_AND_CANDIDATE_TRADE_CONTRIBUTION_ASSUMPTION.md` treats high daily opportunity/trade activity as part of the intended system edge. Trading specialists should add unique qualified opportunity capacity within their declared scopes; duplicate proposals do not count as new opportunities. Promotion-grade results must expose daily opportunity/trade distributions so improved headline metrics cannot hide success-by-starvation. Exact hard daily activity floors remain pending owner/data review.
