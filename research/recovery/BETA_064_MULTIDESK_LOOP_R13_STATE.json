@@ -1,0 +1,45 @@
+{
+  "schema": "beta064-multidesk-recovery-r13-v1",
+  "date": "2026-10-01",
+  "status": "ACTIVE_RECOVERY_RECOVERY_UNCERTIFIED",
+  "lineage": "BETA_ONLY",
+  "alpha_gamma_allowed": false,
+  "august": "SEALED",
+  "mql5_during_recovery": false,
+  "authoritative_recovery_doc_id": "1VJaUMULaTonJxTRCiWKsof_bHSsjg1ouSfLVCKDepi8",
+  "historical_checkpoint03": {
+    "trades": 5469,
+    "weighted_survival": 0.8838910221,
+    "weighted_first_passage": 0.6081550558,
+    "diagnostic_value": 5981.669,
+    "preserved": true,
+    "causal_mt5_entry_certified": false
+  },
+  "preserved": [
+    "Jan-Jul Dukascopy ticks",
+    "corrected right-edge causal 5s state",
+    "exact V2 E1/E2/E4",
+    "frozen Entry/session/Hold models",
+    "session router",
+    "ownership rules",
+    "selected ledgers",
+    "Hold model"
+  ],
+  "unresolved": [
+    "E3/E5-E12 exact emission/debounce",
+    "raw_score identity",
+    "historical quote_pressure",
+    "historical qv_imb",
+    "beta064_allmonths_predictions.pkl provenance",
+    "pre-ownership candidate surface",
+    "corrected right-edge replacement checkpoint"
+  ],
+  "r13_findings": [
+    "no loose helper or prediction table in indexed Drive",
+    "no indexed loose BETA057/058/059 source by exact filename",
+    "Sep-30 journal revision mining found no embedded helper before 429",
+    "predecessor quote_pressure1 already side-signed; no exact BETA064 qp equality claimed",
+    "universal FALSE->TRUE edge remains rejected"
+  ],
+  "next_action": "BETA-only qp/qv source archaeology, then desk-specific E6/E11 emission reconstruction; historical left-edge forensics only; build new right-edge causal replacement checkpoint before MT5."
+}
