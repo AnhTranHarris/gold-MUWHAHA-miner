@@ -94,5 +94,36 @@ Historical-left-edge results may never be promoted to MT5.
 8. replacement causal checkpoint;
 9. only then MT5 Entry-parity work.
 
+## R10 exact historical call-chain recovery
+
+The preserved V2 freeze bundle contains `beta064_frozen_monthly_ps088_hold08.py`, which directly exposes the historical Checkpoint-01 execution path:
+
+`beta064_MM_1s.pkl -> historical feat_from_d(d) -> v2.add_extra(v1.candidates(b), b) -> v1.make_labels -> v1.add_model_features -> frozen Jan-FIT models`.
+
+This is exact source evidence that:
+
+- `v1.candidates(b)` from the lost helper was the parent proposal generator;
+- E1/E2/E4 were then removed/replaced by the exact V2 rules;
+- the historical `feat_from_d` used left-edge Pandas five-second timestamps without the later +5s completion shift;
+- the corrected `beta064_causal_core.py` differs by explicitly shifting the five-second index to right-edge completion time.
+
+The historical and corrected feature builders otherwise preserve the same main state family: price/spread/tick aggregation, multiscale returns and efficiency, volatility/ATR, prior 5m/15m/60m structure, tick_z, daily quote-activity-weighted value, vwap state, range ratio and UTC ORB state.
+
+Exact historical generic UTC ORB timing is now recovered:
+- ORB starts at 08:00 and 13:30 UTC;
+- first 15 minutes define the range;
+- historical active window is [ORB end, ORB end + 90 minutes).
+
+A preserved contemporaneous BETA source, `beta064_session_entries.py`, also supplies literal mechanism/score-family corroboration:
+- ORB accepted break: `65 + 8*eff60 + 4*tick_z`;
+- sweep/reclaim: `67 + 8*eff15 + 3*tick_z`;
+- failed break: `66 + 6*tick_z`;
+- compression release: `64 + 7*tick_z`;
+- VWAP reclaim: `60 + 8*eff60`.
+
+These are corroborating BETA evidence for E3/E5/E7/E10/E12 in the recovery scaffold, but they remain non-authoritative for the lost parent `candidates()` until candidate/model parity passes.
+
+The exact call-chain recovery further confirms that the inherited 2,097 Checkpoint-01 base positions are tied to the suspended left-edge feature path. Historical-left-edge reconstruction is forensic only; a future MT5-eligible checkpoint must be rebuilt on corrected right-edge state.
+
 Authoritative crash/retry log:
 Google Doc `BETA064 beta064_multidesk_loop.py Recovery Log — Crash/Retry Continuity`, ID `1VJaUMULaTonJxTRCiWKsof_bHSsjg1ouSfLVCKDepi8`.
