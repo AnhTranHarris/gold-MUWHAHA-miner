@@ -6,7 +6,7 @@
   "active_science_parent": null,
   "last_verified_durable_unit": "DELTA_BOOTSTRAP_000",
   "first_incomplete_unit": "DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT",
-  "current_phase": "DELTA_001_PREREGISTERED_AWAITING_EXECUTION",
+  "current_phase": "GOAL_DEFINITION_IN_PROGRESS_R9_FILES_BLOCKED",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -30,7 +30,8 @@
     "status": "MANDATORY_ACTIVE",
     "clean_room_lock": "research/delta/governance/DELTA_CLEAN_ROOM_LOCK.md",
     "nested_timeframe_contract": "research/delta/governance/DELTA_GOV_002_TICK_ROOTED_NESTED_TIMEFRAME_CONTRACT.md",
-    "research_speed_contract": "research/delta/governance/DELTA_GOV_003_RESEARCH_SPEED_STAGE_GATE_CONTRACT.md"
+    "research_speed_contract": "research/delta/governance/DELTA_GOV_003_RESEARCH_SPEED_STAGE_GATE_CONTRACT.md",
+    "benchmark_goal_contract": "research/delta/governance/DELTA_GOV_004_BENCHMARK_ROLES_AND_HUMAN_GOAL_METRICS_CONTRACT.md"
   },
   "drive": {
     "delta_research_folder_id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel",
@@ -99,7 +100,19 @@
     "monthly_human_approval_required": false,
     "python_iterative_testing_and_retesting_allowed": true,
     "python_development_optimization_allowed": true,
-    "final_frozen_candidate_jan_jul_replay_required_for_comparable_promotion_surface": true
+    "final_frozen_candidate_jan_jul_replay_required_for_comparable_promotion_surface": true,
+    "r9_real_role": "STARTING_BASELINE_EA_AND_REAL_TICKLOG",
+    "r9_synth_role": "PERFORMANCE_GROWTH_REFERENCE",
+    "r9_overfit_role": "TRADE_CAPACITY_AND_HIGH_PROFIT_PER_TRADE_REFERENCE_ONLY",
+    "dukascopy_role": "INDEPENDENT_CROSS_BROKER_BLIND_ENVIRONMENT",
+    "human_primary_metrics": [
+      "WINNING_TRADE_COUNT",
+      "NET_PROFIT",
+      "GROSS_LOSS",
+      "MAX_DRAWDOWN"
+    ],
+    "r9_file_loading_authorized": false,
+    "coinexx_to_dukascopy_cross_environment_comparison_required": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
@@ -107,7 +120,7 @@
     "google_doc_url": "https://docs.google.com/document/d/1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g/edit?usp=drivesdk",
     "status": "READY"
   },
-  "next_action": "Execute DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT exactly as preregistered. No strategy optimization. Close its manifest/readback durability transaction before starting DELTA_002.",
+  "next_action": "Continue owner goal-definition governance only. Do not execute DELTA_001 and do not load R9 REAL/SYNTH/OVERFIT/ticklog/report files until the owner explicitly authorizes evidence loading.",
   "mql5_authorized": false,
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_BOOTSTRAP_000_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
@@ -117,7 +130,9 @@
     "status": "PREREGISTERED",
     "manifest_commit": "9da2edb5ae94c439ec2d7631de8f0c203036e788",
     "preregistration_commit": "eafc9e9902601306f249df5d38ca38b8d2a67ad8",
-    "strategy_optimization_allowed": false
+    "strategy_optimization_allowed": false,
+    "execution_blocked_by_owner": true,
+    "block_reason": "R9_FILE_LOADING_NOT_YET_AUTHORIZED"
   },
   "research_scope": "DELTA_ONLY_CLEAN_ROOM",
   "clean_room_lock_commit": "052a4c5772643ac92ec842070c16260af7a2be84",
