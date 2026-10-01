@@ -1,0 +1,198 @@
+{
+  "schema": "beta-research-unit-rebuild-manifest-v1",
+  "unit_id": "BETA_066_NONLINEAR_DELAYED_ACTION_WAIT_SHORT_30S",
+  "status": "PLANNED",
+  "date_utc": "2026-10-01",
+  "lineage": "INDEPENDENT_BETA",
+  "parent_checkpoint": "BETA063",
+  "research_input_parent": "BETA065 durable RIGHT-edge proposal surface (null result; not promoted parent)",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "authoritative BETA066 producing Python source",
+    "BETA066 QA source/results",
+    "delayed-action label/prediction surface",
+    "selected one-position replay ledger",
+    "model freeze/config/hashes",
+    "durable Drive archive and readback"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "source_code": [
+    "research/experiments/BETA_066_NONLINEAR_DELAYED_ACTION_WAIT_SHORT_30S.py"
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "proposal_surface": "BETA065 exact 371013 RIGHT-edge proposals",
+      "action_space": [
+        "LONG_NOW",
+        "SHORT_NOW",
+        "WAIT_250MS_THEN_LONG",
+        "WAIT_250MS_THEN_SHORT",
+        "WAIT_1S_THEN_LONG",
+        "WAIT_1S_THEN_SHORT",
+        "WAIT_3S_THEN_LONG",
+        "WAIT_3S_THEN_SHORT",
+        "SKIP"
+      ],
+      "hold_seconds": 30,
+      "q_threshold_grid_usd": [
+        0,
+        0.05,
+        0.1,
+        0.15
+      ],
+      "min_cal_trades": 100,
+      "one_position": true,
+      "model_grid": [
+        {
+          "name": "HGB_D3_L2_5",
+          "family": "HistGradientBoostingRegressor",
+          "max_iter": 80,
+          "max_leaf_nodes": 7,
+          "l2_regularization": 5,
+          "learning_rate": 0.06,
+          "min_samples_leaf": 200
+        },
+        {
+          "name": "HGB_D4_L2_10",
+          "family": "HistGradientBoostingRegressor",
+          "max_iter": 100,
+          "max_leaf_nodes": 15,
+          "l2_regularization": 10,
+          "learning_rate": 0.05,
+          "min_samples_leaf": 250
+        },
+        {
+          "name": "EXTRA_D8_L150",
+          "family": "ExtraTreesRegressor",
+          "n_estimators": 96,
+          "max_depth": 8,
+          "min_samples_leaf": 150,
+          "max_features": 0.75,
+          "n_jobs": -1
+        }
+      ]
+    },
+    "feature_order": "inherit exact BETA065 28-feature order; source ordinal/time are identity, not model inputs",
+    "horizons_checkpoints": {
+      "action_horizon_seconds": 30,
+      "delays_ms": [
+        0,
+        250,
+        1000,
+        3000
+      ]
+    },
+    "train_cal_eval_boundaries": {
+      "fit": "2026-01-01T00:00:00Z/2026-01-09T00:00:00Z",
+      "cal": "2026-01-09T00:00:00Z/2026-01-11T00:00:00Z",
+      "diagnostic": "2026-01-11T00:00:00Z/2026-01-18T12:00:00Z"
+    },
+    "timezone_session_definitions": {
+      "source": "UTC"
+    },
+    "execution_cost_assumptions": {
+      "entry": "first observed tick at/after chosen delay; BUY Ask / SELL Bid",
+      "exit": "first observed tick at/after delayed entry +30s; opposite quote",
+      "fee_roundtrip_usd_0p01lot": 0.02,
+      "slippage": "0 in bounded research; unresolved certification blocker"
+    },
+    "runtime_dependencies": [
+      "python>=3.11",
+      "numpy",
+      "pandas",
+      "scikit-learn"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "BETA065_preownership_surface",
+      "drive_archive_file_id": "1IMKKM_-LfnZ_7MoKs5116JbFrPwK8bfb",
+      "member": "BETA_065_PREOWNERSHIP_CANDIDATES.npz",
+      "sha256": "600e3b73d7d053f6ed0785a5dd68aadad72f1e8928054a61b3eb1b2840be8773",
+      "rows": 371013
+    },
+    {
+      "role": "canonical_market_source",
+      "identity": "XAUUSD_DUKAS_2026_01_ticks.csv(3).gz",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    },
+    {
+      "role": "parent_spec",
+      "path": "research/BETA_063_FIVE_SOFT_EXPERT_ENTRY_HOLD_SHARED_CONTINUATION_VALUE_SPEC.md"
+    },
+    {
+      "role": "prior_null_report",
+      "path": "research/BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1_REPORT.md"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "BETA065 exact surface; byte-identical input"
+    ],
+    "predictions": [
+      "research/results/BETA_066_DELAYED_ACTION_PREDICTIONS.npz"
+    ],
+    "selected_owned_ledger": [
+      "research/results/BETA_066_SELECTED_LEDGER.csv.gz"
+    ],
+    "caches": [
+      "research/results/BETA_066_DELAYED_ACTION_LABELS.npz"
+    ]
+  },
+  "models": [
+    "three preregistered bounded nonlinear families; winning family/config selected on CAL only"
+  ],
+  "outputs": [
+    "research/checkpoints/BETA_066_RESULTS.json",
+    "research/BETA_066_NONLINEAR_DELAYED_ACTION_WAIT_SHORT_30S_REPORT.md"
+  ],
+  "qa": [
+    "research/qa/BETA_066_NONLINEAR_DELAYED_ACTION_WAIT_SHORT_30S_QA.py",
+    "research/checkpoints/BETA_066_QA.json"
+  ],
+  "reconstruction": {
+    "entry_point": "research/experiments/BETA_066_NONLINEAR_DELAYED_ACTION_WAIT_SHORT_30S.py",
+    "command": "python research/experiments/BETA_066_NONLINEAR_DELAYED_ACTION_WAIT_SHORT_30S.py --proposals <BETA065_NPZ> --source <JAN_DUKASCOPY_GZ> --out-dir <OUT>",
+    "required_artifact_order": [
+      "BETA065 proposal surface",
+      "canonical January source",
+      "BETA066 source",
+      "delayed labels",
+      "prediction/model freeze",
+      "selected ledger",
+      "results",
+      "QA"
+    ],
+    "expected_fingerprints": {
+      "proposal_rows": 371013,
+      "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    },
+    "timing_semantics": "All model inputs are the BETA065 RIGHT-edge state at proposal time. WAIT actions may only enter at the first observed source tick at/after their fixed delay; no future state is inspected at inference time.",
+    "notes": "CAL selects model/config/threshold. DIAGNOSTIC is not used for feature, model, delay, threshold, or action selection. August remains sealed."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "BETA065 RIGHT-edge features only",
+    "state_machine_spec": "fixed delay action scheduler if promoted",
+    "model_inference_spec": "pending; bounded tree/boosting model must be exportable or exactly translatable before MT5 review",
+    "execution_quote_side_spec": "BUY Ask / SELL Bid; exit opposite quote",
+    "ownership_scheduler_spec": "one position maximum; WAIT reserves no position but suppresses decisions until chosen delayed entry; after entry, suppress until 30s exit",
+    "session_dst_spec": "UTC research; broker translation unresolved",
+    "risk_spec": "BETA015 exact funded-risk proof remains required before MT5/investor claims",
+    "parity_fixtures": []
+  },
+  "supersedes": [],
+  "rollback_target": "BETA063",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
