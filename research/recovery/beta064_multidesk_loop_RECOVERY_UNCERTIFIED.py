@@ -6,13 +6,21 @@ No MQL5 use. This is NOT certified as the lost source.
 
 Historical left-edge state is allowed only for forensic reconstruction.
 Corrected right-edge state is the only admissible future runtime semantics.
+
+R11 correction:
+The R9C universal FALSE->TRUE edge-emission hypothesis is rejected by independent
+February/March selected-timestamp evidence. Base mechanism masks remain useful
+forensics, but this scaffold MUST NOT claim exact candidates() identity.
+In particular, E6 and E11 selected trades frequently occur inside persistent
+active states rather than only at mask transitions.
 """
 import numpy as np
 import pandas as pd
 
 FIT_END=pd.Timestamp("2026-01-09",tz="UTC")
 CAL_END=pd.Timestamp("2026-01-11",tz="UTC")
-RECOVERY_STATUS="RECOVERY_UNCERTIFIED"
+RECOVERY_STATUS="RECOVERY_UNCERTIFIED_R11_UNIVERSAL_EDGE_REJECTED"
+UNIVERSAL_EDGE_EMISSION_REJECTED=True
 FROZEN_JAN_FIT_ROWS=30579
 
 def eff(s,n):
@@ -30,7 +38,11 @@ def _emit(rows,b,mask,side,name,score,horizon,checkpoint,edge_only=True):
         rows.append((b.index[i],i,sd,name,sc,horizon,checkpoint))
 
 def candidates_h1(b):
-    """Best current BETA-only E3/E5-E12 forensic hypothesis. NOT exact yet."""
+    """R9C historical edge-emission hypothesis. RETAINED FOR FORENSICS ONLY.
+
+    R11 cross-month evidence rejects the universal edge() emission assumption.
+    Do not use this function as recovered source or as a causal parent generator.
+    """
     rows=[]
 
     # E3 generic UTC ORB accepted break — exact legacy gate still unresolved.
