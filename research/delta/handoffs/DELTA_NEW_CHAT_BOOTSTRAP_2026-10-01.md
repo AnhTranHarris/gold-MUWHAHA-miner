@@ -54,6 +54,15 @@ The Drive registry points to the validated REAL and SYNTH tick indexes, daily ma
 10. Null/failed results remain durable evidence.
 11. No candidate MQL5 coding before owner approval and `mt5_translation_ready=true`.
 12. Every MT5-worthy candidate must include Python→MQL5 parity fixtures, state machine, feature timing/order, execution, ownership, session/DST and risk contracts.
+13. All market-state candles obey `DELTA_GOV_002_TICK_ROOTED_NESTED_TIMEFRAME_CONTRACT.md`: ticks are authoritative, every timeframe is reconstructed directly from ticks, and completed bars become visible only at their right edge.
+
+## Nested timeframe base reference
+
+DELTA uses one tick-rooted market chronology across Python research and any eventual MT5 implementation:
+
+`TICKS -> 250ms -> 1s -> 5s -> 15s -> 30s -> 45s -> M1 -> standard MT5 periods through D1`.
+
+Every candle is rebuilt directly from the ordered tick stream for accuracy. The sequence expresses progressively slower analytical context; it does not permit timestamp approximation or chained aggregation where boundaries do not align exactly.
 
 ## Research objective
 
