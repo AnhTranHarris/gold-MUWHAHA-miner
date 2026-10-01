@@ -1,0 +1,160 @@
+{
+  "schema": "beta-research-unit-rebuild-manifest-v1",
+  "unit_id": "BETA_072_M1_SWEEP_RECLAIM_LOW_FRICTION_PERSISTENCE",
+  "status": "PLANNED",
+  "date_utc": "2026-10-01",
+  "lineage": "INDEPENDENT_BETA",
+  "parent_checkpoint": "BETA063",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "authoritative producing source and structural-event helper",
+    "frozen CAL policy",
+    "DIAGNOSTIC replay",
+    "selected ledger with human-readable reasons",
+    "QA source/results",
+    "report/hashes/readback"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "source_code": [
+    "research/experiments/BETA_072_M1_SWEEP_RECLAIM_LOW_FRICTION_PERSISTENCE.py"
+  ],
+  "helpers": [
+    "research/experiments/BETA_071_STRUCTURAL_ACCEPTANCE_SWEEP_COMPRESSION_CLOCKS.py"
+  ],
+  "config": {
+    "parameters": {
+      "mechanism": "M1 confirmed-pivot SWEEP_RECLAIM only",
+      "side_rule": "upper-level sweep + completed reclaim -> SHORT; lower-level sweep + completed reclaim -> LONG",
+      "spread_caps_usd": [
+        0.6,
+        0.65,
+        0.7
+      ],
+      "overshoot_atr_floors": [
+        0,
+        0.05,
+        0.1
+      ],
+      "horizons_seconds": [
+        300,
+        600,
+        900
+      ],
+      "minimum_cal_one_position_trades": 20,
+      "required_neighbor_support": true,
+      "fee_roundtrip_usd_0p01lot": 0.02,
+      "one_position": true
+    },
+    "feature_order": [
+      "confirmed M1 pivot level and confirmation time",
+      "sweep overshoot/ATR",
+      "reclaim body fraction",
+      "close location",
+      "M1 range/ATR",
+      "M5 context return/ATR",
+      "entry spread",
+      "recent 1s/5s midpoint return",
+      "recent 5s quote count"
+    ],
+    "horizons_checkpoints": {
+      "hold_seconds": [
+        300,
+        600,
+        900
+      ]
+    },
+    "train_cal_eval_boundaries": {
+      "fit": "descriptive only; no learned model",
+      "cal": "2026-01-09T00:00:00Z/2026-01-11T00:00:00Z; bounded policy selection",
+      "diagnostic": "2026-01-11T00:00:00Z/2026-01-18T12:00:00Z; inaccessible until frozen CAL policy is serialized"
+    },
+    "timezone_session_definitions": {
+      "source": "UTC",
+      "hard_session_gate": false
+    },
+    "execution_cost_assumptions": {
+      "entry": "first source ordinal strictly after completed reclaim visibility; BUY Ask / SELL Bid",
+      "exit": "opposite quote at first source tick at/after frozen hold horizon",
+      "commission_roundtrip_usd_0p01lot": 0.02,
+      "spread_cap_role": "execution-cost state only, never directional confirmation",
+      "slippage": "not modeled; certification blocker"
+    },
+    "runtime_dependencies": [
+      "python>=3.11",
+      "numpy",
+      "pandas"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "January source",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    },
+    {
+      "role": "BETA071 structural event definition",
+      "path": "research/BETA_071_STRUCTURAL_ACCEPTANCE_SWEEP_COMPRESSION_CLOCKS_PREREGISTRATION.md"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "research/results/BETA_072_M1_SWEEP_CANDIDATES.npz"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "research/results/BETA_072_SELECTED_LEDGER.csv.gz"
+    ],
+    "caches": [
+      "deterministically rebuilt from BETA071 structural cache/helper"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    "research/checkpoints/BETA_072_RESULTS.json",
+    "research/BETA_072_M1_SWEEP_RECLAIM_LOW_FRICTION_PERSISTENCE_REPORT.md"
+  ],
+  "qa": [
+    "research/qa/BETA_072_M1_SWEEP_RECLAIM_LOW_FRICTION_PERSISTENCE_QA.py",
+    "research/checkpoints/BETA_072_QA.json"
+  ],
+  "reconstruction": {
+    "entry_point": "research/experiments/BETA_072_M1_SWEEP_RECLAIM_LOW_FRICTION_PERSISTENCE.py",
+    "command": "python research/experiments/BETA_072_M1_SWEEP_RECLAIM_LOW_FRICTION_PERSISTENCE.py --source <JAN_GZ> --out-dir <OUT>",
+    "required_artifact_order": [
+      "January source",
+      "BETA071 structural helper",
+      "BETA072 source",
+      "M1 sweep candidate surface",
+      "CAL candidate table",
+      "frozen policy",
+      "DIAGNOSTIC ledger/results",
+      "QA"
+    ],
+    "expected_fingerprints": {},
+    "timing_semantics": "Confirmed M1 left2/right2 pivots only; sweep/reclaim is visible at the completed M1 RIGHT edge; order executes on the first later source ordinal. DIAGNOSTIC is opened only after CAL policy file exists.",
+    "notes": "BETA072 is a CAL-designed follow-up to BETA071. The natural 5/10/15-minute horizons and spread-cost neighborhood were selected because CAL diagnostics showed a broad positive basin; this is not pristine OOS. The within-unit DIAGNOSTIC remains untouched until freeze."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "RIGHT-edge M1 structural state + next-tick execution",
+    "state_machine_spec": "PIVOT_CONFIRMED -> SWEEP_OUTSIDE -> RECLAIM_AT_CLOSE -> COST_ELIGIBLE -> ENTER -> HOLD",
+    "model_inference_spec": "deterministic; no ML",
+    "execution_quote_side_spec": "actual Bid/Ask",
+    "ownership_scheduler_spec": "one chronological open position",
+    "session_dst_spec": "UTC research; no session gate",
+    "risk_spec": "BETA015 funded-risk overlay required before funded/MT5 claims",
+    "parity_fixtures": []
+  },
+  "supersedes": [],
+  "rollback_target": "BETA063",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
