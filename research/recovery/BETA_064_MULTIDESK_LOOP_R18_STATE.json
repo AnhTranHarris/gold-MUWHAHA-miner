@@ -1,0 +1,44 @@
+{
+  "schema": "beta064-multidesk-recovery-r18-v1",
+  "date": "2026-10-01",
+  "status": "CLOSED_SAFE_ROLLBACK_EXACT_SOURCE_NOT_RECOVERED",
+  "lineage": "BETA_ONLY",
+  "alpha_gamma_used": false,
+  "august": "SEALED",
+  "mql5_authorized": false,
+  "safe_active_causal_base": "BETA063",
+  "frozen_historical_jan_fit_rows": 30579,
+  "historical_checkpoint_authority": "FORENSIC_ONLY_CAUSAL_CERTIFICATION_SUSPENDED",
+  "right_edge_rebuild": "R14_EXECUTED_REJECTED_FOR_PROMOTION",
+  "topology_finding": {
+    "classification": "STRONGLY_SUPPORTED",
+    "description": "specialist-specific in-state FSM/sub-clock with transient secondary state, persistence/retest/renewal, bounded elapsed-time/tick-count/debounce, and reset/rearm",
+    "exact_historical_thresholds_recovered": false
+  },
+  "later_sep30_subclock_test": {
+    "source_path": "research/experiments/BETA_064_ALL12_ENTRY_SPECIALIST_BROAD_CLOCK_PRESCREEN_01.py",
+    "source_commit": "872b7cf66b662bde97245df02edcea592fbe1061",
+    "source_identity_classification": "REJECTED_AS_HISTORICAL_PARENT",
+    "jan_fit_candidates": 5511,
+    "janmar_selected": 3293,
+    "janmar_exact_matches": 969,
+    "janmar_exact_recall": 0.29426055268751894,
+    "E6_exact_recall": 0.199203187250996,
+    "E9_exact_recall": 0.1062992125984252,
+    "E11_exact_recall": 0.44576405384006335
+  },
+  "predecessor_source_evidence": {
+    "BETA009_persistence": "3 observed ticks AND >=250ms persistence, reset on condition lapse; same-minute ownership rearm preserved",
+    "BETA009_setup_states": "2s failed-ignition expiry; >=250ms dwell with 2s max; 8s break-retest-rebreak expiry; 500ms post-exit cooldown",
+    "BETA029_fsm": "bounded observed-tick confirmation FSM; timeout/gap cancellation; no retroactive origin fill"
+  },
+  "unresolved_primary_source_only": [
+    "exact lost beta064_multidesk_loop.py",
+    "exact E6/E9/E11 specialist FSM thresholds and raw_score",
+    "exact residual E3/E8 gates",
+    "exact BETA064 one-second quote_pressure identity and qv_imb arithmetic",
+    "pre-ownership candidate/prediction ledger with exact provenance"
+  ],
+  "historical_archaeology_rule": "Do not resume unless new primary artifact appears.",
+  "next_action": "Resume new causal research from BETA063 on corrected RIGHT-edge chronology under a new checkpoint identity; carry forward only verified causal infrastructure and hypotheses, not historical BETA064 performance or guessed helper logic."
+}
