@@ -3,22 +3,21 @@
 **Effective:** 2026-10-01  
 **Branch:** `delta`  
 **Status:** MANDATORY  
-**Predecessor:** BETA is closed as a historical research lineage. DELTA inherits procedures and evidence, not BETA strategy edge.
+**Predecessor:** None. DELTA is a standalone clean-room research lineage.
 
-## 1. DELTA reset
+## 1. DELTA clean-room reset
 
-DELTA begins from the authoritative R9 MT5 source/evidence corpus. No BETA, Gamma, R10, or other historical research candidate is an active strategy parent unless it is explicitly reconstructed and independently re-qualified under DELTA.
+DELTA begins only from the authoritative R9 MT5 source/evidence corpus registered inside the DELTA namespace.
 
-Historical work may supply:
-- hypotheses;
-- negative evidence;
-- forensic explanations;
-- tooling;
-- source maps;
-- causal mechanisms;
-- QA and durability procedures.
+Prior internal research lineages are outside scope. Active DELTA work must not read, import, cite, compare, port, merge, reconstruct, or use their code, documents, metrics, hypotheses, candidate logic, performance results, handoffs, controller state, or governance.
 
-Historical performance is never silently carried forward as DELTA performance.
+Permitted research inputs are limited to:
+- the R9 engineering/evidence baseline explicitly registered under `research/delta/reference/`;
+- DELTA-created artifacts;
+- the registered ordered market-data corpus;
+- reconstructible public research used to generate independently testable causal hypotheses.
+
+Any violation of this clean-room boundary invalidates the affected unit and blocks promotion.
 
 ## 2. Canonical R9 authority
 
