@@ -140,6 +140,10 @@ GOV-008 makes specialist creation, splitting, recombination, replacement, sessio
 
 When a general candidate stalls, DELTA may stop trying to force it into a universal strategy and instead create complementary specialists whose combined composite improves the system-level primary metrics.
 
+## 8B. News/event creative escalation
+
+GOV-009 makes medium/high-impact news a first-class research regime. If a normal-session mechanism stalls or degrades materially around event windows, DELTA may create dedicated pre-event, release-reaction, post-event, liquidity-protection, continuation, reversal, or stand-down specialists instead of forcing one general mechanism to cover every event state.
+
 ## 9. Search discipline
 
 Creativity does not authorize:
