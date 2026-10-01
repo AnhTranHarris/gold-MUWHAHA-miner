@@ -19,7 +19,7 @@ import pandas as pd
 
 FIT_END=pd.Timestamp("2026-01-09",tz="UTC")
 CAL_END=pd.Timestamp("2026-01-11",tz="UTC")
-RECOVERY_STATUS="RECOVERY_UNCERTIFIED_R15_E6_E11_PERSISTENT_EMISSION_FORENSICS"
+RECOVERY_STATUS="RECOVERY_UNCERTIFIED_R16_E6_E9_E11_PERSISTENT_EMISSION_FORENSICS"
 UNIVERSAL_EDGE_EMISSION_REJECTED=True
 FROZEN_JAN_FIT_ROWS=30579
 
@@ -80,7 +80,7 @@ def candidates_h1(b):
     lo=(b.open<=b.prior5_hi)&(b.mid>b.prior5_hi)&(b.body>0)&(b.eff15>=.30)
     sh=(b.open>=b.prior5_lo)&(b.mid<b.prior5_lo)&(b.body<0)&(b.eff15>=.30)
     sc=68+10*b.eff15.fillna(0)+8*(b.body.abs()/b.atr60.clip(lower=.05)).fillna(0)
-    _emit(rows,b,lo,1,"E9_LEVEL_BREAK",sc,300,30); _emit(rows,b,sh,-1,"E9_LEVEL_BREAK",sc,300,30)
+    _emit(rows,b,lo,1,"E9_LEVEL_BREAK",sc,300,30,edge_only=False); _emit(rows,b,sh,-1,"E9_LEVEL_BREAK",sc,300,30,edge_only=False)
 
     # E10 previous compression -> directional release; tick_z>=.50 is R9C-supported.
     comp=b.range_ratio.shift(1)<=.30
