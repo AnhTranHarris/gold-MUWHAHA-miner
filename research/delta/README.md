@@ -23,11 +23,12 @@ Prior internal research lineages are outside DELTA scope. Do not read, import, c
 7. Read `research/delta/governance/DELTA_GOV_005_PROVISIONAL_CANDIDATE_IMPROVEMENT_GATE.md`.
 8. Read `research/delta/governance/DELTA_GOV_006_SYNTH_METRIC_LOCK_AND_CUMULATIVE_RATCHET_CONTRACT.md`.
 9. Read `research/delta/governance/DELTA_GOV_007_CREATIVE_REFINEMENT_ESCALATION_AND_DUKASCOPY_PLAYGROUND.md`.
-10. Read `research/delta/reference/R9_EVIDENCE_REGISTRY.json`.
-11. Read `research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json`.
-12. Read `research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md`.
-13. Verify GitHub branch is `delta` and Drive target is `DELTA_RESEARCH`.
-14. Resume exactly from `CURRENT_STATE.next_action`.
+10. Read `research/delta/governance/DELTA_GOV_008_MULTI_SPECIALIST_COMPOSITE_AND_SESSION_AWARE_ASSUMPTION.md`.
+11. Read `research/delta/reference/R9_EVIDENCE_REGISTRY.json`.
+12. Read `research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json`.
+13. Read `research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md`.
+14. Verify GitHub branch is `delta` and Drive target is `DELTA_RESEARCH`.
+15. Resume exactly from `CURRENT_STATE.next_action`.
 
 The first DELTA unit is an evidence/source/parity preflight. No new trading result may become a parent before it passes the DELTA manifest gate.
 
@@ -56,3 +57,7 @@ Read `research/delta/governance/DELTA_GOV_005_PROVISIONAL_CANDIDATE_IMPROVEMENT_
 ## Creative refinement escalation
 
 `DELTA_GOV_007_CREATIVE_REFINEMENT_ESCALATION_AND_DUKASCOPY_PLAYGROUND.md` authorizes broad candidate redesign and repeated bounded Python experimentation. If a refinement remains below goal and gains less than 10 percentage points of SYNTH-gap closure versus its parent, DELTA must materially broaden the search rather than remain trapped in minor parameter tuning. Once authorized for data use, Dukascopy tick replay is the primary experimental playground. All causality, versioning, and metric-lock rules remain mandatory.
+
+## Multi-specialist composite assumption
+
+`DELTA_GOV_008_MULTI_SPECIALIST_COMPOSITE_AND_SESSION_AWARE_ASSUMPTION.md` defines DELTA as a session-aware multi-specialist system. Specialists are judged against their declared scoped populations; the assembled composite is the canonical object for whole-system primary metrics and cumulative system locks. Required session-awareness covers Australia, Asia, Russia, India, Middle East, Europe, UK, and New York. Exact clock/DST/overlap definitions remain pending a dedicated session-timing contract.
