@@ -113,6 +113,16 @@ Future research is built on that anchor and targets the remaining unlocked prima
 
 Locks accumulate across descendants. If an already locked metric improves further, its anchor may ratchet to the better value; it may not silently move backward. See `DELTA_GOV_006_SYNTH_METRIC_LOCK_AND_CUMULATIVE_RATCHET_CONTRACT.md`.
 
+## Creative refinement and optimization authority
+
+Carson is authorized to modify, adjust, recombine, restructure, repair, simplify, expand, or replace candidate mechanisms as needed to reach the active DELTA goals.
+
+If a refinement remains below goal and improves the targeted metric by less than **10 percentage points of additional SYNTH-gap closure versus its parent**, mark `CREATIVE_ESCALATION_REQUIRED`. The next research branch should materially broaden the intervention rather than remain limited to minor parameter changes.
+
+Once evidence/data loading is authorized, Dukascopy tick-level Python replay is the primary experimental playground. Multiple bounded runs, parameter/configuration searches, architectural comparisons, repeated retests, and best-configuration selection are allowed and expected. “Best” means best under all active primary metrics, activity requirements, warnings, hard floors, and inherited metric locks—not merely highest profit.
+
+Creative authority never overrides causal timing, version traceability, preserved failures, sealed-data rules, or the 5% preservation floor on locked metrics. See `DELTA_GOV_007_CREATIVE_REFINEMENT_ESCALATION_AND_DUKASCOPY_PLAYGROUND.md`.
+
 ## Research objective
 
 Rebuild a high-activity causal Entry+Hold architecture around the R9 evidence base while preserving real chronology, causal execution, and trade velocity.
