@@ -243,6 +243,12 @@ Under GOV-009, medium/high-impact news can temporarily become its own specialist
 
 The composite must preserve event-regime ownership, proposal source, blocked/superseded proposals, and hand-back conditions when event routing affects trades.
 
+## 12B. Specialist opportunity contribution
+
+GOV-010 requires active specialists to contribute positive incremental opportunity capacity within their declared scopes. Specialist composition should expand the composite's unique opportunity surface across sessions/regimes rather than merely duplicate existing proposals.
+
+Pure routing/protective components may contribute indirectly by increasing capture, reducing destructive conflicts, or enabling more qualified opportunities to be acted on safely.
+
 ## 13. Research implication
 
 DELTA should search for a **team of complementary specialists**, not a mythical universal strategy.
