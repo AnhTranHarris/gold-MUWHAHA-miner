@@ -1,0 +1,161 @@
+{
+  "schema": "beta-research-unit-rebuild-manifest-v1",
+  "unit_id": "BETA_076_M5_FIRST_RETEST_900S_JANJUL_ROBUSTNESS",
+  "status": "PLANNED",
+  "date_utc": "2026-10-01",
+  "lineage": "INDEPENDENT_BETA",
+  "parent_checkpoint": "BETA_074_STRUCTURAL_RESIDUAL_DURATION_EXTENSION",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "producing source",
+    "Jan-Jul cumulative M1/M5 structure ledger",
+    "frozen trade ledger",
+    "monthly scorecard",
+    "QA",
+    "human QA packet",
+    "report/hashes/readback"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "source_code": [
+    "research/experiments/BETA_076_M5_FIRST_RETEST_900S_JANJUL_ROBUSTNESS.py"
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "mechanism": "FIRST_RETEST",
+      "level_tf": "M5",
+      "hold_seconds": 900,
+      "retest_tolerances_atr": [
+        0.1,
+        0.2,
+        0.3
+      ],
+      "dedupe": "exact BETA071 causal event identity; smallest tolerance retained for duplicate event",
+      "max_retest_age_m1_bars": 10,
+      "fee_roundtrip_usd": 0.02,
+      "one_position": true,
+      "month_state": "continuous cumulative M1/M5 structural state across Jan-Jul"
+    },
+    "feature_order": [
+      "confirmed M5 level",
+      "break event",
+      "first M1 retest acceptance",
+      "entry/exit quote"
+    ],
+    "horizons_checkpoints": {
+      "primary": 900
+    },
+    "train_cal_eval_boundaries": {
+      "discovery": "BETA074 Jan CAL M5 FIRST_RETEST positive at 300/600/900/1800; 900 frozen for retention",
+      "robustness": "Jan-Jul historically inspected months; no further selection",
+      "blind_holdout": "August SEALED"
+    },
+    "timezone_session_definitions": {
+      "source": "UTC",
+      "hard_session_gate": false
+    },
+    "execution_cost_assumptions": {
+      "entry": "first tick strictly after completed M1 retest event",
+      "exit": "opposite executable quote first tick at/after 900 seconds",
+      "commission_roundtrip_usd": 0.02
+    },
+    "runtime_dependencies": [
+      "python>=3.11",
+      "numpy",
+      "pandas"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "Jan source",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    },
+    {
+      "role": "Feb source",
+      "sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d"
+    },
+    {
+      "role": "Mar source",
+      "sha256": "814ba35e72f219a58badd806ed5c0f30ef0fb4ffe56a48205d873706513bd177"
+    },
+    {
+      "role": "Apr source",
+      "sha256": "30375098f62aed6cabc32ec6b67c57c20baec9b6d9be1ce0a204e09806c1ec0f"
+    },
+    {
+      "role": "May source",
+      "sha256": "3a50e0f1eba3076154238290ec02842cf3744ab192e5c9a2acc1cc07367c6a0d"
+    },
+    {
+      "role": "Jun source",
+      "sha256": "34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2"
+    },
+    {
+      "role": "Jul source",
+      "sha256": "e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "research/results/BETA_076_M5_FIRST_RETEST_EVENTS.csv.gz"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "research/results/BETA_076_JANJUL_LEDGER.csv.gz"
+    ],
+    "caches": [
+      "research/results/BETA_076_CUMULATIVE_STRUCTURE_CACHE.npz"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    "research/checkpoints/BETA_076_RESULTS.json",
+    "research/BETA_076_M5_FIRST_RETEST_900S_JANJUL_ROBUSTNESS_REPORT.md",
+    "research/human_qa/BETA_076_HUMAN_QA_REVIEW_PACKET.md"
+  ],
+  "qa": [
+    "research/qa/BETA_076_M5_FIRST_RETEST_900S_JANJUL_ROBUSTNESS_QA.py",
+    "research/checkpoints/BETA_076_QA.json"
+  ],
+  "reconstruction": {
+    "entry_point": "research/experiments/BETA_076_M5_FIRST_RETEST_900S_JANJUL_ROBUSTNESS.py",
+    "command": "python research/experiments/BETA_076_M5_FIRST_RETEST_900S_JANJUL_ROBUSTNESS.py --data-dir <DIR> --out-dir <OUT>",
+    "required_artifact_order": [
+      "seven source months",
+      "source",
+      "cumulative structure cache",
+      "event ledger",
+      "selected ledger",
+      "monthly scorecard",
+      "QA",
+      "human QA packet"
+    ],
+    "expected_fingerprints": {},
+    "timing_semantics": "M5 left2/right2 pivots activate only after two right bars close. Break/retest events are M1 RIGHT-edge observable; entry is first later tick. Structural state is continuous across month boundaries. August is never read.",
+    "notes": "Frozen robustness candidate, not a new selection screen. Jan-Jul are historically inspected and not pristine OOS."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "completed M5 pivot / M1 event RIGHT-edge",
+    "state_machine_spec": "confirmed M5 level -> break -> first accepted M1 retest within 10 bars -> enter -> hold 900s",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "actual Bid/Ask",
+    "ownership_scheduler_spec": "global chronological one-position Jan-Jul",
+    "session_dst_spec": "UTC",
+    "risk_spec": "BETA015 required before MT5 review",
+    "parity_fixtures": []
+  },
+  "supersedes": [],
+  "rollback_target": "BETA_074_STRUCTURAL_RESIDUAL_DURATION_EXTENSION",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
