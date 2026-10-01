@@ -3,8 +3,6 @@
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "branch": "delta",
   "created_utc": "2026-10-01",
-  "beta_lineage_status": "CLOSED_HISTORICAL",
-  "beta_closure_reason": "Owner determined post-rebuild BETA no longer retained sufficient Entry+Hold edge and trade activity for the owner's human threshold. BETA remains forensic/procedural evidence only.",
   "active_science_parent": null,
   "last_verified_durable_unit": "DELTA_BOOTSTRAP_000",
   "first_incomplete_unit": "DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT",
@@ -29,7 +27,8 @@
     "manifest_template": "research/delta/artifacts/DELTA_RESEARCH_UNIT_MANIFEST_TEMPLATE.json",
     "gate": "research/delta/qa/DELTA_GOV_001_REBUILD_MANIFEST_GATE.py",
     "workflow": ".github/workflows/delta-rebuild-artifact-gate.yml",
-    "status": "MANDATORY_ACTIVE"
+    "status": "MANDATORY_ACTIVE",
+    "clean_room_lock": "research/delta/governance/DELTA_CLEAN_ROOM_LOCK.md"
   },
   "drive": {
     "delta_research_folder_id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel",
@@ -49,7 +48,10 @@
     "negative_results_preserved": true,
     "human_qa_before_august": true,
     "owner_approval_before_mql5": true,
-    "mt5_translation_ready_required": true
+    "mt5_translation_ready_required": true,
+    "clean_room_only": true,
+    "prior_project_lineage_material_prohibited": true,
+    "cross_lineage_import_or_reference_prohibited": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
@@ -68,5 +70,6 @@
     "manifest_commit": "9da2edb5ae94c439ec2d7631de8f0c203036e788",
     "preregistration_commit": "eafc9e9902601306f249df5d38ca38b8d2a67ad8",
     "strategy_optimization_allowed": false
-  }
+  },
+  "research_scope": "DELTA_ONLY_CLEAN_ROOM"
 }
