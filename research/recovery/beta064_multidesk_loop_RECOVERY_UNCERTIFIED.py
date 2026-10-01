@@ -7,19 +7,25 @@ No MQL5 use. This is NOT certified as the lost source.
 Historical left-edge state is allowed only for forensic reconstruction.
 Corrected right-edge state is the only admissible future runtime semantics.
 
-R11 correction:
-The R9C universal FALSE->TRUE edge-emission hypothesis is rejected by independent
-February/March selected-timestamp evidence. Base mechanism masks remain useful
-forensics, but this scaffold MUST NOT claim exact candidates() identity.
-In particular, E6 and E11 selected trades frequently occur inside persistent
-active states rather than only at mask transitions.
+R11-R18 correction:
+The universal FALSE->TRUE broad-mask edge hypothesis is rejected by selected-timestamp
+evidence for E6/E9/E11. R17 also rejects emitting every active broad-mask row as
+exact source because it overproduces the frozen January FIT population by >68k.
+R18 constrains the missing topology to a specialist-specific in-state finite-state
+sub-clock (secondary transient state + persistence/retest/renewal + bounded
+timer/counter/debounce + reset/rearm), but exact historical thresholds/raw_score
+remain unrecovered.
+
+Accordingly, the E6/E9/E11 persistent emissions below are FORENSIC UPPER BOUNDS
+ONLY. This scaffold MUST NOT be used as historical candidate source, model-training
+parent, MT5 parity source, or production logic.
 """
 import numpy as np
 import pandas as pd
 
 FIT_END=pd.Timestamp("2026-01-09",tz="UTC")
 CAL_END=pd.Timestamp("2026-01-11",tz="UTC")
-RECOVERY_STATUS="RECOVERY_UNCERTIFIED_R16_E6_E9_E11_PERSISTENT_EMISSION_FORENSICS"
+RECOVERY_STATUS="RECOVERY_CLOSED_R18_FORENSIC_ONLY_EXACT_SOURCE_NOT_RECOVERED"
 UNIVERSAL_EDGE_EMISSION_REJECTED=True
 FROZEN_JAN_FIT_ROWS=30579
 
@@ -135,6 +141,10 @@ def certification_status():
       "frozen_jan_fit_rows":FROZEN_JAN_FIT_ROWS,
       "mt5_parity_authorized":False,
       "historical_left_edge_production_allowed":False,
+      "exact_historical_helper_recovered":False,
+      "recovery_closed":True,
+      "safe_active_causal_base":"BETA063",
+      "persistent_e6_e9_e11_emission":"FORENSIC_UPPER_BOUND_ONLY",
       "hard_gates":[
         "exact Jan FIT candidate identity",
         "candidate timestamp/side/specialist/raw_score/horizon/checkpoint parity",
