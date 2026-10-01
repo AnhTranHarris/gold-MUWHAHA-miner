@@ -18,14 +18,19 @@ Prior internal research lineages are outside DELTA scope. Do not read, import, c
 2. Read `research/delta/governance/DELTA_CLEAN_ROOM_LOCK.md`.
 3. Read `research/delta/governance/DELTA_GOV_001_CAUSAL_DURABLE_MT5_RESEARCH_CONTRACT.md`.
 4. Read `research/delta/governance/DELTA_GOV_002_TICK_ROOTED_NESTED_TIMEFRAME_CONTRACT.md`.
-5. Read `research/delta/reference/R9_EVIDENCE_REGISTRY.json`.
-6. Read `research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json`.
-7. Read `research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md`.
-8. Verify GitHub branch is `delta` and Drive target is `DELTA_RESEARCH`.
-9. Resume exactly from `CURRENT_STATE.next_action`.
+5. Read `research/delta/governance/DELTA_GOV_003_RESEARCH_SPEED_STAGE_GATE_CONTRACT.md`.
+6. Read `research/delta/reference/R9_EVIDENCE_REGISTRY.json`.
+7. Read `research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json`.
+8. Read `research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md`.
+9. Verify GitHub branch is `delta` and Drive target is `DELTA_RESEARCH`.
+10. Resume exactly from `CURRENT_STATE.next_action`.
 
 The first DELTA unit is an evidence/source/parity preflight. No new trading result may become a parent before it passes the DELTA manifest gate.
 
 ## Foundational timeframe rule
 
 All DELTA Python backtests and any eventual MT5 implementation obey `DELTA_GOV_002_TICK_ROOTED_NESTED_TIMEFRAME_CONTRACT.md`. The ordered tick stream is authoritative. Every supported candle is rebuilt directly from ticks; nested timeframes provide synchronized multi-horizon state without replacing tick chronology.
+
+## Research-speed funnel
+
+All DELTA candidates obey `DELTA_GOV_003_RESEARCH_SPEED_STAGE_GATE_CONTRACT.md`: first screen on the owner's first 2.5 weeks of January, then promote only qualifying candidates into bounded month-by-month January-through-July research. Material behavior changes create new candidate versions; completed monthly results are preserved.
