@@ -4,12 +4,20 @@
 **GitHub:** `AnhTranHarris/gold-MUWHAHA-miner` branch `delta`  
 **Drive:** DELTA_RESEARCH  
 **Status:** READY FOR NEW CHAT  
-**BETA:** CLOSED / HISTORICAL ONLY  
+**Research scope:** DELTA-ONLY CLEAN ROOM  
 **August 2026:** SEALED
 
-## Owner decision
+## Clean-room owner directive
 
-BETA is closed because the rebuilt lineage no longer retained enough of the owner's acceptable Entry+Hold edge and trade activity. This is not treated as a total research failure: BETA produced valuable causal, QA, documentation, reconstruction and failure-recovery procedures. Those procedures are carried into DELTA; BETA candidate economics are not.
+DELTA is a standalone research and development lineage.
+
+Prior internal research lineages are outside scope. Do not read, import, cite, compare, port, merge, reconstruct, or use their code, documents, metrics, hypotheses, candidate logic, results, handoffs, controller state, or governance.
+
+DELTA may use only:
+- the preserved R9 engineering/evidence baseline registered inside DELTA;
+- DELTA-created research artifacts;
+- the registered ordered market-data corpus;
+- reconstructible public research used to generate independently testable causal hypotheses.
 
 ## Active engineering baseline
 
@@ -34,21 +42,22 @@ The Drive registry points to the validated REAL and SYNTH tick indexes, daily ma
 
 ## Hard DELTA research rules
 
-1. Every scientific unit is preregistered and gets a manifest before compute.
-2. Every material helper/candidate generator/cache/model/replay/QA artifact is preserved or exactly regenerable.
-3. Candidate/prediction surfaces are preserved before ownership/routing whenever they affect results.
-4. RIGHT-edge/as-of timing is mandatory. No future outcome may enter inference.
-5. Entry+Hold quality **and trade-count retention are co-primary**. No starving-the-system success.
-6. Jan-Jul are nonblind historical research, never relabeled pristine OOS.
-7. August stays sealed until a frozen candidate passes rebuild readiness + human QA and the owner explicitly authorizes opening it.
-8. UI/tool/runtime failure resumes the same unit from the first incomplete durability step; never restart science from memory.
-9. Null/failed results remain durable evidence.
-10. No candidate MQL5 coding before owner approval and `mt5_translation_ready=true`.
-11. Every MT5-worthy candidate must include Python→MQL5 parity fixtures, state machine, feature timing/order, execution, ownership, session/DST and risk contracts.
+1. DELTA clean-room scope is mandatory.
+2. Every scientific unit is preregistered and gets a manifest before compute.
+3. Every material helper/candidate generator/cache/model/replay/QA artifact is preserved or exactly regenerable.
+4. Candidate/prediction surfaces are preserved before ownership/routing whenever they affect results.
+5. RIGHT-edge/as-of timing is mandatory. No future outcome may enter inference.
+6. Entry+Hold quality **and trade-count retention are co-primary**. No starving-the-system success.
+7. Jan-Jul are nonblind historical research, never relabeled pristine OOS.
+8. August stays sealed until a frozen candidate passes rebuild readiness + human QA and the owner explicitly authorizes opening it.
+9. UI/tool/runtime failure resumes the same unit from the first incomplete durability step; never restart science from memory.
+10. Null/failed results remain durable evidence.
+11. No candidate MQL5 coding before owner approval and `mt5_translation_ready=true`.
+12. Every MT5-worthy candidate must include Python→MQL5 parity fixtures, state machine, feature timing/order, execution, ownership, session/DST and risk contracts.
 
 ## Research objective
 
-Rebuild a high-activity causal Entry+Hold architecture around the R9 evidence base without reproducing SYNTH lookahead or BETA's later trade-count collapse.
+Rebuild a high-activity causal Entry+Hold architecture around the R9 evidence base while preserving real chronology, causal execution, and trade velocity.
 
 Research should use REAL/SYNTH/OVERFIT evidence to answer *where R9's apparent edge came from and why REAL lost it*, then reconstruct only causal mechanisms on ordered REAL/Dukascopy chronology.
 
@@ -92,7 +101,7 @@ Use paired REAL/SYNTH evidence to localize the transfer failure, then test recon
 ## Recovery instruction for the next chat
 
 If the UI times out:
-1. inspect `delta/CURRENT_STATE.json`;
+1. inspect `CURRENT_STATE.json`;
 2. inspect the active DELTA unit manifest;
 3. verify GitHub/Drive artifacts that already exist;
 4. resume the same unit at its first missing durability step;
