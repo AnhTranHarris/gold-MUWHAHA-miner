@@ -2244,5 +2244,33 @@
     "next_science": "NEW_CORRECTED_RIGHT_EDGE_ENTRY_ARCHITECTURE",
     "august": "SEALED",
     "mql5_authorized": false
+  },
+  "last_verified_governance_unit": "BETA_GOV_001_MT5_REBUILD_ARTIFACT_RETENTION",
+  "governance_milestone": "BETA_GOV_001__MANDATORY_REBUILD_READY_DURABILITY_GATE",
+  "mt5_rebuild_artifact_retention": {
+    "status": "MANDATORY_ACTIVE",
+    "effective_date": "2026-10-01",
+    "trigger": "BETA064 missing beta064_multidesk_loop.py postmortem",
+    "policy_path": "research/governance/BETA_GOV_001_MT5_REBUILD_ARTIFACT_RETENTION_POLICY.md",
+    "policy_commit": "6f94619dce2cdc863344a50a00cdf75f9b8a4c30",
+    "manifest_template_path": "research/artifacts/BETA_RESEARCH_UNIT_REBUILD_MANIFEST_TEMPLATE.json",
+    "manifest_template_commit": "31d287e4a1eea7a9f0fd28f8332b1e588225c30d",
+    "recovery_google_doc_id": "1VJaUMULaTonJxTRCiWKsof_bHSsjg1ouSfLVCKDepi8",
+    "recovery_google_doc_revision": "ANLCKQmfcwkevGFVvtmpH0wWk3Lqt5PlJZUfy5yM7loSi8retUYtL_Tg1_ylugjgsMaTT2yP_oDqh_JhdbjERAkrsw8YI-4oah0TW8EkrHI",
+    "research_journal_google_doc_id": "1_zuLcHwsPnul8XtfLLlrK9-Mogk120qk0xWdlVWAzPQ",
+    "research_journal_google_doc_revision": "ANLCKQkmhXN7I0eyVLvD5iaHvwidZH-9scqyckh4EXG6z93Raso6KBrmd9V1s-rcZH5RFHaOupDeqSFdKmwiCVszsNqPknpEb30WZTswT5U",
+    "hard_rules": [
+      "No future research unit may be VERIFIED_DURABLE or become a parent unless python_rebuild_ready=true.",
+      "Every material helper/source/cache-builder/candidate-generator/state-machine/router/scheduler/labeler/replay/QA/model-export artifact must be durably preserved or deterministically regenerable from durable source.",
+      "Preserve pre-ownership candidate/proposal surfaces or an exact deterministic generator; selected trades alone are insufficient.",
+      "Preserve prediction/probability surfaces separately when learned routing is used.",
+      "State-machine persistence/debounce/expiry/rearm/cooldown semantics must be executable source, not prose only.",
+      "Large/binary artifacts belong in BETA_RESEARCH Drive with SHA-256 and producing GitHub commit recorded in the manifest.",
+      "Transient /mnt/data-only artifacts, chat-only code and assistant memory never count as authoritative persistence.",
+      "CURRENT_STATE may advance only after source/helpers/config/results/QA/reconstruction artifacts are stored and GitHub/Drive readback is verified.",
+      "Before owner-authorized MT5 build review, mt5_translation_ready=true and a complete Python-to-MT5 translation/parity package are required."
+    ],
+    "prohibited_failure_mode": "An approved or otherwise MT5-worthy candidate may not become unbuildable because project-generated helper/model/provenance artifacts were not preserved.",
+    "checkpoint_rule": "Any checkpoint missing upstream reconstruction artifacts is INCOMPLETE regardless of reported performance."
   }
 }
