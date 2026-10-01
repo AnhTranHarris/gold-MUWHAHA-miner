@@ -1,0 +1,31 @@
+{
+  "schema": "beta064-multidesk-recovery-r17-v1",
+  "status": "ACTIVE_RECOVERY_RECOVERY_UNCERTIFIED",
+  "lineage": "BETA_ONLY",
+  "august": "SEALED",
+  "mql5_during_recovery": false,
+  "hard_invariants": {
+    "frozen_jan_fit_rows": 30579,
+    "source": "Frozen LightGBM tree root internal_count"
+  },
+  "forensic_population_test": {
+    "broad_persistent_jan_fit_rows": 99215,
+    "difference_vs_frozen": 68636,
+    "largest": {
+      "E6_VALUE_REVERSION": 62076,
+      "E11_KINETIC_IGNITION": 14301,
+      "E9_LEVEL_BREAK": 5296
+    },
+    "conclusion": "BROAD_PERSISTENT_EMISSION_REJECTED_AS_EXACT_SOURCE"
+  },
+  "clock_classification": {
+    "E6": "BROAD_MASK_SUPPORTED__EDGE_ONLY_REJECTED__EVERY_ACTIVE_ROW_REJECTED__IN_STATE_SUBCLOCK_UNKNOWN",
+    "E9": "BROAD_MASK_SUPPORTED__EDGE_ONLY_REJECTED__EVERY_ACTIVE_ROW_REJECTED__IN_STATE_SUBCLOCK_UNKNOWN",
+    "E11": "BROAD_MASK_SUPPORTED__EDGE_ONLY_REJECTED__EVERY_ACTIVE_ROW_REJECTED__IN_STATE_SUBCLOCK_UNKNOWN"
+  },
+  "certification": {
+    "causal_mt5_entry_parity": "BLOCKED",
+    "historical_left_edge_runtime_allowed": false
+  },
+  "next_action": "Mine BETA predecessor state machines and Sep-30 revisions for in-state retrigger/debounce/expiry/sub-clock logic; constrain jointly by 30,579 FIT rows and selected-timestamp run ages."
+}
