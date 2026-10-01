@@ -28,7 +28,8 @@
     "gate": "research/delta/qa/DELTA_GOV_001_REBUILD_MANIFEST_GATE.py",
     "workflow": ".github/workflows/delta-rebuild-artifact-gate.yml",
     "status": "MANDATORY_ACTIVE",
-    "clean_room_lock": "research/delta/governance/DELTA_CLEAN_ROOM_LOCK.md"
+    "clean_room_lock": "research/delta/governance/DELTA_CLEAN_ROOM_LOCK.md",
+    "nested_timeframe_contract": "research/delta/governance/DELTA_GOV_002_TICK_ROOTED_NESTED_TIMEFRAME_CONTRACT.md"
   },
   "drive": {
     "delta_research_folder_id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel",
@@ -51,7 +52,39 @@
     "mt5_translation_ready_required": true,
     "clean_room_only": true,
     "prior_project_lineage_material_prohibited": true,
-    "cross_lineage_import_or_reference_prohibited": true
+    "cross_lineage_import_or_reference_prohibited": true,
+    "tick_stream_is_authoritative_market_chronology": true,
+    "all_candles_rebuilt_directly_from_ticks": true,
+    "nested_timeframe_hierarchy": [
+      "TICKS",
+      "S0.25",
+      "S1",
+      "S5",
+      "S15",
+      "S30",
+      "S45",
+      "M1",
+      "M2",
+      "M3",
+      "M4",
+      "M5",
+      "M6",
+      "M10",
+      "M12",
+      "M15",
+      "M20",
+      "M30",
+      "H1",
+      "H2",
+      "H3",
+      "H4",
+      "H6",
+      "H8",
+      "H12",
+      "D1"
+    ],
+    "completed_bar_visible_at_right_edge_only": true,
+    "tick_to_candle_python_mt5_parity_required": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
