@@ -98,6 +98,19 @@ For every month, DELTA must persist before advancing:
 
 A completed month is never rerun merely because a later month or chat/runtime fails.
 
+## 6A. Monthly execution is not a human approval gate
+
+Monthly boundaries exist for runtime safety, durability, observability, and resume capability. They are **not** default human-review stops.
+
+During an active January-through-July campaign, after a month completes DELTA should:
+1. persist the monthly checkpoint and QA;
+2. emit a concise progress note containing the month, candidate/version, pass/fail/diagnostic state, and key metrics;
+3. continue automatically into the next scheduled month without waiting for owner approval.
+
+Human approval is required only when another DELTA governance rule explicitly requires it, when the owner has asked for a stop/review, or when an unresolved failure prevents safe continuation.
+
+If execution is interrupted by timeout, crash, tool failure, or chat boundary, the next run resumes from the first incomplete monthly durability step. Completed months are not recomputed solely because the interaction was interrupted.
+
 ## 7. Refinement between months
 
 January-through-July is a research/development campaign, not pristine out-of-sample validation.
@@ -110,6 +123,20 @@ However:
 - a revised candidate does not inherit prior-month performance as if it had produced it;
 - if cross-month comparability is required, the revised version must be replayed on the relevant earlier months as separate bounded jobs;
 - no monthly result may be silently rewritten.
+
+## 7A. Python research is an iterative optimization laboratory
+
+The Python backtest environment is primarily an engineering/research instrument for repeated testing, retesting, diagnosis, repair, parameter search, specialist refinement, composition, and optimization.
+
+Within the active development corpus, DELTA may run as many bounded iterations as are scientifically useful, subject to:
+- strict causal timing;
+- candidate/version traceability;
+- preservation of failed/null results;
+- no silent reuse of results across changed behavior;
+- trade-count and Entry+Hold visibility;
+- final frozen-candidate replay before promotion.
+
+The objective is not to minimize the number of experiments. The objective is to reach a robust candidate efficiently while retaining enough durable evidence to distinguish genuine improvement from overfit or bookkeeping artifacts.
 
 ## 8. Frozen-candidate full-window comparison
 
