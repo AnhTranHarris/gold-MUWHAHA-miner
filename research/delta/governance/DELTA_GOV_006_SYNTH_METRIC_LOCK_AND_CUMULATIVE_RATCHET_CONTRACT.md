@@ -145,6 +145,12 @@ Candidate manifests must identify:
 
 The Python research process may still alter architecture, features, parameters, specialists, routing, entry, hold, exit, or other mechanisms, but every resulting candidate must satisfy all inherited lock floors.
 
+## 8A. Composite lock semantics
+
+Under GOV-008, the canonical system-wide metric lock attaches to the accepted composite configuration that achieved it, including exact specialist membership, specialist versions, router/orchestrator version, configuration, evaluation window, and result identity.
+
+A single specialist does not automatically own a system-wide lock. Replacing or modifying a specialist requires the resulting composite to re-demonstrate preservation of every inherited system lock.
+
 ## 9. Interaction with GOV-005
 
 GOV-005 remains the provisional initial candidate-improvement gate.
