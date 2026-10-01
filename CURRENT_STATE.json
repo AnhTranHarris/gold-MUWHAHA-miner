@@ -2,9 +2,9 @@
   "schema": "beta-research-status-v2",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "lineage": "INDEPENDENT_BETA",
-  "last_verified_durable_unit": "BETA_064_MAJOR_CHECKPOINT_02_SESSION_AWARE_ENTRY_HOLD_FROZEN_7MO_5070_TRADES_88P44_SURV",
+  "last_verified_durable_unit": "BETA_064_MAJOR_CHECKPOINT_03_HIGH_COUNT_ENTRY_INITIAL_HOLD_FROZEN_7MO_5469_TRADES_88P39_SURV",
   "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
-  "last_recorded_milestone": "BETA064_CKPT02B_SYNTH_MECHANISM_COVERAGE_7P06_CELL_COVERAGE_4P24_CAUSAL_GATE_OVERLAP_7_OF_71810_NO_CHECKPOINT_CHANGE",
+  "last_recorded_milestone": "BETA064_MAJOR_CHECKPOINT_03_HIGH_COUNT_ENTRY_INITIAL_HOLD__5469_TRADES__88P3891_SURV__7_OF_7_LOMO_PASS",
   "research_scope": [
     "ENTRY",
     "HOLD",
@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "Major Checkpoint 02 remains the immutable BETA Entry→Hold control at 5,070 Jan-Jul trades / 88.44% weighted survivability / 7 of 7 months >85%. C02C remains a promising 5,519-trade child but is not freeze-ready; C02D introduced E13 as probationary shadow only and E14-E16 as shadow-only. C02G validates first/second/third derivative state as useful session-aware pre-entry context, not as standalone entry authority: global D1 5s has best mean AUC, D2 has best weighted selected-tail survival, but all broad held-out derivative tails remain far below 85%. E6 derivative order is session-specific: Australia D3 5s; Asia D2 5s; Middle East D3+1s micro; Europe no derivative authority; UK D1 5s; NY D3+1s micro. Waiting after a parent signal for derivative confirmation reduced survival in every month and is rejected. Next unit is a same-timestamp session derivative-state router plus coverage-deficit/novelty opportunity bus. Hold→Exit deferred; August SEALED; Alpha/GAMMA prohibited.",
+  "current_status": "Major Checkpoint 03 is now the authoritative BETA Entry+Initial-Hold research checkpoint: Jan-Jul 5,469 one-position trades / 88.3891% weighted survivability / 60.8155% favorable-first-passage / +$5,981.669 diagnostic value. All observed months and 7/7 leave-one-month-out months remain >=85%; February is weakest at 85.9941%. Checkpoint 03 promotes the robust C02D router: exact C02C parent with E7/E9 child ps_b75 floors raised to 0.915. C02C 5,519-trade child remains aggressive research only; C02G derivative state, C02H adapters, and E13-E16 remain non-authoritative. Final E7/E9 margin rescue failed OOS (~65.1% held-out survival). Learned Entry/session/Hold models are inherited unchanged from corrected V2 bundle. Hold->Exit deferred; August SEALED; Alpha/GAMMA prohibited; no MQL5 EA created. Historical beta064_multidesk_loop.py remains a hard parent-candidate parity blocker before official MT5 Entry parity.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -889,6 +889,25 @@
       "repro_bundle_sha256": "0e950313d57ac6d4031eb9859322facadcc1621ad81e0c2bc4ea02aac8f9f310",
       "Aug_SEALED": true,
       "EA_approved": false
+    },
+    {
+      "unit_id": "BETA_064_MAJOR_CHECKPOINT_03_HIGH_COUNT_ENTRY_INITIAL_HOLD_FROZEN_7MO_5469_TRADES_88P39_SURV",
+      "status": "FROZEN_NEW_MAJOR_CHECKPOINT__NO_EA",
+      "source": "Dukascopy original XAUUSD Bid/Ask Jan-Jul 2026",
+      "trades": 5469,
+      "weighted_survival": 0.8838910221,
+      "weighted_first_passage": 0.6081550558,
+      "diagnostic_value": 5981.669,
+      "observed_months_pass_085": "7/7",
+      "lomo_months_pass_085": "7/7",
+      "selected_panel_sha256": "2fe7b28280d670b915c0968e8daac5fbcf23193faf2c36b0b6f45c0e6d480cc5",
+      "research_record": "research/BETA_064_MAJOR_CHECKPOINT_03_HIGH_COUNT_ENTRY_INITIAL_HOLD_FREEZE.md",
+      "mt5_spec": "research/mt5/BETA_064_MAJOR_CHECKPOINT_03_ENTRY_INITIAL_HOLD_IMPLEMENTATION_SPEC.md",
+      "manifest": "research/artifacts/BETA_064_MAJOR_CHECKPOINT_03_MANIFEST.json",
+      "google_doc": "https://docs.google.com/document/d/1PAn_CQOURv7MZKqj7f3cucuDl2ST_M5bysM1PaXeUlE/edit",
+      "no_mql5": true,
+      "hold_exit": "DEFERRED",
+      "august": "SEALED"
     }
   ],
   "design_hypotheses": {
@@ -920,10 +939,10 @@
     "title": "BETA RESEARCH JOURNAL — Conversation History, Decisions & Durable Continuity (Checkpoint 006)",
     "url": "https://docs.google.com/document/d/1_zuLcHwsPnul8XtfLLlrK9-Mogk120qk0xWdlVWAzPQ/edit",
     "folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
-    "documented_milestones": "BETA_000 through BETA064 Major Checkpoint 02; current frozen Entry→Hold checkpoint is session-aware Jan-Jul 5,070 trades / 88.44% weighted survivability; Hold→Exit deferred.",
-    "recovery_priority": "NEW CHAT: read live beta/CURRENT_STATE.json, Major Checkpoint 02 freeze, MT5 production contract, model manifest, and authoritative BETA064 Google Doc. Do not resurrect Alpha/GAMMA or older five-expert BETA064 architecture. Hold→Exit deferred. August sealed.",
+    "documented_milestones": "BETA_000 through BETA064 Major Checkpoint 03; current frozen Entry+Initial-Hold checkpoint is Jan-Jul 5,469 trades / 88.3891% weighted survivability / 7 of 7 LOMO months >=85%; Hold->Exit deferred.",
+    "recovery_priority": "NEW CHAT: read live beta/CURRENT_STATE.json, Major Checkpoint 03 freeze, Major Checkpoint 03 MT5 implementation specification, Major Checkpoint 03 manifest, corrected V2 model bundle manifest, and the Major Checkpoint 03 Google Doc. Do not resurrect Alpha/GAMMA. C02G/C02H remain non-authoritative research. Hold->Exit deferred. August sealed.",
     "note": "This journal checkpoint is documentation only, not full-month cache certification, profitable candidate, EA coding or approved baseline.",
-    "handoff_google_doc": "https://docs.google.com/document/d/11i_q0MGhxxF6qamycPq6uGHliNVBVF1MlmWx4JmkkFQ/edit",
+    "handoff_google_doc": "https://docs.google.com/document/d/1PAn_CQOURv7MZKqj7f3cucuDl2ST_M5bysM1PaXeUlE/edit",
     "latest_entry_research_google_doc": "https://docs.google.com/document/d/1i25OgOJvpX98g5UDT-qXwxXdtijbGnWjsEeXxJeA0oQ/edit"
   },
   "historical_reference_control": {
@@ -941,74 +960,40 @@
     "owner_study_goal": "Repair real-tick ENTRY quality and absolute winning-trade count first; freeze Hold/Exit for controlled isolation; preserve separate BETA cumulative approval gates",
     "notes": "R9 REAL original Coinexx tester is historical research control; full January R9-like Dukascopy Python simplification IS NOT exact original broker EA. Mean observed Dukascopy spread ~$0.84/oz, point-size and execution different. Hold/Exit approximate frozen, no MQL5."
   },
-  "last_verified_research_document": "research/BETA_064_CHECKPOINT_02G_SESSION_DERIVATIVE_STATE_OPPORTUNITY_RESEARCH.md",
-  "latest_research_record": "research/BETA_064_CHECKPOINT_02G_SESSION_DERIVATIVE_STATE_OPPORTUNITY_RESEARCH.md",
-  "latest_research_record_drive": "https://drive.google.com/file/d/1xLx4uJK8pSpRez68vS2k59--cWgiF96B/view",
+  "last_verified_research_document": "research/BETA_064_MAJOR_CHECKPOINT_03_HIGH_COUNT_ENTRY_INITIAL_HOLD_FREEZE.md",
+  "latest_research_record": "research/BETA_064_MAJOR_CHECKPOINT_03_HIGH_COUNT_ENTRY_INITIAL_HOLD_FREEZE.md",
+  "latest_research_record_drive": "https://docs.google.com/document/d/1PAn_CQOURv7MZKqj7f3cucuDl2ST_M5bysM1PaXeUlE/edit",
   "last_scientific_campaign": {
-    "id": "BETA064_CHECKPOINT_02G_SESSION_DERIVATIVE_STATE_OPPORTUNITY_RESEARCH",
-    "status": "DIAGNOSTIC_COMPLETE__MAJOR_CHECKPOINT_02_UNCHANGED",
-    "parent": "BETA064_CHECKPOINT_02D_OPPORTUNITY_EXPANSION_AND_FOUR_SHADOW_SPECIALISTS",
+    "id": "BETA064_MAJOR_CHECKPOINT_03_HIGH_COUNT_ENTRY_INITIAL_HOLD",
+    "status": "FROZEN_NEW_MAJOR_CHECKPOINT__NO_MQL5_EA__HOLD_EXIT_DEFERRED",
+    "parent": "BETA064_MAJOR_CHECKPOINT_02_SESSION_AWARE_ENTRY_HOLD",
+    "research_lineage": [
+      "C02C_SESSION_E6_AND_DEFICIT_ROUTER",
+      "C02D_FEBRUARY_REPAIR",
+      "C02H_REPEATED_OPTIMIZATION"
+    ],
     "alpha_gamma_dependencies": "NONE__PROHIBITED",
     "raw_tick_months": "2026-01 through 2026-07 only",
-    "raw_quote_rows": {
-      "Jan": 9135063,
-      "Feb": 7538340,
-      "Mar": 9433180,
-      "Apr": 7470571,
-      "May": 8333166,
-      "Jun": 8201407,
-      "Jul": 7415842
-    },
-    "global_derivative_order_lomo": {
-      "BASE": {
-        "mean_auc": 0.598637,
-        "weighted_selected_survival": 0.677903
-      },
-      "D1_5S": {
-        "mean_auc": 0.608021,
-        "weighted_selected_survival": 0.679496
-      },
-      "D2_5S": {
-        "mean_auc": 0.604455,
-        "weighted_selected_survival": 0.685487
-      },
-      "D3_5S": {
-        "mean_auc": 0.603413,
-        "weighted_selected_survival": 0.680156
-      },
-      "D3_PLUS_1S_MICRO": {
-        "mean_auc": 0.607413,
-        "weighted_selected_survival": 0.678407
-      }
-    },
-    "derivative_authority_matrix": {
-      "AUSTRALIA": "D3_5S",
-      "ASIA": "D2_5S",
-      "MIDEAST": "D3_PLUS_1S_MICRO",
-      "EUROPE": "NONE_PARENT_STATE",
-      "UK": "D1_5S",
-      "NY": "D3_PLUS_1S_MICRO"
-    },
-    "conclusion": "Second/third-order derivative state adds discrimination, but no derivative order produced a standalone >=85% opportunity population. Use derivatives as session-aware same-timestamp parent-specialist context/admission features, not independent entry clocks.",
-    "delayed_confirmation": {
-      "status": "REJECTED",
-      "result": "Waiting up to 8 seconds for session-specific derivative confirmation reduced Entry→Hold survival in every observed month; derivative state must be pre-entry/same-timestamp context."
-    },
-    "shadow_specialist_status": {
-      "E13": "PROBATIONARY_SHADOW_GAPFILL_ONLY",
-      "E14": "SHADOW_ONLY",
-      "E15": "SHADOW_ONLY",
-      "E16": "SHADOW_ONLY"
-    },
-    "reproducibility": {
-      "surviving_exact_results": [
-        "research/results/BETA_064_C02G_DERIVATIVE_ORDER_LOMO.csv",
-        "research/results/BETA_064_C02G_SESSION_E6_DERIVATIVE_ORDER_LOMO.csv",
-        "research/results/BETA_064_C02G_DERIVATIVE_CONFIRMATION_DELAY_REJECTION.csv"
-      ],
-      "reconstruction_spec": "research/experiments/BETA_064_C02G_DERIVATIVE_STATE_SPEC.py",
-      "caveat": "Some transient trainer scripts were lost in a runtime reset. Future work must reproduce committed C02G tables before extending the derivative router; do not silently infer missing implementation details."
-    },
+    "trades": 5469,
+    "weighted_survival": 0.8838910221,
+    "weighted_first_passage": 0.6081550558,
+    "diagnostic_value": 5981.669,
+    "all_observed_months_gte_085": true,
+    "lomo_months_gte_085": "7/7",
+    "weakest_month": "2026-02",
+    "weakest_month_survival": 0.8599412341,
+    "delta_trades_vs_checkpoint02": 399,
+    "delta_trades_pct_vs_checkpoint02": 7.87,
+    "checkpoint_overlay": "E7 and E9 session-child ps_b75 floors = 0.915; all other C02C rules unchanged",
+    "selected_panel_sha256": "2fe7b28280d670b915c0968e8daac5fbcf23193faf2c36b0b6f45c0e6d480cc5",
+    "monthly_result_sha256": "03dc5e620f8e8575d569768d1ed7e2f1d73a98047c4c5907627b1502367c0b60",
+    "model_bundle_v2_sha256": "ccfc0d18d733e97b18bbd183c6cc56b6bcac0f1c2c6c525bda596d0406eb98d3",
+    "github_freeze": "research/BETA_064_MAJOR_CHECKPOINT_03_HIGH_COUNT_ENTRY_INITIAL_HOLD_FREEZE.md",
+    "github_mt5_spec": "research/mt5/BETA_064_MAJOR_CHECKPOINT_03_ENTRY_INITIAL_HOLD_IMPLEMENTATION_SPEC.md",
+    "github_manifest": "research/artifacts/BETA_064_MAJOR_CHECKPOINT_03_MANIFEST.json",
+    "google_doc": "https://docs.google.com/document/d/1PAn_CQOURv7MZKqj7f3cucuDl2ST_M5bysM1PaXeUlE/edit",
+    "final_margin_rescue": "REJECTED__43_HELDOUT_RESTORATIONS__65P1_SURV",
+    "mt5_parity_blocker": "recover beta064_multidesk_loop.py or reconstruct missing parent clocks with exact candidate parity",
     "hold_exit": "DEFERRED",
     "august": "SEALED"
   },
