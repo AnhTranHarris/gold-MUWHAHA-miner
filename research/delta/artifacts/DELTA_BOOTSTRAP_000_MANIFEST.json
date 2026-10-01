@@ -1,0 +1,162 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "DELTA_BOOTSTRAP_000",
+  "status": "VERIFIED_DURABLE",
+  "date_utc": "2026-10-01",
+  "lineage": "DELTA",
+  "parent_checkpoint": null,
+  "hypothesis": "Infrastructure bootstrap only: establish a fresh DELTA lineage from authoritative R9 evidence while preserving stricter durability/causality/MT5-readiness procedures and explicitly closing BETA as a scientific parent.",
+  "falsification_condition": "Any missing R9 source identity, missing core evidence registry, failed GitHub/Drive readback, or inability to reconstruct the bootstrap state invalidates the bootstrap.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "R9_REAL / R9_SYNTH benchmark counts registered for future unit-specific comparisons",
+    "reference_count": null,
+    "minimum_count": null,
+    "minimum_retention_fraction": null,
+    "owner_numeric_floor_defined": false,
+    "note": "Bootstrap has no trading output. Future research units must preregister activity floors."
+  },
+  "primary_metrics": {
+    "entry_quality": "N/A bootstrap",
+    "hold_persistence": "N/A bootstrap",
+    "economics": "N/A bootstrap",
+    "gross_loss_drawdown": "N/A bootstrap",
+    "activity": "N/A bootstrap"
+  },
+  "source_code": [
+    "Experts/GoldMuwahahaMiner_R9_HybridGate.mq5",
+    "Experts/GoldMuwahahaMiner_R9_TickLogger.mq5",
+    "research/delta/qa/DELTA_GOV_001_REBUILD_MANIFEST_GATE.py"
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "branch": "delta",
+      "drive_folder_id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel"
+    },
+    "feature_order": [],
+    "horizons_checkpoints": {},
+    "train_cal_eval_boundaries": {
+      "jan_jul": "HISTORICALLY_INSPECTED_RESEARCH_ONLY",
+      "august_2026": "SEALED"
+    },
+    "timezone_session_definitions": {},
+    "execution_cost_assumptions": {},
+    "runtime_dependencies": [
+      "Python 3.11 for governance CI"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "R9 engineering baseline",
+      "path": "Experts/GoldMuwahahaMiner_R9_HybridGate.mq5",
+      "source_blob_sha": "7eecb5f1947017a01ce85b2520725de54749e523"
+    },
+    {
+      "role": "R9 instrumented baseline",
+      "path": "Experts/GoldMuwahahaMiner_R9_TickLogger.mq5",
+      "source_blob_sha": "5c7655cd3357f9126e8bffd97c34374dfb29f83e"
+    },
+    {
+      "role": "R9 evidence registry",
+      "path": "research/delta/reference/R9_EVIDENCE_REGISTRY.json"
+    },
+    {
+      "role": "R9 compact corpus index",
+      "path": "research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json"
+    },
+    {
+      "role": "Dukascopy Jan-Jul identities",
+      "path": "research/delta/reference/DUKASCOPY_JAN_JUL_SOURCE_MANIFEST.json"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "outputs": [
+    "research/delta/governance/DELTA_GOV_001_CAUSAL_DURABLE_MT5_RESEARCH_CONTRACT.md",
+    "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
+    "research/delta/reference/R9_EVIDENCE_REGISTRY.json",
+    "CURRENT_STATE.json"
+  ],
+  "qa": [
+    "research/delta/qa/DELTA_GOV_001_REBUILD_MANIFEST_GATE.py",
+    ".github/workflows/delta-rebuild-artifact-gate.yml"
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
+    "command": "Read delta/CURRENT_STATE.json, DELTA GOV-001, R9 evidence registry, R9 corpus index, then resume CURRENT_STATE.next_action.",
+    "required_artifact_order": [
+      "CURRENT_STATE.json",
+      "DELTA GOV-001",
+      "R9 evidence registry",
+      "R9 reference corpus index",
+      "Dukascopy source manifest",
+      "new-chat bootstrap"
+    ],
+    "expected_fingerprints": {
+      "r9_hybridgate_blob_sha": "7eecb5f1947017a01ce85b2520725de54749e523",
+      "r9_ticklogger_blob_sha": "5c7655cd3357f9126e8bffd97c34374dfb29f83e"
+    },
+    "timing_semantics": "No trading computation in bootstrap. Future units default to strict as-of/RIGHT-edge timing under DELTA GOV-001.",
+    "notes": "BETA history remains in Git ancestry for forensic evidence but is not an active scientific parent."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "Not applicable until a DELTA strategy candidate exists.",
+    "state_machine_spec": "R9 source is preserved as engineering baseline; future DELTA candidate state machine must be separately frozen.",
+    "model_inference_spec": "None.",
+    "execution_quote_side_spec": "Future candidate must specify exact BUY Ask / SELL Bid and exit semantics.",
+    "ownership_scheduler_spec": "Future candidate must specify exact ownership/concurrency.",
+    "session_dst_spec": "Future candidate must specify exact session/DST behavior.",
+    "risk_spec": "Future candidate must specify exact lot/risk policy.",
+    "trade_count_parity_spec": "Future MT5 candidate must reconcile Python and MT5 trade/opportunity counts.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_APPLICABLE_BOOTSTRAP"
+  },
+  "supersedes": [],
+  "rollback_target": "BETA branch remains historical/forensic only; do not resume as parent.",
+  "github_commits": [
+    "4317e50bc806479c903bc269a92397fd2704c0ca",
+    "bc2df09e80cc9101bd35eb2f40c7b6b788478cb7",
+    "dc1c0315b4c5ccf62507c5c552fc9c63fbed3f38",
+    "594debbe88a82797fbedd4dc177883643823febc",
+    "d5889d3d28ca93754d9e5cc2ed4bb41f6c034a97",
+    "e9100225bd1db53ce2f761654a4ab49e95196679",
+    "d48e3db0822c493a0ab90458d1b73e6ba67b168a",
+    "2ceaef6b4cd65b53209c45ab3c768ac14ca7e1d5",
+    "b9cfe4c44b40c43a616ecaa4ca4340d32f47fed2"
+  ],
+  "drive_artifacts": [
+    {
+      "role": "DELTA_RESEARCH folder",
+      "id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel",
+      "url": "https://drive.google.com/drive/folders/1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel"
+    },
+    {
+      "role": "DELTA new-chat bootstrap",
+      "id": "1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g",
+      "url": "https://docs.google.com/document/d/1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g/edit?usp=drivesdk",
+      "verified_readback": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  }
+}
