@@ -48,13 +48,9 @@ Every materially different trading behavior must receive a new candidate/version
 
 ## 4. Stage A promotion gate
 
-A candidate advances only if it passes the owner-defined requirements/goals that will be frozen separately.
+A candidate advances only if it passes the owner-defined requirements/goals in `research/delta/governance/DELTA_GOV_005_PROVISIONAL_CANDIDATE_IMPROVEMENT_GATE.md`, together with any candidate-specific scope the owner defines before testing.
 
-Until those requirements are supplied, the promotion state is:
-
-`THRESHOLDS_PENDING_OWNER_DEFINITION`
-
-No profit, PF, win rate, activity level, drawdown, entry-quality, hold-quality, or other threshold may be invented by the research system.
+The current numerical gate is provisional and human-revisable. DELTA may not invent additional promotion thresholds.
 
 Failed candidates remain recorded as durable negative evidence.
 
