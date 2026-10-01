@@ -1,0 +1,89 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "REQUIRED",
+  "status": "PLANNED",
+  "date_utc": "REQUIRED",
+  "lineage": "DELTA",
+  "parent_checkpoint": null,
+  "hypothesis": "REQUIRED",
+  "falsification_condition": "REQUIRED",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "FILL_BEFORE_VERIFIED_DURABLE"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "REQUIRED",
+    "reference_count": null,
+    "minimum_count": null,
+    "minimum_retention_fraction": null,
+    "owner_numeric_floor_defined": false,
+    "note": "Promotion is owner-review-required if no numeric floor is preregistered."
+  },
+  "primary_metrics": {
+    "entry_quality": "",
+    "hold_persistence": "",
+    "economics": "",
+    "gross_loss_drawdown": "",
+    "activity": "trade_count and retention are mandatory"
+  },
+  "source_code": [],
+  "helpers": [],
+  "config": {
+    "parameters": {},
+    "feature_order": [],
+    "horizons_checkpoints": {},
+    "train_cal_eval_boundaries": {},
+    "timezone_session_definitions": {},
+    "execution_cost_assumptions": {},
+    "runtime_dependencies": []
+  },
+  "inputs": [],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "outputs": [],
+  "qa": [],
+  "reconstruction": {
+    "entry_point": "",
+    "command": "",
+    "required_artifact_order": [],
+    "expected_fingerprints": {},
+    "timing_semantics": "",
+    "notes": ""
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "",
+    "state_machine_spec": "",
+    "model_inference_spec": "",
+    "execution_quote_side_spec": "",
+    "ownership_scheduler_spec": "",
+    "session_dst_spec": "",
+    "risk_spec": "",
+    "trade_count_parity_spec": "",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "supersedes": [],
+  "rollback_target": "",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
