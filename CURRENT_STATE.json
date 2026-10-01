@@ -2,9 +2,9 @@
   "schema": "beta-research-status-v2",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "lineage": "INDEPENDENT_BETA",
-  "last_verified_durable_unit": "BETA_064_MULTIDESK_LOOP_RECOVERY_R9D__CHECKPOINT03_CAUSAL_ENTRY_PARITY_SUSPENDED",
+  "last_verified_durable_unit": "BETA_064_MULTIDESK_LOOP_RECOVERY_R12_SOURCE_FORENSICS",
   "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
-  "last_recorded_milestone": "BETA064_HELPER_RECOVERY_R9D__HISTORICAL_LEFT_EDGE_LINEAGE_CONFIRMED_FOR_BASE__CROSS_MONTH_PARENT_MASK_FORENSICS",
+  "last_recorded_milestone": "BETA064_MULTIDESK_LOOP_RECOVERY_R12__HISTORICAL_PARENT_SOURCE_INCOMPLETE__MT5_ENTRY_PARITY_BLOCKED",
   "research_scope": [
     "ENTRY",
     "HOLD",
@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "RECOVERY ACTIVE. Major Checkpoint 03 observed Jan-Jul artifacts remain preserved (5,469 one-position trades / 88.3891% weighted survivability / 60.8155% favorable-first-passage / +$5,981.669 diagnostic value), but causal/MT5 Entry-parity certification is SUSPENDED. BETA-only Git history proves the 2,097-trade Checkpoint-01 base embedded in Checkpoint02/03 is the exact panel whose causal certification was suspended by the five-second left-edge timestamp erratum; no committed causal parent-generator rebuild exists before the later session-gapfill lineage. Multi-month Jan-Feb-Mar reconstruction further shows E7/E10/E11/E12 historical-state masks match frozen selected trades at or near 100% while corrected same-timestamp right-edge recall is much lower, with E5/E6/E9 also high under historical-state alignment. A RECOVERY_UNCERTIFIED helper scaffold exists at research/recovery/beta064_multidesk_loop_RECOVERY_UNCERTIFIED.py; January FIT candidate reconstruction is 30,613 vs frozen 30,579 (delta +34 / +0.111%) under the current H1 hypothesis. Historical left-edge mode is FORENSIC ONLY and prohibited for MT5. Recovery must finish exact parent candidate/state/model parity, determine session-addition lineage, then rebuild and validate a corrected right-edge causal Entry+Initial-Hold checkpoint before any MT5 Entry-parity work. August SEALED; Alpha/GAMMA prohibited; no MQL5 EA created.",
+  "current_status": "ACTIVE BETA064 SOURCE RECOVERY. Major Checkpoint 03 5,469-trade / 88.3891% panel is preserved as a historical observed research artifact, but causal/MT5 Entry-parity certification is SUSPENDED. The historical parent helper beta064_multidesk_loop.py is missing. Recovery R11-R12 established that raw Jan-Jul ticks, corrected right-edge causal state, exact V2 E1/E2/E4 rules, frozen learned Entry/session/Hold artifacts, session router, ownership logic, selected ledgers and downstream metrics survive. Unresolved upstream items are exact E3/E5-E12 candidate emission/debounce/raw-score identity, historical BETA064 quote_pressure/qv_imb semantics, and beta064_allmonths_predictions.pkl provenance. Universal FALSE->TRUE edge emission is rejected. Alpha/GAMMA are prohibited; August SEALED; no MQL5 EA coding during recovery. Authoritative crash/retry log is Google Doc 1VJaUMULaTonJxTRCiWKsof_bHSsjg1ouSfLVCKDepi8. Resume from R12 Next exact action; do not restart earlier recovery.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -2161,5 +2161,19 @@
       "Lineage of session additions / beta064_allmonths_predictions.pkl.",
       "Corrected right-edge replacement checkpoint."
     ]
+  },
+  "active_recovery": {
+    "id": "BETA_064_MULTIDESK_LOOP_RECOVERY",
+    "status": "RECOVERY_UNCERTIFIED",
+    "blocker": "MISSING_HISTORICAL_beta064_multidesk_loop.py_AND_PARENT_PREDICTION_PROVENANCE",
+    "causal_mt5_entry_parity": "BLOCKED",
+    "historical_checkpoint03_metrics": "PRESERVED_NOT_CAUSAL_CERTIFIED",
+    "authoritative_google_doc_id": "1VJaUMULaTonJxTRCiWKsof_bHSsjg1ouSfLVCKDepi8",
+    "github_r12_record": "research/recovery/BETA_064_MULTIDESK_LOOP_R12_SOURCE_FORENSIC_FINDINGS.md",
+    "github_recovery_scaffold": "research/recovery/beta064_multidesk_loop_RECOVERY_UNCERTIFIED.py",
+    "next_action": "Resume R12: BETA-only source archaeology for quote_pressure/qv_imb and desk-specific E6/E11 emission; selectively mine Sep-30 Doc revisions; locate pre-ownership candidate/prediction surface; then reconstruct historical helper for forensics and build corrected right-edge replacement checkpoint.",
+    "alpha_gamma_use": false,
+    "august": "SEALED",
+    "mql5_authorized_during_recovery": false
   }
 }
