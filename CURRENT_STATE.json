@@ -2,9 +2,9 @@
   "schema": "beta-research-status-v2",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "lineage": "INDEPENDENT_BETA",
-  "last_verified_durable_unit": "BETA_064_MULTIDESK_LOOP_RECOVERY_R13_MAX_CHAT_HANDOFF",
+  "last_verified_durable_unit": "BETA_064_MULTIDESK_LOOP_RECOVERY_R14_SAFE_ROLLBACK",
   "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
-  "last_recorded_milestone": "BETA064_MULTIDESK_LOOP_RECOVERY_R13__MAX_CHAT_HANDOFF__MT5_ENTRY_PARITY_BLOCKED",
+  "last_recorded_milestone": "BETA064_MULTIDESK_LOOP_RECOVERY_R14__HISTORICAL_PARITY_REJECTED__SAFE_ROLLBACK",
   "research_scope": [
     "ENTRY",
     "HOLD",
@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "ACTIVE BETA064 SOURCE RECOVERY. R13 max-chat handoff is durable. Historical Major Checkpoint 03 5,469-trade / 88.3891% Entry+Initial-Hold panel is preserved, but causal/MT5 Entry-parity certification remains SUSPENDED. Recovery R10-R13 confirms the loss is concentrated upstream in the transient beta064_multidesk_loop.py helper / historical allmonths prediction lineage, not wholesale project loss. Surviving assets include Jan-Jul Dukascopy ticks, corrected right-edge causal state, exact V2 E1/E2/E4 rules, frozen Entry/session/Hold models, session router, ownership rules, selected ledgers and Hold model. Strong Jan/Feb/Mar selected-timestamp mask evidence supports E5-E12 mechanism families, but universal FALSE->TRUE edge emission is rejected. Still unresolved: desk-specific E3/E5-E12 emission/debounce/raw_score, historical quote_pressure/qv_imb semantics, beta064_allmonths_predictions.pkl provenance and a corrected right-edge replacement checkpoint. R13 Drive/Project archaeology found no loose helper or BETA057/058/059 source by exact filename; predecessor quote_pressure1 is known to have been already side-signed but is not assumed identical to BETA064 qp. Alpha/GAMMA prohibited by owner for this recovery; August SEALED; no MQL5 during helper recovery. Resume from R13 Next Action #1.",
+  "current_status": "BETA064 R14 recovery COMPLETE. Exact lost beta064_multidesk_loop.py and historical beta064_allmonths_predictions.pkl provenance were not recovered. Historical Major Checkpoints 01/02/03 remain preserved but are now FORENSIC_ONLY with causal/MT5 Entry certification suspended. A fresh Jan-Jul RIGHT-edge rebuild using explicit supported qp/qv semantics and retrained Entry models reproduced the causal-alignment failure: Jan CAL raw survivability 11.5672%; the best min-20 calibration region reached only 57.1429% survivability and remained negative; the historical 0.88/0.30 base gate selected zero Jan-Jul trades. Safe active causal research base is BETA063. R14 artifacts are durable on GitHub. August SEALED; Alpha/GAMMA prohibited; no MQL5 authorized.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -1916,7 +1916,7 @@
     "MQL5": "NOT_AUTHORIZED"
   },
   "BETA064_architecture": {
-    "status": "FROZEN_MAJOR_CHECKPOINT_02__ENTRY_HOLD_ONLY",
+    "status": "HISTORICAL_CHECKPOINT_02_PRESERVED__CAUSAL_CERTIFICATION_SUSPENDED_BY_R14",
     "freeze_record": "research/BETA_064_MAJOR_CHECKPOINT_02_SESSION_AWARE_ENTRY_HOLD_FREEZE.md",
     "mt5_contract": "research/mt5/BETA_064_MAJOR_CHECKPOINT_02_ENTRY_HOLD_MT5_PRODUCTION_CONTRACT.md",
     "model_manifest": "research/artifacts/BETA_064_MAJOR_CHECKPOINT_02_MODEL_MANIFEST.json",
@@ -1985,7 +1985,7 @@
       "session_router_joblib_sha256": "bb985b1461da3f44eff43742d1b67fb8875f6b5742333df09ccade9a5250dc78"
     }
   },
-  "current_research_architecture": "BETA064_MAJOR_CHECKPOINT_02_SESSION_AWARE_ENTRY_HOLD_TWO_FLOOR_MOE",
+  "current_research_architecture": "BETA063_CAUSALLY_AUDITED_RESEARCH_BASE__BETA064_MAJOR_CHECKPOINTS_01_02_03_FORENSIC_ONLY",
   "BETA040_architecture_handoff": {
     "status": "SUPERSEDED_AFTER_LIVE_STATE_RECONCILIATION_BY_BETA064",
     "google_doc_id": "11i_q0MGhxxF6qamycPq6uGHliNVBVF1MlmWx4JmkkFQ",
@@ -2020,7 +2020,7 @@
     "superseded_by": "research/BETA_064_HIERARCHICAL_ENTRY_HOLD_MOE_ARCHITECTURE_AND_HANDOFF.md"
   },
   "BETA064_architecture_handoff": {
-    "status": "MAJOR_CHECKPOINT_02_FROZEN__MT5_PRODUCTION_HANDOFF_ENTRY_HOLD_ONLY",
+    "status": "HISTORICAL_ONLY__CAUSAL_CERTIFICATION_SUSPENDED_BY_R14",
     "google_doc_id": "11i_q0MGhxxF6qamycPq6uGHliNVBVF1MlmWx4JmkkFQ",
     "google_doc_url": "https://docs.google.com/document/d/11i_q0MGhxxF6qamycPq6uGHliNVBVF1MlmWx4JmkkFQ/edit",
     "freeze_record": "research/BETA_064_MAJOR_CHECKPOINT_02_SESSION_AWARE_ENTRY_HOLD_FREEZE.md",
@@ -2141,7 +2141,7 @@
   },
   "recovery_blocker": {
     "id": "BETA064_MULTIDESK_LOOP_RECOVERY",
-    "status": "ACTIVE__CHECKPOINT03_CAUSAL_ENTRY_PARITY_SUSPENDED",
+    "status": "CLOSED_R14__EXACT_SOURCE_NOT_RECOVERED__HISTORICAL_CHECKPOINT03_SUSPENDED",
     "authoritative_google_doc_id": "1VJaUMULaTonJxTRCiWKsof_bHSsjg1ouSfLVCKDepi8",
     "authoritative_google_doc_url": "https://docs.google.com/document/d/1VJaUMULaTonJxTRCiWKsof_bHSsjg1ouSfLVCKDepi8/edit",
     "github_forensic_record": "research/recovery/BETA_064_MULTIDESK_LOOP_R9C_FORENSIC_FINDINGS.md",
@@ -2160,26 +2160,38 @@
       "Exact E3/E8 and residual E5/E9 gates.",
       "Lineage of session additions / beta064_allmonths_predictions.pkl.",
       "Corrected right-edge replacement checkpoint."
-    ]
+    ],
+    "resolution": "R14 completed source archaeology and a corrected RIGHT-edge Jan-Jul rebuild. Historical parity was not recovered; new causal rebuild failed the >=85% Entry survivability gate. Safe rollback target is BETA063."
   },
   "active_recovery": {
     "id": "BETA_064_MULTIDESK_LOOP_RECOVERY",
-    "status": "RECOVERY_UNCERTIFIED_R13_HANDOFF_DURABLE",
-    "blocker": "MISSING_HISTORICAL_beta064_multidesk_loop.py_AND_PARENT_PREDICTION_PROVENANCE",
-    "causal_mt5_entry_parity": "BLOCKED",
-    "historical_checkpoint03_metrics": "PRESERVED_NOT_CAUSAL_CERTIFIED",
-    "authoritative_google_doc_id": "1VJaUMULaTonJxTRCiWKsof_bHSsjg1ouSfLVCKDepi8",
-    "github_r12_record": "research/recovery/BETA_064_MULTIDESK_LOOP_R12_SOURCE_FORENSIC_FINDINGS.md",
-    "github_recovery_scaffold": "research/recovery/beta064_multidesk_loop_RECOVERY_UNCERTIFIED.py",
-    "next_action": "Resume R13: BETA-only qp/qv source archaeology from surviving predecessor archives/fixtures, then desk-specific E6/E11 emission reconstruction; locate/rebuild pre-ownership candidate surface; historical left-edge is forensic-only; create corrected right-edge replacement checkpoint before any MT5 Entry-parity claim.",
+    "status": "R14_COMPLETE_SAFE_ROLLBACK",
+    "causal_mt5_entry_parity": "HISTORICAL_CHECKPOINTS_SUSPENDED",
+    "historical_checkpoint03_metrics": "PRESERVED_FORENSIC_ONLY",
+    "safe_active_causal_base": "BETA063",
+    "historical_source_recovery": "NOT_RECOVERED_EXACTLY",
+    "right_edge_rebuild": "EXECUTED_REJECTED_FOR_PROMOTION",
+    "jan_cal_survivability": 0.11567229083318838,
+    "best_jan_cal_min20_survivability": 0.5714285714285714,
+    "historical_gate_selected_janjul": 0,
+    "next_action": "Begin a new explicitly named causal Entry architecture from corrected RIGHT-edge chronology. Do not restore/reuse Checkpoint-03 identity without independent causal certification.",
     "alpha_gamma_use": false,
     "august": "SEALED",
     "mql5_authorized_during_recovery": false,
-    "github_r13_handoff": "research/recovery/BETA_064_MULTIDESK_LOOP_R13_MAX_CHAT_HANDOFF.md",
-    "github_r13_state": "research/recovery/BETA_064_MULTIDESK_LOOP_R13_STATE.json",
-    "max_chat_handoff_google_doc_id": "1hsKA9TXdvgX01dY9Z4HAoGkYeaEyu9Br4eVZMo_qUiU",
-    "max_chat_handoff_google_doc_url": "https://docs.google.com/document/d/1hsKA9TXdvgX01dY9Z4HAoGkYeaEyu9Br4eVZMo_qUiU/edit",
-    "r13_github_handoff_commit": "ce712ea62912d07a9ce859d1934ea628b0e4593c",
-    "r13_github_state_commit": "81428afe8a8265513c250aabf7aa21c0292d1ece"
+    "github_r14_report": "research/recovery/BETA_064_MULTIDESK_LOOP_R14_SOURCE_ARCHAEOLOGY_AND_RIGHTEDGE_REBUILD.md",
+    "github_r14_state": "research/recovery/BETA_064_MULTIDESK_LOOP_R14_STATE.json",
+    "github_r14_helper": "research/recovery/beta064_multidesk_loop_RIGHTEDGE_R14.py"
+  },
+  "BETA064_recovery_r14": {
+    "status": "COMPLETE_SAFE_ROLLBACK",
+    "historical_checkpoint03": "FORENSIC_ONLY_CAUSAL_CERTIFICATION_SUSPENDED",
+    "safe_active_causal_base": "BETA063",
+    "jan_fit_rows": 30616,
+    "frozen_historical_jan_fit_rows": 30579,
+    "jan_cal_survivability": 0.11567229083318838,
+    "best_jan_cal_threshold_min20_survivability": 0.5714285714285714,
+    "historical_gate_088_030_janjul_trades": 0,
+    "august": "SEALED",
+    "mql5_authorized": false
   }
 }
