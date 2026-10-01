@@ -31,7 +31,8 @@
     "clean_room_lock": "research/delta/governance/DELTA_CLEAN_ROOM_LOCK.md",
     "nested_timeframe_contract": "research/delta/governance/DELTA_GOV_002_TICK_ROOTED_NESTED_TIMEFRAME_CONTRACT.md",
     "research_speed_contract": "research/delta/governance/DELTA_GOV_003_RESEARCH_SPEED_STAGE_GATE_CONTRACT.md",
-    "benchmark_goal_contract": "research/delta/governance/DELTA_GOV_004_BENCHMARK_ROLES_AND_HUMAN_GOAL_METRICS_CONTRACT.md"
+    "benchmark_goal_contract": "research/delta/governance/DELTA_GOV_004_BENCHMARK_ROLES_AND_HUMAN_GOAL_METRICS_CONTRACT.md",
+    "candidate_improvement_gate": "research/delta/governance/DELTA_GOV_005_PROVISIONAL_CANDIDATE_IMPROVEMENT_GATE.md"
   },
   "drive": {
     "delta_research_folder_id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel",
@@ -112,7 +113,17 @@
       "MAX_DRAWDOWN"
     ],
     "r9_file_loading_authorized": false,
-    "coinexx_to_dukascopy_cross_environment_comparison_required": true
+    "coinexx_to_dukascopy_cross_environment_comparison_required": true,
+    "candidate_scope_defined_by_owner": true,
+    "hard_target_improvement_pct": 80,
+    "soft_preferred_improvement_pct": 85,
+    "degradation_warning_pct": 17,
+    "primary_metric_hard_fail_deterioration_pct": 25,
+    "hard_target_requires_at_least_one_owner_targeted_metric": true,
+    "hard_floor_applies_to_all_supported_primary_metrics": true,
+    "hard_floor_overrides_target_gain": true,
+    "warning_requires_investigation_not_automatic_fail": true,
+    "candidate_gate_human_revisable": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
