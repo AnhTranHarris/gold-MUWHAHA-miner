@@ -1,13 +1,13 @@
 {
   "schema": "beta064-multidesk-recovery-r14-v1",
   "date": "2026-10-01",
-  "status": "ACTIVE_RECOVERY_RECOVERY_UNCERTIFIED",
+  "status": "COMPLETE_SAFE_ROLLBACK",
   "lineage": "BETA_ONLY",
   "alpha_gamma_allowed": false,
   "august": "SEALED",
   "mql5_during_recovery": false,
   "authoritative_recovery_doc_id": "1VJaUMULaTonJxTRCiWKsof_bHSsjg1ouSfLVCKDepi8",
-  "scope": "QP_QV_SOURCE_ARCHAEOLOGY",
+  "scope": "QP_QV_ARCHAEOLOGY_PLUS_RIGHT_EDGE_CAUSAL_REBUILD",
   "freeze_bundle": {
     "drive_file_id": "1phzsMX0SKESoqJ4O53vI9nE7fffrX6T-",
     "sha256_verified": "ccfc0d18d733e97b18bbd183c6cc56b6bcac0f1c2c6c525bda596d0406eb98d3"
@@ -38,8 +38,60 @@
   },
   "certification": {
     "historical_checkpoint03_preserved": true,
-    "causal_mt5_entry_parity": "BLOCKED",
-    "recovered_helper_authoritative": false
+    "causal_mt5_entry_parity": "BLOCKED_HISTORICAL_CHECKPOINTS_SUSPENDED",
+    "recovered_helper_authoritative": false,
+    "historical_checkpoint03_status": "FORENSIC_ONLY_CAUSAL_CERTIFICATION_SUSPENDED",
+    "new_right_edge_r14_promoted": false,
+    "mql5_authorized": false
   },
-  "next_action": "Search/materialize BETA-only one-second cache fixtures or predecessor source exposing qv_imb/cache-builder semantics; if none exists, preserve qv_imb as UNKNOWN and continue desk-specific E6/E11 persistence/debounce reconstruction using LEFT-edge state for forensics only, then build a newly named RIGHT-edge replacement checkpoint before MT5."
+  "next_action": "Begin a newly named causal Entry architecture from corrected RIGHT-edge chronology. Do not restore/reuse Checkpoint-03 identity without independent causal certification.",
+  "forensic_emission_checksum": {
+    "frozen_jan_fit_rows": 30579,
+    "event_edge_rows": 30618,
+    "delta_rows": 39,
+    "delta_pct": 0.1275
+  },
+  "right_edge_rebuild": {
+    "status": "EXECUTED_REJECTED_FOR_PROMOTION",
+    "jan_total_candidates": 128369,
+    "jan_fit_rows": 30616,
+    "jan_cal_rows": 5749,
+    "jan_diag_rows": 92004,
+    "jan_fit_survival": 0.11944734779200418,
+    "jan_cal_survival": 0.11567229083318838,
+    "jan_diag_survival": 0.19125255423677232,
+    "jan_cal_first_passage": 0.03704992172551748,
+    "jan_cal_net_usd": -4266.005000000081,
+    "best_jan_cal_threshold_min20": {
+      "trades": 21,
+      "survival": 0.5714285714285714,
+      "first_passage": 0.14285714285714285,
+      "net_usd": -18.5529999999989,
+      "profit_factor": 0.26694061401084473
+    },
+    "frozen_style_base_gate": {
+      "p_survive_min": 0.88,
+      "entry_score_min": 0.3,
+      "selected_trades_janjul": 0
+    }
+  },
+  "safe_active_causal_base": "BETA063",
+  "decision": "ROLL_BACK_ACTIVE_CAUSAL_RESEARCH_BASE_TO_BETA063_PRESERVE_BETA064_CHECKPOINTS_AS_FORENSICS",
+  "github": {
+    "qp_qv_archaeology": "research/recovery/BETA_064_MULTIDESK_LOOP_R14_QP_QV_SOURCE_ARCHAEOLOGY.md",
+    "right_edge_helper": "research/recovery/beta064_multidesk_loop_RIGHTEDGE_R14.py",
+    "final_report": "research/recovery/BETA_064_MULTIDESK_LOOP_R14_SOURCE_ARCHAEOLOGY_AND_RIGHTEDGE_REBUILD.md",
+    "state": "research/recovery/BETA_064_MULTIDESK_LOOP_R14_STATE.json",
+    "gate_summary": "research/results/BETA_064_R14_RIGHTEDGE_GATE_SUMMARY.csv",
+    "jan_diagnostic": "research/results/BETA_064_R14_JAN_MODEL_DIAGNOSTIC.csv",
+    "jan_threshold_audit": "research/results/BETA_064_R14_JAN_CAL_THRESHOLD_AUDIT_TOP20.csv"
+  },
+  "executed_artifact_hashes": {
+    "rebuild_runner_sha256": "75beaf3aac12c28b79cb0fcca1174cff73b0b78bc1ebaff404e73e74e0644780",
+    "gate_summary_sha256": "114cc9e0282d3dafe98788f834d134118e03ebf7ec45556c3564375f31f9c69d",
+    "jan_cal_threshold_audit_sha256": "695435f97aacc41598c29534ea01d9c443477ad6adb14f5c33eacce7e89d1b78",
+    "jan_model_diagnostic_sha256": "7ef86d7300de6ac13cdc65c71bef0ca49ac52f7d207087b497229e412b260af1",
+    "retrained_entry_models_sha256": "13f0b03c626a9c90faba0a61773fc892f3b6cd2c4be97de92255992caa837cc9",
+    "allmonths_prediction_table_sha256": "e7f9325dabe6c65944bc3104bf9d6670c7b103d7a923eca8841dc9d04bebdd1f"
+  }
 }
