@@ -1,0 +1,156 @@
+{
+  "schema": "beta-research-unit-rebuild-manifest-v1",
+  "unit_id": "BETA_069_CAUSAL_WAIT_RESOLUTION_ENTRY",
+  "status": "PLANNED",
+  "date_utc": "2026-10-01",
+  "lineage": "INDEPENDENT_BETA",
+  "parent_checkpoint": "BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "producing source",
+    "delayed-entry candidate surface",
+    "CAL candidate table",
+    "frozen policy",
+    "selected ledger",
+    "QA",
+    "report/hashes/readback"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "source_code": [
+    "research/experiments/BETA_069_CAUSAL_WAIT_RESOLUTION_ENTRY.py"
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "wait_seconds": [
+        1,
+        3,
+        5
+      ],
+      "direction_modes": [
+        "CONTINUATION",
+        "REVERSAL"
+      ],
+      "resolution_strength_over_entry_spread": [
+        0,
+        0.25,
+        0.5,
+        0.75,
+        1,
+        1.5,
+        2
+      ],
+      "specialist_routes": [
+        "ALL",
+        "MICRO250_PERSIST",
+        "V8_M1_BOUNDARY",
+        "RETEST_RENEW_1S"
+      ],
+      "entry_latency": "observe first source tick at/after wait horizon; execute on next source ordinal",
+      "hold_seconds_after_delayed_entry": 30,
+      "fee_roundtrip_usd_0p01lot": 0.02,
+      "min_cal_trades": 50
+    },
+    "feature_order": [
+      "no learned feature model in this unit; policy state is delayed observed displacement, delayed spread, source specialist"
+    ],
+    "horizons_checkpoints": {
+      "wait": [
+        1,
+        3,
+        5
+      ],
+      "hold_after_entry": 30
+    },
+    "train_cal_eval_boundaries": {
+      "fit": "descriptive only",
+      "cal": "policy selection",
+      "diagnostic": "locked until CAL freeze"
+    },
+    "timezone_session_definitions": {
+      "source": "UTC",
+      "hard_session_gate": false
+    },
+    "execution_cost_assumptions": {
+      "entry": "BUY Ask / SELL Bid one source ordinal after observation",
+      "exit": "opposite quote first tick at/after delayed entry +30s",
+      "commission_roundtrip_usd": 0.02
+    },
+    "runtime_dependencies": [
+      "python>=3.11",
+      "numpy",
+      "pandas"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "BETA065 proposals",
+      "sha256": "600e3b73d7d053f6ed0785a5dd68aadad72f1e8928054a61b3eb1b2840be8773"
+    },
+    {
+      "role": "January ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "research/results/BETA_069_DELAYED_CANDIDATES.npz"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "research/results/BETA_069_SELECTED_LEDGER.csv.gz"
+    ],
+    "caches": []
+  },
+  "models": [],
+  "outputs": [
+    "research/checkpoints/BETA_069_RESULTS.json",
+    "research/BETA_069_CAUSAL_WAIT_RESOLUTION_ENTRY_REPORT.md"
+  ],
+  "qa": [
+    "research/qa/BETA_069_CAUSAL_WAIT_RESOLUTION_ENTRY_QA.py",
+    "research/checkpoints/BETA_069_QA.json"
+  ],
+  "reconstruction": {
+    "entry_point": "research/experiments/BETA_069_CAUSAL_WAIT_RESOLUTION_ENTRY.py",
+    "command": "python research/experiments/BETA_069_CAUSAL_WAIT_RESOLUTION_ENTRY.py --beta065-dir <DIR> --source <JAN_GZ> --out-dir <OUT>",
+    "required_artifact_order": [
+      "BETA065 proposals",
+      "January source",
+      "source",
+      "delayed candidate surface",
+      "CAL table",
+      "frozen policy",
+      "ledger",
+      "results",
+      "QA"
+    ],
+    "expected_fingerprints": {},
+    "timing_semantics": "WAIT observes a future state only when its wait horizon has elapsed. Direction is resolved from the displacement visible then. Entry occurs one source ordinal later, never on the observation quote. DIAGNOSTIC is not evaluated until CAL policy is frozen.",
+    "notes": "This is an action-clock experiment, not a technical confirmation stack."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "wait horizon then next-tick execution",
+    "state_machine_spec": "FLAT -> WAIT -> OBSERVE -> ENTER or SKIP -> HOLD30 -> FLAT",
+    "model_inference_spec": "deterministic",
+    "execution_quote_side_spec": "actual Bid/Ask",
+    "ownership_scheduler_spec": "one position chronological delayed-entry time",
+    "session_dst_spec": "UTC research",
+    "risk_spec": "BETA015 required",
+    "parity_fixtures": []
+  },
+  "supersedes": [],
+  "rollback_target": "BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
