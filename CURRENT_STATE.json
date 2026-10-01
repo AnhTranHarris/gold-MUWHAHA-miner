@@ -2271,6 +2271,14 @@
       "Before owner-authorized MT5 build review, mt5_translation_ready=true and a complete Python-to-MT5 translation/parity package are required."
     ],
     "prohibited_failure_mode": "An approved or otherwise MT5-worthy candidate may not become unbuildable because project-generated helper/model/provenance artifacts were not preserved.",
-    "checkpoint_rule": "Any checkpoint missing upstream reconstruction artifacts is INCOMPLETE regardless of reported performance."
+    "checkpoint_rule": "Any checkpoint missing upstream reconstruction artifacts is INCOMPLETE regardless of reported performance.",
+    "enforcement": {
+      "manifest_gate_path": "research/qa/BETA_GOV_001_REBUILD_MANIFEST_GATE.py",
+      "manifest_gate_commit": "3de0919b8853d5f212a18901a080dee32721b4fc",
+      "github_actions_workflow": ".github/workflows/beta-rebuild-artifact-gate.yml",
+      "github_actions_workflow_commit": "019b356032a1c60cb404ba85db2c86ef5c34bbd6",
+      "behavior": "If last_verified_durable_unit advances beyond the R18 baseline, CI requires active_rebuild_manifest_path pointing to a manifest with python_rebuild_ready=true, no missing_required_artifacts, authoritative source/output/QA commits, reconstruction entry point/timing semantics, and verified hashes/readback.",
+      "baseline_unit": "BETA_064_MULTIDESK_LOOP_RECOVERY_R18_STATE_MACHINE_TOPOLOGY_FINAL"
+    }
   }
 }
