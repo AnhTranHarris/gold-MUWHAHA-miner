@@ -19,11 +19,12 @@ Prior internal research lineages are outside DELTA scope. Do not read, import, c
 3. Read `research/delta/governance/DELTA_GOV_001_CAUSAL_DURABLE_MT5_RESEARCH_CONTRACT.md`.
 4. Read `research/delta/governance/DELTA_GOV_002_TICK_ROOTED_NESTED_TIMEFRAME_CONTRACT.md`.
 5. Read `research/delta/governance/DELTA_GOV_003_RESEARCH_SPEED_STAGE_GATE_CONTRACT.md`.
-6. Read `research/delta/reference/R9_EVIDENCE_REGISTRY.json`.
-7. Read `research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json`.
-8. Read `research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md`.
-9. Verify GitHub branch is `delta` and Drive target is `DELTA_RESEARCH`.
-10. Resume exactly from `CURRENT_STATE.next_action`.
+6. Read `research/delta/governance/DELTA_GOV_004_BENCHMARK_ROLES_AND_HUMAN_GOAL_METRICS_CONTRACT.md`.
+7. Read `research/delta/reference/R9_EVIDENCE_REGISTRY.json`.
+8. Read `research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json`.
+9. Read `research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md`.
+10. Verify GitHub branch is `delta` and Drive target is `DELTA_RESEARCH`.
+11. Resume exactly from `CURRENT_STATE.next_action`.
 
 The first DELTA unit is an evidence/source/parity preflight. No new trading result may become a parent before it passes the DELTA manifest gate.
 
@@ -34,3 +35,9 @@ All DELTA Python backtests and any eventual MT5 implementation obey `DELTA_GOV_0
 ## Research-speed funnel
 
 All DELTA candidates obey `DELTA_GOV_003_RESEARCH_SPEED_STAGE_GATE_CONTRACT.md`: first screen on the owner's first 2.5 weeks of January, then promote only qualifying candidates into bounded month-by-month January-through-July research. Monthly boundaries are compute/checkpoint boundaries, not human-review gates: persist the month, emit a micro-status, and continue automatically. Python may test and retest repeatedly for refinement and optimization; behavior changes create new candidate versions and completed results remain preserved.
+
+## Benchmark roles
+
+`DELTA_GOV_004_BENCHMARK_ROLES_AND_HUMAN_GOAL_METRICS_CONTRACT.md` defines the scorecard semantics before any R9 file loading: R9 REAL is the starting baseline; R9 SYNTH is the performance-growth reference; R9 OVERFIT is the trade-capacity/high-profit-per-trade reference; Dukascopy is the independent cross-broker environment used against Coinexx MT5 evidence. The owner-primary metrics are winning trade count, net profit, gross loss, and maximum drawdown.
+
+R9 evidence loading is currently blocked by owner instruction until goal definition is complete and explicit authorization is given.
