@@ -209,6 +209,16 @@ New candidates are screened first on the owner's first 2.5 weeks of January. Onl
 
 January-through-July replay is split into independent monthly jobs with durable checkpoints to control runtime/memory pressure and support resume-from-first-incomplete-month recovery. Behavior-changing refinements create new candidate versions; completed monthly results are immutable evidence.
 
+## 11B. Benchmark-role and human-goal contract
+
+`research/delta/governance/DELTA_GOV_004_BENCHMARK_ROLES_AND_HUMAN_GOAL_METRICS_CONTRACT.md` is mandatory for interpreting DELTA benchmark evidence.
+
+R9 REAL is the starting baseline EA/ticklog surface. R9 SYNTH is the performance-growth reference. R9 OVERFIT is a quarantined trade-capacity/high-profit-per-trade upper-envelope reference. Dukascopy is the independent cross-broker tick environment used to compare behavior against Coinexx MT5 evidence.
+
+The owner-primary human metrics are winning trade count, net profit, gross loss, and maximum drawdown. Total trade count and per-trade efficiency remain required companion metrics so improvement cannot be manufactured by starving activity.
+
+Current owner instruction blocks R9 evidence-file loading until goal definition is complete and explicit authorization is given. Governance/document edits do not constitute authorization.
+
 ## 12. Community-source rule
 
 A complex strategy/indicator from public community research may enter DELTA only if its logic is sufficiently disclosed to reconstruct a faithful causal test. Opaque/non-reconstructible systems are not candidates.
