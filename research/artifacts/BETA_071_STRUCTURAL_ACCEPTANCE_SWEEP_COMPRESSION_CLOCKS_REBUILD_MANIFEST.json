@@ -1,0 +1,191 @@
+{
+  "schema": "beta-research-unit-rebuild-manifest-v1",
+  "unit_id": "BETA_071_STRUCTURAL_ACCEPTANCE_SWEEP_COMPRESSION_CLOCKS",
+  "status": "PLANNED",
+  "date_utc": "2026-10-01",
+  "lineage": "INDEPENDENT_BETA",
+  "parent_checkpoint": "BETA063",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "authoritative producing source",
+    "causal structural event ledger",
+    "CAL candidate table",
+    "frozen policy if any",
+    "selected one-position ledger",
+    "QA source/results",
+    "report/hashes/readback"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "source_code": [
+    "research/experiments/BETA_071_STRUCTURAL_ACCEPTANCE_SWEEP_COMPRESSION_CLOCKS.py"
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "structure_timeframes_minutes": [
+        1,
+        5
+      ],
+      "pivot_definition": "left2/right2 confirmed completed-bar pivot; active only after two right bars close",
+      "mechanisms": [
+        "FAST_ACCEPTANCE",
+        "FIRST_RETEST",
+        "SWEEP_RECLAIM",
+        "COMPRESSION_RELEASE"
+      ],
+      "max_retest_age_m1_bars": 10,
+      "retest_tolerance_atr_multipliers": [
+        0.1,
+        0.2,
+        0.3
+      ],
+      "break_displacement_atr_multipliers": [
+        0,
+        0.1,
+        0.2,
+        0.3
+      ],
+      "compression_lookback_m1_bars": 20,
+      "compression_width_atr_max": [
+        2,
+        3,
+        4
+      ],
+      "evaluation_horizons_seconds": [
+        30,
+        60,
+        120
+      ],
+      "fee_roundtrip_usd_0p01lot": 0.02,
+      "execution": "event becomes observable at completed M1 right edge; enter on first later source ordinal",
+      "one_position": true
+    },
+    "feature_order": [
+      "mechanism",
+      "side",
+      "level_tf",
+      "level_price",
+      "level_age_bars",
+      "m1_atr14",
+      "m5_atr14",
+      "break_displacement_atr",
+      "body_fraction",
+      "close_location",
+      "overshoot_atr",
+      "retest_depth_atr",
+      "retest_age_bars",
+      "compression_width_atr",
+      "m1_range_atr",
+      "m5_context_return_atr",
+      "entry_spread",
+      "recent_quote_count_5s",
+      "recent_mid_return_1s",
+      "recent_mid_return_5s"
+    ],
+    "horizons_checkpoints": {
+      "entry_markout_seconds": [
+        30,
+        60,
+        120
+      ]
+    },
+    "train_cal_eval_boundaries": {
+      "fit": "2026-01-01T00:00:00Z/2026-01-09T00:00:00Z",
+      "cal": "2026-01-09T00:00:00Z/2026-01-11T00:00:00Z",
+      "diagnostic": "2026-01-11T00:00:00Z/2026-01-18T12:00:00Z"
+    },
+    "timezone_session_definitions": {
+      "source": "UTC",
+      "sessions": "features only; no hard session gate in BETA071"
+    },
+    "execution_cost_assumptions": {
+      "entry": "BUY Ask / SELL Bid at first source ordinal strictly after event visibility",
+      "exit": "opposite executable quote at first source tick at/after chosen horizon",
+      "commission_roundtrip_usd_0p01lot": 0.02,
+      "slippage": "not modeled; remains certification blocker"
+    },
+    "runtime_dependencies": [
+      "python>=3.11",
+      "numpy",
+      "pandas"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "canonical_market_source",
+      "identity": "XAUUSD_DUKAS_2026_01_ticks.csv(3).gz",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage1_use": "Jan1-Jan18 12UTC only"
+    },
+    {
+      "role": "safe_parent_spec",
+      "path": "research/BETA_063_FIVE_SOFT_EXPERT_ENTRY_HOLD_SHARED_CONTINUATION_VALUE_SPEC.md"
+    },
+    {
+      "role": "mechanism_map",
+      "path": "research/BETA_HISTORICAL_ENTRY_MECHANISM_RECOVERY_MAP_2026-09-29.md"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "research/results/BETA_071_STRUCTURAL_EVENT_LEDGER.npz"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "research/results/BETA_071_SELECTED_LEDGER.csv.gz"
+    ],
+    "caches": [
+      "research/results/BETA_071_M1_M5_CAUSAL_STRUCTURE_CACHE.npz"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    "research/checkpoints/BETA_071_RESULTS.json",
+    "research/BETA_071_STRUCTURAL_ACCEPTANCE_SWEEP_COMPRESSION_CLOCKS_REPORT.md"
+  ],
+  "qa": [
+    "research/qa/BETA_071_STRUCTURAL_ACCEPTANCE_SWEEP_COMPRESSION_CLOCKS_QA.py",
+    "research/checkpoints/BETA_071_QA.json"
+  ],
+  "reconstruction": {
+    "entry_point": "research/experiments/BETA_071_STRUCTURAL_ACCEPTANCE_SWEEP_COMPRESSION_CLOCKS.py",
+    "command": "python research/experiments/BETA_071_STRUCTURAL_ACCEPTANCE_SWEEP_COMPRESSION_CLOCKS.py --source <JAN_GZ> --out-dir <OUT>",
+    "required_artifact_order": [
+      "January source",
+      "producing source",
+      "M1/M5 causal structure cache",
+      "pre-ownership event ledger",
+      "CAL candidate table",
+      "selected ledger",
+      "result JSON",
+      "QA JSON/report"
+    ],
+    "expected_fingerprints": {},
+    "timing_semantics": "M1/M5 bars are visible only at their RIGHT edge. A pivot centered on bar i becomes active only after bars i+1 and i+2 are complete. Event entry is first source ordinal strictly after the event's completed-bar visibility time.",
+    "notes": "Fresh independent opportunity bus from safe BETA063 lineage. BETA065-070 negative buses/results are diagnostics only and not inherited as signal logic."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "completed-bar RIGHT-edge only",
+    "state_machine_spec": "confirmed level -> provisional break/sweep/compression -> acceptance/retest/reclaim/release -> enter/expire",
+    "model_inference_spec": "deterministic transparent state machine; no learned model in BETA071",
+    "execution_quote_side_spec": "BUY Ask / SELL Bid; exit opposite quote",
+    "ownership_scheduler_spec": "single chronological one-position ledger",
+    "session_dst_spec": "UTC source; session routing deferred",
+    "risk_spec": "BETA015 policy required before funded/MT5 claims; BETA071 is entry-screen research",
+    "parity_fixtures": []
+  },
+  "supersedes": [],
+  "rollback_target": "BETA063",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
