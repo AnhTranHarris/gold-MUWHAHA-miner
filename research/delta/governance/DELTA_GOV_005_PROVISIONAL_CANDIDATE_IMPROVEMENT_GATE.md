@@ -139,6 +139,12 @@ After reviewing actual data, the owner may:
 
 Threshold changes apply prospectively unless the owner explicitly requests retrospective rescoring.
 
+## 7A. Escalation to cumulative lock
+
+If a primary metric reaches at least 87% of its directional progress from R9 REAL toward R9 SYNTH, `DELTA_GOV_006_SYNTH_METRIC_LOCK_AND_CUMULATIVE_RATCHET_CONTRACT.md` activates for that metric.
+
+Once locked, the metric is no longer governed only by this contract's general 17% warning / 25% hard floor. The stricter 5% locked-metric preservation floor applies.
+
 ## 8. Research-speed interaction
 
 The first 2.5 weeks of January remain the fast filter/development window.
