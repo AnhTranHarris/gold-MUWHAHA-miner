@@ -73,6 +73,24 @@ DELTA uses a two-stage development funnel:
 
 Each month is a separate durable job so a long replay cannot crash the entire campaign. Monthly completion is not a human approval gate: persist the checkpoint, emit a micro-status, and continue automatically into the next month unless a failure blocks safe continuation or the owner explicitly asks to stop. Python is the iterative research laboratory and may test/retest repeatedly for refinement and optimization. Any behavior-changing change creates a new candidate/version and never rewrites prior results. A stable promotion candidate is ultimately replayed as one frozen version across all seven monthly jobs.
 
+## Benchmark and goal roles
+
+Before loading any R9 evidence files, DELTA freezes these roles:
+- **R9 REAL:** starting-point baseline EA and REAL ticklog; every modification must show its change versus this baseline.
+- **R9 SYNTH:** performance-growth reference used to judge how much improvement has been recovered beyond REAL.
+- **R9 OVERFIT:** capacity/upper-envelope reference for maximum trade participation and possible high profit per trade; never execution truth.
+- **Dukascopy:** independent cross-broker tick environment used to test behavior against the Coinexx MT5 evidence stream.
+
+The owner-primary human metrics are:
+- winning trade count;
+- net profit;
+- gross loss;
+- maximum drawdown.
+
+Total trade count and per-trade efficiency remain companion metrics for diagnosing whether favorable headline results came from real improvement or from reduced activity.
+
+**Owner hold:** Do not load R9 REAL, R9 SYNTH, R9 OVERFIT, R9 ticklog, or Coinexx report files yet. Continue defining goals until the owner explicitly authorizes evidence loading.
+
 ## Research objective
 
 Rebuild a high-activity causal Entry+Hold architecture around the R9 evidence base while preserving real chronology, causal execution, and trade velocity.
