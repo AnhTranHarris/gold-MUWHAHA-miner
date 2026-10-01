@@ -145,6 +145,12 @@ If a primary metric reaches at least 87% of its directional progress from R9 REA
 
 Once locked, the metric is no longer governed only by this contract's general 17% warning / 25% hard floor. The stricter 5% locked-metric preservation floor applies.
 
+## 7B. Specialist versus composite interpretation
+
+Under GOV-008, a narrow specialist is evaluated against its declared scoped baseline population. It is not required to independently solve all four system-wide primary metrics.
+
+The assembled composite system is the canonical object for whole-system promotion and aggregate primary-category progress. The 17% warning and 25% hard floor must use the same declared scope as the numerator/denominator comparison; DELTA may not switch between specialist-scope and whole-system baselines after observing results.
+
 ## 8. Research-speed interaction
 
 The first 2.5 weeks of January remain the fast filter/development window.
