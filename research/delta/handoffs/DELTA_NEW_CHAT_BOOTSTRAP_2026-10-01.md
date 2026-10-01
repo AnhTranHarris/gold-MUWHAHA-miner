@@ -91,6 +91,20 @@ Total trade count and per-trade efficiency remain companion metrics for diagnosi
 
 **Owner hold:** Do not load R9 REAL, R9 SYNTH, R9 OVERFIT, R9 ticklog, or Coinexx report files yet. Continue defining goals until the owner explicitly authorizes evidence loading.
 
+## Provisional candidate acceptance gate
+
+Before testing a candidate, the owner defines its research scope and target area.
+
+The current provisional human gate is:
+- at least one owner-targeted primary metric must improve by **80% or more** versus R9 REAL;
+- **85% or more** improvement is the soft preferred target;
+- if any supported primary metric deteriorates by **17% or more but less than 25%**, flag it for investigation and improvement;
+- if any supported primary metric deteriorates by **25% or more**, the candidate hard-fails the cross-metric floor regardless of gains elsewhere.
+
+The four protected primary metrics are winning trade count, net profit, gross loss, and maximum drawdown. Direction is normalized so higher winning trades/net profit are better, while lower gross-loss magnitude/drawdown are better.
+
+These thresholds are deliberately human-revisable after actual data review. See `DELTA_GOV_005_PROVISIONAL_CANDIDATE_IMPROVEMENT_GATE.md`.
+
 ## Research objective
 
 Rebuild a high-activity causal Entry+Hold architecture around the R9 evidence base while preserving real chronology, causal execution, and trade velocity.
