@@ -1,0 +1,109 @@
+{
+  "schema": "beta064-major-checkpoint-03-manifest-v1",
+  "checkpoint": "BETA064_MAJOR_CHECKPOINT_03_HIGH_COUNT_ENTRY_INITIAL_HOLD",
+  "date": "2026-09-30",
+  "branch": "beta",
+  "status": "FROZEN_RESEARCH_CHECKPOINT__NO_MQL5_EA__HOLD_EXIT_DEFERRED",
+  "scope": ["ENTRY", "INITIAL_HOLD"],
+  "market_months": "2026-01 through 2026-07",
+  "august": "SEALED",
+  "lineage": [
+    "BETA064_MAJOR_CHECKPOINT_02_SESSION_AWARE_ENTRY_HOLD",
+    "BETA064_CHECKPOINT_02C_SESSION_E6_AND_DEFICIT_ROUTER_REFINEMENT",
+    "BETA064_CHECKPOINT_02D_FEBRUARY_REPAIR_AND_SHADOW_SPECIALIST_EXPANSION",
+    "BETA064_C02H_REPEATED_OPPORTUNITY_SURVIVABILITY_OPTIMIZATION"
+  ],
+  "metrics": {
+    "trades": 5469,
+    "weighted_survival": 0.8838910221,
+    "weighted_first_passage": 0.6081550558,
+    "diagnostic_value": 5981.669,
+    "all_observed_months_survival_gte_085": true,
+    "lomo_months_survival_gte_085": "7/7",
+    "weakest_month": "2026-02",
+    "weakest_month_survival": 0.8599412341,
+    "delta_trades_vs_checkpoint02": 399,
+    "delta_trades_pct_vs_checkpoint02": 7.87
+  },
+  "monthly_result_path": "research/results/BETA_064_MAJOR_CHECKPOINT_03_MONTHLY.csv",
+  "monthly_result_sha256": "03dc5e620f8e8575d569768d1ed7e2f1d73a98047c4c5907627b1502367c0b60",
+  "selected_panel": {
+    "rows": 5469,
+    "sha256": "2fe7b28280d670b915c0968e8daac5fbcf23193faf2c36b0b6f45c0e6d480cc5",
+    "reconstruction": "Start with BETA064_CKPT02C_SELECTED and remove rows where specialist is E7_SWEEP_RECLAIM or E9_LEVEL_BREAK and ps_b75 < 0.915."
+  },
+  "router_overlay": {
+    "path": "research/experiments/BETA_064_MAJOR_CHECKPOINT_03_ROUTER_OVERLAY.py",
+    "base_p_survive_min": 0.88,
+    "base_entry_score_min": 0.30,
+    "pre_ps_b75_min": 0.89,
+    "pre_es_b75_min": 0.08,
+    "E5_ps_b75_min": 0.9145,
+    "E7_ps_b75_min": 0.915,
+    "E9_ps_b75_min": 0.915,
+    "E10_ps_b75_min": 0.9145,
+    "E12_ps_b75_min": 0.9145
+  },
+  "e6_session_children": {
+    "NY": {
+      "ps_b75_min": 0.92,
+      "eff60_min": 0.30,
+      "friction_max": 0.14,
+      "session_value_z_min": -2.5
+    },
+    "UK": {
+      "ps_b75_min": 0.905,
+      "eff60_min": 0.40,
+      "eff300_max": 0.10,
+      "session_value_z_min": -4.0
+    },
+    "other_sessions": "Major Checkpoint 02 frozen session threshold"
+  },
+  "frozen_session_thresholds": {
+    "AUSTRALIA": 0.92,
+    "ASIA": 0.90,
+    "MIDEAST": 0.915,
+    "EUROPE": 0.91,
+    "UK": 0.925,
+    "NY": 0.925
+  },
+  "model_bundle": {
+    "filename": "BETA064_MAJOR_CHECKPOINT_02_ENTRY_HOLD_MODEL_FREEZE_BUNDLE_V2.zip",
+    "drive_file_id": "1phzsMX0SKESoqJ4O53vI9nE7fffrX6T-",
+    "sha256": "ccfc0d18d733e97b18bbd183c6cc56b6bcac0f1c2c6c525bda596d0406eb98d3",
+    "entry_model_sha256": "ba68874a69ce19db0768e8ebe8feefd3a6ec34c1bb076437815452366f9057cf",
+    "session_router_sha256": "bb985b1461da3f44eff43742d1b67fb8875f6b5742333df09ccade9a5250dc78",
+    "hold_joblib_sha256": "0f24f18dffabf681157dfef14bc4c67898b561f26d8fe7d372fa72623b99eef1",
+    "hold_tree_sha256": "06214dc6b08b37e64ad26626471c46c2cf9bb21327554ce99c8ea6d69d41718e",
+    "retrained_for_checkpoint03": false
+  },
+  "final_margin_rescue": {
+    "path": "research/results/BETA_064_C02H_FINAL_MARGIN_RESCUE_LOMO.csv",
+    "status": "REJECTED",
+    "attempted_heldout_restorations": 43,
+    "heldout_restoration_survival": 0.6511627907,
+    "decision": "Do not restore the 50 C02D-discarded E7/E9 trades."
+  },
+  "github_commits": {
+    "monthly_results": "3e9a05f118dfd2ef43426e3454c7e8ed9c86a139",
+    "final_margin_rescue": "09e996be86bd33c5704ae5bf228653bf6d9a65ea",
+    "router_overlay": "b361b19c75113d086b163e905cc4fbff63a15396",
+    "freeze_record": "8194d567d23cb6512ea035db39db25676ca6b549",
+    "mt5_implementation_spec": "5ebf8edf2acba4ba3c9c2795d6326b73d5c3b7fd"
+  },
+  "non_authoritative_research": [
+    "C02G derivative-state matrix",
+    "C02H specialist-specific context adapters",
+    "E13-E16 shadow specialists",
+    "C02C 5519-trade aggressive research child"
+  ],
+  "hard_blockers_before_official_mt5_entry_parity": [
+    "Recover beta064_multidesk_loop.py or independently reconstruct missing parent specialist clocks with exact candidate parity.",
+    "Certify one-second quote_pressure and qv_imb parity.",
+    "Translate/load exact frozen LightGBM models and prove probability parity.",
+    "Do not invent Hold->Exit."
+  ],
+  "freeze_record": "research/BETA_064_MAJOR_CHECKPOINT_03_HIGH_COUNT_ENTRY_INITIAL_HOLD_FREEZE.md",
+  "mt5_instruction_record": "research/mt5/BETA_064_MAJOR_CHECKPOINT_03_ENTRY_INITIAL_HOLD_IMPLEMENTATION_SPEC.md",
+  "official_mql5_created": false
+}
