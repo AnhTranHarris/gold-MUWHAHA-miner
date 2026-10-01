@@ -1,0 +1,164 @@
+{
+  "schema": "beta-research-unit-rebuild-manifest-v1",
+  "unit_id": "BETA_072_STRUCTURAL_STATE_CONDITIONED_VALUE_ROUTER",
+  "status": "PLANNED",
+  "date_utc": "2026-10-01",
+  "lineage": "INDEPENDENT_BETA",
+  "parent_checkpoint": "BETA_071_STRUCTURAL_ACCEPTANCE_SWEEP_COMPRESSION_CLOCKS",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "producing source",
+    "deduplicated structural candidate surface",
+    "feature schema",
+    "frozen model/config",
+    "CAL table",
+    "prediction surface",
+    "selected ledger",
+    "QA",
+    "report/hashes/readback"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "source_code": [
+    "research/experiments/BETA_072_STRUCTURAL_STATE_CONDITIONED_VALUE_ROUTER.py"
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "event_bus": "BETA071 structural events deduplicated by causal event identity",
+      "horizons_seconds": [
+        30,
+        60,
+        120
+      ],
+      "model_arms": [
+        "LightGBM realized-PnL regression",
+        "LightGBM profitability classifier",
+        "LightGBM hurdle expected-value"
+      ],
+      "no_hard_confirmation_stack": true,
+      "min_cal_trades": 50,
+      "calibration": "chronological FIT only where applicable"
+    },
+    "feature_order": [
+      "mechanism one-hot",
+      "level timeframe one-hot",
+      "side-relative structural measurements",
+      "level age",
+      "M1/M5 ATR state",
+      "entry spread",
+      "recent side-relative 1s/5s move",
+      "recent quote count",
+      "UTC cyclic time"
+    ],
+    "horizons_checkpoints": {
+      "entry_markout_seconds": [
+        30,
+        60,
+        120
+      ]
+    },
+    "train_cal_eval_boundaries": {
+      "fit": "BETA071 FIT only",
+      "cal": "BETA071 CAL policy selection",
+      "diagnostic": "BETA071 DIAGNOSTIC locked until policy freeze"
+    },
+    "timezone_session_definitions": {
+      "source": "UTC",
+      "time_features_only": true,
+      "hard_session_gate": false
+    },
+    "execution_cost_assumptions": {
+      "labels": "BETA071 executable Bid/Ask PnL",
+      "commission_roundtrip_usd_0p01lot": 0.02,
+      "one_position": "chronological selected bus"
+    },
+    "runtime_dependencies": [
+      "python>=3.11",
+      "numpy",
+      "pandas",
+      "lightgbm",
+      "scikit-learn"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "BETA071 event ledger",
+      "path": "BETA_071_STRUCTURAL_EVENT_LEDGER.npz"
+    },
+    {
+      "role": "BETA071 source",
+      "path": "research/experiments/BETA_071_STRUCTURAL_ACCEPTANCE_SWEEP_COMPRESSION_CLOCKS.py"
+    },
+    {
+      "role": "January source",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "research/results/BETA_072_STRUCTURAL_CANDIDATES.npz"
+    ],
+    "predictions": [
+      "research/results/BETA_072_POLICY_PREDICTIONS.npz"
+    ],
+    "selected_owned_ledger": [
+      "research/results/BETA_072_SELECTED_LEDGER.csv.gz"
+    ],
+    "caches": [
+      "research/results/BETA_072_FEATURE_SCHEMA.json"
+    ]
+  },
+  "models": [
+    "research/artifacts/BETA_072_FROZEN_MODEL.json"
+  ],
+  "outputs": [
+    "research/checkpoints/BETA_072_RESULTS.json",
+    "research/BETA_072_STRUCTURAL_STATE_CONDITIONED_VALUE_ROUTER_REPORT.md"
+  ],
+  "qa": [
+    "research/qa/BETA_072_STRUCTURAL_STATE_CONDITIONED_VALUE_ROUTER_QA.py",
+    "research/checkpoints/BETA_072_QA.json"
+  ],
+  "reconstruction": {
+    "entry_point": "research/experiments/BETA_072_STRUCTURAL_STATE_CONDITIONED_VALUE_ROUTER.py",
+    "command": "python research/experiments/BETA_072_STRUCTURAL_STATE_CONDITIONED_VALUE_ROUTER.py --beta071-dir <DIR> --out-dir <OUT>",
+    "required_artifact_order": [
+      "BETA071 event ledger",
+      "source",
+      "deduplicated candidates",
+      "feature schema",
+      "frozen model",
+      "predictions",
+      "ledger",
+      "results",
+      "QA"
+    ],
+    "expected_fingerprints": {},
+    "timing_semantics": "All features come from the BETA071 completed-bar RIGHT-edge event and actual entry quote. Future PnL is a label only. DIAGNOSTIC cannot participate in fitting, calibration, threshold or horizon selection.",
+    "notes": "This unit changes economic routing only; it does not add another technical confirmation chain."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "BETA071 RIGHT-edge event state",
+    "state_machine_spec": "BETA071 structural FSM + one learned economic router",
+    "model_inference_spec": "frozen LightGBM export pending",
+    "execution_quote_side_spec": "BETA071 actual Bid/Ask",
+    "ownership_scheduler_spec": "chronological one-position bus",
+    "session_dst_spec": "UTC research",
+    "risk_spec": "BETA015 required before MT5 review",
+    "parity_fixtures": []
+  },
+  "supersedes": [],
+  "rollback_target": "BETA_071_STRUCTURAL_ACCEPTANCE_SWEEP_COMPRESSION_CLOCKS",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
