@@ -2,9 +2,9 @@
   "schema": "beta-research-status-v2",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "lineage": "INDEPENDENT_BETA",
-  "last_verified_durable_unit": "BETA_064_MULTIDESK_LOOP_RECOVERY_R13_MAX_CHAT_HANDOFF",
+  "last_verified_durable_unit": "BETA_064_MULTIDESK_LOOP_RECOVERY_R14_QP_QV_SOURCE_ARCHAEOLOGY",
   "first_incomplete_scientific_unit": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__002_FEATURE_PARITY_AND_CACHE_CERTIFICATION",
-  "last_recorded_milestone": "BETA064_MULTIDESK_LOOP_RECOVERY_R13__MAX_CHAT_HANDOFF__MT5_ENTRY_PARITY_BLOCKED",
+  "last_recorded_milestone": "BETA064_MULTIDESK_LOOP_RECOVERY_R14__QP_QV_SEMANTICS_CONSTRAINED__MT5_ENTRY_PARITY_BLOCKED",
   "research_scope": [
     "ENTRY",
     "HOLD",
@@ -59,7 +59,7 @@
   "drive_folder": "https://drive.google.com/drive/folders/11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
   "user_facing_breakthrough_naming": "R09_BETA_<order>_<breakthrough-name>",
   "human_mql5_gate": "owner approval required before candidate MQL5 code; second owner decision after Coinexx M1 real-tick tester",
-  "current_status": "ACTIVE BETA064 SOURCE RECOVERY. R13 max-chat handoff is durable. Historical Major Checkpoint 03 5,469-trade / 88.3891% Entry+Initial-Hold panel is preserved, but causal/MT5 Entry-parity certification remains SUSPENDED. Recovery R10-R13 confirms the loss is concentrated upstream in the transient beta064_multidesk_loop.py helper / historical allmonths prediction lineage, not wholesale project loss. Surviving assets include Jan-Jul Dukascopy ticks, corrected right-edge causal state, exact V2 E1/E2/E4 rules, frozen Entry/session/Hold models, session router, ownership rules, selected ledgers and Hold model. Strong Jan/Feb/Mar selected-timestamp mask evidence supports E5-E12 mechanism families, but universal FALSE->TRUE edge emission is rejected. Still unresolved: desk-specific E3/E5-E12 emission/debounce/raw_score, historical quote_pressure/qv_imb semantics, beta064_allmonths_predictions.pkl provenance and a corrected right-edge replacement checkpoint. R13 Drive/Project archaeology found no loose helper or BETA057/058/059 source by exact filename; predecessor quote_pressure1 is known to have been already side-signed but is not assumed identical to BETA064 qp. Alpha/GAMMA prohibited by owner for this recovery; August SEALED; no MQL5 during helper recovery. Resume from R13 Next Action #1.",
+  "current_status": "ACTIVE BETA064 SOURCE RECOVERY. R14 qp/qv archaeology is durable. Exact predecessor BETA026 quote_pressure1 arithmetic is recovered for its source lineage; exact BETA064 downstream 1s→5s qp/qv tick-count-weighted aggregation and RIGHT-edge timing are verified from the corrected V2 freeze bundle. BETA064 one-second quote_pressure equality to the predecessor remains unproven and one-second qv_imb arithmetic remains UNKNOWN. Historical Major Checkpoint 03 remains preserved but causal/MT5 Entry parity is SUSPENDED. No Alpha/GAMMA used; August SEALED; no MQL5 during helper recovery. Resume from R14 next action.",
   "completed_bounded_scientific_units": [
     {
       "unit_id": "BETA_005_CACHE_INTEGRITY_CERTIFICATION__2026-01__001_DAY_2026-01-02",
@@ -2141,7 +2141,7 @@
   },
   "recovery_blocker": {
     "id": "BETA064_MULTIDESK_LOOP_RECOVERY",
-    "status": "ACTIVE__CHECKPOINT03_CAUSAL_ENTRY_PARITY_SUSPENDED",
+    "status": "ACTIVE__R14_QP_QV_CONSTRAINED__CHECKPOINT03_CAUSAL_ENTRY_PARITY_SUSPENDED",
     "authoritative_google_doc_id": "1VJaUMULaTonJxTRCiWKsof_bHSsjg1ouSfLVCKDepi8",
     "authoritative_google_doc_url": "https://docs.google.com/document/d/1VJaUMULaTonJxTRCiWKsof_bHSsjg1ouSfLVCKDepi8/edit",
     "github_forensic_record": "research/recovery/BETA_064_MULTIDESK_LOOP_R9C_FORENSIC_FINDINGS.md",
@@ -2156,22 +2156,24 @@
     ],
     "unresolved": [
       "Exact remaining 34-row January FIT discrepancy.",
-      "Exact qp/qv feature semantics and raw_score parity.",
-      "Exact E3/E8 and residual E5/E9 gates.",
+      "Exact BETA064 one-second quote_pressure formula identity (predecessor lineage constrained; equality unproven).",
+      "Exact BETA064 one-second qv_imb arithmetic.",
+      "Exact desk-specific E3/E5-E12 proposal emission/persistence/debounce/raw_score where not preserved.",
       "Lineage of session additions / beta064_allmonths_predictions.pkl.",
+      "Pre-ownership candidate/prediction surface.",
       "Corrected right-edge replacement checkpoint."
     ]
   },
   "active_recovery": {
     "id": "BETA_064_MULTIDESK_LOOP_RECOVERY",
-    "status": "RECOVERY_UNCERTIFIED_R13_HANDOFF_DURABLE",
+    "status": "RECOVERY_UNCERTIFIED_R14_QP_QV_ARCHAEOLOGY_DURABLE",
     "blocker": "MISSING_HISTORICAL_beta064_multidesk_loop.py_AND_PARENT_PREDICTION_PROVENANCE",
     "causal_mt5_entry_parity": "BLOCKED",
     "historical_checkpoint03_metrics": "PRESERVED_NOT_CAUSAL_CERTIFIED",
     "authoritative_google_doc_id": "1VJaUMULaTonJxTRCiWKsof_bHSsjg1ouSfLVCKDepi8",
     "github_r12_record": "research/recovery/BETA_064_MULTIDESK_LOOP_R12_SOURCE_FORENSIC_FINDINGS.md",
     "github_recovery_scaffold": "research/recovery/beta064_multidesk_loop_RECOVERY_UNCERTIFIED.py",
-    "next_action": "Resume R13: BETA-only qp/qv source archaeology from surviving predecessor archives/fixtures, then desk-specific E6/E11 emission reconstruction; locate/rebuild pre-ownership candidate surface; historical left-edge is forensic-only; create corrected right-edge replacement checkpoint before any MT5 Entry-parity claim.",
+    "next_action": "Search/materialize BETA-only one-second cache fixtures or predecessor source exposing qv_imb/cache-builder semantics; if none exists, preserve qv_imb as UNKNOWN and continue desk-specific E6/E11 persistence/debounce reconstruction using LEFT-edge state for forensics only; then build a newly named RIGHT-edge replacement checkpoint before MT5.",
     "alpha_gamma_use": false,
     "august": "SEALED",
     "mql5_authorized_during_recovery": false,
@@ -2180,6 +2182,10 @@
     "max_chat_handoff_google_doc_id": "1hsKA9TXdvgX01dY9Z4HAoGkYeaEyu9Br4eVZMo_qUiU",
     "max_chat_handoff_google_doc_url": "https://docs.google.com/document/d/1hsKA9TXdvgX01dY9Z4HAoGkYeaEyu9Br4eVZMo_qUiU/edit",
     "r13_github_handoff_commit": "ce712ea62912d07a9ce859d1934ea628b0e4593c",
-    "r13_github_state_commit": "81428afe8a8265513c250aabf7aa21c0292d1ece"
+    "r13_github_state_commit": "81428afe8a8265513c250aabf7aa21c0292d1ece",
+    "github_r14_record": "research/recovery/BETA_064_MULTIDESK_LOOP_R14_QP_QV_SOURCE_ARCHAEOLOGY.md",
+    "github_r14_state": "research/recovery/BETA_064_MULTIDESK_LOOP_R14_STATE.json",
+    "r14_record_commit": "b64973734bcefe250082a8a0dc3b1fd9b6ed20fd",
+    "r14_state_commit": "69a90c8edc877bd970ce6855198fed2f4684ec2b"
   }
 }
