@@ -1,0 +1,149 @@
+{
+  "schema": "beta-research-unit-rebuild-manifest-v1",
+  "unit_id": "BETA_067_DECOMPOSED_DIRECTION_FRICTION_ACTION_VALUE",
+  "status": "PLANNED",
+  "date_utc": "2026-10-01",
+  "lineage": "INDEPENDENT_BETA",
+  "parent_checkpoint": "BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "producing source",
+    "frozen model/config",
+    "CAL candidate table",
+    "prediction surface",
+    "selected ledger",
+    "QA source/results",
+    "report/hashes/readback"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "source_code": [
+    "research/experiments/BETA_067_DECOMPOSED_DIRECTION_FRICTION_ACTION_VALUE.py"
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "fixed_horizon_seconds": 30,
+      "algebra": "d=(long-short)/2; friction=-(long+short)/2; therefore long=d-friction and short=-d-friction",
+      "model_arms": [
+        "direct_delta_plus_cost",
+        "direction_probability_x_magnitude_plus_cost",
+        "specialist_direct_delta_plus_cost"
+      ],
+      "actions": [
+        "LONG",
+        "SHORT",
+        "SKIP"
+      ],
+      "min_cal_trades": 50
+    },
+    "feature_order": [
+      "BETA065 28 causal features",
+      "BETA066 deterministic nonlinear ratios"
+    ],
+    "horizons_checkpoints": {
+      "primary": 30
+    },
+    "train_cal_eval_boundaries": {
+      "fit": "BETA065 FIT only",
+      "cal": "BETA065 CAL selection",
+      "diagnostic": "BETA065 DIAGNOSTIC locked until CAL policy frozen"
+    },
+    "timezone_session_definitions": {
+      "source": "UTC",
+      "hard_session_gate": false
+    },
+    "execution_cost_assumptions": {
+      "label_identity": "exact BETA065 executable 30s labels",
+      "commission_roundtrip_usd_0p01lot:": 0.02,
+      "one_position": "exact exit tick chronology"
+    },
+    "runtime_dependencies": [
+      "python>=3.11",
+      "numpy",
+      "pandas",
+      "scikit-learn"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "proposal_surface",
+      "path": "BETA_065_PREOWNERSHIP_CANDIDATES.npz",
+      "sha256": "600e3b73d7d053f6ed0785a5dd68aadad72f1e8928054a61b3eb1b2840be8773"
+    },
+    {
+      "role": "executable_label_surface",
+      "path": "BETA_065_ACTION_VALUE_PREDICTIONS.npz",
+      "sha256": "a4a2b99e4fc91ee863d1cd9dbf51d6a6080369ce0690e78232442f256771933e"
+    },
+    {
+      "role": "january_ticks",
+      "identity": "XAUUSD_DUKAS_2026_01_ticks.csv(3).gz",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "inherited BETA065"
+    ],
+    "predictions": [
+      "research/results/BETA_067_POLICY_PREDICTIONS.npz"
+    ],
+    "selected_owned_ledger": [
+      "research/results/BETA_067_SELECTED_LEDGER.csv.gz"
+    ],
+    "caches": []
+  },
+  "models": [
+    "research/artifacts/BETA_067_FROZEN_MODEL.json"
+  ],
+  "outputs": [
+    "research/checkpoints/BETA_067_RESULTS.json",
+    "research/BETA_067_DECOMPOSED_DIRECTION_FRICTION_ACTION_VALUE_REPORT.md"
+  ],
+  "qa": [
+    "research/qa/BETA_067_DECOMPOSED_DIRECTION_FRICTION_ACTION_VALUE_QA.py",
+    "research/checkpoints/BETA_067_QA.json"
+  ],
+  "reconstruction": {
+    "entry_point": "research/experiments/BETA_067_DECOMPOSED_DIRECTION_FRICTION_ACTION_VALUE.py",
+    "command": "python research/experiments/BETA_067_DECOMPOSED_DIRECTION_FRICTION_ACTION_VALUE.py --beta065-dir <DIR> --source <JAN_GZ> --out-dir <OUT>",
+    "required_artifact_order": [
+      "BETA065 proposal",
+      "BETA065 labels",
+      "January timestamps",
+      "BETA067 source",
+      "frozen model",
+      "predictions",
+      "ledger",
+      "results",
+      "QA"
+    ],
+    "expected_fingerprints": {},
+    "timing_semantics": "All inference features are BETA065 RIGHT-edge causal. Delta/friction are future-derived training labels only. DIAGNOSTIC is inaccessible to selection until frozen CAL policy is written.",
+    "notes": "Separates directional displacement from transaction friction instead of learning after-cost labels monolithically."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "BETA065 RIGHT-edge",
+    "state_machine_spec": "BETA065 proposal clocks unchanged",
+    "model_inference_spec": "pending",
+    "execution_quote_side_spec": "BETA065 executable labels",
+    "ownership_scheduler_spec": "chronological one position; exact 30s exit tick",
+    "session_dst_spec": "UTC research only",
+    "risk_spec": "BETA015 required before MT5 owner review",
+    "parity_fixtures": []
+  },
+  "supersedes": [],
+  "rollback_target": "BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
