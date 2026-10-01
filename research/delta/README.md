@@ -20,11 +20,12 @@ Prior internal research lineages are outside DELTA scope. Do not read, import, c
 4. Read `research/delta/governance/DELTA_GOV_002_TICK_ROOTED_NESTED_TIMEFRAME_CONTRACT.md`.
 5. Read `research/delta/governance/DELTA_GOV_003_RESEARCH_SPEED_STAGE_GATE_CONTRACT.md`.
 6. Read `research/delta/governance/DELTA_GOV_004_BENCHMARK_ROLES_AND_HUMAN_GOAL_METRICS_CONTRACT.md`.
-7. Read `research/delta/reference/R9_EVIDENCE_REGISTRY.json`.
-8. Read `research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json`.
-9. Read `research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md`.
-10. Verify GitHub branch is `delta` and Drive target is `DELTA_RESEARCH`.
-11. Resume exactly from `CURRENT_STATE.next_action`.
+7. Read `research/delta/governance/DELTA_GOV_005_PROVISIONAL_CANDIDATE_IMPROVEMENT_GATE.md`.
+8. Read `research/delta/reference/R9_EVIDENCE_REGISTRY.json`.
+9. Read `research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json`.
+10. Read `research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md`.
+11. Verify GitHub branch is `delta` and Drive target is `DELTA_RESEARCH`.
+12. Resume exactly from `CURRENT_STATE.next_action`.
 
 The first DELTA unit is an evidence/source/parity preflight. No new trading result may become a parent before it passes the DELTA manifest gate.
 
