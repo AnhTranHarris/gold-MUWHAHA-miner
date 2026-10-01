@@ -1,22 +1,13 @@
 {
   "schema": "beta-research-unit-rebuild-manifest-v1",
   "unit_id": "BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD",
-  "status": "PLANNED",
+  "status": "HUMAN_QA_READY_RESEARCH_CANDIDATE_NONBLIND",
   "date_utc": "2026-10-01",
   "lineage": "INDEPENDENT_BETA",
   "parent_checkpoint": "BETA_076_M5_FIRST_RETEST_900S_JANJUL_ROBUSTNESS",
-  "python_rebuild_ready": false,
+  "python_rebuild_ready": true,
   "mt5_translation_ready": false,
-  "missing_required_artifacts": [
-    "producing source",
-    "multi-horizon executable surface",
-    "CAL/Jan-Jul neighborhood table",
-    "frozen research QA candidate if any",
-    "selected ledger",
-    "QA",
-    "human QA packet",
-    "report/hashes/readback"
-  ],
+  "missing_required_artifacts": [],
   "sealed_data_status": {
     "august_2026": "SEALED"
   },
@@ -26,7 +17,7 @@
   "helpers": [],
   "config": {
     "parameters": {
-      "primary_setup": "BETA076 M5 FIRST_RETEST",
+      "primary_setup": "Self-contained causal M5 FIRST_RETEST reconstruction; BETA071/BETA076 are discovery provenance only, not runtime dependencies",
       "level_maturity_windows_m5_bars": [
         [
           7,
@@ -52,7 +43,8 @@
       "minimum_positive_months": 4,
       "neighbor_rule": "selected cell must have at least one adjacent maturity window or adjacent hold with positive net/PF>1 and >=150 trades",
       "one_position": true,
-      "fee_roundtrip_usd": 0.02
+      "fee_roundtrip_usd": 0.02,
+      "pnl_flat_epsilon_usd": 1e-9
     },
     "feature_order": [
       "confirmed M5 level age at break",
@@ -77,7 +69,7 @@
       "no_session_filter": true
     },
     "execution_cost_assumptions": {
-      "entry": "BETA076 first executable tick after causal retest",
+      "entry": "first canonical source tick strictly after completed M1 retest event",
       "exit": "opposite executable quote at first tick at/after fixed hold",
       "commission_roundtrip_usd": 0.02
     },
@@ -89,31 +81,77 @@
   },
   "inputs": [
     {
-      "role": "BETA076 causal event ledger",
-      "path": "BETA_076_M5_FIRST_RETEST_EVENTS.csv.gz"
+      "role": "canonical_market_source",
+      "month": "2026-01",
+      "identity": "XAUUSD_DUKAS_2026_01_ticks.csv(3).gz",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
     },
     {
-      "role": "Jan-Jul source files",
-      "sha256": "as recorded in BETA076 manifest"
+      "role": "canonical_market_source",
+      "month": "2026-02",
+      "identity": "XAUUSD_DUKAS_2026_02_ticks.csv(3).gz",
+      "sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d"
+    },
+    {
+      "role": "canonical_market_source",
+      "month": "2026-03",
+      "identity": "XAUUSD_DUKAS_2026_03_ticks.csv(3).gz",
+      "sha256": "814ba35e72f219a58badd806ed5c0f30ef0fb4ffe56a48205d873706513bd177"
+    },
+    {
+      "role": "canonical_market_source",
+      "month": "2026-04",
+      "identity": "XAUUSD_DUKAS_2026_04_ticks.csv(3).gz",
+      "sha256": "30375098f62aed6cabc32ec6b67c57c20baec9b6d9be1ce0a204e09806c1ec0f"
+    },
+    {
+      "role": "canonical_market_source",
+      "month": "2026-05",
+      "identity": "XAUUSD_DUKAS_2026_05_ticks.csv(3).gz",
+      "sha256": "3a50e0f1eba3076154238290ec02842cf3744ab192e5c9a2acc1cc07367c6a0d"
+    },
+    {
+      "role": "canonical_market_source",
+      "month": "2026-06",
+      "identity": "XAUUSD_DUKAS_2026_06_ticks.csv(3).gz",
+      "sha256": "34686ce53ba992dfb83ea35d555b6a4947a9216635857c8bf11ce70c00ae2"
+    },
+    {
+      "role": "canonical_market_source",
+      "month": "2026-07",
+      "identity": "XAUUSD_DUKAS_2026_07_ticks.csv(2).gz",
+      "sha256": "e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7"
+    },
+    {
+      "role": "discovery_provenance_only",
+      "path": "research/BETA_076_M5_FIRST_RETEST_900S_JANJUL_ROBUSTNESS_PREREGISTRATION.md"
+    },
+    {
+      "role": "safe_causal_lineage",
+      "path": "research/BETA_063_FIVE_SOFT_EXPERT_ENTRY_HOLD_SHARED_CONTINUATION_VALUE_SPEC.md"
     }
   ],
   "intermediate_surfaces": {
     "pre_ownership_candidates": [
-      "inherited BETA076 M5 first-retest events"
+      "BETA_078_M5_FIRST_RETEST_EVENTS.csv.gz — deterministically regenerated and included in Drive bundle"
     ],
     "predictions": [],
     "selected_owned_ledger": [
-      "research/results/BETA_078_SELECTED_LEDGER.csv.gz"
+      "BETA_078_SELECTED_LEDGER.csv.gz — included in Drive bundle"
     ],
     "caches": [
-      "research/results/BETA_078_MULTI_HORIZON_EXECUTION.npz"
+      "BETA_078_MULTI_HORIZON_EXECUTION.npz — included in Drive bundle",
+      "BETA_078_EXEC_2026-01..07.csv.gz — included in Drive bundle"
     ]
   },
   "models": [],
   "outputs": [
     "research/checkpoints/BETA_078_RESULTS.json",
     "research/BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD_REPORT.md",
-    "research/human_qa/BETA_078_HUMAN_QA_REVIEW_PACKET.md"
+    "research/human_qa/BETA_078_HUMAN_QA_REVIEW_PACKET.md",
+    "research/human_qa/BETA_078_HUMAN_QA_DASHBOARD.html",
+    "research/human_qa/BETA_078_HUMAN_QA_CASES.csv",
+    "research/human_qa/BETA_078_HUMAN_QA_CHECKLIST.md"
   ],
   "qa": [
     "research/qa/BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD_QA.py",
@@ -121,41 +159,81 @@
   ],
   "reconstruction": {
     "entry_point": "research/experiments/BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD.py",
-    "command": "python research/experiments/BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD.py --beta076-dir <DIR> --data-dir <DIR> --out-dir <OUT>",
+    "command": "python research/experiments/BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD.py --data-dir <JAN_JUL_CANONICAL_SOURCE_DIR> --out-dir <OUT> && python research/qa/BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD_QA.py --data-dir <JAN_JUL_CANONICAL_SOURCE_DIR> --out-dir <OUT>",
     "required_artifact_order": [
-      "BETA076 events",
-      "Jan-Jul source",
-      "source",
-      "multi-horizon execution",
+      "seven canonical Jan-Jul gzip sources with exact SHA-256",
+      "self-contained BETA078 producing source",
+      "causal M5 first-retest event ledger",
+      "multi-horizon executable surfaces",
       "neighborhood table",
-      "selected ledger",
-      "results",
-      "QA",
-      "human QA packet"
+      "selected one-position ledger",
+      "results JSON",
+      "independent QA source/results",
+      "human QA cases/checklist/dashboard/review packet"
     ],
-    "expected_fingerprints": {},
-    "timing_semantics": "M5 level age is known at the causal break; retest entry timing is unchanged. Hold selection is historical research only. August is not read.",
-    "notes": "The 7-9 maturity hypothesis was discovered diagnostically on Jan-Jul and is not independent evidence. This unit asks only whether the nearby maturity/hold surface is structurally stable enough to justify human QA before a sealed holdout."
+    "expected_fingerprints": {
+      "research/experiments/BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD.py": "37b7c30787e9db5ebcb3ae9fff213c9cbc4856a07753725d6a945b2f040861be",
+      "research/qa/BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD_QA.py": "76c25c25c008e2d05d92a8a45c1929015f38d432857b933561557eb92639ff0c",
+      "research/checkpoints/BETA_078_RESULTS.json": "8dd57729bf21b8be9ec20217cbdd3f4f7dd3143407d859761ea2664fdeff3c8d",
+      "research/checkpoints/BETA_078_QA.json": "a103b2dee3e60285e7d612302a27c254a50646bfb188c3799e034c9e62af0b66",
+      "BETA_078_M5_FIRST_RETEST_EVENTS.csv.gz": "a14935959e065f00a6fc1e1680db075f3e9409d4ed0404882a88c0222b10b8cf",
+      "BETA_078_MULTI_HORIZON_EXECUTION.npz": "aaf3304ece1b4574546a824561e2a51262e9b6c78d40e2c881f64414712e68a9",
+      "BETA_078_NEIGHBORHOOD_TABLE.csv": "687eb30bc8062e32241699cc96dbcdcc7caa67fdb541dc7b73dde68e1099e4f3",
+      "BETA_078_SELECTED_LEDGER.csv.gz": "04c2007fd7269a66ead0089562918173e343b049786cdcd5b82e7532a956fe80",
+      "research/human_qa/BETA_078_HUMAN_QA_CASES.csv": "e7cfdcbea3b36acc0124d5798790e51b4c4128931ad44aa90cc60d4c454c8431",
+      "research/human_qa/BETA_078_HUMAN_QA_CHECKLIST.md": "293562b785c3f19d5238fcbe8942c07c96a7173d31abfca0d18716f74f04b909",
+      "research/human_qa/BETA_078_HUMAN_QA_DASHBOARD.html": "a52dd8f188379bab5fe8a762fcb501d2809009dc1bb66ea5466ef710665d1dee",
+      "research/human_qa/BETA_078_HUMAN_QA_REVIEW_PACKET.md": "1a4f192f05f3cf944ef4125d2d8978bf7da7ddc013f79f41a197851981a221a0"
+    },
+    "timing_semantics": "Self-contained RIGHT-edge reconstruction: M1/M5 bars visible only at right edge; left2/right2 M5 pivots activate only after i+2 closes; M1 break precedes first accepted retest; entry is first source ordinal strictly after event; exit is first source ordinal at/after hold from actual entry; one-position scheduler uses actual exit timestamps.",
+    "notes": "Jan-Jul selection is explicitly nonblind. The source no longer depends on transient BETA076 execution files. One economically flat July trade is normalized with |PnL|<=1e-9 only for win/loss classification; PnL economics are unchanged."
   },
   "mt5_translation_contract": {
-    "authoritative_python_parent": "",
-    "feature_timing_spec": "BETA076 RIGHT-edge structure timing",
-    "state_machine_spec": "confirmed M5 level -> causal break -> first retest -> maturity admission -> fixed hold",
+    "authoritative_python_parent": "research/experiments/BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD.py",
+    "feature_timing_spec": "self-contained completed M5 pivot / M1 break-retest RIGHT-edge timing",
+    "state_machine_spec": "confirmed M5 pivot -> causal M1 break -> first accepted M1 retest within 10 bars -> admit only if level age 7..9 -> next-tick entry -> fixed 1800s hold",
     "model_inference_spec": "none",
     "execution_quote_side_spec": "actual Bid/Ask",
     "ownership_scheduler_spec": "chronological one-position",
     "session_dst_spec": "UTC",
     "risk_spec": "BETA015 required before owner MT5 review",
-    "parity_fixtures": []
+    "parity_fixtures": [
+      "research/human_qa/BETA_078_HUMAN_QA_CASES.csv"
+    ]
   },
   "supersedes": [],
   "rollback_target": "BETA_076_M5_FIRST_RETEST_900S_JANJUL_ROBUSTNESS",
-  "github_commits": [],
-  "drive_artifacts": [],
+  "github_commits": [
+    "ea0aa8e3138a88ddf3b03d907918fe7308aae54b",
+    "87d75314a8fe20662a6e14fdab5d9ad7a7448616",
+    "face850bbc2c3a60966362f05032c976634a74cf",
+    "13a59c5ed553a91ccaff4420773e0ee7c1df156c",
+    "c2be9bed15292925362724c7d9630a687e0abd32",
+    "435fb450e21bab500f86e64f8542f5fbf31b9fa2",
+    "b63dbd2ed774d1b42fbe8717962c2d16152b8280",
+    "0aea0ad031110e9cbdd818355e12e0539276fb7b",
+    "ee7d61bed56e8d45628e3f21a6c13201bef123d9",
+    "c1ac4f353ad1746970644462a0d9ef3dc94eb721",
+    "6cc5653879844917068c9a38f3d7b4c942760cef",
+    "04a164fcb151bc2dc6ab921c49d659523c654951"
+  ],
+  "drive_artifacts": [
+    {
+      "role": "full_reproducibility_and_human_QA_bundle",
+      "file_id": "1sJb_pxECAViys-Ar7VL87l7rjy9CSyqL",
+      "url": "https://drive.google.com/file/d/1sJb_pxECAViys-Ar7VL87l7rjy9CSyqL/view?usp=drivesdk",
+      "parent_folder_id": "11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
+      "file_size_bytes": 284259,
+      "drive_readback_zip_sha256": "2c948c31139ddf7d4159546671488c2d7b60d0b728becb05843b16a2f0a53030",
+      "canonical_member_manifest_sha256": "b791af01d4c3d64e21468e65cf835bde413292717dec8f9213107841650bd2f5",
+      "member_count": 21,
+      "member_hashes_match_current_workspace": true
+    }
+  ],
   "verification": {
-    "github_readback": false,
-    "drive_readback": false,
-    "hashes_verified": false,
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
     "current_state_advanced": false
   }
 }
