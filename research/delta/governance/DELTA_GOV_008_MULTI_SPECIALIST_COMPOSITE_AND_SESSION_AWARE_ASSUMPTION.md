@@ -237,6 +237,12 @@ Before promotion, DELTA must preserve:
 
 No hidden or post-hoc routing is permitted.
 
+## 12A. News/event regime ownership
+
+Under GOV-009, medium/high-impact news can temporarily become its own specialist regime. Event specialists may override, coexist with, block, or hand off to normal session specialists under explicit causal routing rules.
+
+The composite must preserve event-regime ownership, proposal source, blocked/superseded proposals, and hand-back conditions when event routing affects trades.
+
 ## 13. Research implication
 
 DELTA should search for a **team of complementary specialists**, not a mythical universal strategy.
