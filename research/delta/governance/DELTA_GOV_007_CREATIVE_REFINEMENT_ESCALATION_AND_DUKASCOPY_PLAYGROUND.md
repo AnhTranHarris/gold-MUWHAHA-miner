@@ -134,6 +134,12 @@ Creative refinement is evaluated under the existing provisional human gate:
 
 The 10-point creative-escalation trigger is a research-process rule, not a replacement for those pass/fail thresholds.
 
+## 8A. Multi-specialist creative escalation
+
+GOV-008 makes specialist creation, splitting, recombination, replacement, session reassignment, and router redesign first-class creative interventions.
+
+When a general candidate stalls, DELTA may stop trying to force it into a universal strategy and instead create complementary specialists whose combined composite improves the system-level primary metrics.
+
 ## 9. Search discipline
 
 Creativity does not authorize:
