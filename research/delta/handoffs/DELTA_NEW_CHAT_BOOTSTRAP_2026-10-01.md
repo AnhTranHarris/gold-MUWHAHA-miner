@@ -135,6 +135,16 @@ System-level metric locks attach to the exact accepted composite configuration, 
 
 See `DELTA_GOV_008_MULTI_SPECIALIST_COMPOSITE_AND_SESSION_AWARE_ASSUMPTION.md`.
 
+## News/event opportunity assumption
+
+DELTA treats medium/high-impact monetary-policy, macro-financial, market, and gold-specific news as a potential opportunity regime, not an automatic no-trade zone.
+
+Required research domains include US/Federal Reserve and macro news, European macro-financial news, Asian macro-financial news, and gold-specific developments. DELTA may build separate pre-event, release-reaction, post-event, continuation, reversal, spread/liquidity-protection, or evidence-based stand-down specialists.
+
+All news features must be causal and as-of: no release value, revision, headline, interpretation, or classification may be used before it became public. Event timestamps, provider hierarchy, impact taxonomy, and exact windows remain pending a dedicated event-data contract.
+
+See `DELTA_GOV_009_NEWS_EVENT_OPPORTUNITY_AND_IMPACT_HANDLING_ASSUMPTION.md`.
+
 ## Research objective
 
 Rebuild a high-activity causal Entry+Hold architecture around the R9 evidence base while preserving real chronology, causal execution, and trade velocity.
