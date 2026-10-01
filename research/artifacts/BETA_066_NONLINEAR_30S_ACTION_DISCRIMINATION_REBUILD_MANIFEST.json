@@ -1,0 +1,143 @@
+{
+  "schema": "beta-research-unit-rebuild-manifest-v1",
+  "unit_id": "BETA_066_NONLINEAR_30S_ACTION_DISCRIMINATION",
+  "status": "PLANNED",
+  "date_utc": "2026-10-01",
+  "lineage": "INDEPENDENT_BETA",
+  "parent_checkpoint": "BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "authoritative producing Python source",
+    "model parameter/export artifacts",
+    "complete CAL candidate table",
+    "frozen policy prediction surface",
+    "selected one-position ledger",
+    "QA source/results",
+    "report/hashes/readback"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "source_code": [
+    "research/experiments/BETA_066_NONLINEAR_30S_ACTION_DISCRIMINATION.py"
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "fixed_horizon_seconds": 30,
+      "model_families": [
+        "pooled_multiclass_hist_gradient_boosting",
+        "specialist_multiclass_hist_gradient_boosting",
+        "paired_hist_gradient_boosting_regression"
+      ],
+      "action_classes": [
+        "SKIP",
+        "LONG",
+        "SHORT"
+      ],
+      "policy_rule": "choose LONG/SHORT only when frozen model/action threshold selected on CAL permits it; otherwise SKIP",
+      "hold_exit": "fixed 30-second executable quote-side label inherited from BETA065 for attribution"
+    },
+    "feature_order": [
+      "BETA065 28 durable features",
+      "preregistered action-aligned nonlinear interaction features"
+    ],
+    "horizons_checkpoints": {
+      "primary": 30
+    },
+    "train_cal_eval_boundaries": {
+      "fit": "BETA065 split_code=FIT",
+      "cal": "BETA065 split_code=CAL",
+      "diagnostic": "BETA065 split_code=DIAGNOSTIC; prohibited from model/hyperparameter/threshold selection"
+    },
+    "timezone_session_definitions": {
+      "source": "UTC",
+      "sessions": "not used as hard gates"
+    },
+    "execution_cost_assumptions": {
+      "label_source": "BETA065 executable Bid/Ask 30s labels",
+      "commission_roundtrip_usd_0p01lot": 0.02,
+      "one_position": "chronological 30s occupancy"
+    },
+    "runtime_dependencies": [
+      "python>=3.11",
+      "numpy",
+      "pandas",
+      "scikit-learn"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "preownership_surface",
+      "path": "BETA_065_PREOWNERSHIP_CANDIDATES.npz",
+      "sha256": "600e3b73d7d053f6ed0785a5dd68aadad72f1e8928054a61b3eb1b2840be8773"
+    },
+    {
+      "role": "label_surface",
+      "path": "BETA_065_ACTION_VALUE_PREDICTIONS.npz",
+      "sha256": "a4a2b99e4fc91ee863d1cd9dbf51d6a6080369ce0690e78232442f256771933e"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "inherited immutable BETA065 proposal identity"
+    ],
+    "predictions": [
+      "research/results/BETA_066_POLICY_PREDICTIONS.npz"
+    ],
+    "selected_owned_ledger": [
+      "research/results/BETA_066_SELECTED_LEDGER.csv.gz"
+    ],
+    "caches": []
+  },
+  "models": [
+    "research/artifacts/BETA_066_FROZEN_MODEL.json"
+  ],
+  "outputs": [
+    "research/checkpoints/BETA_066_RESULTS.json",
+    "research/BETA_066_NONLINEAR_30S_ACTION_DISCRIMINATION_REPORT.md"
+  ],
+  "qa": [
+    "research/qa/BETA_066_NONLINEAR_30S_ACTION_DISCRIMINATION_QA.py",
+    "research/checkpoints/BETA_066_QA.json"
+  ],
+  "reconstruction": {
+    "entry_point": "research/experiments/BETA_066_NONLINEAR_30S_ACTION_DISCRIMINATION.py",
+    "command": "python research/experiments/BETA_066_NONLINEAR_30S_ACTION_DISCRIMINATION.py --beta065-dir <BETA065_STAGE1_DIR> --out-dir <OUT>",
+    "required_artifact_order": [
+      "BETA065 proposal NPZ",
+      "BETA065 label NPZ",
+      "BETA066 source",
+      "frozen model artifact",
+      "prediction surface",
+      "selected ledger",
+      "results",
+      "QA"
+    ],
+    "expected_fingerprints": {},
+    "timing_semantics": "Inference uses only BETA065 RIGHT-edge as-of features. Future 30s executable outcomes are labels only. DIAGNOSTIC is never read for selection until the CAL-frozen policy is serialized.",
+    "notes": "BETA066 tests nonlinear action discrimination at the only BETA065 horizon with positive oracle action capacity. No historical BETA064 economics/helper logic is inherited."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "BETA065 RIGHT-edge feature contract",
+    "state_machine_spec": "BETA065 three-clock proposal generator; BETA066 changes action selection only",
+    "model_inference_spec": "pending frozen BETA066 model",
+    "execution_quote_side_spec": "BETA065 labels: BUY Ask/SELL Bid and opposite quote at 30s",
+    "ownership_scheduler_spec": "chronological one-position 30s occupancy",
+    "session_dst_spec": "UTC research; broker translation unresolved",
+    "risk_spec": "BETA015 funded-risk proof required before owner MT5 review",
+    "parity_fixtures": []
+  },
+  "supersedes": [],
+  "rollback_target": "BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
