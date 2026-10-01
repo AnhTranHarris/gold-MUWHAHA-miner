@@ -1,28 +1,31 @@
 {
   "schema": "beta-research-unit-rebuild-manifest-v1",
   "unit_id": "BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1",
-  "status": "PLANNED",
+  "status": "COMPLETED_DURABLE_NULL_NOT_PROMOTED",
   "date_utc": "2026-10-01",
   "lineage": "INDEPENDENT_BETA",
   "parent_checkpoint": "BETA063",
-  "python_rebuild_ready": false,
+  "python_rebuild_ready": true,
   "mt5_translation_ready": false,
-  "missing_required_artifacts": [
-    "authoritative BETA065 producing Python source",
-    "BETA065 QA source and results",
-    "pre-ownership candidate ledger or exact deterministic generator verification",
-    "prediction/action-value surface",
-    "selected one-position ledger",
-    "result report and hashes",
-    "GitHub readback of all produced artifacts"
-  ],
+  "missing_required_artifacts": [],
   "sealed_data_status": {
     "august_2026": "SEALED"
   },
   "source_code": [
-    "research/experiments/BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1.py"
+    {
+      "authoritative_archive_file_id": "1IMKKM_-LfnZ_7MoKs5116JbFrPwK8bfb",
+      "archive_member": "BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1.py",
+      "sha256": "86a6f1d2c631239e9be8a634930967c2bc949ad489748f1eeab8d169235bdc6a",
+      "note": "Exact producing source preserved in the durable Drive reproducibility archive; research result is rejected/null and is not a promoted parent."
+    }
   ],
-  "helpers": [],
+  "helpers": [
+    {
+      "authoritative_archive_file_id": "1IMKKM_-LfnZ_7MoKs5116JbFrPwK8bfb",
+      "archive_member": "BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1_QA.py",
+      "sha256": "8de40c664f30ebd64c866f365247b5e358f08c4a8246c92be4d3dc78564a5342"
+    }
+  ],
   "config": {
     "parameters": {
       "research_parent": "BETA063 specification only; no historical BETA064 economics/helpers",
@@ -40,7 +43,36 @@
       "ownership": "one_position_at_a_time",
       "lot": "0.01 nominal research convention"
     },
-    "feature_order": [],
+    "feature_order": [
+      "proposal_side",
+      "raw_score",
+      "spread",
+      "pressure250",
+      "ret250",
+      "ret500",
+      "ret1s",
+      "ret3s",
+      "ret5s",
+      "ret15s",
+      "ret30s",
+      "range1s",
+      "range5s",
+      "range15s",
+      "eff1s",
+      "eff5s",
+      "eff15s",
+      "log_ticks250",
+      "ret1s_bar",
+      "ret5s_bar",
+      "range5s_bar",
+      "pressure1s",
+      "ret5s_completed",
+      "body_prev60s",
+      "range_prev60s",
+      "is_micro250",
+      "is_v8_m1",
+      "is_retest1s"
+    ],
     "horizons_checkpoints": {
       "entry_utility_seconds": [
         1,
@@ -66,9 +98,11 @@
       "slippage": "not modeled in Stage-1; report separately as certification blocker"
     },
     "runtime_dependencies": [
-      "python>=3.11",
-      "numpy",
-      "pandas"
+      "Python 3.13.5",
+      "numpy 2.3.5",
+      "pandas 2.2.3",
+      "scikit-learn 1.8.0",
+      "numba 0.65.1"
     ]
   },
   "inputs": [
@@ -94,30 +128,102 @@
   ],
   "intermediate_surfaces": {
     "pre_ownership_candidates": [
-      "research/results/BETA_065_PREOWNERSHIP_CANDIDATES.csv.gz"
+      {
+        "archive_file_id": "1IMKKM_-LfnZ_7MoKs5116JbFrPwK8bfb",
+        "member": "BETA_065_PREOWNERSHIP_CANDIDATES.npz",
+        "sha256": "600e3b73d7d053f6ed0785a5dd68aadad72f1e8928054a61b3eb1b2840be8773",
+        "rows": 371013
+      }
     ],
     "predictions": [
-      "research/results/BETA_065_ACTION_VALUE_PREDICTIONS.csv.gz"
+      {
+        "archive_file_id": "1IMKKM_-LfnZ_7MoKs5116JbFrPwK8bfb",
+        "member": "BETA_065_ACTION_VALUE_PREDICTIONS.npz",
+        "sha256": "a4a2b99e4fc91ee863d1cd9dbf51d6a6080369ce0690e78232442f256771933e",
+        "shape": "371013 x 6 per action/label surface"
+      }
     ],
     "selected_owned_ledger": [
-      "research/results/BETA_065_SELECTED_LEDGER.csv.gz"
+      {
+        "archive_file_id": "1IMKKM_-LfnZ_7MoKs5116JbFrPwK8bfb",
+        "member": "BETA_065_SELECTED_LEDGER.csv",
+        "sha256": "09953fd345589fd8a4430f141f6a7a530f632b51996dd51daaf7b5be8c84bd20",
+        "trades": 0,
+        "reason": "SKIP_ALL because CAL predicted executable value never exceeded zero"
+      }
     ],
     "caches": [
-      "research/results/BETA_065_RIGHT_EDGE_STATE_CACHE.csv.gz"
+      {
+        "archive_file_id": "1IMKKM_-LfnZ_7MoKs5116JbFrPwK8bfb",
+        "member": "BETA_065_RIGHT_EDGE_STATE_CACHE.json",
+        "sha256": "f2530c578c806bf059080f2ae97eeb9bb4908c723c49b3f3f7a3f81dffec4a8a",
+        "note": "Full bars regenerate deterministically from canonical source; metadata preserves counts and RIGHT-edge builder identity."
+      }
     ]
   },
-  "models": [],
+  "models": [
+    {
+      "type": "three specialist-specific multi-output Ridge experts",
+      "deterministic_rebuild": true,
+      "specialists": {
+        "MICRO250_PERSIST": {
+          "alpha": 300,
+          "max_fit": 60000
+        },
+        "V8_M1_BOUNDARY": {
+          "alpha": 100,
+          "max_fit": 60000
+        },
+        "RETEST_RENEW_1S": {
+          "alpha": 200,
+          "max_fit": 60000
+        }
+      },
+      "horizons_s": [
+        1,
+        3,
+        5,
+        10,
+        15,
+        30
+      ],
+      "note": "Model coefficients are deterministically rebuilt from FIT using the authoritative producing source and fixed dependency versions; prediction surface is also preserved byte-for-byte in Drive."
+    }
+  ],
   "outputs": [
-    "research/checkpoints/BETA_065_STAGE1_RESULTS.json",
-    "research/BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1_REPORT.md"
+    {
+      "path": "research/BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1_REPORT.md",
+      "commit": "ecb72d8ae8b114f92664ef3dd3468e48dc730a1d",
+      "sha256": "3d96332689dc74bbcf89f5a83d3dd55543132671a41c099f7c95d7a3071ff74b"
+    },
+    {
+      "drive_archive_member": "BETA_065_STAGE1_RESULTS.json",
+      "sha256": "b4ccd5843476728084b7d96079f2d74d814f81e0e1551de4017e80d332525f3f"
+    },
+    {
+      "drive_archive_member": "BETA_065_STAGE1_ACTION_CAPACITY.json",
+      "sha256": "0e1f76a356e79cd6a810d23f5d1a0aa9343fafb6c09c0f3368997c605b184fcf"
+    },
+    {
+      "path": "research/artifacts/BETA_065_STAGE1_DURABLE_ARTIFACT_INDEX.json",
+      "commit": "e38ea9fb3d8763179a7e267639f6f086e70f9cf1"
+    }
   ],
   "qa": [
-    "research/qa/BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1_QA.py",
-    "research/checkpoints/BETA_065_STAGE1_QA.json"
+    {
+      "drive_archive_member": "BETA_065_STAGE1_QA.json",
+      "sha256": "354e6b8c155f61061dd8aacde94868ab5ca8e0aa0218ae7432d02f60ae2aa105",
+      "status": "PASS",
+      "checks": "25/25"
+    },
+    {
+      "drive_archive_member": "BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1_QA.py",
+      "sha256": "8de40c664f30ebd64c866f365247b5e358f08c4a8246c92be4d3dc78564a5342"
+    }
   ],
   "reconstruction": {
-    "entry_point": "research/experiments/BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1.py",
-    "command": "python research/experiments/BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1.py --source <JAN_DUKASCOPY_GZ> --out-dir <OUT>",
+    "entry_point": "Drive archive 1IMKKM_-LfnZ_7MoKs5116JbFrPwK8bfb :: BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1.py",
+    "command": "python BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1.py --source <canonical January Dukascopy gzip> --out-dir <OUT>",
     "required_artifact_order": [
       "canonical January source",
       "producing Python source",
@@ -128,14 +234,23 @@
       "result JSON",
       "QA JSON/report"
     ],
-    "expected_fingerprints": {},
+    "expected_fingerprints": {
+      "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "proposal_total": 371013,
+      "fit": 164448,
+      "cal": 29976,
+      "diagnostic": 176589,
+      "cal_qbest_max": -0.07726510168567313,
+      "selected_policy": "SKIP_ALL",
+      "qa": "25/25 PASS"
+    },
     "timing_semantics": "All time bars are observable only at RIGHT-edge completion; same-millisecond source ordinal is the deterministic tie-breaker. No [t,t+bucket) observation is visible at t.",
     "notes": "New post-R18 science. Historical BETA064 checkpoint economics, left-edge caches, missing beta064_multidesk_loop.py, guessed thresholds, and September-30 child formulas are prohibited as parents."
   },
   "mt5_translation_contract": {
     "authoritative_python_parent": "",
-    "feature_timing_spec": "RIGHT-edge only; unresolved until research unit passes.",
-    "state_machine_spec": "Must be executable and frozen before mt5_translation_ready=true.",
+    "feature_timing_spec": "Research unit is RIGHT-edge causal, but rejected/null and not authorized for MT5 translation.",
+    "state_machine_spec": "Not promoted. Any future unit must preregister its own FSM from BETA063/BETA065 surfaces.",
     "model_inference_spec": "Research-only action-value model; export contract pending.",
     "execution_quote_side_spec": "BUY Ask / SELL Bid; exit opposite quote.",
     "ownership_scheduler_spec": "one position at a time; chronological source ordinal.",
@@ -145,12 +260,25 @@
   },
   "supersedes": [],
   "rollback_target": "BETA063",
-  "github_commits": [],
-  "drive_artifacts": [],
+  "github_commits": [
+    "32bd8fd3e0fa9d4d14814369f1f869a39e5a36c4",
+    "747dfa4841dc2bd849e5942c6ae80d93de4d6578",
+    "ecb72d8ae8b114f92664ef3dd3468e48dc730a1d",
+    "e38ea9fb3d8763179a7e267639f6f086e70f9cf1"
+  ],
+  "drive_artifacts": [
+    {
+      "file_id": "1IMKKM_-LfnZ_7MoKs5116JbFrPwK8bfb",
+      "url": "https://drive.google.com/file/d/1IMKKM_-LfnZ_7MoKs5116JbFrPwK8bfb/view?usp=drivesdk",
+      "parent_folder_id": "11imx5cE1Pvzr81V0nRJs2MEjBy5mt4nE",
+      "name": "BETA_065_STAGE1_REPRODUCIBILITY_SURFACES.zip",
+      "sha256": "96fc5de879ad0f40b345aa4f96afca1c8876fcea68bc467c24a9c638628d2557"
+    }
+  ],
   "verification": {
     "github_readback": false,
-    "drive_readback": false,
-    "hashes_verified": false,
+    "drive_readback": true,
+    "hashes_verified": true,
     "current_state_advanced": false
   }
 }
