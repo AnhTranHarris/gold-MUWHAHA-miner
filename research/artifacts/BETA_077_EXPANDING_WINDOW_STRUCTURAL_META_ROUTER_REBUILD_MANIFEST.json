@@ -1,0 +1,158 @@
+{
+  "schema": "beta-research-unit-rebuild-manifest-v1",
+  "unit_id": "BETA_077_EXPANDING_WINDOW_STRUCTURAL_META_ROUTER",
+  "status": "PLANNED",
+  "date_utc": "2026-10-01",
+  "lineage": "INDEPENDENT_BETA",
+  "parent_checkpoint": "BETA_076_M5_FIRST_RETEST_900S_JANJUL_ROBUSTNESS",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "producing source",
+    "frozen January calibration config",
+    "monthly prediction surfaces",
+    "walk-forward selected ledger",
+    "QA",
+    "human QA packet",
+    "report/hashes/readback"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "source_code": [
+    "research/experiments/BETA_077_EXPANDING_WINDOW_STRUCTURAL_META_ROUTER.py"
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "primary_setup": "BETA076 M5 FIRST_RETEST 900s event bus",
+      "seed_training": "January preownership executable events",
+      "threshold_calibration": "chronological January split only; fixed before February",
+      "forward_months": [
+        "2026-02",
+        "2026-03",
+        "2026-04",
+        "2026-05",
+        "2026-06",
+        "2026-07"
+      ],
+      "refit": "at each month boundary on all completed prior-month outcomes only",
+      "model_heads": [
+        "LightGBM realized-PnL regression",
+        "LightGBM profitability classifier",
+        "hurdle EV"
+      ],
+      "hard_technical_filters": false,
+      "one_position": true,
+      "minimum_forward_trades": 200
+    },
+    "feature_order": [
+      "side",
+      "retest tolerance",
+      "retest age",
+      "M5 level age",
+      "M1 ATR",
+      "entry spread",
+      "side-relative UTC cyclic time",
+      "weekday cyclic terms"
+    ],
+    "horizons_checkpoints": {
+      "hold_seconds": 900
+    },
+    "train_cal_eval_boundaries": {
+      "seed_fit": "first 70% chronological January events",
+      "seed_cal": "last 30% chronological January events",
+      "walk_forward": "Feb-Jul expanding window; no within-month updates",
+      "blind_holdout": "August SEALED"
+    },
+    "timezone_session_definitions": {
+      "source": "UTC",
+      "time_of_day": "continuous cyclic predictive features only; no hand-coded session gate"
+    },
+    "execution_cost_assumptions": {
+      "labels": "actual BETA076 900s executable Bid/Ask PnL",
+      "commission_roundtrip_usd": 0.02
+    },
+    "runtime_dependencies": [
+      "python>=3.11",
+      "numpy",
+      "pandas",
+      "lightgbm",
+      "scikit-learn"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "BETA076 per-event executable surface",
+      "path": "BETA_076_EXEC_<month>.csv.gz"
+    },
+    {
+      "role": "BETA076 frozen setup",
+      "path": "research/BETA_076_M5_FIRST_RETEST_900S_JANJUL_ROBUSTNESS_PREREGISTRATION.md"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "research/results/BETA_077_FORWARD_CANDIDATES.npz"
+    ],
+    "predictions": [
+      "research/results/BETA_077_MONTHLY_PREDICTIONS.npz"
+    ],
+    "selected_owned_ledger": [
+      "research/results/BETA_077_WALK_FORWARD_LEDGER.csv.gz"
+    ],
+    "caches": [
+      "research/results/BETA_077_FEATURE_SCHEMA.json"
+    ]
+  },
+  "models": [
+    "research/artifacts/BETA_077_FROZEN_CONFIG.json"
+  ],
+  "outputs": [
+    "research/checkpoints/BETA_077_RESULTS.json",
+    "research/BETA_077_EXPANDING_WINDOW_STRUCTURAL_META_ROUTER_REPORT.md",
+    "research/human_qa/BETA_077_HUMAN_QA_REVIEW_PACKET.md"
+  ],
+  "qa": [
+    "research/qa/BETA_077_EXPANDING_WINDOW_STRUCTURAL_META_ROUTER_QA.py",
+    "research/checkpoints/BETA_077_QA.json"
+  ],
+  "reconstruction": {
+    "entry_point": "research/experiments/BETA_077_EXPANDING_WINDOW_STRUCTURAL_META_ROUTER.py",
+    "command": "python research/experiments/BETA_077_EXPANDING_WINDOW_STRUCTURAL_META_ROUTER.py --beta076-dir <DIR> --out-dir <OUT>",
+    "required_artifact_order": [
+      "BETA076 executable surfaces",
+      "source",
+      "January frozen config",
+      "monthly predictions",
+      "walk-forward ledger",
+      "results",
+      "QA",
+      "human QA packet"
+    ],
+    "expected_fingerprints": {},
+    "timing_semantics": "January determines model family/decision threshold. For each later month, model fit contains only completed labels from prior months. Predictions are fixed for the month before any current-month label is added.",
+    "notes": "Historical walk-forward robustness, not pristine OOS; feature family is generic causal state, not hard session optimization."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "BETA076 event state at entry",
+    "state_machine_spec": "BETA076 primary setup -> frozen monthly meta gate -> 900s hold",
+    "model_inference_spec": "expanding-window LightGBM research model; exact export required if it survives",
+    "execution_quote_side_spec": "actual Bid/Ask inherited from BETA076",
+    "ownership_scheduler_spec": "chronological one-position per forward month, continuous across month boundary",
+    "session_dst_spec": "UTC continuous time features",
+    "risk_spec": "BETA015 required before MT5 owner review",
+    "parity_fixtures": []
+  },
+  "supersedes": [],
+  "rollback_target": "BETA_076_M5_FIRST_RETEST_900S_JANJUL_ROBUSTNESS",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
