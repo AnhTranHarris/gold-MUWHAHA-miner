@@ -201,6 +201,14 @@ Use the cheapest sufficient evidence first:
 
 Do not repeatedly load or rebuild heavy canonical corpora that are already validated.
 
+## 11A. Staged research-speed contract
+
+`research/delta/governance/DELTA_GOV_003_RESEARCH_SPEED_STAGE_GATE_CONTRACT.md` is mandatory.
+
+New candidates are screened first on the owner's first 2.5 weeks of January. Only candidates that satisfy the separately frozen owner acceptance requirements advance into January-through-July research.
+
+January-through-July replay is split into independent monthly jobs with durable checkpoints to control runtime/memory pressure and support resume-from-first-incomplete-month recovery. Behavior-changing refinements create new candidate versions; completed monthly results are immutable evidence.
+
 ## 12. Community-source rule
 
 A complex strategy/indicator from public community research may enter DELTA only if its logic is sufficiently disclosed to reconstruct a faithful causal test. Opaque/non-reconstructible systems are not candidates.
