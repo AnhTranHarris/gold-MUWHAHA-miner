@@ -1,0 +1,36 @@
+name: BETA rebuild artifact gate
+
+on:
+  push:
+    branches:
+      - beta
+    paths:
+      - "CURRENT_STATE.json"
+      - "research/governance/**"
+      - "research/artifacts/**REBUILD_MANIFEST*.json"
+      - "research/qa/BETA_GOV_001_REBUILD_MANIFEST_GATE.py"
+      - ".github/workflows/beta-rebuild-artifact-gate.yml"
+  pull_request:
+    branches:
+      - beta
+    paths:
+      - "CURRENT_STATE.json"
+      - "research/governance/**"
+      - "research/artifacts/**REBUILD_MANIFEST*.json"
+      - "research/qa/BETA_GOV_001_REBUILD_MANIFEST_GATE.py"
+      - ".github/workflows/beta-rebuild-artifact-gate.yml"
+
+jobs:
+  rebuild-artifact-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Enforce BETA GOV-001 rebuild durability
+        run: python research/qa/BETA_GOV_001_REBUILD_MANIFEST_GATE.py
