@@ -1,91 +1,538 @@
 {
   "all_pass": true,
-  "assertions": 80,
+  "assertions": 102,
   "august": "SEALED_NOT_READ",
+  "case_counts": {
+    "ADMITTED": 29,
+    "REJECT_MATURITY": 7,
+    "REJECT_OWNERSHIP": 14
+  },
   "checks": [
-    {"detail":"","name":"selected_policy_identity","pass":true},
-    {"detail":"420","name":"trade_count_420","pass":true},
-    {"detail":"","name":"qa_ids_sequential","pass":true},
-    {"detail":"","name":"all_M5","pass":true},
-    {"detail":"","name":"maturity_7_9","pass":true},
-    {"detail":"","name":"valid_retest_age","pass":true},
-    {"detail":"","name":"valid_tolerance","pass":true},
-    {"detail":"","name":"strict_entry_after_event","pass":true},
-    {"detail":"","name":"selected_pnl_identity","pass":true},
-    {"detail":"","name":"selected_hold_not_early","pass":true},
-    {"detail":"","name":"no_position_overlap","pass":true},
-    {"detail":"","name":"months_only_jan_jul","pass":true},
-    {"detail":"4.551914400963142e-13","name":"quote_side_pnl_exact","pass":true},
-    {"detail":"420 vs 420","name":"aggregate_trades","pass":true},
-    {"detail":"204 vs 204","name":"aggregate_wins","pass":true},
-    {"detail":"509.20699999999783 vs 509.20699999999783","name":"aggregate_net","pass":true},
-    {"detail":"1963.983000000002 vs 1963.9830000000022","name":"aggregate_gp","pass":true},
-    {"detail":"-1454.776000000004 vs -1454.776000000004","name":"aggregate_gl","pass":true},
-    {"detail":"1.3500243336431152 vs 1.3500243336431155","name":"aggregate_pf","pass":true},
-    {"detail":"1.2123976190476138 vs 1.2123976190476138","name":"aggregate_avg","pass":true},
-    {"detail":"99.70300000000313 vs 99.70300000000314","name":"aggregate_max_dd","pass":true},
-    {"detail":"61 vs 61","name":"month_2026-01_trades","pass":true},
-    {"detail":"111.46499999999767 vs 111.46499999999767","name":"month_2026-01_net","pass":true},
-    {"detail":"1.4595244180965041 vs 1.4595244180965041","name":"month_2026-01_pf","pass":true},
-    {"detail":"1.827295081967175 vs 1.827295081967175","name":"month_2026-01_avg","pass":true},
-    {"detail":"55 vs 55","name":"month_2026-02_trades","pass":true},
-    {"detail":"177.1959999999984 vs 177.1959999999984","name":"month_2026-02_net","pass":true},
-    {"detail":"1.8208496819830449 vs 1.8208496819830449","name":"month_2026-02_pf","pass":true},
-    {"detail":"3.2217454545454256 vs 3.2217454545454256","name":"month_2026-02_avg","pass":true},
-    {"detail":"69 vs 69","name":"month_2026-03_trades","pass":true},
-    {"detail":"114.44499999999985 vs 114.44499999999985","name":"month_2026-03_net","pass":true},
-    {"detail":"1.4300713622715682 vs 1.4300713622715682","name":"month_2026-03_pf","pass":true},
-    {"detail":"1.658623188405795 vs 1.658623188405795","name":"month_2026-03_avg","pass":true},
-    {"detail":"53 vs 53","name":"month_2026-04_trades","pass":true},
-    {"detail":"81.04000000000042 vs 81.04000000000045","name":"month_2026-04_net","pass":true},
-    {"detail":"1.4653994142307425 vs 1.4653994142307425","name":"month_2026-04_pf","pass":true},
-    {"detail":"1.5290566037735929 vs 1.5290566037735933","name":"month_2026-04_avg","pass":true},
-    {"detail":"66 vs 66","name":"month_2026-05_trades","pass":true},
-    {"detail":"-12.657000000002242 vs -12.657000000002249","name":"month_2026-05_net","pass":true},
-    {"detail":"0.9384285339015098 vs 0.9384285339015098","name":"month_2026-05_pf","pass":true},
-    {"detail":"-0.19177272727276123 vs -0.19177272727276135","name":"month_2026-05_avg","pass":true},
-    {"detail":"46 vs 46","name":"month_2026-06_trades","pass":true},
-    {"detail":"54.79799999999895 vs 54.79799999999895","name":"month_2026-06_net","pass":true},
-    {"detail":"1.30966670057301 vs 1.30966670057301","name":"month_2026-06_pf","pass":true},
-    {"detail":"1.1912608695651945 vs 1.1912608695651945","name":"month_2026-06_avg","pass":true},
-    {"detail":"70 vs 70","name":"month_2026-07_trades","pass":true},
-    {"detail":"-17.07999999999526 vs -17.07999999999526","name":"month_2026-07_net","pass":true},
-    {"detail":"0.9016015670008323 vs 0.9016015670008323","name":"month_2026-07_pf","pass":true},
-    {"detail":"-0.24399999999993227 vs -0.24399999999993227","name":"month_2026-07_avg","pass":true},
-    {"detail":"","name":"2026-01_entry_first_later_tick","pass":true},
-    {"detail":"","name":"2026-01_exit_first_at_after_1800s","pass":true},
-    {"detail":"","name":"2026-01_entry_quotes_source","pass":true},
-    {"detail":"","name":"2026-01_exit_quotes_source","pass":true},
-    {"detail":"","name":"2026-02_entry_first_later_tick","pass":true},
-    {"detail":"","name":"2026-02_exit_first_at_after_1800s","pass":true},
-    {"detail":"","name":"2026-02_entry_quotes_source","pass":true},
-    {"detail":"","name":"2026-02_exit_quotes_source","pass":true},
-    {"detail":"","name":"2026-03_entry_first_later_tick","pass":true},
-    {"detail":"","name":"2026-03_exit_first_at_after_1800s","pass":true},
-    {"detail":"","name":"2026-03_entry_quotes_source","pass":true},
-    {"detail":"","name":"2026-03_exit_quotes_source","pass":true},
-    {"detail":"","name":"2026-04_entry_first_later_tick","pass":true},
-    {"detail":"","name":"2026-04_exit_first_at_after_1800s","pass":true},
-    {"detail":"","name":"2026-04_entry_quotes_source","pass":true},
-    {"detail":"","name":"2026-04_exit_quotes_source","pass":true},
-    {"detail":"","name":"2026-05_entry_first_later_tick","pass":true},
-    {"detail":"","name":"2026-05_exit_first_at_after_1800s","pass":true},
-    {"detail":"","name":"2026-05_entry_quotes_source","pass":true},
-    {"detail":"","name":"2026-05_exit_quotes_source","pass":true},
-    {"detail":"","name":"2026-06_entry_first_later_tick","pass":true},
-    {"detail":"","name":"2026-06_exit_first_at_after_1800s","pass":true},
-    {"detail":"","name":"2026-06_entry_quotes_source","pass":true},
-    {"detail":"","name":"2026-06_exit_quotes_source","pass":true},
-    {"detail":"","name":"2026-07_entry_first_later_tick","pass":true},
-    {"detail":"","name":"2026-07_exit_first_at_after_1800s","pass":true},
-    {"detail":"","name":"2026-07_entry_quotes_source","pass":true},
-    {"detail":"","name":"2026-07_exit_quotes_source","pass":true},
-    {"detail":"","name":"neighbor_AGE_7_9_1200","pass":true},
-    {"detail":"","name":"neighbor_AGE_7_10_1800","pass":true},
-    {"detail":"","name":"neighbor_AGE_8_9_1800","pass":true}
+    {
+      "detail": "",
+      "name": "selected_policy_identity",
+      "pass": true
+    },
+    {
+      "detail": "420",
+      "name": "trade_count_420",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "qa_ids_sequential",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "all_M5",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "maturity_7_9",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "valid_retest_age",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "valid_tolerance",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "strict_entry_after_event",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "selected_pnl_identity",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "selected_hold_not_early",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "no_position_overlap",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "months_only_jan_jul",
+      "pass": true
+    },
+    {
+      "detail": "420/420",
+      "name": "selected_events_exist_in_causal_event_ledger",
+      "pass": true
+    },
+    {
+      "detail": "420 vs 420",
+      "name": "aggregate_trades",
+      "pass": true
+    },
+    {
+      "detail": "203 vs 203",
+      "name": "aggregate_wins",
+      "pass": true
+    },
+    {
+      "detail": "509.2069999999969 vs 509.2069999999969",
+      "name": "aggregate_net",
+      "pass": true
+    },
+    {
+      "detail": "1963.9830000000022 vs 1963.9830000000022",
+      "name": "aggregate_gp",
+      "pass": true
+    },
+    {
+      "detail": "-1454.7760000000048 vs -1454.7760000000048",
+      "name": "aggregate_gl",
+      "pass": true
+    },
+    {
+      "detail": "1.3500243336431146 vs 1.3500243336431146",
+      "name": "aggregate_pf",
+      "pass": true
+    },
+    {
+      "detail": "1.2123976190476118 vs 1.2123976190476118",
+      "name": "aggregate_avg",
+      "pass": true
+    },
+    {
+      "detail": "99.70300000000314 vs 99.70300000000314",
+      "name": "aggregate_max_dd",
+      "pass": true
+    },
+    {
+      "detail": "1",
+      "name": "one_flat_trade",
+      "pass": true
+    },
+    {
+      "detail": "61 vs 61",
+      "name": "month_2026-01_trades",
+      "pass": true
+    },
+    {
+      "detail": "27 vs 27",
+      "name": "month_2026-01_wins",
+      "pass": true
+    },
+    {
+      "detail": "111.46499999999767 vs 111.46499999999767",
+      "name": "month_2026-01_net",
+      "pass": true
+    },
+    {
+      "detail": "1.4595244180965041 vs 1.4595244180965041",
+      "name": "month_2026-01_pf",
+      "pass": true
+    },
+    {
+      "detail": "1.827295081967175 vs 1.827295081967175",
+      "name": "month_2026-01_avg",
+      "pass": true
+    },
+    {
+      "detail": "55 vs 55",
+      "name": "month_2026-02_trades",
+      "pass": true
+    },
+    {
+      "detail": "28 vs 28",
+      "name": "month_2026-02_wins",
+      "pass": true
+    },
+    {
+      "detail": "177.1959999999984 vs 177.1959999999984",
+      "name": "month_2026-02_net",
+      "pass": true
+    },
+    {
+      "detail": "1.8208496819830449 vs 1.8208496819830449",
+      "name": "month_2026-02_pf",
+      "pass": true
+    },
+    {
+      "detail": "3.2217454545454256 vs 3.2217454545454256",
+      "name": "month_2026-02_avg",
+      "pass": true
+    },
+    {
+      "detail": "69 vs 69",
+      "name": "month_2026-03_trades",
+      "pass": true
+    },
+    {
+      "detail": "38 vs 38",
+      "name": "month_2026-03_wins",
+      "pass": true
+    },
+    {
+      "detail": "114.44499999999985 vs 114.44499999999987",
+      "name": "month_2026-03_net",
+      "pass": true
+    },
+    {
+      "detail": "1.4300713622715682 vs 1.4300713622715682",
+      "name": "month_2026-03_pf",
+      "pass": true
+    },
+    {
+      "detail": "1.658623188405795 vs 1.6586231884057951",
+      "name": "month_2026-03_avg",
+      "pass": true
+    },
+    {
+      "detail": "53 vs 53",
+      "name": "month_2026-04_trades",
+      "pass": true
+    },
+    {
+      "detail": "27 vs 27",
+      "name": "month_2026-04_wins",
+      "pass": true
+    },
+    {
+      "detail": "81.04000000000045 vs 81.04000000000045",
+      "name": "month_2026-04_net",
+      "pass": true
+    },
+    {
+      "detail": "1.4653994142307425 vs 1.4653994142307425",
+      "name": "month_2026-04_pf",
+      "pass": true
+    },
+    {
+      "detail": "1.5290566037735933 vs 1.5290566037735933",
+      "name": "month_2026-04_avg",
+      "pass": true
+    },
+    {
+      "detail": "66 vs 66",
+      "name": "month_2026-05_trades",
+      "pass": true
+    },
+    {
+      "detail": "26 vs 26",
+      "name": "month_2026-05_wins",
+      "pass": true
+    },
+    {
+      "detail": "-12.657000000002249 vs -12.657000000002249",
+      "name": "month_2026-05_net",
+      "pass": true
+    },
+    {
+      "detail": "0.9384285339015098 vs 0.9384285339015098",
+      "name": "month_2026-05_pf",
+      "pass": true
+    },
+    {
+      "detail": "-0.19177272727276135 vs -0.19177272727276135",
+      "name": "month_2026-05_avg",
+      "pass": true
+    },
+    {
+      "detail": "46 vs 46",
+      "name": "month_2026-06_trades",
+      "pass": true
+    },
+    {
+      "detail": "25 vs 25",
+      "name": "month_2026-06_wins",
+      "pass": true
+    },
+    {
+      "detail": "54.797999999999405 vs 54.797999999999405",
+      "name": "month_2026-06_net",
+      "pass": true
+    },
+    {
+      "detail": "1.3096667005730134 vs 1.3096667005730134",
+      "name": "month_2026-06_pf",
+      "pass": true
+    },
+    {
+      "detail": "1.1912608695652045 vs 1.1912608695652045",
+      "name": "month_2026-06_avg",
+      "pass": true
+    },
+    {
+      "detail": "70 vs 70",
+      "name": "month_2026-07_trades",
+      "pass": true
+    },
+    {
+      "detail": "32 vs 32",
+      "name": "month_2026-07_wins",
+      "pass": true
+    },
+    {
+      "detail": "-17.079999999996623 vs -17.079999999996616",
+      "name": "month_2026-07_net",
+      "pass": true
+    },
+    {
+      "detail": "0.9016015670008253 vs 0.9016015670008254",
+      "name": "month_2026-07_pf",
+      "pass": true
+    },
+    {
+      "detail": "-0.24399999999995176 vs -0.24399999999995167",
+      "name": "month_2026-07_avg",
+      "pass": true
+    },
+    {
+      "detail": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "name": "2026-01_source_sha",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-01_entry_first_later_tick",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-01_exit_first_at_after_1800s",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-01_entry_quotes_source",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-01_exit_quotes_source",
+      "pass": true
+    },
+    {
+      "detail": "8.730793865652231e-13",
+      "name": "2026-01_integer_mill_pnl",
+      "pass": true
+    },
+    {
+      "detail": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+      "name": "2026-02_source_sha",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-02_entry_first_later_tick",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-02_exit_first_at_after_1800s",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-02_entry_quotes_source",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-02_exit_quotes_source",
+      "pass": true
+    },
+    {
+      "detail": "8.730793865652231e-13",
+      "name": "2026-02_integer_mill_pnl",
+      "pass": true
+    },
+    {
+      "detail": "814ba35e72f219a58badd806ed5c0f30ef0fb4ffe56a48205d873706513bd177",
+      "name": "2026-03_source_sha",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-03_entry_first_later_tick",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-03_exit_first_at_after_1800s",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-03_entry_quotes_source",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-03_exit_quotes_source",
+      "pass": true
+    },
+    {
+      "detail": "8.730793865652231e-13",
+      "name": "2026-03_integer_mill_pnl",
+      "pass": true
+    },
+    {
+      "detail": "30375098f62aed6cabc32ec6b67c57c20baec9b6d9be1ce0a204e09806c1ec0f",
+      "name": "2026-04_source_sha",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-04_entry_first_later_tick",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-04_exit_first_at_after_1800s",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-04_entry_quotes_source",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-04_exit_quotes_source",
+      "pass": true
+    },
+    {
+      "detail": "8.730793865652231e-13",
+      "name": "2026-04_integer_mill_pnl",
+      "pass": true
+    },
+    {
+      "detail": "3a50e0f1eba3076154238290ec02842cf3744ab192e5c9a2acc1cc07367c6a0d",
+      "name": "2026-05_source_sha",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-05_entry_first_later_tick",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-05_exit_first_at_after_1800s",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-05_entry_quotes_source",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-05_exit_quotes_source",
+      "pass": true
+    },
+    {
+      "detail": "8.730793865652231e-13",
+      "name": "2026-05_integer_mill_pnl",
+      "pass": true
+    },
+    {
+      "detail": "34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2",
+      "name": "2026-06_source_sha",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-06_entry_first_later_tick",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-06_exit_first_at_after_1800s",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-06_entry_quotes_source",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-06_exit_quotes_source",
+      "pass": true
+    },
+    {
+      "detail": "8.730793865652231e-13",
+      "name": "2026-06_integer_mill_pnl",
+      "pass": true
+    },
+    {
+      "detail": "e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7",
+      "name": "2026-07_source_sha",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-07_entry_first_later_tick",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-07_exit_first_at_after_1800s",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-07_entry_quotes_source",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "2026-07_exit_quotes_source",
+      "pass": true
+    },
+    {
+      "detail": "8.730793865652231e-13",
+      "name": "2026-07_integer_mill_pnl",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "neighbor_AGE_7_9_1200",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "neighbor_AGE_7_10_1800",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "neighbor_AGE_8_9_1800",
+      "pass": true
+    }
   ],
+  "exact_flat_trades": 1,
   "failed": 0,
-  "human_qa_cases": 56,
-  "passed": 80,
-  "unit_id": "BETA_078_HUMAN_QA_ENGINEERING_QA"
+  "human_qa_cases": 50,
+  "max_integer_pnl_error_usd": 8.730793865652231e-13,
+  "max_source_quote_error_usd": 9.094947017729282e-13,
+  "passed": 102,
+  "source_sha256": {
+    "2026-01": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "2026-02": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+    "2026-03": "814ba35e72f219a58badd806ed5c0f30ef0fb4ffe56a48205d873706513bd177",
+    "2026-04": "30375098f62aed6cabc32ec6b67c57c20baec9b6d9be1ce0a204e09806c1ec0f",
+    "2026-05": "3a50e0f1eba3076154238290ec02842cf3744ab192e5c9a2acc1cc07367c6a0d",
+    "2026-06": "34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2",
+    "2026-07": "e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7"
+  },
+  "unit_id": "BETA_078_HUMAN_QA_ENGINEERING_QA_V2"
 }
