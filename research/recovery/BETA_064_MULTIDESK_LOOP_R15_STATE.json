@@ -1,0 +1,42 @@
+{
+  "schema": "beta064-multidesk-recovery-r15-v1",
+  "status": "ACTIVE_RECOVERY_RECOVERY_UNCERTIFIED",
+  "lineage": "BETA_ONLY",
+  "august": "SEALED",
+  "mql5_during_recovery": false,
+  "scope": "E6_E11_PERSISTENCE_DEBOUNCE_FORENSICS",
+  "evidence": {
+    "selected_ledger_rows": 5519,
+    "jan_mar": {
+      "E6": {
+        "selected": 502,
+        "broad_mask_active": 499,
+        "recall": 0.9940239043824701,
+        "edge_fraction_among_active": 0,
+        "persistent_fraction": 1,
+        "distinct_active_runs": 141,
+        "max_selected_per_run": 20,
+        "min_same_run_selected_gap_seconds": 180,
+        "interpretation": "EDGE_ONLY_REJECTED; persistent in-state eligibility required; exact candidate debounce censored by horizon/ownership"
+      },
+      "E11": {
+        "selected": 1263,
+        "broad_mask_active": 1263,
+        "recall": 1,
+        "edge_fraction_among_active": 0.3768804433887569,
+        "persistent_fraction": 0.6231195566112431,
+        "selected_run_age_bars_min": 0,
+        "selected_run_age_bars_max": 9,
+        "distinct_active_runs": 1232,
+        "interpretation": "EDGE_ONLY_REJECTED; persistent in-state eligibility or secondary within-state trigger required"
+      }
+    },
+    "exact_v2_emission_style": "E1/E2/E4 replacements iterate every active mask index via np.flatnonzero(mask), no universal edge/debounce"
+  },
+  "scaffold_change": "E6 and E11 forensic calls set edge_only=False only; recovery status remains uncertified",
+  "certification": {
+    "causal_mt5_entry_parity": "BLOCKED",
+    "historical_left_edge_runtime_allowed": false
+  },
+  "next_action": "Search raw_score/pre-ownership candidate fixtures, then run the same selected-timestamp run-age falsification on E3/E8 and residual E5/E9; historical LEFT-edge remains forensic-only."
+}
