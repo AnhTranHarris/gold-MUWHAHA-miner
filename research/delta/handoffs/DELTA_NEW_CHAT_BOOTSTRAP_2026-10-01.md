@@ -105,6 +105,14 @@ The four protected primary metrics are winning trade count, net profit, gross lo
 
 These thresholds are deliberately human-revisable after actual data review. See `DELTA_GOV_005_PROVISIONAL_CANDIDATE_IMPROVEMENT_GATE.md`.
 
+## Cumulative SYNTH metric locks
+
+When any primary metric reaches at least **87% of the directional performance journey from R9 REAL to R9 SYNTH**, that metric and the exact candidate/version become a protected anchor.
+
+Future research is built on that anchor and targets the remaining unlocked primary metrics. Every descendant must preserve all inherited locked metrics. A locked metric that deteriorates by **5% or more** from its lock value causes `HARD_FAIL_LOCKED_METRIC_PRESERVATION`, even if another metric improves strongly.
+
+Locks accumulate across descendants. If an already locked metric improves further, its anchor may ratchet to the better value; it may not silently move backward. See `DELTA_GOV_006_SYNTH_METRIC_LOCK_AND_CUMULATIVE_RATCHET_CONTRACT.md`.
+
 ## Research objective
 
 Rebuild a high-activity causal Entry+Hold architecture around the R9 evidence base while preserving real chronology, causal execution, and trade velocity.
