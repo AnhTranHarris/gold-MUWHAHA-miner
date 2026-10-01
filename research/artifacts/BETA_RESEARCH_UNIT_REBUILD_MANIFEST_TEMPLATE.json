@@ -1,0 +1,66 @@
+{
+  "schema": "beta-research-unit-rebuild-manifest-v1",
+  "unit_id": "REQUIRED",
+  "status": "PLANNED",
+  "date_utc": "REQUIRED",
+  "lineage": "INDEPENDENT_BETA",
+  "parent_checkpoint": "REQUIRED_OR_NULL",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "FILL_BEFORE_VERIFIED_DURABLE"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "source_code": [],
+  "helpers": [],
+  "config": {
+    "parameters": {},
+    "feature_order": [],
+    "horizons_checkpoints": {},
+    "train_cal_eval_boundaries": {},
+    "timezone_session_definitions": {},
+    "execution_cost_assumptions": {},
+    "runtime_dependencies": []
+  },
+  "inputs": [],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "outputs": [],
+  "qa": [],
+  "reconstruction": {
+    "entry_point": "",
+    "command": "",
+    "required_artifact_order": [],
+    "expected_fingerprints": {},
+    "timing_semantics": "",
+    "notes": ""
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "",
+    "state_machine_spec": "",
+    "model_inference_spec": "",
+    "execution_quote_side_spec": "",
+    "ownership_scheduler_spec": "",
+    "session_dst_spec": "",
+    "risk_spec": "",
+    "parity_fixtures": []
+  },
+  "supersedes": [],
+  "rollback_target": "",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
