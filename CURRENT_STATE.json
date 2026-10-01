@@ -29,7 +29,8 @@
     "workflow": ".github/workflows/delta-rebuild-artifact-gate.yml",
     "status": "MANDATORY_ACTIVE",
     "clean_room_lock": "research/delta/governance/DELTA_CLEAN_ROOM_LOCK.md",
-    "nested_timeframe_contract": "research/delta/governance/DELTA_GOV_002_TICK_ROOTED_NESTED_TIMEFRAME_CONTRACT.md"
+    "nested_timeframe_contract": "research/delta/governance/DELTA_GOV_002_TICK_ROOTED_NESTED_TIMEFRAME_CONTRACT.md",
+    "research_speed_contract": "research/delta/governance/DELTA_GOV_003_RESEARCH_SPEED_STAGE_GATE_CONTRACT.md"
   },
   "drive": {
     "delta_research_folder_id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel",
@@ -84,7 +85,15 @@
       "D1"
     ],
     "completed_bar_visible_at_right_edge_only": true,
-    "tick_to_candle_python_mt5_parity_required": true
+    "tick_to_candle_python_mt5_parity_required": true,
+    "january_filter_first_2_5_weeks": true,
+    "january_filter_exact_end_boundary": "PENDING_OWNER_GOALS",
+    "january_filter_required_before_jan_jul": true,
+    "jan_jul_month_by_month_bounded_jobs": true,
+    "resume_first_incomplete_month": true,
+    "behavior_change_requires_new_candidate_version": true,
+    "completed_month_results_immutable": true,
+    "final_stable_candidate_replayed_month_by_month_jan_jul": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
