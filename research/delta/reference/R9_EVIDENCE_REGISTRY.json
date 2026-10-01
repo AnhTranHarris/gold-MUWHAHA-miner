@@ -1,0 +1,75 @@
+{
+  "schema": "delta-r9-evidence-registry-v1",
+  "date_utc": "2026-10-01",
+  "policy": "Reference assets accelerate DELTA research; roles are fixed and do not imply profitability.",
+  "r9_mt5": {
+    "hybridgate": {
+      "path": "Experts/GoldMuwahahaMiner_R9_HybridGate.mq5",
+      "source_branch": "carson/r9-tick-logger",
+      "source_blob_sha": "7eecb5f1947017a01ce85b2520725de54749e523",
+      "version": "1.90",
+      "role": "engineering baseline"
+    },
+    "ticklogger": {
+      "path": "Experts/GoldMuwahahaMiner_R9_TickLogger.mq5",
+      "source_branch": "carson/r9-tick-logger",
+      "source_blob_sha": "5c7655cd3357f9126e8bffd97c34374dfb29f83e",
+      "version": "1.92",
+      "role": "instrumented baseline"
+    }
+  },
+  "drive": {
+    "delta_research_folder": {
+      "id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel",
+      "url": "https://drive.google.com/drive/folders/1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel"
+    },
+    "r9_real_tick_package": {
+      "folder_id": "1YJ_wphW6h0ysG5o_-jiDtfb6eWSzvh1u",
+      "index_id": "1tkXe4vjSqI5yB1_5gGp7QVDuMdND-AGzCmoUrBZQGlg",
+      "daily_manifest_id": "1hUH0X600m7V3Nz4gBdT2gw3wAClXnmQx",
+      "event_index_id": "1CGwnKCF5gzDUfrb7OZAoqhNwsgY1mwF5",
+      "validation_id": "1LRJ141xhCNS9AiSp173XqrfqheTbpp13",
+      "role": "execution/path benchmark"
+    },
+    "r9_synth_tick_package": {
+      "folder_id": "1c32BUrqSZpZ1lYTfHGAPbCBE-2419I0x",
+      "index_id": "1VIx7mDN-sHBj2kQ5-JueV4V-sIHnFhPadOYClgLG_I8",
+      "daily_manifest_id": "1R4Zq95lE6JM9FvePWCRrkzCThaOzW8qJ",
+      "event_index_id": "1BCXyU6cu_wOnwmGlthgPLquwKRLKOkJI",
+      "validation_id": "1G3rSMuqdsusbYHjBcmA8G2rwbikL3nyT",
+      "role": "teacher/north-star only"
+    },
+    "paired_research": {
+      "folder_id": "1ES78vXb2mFsOsa50BiwCLsT6BXgLe-Oe",
+      "role": "validated REAL/SYNTH paired teacher/causal feature research"
+    },
+    "reports": {
+      "real": {
+        "id": "1XofN5m44GU4RgfrjhGHZoK1uaQpGRJgq",
+        "name": "ReportTester-871471_jan2026_jul2026_R9_ticklog_real.xlsx",
+        "role": "broker-native Every Tick Based on Real Ticks benchmark"
+      },
+      "synth": {
+        "id": "18FRnz7k__Pu5C0LOHMdEFXEz5Ln_bMMG",
+        "name": "ReportTester-871471_jan2026_jul2026_R9_ticklog_synth.xlsx",
+        "role": "SYNTH benchmark"
+      }
+    },
+    "overfit_reference": {
+      "id": "18Ru-eSQ0ofNM2EvvSp5kaenZEML3KC5GRk8KrAN_SWs",
+      "name": "R9 REAL→SYNTH Monthly Overfit Reference — Tick-Level Teacher Benchmark",
+      "role": "QUARANTINED hypothesis/capacity source only"
+    },
+    "master_protocol": {
+      "id": "1ycB5bQ3P24w7BZz54RwgJbc5CX5aRcqgr0KiI0Iidkw",
+      "role": "project-wide tick-first handoff/research protocol"
+    }
+  },
+  "roles": {
+    "R9_REAL": "execution-failure benchmark; not positive edge",
+    "R9_SYNTH": "teacher/north-star only; not execution truth",
+    "R9_OVERFIT_ORACLE": "quarantined labels/capacity/hypothesis only; never inference",
+    "DUKASCOPY_JAN_JUL": "causal replay/robustness research; historically inspected",
+    "AUGUST_2026": "sealed blind holdout"
+  }
+}
