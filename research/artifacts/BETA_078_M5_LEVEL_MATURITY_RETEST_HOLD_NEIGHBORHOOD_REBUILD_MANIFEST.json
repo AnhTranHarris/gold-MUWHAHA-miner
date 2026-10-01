@@ -1,0 +1,161 @@
+{
+  "schema": "beta-research-unit-rebuild-manifest-v1",
+  "unit_id": "BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD",
+  "status": "PLANNED",
+  "date_utc": "2026-10-01",
+  "lineage": "INDEPENDENT_BETA",
+  "parent_checkpoint": "BETA_076_M5_FIRST_RETEST_900S_JANJUL_ROBUSTNESS",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "producing source",
+    "multi-horizon executable surface",
+    "CAL/Jan-Jul neighborhood table",
+    "frozen research QA candidate if any",
+    "selected ledger",
+    "QA",
+    "human QA packet",
+    "report/hashes/readback"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "source_code": [
+    "research/experiments/BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD.py"
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "primary_setup": "BETA076 M5 FIRST_RETEST",
+      "level_maturity_windows_m5_bars": [
+        [
+          7,
+          9
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          8,
+          9
+        ]
+      ],
+      "hold_seconds": [
+        600,
+        900,
+        1200,
+        1800
+      ],
+      "selection_scope": "Jan-Jul historical research neighborhood; explicitly nonblind",
+      "minimum_trades": 200,
+      "minimum_positive_months": 4,
+      "neighbor_rule": "selected cell must have at least one adjacent maturity window or adjacent hold with positive net/PF>1 and >=150 trades",
+      "one_position": true,
+      "fee_roundtrip_usd": 0.02
+    },
+    "feature_order": [
+      "confirmed M5 level age at break",
+      "side",
+      "first causal retest identity",
+      "entry quote/time"
+    ],
+    "horizons_checkpoints": {
+      "hold_seconds": [
+        600,
+        900,
+        1200,
+        1800
+      ]
+    },
+    "train_cal_eval_boundaries": {
+      "research": "Jan-Jul historically inspected; no pristine OOS claim",
+      "blind_holdout": "August SEALED"
+    },
+    "timezone_session_definitions": {
+      "source": "UTC",
+      "no_session_filter": true
+    },
+    "execution_cost_assumptions": {
+      "entry": "BETA076 first executable tick after causal retest",
+      "exit": "opposite executable quote at first tick at/after fixed hold",
+      "commission_roundtrip_usd": 0.02
+    },
+    "runtime_dependencies": [
+      "python>=3.11",
+      "numpy",
+      "pandas"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "BETA076 causal event ledger",
+      "path": "BETA_076_M5_FIRST_RETEST_EVENTS.csv.gz"
+    },
+    {
+      "role": "Jan-Jul source files",
+      "sha256": "as recorded in BETA076 manifest"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "inherited BETA076 M5 first-retest events"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "research/results/BETA_078_SELECTED_LEDGER.csv.gz"
+    ],
+    "caches": [
+      "research/results/BETA_078_MULTI_HORIZON_EXECUTION.npz"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    "research/checkpoints/BETA_078_RESULTS.json",
+    "research/BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD_REPORT.md",
+    "research/human_qa/BETA_078_HUMAN_QA_REVIEW_PACKET.md"
+  ],
+  "qa": [
+    "research/qa/BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD_QA.py",
+    "research/checkpoints/BETA_078_QA.json"
+  ],
+  "reconstruction": {
+    "entry_point": "research/experiments/BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD.py",
+    "command": "python research/experiments/BETA_078_M5_LEVEL_MATURITY_RETEST_HOLD_NEIGHBORHOOD.py --beta076-dir <DIR> --data-dir <DIR> --out-dir <OUT>",
+    "required_artifact_order": [
+      "BETA076 events",
+      "Jan-Jul source",
+      "source",
+      "multi-horizon execution",
+      "neighborhood table",
+      "selected ledger",
+      "results",
+      "QA",
+      "human QA packet"
+    ],
+    "expected_fingerprints": {},
+    "timing_semantics": "M5 level age is known at the causal break; retest entry timing is unchanged. Hold selection is historical research only. August is not read.",
+    "notes": "The 7-9 maturity hypothesis was discovered diagnostically on Jan-Jul and is not independent evidence. This unit asks only whether the nearby maturity/hold surface is structurally stable enough to justify human QA before a sealed holdout."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "BETA076 RIGHT-edge structure timing",
+    "state_machine_spec": "confirmed M5 level -> causal break -> first retest -> maturity admission -> fixed hold",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "actual Bid/Ask",
+    "ownership_scheduler_spec": "chronological one-position",
+    "session_dst_spec": "UTC",
+    "risk_spec": "BETA015 required before owner MT5 review",
+    "parity_fixtures": []
+  },
+  "supersedes": [],
+  "rollback_target": "BETA_076_M5_FIRST_RETEST_900S_JANJUL_ROBUSTNESS",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
