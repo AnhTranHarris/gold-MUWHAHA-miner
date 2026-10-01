@@ -32,7 +32,8 @@
     "nested_timeframe_contract": "research/delta/governance/DELTA_GOV_002_TICK_ROOTED_NESTED_TIMEFRAME_CONTRACT.md",
     "research_speed_contract": "research/delta/governance/DELTA_GOV_003_RESEARCH_SPEED_STAGE_GATE_CONTRACT.md",
     "benchmark_goal_contract": "research/delta/governance/DELTA_GOV_004_BENCHMARK_ROLES_AND_HUMAN_GOAL_METRICS_CONTRACT.md",
-    "candidate_improvement_gate": "research/delta/governance/DELTA_GOV_005_PROVISIONAL_CANDIDATE_IMPROVEMENT_GATE.md"
+    "candidate_improvement_gate": "research/delta/governance/DELTA_GOV_005_PROVISIONAL_CANDIDATE_IMPROVEMENT_GATE.md",
+    "synth_metric_lock_contract": "research/delta/governance/DELTA_GOV_006_SYNTH_METRIC_LOCK_AND_CUMULATIVE_RATCHET_CONTRACT.md"
   },
   "drive": {
     "delta_research_folder_id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel",
@@ -123,7 +124,16 @@
     "hard_floor_applies_to_all_supported_primary_metrics": true,
     "hard_floor_overrides_target_gain": true,
     "warning_requires_investigation_not_automatic_fail": true,
-    "candidate_gate_human_revisable": true
+    "candidate_gate_human_revisable": true,
+    "synth_metric_lock_threshold_pct": 87,
+    "synth_metric_lock_measure": "DIRECTIONAL_PROGRESS_FROM_R9_REAL_TO_R9_SYNTH",
+    "locked_metric_max_deterioration_pct": 5,
+    "locked_metric_deterioration_at_or_above_5_is_hard_fail": true,
+    "locked_metric_candidate_anchor_required": true,
+    "metric_locks_accumulate": true,
+    "metric_locks_ratchet_only_better": true,
+    "future_research_targets_remaining_unlocked_metrics": true,
+    "locked_metric_rule_human_revisable": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
