@@ -134,6 +134,14 @@ Within the active development corpus, DELTA may run as many bounded iterations a
 
 The objective is not to minimize the number of experiments. The objective is to reach a robust candidate efficiently while retaining enough durable evidence to distinguish genuine improvement from overfit or bookkeeping artifacts.
 
+## 7B. Creative escalation for insufficient progress
+
+`research/delta/governance/DELTA_GOV_007_CREATIVE_REFINEMENT_ESCALATION_AND_DUKASCOPY_PLAYGROUND.md` is mandatory during iterative candidate development.
+
+If a target metric remains below goal and a child/refinement adds less than 10 percentage points of directional SYNTH-gap closure versus its parent, mark `CREATIVE_ESCALATION_REQUIRED` and broaden the next search beyond minor local tuning.
+
+The Python environment may repeatedly test materially different structures/configurations as bounded, versioned experiments. Once data access is authorized, Dukascopy tick replay is the primary experimental playground for this work.
+
 ## 8. Frozen-candidate full-window comparison
 
 When a candidate becomes sufficiently stable for promotion review, DELTA should run that frozen candidate version across each January-through-July month without behavior changes between months.
