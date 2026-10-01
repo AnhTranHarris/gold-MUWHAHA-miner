@@ -33,7 +33,8 @@
     "research_speed_contract": "research/delta/governance/DELTA_GOV_003_RESEARCH_SPEED_STAGE_GATE_CONTRACT.md",
     "benchmark_goal_contract": "research/delta/governance/DELTA_GOV_004_BENCHMARK_ROLES_AND_HUMAN_GOAL_METRICS_CONTRACT.md",
     "candidate_improvement_gate": "research/delta/governance/DELTA_GOV_005_PROVISIONAL_CANDIDATE_IMPROVEMENT_GATE.md",
-    "synth_metric_lock_contract": "research/delta/governance/DELTA_GOV_006_SYNTH_METRIC_LOCK_AND_CUMULATIVE_RATCHET_CONTRACT.md"
+    "synth_metric_lock_contract": "research/delta/governance/DELTA_GOV_006_SYNTH_METRIC_LOCK_AND_CUMULATIVE_RATCHET_CONTRACT.md",
+    "creative_refinement_contract": "research/delta/governance/DELTA_GOV_007_CREATIVE_REFINEMENT_ESCALATION_AND_DUKASCOPY_PLAYGROUND.md"
   },
   "drive": {
     "delta_research_folder_id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel",
@@ -133,7 +134,16 @@
     "metric_locks_accumulate": true,
     "metric_locks_ratchet_only_better": true,
     "future_research_targets_remaining_unlocked_metrics": true,
-    "locked_metric_rule_human_revisable": true
+    "locked_metric_rule_human_revisable": true,
+    "creative_refinement_authorized": true,
+    "creative_escalation_incremental_synth_progress_pp": 10,
+    "creative_escalation_when_below_goal": true,
+    "dukascopy_tick_python_is_primary_experimental_playground": true,
+    "repeated_bounded_candidate_runs_allowed": true,
+    "multi_configuration_search_allowed": true,
+    "best_configuration_selected_under_all_active_constraints": true,
+    "creative_changes_do_not_override_metric_locks": true,
+    "failed_experiments_preserved": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
