@@ -123,6 +123,18 @@ Once evidence/data loading is authorized, Dukascopy tick-level Python replay is 
 
 Creative authority never overrides causal timing, version traceability, preserved failures, sealed-data rules, or the 5% preservation floor on locked metrics. See `DELTA_GOV_007_CREATIVE_REFINEMENT_ESCALATION_AND_DUKASCOPY_PLAYGROUND.md`.
 
+## Multi-specialist composite architecture assumption
+
+DELTA assumes the eventual system is a team of complementary specialists rather than one universal strategy.
+
+Required session-aware research coverage includes Australia, Asia, Russia, India, Middle East, Europe, UK, and New York. Exact clock boundaries, DST treatment, overlap rules, and transition buffers are not yet frozen and must be defined separately before production/MT5 translation.
+
+A specialist is judged within its declared session/regime/target scope. It may contribute primarily to one or a subset of the primary metrics. The complete composite system—specialists plus causal router/ownership logic—is the object ultimately judged against the full system-wide primary goals.
+
+System-level metric locks attach to the exact accepted composite configuration, not automatically to one specialist. Future specialist changes must preserve inherited composite locks. This makes creative candidate combination a core research mechanism rather than an exception.
+
+See `DELTA_GOV_008_MULTI_SPECIALIST_COMPOSITE_AND_SESSION_AWARE_ASSUMPTION.md`.
+
 ## Research objective
 
 Rebuild a high-activity causal Entry+Hold architecture around the R9 evidence base while preserving real chronology, causal execution, and trade velocity.
