@@ -1,0 +1,55 @@
+{
+  "schema": "beta064-multidesk-recovery-r16-v1",
+  "status": "ACTIVE_RECOVERY_RECOVERY_UNCERTIFIED",
+  "lineage": "BETA_ONLY",
+  "august": "SEALED",
+  "mql5_during_recovery": false,
+  "scope": "E3_E5_E8_E9_CLOCK_FORENSICS",
+  "jan_mar": {
+    "E3_ORB": {
+      "selected": 2,
+      "broad_active": 1,
+      "edge_fraction_among_active": 1,
+      "classification": "UNKNOWN_SPARSE_GATE_MISMATCH",
+      "scaffold_action": "UNCHANGED_EDGE_ONLY_FORENSIC"
+    },
+    "E5_VWAP_RECLAIM": {
+      "selected": 183,
+      "broad_active": 176,
+      "recall": 0.9617486338797814,
+      "edge_fraction_among_active": 1,
+      "classification": "EDGE_BEHAVIOR_STRONGLY_SUPPORTED",
+      "scaffold_action": "KEEP_EDGE_ONLY"
+    },
+    "E8_LEVEL_BOUNCE": {
+      "selected": 5,
+      "broad_active": 5,
+      "recall": 1,
+      "age0": 3,
+      "age1": 2,
+      "classification": "EDGE_NOT_PROVEN_SPARSE_BOUNDARY_UNRESOLVED",
+      "scaffold_action": "UNCHANGED_PENDING_MORE_EVIDENCE"
+    },
+    "E9_LEVEL_BREAK": {
+      "selected": 508,
+      "broad_active": 488,
+      "recall": 0.9606299212598425,
+      "edge_fraction_among_active": 0.7971311475409836,
+      "persistent_fraction": 0.2028688524590164,
+      "selected_run_ages": [
+        0,
+        1,
+        2,
+        3,
+        6
+      ],
+      "classification": "EDGE_ONLY_REJECTED",
+      "scaffold_action": "PERSISTENT_MASK_ROW_FORENSICS_EDGE_ONLY_FALSE"
+    }
+  },
+  "certification": {
+    "causal_mt5_entry_parity": "BLOCKED",
+    "historical_left_edge_runtime_allowed": false
+  },
+  "next_action": "Search remaining BETA archives/revisions for raw_score/pre-ownership candidates; classify any still-needed desks; then build the full LEFT-edge forensic parent stream and localize the 34-row FIT mismatch. New RIGHT-edge retraining required before MT5."
+}
