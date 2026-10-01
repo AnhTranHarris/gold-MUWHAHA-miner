@@ -1,18 +1,27 @@
 #!/usr/bin/env python3
-"""DELTA GOV-001 manifest durability gate."""
+"""DELTA GOV-001 manifest durability and clean-room gate."""
 from __future__ import annotations
-import json, sys
+import json, re, sys
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[3]
 STATE=ROOT/"CURRENT_STATE.json"
 POLICY=ROOT/"research/delta/governance/DELTA_GOV_001_CAUSAL_DURABLE_MT5_RESEARCH_CONTRACT.md"
+LOCK=ROOT/"research/delta/governance/DELTA_CLEAN_ROOM_LOCK.md"
 TEMPLATE=ROOT/"research/delta/artifacts/DELTA_RESEARCH_UNIT_MANIFEST_TEMPLATE.json"
 
 REQ={"schema","unit_id","status","python_rebuild_ready","mt5_translation_ready",
 "missing_required_artifacts","sealed_data_status","trade_count_gate","primary_metrics",
 "source_code","helpers","inputs","intermediate_surfaces","models","outputs","qa",
 "reconstruction","mt5_translation_contract","human_qa","github_commits","drive_artifacts","verification"}
+
+# Encoded legacy-lineage tokens. Keep active DELTA artifacts free of their literal names.
+FORBIDDEN=tuple(bytes(v).decode("ascii") for v in (
+    [97,108,112,104,97],
+    [98,101,116,97],
+    [103,97,109,109,97],
+))
+TEXT_SUFFIXES={".md",".json",".py",".yml",".yaml",".txt",".toml"}
 
 def die(x):
     print("DELTA_GOV_001 FAIL:",x,file=sys.stderr); raise SystemExit(1)
@@ -21,17 +30,35 @@ def load(p):
     try:return json.loads(p.read_text(encoding="utf-8"))
     except Exception as e:die(f"{p}: {e}")
 
+def iter_active_delta_text():
+    yield STATE
+    workflow=ROOT/".github/workflows/delta-rebuild-artifact-gate.yml"
+    if workflow.exists(): yield workflow
+    base=ROOT/"research/delta"
+    for p in sorted(base.rglob("*")):
+        if p.is_file() and p.suffix.lower() in TEXT_SUFFIXES:
+            yield p
+
+def assert_clean_room():
+    for p in iter_active_delta_text():
+        text=p.read_text(encoding="utf-8",errors="strict").lower()
+        for token in FORBIDDEN:
+            if re.search(rf"\b{re.escape(token)}\b",text):
+                die(f"legacy-lineage reference prohibited in active DELTA artifact: {p.relative_to(ROOT)}")
+
 def main():
     if not POLICY.exists(): die("policy missing")
+    if not LOCK.exists(): die("clean-room lock missing")
     if not TEMPLATE.exists(): die("manifest template missing")
+    assert_clean_room()
     s=load(STATE)
     if s.get("schema")!="delta-research-status-v1": die("CURRENT_STATE is not DELTA")
     if s.get("branch")!="delta": die("branch cursor is not delta")
-    if s.get("beta_lineage_status")!="CLOSED_HISTORICAL": die("BETA must remain closed historical")
+    if s.get("research_scope")!="DELTA_ONLY_CLEAN_ROOM": die("clean-room research scope is not active")
     if s.get("august_2026")!="SEALED": die("August must remain SEALED")
     unit=s.get("last_verified_durable_unit")
     if unit=="DELTA_BOOTSTRAP_000":
-        print("DELTA_GOV_001 PASS: bootstrap baseline active; future-unit gate armed."); return
+        print("DELTA_GOV_001 PASS: clean-room bootstrap baseline active; future-unit gate armed."); return
     rel=s.get("active_rebuild_manifest_path")
     if not rel: die("missing active_rebuild_manifest_path")
     m=load(ROOT/rel)
@@ -52,4 +79,5 @@ def main():
     if v.get("github_readback") is not True or v.get("hashes_verified") is not True: die("GitHub/hash verification incomplete")
     if (m.get("drive_artifacts") or []) and v.get("drive_readback") is not True: die("Drive readback required")
     print("DELTA_GOV_001 PASS:",rel)
+
 if __name__=="__main__": main()
