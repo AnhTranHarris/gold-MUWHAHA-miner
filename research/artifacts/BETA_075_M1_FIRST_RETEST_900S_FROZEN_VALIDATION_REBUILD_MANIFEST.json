@@ -1,0 +1,129 @@
+{
+  "schema": "beta-research-unit-rebuild-manifest-v1",
+  "unit_id": "BETA_075_M1_FIRST_RETEST_900S_FROZEN_VALIDATION",
+  "status": "PLANNED",
+  "date_utc": "2026-10-01",
+  "lineage": "INDEPENDENT_BETA",
+  "parent_checkpoint": "BETA_074_STRUCTURAL_RESIDUAL_DURATION_EXTENSION",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "producing source",
+    "frozen candidate spec",
+    "diagnostic ledger",
+    "QA",
+    "human-facing review packet",
+    "report/hashes/readback"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "source_code": [
+    "research/experiments/BETA_075_M1_FIRST_RETEST_900S_FROZEN_VALIDATION.py"
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "mechanism": "FIRST_RETEST",
+      "level_tf": "M1",
+      "hold_seconds": 900,
+      "entry_logic": "exact BETA071 event identity",
+      "selection": "NONE in BETA075; candidate frozen from BETA074 CAL discovery",
+      "fee_roundtrip_usd": 0.02,
+      "one_position": true
+    },
+    "feature_order": [
+      "BETA071 causal event fields only"
+    ],
+    "horizons_checkpoints": {
+      "primary": 900
+    },
+    "train_cal_eval_boundaries": {
+      "discovery": "BETA074 CAL: 51 trades / +26.266 / PF 1.37224",
+      "validation": "BETA071 DIAGNOSTIC Jan11-Jan18 12UTC opened once in BETA075",
+      "august": "SEALED"
+    },
+    "timezone_session_definitions": {
+      "source": "UTC",
+      "hard_session_gate": false
+    },
+    "execution_cost_assumptions": {
+      "entry": "BETA071 actual Bid/Ask",
+      "exit": "opposite executable quote at first tick at/after 900s",
+      "commission_roundtrip_usd": 0.02
+    },
+    "runtime_dependencies": [
+      "python>=3.11",
+      "numpy",
+      "pandas"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "BETA071 event ledger",
+      "path": "BETA_071_STRUCTURAL_EVENT_LEDGER.npz"
+    },
+    {
+      "role": "January source",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "exact BETA071 M1 FIRST_RETEST diagnostic events"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "research/results/BETA_075_DIAGNOSTIC_LEDGER.csv.gz"
+    ],
+    "caches": []
+  },
+  "models": [],
+  "outputs": [
+    "research/checkpoints/BETA_075_RESULTS.json",
+    "research/BETA_075_M1_FIRST_RETEST_900S_FROZEN_VALIDATION_REPORT.md",
+    "research/human_qa/BETA_075_HUMAN_QA_REVIEW_PACKET.md"
+  ],
+  "qa": [
+    "research/qa/BETA_075_M1_FIRST_RETEST_900S_FROZEN_VALIDATION_QA.py",
+    "research/checkpoints/BETA_075_QA.json"
+  ],
+  "reconstruction": {
+    "entry_point": "research/experiments/BETA_075_M1_FIRST_RETEST_900S_FROZEN_VALIDATION.py",
+    "command": "python research/experiments/BETA_075_M1_FIRST_RETEST_900S_FROZEN_VALIDATION.py --beta071-dir <DIR> --source <JAN_GZ> --out-dir <OUT>",
+    "required_artifact_order": [
+      "BETA071 event ledger",
+      "January source",
+      "source",
+      "frozen spec",
+      "diagnostic ledger",
+      "results",
+      "QA",
+      "human QA packet"
+    ],
+    "expected_fingerprints": {},
+    "timing_semantics": "No candidate selection occurs in BETA075. Exact M1 FIRST_RETEST events execute at BETA071 entry ticks and exit at first executable quote at/after 900 seconds. Diagnostic is opened only after this spec is committed.",
+    "notes": "Pass/fail validation unit; no parameter adjustment after diagnostic is observed."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "BETA071 RIGHT-edge causal first-retest event",
+    "state_machine_spec": "confirmed M1 pivot -> break -> first causal retest acceptance -> enter -> 900s hold",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "actual Bid/Ask",
+    "ownership_scheduler_spec": "chronological one-position",
+    "session_dst_spec": "UTC",
+    "risk_spec": "BETA015 required before MT5 review",
+    "parity_fixtures": []
+  },
+  "supersedes": [],
+  "rollback_target": "BETA_074_STRUCTURAL_RESIDUAL_DURATION_EXTENSION",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
