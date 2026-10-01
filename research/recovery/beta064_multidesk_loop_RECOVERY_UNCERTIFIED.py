@@ -19,7 +19,7 @@ import pandas as pd
 
 FIT_END=pd.Timestamp("2026-01-09",tz="UTC")
 CAL_END=pd.Timestamp("2026-01-11",tz="UTC")
-RECOVERY_STATUS="RECOVERY_UNCERTIFIED_R11_UNIVERSAL_EDGE_REJECTED"
+RECOVERY_STATUS="RECOVERY_UNCERTIFIED_R15_E6_E11_PERSISTENT_EMISSION_FORENSICS"
 UNIVERSAL_EDGE_EMISSION_REJECTED=True
 FROZEN_JAN_FIT_ROWS=30579
 
@@ -62,7 +62,7 @@ def candidates_h1(b):
     lo=(b.vwap_z<=-1.0)&(b.eff300<=.50)
     sh=(b.vwap_z>=1.0)&(b.eff300<=.50)
     sc=60+8*b.vwap_z.abs().fillna(0)+5*(1-b.eff300.fillna(1))
-    _emit(rows,b,lo,1,"E6_VALUE_REVERSION",sc,180,20); _emit(rows,b,sh,-1,"E6_VALUE_REVERSION",sc,180,20)
+    _emit(rows,b,lo,1,"E6_VALUE_REVERSION",sc,180,20,edge_only=False); _emit(rows,b,sh,-1,"E6_VALUE_REVERSION",sc,180,20,edge_only=False)
 
     # E7 prior-5m liquidity sweep/reclaim.
     lo=(b.low<b.prior5_lo)&(b.mid>b.prior5_lo)&(b.body>0)
@@ -93,7 +93,7 @@ def candidates_h1(b):
     lo=(b.r15>0)&(b.eff15>=.55)&(b.tick_z>=.50)
     sh=(b.r15<0)&(b.eff15>=.55)&(b.tick_z>=.50)
     sc=72+10*b.eff15.fillna(0)+4*b.tick_z.clip(0,4)
-    _emit(rows,b,lo,1,"E11_KINETIC_IGNITION",sc,45,10); _emit(rows,b,sh,-1,"E11_KINETIC_IGNITION",sc,45,10)
+    _emit(rows,b,lo,1,"E11_KINETIC_IGNITION",sc,45,10,edge_only=False); _emit(rows,b,sh,-1,"E11_KINETIC_IGNITION",sc,45,10,edge_only=False)
 
     # E12 failed expansion / recross.
     ph=b.prior5_hi.shift(1); pl=b.prior5_lo.shift(1)
