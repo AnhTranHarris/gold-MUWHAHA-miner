@@ -64,6 +64,17 @@ All features/signals must be known at decision time.
 
 A causality violation invalidates the affected unit and all descendants.
 
+## 4A. Tick-rooted nested timeframe contract
+
+`research/delta/governance/DELTA_GOV_002_TICK_ROOTED_NESTED_TIMEFRAME_CONTRACT.md` is mandatory for all DELTA market-state construction.
+
+The ordered tick stream is the authoritative chronology. Every supported candle is reconstructed directly from ticks using its own exact boundary rule. The nested timeframe sequence is an analytical hierarchy, not permission to approximate a higher timeframe from an incompatible lower-timeframe partition.
+
+The required hierarchy is:
+`TICKS -> 250ms -> 1s -> 5s -> 15s -> 30s -> 45s -> M1 -> standard MT5 periods through D1`.
+
+Python research and any eventual MT5 EA must share the same timestamp normalization, source ordering, boundary rules, BID/ASK aggregation, empty-interval semantics, and completed-bar visibility. Candle-parity failure blocks promotion.
+
 ## 5. R9 teacher quarantine
 
 R9 SYNTH and OVERFIT/ORACLE may accelerate research by:
