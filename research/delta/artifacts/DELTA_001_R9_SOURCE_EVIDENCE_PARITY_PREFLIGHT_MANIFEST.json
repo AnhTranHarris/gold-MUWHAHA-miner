@@ -1,0 +1,161 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT",
+  "status": "PLANNED",
+  "date_utc": "2026-10-01",
+  "lineage": "DELTA",
+  "parent_checkpoint": "DELTA_BOOTSTRAP_000",
+  "hypothesis": "The authoritative R9 MT5 sources and registered REAL/SYNTH/OVERFIT/Dukascopy evidence surfaces can be independently re-identified, role-checked, and frozen into a complete DELTA source/parity contract without performing strategy optimization.",
+  "falsification_condition": "Any behavior-critical R9 source mismatch, missing or role-ambiguous REAL/SYNTH evidence surface, missing canonical Dukascopy Jan-Jul identity, failure to preserve OVERFIT quarantine, or failed GitHub/Drive readback blocks DELTA science.",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "DELTA_001 producing verification source",
+    "behavior-critical R9 default-input inventory",
+    "REAL/SYNTH/OVERFIT evidence parity report",
+    "Dukascopy Jan-Jul source-identity verification",
+    "frozen DELTA data-wall and metric schema",
+    "DELTA_001 QA result",
+    "GitHub/Drive readback"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "R9 benchmark activity references only; no DELTA strategy trades in preflight",
+    "reference_count": null,
+    "minimum_count": null,
+    "minimum_retention_fraction": null,
+    "owner_numeric_floor_defined": false,
+    "note": "DELTA_001 produces no strategy candidate. It freezes the fields every later unit must use for opportunity/trade-count retention."
+  },
+  "primary_metrics": {
+    "entry_quality": "N/A preflight; schema definition only",
+    "hold_persistence": "N/A preflight; schema definition only",
+    "economics": "N/A preflight; benchmark registration only",
+    "gross_loss_drawdown": "N/A preflight; benchmark registration only",
+    "activity": "Register R9 REAL/SYNTH trade counts and mandatory future opportunity/trade-retention reporting."
+  },
+  "source_code": [
+    "research/delta/experiments/DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT.py"
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "no_strategy_optimization": true,
+      "verify_r9_defaults": true,
+      "verify_drive_assets": true,
+      "verify_github_assets": true,
+      "august_access": false
+    },
+    "feature_order": [],
+    "horizons_checkpoints": {},
+    "train_cal_eval_boundaries": {
+      "jan_jul": "HISTORICALLY_INSPECTED_RESEARCH_ROBUSTNESS_ONLY",
+      "august_2026": "SEALED_BLIND_HOLDOUT"
+    },
+    "timezone_session_definitions": {
+      "source_time_contract": "UTC/as-recorded evidence; exact R9 session/DST defaults inventoried, not altered"
+    },
+    "execution_cost_assumptions": {
+      "purpose": "register benchmark assumptions; do not reinterpret or optimize them in DELTA_001"
+    },
+    "runtime_dependencies": [
+      "python>=3.11"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "R9 MT5 engineering baseline",
+      "path": "Experts/GoldMuwahahaMiner_R9_HybridGate.mq5",
+      "source_blob_sha": "7eecb5f1947017a01ce85b2520725de54749e523"
+    },
+    {
+      "role": "R9 instrumented baseline",
+      "path": "Experts/GoldMuwahahaMiner_R9_TickLogger.mq5",
+      "source_blob_sha": "5c7655cd3357f9126e8bffd97c34374dfb29f83e"
+    },
+    {
+      "role": "R9 evidence registry",
+      "path": "research/delta/reference/R9_EVIDENCE_REGISTRY.json"
+    },
+    {
+      "role": "R9 compact corpus",
+      "path": "research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json"
+    },
+    {
+      "role": "Dukascopy Jan-Jul source manifest",
+      "path": "research/delta/reference/DUKASCOPY_JAN_JUL_SOURCE_MANIFEST.json"
+    },
+    {
+      "role": "DELTA governance",
+      "path": "research/delta/governance/DELTA_GOV_001_CAUSAL_DURABLE_MT5_RESEARCH_CONTRACT.md"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "outputs": [
+    "research/delta/checkpoints/DELTA_001_RESULTS.json",
+    "research/delta/reference/DELTA_001_R9_BEHAVIOR_CRITICAL_DEFAULTS.json",
+    "research/delta/reference/DELTA_001_DATA_WALLS_AND_METRIC_SCHEMA.json",
+    "research/delta/DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT_REPORT.md"
+  ],
+  "qa": [
+    "research/delta/qa/DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT_QA.py",
+    "research/delta/checkpoints/DELTA_001_QA.json"
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT.py",
+    "command": "python research/delta/experiments/DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT.py",
+    "required_artifact_order": [
+      "DELTA GOV-001",
+      "R9 HybridGate source",
+      "R9 TickLogger source",
+      "R9 evidence registry",
+      "R9 reference corpus index",
+      "Dukascopy Jan-Jul manifest",
+      "DELTA_001 producing source",
+      "DELTA_001 outputs",
+      "DELTA_001 QA"
+    ],
+    "expected_fingerprints": {
+      "r9_hybridgate_blob_sha": "7eecb5f1947017a01ce85b2520725de54749e523",
+      "r9_ticklogger_blob_sha": "5c7655cd3357f9126e8bffd97c34374dfb29f83e",
+      "august_state": "SEALED"
+    },
+    "timing_semantics": "No strategy computation. DELTA_001 freezes evidence roles and future as-of timing requirements; no August read is allowed.",
+    "notes": "Preflight must fail closed on source/evidence mismatch. It may not tune or test trading logic."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "Not applicable until a DELTA trading candidate exists; future candidates must use strict as-of/RIGHT-edge timing.",
+    "state_machine_spec": "R9 baseline state machine is inventoried only, not adopted as DELTA edge.",
+    "model_inference_spec": "None.",
+    "execution_quote_side_spec": "Inventory R9 behavior and freeze future parity schema.",
+    "ownership_scheduler_spec": "Inventory R9 behavior and freeze future parity schema.",
+    "session_dst_spec": "Inventory exact R9 defaults/logic and freeze future parity schema.",
+    "risk_spec": "Inventory exact R9 defaults/logic and freeze future parity schema.",
+    "trade_count_parity_spec": "Freeze fields needed to compare Python opportunity/trade counts against MT5 R9/DELTA runs.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_APPLICABLE_PREFLIGHT"
+  },
+  "supersedes": [],
+  "rollback_target": "DELTA_BOOTSTRAP_000",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
