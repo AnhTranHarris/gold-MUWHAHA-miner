@@ -1,0 +1,151 @@
+{
+  "schema": "beta-research-unit-rebuild-manifest-v1",
+  "unit_id": "BETA_068_SEQUENCE_RESOLVED_DIRECTION_FRICTION",
+  "status": "PLANNED",
+  "date_utc": "2026-10-01",
+  "lineage": "INDEPENDENT_BETA",
+  "parent_checkpoint": "BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "producing source",
+    "sequence feature contract",
+    "frozen model/config",
+    "CAL candidates",
+    "predictions",
+    "ledger",
+    "QA",
+    "report/hashes/readback"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "source_code": [
+    "research/experiments/BETA_068_SEQUENCE_RESOLVED_DIRECTION_FRICTION.py"
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "fixed_horizon_seconds": 30,
+      "sequence_250ms_bars": 16,
+      "sequence_1s_bars": 12,
+      "sequence_5s_bars": 6,
+      "sequence_channels": [
+        "mid_return",
+        "quote_pressure",
+        "spread",
+        "log_tick_count"
+      ],
+      "model_family": "LightGBM low-capacity boosted trees",
+      "training_weight": "inverse-sqrt 30s proposal concurrency",
+      "economic_decomposition": "direction/magnitude separate from friction",
+      "min_cal_trades": 50
+    },
+    "feature_order": [
+      "BETA065 causal features",
+      "BETA066 ratios",
+      "declared lag channels oldest-to-newest"
+    ],
+    "horizons_checkpoints": {
+      "primary": 30
+    },
+    "train_cal_eval_boundaries": {
+      "fit": "BETA065 FIT",
+      "cal": "BETA065 CAL",
+      "diagnostic": "BETA065 DIAGNOSTIC locked until freeze"
+    },
+    "timezone_session_definitions": {
+      "source": "UTC",
+      "hard_session_gate": false
+    },
+    "execution_cost_assumptions": {
+      "labels": "BETA065 executable Bid/Ask 30s",
+      "commission_roundtrip_usd_0p01lot": 0.02,
+      "one_position": "exact exit tick"
+    },
+    "runtime_dependencies": [
+      "python>=3.11",
+      "numpy",
+      "pandas",
+      "lightgbm"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "BETA065 proposals",
+      "sha256": "600e3b73d7d053f6ed0785a5dd68aadad72f1e8928054a61b3eb1b2840be8773"
+    },
+    {
+      "role": "BETA065 labels",
+      "sha256": "a4a2b99e4fc91ee863d1cd9dbf51d6a6080369ce0690e78232442f256771933e"
+    },
+    {
+      "role": "January source",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "BETA065 immutable"
+    ],
+    "predictions": [
+      "research/results/BETA_068_POLICY_PREDICTIONS.npz"
+    ],
+    "selected_owned_ledger": [
+      "research/results/BETA_068_SELECTED_LEDGER.csv.gz"
+    ],
+    "caches": [
+      "research/results/BETA_068_SEQUENCE_FEATURE_SCHEMA.json"
+    ]
+  },
+  "models": [
+    "research/artifacts/BETA_068_FROZEN_MODEL.json"
+  ],
+  "outputs": [
+    "research/checkpoints/BETA_068_RESULTS.json",
+    "research/BETA_068_SEQUENCE_RESOLVED_DIRECTION_FRICTION_REPORT.md"
+  ],
+  "qa": [
+    "research/qa/BETA_068_SEQUENCE_RESOLVED_DIRECTION_FRICTION_QA.py",
+    "research/checkpoints/BETA_068_QA.json"
+  ],
+  "reconstruction": {
+    "entry_point": "research/experiments/BETA_068_SEQUENCE_RESOLVED_DIRECTION_FRICTION.py",
+    "command": "python research/experiments/BETA_068_SEQUENCE_RESOLVED_DIRECTION_FRICTION.py --beta065-dir <DIR> --source <JAN_GZ> --out-dir <OUT>",
+    "required_artifact_order": [
+      "BETA065 surfaces",
+      "January source",
+      "source",
+      "sequence schema",
+      "model config",
+      "predictions",
+      "ledger",
+      "results",
+      "QA"
+    ],
+    "expected_fingerprints": {},
+    "timing_semantics": "Every lag comes from a completed RIGHT-edge bar at or before proposal time. No DIAGNOSTIC label/policy evaluation before CAL freeze.",
+    "notes": "Sequence representation is the only material change; BETA065 clocks and 30s execution labels stay fixed."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "RIGHT-edge lag arrays oldest-to-newest",
+    "state_machine_spec": "BETA065 proposal clocks unchanged",
+    "model_inference_spec": "LightGBM research only; later ONNX/MT5 parity required",
+    "execution_quote_side_spec": "BETA065 labels",
+    "ownership_scheduler_spec": "one position exact 30s exit tick",
+    "session_dst_spec": "UTC research",
+    "risk_spec": "BETA015 required",
+    "parity_fixtures": []
+  },
+  "supersedes": [],
+  "rollback_target": "BETA_065_RIGHT_EDGE_CAUSAL_ENTRY_CLOCK_ACTION_VALUE_STAGE1",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
