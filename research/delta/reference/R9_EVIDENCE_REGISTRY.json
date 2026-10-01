@@ -59,10 +59,6 @@
       "id": "18Ru-eSQ0ofNM2EvvSp5kaenZEML3KC5GRk8KrAN_SWs",
       "name": "R9 REAL→SYNTH Monthly Overfit Reference — Tick-Level Teacher Benchmark",
       "role": "QUARANTINED hypothesis/capacity source only"
-    },
-    "master_protocol": {
-      "id": "1ycB5bQ3P24w7BZz54RwgJbc5CX5aRcqgr0KiI0Iidkw",
-      "role": "project-wide tick-first handoff/research protocol"
     }
   },
   "roles": {
@@ -71,5 +67,10 @@
     "R9_OVERFIT_ORACLE": "quarantined labels/capacity/hypothesis only; never inference",
     "DUKASCOPY_JAN_JUL": "causal replay/robustness research; historically inspected",
     "AUGUST_2026": "sealed blind holdout"
+  },
+  "delta_governance": {
+    "clean_room_lock": "research/delta/governance/DELTA_CLEAN_ROOM_LOCK.md",
+    "research_contract": "research/delta/governance/DELTA_GOV_001_CAUSAL_DURABLE_MT5_RESEARCH_CONTRACT.md",
+    "role": "DELTA-only active governance"
   }
 }
