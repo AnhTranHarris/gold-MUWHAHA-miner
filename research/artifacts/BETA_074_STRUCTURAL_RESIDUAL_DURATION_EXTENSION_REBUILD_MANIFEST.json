@@ -1,0 +1,140 @@
+{
+  "schema": "beta-research-unit-rebuild-manifest-v1",
+  "unit_id": "BETA_074_STRUCTURAL_RESIDUAL_DURATION_EXTENSION",
+  "status": "PLANNED",
+  "date_utc": "2026-10-01",
+  "lineage": "INDEPENDENT_BETA",
+  "parent_checkpoint": "BETA_071_STRUCTURAL_ACCEPTANCE_SWEEP_COMPRESSION_CLOCKS",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [
+    "producing source",
+    "CAL table",
+    "frozen policy if any",
+    "selected ledger",
+    "QA",
+    "report/hashes/readback"
+  ],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "source_code": [
+    "research/experiments/BETA_074_STRUCTURAL_RESIDUAL_DURATION_EXTENSION.py"
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "entry_bus": "BETA071 structural events",
+      "mechanism_timeframe_partition": "mechanism x level_tf; no extra technical gate",
+      "fixed_horizons_seconds": [
+        300,
+        600,
+        900,
+        1800
+      ],
+      "fee_roundtrip_usd": 0.02,
+      "one_position": true,
+      "min_cal_trades": 50
+    },
+    "feature_order": [
+      "mechanism",
+      "level_tf",
+      "side",
+      "entry time/quote"
+    ],
+    "horizons_checkpoints": {
+      "entry_markout_seconds": [
+        300,
+        600,
+        900,
+        1800
+      ]
+    },
+    "train_cal_eval_boundaries": {
+      "fit": "descriptive only",
+      "cal": "mechanism/timeframe/horizon selection",
+      "diagnostic": "locked until CAL freeze"
+    },
+    "timezone_session_definitions": {
+      "source": "UTC",
+      "hard_session_gate": false
+    },
+    "execution_cost_assumptions": {
+      "entry": "BETA071 actual Bid/Ask",
+      "exit": "opposite executable quote at first tick at/after horizon",
+      "commission_roundtrip_usd": 0.02
+    },
+    "runtime_dependencies": [
+      "python>=3.11",
+      "numpy",
+      "pandas"
+    ]
+  },
+  "inputs": [
+    {
+      "role": "BETA071 event ledger",
+      "path": "BETA_071_STRUCTURAL_EVENT_LEDGER.npz"
+    },
+    {
+      "role": "January source",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "inherited BETA071 deduplicated events"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "research/results/BETA_074_SELECTED_LEDGER.csv.gz"
+    ],
+    "caches": []
+  },
+  "models": [],
+  "outputs": [
+    "research/checkpoints/BETA_074_RESULTS.json",
+    "research/BETA_074_STRUCTURAL_RESIDUAL_DURATION_EXTENSION_REPORT.md"
+  ],
+  "qa": [
+    "research/qa/BETA_074_STRUCTURAL_RESIDUAL_DURATION_EXTENSION_QA.py",
+    "research/checkpoints/BETA_074_QA.json"
+  ],
+  "reconstruction": {
+    "entry_point": "research/experiments/BETA_074_STRUCTURAL_RESIDUAL_DURATION_EXTENSION.py",
+    "command": "python research/experiments/BETA_074_STRUCTURAL_RESIDUAL_DURATION_EXTENSION.py --beta071-dir <DIR> --source <JAN_GZ> --out-dir <OUT>",
+    "required_artifact_order": [
+      "BETA071 events",
+      "January source",
+      "source",
+      "CAL table",
+      "frozen policy",
+      "ledger",
+      "results",
+      "QA"
+    ],
+    "expected_fingerprints": {},
+    "timing_semantics": "Entry remains BETA071 RIGHT-edge causal; exit is first source tick at/after fixed future duration. DIAGNOSTIC unopened until CAL freeze.",
+    "notes": "Tests whether structural signals require longer residual duration; no learned routing and no new confirmation."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "",
+    "feature_timing_spec": "BETA071 unchanged",
+    "state_machine_spec": "entry -> fixed residual-duration hold",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "actual Bid/Ask",
+    "ownership_scheduler_spec": "chronological one-position",
+    "session_dst_spec": "UTC",
+    "risk_spec": "BETA015 required",
+    "parity_fixtures": []
+  },
+  "supersedes": [],
+  "rollback_target": "BETA_071_STRUCTURAL_ACCEPTANCE_SWEEP_COMPRESSION_CLOCKS",
+  "github_commits": [],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": false,
+    "drive_readback": false,
+    "hashes_verified": false,
+    "current_state_advanced": false
+  }
+}
