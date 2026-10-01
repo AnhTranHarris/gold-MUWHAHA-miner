@@ -151,6 +151,12 @@ Under GOV-008, a narrow specialist is evaluated against its declared scoped base
 
 The assembled composite system is the canonical object for whole-system promotion and aggregate primary-category progress. The 17% warning and 25% hard floor must use the same declared scope as the numerator/denominator comparison; DELTA may not switch between specialist-scope and whole-system baselines after observing results.
 
+## 7C. High-activity interpretation
+
+Under GOV-010, primary-metric improvement must be evaluated alongside opportunity and activity contribution. A specialist or composite may not present favorable primary metrics while hiding a collapse in daily opportunity density or realized activity.
+
+Winning-trade count, opportunity count, unique opportunity contribution, realized activity count, and daily activity distribution remain visible throughout candidate evaluation.
+
 ## 8. Research-speed interaction
 
 The first 2.5 weeks of January remain the fast filter/development window.
