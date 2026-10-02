@@ -198,6 +198,12 @@ remain subject to owner definition and later human review of the actual baseline
 
 Until those thresholds are frozen, DELTA must preserve and report the activity surface rather than optimize it away.
 
+## 13A. Interaction with maintenance and capital staging
+
+GOV-011 is a maintenance overlay, not an edge-discovery shortcut. Daily/weekly risk stops may block otherwise valid opportunities, but reports must preserve both the raw candidate opportunity surface and the maintenance-governed surface.
+
+If prop-style risk controls materially reduce opportunity density, the lost opportunities must be quantified. Maintenance-induced starvation is not credited as a trading-edge improvement.
+
 ## 14. Human-review authority
 
 The owner may later:
