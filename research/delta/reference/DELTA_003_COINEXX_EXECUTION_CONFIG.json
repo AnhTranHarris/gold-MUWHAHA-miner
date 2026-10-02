@@ -1,0 +1,95 @@
+{
+  "schema": "delta-003-coinexx-execution-config-v1",
+  "status": "FROZEN_FROM_R9_REAL_EVIDENCE",
+  "broker": "Coinexx Limited",
+  "tester_server": "Coinexx-Demo",
+  "tester_build": 6182,
+  "symbol": "XAUUSD",
+  "account_currency": "USD",
+  "initial_diagnostic_balance_usd": 100000.0,
+  "leverage": 500,
+  "symbol_execution": {
+    "digits": 2,
+    "point_price": 0.01,
+    "observed_trade_tick_size_price": 0.01,
+    "fixed_lot": 0.01,
+    "inferred_contract_size_oz_per_1_lot": 100.0,
+    "exposure_oz_at_0p01_lot": 1.0,
+    "usd_pnl_per_1p00_price_move_at_0p01_lot": 1.0,
+    "buy_entry_quote": "ASK",
+    "buy_exit_and_mark_quote": "BID",
+    "sell_entry_quote": "BID",
+    "sell_exit_and_mark_quote": "ASK",
+    "market_fill_model_in_tester": "CURRENT_EXECUTABLE_QUOTE",
+    "protective_stop_fill_model": "FIRST_EXECUTABLE_QUOTE_AFTER_STOP_CROSS",
+    "deviation_points_input": 20
+  },
+  "transaction_cost": {
+    "commission_per_entry_deal_usd_at_0p01_lot": 0.01,
+    "commission_per_exit_deal_usd_at_0p01_lot": 0.01,
+    "round_trip_commission_usd_at_0p01_lot": 0.02,
+    "classification": "MT5_DEAL_ACCOUNTING",
+    "note": "Entry commission is booked immediately as negative balance/gross loss. Positive exit deals contribute price P/L minus exit commission to gross profit; non-positive exit deals plus their exit commission contribute to gross loss."
+  },
+  "r9": {
+    "minute_total_gap_price": 0.30,
+    "minute_half_gap_price": 0.15,
+    "initial_stop_price": 0.30,
+    "trail_activation_price": 0.10,
+    "trail_distance_price": 0.03,
+    "max_hold_seconds": 30,
+    "max_same_minute_rearms": 3,
+    "s1_completed_bars": 10,
+    "min_directional_displacement_price": 0.15,
+    "min_directional_efficiency": 0.70,
+    "directional_efficiency_comparison": "STRICT_GREATER_THAN",
+    "min_s1_range_price": 0.50,
+    "max_s1_turns": 9,
+    "atr_timeframe": "M5",
+    "atr_period": 14,
+    "atr_method": "SIMPLE_MEAN_LAST_14_COMPLETED_TRUE_RANGES",
+    "max_spread_points": 25,
+    "atr_floor_price": {
+      "OFF": 2.50,
+      "LONDON": 2.00,
+      "OVERLAP": 1.75,
+      "NEW_YORK": 1.75
+    },
+    "session_local_windows": {
+      "London": "[08:00,16:30)",
+      "New_York": "[08:00,17:00)"
+    },
+    "session_dst": "Europe/London and America/New_York civil DST",
+    "quote_utc_offset_minutes": 0
+  },
+  "state_machine_order": [
+    "broker protective stop processing at current executable quote",
+    "completed-second state update",
+    "new-minute reset and virtual bracket freeze",
+    "if position open: mark as observed, then max-hold, then trailing, then return",
+    "if previously observed position disappeared: opposite-side same-minute rearm, then return",
+    "otherwise evaluate one fresh virtual-bracket entry"
+  ],
+  "position_observation_latch": {
+    "required_for_rearm": true,
+    "description": "A newly entered position must survive to a later OnTick and be observed open before its later disappearance can trigger REARM. An entry that is stopped before the next OnTick is not rearmed."
+  },
+  "price_normalization": {
+    "tick_normalization_equation": "MathRound(price / 0.01) * 0.01 equivalent for positive XAUUSD prices",
+    "integer_equivalent_for_raw_quotes": "nearest Coinexx tick with half-up ties",
+    "minute_cycle_threshold_validation": "1366/1366 BUY and 1366/1366 SELL January-2 minute starts exact",
+    "status": "RESOLVED"
+  },
+  "unresolved_broker_properties": {
+    "exact_symbol_trade_stops_level_points": "UNRESOLVED_BROKER_PROPERTY; observed R9 initial 0.30 stop was not enlarged on calibration tapes",
+    "exact_symbol_trade_freeze_level_points": "UNRESOLVED_BROKER_PROPERTY",
+    "exact_filling_mode_enum": "UNRESOLVED_BROKER_PROPERTY; EA derives mode from symbol",
+    "margin_stopout_mode_and_level": "UNRESOLVED_BROKER_PROPERTY; not constrained by the $100k R9 report",
+    "commission_scaling_outside_0p01_lot": "UNRESOLVED_BROKER_PROPERTY; DELTA testing remains fixed 0.01 lot until owner changes it"
+  },
+  "cross_broker_surfaces": {
+    "DUKAS_NATIVE": "Preserve Dukascopy native Bid/Ask and native spread as independent robustness surface.",
+    "COINEXX_PARITY": "Use preserved Coinexx R9 logger/report to validate state machine and accounting. Do not silently rewrite Dukascopy quotes to make them look like Coinexx.",
+    "coinexx_quote_surface_emulation": "NOT_AUTHORIZED_IN_DELTA_003"
+  }
+}
