@@ -4,9 +4,9 @@
   "branch": "delta",
   "created_utc": "2026-10-01",
   "active_science_parent": null,
-  "last_verified_durable_unit": "DELTA_005J_001_STATE_CONDITIONED_INITIAL_PROTECTION",
-  "first_incomplete_unit": "DELTA_005K_001_PATH_CONDITIONED_TRAIL_ACTIVATION",
-  "current_phase": "DELTA_005_ENTRY_INITIAL_HOLD_005H_BREAKTHROUGH_PATH_CONDITIONING_NEXT",
+  "last_verified_durable_unit": "DELTA_005K_001_MFE_GATED_INITIAL_PROTECTION",
+  "first_incomplete_unit": "DELTA_005L_001_MULTI_STAGE_INITIAL_PROTECTION",
+  "current_phase": "DELTA_005_ENTRY_INITIAL_HOLD_005H_BREAKTHROUGH_MULTI_STAGE_PROTECTION_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -292,7 +292,7 @@
     "google_doc_url": "https://docs.google.com/document/d/1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g/edit?usp=drivesdk",
     "status": "READY"
   },
-  "next_action": "Treat DELTA_005K as a separate small unit. Test path-conditioned initial trail activation using only causal favorable-excursion/path evolution during the first seconds. Preserve original R9 entry logic, hard stop, trail distance, max hold, and mature Holding-Trade + Exit + High-Profit behavior. Persist preregistration, compute, Sheet, and result before any later unit. August remains sealed.",
+  "next_action": "Treat DELTA_005L as a separate small unit. Test only a few explicitly designed multi-stage initial-protection ladders derived from 005H and 005K. Preserve original R9 entry logic, initial hard stop, 30-second max hold, and keep mature Holding-Trade + Exit + High-Profit optimization deferred. Persist the unit fully before starting anything later. August remains sealed.",
   "mql5_authorized": false,
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_004_COINEXX_LIKE_DUKASCOPY_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
@@ -552,5 +552,16 @@
     "experiment_blob_sha": "7f35b4f568762e7a417c1d50bfe8bcf5e796b462",
     "temporary_sheet_id": "1fP3FXWAiWEs_MSy9ScmMpQbGJFIc0ls1VnT1aoF98eE",
     "leverage_conclusion": "STATIC_1S_ACCEPTED_STATE_IS_TOO_LOW_LEVERAGE_FOR_PROTECTION_ROUTING"
+  },
+  "delta_005k": {
+    "status": "COMPLETE_NOT_PROMOTED",
+    "checkpoint_path": "research/delta/checkpoints/DELTA_005K_001_RESULTS.json",
+    "checkpoint_blob_sha": "8e0b2dcae14cfaf926bb8276e5f18586aeb660e0",
+    "report_path": "research/delta/DELTA_005K_001_MFE_GATED_INITIAL_PROTECTION_REPORT.md",
+    "report_blob_sha": "f1177d121a8c3a767adcb354eb811f03cce1daed",
+    "experiment_path": "research/delta/experiments/DELTA_005K_MFE_GATED_INITIAL_PROTECTION.py",
+    "experiment_blob_sha": "e252b3d22af6b6e259745d549d91f34f4d2c6f70",
+    "temporary_sheet_id": "1GmA0TwTeWQibZqFpQOh1p7LoaIdRA3mEIbb-wK7qKB0",
+    "leverage_conclusion": "ONE_TIME_FIXED_MFE_LOCK_CREATES_A_PARETO_FRONTIER_BUT_NO_CELL_DOMINATES_005H"
   }
 }
