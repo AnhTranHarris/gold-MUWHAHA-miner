@@ -80,3 +80,7 @@ Read `research/delta/governance/DELTA_GOV_005_PROVISIONAL_CANDIDATE_IMPROVEMENT_
 ## R9 SYNTH fast reference
 
 After owner authorization on 2026-10-01, DELTA loaded the Jan-Jul R9 SYNTH tester evidence and created `research/delta/reference/R9_SYNTH_PERFORMANCE_FAST_REFERENCE.json`. Use this compact file for primary SYNTH targets, monthly performance, day/week distributions, integrity checks, and observed day/week behavior before reopening the 95 MB tester workbook or massive ticklogger corpus.
+
+## R9 REAL fast reference
+
+After owner authorization, DELTA loaded the Jan-Jul R9 REAL-tick tester evidence and validated REAL tick corpus. Canonical compact lookup: `research/delta/reference/R9_REAL_PERFORMANCE_FAST_REFERENCE.json`. Use it before reopening the ~102 MB tester workbook or ~762 MB compressed ticklogger. It contains the exact starting primary metrics, monthly/day/week baseline, REAL-to-SYNTH gap, and the numeric GOV-005/GOV-006 thresholds derived from the frozen governance rules.
