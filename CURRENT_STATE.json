@@ -40,7 +40,8 @@
     "high_opportunity_density_contract": "research/delta/governance/DELTA_GOV_010_HIGH_OPPORTUNITY_DENSITY_AND_CANDIDATE_TRADE_CONTRIBUTION_ASSUMPTION.md",
     "maintenance_capital_contract": "research/delta/governance/DELTA_GOV_011_PROP_STYLE_MAINTENANCE_CAPITAL_STAGING_AND_SMALL_ACCOUNT_SURVIVAL.md",
     "january_stage_a_window_contract": "research/delta/governance/DELTA_GOV_012_EXACT_JANUARY_STAGE_A_FILTER_WINDOW.md",
-    "candidate_leverage_research_ledger_contract": "research/delta/governance/DELTA_GOV_013_CANDIDATE_LEVERAGE_AND_CRASH_SAFE_RESEARCH_LEDGER.md"
+    "candidate_leverage_research_ledger_contract": "research/delta/governance/DELTA_GOV_013_CANDIDATE_LEVERAGE_AND_CRASH_SAFE_RESEARCH_LEDGER.md",
+    "quant_spreadsheet_harvesting_contract": "research/delta/governance/DELTA_GOV_014_QUANT_SPREADSHEET_HARVESTING_AND_CANDIDATE_LOCK_CONTRACT.md"
   },
   "drive": {
     "delta_research_folder_id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel",
@@ -289,7 +290,21 @@
     "archived_delta005_research_must_not_seed_restart_hypotheses": true,
     "restart_requires_fresh_public_community_scan": true,
     "restart_active_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
-    "timeout_safe_microstep_workflow_required": true
+    "timeout_safe_microstep_workflow_required": true,
+    "spreadsheet_first_quant_harvesting_required": true,
+    "spreadsheet_incremental_synth_gap_priority_pp": 10,
+    "high_value_candidate_scoped_synth_gap_target_pct": 30,
+    "spreadsheet_raw_tick_dump_prohibited": true,
+    "spreadsheet_default_event_row_batch": "10000-50000",
+    "spreadsheet_soft_event_row_cap": 100000,
+    "spreadsheet_default_2d_grid": "20x20",
+    "spreadsheet_max_2d_grid_without_specific_justification": "50x50",
+    "speculative_ai_hypotheses_must_be_labeled": "HYPOTHESIS_ONLY",
+    "speculative_ai_hypotheses_require_causal_tick_replay": true,
+    "final_candidate_lock_before_cleanup": true,
+    "post_lock_delete_disposable_research_artifacts": true,
+    "canonical_baselines_and_market_corpus_must_survive_cleanup": true,
+    "github_large_transient_artifacts_should_not_be_committed": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -302,7 +317,7 @@
     "previous_bootstrap_path": "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
     "status": "CLEAN_RESTART_PRE_CANDIDATE_READY"
   },
-  "next_action": "Read the new clean restart bootstrap, confirm DELTA_001-004 and GOV_001-013 are ready, treat DELTA_005A-005M as archived audit-only research, and wait for the owner to restate the first Entry + Initial-Hold candidate/community-research question. When research restarts, perform a fresh community scan and independently generate candidate hypotheses. Do not use archived DELTA_005A-005M conclusions as priors. Do not open August. Do not start MQL5 translation.",
+  "next_action": "Use DELTA_004 as the active parent. When the owner restates the first Entry + Initial-Hold research question, perform a fresh community scan, generate independent reconstructible hypotheses, use the GOV-014 spreadsheet-first quant harvesting loop to prioritize adjustments with >=10pp incremental scoped SYNTH-gap closure and seek >=30% scoped REAL-to-SYNTH gap closure before expensive replay, then preregister and test selected packages in the bounded Dukascopy tick-level cycle. Keep DELTA_005A-005M audit-only, August sealed, and MQL5 unauthorized.",
   "mql5_authorized": false,
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_004_COINEXX_LIKE_DUKASCOPY_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
@@ -687,5 +702,18 @@
     "fresh_public_community_scan_required": true,
     "historical_delta005_ledger_role": "AUDIT_ONLY",
     "timeout_safe_microstep_workflow_required": true
+  },
+  "post_bootstrap_owner_refinements": {
+    "2026-10-02_quant_spreadsheet_harvesting": {
+      "status": "ACTIVE",
+      "governance_path": "research/delta/governance/DELTA_GOV_014_QUANT_SPREADSHEET_HARVESTING_AND_CANDIDATE_LOCK_CONTRACT.md",
+      "governance_commit": "c332c4b6c8e5105cc2005ad59068cedeca5e6559",
+      "google_sheet_template_id": "1aOur2ZxPgVVssis-BI0uC9zRrgm0-5vfNG_yhRPYZyk",
+      "google_sheet_template_url": "https://docs.google.com/spreadsheets/d/1aOur2ZxPgVVssis-BI0uC9zRrgm0-5vfNG_yhRPYZyk/edit",
+      "restart_cursor_unchanged": "POST_DELTA_004_PRE_CANDIDATE_RESEARCH",
+      "active_candidate": null,
+      "august_2026": "SEALED",
+      "mql5_authorized": false
+    }
   }
 }
