@@ -292,6 +292,22 @@ This is exactly 17.5 calendar days, not a performance-selected or trading-day-co
 
 DELTA_005 candidate preregistration may now proceed without a pending time-window ambiguity.
 
+## DELTA_005 research ledger and leverage-analysis workflow
+
+Active scope: **Entry + Initial-Hold only**.
+
+Deferred scope: **Holding-Trade + Exit + High-Profit**, to become a separate later research campaign after owner acceptance of the Entry + Initial-Hold phase.
+
+Before each material candidate modification, perform a quick leverage diagnosis of the exact limiting formula/mechanism and classify the next change as local tune, structural change, recombination, specialist split, new specialist, or router change. Sub-10-point incremental SYNTH-gap progress remains subject to GOV-007 creative escalation.
+
+Crash-safe master Google Doc:
+https://docs.google.com/document/d/1T9MPuuMsxB5gv7Zz8nvzFmaQy00_7Q-7X_4F2qrcR6k/edit?usp=drivesdk
+
+Temporary per-test mathematical analysis template:
+https://docs.google.com/spreadsheets/d/1Zy_TfGfc6E0tJmEsoFmSONqM9W4wKuAqTPcITC5OXb0/edit?usp=drivesdk
+
+After every completed test, create a fresh temporary Sheet, analyze primary metrics plus Entry/Initial-Hold diagnostics and parameter leverage, append the decision-relevant result to the master Doc, commit GitHub artifacts, then move to the next materially different candidate version.
+
 ## Research objective
 
 Rebuild a high-activity causal Entry+Hold architecture around the R9 evidence base while preserving real chronology, causal execution, and trade velocity.
