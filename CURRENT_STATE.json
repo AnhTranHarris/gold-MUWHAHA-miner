@@ -4,9 +4,9 @@
   "branch": "delta",
   "created_utc": "2026-10-01",
   "active_science_parent": null,
-  "last_verified_durable_unit": "DELTA_005K_001_MFE_GATED_INITIAL_PROTECTION",
-  "first_incomplete_unit": "DELTA_005L_001_MULTI_STAGE_INITIAL_PROTECTION",
-  "current_phase": "DELTA_005_ENTRY_INITIAL_HOLD_005H_BREAKTHROUGH_MULTI_STAGE_PROTECTION_NEXT",
+  "last_verified_durable_unit": "DELTA_005L_001_MULTI_STAGE_INITIAL_PROTECTION",
+  "first_incomplete_unit": "DELTA_005M_001_TRAIL_STEP_FREQUENCY",
+  "current_phase": "DELTA_005_ENTRY_INITIAL_HOLD_005H_BREAKTHROUGH_TRAIL_STEP_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -292,7 +292,7 @@
     "google_doc_url": "https://docs.google.com/document/d/1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g/edit?usp=drivesdk",
     "status": "READY"
   },
-  "next_action": "Treat DELTA_005L as a separate small unit. Test only a few explicitly designed multi-stage initial-protection ladders derived from 005H and 005K. Preserve original R9 entry logic, initial hard stop, 30-second max hold, and keep mature Holding-Trade + Exit + High-Profit optimization deferred. Persist the unit fully before starting anything later. August remains sealed.",
+  "next_action": "Treat DELTA_005M as a separate small unit. Preserve original R9 entry logic, $0.30 hard stop, +$0.30 trail activation, $0.03 trail distance, and 30-second max hold. Test only trail ratchet step/frequency. Persist preregistration, compute, Sheet, report, and cursor before any later unit. August remains sealed.",
   "mql5_authorized": false,
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_004_COINEXX_LIKE_DUKASCOPY_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
@@ -563,5 +563,16 @@
     "experiment_blob_sha": "e252b3d22af6b6e259745d549d91f34f4d2c6f70",
     "temporary_sheet_id": "1GmA0TwTeWQibZqFpQOh1p7LoaIdRA3mEIbb-wK7qKB0",
     "leverage_conclusion": "ONE_TIME_FIXED_MFE_LOCK_CREATES_A_PARETO_FRONTIER_BUT_NO_CELL_DOMINATES_005H"
+  },
+  "delta_005l": {
+    "status": "COMPLETE_NOT_PROMOTED",
+    "checkpoint_path": "research/delta/checkpoints/DELTA_005L_001_RESULTS.json",
+    "checkpoint_blob_sha": "3c30450fd27a3362a4179b0f9fa5844c0920c752",
+    "report_path": "research/delta/DELTA_005L_001_MULTI_STAGE_INITIAL_PROTECTION_REPORT.md",
+    "report_blob_sha": "57a04e08efe68c1a168ab500787635c0492e7c3f",
+    "experiment_path": "research/delta/experiments/DELTA_005L_MULTI_STAGE_INITIAL_PROTECTION.py",
+    "experiment_blob_sha": "76c298de7acbfe83f11e6a17cd4a953fa3d6ee78",
+    "temporary_sheet_id": "1EgQDfNLrChF-ZzdG_Ou8MxsYG4nIWsvT1KBwM82xWl0",
+    "leverage_conclusion": "MULTI_STAGE_STOP_LADDERS_CONVERT_TOO_MANY_005H_WINNERS_INTO_EXITS"
   }
 }
