@@ -275,3 +275,46 @@ ID: `1Nx06ehgmswgwwjDY7CKpP4IAX5Vj0j0FZJtAX8lvMBs`
 - GOV-018 heavy synthesis: DORMANT
 - August: SEALED
 - MQL5: NOT AUTHORIZED
+
+
+## 11. R002 refined supporting-state harvest
+
+The working R001 harvest workbook now also carries five supporting causal-state hypotheses:
+
+- `HYP-DH-009` — Breakout Acceptance / Rejection State
+- `HYP-DH-010` — Pullback vs Structural Reversal Discriminator
+- `HYP-DH-011` — Post-Fill Persistence / Retreat Balance
+- `HYP-DH-012` — Regime Transition Hysteresis
+- `HYP-DH-013` — Activity-Preserving Specialist Arbitration
+
+These are not additional promoted candidates. They are supporting state definitions used to make C01–C08 implementable and falsifiable.
+
+The reusable GOV-014 template has been restored to template-only state. Research-specific harvesting lives in the working workbook:
+
+https://docs.google.com/spreadsheets/d/1LexrgMTYvgDXoeKHvVC4taiLGlENi5vvY2-8tmLNFcs/edit
+
+Canonical shortlist Doc:
+
+https://docs.google.com/document/d/1Nx06ehgmswgwwjDY7CKpP4IAX5Vj0j0FZJtAX8lvMBs/edit
+
+The alternate timeout-era R002 shortlist Doc was renamed with a `ZZ_SUPERSEDED_` prefix and must not be used as current research authority.
+
+### Fresh source reinforcement
+
+Additional reconstructible sources reviewed during this refinement include:
+
+- MQL5 custom regime detector/adaptive EA:
+  https://www.mql5.com/en/articles/17737
+  https://www.mql5.com/en/articles/17781
+- Chinese MQL5 ORB breakout -> retest -> second-break logic:
+  https://www.mql5.com/zh/articles/18486
+- Chinese MQL5 breakout-pullback + momentum confirmation:
+  https://www.mql5.com/zh/articles/18842
+- Japanese MQL5 breakout/retest implementation:
+  https://www.mql5.com/ja/articles/19968
+- TradingView open-source volatility-contraction continuation:
+  https://www.tradingview.com/script/Qje2aFax-VCP-Continuation-Breakout-Indicator-v1-3/
+- Hierarchical short/long trend-state research:
+  https://arxiv.org/abs/2007.14874
+
+No threshold, candidate metric, Stage-A preregistration, or Python replay was created by this refinement.
