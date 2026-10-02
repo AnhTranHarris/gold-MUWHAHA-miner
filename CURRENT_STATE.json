@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R024_STAGE_A_IN_PROGRESS_P50_COMPLETE",
+  "current_phase": "R024_STAGE_A_IN_PROGRESS_P50_P75_COMPLETE",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "RESUME_R024_AT_P75_THEN_P90_THEN_NATIVE;_NO_RETUNING_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "RESUME_R024_AT_P90_THEN_NATIVE;_NO_RETUNING_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -2420,10 +2420,12 @@
       "august_2026": "SEALED",
       "mql5_authorized": false,
       "completed_surfaces": [
-        "P50"
+        "P50",
+        "P75"
       ],
       "result_sha256": {
-        "P50": "1852c64974da3332e0ffd4746064322dc4c6abb527efeaac9664dfa4441e34d8"
+        "P50": "1852c64974da3332e0ffd4746064322dc4c6abb527efeaac9664dfa4441e34d8",
+        "P75": "31ce6f4db647c69b483e9ff2f2466dac7a999a2d5e4a1918c92661bdccce6f15"
       },
       "p50_checkpoint": {
         "M30_KEEP_OWNED": {
@@ -2449,6 +2451,33 @@
           "incremental_net_pct": 16.4024,
           "trade_retention_pct": 72.7675,
           "winner_retention_pct": 77.2672,
+          "status": "FAIL_ACTIVITY"
+        }
+      },
+      "p75_checkpoint": {
+        "M30_KEEP_OWNED": {
+          "incremental_net_vs_p01_usd": 103.3,
+          "incremental_net_pct": 3.482054,
+          "trade_retention_pct": 83.477174,
+          "winner_retention_pct": 88.933242,
+          "status": "PASS_SURFACE"
+        },
+        "M30_FLIP_NORMAL": {
+          "incremental_net_vs_p01_usd": -258.98,
+          "status": "FAIL_NET"
+        },
+        "P02_FLIP_OWNED": {
+          "incremental_net_vs_p01_usd": 57.03,
+          "incremental_net_pct": 1.922377,
+          "trade_retention_pct": 83.477174,
+          "winner_retention_pct": 88.80936,
+          "status": "PASS_SURFACE"
+        },
+        "M30_SKIP": {
+          "incremental_net_vs_p01_usd": 487.49,
+          "incremental_net_pct": 16.432395,
+          "trade_retention_pct": 72.370692,
+          "winner_retention_pct": 77.384721,
           "status": "FAIL_ACTIVITY"
         }
       }
