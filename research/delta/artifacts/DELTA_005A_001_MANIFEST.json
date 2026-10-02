@@ -1,0 +1,42 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "DELTA_005A_001_FAST_CONTINUATION_TICK_FLOW_ENTRY_SCREEN",
+  "status": "PREREGISTERED",
+  "date_utc": "2026-10-02",
+  "historical_simulation_only": true,
+  "live_deployment_authorized": false,
+  "focus": "ENTRY_PLUS_INITIAL_HOLD_DIAGNOSTICS",
+  "parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
+  "window": {
+    "start_ms_utc": 1767225600000,
+    "end_ms_utc_exclusive": 1768737600000,
+    "cold_start": true
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "sweep": {
+    "fast_windows_ms": [
+      250,
+      500,
+      1000
+    ],
+    "slow_windows_ms": [
+      1000,
+      3000
+    ],
+    "fast_thresholds": [
+      0,
+      0.1,
+      0.2,
+      0.3,
+      0.4
+    ],
+    "slow_thresholds": [
+      0,
+      0.1,
+      0.2
+    ],
+    "variants": 90
+  },
+  "downstream_lifecycle": "FROZEN_PARENT",
+  "august_2026": "SEALED"
+}
