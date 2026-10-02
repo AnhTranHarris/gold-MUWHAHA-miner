@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R026_COMPLETE_M30_SUPPRESSED_REARMS_7_OF_7_TOXIC",
+  "current_phase": "R027_PREREGISTERED_HARVEST_NOT_EXECUTED",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "R027_GENERIC_P01_REARM_M30_OPPOSITION_CAUSAL_HARVEST_BEFORE_ANY_GENERALIZED_REARM_GOVERNOR_TEST;_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "EXECUTE_R027_MONTH_01_THEN_FIRST_INCOMPLETE_MONTH;_HARVEST_ONLY_NO_GOVERNOR_TEST_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -513,7 +513,9 @@
     "r026_complete": true,
     "r026_full_suppression_retained": true,
     "r026_no_recovery_subset_authorized": true,
-    "r026_mechanism": "GENERIC_OPPOSITE_REARM_ALMOST_ALWAYS_COUNTER_TO_STILL_DOMINANT_M30_STATE"
+    "r026_mechanism": "GENERIC_OPPOSITE_REARM_ALMOST_ALWAYS_COUNTER_TO_STILL_DOMINANT_M30_STATE",
+    "r027_harvest_only": true,
+    "r027_generalized_rearm_governor_testing_prohibited": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -2850,6 +2852,35 @@
         "slice_analysis_sha256": "0688f955d561a9266b58c998a1bdb4c6a3d69b0b94c9ccc7158ddd4f44e7db2a"
       },
       "decision": "KEEP_FULL_SUPPRESSION_NO_RELEASE_SUBSET"
+    },
+    "r027": {
+      "status": "PREREGISTERED_HARVEST_NOT_EXECUTED",
+      "parent": "R026_CAUSAL_MECHANISM",
+      "drive_doc_id": "1iVc319_PoOmw-CfkCDZAzZ735LYKKhjBIsmjwV6EvVw",
+      "drive_doc_url": "https://docs.google.com/document/d/1iVc319_PoOmw-CfkCDZAzZ735LYKKhjBIsmjwV6EvVw/edit",
+      "github_report_path": "research/delta/research/DELTA_R027_GENERIC_REARM_M30_OPPOSITION_HARVEST.md",
+      "github_commit": "ce5e7190df3e8a24be45a7d4fc4c375c84acdd67",
+      "prereg_tab": "50 R027 Prereg",
+      "monthly_summary_tab": "51 R027 Monthly Summary",
+      "slice_matrix_tab": "52 R027 Slice Matrix",
+      "script_sha256": "523cd9720ebeee404c44f85bdd93dfd0f49ffc772cf3d92b7629482c502427d3",
+      "months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "surface": "P75",
+      "primary_split": "REARM_DIRECTION_M30_NETATR_LE_NEG_0_35",
+      "behavior_change": false,
+      "governor_testing": false,
+      "august_2026": "SEALED",
+      "mql5_authorized": false,
+      "completed_months": [],
+      "result_sha256": {}
     }
   },
   "prebacktest_research": {
