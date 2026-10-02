@@ -1,0 +1,76 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "DELTA_002_DUKASCOPY_TICK_LAB",
+  "status": "PREREGISTERED",
+  "date_utc": "2026-10-01",
+  "lineage": "DELTA",
+  "parent_checkpoint": "DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT",
+  "hypothesis": "The registered Jan-Jul Dukascopy XAUUSD corpus can be compiled into a deterministic 16-byte-per-tick month-isolated memory-mapped replay surface that preserves raw Bid/Ask chronology and exactly reproduces the validated 250ms/1s acceleration counts.",
+  "falsification_condition": "Any source hash/row/order/quote invariant failure, candle-boundary failure, 250ms/1s count mismatch, execution-side mismatch, or August access rejects the lab.",
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "config": {
+    "strategy_optimization": false,
+    "core_tick_bytes": 16,
+    "price_scale": 1000,
+    "months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "cache_layout": [
+      "timestamp_ms_utc:int64",
+      "ask_raw:int32",
+      "bid_raw:int32"
+    ],
+    "volume_sidecar_optional": true,
+    "candle_interval": "[start,end)",
+    "completed_bar_visibility": "bar_end <= current_tick_time",
+    "broker_v1": "BROKER_NEUTRAL_REAL_QUOTE_AWARE",
+    "coinexx_parity": "FUTURE_VERSIONED_CALIBRATION"
+  },
+  "inputs": [
+    {
+      "path": "research/delta/reference/DUKASCOPY_JAN_JUL_SOURCE_MANIFEST.json",
+      "role": "canonical source identities"
+    },
+    {
+      "path": "research/delta/reference/DELTA_001_DATA_WALLS_AND_METRIC_SCHEMA.json",
+      "role": "timing/data walls"
+    },
+    {
+      "drive_folder_id": "1AaiWslB4E9dfny927qjBVktMcW5Pj45v",
+      "role": "validated daily/250ms/1s acceleration corpus"
+    }
+  ],
+  "source_code": [
+    "research/delta/lab/dukas_tick_lab.py",
+    "research/delta/lab/run_candidate_month.py",
+    "research/delta/lab/candidate_template.py"
+  ],
+  "outputs": [
+    "research/delta/lab/DUKASCOPY_TICK_LAB_SOURCE_CATALOG.json",
+    "research/delta/checkpoints/DELTA_002_LAB_QA.json",
+    "research/delta/DELTA_002_DUKASCOPY_TICK_LAB_REPORT.md"
+  ],
+  "reconstruction": {
+    "compile_command": "python research/delta/lab/dukas_tick_lab.py compile --month <1..7> --source-dir <DATA> --cache-root <CACHE>",
+    "qa_command": "python research/delta/lab/dukas_tick_lab.py qa --month <1..7> --cache-root <CACHE>",
+    "bar_rule": "direct tick aggregation; integer-ms left-closed/right-open",
+    "source_order": "original CSV row order"
+  },
+  "verification": {
+    "github_readback": false,
+    "hashes_verified": false,
+    "all_months_qa": false,
+    "current_state_advanced": false
+  },
+  "rollback_target": "DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT"
+}
