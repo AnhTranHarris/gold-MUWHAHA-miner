@@ -1,0 +1,57 @@
+{
+  "schema": "delta-005g-001-result-summary-v1",
+  "status": "COMPLETE_NOT_PROMOTED",
+  "historical_simulation_only": true,
+  "focus": "ENTRY_PLUS_INITIAL_HOLD",
+  "source_blob": "ab84f4f05699f38754adb93dc4b56ff1263f3061",
+  "window": {
+    "start_ms_utc": 1767225600000,
+    "end_ms_utc_exclusive": 1768737600000
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "ticks": 4205709,
+  "variants_tested": 48,
+  "runtime_seconds": 14.449037413,
+  "parent": {
+    "trades": 16801,
+    "wins": 7351,
+    "net_profit": -3768.25,
+    "gross_loss": -5343.02,
+    "max_balance_drawdown": 3769.83,
+    "survival_5s_pct": 42.7177,
+    "survival_10s_pct": 21.713
+  },
+  "best_net_cell": {
+    "validation_ms": 250,
+    "range_ceiling_price": 0.5,
+    "min_boundary_acceptance_price": 0,
+    "boundary_history_mode": "NEVER_LOST",
+    "trades": 16895,
+    "wins": 6408,
+    "direct_validations": 13152,
+    "consolidation_validations": 33,
+    "early_invalidations": 2934,
+    "early_invalidation_avg_pnl": -0.26698,
+    "net_profit": -3711.33,
+    "gross_loss": -5085.92,
+    "max_balance_drawdown": 3712.91,
+    "winner_retention_pct": 87.1718,
+    "net_loss_improvement_pct": 1.5105,
+    "gross_loss_improvement_pct": 4.8119,
+    "drawdown_improvement_pct": 1.5099,
+    "survival_5s_delta_pp": -7.802,
+    "survival_10s_delta_pp": -4.122
+  },
+  "leverage_conclusion": "HARD_KEEP_KILL_USE_OF_ACCEPTED_CONSOLIDATION_IS_TOO_DESTRUCTIVE",
+  "next_change_class": "INITIAL_PROTECTIVE_MECHANICS",
+  "next_unit": "DELTA_005H_INITIAL_TRAILING_SHIELD",
+  "community_support": [
+    "https://www.mql5.com/en/articles/23882",
+    "https://www.mql5.com/en/articles/23618",
+    "https://www.mql5.com/en/articles/16705"
+  ],
+  "temporary_sheet_id": "12VclDyjItrZ_OjsnCefxGUBE1PV1IwzaDsvgmyjMyxY",
+  "temporary_sheet_url": "https://docs.google.com/spreadsheets/d/12VclDyjItrZ_OjsnCefxGUBE1PV1IwzaDsvgmyjMyxY/edit?usp=drivesdk",
+  "master_doc_id": "1T9MPuuMsxB5gv7Zz8nvzFmaQy00_7Q-7X_4F2qrcR6k",
+  "august_accessed": false
+}
