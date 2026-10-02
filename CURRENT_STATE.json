@@ -4,9 +4,9 @@
   "branch": "delta",
   "created_utc": "2026-10-01",
   "active_science_parent": null,
-  "last_verified_durable_unit": "DELTA_005M_001_TRAIL_STEP_FREQUENCY",
-  "first_incomplete_unit": "DELTA_005M_001_TEMP_MATRIX_AND_LEVERAGE_REVIEW",
-  "current_phase": "DELTA_005_ENTRY_INITIAL_HOLD_005M_COMPLETE_MATRIX_REVIEW_NEXT",
+  "last_verified_durable_unit": "DELTA_005H_001_INITIAL_TRAILING_SHIELD",
+  "first_incomplete_unit": "DELTA_005I_001_EARLY_BREATHING_TRAIL_DISTANCE_PREREGISTRATION",
+  "current_phase": "DELTA_005H_BREAKTHROUGH_VERIFIED_DELTA_005I_PREREGISTRATION_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -292,7 +292,7 @@
     "google_doc_url": "https://docs.google.com/document/d/1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g/edit?usp=drivesdk",
     "status": "READY"
   },
-  "next_action": "Create the required fresh DELTA_005M temporary Google Sheet. Populate 2D matrices for trail-step × minimum-update-interval across net improvement, gross-loss improvement, drawdown, winner retention, 5s/10s/15s survival, trail-move reduction and a balanced leverage score. Promote the leverage conclusion to the master research Doc and GitHub before preregistering any new candidate. Holding-Trade + Exit + High-Profit remains deferred; August remains sealed.",
+  "next_action": "Micro-step workflow: preregister DELTA_005I only. DELTA_005I will test early breathing-room trail distance for a short initial window, then revert to R9's original $0.03 trail. No entry changes, no mature exit/high-profit optimization, August sealed.",
   "mql5_authorized": false,
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_004_COINEXX_LIKE_DUKASCOPY_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
@@ -491,21 +491,23 @@
     "checkpoint_blob_sha": "ed0c4e79c7687a8360d030f2d2c36e51a98ea083",
     "report_path": "research/delta/DELTA_005H_001_INITIAL_TRAILING_SHIELD_REPORT.md",
     "report_blob_sha": "286c1ef419823038f53725a5d8d45f9a83d54971",
-    "experiment_path": "research/delta/experiments/DELTA_005H_INITIAL_TRAILING_SHIELD.py",
-    "experiment_blob_sha": "914d861c7c65e878254b16939ef2be292c47a2df",
-    "temporary_sheet_id": "1SWEzgzBpfgYxMyc2LMKY68qEmxqND2z-iMrlPygEF-Y",
-    "breakthrough": {
-      "trail_activation_parent": 0.1,
-      "trail_activation_high_leverage": 0.3,
-      "parent_average_hold_seconds": 6.712,
-      "high_leverage_average_hold_seconds": 9.027,
+    "source_path": "research/delta/experiments/DELTA_005H_INITIAL_TRAILING_SHIELD.py",
+    "source_blob_sha": "914d861c7c65e878254b16939ef2be292c47a2df",
+    "temp_sheet_id": "1SWEzgzBpfgYxMyc2LMKY68qEmxqND2z-iMrlPygEF-Y",
+    "temp_sheet_url": "https://docs.google.com/spreadsheets/d/1SWEzgzBpfgYxMyc2LMKY68qEmxqND2z-iMrlPygEF-Y/edit?usp=drivesdk",
+    "finding": "EARLY_FIXED_TRAILING_IS_A_REAL_INITIAL_HOLD_BOTTLENECK",
+    "high_leverage_cell": {
+      "shield_ms": 0,
+      "trail_activation_price": 0.3,
+      "average_hold_seconds": 9.027,
       "survival_5s_delta_pp": 11.0101,
       "survival_10s_delta_pp": 10.6854,
       "survival_15s_delta_pp": 8.5036,
-      "gross_profit_parent": 1574.77,
-      "gross_profit_high_leverage": 2377.8
+      "gross_profit": 2377.8,
+      "gross_loss": -6050.23,
+      "net_profit": -3672.43
     },
-    "interpretation": "EARLY_FIXED_TRAILING_IS_A_REAL_INITIAL_HOLD_BOTTLENECK"
+    "august_accessed": false
   },
   "delta_005i": {
     "status": "COMPLETE_NOT_PROMOTED",
