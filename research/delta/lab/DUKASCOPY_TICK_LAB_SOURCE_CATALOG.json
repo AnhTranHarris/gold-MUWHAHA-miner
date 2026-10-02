@@ -1,0 +1,27 @@
+{
+  "schema": "delta-dukas-tick-lab-source-catalog-v1",
+  "period": "2026-01 through 2026-07",
+  "august": "SEALED",
+  "raw_schema": ["timestamp_ms_utc", "ask_raw", "bid_raw", "ask_volume", "bid_volume"],
+  "price_scale": 1000,
+  "total_ticks": 57527562,
+  "total_core_cache_bytes_expected": 920443680,
+  "months": {
+    "1": {"filename":"XAUUSD_DUKAS_2026_01_ticks.csv.gz","size_bytes":68690420,"sha256":"d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5","ticks":9135062,"bars_250ms":4292059,"bars_1s":1526214},
+    "2": {"filename":"XAUUSD_DUKAS_2026_02_ticks.csv.gz","size_bytes":59425317,"sha256":"ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d","ticks":7538339,"bars_250ms":3587940,"bars_1s":1360472},
+    "3": {"filename":"XAUUSD_DUKAS_2026_03_ticks.csv.gz","size_bytes":73441502,"sha256":"814ba35e72f219a58badd806ed5c0f30ef0fb4ffe56a48205d873706513bd177","ticks":9433179,"bars_250ms":4524761,"bars_1s":1612599},
+    "4": {"filename":"XAUUSD_DUKAS_2026_04_ticks.csv.gz","size_bytes":55259580,"sha256":"30375098f62aed6cabc32ec6b67c57c20baec9b6d9be1ce0a204e09806c1ec0f","ticks":7470570,"bars_250ms":3897851,"bars_1s":1493754},
+    "5": {"filename":"XAUUSD_DUKAS_2026_05_ticks.csv.gz","size_bytes":60157474,"sha256":"3a50e0f1eba3076154238290ec02842cf3744ab192e5c9a2acc1cc07367c6a0d","ticks":8333165,"bars_250ms":4094677,"bars_1s":1517044},
+    "6": {"filename":"XAUUSD_DUKAS_2026_06_ticks.csv.gz","size_bytes":60563202,"sha256":"34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2","ticks":8201406,"bars_250ms":4206410,"bars_1s":1593269},
+    "7": {"filename":"XAUUSD_DUKAS_2026_07_ticks.csv.gz","size_bytes":53057690,"sha256":"e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7","ticks":7415841,"bars_250ms":4093693,"bars_1s":1593188}
+  },
+  "drive_acceleration_corpus": {
+    "root_folder_id": "1AaiWslB4E9dfny927qjBVktMcW5Pj45v",
+    "manifest_folder_id": "1ZN8yGsUH18FyW6uKw9sHixBSZdgNT4WF",
+    "daily_raw_folder_id": "17V6z4_CkfbBG62pH40PJ7C5ubnSsesOs",
+    "derived_folder_id": "1p4xNQShBM9qUeMHoxwjZmRytCHax6Xul",
+    "daily_raw_partitions": 181,
+    "validated_250ms_bars": 28697391,
+    "validated_1s_bars": 10696540
+  }
+}
