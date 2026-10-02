@@ -1,3 +1,27 @@
+# QA RECONCILIATION OVERRIDE — 2026-10-02
+
+This section supersedes stale restart statements below where they conflict with the reconciled state.
+
+- **Active science parent:** `DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE`
+- **Current governance:** canonical `DELTA_GOV_001` through `DELTA_GOV_018`
+- **Current phase:** POST-DELTA_004 / PRE-CANDIDATE / ENTRY + INITIAL-HOLD
+- **Active candidate:** NONE
+- **Primary metric locks:** NONE
+- **DELTA_005A–005M:** AUDIT/FORENSIC HISTORY ONLY; not active parent and not hypothesis guidance
+- **Fresh research ledger:** https://docs.google.com/document/d/1dXe4I98dFgIiybMSPQMoFnXOYNcTvtqNYDp85XeO34M/edit
+- **Standard GOV-014 workbook:** https://docs.google.com/spreadsheets/d/1aOur2ZxPgVVssis-BI0uC9zRrgm0-5vfNG_yhRPYZyk/edit
+- **Canonical GOV-018 heavy synthesis workbook:** https://docs.google.com/spreadsheets/d/1NRJBd3rBz2FD6HtN9TW6xT8GUjCyZPAgMt36Tr1GAME/edit
+- **GOV-015:** multi-timeframe trend-within-trend context is a survivability assumption
+- **GOV-016:** advanced exit/profit optimization remains downstream of survivability and maturity; exit research is deferred
+- **GOV-017:** capital preservation/realized growth remains soft before three distinct primary candidate locks; later aggressive capital-policy research is not yet authorized
+- **GOV-018:** heavy synthesis is DORMANT; owner-trigger or specific reconstructible evidence-trigger allowed; mandatory if bounded GOV-014 harvesting fails to yield an integration-viable candidate; all generated combinations are `HYPOTHESIS_ONLY` until causal replay
+- **August 2026:** SEALED
+- **MQL5:** NOT AUTHORIZED
+
+**Source-of-truth precedence:** current owner instruction -> `delta/CURRENT_STATE.json` -> canonical DELTA governance -> current clean restart handoff/fresh ledger -> current workbooks -> archived 005 forensic history.
+
+---
+
 # DELTA Clean Research Restart Bootstrap — Pre-Candidate Handoff — 2026-10-02
 
 **Project:** Gold MUWHAHA Miner — XAUUSD  
