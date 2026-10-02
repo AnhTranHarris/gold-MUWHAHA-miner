@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R025_IN_PROGRESS_MONTHS_01_06_COMPLETE",
+  "current_phase": "R025_COMPLETE_M30_KEEP_OWNED_VALIDATED_7_OF_7_MONTHS",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "RESUME_R025_AT_MONTH_07;_NO_RETUNING_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "R026_SUPPRESSED_REARM_DESCENDANT_CAUSAL_HARVEST_BEFORE_ANY_RELEASE_POLICY_TEST;_NO_RETUNING_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -503,7 +503,10 @@
     "r024_m30_keep_owned_validation_survivor": true,
     "r024_threshold_retuning_prohibited": true,
     "r025_monthly_validation_preregistered": true,
-    "r025_no_retuning": true
+    "r025_no_retuning": true,
+    "r025_complete": true,
+    "r025_seven_of_seven_incremental_positive": true,
+    "r025_validates_m30_keep_owned_as_component": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -2557,12 +2560,12 @@
       "metric_lock": false
     },
     "r025": {
-      "status": "IN_PROGRESS",
+      "status": "COMPLETE",
       "parent": "R024_M30_KEEP_OWNED",
       "drive_doc_id": "1--WukgAAozEO1HYgwr2LqDhqVw5JR7DNyBrgRn0hZUw",
       "drive_doc_url": "https://docs.google.com/document/d/1--WukgAAozEO1HYgwr2LqDhqVw5JR7DNyBrgRn0hZUw/edit",
       "github_report_path": "research/delta/research/DELTA_R025_EXACT_M30_KEEP_OWNED_JAN_JUL_VALIDATION.md",
-      "github_commit": "b91d46deff046fe2c8957aec447d9302b00db2f8",
+      "github_commit": "5dcaf89ed8b6b526ed1d232df5964a536e8ae30d",
       "prereg_tab": "45 R025 Prereg",
       "result_tab": "46 R025 Monthly Results",
       "script_sha256": "5f60ab95ffb91609b12a1a43f1004d65b21350f18fcc9c6856912e44637cf885",
@@ -2593,7 +2596,8 @@
         3,
         4,
         5,
-        6
+        6,
+        7
       ],
       "result_sha256": {
         "2026-01": "db492af3e16986a8ffaea35d31ecdceebb25ed27622776c57e510b1949b3655c",
@@ -2601,7 +2605,8 @@
         "2026-03": "6b4778e2000adfebd06eb18b0145d3aaab6919161c3021ae8c6796ea50221163",
         "2026-04": "4ec31343d20f279cb04869a6a0e99183efc2f8b6377d1c4e4be09ec8ca10124c",
         "2026-05": "52a0a7cd93b20dfe786e7c748beccd912f444ee86d60a5c52a6e20fe93c968d8",
-        "2026-06": "270c21776c58974d978a20106f62e31ec43076af31c92d18161a22648caeb4fe"
+        "2026-06": "270c21776c58974d978a20106f62e31ec43076af31c92d18161a22648caeb4fe",
+        "2026-07": "e534dabaf4b82e5f952700485bedb754c9b3a717f6d3afa8d81d13fa050d1c83"
       },
       "promoted": false,
       "metric_lock": false,
@@ -2659,8 +2664,52 @@
           "trade_retention_vs_r9_pct": 83.972032,
           "winner_retention_vs_r9_pct": 85.062157,
           "status": "PASS_INCREMENTAL"
+        },
+        "2026-07": {
+          "p01_net_usd": -6321.83,
+          "keep_net_usd": -6128.14,
+          "incremental_net_vs_p01_usd": 193.69,
+          "incremental_net_improvement_vs_p01_pct": 3.063828,
+          "trade_retention_vs_r9_pct": 85.690951,
+          "winner_retention_vs_r9_pct": 86.320972,
+          "status": "PASS_INCREMENTAL"
         }
-      }
+      },
+      "aggregate": {
+        "r9": {
+          "trades": 234417,
+          "wins": 103097,
+          "gross_profit_usd": 29243.07,
+          "gross_loss_usd": -78244.86,
+          "net_profit_usd": -49001.79
+        },
+        "p01": {
+          "trades": 203864,
+          "wins": 90751,
+          "gross_profit_usd": 25008.31,
+          "gross_loss_usd": -67676.5,
+          "net_profit_usd": -42668.19
+        },
+        "m30_keep_owned": {
+          "trades": 195990,
+          "wins": 87214,
+          "gross_profit_usd": 24030.52,
+          "gross_loss_usd": -65076.38,
+          "net_profit_usd": -41045.86,
+          "m30_only_hits": 25961,
+          "suppressed_rearms": 112657
+        },
+        "incremental_net_vs_p01_usd": 1622.33,
+        "net_loss_improvement_vs_p01_pct": 3.8022,
+        "gross_loss_improvement_vs_p01_pct": 3.841984,
+        "trade_retention_vs_r9_pct": 83.607418,
+        "winner_retention_vs_r9_pct": 84.59412,
+        "net_loss_improvement_vs_r9_pct": 16.235999,
+        "gross_loss_improvement_vs_r9_pct": 16.829834,
+        "positive_months": 7,
+        "total_months": 7
+      },
+      "validated_component": true
     }
   },
   "prebacktest_research": {
