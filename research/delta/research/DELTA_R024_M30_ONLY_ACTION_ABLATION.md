@@ -122,3 +122,55 @@ Workbook tabs:
 - metric locks: NONE
 - August: SEALED
 - MQL5: NOT AUTHORIZED
+
+## Stage-A completion
+
+R024 is complete across P50/P75/P90 plus native diagnostic.
+
+### Modeled-surface survivor
+
+`M30_KEEP_OWNED` is the only non-control action that passed every modeled-surface gate.
+
+- P50: +$95.55 net vs P01; trade retention 83.77%; winner retention 88.54%.
+- P75: +$103.30 net vs P01; trade retention 83.48%; winner retention 88.93%.
+- P90: +$23.47 net vs P01; trade retention 80.87%; winner retention 84.85%.
+
+`M30_FLIP_NORMAL` failed net on every modeled surface.
+
+`P02_FLIP_OWNED` passed P50/P75 but failed P90.
+
+`M30_SKIP` improved net materially but failed the preregistered activity floor on all modeled surfaces.
+
+### Native diagnostic
+
+Native is diagnostic only.
+
+- P01_CONTROL: 91 trades, 20 wins, net -$39.08.
+- M30_KEEP_OWNED: 91 trades, 20 wins, net -$39.08.
+- M30_FLIP_NORMAL: 99 trades, 15 wins, net -$53.229.
+- P02_FLIP_OWNED: 91 trades, 15 wins, net -$47.172.
+- M30_SKIP: 77 trades, 15 wins, net -$37.484.
+
+Native therefore does not contradict the modeled-surface conclusion.
+
+### Decision
+
+`M30_KEEP_OWNED` becomes the sole R024 validation survivor.
+
+It is **not promoted**, creates **no metric lock**, and may not be retuned.
+
+Next required research unit:
+
+`EXACT_MONTH_BY_MONTH_JAN_JUL_P75_VALIDATION_OF_M30_KEEP_OWNED`
+
+with the same frozen condition:
+
+`M30NetATR > 0.35 AND NOT(H1NetATR > 0.35 OR micro250 <= -0.55)`
+
+and the same KEEP-owned / suppress-rearm action.
+
+### Result hashes
+
+- P90: `71579b3326573c76e0d70734251171c8feaedf0ed701c0641997fa5b7c7f1724`
+- Native: `dc382a59dbb62dfcf5f7b55465bafb76adcc91ab4d649064128b101853dc45f0`
+
