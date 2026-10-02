@@ -1,13 +1,13 @@
 {
   "schema": "delta-research-unit-manifest-v1",
   "unit_id": "DELTA_002_DUKASCOPY_TICK_LAB",
-  "status": "PREREGISTERED",
+  "status": "VERIFIED_DURABLE",
   "date_utc": "2026-10-01",
   "lineage": "DELTA",
   "parent_checkpoint": "DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT",
   "hypothesis": "The registered Jan-Jul Dukascopy XAUUSD corpus can be compiled into a deterministic 16-byte-per-tick month-isolated memory-mapped replay surface that preserves raw Bid/Ask chronology and exactly reproduces the validated 250ms/1s acceleration counts.",
   "falsification_condition": "Any source hash/row/order/quote invariant failure, candle-boundary failure, 250ms/1s count mismatch, execution-side mismatch, or August access rejects the lab.",
-  "python_rebuild_ready": false,
+  "python_rebuild_ready": true,
   "mt5_translation_ready": false,
   "sealed_data_status": {
     "august_2026": "SEALED"
@@ -53,7 +53,8 @@
   "source_code": [
     "research/delta/lab/dukas_tick_lab.py",
     "research/delta/lab/run_candidate_month.py",
-    "research/delta/lab/candidate_template.py"
+    "research/delta/lab/candidate_template.py",
+    "research/delta/qa/DELTA_002_DUKASCOPY_TICK_LAB_QA.py"
   ],
   "outputs": [
     "research/delta/lab/DUKASCOPY_TICK_LAB_SOURCE_CATALOG.json",
@@ -62,15 +63,48 @@
   ],
   "reconstruction": {
     "compile_command": "python research/delta/lab/dukas_tick_lab.py compile --month <1..7> --source-dir <DATA> --cache-root <CACHE>",
-    "qa_command": "python research/delta/lab/dukas_tick_lab.py qa --month <1..7> --cache-root <CACHE>",
+    "qa_command": "python research/delta/qa/DELTA_002_DUKASCOPY_TICK_LAB_QA.py --cache-root <CACHE> --lab-dir research/delta/lab --output <QA_JSON>",
     "bar_rule": "direct tick aggregation; integer-ms left-closed/right-open",
     "source_order": "original CSV row order"
   },
   "verification": {
-    "github_readback": false,
-    "hashes_verified": false,
-    "all_months_qa": false,
+    "github_readback": true,
+    "hashes_verified": true,
+    "all_months_qa": true,
+    "drive_acceleration_crosscheck": true,
     "current_state_advanced": false
   },
-  "rollback_target": "DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT"
+  "rollback_target": "DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT",
+  "qa": [
+    "research/delta/qa/DELTA_002_DUKASCOPY_TICK_LAB_QA.py",
+    "research/delta/checkpoints/DELTA_002_LAB_QA.json"
+  ],
+  "expected_results": {
+    "ticks": 57527562,
+    "core_cache_bytes": 920443680,
+    "validated_250ms_bars": 28697391,
+    "validated_1s_bars": 10696540,
+    "months_pass": 7,
+    "august_accessed": false
+  },
+  "source_blobs": {
+    "research/delta/lab/dukas_tick_lab.py": "75a7b3c56236aaaaa6ea82c6c6b8741d971b5b06",
+    "research/delta/lab/run_candidate_month.py": "cf4675d3679823b0a513f9006e350b53cb433840",
+    "research/delta/lab/candidate_template.py": "fce41053e079a325af4e0f1800e773f25e6da86e",
+    "research/delta/qa/DELTA_002_DUKASCOPY_TICK_LAB_QA.py": "449a55f2f97cf8bad3cbf1a2bac45efce1b7b8b1",
+    "research/delta/checkpoints/DELTA_002_LAB_QA.json": "fb431fd7e6fee96b01a4521f3d89294f49b32386",
+    "research/delta/DELTA_002_DUKASCOPY_TICK_LAB_REPORT.md": "d9d29b71a47ca4f088a3e543c5decd27e9c7df31"
+  },
+  "github_commits": [
+    "cd046712345f86ac31e5e91ca3b77f48bc01a0b8",
+    "604bf4d06f9201e62aafd8608d7fd693c38173c1",
+    "f15081aa3953b078fe8c4565a903b786427a5418",
+    "dea2a38c8e6c28c5ee945bf7d4a6889ba6496d3f",
+    "c0101e8c845ea6cf3ba75825af9ba5e5d16e47ce",
+    "552e8a953af566ff2b14b188c3916c67476874a7",
+    "6904da25476407dbc218da8a53b7f38b0bc302ba",
+    "5f2cf266b0429842a342a9d74e0354c7c9f7d225",
+    "7f7b691bfffb3744616486e83ecb1c75914062ad",
+    "a7a012b137131b1432b28e2a7ecf44210446c9ff"
+  ]
 }
