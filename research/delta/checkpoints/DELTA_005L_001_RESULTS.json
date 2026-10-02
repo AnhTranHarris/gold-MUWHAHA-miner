@@ -1,0 +1,64 @@
+{
+  "schema": "delta-005l-001-result-summary-v1",
+  "status": "COMPLETE_NOT_PROMOTED",
+  "historical_simulation_only": true,
+  "focus": "ENTRY_PLUS_INITIAL_HOLD",
+  "source_blob": "76c298de7acbfe83f11e6a17cd4a953fa3d6ee78",
+  "window": {
+    "start_ms_utc": 1767225600000,
+    "end_ms_utc_exclusive": 1768737600000
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "ticks": 4205709,
+  "variants_tested": 7,
+  "runtime_seconds": 2.843741214,
+  "control_005h": {
+    "trades": 16578,
+    "wins": 6131,
+    "gross_profit": 2377.8,
+    "gross_loss": -6050.23,
+    "net_profit": -3672.43,
+    "max_balance_drawdown": 3673.59,
+    "average_hold_seconds": 9.027
+  },
+  "best_net_architecture": {
+    "architecture_id": "EXTENDED_BREATH",
+    "trades": 16533,
+    "wins": 4931,
+    "gross_profit": 2306.86,
+    "gross_loss": -5970.43,
+    "net_profit": -3663.57,
+    "max_balance_drawdown": 3664.96,
+    "average_hold_seconds": 9.3638,
+    "winner_retention_vs_005h_pct": 80.4273,
+    "net_improvement_vs_005h_pct": 0.2413,
+    "gross_loss_improvement_vs_005h_pct": 1.319,
+    "survival_5s_delta_vs_005h_pp": 2.1785,
+    "survival_10s_delta_vs_005h_pp": 2.066,
+    "survival_15s_delta_vs_005h_pp": 1.2062
+  },
+  "closest_balanced_architecture": {
+    "architecture_id": "EXTENDED_BALANCED",
+    "winner_retention_vs_005h_pct": 85.6793,
+    "net_improvement_vs_005h_pct": 0.1125,
+    "gross_loss_improvement_vs_005h_pct": 1.7163,
+    "survival_5s_delta_vs_005h_pp": 0.556,
+    "survival_10s_delta_vs_005h_pp": 0.1828,
+    "survival_15s_delta_vs_005h_pp": -0.5681
+  },
+  "protection_heavy_architecture": {
+    "architecture_id": "EXTENDED_PROTECTIVE",
+    "winner_retention_vs_005h_pct": 82.0747,
+    "net_improvement_vs_005h_pct": 0.0101,
+    "gross_loss_improvement_vs_005h_pct": 3.1179,
+    "survival_5s_delta_vs_005h_pp": -0.2294,
+    "survival_10s_delta_vs_005h_pp": -0.7043
+  },
+  "leverage_conclusion": "MULTI_STAGE_STOP_LADDERS_CAN_IMPROVE_NET_OR_GROSS_LOSS_SLIGHTLY_BUT_CONVERT_TOO_MANY_005H_WINNERS_INTO_EXITS",
+  "next_change_class": "TRAIL_RATCHET_FREQUENCY_STEP",
+  "next_unit": "DELTA_005M_TRAIL_STEP_FREQUENCY",
+  "temporary_sheet_id": "1EgQDfNLrChF-ZzdG_Ou8MxsYG4nIWsvT1KBwM82xWl0",
+  "temporary_sheet_url": "https://docs.google.com/spreadsheets/d/1EgQDfNLrChF-ZzdG_Ou8MxsYG4nIWsvT1KBwM82xWl0/edit?usp=drivesdk",
+  "master_doc_id": "1T9MPuuMsxB5gv7Zz8nvzFmaQy00_7Q-7X_4F2qrcR6k",
+  "august_accessed": false
+}
