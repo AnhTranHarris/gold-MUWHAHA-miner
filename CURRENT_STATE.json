@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "DIRECTION_HOLD_STAGE_A_SPEEDRUN_COMPLETE_REFINEMENT_TRIAGE",
+  "current_phase": "DIRECTION_HOLD_STAGE_A_ALL_SEVEN_FAMILIES_COMPLETE_REFINEMENT_TRIAGE",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "R007_DH06_ACTIVE_MODIFIER_REFINEMENT_DESIGN_AND_REPLAY;_DH02_DH03_CONDITIONAL_SPECIALIST_RESTRUCTURE_QUEUED;_DH04_DH05_REQUIRE_PREREGISTRATION",
+    "next_permitted_step": "R007_DH06_ACTIVE_MODIFIER_REFINEMENT_AND_DH05_CONDITIONAL_SPECIALIST_REFINEMENT;_DH02_DH03_RESTRUCTURE_QUEUED;_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -436,7 +436,7 @@
     "r005_all_immutable_vectors_accounted": true,
     "dh06_refinement_authorized_by_stage_a_result": true,
     "dh02_dh03_global_replacement_not_supported_by_stage_a": true,
-    "dh04_dh05_not_tested_must_not_be_labeled_failed": true,
+    "dh04_dh05_not_tested_must_not_be_labeled_failed": false,
     "dh07_current_adapter_local_tuning_stopped": true,
     "no_primary_metric_lock_created_by_r006": true,
     "r006_state_reconciliation_complete": true,
@@ -445,7 +445,10 @@
     "r006_unresolved_test_families": [
       "DH-04",
       "DH-05"
-    ]
+    ],
+    "r006_all_seven_whitepaper_families_stage_a_disposition_complete": true,
+    "dh04_current_standalone_local_tuning_stopped": true,
+    "dh05_conditional_specialist_refinement_authorized": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -1367,13 +1370,13 @@
       "adaptive_bayesian_optimization_authorized": false
     },
     "r006_report_path": "research/delta/research/DELTA_R006_STAGE_A_DIRECTION_HOLD_SPEEDRUN_RESULTS.md",
-    "r006_report_commit": "829b4c1b1ef422b7f44bafe4990f969f90830f75",
+    "r006_report_commit": "9340cd4d23309909a7f1b6e02f16b9057c37fecc",
     "r006_drive_doc_id": "14zYS_XvsZABHfaBmpZTO2v_xcecARzhUtWFSdubwR3I",
     "r006_drive_doc_url": "https://docs.google.com/document/d/14zYS_XvsZABHfaBmpZTO2v_xcecARzhUtWFSdubwR3I/edit",
     "stage_a_speedrun": {
       "status": "COMPLETE",
       "ticks": 4205709,
-      "vectors_evaluated": 76,
+      "vectors_evaluated": 116,
       "vectors_expected": 76,
       "control": {
         "trades": 16801,
@@ -1413,6 +1416,24 @@
         "observer_results.json": "381775ad047ad57d33389b16a3cc641364c67778381f75e549e098d463c95e36",
         "dh02_results.jsonl": "4147397ec47a78a9af8478771d5279f3419929867d1b38bdb1650ba75161479f",
         "dh03_results.jsonl": "3095a170efcd7cd644e6d2a371bec7723efab12a2c5c8921eba853bde4a4eb34"
+      },
+      "original_r005_vectors": 76,
+      "r006_secondary_vectors": 40,
+      "all_whitepaper_families_completed": true,
+      "secondary_extension": {
+        "status": "COMPLETE",
+        "canonical_parameter_library_sha256": "9cfbdaa9019be2d99f27b5df0d75fd554e573cfa0134df972fb5b7e2b6e4fdf7",
+        "stored_vector_file_sha256": "3687057223837d41a4391a3182d25e8188ce383a3e2496068ca4e15c07ca26fc",
+        "sobol_seed": 208,
+        "vectors_per_family": 20,
+        "families": [
+          "DH-04",
+          "DH-05"
+        ],
+        "result_sha256": {
+          "dh04_results.jsonl": "151cd1c1787b4321da5510a9f54aa0f22fc7ac7fec2b6e1721bef0882df3351d",
+          "dh05_results.jsonl": "38a99c46de7e7613a8732513d33b10ec457872d6e323503eedeb615e1c8234de"
+        }
       }
     },
     "family_decisions": {
@@ -1441,14 +1462,23 @@
         ]
       },
       "DH-04": {
-        "status": "PREREGISTER_AND_TEST_NEXT",
+        "status": "FAIL_CURRENT_STANDALONE_MORE_RESEARCH_ONLY",
         "promoted": false,
-        "tested_in_r005": false
+        "tested": true,
+        "quality_anchor": "DH04-S07",
+        "density_anchor": "DH04-A01",
+        "local_threshold_tuning_stopped": true
       },
       "DH-05": {
-        "status": "PREREGISTER_AND_TEST_NEXT",
+        "status": "REFINE_AS_CONDITIONAL_SPECIALIST",
         "promoted": false,
-        "tested_in_r005": false
+        "tested": true,
+        "refinement_seeds": [
+          "DH05-S06",
+          "DH05-S15",
+          "DH05-S12"
+        ],
+        "balanced_anchor": "DH05-A02"
       },
       "DH-06": {
         "status": "REFINE_NOW_HOLD_FOR_INTEGRATION",
@@ -1469,10 +1499,11 @@
     },
     "refinement_queue": [
       "P0_DH06_ACTIVE_PERSISTENCE_MODIFIER_REFINEMENT",
+      "P1_DH05_FAILED_BREAK_CONDITIONAL_SPECIALIST_REFINEMENT",
       "P1_DH02_CONDITIONAL_SPECIALIST_RESTRUCTURE",
       "P1_DH03_CONDITIONAL_SPECIALIST_RESTRUCTURE",
       "P2_DH01_CONTINUOUS_CONTEXT_REDESIGN",
-      "P2_DH04_DH05_IMMUTABLE_VECTOR_PREREGISTRATION",
+      "P3_DH04_CURRENT_STANDALONE_STOP_MORE_RESEARCH_ONLY",
       "P3_DH07_CURRENT_ADAPTER_STOP"
     ],
     "r006_report_recovery_qa_commit": "829b4c1b1ef422b7f44bafe4990f969f90830f75",
