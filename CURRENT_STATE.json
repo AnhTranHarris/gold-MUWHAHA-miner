@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R025_IN_PROGRESS_MONTH_01_COMPLETE",
+  "current_phase": "R025_IN_PROGRESS_MONTHS_01_02_COMPLETE",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "RESUME_R025_AT_MONTH_02_THEN_FIRST_INCOMPLETE_MONTH;_NO_RETUNING_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "RESUME_R025_AT_MONTH_03_THEN_FIRST_INCOMPLETE_MONTH;_NO_RETUNING_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -2588,10 +2588,12 @@
       "august_2026": "SEALED",
       "mql5_authorized": false,
       "completed_months": [
-        1
+        1,
+        2
       ],
       "result_sha256": {
-        "2026-01": "db492af3e16986a8ffaea35d31ecdceebb25ed27622776c57e510b1949b3655c"
+        "2026-01": "db492af3e16986a8ffaea35d31ecdceebb25ed27622776c57e510b1949b3655c",
+        "2026-02": "c28faa381eb0ca45383ff8404d0b70e0cdc841dfdcd9784a4318114294734e07"
       },
       "promoted": false,
       "metric_lock": false,
@@ -2603,6 +2605,15 @@
           "incremental_net_improvement_vs_p01_pct": 3.78302,
           "trade_retention_vs_r9_pct": 82.989243,
           "winner_retention_vs_r9_pct": 85.195588,
+          "status": "PASS_INCREMENTAL"
+        },
+        "2026-02": {
+          "p01_net_usd": -5535.18,
+          "keep_net_usd": -5317.64,
+          "incremental_net_vs_p01_usd": 217.54,
+          "incremental_net_improvement_vs_p01_pct": 3.930134,
+          "trade_retention_vs_r9_pct": 82.791967,
+          "winner_retention_vs_r9_pct": 82.588516,
           "status": "PASS_INCREMENTAL"
         }
       }
