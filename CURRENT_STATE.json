@@ -5,8 +5,8 @@
   "created_utc": "2026-10-01",
   "active_science_parent": null,
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
-  "first_incomplete_unit": "DELTA_005_JANUARY_CANDIDATE_CAMPAIGN_BOUNDARY_AND_SCOPE_FREEZE",
-  "current_phase": "MAD_SCIENCE_LAB_READY_FOR_OWNER_GOVERNED_CANDIDATE_RESEARCH",
+  "first_incomplete_unit": "DELTA_005_FIRST_JANUARY_CANDIDATE_CAMPAIGN_PLANNING",
+  "current_phase": "RESEARCH_ENVIRONMENT_READY_FIRST_JANUARY_CANDIDATE_PREREGISTRATION_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -248,7 +248,17 @@
     "coinexx_like_surface_is_modeled_not_raw": true,
     "coinexx_like_surface_preserves_dukascopy_midpoint_path": true,
     "coinexx_like_surface_prior_month_warmup_minutes": 90,
-    "mad_science_lab_candidate_ready": true
+    "mad_science_lab_candidate_ready": true,
+    "coinexx_like_dukascopy_surface_ready": true,
+    "default_candidate_research_surface": "DUKAS_COINEXX_LIKE_P75",
+    "required_execution_sensitivity_surfaces": [
+      "DUKAS_COINEXX_LIKE_P50",
+      "DUKAS_COINEXX_LIKE_P75",
+      "DUKAS_COINEXX_LIKE_P90",
+      "DUKAS_NATIVE"
+    ],
+    "dukascopy_native_remains_independent_control": true,
+    "coinexx_like_surface_no_synth_calibration": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
@@ -256,7 +266,7 @@
     "google_doc_url": "https://docs.google.com/document/d/1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g/edit?usp=drivesdk",
     "status": "READY"
   },
-  "next_action": "Before DELTA_005 candidate compute, freeze the exact first-2.5-week January end boundary and the first owner-declared candidate scope/target primary metric(s). Then preregister the candidate/version and run rapid repeated tick-level refinement on DUKAS_COINEXX_LIKE_P75 with P50/P90/DUKAS_NATIVE sensitivity, preserving all active gates and August sealing.",
+  "next_action": "Preregister DELTA_005 as the first owner-governed January candidate campaign. Before compute, freeze the exact end boundary for the first-2.5-week January filter. Use DUKAS_COINEXX_LIKE_P75 as the default research surface, retain P50/P90 sensitivity and DUKAS_NATIVE as the independent robustness control, preserve all GOV-005/006/007/008/009/010/011 rules, and keep August sealed.",
   "mql5_authorized": false,
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_004_COINEXX_LIKE_DUKASCOPY_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
@@ -376,9 +386,9 @@
     "unit_id": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
     "status": "VERIFIED_DURABLE",
     "manifest_path": "research/delta/artifacts/DELTA_004_COINEXX_LIKE_DUKASCOPY_MANIFEST.json",
-    "manifest_blob_sha": "d5ac98784eed6f021d4a2fd3c15e1d09980eea77",
-    "source_path": "research/delta/lab/coinexx_like_surface.py",
-    "source_blob_sha": "07ea98cd18d886645e8d4cdc9a09abe6464993d9",
+    "manifest_blob_sha": "ac08788fa95986b1c4279d20d3420dfa575209aa",
+    "surface_path": "research/delta/lab/coinexx_like_surface.py",
+    "surface_blob_sha": "07ea98cd18d886645e8d4cdc9a09abe6464993d9",
     "spread_profile_path": "research/delta/reference/DELTA_004_COINEXX_SPREAD_PROFILES.json",
     "spread_profile_blob_sha": "e382069e53cb7a507628ac60f3101d95df0d0bda",
     "qa_path": "research/delta/qa/DELTA_004_COINEXX_LIKE_DUKASCOPY_QA.py",
@@ -388,13 +398,27 @@
     "report_path": "research/delta/DELTA_004_COINEXX_LIKE_DUKASCOPY_REPORT.md",
     "report_blob_sha": "5cd88e26bf0807b54ab55c85d0990ed002bbe895",
     "default_profile": "P75",
-    "p50_profile_available": true,
-    "p90_stress_profile_available": true,
-    "aggregate_all_tolerances_pass": true,
-    "monthly_all_tolerances_pass": true,
-    "prior_month_warmup_minutes": 90,
-    "january_cold_start_due_missing_december_2025": true,
-    "dukascopy_native_unchanged": true,
+    "sensitivity_profiles": [
+      "P50",
+      "P90"
+    ],
+    "aggregate_control": {
+      "trades": 234417,
+      "wins": 104294,
+      "losses": 130123,
+      "gross_profit": 29243.07,
+      "gross_loss": -78244.86,
+      "net_profit": -49001.79
+    },
+    "aggregate_error_pct": {
+      "trades": -0.9423318276,
+      "wins": 1.8645309371,
+      "gross_profit": -3.1052115905,
+      "gross_loss_abs": -2.7597538374,
+      "net_loss_abs": -2.5524169299
+    },
+    "all_preregistered_tolerances_pass": true,
+    "dukascopy_native_preserved": true,
     "mt5_translation_ready": false,
     "august_accessed": false
   }
