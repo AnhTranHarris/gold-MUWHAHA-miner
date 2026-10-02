@@ -43,7 +43,8 @@
     "candidate_leverage_research_ledger_contract": "research/delta/governance/DELTA_GOV_013_CANDIDATE_LEVERAGE_AND_CRASH_SAFE_RESEARCH_LEDGER.md",
     "quant_spreadsheet_harvesting_contract": "research/delta/governance/DELTA_GOV_014_QUANT_SPREADSHEET_HARVESTING_AND_CANDIDATE_LOCK_CONTRACT.md",
     "multi_timeframe_trend_survivability_contract": "research/delta/governance/DELTA_GOV_015_MULTI_TIMEFRAME_TREND_WITHIN_TREND_SURVIVABILITY_ASSUMPTION.md",
-    "survivability_gated_profit_exit_contract": "research/delta/governance/DELTA_GOV_016_SURVIVABILITY_GATED_HIGH_PROBABILITY_PROFIT_EXIT_ASSUMPTION.md"
+    "survivability_gated_profit_exit_contract": "research/delta/governance/DELTA_GOV_016_SURVIVABILITY_GATED_HIGH_PROBABILITY_PROFIT_EXIT_ASSUMPTION.md",
+    "three_candidate_capital_maturity_contract": "research/delta/governance/DELTA_GOV_017_THREE_CANDIDATE_MATURITY_GATED_CAPITAL_PRESERVATION_AND_REALIZED_GROWTH_ASSUMPTION.md"
   },
   "drive": {
     "delta_research_folder_id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel",
@@ -323,7 +324,16 @@
     "future_exit_logic_must_be_causal": true,
     "future_exit_logic_may_be_specialist_specific": true,
     "exit_research_status": "DEFERRED_NOT_AUTHORIZED",
-    "exit_metrics_and_thresholds": "PENDING_FUTURE_RESEARCH"
+    "exit_metrics_and_thresholds": "PENDING_FUTURE_RESEARCH",
+    "capital_preservation_soft_before_three_primary_candidate_locks": true,
+    "realized_account_growth_soft_before_three_primary_candidate_locks": true,
+    "three_primary_candidate_maturity_gate_required_for_aggressive_capital_policy": true,
+    "three_primary_candidate_maturity_gate_count": 3,
+    "primary_candidate_lock_gate_distinct_from_primary_metric_locks": true,
+    "aggressive_capital_policy_after_gate_means_preservation_plus_realized_growth_optimization": true,
+    "three_candidate_gate_does_not_auto_authorize_lot_escalation": true,
+    "capital_policy_research_status": "DEFERRED_NOT_AUTHORIZED",
+    "capital_policy_metrics_and_thresholds": "PENDING_FUTURE_RESEARCH"
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -753,6 +763,20 @@
       "metrics_defined": false,
       "research_started": false,
       "exit_research_authorized": false,
+      "active_candidate": null,
+      "august_2026": "SEALED",
+      "mql5_authorized": false
+    },
+    "2026-10-02_three_candidate_capital_maturity": {
+      "status": "ACTIVE_ASSUMPTION_ONLY",
+      "governance_path": "research/delta/governance/DELTA_GOV_017_THREE_CANDIDATE_MATURITY_GATED_CAPITAL_PRESERVATION_AND_REALIZED_GROWTH_ASSUMPTION.md",
+      "governance_commit": "69b3e04a4af85f43eaa09241701c7ab0d10b704b",
+      "purpose": "Softly consider capital preservation and realized account growth before maturity; after three distinct primary candidates are sufficiently locked, unlock aggressive capital preservation and realized-growth optimization as a later research layer.",
+      "required_locked_primary_candidates": 3,
+      "metric_locks_are_separate": true,
+      "metrics_defined": false,
+      "research_started": false,
+      "capital_policy_research_authorized": false,
       "active_candidate": null,
       "august_2026": "SEALED",
       "mql5_authorized": false
