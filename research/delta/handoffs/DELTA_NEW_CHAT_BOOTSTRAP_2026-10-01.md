@@ -235,6 +235,24 @@ The raw Bid/Ask tick stream is execution truth. Derived candle caches are causal
 
 Next phase: a separately preregistered Coinexx/R9 parity calibration covering symbol properties, costs, stop/freeze/fill/deviation behavior, margin/stop-out, and R9 OnTick/order-lifecycle ordering. August remains sealed.
 
+## DELTA_003 Coinexx R9 parity — VERIFIED_DURABLE
+
+Canonical files:
+- `research/delta/lab/coinexx_r9_adapter.py`
+- `research/delta/lab/r9_parity_runner.py`
+- `research/delta/reference/DELTA_003_COINEXX_EXECUTION_CONFIG.json`
+- `research/delta/qa/DELTA_003_COINEXX_R9_PARITY_QA.py`
+- `research/delta/checkpoints/DELTA_003_PARITY_QA.json`
+- `research/delta/DELTA_003_COINEXX_R9_PARITY_REPORT.md`
+
+Full January Coinexx parity: 21 files / 7,699,274 logger rows / zero event mismatches / exact MT5 January accounting (31,915 trades, 13,947 wins, $3,785.28 gross profit, -$10,436.90 gross loss, -$6,651.62 net). July 1 provides a zero-mismatch post-DST cross-check.
+
+Frozen 0.01-lot execution economics: two-decimal XAUUSD, $0.01 point/tick, $1 P/L per $1 price move, -$0.01 commission on entry and exit deals, BUY entry Ask/exit Bid, SELL entry Bid/exit Ask, and protective stops at the first executable quote after crossing. R9's observed-position latch is required before same-minute rearm.
+
+Native Dukascopy is deliberately kept separate: January median native spread is about $0.70 versus Coinexx $0.19, so only about 0.0476% of Dukascopy January ticks satisfy R9's $0.25 spread gate. This is a feed-surface difference, not a parity defect.
+
+Next unit: preregister and build a distinctly labeled Coinexx-like modeled execution/quote-cost surface over the independent Dukascopy path. Do not overwrite DUKAS_NATIVE. August remains sealed.
+
 ## Research objective
 
 Rebuild a high-activity causal Entry+Hold architecture around the R9 evidence base while preserving real chronology, causal execution, and trade velocity.
@@ -251,23 +269,11 @@ Trade velocity is not a cosmetic secondary metric. Any candidate must report:
 - net/PF/expectancy;
 - gross loss and drawdown.
 
-## Recorded next action: DELTA_001
+## Current next action
 
-Run **DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT**.
+Build DELTA_004 as an explicitly modeled Coinexx-like execution/quote-cost surface over Dukascopy chronology while preserving DUKAS_NATIVE unchanged. The modeled surface must be separately labeled, derived only from Coinexx REAL evidence, sensitivity-tested, causal, and August-sealed.
 
-It must:
-- verify both R9 MQL5 source identities and behavior-critical input defaults;
-- verify REAL/SYNTH report availability and roles;
-- verify REAL/SYNTH tick index, daily manifest, validation and paired-corpus availability;
-- verify Dukascopy Jan-Jul canonical hashes;
-- register OVERFIT/ORACLE quarantine;
-- verify DELTA Drive + GitHub write/readback;
-- freeze the initial data walls and research metric schema;
-- produce a complete rebuild-ready DELTA manifest.
-
-DELTA_001 performs no strategy optimization.
-
-## After DELTA_001
+## Subsequent research
 
 The first scientific campaign should decompose R9 into:
 - ENTRY/ACTION timing and directional selection;
