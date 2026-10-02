@@ -10,6 +10,7 @@ US_DST_START_2026_MS=np.int64(1772953200000)
 UK_DST_START_2026_MS=np.int64(1774746000000)
 PROFILE_NAMES=("P50","P75","P90")
 PROFILE_POINTS=np.array([[19,19,19,19],[20,20,21,21],[35,34,23,37]],dtype=np.int64)
+WARMUP_MS=90*60*1000
 
 @njit(cache=True)
 def session_code_2026(t):
@@ -42,13 +43,24 @@ def profile_index(name):
 
 def build_month(cache_root:Path,month:int,profile:str):
     d=cache_root/f"2026_{month:02d}"
-    t=np.load(d/"t_ms.npy",mmap_mode="r");sa=np.load(d/"ask_raw.npy",mmap_mode="r");sb=np.load(d/"bid_raw.npy",mmap_mode="r")
+    t0=np.load(d/"t_ms.npy",mmap_mode="r");sa0=np.load(d/"ask_raw.npy",mmap_mode="r");sb0=np.load(d/"bid_raw.npy",mmap_mode="r")
+    trade_start_ms=int(t0[0]);warmup_ticks=0
+    if month>1:
+        pd=cache_root/f"2026_{month-1:02d}"
+        pt=np.load(pd/"t_ms.npy",mmap_mode="r");pa=np.load(pd/"ask_raw.npy",mmap_mode="r");pb=np.load(pd/"bid_raw.npy",mmap_mode="r")
+        cut=int(pt[-1])-WARMUP_MS;i=int(np.searchsorted(pt,cut,"left"));warmup_ticks=len(pt)-i
+        t=np.concatenate((pt[i:],t0));sa=np.concatenate((pa[i:],sa0));sb=np.concatenate((pb[i:],sb0))
+    else:
+        t=t0;sa=sa0;sb=sb0
     a,b,e2=materialize_quotes(t,sa,sb,profile_index(profile),1000)
-    return t,a,b,e2
+    return t,a,b,e2,trade_start_ms,warmup_ticks,len(t0)
 
 def run_control(cache_root:Path,month:int,profile:str):
-    t,a,b,e2=build_month(cache_root,month,profile);ints,fl=run_raw_r9(t,a,b,1000,0);r=raw_result_dict(ints,fl)
-    r.update({"month":month,"profile":profile.upper(),"ticks":len(t),"surface":"DUKAS_COINEXX_LIKE_MODELED","max_midpoint_error_price":e2/(2*1000.0)})
+    t,a,b,e2,trade_start,warmup_ticks,scored_ticks=build_month(cache_root,month,profile)
+    ints,fl=run_raw_r9(t,a,b,1000,trade_start);r=raw_result_dict(ints,fl)
+    r.update({"month":month,"profile":profile.upper(),"ticks_scored":scored_ticks,"warmup_ticks":warmup_ticks,
+              "warmup_policy":"90m prior-month tail" if month>1 else "cold-start: no Dec-2025 corpus",
+              "surface":"DUKAS_COINEXX_LIKE_MODELED","max_midpoint_error_price":e2/(2*1000.0)})
     return r
 
 def main():
