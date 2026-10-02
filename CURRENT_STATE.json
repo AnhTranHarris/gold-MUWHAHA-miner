@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "INITIAL_RESEARCH_DIRECTION_AND_INITIAL_HOLD_PREBACKTEST_HARVEST",
+  "current_phase": "PREBACKTEST_RESEARCH_HARVEST_DIRECTION_AND_INITIAL_HOLD",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -399,7 +399,12 @@
     "direction_hold_research_result_status": "HYPOTHESIS_FAMILIES_ONLY_NO_TESTING",
     "qualitative_candidate_harvest_allowed": true,
     "qualitative_viability_labels_are_not_performance_evidence": true,
-    "r001_workbook_performance_fields_must_remain_blank_until_replay": true
+    "r001_workbook_performance_fields_must_remain_blank_until_replay": true,
+    "gov014_research_harvesting_started": true,
+    "gov014_strategy_testing_started": false,
+    "pretest_candidate_shortlist_exists": true,
+    "pretest_viability_is_not_performance_validation": true,
+    "tick_backtest_queue_must_remain_unpopulated_until_preregistration": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -1016,5 +1021,34 @@
     "spreadsheet_harvesting_phase": "QUALITATIVE_PREBACKTEST_ONLY",
     "stage_a_preregistration_started": false,
     "heavy_synthesis_status": "DORMANT_NOT_ACTIVATED"
+  },
+  "prebacktest_research": {
+    "id": "DELTA_R002_DIRECTION_HOLD_PREBACKTEST_CANDIDATE_SHORTLIST",
+    "status": "RESEARCH_HARVEST_COMPLETE_NO_TESTING",
+    "github_report_path": "research/delta/research/DELTA_R002_DIRECTION_HOLD_PREBACKTEST_CANDIDATE_SHORTLIST.md",
+    "github_report_commit": "e1ccd4df0c5a67cf58835ac3abd38b14220aea3d",
+    "google_doc_id": "1cVb2UxZ_ROZIFNs7CDkbBfqYzJofH_tLjqaHrVXoJLI",
+    "google_doc_url": "https://docs.google.com/document/d/1cVb2UxZ_ROZIFNs7CDkbBfqYzJofH_tLjqaHrVXoJLI/edit",
+    "workbook_id": "1aOur2ZxPgVVssis-BI0uC9zRrgm0-5vfNG_yhRPYZyk",
+    "workbook_tab": "07 Hypothesis Lab",
+    "workbook_hypothesis_range": "HYP-007..HYP-015",
+    "shortlist": [
+      "HV-01_NESTED_CAUSAL_DIRECTION_STATE",
+      "HV-02_BREAKOUT_RETEST_REBREAK_SPECIALIST",
+      "HV-03_PULLBACK_RECLAIM_REACCELERATION_SPECIALIST",
+      "HV-04_INTRINSIC_TIME_DIRECTIONAL_CHANGE_OVERSHOOT_SPECIALIST",
+      "HV-05_QUOTE_PRESSURE_INITIAL_HOLD_PERSISTENCE",
+      "HV-06_SPECIALIST_AWARE_INITIAL_HOLD_HYSTERESIS",
+      "HV-07_FAILED_BREAK_REVERSAL_SPECIALIST",
+      "HV-08_COMPRESSION_EXPANSION_CONTINUATION_SPECIALIST",
+      "HV-09_REGIME_ROUTER_MULTI_ENTRY_SPECIALIST_CONTROLLER"
+    ],
+    "next_research_only_step": "DEFINE_CAUSAL_STATE_VOCABULARY_AND_EXACT_PRETEST_CANDIDATE_GRAMMAR",
+    "stage_a_preregistration": false,
+    "tick_backtest_queue_populated": false,
+    "tick_testing_started": false,
+    "active_candidate": null,
+    "august_2026": "SEALED",
+    "mql5_authorized": false
   }
 }
