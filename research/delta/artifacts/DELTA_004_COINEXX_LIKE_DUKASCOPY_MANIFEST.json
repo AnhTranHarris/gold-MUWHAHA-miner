@@ -1,7 +1,7 @@
 {
   "schema": "delta-research-unit-manifest-v1",
   "unit_id": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
-  "status": "PREREGISTERED",
+  "status": "VERIFIED_DURABLE",
   "date_utc": "2026-10-01",
   "lineage": "DELTA",
   "parent_checkpoint": "DELTA_003_COINEXX_R9_PARITY_CALIBRATION",
@@ -47,7 +47,8 @@
     "net_loss_abs": 20
   },
   "source_code": [
-    "research/delta/lab/coinexx_like_surface.py"
+    "research/delta/lab/coinexx_like_surface.py",
+    "research/delta/qa/DELTA_004_COINEXX_LIKE_DUKASCOPY_QA.py"
   ],
   "outputs": [
     "research/delta/reference/DELTA_004_COINEXX_SPREAD_PROFILES.json",
@@ -61,13 +62,60 @@
     "no_synth_calibration": true,
     "august_sealed": true
   },
-  "python_rebuild_ready": false,
+  "python_rebuild_ready": true,
   "mt5_translation_ready": false,
   "verification": {
-    "github_readback": false,
-    "p75_aggregate_pass": false,
-    "p75_monthly_pass": false,
-    "current_state_advanced": false
+    "github_readback": true,
+    "p75_aggregate_pass": true,
+    "p75_monthly_pass": true,
+    "current_state_advanced": false,
+    "august_accessed": false
   },
-  "rollback_target": "DELTA_003_COINEXX_R9_PARITY_CALIBRATION"
+  "rollback_target": "DELTA_003_COINEXX_R9_PARITY_CALIBRATION",
+  "source_blobs": {
+    "research/delta/lab/coinexx_like_surface.py": "07ea98cd18d886645e8d4cdc9a09abe6464993d9",
+    "research/delta/reference/DELTA_004_COINEXX_SPREAD_PROFILES.json": "e382069e53cb7a507628ac60f3101d95df0d0bda",
+    "research/delta/qa/DELTA_004_COINEXX_LIKE_DUKASCOPY_QA.py": "3e59b25f113405d72bc1ff35dab94aeebbdd024b",
+    "research/delta/checkpoints/DELTA_004_SURFACE_QA.json": "9b07da64ba1df382774d677efe212e71f71c703b",
+    "research/delta/DELTA_004_COINEXX_LIKE_DUKASCOPY_REPORT.md": "5cd88e26bf0807b54ab55c85d0990ed002bbe895"
+  },
+  "accepted_results": {
+    "default_profile": "P75",
+    "aggregate": {
+      "trades": 234417,
+      "wins": 104294,
+      "losses": 130123,
+      "gross_profit": 29243.07,
+      "gross_loss": -78244.86,
+      "net_profit": -49001.79
+    },
+    "aggregate_error_pct": {
+      "trades": -0.9423318276,
+      "wins": 1.8645309371,
+      "gross_profit": -3.1052115905,
+      "gross_loss_abs": -2.7597538374,
+      "net_loss_abs": -2.5524169299
+    },
+    "monthly_max_abs_error_pct": {
+      "trades": 5.5388738616,
+      "wins": 11.971552746,
+      "gross_profit": 16.6785673631,
+      "gross_loss_abs": 9.6169083652,
+      "net_loss_abs": 14.1664200042
+    },
+    "all_preregistered_tolerances_pass": true,
+    "max_midpoint_quantization_error_price": 0.005,
+    "prior_month_warmup_minutes": 90
+  },
+  "github_commits": [
+    "90628bf517a87695da322c511888bedda8a15e4c",
+    "c6b15310f307176ed7c2121290b1936b79136a76",
+    "50fb6af313ba188d277c855c989b8d63a6bda423",
+    "cdf5d6e7da81e08a5fffee1baf4721da2a7f2a1a",
+    "cbe43f30ff04dae4253c6539d2ef2044948e640f",
+    "7accd2d8272a6da10e98ea97aa4c72b2e45e158b",
+    "8de259c88a40acfe9234ec50e9169458965b055e",
+    "cd7c8d2e460e6fc40d07b06579f08ec4e3363b40",
+    "70f30e81a2113fbc077eed8f35348a94bd676c78"
+  ]
 }
