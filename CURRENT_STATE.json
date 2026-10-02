@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "DIRECTION_HOLD_R014_EXACT_R010_JAN_JUL_VALIDATED_REFINEMENT",
+  "current_phase": "R014_EXACT_R010_JAN_JUL_VALIDATED_GOV018_CYCLE1_ACTIVE",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -353,7 +353,7 @@
     "three_candidate_gate_does_not_auto_authorize_lot_escalation": true,
     "capital_policy_research_status": "DEFERRED_NOT_AUTHORIZED",
     "capital_policy_metrics_and_thresholds": "PENDING_FUTURE_RESEARCH",
-    "heavy_combination_workbook_status": "DORMANT_NOT_CREATED_OR_POPULATED",
+    "heavy_combination_workbook_status": "ACTIVE_CYCLE_1",
     "heavy_combination_workbook_separate_file_required": true,
     "heavy_combination_workbook_mandatory_after_initial_workbook_failure": true,
     "heavy_combination_workbook_early_activation_requires_owner_authorization": true,
@@ -363,8 +363,8 @@
     "heavy_combination_raw_tick_dump_prohibited": true,
     "heavy_combination_resource_escalation_must_be_explicit": true,
     "heavy_combination_no_automatic_system_integration": true,
-    "heavy_combination_workbook_id": null,
-    "heavy_combination_workbook_url": null,
+    "heavy_combination_workbook_id": "1CF15bSAjCDfIyvX3FaaTfjJqRulBZsIhfDUWuIaTSIE",
+    "heavy_combination_workbook_url": "https://docs.google.com/spreadsheets/d/1CF15bSAjCDfIyvX3FaaTfjJqRulBZsIhfDUWuIaTSIE/edit",
     "heavy_candidate_synthesis_workbook_separate": true,
     "heavy_candidate_synthesis_default_state": "DORMANT_NOT_ACTIVATED",
     "heavy_candidate_synthesis_owner_trigger_allowed": true,
@@ -379,7 +379,7 @@
     "heavy_candidate_synthesis_component_ablation_required": true,
     "heavy_candidate_synthesis_raw_tick_dump_prohibited": true,
     "heavy_candidate_synthesis_mt5_reconstructibility_required": true,
-    "heavy_candidate_synthesis_status": "DORMANT_NOT_ACTIVATED",
+    "heavy_candidate_synthesis_status": "ACTIVE_CYCLE_1_EVIDENCE_TRIGGERED",
     "canonical_governance_through": "DELTA_GOV_018",
     "source_of_truth_precedence": [
       "CURRENT_OWNER_INSTRUCTION",
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "R015_CONFIDENCE_TIERED_R010_OWNERSHIP_REFINEMENT;_FLIP_MODERATE_SKIP_EXTREME_WITH_ACTIVITY_PRESERVATION;_NO_MQL5_NO_AUGUST",
+    "next_permitted_step": "GOV018_CYCLE1_FEB_JUL_MONTHLY_REPLAY_OF_8_FROZEN_FORMULAS;_PARENT=R010_EXACT_ROUNDED;_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -1081,7 +1081,7 @@
   "active_research_question": "R9_DIRECTION_PLUS_INITIAL_HOLD_SURVIVABILITY_AND_MULTI_ENTRY_SPECIALIST_ARCHITECTURE",
   "initial_research": {
     "id": "DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN",
-    "status": "R014_EXACT_ROUNDED_R010_JAN_JUL_VALIDATED_NOT_PROMOTED",
+    "status": "R014_EXACT_ROUNDED_R010_VALIDATED_GOV018_HEAVY_SYNTHESIS_ACTIVE",
     "report_path": "research/delta/research/DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN.md",
     "report_commit": "700fa3399c95ff07dad7c210fd34a5c6572543af",
     "active_candidate": null,
@@ -1683,6 +1683,55 @@
       "result_sha256": "26adb8ae896c526e572e44c851f64560d0dd5bc2331163143aa485491ea79ba6",
       "january_script_sha256": "7f212f9c5668a3a6e6cfa343ae94679347ac2e42961d5767bc737575ed462804",
       "month_script_sha256": "d5a043cbd50a675b69cd372755b30dbe3251fc156e88702a196bd03f600b1488"
+    },
+    "r014": {
+      "status": "COMPLETE_NOT_PROMOTED",
+      "drive_doc_id": "157f0lIkp6RxIWELgpKxUwSIsNNJQT7d9ZMzYGyY-zm0",
+      "drive_doc_url": "https://docs.google.com/document/d/157f0lIkp6RxIWELgpKxUwSIsNNJQT7d9ZMzYGyY-zm0/edit",
+      "github_report_path": "research/delta/research/DELTA_R014_EXACT_ROUNDED_R010_JAN_JUL_VALIDATION.md",
+      "github_blob_sha": "edd0554135443e2f1a6edb648ca7d76a67b64bab",
+      "rule": {
+        "micro_ms": 250,
+        "impulse_threshold": -0.55,
+        "h1_bars": 3,
+        "h1_atr_period": 14,
+        "h1_net_atr_threshold": 0.35,
+        "action": "FLIP_AND_SUPPRESS_OWNED_SAME_MINUTE_REARM"
+      },
+      "aggregate": {
+        "r9_trades": 234417,
+        "r010_trades": 203864,
+        "r9_wins": 103097,
+        "r010_wins": 90751,
+        "r9_net": -49001.79,
+        "r010_net": -42668.19,
+        "r9_gross_loss": -78244.86,
+        "r010_gross_loss": -67676.5,
+        "net_loss_improvement_pct": 12.9252421187,
+        "gross_loss_improvement_pct": 13.5067785922,
+        "trade_retention_pct": 86.9663889564,
+        "winner_retention_pct": 88.0248697828
+      },
+      "result_sha256": "26adb8ae896c526e572e44c851f64560d0dd5bc2331163143aa485491ea79ba6"
+    },
+    "heavy_synthesis": {
+      "status": "ACTIVE_CYCLE_1",
+      "trigger": "EVIDENCE_TRIGGERED_GOV007_GOV018",
+      "workbook_id": "1CF15bSAjCDfIyvX3FaaTfjJqRulBZsIhfDUWuIaTSIE",
+      "workbook_url": "https://docs.google.com/spreadsheets/d/1CF15bSAjCDfIyvX3FaaTfjJqRulBZsIhfDUWuIaTSIE/edit",
+      "parent": "R010_EXACT_ROUNDED_DIRECTION_OWNERSHIP",
+      "cycle": 1,
+      "proposals": 48,
+      "promoted_for_monthly_replay": 8,
+      "replay_months": [
+        "2026-02",
+        "2026-03",
+        "2026-04",
+        "2026-05",
+        "2026-06",
+        "2026-07"
+      ],
+      "august": "SEALED"
     }
   },
   "prebacktest_research": {
