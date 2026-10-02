@@ -26,11 +26,12 @@ Prior internal research lineages are outside DELTA scope. Do not read, import, c
 10. Read `research/delta/governance/DELTA_GOV_008_MULTI_SPECIALIST_COMPOSITE_AND_SESSION_AWARE_ASSUMPTION.md`.
 11. Read `research/delta/governance/DELTA_GOV_009_NEWS_EVENT_OPPORTUNITY_AND_IMPACT_HANDLING_ASSUMPTION.md`.
 12. Read `research/delta/governance/DELTA_GOV_010_HIGH_OPPORTUNITY_DENSITY_AND_CANDIDATE_TRADE_CONTRIBUTION_ASSUMPTION.md`.
-13. Read `research/delta/reference/R9_EVIDENCE_REGISTRY.json`.
-14. Read `research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json`.
-15. Read `research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md`.
-16. Verify GitHub branch is `delta` and Drive target is `DELTA_RESEARCH`.
-17. Resume exactly from `CURRENT_STATE.next_action`.
+13. Read `research/delta/governance/DELTA_GOV_011_PROP_STYLE_MAINTENANCE_CAPITAL_STAGING_AND_SMALL_ACCOUNT_SURVIVAL.md`.
+14. Read `research/delta/reference/R9_EVIDENCE_REGISTRY.json`.
+15. Read `research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json`.
+16. Read `research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md`.
+17. Verify GitHub branch is `delta` and Drive target is `DELTA_RESEARCH`.
+18. Resume exactly from `CURRENT_STATE.next_action`.
 
 The first DELTA unit is an evidence/source/parity preflight. No new trading result may become a parent before it passes the DELTA manifest gate.
 
@@ -71,3 +72,7 @@ Read `research/delta/governance/DELTA_GOV_005_PROVISIONAL_CANDIDATE_IMPROVEMENT_
 ## High opportunity-density assumption
 
 `DELTA_GOV_010_HIGH_OPPORTUNITY_DENSITY_AND_CANDIDATE_TRADE_CONTRIBUTION_ASSUMPTION.md` treats high daily opportunity/trade activity as part of the intended system edge. Trading specialists should add unique qualified opportunity capacity within their declared scopes; duplicate proposals do not count as new opportunities. Promotion-grade results must expose daily opportunity/trade distributions so improved headline metrics cannot hide success-by-starvation. Exact hard daily activity floors remain pending owner/data review.
+
+## Maintenance and capital staging
+
+`DELTA_GOV_011_PROP_STYLE_MAINTENANCE_CAPITAL_STAGING_AND_SMALL_ACCOUNT_SURVIVAL.md` separates prop-style risk maintenance from edge discovery. Testing uses fixed 0.01 lots until all primary categories are locked and the owner authorizes a later lot ladder. Starting capital stages are $100,000 at zero locks, $1,000 at one lock, $500 at two or three locks, and $100 when all four primary categories are locked. At or above $1,000 the provisional standard envelope uses a 0.5% planned-loss ceiling, 2.5% daily warning / 4% daily hard stop, and 5% weekly warning / 8% weekly hard stop. Below $1,000, small-account survivability rules are empirically calibrated rather than invented.
