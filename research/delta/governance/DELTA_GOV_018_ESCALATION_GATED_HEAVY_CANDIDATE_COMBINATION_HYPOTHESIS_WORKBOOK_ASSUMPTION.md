@@ -1,3 +1,12 @@
+# SUPERSEDED — DO NOT USE AS ACTIVE DELTA GOVERNANCE
+
+**Superseded on:** 2026-10-02 during continuity QA.  
+**Canonical replacement:** `research/delta/governance/DELTA_GOV_018_RESOURCE_GATED_HEAVY_QUANT_CANDIDATE_SYNTHESIS_AND_SPECULATIVE_COMBINATION_ASSUMPTION.md`
+
+This file is retained only as timeout/restart forensic history. It must not be treated as a second GOV-018 authority. The canonical GOV-018 reflects the completed workbook and the owner's final activation semantics.
+
+---
+
 # DELTA GOV-018 — Escalation-Gated Heavy Candidate Combination Hypothesis Workbook Assumption
 
 **Effective:** 2026-10-02  
