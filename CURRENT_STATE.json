@@ -6,7 +6,7 @@
   "active_science_parent": null,
   "last_verified_durable_unit": "DELTA_BOOTSTRAP_000",
   "first_incomplete_unit": "DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT",
-  "current_phase": "R9_EVIDENCE_LOADING_ACTIVE_SYNTH_REFERENCE_READY",
+  "current_phase": "R9_EVIDENCE_LOADING_ACTIVE_REAL_AND_SYNTH_REFERENCES_READY",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -218,7 +218,7 @@
     "google_doc_url": "https://docs.google.com/document/d/1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g/edit?usp=drivesdk",
     "status": "READY"
   },
-  "next_action": "Use the compact R9 SYNTH reference for benchmark goals and continue the owner-directed R9 evidence-loading sequence. Do not open August.",
+  "next_action": "R9 REAL and SYNTH compact references are ready. Continue owner-directed R9 evidence loading or execute DELTA_001 source/evidence parity preflight when directed. August remains sealed.",
   "mql5_authorized": false,
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_BOOTSTRAP_000_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
@@ -248,6 +248,13 @@
     "blob_sha": "86cb0d55abc29c26065ab18f4676edc1b305dcf5",
     "local_reference_sha256": "7ffed160564bcb7fefbecfb0155aa7100fda4faf63472de909e4451eab22d5b7",
     "tester_sha256": "e5fcf4d6879193fac88e7a8e101db1111d59e1a7f5abfb793c970b06cfce7cc7",
+    "status": "READY"
+  },
+  "r9_real_fast_reference": {
+    "path": "research/delta/reference/R9_REAL_PERFORMANCE_FAST_REFERENCE.json",
+    "blob_sha": null,
+    "local_reference_sha256": "be0fc0c61152239ec1e6065c8a10505b2e746609efede3c500b31f7990ff2461",
+    "tester_sha256": "19d5ffd785beaae2a9d0baa5efb50efcd36a7db635c7ef82957be442429c1064",
     "status": "READY"
   }
 }
