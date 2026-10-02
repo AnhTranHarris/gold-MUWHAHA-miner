@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R027_IN_PROGRESS_MONTHS_01_03_COMPLETE",
+  "current_phase": "R027_IN_PROGRESS_MONTHS_01_04_COMPLETE",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "RESUME_R027_AT_MONTH_04_THEN_FIRST_INCOMPLETE_MONTH;_HARVEST_ONLY_NO_GOVERNOR_TEST_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "RESUME_R027_AT_MONTH_05_THEN_FIRST_INCOMPLETE_MONTH;_HARVEST_ONLY_NO_GOVERNOR_TEST_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -2882,12 +2882,14 @@
       "completed_months": [
         1,
         2,
-        3
+        3,
+        4
       ],
       "result_sha256": {
         "2026-01": "fe7098b1c86c69626e4665b17b876edb66c18c20180cf984bbb1170a4fcc3f8b",
         "2026-02": "b3d5faf0363064137f595924564df979f50b493d034fe69877c7e1a35c1c35a3",
-        "2026-03": "c441c1b6034a4d697dd491a6c67bb3b3214d03a1c297604d8b95d0e3dffdf857"
+        "2026-03": "c441c1b6034a4d697dd491a6c67bb3b3214d03a1c297604d8b95d0e3dffdf857",
+        "2026-04": "6b43040513dba6fc4fbabba93673a3ba39e76cdf4a86f287cb3e527a2104c837"
       },
       "monthly_checkpoints": {
         "2026-01": {
@@ -2931,6 +2933,20 @@
           "not_opposed_expectancy_usd": -0.191123,
           "csv_sha256": "b2bb9b17771fc87fbbeb56ca6a00c7af6fa346c31a691fd35f5a1c2c047c2104",
           "summary_sha256": "c441c1b6034a4d697dd491a6c67bb3b3214d03a1c297604d8b95d0e3dffdf857"
+        },
+        "2026-04": {
+          "events": 3171,
+          "net_usd": -652.94,
+          "expectancy_usd": -0.20591,
+          "win_rate_pct": 44.276254,
+          "opposed_m30_count": 1342,
+          "opposed_m30_net_usd": -281.06,
+          "opposed_expectancy_usd": -0.209434,
+          "not_opposed_count": 1829,
+          "not_opposed_net_usd": -371.88,
+          "not_opposed_expectancy_usd": -0.203324,
+          "csv_sha256": "ba0bef0d6de5175624e5e7a684e88513c09609d1e9bddfdb814d763fc5a7ddea",
+          "summary_sha256": "6b43040513dba6fc4fbabba93673a3ba39e76cdf4a86f287cb3e527a2104c837"
         }
       }
     }
