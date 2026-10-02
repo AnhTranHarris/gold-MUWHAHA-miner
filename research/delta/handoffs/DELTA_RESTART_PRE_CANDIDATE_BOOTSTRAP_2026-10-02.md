@@ -30,7 +30,7 @@ This section supersedes stale restart statements below where they conflict with 
 **Purpose:** authoritative new-chat bootstrap after timeout/context exhaustion  
 **Restart point:** immediately before the first Entry + Initial-Hold candidate/community-research question  
 **Active science parent:** `DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE`  
-**Governance carried forward:** through `DELTA_GOV_013`  
+**Governance carried forward:** through canonical `DELTA_GOV_018`  
 **Active research focus:** ENTRY + INITIAL-HOLD  
 **Deferred focus:** HOLDING-TRADE + EXIT + HIGH-PROFIT  
 **August 2026:** SEALED  
