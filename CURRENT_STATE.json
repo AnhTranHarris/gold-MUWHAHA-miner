@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R025_PREREGISTERED_NOT_EXECUTED",
+  "current_phase": "R025_IN_PROGRESS_MONTH_01_COMPLETE",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "EXECUTE_R025_MONTH_01_THEN_RESUME_FIRST_INCOMPLETE_MONTH;_NO_RETUNING_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "RESUME_R025_AT_MONTH_02_THEN_FIRST_INCOMPLETE_MONTH;_NO_RETUNING_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -2557,7 +2557,7 @@
       "metric_lock": false
     },
     "r025": {
-      "status": "PREREGISTERED_NOT_EXECUTED",
+      "status": "IN_PROGRESS",
       "parent": "R024_M30_KEEP_OWNED",
       "drive_doc_id": "1--WukgAAozEO1HYgwr2LqDhqVw5JR7DNyBrgRn0hZUw",
       "drive_doc_url": "https://docs.google.com/document/d/1--WukgAAozEO1HYgwr2LqDhqVw5JR7DNyBrgRn0hZUw/edit",
@@ -2587,10 +2587,25 @@
       "action_invention": false,
       "august_2026": "SEALED",
       "mql5_authorized": false,
-      "completed_months": [],
-      "result_sha256": {},
+      "completed_months": [
+        1
+      ],
+      "result_sha256": {
+        "2026-01": "db492af3e16986a8ffaea35d31ecdceebb25ed27622776c57e510b1949b3655c"
+      },
       "promoted": false,
-      "metric_lock": false
+      "metric_lock": false,
+      "monthly_checkpoints": {
+        "2026-01": {
+          "p01_net_usd": -5961.11,
+          "keep_net_usd": -5735.6,
+          "incremental_net_vs_p01_usd": 225.51,
+          "incremental_net_improvement_vs_p01_pct": 3.78302,
+          "trade_retention_vs_r9_pct": 82.989243,
+          "winner_retention_vs_r9_pct": 85.195588,
+          "status": "PASS_INCREMENTAL"
+        }
+      }
     }
   },
   "prebacktest_research": {
