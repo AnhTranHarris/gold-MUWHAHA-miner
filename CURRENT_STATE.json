@@ -45,7 +45,8 @@
     "multi_timeframe_trend_survivability_contract": "research/delta/governance/DELTA_GOV_015_MULTI_TIMEFRAME_TREND_WITHIN_TREND_SURVIVABILITY_ASSUMPTION.md",
     "survivability_gated_profit_exit_contract": "research/delta/governance/DELTA_GOV_016_SURVIVABILITY_GATED_HIGH_PROBABILITY_PROFIT_EXIT_ASSUMPTION.md",
     "three_candidate_capital_maturity_contract": "research/delta/governance/DELTA_GOV_017_THREE_CANDIDATE_MATURITY_GATED_CAPITAL_PRESERVATION_AND_REALIZED_GROWTH_ASSUMPTION.md",
-    "heavy_candidate_combination_workbook_contract": "research/delta/governance/DELTA_GOV_018_ESCALATION_GATED_HEAVY_CANDIDATE_COMBINATION_HYPOTHESIS_WORKBOOK_ASSUMPTION.md"
+    "heavy_candidate_combination_workbook_contract": "research/delta/governance/DELTA_GOV_018_ESCALATION_GATED_HEAVY_CANDIDATE_COMBINATION_HYPOTHESIS_WORKBOOK_ASSUMPTION.md",
+    "heavy_quant_candidate_synthesis_contract": "research/delta/governance/DELTA_GOV_018_RESOURCE_GATED_HEAVY_QUANT_CANDIDATE_SYNTHESIS_AND_SPECULATIVE_COMBINATION_ASSUMPTION.md"
   },
   "drive": {
     "delta_research_folder_id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel",
@@ -57,7 +58,9 @@
     "delta003_delta004_bootstrap_revision": "ANLCKQn_BCjSb9mTI9fXrV6V2LI6718G8FRRfFgWJP8iOkePKoVXLdXwAnF73PDTxqsj5ydheHH09-h8W0HJ3sZNYjTp8KNvIislx6_FDk8",
     "delta004_bootstrap_revision": "ANLCKQn_BCjSb9mTI9fXrV6V2LI6718G8FRRfFgWJP8iOkePKoVXLdXwAnF73PDTxqsj5ydheHH09-h8W0HJ3sZNYjTp8KNvIislx6_FDk8",
     "gov012_stage_a_window_bootstrap_revision": "ANLCKQn4Tlz5AtLDb_pdnEyzQY5nlvDZTlHhBnmiyqJQWjwxfytr-DpK8TpuKVPEE6x2Aau9swO9wUNv3aNhGxZMrOS6iJCUCWRvvavT2GM",
-    "gov013_research_ledger_bootstrap_revision": "ANLCKQmdBgqqswoTndlHzZhV78cy1icg6_sH4--GaD_BQpt2hKeO3GPdF0-ZjYHOd6tJQyZpnQDSjmi4RYo1DQDoQtyzED52w1r-dfEM9bg"
+    "gov013_research_ledger_bootstrap_revision": "ANLCKQmdBgqqswoTndlHzZhV78cy1icg6_sH4--GaD_BQpt2hKeO3GPdF0-ZjYHOd6tJQyZpnQDSjmi4RYo1DQDoQtyzED52w1r-dfEM9bg",
+    "heavy_quant_candidate_synthesis_sheet_id": "1NRJBd3rBz2FD6HtN9TW6xT8GUjCyZPAgMt36Tr1GAME",
+    "heavy_quant_candidate_synthesis_sheet_url": "https://docs.google.com/spreadsheets/d/1NRJBd3rBz2FD6HtN9TW6xT8GUjCyZPAgMt36Tr1GAME/edit"
   },
   "research_rules": {
     "entry_hold_and_trade_count_co_primary": true,
@@ -346,7 +349,22 @@
     "heavy_combination_resource_escalation_must_be_explicit": true,
     "heavy_combination_no_automatic_system_integration": true,
     "heavy_combination_workbook_id": null,
-    "heavy_combination_workbook_url": null
+    "heavy_combination_workbook_url": null,
+    "heavy_candidate_synthesis_workbook_separate": true,
+    "heavy_candidate_synthesis_default_state": "DORMANT_NOT_ACTIVATED",
+    "heavy_candidate_synthesis_owner_trigger_allowed": true,
+    "heavy_candidate_synthesis_evidence_trigger_allowed": true,
+    "heavy_candidate_synthesis_mandatory_after_normal_harvest_failure": true,
+    "heavy_candidate_synthesis_specific_reconstructible_interaction_required_for_evidence_trigger": true,
+    "heavy_candidate_synthesis_speculation_label": "HYPOTHESIS_ONLY",
+    "heavy_candidate_synthesis_parent_candidates_per_package": "2-5",
+    "heavy_candidate_synthesis_formula_proposals_per_cycle": "25-100",
+    "heavy_candidate_synthesis_tick_replay_promotions_per_cycle": "5-12_MAX_NORMALLY",
+    "heavy_candidate_synthesis_candidate_provenance_required": true,
+    "heavy_candidate_synthesis_component_ablation_required": true,
+    "heavy_candidate_synthesis_raw_tick_dump_prohibited": true,
+    "heavy_candidate_synthesis_mt5_reconstructibility_required": true,
+    "heavy_candidate_synthesis_status": "DORMANT_NOT_ACTIVATED"
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -809,6 +827,24 @@
       "metrics_defined": false,
       "research_started": false,
       "active_candidate": null,
+      "august_2026": "SEALED",
+      "mql5_authorized": false
+    },
+    "2026-10-02_heavy_quant_candidate_synthesis": {
+      "status": "ACTIVE_ASSUMPTION_WORKBOOK_DORMANT",
+      "governance_path": "research/delta/governance/DELTA_GOV_018_RESOURCE_GATED_HEAVY_QUANT_CANDIDATE_SYNTHESIS_AND_SPECULATIVE_COMBINATION_ASSUMPTION.md",
+      "governance_commit": "17256f9fd2b3b670f26d3ab60e62a41814586a09",
+      "google_sheet_id": "1NRJBd3rBz2FD6HtN9TW6xT8GUjCyZPAgMt36Tr1GAME",
+      "google_sheet_url": "https://docs.google.com/spreadsheets/d/1NRJBd3rBz2FD6HtN9TW6xT8GUjCyZPAgMt36Tr1GAME/edit",
+      "default_state": "DORMANT_NOT_ACTIVATED",
+      "mandatory_trigger": "STANDARD_GOV014_BOUNDED_HARVESTING_FAILS_TO_YIELD_INTEGRATION_VIABLE_CANDIDATE",
+      "optional_early_triggers": [
+        "OWNER_TRIGGER",
+        "SPECIFIC_RECONSTRUCTIBLE_EVIDENCE_TRIGGER"
+      ],
+      "speculation_label": "HYPOTHESIS_ONLY",
+      "research_started": false,
+      "active_synthesized_candidate": null,
       "august_2026": "SEALED",
       "mql5_authorized": false
     }
