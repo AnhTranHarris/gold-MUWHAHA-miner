@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R024_STAGE_A_COMPLETE_M30_KEEP_OWNED_SOLE_MODELED_SURVIVOR",
+  "current_phase": "R025_PREREGISTERED_NOT_EXECUTED",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "R025_EXACT_MONTHLY_JAN_JUL_P75_VALIDATION_OF_R024_M30_KEEP_OWNED;_NO_RETUNING_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "EXECUTE_R025_MONTH_01_THEN_RESUME_FIRST_INCOMPLETE_MONTH;_NO_RETUNING_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -501,7 +501,9 @@
     "r024_stage_a_started": true,
     "r024_complete": true,
     "r024_m30_keep_owned_validation_survivor": true,
-    "r024_threshold_retuning_prohibited": true
+    "r024_threshold_retuning_prohibited": true,
+    "r025_monthly_validation_preregistered": true,
+    "r025_no_retuning": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -2551,6 +2553,42 @@
           "incremental_net_vs_p01_usd": 1.596
         }
       },
+      "promoted": false,
+      "metric_lock": false
+    },
+    "r025": {
+      "status": "PREREGISTERED_NOT_EXECUTED",
+      "parent": "R024_M30_KEEP_OWNED",
+      "drive_doc_id": "1--WukgAAozEO1HYgwr2LqDhqVw5JR7DNyBrgRn0hZUw",
+      "drive_doc_url": "https://docs.google.com/document/d/1--WukgAAozEO1HYgwr2LqDhqVw5JR7DNyBrgRn0hZUw/edit",
+      "github_report_path": "research/delta/research/DELTA_R025_EXACT_M30_KEEP_OWNED_JAN_JUL_VALIDATION.md",
+      "github_commit": "b91d46deff046fe2c8957aec447d9302b00db2f8",
+      "prereg_tab": "45 R025 Prereg",
+      "result_tab": "46 R025 Monthly Results",
+      "script_sha256": "5f60ab95ffb91609b12a1a43f1004d65b21350f18fcc9c6856912e44637cf885",
+      "months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "surface": "P75",
+      "january_warmup": "COLD_START",
+      "later_month_warmup_minutes": 90,
+      "configs": [
+        "R9",
+        "P01_CONTROL",
+        "M30_KEEP_OWNED"
+      ],
+      "threshold_retuning": false,
+      "action_invention": false,
+      "august_2026": "SEALED",
+      "mql5_authorized": false,
+      "completed_months": [],
+      "result_sha256": {},
       "promoted": false,
       "metric_lock": false
     }
