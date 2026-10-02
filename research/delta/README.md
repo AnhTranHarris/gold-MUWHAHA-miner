@@ -92,3 +92,11 @@ A one-time owner-authorized read-only inspection of the R9 Gamma baseline is com
 - `research/delta/reference/R9_MT5_EA_FUNCTIONAL_FAST_REFERENCE.json`
 
 These files define R9's actual state machine, behavior-critical defaults, session/ATR gate, completed-S1 quality gate, virtual minute bracket, market-order execution, stop/trail/max-hold lifecycle, opposite-side same-minute rearm, broker normalization, and explicit absent features. Use these DELTA-owned references instead of reopening legacy Gamma. Gamma access is closed and requires new explicit owner authorization.
+
+## Verified Dukascopy tick lab
+
+`DELTA_002_DUKASCOPY_TICK_LAB` is VERIFIED_DURABLE. Canonical runtime files are under `research/delta/lab/`; QA is `research/delta/checkpoints/DELTA_002_LAB_QA.json`; the report is `research/delta/DELTA_002_DUKASCOPY_TICK_LAB_REPORT.md`.
+
+The lab replays the registered Jan-Jul Dukascopy corpus as exact ordered Bid/Ask ticks. Its hot cache uses 16 bytes/tick (timestamp int64 + Ask int32 + Bid int32), totaling 920,443,680 bytes for 57,527,562 ticks. Every month independently passes source-hash, row-count, quote, causality, execution-side, 250ms-bar-count, and 1s-bar-count QA. Monthly candidate jobs are isolated and atomically checkpointed for crash/time-out recovery.
+
+The lab is broker-neutral but real-quote aware in v1. Coinexx/MT5 R9 execution parity is the next versioned calibration phase. August remains sealed.
