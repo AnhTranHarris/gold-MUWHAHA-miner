@@ -1,0 +1,39 @@
+{
+  "schema": "delta-005b-001-result-summary-v1",
+  "status": "COMPLETE_NOT_PROMOTED",
+  "historical_simulation_only": true,
+  "focus": "ENTRY_PLUS_INITIAL_HOLD",
+  "window": {
+    "start_ms_utc": 1767225600000,
+    "end_ms_utc_exclusive": 1768737600000
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "ticks": 4205709,
+  "variants_tested": 27,
+  "highest_activity": {
+    "retest_band_price": 0.05,
+    "reclaim_buffer_price": 0,
+    "timeout_ms": 1000,
+    "trades": 13856,
+    "wins": 6280,
+    "direct_entries": 13557,
+    "retest_entries": 299,
+    "retest_wins": 133,
+    "retest_win_rate_pct": 44.4816053512,
+    "gross_profit": 1352.95,
+    "gross_loss": -4280.15,
+    "net_profit": -2927.2,
+    "max_balance_drawdown": 2928.71,
+    "average_hold_seconds": 6.5979447171,
+    "trade_retention_vs_parent_pct": 82.4712814713,
+    "win_change_vs_parent_pct": -14.5694463338,
+    "gross_loss_improvement_vs_parent_pct": 19.8926824156,
+    "drawdown_improvement_vs_parent_pct": 22.3118814376
+  },
+  "leverage_conclusion": "Exclusive retest continuation does not recover the opportunities removed by 005A. Retest sleeve win rate remains about 39-44.5%; longer timeout behaves mainly as exclusion. Test failed-break reversal ownership next.",
+  "next_unit": "DELTA_005C_001_FAILED_BREAK_REVERSAL",
+  "temporary_sheet_url": "https://docs.google.com/spreadsheets/d/1V-VHkj1jYPXebOtGcPVlhc81cvuqV4Q7pTl8ZzU37SM/edit?usp=drivesdk",
+  "master_doc_url": "https://docs.google.com/document/d/1T9MPuuMsxB5gv7Zz8nvzFmaQy00_7Q-7X_4F2qrcR6k/edit?usp=drivesdk",
+  "source_blob": "4fcde1912a6011aa974525c45b7899778c72d424",
+  "august_accessed": false
+}
