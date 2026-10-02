@@ -5,8 +5,8 @@
   "created_utc": "2026-10-01",
   "active_science_parent": null,
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
-  "first_incomplete_unit": "DELTA_005_FIRST_JANUARY_CANDIDATE_CAMPAIGN_PLANNING",
-  "current_phase": "RESEARCH_ENVIRONMENT_READY_FIRST_JANUARY_CANDIDATE_PREREGISTRATION_NEXT",
+  "first_incomplete_unit": "DELTA_005_FIRST_JANUARY_CANDIDATE_CAMPAIGN_PREREGISTRATION",
+  "current_phase": "STAGE_A_WINDOW_FROZEN_DELTA_005_PREREGISTRATION_READY",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -38,7 +38,8 @@
     "multi_specialist_contract": "research/delta/governance/DELTA_GOV_008_MULTI_SPECIALIST_COMPOSITE_AND_SESSION_AWARE_ASSUMPTION.md",
     "news_event_contract": "research/delta/governance/DELTA_GOV_009_NEWS_EVENT_OPPORTUNITY_AND_IMPACT_HANDLING_ASSUMPTION.md",
     "high_opportunity_density_contract": "research/delta/governance/DELTA_GOV_010_HIGH_OPPORTUNITY_DENSITY_AND_CANDIDATE_TRADE_CONTRIBUTION_ASSUMPTION.md",
-    "maintenance_capital_contract": "research/delta/governance/DELTA_GOV_011_PROP_STYLE_MAINTENANCE_CAPITAL_STAGING_AND_SMALL_ACCOUNT_SURVIVAL.md"
+    "maintenance_capital_contract": "research/delta/governance/DELTA_GOV_011_PROP_STYLE_MAINTENANCE_CAPITAL_STAGING_AND_SMALL_ACCOUNT_SURVIVAL.md",
+    "january_stage_a_window_contract": "research/delta/governance/DELTA_GOV_012_EXACT_JANUARY_STAGE_A_FILTER_WINDOW.md"
   },
   "drive": {
     "delta_research_folder_id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel",
@@ -99,7 +100,7 @@
     "completed_bar_visible_at_right_edge_only": true,
     "tick_to_candle_python_mt5_parity_required": true,
     "january_filter_first_2_5_weeks": true,
-    "january_filter_exact_end_boundary": "PENDING_OWNER_GOALS",
+    "january_filter_exact_end_boundary": "2026-01-18T12:00:00.000Z",
     "january_filter_required_before_jan_jul": true,
     "jan_jul_month_by_month_bounded_jobs": true,
     "resume_first_incomplete_month": true,
@@ -260,7 +261,16 @@
       "DUKAS_NATIVE"
     ],
     "dukascopy_native_remains_independent_control": true,
-    "coinexx_like_surface_no_synth_calibration": true
+    "coinexx_like_surface_no_synth_calibration": true,
+    "january_filter_start_boundary": "2026-01-01T00:00:00.000Z",
+    "january_filter_start_timestamp_ms_utc": 1767225600000,
+    "january_filter_end_timestamp_ms_utc_exclusive": 1768737600000,
+    "january_filter_duration_days": 17.5,
+    "january_filter_interval_semantics": "LEFT_CLOSED_RIGHT_OPEN",
+    "january_filter_calendar_based_not_trading_day_based": true,
+    "january_filter_warmup": "COLD_START_NO_DECEMBER_2025_DATA",
+    "january_filter_end_position_policy": "FORCE_CLOSE_AT_LAST_ELIGIBLE_EXECUTABLE_QUOTE_BEFORE_END",
+    "january_filter_post_window_ticks_allowed": false
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
@@ -268,7 +278,7 @@
     "google_doc_url": "https://docs.google.com/document/d/1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g/edit?usp=drivesdk",
     "status": "READY"
   },
-  "next_action": "Preregister DELTA_005 as the first owner-governed January candidate campaign. Before compute, freeze the exact end boundary for the first-2.5-week January filter. Use DUKAS_COINEXX_LIKE_P75 as the default research surface, retain P50/P90 sensitivity and DUKAS_NATIVE as the independent robustness control, preserve all GOV-005/006/007/008/009/010/011 rules, and keep August sealed.",
+  "next_action": "Preregister DELTA_005 as the first owner-governed January candidate campaign using the frozen GOV-012 Stage-A interval [2026-01-01T00:00:00Z, 2026-01-18T12:00:00Z), DUKAS_COINEXX_LIKE_P75 default surface, P50/P90 sensitivities, DUKAS_NATIVE robustness control, all active GOV-005 through GOV-011 constraints, and August sealed.",
   "mql5_authorized": false,
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_004_COINEXX_LIKE_DUKASCOPY_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
@@ -425,5 +435,18 @@
     "mt5_translation_ready": false,
     "august_accessed": false,
     "drive_readback": true
+  },
+  "january_stage_a_window": {
+    "status": "FROZEN",
+    "governance_path": "research/delta/governance/DELTA_GOV_012_EXACT_JANUARY_STAGE_A_FILTER_WINDOW.md",
+    "governance_blob_sha": "b396ce070ba52691a2473e30f8fd0ee81820f865",
+    "machine_reference_path": "research/delta/reference/DELTA_STAGE_A_JANUARY_WINDOW.json",
+    "machine_reference_blob_sha": "dd0c313316e890001087826b09909ea9c435c4ee",
+    "start_iso_utc": "2026-01-01T00:00:00.000Z",
+    "end_iso_utc_exclusive": "2026-01-18T12:00:00.000Z",
+    "start_timestamp_ms_utc": 1767225600000,
+    "end_timestamp_ms_utc_exclusive": 1768737600000,
+    "duration_days": 17.5,
+    "end_position_policy": "FORCE_CLOSE_AT_LAST_ELIGIBLE_EXECUTABLE_QUOTE_BEFORE_END"
   }
 }
