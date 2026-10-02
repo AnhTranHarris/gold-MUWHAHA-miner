@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R024_M30_ONLY_ACTION_ABLATION_PREREGISTERED",
+  "current_phase": "R024_STAGE_A_IN_PROGRESS_P50_COMPLETE",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "EXECUTE_R024_P50_P75_P90_THEN_NATIVE_DIAGNOSTIC;_NO_RETUNING_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "RESUME_R024_AT_P75_THEN_P90_THEN_NATIVE;_NO_RETUNING_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -498,7 +498,7 @@
     "r023_c_keep_positive_all_7_months": true,
     "r023_validated_components_not_promoted": true,
     "r024_preregistered_before_results": true,
-    "r024_stage_a_started": false
+    "r024_stage_a_started": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -2384,7 +2384,7 @@
       "interpretation": "ROBUST_CAUSAL_MICRO_EDGES_INSUFFICIENT_EFFECT_SIZE_FOR_PROMOTION"
     },
     "r024": {
-      "status": "PREREGISTERED_NOT_EXECUTED",
+      "status": "IN_PROGRESS",
       "parent": [
         "GOV018_P01",
         "GOV018_P02"
@@ -2418,7 +2418,40 @@
       "threshold_retuning": false,
       "action_invention": false,
       "august_2026": "SEALED",
-      "mql5_authorized": false
+      "mql5_authorized": false,
+      "completed_surfaces": [
+        "P50"
+      ],
+      "result_sha256": {
+        "P50": "1852c64974da3332e0ffd4746064322dc4c6abb527efeaac9664dfa4441e34d8"
+      },
+      "p50_checkpoint": {
+        "M30_KEEP_OWNED": {
+          "incremental_net_vs_p01_usd": 95.55,
+          "incremental_net_pct": 3.4395,
+          "trade_retention_pct": 83.7717,
+          "winner_retention_pct": 88.539,
+          "status": "PASS_SURFACE"
+        },
+        "M30_FLIP_NORMAL": {
+          "incremental_net_vs_p01_usd": -242.36,
+          "status": "FAIL_NET"
+        },
+        "P02_FLIP_OWNED": {
+          "incremental_net_vs_p01_usd": 53.96,
+          "incremental_net_pct": 1.9424,
+          "trade_retention_pct": 83.7896,
+          "winner_retention_pct": 88.4714,
+          "status": "PASS_SURFACE"
+        },
+        "M30_SKIP": {
+          "incremental_net_vs_p01_usd": 455.66,
+          "incremental_net_pct": 16.4024,
+          "trade_retention_pct": 72.7675,
+          "winner_retention_pct": 77.2672,
+          "status": "FAIL_ACTIVITY"
+        }
+      }
     }
   },
   "prebacktest_research": {
