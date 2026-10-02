@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R022_ROBUST_DUAL_ACTION_SUBSETS_PREREGISTERED",
+  "current_phase": "R023_R022_KEEP_SURVIVORS_MONTHLY_VALIDATION_PREREGISTERED",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "EXECUTE_R022_P50_P75_P90_THEN_NATIVE_DIAGNOSTIC;_NO_RETUNING_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "EXECUTE_R023_MONTHS_1_TO_7_CRASH_SAFE;_NO_RETUNING_NO_RULE_MERGE_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -484,7 +484,15 @@
     "r020_complete": true,
     "r020_c04_failed_monthly_robustness": true,
     "r021_preregistered": true,
-    "r021_harvest_started": true
+    "r021_harvest_started": true,
+    "r022_complete": true,
+    "r022_accounting_qc_complete": true,
+    "r022_survivors": [
+      "R022-B-KEEP",
+      "R022-C-KEEP"
+    ],
+    "r023_preregistered_before_results": true,
+    "r023_monthly_replay_started": false
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -2209,7 +2217,7 @@
       }
     },
     "r022": {
-      "status": "PREREGISTERED_NOT_EXECUTED",
+      "status": "COMPLETE_TWO_KEEP_SURVIVORS_ADVANCE",
       "drive_doc_id": "14Oqsq1FPeZzv2U9LXCtgNeAkLmT8_W_MIxii7Enty6A",
       "prereg_tab": "39 R022 Prereg",
       "result_tab": "40 R022 Results",
@@ -2228,7 +2236,67 @@
         "P75",
         "P90"
       ],
-      "native_role": "DIAGNOSTIC_ONLY"
+      "native_role": "DIAGNOSTIC_ONLY",
+      "accounting_qc_script_sha256": "93ebf8d83bcc168425ca11f02a6283c13373581a60c3b569dd27404e34922759",
+      "accepted_result_sha256": {
+        "P50": "c7e72a5420596896a1e7b47b3cc5c9fd4dc2703da6055eb298d757da0d5d463a",
+        "P75": "e17483569b6b8bab1d3beaab8f86ba23a7841cee31543057311848e263dd3ea2",
+        "P90": "af1b3f14cfc6e0152a81aee2f6646b72fc7fc153480e71b5ec418503ba6b5466",
+        "NATIVE": "514af4f01b301953948ef00e971ef52ca148c879a0387672ee5cacffa9d13855"
+      },
+      "survivors": [
+        "R022-B-KEEP",
+        "R022-C-KEEP"
+      ],
+      "failed": [
+        "R022-A-SKIP",
+        "R022-A-KEEP",
+        "R022-B-SKIP",
+        "R022-C-SKIP",
+        "R022-D-SKIP"
+      ],
+      "promoted": false,
+      "metric_lock": false
+    },
+    "r023": {
+      "status": "PREREGISTERED_NOT_EXECUTED",
+      "parent": [
+        "R022-B-KEEP",
+        "R022-C-KEEP",
+        "R016-T06"
+      ],
+      "drive_doc_id": "1XaYp0QQrQ952My5DUxOW4VrMMln8ojGOZsz24mEdsqU",
+      "drive_doc_url": "https://docs.google.com/document/d/1XaYp0QQrQ952My5DUxOW4VrMMln8ojGOZsz24mEdsqU/edit",
+      "github_report_path": "research/delta/research/DELTA_R023_R022_KEEP_SURVIVORS_JAN_JUL_PREREG.md",
+      "github_commit": "236f7572d9b900cbd9c3281696c6cbe9005ff02c",
+      "prereg_tab": "41 R023 Prereg",
+      "result_tab": "42 R023 Monthly Results",
+      "surface": "P75",
+      "months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "january_warmup": "COLD_START",
+      "feb_jul_warmup_minutes": 90,
+      "script_sha256": "f7ed37f205997f8505d43359d622f6a44b26e6f952d28c10cd9cff393ed4273d",
+      "configs": [
+        "R9",
+        "T06",
+        "R022-B-KEEP",
+        "R022-C-KEEP"
+      ],
+      "min_trade_retention_pct": 80,
+      "min_winner_retention_pct": 80,
+      "aggregate_gl_dd_max_deterioration_pct": 5,
+      "threshold_retuning": false,
+      "rule_merge": false,
+      "august_2026": "SEALED",
+      "mql5_authorized": false
     }
   },
   "prebacktest_research": {
