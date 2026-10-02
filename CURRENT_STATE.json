@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "INITIAL_RESEARCH_DIRECTION_AND_INITIAL_HOLD_CAUSAL_GRAMMAR_DOCUMENTED_NO_TESTING",
+  "current_phase": "INITIAL_RESEARCH_DIRECTION_AND_INITIAL_HOLD_MULTIVARIATE_PREREGISTRATION_DESIGN_NO_TESTING",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,13 @@
     "direction_hold_tick_testing_started": false,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "PREREGISTRATION_DESIGN_AND_PARAMETER_SLOT_DEFINITION_NO_TESTING_UNTIL_OWNER_TRANSITION"
+    "next_permitted_step": "GENERATE_IMMUTABLE_PREREGISTERED_CONFIGURATION_VECTORS_AND_STAGE_A_RUN_SHEET_ONLY_AFTER_OWNER_AUTHORIZES_TESTING_TRANSITION",
+    "preregistration_baskets_must_be_multivariate": true,
+    "one_variable_at_a_time_is_not_default": true,
+    "full_cartesian_parameter_sweep_not_default": true,
+    "parameter_search_must_preserve_full_configuration_vectors": true,
+    "parameter_interaction_families_must_be_named_before_replay": true,
+    "activity_retention_must_remain_visible": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -1036,7 +1042,7 @@
   "active_research_question": "R9_DIRECTION_PLUS_INITIAL_HOLD_SURVIVABILITY_AND_MULTI_ENTRY_SPECIALIST_ARCHITECTURE",
   "initial_research": {
     "id": "DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN",
-    "status": "CAUSAL_GRAMMAR_WHITEPAPERS_COMPLETE_NO_TESTING",
+    "status": "MULTIVARIATE_PREREGISTRATION_BASKETS_DOCUMENTED_NO_TESTING",
     "report_path": "research/delta/research/DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN.md",
     "report_commit": "700fa3399c95ff07dad7c210fd34a5c6572543af",
     "active_candidate": null,
@@ -1191,7 +1197,56 @@
       "DH-07_SPECIALIST_AWARE_INITIAL_HOLD_STATE_MACHINE"
     ],
     "source_traceability_status": "WHITEPAPER_SOURCE_ANCHORS_LINKED",
-    "testing": false
+    "testing": false,
+    "r004_report_path": "research/delta/research/DELTA_R004_MULTIVARIATE_PREREGISTRATION_BASKETS.md",
+    "r004_report_commit": "2dde0403d0997a5b7bf832c2c59dfee4b8d9b7a5",
+    "r004_drive_doc_id": "1Yc3urBpxDfgvk4O1pyHCclaQTfgdJbQox6o7t2OrdVs",
+    "r004_drive_doc_url": "https://docs.google.com/document/d/1Yc3urBpxDfgvk4O1pyHCclaQTfgdJbQox6o7t2OrdVs/edit",
+    "preregistration_design": {
+      "status": "DOCUMENTED_NO_TESTING",
+      "strategy": "BOUNDED_ARCHITECTURE_BROAD_MULTIVARIATE_BASKETS",
+      "one_variable_at_a_time_default": false,
+      "exhaustive_cartesian_default": false,
+      "future_continuous_space_coverage": [
+        "SCRAMBLED_SOBOL",
+        "LATIN_HYPERCUBE_WHERE_APPROPRIATE"
+      ],
+      "future_categorical_screening": [
+        "BALANCED_SCREENING",
+        "FRACTIONAL_FACTORIAL_WHERE_APPROPRIATE"
+      ],
+      "interaction_followup": "FOCUSED_HIGHER_RESOLUTION_AFTER_EVIDENCE",
+      "exact_sample_vectors_generated": false,
+      "stage_a_run_sheet_generated": false,
+      "workbook_tabs": [
+        "12 Prereg Baskets",
+        "13 Bounded Variants",
+        "14 Interaction Reservations"
+      ]
+    },
+    "primary_multivariate_baskets": [
+      "DH-01_SHARED_CONTEXT",
+      "DH-02_BREAKOUT_RETEST_REBREAK",
+      "DH-03_PULLBACK_CONTINUATION",
+      "DH-06_QUOTE_PRESSURE_INITIAL_HOLD",
+      "DH-07_SPECIALIST_AWARE_INITIAL_HOLD"
+    ],
+    "secondary_multivariate_baskets": [
+      "DH-04_COMPRESSION_EXPANSION_CONTINUATION",
+      "DH-05_FAILED_BREAK_REVERSAL"
+    ],
+    "structured_combinations_reserved": [
+      "R9_BRACKET+DH01+DH06_OBSERVER+DH07_OBSERVER",
+      "DH02+DH01",
+      "DH02+DH01+DH06",
+      "DH02+DH01+DH06+DH07",
+      "DH03+DH01",
+      "DH03+DH01+DH06",
+      "DH03+DH01+DH06+DH07",
+      "DH04+DH01+DH06+DH07",
+      "DH05+DH01+DH06+DH07"
+    ],
+    "cross_specialist_router_and_novel_formula_synthesis": "GOV018_GATED"
   },
   "prebacktest_research": {
     "status": "SUPERSEDED_TIMEOUT_DUPLICATE_NOT_ACTIVE",
