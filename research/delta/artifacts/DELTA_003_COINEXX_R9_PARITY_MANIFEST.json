@@ -1,0 +1,78 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "DELTA_003_COINEXX_R9_PARITY_CALIBRATION",
+  "status": "PREREGISTERED",
+  "date_utc": "2026-10-01",
+  "lineage": "DELTA",
+  "parent_checkpoint": "DELTA_002_DUKASCOPY_TICK_LAB",
+  "strategy_optimization": false,
+  "hypothesis": "The preserved R9 REAL TickLogger state and MT5 REAL accounting surface can be reproduced closely enough to freeze a causal Coinexx execution adapter around DELTA_002 without altering the underlying market chronology.",
+  "falsification_condition": "Material unexplained state/event/accounting mismatch after evidence-supported calibration, lookahead, quote-side error, or August access blocks parity readiness.",
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "inputs": [
+    {
+      "path": "research/delta/reference/R9_MT5_EA_FUNCTIONAL_FAST_REFERENCE.json",
+      "role": "R9 state-machine specification"
+    },
+    {
+      "path": "research/delta/reference/R9_REAL_PERFORMANCE_FAST_REFERENCE.json",
+      "role": "MT5 REAL aggregate/monthly authority"
+    },
+    {
+      "drive_file_id": "1mF9oUa1sbWj8ack8KRq0iGC17X_kxZJY",
+      "role": "Coinexx R9 REAL 2026-01-02 ticklogger calibration tape"
+    },
+    {
+      "drive_file_id": "1CGwnKCF5gzDUfrb7OZAoqhNwsgY1mwF5",
+      "role": "R9 REAL daily event-count oracle"
+    },
+    {
+      "path": "research/delta/lab/dukas_tick_lab.py",
+      "role": "verified DELTA tick engine"
+    }
+  ],
+  "required_outputs": [
+    "research/delta/lab/coinexx_r9_adapter.py",
+    "research/delta/lab/r9_parity_runner.py",
+    "research/delta/reference/DELTA_003_COINEXX_EXECUTION_CONFIG.json",
+    "research/delta/checkpoints/DELTA_003_PARITY_QA.json",
+    "research/delta/DELTA_003_COINEXX_R9_PARITY_REPORT.md"
+  ],
+  "parity_targets": {
+    "exact": [
+      "source order",
+      "Bid/Ask quote-side semantics",
+      "minute cycle",
+      "right-edge completed S1 visibility",
+      "R9 deterministic state/event logic where evidence exposes it"
+    ],
+    "empirical": [
+      "price-value mapping",
+      "transaction cost",
+      "stop/trail fill accounting",
+      "report economics"
+    ],
+    "aggregate": [
+      "trade count",
+      "winning trade count",
+      "net",
+      "gross profit",
+      "gross loss",
+      "drawdown",
+      "hold-time profile"
+    ],
+    "unresolved_policy": "mark explicitly; do not invent broker properties"
+  },
+  "mt5_translation_ready": false,
+  "python_rebuild_ready": false,
+  "verification": {
+    "github_readback": false,
+    "coinexx_state_parity": false,
+    "coinexx_execution_parity": false,
+    "report_parity": false,
+    "current_state_advanced": false
+  },
+  "rollback_target": "DELTA_002_DUKASCOPY_TICK_LAB"
+}
