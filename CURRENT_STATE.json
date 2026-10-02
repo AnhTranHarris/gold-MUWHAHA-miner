@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "EXECUTE_R021_MONTHS_02_TO_07;_PERSIST_EACH_MONTH;_NO_LIVE_RULE_CHANGE",
+    "next_permitted_step": "EXECUTE_R021_MONTHS_03_TO_07;_PERSIST_EACH_MONTH;_NO_LIVE_RULE_CHANGE",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -2132,10 +2132,12 @@
       "august_2026": "SEALED",
       "mql5_authorized": false,
       "completed_months": [
-        1
+        1,
+        2
       ],
       "month_hashes": {
-        "1": "b3b3840a898b51e122469051bf0817527d4a4fdc360c783b5d3bd2d162f57be9"
+        "1": "b3b3840a898b51e122469051bf0817527d4a4fdc360c783b5d3bd2d162f57be9",
+        "2": "3e9a2e42e8472db3061b51c541074ee59c5f81631b219b26e0bd0841294ee70b"
       },
       "month_summary": {
         "1": {
@@ -2145,6 +2147,14 @@
           "c04_selected": 326,
           "selected_keep_minus_flip_sum": 22.03,
           "selected_positive_pct": 53.3742
+        },
+        "2": {
+          "dual_events": 1192,
+          "nonextreme": 526,
+          "extreme": 666,
+          "c04_selected": 118,
+          "selected_keep_minus_flip_sum": -0.11,
+          "selected_positive_pct": 50
         }
       }
     }
