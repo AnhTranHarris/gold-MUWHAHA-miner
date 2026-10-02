@@ -1,0 +1,37 @@
+{
+  "schema": "delta-001-data-wall-metric-schema-v1",
+  "data_walls": {
+    "jan_jul_2026": "HISTORICALLY_INSPECTED_RESEARCH",
+    "august_2026": "SEALED_BLIND_HOLDOUT",
+    "r9_synth": "REFERENCE_NOT_EXECUTION_TRUTH",
+    "r9_overfit": "QUARANTINED_NEVER_EXECUTION_INPUT"
+  },
+  "timing": {
+    "ticks_authoritative": true,
+    "right_edge": true,
+    "same_timestamp_source_order": true,
+    "bid_ask_execution": true
+  },
+  "required_metrics": [
+    "opportunity_count",
+    "selected_trade_count",
+    "trade_count_retention",
+    "winning_trade_count",
+    "losing_trade_count",
+    "net_profit",
+    "gross_profit",
+    "gross_loss",
+    "profit_factor",
+    "average_trade",
+    "max_balance_drawdown",
+    "max_equity_drawdown",
+    "entry_quality",
+    "hold_persistence",
+    "monthly_metrics"
+  ],
+  "source_roles": {
+    "R9_REAL": "STARTING_BASELINE",
+    "R9_SYNTH": "PERFORMANCE_REFERENCE",
+    "DUKASCOPY": "INDEPENDENT_CAUSAL_REPLAY"
+  }
+}
