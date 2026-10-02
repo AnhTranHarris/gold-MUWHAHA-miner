@@ -1,0 +1,49 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "DELTA_005M_001_TRAIL_STEP_FREQUENCY",
+  "status": "PREREGISTERED",
+  "historical_simulation_only": true,
+  "live_deployment_authorized": false,
+  "date_utc": "2026-10-02",
+  "focus": "ENTRY_PLUS_INITIAL_HOLD",
+  "parent_findings": [
+    "DELTA_005H_001",
+    "DELTA_005I_001",
+    "DELTA_005K_001",
+    "DELTA_005L_001"
+  ],
+  "window": {
+    "start_ms_utc": 1767225600000,
+    "end_ms_utc_exclusive": 1768737600000
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "fixed": {
+    "hard_stop_price": 0.3,
+    "trail_activation_price": 0.3,
+    "trail_distance_price": 0.03,
+    "max_hold_seconds": 30
+  },
+  "grid": {
+    "trail_step_price": [
+      0,
+      0.03,
+      0.05,
+      0.1,
+      0.15
+    ],
+    "min_update_interval_ms": [
+      0,
+      250,
+      500,
+      1000
+    ],
+    "variants": 20
+  },
+  "control": {
+    "trail_step_price": 0,
+    "min_update_interval_ms": 0,
+    "expected_parent": "DELTA_005H"
+  },
+  "mature_hold_exit_high_profit_optimization": false,
+  "august_2026": "SEALED"
+}
