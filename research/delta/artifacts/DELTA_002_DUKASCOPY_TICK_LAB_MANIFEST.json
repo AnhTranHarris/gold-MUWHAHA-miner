@@ -72,7 +72,8 @@
     "hashes_verified": true,
     "all_months_qa": true,
     "drive_acceleration_crosscheck": true,
-    "current_state_advanced": true
+    "current_state_advanced": true,
+    "drive_readback": true
   },
   "rollback_target": "DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT",
   "qa": [
@@ -107,5 +108,16 @@
     "7f7b691bfffb3744616486e83ecb1c75914062ad",
     "a7a012b137131b1432b28e2a7ecf44210446c9ff"
   ],
-  "current_state_commit": "5a0a6b3e41bc1bbf08e41bd962b4a87cf3ba34ba"
+  "current_state_commit": "5a0a6b3e41bc1bbf08e41bd962b4a87cf3ba34ba",
+  "drive_artifacts": [
+    {
+      "role": "validated acceleration corpus",
+      "folder_id": "1AaiWslB4E9dfny927qjBVktMcW5Pj45v"
+    },
+    {
+      "role": "DELTA bootstrap mirror",
+      "document_id": "1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g",
+      "revision_id": "ANLCKQluUgLGLu9A7yiH2b5S99pUpi1ixxAilSj5uIFZnCFX1IwYnC8cqLhdJejUNJ7BfBpDr7T5Ap503rFBhZzmnV5XWxjvbjW29fvbWEs"
+    }
+  ]
 }
