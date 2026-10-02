@@ -4,9 +4,9 @@
   "branch": "delta",
   "created_utc": "2026-10-01",
   "active_science_parent": null,
-  "last_verified_durable_unit": "DELTA_005I_001_EARLY_BREATHING_TRAIL_DISTANCE",
-  "first_incomplete_unit": "DELTA_005J_001_STATE_CONDITIONED_INITIAL_PROTECTION",
-  "current_phase": "DELTA_005_ENTRY_INITIAL_HOLD_005H_BREAKTHROUGH_005I_NEGATIVE_005J_NEXT",
+  "last_verified_durable_unit": "DELTA_005J_001_STATE_CONDITIONED_INITIAL_PROTECTION",
+  "first_incomplete_unit": "DELTA_005K_001_PROTECTION_BENEFIT_FORENSIC_DIFFERENTIAL",
+  "current_phase": "DELTA_005_ENTRY_INITIAL_HOLD_005J_COMPLETE_005K_FORENSIC_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -292,7 +292,7 @@
     "google_doc_url": "https://docs.google.com/document/d/1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g/edit?usp=drivesdk",
     "status": "READY"
   },
-  "next_action": "Handle DELTA_005J as a separate small unit. Test state-conditioned initial protection that uses the 005H activation-delay breakthrough only where the 005E accepted-consolidation state supports extra breathing room. Keep original R9 entry logic, hard stop, and mature Hold/Exit/High-Profit behavior frozen. Persist preregistration, compute, Sheet, and result before starting any later unit. August remains sealed.",
+  "next_action": "Preregister and run DELTA_005K as a paired counterfactual forensic discovery unit. Replay the same original R9-style Stage-A entries under baseline early protection and a fixed looser-protection treatment, use treatment benefit only as a retrospective label, analyze causal entry/early-horizon states with support-aware 2D matrices, and do not tune DELTA_005J thresholds further. August remains sealed.",
   "mql5_authorized": false,
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_004_COINEXX_LIKE_DUKASCOPY_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
@@ -517,5 +517,29 @@
     "experiment_blob_sha": "8f22b1ff287cfce3d745587e981ec77e839a60d0",
     "temporary_sheet_id": "1Q0QvgdOX5Nx96YdnLeS9XaAosz7U_kBwx4hMXYdk2Ck",
     "leverage_conclusion": "EARLY_TRAIL_DISTANCE_IS_LOWER_LEVERAGE_THAN_ACTIVATION"
+  },
+  "delta_005_entry_initial_hold": {
+    "status": "ACTIVE",
+    "focus": "ENTRY + INITIAL-HOLD",
+    "deferred_focus": "HOLDING-TRADE + EXIT + HIGH-PROFIT",
+    "completed_units": [
+      "DELTA_005A_001",
+      "DELTA_005B_001",
+      "DELTA_005C_001",
+      "DELTA_005D_001",
+      "DELTA_005E_001",
+      "DELTA_005F_001",
+      "DELTA_005G_001",
+      "DELTA_005H_001",
+      "DELTA_005I_001",
+      "DELTA_005J_001"
+    ],
+    "latest_unit": "DELTA_005J_001_STATE_CONDITIONED_INITIAL_PROTECTION",
+    "latest_checkpoint_path": "research/delta/checkpoints/DELTA_005J_001_RESULTS.json",
+    "latest_report_path": "research/delta/DELTA_005J_001_STATE_CONDITIONED_PROTECTION_REPORT.md",
+    "latest_sheet_id": "1-JbrciPz3J0yeZhZwo9ZPdMOQMPAAuNtKm4Q8doNi8c",
+    "latest_sheet_url": "https://docs.google.com/spreadsheets/d/1-JbrciPz3J0yeZhZwo9ZPdMOQMPAAuNtKm4Q8doNi8c/edit?usp=drivesdk",
+    "latest_finding": "State-conditioned loose protection improves survival with less collateral damage than global loose protection, but best net improvement is only 0.67%; accepted-consolidation predicts survival more strongly than final profitability.",
+    "next_unit": "DELTA_005K_001_PROTECTION_BENEFIT_FORENSIC_DIFFERENTIAL"
   }
 }
