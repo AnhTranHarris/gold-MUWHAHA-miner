@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R024_STAGE_A_IN_PROGRESS_P50_P75_P90_COMPLETE",
+  "current_phase": "R024_STAGE_A_COMPLETE_M30_KEEP_OWNED_SOLE_MODELED_SURVIVOR",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "RESUME_R024_AT_NATIVE_DIAGNOSTIC_ONLY;_NO_RETUNING_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "R025_EXACT_MONTHLY_JAN_JUL_P75_VALIDATION_OF_R024_M30_KEEP_OWNED;_NO_RETUNING_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -498,7 +498,10 @@
     "r023_c_keep_positive_all_7_months": true,
     "r023_validated_components_not_promoted": true,
     "r024_preregistered_before_results": true,
-    "r024_stage_a_started": true
+    "r024_stage_a_started": true,
+    "r024_complete": true,
+    "r024_m30_keep_owned_validation_survivor": true,
+    "r024_threshold_retuning_prohibited": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -2384,7 +2387,7 @@
       "interpretation": "ROBUST_CAUSAL_MICRO_EDGES_INSUFFICIENT_EFFECT_SIZE_FOR_PROMOTION"
     },
     "r024": {
-      "status": "IN_PROGRESS",
+      "status": "COMPLETE",
       "parent": [
         "GOV018_P01",
         "GOV018_P02"
@@ -2392,7 +2395,7 @@
       "drive_doc_id": "1bc0h303EyDstcI2ToC9uAoFOk8ywBFecTi7pISv9GqQ",
       "drive_doc_url": "https://docs.google.com/document/d/1bc0h303EyDstcI2ToC9uAoFOk8ywBFecTi7pISv9GqQ/edit",
       "github_report_path": "research/delta/research/DELTA_R024_M30_ONLY_ACTION_ABLATION.md",
-      "github_commit": "e96a8ebe36637bbefb86870a1a33a6d93af0a936",
+      "github_commit": "eb70bd3a62ee57a42e8fc9999dd9a8cb1e6378dc",
       "prereg_tab": "43 R024 Prereg",
       "result_tab": "44 R024 Results",
       "script_sha256": "5a5e0ddab9703a088ad3fd1cd3ba2447f69ec972e1671c2b528625dc1ae23588",
@@ -2422,12 +2425,14 @@
       "completed_surfaces": [
         "P50",
         "P75",
-        "P90"
+        "P90",
+        "NATIVE_DIAGNOSTIC"
       ],
       "result_sha256": {
         "P50": "1852c64974da3332e0ffd4746064322dc4c6abb527efeaac9664dfa4441e34d8",
         "P75": "31ce6f4db647c69b483e9ff2f2466dac7a999a2d5e4a1918c92661bdccce6f15",
-        "P90": "71579b3326573c76e0d70734251171c8feaedf0ed701c0641997fa5b7c7f1724"
+        "P90": "71579b3326573c76e0d70734251171c8feaedf0ed701c0641997fa5b7c7f1724",
+        "NATIVE": "dc382a59dbb62dfcf5f7b55465bafb76adcc91ab4d649064128b101853dc45f0"
       },
       "p50_checkpoint": {
         "M30_KEEP_OWNED": {
@@ -2506,7 +2511,48 @@
           "winner_retention_pct": 75.654243,
           "status": "FAIL_ACTIVITY"
         }
-      }
+      },
+      "modeled_surface_survivor": "M30_KEEP_OWNED",
+      "cross_surface_decision": {
+        "P01_CONTROL": "CONTROL",
+        "M30_KEEP_OWNED": "SOLE_MODELED_SURVIVOR",
+        "M30_FLIP_NORMAL": "FAIL_NET_ALL_MODELED",
+        "P02_FLIP_OWNED": "FAIL_P90",
+        "M30_SKIP": "FAIL_ACTIVITY_ALL_MODELED"
+      },
+      "native_checkpoint": {
+        "P01_CONTROL": {
+          "trades": 91,
+          "wins": 20,
+          "net_profit_usd": -39.08
+        },
+        "M30_KEEP_OWNED": {
+          "trades": 91,
+          "wins": 20,
+          "net_profit_usd": -39.08,
+          "incremental_net_vs_p01_usd": 0
+        },
+        "M30_FLIP_NORMAL": {
+          "trades": 99,
+          "wins": 15,
+          "net_profit_usd": -53.229,
+          "incremental_net_vs_p01_usd": -14.149
+        },
+        "P02_FLIP_OWNED": {
+          "trades": 91,
+          "wins": 15,
+          "net_profit_usd": -47.172,
+          "incremental_net_vs_p01_usd": -8.092
+        },
+        "M30_SKIP": {
+          "trades": 77,
+          "wins": 15,
+          "net_profit_usd": -37.484,
+          "incremental_net_vs_p01_usd": 1.596
+        }
+      },
+      "promoted": false,
+      "metric_lock": false
     }
   },
   "prebacktest_research": {
