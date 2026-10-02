@@ -42,7 +42,8 @@
     "january_stage_a_window_contract": "research/delta/governance/DELTA_GOV_012_EXACT_JANUARY_STAGE_A_FILTER_WINDOW.md",
     "candidate_leverage_research_ledger_contract": "research/delta/governance/DELTA_GOV_013_CANDIDATE_LEVERAGE_AND_CRASH_SAFE_RESEARCH_LEDGER.md",
     "quant_spreadsheet_harvesting_contract": "research/delta/governance/DELTA_GOV_014_QUANT_SPREADSHEET_HARVESTING_AND_CANDIDATE_LOCK_CONTRACT.md",
-    "multi_timeframe_trend_survivability_contract": "research/delta/governance/DELTA_GOV_015_MULTI_TIMEFRAME_TREND_WITHIN_TREND_SURVIVABILITY_ASSUMPTION.md"
+    "multi_timeframe_trend_survivability_contract": "research/delta/governance/DELTA_GOV_015_MULTI_TIMEFRAME_TREND_WITHIN_TREND_SURVIVABILITY_ASSUMPTION.md",
+    "survivability_gated_profit_exit_contract": "research/delta/governance/DELTA_GOV_016_SURVIVABILITY_GATED_HIGH_PROBABILITY_PROFIT_EXIT_ASSUMPTION.md"
   },
   "drive": {
     "delta_research_folder_id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel",
@@ -313,7 +314,16 @@
     "multi_timeframe_trend_must_be_causal": true,
     "multi_timeframe_trend_must_use_tick_rooted_completed_bar_visibility": true,
     "multi_timeframe_trend_must_be_reconstructible": true,
-    "multi_timeframe_trend_metrics_and_thresholds": "PENDING_FUTURE_RESEARCH"
+    "multi_timeframe_trend_metrics_and_thresholds": "PENDING_FUTURE_RESEARCH",
+    "profit_exit_highest_probability_safely_attainable_zone_assumption": true,
+    "profit_optimization_is_downstream_of_survivability": true,
+    "trade_maturity_required_before_advanced_profit_exit_optimization": true,
+    "survivability_has_veto_over_profit_pursuit": true,
+    "max_favorable_excursion_is_not_live_exit_objective": true,
+    "future_exit_logic_must_be_causal": true,
+    "future_exit_logic_may_be_specialist_specific": true,
+    "exit_research_status": "DEFERRED_NOT_AUTHORIZED",
+    "exit_metrics_and_thresholds": "PENDING_FUTURE_RESEARCH"
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -731,6 +741,18 @@
       "purpose": "Require hierarchical trend-within-trend awareness for trade survivability in addition to session/news context.",
       "metrics_defined": false,
       "research_started": false,
+      "active_candidate": null,
+      "august_2026": "SEALED",
+      "mql5_authorized": false
+    },
+    "2026-10-02_profitability_exit_survivability_assumption": {
+      "status": "ACTIVE_ASSUMPTION_ONLY",
+      "governance_path": "research/delta/governance/DELTA_GOV_016_SURVIVABILITY_GATED_HIGH_PROBABILITY_PROFIT_EXIT_ASSUMPTION.md",
+      "governance_commit": "29b98fe61ea8d879de7f3d792716e9ba849b1cd5",
+      "purpose": "Require future profit exits to target the highest-probability safely attainable profit zone only after survivability and trade maturity are reliable.",
+      "metrics_defined": false,
+      "research_started": false,
+      "exit_research_authorized": false,
       "active_candidate": null,
       "august_2026": "SEALED",
       "mql5_authorized": false
