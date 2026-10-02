@@ -65,3 +65,38 @@ Accepted execution script SHA-256:
 
 The original prereg script hash remains preserved in the Drive document for provenance.
 
+## Jan–Jul result
+
+All seven monthly P75 jobs completed with exact R9/T06 control parity.
+
+| Month | C04 Δ net vs T06 | C04 selected KEEP |
+|---|---:|---:|
+| Jan | +$22.53 | 326 |
+| Feb | -$0.11 | 118 |
+| Mar | -$28.31 | 242 |
+| Apr | +$3.92 | 204 |
+| May | -$18.57 | 233 |
+| Jun | -$18.60 | 216 |
+| Jul | +$5.40 | 185 |
+
+Aggregate:
+- R9: 234,417 trades; 103,097 winners; GL -$78,244.86; net -$49,001.79.
+- T06: 198,029 trades; 87,978 winners; GL -$65,816.57; net -$41,531.29.
+- C04: 198,023 trades; 87,928 winners; GL -$65,849.78; net -$41,565.03.
+- C04 selected KEEP events: 1,524.
+
+C04 vs T06:
+- net: **-$33.74 worse**
+- incremental net-loss closure: **-0.08124%**
+- gross loss: **-$33.21 worse**
+- incremental GL closure: **-0.05046%**
+- trade count difference: -6
+- winner difference: -50
+
+**Decision:** R019-C04 fails monthly robustness. No promotion and no metric lock.
+
+The DUAL ownership hypothesis remains open because the same KEEP action helps January/April/July and hurts March/May/June. Next step is causal cross-month decomposition of the selected DUAL events, not C04 threshold retuning.
+
+Accepted execution script:
+`f28b4235082201cd6a965e896ce78a2ca5268685cf555de654ca9bbee289c219`
+
