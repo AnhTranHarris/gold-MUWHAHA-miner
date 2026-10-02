@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R014_EXACT_R010_JAN_JUL_VALIDATED_GOV018_CYCLE1_ACTIVE",
+  "current_phase": "DIRECTION_HOLD_R015_CONFIDENCE_TIER_PREREGISTERED",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "GOV018_CYCLE1_FEB_JUL_MONTHLY_REPLAY_OF_8_FROZEN_FORMULAS;_PARENT=R010_EXACT_ROUNDED;_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "EXECUTE_R015_STAGE_A_P50_P75_P90_THEN_PERSIST_BEFORE_ANY_MONTHLY_VALIDATION",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -465,7 +465,9 @@
     "r010_discovery_magnitude_shrunk_to_aggregate_pct": 12.9252,
     "r010_still_below_high_value_30pct_target": true,
     "r010_still_not_promoted": true,
-    "r014_confidence_tier_refinement_authorized": true
+    "r014_confidence_tier_refinement_authorized": true,
+    "r015_preregistered_before_results": true,
+    "r015_result_status": "NOT_EXECUTED"
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -1081,7 +1083,7 @@
   "active_research_question": "R9_DIRECTION_PLUS_INITIAL_HOLD_SURVIVABILITY_AND_MULTI_ENTRY_SPECIALIST_ARCHITECTURE",
   "initial_research": {
     "id": "DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN",
-    "status": "R014_EXACT_ROUNDED_R010_VALIDATED_GOV018_HEAVY_SYNTHESIS_ACTIVE",
+    "status": "R015_CONFIDENCE_TIER_PREREGISTERED_NOT_EXECUTED",
     "report_path": "research/delta/research/DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN.md",
     "report_commit": "700fa3399c95ff07dad7c210fd34a5c6572543af",
     "active_candidate": null,
@@ -1732,6 +1734,38 @@
         "2026-07"
       ],
       "august": "SEALED"
+    },
+    "r015_prereg_path": "research/delta/research/DELTA_R015_CONFIDENCE_TIERED_OWNERSHIP_PREREG.md",
+    "r015_prereg_commit": "c5845546c237b3f7d514b888dbe7edeb504222aa",
+    "r015_confidence_tier": {
+      "status": "PREREGISTERED_NOT_EXECUTED",
+      "config_count": 24,
+      "base_condition": "I250 <= -0.55 OR H1NetATR > 0.35",
+      "h1_extreme_levels": [
+        0.7,
+        1.05,
+        1.4
+      ],
+      "micro_extreme_levels": [
+        -0.75,
+        -0.9
+      ],
+      "extreme_forms": [
+        "OR",
+        "AND",
+        "H1_ONLY",
+        "MICRO_ONLY"
+      ],
+      "moderate_action": "FLIP_AND_OWNED_NO_REARM",
+      "extreme_action": "SKIP_AND_SUPPRESS_CURRENT_M1",
+      "surfaces": [
+        "P50",
+        "P75",
+        "P90"
+      ],
+      "min_trade_retention_pct": 80,
+      "min_winner_retention_pct": 80,
+      "old_timed_out_tier_batch_ignored": true
     }
   },
   "prebacktest_research": {
