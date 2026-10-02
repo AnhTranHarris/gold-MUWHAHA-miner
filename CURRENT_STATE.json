@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R019_DUAL_TOXICITY_HARVEST_COMPLETE_FOUR_CONFIGS_PREREGISTERED",
+  "current_phase": "R020_EXACT_R019_C04_JAN_JUL_P75_PREREGISTERED",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "EXECUTE_R019_C01_TO_C04_P50_P75_P90_THEN_NATIVE_DIAGNOSTIC;_NO_THRESHOLD_RETUNING_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "EXECUTE_R020_MONTHS_01_TO_07_ONE_MONTH_PER_CRASH_SAFE_JOB;_NO_THRESHOLD_RETUNING_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -476,7 +476,11 @@
     "r017_result_status": "NOT_EXECUTED",
     "r017_branch_attribution_complete": true,
     "r017_t06_action_architecture_retained": true,
-    "r017_dual_non_extreme_toxic_subset_signal": true
+    "r017_dual_non_extreme_toxic_subset_signal": true,
+    "r019_complete": true,
+    "r019_c04_advances_to_monthly_validation": true,
+    "r020_preregistered": true,
+    "r020_monthly_replay_started": false
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -1901,7 +1905,7 @@
       }
     },
     "r019": {
-      "status": "PREREGISTERED_NOT_EXECUTED",
+      "status": "COMPLETE_C04_ADVANCES",
       "drive_doc_id": "1HR7_ycMXib5tyJLPbnlX96VlcIjXDFK7mTfzFt80Wqo",
       "drive_doc_url": "https://docs.google.com/document/d/1HR7_ycMXib5tyJLPbnlX96VlcIjXDFK7mTfzFt80Wqo/edit",
       "harvest_tab": "31 R019 Dual Harvest",
@@ -1933,7 +1937,80 @@
       "native_role": "DIAGNOSTIC_ONLY",
       "min_trade_retention_pct": 80,
       "min_winner_retention_pct": 80,
-      "advance_rule": "NET_BEATS_T06_ALL_3_MODELED_SURFACES_AND_NO_GT5PCT_GL_DD_DETERIORATION"
+      "advance_rule": "NET_BEATS_T06_ALL_3_MODELED_SURFACES_AND_NO_GT5PCT_GL_DD_DETERIORATION",
+      "leader": "R019-C04",
+      "passing_configs": [
+        "R019-C02",
+        "R019-C04"
+      ],
+      "failed_configs": [
+        "R019-C01",
+        "R019-C03"
+      ],
+      "leader_modeled_surface_metrics": {
+        "P50": {
+          "trade_retention_pct": 84.036664,
+          "winner_retention_pct": 88.844515,
+          "incremental_net_vs_t06_usd": 18.15,
+          "incremental_net_improvement_pct": 0.667753,
+          "incremental_gl_improvement_pct": 0.308258,
+          "incremental_dd_improvement_pct": 0.667498
+        },
+        "P75": {
+          "trade_retention_pct": 84.155705,
+          "winner_retention_pct": 89.321181,
+          "incremental_net_vs_t06_usd": 17.37,
+          "incremental_net_improvement_pct": 0.598124,
+          "incremental_gl_improvement_pct": 0.278731,
+          "incremental_dd_improvement_pct": 0.59792
+        },
+        "P90": {
+          "trade_retention_pct": 80.006676,
+          "winner_retention_pct": 83.489097,
+          "incremental_net_vs_t06_usd": 7.78,
+          "incremental_net_improvement_pct": 1.383234,
+          "incremental_gl_improvement_pct": 0.800118,
+          "incremental_dd_improvement_pct": 1.383234
+        }
+      },
+      "native_diagnostic": {
+        "trades": 90,
+        "wins": 20,
+        "winner_retention_pct": 58.823529,
+        "incremental_net_vs_t06_usd": 0.609,
+        "status": "SPARSE_PROMOTION_BLOCKER"
+      },
+      "result_sha256": {
+        "P50": "291915f42fd48ae30de5bbad74bbc2113aecf9b607d8b8a605b71a3b888cf2fd",
+        "P75": "972d06a94f25cf51a546fb67de2f75001a44a96ebb7e7fa116eb01f2f7c0335b",
+        "P90": "9420bedc87fa6c89dcd5b341aa48ec983d11901d9702f9c16ab929e08fdd660d",
+        "NATIVE": "3a268747bb207ac15bd12a6f68c25c99ba76f30b8a91c8926e2f3437a89e4dce",
+        "script": "f4a6b87d9be11bab65aa8f11fc501df43526f59cc2c47c86bef553f9358ded11"
+      }
+    },
+    "r020": {
+      "status": "PREREGISTERED_NOT_EXECUTED",
+      "drive_doc_id": "1MsbSh1qX5CrzRgDfBi-77UtGXSYoygk2JwyEVSK8ugo",
+      "drive_doc_url": "https://docs.google.com/document/d/1MsbSh1qX5CrzRgDfBi-77UtGXSYoygk2JwyEVSK8ugo/edit",
+      "prereg_tab": "34 R020 Prereg",
+      "result_tab": "35 R020 Monthly Results",
+      "parent": "R019-C04",
+      "surface": "P75",
+      "months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "january_warmup": "COLD_START",
+      "feb_jul_warmup_minutes": 90,
+      "script_sha256": "d65250576063abfb6cea52dc35b1b25d284d78570c1a3bcaf0d38f62461c72b3",
+      "threshold_retuning": false,
+      "august_2026": "SEALED",
+      "mql5_authorized": false
     }
   },
   "prebacktest_research": {
