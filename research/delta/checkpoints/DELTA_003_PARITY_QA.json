@@ -1,0 +1,123 @@
+{
+  "schema": "delta-003-parity-qa-v1",
+  "status": "PASS",
+  "unit_id": "DELTA_003_COINEXX_R9_PARITY_CALIBRATION",
+  "strategy_optimization": false,
+  "august_accessed": false,
+  "source_code_blobs": {
+    "coinexx_r9_adapter.py": "e833f7ef894c0bf8deaf12727042f6b2f8c30f21",
+    "r9_parity_runner.py": "7f0f4034ab9e1ddb4bf657e7253e9eaf27d3ba7d",
+    "DELTA_003_COINEXX_R9_PARITY_QA.py": "6d3f442eafd59bc57933ae454ad7b64888bcb6b1",
+    "DELTA_003_COINEXX_EXECUTION_CONFIG.json": "eeaf74a0b5a3827ee559177cc549e9157253db85"
+  },
+  "underlying_real_logger_validation": {
+    "source_rows_ticks": 56608185,
+    "daily_file_count": 149,
+    "run_label_mismatches": 0,
+    "timestamp_date_mismatches": 0,
+    "monotonic_decreases": 0,
+    "all_daily_gzip_validated": true,
+    "drive_audit_passed": true
+  },
+  "january": {
+    "files": 21,
+    "rows": 7699274,
+    "event_mismatches": 0,
+    "event_counts_equal": true,
+    "exact_mt5_accounting": true,
+    "trades": 31915,
+    "wins": 13947,
+    "losses": 17968,
+    "gross_profit_usd": 3785.28,
+    "gross_loss_usd": -10436.9,
+    "net_profit_usd": -6651.62
+  },
+  "january_02": {
+    "rows": 341569,
+    "event_mismatches": 0,
+    "event_match_rate": 1,
+    "trades": 1525,
+    "wins": 717,
+    "losses": 808,
+    "gross_profit_usd": 158.01,
+    "gross_loss_usd": -461.97,
+    "net_profit_usd": -303.96,
+    "max_balance_drawdown_usd": 304.28,
+    "max_equity_drawdown_usd": 304.47,
+    "average_hold_seconds": 7.2557377049
+  },
+  "july_01_dst_crosscheck": {
+    "rows": 338441,
+    "event_mismatches": 0,
+    "event_match_rate": 1,
+    "trades": 1535,
+    "wins": 700,
+    "losses": 835,
+    "gross_profit_usd": 162.26,
+    "gross_loss_usd": -462.09,
+    "net_profit_usd": -299.83,
+    "max_balance_drawdown_usd": 300.36,
+    "max_equity_drawdown_usd": 301.03,
+    "average_hold_seconds": 6.0521172638
+  },
+  "coinexx_january_spread": {
+    "all_ticks": 7699274,
+    "min_price": 0.05,
+    "p10_price": 0.19,
+    "median_price": 0.19,
+    "p90_price": 0.35,
+    "max_price": 4.05,
+    "pct_ticks_at_or_below_r9_0p25_gate": 87.0739500893,
+    "entry_ticks": 31915,
+    "entry_min_price": 0.05,
+    "entry_p10_price": 0.19,
+    "entry_median_price": 0.19,
+    "entry_p90_price": 0.21,
+    "entry_max_price": 0.25
+  },
+  "dukascopy_january_native": {
+    "ticks": 9135062,
+    "spread_p10_price": 0.54,
+    "spread_median_price": 0.7,
+    "spread_p90_price": 1.36,
+    "pct_ticks_at_or_below_r9_0p25_gate": 0.0475749371,
+    "r9_native_trades": 289,
+    "r9_native_wins": 109,
+    "r9_native_losses": 180,
+    "r9_native_gross_profit_usd": 35.836,
+    "r9_native_gross_loss_usd": -133.233,
+    "r9_native_net_profit_usd": -97.397,
+    "interpretation": "Native Dukascopy spread is a materially different feed/execution surface; do not treat its low R9 activity as a state-machine parity failure."
+  },
+  "frozen_economics": {
+    "digits": 2,
+    "point_price": 0.01,
+    "tick_size_price": 0.01,
+    "lot": 0.01,
+    "inferred_contract_size_oz_per_lot": 100,
+    "usd_pnl_per_1p00_move_at_0p01_lot": 1,
+    "commission_entry_usd": 0.01,
+    "commission_exit_usd": 0.01,
+    "commission_roundtrip_usd": 0.02,
+    "buy_entry": "ASK",
+    "buy_exit": "BID",
+    "sell_entry": "BID",
+    "sell_exit": "ASK",
+    "stop_fill": "FIRST_EXECUTABLE_QUOTE_AFTER_CROSS"
+  },
+  "exact_state_machine_findings": {
+    "protective_stop_before_ea_ontick": true,
+    "max_hold_before_trailing": true,
+    "position_observation_latch_required_for_rearm": true,
+    "entry_that_stops_before_next_ontick_does_not_rearm": true,
+    "same_minute_rearm_uses_original_frozen_boundary": true
+  },
+  "unresolved_broker_properties": [
+    "exact SYMBOL_TRADE_STOPS_LEVEL points",
+    "exact SYMBOL_TRADE_FREEZE_LEVEL points",
+    "exact filling-mode enum",
+    "margin stop-out mode and level",
+    "commission scaling outside fixed 0.01 lot"
+  ],
+  "conclusion": "Coinexx/R9 state-machine and 0.01-lot accounting parity are verified on the full January calibration month with an independent July DST-period cross-check. Dukascopy chronology remains independent and unmodified."
+}
