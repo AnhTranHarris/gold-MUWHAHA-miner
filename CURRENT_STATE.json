@@ -41,7 +41,8 @@
     "maintenance_capital_contract": "research/delta/governance/DELTA_GOV_011_PROP_STYLE_MAINTENANCE_CAPITAL_STAGING_AND_SMALL_ACCOUNT_SURVIVAL.md",
     "january_stage_a_window_contract": "research/delta/governance/DELTA_GOV_012_EXACT_JANUARY_STAGE_A_FILTER_WINDOW.md",
     "candidate_leverage_research_ledger_contract": "research/delta/governance/DELTA_GOV_013_CANDIDATE_LEVERAGE_AND_CRASH_SAFE_RESEARCH_LEDGER.md",
-    "quant_spreadsheet_harvesting_contract": "research/delta/governance/DELTA_GOV_014_QUANT_SPREADSHEET_HARVESTING_AND_CANDIDATE_LOCK_CONTRACT.md"
+    "quant_spreadsheet_harvesting_contract": "research/delta/governance/DELTA_GOV_014_QUANT_SPREADSHEET_HARVESTING_AND_CANDIDATE_LOCK_CONTRACT.md",
+    "multi_timeframe_trend_survivability_contract": "research/delta/governance/DELTA_GOV_015_MULTI_TIMEFRAME_TREND_WITHIN_TREND_SURVIVABILITY_ASSUMPTION.md"
   },
   "drive": {
     "delta_research_folder_id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel",
@@ -304,7 +305,15 @@
     "final_candidate_lock_before_cleanup": true,
     "post_lock_delete_disposable_research_artifacts": true,
     "canonical_baselines_and_market_corpus_must_survive_cleanup": true,
-    "github_large_transient_artifacts_should_not_be_committed": true
+    "github_large_transient_artifacts_should_not_be_committed": true,
+    "multi_timeframe_trend_within_trend_assumption_active": true,
+    "multi_timeframe_trend_context_is_survivability_layer": true,
+    "multi_timeframe_trend_alignment_not_required_by_default": true,
+    "multi_timeframe_trend_disagreement_not_blanket_no_trade": true,
+    "multi_timeframe_trend_must_be_causal": true,
+    "multi_timeframe_trend_must_use_tick_rooted_completed_bar_visibility": true,
+    "multi_timeframe_trend_must_be_reconstructible": true,
+    "multi_timeframe_trend_metrics_and_thresholds": "PENDING_FUTURE_RESEARCH"
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -711,6 +720,17 @@
       "google_sheet_template_id": "1aOur2ZxPgVVssis-BI0uC9zRrgm0-5vfNG_yhRPYZyk",
       "google_sheet_template_url": "https://docs.google.com/spreadsheets/d/1aOur2ZxPgVVssis-BI0uC9zRrgm0-5vfNG_yhRPYZyk/edit",
       "restart_cursor_unchanged": "POST_DELTA_004_PRE_CANDIDATE_RESEARCH",
+      "active_candidate": null,
+      "august_2026": "SEALED",
+      "mql5_authorized": false
+    },
+    "2026-10-02_multitimeframe_trend_survivability": {
+      "status": "ACTIVE_ASSUMPTION_ONLY",
+      "governance_path": "research/delta/governance/DELTA_GOV_015_MULTI_TIMEFRAME_TREND_WITHIN_TREND_SURVIVABILITY_ASSUMPTION.md",
+      "governance_commit": "70cbb2da654f6245d64ff8dc8980b55b2ba27426",
+      "purpose": "Require hierarchical trend-within-trend awareness for trade survivability in addition to session/news context.",
+      "metrics_defined": false,
+      "research_started": false,
       "active_candidate": null,
       "august_2026": "SEALED",
       "mql5_authorized": false
