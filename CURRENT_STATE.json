@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R031_PREREGISTERED_NOT_EXECUTED",
+  "current_phase": "R032_AUTHORITATIVE_BASKET_PREREGISTERED_NOT_EXECUTED",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "EXECUTE_R031_EXACT_P50_P75_P90_REPLAY;_NO_NEW_CONFIGS_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "EXECUTE_R032_AUTHORITATIVE_P50_P75_P90_REPLAY;_NO_NEW_CONFIGS_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -527,7 +527,11 @@
     "r030_diagnostic_only": true,
     "post_exit_same_minute_reentry_family_retired": true,
     "r031_preregistered_before_results": true,
-    "r031_new_configs_after_results_prohibited": true
+    "r031_new_configs_after_results_prohibited": true,
+    "r030_invalidated_generator_drift": true,
+    "r031_invalidated_before_execution": true,
+    "r032_preregistered_before_results": true,
+    "r032_new_configs_after_results_prohibited": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -3111,7 +3115,7 @@
       "decision": "RETIRE_POST_EXIT_SAME_MINUTE_BRACKET_REPLACEMENT"
     },
     "r030": {
-      "status": "DIAGNOSTIC_NEAR_SURVIVOR_NON_PROMOTABLE",
+      "status": "INVALIDATED_DH05_GENERATOR_DRIFT",
       "drive_doc_id": "1S3zcbkPrWupd0iDKvmpKxA_KE-nJfA8F8IvOiJgnxVo",
       "drive_doc_url": "https://docs.google.com/document/d/1S3zcbkPrWupd0iDKvmpKxA_KE-nJfA8F8IvOiJgnxVo/edit",
       "workbook_tab": "57 R030 Diagnostic",
@@ -3140,10 +3144,11 @@
         "delta_vs_opp": 19.94,
         "trade_shortfall_to_80pct_approx": 72
       },
-      "preregistration_gap": "DURABLE_PREREG_DID_NOT_LAND_BEFORE_FIRST_RESULT_DUE_TIMEOUT"
+      "preregistration_gap": "DURABLE_PREREG_DID_NOT_LAND_BEFORE_FIRST_RESULT_DUE_TIMEOUT",
+      "invalidation": "USED_100_SIGNAL_DH05_HELPER; AUTHORITATIVE_FROZEN_DH05_S06_HAS_672_SIGNALS"
     },
     "r031": {
-      "status": "PREREGISTERED_NOT_EXECUTED",
+      "status": "INVALIDATED_BEFORE_EXECUTION_DH05_GENERATOR_DRIFT",
       "prereg_tab": "58 R031 Prereg",
       "result_tab": "59 R031 Results",
       "script_sha256": "6a896836ffee956dba6b02480755874a631ceaf8ba108e176f277c9ed1f5c7b9",
@@ -3162,6 +3167,34 @@
       "promoted": false,
       "metric_lock": false,
       "post_exit_dependency": false
+    },
+    "r032": {
+      "status": "PREREGISTERED_NOT_EXECUTED",
+      "prereg_tab": "60 R032 Prereg",
+      "result_tab": "61 R032 Results",
+      "script_sha256": "2058181259c37a623bc3d49a135772c12122b2138a5120f056d58ce7a9cffee3",
+      "authoritative_dh05_fixture_sha256": "2deb601035d3e460f6de76ab8045b890ba7c5065b00a8815fceaf482916e2eae",
+      "dh05_parity": {
+        "signals": 672,
+        "trades": 615,
+        "wins": 307,
+        "net": -101.08,
+        "max_balance_dd": 101.51
+      },
+      "configs": [
+        "R032-C00_DH03_DH05",
+        "R032-C01_PLUS_DH02_S11",
+        "R032-C02_PLUS_DH02_S08",
+        "R032-C03_PLUS_DH02_S11_S08",
+        "R032-C04_PLUS_DH02_A01"
+      ],
+      "surfaces": [
+        "P50",
+        "P75",
+        "P90"
+      ],
+      "promoted": false,
+      "metric_lock": false
     }
   },
   "prebacktest_research": {
