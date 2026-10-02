@@ -92,11 +92,11 @@ Best counterfactual savings under the current R9-boundary adapter were +$37.39, 
 
 **Decision:** stop local tuning of the current generic adapter. Specialist-aware initial hold remains conceptually open but should be rebuilt around a viable specialist/DH-06 state.
 
-### DH-04 — PREREGISTER AND TEST NEXT
+### DH-04 — PRE-EXTENSION NOTE (SUPERSEDED)
 
 Not part of frozen R005 vector library. No empirical result is inferred.
 
-### DH-05 — PREREGISTER AND TEST NEXT
+### DH-05 — PRE-EXTENSION NOTE (SUPERSEDED)
 
 Not part of frozen R005 vector library. No empirical result is inferred.
 
@@ -163,3 +163,63 @@ Recovery QA confirmed:
 - stale `NOT_STARTED` / `NOT_EXECUTED` fields in `CURRENT_STATE.json` were reconciled;
 - DH-04 and DH-05 remain explicitly untested.
 
+
+
+## R006 secondary extension — all white-paper families completed
+
+The owner requested the speed run to cover all seven documented white-paper families. DH-04 and DH-05 were not inside the original R005 hash, so a separate immutable R006 secondary extension was generated and frozen before either family produced a result.
+
+Secondary canonical parameter-library hash:
+
+`9cfbdaa9019be2d99f27b5df0d75fd554e573cfa0134df972fb5b7e2b6e4fdf7`
+
+Both families used 16 scrambled Sobol vectors plus four theory anchors. Geometry-only seed 208 was selected before results.
+
+### DH-04 — FAIL CURRENT STANDALONE / MORE RESEARCH ONLY
+
+20 vectors evaluated.
+
+- A01 density anchor: 956 trades, 5.69% R9 activity, expectancy -$0.23585/trade — worse than R9.
+- S07: 28 trades, expectancy -$0.14643/trade (~34.7% less negative), but sample/activity is too small.
+- S15: 201 trades, 1.20% activity, expectancy -$0.21900 (~2.36% less negative).
+- apparent positive S11/S14/A03 results are 1–3 trade samples and are not interpretable.
+
+**Decision:** stop local threshold refinement of the current standalone Compression-Expansion grammar. It may be revisited only after a materially different structural/router hypothesis.
+
+DH-04 result SHA-256:
+
+`151cd1c1787b4321da5510a9f54aa0f22fc7ac7fec2b6e1721bef0882df3351d`
+
+### DH-05 — REFINE AS CONDITIONAL SPECIALIST
+
+20 vectors evaluated.
+
+Strongest quality/density seeds:
+- S06: 615 trades, 3.66% activity, 49.92% WR, expectancy -$0.16436/trade, ~26.72% less negative than R9.
+- S15: 973 trades, 5.79% activity, 49.74% WR, expectancy -$0.17593/trade, ~21.56% less negative.
+- S12: 368 trades, 2.19% activity, expectancy -$0.18427/trade, ~17.84% less negative.
+- A02: 591 trades, 3.52% activity, expectancy -$0.19242/trade, ~14.21% less negative.
+
+A01/A04 preserve about 10% of R9 activity but worsen expectancy, showing the quality signal is concentrated in particular failure-state configurations rather than generic reversal activity.
+
+**Decision:** DH-05 earns refinement as a conditional failed-break reversal specialist, not a global replacement. Refinement seeds: S06, S15, S12; balanced research anchor: A02.
+
+DH-05 result SHA-256:
+
+`38a99c46de7e7613a8732513d33b10ec457872d6e323503eedeb615e1c8234de`
+
+Stored `secondary_vectors.json` SHA-256:
+
+`3687057223837d41a4391a3182d25e8188ce383a3e2496068ca4e15c07ca26fc`
+
+## Final seven-family triage
+
+- **DH-06:** REFINE NOW / HOLD FOR INTEGRATION
+- **DH-05:** REFINE CONDITIONAL SPECIALIST
+- **DH-02:** RESTRUCTURE AS CONDITIONAL SPECIALIST
+- **DH-03:** RESTRUCTURE AS CONDITIONAL SPECIALIST
+- **DH-01:** MORE RESEARCH / CONTEXT ONLY
+- **DH-04:** FAIL CURRENT STANDALONE / MORE RESEARCH ONLY
+- **DH-07:** FAIL CURRENT ADAPTER / REDESIGN LATER
+
+No DELTA candidate is promoted and no primary metric lock is created by R006.
