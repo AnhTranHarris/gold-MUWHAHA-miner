@@ -1,0 +1,21 @@
+{
+  "schema": "delta-stage-a-january-window-v1",
+  "status": "FROZEN",
+  "definition": "FIRST_EXACT_17P5_CALENDAR_DAYS_OF_JANUARY_2026_UTC",
+  "start_iso_utc": "2026-01-01T00:00:00.000Z",
+  "end_iso_utc_exclusive": "2026-01-18T12:00:00.000Z",
+  "start_timestamp_ms_utc": 1767225600000,
+  "end_timestamp_ms_utc_exclusive": 1768737600000,
+  "interval_semantics": "LEFT_CLOSED_RIGHT_OPEN",
+  "duration_hours": 420,
+  "duration_days": 17.5,
+  "january_warmup": "COLD_START_NO_DECEMBER_2025_DATA",
+  "default_surface": "DUKAS_COINEXX_LIKE_P75",
+  "sensitivity_surfaces": [
+    "DUKAS_COINEXX_LIKE_P50",
+    "DUKAS_COINEXX_LIKE_P90",
+    "DUKAS_NATIVE"
+  ],
+  "end_position_policy": "PENDING_DELTA_005_PREREGISTRATION",
+  "august_2026": "SEALED"
+}
