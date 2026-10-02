@@ -1,0 +1,156 @@
+{
+  "schema": "delta-004-surface-qa-v1",
+  "status": "PASS",
+  "unit_id": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
+  "default_profile": "P75",
+  "source_code_blobs": {
+    "coinexx_like_surface.py": "07ea98cd18d886645e8d4cdc9a09abe6464993d9",
+    "DELTA_004_COINEXX_SPREAD_PROFILES.json": "e382069e53cb7a507628ac60f3101d95df0d0bda",
+    "DELTA_004_COINEXX_LIKE_DUKASCOPY_QA.py": "3e59b25f113405d72bc1ff35dab94aeebbdd024b"
+  },
+  "invariants": {
+    "dukascopy_native_unchanged": true,
+    "source_timestamps_unchanged": true,
+    "source_order_unchanged": true,
+    "modeled_spread_uses_current_session_only": true,
+    "no_synth_calibration": true,
+    "maximum_midpoint_quantization_error_price": 0.005,
+    "prior_month_warmup_minutes": 90,
+    "august_accessed": false
+  },
+  "r9_real_reference": {
+    "trades": 236647,
+    "wins": 102385,
+    "losses": 134262,
+    "gross_profit": 30180.23,
+    "gross_loss": -80465.51,
+    "net_profit": -50285.28
+  },
+  "profile_aggregates": {
+    "P50": {
+      "trades": 233778,
+      "wins": 105990,
+      "losses": 127788,
+      "gross_profit": 29640.11,
+      "gross_loss": -75168.08,
+      "net_profit": -45527.97
+    },
+    "P75": {
+      "trades": 234417,
+      "wins": 104294,
+      "losses": 130123,
+      "gross_profit": 29243.07,
+      "gross_loss": -78244.86,
+      "net_profit": -49001.79
+    },
+    "P90": {
+      "trades": 40699,
+      "wins": 17812,
+      "losses": 22887,
+      "gross_profit": 5189.3,
+      "gross_loss": -14433.4,
+      "net_profit": -9244.1
+    }
+  },
+  "p75_aggregate_error_pct": {
+    "trades": -0.9423318276,
+    "wins": 1.8645309371,
+    "gross_profit": -3.1052115905,
+    "gross_loss_abs": -2.7597538374,
+    "net_loss_abs": -2.5524169299
+  },
+  "p75_aggregate_limits_pct": {
+    "trades": 7,
+    "wins": 7,
+    "gross_profit": 10,
+    "gross_loss_abs": 10,
+    "net_loss_abs": 10
+  },
+  "p75_monthly_max_abs_error_pct": {
+    "trades": 5.5388738616,
+    "wins": 11.971552746,
+    "gross_profit": 16.6785673631,
+    "gross_loss_abs": 9.6169083652,
+    "net_loss_abs": 14.1664200042
+  },
+  "p75_monthly_limits_pct": {
+    "trades": 7,
+    "wins": 15,
+    "gross_profit": 20,
+    "gross_loss_abs": 15,
+    "net_loss_abs": 20
+  },
+  "p75_monthly": {
+    "2026-01": {
+      "trades": 33373,
+      "wins": 14768,
+      "losses": 18605,
+      "gross_profit": 3943.27,
+      "gross_loss": -10981.92,
+      "net_profit": -7038.65,
+      "warmup_ticks": 0
+    },
+    "2026-02": {
+      "trades": 33711,
+      "wins": 15210,
+      "losses": 18501,
+      "gross_profit": 6004.07,
+      "gross_loss": -12296.71,
+      "net_profit": -6292.64,
+      "warmup_ticks": 45715
+    },
+    "2026-03": {
+      "trades": 38065,
+      "wins": 17143,
+      "losses": 20922,
+      "gross_profit": 5824.28,
+      "gross_loss": -13506.96,
+      "net_profit": -7682.68,
+      "warmup_ticks": 21128
+    },
+    "2026-04": {
+      "trades": 32543,
+      "wins": 14650,
+      "losses": 17893,
+      "gross_profit": 3853.01,
+      "gross_loss": -10572.64,
+      "net_profit": -6719.63,
+      "warmup_ticks": 17628
+    },
+    "2026-05": {
+      "trades": 32505,
+      "wins": 14170,
+      "losses": 18335,
+      "gross_profit": 3382.5,
+      "gross_loss": -10576.12,
+      "net_profit": -7193.62,
+      "warmup_ticks": 8023
+    },
+    "2026-06": {
+      "trades": 33610,
+      "wins": 15143,
+      "losses": 18467,
+      "gross_profit": 3606.06,
+      "gross_loss": -10663.61,
+      "net_profit": -7057.55,
+      "warmup_ticks": 10905
+    },
+    "2026-07": {
+      "trades": 30610,
+      "wins": 13210,
+      "losses": 17400,
+      "gross_profit": 2629.88,
+      "gross_loss": -9646.9,
+      "net_profit": -7017.02,
+      "warmup_ticks": 7718
+    }
+  },
+  "passes": {
+    "aggregate": true,
+    "monthly": true,
+    "midpoint_quantization": true,
+    "warmup_continuity": true,
+    "surface_labeling": true
+  },
+  "conclusion": "The frozen P75 Coinexx-like modeled surface reproduces the broad R9 REAL activity/economic baseline on the independent Dukascopy path within preregistered aggregate and monthly tolerances. DUKAS_NATIVE remains separately preserved."
+}
