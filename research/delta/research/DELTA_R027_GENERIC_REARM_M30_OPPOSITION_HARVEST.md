@@ -78,3 +78,41 @@ Workbook tabs:
 - `50 R027 Prereg`
 - `51 R027 Monthly Summary`
 - `52 R027 Slice Matrix`
+
+## Completion results
+
+Across January–July 2026, **23,560** actually executed generic same-minute rearms produced:
+
+- net: **-$4,603.22**
+- expectancy: **-$0.195383/trade**
+- win rate: **45.39%**
+- negative months: **7 / 7**
+
+M30 opposition split:
+
+- OPPOSED (`M30NetATR <= -0.35`): 9,703 rearms, **-$1,947.60**
+- NOT_OPPOSED: 13,857 rearms, **-$2,655.62**
+
+Both groups were negative in every month.
+
+No preregistered one-dimensional bin was robustly positive. Every M30 bin, rearm ordinal, wait-time bin, prior-PnL bin, and session bin was net negative in all seven months.
+
+## Interpretation
+
+R026 established a specific M30-opposition mechanism inside the M30-owned branch. R027 generalizes the toxicity beyond that mechanism: generic same-minute rearms remain negative even when their direction is not opposed by M30.
+
+The stronger structural suspect is therefore the **forced opposite-side rearm architecture itself**, not M30 opposition alone.
+
+## Decision
+
+Do not move directly to a narrow M30-opposition governor.
+
+Next experiment: preregister an action ablation comparing:
+
+1. exact opposite-only generic rearm control;
+2. no generic same-minute rearm;
+3. fresh two-sided bracket rearm using the original frozen minute boundaries, removing the forced-opposite requirement.
+
+Aggregate slice-analysis SHA-256:
+
+`a5b4837515744fca9e12909b60deac814c60ee42b62a94d76e31f456e3eecee4`
