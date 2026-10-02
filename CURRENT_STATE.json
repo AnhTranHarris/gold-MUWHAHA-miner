@@ -5,8 +5,8 @@
   "created_utc": "2026-10-01",
   "active_science_parent": null,
   "last_verified_durable_unit": "DELTA_005H_001_INITIAL_TRAILING_SHIELD",
-  "first_incomplete_unit": "DELTA_005I_001_EARLY_BREATHING_TRAIL_DISTANCE_PREREGISTRATION",
-  "current_phase": "DELTA_005H_BREAKTHROUGH_VERIFIED_DELTA_005I_PREREGISTRATION_NEXT",
+  "first_incomplete_unit": "DELTA_005I_001_EARLY_BREATHING_TRAIL_DISTANCE_CODE",
+  "current_phase": "DELTA_005I_PREREGISTERED_CODE_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -292,7 +292,7 @@
     "google_doc_url": "https://docs.google.com/document/d/1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g/edit?usp=drivesdk",
     "status": "READY"
   },
-  "next_action": "Micro-step workflow: preregister DELTA_005I only. DELTA_005I will test early breathing-room trail distance for a short initial window, then revert to R9's original $0.03 trail. No entry changes, no mature exit/high-profit optimization, August sealed.",
+  "next_action": "Micro-step 005I code only: implement the exact preregistered 20-cell historical simulation. Do not run compute in the same delivery cycle. Preserve original R9-style entries, hard stop $0.30, trail activation +$0.10, mature trail $0.03 after early window, 30s max hold, August sealed.",
   "mql5_authorized": false,
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_004_COINEXX_LIKE_DUKASCOPY_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
@@ -510,15 +510,27 @@
     "august_accessed": false
   },
   "delta_005i": {
-    "status": "COMPLETE_NOT_PROMOTED",
-    "checkpoint_path": "research/delta/checkpoints/DELTA_005I_001_RESULTS.json",
-    "checkpoint_blob_sha": "c9b8eefd085e419efabc6b869bb3c75311935a34",
-    "report_path": "research/delta/DELTA_005I_001_EARLY_BREATHING_TRAIL_REPORT.md",
-    "report_blob_sha": "8e1a23cd9ccec0fd004cb4daf0aacb0585a26f13",
-    "experiment_path": "research/delta/experiments/DELTA_005I_EARLY_BREATHING_TRAIL.py",
-    "experiment_blob_sha": "8f22b1ff287cfce3d745587e981ec77e839a60d0",
-    "temporary_sheet_id": "1Q0QvgdOX5Nx96YdnLeS9XaAosz7U_kBwx4hMXYdk2Ck",
-    "leverage_conclusion": "EARLY_TRAIL_DISTANCE_IS_LOWER_LEVERAGE_THAN_ACTIVATION"
+    "status": "PREREGISTERED",
+    "preregistration_path": "research/delta/DELTA_005I_001_EARLY_BREATHING_TRAIL_DISTANCE_PREREGISTRATION.md",
+    "manifest_path": "research/delta/artifacts/DELTA_005I_001_MANIFEST.json",
+    "hypothesis": "TEMPORARILY_WIDER_EARLY_TRAIL_DISTANCE_MAY_PRESERVE_005H_PERSISTENCE_WITH_LESS_GROSS_LOSS_DAMAGE",
+    "grid": {
+      "early_window_ms": [
+        0,
+        1000,
+        3000,
+        5000,
+        10000
+      ],
+      "early_trail_distance_price": [
+        0.03,
+        0.05,
+        0.1,
+        0.2
+      ],
+      "variants": 20
+    },
+    "august_accessed": false
   },
   "delta_005_entry_initial_hold": {
     "status": "ACTIVE",
