@@ -47,7 +47,7 @@ All DELTA candidates obey `DELTA_GOV_003_RESEARCH_SPEED_STAGE_GATE_CONTRACT.md`:
 
 `DELTA_GOV_004_BENCHMARK_ROLES_AND_HUMAN_GOAL_METRICS_CONTRACT.md` defines the scorecard semantics before any R9 file loading: R9 REAL is the starting baseline; R9 SYNTH is the performance-growth reference; R9 OVERFIT is the trade-capacity/high-profit-per-trade reference; Dukascopy is the independent cross-broker environment used against Coinexx MT5 evidence. The owner-primary metrics are winning trade count, net profit, gross loss, and maximum drawdown.
 
-R9 evidence loading is currently blocked by owner instruction until goal definition is complete and explicit authorization is given.
+R9 evidence loading is owner-authorized as of 2026-10-01. Use the compact DELTA references before reopening heavy R9 evidence.
 
 ## Candidate acceptance gate
 
@@ -84,3 +84,11 @@ After owner authorization on 2026-10-01, DELTA loaded the Jan-Jul R9 SYNTH teste
 ## R9 REAL fast reference
 
 After owner authorization, DELTA loaded the Jan-Jul R9 REAL-tick tester evidence and validated REAL tick corpus. Canonical compact lookup: `research/delta/reference/R9_REAL_PERFORMANCE_FAST_REFERENCE.json`. Use it before reopening the ~102 MB tester workbook or ~762 MB compressed ticklogger. It contains the exact starting primary metrics, monthly/day/week baseline, REAL-to-SYNTH gap, and the numeric GOV-005/GOV-006 thresholds derived from the frozen governance rules.
+
+## R9 MT5 functional reference
+
+A one-time owner-authorized read-only inspection of the R9 Gamma baseline is complete and closed. Canonical references:
+- `research/delta/reference/R9_MT5_EA_FUNCTIONAL_SUMMARY.md`
+- `research/delta/reference/R9_MT5_EA_FUNCTIONAL_FAST_REFERENCE.json`
+
+These files define R9's actual state machine, behavior-critical defaults, session/ATR gate, completed-S1 quality gate, virtual minute bracket, market-order execution, stop/trail/max-hold lifecycle, opposite-side same-minute rearm, broker normalization, and explicit absent features. Use these DELTA-owned references instead of reopening legacy Gamma. Gamma access is closed and requires new explicit owner authorization.
