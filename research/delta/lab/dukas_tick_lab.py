@@ -132,7 +132,7 @@ def benchmark(root:Path,m:int):
 
 def qa(root:Path,m:int):
  meta,t,a,b=load(root,m);s=spec(m); ck={"row_count":len(t)==s["ticks"],"monotonic":bool(np.all(t[1:]>=t[:-1])),"ask_ge_bid":bool(np.all(a>=b)),"bars_250ms_count":count_bars(t,250)==s["bars_250ms"],"bars_1s_count":count_bars(t,1000)==s["bars_1s"]}
- ft=np.array([999,1000,1000,1999,2000],"i8");fa=np.array([10,11,12,13,14],"i4");fb=fa-1;x=bars(ft,fa,fb,1000);ck["right_edge_fixture"]=bool(np.array_equal(x[0],np.array([0,1000,2000])) and np.array_equal(x[4],np.array([1,3,1])));ck["same_ms_fixture"]=bool(x[2][1]==1 and x[3][1]==3);cfg=BrokerConfig();ck["buy_ask_exit_bid"]=abs(roundtrip(1,100100,100000,100200,100100,0,cfg.usd_per_raw,0))<1e-12;ck["sell_bid_exit_ask"]=abs(roundtrip(-1,100100,100000,99900,100000,0,cfg.usd_per_raw,0))<1e-12;return {"month":m,"checks":ck,"pass":all(ck.values())}
+ ft=np.array([999,1000,1000,1999,2000],"i8");fa=np.array([10,11,12,13,14],"i4");fb=fa-1;x=bars(ft,fa,fb,1000);ck["right_edge_fixture"]=bool(np.array_equal(x[0],np.array([0,1000,2000])) and np.array_equal(x[4],np.array([1,3,1])));ck["same_ms_fixture"]=bool(x[2][1]==1 and x[3][1]==3);cfg=BrokerConfig();ck["buy_ask_exit_bid"]=abs(roundtrip(1,100100,100000,100200,100100,0,cfg.usd_per_raw,0))<1e-12;ck["sell_bid_exit_ask"]=abs(roundtrip(-1,100100,100000,100000,99900,0,cfg.usd_per_raw,0))<1e-12;return {"month":m,"checks":ck,"pass":all(ck.values())}
 
 def main(argv:Sequence[str]|None=None):
  p=argparse.ArgumentParser();sub=p.add_subparsers(dest="cmd",required=True)
