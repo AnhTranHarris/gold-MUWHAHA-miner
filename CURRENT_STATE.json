@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R020_C04_MONTHLY_VALIDATION_COMPLETE_FAILS_ROBUSTNESS",
+  "current_phase": "R021_CROSS_MONTH_DUAL_CAUSAL_HARVEST_PREREGISTERED",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "R021_HARVEST_CAUSAL_DUAL_EVENT_FEATURES_AND_KEEP_VS_FLIP_COUNTERFACTUALS_JAN_JUL_P75;_NO_LIVE_RULE_CHANGES_UNTIL_NEW_PREREGISTRATION",
+    "next_permitted_step": "EXECUTE_R021_MONTHLY_DUAL_HARVEST_JAN_TO_JUL;_THEN_MONTH_BLOCKED_RULE_MINING;_NO_LIVE_RULE_CHANGE_WITHOUT_NEW_PREREG",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -482,7 +482,9 @@
     "r020_preregistered": true,
     "r020_monthly_replay_started": false,
     "r020_complete": true,
-    "r020_c04_failed_monthly_robustness": true
+    "r020_c04_failed_monthly_robustness": true,
+    "r021_preregistered": true,
+    "r021_harvest_started": false
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -2107,6 +2109,28 @@
       "promoted": false,
       "metric_lock": false,
       "next": "R021_CAUSAL_DUAL_EVENT_DECOMPOSITION_JAN_JUL"
+    },
+    "r021": {
+      "status": "PREREGISTERED_NOT_EXECUTED",
+      "drive_doc_id": "1hAWeJ0S1XR2RbpGEl5O1x-L_8pmIUOTJnBpxhjNT2tk",
+      "drive_doc_url": "https://docs.google.com/document/d/1hAWeJ0S1XR2RbpGEl5O1x-L_8pmIUOTJnBpxhjNT2tk/edit",
+      "harvest_tab": "36 R021 Dual Monthly Harvest",
+      "slices_tab": "37 R021 Cross-Month Slices",
+      "rule_lab_tab": "38 R021 Rule Lab",
+      "surface": "P75",
+      "months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "script_sha256": "e53f7edd26dedb88092bdcffaf92a2d41676e2d2788500593324b723b4da6cdf",
+      "live_rule_changes_authorized": false,
+      "august_2026": "SEALED",
+      "mql5_authorized": false
     }
   },
   "prebacktest_research": {
