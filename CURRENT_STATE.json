@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "DIRECTION_HOLD_R016_T06_LEADING_REFINEMENT_BRANCH_ATTRIBUTION_NEXT",
+  "current_phase": "DIRECTION_HOLD_R017_BRANCH_ATTRIBUTION_PREREGISTERED",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "R017_OWNERSHIP_BRANCH_ATTRIBUTION_MICRO_ONLY_H1_ONLY_DUAL;_PREREGISTER_ACTION_MATRIX_BEFORE_REPLAY;_NO_MQL5_NO_AUGUST",
+    "next_permitted_step": "EXECUTE_R017_STAGE_A_27_BRANCH_CONFIGS_P50_P75_P90_NATIVE_DIAGNOSTIC;_PERSIST_BEFORE_MONTHLY_REPLAY",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -471,7 +471,9 @@
     "r016_t06_leading_refinement": true,
     "r016_t06_promoted": false,
     "r016_t06_metric_lock": false,
-    "r017_branch_attribution_authorized": true
+    "r017_branch_attribution_authorized": true,
+    "r017_preregistered_before_results": true,
+    "r017_result_status": "NOT_EXECUTED"
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -1087,7 +1089,7 @@
   "active_research_question": "R9_DIRECTION_PLUS_INITIAL_HOLD_SURVIVABILITY_AND_MULTI_ENTRY_SPECIALIST_ARCHITECTURE",
   "initial_research": {
     "id": "DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN",
-    "status": "R016_T06_LEADING_REFINEMENT_NOT_PROMOTED",
+    "status": "R017_BRANCH_ATTRIBUTION_PREREGISTERED_NOT_EXECUTED",
     "report_path": "research/delta/research/DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN.md",
     "report_commit": "700fa3399c95ff07dad7c210fd34a5c6572543af",
     "active_candidate": null,
@@ -1813,6 +1815,37 @@
         }
       },
       "result_sha256": "b86187a3039fc01c3b9cf46bb15b00b233269ca0be068192c16edf1116343e8e"
+    },
+    "r017_prereg_path": "research/delta/research/DELTA_R017_OWNERSHIP_BRANCH_ATTRIBUTION_PREREG.md",
+    "r017_prereg_commit": "70a21a771fff1f5f6153574b0f66e72de87fb92a",
+    "r017_branch_attribution": {
+      "status": "PREREGISTERED_NOT_EXECUTED",
+      "base_micro_threshold": -0.55,
+      "base_h1_threshold": 0.35,
+      "extreme_h1_threshold": 0.7,
+      "extreme_micro_threshold": -0.9,
+      "classes": [
+        "MICRO_ONLY",
+        "H1_ONLY",
+        "DUAL"
+      ],
+      "actions": [
+        "KEEP",
+        "FLIP",
+        "SKIP"
+      ],
+      "config_count": 27,
+      "extreme_override": "SKIP_CURRENT_M1",
+      "surfaces": [
+        "P50",
+        "P75",
+        "P90",
+        "NATIVE_DIAGNOSTIC"
+      ],
+      "min_trade_retention_pct": 80,
+      "min_winner_retention_pct": 80,
+      "old_hidden_branch_artifacts_ignored": true,
+      "gov018_activated": false
     }
   },
   "prebacktest_research": {
