@@ -5,8 +5,8 @@
   "created_utc": "2026-10-01",
   "active_science_parent": null,
   "last_verified_durable_unit": "DELTA_005H_001_INITIAL_TRAILING_SHIELD",
-  "first_incomplete_unit": "DELTA_005I_001_EARLY_BREATHING_TRAIL_DISTANCE_CODE",
-  "current_phase": "DELTA_005I_PREREGISTERED_CODE_NEXT",
+  "first_incomplete_unit": "DELTA_005I_001_EARLY_BREATHING_TRAIL_DISTANCE_COMPUTE",
+  "current_phase": "DELTA_005I_CODE_COMPLETE_COMPUTE_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -292,7 +292,7 @@
     "google_doc_url": "https://docs.google.com/document/d/1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g/edit?usp=drivesdk",
     "status": "READY"
   },
-  "next_action": "Micro-step 005I code only: implement the exact preregistered 20-cell historical simulation. Do not run compute in the same delivery cycle. Preserve original R9-style entries, hard stop $0.30, trail activation +$0.10, mature trail $0.03 after early window, 30s max hold, August sealed.",
+  "next_action": "Micro-step 005I compute only: run the exact preregistered 20-cell Stage-A historical simulation from the committed DELTA_005I source. Persist raw result/checkpoint before any Sheet analysis or interpretation. No parameter changes, no mature exit/high-profit optimization, August sealed.",
   "mql5_authorized": false,
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_004_COINEXX_LIKE_DUKASCOPY_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
@@ -510,7 +510,7 @@
     "august_accessed": false
   },
   "delta_005i": {
-    "status": "PREREGISTERED",
+    "status": "CODE_COMPLETE",
     "preregistration_path": "research/delta/DELTA_005I_001_EARLY_BREATHING_TRAIL_DISTANCE_PREREGISTRATION.md",
     "manifest_path": "research/delta/artifacts/DELTA_005I_001_MANIFEST.json",
     "hypothesis": "TEMPORARILY_WIDER_EARLY_TRAIL_DISTANCE_MAY_PRESERVE_005H_PERSISTENCE_WITH_LESS_GROSS_LOSS_DAMAGE",
@@ -530,7 +530,9 @@
       ],
       "variants": 20
     },
-    "august_accessed": false
+    "august_accessed": false,
+    "source_path": "research/delta/experiments/DELTA_005I_EARLY_BREATHING_TRAIL_DISTANCE.py",
+    "source_blob_sha": "183770939ef0c0563a0570072a7f0915565b770f"
   },
   "delta_005_entry_initial_hold": {
     "status": "ACTIVE",
