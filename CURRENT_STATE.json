@@ -5,8 +5,8 @@
   "created_utc": "2026-10-01",
   "active_science_parent": null,
   "last_verified_durable_unit": "DELTA_005J_001_STATE_CONDITIONED_INITIAL_PROTECTION",
-  "first_incomplete_unit": "DELTA_005K_001_PROTECTION_BENEFIT_FORENSIC_DIFFERENTIAL",
-  "current_phase": "DELTA_005_ENTRY_INITIAL_HOLD_005J_COMPLETE_005K_FORENSIC_NEXT",
+  "first_incomplete_unit": "DELTA_005K_001_PATH_CONDITIONED_TRAIL_ACTIVATION",
+  "current_phase": "DELTA_005_ENTRY_INITIAL_HOLD_005H_BREAKTHROUGH_PATH_CONDITIONING_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -292,7 +292,7 @@
     "google_doc_url": "https://docs.google.com/document/d/1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g/edit?usp=drivesdk",
     "status": "READY"
   },
-  "next_action": "Preregister and run DELTA_005K as a paired counterfactual forensic discovery unit. Replay the same original R9-style Stage-A entries under baseline early protection and a fixed looser-protection treatment, use treatment benefit only as a retrospective label, analyze causal entry/early-horizon states with support-aware 2D matrices, and do not tune DELTA_005J thresholds further. August remains sealed.",
+  "next_action": "Treat DELTA_005K as a separate small unit. Test path-conditioned initial trail activation using only causal favorable-excursion/path evolution during the first seconds. Preserve original R9 entry logic, hard stop, trail distance, max hold, and mature Holding-Trade + Exit + High-Profit behavior. Persist preregistration, compute, Sheet, and result before any later unit. August remains sealed.",
   "mql5_authorized": false,
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_004_COINEXX_LIKE_DUKASCOPY_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
@@ -541,5 +541,16 @@
     "latest_sheet_url": "https://docs.google.com/spreadsheets/d/1-JbrciPz3J0yeZhZwo9ZPdMOQMPAAuNtKm4Q8doNi8c/edit?usp=drivesdk",
     "latest_finding": "State-conditioned loose protection improves survival with less collateral damage than global loose protection, but best net improvement is only 0.67%; accepted-consolidation predicts survival more strongly than final profitability.",
     "next_unit": "DELTA_005K_001_PROTECTION_BENEFIT_FORENSIC_DIFFERENTIAL"
+  },
+  "delta_005j": {
+    "status": "COMPLETE_NOT_PROMOTED",
+    "checkpoint_path": "research/delta/checkpoints/DELTA_005J_001_RESULTS.json",
+    "checkpoint_blob_sha": "0567d1f5773baab7edb467e4047d548915237ee0",
+    "report_path": "research/delta/DELTA_005J_001_STATE_CONDITIONED_INITIAL_PROTECTION_REPORT.md",
+    "report_blob_sha": "206d0b6e9827b0654327cf323b92ee3c06a5a68c",
+    "experiment_path": "research/delta/experiments/DELTA_005J_STATE_CONDITIONED_INITIAL_PROTECTION.py",
+    "experiment_blob_sha": "7f35b4f568762e7a417c1d50bfe8bcf5e796b462",
+    "temporary_sheet_id": "1fP3FXWAiWEs_MSy9ScmMpQbGJFIc0ls1VnT1aoF98eE",
+    "leverage_conclusion": "STATIC_1S_ACCEPTED_STATE_IS_TOO_LOW_LEVERAGE_FOR_PROTECTION_ROUTING"
   }
 }
