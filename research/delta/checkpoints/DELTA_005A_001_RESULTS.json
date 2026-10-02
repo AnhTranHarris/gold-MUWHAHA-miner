@@ -1,0 +1,77 @@
+{
+  "schema": "delta-005a-001-result-summary-v1",
+  "status": "COMPLETE_NOT_PROMOTED_GLOBAL_GATE",
+  "historical_simulation_only": true,
+  "window": {
+    "start_ms_utc": 1767225600000,
+    "end_ms_utc_exclusive": 1768737600000
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "ticks": 4205709,
+  "variants_tested": 90,
+  "baseline": {
+    "trades": 16801,
+    "wins": 7351,
+    "win_rate_pct": 43.753348015,
+    "gross_profit": 1574.77,
+    "gross_loss": -5343.02,
+    "net": -3768.25,
+    "balance_max_dd": 3769.83,
+    "avg_hold_s": 6.7120229153
+  },
+  "diagnostic_anchor": {
+    "fast_window_ms": 250,
+    "slow_window_ms": 1000,
+    "fast_threshold": 0,
+    "slow_threshold": 0,
+    "trades": 15268,
+    "wins": 6911,
+    "win_rate_pct": 45.2646057113,
+    "gross_profit": 1477.21,
+    "gross_loss": -4729.23,
+    "net": -3252.02,
+    "balance_max_dd": 3253.57,
+    "avg_hold_s": 6.8677291721,
+    "trade_retention_pct": 90.8755431224,
+    "win_change_pct": -5.9855801932,
+    "gross_loss_improvement_pct": 11.4876979686,
+    "net_loss_improvement_pct": 13.6994626153,
+    "drawdown_improvement_pct": 13.6945167289
+  },
+  "strongest_headline": {
+    "fast_window_ms": 1000,
+    "slow_window_ms": 3000,
+    "fast_threshold": 0.4,
+    "slow_threshold": 0.2,
+    "trades": 10973,
+    "wins": 4969,
+    "trade_retention_pct": 65.3115885959,
+    "win_change_pct": -32.4037545912,
+    "gross_loss_improvement_pct": 36.8422727222,
+    "drawdown_improvement_pct": 39.2007066632,
+    "net": -2290.52
+  },
+  "initial_hold": {
+    "baseline_survival_pct": {
+      "1": 84.6437712041,
+      "3": 58.0679721445,
+      "5": 42.7176953753,
+      "10": 21.7129932742,
+      "15": 12.4337837034
+    },
+    "anchor_survival_pct": {
+      "1": 84.7982708934,
+      "3": 57.820277705,
+      "5": 42.4613570867,
+      "10": 21.1357086717,
+      "15": 12.3264343725
+    },
+    "conclusion": "NO_MATERIAL_INITIAL_HOLD_SURVIVAL_IMPROVEMENT"
+  },
+  "leverage_conclusion": "Flow contains useful state information but behaves primarily as an activity-reducing gate. Preserve mild sign-flow as continuation ownership evidence and route non-confirmed first-touch breaks into explicit retest/reclaim and failed-break specialists.",
+  "next_unit": "DELTA_005B_MICRO_RETEST_RECLAIM",
+  "temporary_sheet_url": "https://docs.google.com/spreadsheets/d/17Rcz6Jq4btAgdZz7lY1vjbAhbou8IyVIjUZ_-U3k9kY/edit?usp=drivesdk",
+  "master_doc_url": "https://docs.google.com/document/d/1T9MPuuMsxB5gv7Zz8nvzFmaQy00_7Q-7X_4F2qrcR6k/edit?usp=drivesdk",
+  "source_blob": "39c33a6d7fb298f0665f1cbbcb1b1fe56ba92fe4",
+  "august_accessed": false
+}
