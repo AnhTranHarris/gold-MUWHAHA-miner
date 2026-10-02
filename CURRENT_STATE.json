@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R025_COMPLETE_M30_KEEP_OWNED_VALIDATED_7_OF_7_MONTHS",
+  "current_phase": "R026_PREREGISTERED_HARVEST_NOT_EXECUTED",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "R026_SUPPRESSED_REARM_DESCENDANT_CAUSAL_HARVEST_BEFORE_ANY_RELEASE_POLICY_TEST;_NO_RETUNING_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "EXECUTE_R026_MONTH_01_THEN_FIRST_INCOMPLETE_MONTH;_HARVEST_ONLY_NO_RELEASE_TEST_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -506,7 +506,10 @@
     "r025_no_retuning": true,
     "r025_complete": true,
     "r025_seven_of_seven_incremental_positive": true,
-    "r025_validates_m30_keep_owned_as_component": true
+    "r025_validates_m30_keep_owned_as_component": true,
+    "r026_harvest_only": true,
+    "r026_release_policy_testing_prohibited": true,
+    "r026_raw_event_dump_to_sheets_prohibited": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -2565,7 +2568,7 @@
       "drive_doc_id": "1--WukgAAozEO1HYgwr2LqDhqVw5JR7DNyBrgRn0hZUw",
       "drive_doc_url": "https://docs.google.com/document/d/1--WukgAAozEO1HYgwr2LqDhqVw5JR7DNyBrgRn0hZUw/edit",
       "github_report_path": "research/delta/research/DELTA_R025_EXACT_M30_KEEP_OWNED_JAN_JUL_VALIDATION.md",
-      "github_commit": "5dcaf89ed8b6b526ed1d232df5964a536e8ae30d",
+      "github_commit": "0a6e690361f240cb675eb1a263ee9442b44ca64a",
       "prereg_tab": "45 R025 Prereg",
       "result_tab": "46 R025 Monthly Results",
       "script_sha256": "5f60ab95ffb91609b12a1a43f1004d65b21350f18fcc9c6856912e44637cf885",
@@ -2697,7 +2700,8 @@
           "gross_loss_usd": -65076.38,
           "net_profit_usd": -41045.86,
           "m30_only_hits": 25961,
-          "suppressed_rearms": 112657
+          "suppressed_rearms": 112657,
+          "suppressed_rearms_scope": "ALL_OWNED_EXITS_P01_PLUS_M30"
         },
         "incremental_net_vs_p01_usd": 1622.33,
         "net_loss_improvement_vs_p01_pct": 3.8022,
@@ -2710,6 +2714,35 @@
         "total_months": 7
       },
       "validated_component": true
+    },
+    "r026": {
+      "status": "PREREGISTERED_HARVEST_NOT_EXECUTED",
+      "parent": "R025_VALIDATED_M30_KEEP_OWNED",
+      "drive_doc_id": "1zGkP6JM0C6h07s8hAuP4_du1b0_Mtzp5qFzSPXHhg1Y",
+      "drive_doc_url": "https://docs.google.com/document/d/1zGkP6JM0C6h07s8hAuP4_du1b0_Mtzp5qFzSPXHhg1Y/edit",
+      "github_report_path": "research/delta/research/DELTA_R026_M30_SUPPRESSED_REARM_CAUSAL_HARVEST.md",
+      "github_commit": "d2c9df2a7c436963b19a49f8b3cd7006cb5e7228",
+      "prereg_tab": "47 R026 Prereg",
+      "monthly_summary_tab": "48 R026 Monthly Summary",
+      "slice_matrix_tab": "49 R026 Slice Matrix",
+      "script_sha256": "46213ba98ee1a8b79ee6b8d0be9336b83b4d0c5ac5cde3fb9adbef0a7fe7ae49",
+      "months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "surface": "P75",
+      "target_descendant": "FIRST_GENERIC_SAME_MINUTE_R9_REARM_AFTER_M30_KEEP_OWNED_EXIT",
+      "p01_owned_descendants_excluded": true,
+      "release_policy_testing": false,
+      "august_2026": "SEALED",
+      "mql5_authorized": false,
+      "completed_months": [],
+      "result_sha256": {}
     }
   },
   "prebacktest_research": {
