@@ -275,6 +275,23 @@ P50/P75/P90 spreads are derived from R9 REAL Coinexx evidence only. No SYNTH out
 
 The lab is now ready for the first owner-governed January candidate campaign. Before candidate compute, freeze the exact end boundary of the first-2.5-week January filter. August remains sealed.
 
+## January Stage-A filter window — FROZEN
+
+Governance: `research/delta/governance/DELTA_GOV_012_EXACT_JANUARY_STAGE_A_FILTER_WINDOW.md`
+
+Machine reference: `research/delta/reference/DELTA_STAGE_A_JANUARY_WINDOW.json`
+
+Exact scoring interval:
+`[2026-01-01T00:00:00.000Z, 2026-01-18T12:00:00.000Z)`
+
+Epoch-ms form:
+- start inclusive: `1767225600000`
+- end exclusive: `1768737600000`
+
+This is exactly 17.5 calendar days, not a performance-selected or trading-day-count window. January is a cold start with no December 2025 warm-up. Any still-open position is force-closed using the final eligible executable quote before the boundary; post-window ticks are forbidden from Stage-A scoring.
+
+DELTA_005 candidate preregistration may now proceed without a pending time-window ambiguity.
+
 ## Research objective
 
 Rebuild a high-activity causal Entry+Hold architecture around the R9 evidence base while preserving real chronology, causal execution, and trade velocity.
@@ -293,7 +310,7 @@ Trade velocity is not a cosmetic secondary metric. Any candidate must report:
 
 ## Current next action
 
-Preregister DELTA_005 as the first owner-governed January candidate campaign. Freeze the exact first-2.5-week January end boundary before compute. Use DUKAS_COINEXX_LIKE_P75 as the default research surface, P50/P90 as execution-friction sensitivities, and DUKAS_NATIVE as the independent robustness control. August remains sealed.
+Preregister DELTA_005 as the first owner-governed January candidate campaign using the frozen GOV-012 first-2.5-week window. Use DUKAS_COINEXX_LIKE_P75 as the default research surface, P50/P90 as execution-friction sensitivities, and DUKAS_NATIVE as the independent robustness control. August remains sealed.
 
 ## Subsequent research
 
