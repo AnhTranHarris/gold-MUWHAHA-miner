@@ -1,0 +1,106 @@
+{
+  "schema": "delta-005e-001-forensic-summary-v1",
+  "status": "COMPLETE_DISCOVERY_NOT_CANDIDATE",
+  "historical_forensic_only": true,
+  "candidate_promotion_allowed": false,
+  "focus": "ENTRY_PLUS_INITIAL_HOLD",
+  "source_blob": "43c6289bca6d21077a8795fe37ba157ec079487b",
+  "window": {
+    "start_ms_utc": 1767225600000,
+    "end_ms_utc_exclusive": 1768737600000
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "ticks": 4205709,
+  "parent_trades": 16801,
+  "observations": 82774,
+  "horizons": {
+    "0": {
+      "observations": 16801,
+      "survive_5s_pct": 42.72,
+      "survive_10s_pct": 21.71,
+      "survive_15s_pct": 12.43
+    },
+    "250": {
+      "observations": 16025,
+      "survive_5s_pct": 44.78,
+      "survive_10s_pct": 22.76,
+      "survive_15s_pct": 13.04
+    },
+    "500": {
+      "observations": 15281,
+      "survive_5s_pct": 46.96,
+      "survive_10s_pct": 23.87,
+      "survive_15s_pct": 13.67
+    },
+    "1000": {
+      "observations": 13813,
+      "survive_5s_pct": 51.94,
+      "survive_10s_pct": 26.41,
+      "survive_15s_pct": 15.12
+    },
+    "2000": {
+      "observations": 11383,
+      "survive_5s_pct": 63.02,
+      "survive_10s_pct": 32.05,
+      "survive_15s_pct": 18.35
+    },
+    "3000": {
+      "observations": 9471,
+      "survive_5s_pct": 75.72,
+      "survive_10s_pct": 38.52,
+      "survive_15s_pct": 22.06
+    }
+  },
+  "key_findings": {
+    "h1000_range_lt_0p50_boundary_held": {
+      "support": 342,
+      "survive_5s_pct": 73.39,
+      "survive_10s_pct": 48.25,
+      "base_5s_pct": 51.94,
+      "base_10s_pct": 26.41,
+      "lift_5s_pp": 21.45,
+      "lift_10s_pp": 21.84
+    },
+    "h1000_range_0p50_0p75_boundary_held": {
+      "support": 3464,
+      "survive_5s_pct": 68.24,
+      "survive_10s_pct": 39.29,
+      "lift_5s_pp": 16.3,
+      "lift_10s_pp": 12.88
+    },
+    "h250_eff_delta_m0p30_m0p10_acceptance_gt_0p10": {
+      "support": 481,
+      "survive_5s_pct": 65.7,
+      "survive_10s_pct": 37.84,
+      "base_5s_pct": 44.78,
+      "base_10s_pct": 22.76,
+      "lift_5s_pp": 20.92,
+      "lift_10s_pp": 15.07
+    },
+    "rejected_flow_pool_h1000_range_lt_0p50_boundary_held": {
+      "support": 169,
+      "survive_5s_pct": 71.6,
+      "survive_10s_pct": 47.93,
+      "rejected_pool_base_5s_pct": 52.53,
+      "rejected_pool_base_10s_pct": 27.43
+    },
+    "rejected_flow_pool_h1000_range_0p50_0p75_boundary_held": {
+      "support": 1517,
+      "survive_5s_pct": 69.08,
+      "survive_10s_pct": 40.41
+    }
+  },
+  "interpretation": [
+    "Post-break cooling/compression is often compatible with durable initial holds.",
+    "Maintaining high efficiency or continuously positive tick flow is not required for persistence.",
+    "This explains why 005A hard flow gating and 005D ER-maintenance invalidation were misaligned.",
+    "The 005A-rejected pool contains a broad delayed accepted-consolidation state worth testing as a recovery sleeve."
+  ],
+  "next_change_class": "SPECIALIST_RECOMBINATION",
+  "next_unit": "DELTA_005F_DIRECT_PLUS_ACCEPTED_CONSOLIDATION",
+  "temporary_sheet_id": "1Ngbap0ordQVpEnrBdrxoatLXm9uAMexiJUUD8ZbL9lQ",
+  "temporary_sheet_url": "https://docs.google.com/spreadsheets/d/1Ngbap0ordQVpEnrBdrxoatLXm9uAMexiJUUD8ZbL9lQ/edit?usp=drivesdk",
+  "observation_ledger_local_bytes": 2307826,
+  "observation_ledger_regeneration": "python research/delta/experiments/DELTA_005E_INITIAL_HOLD_FORENSIC.py --source <JAN_GZ> --observations <OBS_GZ> --output <SUMMARY_JSON>",
+  "august_accessed": false
+}
