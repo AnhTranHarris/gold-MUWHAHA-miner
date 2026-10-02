@@ -1,0 +1,41 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "DELTA_005B_001_MICRO_RETEST_RECLAIM",
+  "status": "PREREGISTERED",
+  "historical_simulation_only": true,
+  "live_deployment_authorized": false,
+  "date_utc": "2026-10-02",
+  "parent_finding": "DELTA_005A_001_FAST_CONTINUATION_TICK_FLOW_ENTRY_SCREEN",
+  "focus": "ENTRY_PLUS_INITIAL_HOLD",
+  "window": {
+    "start_ms_utc": 1767225600000,
+    "end_ms_utc_exclusive": 1768737600000
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "direct_owner": {
+    "fast_window_ms": 250,
+    "slow_window_ms": 1000,
+    "fast_threshold": 0,
+    "slow_threshold": 0
+  },
+  "retest_grid": {
+    "retest_band_price": [
+      0,
+      0.02,
+      0.05
+    ],
+    "reclaim_buffer_price": [
+      0,
+      0.02,
+      0.05
+    ],
+    "timeout_ms": [
+      1000,
+      3000,
+      5000
+    ],
+    "variants": 27
+  },
+  "downstream_lifecycle": "FROZEN_PARENT",
+  "august_2026": "SEALED"
+}
