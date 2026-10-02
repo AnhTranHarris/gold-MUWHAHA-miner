@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R023_MONTHLY_VALIDATION_IN_PROGRESS",
+  "current_phase": "R023_COMPLETE_CREATIVE_ESCALATION_TO_HIGH_CAPACITY_OWNERSHIP",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "RESUME_R023_AT_MONTH_3_THROUGH_7;_NO_RETUNING_NO_RULE_MERGE_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "CREATIVE_ESCALATION_HIGH_CAPACITY_OWNERSHIP_COMPONENT_ABLATION;_NO_RETUNING_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -492,7 +492,11 @@
       "R022-C-KEEP"
     ],
     "r023_preregistered_before_results": true,
-    "r023_monthly_replay_started": true
+    "r023_monthly_replay_started": true,
+    "r023_complete": true,
+    "r023_b_keep_positive_all_7_months": true,
+    "r023_c_keep_positive_all_7_months": true,
+    "r023_validated_components_not_promoted": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -2259,7 +2263,7 @@
       "metric_lock": false
     },
     "r023": {
-      "status": "IN_PROGRESS",
+      "status": "COMPLETE_ROBUST_MICRO_EDGE_NOT_PROMOTED",
       "parent": [
         "R022-B-KEEP",
         "R022-C-KEEP",
@@ -2299,11 +2303,21 @@
       "mql5_authorized": false,
       "completed_months": [
         1,
-        2
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
       ],
       "month_result_sha256": {
         "1": "0aff91a0930c71fd19c0df35a61a141f79d2ee6fcf583828a6859b5c6dc685b7",
-        "2": "f7dd5687c67731c883d092dfd36464be8f401d4b75d5e2cf4d5f25b39150e984"
+        "2": "f7dd5687c67731c883d092dfd36464be8f401d4b75d5e2cf4d5f25b39150e984",
+        "3": "e62e61723f4eb9674bd7a77191d1bf04f4ac0a5278b6193125b6354d1866a93d",
+        "4": "d72eba1f09b886e8678096b34843bb995f28100f8f966589976bda05f67e61ff",
+        "5": "10dd5974a91fdba3a7eadf2b0f002966dd03f27b97b03c934cb7d126a0e086f8",
+        "6": "740c358a75dc5366f87da459d947e42bda5a30a064deabfed7bbd0f920607e2b",
+        "7": "4f76466d935496b98c44712611da7f0be7ef93e9fa35954d8e8f3d53a5bd473e"
       },
       "month_checkpoint": {
         "1": {
@@ -2314,7 +2328,58 @@
           "B_KEEP_net_delta_vs_T06": 4.23,
           "C_KEEP_net_delta_vs_T06": 0.47
         }
-      }
+      },
+      "aggregate": {
+        "R9": {
+          "trades": 234417,
+          "wins": 103097,
+          "gross_loss": -78244.86,
+          "net_profit": -49001.79
+        },
+        "T06": {
+          "trades": 198029,
+          "wins": 87978,
+          "gross_loss": -65816.57,
+          "net_profit": -41531.29,
+          "trade_retention_pct": 84.4772,
+          "winner_retention_pct": 85.3352
+        },
+        "B_KEEP": {
+          "trades": 198029,
+          "wins": 87991,
+          "gross_loss": -65804.4,
+          "net_profit": -41510.24,
+          "subset_hits": 171,
+          "incremental_net_vs_t06_usd": 21.05,
+          "incremental_net_pct_vs_t06": 0.0507,
+          "incremental_gl_pct_vs_t06": 0.0185,
+          "trade_retention_pct": 84.4772,
+          "winner_retention_pct": 85.3478,
+          "positive_months": 7,
+          "worst_month_net_delta_usd": 1.47
+        },
+        "C_KEEP": {
+          "trades": 198028,
+          "wins": 87998,
+          "gross_loss": -65801.75,
+          "net_profit": -41510.85,
+          "subset_hits": 101,
+          "incremental_net_vs_t06_usd": 20.44,
+          "incremental_net_pct_vs_t06": 0.0492,
+          "incremental_gl_pct_vs_t06": 0.0225,
+          "trade_retention_pct": 84.4768,
+          "winner_retention_pct": 85.3546,
+          "positive_months": 7,
+          "worst_month_net_delta_usd": 0.47
+        }
+      },
+      "validated_components": [
+        "R022-B-KEEP",
+        "R022-C-KEEP"
+      ],
+      "promoted": false,
+      "metric_lock": false,
+      "interpretation": "ROBUST_CAUSAL_MICRO_EDGES_INSUFFICIENT_EFFECT_SIZE_FOR_PROMOTION"
     }
   },
   "prebacktest_research": {
