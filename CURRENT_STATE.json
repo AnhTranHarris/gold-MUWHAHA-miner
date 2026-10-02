@@ -210,7 +210,9 @@
     "small_account_rules_empirical_pending": true,
     "return_to_standard_mode_at": 1000,
     "future_lot_sizing_ladder": "OWNER_PENDING",
-    "raw_and_maintenance_governed_metrics_both_required": true
+    "raw_and_maintenance_governed_metrics_both_required": true,
+    "legacy_gamma_access_open": false,
+    "legacy_gamma_reopen_requires_owner_authorization": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
@@ -218,7 +220,7 @@
     "google_doc_url": "https://docs.google.com/document/d/1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g/edit?usp=drivesdk",
     "status": "READY"
   },
-  "next_action": "R9 REAL and SYNTH compact references are ready. Continue owner-directed R9 evidence loading or execute DELTA_001 source/evidence parity preflight when directed. August remains sealed.",
+  "next_action": "Use the durable R9 functional summary plus REAL/SYNTH compact references. Legacy Gamma access is closed again. Continue owner-directed R9 evidence/parity work or execute DELTA_001 when directed. August remains sealed.",
   "mql5_authorized": false,
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_BOOTSTRAP_000_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
@@ -256,5 +258,22 @@
     "local_reference_sha256": "13b0e070d13f0c7e289244bc1aaa0a25d404de8186deb752370f34e0d99504cb",
     "tester_sha256": "19d5ffd785beaae2a9d0baa5efb50efcd36a7db635c7ef82957be442429c1064",
     "status": "READY"
+  },
+  "r9_functional_summary": {
+    "markdown_path": "research/delta/reference/R9_MT5_EA_FUNCTIONAL_SUMMARY.md",
+    "markdown_blob_sha": "fd15ee48e46e51f54e0ecc1a314900b6a0d5fcfe",
+    "fast_reference_path": "research/delta/reference/R9_MT5_EA_FUNCTIONAL_FAST_REFERENCE.json",
+    "fast_reference_blob_sha": "5aeda615d3fc45e6f4d51112f51cb55554204a61",
+    "status": "READY"
+  },
+  "legacy_gamma_inspection_exception": {
+    "authorized_by_owner": true,
+    "purpose": "R9_BASELINE_FUNCTIONAL_SUMMARY_ONLY",
+    "inspected_branch": "carson/r9-gamma-00-baseline",
+    "inspected_hybrid_blob_sha": "7eecb5f1947017a01ce85b2520725de54749e523",
+    "logger_crosscheck_branch": "carson/r9-tick-logger",
+    "logger_blob_sha": "5c7655cd3357f9126e8bffd97c34374dfb29f83e",
+    "status": "CLOSED_AFTER_R9_SUMMARY",
+    "reopen_requires_explicit_owner_authorization": true
   }
 }
