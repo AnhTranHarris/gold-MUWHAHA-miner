@@ -73,7 +73,9 @@
     "r001_direction_hold_working_sheet_id": "1LexrgMTYvgDXoeKHvVC4taiLGlENi5vvY2-8tmLNFcs",
     "r001_direction_hold_working_sheet_url": "https://docs.google.com/spreadsheets/d/1LexrgMTYvgDXoeKHvVC4taiLGlENi5vvY2-8tmLNFcs/edit",
     "r001_direction_hold_shortlist_doc_id": "1Nx06ehgmswgwwjDY7CKpP4IAX5Vj0j0FZJtAX8lvMBs",
-    "r001_direction_hold_shortlist_doc_url": "https://docs.google.com/document/d/1Nx06ehgmswgwwjDY7CKpP4IAX5Vj0j0FZJtAX8lvMBs/edit"
+    "r001_direction_hold_shortlist_doc_url": "https://docs.google.com/document/d/1Nx06ehgmswgwwjDY7CKpP4IAX5Vj0j0FZJtAX8lvMBs/edit",
+    "r003_causal_vocabulary_doc_id": "1ei6AcvQUO1Wzx4EUlVaCGWjdl6pCBajcjrzWEtMs3-w",
+    "r003_causal_vocabulary_doc_url": "https://docs.google.com/document/d/1ei6AcvQUO1Wzx4EUlVaCGWjdl6pCBajcjrzWEtMs3-w/edit"
   },
   "research_rules": {
     "entry_hold_and_trade_count_co_primary": true,
@@ -396,7 +398,7 @@
     "direction_hold_research_may_consider_entry_engine_replacement": true,
     "direction_hold_research_may_consider_multiple_entry_specialists": true,
     "direction_hold_trade_volume_preservation_required": true,
-    "direction_hold_research_result_status": "HYPOTHESIS_FAMILIES_ONLY_NO_TESTING",
+    "direction_hold_research_result_status": "PREBACKTEST_SHORTLIST_AND_CAUSAL_VOCABULARY_ONLY",
     "qualitative_candidate_harvest_allowed": true,
     "qualitative_viability_labels_are_not_performance_evidence": true,
     "r001_workbook_performance_fields_must_remain_blank_until_replay": true,
@@ -408,7 +410,8 @@
     "causal_direction_hold_vocabulary_frozen_for_research": true,
     "direction_and_market_character_separate": true,
     "future_swing_confirmation_forbidden_in_live_features": true,
-    "offline_survival_labels_forbidden_as_live_features": true
+    "offline_survival_labels_forbidden_as_live_features": true,
+    "stage_a_preregistration_currently_authorized": false
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -970,12 +973,24 @@
         "stub_commit": "d26f455b8e60bb83f157dafad38e9f4f43685d40",
         "stub_blob_sha": "386f309c326a6bd7210ab31156f55e7cd4c61c99"
       }
+    },
+    "superseded_research_artifacts": {
+      "timeout_duplicate_r002": {
+        "status": "SUPERSEDED_TIMEOUT_DUPLICATE_NOT_ACTIVE",
+        "former_github_report_path": "research/delta/research/DELTA_R002_DIRECTION_HOLD_PREBACKTEST_CANDIDATE_SHORTLIST.md",
+        "former_google_doc_id": "1cVb2UxZ_ROZIFNs7CDkbBfqYzJofH_tLjqaHrVXoJLI",
+        "former_google_doc_url": "https://docs.google.com/document/d/1cVb2UxZ_ROZIFNs7CDkbBfqYzJofH_tLjqaHrVXoJLI/edit",
+        "former_workbook_id": "1aOur2ZxPgVVssis-BI0uC9zRrgm0-5vfNG_yhRPYZyk",
+        "superseded_by_github_report": "research/delta/research/DELTA_R002_DIRECTION_HOLD_CAUSAL_VOCABULARY_AND_PREBACKTEST_SHORTLIST.md",
+        "superseded_by_google_doc_id": "1Nx06ehgmswgwwjDY7CKpP4IAX5Vj0j0FZJtAX8lvMBs",
+        "superseded_by_workbook_id": "1LexrgMTYvgDXoeKHvVC4taiLGlENi5vvY2-8tmLNFcs"
+      }
     }
   },
   "active_research_question": "R9_DIRECTION_PLUS_INITIAL_HOLD_SURVIVABILITY_AND_MULTI_ENTRY_SPECIALIST_ARCHITECTURE",
   "initial_research": {
     "id": "DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN",
-    "status": "R002_PREBACKTEST_SHORTLIST_COMPLETE_NO_TESTING",
+    "status": "R002_REFINED_PREBACKTEST_SHORTLIST_COMPLETE_NO_TESTING",
     "report_path": "research/delta/research/DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN.md",
     "report_commit": "700fa3399c95ff07dad7c210fd34a5c6572543af",
     "active_candidate": null,
@@ -993,12 +1008,12 @@
     "august_2026": "SEALED",
     "mql5_authorized": false,
     "r002_report_path": "research/delta/research/DELTA_R002_DIRECTION_HOLD_CAUSAL_VOCABULARY_AND_PREBACKTEST_SHORTLIST.md",
-    "r002_report_commit": "96a0942be6b90a533a64d8b14666cc356b9fca00",
+    "r002_report_commit": "e79215508e05f93316ab31244d03ed20c5b1a65e",
     "working_sheet_id": "1LexrgMTYvgDXoeKHvVC4taiLGlENi5vvY2-8tmLNFcs",
     "working_sheet_url": "https://docs.google.com/spreadsheets/d/1LexrgMTYvgDXoeKHvVC4taiLGlENi5vvY2-8tmLNFcs/edit",
     "shortlist_doc_id": "1Nx06ehgmswgwwjDY7CKpP4IAX5Vj0j0FZJtAX8lvMBs",
     "shortlist_doc_url": "https://docs.google.com/document/d/1Nx06ehgmswgwwjDY7CKpP4IAX5Vj0j0FZJtAX8lvMBs/edit",
-    "qualitative_workbook_harvest_status": "COMPLETE_R001_PASS",
+    "qualitative_workbook_harvest_status": "COMPLETE_REFINED_PREBACKTEST",
     "performance_harvest_status": "NOT_STARTED_NO_TESTING",
     "prebacktest_shortlist": [
       "DH-C01_R9_BRACKET_SALVAGE_NESTED_DIRECTION_HOLD_HYSTERESIS",
@@ -1024,36 +1039,24 @@
     ],
     "spreadsheet_harvesting_phase": "QUALITATIVE_PREBACKTEST_ONLY",
     "stage_a_preregistration_started": false,
-    "heavy_synthesis_status": "DORMANT_NOT_ACTIVATED"
+    "heavy_synthesis_status": "DORMANT_NOT_ACTIVATED",
+    "supporting_hypotheses": [
+      "HYP-DH-009_BREAKOUT_ACCEPTANCE_REJECTION",
+      "HYP-DH-010_PULLBACK_VS_STRUCTURAL_REVERSAL",
+      "HYP-DH-011_POST_FILL_PERSISTENCE_RETREAT",
+      "HYP-DH-012_REGIME_TRANSITION_HYSTERESIS",
+      "HYP-DH-013_ACTIVITY_PRESERVING_SPECIALIST_ARBITRATION"
+    ],
+    "testing_authorized": false
   },
   "prebacktest_research": {
-    "id": "DELTA_R002_DIRECTION_HOLD_PREBACKTEST_CANDIDATE_SHORTLIST",
-    "status": "RESEARCH_HARVEST_COMPLETE_NO_TESTING",
-    "github_report_path": "research/delta/research/DELTA_R002_DIRECTION_HOLD_PREBACKTEST_CANDIDATE_SHORTLIST.md",
-    "github_report_commit": "e1ccd4df0c5a67cf58835ac3abd38b14220aea3d",
-    "google_doc_id": "1cVb2UxZ_ROZIFNs7CDkbBfqYzJofH_tLjqaHrVXoJLI",
-    "google_doc_url": "https://docs.google.com/document/d/1cVb2UxZ_ROZIFNs7CDkbBfqYzJofH_tLjqaHrVXoJLI/edit",
-    "workbook_id": "1aOur2ZxPgVVssis-BI0uC9zRrgm0-5vfNG_yhRPYZyk",
-    "workbook_tab": "07 Hypothesis Lab",
-    "workbook_hypothesis_range": "HYP-007..HYP-015",
-    "shortlist": [
-      "HV-01_NESTED_CAUSAL_DIRECTION_STATE",
-      "HV-02_BREAKOUT_RETEST_REBREAK_SPECIALIST",
-      "HV-03_PULLBACK_RECLAIM_REACCELERATION_SPECIALIST",
-      "HV-04_INTRINSIC_TIME_DIRECTIONAL_CHANGE_OVERSHOOT_SPECIALIST",
-      "HV-05_QUOTE_PRESSURE_INITIAL_HOLD_PERSISTENCE",
-      "HV-06_SPECIALIST_AWARE_INITIAL_HOLD_HYSTERESIS",
-      "HV-07_FAILED_BREAK_REVERSAL_SPECIALIST",
-      "HV-08_COMPRESSION_EXPANSION_CONTINUATION_SPECIALIST",
-      "HV-09_REGIME_ROUTER_MULTI_ENTRY_SPECIALIST_CONTROLLER"
-    ],
-    "next_research_only_step": "DEFINE_EXACT_CAUSAL_INPUT_FORMULAS_AND_BOUNDED_FEATURE_FAMILIES_FOR_HV01_HV06_BEFORE_PREREGISTRATION",
-    "stage_a_preregistration": false,
-    "tick_backtest_queue_populated": false,
-    "tick_testing_started": false,
+    "status": "SUPERSEDED_TIMEOUT_DUPLICATE_NOT_ACTIVE",
+    "active": false,
+    "do_not_resume": true,
+    "canonical_replacement": "initial_research + causal_direction_hold_vocabulary",
     "active_candidate": null,
-    "august_2026": "SEALED",
-    "mql5_authorized": false
+    "tick_testing_started": false,
+    "stage_a_preregistration": false
   },
   "causal_direction_hold_vocabulary": {
     "id": "DELTA_R003_CAUSAL_DIRECTION_INITIAL_HOLD_VOCABULARY",
