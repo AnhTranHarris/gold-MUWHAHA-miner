@@ -157,6 +157,27 @@ Below $1,000, standard large-account percentage rules may be relaxed or modified
 
 See `DELTA_GOV_011_PROP_STYLE_MAINTENANCE_CAPITAL_STAGING_AND_SMALL_ACCOUNT_SURVIVAL.md`.
 
+## R9 SYNTH evidence loaded — fast reference available
+
+Owner authorized R9 evidence loading on 2026-10-01. R9 SYNTH was loaded first.
+
+Canonical compact lookup:
+`research/delta/reference/R9_SYNTH_PERFORMANCE_FAST_REFERENCE.json`
+
+Use that file before reopening the 95 MB tester workbook or the massive SYNTH ticklogger corpus. It contains exact Jan-Jul primary reference metrics, monthly performance, daily/weekly distributions, source hashes/Drive IDs, integrity reconciliation, and observed day/week behavior.
+
+Headline SYNTH reference:
+- winning trades: 191,136;
+- total trades: 219,342;
+- net profit: $309,122.85;
+- gross loss: -$16,238.66;
+- balance max drawdown: $3.41;
+- equity max drawdown: $4.34;
+- 149/149 trading days profitable;
+- 31/31 ISO weeks profitable.
+
+The ledger reconciles exactly to the MT5 report for closed-trade net profit and balance drawdown. No visible day/week profit cap, loss kill-switch, or balance-based lot scaling is present in the tester inputs/realized SYNTH ledger; treat that as observed behavior, not a claim about hidden source-code rules.
+
 ## Research objective
 
 Rebuild a high-activity causal Entry+Hold architecture around the R9 evidence base while preserving real chronology, causal execution, and trade velocity.
