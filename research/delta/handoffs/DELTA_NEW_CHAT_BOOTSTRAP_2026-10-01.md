@@ -145,6 +145,18 @@ All news features must be causal and as-of: no release value, revision, headline
 
 See `DELTA_GOV_009_NEWS_EVENT_OPPORTUNITY_AND_IMPACT_HANDLING_ASSUMPTION.md`.
 
+## Prop-style maintenance and staged-capital assumption
+
+DELTA maintains a separate capital/risk-management layer around the trading logic. Fixed lot size is 0.01 until all four primary categories are locked and the owner explicitly defines a future lot-sizing ladder.
+
+Test starting capital follows the durable primary-lock count: zero locks = $100,000; one lock = $1,000; two locks = $500; three locks remain $500 because no separate owner amount has been defined; all four locks = $100. The all-lock $100 stage focuses on survival and rapid growth toward $1,000, after which standard maintenance rules reapply.
+
+At or above $1,000, the provisional community-derived internal envelope is: 0.5% planned loss per position, 2.5% daily warning, 4% daily hard stop, 5% weekly warning, and 8% weekly hard stop, all evaluated on intraday equity including floating P/L and costs. No martingale/grid recovery is allowed.
+
+Below $1,000, standard large-account percentage rules may be relaxed or modified because the minimum 0.01 lot can dominate percentage-risk math. Exact small-account thresholds are intentionally pending empirical survivability tests and owner review. Raw strategy metrics and maintenance-governed metrics must both be reported so risk throttling cannot masquerade as edge.
+
+See `DELTA_GOV_011_PROP_STYLE_MAINTENANCE_CAPITAL_STAGING_AND_SMALL_ACCOUNT_SURVIVAL.md`.
+
 ## Research objective
 
 Rebuild a high-activity causal Entry+Hold architecture around the R9 evidence base while preserving real chronology, causal execution, and trade velocity.
