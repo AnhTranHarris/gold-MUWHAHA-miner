@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "EXECUTE_R020_MONTHS_01_TO_07_ONE_MONTH_PER_CRASH_SAFE_JOB;_NO_THRESHOLD_RETUNING_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "EXECUTE_R020_MONTHS_02_TO_07_ONE_MONTH_PER_CRASH_SAFE_JOB;_NO_THRESHOLD_RETUNING_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -480,7 +480,7 @@
     "r019_complete": true,
     "r019_c04_advances_to_monthly_validation": true,
     "r020_preregistered": true,
-    "r020_monthly_replay_started": false
+    "r020_monthly_replay_started": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -1989,7 +1989,7 @@
       }
     },
     "r020": {
-      "status": "PREREGISTERED_NOT_EXECUTED",
+      "status": "EXECUTION_FIXTURE_FROZEN_JANUARY_COMPLETE",
       "drive_doc_id": "1MsbSh1qX5CrzRgDfBi-77UtGXSYoygk2JwyEVSK8ugo",
       "drive_doc_url": "https://docs.google.com/document/d/1MsbSh1qX5CrzRgDfBi-77UtGXSYoygk2JwyEVSK8ugo/edit",
       "prereg_tab": "34 R020 Prereg",
@@ -2007,10 +2007,23 @@
       ],
       "january_warmup": "COLD_START",
       "feb_jul_warmup_minutes": 90,
-      "script_sha256": "d65250576063abfb6cea52dc35b1b25d284d78570c1a3bcaf0d38f62461c72b3",
+      "script_sha256": "f28b4235082201cd6a965e896ce78a2ca5268685cf555de654ca9bbee289c219",
       "threshold_retuning": false,
       "august_2026": "SEALED",
-      "mql5_authorized": false
+      "mql5_authorized": false,
+      "initial_prereg_script_sha256": "d65250576063abfb6cea52dc35b1b25d284d78570c1a3bcaf0d38f62461c72b3",
+      "execution_qc": {
+        "status": "PASSED_BEFORE_ACCEPTED_RESULTS",
+        "change": "WINNER_ACCOUNTING_ONLY",
+        "strategy_behavior_changed": false,
+        "january_control_parity": "R9_AND_T06_TRADES_WINNERS_GP_GL_NET_EXACT"
+      },
+      "completed_months": [
+        1
+      ],
+      "month_result_sha256": {
+        "1": "aba8229e8b4af77acf2537d5f1621ed60dc1433c4bafc3e6f98446be42de7cd2"
+      }
     }
   },
   "prebacktest_research": {
