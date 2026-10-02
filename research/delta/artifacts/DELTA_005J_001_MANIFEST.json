@@ -1,0 +1,47 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "DELTA_005J_001_STATE_CONDITIONED_INITIAL_PROTECTION",
+  "status": "PREREGISTERED",
+  "historical_simulation_only": true,
+  "live_deployment_authorized": false,
+  "date_utc": "2026-10-02",
+  "focus": "ENTRY_PLUS_INITIAL_HOLD",
+  "parent_findings": [
+    "DELTA_005E_001",
+    "DELTA_005H_001",
+    "DELTA_005I_001"
+  ],
+  "window": {
+    "start_ms_utc": 1767225600000,
+    "end_ms_utc_exclusive": 1768737600000
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "observation_grace_ms": 1000,
+  "grid": {
+    "s1_range_ceiling_price": [
+      0.5,
+      0.75,
+      1
+    ],
+    "min_boundary_acceptance_price": [
+      0,
+      0.05
+    ],
+    "accepted_trail_activation_price": [
+      0.2,
+      0.3,
+      0.5
+    ],
+    "protection_end_ms": [
+      3000,
+      5000,
+      10000
+    ],
+    "variants": 54
+  },
+  "hard_stop_price": 0.3,
+  "trail_distance_price": 0.03,
+  "baseline_trail_activation_price": 0.1,
+  "mature_hold_exit_high_profit_optimization": false,
+  "august_2026": "SEALED"
+}
