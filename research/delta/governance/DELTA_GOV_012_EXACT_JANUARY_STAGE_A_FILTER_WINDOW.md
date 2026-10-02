@@ -69,11 +69,15 @@ Candidate metrics are computed only from positions/opportunities attributable to
 
 A position may not be opened before the start boundary.
 
-If a position is opened before the end boundary but remains open across the end boundary, the candidate manifest must choose one of these policies **before compute**:
-1. `FORCE_CLOSE_AT_FILTER_END`; or
-2. `ALLOW_NATURAL_CLOSE_BUT_ATTRIBUTE_TO_FILTER`.
+If a position is still open when no further eligible tick exists before the exclusive end boundary, DELTA uses:
 
-The chosen policy must be identical for all compared versions in that campaign. DELTA_005 must freeze this lifecycle-edge policy before its first run.
+`FORCE_CLOSE_AT_LAST_ELIGIBLE_EXECUTABLE_QUOTE_BEFORE_END`
+
+The close uses the last eligible executable side:
+- long positions close/mark at Bid;
+- short positions close/mark at Ask.
+
+No tick at or after the exclusive end boundary may affect Stage-A P/L, drawdown, hold time, or trade classification. This rule is identical for all Stage-A candidate versions.
 
 ## 6. Research surfaces
 
