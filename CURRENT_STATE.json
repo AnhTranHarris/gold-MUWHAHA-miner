@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R034_OOS_COMPLETE_R035_DH04_INDEPENDENT_DENSITY_PREREG",
+  "current_phase": "R036_COMPLETE_INDEPENDENT_DENSITY_TOPUPS_EXHAUSTED_NEXT_SOURCE_REQUIRED",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "R035_PREREGISTER_AND_VALIDATE_DH04_INDEPENDENT_COMPRESSION_EXPANSION_DENSITY_SOURCE_OOS;_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "R037_FRESH_INDEPENDENT_OPPORTUNITY_SOURCE_RESEARCH_AND_PREREGISTRATION;_DO_NOT_RECUT_DH02_A01_OR_DH04_ON_LATE_JAN_HOLDOUT;_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -538,7 +538,12 @@
     "r033_same_sample_interactions_not_promotable": true,
     "r034_out_of_sample_validation_required": true,
     "r034_oos_complete": true,
-    "dh02_a01_pocket_recutting_stopped": true
+    "dh02_a01_pocket_recutting_stopped": true,
+    "r035_complete": true,
+    "r036_complete": true,
+    "dh04_current_density_addition_family_retired": true,
+    "a01_and_dh04_density_recuts_exhausted_for_current_architecture": true,
+    "no_same_holdout_threshold_recuts": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -3277,6 +3282,55 @@
       "github_report_path": "research/delta/research/DELTA_R034_LATE_JAN_OOS_A01_POCKET_VALIDATION.md",
       "github_commit": "2593a7063c36db6e5ab172b2f43bab3ed79bea56",
       "decision": "STOP_DH02_A01_POCKET_RECUTTING_USE_INDEPENDENT_ACTIVITY_SOURCE",
+      "promoted": false,
+      "metric_lock": false
+    },
+    "r035": {
+      "status": "COMPLETE_NO_VIABLE_DH04_DENSITY_ADDITION",
+      "parent": "R032-C03_PLUS_DH02_S11_S08",
+      "surface": "P90",
+      "holdout_start": "2026-01-18T12:00:00Z",
+      "configs": [
+        "DH04-A01",
+        "DH04-S03",
+        "DH04-S07",
+        "DH04_UNION_3"
+      ],
+      "result_sha256": "eb4bf32f4cf4c4f4e8359ef11e2d2e63a760ba48a6969cb79bbf48053249a523",
+      "drive_doc_id": "1Lwrkofu4dz-slY6QpH13ZnKbMGeQ4OzqSsbYuVCBI7U",
+      "drive_doc_url": "https://docs.google.com/document/d/1Lwrkofu4dz-slY6QpH13ZnKbMGeQ4OzqSsbYuVCBI7U/edit",
+      "github_report_path": "research/delta/research/DELTA_R035_DH04_INDEPENDENT_DENSITY_OOS.md",
+      "github_commit": "76edc64af94acf2c49a6c431fd1be695f6f8c866",
+      "best_micro_result": {
+        "vector": "DH04-S07",
+        "delta_net_vs_parent_usd": 0.23,
+        "delta_trades": 2,
+        "delta_wins": 2
+      },
+      "decision": "NO_PROMOTION_S07_ONLY_ROBUSTNESS_CHECK",
+      "promoted": false,
+      "metric_lock": false
+    },
+    "r036": {
+      "status": "COMPLETE_MICRO_EDGE_NOT_ROBUST",
+      "config": "DH04-S07_EXACT",
+      "surfaces": [
+        "P50",
+        "P75",
+        "P90"
+      ],
+      "holdout_start": "2026-01-18T12:00:00Z",
+      "result_sha256": "7a5f8f5745db4c58dc35db0a08d82d134f423b1dba13e04995c2b07780e6c890",
+      "drive_doc_id": "1WKSLzMO85Fw6lCoE_RxPntq-z30N1CwIGmoTyDHMUtQ",
+      "drive_doc_url": "https://docs.google.com/document/d/1WKSLzMO85Fw6lCoE_RxPntq-z30N1CwIGmoTyDHMUtQ/edit",
+      "github_report_path": "research/delta/research/DELTA_R036_DH04_S07_CROSS_SURFACE_OOS.md",
+      "github_commit": "4deb29d438df9cc26cd3da58af9b5636a7404588",
+      "deltas_usd": {
+        "P50": -2.78,
+        "P75": -3.19,
+        "P90": 0.23
+      },
+      "decision": "RETIRE_DH04_LATE_JAN_DENSITY_ADDITION_FAMILY",
       "promoted": false,
       "metric_lock": false
     }
