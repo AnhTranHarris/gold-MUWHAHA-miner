@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R027_IN_PROGRESS_MONTHS_01_06_COMPLETE",
+  "current_phase": "R027_COMPLETE_GENERIC_REARM_BROADLY_TOXIC",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "RESUME_R027_AT_MONTH_07;_HARVEST_ONLY_NO_GOVERNOR_TEST_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "R028_GENERIC_REARM_ACTION_ABLATION_PREREGISTER_THEN_STAGE_A;_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -515,7 +515,11 @@
     "r026_no_recovery_subset_authorized": true,
     "r026_mechanism": "GENERIC_OPPOSITE_REARM_ALMOST_ALWAYS_COUNTER_TO_STILL_DOMINANT_M30_STATE",
     "r027_harvest_only": true,
-    "r027_generalized_rearm_governor_testing_prohibited": true
+    "r027_generalized_rearm_governor_testing_prohibited": true,
+    "r027_complete": true,
+    "generic_same_minute_rearm_broad_toxicity_detected": true,
+    "m30_opposition_not_sufficient_explanation_for_generic_rearm_toxicity": true,
+    "r027_behavior_change_tested": false
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -1131,7 +1135,7 @@
   "active_research_question": "R9_DIRECTION_PLUS_INITIAL_HOLD_SURVIVABILITY_AND_MULTI_ENTRY_SPECIALIST_ARCHITECTURE",
   "initial_research": {
     "id": "DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN",
-    "status": "R019_PREREGISTERED_NOT_EXECUTED",
+    "status": "R027_COMPLETE_GENERIC_REARM_BROAD_TOXICITY",
     "report_path": "research/delta/research/DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN.md",
     "report_commit": "700fa3399c95ff07dad7c210fd34a5c6572543af",
     "active_candidate": null,
@@ -2854,12 +2858,12 @@
       "decision": "KEEP_FULL_SUPPRESSION_NO_RELEASE_SUBSET"
     },
     "r027": {
-      "status": "IN_PROGRESS",
+      "status": "COMPLETE",
       "parent": "R026_CAUSAL_MECHANISM",
       "drive_doc_id": "1iVc319_PoOmw-CfkCDZAzZ735LYKKhjBIsmjwV6EvVw",
       "drive_doc_url": "https://docs.google.com/document/d/1iVc319_PoOmw-CfkCDZAzZ735LYKKhjBIsmjwV6EvVw/edit",
       "github_report_path": "research/delta/research/DELTA_R027_GENERIC_REARM_M30_OPPOSITION_HARVEST.md",
-      "github_commit": "ce5e7190df3e8a24be45a7d4fc4c375c84acdd67",
+      "github_commit": "792a67533fa7a1c0cc6f7f628bd51bddcbf218c6",
       "prereg_tab": "50 R027 Prereg",
       "monthly_summary_tab": "51 R027 Monthly Summary",
       "slice_matrix_tab": "52 R027 Slice Matrix",
@@ -2885,7 +2889,8 @@
         3,
         4,
         5,
-        6
+        6,
+        7
       ],
       "result_sha256": {
         "2026-01": "fe7098b1c86c69626e4665b17b876edb66c18c20180cf984bbb1170a4fcc3f8b",
@@ -2893,7 +2898,8 @@
         "2026-03": "c441c1b6034a4d697dd491a6c67bb3b3214d03a1c297604d8b95d0e3dffdf857",
         "2026-04": "6b43040513dba6fc4fbabba93673a3ba39e76cdf4a86f287cb3e527a2104c837",
         "2026-05": "4dd594f7778bdfbc8e900bf5980de91b056d7b285d84841c5e4787f2e320a0a1",
-        "2026-06": "f237d74b1f8be5ef41ec21e9d85ed0371b0f58ff37bb451e3cf6a65d36cf6531"
+        "2026-06": "f237d74b1f8be5ef41ec21e9d85ed0371b0f58ff37bb451e3cf6a65d36cf6531",
+        "2026-07": "5fbfba73e3abd46e49447269cef80578ffa0b55c286a4415e679e67bc8bcd942"
       },
       "monthly_checkpoints": {
         "2026-01": {
@@ -2979,8 +2985,38 @@
           "not_opposed_expectancy_usd": -0.192845,
           "csv_sha256": "0c2086559263cfbb7fdc40150d5b42c7714726e0552bec4842ac65664e2b3919",
           "summary_sha256": "f237d74b1f8be5ef41ec21e9d85ed0371b0f58ff37bb451e3cf6a65d36cf6531"
+        },
+        "2026-07": {
+          "events": 2892,
+          "net_usd": -615.79,
+          "expectancy_usd": -0.212929,
+          "win_rate_pct": 44.744122,
+          "opposed_m30_count": 1242,
+          "opposed_m30_net_usd": -275.18,
+          "opposed_expectancy_usd": -0.221562,
+          "not_opposed_count": 1650,
+          "not_opposed_net_usd": -340.61,
+          "not_opposed_expectancy_usd": -0.20643,
+          "csv_sha256": "b3f7f38fe5b3defa306d078f2f692eccafb5ce40099518d342a09f7f2387314c",
+          "summary_sha256": "5fbfba73e3abd46e49447269cef80578ffa0b55c286a4415e679e67bc8bcd942"
         }
-      }
+      },
+      "aggregate": {
+        "events": 23560,
+        "net_usd": -4603.22,
+        "expectancy_usd": -0.195382852,
+        "win_rate_pct": 45.390492,
+        "opposed_m30_count": 9703,
+        "opposed_m30_net_usd": -1947.6,
+        "not_opposed_count": 13857,
+        "not_opposed_net_usd": -2655.62,
+        "negative_months": 7,
+        "total_months": 7,
+        "preregistered_1d_bins_robustly_positive": 0,
+        "slice_analysis_sha256": "a5b4837515744fca9e12909b60deac814c60ee42b62a94d76e31f456e3eecee4"
+      },
+      "decision": "GENERIC_REARM_BROADLY_TOXIC_FORCED_OPPOSITE_ARCHITECTURE_PRIMARY_SUSPECT",
+      "drive_doc_revision": "ANLCKQmom2obVLeCKz2mds1Yjq5tIn3RHJNc77SK3THWhd1rTH8uBvGrnAy38J7HuezIpgXjiUk2cIZevxOsXNWQdvY5lZHwYzY7cHFMih8"
     }
   },
   "prebacktest_research": {
