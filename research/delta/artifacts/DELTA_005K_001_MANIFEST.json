@@ -1,0 +1,41 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "DELTA_005K_001_PROTECTION_BENEFIT_FORENSIC_DIFFERENTIAL",
+  "status": "PREREGISTERED",
+  "historical_forensic_only": true,
+  "candidate_promotion_allowed": false,
+  "date_utc": "2026-10-02",
+  "focus": "ENTRY_PLUS_INITIAL_HOLD",
+  "parent_findings": [
+    "DELTA_005H_001",
+    "DELTA_005J_001"
+  ],
+  "window": {
+    "start_ms_utc": 1767225600000,
+    "end_ms_utc_exclusive": 1768737600000
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "paired_control": {
+    "hard_stop_price": 0.3,
+    "trail_activation_price": 0.1,
+    "trail_distance_price": 0.03,
+    "max_hold_seconds": 30
+  },
+  "paired_treatment": {
+    "hard_stop_price": 0.3,
+    "trail_activation_price": 0.3,
+    "trail_distance_price": 0.03,
+    "max_hold_seconds": 30
+  },
+  "observation_horizons_ms": [
+    0,
+    250,
+    500,
+    1000,
+    2000,
+    3000
+  ],
+  "anti_leak": "CAUSAL_FEATURES_ONLY_PAIRED_TREATMENT_EFFECT_LABELS_ONLY",
+  "mature_hold_exit_high_profit_optimization": false,
+  "august_2026": "SEALED"
+}
