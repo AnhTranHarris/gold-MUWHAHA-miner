@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "EXECUTE_R020_MONTHS_02_TO_07_ONE_MONTH_PER_CRASH_SAFE_JOB;_NO_THRESHOLD_RETUNING_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "EXECUTE_R020_MONTHS_03_TO_07_ONE_MONTH_PER_CRASH_SAFE_JOB;_NO_THRESHOLD_RETUNING_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -1989,7 +1989,7 @@
       }
     },
     "r020": {
-      "status": "EXECUTION_FIXTURE_FROZEN_JANUARY_COMPLETE",
+      "status": "MONTHLY_REPLAY_IN_PROGRESS",
       "drive_doc_id": "1MsbSh1qX5CrzRgDfBi-77UtGXSYoygk2JwyEVSK8ugo",
       "drive_doc_url": "https://docs.google.com/document/d/1MsbSh1qX5CrzRgDfBi-77UtGXSYoygk2JwyEVSK8ugo/edit",
       "prereg_tab": "34 R020 Prereg",
@@ -2019,10 +2019,24 @@
         "january_control_parity": "R9_AND_T06_TRADES_WINNERS_GP_GL_NET_EXACT"
       },
       "completed_months": [
-        1
+        1,
+        2
       ],
       "month_result_sha256": {
-        "1": "aba8229e8b4af77acf2537d5f1621ed60dc1433c4bafc3e6f98446be42de7cd2"
+        "1": "aba8229e8b4af77acf2537d5f1621ed60dc1433c4bafc3e6f98446be42de7cd2",
+        "2": "ed53f80ab9ac39302837717bbee263971ff6318993554bfcdea77f1b6998d9da"
+      },
+      "monthly_checkpoint": {
+        "1": {
+          "incremental_net_vs_t06_usd": 22.53,
+          "incremental_net_pct": 0.388007,
+          "result": "IMPROVES"
+        },
+        "2": {
+          "incremental_net_vs_t06_usd": -0.11,
+          "incremental_net_pct": -0.002038,
+          "result": "FLAT_SLIGHTLY_WORSE"
+        }
       }
     }
   },
