@@ -72,5 +72,9 @@
   "default_profile": "P75",
   "rationale": "Use a conservative empirical friction percentile for default research. P50 is median sensitivity; P90 is stress. Values are frozen from Coinexx REAL spread evidence, not selected from SYNTH outcomes.",
   "quote_transform": "Preserve Dukascopy timestamp/source ordinal and midpoint path; place modeled Coinexx-tick Bid/Ask around midpoint using current causal session spread; max midpoint quantization error 0.005.",
-  "raw_surface_preserved": "DUKAS_NATIVE"
+  "raw_surface_preserved": "DUKAS_NATIVE",
+  "warmup_policy": {
+    "january": "cold-start because December 2025 is outside the registered corpus",
+    "february_through_july": "prepend 90 minutes of the prior month's raw Dukascopy ticks for S1/M5 state only; scoring begins at the current month's first tick"
+  }
 }
