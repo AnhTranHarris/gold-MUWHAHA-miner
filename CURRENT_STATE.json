@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R032_COMPLETE_NEAR_GATE_R033_HARVEST_ONLY",
+  "current_phase": "R033_HARVEST_COMPLETE_R034_OOS_PREREG_PENDING",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "R033_HARVEST_A01_ONLY_INCREMENTAL_EVENTS_CAUSALLY;_NO_BEHAVIOR_CHANGE_TEST_UNTIL_NEW_PREREG_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "R034_PREREGISTER_FIXED_CAUSAL_POCKETS_THEN_VALIDATE_OUT_OF_SAMPLE;_NO_SAME_WINDOW_PROMOTION_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -533,7 +533,10 @@
     "r032_preregistered_before_results": true,
     "r032_new_configs_after_results_prohibited": true,
     "r032_complete": true,
-    "r032_promoted": false
+    "r032_promoted": false,
+    "r033_harvest_only": true,
+    "r033_same_sample_interactions_not_promotable": true,
+    "r034_out_of_sample_validation_required": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -3214,6 +3217,39 @@
         "p90_trade_retention_pct": 82.610147,
         "p90_delta_vs_opp": -13.33
       }
+    },
+    "r033": {
+      "status": "HARVEST_COMPLETE_NO_BEHAVIOR_TEST",
+      "drive_doc_id": "15J3lOVQJ0OYVJmtyn4l9PMl1IB5YBPeWUOleGn_ovGw",
+      "drive_doc_url": "https://docs.google.com/document/d/15J3lOVQJ0OYVJmtyn4l9PMl1IB5YBPeWUOleGn_ovGw/edit",
+      "workbook_tab": "62 R033 A01 Harvest",
+      "parent": "R032-C03_PLUS_DH02_S11_S08",
+      "surface": "P90",
+      "a01_total_signals": 684,
+      "c03_union_signals": 2379,
+      "a01_only_signals": 682,
+      "executed_a01_only_entries": 129,
+      "wins": 56,
+      "win_rate_pct": 43.410853,
+      "net": -30.03,
+      "mean_per_trade": -0.232791,
+      "event_csv_sha256": "66db344df25342f4a296f6b1a943701febd7d4c65ccb1fcd6b830cfff11aeb42",
+      "summary_json_sha256": "af4068474a788d94d432722b487836009d22cf570f2e6b2bb8e169f3ff6ca60d",
+      "leading_hypothesis": {
+        "id": "NESTED_S5_S15",
+        "s5_netatr_low_exclusive": 0.43606557,
+        "s5_netatr_high_inclusive": 1.39348837,
+        "s15_netatr_low_exclusive": 1.03122498,
+        "s15_netatr_high_inclusive": 1.78181818,
+        "discovery_n": 10,
+        "discovery_wins": 8,
+        "discovery_net": 1.33,
+        "distinct_days": 7,
+        "label": "HYPOTHESIS_ONLY_NOT_VALIDATED"
+      },
+      "behavior_change_tested": false,
+      "promoted": false,
+      "metric_lock": false
     }
   },
   "prebacktest_research": {
