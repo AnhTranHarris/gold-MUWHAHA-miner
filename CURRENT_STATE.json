@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "OWNER_REQUESTED_RESTART_PRE_CANDIDATE_RESEARCH",
+  "current_phase": "INITIAL_RESEARCH_DIRECTION_AND_INITIAL_HOLD_NO_TESTING",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -386,7 +386,13 @@
     "historical_delta005_state_fields_must_not_override_restart": true,
     "duplicate_governance_numbers_prohibited": true,
     "master_protocol_cross_project_lineage_text_must_not_override_delta": true,
-    "current_fresh_research_ledger_required": true
+    "current_fresh_research_ledger_required": true,
+    "testing_currently_authorized": false,
+    "initial_direction_hold_research_started": true,
+    "direction_hold_research_may_consider_entry_engine_replacement": true,
+    "direction_hold_research_may_consider_multiple_entry_specialists": true,
+    "direction_hold_trade_volume_preservation_required": true,
+    "direction_hold_research_result_status": "HYPOTHESIS_FAMILIES_ONLY_NO_TESTING"
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -949,5 +955,26 @@
         "stub_blob_sha": "386f309c326a6bd7210ab31156f55e7cd4c61c99"
       }
     }
+  },
+  "active_research_question": "R9_DIRECTION_PLUS_INITIAL_HOLD_SURVIVABILITY_AND_MULTI_ENTRY_SPECIALIST_ARCHITECTURE",
+  "initial_research": {
+    "id": "DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN",
+    "status": "RESEARCH_ONLY_NO_TESTING",
+    "report_path": "research/delta/research/DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN.md",
+    "report_commit": "700fa3399c95ff07dad7c210fd34a5c6572543af",
+    "active_candidate": null,
+    "candidate_families": [
+      "DH-01_NESTED_DIRECTION_STATE",
+      "DH-02_BREAKOUT_RETEST_REBREAK_SPECIALIST",
+      "DH-03_PULLBACK_CONTINUATION_SPECIALIST",
+      "DH-04_COMPRESSION_EXPANSION_SPECIALIST",
+      "DH-05_FAILED_BREAK_REVERSAL_SPECIALIST",
+      "DH-06_QUOTE_PRESSURE_INITIAL_HOLD_PERSISTENCE",
+      "DH-07_SPECIALIST_AWARE_INITIAL_HOLD_STATE_MACHINE"
+    ],
+    "spreadsheet_harvesting_started": false,
+    "tick_testing_started": false,
+    "august_2026": "SEALED",
+    "mql5_authorized": false
   }
 }
