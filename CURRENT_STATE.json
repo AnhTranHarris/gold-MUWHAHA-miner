@@ -37,7 +37,8 @@
     "creative_refinement_contract": "research/delta/governance/DELTA_GOV_007_CREATIVE_REFINEMENT_ESCALATION_AND_DUKASCOPY_PLAYGROUND.md",
     "multi_specialist_contract": "research/delta/governance/DELTA_GOV_008_MULTI_SPECIALIST_COMPOSITE_AND_SESSION_AWARE_ASSUMPTION.md",
     "news_event_contract": "research/delta/governance/DELTA_GOV_009_NEWS_EVENT_OPPORTUNITY_AND_IMPACT_HANDLING_ASSUMPTION.md",
-    "high_opportunity_density_contract": "research/delta/governance/DELTA_GOV_010_HIGH_OPPORTUNITY_DENSITY_AND_CANDIDATE_TRADE_CONTRIBUTION_ASSUMPTION.md"
+    "high_opportunity_density_contract": "research/delta/governance/DELTA_GOV_010_HIGH_OPPORTUNITY_DENSITY_AND_CANDIDATE_TRADE_CONTRIBUTION_ASSUMPTION.md",
+    "maintenance_capital_contract": "research/delta/governance/DELTA_GOV_011_PROP_STYLE_MAINTENANCE_CAPITAL_STAGING_AND_SMALL_ACCOUNT_SURVIVAL.md"
   },
   "drive": {
     "delta_research_folder_id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel",
@@ -186,7 +187,30 @@
     "opportunity_ledger_required": true,
     "daily_activity_distribution_reporting_required": true,
     "success_by_trade_starvation_prohibited": true,
-    "exact_daily_trade_floor": "PENDING_OWNER_AND_DATA_REVIEW"
+    "exact_daily_trade_floor": "PENDING_OWNER_AND_DATA_REVIEW",
+    "maintenance_layer_separate_from_edge_research": true,
+    "fixed_lot_initial": 0.01,
+    "fixed_lot_until_all_primary_locks_and_owner_ladder": true,
+    "starting_capital_by_lock_count": {
+      "0": 100000,
+      "1": 1000,
+      "2": 500,
+      "3": 500,
+      "4": 100
+    },
+    "standard_mode_min_equity": 1000,
+    "standard_planned_loss_ceiling_pct": 0.5,
+    "daily_risk_warning_pct": 2.5,
+    "daily_hard_stop_pct": 4,
+    "weekly_risk_warning_pct": 5,
+    "weekly_hard_stop_pct": 8,
+    "maintenance_breach_uses_intraday_equity": true,
+    "no_martingale_or_grid_recovery": true,
+    "small_account_survival_mode_below": 1000,
+    "small_account_rules_empirical_pending": true,
+    "return_to_standard_mode_at": 1000,
+    "future_lot_sizing_ladder": "OWNER_PENDING",
+    "raw_and_maintenance_governed_metrics_both_required": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
