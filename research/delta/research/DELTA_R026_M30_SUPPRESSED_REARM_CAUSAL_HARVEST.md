@@ -88,3 +88,53 @@ Workbook tabs:
 - `47 R026 Prereg`
 - `48 R026 Monthly Summary`
 - `49 R026 Slice Matrix`
+
+## Completion result
+
+Across January–July, R026 harvested **7,593** first generic same-minute rearms that would have triggered after M30 KEEP-owned exits.
+
+Frozen R9-lifecycle hypothetical result:
+
+- total PnL: **-$1,581.49**
+- average: **-$0.20828/trade**
+- win rate: **43.79%**
+- positive events: 3,325
+- negative/zero events: 4,268
+- negative months: **7 / 7**
+
+Monthly hypothetical PnL:
+
+- Jan -$239.01
+- Feb -$208.74
+- Mar -$282.75
+- Apr -$188.94
+- May -$259.05
+- Jun -$203.30
+- Jul -$199.70
+
+## Preregistered slices
+
+No preregistered one-dimensional recovery bin was robustly positive.
+
+Wait time, prior hold, prior PnL, parent M30 state, rearm M30 state, rearm micro250 state, and session all remained net negative.
+
+Most importantly:
+
+**7,587 / 7,593 events had rearm-direction M30NetATR <= -0.35.**
+
+The generic opposite-side same-minute rearm is therefore almost always trying to trade against the still-dominant M30 state after an M30 KEEP-owned exit.
+
+## Decision
+
+Keep full same-minute rearm suppression for the validated M30 KEEP-owned branch.
+
+R026 authorizes **no release subset** and no threshold/timing retune.
+
+The next leverage question is whether generic same-minute rearms elsewhere in the P01/R9 surface are also toxic when their entry direction is opposed by M30.
+
+That broader class must be harvested before any generalized rearm governor is tested.
+
+Slice-analysis SHA-256:
+
+`0688f955d561a9266b58c998a1bdb4c6a3d69b0b94c9ccc7158ddd4f44e7db2a`
+
