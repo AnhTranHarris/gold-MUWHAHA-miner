@@ -4,9 +4,9 @@
   "branch": "delta",
   "created_utc": "2026-10-01",
   "active_science_parent": null,
-  "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
-  "first_incomplete_unit": "DELTA_005_FIRST_JANUARY_CANDIDATE_CAMPAIGN_PREREGISTRATION",
-  "current_phase": "DELTA_005_RESEARCH_LEDGER_READY_PREREGISTRATION_NEXT",
+  "last_verified_durable_unit": "DELTA_005H_001_INITIAL_TRAILING_SHIELD",
+  "first_incomplete_unit": "DELTA_005I_001_EARLY_BREATHING_TRAIL_DISTANCE_PREREGISTRATION",
+  "current_phase": "DELTA_005_ENTRY_INITIAL_HOLD_BREAKTHROUGH_005H_005I_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -292,7 +292,7 @@
     "google_doc_url": "https://docs.google.com/document/d/1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g/edit?usp=drivesdk",
     "status": "READY"
   },
-  "next_action": "Preregister DELTA_005 Entry + Initial-Hold campaign using GOV-012 and GOV-013. Before each material candidate revision perform quick leverage/formula-failure analysis; after every completed test create a fresh temporary Google Sheet using the registered analysis schema, promote decision-relevant findings to the DELTA_005 master Google Doc and GitHub, and keep Holding-Trade + Exit + High-Profit optimization deferred. August remains sealed.",
+  "next_action": "Preregister DELTA_005I as a small Entry + Initial-Hold protective-mechanics refinement. Keep original R9 entry logic and hard stop fixed. Test only a wider early trail distance for a short breathing window, then revert to the original $0.03 trail. Do not optimize mature Holding-Trade + Exit + High-Profit. Persist each small unit before starting the next. August remains sealed.",
   "mql5_authorized": false,
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_004_COINEXX_LIKE_DUKASCOPY_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
@@ -484,5 +484,27 @@
     "master_google_doc_readback": true,
     "temp_sheet_template_readback": true
   },
-  "candidate_leverage_research_ledger_contract_blob_sha": "25e1831ac89a826bc4f198167007fdf8e73d4ea6"
+  "candidate_leverage_research_ledger_contract_blob_sha": "25e1831ac89a826bc4f198167007fdf8e73d4ea6",
+  "delta_005h": {
+    "status": "COMPLETE_RESEARCH_BREAKTHROUGH_NOT_PROMOTED",
+    "checkpoint_path": "research/delta/checkpoints/DELTA_005H_001_RESULTS.json",
+    "checkpoint_blob_sha": "ed0c4e79c7687a8360d030f2d2c36e51a98ea083",
+    "report_path": "research/delta/DELTA_005H_001_INITIAL_TRAILING_SHIELD_REPORT.md",
+    "report_blob_sha": "286c1ef419823038f53725a5d8d45f9a83d54971",
+    "experiment_path": "research/delta/experiments/DELTA_005H_INITIAL_TRAILING_SHIELD.py",
+    "experiment_blob_sha": "914d861c7c65e878254b16939ef2be292c47a2df",
+    "temporary_sheet_id": "1SWEzgzBpfgYxMyc2LMKY68qEmxqND2z-iMrlPygEF-Y",
+    "breakthrough": {
+      "trail_activation_parent": 0.1,
+      "trail_activation_high_leverage": 0.3,
+      "parent_average_hold_seconds": 6.712,
+      "high_leverage_average_hold_seconds": 9.027,
+      "survival_5s_delta_pp": 11.0101,
+      "survival_10s_delta_pp": 10.6854,
+      "survival_15s_delta_pp": 8.5036,
+      "gross_profit_parent": 1574.77,
+      "gross_profit_high_leverage": 2377.8
+    },
+    "interpretation": "EARLY_FIXED_TRAILING_IS_A_REAL_INITIAL_HOLD_BOTTLENECK"
+  }
 }
