@@ -1,0 +1,40 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "DELTA_005H_001_INITIAL_TRAILING_SHIELD",
+  "status": "PREREGISTERED",
+  "historical_simulation_only": true,
+  "live_deployment_authorized": false,
+  "date_utc": "2026-10-02",
+  "focus": "ENTRY_PLUS_INITIAL_HOLD",
+  "parent": "R9_STYLE_STAGE_A_CONTROL",
+  "window": {
+    "start_ms_utc": 1767225600000,
+    "end_ms_utc_exclusive": 1768737600000
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "grid": {
+    "shield_ms": [
+      0,
+      1000,
+      3000,
+      5000,
+      10000
+    ],
+    "trail_activation_price": [
+      0.1,
+      0.2,
+      0.3,
+      0.5
+    ],
+    "trail_distance_price": 0.03,
+    "hard_stop_price": 0.3,
+    "variants": 20
+  },
+  "parent_control_cell": {
+    "shield_ms": 0,
+    "trail_activation_price": 0.1
+  },
+  "downstream_lifecycle": "FROZEN_R9",
+  "mature_hold_exit_high_profit_optimization": false,
+  "august_2026": "SEALED"
+}
