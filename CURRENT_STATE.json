@@ -4,9 +4,9 @@
   "branch": "delta",
   "created_utc": "2026-10-01",
   "active_science_parent": null,
-  "last_verified_durable_unit": "DELTA_002_DUKASCOPY_TICK_LAB",
-  "first_incomplete_unit": "DELTA_003_COINEXX_R9_PARITY_CALIBRATION_PLANNING",
-  "current_phase": "DUKASCOPY_TICK_LAB_READY_COINEXX_R9_PARITY_CALIBRATION_NEXT",
+  "last_verified_durable_unit": "DELTA_003_COINEXX_R9_PARITY_CALIBRATION",
+  "first_incomplete_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE_PLANNING",
+  "current_phase": "COINEXX_R9_PARITY_VERIFIED_COINEXX_LIKE_DUKASCOPY_SURFACE_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -220,7 +220,24 @@
     "dukascopy_month_isolated_jobs": true,
     "dukascopy_candidate_month_atomic_checkpoint": true,
     "dukascopy_raw_bid_ask_execution_truth": true,
-    "coinexx_r9_execution_parity_status": "PENDING_NEXT_VERSIONED_CALIBRATION"
+    "coinexx_r9_execution_parity_status": "VERIFIED_EXACT_JANUARY_WITH_JULY_DST_CROSSCHECK",
+    "coinexx_fixed_lot_cost_model": {
+      "lot": 0.01,
+      "usd_per_1_price_move": 1,
+      "entry_commission_usd": 0.01,
+      "exit_commission_usd": 0.01,
+      "round_trip_commission_usd": 0.02
+    },
+    "coinexx_market_quote_sides": {
+      "buy_entry": "ASK",
+      "buy_exit": "BID",
+      "sell_entry": "BID",
+      "sell_exit": "ASK"
+    },
+    "coinexx_protective_fill_model": "FIRST_EXECUTABLE_QUOTE_AFTER_STOP_CROSS",
+    "coinexx_position_observation_latch_required_for_rearm": true,
+    "dukascopy_native_spread_surface_must_remain_unmodified": true,
+    "coinexx_like_dukascopy_surface_requires_separate_preregistration": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
@@ -228,9 +245,9 @@
     "google_doc_url": "https://docs.google.com/document/d/1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g/edit?usp=drivesdk",
     "status": "READY"
   },
-  "next_action": "Plan and execute a new preregistered Coinexx/MT5 R9 parity-calibration unit against the verified DELTA_002 Dukascopy tick lab. Freeze broker Point/Digits/tick size, contract/tick value, commissions, stop/freeze levels, filling/deviation behavior, margin/stop-out, and R9 OnTick/order-lifecycle parity before strategy research. August remains sealed.",
+  "next_action": "Preregister and build DELTA_004 as an explicitly modeled Coinexx-like execution/quote-cost surface over the independent Dukascopy path. Preserve DUKAS_NATIVE unchanged, derive all modeled spread/cost behavior only from Coinexx REAL evidence, label the modeled surface distinctly, and keep August sealed.",
   "mql5_authorized": false,
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_002_DUKASCOPY_TICK_LAB_MANIFEST.json",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_003_COINEXX_R9_PARITY_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
   "first_incomplete_manifest_path": null,
   "first_incomplete_preregistration_path": null,
@@ -316,5 +333,32 @@
     "mt5_translation_ready": false,
     "august_accessed": false,
     "drive_readback": true
+  },
+  "coinexx_r9_parity": {
+    "unit_id": "DELTA_003_COINEXX_R9_PARITY_CALIBRATION",
+    "status": "VERIFIED_DURABLE",
+    "manifest_path": "research/delta/artifacts/DELTA_003_COINEXX_R9_PARITY_MANIFEST.json",
+    "manifest_blob_sha": "ea64848cabb4cc151b1fd8400918e0b3120175fc",
+    "adapter_path": "research/delta/lab/coinexx_r9_adapter.py",
+    "adapter_blob_sha": "e833f7ef894c0bf8deaf12727042f6b2f8c30f21",
+    "runner_path": "research/delta/lab/r9_parity_runner.py",
+    "runner_blob_sha": "7f0f4034ab9e1ddb4bf657e7253e9eaf27d3ba7d",
+    "config_path": "research/delta/reference/DELTA_003_COINEXX_EXECUTION_CONFIG.json",
+    "config_blob_sha": "eeaf74a0b5a3827ee559177cc549e9157253db85",
+    "qa_path": "research/delta/qa/DELTA_003_COINEXX_R9_PARITY_QA.py",
+    "qa_blob_sha": "6d3f442eafd59bc57933ae454ad7b64888bcb6b1",
+    "qa_result_path": "research/delta/checkpoints/DELTA_003_PARITY_QA.json",
+    "qa_result_blob_sha": "7858124b37da53f7b69fd48880384bb4c932292f",
+    "report_path": "research/delta/DELTA_003_COINEXX_R9_PARITY_REPORT.md",
+    "report_blob_sha": "4b50dccd301986a02995d88406ef444c5c328e0f",
+    "january_files": 21,
+    "january_rows": 7699274,
+    "january_event_mismatches": 0,
+    "january_exact_mt5_accounting": true,
+    "july_01_event_mismatches": 0,
+    "coinexx_execution_model_frozen": true,
+    "dukascopy_native_surface_preserved": true,
+    "mt5_translation_ready": false,
+    "august_accessed": false
   }
 }
