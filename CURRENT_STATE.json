@@ -543,7 +543,19 @@
     "r036_complete": true,
     "dh04_current_density_addition_family_retired": true,
     "a01_and_dh04_density_recuts_exhausted_for_current_architecture": true,
-    "no_same_holdout_threshold_recuts": true
+    "no_same_holdout_threshold_recuts": true,
+    "current_bootstrap_doc_id": "1irHGpNmwMUCbYCLvz5wjI-VK0xYtwxeg0t-0ElIDPJQ",
+    "current_bootstrap_doc_url": "https://docs.google.com/document/d/1irHGpNmwMUCbYCLvz5wjI-VK0xYtwxeg0t-0ElIDPJQ/edit",
+    "bootstrap_resume_target": "R037_FRESH_INDEPENDENT_OPPORTUNITY_SOURCE_RESEARCH_AND_PREREGISTRATION",
+    "r036_bootstrap_qc_status": "PASS_RECONCILED",
+    "do_not_restart_completed_units_through": "R036",
+    "r037_requires_fresh_independent_opportunity_source": true,
+    "r037_prohibited_recut_streams": [
+      "DH02_A01_LATE_JAN",
+      "DH04_LATE_JAN_DENSITY_FAMILY",
+      "POST_EXIT_SAME_MINUTE_REARM_FAMILY",
+      "POST_EXIT_RECENTERED_BRACKET_FAMILY"
+    ]
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -1159,7 +1171,7 @@
   "active_research_question": "R9_DIRECTION_PLUS_INITIAL_HOLD_SURVIVABILITY_AND_MULTI_ENTRY_SPECIALIST_ARCHITECTURE",
   "initial_research": {
     "id": "DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN",
-    "status": "R029_COMPLETE_POST_EXIT_REENTRY_FAMILY_RETIRED",
+    "status": "R036_COMPLETE_INDEPENDENT_DENSITY_TOPUPS_EXHAUSTED_NEXT_SOURCE_REQUIRED",
     "report_path": "research/delta/research/DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN.md",
     "report_commit": "700fa3399c95ff07dad7c210fd34a5c6572543af",
     "active_candidate": null,
@@ -1472,7 +1484,7 @@
       "status": "COMPLETE",
       "ticks": 4205709,
       "vectors_evaluated": 116,
-      "vectors_expected": 76,
+      "vectors_expected": 116,
       "control": {
         "trades": 16801,
         "wins": 7351,
@@ -1529,7 +1541,10 @@
           "dh04_results.jsonl": "151cd1c1787b4321da5510a9f54aa0f22fc7ac7fec2b6e1721bef0882df3351d",
           "dh05_results.jsonl": "38a99c46de7e7613a8732513d33b10ec457872d6e323503eedeb615e1c8234de"
         }
-      }
+      },
+      "original_expected_vectors": 76,
+      "secondary_extension_expected_vectors": 40,
+      "vector_accounting_status": "RECONCILED_76_R005_PLUS_40_R006_SECONDARY"
     },
     "family_decisions": {
       "DH-01": {
@@ -3333,6 +3348,14 @@
       "decision": "RETIRE_DH04_LATE_JAN_DENSITY_ADDITION_FAMILY",
       "promoted": false,
       "metric_lock": false
+    },
+    "current_bootstrap": {
+      "status": "CURRENT",
+      "title": "DELTA Bootstrap Handoff — R036 Complete / R037 Fresh Independent Opportunity Source — 2026-10-02",
+      "drive_doc_id": "1irHGpNmwMUCbYCLvz5wjI-VK0xYtwxeg0t-0ElIDPJQ",
+      "drive_doc_url": "https://docs.google.com/document/d/1irHGpNmwMUCbYCLvz5wjI-VK0xYtwxeg0t-0ElIDPJQ/edit",
+      "restart_phase": "R036_COMPLETE_INDEPENDENT_DENSITY_TOPUPS_EXHAUSTED_NEXT_SOURCE_REQUIRED",
+      "next_action": "R037_FRESH_INDEPENDENT_OPPORTUNITY_SOURCE_RESEARCH_AND_PREREGISTRATION"
     }
   },
   "prebacktest_research": {
@@ -3357,5 +3380,13 @@
     "active_candidate": null,
     "august_2026": "SEALED",
     "mql5_authorized": false
+  },
+  "current_bootstrap": {
+    "status": "CURRENT",
+    "title": "DELTA Bootstrap Handoff — R036 Complete / R037 Fresh Independent Opportunity Source — 2026-10-02",
+    "drive_doc_id": "1irHGpNmwMUCbYCLvz5wjI-VK0xYtwxeg0t-0ElIDPJQ",
+    "drive_doc_url": "https://docs.google.com/document/d/1irHGpNmwMUCbYCLvz5wjI-VK0xYtwxeg0t-0ElIDPJQ/edit",
+    "restart_phase": "R036_COMPLETE_INDEPENDENT_DENSITY_TOPUPS_EXHAUSTED_NEXT_SOURCE_REQUIRED",
+    "next_action": "R037_FRESH_INDEPENDENT_OPPORTUNITY_SOURCE_RESEARCH_AND_PREREGISTRATION"
   }
 }
