@@ -100,3 +100,11 @@ These files define R9's actual state machine, behavior-critical defaults, sessio
 The lab replays the registered Jan-Jul Dukascopy corpus as exact ordered Bid/Ask ticks. Its hot cache uses 16 bytes/tick (timestamp int64 + Ask int32 + Bid int32), totaling 920,443,680 bytes for 57,527,562 ticks. Every month independently passes source-hash, row-count, quote, causality, execution-side, 250ms-bar-count, and 1s-bar-count QA. Monthly candidate jobs are isolated and atomically checkpointed for crash/time-out recovery.
 
 The lab is broker-neutral but real-quote aware in v1. Coinexx/MT5 R9 execution parity is the next versioned calibration phase. August remains sealed.
+
+## Verified Coinexx R9 parity
+
+`DELTA_003_COINEXX_R9_PARITY_CALIBRATION` is VERIFIED_DURABLE. Canonical files: `research/delta/lab/coinexx_r9_adapter.py`, `research/delta/lab/r9_parity_runner.py`, `research/delta/reference/DELTA_003_COINEXX_EXECUTION_CONFIG.json`, `research/delta/checkpoints/DELTA_003_PARITY_QA.json`, and `research/delta/DELTA_003_COINEXX_R9_PARITY_REPORT.md`.
+
+The calibrated adapter exactly reproduces all 7,699,274 R9 REAL logger events in January and exactly reconciles January MT5 accounting: 31,915 trades, 13,947 winners, $3,785.28 gross profit, -$10,436.90 gross loss, and -$6,651.62 net. A July 1 post-DST cross-check also has zero event mismatches.
+
+Frozen 0.01-lot economics: $1 P/L per $1 XAUUSD move, -$0.01 entry commission, -$0.01 exit commission, BUY Ask/Bid, SELL Bid/Ask, protective fills at the first executable quote after stop crossing. Native Dukascopy remains a separately labeled feed surface and is not rewritten to force Coinexx-like activity. Next unit: explicitly modeled Coinexx-like execution/quote-cost surface over the independent Dukascopy path. August remains sealed.
