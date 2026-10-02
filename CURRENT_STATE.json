@@ -4,9 +4,9 @@
   "branch": "delta",
   "created_utc": "2026-10-01",
   "active_science_parent": null,
-  "last_verified_durable_unit": "DELTA_005H_001_INITIAL_TRAILING_SHIELD",
-  "first_incomplete_unit": "DELTA_005I_001_EARLY_BREATHING_TRAIL_DISTANCE_COMPUTE",
-  "current_phase": "DELTA_005I_CODE_COMPLETE_COMPUTE_NEXT",
+  "last_verified_durable_unit": "DELTA_005M_001_TRAIL_STEP_FREQUENCY",
+  "first_incomplete_unit": "DELTA_005_NEXT_MICRO_UNIT_PREREGISTRATION_PENDING_NEW_CHAT_REVIEW",
+  "current_phase": "DELTA_FULL_HANDOFF_READY_POST_005M_LEVERAGE_REVIEW_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -287,12 +287,17 @@
     "entry_initial_hold_diagnostics_required": true
   },
   "handoff": {
-    "github_path": "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
-    "google_doc_id": "1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g",
-    "google_doc_url": "https://docs.google.com/document/d/1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g/edit?usp=drivesdk",
-    "status": "READY"
+    "github_path": "research/delta/handoffs/DELTA_FULL_HANDOFF_2026-10-02.md",
+    "github_blob_sha": "61926a4dec50292ef1f9aaa679268042cc3e1cf2",
+    "artifact_audit_path": "research/delta/handoffs/DELTA_ARTIFACT_AUDIT_2026-10-02.json",
+    "artifact_audit_blob_sha": "10a6125c3477a15bd65f525f13a99c9beb9fc50e",
+    "google_doc_id": "1vVXHeqOEGJ1is9qy3RazVJm09qO3HecA2aoINFL4E9w",
+    "google_doc_url": "https://docs.google.com/document/d/1vVXHeqOEGJ1is9qy3RazVJm09qO3HecA2aoINFL4E9w/edit?usp=drivesdk",
+    "google_doc_revision": "ANLCKQmDYMdhi0r8tv0VWKfsfDZCH67TN8Ez91tR1V50OVtOZZD8OWTBBhHojqYdVZPhwAmSiPZTnzVy-4SXuX_oqHe2zNX3wjrBg-0ILj8",
+    "previous_bootstrap_path": "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
+    "status": "FULL_HANDOFF_READY"
   },
-  "next_action": "Micro-step 005I compute only: run the exact preregistered 20-cell Stage-A historical simulation from the committed DELTA_005I source. Persist raw result/checkpoint before any Sheet analysis or interpretation. No parameter changes, no mature exit/high-profit optimization, August sealed.",
+  "next_action": "Start the new chat from the 2026-10-02 full handoff and artifact audit. Verify 005H, 005M, and the source-identity quarantine; perform GOV-013 leverage review; then preregister exactly one new Entry + Initial-Hold micro-unit. Do not resume stale 005I compute. Do not open August. Do not start MQL5 or Holding-Trade + Exit + High-Profit research.",
   "mql5_authorized": false,
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_004_COINEXX_LIKE_DUKASCOPY_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
@@ -510,29 +515,21 @@
     "august_accessed": false
   },
   "delta_005i": {
-    "status": "CODE_COMPLETE",
+    "status": "COMPLETE_NOT_PROMOTED",
     "preregistration_path": "research/delta/DELTA_005I_001_EARLY_BREATHING_TRAIL_DISTANCE_PREREGISTRATION.md",
     "manifest_path": "research/delta/artifacts/DELTA_005I_001_MANIFEST.json",
-    "hypothesis": "TEMPORARILY_WIDER_EARLY_TRAIL_DISTANCE_MAY_PRESERVE_005H_PERSISTENCE_WITH_LESS_GROSS_LOSS_DAMAGE",
-    "grid": {
-      "early_window_ms": [
-        0,
-        1000,
-        3000,
-        5000,
-        10000
-      ],
-      "early_trail_distance_price": [
-        0.03,
-        0.05,
-        0.1,
-        0.2
-      ],
-      "variants": 20
-    },
-    "august_accessed": false,
-    "source_path": "research/delta/experiments/DELTA_005I_EARLY_BREATHING_TRAIL_DISTANCE.py",
-    "source_blob_sha": "183770939ef0c0563a0570072a7f0915565b770f"
+    "checkpoint_path": "research/delta/checkpoints/DELTA_005I_001_RESULTS.json",
+    "checkpoint_blob_sha": "c9b8eefd085e419efabc6b869bb3c75311935a34",
+    "report_path": "research/delta/DELTA_005I_001_EARLY_BREATHING_TRAIL_DISTANCE_REPORT.md",
+    "report_blob_sha": "65ef8e2a9b60d1e877edb3a74c878e77d12b7205",
+    "current_source_path": "research/delta/experiments/DELTA_005I_EARLY_BREATHING_TRAIL_DISTANCE.py",
+    "current_source_blob_sha": "d22f2d479a543fb519751ce9f8b25c561e644f4d",
+    "result_source_blob_sha": "8f22b1ff287cfce3d745587e981ec77e839a60d0",
+    "recovered_result_source_path": "research/delta/recovered_sources/DELTA_005I_001_RESULT_SOURCE_8f22b1ff.py",
+    "recovered_result_source_blob_sha": "a3e79ff084ad6e29c6fd017504941e019e9423bd",
+    "source_identity_status": "RECOVERED_EXACT_RESULT_SOURCE",
+    "temporary_sheet_id": "1Q0QvgdOX5Nx96YdnLeS9XaAosz7U_kBwx4hMXYdk2Ck",
+    "august_accessed": false
   },
   "delta_005_entry_initial_hold": {
     "status": "ACTIVE",
@@ -548,47 +545,58 @@
       "DELTA_005G_001",
       "DELTA_005H_001",
       "DELTA_005I_001",
-      "DELTA_005J_001"
+      "DELTA_005J_001",
+      "DELTA_005K_001",
+      "DELTA_005L_001",
+      "DELTA_005M_001"
     ],
-    "latest_unit": "DELTA_005J_001_STATE_CONDITIONED_INITIAL_PROTECTION",
-    "latest_checkpoint_path": "research/delta/checkpoints/DELTA_005J_001_RESULTS.json",
-    "latest_report_path": "research/delta/DELTA_005J_001_STATE_CONDITIONED_PROTECTION_REPORT.md",
-    "latest_sheet_id": "1-JbrciPz3J0yeZhZwo9ZPdMOQMPAAuNtKm4Q8doNi8c",
-    "latest_sheet_url": "https://docs.google.com/spreadsheets/d/1-JbrciPz3J0yeZhZwo9ZPdMOQMPAAuNtKm4Q8doNi8c/edit?usp=drivesdk",
-    "latest_finding": "State-conditioned loose protection improves survival with less collateral damage than global loose protection, but best net improvement is only 0.67%; accepted-consolidation predicts survival more strongly than final profitability.",
-    "next_unit": "DELTA_005K_001_PROTECTION_BENEFIT_FORENSIC_DIFFERENTIAL"
+    "latest_unit": "DELTA_005M_001_TRAIL_STEP_FREQUENCY",
+    "latest_checkpoint_path": "research/delta/checkpoints/DELTA_005M_001_RESULTS.json",
+    "latest_report_path": "research/delta/DELTA_005M_001_TRAIL_STEP_FREQUENCY_REPORT.md",
+    "latest_sheet_id": "1EcOfavsfFO2QxqHltv11e6fxO79XTh3k49ysD10qefo",
+    "latest_sheet_url": "https://docs.google.com/spreadsheets/d/1EcOfavsfFO2QxqHltv11e6fxO79XTh3k49ysD10qefo/edit?usp=drivesdk",
+    "strongest_breakthrough": "DELTA_005H_001_INITIAL_TRAILING_SHIELD",
+    "latest_finding": "005H establishes early trail activation as a real Initial-Hold bottleneck. 005M ratchet step/frequency is a secondary refinement adding ~0.5-1.3pp persistence with >99% 005H winner retention but sub-percent economics.",
+    "next_unit": "UNDEFINED_PENDING_NEW_CHAT_GOV013_LEVERAGE_REVIEW"
   },
   "delta_005j": {
     "status": "COMPLETE_NOT_PROMOTED",
     "checkpoint_path": "research/delta/checkpoints/DELTA_005J_001_RESULTS.json",
-    "checkpoint_blob_sha": "0567d1f5773baab7edb467e4047d548915237ee0",
-    "report_path": "research/delta/DELTA_005J_001_STATE_CONDITIONED_INITIAL_PROTECTION_REPORT.md",
-    "report_blob_sha": "206d0b6e9827b0654327cf323b92ee3c06a5a68c",
+    "checkpoint_blob_sha": "ead134ac85dbc25bdb8faa6eece1de4f9a04a95f",
+    "checkpoint_source_blob_sha": "7f35b4f568762e7a417c1d50bfe8bcf5e796b462",
     "experiment_path": "research/delta/experiments/DELTA_005J_STATE_CONDITIONED_INITIAL_PROTECTION.py",
-    "experiment_blob_sha": "7f35b4f568762e7a417c1d50bfe8bcf5e796b462",
+    "current_experiment_blob_sha": "670247572f550124cad292972debbe49b2fb3112",
+    "canonical_report_path": "research/delta/DELTA_005J_001_STATE_CONDITIONED_INITIAL_PROTECTION_REPORT.md",
+    "canonical_report_blob_sha": "35ce3fbbc5d8703ad2d3bc0cbcff467fcc8105c3",
+    "superseded_report_path": "research/delta/DELTA_005J_001_STATE_CONDITIONED_PROTECTION_REPORT.md",
     "temporary_sheet_id": "1fP3FXWAiWEs_MSy9ScmMpQbGJFIc0ls1VnT1aoF98eE",
-    "leverage_conclusion": "STATIC_1S_ACCEPTED_STATE_IS_TOO_LOW_LEVERAGE_FOR_PROTECTION_ROUTING"
+    "source_identity_status": "UNRESOLVED_CHECKPOINT_SOURCE_IDENTITY",
+    "leverage_conclusion": "STATE_CONDITIONING_PRESERVES_ACTIVITY_BETTER_THAN_GLOBAL_LOOSENING_BUT_STATIC_1S_ACCEPTANCE_STATE_IS_STILL_TOO_LOW_LEVERAGE"
   },
   "delta_005k": {
     "status": "COMPLETE_NOT_PROMOTED",
     "checkpoint_path": "research/delta/checkpoints/DELTA_005K_001_RESULTS.json",
-    "checkpoint_blob_sha": "8e0b2dcae14cfaf926bb8276e5f18586aeb660e0",
-    "report_path": "research/delta/DELTA_005K_001_MFE_GATED_INITIAL_PROTECTION_REPORT.md",
-    "report_blob_sha": "f1177d121a8c3a767adcb354eb811f03cce1daed",
+    "checkpoint_blob_sha": "2d4b94d5d91d8411dcd5934223454f5f2c2b64e4",
+    "checkpoint_source_blob_sha": "e252b3d22af6b6e259745d549d91f34f4d2c6f70",
     "experiment_path": "research/delta/experiments/DELTA_005K_MFE_GATED_INITIAL_PROTECTION.py",
-    "experiment_blob_sha": "e252b3d22af6b6e259745d549d91f34f4d2c6f70",
+    "current_experiment_blob_sha": "79214c42231007b37c888f1445fb49d43dfa9646",
+    "report_path": "research/delta/DELTA_005K_001_MFE_GATED_INITIAL_PROTECTION_REPORT.md",
+    "report_blob_sha": "85504f8f3532c676a22fb987ee2ceb0954862ac6",
     "temporary_sheet_id": "1GmA0TwTeWQibZqFpQOh1p7LoaIdRA3mEIbb-wK7qKB0",
+    "source_identity_status": "UNRESOLVED_CHECKPOINT_SOURCE_IDENTITY",
     "leverage_conclusion": "ONE_TIME_FIXED_MFE_LOCK_CREATES_A_PARETO_FRONTIER_BUT_NO_CELL_DOMINATES_005H"
   },
   "delta_005l": {
     "status": "COMPLETE_NOT_PROMOTED",
     "checkpoint_path": "research/delta/checkpoints/DELTA_005L_001_RESULTS.json",
-    "checkpoint_blob_sha": "3c30450fd27a3362a4179b0f9fa5844c0920c752",
-    "report_path": "research/delta/DELTA_005L_001_MULTI_STAGE_INITIAL_PROTECTION_REPORT.md",
-    "report_blob_sha": "57a04e08efe68c1a168ab500787635c0492e7c3f",
+    "checkpoint_blob_sha": "5cb59bb435c44fea06f97192c9f5f4815cee4282",
+    "checkpoint_source_blob_sha": "76c298de7acbfe83f11e6a17cd4a953fa3d6ee78",
     "experiment_path": "research/delta/experiments/DELTA_005L_MULTI_STAGE_INITIAL_PROTECTION.py",
-    "experiment_blob_sha": "76c298de7acbfe83f11e6a17cd4a953fa3d6ee78",
+    "current_experiment_blob_sha": "fa1abc46ad4131491203c71e064fd2f47c6e4e4a",
+    "report_path": "research/delta/DELTA_005L_001_MULTI_STAGE_INITIAL_PROTECTION_REPORT.md",
+    "report_blob_sha": "da75551e5965c2ad5c7a6bf836ea3fc8f5c1e5b8",
     "temporary_sheet_id": "1EgQDfNLrChF-ZzdG_Ou8MxsYG4nIWsvT1KBwM82xWl0",
+    "source_identity_status": "UNRESOLVED_CHECKPOINT_SOURCE_IDENTITY",
     "leverage_conclusion": "MULTI_STAGE_STOP_LADDERS_CONVERT_TOO_MANY_005H_WINNERS_INTO_EXITS"
   },
   "entry_initial_hold_research": {
@@ -602,5 +610,41 @@
       "next_required_step": "Create fresh 005M temporary Google Sheet with 2D matrices and complete leverage review before preregistering another candidate.",
       "august_accessed": false
     }
+  },
+  "delta_005m": {
+    "status": "COMPLETE_NOT_PROMOTED_POSTTEST_ANALYSIS_COMPLETE",
+    "preregistration_path": "research/delta/DELTA_005M_001_TRAIL_STEP_FREQUENCY_PREREGISTRATION.md",
+    "manifest_path": "research/delta/artifacts/DELTA_005M_001_MANIFEST.json",
+    "experiment_path": "research/delta/experiments/DELTA_005M_TRAIL_STEP_FREQUENCY.py",
+    "experiment_blob_sha": "183efbfc21672b33cf58fc40494c17897f4e66b3",
+    "checkpoint_path": "research/delta/checkpoints/DELTA_005M_001_RESULTS.json",
+    "checkpoint_blob_sha": "5eeb1987e158307a249bea7e082007a42f34233f",
+    "report_path": "research/delta/DELTA_005M_001_TRAIL_STEP_FREQUENCY_REPORT.md",
+    "report_blob_sha": "b8ab8e213c6035e3462cff82903fcc3076cb0c59",
+    "temporary_sheet_id": "1EcOfavsfFO2QxqHltv11e6fxO79XTh3k49ysD10qefo",
+    "temporary_sheet_url": "https://docs.google.com/spreadsheets/d/1EcOfavsfFO2QxqHltv11e6fxO79XTh3k49ysD10qefo/edit?usp=drivesdk",
+    "source_identity_status": "EXACT",
+    "leverage_conclusion": "KEEP_RATCHET_STEP_AS_SECONDARY_REFINEMENT_AROUND_005H; DO_NOT_SPEND_NEXT_CYCLE_FINE_TUNING_STEP_FREQUENCY",
+    "august_accessed": false
+  },
+  "source_identity_quarantine": {
+    "direct_mt5_translation_prohibited_until_rerun_or_source_reconstruction": [
+      "DELTA_005D_001",
+      "DELTA_005G_001",
+      "DELTA_005J_001",
+      "DELTA_005K_001",
+      "DELTA_005L_001"
+    ],
+    "reason": "Checkpoint result-source SHA differs from current source and does not resolve as a Git blob.",
+    "exact_or_recovered_source_units": [
+      "DELTA_005A_001",
+      "DELTA_005B_001",
+      "DELTA_005C_001",
+      "DELTA_005E_001",
+      "DELTA_005F_001",
+      "DELTA_005H_001",
+      "DELTA_005I_001",
+      "DELTA_005M_001"
+    ]
   }
 }
