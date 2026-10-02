@@ -1,0 +1,73 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
+  "status": "PREREGISTERED",
+  "date_utc": "2026-10-01",
+  "lineage": "DELTA",
+  "parent_checkpoint": "DELTA_003_COINEXX_R9_PARITY_CALIBRATION",
+  "strategy_optimization": false,
+  "hypothesis": "A causal session-conditioned Coinexx spread model applied around the independent Dukascopy midpoint path can reproduce the broad R9 REAL activity/economic surface closely enough for rapid candidate research while preserving DUKAS_NATIVE separately.",
+  "default_profile": "P75",
+  "sensitivity_profiles": [
+    "P50",
+    "P90"
+  ],
+  "frozen_spread_points_by_session": {
+    "P50": {
+      "OFF": 19,
+      "LONDON": 19,
+      "OVERLAP": 19,
+      "NEW_YORK": 19
+    },
+    "P75": {
+      "OFF": 20,
+      "LONDON": 20,
+      "OVERLAP": 21,
+      "NEW_YORK": 21
+    },
+    "P90": {
+      "OFF": 35,
+      "LONDON": 34,
+      "OVERLAP": 23,
+      "NEW_YORK": 37
+    }
+  },
+  "aggregate_tolerances_pct": {
+    "trades": 7,
+    "wins": 7,
+    "gross_profit": 10,
+    "gross_loss_abs": 10,
+    "net_loss_abs": 10
+  },
+  "monthly_tolerances_pct": {
+    "trades": 7,
+    "wins": 15,
+    "gross_profit": 20,
+    "gross_loss_abs": 15,
+    "net_loss_abs": 20
+  },
+  "source_code": [
+    "research/delta/lab/coinexx_like_surface.py"
+  ],
+  "outputs": [
+    "research/delta/reference/DELTA_004_COINEXX_SPREAD_PROFILES.json",
+    "research/delta/checkpoints/DELTA_004_SURFACE_QA.json",
+    "research/delta/DELTA_004_COINEXX_LIKE_DUKASCOPY_REPORT.md"
+  ],
+  "invariants": {
+    "dukascopy_native_unchanged": true,
+    "timestamps_unchanged": true,
+    "source_order_unchanged": true,
+    "no_synth_calibration": true,
+    "august_sealed": true
+  },
+  "python_rebuild_ready": false,
+  "mt5_translation_ready": false,
+  "verification": {
+    "github_readback": false,
+    "p75_aggregate_pass": false,
+    "p75_monthly_pass": false,
+    "current_state_advanced": false
+  },
+  "rollback_target": "DELTA_003_COINEXX_R9_PARITY_CALIBRATION"
+}
