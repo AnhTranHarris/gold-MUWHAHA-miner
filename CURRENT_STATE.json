@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R026_IN_PROGRESS_MONTH_01_COMPLETE",
+  "current_phase": "R026_IN_PROGRESS_MONTHS_01_02_COMPLETE",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "RESUME_R026_AT_MONTH_02_THEN_FIRST_INCOMPLETE_MONTH;_HARVEST_ONLY_NO_RELEASE_TEST_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "RESUME_R026_AT_MONTH_03_THEN_FIRST_INCOMPLETE_MONTH;_HARVEST_ONLY_NO_RELEASE_TEST_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -2742,10 +2742,12 @@
       "august_2026": "SEALED",
       "mql5_authorized": false,
       "completed_months": [
-        1
+        1,
+        2
       ],
       "result_sha256": {
-        "2026-01": "36b2b5f0a9417fba6122ff85aa3c432b4430965056f408a1f2fb39522795f82f"
+        "2026-01": "36b2b5f0a9417fba6122ff85aa3c432b4430965056f408a1f2fb39522795f82f",
+        "2026-02": "9cff9397b05db40e6bb789e4c0b6e680d0b63be50d5e9f7df9196e517ec6046c"
       },
       "monthly_checkpoints": {
         "2026-01": {
@@ -2757,6 +2759,16 @@
           "negative_or_zero_events": 633,
           "csv_sha256": "af136bcc74758407235fb7422387b90a4882d95f57cd8574216115e194c633b0",
           "summary_sha256": "36b2b5f0a9417fba6122ff85aa3c432b4430965056f408a1f2fb39522795f82f"
+        },
+        "2026-02": {
+          "events": 1218,
+          "sum_hypothetical_pnl_usd": -208.74,
+          "avg_hypothetical_pnl_usd": -0.171379,
+          "win_rate_pct": 45.155993,
+          "positive_events": 550,
+          "negative_or_zero_events": 668,
+          "csv_sha256": "4c4ea60ac801928e2f2263328fd4f79b2767f24fde70f0d4df6c3a4e55eff9a3",
+          "summary_sha256": "9cff9397b05db40e6bb789e4c0b6e680d0b63be50d5e9f7df9196e517ec6046c"
         }
       }
     }
