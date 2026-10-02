@@ -404,7 +404,11 @@
     "gov014_strategy_testing_started": false,
     "pretest_candidate_shortlist_exists": true,
     "pretest_viability_is_not_performance_validation": true,
-    "tick_backtest_queue_must_remain_unpopulated_until_preregistration": true
+    "tick_backtest_queue_must_remain_unpopulated_until_preregistration": true,
+    "causal_direction_hold_vocabulary_frozen_for_research": true,
+    "direction_and_market_character_separate": true,
+    "future_swing_confirmation_forbidden_in_live_features": true,
+    "offline_survival_labels_forbidden_as_live_features": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -1043,10 +1047,24 @@
       "HV-08_COMPRESSION_EXPANSION_CONTINUATION_SPECIALIST",
       "HV-09_REGIME_ROUTER_MULTI_ENTRY_SPECIALIST_CONTROLLER"
     ],
-    "next_research_only_step": "DEFINE_CAUSAL_STATE_VOCABULARY_AND_EXACT_PRETEST_CANDIDATE_GRAMMAR",
+    "next_research_only_step": "DEFINE_EXACT_CAUSAL_INPUT_FORMULAS_AND_BOUNDED_FEATURE_FAMILIES_FOR_HV01_HV06_BEFORE_PREREGISTRATION",
     "stage_a_preregistration": false,
     "tick_backtest_queue_populated": false,
     "tick_testing_started": false,
+    "active_candidate": null,
+    "august_2026": "SEALED",
+    "mql5_authorized": false
+  },
+  "causal_direction_hold_vocabulary": {
+    "id": "DELTA_R003_CAUSAL_DIRECTION_INITIAL_HOLD_VOCABULARY",
+    "status": "RESEARCH_VOCABULARY_FROZEN_NO_THRESHOLDS",
+    "github_path": "research/delta/research/DELTA_R003_CAUSAL_DIRECTION_INITIAL_HOLD_VOCABULARY.md",
+    "github_commit": "0f8cfd44ba04fb7feebcbf8fe97d226be99135fe",
+    "google_doc_id": "1ei6AcvQUO1Wzx4EUlVaCGWjdl6pCBajcjrzWEtMs3-w",
+    "google_doc_url": "https://docs.google.com/document/d/1ei6AcvQUO1Wzx4EUlVaCGWjdl6pCBajcjrzWEtMs3-w/edit",
+    "candidate_grammar": "CONTEXT -> ARM -> CONFIRM -> ENTER -> INITIAL-HOLD STATE -> INVALIDATE or MATURE_HANDOFF",
+    "thresholds_defined": false,
+    "testing_started": false,
     "active_candidate": null,
     "august_2026": "SEALED",
     "mql5_authorized": false
