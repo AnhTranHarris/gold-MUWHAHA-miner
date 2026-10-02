@@ -1,0 +1,100 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "DELTA_005L_001_MULTI_STAGE_INITIAL_PROTECTION",
+  "status": "PREREGISTERED",
+  "historical_simulation_only": true,
+  "live_deployment_authorized": false,
+  "date_utc": "2026-10-02",
+  "focus": "ENTRY_PLUS_INITIAL_HOLD",
+  "parent_findings": [
+    "DELTA_005H_001",
+    "DELTA_005K_001"
+  ],
+  "window": {
+    "start_ms_utc": 1767225600000,
+    "end_ms_utc_exclusive": 1768737600000
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "architectures": [
+    {
+      "id": "H_CONTROL",
+      "stage1": null,
+      "stage2": null,
+      "trail_activation": 0.3
+    },
+    {
+      "id": "K_LATE_LOCK",
+      "stage1": {
+        "trigger": 0.25,
+        "lock": 0.05
+      },
+      "stage2": null,
+      "trail_activation": 0.3
+    },
+    {
+      "id": "BALANCED_TWO_STAGE",
+      "stage1": {
+        "trigger": 0.2,
+        "lock": -0.1
+      },
+      "stage2": {
+        "trigger": 0.25,
+        "lock": 0.05
+      },
+      "trail_activation": 0.3
+    },
+    {
+      "id": "FAST_TWO_STAGE",
+      "stage1": {
+        "trigger": 0.15,
+        "lock": -0.1
+      },
+      "stage2": {
+        "trigger": 0.2,
+        "lock": 0.05
+      },
+      "trail_activation": 0.3
+    },
+    {
+      "id": "EXTENDED_BALANCED",
+      "stage1": {
+        "trigger": 0.2,
+        "lock": -0.1
+      },
+      "stage2": {
+        "trigger": 0.3,
+        "lock": 0.05
+      },
+      "trail_activation": 0.4
+    },
+    {
+      "id": "EXTENDED_PROTECTIVE",
+      "stage1": {
+        "trigger": 0.2,
+        "lock": 0
+      },
+      "stage2": {
+        "trigger": 0.3,
+        "lock": 0.05
+      },
+      "trail_activation": 0.4
+    },
+    {
+      "id": "EXTENDED_BREATH",
+      "stage1": {
+        "trigger": 0.2,
+        "lock": -0.1
+      },
+      "stage2": {
+        "trigger": 0.3,
+        "lock": 0.05
+      },
+      "trail_activation": 0.5
+    }
+  ],
+  "trail_distance_price": 0.03,
+  "initial_stop_price": 0.3,
+  "variants": 7,
+  "mature_hold_exit_high_profit_optimization": false,
+  "august_2026": "SEALED"
+}
