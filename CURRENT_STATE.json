@@ -44,7 +44,8 @@
     "quant_spreadsheet_harvesting_contract": "research/delta/governance/DELTA_GOV_014_QUANT_SPREADSHEET_HARVESTING_AND_CANDIDATE_LOCK_CONTRACT.md",
     "multi_timeframe_trend_survivability_contract": "research/delta/governance/DELTA_GOV_015_MULTI_TIMEFRAME_TREND_WITHIN_TREND_SURVIVABILITY_ASSUMPTION.md",
     "survivability_gated_profit_exit_contract": "research/delta/governance/DELTA_GOV_016_SURVIVABILITY_GATED_HIGH_PROBABILITY_PROFIT_EXIT_ASSUMPTION.md",
-    "three_candidate_capital_maturity_contract": "research/delta/governance/DELTA_GOV_017_THREE_CANDIDATE_MATURITY_GATED_CAPITAL_PRESERVATION_AND_REALIZED_GROWTH_ASSUMPTION.md"
+    "three_candidate_capital_maturity_contract": "research/delta/governance/DELTA_GOV_017_THREE_CANDIDATE_MATURITY_GATED_CAPITAL_PRESERVATION_AND_REALIZED_GROWTH_ASSUMPTION.md",
+    "heavy_candidate_combination_workbook_contract": "research/delta/governance/DELTA_GOV_018_ESCALATION_GATED_HEAVY_CANDIDATE_COMBINATION_HYPOTHESIS_WORKBOOK_ASSUMPTION.md"
   },
   "drive": {
     "delta_research_folder_id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel",
@@ -333,7 +334,19 @@
     "aggressive_capital_policy_after_gate_means_preservation_plus_realized_growth_optimization": true,
     "three_candidate_gate_does_not_auto_authorize_lot_escalation": true,
     "capital_policy_research_status": "DEFERRED_NOT_AUTHORIZED",
-    "capital_policy_metrics_and_thresholds": "PENDING_FUTURE_RESEARCH"
+    "capital_policy_metrics_and_thresholds": "PENDING_FUTURE_RESEARCH",
+    "heavy_combination_workbook_status": "DORMANT_NOT_CREATED_OR_POPULATED",
+    "heavy_combination_workbook_separate_file_required": true,
+    "heavy_combination_workbook_mandatory_after_initial_workbook_failure": true,
+    "heavy_combination_workbook_early_activation_requires_owner_authorization": true,
+    "community_or_research_combination_signal_creates_flag_not_auto_activation": true,
+    "heavy_combination_generated_formulas_label": "HYPOTHESIS_ONLY",
+    "heavy_combination_generated_formulas_require_preregistration_and_causal_tick_replay": true,
+    "heavy_combination_raw_tick_dump_prohibited": true,
+    "heavy_combination_resource_escalation_must_be_explicit": true,
+    "heavy_combination_no_automatic_system_integration": true,
+    "heavy_combination_workbook_id": null,
+    "heavy_combination_workbook_url": null
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -777,6 +790,24 @@
       "metrics_defined": false,
       "research_started": false,
       "capital_policy_research_authorized": false,
+      "active_candidate": null,
+      "august_2026": "SEALED",
+      "mql5_authorized": false
+    },
+    "2026-10-02_heavy_candidate_combination_hallucination": {
+      "status": "ACTIVE_ASSUMPTION_ONLY",
+      "governance_path": "research/delta/governance/DELTA_GOV_018_ESCALATION_GATED_HEAVY_CANDIDATE_COMBINATION_HYPOTHESIS_WORKBOOK_ASSUMPTION.md",
+      "governance_commit": "443a9bd30227c36c40e7255b0c137f2a2d13e32a",
+      "purpose": "Use a separate resource-heavy spreadsheet for deliberate candidate fusion/custom-formula hypothesis generation when the standard GOV-014 workbook fails to yield an integration-viable candidate, or earlier only by explicit owner authorization.",
+      "default_status": "DORMANT",
+      "separate_workbook_required": true,
+      "mandatory_after_initial_workbook_failure": true,
+      "early_activation_by_owner_allowed": true,
+      "community_or_research_signal_auto_activates": false,
+      "workbook_created": false,
+      "generated_formula_status_until_replay": "HYPOTHESIS_ONLY",
+      "metrics_defined": false,
+      "research_started": false,
       "active_candidate": null,
       "august_2026": "SEALED",
       "mql5_authorized": false
