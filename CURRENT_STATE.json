@@ -6,7 +6,7 @@
   "active_science_parent": null,
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_005_FIRST_JANUARY_CANDIDATE_CAMPAIGN_PREREGISTRATION",
-  "current_phase": "STAGE_A_WINDOW_FROZEN_DELTA_005_PREREGISTRATION_READY",
+  "current_phase": "DELTA_005_RESEARCH_LEDGER_READY_PREREGISTRATION_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -39,7 +39,8 @@
     "news_event_contract": "research/delta/governance/DELTA_GOV_009_NEWS_EVENT_OPPORTUNITY_AND_IMPACT_HANDLING_ASSUMPTION.md",
     "high_opportunity_density_contract": "research/delta/governance/DELTA_GOV_010_HIGH_OPPORTUNITY_DENSITY_AND_CANDIDATE_TRADE_CONTRIBUTION_ASSUMPTION.md",
     "maintenance_capital_contract": "research/delta/governance/DELTA_GOV_011_PROP_STYLE_MAINTENANCE_CAPITAL_STAGING_AND_SMALL_ACCOUNT_SURVIVAL.md",
-    "january_stage_a_window_contract": "research/delta/governance/DELTA_GOV_012_EXACT_JANUARY_STAGE_A_FILTER_WINDOW.md"
+    "january_stage_a_window_contract": "research/delta/governance/DELTA_GOV_012_EXACT_JANUARY_STAGE_A_FILTER_WINDOW.md",
+    "candidate_leverage_research_ledger_contract": "research/delta/governance/DELTA_GOV_013_CANDIDATE_LEVERAGE_AND_CRASH_SAFE_RESEARCH_LEDGER.md"
   },
   "drive": {
     "delta_research_folder_id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel",
@@ -271,7 +272,18 @@
     "january_filter_calendar_based_not_trading_day_based": true,
     "january_filter_warmup": "COLD_START_NO_DECEMBER_2025_DATA",
     "january_filter_end_position_policy": "FORCE_CLOSE_AT_LAST_ELIGIBLE_EXECUTABLE_QUOTE_BEFORE_END",
-    "january_filter_post_window_ticks_allowed": false
+    "january_filter_post_window_ticks_allowed": false,
+    "current_candidate_research_focus": "ENTRY_AND_INITIAL_HOLD",
+    "holding_trade_exit_high_profit_phase": "DEFERRED_UNTIL_OWNER_ACCEPTS_ENTRY_INITIAL_HOLD",
+    "pre_modification_leverage_analysis_required": true,
+    "quick_formula_failure_analysis_required": true,
+    "candidate_change_classification_required": true,
+    "per_test_temporary_google_sheet_required": true,
+    "per_test_google_sheet_reuse_prohibited": true,
+    "master_google_doc_research_ledger_required": true,
+    "master_doc_update_before_next_candidate_version": true,
+    "decision_relevant_sheet_findings_promoted_before_sheet_retirement": true,
+    "entry_initial_hold_diagnostics_required": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
@@ -279,7 +291,7 @@
     "google_doc_url": "https://docs.google.com/document/d/1lqUO9ab9QFFMf2ilOi8gl3JsvwkcZPRJmtyn8vi__5g/edit?usp=drivesdk",
     "status": "READY"
   },
-  "next_action": "Preregister DELTA_005 as the first owner-governed January candidate campaign using the frozen GOV-012 Stage-A interval [2026-01-01T00:00:00Z, 2026-01-18T12:00:00Z), DUKAS_COINEXX_LIKE_P75 default surface, P50/P90 sensitivities, DUKAS_NATIVE robustness control, all active GOV-005 through GOV-011 constraints, and August sealed.",
+  "next_action": "Preregister DELTA_005 Entry + Initial-Hold campaign using GOV-012 and GOV-013. Before each material candidate revision perform quick leverage/formula-failure analysis; after every completed test create a fresh temporary Google Sheet using the registered analysis schema, promote decision-relevant findings to the DELTA_005 master Google Doc and GitHub, and keep Holding-Trade + Exit + High-Profit optimization deferred. August remains sealed.",
   "mql5_authorized": false,
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_004_COINEXX_LIKE_DUKASCOPY_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
@@ -449,5 +461,24 @@
     "end_timestamp_ms_utc_exclusive": 1768737600000,
     "duration_days": 17.5,
     "end_position_policy": "FORCE_CLOSE_AT_LAST_ELIGIBLE_EXECUTABLE_QUOTE_BEFORE_END"
+  },
+  "candidate_research_artifacts": {
+    "status": "READY",
+    "active_focus": "ENTRY + INITIAL-HOLD",
+    "deferred_focus": "HOLDING-TRADE + EXIT + HIGH-PROFIT",
+    "master_google_doc_id": "1T9MPuuMsxB5gv7Zz8nvzFmaQy00_7Q-7X_4F2qrcR6k",
+    "master_google_doc_url": "https://docs.google.com/document/d/1T9MPuuMsxB5gv7Zz8nvzFmaQy00_7Q-7X_4F2qrcR6k/edit?usp=drivesdk",
+    "master_google_doc_revision": "ANLCKQlAUmvrBqKFhY751w1UrXfDR3ZnPis4TfiKjLOs0st6J8nqVLQYDCJRfyzxpBjlKXmGRU7MsBSHgmQVS0yw_o3c5M8uFgMLUNdALQQ",
+    "temp_sheet_template_id": "1Zy_TfGfc6E0tJmEsoFmSONqM9W4wKuAqTPcITC5OXb0",
+    "temp_sheet_template_url": "https://docs.google.com/spreadsheets/d/1Zy_TfGfc6E0tJmEsoFmSONqM9W4wKuAqTPcITC5OXb0/edit?usp=drivesdk",
+    "temp_sheet_tabs": [
+      "Overview",
+      "Primary Metrics",
+      "Entry Hold Diagnostics",
+      "Parameter Sweep",
+      "Leverage Analysis"
+    ],
+    "per_test_new_temp_sheet_required": true,
+    "master_doc_update_before_next_material_version": true
   }
 }
