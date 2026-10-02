@@ -14,26 +14,18 @@ Prior internal research lineages are outside DELTA scope. Do not read, import, c
 
 ## New-chat bootstrap order
 
-1. Read `CURRENT_STATE.json`.
-2. Read `research/delta/governance/DELTA_CLEAN_ROOM_LOCK.md`.
-3. Read `research/delta/governance/DELTA_GOV_001_CAUSAL_DURABLE_MT5_RESEARCH_CONTRACT.md`.
-4. Read `research/delta/governance/DELTA_GOV_002_TICK_ROOTED_NESTED_TIMEFRAME_CONTRACT.md`.
-5. Read `research/delta/governance/DELTA_GOV_003_RESEARCH_SPEED_STAGE_GATE_CONTRACT.md`.
-6. Read `research/delta/governance/DELTA_GOV_004_BENCHMARK_ROLES_AND_HUMAN_GOAL_METRICS_CONTRACT.md`.
-7. Read `research/delta/governance/DELTA_GOV_005_PROVISIONAL_CANDIDATE_IMPROVEMENT_GATE.md`.
-8. Read `research/delta/governance/DELTA_GOV_006_SYNTH_METRIC_LOCK_AND_CUMULATIVE_RATCHET_CONTRACT.md`.
-9. Read `research/delta/governance/DELTA_GOV_007_CREATIVE_REFINEMENT_ESCALATION_AND_DUKASCOPY_PLAYGROUND.md`.
-10. Read `research/delta/governance/DELTA_GOV_008_MULTI_SPECIALIST_COMPOSITE_AND_SESSION_AWARE_ASSUMPTION.md`.
-11. Read `research/delta/governance/DELTA_GOV_009_NEWS_EVENT_OPPORTUNITY_AND_IMPACT_HANDLING_ASSUMPTION.md`.
-12. Read `research/delta/governance/DELTA_GOV_010_HIGH_OPPORTUNITY_DENSITY_AND_CANDIDATE_TRADE_CONTRIBUTION_ASSUMPTION.md`.
-13. Read `research/delta/governance/DELTA_GOV_011_PROP_STYLE_MAINTENANCE_CAPITAL_STAGING_AND_SMALL_ACCOUNT_SURVIVAL.md`.
-14. Read `research/delta/reference/R9_EVIDENCE_REGISTRY.json`.
-15. Read `research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json`.
-16. Read `research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md`.
-17. Verify GitHub branch is `delta` and Drive target is `DELTA_RESEARCH`.
-18. Resume exactly from `CURRENT_STATE.next_action`.
+**2026-10-02 disaster-recovery override:** use the full handoff and audit before the older bootstrap.
 
-The first DELTA unit is an evidence/source/parity preflight. No new trading result may become a parent before it passes the DELTA manifest gate.
+1. Read `CURRENT_STATE.json`.
+2. Read `research/delta/handoffs/DELTA_FULL_HANDOFF_2026-10-02.md`.
+3. Read `research/delta/handoffs/DELTA_ARTIFACT_AUDIT_2026-10-02.json`.
+4. Read the DELTA_005 master Google research ledger.
+5. Read 005H checkpoint/report.
+6. Read 005M checkpoint/report and recovered 005M analysis Sheet.
+7. Then read the governance stack 001-013 and compact references as needed.
+8. Treat `DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md` as historical/bootstrap background, not the current cursor.
+9. Verify branch is `delta`, August is sealed, and MQL5 is not authorized.
+10. Resume only from the post-005M leverage-review cursor in `CURRENT_STATE.next_action`.
 
 ## Foundational timeframe rule
 
