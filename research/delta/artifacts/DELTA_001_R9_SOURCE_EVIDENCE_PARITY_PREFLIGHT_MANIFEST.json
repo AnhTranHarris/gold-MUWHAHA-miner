@@ -1,23 +1,15 @@
 {
   "schema": "delta-research-unit-manifest-v1",
   "unit_id": "DELTA_001_R9_SOURCE_EVIDENCE_PARITY_PREFLIGHT",
-  "status": "PLANNED",
+  "status": "VERIFIED_DURABLE",
   "date_utc": "2026-10-01",
   "lineage": "DELTA",
   "parent_checkpoint": "DELTA_BOOTSTRAP_000",
   "hypothesis": "The authoritative R9 MT5 sources and registered REAL/SYNTH/OVERFIT/Dukascopy evidence surfaces can be independently re-identified, role-checked, and frozen into a complete DELTA source/parity contract without performing strategy optimization.",
   "falsification_condition": "Any behavior-critical R9 source mismatch, missing or role-ambiguous REAL/SYNTH evidence surface, missing canonical Dukascopy Jan-Jul identity, failure to preserve OVERFIT quarantine, or failed GitHub/Drive readback blocks DELTA science.",
-  "python_rebuild_ready": false,
+  "python_rebuild_ready": true,
   "mt5_translation_ready": false,
-  "missing_required_artifacts": [
-    "DELTA_001 producing verification source",
-    "behavior-critical R9 default-input inventory",
-    "REAL/SYNTH/OVERFIT evidence parity report",
-    "Dukascopy Jan-Jul source-identity verification",
-    "frozen DELTA data-wall and metric schema",
-    "DELTA_001 QA result",
-    "GitHub/Drive readback"
-  ],
+  "missing_required_artifacts": [],
   "sealed_data_status": {
     "august_2026": "SEALED"
   },
@@ -150,12 +142,20 @@
   },
   "supersedes": [],
   "rollback_target": "DELTA_BOOTSTRAP_000",
-  "github_commits": [],
+  "github_commits": [
+    "2da99bb2aa398fff9dff72e2da550ce6e270e397",
+    "db5206604dc4df81de9b387ad23aaeb425455253",
+    "ac39dbf8d63c7acb183e452d8108eeec64a9f9c0",
+    "dcebb67f2e35c5586ee16f956fb6667c38c5d354",
+    "a2a190c5b0e2160f5361c4493ad3819ed4fe2fb9",
+    "610d1e0982cb02fb0a907fdbd7c6f9a25bced267",
+    "a1e9e5380fe4cfc3728d85cb41cf5d7f35ad118f"
+  ],
   "drive_artifacts": [],
   "verification": {
-    "github_readback": false,
-    "drive_readback": false,
-    "hashes_verified": false,
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
     "current_state_advanced": false
   }
 }
