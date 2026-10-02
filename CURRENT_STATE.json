@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "INITIAL_RESEARCH_DIRECTION_AND_INITIAL_HOLD_NO_TESTING",
+  "current_phase": "INITIAL_RESEARCH_DIRECTION_AND_INITIAL_HOLD_PREBACKTEST_HARVEST",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -66,10 +66,14 @@
     "bootstrap_doc_revision": "ANLCKQnOLEnSmNTKLVQYwwxh49Nrd3GX7jx6uLlSJ05y9ObJpoeXQZOlmn1glrPTF-X1b5Kq5_ZO8v-86N6-pV9yq5cZqXFtODXfKbF9qdk",
     "fresh_research_ledger_id": "1dXe4I98dFgIiybMSPQMoFnXOYNcTvtqNYDp85XeO34M",
     "fresh_research_ledger_url": "https://docs.google.com/document/d/1dXe4I98dFgIiybMSPQMoFnXOYNcTvtqNYDp85XeO34M/edit",
-    "fresh_research_ledger_revision": "ANLCKQlW2EWHISAcy9-969AjbcrtFxAAu-HS73WDYN3P3-YLbOsjDtIyYlcXAFIbOyXnZszu28oa8BQMtEM4va6JpTxMvYfilmpMo0o5u5k",
+    "fresh_research_ledger_revision": "ANLCKQkZU_oRDIqkXMz2WTqDdZd7s1v8NBYCiNItO8qQDOcgtxb3V4wO1ljDaKrD3sFG-qKeeC9Mb-pK2NBCL-9DFdEykXNKJLHehxJp9G0",
     "quant_harvesting_sheet_id": "1aOur2ZxPgVVssis-BI0uC9zRrgm0-5vfNG_yhRPYZyk",
     "quant_harvesting_sheet_url": "https://docs.google.com/spreadsheets/d/1aOur2ZxPgVVssis-BI0uC9zRrgm0-5vfNG_yhRPYZyk/edit",
-    "master_protocol_scope_clarification_revision": "ANLCKQmYpJjSHlqYuPdrT4LUZF0b5updDjJcfaMQTMY1rAf8QlJeakp9zxT3NIkO4Jw1Z6WZpI6EleRY834tGC1iN6cGURSId460glqOSuw"
+    "master_protocol_scope_clarification_revision": "ANLCKQmYpJjSHlqYuPdrT4LUZF0b5updDjJcfaMQTMY1rAf8QlJeakp9zxT3NIkO4Jw1Z6WZpI6EleRY834tGC1iN6cGURSId460glqOSuw",
+    "r001_direction_hold_working_sheet_id": "1LexrgMTYvgDXoeKHvVC4taiLGlENi5vvY2-8tmLNFcs",
+    "r001_direction_hold_working_sheet_url": "https://docs.google.com/spreadsheets/d/1LexrgMTYvgDXoeKHvVC4taiLGlENi5vvY2-8tmLNFcs/edit",
+    "r001_direction_hold_shortlist_doc_id": "1Nx06ehgmswgwwjDY7CKpP4IAX5Vj0j0FZJtAX8lvMBs",
+    "r001_direction_hold_shortlist_doc_url": "https://docs.google.com/document/d/1Nx06ehgmswgwwjDY7CKpP4IAX5Vj0j0FZJtAX8lvMBs/edit"
   },
   "research_rules": {
     "entry_hold_and_trade_count_co_primary": true,
@@ -392,7 +396,10 @@
     "direction_hold_research_may_consider_entry_engine_replacement": true,
     "direction_hold_research_may_consider_multiple_entry_specialists": true,
     "direction_hold_trade_volume_preservation_required": true,
-    "direction_hold_research_result_status": "HYPOTHESIS_FAMILIES_ONLY_NO_TESTING"
+    "direction_hold_research_result_status": "HYPOTHESIS_FAMILIES_ONLY_NO_TESTING",
+    "qualitative_candidate_harvest_allowed": true,
+    "qualitative_viability_labels_are_not_performance_evidence": true,
+    "r001_workbook_performance_fields_must_remain_blank_until_replay": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -959,7 +966,7 @@
   "active_research_question": "R9_DIRECTION_PLUS_INITIAL_HOLD_SURVIVABILITY_AND_MULTI_ENTRY_SPECIALIST_ARCHITECTURE",
   "initial_research": {
     "id": "DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN",
-    "status": "RESEARCH_ONLY_NO_TESTING",
+    "status": "R002_PREBACKTEST_SHORTLIST_COMPLETE_NO_TESTING",
     "report_path": "research/delta/research/DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN.md",
     "report_commit": "700fa3399c95ff07dad7c210fd34a5c6572543af",
     "active_candidate": null,
@@ -972,9 +979,42 @@
       "DH-06_QUOTE_PRESSURE_INITIAL_HOLD_PERSISTENCE",
       "DH-07_SPECIALIST_AWARE_INITIAL_HOLD_STATE_MACHINE"
     ],
-    "spreadsheet_harvesting_started": false,
+    "spreadsheet_harvesting_started": true,
     "tick_testing_started": false,
     "august_2026": "SEALED",
-    "mql5_authorized": false
+    "mql5_authorized": false,
+    "r002_report_path": "research/delta/research/DELTA_R002_DIRECTION_HOLD_CAUSAL_VOCABULARY_AND_PREBACKTEST_SHORTLIST.md",
+    "r002_report_commit": "96a0942be6b90a533a64d8b14666cc356b9fca00",
+    "working_sheet_id": "1LexrgMTYvgDXoeKHvVC4taiLGlENi5vvY2-8tmLNFcs",
+    "working_sheet_url": "https://docs.google.com/spreadsheets/d/1LexrgMTYvgDXoeKHvVC4taiLGlENi5vvY2-8tmLNFcs/edit",
+    "shortlist_doc_id": "1Nx06ehgmswgwwjDY7CKpP4IAX5Vj0j0FZJtAX8lvMBs",
+    "shortlist_doc_url": "https://docs.google.com/document/d/1Nx06ehgmswgwwjDY7CKpP4IAX5Vj0j0FZJtAX8lvMBs/edit",
+    "qualitative_workbook_harvest_status": "COMPLETE_R001_PASS",
+    "performance_harvest_status": "NOT_STARTED_NO_TESTING",
+    "prebacktest_shortlist": [
+      "DH-C01_R9_BRACKET_SALVAGE_NESTED_DIRECTION_HOLD_HYSTERESIS",
+      "DH-C02_BREAKOUT_RETEST_REBREAK_NESTED_DIRECTION_PERSISTENCE_HOLD",
+      "DH-C03_PULLBACK_RESUMPTION_NESTED_TREND_PERSISTENCE_HOLD",
+      "DH-C04_COMPRESSION_EXPANSION_CONTINUATION_PERSISTENCE_HOLD",
+      "DH-C05_FAILED_BREAK_REVERSAL_STRUCTURAL_RETURN_PERSISTENCE_HOLD"
+    ],
+    "reserve_candidates": [
+      "DH-C06_STRUCTURE_QUALITY_BREAKOUT_SWING_R2_PERSISTENCE_HOLD",
+      "DH-C07_SESSION_RANGE_BREAKOUT_TREND_VOL_PERSISTENCE_HOLD"
+    ],
+    "deferred_composite": "DH-C08_MULTI_SPECIALIST_DIRECTION_HOLD_ROUTER",
+    "recommended_future_information_value_order": [
+      "DH-C01",
+      "DH-C02",
+      "DH-C03",
+      "DH-C04",
+      "DH-C05",
+      "DH-C06_RESERVE",
+      "DH-C07_RESERVE",
+      "DH-C08_DEFERRED"
+    ],
+    "spreadsheet_harvesting_phase": "QUALITATIVE_PREBACKTEST_ONLY",
+    "stage_a_preregistration_started": false,
+    "heavy_synthesis_status": "DORMANT_NOT_ACTIVATED"
   }
 }
