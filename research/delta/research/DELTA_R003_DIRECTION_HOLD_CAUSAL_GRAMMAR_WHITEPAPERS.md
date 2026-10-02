@@ -158,3 +158,63 @@ Thresholds remain parameter slots for later preregistration before Stage-A Dukas
 - GOV-018 heavy synthesis: DORMANT
 - August: SEALED
 - MQL5: NOT AUTHORIZED
+
+
+## Timeout recovery and canonicalization — 2026-10-02
+
+A delivery-timeout sequence created an additional exploratory workbook and DH-Cxx package shortlist outside the R001 stage folder. Those artifacts are preserved but renamed with the prefix:
+
+`ZZ_SUPERSEDED_TIMEOUT_EXPLORATORY__`
+
+They are **not** active candidate definitions, not Stage-A candidates, and not substitutes for the DH-01 through DH-07 white papers.
+
+The canonical R001 causal-grammar stage is now the Drive folder:
+
+https://drive.google.com/drive/folders/1iCg7Ptl8zRQ-5QUFGSuB7sPTqsNKzxiX
+
+Folder-level index:
+
+`00 STAGE INDEX — DELTA R001 Direction-Hold Candidate Harvest — Research Only`
+
+https://docs.google.com/document/d/1Tpx2ZZTwHZqtVQv6mVgyZ0acADFQ1OugcpDDNpkoGBA/edit
+
+The common vocabulary document was moved into the same stage folder:
+
+`DELTA R003 — Causal Direction + Initial-Hold Research Vocabulary`
+
+https://docs.google.com/document/d/1ei6AcvQUO1Wzx4EUlVaCGWjdl6pCBajcjrzWEtMs3-w/edit
+
+## Source-traceability QA
+
+The source-anchor labels in the candidate white papers were converted to live external hyperlinks where the source was reconstructible and directly relevant.
+
+Fresh 2026 research cross-checks support the architecture but **do not authorize importing source thresholds**:
+
+- MQL5 Market Microstructure Part 7 demonstrates causal regime classification and smoothed regime transitions; its published NQ calibration is not transferable to XAUUSD.
+  https://www.mql5.com/en/articles/22940
+- MQL5 Market Microstructure Part 9 explicitly separates pullback depth from trend existence and reports that its own NQ hypothesis did not generalize cleanly across regimes. This is a direct reason to keep DH-03 threshold slots pending rather than copying Fibonacci or lookback constants.
+  https://www.mql5.com/en/articles/23628
+- MQL5 Swing Extremes and Pullbacks Part 3 distinguishes raw swing candidates from structurally validated levels using break, displacement, sweep, and respect concepts. DELTA preserves only the reconstructible structural idea and retains its own causal swing grammar.
+  https://www.mql5.com/en/articles/21888
+- MQL5 volatility-breakout research describes the false-breakout problem and volatility-relative breakout confirmation, supporting DH-04's contraction/expansion research family without validating any specific ATR multiplier.
+  https://www.mql5.com/en/articles/19459
+- MQL5 Bootstrap IV contrasts fixed trailing behavior with ATR-adaptive trailing. DELTA uses this only as architectural support for specialist-aware initial-hold treatment; mature trailing/exit research remains deferred.
+  https://www.mql5.com/en/articles/23882
+- Cont, Kukanov & Stoikov support short-horizon order-flow imbalance as a price-impact variable in full limit-order-book data. DH-06 therefore remains explicitly a **quote-pressure proxy**, not true OFI.
+  https://arxiv.org/abs/1011.6402
+
+## Canonical white-paper stage after recovery
+
+Active documented objects:
+
+- DH-01 — shared nested-direction context infrastructure
+- DH-02 — breakout/retest/rebreak entry specialist
+- DH-03 — pullback-continuation entry specialist
+- DH-04 — compression/expansion continuation specialist
+- DH-05 — failed-break reversal specialist
+- DH-06 — quote-pressure initial-hold persistence component
+- DH-07 — specialist-aware initial-hold state machine
+
+No DH-Cxx package is active in this stage.
+
+The next legal research step is preregistration design / parameter-slot definition for a first testing queue. Dukascopy/Python testing still requires a separate owner transition.
