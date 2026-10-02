@@ -65,3 +65,33 @@ Workbook tabs:
 
 DUAL harvest SHA-256:
 `a8a541651c82c3a3536b15334b179b0eb96662a54cb17b4bc07aae94e84ffac1`
+
+## Raw-tick replay result
+
+All four frozen configurations were executed on P50/P75/P90 plus Native diagnostic without threshold or action changes.
+
+- C01: fails because P90 net/gross loss deteriorate vs T06.
+- C02: passes all modeled-surface gates.
+- C03: fails because P90 net/gross loss deteriorate vs T06.
+- C04: passes all gates and dominates C02 on P50/P75/P90.
+
+### R019-C04 modeled-surface summary
+
+| Surface | Trade ret. | Winner ret. | Δ Net vs T06 | Δ Net-loss % | Δ GL % | Δ DD % |
+|---|---:|---:|---:|---:|---:|---:|
+| P50 | 84.0367% | 88.8445% | +$18.15 | +0.6678% | +0.3083% | +0.6675% |
+| P75 | 84.1557% | 89.3212% | +$17.37 | +0.5981% | +0.2787% | +0.5979% |
+| P90 | 80.0067% | 83.4891% | +$7.78 | +1.3832% | +0.8001% | +1.3832% |
+
+Native remains sparse/diagnostic; C04 improved T06 by $0.609 but absolute winner retention remains only 58.82%.
+
+**Decision:** C04 is the sole R019 survivor and advances to exact Jan–Jul P75 monthly validation. No promotion, no metric lock.
+
+## Result provenance
+
+- execution script: `f4a6b87d9be11bab65aa8f11fc501df43526f59cc2c47c86bef553f9358ded11`
+- P50: `291915f42fd48ae30de5bbad74bbc2113aecf9b607d8b8a605b71a3b888cf2fd`
+- P75: `972d06a94f25cf51a546fb67de2f75001a44a96ebb7e7fa116eb01f2f7c0335b`
+- P90: `9420bedc87fa6c89dcd5b341aa48ec983d11901d9702f9c16ab929e08fdd660d`
+- Native: `3a268747bb207ac15bd12a6f68c25c99ba76f30b8a91c8926e2f3437a89e4dce`
+
