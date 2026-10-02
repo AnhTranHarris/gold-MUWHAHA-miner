@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "INITIAL_RESEARCH_DIRECTION_AND_INITIAL_HOLD_MULTIVARIATE_PREREGISTRATION_DESIGN_NO_TESTING",
+  "current_phase": "INITIAL_RESEARCH_DIRECTION_AND_INITIAL_HOLD_IMMUTABLE_VECTOR_LIBRARY_FROZEN_NO_TESTING",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,13 +420,18 @@
     "direction_hold_tick_testing_started": false,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "GENERATE_IMMUTABLE_PREREGISTERED_CONFIGURATION_VECTORS_AND_STAGE_A_RUN_SHEET_ONLY_AFTER_OWNER_AUTHORIZES_TESTING_TRANSITION",
+    "next_permitted_step": "OWNER_DECIDES_WHETHER_TO_EXECUTE_R005_STAGE_A_CORE_QUEUE;_NO_REPLAY_HAS_STARTED",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
     "parameter_search_must_preserve_full_configuration_vectors": true,
     "parameter_interaction_families_must_be_named_before_replay": true,
-    "activity_retention_must_remain_visible": true
+    "activity_retention_must_remain_visible": true,
+    "immutable_multivariate_vector_library_frozen": true,
+    "r005_library_sha256": "9dfcdcd83bae9452291b2b249d41ac4f19751e23f1ff91ae6e1d581707528b52",
+    "r005_run_sheet_sha256": "3e2728bb1a0db7e2423892d4756591e246ddb646c9f2a2a0a82618e983e5275a",
+    "vector_generation_must_not_use_performance_data": true,
+    "adaptive_optimization_not_authorized_in_r005": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -1042,7 +1047,7 @@
   "active_research_question": "R9_DIRECTION_PLUS_INITIAL_HOLD_SURVIVABILITY_AND_MULTI_ENTRY_SPECIALIST_ARCHITECTURE",
   "initial_research": {
     "id": "DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN",
-    "status": "MULTIVARIATE_PREREGISTRATION_BASKETS_DOCUMENTED_NO_TESTING",
+    "status": "R005_IMMUTABLE_VECTOR_LIBRARY_FROZEN_NO_TESTING",
     "report_path": "research/delta/research/DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN.md",
     "report_commit": "700fa3399c95ff07dad7c210fd34a5c6572543af",
     "active_candidate": null,
@@ -1087,7 +1092,7 @@
     ],
     "deferred_orchestrator": "DH-08_CONTEXT_ROUTER_SPECIALIST_OWNERSHIP",
     "spreadsheet_harvesting_mode": "RESEARCH_ONLY_NO_EMPIRICAL_TICK_DATA",
-    "stage_a_preregistered": false,
+    "stage_a_preregistered": true,
     "r003_report_path": "research/delta/research/DELTA_R003_DIRECTION_HOLD_CAUSAL_GRAMMAR_WHITEPAPERS.md",
     "r003_report_commit": "1dec6e0da183f4cdb2d8dbb5d510519a610b4813",
     "stage_folder_id": "1iCg7Ptl8zRQ-5QUFGSuB7sPTqsNKzxiX",
@@ -1246,7 +1251,105 @@
       "DH04+DH01+DH06+DH07",
       "DH05+DH01+DH06+DH07"
     ],
-    "cross_specialist_router_and_novel_formula_synthesis": "GOV018_GATED"
+    "cross_specialist_router_and_novel_formula_synthesis": "GOV018_GATED",
+    "r005_report_path": "research/delta/research/DELTA_R005_IMMUTABLE_MULTIVARIATE_VECTOR_LIBRARY.md",
+    "r005_report_commit": "0cc279af4324ed70713ae4cd2e25ae9dbbae0b74",
+    "r005_drive_doc_id": "14uay-Q_xvHakpIoMZKiqds67B3HetoVDlfNa5dM5umU",
+    "r005_drive_doc_url": "https://docs.google.com/document/d/14uay-Q_xvHakpIoMZKiqds67B3HetoVDlfNa5dM5umU/edit",
+    "immutable_vector_library": {
+      "version": "R005-v1",
+      "status": "FROZEN_NOT_EXECUTED",
+      "vector_count": 76,
+      "library_sha256": "9dfcdcd83bae9452291b2b249d41ac4f19751e23f1ff91ae6e1d581707528b52",
+      "families": {
+        "DH-01": {
+          "vectors": 12,
+          "sobol": 8,
+          "anchors": 4,
+          "seed": 11,
+          "core": 8,
+          "extension": 4
+        },
+        "DH-02": {
+          "vectors": 20,
+          "sobol": 16,
+          "anchors": 4,
+          "seed": 84,
+          "core": 12,
+          "extension": 8
+        },
+        "DH-03": {
+          "vectors": 20,
+          "sobol": 16,
+          "anchors": 4,
+          "seed": 8,
+          "core": 12,
+          "extension": 8
+        },
+        "DH-06": {
+          "vectors": 12,
+          "sobol": 8,
+          "anchors": 4,
+          "seed": 72,
+          "core": 8,
+          "extension": 4
+        },
+        "DH-07": {
+          "vectors": 12,
+          "sobol": 8,
+          "anchors": 4,
+          "seed": 42,
+          "core": 8,
+          "extension": 4
+        }
+      },
+      "generation": {
+        "seed_candidate_pool": "1..256",
+        "sobol_scrambled": true,
+        "sobol_power_of_two_counts": true,
+        "seed_objective": "55% centered-discrepancy percentile + 45% minimum normalized distance percentile including theory anchors",
+        "categorical_mapping": "RANK_BALANCED",
+        "integer_mapping": "RANK_BALANCED",
+        "continuous_mapping": "LINEAR_WITHIN_R004_BOUNDS",
+        "coverage_order": "FARTHEST_FIRST_FROM_BALANCED_ANCHOR",
+        "performance_information_used": false
+      }
+    },
+    "stage_a_run_sheet": {
+      "status": "FROZEN_NOT_EXECUTED",
+      "job_count": 78,
+      "control_jobs": 2,
+      "vector_jobs": 76,
+      "run_sheet_sha256": "3e2728bb1a0db7e2423892d4756591e246ddb646c9f2a2a0a82618e983e5275a",
+      "start": "2026-01-01T00:00:00Z",
+      "end_exclusive": "2026-01-18T12:00:00Z",
+      "surface": "DELTA_004_P75",
+      "workbook_tab": "16 Stage-A Run Sheet"
+    },
+    "selection_protocol": {
+      "status": "PREREGISTERED",
+      "no_single_net_profit_argmax": true,
+      "pareto_axes": [
+        "WINNERS",
+        "NET_PROFIT",
+        "GROSS_LOSS_REDUCTION",
+        "MAX_DRAWDOWN_REDUCTION",
+        "ACTIVITY_RETENTION"
+      ],
+      "nearest_neighbor_robustness_k": 3,
+      "temporal_slices": [
+        "DAY",
+        "SESSION",
+        "LATER_MONTH_BY_MONTH"
+      ],
+      "tested_universe_must_be_retained": true,
+      "multiple_testing_controls": [
+        "WHITE_REALITY_CHECK_OR_SPA_STYLE_WHEN_APPLICABLE",
+        "PBO_CSCV_LATER_MULTI_WINDOW",
+        "DEFLATED_SHARPE_ONLY_IF_SHARPE_REPORTED"
+      ],
+      "adaptive_bayesian_optimization_authorized": false
+    }
   },
   "prebacktest_research": {
     "status": "SUPERSEDED_TIMEOUT_DUPLICATE_NOT_ACTIVE",
