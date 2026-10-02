@@ -1,0 +1,61 @@
+{
+  "schema": "delta-005i-001-result-summary-v1",
+  "status": "COMPLETE_NOT_PROMOTED",
+  "historical_simulation_only": true,
+  "focus": "ENTRY_PLUS_INITIAL_HOLD",
+  "source_blob": "8f22b1ff287cfce3d745587e981ec77e839a60d0",
+  "window": {
+    "start_ms_utc": 1767225600000,
+    "end_ms_utc_exclusive": 1768737600000
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "ticks": 4205709,
+  "variants_tested": 20,
+  "runtime_seconds": 9.012393771,
+  "parent_control": {
+    "early_window_ms": 0,
+    "early_trail_distance_price": 0.03,
+    "trades": 16801,
+    "wins": 7351,
+    "net_profit": -3768.25,
+    "gross_loss": -5343.02,
+    "max_balance_drawdown": 3769.83,
+    "average_hold_seconds": 6.712
+  },
+  "high_retention_cell": {
+    "early_window_ms": 5000,
+    "early_trail_distance_price": 0.05,
+    "trades": 16791,
+    "wins": 7208,
+    "winner_retention_pct": 98.0547,
+    "net_profit": -3759.73,
+    "gross_loss": -5355.44,
+    "max_balance_drawdown": 3761.31,
+    "net_loss_improvement_pct": 0.2261,
+    "gross_loss_improvement_pct": -0.2325,
+    "survival_5s_delta_pp": 0.9783,
+    "survival_10s_delta_pp": 0.0189
+  },
+  "high_survival_cell": {
+    "early_window_ms": 10000,
+    "early_trail_distance_price": 0.2,
+    "trades": 16698,
+    "wins": 5613,
+    "winner_retention_pct": 76.357,
+    "net_profit": -3691.6,
+    "gross_loss": -5539.3,
+    "max_balance_drawdown": 3693.06,
+    "net_loss_improvement_pct": 2.0341,
+    "gross_loss_improvement_pct": -3.6736,
+    "survival_5s_delta_pp": 9.4502,
+    "survival_10s_delta_pp": 8.0451,
+    "average_hold_seconds": 7.6298
+  },
+  "leverage_conclusion": "EARLY_TRAIL_DISTANCE_IS_LOWER_LEVERAGE_THAN_ACTIVATION; GLOBAL_WIDENING_REQUIRES_LONG_WINDOWS_AND_DESTROYS_TOO_MANY_WINNERS",
+  "next_change_class": "SPECIALIST_RECOMBINATION",
+  "next_unit": "DELTA_005J_STATE_CONDITIONED_INITIAL_PROTECTION",
+  "temporary_sheet_id": "1Q0QvgdOX5Nx96YdnLeS9XaAosz7U_kBwx4hMXYdk2Ck",
+  "temporary_sheet_url": "https://docs.google.com/spreadsheets/d/1Q0QvgdOX5Nx96YdnLeS9XaAosz7U_kBwx4hMXYdk2Ck/edit?usp=drivesdk",
+  "master_doc_id": "1T9MPuuMsxB5gv7Zz8nvzFmaQy00_7Q-7X_4F2qrcR6k",
+  "august_accessed": false
+}
