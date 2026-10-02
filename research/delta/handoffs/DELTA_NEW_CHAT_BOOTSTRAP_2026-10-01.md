@@ -89,7 +89,7 @@ The owner-primary human metrics are:
 
 Total trade count and per-trade efficiency remain companion metrics for diagnosing whether favorable headline results came from real improvement or from reduced activity.
 
-**Owner hold:** Do not load R9 REAL, R9 SYNTH, R9 OVERFIT, R9 ticklog, or Coinexx report files yet. Continue defining goals until the owner explicitly authorizes evidence loading.
+**Evidence status:** Owner authorized R9 evidence loading on 2026-10-01. REAL and SYNTH compact references are loaded. Use compact DELTA references before touching heavy evidence; August remains sealed.
 
 ## Provisional candidate acceptance gate
 
@@ -196,6 +196,21 @@ Authoritative Jan-Jul REAL baseline:
 REAL actually executes 17,305 more trades than SYNTH (+7.8895%), so opportunity volume is not the primary deficiency. The central gap is conversion/quality/persistence/harvest: REAL has 88,751 fewer winning trades, a $359,408.13 net-profit gap, $64,226.85 excess gross loss, and much shorter average holds (5s vs 16s).
 
 Use the REAL and SYNTH compact references as the baseline/goal pair before reopening the large raw evidence.
+
+## R9 MT5 functional summary — Gamma inspection closed
+
+The owner authorized a one-time read-only inspection of the R9 Gamma baseline solely to summarize R9 itself. That exception is complete and closed.
+
+Canonical DELTA-owned references:
+- `research/delta/reference/R9_MT5_EA_FUNCTIONAL_SUMMARY.md`
+- `research/delta/reference/R9_MT5_EA_FUNCTIONAL_FAST_REFERENCE.json`
+
+R9's canonical functional chain is:
+`new M1 minute -> frozen midpoint ±$0.15 virtual bracket -> spread + completed-M5 ATR session gate -> completed-S1 displacement/efficiency/range/turn gate -> market entry -> hard SL / +$0.10 activation / $0.03 trail / 30s max hold -> opposite-side same-minute rearm up to 3 -> next-minute reset`.
+
+The inspected R9 source contains no multi-specialist router, news calendar, daily/weekly governor, dynamic lot sizing, martingale/grid, fixed take-profit, ML inference, or intermarket logic. Those are DELTA additions, not hidden R9 behavior.
+
+Do not reopen Gamma or another prior internal lineage unless the owner explicitly authorizes another exception.
 
 ## Research objective
 
