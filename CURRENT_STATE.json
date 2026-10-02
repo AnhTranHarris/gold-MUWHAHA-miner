@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R026_IN_PROGRESS_MONTHS_01_06_COMPLETE",
+  "current_phase": "R026_COMPLETE_M30_SUPPRESSED_REARMS_7_OF_7_TOXIC",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "RESUME_R026_AT_MONTH_07;_HARVEST_ONLY_NO_RELEASE_TEST_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "R027_GENERIC_P01_REARM_M30_OPPOSITION_CAUSAL_HARVEST_BEFORE_ANY_GENERALIZED_REARM_GOVERNOR_TEST;_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -509,7 +509,11 @@
     "r025_validates_m30_keep_owned_as_component": true,
     "r026_harvest_only": true,
     "r026_release_policy_testing_prohibited": true,
-    "r026_raw_event_dump_to_sheets_prohibited": true
+    "r026_raw_event_dump_to_sheets_prohibited": true,
+    "r026_complete": true,
+    "r026_full_suppression_retained": true,
+    "r026_no_recovery_subset_authorized": true,
+    "r026_mechanism": "GENERIC_OPPOSITE_REARM_ALMOST_ALWAYS_COUNTER_TO_STILL_DOMINANT_M30_STATE"
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -2716,12 +2720,12 @@
       "validated_component": true
     },
     "r026": {
-      "status": "IN_PROGRESS",
+      "status": "COMPLETE",
       "parent": "R025_VALIDATED_M30_KEEP_OWNED",
       "drive_doc_id": "1zGkP6JM0C6h07s8hAuP4_du1b0_Mtzp5qFzSPXHhg1Y",
       "drive_doc_url": "https://docs.google.com/document/d/1zGkP6JM0C6h07s8hAuP4_du1b0_Mtzp5qFzSPXHhg1Y/edit",
       "github_report_path": "research/delta/research/DELTA_R026_M30_SUPPRESSED_REARM_CAUSAL_HARVEST.md",
-      "github_commit": "d2c9df2a7c436963b19a49f8b3cd7006cb5e7228",
+      "github_commit": "d76a2d1f8ca39f01cae1776ca4b57c42672a9c13",
       "prereg_tab": "47 R026 Prereg",
       "monthly_summary_tab": "48 R026 Monthly Summary",
       "slice_matrix_tab": "49 R026 Slice Matrix",
@@ -2747,7 +2751,8 @@
         3,
         4,
         5,
-        6
+        6,
+        7
       ],
       "result_sha256": {
         "2026-01": "36b2b5f0a9417fba6122ff85aa3c432b4430965056f408a1f2fb39522795f82f",
@@ -2755,7 +2760,8 @@
         "2026-03": "2f77651eb6a6595d8170a0c0117ce293675e19ce6f675c84ba4925f0ae04fb78",
         "2026-04": "e432d02a9d99a0b00b1ab1a6c6b6669a3b49c0fced68fb1ffeb4aa4fa45ec07d",
         "2026-05": "9cc0959241f2c3d9258060d8efe279fe23f6b4b35d368c374cca7d5749d7b7a7",
-        "2026-06": "bf385da69b04a8ef57263cf29f6d3e2779c2af14ca9ad48990c02080cc01ca97"
+        "2026-06": "bf385da69b04a8ef57263cf29f6d3e2779c2af14ca9ad48990c02080cc01ca97",
+        "2026-07": "cd52f5f8f5ea901bc365cad7e63f13559f32b5e91fc2ab28ce50f5f7039d5481"
       },
       "monthly_checkpoints": {
         "2026-01": {
@@ -2817,8 +2823,33 @@
           "negative_or_zero_events": 512,
           "csv_sha256": "243f15a0aa139e61d90110eace9663bd2442a0276dab62e193e78d54fa9be6fb",
           "summary_sha256": "bf385da69b04a8ef57263cf29f6d3e2779c2af14ca9ad48990c02080cc01ca97"
+        },
+        "2026-07": {
+          "events": 937,
+          "sum_hypothetical_pnl_usd": -199.7,
+          "avg_hypothetical_pnl_usd": -0.213127,
+          "win_rate_pct": 43.329776,
+          "positive_events": 406,
+          "negative_or_zero_events": 531,
+          "csv_sha256": "cac326e46ad6069c14b745423540dc19e602b1b055a29121161e8506969df213",
+          "summary_sha256": "cd52f5f8f5ea901bc365cad7e63f13559f32b5e91fc2ab28ce50f5f7039d5481"
         }
-      }
+      },
+      "aggregate": {
+        "events": 7593,
+        "sum_hypothetical_pnl_usd": -1581.49,
+        "avg_hypothetical_pnl_usd": -0.208283,
+        "win_rate_pct": 43.790333,
+        "positive_events": 3325,
+        "negative_or_zero_events": 4268,
+        "negative_months": 7,
+        "total_months": 7,
+        "rearm_m30_netatr_le_neg_0_35_events": 7587,
+        "rearm_m30_other_events": 6,
+        "preregistered_1d_recovery_bins_robustly_positive": 0,
+        "slice_analysis_sha256": "0688f955d561a9266b58c998a1bdb4c6a3d69b0b94c9ccc7158ddd4f44e7db2a"
+      },
+      "decision": "KEEP_FULL_SUPPRESSION_NO_RELEASE_SUBSET"
     }
   },
   "prebacktest_research": {
