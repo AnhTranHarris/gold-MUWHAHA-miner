@@ -150,3 +150,16 @@ Result artifacts:
 - DH-07 current adapter: STOPPED
 - August: SEALED
 - MQL5: NOT AUTHORIZED
+
+## Post-timeout durability QA
+
+The message-delivery timeout did not invalidate or restart R006.
+
+Recovery QA confirmed:
+- all 76 immutable vector results remain present;
+- all 78 Stage-A run-sheet jobs are `COMPLETE_STAGE_A_SPEEDRUN`;
+- persisted result artifacts still match their recorded SHA-256 hashes exactly;
+- no candidate result was recomputed, edited, or promoted during recovery;
+- stale `NOT_STARTED` / `NOT_EXECUTED` fields in `CURRENT_STATE.json` were reconciled;
+- DH-04 and DH-05 remain explicitly untested.
+
