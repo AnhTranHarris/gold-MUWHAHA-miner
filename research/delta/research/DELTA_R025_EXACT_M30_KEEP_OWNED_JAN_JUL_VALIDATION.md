@@ -97,7 +97,7 @@ M30_KEEP_OWNED:
 - gross loss -$65,076.38
 - net -$41,045.86
 - M30-only owned events 25,961
-- suppressed rearm count 112,657
+- total owned-exit suppressed-rearm count (P01 + M30 ownership) 112,657
 
 Incremental versus P01:
 - net +$1,622.33
