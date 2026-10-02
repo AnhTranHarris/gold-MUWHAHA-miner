@@ -1,0 +1,48 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "DELTA_005F_001_DIRECT_PLUS_ACCEPTED_CONSOLIDATION",
+  "status": "PREREGISTERED",
+  "historical_simulation_only": true,
+  "live_deployment_authorized": false,
+  "date_utc": "2026-10-02",
+  "focus": "ENTRY_PLUS_INITIAL_HOLD",
+  "parent_findings": [
+    "DELTA_005A_001",
+    "DELTA_005E_001"
+  ],
+  "window": {
+    "start_ms_utc": 1767225600000,
+    "end_ms_utc_exclusive": 1768737600000
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "direct_owner": {
+    "flow_fast_ms": 250,
+    "flow_slow_ms": 1000,
+    "threshold": "SIGN_ONLY"
+  },
+  "recovery_grid": {
+    "fallback_ms": [
+      250,
+      500,
+      1000,
+      2000
+    ],
+    "s1_range_ceiling_price": [
+      0.5,
+      0.75,
+      1
+    ],
+    "min_boundary_acceptance_price": [
+      0,
+      0.05
+    ],
+    "boundary_history_mode": [
+      "CURRENT_HELD",
+      "NEVER_LOST"
+    ],
+    "variants": 48
+  },
+  "downstream_lifecycle": "FROZEN_R9",
+  "mature_hold_exit_high_profit_optimization": false,
+  "august_2026": "SEALED"
+}
