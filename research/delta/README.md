@@ -76,3 +76,7 @@ Read `research/delta/governance/DELTA_GOV_005_PROVISIONAL_CANDIDATE_IMPROVEMENT_
 ## Maintenance and capital staging
 
 `DELTA_GOV_011_PROP_STYLE_MAINTENANCE_CAPITAL_STAGING_AND_SMALL_ACCOUNT_SURVIVAL.md` separates prop-style risk maintenance from edge discovery. Testing uses fixed 0.01 lots until all primary categories are locked and the owner authorizes a later lot ladder. Starting capital stages are $100,000 at zero locks, $1,000 at one lock, $500 at two or three locks, and $100 when all four primary categories are locked. At or above $1,000 the provisional standard envelope uses a 0.5% planned-loss ceiling, 2.5% daily warning / 4% daily hard stop, and 5% weekly warning / 8% weekly hard stop. Below $1,000, small-account survivability rules are empirically calibrated rather than invented.
+
+## R9 SYNTH fast reference
+
+After owner authorization on 2026-10-01, DELTA loaded the Jan-Jul R9 SYNTH tester evidence and created `research/delta/reference/R9_SYNTH_PERFORMANCE_FAST_REFERENCE.json`. Use this compact file for primary SYNTH targets, monthly performance, day/week distributions, integrity checks, and observed day/week behavior before reopening the 95 MB tester workbook or massive ticklogger corpus.
