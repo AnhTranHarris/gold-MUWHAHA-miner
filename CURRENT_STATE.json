@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R029_COMPLETE_POST_EXIT_SAME_MINUTE_REENTRY_FAMILY_RETIRED",
+  "current_phase": "R030_DIAGNOSTIC_NEAR_SURVIVOR_R031_PREREG_REQUIRED",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "R030_INDEPENDENT_FIRST_ENTRY_SPECIALIST_OPPORTUNITY_REPLACEMENT_RESEARCH;_NO_POST_EXIT_REENTRY_REPAIR_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "R031_DURABLE_QUALITY_TOPUP_PREREGISTRATION_THEN_EXACT_P50_P75_P90_REPLAY;_NO_POST_EXIT_REENTRY_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -522,7 +522,10 @@
     "r027_behavior_change_tested": false,
     "generic_same_minute_rearm_local_repair_stopped": true,
     "post_exit_same_minute_bracket_replacement_stopped": true,
-    "independent_opportunity_replacement_required": true
+    "independent_opportunity_replacement_required": true,
+    "r030_promotable": false,
+    "r030_diagnostic_only": true,
+    "post_exit_same_minute_reentry_family_retired": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -3104,6 +3107,38 @@
         }
       },
       "decision": "RETIRE_POST_EXIT_SAME_MINUTE_BRACKET_REPLACEMENT"
+    },
+    "r030": {
+      "status": "DIAGNOSTIC_NEAR_SURVIVOR_NON_PROMOTABLE",
+      "drive_doc_id": "1S3zcbkPrWupd0iDKvmpKxA_KE-nJfA8F8IvOiJgnxVo",
+      "drive_doc_url": "https://docs.google.com/document/d/1S3zcbkPrWupd0iDKvmpKxA_KE-nJfA8F8IvOiJgnxVo/edit",
+      "workbook_tab": "57 R030 Diagnostic",
+      "promoted": false,
+      "metric_lock": false,
+      "basket": [
+        "DH03-S06",
+        "DH05-S06"
+      ],
+      "p50": {
+        "trade_retention_pct": 80.466228,
+        "winner_retention_pct": 84.28166,
+        "net": -2594.75,
+        "delta_vs_opp": 87.71
+      },
+      "p75": {
+        "trade_retention_pct": 80.048807,
+        "winner_retention_pct": 84.335857,
+        "net": -2770.85,
+        "delta_vs_opp": 92.49
+      },
+      "p90": {
+        "trade_retention_pct": 77.603471,
+        "winner_retention_pct": 81.046788,
+        "net": -538.2,
+        "delta_vs_opp": 19.94,
+        "trade_shortfall_to_80pct_approx": 72
+      },
+      "preregistration_gap": "DURABLE_PREREG_DID_NOT_LAND_BEFORE_FIRST_RESULT_DUE_TIMEOUT"
     }
   },
   "prebacktest_research": {
