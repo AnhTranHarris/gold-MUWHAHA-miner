@@ -1,0 +1,52 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "DELTA_005E_001_INITIAL_HOLD_FORENSIC_CENSUS",
+  "status": "PREREGISTERED",
+  "historical_forensic_only": true,
+  "candidate_promotion_allowed": false,
+  "date_utc": "2026-10-02",
+  "focus": "ENTRY_PLUS_INITIAL_HOLD",
+  "parent_findings": [
+    "DELTA_005A_001",
+    "DELTA_005B_001",
+    "DELTA_005C_001",
+    "DELTA_005D_001"
+  ],
+  "window": {
+    "start_ms_utc": 1767225600000,
+    "end_ms_utc_exclusive": 1768737600000
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "observation_horizons_ms": [
+    0,
+    250,
+    500,
+    1000,
+    2000,
+    3000
+  ],
+  "primary_labels": [
+    "SURVIVE_5S",
+    "SURVIVE_10S"
+  ],
+  "secondary_labels": [
+    "SURVIVE_15S"
+  ],
+  "anti_leak": "FEATURES_RIGHT_EDGE_ONLY_FUTURE_SURVIVAL_LABELS_ONLY",
+  "planned_matrix_families": [
+    "BOUNDARY_X_FLOW250",
+    "BOUNDARY_X_FLOW1000",
+    "FLOW250_X_FLOW1000",
+    "S1_EFF_X_BOUNDARY",
+    "S1_EFF_DELTA_X_BOUNDARY",
+    "MFE_X_MAE",
+    "PATH_EFF_X_MAE",
+    "ALIGNED_TICK_FRACTION_X_BOUNDARY",
+    "TURNS_X_FLOW250",
+    "S1_RANGE_X_BOUNDARY_REVISIT",
+    "SESSION_X_BOUNDARY_STATE"
+  ],
+  "downstream_lifecycle": "UNCHANGED_R9_PARENT",
+  "mature_hold_exit_high_profit_optimization": false,
+  "august_2026": "SEALED"
+}
