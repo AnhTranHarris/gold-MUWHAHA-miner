@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "DIRECTION_HOLD_R010_OWNERSHIP_BREAKTHROUGH_REFINEMENT_NO_PROMOTION",
+  "current_phase": "DIRECTION_HOLD_R014_EXACT_R010_JAN_JUL_VALIDATED_REFINEMENT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "R010_EXACT_ROUNDED_MONTH_BY_MONTH_VALIDATION_AND_BOUNDED_CAUSAL_REFINEMENT;_DH05_DH02_DH03_CONDITIONAL_RESEARCH_QUEUED;_NO_MQL5_NO_AUGUST",
+    "next_permitted_step": "R015_CONFIDENCE_TIERED_R010_OWNERSHIP_REFINEMENT;_FLIP_MODERATE_SKIP_EXTREME_WITH_ACTIVITY_PRESERVATION;_NO_MQL5_NO_AUGUST",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -457,9 +457,15 @@
     "r010_metric_lock": false,
     "r010_native_sensitivity_required_failure": true,
     "r010_stage_a_magnitude_must_not_be_treated_as_oos_magnitude": true,
-    "r010_exact_rounded_jan_jul_validation_pending": true,
+    "r010_exact_rounded_jan_jul_validation_pending": false,
     "r010_predecessor_oos_shrinkage_must_be_preserved": true,
-    "r013_dh05_handoff_no_incremental_value": true
+    "r013_dh05_handoff_no_incremental_value": true,
+    "r010_exact_rounded_jan_jul_validation_complete": true,
+    "r010_all_jan_jul_months_improve_net": true,
+    "r010_discovery_magnitude_shrunk_to_aggregate_pct": 12.9252,
+    "r010_still_below_high_value_30pct_target": true,
+    "r010_still_not_promoted": true,
+    "r014_confidence_tier_refinement_authorized": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -1075,7 +1081,7 @@
   "active_research_question": "R9_DIRECTION_PLUS_INITIAL_HOLD_SURVIVABILITY_AND_MULTI_ENTRY_SPECIALIST_ARCHITECTURE",
   "initial_research": {
     "id": "DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN",
-    "status": "R010_BREAKTHROUGH_REFINEMENT_WITH_OOS_SHRINKAGE_NO_PROMOTION",
+    "status": "R014_EXACT_ROUNDED_R010_JAN_JUL_VALIDATED_NOT_PROMOTED",
     "report_path": "research/delta/research/DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN.md",
     "report_commit": "700fa3399c95ff07dad7c210fd34a5c6572543af",
     "active_candidate": null,
@@ -1516,12 +1522,12 @@
       }
     },
     "refinement_queue": [
-      "P0_R010_EXACT_ROUNDED_MONTHLY_VALIDATION_AND_BOUNDED_OWNERSHIP_REFINEMENT",
+      "P0_R015_CONFIDENCE_TIERED_R010_OWNERSHIP_REFINEMENT",
       "P1_DH05_CONDITIONAL_SPECIALIST_REFINEMENT",
       "P1_DH02_CONDITIONAL_SPECIALIST_RESTRUCTURE",
       "P1_DH03_CONDITIONAL_SPECIALIST_RESTRUCTURE",
       "P2_DH01_CONTINUOUS_CONTEXT_REDESIGN",
-      "P3_DH04_CURRENT_STANDALONE_STOP_MORE_RESEARCH_ONLY",
+      "P3_DH04_CURRENT_STANDALONE_STOP",
       "P3_DH07_CURRENT_ADAPTER_STOP",
       "P3_DH06_CURRENT_POST_ENTRY_ACTION_MAPPING_STOP"
     ],
@@ -1553,7 +1559,7 @@
     "r010_drive_doc_id": "1pW14EDoo9muzFQyZy7IcP3ifvDBIbMkV3apRodiPXLM",
     "r010_drive_doc_url": "https://docs.google.com/document/d/1pW14EDoo9muzFQyZy7IcP3ifvDBIbMkV3apRodiPXLM/edit",
     "r010_direction_ownership": {
-      "status": "BREAKTHROUGH_REFINEMENT_CANDIDATE_NOT_PROMOTED",
+      "status": "MULTI_MONTH_VALIDATED_REFINEMENT_CANDIDATE_NOT_PROMOTED",
       "promoted": false,
       "metric_lock": false,
       "canonical_v0": {
@@ -1606,7 +1612,7 @@
         "dual_horizon_m30_added": false
       },
       "out_of_sample_caution": {
-        "exact_rounded_r010_jan_jul_validated": false,
+        "exact_rounded_r010_jan_jul_validated": true,
         "predecessor_rule": "I250 <= -0.5505 OR H1NetATR > 0.4613",
         "later_january_improvement_pct": 7.443,
         "near_r010_later_january_improvement_pct": 8.454,
@@ -1618,7 +1624,11 @@
           13.425,
           9.462
         ],
-        "interpretation": "MECHANISM_TEMPORALLY_POSITIVE_BUT_STAGE_A_MAGNITUDE_SHRINKS"
+        "interpretation": "MECHANISM_TEMPORALLY_POSITIVE_BUT_STAGE_A_MAGNITUDE_SHRINKS",
+        "exact_rounded_jan_jul_aggregate_net_improvement_pct": 12.9252,
+        "exact_rounded_jan_jul_aggregate_gl_improvement_pct": 13.5068,
+        "exact_rounded_trade_retention_pct": 86.9664,
+        "exact_rounded_winner_retention_pct": 88.0249
       },
       "dh05_selective_handoff": "NO_INCREMENTAL_VALUE",
       "provenance_sha256": {
@@ -1631,6 +1641,48 @@
         "february_predecessor": "debb335005bce37b3a1248d8073c8f495a3619319eba07ac7c66e10967367059",
         "dh05_handoff": "128318115e3da27884f2283e9023113b3b4319c783cda6e48d569915f79f9575"
       }
+    },
+    "r014_report_path": "research/delta/research/DELTA_R014_EXACT_ROUNDED_R010_JAN_JUL_VALIDATION.md",
+    "r014_report_commit": "2e907d546498b4f5a31eba4adf545937093eb1d3",
+    "r014_drive_doc_id": "157f0lIkp6RxIWELgpKxUwSIsNNJQT7d9ZMzYGyY-zm0",
+    "r014_drive_doc_url": "https://docs.google.com/document/d/157f0lIkp6RxIWELgpKxUwSIsNNJQT7d9ZMzYGyY-zm0/edit",
+    "r014_exact_rounded_jan_jul": {
+      "status": "COMPLETE_NOT_PROMOTED",
+      "rule": "I250 <= -0.55 OR H1NetATR > 0.35",
+      "months_positive_net_improvement": 7,
+      "months_tested": 7,
+      "r9": {
+        "trades": 234417,
+        "wins": 103097,
+        "gross_profit_usd": 29243.07,
+        "gross_loss_usd": -78244.86,
+        "net_profit_usd": -49001.79
+      },
+      "r010": {
+        "trades": 203864,
+        "wins": 90751,
+        "gross_profit_usd": 25008.31,
+        "gross_loss_usd": -67676.5,
+        "net_profit_usd": -42668.19
+      },
+      "improvement": {
+        "net_loss_pct": 12.9252,
+        "gross_loss_pct": 13.5068,
+        "trade_retention_pct": 86.9664,
+        "winner_retention_pct": 88.0249
+      },
+      "monthly_net_improvement_pct": {
+        "JAN": 15.3089,
+        "FEB": 12.0372,
+        "MAR": 12.4812,
+        "APR": 9.6714,
+        "MAY": 16.7359,
+        "JUN": 14.0377,
+        "JUL": 9.9072
+      },
+      "result_sha256": "26adb8ae896c526e572e44c851f64560d0dd5bc2331163143aa485491ea79ba6",
+      "january_script_sha256": "7f212f9c5668a3a6e6cfa343ae94679347ac2e42961d5767bc737575ed462804",
+      "month_script_sha256": "d5a043cbd50a675b69cd372755b30dbe3251fc156e88702a196bd03f600b1488"
     }
   },
   "prebacktest_research": {
