@@ -1,0 +1,87 @@
+{
+  "schema": "delta-005k-001-result-summary-v1",
+  "status": "COMPLETE_NOT_PROMOTED",
+  "historical_simulation_only": true,
+  "focus": "ENTRY_PLUS_INITIAL_HOLD",
+  "source_blob": "e252b3d22af6b6e259745d549d91f34f4d2c6f70",
+  "window": {
+    "start_ms_utc": 1767225600000,
+    "end_ms_utc_exclusive": 1768737600000
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "ticks": 4205709,
+  "variants_tested": 9,
+  "runtime_seconds": 3.262363758,
+  "references": {
+    "r9": {
+      "trades": 16801,
+      "wins": 7351,
+      "gross_profit": 1574.77,
+      "gross_loss": -5343.02,
+      "net_profit": -3768.25,
+      "max_balance_drawdown": 3769.83
+    },
+    "delta_005h": {
+      "trades": 16578,
+      "wins": 6131,
+      "gross_profit": 2377.8,
+      "gross_loss": -6050.23,
+      "net_profit": -3672.43,
+      "max_balance_drawdown": 3673.59
+    }
+  },
+  "best_survival_preservation_vs_005h": {
+    "protect_trigger_price": 0.25,
+    "protect_lock_price": 0.05,
+    "trades": 16610,
+    "wins": 6106,
+    "protect_moves": 6240,
+    "protect_stop_exits": 712,
+    "gross_profit": 2249.38,
+    "gross_loss": -5940.47,
+    "net_profit": -3691.09,
+    "max_balance_drawdown": 3692.74,
+    "average_hold_seconds": 8.6926,
+    "winner_retention_vs_005h_pct": 99.5922,
+    "gross_loss_improvement_vs_005h_pct": 1.8141,
+    "net_improvement_vs_005h_pct": -0.5081,
+    "survival_5s_delta_vs_005h_pp": -1.0848,
+    "survival_10s_delta_vs_005h_pp": -1.2726,
+    "survival_15s_delta_vs_005h_pp": -1.3769
+  },
+  "best_balanced_loss_recovery_vs_005h": {
+    "protect_trigger_price": 0.2,
+    "protect_lock_price": 0.05,
+    "trades": 16641,
+    "wins": 6146,
+    "protect_moves": 6724,
+    "protect_stop_exits": 1550,
+    "gross_profit": 2108.1,
+    "gross_loss": -5789.02,
+    "net_profit": -3680.92,
+    "max_balance_drawdown": 3682.57,
+    "average_hold_seconds": 8.2749,
+    "winner_retention_vs_005h_pct": 100.2447,
+    "gross_loss_improvement_vs_005h_pct": 4.3174,
+    "net_improvement_vs_005h_pct": -0.2312,
+    "survival_5s_delta_vs_005h_pp": -2.6972,
+    "survival_10s_delta_vs_005h_pp": -3.1453,
+    "survival_15s_delta_vs_005h_pp": -3.1981
+  },
+  "maximum_loss_recovery_vs_005h": {
+    "protect_trigger_price": 0.15,
+    "protect_lock_price": 0.05,
+    "winner_retention_vs_005h_pct": 100.7503,
+    "gross_loss_improvement_vs_005h_pct": 6.9116,
+    "net_improvement_vs_005h_pct": -1.1254,
+    "survival_5s_delta_vs_005h_pp": -4.7911,
+    "survival_10s_delta_vs_005h_pp": -5.5488
+  },
+  "leverage_conclusion": "ONE_TIME_FIXED_MFE_LOCK_CREATES_A_PARETO_FRONTIER_BUT_NO_CELL_DOMINATES_005H",
+  "next_change_class": "MULTI_STAGE_PATH_PROTECTION",
+  "next_unit": "DELTA_005L_MULTI_STAGE_INITIAL_PROTECTION",
+  "temporary_sheet_id": "1GmA0TwTeWQibZqFpQOh1p7LoaIdRA3mEIbb-wK7qKB0",
+  "temporary_sheet_url": "https://docs.google.com/spreadsheets/d/1GmA0TwTeWQibZqFpQOh1p7LoaIdRA3mEIbb-wK7qKB0/edit?usp=drivesdk",
+  "master_doc_id": "1T9MPuuMsxB5gv7Zz8nvzFmaQy00_7Q-7X_4F2qrcR6k",
+  "august_accessed": false
+}
