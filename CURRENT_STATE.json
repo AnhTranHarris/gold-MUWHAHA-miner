@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R032_AUTHORITATIVE_BASKET_PREREGISTERED_NOT_EXECUTED",
+  "current_phase": "R032_COMPLETE_NEAR_GATE_R033_HARVEST_ONLY",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "EXECUTE_R032_AUTHORITATIVE_P50_P75_P90_REPLAY;_NO_NEW_CONFIGS_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "R033_HARVEST_A01_ONLY_INCREMENTAL_EVENTS_CAUSALLY;_NO_BEHAVIOR_CHANGE_TEST_UNTIL_NEW_PREREG_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -531,7 +531,9 @@
     "r030_invalidated_generator_drift": true,
     "r031_invalidated_before_execution": true,
     "r032_preregistered_before_results": true,
-    "r032_new_configs_after_results_prohibited": true
+    "r032_new_configs_after_results_prohibited": true,
+    "r032_complete": true,
+    "r032_promoted": false
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -3169,7 +3171,7 @@
       "post_exit_dependency": false
     },
     "r032": {
-      "status": "PREREGISTERED_NOT_EXECUTED",
+      "status": "COMPLETE_NO_ALL_SURFACE_SURVIVOR",
       "prereg_tab": "60 R032 Prereg",
       "result_tab": "61 R032 Results",
       "script_sha256": "2058181259c37a623bc3d49a135772c12122b2138a5120f056d58ce7a9cffee3",
@@ -3194,7 +3196,24 @@
         "P90"
       ],
       "promoted": false,
-      "metric_lock": false
+      "metric_lock": false,
+      "drive_doc_id": "1NZK_Ls48a261BUxvrELwgjTOg1M_93-0Wqaw12YFpYY",
+      "drive_doc_url": "https://docs.google.com/document/d/1NZK_Ls48a261BUxvrELwgjTOg1M_93-0Wqaw12YFpYY/edit",
+      "result_sha256": "37059fe040341e718869a5e84e584b5743565c44e7a40ecb41404be54138ad0b",
+      "near_gate": {
+        "config": "R032-C03_PLUS_DH02_S11_S08",
+        "surface": "P90",
+        "trade_retention_pct": 79.706275,
+        "winner_retention_pct": 83.267248,
+        "net": -554.14,
+        "delta_vs_opp": 4,
+        "approx_trades_short": 9
+      },
+      "density_topup": {
+        "config": "R032-C04_PLUS_DH02_A01",
+        "p90_trade_retention_pct": 82.610147,
+        "p90_delta_vs_opp": -13.33
+      }
     }
   },
   "prebacktest_research": {
