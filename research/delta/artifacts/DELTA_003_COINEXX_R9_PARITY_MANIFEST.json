@@ -1,7 +1,7 @@
 {
   "schema": "delta-research-unit-manifest-v1",
   "unit_id": "DELTA_003_COINEXX_R9_PARITY_CALIBRATION",
-  "status": "PREREGISTERED",
+  "status": "VERIFIED_DURABLE",
   "date_utc": "2026-10-01",
   "lineage": "DELTA",
   "parent_checkpoint": "DELTA_002_DUKASCOPY_TICK_LAB",
@@ -66,13 +66,60 @@
     "unresolved_policy": "mark explicitly; do not invent broker properties"
   },
   "mt5_translation_ready": false,
-  "python_rebuild_ready": false,
+  "python_rebuild_ready": true,
   "verification": {
-    "github_readback": false,
-    "coinexx_state_parity": false,
-    "coinexx_execution_parity": false,
-    "report_parity": false,
+    "github_readback": true,
+    "coinexx_state_parity": true,
+    "coinexx_execution_parity": true,
+    "report_parity": true,
     "current_state_advanced": false
   },
-  "rollback_target": "DELTA_002_DUKASCOPY_TICK_LAB"
+  "rollback_target": "DELTA_002_DUKASCOPY_TICK_LAB",
+  "source_code": [
+    "research/delta/lab/coinexx_r9_adapter.py",
+    "research/delta/lab/r9_parity_runner.py",
+    "research/delta/qa/DELTA_003_COINEXX_R9_PARITY_QA.py"
+  ],
+  "outputs": [
+    "research/delta/reference/DELTA_003_COINEXX_EXECUTION_CONFIG.json",
+    "research/delta/checkpoints/DELTA_003_PARITY_QA.json",
+    "research/delta/DELTA_003_COINEXX_R9_PARITY_REPORT.md"
+  ],
+  "source_blobs": {
+    "research/delta/lab/coinexx_r9_adapter.py": "e833f7ef894c0bf8deaf12727042f6b2f8c30f21",
+    "research/delta/lab/r9_parity_runner.py": "7f0f4034ab9e1ddb4bf657e7253e9eaf27d3ba7d",
+    "research/delta/qa/DELTA_003_COINEXX_R9_PARITY_QA.py": "6d3f442eafd59bc57933ae454ad7b64888bcb6b1",
+    "research/delta/reference/DELTA_003_COINEXX_EXECUTION_CONFIG.json": "eeaf74a0b5a3827ee559177cc549e9157253db85",
+    "research/delta/checkpoints/DELTA_003_PARITY_QA.json": "7858124b37da53f7b69fd48880384bb4c932292f",
+    "research/delta/DELTA_003_COINEXX_R9_PARITY_REPORT.md": "4b50dccd301986a02995d88406ef444c5c328e0f"
+  },
+  "expected_results": {
+    "january_files": 21,
+    "january_rows": 7699274,
+    "january_event_mismatches": 0,
+    "january_trades": 31915,
+    "january_wins": 13947,
+    "january_losses": 17968,
+    "january_gross_profit_usd": 3785.28,
+    "january_gross_loss_usd": -10436.9,
+    "january_net_profit_usd": -6651.62,
+    "july_01_rows": 338441,
+    "july_01_event_mismatches": 0,
+    "august_accessed": false
+  },
+  "parity_status": {
+    "state_machine": "VERIFIED_EXACT_ON_FULL_JANUARY_AND_JULY_01",
+    "execution_accounting": "VERIFIED_EXACT_ON_FULL_JANUARY",
+    "cross_broker_native_dukascopy": "SEPARATE_FEED_SURFACE_NOT_PARITY_FAILURE",
+    "coinexx_like_dukascopy_overlay": "NEXT_PREREGISTERED_UNIT"
+  },
+  "github_commits": [
+    "f4e1b81c026acf1c01461472157167e2ccece03b",
+    "41c8a8f2bff0464e66466c79c8ed6c45152c7e6c",
+    "d3169574024cfab0acd311526a7715ba89f629d6",
+    "99459c33bca35ee21398e6df6c1a637e285bce0a",
+    "ba5cd0c7844e58a9cba83696866fecd07c5a36fe",
+    "e65e0fd0fc3c22b4513ae40a6a961216de1f7525",
+    "d9c3b429769a17b7346d10475f16fdae0e360c86"
+  ]
 }
