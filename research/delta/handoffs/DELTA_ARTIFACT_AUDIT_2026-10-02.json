@@ -1,0 +1,594 @@
+{
+  "schema": "delta-full-artifact-audit-v1",
+  "created_utc": "2026-10-02",
+  "repository": "AnhTranHarris/gold-MUWHAHA-miner",
+  "branch": "delta",
+  "purpose": "Disaster-recovery inventory for new-chat bootstrap and future Python-to-MQL5 traceability.",
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "mt5_translation_ready": false,
+  "canonical_research_focus": "ENTRY + INITIAL-HOLD",
+  "deferred_focus": "HOLDING-TRADE + EXIT + HIGH-PROFIT",
+  "foundations": {
+    "governance": {
+      "clean_room": [
+        "research/delta/governance/DELTA_CLEAN_ROOM_LOCK.md",
+        "5e556216303255226c1015fbc5a62ac8920dbac2"
+      ],
+      "gov001": [
+        "research/delta/governance/DELTA_GOV_001_CAUSAL_DURABLE_MT5_RESEARCH_CONTRACT.md",
+        "f5518ae4226baceb40e0062206ba0e42c807af8e"
+      ],
+      "gov002": [
+        "research/delta/governance/DELTA_GOV_002_TICK_ROOTED_NESTED_TIMEFRAME_CONTRACT.md",
+        "8035482b58684d0df2051fdd17f4ed34b243168f"
+      ],
+      "gov003": [
+        "research/delta/governance/DELTA_GOV_003_RESEARCH_SPEED_STAGE_GATE_CONTRACT.md",
+        "23bc924e1fac2f0800c2cd10bb158cdc1eec8c6c"
+      ],
+      "gov004": [
+        "research/delta/governance/DELTA_GOV_004_BENCHMARK_ROLES_AND_HUMAN_GOAL_METRICS_CONTRACT.md",
+        "d6f6854af53b69abb245dd0c5f1d9c81245f1ee3"
+      ],
+      "gov005": [
+        "research/delta/governance/DELTA_GOV_005_PROVISIONAL_CANDIDATE_IMPROVEMENT_GATE.md",
+        "2abed1ec01baf95fb70be819e24be0b5574cf80e"
+      ],
+      "gov006": [
+        "research/delta/governance/DELTA_GOV_006_SYNTH_METRIC_LOCK_AND_CUMULATIVE_RATCHET_CONTRACT.md",
+        "5335bb10de75d9a6b3cdbcfac9204b6e953ae440"
+      ],
+      "gov007": [
+        "research/delta/governance/DELTA_GOV_007_CREATIVE_REFINEMENT_ESCALATION_AND_DUKASCOPY_PLAYGROUND.md",
+        "82b89531374175acb033f571ad1d2b71ff35cbf9"
+      ],
+      "gov008": [
+        "research/delta/governance/DELTA_GOV_008_MULTI_SPECIALIST_COMPOSITE_AND_SESSION_AWARE_ASSUMPTION.md",
+        "4b9b965388264d9be42879ffcede553504f4bb1f"
+      ],
+      "gov009": [
+        "research/delta/governance/DELTA_GOV_009_NEWS_EVENT_OPPORTUNITY_AND_IMPACT_HANDLING_ASSUMPTION.md",
+        "a0241c623d8e5130ccb7aaba7a84f86709614a47"
+      ],
+      "gov010": [
+        "research/delta/governance/DELTA_GOV_010_HIGH_OPPORTUNITY_DENSITY_AND_CANDIDATE_TRADE_CONTRIBUTION_ASSUMPTION.md",
+        "cd039338a2912691f06202e9a49b982d18278679"
+      ],
+      "gov011": [
+        "research/delta/governance/DELTA_GOV_011_PROP_STYLE_MAINTENANCE_CAPITAL_STAGING_AND_SMALL_ACCOUNT_SURVIVAL.md",
+        "b46cf55d294a1806f8273c8e9da8c2292e79994e"
+      ],
+      "gov012": [
+        "research/delta/governance/DELTA_GOV_012_EXACT_JANUARY_STAGE_A_FILTER_WINDOW.md",
+        "b396ce070ba52691a2473e30f8fd0ee81820f865"
+      ],
+      "gov013": [
+        "research/delta/governance/DELTA_GOV_013_CANDIDATE_LEVERAGE_AND_CRASH_SAFE_RESEARCH_LEDGER.md",
+        "25e1831ac89a826bc4f198167007fdf8e73d4ea6"
+      ]
+    },
+    "references": {
+      "r9_evidence_registry": [
+        "research/delta/reference/R9_EVIDENCE_REGISTRY.json",
+        "33b05dbb76ac2866d40ebdff739f661abdd67b8b"
+      ],
+      "r9_corpus_index": [
+        "research/delta/reference/R9_REFERENCE_CORPUS_INDEX.json",
+        "ccda46b487b323366ad4818bb4b38a6456cabe91"
+      ],
+      "dukas_manifest": [
+        "research/delta/reference/DUKASCOPY_JAN_JUL_SOURCE_MANIFEST.json",
+        "b59beefc5d235cc1fe4227d04479aba7cf337a58"
+      ],
+      "r9_synth_fast": [
+        "research/delta/reference/R9_SYNTH_PERFORMANCE_FAST_REFERENCE.json",
+        "86cb0d55abc29c26065ab18f4676edc1b305dcf5"
+      ],
+      "r9_real_fast": [
+        "research/delta/reference/R9_REAL_PERFORMANCE_FAST_REFERENCE.json",
+        "14fc1793daecfeb532e97809a2644f6f1683fb3a"
+      ],
+      "r9_functional_md": [
+        "research/delta/reference/R9_MT5_EA_FUNCTIONAL_SUMMARY.md",
+        "fd15ee48e46e51f54e0ecc1a314900b6a0d5fcfe"
+      ],
+      "r9_functional_fast": [
+        "research/delta/reference/R9_MT5_EA_FUNCTIONAL_FAST_REFERENCE.json",
+        "5aeda615d3fc45e6f4d51112f51cb55554204a61"
+      ],
+      "coinexx_config": [
+        "research/delta/reference/DELTA_003_COINEXX_EXECUTION_CONFIG.json",
+        "eeaf74a0b5a3827ee559177cc549e9157253db85"
+      ],
+      "spread_profiles": [
+        "research/delta/reference/DELTA_004_COINEXX_SPREAD_PROFILES.json",
+        "e382069e53cb7a507628ac60f3101d95df0d0bda"
+      ],
+      "stage_a_window": [
+        "research/delta/reference/DELTA_STAGE_A_JANUARY_WINDOW.json",
+        "dd0c313316e890001087826b09909ea9c435c4ee"
+      ]
+    },
+    "runtime_helpers": {
+      "dukas_tick_lab": [
+        "research/delta/lab/dukas_tick_lab.py",
+        "75a7b3c56236aaaaa6ea82c6c6b8741d971b5b06"
+      ],
+      "month_runner": [
+        "research/delta/lab/run_candidate_month.py",
+        "cf4675d3679823b0a513f9006e350b53cb433840"
+      ],
+      "candidate_template": [
+        "research/delta/lab/candidate_template.py",
+        "fce41053e079a325af4e0f1800e773f25e6da86e"
+      ],
+      "coinexx_adapter": [
+        "research/delta/lab/coinexx_r9_adapter.py",
+        "e833f7ef894c0bf8deaf12727042f6b2f8c30f21"
+      ],
+      "r9_parity_runner": [
+        "research/delta/lab/r9_parity_runner.py",
+        "7f0f4034ab9e1ddb4bf657e7253e9eaf27d3ba7d"
+      ],
+      "coinexx_like_surface": [
+        "research/delta/lab/coinexx_like_surface.py",
+        "07ea98cd18d886645e8d4cdc9a09abe6464993d9"
+      ]
+    },
+    "qa": {
+      "gov_gate": [
+        "research/delta/qa/DELTA_GOV_001_REBUILD_MANIFEST_GATE.py",
+        "6241810cbb84ca9d98e0af5a3d0b019571ef804e"
+      ],
+      "lab_qa": [
+        "research/delta/qa/DELTA_002_DUKASCOPY_TICK_LAB_QA.py",
+        "449a55f2f97cf8bad3cbf1a2bac45efce1b7b8b1"
+      ],
+      "parity_qa": [
+        "research/delta/qa/DELTA_003_COINEXX_R9_PARITY_QA.py",
+        "6d3f442eafd59bc57933ae454ad7b64888bcb6b1"
+      ],
+      "surface_qa": [
+        "research/delta/qa/DELTA_004_COINEXX_LIKE_DUKASCOPY_QA.py",
+        "3e59b25f113405d72bc1ff35dab94aeebbdd024b"
+      ]
+    }
+  },
+  "durable_environment": {
+    "delta001": "VERIFIED_DURABLE",
+    "delta002_tick_lab": "VERIFIED_DURABLE",
+    "delta003_coinexx_parity": "VERIFIED_DURABLE",
+    "delta004_coinexx_like_dukas": "VERIFIED_DURABLE",
+    "stage_a_window": "FROZEN_17P5_CALENDAR_DAYS_UTC",
+    "master_research_doc_id": "1T9MPuuMsxB5gv7Zz8nvzFmaQy00_7Q-7X_4F2qrcR6k",
+    "master_research_doc_url": "https://docs.google.com/document/d/1T9MPuuMsxB5gv7Zz8nvzFmaQy00_7Q-7X_4F2qrcR6k/edit?usp=drivesdk",
+    "analysis_template_sheet_id": "1Zy_TfGfc6E0tJmEsoFmSONqM9W4wKuAqTPcITC5OXb0"
+  },
+  "candidate_units": {
+    "005A": {
+      "status": "COMPLETE_NOT_PROMOTED",
+      "prereg": [
+        "research/delta/DELTA_005A_001_FAST_CONTINUATION_PREREGISTRATION.md",
+        "a527e84043e6738f7f3b1a5a011860aa5e8cd661"
+      ],
+      "manifest": [
+        "research/delta/artifacts/DELTA_005A_001_MANIFEST.json",
+        "7e6c9dfd2bba610c090906b0d6b818de1e86caa4"
+      ],
+      "source": [
+        "research/delta/experiments/DELTA_005A_FAST_CONTINUATION.py",
+        "39c33a6d7fb298f0665f1cbbcb1b1fe56ba92fe4"
+      ],
+      "checkpoint": [
+        "research/delta/checkpoints/DELTA_005A_001_RESULTS.json",
+        "21c4b67c9903a4b528c8b64c5b51e1ad7a2e07fa"
+      ],
+      "report": [
+        "research/delta/DELTA_005A_001_FAST_CONTINUATION_REPORT.md",
+        "8a9ffa23e04be1433910d81252d5ede77ecf1f5e"
+      ],
+      "sheet_id": "17Rcz6Jq4btAgdZz7lY1vjbAhbou8IyVIjUZ_-U3k9kY",
+      "source_integrity": "EXACT"
+    },
+    "005B": {
+      "status": "COMPLETE_NOT_PROMOTED",
+      "prereg": [
+        "research/delta/DELTA_005B_001_MICRO_RETEST_RECLAIM_PREREGISTRATION.md",
+        "751f5b05e55cbc337374f3daab22e944ac9d4216"
+      ],
+      "prereg_recovery": true,
+      "manifest": [
+        "research/delta/artifacts/DELTA_005B_001_MANIFEST.json",
+        "03b2eb9899b674d0b7b6d95d39384eec9c3cf8d4"
+      ],
+      "source": [
+        "research/delta/experiments/DELTA_005B_MICRO_RETEST.py",
+        "4fcde1912a6011aa974525c45b7899778c72d424"
+      ],
+      "checkpoint": [
+        "research/delta/checkpoints/DELTA_005B_001_RESULTS.json",
+        "208342d86bc9acfa5f14fde1db3321044c3071f5"
+      ],
+      "report": [
+        "research/delta/DELTA_005B_001_MICRO_RETEST_RECLAIM_REPORT.md",
+        "fee12b53ddaa89ac42df65146d46356f42bac59c"
+      ],
+      "report_recovery": true,
+      "sheet_id": "1V-VHkj1jYPXebOtGcPVlhc81cvuqV4Q7pTl8ZzU37SM",
+      "source_integrity": "EXACT"
+    },
+    "005C": {
+      "status": "COMPLETE_NOT_PROMOTED",
+      "prereg": [
+        "research/delta/DELTA_005C_001_FAILED_BREAK_REVERSAL_PREREGISTRATION.md",
+        "8c2f1e1e1b5639445dc792b3b666f8fd7b071a9e"
+      ],
+      "manifest": [
+        "research/delta/artifacts/DELTA_005C_001_MANIFEST.json",
+        "e59ebb9f5ac603da661a12a63151ed069d1e423e"
+      ],
+      "source": [
+        "research/delta/experiments/DELTA_005C_FAILED_BREAK_REVERSAL.py",
+        "5277aff8fb289e5455f183c4936b0f83563e9ac7"
+      ],
+      "checkpoint": [
+        "research/delta/checkpoints/DELTA_005C_001_RESULTS.json",
+        "c4fb9c5616213f043530931096c3db14744d857f"
+      ],
+      "report": [
+        "research/delta/DELTA_005C_001_FAILED_BREAK_REVERSAL_REPORT.md",
+        "722d8f98969bc2a1b8ecec03be6aff5b60c02ba4"
+      ],
+      "sheet_id": "1q8MVbzpIuQQYvx3S4UAQMIUmLzR7sEF0cuMpUeG3a5Q",
+      "source_integrity": "EXACT"
+    },
+    "005D": {
+      "status": "COMPLETE_NOT_PROMOTED",
+      "prereg": [
+        "research/delta/DELTA_005D_001_FIRST_SECONDS_ACCEPTANCE_PREREGISTRATION.md",
+        "53e490e0b46149e9af39f2dc302910410405254a"
+      ],
+      "manifest": [
+        "research/delta/artifacts/DELTA_005D_001_MANIFEST.json",
+        "9ff4afdeeea2da41144d0d66072e3111770a1f9d"
+      ],
+      "source_current": [
+        "research/delta/experiments/DELTA_005D_INITIAL_HOLD.py",
+        "cc6a2855e1f299bd597ca0d9f65e9cf44d2eddfa"
+      ],
+      "checkpoint_source_blob": "38d0543e450d7bd5a18f4b0d988f03c0e2d6111f",
+      "checkpoint": [
+        "research/delta/checkpoints/DELTA_005D_001_RESULTS.json",
+        "a84d5858ba8e2c012f281f44b05e545d59b026de"
+      ],
+      "report": [
+        "research/delta/DELTA_005D_001_INITIAL_HOLD_REPORT.md",
+        "6f69519a43fd6dddd82cf08646d6d18eb9435ae0"
+      ],
+      "sheet_id": "1186BfUL6fr6imDBQ_7P2wwts7bioVfdHNrwxo449rdY",
+      "source_integrity": "UNRESOLVED_CHECKPOINT_SOURCE_IDENTITY"
+    },
+    "005E": {
+      "status": "COMPLETE_DISCOVERY_NOT_CANDIDATE",
+      "prereg": [
+        "research/delta/DELTA_005E_001_INITIAL_HOLD_FORENSIC_PREREGISTRATION.md",
+        "4625bba53ec9fcf88aa8dac389a380db650a0062"
+      ],
+      "manifest": [
+        "research/delta/artifacts/DELTA_005E_001_MANIFEST.json",
+        "eab854028b97f7c922b281bd35ae6054a45f3f9c"
+      ],
+      "source": [
+        "research/delta/experiments/DELTA_005E_INITIAL_HOLD_FORENSIC.py",
+        "43c6289bca6d21077a8795fe37ba157ec079487b"
+      ],
+      "checkpoint": [
+        "research/delta/checkpoints/DELTA_005E_001_RESULTS.json",
+        "4d49083f5ec47b18dfa25f0a725cf7d7f5d039ba"
+      ],
+      "report": [
+        "research/delta/DELTA_005E_001_FORENSIC_REPORT.md",
+        "520f57d12ef0dcd1423e5d3419ab3a3fdee32b77"
+      ],
+      "sheet_id": "1Ngbap0ordQVpEnrBdrxoatLXm9uAMexiJUUD8ZbL9lQ",
+      "source_integrity": "EXACT"
+    },
+    "005F": {
+      "status": "COMPLETE_NOT_PROMOTED",
+      "prereg": [
+        "research/delta/DELTA_005F_001_ACCEPTED_CONSOLIDATION_PREREGISTRATION.md",
+        "ad65835e938c795a7937dfc0e2eeab3d147eeed7"
+      ],
+      "manifest": [
+        "research/delta/artifacts/DELTA_005F_001_MANIFEST.json",
+        "e0ad0f380eedcbc827d3744044d8d21a1d1601ae"
+      ],
+      "source": [
+        "research/delta/experiments/DELTA_005F_ACCEPTED_CONSOLIDATION.py",
+        "701dfe9818cf120ce4bbad2e2d71a8e5cf18279c"
+      ],
+      "checkpoint": [
+        "research/delta/checkpoints/DELTA_005F_001_RESULTS.json",
+        "26cb228e40969ddd49c10ae04cb033c6e7b57fe9"
+      ],
+      "report": [
+        "research/delta/DELTA_005F_001_ACCEPTED_CONSOLIDATION_REPORT.md",
+        "da6bce7c6d4584c65686d81a8651c7cdab238ccb"
+      ],
+      "sheet_id": "1Cv_fiMOOr6Lmn1rmbjH8RP9DPZBoKNjj5zUSxoJLpLw",
+      "source_integrity": "EXACT"
+    },
+    "005G": {
+      "status": "COMPLETE_NOT_PROMOTED",
+      "prereg": [
+        "research/delta/DELTA_005G_001_DUAL_STATE_INITIAL_HOLD_PREREGISTRATION.md",
+        "9188e7360a8cdb6bc25e9e02a1db403f38797297"
+      ],
+      "manifest": [
+        "research/delta/artifacts/DELTA_005G_001_MANIFEST.json",
+        "4f2395c584f138470a1f04e62476ad0f64a8cbb6"
+      ],
+      "source_current": [
+        "research/delta/experiments/DELTA_005G_DUAL_STATE_INITIAL_HOLD.py",
+        "dfa99ecdadcbccd11f60e5391fd7719dabacaf47"
+      ],
+      "checkpoint_source_blob": "ab84f4f05699f38754adb93dc4b56ff1263f3061",
+      "checkpoint": [
+        "research/delta/checkpoints/DELTA_005G_001_RESULTS.json",
+        "d5914f420c9254a934ee5de5e69deabb33edabb6"
+      ],
+      "report": [
+        "research/delta/DELTA_005G_001_DUAL_STATE_INITIAL_HOLD_REPORT.md",
+        "b5d0e170a336dfff13b0bc5b169d529d181a58ea"
+      ],
+      "sheet_id": "12VclDyjItrZ_OjsnCefxGUBE1PV1IwzaDsvgmyjMyxY",
+      "source_integrity": "UNRESOLVED_CHECKPOINT_SOURCE_IDENTITY"
+    },
+    "005H": {
+      "status": "COMPLETE_RESEARCH_BREAKTHROUGH_NOT_PROMOTED",
+      "prereg": [
+        "research/delta/DELTA_005H_001_INITIAL_TRAILING_SHIELD_PREREGISTRATION.md",
+        "31fc6cca866735e4a8452783aa94ff3d6effe463"
+      ],
+      "manifest": [
+        "research/delta/artifacts/DELTA_005H_001_MANIFEST.json",
+        "579655520bc0fe0eab0fdfe5d9e02a15ab208a25"
+      ],
+      "source": [
+        "research/delta/experiments/DELTA_005H_INITIAL_TRAILING_SHIELD.py",
+        "914d861c7c65e878254b16939ef2be292c47a2df"
+      ],
+      "checkpoint": [
+        "research/delta/checkpoints/DELTA_005H_001_RESULTS.json",
+        "ed0c4e79c7687a8360d030f2d2c36e51a98ea083"
+      ],
+      "report": [
+        "research/delta/DELTA_005H_001_INITIAL_TRAILING_SHIELD_REPORT.md",
+        "286c1ef419823038f53725a5d8d45f9a83d54971"
+      ],
+      "sheet_id": "1SWEzgzBpfgYxMyc2LMKY68qEmxqND2z-iMrlPygEF-Y",
+      "source_integrity": "EXACT"
+    },
+    "005I": {
+      "status": "COMPLETE_NOT_PROMOTED",
+      "prereg": [
+        "research/delta/DELTA_005I_001_EARLY_BREATHING_TRAIL_DISTANCE_PREREGISTRATION.md",
+        "4da536e70e20fb53a2039b8d1f8a5b1ec812ecea"
+      ],
+      "manifest": [
+        "research/delta/artifacts/DELTA_005I_001_MANIFEST.json",
+        "6aea8526bd2c6358ce1550a333624046ea09d38a"
+      ],
+      "source_current": [
+        "research/delta/experiments/DELTA_005I_EARLY_BREATHING_TRAIL_DISTANCE.py",
+        "d22f2d479a543fb519751ce9f8b25c561e644f4d"
+      ],
+      "checkpoint_source_blob": "8f22b1ff287cfce3d745587e981ec77e839a60d0",
+      "recovered_result_source": [
+        "research/delta/recovered_sources/DELTA_005I_001_RESULT_SOURCE_8f22b1ff.py",
+        "a3e79ff084ad6e29c6fd017504941e019e9423bd"
+      ],
+      "checkpoint": [
+        "research/delta/checkpoints/DELTA_005I_001_RESULTS.json",
+        "c9b8eefd085e419efabc6b869bb3c75311935a34"
+      ],
+      "report": [
+        "research/delta/DELTA_005I_001_EARLY_BREATHING_TRAIL_DISTANCE_REPORT.md",
+        "65ef8e2a9b60d1e877edb3a74c878e77d12b7205"
+      ],
+      "report_recovery": true,
+      "sheet_id": "1Q0QvgdOX5Nx96YdnLeS9XaAosz7U_kBwx4hMXYdk2Ck",
+      "source_integrity": "RECOVERED_EXACT_RESULT_SOURCE"
+    },
+    "005J": {
+      "status": "COMPLETE_NOT_PROMOTED",
+      "prereg": [
+        "research/delta/DELTA_005J_001_STATE_CONDITIONED_INITIAL_PROTECTION_PREREGISTRATION.md",
+        "efa7e7a47a2428abebf9a9cbf3e9866a2167d3da"
+      ],
+      "manifest": [
+        "research/delta/artifacts/DELTA_005J_001_MANIFEST.json",
+        "716b48006411c094cac84769044559cce9ff6e87"
+      ],
+      "source_current": [
+        "research/delta/experiments/DELTA_005J_STATE_CONDITIONED_INITIAL_PROTECTION.py",
+        "670247572f550124cad292972debbe49b2fb3112"
+      ],
+      "checkpoint_source_blob": "7f35b4f568762e7a417c1d50bfe8bcf5e796b462",
+      "checkpoint": [
+        "research/delta/checkpoints/DELTA_005J_001_RESULTS.json",
+        "ead134ac85dbc25bdb8faa6eece1de4f9a04a95f"
+      ],
+      "canonical_report": [
+        "research/delta/DELTA_005J_001_STATE_CONDITIONED_INITIAL_PROTECTION_REPORT.md",
+        "35ce3fbbc5d8703ad2d3bc0cbcff467fcc8105c3"
+      ],
+      "superseded_conflicting_report": [
+        "research/delta/DELTA_005J_001_STATE_CONDITIONED_PROTECTION_REPORT.md",
+        "a6fb107204adc9f85b256841411844e8d4f87aed"
+      ],
+      "sheet_id": "1fP3FXWAiWEs_MSy9ScmMpQbGJFIc0ls1VnT1aoF98eE",
+      "source_integrity": "UNRESOLVED_CHECKPOINT_SOURCE_IDENTITY"
+    },
+    "005K": {
+      "status": "COMPLETE_NOT_PROMOTED",
+      "prereg": [
+        "research/delta/DELTA_005K_001_MFE_GATED_INITIAL_PROTECTION_PREREGISTRATION.md",
+        "6873df1e12f16a6e4e8ff641b0ac1dfe32f2597d"
+      ],
+      "manifest": [
+        "research/delta/artifacts/DELTA_005K_001_MANIFEST.json",
+        "1d23121031fe33d9b07c74b0fb7900ea5d736c37"
+      ],
+      "source_current": [
+        "research/delta/experiments/DELTA_005K_MFE_GATED_INITIAL_PROTECTION.py",
+        "79214c42231007b37c888f1445fb49d43dfa9646"
+      ],
+      "checkpoint_source_blob": "e252b3d22af6b6e259745d549d91f34f4d2c6f70",
+      "checkpoint": [
+        "research/delta/checkpoints/DELTA_005K_001_RESULTS.json",
+        "2d4b94d5d91d8411dcd5934223454f5f2c2b64e4"
+      ],
+      "report": [
+        "research/delta/DELTA_005K_001_MFE_GATED_INITIAL_PROTECTION_REPORT.md",
+        "85504f8f3532c676a22fb987ee2ceb0954862ac6"
+      ],
+      "sheet_id": "1GmA0TwTeWQibZqFpQOh1p7LoaIdRA3mEIbb-wK7qKB0",
+      "source_integrity": "UNRESOLVED_CHECKPOINT_SOURCE_IDENTITY"
+    },
+    "005L": {
+      "status": "COMPLETE_NOT_PROMOTED",
+      "prereg": [
+        "research/delta/DELTA_005L_001_MULTI_STAGE_INITIAL_PROTECTION_PREREGISTRATION.md",
+        "aa45f381801cd2a8926c85174f20120308842e3b"
+      ],
+      "manifest": [
+        "research/delta/artifacts/DELTA_005L_001_MANIFEST.json",
+        "d9334552fcfbba44076216691170b6b9b5195fc1"
+      ],
+      "source_current": [
+        "research/delta/experiments/DELTA_005L_MULTI_STAGE_INITIAL_PROTECTION.py",
+        "fa1abc46ad4131491203c71e064fd2f47c6e4e4a"
+      ],
+      "checkpoint_source_blob": "76c298de7acbfe83f11e6a17cd4a953fa3d6ee78",
+      "checkpoint": [
+        "research/delta/checkpoints/DELTA_005L_001_RESULTS.json",
+        "5cb59bb435c44fea06f97192c9f5f4815cee4282"
+      ],
+      "report": [
+        "research/delta/DELTA_005L_001_MULTI_STAGE_INITIAL_PROTECTION_REPORT.md",
+        "da75551e5965c2ad5c7a6bf836ea3fc8f5c1e5b8"
+      ],
+      "sheet_id": "1EgQDfNLrChF-ZzdG_Ou8MxsYG4nIWsvT1KBwM82xWl0",
+      "source_integrity": "UNRESOLVED_CHECKPOINT_SOURCE_IDENTITY"
+    },
+    "005M": {
+      "status": "COMPLETE_NOT_PROMOTED_POSTTEST_ANALYSIS_COMPLETE",
+      "prereg": [
+        "research/delta/DELTA_005M_001_TRAIL_STEP_FREQUENCY_PREREGISTRATION.md",
+        "ea96b9c195ad794f447fb1fb0e27eead529e070d"
+      ],
+      "manifest": [
+        "research/delta/artifacts/DELTA_005M_001_MANIFEST.json",
+        "82f591fe4f4b5e3f99aca541c85cda16a06bac32"
+      ],
+      "source": [
+        "research/delta/experiments/DELTA_005M_TRAIL_STEP_FREQUENCY.py",
+        "183efbfc21672b33cf58fc40494c17897f4e66b3"
+      ],
+      "checkpoint": [
+        "research/delta/checkpoints/DELTA_005M_001_RESULTS.json",
+        "5eeb1987e158307a249bea7e082007a42f34233f"
+      ],
+      "report": [
+        "research/delta/DELTA_005M_001_TRAIL_STEP_FREQUENCY_REPORT.md",
+        "b8ab8e213c6035e3462cff82903fcc3076cb0c59"
+      ],
+      "sheet_id": "1EcOfavsfFO2QxqHltv11e6fxO79XTh3k49ysD10qefo",
+      "sheet_recovery": true,
+      "source_integrity": "EXACT"
+    }
+  },
+  "integrity_findings": [
+    {
+      "severity": "HIGH",
+      "issue": "CURRENT_STATE top-level cursor is stale and points to DELTA_005I compute although research completed through DELTA_005M.",
+      "action": "Reconcile CURRENT_STATE before new research."
+    },
+    {
+      "severity": "MEDIUM",
+      "issue": "005D and 005G checkpoints reference non-resolving result-source blob SHAs that differ from current source files.",
+      "action": "Do not use these units as MT5 translation parents without deterministic rerun or source reconstruction."
+    },
+    {
+      "severity": "MEDIUM",
+      "issue": "005J/005K/005L checkpoints reference non-resolving result-source blob SHAs that differ from current source files.",
+      "action": "Treat results as research evidence only; rerun from a committed frozen source before promotion or MT5 translation."
+    },
+    {
+      "severity": "LOW",
+      "issue": "005I result source differed from current source but exact checkpoint source blob was retrievable and has been preserved under recovered_sources.",
+      "action": "Use recovered snapshot for any 005I reproduction."
+    },
+    {
+      "severity": "LOW",
+      "issue": "005J had two conflicting report files.",
+      "action": "Canonical report is STATE_CONDITIONED_INITIAL_PROTECTION_REPORT.md because it matches the canonical checkpoint; the other report is superseded/noncanonical."
+    },
+    {
+      "severity": "RESOLVED",
+      "issue": "005B preregistration/report and 005I report were missing after timeouts.",
+      "action": "Recovered from durable manifest/checkpoint/master ledger and explicitly marked recovered."
+    },
+    {
+      "severity": "RESOLVED",
+      "issue": "005M required post-test Sheet was missing.",
+      "action": "Recovered from surviving full result file and checkpoint; Sheet ID 1EcOfavsfFO2QxqHltv11e6fxO79XTh3k49ysD10qefo."
+    }
+  ],
+  "mt5_translation_safety": {
+    "approved_delta_ea": null,
+    "approved_mql5_builds": 0,
+    "owner_approval_required": true,
+    "mt5_translation_ready_required": true,
+    "currently_translation_ready": false,
+    "safe_exact_source_research_units": [
+      "005A",
+      "005B",
+      "005C",
+      "005E",
+      "005F",
+      "005H",
+      "005I_RECOVERED_SOURCE",
+      "005M"
+    ],
+    "unsafe_as_direct_translation_parent_until_rerun": [
+      "005D",
+      "005G",
+      "005J",
+      "005K",
+      "005L"
+    ],
+    "mandatory_future_translation_artifacts": [
+      "Frozen candidate/composite version and exact Python source SHA",
+      "Python-to-MQL5 tick/candle parity fixtures",
+      "Feature timing/right-edge contract",
+      "Session/DST contract",
+      "Specialist router/ownership contract",
+      "Execution/cost/stop/fill parity contract",
+      "Risk/maintenance layer contract",
+      "Jan-Jul frozen replay results",
+      "P50/P75/P90 and DUKAS_NATIVE sensitivity results",
+      "Human QA and explicit owner approval"
+    ]
+  },
+  "scientific_cursor": {
+    "last_complete_unit": "DELTA_005M_001_TRAIL_STEP_FREQUENCY",
+    "strongest_initial_hold_finding": "DELTA_005H_001_INITIAL_TRAILING_SHIELD",
+    "secondary_refinement": "DELTA_005M_001_TRAIL_STEP_FREQUENCY",
+    "current_interpretation": "R9 early trailing activation is a real Initial-Hold bottleneck. Trail step/frequency provides small additional persistence/churn improvement but sub-percent economics. No candidate is promoted; no primary metric is locked.",
+    "next_science_unit": "UNDEFINED_PENDING_NEW_CHAT_LEVERAGE_REVIEW",
+    "do_not_resume": "STALE_DELTA_005I_COMPUTE_CURSOR"
+  }
+}
