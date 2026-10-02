@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R020_EXACT_R019_C04_JAN_JUL_P75_PREREGISTERED",
+  "current_phase": "R020_C04_MONTHLY_VALIDATION_COMPLETE_FAILS_ROBUSTNESS",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "EXECUTE_R020_MONTH_07_CRASH_SAFE_JOB;_NO_THRESHOLD_RETUNING_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "R021_HARVEST_CAUSAL_DUAL_EVENT_FEATURES_AND_KEEP_VS_FLIP_COUNTERFACTUALS_JAN_JUL_P75;_NO_LIVE_RULE_CHANGES_UNTIL_NEW_PREREGISTRATION",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -480,7 +480,9 @@
     "r019_complete": true,
     "r019_c04_advances_to_monthly_validation": true,
     "r020_preregistered": true,
-    "r020_monthly_replay_started": true
+    "r020_monthly_replay_started": false,
+    "r020_complete": true,
+    "r020_c04_failed_monthly_robustness": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -1989,7 +1991,7 @@
       }
     },
     "r020": {
-      "status": "MONTHLY_REPLAY_IN_PROGRESS",
+      "status": "COMPLETE_FAIL_MONTHLY_ROBUSTNESS",
       "drive_doc_id": "1MsbSh1qX5CrzRgDfBi-77UtGXSYoygk2JwyEVSK8ugo",
       "drive_doc_url": "https://docs.google.com/document/d/1MsbSh1qX5CrzRgDfBi-77UtGXSYoygk2JwyEVSK8ugo/edit",
       "prereg_tab": "34 R020 Prereg",
@@ -2024,7 +2026,8 @@
         3,
         4,
         5,
-        6
+        6,
+        7
       ],
       "month_result_sha256": {
         "1": "aba8229e8b4af77acf2537d5f1621ed60dc1433c4bafc3e6f98446be42de7cd2",
@@ -2032,7 +2035,8 @@
         "3": "fe16df6ec0aab3820cf29f046985e7ca05536673e91ef07e3983c93f1f3b0644",
         "4": "75484a85f7930e3415d404e43cb664249d237b1bb80ac9df326603980e8c733b",
         "5": "71692321bcf2a5d95a68b361eda7aaee2454c6e1a4dd84de6137c66855b47a46",
-        "6": "f37244110d3580cc03f5a7d0764748493bc128414dc207c7428d18a701ed6336"
+        "6": "f37244110d3580cc03f5a7d0764748493bc128414dc207c7428d18a701ed6336",
+        "7": "fe737a8149afc05a95c1807b316c7dd3ce1bc89d84a123b4a4becc047993f1c5"
       },
       "monthly_checkpoint": {
         "1": {
@@ -2064,8 +2068,45 @@
           "incremental_net_vs_t06_usd": -18.6,
           "incremental_net_pct": -0.315836,
           "result": "WORSE"
+        },
+        "7": {
+          "incremental_net_vs_t06_usd": 5.4,
+          "incremental_net_pct": 0.088338,
+          "result": "SLIGHTLY_IMPROVES"
         }
-      }
+      },
+      "aggregate": {
+        "r9": {
+          "trades": 234417,
+          "wins": 103097,
+          "gross_loss": -78244.86,
+          "net_profit": -49001.79
+        },
+        "t06": {
+          "trades": 198029,
+          "wins": 87978,
+          "gross_loss": -65816.57,
+          "net_profit": -41531.29
+        },
+        "c04": {
+          "trades": 198023,
+          "wins": 87928,
+          "gross_loss": -65849.78,
+          "net_profit": -41565.03,
+          "selected_keep": 1524
+        },
+        "c04_vs_t06": {
+          "net_delta_usd": -33.74,
+          "incremental_net_pct": -0.08124,
+          "gross_loss_delta_usd": -33.21,
+          "incremental_gl_pct": -0.050458,
+          "positive_months": 3,
+          "negative_months": 4
+        }
+      },
+      "promoted": false,
+      "metric_lock": false,
+      "next": "R021_CAUSAL_DUAL_EVENT_DECOMPOSITION_JAN_JUL"
     }
   },
   "prebacktest_research": {
