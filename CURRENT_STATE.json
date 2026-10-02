@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "EXECUTE_R021_MONTH_07;_PERSIST;_THEN_MONTH_BLOCKED_RULE_MINING;_NO_LIVE_RULE_CHANGE",
+    "next_permitted_step": "R021_MONTH_BLOCKED_RULE_MINING_AND_INTERACTION_ANALYSIS;_NO_LIVE_RULE_CHANGE",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -2111,7 +2111,7 @@
       "next": "R021_CAUSAL_DUAL_EVENT_DECOMPOSITION_JAN_JUL"
     },
     "r021": {
-      "status": "HARVEST_IN_PROGRESS",
+      "status": "HARVEST_COMPLETE_ANALYSIS_PENDING",
       "drive_doc_id": "1hAWeJ0S1XR2RbpGEl5O1x-L_8pmIUOTJnBpxhjNT2tk",
       "drive_doc_url": "https://docs.google.com/document/d/1hAWeJ0S1XR2RbpGEl5O1x-L_8pmIUOTJnBpxhjNT2tk/edit",
       "harvest_tab": "36 R021 Dual Monthly Harvest",
@@ -2137,7 +2137,8 @@
         3,
         4,
         5,
-        6
+        6,
+        7
       ],
       "month_hashes": {
         "1": "b3b3840a898b51e122469051bf0817527d4a4fdc360c783b5d3bd2d162f57be9",
@@ -2145,7 +2146,8 @@
         "3": "ad4a621a828cd08591393270f04b3f86931587e89c30fd7ce2b3afd44ea2b664",
         "4": "452c7f077cb7b3ed88de72bd0a37428f19587afbe0b28f114113f8004e2dee3c",
         "5": "b7f3da07cb3e25b592ef210d40a0ed24a651c742dcc89b779301a775f6b26df1",
-        "6": "e041476afb69257f983960454f9642b8e9966069aba6d618835c6ee0e9840d0d"
+        "6": "e041476afb69257f983960454f9642b8e9966069aba6d618835c6ee0e9840d0d",
+        "7": "bc4f4be171bf6dbd49343f0a6c7b1fde91c08d05882ef07db75a23d3c775f2e8"
       },
       "month_summary": {
         "1": {
@@ -2195,6 +2197,14 @@
           "c04_selected": 216,
           "selected_keep_minus_flip_sum": -18.45,
           "selected_positive_pct": 42.5926
+        },
+        "7": {
+          "dual_events": 1314,
+          "nonextreme": 454,
+          "extreme": 860,
+          "c04_selected": 186,
+          "selected_keep_minus_flip_sum": 4.41,
+          "selected_positive_pct": 49.4624
         }
       }
     }
