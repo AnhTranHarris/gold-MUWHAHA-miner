@@ -108,3 +108,15 @@ The lab is broker-neutral but real-quote aware in v1. Coinexx/MT5 R9 execution p
 The calibrated adapter exactly reproduces all 7,699,274 R9 REAL logger events in January and exactly reconciles January MT5 accounting: 31,915 trades, 13,947 winners, $3,785.28 gross profit, -$10,436.90 gross loss, and -$6,651.62 net. A July 1 post-DST cross-check also has zero event mismatches.
 
 Frozen 0.01-lot economics: $1 P/L per $1 XAUUSD move, -$0.01 entry commission, -$0.01 exit commission, BUY Ask/Bid, SELL Bid/Ask, protective fills at the first executable quote after stop crossing. Native Dukascopy remains a separately labeled feed surface and is not rewritten to force Coinexx-like activity. Next unit: explicitly modeled Coinexx-like execution/quote-cost surface over the independent Dukascopy path. August remains sealed.
+
+## Verified Coinexx-like Dukascopy research surface
+
+`DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE` is VERIFIED_DURABLE. It preserves `DUKAS_NATIVE` unchanged and adds separately labeled Coinexx-like research surfaces over the independent Dukascopy midpoint path.
+
+Default: `DUKAS_COINEXX_LIKE_P75`. Sensitivities: `P50` and `P90`. The spread profiles are frozen from R9 REAL Coinexx January evidence only; SYNTH was not used for calibration.
+
+The P75 Jan-Jul R9 control produces 234,417 trades, 104,294 wins, $29,243.07 gross profit, -$78,244.86 gross loss, and -$49,001.79 net. Relative to R9 REAL, aggregate errors are -0.94% trades, +1.86% wins, -3.11% gross profit, -2.76% gross-loss magnitude, and -2.55% net-loss magnitude. All preregistered aggregate/monthly tolerances pass.
+
+Canonical files: `research/delta/lab/coinexx_like_surface.py`, `research/delta/reference/DELTA_004_COINEXX_SPREAD_PROFILES.json`, `research/delta/checkpoints/DELTA_004_SURFACE_QA.json`, and `research/delta/DELTA_004_COINEXX_LIKE_DUKASCOPY_REPORT.md`.
+
+The research environment is now ready for the first January candidate campaign. The exact first-2.5-week January end boundary must be frozen before candidate compute. August remains sealed.
