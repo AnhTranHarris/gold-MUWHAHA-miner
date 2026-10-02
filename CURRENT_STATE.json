@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "DIRECTION_HOLD_R015_CONFIDENCE_TIER_PREREGISTERED",
+  "current_phase": "DIRECTION_HOLD_R016_T06_LEADING_REFINEMENT_BRANCH_ATTRIBUTION_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "EXECUTE_R015_STAGE_A_P50_P75_P90_THEN_PERSIST_BEFORE_ANY_MONTHLY_VALIDATION",
+    "next_permitted_step": "R017_OWNERSHIP_BRANCH_ATTRIBUTION_MICRO_ONLY_H1_ONLY_DUAL;_PREREGISTER_ACTION_MATRIX_BEFORE_REPLAY;_NO_MQL5_NO_AUGUST",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -467,7 +467,11 @@
     "r010_still_not_promoted": true,
     "r014_confidence_tier_refinement_authorized": true,
     "r015_preregistered_before_results": true,
-    "r015_result_status": "NOT_EXECUTED"
+    "r015_result_status": "T06_SELECTED_AFTER_EXACT_JAN_JUL",
+    "r016_t06_leading_refinement": true,
+    "r016_t06_promoted": false,
+    "r016_t06_metric_lock": false,
+    "r017_branch_attribution_authorized": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -1083,7 +1087,7 @@
   "active_research_question": "R9_DIRECTION_PLUS_INITIAL_HOLD_SURVIVABILITY_AND_MULTI_ENTRY_SPECIALIST_ARCHITECTURE",
   "initial_research": {
     "id": "DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN",
-    "status": "R015_CONFIDENCE_TIER_PREREGISTERED_NOT_EXECUTED",
+    "status": "R016_T06_LEADING_REFINEMENT_NOT_PROMOTED",
     "report_path": "research/delta/research/DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN.md",
     "report_commit": "700fa3399c95ff07dad7c210fd34a5c6572543af",
     "active_candidate": null,
@@ -1738,7 +1742,7 @@
     "r015_prereg_path": "research/delta/research/DELTA_R015_CONFIDENCE_TIERED_OWNERSHIP_PREREG.md",
     "r015_prereg_commit": "c5845546c237b3f7d514b888dbe7edeb504222aa",
     "r015_confidence_tier": {
-      "status": "PREREGISTERED_NOT_EXECUTED",
+      "status": "STAGE_A_AND_EXACT_JAN_JUL_COMPLETE",
       "config_count": 24,
       "base_condition": "I250 <= -0.55 OR H1NetATR > 0.35",
       "h1_extreme_levels": [
@@ -1765,7 +1769,50 @@
       ],
       "min_trade_retention_pct": 80,
       "min_winner_retention_pct": 80,
-      "old_timed_out_tier_batch_ignored": true
+      "old_timed_out_tier_batch_ignored": true,
+      "selected": "R015-T06"
+    },
+    "r016_report_path": "research/delta/research/DELTA_R016_EXACT_CONFIDENCE_TIER_JAN_JUL.md",
+    "r016_report_commit": "cd29dcdb2cfbee04a9ec2041e5c65f6432d6759f",
+    "r016_drive_doc_id": "1VwR1ZhUjuJMM3HhmmCDJvIHTWdhxJ0YaCyPzfXN4a_M",
+    "r016_drive_doc_url": "https://docs.google.com/document/d/1VwR1ZhUjuJMM3HhmmCDJvIHTWdhxJ0YaCyPzfXN4a_M/edit",
+    "r016_confidence_tier_validation": {
+      "status": "COMPLETE_LEADING_REFINEMENT_NOT_PROMOTED",
+      "selected": "R015-T06",
+      "rule": "base R010 flip; if H1NetATR>0.70 AND I250<=-0.90 then skip current M1",
+      "aggregate": {
+        "trades": 198029,
+        "wins": 87978,
+        "gross_profit_usd": 24285.28,
+        "gross_loss_usd": -65816.57,
+        "net_profit_usd": -41531.29,
+        "net_loss_improvement_pct": 15.2454,
+        "gross_loss_improvement_pct": 15.8838,
+        "trade_retention_pct": 84.4772,
+        "winner_retention_pct": 85.3352
+      },
+      "monthly_net_improvement_pct": {
+        "JAN": 17.5041,
+        "FEB": 14.2085,
+        "MAR": 14.7428,
+        "APR": 11.8137,
+        "MAY": 18.7016,
+        "JUN": 16.5555,
+        "JUL": 12.8851
+      },
+      "frontier": {
+        "T10": {
+          "net_loss_improvement_pct": 14.6006,
+          "trade_retention_pct": 85.3052,
+          "winner_retention_pct": 86.2819
+        },
+        "T18": {
+          "net_loss_improvement_pct": 14.0551,
+          "trade_retention_pct": 85.8398,
+          "winner_retention_pct": 86.8493
+        }
+      },
+      "result_sha256": "b86187a3039fc01c3b9cf46bb15b00b233269ca0be068192c16edf1116343e8e"
     }
   },
   "prebacktest_research": {
