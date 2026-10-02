@@ -52,3 +52,16 @@ https://docs.google.com/document/d/1MsbSh1qX5CrzRgDfBi-77UtGXSYoygk2JwyEVSK8ugo/
 Workbook:
 - 34 R020 Prereg
 - 35 R020 Monthly Results
+
+## Execution QC correction before accepted results
+
+The initial preregistered script reproduced January R9/T06 trades and PnL exactly but used the Stage-A raw-positive winner counter rather than the canonical R016 post-exit-commission winner definition.
+
+Only winner accounting was corrected. No trade path, entry, exit, ownership, selector, threshold, or action logic changed.
+
+Accepted execution script SHA-256:
+
+`f28b4235082201cd6a965e896ce78a2ca5268685cf555de654ca9bbee289c219`
+
+The original prereg script hash remains preserved in the Drive document for provenance.
+
