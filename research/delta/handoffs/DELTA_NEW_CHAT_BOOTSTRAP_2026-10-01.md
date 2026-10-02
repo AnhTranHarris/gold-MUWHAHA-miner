@@ -1,3 +1,7 @@
+> **SUPERSEDED FOR ACTIVE CURSOR — 2026-10-02**  
+> Use `research/delta/handoffs/DELTA_FULL_HANDOFF_2026-10-02.md` and `DELTA_ARTIFACT_AUDIT_2026-10-02.json` for the current post-005M state. This 2026-10-01 document remains historical bootstrap background only.  
+> Google full handoff: https://docs.google.com/document/d/1vVXHeqOEGJ1is9qy3RazVJm09qO3HecA2aoINFL4E9w/edit?usp=drivesdk
+
 # DELTA New-Chat Bootstrap — Fresh R9-Based Research Lineage
 
 **Created:** 2026-10-01  
