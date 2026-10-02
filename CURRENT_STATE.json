@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R023_R022_KEEP_SURVIVORS_MONTHLY_VALIDATION_PREREGISTERED",
+  "current_phase": "R023_MONTHLY_VALIDATION_IN_PROGRESS",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "EXECUTE_R023_MONTHS_1_TO_7_CRASH_SAFE;_NO_RETUNING_NO_RULE_MERGE_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "RESUME_R023_AT_MONTH_3_THROUGH_7;_NO_RETUNING_NO_RULE_MERGE_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -492,7 +492,7 @@
       "R022-C-KEEP"
     ],
     "r023_preregistered_before_results": true,
-    "r023_monthly_replay_started": false
+    "r023_monthly_replay_started": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -2259,7 +2259,7 @@
       "metric_lock": false
     },
     "r023": {
-      "status": "PREREGISTERED_NOT_EXECUTED",
+      "status": "IN_PROGRESS",
       "parent": [
         "R022-B-KEEP",
         "R022-C-KEEP",
@@ -2296,7 +2296,25 @@
       "threshold_retuning": false,
       "rule_merge": false,
       "august_2026": "SEALED",
-      "mql5_authorized": false
+      "mql5_authorized": false,
+      "completed_months": [
+        1,
+        2
+      ],
+      "month_result_sha256": {
+        "1": "0aff91a0930c71fd19c0df35a61a141f79d2ee6fcf583828a6859b5c6dc685b7",
+        "2": "f7dd5687c67731c883d092dfd36464be8f401d4b75d5e2cf4d5f25b39150e984"
+      },
+      "month_checkpoint": {
+        "1": {
+          "B_KEEP_net_delta_vs_T06": 2.19,
+          "C_KEEP_net_delta_vs_T06": 1.02
+        },
+        "2": {
+          "B_KEEP_net_delta_vs_T06": 4.23,
+          "C_KEEP_net_delta_vs_T06": 0.47
+        }
+      }
     }
   },
   "prebacktest_research": {
