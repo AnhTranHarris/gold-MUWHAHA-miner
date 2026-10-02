@@ -1,0 +1,62 @@
+{
+  "schema": "delta-005h-001-result-summary-v1",
+  "status": "COMPLETE_RESEARCH_BREAKTHROUGH_NOT_PROMOTED",
+  "historical_simulation_only": true,
+  "focus": "ENTRY_PLUS_INITIAL_HOLD",
+  "source_blob": "914d861c7c65e878254b16939ef2be292c47a2df",
+  "window": {
+    "start_ms_utc": 1767225600000,
+    "end_ms_utc_exclusive": 1768737600000
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "ticks": 4205709,
+  "variants_tested": 20,
+  "runtime_seconds": 8.423227103,
+  "parent_control": {
+    "shield_ms": 0,
+    "trail_activation_price": 0.1,
+    "trades": 16801,
+    "wins": 7351,
+    "gross_profit": 1574.77,
+    "gross_loss": -5343.02,
+    "net_profit": -3768.25,
+    "max_balance_drawdown": 3769.83,
+    "average_hold_seconds": 6.712,
+    "survival_5s_pct": 42.7177,
+    "survival_10s_pct": 21.713,
+    "survival_15s_pct": 12.4338
+  },
+  "high_leverage_cell": {
+    "shield_ms": 0,
+    "trail_activation_price": 0.3,
+    "trades": 16578,
+    "wins": 6131,
+    "gross_profit": 2377.8,
+    "gross_loss": -6050.23,
+    "net_profit": -3672.43,
+    "max_balance_drawdown": 3673.59,
+    "average_hold_seconds": 9.027,
+    "hard_stop_exits": 9579,
+    "trail_stop_exits": 5799,
+    "winner_retention_pct": 83.4036,
+    "net_loss_improvement_pct": 2.5428,
+    "gross_loss_improvement_pct": -13.2361,
+    "drawdown_improvement_pct": 2.5529,
+    "survival_5s_delta_pp": 11.0101,
+    "survival_10s_delta_pp": 10.6854,
+    "survival_15s_delta_pp": 8.5036
+  },
+  "matrix_finding": {
+    "activation_axis": "HIGH_LEVERAGE_MONOTONIC_PERSISTENCE_GAIN",
+    "shield_duration_axis": "HIGH_LEVERAGE_BUT_OVERPOWERED_AT_5S_10S",
+    "gross_profit": "INCREASES_AS_EARLY_TRAILING_LOOSENS",
+    "gross_loss": "WORSENS_AS_EARLY_TRAILING_LOOSENS",
+    "interpretation": "EARLY_FIXED_TRAILING_IS_A_REAL_INITIAL_HOLD_BOTTLENECK; FROZEN_DOWNSTREAM_LIFECYCLE_FAILS_TO_HARVEST_LONGER_LIVED_TRADES"
+  },
+  "next_change_class": "INITIAL_HOLD_PROTECTIVE_MECHANIC_REFINEMENT",
+  "next_unit": "DELTA_005I_EARLY_BREATHING_TRAIL_DISTANCE",
+  "temporary_sheet_id": "1SWEzgzBpfgYxMyc2LMKY68qEmxqND2z-iMrlPygEF-Y",
+  "temporary_sheet_url": "https://docs.google.com/spreadsheets/d/1SWEzgzBpfgYxMyc2LMKY68qEmxqND2z-iMrlPygEF-Y/edit?usp=drivesdk",
+  "master_doc_id": "1T9MPuuMsxB5gv7Zz8nvzFmaQy00_7Q-7X_4F2qrcR6k",
+  "august_accessed": false
+}
