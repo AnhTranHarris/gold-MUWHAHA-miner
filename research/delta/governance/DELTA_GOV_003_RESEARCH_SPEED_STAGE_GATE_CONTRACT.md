@@ -19,9 +19,21 @@ The January filter exists to reject weak ideas cheaply and to permit bounded ref
 
 Every new strategy, specialist, idea, system, concept, feature family, state model, execution rule, or combination begins on the owner's **first 2.5 weeks of January** filter window.
 
-The exact tick boundary for this filter window must be frozen in the candidate/unit manifest before the first compute run. Until the owner supplies the final acceptance requirements and goals, DELTA records the interval as:
+The exact boundary is frozen by `research/delta/governance/DELTA_GOV_012_EXACT_JANUARY_STAGE_A_FILTER_WINDOW.md`.
 
-`JAN_FILTER_FIRST_2P5_WEEKS — EXACT_END_BOUNDARY_PENDING_OWNER_GOALS`
+Stage-A scoring interval:
+
+`[2026-01-01T00:00:00.000Z, 2026-01-18T12:00:00.000Z)`
+
+Machine form:
+- start = `1767225600000` ms UTC;
+- end exclusive = `1768737600000` ms UTC.
+
+This is exactly 17.5 calendar days and is intentionally not adjusted to trading-day count, outcome, volatility, or convenience.
+
+January is a cold start because December 2025 is outside the registered corpus.
+
+Any position still open at the last eligible tick before the exclusive boundary is force-closed using the executable side (long at Bid, short at Ask). No post-window tick may affect Stage-A scoring.
 
 No unit may silently choose a different January screening interval.
 
