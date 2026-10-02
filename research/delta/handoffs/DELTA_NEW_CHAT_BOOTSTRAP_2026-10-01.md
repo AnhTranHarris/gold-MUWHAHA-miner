@@ -178,6 +178,25 @@ Headline SYNTH reference:
 
 The ledger reconciles exactly to the MT5 report for closed-trade net profit and balance drawdown. No visible day/week profit cap, loss kill-switch, or balance-based lot scaling is present in the tester inputs/realized SYNTH ledger; treat that as observed behavior, not a claim about hidden source-code rules.
 
+## R9 REAL evidence loaded — fast reference available
+
+Canonical compact lookup:
+`research/delta/reference/R9_REAL_PERFORMANCE_FAST_REFERENCE.json`
+
+Authoritative Jan-Jul REAL baseline:
+- winning trades: 102,385;
+- total trades: 236,647;
+- net profit: -$50,285.28;
+- gross loss: -$80,465.51;
+- balance maximum drawdown: $50,285.30;
+- equity maximum drawdown: $50,285.50;
+- 149/149 trading days negative;
+- 31/31 ISO weeks negative.
+
+REAL actually executes 17,305 more trades than SYNTH (+7.8895%), so opportunity volume is not the primary deficiency. The central gap is conversion/quality/persistence/harvest: REAL has 88,751 fewer winning trades, a $359,408.13 net-profit gap, $64,226.85 excess gross loss, and much shorter average holds (5s vs 16s).
+
+Use the REAL and SYNTH compact references as the baseline/goal pair before reopening the large raw evidence.
+
 ## Research objective
 
 Rebuild a high-activity causal Entry+Hold architecture around the R9 evidence base while preserving real chronology, causal execution, and trade velocity.
