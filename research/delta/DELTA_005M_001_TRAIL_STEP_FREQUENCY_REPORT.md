@@ -61,3 +61,11 @@ Do not spend another cycle fine-tuning sub-intervals or intermediate step values
 Preserve 005H as the principal Initial-Hold breakthrough and retain a moderate ratchet-frequency option for later recombination.
 
 Holding-Trade + Exit + High-Profit remains deferred.
+
+## Recovered temporary analysis Sheet
+
+Recovered 2026-10-02 after chat interruption from the surviving full 20-cell local result and the durable checkpoint:
+
+https://docs.google.com/spreadsheets/d/1EcOfavsfFO2QxqHltv11e6fxO79XTh3k49ysD10qefo/edit?usp=drivesdk
+
+The Sheet contains the full 20-cell result table plus 2D net/risk, survival, and trail-churn matrices. No scientific values were changed during recovery.
