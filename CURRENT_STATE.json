@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "EXECUTE_R021_MONTHLY_DUAL_HARVEST_JAN_TO_JUL;_THEN_MONTH_BLOCKED_RULE_MINING;_NO_LIVE_RULE_CHANGE_WITHOUT_NEW_PREREG",
+    "next_permitted_step": "EXECUTE_R021_MONTHS_02_TO_07;_PERSIST_EACH_MONTH;_NO_LIVE_RULE_CHANGE",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -484,7 +484,7 @@
     "r020_complete": true,
     "r020_c04_failed_monthly_robustness": true,
     "r021_preregistered": true,
-    "r021_harvest_started": false
+    "r021_harvest_started": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -2111,7 +2111,7 @@
       "next": "R021_CAUSAL_DUAL_EVENT_DECOMPOSITION_JAN_JUL"
     },
     "r021": {
-      "status": "PREREGISTERED_NOT_EXECUTED",
+      "status": "HARVEST_IN_PROGRESS",
       "drive_doc_id": "1hAWeJ0S1XR2RbpGEl5O1x-L_8pmIUOTJnBpxhjNT2tk",
       "drive_doc_url": "https://docs.google.com/document/d/1hAWeJ0S1XR2RbpGEl5O1x-L_8pmIUOTJnBpxhjNT2tk/edit",
       "harvest_tab": "36 R021 Dual Monthly Harvest",
@@ -2130,7 +2130,23 @@
       "script_sha256": "e53f7edd26dedb88092bdcffaf92a2d41676e2d2788500593324b723b4da6cdf",
       "live_rule_changes_authorized": false,
       "august_2026": "SEALED",
-      "mql5_authorized": false
+      "mql5_authorized": false,
+      "completed_months": [
+        1
+      ],
+      "month_hashes": {
+        "1": "b3b3840a898b51e122469051bf0817527d4a4fdc360c783b5d3bd2d162f57be9"
+      },
+      "month_summary": {
+        "1": {
+          "dual_events": 1545,
+          "nonextreme": 672,
+          "extreme": 873,
+          "c04_selected": 326,
+          "selected_keep_minus_flip_sum": 22.03,
+          "selected_positive_pct": 53.3742
+        }
+      }
     }
   },
   "prebacktest_research": {
