@@ -1,0 +1,30 @@
+{
+  "schema": "delta-001-r9-defaults-v1",
+  "source": "research/delta/reference/R9_MT5_EA_FUNCTIONAL_FAST_REFERENCE.json",
+  "lot": 0.01,
+  "gap_hunter_pips": 30,
+  "stop_hunter_pips": 30,
+  "trail_hunter_pips": 3,
+  "trail_activation_hunter_pips": 10,
+  "max_hold_seconds": 30,
+  "max_same_minute_rearms": 3,
+  "velocity_lookback_sec": 10,
+  "min_velocity_hunter_pips": 15,
+  "min_directional_efficiency": 0.7,
+  "range_lookback_sec": 10,
+  "min_range_hunter_pips": 50,
+  "max_turns": 9,
+  "atr_timeframe": "M5",
+  "atr_period": 14,
+  "max_spread_points": 25,
+  "fail_closed_on_no_atr": true,
+  "atr_minimum": {
+    "london": 2,
+    "overlap": 1.75,
+    "new_york": 1.75,
+    "off_session": 2.5
+  },
+  "hunter_pip_price": 0.01,
+  "deviation_points": 20,
+  "magic": 5559
+}
