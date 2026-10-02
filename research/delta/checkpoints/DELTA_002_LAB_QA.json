@@ -1,0 +1,131 @@
+{
+  "schema": "delta-002-lab-qa-v1",
+  "status": "PASS",
+  "lab_version": "delta-dukas-lab-v1",
+  "source_code_blobs": {
+    "dukas_tick_lab.py": "75a7b3c56236aaaaa6ea82c6c6b8741d971b5b06",
+    "run_candidate_month.py": "cf4675d3679823b0a513f9006e350b53cb433840",
+    "candidate_template.py": "fce41053e079a325af4e0f1800e773f25e6da86e",
+    "DELTA_002_DUKASCOPY_TICK_LAB_QA.py": "449a55f2f97cf8bad3cbf1a2bac45efce1b7b8b1",
+    "DUKASCOPY_TICK_LAB_SOURCE_CATALOG.json": "bc6349313a7713d97b41def57ee0e4655f413c1d"
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "numba": "0.65.1"
+  },
+  "aggregate": {
+    "months": 7,
+    "ticks": 57527562,
+    "core_cache_bytes": 920443680,
+    "validated_250ms_bars": 28697391,
+    "validated_1s_bars": 10696540,
+    "all_months_pass": true,
+    "august_accessed": false
+  },
+  "months": {
+    "1": {
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "ticks": 9135062,
+      "compile_seconds": 4.192459408000104,
+      "core_cache_bytes": 146161376,
+      "bars_250ms": 4292059,
+      "bars_1s": 1526214,
+      "pass": true
+    },
+    "2": {
+      "sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+      "ticks": 7538339,
+      "compile_seconds": 3.3967550040006245,
+      "core_cache_bytes": 120613808,
+      "bars_250ms": 3587940,
+      "bars_1s": 1360472,
+      "pass": true
+    },
+    "3": {
+      "sha256": "814ba35e72f219a58badd806ed5c0f30ef0fb4ffe56a48205d873706513bd177",
+      "ticks": 9433179,
+      "compile_seconds": 4.307514576000358,
+      "core_cache_bytes": 150931248,
+      "bars_250ms": 4524761,
+      "bars_1s": 1612599,
+      "pass": true
+    },
+    "4": {
+      "sha256": "30375098f62aed6cabc32ec6b67c57c20baec9b6d9be1ce0a204e09806c1ec0f",
+      "ticks": 7470570,
+      "compile_seconds": 3.2766140940002515,
+      "core_cache_bytes": 119529504,
+      "bars_250ms": 3897851,
+      "bars_1s": 1493754,
+      "pass": true
+    },
+    "5": {
+      "sha256": "3a50e0f1eba3076154238290ec02842cf3744ab192e5c9a2acc1cc07367c6a0d",
+      "ticks": 8333165,
+      "compile_seconds": 3.222454650000145,
+      "core_cache_bytes": 133331024,
+      "bars_250ms": 4094677,
+      "bars_1s": 1517044,
+      "pass": true
+    },
+    "6": {
+      "sha256": "34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2",
+      "ticks": 8201406,
+      "compile_seconds": 3.6492097330001343,
+      "core_cache_bytes": 131222880,
+      "bars_250ms": 4206410,
+      "bars_1s": 1593269,
+      "pass": true
+    },
+    "7": {
+      "sha256": "e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7",
+      "ticks": 7415841,
+      "compile_seconds": 2.9438831150000624,
+      "core_cache_bytes": 118653840,
+      "bars_250ms": 4093693,
+      "bars_1s": 1593188,
+      "pass": true
+    }
+  },
+  "invariant_checks": {
+    "source_hash_and_size": true,
+    "row_count": true,
+    "timestamps_monotonic_non_decreasing": true,
+    "ask_ge_bid": true,
+    "source_order_preserved": true,
+    "right_edge_boundary_fixture": true,
+    "same_timestamp_order_fixture": true,
+    "buy_at_ask_exit_at_bid": true,
+    "sell_at_bid_exit_at_ask": true,
+    "monthly_250ms_counts_match_drive": true,
+    "monthly_1s_counts_match_drive": true
+  },
+  "january_hot_loop_million_ticks_per_sec": {
+    "runs": [
+      432.1136961609196,
+      848.8147198420771,
+      471.06975788347694,
+      475.60481449682544,
+      863.1134914713251
+    ],
+    "min": 432.1136961609196,
+    "median": 475.60481449682544,
+    "max": 863.1134914713251,
+    "interpretation": "Warmed Numba no-op memmap scan only; not end-to-end strategy throughput."
+  },
+  "candidate_runner_smoke": {
+    "status": "LOCAL_COMPLETE",
+    "job_id": "DELTA_LAB_SMOKE__v001__2026_01",
+    "ticks": 9135062,
+    "runtime_seconds": 0.2591612570004145,
+    "result": "No-op template returned all required metric fields and atomic checkpoint."
+  },
+  "coinexx_mt5_parity": "NOT_CLAIMED_DELTA_002_NEXT_CALIBRATION",
+  "notes": [
+    "Raw tick arrays remain execution truth; bar caches are causal derived state only.",
+    "No strategy optimization or candidate economic result is accepted in DELTA_002.",
+    "August was not accessed."
+  ]
+}
