@@ -212,6 +212,29 @@ The inspected R9 source contains no multi-specialist router, news calendar, dail
 
 Do not reopen Gamma or another prior internal lineage unless the owner explicitly authorizes another exception.
 
+## DELTA_002 Dukascopy tick lab — VERIFIED_DURABLE
+
+Canonical runtime:
+- `research/delta/lab/dukas_tick_lab.py`
+- `research/delta/lab/run_candidate_month.py`
+- `research/delta/lab/candidate_template.py`
+- `research/delta/qa/DELTA_002_DUKASCOPY_TICK_LAB_QA.py`
+- `research/delta/checkpoints/DELTA_002_LAB_QA.json`
+- `research/delta/DELTA_002_DUKASCOPY_TICK_LAB_REPORT.md`
+
+Verified Jan-Jul surface:
+- 57,527,562 exact ordered Dukascopy ticks;
+- 920,443,680-byte core memmap cache at 16 bytes/tick;
+- 28,697,391 independently matched 250ms bars;
+- 10,696,540 independently matched 1s bars;
+- all seven monthly source hashes/rows/order/Ask-Bid/right-edge/execution-side checks PASS;
+- month-isolated candidate jobs with atomic completion checkpoints;
+- August not accessed.
+
+The raw Bid/Ask tick stream is execution truth. Derived candle caches are causal state only. The current broker layer preserves native spread and executable quote sides, with configurable commission/slippage/latency/contract size, but it does **not** yet claim Coinexx MT5 parity.
+
+Next phase: a separately preregistered Coinexx/R9 parity calibration covering symbol properties, costs, stop/freeze/fill/deviation behavior, margin/stop-out, and R9 OnTick/order-lifecycle ordering. August remains sealed.
+
 ## Research objective
 
 Rebuild a high-activity causal Entry+Hold architecture around the R9 evidence base while preserving real chronology, causal execution, and trade velocity.
