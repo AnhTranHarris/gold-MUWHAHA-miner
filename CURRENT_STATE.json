@@ -398,12 +398,12 @@
     "direction_hold_research_may_consider_entry_engine_replacement": true,
     "direction_hold_research_may_consider_multiple_entry_specialists": true,
     "direction_hold_trade_volume_preservation_required": true,
-    "direction_hold_research_result_status": "PREBACKTEST_SHORTLIST_AND_CAUSAL_VOCABULARY_ONLY",
+    "direction_hold_research_result_status": "STAGE_A_SPEEDRUN_COMPLETE_REFINEMENT_TRIAGE",
     "qualitative_candidate_harvest_allowed": true,
     "qualitative_viability_labels_are_not_performance_evidence": true,
     "r001_workbook_performance_fields_must_remain_blank_until_replay": true,
     "gov014_research_harvesting_started": true,
-    "gov014_strategy_testing_started": false,
+    "gov014_strategy_testing_started": true,
     "pretest_candidate_shortlist_exists": true,
     "pretest_viability_is_not_performance_validation": true,
     "tick_backtest_queue_must_remain_unpopulated_until_preregistration": true,
@@ -416,8 +416,8 @@
     "prebacktest_shortlist_document_created": true,
     "direction_hold_causal_feature_grammar_documented": true,
     "direction_hold_numeric_thresholds_frozen": false,
-    "direction_hold_stage_a_preregistered": false,
-    "direction_hold_tick_testing_started": false,
+    "direction_hold_stage_a_preregistered": true,
+    "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
     "next_permitted_step": "R007_DH06_ACTIVE_MODIFIER_REFINEMENT_DESIGN_AND_REPLAY;_DH02_DH03_CONDITIONAL_SPECIALIST_RESTRUCTURE_QUEUED;_DH04_DH05_REQUIRE_PREREGISTRATION",
@@ -438,7 +438,14 @@
     "dh02_dh03_global_replacement_not_supported_by_stage_a": true,
     "dh04_dh05_not_tested_must_not_be_labeled_failed": true,
     "dh07_current_adapter_local_tuning_stopped": true,
-    "no_primary_metric_lock_created_by_r006": true
+    "no_primary_metric_lock_created_by_r006": true,
+    "r006_state_reconciliation_complete": true,
+    "r006_all_78_stage_a_jobs_complete": true,
+    "r006_result_artifact_hashes_reverified": true,
+    "r006_unresolved_test_families": [
+      "DH-04",
+      "DH-05"
+    ]
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -1078,8 +1085,8 @@
     "shortlist_doc_id": "1E-c8RQylJEdQJsdAxmfN6HKfYl2hDq1vZ32ErqW7idQ",
     "shortlist_doc_url": "https://docs.google.com/document/d/1E-c8RQylJEdQJsdAxmfN6HKfYl2hDq1vZ32ErqW7idQ/edit",
     "qualitative_workbook_harvest_status": "COMPLETE_REFINED_PREBACKTEST",
-    "performance_harvest_status": "NOT_STARTED_NO_TESTING",
-    "spreadsheet_harvesting_phase": "QUALITATIVE_PREBACKTEST_ONLY",
+    "performance_harvest_status": "STAGE_A_SPEEDRUN_COMPLETE",
+    "spreadsheet_harvesting_phase": "STAGE_A_EMPIRICAL_TRIAGE_COMPLETE",
     "stage_a_preregistration_started": true,
     "heavy_synthesis_status": "DORMANT_NOT_ACTIVATED",
     "testing_authorized": true,
@@ -1098,7 +1105,7 @@
       "DH-07_SPECIALIST_AWARE_INITIAL_HOLD_STATE_MACHINE"
     ],
     "deferred_orchestrator": "DH-08_CONTEXT_ROUTER_SPECIALIST_OWNERSHIP",
-    "spreadsheet_harvesting_mode": "RESEARCH_ONLY_NO_EMPIRICAL_TICK_DATA",
+    "spreadsheet_harvesting_mode": "STAGE_A_EMPIRICAL_REPLAY_AND_OBSERVER_ANALYSIS",
     "stage_a_preregistered": true,
     "r003_report_path": "research/delta/research/DELTA_R003_DIRECTION_HOLD_CAUSAL_GRAMMAR_WHITEPAPERS.md",
     "r003_report_commit": "1dec6e0da183f4cdb2d8dbb5d510519a610b4813",
@@ -1113,7 +1120,7 @@
         "url": "https://docs.google.com/document/d/1WrDPUavWb-bbv7gmxnnlEAFjT1NA9wYbPAwl-ayREAw/edit",
         "grammar": "FROZEN_V0",
         "thresholds": "PENDING",
-        "testing": "NOT_STARTED"
+        "testing": "STAGE_A_OBSERVER_COMPLETE"
       },
       "DH-02": {
         "role": "ENTRY_SPECIALIST",
@@ -1122,7 +1129,7 @@
         "url": "https://docs.google.com/document/d/18KpLADXCt-MlIQgZ4j6papHdE7SUtrl8kVTbn0x1XNc/edit",
         "grammar": "FROZEN_V0",
         "thresholds": "PENDING",
-        "testing": "NOT_STARTED"
+        "testing": "STAGE_A_RAW_TICK_REPLAY_COMPLETE"
       },
       "DH-03": {
         "role": "ENTRY_SPECIALIST",
@@ -1131,7 +1138,7 @@
         "url": "https://docs.google.com/document/d/13pa0KSxVy93yajDEGAIkeY4V8Z3egMDIPxPV0nM3ia8/edit",
         "grammar": "FROZEN_V0",
         "thresholds": "PENDING",
-        "testing": "NOT_STARTED"
+        "testing": "STAGE_A_RAW_TICK_REPLAY_COMPLETE"
       },
       "DH-04": {
         "role": "ENTRY_SPECIALIST",
@@ -1158,7 +1165,7 @@
         "url": "https://docs.google.com/document/d/1MAkyDsu1TK7VC8Rlx4ahlIxznPFEJKy_uX4k31heIhc/edit",
         "grammar": "FROZEN_V0",
         "thresholds": "PENDING",
-        "testing": "NOT_STARTED"
+        "testing": "STAGE_A_OBSERVER_COMPLETE"
       },
       "DH-07": {
         "role": "SHARED_INITIAL_HOLD_STATE_MACHINE",
@@ -1167,7 +1174,7 @@
         "url": "https://docs.google.com/document/d/1CyZ-WBMpBCfQfz_dnfbOAfCktDgbC7uPlW-72NGM7ww/edit",
         "grammar": "FROZEN_V0",
         "thresholds": "PENDING",
-        "testing": "NOT_STARTED"
+        "testing": "STAGE_A_OBSERVER_COMPLETE"
       }
     },
     "timeframe_roles_v0": {
@@ -1215,7 +1222,7 @@
     "r004_drive_doc_id": "1Yc3urBpxDfgvk4O1pyHCclaQTfgdJbQox6o7t2OrdVs",
     "r004_drive_doc_url": "https://docs.google.com/document/d/1Yc3urBpxDfgvk4O1pyHCclaQTfgdJbQox6o7t2OrdVs/edit",
     "preregistration_design": {
-      "status": "DOCUMENTED_NO_TESTING",
+      "status": "EXECUTED_STAGE_A_COMPLETE",
       "strategy": "BOUNDED_ARCHITECTURE_BROAD_MULTIVARIATE_BASKETS",
       "one_variable_at_a_time_default": false,
       "exhaustive_cartesian_default": false,
@@ -1228,8 +1235,8 @@
         "FRACTIONAL_FACTORIAL_WHERE_APPROPRIATE"
       ],
       "interaction_followup": "FOCUSED_HIGHER_RESOLUTION_AFTER_EVIDENCE",
-      "exact_sample_vectors_generated": false,
-      "stage_a_run_sheet_generated": false,
+      "exact_sample_vectors_generated": true,
+      "stage_a_run_sheet_generated": true,
       "workbook_tabs": [
         "12 Prereg Baskets",
         "13 Bounded Variants",
@@ -1265,7 +1272,7 @@
     "r005_drive_doc_url": "https://docs.google.com/document/d/14uay-Q_xvHakpIoMZKiqds67B3HetoVDlfNa5dM5umU/edit",
     "immutable_vector_library": {
       "version": "R005-v1",
-      "status": "FROZEN_NOT_EXECUTED",
+      "status": "FROZEN_AND_STAGE_A_EXECUTED",
       "vector_count": 76,
       "library_sha256": "9dfcdcd83bae9452291b2b249d41ac4f19751e23f1ff91ae6e1d581707528b52",
       "families": {
@@ -1323,7 +1330,7 @@
       }
     },
     "stage_a_run_sheet": {
-      "status": "FROZEN_NOT_EXECUTED",
+      "status": "COMPLETE_STAGE_A_SPEEDRUN",
       "job_count": 78,
       "control_jobs": 2,
       "vector_jobs": 76,
@@ -1331,10 +1338,12 @@
       "start": "2026-01-01T00:00:00Z",
       "end_exclusive": "2026-01-18T12:00:00Z",
       "surface": "DELTA_004_P75",
-      "workbook_tab": "16 Stage-A Run Sheet"
+      "workbook_tab": "16 Stage-A Run Sheet",
+      "completed_job_count": 78,
+      "failed_job_count": 0
     },
     "selection_protocol": {
-      "status": "PREREGISTERED",
+      "status": "PREREGISTERED_AND_APPLIED_TO_STAGE_A_TRIAGE",
       "no_single_net_profit_argmax": true,
       "pareto_axes": [
         "WINNERS",
