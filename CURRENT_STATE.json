@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R033_HARVEST_COMPLETE_R034_OOS_PREREG_PENDING",
+  "current_phase": "R034_OOS_COMPLETE_R035_DH04_INDEPENDENT_DENSITY_PREREG",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "R034_PREREGISTER_FIXED_CAUSAL_POCKETS_THEN_VALIDATE_OUT_OF_SAMPLE;_NO_SAME_WINDOW_PROMOTION_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "R035_PREREGISTER_AND_VALIDATE_DH04_INDEPENDENT_COMPRESSION_EXPANSION_DENSITY_SOURCE_OOS;_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -536,7 +536,9 @@
     "r032_promoted": false,
     "r033_harvest_only": true,
     "r033_same_sample_interactions_not_promotable": true,
-    "r034_out_of_sample_validation_required": true
+    "r034_out_of_sample_validation_required": true,
+    "r034_oos_complete": true,
+    "dh02_a01_pocket_recutting_stopped": true
   },
   "handoff": {
     "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
@@ -3248,6 +3250,33 @@
         "label": "HYPOTHESIS_ONLY_NOT_VALIDATED"
       },
       "behavior_change_tested": false,
+      "promoted": false,
+      "metric_lock": false
+    },
+    "r034": {
+      "status": "COMPLETE_ALL_FIXED_POCKETS_FAIL_OOS",
+      "parent": "R032-C03_PLUS_DH02_S11_S08",
+      "surface": "P90",
+      "warmup_start": "2026-01-14T00:00:00Z",
+      "holdout_start": "2026-01-18T12:00:00Z",
+      "r9": {
+        "trades": 2659,
+        "wins": 1121,
+        "net_profit_usd": -583.86
+      },
+      "parent_metrics": {
+        "trades": 2115,
+        "wins": 875,
+        "net_profit_usd": -500.16,
+        "trade_retention_pct": 79.541181,
+        "winner_retention_pct": 78.055308
+      },
+      "result_sha256": "1d9788a257b707ba26b1b2bcebf621e5948f5680e1ec9869569a9133b744cf3e",
+      "drive_doc_id": "1zJFYYsTJc3Qrv10f-UtBiLwiBiQr8h5ypmIAmxz4cus",
+      "drive_doc_url": "https://docs.google.com/document/d/1zJFYYsTJc3Qrv10f-UtBiLwiBiQr8h5ypmIAmxz4cus/edit",
+      "github_report_path": "research/delta/research/DELTA_R034_LATE_JAN_OOS_A01_POCKET_VALIDATION.md",
+      "github_commit": "2593a7063c36db6e5ab172b2f43bab3ed79bea56",
+      "decision": "STOP_DH02_A01_POCKET_RECUTTING_USE_INDEPENDENT_ACTIVITY_SOURCE",
       "promoted": false,
       "metric_lock": false
     }
