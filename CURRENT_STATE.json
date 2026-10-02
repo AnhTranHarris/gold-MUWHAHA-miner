@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R017_COMPLETE_R016_T06_RETAINED_DUAL_TOXICITY_MINING_NEXT",
+  "current_phase": "R019_DUAL_TOXICITY_HARVEST_COMPLETE_FOUR_CONFIGS_PREREGISTERED",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "R019_DUAL_NON_EXTREME_CAUSAL_TOXICITY_HARVEST_AND_PREREGISTRATION;_GOAL_RECOVER_B15_LOSS_REDUCTION_WITH_ACTIVITY_ABOVE_FLOORS;_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "EXECUTE_R019_C01_TO_C04_P50_P75_P90_THEN_NATIVE_DIAGNOSTIC;_NO_THRESHOLD_RETUNING_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -1092,7 +1092,7 @@
   "active_research_question": "R9_DIRECTION_PLUS_INITIAL_HOLD_SURVIVABILITY_AND_MULTI_ENTRY_SPECIALIST_ARCHITECTURE",
   "initial_research": {
     "id": "DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN",
-    "status": "R017_BRANCH_ATTRIBUTION_COMPLETE_NO_PROMOTION",
+    "status": "R019_PREREGISTERED_NOT_EXECUTED",
     "report_path": "research/delta/research/DELTA_R001_DIRECTION_HOLD_INITIAL_RESEARCH_SCAN.md",
     "report_commit": "700fa3399c95ff07dad7c210fd34a5c6572543af",
     "active_candidate": null,
@@ -1899,6 +1899,41 @@
         "P90": "0916ffd2398d8d7cb1c81693970324fed3890d45ee449fe668b82a29bdcdf233",
         "NATIVE": "54a4e955db04695fd6875c531b2fff6dd458692c48ea9c15c442760ffebf1bd5"
       }
+    },
+    "r019": {
+      "status": "PREREGISTERED_NOT_EXECUTED",
+      "drive_doc_id": "1HR7_ycMXib5tyJLPbnlX96VlcIjXDFK7mTfzFt80Wqo",
+      "drive_doc_url": "https://docs.google.com/document/d/1HR7_ycMXib5tyJLPbnlX96VlcIjXDFK7mTfzFt80Wqo/edit",
+      "harvest_tab": "31 R019 Dual Harvest",
+      "prereg_tab": "32 R019 Prereg",
+      "result_tab": "33 R019 Results",
+      "dual_event_count": 754,
+      "extreme_count": 455,
+      "nonextreme_count": 299,
+      "dual_harvest_sha256": "a8a541651c82c3a3536b15334b179b0eb96662a54cb17b4bc07aae94e84ffac1",
+      "configs": [
+        "R019-C01",
+        "R019-C02",
+        "R019-C03",
+        "R019-C04"
+      ],
+      "selectors": [
+        "ABS_H4_GT_1",
+        "ABS_H4_GT_1_OR_M30_LT_NEG1"
+      ],
+      "keep_semantics": [
+        "NORMAL_REARM",
+        "OWNED_NO_REARM"
+      ],
+      "primary_surfaces": [
+        "P50",
+        "P75",
+        "P90"
+      ],
+      "native_role": "DIAGNOSTIC_ONLY",
+      "min_trade_retention_pct": 80,
+      "min_winner_retention_pct": 80,
+      "advance_rule": "NET_BEATS_T06_ALL_3_MODELED_SURFACES_AND_NO_GT5PCT_GL_DD_DETERIORATION"
     }
   },
   "prebacktest_research": {
