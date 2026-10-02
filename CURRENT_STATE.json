@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "EXECUTE_R020_MONTHS_05_TO_07_ONE_MONTH_PER_CRASH_SAFE_JOB;_NO_THRESHOLD_RETUNING_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "EXECUTE_R020_MONTHS_06_TO_07_ONE_MONTH_PER_CRASH_SAFE_JOB;_NO_THRESHOLD_RETUNING_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -2022,13 +2022,15 @@
         1,
         2,
         3,
-        4
+        4,
+        5
       ],
       "month_result_sha256": {
         "1": "aba8229e8b4af77acf2537d5f1621ed60dc1433c4bafc3e6f98446be42de7cd2",
         "2": "ed53f80ab9ac39302837717bbee263971ff6318993554bfcdea77f1b6998d9da",
         "3": "fe16df6ec0aab3820cf29f046985e7ca05536673e91ef07e3983c93f1f3b0644",
-        "4": "75484a85f7930e3415d404e43cb664249d237b1bb80ac9df326603980e8c733b"
+        "4": "75484a85f7930e3415d404e43cb664249d237b1bb80ac9df326603980e8c733b",
+        "5": "71692321bcf2a5d95a68b361eda7aaee2454c6e1a4dd84de6137c66855b47a46"
       },
       "monthly_checkpoint": {
         "1": {
@@ -2050,6 +2052,11 @@
           "incremental_net_vs_t06_usd": 3.92,
           "incremental_net_pct": 0.066152,
           "result": "SLIGHTLY_IMPROVES"
+        },
+        "5": {
+          "incremental_net_vs_t06_usd": -18.57,
+          "incremental_net_pct": -0.317528,
+          "result": "WORSE"
         }
       }
     }
