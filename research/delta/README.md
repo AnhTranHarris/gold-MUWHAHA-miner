@@ -124,3 +124,13 @@ The research environment is now ready for the first January candidate campaign. 
 ## Frozen January Stage-A filter window
 
 `DELTA_GOV_012_EXACT_JANUARY_STAGE_A_FILTER_WINDOW.md` freezes the first-2.5-week Stage-A screen as exactly 17.5 calendar days in UTC: `[2026-01-01T00:00:00.000Z, 2026-01-18T12:00:00.000Z)`. Machine boundaries are `1767225600000 <= timestamp_ms < 1768737600000`. January is a cold start with no December 2025 state. Any position remaining open at the last eligible tick is force-closed on the executable side, and no post-window tick may affect Stage-A scoring.
+
+## DELTA_005 crash-safe research ledger
+
+`DELTA_GOV_013_CANDIDATE_LEVERAGE_AND_CRASH_SAFE_RESEARCH_LEDGER.md` governs the active Entry + Initial-Hold campaign. Before materially modifying a candidate, perform a quick leverage analysis to identify which formula/mechanism has the highest plausible effect and whether the next move is a tune, structural change, recombination, split, new specialist, or router change.
+
+Durable research ledger: https://docs.google.com/document/d/1T9MPuuMsxB5gv7Zz8nvzFmaQy00_7Q-7X_4F2qrcR6k/edit?usp=drivesdk
+
+Per-test mathematical Sheet template: https://docs.google.com/spreadsheets/d/1Zy_TfGfc6E0tJmEsoFmSONqM9W4wKuAqTPcITC5OXb0/edit?usp=drivesdk
+
+A fresh temporary Sheet is required after each completed test; decision-relevant findings must be promoted into the master Doc and GitHub before the Sheet is retired. The current phase does not optimize Holding-Trade + Exit + High-Profit; that is a separate later research goal.
