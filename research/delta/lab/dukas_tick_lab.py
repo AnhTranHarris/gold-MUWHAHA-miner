@@ -52,14 +52,14 @@ def compile_month(src:Path,root:Path,m:int,vol=False,force=False,chunks=1_000_00
  use=["timestamp_ms_utc","ask_raw","bid_raw"]+(["ask_volume","bid_volume"] if vol else []); dt={"timestamp_ms_utc":"i8","ask_raw":"i4","bid_raw":"i4","ask_volume":"f4","bid_volume":"f4"}
  pos=0; prev=None; mono=True; ageb=True; same=0; mins=2**31-1; maxs=-1; t0=time.perf_counter()
  for df in pd.read_csv(p,compression="gzip",usecols=use,dtype=dt,chunksize=chunks):
-  x=df.timestamp_ms_utc.to_numpy(False); aa=df.ask_raw.to_numpy(False); bb=df.bid_raw.to_numpy(False); k=len(df)
+  x=df.timestamp_ms_utc.to_numpy(copy=False); aa=df.ask_raw.to_numpy(copy=False); bb=df.bid_raw.to_numpy(copy=False); k=len(df)
   if pos+k>n: raise RuntimeError("row overflow")
   if prev is not None and x[0]<prev: mono=False
   if k>1:
    z=np.diff(x); mono=mono and not np.any(z<0); same+=int(np.count_nonzero(z==0))
   ageb=ageb and not np.any(aa<bb); sp=aa.astype("i8")-bb.astype("i8"); mins=min(mins,int(sp.min())); maxs=max(maxs,int(sp.max()))
   t[pos:pos+k]=x; a[pos:pos+k]=aa; b[pos:pos+k]=bb
-  if vol: av[pos:pos+k]=df.ask_volume.to_numpy(False); bv[pos:pos+k]=df.bid_volume.to_numpy(False)
+  if vol: av[pos:pos+k]=df.ask_volume.to_numpy(copy=False); bv[pos:pos+k]=df.bid_volume.to_numpy(copy=False)
   prev=int(x[-1]); pos+=k
  if pos!=n: raise RuntimeError(f"row mismatch {pos}!={n}")
  for x in (t,a,b,av,bv):
