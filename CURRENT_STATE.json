@@ -6,7 +6,7 @@
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R027_IN_PROGRESS_MONTH_01_COMPLETE",
+  "current_phase": "R027_IN_PROGRESS_MONTHS_01_02_COMPLETE",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "RESUME_R027_AT_MONTH_02_THEN_FIRST_INCOMPLETE_MONTH;_HARVEST_ONLY_NO_GOVERNOR_TEST_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "RESUME_R027_AT_MONTH_03_THEN_FIRST_INCOMPLETE_MONTH;_HARVEST_ONLY_NO_GOVERNOR_TEST_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -2880,10 +2880,12 @@
       "august_2026": "SEALED",
       "mql5_authorized": false,
       "completed_months": [
-        1
+        1,
+        2
       ],
       "result_sha256": {
-        "2026-01": "fe7098b1c86c69626e4665b17b876edb66c18c20180cf984bbb1170a4fcc3f8b"
+        "2026-01": "fe7098b1c86c69626e4665b17b876edb66c18c20180cf984bbb1170a4fcc3f8b",
+        "2026-02": "b3d5faf0363064137f595924564df979f50b493d034fe69877c7e1a35c1c35a3"
       },
       "monthly_checkpoints": {
         "2026-01": {
@@ -2899,6 +2901,20 @@
           "not_opposed_expectancy_usd": -0.182391,
           "csv_sha256": "33eb6d732aac2111924a512af624503d9a8f0370536e6ed766f8a2b5fe0ddd2b",
           "summary_sha256": "fe7098b1c86c69626e4665b17b876edb66c18c20180cf984bbb1170a4fcc3f8b"
+        },
+        "2026-02": {
+          "events": 3786,
+          "net_usd": -639.29,
+          "expectancy_usd": -0.168856,
+          "win_rate_pct": 45.087163,
+          "opposed_m30_count": 1351,
+          "opposed_m30_net_usd": -235.8,
+          "opposed_expectancy_usd": -0.174537,
+          "not_opposed_count": 2435,
+          "not_opposed_net_usd": -403.49,
+          "not_opposed_expectancy_usd": -0.165704,
+          "csv_sha256": "463c29a40737a7ced63a05e16bfdb49e6ef62c00051619bbdfeed7ea769d5d7c",
+          "summary_sha256": "b3d5faf0363064137f595924564df979f50b493d034fe69877c7e1a35c1c35a3"
         }
       }
     }
