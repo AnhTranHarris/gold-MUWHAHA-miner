@@ -253,6 +253,28 @@ Native Dukascopy is deliberately kept separate: January median native spread is 
 
 Next unit: preregister and build a distinctly labeled Coinexx-like modeled execution/quote-cost surface over the independent Dukascopy path. Do not overwrite DUKAS_NATIVE. August remains sealed.
 
+## DELTA_004 Coinexx-like Dukascopy surface — VERIFIED_DURABLE
+
+Canonical files:
+- `research/delta/lab/coinexx_like_surface.py`
+- `research/delta/reference/DELTA_004_COINEXX_SPREAD_PROFILES.json`
+- `research/delta/qa/DELTA_004_COINEXX_LIKE_DUKASCOPY_QA.py`
+- `research/delta/checkpoints/DELTA_004_SURFACE_QA.json`
+- `research/delta/DELTA_004_COINEXX_LIKE_DUKASCOPY_REPORT.md`
+
+Surface labels are mandatory:
+- `DUKAS_NATIVE` — untouched Dukascopy Bid/Ask;
+- `DUKAS_COINEXX_LIKE_P50` — median-friction sensitivity;
+- `DUKAS_COINEXX_LIKE_P75` — default research surface;
+- `DUKAS_COINEXX_LIKE_P90` — stress-friction sensitivity;
+- `COINEXX_PARITY` — preserved R9 REAL logger/report parity surface.
+
+Default P75 Jan-Jul R9 control: 234,417 trades; 104,294 wins; $29,243.07 gross profit; -$78,244.86 gross loss; -$49,001.79 net. Versus R9 REAL, aggregate errors are -0.94% trades, +1.86% wins, -3.11% gross profit, -2.76% gross-loss magnitude, and -2.55% net-loss magnitude. All preregistered monthly/aggregate tolerances pass.
+
+P50/P75/P90 spreads are derived from R9 REAL Coinexx evidence only. No SYNTH outcome was used to calibrate the modeled environment. February-July use 90 minutes of prior-month raw Dukascopy state warm-up; scoring begins at the target month boundary.
+
+The lab is now ready for the first owner-governed January candidate campaign. Before candidate compute, freeze the exact end boundary of the first-2.5-week January filter. August remains sealed.
+
 ## Research objective
 
 Rebuild a high-activity causal Entry+Hold architecture around the R9 evidence base while preserving real chronology, causal execution, and trade velocity.
@@ -271,7 +293,7 @@ Trade velocity is not a cosmetic secondary metric. Any candidate must report:
 
 ## Current next action
 
-Build DELTA_004 as an explicitly modeled Coinexx-like execution/quote-cost surface over Dukascopy chronology while preserving DUKAS_NATIVE unchanged. The modeled surface must be separately labeled, derived only from Coinexx REAL evidence, sensitivity-tested, causal, and August-sealed.
+Preregister DELTA_005 as the first owner-governed January candidate campaign. Freeze the exact first-2.5-week January end boundary before compute. Use DUKAS_COINEXX_LIKE_P75 as the default research surface, P50/P90 as execution-friction sensitivities, and DUKAS_NATIVE as the independent robustness control. August remains sealed.
 
 ## Subsequent research
 
