@@ -1,0 +1,161 @@
+{
+  "schema": "delta-r037-dh02-s08-cleanroom-parity-12a-v1",
+  "status": "COMPLETE_CLEANROOM_PARITY_FAIL_LOCALIZED",
+  "unit": "R037_DH02_S08_CLEANROOM_PARITY_RECONSTRUCTION",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "vector_fingerprint": "7c70b5304ff7",
+  "numeric_vector_retune": false,
+  "august_accessed": false,
+  "profiles": {
+    "NO_CONTEXT_CONTINUOUS_DWELL_DIAGNOSTIC": {
+      "actual": {
+        "signals": 358,
+        "signal_sha256": "695dc3ec293a229629346f7d9a3ce54d6bf7962f770a5e90940b42375ea810dc",
+        "breaks": 1736,
+        "accepted": 1642,
+        "retests": 1089,
+        "failed": 806,
+        "expired": 572,
+        "context_vetoes": 0,
+        "dwell_resets": 136,
+        "failure_pending_starts": 1001,
+        "failure_pending_resets": 288,
+        "failure_pending_confirms": 712,
+        "trades": 358,
+        "raw_positive_wins": 168,
+        "official_wins": 166,
+        "gross_profit": 33.71,
+        "gross_loss": -106.11000000000064,
+        "net_profit": -72.40000000000063,
+        "max_balance_drawdown": 72.55999999807682
+      },
+      "abs_error": {
+        "trades": 283,
+        "raw_positive_wins": 126,
+        "gross_profit": 23.78,
+        "gross_loss": 87.29000000000065,
+        "net_profit": 63.51000000000063,
+        "max_balance_drawdown": 62.89999999807682
+      },
+      "parity_score": 31687.47999999808
+    },
+    "RAW_PARENT_DIRECTION_CONTINUOUS_DWELL": {
+      "actual": {
+        "signals": 105,
+        "signal_sha256": "0f64c1f727c9fef6f9ee3676b1aa8d8a3df874b5a1c381d4a3bd6e6fe8657841",
+        "breaks": 546,
+        "accepted": 510,
+        "retests": 313,
+        "failed": 240,
+        "expired": 201,
+        "context_vetoes": 45399,
+        "dwell_resets": 50,
+        "failure_pending_starts": 284,
+        "failure_pending_resets": 79,
+        "failure_pending_confirms": 204,
+        "trades": 105,
+        "raw_positive_wins": 37,
+        "official_wins": 37,
+        "gross_profit": 8.749999999999998,
+        "gross_loss": -37.73000000000002,
+        "net_profit": -28.980000000000018,
+        "max_balance_drawdown": 29.079999999405118
+      },
+      "abs_error": {
+        "trades": 30,
+        "raw_positive_wins": 5,
+        "gross_profit": 1.1800000000000015,
+        "gross_loss": 18.910000000000018,
+        "net_profit": 20.090000000000018,
+        "max_balance_drawdown": 19.419999999405118
+      },
+      "parity_score": 3184.599999999405
+    },
+    "HYSTERETIC_PARENT_DIRECTION_CONTINUOUS_DWELL": {
+      "actual": {
+        "signals": 169,
+        "signal_sha256": "802acb225ec198e40a02f6d350f7adb36422ab83c739d0cc63cb8501d3cac68b",
+        "breaks": 823,
+        "accepted": 775,
+        "retests": 507,
+        "failed": 380,
+        "expired": 274,
+        "context_vetoes": 35303,
+        "dwell_resets": 78,
+        "failure_pending_starts": 470,
+        "failure_pending_resets": 137,
+        "failure_pending_confirms": 332,
+        "trades": 169,
+        "raw_positive_wins": 70,
+        "official_wins": 69,
+        "gross_profit": 16.029999999999994,
+        "gross_loss": -54.369999999999905,
+        "net_profit": -38.33999999999991,
+        "max_balance_drawdown": 38.68999999908556
+      },
+      "abs_error": {
+        "trades": 94,
+        "raw_positive_wins": 28,
+        "gross_profit": 6.099999999999994,
+        "gross_loss": 35.549999999999905,
+        "net_profit": 29.44999999999991,
+        "max_balance_drawdown": 29.029999999085558
+      },
+      "parity_score": 10200.129999999086
+    },
+    "HYSTERETIC_PARENT_DIRECTION_EVENTAGE_DWELL": {
+      "actual": {
+        "signals": 172,
+        "signal_sha256": "49b7606d099a56e1e89037e5dc86e443f5ca2b96ff0f6c1fc821fe2e06e25076",
+        "breaks": 823,
+        "accepted": 781,
+        "retests": 514,
+        "failed": 378,
+        "expired": 273,
+        "context_vetoes": 35303,
+        "dwell_resets": 0,
+        "failure_pending_starts": 475,
+        "failure_pending_resets": 138,
+        "failure_pending_confirms": 336,
+        "trades": 172,
+        "raw_positive_wins": 72,
+        "official_wins": 71,
+        "gross_profit": 16.549999999999994,
+        "gross_loss": -54.9099999999999,
+        "net_profit": -38.3599999999999,
+        "max_balance_drawdown": 38.70999999907508
+      },
+      "abs_error": {
+        "trades": 97,
+        "raw_positive_wins": 30,
+        "gross_profit": 6.619999999999994,
+        "gross_loss": 36.0899999999999,
+        "net_profit": 29.4699999999999,
+        "max_balance_drawdown": 29.04999999907508
+      },
+      "parity_score": 10551.229999999076
+    }
+  },
+  "ranking": [
+    "RAW_PARENT_DIRECTION_CONTINUOUS_DWELL",
+    "HYSTERETIC_PARENT_DIRECTION_CONTINUOUS_DWELL",
+    "HYSTERETIC_PARENT_DIRECTION_EVENTAGE_DWELL",
+    "NO_CONTEXT_CONTINUOUS_DWELL_DIAGNOSTIC"
+  ],
+  "finding": {
+    "leading_profile": "RAW_PARENT_DIRECTION_CONTINUOUS_DWELL",
+    "exact_historical_parity": false,
+    "target": {
+      "trades": 75,
+      "raw_positive_wins": 42,
+      "gross_profit": 9.93,
+      "gross_loss": -18.82,
+      "net_profit": -8.89,
+      "max_balance_drawdown": 9.66
+    },
+    "next": "R037_DH02_S08_STATE_FUNNEL_AND_PROVENANCE_LOCALIZATION"
+  },
+  "mql5_authorized": false
+}
