@@ -1,0 +1,196 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH02_S08_CLEANROOM_PARITY_CHECKPOINT_12A",
+  "status": "VERIFIED_COMPLETE_CLEANROOM_PARITY_FAIL_LOCALIZED",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_DECISION_CHECKPOINT_11G",
+  "hypothesis": "Frozen DH02-S08 can be reconstructed from the source-preserved M1/S5/1s-dwell/S1-rebreak grammar plus fixed DH01-A02 parent direction without numeric retuning.",
+  "falsification_condition": "Exact or near historical population/economics must emerge from source-grounded categorical semantics; do not tighten numeric thresholds merely to force 75 trades.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "historical DH02-S08 Stage-A standalone fixture",
+    "reference_count": 75,
+    "minimum_count": 75,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity reconstruction only. Historical target 75 trades / 42 raw-positive wins / GP +9.93 / GL -18.82 / net -8.89 / DD 9.66."
+  },
+  "primary_metrics": {
+    "entry_quality": "Leading raw-parent surrogate 105 trades / 37 raw-positive wins versus target 75 / 42.",
+    "hold_persistence": "Frozen R9 downstream lifecycle only.",
+    "economics": "Leading net -28.98 versus target -8.89.",
+    "gross_loss_drawdown": "Leading GL -37.73 and DD 29.08 versus target GL -18.82 and DD 9.66.",
+    "activity": "Leading 105 trades; historical 75."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh02_s08_cleanroom_parity.py",
+      "commit": "537ebafe35a6b4a023922bf63d44e1ec2e2e2b5d",
+      "blob_sha": "dcfca2f1ae61e45783de1bedc982d5434026dc29",
+      "file_sha256": "b5675413a094c36a619485fe299f59aa7840fc34f8c12b437fbcf0af71a26e26"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "a78a8fe7550bd02433ce8a7d3fdae563fcd953e8",
+      "note": "Official local replay used equivalent hard OS timeout + PYTHONFAULTHANDLER/PYTHONUNBUFFERED/isolated Numba cache because container cannot resolve GitHub directly."
+    }
+  ],
+  "config": {
+    "parameters": {
+      "vector_fingerprint": "7c70b5304ff7",
+      "numeric_vector_retuning": false,
+      "acceptance_dwell": "1s",
+      "boundary_source": "M1 swing width2",
+      "break_tf": "S5",
+      "failure_acceptance": "two-adverse-tick clean-room surrogate; historical reset semantics provenance-limited",
+      "parent_context": "DH01 parent direction",
+      "selected_leading_profile": "RAW_PARENT_DIRECTION_CONTINUOUS_DWELL",
+      "selected_acceptance_semantic": "CONTINUOUS_BREAKOUT_SIDE_DWELL"
+    },
+    "feature_order": [
+      "break",
+      "acceptance dwell",
+      "retest",
+      "failure persistence",
+      "S1 rebreak",
+      "R9 lifecycle"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "clean-room parity fingerprint; no optimization"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_process_timeout_seconds": 120,
+      "elapsed_seconds": 15.3103,
+      "faulthandler": true,
+      "python_unbuffered": true,
+      "isolated_numba_cache": true,
+      "producer_atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_preexecution_verification": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "12A frozen evidence",
+      "path": "research/delta/reference/DELTA_R037_DH02_S08_CLEANROOM_PARITY_EVIDENCE_12A.json",
+      "commit": "dcfe13e175f96f2fdfa0ae2535c3d7fb7d5b64c9",
+      "blob_sha": "12280df31b227e0037bc8bb718ce3aaa4d75505c",
+      "file_sha256": "8b3495ea21f15a1db7ce595d52fc62e700a09d563d45f2624328bbbcae4fd44b"
+    },
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "size_bytes": 68690420,
+      "stage_a_ticks": 4205709
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "Stage-A P75 tick-rooted S1/S5/S15/M1/M15/M30/H1 bars causally reconstructed inside producer"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH02_S08_CLEANROOM_PARITY_CHECKPOINT_12A.json",
+      "commit": "f7fec70b001942de69fa7d79713dceffbb9d7da1",
+      "blob_sha": "c68d474043288c51673e42593808e31c7a81b717",
+      "official_result_sha256": "641f291af528d7d0aa023cd0a473c23877f3df2fa700be6392dcac57decf6b23"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH02_S08_CLEANROOM_PARITY_CHECKPOINT_12A.md",
+      "commit": "09e37e146fc0437dc5cde5d975ccf529b684aaa4",
+      "blob_sha": "d605e6abd72e1cb251ac68ead9c5b1d30ac05959"
+    }
+  ],
+  "qa": [
+    "11G durable cursor and successful CI verified before S08 official replay.",
+    "Producer and evidence committed before official compute.",
+    "Local producer Git blob exactly matched committed dcfca2f1...; evidence blob exactly matched 12280df3....",
+    "Canonical January SHA d2ebb9a8... and size 68,690,420 bytes verified.",
+    "Stage-A tick count 4,205,709 verified.",
+    "No numeric vector parameter changed.",
+    "Raw-parent + continuous-dwell profile is closest among bounded source-grounded interpretations.",
+    "Leading population is 105 trades / 37 wins versus historical 75 / 42; residual cannot be repaired by simple stricter gating because historical winner count is also underproduced.",
+    "Hysteretic context and event-age dwell both worsen parity.",
+    "Full historical S08 parity not claimed.",
+    "No August, no SORB integration, no mature exit optimization, no MQL5.",
+    "Workbook tab 75 A372:H380 written and read back."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh02_s08_cleanroom_parity.py",
+    "command": "timeout 120s env PYTHONFAULTHANDLER=1 PYTHONUNBUFFERED=1 NUMBA_CACHE_DIR=<isolated> python delta_r037_dh02_s08_cleanroom_parity.py --source <canonical_january_gzip> --evidence <12A evidence> --output <12A result>",
+    "timing_semantics": "Ordered ticks; P75 Stage-A left-closed/right-open; M1 width-2 confirmed swings; completed S5 break; continuous 1s dwell; completed S1 rebreak; parent features completed M15/M30/H1 only.",
+    "expected_fingerprints": {
+      "leading_profile": "RAW_PARENT_DIRECTION_CONTINUOUS_DWELL",
+      "leading_signal_sha256": "0f64c1f727c9fef6f9ee3676b1aa8d8a3df874b5a1c381d4a3bd6e6fe8657841",
+      "leading": {
+        "trades": 105,
+        "raw_positive_wins": 37,
+        "gross_profit": 8.75,
+        "gross_loss": -37.73,
+        "net_profit": -28.98,
+        "max_balance_drawdown": 29.08
+      }
+    },
+    "selected_interpretation": "RAW_PARENT_DIRECTION_CONTINUOUS_DWELL_NONPROMOTING_SURROGATE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — R032 specialist parity incomplete",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA semantics",
+    "ownership_scheduler_spec": "not ready",
+    "session_dst_spec": "frozen DELTA semantics",
+    "risk_spec": "fixed 0.01 research semantics",
+    "trade_count_parity_spec": "blocked pending S08/DH03 specialist reconstruction",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_DECISION_CHECKPOINT_11G",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A372:H380"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH02_S08_STATE_FUNNEL_AND_PROVENANCE_LOCALIZATION",
+  "github_commits": [
+    "dcfe13e175f96f2fdfa0ae2535c3d7fb7d5b64c9",
+    "537ebafe35a6b4a023922bf63d44e1ec2e2e2b5d",
+    "f7fec70b001942de69fa7d79713dceffbb9d7da1",
+    "09e37e146fc0437dc5cde5d975ccf529b684aaa4"
+  ]
+}
