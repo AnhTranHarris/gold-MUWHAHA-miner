@@ -588,8 +588,8 @@
     "github_commit": "d5db76bfcd3bb91086a5635058005b4d940013bb",
     "manifest_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_SAFE_HANDOFF_CHECKPOINT_09D.json",
     "manifest_commit": "5b21c2d06bbf4d98c10b3ee5bafeb0ca2c18a2fe",
-    "restart_phase": "R037_DH05_PROBE_QUALIFICATION_CLOCK_AND_EVENT_LIFECYCLE_PARITY_RECONSTRUCTION_NEXT",
-    "next_action": "R037_DH05_PROBE_QUALIFICATION_CLOCK_AND_EVENT_LIFECYCLE_PARITY_RECONSTRUCTION",
+    "restart_phase": "R037_DH02_S11_TICK_PERSISTENCE_AND_CONTEXT_SEMANTICS_PARITY_FINGERPRINT_NEXT",
+    "next_action": "R037_DH02_S11_TICK_PERSISTENCE_AND_CONTEXT_SEMANTICS_PARITY_FINGERPRINT",
     "drive_folder_title": "00 CURRENT — DELTA R037 Timeout-Safe Handoff Pack — Checkpoint 09D — 2026-10-02",
     "restart_contract": {
       "google_doc_id": "1LlZrGb_ZEXOHRrtmDE-IL2wHiYuW6vRGcN4_UF_ryXc",
@@ -617,7 +617,7 @@
       "google_doc_revision": "ANLCKQk8pRN2l7_NJZcQEj3kpQ5ptP2KEKPFiZqsz8PmLbCqZ_Qm2wcUoudBg3feBRKxsAGr5oHg5AP7v_GIhZKOwPcSYcNjXs4P0R4EtrM"
     },
     "current_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH02_S11_CLEANROOM_PARITY_CHECKPOINT_11A_MANIFEST.json",
-    "verified_gate_run": 37094384529,
+    "verified_gate_run": 37149241116,
     "verified_gate_conclusion": "SUCCESS",
     "final_pack_revision_sync_commit": "5b21c2d06bbf4d98c10b3ee5bafeb0ca2c18a2fe",
     "completeness_gate": {
@@ -651,7 +651,12 @@
         "status": "FROZEN_VECTOR_PRESENT_CURRENT_R037_PRODUCER_NOT_YET_REBUILT"
       }
     ],
-    "current_required_missing_artifacts": []
+    "current_required_missing_artifacts": [],
+    "live_recovery_pointer": {
+      "path": "research/delta/handoffs/DELTA_R037_TIMEOUT_RECOVERY_POINTER.json",
+      "commit": "8674a6512beae26269dfe0b4e4636fa0a5b3b6ae",
+      "status": "CURRENT_DYNAMIC_POINTER_SUPERSEDES_STATIC_09D_PACK_FOR_RESTART_CURSOR"
+    }
   },
   "next_action": "Use DELTA_004 as the active parent. When the owner restates the first Entry + Initial-Hold research question, perform a fresh community scan, generate independent reconstructible hypotheses, use the GOV-014 spreadsheet-first quant harvesting loop to prioritize adjustments with >=10pp incremental scoped SYNTH-gap closure and seek >=30% scoped REAL-to-SYNTH gap closure before expensive replay, then preregister and test selected packages in the bounded Dukascopy tick-level cycle. Keep DELTA_005A-005M audit-only, August sealed, and MQL5 unauthorized.",
   "mql5_authorized": false,
@@ -4671,7 +4676,8 @@
     "starter_prompt_doc_id": "15bKGqPsBebEXBdpgqhI1f6ItjoeJ4jc_3ZBzkN7woAU",
     "starter_prompt_doc_url": "https://docs.google.com/document/d/15bKGqPsBebEXBdpgqhI1f6ItjoeJ4jc_3ZBzkN7woAU/edit",
     "completeness_gate_doc_id": "1G_UttTVYhz55eZ6OHiz7r4ZzVv3l5zDD0U6DvTScG-s",
-    "completeness_manifest_path": "research/delta/handoffs/DELTA_R037_REQUIRED_ARTIFACT_COMPLETENESS_CHECKPOINT_09D.json"
+    "completeness_manifest_path": "research/delta/handoffs/DELTA_R037_REQUIRED_ARTIFACT_COMPLETENESS_CHECKPOINT_09D.json",
+    "live_recovery_pointer_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_RECOVERY_POINTER.json"
   },
   "handoff_history": [
     {
@@ -4723,5 +4729,15 @@
   "handoff_pack_folder_id": "13PZqzTG-vFz-jgK6okiL6YEOL0a2grKE",
   "handoff_pack_folder_url": "https://drive.google.com/drive/folders/13PZqzTG-vFz-jgK6okiL6YEOL0a2grKE",
   "mt5_readiness_doc_id": "18W0lPE8TrEXBSn-6hjNkrRkQiU9hwFw6wcR2KOD9tWc",
-  "mt5_readiness_doc_url": "https://docs.google.com/document/d/18W0lPE8TrEXBSn-6hjNkrRkQiU9hwFw6wcR2KOD9tWc/edit"
+  "mt5_readiness_doc_url": "https://docs.google.com/document/d/18W0lPE8TrEXBSn-6hjNkrRkQiU9hwFw6wcR2KOD9tWc/edit",
+  "timeout_recovery": {
+    "status": "ENABLED",
+    "pointer_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_RECOVERY_POINTER.json",
+    "pointer_commit": "8674a6512beae26269dfe0b4e4636fa0a5b3b6ae",
+    "durable_unit": "R037_DH02_S11_CLEANROOM_PARITY_CHECKPOINT_11A",
+    "in_flight_unit": "R037_DH02_S11_TICK_PERSISTENCE_AND_CONTEXT_SEMANTICS_PARITY_FINGERPRINT",
+    "in_flight_evidence_path": "research/delta/reference/DELTA_R037_DH02_S11_TICK_PERSISTENCE_CONTEXT_EVIDENCE_11B.json",
+    "in_flight_evidence_commit": "21acf1cee5eae10e329c0118a878dc1c8ddfe322",
+    "recovery_rule": "CURRENT_STATE remains the durable cursor; committed evidence/prereg ahead of it is resumable in-flight work, not a completed unit."
+  }
 }
