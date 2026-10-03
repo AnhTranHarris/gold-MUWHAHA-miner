@@ -1,0 +1,159 @@
+{
+  "schema": "delta-r037-dh02-s11-armed-boundary-lifetime-rearm-parity-11d-v1",
+  "status": "COMPLETE_CLEANROOM_PARITY_FAIL_LOCALIZED",
+  "unit": "R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_AND_REARM_PARITY_FINGERPRINT",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "vector_fingerprint": "50d1bb2e656e",
+  "numeric_vector_retune": false,
+  "august_accessed": false,
+  "profiles": {
+    "CONTROL_PERSIST_THROUGH_CONFLICT": {
+      "actual": {
+        "signals": 106,
+        "signal_sha256": "803fc20c55ed1d7f30356f2610392c12e6b43544f7f512bdd347cead69901dab",
+        "breaks": 278,
+        "accepted": 276,
+        "retests": 236,
+        "failed": 130,
+        "expired": 42,
+        "context_vetoes": 86547,
+        "conflict_qualifying_breaks": 86547,
+        "boundary_consumes": 0,
+        "boundary_suspends": 0,
+        "boundary_rearms": 0,
+        "trades": 106,
+        "raw_positive_wins": 42,
+        "official_wins": 42,
+        "gross_profit": 7.799999999999998,
+        "gross_loss": -35.100000000000044,
+        "net_profit": -27.300000000000047,
+        "max_balance_drawdown": 27.439999999362044
+      },
+      "abs_error": {
+        "trades": 31,
+        "raw_positive_wins": 1,
+        "gross_profit": 1.5900000000000025,
+        "gross_loss": 17.500000000000043,
+        "net_profit": 19.090000000000046
+      },
+      "parity_score": 3163.1800000000003
+    },
+    "CONFLICT_BREAK_CONSUME_UNTIL_NEW_BOUNDARY": {
+      "actual": {
+        "signals": 103,
+        "signal_sha256": "fecd2a7940d296873ef36b888ecd34b9ed9484b45ec71142c4d241d4274d17bd",
+        "breaks": 241,
+        "accepted": 239,
+        "retests": 221,
+        "failed": 119,
+        "expired": 19,
+        "context_vetoes": 151,
+        "conflict_qualifying_breaks": 151,
+        "boundary_consumes": 151,
+        "boundary_suspends": 0,
+        "boundary_rearms": 0,
+        "trades": 103,
+        "raw_positive_wins": 41,
+        "official_wins": 41,
+        "gross_profit": 7.709999999999998,
+        "gross_loss": -33.740000000000045,
+        "net_profit": -26.030000000000047,
+        "max_balance_drawdown": 26.169999999387073
+      },
+      "abs_error": {
+        "trades": 28,
+        "raw_positive_wins": 0,
+        "gross_profit": 1.6800000000000024,
+        "gross_loss": 16.140000000000043,
+        "net_profit": 17.820000000000046
+      },
+      "parity_score": 2835.64
+    },
+    "CONFLICT_BREAK_S1_RESET_REARM": {
+      "actual": {
+        "signals": 109,
+        "signal_sha256": "5b7b3085ab50458aeddce4bb17c84209fa882fad9edad7a72c10493be2488538",
+        "breaks": 260,
+        "accepted": 258,
+        "retests": 237,
+        "failed": 129,
+        "expired": 22,
+        "context_vetoes": 678,
+        "conflict_qualifying_breaks": 678,
+        "boundary_consumes": 0,
+        "boundary_suspends": 678,
+        "boundary_rearms": 617,
+        "trades": 109,
+        "raw_positive_wins": 45,
+        "official_wins": 45,
+        "gross_profit": 8.129999999999997,
+        "gross_loss": -35.130000000000045,
+        "net_profit": -27.00000000000005,
+        "max_balance_drawdown": 27.13999999934458
+      },
+      "abs_error": {
+        "trades": 34,
+        "raw_positive_wins": 4,
+        "gross_profit": 1.2600000000000033,
+        "gross_loss": 17.530000000000044,
+        "net_profit": 18.79000000000005
+      },
+      "parity_score": 3537.5800000000004
+    },
+    "CONFLICT_BREAK_TICK_RESET_REARM": {
+      "actual": {
+        "signals": 109,
+        "signal_sha256": "5b7b3085ab50458aeddce4bb17c84209fa882fad9edad7a72c10493be2488538",
+        "breaks": 261,
+        "accepted": 259,
+        "retests": 237,
+        "failed": 129,
+        "expired": 23,
+        "context_vetoes": 771,
+        "conflict_qualifying_breaks": 771,
+        "boundary_consumes": 0,
+        "boundary_suspends": 771,
+        "boundary_rearms": 713,
+        "trades": 109,
+        "raw_positive_wins": 45,
+        "official_wins": 45,
+        "gross_profit": 8.129999999999997,
+        "gross_loss": -35.130000000000045,
+        "net_profit": -27.00000000000005,
+        "max_balance_drawdown": 27.13999999934458
+      },
+      "abs_error": {
+        "trades": 34,
+        "raw_positive_wins": 4,
+        "gross_profit": 1.2600000000000033,
+        "gross_loss": 17.530000000000044,
+        "net_profit": 18.79000000000005
+      },
+      "parity_score": 3537.5800000000004
+    }
+  },
+  "control_reproduced_exactly": true,
+  "ranking": [
+    "CONFLICT_BREAK_CONSUME_UNTIL_NEW_BOUNDARY",
+    "CONTROL_PERSIST_THROUGH_CONFLICT",
+    "CONFLICT_BREAK_S1_RESET_REARM",
+    "CONFLICT_BREAK_TICK_RESET_REARM"
+  ],
+  "finding": {
+    "leading_profile": "CONFLICT_BREAK_CONSUME_UNTIL_NEW_BOUNDARY",
+    "exact_historical_parity": false,
+    "target": {
+      "trades": 75,
+      "raw_positive_wins": 41,
+      "gross_profit": 9.39,
+      "gross_loss": -17.6,
+      "net_profit": -8.21
+    },
+    "selection_rule_pass": true,
+    "interpretation": "A qualifying break that occurs while context is invalid is directionally useful to treat as staling the current boundary; this removes only losing trades in Stage-A but the effect is too small and provenance is incomplete, so retain as non-promoting challenger pending provenance decision.",
+    "next": "R037_DH02_S11_CONTEXT_INVALID_BREAK_ADMISSION_PROVENANCE_DECISION"
+  },
+  "mql5_authorized": false
+}
