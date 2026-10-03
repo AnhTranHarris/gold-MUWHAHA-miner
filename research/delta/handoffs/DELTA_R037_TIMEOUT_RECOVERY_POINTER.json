@@ -20,22 +20,54 @@
     "current_state_ci_conclusion": "success"
   },
   "in_flight_unit": {
-    "unit": "R037_DH03_S06_RECLAIM_LEVEL_CONSUMPTION_AND_PIVOT_REUSE_PARITY_RECONSTRUCTION",
-    "status": "NOT_STARTED_FROM_DURABLE_13F",
-    "committed_artifacts": [],
-    "supplementary_race_artifacts": [
+    "unit": "R037_DH03_S06_PENDING_EVENT_IDENTITY_AND_REARM_BOUNDARY_PARITY_RECONSTRUCTION",
+    "status": "POSTCOMPUTE_DURABILITY_COMPLETE_CURRENT_STATE_ADVANCE_PENDING",
+    "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_DH03_S06_EVENT_IDENTITY_REARM_CHECKPOINT_13F.json",
-        "commit": "3754dd19fba5cf3b06f308565220cf0a85bdf4bb",
-        "role": "SUPPLEMENTARY_NON_PROMOTING_DUPLICATE_RESULT"
+        "role": "prereg_evidence",
+        "path": "research/delta/reference/DELTA_R037_DH03_S06_PENDING_EVENT_IDENTITY_REARM_BOUNDARY_EVIDENCE_13F.json",
+        "commit": "5996b7147535a06cc1383b0dd2d9c53ecdb66c10",
+        "blob_sha": "f99e9cbfb448dab4c4ee3fcad53289389b513d95"
       },
       {
+        "role": "engine",
+        "path": "research/delta/experiments/delta_r037_dh03_s06_event_identity_rearm_engine.py",
+        "commit": "e3fa78116d50fcac409d49c8d47b31e85a423402",
+        "blob_sha": "02bd7b3c26585392171c8a5bebb8520df47aa59d"
+      },
+      {
+        "role": "producer",
+        "path": "research/delta/experiments/delta_r037_dh03_s06_event_identity_rearm_parity.py",
+        "commit": "5d36e2c6ed3f3968a20f804f85e75dcb5eaef479",
+        "blob_sha": "1e8c3f0462313604f18f26c00b0df4d7abcd9db0"
+      },
+      {
+        "role": "result",
+        "path": "research/delta/reference/DELTA_R037_DH03_S06_EVENT_IDENTITY_REARM_CHECKPOINT_13F.json",
+        "commit": "3754dd19fba5cf3b06f308565220cf0a85bdf4bb",
+        "blob_sha": "bdc9c7207a1ecf02454aae448e66115269e79b37"
+      },
+      {
+        "role": "report",
         "path": "research/delta/research/DELTA_R037_DH03_S06_EVENT_IDENTITY_REARM_CHECKPOINT_13F.md",
         "commit": "d436547b598d648144c30997fbdc49011d71f910",
-        "role": "SUPPLEMENTARY_NON_PROMOTING_DUPLICATE_REPORT"
+        "blob_sha": "1374e58ea0aecb12638f2a5a29401fb9a8ffaf07"
+      },
+      {
+        "role": "manifest",
+        "path": "research/delta/artifacts/DELTA_R037_DH03_S06_EVENT_IDENTITY_REARM_CHECKPOINT_13F_MANIFEST.json",
+        "commit": "c989e18ae01a003ff84347aea444601c6c8626d5",
+        "blob_sha": "8943772002623a3c46ac3e1e472ede7ca5cafdbe"
       }
     ],
-    "next_action": "Read canonical 13F result/report and DH03 white-paper 'back through' reclaim grammar. Preregister only causal reclaim crossing/level-consumption semantics; commit producer before compute; run canonical January through bounded runner; persist each durability layer before advancing state."
+    "workbook": {
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A462:H471",
+      "raw_result_sha256": "210b275d8134a5619dcfd129e2210bdd6f4310776bac703f7a686eb2dbe77308",
+      "readback_verified": true
+    },
+    "next_action": "Advance CURRENT_STATE last to durable 13F, require DELTA rebuild gate success, then start only R037_DH03_S06_RECLAIM_LEVEL_CONSUMPTION_AND_PIVOT_REUSE_PARITY_RECONSTRUCTION."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
@@ -56,7 +88,7 @@
     "exact_git_blob_preexecution_verification": true,
     "committed_recovery_snapshot_execution": true,
     "large_stdout_policy": "Keep official producers summary-only; persist detailed diagnostics to JSON rather than streaming them through the chat/tool transport.",
-    "chat_delivery_timeout_policy": "Treat ChatGPT message-delivery timeout as transport/session interruption, never as proof of compute failure. On reconnect: read CURRENT_STATE, this pointer, recent branch commits and CI; if prereg/producer/result artifacts exist beyond the durable cursor, resume from the first missing durability step only.",
+    "chat_delivery_timeout_policy": "Treat message delivery timeout as transport/session interruption. Recovery order must check CURRENT_STATE, timeout pointer, branch commits/CI, committed result/report/manifest, and workbook raw-result SHA before rerunning compute. If the workbook or committed result proves an official compute already completed, finish only the missing durability steps.",
     "github_workflow_policy": "Require rebuild gate success for every durable cursor; use workflow artifacts/recovery snapshots rather than uncommitted local state.",
     "concurrent_old_chain_policy": [
       "Before every durable write, re-read CURRENT_STATE.json and branch HEAD/recent CI.",
