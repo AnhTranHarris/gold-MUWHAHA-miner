@@ -21,9 +21,20 @@
   },
   "in_flight_unit": {
     "unit": "R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_AND_EXECUTION_PARITY_RECONSTRUCTION",
-    "status": "NOT_STARTED_FROM_DURABLE_13C",
-    "committed_artifacts": [],
-    "next_action": "Reconstruct causal specialist attempt admission against the frozen 13C 1586-signal stream; inspect durable R032 ownership/execution semantics first; no entry threshold, event threshold, or exit retune."
+    "status": "PREREG_PRODUCER_COMMITTED_PRECOMPUTE",
+    "committed_artifacts": [
+      {
+        "path": "research/delta/reference/DELTA_R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_EVIDENCE_13D.json",
+        "commit": "8e9a68d9dfd310ad7e81c9ce1eae929e3bb290ea",
+        "blob_sha": "9e79d77db89aab767ece8458f13abcfa2f626c3f"
+      },
+      {
+        "path": "research/delta/experiments/delta_r037_dh03_s06_attempt_admission_parity.py",
+        "commit": "0a32e3e4823f18fcc3dd7fd6a88e6d5c9769753c",
+        "blob_sha": "1920eba680c434eb8f55e868ead686c48d8b267a"
+      }
+    ],
+    "next_action": "Blob-verify the committed 13D evidence/producer plus frozen 13C generator and dependencies, run only the canonical January Stage-A replay through delta_bounded_python_runner.py, then persist result/report/workbook/full manifest and advance CURRENT_STATE last after rebuild-gate success."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
