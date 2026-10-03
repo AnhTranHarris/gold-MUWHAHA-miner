@@ -285,6 +285,8 @@ def detect(
                 attempt_open = True
                 attempt_qualified = False
                 qualified_start = 0
+                cnt[0] += 1
+                attempt_start = tm
             if attempt_open and (not attempt_qualified) and oside * (px - L) >= probeexc * evatr:
                 attempt_qualified = True
                 qualified_start = tm
