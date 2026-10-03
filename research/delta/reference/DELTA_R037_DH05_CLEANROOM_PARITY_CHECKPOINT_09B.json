@@ -1,0 +1,107 @@
+{
+  "schema": "delta-r037-dh05-cleanroom-parity-checkpoint-09b-v1",
+  "status": "COMPLETE_NEGATIVE_QA_PARITY_FAIL",
+  "unit": "R037_DH05_DIAGNOSTIC_ENGINE_CLEANROOM_REBUILD_AND_CHECKPOINT03_08_09_PARITY",
+  "parent": "R032-C03_PLUS_DH02_S11_S08",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a": {
+    "ticks": 4205709,
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+  },
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_dh05_cleanroom_parity.py",
+    "blob_sha": "7200022dd9772383cc4d91edbbe167131603d6c7",
+    "alignment_commit": "7698eb63125efac4e0797e4d1c780e5d1eece83e"
+  },
+  "result_sha256": "518b6b556ccfc2c75f0bdee6298ee70a12d7db06649ee6df6feb558d0cbfe480",
+  "profiles": {
+    "onebar_m5": {
+      "actual": {
+        "A03": 144,
+        "S05": 8,
+        "S06": 342,
+        "S09": 4,
+        "S10": 165,
+        "S16": 1
+      },
+      "abs_error": 372
+    },
+    "onebar_rev_atr": {
+      "actual": {
+        "A03": 211,
+        "S05": 11,
+        "S06": 375,
+        "S09": 20,
+        "S10": 225,
+        "S16": 6
+      },
+      "abs_error": 421
+    },
+    "threebar_m5": {
+      "actual": {
+        "A03": 118,
+        "S05": 5,
+        "S06": 323,
+        "S09": 4,
+        "S10": 134,
+        "S16": 1
+      },
+      "abs_error": 289
+    },
+    "threebar_rev_atr": {
+      "actual": {
+        "A03": 192,
+        "S05": 9,
+        "S06": 366,
+        "S09": 20,
+        "S10": 200,
+        "S16": 4
+      },
+      "abs_error": 418
+    },
+    "neutral_wait_reentry": {
+      "actual": {
+        "A03": 0,
+        "S05": 23,
+        "S06": 2,
+        "S09": 0,
+        "S10": 2,
+        "S16": 0
+      },
+      "abs_error": 1312
+    },
+    "stage_wait_reentry": {
+      "actual": {
+        "A03": 0,
+        "S05": 37,
+        "S06": 2,
+        "S09": 7,
+        "S10": 3,
+        "S16": 2
+      },
+      "abs_error": 1655
+    }
+  },
+  "checkpoint03_probe_expected": {
+    "A03": 6731,
+    "S05": 7875,
+    "S06": 3470,
+    "S09": 7748,
+    "S10": 6496,
+    "S16": 7870
+  },
+  "checkpoint03_probe_actual": {
+    "A03": 1848,
+    "S05": 2981,
+    "S06": 1510,
+    "S09": 2520,
+    "S10": 1924,
+    "S16": 3484
+  },
+  "decision": "REJECT_CLEANROOM_PRODUCER_AS_PARITY_SOURCE_LOCALIZE_TO_M5_BOUNDARY_AND_PROBE_ELIGIBILITY",
+  "next_unit": "R037_DH05_BOUNDARY_SOURCE_AND_PROBE_ELIGIBILITY_PARITY_RECONSTRUCTION",
+  "checkpoint10_blocked": true,
+  "sorb_integration_started": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
