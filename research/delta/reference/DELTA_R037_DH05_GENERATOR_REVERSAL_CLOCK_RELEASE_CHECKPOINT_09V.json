@@ -1,0 +1,280 @@
+{
+  "schema": "delta-r037-dh05-generator-reversal-clock-release-checkpoint-09v-v1",
+  "status": "COMPLETE_NEGATIVE_QA_FUNNEL_CLUE_TRADE_DENSITY_VETO",
+  "unit": "R037_DH05_GENERATOR_RELEASE_ON_REVERSAL_CLOCK_TRANSITION_PARITY_RECONSTRUCTION",
+  "parent": "R037_DH05_GENERATOR_NEW_BOUNDARY_RELEASE_CHECKPOINT_09U",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "producer_path": "research/delta/experiments/delta_r037_dh05_generator_reversal_clock_release_parity.py",
+  "producer_commit": "8f1414c4f7c6949b0eeda62f600d220b959c4d71",
+  "producer_blob_sha": "670d9b2a36c00edf257d34d7b9bbc89f923f8c79",
+  "producer_file_sha256": "1e1b315d0fb71cad24360f5e3f8b92b8b3d6eb66ae5fe0c1e95317e1f2da5a08",
+  "runtime_result_sha256": "d742acc8ef76a476d1ad7a1681e19e8ffab89a734a6fbdc6e2e58b87e5e3a54b",
+  "runtime": {
+    "elapsed_seconds": 15.05,
+    "max_rss_kb": 698044,
+    "exit_code": 0,
+    "timeout_seconds": 120
+  },
+  "numeric_vector_retune": false,
+  "august_accessed": false,
+  "control": {
+    "total_funnel_abs_error": 978,
+    "aggregate_trade_count_abs_error": 336
+  },
+  "profiles": {
+    "NEXT_REVERSAL_BAR_RELEASE": {
+      "total_funnel_abs_error": 951,
+      "aggregate_trade_count_abs_error": 346,
+      "generator_releases": 3795,
+      "stage_abs_error": {
+        "probe": 547,
+        "qualified": 41,
+        "accepted": 33,
+        "failure": 50,
+        "reentry": 61,
+        "reclaim": 55,
+        "reversal": 82,
+        "signal": 82
+      },
+      "vectors": {
+        "A03": {
+          "signals": 195,
+          "trades": 195,
+          "wins": 78,
+          "net_usd": -46,
+          "funnel": [
+            6752,
+            1009,
+            216,
+            793,
+            446,
+            272,
+            195,
+            195
+          ]
+        },
+        "S05": {
+          "signals": 9,
+          "trades": 9,
+          "wins": 5,
+          "net_usd": -1.25,
+          "funnel": [
+            7735,
+            309,
+            32,
+            277,
+            54,
+            19,
+            9,
+            9
+          ]
+        },
+        "S06": {
+          "signals": 664,
+          "trades": 661,
+          "wins": 278,
+          "net_usd": -154.25,
+          "funnel": [
+            3619,
+            1627,
+            252,
+            1375,
+            1227,
+            708,
+            664,
+            664
+          ]
+        },
+        "S09": {
+          "signals": 11,
+          "trades": 11,
+          "wins": 7,
+          "net_usd": -1.13,
+          "funnel": [
+            7697,
+            207,
+            42,
+            165,
+            64,
+            40,
+            11,
+            11
+          ]
+        },
+        "S10": {
+          "signals": 231,
+          "trades": 229,
+          "wins": 104,
+          "net_usd": -47.06,
+          "funnel": [
+            6476,
+            1310,
+            204,
+            1106,
+            644,
+            313,
+            231,
+            231
+          ]
+        },
+        "S16": {
+          "signals": 8,
+          "trades": 8,
+          "wins": 3,
+          "net_usd": -2.09,
+          "funnel": [
+            7704,
+            131,
+            52,
+            79,
+            33,
+            19,
+            8,
+            8
+          ]
+        }
+      }
+    },
+    "RECLAIM_BAR_FAILED_REVERSAL_RELEASE": {
+      "total_funnel_abs_error": 1032,
+      "aggregate_trade_count_abs_error": 344,
+      "generator_releases": 3808,
+      "stage_abs_error": {
+        "probe": 581,
+        "qualified": 45,
+        "accepted": 40,
+        "failure": 55,
+        "reentry": 72,
+        "reclaim": 63,
+        "reversal": 88,
+        "signal": 88
+      },
+      "vectors": {
+        "A03": {
+          "signals": 197,
+          "trades": 197,
+          "wins": 78,
+          "net_usd": -47.11,
+          "funnel": [
+            6791,
+            1015,
+            218,
+            797,
+            450,
+            276,
+            197,
+            197
+          ]
+        },
+        "S05": {
+          "signals": 9,
+          "trades": 9,
+          "wins": 5,
+          "net_usd": -1.25,
+          "funnel": [
+            7742,
+            310,
+            33,
+            277,
+            54,
+            19,
+            9,
+            9
+          ]
+        },
+        "S06": {
+          "signals": 663,
+          "trades": 660,
+          "wins": 278,
+          "net_usd": -153.73,
+          "funnel": [
+            3621,
+            1627,
+            252,
+            1375,
+            1227,
+            707,
+            663,
+            663
+          ]
+        },
+        "S09": {
+          "signals": 11,
+          "trades": 11,
+          "wins": 7,
+          "net_usd": -1.13,
+          "funnel": [
+            7697,
+            207,
+            42,
+            165,
+            64,
+            40,
+            11,
+            11
+          ]
+        },
+        "S10": {
+          "signals": 236,
+          "trades": 230,
+          "wins": 105,
+          "net_usd": -46.91,
+          "funnel": [
+            6525,
+            1322,
+            207,
+            1115,
+            651,
+            318,
+            236,
+            236
+          ]
+        },
+        "S16": {
+          "signals": 8,
+          "trades": 8,
+          "wins": 3,
+          "net_usd": -2.09,
+          "funnel": [
+            7713,
+            132,
+            53,
+            79,
+            33,
+            19,
+            8,
+            8
+          ]
+        }
+      }
+    }
+  },
+  "finding": {
+    "leading_profile": "NEXT_REVERSAL_BAR_RELEASE",
+    "funnel_improvement_vs_control": 27,
+    "trade_error_change_vs_control": 10,
+    "s06_historical": {
+      "signals": 672,
+      "trades": 615,
+      "wins": 307,
+      "net_usd": -101.08
+    },
+    "s06_candidate": {
+      "signals": 664,
+      "trades": 661,
+      "wins": 278,
+      "net_usd": -154.25
+    },
+    "selection_rule_pass": false,
+    "interpretation": "The next-reversal-bar release slightly improves stage-funnel parity but worsens executable trade-density parity and S06 economics; reversal-clock release is not a carry-forward ownership rule."
+  },
+  "decision": "REJECT_REVERSAL_CLOCK_RELEASE_NO_SEMANTIC_FREEZE",
+  "parity_complete": false,
+  "promoted": false,
+  "next_unit": "R037_DH05_ACCEPTANCE_TF_ROUTED_GENERATOR_OWNERSHIP_CHALLENGER_REPLAY_NON_PROMOTING",
+  "integrated_r037_sorb_started": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
