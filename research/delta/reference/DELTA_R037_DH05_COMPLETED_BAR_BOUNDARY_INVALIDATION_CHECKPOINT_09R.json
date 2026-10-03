@@ -1,0 +1,70 @@
+{
+  "schema": "delta-r037-dh05-completed-bar-boundary-invalidation-checkpoint-09r-v1",
+  "status": "COMPLETE_NEGATIVE_QA_COMPLETED_BAR_BOUNDARY_INVALIDATION_REJECTED_GENERATOR_OWNERSHIP_PIVOT",
+  "unit": "R037_DH05_COMPLETED_BAR_BOUNDARY_INVALIDATION_WITH_GLOBAL_NO_REARM_PARITY_RECONSTRUCTION",
+  "parent": "R037_DH05_BOUNDARY_VALID_EXECUTION_MANDATE_CHECKPOINT_09Q",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "august_accessed": false,
+  "numeric_vector_retune": false,
+  "producer_commit": "f28f1f3171a899c6f7cf5e863b7d396abc272de5",
+  "producer_blob_sha": "d3050c1b321da3922b694b5c3d6a6a848b77b01d",
+  "producer_file_sha256": "72fcca468c1bb470659176bf6ad9fb37bebb95c28b218ab8ea0c9416d7efef81",
+  "runtime_result_sha256": "72bff0871e349e05826cdad50a3c6c21e1c6ff4bfcd682729cb09eb7423c5ca0",
+  "runtime_seconds": 10.35,
+  "max_rss_kb": 698968,
+  "prior_best_09l": {
+    "aggregate_trade_count_abs_error": 304
+  },
+  "ranking": [
+    {
+      "profile": "REVTF_CLOSE__MAXHOLD_ONLY",
+      "aggregate_trade_count_abs_error": 359,
+      "s06_trades": 676,
+      "s06_wins": 287,
+      "s06_reentries": 27
+    },
+    {
+      "profile": "ACCTF_CLOSE__MAXHOLD_ONLY",
+      "aggregate_trade_count_abs_error": 359,
+      "s06_trades": 676,
+      "s06_wins": 287,
+      "s06_reentries": 27
+    },
+    {
+      "profile": "ACCTF_CLOSE__LOSING_EXIT",
+      "aggregate_trade_count_abs_error": 616,
+      "s06_trades": 969,
+      "s06_wins": 393,
+      "s06_reentries": 321
+    },
+    {
+      "profile": "REVTF_CLOSE__LOSING_EXIT",
+      "aggregate_trade_count_abs_error": 622,
+      "s06_trades": 953,
+      "s06_wins": 387,
+      "s06_reentries": 304
+    }
+  ],
+  "leading_fingerprint": {
+    "A03": "199/306",
+    "S05": "9/51",
+    "S06": "676/615",
+    "S09": "11/119",
+    "S10": "230/206",
+    "S16": "7/24"
+  },
+  "losing_acceptance_fingerprint": {
+    "A03": "309/306",
+    "S05": "16/51",
+    "S06": "969/615",
+    "S09": "19/119",
+    "S10": "322/206",
+    "S16": "16/24"
+  },
+  "decision": "REJECT_COMPLETED_BAR_BOUNDARY_INVALIDATION_AS_PARITY_SOLUTION",
+  "clue": "Execution-side lifetime/invalidation variants repeatedly fail to restore S05/S09 density without overproducing S06/S10. Pivot next to generator/ownership semantics; acceptance_tf=15 vectors show the largest trades-to-signal gaps.",
+  "parity_complete": false,
+  "next_unit": "R037_DH05_SIGNAL_TRADE_GAP_PROVENANCE_AND_ACCEPTANCE_CLOCK_OWNERSHIP_DIAGNOSTIC"
+}
