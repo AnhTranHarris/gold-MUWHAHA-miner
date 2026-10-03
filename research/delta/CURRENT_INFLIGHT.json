@@ -4,8 +4,8 @@
   "branch": "delta",
   "unit": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
   "parent_durable_unit": "R037_DH03_S06_SIGNAL_GENERATOR_PROVENANCE_DECISION_CHECKPOINT_13H",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "phase": "RESULT_COMMITTED",
+  "phase_rank": 3,
   "prereg": {
     "path": "research/delta/reference/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_EVIDENCE_14A.json",
     "commit": "eb664c687ad772117e733b68cb73a6b241ef87d6",
@@ -16,7 +16,12 @@
     "commit": "07734bf76b6062e3840e8e6ad3b0fc27dca63870",
     "blob_sha": "f100e5274466def8fc5aebf1a994c513d80ed3c3"
   },
-  "result": null,
+  "result": {
+    "path": "research/delta/reference/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A.json",
+    "commit": "985f1fc6b73419addef0bd11d99e27424446cf92",
+    "blob_sha": "25863137724183682144de99dc1b251d5d849218",
+    "runtime_sha256": "900ab0dcc0fd56fe58abb73d97a8f0fefb7804bf9ad05d9e8fc8850f5eba0eed"
+  },
   "report": null,
   "manifest": null,
   "timeout_recovery": {
