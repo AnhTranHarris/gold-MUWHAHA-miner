@@ -1,0 +1,36 @@
+{
+  "schema": "delta-r037-dh02-s11-cleanroom-parity-11a-v1",
+  "status": "COMPLETE_CLEANROOM_PARITY_FAIL_LOCALIZED",
+  "unit": "R037_DH02_S11_CLEANROOM_PARITY_RECONSTRUCTION",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "vector_fingerprint": "50d1bb2e656e",
+  "numeric_vector_retune": false,
+  "august_accessed": false,
+  "profiles": {
+    "DUAL_SIDE_EVENT_NO_CONTEXT_DIAGNOSTIC": {
+      "actual": {"signals":166,"signal_sha256":"6a0d086b9740ac20b943c3cf06a647474d87ec80639cb2cb32a5c7e010573245","breaks":392,"accepted":387,"retests":352,"failed":190,"expired":36,"context_vetoes":0,"trades":166,"raw_positive_wins":71,"official_wins":71,"gross_profit":16.88,"gross_loss":-52.049999999999955,"net_profit":-35.16999999999996,"max_balance_drawdown":35.35999999906926},
+      "abs_error":{"trades":91,"raw_positive_wins":30,"gross_profit":7.489999999999998,"gross_loss":34.44999999999995,"net_profit":26.959999999999958},
+      "parity_score":9918.9
+    },
+    "DUAL_SIDE_EVENT_CONFLICT_ONLY_VETO": {
+      "actual": {"signals":106,"signal_sha256":"803fc20c55ed1d7f30356f2610392c12e6b43544f7f512bdd347cead69901dab","breaks":278,"accepted":276,"retests":236,"failed":130,"expired":42,"context_vetoes":86547,"trades":106,"raw_positive_wins":42,"official_wins":42,"gross_profit":7.799999999999998,"gross_loss":-35.100000000000044,"net_profit":-27.300000000000047,"max_balance_drawdown":27.439999999362044},
+      "abs_error":{"trades":31,"raw_positive_wins":1,"gross_profit":1.5900000000000025,"gross_loss":17.500000000000043,"net_profit":19.090000000000046},
+      "parity_score":3163.1800000000003
+    },
+    "SINGLE_GLOBAL_EVENT_CONFLICT_ONLY_VETO": {
+      "actual": {"signals":106,"signal_sha256":"803fc20c55ed1d7f30356f2610392c12e6b43544f7f512bdd347cead69901dab","breaks":278,"accepted":276,"retests":236,"failed":130,"expired":42,"context_vetoes":86547,"trades":106,"raw_positive_wins":42,"official_wins":42,"gross_profit":7.799999999999998,"gross_loss":-35.100000000000044,"net_profit":-27.300000000000047,"max_balance_drawdown":27.439999999362044},
+      "abs_error":{"trades":31,"raw_positive_wins":1,"gross_profit":1.5900000000000025,"gross_loss":17.500000000000043,"net_profit":19.090000000000046},
+      "parity_score":3163.1800000000003
+    }
+  },
+  "ranking":["DUAL_SIDE_EVENT_CONFLICT_ONLY_VETO","SINGLE_GLOBAL_EVENT_CONFLICT_ONLY_VETO","DUAL_SIDE_EVENT_NO_CONTEXT_DIAGNOSTIC"],
+  "finding":{
+    "leading_profile":"DUAL_SIDE_EVENT_CONFLICT_ONLY_VETO",
+    "exact_historical_parity":false,
+    "target":{"trades":75,"raw_positive_wins":41,"gross_profit":9.39,"gross_loss":-17.6,"net_profit":-8.21},
+    "next":"R037_DH02_S11_TICK_PERSISTENCE_AND_CONTEXT_SEMANTICS_PARITY_FINGERPRINT"
+  },
+  "mql5_authorized":false
+}
