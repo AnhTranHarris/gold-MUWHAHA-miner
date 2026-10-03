@@ -1,0 +1,176 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH05_GLOBAL_NO_REARM_REVERSAL_HYSTERESIS_CHECKPOINT_09P",
+  "status": "VERIFIED_DURABLE_NEGATIVE_QA_HYSTERESIS_REJECTED_STRUCTURAL_SIGNAL_TRADE_GAP_LOCALIZED",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH05_STATE_PERSISTENT_GLOBAL_NO_REARM_CHECKPOINT_09O",
+  "hypothesis": "Symmetric revdisp_atr hysteresis plus exact GLOBAL NO_REARM can preserve valid reversal state across neutral bars and restore sparse historical execution density.",
+  "falsification_condition": "No tested profile beats 09L aggregate error 304 without compensating dense-vector overproduction.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Preserved six-vector historical trade-count fingerprints",
+    "reference_count": 6,
+    "minimum_count": 6,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity QA only; six vectors retained."
+  },
+  "primary_metrics": {
+    "entry_quality": "Not optimized.",
+    "hold_persistence": "Not optimized.",
+    "economics": "S06 fixture parity fingerprint only.",
+    "gross_loss_drawdown": "Not optimization target.",
+    "activity": "Generator signals, hysteresis state reentries, same-minute blocks and six-vector trade-count error."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_global_no_rearm_reversal_hysteresis_parity.py",
+      "commit": "2dfb3532d991e74f7143d7f9c2de8b247aa1a40f",
+      "blob_sha": "8b1dd2b54a916cd181cde6235d5e23bb14e9ba38",
+      "file_sha256": "8e196a1909f0a82fa992cc7e4a2bb19388e22b49b107d297d1f2ceccd4d7991a"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "generator": "09F_POST_QUAL_ONE_SHOT",
+      "global_no_rearm": "SAME_UTC_MINUTE_REENTRY_PROHIBITED",
+      "hysteresis": "PLUS_REVDISP_CONFIRM_MINUS_REVDISP_INVALIDATE_NEUTRAL_PRESERVE",
+      "profiles": [
+        "SYMMETRIC_HYSTERESIS",
+        "SYMMETRIC_HYSTERESIS_MAXFAIL",
+        "NEUTRAL_RESET_RECONFIRM",
+        "NEUTRAL_RESET_RECONFIRM_MAXFAIL"
+      ]
+    },
+    "feature_order": [
+      "signal",
+      "execution_mandate",
+      "reversal_hysteresis",
+      "global_no_rearm",
+      "admission",
+      "trade"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "parity reconstruction only; no optimization split"
+    },
+    "runtime_dependencies": [
+      "Python",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "external_timeout_seconds": 120,
+      "atomic_output_write": true,
+      "committed_producer_before_compute": true,
+      "producer_blob_readback": true,
+      "numba_cache_isolation": "fresh per-unit NUMBA_CACHE_DIR",
+      "github_job_timeout_minutes": 10
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "Checkpoint 09O parent",
+      "path": "research/delta/reference/DELTA_R037_DH05_STATE_PERSISTENT_GLOBAL_NO_REARM_CHECKPOINT_09O.json"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "Stage-A P75 tick-rooted bars",
+      "fresh isolated 09P Numba cache"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH05_GLOBAL_NO_REARM_REVERSAL_HYSTERESIS_CHECKPOINT_09P.json",
+      "blob_sha": "0b513e756e2b75fd4c3cab47ed7e6b083b1b11a5",
+      "runtime_result_sha256": "e269eeb481649f33010fbcdc38240e813f82986ca4384462e9347cfb5ef213e8"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH05_GLOBAL_NO_REARM_REVERSAL_HYSTERESIS_CHECKPOINT_09P.md",
+      "blob_sha": "e12e9c21a39aa8b6a69e9800e51c3318ba7bb995"
+    }
+  ],
+  "qa": [
+    "Canonical January hash and 4,205,709 Stage-A ticks verified.",
+    "Exact committed producer and frozen dependencies used.",
+    "Official compute exit 0 in 11.06 s; max RSS 698,076 KB; fresh Numba cache.",
+    "Control aggregate trade-count error 336 reproduced; 09L best remains 304.",
+    "Best 09P NEUTRAL_RESET_RECONFIRM aggregate error 354.",
+    "S06 best 696/615 trades and 294/307 wins; win parity improves but trade density overproduces.",
+    "Sparse deficits remain A03 286/306, S05 11/51, S09 15/119, S16 9/24.",
+    "No numeric retuning; August sealed; SORB blocked; MQL5 unauthorized.",
+    "Workbook tab 75 A105:H116 written and read back."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh05_global_no_rearm_reversal_hysteresis_parity.py",
+    "command": "NUMBA_CACHE_DIR=<fresh-unit-cache> python research/delta/experiments/delta_r037_dh05_global_no_rearm_reversal_hysteresis_parity.py --source <canonical_january_gzip> --output <checkpoint_09p_runtime_json>",
+    "timing_semantics": "Exact one-shot generator; symmetric existing revdisp threshold; neutral preserve; GLOBAL NO_REARM.",
+    "expected_fingerprints": {
+      "control_error": 336,
+      "prior_09l_best_error": 304,
+      "best_09p_error": 354,
+      "s06_best_trades": 696,
+      "s06_best_wins": 294
+    },
+    "selected_interpretation": "HYSTERESIS_REJECTED_POST_SIGNAL_BOUNDARY_VALID_MANDATE_NEXT"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — parity reconstruction only",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "Frozen R9/Coinexx research fixture.",
+    "ownership_scheduler_spec": "No integrated R037 ownership replay.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01 research semantics unchanged.",
+    "trade_count_parity_spec": "Blocked until full R032 specialist parity.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH05_STATE_PERSISTENT_GLOBAL_NO_REARM_CHECKPOINT_09O",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A105:H116"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH05_BOUNDARY_VALID_EXECUTION_MANDATE_WITH_GLOBAL_NO_REARM_PARITY_RECONSTRUCTION",
+  "github_commits": [
+    "2dfb3532d991e74f7143d7f9c2de8b247aa1a40f",
+    "05f3017f94db582fbd9db006f48b965874189b78",
+    "8b1a6cc5d7bfb302c30e75ff3a840023e7604bfe"
+  ]
+}
