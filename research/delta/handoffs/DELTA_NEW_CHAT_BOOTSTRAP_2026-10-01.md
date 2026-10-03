@@ -201,9 +201,9 @@ REAL actually executes 17,305 more trades than SYNTH (+7.8895%), so opportunity 
 
 Use the REAL and SYNTH compact references as the baseline/goal pair before reopening the large raw evidence.
 
-## R9 MT5 functional summary — Gamma inspection closed
+## R9 MT5 functional summary — prior-lineage inspection closed
 
-The owner authorized a one-time read-only inspection of the R9 Gamma baseline solely to summarize R9 itself. That exception is complete and closed.
+The owner authorized a one-time read-only inspection of the historical R9 baseline solely to summarize R9 itself. That exception is complete and closed.
 
 Canonical DELTA-owned references:
 - `research/delta/reference/R9_MT5_EA_FUNCTIONAL_SUMMARY.md`
@@ -214,7 +214,7 @@ R9's canonical functional chain is:
 
 The inspected R9 source contains no multi-specialist router, news calendar, daily/weekly governor, dynamic lot sizing, martingale/grid, fixed take-profit, ML inference, or intermarket logic. Those are DELTA additions, not hidden R9 behavior.
 
-Do not reopen Gamma or another prior internal lineage unless the owner explicitly authorizes another exception.
+Do not reopen any prior internal lineage unless the owner explicitly authorizes another exception.
 
 ## DELTA_002 Dukascopy tick lab — VERIFIED_DURABLE
 
