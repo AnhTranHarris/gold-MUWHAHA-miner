@@ -1,0 +1,180 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH05_REVERSAL_STATE_PERSISTENT_EXECUTION_MANDATE_CHECKPOINT_09N",
+  "status": "VERIFIED_DURABLE_NEGATIVE_QA_STATE_PERSISTENCE_REJECTED_GLOBAL_NO_REARM_NEXT",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH05_SIGNAL_TO_EXECUTION_MANDATE_CHECKPOINT_09M",
+  "hypothesis": "A singular frozen POST_QUAL generator signal can persist as a downstream execution mandate only while causal reversal state remains valid or is reconfirmed.",
+  "falsification_condition": "State-persistent profiles fail to beat the one-shot/09L aggregate trade-count controls or improve sparse vectors only by overproducing dense S06/S10.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Preserved six-vector historical trade-count fingerprints",
+    "reference_count": 6,
+    "minimum_count": 6,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity QA only; all six frozen vectors retained."
+  },
+  "primary_metrics": {
+    "entry_quality": "Not optimized.",
+    "hold_persistence": "Not optimized.",
+    "economics": "S06 authoritative fixture used as parity fingerprint only.",
+    "gross_loss_drawdown": "Not an optimization target.",
+    "activity": "Generator signals, state-conditioned reentries, closed trades and six-vector count error."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_reversal_state_persistent_execution_mandate_parity.py",
+      "commit": "d6b7186fed5ec4d5442703f26de1ea2e967dd647",
+      "blob_sha": "2c37baf5c1ac3cc94de131c16185bdc8a4fcaa98",
+      "file_sha256": "63cace57bbd90d48beb56ceb4b546c90eafdd32ef3268119dc5f38cb92d3fc36"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "generator": "09F_POST_QUAL_ONE_SHOT",
+      "state_profiles": [
+        "BODY_SIGN_CHAIN",
+        "BODY_SIGN_CHAIN_MAXFAIL",
+        "REV_DISP_CHAIN",
+        "REV_DISP_CHAIN_MAXFAIL"
+      ],
+      "failure_clock": "FROZEN_NO_EXTENSION",
+      "next_execution_rule": "R032_GLOBAL_NO_REARM_SAME_UTC_MINUTE"
+    },
+    "feature_order": [
+      "signal",
+      "execution_mandate",
+      "state_reconfirmation",
+      "admission",
+      "trade"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "parity reconstruction only; no optimization split"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "external_timeout_seconds": 120,
+      "atomic_output_write": true,
+      "committed_producer_before_compute": true,
+      "producer_blob_readback": true,
+      "github_job_timeout_minutes": 10
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "Checkpoint 09M parent",
+      "path": "research/delta/reference/DELTA_R037_DH05_SIGNAL_TO_EXECUTION_MANDATE_CHECKPOINT_09M.json"
+    },
+    {
+      "name": "Checkpoint 09L frozen dependency",
+      "path": "research/delta/experiments/delta_r037_dh05_post_signal_intrabar_rearm_edge_parity.py",
+      "blob_sha": "4b7bf08ebb0437ee02cf8c8aa48ed6987db10f9c"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "Stage-A P75 tick-rooted bars reconstructed causally inside committed producer"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH05_REVERSAL_STATE_PERSISTENT_EXECUTION_MANDATE_CHECKPOINT_09N.json",
+      "blob_sha": "d8c24c1410c77da8ec67a2278352681f5f9af14c",
+      "runtime_result_sha256": "5d73747be66b05658c7ea601473ace2dbae87f301b4da5c205405a62be2218b2"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH05_REVERSAL_STATE_PERSISTENT_EXECUTION_MANDATE_CHECKPOINT_09N.md",
+      "blob_sha": "a0c60a05b8feb15e85ecf479c947995f2ca91eb0"
+    }
+  ],
+  "qa": [
+    "Recovered existing completed official result after interruption; did not rerun.",
+    "Committed producer blob exactly matched local official producer before persistence.",
+    "Canonical January hash verified and Stage-A tick count 4,205,709.",
+    "Official compute exited 0 in 7.51 s under 120 s hard timeout; max RSS 698,036 KB.",
+    "One-shot control aggregate trade-count error remained 336.",
+    "Best tested profile REV_DISP_CHAIN_MAXFAIL aggregate error 412; no profile beats control or 09L clue 304.",
+    "BODY_SIGN_CHAIN reconstructs A03 exactly at 306/306 but overproduces S06 781/615 and S10 377/206.",
+    "REV_DISP_CHAIN_MAXFAIL gives S06 707 trades / 295 wins / -164.88; win error 12 but trade count remains high.",
+    "Drive workbook tab 75 rows 81:92 already contained the same 09N result and selected next unit.",
+    "No numeric vector retuning; August sealed; SORB blocked; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh05_reversal_state_persistent_execution_mandate_parity.py",
+    "command": "python research/delta/experiments/delta_r037_dh05_reversal_state_persistent_execution_mandate_parity.py --source <canonical_january_gzip> --output <checkpoint_09n_json>",
+    "timing_semantics": "Ordered ticks; exact frozen 09F one-shot generator; reentry only on causal newly completed reversal-timeframe state; no automatic tick-by-tick reentry.",
+    "expected_fingerprints": {
+      "control_aggregate_trade_count_abs_error": 336,
+      "rev_disp_chain_maxfail_aggregate_trade_count_abs_error": 412,
+      "body_sign_chain_A03_trades": 306,
+      "body_sign_chain_S06_trades": 781,
+      "body_sign_chain_S10_trades": 377
+    },
+    "selected_interpretation": "NO_UNIVERSAL_STATE_PERSISTENCE_FREEZE_GLOBAL_NO_REARM_NEXT"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — parity reconstruction only",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "DELTA frozen R9/Coinexx execution used as research fixture.",
+    "ownership_scheduler_spec": "No integrated R037 ownership replay.",
+    "session_dst_spec": "DELTA frozen semantics unchanged.",
+    "risk_spec": "Fixed 0.01 research semantics unchanged.",
+    "trade_count_parity_spec": "Blocked until full R032 specialist parity.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH05_SIGNAL_TO_EXECUTION_MANDATE_CHECKPOINT_09M",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A81:H92"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH05_STATE_PERSISTENT_EXECUTION_WITH_GLOBAL_NO_REARM_PARITY_RECONSTRUCTION",
+  "github_commits": [
+    "d6b7186fed5ec4d5442703f26de1ea2e967dd647",
+    "93c549903c923015848b785b74e20e4e5a9ed0f6",
+    "6c7b443b0694bdb050712211189aced5e34def0f",
+    "296ebdf38e19d11c3afec35c0025a3757720650e"
+  ]
+}
