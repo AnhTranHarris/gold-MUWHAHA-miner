@@ -11,25 +11,28 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_DH02_S11_CLEANROOM_PARITY_CHECKPOINT_11A",
-    "current_phase": "R037_DH02_S11_TICK_PERSISTENCE_AND_CONTEXT_SEMANTICS_PARITY_FINGERPRINT_NEXT",
-    "first_incomplete_unit": "R037_DH02_S11_TICK_PERSISTENCE_AND_CONTEXT_SEMANTICS_PARITY_FINGERPRINT",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH02_S11_CLEANROOM_PARITY_CHECKPOINT_11A_MANIFEST.json",
-    "current_state_commit": "e4ddbfe6b8d477fc184112cb6a7f1299a78e820a",
-    "current_state_ci_run": 37149241116,
+    "last_verified_durable_unit": "R037_DH02_S11_TICK_PERSISTENCE_CONTEXT_CHECKPOINT_11B",
+    "current_phase": "R037_DH02_S11_EVENT_OWNERSHIP_AND_CONTEXT_STATE_PARITY_RECONSTRUCTION_NEXT",
+    "first_incomplete_unit": "R037_DH02_S11_EVENT_OWNERSHIP_AND_CONTEXT_STATE_PARITY_RECONSTRUCTION",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH02_S11_TICK_PERSISTENCE_CONTEXT_CHECKPOINT_11B_MANIFEST.json",
+    "current_state_commit": "c8cfc45cb1288813325a87cee550111e16969b71",
+    "current_state_ci_run": 37152367771,
     "current_state_ci_conclusion": "success"
   },
   "in_flight_unit": {
-    "unit": "R037_DH02_S11_TICK_PERSISTENCE_AND_CONTEXT_SEMANTICS_PARITY_FINGERPRINT",
-    "status": "EVIDENCE_PREREG_COMMITTED_OFFICIAL_COMPUTE_NOT_YET_DURABLE",
+    "unit": "R037_DH02_S11_EVENT_OWNERSHIP_AND_CONTEXT_STATE_PARITY_RECONSTRUCTION",
+    "status": "EVIDENCE_AND_PRODUCER_COMMITTED_OFFICIAL_COMPUTE_NOT_YET_DURABLE",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_DH02_S11_TICK_PERSISTENCE_CONTEXT_EVIDENCE_11B.json",
-        "commit": "21acf1cee5eae10e329c0118a878dc1c8ddfe322",
-        "blob_sha": "707777a0968adf3b99c49683c587befe2b5dec91"
+        "path": "research/delta/reference/DELTA_R037_DH02_S11_EVENT_OWNERSHIP_CONTEXT_STATE_EVIDENCE_11C.json",
+        "commit": "7a3fefc87367d14a1dbec4a46883eae0c78a31a4"
+      },
+      {
+        "path": "research/delta/experiments/delta_r037_dh02_s11_event_ownership_context_state_parity.py",
+        "commit": "1cd4ecb115f6f056d3adc04db4a5007baf41f99a"
       }
     ],
-    "next_action": "Build and commit the 11B producer against the frozen six-profile evidence matrix, then run the official bounded replay. Do not recreate the evidence ledger."
+    "next_action": "Use the producer commit recovery snapshot, verify exact blobs, and execute the bounded 11C replay. Do not recreate evidence or producer."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
