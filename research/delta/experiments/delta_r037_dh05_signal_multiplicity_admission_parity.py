@@ -856,16 +856,12 @@ def detect_signal_multiplicity(
     s15e, s15o, s15c, accdisp, acctf, maxfail, maxprobe, probeexc,
     reclaim, revdisp, effmin, revtf, mode,
 ):
-    # mode 0: one-shot post-qualification control.
-    # mode 1: after first signal, rearm only after reversal condition becomes false.
-    # mode 2: after first signal, rearm only after reclaim is lost; fire after reclaim+reversal recover.
-    # mode 3: after first signal, rearm only after tick path revisits original-break side,
-    #         then returns to failed-break side and reversal condition requalifies.
-    stage=0; oside=0; L=0; evatr=0.0; attempt_start=0; qualified_start=0; fstart=0
+    # Exact 09F serial state machine through first reversal; only post-signal rearm differs by mode.
+    stage=0; oside=0; L=0; evatr=0.0; event_start=0; attempt_start=0; qualified_start=0
+    fstart=0; reent=False
     latest_hi=0; latest_lo=0; si=0; hiel=True; loel=True; lastacc=-1; lastrev=-1
-    attempt_open=False; attempt_qualified=False; event_id=0; first_signal_seen=False
-    signal_armed=True; boundary_rearm_seen=False
-    cnt=np.zeros(8,np.int64)
+    attempt_open=False; attempt_qualified=False; cnt=np.zeros(8,np.int64)
+    event_id=0; first_signal_seen=False; signal_armed=True; boundary_rearm_seen=False
     MAX_SIG=100000
     sig_i=np.empty(MAX_SIG,np.int64); sig_side=np.empty(MAX_SIG,np.int8); sig_event=np.empty(MAX_SIG,np.int64)
     nsig=0; overflow=0
@@ -885,13 +881,13 @@ def detect_signal_multiplicity(
             if latest_hi and px<latest_hi: hiel=True
             if latest_lo and px>latest_lo: loel=True
             if latest_hi and hiel and px>=latest_hi:
-                stage=1; oside=1; L=latest_hi; evatr=ae; attempt_start=tm; qualified_start=0
+                stage=1; oside=1; L=latest_hi; evatr=ae; event_start=tm; attempt_start=tm; qualified_start=0
                 hiel=False; cnt[0]+=1; attempt_open=True; attempt_qualified=False; event_id+=1
-                first_signal_seen=False; signal_armed=True; boundary_rearm_seen=False
+                first_signal_seen=False; signal_armed=True; boundary_rearm_seen=False; reent=False
             elif latest_lo and loel and px<=latest_lo:
-                stage=1; oside=-1; L=latest_lo; evatr=ae; attempt_start=tm; qualified_start=0
+                stage=1; oside=-1; L=latest_lo; evatr=ae; event_start=tm; attempt_start=tm; qualified_start=0
                 loel=False; cnt[0]+=1; attempt_open=True; attempt_qualified=False; event_id+=1
-                first_signal_seen=False; signal_armed=True; boundary_rearm_seen=False
+                first_signal_seen=False; signal_armed=True; boundary_rearm_seen=False; reent=False
         if stage==0: continue
 
         if stage<=2:
@@ -907,38 +903,41 @@ def detect_signal_multiplicity(
         jacc=j5 if acctf==5 else j15
         ac=s5c[j5] if acctf==5 and j5>=0 else (s15c[j15] if j15>=0 else 0)
         ao=s5o[j5] if acctf==5 and j5>=0 else (s15o[j15] if j15>=0 else 0)
-        acc_end=s5e[j5] if acctf==5 and j5>=0 else (s15e[j15] if j15>=0 else 0)
 
         if stage==1:
             if oside*(px-L)>=probeexc*evatr:
                 stage=2
                 if qualified_start==0: qualified_start=tm
-            elif tm-attempt_start>maxprobe:
-                stage=0; oside=0; attempt_open=False; attempt_qualified=False; qualified_start=0
-                continue
+            else:
+                if tm-attempt_start>maxprobe:
+                    stage=0; oside=0; attempt_open=False; attempt_qualified=False; qualified_start=0
+                    continue
         if stage<2: continue
 
         if stage==2 and jacc>=0 and jacc!=lastacc:
             lastacc=jacc
+            acc_end=s5e[j5] if acctf==5 and j5>=0 else (s15e[j15] if j15>=0 else 0)
+            post_qual_bar=acc_end>qualified_start if qualified_start>0 else False
             q=oside*(ac-ao)>=accdisp*evatr and oside*(ac-L)>0
-            q=q and qualified_start>0 and acc_end>qualified_start
+            q=q and post_qual_bar
             if q:
                 cnt[2]+=1; stage=0; oside=0; attempt_open=False; attempt_qualified=False; qualified_start=0
                 continue
 
         recross=oside*(px-L)<0
-        if stage==2 and (tm-attempt_start>=maxprobe or recross):
-            stage=3; cnt[3]+=1; fstart=tm; attempt_open=False; attempt_qualified=False; qualified_start=0
+        if stage==2:
+            if tm-attempt_start>=maxprobe or recross:
+                stage=3; cnt[3]+=1; fstart=tm; attempt_open=False; attempt_qualified=False; qualified_start=0
+
         if stage==3:
-            if recross:
-                cnt[4]+=1; stage=4
-            elif tm-fstart>maxfail:
-                stage=0; oside=0; continue
-        elif stage>=4 and tm-fstart>maxfail:
-            stage=0; oside=0; continue
+            if recross and not reent:
+                reent=True; cnt[4]+=1; stage=4
+            elif fstart and tm-fstart>maxfail:
+                stage=0; oside=0; reent=False; continue
+        elif stage>=4 and fstart and tm-fstart>maxfail:
+            stage=0; oside=0; reent=False; continue
         if stage<4: continue
 
-        # Boundary-recycle rearm is tick-causal and independent of completed-bar checks.
         if mode==3 and first_signal_seen:
             if oside*(px-L)>=0:
                 boundary_rearm_seen=True
@@ -946,17 +945,16 @@ def detect_signal_multiplicity(
                 signal_armed=True
 
         jrev=j1 if revtf==1 else j5
-        if jrev<0 or jrev==lastrev: continue
-        rc=s1c[j1] if revtf==1 else s5c[j5]
-        ro=s1o[j1] if revtf==1 else s5o[j5]
-        reclaim_ok=(-oside)*(rc-L)>=reclaim*evatr
-
-        if stage==4:
+        rc=s1c[j1] if revtf==1 and j1>=0 else (s5c[j5] if j5>=0 else 0)
+        reclaim_ok=(-oside)*(rc-L)>=reclaim*evatr if jrev>=0 else False
+        if stage==4 and jrev>=0 and jrev!=lastrev:
             if reclaim_ok:
                 cnt[5]+=1; stage=5
-            else:
-                lastrev=jrev; continue
 
+        if stage<5 or jrev<0 or jrev==lastrev:
+            continue
+
+        ro=s1o[j1] if revtf==1 else s5o[j5]
         disp=(-oside)*(rc-ro)
         eff=1.0 if abs(rc-ro)>0 else 0.0
         reversal_ok=disp>=revdisp*evatr and eff>=effmin
@@ -965,12 +963,11 @@ def detect_signal_multiplicity(
             if mode==1 and not reversal_ok:
                 signal_armed=True
             elif mode==2 and not reclaim_ok:
-                signal_armed=True
-                stage=4
+                signal_armed=True; stage=4
             elif mode==3 and not reclaim_ok:
                 stage=4
 
-        if stage>=5 and reclaim_ok and reversal_ok and signal_armed:
+        if reversal_ok and signal_armed:
             if nsig<MAX_SIG:
                 sig_i[nsig]=i; sig_side[nsig]=-oside; sig_event[nsig]=event_id; nsig+=1
             else:
@@ -978,10 +975,9 @@ def detect_signal_multiplicity(
             if not first_signal_seen:
                 cnt[6]+=1; cnt[7]+=1; first_signal_seen=True
             if mode==0:
-                stage=0; oside=0
+                stage=0; oside=0; reent=False
             else:
-                signal_armed=False
-                boundary_rearm_seen=False
+                signal_armed=False; boundary_rearm_seen=False
         lastrev=jrev
 
     return cnt, sig_i[:nsig], sig_side[:nsig], sig_event[:nsig], overflow
@@ -1101,6 +1097,7 @@ def evaluate_signal_mode(mode, admission_latch, t, ask, bid, mid, st, ss, sl, b1
         if n=="S06": signal_s06_abs=abs(int(si.size)-672)
         unique_events=int(np.unique(se).size) if se.size else 0
         repeated=int(si.size-unique_events)
+        # Bounded ledger sample for causal audit; no raw-tick dump.
         sample_n=min(40,int(si.size))
         sample=[{
             "tick_index":int(si[q]),
@@ -1264,6 +1261,21 @@ def main():
     if got_postqual != expected_postqual_signals:
         raise SystemExit("POST_QUAL_BASE signal drift: "+json.dumps(got_postqual,sort_keys=True))
 
+    expected_postqual_funnel={
+        "A03":[6686,998,212,786,441,268,192,192],
+        "S05":[7727,309,32,277,54,19,9,9],
+        "S06":[3561,1599,248,1351,1210,695,651,651],
+        "S09":[7632,201,40,161,63,39,11,11],
+        "S10":[6440,1300,205,1095,637,309,227,227],
+        "S16":[7684,130,52,78,32,18,7,7],
+    }
+    one_shot=signal_results["ONE_SHOT_POST_QUAL__ONE_POSITION_ONLY"]
+    for n,exp in expected_postqual_funnel.items():
+        got=list(one_shot["vectors"][n]["funnel"].values())
+        if got != exp:
+            raise SystemExit("POST_QUAL_BASE funnel drift "+n+": "+json.dumps(got))
+    expected_postqual_signals={k:int(v[-1]) for k,v in expected_postqual_funnel.items()}
+
     ranking=[]
     for pname,r in signal_results.items():
         ranking.append({
@@ -1291,6 +1303,13 @@ def main():
         "profiles": results,
         "signal_profiles": signal_results,
         "control_09e_reproduced_exact_stage_errors": control_parity,
+        "postqual_generator_control_reproduced": True,
+        "postqual_generator_expected": expected_postqual_signals,
+        "admission_semantics": {
+            "ONE_POSITION_ONLY": "signal admitted whenever flat, including same tick after an exit",
+            "POSITION_OBSERVATION_LATCH": "same one-position rule plus suppression on the tick that closes the prior position",
+            "lifecycle": "R9/Coinexx ask-bid execution; 0.30 initial stop on executable quote side; 0.10/0.03 trailing stop; integer-second 30s max hold; $0.01 entry + $0.01 exit commissions",
+        },
         "postqual_generator_control_reproduced": True,
         "postqual_generator_expected": expected_postqual_signals,
         "admission_semantics": {
