@@ -1,0 +1,69 @@
+{
+  "schema": "delta-r037-dh05-probe-attempt-strict-beyond-checkpoint-10d-v1",
+  "status": "COMPLETE_NEGATIVE_QA_STRICT_BEYOND_REJECTED",
+  "unit": "R037_DH05_PROBE_RESIDUAL_CAUSAL_ATTEMPT_IDENTITY_PROVENANCE_RECONCILIATION",
+  "parent": "R037_DH05_PROBE_RESIDUAL_BOUNDARY_EPOCH_CHECKPOINT_10C",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "producer_path": "research/delta/experiments/delta_r037_dh05_probe_attempt_strict_beyond.py",
+  "producer_commit": "12a0da73233f149bf52aa983eec92e86e199950f",
+  "producer_blob_sha": "6afba6e129b0735a1b1d1918109715208c759412",
+  "producer_file_sha256": "9cb64ca51a3ef28a82621b74c71030bf993e6a74ff418125d5fea50fcce6cdd9",
+  "official_full_result_sha256": "98fe1d481f25122e9b6ef43e83991c9d773685f8a4032334c2167598ff772872",
+  "control_09z": {
+    "probe_abs_error": 449,
+    "total_abs_error": 782,
+    "trade_count_abs_error": 335
+  },
+  "profiles": {
+    "STRICT_REATTEMPT_BEYOND": {
+      "probe_abs_error": 2855,
+      "total_abs_error": 3194,
+      "trade_count_abs_error": 336,
+      "s06_veto": false,
+      "probe_counts": {
+        "A03": 6147,
+        "S05": 7286,
+        "S06": 3370,
+        "S09": 7273,
+        "S10": 5954,
+        "S16": 7305
+      }
+    },
+    "STRICT_ALL_BEYOND": {
+      "probe_abs_error": 4098,
+      "total_abs_error": 4435,
+      "trade_count_abs_error": 336,
+      "s06_veto": false,
+      "probe_counts": {
+        "A03": 6001,
+        "S05": 7019,
+        "S06": 3240,
+        "S09": 7063,
+        "S10": 5790,
+        "S16": 6979
+      }
+    }
+  },
+  "finding": {
+    "interpretation": "Boundary-touch-inclusive probe accounting is required by the preserved historical fingerprint. Enforcing strict-beyond attempt creation removes thousands of probe observations but barely changes qualified/downstream stages.",
+    "carry_forward_eligible": false
+  },
+  "decision": "REJECT_STRICT_BEYOND_PROBE_CREATION_PRESERVE_CONTACT_INCLUSIVE_ATTEMPT_OPENING",
+  "runtime": {
+    "wall_seconds": 18.94,
+    "max_rss_kb": 699392,
+    "timeout_seconds": 120,
+    "faulthandler": true,
+    "fresh_numba_cache": true,
+    "atomic_output": true,
+    "recovery_artifact_run": 37145180805,
+    "recovery_artifact_id": 11281952799,
+    "recovery_artifact_digest": "sha256:07efdc091e6ff571b2eb0eae38d88a1270a02abd68894ef550949b497b94a0bd"
+  },
+  "august_2026": "SEALED",
+  "sorb_integrated_replay_started": false,
+  "mql5_authorized": false,
+  "next_unit": "R037_DH05_PROBE_RESIDUAL_ATTEMPT_REARM_COMPLETION_PROVENANCE_RECONCILIATION"
+}
