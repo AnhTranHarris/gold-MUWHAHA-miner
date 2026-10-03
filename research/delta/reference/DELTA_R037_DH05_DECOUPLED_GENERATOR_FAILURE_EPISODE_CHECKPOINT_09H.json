@@ -1,0 +1,181 @@
+{
+  "schema": "delta-r037-dh05-decoupled-generator-failure-episode-checkpoint-09h-v1",
+  "unit": "R037_DH05_DECOUPLED_PROBE_GENERATOR_AND_FAILURE_EPISODE_PARITY_RECONSTRUCTION",
+  "status": "COMPLETE_NEGATIVE_QA_FULL_DECOUPLING_REJECTED_PARTIAL_DECOUPLING_CLUE",
+  "parent": "R037_DH05_POSTQUAL_STATE_REFRESH_CHECKPOINT_09G",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "producer_path": "research/delta/experiments/delta_r037_dh05_decoupled_generator_failure_episode_parity.py",
+  "producer_commit": "17add311ec3429aee46f1399b4d52cb74fdbb3c7",
+  "producer_blob_sha": "776359c884d4404aeead23eec81eb11292569e49",
+  "producer_file_sha256": "033aab5c4aa006eae9ac790dda8e9e555f7d23e5edec4e966b79b1f5ba920f48",
+  "official_runtime_output_sha256": "4eb7d86721f6b8d2b696d06d34a0364fd2ece2352b03945dbfc296dee8b4c705",
+  "profiles": {
+    "CONTROL_09E": {
+      "total_abs_error": 1064,
+      "probe_qualified_abs_error": 554
+    },
+    "POST_QUAL_BASE": {
+      "total_abs_error": 978,
+      "probe_qualified_abs_error": 697
+    },
+    "DECOUPLED_09E": {
+      "total_abs_error": 14285,
+      "probe_qualified_abs_error": 8440,
+      "max_concurrent_failure_episodes": 8,
+      "episode_overflow": 0,
+      "stage_abs_error": {
+        "probe": 6545,
+        "qualified": 1895,
+        "accepted": 334,
+        "failure": 1739,
+        "reentry": 1425,
+        "reclaim": 809,
+        "reversal": 769,
+        "signal": 769
+      }
+    },
+    "DECOUPLED_POST_QUAL": {
+      "total_abs_error": 14260,
+      "probe_qualified_abs_error": 8437,
+      "max_concurrent_failure_episodes": 8,
+      "episode_overflow": 0,
+      "stage_abs_error": {
+        "probe": 6543,
+        "qualified": 1894,
+        "accepted": 194,
+        "failure": 1748,
+        "reentry": 1463,
+        "reclaim": 834,
+        "reversal": 792,
+        "signal": 792
+      }
+    }
+  },
+  "selected_vector_fingerprints": {
+    "S05": {
+      "target": [
+        7875,
+        318,
+        28,
+        290,
+        51,
+        15,
+        9,
+        9
+      ],
+      "decoupled_postqual": [
+        7818,
+        315,
+        34,
+        281,
+        56,
+        20,
+        9,
+        9
+      ]
+    },
+    "S09": {
+      "target": [
+        7748,
+        208,
+        40,
+        168,
+        61,
+        40,
+        9,
+        9
+      ],
+      "decoupled_postqual": [
+        7856,
+        219,
+        44,
+        175,
+        65,
+        41,
+        11,
+        11
+      ]
+    },
+    "S16": {
+      "target": [
+        7870,
+        135,
+        43,
+        92,
+        37,
+        18,
+        8,
+        8
+      ],
+      "decoupled_postqual": [
+        7778,
+        134,
+        53,
+        81,
+        33,
+        19,
+        8,
+        8
+      ]
+    },
+    "S06": {
+      "target": [
+        3470,
+        1606,
+        245,
+        1358,
+        1211,
+        683,
+        617,
+        617
+      ],
+      "decoupled_postqual": [
+        7373,
+        3117,
+        370,
+        2747,
+        2412,
+        1372,
+        1281,
+        1281
+      ]
+    },
+    "S10": {
+      "target": [
+        6496,
+        1316,
+        202,
+        1106,
+        623,
+        294,
+        206,
+        206
+      ],
+      "decoupled_postqual": [
+        7778,
+        1536,
+        223,
+        1313,
+        772,
+        373,
+        283,
+        283
+      ]
+    }
+  },
+  "findings": [
+    "Immediate generator release at FAILURE_CANDIDATE massively overproduces the family and is rejected.",
+    "No episode-array overflow occurred; maximum concurrent failed-break episodes was 8, so the rejection is scientific rather than an implementation-capacity artifact.",
+    "Despite global failure, S05/S09/S16 become strikingly close to historical counts under decoupled post-qualification semantics.",
+    "S06/S10 overproduce strongly, implying partial decoupling is plausible but FAILURE_CANDIDATE is too early a release point.",
+    "Next causal boundary is generator release at REENTRY or RECLAIM while the downstream episode continues."
+  ],
+  "decision": "REJECT_FULL_FAILURE_CANDIDATE_DECOUPLING_TEST_LATER_RELEASE_AT_REENTRY_OR_RECLAIM",
+  "parity_complete": false,
+  "integrated_r037_sorb_started": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "next_unit": "R037_DH05_PARTIAL_DECOUPLING_RELEASE_AT_REENTRY_OR_RECLAIM_PARITY_RECONSTRUCTION"
+}
