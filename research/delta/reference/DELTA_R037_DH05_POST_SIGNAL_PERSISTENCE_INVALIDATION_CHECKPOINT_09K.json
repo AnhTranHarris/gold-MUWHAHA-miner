@@ -1,0 +1,81 @@
+{
+  "schema": "delta-r037-dh05-post-signal-persistence-invalidation-checkpoint-09k-v1",
+  "unit": "R037_DH05_POST_SIGNAL_EPISODE_PERSISTENCE_AND_INVALIDATION_PARITY_RECONSTRUCTION",
+  "status": "COMPLETE_NEGATIVE_QA_POST_SIGNAL_LIFETIME_EXTENSION_REJECTED",
+  "parent": "R037_DH05_SIGNAL_MULTIPLICITY_ADMISSION_CHECKPOINT_09J",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "producer_path": "research/delta/experiments/delta_r037_dh05_post_signal_persistence_invalidation_parity.py",
+  "producer_commit": "4e16b70f28fcaa1e0389010b7d39c9a6d87f5b2e",
+  "producer_blob_sha": "60debec9c4c4e8f468a8a768a5949514c802da30",
+  "producer_file_sha256": "6dd2ced331abf671fe688eb8aa847c4af350691b1ee3d17ca3be3169a21463d8",
+  "official_runtime_output_sha256": "d41fbc1c6ba548017e7ef1a6f4b246350d6e0c9952e53fe36ad6544f870c2031",
+  "runtime": {
+    "elapsed_s": 26.13,
+    "rss_kb": 700332,
+    "external_timeout_s": 120
+  },
+  "controls": {
+    "boundary_recycle_trade_error": 324,
+    "one_shot_trade_error": 336,
+    "control_gates_passed": true,
+    "signal_overflow": 0
+  },
+  "tested_profiles": {
+    "SIGNAL_REFRESH_CLOCK_REVERSAL_TOGGLE": {
+      "no_latch_trade_error": 7279,
+      "latch_trade_error": 7107,
+      "s06_no_latch": {
+        "signals": 9247,
+        "trades": 7632,
+        "wins": 3348,
+        "net_usd": -1671.79
+      },
+      "s06_latch_trade_error": 6846
+    },
+    "SIGNAL_REFRESH_CLOCK_BAR_EDGE": {
+      "no_latch_trade_error": 8241,
+      "latch_trade_error": 7955,
+      "s06_no_latch": {
+        "signals": 10930,
+        "trades": 8441,
+        "wins": 3679,
+        "net_usd": -1859.58
+      }
+    },
+    "PERSIST_UNTIL_ORIGINAL_REBREAK_REVERSAL_TOGGLE": {
+      "no_latch_trade_error": 59831,
+      "latch_trade_error": 58651,
+      "s06_no_latch": {
+        "signals": 56538,
+        "trades": 48946,
+        "wins": 22077,
+        "net_usd": -10446.85
+      }
+    },
+    "PERSIST_UNTIL_ORIGINAL_REBREAK_BAR_EDGE": {
+      "no_latch_trade_error": 66847,
+      "latch_trade_error": 64963,
+      "s06_no_latch": {
+        "signals": 65610,
+        "trades": 53787,
+        "wins": 24197,
+        "net_usd": -11502.38
+      }
+    }
+  },
+  "findings": [
+    "Refreshing the frozen max_failure_age at each post-signal event massively overproduces, especially S06.",
+    "Disabling post-signal failure expiry until causal retake of the original breakout boundary creates catastrophic signal/trade density.",
+    "The position-observation latch reduces some overproduction but cannot rescue any extended-lifetime profile.",
+    "Historical DH05 post-signal lifetime is therefore constrained; simple longer persistence is rejected.",
+    "Checkpoint 09J boundary-recycle remains the best tested profile, but only as a weak clue and not a frozen semantic."
+  ],
+  "decision": "REJECT_POST_SIGNAL_CLOCK_REFRESH_AND_PERSIST_UNTIL_ORIGINAL_REBREAK",
+  "parity_complete": false,
+  "integrated_r037_sorb_started": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "next_unit": "R037_DH05_POST_SIGNAL_INTRABAR_REARM_EDGE_PARITY_RECONSTRUCTION"
+}
