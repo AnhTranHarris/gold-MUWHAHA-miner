@@ -1,0 +1,161 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_DECISION_CHECKPOINT_11G",
+  "status": "VERIFIED_COMPLETE_PROVENANCE_LIMITATION_FREEZE",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_CHECKPOINT_11F",
+  "hypothesis": "Surviving DH02 provenance supports causal persistent failure acceptance, but does not preserve an exact historical tick-memory/reset algorithm for S11.",
+  "falsification_condition": "Do not freeze an exact tick-memory/reset rule unless independently encoded by surviving source/provenance; same-sample fit alone is insufficient.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "historical DH02-S11 Stage-A standalone fixture",
+    "reference_count": 75,
+    "minimum_count": 75,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Provenance decision only; no promotion."
+  },
+  "primary_metrics": {
+    "entry_quality": "provenance decision only",
+    "hold_persistence": "unchanged",
+    "economics": "11F latch worsens GP/net and does not repair GL tail",
+    "gross_loss_drawdown": "11F latch GL -35.09 vs control -35.10; no material repair",
+    "activity": "11D challenger 103/41 vs target 75/41; retained non-promoting"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh02_s11_failure_state_memory_provenance_decision.py",
+      "commit": "0cce3365b4573ab402d36b4b7bc8e90d9d955863",
+      "blob_sha": "9960b102e66037503febc1a2076614b97489738c"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "a78a8fe7550bd02433ce8a7d3fdae563fcd953e8"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "frozen_general_failure_semantic": "Failure acceptance must be causal and persistent; a single adverse tick is insufficient.",
+      "exact_tick_memory_algorithm_preserved": false,
+      "preserve_11d_challenger_separately": true,
+      "promote_11d_as_historical_truth": false,
+      "s11_stream_disposition": "PROVENANCE_LIMITED_BEST_RECONSTRUCTION_11D_NON_PROMOTING"
+    },
+    "feature_order": [
+      "source provenance gate"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "11D/11F fixtures referenced; no market replay in 11G"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "provenance decision only"
+    },
+    "runtime_dependencies": [
+      "Python 3.11"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 30,
+      "faulthandler": true,
+      "producer_atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_preexecution_verification": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "11G provenance evidence",
+      "path": "research/delta/reference/DELTA_R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_EVIDENCE_11G.json",
+      "commit": "26f9ecc5fe2dd1f5fca0ab8b356e89f8b906b395",
+      "blob_sha": "e81ee16dc9ad341c3dda79849e190a365d63e9ee"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_DECISION_CHECKPOINT_11G.json",
+      "commit": "3b59cbb1024242c209bc95dc8dafecc2fa8a9ca0",
+      "blob_sha": "1fa08e72ab7b5b24131a575ce7e6f725d1ed47be",
+      "official_result_sha256": "1c6f2745818a4ef6985bf21110477461a73b6645577bcd576a00587ee3fec948"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_DECISION_CHECKPOINT_11G.md",
+      "commit": "582f4651d3ffe2356fb56490082f416b1cb63285",
+      "blob_sha": "6daa9103e3d31e1c8153d26f7418c17870b1a029"
+    }
+  ],
+  "qa": [
+    "11F durable result/report/workbook recovered without rerunning official compute.",
+    "Original DH02 white paper requires causal S1/S5 acceptance beyond buffer and states a single adverse tick is insufficient.",
+    "Immutable S11 preserves failure_acceptance=tick persistence but no exact historical reset/memory algorithm survives.",
+    "11F latch recuts remove one winner and leave the gross-loss tail effectively unchanged.",
+    "No independent exact tick-memory provenance was found.",
+    "Failure-memory recuts closed to avoid retrospective same-sample fitting.",
+    "11D invalid-context-break challenger retained separately as non-promoting source-compatible surrogate.",
+    "No raw market replay, no numeric retune, no August, no SORB integration, no MQL5.",
+    "Workbook tab 75 A364:H371 written and read back."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh02_s11_failure_state_memory_provenance_decision.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 30 -- python research/delta/experiments/delta_r037_dh02_s11_failure_state_memory_provenance_decision.py --evidence <11G evidence> --output <11G result>",
+    "timing_semantics": "provenance-only deterministic decision; no market chronology accessed",
+    "expected_fingerprints": {
+      "promote_failure_memory_latch_semantic": false,
+      "run_more_same_sample_failure_memory_recuts": false,
+      "s11_stream_disposition": "PROVENANCE_LIMITED_BEST_RECONSTRUCTION_11D_NON_PROMOTING"
+    },
+    "selected_interpretation": "PROVENANCE_LIMITED_S11_CLOSE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — R032 specialist parity incomplete",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA semantics",
+    "ownership_scheduler_spec": "not ready",
+    "session_dst_spec": "frozen DELTA semantics",
+    "risk_spec": "fixed 0.01 research semantics",
+    "trade_count_parity_spec": "blocked pending S08/DH03 specialist reconstruction",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_CHECKPOINT_11F",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A364:H371"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH02_S08_CLEANROOM_PARITY_RECONSTRUCTION",
+  "github_commits": [
+    "26f9ecc5fe2dd1f5fca0ab8b356e89f8b906b395",
+    "0cce3365b4573ab402d36b4b7bc8e90d9d955863",
+    "3b59cbb1024242c209bc95dc8dafecc2fa8a9ca0",
+    "582f4651d3ffe2356fb56490082f416b1cb63285"
+  ]
+}
