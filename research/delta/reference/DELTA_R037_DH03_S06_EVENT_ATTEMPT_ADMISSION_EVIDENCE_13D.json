@@ -1,0 +1,104 @@
+{
+  "schema": "delta-r037-dh03-s06-event-attempt-admission-evidence-13d-v1",
+  "status": "PREREGISTERED_BEFORE_COMPUTE",
+  "unit": "R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_AND_EXECUTION_PARITY_RECONSTRUCTION",
+  "parent_checkpoint": "R037_DH03_S06_EVENT_MULTIPLICITY_CHECKPOINT_13C",
+  "active_parent": "R032-C03_PLUS_DH02_S11_S08",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "canonical_stage_a": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "ticks": 4205709,
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+  },
+  "frozen_generator": {
+    "vector": "DH03-S06 / a3a086b7344c",
+    "profile": "POST_PULLBACK_REARM_FRESH_EXHAUSTION",
+    "signal_count": 1586,
+    "signal_sha256": "261b6ad5a1cab4dd4378ec40af7fdde4e5178e82694089b3bf2a28bc6bebfdea",
+    "semantics": [
+      "structural-priority M15/M30 parent",
+      "same valid pullback survives signal and rearms to PULLBACK_ACTIVE",
+      "fresh exhaustion required for each next attempt",
+      "S15 pivot reclaim level",
+      "LOCAL_RECLAIM observed on completed S5",
+      "reacceleration on later completed S5",
+      "original pullback age persists across attempts"
+    ],
+    "numeric_retune": false
+  },
+  "historical_target": {
+    "trades": 1563,
+    "raw_positive_wins": 690,
+    "gross_profit": 151.82,
+    "gross_loss": -490.75,
+    "net_profit": -338.93,
+    "max_balance_drawdown": 339.25
+  },
+  "control_13c": {
+    "signals": 1586,
+    "trades": 1513,
+    "raw_positive_wins": 674,
+    "official_wins": 661,
+    "gross_profit": 137.12,
+    "gross_loss": -476.26,
+    "net_profit": -339.14,
+    "max_balance_drawdown": 339.14,
+    "suppressed_while_occupied": 73
+  },
+  "provenance_constraints": {
+    "r9_execution": "one position at a time; BUY Ask/Bid exit; SELL Bid/Ask exit; stop 0.30; trail activation 0.10; trail distance 0.03; integer-second max hold 30s; 0.01 entry + 0.01 exit commission",
+    "r032_position_observation_latch": "post-exit state/action is processed only after the prior position has been observed and closed; same-tick rearm is not presumed",
+    "dh05_09j": "plain exit-tick latch was previously tested and did not create missing multiplicity",
+    "global_no_rearm": "ordinary generic same-minute rearm remains a parent invariant; this unit tests only specialist signal-attempt admission and does not create generic rearm trades"
+  },
+  "bounded_question": "When a fully causal DH03 ENTRY_ELIGIBLE attempt arrives while the one-position ledger is occupied, is that attempt permanently discarded, or can one pending specialist attempt survive the occupied interval and be admitted after the position-observation boundary?",
+  "profiles": [
+    {
+      "id": "DROP_OCCUPIED_CONTROL",
+      "semantics": "13C control: signal while occupied is discarded; flat signal may enter immediately, including same tick after an exit"
+    },
+    {
+      "id": "EXIT_TICK_LATCH_DROP",
+      "semantics": "13C control plus position-observation latch: any signal arriving on the tick that closes a position is also discarded"
+    },
+    {
+      "id": "PENDING_FIRST_AFTER_OBSERVATION",
+      "semantics": "while occupied, preserve only the first pending specialist attempt; after exit, do not enter on the exit tick; admit that pending attempt on the next observed flat tick; later occupied signals do not replace it"
+    },
+    {
+      "id": "PENDING_LATEST_AFTER_OBSERVATION",
+      "semantics": "while occupied, preserve only the most recent pending specialist attempt; after exit, do not enter on the exit tick; admit the latest pending attempt on the next observed flat tick; newer occupied attempts supersede older pending intent"
+    }
+  ],
+  "instrumentation": [
+    "generator signals and exact signal SHA",
+    "immediate admissions",
+    "signals rejected while occupied",
+    "pending tokens created",
+    "pending tokens replaced",
+    "pending tokens admitted after observation",
+    "signals blocked by exit-tick latch",
+    "executed trades",
+    "raw-positive and official wins",
+    "GP/GL/net/DD",
+    "side changes in pending replacement"
+  ],
+  "selection_rule": "No profile may alter generator timing, thresholds, exits, or allow simultaneous positions. A pending-attempt semantic may carry forward only if it materially closes the remaining 50-trade/16-raw-win gap while preserving the near-exact 13C net/DD fingerprint; an exact scalar match alone is insufficient without consistency with one-position and position-observation provenance.",
+  "forbidden": [
+    "numeric threshold retuning",
+    "signal-generator changes",
+    "simultaneous positions",
+    "pending-token TTL tuning",
+    "profit/exit optimization",
+    "August access",
+    "SORB integration",
+    "capital/lot changes",
+    "MQL5"
+  ],
+  "next_if_exact": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
+  "next_if_material_nonexact": "R037_DH03_S06_PENDING_ATTEMPT_VALIDITY_AND_SUPERSESSION_PARITY_RECONSTRUCTION",
+  "next_if_negative": "R037_DH03_S06_SIGNAL_GENERATOR_RESIDUAL_PROVENANCE_DECISION",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
