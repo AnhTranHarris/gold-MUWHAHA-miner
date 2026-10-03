@@ -1,0 +1,89 @@
+{
+  "schema": "delta-r037-dh02-s11-tick-persistence-context-evidence-11b-v1",
+  "unit": "R037_DH02_S11_TICK_PERSISTENCE_AND_CONTEXT_SEMANTICS_PARITY_FINGERPRINT",
+  "parent_checkpoint": "R037_DH02_S11_CLEANROOM_PARITY_CHECKPOINT_11A",
+  "vector_fingerprint": "50d1bb2e656e",
+  "historical_target": {
+    "trades": 75,
+    "raw_positive_wins": 41,
+    "gross_profit": 9.39,
+    "gross_loss": -17.6,
+    "net_profit": -8.21
+  },
+  "control_11a": {
+    "profile": "DUAL_SIDE_EVENT_CONFLICT_ONLY_VETO",
+    "signals": 106,
+    "trades": 106,
+    "raw_positive_wins": 42,
+    "gross_profit": 7.8,
+    "gross_loss": -35.1,
+    "net_profit": -27.3,
+    "breaks": 278,
+    "accepted": 276,
+    "retests": 236,
+    "failed": 130,
+    "expired": 42,
+    "context_vetoes": 86547,
+    "signal_sha256": "803fc20c55ed1d7f30356f2610392c12e6b43544f7f512bdd347cead69901dab"
+  },
+  "source_constraints": {
+    "r004_acceptance_dwell_categories": [
+      "tick persistence",
+      "250 ms",
+      "1 s",
+      "3 s",
+      "one completed S5",
+      "one completed S15"
+    ],
+    "r004_failure_acceptance_categories": [
+      "tick persistence",
+      "completed S1",
+      "completed S5"
+    ],
+    "tick_persistence_count_documented": false,
+    "parent_context_category": "conflict-only veto",
+    "exact_conflict_scope_documented": false,
+    "dh02_event_identity": "one boundary + one original break direction = one event",
+    "threshold_retuning_allowed": false
+  },
+  "diagnostic_profiles": [
+    {
+      "name": "CONTROL_NEXT_TICK_DECISION_CONTEXT",
+      "persistence_ticks": 1,
+      "context_scope": "break_and_rebreak"
+    },
+    {
+      "name": "TWO_TICK_DECISION_CONTEXT",
+      "persistence_ticks": 2,
+      "context_scope": "break_and_rebreak"
+    },
+    {
+      "name": "THREE_TICK_DECISION_CONTEXT",
+      "persistence_ticks": 3,
+      "context_scope": "break_and_rebreak"
+    },
+    {
+      "name": "NEXT_TICK_LIFECYCLE_CONTEXT",
+      "persistence_ticks": 1,
+      "context_scope": "continuous_lifecycle"
+    },
+    {
+      "name": "TWO_TICK_LIFECYCLE_CONTEXT",
+      "persistence_ticks": 2,
+      "context_scope": "continuous_lifecycle"
+    },
+    {
+      "name": "THREE_TICK_LIFECYCLE_CONTEXT",
+      "persistence_ticks": 3,
+      "context_scope": "continuous_lifecycle"
+    }
+  ],
+  "selection_rule": "Fingerprint only. A lower same-sample error does not establish historical truth unless the semantic is independently source-supported or later cross-vector reconstruction corroborates it.",
+  "carry_forward_rule": "Preserve only semantic relationships that materially tighten trade/win/economic parity without changing the frozen vector; do not claim exact historical parity from fit alone.",
+  "next_if_localized": "R037_DH02_S11_EVENT_OWNERSHIP_AND_CONTEXT_STATE_PARITY_RECONSTRUCTION",
+  "canonical_source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "august_2026": "SEALED",
+  "sorb_integrated_replay_started": false,
+  "mql5_authorized": false
+}
