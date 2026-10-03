@@ -23,7 +23,7 @@
     "unit": "R037_DH03_S06_PENDING_ATTEMPT_VALIDITY_AND_SUPERSESSION_PARITY_RECONSTRUCTION",
     "status": "NOT_STARTED_FROM_DURABLE_13D",
     "committed_artifacts": [],
-    "next_action": "Preregister causal pending-token validity tests from frozen DH03 state (pullback expiry, parent loss/opposition, structural invalidation, episode identity transition); do not fit a TTL or retune thresholds. Commit producer before official canonical January replay."
+    "next_action": "Trace the exact frozen 13C pullback episode lifecycle and test pending-token invalidation on parent opposition, structural invalidation, and max-age expiry before post-exit admission. No TTL tuning or generator changes."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
