@@ -1,0 +1,228 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH03_S06_EVENT_MULTIPLICITY_CHECKPOINT_13C",
+  "status": "VERIFIED_COMPLETE_MAJOR_PARITY_BREAKTHROUGH_FULL_PARITY_NOT_ACHIEVED",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH03_S06_STATE_FUNNEL_CHECKPOINT_13B",
+  "hypothesis": "The historical DH03-S06 population used a repeated-attempt lifecycle inside one still-valid pullback episode: after one ENTRY_ELIGIBLE signal, the original episode survives and rearms to PULLBACK_ACTIVE, requiring fresh exhaustion before another S5 reclaim/reacceleration attempt.",
+  "falsification_condition": "Reject this lifecycle if exact 13B control fails or same-episode fresh-exhaustion rearm does not materially close the 1563-trade population deficit while preserving causal order and compatible win/economic fingerprints.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "historical DH03-S06 Stage-A standalone fixture",
+    "reference_count": 1563,
+    "minimum_count": 1563,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity reconstruction only. 13C reaches 1513 trades; no promotion until full parent parity."
+  },
+  "primary_metrics": {
+    "entry_quality": "674 raw-positive wins / 1513 trades (~44.55%) vs historical 690 / 1563 (~44.15%).",
+    "hold_persistence": "R9 downstream lifecycle frozen.",
+    "economics": "GP +137.12 / GL -476.26 / net -339.14 vs target +151.82 / -490.75 / -338.93.",
+    "gross_loss_drawdown": "DD 339.14 vs historical 339.25; net/DD nearly exact despite 50-trade deficit.",
+    "activity": "1586 signals -> 1513 trades; 73 signals suppressed by one-position ledger. 93.59% of remaining 13B trade deficit closed."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_event_multiplicity_parity.py",
+      "commit": "41b4dcc43bb2e24d3e9beb3ea9ecc2beddc97df4",
+      "blob_sha": "2580b95d0b13e3fd8b30ea4f30b48af96395c2db",
+      "file_sha256": "70c99757af57bf979575b96014affb9580f59c7dcfec3dbfac0a0ddb3dbaa03c"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_event_multiplicity_engine.py",
+      "commit": "91fc4b03a0c9ad64ddf3683a63303fcb688f45fd",
+      "blob_sha": "0f5e458ec1c6274766a3b5fb7d04efc8bf4f661f",
+      "file_sha256": "b63996109e6cd4782d44dd7fa55e196d6407d6fe79e028c85dc5f8406308bae0"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_structure.py",
+      "commit": "9fd75852690003d8e6d65cfdb9bb67198264fcae",
+      "blob_sha": "edbe5ae9bcf2031fe06256467085889c4e108d52",
+      "file_sha256": "9df6fe9a2086cb4970e38a205f081ab0706e441629ce01a9292f4ddcbd445ce2"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "a78a8fe7550bd02433ce8a7d3fdae563fcd953e8",
+      "note": "120-second subprocess containment, isolated Numba cache, faulthandler, unbuffered output."
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "vector_fingerprint": "a3a086b7344c",
+      "counter_eff": 0.6468,
+      "exhaustion_decline": 0.4533,
+      "invalidation_buffer_atr": 0.3242,
+      "max_pullback_age_s": 513.6575,
+      "no_new_extreme_count": 1,
+      "parent_bundle": "M15/M30",
+      "parent_policy": "structural-priority",
+      "pullback_depth_atr": 0.4743,
+      "pullback_start_tf": "S15",
+      "reaccel_eff_min": 0.2854,
+      "reaccel_tf": "S5",
+      "reclaim_level_source": "S15 pivot",
+      "reclaim_observation_tf": "S5",
+      "selected_rearm_semantic": "SAME_PULLBACK_FRESH_EXHAUSTION_AFTER_SIGNAL"
+    },
+    "feature_order": [
+      "pullback episode starts",
+      "exhaustion",
+      "S5 reclaim",
+      "later S5 reacceleration",
+      "signal",
+      "same episode rearm to PULLBACK_ACTIVE",
+      "fresh exhaustion required",
+      "repeat until original event invalid/expired"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "clean-room parity reconstruction only; no optimization split"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "elapsed_seconds": 12.42,
+      "peak_rss_kb": 698016,
+      "faulthandler": true,
+      "python_unbuffered": true,
+      "isolated_numba_cache": true,
+      "producer_atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_preexecution_verification": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "13C prereg evidence",
+      "path": "research/delta/reference/DELTA_R037_DH03_S06_PULLBACK_EVENT_MULTIPLICITY_EVIDENCE_13C.json",
+      "commit": "149a405ebd879fd6bbfadd69890d8653cebb7158",
+      "blob_sha": "f20124e3d6b9eac2f5c5ed03337a85e6209fbcc3",
+      "file_sha256": "ed6a52611f836a8d97d55a06eb6a1d50e16e438f9383a2df457e36b454f7df9b"
+    },
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "Stage-A P75 bars, parent structural state, S15 causal pivots, repeated pullback episode IDs and signal attempt ledger."
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH03_S06_EVENT_MULTIPLICITY_CHECKPOINT_13C.json",
+      "commit": "80fbad3bd3252b62d2ef7a7d2b1e0d97de3449cb",
+      "blob_sha": "1ef123b02f06d59b4ace511bb0240e4461392536",
+      "official_raw_result_sha256": "145692aef5f9b8991a7435da6e5338f46223bc5fa05ffe5dcabf3674f131345c"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH03_S06_EVENT_MULTIPLICITY_CHECKPOINT_13C.md",
+      "commit": "77fe4153f518793d4ff1b611ea47ce7931d158ee",
+      "blob_sha": "6a73302fdb3dc8d02c656110ce8b56184cdeea56"
+    }
+  ],
+  "qa": [
+    "13B durable cursor and CI success verified before 13C preregistration.",
+    "13C evidence, engine, producer committed before official compute.",
+    "Canonical January SHA and Stage-A tick count verified.",
+    "Local producer/engine/evidence Git blobs exactly matched committed GitHub blobs before replay.",
+    "13B post-pullback S5-reclaim control reproduced exactly at 783 trades / 363 wins and exact signal SHA.",
+    "Fresh-exhaustion same-pullback rearm produced 1586 signals -> 1513 trades / 674 raw-positive wins.",
+    "Trade deficit shrank from 780 at 13B control to 50; 93.59% of deficit closed.",
+    "Net -339.14 differs from historical -338.93 by $0.21; DD 339.14 differs from 339.25 by $0.11.",
+    "453 of 563 signal-producing episodes emitted multiple signals; max 8; mean 2.817 signals per signal-producing episode.",
+    "New-adverse-extreme rearm is too restrictive; persistent-exhaustion rearm is far too permissive.",
+    "Any-causal pivot interaction remains diagnostic only.",
+    "Workbook tab 75 A427:H440 written and read back.",
+    "No numeric retuning; August not accessed; SORB blocked; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh03_s06_event_multiplicity_parity.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_dh03_s06_event_multiplicity_parity.py --source <canonical_january_gzip> --evidence research/delta/reference/DELTA_R037_DH03_S06_PULLBACK_EVENT_MULTIPLICITY_EVIDENCE_13C.json --output <13C_result_json>",
+    "timing_semantics": "Original pullback episode age persists across signal attempts; post-signal rearm requires fresh exhaustion, then completed-S5 reclaim through causal S15 pivot and later completed-S5 reacceleration.",
+    "expected_fingerprints": {
+      "control": {
+        "signals": 783,
+        "trades": 783,
+        "raw_positive_wins": 363,
+        "signal_sha256": "5c569c82ea7e94a9497220b28eb480761bf6c9ee5da1d0b03ac3e27c00bb259b"
+      },
+      "leading": {
+        "signals": 1586,
+        "trades": 1513,
+        "raw_positive_wins": 674,
+        "official_wins": 661,
+        "gross_profit": 137.12,
+        "gross_loss": -476.26,
+        "net_profit": -339.14,
+        "max_balance_drawdown": 339.14,
+        "unique_signal_episodes": 563,
+        "multi_signal_episodes": 453,
+        "max_signals_per_episode": 8
+      }
+    },
+    "selected_interpretation": "SAME_PULLBACK_REARM_TO_PULLBACK_ACTIVE_WITH_FRESH_EXHAUSTION"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — R032 specialist parity incomplete",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA semantics",
+    "ownership_scheduler_spec": "not ready; 13D admission semantics pending",
+    "session_dst_spec": "frozen DELTA semantics",
+    "risk_spec": "fixed 0.01 research semantics",
+    "trade_count_parity_spec": "blocked pending 13D admission/execution parity",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH03_S06_STATE_FUNNEL_CHECKPOINT_13B",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A427:H440"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_AND_EXECUTION_PARITY_RECONSTRUCTION",
+  "github_commits": [
+    "149a405ebd879fd6bbfadd69890d8653cebb7158",
+    "91fc4b03a0c9ad64ddf3683a63303fcb688f45fd",
+    "41b4dcc43bb2e24d3e9beb3ea9ecc2beddc97df4",
+    "80fbad3bd3252b62d2ef7a7d2b1e0d97de3449cb",
+    "77fe4153f518793d4ff1b611ea47ce7931d158ee"
+  ]
+}
