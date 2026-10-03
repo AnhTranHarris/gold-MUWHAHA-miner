@@ -21,25 +21,61 @@
   },
   "in_flight_unit": {
     "unit": "R037_DH03_S06_RECLAIM_LEVEL_CONSUMPTION_AND_PIVOT_REUSE_PARITY_RECONSTRUCTION",
-    "status": "PREREG_ENGINE_PRODUCER_COMMITTED_OFFICIAL_COMPUTE_NOT_YET_PERSISTED",
+    "status": "POSTCOMPUTE_RESULT_REPORT_WORKBOOK_DURABLE",
     "committed_artifacts": [
       {
         "role": "prereg_evidence",
         "path": "research/delta/reference/DELTA_R037_DH03_S06_RECLAIM_LEVEL_CONSUMPTION_PIVOT_REUSE_EVIDENCE_13G.json",
-        "commit": "2fbd1a54f1ada8aaa0c2831ae9bcb5142cc2442f"
+        "commit": "2fbd1a54f1ada8aaa0c2831ae9bcb5142cc2442f",
+        "blob_sha": "ecc29fc294a300016634fd0dff75275792f65e2b"
       },
       {
         "role": "engine",
         "path": "research/delta/experiments/delta_r037_dh03_s06_reclaim_consumption_engine.py",
-        "commit": "4f0eea113cf039fed36a725a7c4de77f1ddbea2f"
+        "commit": "4f0eea113cf039fed36a725a7c4de77f1ddbea2f",
+        "blob_sha": "8f019601a3a5b8aadf1f9c230d7f566e657edad5"
       },
       {
         "role": "producer",
         "path": "research/delta/experiments/delta_r037_dh03_s06_reclaim_consumption_parity.py",
-        "commit": "813ec9aba663f09225a6716890f049df53310edc"
+        "commit": "813ec9aba663f09225a6716890f049df53310edc",
+        "blob_sha": "de0505853e81ca04a6de163f5c37174f8e2784ce"
+      },
+      {
+        "role": "result",
+        "path": "research/delta/reference/DELTA_R037_DH03_S06_RECLAIM_LEVEL_CONSUMPTION_CHECKPOINT_13G.json",
+        "commit": "959fed30ab0c695328334e79eee55037530d6c61",
+        "blob_sha": "21fc2247e9813b33a2818e68762e1cb2bf7a2e85",
+        "official_raw_result_sha256": "25c685e579ab30728dbc2cd649ecc22fdb94000a0371813ef272aeb07da8cbdb"
+      },
+      {
+        "role": "report",
+        "path": "research/delta/research/DELTA_R037_DH03_S06_RECLAIM_LEVEL_CONSUMPTION_CHECKPOINT_13G.md",
+        "commit": "38ae09a52463e0a8e232ed734529985c11940d80",
+        "blob_sha": "11b9a2e15ad334ecd59b3432785c7466a10213ce"
+      },
+      {
+        "role": "workbook_readback",
+        "drive_spreadsheet_id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+        "tab": "75 R037 DH05 Episode QA",
+        "range": "A473:H483"
       }
     ],
-    "next_action": "Run exact committed 13G producer under bounded runner against canonical January Stage-A; do not recreate prereg/engine/producer. Persist result/report/workbook/manifest, advance CURRENT_STATE last, require green rebuild gate."
+    "supplementary_race_artifacts": [
+      {
+        "path": "research/delta/reference/DELTA_R037_DH03_S06_RECLAIM_CONSUMPTION_CHECKPOINT_13G.json",
+        "commit": "7caada6e86cf51df648dc06852610d59b5655b4a",
+        "role": "SUPPLEMENTARY_NON_PROMOTING_DUPLICATE_RESULT"
+      }
+    ],
+    "official_compute": {
+      "raw_result_sha256": "25c685e579ab30728dbc2cd649ecc22fdb94000a0371813ef272aeb07da8cbdb",
+      "elapsed_seconds": 10.03,
+      "peak_rss_kb": 698560,
+      "recovery_snapshot_run": 37159942295,
+      "recovery_snapshot_artifact_id": 11287117974
+    },
+    "next_action": "Create/verify full 13G rebuild manifest, advance CURRENT_STATE last, require green rebuild gate; then run only R037_DH03_S06_SIGNAL_GENERATOR_RESIDUAL_PROVENANCE_DECISION."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
