@@ -1,0 +1,218 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH02_S11_TICK_PERSISTENCE_CONTEXT_CHECKPOINT_11B",
+  "status": "VERIFIED_STRONG_NEGATIVE_LOCALIZATION_EXACT_PARITY_NOT_ACHIEVED",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH02_S11_CLEANROOM_PARITY_CHECKPOINT_11A",
+  "hypothesis": "The residual 31-trade DH02-S11 excess may be caused by the exact categorical meaning of tick persistence and/or by whether the frozen conflict-only context veto is evaluated only at break/rebreak decisions or continuously during the pre-entry event lifecycle.",
+  "falsification_condition": "If 2/3-tick persistence and continuous lifecycle conflict invalidation fail to materially move the frozen 106-trade reconstruction toward the 75-trade historical fixture without threshold changes, those semantics are rejected as the primary residual.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "historical DH02-S11 Stage-A standalone fixture",
+    "reference_count": 75,
+    "minimum_count": 75,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Historical parity target only; no candidate promotion."
+  },
+  "primary_metrics": {
+    "entry_quality": "parity reconstruction only",
+    "hold_persistence": "frozen R9 downstream lifecycle",
+    "economics": "historical target GP +9.39 / GL -17.60 / net -8.21",
+    "gross_loss_drawdown": "residual localization",
+    "activity": "historical 75 trades / 41 raw-positive wins"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh02_s11_tick_persistence_context_fingerprint.py",
+      "commit": "2823c95c012b1236fe6ad87c2d4526cf55aefbc2",
+      "blob_sha": "788959802b8ec98ac5629462fddda4a0082384cf",
+      "file_sha256": "8fc9eba9238aab94a779b5caa380a3a153038231e1bf037971ce41dea03ebd3f"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "a78a8fe7550bd02433ce8a7d3fdae563fcd953e8",
+      "file_sha256": "f30d6ec7d47076eca6fbbc23cdcd1d4165664533a6dd12ea5ccce4d12ebdc307"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "vector_id": "DH02-S11",
+      "vector_fingerprint": "50d1bb2e656e",
+      "persistence_profiles": [
+        1,
+        2,
+        3
+      ],
+      "context_scopes": [
+        "break_and_rebreak",
+        "continuous_lifecycle"
+      ],
+      "selected_leading_semantic": "CONTROL_NEXT_TICK_DECISION_CONTEXT",
+      "historical_parity_claimed": false
+    },
+    "feature_order": [
+      "M5 boundary",
+      "S1 break",
+      "tick acceptance",
+      "retest",
+      "tick failure",
+      "S5 rebreak",
+      "R9 lifecycle"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "historical parity reconstruction only"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "faulthandler": true,
+      "python_unbuffered": true,
+      "isolated_numba_cache": true,
+      "producer_atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_preexecution_verification": true,
+      "committed_recovery_snapshot_execution": true,
+      "control_gate": "11A counters and signal SHA must reproduce exactly"
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January Dukascopy XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "11B prereg/evidence",
+      "path": "research/delta/reference/DELTA_R037_DH02_S11_TICK_PERSISTENCE_CONTEXT_EVIDENCE_11B.json",
+      "commit": "21acf1cee5eae10e329c0118a878dc1c8ddfe322",
+      "blob_sha": "707777a0968adf3b99c49683c587befe2b5dec91",
+      "sha256": "b14bef91ba93fb8473898dc739f3abadc21e05894579070b2711b383011498c6"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "causal Stage-A P75 bars / ATR / swing / context arrays reconstructed inside committed producer"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH02_S11_TICK_PERSISTENCE_CONTEXT_CHECKPOINT_11B.json",
+      "commit": "844fae7afb0de78346ef20b300b20daa67364bcf",
+      "blob_sha": "801bf4ee7a561f47dcfe41d0e56a155ed65e792d",
+      "official_result_sha256": "24f09be8822a3830c764bd76ba1017071c91b6be5209a006ef74bb238a465b2b"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH02_S11_TICK_PERSISTENCE_CONTEXT_CHECKPOINT_11B.md",
+      "commit": "cc84eecd7b33fd453754600609ec401bf95783ca",
+      "blob_sha": "3fd6c6c79844b7e3f3d4426e4f3068537f19ecc8"
+    }
+  ],
+  "qa": [
+    "11A durable cursor verified before 11B compute.",
+    "11B evidence was already committed by the interrupted prior chain; it was reused rather than recreated.",
+    "Producer was committed before official compute.",
+    "GitHub Actions recovery artifact was used as the local execution snapshot.",
+    "Producer Git blob matched 788959802b8ec98ac5629462fddda4a0082384cf before execution.",
+    "Evidence Git blob matched 707777a0968adf3b99c49683c587befe2b5dec91 before execution.",
+    "Canonical January SHA and 4,205,709 Stage-A tick count verified.",
+    "Official replay completed in approximately 9.42 seconds under hardened bounded runner.",
+    "CONTROL_NEXT_TICK_DECISION_CONTEXT reproduced the 11A counters and signal SHA exactly.",
+    "1/2/3-tick decision profiles produced 106/108/106 trades versus historical 75.",
+    "Continuous lifecycle context profiles produced identical executable signal fingerprints/economics to their matching decision-only profiles.",
+    "Therefore hidden 2/3-tick persistence and simple continuous conflict invalidation are rejected as the primary missing 31-trade filter.",
+    "No numeric S11 threshold was retuned.",
+    "Workbook tab 75 A315:H326 written and read back.",
+    "August sealed; SORB blocked; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh02_s11_tick_persistence_context_fingerprint.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python -X faulthandler research/delta/experiments/delta_r037_dh02_s11_tick_persistence_context_fingerprint.py --source <canonical_january_gzip> --evidence research/delta/reference/DELTA_R037_DH02_S11_TICK_PERSISTENCE_CONTEXT_EVIDENCE_11B.json --output <checkpoint_11b.json>",
+    "timing_semantics": "Ordered ticks; completed bars only; frozen ATR at break; one/two/three causal tick persistence profiles; decision-only versus continuous conflict context; S5 rebreak; frozen R9 lifecycle.",
+    "expected_fingerprints": {
+      "target": {
+        "trades": 75,
+        "raw_positive_wins": 41,
+        "gross_profit": 9.39,
+        "gross_loss": -17.6,
+        "net_profit": -8.21
+      },
+      "control": {
+        "signals": 106,
+        "trades": 106,
+        "raw_positive_wins": 42,
+        "signal_sha256": "803fc20c55ed1d7f30356f2610392c12e6b43544f7f512bdd347cead69901dab"
+      },
+      "two_tick": {
+        "trades": 108,
+        "raw_positive_wins": 43,
+        "net_profit": -27.61
+      },
+      "three_tick": {
+        "trades": 106,
+        "raw_positive_wins": 42,
+        "net_profit": -27.39
+      }
+    },
+    "selected_interpretation": "NEXT_TICK_DECISION_CONTEXT_REMAINS_LEADING_BUT_NOT_HISTORICAL_PARITY"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — R032 specialist parent parity incomplete",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA semantics",
+    "ownership_scheduler_spec": "not ready",
+    "session_dst_spec": "frozen DELTA semantics",
+    "risk_spec": "fixed 0.01 research semantics",
+    "trade_count_parity_spec": "blocked pending S11/S08/DH03 specialist reconstruction",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH02_S11_CLEANROOM_PARITY_CHECKPOINT_11A",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A315:H326"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH02_S11_EVENT_OWNERSHIP_AND_CONTEXT_STATE_PARITY_RECONSTRUCTION",
+  "github_commits": [
+    "21acf1cee5eae10e329c0118a878dc1c8ddfe322",
+    "2823c95c012b1236fe6ad87c2d4526cf55aefbc2",
+    "844fae7afb0de78346ef20b300b20daa67364bcf",
+    "cc84eecd7b33fd453754600609ec401bf95783ca"
+  ]
+}
