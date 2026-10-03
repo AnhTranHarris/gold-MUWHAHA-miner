@@ -69,13 +69,7 @@ Long-lived signal-refresh and persist-until-rebreak rules overproduce badly:
 
 The preserved fingerprint now points away from manufacturing more generator signals.
 
-The stronger architectural hypothesis is different:
-
-> A single causal DH05 generator signal may authorize more than one executable entry while an execution-side mandate remains valid.
-
-That can explain why preserved historical trade counts can exceed the preserved signal-stage counts in A03/S05/S09/S16 without forcing the generator itself to emit thousands of extra signals.
-
-This is distinct from 09J/09K signal multiplicity. The next unit must keep generator counts frozen and vary only execution-side mandate persistence/re-entry.
+The surviving question is narrower: completed-bar rearm may be too coarse. The next bounded unit tests whether a causal **intrabar rearm edge** inside the still-frozen max-failure lifetime explains part of the sparse-vector deficit without extending episode lifetime or retuning vectors.
 
 ## Decision
 
@@ -98,6 +92,6 @@ Do not:
 
 ## Next bounded unit
 
-`R037_DH05_EXECUTABLE_MANDATE_MULTI_ENTRY_PARITY_RECONSTRUCTION`
+`R037_DH05_POST_SIGNAL_INTRABAR_REARM_EDGE_PARITY_RECONSTRUCTION`
 
-Test only whether one frozen generator signal can produce multiple executable entries under causal mandate persistence / invalidation rules, without creating extra generator signals.
+Test only a causal post-signal intrabar rearm edge while preserving the frozen max-failure lifetime, upstream state machine, and numeric vectors.
