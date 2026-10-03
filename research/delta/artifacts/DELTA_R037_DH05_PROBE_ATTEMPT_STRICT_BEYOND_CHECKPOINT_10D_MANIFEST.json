@@ -1,0 +1,209 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH05_PROBE_ATTEMPT_STRICT_BEYOND_CHECKPOINT_10D",
+  "status": "VERIFIED_NEGATIVE_QA_STRICT_BEYOND_REJECTED",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH05_PROBE_RESIDUAL_BOUNDARY_EPOCH_CHECKPOINT_10C",
+  "hypothesis": "Residual 09Z probe-count error is caused by counting boundary equality contacts as new probe attempts even though DH-05 prose defines PROBE as midpoint trading beyond L.",
+  "falsification_condition": "Reject if strict-beyond attempt creation worsens aggregate probe and total funnel parity.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "09Z six-vector parity fingerprint",
+    "reference_count": 6,
+    "minimum_count": 6,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "All six vectors retained."
+  },
+  "primary_metrics": {
+    "entry_quality": "not optimized",
+    "hold_persistence": "not optimized",
+    "economics": "S06 veto only",
+    "gross_loss_drawdown": "not target",
+    "activity": "eight-stage six-vector funnel"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_probe_attempt_strict_beyond.py",
+      "commit": "12a0da73233f149bf52aa983eec92e86e199950f",
+      "blob_sha": "6afba6e129b0735a1b1d1918109715208c759412",
+      "file_sha256": "9cb64ca51a3ef28a82621b74c71030bf993e6a74ff418125d5fea50fcce6cdd9"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_runtime_primitives.py",
+      "blob_sha": "328b16a80cf5bff58734a556561625adf89100ae"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_conditional_failure_clock_challenger_replay.py",
+      "blob_sha": "0749a0f326ff0a81006f7234f5065963e26e8dab"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_short_probe_relative_acceptance_bar_ownership_challenger.py",
+      "blob_sha": "026f8685427ca3264582370182a8baeed424b95e"
+    },
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "12af61180ff3738dc4d2dc31361b42ad0d6fc463"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "boundary_source": "M5 swing",
+      "boundary_width": 2,
+      "control": "09Z",
+      "profiles": [
+        "STRICT_REATTEMPT_BEYOND",
+        "STRICT_ALL_BEYOND"
+      ]
+    },
+    "feature_order": [
+      "probe",
+      "qualified",
+      "accepted",
+      "failure",
+      "reentry",
+      "reclaim",
+      "reversal",
+      "signal"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "causal parity reconstruction"
+    },
+    "runtime_dependencies": [
+      "Python",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "faulthandler": true,
+      "fresh_numba_cache": true,
+      "atomic_output": true,
+      "commit_bound_recovery_artifact": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "January canonical Dukascopy XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "09Z ownership challenger",
+      "path": "research/delta/reference/DELTA_R037_DH05_SHORT_PROBE_RELATIVE_ACCEPTANCE_BAR_OWNERSHIP_CHECKPOINT_09Z.json"
+    },
+    {
+      "name": "Original DH-05 white paper",
+      "drive_id": "1mIcrUUeK0lGwfR6L_26O47DQxQV7xygbnFcnkvE4s6k"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "tick-rooted Stage-A P75 bars/ATR"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH05_PROBE_ATTEMPT_STRICT_BEYOND_CHECKPOINT_10D.json",
+      "blob_sha": "767f289e9ac4e1311fb55a38e922d23aa719341a",
+      "official_full_result_sha256": "98fe1d481f25122e9b6ef43e83991c9d773685f8a4032334c2167598ff772872"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH05_PROBE_ATTEMPT_STRICT_BEYOND_CHECKPOINT_10D.md",
+      "blob_sha": "94c43b8ecc0cadf96e133bb9dcc64b5b004daa6e"
+    }
+  ],
+  "qa": [
+    "Canonical January hash and Stage-A tick count verified.",
+    "Commit-bound producer/helper blob hashes verified before compute.",
+    "Exact 09Z control reproduced: probe error 449; total error 782.",
+    "STRICT_REATTEMPT_BEYOND worsened probe error 449 -> 2,855 and total 782 -> 3,194.",
+    "STRICT_ALL_BEYOND worsened probe error 449 -> 4,098 and total 782 -> 4,435.",
+    "Boundary contact-inclusive attempt opening retained; strict-beyond rejected.",
+    "Workbook and Fresh Research Ledger written and read back.",
+    "August sealed; SORB blocked; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh05_probe_attempt_strict_beyond.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python -X faulthandler research/delta/experiments/delta_r037_dh05_probe_attempt_strict_beyond.py --source <canonical_january_gzip> --output <result_json>",
+    "timing_semantics": "09Z control; candidate changes only equality vs strict boundary attempt creation.",
+    "expected_fingerprints": {
+      "control": {
+        "probe_abs_error": 449,
+        "total_abs_error": 782
+      },
+      "strict_reattempt": {
+        "probe_abs_error": 2855,
+        "total_abs_error": 3194
+      },
+      "strict_all": {
+        "probe_abs_error": 4098,
+        "total_abs_error": 4435
+      }
+    },
+    "selected_interpretation": "REJECT_STRICT_BEYOND_PRESERVE_CONTACT_INCLUSIVE_OPENING"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — parity reconstruction incomplete",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen",
+    "ownership_scheduler_spec": "09Z non-promoting",
+    "session_dst_spec": "frozen",
+    "risk_spec": "frozen",
+    "trade_count_parity_spec": "blocked until full R032 parity",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH05_PROBE_RESIDUAL_BOUNDARY_EPOCH_CHECKPOINT_10C",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A277:H286"
+    },
+    {
+      "name": "DELTA Fresh Research Ledger",
+      "id": "1dXe4I98dFgIiybMSPQMoFnXOYNcTvtqNYDp85XeO34M",
+      "role": "10D preregistration + result"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false,
+    "recovery_artifact_workflow_run": 37145180805,
+    "recovery_artifact_id": 11281952799,
+    "recovery_artifact_digest": "sha256:07efdc091e6ff571b2eb0eae38d88a1270a02abd68894ef550949b497b94a0bd"
+  },
+  "next_unit": "R037_DH05_PROBE_RESIDUAL_ATTEMPT_REARM_COMPLETION_PROVENANCE_RECONCILIATION",
+  "github_commits": [
+    "12a0da73233f149bf52aa983eec92e86e199950f",
+    "07cb64a3500826d199ae3d08e0cd3aae80c957c6",
+    "2922f34a2243bfaef4bf7e74e0b41d467179f1cd"
+  ]
+}
