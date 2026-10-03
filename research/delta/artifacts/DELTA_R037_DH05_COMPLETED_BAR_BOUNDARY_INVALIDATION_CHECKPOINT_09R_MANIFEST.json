@@ -1,0 +1,175 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH05_COMPLETED_BAR_BOUNDARY_INVALIDATION_CHECKPOINT_09R",
+  "status": "VERIFIED_DURABLE_NEGATIVE_QA_COMPLETED_BAR_BOUNDARY_INVALIDATION_REJECTED_GENERATOR_OWNERSHIP_PIVOT",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH05_BOUNDARY_VALID_EXECUTION_MANDATE_CHECKPOINT_09Q",
+  "hypothesis": "Completed-bar original-boundary retake timing can preserve valid downstream mandates long enough to restore sparse historical density while GLOBAL NO_REARM prevents dense overproduction.",
+  "falsification_condition": "No completed-bar clock beats 09L aggregate error 304 without dense-vector compensation.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Preserved six-vector historical trade-count fingerprints",
+    "reference_count": 6,
+    "minimum_count": 6,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity QA only."
+  },
+  "primary_metrics": {
+    "entry_quality": "Not optimized.",
+    "hold_persistence": "Not optimized.",
+    "economics": "S06 fixture parity only.",
+    "gross_loss_drawdown": "Not optimization target.",
+    "activity": "Completed-bar boundary invalidations and six-vector trade-count error."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_completed_bar_boundary_invalidation_global_no_rearm_parity.py",
+      "commit": "f28f1f3171a899c6f7cf5e863b7d396abc272de5",
+      "blob_sha": "d3050c1b321da3922b694b5c3d6a6a848b77b01d",
+      "file_sha256": "72fcca468c1bb470659176bf6ad9fb37bebb95c28b218ab8ea0c9416d7efef81"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "generator": "09F_POST_QUAL_SINGULAR_WITH_ORIGINAL_BOUNDARY_METADATA",
+      "global_no_rearm": "SAME_UTC_MINUTE_REPEAT_EXECUTION_PROHIBITED",
+      "invalidation_clocks": [
+        "REVERSAL_TF_COMPLETED_CLOSE",
+        "ACCEPTANCE_TF_COMPLETED_CLOSE"
+      ],
+      "retry_modes": [
+        "LOSING_EXIT",
+        "MAXHOLD_ONLY"
+      ]
+    },
+    "feature_order": [
+      "signal",
+      "boundary_mandate",
+      "completed_bar_invalidation",
+      "retry_eligibility",
+      "global_no_rearm",
+      "trade"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "parity reconstruction only"
+    },
+    "runtime_dependencies": [
+      "Python",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "external_timeout_seconds": 120,
+      "atomic_output_write": true,
+      "committed_producer_before_compute": true,
+      "producer_blob_readback": true,
+      "numba_cache_isolation": "fresh per-unit cache",
+      "github_job_timeout_minutes": 10
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "Checkpoint 09Q parent",
+      "path": "research/delta/reference/DELTA_R037_DH05_BOUNDARY_VALID_EXECUTION_MANDATE_CHECKPOINT_09Q.json"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "Stage-A P75 bars",
+      "fresh isolated 09R Numba cache"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH05_COMPLETED_BAR_BOUNDARY_INVALIDATION_CHECKPOINT_09R.json",
+      "blob_sha": "34b7130c953f878230e7f80ffeaec1775b992c51",
+      "runtime_result_sha256": "72bff0871e349e05826cdad50a3c6c21e1c6ff4bfcd682729cb09eb7423c5ca0"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH05_COMPLETED_BAR_BOUNDARY_INVALIDATION_CHECKPOINT_09R.md",
+      "blob_sha": "34f9af4ab7037f8583d301540a36d170cc8912cb"
+    }
+  ],
+  "qa": [
+    "Canonical January hash and 4,205,709 Stage-A ticks verified.",
+    "Exact committed producer/dependency blobs used.",
+    "Official compute exit 0 in 10.35 s; max RSS 698,968 KB.",
+    "09L best aggregate error 304 remains unbeaten.",
+    "Best 09R completed-bar MAXHOLD profile error 359.",
+    "Loss-only completed-bar profiles improve A03 but overproduce S06/S10 while S05/S09 remain sparse.",
+    "No numeric retuning; August sealed; SORB blocked; MQL5 unauthorized.",
+    "Workbook tab 75 A129:H140 written and read back."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh05_completed_bar_boundary_invalidation_global_no_rearm_parity.py",
+    "command": "NUMBA_CACHE_DIR=<fresh-unit-cache> python research/delta/experiments/delta_r037_dh05_completed_bar_boundary_invalidation_global_no_rearm_parity.py --source <canonical_january_gzip> --output <checkpoint_09r_runtime_json>",
+    "timing_semantics": "Singular generator; completed-bar original-boundary retake invalidation; GLOBAL NO_REARM.",
+    "expected_fingerprints": {
+      "best_error": 359,
+      "best_profile": "REVTF_CLOSE__MAXHOLD_ONLY",
+      "loss_acceptance_error": 616,
+      "loss_reversal_error": 622
+    },
+    "selected_interpretation": "EXECUTION_SCHEDULER_BRANCH_REJECTED_GENERATOR_OWNERSHIP_PROVENANCE_NEXT"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — parity reconstruction only",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "Frozen R9/Coinexx fixture.",
+    "ownership_scheduler_spec": "No integrated R037 replay.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01.",
+    "trade_count_parity_spec": "Blocked until full R032 specialist parity.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH05_BOUNDARY_VALID_EXECUTION_MANDATE_CHECKPOINT_09Q",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A129:H140"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH05_SIGNAL_TRADE_GAP_PROVENANCE_AND_ACCEPTANCE_CLOCK_OWNERSHIP_DIAGNOSTIC",
+  "github_commits": [
+    "f28f1f3171a899c6f7cf5e863b7d396abc272de5",
+    "7438e3045ca94a8f3510bfe85e03f816d62e62c2",
+    "3f9b6ca2ca95a050420cee48c2431fe321371394"
+  ]
+}
