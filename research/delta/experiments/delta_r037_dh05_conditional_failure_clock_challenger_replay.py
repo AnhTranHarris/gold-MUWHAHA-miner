@@ -21,7 +21,7 @@ import numpy as np
 import pandas as pd
 from numba import njit
 
-from delta_r037_dh05_post_signal_intrabar_rearm_edge_parity import (
+from delta_r037_dh05_runtime_primitives import (
     CANONICAL_JAN_SHA256, STAGE_A_END_MS, VECTORS, atomic_write_json,
     atr14, bars, bidx, p75, sha256_file, symmetric_swings, admit_r9_lifecycle,
 )
