@@ -1,0 +1,72 @@
+{
+  "schema": "delta-r037-dh05-post-signal-intrabar-rearm-edge-checkpoint-09l-v1",
+  "status": "COMPLETE_BOUNDED_QA_WEAK_INTRABAR_BOUNDARY_EDGE_CLUE_NO_FREEZE",
+  "unit": "R037_DH05_POST_SIGNAL_INTRABAR_REARM_EDGE_PARITY_RECONSTRUCTION",
+  "parent": "R037_DH05_POST_SIGNAL_PERSISTENCE_CHECKPOINT_09K",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "august_accessed": false,
+  "numeric_vector_retune": false,
+  "producer_commit": "a712fe238b437d1e1b07bdd4100359c59a07f03f",
+  "producer_blob_sha": "4b7bf08ebb0437ee02cf8c8aa48ed6987db10f9c",
+  "producer_file_sha256": "eea81f2f78c338dcaede1d73c8129e7ec54f7a6714139c699d16bfdd5dc6b63e",
+  "runtime_result_sha256": "bbbe7bfbdfe616af25bae4a3d6e7d9bf0002c0251579959606e3289311356685",
+  "frozen_control": {
+    "profile": "BOUNDARY_RECYCLE_REARM__ONE_POSITION_ONLY",
+    "aggregate_trade_count_abs_error": 324,
+    "s06": {
+      "signals": 648,
+      "trades": 647,
+      "wins": 275,
+      "net_usd": -149.42
+    }
+  },
+  "leading_profile": {
+    "profile": "ORIGINAL_BOUNDARY_TICK_EDGE__ONE_POSITION_ONLY",
+    "aggregate_trade_count_abs_error": 304,
+    "improvement_vs_control_pct": 6.172839506172839,
+    "s06": {
+      "signals": 638,
+      "trades": 623,
+      "wins": 260,
+      "net_usd": -148.05
+    },
+    "s06_errors": {
+      "signal_abs": 34,
+      "trade_abs": 8,
+      "win_abs": 47,
+      "net_abs": 46.97
+    }
+  },
+  "sparse_vector_trade_counts": {
+    "A03": {
+      "target": 306,
+      "actual": 208
+    },
+    "S05": {
+      "target": 51,
+      "actual": 9
+    },
+    "S09": {
+      "target": 119,
+      "actual": 11
+    },
+    "S16": {
+      "target": 24,
+      "actual": 7
+    }
+  },
+  "rejected_or_nonleading": {
+    "RECLAIM_THRESHOLD_TICK_EDGE__ONE_POSITION_ONLY": {
+      "aggregate_trade_count_abs_error": 342
+    },
+    "ONE_SHOT_POST_QUAL__ONE_POSITION_ONLY": {
+      "aggregate_trade_count_abs_error": 336
+    }
+  },
+  "decision": "PRESERVE_ORIGINAL_BOUNDARY_TICK_EDGE_AS_WEAK_DIAGNOSTIC_CLUE_ONLY; DO_NOT_FREEZE",
+  "parity_complete": false,
+  "next_unit": "R037_DH05_SIGNAL_TO_EXECUTION_MANDATE_PERSISTENCE_PARITY_RECONSTRUCTION",
+  "next_hypothesis": "Preserved historical trade counts can exceed preserved signal-stage counts, so the missing multiplicity may belong to the executable mandate/admission layer rather than the generator-signal layer."
+}
