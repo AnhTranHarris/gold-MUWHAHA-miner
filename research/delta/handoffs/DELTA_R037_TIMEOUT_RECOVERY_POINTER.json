@@ -21,9 +21,28 @@
   },
   "in_flight_unit": {
     "unit": "R037_DH03_S06_PENDING_EVENT_IDENTITY_AND_REARM_BOUNDARY_PARITY_RECONSTRUCTION",
-    "status": "NOT_STARTED_FROM_DURABLE_13E",
-    "committed_artifacts": [],
-    "next_action": "Inspect frozen 13B/13C reclaim-pivot provenance and test only source-compatible event/rearm boundary identity rules between strict post-original-pullback and unrestricted any-causal pivot. No numeric retuning, TTL fitting, generator threshold changes, exit changes, August, SORB, or MQL5."
+    "status": "PREREG_ENGINE_PRODUCER_COMMITTED_OFFICIAL_COMPUTE_NOT_YET_PERSISTED",
+    "committed_artifacts": [
+      {
+        "role": "prereg_evidence",
+        "path": "research/delta/reference/DELTA_R037_DH03_S06_PENDING_EVENT_IDENTITY_REARM_BOUNDARY_EVIDENCE_13F.json",
+        "commit": "5996b7147535a06cc1383b0dd2d9c53ecdb66c10",
+        "blob_sha": "f99e9cbfb448dab4c4ee3fcad53289389b513d95"
+      },
+      {
+        "role": "engine",
+        "path": "research/delta/experiments/delta_r037_dh03_s06_event_identity_rearm_engine.py",
+        "commit": "e3fa78116d50fcac409d49c8d47b31e85a423402",
+        "blob_sha": "02bd7b3c26585392171c8a5bebb8520df47aa59d"
+      },
+      {
+        "role": "producer",
+        "path": "research/delta/experiments/delta_r037_dh03_s06_event_identity_rearm_parity.py",
+        "commit": "5d36e2c6ed3f3968a20f804f85e75dcb5eaef479",
+        "blob_sha": "1e8c3f0462313604f18f26c00b0df4d7abcd9db0"
+      }
+    ],
+    "next_action": "Run the already-committed 13F producer under delta_bounded_python_runner.py against canonical January Stage-A. Do not recreate prereg/engine/producer. If compute succeeds, persist result/report/workbook/full manifest, advance CURRENT_STATE last, then require rebuild gate success."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
@@ -44,7 +63,7 @@
     "exact_git_blob_preexecution_verification": true,
     "committed_recovery_snapshot_execution": true,
     "large_stdout_policy": "Keep official producers summary-only; persist detailed diagnostics to JSON rather than streaming them through the chat/tool transport.",
-    "chat_delivery_timeout_policy": "Treat a ChatGPT message-delivery timeout as a transport/session interruption, not evidence of compute failure. On reconnect, read CURRENT_STATE and this pointer, compare branch HEAD with current_state_commit, inspect CI and committed result/report/workbook artifacts, and resume only missing durability steps. Never rerun a completed official compute merely because the assistant message failed to deliver.",
+    "chat_delivery_timeout_policy": "Treat ChatGPT message-delivery timeout as transport/session interruption, never as proof of compute failure. On reconnect: read CURRENT_STATE, this pointer, recent branch commits and CI; if prereg/producer/result artifacts exist beyond the durable cursor, resume from the first missing durability step only.",
     "github_workflow_policy": "Require rebuild gate success for every durable cursor; use workflow artifacts/recovery snapshots rather than uncommitted local state.",
     "concurrent_old_chain_policy": [
       "Before every durable write, re-read CURRENT_STATE.json and branch HEAD/recent CI.",
