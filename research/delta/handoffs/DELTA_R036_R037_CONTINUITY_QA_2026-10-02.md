@@ -1,6 +1,7 @@
 # DELTA Continuity QA and State Reconciliation — R036/R037
 
-**Final CURRENT_STATE content SHA:** `5bcdf14076f3e94dbf023a246b4b537471c5faed`  
+**CURRENT_STATE snapshot at reconciliation time:** `5bcdf14076f3e94dbf023a246b4b537471c5faed`  
+**Authority rule:** always read live `delta/CURRENT_STATE.json`; handoff-registration metadata may advance its content SHA.  
 **Phase:** `R036_COMPLETE_INDEPENDENT_DENSITY_TOPUPS_EXHAUSTED_NEXT_SOURCE_REQUIRED`  
 **Next:** `R037_FRESH_INDEPENDENT_OPPORTUNITY_SOURCE_RESEARCH_AND_PREREGISTRATION`
 
