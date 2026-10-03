@@ -25,10 +25,22 @@
     "s06_net_usd": -149.41999999999888
   },
   "sparse_vector_trade_counts": {
-    "A03": {"target": 306, "actual": 203},
-    "S05": {"target": 51, "actual": 9},
-    "S09": {"target": 119, "actual": 11},
-    "S16": {"target": 24, "actual": 7}
+    "A03": {
+      "target": 306,
+      "actual": 203
+    },
+    "S05": {
+      "target": 51,
+      "actual": 9
+    },
+    "S09": {
+      "target": 119,
+      "actual": 11
+    },
+    "S16": {
+      "target": 24,
+      "actual": 7
+    }
   },
   "rejected_profiles": {
     "SIGNAL_REFRESH_CLOCK_REVERSAL_TOGGLE__ONE_POSITION_ONLY": 7279,
@@ -38,6 +50,6 @@
   },
   "decision": "REJECT_TESTED_POST_SIGNAL_PERSISTENCE_RULES; DO_NOT_FREEZE; PRESERVE_09J_BOUNDARY_RECYCLE_AS_WEAK_CLUE_ONLY",
   "parity_complete": false,
-  "next_unit": "R037_DH05_EXECUTABLE_MANDATE_MULTI_ENTRY_PARITY_RECONSTRUCTION",
-  "next_hypothesis": "Historical trade counts can exceed preserved signal-stage counts because one causal DH05 signal may authorize multiple executable entries while a separate mandate remains valid; do not manufacture additional generator signals."
+  "next_unit": "R037_DH05_POST_SIGNAL_INTRABAR_REARM_EDGE_PARITY_RECONSTRUCTION",
+  "next_hypothesis": "The remaining sparse-vector deficit must be tested through a bounded causal intrabar rearm edge while preserving the existing max_failure lifetime; do not extend episode lifetime or retune numeric vectors."
 }
