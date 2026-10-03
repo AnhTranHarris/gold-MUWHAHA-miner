@@ -74,6 +74,6 @@
   "decision": "REJECT_SIMPLE_REVERSAL_STATE_PERSISTENCE_AS_UNIVERSAL_EXECUTION_MANDATE",
   "parity_complete": false,
   "clue": "BODY_SIGN_CHAIN makes A03 trade count exact but simultaneously overproduces dense S06/S10; REV_DISP_CHAIN improves S06 win parity but still overtrades and leaves sparse vectors underfilled.",
-  "next_unit": "R037_DH05_REVERSAL_STATE_HYSTERESIS_RECONFIRMATION_PARITY_RECONSTRUCTION",
-  "next_hypothesis": "Use the existing reversal-displacement threshold as a causal hysteresis band: do not invalidate on weak/neutral bars; rearm only after a reset interval and later positive reconfirmation; invalidate only on explicit opposite reversal evidence."
+  "next_unit": "R037_DH05_STATE_PERSISTENT_EXECUTION_WITH_GLOBAL_NO_REARM_PARITY_RECONSTRUCTION",
+  "next_hypothesis": "Apply the exact frozen R032 GLOBAL NO_REARM rule at the execution layer: after an exit, suppress state-persistent downstream re-entry during the same UTC minute; preserve generator counts, reversal-state logic, and all numeric vectors."
 }
