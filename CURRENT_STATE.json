@@ -4,9 +4,9 @@
   "branch": "delta",
   "created_utc": "2026-10-01",
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
-  "last_verified_durable_unit": "R037_DH05_REVERSAL_DISPLACEMENT_CHECKPOINT_07",
-  "first_incomplete_unit": "R037_DH05_PARITY_REVERSAL_EFFICIENCY_AND_STAGE_NORMALIZATION_FINGERPRINT",
-  "current_phase": "R037_DH05_PARITY_REVERSAL_EFFICIENCY_NEXT",
+  "last_verified_durable_unit": "R037_DH05_REVERSAL_EFFICIENCY_STAGE_NORMALIZATION_CHECKPOINT_08",
+  "first_incomplete_unit": "R037_DH05_PARITY_FAILURE_REENTRY_PERSISTENCE_AND_SIGNAL_ADMISSION_DIAGNOSTIC",
+  "current_phase": "R037_DH05_PARITY_FAILURE_REENTRY_SIGNAL_ADMISSION_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "R037_DH05_PARITY_REVERSAL_EFFICIENCY_AND_STAGE_NORMALIZATION_FINGERPRINT; KEEP BAR_BODY_DISPLACEMENT + CLOSE_BUFFER + VECTOR_CLOCK + M5_EVENT_ATR FOR PROBE/RECLAIM + SAME_BOUNDARY_REELIGIBILITY + SEPARATE_CLOCKS + FROZEN_VECTORS; TEST COMPLETED_BAR_VS_SHORT_PATH_DIRECTIONAL_EFFICIENCY AND REVERSAL_STAGE_ATR_TIED_TO_REVERSAL_TF WITHOUT UNIVERSAL_ATR_SUBSTITUTION; SIX-VECTOR COUNTS FIRST; NO SORB INTEGRATION; NO AUGUST; NO MQL5",
+    "next_permitted_step": "R037_DH05_PARITY_FAILURE_REENTRY_PERSISTENCE_AND_SIGNAL_ADMISSION_DIAGNOSTIC; RETAIN NEUTRAL BASELINE AND REVERSAL_TF_ATR_PLUS_3BAR_EFFICIENCY_672_SIGNAL HYPOTHESIS; INSTRUMENT FAILURE/EVENT IDS + SIGNAL TIMESTAMPS + ONE_POSITION_ADMISSION; NO PARAMETER RETUNE; NO SORB INTEGRATION UNTIL DH05-S06 PARITY; NO AUGUST; NO MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -3433,7 +3433,7 @@
     "mt5_readiness_doc_id": "1a4bSQAbk1mQCUN1h088A2okVnTuKuohJlOsigDDjOn4",
     "mt5_readiness_doc_url": "https://docs.google.com/document/d/1a4bSQAbk1mQCUN1h088A2okVnTuKuohJlOsigDDjOn4/edit",
     "r037": {
-      "status": "DH05_PARITY_REVERSAL_EFFICIENCY_NEXT",
+      "status": "DH05_PARITY_FAILURE_REENTRY_SIGNAL_ADMISSION_NEXT",
       "parent": "R032-C03_PLUS_DH02_S11_S08",
       "family": "R037-SORB-v1",
       "prereg_drive_doc_id": "1lfjAI9QB1fOCevvAur1dDV3qSdOw9sPhrkr_rcf1TM0",
@@ -3456,7 +3456,7 @@
       "source_qa_decision": "SOURCE_QA_PASS",
       "integrated_replay": "NOT_STARTED",
       "integrated_replay_blocker": "FOUR_R032_SPECIALIST_STREAMS_REQUIRE_EXACT_RECONSTRUCTION_PARITY",
-      "exact_next_unit": "R037_DH05_PARITY_REVERSAL_EFFICIENCY_AND_STAGE_NORMALIZATION_FINGERPRINT",
+      "exact_next_unit": "R037_DH05_PARITY_FAILURE_REENTRY_PERSISTENCE_AND_SIGNAL_ADMISSION_DIAGNOSTIC",
       "august_2026": "SEALED",
       "mql5_authorized": false,
       "parent_backbone_parity": {
@@ -3648,6 +3648,80 @@
         "workbook_range": "A54:H58",
         "decision": "DISPLACEMENT_ORIGIN_ALONE_INSUFFICIENT",
         "first_incomplete_substep": "R037_DH05_PARITY_REVERSAL_EFFICIENCY_AND_STAGE_NORMALIZATION_FINGERPRINT",
+        "august_2026": "SEALED",
+        "mql5_authorized": false
+      },
+      "first_incomplete_substep": "R037_DH05_PARITY_FAILURE_REENTRY_PERSISTENCE_AND_SIGNAL_ADMISSION_DIAGNOSTIC",
+      "dh05_reversal_efficiency_stage_normalization_checkpoint_08": {
+        "status": "COMPLETE_MATERIAL_CLUE_PARITY_NOT_ACHIEVED",
+        "github_report_path": "research/delta/research/DELTA_R037_DH05_REVERSAL_EFFICIENCY_STAGE_NORMALIZATION_CHECKPOINT_08.md",
+        "github_report_commit": "ceaf1949969b468edc40a5f1ee324c36039dcee6",
+        "github_manifest_path": "research/delta/reference/DELTA_R037_DH05_REVERSAL_EFFICIENCY_STAGE_NORMALIZATION_CHECKPOINT_08.json",
+        "github_manifest_commit": "df87533d15b6c593f709a173e6febb137f7f9484",
+        "workbook_id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+        "workbook_tab": "73 R037 DH05 Parity QA",
+        "key_findings": {
+          "historical_targets": {
+            "A03": 306,
+            "S05": 51,
+            "S06_trades": 615,
+            "S06_signals": 672,
+            "S09": 119,
+            "S10": 206,
+            "S16": 24
+          },
+          "baseline_counts": {
+            "A03": 187,
+            "S05": 9,
+            "S06": 617,
+            "S09": 9,
+            "S10": 206,
+            "S16": 8
+          },
+          "onebar_reversal_tf_atr": {
+            "A03": 258,
+            "S05": 14,
+            "S06": 691,
+            "S09": 41,
+            "S10": 251,
+            "S16": 14
+          },
+          "threebar_m5_atr": {
+            "A03": 145,
+            "S05": 5,
+            "S06": 558,
+            "S09": 9,
+            "S10": 151,
+            "S16": 6
+          },
+          "threebar_reversal_tf_atr": {
+            "A03": 247,
+            "S05": 10,
+            "S06": 672,
+            "S09": 41,
+            "S10": 225,
+            "S16": 14
+          },
+          "s06_exact_generator_signal_count_match": true,
+          "parity_pass": false,
+          "s06_current_semantic": {
+            "signals": 672,
+            "trades": 672,
+            "wins": 293,
+            "net_usd": -147.77
+          },
+          "s06_historical": {
+            "signals": 672,
+            "trades": 615,
+            "wins": 307,
+            "net_usd": -101.08
+          },
+          "upstream_density_still_missing_for_A03_S05_S09_S16": true,
+          "signal_to_trade_admission_gap_not_reconstructed": true
+        },
+        "diagnostic_source_sha256": "d8f539ce46487dcb1d1940ff62f1cd9b332d0c0eb332a4563e216c5ddeac5fe9",
+        "diagnostic_output_sha256": "fa4383e736d87345cf47bc9c6ca4fe91d519ec222eae5c6930ff81ebb0f5df72",
+        "next_unit": "R037_DH05_PARITY_FAILURE_REENTRY_PERSISTENCE_AND_SIGNAL_ADMISSION_DIAGNOSTIC",
         "august_2026": "SEALED",
         "mql5_authorized": false
       }
