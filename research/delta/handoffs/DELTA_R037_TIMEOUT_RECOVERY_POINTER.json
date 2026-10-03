@@ -21,7 +21,7 @@
   },
   "in_flight_unit": {
     "unit": "R037_DH03_S06_PENDING_ATTEMPT_VALIDITY_AND_SUPERSESSION_PARITY_RECONSTRUCTION",
-    "status": "PREREG_ENGINE_PRODUCER_COMMITTED_PRECOMPUTE",
+    "status": "POSTCOMPUTE_RESULT_REPORT_WORKBOOK_DURABLE",
     "committed_artifacts": [
       {
         "path": "research/delta/reference/DELTA_R037_DH03_S06_PENDING_VALIDITY_EVIDENCE_13E.json",
@@ -44,9 +44,33 @@
         "commit": "4476afdc69c0563110ace2b6f3cf8de1d20ee994",
         "blob_sha": "eabcf454d5289c2a01acc59a78b6186b1a8595e6",
         "role": "SUPPLEMENTARY_NON_PROMOTING_RACE_ARTIFACT"
+      },
+      {
+        "path": "research/delta/reference/DELTA_R037_DH03_S06_PENDING_VALIDITY_CHECKPOINT_13E.json",
+        "commit": "d053734e2845d3a7e3c5a8ac985d99dd3498415f",
+        "blob_sha": "2ac319e5c6b374afb4c65621d55aea5b9bf54b88",
+        "official_raw_result_sha256": "7621dcb5286a7aca531762a7869b5f6d36e66072382287e49c78e54bf1a21d26"
+      },
+      {
+        "path": "research/delta/research/DELTA_R037_DH03_S06_PENDING_VALIDITY_CHECKPOINT_13E.md",
+        "commit": "9a13923f47df32cb2bf30a2d893074a3b65104fa",
+        "blob_sha": "200041c3ac85fae5dda0d930faf3eefc12ae5c4e"
+      },
+      {
+        "drive_spreadsheet_id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+        "tab": "75 R037 DH05 Episode QA",
+        "range": "A452:H461",
+        "role": "WORKBOOK_READBACK_VERIFIED"
       }
     ],
-    "next_action": "Blob-verify canonical 13E prereg, lifecycle engine, producer, frozen 13D admission helper and 13C dependencies locally; run one canonical January Stage-A replay through delta_bounded_python_runner.py; persist result/report/workbook/full manifest; advance CURRENT_STATE last; require rebuild gate success."
+    "next_action": "Create and verify full 13E rebuild manifest, advance CURRENT_STATE last to 13E, sync this pointer to the new durable cursor, and require DELTA rebuild gate success. Then start only 13F event-identity/rearm-boundary reconstruction.",
+    "official_compute": {
+      "raw_result_sha256": "7621dcb5286a7aca531762a7869b5f6d36e66072382287e49c78e54bf1a21d26",
+      "elapsed_seconds": 11.63,
+      "peak_rss_kb": 698588,
+      "independently_reproduced_in_recovery": true,
+      "independent_replay_elapsed_seconds": 8.89
+    }
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
@@ -94,6 +118,11 @@
       "https://docs.github.com/en/actions/concepts/workflows-and-actions/workflow-artifacts",
       "https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency"
     ],
-    "note": "Python/GitHub controls harden compute and persistence but cannot directly eliminate a ChatGPT UI/message-delivery timeout. Recent community reports show the same delivery error in long/project chats; treat them as anecdotal, not platform diagnosis."
+    "note": "Python/GitHub controls harden compute and persistence but cannot directly eliminate a ChatGPT UI/message-delivery timeout. OpenAI troubleshooting treats conversation/network/browser/server errors separately from local compute; recent community reports show the same delivery error in long/project chats. Treat message delivery failure as transport unless durable artifacts/CI show scientific failure.",
+    "openai": [
+      "https://help.openai.com/en/articles/7996703-chatgpt-error-messages",
+      "https://help.openai.com/en/articles/9047779-why-is-mychatgpt-taking-so-long-to-respond",
+      "https://status.openai.com/"
+    ]
   }
 }
