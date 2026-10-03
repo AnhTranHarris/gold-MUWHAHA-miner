@@ -1,0 +1,106 @@
+{
+  "schema": "delta-r037-dh03-s06-cleanroom-parity-checkpoint-13a-v1",
+  "status": "COMPLETE_CLEANROOM_PARITY_FAIL_LOCALIZED",
+  "unit": "R037_DH03_S06_CLEANROOM_PARITY_RECONSTRUCTION",
+  "parent": "R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION_CHECKPOINT_12C",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "vector_fingerprint": "a3a086b7344c",
+  "target": {
+    "trades": 1563,
+    "raw_positive_wins": 690,
+    "gross_profit": 151.82,
+    "gross_loss": -490.75,
+    "net_profit": -338.93,
+    "max_balance_drawdown": 339.25
+  },
+  "producer": {
+    "main_path": "research/delta/experiments/delta_r037_dh03_s06_cleanroom_parity.py",
+    "main_commit": "6679c155cf923c7ee52dadc2f605c49377308319",
+    "main_blob_sha": "fd57c6a3a7d317f021a31ef32bb8825b89a57f77",
+    "main_sha256": "9708c678cfd119c5e51130ec23803d5f5734104b07f4edf3252e98e38e41a084",
+    "structure_path": "research/delta/experiments/delta_r037_dh03_s06_structure.py",
+    "structure_commit": "9fd75852690003d8e6d65cfdb9bb67198264fcae",
+    "structure_blob_sha": "edbe5ae9bcf2031fe06256467085889c4e108d52",
+    "structure_sha256": "9df6fe9a2086cb4970e38a205f081ab0706e441629ce01a9292f4ddcbd445ce2",
+    "engine_path": "research/delta/experiments/delta_r037_dh03_s06_engine.py",
+    "engine_commit": "e7f11325e26bf84491693ff84dae374e33bf48ab",
+    "engine_blob_sha": "ac865a520441a2efc8eaf908e3c9390556893925",
+    "engine_sha256": "f91f9a684980dea2a74fd321a4d7ba7a6dbf16ee0d5d0131c1d5b85d5a263535"
+  },
+  "evidence": {
+    "path": "research/delta/reference/DELTA_R037_DH03_S06_CLEANROOM_PARITY_EVIDENCE_13A.json",
+    "commit": "cd30cd20a9a9869636eb6af3d05c589f5f7ef986",
+    "blob_sha": "057f36109e23096513576502d2493cfd5b95639f",
+    "sha256": "236dca93772153c35bf8e996c1342f483ade12963c9736870761410122c7a62f"
+  },
+  "official_compute": {
+    "elapsed_seconds": 7.73,
+    "peak_rss_kb": 697388,
+    "result_sha256": "179a1434f4b36dfeecc3655e34f23b3afcaaf06bd0c9d617c1eefab1a539e17d",
+    "numeric_vector_retune": false,
+    "august_accessed": false
+  },
+  "profiles": {
+    "STRUCTURAL_PRIORITY_SWING_PARENT_S15_SWING_RECLAIM": {
+      "signals": 359,
+      "trades": 359,
+      "raw_positive_wins": 157,
+      "gross_profit": 34.41,
+      "gross_loss": -115.46,
+      "net_profit": -81.05,
+      "max_balance_drawdown": 81.36,
+      "pullbacks": 1249,
+      "exhaustion": 504,
+      "reclaim": 369,
+      "signal_sha256": "9599800f571d976de76ac6d995abb8bc5c1c1db22e6c2631347dad78f162274b"
+    },
+    "STRUCTURAL_PRIORITY_SWING_PARENT_S15_EITHER_DECLINE": {
+      "signals": 709,
+      "trades": 709,
+      "raw_positive_wins": 302,
+      "gross_profit": 64.43,
+      "gross_loss": -229.79,
+      "net_profit": -165.36,
+      "max_balance_drawdown": 165.36,
+      "pullbacks": 1369,
+      "exhaustion": 906,
+      "reclaim": 722,
+      "signal_sha256": "67d456b871d3c6b31b59e8bb546fb42a72f3890ec61f5e343eae28109d878bf3"
+    },
+    "DIRECTIONAL_CONFLUENCE_PARENT_S15_SWING_RECLAIM": {
+      "signals": 235,
+      "trades": 235,
+      "raw_positive_wins": 104,
+      "gross_profit": 24.03,
+      "gross_loss": -77.11,
+      "net_profit": -53.08,
+      "max_balance_drawdown": 54.41,
+      "pullbacks": 528,
+      "exhaustion": 344,
+      "reclaim": 248,
+      "signal_sha256": "3bfd22d7c4648589b3990e29496841c2af43d59ecee0d837fb1204780d884b89"
+    },
+    "STRUCTURAL_PRIORITY_SWING_PARENT_RECLAIM_LAST_PIVOT": {
+      "signals": 373,
+      "trades": 373,
+      "raw_positive_wins": 164,
+      "gross_profit": 35.43,
+      "gross_loss": -119.83,
+      "net_profit": -84.4,
+      "max_balance_drawdown": 84.71,
+      "pullbacks": 1258,
+      "exhaustion": 513,
+      "reclaim": 384,
+      "signal_sha256": "18c7cd80dbab4c9503daec4fae3ea72ac1977fa4fdf598af78b97cf52517c851"
+    }
+  },
+  "leading_profile": "STRUCTURAL_PRIORITY_SWING_PARENT_S15_EITHER_DECLINE",
+  "interpretation": "Source-grounded reconstruction under-produces historical DH03-S06 activity by 854 trades while maintaining a broadly similar winner fraction/economic scale. Residual is upstream state/event multiplicity semantics, not a numeric threshold invitation.",
+  "exact_historical_parity": false,
+  "next": "R037_DH03_S06_STATE_FUNNEL_SEMANTICS_PARITY_RECONSTRUCTION",
+  "august_2026": "SEALED",
+  "sorb_integrated_replay_started": false,
+  "mql5_authorized": false
+}
