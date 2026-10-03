@@ -1,0 +1,88 @@
+{
+  "schema": "delta-r037-dh03-s06-pending-validity-evidence-13e-v1",
+  "status": "PREREGISTERED_BEFORE_COMPUTE",
+  "unit": "R037_DH03_S06_PENDING_ATTEMPT_VALIDITY_AND_SUPERSESSION_PARITY_RECONSTRUCTION",
+  "parent_checkpoint": "R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_CHECKPOINT_13D",
+  "active_parent": "R032-C03_PLUS_DH02_S11_S08",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "canonical_stage_a": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "ticks": 4205709,
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+  },
+  "frozen_generator": {
+    "vector": "DH03-S06 / a3a086b7344c",
+    "profile": "POST_PULLBACK_REARM_FRESH_EXHAUSTION",
+    "signal_count": 1586,
+    "signal_sha256": "261b6ad5a1cab4dd4378ec40af7fdde4e5178e82694089b3bf2a28bc6bebfdea",
+    "event_lifecycle": "same original pullback survives signal and rearms to PULLBACK_ACTIVE with fresh exhaustion required; original event start and max-age remain frozen"
+  },
+  "historical_target": {
+    "trades": 1563,
+    "raw_positive_wins": 690,
+    "gross_profit": 151.82,
+    "gross_loss": -490.75,
+    "net_profit": -338.93,
+    "max_balance_drawdown": 339.25
+  },
+  "controls": {
+    "drop": {
+      "trades": 1513,
+      "raw_positive_wins": 674,
+      "net_profit": -339.14
+    },
+    "unconditional_pending": {
+      "trades": 1586,
+      "raw_positive_wins": 703,
+      "net_profit": -358.07,
+      "pending_created": 83,
+      "pending_admitted": 83
+    }
+  },
+  "source_grounded_event_deaths": [
+    "PARENT_OPPOSITION: current structural parent becomes opposite the pullback side",
+    "STRUCTURAL_INVALIDATION: tick crosses the frozen parent invalidation boundary plus S06 invalidation_buffer_atr",
+    "MAX_PULLBACK_AGE: original pullback age exceeds frozen 513.6575 seconds"
+  ],
+  "profiles": [
+    {
+      "id": "DROP_OCCUPIED_CONTROL",
+      "validity": "no pending token"
+    },
+    {
+      "id": "PENDING_UNCONDITIONAL_CONTROL",
+      "validity": "pending token survives until next observed flat tick regardless of later event death; 13D admit-all control"
+    },
+    {
+      "id": "PENDING_PARENT_VALID",
+      "validity": "pending token dies if original pullback reaches causal PARENT_OPPOSITION before flat observation; structural/age death ignored diagnostically"
+    },
+    {
+      "id": "PENDING_PARENT_STRUCTURE_VALID",
+      "validity": "pending token dies on causal PARENT_OPPOSITION or STRUCTURAL_INVALIDATION before flat observation; max-age death ignored diagnostically"
+    },
+    {
+      "id": "PENDING_FULL_EVENT_VALID",
+      "validity": "pending token dies on any causal original-pullback death event: parent opposition, structural invalidation, or max-age expiry"
+    }
+  ],
+  "causal_end_time_rule": "Episode end timestamps may be precomputed for replay storage, but an admission decision may consult only whether current tick time has reached/passed that already-causal end timestamp. No future end reason/time can affect any earlier tick.",
+  "selection_rule": "The canonical candidate is PENDING_FULL_EVENT_VALID because it follows the frozen DH03 event lifetime. Looser nested profiles exist only to attribute which event-death class causes pending rejection. Carry forward only if generator/13D controls reproduce exactly and the validity rule materially improves trade/win/economic parity without any new numeric threshold.",
+  "forbidden": [
+    "pending TTL tuning",
+    "new numeric threshold",
+    "generator change",
+    "exit change",
+    "simultaneous positions",
+    "future event-end use before occurrence",
+    "August access",
+    "SORB integration",
+    "MQL5"
+  ],
+  "next_if_exact": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
+  "next_if_material_nonexact": "R037_DH03_S06_PENDING_EVENT_IDENTITY_AND_REARM_BOUNDARY_PARITY_RECONSTRUCTION",
+  "next_if_negative": "R037_DH03_S06_SIGNAL_GENERATOR_RESIDUAL_PROVENANCE_DECISION",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
