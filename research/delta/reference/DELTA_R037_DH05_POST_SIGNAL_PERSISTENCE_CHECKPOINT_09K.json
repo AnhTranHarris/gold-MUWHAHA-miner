@@ -1,0 +1,43 @@
+{
+  "schema": "delta-r037-dh05-post-signal-persistence-invalidation-checkpoint-09k-v1",
+  "status": "COMPLETE_NEGATIVE_QA_PERSISTENCE_RULES_REJECTED_BOUNDARY_RECYCLE_CLUE_UNCHANGED",
+  "unit": "R037_DH05_POST_SIGNAL_EPISODE_PERSISTENCE_AND_INVALIDATION_PARITY_RECONSTRUCTION",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "august_accessed": false,
+  "numeric_vector_retune": false,
+  "full_runtime_output_sha256": "d41fbc1c6ba548017e7ef1a6f4b246350d6e0c9952e53fe36ad6544f870c2031",
+  "producer_file_sha256": "6dd2ced331abf671fe688eb8aa847c4af350691b1ee3d17ca3be3169a21463d8",
+  "control": {
+    "one_shot_trade_count_abs_error": 336,
+    "s06_signals": 651,
+    "s06_trades": 649,
+    "s06_wins": 274,
+    "s06_net_usd": -150.34999999999897
+  },
+  "leading_profile": {
+    "name": "BOUNDARY_RECYCLE_REARM__ONE_POSITION_ONLY",
+    "aggregate_trade_count_abs_error": 324,
+    "s06_signals": 648,
+    "s06_trades": 647,
+    "s06_wins": 275,
+    "s06_net_usd": -149.41999999999888
+  },
+  "sparse_vector_trade_counts": {
+    "A03": {"target": 306, "actual": 203},
+    "S05": {"target": 51, "actual": 9},
+    "S09": {"target": 119, "actual": 11},
+    "S16": {"target": 24, "actual": 7}
+  },
+  "rejected_profiles": {
+    "SIGNAL_REFRESH_CLOCK_REVERSAL_TOGGLE__ONE_POSITION_ONLY": 7279,
+    "SIGNAL_REFRESH_CLOCK_BAR_EDGE__ONE_POSITION_ONLY": 8241,
+    "PERSIST_UNTIL_ORIGINAL_REBREAK_REVERSAL_TOGGLE__ONE_POSITION_ONLY": 59831,
+    "PERSIST_UNTIL_ORIGINAL_REBREAK_BAR_EDGE__ONE_POSITION_ONLY": 66847
+  },
+  "decision": "REJECT_TESTED_POST_SIGNAL_PERSISTENCE_RULES; DO_NOT_FREEZE; PRESERVE_09J_BOUNDARY_RECYCLE_AS_WEAK_CLUE_ONLY",
+  "parity_complete": false,
+  "next_unit": "R037_DH05_EXECUTABLE_MANDATE_MULTI_ENTRY_PARITY_RECONSTRUCTION",
+  "next_hypothesis": "Historical trade counts can exceed preserved signal-stage counts because one causal DH05 signal may authorize multiple executable entries while a separate mandate remains valid; do not manufacture additional generator signals."
+}
