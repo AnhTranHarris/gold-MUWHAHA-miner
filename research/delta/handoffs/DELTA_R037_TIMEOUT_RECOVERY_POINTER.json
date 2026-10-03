@@ -11,28 +11,19 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_DH02_S11_CONTEXT_INVALID_BREAK_PROVENANCE_DECISION_11E",
-    "current_phase": "R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_PARITY_FINGERPRINT_NEXT",
-    "first_incomplete_unit": "R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_PARITY_FINGERPRINT",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH02_S11_CONTEXT_INVALID_BREAK_PROVENANCE_DECISION_11E_MANIFEST.json",
-    "current_state_commit": "fb26fbf5a4d4ec14152277c702eb33b5a0a5fdd9",
-    "current_state_ci_run": 37153185967,
+    "last_verified_durable_unit": "R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_CHECKPOINT_11F",
+    "current_phase": "R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_AND_INTERACTION_DECISION_NEXT",
+    "first_incomplete_unit": "R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_AND_INTERACTION_DECISION",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_CHECKPOINT_11F_MANIFEST.json",
+    "current_state_commit": "9c8209748eb30941195b3d802a07b6492141b0c1",
+    "current_state_ci_run": 37153997479,
     "current_state_ci_conclusion": "success"
   },
   "in_flight_unit": {
-    "unit": "R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_PARITY_FINGERPRINT",
-    "status": "EVIDENCE_AND_PRODUCER_COMMITTED_OFFICIAL_COMPUTE_NOT_YET_DURABLE",
-    "committed_artifacts": [
-      {
-        "path": "research/delta/reference/DELTA_R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_EVIDENCE_11F.json",
-        "commit": "d5539a1dcc891845d057e9b82216c862a0687e36"
-      },
-      {
-        "path": "research/delta/experiments/delta_r037_dh02_s11_failure_persistence_state_memory.py",
-        "commit": "b97586d0f970fd9dd831725a5f9be9b1e529a967"
-      }
-    ],
-    "next_action": "Use producer recovery snapshot, verify exact blobs/canonical January SHA, run bounded 11F replay."
+    "unit": "R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_AND_INTERACTION_DECISION",
+    "status": "NOT_STARTED_FROM_DURABLE_11F",
+    "committed_artifacts": [],
+    "next_action": "Ground 11F negative localization against surviving DH02 source/provenance; preserve 11D invalid-context-break challenger separately; preregister only a source-supported interaction decision before any new replay."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
@@ -53,7 +44,7 @@
     "exact_git_blob_preexecution_verification": true,
     "committed_recovery_snapshot_execution": true,
     "large_stdout_policy": "Keep official producers summary-only; persist detailed diagnostics to JSON rather than streaming them through the chat/tool transport.",
-    "chat_delivery_timeout_policy": "Treat a ChatGPT message-delivery timeout as a transport/session interruption, not evidence of compute failure. On reconnect, read CURRENT_STATE and this pointer, inspect branch HEAD and CI, and resume only the first missing durability step.",
+    "chat_delivery_timeout_policy": "Treat a ChatGPT message-delivery timeout as a transport/session interruption, not evidence of compute failure. On reconnect, read CURRENT_STATE and this pointer, compare branch HEAD with current_state_commit, inspect CI and committed result/report/workbook artifacts, and resume only missing durability steps. Never rerun a completed official compute merely because the assistant message failed to deliver.",
     "github_workflow_policy": "Require rebuild gate success for every durable cursor; use workflow artifacts/recovery snapshots rather than uncommitted local state."
   },
   "constraints": {
@@ -73,6 +64,6 @@
       "https://docs.github.com/en/actions/concepts/workflows-and-actions/workflow-artifacts",
       "https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency"
     ],
-    "note": "These references harden Python/GitHub execution and persistence. They cannot directly eliminate a ChatGPT UI/message-delivery timeout."
+    "note": "Python/GitHub controls harden compute and persistence but cannot directly eliminate a ChatGPT UI/message-delivery timeout. Recent community reports show the same delivery error in long/project chats; treat them as anecdotal, not platform diagnosis."
   }
 }
