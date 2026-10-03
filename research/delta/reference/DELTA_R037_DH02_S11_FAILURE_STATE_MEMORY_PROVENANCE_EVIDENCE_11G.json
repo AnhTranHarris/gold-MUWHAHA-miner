@@ -1,0 +1,85 @@
+{
+  "schema": "delta-r037-dh02-s11-failure-state-memory-provenance-evidence-11g-v1",
+  "unit": "R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_AND_INTERACTION_DECISION",
+  "parent_checkpoint": "R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_CHECKPOINT_11F",
+  "vector_fingerprint": "50d1bb2e656e",
+  "historical_target": {
+    "trades": 75,
+    "raw_positive_wins": 41,
+    "gross_profit": 9.39,
+    "gross_loss": -17.6,
+    "net_profit": -8.21
+  },
+  "source_grounding": {
+    "original_whitepaper": {
+      "failure_rule": "A retest may tolerate shallow penetration, but a completed S1/S5 acceptance beyond the invalidation buffer sends the event to FAILED.",
+      "initial_hold_rule": "A single adverse tick is not enough unless it breaches the broker hard stop.",
+      "state_chain": "IDLE -> ARMED -> BROKEN -> ACCEPTED_BREAK -> RETESTING -> RETEST_HELD -> REBREAK_CONFIRMED -> ENTRY_ELIGIBLE, with FAILED / EXPIRED branches.",
+      "exact_tick_memory_reset_semantics_preserved": false
+    },
+    "preregistration": {
+      "failure_acceptance_factor": "causal failure acceptance",
+      "vector_value": "tick persistence",
+      "exact_tick_memory_reset_semantics_preserved": false,
+      "numeric_threshold_retuning_allowed": false
+    },
+    "immutable_s11": {
+      "acceptance_dwell": "tick persistence",
+      "failure_acceptance": "tick persistence",
+      "boundary_source": "M5 swing",
+      "break_tf": "S1",
+      "penetration_buffer_atr": 0.1172,
+      "rebreak_tf": "S5",
+      "vector_fingerprint": "50d1bb2e656e"
+    }
+  },
+  "checkpoint_11d": {
+    "control": {
+      "trades": 106,
+      "wins": 42,
+      "gross_loss": -35.1,
+      "net": -27.3
+    },
+    "challenger": {
+      "profile": "CONFLICT_BREAK_CONSUME_UNTIL_NEW_BOUNDARY",
+      "trades": 103,
+      "wins": 41,
+      "gross_loss": -33.74,
+      "net": -26.03,
+      "status": "NON_PROMOTING_SOURCE_COMPATIBLE_CHALLENGER"
+    }
+  },
+  "checkpoint_11f": {
+    "control": {
+      "trades": 106,
+      "wins": 42,
+      "gross_profit": 7.8,
+      "gross_loss": -35.1,
+      "net": -27.3
+    },
+    "latch": {
+      "trades": 105,
+      "wins": 41,
+      "gross_profit": 7.49,
+      "gross_loss": -35.09,
+      "net": -27.6
+    },
+    "finding": "Latch variants remove one executable winner and leave the gross-loss tail essentially unchanged.",
+    "selection_rule_pass": false
+  },
+  "provenance_conclusion": {
+    "independent_exact_tick_memory_algorithm_found": false,
+    "failure_memory_recuts_exhausted": true,
+    "preserve_general_semantic": "Failure acceptance must be causal and persistent; a single adverse tick is insufficient.",
+    "preserve_11d_challenger_separately": true,
+    "promote_11d_as_historical_truth": false,
+    "candidate_surrogate_disposition": "PROVENANCE_LIMITED_BEST_RECONSTRUCTION_11D_NON_PROMOTING",
+    "no_more_same_sample_failure_memory_recuts": true
+  },
+  "decision_rule": "Do not infer an unpreserved historical tick-memory/reset algorithm from same-sample fit. Close failure-memory recuts; retain only independently source-supported semantics and the separately labeled 11D source-compatible challenger.",
+  "proposed_next": "R037_DH02_S08_CLEANROOM_PARITY_RECONSTRUCTION",
+  "canonical_source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "august_2026": "SEALED",
+  "sorb_integrated_replay_started": false,
+  "mql5_authorized": false
+}
