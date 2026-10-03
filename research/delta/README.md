@@ -79,11 +79,11 @@ After owner authorization, DELTA loaded the Jan-Jul R9 REAL-tick tester evidence
 
 ## R9 MT5 functional reference
 
-A one-time owner-authorized read-only inspection of the R9 Gamma baseline is complete and closed. Canonical references:
+A one-time owner-authorized read-only inspection of the historical R9 baseline is complete and closed. Canonical references:
 - `research/delta/reference/R9_MT5_EA_FUNCTIONAL_SUMMARY.md`
 - `research/delta/reference/R9_MT5_EA_FUNCTIONAL_FAST_REFERENCE.json`
 
-These files define R9's actual state machine, behavior-critical defaults, session/ATR gate, completed-S1 quality gate, virtual minute bracket, market-order execution, stop/trail/max-hold lifecycle, opposite-side same-minute rearm, broker normalization, and explicit absent features. Use these DELTA-owned references instead of reopening legacy Gamma. Gamma access is closed and requires new explicit owner authorization.
+These files define R9's actual state machine, behavior-critical defaults, session/ATR gate, completed-S1 quality gate, virtual minute bracket, market-order execution, stop/trail/max-hold lifecycle, opposite-side same-minute rearm, broker normalization, and explicit absent features. Use these DELTA-owned references instead of reopening the historical lineage. Historical-lineage access is closed and requires new explicit owner authorization.
 
 ## Verified Dukascopy tick lab
 
