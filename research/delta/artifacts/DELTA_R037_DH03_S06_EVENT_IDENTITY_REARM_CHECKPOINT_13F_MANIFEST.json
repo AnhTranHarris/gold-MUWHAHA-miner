@@ -1,0 +1,208 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH03_S06_EVENT_IDENTITY_REARM_CHECKPOINT_13F",
+  "status": "VERIFIED_COMPLETE_MATERIAL_EVENT_IDENTITY_CLUE_FULL_PARITY_NOT_ACHIEVED",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH03_S06_PENDING_VALIDITY_CHECKPOINT_13E",
+  "hypothesis": "Historical DH03-S06 reclaim population may allow limited inheritance of an already-causal S15 fast pivot at the first attempt while preserving stricter ownership on later rearms.",
+  "falsification_condition": "Reject a source-compatible pivot-ownership profile if it does not materially improve the 1563-trade / 690-raw-positive historical parity surface without materially worsening economics.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "historical DH03-S06 Stage-A standalone fixture",
+    "reference_count": 1563,
+    "minimum_count": 1563,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity reconstruction only; 13F leading source-compatible profile overproduces 1610 trades and is not promoted."
+  },
+  "primary_metrics": {
+    "entry_quality": "INHERITED_FIRST_ATTEMPT_ONLY 716 raw-positive wins vs target 690.",
+    "hold_persistence": "Frozen 13B/13C lifecycle and R9 execution lifecycle.",
+    "economics": "Leading source-compatible profile net -362.29 vs target -338.93; economics worsen despite slightly better formal parity score.",
+    "gross_loss_drawdown": "Leading GL -506.92 / DD 362.29 vs target GL -490.75 / DD 339.25.",
+    "activity": "Strict control 1513 trades; inherited-first 1610 trades; historical target 1563 lies between."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_event_identity_rearm_parity.py",
+      "commit": "5d36e2c6ed3f3968a20f804f85e75dcb5eaef479",
+      "blob_sha": "1e8c3f0462313604f18f26c00b0df4d7abcd9db0"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_event_identity_rearm_engine.py",
+      "commit": "e3fa78116d50fcac409d49c8d47b31e85a423402",
+      "blob_sha": "02bd7b3c26585392171c8a5bebb8520df47aa59d"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "note": "120-second wall clock, isolated Numba cache, faulthandler, unbuffered child process."
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "vector_fingerprint": "a3a086b7344c",
+      "generator_threshold_changed": false,
+      "tested_pivot_scope_profiles": [
+        "POST_ORIGINAL_PULLBACK_CONTROL",
+        "ANY_CAUSAL_DIAGNOSTIC",
+        "INHERITED_FIRST_ATTEMPT_ONLY",
+        "INHERITED_FIRST_THEN_POST_REARM",
+        "START_LATCH_FIRST_ATTEMPT"
+      ],
+      "primary_execution_view": "DROP_OCCUPIED",
+      "secondary_execution_view": "FULL_EVENT_PENDING"
+    },
+    "feature_order": [
+      "pullback",
+      "exhaustion",
+      "causal S15 reclaim pivot ownership",
+      "completed-S5 reclaim",
+      "later S5 reacceleration",
+      "one-position execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "clean-room state parity only"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "recovery_verification_elapsed_seconds": 10.9,
+      "recovery_verification_peak_rss_kb": 698704,
+      "producer_atomic_output": "base.atomic_write_json",
+      "exact_git_blob_preexecution_verification": true,
+      "prior_interrupted_chain_workbook_raw_result_sha256": "210b275d8134a5619dcfd129e2210bdd6f4310776bac703f7a686eb2dbe77308",
+      "recovery_replay_raw_result_sha256": "210b275d8134a5619dcfd129e2210bdd6f4310776bac703f7a686eb2dbe77308"
+    }
+  },
+  "inputs": [
+    {
+      "name": "13F prereg evidence",
+      "path": "research/delta/reference/DELTA_R037_DH03_S06_PENDING_EVENT_IDENTITY_REARM_BOUNDARY_EVIDENCE_13F.json",
+      "commit": "5996b7147535a06cc1383b0dd2d9c53ecdb66c10",
+      "blob_sha": "f99e9cbfb448dab4c4ee3fcad53289389b513d95"
+    },
+    {
+      "name": "January canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "13C/13E causal generator and execution helpers; S15 pivot reveal-time ownership diagnostics"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH03_S06_EVENT_IDENTITY_REARM_CHECKPOINT_13F.json",
+      "commit": "3754dd19fba5cf3b06f308565220cf0a85bdf4bb",
+      "blob_sha": "bdc9c7207a1ecf02454aae448e66115269e79b37",
+      "official_raw_result_sha256": "210b275d8134a5619dcfd129e2210bdd6f4310776bac703f7a686eb2dbe77308"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH03_S06_EVENT_IDENTITY_REARM_CHECKPOINT_13F.md",
+      "commit": "d436547b598d648144c30997fbdc49011d71f910",
+      "blob_sha": "1374e58ea0aecb12638f2a5a29401fb9a8ffaf07"
+    }
+  ],
+  "qa": [
+    "13E durable cursor and successful CI verified before recovery.",
+    "13F prereg evidence, engine and producer were already committed before the message-delivery interruption.",
+    "Exact committed Git blobs for evidence/engine/producer matched the downloaded GitHub Actions recovery snapshot.",
+    "Canonical January SHA and 4,205,709 Stage-A ticks verified.",
+    "Workbook already contained the interrupted chain's 13F raw-result SHA 210b275d... before recovery replay.",
+    "Recovery replay reproduced the exact same raw-result SHA 210b275d..., proving deterministic scientific output across the interruption.",
+    "Strict 13C control reproduced 1513 trades / 674 raw-positive / net -339.14.",
+    "Any-causal upper diagnostic reproduced 1672 trades / 749 raw-positive / net -371.64.",
+    "Leading source-compatible INHERITED_FIRST_ATTEMPT_ONLY produced 1610 trades / 716 raw-positive / net -362.29.",
+    "Historical 1563-trade target lies between strict and inherited-first populations; reclaim-level consumption/reuse is the next localized question.",
+    "No numeric retune, pending TTL fit, generator threshold change, exit change, August access, SORB integration or MQL5 work."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh03_s06_event_identity_rearm_parity.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_dh03_s06_event_identity_rearm_parity.py --source <canonical_january_gzip> --evidence research/delta/reference/DELTA_R037_DH03_S06_PENDING_EVENT_IDENTITY_REARM_BOUNDARY_EVIDENCE_13F.json --output <13F_result_json>",
+    "timing_semantics": "Only causally revealed S15 pivots are visible. Profiles alter whether pre-original-pullback pivot identity is inherited/latched across first and rearmed attempts; no future pivot is used.",
+    "expected_fingerprints": {
+      "strict_control": {
+        "signals": 1586,
+        "trades": 1513,
+        "raw_positive_wins": 674,
+        "net_profit": -339.14
+      },
+      "any_causal": {
+        "signals": 1748,
+        "trades": 1672,
+        "raw_positive_wins": 749,
+        "net_profit": -371.64
+      },
+      "inherited_first": {
+        "signals": 1683,
+        "trades": 1610,
+        "raw_positive_wins": 716,
+        "net_profit": -362.29
+      }
+    },
+    "selected_interpretation": "MATERIAL_EVENT_IDENTITY_CLUE_ONLY_NOT_PROMOTED"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — R032 specialist parity incomplete",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready; reclaim-level consumption/reuse unresolved",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA semantics",
+    "ownership_scheduler_spec": "not ready",
+    "session_dst_spec": "frozen DELTA semantics",
+    "risk_spec": "fixed 0.01 research semantics",
+    "trade_count_parity_spec": "blocked pending next DH03 reclaim-level consumption unit",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH03_S06_PENDING_VALIDITY_CHECKPOINT_13E",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A462:H471"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH03_S06_RECLAIM_LEVEL_CONSUMPTION_AND_PIVOT_REUSE_PARITY_RECONSTRUCTION",
+  "github_commits": [
+    "5996b7147535a06cc1383b0dd2d9c53ecdb66c10",
+    "e3fa78116d50fcac409d49c8d47b31e85a423402",
+    "5d36e2c6ed3f3968a20f804f85e75dcb5eaef479",
+    "3754dd19fba5cf3b06f308565220cf0a85bdf4bb",
+    "d436547b598d648144c30997fbdc49011d71f910"
+  ]
+}
