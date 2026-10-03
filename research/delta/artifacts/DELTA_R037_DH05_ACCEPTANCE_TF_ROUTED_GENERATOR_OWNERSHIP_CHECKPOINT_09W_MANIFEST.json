@@ -1,0 +1,189 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH05_ACCEPTANCE_TF_ROUTED_GENERATOR_OWNERSHIP_CHECKPOINT_09W",
+  "status": "VERIFIED_DURABLE_NEGATIVE_QA_ROUTER_REJECTED",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH05_GENERATOR_REVERSAL_CLOCK_RELEASE_CHECKPOINT_09V",
+  "hypothesis": "Routing generator ownership by the existing acceptance-timeframe category may preserve serial control for S5 vectors while releasing S15 vectors at FAILURE_CANDIDATE, improving sparse-vector executable density without destroying funnel parity.",
+  "falsification_condition": "Reject if the routed architecture does not jointly improve causal funnel parity and executable trade-count parity versus serial POST_QUAL, or if it introduces overflow/other material degradation.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Preserved six-vector historical trade counts",
+    "reference_count": 6,
+    "minimum_count": 6,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity reconstruction only; all six frozen vectors retained."
+  },
+  "primary_metrics": {
+    "entry_quality": "Not optimized.",
+    "hold_persistence": "Not optimized.",
+    "economics": "Reported diagnostically; no promotion.",
+    "gross_loss_drawdown": "Not optimization target.",
+    "activity": "Eight-stage six-vector funnel plus executable trade-density error."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_acceptance_tf_routed_generator_ownership_challenger.py",
+      "commit": "a26e2edf376aae42b72a8bf11dfd25b0fb38619c",
+      "blob_sha": "53d4cd2c74ef9cc46411458d269d7a0a597c2b5a",
+      "file_sha256": "e1c971ef8f4e586e24cc262475ebcdc2b01399cc47d4fa2953386d5994975e59"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_runtime_primitives.py",
+      "blob_sha": "328b16a80cf5bff58734a556561625adf89100ae",
+      "file_sha256": "5a53170d1a3f460a299a53aeaf067d4af5ac49db2726f576569d6c643b6f0848"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_conditional_failure_clock_challenger_replay.py",
+      "blob_sha": "0749a0f326ff0a81006f7234f5065963e26e8dab",
+      "file_sha256": "2b041a90fe5fa8e9ea13e4489a36e309e48dfae06e21a1050037cbd6dd8101a7"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retune": false,
+      "router": {
+        "acceptance_tf_S5": "SERIAL_POST_QUAL",
+        "acceptance_tf_S15": "FAILURE_CANDIDATE_DECOUPLED_POST_QUAL"
+      },
+      "serial_control": "POST_QUAL",
+      "failure_clock": "FAILURE_CANDIDATE"
+    },
+    "feature_order": [
+      "probe",
+      "qualified",
+      "accepted",
+      "failure",
+      "reentry",
+      "reclaim",
+      "reversal",
+      "signal",
+      "execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "causal parity reconstruction only"
+    },
+    "runtime_dependencies": [
+      "Python",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "external_timeout_seconds": 120,
+      "atomic_output_write": true,
+      "fresh_numba_cache": true,
+      "committed_producer_before_compute": true,
+      "exact_local_git_blob_verified": true,
+      "control_gate": "exact serial POST_QUAL funnel before challenger scoring"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January canonical Dukascopy XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "Checkpoint 09V durable parent",
+      "path": "research/delta/artifacts/DELTA_R037_DH05_GENERATOR_REVERSAL_CLOCK_RELEASE_CHECKPOINT_09V_MANIFEST.json"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "fresh isolated 09W Numba cache"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH05_ACCEPTANCE_TF_ROUTED_GENERATOR_OWNERSHIP_CHECKPOINT_09W.json",
+      "blob_sha": "6d537e00ebff50614ec6370e33aa940863d2758f",
+      "runtime_result_sha256": "fd1a0a546ddee8876bbedb85cc06078ffbf65d8ed8f863c787fe942d7294b250"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH05_ACCEPTANCE_TF_ROUTED_GENERATOR_OWNERSHIP_CHECKPOINT_09W.md",
+      "blob_sha": "e78306e93adec22ddee6fadee02e922b9c8d47b4"
+    }
+  ],
+  "qa": [
+    "Live CURRENT_STATE recovered at durable 09V while 09W producer existed ahead of the cursor; no rerun of prior durable science.",
+    "Canonical January SHA verified and Stage-A tick count 4,205,709.",
+    "Producer and both runtime dependencies matched committed Git blobs before official compute.",
+    "Python compile gate passed.",
+    "Fresh Numba cache, hard 120-second timeout and atomic output used.",
+    "Official replay exit 0 in 10.74 s; peak RSS 697,976 KB.",
+    "Serial POST_QUAL control reproduced exactly: funnel error 978, trade-count error 336.",
+    "Routed candidate trade-count error improved 336 -> 309 but funnel error deteriorated 978 -> 2,450.",
+    "No episode or signal overflow.",
+    "S06 unchanged versus serial control because S06 remains on S5 serial branch; S06 veto boolean therefore false.",
+    "Checkpoint 09S S16 acceptance_tf metadata discrepancy identified; 09T causal rejection remains valid because 09T used live VECTORS.",
+    "No numeric retune; August sealed; SORB blocked; MQL5 unauthorized.",
+    "Workbook tab 75 A197:H212 written and read back."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh05_acceptance_tf_routed_generator_ownership_challenger.py",
+    "command": "NUMBA_CACHE_DIR=<fresh> python research/delta/experiments/delta_r037_dh05_acceptance_tf_routed_generator_ownership_challenger.py --source <canonical_january_gzip> --output <09w_runtime_json>",
+    "timing_semantics": "Frozen 09C/09E/09F/09D chronology; S5 serial POST_QUAL; S15 failure-candidate decoupled downstream episode.",
+    "expected_fingerprints": {
+      "control_total_funnel_error": 978,
+      "control_trade_count_error": 336,
+      "routed_total_funnel_error": 2450,
+      "routed_trade_count_error": 309
+    },
+    "selected_interpretation": "REJECT_ACCEPTANCE_TF_ROUTED_GENERATOR_OWNERSHIP"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — parity reconstruction only",
+    "feature_timing_spec": "Not ready.",
+    "state_machine_spec": "Not ready.",
+    "model_inference_spec": "No model.",
+    "execution_quote_side_spec": "Frozen.",
+    "ownership_scheduler_spec": "Serial POST_QUAL remains control.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01.",
+    "trade_count_parity_spec": "Blocked until specialist parity.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH05_GENERATOR_REVERSAL_CLOCK_RELEASE_CHECKPOINT_09V",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A197:H212"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH05_ACCEPTANCE_TF_METADATA_PROVENANCE_RECONCILIATION",
+  "github_commits": [
+    "a26e2edf376aae42b72a8bf11dfd25b0fb38619c",
+    "5fd1428f3715e0ea8d2452126a6491291615c777",
+    "9df6d26dede17b00c263bc21168891a5d873dd2a"
+  ]
+}
