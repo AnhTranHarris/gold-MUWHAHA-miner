@@ -1,0 +1,93 @@
+{
+  "schema": "delta-r037-dh03-s06-pullback-event-multiplicity-evidence-13c-v1",
+  "status": "PREREGISTERED_BEFORE_COMPUTE",
+  "unit": "R037_DH03_S06_PULLBACK_EVENT_MULTIPLICITY_AND_RESET_PARITY_RECONSTRUCTION",
+  "parent_checkpoint": "R037_DH03_S06_STATE_FUNNEL_CHECKPOINT_13B",
+  "active_parent": "R032-C03_PLUS_DH02_S11_S08",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "canonical_stage_a": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "ticks": 4205709,
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+  },
+  "vector": {
+    "id": "DH03-S06",
+    "fingerprint": "a3a086b7344c",
+    "numeric_retune": false
+  },
+  "frozen_semantics": {
+    "parent": "13A STRUCTURAL_PRIORITY M15/M30",
+    "exhaustion": "either S15 or S30 counter-efficiency decline plus no-new-adverse-extreme confirmation",
+    "reclaim_level": "causally known S15 pivot",
+    "reclaim_observation": "completed S5 close",
+    "reacceleration": "later completed S5 positive parent-direction efficiency and net move",
+    "event_expiry_seconds": 513.6575,
+    "all_numeric_thresholds": "UNCHANGED"
+  },
+  "bounded_question": "After one ENTRY_ELIGIBLE signal, is the still-valid DH03 pullback episode consumed, or can causal exhaustion/reclaim/reacceleration attempts recycle inside the original episode until structural/parent invalidation or original max-pullback age?",
+  "profiles": [
+    {
+      "id": "POST_PULLBACK_SINGLE_ENTRY_CONTROL",
+      "pivot_age": "post-pullback",
+      "rearm": "consume episode after signal",
+      "role": "13B source-grounded control"
+    },
+    {
+      "id": "POST_PULLBACK_REARM_FRESH_EXHAUSTION",
+      "pivot_age": "post-pullback",
+      "rearm": "same episode -> PULLBACK_ACTIVE; require a fresh exhaustion sequence"
+    },
+    {
+      "id": "POST_PULLBACK_REARM_PERSISTENT_EXHAUSTION",
+      "pivot_age": "post-pullback",
+      "rearm": "same episode -> EXHAUSTION_CANDIDATE; require new S5 reclaim then later S5 reacceleration"
+    },
+    {
+      "id": "POST_PULLBACK_REARM_NEW_ADVERSE_THEN_EXHAUSTION",
+      "pivot_age": "post-pullback",
+      "rearm": "same episode -> PULLBACK_ACTIVE; require a new adverse S15 extreme and subsequent exhaustion"
+    },
+    {
+      "id": "ANY_CAUSAL_REARM_FRESH_EXHAUSTION",
+      "pivot_age": "any already-causal S15 pivot",
+      "rearm": "same episode -> PULLBACK_ACTIVE; require fresh exhaustion",
+      "role": "pivot-age interaction diagnostic only"
+    },
+    {
+      "id": "ANY_CAUSAL_REARM_PERSISTENT_EXHAUSTION",
+      "pivot_age": "any already-causal S15 pivot",
+      "rearm": "same episode -> EXHAUSTION_CANDIDATE; new S5 reclaim then later S5 reacceleration",
+      "role": "pivot-age interaction diagnostic only"
+    }
+  ],
+  "instrumentation": [
+    "signals",
+    "trades",
+    "raw_positive_wins",
+    "pullback_episodes",
+    "exhaustions",
+    "reclaims",
+    "unique_signal_episodes",
+    "multi_signal_episodes",
+    "max_signals_per_episode",
+    "signals_per_signal_episode",
+    "execution signal-to-trade suppression"
+  ],
+  "selection_rule": "A multiplicity semantic may carry forward only if it materially closes the 1563-trade population deficit while preserving causal order and broadly compatible raw-win fraction/economic scale. Any-causal pivot variants are interaction diagnostics and may not establish pivot-age provenance by fit alone.",
+  "forbidden": [
+    "numeric threshold retuning",
+    "August access",
+    "SORB integration",
+    "mature exit optimization",
+    "capital/lot changes",
+    "MQL5",
+    "retrospective episode scheduling",
+    "selecting a pivot-age rule solely by fit"
+  ],
+  "next_if_exact": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
+  "next_if_material_nonexact": "R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_AND_EXECUTION_PARITY_RECONSTRUCTION",
+  "next_if_negative": "R037_DH03_S06_EVENT_RESET_PROVENANCE_DECISION",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
