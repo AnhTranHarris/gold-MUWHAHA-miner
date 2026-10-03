@@ -1,0 +1,69 @@
+{
+  "schema": "delta-r037-dh05-probe-attempt-touch-reset-checkpoint-10e-v1",
+  "status": "COMPLETE_NEGATIVE_QA_TOUCH_RESET_REJECTED",
+  "unit": "R037_DH05_PROBE_RESIDUAL_ATTEMPT_REARM_COMPLETION_PROVENANCE_RECONCILIATION",
+  "parent": "R037_DH05_PROBE_ATTEMPT_STRICT_BEYOND_CHECKPOINT_10D",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "producer_path": "research/delta/experiments/delta_r037_dh05_probe_attempt_touch_reset.py",
+  "producer_commit": "db97b9129fdda643e01cab6f459f5f3830675bf0",
+  "producer_blob_sha": "dba6f776eb4c7804b59265937f875e2e08a74d5e",
+  "producer_file_sha256": "ce490e496091ac767718225d29de9cc9c42b1530747d6f1a51c76f87019b0122",
+  "official_full_result_sha256": "f8fce86f2de000b208ae2da86a6cc07d173646d95bf04632818d4fb31d3f5d16",
+  "control_09z": {
+    "probe_abs_error": 449,
+    "total_abs_error": 782,
+    "trade_count_abs_error": 335
+  },
+  "profiles": {
+    "TOUCH_RESET_STRICT_REBREAK": {
+      "probe_abs_error": 1885,
+      "total_abs_error": 2246,
+      "trade_count_abs_error": 335,
+      "s06_veto": true,
+      "probe_counts": {
+        "A03": 6937,
+        "S05": 8201,
+        "S06": 3820,
+        "S09": 8181,
+        "S10": 6744,
+        "S16": 8192
+      }
+    },
+    "TOUCH_RESET_CONTACT_REBREAK": {
+      "probe_abs_error": 5026,
+      "total_abs_error": 5381,
+      "trade_count_abs_error": 334,
+      "s06_veto": true,
+      "probe_counts": {
+        "A03": 7531,
+        "S05": 8801,
+        "S06": 4041,
+        "S09": 8834,
+        "S10": 7283,
+        "S16": 8726
+      }
+    }
+  },
+  "finding": {
+    "interpretation": "Boundary-touch completion/rearm is too permissive. Together with 10D, the historical attempt counter is bracketed between strict-beyond underproduction and touch-reset overproduction; the 09Z contact-inclusive opening + strict pre-break reset remains the strongest universal reconstruction.",
+    "carry_forward_eligible": false
+  },
+  "decision": "REJECT_TOUCH_RESET_REARM_PRESERVE_09Z_ATTEMPT_COUNTER",
+  "runtime": {
+    "wall_seconds": 20.17,
+    "max_rss_kb": 699464,
+    "timeout_seconds": 120,
+    "faulthandler": true,
+    "fresh_numba_cache": true,
+    "atomic_output": true,
+    "recovery_artifact_run": 37145530316,
+    "recovery_artifact_id": 11281199318,
+    "recovery_artifact_digest": "sha256:a6c548759506146d5a4d79e4c9c413a5fafc8c7853fae5642a8c517be8399edf"
+  },
+  "august_2026": "SEALED",
+  "sorb_integrated_replay_started": false,
+  "mql5_authorized": false,
+  "next_unit": "R037_DH05_PROBE_RESIDUAL_ATTEMPT_COUNTER_PROVENANCE_DECISION"
+}
