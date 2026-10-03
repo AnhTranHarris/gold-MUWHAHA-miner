@@ -1,0 +1,246 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A",
+  "status": "VERIFIED_RESEARCH_COMPLETE_PENDING_STATE_ADVANCE",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH03_S06_SIGNAL_GENERATOR_PROVENANCE_DECISION_CHECKPOINT_13H",
+  "hypothesis": "The preserved R032 C00-C03 fingerprints can localize historical specialist admission order using the exact non-specialist backbone and the four frozen provenance-limited specialist surrogates without retuning any specialist threshold.",
+  "falsification_condition": "Neither preregistered flat-only scheduler ordering materially localizes the C00-C03 ownership/economic fingerprints, or the integrated no-specialist control fails exact R025+GLOBAL_NO_REARM parity.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Historical R032-C03 P75",
+    "reference_count": 13868,
+    "minimum_count": 13868,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity reconstruction gate; no promotion from approximate count."
+  },
+  "primary_metrics": {
+    "entry_quality": "Not optimized; scheduler/provenance parity only.",
+    "hold_persistence": "Frozen R9 lifecycle; not optimized.",
+    "economics": "Historical C00-C03 total and specialist net fingerprints.",
+    "gross_loss_drawdown": "Exact backbone control verified; specialist residual analyzed but not promoted.",
+    "activity": "C00-C03 total trades and specialist-entry ownership fingerprints."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_r032_full_specialist_parent_parity.py",
+      "commit": "07734bf76b6062e3840e8e6ad3b0fc27dca63870",
+      "blob_sha": "f100e5274466def8fc5aebf1a994c513d80ed3c3",
+      "sha256": "5a409f0f9b0b32b6c557574c06171baab47f19c8b4668392f74338a26e04666e"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/experiments/delta_r037_r032_parent_backbone.py",
+      "blob_sha": "12e037bc44c8587f2305357ff085380473c40963"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_event_multiplicity_engine.py",
+      "blob_sha": "0f5e458ec1c6274766a3b5fb7d04efc8bf4f661f"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_runtime_primitives.py",
+      "blob_sha": "328b16a80cf5bff58734a556561625adf89100ae"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh02_s11_armed_boundary_lifetime_rearm.py",
+      "blob_sha": "49e5c91c41a56b84017a1d2f2dc8c4104ed9e12f"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh02_s08_context_placement_parity.py",
+      "blob_sha": "1abb2f9078f995a2bd12e9d5a4c0d7e37f9082c1"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_retuning": false,
+      "schedulers": [
+        "SPECIALIST_FIRST_FLAT_ONLY_CONFIG_ORDER",
+        "BACKBONE_FIRST_FLAT_ONLY_CONFIG_ORDER"
+      ],
+      "config_order": [
+        "DH03_S06",
+        "DH05_S06",
+        "DH02_S11",
+        "DH02_S08"
+      ],
+      "global_no_rearm": true,
+      "one_position": true
+    },
+    "feature_order": [
+      "exact R025 backbone state update",
+      "flat-only scheduler arbitration",
+      "specialist or ordinary entry",
+      "owned exit/latch semantics"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "clean-room historical parity reconstruction; no train/cal tuning"
+    },
+    "timezone_session_definitions": {
+      "source": "frozen DELTA 2026 London/New York DST session code"
+    },
+    "execution_cost_assumptions": {
+      "lot": 0.01,
+      "entry_commission_usd": 0.01,
+      "exit_commission_usd": 0.01,
+      "buy_entry": "Ask",
+      "buy_exit": "Bid",
+      "sell_entry": "Bid",
+      "sell_exit": "Ask"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_runner_timeout_seconds": 120,
+      "process_group_cleanup": true,
+      "atomic_result_write": true,
+      "durable_inflight_cursor": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "Canonical January Dukascopy XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "14A prereg evidence",
+      "path": "research/delta/reference/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_EVIDENCE_14A.json",
+      "commit": "eb664c687ad772117e733b68cb73a6b241ef87d6"
+    },
+    {
+      "name": "Frozen specialist provenance decisions",
+      "checkpoints": [
+        "10F",
+        "11G",
+        "12C",
+        "13H"
+      ]
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "DH03_S06 1586",
+      "DH05_S06 651",
+      "DH02_S11 103",
+      "DH02_S08 104"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "C00",
+      "C01",
+      "C02",
+      "C03"
+    ],
+    "caches": [
+      "causal bars/features generated from canonical Stage-A ticks"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A.json",
+      "blob_sha": "25863137724183682144de99dc1b251d5d849218",
+      "official_runtime_sha256": "900ab0dcc0fd56fe58abb73d97a8f0fefb7804bf9ad05d9e8fc8850f5eba0eed"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A.md",
+      "blob_sha": "4d7d698873ff4fe02324904638f52d6c0a83c948"
+    }
+  ],
+  "qa": [
+    "Exact committed producer Git blob verified locally before official compute.",
+    "Canonical January source SHA-256 verified and Stage-A tick count = 4,205,709.",
+    "Integrated no-specialist control exactly reproduced 12,504 trades / 5,723 official wins / GP +1,225.76 / GL -3,797.07 / net -2,571.31.",
+    "Frozen specialist signal counts reproduced: DH03 1,586 / DH05 651 / S11 103 / S08 104.",
+    "Official bounded replay completed exit 0 in 27.819 seconds.",
+    "BACKBONE_FIRST localized as better scheduler, but full historical C00-C03 parity failed.",
+    "C00 specialist ownership residual only -19; S11/S08 increments over-admit +30/+25.",
+    "Workbook tab 75 range A496:H510 written and read back.",
+    "August not accessed; SORB not integrated; MQL5 not authorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_r032_full_specialist_parent_parity.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python -X faulthandler research/delta/experiments/delta_r037_r032_full_specialist_parent_parity.py --source <canonical_january_gzip> --evidence research/delta/reference/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_EVIDENCE_14A.json --output <runtime_json>",
+    "required_artifact_order": [
+      "14A evidence",
+      "producer",
+      "canonical January ticks",
+      "compact checkpoint",
+      "report",
+      "workbook readback",
+      "manifest",
+      "CURRENT_STATE"
+    ],
+    "expected_fingerprints": {
+      "backbone": {
+        "trades": 12504,
+        "official_wins": 5723,
+        "net_profit": -2571.31
+      },
+      "signals": {
+        "DH03_S06": 1586,
+        "DH05_S06": 651,
+        "DH02_S11": 103,
+        "DH02_S08": 104
+      },
+      "leading_scheduler": "BACKBONE_FIRST_FLAT_ONLY_CONFIG_ORDER"
+    },
+    "timing_semantics": "Ordered ticks; specialist signals become visible causally at signal_time <= current tick; flat-only admission; occupied/latch signals are not queued.",
+    "notes": "Exact historical specialist source bytes remain absent; this checkpoint localizes scheduler/provenance residual only."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — historical parity unresolved",
+    "feature_timing_spec": "NOT READY",
+    "state_machine_spec": "NOT READY",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA semantics",
+    "ownership_scheduler_spec": "leading BACKBONE_FIRST remains parity hypothesis only",
+    "session_dst_spec": "frozen DELTA 2026 sessions",
+    "risk_spec": "fixed 0.01 research semantics",
+    "trade_count_parity_spec": "blocked until exact R032 parent parity or explicit governance decision",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "supersedes": [],
+  "rollback_target": "R037_DH03_S06_SIGNAL_GENERATOR_PROVENANCE_DECISION_CHECKPOINT_13H",
+  "github_commits": [
+    "eb664c687ad772117e733b68cb73a6b241ef87d6",
+    "07734bf76b6062e3840e8e6ad3b0fc27dca63870",
+    "985f1fc6b73419addef0bd11d99e27424446cf92",
+    "4efa0891cd411fe3ff9a4cefab65d987c189f4f2"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A496:H510",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  }
+}
