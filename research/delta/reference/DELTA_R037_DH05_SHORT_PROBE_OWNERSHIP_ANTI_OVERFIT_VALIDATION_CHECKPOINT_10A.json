@@ -1,0 +1,150 @@
+{
+  "schema": "delta-r037-dh05-short-probe-ownership-anti-overfit-validation-checkpoint-10a-v1",
+  "status": "COMPLETE_LATE_JAN_CROSS_SURFACE_ANTI_OVERFIT_PASS_EFFECT_TINY_NON_PROMOTING",
+  "unit": "R037_DH05_SHORT_PROBE_OWNERSHIP_ANTI_OVERFIT_VALIDATION",
+  "parent": "R037_DH05_SHORT_PROBE_RELATIVE_ACCEPTANCE_BAR_OWNERSHIP_CHECKPOINT_09Z",
+  "producer_path": "research/delta/experiments/delta_r037_dh05_short_probe_ownership_anti_overfit_validation.py",
+  "producer_commit": "054c1a4a2b2b902928f1c9fb4007b8dda2f3e6f2",
+  "producer_blob_sha": "469df0e3dba832c0eda1461dd945b40a65484f85",
+  "producer_file_sha256": "9c8ff7c0e48adf9a64571ea2a6ec3cb7fdec088b7e72eb098ac4072fd72d459d",
+  "runtime_result_sha256": "3ac7a2a4879bf82261a321215ea3fcb641470d13580de4f08d3f0ee8e86b7de7",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "validation": {
+    "warmup_start_utc": "2026-01-14T00:00:00Z",
+    "holdout_start_utc": "2026-01-18T12:00:00Z",
+    "holdout_end": "final January tick",
+    "loaded_ticks_from_warmup": 6076533,
+    "holdout_last_tick_ms": 1769810391954,
+    "surfaces": [
+      "P50",
+      "P75",
+      "P90"
+    ],
+    "strategy_state_at_holdout": "COLD",
+    "warmup_role": "indicator/boundary state only",
+    "same_holdout_recuts": false,
+    "numeric_vector_retune": false
+  },
+  "router": {
+    "rule": "max_probe_age_s < acceptance_tf_seconds -> FAILURE_CANDIDATE_DECOUPLED_POST_QUAL; otherwise SERIAL_POST_QUAL",
+    "selected_vectors": [
+      "S05",
+      "S09",
+      "S16"
+    ],
+    "serial_vectors": [
+      "A03",
+      "S06",
+      "S10"
+    ]
+  },
+  "runtime": {
+    "elapsed_seconds": 19.32,
+    "max_rss_kb": 989144,
+    "exit_code": 0,
+    "external_timeout_seconds": 180,
+    "python": "3.13.5",
+    "faulthandler": true,
+    "fresh_numba_cache": true,
+    "atomic_output": true
+  },
+  "surfaces": {
+    "P50": {
+      "control": {
+        "trades": 897,
+        "wins": 427,
+        "net_usd": -163.28,
+        "sum_vector_max_drawdown_usd": 172.24
+      },
+      "candidate": {
+        "trades": 898,
+        "wins": 428,
+        "net_usd": -163.2,
+        "sum_vector_max_drawdown_usd": 172.24
+      },
+      "delta": {
+        "trades": 1,
+        "wins": 1,
+        "net_usd": 0.08,
+        "sum_vector_max_drawdown_usd": 0
+      },
+      "selected_signals": {
+        "S05": "7->8",
+        "S09": "2->2",
+        "S16": "7->8"
+      },
+      "pass": true
+    },
+    "P75": {
+      "control": {
+        "trades": 894,
+        "wins": 410,
+        "net_usd": -179.65,
+        "sum_vector_max_drawdown_usd": 188.24
+      },
+      "candidate": {
+        "trades": 895,
+        "wins": 411,
+        "net_usd": -179.58,
+        "sum_vector_max_drawdown_usd": 188.17
+      },
+      "delta": {
+        "trades": 1,
+        "wins": 1,
+        "net_usd": 0.07,
+        "sum_vector_max_drawdown_usd": -0.07
+      },
+      "selected_signals": {
+        "S05": "7->8",
+        "S09": "2->2",
+        "S16": "7->8"
+      },
+      "pass": true
+    },
+    "P90": {
+      "control": {
+        "trades": 892,
+        "wins": 362,
+        "net_usd": -291.72,
+        "sum_vector_max_drawdown_usd": 298.7
+      },
+      "candidate": {
+        "trades": 893,
+        "wins": 363,
+        "net_usd": -291.68,
+        "sum_vector_max_drawdown_usd": 298.66
+      },
+      "delta": {
+        "trades": 1,
+        "wins": 1,
+        "net_usd": 0.04,
+        "sum_vector_max_drawdown_usd": -0.04
+      },
+      "selected_signals": {
+        "S05": "7->8",
+        "S09": "2->2",
+        "S16": "7->8"
+      },
+      "pass": true
+    }
+  },
+  "vector_interpretation": {
+    "S05": "Extra candidate signal becomes one extra admitted winning trade on every surface.",
+    "S09": "No holdout signal/trade change.",
+    "S16": "One extra candidate signal on every surface but no extra admitted trade."
+  },
+  "finding": {
+    "all_three_surfaces_no_worse_net": true,
+    "anti_overfit_gate_pass": true,
+    "effect_size": "TINY",
+    "historical_semantic_parity_proven": false,
+    "promoted": false,
+    "interpretation": "09Z survives independent late-January P50/P75/P90 no-harm validation, but the OOS economic effect is only one extra S05 winning trade per surface. This is supportive robustness evidence, not sufficient evidence to freeze the router as historical DH05 semantics."
+  },
+  "decision": "KEEP_09Z_AS_NON_PROMOTING_ROBUST_CHALLENGER_REQUIRE_PROVENANCE_PROMOTION_DECISION",
+  "parity_complete": false,
+  "integrated_r037_sorb_started": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "next_unit": "R037_DH05_SHORT_PROBE_OWNERSHIP_PROVENANCE_PROMOTION_DECISION"
+}
