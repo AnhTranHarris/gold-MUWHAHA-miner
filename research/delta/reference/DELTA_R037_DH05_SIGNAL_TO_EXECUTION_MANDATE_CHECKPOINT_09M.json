@@ -1,0 +1,62 @@
+{
+  "schema": "delta-r037-dh05-signal-to-execution-mandate-checkpoint-09m-v1",
+  "status": "COMPLETE_NEGATIVE_QA_BLANKET_EXECUTION_MANDATE_REENTRY_REJECTED",
+  "unit": "R037_DH05_SIGNAL_TO_EXECUTION_MANDATE_PERSISTENCE_PARITY_RECONSTRUCTION",
+  "parent": "R037_DH05_POST_SIGNAL_INTRABAR_REARM_EDGE_CHECKPOINT_09L",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "august_accessed": false,
+  "numeric_vector_retune": false,
+  "producer_commit": "94367f76a848381303654b542c4c2cf5f04d89a3",
+  "producer_blob_sha": "33cbedaf83c9acb244eadfd9325adcd8e5612997",
+  "producer_file_sha256": "12e73a4d150ce2aeefa3e2c9d7310f763b2b74af18e066506ee04d82a9394583",
+  "runtime_result_sha256": "dc6f09064fb52fd6fa8dcfac079e36d38eae6812e0308286f43b929b31f85223",
+  "control": {
+    "aggregate_trade_count_abs_error": 336,
+    "s06": {
+      "signals": 651,
+      "trades": 649,
+      "wins": 274,
+      "net_usd": -150.35
+    }
+  },
+  "profiles": {
+    "EXEC30_ONE_REENTRY": {
+      "aggregate_trade_count_abs_error": 1127,
+      "s06_trades": 1284,
+      "s06_wins": 561,
+      "s06_net_usd": -294.18,
+      "s06_reentries": 633
+    },
+    "MAXFAIL_ONE_REENTRY": {
+      "aggregate_trade_count_abs_error": 1143,
+      "s06_trades": 1300,
+      "s06_wins": 569,
+      "s06_net_usd": -296.18,
+      "s06_reentries": 649
+    },
+    "EXEC30_UNLIMITED": {
+      "aggregate_trade_count_abs_error": 7611,
+      "s06_trades": 4906
+    },
+    "MAXFAIL_UNLIMITED": {
+      "aggregate_trade_count_abs_error": 11380,
+      "s06_trades": 8689
+    }
+  },
+  "selected_vector_examples": {
+    "EXEC30_ONE_REENTRY": {
+      "A03": "380/306",
+      "S05": "18/51",
+      "S06": "1284/615",
+      "S09": "22/119",
+      "S10": "450/206",
+      "S16": "14/24"
+    }
+  },
+  "decision": "REJECT_BLANKET_TIME_BASED_EXECUTION_MANDATE_MULTIPLICITY",
+  "parity_complete": false,
+  "next_unit": "R037_DH05_REVERSAL_STATE_PERSISTENT_EXECUTION_MANDATE_PARITY_RECONSTRUCTION",
+  "next_hypothesis": "A generator signal may remain executable only while the causal reversal thesis remains valid; re-entry should require persistent/reconfirmed reversal state rather than a fixed-time blanket mandate."
+}
