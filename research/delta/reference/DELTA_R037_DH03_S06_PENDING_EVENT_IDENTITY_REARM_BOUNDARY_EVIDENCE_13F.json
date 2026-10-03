@@ -1,0 +1,85 @@
+{
+  "schema": "delta-r037-dh03-s06-pending-event-identity-rearm-boundary-evidence-13f-v1",
+  "status": "PREREGISTERED_BEFORE_COMPUTE",
+  "unit": "R037_DH03_S06_PENDING_EVENT_IDENTITY_AND_REARM_BOUNDARY_PARITY_RECONSTRUCTION",
+  "parent_checkpoint": "R037_DH03_S06_PENDING_VALIDITY_CHECKPOINT_13E",
+  "active_parent": "R032-C03_PLUS_DH02_S11_S08",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "canonical_stage_a": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "ticks": 4205709,
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+  },
+  "frozen_vector": {
+    "id": "DH03-S06",
+    "fingerprint": "a3a086b7344c",
+    "numeric_retune": false
+  },
+  "frozen_semantics": [
+    "structural-priority M15/M30 parent",
+    "either S15 or S30 exhaustion weakening",
+    "LOCAL_RECLAIM evaluated on completed S5 through S15 fast pivot",
+    "later completed-S5 reacceleration",
+    "same original pullback survives ENTRY_ELIGIBLE and rearms to PULLBACK_ACTIVE with fresh exhaustion",
+    "original pullback max-age and invalidation remain attached to original event",
+    "one-position execution with position-observation semantics"
+  ],
+  "source_basis": {
+    "white_paper_drive_document_id": "13pa0KSxVy93yajDEGAIkeY4V8Z3egMDIPxPV0nM3ia8",
+    "exact_text_semantics": "LOCAL_RECLAIM: price closes on S5 back through a causally known fast pivot/reclaim level in parent direction d.",
+    "ambiguity": "The white paper requires causal knowledge but does not require the reclaim pivot to have been revealed after the original pullback start.",
+    "prior_bounds": {
+      "strict_post_original_pullback": "13C leading DROP ledger = 1513 executed trades",
+      "unrestricted_any_causal": "13C diagnostic DROP ledger = 1672 executed trades",
+      "historical_target": 1563,
+      "full_event_pending_on_strict": "13E = 1584 executed trades but only 2 pending tokens invalidated, so pending lifetime is not the dominant residual"
+    }
+  },
+  "bounded_question": "Does the historical DH03-S06 reclaim population use event/attempt ownership of an already-causal S15 pivot, rather than either forbidding every pre-pullback pivot or allowing unlimited reuse of any old causal pivot?",
+  "profiles": [
+    {
+      "id": "POST_ORIGINAL_PULLBACK_CONTROL",
+      "semantics": "13C control: current latest causal S15 pivot is eligible only when its reveal time is after original pullback start."
+    },
+    {
+      "id": "ANY_CAUSAL_DIAGNOSTIC",
+      "semantics": "13C upper diagnostic: current latest causal S15 pivot is eligible regardless of reveal time."
+    },
+    {
+      "id": "INHERITED_FIRST_ATTEMPT_ONLY",
+      "semantics": "Before the first signal of an original pullback, the latest already-causal S15 pivot may be inherited; after the first signal/rearm, reclaim again requires a pivot revealed after original pullback start."
+    },
+    {
+      "id": "INHERITED_FIRST_THEN_POST_REARM",
+      "semantics": "Before the first signal, an already-causal S15 pivot may be inherited; after each signal/rearm, the next reclaim requires a pivot revealed after that preceding signal."
+    },
+    {
+      "id": "START_LATCH_FIRST_ATTEMPT",
+      "semantics": "At pullback creation, latch the then-causal S15 reclaim pivot for the first attempt; after the first signal/rearm, use the normal latest pivot but require reveal time after original pullback start."
+    }
+  ],
+  "execution_views": [
+    "DROP_OCCUPIED: exact 13C/13D one-position drop ledger for generator parity localization",
+    "FULL_EVENT_PENDING: 13E causal pending rule, reported as secondary interaction only; do not promote merely for scalar fit"
+  ],
+  "selection_rule": "Carry forward only a source-compatible event/pivot ownership rule that materially closes the 1563-trade and 690-raw-positive target under the primary DROP_OCCUPIED view without materially worsening economics; use FULL_EVENT_PENDING only to diagnose interaction. Exact scalar fit alone does not override causal semantics.",
+  "forbidden": [
+    "numeric threshold retuning",
+    "pending TTL tuning",
+    "new pivot-age number",
+    "generator threshold changes",
+    "exit changes",
+    "simultaneous positions",
+    "future pivot use",
+    "August access",
+    "SORB integration",
+    "capital/lot changes",
+    "MQL5"
+  ],
+  "next_if_exact": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
+  "next_if_material_nonexact": "R037_DH03_S06_RECLAIM_LEVEL_CONSUMPTION_AND_PIVOT_REUSE_PARITY_RECONSTRUCTION",
+  "next_if_negative": "R037_DH03_S06_SIGNAL_GENERATOR_RESIDUAL_PROVENANCE_DECISION",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
