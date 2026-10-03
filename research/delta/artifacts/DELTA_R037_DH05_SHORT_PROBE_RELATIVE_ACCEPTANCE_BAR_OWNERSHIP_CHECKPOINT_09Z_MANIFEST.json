@@ -1,0 +1,219 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH05_SHORT_PROBE_RELATIVE_ACCEPTANCE_BAR_OWNERSHIP_CHECKPOINT_09Z",
+  "status": "VERIFIED_DURABLE_MATERIAL_CAUSAL_CHALLENGER_NON_PROMOTING_ANTI_OVERFIT_REQUIRED",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_CHECKPOINT_09Y",
+  "hypothesis": "The reconstructible relation max_probe_age_s < acceptance_tf_seconds identifies vectors whose upstream generator may release at FAILURE_CANDIDATE while the downstream failed-break episode continues, whereas vectors with max_probe_age_s >= acceptance_tf_seconds retain SERIAL_POST_QUAL ownership.",
+  "falsification_condition": "Reject if exact causal Stage-A replay does not materially improve funnel parity without worsening executable trade-count parity or S06 signal/trade/win/net parity relative to serial control.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Preserved six-vector historical executable trade counts",
+    "reference_count": 6,
+    "minimum_count": 6,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "All six frozen vectors retained; candidate trade-count error 335 versus serial control 336."
+  },
+  "primary_metrics": {
+    "entry_quality": "Not optimized.",
+    "hold_persistence": "Ownership/state parity challenger only.",
+    "economics": "S06 economics used as mandatory no-deterioration veto; no promotion claim.",
+    "gross_loss_drawdown": "Not optimization target.",
+    "activity": "Eight-stage six-vector funnel plus executable trade-count parity."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_short_probe_relative_acceptance_bar_ownership_challenger.py",
+      "commit": "74964e401c654448ac2dc39f83ea70a9dcef4ee3",
+      "blob_sha": "026f8685427ca3264582370182a8baeed424b95e",
+      "file_sha256": "7b46073de19242ce7e7f865bc7ed6730305693dd1e5474f835691e3f5f5a241f"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_runtime_primitives.py",
+      "blob_sha": "328b16a80cf5bff58734a556561625adf89100ae",
+      "file_sha256": "5a53170d1a3f460a299a53aeaf067d4af5ac49db2726f576569d6c643b6f0848"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_conditional_failure_clock_challenger_replay.py",
+      "blob_sha": "0749a0f326ff0a81006f7234f5065963e26e8dab",
+      "file_sha256": "2b041a90fe5fa8e9ea13e4489a36e309e48dfae06e21a1050037cbd6dd8101a7"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retune": false,
+      "router_rule": "max_probe_age_s < acceptance_tf_seconds -> FAILURE_CANDIDATE_DECOUPLED_POST_QUAL; otherwise SERIAL_POST_QUAL",
+      "selected_vectors": [
+        "S05",
+        "S09",
+        "S16"
+      ],
+      "serial_vectors": [
+        "A03",
+        "S06",
+        "S10"
+      ],
+      "discovery_checkpoint": "09Y"
+    },
+    "feature_order": [
+      "probe",
+      "qualified",
+      "accepted",
+      "failure",
+      "reentry",
+      "reclaim",
+      "reversal",
+      "signal",
+      "execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Stage-A discovery/replay only; candidate remains non-promoting pending independent anti-overfit/provenance validation."
+    },
+    "runtime_dependencies": [
+      "Python 3.13.5",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "external_timeout_seconds": 120,
+      "atomic_output_write": true,
+      "fresh_numba_cache": true,
+      "python_faulthandler": true,
+      "committed_producer_before_compute": true,
+      "exact_local_git_blob_verified": true,
+      "canonical_source_sha_verified": true,
+      "control_gate": "exact SERIAL_POST_QUAL eight-stage funnel must reproduce before challenger scoring"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "Checkpoint 09Y provenance harvest",
+      "path": "research/delta/reference/DELTA_R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_CHECKPOINT_09Y.json"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "fresh isolated 09Z Numba cache"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH05_SHORT_PROBE_RELATIVE_ACCEPTANCE_BAR_OWNERSHIP_CHECKPOINT_09Z.json",
+      "blob_sha": "1629bf00c77bd8abc138c3962ce7daed991c3639",
+      "runtime_result_sha256": "236148af18566855bd276a4df2b61d4d404088d0ca987cd6f868c1de344d3a43"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH05_SHORT_PROBE_RELATIVE_ACCEPTANCE_BAR_OWNERSHIP_CHECKPOINT_09Z.md",
+      "blob_sha": "bd692c78a90bf94ac40e0832d9300271d5d10108"
+    }
+  ],
+  "qa": [
+    "Live durable cursor was 09Y and the 09Z producer already existed ahead of state; prior durable science was not rerun.",
+    "09Z producer and both Python dependencies matched exact committed Git blobs before official compute.",
+    "Canonical January source SHA verified; Stage-A tick count 4,205,709.",
+    "Python compile gate passed.",
+    "Official replay exit 0 in 15.79 s with peak RSS 697,964 KB.",
+    "Fresh Numba cache, PYTHONFAULTHANDLER/-X faulthandler, hard 120-second process timeout, and atomic output used.",
+    "SERIAL_POST_QUAL control reproduced exactly: total funnel error 978; executable trade-count error 336.",
+    "Routed challenger total funnel error 782; improvement 196 (20.04%).",
+    "Executable trade-count error 335; improvement 1 and no deterioration.",
+    "S06 remains serial and is unchanged versus control: 651 signals / 649 trades / 274 wins / -150.35; economic veto false.",
+    "No episode overflow; no signal overflow; max concurrent failure episodes 2.",
+    "Candidate remains non-promoting because its rule was harvested from the same Stage-A six-vector evidence.",
+    "Workbook tab 75 A234:H244 written and read back.",
+    "No numeric retune; August sealed; SORB blocked; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh05_short_probe_relative_acceptance_bar_ownership_challenger.py",
+    "command": "PYTHONFAULTHANDLER=1 NUMBA_CACHE_DIR=<fresh> python -X faulthandler research/delta/experiments/delta_r037_dh05_short_probe_relative_acceptance_bar_ownership_challenger.py --source <canonical_january_gzip> --output <09z_runtime_json>",
+    "timing_semantics": "Frozen 09C/09E/09F/09D chronology; short-probe vectors release generator at FAILURE_CANDIDATE into independent downstream episode; long/equal-probe vectors retain serial POST_QUAL ownership.",
+    "expected_fingerprints": {
+      "control_total_funnel_error": 978,
+      "candidate_total_funnel_error": 782,
+      "control_trade_count_error": 336,
+      "candidate_trade_count_error": 335,
+      "candidate_stage_abs_error": {
+        "probe": 449,
+        "qualified": 49,
+        "accepted": 31,
+        "failure": 56,
+        "reentry": 37,
+        "reclaim": 36,
+        "reversal": 62,
+        "signal": 62
+      },
+      "selected_vectors": [
+        "S05",
+        "S09",
+        "S16"
+      ],
+      "s06": {
+        "signals": 651,
+        "trades": 649,
+        "wins": 274,
+        "net_usd": -150.35
+      }
+    },
+    "selected_interpretation": "CARRY_FORWARD_AS_NON_PROMOTING_CHALLENGER_REQUIRE_INDEPENDENT_ANTI_OVERFIT_VALIDATION"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — non-promoting parity challenger",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model.",
+    "execution_quote_side_spec": "Frozen.",
+    "ownership_scheduler_spec": "Candidate only; not frozen.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01 research semantics unchanged.",
+    "trade_count_parity_spec": "Blocked pending independent validation and full specialist parity.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_CHECKPOINT_09Y",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A234:H244"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH05_SHORT_PROBE_OWNERSHIP_ANTI_OVERFIT_VALIDATION",
+  "github_commits": [
+    "74964e401c654448ac2dc39f83ea70a9dcef4ee3",
+    "92f2df9c42590ebddedc2aa5f3f08ebd599f0e0d",
+    "4d007631ea0a69ede0b859d6e1a17c43656bc52e"
+  ]
+}
