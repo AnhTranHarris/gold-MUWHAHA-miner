@@ -4,9 +4,9 @@
   "branch": "delta",
   "created_utc": "2026-10-01",
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
-  "last_verified_durable_unit": "R037_DH05_SHORT_PROBE_OWNERSHIP_ANTI_OVERFIT_VALIDATION_CHECKPOINT_10A",
-  "first_incomplete_unit": "R037_DH05_SHORT_PROBE_OWNERSHIP_PROVENANCE_PROMOTION_DECISION",
-  "current_phase": "R037_DH05_SHORT_PROBE_OWNERSHIP_PROVENANCE_PROMOTION_DECISION_NEXT",
+  "last_verified_durable_unit": "R037_DH05_SHORT_PROBE_OWNERSHIP_PROVENANCE_PROMOTION_DECISION_CHECKPOINT_10B",
+  "first_incomplete_unit": "R037_DH05_PROBE_COUNT_RESIDUAL_PROVENANCE_AND_BOUNDARY_LIFECYCLE_RECONCILIATION",
+  "current_phase": "R037_DH05_PROBE_COUNT_RESIDUAL_PROVENANCE_AND_BOUNDARY_LIFECYCLE_RECONCILIATION_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -616,7 +616,7 @@
       "google_doc_url": "https://docs.google.com/document/d/18W8y8hHqcK84rkSW66tRWIcT1R5YBxJhitsziRRNLEI/edit",
       "google_doc_revision": "ANLCKQk8pRN2l7_NJZcQEj3kpQ5ptP2KEKPFiZqsz8PmLbCqZ_Qm2wcUoudBg3feBRKxsAGr5oHg5AP7v_GIhZKOwPcSYcNjXs4P0R4EtrM"
     },
-    "current_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH05_SHORT_PROBE_OWNERSHIP_ANTI_OVERFIT_VALIDATION_CHECKPOINT_10A_MANIFEST.json",
+    "current_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH05_SHORT_PROBE_OWNERSHIP_PROVENANCE_PROMOTION_DECISION_CHECKPOINT_10B_MANIFEST.json",
     "verified_gate_run": 37094384529,
     "verified_gate_conclusion": "SUCCESS",
     "final_pack_revision_sync_commit": "5b21c2d06bbf4d98c10b3ee5bafeb0ca2c18a2fe",
@@ -655,7 +655,7 @@
   },
   "next_action": "Use DELTA_004 as the active parent. When the owner restates the first Entry + Initial-Hold research question, perform a fresh community scan, generate independent reconstructible hypotheses, use the GOV-014 spreadsheet-first quant harvesting loop to prioritize adjustments with >=10pp incremental scoped SYNTH-gap closure and seek >=30% scoped REAL-to-SYNTH gap closure before expensive replay, then preregister and test selected packages in the bounded Dukascopy tick-level cycle. Keep DELTA_005A-005M audit-only, August sealed, and MQL5 unauthorized.",
   "mql5_authorized": false,
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_DH05_SHORT_PROBE_OWNERSHIP_ANTI_OVERFIT_VALIDATION_CHECKPOINT_10A_MANIFEST.json",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_DH05_SHORT_PROBE_OWNERSHIP_PROVENANCE_PROMOTION_DECISION_CHECKPOINT_10B_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
   "first_incomplete_manifest_path": null,
   "first_incomplete_preregistration_path": null,
@@ -3681,7 +3681,7 @@
         "august_2026": "SEALED",
         "mql5_authorized": false
       },
-      "first_incomplete_substep": "R037_DH05_SHORT_PROBE_OWNERSHIP_PROVENANCE_PROMOTION_DECISION",
+      "first_incomplete_substep": "R037_DH05_PROBE_COUNT_RESIDUAL_PROVENANCE_AND_BOUNDARY_LIFECYCLE_RECONCILIATION",
       "dh05_reversal_efficiency_stage_normalization_checkpoint_08": {
         "status": "COMPLETE_MATERIAL_CLUE_PARITY_NOT_ACHIEVED",
         "github_report_path": "research/delta/research/DELTA_R037_DH05_REVERSAL_EFFICIENCY_STAGE_NORMALIZATION_CHECKPOINT_08.md",
@@ -4521,6 +4521,30 @@
         "sorb_status": "BLOCKED_UNTIL_R032_PARENT_PARITY",
         "august_2026": "SEALED",
         "mql5_authorized": false
+      },
+      "dh05_short_probe_ownership_provenance_promotion_decision_checkpoint_10b": {
+        "status": "COMPLETE_KEEP_ROBUST_CHALLENGER_REJECT_HISTORICAL_SEMANTIC_PROMOTION",
+        "unit": "R037_DH05_SHORT_PROBE_OWNERSHIP_PROVENANCE_PROMOTION_DECISION",
+        "producer_path": "research/delta/experiments/delta_r037_dh05_short_probe_ownership_provenance_promotion_decision.py",
+        "producer_commit": "cb9a749bff6487c5c61a09a9dbfe6b4246df1769",
+        "producer_blob_sha": "7e802c346a7f132637eae8409308feb691be503a",
+        "runtime_result_sha256": "5c34136aedca8fcfac0d62cda378a3b761b72c1abcfc33e90463ec219c13143b",
+        "report_path": "research/delta/research/DELTA_R037_DH05_SHORT_PROBE_OWNERSHIP_PROVENANCE_PROMOTION_DECISION_CHECKPOINT_10B.md",
+        "compact_result_path": "research/delta/reference/DELTA_R037_DH05_SHORT_PROBE_OWNERSHIP_PROVENANCE_PROMOTION_DECISION_CHECKPOINT_10B.json",
+        "full_manifest_path": "research/delta/artifacts/DELTA_R037_DH05_SHORT_PROBE_OWNERSHIP_PROVENANCE_PROMOTION_DECISION_CHECKPOINT_10B_MANIFEST.json",
+        "full_manifest_commit": "53961735ed1099f9fc7f5bd1aaaa02938c967fbd",
+        "promote_as_historical_dh05_semantics": false,
+        "retain_as_robust_non_promoting_challenger": true,
+        "same_sample_ownership_recuts_closed": true,
+        "largest_remaining_stage_error": {
+          "stage": "probe",
+          "abs_error": 449
+        },
+        "next_unit": "R037_DH05_PROBE_COUNT_RESIDUAL_PROVENANCE_AND_BOUNDARY_LIFECYCLE_RECONCILIATION",
+        "integrated_r037_replay_started": false,
+        "sorb_status": "BLOCKED_UNTIL_R032_PARENT_PARITY",
+        "august_2026": "SEALED",
+        "mql5_authorized": false
       }
     }
   },
@@ -4557,8 +4581,8 @@
     "github_commit": "d5db76bfcd3bb91086a5635058005b4d940013bb",
     "manifest_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_SAFE_HANDOFF_CHECKPOINT_09D.json",
     "manifest_commit": "5b21c2d06bbf4d98c10b3ee5bafeb0ca2c18a2fe",
-    "restart_phase": "R037_DH05_SHORT_PROBE_OWNERSHIP_PROVENANCE_PROMOTION_DECISION_NEXT",
-    "next_action": "R037_DH05_SHORT_PROBE_OWNERSHIP_PROVENANCE_PROMOTION_DECISION",
+    "restart_phase": "R037_DH05_PROBE_COUNT_RESIDUAL_PROVENANCE_AND_BOUNDARY_LIFECYCLE_RECONCILIATION_NEXT",
+    "next_action": "R037_DH05_PROBE_COUNT_RESIDUAL_PROVENANCE_AND_BOUNDARY_LIFECYCLE_RECONCILIATION",
     "starter_prompt_doc_id": "15bKGqPsBebEXBdpgqhI1f6ItjoeJ4jc_3ZBzkN7woAU",
     "starter_prompt_doc_url": "https://docs.google.com/document/d/15bKGqPsBebEXBdpgqhI1f6ItjoeJ4jc_3ZBzkN7woAU/edit",
     "completeness_gate_doc_id": "1G_UttTVYhz55eZ6OHiz7r4ZzVv3l5zDD0U6DvTScG-s",
