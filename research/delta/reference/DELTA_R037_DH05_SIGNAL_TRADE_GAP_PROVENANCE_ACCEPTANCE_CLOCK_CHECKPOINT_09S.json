@@ -1,0 +1,139 @@
+{
+  "schema": "delta-r037-dh05-signal-trade-gap-provenance-acceptance-clock-checkpoint-09s-v1",
+  "status": "COMPLETE_MATERIAL_PROVENANCE_CLUE_NON_PROMOTING",
+  "unit": "R037_DH05_SIGNAL_TRADE_GAP_PROVENANCE_AND_ACCEPTANCE_CLOCK_OWNERSHIP_DIAGNOSTIC",
+  "parent": "R037_DH05_COMPLETED_BAR_BOUNDARY_INVALIDATION_CHECKPOINT_09R",
+  "raw_tick_replay": false,
+  "numeric_vector_retune": false,
+  "august_accessed": false,
+  "producer_commit": "20689a8b985e1b30f76f46a1c24a03447c877e95",
+  "producer_blob_sha": "f23f2f97f38e5805b812c89aa32fe4aa97022258",
+  "producer_file_sha256": "39635fb853d69f252171df2a583a412f2f73ff184f3dbcf671aa3635ef2c6087",
+  "result_sha256": "bdf70beacf69f00b6f002190beae6cbc47905710368409664930783149948b27",
+  "targets": {
+    "A03": 306,
+    "S05": 51,
+    "S06": 615,
+    "S09": 119,
+    "S10": 206,
+    "S16": 24
+  },
+  "postqual_signals": {
+    "A03": 192,
+    "S05": 9,
+    "S06": 651,
+    "S09": 11,
+    "S10": 227,
+    "S16": 7
+  },
+  "target_to_signal_ratio": {
+    "A03": 1.59375,
+    "S05": 5.6666666667,
+    "S06": 0.9447004608,
+    "S09": 10.8181818182,
+    "S10": 0.9074889868,
+    "S16": 3.4285714286
+  },
+  "acceptance_tf_group_summary": {
+    "S5": {
+      "vectors": [
+        "S06",
+        "S10"
+      ],
+      "all_target_minus_signal_negative": true,
+      "mean_ratio": 0.9260947238,
+      "aggregate_abs_gap": 57
+    },
+    "S15": {
+      "vectors": [
+        "A03",
+        "S05",
+        "S09",
+        "S16"
+      ],
+      "all_target_minus_signal_positive": true,
+      "mean_ratio": 5.3767924784,
+      "aggregate_abs_gap": 281
+    }
+  },
+  "preserved_checkpoint09": {
+    "neutral_current": {
+      "counts": {
+        "A03": 187,
+        "S05": 9,
+        "S06": 617,
+        "S09": 9,
+        "S10": 206,
+        "S16": 8
+      },
+      "aggregate_abs_error": 289
+    },
+    "neutral_wait_reentry": {
+      "counts": {
+        "A03": 282,
+        "S05": 54,
+        "S06": 653,
+        "S09": 11,
+        "S10": 317,
+        "S16": 22
+      },
+      "aggregate_abs_error": 286
+    },
+    "stage_current": {
+      "counts": {
+        "A03": 247,
+        "S05": 10,
+        "S06": 672,
+        "S09": 41,
+        "S10": 225,
+        "S16": 14
+      },
+      "aggregate_abs_error": 264
+    },
+    "stage_wait_reentry": {
+      "counts": {
+        "A03": 393,
+        "S05": 86,
+        "S06": 717,
+        "S09": 89,
+        "S10": 383,
+        "S16": 38
+      },
+      "aggregate_abs_error": 445
+    }
+  },
+  "routers": {
+    "ACCEPTANCE_CLOCK_ROUTER": {
+      "rule": "S5 acceptance -> NEUTRAL_CURRENT; S15 acceptance -> NEUTRAL_WAIT_REENTRY",
+      "counts": {
+        "A03": 282,
+        "S05": 54,
+        "S06": 617,
+        "S09": 11,
+        "S10": 206,
+        "S16": 22
+      },
+      "aggregate_abs_error": 139
+    },
+    "CLOCK_TOPOLOGY_ROUTER": {
+      "rule": "S5 acceptance -> NEUTRAL_CURRENT; S15/S5 -> NEUTRAL_WAIT_REENTRY; S15/S1 -> STAGE_WAIT_REENTRY",
+      "counts": {
+        "A03": 282,
+        "S05": 54,
+        "S06": 617,
+        "S09": 89,
+        "S10": 206,
+        "S16": 22
+      },
+      "aggregate_abs_error": 61
+    }
+  },
+  "comparison": {
+    "best_live_09l_error": 304,
+    "latest_execution_branch_09r_error": 359,
+    "raw_postqual_signal_gap_error": 338
+  },
+  "decision": "MATERIAL_CHALLENGER_ONLY_DO_NOT_UNFREEZE_FAILURE_CLOCK",
+  "anti_overfit_warning": "CLOCK_TOPOLOGY_ROUTER has only one S15/S1 vector (S09); raw-tick causal replay and cross-surface/future-vector validation are mandatory before any carry-forward.",
+  "next_unit": "R037_DH05_CONDITIONAL_FAILURE_CLOCK_CHALLENGER_REPLAY_NON_PROMOTING"
+}
