@@ -1,0 +1,179 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH05_POST_SIGNAL_PERSISTENCE_INVALIDATION_CHECKPOINT_09K",
+  "status": "VERIFIED_DURABLE_NEGATIVE_QA_POST_SIGNAL_LIFETIME_EXTENSION_REJECTED",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH05_SIGNAL_MULTIPLICITY_ADMISSION_CHECKPOINT_09J",
+  "hypothesis": "Sparse-vector density may require the same failed-break episode to remain actionable longer after its first signal.",
+  "falsification_condition": "Extending post-signal lifetime materially overproduces family signal/trade density or worsens six-vector parity.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "R037 DH05 preserved six-vector trade-density targets",
+    "reference_count": 6,
+    "minimum_count": 6,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity QA only."
+  },
+  "primary_metrics": {
+    "entry_quality": "Not optimized.",
+    "hold_persistence": "Post-signal state lifetime tested only.",
+    "economics": "S06 economics used only as parity fingerprint.",
+    "gross_loss_drawdown": "Not optimization target.",
+    "activity": "Generator/admitted trade density."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_post_signal_persistence_invalidation_parity.py",
+      "commit": "4e16b70f28fcaa1e0389010b7d39c9a6d87f5b2e",
+      "blob_sha": "60debec9c4c4e8f468a8a768a5949514c802da30",
+      "file_sha256": "6dd2ced331abf671fe688eb8aa847c4af350691b1ee3d17ca3be3169a21463d8"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "boundary_hypothesis": "09C_WIDTH2_M5_SWING",
+      "probe_clock": "09E_ATTEMPT_LIFECYCLE_CLOCK",
+      "acceptance": "09F_POST_QUALIFICATION_COMPLETED_BAR",
+      "failure_clock": "START_AT_FAILURE_CANDIDATE",
+      "tested_post_signal_lifetimes": [
+        "SIGNAL_REFRESH_FAILURE_CLOCK",
+        "PERSIST_UNTIL_ORIGINAL_BREAK_BOUNDARY_RETAKE"
+      ],
+      "rearms": [
+        "REVERSAL_FALSE_TRUE",
+        "NEW_COMPLETED_REVERSAL_BAR"
+      ]
+    },
+    "feature_order": [
+      "probe",
+      "qualified",
+      "accepted",
+      "failure",
+      "reentry",
+      "reclaim",
+      "reversal",
+      "signal",
+      "admission",
+      "trade"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "parity reconstruction only"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "external_timeout_seconds": 120,
+      "atomic_output_write": true,
+      "control_gates": [
+        "09E exact stage errors",
+        "09F exact POST_QUAL funnel"
+      ],
+      "signal_overflow_must_equal_zero": true,
+      "github_job_timeout_minutes": 10
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "Checkpoint-09J parent",
+      "path": "research/delta/reference/DELTA_R037_DH05_SIGNAL_MULTIPLICITY_ADMISSION_CHECKPOINT_09J.json"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "Stage-A P75 tick-rooted bars reconstructed causally inside producer"
+    ],
+    "signal_ledgers": [
+      "same 09J bounded signal ledger instrumentation"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH05_POST_SIGNAL_PERSISTENCE_INVALIDATION_CHECKPOINT_09K.json",
+      "blob_sha": "8306a1817b27fafdeeebda3f5c93e36c56d8cf71",
+      "official_runtime_output_sha256": "d41fbc1c6ba548017e7ef1a6f4b246350d6e0c9952e53fe36ad6544f870c2031"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH05_POST_SIGNAL_PERSISTENCE_INVALIDATION_CHECKPOINT_09K.md",
+      "blob_sha": "516ba30b4c6f3546d0fc07fa29ec21b029967fb6"
+    }
+  ],
+  "qa": [
+    "Canonical January hash and 4,205,709 Stage-A ticks verified.",
+    "Committed producer blob matched local execution bytes before compute.",
+    "09E and 09F control fingerprints passed.",
+    "No signal overflow.",
+    "Signal-refresh profiles increased aggregate trade-count error above 7,100.",
+    "Persist-until-original-boundary-retake profiles increased aggregate error above 58,000.",
+    "Position-observation latch reduced some overproduction but rescued no profile.",
+    "No numeric vector retuning; August sealed; SORB blocked; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh05_post_signal_persistence_invalidation_parity.py",
+    "command": "python research/delta/experiments/delta_r037_dh05_post_signal_persistence_invalidation_parity.py --source <canonical_january_gzip> --output <runtime_json>",
+    "timing_semantics": "Frozen short-lived serial event through first signal; only post-signal lifetime/invalidation varied.",
+    "expected_best_control": "09J BOUNDARY_RECYCLE aggregate trade-count abs error 324"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — parity reconstruction only",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "Frozen R9/Coinexx lifecycle used as research fixture.",
+    "ownership_scheduler_spec": "No integrated R037 replay.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01 research semantics unchanged.",
+    "trade_count_parity_spec": "Blocked until full R032 specialist parity.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH05_SIGNAL_MULTIPLICITY_ADMISSION_CHECKPOINT_09J",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A45:H56"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH05_POST_SIGNAL_INTRABAR_REARM_EDGE_PARITY_RECONSTRUCTION",
+  "github_commits": [
+    "4e16b70f28fcaa1e0389010b7d39c9a6d87f5b2e",
+    "211dd75330a233a1c520b097d67072df1e11a628",
+    "b80f96619d5d0e6eb9ec1d722099c679382f2efb"
+  ]
+}
