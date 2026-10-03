@@ -20,6 +20,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   delta-rebuild-gate:
     runs-on: ubuntu-latest
@@ -29,6 +33,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Compile DELTA recovery helpers
+        run: python -m py_compile research/delta/qa/delta_bounded_python_runner.py research/delta/qa/DELTA_TIMEOUT_RECOVERY_GUARD.py
+      - name: Validate DELTA timeout-recovery cursor
+        run: python research/delta/qa/DELTA_TIMEOUT_RECOVERY_GUARD.py
       - name: Enforce DELTA causal/durability contract
         run: python research/delta/qa/DELTA_GOV_001_REBUILD_MANIFEST_GATE.py
       - name: Persist DELTA timeout-recovery snapshot
