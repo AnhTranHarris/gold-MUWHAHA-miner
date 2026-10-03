@@ -1,0 +1,195 @@
+{
+  "schema": "delta-r037-dh05-short-probe-relative-acceptance-bar-ownership-checkpoint-09z-v1",
+  "status": "COMPLETE_MATERIAL_CAUSAL_CHALLENGER_NON_PROMOTING_ANTI_OVERFIT_REQUIRED",
+  "unit": "R037_DH05_SHORT_PROBE_RELATIVE_ACCEPTANCE_BAR_OWNERSHIP_CHALLENGER_REPLAY_NON_PROMOTING",
+  "parent": "R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_CHECKPOINT_09Y",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "producer_path": "research/delta/experiments/delta_r037_dh05_short_probe_relative_acceptance_bar_ownership_challenger.py",
+  "producer_commit": "74964e401c654448ac2dc39f83ea70a9dcef4ee3",
+  "producer_blob_sha": "026f8685427ca3264582370182a8baeed424b95e",
+  "producer_file_sha256": "7b46073de19242ce7e7f865bc7ed6730305693dd1e5474f835691e3f5f5a241f",
+  "runtime_result_sha256": "236148af18566855bd276a4df2b61d4d404088d0ca987cd6f868c1de344d3a43",
+  "runtime": {
+    "elapsed_seconds": 15.79,
+    "max_rss_kb": 697964,
+    "exit_code": 0,
+    "timeout_seconds": 120,
+    "python": "3.13.5",
+    "faulthandler": true,
+    "fresh_numba_cache": true,
+    "atomic_output": true
+  },
+  "router": {
+    "rule": "max_probe_age_s < acceptance_tf_seconds -> FAILURE_CANDIDATE_DECOUPLED_POST_QUAL; otherwise SERIAL_POST_QUAL",
+    "selected_vectors": [
+      "S05",
+      "S09",
+      "S16"
+    ],
+    "serial_vectors": [
+      "A03",
+      "S06",
+      "S10"
+    ],
+    "discovery_checkpoint": "09Y"
+  },
+  "control": {
+    "total_funnel_abs_error": 978,
+    "aggregate_trade_count_abs_error": 336,
+    "stage_abs_error": {
+      "probe": 642,
+      "qualified": 55,
+      "accepted": 24,
+      "failure": 63,
+      "reentry": 34,
+      "reclaim": 34,
+      "reversal": 63,
+      "signal": 63
+    }
+  },
+  "candidate": {
+    "total_funnel_abs_error": 782,
+    "aggregate_trade_count_abs_error": 335,
+    "stage_abs_error": {
+      "probe": 449,
+      "qualified": 49,
+      "accepted": 31,
+      "failure": 56,
+      "reentry": 37,
+      "reclaim": 36,
+      "reversal": 62,
+      "signal": 62
+    },
+    "max_concurrent_failure_episodes": 2,
+    "episode_overflow": 0,
+    "signal_overflow": 0,
+    "vectors": {
+      "A03": {
+        "ownership": "SERIAL_POST_QUAL_LONG_OR_EQUAL_PROBE_WINDOW",
+        "funnel": [
+          6686,
+          998,
+          212,
+          786,
+          441,
+          268,
+          192,
+          192
+        ],
+        "signals": 192,
+        "trades": 192,
+        "wins": 77,
+        "net_usd": -45.39
+      },
+      "S05": {
+        "ownership": "FAILURE_CANDIDATE_DECOUPLED_SHORT_PROBE_WINDOW",
+        "funnel": [
+          7818,
+          315,
+          34,
+          281,
+          56,
+          20,
+          9,
+          9
+        ],
+        "signals": 9,
+        "trades": 9,
+        "wins": 5,
+        "net_usd": -1.25
+      },
+      "S06": {
+        "ownership": "SERIAL_POST_QUAL_LONG_OR_EQUAL_PROBE_WINDOW",
+        "funnel": [
+          3561,
+          1599,
+          248,
+          1351,
+          1210,
+          695,
+          651,
+          651
+        ],
+        "signals": 651,
+        "trades": 649,
+        "wins": 274,
+        "net_usd": -150.35
+      },
+      "S09": {
+        "ownership": "FAILURE_CANDIDATE_DECOUPLED_SHORT_PROBE_WINDOW",
+        "funnel": [
+          7856,
+          219,
+          44,
+          175,
+          65,
+          41,
+          11,
+          11
+        ],
+        "signals": 11,
+        "trades": 11,
+        "wins": 7,
+        "net_usd": -1.13
+      },
+      "S10": {
+        "ownership": "SERIAL_POST_QUAL_LONG_OR_EQUAL_PROBE_WINDOW",
+        "funnel": [
+          6440,
+          1300,
+          205,
+          1095,
+          637,
+          309,
+          227,
+          227
+        ],
+        "signals": 227,
+        "trades": 227,
+        "wins": 103,
+        "net_usd": -46.55
+      },
+      "S16": {
+        "ownership": "FAILURE_CANDIDATE_DECOUPLED_SHORT_PROBE_WINDOW",
+        "funnel": [
+          7778,
+          134,
+          53,
+          81,
+          33,
+          19,
+          8,
+          8
+        ],
+        "signals": 8,
+        "trades": 8,
+        "wins": 3,
+        "net_usd": -2.09
+      }
+    }
+  },
+  "historical_s06": {
+    "signals": 672,
+    "trades": 615,
+    "wins": 307,
+    "net_usd": -101.08
+  },
+  "finding": {
+    "funnel_error_improvement": 196,
+    "funnel_error_improvement_pct": 20.0408997955,
+    "trade_count_error_improvement": 1,
+    "s06_economic_veto_triggered": false,
+    "selection_rule_pass": true,
+    "promoted": false,
+    "anti_overfit_required": true,
+    "interpretation": "The predeclared relative-duration router causally reproduces the 09Y predicted blended funnel error exactly (782), materially improves funnel parity, does not worsen executable trade-count parity, and leaves S06 unchanged on serial ownership. Because the rule was harvested from the same Stage-A six-vector evidence, it remains a non-promoting challenger pending independent anti-overfit/provenance validation."
+  },
+  "decision": "CARRY_FORWARD_AS_NON_PROMOTING_CHALLENGER_REQUIRE_INDEPENDENT_ANTI_OVERFIT_VALIDATION",
+  "parity_complete": false,
+  "integrated_r037_sorb_started": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "next_unit": "R037_DH05_SHORT_PROBE_OWNERSHIP_ANTI_OVERFIT_VALIDATION"
+}
