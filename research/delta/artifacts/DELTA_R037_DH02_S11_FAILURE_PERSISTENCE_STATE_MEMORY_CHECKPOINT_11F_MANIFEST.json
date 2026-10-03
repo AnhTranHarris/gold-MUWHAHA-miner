@@ -1,0 +1,197 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_CHECKPOINT_11F",
+  "status": "VERIFIED_COMPLETE_STRONG_NEGATIVE_LOCALIZATION_FULL_PARITY_NOT_ACHIEVED",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH02_S11_CONTEXT_INVALID_BREAK_PROVENANCE_DECISION_11E",
+  "hypothesis": "The historical DH02-S11 tick-persistence failure rule may use a latched causal failure-pending state across temporary recovery during RETESTING rather than only consecutive adverse-buffer ticks.",
+  "falsification_condition": "Reject the latch interpretation if it does not materially remove excess losing trades/gross loss while retaining the historical winner population under the frozen numeric vector.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "historical DH02-S11 Stage-A standalone fixture",
+    "reference_count": 75,
+    "minimum_count": 75,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity reconstruction only; historical target is 75 trades / 41 raw-positive wins / GP +9.39 / GL -17.60 / net -8.21."
+  },
+  "primary_metrics": {
+    "entry_quality": "Failure-memory semantic parity only; no entry optimization.",
+    "hold_persistence": "RETESTING failure-pending memory tested categorically.",
+    "economics": "Control -27.30 net; latch -27.60 net. No promotion.",
+    "gross_loss_drawdown": "Control GL -35.10; latch GL -35.09; residual loss tail unchanged.",
+    "activity": "Control 106 trades; latch 105 trades vs historical 75."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh02_s11_failure_persistence_state_memory.py",
+      "commit": "b97586d0f970fd9dd831725a5f9be9b1e529a967",
+      "blob_sha": "f40a27cd133d132816dd9bba8e796887c7bcb5b7"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "a78a8fe7550bd02433ce8a7d3fdae563fcd953e8"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "penetration_buffer_atr": 0.1172,
+      "selected_disposition": "REJECT_FAILURE_PENDING_LATCH_AS_RESIDUAL_EXPLANATION",
+      "control_profile": "CONTROL_CONSECUTIVE_BUFFER_TICKS",
+      "tested_profiles": [
+        "LATCH_RESET_AT_BOUNDARY_RECLAIM",
+        "LATCH_RESET_AT_RETEST_ZONE_EXIT",
+        "BREACH_THEN_NEXT_PREBREAK_TICK_CONFIRM"
+      ]
+    },
+    "feature_order": [
+      "break",
+      "accepted",
+      "retest",
+      "failure_pending",
+      "failed_or_rebreak",
+      "signal",
+      "R9_lifecycle"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "clean-room parity fingerprint; no parameter optimization"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "faulthandler": true,
+      "python_unbuffered": true,
+      "isolated_numba_cache": true,
+      "producer_atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "committed_recovery_snapshot_execution": true,
+      "large_stdout_policy": "summary-only producer output; detailed diagnostics persisted to JSON"
+    }
+  },
+  "inputs": [
+    {
+      "name": "11F frozen evidence",
+      "path": "research/delta/reference/DELTA_R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_EVIDENCE_11F.json",
+      "commit": "d5539a1dcc891845d057e9b82216c862a0687e36",
+      "blob_sha": "c45d606cc035a10d49a60fd2863ac38a3e0d5643"
+    },
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "Stage-A P75 tick-rooted bars and directional context reconstructed causally inside committed producer"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_CHECKPOINT_11F.json",
+      "commit": "c909337d6c7abcfcd215c50321223066a8729d5c",
+      "blob_sha": "3277f3b14e8dc32ec99294c5faefa933e474204e",
+      "official_result_sha256": "5af614dabbcb57e449580ab968107c0f66648087dcc599da92c4fa6330ed0333"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_CHECKPOINT_11F.md",
+      "commit": "630d40192525b1731d686d4f852d027cae779f04",
+      "blob_sha": "4027dd74d984d25baa500c927b946b289cebe0cf"
+    }
+  ],
+  "qa": [
+    "11E durable cursor and successful CI were verified before recovery.",
+    "Compared durable 11E current-state commit to branch HEAD; five newer commits belong only to 11F evidence/producer/in-flight/result/report.",
+    "Official 11F compute was not rerun after message-delivery timeout because its committed result/report and workbook survived.",
+    "Canonical January SHA and Stage-A 4,205,709 tick count are embedded and verified by the producer.",
+    "CONTROL_CONSECUTIVE_BUFFER_TICKS reproduced the exact 11B signal fingerprint and 106/42 control economics.",
+    "All three failure-memory latch alternatives converge to 105 trades / 41 raw-positive wins / GP +7.49 / GL -35.09 / net -27.60.",
+    "The removed executable trade is a winner; gross-loss tail is essentially unchanged.",
+    "Selection rule fails; failure-pending latch/reset semantics rejected as residual explanation.",
+    "No numeric retune, no August, no SORB integration, no MQL5.",
+    "Workbook tab 75 A355:H363 already existed after the interrupted chain and was read back during recovery."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh02_s11_failure_persistence_state_memory.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_dh02_s11_failure_persistence_state_memory.py --source <canonical_january_gzip> --evidence <11F evidence> --output <11F result>",
+    "timing_semantics": "Ordered ticks; P75 Stage-A left-closed/right-open; M5 width-2 boundary; frozen S11 numeric vector; causal RETESTING failure-pending state; completed bars visible only at right edge.",
+    "expected_fingerprints": {
+      "control_signal_sha256": "803fc20c55ed1d7f30356f2610392c12e6b43544f7f512bdd347cead69901dab",
+      "control": {
+        "trades": 106,
+        "raw_positive_wins": 42,
+        "gross_profit": 7.8,
+        "gross_loss": -35.1,
+        "net_profit": -27.3
+      },
+      "latch": {
+        "trades": 105,
+        "raw_positive_wins": 41,
+        "gross_profit": 7.49,
+        "gross_loss": -35.09,
+        "net_profit": -27.6
+      }
+    },
+    "selected_interpretation": "STRONG_NEGATIVE_LOCALIZATION_CLOSE_FAILURE_MEMORY_RECUTS"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — R032 specialist parity incomplete",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA semantics",
+    "ownership_scheduler_spec": "not ready",
+    "session_dst_spec": "frozen DELTA semantics",
+    "risk_spec": "fixed 0.01 research semantics",
+    "trade_count_parity_spec": "blocked pending remaining specialist reconstruction",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH02_S11_CONTEXT_INVALID_BREAK_PROVENANCE_DECISION_11E",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A355:H363"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_AND_INTERACTION_DECISION",
+  "github_commits": [
+    "d5539a1dcc891845d057e9b82216c862a0687e36",
+    "b97586d0f970fd9dd831725a5f9be9b1e529a967",
+    "fc0244b8f213e69f3738961c84590602d5fcb600",
+    "c909337d6c7abcfcd215c50321223066a8729d5c",
+    "630d40192525b1731d686d4f852d027cae779f04"
+  ]
+}
