@@ -1,0 +1,99 @@
+{
+  "schema": "delta-r037-dh03-s06-signal-generator-residual-provenance-evidence-13h-v1",
+  "status": "PREREGISTERED_BEFORE_DECISION",
+  "unit": "R037_DH03_S06_SIGNAL_GENERATOR_RESIDUAL_PROVENANCE_DECISION",
+  "parent_checkpoint": "R037_DH03_S06_RECLAIM_LEVEL_CONSUMPTION_CHECKPOINT_13G",
+  "active_parent": "R032-C03_PLUS_DH02_S11_S08",
+  "vector_fingerprint": "a3a086b7344c",
+  "raw_ticks_accessed": false,
+  "august_2026": "SEALED",
+  "source_grounding": {
+    "dh03_whitepaper": {
+      "document_id": "13pa0KSxVy93yajDEGAIkeY4V8Z3egMDIPxPV0nM3ia8",
+      "explicit_sequence": "EXHAUSTION_CANDIDATE -> LOCAL_RECLAIM -> REACCELERATION -> ENTRY_ELIGIBLE while parent remains valid",
+      "reclaim_rule": "price closes on S5 back through a causally known fast pivot/reclaim level in parent direction d",
+      "reacceleration_rule": "d * SignedEfficiency_S5 > 0 and d * NetMove_S5 > 0 after LOCAL_RECLAIM",
+      "exact_fast_pivot_algorithm_preserved": false,
+      "exact_reclaim_level_ownership_algorithm_preserved": false,
+      "exact_same_pullback_rearm_algorithm_preserved": false,
+      "exact_pivot_reuse_or_consumption_algorithm_preserved": false
+    },
+    "historical_provenance": {
+      "source_name": "r005_specialists.py",
+      "source_sha256": "fe1ccb8112f5bf37c83e7ce9e9dd82f782397a7710029716a61c159e4005afe0",
+      "output_name": "dh03_results.jsonl",
+      "output_sha256": "3095a170efcd7cd644e6d2a371bec7723efab12a2c5c8921eba853bde4a4eb34",
+      "source_bytes_recovered": false,
+      "output_bytes_recovered": false,
+      "preserved_hashes_and_fingerprints": true
+    }
+  },
+  "historical_target": {
+    "trades": 1563,
+    "raw_positive_wins": 690,
+    "gross_profit": 151.82,
+    "gross_loss": -490.75,
+    "net_profit": -338.93,
+    "max_balance_drawdown": 339.25
+  },
+  "checkpoints": {
+    "13C": {
+      "profile": "POST_PULLBACK_REARM_FRESH_EXHAUSTION",
+      "signals": 1586,
+      "trades": 1513,
+      "raw_positive_wins": 674,
+      "gross_profit": 137.12,
+      "gross_loss": -476.26,
+      "net_profit": -339.14,
+      "max_balance_drawdown": 339.14,
+      "trade_gap": -50,
+      "raw_win_gap": -16,
+      "net_gap": -0.21,
+      "dd_gap": -0.11,
+      "conclusion": "major parity breakthrough; same original pullback remains alive after ENTRY_ELIGIBLE and rearms with fresh exhaustion"
+    },
+    "13D_13E": {
+      "conclusion": "pending admission/lifetime changes execution count but do not reconstruct the historical generator; full-event validity invalidates only 2 of 83 pending tokens"
+    },
+    "13F": {
+      "strict": {
+        "trades": 1513,
+        "raw_positive_wins": 674,
+        "net_profit": -339.14
+      },
+      "inherited_first": {
+        "trades": 1610,
+        "raw_positive_wins": 716,
+        "net_profit": -362.29
+      },
+      "conclusion": "historical activity lies between strict and inherited-first pivot-ownership bounds; inherited-first worsens economics and is not promoted"
+    },
+    "13G": {
+      "best_new_profile": "INHERITED_FIRST_TRUE_EDGE_CROSS",
+      "best_new": {
+        "trades": 1170,
+        "raw_positive_wins": 524,
+        "net_profit": -260.09
+      },
+      "pivot_consumption_trade_range": "992-1092",
+      "conclusion": "literal S5 edge crossing and one-use pivot consumption are far too restrictive and rejected"
+    }
+  },
+  "provenance_conclusion": {
+    "independent_exact_historical_fast_pivot_rearm_algorithm_found": false,
+    "source_compatible_state_space_materially_bracketed": true,
+    "further_same_sample_semantic_recuts_would_be_retrospective_fitting": true,
+    "preserve_general_semantic": "DH03-S06 uses structural-priority M15/M30 parent, adverse S15 pullback, weakening S15/S30 counterflow, causally known S15 fast reclaim pivot, completed-S5 reclaim, and later completed-S5 reacceleration while the original parent-valid pullback can causally rearm.",
+    "best_reconstructible_surrogate": "POST_PULLBACK_REARM_FRESH_EXHAUSTION_STRICT_POST_ORIGINAL_PULLBACK_PIVOT",
+    "best_reconstructible_checkpoint": "13C/13F strict control",
+    "promote_surrogate_as_historical_truth": false,
+    "claim_exact_historical_dh03_parity": false,
+    "dh03_stream_disposition": "PROVENANCE_LIMITED_BEST_RECONSTRUCTION_13C_STRICT_NON_PROMOTING",
+    "preserve_13f_inherited_first_as_diagnostic_bound": true
+  },
+  "decision_rule": "Freeze DH03 if historical producer bytes remain missing, the white paper lacks the exact fast-pivot/rearm ownership algorithm, 13C preserves the historical economic scale, and 13F-13G source-compatible alternatives bracket or worsen the remaining population residual. Do not infer a new same-sample rule to force 1563/690.",
+  "expected_decision": "FREEZE_13C_STRICT_AS_BEST_RECONSTRUCTIBLE_NON_PROMOTING_SURROGATE_AND_RECORD_DH03_SIGNAL_GENERATOR_RESIDUAL_AS_PROVENANCE_LIMITATION",
+  "proposed_next": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
+  "sorb_integrated_replay_started": false,
+  "mql5_authorized": false
+}
