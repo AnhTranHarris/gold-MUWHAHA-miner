@@ -21,9 +21,22 @@
   },
   "in_flight_unit": {
     "unit": "R037_DH03_S06_SIGNAL_GENERATOR_RESIDUAL_PROVENANCE_DECISION",
-    "status": "NOT_STARTED_FROM_DURABLE_13G",
-    "committed_artifacts": [],
-    "next_action": "Make a bounded provenance decision from the preserved 13A-13G evidence. Do not retune DH03 thresholds. Decide whether a source-compatible exact reconstruction remains justified or freeze a provenance-limited best reconstruction and advance to full R032 specialist-parent parity."
+    "status": "PREREG_AND_PRODUCER_COMMITTED_OFFICIAL_DECISION_NOT_YET_PERSISTED",
+    "committed_artifacts": [
+      {
+        "role": "provenance_evidence",
+        "path": "research/delta/reference/DELTA_R037_DH03_S06_SIGNAL_GENERATOR_PROVENANCE_EVIDENCE_13H.json",
+        "commit": "3e11c45669b1a85740c632b09f03b2158aa27107",
+        "blob_sha": "8a949bd1b9b3f2e225e6549b50062281f0712531"
+      },
+      {
+        "role": "producer",
+        "path": "research/delta/experiments/delta_r037_dh03_s06_signal_generator_provenance_decision.py",
+        "commit": "37c5d3eb002241a8081e166b252ccb126268dc2f",
+        "blob_sha": "c9501150ce67c533636999e83b702295f6b8c1ba"
+      }
+    ],
+    "next_action": "Run exact committed 13H deterministic provenance producer. No raw tick access. Persist decision/report/workbook/manifest, advance CURRENT_STATE last, require green rebuild gate."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
