@@ -1,0 +1,118 @@
+{
+  "schema": "delta-r037-dh03-s06-event-identity-rearm-boundary-checkpoint-13f-v1",
+  "status": "COMPLETE_LOCALIZATION_BREAKTHROUGH_FULL_PARITY_NOT_ACHIEVED",
+  "unit": "R037_DH03_S06_PENDING_EVENT_IDENTITY_AND_REARM_BOUNDARY_PARITY_RECONSTRUCTION",
+  "parent": "R037_DH03_S06_PENDING_VALIDITY_CHECKPOINT_13E",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "vector_fingerprint": "a3a086b7344c",
+  "official_compute": {
+    "elapsed_seconds": 10.15,
+    "peak_rss_kb": 698480,
+    "raw_result_sha256": "210b275d8134a5619dcfd129e2210bdd6f4310776bac703f7a686eb2dbe77308"
+  },
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_dh03_s06_event_identity_rearm_parity.py",
+    "commit": "5d36e2c6ed3f3968a20f804f85e75dcb5eaef479",
+    "blob_sha": "1e8c3f0462313604f18f26c00b0df4d7abcd9db0",
+    "sha256": "3b1750b168bf31f4e945ed1aa168d4ea483c69de16ce6e5cf1960dd0a5262081"
+  },
+  "engine": {
+    "path": "research/delta/experiments/delta_r037_dh03_s06_event_identity_rearm_engine.py",
+    "commit": "e3fa78116d50fcac409d49c8d47b31e85a423402",
+    "blob_sha": "02bd7b3c26585392171c8a5bebb8520df47aa59d",
+    "sha256": "84d47094d2140b5afcaf341a7e78fe3538e9d0b3f5c8d3e1d1d7e01f2404055b"
+  },
+  "evidence": {
+    "path": "research/delta/reference/DELTA_R037_DH03_S06_PENDING_EVENT_IDENTITY_REARM_BOUNDARY_EVIDENCE_13F.json",
+    "commit": "5996b7147535a06cc1383b0dd2d9c53ecdb66c10",
+    "blob_sha": "f99e9cbfb448dab4c4ee3fcad53289389b513d95",
+    "sha256": "bdbd2fc6c6ec2bf599bd45485e4de7ac229448ee740a02511f9c7c7fca5eedf2"
+  },
+  "target": {
+    "trades": 1563,
+    "raw_positive_wins": 690,
+    "gross_profit": 151.82,
+    "gross_loss": -490.75,
+    "net_profit": -338.93,
+    "max_balance_drawdown": 339.25
+  },
+  "profiles": {
+    "POST_ORIGINAL_PULLBACK_CONTROL": {
+      "signals": 1586,
+      "trades": 1513,
+      "raw_positive_wins": 674,
+      "net_profit": -339.14,
+      "rejected_while_occupied": 73,
+      "reclaims": 1632
+    },
+    "ANY_CAUSAL_DIAGNOSTIC": {
+      "signals": 1748,
+      "trades": 1672,
+      "raw_positive_wins": 749,
+      "net_profit": -371.64,
+      "rejected_while_occupied": 76,
+      "reclaims": 1794,
+      "inherited_reclaims": 175
+    },
+    "INHERITED_FIRST_ATTEMPT_ONLY": {
+      "signals": 1683,
+      "trades": 1610,
+      "raw_positive_wins": 716,
+      "gross_profit": 144.63,
+      "gross_loss": -506.92,
+      "net_profit": -362.29,
+      "max_balance_drawdown": 362.29,
+      "rejected_while_occupied": 73,
+      "reclaims": 1729,
+      "inherited_reclaims": 102
+    },
+    "INHERITED_FIRST_THEN_POST_REARM": {
+      "signals": 1083,
+      "trades": 1083,
+      "raw_positive_wins": 488,
+      "net_profit": -238.3,
+      "reclaims": 1097,
+      "inherited_reclaims": 102
+    },
+    "START_LATCH_FIRST_ATTEMPT": {
+      "signals": 767,
+      "trades": 747,
+      "raw_positive_wins": 342,
+      "net_profit": -159.06,
+      "reclaims": 786,
+      "start_latched_reclaims": 309
+    }
+  },
+  "secondary_pending_interaction": {
+    "strict_full_event": {
+      "trades": 1584,
+      "raw_positive_wins": 702,
+      "net_profit": -357.71,
+      "pending_invalid_total": 2
+    },
+    "inherited_first_full_event": {
+      "trades": 1681,
+      "raw_positive_wins": 744,
+      "net_profit": -380.86,
+      "pending_invalid_total": 2
+    }
+  },
+  "finding": {
+    "leading_source_candidate": "INHERITED_FIRST_ATTEMPT_ONLY",
+    "strict_trade_gap": -50,
+    "leading_trade_gap": 47,
+    "strict_raw_win_gap": -16,
+    "leading_raw_win_gap": 26,
+    "interpretation": "One-time inherited-pivot permission matters, but it overshoots activity and materially worsens economics. Post-rearm pivot freshness and start-latching are far too restrictive. Combined with 13E, this localizes the remaining historical mismatch to reclaim-level consumption/reuse inside a still-valid original pullback rather than pending TTL or generic pivot age.",
+    "decision": "DO_NOT_PROMOTE_13F_PROFILE_ADVANCE_TO_RECLAIM_LEVEL_CONSUMPTION_AND_PIVOT_REUSE",
+    "exact_historical_parity": false,
+    "next": "R037_DH03_S06_RECLAIM_LEVEL_CONSUMPTION_AND_PIVOT_REUSE_PARITY_RECONSTRUCTION"
+  },
+  "numeric_vector_retune": false,
+  "generator_threshold_changed": false,
+  "integrated_r037_replay_started": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
