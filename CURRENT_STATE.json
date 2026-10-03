@@ -5061,11 +5061,15 @@
   "timeout_recovery": {
     "status": "ENABLED",
     "pointer_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_RECOVERY_POINTER.json",
-    "pointer_commit": "dbeb0dd7a5ae838182009509533dc1248f2311a1",
+    "pointer_commit": "78042beffc6629f799816402669f310f0a9f606b",
     "durable_unit": "R037_DH03_S06_PENDING_VALIDITY_CHECKPOINT_13E",
     "in_flight_unit": "R037_DH03_S06_PENDING_EVENT_IDENTITY_AND_REARM_BOUNDARY_PARITY_RECONSTRUCTION",
-    "in_flight_evidence_path": null,
-    "in_flight_evidence_commit": null,
-    "recovery_rule": "CURRENT_STATE is the durable cursor. Read the timeout recovery pointer next; if branch commits exist beyond the durable state, resume only the first missing durability step and never rerun completed official compute solely because ChatGPT message delivery timed out."
+    "in_flight_evidence_path": "research/delta/reference/DELTA_R037_DH03_S06_PENDING_EVENT_IDENTITY_REARM_BOUNDARY_EVIDENCE_13F.json",
+    "in_flight_evidence_commit": "5996b7147535a06cc1383b0dd2d9c53ecdb66c10",
+    "recovery_rule": "CURRENT_STATE is the durable cursor. Read the timeout recovery pointer next; if branch commits exist beyond the durable state, resume only the first missing durability step and never rerun completed official compute solely because ChatGPT message delivery timed out.",
+    "in_flight_engine_path": "research/delta/experiments/delta_r037_dh03_s06_event_identity_rearm_engine.py",
+    "in_flight_engine_commit": "e3fa78116d50fcac409d49c8d47b31e85a423402",
+    "in_flight_producer_path": "research/delta/experiments/delta_r037_dh03_s06_event_identity_rearm_parity.py",
+    "in_flight_producer_commit": "5d36e2c6ed3f3968a20f804f85e75dcb5eaef479"
   }
 }
