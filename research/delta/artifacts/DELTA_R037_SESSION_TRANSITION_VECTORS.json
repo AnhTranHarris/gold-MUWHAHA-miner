@@ -1,0 +1,59 @@
+{
+  "schema": "delta-r037-session-transition-v1",
+  "status": "PREREGISTERED_NOT_REPLAYED",
+  "parent": "R032-C03_PLUS_DH02_S11_S08",
+  "default_surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "cold_start": true
+  },
+  "timezone": "Europe/London",
+  "session": {
+    "reference_start_local": "00:00:00",
+    "reference_end_local_exclusive": "06:00:00",
+    "trade_start_local": "07:00:00",
+    "trade_end_local_exclusive": "10:00:00"
+  },
+  "structure_price": "MIDPOINT",
+  "confirmation_bar": "S5_COMPLETED_RIGHT_EDGE",
+  "entry_timing": "FIRST_SUBSEQUENT_EXECUTABLE_TICK",
+  "parent_priority": true,
+  "one_position_at_a_time": true,
+  "max_entries_per_vector_per_date": 1,
+  "global_no_rearm_unchanged": true,
+  "lifecycle": {
+    "hard_stop_usd": 0.3,
+    "trail_activation_usd": 0.1,
+    "trail_distance_usd": 0.03,
+    "max_hold_seconds": 30
+  },
+  "vectors": [
+    {
+      "id": "R037-ST01",
+      "name": "LONDON_RANGE_ACCEPTANCE",
+      "probe_beyond_range_fraction": 0.05,
+      "confirm_close_beyond_range_fraction": 0.05,
+      "action": "CONTINUE"
+    },
+    {
+      "id": "R037-ST02",
+      "name": "LONDON_SWEEP_RECLAIM_25",
+      "sweep_beyond_range_fraction": 0.05,
+      "reclaim_inside_range_fraction": 0.25,
+      "action": "REVERSE"
+    }
+  ],
+  "stage_a_advance": {
+    "min_incremental_entries": 6,
+    "min_distinct_dates": 4,
+    "min_delta_net_usd": 0,
+    "max_gross_loss_deterioration_pct": 1,
+    "max_drawdown_deterioration_pct": 1,
+    "incremental_winners_must_be_nonzero": true,
+    "parent_opportunity_deletion_prohibited": true
+  },
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "next_bounded_unit": "IMPLEMENT_AND_REPLAY_R037_ST01_STAGE_A_P75_ONLY"
+}
