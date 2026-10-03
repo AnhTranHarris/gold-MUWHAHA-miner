@@ -1,0 +1,112 @@
+{
+  "schema": "delta-r037-dh03-s06-state-funnel-checkpoint-13b-v1",
+  "status": "COMPLETE_MATERIAL_TIMING_REPAIR_FULL_PARITY_NOT_ACHIEVED",
+  "unit": "R037_DH03_S06_STATE_FUNNEL_SEMANTICS_PARITY_RECONSTRUCTION",
+  "parent": "R037_DH03_S06_CLEANROOM_PARITY_CHECKPOINT_13A",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "vector_fingerprint": "a3a086b7344c",
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_dh03_s06_state_funnel_parity.py",
+    "commit": "a81f9f63221c5333b6617dd9bff95ecb7ab9026d",
+    "blob_sha": "f8d92aef9d23e01626c1a1b4771cbfb77aa67343",
+    "sha256": "320b67b3baa861d88d12cf2ad58c36a7488c903142c95fcf156a5e45709785aa"
+  },
+  "engine": {
+    "path": "research/delta/experiments/delta_r037_dh03_s06_state_funnel_engine.py",
+    "commit": "13aac682d133a656896fb7828c6fc33f90950ef9",
+    "blob_sha": "83d627bdc8751ce641a14a01f1835082545893ee",
+    "sha256": "56fe49d77542f30bde0c551fbd6698b52412738f632efd03241fcc5b678a1ffd"
+  },
+  "evidence": {
+    "path": "research/delta/reference/DELTA_R037_DH03_S06_STATE_FUNNEL_EVIDENCE_13B.json",
+    "commit": "aca4b19d61c424be81eb79a9600ca5bdd36f3baa",
+    "blob_sha": "dd93b03d4afe6188e052abdafdd80ab00d230040",
+    "sha256": "9a6ced963cdbc4445eaa8e2b31e225aa43dd1623f6848db396b88cf5dc72ec95"
+  },
+  "official_compute": {
+    "elapsed_seconds": 13.49,
+    "peak_rss_kb": 697928,
+    "result_sha256": "0c1d244c72173f488686758ea483fa4c423587d93f1544c0a10ac0ad3c41f707",
+    "numeric_vector_retune": false,
+    "august_accessed": false,
+    "control_13a_reproduced": true
+  },
+  "target": {
+    "trades": 1563,
+    "raw_positive_wins": 690,
+    "gross_profit": 151.82,
+    "gross_loss": -490.75,
+    "net_profit": -338.93,
+    "max_balance_drawdown": 339.25
+  },
+  "profiles": {
+    "CONTROL_13A_S15_CLOSE_RECLAIM": {
+      "trades": 709,
+      "raw_positive_wins": 302,
+      "gross_profit": 64.43,
+      "gross_loss": -229.79,
+      "net_profit": -165.36,
+      "max_balance_drawdown": 165.36,
+      "pullbacks": 1369,
+      "exhaustion": 906,
+      "reclaim": 722,
+      "signals": 709,
+      "signal_sha256": "67d456b871d3c6b31b59e8bb546fb42a72f3890ec61f5e343eae28109d878bf3"
+    },
+    "S5_RECLAIM_POST_PULLBACK_PIVOT": {
+      "trades": 783,
+      "raw_positive_wins": 363,
+      "gross_profit": 73.9,
+      "gross_loss": -237.34,
+      "net_profit": -163.44,
+      "max_balance_drawdown": 163.79,
+      "pullbacks": 1402,
+      "exhaustion": 940,
+      "reclaim": 790,
+      "signals": 783,
+      "signal_sha256": "5c569c82ea7e94a9497220b28eb480761bf6c9ee5da1d0b03ac3e27c00bb259b"
+    },
+    "S5_RECLAIM_ANY_CAUSAL_PIVOT": {
+      "trades": 860,
+      "raw_positive_wins": 388,
+      "gross_profit": 77.54,
+      "gross_loss": -264.84,
+      "net_profit": -187.3,
+      "max_balance_drawdown": 187.55,
+      "pullbacks": 1464,
+      "exhaustion": 1001,
+      "reclaim": 868,
+      "signals": 860,
+      "signal_sha256": "2939fbc7e67eb03fc3a7f1a09b55c46d298a00453713d1bb8f2739f0c2db8855"
+    },
+    "S5_RECLAIM_FROZEN_AT_EXHAUSTION": {
+      "trades": 427,
+      "raw_positive_wins": 188,
+      "gross_profit": 35.15,
+      "gross_loss": -133.25,
+      "net_profit": -98.1,
+      "max_balance_drawdown": 98.31,
+      "pullbacks": 1303,
+      "exhaustion": 844,
+      "reclaim": 429,
+      "signals": 427,
+      "signal_sha256": "23067d7a32725c24c7dea76bf1ea4548e0dbae5936b6d801836d98145a8076b3"
+    }
+  },
+  "finding": {
+    "source_grounded_defect_confirmed": "13A sampled LOCAL_RECLAIM on completed S15 closes; canonical DH-03 grammar specifies completed S5 close through a causally known fast pivot/reclaim level.",
+    "literal_s5_post_pullback_gain_trades": 74,
+    "literal_s5_post_pullback_gain_wins": 61,
+    "broad_any_causal_gain_trades": 151,
+    "broad_any_causal_gain_wins": 86,
+    "activity_deficit_closed_fraction_by_best_bounded_profile": 0.17681498829039813,
+    "exact_historical_parity": false,
+    "decision": "FREEZE_S5_RECLAIM_TIMING_AS_SOURCE_GROUNDED_REPAIR; DO_NOT_PROMOTE_PIVOT_AGE_VARIANT_AS_HISTORICAL_TRUTH; CONTINUE_EVENT_MULTIPLICITY_RESET",
+    "next": "R037_DH03_S06_PULLBACK_EVENT_MULTIPLICITY_AND_RESET_PARITY_RECONSTRUCTION"
+  },
+  "integrated_r037_replay_started": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
