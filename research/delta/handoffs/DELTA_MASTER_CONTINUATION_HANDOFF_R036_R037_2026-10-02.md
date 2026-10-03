@@ -22,7 +22,7 @@ Use:
 5. R037 restart contract;
 6. current workbook / R-series reports.
 
-Alpha-only material in the master protocol belongs to a different repository and does not supersede DELTA.
+Separate-lineage-only material in the master protocol belongs to a different repository and does not supersede DELTA.
 
 ## Startup
 
