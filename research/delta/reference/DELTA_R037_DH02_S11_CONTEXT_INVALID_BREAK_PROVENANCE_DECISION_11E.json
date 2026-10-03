@@ -1,0 +1,37 @@
+{
+  "schema": "delta-r037-dh02-s11-context-invalid-break-provenance-decision-11e-v1",
+  "status": "COMPLETE_PROVENANCE_DECISION",
+  "unit": "R037_DH02_S11_CONTEXT_INVALID_BREAK_ADMISSION_PROVENANCE_DECISION",
+  "decision": {
+    "frozen_semantic": "NO_RETROSPECTIVE_VALIDATION_OF_CONFLICT_PERIOD_BREAK",
+    "historical_consumption_rule_promoted": false,
+    "challenger": "CONFLICT_BREAK_CONSUME_UNTIL_NEW_BOUNDARY",
+    "challenger_status": "NON_PROMOTING_SOURCE_COMPATIBLE_CHALLENGER",
+    "reason": "surviving state grammar requires valid context before BROKEN, but does not preserve the historical ownership action after an invalid-context qualifying break"
+  },
+  "checkpoint_11d": {
+    "control": {
+      "trades": 106,
+      "wins": 42,
+      "gross_loss": -35.1,
+      "net": -27.3
+    },
+    "challenger": {
+      "profile": "CONFLICT_BREAK_CONSUME_UNTIL_NEW_BOUNDARY",
+      "trades": 103,
+      "wins": 41,
+      "gross_loss": -33.74,
+      "net": -26.03
+    },
+    "target": {
+      "trades": 75,
+      "wins": 41,
+      "gross_loss": -17.6,
+      "net": -8.21
+    }
+  },
+  "numeric_vector_retune": false,
+  "august_accessed": false,
+  "next": "R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_PARITY_FINGERPRINT",
+  "mql5_authorized": false
+}
