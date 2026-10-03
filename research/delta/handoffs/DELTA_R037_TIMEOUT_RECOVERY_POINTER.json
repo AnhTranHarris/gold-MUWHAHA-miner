@@ -5,47 +5,27 @@
   "purpose": "Recover safely after ChatGPT message-delivery timeout or interrupted foreground tool chain without repeating durable research.",
   "authority_order": [
     "delta/CURRENT_STATE.json",
+    "research/delta/CURRENT_INFLIGHT.json",
     "this pointer",
     "active rebuild manifest",
-    "committed in-flight prereg/evidence artifacts",
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_DH03_S06_SIGNAL_GENERATOR_PROVENANCE_DECISION_CHECKPOINT_13H",
-    "current_phase": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION_NEXT",
-    "first_incomplete_unit": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH03_S06_SIGNAL_GENERATOR_PROVENANCE_DECISION_13H_MANIFEST.json",
-    "current_state_commit": "1afb0e3020e267d4aadde45e42f219b90f2eeb7b",
-    "current_state_ci_run": 37160368920,
-    "current_state_ci_conclusion": "success"
+    "last_verified_durable_unit": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A",
+    "current_phase": "R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_AND_SORB_READINESS_DECISION_NEXT",
+    "first_incomplete_unit": "R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_AND_SORB_READINESS_DECISION",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A_MANIFEST.json",
+    "current_state_commit": "e7bf98fa10357675bb773c4227f3305c33f65b13",
+    "current_state_ci_run": 37162324959,
+    "current_state_ci_conclusion": "pending_recovery_pointer_reconcile"
   },
   "in_flight_unit": {
-    "unit": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
-    "status": "REPORT_COMMITTED",
-    "phase_rank": 4,
-    "parent_durable_unit": "R037_DH03_S06_SIGNAL_GENERATOR_PROVENANCE_DECISION_CHECKPOINT_13H",
-    "committed_artifacts": [
-      {
-        "path": "research/delta/reference/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_EVIDENCE_14A.json",
-        "commit": "eb664c687ad772117e733b68cb73a6b241ef87d6",
-        "blob_sha": "798f165f6594d1302bc8add8decfdffe17fb16e8",
-        "role": "prereg"
-      },
-      {
-        "path": "research/delta/experiments/delta_r037_r032_full_specialist_parent_parity.py",
-        "commit": "07734bf76b6062e3840e8e6ad3b0fc27dca63870",
-        "blob_sha": "f100e5274466def8fc5aebf1a994c513d80ed3c3",
-        "role": "producer"
-      },
-      {
-        "path": "research/delta/reference/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A.json",
-        "commit": "985f1fc6b73419addef0bd11d99e27424446cf92",
-        "blob_sha": "25863137724183682144de99dc1b251d5d849218",
-        "runtime_sha256": "900ab0dcc0fd56fe58abb73d97a8f0fefb7804bf9ad05d9e8fc8850f5eba0eed",
-        "role": "result"
-      }
-    ],
-    "next_action": "Verify committed 14A result and its runtime SHA; write report/workbook/manifest only if still missing; then advance CURRENT_STATE last after green CI. Never rerun 14A solely because message delivery timed out."
+    "unit": null,
+    "status": "IDLE",
+    "phase_rank": 0,
+    "parent_durable_unit": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A",
+    "committed_artifacts": [],
+    "next_action": "Start only CURRENT_STATE.first_incomplete_unit. Before any compute, preregister and commit a fresh CURRENT_INFLIGHT cursor. Do not rerun durable 14A."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
@@ -76,7 +56,8 @@
       "Only one reconciled checkpoint may advance CURRENT_STATE for a bounded scientific unit; parallel diagnostics remain supplementary/non-promoting unless explicitly incorporated by the durable manifest.",
       "Never rerun an official compute solely because ChatGPT message delivery timed out. Verify committed result/report/workbook/manifest/CI first."
     ],
-    "pointer_consistency_gate": "DELTA_TIMEOUT_RECOVERY_GUARD.py must reject mismatch among CURRENT_STATE.json, CURRENT_INFLIGHT.json, and this timeout-recovery pointer."
+    "pointer_consistency_gate": "DELTA_TIMEOUT_RECOVERY_GUARD.py must reject mismatch among CURRENT_STATE.json, CURRENT_INFLIGHT.json, and this timeout-recovery pointer.",
+    "atomic_cursor_policy": "Whenever CURRENT_INFLIGHT changes phase, update the recovery pointer in the same Git commit when possible; CURRENT_STATE and CURRENT_INFLIGHT remain authoritative."
   },
   "constraints": {
     "august_2026": "SEALED",
