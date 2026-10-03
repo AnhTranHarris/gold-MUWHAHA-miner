@@ -1,0 +1,219 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH03_S06_PENDING_VALIDITY_CHECKPOINT_13E",
+  "status": "VERIFIED_COMPLETE_NEGATIVE_LOCALIZATION_FULL_PARITY_NOT_ACHIEVED",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_CHECKPOINT_13D",
+  "hypothesis": "If pending specialist admission is historical, a token should remain valid only while its original DH03 pullback episode remains causally alive; parent opposition, structural invalidation, and max-age expiry are the only tested invalidators.",
+  "falsification_condition": "Reject pending-event lifetime as the dominant residual if full original-event validity removes too few pending tokens to materially approach the 1563-trade historical fixture.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "historical DH03-S06 Stage-A standalone fixture",
+    "reference_count": 1563,
+    "minimum_count": 1563,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity reconstruction only; 13E full-event pending still overproduces 1584 trades."
+  },
+  "primary_metrics": {
+    "entry_quality": "Full-event pending 702/1584 raw-positive vs target 690/1563.",
+    "hold_persistence": "Frozen 13C generator and R9 lifecycle.",
+    "economics": "Full-event pending net -357.71 vs target -338.93; admission validity does not preserve near-exact DROP economics.",
+    "gross_loss_drawdown": "Full-event pending DD 357.71 vs target 339.25.",
+    "activity": "Only 2 of 83 pending tokens are invalidated by full original-event lifetime; trade count 1584 remains 21 high."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_pending_validity_parity.py",
+      "commit": "82e66ee73bd88606e96bb358c3364bc42e41875c",
+      "blob_sha": "188e5ec0598e4fc211fef8b349c313c0c1b77d05",
+      "file_sha256": "e63144c980a35775136e59ceacedc0d3beb611bdc76c37d6fabf38170948bcf2"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_pending_validity_engine.py",
+      "commit": "b5cb770c2eb8a6c52493860c748034fdba417752",
+      "blob_sha": "6f7ba9f3dfb832979612553d0a81bd837c5a5a34",
+      "file_sha256": "5402f56edc907d66d362724c917ebccf846c3f524a98d7e397b22056a8c116aa"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_attempt_admission_parity.py",
+      "commit": "0a32e3e4823f18fcc3dd7fd6a88e6d5c9769753c",
+      "blob_sha": "1920eba680c434eb8f55e868ead686c48d8b267a",
+      "file_sha256": "e69bff0682ce60446c297d075332ffb4bc1281d561c169c70823af9eb6712ae3"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "a78a8fe7550bd02433ce8a7d3fdae563fcd953e8",
+      "note": "120-second wall clock, isolated Numba cache, faulthandler, unbuffered output."
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "generator_changed": false,
+      "vector_fingerprint": "a3a086b7344c",
+      "generator_profile": "POST_PULLBACK_REARM_FRESH_EXHAUSTION",
+      "pending_validity_profiles": [
+        "unconditional",
+        "parent only",
+        "parent+structural",
+        "full original event including max age"
+      ],
+      "pending_ttl_tuning": false
+    },
+    "feature_order": [
+      "causal 13C signal",
+      "one-token pending admission",
+      "causal original-event death check",
+      "later flat observation",
+      "admit only if token remains valid"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "clean-room state parity only"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "elapsed_seconds": 11.63,
+      "peak_rss_kb": 698588,
+      "faulthandler": true,
+      "python_unbuffered": true,
+      "isolated_numba_cache": true,
+      "producer_atomic_output": "NamedTemporaryFile + flush + fsync + os.replace via base helper",
+      "exact_git_blob_preexecution_verification": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "13E prereg evidence",
+      "path": "research/delta/reference/DELTA_R037_DH03_S06_PENDING_VALIDITY_EVIDENCE_13E.json",
+      "commit": "5c1f265671a53d10a44df166011cd43f339b741c",
+      "blob_sha": "bc752f615ab40f8c3f996dac23ce364c71dcdb88",
+      "file_sha256": "1999162af13298d6a7895262f17ab86592f42b6c62083f1f46b57e7751574549"
+    },
+    {
+      "name": "January canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "Exact 13C generator, pullback episode end timestamps/reasons, pending token lifecycle counters."
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH03_S06_PENDING_VALIDITY_CHECKPOINT_13E.json",
+      "commit": "d053734e2845d3a7e3c5a8ac985d99dd3498415f",
+      "blob_sha": "2ac319e5c6b374afb4c65621d55aea5b9bf54b88",
+      "official_raw_result_sha256": "7621dcb5286a7aca531762a7869b5f6d36e66072382287e49c78e54bf1a21d26"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH03_S06_PENDING_VALIDITY_CHECKPOINT_13E.md",
+      "commit": "9a13923f47df32cb2bf30a2d893074a3b65104fa",
+      "blob_sha": "200041c3ac85fae5dda0d930faf3eefc12ae5c4e"
+    }
+  ],
+  "qa": [
+    "13D durable cursor verified before 13E.",
+    "Evidence, lifecycle tracer and producer committed before official compute.",
+    "All new local execution files matched committed Git blobs exactly.",
+    "Canonical January SHA and 4,205,709 Stage-A ticks verified.",
+    "Exact 13C 1,586-signal generator and 13D DROP/unconditional-pending controls reproduced.",
+    "Episode deaths: 4 parent opposition / 489 structural / 654 max-age / 0 active at Stage-A end.",
+    "Parent-only and parent+structure pending validity removed zero pending tokens.",
+    "Full event validity removed only two pending tokens, both from max-age expiry.",
+    "Full-event pending produced 1584 trades / 702 raw-positive / net -357.71, still 21 trades high and economically worse than DROP.",
+    "No pending TTL, generator, threshold, exit, August, SORB, or MQL5 change.",
+    "Workbook tab 75 A452:H461 written and read back."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh03_s06_pending_validity_parity.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_dh03_s06_pending_validity_parity.py --source <canonical_january_gzip> --evidence research/delta/reference/DELTA_R037_DH03_S06_PENDING_VALIDITY_EVIDENCE_13E.json --output <13E_result_json>",
+    "timing_semantics": "Precomputed episode end times are used only when current replay time has reached/passed the end timestamp; no future event death affects earlier decisions.",
+    "expected_fingerprints": {
+      "drop": {
+        "trades": 1513,
+        "raw_positive_wins": 674,
+        "net_profit": -339.14
+      },
+      "unconditional_pending": {
+        "trades": 1586,
+        "raw_positive_wins": 703,
+        "net_profit": -358.07,
+        "pending_created": 83,
+        "pending_admitted_after_observation": 83
+      },
+      "full_event_pending": {
+        "trades": 1584,
+        "raw_positive_wins": 702,
+        "official_wins": 689,
+        "net_profit": -357.71,
+        "pending_invalid_age": 2,
+        "pending_invalid_total": 2
+      }
+    },
+    "selected_interpretation": "FULL_EVENT_VALIDITY_IS_CAUSAL_BUT_NOT_DOMINANT_PARITY_RESIDUAL"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — R032 specialist parity incomplete",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready; event/reclaim identity 13F unresolved",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA semantics",
+    "ownership_scheduler_spec": "not ready",
+    "session_dst_spec": "frozen DELTA semantics",
+    "risk_spec": "fixed 0.01 research semantics",
+    "trade_count_parity_spec": "blocked pending next DH03 event/reclaim identity unit",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_CHECKPOINT_13D",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A452:H461"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH03_S06_PENDING_EVENT_IDENTITY_AND_REARM_BOUNDARY_PARITY_RECONSTRUCTION",
+  "github_commits": [
+    "5c1f265671a53d10a44df166011cd43f339b741c",
+    "b5cb770c2eb8a6c52493860c748034fdba417752",
+    "82e66ee73bd88606e96bb358c3364bc42e41875c",
+    "d053734e2845d3a7e3c5a8ac985d99dd3498415f",
+    "9a13923f47df32cb2bf30a2d893074a3b65104fa"
+  ]
+}
