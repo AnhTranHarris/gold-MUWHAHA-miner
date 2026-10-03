@@ -1,0 +1,72 @@
+{
+  "schema": "delta-r037-dh02-s08-context-placement-evidence-12b-v1",
+  "unit": "R037_DH02_S08_STATE_FUNNEL_AND_PROVENANCE_LOCALIZATION",
+  "parent_checkpoint": "R037_DH02_S08_CLEANROOM_PARITY_CHECKPOINT_12A",
+  "vector_fingerprint": "7c70b5304ff7",
+  "source_basis": {
+    "dh02_parent_context": "M15, M30, H1 via DH-01",
+    "entry_eligibility": "re-break confirms and context rules remain valid",
+    "dh01_context_warning": "Lower-timeframe disagreement is descriptive, not automatically disqualifying; DH01 is context infrastructure, not a universal veto.",
+    "historical_producer_bytes_recovered": false
+  },
+  "frozen_12a": {
+    "producer_path": "research/delta/experiments/delta_r037_dh02_s08_cleanroom_parity.py",
+    "producer_commit": "537ebafe35a6b4a023922bf63d44e1ec2e2e2b5d",
+    "producer_blob_sha": "dcfca2f1ae61e45783de1bedc982d5434026dc29",
+    "producer_sha256": "b5675413a094c36a619485fe299f59aa7840fc34f8c12b437fbcf0af71a26e26",
+    "leading_profile": "RAW_PARENT_DIRECTION_CONTINUOUS_DWELL",
+    "control_signal_sha256": "0f64c1f727c9fef6f9ee3676b1aa8d8a3df874b5a1c381d4a3bd6e6fe8657841",
+    "control": {
+      "trades": 105,
+      "raw_positive_wins": 37,
+      "gross_profit": 8.75,
+      "gross_loss": -37.73,
+      "net_profit": -28.98
+    }
+  },
+  "historical_target": {
+    "trades": 75,
+    "raw_positive_wins": 42,
+    "gross_profit": 9.93,
+    "gross_loss": -18.82,
+    "net_profit": -8.89,
+    "max_balance_drawdown": 9.66
+  },
+  "r032_ownership_fingerprint": {
+    "p75_c00_specialist_entries": 1947,
+    "p75_c02_plus_s08_specialist_entries": 2018,
+    "incremental_s08_entries": 71,
+    "p75_c01_plus_s11_specialist_entries": 2012,
+    "p75_c03_plus_s11_s08_specialist_entries": 2083,
+    "incremental_s08_entries_with_s11_present": 71
+  },
+  "tested_profiles": [
+    "CONTROL_BREAK_AND_REBREAK",
+    "BREAK_ONLY",
+    "REBREAK_ONLY",
+    "CONTINUOUS_ACTIVE_CONTEXT"
+  ],
+  "frozen_semantics": [
+    "M1 width-2 causal swing boundary",
+    "completed S5 break",
+    "continuous breakout-side 1s acceptance dwell",
+    "frozen S08 numeric vector",
+    "raw 2-of-3 completed M15/M30/H1 parent direction using fixed DH01-A02 thresholds",
+    "two-adverse-tick failure surrogate remains unchanged",
+    "completed S1 rebreak",
+    "frozen R9 downstream lifecycle"
+  ],
+  "selection_rule": "A context-placement candidate may advance only if it changes population identity in the direction required by the historical 75/42 fixture, not merely by deleting trades. Prefer a profile that reduces excess losses while recovering or retaining historical winner density. Exact same-sample count alone is not sufficient.",
+  "forbidden": [
+    "numeric retuning",
+    "new parent thresholds",
+    "August",
+    "SORB integration",
+    "mature exit optimization",
+    "MQL5"
+  ],
+  "canonical_source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "next_if_no_candidate": "R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
