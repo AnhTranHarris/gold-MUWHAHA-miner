@@ -1,0 +1,99 @@
+{
+  "schema": "delta-r037-dh05-probe-attempt-counter-provenance-evidence-10f-v1",
+  "unit": "R037_DH05_PROBE_RESIDUAL_ATTEMPT_COUNTER_PROVENANCE_DECISION",
+  "evidence_cutoff": "2026-10-03",
+  "sources": [
+    {
+      "kind": "google_doc",
+      "name": "DH-05 White Paper — Failed-Break Reversal Specialist",
+      "id": "1mIcrUUeK0lGwfR6L_26O47DQxQV7xygbnFcnkvE4s6k",
+      "revision_id": "ANLCKQmsDIYHH2ziMpGP8tgkzOM4Y5ofSEGMTU-9i9Wm2B9h8VtTbXlYs__xvtvTD6FPtegqtSE84Q2qibN946qglx7rB37--kPwCXNQ4kQ",
+      "findings": {
+        "probe_defined_as_midpoint_trades_beyond_L": true,
+        "probe_age_defined_since_first_cross": true,
+        "state_machine_is_single_probe_chain": true,
+        "expired_probes_go_to_EXPIRED": true,
+        "explicit_repeated_same_boundary_attempt_counter_semantic": false,
+        "explicit_touch_reset_semantic": false,
+        "explicit_strict_prebreak_reset_semantic": false
+      }
+    },
+    {
+      "kind": "github_blob",
+      "path": "research/delta/research/DELTA_R003_DIRECTION_HOLD_CAUSAL_GRAMMAR_WHITEPAPERS.md",
+      "blob_sha": "f82954611fb8b626aea2eac32593637e4e1aaeb2",
+      "findings": {
+        "dh05_single_state_chain_present": true,
+        "accepted_original_break_routed_away": true,
+        "explicit_attempt_counter_semantic": false
+      }
+    },
+    {
+      "kind": "github_blob",
+      "path": "research/delta/research/DELTA_R006_STAGE_A_DIRECTION_HOLD_SPEEDRUN_RESULTS.md",
+      "blob_sha": "fad377586cd737f1df7cc585b32bbf04372a8735",
+      "findings": {
+        "authoritative_dh05_counts_preserved": true,
+        "exact_attempt_counter_semantic_documented": false
+      }
+    },
+    {
+      "kind": "github_blob",
+      "path": "research/delta/research/DELTA_R032_AUTHORITATIVE_BASKET_RESULTS.md",
+      "blob_sha": "5c8fb97e63aba8efc19c9ab529795b27936c0d33",
+      "findings": {
+        "dh05_s06_authoritative_fixture_preserved": true,
+        "exact_attempt_counter_semantic_documented": false
+      }
+    },
+    {
+      "kind": "github_blob",
+      "path": "research/delta/reference/DELTA_R037_DH05_SOURCE_DURABILITY_RECOVERY_CHECKPOINT_09A.json",
+      "blob_sha": "4744f78021b50a39bb243edc15a60f7c0a455b36",
+      "findings": {
+        "authoritative_producer_bytes_found": false,
+        "prior_source_hashes_preserved": true,
+        "cleanroom_rebuild_required": true
+      }
+    },
+    {
+      "kind": "github_blob",
+      "path": "research/delta/reference/DELTA_R037_DH05_SHORT_PROBE_RELATIVE_ACCEPTANCE_BAR_OWNERSHIP_CHECKPOINT_09Z.json",
+      "blob_sha": "1629bf00c77bd8abc138c3962ce7daed991c3639",
+      "findings": {
+        "probe_abs_error": 449,
+        "total_funnel_abs_error": 782,
+        "aggregate_trade_count_abs_error": 335,
+        "promoted": false,
+        "role": "ROBUST_NON_PROMOTING_CHALLENGER"
+      }
+    },
+    {
+      "kind": "github_blob",
+      "path": "research/delta/reference/DELTA_R037_DH05_PROBE_ATTEMPT_STRICT_BEYOND_CHECKPOINT_10D.json",
+      "blob_sha": "767f289e9ac4e1311fb55a38e922d23aa719341a",
+      "findings": {
+        "control_probe_abs_error": 449,
+        "strict_beyond_candidates_all_worse": true,
+        "decision": "REJECT_STRICT_BEYOND_PROBE_CREATION"
+      }
+    },
+    {
+      "kind": "github_blob",
+      "path": "research/delta/reference/DELTA_R037_DH05_PROBE_ATTEMPT_TOUCH_RESET_CHECKPOINT_10E.json",
+      "blob_sha": "9e32bd1029903b8f70ef9a8a89bf8cfe8aa9c034",
+      "findings": {
+        "control_probe_abs_error": 449,
+        "touch_reset_candidates_all_worse": true,
+        "s06_veto_triggered": true,
+        "decision": "REJECT_TOUCH_RESET_REARM"
+      }
+    }
+  ],
+  "synthesis_rule": "Another universal attempt-counter semantic requires explicit independent surviving provenance. Same-sample error reduction alone is insufficient.",
+  "expected_decision": "FREEZE_09Z_ATTEMPT_COUNTER_AS_BEST_RECONSTRUCTIBLE_NON_PROMOTING_SURROGATE_AND_RECORD_449_PROBE_RESIDUAL_AS_PROVENANCE_LIMITATION",
+  "next_stream_if_expected_decision_passes": "R037_DH02_S11_CLEANROOM_PARITY_RECONSTRUCTION",
+  "raw_ticks_accessed": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
