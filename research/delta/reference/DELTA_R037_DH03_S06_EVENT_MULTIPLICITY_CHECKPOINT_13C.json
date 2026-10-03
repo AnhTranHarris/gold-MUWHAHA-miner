@@ -1,0 +1,127 @@
+{
+  "schema": "delta-r037-dh03-s06-event-multiplicity-checkpoint-13c-v1",
+  "status": "COMPLETE_MAJOR_PARITY_BREAKTHROUGH_FULL_PARITY_NOT_ACHIEVED",
+  "unit": "R037_DH03_S06_PULLBACK_EVENT_MULTIPLICITY_AND_RESET_PARITY_RECONSTRUCTION",
+  "parent": "R037_DH03_S06_STATE_FUNNEL_CHECKPOINT_13B",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "vector_fingerprint": "a3a086b7344c",
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_dh03_s06_event_multiplicity_parity.py",
+    "commit": "41b4dcc43bb2e24d3e9beb3ea9ecc2beddc97df4",
+    "blob_sha": "2580b95d0b13e3fd8b30ea4f30b48af96395c2db",
+    "sha256": "70c99757af57bf979575b96014affb9580f59c7dcfec3dbfac0a0ddb3dbaa03c"
+  },
+  "engine": {
+    "path": "research/delta/experiments/delta_r037_dh03_s06_event_multiplicity_engine.py",
+    "commit": "91fc4b03a0c9ad64ddf3683a63303fcb688f45fd",
+    "blob_sha": "0f5e458ec1c6274766a3b5fb7d04efc8bf4f661f",
+    "sha256": "b63996109e6cd4782d44dd7fa55e196d6407d6fe79e028c85dc5f8406308bae0"
+  },
+  "evidence": {
+    "path": "research/delta/reference/DELTA_R037_DH03_S06_PULLBACK_EVENT_MULTIPLICITY_EVIDENCE_13C.json",
+    "commit": "149a405ebd879fd6bbfadd69890d8653cebb7158",
+    "blob_sha": "f20124e3d6b9eac2f5c5ed03337a85e6209fbcc3",
+    "sha256": "ed6a52611f836a8d97d55a06eb6a1d50e16e438f9383a2df457e36b454f7df9b"
+  },
+  "official_compute": {
+    "elapsed_seconds": 12.42,
+    "peak_rss_kb": 698016,
+    "result_sha256": "145692aef5f9b8991a7435da6e5338f46223bc5fa05ffe5dcabf3674f131345c",
+    "numeric_vector_retune": false,
+    "august_accessed": false,
+    "control_13b_reproduced": true
+  },
+  "target": {
+    "trades": 1563,
+    "raw_positive_wins": 690,
+    "gross_profit": 151.82,
+    "gross_loss": -490.75,
+    "net_profit": -338.93,
+    "max_balance_drawdown": 339.25
+  },
+  "profiles": {
+    "POST_PULLBACK_SINGLE_ENTRY_CONTROL": {
+      "signals": 783,
+      "trades": 783,
+      "raw_positive_wins": 363,
+      "gross_profit": 73.9,
+      "gross_loss": -237.34,
+      "net_profit": -163.44,
+      "max_balance_drawdown": 163.79,
+      "pullback_episodes": 1402,
+      "unique_signal_episodes": 783,
+      "multi_signal_episodes": 0,
+      "max_signals_per_episode": 1
+    },
+    "POST_PULLBACK_REARM_FRESH_EXHAUSTION": {
+      "signals": 1586,
+      "trades": 1513,
+      "raw_positive_wins": 674,
+      "official_wins": 661,
+      "gross_profit": 137.12,
+      "gross_loss": -476.26,
+      "net_profit": -339.14,
+      "max_balance_drawdown": 339.14,
+      "pullback_episodes": 1147,
+      "exhaustion": 2006,
+      "reclaim": 1632,
+      "unique_signal_episodes": 563,
+      "multi_signal_episodes": 453,
+      "max_signals_per_episode": 8,
+      "signals_per_signal_episode": 2.8170515097690942,
+      "signals_suppressed_by_one_position_ledger": 73
+    },
+    "ANY_CAUSAL_REARM_FRESH_EXHAUSTION": {
+      "signals": 1748,
+      "trades": 1672,
+      "raw_positive_wins": 749,
+      "gross_profit": 151.25,
+      "gross_loss": -522.89,
+      "net_profit": -371.64,
+      "max_balance_drawdown": 371.64,
+      "pullback_episodes": 1147,
+      "signals_suppressed_by_one_position_ledger": 76
+    },
+    "POST_PULLBACK_REARM_NEW_ADVERSE_THEN_EXHAUSTION": {
+      "signals": 762,
+      "trades": 762,
+      "raw_positive_wins": 346,
+      "net_profit": -166.12,
+      "multi_signal_episodes": 172,
+      "max_signals_per_episode": 4
+    },
+    "POST_PULLBACK_REARM_PERSISTENT_EXHAUSTION": {
+      "signals": 3795,
+      "trades": 3267,
+      "raw_positive_wins": 1488,
+      "net_profit": -697.61,
+      "signals_suppressed_by_one_position_ledger": 528
+    },
+    "ANY_CAUSAL_REARM_PERSISTENT_EXHAUSTION": {
+      "signals": 4199,
+      "trades": 3628,
+      "raw_positive_wins": 1664,
+      "net_profit": -766.49,
+      "signals_suppressed_by_one_position_ledger": 571
+    }
+  },
+  "finding": {
+    "leading_profile": "POST_PULLBACK_REARM_FRESH_EXHAUSTION",
+    "interpretation": "After ENTRY_ELIGIBLE, keep the original still-valid pullback episode alive but rearm to PULLBACK_ACTIVE and require a fresh exhaustion->S5 reclaim->later S5 reacceleration sequence.",
+    "trades_gap": -50,
+    "raw_positive_wins_gap": -16,
+    "signal_count": 1586,
+    "signal_to_trade_suppression": 73,
+    "net_gap_usd": -0.21,
+    "max_balance_drawdown_gap_usd": -0.11,
+    "activity_deficit_closed_fraction_vs_13b": 0.9358974358974359,
+    "exact_historical_parity": false,
+    "decision": "CARRY_FORWARD_FRESH_EXHAUSTION_SAME_PULLBACK_REARM_AS_PARITY_HYPOTHESIS",
+    "next": "R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_AND_EXECUTION_PARITY_RECONSTRUCTION"
+  },
+  "integrated_r037_replay_started": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
