@@ -904,11 +904,11 @@ def detect_signal_multiplicity(
                 hiel=False; cnt[0]+=1; attempt_open=True; attempt_qualified=False
                 event_id+=1; first_signal_seen=False; signal_armed=True; boundary_rearm_seen=False
                 reclaim_rearm_seen=False; latest_reversal_confirm=False
-                reclaim_rearm_seen=False; latest_reversal_confirm=False
             elif latest_lo and loel and px<=latest_lo:
                 stage=1; oside=-1; L=latest_lo; evatr=ae; attempt_start=tm; qualified_start=0
                 loel=False; cnt[0]+=1; attempt_open=True; attempt_qualified=False
                 event_id+=1; first_signal_seen=False; signal_armed=True; boundary_rearm_seen=False
+                reclaim_rearm_seen=False; latest_reversal_confirm=False
         if stage==0: continue
 
         if stage<=2:
