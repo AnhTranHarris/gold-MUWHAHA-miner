@@ -1,0 +1,58 @@
+{
+  "schema": "delta-r037-dh02-s11-failure-persistence-state-memory-evidence-11f-v1",
+  "unit": "R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_PARITY_FINGERPRINT",
+  "parent_checkpoint": "R037_DH02_S11_CONTEXT_INVALID_BREAK_PROVENANCE_DECISION_11E",
+  "vector_fingerprint": "50d1bb2e656e",
+  "historical_target": {
+    "trades": 75,
+    "raw_positive_wins": 41,
+    "gross_profit": 9.39,
+    "gross_loss": -17.6,
+    "net_profit": -8.21
+  },
+  "control": {
+    "signals": 106,
+    "trades": 106,
+    "raw_positive_wins": 42,
+    "gross_profit": 7.8,
+    "gross_loss": -35.1,
+    "net_profit": -27.3,
+    "signal_sha256": "803fc20c55ed1d7f30356f2610392c12e6b43544f7f512bdd347cead69901dab"
+  },
+  "source_grounding": {
+    "frozen_failure_acceptance": "tick persistence",
+    "frozen_penetration_buffer_atr": 0.1172,
+    "retest_state": "RETESTING persists after price returns into the frozen retest zone until fail/rebreak/expiry.",
+    "whitepaper_failure": "a retest may tolerate shallow penetration; causal acceptance beyond the invalidation buffer sends the event to FAILED.",
+    "provenance_gap": "exact memory/reset semantics of tick-persistent failure acceptance are not preserved."
+  },
+  "diagnostic_profiles": [
+    {
+      "name": "CONTROL_CONSECUTIVE_BUFFER_TICKS",
+      "pending_reset": "any tick not beyond adverse buffer",
+      "confirm": "second adverse-buffer tick"
+    },
+    {
+      "name": "LATCH_RESET_AT_BOUNDARY_RECLAIM",
+      "pending_reset": "directional price reclaims original boundary L",
+      "confirm": "next later adverse-buffer tick before reset"
+    },
+    {
+      "name": "LATCH_RESET_AT_RETEST_ZONE_EXIT",
+      "pending_reset": "price exits retest zone in original breakout direction",
+      "confirm": "next later adverse-buffer tick before reset"
+    },
+    {
+      "name": "BREACH_THEN_NEXT_PREBREAK_TICK_CONFIRM",
+      "pending_reset": "directional price reclaims original boundary L",
+      "confirm": "next later tick remains on pre-break side after initial adverse-buffer breach"
+    }
+  ],
+  "selection_rule": "Carry forward only a categorical failure-memory interpretation that materially reduces excess trades/gross loss while retaining historical winners and without changing the frozen buffer or any numeric vector parameter.",
+  "next_if_localized": "R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_AND_INTERACTION_DECISION",
+  "canonical_source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "august_2026": "SEALED",
+  "sorb_integrated_replay_started": false,
+  "mql5_authorized": false
+}
