@@ -1228,7 +1228,8 @@ def main():
         "probe_semantics": "09E repeated causal same-boundary attempt ledger with per-attempt lifecycle clock",
         "acceptance_semantics": "09F post-qualification chronology for signal-layer candidates; funnel CONTROL_09E retained as source QA",
         "failure_clock": "failure-candidate start retained for max_failure_age in every profile",
-        "profiles": results,\n        "signal_profiles": signal_results,
+        "profiles": results,
+        "signal_profiles": signal_results,
         "control_09e_reproduced_exact_stage_errors": control_parity,
         "ranking": ranking,
         "finding": {
