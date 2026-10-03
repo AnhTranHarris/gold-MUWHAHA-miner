@@ -1,0 +1,44 @@
+{
+  "schema": "delta-r037-dh02-s11-context-invalid-break-provenance-evidence-11e-v1",
+  "unit": "R037_DH02_S11_CONTEXT_INVALID_BREAK_ADMISSION_PROVENANCE_DECISION",
+  "parent_checkpoint": "R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_REARM_CHECKPOINT_11D",
+  "source_evidence": {
+    "armed_requires_context_permission": true,
+    "broken_transition_requires_armed_event": true,
+    "no_transition_can_skip_broken": true,
+    "event_identity_one_boundary_plus_direction": true,
+    "historical_post_invalid_break_boundary_consumption_rule_preserved": false,
+    "historical_producer_bytes_recovered": false
+  },
+  "checkpoint_11d": {
+    "control": {
+      "trades": 106,
+      "wins": 42,
+      "gross_loss": -35.1,
+      "net": -27.3
+    },
+    "challenger": {
+      "profile": "CONFLICT_BREAK_CONSUME_UNTIL_NEW_BOUNDARY",
+      "trades": 103,
+      "wins": 41,
+      "gross_loss": -33.74,
+      "net": -26.03
+    },
+    "target": {
+      "trades": 75,
+      "wins": 41,
+      "gross_loss": -17.6,
+      "net": -8.21
+    }
+  },
+  "decision_rule": "Freeze only semantics independently supported by surviving source grammar. Same-sample fit may preserve a challenger for interaction testing but cannot establish a missing historical state transition.",
+  "proposed_decision": {
+    "freeze": "NO_RETROSPECTIVE_VALIDATION_OF_CONFLICT_PERIOD_BREAK",
+    "do_not_freeze": "CONFLICT_BREAK_CONSUME_UNTIL_NEW_BOUNDARY_AS_HISTORICAL_TRUTH",
+    "challenger_status": "NON_PROMOTING_SOURCE_COMPATIBLE_CHALLENGER"
+  },
+  "next_unit": "R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_PARITY_FINGERPRINT",
+  "august_2026": "SEALED",
+  "sorb_integrated_replay_started": false,
+  "mql5_authorized": false
+}
