@@ -988,35 +988,55 @@ def detect_signal_multiplicity(
 
 
 @njit(cache=True)
-def admit_r9_lifecycle(t, ask, bid, sig_i, sig_side):
-    STOP=300; TRAIL_ACT=100; TRAIL_DIST=30; MAX_HOLD=30000
+def admit_r9_lifecycle(t, ask, bid, sig_i, sig_side, block_exit_tick):
+    """Replay frozen R9/Coinexx lifecycle on a pre-generated DH05 signal stream.
+
+    block_exit_tick=False is the minimal one-position-only admission rule.
+    block_exit_tick=True adds the frozen position-observation latch behavior by
+    suppressing a signal that arrives on the same tick that closes the position.
+    """
+    STOP=300; TRAIL_ACT=100; TRAIL_DIST=30
     n=sig_i.size
-    admitted=0; rejected=0; wins=0; gross_pos=0.0; gross_neg=0.0; net=0.0
-    balance=0.0; peak=0.0; maxdd=0.0
-    pos=0; entry=0; stop=0; entry_tm=0; entry_idx=-1; k=0
+    admitted=0; rejected_occupied=0; rejected_latch=0; wins=0
+    gp=0.0; gl=0.0; balance=100000.0; peak=balance; maxdd=0.0
+    pos=0; entry=0; stop=0; entrysec=0; k=0; hold_sum=0.0; closed_trades=0
     last_i=t.size-1
+
     for i in range(t.size):
+        sec=int(t[i])//1000
         exited=False
         if pos!=0:
             ex=0; do_exit=False
+            # Protective stop is checked first on the executable quote side.
             if pos>0:
                 if int(bid[i])<=stop:
                     ex=int(bid[i]); do_exit=True
             else:
                 if int(ask[i])>=stop:
                     ex=int(ask[i]); do_exit=True
-            if (not do_exit) and int(t[i])-entry_tm>=MAX_HOLD:
+
+            # Frozen R9 max-hold uses completed integer-second buckets.
+            if (not do_exit) and sec-entrysec>=30:
                 ex=int(bid[i]) if pos>0 else int(ask[i]); do_exit=True
+
             if do_exit:
-                pnl=((ex-entry)/1000.0 if pos>0 else (entry-ex)/1000.0)-0.02
-                net+=pnl; balance+=pnl
-                if pnl>0: wins+=1; gross_pos+=pnl
-                else: gross_neg+=pnl
+                raw=((ex-entry)/1000.0 if pos>0 else (entry-ex)/1000.0)
+                exit_deal=raw-0.01
+                if exit_deal>1e-12:
+                    wins+=1
+                if raw>0:
+                    gp+=exit_deal
+                else:
+                    gl+=exit_deal
+                balance+=exit_deal
+                closed_trades+=1
+                hold_sum+=sec-entrysec
                 if balance>peak: peak=balance
                 dd=peak-balance
                 if dd>maxdd: maxdd=dd
-                pos=0; exited=True
+                pos=0; entry=0; stop=0; exited=True
             else:
+                # Frozen trailing-stop semantics use executable quote and 0.01 grid.
                 if pos>0 and int(bid[i])-entry>=TRAIL_ACT:
                     ns=int(bid[i])-TRAIL_DIST
                     if ns>stop: stop=ns
@@ -1025,28 +1045,46 @@ def admit_r9_lifecycle(t, ask, bid, sig_i, sig_side):
                     if ns<stop: stop=ns
 
         while k<n and int(sig_i[k])==i:
-            if pos==0 and not exited:
-                pos=int(sig_side[k]); entry=int(ask[i]) if pos>0 else int(bid[i])
-                stop=entry-STOP if pos>0 else entry+STOP
-                entry_tm=int(t[i]); entry_idx=i; admitted+=1
+            if pos!=0:
+                rejected_occupied+=1
+            elif exited and block_exit_tick:
+                rejected_latch+=1
             else:
-                rejected+=1
+                pos=int(sig_side[k])
+                entry=int(ask[i]) if pos>0 else int(bid[i])
+                # R9 stop is offset from the executable stop-side quote, not entry.
+                stop=int(bid[i])-STOP if pos>0 else int(ask[i])+STOP
+                entrysec=sec
+                admitted+=1
+                balance-=0.01
+                gl-=0.01
+                if balance>peak: peak=balance
+                dd=peak-balance
+                if dd>maxdd: maxdd=dd
             k+=1
 
+    # Stage-A policy: force close any surviving position at the last eligible quote.
     if pos!=0:
         ex=int(bid[last_i]) if pos>0 else int(ask[last_i])
-        pnl=((ex-entry)/1000.0 if pos>0 else (entry-ex)/1000.0)-0.02
-        net+=pnl; balance+=pnl
-        if pnl>0: wins+=1; gross_pos+=pnl
-        else: gross_neg+=pnl
+        raw=((ex-entry)/1000.0 if pos>0 else (entry-ex)/1000.0)
+        exit_deal=raw-0.01
+        if exit_deal>1e-12:
+            wins+=1
+        if raw>0:
+            gp+=exit_deal
+        else:
+            gl+=exit_deal
+        balance+=exit_deal
+        closed_trades+=1
+        hold_sum+=(int(t[last_i])//1000)-entrysec
         if balance>peak: peak=balance
         dd=peak-balance
         if dd>maxdd: maxdd=dd
-    return admitted,rejected,wins,gross_pos,gross_neg,net,maxdd
 
+    return admitted,rejected_occupied,rejected_latch,closed_trades,wins,gp,gl,gp+gl,maxdd,(hold_sum/closed_trades if closed_trades else 0.0)
 
-def evaluate_signal_mode(mode, t, ask, bid, mid, st, ss, sl, b1, b5, b15, b300, a300):
-    vectors={}; trade_abs=0; signal_s06_abs=0
+def evaluate_signal_mode(mode, admission_latch, t, ask, bid, mid, st, ss, sl, b1, b5, b15, b300, a300):
+    vectors={}; trade_abs=0; signal_s06_abs=0; overflow_total=0
     hist_trades={"A03":306,"S05":51,"S06":615,"S09":119,"S10":206,"S16":24}
     for v in VECTORS:
         n,ad,at,mf,mp,pe,rb,rd,em,rt=v
@@ -1057,12 +1095,19 @@ def evaluate_signal_mode(mode, t, ask, bid, mid, st, ss, sl, b1, b5, b15, b300, 
             b15["end_ms"],b15["open"],b15["close"],
             ad,at,int(mf*1000),int(mp*1000),pe,rb,rd,em,rt,mode,
         )
-        adm,rej,w,gp,gl,net,dd=admit_r9_lifecycle(t,ask,bid,si,ssig)
-        h=hist_trades[n]; trade_abs+=abs(int(adm)-h)
+        overflow_total+=int(ov)
+        adm,rej_occ,rej_latch,trades,w,gp,gl,net,dd,avgh=admit_r9_lifecycle(t,ask,bid,si,ssig,admission_latch)
+        h=hist_trades[n]; trade_abs+=abs(int(trades)-h)
         if n=="S06": signal_s06_abs=abs(int(si.size)-672)
-        # episode multiplicity diagnostics
         unique_events=int(np.unique(se).size) if se.size else 0
         repeated=int(si.size-unique_events)
+        sample_n=min(40,int(si.size))
+        sample=[{
+            "tick_index":int(si[q]),
+            "timestamp_ms_utc":int(t[int(si[q])]),
+            "side":int(ssig[q]),
+            "episode_id":int(se[q]),
+        } for q in range(sample_n)]
         vectors[n]={
             "funnel":dict(zip(STAGES,map(int,c))),
             "generator_signals":int(si.size),
@@ -1070,21 +1115,25 @@ def evaluate_signal_mode(mode, t, ask, bid, mid, st, ss, sl, b1, b5, b15, b300, 
             "repeated_signals":repeated,
             "signal_overflow":int(ov),
             "historical_trades":h,
-            "admitted_trades":int(adm),
-            "rejected_while_occupied":int(rej),
-            "wins":int(w),"gross_profit_usd":float(gp),"gross_loss_usd":float(gl),
+            "admitted_entries":int(adm),
+            "closed_trades":int(trades),
+            "rejected_while_occupied":int(rej_occ),
+            "rejected_by_exit_tick_latch":int(rej_latch),
+            "official_wins":int(w),
+            "gross_profit_usd":float(gp),"gross_loss_usd":float(gl),
             "net_usd":float(net),"max_balance_dd_usd":float(dd),
+            "average_hold_seconds":float(avgh),
+            "signal_ledger_sample":sample,
         }
     s6=vectors["S06"]
-    s6_econ_error=abs(s6["wins"]-307)+abs(s6["net_usd"]-(-101.08))
     return {
         "vectors":vectors,
+        "signal_overflow_total":int(overflow_total),
         "aggregate_trade_count_abs_error":int(trade_abs),
         "s06_generator_signal_abs_error":int(signal_s06_abs),
-        "s06_trade_abs_error":abs(s6["admitted_trades"]-615),
-        "s06_win_abs_error":abs(s6["wins"]-307),
+        "s06_trade_abs_error":abs(s6["closed_trades"]-615),
+        "s06_win_abs_error":abs(s6["official_wins"]-307),
         "s06_net_abs_error":float(abs(s6["net_usd"]+101.08)),
-        "s06_econ_composite_error":float(s6_econ_error),
     }
 
 def evaluate_profile(profile_index, t, mid, st, ss, sl, b1, b5, b15, b300, a300):
@@ -1183,8 +1232,13 @@ def main():
         "BOUNDARY_RECYCLE_REARM":3,
     }
     signal_results={}
-    for name,mode in signal_modes.items():
-        signal_results[name]=evaluate_signal_mode(mode,t,ask,bid,mid,st,ss,sl,b1,b5,b15,b300,a300)
+    admission_modes={"ONE_POSITION_ONLY":False,"POSITION_OBSERVATION_LATCH":True}
+    for sname,mode in signal_modes.items():
+        for aname,latch in admission_modes.items():
+            name=sname+"__"+aname
+            signal_results[name]=evaluate_signal_mode(mode,latch,t,ask,bid,mid,st,ss,sl,b1,b5,b15,b300,a300)
+            if signal_results[name]["signal_overflow_total"] != 0:
+                raise SystemExit("signal buffer overflow in "+name)
 
     control = results["CONTROL_09E"]
     expected_control = {
@@ -1203,6 +1257,12 @@ def main():
             "CONTROL_09E does not reproduce checkpoint 09E stage errors: "
             + json.dumps(control["stage_abs_error"], sort_keys=True)
         )
+
+    expected_postqual_signals={"A03":192,"S05":9,"S06":651,"S09":11,"S10":227,"S16":7}
+    one_shot=signal_results["ONE_SHOT_POST_QUAL__ONE_POSITION_ONLY"]
+    got_postqual={k:int(v["generator_signals"]) for k,v in one_shot["vectors"].items()}
+    if got_postqual != expected_postqual_signals:
+        raise SystemExit("POST_QUAL_BASE signal drift: "+json.dumps(got_postqual,sort_keys=True))
 
     ranking=[]
     for pname,r in signal_results.items():
@@ -1231,6 +1291,13 @@ def main():
         "profiles": results,
         "signal_profiles": signal_results,
         "control_09e_reproduced_exact_stage_errors": control_parity,
+        "postqual_generator_control_reproduced": True,
+        "postqual_generator_expected": expected_postqual_signals,
+        "admission_semantics": {
+            "ONE_POSITION_ONLY": "signal admitted whenever flat, including same tick after an exit",
+            "POSITION_OBSERVATION_LATCH": "same one-position rule plus suppression on the tick that closes the prior position",
+            "lifecycle": "R9/Coinexx ask-bid execution; 0.30 initial stop on executable quote side; 0.10/0.03 trailing stop; integer-second 30s max hold; $0.01 entry + $0.01 exit commissions",
+        },
         "ranking": ranking,
         "finding": {
             "selection_rule": "candidate may carry forward only if transition-based multiplicity reduces aggregate historical admitted-trade count error and materially approaches S06 672 generator / 615 admitted / 307 wins / -101.08 net without signal overflow",
