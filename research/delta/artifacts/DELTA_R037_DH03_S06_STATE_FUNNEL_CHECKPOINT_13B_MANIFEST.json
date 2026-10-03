@@ -1,0 +1,239 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH03_S06_STATE_FUNNEL_CHECKPOINT_13B",
+  "status": "VERIFIED_COMPLETE_MATERIAL_TIMING_REPAIR_FULL_PARITY_NOT_ACHIEVED",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH03_S06_CLEANROOM_PARITY_CHECKPOINT_13A",
+  "hypothesis": "The 13A activity deficit is partly caused by an S15/S5 state-timing mismatch: LOCAL_RECLAIM must be observed on completed S5 closes through the frozen S15-pivot reclaim level, as specified by the DH03 white paper.",
+  "falsification_condition": "Reject the timing repair as primary if exact 13A control fails, or S5 reclaim timing does not materially improve historical population parity without numeric retuning.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "historical DH03-S06 Stage-A standalone fixture",
+    "reference_count": 1563,
+    "minimum_count": 1563,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity reconstruction only; 13B remains non-promoting because full historical parity is not achieved."
+  },
+  "primary_metrics": {
+    "entry_quality": "13B S5-post-pullback profile 363/783 raw-positive wins; any-causal diagnostic 388/860; historical 690/1563.",
+    "hold_persistence": "R9 downstream lifecycle frozen and unchanged.",
+    "economics": "S5-post-pullback net -163.44; any-causal diagnostic -187.30; historical -338.93. No economic optimization.",
+    "gross_loss_drawdown": "S5-post-pullback GL -237.34 / DD 163.79; any-causal GL -264.84 / DD 187.55; historical GL -490.75 / DD 339.25.",
+    "activity": "S5-post-pullback 783 trades; any-causal diagnostic 860; historical 1563. S5 timing repairs part, not all, of the deficit."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_state_funnel_parity.py",
+      "commit": "a81f9f63221c5333b6617dd9bff95ecb7ab9026d",
+      "blob_sha": "f8d92aef9d23e01626c1a1b4771cbfb77aa67343",
+      "file_sha256": "320b67b3baa861d88d12cf2ad58c36a7488c903142c95fcf156a5e45709785aa"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_state_funnel_engine.py",
+      "commit": "13aac682d133a656896fb7828c6fc33f90950ef9",
+      "blob_sha": "83d627bdc8751ce641a14a01f1835082545893ee",
+      "file_sha256": "56fe49d77542f30bde0c551fbd6698b52412738f632efd03241fcc5b678a1ffd"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_engine.py",
+      "commit": "e7f11325e26bf84491693ff84dae374e33bf48ab",
+      "blob_sha": "ac865a520441a2efc8eaf908e3c9390556893925",
+      "file_sha256": "f91f9a684980dea2a74fd321a4d7ba7a6dbf16ee0d5d0131c1d5b85d5a263535"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_structure.py",
+      "commit": "9fd75852690003d8e6d65cfdb9bb67198264fcae",
+      "blob_sha": "edbe5ae9bcf2031fe06256467085889c4e108d52",
+      "file_sha256": "9df6fe9a2086cb4970e38a205f081ab0706e441629ce01a9292f4ddcbd445ce2"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "a78a8fe7550bd02433ce8a7d3fdae563fcd953e8",
+      "note": "120-second wall-clock containment, isolated Numba cache, faulthandler and unbuffered subprocess execution."
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "vector_fingerprint": "a3a086b7344c",
+      "counter_eff": 0.6468,
+      "exhaustion_decline": 0.4533,
+      "invalidation_buffer_atr": 0.3242,
+      "max_pullback_age_s": 513.6575,
+      "no_new_extreme_count": 1,
+      "parent_bundle": "M15/M30",
+      "parent_policy": "structural-priority",
+      "pullback_depth_atr": 0.4743,
+      "pullback_start_tf": "S15",
+      "reaccel_eff_min": 0.2854,
+      "reaccel_tf": "S5",
+      "reclaim_level_source": "S15 pivot",
+      "reclaim_observation_tf": "S5"
+    },
+    "feature_order": [
+      "parent valid",
+      "impulse extreme",
+      "pullback",
+      "exhaustion candidate",
+      "completed-S5 local reclaim",
+      "later completed-S5 reacceleration",
+      "entry eligible"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "clean-room state-semantic parity only; no optimization split"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "elapsed_seconds": 13.49,
+      "peak_rss_kb": 697928,
+      "faulthandler": true,
+      "python_unbuffered": true,
+      "isolated_numba_cache": true,
+      "producer_atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_preexecution_verification": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "13B prereg evidence",
+      "path": "research/delta/reference/DELTA_R037_DH03_S06_STATE_FUNNEL_EVIDENCE_13B.json",
+      "commit": "aca4b19d61c424be81eb79a9600ca5bdd36f3baa",
+      "blob_sha": "dd93b03d4afe6188e052abdafdd80ab00d230040",
+      "file_sha256": "9a6ced963cdbc4445eaa8e2b31e225aa43dd1623f6848db396b88cf5dc72ec95"
+    },
+    {
+      "name": "DH03 canonical white paper",
+      "drive_document_id": "13pa0KSxVy93yajDEGAIkeY4V8Z3egMDIPxPV0nM3ia8",
+      "semantic_used": "LOCAL_RECLAIM = completed S5 close through causally known fast pivot/reclaim level"
+    },
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "Stage-A P75 tick-rooted bars; structural parent series; causal S15 pivot series; S5 state-transition stream."
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH03_S06_STATE_FUNNEL_CHECKPOINT_13B.json",
+      "commit": "65199790b5f0a32bb8e24fe785ddc2ffd914bdf4",
+      "blob_sha": "1833fca9025d2e4e60967e9a1fd2055ed22ded22",
+      "official_raw_result_sha256": "0c1d244c72173f488686758ea483fa4c423587d93f1544c0a10ac0ad3c41f707"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH03_S06_STATE_FUNNEL_CHECKPOINT_13B.md",
+      "commit": "891cb28d8fc271e03905fbc0ac1ecedccb1c6d7e",
+      "blob_sha": "01d34a0a359df2a4cdc291fb0f198c123485e654"
+    }
+  ],
+  "qa": [
+    "13A durable cursor and successful rebuild-gate CI verified before 13B.",
+    "DH03 white paper reread before 13B; source explicitly assigns LOCAL_RECLAIM observation to completed S5 closes.",
+    "13B evidence, engine and producer committed before official compute.",
+    "Canonical January SHA and Stage-A tick count 4,205,709 verified.",
+    "Local producer, 13B engine, evidence, 13A engine and structure helper matched committed Git blobs before execution.",
+    "13A control reproduced exactly, including 709 signals/trades and signal SHA.",
+    "S5 post-pullback-pivot repair increased activity 709 -> 783 and raw-positive wins 302 -> 363.",
+    "Any-causal-pivot diagnostic reached 860 trades / 388 wins but is not promoted solely on scalar fit.",
+    "Frozen-at-exhaustion pivot interpretation reduced activity to 427 and is rejected as primary repair.",
+    "All numeric S06 thresholds unchanged; August not accessed.",
+    "Workbook tab 75 A413:H425 written and read back.",
+    "Full historical DH03-S06 parity is not claimed.",
+    "SORB blocked; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh03_s06_state_funnel_parity.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_dh03_s06_state_funnel_parity.py --source <canonical_january_gzip> --evidence research/delta/reference/DELTA_R037_DH03_S06_STATE_FUNNEL_EVIDENCE_13B.json --output <13B_result_json>",
+    "timing_semantics": "Ordered ticks; all bars causally completed at right edge. S15 pivot level source; LOCAL_RECLAIM evaluated on completed S5 closes; reacceleration requires later completed S5.",
+    "expected_fingerprints": {
+      "control": {
+        "trades": 709,
+        "raw_positive_wins": 302,
+        "pullbacks": 1369,
+        "exhaustion": 906,
+        "reclaim": 722,
+        "signals": 709,
+        "signal_sha256": "67d456b871d3c6b31b59e8bb546fb42a72f3890ec61f5e343eae28109d878bf3"
+      },
+      "s5_post_pullback": {
+        "trades": 783,
+        "raw_positive_wins": 363,
+        "reclaim": 790,
+        "signals": 783
+      },
+      "s5_any_causal": {
+        "trades": 860,
+        "raw_positive_wins": 388,
+        "reclaim": 868,
+        "signals": 860
+      }
+    },
+    "selected_interpretation": "FREEZE_S5_RECLAIM_OBSERVATION_TIMING; PIVOT_AGE_REMAINS_PROVENANCE_UNRESOLVED"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — R032 specialist parity incomplete",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA semantics",
+    "ownership_scheduler_spec": "not ready",
+    "session_dst_spec": "frozen DELTA semantics",
+    "risk_spec": "fixed 0.01 research semantics",
+    "trade_count_parity_spec": "blocked pending DH03-S06 parity",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH03_S06_CLEANROOM_PARITY_CHECKPOINT_13A",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A413:H425"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH03_S06_PULLBACK_EVENT_MULTIPLICITY_AND_RESET_PARITY_RECONSTRUCTION",
+  "github_commits": [
+    "aca4b19d61c424be81eb79a9600ca5bdd36f3baa",
+    "13aac682d133a656896fb7828c6fc33f90950ef9",
+    "a81f9f63221c5333b6617dd9bff95ecb7ab9026d",
+    "65199790b5f0a32bb8e24fe785ddc2ffd914bdf4",
+    "891cb28d8fc271e03905fbc0ac1ecedccb1c6d7e"
+  ]
+}
