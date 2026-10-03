@@ -4,9 +4,9 @@
   "branch": "delta",
   "created_utc": "2026-10-01",
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
-  "last_verified_durable_unit": "R037_DH05_CLEANROOM_PARITY_CHECKPOINT_09B",
-  "first_incomplete_unit": "R037_DH05_BOUNDARY_SOURCE_AND_PROBE_ELIGIBILITY_PARITY_RECONSTRUCTION",
-  "current_phase": "R037_DH05_BOUNDARY_SOURCE_PARITY_RECONSTRUCTION_NEXT",
+  "last_verified_durable_unit": "R037_DH05_BOUNDARY_PROBE_ATTEMPT_LEDGER_CHECKPOINT_09C",
+  "first_incomplete_unit": "R037_DH05_ACCEPTANCE_FAILURE_REENTRY_SEMANTICS_PARITY_RECONSTRUCTION",
+  "current_phase": "R037_DH05_ACCEPTANCE_FAILURE_REENTRY_SEMANTICS_PARITY_RECONSTRUCTION_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -3433,7 +3433,7 @@
     "mt5_readiness_doc_id": "1a4bSQAbk1mQCUN1h088A2okVnTuKuohJlOsigDDjOn4",
     "mt5_readiness_doc_url": "https://docs.google.com/document/d/1a4bSQAbk1mQCUN1h088A2okVnTuKuohJlOsigDDjOn4/edit",
     "r037": {
-      "status": "DH05_BOUNDARY_SOURCE_PARITY_RECONSTRUCTION_NEXT",
+      "status": "DH05_ACCEPTANCE_FAILURE_REENTRY_PARITY_RECONSTRUCTION_NEXT",
       "parent": "R032-C03_PLUS_DH02_S11_S08",
       "family": "R037-SORB-v1",
       "prereg_drive_doc_id": "1lfjAI9QB1fOCevvAur1dDV3qSdOw9sPhrkr_rcf1TM0",
@@ -3456,7 +3456,7 @@
       "source_qa_decision": "SOURCE_QA_PASS",
       "integrated_replay": "NOT_STARTED",
       "integrated_replay_blocker": "FOUR_R032_SPECIALIST_STREAMS_REQUIRE_EXACT_RECONSTRUCTION_PARITY",
-      "exact_next_unit": "R037_DH05_DIAGNOSTIC_ENGINE_CLEANROOM_REBUILD_AND_CHECKPOINT03_08_09_PARITY",
+      "exact_next_unit": "R037_DH05_ACCEPTANCE_FAILURE_REENTRY_SEMANTICS_PARITY_RECONSTRUCTION",
       "august_2026": "SEALED",
       "mql5_authorized": false,
       "parent_backbone_parity": {
@@ -3508,7 +3508,7 @@
         "decision": "EXACT_NON_SPECIALIST_BACKBONE_PARITY"
       },
       "integrated_replay_started": false,
-      "blocker": "CURRENT_CLEANROOM_PRODUCER_FAILS_CHECKPOINT03_08_09_PARITY; M5_BOUNDARY_PROBE_LIFECYCLE_UNDERPRODUCES",
+      "blocker": "DH05_BOUNDARY_PROBE_SEMANTICS_MATERIALLY_RECOVERED_AT_CHECKPOINT_09C; FULL_PARENT_PARITY_STILL_BLOCKED_BY_ACCEPTANCE_FAILURE_REENTRY_SEMANTICS",
       "dh05_s06_parity_checkpoint_01": {
         "status": "IN_PROGRESS_NO_PARITY_CLAIM",
         "github_report_path": "research/delta/research/DELTA_R037_DH05_S06_PARITY_CHECKPOINT_01.md",
@@ -3651,7 +3651,7 @@
         "august_2026": "SEALED",
         "mql5_authorized": false
       },
-      "first_incomplete_substep": "R037_DH05_BOUNDARY_SOURCE_AND_PROBE_ELIGIBILITY_PARITY_RECONSTRUCTION",
+      "first_incomplete_substep": "R037_DH05_ACCEPTANCE_FAILURE_REENTRY_SEMANTICS_PARITY_RECONSTRUCTION",
       "dh05_reversal_efficiency_stage_normalization_checkpoint_08": {
         "status": "COMPLETE_MATERIAL_CLUE_PARITY_NOT_ACHIEVED",
         "github_report_path": "research/delta/research/DELTA_R037_DH05_REVERSAL_EFFICIENCY_STAGE_NORMALIZATION_CHECKPOINT_08.md",
@@ -3838,6 +3838,39 @@
         "august_2026": "SEALED",
         "mql5_authorized": false,
         "full_manifest_path": "research/delta/artifacts/DELTA_R037_DH05_CLEANROOM_PARITY_CHECKPOINT_09B_MANIFEST.json"
+      },
+      "dh05_boundary_probe_checkpoint_09c": {
+        "status": "COMPLETE_MATERIAL_PARITY_CLUE_FULL_PARITY_NOT_ACHIEVED",
+        "unit": "R037_DH05_BOUNDARY_SOURCE_AND_PROBE_ELIGIBILITY_PARITY_RECONSTRUCTION",
+        "producer_path": "research/delta/experiments/delta_r037_dh05_boundary_probe_parity.py",
+        "producer_commit": "9d8b3d0b53deedb69e81ffd132feb82888176c71",
+        "producer_blob_sha": "0cc173633ba8f91771b11ab2d39cc659340b6c3d",
+        "producer_file_sha256": "84093a3f5ce39d09c4241bfba4c7244770ba7b2ea4f7df041bbc28498e08a8f9",
+        "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+        "stage_a_ticks": 4205709,
+        "result_sha256": "c7afe32a538c1168523a664f67ed1f32f394f8ea7f537e92dbc6c590f2e64cf5",
+        "report_path": "research/delta/research/DELTA_R037_DH05_BOUNDARY_PROBE_PARITY_CHECKPOINT_09C.md",
+        "report_commit": "b838f618aab52a9452b707681480e69a5244d7bf",
+        "manifest_path": "research/delta/reference/DELTA_R037_DH05_BOUNDARY_PROBE_CHECKPOINT_09C.json",
+        "manifest_commit": "e01e1c7c0749767e6d9cd4076efadedec02c88c0",
+        "workbook_id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+        "workbook_tab": "74 R037 DH05 Boundary QA",
+        "workbook_range": "A1:H17",
+        "boundary_hypothesis": "SYMMETRIC_TWO_BAR_CONFIRMED_M5_SWING",
+        "probe_semantics": "REPEATED_CAUSAL_SAME_BOUNDARY_PREFAILURE_ATTEMPT_LEDGER",
+        "probe_target_total": 40190,
+        "probe_abs_error": 626,
+        "probe_abs_error_pct": 1.557601393381438,
+        "qualified_target_total": 4592,
+        "qualified_abs_error": 383,
+        "qualified_abs_error_pct": 8.340592334494774,
+        "parity_complete": false,
+        "decision": "FREEZE_BOUNDARY_PROBE_HYPOTHESIS_AND_CONTINUE_ACCEPTANCE_FAILURE_REENTRY_SEMANTICS",
+        "next_unit": "R037_DH05_ACCEPTANCE_FAILURE_REENTRY_SEMANTICS_PARITY_RECONSTRUCTION",
+        "integrated_r037_replay_started": false,
+        "sorb_status": "BLOCKED_UNTIL_R032_PARENT_PARITY",
+        "august_2026": "SEALED",
+        "mql5_authorized": false
       }
     }
   },
