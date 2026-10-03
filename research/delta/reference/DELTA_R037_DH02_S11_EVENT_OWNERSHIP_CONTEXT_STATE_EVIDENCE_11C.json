@@ -1,0 +1,82 @@
+{
+  "schema": "delta-r037-dh02-s11-event-ownership-context-state-evidence-11c-v1",
+  "unit": "R037_DH02_S11_EVENT_OWNERSHIP_AND_CONTEXT_STATE_PARITY_RECONSTRUCTION",
+  "parent_checkpoint": "R037_DH02_S11_TICK_PERSISTENCE_CONTEXT_CHECKPOINT_11B",
+  "vector_fingerprint": "50d1bb2e656e",
+  "historical_target": {
+    "trades": 75,
+    "raw_positive_wins": 41,
+    "gross_profit": 9.39,
+    "gross_loss": -17.6,
+    "net_profit": -8.21
+  },
+  "control_11b": {
+    "profile": "CONTROL_NEXT_TICK_DECISION_CONTEXT",
+    "signals": 106,
+    "trades": 106,
+    "raw_positive_wins": 42,
+    "gross_profit": 7.8,
+    "gross_loss": -35.1,
+    "net_profit": -27.3,
+    "breaks": 278,
+    "accepted": 276,
+    "retests": 236,
+    "failed": 130,
+    "expired": 42,
+    "context_vetoes": 86547,
+    "signal_sha256": "803fc20c55ed1d7f30356f2610392c12e6b43544f7f512bdd347cead69901dab"
+  },
+  "source_grounding": {
+    "dh02_state_grammar": [
+      "ARMED requires a causally known eligible boundary and parent context that permits breakout research.",
+      "BROKEN follows only after an armed boundary receives a completed-bar directional break.",
+      "ENTRY_ELIGIBLE still requires context rules to remain valid.",
+      "One boundary plus one original break direction defines one event; repeated ticks do not create duplicate events."
+    ],
+    "dh01_context": [
+      "CONFLICT_CHOP is a categorical state where direction signs and efficiencies conflict without a clear parent/pullback relationship.",
+      "Lower-timeframe disagreement is descriptive and not automatically disqualifying.",
+      "All context inputs are causal completed-bar values."
+    ],
+    "provenance_gap": "The historical producer bytes are unavailable, so exact placement of conflict-only veto inside ARMED/boundary ownership is not preserved.",
+    "numeric_threshold_retuning_allowed": false
+  },
+  "closed_by_11a_11b": [
+    "dual-side versus single-global active event concurrency does not change the 11A signal population",
+    "one/two/three confirming ticks do not explain the 31-trade excess",
+    "simple continuous conflict invalidation after break does not change executable signal fingerprints"
+  ],
+  "diagnostic_profiles": [
+    {
+      "name": "CONTROL_BREAK_REBREAK_CONTEXT",
+      "boundary_reveal_requires_nonconflict": false,
+      "prebreak_conflict_consumes_boundary": false,
+      "explanation": "11B next-tick control; context veto only at break/rebreak decisions."
+    },
+    {
+      "name": "BOUNDARY_REVEAL_ELIGIBILITY",
+      "boundary_reveal_requires_nonconflict": true,
+      "prebreak_conflict_consumes_boundary": false,
+      "explanation": "A newly causally confirmed swing becomes an eligible/armed boundary only if parent context permits breakout research at reveal."
+    },
+    {
+      "name": "PREBREAK_DISARM_ON_CONFLICT",
+      "boundary_reveal_requires_nonconflict": false,
+      "prebreak_conflict_consumes_boundary": true,
+      "explanation": "A known boundary is initially eligible, but a later CONFLICT_CHOP transition before break disarms/consumes that boundary until a new swing boundary is revealed."
+    },
+    {
+      "name": "REVEAL_ELIGIBILITY_PLUS_PREBREAK_DISARM",
+      "boundary_reveal_requires_nonconflict": true,
+      "prebreak_conflict_consumes_boundary": true,
+      "explanation": "Boundary must be context-eligible at reveal and remains armed only while parent context continues to permit breakout research before break."
+    }
+  ],
+  "selection_rule": "Carry forward only a source-grounded state placement that materially reduces the 31-trade excess and gross-loss excess without a compensating collapse in raw-positive winners; exact historical truth is not claimed from same-sample fit alone.",
+  "next_if_localized": "R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_AND_REARM_PARITY_FINGERPRINT",
+  "canonical_source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "august_2026": "SEALED",
+  "sorb_integrated_replay_started": false,
+  "mql5_authorized": false
+}
