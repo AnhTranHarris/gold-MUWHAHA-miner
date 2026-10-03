@@ -1,0 +1,100 @@
+{
+  "schema": "delta-r037-dh02-s11-cleanroom-parity-evidence-11a-v1",
+  "unit": "R037_DH02_S11_CLEANROOM_PARITY_RECONSTRUCTION",
+  "vector": {
+    "id": "DH02-S11",
+    "family": "DH-02",
+    "type": "SPACE_FILL",
+    "seed": 84,
+    "coverage_order": 11,
+    "tier": "CORE",
+    "fingerprint": "50d1bb2e656e",
+    "params": {
+      "acceptance_dwell": "tick persistence",
+      "boundary_source": "M5 swing",
+      "break_tf": "S1",
+      "breaknorm_min": 0.2467,
+      "failure_acceptance": "tick persistence",
+      "max_event_age_s": 107.701,
+      "max_retest_age_s": 84.8787,
+      "parent_context": "conflict-only veto",
+      "penetration_buffer_atr": 0.1172,
+      "rebreak_disp_atr": 0.2246,
+      "rebreak_eff_min": 0.4903,
+      "rebreak_tf": "S5",
+      "retest_halfwidth_atr": 0.3249
+    }
+  },
+  "execution_fixture": {
+    "signed_efficiency_lookback_fast_completed_bars": 4,
+    "atr_period": 14,
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "stage_a_window_start_utc": "2026-01-01T00:00:00Z",
+    "stage_a_window_end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "stage_a_ticks": 4205709,
+    "canonical_january_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+  },
+  "historical_standalone_target": {
+    "trades": 75,
+    "raw_positive_wins": 41,
+    "win_rate_pct": 54.666667,
+    "gross_profit": 9.39,
+    "gross_loss": -17.6,
+    "net_profit": -8.21,
+    "expectancy": -0.109467,
+    "activity_retention_pct": 0.446402
+  },
+  "r032_metadata": {
+    "signal_fixture_sha_prefix": "e335b699",
+    "p75_c00_specialist_entries": 1947,
+    "p75_c01_plus_s11_specialist_entries": 2012,
+    "p75_incremental_specialist_entries_vs_c00": 65,
+    "p75_c00_trades": 13779,
+    "p75_c01_trades": 13825,
+    "p75_incremental_trades_vs_c00": 46,
+    "p75_c00_wins": 6286,
+    "p75_c01_wins": 6307,
+    "p75_incremental_wins_vs_c00": 21,
+    "p75_c00_net": -2826.15,
+    "p75_c01_net": -2836.26,
+    "p75_incremental_net_vs_c00": -10.11
+  },
+  "source_contract": {
+    "dh02_whitepaper_id": "18KpLADXCt-MlIQgZ4j6papHdE7SUtrl8kVTbn0x1XNc",
+    "dh02_whitepaper_revision": "ANLCKQkiXDju6u5gdennw6-mx8ZF8U6_MxmNmR25iQDJIrglOZEDdEtAIToAeMR8qYpjwnevtHUXX9kjvLwKSOAYQyfF9nhubhz5y7a1PGc",
+    "dh01_whitepaper_id": "1WrDPUavWb-bbv7gmxnnlEAFjT1NA9wYbPAwl-ayREAw",
+    "dh01_whitepaper_revision": "ANLCKQmUCYgHy3wsuHUAEysfr3XAK14Z5Tv7Ufmn9lwjZkz_kSJ8IOV2ki7WTaG-xVAdeKXZ3WrerLHZSN8OZ7k93cx6jhk0lT2BVHjDDhs",
+    "r005_specialists_historical_sha256": "fe1ccb8112f5bf37c83e7ce9e9dd82f782397a7710029716a61c159e4005afe0",
+    "r005_specialists_source_bytes_recovered": false,
+    "dh02_results_sha256": "4147397ec47a78a9af8478771d5279f3419929867d1b38bdb1650ba75161479f"
+  },
+  "frozen_reconstructible_semantics": [
+    "M5 causal swing boundary; swing confirmation width 2 inherited from fixed DH01-A02 context",
+    "completed S1 breakout observation",
+    "BreakNorm = directional completed S1 close displacement beyond frozen L / ATR_S15 known at break",
+    "frozen event ATR at break",
+    "retest zone half-width = 0.3249 * frozen ATR_S15",
+    "penetration buffer = 0.1172 * frozen ATR_S15",
+    "completed S5 rebreak confirmation",
+    "RebreakDistance from frozen L normalized by frozen ATR_S15",
+    "SignedEfficiency S5 uses four completed bars per R005-EXEC-FIXTURE-01",
+    "one boundary + one original break direction = one event; repeated ticks do not create duplicate events",
+    "R9 downstream lifecycle remains frozen"
+  ],
+  "bounded_ambiguity_profiles": [
+    "DUAL_SIDE_EVENT_NO_CONTEXT_DIAGNOSTIC",
+    "DUAL_SIDE_EVENT_CONFLICT_ONLY_VETO",
+    "SINGLE_GLOBAL_EVENT_CONFLICT_ONLY_VETO"
+  ],
+  "forbidden": [
+    "numeric vector retuning",
+    "August access",
+    "SORB integration",
+    "mature exit optimization",
+    "MQL5",
+    "selecting a non-source-grounded threshold only because it matches 75 trades"
+  ],
+  "next_if_full_parity_false": "R037_DH02_S11_TICK_PERSISTENCE_AND_CONTEXT_SEMANTICS_PARITY_FINGERPRINT",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
