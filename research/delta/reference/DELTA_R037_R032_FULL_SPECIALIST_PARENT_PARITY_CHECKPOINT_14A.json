@@ -1,0 +1,148 @@
+{
+  "schema": "delta-r037-r032-full-specialist-parent-parity-checkpoint-14a-v1",
+  "status": "COMPLETE_SCHEDULER_LOCALIZATION_FULL_PARENT_PARITY_NOT_ACHIEVED",
+  "unit": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
+  "parent_checkpoint": "R037_DH03_S06_SIGNAL_GENERATOR_PROVENANCE_DECISION_CHECKPOINT_13H",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "producer_commit": "07734bf76b6062e3840e8e6ad3b0fc27dca63870",
+  "producer_blob_sha": "f100e5274466def8fc5aebf1a994c513d80ed3c3",
+  "producer_file_sha256": "5a409f0f9b0b32b6c557574c06171baab47f19c8b4668392f74338a26e04666e",
+  "official_runtime_sha256": "900ab0dcc0fd56fe58abb73d97a8f0fefb7804bf9ad05d9e8fc8850f5eba0eed",
+  "runtime_seconds": 27.819,
+  "backbone_control": {
+    "trades": 12504,
+    "raw_positive_wins": 5788,
+    "official_wins": 5723,
+    "gross_profit": 1225.76,
+    "gross_loss": -3797.07,
+    "net_profit": -2571.31,
+    "specialist_entries": 0
+  },
+  "signal_fingerprints": {
+    "DH03_S06": 1586,
+    "DH05_S06": 651,
+    "DH02_S11": 103,
+    "DH02_S08": 104
+  },
+  "ranking": [
+    "BACKBONE_FIRST_FLAT_ONLY_CONFIG_ORDER",
+    "SPECIALIST_FIRST_FLAT_ONLY_CONFIG_ORDER"
+  ],
+  "historical_ownership_increments": {
+    "c01_s11_incremental_specialist_entries": 65,
+    "c02_s08_incremental_specialist_entries": 71,
+    "c03_increment_vs_c00": 136
+  },
+  "leading": {
+    "scheduler": "BACKBONE_FIRST_FLAT_ONLY_CONFIG_ORDER",
+    "ownership_increments": {
+      "c01_s11_incremental_specialist_entries": 95,
+      "c02_s08_incremental_specialist_entries": 96,
+      "c03_increment_vs_c00": 190
+    },
+    "ownership_increment_abs_error_sum": 109,
+    "configs": {
+      "C00": {
+        "actual": {
+          "trades": 13894,
+          "official_wins": 6303,
+          "net_profit": -2903.62,
+          "specialist_entries": 1928,
+          "specialist_net": -440,
+          "ordinary_entries": 11966
+        },
+        "target": {
+          "trades": 13779,
+          "official_wins": 6286,
+          "net_profit": -2826.15,
+          "specialist_entries": 1947,
+          "specialist_net": -367.51
+        }
+      },
+      "C01": {
+        "actual": {
+          "trades": 13964,
+          "official_wins": 6329,
+          "net_profit": -2923.15,
+          "specialist_entries": 2023,
+          "specialist_net": -463.61,
+          "ordinary_entries": 11941
+        },
+        "target": {
+          "trades": 13825,
+          "official_wins": 6307,
+          "net_profit": -2836.26,
+          "specialist_entries": 2012,
+          "specialist_net": -376.31
+        }
+      },
+      "C02": {
+        "actual": {
+          "trades": 13965,
+          "official_wins": 6323,
+          "net_profit": -2925.95,
+          "specialist_entries": 2024,
+          "specialist_net": -468.37,
+          "ordinary_entries": 11941
+        },
+        "target": {
+          "trades": 13822,
+          "official_wins": 6310,
+          "net_profit": -2832.05,
+          "specialist_entries": 2018,
+          "specialist_net": -374.75
+        }
+      },
+      "C03": {
+        "actual": {
+          "trades": 14034,
+          "official_wins": 6349,
+          "net_profit": -2944.94,
+          "specialist_entries": 2118,
+          "specialist_net": -491.44,
+          "ordinary_entries": 11916
+        },
+        "target": {
+          "trades": 13868,
+          "official_wins": 6331,
+          "net_profit": -2842.16,
+          "specialist_entries": 2083,
+          "specialist_net": -383.55
+        }
+      }
+    },
+    "source_entries_c03": {
+      "DH03_S06": 1329,
+      "DH05_S06": 598,
+      "DH02_S11": 95,
+      "DH02_S08": 96
+    }
+  },
+  "alternate": {
+    "scheduler": "SPECIALIST_FIRST_FLAT_ONLY_CONFIG_ORDER",
+    "c03": {
+      "trades": 14034,
+      "official_wins": 6354,
+      "net_profit": -2939.38,
+      "specialist_entries": 2166,
+      "specialist_net": -498.72
+    },
+    "ownership_increments": {
+      "c01_s11_incremental_specialist_entries": 94,
+      "c02_s08_incremental_specialist_entries": 97,
+      "c03_increment_vs_c00": 190
+    }
+  },
+  "finding": {
+    "exact_historical_parent_parity": false,
+    "scheduler_localized": "BACKBONE_FIRST_FLAT_ONLY_CONFIG_ORDER",
+    "residual_localization": "C00 DH03+DH05 specialist ownership is close (-19 entries), while provenance-limited S11/S08 incremental ownership materially over-admits (+30/+25 respectively); total ordinary-parent activity remains ~+130 high across configurations, indicating residual specialist timing/ownership provenance rather than backbone drift.",
+    "next": "R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_AND_SORB_READINESS_DECISION"
+  },
+  "sorb_integrated_replay_started": false,
+  "mql5_authorized": false
+}
