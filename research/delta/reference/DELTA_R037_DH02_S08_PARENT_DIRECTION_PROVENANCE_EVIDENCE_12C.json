@@ -1,0 +1,92 @@
+{
+  "schema": "delta-r037-dh02-s08-parent-direction-provenance-evidence-12c-v1",
+  "unit": "R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION",
+  "parent_checkpoint": "R037_DH02_S08_CONTEXT_PLACEMENT_CHECKPOINT_12B",
+  "vector_fingerprint": "7c70b5304ff7",
+  "historical_target": {
+    "trades": 75,
+    "raw_positive_wins": 42,
+    "gross_profit": 9.93,
+    "gross_loss": -18.82,
+    "net_profit": -8.89,
+    "max_balance_drawdown": 9.66
+  },
+  "preserved_sources": {
+    "dh02_whitepaper": {
+      "parent_context": "M15, M30, H1 via DH-01",
+      "entry_rule": "re-break confirms and context rules remain valid",
+      "exact_parent_aggregation_algorithm_preserved": false
+    },
+    "dh01_whitepaper": {
+      "context_role": "multi-timeframe context infrastructure",
+      "caution": "lower-timeframe disagreement is descriptive, not automatically disqualifying",
+      "exact_dh02_s08_parent_veto_algorithm_preserved": false
+    },
+    "r004_prereg": {
+      "parent_context_factor": "causal parent context",
+      "exact_dh02_s08_parent_veto_algorithm_preserved": false
+    },
+    "immutable_s08": {
+      "parent_context": "DH-01 parent direction",
+      "vector_fingerprint": "7c70b5304ff7",
+      "exact_parent_aggregation_algorithm_preserved": false
+    },
+    "historical_r005_specialist_source_bytes_recovered": false
+  },
+  "checkpoint_12a": {
+    "control_profile": "RAW_PARENT_DIRECTION_CONTINUOUS_DWELL",
+    "actual": {
+      "trades": 105,
+      "raw_positive_wins": 37,
+      "gross_profit": 8.75,
+      "gross_loss": -37.73,
+      "net_profit": -28.98
+    },
+    "conclusion": "30 excess trades and 5 missing historical winners"
+  },
+  "checkpoint_12b": {
+    "profiles": {
+      "CONTROL_BREAK_AND_REBREAK": {
+        "trades": 105,
+        "wins": 37,
+        "net": -28.98
+      },
+      "BREAK_ONLY": {
+        "trades": 107,
+        "wins": 37,
+        "net": -30.05
+      },
+      "REBREAK_ONLY": {
+        "trades": 104,
+        "wins": 37,
+        "net": -28.46
+      },
+      "CONTINUOUS_ACTIVE_CONTEXT": {
+        "trades": 105,
+        "wins": 37,
+        "net": -28.98
+      }
+    },
+    "conclusion": "All bounded placements retain 37 winners; placement does not reconstruct missing winner population."
+  },
+  "r032_ownership_fingerprint": {
+    "incremental_s08_owned_entries": 71,
+    "incremental_s08_owned_entries_with_s11_present": 71
+  },
+  "provenance_conclusion": {
+    "independent_exact_parent_direction_algorithm_found": false,
+    "context_placement_branch_exhausted": true,
+    "preserve_general_semantic": "DH02-S08 entry requires causally valid DH01 parent context at rebreak/entry eligibility.",
+    "source_compatible_surrogate": "REBREAK_ONLY_RAW_PARENT_DIRECTION_CONTINUOUS_DWELL",
+    "promote_surrogate_as_historical_truth": false,
+    "claim_exact_historical_s08_parity": false,
+    "run_more_same_sample_parent_context_recuts": false,
+    "s08_stream_disposition": "PROVENANCE_LIMITED_SOURCE_COMPATIBLE_REBREAK_CONTEXT_NON_PROMOTING"
+  },
+  "decision_rule": "Do not infer an unpreserved historical DH01 parent-direction aggregation/veto algorithm from Stage-A fit. Preserve the explicit entry-context requirement and separately label the source-compatible rebreak-time surrogate; close S08 same-sample context recuts.",
+  "proposed_next": "R037_DH03_S06_CLEANROOM_PARITY_RECONSTRUCTION",
+  "canonical_source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "august_2026": "SEALED",
+  "sorb_integrated_replay_started": false,
+  "mql5_authorized": false
+}
