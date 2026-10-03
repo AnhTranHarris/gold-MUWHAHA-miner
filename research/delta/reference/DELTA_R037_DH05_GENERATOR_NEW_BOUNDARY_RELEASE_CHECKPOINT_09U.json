@@ -1,0 +1,108 @@
+{
+  "schema": "delta-r037-dh05-generator-new-boundary-release-checkpoint-09u-v1",
+  "status": "COMPLETE_NEGATIVE_QA_NEW_BOUNDARY_RELEASE_UNDERPRODUCES",
+  "unit": "R037_DH05_GENERATOR_OWNERSHIP_NEW_BOUNDARY_RELEASE_PARITY_RECONSTRUCTION",
+  "parent": "R037_DH05_CONDITIONAL_FAILURE_CLOCK_CHALLENGER_CHECKPOINT_09T",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "producer_path": "research/delta/experiments/delta_r037_dh05_generator_new_boundary_release_parity.py",
+  "producer_commit": "8c8f007bdf5c6b4247d955a31f0e3abc7ee3fcb0",
+  "producer_blob_sha": "4a586ecd6b507763662ec2c0a8e95e37927fe592",
+  "producer_file_sha256": "9f623f26e577d2941d21023176451b2e3d60cfb2d9223736649c7c158c427a43",
+  "runtime_result_sha256": "2622eafae5bda6037283b2eaaf63acc9f177f0899100f1c4bfa87df59dc0c808",
+  "runtime": {
+    "elapsed_seconds": 19.44,
+    "max_rss_kb": 698960,
+    "exit_code": 0,
+    "timeout_seconds": 120
+  },
+  "numeric_vector_retune": false,
+  "august_accessed": false,
+  "control_serial_postqual": {
+    "total_abs_error": 978,
+    "stage_abs_error": {
+      "probe": 642,
+      "qualified": 55,
+      "accepted": 24,
+      "failure": 63,
+      "reentry": 34,
+      "reclaim": 34,
+      "reversal": 63,
+      "signal": 63
+    }
+  },
+  "profiles": {
+    "NEW_ANY_BOUNDARY": {
+      "total_abs_error": 22360,
+      "trade_count_abs_error": 899,
+      "max_concurrent_failure_episodes": 2,
+      "episode_overflow": 0,
+      "signal_overflow": 0,
+      "releases": 1649,
+      "signals": {
+        "A03": 94,
+        "S05": 6,
+        "S06": 213,
+        "S09": 10,
+        "S10": 93,
+        "S16": 7
+      },
+      "trades": {
+        "A03": 94,
+        "S05": 6,
+        "S06": 212,
+        "S09": 10,
+        "S10": 93,
+        "S16": 7
+      },
+      "s06": {
+        "wins": 89,
+        "net_usd": -50.99
+      }
+    },
+    "NEW_SAME_SIDE_BOUNDARY": {
+      "total_abs_error": 25547,
+      "trade_count_abs_error": 962,
+      "max_concurrent_failure_episodes": 1,
+      "episode_overflow": 0,
+      "signal_overflow": 0,
+      "releases": 1371,
+      "signals": {
+        "A03": 82,
+        "S05": 4,
+        "S06": 181,
+        "S09": 8,
+        "S10": 77,
+        "S16": 7
+      }
+    },
+    "NEW_OPPOSITE_SIDE_BOUNDARY": {
+      "total_abs_error": 26635,
+      "trade_count_abs_error": 1015,
+      "max_concurrent_failure_episodes": 2,
+      "episode_overflow": 0,
+      "signal_overflow": 0,
+      "releases": 1267,
+      "signals": {
+        "A03": 72,
+        "S05": 6,
+        "S06": 144,
+        "S09": 8,
+        "S10": 70,
+        "S16": 7
+      }
+    }
+  },
+  "finding": {
+    "full_failure_candidate_release_09h": "too early / massive overproduction",
+    "reentry_release_09i": "too early / overproduction",
+    "reclaim_release_09i": "near control but total parity worse",
+    "new_boundary_release_09u": "too late / severe underproduction",
+    "localization": "Generator release timing is bracketed. The remaining plausible interval is after RECLAIM but before final REVERSAL/SIGNAL completion, using a causal reversal-clock transition rather than a wall-clock or new-boundary wait."
+  },
+  "decision": "REJECT_ALL_NEW_BOUNDARY_RELEASE_PROFILES_KEEP_SERIAL_POSTQUAL_CONTROL",
+  "parity_complete": false,
+  "promoted": false,
+  "next_unit": "R037_DH05_GENERATOR_RELEASE_ON_REVERSAL_CLOCK_TRANSITION_PARITY_RECONSTRUCTION"
+}
