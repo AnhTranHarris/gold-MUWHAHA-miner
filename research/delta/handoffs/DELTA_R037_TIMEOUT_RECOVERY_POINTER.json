@@ -11,63 +11,41 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_DH03_S06_RECLAIM_LEVEL_CONSUMPTION_CHECKPOINT_13G",
-    "current_phase": "R037_DH03_S06_SIGNAL_GENERATOR_RESIDUAL_PROVENANCE_DECISION_NEXT",
-    "first_incomplete_unit": "R037_DH03_S06_SIGNAL_GENERATOR_RESIDUAL_PROVENANCE_DECISION",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH03_S06_RECLAIM_CONSUMPTION_CHECKPOINT_13G_MANIFEST.json",
-    "current_state_commit": "d782b5e936af319942a86b003426096dda826c0f",
-    "current_state_ci_run": 37160112371,
+    "last_verified_durable_unit": "R037_DH03_S06_SIGNAL_GENERATOR_PROVENANCE_DECISION_CHECKPOINT_13H",
+    "current_phase": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION_NEXT",
+    "first_incomplete_unit": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH03_S06_SIGNAL_GENERATOR_PROVENANCE_DECISION_13H_MANIFEST.json",
+    "current_state_commit": "1afb0e3020e267d4aadde45e42f219b90f2eeb7b",
+    "current_state_ci_run": 37160368920,
     "current_state_ci_conclusion": "success"
   },
   "in_flight_unit": {
-    "unit": "R037_DH03_S06_SIGNAL_GENERATOR_RESIDUAL_PROVENANCE_DECISION",
-    "status": "POSTCOMPUTE_DURABILITY_COMPLETE_CURRENT_STATE_ADVANCE_PENDING",
+    "unit": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
+    "status": "PRODUCER_COMMITTED",
+    "phase_rank": 2,
+    "parent_durable_unit": "R037_DH03_S06_SIGNAL_GENERATOR_PROVENANCE_DECISION_CHECKPOINT_13H",
     "committed_artifacts": [
       {
-        "role": "evidence",
-        "path": "research/delta/reference/DELTA_R037_DH03_S06_SIGNAL_GENERATOR_PROVENANCE_EVIDENCE_13H.json",
-        "commit": "3e11c45669b1a85740c632b09f03b2158aa27107",
-        "blob_sha": "8a949bd1b9b3f2e225e6549b50062281f0712531"
+        "path": "research/delta/reference/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_EVIDENCE_14A.json",
+        "commit": "eb664c687ad772117e733b68cb73a6b241ef87d6",
+        "blob_sha": "798f165f6594d1302bc8add8decfdffe17fb16e8",
+        "role": "prereg"
       },
       {
-        "role": "producer",
-        "path": "research/delta/experiments/delta_r037_dh03_s06_signal_generator_provenance_decision.py",
-        "commit": "37c5d3eb002241a8081e166b252ccb126268dc2f",
-        "blob_sha": "c9501150ce67c533636999e83b702295f6b8c1ba"
-      },
-      {
-        "role": "result",
-        "path": "research/delta/reference/DELTA_R037_DH03_S06_SIGNAL_GENERATOR_PROVENANCE_DECISION_13H.json",
-        "commit": "aaf794aaa2e2a4622d4b843500ab924191ba671c",
-        "blob_sha": "ae37374cf1a73fc70c6a7d36309bf514f6a8efff",
-        "official_result_sha256": "ea7945a0e08b4a4faeb5912752a4197bb0beadeac2ba221877e26b0f712f2188"
-      },
-      {
-        "role": "report",
-        "path": "research/delta/research/DELTA_R037_DH03_S06_SIGNAL_GENERATOR_PROVENANCE_DECISION_13H.md",
-        "commit": "de4a4dee703bb97bb9439c71662e7aab0947d79a",
-        "blob_sha": "529c6d824369a71cec8004b4384187957d2e69c7"
-      },
-      {
-        "role": "manifest",
-        "path": "research/delta/artifacts/DELTA_R037_DH03_S06_SIGNAL_GENERATOR_PROVENANCE_DECISION_13H_MANIFEST.json",
-        "commit": "f082c636fa577006b8cffff38e2ac59121eb5baf",
-        "blob_sha": "efff8266c6bdfd7c112a38dc3ec30604da751923"
-      },
-      {
-        "role": "workbook_readback",
-        "drive_spreadsheet_id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
-        "tab": "75 R037 DH05 Episode QA",
-        "range": "A485:H494"
+        "path": "research/delta/experiments/delta_r037_r032_full_specialist_parent_parity.py",
+        "commit": "07734bf76b6062e3840e8e6ad3b0fc27dca63870",
+        "blob_sha": "f100e5274466def8fc5aebf1a994c513d80ed3c3",
+        "role": "producer"
       }
     ],
-    "next_action": "Advance CURRENT_STATE last to durable 13H, require green rebuild gate, then start only R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION."
+    "next_action": "Run the already-committed 14A producer once from the exact committed blob; if a result already exists, verify it and resume from the next missing durability phase. Do not rerun 13H."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
-    "Read this pointer.",
-    "Compare delta branch HEAD with the durable current-state commit.",
-    "If HEAD contains only committed prereg/evidence for the first incomplete unit, resume from the next missing durability step; do not rerun completed steps.",
+    "Read research/delta/CURRENT_INFLIGHT.json second.",
+    "Read this pointer third; CI requires it to agree with the two authoritative cursors.",
+    "Compare delta branch HEAD with the latest durable/current in-flight commits.",
+    "If the in-flight phase already references a committed artifact, verify it and resume from the next missing phase; do not recreate or rerun it solely because a chat message timed out.",
     "Official compute is valid only from producer bytes committed before execution and exact blob-verified locally.",
     "Persist result, report, workbook readback, full manifest, then advance CURRENT_STATE last.",
     "Require DELTA rebuild artifact gate success before calling the unit durable."
@@ -90,7 +68,8 @@
       "If CURRENT_STATE or HEAD advances beyond the state used to prepare a write, abandon that write and resume from the newer authoritative cursor.",
       "Only one reconciled checkpoint may advance CURRENT_STATE for a bounded scientific unit; parallel diagnostics remain supplementary/non-promoting unless explicitly incorporated by the durable manifest.",
       "Never rerun an official compute solely because ChatGPT message delivery timed out. Verify committed result/report/workbook/manifest/CI first."
-    ]
+    ],
+    "pointer_consistency_gate": "DELTA_TIMEOUT_RECOVERY_GUARD.py must reject mismatch among CURRENT_STATE.json, CURRENT_INFLIGHT.json, and this timeout-recovery pointer."
   },
   "constraints": {
     "august_2026": "SEALED",
