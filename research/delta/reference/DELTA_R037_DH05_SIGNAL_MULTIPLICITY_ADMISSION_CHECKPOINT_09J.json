@@ -1,0 +1,135 @@
+{
+  "schema": "delta-r037-dh05-signal-multiplicity-executable-admission-checkpoint-09j-v1",
+  "unit": "R037_DH05_SIGNAL_MULTIPLICITY_AND_EXECUTABLE_ADMISSION_PARITY_RECONSTRUCTION",
+  "status": "COMPLETE_BOUNDED_QA_WEAK_MULTIPLICITY_CLUE_NO_CARRY_FORWARD",
+  "parent": "R037_DH05_PARTIAL_RELEASE_POINT_CHECKPOINT_09I",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_window": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "producer_path": "research/delta/experiments/delta_r037_dh05_signal_multiplicity_admission_parity.py",
+  "producer_commit": "dc92e35e81714b2d2ff9f5b85703581a2257908a",
+  "producer_blob_sha": "f17a229a2e995d0a928db8899304bbeeb71ffd84",
+  "producer_file_sha256": "1224830d3d147ec97a14d79bb1e8c16199a3c78b0b5885e0f7c0b38a871b6240",
+  "official_output_sha256": "8b4dc71e9c4e9a9266b98067d0e0f44112bdb5775ade070d4c4cdb4b3b873333",
+  "runtime": {
+    "wall_seconds": 20.02,
+    "max_rss_kb": 700140,
+    "external_timeout_seconds": 120
+  },
+  "controls": {
+    "checkpoint_09e_stage_error_exact": true,
+    "checkpoint_09f_postqual_funnel_exact": true,
+    "postqual_generator_signals": {
+      "A03": 192,
+      "S05": 9,
+      "S06": 651,
+      "S09": 11,
+      "S10": 227,
+      "S16": 7
+    },
+    "signal_buffer_overflow": 0
+  },
+  "frozen_semantics": {
+    "boundary": "09C symmetric two-bar confirmed M5 swing",
+    "probe": "09C repeated same-boundary pre-failure attempt ledger",
+    "probe_clock": "09E per-attempt lifecycle clock",
+    "acceptance": "09F post-qualification completed acceptance-bar chronology",
+    "failure_clock": "starts at FAILURE_CANDIDATE",
+    "serial_episode_ownership": "09I retained",
+    "numeric_vector_retune": false
+  },
+  "admission_fixture": {
+    "one_position_at_a_time": true,
+    "buy_entry": "Ask",
+    "buy_exit": "Bid",
+    "sell_entry": "Bid",
+    "sell_exit": "Ask",
+    "initial_stop_usd": 0.3,
+    "trail_activation_usd": 0.1,
+    "trail_distance_usd": 0.03,
+    "max_hold_seconds": 30,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01,
+    "tested_exit_tick_latch": true
+  },
+  "tested_signal_rearms": [
+    "ONE_SHOT_POST_QUAL",
+    "REVERSAL_CONDITION_TOGGLE_REARM",
+    "RECLAIM_LOSS_REGAIN_REARM",
+    "BOUNDARY_RECYCLE_REARM"
+  ],
+  "control_one_shot": {
+    "aggregate_trade_count_abs_error": 336,
+    "S06": {
+      "generator_signals": 651,
+      "closed_trades": 649,
+      "official_wins": 274,
+      "net_usd": -150.35,
+      "target_generator_signals": 672,
+      "target_trades": 615,
+      "target_wins": 307,
+      "target_net_usd": -101.08
+    }
+  },
+  "leading_weak_clue": {
+    "profile": "BOUNDARY_RECYCLE_REARM__ONE_POSITION_ONLY",
+    "aggregate_trade_count_abs_error": 324,
+    "S06": {
+      "generator_signals": 648,
+      "unique_signal_episodes": 575,
+      "repeated_signals": 73,
+      "closed_trades": 647,
+      "official_wins": 275,
+      "net_usd": -149.42,
+      "target_generator_signals": 672,
+      "target_trades": 615,
+      "target_wins": 307,
+      "target_net_usd": -101.08
+    },
+    "six_vector": {
+      "A03": {
+        "signals": 203,
+        "trades": 203,
+        "target_trades": 306
+      },
+      "S05": {
+        "signals": 9,
+        "trades": 9,
+        "target_trades": 51
+      },
+      "S06": {
+        "signals": 648,
+        "trades": 647,
+        "target_trades": 615
+      },
+      "S09": {
+        "signals": 11,
+        "trades": 11,
+        "target_trades": 119
+      },
+      "S10": {
+        "signals": 228,
+        "trades": 228,
+        "target_trades": 206
+      },
+      "S16": {
+        "signals": 7,
+        "trades": 7,
+        "target_trades": 24
+      }
+    },
+    "exit_tick_latch_changed_result": false
+  },
+  "rejected": {
+    "REVERSAL_CONDITION_TOGGLE_REARM": "severe overproduction; aggregate trade error 1457-1488",
+    "RECLAIM_LOSS_REGAIN_REARM": "material S06 overproduction; aggregate trade error 498-506",
+    "BOUNDARY_RECYCLE_REARM": "weak local improvement only; insufficient for carry-forward"
+  },
+  "decision": "NO_SIGNAL_MULTIPLICITY_RULE_FROZEN; PRESERVE_BOUNDARY_RECYCLE_AS_WEAK_DIAGNOSTIC_CLUE",
+  "parity_complete": false,
+  "integrated_r037_sorb_started": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "next_unit": "R037_DH05_POST_SIGNAL_EPISODE_PERSISTENCE_AND_INVALIDATION_PARITY_RECONSTRUCTION"
+}
