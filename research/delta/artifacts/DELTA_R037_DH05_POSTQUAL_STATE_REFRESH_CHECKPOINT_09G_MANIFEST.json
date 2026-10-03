@@ -1,0 +1,175 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH05_POSTQUAL_STATE_REFRESH_CHECKPOINT_09G",
+  "status": "VERIFIED_DURABLE_NEGATIVE_QA_ATR_REFRESH_REJECTED_POSTQUAL_CLUE_PRESERVED",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH05_EVENT_RESET_BOUNDARY_IDENTITY_CHECKPOINT_09F",
+  "hypothesis": "The lost probe coverage after post-qualification acceptance sequencing may be explained by an incorrect event M5 ATR snapshot refresh point during causal re-attempt or qualification.",
+  "falsification_condition": "ATR refresh variants fail to materially recover probe/qualification coverage while preserving the 09F acceptance/failure repair.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "R037 DH05 preserved six-vector parity fingerprints",
+    "reference_count": 6,
+    "minimum_count": 6,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity QA only."
+  },
+  "primary_metrics": {
+    "entry_quality": "Not optimized.",
+    "hold_persistence": "Not optimized.",
+    "economics": "No promotion claim.",
+    "gross_loss_drawdown": "Not an optimization target.",
+    "activity": "Eight-stage six-vector funnel fingerprint."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_postqual_state_refresh_parity.py",
+      "commit": "d31136a0d24b969aec902f77799b2b772499181a",
+      "blob_sha": "4135f21714c1a9a5181ffefd59422250f0aa10b9",
+      "file_sha256": "1aaa7f3bdfab5efc9447c0e451f4d4c3f6b134af4ad77d23275a5f4a6790d115"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "boundary_hypothesis": "09C_WIDTH2_M5_SWING",
+      "probe_clock": "09E_ATTEMPT_LIFECYCLE_CLOCK",
+      "post_qualification_acceptance_branch": true,
+      "tested_state_refresh": [
+        "REATTEMPT_ATR",
+        "QUALIFICATION_ATR",
+        "CURRENT_ATR_QUALIFY"
+      ],
+      "failure_clock": "START_AT_FAILURE_CANDIDATE"
+    },
+    "feature_order": [
+      "probe",
+      "qualified",
+      "accepted",
+      "failure",
+      "reentry",
+      "reclaim",
+      "reversal",
+      "signal"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "parity reconstruction only; no optimization split"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "external_timeout_seconds": 120,
+      "atomic_output_write": true,
+      "control_gate": "CONTROL_09E exact stage-error reproduction"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "Checkpoint-09F parent",
+      "path": "research/delta/reference/DELTA_R037_DH05_EVENT_RESET_BOUNDARY_IDENTITY_CHECKPOINT_09F.json"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "Stage-A P75 tick-rooted bars reconstructed causally inside committed producer"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH05_POSTQUAL_STATE_REFRESH_CHECKPOINT_09G.json",
+      "blob_sha": "9285b1ba60787f0073057be3f35529759e8a2751",
+      "official_runtime_output_sha256": "49c572e4ca1b0be8b93fe80bdcfbf9dcbcab856dec480884cfe2d49d4be432a6"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH05_POSTQUAL_STATE_REFRESH_CHECKPOINT_09G.md",
+      "blob_sha": "096697a649dc55f24b78837261bd0debca0421fc"
+    }
+  ],
+  "qa": [
+    "Canonical January source hash and 4,205,709 Stage-A ticks verified.",
+    "Committed producer blob matched local execution bytes before compute.",
+    "CONTROL_09E reproduced exactly.",
+    "POST_QUAL_BASE total error 978.",
+    "ATR-refresh variants total error 977-980; no meaningful probe recovery.",
+    "ATR snapshot timing rejected as the missing mechanism.",
+    "09F post-qualification acceptance chronology clue preserved only as diagnostic evidence.",
+    "No numeric vector retuning; August sealed; SORB blocked; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh05_postqual_state_refresh_parity.py",
+    "command": "python research/delta/experiments/delta_r037_dh05_postqual_state_refresh_parity.py --source <canonical_january_gzip> --output <runtime_json>",
+    "timing_semantics": "09E per-attempt probe clock; 09F post-qualification acceptance diagnostic; bounded ATR snapshot refresh variants.",
+    "expected_control_stage_abs_error": {
+      "probe": 525,
+      "qualified": 29,
+      "accepted": 157,
+      "failure": 170,
+      "reentry": 39,
+      "reclaim": 38,
+      "reversal": 53,
+      "signal": 53
+    }
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — parity reconstruction only",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "DELTA frozen semantics unchanged.",
+    "ownership_scheduler_spec": "No integrated R037 ownership replay.",
+    "session_dst_spec": "DELTA frozen semantics unchanged.",
+    "risk_spec": "Fixed 0.01 research semantics unchanged.",
+    "trade_count_parity_spec": "Blocked until full R032 specialist parity.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH05_EVENT_RESET_BOUNDARY_IDENTITY_CHECKPOINT_09F",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "74 R037 DH05 Boundary QA",
+      "range": "A63:H72"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": false,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH05_DECOUPLED_PROBE_GENERATOR_AND_FAILURE_EPISODE_PARITY_RECONSTRUCTION",
+  "github_commits": [
+    "d31136a0d24b969aec902f77799b2b772499181a",
+    "d2fd7718ea915aac97fca1a3d563f98dc26919f4",
+    "e0318800e8bffffaffca5d368b529a6c679cdc38"
+  ]
+}
