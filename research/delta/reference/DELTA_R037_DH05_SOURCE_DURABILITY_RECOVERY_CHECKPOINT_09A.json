@@ -1,0 +1,105 @@
+{
+  "schema": "delta-r037-dh05-source-durability-recovery-checkpoint-v1",
+  "status": "COMPLETE_QC_SOURCE_BYTES_NOT_RECOVERED_CLEANROOM_REBUILD_REQUIRED",
+  "unit": "R037_DH05_DIAGNOSTIC_SOURCE_DURABILITY_RECOVERY_CHECKPOINT_09A",
+  "salvaged_through": "R037_DH05_FAILURE_REENTRY_PERSISTENCE_CHECKPOINT_09",
+  "report_path": "research/delta/research/DELTA_R037_DH05_SOURCE_DURABILITY_RECOVERY_CHECKPOINT_09A.md",
+  "report_commit": "4e1afaf2d8b583207e1553fdd3e16fa3242b3723",
+  "recovery_checks": {
+    "github_recursive_tree": true,
+    "checkpoint_commit_file_lists": true,
+    "drive_historical_source_name_search": true,
+    "project_library_hash_and_name_search": true,
+    "mounted_runtime_cache_search": true
+  },
+  "source_recovery": {
+    "authoritative_bytes_found": false,
+    "prior_source_hashes_preserved": true,
+    "local_cleanroom_probe_reproduced_checkpoint03": false,
+    "local_probe_rejected": true
+  },
+  "parity_gate": {
+    "checkpoint03_neutral": {
+      "A03": 187,
+      "S05": 9,
+      "S06": 617,
+      "S09": 9,
+      "S10": 206,
+      "S16": 8
+    },
+    "checkpoint08": {
+      "onebar_m5": {
+        "A03": 187,
+        "S05": 9,
+        "S06": 617,
+        "S09": 9,
+        "S10": 206,
+        "S16": 8
+      },
+      "onebar_rev_atr": {
+        "A03": 258,
+        "S05": 14,
+        "S06": 691,
+        "S09": 41,
+        "S10": 251,
+        "S16": 14
+      },
+      "threebar_m5": {
+        "A03": 145,
+        "S05": 5,
+        "S06": 558,
+        "S09": 9,
+        "S10": 151,
+        "S16": 6
+      },
+      "threebar_rev_atr": {
+        "A03": 247,
+        "S05": 10,
+        "S06": 672,
+        "S09": 41,
+        "S10": 225,
+        "S16": 14
+      }
+    },
+    "checkpoint09": {
+      "neutral_current": {
+        "A03": 187,
+        "S05": 9,
+        "S06": 617,
+        "S09": 9,
+        "S10": 206,
+        "S16": 8
+      },
+      "neutral_wait_reentry": {
+        "A03": 282,
+        "S05": 54,
+        "S06": 653,
+        "S09": 11,
+        "S10": 317,
+        "S16": 22
+      },
+      "stage_current": {
+        "A03": 247,
+        "S05": 10,
+        "S06": 672,
+        "S09": 41,
+        "S10": 225,
+        "S16": 14
+      },
+      "stage_wait_reentry": {
+        "A03": 393,
+        "S05": 86,
+        "S06": 717,
+        "S09": 89,
+        "S10": 383,
+        "S16": 38
+      }
+    }
+  },
+  "next": "R037_DH05_DIAGNOSTIC_ENGINE_CLEANROOM_REBUILD_AND_CHECKPOINT03_08_09_PARITY",
+  "checkpoint10_after_gate": "R037_DH05_PARITY_SIGNAL_MULTIPLICITY_AND_EXECUTABLE_ADMISSION_DIAGNOSTIC",
+  "no_parameter_retune": true,
+  "sorb_integration": "BLOCKED",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
