@@ -11,6 +11,7 @@ or MQL5 logic.
 from __future__ import annotations
 
 import argparse
+import gzip
 import hashlib
 import json
 from dataclasses import dataclass
@@ -23,7 +24,7 @@ from numba import njit
 DAY_MS = 86_400_000
 TICK_RAW = 10
 PRICE_SCALE = 1000
-STAGE_A_END_MS = 1_768_737_600_000
+STAGE_A_END_MS = 1_768_737_600_000  # 2026-01-18T12:00:00Z exclusive
 US_DST_START_2026_MS = 1_772_953_200_000
 UK_DST_START_2026_MS = 1_774_746_000_000
 P75_POINTS = np.asarray([20, 20, 21, 21], dtype=np.int64)
@@ -125,6 +126,9 @@ def make_bars(t: np.ndarray, mid2: np.ndarray, tf_ms: int) -> dict[str, np.ndarr
     high = np.maximum.reduceat(mid2, starts).astype(np.int64)
     low = np.minimum.reduceat(mid2, starts).astype(np.int64)
     end_ms = ((bucket[starts] + 1) * int(tf_ms)).astype(np.int64)
+
+    # Completed-bar directional path is intentionally based on bar closes so the
+    # short-path efficiency can be calculated causally without tick-after-close data.
     return {"start":starts,"end":ends,"end_ms":end_ms,"open":open_,"high":high,"low":low,"close":close}
 
 
@@ -141,7 +145,7 @@ def atr14(bars: dict[str,np.ndarray]) -> np.ndarray:
 
 
 def confirmed_swing_events(m5: dict[str,np.ndarray], width: int = SWING_BARS) -> tuple[np.ndarray,np.ndarray,np.ndarray]:
-    """Symmetric swing rule, causally revealed after width right-hand bars complete."""
+    """Symmetric swing rule, causally revealed after `width` right-hand bars complete."""
     hi, lo, end = m5["high"], m5["low"], m5["end_ms"]
     reveal=[]; side=[]; level=[]
     for k in range(width, len(hi)-width):
@@ -171,23 +175,25 @@ def detect_vector(
     m5_end, m5_atr,
     s1_end, s1_open, s1_close, s1_atr,
     s5_end, s5_open, s5_close, s5_atr,
-    s15_end, s15_open, s15_close,
+    s15_end, s15_open, s15_close, s15_atr,
     acceptance_disp_atr, acceptance_tf_s,
     max_failure_ms, max_probe_ms, probe_exc_atr, reclaim_atr,
     rev_disp_atr, rev_eff_min, reversal_tf_s,
     eff_bars, rev_atr_mode, wait_reentry_clock,
 ):
+    # stages: 0 idle, 1 probe, 2 qualified, 3 failure_wait_reentry, 4 reclaim_wait, 5 reversal_wait
     stage=0; original_side=0; L=0; event_atr=0.0; probe_start=0; failure_start=0
-    reentry_seen=False
+    reentry_seen=False; reclaim_seen=False
     latest_hi=0; latest_lo=0; swing_i=0
     hi_eligible=True; lo_eligible=True
     last_acc_bar=-1; last_rev_bar=-1
-    counts=np.zeros(8,np.int64)
+    counts=np.zeros(8,np.int64)  # probe, qualified, accepted, failure, reentry, reclaim, reversal, signal
     sig_i=np.empty(20000,np.int64); sig_side=np.empty(20000,np.int8); sig_event=np.empty(20000,np.int64)
     nsig=0; event_id=0
 
     for i in range(t.size):
         tm=int(t[i]); px=int(mid2[i])
+        # Apply newly confirmed swings causally. Active event keeps its frozen boundary.
         while swing_i < swing_t.size and swing_t[swing_i] <= tm:
             if swing_side[swing_i] > 0: latest_hi=int(swing_level[swing_i])
             else: latest_lo=int(swing_level[swing_i])
@@ -209,6 +215,7 @@ def detect_vector(
                 lo_eligible=False; event_id+=1; counts[0]+=1
         if stage == 0: continue
 
+        # Completed bar indexes visible at current tick.
         j1=_bar_idx(s1_end,tm); j5=_bar_idx(s5_end,tm); j15=_bar_idx(s15_end,tm)
         jacc=j5 if acceptance_tf_s==5 else j15
         acc_close=s5_close[j5] if acceptance_tf_s==5 and j5>=0 else s15_close[j15] if j15>=0 else 0
@@ -221,6 +228,7 @@ def detect_vector(
                 continue
         if stage < 2: continue
 
+        # Original-break acceptance is evaluated once per newly completed acceptance bar.
         if jacc >= 0 and jacc != last_acc_bar:
             last_acc_bar=jacc
             if original_side*(acc_close-L) >= acceptance_disp_atr*event_atr:
@@ -231,10 +239,13 @@ def detect_vector(
         if stage == 2:
             if tm-probe_start >= max_probe_ms:
                 stage=3; counts[3]+=1
-                failure_start=0 if wait_reentry_clock else tm
+                if wait_reentry_clock:
+                    failure_start=0
+                else:
+                    failure_start=tm
             elif recross:
                 stage=3; counts[3]+=1
-                failure_start=0 if wait_reentry_clock else tm
+                failure_start=tm if not wait_reentry_clock else 0
 
         if stage == 3:
             if recross and not reentry_seen:
@@ -245,20 +256,20 @@ def detect_vector(
                 stage=0; original_side=0; reentry_seen=False
                 continue
         elif stage >= 4 and failure_start and tm-failure_start > max_failure_ms:
-            stage=0; original_side=0; reentry_seen=False
+            stage=0; original_side=0; reentry_seen=False; reclaim_seen=False
             continue
 
         if stage < 4: continue
 
+        # Reclaim on reversal clock, close-buffer semantics.
         jrev=j1 if reversal_tf_s==1 else j5
         rev_close=s1_close[j1] if reversal_tf_s==1 and j1>=0 else s5_close[j5] if j5>=0 else 0
-        new_rev_bar = jrev >= 0 and jrev != last_rev_bar
-        if stage == 4 and new_rev_bar:
+        if stage == 4 and jrev >= 0 and jrev != last_rev_bar:
             if (-original_side)*(rev_close-L) >= reclaim_atr*event_atr:
-                counts[5]+=1; stage=5
+                reclaim_seen=True; counts[5]+=1; stage=5
+                # Same completed bar may also be the first reversal-confirmation bar.
 
-        if stage < 5 or not new_rev_bar:
-            if new_rev_bar: last_rev_bar=jrev
+        if stage < 5 or jrev < 0 or jrev == last_rev_bar:
             continue
 
         ro = s1_open[j1] if reversal_tf_s==1 else s5_open[j5]
@@ -284,7 +295,7 @@ def detect_vector(
             counts[6]+=1; counts[7]+=1
             if nsig < sig_i.size:
                 sig_i[nsig]=i; sig_side[nsig]=rside; sig_event[nsig]=event_id; nsig+=1
-            stage=0; original_side=0; reentry_seen=False
+            stage=0; original_side=0; reentry_seen=False; reclaim_seen=False
         last_rev_bar=jrev
 
     return counts, sig_i[:nsig], sig_side[:nsig], sig_event[:nsig]
@@ -292,7 +303,11 @@ def detect_vector(
 
 def parity_score(actual: dict[str,int], expected: dict[str,int]) -> dict:
     diffs={k:int(actual[k]-expected[k]) for k in expected}
-    return {"exact":all(v==0 for v in diffs.values()),"abs_error":int(sum(abs(v) for v in diffs.values())),"diffs":diffs}
+    return {
+        "exact": all(v==0 for v in diffs.values()),
+        "abs_error": int(sum(abs(v) for v in diffs.values())),
+        "diffs": diffs,
+    }
 
 
 def run(path: Path) -> dict:
@@ -318,7 +333,7 @@ def run(path: Path) -> dict:
                 bars[300]["end_ms"],atr[300],
                 bars[1]["end_ms"],bars[1]["open"],bars[1]["close"],atr[1],
                 bars[5]["end_ms"],bars[5]["open"],bars[5]["close"],atr[5],
-                bars[15]["end_ms"],bars[15]["open"],bars[15]["close"],
+                bars[15]["end_ms"],bars[15]["open"],bars[15]["close"],np.zeros(len(bars[15]["close"])),
                 v.acceptance_disp_atr,v.acceptance_tf_s,int(v.max_failure_age_s*1000),int(v.max_probe_age_s*1000),
                 v.probe_excursion_atr,v.reclaim_buffer_atr,v.reversal_disp_atr,v.reversal_eff_min,v.reversal_tf_s,
                 eff_bars,rev_atr_mode,wait_reentry,
@@ -338,7 +353,6 @@ def main() -> None:
     args.output.parent.mkdir(parents=True,exist_ok=True)
     args.output.write_text(json.dumps(result,indent=2)+"\n",encoding="utf-8")
     print(json.dumps({k:v["parity"] for k,v in result["profiles"].items()},indent=2))
-
 
 if __name__=="__main__":
     main()
