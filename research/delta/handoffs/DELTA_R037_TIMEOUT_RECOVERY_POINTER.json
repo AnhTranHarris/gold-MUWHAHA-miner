@@ -21,9 +21,18 @@
   },
   "in_flight_unit": {
     "unit": "R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_AND_REARM_PARITY_FINGERPRINT",
-    "status": "NOT_STARTED",
-    "committed_artifacts": [],
-    "next_action": "Preregister source-grounded suspend/re-arm boundary-lifetime semantics, commit evidence and producer before compute, then run only the bounded 11D replay."
+    "status": "EVIDENCE_AND_PRODUCER_COMMITTED_OFFICIAL_COMPUTE_NOT_YET_DURABLE",
+    "committed_artifacts": [
+      {
+        "path": "research/delta/reference/DELTA_R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_REARM_EVIDENCE_11D.json",
+        "commit": "626148ece63468e2c3f60ca33a31e7c213672b19"
+      },
+      {
+        "path": "research/delta/experiments/delta_r037_dh02_s11_armed_boundary_lifetime_rearm.py",
+        "commit": "0e0cbe48fbbf07157b79e2bbcca26462cbc9ce3f"
+      }
+    ],
+    "next_action": "Use the producer commit recovery snapshot; verify producer/evidence blobs and canonical January SHA; run bounded 11D replay."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
