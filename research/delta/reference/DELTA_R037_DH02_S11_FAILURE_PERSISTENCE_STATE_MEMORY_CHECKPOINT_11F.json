@@ -1,0 +1,155 @@
+{
+  "schema": "delta-r037-dh02-s11-failure-persistence-state-memory-parity-11f-v1",
+  "status": "COMPLETE_CLEANROOM_PARITY_FAIL_LOCALIZED",
+  "unit": "R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_PARITY_FINGERPRINT",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "vector_fingerprint": "50d1bb2e656e",
+  "numeric_vector_retune": false,
+  "august_accessed": false,
+  "profiles": {
+    "CONTROL_CONSECUTIVE_BUFFER_TICKS": {
+      "actual": {
+        "signals": 106,
+        "signal_sha256": "803fc20c55ed1d7f30356f2610392c12e6b43544f7f512bdd347cead69901dab",
+        "breaks": 278,
+        "accepted": 276,
+        "retests": 236,
+        "failed": 130,
+        "expired": 42,
+        "context_vetoes": 86547,
+        "failure_pending_starts": 165,
+        "failure_pending_resets": 37,
+        "failure_pending_confirms": 128,
+        "trades": 106,
+        "raw_positive_wins": 42,
+        "official_wins": 42,
+        "gross_profit": 7.799999999999998,
+        "gross_loss": -35.100000000000044,
+        "net_profit": -27.300000000000047,
+        "max_balance_drawdown": 27.439999999362044
+      },
+      "abs_error": {
+        "trades": 31,
+        "raw_positive_wins": 1,
+        "gross_profit": 1.5900000000000025,
+        "gross_loss": 17.500000000000043,
+        "net_profit": 19.090000000000046
+      },
+      "parity_score": 3163.1800000000003
+    },
+    "LATCH_RESET_AT_BOUNDARY_RECLAIM": {
+      "actual": {
+        "signals": 105,
+        "signal_sha256": "a84535b4be9952b5ed3be640ac2a1d94ce0284fc2f08b1321cf6f5b7961762d4",
+        "breaks": 278,
+        "accepted": 276,
+        "retests": 236,
+        "failed": 131,
+        "expired": 42,
+        "context_vetoes": 86547,
+        "failure_pending_starts": 144,
+        "failure_pending_resets": 15,
+        "failure_pending_confirms": 129,
+        "trades": 105,
+        "raw_positive_wins": 41,
+        "official_wins": 41,
+        "gross_profit": 7.4899999999999975,
+        "gross_loss": -35.090000000000046,
+        "net_profit": -27.600000000000048,
+        "max_balance_drawdown": 27.739999999364954
+      },
+      "abs_error": {
+        "trades": 30,
+        "raw_positive_wins": 0,
+        "gross_profit": 1.900000000000003,
+        "gross_loss": 17.490000000000045,
+        "net_profit": 19.390000000000047
+      },
+      "parity_score": 3038.78
+    },
+    "LATCH_RESET_AT_RETEST_ZONE_EXIT": {
+      "actual": {
+        "signals": 105,
+        "signal_sha256": "a84535b4be9952b5ed3be640ac2a1d94ce0284fc2f08b1321cf6f5b7961762d4",
+        "breaks": 278,
+        "accepted": 276,
+        "retests": 236,
+        "failed": 131,
+        "expired": 42,
+        "context_vetoes": 86547,
+        "failure_pending_starts": 134,
+        "failure_pending_resets": 5,
+        "failure_pending_confirms": 129,
+        "trades": 105,
+        "raw_positive_wins": 41,
+        "official_wins": 41,
+        "gross_profit": 7.4899999999999975,
+        "gross_loss": -35.090000000000046,
+        "net_profit": -27.600000000000048,
+        "max_balance_drawdown": 27.739999999364954
+      },
+      "abs_error": {
+        "trades": 30,
+        "raw_positive_wins": 0,
+        "gross_profit": 1.900000000000003,
+        "gross_loss": 17.490000000000045,
+        "net_profit": 19.390000000000047
+      },
+      "parity_score": 3038.78
+    },
+    "BREACH_THEN_NEXT_PREBREAK_TICK_CONFIRM": {
+      "actual": {
+        "signals": 105,
+        "signal_sha256": "a84535b4be9952b5ed3be640ac2a1d94ce0284fc2f08b1321cf6f5b7961762d4",
+        "breaks": 278,
+        "accepted": 276,
+        "retests": 236,
+        "failed": 131,
+        "expired": 42,
+        "context_vetoes": 86547,
+        "failure_pending_starts": 134,
+        "failure_pending_resets": 5,
+        "failure_pending_confirms": 129,
+        "trades": 105,
+        "raw_positive_wins": 41,
+        "official_wins": 41,
+        "gross_profit": 7.4899999999999975,
+        "gross_loss": -35.090000000000046,
+        "net_profit": -27.600000000000048,
+        "max_balance_drawdown": 27.739999999364954
+      },
+      "abs_error": {
+        "trades": 30,
+        "raw_positive_wins": 0,
+        "gross_profit": 1.900000000000003,
+        "gross_loss": 17.490000000000045,
+        "net_profit": 19.390000000000047
+      },
+      "parity_score": 3038.78
+    }
+  },
+  "control_reproduced_exactly": true,
+  "ranking": [
+    "LATCH_RESET_AT_BOUNDARY_RECLAIM",
+    "LATCH_RESET_AT_RETEST_ZONE_EXIT",
+    "BREACH_THEN_NEXT_PREBREAK_TICK_CONFIRM",
+    "CONTROL_CONSECUTIVE_BUFFER_TICKS"
+  ],
+  "finding": {
+    "leading_profile": "LATCH_RESET_AT_BOUNDARY_RECLAIM",
+    "exact_historical_parity": false,
+    "target": {
+      "trades": 75,
+      "raw_positive_wins": 41,
+      "gross_profit": 9.39,
+      "gross_loss": -17.6,
+      "net_profit": -8.21
+    },
+    "selection_rule_pass": false,
+    "interpretation": "Failure-pending latches remove one executable trade, but it is a winner; gross-loss tail is unchanged. Reject as explanation of the residual.",
+    "next": "R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_AND_INTERACTION_DECISION"
+  },
+  "mql5_authorized": false
+}
