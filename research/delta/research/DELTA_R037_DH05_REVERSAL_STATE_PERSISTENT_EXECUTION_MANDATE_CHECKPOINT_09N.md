@@ -77,13 +77,7 @@ This pattern argues against either:
 1. blanket execution persistence; or
 2. invalidating the mandate on the first weak/non-confirming reversal bar.
 
-The next reconstructible hypothesis is a **hysteretic reversal state**:
-- positive reversal displacement confirms the mandate;
-- weak/neutral bars do not automatically kill it;
-- re-entry requires a causal reset interval followed by positive reconfirmation;
-- explicit opposite reversal evidence invalidates it.
-
-That uses the already-frozen reversal displacement threshold as a state band rather than inventing a new numeric threshold.
+The next reconstructible hypothesis should reuse an existing parent execution invariant rather than invent a new state threshold. R032 already freezes a **GLOBAL NO_REARM** rule for ordinary same-minute rearms. Applying that exact causal execution constraint to the 09N state-persistent mandate may suppress dense S06/S10 repetition while preserving the useful A03/S06 state clues.
 
 ## Decision
 
@@ -106,6 +100,6 @@ Do not:
 
 ## Next bounded unit
 
-`R037_DH05_REVERSAL_STATE_HYSTERESIS_RECONFIRMATION_PARITY_RECONSTRUCTION`
+`R037_DH05_STATE_PERSISTENT_EXECUTION_WITH_GLOBAL_NO_REARM_PARITY_RECONSTRUCTION`
 
-Test only causal hysteresis/reconfirmation using already-frozen reversal state quantities. No new numeric threshold.
+Test the 09N state-persistent execution mandate with the exact frozen R032 GLOBAL NO_REARM rule: suppress downstream re-entry during the same UTC minute after an exit. No numeric retuning.
