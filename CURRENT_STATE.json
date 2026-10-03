@@ -4,9 +4,9 @@
   "branch": "delta",
   "created_utc": "2026-10-01",
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
-  "last_verified_durable_unit": "R037_DH05_FAILURE_REENTRY_PERSISTENCE_CHECKPOINT_09",
-  "first_incomplete_unit": "R037_DH05_DIAGNOSTIC_SOURCE_DURABILITY_RECOVERY_CHECKPOINT_09A",
-  "current_phase": "R037_DH05_SOURCE_DURABILITY_RECOVERY_NEXT",
+  "last_verified_durable_unit": "R037_DH05_DIAGNOSTIC_SOURCE_DURABILITY_RECOVERY_CHECKPOINT_09A",
+  "first_incomplete_unit": "R037_DH05_DIAGNOSTIC_ENGINE_CLEANROOM_REBUILD_AND_CHECKPOINT03_08_09_PARITY",
+  "current_phase": "R037_DH05_DIAGNOSTIC_ENGINE_CLEANROOM_REBUILD_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "R037_DH05_DIAGNOSTIC_SOURCE_DURABILITY_RECOVERY_CHECKPOINT_09A; PRESERVE CHECKPOINTS 04-09 AS COMPLETED SALVAGE; RECOVER OR CLEAN-ROOM RECONSTRUCT THE PRODUCING DH05 DIAGNOSTIC SOURCE AND REQUIRE PARITY TO CHECKPOINT03/08/09 BEFORE SIGNAL-MULTIPLICITY CHECKPOINT10; NO PARAMETER RETUNE; NO SORB; NO AUGUST; NO MQL5",
+    "next_permitted_step": "R037_DH05_DIAGNOSTIC_ENGINE_CLEANROOM_REBUILD_AND_CHECKPOINT03_08_09_PARITY; COMMIT PRODUCING PYTHON BEFORE NEW SCIENCE; REPRODUCE CHECKPOINT03/08/09 FINGERPRINTS WITHOUT NUMERIC VECTOR RETUNE; THEN AND ONLY THEN RUN SIGNAL_MULTIPLICITY_AND_EXECUTABLE_ADMISSION; NO SORB; NO AUGUST; NO MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -3433,7 +3433,7 @@
     "mt5_readiness_doc_id": "1a4bSQAbk1mQCUN1h088A2okVnTuKuohJlOsigDDjOn4",
     "mt5_readiness_doc_url": "https://docs.google.com/document/d/1a4bSQAbk1mQCUN1h088A2okVnTuKuohJlOsigDDjOn4/edit",
     "r037": {
-      "status": "DH05_SOURCE_DURABILITY_RECOVERY_NEXT",
+      "status": "DH05_DIAGNOSTIC_ENGINE_CLEANROOM_REBUILD_NEXT",
       "parent": "R032-C03_PLUS_DH02_S11_S08",
       "family": "R037-SORB-v1",
       "prereg_drive_doc_id": "1lfjAI9QB1fOCevvAur1dDV3qSdOw9sPhrkr_rcf1TM0",
@@ -3456,7 +3456,7 @@
       "source_qa_decision": "SOURCE_QA_PASS",
       "integrated_replay": "NOT_STARTED",
       "integrated_replay_blocker": "FOUR_R032_SPECIALIST_STREAMS_REQUIRE_EXACT_RECONSTRUCTION_PARITY",
-      "exact_next_unit": "R037_DH05_DIAGNOSTIC_SOURCE_DURABILITY_RECOVERY_CHECKPOINT_09A",
+      "exact_next_unit": "R037_DH05_DIAGNOSTIC_ENGINE_CLEANROOM_REBUILD_AND_CHECKPOINT03_08_09_PARITY",
       "august_2026": "SEALED",
       "mql5_authorized": false,
       "parent_backbone_parity": {
@@ -3651,7 +3651,7 @@
         "august_2026": "SEALED",
         "mql5_authorized": false
       },
-      "first_incomplete_substep": "R037_DH05_DIAGNOSTIC_SOURCE_DURABILITY_RECOVERY_CHECKPOINT_09A",
+      "first_incomplete_substep": "R037_DH05_DIAGNOSTIC_ENGINE_CLEANROOM_REBUILD_AND_CHECKPOINT03_08_09_PARITY",
       "dh05_reversal_efficiency_stage_normalization_checkpoint_08": {
         "status": "COMPLETE_MATERIAL_CLUE_PARITY_NOT_ACHIEVED",
         "github_report_path": "research/delta/research/DELTA_R037_DH05_REVERSAL_EFFICIENCY_STAGE_NORMALIZATION_CHECKPOINT_08.md",
@@ -3774,6 +3774,29 @@
         "diagnostic_source_sha256": "457ff3e13c3784911d5b0018d5515c29907661f1f97ce224183234182faaf48d",
         "diagnostic_output_sha256": "dc122c8c300065f290f5b151ed5f390eacb69e49f2d2138e52e6cf0f37b914f8",
         "next_unit": "R037_DH05_DIAGNOSTIC_SOURCE_DURABILITY_RECOVERY_CHECKPOINT_09A",
+        "august_2026": "SEALED",
+        "mql5_authorized": false
+      },
+      "dh05_source_durability_checkpoint_09a": {
+        "status": "COMPLETE_QC_SOURCE_BYTES_NOT_RECOVERED_CLEANROOM_REBUILD_REQUIRED",
+        "github_report_path": "research/delta/research/DELTA_R037_DH05_SOURCE_DURABILITY_RECOVERY_CHECKPOINT_09A.md",
+        "github_report_commit": "4e1afaf2d8b583207e1553fdd3e16fa3242b3723",
+        "github_manifest_path": "research/delta/reference/DELTA_R037_DH05_SOURCE_DURABILITY_RECOVERY_CHECKPOINT_09A.json",
+        "github_manifest_commit": "3383ce2fec64256a58be0d8d9abbdd05885f1751",
+        "workbook_id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+        "workbook_tab": "73 R037 DH05 Parity QA",
+        "workbook_rows": "71:77",
+        "producing_source_bytes_recovered": false,
+        "completed_checkpoints_preserved": [
+          "04",
+          "05",
+          "06",
+          "07",
+          "08",
+          "09"
+        ],
+        "next_unit": "R037_DH05_DIAGNOSTIC_ENGINE_CLEANROOM_REBUILD_AND_CHECKPOINT03_08_09_PARITY",
+        "checkpoint10_after_gate": "R037_DH05_PARITY_SIGNAL_MULTIPLICITY_AND_EXECUTABLE_ADMISSION_DIAGNOSTIC",
         "august_2026": "SEALED",
         "mql5_authorized": false
       }
