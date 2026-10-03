@@ -1,0 +1,106 @@
+{
+  "schema": "delta-r037-dh02-s08-cleanroom-parity-evidence-12a-v1",
+  "unit": "R037_DH02_S08_CLEANROOM_PARITY_RECONSTRUCTION",
+  "parent_checkpoint": "R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_DECISION_CHECKPOINT_11G",
+  "vector": {
+    "id": "DH02-S08",
+    "family": "DH-02",
+    "type": "SPACE_FILL",
+    "seed": 84,
+    "coverage_order": 19,
+    "tier": "EXTENSION",
+    "fingerprint": "7c70b5304ff7",
+    "params": {
+      "acceptance_dwell": "1s",
+      "boundary_source": "M1 swing",
+      "break_tf": "S5",
+      "breaknorm_min": 0.2233,
+      "failure_acceptance": "tick persistence",
+      "max_event_age_s": 62.9664,
+      "max_retest_age_s": 40.7704,
+      "parent_context": "DH-01 parent direction",
+      "penetration_buffer_atr": 0.1271,
+      "rebreak_disp_atr": 0.153,
+      "rebreak_eff_min": 0.6977,
+      "rebreak_tf": "S1",
+      "retest_halfwidth_atr": 0.0675
+    }
+  },
+  "inherited_dh01_a02": {
+    "id": "DH01-A02",
+    "fingerprint": "83f3ab88c224",
+    "params": {
+      "conflict_policy": "transition-cautious",
+      "directional_disp_atr": 0.3,
+      "parent_hysteresis": 2,
+      "signed_eff_threshold": 0.3,
+      "structure_source": "M1/M5 confluence",
+      "swing_confirm_width": 2
+    }
+  },
+  "execution_fixture": {
+    "signed_efficiency_lookback_fast_completed_bars": 4,
+    "directional_label_lookback_parent_completed_bars": 3,
+    "atr_period": 14,
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "stage_a_window_start_utc": "2026-01-01T00:00:00Z",
+    "stage_a_window_end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "stage_a_ticks": 4205709,
+    "canonical_january_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+  },
+  "historical_standalone_target": {
+    "trades": 75,
+    "raw_positive_wins": 42,
+    "win_rate_pct": 56,
+    "gross_profit": 9.93,
+    "gross_loss": -18.82,
+    "net_profit": -8.89,
+    "max_balance_drawdown": 9.66,
+    "expectancy": -0.118533,
+    "activity_retention_pct": 0.446402
+  },
+  "source_contract": {
+    "dh02_whitepaper_id": "18KpLADXCt-MlIQgZ4j6papHdE7SUtrl8kVTbn0x1XNc",
+    "dh01_whitepaper_id": "1WrDPUavWb-bbv7gmxnnlEAFjT1NA9wYbPAwl-ayREAw",
+    "historical_r005_specialist_source_bytes_recovered": false,
+    "dh02_results_sha256": "4147397ec47a78a9af8478771d5279f3419929867d1b38bdb1650ba75161479f"
+  },
+  "frozen_reconstructible_semantics": [
+    "M1 causally confirmed swing boundary; width 2 inherited from fixed DH01-A02 context",
+    "completed S5 breakout observation",
+    "BreakNorm = directional completed S5 close displacement beyond frozen L / ATR_S15 known at break",
+    "one-second causal acceptance dwell; no future data",
+    "frozen event ATR at break",
+    "retest zone half-width = 0.0675 * frozen ATR_S15",
+    "penetration buffer = 0.1271 * frozen ATR_S15",
+    "completed S1 rebreak confirmation",
+    "RebreakDistance from frozen L normalized by frozen ATR_S15",
+    "SignedEfficiency S1 uses four completed bars per R005 execution fixture",
+    "DH01 parent context uses completed M15/M30/H1 features; threshold 0.30/0.30 and hysteresis 2 from fixed DH01-A02",
+    "one boundary + one original break direction = one event",
+    "R9 downstream lifecycle remains frozen"
+  ],
+  "bounded_ambiguity_profiles": [
+    "NO_CONTEXT_CONTINUOUS_DWELL_DIAGNOSTIC",
+    "RAW_PARENT_DIRECTION_CONTINUOUS_DWELL",
+    "HYSTERETIC_PARENT_DIRECTION_CONTINUOUS_DWELL",
+    "HYSTERETIC_PARENT_DIRECTION_EVENTAGE_DWELL"
+  ],
+  "ambiguity_notes": {
+    "parent_direction": "Original DH02 paper assigns M15/M30/H1 to parent context but surviving historical producer bytes do not preserve the exact aggregation placement. Raw majority and DH01-A02 hysteretic majority are bounded source-grounded reconstructions.",
+    "acceptance_dwell": "Continuous breakout-side dwell is the stronger literal reading of 'price remains on breakout side'; event-age/current-side is retained only as a bounded diagnostic.",
+    "failure_acceptance": "Use the same reproducible two-adverse-tick surrogate as S11 clean-room work. 11G already established that exact historical tick-memory/reset semantics are not preserved; do not fit them here."
+  },
+  "selection_rule": "Carry forward only a source-grounded S08 reconstruction that materially approaches the preserved standalone target without numeric retuning. Same-sample exact-fit is not sufficient to claim missing historical semantics.",
+  "forbidden": [
+    "numeric vector retuning",
+    "August access",
+    "SORB integration",
+    "mature exit optimization",
+    "MQL5",
+    "inventing an exact historical failure-memory reset algorithm"
+  ],
+  "next_if_full_parity_false": "R037_DH02_S08_STATE_FUNNEL_AND_PROVENANCE_LOCALIZATION",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
