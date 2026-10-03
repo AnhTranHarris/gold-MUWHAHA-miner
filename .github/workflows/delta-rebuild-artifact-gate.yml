@@ -38,7 +38,9 @@ jobs:
           name: delta-recovery-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             CURRENT_STATE.json
+            research/delta/CURRENT_INFLIGHT.json
             research/delta/qa/
+            research/delta/lab/
             research/delta/experiments/delta_r037_*.py
             research/delta/reference/DELTA_R037_*.json
             research/delta/artifacts/DELTA_R037_*_MANIFEST.json
