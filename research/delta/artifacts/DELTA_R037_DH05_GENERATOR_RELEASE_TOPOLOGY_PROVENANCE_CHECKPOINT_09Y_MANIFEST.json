@@ -1,0 +1,173 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_CHECKPOINT_09Y",
+  "status": "VERIFIED_DURABLE_MATERIAL_PROVENANCE_CLUE_NON_PROMOTING",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH05_ACCEPTANCE_TF_METADATA_PROVENANCE_CHECKPOINT_09X",
+  "hypothesis": "A non-vector-specific relation among frozen timing fields may explain why some DH05 vectors tolerate early generator release.",
+  "falsification_condition": "Reject timeframe identity if equal categories prefer different profiles; advance only a reconstructible semantic relation with materially better predicted aggregate funnel error.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Six-vector durable release fingerprints",
+    "reference_count": 6,
+    "minimum_count": 6,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Provenance harvest only."
+  },
+  "primary_metrics": {
+    "entry_quality": "Not optimized.",
+    "hold_persistence": "Not optimized.",
+    "economics": "Not optimized.",
+    "gross_loss_drawdown": "Not target.",
+    "activity": "Eight-stage funnel parity."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_generator_release_topology_provenance_harvest.py",
+      "commit": "60e57dd7327218541d14fb061caa1703db765bf3",
+      "blob_sha": "c2f876270d2c2a27754412fdd4f38e856b3fc037",
+      "file_sha256": "1afaa788acbca5c69dc1cc4dbbae3c479f246400737c5d7bd8ea2f05f4de4fa1"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_runtime_primitives.py",
+      "blob_sha": "328b16a80cf5bff58734a556561625adf89100ae",
+      "file_sha256": "5a53170d1a3f460a299a53aeaf067d4af5ac49db2726f576569d6c643b6f0848"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retune": false,
+      "raw_tick_accessed": false,
+      "candidate_rule": "max_probe_age_s < acceptance_tf_seconds -> FAILURE_CANDIDATE release; else SERIAL_POST_QUAL"
+    },
+    "feature_order": [
+      "frozen timing metadata",
+      "durable release-profile funnel fingerprints"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "no replay; durable Stage-A fingerprints only"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "post-hoc provenance harvest; candidate cannot be promoted from this evidence"
+    },
+    "runtime_dependencies": [
+      "Python",
+      "delta_r037_dh05_runtime_primitives.py"
+    ],
+    "crash_safety": {
+      "external_timeout_seconds": 30,
+      "atomic_output_write": true,
+      "committed_producer_before_compute": true,
+      "exact_local_git_blob_verified": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "09H failure-candidate decoupling",
+      "path": "research/delta/reference/DELTA_R037_DH05_DECOUPLED_GENERATOR_FAILURE_EPISODE_CHECKPOINT_09H.json"
+    },
+    {
+      "name": "09I reclaim release",
+      "path": "research/delta/reference/DELTA_R037_DH05_PARTIAL_RELEASE_POINT_CHECKPOINT_09I.json"
+    },
+    {
+      "name": "09V reversal-clock release",
+      "path": "research/delta/reference/DELTA_R037_DH05_GENERATOR_REVERSAL_CLOCK_RELEASE_CHECKPOINT_09V.json"
+    },
+    {
+      "name": "09X corrected frozen metadata",
+      "path": "research/delta/reference/DELTA_R037_DH05_ACCEPTANCE_TF_METADATA_PROVENANCE_CHECKPOINT_09X.json"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_CHECKPOINT_09Y.json",
+      "blob_sha": "a3ee766c6883e7c6650729031c340c6b27835ad2",
+      "runtime_result_sha256": "476b1f66c091b092a3372d068117b5ceb5b80f4cfb5c3a60aea59dd3892b72f5"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_CHECKPOINT_09Y.md",
+      "blob_sha": "db4df57c2ed0bd6c65609d125fba71fa7f2c40fa"
+    }
+  ],
+  "qa": [
+    "Producer committed before execution; exact local Git blob verified; runtime exit 0 in 0.80 s.",
+    "Acceptance/reversal timeframe identity is insufficient: 15/5 and 5/5 each contain conflicting best release profiles.",
+    "Vector-specific best-profile routing prohibited as retrospective overfit.",
+    "Natural timing predicate max_probe_age_s < acceptance_tf_seconds selects S05/S09/S16.",
+    "Durable fingerprint blend predicts total funnel error 978 -> 782, improvement 196 (~20.0%).",
+    "Candidate is non-promoting and requires exact causal raw-tick replay.",
+    "No raw tick access, no numeric retune, August sealed, SORB blocked, MQL5 unauthorized.",
+    "Workbook tab 75 A224:H233 written and read back."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh05_generator_release_topology_provenance_harvest.py",
+    "command": "python research/delta/experiments/delta_r037_dh05_generator_release_topology_provenance_harvest.py --output <09y_json>",
+    "timing_semantics": "Provenance only; compares max_probe_age_s against acceptance timeframe duration.",
+    "expected_fingerprints": {
+      "selected_vectors": [
+        "S05",
+        "S09",
+        "S16"
+      ],
+      "control_total_abs_error": 978,
+      "predicted_blended_total_abs_error": 782,
+      "predicted_improvement": 196
+    },
+    "selected_interpretation": "HARVEST_SHORT_PROBE_RELATIVE_TO_ACCEPTANCE_BAR_ROUTER_FOR_NON_PROMOTING_CAUSAL_REPLAY"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — provenance-only",
+    "feature_timing_spec": "Not ready.",
+    "state_machine_spec": "No change.",
+    "model_inference_spec": "No model.",
+    "execution_quote_side_spec": "No change.",
+    "ownership_scheduler_spec": "Candidate only.",
+    "session_dst_spec": "No change.",
+    "risk_spec": "No change.",
+    "trade_count_parity_spec": "Not ready.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH05_ACCEPTANCE_TF_METADATA_PROVENANCE_CHECKPOINT_09X",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A224:H233"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH05_SHORT_PROBE_RELATIVE_ACCEPTANCE_BAR_OWNERSHIP_CHALLENGER_REPLAY_NON_PROMOTING",
+  "github_commits": [
+    "60e57dd7327218541d14fb061caa1703db765bf3",
+    "eeebfe1dd156b7160019d46e50d0b078872f124a",
+    "8f385643cd7f9edd80000aece0a297c5bc8f28c0"
+  ]
+}
