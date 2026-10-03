@@ -329,7 +329,7 @@ def detect(
         if stage < 2:
             continue
 
-        if jacc >= 0 and jacc != lastacc:
+        if stage == 2 and jacc >= 0 and jacc != lastacc:
             lastacc = jacc
             q = oside * (ac - ao) >= accdisp * evatr and oside * (ac - L) > 0
             if q:
