@@ -366,7 +366,7 @@
     "heavy_combination_workbook_id": "1CF15bSAjCDfIyvX3FaaTfjJqRulBZsIhfDUWuIaTSIE",
     "heavy_combination_workbook_url": "https://docs.google.com/spreadsheets/d/1CF15bSAjCDfIyvX3FaaTfjJqRulBZsIhfDUWuIaTSIE/edit",
     "heavy_candidate_synthesis_workbook_separate": true,
-    "heavy_candidate_synthesis_default_state": "DORMANT_NOT_ACTIVATED",
+    "heavy_candidate_synthesis_default_state": "ACTIVE_CAPABILITY_CYCLE1_COMPLETE_NEW_PACKAGES_GATED",
     "heavy_candidate_synthesis_owner_trigger_allowed": true,
     "heavy_candidate_synthesis_evidence_trigger_allowed": true,
     "heavy_candidate_synthesis_mandatory_after_normal_harvest_failure": true,
@@ -379,7 +379,7 @@
     "heavy_candidate_synthesis_component_ablation_required": true,
     "heavy_candidate_synthesis_raw_tick_dump_prohibited": true,
     "heavy_candidate_synthesis_mt5_reconstructibility_required": true,
-    "heavy_candidate_synthesis_status": "ACTIVE_CYCLE_1_EVIDENCE_TRIGGERED",
+    "heavy_candidate_synthesis_status": "ACTIVE_CAPABILITY_CYCLE1_COMPLETE_NEW_PACKAGES_GATED",
     "canonical_governance_through": "DELTA_GOV_018",
     "source_of_truth_precedence": [
       "CURRENT_OWNER_INSTRUCTION",
@@ -562,7 +562,11 @@
     "new_chat_resume_from_r037_only": true,
     "completed_r001_through_r036_must_not_restart_without_owner_audit_request": true,
     "mt5_translation_blockers_explicit": true,
-    "current_read_first_handoff_id": "1EvyYTzyafViJE7XBcDYNes8MV07ralIvFgwe8bDzb2U"
+    "current_read_first_handoff_id": "1EvyYTzyafViJE7XBcDYNes8MV07ralIvFgwe8bDzb2U",
+    "heavy_candidate_synthesis_cycle1_status": "COMPLETE",
+    "heavy_candidate_synthesis_current_lab_id": "1CF15bSAjCDfIyvX3FaaTfjJqRulBZsIhfDUWuIaTSIE",
+    "heavy_candidate_synthesis_current_lab_url": "https://docs.google.com/spreadsheets/d/1CF15bSAjCDfIyvX3FaaTfjJqRulBZsIhfDUWuIaTSIE/edit",
+    "heavy_candidate_synthesis_new_package_requires_preregistration": true
   },
   "handoff": {
     "status": "CURRENT_READ_FIRST_R036_R037_HANDOFF_PACK",
@@ -776,7 +780,7 @@
     "end_position_policy": "FORCE_CLOSE_AT_LAST_ELIGIBLE_EXECUTABLE_QUOTE_BEFORE_END"
   },
   "candidate_research_artifacts": {
-    "status": "READY_PRE_CANDIDATE_CLEAN_RESTART",
+    "status": "ACTIVE_RESEARCH_THROUGH_R036_NEXT_R037",
     "active_focus": "ENTRY + INITIAL-HOLD",
     "deferred_focus": "HOLDING-TRADE + EXIT + HIGH-PROFIT",
     "master_google_doc_id": "1dXe4I98dFgIiybMSPQMoFnXOYNcTvtqNYDp85XeO34M",
@@ -806,10 +810,17 @@
     "historical_delta005_master_google_doc_revision": "ANLCKQlAUmvrBqKFhY751w1UrXfDR3ZnPis4TfiKjLOs0st6J8nqVLQYDCJRfyzxpBjlKXmGRU7MsBSHgmQVS0yw_o3c5M8uFgMLUNdALQQ",
     "historical_temp_sheet_template_id": "1Zy_TfGfc6E0tJmEsoFmSONqM9W4wKuAqTPcITC5OXb0",
     "historical_temp_sheet_template_url": "https://docs.google.com/spreadsheets/d/1Zy_TfGfc6E0tJmEsoFmSONqM9W4wKuAqTPcITC5OXb0/edit?usp=drivesdk",
-    "heavy_synthesis_sheet_id": "1NRJBd3rBz2FD6HtN9TW6xT8GUjCyZPAgMt36Tr1GAME",
-    "heavy_synthesis_sheet_url": "https://docs.google.com/spreadsheets/d/1NRJBd3rBz2FD6HtN9TW6xT8GUjCyZPAgMt36Tr1GAME/edit",
-    "heavy_synthesis_status": "DORMANT_NOT_ACTIVATED",
-    "historical_delta005_ledger_role": "AUDIT_ONLY_NOT_ACTIVE_LEDGER"
+    "heavy_synthesis_sheet_id": "1CF15bSAjCDfIyvX3FaaTfjJqRulBZsIhfDUWuIaTSIE",
+    "heavy_synthesis_sheet_url": "https://docs.google.com/spreadsheets/d/1CF15bSAjCDfIyvX3FaaTfjJqRulBZsIhfDUWuIaTSIE/edit",
+    "heavy_synthesis_status": "ACTIVE_CAPABILITY_CYCLE1_COMPLETE_NEW_PACKAGES_GATED",
+    "historical_delta005_ledger_role": "AUDIT_ONLY_NOT_ACTIVE_LEDGER",
+    "master_google_doc_role": "HISTORICAL_PRE_CANDIDATE_R001_LEDGER",
+    "current_read_first_doc_id": "1EvyYTzyafViJE7XBcDYNes8MV07ralIvFgwe8bDzb2U",
+    "current_read_first_doc_url": "https://docs.google.com/document/d/1EvyYTzyafViJE7XBcDYNes8MV07ralIvFgwe8bDzb2U/edit",
+    "current_working_sheet_id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+    "current_working_sheet_url": "https://docs.google.com/spreadsheets/d/1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0/edit",
+    "heavy_synthesis_template_id": "1NRJBd3rBz2FD6HtN9TW6xT8GUjCyZPAgMt36Tr1GAME",
+    "heavy_synthesis_template_url": "https://docs.google.com/spreadsheets/d/1NRJBd3rBz2FD6HtN9TW6xT8GUjCyZPAgMt36Tr1GAME/edit"
   },
   "candidate_leverage_research_ledger_contract_blob_sha": "25e1831ac89a826bc4f198167007fdf8e73d4ea6",
   "delta_005h": {
@@ -1093,22 +1104,27 @@
       "mql5_authorized": false
     },
     "2026-10-02_heavy_quant_candidate_synthesis": {
-      "status": "ACTIVE_ASSUMPTION_WORKBOOK_DORMANT",
+      "status": "ACTIVE_CAPABILITY_CYCLE1_COMPLETE",
       "governance_path": "research/delta/governance/DELTA_GOV_018_RESOURCE_GATED_HEAVY_QUANT_CANDIDATE_SYNTHESIS_AND_SPECULATIVE_COMBINATION_ASSUMPTION.md",
       "governance_commit": "17256f9fd2b3b670f26d3ab60e62a41814586a09",
       "google_sheet_id": "1NRJBd3rBz2FD6HtN9TW6xT8GUjCyZPAgMt36Tr1GAME",
       "google_sheet_url": "https://docs.google.com/spreadsheets/d/1NRJBd3rBz2FD6HtN9TW6xT8GUjCyZPAgMt36Tr1GAME/edit",
-      "default_state": "DORMANT_NOT_ACTIVATED",
+      "default_state": "ACTIVE_CAPABILITY_CYCLE1_COMPLETE_NEW_PACKAGES_GATED",
       "mandatory_trigger": "STANDARD_GOV014_BOUNDED_HARVESTING_FAILS_TO_YIELD_INTEGRATION_VIABLE_CANDIDATE",
       "optional_early_triggers": [
         "OWNER_TRIGGER",
         "SPECIFIC_RECONSTRUCTIBLE_EVIDENCE_TRIGGER"
       ],
       "speculation_label": "HYPOTHESIS_ONLY",
-      "research_started": false,
+      "research_started": true,
       "active_synthesized_candidate": null,
       "august_2026": "SEALED",
-      "mql5_authorized": false
+      "mql5_authorized": false,
+      "cycle1_status": "COMPLETE",
+      "template_google_sheet_id": "1NRJBd3rBz2FD6HtN9TW6xT8GUjCyZPAgMt36Tr1GAME",
+      "template_google_sheet_url": "https://docs.google.com/spreadsheets/d/1NRJBd3rBz2FD6HtN9TW6xT8GUjCyZPAgMt36Tr1GAME/edit",
+      "active_lab_id": "1CF15bSAjCDfIyvX3FaaTfjJqRulBZsIhfDUWuIaTSIE",
+      "active_lab_url": "https://docs.google.com/spreadsheets/d/1CF15bSAjCDfIyvX3FaaTfjJqRulBZsIhfDUWuIaTSIE/edit"
     }
   },
   "last_verified_archived_historical_unit": "DELTA_005M_001_TRAIL_STEP_FREQUENCY",
@@ -1234,7 +1250,7 @@
     "performance_harvest_status": "STAGE_A_SPEEDRUN_COMPLETE",
     "spreadsheet_harvesting_phase": "STAGE_A_EMPIRICAL_TRIAGE_COMPLETE",
     "stage_a_preregistration_started": true,
-    "heavy_synthesis_status": "DORMANT_NOT_ACTIVATED",
+    "heavy_synthesis_status": "ACTIVE_CAPABILITY_CYCLE1_COMPLETE_NEW_PACKAGES_GATED",
     "testing_authorized": true,
     "shortlist_doc_revision": "ANLCKQnCfxmWcnwDQUTLu2NMnkdBfRtYTt8cHhCu1AAmWgpctbvu6ogci-UTmsmMSlCajKaycKPNNUL9CNR3i3DkH5VHLuLvWE1VBr91g6s",
     "prebacktest_priority": [
