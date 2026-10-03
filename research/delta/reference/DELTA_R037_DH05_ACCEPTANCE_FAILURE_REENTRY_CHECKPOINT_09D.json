@@ -1,0 +1,61 @@
+{
+  "schema": "delta-r037-dh05-acceptance-failure-reentry-checkpoint-09d-v1",
+  "status": "COMPLETE_MATERIAL_PARITY_BREAKTHROUGH_FULL_PARITY_NOT_ACHIEVED",
+  "unit": "R037_DH05_ACCEPTANCE_FAILURE_REENTRY_SEMANTICS_PARITY_RECONSTRUCTION",
+  "parent": "R032-C03_PLUS_DH02_S11_S08",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_ticks": 4205709,
+  "january_source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "producer_path": "research/delta/experiments/delta_r037_dh05_acceptance_failure_reentry_parity.py",
+  "producer_commit": "1fc60c12c4c6aba74fb74c1d13e9241f63bb9977",
+  "producer_blob_sha": "21ee0fa6d32f292f49549c7639aa0313174d23c3",
+  "result_sha256": "9b1ebf24e3f01dd52f9c9e0e19c4d966883f657570b3dd36892e9602e2615fb9",
+  "boundary_hypothesis": "SYMMETRIC_TWO_BAR_CONFIRMED_M5_SWING",
+  "probe_semantics": "REPEATED_CAUSAL_SAME_BOUNDARY_PREFAILURE_ATTEMPT_LEDGER",
+  "leading_profile": "STAGE_GATED_BODY_DISP",
+  "acceptance_semantics": "BREAK_ACCEPTED_ONLY_WHILE_QUALIFIED_PROBE_AND_SIGNED_COMPLETED_ACCEPTANCE_BAR_BODY_DISPLACEMENT_OVER_EVENT_M5_ATR_WITH_CLOSE_STILL_BEYOND_BOUNDARY",
+  "failure_clock": "START_AT_FAILURE_CANDIDATE",
+  "aggregate_error": {
+    "base_first5_abs_error": 3012,
+    "candidate_first5_abs_error": 1749,
+    "first5_abs_error_reduction_pct": 41.93227091633466,
+    "base_accepted_abs_error": 1070,
+    "candidate_accepted_abs_error": 70,
+    "base_reentry_abs_error": 521,
+    "candidate_reentry_abs_error": 159
+  },
+  "stage_abs_error": {
+    "probe": 782,
+    "qualified": 343,
+    "accepted": 70,
+    "failure": 395,
+    "reentry": 159,
+    "reclaim": 75,
+    "reversal": 65,
+    "signal": 65
+  },
+  "stage_order": ["probe","qualified","accepted","failure","reentry","reclaim","reversal","signal"],
+  "leading_profile_actual": {
+    "A03": [6824,899,214,685,378,228,165,165],
+    "S05": [7709,246,38,208,44,15,6,6],
+    "S06": [3607,1607,253,1354,1199,687,645,645],
+    "S09": [7659,162,50,112,44,30,7,7],
+    "S10": [6581,1226,212,1014,569,275,198,198],
+    "S16": [7658,111,68,43,22,14,6,6]
+  },
+  "checkpoint03_target": {
+    "A03": [6731,1009,207,797,432,266,187,187],
+    "S05": [7875,318,28,290,51,15,9,9],
+    "S06": [3470,1606,245,1358,1211,683,617,617],
+    "S09": [7748,208,40,168,61,40,9,9],
+    "S10": [6496,1316,202,1106,623,294,206,206],
+    "S16": [7870,135,43,92,37,18,8,8]
+  },
+  "parity_complete": false,
+  "decision": "FREEZE_STAGE_GATED_BODY_DISPLACEMENT_ACCEPTANCE_AS_PARITY_HYPOTHESIS_NO_NUMERIC_RETUNE",
+  "integrated_r037_replay_started": false,
+  "sorb_status": "BLOCKED_UNTIL_R032_PARENT_PARITY",
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "next": "R037_DH05_PROBE_QUALIFICATION_CLOCK_AND_EVENT_LIFECYCLE_PARITY_RECONSTRUCTION"
+}
