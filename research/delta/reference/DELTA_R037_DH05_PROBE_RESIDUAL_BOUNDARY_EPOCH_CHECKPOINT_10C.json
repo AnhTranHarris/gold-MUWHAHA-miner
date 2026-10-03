@@ -1,0 +1,158 @@
+{
+  "schema": "delta-r037-dh05-probe-residual-boundary-epoch-checkpoint-10c-v1",
+  "status": "COMPLETE_STRONG_NEGATIVE_QA_BOUNDARY_EPOCH_REJECTED",
+  "unit": "R037_DH05_PROBE_COUNT_RESIDUAL_PROVENANCE_AND_BOUNDARY_LIFECYCLE_RECONCILIATION",
+  "parent": "R037_DH05_SHORT_PROBE_OWNERSHIP_PROVENANCE_PROMOTION_DECISION_CHECKPOINT_10B",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_window": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "producer_path": "research/delta/experiments/delta_r037_dh05_probe_residual_boundary_epoch.py",
+  "producer_commit": "68a480ce0486435bcb3ac8278a4985d20317b11c",
+  "producer_blob_sha": "ba4767c2f0c66233c34d8d701c466f56ac381456",
+  "producer_file_sha256": "106f0f7d166106eefd23e2210a2a62b01faf107e9ad67dab98b8363ca77c56f9",
+  "full_local_result_sha256": "ca0bd310a146ea8fb50dd02075ae373852b890f723e090da264bec7ff7679596",
+  "runtime": {
+    "bounded_timeout_seconds": 120,
+    "wall_seconds": 15.19,
+    "max_rss_kb": 698548,
+    "faulthandler": true,
+    "fresh_numba_cache": true,
+    "atomic_output": true,
+    "recovery_artifact_workflow_run": 37144583714,
+    "recovery_artifact_id": 11281772413,
+    "recovery_artifact_sha256": "6429fdea9f7c45af310dd397af573383c190c08c30aceb8afbfce0f94828c010"
+  },
+  "provenance": {
+    "source": "original DH-05 white paper",
+    "clue": "stale swing boundary can manufacture false failure events",
+    "frozen_boundary_source_preserved": "M5 swing",
+    "frozen_width": 2,
+    "interpretation_tested": "LATEST_GLOBAL_SWING_EPOCH",
+    "no_numeric_retune": true
+  },
+  "control_09z": {
+    "probe_abs_error": 449,
+    "total_abs_error": 782,
+    "aggregate_trade_count_abs_error": 335
+  },
+  "candidate": {
+    "stage_abs_error": {
+      "probe": 23124,
+      "qualified": 2525,
+      "accepted": 409,
+      "failure": 2100,
+      "reentry": 1299,
+      "reclaim": 679,
+      "reversal": 519,
+      "signal": 519
+    },
+    "total_abs_error": 31174,
+    "aggregate_trade_count_abs_error": 805,
+    "vectors": {
+      "A03": {
+        "funnel": [
+          2862,
+          445,
+          93,
+          352,
+          201,
+          133,
+          98,
+          98
+        ],
+        "trades": 98,
+        "wins": 38,
+        "net_usd": -23.11
+      },
+      "S05": {
+        "funnel": [
+          3300,
+          153,
+          12,
+          141,
+          36,
+          14,
+          6,
+          6
+        ],
+        "trades": 6,
+        "wins": 5,
+        "net_usd": 0.48
+      },
+      "S06": {
+        "funnel": [
+          1600,
+          718,
+          115,
+          603,
+          538,
+          314,
+          299,
+          299
+        ],
+        "trades": 298,
+        "wins": 122,
+        "net_usd": -71.93
+      },
+      "S09": {
+        "funnel": [
+          3321,
+          107,
+          18,
+          89,
+          34,
+          23,
+          8,
+          8
+        ],
+        "trades": 8,
+        "wins": 5,
+        "net_usd": -0.63
+      },
+      "S10": {
+        "funnel": [
+          2715,
+          577,
+          96,
+          481,
+          285,
+          139,
+          101,
+          101
+        ],
+        "trades": 101,
+        "wins": 47,
+        "net_usd": -21.02
+      },
+      "S16": {
+        "funnel": [
+          3268,
+          67,
+          22,
+          45,
+          22,
+          14,
+          5,
+          5
+        ],
+        "trades": 5,
+        "wins": 3,
+        "net_usd": -0.47
+      }
+    }
+  },
+  "finding": {
+    "probe_abs_error_improvement": -22675,
+    "total_abs_error_improvement": -30392,
+    "trade_count_abs_error_improvement": -470,
+    "s06_economic_veto_triggered": true,
+    "carry_forward_eligible": false,
+    "interpretation": "Global latest-swing-only retirement is far too aggressive. Historical DH05 must permit older opposite-side M5 swing boundaries to remain independently eligible for new probes after newer opposite-side swing reveals."
+  },
+  "decision": "REJECT_LATEST_GLOBAL_SWING_EPOCH_CLOSE_THIS_BOUNDARY_RETIREMENT_HYPOTHESIS",
+  "august_2026": "SEALED",
+  "sorb_integrated_replay_started": false,
+  "mql5_authorized": false,
+  "next_unit": "R037_DH05_PROBE_RESIDUAL_CAUSAL_ATTEMPT_IDENTITY_PROVENANCE_RECONCILIATION"
+}
