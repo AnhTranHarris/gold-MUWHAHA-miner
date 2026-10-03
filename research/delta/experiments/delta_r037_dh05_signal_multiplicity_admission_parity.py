@@ -971,7 +971,7 @@ def detect_signal_multiplicity(
             elif mode==3 and not reclaim_ok:
                 stage=4
 
-        if stage>=5 and reclaim_ok and reversal_ok and signal_armed:
+        if stage>=5 and reversal_ok and signal_armed:
             if nsig<MAX_SIG:
                 sig_i[nsig]=i; sig_side[nsig]=-oside; sig_event[nsig]=event_id; nsig+=1
             else:
