@@ -1,7 +1,7 @@
 # R9 MT5 EA Functional Summary — DELTA Baseline Reference
 
 **Created:** 2026-10-01  
-**Purpose:** One-time owner-authorized read-only inspection of the R9 legacy Gamma baseline solely to summarize the R9 MT5 EA as a DELTA engineering baseline.  
+**Purpose:** One-time owner-authorized read-only inspection of the R9 historical R9 baseline solely to summarize the R9 MT5 EA as a DELTA engineering baseline.  
 **Legacy access status after this document:** CLOSED. Reopening requires new explicit owner authorization.
 
 ## 1. Source identity and inspection scope
@@ -9,7 +9,7 @@
 Owner-authorized legacy inspection was restricted to the R9 baseline itself.
 
 Primary code inspected:
-- `carson/r9-gamma-00-baseline/Experts/GoldMuwahahaMiner_R9_HybridGate.mq5`
+- `historical R9 baseline source` (blob identity retained below)
 - blob SHA: `7eecb5f1947017a01ce85b2520725de54749e523`
 - version: 1.90
 
@@ -340,14 +340,14 @@ These six layers are the canonical R9 functional decomposition for future causal
 
 ## 16. Cross-reference conclusion
 
-The inspected Gamma baseline source, R9 TickLogger source, Project history, Strategy Tester inputs, and historical Drive R9 reconstruction agree on the behavior-critical mechanics above.
+The inspected historical baseline source, R9 TickLogger source, Project history, Strategy Tester inputs, and historical Drive R9 reconstruction agree on the behavior-critical mechanics above.
 
 Where a cross-feed Python reconstruction cannot reproduce broker-specific Point/Digits, stop-level, filling, commission, or OnTick chronology exactly, it must be labeled an R9-style reconstruction rather than byte/execution parity.
 
-## 17. Legacy Gamma closure
+## 17. Prior-lineage closure
 
-The owner-authorized Gamma inspection exception is now complete.
+The owner-authorized prior-lineage inspection exception is now complete.
 
 **Status:** `CLOSED_AFTER_R9_SUMMARY`
 
-DELTA must use this durable summary and the registered R9 source identities going forward. Do not read Gamma or other prior internal lineage material again unless the owner explicitly authorizes another exception.
+DELTA must use this durable summary and the registered R9 source identities going forward. Do not read prior internal lineage material again unless the owner explicitly authorizes another exception.
