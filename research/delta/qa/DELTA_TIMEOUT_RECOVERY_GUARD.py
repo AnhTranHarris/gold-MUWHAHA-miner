@@ -12,6 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 STATE = ROOT / "CURRENT_STATE.json"
 INFLIGHT = ROOT / "research" / "delta" / "CURRENT_INFLIGHT.json"
+POINTER = ROOT / "research" / "delta" / "handoffs" / "DELTA_R037_TIMEOUT_RECOVERY_POINTER.json"
 
 PHASE_RANK = {
     "PREREGISTERED": 1,
@@ -57,9 +58,41 @@ def safe_repo_path(value: str) -> Path:
 def main() -> int:
     state = load(STATE)
     inflight = load(INFLIGHT)
+    pointer = load(POINTER)
 
     if inflight.get("schema") != "delta-timeout-recovery-inflight-v1":
         raise SystemExit("DELTA_TIMEOUT_GUARD FAIL: unsupported in-flight schema")
+
+    if pointer.get("schema") != "delta-timeout-recovery-pointer-v1":
+        raise SystemExit("DELTA_TIMEOUT_GUARD FAIL: unsupported recovery-pointer schema")
+
+    durable = pointer.get("durable_cursor")
+    if not isinstance(durable, dict):
+        raise SystemExit("DELTA_TIMEOUT_GUARD FAIL: recovery pointer missing durable_cursor")
+    expected_durable = {
+        "last_verified_durable_unit": state.get("last_verified_durable_unit"),
+        "current_phase": state.get("current_phase"),
+        "first_incomplete_unit": state.get("first_incomplete_unit"),
+        "active_rebuild_manifest": state.get("active_rebuild_manifest_path"),
+    }
+    for key, expected in expected_durable.items():
+        if durable.get(key) != expected:
+            raise SystemExit(
+                f"DELTA_TIMEOUT_GUARD FAIL: stale recovery pointer durable_cursor.{key}: "
+                f"{durable.get(key)!r} != {expected!r}"
+            )
+
+    pointer_inflight = pointer.get("in_flight_unit")
+    if not isinstance(pointer_inflight, dict):
+        raise SystemExit("DELTA_TIMEOUT_GUARD FAIL: recovery pointer missing in_flight_unit")
+    if pointer_inflight.get("unit") != inflight.get("unit"):
+        raise SystemExit("DELTA_TIMEOUT_GUARD FAIL: recovery pointer in-flight unit is stale")
+    if pointer_inflight.get("status") != inflight.get("phase"):
+        raise SystemExit("DELTA_TIMEOUT_GUARD FAIL: recovery pointer in-flight phase is stale")
+    if int(pointer_inflight.get("phase_rank", -1)) != int(inflight.get("phase_rank", -2)):
+        raise SystemExit("DELTA_TIMEOUT_GUARD FAIL: recovery pointer in-flight phase_rank is stale")
+    if pointer_inflight.get("parent_durable_unit") != inflight.get("parent_durable_unit"):
+        raise SystemExit("DELTA_TIMEOUT_GUARD FAIL: recovery pointer parent durable unit is stale")
 
     status = inflight.get("status")
     phase = inflight.get("phase")
@@ -102,7 +135,7 @@ def main() -> int:
     print(
         "DELTA_TIMEOUT_GUARD PASS "
         f"status={status} phase={phase} "
-        f"unit={inflight.get('unit')} parent={inflight.get('parent_durable_unit')}"
+        f"unit={inflight.get('unit')} parent={inflight.get('parent_durable_unit')} pointer=consistent"
     )
     return 0
 
