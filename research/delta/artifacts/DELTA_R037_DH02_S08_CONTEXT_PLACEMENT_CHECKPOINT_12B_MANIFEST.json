@@ -1,0 +1,198 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH02_S08_CONTEXT_PLACEMENT_CHECKPOINT_12B",
+  "status": "VERIFIED_COMPLETE_CONTEXT_PLACEMENT_LOCALIZATION_FULL_PARITY_NOT_ACHIEVED",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH02_S08_CLEANROOM_PARITY_CHECKPOINT_12A",
+  "hypothesis": "The remaining S08 population mismatch may be caused by where the frozen raw DH01 parent-direction requirement is applied during the DH02 event lifecycle.",
+  "falsification_condition": "Reject context-placement as the residual explanation if break-only, rebreak-only, or continuous-active placement fails to recover the historical winner population and does not materially approach the 75/42 fixture.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "historical DH02-S08 Stage-A standalone fixture",
+    "reference_count": 75,
+    "minimum_count": 75,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity reconstruction only; historical fixture also requires 42 raw-positive wins."
+  },
+  "primary_metrics": {
+    "entry_quality": "All bounded context placements produce 37 raw-positive wins versus historical 42.",
+    "hold_persistence": "Frozen R9 downstream lifecycle.",
+    "economics": "Best REBREAK_ONLY net -28.46 versus target -8.89.",
+    "gross_loss_drawdown": "Best REBREAK_ONLY GL -37.21 and DD 28.56 versus target GL -18.82 / DD 9.66.",
+    "activity": "Best REBREAK_ONLY 104 trades versus target 75."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh02_s08_context_placement_parity.py",
+      "commit": "a2bb9c1a321c0edb8de4390c40911e32e9206d13",
+      "blob_sha": "1abb2f9078f995a2bd12e9d5a4c0d7e37f9082c1",
+      "file_sha256": "cccd58263dc0a8988f8cfd992b6a93c74fdbbcbfc0f575b9b86b9e1d0ee4db6f"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh02_s08_cleanroom_parity.py",
+      "blob_sha": "dcfca2f1ae61e45783de1bedc982d5434026dc29",
+      "file_sha256": "b5675413a094c36a619485fe299f59aa7840fc34f8c12b437fbcf0af71a26e26"
+    },
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "a78a8fe7550bd02433ce8a7d3fdae563fcd953e8"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "profiles": [
+        "CONTROL_BREAK_AND_REBREAK",
+        "BREAK_ONLY",
+        "REBREAK_ONLY",
+        "CONTINUOUS_ACTIVE_CONTEXT"
+      ],
+      "selected_profile": "REBREAK_ONLY_NONPROMOTING",
+      "context_algorithm": "raw 2-of-3 completed M15/M30/H1 parent direction",
+      "vector_fingerprint": "7c70b5304ff7"
+    },
+    "feature_order": [
+      "break-context placement",
+      "frozen DH02 lifecycle",
+      "rebreak-context placement",
+      "R9 lifecycle"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "clean-room semantic localization; no optimization"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_process_timeout_seconds": 120,
+      "elapsed_seconds": 14.46,
+      "faulthandler": true,
+      "python_unbuffered": true,
+      "isolated_numba_cache": true,
+      "producer_atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_preexecution_verification": true,
+      "control_gate": "12A signal SHA and 105/37 economics must reproduce exactly"
+    }
+  },
+  "inputs": [
+    {
+      "name": "12B context-placement evidence",
+      "path": "research/delta/reference/DELTA_R037_DH02_S08_CONTEXT_PLACEMENT_EVIDENCE_12B.json",
+      "commit": "28eae44224d4251851cb9c0991d17b22627f5210",
+      "blob_sha": "7465882cb0bf90633c55d4cadde43ebc9132f570",
+      "file_sha256": "8389b7b0f54142ca34bf9e6c6fab28aa14dee58e96cf85c1751713c7c6fc0709"
+    },
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "12A P75 causal features regenerated through verified helper"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH02_S08_CONTEXT_PLACEMENT_CHECKPOINT_12B.json",
+      "commit": "588f6b9e0fcec004c8be0bace0b54ad69ba3453d",
+      "blob_sha": "ecb4e6ab17772a71893d3895d66f683f2817183c",
+      "official_result_sha256": "48819841756342315c10c5a16e0f8c558b7f893b5cd43448bb0bab1e444596af"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH02_S08_CONTEXT_PLACEMENT_CHECKPOINT_12B.md",
+      "commit": "00365bf0dc7a9b7f1b9f2dbdfdce21c39f2ae33b",
+      "blob_sha": "cc2aa00b30166f99e8f108098b88da5b095d4836"
+    }
+  ],
+  "qa": [
+    "12A control reproduced exact signal SHA, 105 trades, 37 wins, GP +8.75, GL -37.73, net -28.98.",
+    "Producer/evidence/base-producer Git blobs verified before execution.",
+    "Canonical January SHA and Stage-A tick count verified.",
+    "REBREAK_ONLY ranks first but only changes 105/37 to 104/37; no missing historical winner is recovered.",
+    "BREAK_ONLY worsens to 107/37; CONTINUOUS_ACTIVE_CONTEXT reproduces 105/37.",
+    "All profiles retain 37 winners versus historical 42, falsifying context placement as the missing population mechanism.",
+    "R032 preserved S08 ownership increment is independently 71 entries both with and without S11 present.",
+    "No numeric retuning, no August, no SORB, no mature exit optimization, no MQL5.",
+    "Workbook tab 75 rows 381:390 written and read back."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh02_s08_context_placement_parity.py",
+    "command": "timeout 120s env PYTHONFAULTHANDLER=1 PYTHONUNBUFFERED=1 NUMBA_CACHE_DIR=<isolated> python <12B producer> --base-producer <12A producer> --source <canonical January> --evidence <12B evidence> --output <12B result>",
+    "timing_semantics": "Ordered Stage-A ticks; all 12A timing semantics frozen; only parent-context placement changes.",
+    "expected_fingerprints": {
+      "control_signal_sha256": "0f64c1f727c9fef6f9ee3676b1aa8d8a3df874b5a1c381d4a3bd6e6fe8657841",
+      "control": {
+        "trades": 105,
+        "raw_positive_wins": 37,
+        "net_profit": -28.98
+      },
+      "best": {
+        "profile": "REBREAK_ONLY",
+        "trades": 104,
+        "raw_positive_wins": 37,
+        "net_profit": -28.46
+      }
+    },
+    "selected_interpretation": "CONTEXT_PLACEMENT_REJECTED_AS_RESIDUAL_EXPLANATION"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — R032 specialist parity incomplete",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA semantics",
+    "ownership_scheduler_spec": "not ready",
+    "session_dst_spec": "frozen DELTA semantics",
+    "risk_spec": "fixed 0.01 research semantics",
+    "trade_count_parity_spec": "blocked pending S08 provenance close and DH03 specialist reconstruction",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH02_S08_CLEANROOM_PARITY_CHECKPOINT_12A",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A381:H390"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION",
+  "github_commits": [
+    "28eae44224d4251851cb9c0991d17b22627f5210",
+    "a2bb9c1a321c0edb8de4390c40911e32e9206d13",
+    "588f6b9e0fcec004c8be0bace0b54ad69ba3453d",
+    "00365bf0dc7a9b7f1b9f2dbdfdce21c39f2ae33b"
+  ]
+}
