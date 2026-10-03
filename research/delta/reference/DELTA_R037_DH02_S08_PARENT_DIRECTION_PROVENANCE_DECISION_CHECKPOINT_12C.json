@@ -1,0 +1,30 @@
+{
+  "schema": "delta-r037-dh02-s08-parent-direction-provenance-decision-12c-v1",
+  "status": "COMPLETE_PROVENANCE_LIMITATION_FREEZE",
+  "unit": "R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION",
+  "raw_ticks_accessed": false,
+  "numeric_vector_retune": false,
+  "vector_fingerprint": "7c70b5304ff7",
+  "gates": {
+    "dh02_requires_parent_context_at_entry": true,
+    "s08_vector_requires_dh01_parent_direction": true,
+    "exact_parent_algorithm_missing": true,
+    "12b_all_placements_fail_to_recover_winners": true,
+    "historical_winner_target_is_42": true,
+    "r032_incremental_s08_ownership_is_stable_71": true
+  },
+  "decision": {
+    "run_more_same_sample_parent_context_recuts": false,
+    "freeze_general_parent_context_semantic": "DH02-S08 entry requires causally valid DH01 parent context at rebreak/entry eligibility.",
+    "source_compatible_surrogate": "REBREAK_ONLY_RAW_PARENT_DIRECTION_CONTINUOUS_DWELL",
+    "promote_surrogate_as_historical_truth": false,
+    "claim_exact_historical_s08_parity": false,
+    "s08_stream_disposition": "PROVENANCE_LIMITED_SOURCE_COMPATIBLE_REBREAK_CONTEXT_NON_PROMOTING",
+    "preserve_r032_incremental_ownership_fingerprint": 71,
+    "reason": "Surviving source material preserves the requirement for DH01 parent context at entry but not the exact historical aggregation/veto algorithm. 12B moves that context requirement across every bounded source-grounded lifecycle placement and all variants remain stuck at 37 winners versus the historical 42. Further same-sample context permutations would be retrospective fitting rather than reconstruction.",
+    "next": "R037_DH03_S06_CLEANROOM_PARITY_RECONSTRUCTION"
+  },
+  "august_2026": "SEALED",
+  "sorb_integrated_replay_started": false,
+  "mql5_authorized": false
+}
