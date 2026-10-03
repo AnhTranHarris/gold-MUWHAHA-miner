@@ -1,0 +1,176 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH05_PROBE_QUALIFICATION_LIFECYCLE_CHECKPOINT_09E",
+  "status": "VERIFIED_DURABLE_MATERIAL_PARITY_BREAKTHROUGH_FULL_PARITY_NOT_ACHIEVED",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH05_ACCEPTANCE_FAILURE_REENTRY_CHECKPOINT_09D",
+  "hypothesis": "The residual DH05 probe/qualification mismatch is primarily a clock-origin error: max_probe_age belongs to each causal same-boundary attempt rather than the original boundary event.",
+  "falsification_condition": "The per-attempt clock fails to materially reduce the six-vector probe/qualified lifecycle error, or does so only by causing a compensating downstream mismatch.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "R037 DH05 preserved six-vector parity fingerprints",
+    "reference_count": 6,
+    "minimum_count": 6,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity reconstruction/QA only; all six frozen vectors retained."
+  },
+  "primary_metrics": {
+    "entry_quality": "Not optimized; this is state-semantic parity reconstruction.",
+    "hold_persistence": "Not optimized.",
+    "economics": "No economics promotion claim.",
+    "gross_loss_drawdown": "Not an optimization target.",
+    "activity": "Eight-stage six-vector funnel fingerprint."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_probe_qualification_lifecycle_parity.py",
+      "commit": "04356db0605033ab436e4d9513e9a56397778722",
+      "blob_sha": "e2ecd08b95b1538f4ce0403f9d73cb098c661c3a",
+      "file_sha256": "76ddaacd56a27e1ea5a8e451bdf20280eb29047ee595291afa90126fbf35a2f9"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "boundary_hypothesis": "SYMMETRIC_TWO_BAR_CONFIRMED_M5_SWING",
+      "probe_semantics": "REPEATED_CAUSAL_SAME_BOUNDARY_PREFAILURE_ATTEMPT_LEDGER",
+      "acceptance_semantics": "09D_STAGE_GATED_COMPLETED_BODY_DISPLACEMENT",
+      "selected_probe_clock_semantics": "ATTEMPT_LIFECYCLE_CLOCK",
+      "failure_clock": "START_AT_FAILURE_CANDIDATE",
+      "stage_a_surface": "DUKAS_COINEXX_LIKE_P75"
+    },
+    "feature_order": [
+      "probe",
+      "qualified",
+      "accepted",
+      "failure",
+      "reentry",
+      "reclaim",
+      "reversal",
+      "signal"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "parity reconstruction only; no optimization split"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "output_write": "NamedTemporaryFile + flush + fsync + os.replace",
+      "control_gate": "CONTROL_09D must exactly reproduce checkpoint-09D stage errors before result write"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "Checkpoint-09D parent",
+      "path": "research/delta/reference/DELTA_R037_DH05_ACCEPTANCE_FAILURE_REENTRY_CHECKPOINT_09D.json"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH05_PROBE_QUALIFICATION_LIFECYCLE_CHECKPOINT_09E.json",
+      "blob_sha": "f778eb108ef9bd839db2ea434ec30246ed004636",
+      "result_sha256": "39a64ba212124a84a7fe2df681171f330fde3661aa1ad8b204eb5c1d4b4d2eb9"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH05_PROBE_QUALIFICATION_LIFECYCLE_CHECKPOINT_09E.md",
+      "blob_sha": "c5b4d3a751d7236bd74c1ac4423e93165acbb73c"
+    }
+  ],
+  "qa": [
+    "Canonical January source hash verified.",
+    "Stage-A tick count 4,205,709 verified.",
+    "Final local producer git blob exactly matched committed GitHub blob before official compute.",
+    "First attempted official run failed closed because CONTROL_09D exposed an acceptance-stage source defect; no result file was written.",
+    "Corrected source was committed before the successful official compute.",
+    "CONTROL_09D reproduced checkpoint-09D stage errors exactly.",
+    "All six frozen vectors retained without numeric retuning.",
+    "Probe+qualified aggregate absolute error reduced 1,125 -> 554 (50.76%).",
+    "First-five-stage absolute error reduced 1,749 -> 920 (47.40%).",
+    "Downstream error reduced 205 -> 144 (29.76%).",
+    "Total eight-stage error reduced 1,954 -> 1,064 (45.55%).",
+    "Full historical DH05 parity is not claimed.",
+    "R037-SORB remains blocked; August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh05_probe_qualification_lifecycle_parity.py",
+    "command": "python research/delta/experiments/delta_r037_dh05_probe_qualification_lifecycle_parity.py --source <canonical_january_gzip> --output <checkpoint_09e_json>",
+    "timing_semantics": "Ordered ticks; Stage-A left-closed/right-open; completed bars visible only at right edge; repeated same-boundary attempts; per-attempt probe clock; failure-age begins at FAILURE_CANDIDATE.",
+    "expected_fingerprints": {
+      "control_stage_abs_error": {
+        "probe": 782,
+        "qualified": 343,
+        "accepted": 70,
+        "failure": 395,
+        "reentry": 159,
+        "reclaim": 75,
+        "reversal": 65,
+        "signal": 65
+      },
+      "candidate_stage_abs_error": {
+        "probe": 525,
+        "qualified": 29,
+        "accepted": 157,
+        "failure": 170,
+        "reentry": 39,
+        "reclaim": 38,
+        "reversal": 53,
+        "signal": 53
+      }
+    },
+    "selected_interpretation": "ATTEMPT_LIFECYCLE_CLOCK"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — parity repair research only",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "DELTA frozen semantics unchanged.",
+    "ownership_scheduler_spec": "No integrated R037 ownership replay in this unit.",
+    "session_dst_spec": "DELTA frozen semantics unchanged.",
+    "risk_spec": "Fixed 0.01 research semantics unchanged.",
+    "trade_count_parity_spec": "Blocked until full R032 specialist parity reconstruction succeeds.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH05_ACCEPTANCE_FAILURE_REENTRY_CHECKPOINT_09D",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "74 R037 DH05 Boundary QA",
+      "range": "A34:H49"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH05_EVENT_RESET_AND_BOUNDARY_IDENTITY_PARITY_RECONSTRUCTION"
+}
