@@ -1,0 +1,291 @@
+{
+  "schema": "delta-r037-dh05-probe-qualification-lifecycle-checkpoint-09e-v1",
+  "unit": "R037_DH05_PROBE_QUALIFICATION_CLOCK_AND_EVENT_LIFECYCLE_PARITY_RECONSTRUCTION",
+  "status": "COMPLETE_MATERIAL_PARITY_BREAKTHROUGH_FULL_PARITY_NOT_ACHIEVED",
+  "parent": "R037_DH05_ACCEPTANCE_FAILURE_REENTRY_CHECKPOINT_09D",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_window": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "producer_path": "research/delta/experiments/delta_r037_dh05_probe_qualification_lifecycle_parity.py",
+  "producer_commit": "04356db0605033ab436e4d9513e9a56397778722",
+  "producer_blob_sha": "e2ecd08b95b1538f4ce0403f9d73cb098c661c3a",
+  "producer_file_sha256": "76ddaacd56a27e1ea5a8e451bdf20280eb29047ee595291afa90126fbf35a2f9",
+  "frozen_semantics": {
+    "boundary": "SYMMETRIC_TWO_BAR_CONFIRMED_M5_SWING",
+    "probe": "REPEATED_CAUSAL_SAME_BOUNDARY_PREFAILURE_ATTEMPT_LEDGER",
+    "acceptance": "BREAK_ACCEPTED_ONLY_WHILE_QUALIFIED_PROBE_AND_SIGNED_COMPLETED_ACCEPTANCE_BAR_BODY_DISPLACEMENT_OVER_EVENT_M5_ATR_WITH_CLOSE_STILL_BEYOND_BOUNDARY",
+    "failure_clock": "MAX_FAILURE_AGE_STARTS_AT_FAILURE_CANDIDATE",
+    "numeric_vector_retune": false
+  },
+  "tested_profiles": [
+    "CONTROL_09D",
+    "ATTEMPT_STAGE1_CLOCK",
+    "ATTEMPT_LIFECYCLE_CLOCK",
+    "QUALIFIED_LIFECYCLE_CLOCK"
+  ],
+  "stage_order": [
+    "probe",
+    "qualified",
+    "accepted",
+    "failure",
+    "reentry",
+    "reclaim",
+    "reversal",
+    "signal"
+  ],
+  "control_09d": {
+    "stage_abs_error": {
+      "probe": 782,
+      "qualified": 343,
+      "accepted": 70,
+      "failure": 395,
+      "reentry": 159,
+      "reclaim": 75,
+      "reversal": 65,
+      "signal": 65
+    },
+    "probe_qualified_abs_error": 1125,
+    "first5_abs_error": 1749,
+    "downstream_abs_error": 205,
+    "total_abs_error": 1954
+  },
+  "leading_candidate": {
+    "profile": "ATTEMPT_LIFECYCLE_CLOCK",
+    "interpretation": "Each causal same-boundary re-attempt receives a fresh max_probe_age clock; after qualification, stage-2 remains anchored to that currently qualified attempt. max_failure_age still starts only at FAILURE_CANDIDATE.",
+    "stage_abs_error": {
+      "probe": 525,
+      "qualified": 29,
+      "accepted": 157,
+      "failure": 170,
+      "reentry": 39,
+      "reclaim": 38,
+      "reversal": 53,
+      "signal": 53
+    },
+    "probe_qualified_abs_error": 554,
+    "first5_abs_error": 920,
+    "downstream_abs_error": 144,
+    "total_abs_error": 1064,
+    "improvements_pct": {
+      "probe_qualified": 50.755556,
+      "first5": 47.398513,
+      "downstream": 29.756098,
+      "total": 45.547595
+    }
+  },
+  "diagnostic_profiles": {
+    "ATTEMPT_STAGE1_CLOCK": {
+      "probe_qualified_abs_error": 704,
+      "first5_abs_error": 945,
+      "downstream_abs_error": 154,
+      "total_abs_error": 1099
+    },
+    "QUALIFIED_LIFECYCLE_CLOCK": {
+      "probe_qualified_abs_error": 691,
+      "first5_abs_error": 1290,
+      "downstream_abs_error": 205,
+      "total_abs_error": 1495
+    }
+  },
+  "six_vector_funnel": {
+    "A03": {
+      "target": [
+        6731,
+        1009,
+        207,
+        797,
+        432,
+        266,
+        187,
+        187
+      ],
+      "control": [
+        6824,
+        899,
+        214,
+        685,
+        378,
+        228,
+        165,
+        165
+      ],
+      "candidate": [
+        6731,
+        1006,
+        247,
+        759,
+        425,
+        258,
+        184,
+        184
+      ]
+    },
+    "S05": {
+      "target": [
+        7875,
+        318,
+        28,
+        290,
+        51,
+        15,
+        9,
+        9
+      ],
+      "control": [
+        7709,
+        246,
+        38,
+        208,
+        44,
+        15,
+        6,
+        6
+      ],
+      "candidate": [
+        7731,
+        309,
+        47,
+        262,
+        52,
+        18,
+        8,
+        8
+      ]
+    },
+    "S06": {
+      "target": [
+        3470,
+        1606,
+        245,
+        1358,
+        1211,
+        683,
+        617,
+        617
+      ],
+      "control": [
+        3607,
+        1607,
+        253,
+        1354,
+        1199,
+        687,
+        645,
+        645
+      ],
+      "candidate": [
+        3579,
+        1606,
+        259,
+        1347,
+        1205,
+        692,
+        648,
+        648
+      ]
+    },
+    "S09": {
+      "target": [
+        7748,
+        208,
+        40,
+        168,
+        61,
+        40,
+        9,
+        9
+      ],
+      "control": [
+        7659,
+        162,
+        50,
+        112,
+        44,
+        30,
+        7,
+        7
+      ],
+      "candidate": [
+        7670,
+        206,
+        66,
+        140,
+        52,
+        34,
+        9,
+        9
+      ]
+    },
+    "S10": {
+      "target": [
+        6496,
+        1316,
+        202,
+        1106,
+        623,
+        294,
+        206,
+        206
+      ],
+      "control": [
+        6581,
+        1226,
+        212,
+        1014,
+        569,
+        275,
+        198,
+        198
+      ],
+      "candidate": [
+        6464,
+        1306,
+        222,
+        1084,
+        626,
+        303,
+        222,
+        222
+      ]
+    },
+    "S16": {
+      "target": [
+        7870,
+        135,
+        43,
+        92,
+        37,
+        18,
+        8,
+        8
+      ],
+      "control": [
+        7658,
+        111,
+        68,
+        43,
+        22,
+        14,
+        6,
+        6
+      ],
+      "candidate": [
+        7708,
+        130,
+        81,
+        49,
+        24,
+        15,
+        6,
+        6
+      ]
+    }
+  },
+  "decision": "CARRY_FORWARD_ATTEMPT_LIFECYCLE_CLOCK_AS_PARITY_HYPOTHESIS_FULL_DH05_PARITY_NOT_ACHIEVED",
+  "parity_complete": false,
+  "integrated_r037_sorb_started": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "next_unit": "R037_DH05_EVENT_RESET_AND_BOUNDARY_IDENTITY_PARITY_RECONSTRUCTION"
+}
