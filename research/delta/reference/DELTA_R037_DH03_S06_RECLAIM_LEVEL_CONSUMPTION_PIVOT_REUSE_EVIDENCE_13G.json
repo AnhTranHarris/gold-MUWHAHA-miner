@@ -1,0 +1,88 @@
+{
+  "schema": "delta-r037-dh03-s06-reclaim-level-consumption-pivot-reuse-evidence-13g-v1",
+  "status": "PREREGISTERED_BEFORE_COMPUTE",
+  "unit": "R037_DH03_S06_RECLAIM_LEVEL_CONSUMPTION_AND_PIVOT_REUSE_PARITY_RECONSTRUCTION",
+  "parent_checkpoint": "R037_DH03_S06_EVENT_IDENTITY_REARM_CHECKPOINT_13F",
+  "active_parent": "R032-C03_PLUS_DH02_S11_S08",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "canonical_stage_a": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "ticks": 4205709,
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+  },
+  "vector": {
+    "id": "DH03-S06",
+    "fingerprint": "a3a086b7344c",
+    "numeric_retune": false
+  },
+  "source_basis": {
+    "white_paper_drive_document_id": "13pa0KSxVy93yajDEGAIkeY4V8Z3egMDIPxPV0nM3ia8",
+    "reclaim_text": "LOCAL_RECLAIM: price closes on S5 back through a causally known fast pivot/reclaim level in parent direction d.",
+    "causal_implications": [
+      "\"back through\" can mean an actual completed-S5 edge crossing rather than merely being beyond the level",
+      "a reclaim pivot may be an event-owned state object that is consumed by a successful reclaim/reacceleration attempt rather than freely reusable forever"
+    ],
+    "prior_bounds": {
+      "strict_unlimited_reuse": "1513 trades / 674 raw-positive / net -339.14",
+      "inherited_first_unlimited_reuse": "1610 trades / 716 raw-positive / net -362.29",
+      "historical_target": "1563 trades / 690 raw-positive / net -338.93"
+    }
+  },
+  "frozen_semantics": [
+    "13C same-original-pullback fresh-exhaustion rearm",
+    "13E original-event lifetime constraint retained as causal diagnostic only",
+    "13F S15 reclaim pivot ownership search result; no 13F profile promoted",
+    "completed S5 reclaim and later completed-S5 reacceleration",
+    "one-position DROP_OCCUPIED primary execution ledger",
+    "all DH03-S06 numeric thresholds"
+  ],
+  "profiles": [
+    {
+      "id": "STRICT_CLOSE_BEYOND_CONTROL",
+      "semantics": "13F strict post-original-pullback pivot, unlimited reuse, current completed S5 close only must be beyond level."
+    },
+    {
+      "id": "INHERITED_FIRST_CLOSE_BEYOND_CONTROL",
+      "semantics": "13F inherited-first profile, unlimited reuse, current completed S5 close beyond level."
+    },
+    {
+      "id": "STRICT_TRUE_EDGE_CROSS",
+      "semantics": "post-original-pullback pivot; completed S5 reclaim requires previous completed S5 close on the adverse side/equal and current close on parent side."
+    },
+    {
+      "id": "INHERITED_FIRST_TRUE_EDGE_CROSS",
+      "semantics": "first attempt may inherit an already-causal pivot, later attempts require post-original-pullback pivot; every reclaim requires a true completed-S5 edge crossing."
+    },
+    {
+      "id": "STRICT_CONSUME_USED_PIVOT",
+      "semantics": "strict post-original-pullback provenance; after a successful ENTRY_ELIGIBLE signal the exact reclaim pivot identity used by that attempt is consumed and cannot be reused until a different causal pivot identity is current."
+    },
+    {
+      "id": "INHERITED_FIRST_CONSUME_USED_PIVOT",
+      "semantics": "first attempt may inherit any already-causal pivot; after signal the pivot identity used by the successful attempt is consumed; later pivot must be post-original-pullback and different from the consumed identity."
+    },
+    {
+      "id": "INHERITED_FIRST_EDGE_CROSS_CONSUME",
+      "semantics": "combine inherited-first provenance, actual completed-S5 edge crossing, and successful-attempt pivot consumption."
+    }
+  ],
+  "selection_rule": "No threshold tuning. Preserve exact 13F strict and inherited-first controls. Prefer a source-compatible crossing/consumption rule only if it materially narrows trade-count and raw-win gaps while preserving the near-historical economic scale; exact count alone is insufficient.",
+  "forbidden": [
+    "numeric threshold retuning",
+    "new time/price freshness number",
+    "pending TTL tuning",
+    "future pivot use",
+    "exit changes",
+    "simultaneous positions",
+    "August access",
+    "SORB integration",
+    "capital/lot changes",
+    "MQL5"
+  ],
+  "next_if_exact": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
+  "next_if_material_nonexact": "R037_DH03_S06_RECLAIM_CROSS_EVENT_STATE_PARITY_RECONSTRUCTION",
+  "next_if_negative": "R037_DH03_S06_SIGNAL_GENERATOR_RESIDUAL_PROVENANCE_DECISION",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
