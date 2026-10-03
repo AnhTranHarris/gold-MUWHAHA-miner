@@ -11,28 +11,28 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_REARM_CHECKPOINT_11D",
-    "current_phase": "R037_DH02_S11_CONTEXT_INVALID_BREAK_ADMISSION_PROVENANCE_DECISION_NEXT",
-    "first_incomplete_unit": "R037_DH02_S11_CONTEXT_INVALID_BREAK_ADMISSION_PROVENANCE_DECISION",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_REARM_CHECKPOINT_11D_MANIFEST.json",
-    "current_state_commit": "8e87a942436ef51cf406d1e60fb0fa18eb8abe56",
-    "current_state_ci_run": 37152961289,
+    "last_verified_durable_unit": "R037_DH02_S11_CONTEXT_INVALID_BREAK_PROVENANCE_DECISION_11E",
+    "current_phase": "R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_PARITY_FINGERPRINT_NEXT",
+    "first_incomplete_unit": "R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_PARITY_FINGERPRINT",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH02_S11_CONTEXT_INVALID_BREAK_PROVENANCE_DECISION_11E_MANIFEST.json",
+    "current_state_commit": "fb26fbf5a4d4ec14152277c702eb33b5a0a5fdd9",
+    "current_state_ci_run": 37153185967,
     "current_state_ci_conclusion": "success"
   },
   "in_flight_unit": {
-    "unit": "R037_DH02_S11_CONTEXT_INVALID_BREAK_ADMISSION_PROVENANCE_DECISION",
-    "status": "EVIDENCE_AND_PRODUCER_COMMITTED_OFFICIAL_DECISION_NOT_YET_DURABLE",
+    "unit": "R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_PARITY_FINGERPRINT",
+    "status": "EVIDENCE_AND_PRODUCER_COMMITTED_OFFICIAL_COMPUTE_NOT_YET_DURABLE",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_DH02_S11_CONTEXT_INVALID_BREAK_PROVENANCE_EVIDENCE_11E.json",
-        "commit": "74950439a8d333055b4968abd61cada5c993e5f4"
+        "path": "research/delta/reference/DELTA_R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_EVIDENCE_11F.json",
+        "commit": "d5539a1dcc891845d057e9b82216c862a0687e36"
       },
       {
-        "path": "research/delta/experiments/delta_r037_dh02_s11_context_invalid_break_provenance_decision.py",
-        "commit": "6736e7d65be38592f5a67cc90d0b76bfe4935506"
+        "path": "research/delta/experiments/delta_r037_dh02_s11_failure_persistence_state_memory.py",
+        "commit": "b97586d0f970fd9dd831725a5f9be9b1e529a967"
       }
     ],
-    "next_action": "Verify committed blobs from recovery snapshot and run deterministic 11E provenance producer."
+    "next_action": "Use producer recovery snapshot, verify exact blobs/canonical January SHA, run bounded 11F replay."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
