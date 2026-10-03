@@ -1,0 +1,37 @@
+{
+  "schema": "delta-r037-dh05-boundary-freeze-checkpoint-v1",
+  "status": "COMPLETE_NEGATIVE_QA",
+  "unit": "R037_DH05_ACTIVE_M5_BOUNDARY_FREEZE_DIAGNOSTIC",
+  "baseline_trades": {
+    "A03": 187,
+    "S05": 9,
+    "S06": 617,
+    "S09": 9,
+    "S10": 206,
+    "S16": 8
+  },
+  "freeze_trades": {
+    "A03": 189,
+    "S05": 9,
+    "S06": 625,
+    "S09": 10,
+    "S10": 208,
+    "S16": 8
+  },
+  "targets": {
+    "A03": 306,
+    "S05": 51,
+    "S06": 615,
+    "S09": 119,
+    "S10": 206,
+    "S16": 24
+  },
+  "decision": "REJECT_AS_PRIMARY_PARITY_DEFECT",
+  "next": "R037_DH05_PARITY_RECLAIM_CONFIRMATION_CLOCK_AND_BUFFER_SEMANTICS",
+  "diagnostic_hashes": {
+    "source": "011f197c59c25be23d25c0904fcdb5477bbee786fcb898162654a6c8fbd7ef4a",
+    "output": "6cbfe686054181f8757e3eb63b6c67dbfbe6ee94f93eff71ee6e2335ac145687"
+  },
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
