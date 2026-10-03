@@ -1,0 +1,113 @@
+{
+  "schema": "delta-r037-dh03-s06-pending-validity-checkpoint-13e-v1",
+  "status": "COMPLETE_NEGATIVE_LOCALIZATION_FULL_PARITY_NOT_ACHIEVED",
+  "unit": "R037_DH03_S06_PENDING_ATTEMPT_VALIDITY_AND_SUPERSESSION_PARITY_RECONSTRUCTION",
+  "parent": "R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_CHECKPOINT_13D",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "vector_fingerprint": "a3a086b7344c",
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_dh03_s06_pending_validity_parity.py",
+    "commit": "82e66ee73bd88606e96bb358c3364bc42e41875c",
+    "blob_sha": "188e5ec0598e4fc211fef8b349c313c0c1b77d05",
+    "sha256": "e63144c980a35775136e59ceacedc0d3beb611bdc76c37d6fabf38170948bcf2"
+  },
+  "lifecycle_engine": {
+    "path": "research/delta/experiments/delta_r037_dh03_s06_pending_validity_engine.py",
+    "commit": "b5cb770c2eb8a6c52493860c748034fdba417752",
+    "blob_sha": "6f7ba9f3dfb832979612553d0a81bd837c5a5a34",
+    "sha256": "5402f56edc907d66d362724c917ebccf846c3f524a98d7e397b22056a8c116aa"
+  },
+  "evidence": {
+    "path": "research/delta/reference/DELTA_R037_DH03_S06_PENDING_VALIDITY_EVIDENCE_13E.json",
+    "commit": "5c1f265671a53d10a44df166011cd43f339b741c",
+    "blob_sha": "bc752f615ab40f8c3f996dac23ce364c71dcdb88",
+    "sha256": "1999162af13298d6a7895262f17ab86592f42b6c62083f1f46b57e7751574549"
+  },
+  "official_compute": {
+    "elapsed_seconds": 11.63,
+    "peak_rss_kb": 698588,
+    "raw_result_sha256": "7621dcb5286a7aca531762a7869b5f6d36e66072382287e49c78e54bf1a21d26",
+    "generator_changed": false,
+    "numeric_vector_retune": false,
+    "august_accessed": false
+  },
+  "target": {
+    "trades": 1563,
+    "raw_positive_wins": 690,
+    "gross_profit": 151.82,
+    "gross_loss": -490.75,
+    "net_profit": -338.93,
+    "max_balance_drawdown": 339.25
+  },
+  "episode_end_reasons": {
+    "parent_opposition": 4,
+    "structural_invalidation": 489,
+    "max_age_expiry": 654,
+    "active_at_stage_a_end": 0
+  },
+  "profiles": {
+    "DROP_OCCUPIED_CONTROL": {
+      "trades": 1513,
+      "raw_positive_wins": 674,
+      "official_wins": 661,
+      "gross_profit": 137.12,
+      "gross_loss": -476.26,
+      "net_profit": -339.14,
+      "max_balance_drawdown": 339.14
+    },
+    "PENDING_UNCONDITIONAL_CONTROL": {
+      "trades": 1586,
+      "raw_positive_wins": 703,
+      "official_wins": 690,
+      "gross_profit": 141.28,
+      "gross_loss": -499.35,
+      "net_profit": -358.07,
+      "max_balance_drawdown": 358.07,
+      "pending_created": 83,
+      "pending_admitted": 83
+    },
+    "PENDING_PARENT_VALID": {
+      "trades": 1586,
+      "raw_positive_wins": 703,
+      "net_profit": -358.07,
+      "pending_invalid_total": 0
+    },
+    "PENDING_PARENT_STRUCTURE_VALID": {
+      "trades": 1586,
+      "raw_positive_wins": 703,
+      "net_profit": -358.07,
+      "pending_invalid_total": 0
+    },
+    "PENDING_FULL_EVENT_VALID": {
+      "trades": 1584,
+      "raw_positive_wins": 702,
+      "official_wins": 689,
+      "gross_profit": 141.06,
+      "gross_loss": -498.77,
+      "net_profit": -357.71,
+      "max_balance_drawdown": 357.71,
+      "pending_created": 83,
+      "pending_admitted": 81,
+      "pending_invalid_age": 2,
+      "pending_invalid_total": 2
+    }
+  },
+  "finding": {
+    "canonical_profile": "PENDING_FULL_EVENT_VALID",
+    "full_event_trade_gap": 21,
+    "full_event_raw_win_gap": 12,
+    "pending_invalidated_total": 2,
+    "pending_invalid_parent": 0,
+    "pending_invalid_structure": 0,
+    "pending_invalid_age": 2,
+    "interpretation": "Causal original-event death filters only two pending tokens and therefore cannot explain the 23-trade over-admission of unconditional pending. Admission validity is not the dominant residual.",
+    "decision": "DO_NOT_TUNE_PENDING_TTL; PRESERVE EVENT-LIFETIME RULE AS CAUSAL CONSTRAINT BUT RETURN RESIDUAL SEARCH TO EVENT/RECLAIM IDENTITY",
+    "exact_historical_parity": false,
+    "next": "R037_DH03_S06_PENDING_EVENT_IDENTITY_AND_REARM_BOUNDARY_PARITY_RECONSTRUCTION"
+  },
+  "integrated_r037_replay_started": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
