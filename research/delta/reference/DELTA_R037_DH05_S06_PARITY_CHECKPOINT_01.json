@@ -1,0 +1,91 @@
+{
+  "schema": "delta-r037-dh05-s06-parity-checkpoint-v1",
+  "status": "IN_PROGRESS_NO_PARITY_CLAIM",
+  "unit": "R037_DH05_S06_EXACT_FIXTURE_RECONSTRUCTION_AND_PARITY",
+  "parent": "R032-C03_PLUS_DH02_S11_S08",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "cold_start": true
+  },
+  "authoritative_fixture": {
+    "vector_id": "DH05-S06",
+    "vector_short_hash": "086cfeff0e2b",
+    "signals": 672,
+    "trades": 615,
+    "wins": 307,
+    "win_rate_pct": 49.918699,
+    "gross_profit_usd": 63.19,
+    "gross_loss_usd": -164.27,
+    "net_usd": -101.08,
+    "max_balance_dd_usd": 101.51,
+    "expectancy_usd": -0.164358,
+    "activity_pct": 3.660496,
+    "fixture_sha256": "2deb601035d3e460f6de76ab8045b890ba7c5065b00a8815fceaf482916e2eae"
+  },
+  "recovered_provenance": {
+    "historical_generator_name": "r013_selective_handoff.py",
+    "historical_generator_recoverable": false,
+    "r005_speedrun_sha256": "43adbc79bbe95188e3d9ccd452519da6a23a9e58bffa425dc177285cdf054b5a",
+    "r005_observers_sha256": "c1e1b331d1acdff222cbe469d65abf326f89120cefc7de91ec771883506ddb71",
+    "r005_specialists_sha256": "fe1ccb8112f5bf37c83e7ce9e9dd82f782397a7710029716a61c159e4005afe0",
+    "secondary_vectors_sha256": "3687057223837d41a4391a3182d25e8188ce383a3e2496068ca4e15c07ca26fc",
+    "dh05_results_sha256": "38a99c46de7e7613a8732513d33b10ec457872d6e323503eedeb615e1c8234de"
+  },
+  "qa_findings": {
+    "causal_boundary_reeligibility_required": true,
+    "exact_672_signal_matches_found_but_ledger_parity_failed": true,
+    "exact_672_examples": [
+      {
+        "signals": 672,
+        "trades": 647,
+        "wins": 286,
+        "net_usd": -140
+      },
+      {
+        "signals": 672,
+        "trades": 650,
+        "wins": 284,
+        "net_usd": -141.97
+      }
+    ],
+    "near_economic_example": {
+      "signals": 670,
+      "trades": 645,
+      "wins": 310,
+      "net_usd": -120.29
+    },
+    "full_r9_s1_quality_gate_rejected": true,
+    "atr_reference_survivor": "M5",
+    "non_m5_atr_rejected_for_current_path": true,
+    "confirmed_micro_pivot_reversal_semantics_rejected": true,
+    "six_vector_authoritative_trade_fingerprint": {
+      "DH05-A03": 306,
+      "DH05-S05": 51,
+      "DH05-S06": 615,
+      "DH05-S09": 119,
+      "DH05-S10": 206,
+      "DH05-S16": 24
+    },
+    "representative_bad_current_counts": {
+      "DH05-A03": 51,
+      "DH05-S05": 0,
+      "DH05-S09": 8,
+      "DH05-S10": 6,
+      "DH05-S16": 1
+    }
+  },
+  "rejected_shortcuts": [
+    "PERMANENT_BOUNDARY_CONSUMPTION",
+    "FULL_R9_S1_QUALITY_GATE_FOR_DH05_ADMISSION",
+    "NON_M5_ATR_NORMALIZATION_FOR_CURRENT_PARITY_PATH",
+    "SEPARATELY_CONFIRMED_REVERSAL_PIVOT_IMPLEMENTATION",
+    "EXACT_672_SIGNAL_COUNT_AS_SUFFICIENT_PARITY",
+    "RETUNE_FROZEN_DH05_S06_NUMERIC_PARAMETERS"
+  ],
+  "first_incomplete_substep": "R037_DH05_S06_PARITY_RECONSTRUCT_REVERSAL_REBREAK_SEMANTICS_USING_M5_SWING_SIX_VECTOR_FINGERPRINT",
+  "integrated_r037_replay_started": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
