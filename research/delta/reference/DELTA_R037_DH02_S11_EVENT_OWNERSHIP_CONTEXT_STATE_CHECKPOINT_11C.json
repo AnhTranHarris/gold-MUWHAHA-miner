@@ -1,0 +1,151 @@
+{
+  "schema": "delta-r037-dh02-s11-event-ownership-context-state-parity-11c-v1",
+  "status": "COMPLETE_CLEANROOM_PARITY_FAIL_LOCALIZED",
+  "unit": "R037_DH02_S11_EVENT_OWNERSHIP_AND_CONTEXT_STATE_PARITY_RECONSTRUCTION",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "vector_fingerprint": "50d1bb2e656e",
+  "numeric_vector_retune": false,
+  "august_accessed": false,
+  "profiles": {
+    "CONTROL_BREAK_REBREAK_CONTEXT": {
+      "actual": {
+        "signals": 106,
+        "signal_sha256": "803fc20c55ed1d7f30356f2610392c12e6b43544f7f512bdd347cead69901dab",
+        "breaks": 278,
+        "accepted": 276,
+        "retests": 236,
+        "failed": 130,
+        "expired": 42,
+        "context_vetoes": 86547,
+        "boundary_reveal_vetoes": 0,
+        "prebreak_disarms": 0,
+        "trades": 106,
+        "raw_positive_wins": 42,
+        "official_wins": 42,
+        "gross_profit": 7.799999999999998,
+        "gross_loss": -35.100000000000044,
+        "net_profit": -27.300000000000047,
+        "max_balance_drawdown": 27.439999999362044
+      },
+      "abs_error": {
+        "trades": 31,
+        "raw_positive_wins": 1,
+        "gross_profit": 1.5900000000000025,
+        "gross_loss": 17.500000000000043,
+        "net_profit": 19.090000000000046
+      },
+      "parity_score": 3163.1800000000003
+    },
+    "BOUNDARY_REVEAL_ELIGIBILITY": {
+      "actual": {
+        "signals": 92,
+        "signal_sha256": "89a05335eff35cbc02fc50b179105a99b94ff84ed02400965224d1ac9948f47d",
+        "breaks": 219,
+        "accepted": 217,
+        "retests": 197,
+        "failed": 107,
+        "expired": 20,
+        "context_vetoes": 11305,
+        "boundary_reveal_vetoes": 335,
+        "prebreak_disarms": 0,
+        "trades": 92,
+        "raw_positive_wins": 34,
+        "official_wins": 34,
+        "gross_profit": 6.999999999999999,
+        "gross_loss": -31.450000000000067,
+        "net_profit": -24.450000000000067,
+        "max_balance_drawdown": 24.58999999947264
+      },
+      "abs_error": {
+        "trades": 17,
+        "raw_positive_wins": 7,
+        "gross_profit": 2.3900000000000015,
+        "gross_loss": 13.850000000000065,
+        "net_profit": 16.240000000000066
+      },
+      "parity_score": 1907.4800000000002
+    },
+    "PREBREAK_DISARM_ON_CONFLICT": {
+      "actual": {
+        "signals": 91,
+        "signal_sha256": "07674033e4269d65c13e5311165e0b4f9b379c99fa9cf58f08feedf834e834c3",
+        "breaks": 207,
+        "accepted": 205,
+        "retests": 190,
+        "failed": 101,
+        "expired": 15,
+        "context_vetoes": 0,
+        "boundary_reveal_vetoes": 0,
+        "prebreak_disarms": 486,
+        "trades": 91,
+        "raw_positive_wins": 33,
+        "official_wins": 33,
+        "gross_profit": 6.829999999999999,
+        "gross_loss": -31.440000000000065,
+        "net_profit": -24.610000000000067,
+        "max_balance_drawdown": 24.74999999947613
+      },
+      "abs_error": {
+        "trades": 16,
+        "raw_positive_wins": 8,
+        "gross_profit": 2.5600000000000014,
+        "gross_loss": 13.840000000000064,
+        "net_profit": 16.400000000000066
+      },
+      "parity_score": 1832.8000000000002
+    },
+    "REVEAL_ELIGIBILITY_PLUS_PREBREAK_DISARM": {
+      "actual": {
+        "signals": 91,
+        "signal_sha256": "07674033e4269d65c13e5311165e0b4f9b379c99fa9cf58f08feedf834e834c3",
+        "breaks": 207,
+        "accepted": 205,
+        "retests": 190,
+        "failed": 101,
+        "expired": 15,
+        "context_vetoes": 0,
+        "boundary_reveal_vetoes": 335,
+        "prebreak_disarms": 151,
+        "trades": 91,
+        "raw_positive_wins": 33,
+        "official_wins": 33,
+        "gross_profit": 6.829999999999999,
+        "gross_loss": -31.440000000000065,
+        "net_profit": -24.610000000000067,
+        "max_balance_drawdown": 24.74999999947613
+      },
+      "abs_error": {
+        "trades": 16,
+        "raw_positive_wins": 8,
+        "gross_profit": 2.5600000000000014,
+        "gross_loss": 13.840000000000064,
+        "net_profit": 16.400000000000066
+      },
+      "parity_score": 1832.8000000000002
+    }
+  },
+  "control_11b_reproduced_exactly": true,
+  "ranking": [
+    "PREBREAK_DISARM_ON_CONFLICT",
+    "REVEAL_ELIGIBILITY_PLUS_PREBREAK_DISARM",
+    "BOUNDARY_REVEAL_ELIGIBILITY",
+    "CONTROL_BREAK_REBREAK_CONTEXT"
+  ],
+  "finding": {
+    "leading_profile": "PREBREAK_DISARM_ON_CONFLICT",
+    "exact_historical_parity": false,
+    "target": {
+      "trades": 75,
+      "raw_positive_wins": 41,
+      "gross_profit": 9.39,
+      "gross_loss": -17.6,
+      "net_profit": -8.21
+    },
+    "selection_rule_pass": false,
+    "interpretation": "ARMED/pre-break context placement is high leverage for activity but permanent boundary consumption removes too many historical winners; do not promote.",
+    "next": "R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_AND_REARM_PARITY_FINGERPRINT"
+  },
+  "mql5_authorized": false
+}
