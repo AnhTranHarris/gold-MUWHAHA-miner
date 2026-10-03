@@ -11,22 +11,19 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_DH02_S08_CONTEXT_PLACEMENT_CHECKPOINT_12B",
-    "current_phase": "R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION_NEXT",
-    "first_incomplete_unit": "R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH02_S08_CONTEXT_PLACEMENT_CHECKPOINT_12B_MANIFEST.json",
-    "current_state_commit": "c045798d750c0d2c1559cc95dfc5973ca45dd5be",
-    "current_state_ci_run": 37155631120,
+    "last_verified_durable_unit": "R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION_CHECKPOINT_12C",
+    "current_phase": "R037_DH03_S06_CLEANROOM_PARITY_RECONSTRUCTION_NEXT",
+    "first_incomplete_unit": "R037_DH03_S06_CLEANROOM_PARITY_RECONSTRUCTION",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION_CHECKPOINT_12C_MANIFEST.json",
+    "current_state_commit": "a73aa0cfdb378fb3da5edd391eccd4dbc48d6d1b",
+    "current_state_ci_run": 37155862344,
     "current_state_ci_conclusion": "success"
   },
   "in_flight_unit": {
-    "unit": "R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION",
-    "status": "EVIDENCE_AND_PRODUCER_COMMITTED",
-    "committed_artifacts": [
-      "research/delta/reference/DELTA_R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_EVIDENCE_12C.json",
-      "research/delta/experiments/delta_r037_dh02_s08_parent_direction_provenance_decision.py"
-    ],
-    "next_action": "Run deterministic provenance gates; if no independently preserved exact parent-direction algorithm exists, freeze S08 as non-promoting source-compatible surrogate and advance to DH03-S06."
+    "unit": "R037_DH03_S06_CLEANROOM_PARITY_RECONSTRUCTION",
+    "status": "NOT_STARTED_FROM_DURABLE_12C",
+    "committed_artifacts": [],
+    "next_action": "Freeze DH03-S06 historical fixture and immutable vector/source provenance; commit clean-room producer before canonical January Stage-A replay; no numeric retuning."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
