@@ -1,0 +1,110 @@
+{
+  "schema": "delta-r037-dh03-s06-reclaim-level-consumption-pivot-reuse-checkpoint-13g-v1",
+  "status": "COMPLETE_STRONG_NEGATIVE_QA_RECLAIM_EDGE_CONSUMPTION_REJECTED",
+  "unit": "R037_DH03_S06_RECLAIM_LEVEL_CONSUMPTION_AND_PIVOT_REUSE_PARITY_RECONSTRUCTION",
+  "parent_checkpoint": "R037_DH03_S06_EVENT_IDENTITY_REARM_CHECKPOINT_13F",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "vector_fingerprint": "a3a086b7344c",
+  "numeric_vector_retune": false,
+  "official_raw_result_sha256": "25c685e579ab30728dbc2cd649ecc22fdb94000a0371813ef272aeb07da8cbdb",
+  "runtime_seconds": 9.92,
+  "peak_rss_kb": 697992,
+  "target": {
+    "trades": 1563,
+    "raw_positive_wins": 690,
+    "gross_profit": 151.82,
+    "gross_loss": -490.75,
+    "net_profit": -338.93,
+    "max_balance_drawdown": 339.25
+  },
+  "controls": {
+    "STRICT_CLOSE_BEYOND_CONTROL": {
+      "signals": 1586,
+      "trades": 1513,
+      "raw_positive_wins": 674,
+      "official_wins": 661,
+      "gross_profit": 137.12,
+      "gross_loss": -476.26,
+      "net_profit": -339.14,
+      "max_balance_drawdown": 339.14,
+      "parity_score": 5429.51
+    },
+    "INHERITED_FIRST_CLOSE_BEYOND_CONTROL": {
+      "signals": 1683,
+      "trades": 1610,
+      "raw_positive_wins": 716,
+      "official_wins": 703,
+      "gross_profit": 144.63,
+      "gross_loss": -506.92,
+      "net_profit": -362.29,
+      "max_balance_drawdown": 362.29,
+      "parity_score": 5419.76
+    }
+  },
+  "tested_candidates": {
+    "STRICT_TRUE_EDGE_CROSS": {
+      "signals": 1084,
+      "trades": 1081,
+      "raw_positive_wins": 484,
+      "net_profit": -240.34,
+      "reclaim": 1101,
+      "edge_reclaims": 1101,
+      "parity_score": 53750.8
+    },
+    "INHERITED_FIRST_TRUE_EDGE_CROSS": {
+      "signals": 1173,
+      "trades": 1170,
+      "raw_positive_wins": 524,
+      "net_profit": -260.09,
+      "reclaim": 1190,
+      "inherited_reclaims": 94,
+      "edge_reclaims": 1190,
+      "parity_score": 43776.77
+    },
+    "STRICT_CONSUME_USED_PIVOT": {
+      "signals": 993,
+      "trades": 992,
+      "raw_positive_wins": 451,
+      "net_profit": -214.03,
+      "reclaim": 1007,
+      "consume_blocks": 5710,
+      "parity_score": 63567.41
+    },
+    "INHERITED_FIRST_CONSUME_USED_PIVOT": {
+      "signals": 1093,
+      "trades": 1092,
+      "raw_positive_wins": 494,
+      "net_profit": -238.26,
+      "reclaim": 1107,
+      "inherited_reclaims": 102,
+      "consume_blocks": 5692,
+      "parity_score": 52404.62
+    },
+    "INHERITED_FIRST_EDGE_CROSS_CONSUME": {
+      "signals": 1049,
+      "trades": 1049,
+      "raw_positive_wins": 474,
+      "net_profit": -230.03,
+      "reclaim": 1062,
+      "inherited_reclaims": 94,
+      "edge_reclaims": 1062,
+      "consume_blocks": 5542,
+      "parity_score": 57237.83
+    }
+  },
+  "finding": {
+    "leading_source_candidate": "INHERITED_FIRST_TRUE_EDGE_CROSS",
+    "leading_trade_gap": -393,
+    "leading_raw_win_gap": -166,
+    "exact_historical_parity": false,
+    "material_nonexact": false,
+    "interpretation": "Literal completed-S5 edge crossing and one-use pivot consumption are both far too restrictive. The historical residual is not explained by a conventional one-retest-per-level state machine.",
+    "decision": "REJECT_TRUE_EDGE_CROSS_AND_PIVOT_CONSUMPTION_AS_PRIMARY_RESIDUAL",
+    "next": "R037_DH03_S06_SIGNAL_GENERATOR_RESIDUAL_PROVENANCE_DECISION"
+  },
+  "august_2026": "SEALED",
+  "integrated_r037_replay_started": false,
+  "mql5_authorized": false
+}
