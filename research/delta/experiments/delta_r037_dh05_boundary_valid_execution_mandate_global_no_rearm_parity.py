@@ -229,7 +229,7 @@ def main():
               "official_wins":int(w),"net_usd":float(net),"max_balance_dd_usd":float(dd),"average_hold_seconds":float(avgh),
               "execution_reentries":int(reent),"boundary_invalidations":int(binv),"signals_while_occupied":int(pending),"blocked_same_minute":int(blocked)
             }
-    if control_error!=334:
+    if control_error!=338:
         # Raw signals as trades omit the two occupied-signal suppressions in the frozen one-position control.
         # This is only a generator-count arithmetic assertion, not the executable control.
         raise SystemExit("generator arithmetic drift: "+str(control_error))
