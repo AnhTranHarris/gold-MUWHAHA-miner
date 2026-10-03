@@ -11,28 +11,28 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_DH02_S11_EVENT_OWNERSHIP_CONTEXT_STATE_CHECKPOINT_11C",
-    "current_phase": "R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_AND_REARM_PARITY_FINGERPRINT_NEXT",
-    "first_incomplete_unit": "R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_AND_REARM_PARITY_FINGERPRINT",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH02_S11_EVENT_OWNERSHIP_CONTEXT_STATE_CHECKPOINT_11C_MANIFEST.json",
-    "current_state_commit": "5ad61005ac887449945ee93efddfb9936c016d48",
-    "current_state_ci_run": 37152659740,
+    "last_verified_durable_unit": "R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_REARM_CHECKPOINT_11D",
+    "current_phase": "R037_DH02_S11_CONTEXT_INVALID_BREAK_ADMISSION_PROVENANCE_DECISION_NEXT",
+    "first_incomplete_unit": "R037_DH02_S11_CONTEXT_INVALID_BREAK_ADMISSION_PROVENANCE_DECISION",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_REARM_CHECKPOINT_11D_MANIFEST.json",
+    "current_state_commit": "8e87a942436ef51cf406d1e60fb0fa18eb8abe56",
+    "current_state_ci_run": 37152961289,
     "current_state_ci_conclusion": "success"
   },
   "in_flight_unit": {
-    "unit": "R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_AND_REARM_PARITY_FINGERPRINT",
-    "status": "EVIDENCE_AND_PRODUCER_COMMITTED_OFFICIAL_COMPUTE_NOT_YET_DURABLE",
+    "unit": "R037_DH02_S11_CONTEXT_INVALID_BREAK_ADMISSION_PROVENANCE_DECISION",
+    "status": "EVIDENCE_AND_PRODUCER_COMMITTED_OFFICIAL_DECISION_NOT_YET_DURABLE",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_REARM_EVIDENCE_11D.json",
-        "commit": "626148ece63468e2c3f60ca33a31e7c213672b19"
+        "path": "research/delta/reference/DELTA_R037_DH02_S11_CONTEXT_INVALID_BREAK_PROVENANCE_EVIDENCE_11E.json",
+        "commit": "74950439a8d333055b4968abd61cada5c993e5f4"
       },
       {
-        "path": "research/delta/experiments/delta_r037_dh02_s11_armed_boundary_lifetime_rearm.py",
-        "commit": "0e0cbe48fbbf07157b79e2bbcca26462cbc9ce3f"
+        "path": "research/delta/experiments/delta_r037_dh02_s11_context_invalid_break_provenance_decision.py",
+        "commit": "6736e7d65be38592f5a67cc90d0b76bfe4935506"
       }
     ],
-    "next_action": "Use the producer commit recovery snapshot; verify producer/evidence blobs and canonical January SHA; run bounded 11D replay."
+    "next_action": "Verify committed blobs from recovery snapshot and run deterministic 11E provenance producer."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
