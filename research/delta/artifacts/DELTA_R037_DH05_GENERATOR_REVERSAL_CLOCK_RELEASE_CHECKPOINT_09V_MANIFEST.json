@@ -1,0 +1,195 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH05_GENERATOR_REVERSAL_CLOCK_RELEASE_CHECKPOINT_09V",
+  "status": "VERIFIED_DURABLE_NEGATIVE_QA_FUNNEL_CLUE_TRADE_DENSITY_VETO",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH05_GENERATOR_NEW_BOUNDARY_RELEASE_CHECKPOINT_09U",
+  "hypothesis": "Serial generator ownership may be released on a causal completed reversal-timeframe transition after RECLAIM but before terminal REVERSAL/SIGNAL.",
+  "falsification_condition": "A release transition fails to improve both total funnel parity and executable trade-density parity versus serial POST_QUAL, overflows buffers, or materially worsens S06 economics.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Preserved six-vector historical trades",
+    "reference_count": 6,
+    "minimum_count": 6,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity reconstruction only; all six frozen vectors retained."
+  },
+  "primary_metrics": {
+    "entry_quality": "Not optimized.",
+    "hold_persistence": "Not optimized.",
+    "economics": "S06 parity diagnostic is mandatory veto.",
+    "gross_loss_drawdown": "Not optimization target.",
+    "activity": "Eight-stage six-vector funnel plus executable trade density."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_generator_reversal_clock_release_parity.py",
+      "commit": "8f1414c4f7c6949b0eeda62f600d220b959c4d71",
+      "blob_sha": "670d9b2a36c00edf257d34d7b9bbc89f923f8c79",
+      "file_sha256": "1e1b315d0fb71cad24360f5e3f8b92b8b3d6eb66ae5fe0c1e95317e1f2da5a08"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_runtime_primitives.py",
+      "commit": "fdebfe5f04d10ac6b35a8cf96c7e258b7cc75985",
+      "blob_sha": "328b16a80cf5bff58734a556561625adf89100ae",
+      "file_sha256": "5a53170d1a3f460a299a53aeaf067d4af5ac49db2726f576569d6c643b6f0848"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_conditional_failure_clock_challenger_replay.py",
+      "commit": "cf74119286100230bca2a5f8dc9c6909e85b23bf",
+      "blob_sha": "0749a0f326ff0a81006f7234f5065963e26e8dab",
+      "file_sha256": "2b041a90fe5fa8e9ea13e4489a36e309e48dfae06e21a1050037cbd6dd8101a7"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retune": false,
+      "profiles": [
+        "RECLAIM_BAR_FAILED_REVERSAL_RELEASE",
+        "NEXT_REVERSAL_BAR_RELEASE"
+      ],
+      "serial_control": "POST_QUAL",
+      "failure_clock": "FAILURE_CANDIDATE",
+      "acceptance_chronology": "09F_POST_QUAL"
+    },
+    "feature_order": [
+      "probe",
+      "qualified",
+      "accepted",
+      "failure",
+      "reentry",
+      "reclaim",
+      "reversal",
+      "signal",
+      "execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "causal parity reconstruction only"
+    },
+    "runtime_dependencies": [
+      "Python",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "external_timeout_seconds": 120,
+      "atomic_output_write": true,
+      "fresh_numba_cache": true,
+      "committed_producer_before_compute": true,
+      "exact_local_git_blob_verified": true,
+      "serial_control_gate": "exact POST_QUAL funnel",
+      "failed_preflight": "wrong local relative input path caused FileNotFoundError before data access and before output; no scientific source change"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January canonical Dukascopy XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "Checkpoint 09U durable parent",
+      "path": "research/delta/artifacts/DELTA_R037_DH05_GENERATOR_NEW_BOUNDARY_RELEASE_CHECKPOINT_09U_MANIFEST.json"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "fresh isolated 09V Numba cache"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH05_GENERATOR_REVERSAL_CLOCK_RELEASE_CHECKPOINT_09V.json",
+      "blob_sha": "64e5c07676fcc35323fb515d624b14fe5c16f185",
+      "runtime_result_sha256": "d742acc8ef76a476d1ad7a1681e19e8ffab89a734a6fbdc6e2e58b87e5e3a54b"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH05_GENERATOR_REVERSAL_CLOCK_RELEASE_CHECKPOINT_09V.md",
+      "blob_sha": "9846cc8ce524f2cdc78b4ffdc3a9b2b51cbc3bc3"
+    }
+  ],
+  "qa": [
+    "Canonical January SHA and 4,205,709 Stage-A ticks verified.",
+    "Producer Git blob matched committed blob 670d9b2a36c00edf257d34d7b9bbc89f923f8c79 exactly before official compute.",
+    "Runtime helper and clock dependency Git blobs matched their committed bytes.",
+    "Python compile gate passed before replay.",
+    "Fresh Numba cache and external hard timeout were used.",
+    "Official replay exit 0 in 15.05 s; max RSS 698,044 KB.",
+    "Serial POST_QUAL control reproduced exactly: total funnel error 978; trade-count error 336.",
+    "NEXT_REVERSAL_BAR_RELEASE improved funnel error to 951 but worsened trade-count error to 346.",
+    "RECLAIM_BAR_FAILED_REVERSAL_RELEASE produced funnel error 1032 and trade-count error 344.",
+    "S06 next-reversal-bar = 664 signals / 661 trades / 278 wins / -154.25 versus historical 672 / 615 / 307 / -101.08; economic veto applies.",
+    "No episode or signal overflow.",
+    "No numeric retune; August sealed; SORB blocked; MQL5 unauthorized.",
+    "Workbook tab 75 A183:H196 written and read back."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh05_generator_reversal_clock_release_parity.py",
+    "command": "NUMBA_CACHE_DIR=<fresh> python research/delta/experiments/delta_r037_dh05_generator_reversal_clock_release_parity.py --source <canonical_january_gzip> --output <09v_runtime_json>",
+    "timing_semantics": "Serial POST_QUAL ownership until a preregistered completed reversal-clock release transition; downstream episode remains causal under frozen failure-age semantics.",
+    "expected_fingerprints": {
+      "control_total_funnel_error": 978,
+      "control_trade_count_error": 336,
+      "next_reversal_bar_total_funnel_error": 951,
+      "next_reversal_bar_trade_count_error": 346,
+      "reclaim_failed_reversal_total_funnel_error": 1032,
+      "reclaim_failed_reversal_trade_count_error": 344
+    },
+    "selected_interpretation": "REJECT_UNIVERSAL_REVERSAL_CLOCK_RELEASE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — parity reconstruction only",
+    "feature_timing_spec": "Not ready.",
+    "state_machine_spec": "Not ready.",
+    "model_inference_spec": "No model.",
+    "execution_quote_side_spec": "Frozen.",
+    "ownership_scheduler_spec": "Serial POST_QUAL remains control.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01.",
+    "trade_count_parity_spec": "Blocked until specialist parity.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH05_GENERATOR_NEW_BOUNDARY_RELEASE_CHECKPOINT_09U",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A183:H196"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH05_ACCEPTANCE_TF_ROUTED_GENERATOR_OWNERSHIP_CHALLENGER_REPLAY_NON_PROMOTING",
+  "github_commits": [
+    "8f1414c4f7c6949b0eeda62f600d220b959c4d71",
+    "572d6438f0a44add10889af3f66218495451010e",
+    "485976c6ca22c46bf3446fcd7b1aa8b9cae32e76"
+  ]
+}
