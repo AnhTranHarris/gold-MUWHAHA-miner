@@ -1,0 +1,45 @@
+{
+  "schema": "delta-r037-dh05-reclaim-clock-checkpoint-v1",
+  "status": "COMPLETE_NEGATIVE_QA",
+  "unit": "R037_DH05_PARITY_RECLAIM_CONFIRMATION_CLOCK",
+  "targets": {
+    "A03": 306,
+    "S05": 51,
+    "S06": 615,
+    "S09": 119,
+    "S10": 206,
+    "S16": 24
+  },
+  "baseline": {
+    "A03": 187,
+    "S05": 9,
+    "S06": 617,
+    "S09": 9,
+    "S10": 206,
+    "S16": 8
+  },
+  "s1": {
+    "A03": 195,
+    "S05": 13,
+    "S06": 617,
+    "S09": 9,
+    "S10": 213,
+    "S16": 9
+  },
+  "s5": {
+    "A03": 187,
+    "S05": 9,
+    "S06": 437,
+    "S09": 3,
+    "S10": 206,
+    "S16": 8
+  },
+  "decision": "RECLAIM_CLOCK_ALONE_INSUFFICIENT_KEEP_VECTOR_CLOCK_BASELINE",
+  "next": "R037_DH05_PARITY_RECLAIM_BUFFER_EXCURSION_VS_CLOSE_SEMANTICS",
+  "hashes": {
+    "source": "45b04ff222466918a6250682acb7adb0acde84153d831b22fb3c8c588bf9002d",
+    "output": "8d3beb935e34dda46683b15dac630d8d68dd91e8527a539c64a860e8837061b0"
+  },
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
