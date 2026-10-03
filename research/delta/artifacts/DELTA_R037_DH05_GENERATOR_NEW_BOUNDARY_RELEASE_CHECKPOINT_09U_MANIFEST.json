@@ -1,0 +1,181 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH05_GENERATOR_NEW_BOUNDARY_RELEASE_CHECKPOINT_09U",
+  "status": "VERIFIED_DURABLE_NEGATIVE_QA_NEW_BOUNDARY_RELEASE_UNDERPRODUCES",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH05_CONDITIONAL_FAILURE_CLOCK_CHALLENGER_CHECKPOINT_09T",
+  "hypothesis": "A failed-break episode can retain downstream ownership while the generator is released only by a newly confirmed M5 boundary identity.",
+  "falsification_condition": "New-boundary release fails to improve serial POST_QUAL six-vector funnel/trade density, overflows episode buffers, or materially worsens S06 parity.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Preserved six-vector funnel/trades",
+    "reference_count": 6,
+    "minimum_count": 6,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity reconstruction only."
+  },
+  "primary_metrics": {
+    "entry_quality": "Not optimized.",
+    "hold_persistence": "Not optimized.",
+    "economics": "S06 diagnostic only.",
+    "gross_loss_drawdown": "Not optimization target.",
+    "activity": "Eight-stage funnel plus executable trade density."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_generator_new_boundary_release_parity.py",
+      "commit": "8c8f007bdf5c6b4247d955a31f0e3abc7ee3fcb0",
+      "blob_sha": "4a586ecd6b507763662ec2c0a8e95e37927fe592",
+      "file_sha256": "9f623f26e577d2941d21023176451b2e3d60cfb2d9223736649c7c158c427a43"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_runtime_primitives.py",
+      "commit": "fdebfe5f04d10ac6b35a8cf96c7e258b7cc75985",
+      "blob_sha": "328b16a80cf5bff58734a556561625adf89100ae"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_conditional_failure_clock_challenger_replay.py",
+      "commit": "cf74119286100230bca2a5f8dc9c6909e85b23bf",
+      "blob_sha": "0749a0f326ff0a81006f7234f5065963e26e8dab"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retune": false,
+      "profiles": [
+        "NEW_ANY_BOUNDARY",
+        "NEW_SAME_SIDE_BOUNDARY",
+        "NEW_OPPOSITE_SIDE_BOUNDARY"
+      ],
+      "serial_control": "POST_QUAL"
+    },
+    "feature_order": [
+      "probe",
+      "qualified",
+      "accepted",
+      "failure",
+      "reentry",
+      "reclaim",
+      "reversal",
+      "signal",
+      "execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "causal parity reconstruction only"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "external_timeout_seconds": 120,
+      "atomic_output_write": true,
+      "fresh_numba_cache": true,
+      "committed_producer_before_compute": true,
+      "exact_local_git_blob_verified": true,
+      "serial_control_gate": "exact POST_QUAL funnel"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January canonical Dukascopy XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "fresh isolated 09U Numba cache"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH05_GENERATOR_NEW_BOUNDARY_RELEASE_CHECKPOINT_09U.json",
+      "blob_sha": "ac300ccda03a5b6bc3f3784f0fec0fc5afa3c5de",
+      "runtime_result_sha256": "2622eafae5bda6037283b2eaaf63acc9f177f0899100f1c4bfa87df59dc0c808"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH05_GENERATOR_NEW_BOUNDARY_RELEASE_CHECKPOINT_09U.md",
+      "blob_sha": "9296e09af9f5442e9e7007d020b978a266becba6"
+    }
+  ],
+  "qa": [
+    "Canonical January and 4,205,709 Stage-A ticks verified.",
+    "Local producer blob exactly matched committed GitHub blob before compute.",
+    "Official replay completed in 19.44 s, max RSS 698,960 KB, exit 0.",
+    "Serial POST_QUAL control total funnel error reproduced as 978.",
+    "NEW_ANY total error 22,360 / trade-count error 899; NEW_SAME 25,547 / 962; NEW_OPPOSITE 26,635 / 1,015.",
+    "All new-boundary release profiles severely under-produced; no episode or signal overflow.",
+    "S06 NEW_ANY = 213 signals / 212 trades / 89 wins / -50.99.",
+    "No numeric retune; August sealed; SORB blocked; MQL5 unauthorized.",
+    "Workbook A169:H182 written and read back."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh05_generator_new_boundary_release_parity.py",
+    "command": "NUMBA_CACHE_DIR=<fresh> python research/delta/experiments/delta_r037_dh05_generator_new_boundary_release_parity.py --source <canonical_january_gzip> --output <09u_runtime_json>",
+    "timing_semantics": "Generator locks at FAILURE_CANDIDATE and releases only on qualifying newly revealed width-2 M5 boundary identity while downstream episodes remain causal.",
+    "expected_fingerprints": {
+      "serial_total_error": 978,
+      "new_any_total_error": 22360,
+      "new_same_total_error": 25547,
+      "new_opposite_total_error": 26635
+    },
+    "selected_interpretation": "REJECT_NEW_BOUNDARY_RELEASE_TOO_LATE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — parity reconstruction only",
+    "feature_timing_spec": "Not ready.",
+    "state_machine_spec": "Not ready.",
+    "model_inference_spec": "No model.",
+    "execution_quote_side_spec": "Frozen.",
+    "ownership_scheduler_spec": "Serial POST_QUAL remains control.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01.",
+    "trade_count_parity_spec": "Blocked.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH05_CONDITIONAL_FAILURE_CLOCK_CHALLENGER_CHECKPOINT_09T",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A169:H182"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH05_GENERATOR_RELEASE_ON_REVERSAL_CLOCK_TRANSITION_PARITY_RECONSTRUCTION",
+  "github_commits": [
+    "8c8f007bdf5c6b4247d955a31f0e3abc7ee3fcb0",
+    "2c689167a0caef6ed794c540c2cc78c28156c350",
+    "c46f5266e300ed32226826256b920bea1b1ee586"
+  ]
+}
