@@ -11,28 +11,19 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_DH02_S11_TICK_PERSISTENCE_CONTEXT_CHECKPOINT_11B",
-    "current_phase": "R037_DH02_S11_EVENT_OWNERSHIP_AND_CONTEXT_STATE_PARITY_RECONSTRUCTION_NEXT",
-    "first_incomplete_unit": "R037_DH02_S11_EVENT_OWNERSHIP_AND_CONTEXT_STATE_PARITY_RECONSTRUCTION",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH02_S11_TICK_PERSISTENCE_CONTEXT_CHECKPOINT_11B_MANIFEST.json",
-    "current_state_commit": "c8cfc45cb1288813325a87cee550111e16969b71",
-    "current_state_ci_run": 37152367771,
+    "last_verified_durable_unit": "R037_DH02_S11_EVENT_OWNERSHIP_CONTEXT_STATE_CHECKPOINT_11C",
+    "current_phase": "R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_AND_REARM_PARITY_FINGERPRINT_NEXT",
+    "first_incomplete_unit": "R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_AND_REARM_PARITY_FINGERPRINT",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH02_S11_EVENT_OWNERSHIP_CONTEXT_STATE_CHECKPOINT_11C_MANIFEST.json",
+    "current_state_commit": "5ad61005ac887449945ee93efddfb9936c016d48",
+    "current_state_ci_run": 37152659740,
     "current_state_ci_conclusion": "success"
   },
   "in_flight_unit": {
-    "unit": "R037_DH02_S11_EVENT_OWNERSHIP_AND_CONTEXT_STATE_PARITY_RECONSTRUCTION",
-    "status": "EVIDENCE_AND_PRODUCER_COMMITTED_OFFICIAL_COMPUTE_NOT_YET_DURABLE",
-    "committed_artifacts": [
-      {
-        "path": "research/delta/reference/DELTA_R037_DH02_S11_EVENT_OWNERSHIP_CONTEXT_STATE_EVIDENCE_11C.json",
-        "commit": "7a3fefc87367d14a1dbec4a46883eae0c78a31a4"
-      },
-      {
-        "path": "research/delta/experiments/delta_r037_dh02_s11_event_ownership_context_state_parity.py",
-        "commit": "1cd4ecb115f6f056d3adc04db4a5007baf41f99a"
-      }
-    ],
-    "next_action": "Use the producer commit recovery snapshot, verify exact blobs, and execute the bounded 11C replay. Do not recreate evidence or producer."
+    "unit": "R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_AND_REARM_PARITY_FINGERPRINT",
+    "status": "NOT_STARTED",
+    "committed_artifacts": [],
+    "next_action": "Preregister source-grounded suspend/re-arm boundary-lifetime semantics, commit evidence and producer before compute, then run only the bounded 11D replay."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
@@ -50,12 +41,29 @@
     "python_unbuffered": true,
     "isolated_numba_cache": true,
     "producer_atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
-    "large_stdout_policy": "Keep official producers summary-only; persist detailed diagnostics to JSON rather than streaming them through the chat/tool transport."
+    "exact_git_blob_preexecution_verification": true,
+    "committed_recovery_snapshot_execution": true,
+    "large_stdout_policy": "Keep official producers summary-only; persist detailed diagnostics to JSON rather than streaming them through the chat/tool transport.",
+    "chat_delivery_timeout_policy": "Treat a ChatGPT message-delivery timeout as a transport/session interruption, not evidence of compute failure. On reconnect, read CURRENT_STATE and this pointer, inspect branch HEAD and CI, and resume only the first missing durability step.",
+    "github_workflow_policy": "Require rebuild gate success for every durable cursor; use workflow artifacts/recovery snapshots rather than uncommitted local state."
   },
   "constraints": {
     "august_2026": "SEALED",
     "sorb_integrated_replay": "BLOCKED_UNTIL_R032_PARENT_PARITY",
     "mql5_authorized": false,
     "numeric_threshold_retuning": false
+  },
+  "external_references": {
+    "python": [
+      "https://docs.python.org/3.11/library/tempfile.html",
+      "https://docs.python.org/3.11/library/os.html",
+      "https://docs.python.org/3.11/library/subprocess.html"
+    ],
+    "github": [
+      "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax",
+      "https://docs.github.com/en/actions/concepts/workflows-and-actions/workflow-artifacts",
+      "https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency"
+    ],
+    "note": "These references harden Python/GitHub execution and persistence. They cannot directly eliminate a ChatGPT UI/message-delivery timeout."
   }
 }
