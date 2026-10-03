@@ -1,0 +1,124 @@
+{
+  "schema": "delta-r037-r032-full-specialist-parent-parity-evidence-14a-v1",
+  "status": "PREREGISTERED_BEFORE_COMPUTE",
+  "unit": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
+  "parent_checkpoint": "R037_DH03_S06_SIGNAL_GENERATOR_PROVENANCE_DECISION_CHECKPOINT_13H",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "canonical_stage_a": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "ticks": 4205709,
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+  },
+  "exact_backbone": {
+    "profile": "R025_M30_KEEP_OWNED_PLUS_GLOBAL_NO_REARM",
+    "trades": 12504,
+    "raw_positive_wins": 5788,
+    "official_wins": 5723,
+    "gross_profit": 1225.76,
+    "gross_loss": -3797.07,
+    "net_profit": -2571.31,
+    "source_path": "research/delta/experiments/delta_r037_r032_parent_backbone.py",
+    "source_blob_sha": "12e037bc44c8587f2305357ff085380473c40963"
+  },
+  "frozen_specialist_surrogates": {
+    "DH03_S06": {
+      "disposition": "PROVENANCE_LIMITED_BEST_RECONSTRUCTION_13C_STRICT_NON_PROMOTING",
+      "generator": "POST_PULLBACK_REARM_FRESH_EXHAUSTION_STRICT_POST_ORIGINAL_PULLBACK_PIVOT",
+      "expected_signals": 1586,
+      "standalone_trades": 1513,
+      "raw_positive_wins": 674,
+      "net_profit": -339.14
+    },
+    "DH05_S06": {
+      "disposition": "PROVENANCE_LIMITED_BEST_RECONSTRUCTION_09Z_NON_PROMOTING",
+      "generator": "SERIAL_POST_QUAL_LONG_OR_EQUAL_PROBE_WINDOW",
+      "expected_signals": 651,
+      "standalone_trades": 649,
+      "raw_positive_wins": 274,
+      "net_profit": -150.35
+    },
+    "DH02_S11": {
+      "disposition": "PROVENANCE_LIMITED_BEST_RECONSTRUCTION_11D_NON_PROMOTING",
+      "generator": "CONFLICT_BREAK_CONSUME_UNTIL_NEW_BOUNDARY",
+      "expected_signals": 103,
+      "standalone_trades": 103,
+      "raw_positive_wins": 41,
+      "net_profit": -26.03
+    },
+    "DH02_S08": {
+      "disposition": "PROVENANCE_LIMITED_SOURCE_COMPATIBLE_REBREAK_CONTEXT_NON_PROMOTING",
+      "generator": "REBREAK_ONLY_RAW_PARENT_DIRECTION_CONTINUOUS_DWELL",
+      "expected_signals": 104,
+      "standalone_trades": 104,
+      "raw_positive_wins": 37,
+      "net_profit": -28.46
+    }
+  },
+  "historical_p75_targets": {
+    "C00": {
+      "config": "DH03_S06+DH05_S06",
+      "trades": 13779,
+      "official_wins": 6286,
+      "net_profit": -2826.15,
+      "specialist_entries": 1947,
+      "specialist_net": -367.51
+    },
+    "C01": {
+      "config": "C00+DH02_S11",
+      "trades": 13825,
+      "official_wins": 6307,
+      "net_profit": -2836.26,
+      "specialist_entries": 2012,
+      "specialist_net": -376.31
+    },
+    "C02": {
+      "config": "C00+DH02_S08",
+      "trades": 13822,
+      "official_wins": 6310,
+      "net_profit": -2832.05,
+      "specialist_entries": 2018,
+      "specialist_net": -374.75
+    },
+    "C03": {
+      "config": "C00+DH02_S11+DH02_S08",
+      "trades": 13868,
+      "official_wins": 6331,
+      "net_profit": -2842.16,
+      "specialist_entries": 2083,
+      "specialist_net": -383.55
+    }
+  },
+  "ownership_fingerprints": {
+    "c01_s11_incremental_specialist_entries": 65,
+    "c02_s08_incremental_specialist_entries": 71,
+    "c03_increment_vs_c00": 136,
+    "s11_plus_s08_add_exactly": 136,
+    "interpretation": "Historical S11 and S08 ownership increments are additive in C03, strongly constraining the scheduler independently of their missing original generators."
+  },
+  "scheduler_profiles": [
+    {
+      "id": "SPECIALIST_FIRST_FLAT_ONLY_CONFIG_ORDER",
+      "semantics": "At a tick, after exits/state observation and only when flat, admit the earliest configured independent specialist signal before evaluating a fresh ordinary R9 opportunity. If multiple configured specialist streams signal on the same tick, priority follows config order DH03 -> DH05 -> S11 -> S08. Signals while occupied or on the post-exit observation-latch tick are dropped. Every specialist position is owned; GLOBAL NO_REARM remains active for ordinary R9 opportunities."
+    },
+    {
+      "id": "BACKBONE_FIRST_FLAT_ONLY_CONFIG_ORDER",
+      "semantics": "Same one-position/owned/global-no-rearm rules, but a fresh ordinary R9 opportunity is evaluated before same-tick specialist signals. Specialist signals remain independent and are admitted only if the ordinary opportunity did not open a position."
+    }
+  ],
+  "selection_rule": "No generator or numeric retuning. First require exact no-specialist backbone reproduction. Then prefer the scheduler whose C00/C01/C02/C03 specialist-entry increments and total trade/winner/net fingerprints jointly approach the historical parent. Do not infer exact historical specialist parity from a good aggregate match because all four specialist generators are provenance-limited.",
+  "next_if_scheduler_localized": "R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_AND_SORB_READINESS_DECISION",
+  "forbidden": [
+    "numeric threshold retuning",
+    "specialist generator modification",
+    "post-exit dependent reentry grammar",
+    "August access",
+    "SORB parameter integration",
+    "mature-exit optimization",
+    "capital/lot changes",
+    "MQL5"
+  ],
+  "august_2026": "SEALED",
+  "sorb_integrated_replay_started": false,
+  "mql5_authorized": false
+}
