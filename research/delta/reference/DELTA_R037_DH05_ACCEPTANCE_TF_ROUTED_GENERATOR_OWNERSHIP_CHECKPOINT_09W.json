@@ -1,0 +1,97 @@
+{
+  "schema": "delta-r037-dh05-acceptance-tf-routed-generator-ownership-checkpoint-09w-v1",
+  "status": "COMPLETE_NEGATIVE_QA_NON_PROMOTING_ROUTER_REJECTED",
+  "unit": "R037_DH05_ACCEPTANCE_TF_ROUTED_GENERATOR_OWNERSHIP_CHALLENGER_REPLAY_NON_PROMOTING",
+  "parent": "R037_DH05_GENERATOR_REVERSAL_CLOCK_RELEASE_CHECKPOINT_09V",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "producer_path": "research/delta/experiments/delta_r037_dh05_acceptance_tf_routed_generator_ownership_challenger.py",
+  "producer_commit": "a26e2edf376aae42b72a8bf11dfd25b0fb38619c",
+  "producer_blob_sha": "53d4cd2c74ef9cc46411458d269d7a0a597c2b5a",
+  "producer_file_sha256": "e1c971ef8f4e586e24cc262475ebcdc2b01399cc47d4fa2953386d5994975e59",
+  "runtime_result_sha256": "fd1a0a546ddee8876bbedb85cc06078ffbf65d8ed8f863c787fe942d7294b250",
+  "runtime": {
+    "elapsed_seconds": 10.74,
+    "max_rss_kb": 697976,
+    "exit_code": 0,
+    "timeout_seconds": 120
+  },
+  "router": {
+    "acceptance_tf_S5": "SERIAL_POST_QUAL",
+    "acceptance_tf_S15": "FAILURE_CANDIDATE_DECOUPLED_POST_QUAL"
+  },
+  "control": {
+    "total_funnel_abs_error": 978,
+    "aggregate_trade_count_abs_error": 336,
+    "stage_abs_error": {
+      "probe": 642,
+      "qualified": 55,
+      "accepted": 24,
+      "failure": 63,
+      "reentry": 34,
+      "reclaim": 34,
+      "reversal": 63,
+      "signal": 63
+    }
+  },
+  "routed": {
+    "total_funnel_abs_error": 2450,
+    "aggregate_trade_count_abs_error": 309,
+    "stage_abs_error": {
+      "probe": 1599,
+      "qualified": 190,
+      "accepted": 53,
+      "failure": 173,
+      "reentry": 129,
+      "reclaim": 92,
+      "reversal": 107,
+      "signal": 107
+    },
+    "max_concurrent_failure_episodes": 5,
+    "episode_overflow": 0,
+    "signal_overflow": 0,
+    "signals": {
+      "A03": 236,
+      "S05": 9,
+      "S06": 651,
+      "S09": 11,
+      "S10": 227,
+      "S16": 7
+    },
+    "trades": {
+      "A03": 219,
+      "S05": 9,
+      "S06": 649,
+      "S09": 11,
+      "S10": 227,
+      "S16": 7
+    },
+    "s06": {
+      "signals": 651,
+      "trades": 649,
+      "wins": 274,
+      "net_usd": -150.35
+    }
+  },
+  "historical_s06": {
+    "signals": 672,
+    "trades": 615,
+    "wins": 307,
+    "net_usd": -101.08
+  },
+  "finding": {
+    "funnel_error_change": 1472,
+    "trade_count_error_improvement": 27,
+    "s06_economic_veto_triggered": false,
+    "interpretation": "The routed architecture modestly improves aggregate executable count fit but catastrophically worsens causal funnel parity. S06 is unchanged because it remains on serial S5 control; rejection is architectural, not an S06 veto.",
+    "provenance_correction": "Checkpoint 09S hard-coded S16 acceptance_tf=15, while current frozen VECTORS used by 09T/09W encode S16 acceptance_tf=5. This invalidates 09S's claim of perfect acceptance-timeframe sign separation but does not alter 09T's causal rejection because 09T used live frozen VECTORS.",
+    "promoted": false
+  },
+  "decision": "REJECT_ACCEPTANCE_TF_ROUTED_GENERATOR_OWNERSHIP_NO_SEMANTIC_FREEZE",
+  "parity_complete": false,
+  "integrated_r037_sorb_started": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "next_unit": "R037_DH05_ACCEPTANCE_TF_METADATA_PROVENANCE_RECONCILIATION"
+}
