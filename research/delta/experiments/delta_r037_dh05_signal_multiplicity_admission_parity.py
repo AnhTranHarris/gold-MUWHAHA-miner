@@ -938,6 +938,7 @@ def detect_signal_multiplicity(
             stage=0; oside=0; continue
         if stage<4: continue
 
+        # Boundary-recycle rearm is tick-causal and independent of completed-bar checks.
         if mode==3 and first_signal_seen:
             if oside*(px-L)>=0:
                 boundary_rearm_seen=True
@@ -1059,6 +1060,7 @@ def evaluate_signal_mode(mode, t, ask, bid, mid, st, ss, sl, b1, b5, b15, b300, 
         adm,rej,w,gp,gl,net,dd=admit_r9_lifecycle(t,ask,bid,si,ssig)
         h=hist_trades[n]; trade_abs+=abs(int(adm)-h)
         if n=="S06": signal_s06_abs=abs(int(si.size)-672)
+        # episode multiplicity diagnostics
         unique_events=int(np.unique(se).size) if se.size else 0
         repeated=int(si.size-unique_events)
         vectors[n]={
