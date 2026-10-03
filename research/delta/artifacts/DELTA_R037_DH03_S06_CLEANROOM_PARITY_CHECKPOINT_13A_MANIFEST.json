@@ -1,0 +1,230 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH03_S06_CLEANROOM_PARITY_CHECKPOINT_13A",
+  "status": "VERIFIED_COMPLETE_CLEANROOM_PARITY_FAIL_LOCALIZED",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION_CHECKPOINT_12C",
+  "hypothesis": "The historical DH03-S06 Stage-A fixture can be reconstructed from the frozen S06 vector and surviving source-grounded DH03 grammar without numeric retuning; if not exact, the residual should localize to a bounded state/event semantic rather than invite threshold fitting.",
+  "falsification_condition": "Reject exact parity if no source-grounded profile reproduces the preserved 1563 trades / 690 raw-positive wins / economic fingerprint. Advance only to the localized next semantic unit, without threshold retuning.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "historical DH03-S06 Stage-A standalone fixture",
+    "reference_count": 1563,
+    "minimum_count": 1563,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity reconstruction only. Exact historical parity not achieved; leader produced 709 trades and is non-promoting."
+  },
+  "primary_metrics": {
+    "entry_quality": "Leader 302 raw-positive wins / 709 trades (~42.6%) vs historical 690 / 1563 (~44.15%).",
+    "hold_persistence": "R9 downstream lifecycle frozen.",
+    "economics": "Leader GP +64.43 / GL -229.79 / net -165.36 vs target +151.82 / -490.75 / -338.93.",
+    "gross_loss_drawdown": "Leader max balance DD 165.36 vs historical 339.25; economics broadly scale with missing activity.",
+    "activity": "Leader 709 trades vs historical 1563; dominant residual localized to upstream state/event multiplicity."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_cleanroom_parity.py",
+      "commit": "6679c155cf923c7ee52dadc2f605c49377308319",
+      "blob_sha": "fd57c6a3a7d317f021a31ef32bb8825b89a57f77",
+      "file_sha256": "9708c678cfd119c5e51130ec23803d5f5734104b07f4edf3252e98e38e41a084"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_structure.py",
+      "commit": "9fd75852690003d8e6d65cfdb9bb67198264fcae",
+      "blob_sha": "edbe5ae9bcf2031fe06256467085889c4e108d52",
+      "file_sha256": "9df6fe9a2086cb4970e38a205f081ab0706e441629ce01a9292f4ddcbd445ce2"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_engine.py",
+      "commit": "e7f11325e26bf84491693ff84dae374e33bf48ab",
+      "blob_sha": "ac865a520441a2efc8eaf908e3c9390556893925",
+      "file_sha256": "f91f9a684980dea2a74fd321a4d7ba7a6dbf16ee0d5d0131c1d5b85d5a263535"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "note": "Standard crash-safe bounded runner; official 13A replay completed in 7.73 s and first faulty run failed closed before result persistence."
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "vector_fingerprint": "a3a086b7344c",
+      "counter_eff": 0.6468,
+      "exhaustion_decline": 0.4533,
+      "invalidation_buffer_atr": 0.3242,
+      "max_pullback_age_s": 513.6575,
+      "no_new_extreme_count": 1,
+      "parent_bundle": "M15/M30",
+      "parent_policy": "structural-priority",
+      "pullback_depth_atr": 0.4743,
+      "pullback_start_tf": "S15",
+      "reaccel_eff_min": 0.2854,
+      "reaccel_tf": "S5",
+      "reclaim_source": "S15 pivot",
+      "selected_profile": "STRUCTURAL_PRIORITY_SWING_PARENT_S15_EITHER_DECLINE"
+    },
+    "feature_order": [
+      "parent valid",
+      "impulse extreme",
+      "pullback",
+      "exhaustion candidate",
+      "local reclaim",
+      "reacceleration",
+      "entry eligible"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "clean-room parity reconstruction only; no optimization split"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "elapsed_seconds": 7.73,
+      "peak_rss_kb": 697388,
+      "faulthandler": true,
+      "python_unbuffered": true,
+      "isolated_numba_cache": true,
+      "producer_atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_preexecution_verification": true,
+      "first_failed_run_result_persisted": false
+    }
+  },
+  "inputs": [
+    {
+      "name": "13A prereg/evidence",
+      "path": "research/delta/reference/DELTA_R037_DH03_S06_CLEANROOM_PARITY_EVIDENCE_13A.json",
+      "commit": "cd30cd20a9a9869636eb6af3d05c589f5f7ef986",
+      "blob_sha": "057f36109e23096513576502d2493cfd5b95639f",
+      "file_sha256": "236dca93772153c35bf8e996c1342f483ade12963c9736870761410122c7a62f"
+    },
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "Stage-A P75 causal tick-derived bars and S06 event-state arrays reconstructed inside committed producer."
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH03_S06_CLEANROOM_PARITY_CHECKPOINT_13A.json",
+      "commit": "8563e01037c363d4ec3942942673bcb373a5c814",
+      "blob_sha": "36a69c5af3c59be6a0a66b884bb13b5d412f5adc",
+      "official_result_sha256": "179a1434f4b36dfeecc3655e34f23b3afcaaf06bd0c9d617c1eefab1a539e17d"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH03_S06_CLEANROOM_PARITY_CHECKPOINT_13A.md",
+      "commit": "3d0270c99eb2ec21d0873d8a3d984a9298d531ce",
+      "blob_sha": "22bf44ed94059c418cb3e3683555687eabb595b1"
+    }
+  ],
+  "qa": [
+    "12C durable cursor and successful rebuild-gate CI verified before 13A.",
+    "13A evidence and all producer modules committed before successful official compute.",
+    "Exact Git blob verification recorded for the three producer modules and evidence file before replay.",
+    "First execution failed closed before result write due to local pandas-alias shadowing; corrected producer committed before official compute.",
+    "Canonical January SHA and Stage-A tick count 4,205,709 verified.",
+    "No numeric threshold retune; August not accessed.",
+    "Leader STRUCTURAL_PRIORITY_SWING_PARENT_S15_EITHER_DECLINE produced 709 trades / 302 raw-positive wins / net -165.36.",
+    "Historical target 1563 trades / 690 raw-positive wins / net -338.93 not reproduced.",
+    "Residual localized to upstream state/event multiplicity rather than thresholds.",
+    "Workbook tab 75 A401:H412 present and read back.",
+    "All 13A GitHub pushes through report commit 3d0270c passed DELTA rebuild gate against durable 12C parent.",
+    "Full historical DH03-S06 parity is not claimed.",
+    "SORB blocked; August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh03_s06_cleanroom_parity.py",
+    "command": "timeout 120s env PYTHONFAULTHANDLER=1 PYTHONUNBUFFERED=1 python research/delta/experiments/delta_r037_dh03_s06_cleanroom_parity.py --source <canonical_january_gzip> --evidence research/delta/reference/DELTA_R037_DH03_S06_CLEANROOM_PARITY_EVIDENCE_13A.json --output <13A_result_json>",
+    "timing_semantics": "Ordered Stage-A ticks; all bars left-closed/right-open and only completed/confirmed states visible; R9 downstream lifecycle frozen.",
+    "expected_fingerprints": {
+      "historical_target": {
+        "trades": 1563,
+        "raw_positive_wins": 690,
+        "gross_profit": 151.82,
+        "gross_loss": -490.75,
+        "net_profit": -338.93,
+        "max_balance_drawdown": 339.25
+      },
+      "leader": {
+        "profile": "STRUCTURAL_PRIORITY_SWING_PARENT_S15_EITHER_DECLINE",
+        "trades": 709,
+        "raw_positive_wins": 302,
+        "gross_profit": 64.43,
+        "gross_loss": -229.79,
+        "net_profit": -165.36,
+        "max_balance_drawdown": 165.36,
+        "pullbacks": 1369,
+        "exhaustion": 906,
+        "reclaim": 722,
+        "signals": 709
+      }
+    },
+    "selected_interpretation": "13A_SOURCE_GROUNDED_LEADER_NONEXACT"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — R032 specialist parity incomplete",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA semantics",
+    "ownership_scheduler_spec": "not ready",
+    "session_dst_spec": "frozen DELTA semantics",
+    "risk_spec": "fixed 0.01 research semantics",
+    "trade_count_parity_spec": "blocked pending DH03-S06 parity reconstruction",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION_CHECKPOINT_12C",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A401:H412"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH03_S06_STATE_FUNNEL_SEMANTICS_PARITY_RECONSTRUCTION",
+  "github_commits": [
+    "cd30cd20a9a9869636eb6af3d05c589f5f7ef986",
+    "9fd75852690003d8e6d65cfdb9bb67198264fcae",
+    "e7f11325e26bf84491693ff84dae374e33bf48ab",
+    "6026b390a0448e6fa48f329c05b7b05a8641868f",
+    "6679c155cf923c7ee52dadc2f605c49377308319",
+    "8563e01037c363d4ec3942942673bcb373a5c814",
+    "3d0270c99eb2ec21d0873d8a3d984a9298d531ce"
+  ]
+}
