@@ -21,8 +21,8 @@
   },
   "in_flight_unit": {
     "unit": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
-    "status": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
+    "status": "REPORT_COMMITTED",
+    "phase_rank": 4,
     "parent_durable_unit": "R037_DH03_S06_SIGNAL_GENERATOR_PROVENANCE_DECISION_CHECKPOINT_13H",
     "committed_artifacts": [
       {
@@ -36,9 +36,16 @@
         "commit": "07734bf76b6062e3840e8e6ad3b0fc27dca63870",
         "blob_sha": "f100e5274466def8fc5aebf1a994c513d80ed3c3",
         "role": "producer"
+      },
+      {
+        "path": "research/delta/reference/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A.json",
+        "commit": "985f1fc6b73419addef0bd11d99e27424446cf92",
+        "blob_sha": "25863137724183682144de99dc1b251d5d849218",
+        "runtime_sha256": "900ab0dcc0fd56fe58abb73d97a8f0fefb7804bf9ad05d9e8fc8850f5eba0eed",
+        "role": "result"
       }
     ],
-    "next_action": "Run the already-committed 14A producer once from the exact committed blob; if a result already exists, verify it and resume from the next missing durability phase. Do not rerun 13H."
+    "next_action": "Verify committed 14A result and its runtime SHA; write report/workbook/manifest only if still missing; then advance CURRENT_STATE last after green CI. Never rerun 14A solely because message delivery timed out."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
