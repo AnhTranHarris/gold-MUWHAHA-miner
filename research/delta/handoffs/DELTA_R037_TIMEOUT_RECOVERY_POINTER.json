@@ -21,9 +21,25 @@
   },
   "in_flight_unit": {
     "unit": "R037_DH03_S06_PULLBACK_EVENT_MULTIPLICITY_AND_RESET_PARITY_RECONSTRUCTION",
-    "status": "NOT_STARTED_FROM_DURABLE_13B",
-    "committed_artifacts": [],
-    "next_action": "Test repeated causal exhaustion/reclaim/reacceleration attempt lifecycle within one still-valid DH03 pullback episode under frozen 13B S5 reclaim timing and S06 thresholds; producer/evidence must be committed before replay."
+    "status": "PREREG_ENGINE_PRODUCER_COMMITTED_PRECOMPUTE",
+    "committed_artifacts": [
+      {
+        "path": "research/delta/reference/DELTA_R037_DH03_S06_PULLBACK_EVENT_MULTIPLICITY_EVIDENCE_13C.json",
+        "commit": "149a405ebd879fd6bbfadd69890d8653cebb7158",
+        "blob_sha": "f20124e3d6b9eac2f5c5ed03337a85e6209fbcc3"
+      },
+      {
+        "path": "research/delta/experiments/delta_r037_dh03_s06_event_multiplicity_engine.py",
+        "commit": "91fc4b03a0c9ad64ddf3683a63303fcb688f45fd",
+        "blob_sha": "0f5e458ec1c6274766a3b5fb7d04efc8bf4f661f"
+      },
+      {
+        "path": "research/delta/experiments/delta_r037_dh03_s06_event_multiplicity_parity.py",
+        "commit": "41b4dcc43bb2e24d3e9beb3ea9ecc2beddc97df4",
+        "blob_sha": "2580b95d0b13e3fd8b30ea4f30b48af96395c2db"
+      }
+    ],
+    "next_action": "Blob-verify committed 13C evidence/engine/producer, run only the official canonical January Stage-A replay through delta_bounded_python_runner.py, then persist result/report/workbook/full manifest and advance CURRENT_STATE last only after DELTA rebuild-gate success."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
