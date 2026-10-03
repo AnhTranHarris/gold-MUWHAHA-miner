@@ -1,0 +1,181 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH05_CLEANROOM_PARITY_CHECKPOINT_09B",
+  "status": "VERIFIED_DURABLE_NEGATIVE_QA",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH05_DIAGNOSTIC_SOURCE_DURABILITY_RECOVERY_CHECKPOINT_09A",
+  "hypothesis": "A committed clean-room DH05 diagnostic engine can reproduce the preserved Checkpoint-03/08/09 causal fingerprints without retuning any frozen numeric vector.",
+  "falsification_condition": "Any required six-vector probe/funnel/profile fingerprint materially fails to reproduce under the unchanged Stage-A P75 source and frozen numeric vectors.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "R037 DH05 preserved six-vector parity fingerprints",
+    "reference_count": 6,
+    "minimum_count": 6,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "This is a reconstruction/QA gate, not a promotion-performance trade floor. All six frozen vectors must be represented."
+  },
+  "primary_metrics": {
+    "entry_quality": "Not optimized in this QA unit; frozen-vector semantics only.",
+    "hold_persistence": "Not optimized in this QA unit.",
+    "economics": "No economics promotion claim; parity failed before integration.",
+    "gross_loss_drawdown": "Not an optimization target in this QA unit.",
+    "activity": "Probe, qualified, signal and executed-trade fingerprints across all six frozen DH05 vectors."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_cleanroom_parity.py",
+      "blob_sha": "7200022dd9772383cc4d91edbbe167131603d6c7"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "boundary_source": "M5 swing reconstruction candidate",
+      "stage_a_surface": "DUKAS_COINEXX_LIKE_P75"
+    },
+    "feature_order": [
+      "boundary_probe",
+      "probe_qualified",
+      "accepted_break",
+      "failure_candidate",
+      "reentry",
+      "reclaim",
+      "reversal",
+      "signal"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "parity reconstruction only; no optimization split"
+    },
+    "timezone_session_definitions": {
+      "source": "DELTA frozen 2026 session/DST semantics"
+    },
+    "execution_cost_assumptions": {
+      "role": "not used to select parity semantics"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ]
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "Checkpoint-03 preserved funnel fingerprint",
+      "path": "research/delta/reference/DELTA_R037_DH05_PARITY_STAGE_FUNNEL_CHECKPOINT_03.json"
+    },
+    {
+      "name": "Checkpoint-08 preserved semantic cross",
+      "path": "research/delta/reference/DELTA_R037_DH05_REVERSAL_EFFICIENCY_STAGE_NORMALIZATION_CHECKPOINT_08.json"
+    },
+    {
+      "name": "Checkpoint-09 preserved failure/reentry cross",
+      "path": "research/delta/reference/DELTA_R037_DH05_FAILURE_REENTRY_PERSISTENCE_CHECKPOINT_09.json"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "Stage-A P75 tick-rooted bars reconstructed causally inside committed producer"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH05_CLEANROOM_PARITY_CHECKPOINT_09B.json",
+      "blob_sha": "4a537340d2c994843fb75b37f169b343df379385",
+      "result_sha256": "518b6b556ccfc2c75f0bdee6298ee70a12d7db06649ee6df6feb558d0cbfe480"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH05_CLEANROOM_PARITY_CHECKPOINT_09B.md",
+      "blob_sha": "1de0d2382b9fcb93213cb970f2171d124e329d1c"
+    }
+  ],
+  "qa": [
+    "Canonical January source hash verified.",
+    "Stage-A tick count 4,205,709 verified.",
+    "All six required clean-room profiles failed exact preserved parity.",
+    "Probe under-generation localized upstream to boundary/probe eligibility.",
+    "No numeric vector retuning performed.",
+    "Checkpoint 10 and SORB integration remain blocked."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh05_cleanroom_parity.py",
+    "command": "python research/delta/experiments/delta_r037_dh05_cleanroom_parity.py --source <canonical_january_gzip>",
+    "required_artifact_order": [
+      "canonical January source",
+      "preserved checkpoint 03/08/09 fingerprints",
+      "committed clean-room producer",
+      "checkpoint 09B JSON",
+      "checkpoint 09B report"
+    ],
+    "expected_fingerprints": {
+      "checkpoint03_probe": {
+        "A03": 6731,
+        "S05": 7875,
+        "S06": 3470,
+        "S09": 7748,
+        "S10": 6496,
+        "S16": 7870
+      },
+      "checkpoint03_signal": {
+        "A03": 187,
+        "S05": 9,
+        "S06": 617,
+        "S09": 9,
+        "S10": 206,
+        "S16": 8
+      }
+    },
+    "timing_semantics": "Ordered ticks; Stage-A left-closed/right-open; causal completed bars only; no future-confirmed state used as live input.",
+    "notes": "09B is a negative parity checkpoint. Rebuildability is verified, but the producer is explicitly rejected as the continuation parity source."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — parity repair research only",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "DELTA frozen quote-side semantics unchanged.",
+    "ownership_scheduler_spec": "No integrated ownership replay in this unit.",
+    "session_dst_spec": "DELTA frozen session/DST semantics unchanged.",
+    "risk_spec": "Fixed 0.01 research semantics unchanged.",
+    "trade_count_parity_spec": "Blocked until DH05 historical parity reconstruction succeeds.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "supersedes": [],
+  "rollback_target": "R037_DH05_DIAGNOSTIC_SOURCE_DURABILITY_RECOVERY_CHECKPOINT_09A",
+  "github_commits": [
+    "7698eb63125efac4e0797e4d1c780e5d1eece83e",
+    "6bf159dbdbdeba627f52616ec016718a04c81128"
+  ],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": false,
+    "hashes_verified": true,
+    "current_state_advanced": true
+  }
+}
