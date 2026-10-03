@@ -1,37 +1,16 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "INFLIGHT",
+  "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
-  "parent_durable_unit": "R037_DH03_S06_SIGNAL_GENERATOR_PROVENANCE_DECISION_CHECKPOINT_13H",
-  "phase": "MANIFEST_COMMITTED",
-  "phase_rank": 5,
-  "prereg": {
-    "path": "research/delta/reference/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_EVIDENCE_14A.json",
-    "commit": "eb664c687ad772117e733b68cb73a6b241ef87d6",
-    "blob_sha": "798f165f6594d1302bc8add8decfdffe17fb16e8"
-  },
-  "producer": {
-    "path": "research/delta/experiments/delta_r037_r032_full_specialist_parent_parity.py",
-    "commit": "07734bf76b6062e3840e8e6ad3b0fc27dca63870",
-    "blob_sha": "f100e5274466def8fc5aebf1a994c513d80ed3c3"
-  },
-  "result": {
-    "path": "research/delta/reference/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A.json",
-    "commit": "985f1fc6b73419addef0bd11d99e27424446cf92",
-    "blob_sha": "25863137724183682144de99dc1b251d5d849218",
-    "runtime_sha256": "900ab0dcc0fd56fe58abb73d97a8f0fefb7804bf9ad05d9e8fc8850f5eba0eed"
-  },
-  "report": {
-    "path": "research/delta/research/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A.md",
-    "commit": "4efa0891cd411fe3ff9a4cefab65d987c189f4f2",
-    "blob_sha": "4d7d698873ff4fe02324904638f52d6c0a83c948"
-  },
-  "manifest": {
-    "path": "research/delta/artifacts/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A_MANIFEST.json",
-    "commit": "62d2155c3ca21f96fbb5f01b3dd9aca34bf4541a",
-    "blob_sha": "e61e305f65f7f9a1101d42346129bd4aaa88700f"
-  },
+  "unit": null,
+  "parent_durable_unit": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A",
+  "phase": "IDLE",
+  "phase_rank": 0,
+  "prereg": null,
+  "producer": null,
+  "result": null,
+  "report": null,
+  "manifest": null,
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
     "resume_first_action": "Read CURRENT_STATE.json and CURRENT_INFLIGHT.json, then inspect referenced GitHub paths before creating or rerunning anything.",
@@ -45,5 +24,11 @@
   },
   "august_2026": "SEALED",
   "sorb_integrated_replay_started": false,
-  "mql5_authorized": false
+  "mql5_authorized": false,
+  "last_completed": {
+    "unit": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
+    "checkpoint": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A",
+    "current_state_next": "R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_AND_SORB_READINESS_DECISION",
+    "manifest": "research/delta/artifacts/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A_MANIFEST.json"
+  }
 }
