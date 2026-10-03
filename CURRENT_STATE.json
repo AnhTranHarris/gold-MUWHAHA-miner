@@ -5,8 +5,8 @@
   "created_utc": "2026-10-01",
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
   "last_verified_durable_unit": "R037_SORB_SOURCE_QA",
-  "first_incomplete_unit": "R037_R032_C03_PARENT_PARITY_RECOVERY_AND_RECONSTRUCTION",
-  "current_phase": "R037_SOURCE_QA_PASS_INTEGRATED_REPLAY_BLOCKED_ON_R032_PARENT_PARITY",
+  "first_incomplete_unit": "R037_DH05_S06_EXACT_FIXTURE_RECONSTRUCTION_AND_PARITY",
+  "current_phase": "R037_R032_PARENT_BACKBONE_PARITY_PASS_SPECIALIST_RECONSTRUCTION",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -3433,7 +3433,7 @@
     "mt5_readiness_doc_id": "1a4bSQAbk1mQCUN1h088A2okVnTuKuohJlOsigDDjOn4",
     "mt5_readiness_doc_url": "https://docs.google.com/document/d/1a4bSQAbk1mQCUN1h088A2okVnTuKuohJlOsigDDjOn4/edit",
     "r037": {
-      "status": "SOURCE_QA_PASS_INTEGRATED_REPLAY_BLOCKED_ON_PARENT_PARITY",
+      "status": "PARENT_BACKBONE_PARITY_PASS_SPECIALIST_PARITY_NEXT",
       "parent": "R032-C03_PLUS_DH02_S11_S08",
       "family": "R037-SORB-v1",
       "prereg_drive_doc_id": "1lfjAI9QB1fOCevvAur1dDV3qSdOw9sPhrkr_rcf1TM0",
@@ -3455,10 +3455,58 @@
       ],
       "source_qa_decision": "SOURCE_QA_PASS",
       "integrated_replay": "NOT_STARTED",
-      "integrated_replay_blocker": "EXACT_R032_C03_PARENT_PARITY_NOT_YET_RECONSTRUCTED",
-      "exact_next_unit": "RECOVER_EXISTING_R032_PRODUCING_SOURCE_OR_RECONSTRUCT_FROM_CANONICAL_R025_PLUS_FROZEN_DH03_S06_DH05_S06_DH02_S11_DH02_S08_AND_REPRODUCE_AUTHORITATIVE_STAGE_A_CONTROLS",
+      "integrated_replay_blocker": "FOUR_R032_SPECIALIST_STREAMS_REQUIRE_EXACT_RECONSTRUCTION_PARITY",
+      "exact_next_unit": "R037_DH05_S06_EXACT_FIXTURE_RECONSTRUCTION_AND_PARITY",
       "august_2026": "SEALED",
-      "mql5_authorized": false
+      "mql5_authorized": false,
+      "parent_backbone_parity": {
+        "status": "PASS_EXACT_STAGE_A_P75",
+        "github_source_path": "research/delta/experiments/delta_r037_r032_parent_backbone.py",
+        "github_source_blob_sha": "12e037bc44c8587f2305357ff085380473c40963",
+        "github_source_commit": "48f29d54fd43809205fba607b9cda62003df75db",
+        "github_report_path": "research/delta/research/DELTA_R037_R032_PARENT_BACKBONE_PARITY.md",
+        "github_report_commit": "b3ed57187a75cf91d3495408b14575941a381b21",
+        "drive_doc_id": "1PuhgjTiKWSe2QY9N9mD4ZeAxe3x1XdQlUTnfiLhzmHI",
+        "workbook_tab": "72 R037 Parent Parity",
+        "stage_a_surface": "DUKAS_COINEXX_LIKE_P75",
+        "stage_a_ticks": 4205709,
+        "r9": {
+          "trades": 16801,
+          "official_wins": 7265,
+          "gross_profit": 1574.77,
+          "gross_loss": -5343.02,
+          "net": -3768.25,
+          "balance_dd": 3769.83
+        },
+        "p01": {
+          "trades": 14582,
+          "official_wins": 6734,
+          "gross_profit": 1426.64,
+          "gross_loss": -4393.28,
+          "net": -2966.64,
+          "balance_dd": 2967.63,
+          "flips": 6658,
+          "suppressed_rearms": 6582
+        },
+        "m30_keep_owned": {
+          "trades": 14025,
+          "official_wins": 6461,
+          "gross_profit": 1370.9,
+          "gross_loss": -4234.24,
+          "net": -2863.34,
+          "balance_dd": 2864.33,
+          "m30_only_hits": 1906
+        },
+        "global_no_rearm": {
+          "trades": 12504,
+          "official_wins": 5723,
+          "gross_profit": 1225.76,
+          "gross_loss": -3797.07,
+          "net": -2571.31,
+          "balance_dd": 2572.3
+        },
+        "decision": "EXACT_NON_SPECIALIST_BACKBONE_PARITY"
+      }
     }
   },
   "prebacktest_research": {
