@@ -1,0 +1,49 @@
+{
+  "schema": "delta-r037-sorb-config-v1",
+  "status": "FROZEN_BEFORE_REPLAY",
+  "parent_control": "R032-C03_PLUS_DH02_S11_S08",
+  "stage_a_start_ms": 1767225600000,
+  "stage_a_end_ms_exclusive": 1768737600000,
+  "default_surface": "DUKAS_COINEXX_LIKE_P75",
+  "price_scale": 1000,
+  "tick_raw": 10,
+  "max_spread_points": 25,
+  "sessions": {
+    "LONDON": {
+      "timezone": "Europe/London",
+      "local_start": "08:00:00",
+      "standard_utc_start_minutes": 480,
+      "dst_utc_start_minutes": 420
+    },
+    "COMEX_GOLD": {
+      "timezone": "America/New_York",
+      "local_start": "08:20:00",
+      "standard_utc_start_minutes": 800,
+      "dst_utc_start_minutes": 740
+    }
+  },
+  "configs": {
+    "R037-C01_LONDON_15": {"sessions":["LONDON"],"range_minutes":15,"confirm_closes":1,"expiry_minutes_after_range":120},
+    "R037-C02_COMEX_15": {"sessions":["COMEX_GOLD"],"range_minutes":15,"confirm_closes":1,"expiry_minutes_after_range":120},
+    "R037-C03_DUAL_15": {"sessions":["LONDON","COMEX_GOLD"],"range_minutes":15,"confirm_closes":1,"expiry_minutes_after_range":120},
+    "R037-C04_DUAL_30": {"sessions":["LONDON","COMEX_GOLD"],"range_minutes":30,"confirm_closes":1,"expiry_minutes_after_range":120},
+    "R037-C05_DUAL_15_CONFIRM2": {"sessions":["LONDON","COMEX_GOLD"],"range_minutes":15,"confirm_closes":2,"expiry_minutes_after_range":120}
+  },
+  "first_confirmation_consumes_session": true,
+  "same_tick_parent_priority": true,
+  "blocked_event_deferred": false,
+  "one_position_at_a_time": true,
+  "global_no_rearm_unchanged": true,
+  "sorb_rearm": false,
+  "lifecycle": {
+    "hard_stop_price": 0.30,
+    "trail_activation_price": 0.10,
+    "trail_distance_price": 0.03,
+    "max_hold_seconds": 30,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01,
+    "lot": 0.01
+  },
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
