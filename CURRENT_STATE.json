@@ -4,9 +4,9 @@
   "branch": "delta",
   "created_utc": "2026-10-01",
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
-  "last_verified_durable_unit": "R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_CHECKPOINT_13D",
-  "first_incomplete_unit": "R037_DH03_S06_PENDING_ATTEMPT_VALIDITY_AND_SUPERSESSION_PARITY_RECONSTRUCTION",
-  "current_phase": "R037_DH03_S06_PENDING_ATTEMPT_VALIDITY_AND_SUPERSESSION_PARITY_RECONSTRUCTION_NEXT",
+  "last_verified_durable_unit": "R037_DH03_S06_PENDING_VALIDITY_CHECKPOINT_13E",
+  "first_incomplete_unit": "R037_DH03_S06_PENDING_EVENT_IDENTITY_AND_REARM_BOUNDARY_PARITY_RECONSTRUCTION",
+  "current_phase": "R037_DH03_S06_PENDING_EVENT_IDENTITY_AND_REARM_BOUNDARY_PARITY_RECONSTRUCTION_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -616,7 +616,7 @@
       "google_doc_url": "https://docs.google.com/document/d/18W8y8hHqcK84rkSW66tRWIcT1R5YBxJhitsziRRNLEI/edit",
       "google_doc_revision": "ANLCKQk8pRN2l7_NJZcQEj3kpQ5ptP2KEKPFiZqsz8PmLbCqZ_Qm2wcUoudBg3feBRKxsAGr5oHg5AP7v_GIhZKOwPcSYcNjXs4P0R4EtrM"
     },
-    "current_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_CHECKPOINT_13D_MANIFEST.json",
+    "current_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH03_S06_PENDING_VALIDITY_CHECKPOINT_13E_MANIFEST.json",
     "verified_gate_run": 37149241116,
     "verified_gate_conclusion": "SUCCESS",
     "final_pack_revision_sync_commit": "5b21c2d06bbf4d98c10b3ee5bafeb0ca2c18a2fe",
@@ -660,7 +660,7 @@
   },
   "next_action": "Use DELTA_004 as the active parent. When the owner restates the first Entry + Initial-Hold research question, perform a fresh community scan, generate independent reconstructible hypotheses, use the GOV-014 spreadsheet-first quant harvesting loop to prioritize adjustments with >=10pp incremental scoped SYNTH-gap closure and seek >=30% scoped REAL-to-SYNTH gap closure before expensive replay, then preregister and test selected packages in the bounded Dukascopy tick-level cycle. Keep DELTA_005A-005M audit-only, August sealed, and MQL5 unauthorized.",
   "mql5_authorized": false,
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_CHECKPOINT_13D_MANIFEST.json",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_DH03_S06_PENDING_VALIDITY_CHECKPOINT_13E_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
   "first_incomplete_manifest_path": null,
   "first_incomplete_preregistration_path": null,
@@ -3468,7 +3468,7 @@
     "mt5_readiness_doc_id": "1a4bSQAbk1mQCUN1h088A2okVnTuKuohJlOsigDDjOn4",
     "mt5_readiness_doc_url": "https://docs.google.com/document/d/1a4bSQAbk1mQCUN1h088A2okVnTuKuohJlOsigDDjOn4/edit",
     "r037": {
-      "status": "DH03_S06_PENDING_ATTEMPT_VALIDITY_AND_SUPERSESSION_PARITY_RECONSTRUCTION_NEXT",
+      "status": "DH03_S06_PENDING_EVENT_IDENTITY_AND_REARM_BOUNDARY_PARITY_RECONSTRUCTION_NEXT",
       "parent": "R032-C03_PLUS_DH02_S11_S08",
       "family": "R037-SORB-v1",
       "prereg_drive_doc_id": "1lfjAI9QB1fOCevvAur1dDV3qSdOw9sPhrkr_rcf1TM0",
@@ -3491,7 +3491,7 @@
       "source_qa_decision": "SOURCE_QA_PASS",
       "integrated_replay": "NOT_STARTED",
       "integrated_replay_blocker": "FOUR_R032_SPECIALIST_STREAMS_REQUIRE_EXACT_RECONSTRUCTION_PARITY",
-      "exact_next_unit": "R037_DH03_S06_PENDING_ATTEMPT_VALIDITY_AND_SUPERSESSION_PARITY_RECONSTRUCTION",
+      "exact_next_unit": "R037_DH03_S06_PENDING_EVENT_IDENTITY_AND_REARM_BOUNDARY_PARITY_RECONSTRUCTION",
       "august_2026": "SEALED",
       "mql5_authorized": false,
       "parent_backbone_parity": {
@@ -3543,7 +3543,7 @@
         "decision": "EXACT_NON_SPECIALIST_BACKBONE_PARITY"
       },
       "integrated_replay_started": false,
-      "blocker": "DH03-S06 13D brackets historical admission between DROP 1513 and unconditional one-token pending 1586 vs target 1563. Pending supersession order is irrelevant (0 replacements). Residual is causal pending validity/invalidation; no TTL or threshold retune.",
+      "blocker": "DH03-S06 13E shows full original-event pending validity removes only 2 of 83 pending attempts; admission lifetime is not the dominant residual. Return to source-grounded reclaim/event identity under frozen 13C fresh-exhaustion rearm.",
       "dh05_s06_parity_checkpoint_01": {
         "status": "IN_PROGRESS_NO_PARITY_CLAIM",
         "github_report_path": "research/delta/research/DELTA_R037_DH05_S06_PARITY_CHECKPOINT_01.md",
@@ -3686,7 +3686,7 @@
         "august_2026": "SEALED",
         "mql5_authorized": false
       },
-      "first_incomplete_substep": "R037_DH03_S06_PENDING_ATTEMPT_VALIDITY_AND_SUPERSESSION_PARITY_RECONSTRUCTION",
+      "first_incomplete_substep": "R037_DH03_S06_PENDING_EVENT_IDENTITY_AND_REARM_BOUNDARY_PARITY_RECONSTRUCTION",
       "dh05_reversal_efficiency_stage_normalization_checkpoint_08": {
         "status": "COMPLETE_MATERIAL_CLUE_PARITY_NOT_ACHIEVED",
         "github_report_path": "research/delta/research/DELTA_R037_DH05_REVERSAL_EFFICIENCY_STAGE_NORMALIZATION_CHECKPOINT_08.md",
@@ -4940,6 +4940,29 @@
         "sorb_status": "BLOCKED_UNTIL_R032_PARENT_PARITY",
         "august_2026": "SEALED",
         "mql5_authorized": false
+      },
+      "dh03_s06_pending_validity_checkpoint_13e": {
+        "status": "COMPLETE_NEGATIVE_LOCALIZATION_FULL_PARITY_NOT_ACHIEVED",
+        "unit": "R037_DH03_S06_PENDING_ATTEMPT_VALIDITY_AND_SUPERSESSION_PARITY_RECONSTRUCTION",
+        "vector": "DH03-S06 / a3a086b7344c",
+        "producer_path": "research/delta/experiments/delta_r037_dh03_s06_pending_validity_parity.py",
+        "producer_commit": "82e66ee73bd88606e96bb358c3364bc42e41875c",
+        "result_path": "research/delta/reference/DELTA_R037_DH03_S06_PENDING_VALIDITY_CHECKPOINT_13E.json",
+        "result_commit": "d053734e2845d3a7e3c5a8ac985d99dd3498415f",
+        "official_raw_result_sha256": "7621dcb5286a7aca531762a7869b5f6d36e66072382287e49c78e54bf1a21d26",
+        "report_path": "research/delta/research/DELTA_R037_DH03_S06_PENDING_VALIDITY_CHECKPOINT_13E.md",
+        "report_commit": "9a13923f47df32cb2bf30a2d893074a3b65104fa",
+        "full_manifest_path": "research/delta/artifacts/DELTA_R037_DH03_S06_PENDING_VALIDITY_CHECKPOINT_13E_MANIFEST.json",
+        "full_manifest_commit": "8b2b0064ed1e9fa03f253ca6be24cecb0900d501",
+        "full_event_pending": "1584 trades / 702 raw-positive wins / net -357.71",
+        "pending_invalidated": "2 total / both max-age",
+        "exact_historical_parity": false,
+        "decision": "PENDING_EVENT_LIFETIME_NOT_DOMINANT_RESIDUAL_RETURN_TO_RECLAIM_EVENT_IDENTITY",
+        "next_unit": "R037_DH03_S06_PENDING_EVENT_IDENTITY_AND_REARM_BOUNDARY_PARITY_RECONSTRUCTION",
+        "integrated_r037_replay_started": false,
+        "sorb_status": "BLOCKED_UNTIL_R032_PARENT_PARITY",
+        "august_2026": "SEALED",
+        "mql5_authorized": false
       }
     }
   },
@@ -4976,8 +4999,8 @@
     "github_commit": "d5db76bfcd3bb91086a5635058005b4d940013bb",
     "manifest_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_SAFE_HANDOFF_CHECKPOINT_09D.json",
     "manifest_commit": "5b21c2d06bbf4d98c10b3ee5bafeb0ca2c18a2fe",
-    "restart_phase": "R037_DH03_S06_PENDING_ATTEMPT_VALIDITY_AND_SUPERSESSION_PARITY_RECONSTRUCTION_NEXT",
-    "next_action": "R037_DH03_S06_PENDING_ATTEMPT_VALIDITY_AND_SUPERSESSION_PARITY_RECONSTRUCTION",
+    "restart_phase": "R037_DH03_S06_PENDING_EVENT_IDENTITY_AND_REARM_BOUNDARY_PARITY_RECONSTRUCTION_NEXT",
+    "next_action": "R037_DH03_S06_PENDING_EVENT_IDENTITY_AND_REARM_BOUNDARY_PARITY_RECONSTRUCTION",
     "starter_prompt_doc_id": "15bKGqPsBebEXBdpgqhI1f6ItjoeJ4jc_3ZBzkN7woAU",
     "starter_prompt_doc_url": "https://docs.google.com/document/d/15bKGqPsBebEXBdpgqhI1f6ItjoeJ4jc_3ZBzkN7woAU/edit",
     "completeness_gate_doc_id": "1G_UttTVYhz55eZ6OHiz7r4ZzVv3l5zDD0U6DvTScG-s",
