@@ -93,7 +93,7 @@ DELTA is standalone.
 
 Do not import, cite, reconstruct, compare, or derive candidate logic from prior internal research lineages unless the owner explicitly authorizes a narrow exception.
 
-The one-time Gamma exception used only for the R9 functional summary is CLOSED.
+The one-time prior-lineage exception used only for the R9 functional summary is CLOSED.
 
 Allowed scientific inputs:
 1. registered R9 baseline/evidence;
