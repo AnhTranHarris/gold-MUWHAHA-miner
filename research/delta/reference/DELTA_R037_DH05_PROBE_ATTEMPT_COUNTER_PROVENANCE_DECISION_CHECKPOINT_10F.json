@@ -1,0 +1,34 @@
+{
+  "schema": "delta-r037-dh05-probe-attempt-counter-provenance-decision-10f-v1",
+  "status": "COMPLETE_PROVENANCE_LIMITATION_FREEZE",
+  "unit": "R037_DH05_PROBE_RESIDUAL_ATTEMPT_COUNTER_PROVENANCE_DECISION",
+  "raw_ticks_accessed": false,
+  "numeric_vector_retune": false,
+  "evidence_schema": "delta-r037-dh05-probe-attempt-counter-provenance-evidence-10f-v1",
+  "evidence_cutoff": "2026-10-03",
+  "gates": {
+    "authoritative_historical_producer_bytes_missing": true,
+    "whitepaper_first_cross_single_chain_constraint": true,
+    "independent_exact_counter_provenance_found": false,
+    "10d_10e_universal_counter_bracket_pass": true
+  },
+  "09z_best_reconstruction": {
+    "probe_abs_error": 449,
+    "total_funnel_abs_error": 782,
+    "aggregate_trade_count_abs_error": 335,
+    "promoted": false
+  },
+  "decision": {
+    "promote_another_universal_attempt_counter_semantic": false,
+    "freeze_09z_attempt_counter_as_best_reconstructible_surrogate": true,
+    "claim_exact_historical_dh05_parity": false,
+    "record_remaining_probe_error_as_provenance_limitation": true,
+    "remaining_probe_abs_error": 449,
+    "dh05_stream_disposition": "PROVENANCE_LIMITED_BEST_RECONSTRUCTION_09Z_NON_PROMOTING",
+    "reason": "No surviving independent historical source encodes another exact universal probe-attempt counter/reset semantic. The original source bytes remain missing, while 10D and 10E bracket the contact edge and both alternative universal recuts worsen parity. Additional same-sample counter recuts would be retrospective fitting rather than reconstruction.",
+    "next": "R037_DH02_S11_CLEANROOM_PARITY_RECONSTRUCTION"
+  },
+  "august_2026": "SEALED",
+  "sorb_integrated_replay_started": false,
+  "mql5_authorized": false
+}
