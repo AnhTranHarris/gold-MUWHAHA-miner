@@ -11,19 +11,19 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_CHECKPOINT_11F",
-    "current_phase": "R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_AND_INTERACTION_DECISION_NEXT",
-    "first_incomplete_unit": "R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_AND_INTERACTION_DECISION",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH02_S11_FAILURE_PERSISTENCE_STATE_MEMORY_CHECKPOINT_11F_MANIFEST.json",
-    "current_state_commit": "9c8209748eb30941195b3d802a07b6492141b0c1",
-    "current_state_ci_run": 37153997479,
+    "last_verified_durable_unit": "R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_DECISION_CHECKPOINT_11G",
+    "current_phase": "R037_DH02_S08_CLEANROOM_PARITY_RECONSTRUCTION_NEXT",
+    "first_incomplete_unit": "R037_DH02_S08_CLEANROOM_PARITY_RECONSTRUCTION",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_DECISION_CHECKPOINT_11G_MANIFEST.json",
+    "current_state_commit": "7cff66eb5c412508fd0c4f67ac34e33714ec99fe",
+    "current_state_ci_run": 37154348741,
     "current_state_ci_conclusion": "success"
   },
   "in_flight_unit": {
-    "unit": "R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_AND_INTERACTION_DECISION",
-    "status": "NOT_STARTED_FROM_DURABLE_11F",
+    "unit": "R037_DH02_S08_CLEANROOM_PARITY_RECONSTRUCTION",
+    "status": "NOT_STARTED_FROM_DURABLE_11G",
     "committed_artifacts": [],
-    "next_action": "Ground 11F negative localization against surviving DH02 source/provenance; preserve 11D invalid-context-break challenger separately; preregister only a source-supported interaction decision before any new replay."
+    "next_action": "Freeze S08 historical fixture and immutable vector evidence; commit producer before Stage-A replay; then run canonical January P75 under bounded runner."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
