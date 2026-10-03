@@ -856,12 +856,18 @@ def detect_signal_multiplicity(
     s15e, s15o, s15c, accdisp, acctf, maxfail, maxprobe, probeexc,
     reclaim, revdisp, effmin, revtf, mode,
 ):
-    # Exact 09F serial state machine through first reversal; only post-signal rearm differs by mode.
-    stage=0; oside=0; L=0; evatr=0.0; event_start=0; attempt_start=0; qualified_start=0
+    # Exact POST_QUAL serial state machine through the first signal.
+    # mode 0: one-shot control (must reproduce 09F exactly).
+    # mode 1: after a signal, rearm only after reversal predicate turns false.
+    # mode 2: after a signal, rearm only after reclaim is lost, then regained.
+    # mode 3: after a signal, rearm only after tick path revisits original-break
+    #         side and then returns to failed-break side.
+    stage=0; oside=0; L=0; evatr=0.0; attempt_start=0; qualified_start=0
     fstart=0; reent=False
     latest_hi=0; latest_lo=0; si=0; hiel=True; loel=True; lastacc=-1; lastrev=-1
-    attempt_open=False; attempt_qualified=False; cnt=np.zeros(8,np.int64)
+    attempt_open=False; attempt_qualified=False
     event_id=0; first_signal_seen=False; signal_armed=True; boundary_rearm_seen=False
+    cnt=np.zeros(8,np.int64)
     MAX_SIG=100000
     sig_i=np.empty(MAX_SIG,np.int64); sig_side=np.empty(MAX_SIG,np.int8); sig_event=np.empty(MAX_SIG,np.int64)
     nsig=0; overflow=0
@@ -881,13 +887,13 @@ def detect_signal_multiplicity(
             if latest_hi and px<latest_hi: hiel=True
             if latest_lo and px>latest_lo: loel=True
             if latest_hi and hiel and px>=latest_hi:
-                stage=1; oside=1; L=latest_hi; evatr=ae; event_start=tm; attempt_start=tm; qualified_start=0
-                hiel=False; cnt[0]+=1; attempt_open=True; attempt_qualified=False; event_id+=1
-                first_signal_seen=False; signal_armed=True; boundary_rearm_seen=False; reent=False
+                stage=1; oside=1; L=latest_hi; evatr=ae; attempt_start=tm; qualified_start=0
+                hiel=False; cnt[0]+=1; attempt_open=True; attempt_qualified=False
+                event_id+=1; first_signal_seen=False; signal_armed=True; boundary_rearm_seen=False
             elif latest_lo and loel and px<=latest_lo:
-                stage=1; oside=-1; L=latest_lo; evatr=ae; event_start=tm; attempt_start=tm; qualified_start=0
-                loel=False; cnt[0]+=1; attempt_open=True; attempt_qualified=False; event_id+=1
-                first_signal_seen=False; signal_armed=True; boundary_rearm_seen=False; reent=False
+                stage=1; oside=-1; L=latest_lo; evatr=ae; attempt_start=tm; qualified_start=0
+                loel=False; cnt[0]+=1; attempt_open=True; attempt_qualified=False
+                event_id+=1; first_signal_seen=False; signal_armed=True; boundary_rearm_seen=False
         if stage==0: continue
 
         if stage<=2:
@@ -908,18 +914,16 @@ def detect_signal_multiplicity(
             if oside*(px-L)>=probeexc*evatr:
                 stage=2
                 if qualified_start==0: qualified_start=tm
-            else:
-                if tm-attempt_start>maxprobe:
-                    stage=0; oside=0; attempt_open=False; attempt_qualified=False; qualified_start=0
-                    continue
+            elif tm-attempt_start>maxprobe:
+                stage=0; oside=0; attempt_open=False; attempt_qualified=False; qualified_start=0
+                continue
         if stage<2: continue
 
         if stage==2 and jacc>=0 and jacc!=lastacc:
             lastacc=jacc
             acc_end=s5e[j5] if acctf==5 and j5>=0 else (s15e[j15] if j15>=0 else 0)
             post_qual_bar=acc_end>qualified_start if qualified_start>0 else False
-            q=oside*(ac-ao)>=accdisp*evatr and oside*(ac-L)>0
-            q=q and post_qual_bar
+            q=oside*(ac-ao)>=accdisp*evatr and oside*(ac-L)>0 and post_qual_bar
             if q:
                 cnt[2]+=1; stage=0; oside=0; attempt_open=False; attempt_qualified=False; qualified_start=0
                 continue
@@ -938,6 +942,7 @@ def detect_signal_multiplicity(
             stage=0; oside=0; reent=False; continue
         if stage<4: continue
 
+        # Transition-based boundary recycle can rearm between completed bars.
         if mode==3 and first_signal_seen:
             if oside*(px-L)>=0:
                 boundary_rearm_seen=True
@@ -946,15 +951,14 @@ def detect_signal_multiplicity(
 
         jrev=j1 if revtf==1 else j5
         rc=s1c[j1] if revtf==1 and j1>=0 else (s5c[j5] if j5>=0 else 0)
-        reclaim_ok=(-oside)*(rc-L)>=reclaim*evatr if jrev>=0 else False
         if stage==4 and jrev>=0 and jrev!=lastrev:
-            if reclaim_ok:
+            if (-oside)*(rc-L)>=reclaim*evatr:
                 cnt[5]+=1; stage=5
 
-        if stage<5 or jrev<0 or jrev==lastrev:
-            continue
+        if stage<5 or jrev<0 or jrev==lastrev: continue
 
         ro=s1o[j1] if revtf==1 else s5o[j5]
+        reclaim_ok=(-oside)*(rc-L)>=reclaim*evatr
         disp=(-oside)*(rc-ro)
         eff=1.0 if abs(rc-ro)>0 else 0.0
         reversal_ok=disp>=revdisp*evatr and eff>=effmin
@@ -967,7 +971,7 @@ def detect_signal_multiplicity(
             elif mode==3 and not reclaim_ok:
                 stage=4
 
-        if reversal_ok and signal_armed:
+        if stage>=5 and reclaim_ok and reversal_ok and signal_armed:
             if nsig<MAX_SIG:
                 sig_i[nsig]=i; sig_side[nsig]=-oside; sig_event[nsig]=event_id; nsig+=1
             else:
