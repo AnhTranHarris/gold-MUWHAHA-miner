@@ -32,10 +32,10 @@ jobs:
       - name: Enforce DELTA causal/durability contract
         run: python research/delta/qa/DELTA_GOV_001_REBUILD_MANIFEST_GATE.py
       - name: Persist DELTA timeout-recovery snapshot
-        if: ${{ success() }}
+        if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
-          name: delta-recovery-${{ github.sha }}
+          name: delta-recovery-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             CURRENT_STATE.json
             research/delta/qa/
@@ -44,5 +44,5 @@ jobs:
             research/delta/artifacts/DELTA_R037_*_MANIFEST.json
             research/delta/research/DELTA_R037_*.md
           if-no-files-found: error
-          compression-level: 9
+          compression-level: 6
           retention-days: 30
