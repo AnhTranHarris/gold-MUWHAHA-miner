@@ -41,10 +41,10 @@ August 2026 remains sealed until the DELTA rules permit opening it and the owner
 
 ## Owner-authorized one-time R9 baseline inspection exception
 
-On 2026-10-01 the owner explicitly authorized a one-time read-only inspection of the legacy Gamma R9 baseline solely to summarize the preserved R9 MT5 EA's functional mechanics for DELTA.
+On 2026-10-01 the owner explicitly authorized a one-time read-only inspection of the legacy R9 baseline solely to summarize the preserved R9 MT5 EA's functional mechanics for DELTA.
 
 Inspection was restricted to:
-- `carson/r9-gamma-00-baseline/Experts/GoldMuwahahaMiner_R9_HybridGate.mq5` — blob `7eecb5f1947017a01ce85b2520725de54749e523`;
+- `historical R9 baseline source` — blob `7eecb5f1947017a01ce85b2520725de54749e523`;
 - `carson/r9-tick-logger/Experts/GoldMuwahahaMiner_R9_TickLogger.mq5` — blob `5c7655cd3357f9126e8bffd97c34374dfb29f83e` — only to cross-check that instrumentation preserved R9 trading logic;
 - historical source/evidence notes only to verify the same R9 mechanics.
 
@@ -54,4 +54,4 @@ The resulting DELTA-owned durable references are:
 
 No later legacy candidate logic, specialist design, optimization result, or governance was imported.
 
-**Exception status: CLOSED_AFTER_R9_SUMMARY.** Active DELTA work must use the durable DELTA references above and must not reopen Gamma or any other prior internal lineage unless the owner gives new explicit authorization.
+**Exception status: CLOSED_AFTER_R9_SUMMARY.** Active DELTA work must use the durable DELTA references above and must not reopen any prior internal lineage unless the owner gives new explicit authorization.
