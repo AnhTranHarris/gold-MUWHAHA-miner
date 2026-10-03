@@ -1,0 +1,78 @@
+{
+  "schema": "delta-r037-dh05-acceptance-tf-metadata-provenance-checkpoint-09x-v1",
+  "status": "COMPLETE_PROVENANCE_RECONCILIATION_LEDGER_CORRECTED",
+  "unit": "R037_DH05_ACCEPTANCE_TF_METADATA_PROVENANCE_RECONCILIATION",
+  "parent": "R037_DH05_ACCEPTANCE_TF_ROUTED_GENERATOR_OWNERSHIP_CHECKPOINT_09W",
+  "raw_tick_accessed": false,
+  "numeric_vector_retune": false,
+  "producer_path": "research/delta/experiments/delta_r037_dh05_acceptance_tf_metadata_provenance_reconciliation.py",
+  "producer_commit": "d67f6a1c562a107a07e8072939a389581316d9fb",
+  "producer_blob_sha": "d5c634b6a498d33a3843c090cca344e6e4cd326f",
+  "producer_file_sha256": "2c5a17afbbe1e98195c591b27b6ae634165cd7d752a7786fe7e87ce5585d6f53",
+  "runtime_result_sha256": "54e1d9b0df19b3a247d4495e553345b265b1348716edcd61be0b9fbfac6cc2e7",
+  "runtime": {
+    "elapsed_seconds": 0.83,
+    "max_rss_kb": 134452,
+    "exit_code": 0,
+    "timeout_seconds": 30
+  },
+  "mismatch": {
+    "vector": "S16",
+    "checkpoint09s": {
+      "acceptance_tf": 15,
+      "reversal_tf": 5
+    },
+    "live_frozen_vectors": {
+      "acceptance_tf": 5,
+      "reversal_tf": 5
+    }
+  },
+  "historical_evidence": {
+    "earliest_cleanroom_source": "delta_r037_dh05_cleanroom_parity.py",
+    "earliest_cleanroom_s16": {
+      "acceptance_tf": 5,
+      "reversal_tf": 5
+    },
+    "checkpoint09c_s16": {
+      "acceptance_tf": 5,
+      "reversal_tf": 5
+    },
+    "checkpoint09d_s16": {
+      "acceptance_tf": 5,
+      "reversal_tf": 5
+    }
+  },
+  "corrected_diagnostic": {
+    "acceptance_clock_error": {
+      "checkpoint09s_reported": 139,
+      "corrected": 153
+    },
+    "clock_topology_error": {
+      "checkpoint09s_reported": 61,
+      "corrected": 75
+    },
+    "perfect_acceptance_tf_sign_separation": false,
+    "corrected_acceptance_tf_groups": {
+      "S5": [
+        "S06",
+        "S10",
+        "S16"
+      ],
+      "S15": [
+        "A03",
+        "S05",
+        "S09"
+      ]
+    }
+  },
+  "finding": {
+    "checkpoint09t_requires_reopen": false,
+    "reason": "09T derived categories from the live frozen VECTORS tuple and causally rejected the 09S router on Stage-A ticks.",
+    "promoted": false
+  },
+  "decision": "CORRECT_09S_METADATA_CLAIM_KEEP_09T_CAUSAL_REJECTION",
+  "parity_complete": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "next_unit": "R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_HARVEST"
+}
