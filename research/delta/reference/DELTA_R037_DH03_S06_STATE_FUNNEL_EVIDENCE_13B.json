@@ -1,0 +1,94 @@
+{
+  "schema": "delta-r037-dh03-s06-state-funnel-evidence-13b-v1",
+  "status": "PREREGISTERED_BEFORE_COMPUTE",
+  "unit": "R037_DH03_S06_STATE_FUNNEL_SEMANTICS_PARITY_RECONSTRUCTION",
+  "parent_checkpoint": "R037_DH03_S06_CLEANROOM_PARITY_CHECKPOINT_13A",
+  "active_parent": "R032-C03_PLUS_DH02_S11_S08",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "canonical_stage_a": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "ticks": 4205709,
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+  },
+  "vector": {
+    "id": "DH03-S06",
+    "fingerprint": "a3a086b7344c",
+    "parameters": {
+      "counter_eff": 0.6468,
+      "exhaustion_decline": 0.4533,
+      "invalidation_buffer_atr": 0.3242,
+      "max_pullback_age_s": 513.6575,
+      "no_new_extreme_count": 1,
+      "parent_bundle": "M15/M30",
+      "parent_policy": "structural-priority",
+      "pullback_depth_atr": 0.4743,
+      "pullback_start_tf": "S15",
+      "reaccel_eff_min": 0.2854,
+      "reaccel_tf": "S5",
+      "reclaim_source": "S15 pivot"
+    }
+  },
+  "historical_target": {
+    "trades": 1563,
+    "raw_positive_wins": 690,
+    "gross_profit": 151.82,
+    "gross_loss": -490.75,
+    "net_profit": -338.93,
+    "max_balance_drawdown": 339.25
+  },
+  "control_13a": {
+    "profile": "STRUCTURAL_PRIORITY_SWING_PARENT_S15_EITHER_DECLINE",
+    "trades": 709,
+    "raw_positive_wins": 302,
+    "gross_profit": 64.43,
+    "gross_loss": -229.79,
+    "net_profit": -165.36,
+    "pullbacks": 1369,
+    "exhaustion": 906,
+    "reclaim": 722,
+    "signals": 709
+  },
+  "source_grounded_defect": {
+    "source": "DH-03 White Paper — Pullback Continuation Specialist",
+    "drive_document_id": "13pa0KSxVy93yajDEGAIkeY4V8Z3egMDIPxPV0nM3ia8",
+    "canonical_semantic": "LOCAL_RECLAIM is a completed S5 close back through a causally known fast pivot/reclaim level in parent direction; the S06 reclaim level source remains the frozen S15 pivot.",
+    "control_mismatch": "13A checked the S15 close itself for the reclaim cross, so reclaim opportunities were observed only every 15 seconds instead of every completed S5 bar.",
+    "numeric_retune": false
+  },
+  "bounded_profiles": [
+    {
+      "id": "CONTROL_13A_S15_CLOSE_RECLAIM",
+      "role": "exact 13A control"
+    },
+    {
+      "id": "S5_RECLAIM_POST_PULLBACK_PIVOT",
+      "role": "literal timing repair",
+      "semantics": "completed S5 close crosses latest causally known S15 pivot in parent direction; pivot reveal time must be after pullback start; reacceleration must occur on a later completed S5 bar"
+    },
+    {
+      "id": "S5_RECLAIM_ANY_CAUSAL_PIVOT",
+      "role": "bounded reclaim-level provenance interpretation",
+      "semantics": "completed S5 close crosses latest causally known S15 pivot in parent direction regardless of whether that pivot was revealed before or after pullback start; reacceleration remains later completed S5"
+    },
+    {
+      "id": "S5_RECLAIM_FROZEN_AT_EXHAUSTION",
+      "role": "bounded event-state interpretation",
+      "semantics": "freeze the latest causally known S15 pivot when EXHAUSTION_CANDIDATE first forms, then require a completed S5 close through that frozen level before later S5 reacceleration"
+    }
+  ],
+  "selection_rule": "No threshold tuning. First require exact reproduction of the 13A control. Prefer the white-paper-consistent S5 reclaim timing if it materially closes the 709->1563 activity deficit while maintaining a broadly compatible raw-win fraction/economic scale. Do not select a looser pivot-age interpretation solely because one scalar fits better.",
+  "forbidden": [
+    "numeric threshold retuning",
+    "August access",
+    "SORB integration",
+    "mature-exit optimization",
+    "capital/lot changes",
+    "MQL5",
+    "inventing unavailable historical producer behavior"
+  ],
+  "next_if_exact": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
+  "next_if_nonexact_localized": "R037_DH03_S06_PULLBACK_EVENT_MULTIPLICITY_AND_RESET_PARITY_RECONSTRUCTION",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
