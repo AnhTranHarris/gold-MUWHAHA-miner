@@ -1,0 +1,83 @@
+{
+  "schema": "delta-r037-dh05-generator-ownership-new-boundary-release-checkpoint-09u-v1",
+  "status": "COMPLETE_NEGATIVE_QA_NEW_BOUNDARY_RELEASE_INSUFFICIENT",
+  "unit": "R037_DH05_GENERATOR_OWNERSHIP_NEW_BOUNDARY_RELEASE_PARITY_RECONSTRUCTION",
+  "parent": "R037_DH05_CONDITIONAL_FAILURE_CLOCK_CHALLENGER_CHECKPOINT_09T",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "producer_path": "research/delta/experiments/delta_r037_dh05_generator_ownership_new_boundary_release_parity.py",
+  "producer_commit": "2cc4fe9428a0632d3dc04a968c1d274cd03c287c",
+  "producer_blob_sha": "941d602ab57861f4d2a253390e6cb496e00f4ccd",
+  "runtime_result_sha256": "d53b4b08e20228c9482c187fc9a4a5f44bf0e49b5d93e40eb0b5aad95af362d8",
+  "runtime": {
+    "elapsed_seconds": 12.62,
+    "max_rss_kb": 697832,
+    "exit_code": 0,
+    "timeout_seconds": 120
+  },
+  "numeric_vector_retune": false,
+  "august_accessed": false,
+  "candidate_semantics": {
+    "generator_release": "FAILURE_CANDIDATE",
+    "same_boundary_concurrent_duplicate": "BLOCKED_BY_CAUSAL_SWING_IDENTITY",
+    "new_boundary_while_old_episode_alive": "ALLOWED",
+    "boundary_identity": "causal symmetric-width-2 M5 swing reveal index",
+    "failure_clock": "FAILURE_CANDIDATE"
+  },
+  "control": {
+    "signal_error": 338,
+    "latch_trade_error": 336
+  },
+  "candidate": {
+    "stage_abs_error": {
+      "probe": 686,
+      "qualified": 528,
+      "accepted": 79,
+      "failure": 495,
+      "reentry": 250,
+      "reclaim": 141,
+      "reversal": 150,
+      "signal": 150
+    },
+    "total_stage_abs_error": 2479,
+    "probe_qualified_abs_error": 1214,
+    "first5_abs_error": 2038,
+    "downstream_abs_error": 441,
+    "latch_trade_error": 377,
+    "max_concurrent_failure_episodes": 2,
+    "episode_overflow": 0,
+    "signal_overflow": 0,
+    "new_boundary_starts_while_failure_active": 6,
+    "signals": {
+      "A03": 214,
+      "S05": 9,
+      "S06": 688,
+      "S09": 11,
+      "S10": 255,
+      "S16": 9
+    },
+    "trades": {
+      "A03": 214,
+      "S05": 9,
+      "S06": 686,
+      "S09": 11,
+      "S10": 255,
+      "S16": 9
+    },
+    "s06": {
+      "signals": 688,
+      "trades": 686,
+      "wins": 283,
+      "net_usd": -164.73
+    }
+  },
+  "finding": "Only six new causal M5 boundary identities became generator-eligible while an earlier failure episode remained active; this mechanism is too rare and worsens family and S06 parity.",
+  "decision": "REJECT_NEW_BOUNDARY_ONLY_GENERATOR_RELEASE_NO_SEMANTIC_FREEZE",
+  "parity_complete": false,
+  "promoted": false,
+  "next_unit": "R037_DH05_ACCEPTANCE_TF_ROUTED_GENERATOR_OWNERSHIP_CHALLENGER_REPLAY_NON_PROMOTING",
+  "integrated_r037_sorb_started": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
