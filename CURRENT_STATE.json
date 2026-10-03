@@ -4,9 +4,9 @@
   "branch": "delta",
   "created_utc": "2026-10-01",
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
-  "last_verified_durable_unit": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
-  "first_incomplete_unit": "DELTA_RESTART_FIRST_CANDIDATE_RESEARCH_QUESTION",
-  "current_phase": "R036_COMPLETE_INDEPENDENT_DENSITY_TOPUPS_EXHAUSTED_NEXT_SOURCE_REQUIRED",
+  "last_verified_durable_unit": "R037_SORB_SOURCE_QA",
+  "first_incomplete_unit": "R037_R032_C03_PARENT_PARITY_RECOVERY_AND_RECONSTRUCTION",
+  "current_phase": "R037_SOURCE_QA_PASS_INTEGRATED_REPLAY_BLOCKED_ON_R032_PARENT_PARITY",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -420,7 +420,7 @@
     "direction_hold_tick_testing_started": true,
     "direction_hold_causal_grammar_whitepapers_canonical": true,
     "timeout_exploratory_dh_c_packages_not_active": true,
-    "next_permitted_step": "R037_FRESH_INDEPENDENT_OPPORTUNITY_SOURCE_RESEARCH_AND_PREREGISTRATION;_DO_NOT_RECUT_DH02_A01_OR_DH04_ON_LATE_JAN_HOLDOUT;_NO_AUGUST_NO_MQL5",
+    "next_permitted_step": "R037_RECOVER_OR_RECONSTRUCT_EXACT_R032_C03_PARENT_AND_PROVE_STAGE_A_PARITY;_THEN_OFFICIAL_R037_SORB_INTEGRATED_REPLAY;_NO_SORB_RETUNE_NO_AUGUST_NO_MQL5",
     "preregistration_baskets_must_be_multivariate": true,
     "one_variable_at_a_time_is_not_default": true,
     "full_cartesian_parameter_sweep_not_default": true,
@@ -568,7 +568,13 @@
     "heavy_candidate_synthesis_current_lab_url": "https://docs.google.com/spreadsheets/d/1CF15bSAjCDfIyvX3FaaTfjJqRulBZsIhfDUWuIaTSIE/edit",
     "heavy_candidate_synthesis_new_package_requires_preregistration": true,
     "r036_r037_handoff_continuity_qa_complete": true,
-    "current_state_stale_metadata_scan_matches": 0
+    "current_state_stale_metadata_scan_matches": 0,
+    "r037_preregistered_before_replay": true,
+    "r037_sorb_config_frozen": true,
+    "r037_source_qa_pass": true,
+    "r037_integrated_replay_started": false,
+    "r037_parent_parity_required_before_integrated_replay": true,
+    "r037_sorb_retuning_prohibited_after_stage_a_freeze": true
   },
   "handoff": {
     "status": "CURRENT_READ_FIRST_R036_R037_HANDOFF_PACK",
@@ -3425,7 +3431,35 @@
     "handoff_pack_folder_id": "1n4hRXXEyQlPJuLKICPVFBjc2MxW2Jagg",
     "handoff_pack_folder_url": "https://drive.google.com/drive/folders/1n4hRXXEyQlPJuLKICPVFBjc2MxW2Jagg",
     "mt5_readiness_doc_id": "1a4bSQAbk1mQCUN1h088A2okVnTuKuohJlOsigDDjOn4",
-    "mt5_readiness_doc_url": "https://docs.google.com/document/d/1a4bSQAbk1mQCUN1h088A2okVnTuKuohJlOsigDDjOn4/edit"
+    "mt5_readiness_doc_url": "https://docs.google.com/document/d/1a4bSQAbk1mQCUN1h088A2okVnTuKuohJlOsigDDjOn4/edit",
+    "r037": {
+      "status": "SOURCE_QA_PASS_INTEGRATED_REPLAY_BLOCKED_ON_PARENT_PARITY",
+      "parent": "R032-C03_PLUS_DH02_S11_S08",
+      "family": "R037-SORB-v1",
+      "prereg_drive_doc_id": "1lfjAI9QB1fOCevvAur1dDV3qSdOw9sPhrkr_rcf1TM0",
+      "source_qa_drive_doc_id": "1xPcyW7Tu8jxWIWJasK6YSUkIkMYMkbvBrP67bTzXHKo",
+      "prereg_github_path": "research/delta/research/DELTA_R037_SESSION_OPEN_RANGE_BREAKOUT_PREREG.md",
+      "source_qa_github_path": "research/delta/research/DELTA_R037_SESSION_ORB_SOURCE_QA.md",
+      "producing_source_path": "research/delta/experiments/delta_r037_sorb.py",
+      "producing_source_blob_sha": "3c701ec52b435b907a2f7d96a143f6a4460551a6",
+      "config_path": "research/delta/reference/DELTA_R037_SORB_CONFIG.json",
+      "config_blob_sha": "cdf401d6784f4187a81a9c625d58c1c18377b2aa",
+      "source_qa_commit": "847a234378bc72ec8d91f454b9bf037be7c98f11",
+      "source_qa_result_sha256": "36dabdccc21ae2d6f68fa26bdb9bd7fbcb0e8ad9b48f8b5557d7da3046d711e3",
+      "stage_a_ticks": 4205709,
+      "surface": "DUKAS_COINEXX_LIKE_P75",
+      "workbook_tabs": [
+        "69 R037 Research Harvest",
+        "70 R037 Prereg",
+        "71 R037 Source QA"
+      ],
+      "source_qa_decision": "SOURCE_QA_PASS",
+      "integrated_replay": "NOT_STARTED",
+      "integrated_replay_blocker": "EXACT_R032_C03_PARENT_PARITY_NOT_YET_RECONSTRUCTED",
+      "exact_next_unit": "RECOVER_EXISTING_R032_PRODUCING_SOURCE_OR_RECONSTRUCT_FROM_CANONICAL_R025_PLUS_FROZEN_DH03_S06_DH05_S06_DH02_S11_DH02_S08_AND_REPRODUCE_AUTHORITATIVE_STAGE_A_CONTROLS",
+      "august_2026": "SEALED",
+      "mql5_authorized": false
+    }
   },
   "prebacktest_research": {
     "status": "SUPERSEDED_TIMEOUT_DUPLICATE_NOT_ACTIVE",
