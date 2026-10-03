@@ -4,9 +4,9 @@
   "branch": "delta",
   "created_utc": "2026-10-01",
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
-  "last_verified_durable_unit": "R037_DH05_ACCEPTANCE_TF_METADATA_PROVENANCE_CHECKPOINT_09X",
-  "first_incomplete_unit": "R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_HARVEST",
-  "current_phase": "R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_HARVEST_NEXT",
+  "last_verified_durable_unit": "R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_CHECKPOINT_09Y",
+  "first_incomplete_unit": "R037_DH05_SHORT_PROBE_RELATIVE_ACCEPTANCE_BAR_OWNERSHIP_CHALLENGER_REPLAY_NON_PROMOTING",
+  "current_phase": "R037_DH05_SHORT_PROBE_RELATIVE_ACCEPTANCE_BAR_OWNERSHIP_CHALLENGER_REPLAY_NON_PROMOTING_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -616,7 +616,7 @@
       "google_doc_url": "https://docs.google.com/document/d/18W8y8hHqcK84rkSW66tRWIcT1R5YBxJhitsziRRNLEI/edit",
       "google_doc_revision": "ANLCKQk8pRN2l7_NJZcQEj3kpQ5ptP2KEKPFiZqsz8PmLbCqZ_Qm2wcUoudBg3feBRKxsAGr5oHg5AP7v_GIhZKOwPcSYcNjXs4P0R4EtrM"
     },
-    "current_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH05_ACCEPTANCE_TF_METADATA_PROVENANCE_CHECKPOINT_09X_MANIFEST.json",
+    "current_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_CHECKPOINT_09Y_MANIFEST.json",
     "verified_gate_run": 37094384529,
     "verified_gate_conclusion": "SUCCESS",
     "final_pack_revision_sync_commit": "5b21c2d06bbf4d98c10b3ee5bafeb0ca2c18a2fe",
@@ -655,7 +655,7 @@
   },
   "next_action": "Use DELTA_004 as the active parent. When the owner restates the first Entry + Initial-Hold research question, perform a fresh community scan, generate independent reconstructible hypotheses, use the GOV-014 spreadsheet-first quant harvesting loop to prioritize adjustments with >=10pp incremental scoped SYNTH-gap closure and seek >=30% scoped REAL-to-SYNTH gap closure before expensive replay, then preregister and test selected packages in the bounded Dukascopy tick-level cycle. Keep DELTA_005A-005M audit-only, August sealed, and MQL5 unauthorized.",
   "mql5_authorized": false,
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_DH05_ACCEPTANCE_TF_METADATA_PROVENANCE_CHECKPOINT_09X_MANIFEST.json",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_CHECKPOINT_09Y_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
   "first_incomplete_manifest_path": null,
   "first_incomplete_preregistration_path": null,
@@ -3681,7 +3681,7 @@
         "august_2026": "SEALED",
         "mql5_authorized": false
       },
-      "first_incomplete_substep": "R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_HARVEST",
+      "first_incomplete_substep": "R037_DH05_SHORT_PROBE_RELATIVE_ACCEPTANCE_BAR_OWNERSHIP_CHALLENGER_REPLAY_NON_PROMOTING",
       "dh05_reversal_efficiency_stage_normalization_checkpoint_08": {
         "status": "COMPLETE_MATERIAL_CLUE_PARITY_NOT_ACHIEVED",
         "github_report_path": "research/delta/research/DELTA_R037_DH05_REVERSAL_EFFICIENCY_STAGE_NORMALIZATION_CHECKPOINT_08.md",
@@ -4435,6 +4435,31 @@
         "next_unit": "R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_HARVEST",
         "august_2026": "SEALED",
         "mql5_authorized": false
+      },
+      "dh05_generator_release_topology_provenance_checkpoint_09y": {
+        "status": "COMPLETE_MATERIAL_PROVENANCE_CLUE_NON_PROMOTING",
+        "unit": "R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_HARVEST",
+        "producer_path": "research/delta/experiments/delta_r037_dh05_generator_release_topology_provenance_harvest.py",
+        "producer_commit": "60e57dd7327218541d14fb061caa1703db765bf3",
+        "producer_blob_sha": "c2f876270d2c2a27754412fdd4f38e856b3fc037",
+        "runtime_result_sha256": "476b1f66c091b092a3372d068117b5ceb5b80f4cfb5c3a60aea59dd3892b72f5",
+        "report_path": "research/delta/research/DELTA_R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_CHECKPOINT_09Y.md",
+        "compact_result_path": "research/delta/reference/DELTA_R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_CHECKPOINT_09Y.json",
+        "full_manifest_path": "research/delta/artifacts/DELTA_R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_CHECKPOINT_09Y_MANIFEST.json",
+        "full_manifest_commit": "50e28c720285bfc10da075bb691bad53190fd47f",
+        "candidate_rule": "max_probe_age_s < acceptance_tf_seconds -> FAILURE_CANDIDATE release; else SERIAL_POST_QUAL",
+        "selected_vectors": [
+          "S05",
+          "S09",
+          "S16"
+        ],
+        "predicted_funnel_error": 782,
+        "control_funnel_error": 978,
+        "decision": "HARVEST_SHORT_PROBE_RELATIVE_TO_ACCEPTANCE_BAR_ROUTER_FOR_NON_PROMOTING_CAUSAL_REPLAY",
+        "promoted": false,
+        "next_unit": "R037_DH05_SHORT_PROBE_RELATIVE_ACCEPTANCE_BAR_OWNERSHIP_CHALLENGER_REPLAY_NON_PROMOTING",
+        "august_2026": "SEALED",
+        "mql5_authorized": false
       }
     }
   },
@@ -4471,8 +4496,8 @@
     "github_commit": "d5db76bfcd3bb91086a5635058005b4d940013bb",
     "manifest_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_SAFE_HANDOFF_CHECKPOINT_09D.json",
     "manifest_commit": "5b21c2d06bbf4d98c10b3ee5bafeb0ca2c18a2fe",
-    "restart_phase": "R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_HARVEST_NEXT",
-    "next_action": "R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_HARVEST",
+    "restart_phase": "R037_DH05_SHORT_PROBE_RELATIVE_ACCEPTANCE_BAR_OWNERSHIP_CHALLENGER_REPLAY_NON_PROMOTING_NEXT",
+    "next_action": "R037_DH05_SHORT_PROBE_RELATIVE_ACCEPTANCE_BAR_OWNERSHIP_CHALLENGER_REPLAY_NON_PROMOTING",
     "starter_prompt_doc_id": "15bKGqPsBebEXBdpgqhI1f6ItjoeJ4jc_3ZBzkN7woAU",
     "starter_prompt_doc_url": "https://docs.google.com/document/d/15bKGqPsBebEXBdpgqhI1f6ItjoeJ4jc_3ZBzkN7woAU/edit",
     "completeness_gate_doc_id": "1G_UttTVYhz55eZ6OHiz7r4ZzVv3l5zDD0U6DvTScG-s",
