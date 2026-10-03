@@ -1,0 +1,73 @@
+{
+  "schema": "delta-r037-dh05-generator-release-topology-provenance-checkpoint-09y-v1",
+  "status": "COMPLETE_PROVENANCE_HARVEST_MATERIAL_NON_PROMOTING_CANDIDATE",
+  "unit": "R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_HARVEST",
+  "parent": "R037_DH05_ACCEPTANCE_TF_METADATA_PROVENANCE_CHECKPOINT_09X",
+  "raw_tick_accessed": false,
+  "numeric_vector_retune": false,
+  "producer_path": "research/delta/experiments/delta_r037_dh05_generator_release_topology_provenance_harvest.py",
+  "producer_commit": "60e57dd7327218541d14fb061caa1703db765bf3",
+  "producer_blob_sha": "c2f876270d2c2a27754412fdd4f38e856b3fc037",
+  "producer_file_sha256": "1afaa788acbca5c69dc1cc4dbbae3c479f246400737c5d7bd8ea2f05f4de4fa1",
+  "runtime_result_sha256": "476b1f66c091b092a3372d068117b5ceb5b80f4cfb5c3a60aea59dd3892b72f5",
+  "runtime": {
+    "elapsed_seconds": 0.8,
+    "max_rss_kb": 134572,
+    "exit_code": 0,
+    "timeout_seconds": 30
+  },
+  "timeframe_topology_conflicts": {
+    "15/5": {
+      "vectors": [
+        "A03",
+        "S05"
+      ],
+      "best_profiles": {
+        "A03": "NEXT_REVERSAL_BAR_RELEASE",
+        "S05": "FAILURE_CANDIDATE_RELEASE"
+      }
+    },
+    "5/5": {
+      "vectors": [
+        "S10",
+        "S16"
+      ],
+      "best_profiles": {
+        "S10": "NEXT_REVERSAL_BAR_RELEASE",
+        "S16": "FAILURE_CANDIDATE_RELEASE"
+      }
+    }
+  },
+  "candidate": {
+    "name": "SHORT_PROBE_RELATIVE_TO_ACCEPTANCE_BAR_ROUTER",
+    "rule": "max_probe_age_s < acceptance_tf_seconds -> FAILURE_CANDIDATE release; otherwise SERIAL_POST_QUAL",
+    "selected_vectors": [
+      "S05",
+      "S09",
+      "S16"
+    ],
+    "routed_profile": {
+      "A03": "SERIAL_POST_QUAL",
+      "S05": "FAILURE_CANDIDATE_RELEASE",
+      "S06": "SERIAL_POST_QUAL",
+      "S09": "FAILURE_CANDIDATE_RELEASE",
+      "S10": "SERIAL_POST_QUAL",
+      "S16": "FAILURE_CANDIDATE_RELEASE"
+    },
+    "control_total_abs_error": 978,
+    "predicted_blended_total_abs_error": 782,
+    "predicted_improvement": 196,
+    "promoted": false,
+    "requires_causal_replay": true
+  },
+  "finding": {
+    "acceptance_reversal_timeframe_topology_sufficient": false,
+    "vector_specific_best_profile_prohibited": true,
+    "semantic_timing_relation_candidate_found": true
+  },
+  "decision": "HARVEST_SHORT_PROBE_RELATIVE_TO_ACCEPTANCE_BAR_ROUTER_FOR_NON_PROMOTING_CAUSAL_REPLAY",
+  "parity_complete": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "next_unit": "R037_DH05_SHORT_PROBE_RELATIVE_ACCEPTANCE_BAR_OWNERSHIP_CHALLENGER_REPLAY_NON_PROMOTING"
+}
