@@ -25,9 +25,11 @@ def main() -> int:
     if ns.timeout <= 0:
         ap.error("--timeout must be > 0")
 
-    with tempfile.TemporaryDirectory(prefix="delta_numba_cache_") as cache_dir:
+    with tempfile.TemporaryDirectory(prefix="delta_numba_cache_", ignore_cleanup_errors=True) as cache_dir:
         env = os.environ.copy()
         env["NUMBA_CACHE_DIR"] = cache_dir
+        env["PYTHONFAULTHANDLER"] = "1"
+        env["PYTHONUNBUFFERED"] = "1"
         try:
             cp = subprocess.run(cmd, env=env, timeout=ns.timeout, check=False)
         except subprocess.TimeoutExpired:
