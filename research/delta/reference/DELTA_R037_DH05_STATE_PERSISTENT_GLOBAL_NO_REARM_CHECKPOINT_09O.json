@@ -1,0 +1,104 @@
+{
+  "schema": "delta-r037-dh05-state-persistent-global-no-rearm-checkpoint-09o-v1",
+  "status": "COMPLETE_NEGATIVE_QA_GLOBAL_NO_REARM_SUPPRESSES_DENSE_REENTRY_BUT_DOES_NOT_RESTORE_SPARSE_DENSITY",
+  "unit": "R037_DH05_STATE_PERSISTENT_EXECUTION_WITH_GLOBAL_NO_REARM_PARITY_RECONSTRUCTION",
+  "parent": "R037_DH05_REVERSAL_STATE_PERSISTENT_EXECUTION_MANDATE_CHECKPOINT_09N",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "august_accessed": false,
+  "numeric_vector_retune": false,
+  "producer_commit": "6b808fa738f6b07368ffd6f86b916a69fd3bb889",
+  "producer_blob_sha": "8d6968ad12a71951604c30067b4df61fe95b894e",
+  "producer_file_sha256": "361c29ed5c72735b560b951c7f10aae8cec2afbe6112ab6c73bb76448b51e87c",
+  "runtime_result_sha256": "ead3a618e7e6caaada2862f4d6784660d265b23618f8e85df14e67e3233d3b95",
+  "runtime_seconds": 10.95,
+  "max_rss_kb": 698756,
+  "crash_recovery": {
+    "first_attempt_status": "FAILED_BEFORE_OUTPUT",
+    "cause": "Numba cached compiled dependency referenced module environment '<dynamic>' from prior dynamic-import helper use",
+    "resolution": "Exact committed producer rerun with clean per-unit NUMBA_CACHE_DIR; no scientific code/hypothesis change",
+    "partial_result_promoted": false
+  },
+  "control": {
+    "aggregate_trade_count_abs_error": 336,
+    "s06": {
+      "signals": 651,
+      "trades": 649,
+      "wins": 274,
+      "net_usd": -150.35
+    }
+  },
+  "prior_best_09l": {
+    "aggregate_trade_count_abs_error": 304
+  },
+  "leading_profile": {
+    "name": "REV_DISP_CHAIN__NO_REARM_DROP",
+    "aggregate_trade_count_abs_error": 338,
+    "vectors": {
+      "A03": {
+        "trades": 194,
+        "target": 306,
+        "wins": 78,
+        "net_usd": -45.58,
+        "reentries": 2,
+        "blocked_same_minute": 32
+      },
+      "S05": {
+        "trades": 9,
+        "target": 51,
+        "wins": 5,
+        "net_usd": -1.25,
+        "reentries": 0,
+        "blocked_same_minute": 0
+      },
+      "S06": {
+        "trades": 650,
+        "target": 615,
+        "wins": 274,
+        "net_usd": -151.05,
+        "reentries": 1,
+        "blocked_same_minute": 64
+      },
+      "S09": {
+        "trades": 11,
+        "target": 119,
+        "wins": 7,
+        "net_usd": -1.13,
+        "reentries": 0,
+        "blocked_same_minute": 1
+      },
+      "S10": {
+        "trades": 230,
+        "target": 206,
+        "wins": 104,
+        "net_usd": -47.33,
+        "reentries": 3,
+        "blocked_same_minute": 53
+      },
+      "S16": {
+        "trades": 7,
+        "target": 24,
+        "wins": 2,
+        "net_usd": -2.22,
+        "reentries": 0,
+        "blocked_same_minute": 1
+      }
+    }
+  },
+  "body_sign_no_rearm": {
+    "aggregate_trade_count_abs_error": 341,
+    "s06": {
+      "trades": 653,
+      "target": 615,
+      "wins": 274,
+      "net_usd": -152.23,
+      "reentries": 4,
+      "blocked_same_minute": 196
+    }
+  },
+  "decision": "REJECT_GLOBAL_NO_REARM_PLUS_FIRST_NONCONFIRMING_BAR_INVALIDATION_AS_PARITY_MECHANISM",
+  "clue": "GLOBAL NO_REARM correctly suppresses dense same-minute state reentry, but sparse-vector deficit persists. The remaining candidate is state hysteresis across neutral reversal bars with explicit opposite-threshold invalidation.",
+  "parity_complete": false,
+  "next_unit": "R037_DH05_GLOBAL_NO_REARM_REVERSAL_HYSTERESIS_PARITY_RECONSTRUCTION"
+}
