@@ -1,0 +1,102 @@
+{
+  "schema": "delta-r037-dh02-s08-state-funnel-provenance-evidence-12b-v1",
+  "unit": "R037_DH02_S08_STATE_FUNNEL_AND_PROVENANCE_LOCALIZATION",
+  "parent_checkpoint": "R037_DH02_S08_CLEANROOM_PARITY_CHECKPOINT_12A",
+  "frozen_vector_fingerprint": "7c70b5304ff7",
+  "historical_target": {
+    "trades": 75,
+    "raw_positive_wins": 42,
+    "gross_profit": 9.93,
+    "gross_loss": -18.82,
+    "net_profit": -8.89,
+    "max_balance_drawdown": 9.66
+  },
+  "control_12a": {
+    "profile": "RAW_PARENT_DIRECTION_CONTINUOUS_DWELL",
+    "signals": 105,
+    "trades": 105,
+    "raw_positive_wins": 37,
+    "gross_profit": 8.75,
+    "gross_loss": -37.73,
+    "net_profit": -28.98,
+    "max_balance_drawdown": 29.08,
+    "breaks": 546,
+    "accepted": 510,
+    "retests": 313,
+    "failed": 240,
+    "expired": 201,
+    "context_vetoes": 45399,
+    "dwell_resets": 50,
+    "signal_sha256": "0f64c1f727c9fef6f9ee3676b1aa8d8a3df874b5a1c381d4a3bd6e6fe8657841"
+  },
+  "provenance": {
+    "dh02_whitepaper_id": "18KpLADXCt-MlIQgZ4j6papHdE7SUtrl8kVTbn0x1XNc",
+    "dh01_whitepaper_id": "1WrDPUavWb-bbv7gmxnnlEAFjT1NA9wYbPAwl-ayREAw",
+    "source_grounded_statements": [
+      "ARMED is a distinct DH02 state: a causally known M1 boundary exists and parent context permits breakout research.",
+      "BROKEN requires a completed S5 close beyond the boundary with sufficient frozen volatility-normalized displacement.",
+      "ENTRY_ELIGIBLE requires REBREAK_CONFIRMED while spread/session/context rules remain valid.",
+      "One boundary plus one original break direction equals one event; repeated ticks do not create duplicate events.",
+      "No transition may skip BROKEN.",
+      "Parent direction/context is M15/M30/H1 via DH01.",
+      "All timeframe values and confirmed swings are causal and become available only after completion/confirmation."
+    ],
+    "historical_r005_specialist_source_bytes_recovered": false,
+    "exact_historical_parent_context_placement_preserved": false,
+    "exact_tick_failure_memory_reset_preserved": false
+  },
+  "fixed_semantics": [
+    "all S08 numeric thresholds frozen",
+    "width-2 causally confirmed M1 swing boundary",
+    "completed S5 break",
+    "ATR(14) completed S15 frozen at break",
+    "continuous one-second breakout-side dwell",
+    "frozen retest zone and penetration buffer",
+    "two-adverse-tick provenance-limited failure surrogate",
+    "completed S1 rebreak with four-completed-bar SignedEfficiency",
+    "raw completed M15/M30/H1 two-of-three parent direction as 12A leading context representation",
+    "R9 downstream lifecycle frozen"
+  ],
+  "bounded_profiles": [
+    {
+      "id": "CONTROL_12A_BREAK_AND_ENTRY_CONTEXT",
+      "meaning": "12A leader: no explicit ARMED latch; raw parent context must match at completed-S5 break and again at rebreak/entry."
+    },
+    {
+      "id": "ARM_ON_REVEAL_LATCH_ENTRY_RECHECK",
+      "meaning": "A newly confirmed M1 boundary becomes ARMED only if raw parent direction matches at that boundary reveal; once armed, break may occur later; raw parent must match again at rebreak/entry."
+    },
+    {
+      "id": "ARM_WHEN_CONTEXT_FIRST_PERMITS_LATCH_ENTRY_RECHECK",
+      "meaning": "While idle, the latest causally confirmed unused M1 boundary becomes ARMED the first time raw parent context permits that direction; ARMED remains latched through BROKEN/RETEST; context is rechecked at entry."
+    },
+    {
+      "id": "ARM_LATCH_CONTINUOUS_CONTEXT_CONSUME",
+      "meaning": "Same dynamic ARMED latch, but if raw parent context becomes invalid after BROKEN and before entry, the one-boundary/one-direction event is consumed as context-invalid rather than allowed to continue."
+    },
+    {
+      "id": "ENTRY_CONTEXT_ONLY_DIAGNOSTIC",
+      "meaning": "Diagnostic localization only: no parent gate at break/arm; raw parent context required at rebreak/entry. Included to determine whether historical placement could have been primarily entry-side; it is not promoted merely by fit."
+    }
+  ],
+  "selection_rule": "Prefer a source-grounded lifecycle interpretation only if it materially improves the preserved S08 population/economic fingerprint without numeric retuning. Exact same-sample fit alone cannot prove missing historical semantics. If no source-grounded profile materially closes both population and winner/loss-tail gaps, freeze 12A as best reconstruction and close S08 as provenance-limited rather than fit thresholds.",
+  "forbidden": [
+    "numeric vector retuning",
+    "new ATR/threshold sweeps",
+    "August access",
+    "SORB integration",
+    "mature exit optimization",
+    "MQL5",
+    "inventing missing historical source behavior"
+  ],
+  "canonical_stage_a": {
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "ticks": 4205709,
+    "surface": "DUKAS_COINEXX_LIKE_P75"
+  },
+  "next_if_no_material_source_grounded_improvement": "R037_DH02_S08_PROVENANCE_DECISION_AND_STREAM_FREEZE",
+  "next_if_material_but_nonexact": "R037_DH02_S08_EVENT_LIFECYCLE_PARITY_REFINEMENT",
+  "next_if_exact": "R037_DH03_S06_CLEANROOM_PARITY_RECONSTRUCTION",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
