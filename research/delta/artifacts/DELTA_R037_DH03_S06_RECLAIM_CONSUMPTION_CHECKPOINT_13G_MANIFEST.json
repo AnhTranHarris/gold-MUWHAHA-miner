@@ -1,0 +1,212 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH03_S06_RECLAIM_CONSUMPTION_CHECKPOINT_13G",
+  "status": "VERIFIED_COMPLETE_STRONG_NEGATIVE_QA_FULL_PARITY_NOT_ACHIEVED",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH03_S06_EVENT_IDENTITY_REARM_CHECKPOINT_13F",
+  "hypothesis": "The residual DH03-S06 generator mismatch may come from literal completed-S5 edge-cross semantics or event-local reclaim-pivot consumption/reuse.",
+  "falsification_condition": "Reject these semantics if all source-compatible edge-cross/consumption profiles materially worsen the preserved historical parity surface relative to both 13F controls.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "historical DH03-S06 Stage-A standalone fixture",
+    "reference_count": 1563,
+    "minimum_count": 1563,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity reconstruction only. New 13G profiles collapse activity to 992-1170 trades and are rejected."
+  },
+  "primary_metrics": {
+    "entry_quality": "Best new profile 524 raw-positive wins vs historical 690.",
+    "hold_persistence": "Frozen DH03-S06 execution lifecycle.",
+    "economics": "Best new profile net -260.09 vs target -338.93; scale collapses with activity.",
+    "gross_loss_drawdown": "Best new profile DD 260.22 vs target 339.25 because too many opportunities disappear.",
+    "activity": "Best new profile 1170 trades, 393 below target."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_reclaim_consumption_engine.py",
+      "commit": "4f0eea113cf039fed36a725a7c4de77f1ddbea2f",
+      "blob_sha": "8f019601a3a5b8aadf1f9c230d7f566e657edad5",
+      "file_sha256": "9f63c2f3c8a229d4c275f689c69a019fbda6a76cd69ef7e5be4fc3230d99e849"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_reclaim_consumption_parity.py",
+      "commit": "813ec9aba663f09225a6716890f049df53310edc",
+      "blob_sha": "de0505853e81ca04a6de163f5c37174f8e2784ce",
+      "file_sha256": "4cbde12f84409eda718ffa445185f51ba94bd9e675de29ddee044fc571e5e72d"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "a78a8fe7550bd02433ce8a7d3fdae563fcd953e8",
+      "note": "120-second wall clock, isolated Numba cache, faulthandler, unbuffered output."
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "vector_fingerprint": "a3a086b7344c",
+      "tested_profiles": [
+        "STRICT_CLOSE_BEYOND_CONTROL",
+        "INHERITED_FIRST_CLOSE_BEYOND_CONTROL",
+        "STRICT_TRUE_EDGE_CROSS",
+        "INHERITED_FIRST_TRUE_EDGE_CROSS",
+        "STRICT_CONSUME_USED_PIVOT",
+        "INHERITED_FIRST_CONSUME_USED_PIVOT",
+        "INHERITED_FIRST_EDGE_CROSS_CONSUME"
+      ],
+      "primary_execution_view": "DROP_OCCUPIED"
+    },
+    "feature_order": [
+      "pullback",
+      "exhaustion",
+      "causal reclaim pivot",
+      "completed-S5 reclaim",
+      "reacceleration",
+      "entry"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "clean-room state parity only"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "elapsed_seconds": 9.92,
+      "peak_rss_kb": 697992,
+      "exact_git_blob_preexecution_verification": true,
+      "producer_atomic_output": "base.atomic_write_json"
+    }
+  },
+  "inputs": [
+    {
+      "name": "13G prereg evidence",
+      "path": "research/delta/reference/DELTA_R037_DH03_S06_RECLAIM_LEVEL_CONSUMPTION_PIVOT_REUSE_EVIDENCE_13G.json",
+      "commit": "2fbd1a54f1ada8aaa0c2831ae9bcb5142cc2442f",
+      "blob_sha": "ecc29fc294a300016634fd0dff75275792f65e2b",
+      "file_sha256": "e194d1d487a75b0f1f643efcc310e125e35c02c3e539b358642b51a8cafd9137"
+    },
+    {
+      "name": "January canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "13F strict/inherited controls; reclaim edge-cross and pivot-consumption funnel counters"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH03_S06_RECLAIM_CONSUMPTION_CHECKPOINT_13G.json",
+      "commit": "7caada6e86cf51df648dc06852610d59b5655b4a",
+      "blob_sha": "26ccd8eb6db9f1007718530c3f352e71268ea4a9",
+      "official_raw_result_sha256": "25c685e579ab30728dbc2cd649ecc22fdb94000a0371813ef272aeb07da8cbdb"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH03_S06_RECLAIM_CONSUMPTION_CHECKPOINT_13G.md",
+      "commit": "169fd8536956b627e0856d0a034e0d437bd995f1",
+      "blob_sha": "cbfba939b997deee2c640b9be1a841c613fd5218"
+    }
+  ],
+  "qa": [
+    "13F durable cursor and green CI verified before 13G.",
+    "13G evidence, engine, producer and precompute recovery checkpoint committed before official compute.",
+    "GitHub Actions recovery snapshot from precompute commit used for local official replay.",
+    "Evidence, engine, producer and bounded-runner local Git blobs matched committed blobs exactly.",
+    "Canonical January SHA and 4,205,709 Stage-A ticks verified.",
+    "13F strict control reproduced 1513 trades / 674 raw-positive / net -339.14.",
+    "13F inherited-first control reproduced 1610 trades / 716 raw-positive / net -362.29.",
+    "Best new profile INHERITED_FIRST_TRUE_EDGE_CROSS produced only 1170 trades / 524 raw-positive / net -260.09.",
+    "One-use pivot consumption profiles collapsed farther, to 992-1092 trades.",
+    "Literal completed-S5 edge crossing and one-use reclaim-pivot consumption rejected as primary residual.",
+    "Workbook tab 75 A474:H483 written and read back.",
+    "No threshold retune, pivot-age fit, pending TTL fit, exit change, August, SORB, capital or MQL5 work."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh03_s06_reclaim_consumption_parity.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_dh03_s06_reclaim_consumption_parity.py --source <canonical_january_gzip> --evidence research/delta/reference/DELTA_R037_DH03_S06_RECLAIM_LEVEL_CONSUMPTION_PIVOT_REUSE_EVIDENCE_13G.json --output <13G_result_json>",
+    "timing_semantics": "All pivots causal; edge-cross candidates use prior/current completed S5 closes only; consumption candidates retire only the exact pivot identity used by a successful reclaim/reacceleration signal.",
+    "expected_fingerprints": {
+      "strict_control": {
+        "signals": 1586,
+        "trades": 1513,
+        "raw_positive_wins": 674,
+        "net_profit": -339.14
+      },
+      "inherited_control": {
+        "signals": 1683,
+        "trades": 1610,
+        "raw_positive_wins": 716,
+        "net_profit": -362.29
+      },
+      "leading_new": {
+        "profile": "INHERITED_FIRST_TRUE_EDGE_CROSS",
+        "signals": 1173,
+        "trades": 1170,
+        "raw_positive_wins": 524,
+        "net_profit": -260.09
+      }
+    },
+    "selected_interpretation": "STRONG_NEGATIVE_LOCALIZATION_NO_NEW_SEMANTIC_PROMOTED"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — R032 specialist parity incomplete",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready; DH03 provenance decision remains",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA semantics",
+    "ownership_scheduler_spec": "not ready",
+    "session_dst_spec": "frozen DELTA semantics",
+    "risk_spec": "fixed 0.01 research semantics",
+    "trade_count_parity_spec": "blocked pending DH03 provenance decision",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH03_S06_EVENT_IDENTITY_REARM_CHECKPOINT_13F",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A474:H483"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH03_S06_SIGNAL_GENERATOR_RESIDUAL_PROVENANCE_DECISION",
+  "github_commits": [
+    "2fbd1a54f1ada8aaa0c2831ae9bcb5142cc2442f",
+    "4f0eea113cf039fed36a725a7c4de77f1ddbea2f",
+    "813ec9aba663f09225a6716890f049df53310edc",
+    "7caada6e86cf51df648dc06852610d59b5655b4a",
+    "169fd8536956b627e0856d0a034e0d437bd995f1"
+  ]
+}
