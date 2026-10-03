@@ -557,18 +557,45 @@
       "POST_EXIT_RECENTERED_BRACKET_FAMILY"
     ],
     "r036_stage_index_frontier_override": true,
-    "r036_workbook_control_reconciled": true
+    "r036_workbook_control_reconciled": true,
+    "current_handoff_pack_mandatory": true,
+    "new_chat_resume_from_r037_only": true,
+    "completed_r001_through_r036_must_not_restart_without_owner_audit_request": true,
+    "mt5_translation_blockers_explicit": true,
+    "current_read_first_handoff_id": "1EvyYTzyafViJE7XBcDYNes8MV07ralIvFgwe8bDzb2U"
   },
   "handoff": {
-    "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
-    "github_blob_sha": "da98c4b6b41692e7fdc05b6826bc98b27ce00bdd",
-    "google_doc_id": "1aT5P6uxLtflTeb_kzyGvhauG58LVp4XAA-omkE2CzoY",
-    "google_doc_url": "https://docs.google.com/document/d/1aT5P6uxLtflTeb_kzyGvhauG58LVp4XAA-omkE2CzoY/edit?usp=drivesdk",
-    "google_doc_revision": "ANLCKQk2yq4rqSXOz8GQ5AnLTLOAoj0Uf_XQzAJf133rOiZWWtl7-uhE30xLeHBSAqcgDmJ58dM-OoIIBhHLe7Xe3guVZJKwqBJ7D6YjcVw",
-    "historical_full_handoff_path": "research/delta/handoffs/DELTA_FULL_HANDOFF_2026-10-02.md",
-    "historical_artifact_audit_path": "research/delta/handoffs/DELTA_ARTIFACT_AUDIT_2026-10-02.json",
-    "previous_bootstrap_path": "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
-    "status": "CLEAN_RESTART_PRE_CANDIDATE_READY"
+    "status": "CURRENT_READ_FIRST_R036_R037_HANDOFF_PACK",
+    "purpose": "MAX_CHAT_LENGTH_AND_REPEATED_MESSAGE_DELIVERY_TIMEOUT_RECOVERY",
+    "drive_folder_id": "1n4hRXXEyQlPJuLKICPVFBjc2MxW2Jagg",
+    "drive_folder_url": "https://drive.google.com/drive/folders/1n4hRXXEyQlPJuLKICPVFBjc2MxW2Jagg",
+    "google_doc_id": "1EvyYTzyafViJE7XBcDYNes8MV07ralIvFgwe8bDzb2U",
+    "google_doc_url": "https://docs.google.com/document/d/1EvyYTzyafViJE7XBcDYNes8MV07ralIvFgwe8bDzb2U/edit",
+    "google_doc_revision": "ANLCKQmgUis76ph-nf0WnJ00UKhr9EJkx9eMTsnjX2aWH8fRkywzY6qMZDUzI1uluF3iw-_b46sfMHWXzuh7ZBefPgTHVVr2-3rTrNqMm3A",
+    "github_path": "research/delta/handoffs/DELTA_MASTER_CONTINUATION_HANDOFF_R036_R037_2026-10-02.md",
+    "github_commit": "4595d03fdb4d96a9f68b12297553f4380d1d0b5f",
+    "manifest_path": "research/delta/handoffs/DELTA_R036_R037_HANDOFF_MANIFEST_2026-10-02.json",
+    "manifest_commit": "f8692309a121bd963a4869d114654701f7e075e0",
+    "r037_contract": {
+      "google_doc_id": "1yfAl6mANMqu__OB-dRM_8yoBa3XbX7day12-_r_Kn0c",
+      "google_doc_url": "https://docs.google.com/document/d/1yfAl6mANMqu__OB-dRM_8yoBa3XbX7day12-_r_Kn0c/edit",
+      "github_path": "research/delta/handoffs/DELTA_R037_RESEARCH_RESTART_CONTRACT_2026-10-02.md",
+      "github_commit": "8399bfdc3aeac09a04f4798a13fb8462a26066d7"
+    },
+    "mt5_readiness": {
+      "google_doc_id": "1a4bSQAbk1mQCUN1h088A2okVnTuKuohJlOsigDDjOn4",
+      "google_doc_url": "https://docs.google.com/document/d/1a4bSQAbk1mQCUN1h088A2okVnTuKuohJlOsigDDjOn4/edit",
+      "github_path": "research/delta/handoffs/DELTA_MT5_TRANSLATION_READINESS_2026-10-02.md",
+      "github_commit": "f0ed1b3a999b08b2fd181502b08d505086d91b7a"
+    },
+    "artifact_map": {
+      "google_doc_id": "1Ux1w4pZRUaAc9GNmNP9clbjZc3tLg05to7TGZ73BgCk",
+      "google_doc_url": "https://docs.google.com/document/d/1Ux1w4pZRUaAc9GNmNP9clbjZc3tLg05to7TGZ73BgCk/edit",
+      "github_path": "research/delta/handoffs/DELTA_CRITICAL_ARTIFACT_MAP_R036_2026-10-02.md",
+      "github_commit": "f53dbe88bdb5568cdb23758b4261b02ae640e930"
+    },
+    "restart_phase": "R036_COMPLETE_INDEPENDENT_DENSITY_TOPUPS_EXHAUSTED_NEXT_SOURCE_REQUIRED",
+    "next_action": "R037_FRESH_INDEPENDENT_OPPORTUNITY_SOURCE_RESEARCH_AND_PREREGISTRATION"
   },
   "next_action": "Use DELTA_004 as the active parent. When the owner restates the first Entry + Initial-Hold research question, perform a fresh community scan, generate independent reconstructible hypotheses, use the GOV-014 spreadsheet-first quant harvesting loop to prioritize adjustments with >=10pp incremental scoped SYNTH-gap closure and seek >=30% scoped REAL-to-SYNTH gap closure before expensive replay, then preregister and test selected packages in the bounded Dukascopy tick-level cycle. Keep DELTA_005A-005M audit-only, August sealed, and MQL5 unauthorized.",
   "mql5_authorized": false,
@@ -964,7 +991,7 @@
     "research_role": "ARCHIVED_DELTA005_FORENSIC_ONLY"
   },
   "restart_bootstrap": {
-    "status": "QA_RECONCILED_READY",
+    "status": "HISTORICAL_PRE_CANDIDATE_SUPERSEDED_BY_R036_R037_HANDOFF_PACK",
     "requested_by_owner": true,
     "reason": "MAX_CHAT_LENGTH_AND_REPEATED_MESSAGE_DELIVERY_TIMEOUTS",
     "restart_point": "POST_DELTA_004_PRE_CANDIDATE_RESEARCH",
@@ -3352,14 +3379,19 @@
       "metric_lock": false
     },
     "current_bootstrap": {
-      "status": "CURRENT",
-      "title": "DELTA Bootstrap Handoff — R036 Complete / R037 Fresh Independent Opportunity Source — 2026-10-02",
-      "drive_doc_id": "1irHGpNmwMUCbYCLvz5wjI-VK0xYtwxeg0t-0ElIDPJQ",
-      "drive_doc_url": "https://docs.google.com/document/d/1irHGpNmwMUCbYCLvz5wjI-VK0xYtwxeg0t-0ElIDPJQ/edit",
+      "status": "CURRENT_READ_FIRST",
+      "title": "00 READ FIRST — DELTA Master Continuation Handoff — R036 Complete / R037 Next — 2026-10-02",
+      "drive_doc_id": "1EvyYTzyafViJE7XBcDYNes8MV07ralIvFgwe8bDzb2U",
+      "drive_doc_url": "https://docs.google.com/document/d/1EvyYTzyafViJE7XBcDYNes8MV07ralIvFgwe8bDzb2U/edit",
+      "drive_folder_id": "1n4hRXXEyQlPJuLKICPVFBjc2MxW2Jagg",
+      "github_path": "research/delta/handoffs/DELTA_MASTER_CONTINUATION_HANDOFF_R036_R037_2026-10-02.md",
       "restart_phase": "R036_COMPLETE_INDEPENDENT_DENSITY_TOPUPS_EXHAUSTED_NEXT_SOURCE_REQUIRED",
-      "next_action": "R037_FRESH_INDEPENDENT_OPPORTUNITY_SOURCE_RESEARCH_AND_PREREGISTRATION",
-      "drive_doc_revision": "ANLCKQlnSCbGO3aE7ZC7aaNAqiEpT_PcAXOXw9nshDrTlP9CLdE2o_oPQfx9HBnivfTeBM7stBrf0YYORhDR3YZVEYA30c_oi8NIXvBxc_M"
-    }
+      "next_action": "R037_FRESH_INDEPENDENT_OPPORTUNITY_SOURCE_RESEARCH_AND_PREREGISTRATION"
+    },
+    "handoff_pack_folder_id": "1n4hRXXEyQlPJuLKICPVFBjc2MxW2Jagg",
+    "handoff_pack_folder_url": "https://drive.google.com/drive/folders/1n4hRXXEyQlPJuLKICPVFBjc2MxW2Jagg",
+    "mt5_readiness_doc_id": "1a4bSQAbk1mQCUN1h088A2okVnTuKuohJlOsigDDjOn4",
+    "mt5_readiness_doc_url": "https://docs.google.com/document/d/1a4bSQAbk1mQCUN1h088A2okVnTuKuohJlOsigDDjOn4/edit"
   },
   "prebacktest_research": {
     "status": "SUPERSEDED_TIMEOUT_DUPLICATE_NOT_ACTIVE",
@@ -3385,12 +3417,44 @@
     "mql5_authorized": false
   },
   "current_bootstrap": {
-    "status": "CURRENT",
-    "title": "DELTA Bootstrap Handoff — R036 Complete / R037 Fresh Independent Opportunity Source — 2026-10-02",
-    "drive_doc_id": "1irHGpNmwMUCbYCLvz5wjI-VK0xYtwxeg0t-0ElIDPJQ",
-    "drive_doc_url": "https://docs.google.com/document/d/1irHGpNmwMUCbYCLvz5wjI-VK0xYtwxeg0t-0ElIDPJQ/edit",
+    "status": "CURRENT_READ_FIRST",
+    "title": "00 READ FIRST — DELTA Master Continuation Handoff — R036 Complete / R037 Next — 2026-10-02",
+    "drive_doc_id": "1EvyYTzyafViJE7XBcDYNes8MV07ralIvFgwe8bDzb2U",
+    "drive_doc_url": "https://docs.google.com/document/d/1EvyYTzyafViJE7XBcDYNes8MV07ralIvFgwe8bDzb2U/edit",
+    "drive_folder_id": "1n4hRXXEyQlPJuLKICPVFBjc2MxW2Jagg",
+    "github_path": "research/delta/handoffs/DELTA_MASTER_CONTINUATION_HANDOFF_R036_R037_2026-10-02.md",
     "restart_phase": "R036_COMPLETE_INDEPENDENT_DENSITY_TOPUPS_EXHAUSTED_NEXT_SOURCE_REQUIRED",
-    "next_action": "R037_FRESH_INDEPENDENT_OPPORTUNITY_SOURCE_RESEARCH_AND_PREREGISTRATION",
-    "drive_doc_revision": "ANLCKQlnSCbGO3aE7ZC7aaNAqiEpT_PcAXOXw9nshDrTlP9CLdE2o_oPQfx9HBnivfTeBM7stBrf0YYORhDR3YZVEYA30c_oi8NIXvBxc_M"
+    "next_action": "R037_FRESH_INDEPENDENT_OPPORTUNITY_SOURCE_RESEARCH_AND_PREREGISTRATION"
+  },
+  "handoff_history": [
+    {
+      "github_path": "research/delta/handoffs/DELTA_RESTART_PRE_CANDIDATE_BOOTSTRAP_2026-10-02.md",
+      "github_blob_sha": "da98c4b6b41692e7fdc05b6826bc98b27ce00bdd",
+      "google_doc_id": "1aT5P6uxLtflTeb_kzyGvhauG58LVp4XAA-omkE2CzoY",
+      "google_doc_url": "https://docs.google.com/document/d/1aT5P6uxLtflTeb_kzyGvhauG58LVp4XAA-omkE2CzoY/edit?usp=drivesdk",
+      "google_doc_revision": "ANLCKQk2yq4rqSXOz8GQ5AnLTLOAoj0Uf_XQzAJf133rOiZWWtl7-uhE30xLeHBSAqcgDmJ58dM-OoIIBhHLe7Xe3guVZJKwqBJ7D6YjcVw",
+      "historical_full_handoff_path": "research/delta/handoffs/DELTA_FULL_HANDOFF_2026-10-02.md",
+      "historical_artifact_audit_path": "research/delta/handoffs/DELTA_ARTIFACT_AUDIT_2026-10-02.json",
+      "previous_bootstrap_path": "research/delta/handoffs/DELTA_NEW_CHAT_BOOTSTRAP_2026-10-01.md",
+      "status": "HISTORICAL_SUPERSEDED"
+    }
+  ],
+  "mt5_readiness": {
+    "status": "NOT_READY_RESEARCH_CONTINUES",
+    "mt5_translation_ready": false,
+    "mql5_authorized": false,
+    "promoted_candidate": null,
+    "blockers": [
+      "NO_PROMOTED_FROZEN_FINAL_CANDIDATE",
+      "FINAL_OWNERSHIP_AND_COLLISION_ORDER_NOT_FROZEN",
+      "FINAL_P50_P75_P90_NATIVE_SENSITIVITY_NOT_COMPLETE",
+      "PYTHON_MT5_PARITY_FIXTURES_NOT_COMPLETE",
+      "TRADE_COUNT_RECONCILIATION_NOT_COMPLETE",
+      "BROKER_PROPERTIES_PARTLY_UNRESOLVED",
+      "HUMAN_QA_NOT_COMPLETE",
+      "OWNER_MQL5_AUTHORIZATION_NOT_GRANTED"
+    ],
+    "readiness_doc_id": "1a4bSQAbk1mQCUN1h088A2okVnTuKuohJlOsigDDjOn4",
+    "readiness_doc_url": "https://docs.google.com/document/d/1a4bSQAbk1mQCUN1h088A2okVnTuKuohJlOsigDDjOn4/edit"
   }
 }
