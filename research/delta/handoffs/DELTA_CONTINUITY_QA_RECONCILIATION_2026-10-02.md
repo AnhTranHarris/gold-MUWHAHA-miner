@@ -92,9 +92,9 @@ https://docs.google.com/spreadsheets/d/1NRJBd3rBz2FD6HtN9TW6xT8GUjCyZPAgMt36Tr1G
 
 ### 8. Cross-project master-protocol scope conflict
 
-**Found:** the universal master protocol begins with an Alpha-only override that could be misread as retiring the DELTA lineage even though it names a different repository/branch.
+**Found:** the universal master protocol begins with an separate-lineage-only override that could be misread as retiring the DELTA lineage even though it names a different repository/branch.
 
-**Resolution:** added a project-scope clarification at the top of the master protocol: the Alpha-only override applies to `research_lab_xauusd/alpha`; for this project, `gold-MUWHAHA-miner/delta` follows DELTA current state, canonical governance, and the clean restart handoff. This does not change Alpha's own rules.
+**Resolution:** added a project-scope clarification at the top of the master protocol: the separate-lineage-only override applies to the separate research repository/branch; for this project, `gold-MUWHAHA-miner/delta` follows DELTA current state, canonical governance, and the clean restart handoff. This does not change that separate lineage's own rules.
 
 ### 9. Workbook restart pointers were incomplete
 
