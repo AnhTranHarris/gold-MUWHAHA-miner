@@ -1,0 +1,97 @@
+{
+  "schema": "delta-r037-dh05-global-no-rearm-reversal-hysteresis-checkpoint-09p-v1",
+  "status": "COMPLETE_NEGATIVE_QA_HYSTERESIS_REJECTED_STRUCTURAL_SIGNAL_TRADE_GAP_LOCALIZED",
+  "unit": "R037_DH05_GLOBAL_NO_REARM_REVERSAL_HYSTERESIS_PARITY_RECONSTRUCTION",
+  "parent": "R037_DH05_STATE_PERSISTENT_GLOBAL_NO_REARM_CHECKPOINT_09O",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "august_accessed": false,
+  "numeric_vector_retune": false,
+  "producer_commit": "2dfb3532d991e74f7143d7f9c2de8b247aa1a40f",
+  "producer_blob_sha": "8b1dd2b54a916cd181cde6235d5e23bb14e9ba38",
+  "producer_file_sha256": "8e196a1909f0a82fa992cc7e4a2bb19388e22b49b107d297d1f2ceccd4d7991a",
+  "runtime_result_sha256": "e269eeb481649f33010fbcdc38240e813f82986ca4384462e9347cfb5ef213e8",
+  "runtime_seconds": 11.06,
+  "max_rss_kb": 698076,
+  "control": {
+    "aggregate_trade_count_abs_error": 336
+  },
+  "prior_best_09l": {
+    "aggregate_trade_count_abs_error": 304
+  },
+  "ranking": [
+    {
+      "profile": "NEUTRAL_RESET_RECONFIRM",
+      "aggregate_trade_count_abs_error": 354,
+      "s06_trades": 696,
+      "s06_wins": 294,
+      "s06_reentries": 47,
+      "s06_same_minute_blocks": 235
+    },
+    {
+      "profile": "SYMMETRIC_HYSTERESIS",
+      "aggregate_trade_count_abs_error": 359,
+      "s06_trades": 700,
+      "s06_wins": 294,
+      "s06_reentries": 51,
+      "s06_same_minute_blocks": 394
+    },
+    {
+      "profile": "NEUTRAL_RESET_RECONFIRM_MAXFAIL",
+      "aggregate_trade_count_abs_error": 368,
+      "s06_trades": 689,
+      "s06_wins": 291,
+      "s06_reentries": 40
+    },
+    {
+      "profile": "SYMMETRIC_HYSTERESIS_MAXFAIL",
+      "aggregate_trade_count_abs_error": 374,
+      "s06_trades": 693,
+      "s06_wins": 291,
+      "s06_reentries": 44
+    }
+  ],
+  "leading_vector_fingerprint": {
+    "A03": {
+      "trades": 286,
+      "target": 306,
+      "wins": 112,
+      "reentries": 94
+    },
+    "S05": {
+      "trades": 11,
+      "target": 51,
+      "wins": 5,
+      "reentries": 2
+    },
+    "S06": {
+      "trades": 696,
+      "target": 615,
+      "wins": 294,
+      "reentries": 47
+    },
+    "S09": {
+      "trades": 15,
+      "target": 119,
+      "wins": 8,
+      "reentries": 4
+    },
+    "S10": {
+      "trades": 300,
+      "target": 206,
+      "wins": 133,
+      "reentries": 73
+    },
+    "S16": {
+      "trades": 9,
+      "target": 24,
+      "wins": 2,
+      "reentries": 2
+    }
+  },
+  "decision": "REJECT_SYMMETRIC_REVERSAL_HYSTERESIS_AS_PARITY_SOLUTION",
+  "structural_clue": "Sparse historical trade density cannot be supplied by short-lived same-minute-suppressed reversal reconfirmation: S05 9 generator signals vs 51 historical trades and S09 11 vs 119 remain far apart.",
+  "parity_complete": false,
+  "next_unit": "R037_DH05_BOUNDARY_VALID_EXECUTION_MANDATE_WITH_GLOBAL_NO_REARM_PARITY_RECONSTRUCTION"
+}
