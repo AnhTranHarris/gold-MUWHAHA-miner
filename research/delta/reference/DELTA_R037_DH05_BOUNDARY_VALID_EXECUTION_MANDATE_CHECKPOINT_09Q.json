@@ -1,0 +1,70 @@
+{
+  "schema": "delta-r037-dh05-boundary-valid-execution-mandate-global-no-rearm-checkpoint-09q-v1",
+  "status": "COMPLETE_NEGATIVE_QA_TICK_BOUNDARY_VALID_MANDATE_REJECTED_INVALIDATION_CLOCK_NEXT",
+  "unit": "R037_DH05_BOUNDARY_VALID_EXECUTION_MANDATE_WITH_GLOBAL_NO_REARM_PARITY_RECONSTRUCTION",
+  "parent": "R037_DH05_GLOBAL_NO_REARM_REVERSAL_HYSTERESIS_CHECKPOINT_09P",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "august_accessed": false,
+  "numeric_vector_retune": false,
+  "producer_commit": "220cf16591d600e6df06c6ce679316b7041edb6a",
+  "producer_blob_sha": "a32f895fa868abc39a09a871a902282c7b65875b",
+  "producer_file_sha256": "d485a50f9fb097c9760c6810c02ded3bad6ba9eeb2ca9d4cabb0825d1abe82f6",
+  "runtime_result_sha256": "adbe2a5806971ffb9a5b761c8e00d3d9d8b4cf12421614349f7b40fe9366cd20",
+  "runtime_seconds": 10.41,
+  "max_rss_kb": 698284,
+  "prior_best_09l": {
+    "aggregate_trade_count_abs_error": 304
+  },
+  "ranking": [
+    {
+      "profile": "MAXHOLD_ONLY",
+      "aggregate_trade_count_abs_error": 343,
+      "s06_trades": 657,
+      "s06_wins": 278,
+      "s06_reentries": 26
+    },
+    {
+      "profile": "LOSING_EXIT",
+      "aggregate_trade_count_abs_error": 583,
+      "s06_trades": 906,
+      "s06_wins": 367,
+      "s06_reentries": 275
+    },
+    {
+      "profile": "STOP_ONLY",
+      "aggregate_trade_count_abs_error": 4411,
+      "s06_trades": 3011,
+      "s06_wins": 1332,
+      "s06_reentries": 2381
+    },
+    {
+      "profile": "ANY_EXIT",
+      "aggregate_trade_count_abs_error": 13653,
+      "s06_trades": 4622,
+      "s06_wins": 2088,
+      "s06_reentries": 3994
+    }
+  ],
+  "maxhold_fingerprint": {
+    "A03": "193/306",
+    "S05": "9/51",
+    "S06": "657/615",
+    "S09": "11/119",
+    "S10": "227/206",
+    "S16": "7/24"
+  },
+  "losing_exit_fingerprint": {
+    "A03": "249/306",
+    "S05": "14/51",
+    "S06": "906/615",
+    "S09": "19/119",
+    "S10": "296/206",
+    "S16": "16/24"
+  },
+  "decision": "REJECT_TICK_LEVEL_BOUNDARY_VALID_EXECUTION_MANDATE_AS_UNIVERSAL_PARITY_SOLUTION",
+  "clue": "Loss-only retries improve sparse populations but dense vectors overproduce; tick-level original-boundary retake may be invalidating mandates too aggressively. Test completed-bar boundary invalidation next.",
+  "parity_complete": false,
+  "next_unit": "R037_DH05_COMPLETED_BAR_BOUNDARY_INVALIDATION_WITH_GLOBAL_NO_REARM_PARITY_RECONSTRUCTION"
+}
