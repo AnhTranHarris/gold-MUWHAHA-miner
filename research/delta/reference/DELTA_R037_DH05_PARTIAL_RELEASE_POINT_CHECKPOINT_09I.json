@@ -1,0 +1,152 @@
+{
+  "schema": "delta-r037-dh05-partial-release-point-checkpoint-09i-v1",
+  "unit": "R037_DH05_PARTIAL_DECOUPLING_RELEASE_AT_REENTRY_OR_RECLAIM_PARITY_RECONSTRUCTION",
+  "status": "COMPLETE_NEGATIVE_QA_RELEASE_POINTS_REJECTED",
+  "parent": "R037_DH05_DECOUPLED_GENERATOR_FAILURE_EPISODE_CHECKPOINT_09H",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "producer_path": "research/delta/experiments/delta_r037_dh05_partial_release_parity.py",
+  "producer_commit": "83429333e336d217e1b9392d02e4575210a64276",
+  "producer_blob_sha": "ee5d2b4216226104981b652aa0bc8f372453532f",
+  "producer_file_sha256": "3d8715d12b740448eab501e25b0b3eaa3165d7fbffe4982442c2fd0b3ba54430",
+  "official_runtime_output_sha256": "622b35f43d66cbbea63734e818f44cc3ca9453aad91b1998828b87c30f781ffe",
+  "runtime": {
+    "elapsed_s": 22.03,
+    "rss_kb": 699060
+  },
+  "profiles": {
+    "CONTROL_09E": {
+      "total_abs_error": 1064,
+      "probe_qualified_abs_error": 554,
+      "first5_abs_error": 920,
+      "downstream_abs_error": 144
+    },
+    "POST_QUAL_BASE": {
+      "total_abs_error": 978,
+      "probe_qualified_abs_error": 697,
+      "first5_abs_error": 818,
+      "downstream_abs_error": 160
+    },
+    "RELEASE_REENTRY_09E": {
+      "total_abs_error": 13875,
+      "probe_qualified_abs_error": 8174,
+      "first5_abs_error": 11580,
+      "downstream_abs_error": 2295,
+      "max_concurrent_failure_episodes": 8,
+      "episode_overflow": 0,
+      "generator_releases": 5326
+    },
+    "RELEASE_REENTRY_POST_QUAL": {
+      "total_abs_error": 13844,
+      "probe_qualified_abs_error": 8166,
+      "first5_abs_error": 11478,
+      "downstream_abs_error": 2366,
+      "max_concurrent_failure_episodes": 8,
+      "episode_overflow": 0,
+      "generator_releases": 5464
+    },
+    "RELEASE_RECLAIM_09E": {
+      "total_abs_error": 1254,
+      "probe_qualified_abs_error": 692,
+      "first5_abs_error": 1060,
+      "downstream_abs_error": 194,
+      "max_concurrent_failure_episodes": 3,
+      "episode_overflow": 0,
+      "generator_releases": 3695
+    },
+    "RELEASE_RECLAIM_POST_QUAL": {
+      "total_abs_error": 1032,
+      "probe_qualified_abs_error": 626,
+      "first5_abs_error": 793,
+      "downstream_abs_error": 239,
+      "max_concurrent_failure_episodes": 3,
+      "episode_overflow": 0,
+      "generator_releases": 3808,
+      "stage_abs_error": {
+        "probe": 581,
+        "qualified": 45,
+        "accepted": 40,
+        "failure": 55,
+        "reentry": 72,
+        "reclaim": 63,
+        "reversal": 88,
+        "signal": 88
+      }
+    }
+  },
+  "release_reclaim_postqual_vectors": {
+    "A03": [
+      6791,
+      1015,
+      218,
+      797,
+      450,
+      276,
+      197,
+      197
+    ],
+    "S05": [
+      7742,
+      310,
+      33,
+      277,
+      54,
+      19,
+      9,
+      9
+    ],
+    "S06": [
+      3621,
+      1627,
+      252,
+      1375,
+      1227,
+      707,
+      663,
+      663
+    ],
+    "S09": [
+      7697,
+      207,
+      42,
+      165,
+      64,
+      40,
+      11,
+      11
+    ],
+    "S10": [
+      6525,
+      1322,
+      207,
+      1115,
+      651,
+      318,
+      236,
+      236
+    ],
+    "S16": [
+      7713,
+      132,
+      53,
+      79,
+      33,
+      19,
+      8,
+      8
+    ]
+  },
+  "findings": [
+    "REENTRY release reproduces the 09H density explosion and is decisively rejected.",
+    "RECLAIM release avoids catastrophic explosion and improves first-five error versus serial post-qual, but total error 1032 is worse than serial POST_QUAL_BASE 978 due downstream reversal/signal overproduction.",
+    "No tested partial-release point passes the preregistered carry-forward rule.",
+    "Generator/failure-episode ownership should remain serial for the active reconstruction; the next unresolved layer is repeated signal multiplicity and executable admission."
+  ],
+  "decision": "REJECT_REENTRY_AND_RECLAIM_RELEASE_POINTS_KEEP_SERIAL_GENERATOR_OWNERSHIP",
+  "parity_complete": false,
+  "integrated_r037_sorb_started": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "next_unit": "R037_DH05_SIGNAL_MULTIPLICITY_AND_EXECUTABLE_ADMISSION_PARITY_RECONSTRUCTION"
+}
