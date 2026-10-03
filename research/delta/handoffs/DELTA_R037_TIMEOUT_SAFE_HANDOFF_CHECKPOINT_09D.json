@@ -1,0 +1,95 @@
+{
+  "schema": "delta-r037-timeout-safe-handoff-v1",
+  "project": "Gold MUWHAHA Miner — XAUUSD",
+  "repository": "AnhTranHarris/gold-MUWHAHA-miner",
+  "branch": "delta",
+  "current_phase": "R037_DH05_PROBE_QUALIFICATION_CLOCK_AND_EVENT_LIFECYCLE_PARITY_RECONSTRUCTION_NEXT",
+  "last_verified_durable_unit": "R037_DH05_ACCEPTANCE_FAILURE_REENTRY_CHECKPOINT_09D",
+  "first_incomplete_unit": "R037_DH05_PROBE_QUALIFICATION_CLOCK_AND_EVENT_LIFECYCLE_PARITY_RECONSTRUCTION",
+  "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
+  "operational_parent": "R032-C03_PLUS_DH02_S11_S08",
+  "promoted_candidate": null,
+  "primary_metric_locks": [],
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "mt5_translation_ready": false,
+  "drive": {
+    "delta_root_folder_id": "1x5dLfZB8wqxbqq8hJSsxtBSnlKF7CYel",
+    "research_stage_folder_id": "1iCg7Ptl8zRQ-5QUFGSuB7sPTqsNKzxiX",
+    "handoff_pack_folder_id": "13PZqzTG-vFz-jgK6okiL6YEOL0a2grKE",
+    "files": {
+      "read_first": {
+        "id": "14pzhNREDtHXBtKxy-QqWbsH5qwc_CaP9iACjIjx5XqU",
+        "revision": "ANLCKQlX8V2Fa-ajMm4GPL9jgY8Kh11YqePiDeMFoW_jtUB0_ggL4S0q44gHN8K7uSZvYS_OaY3_GB2Gk_9laMQMOM6ym4vJocWdTUvcJFY"
+      },
+      "restart_contract": {
+        "id": "1LlZrGb_ZEXOHRrtmDE-IL2wHiYuW6vRGcN4_UF_ryXc",
+        "revision": "ANLCKQmpZvdXRpj2Vic0r7E-G5AtMA0f7KsCXww4D0ikuAK_dPBfWXT1Zr5WmDXxNa0Fjy2rM4qy6uCvqwVjJH_g9jDQ1YxmcE-TGSxiOIg"
+      },
+      "mt5_readiness": {
+        "id": "18W0lPE8TrEXBSn-6hjNkrRkQiU9hwFw6wcR2KOD9tWc",
+        "revision": "ANLCKQm5UZFA1SMv6uN4qs4OhhG3mD1_79PgRz4CrsfsOGF4ob7XAlGB9wgdd5QJFKIo6fk_0wisoHhA5cs_DaPXRSXDZlCnsV9zQEP1X9A"
+      },
+      "artifact_map": {
+        "id": "1SjmuMf0gAfDk6F1YhYmclV1iYZUMyfodgWXBrPmeHdA",
+        "revision": "ANLCKQknJskC1n0FHVysg3qx9Vpi4iONWEocohwgRpNZ43ujBtpNF6BvIzM_vjIo4DvLTSFx8dN38hW_Qx1MZroMMQhWZ3-ZIeFn5WZcu5c"
+      },
+      "starter_prompt": {
+        "id": "15bKGqPsBebEXBdpgqhI1f6ItjoeJ4jc_3ZBzkN7woAU",
+        "revision": "ANLCKQnYLTp2-rMRQyFb4ePpgBSoPtJOINEYfAwNAPXXLoRUXXFaSuNjuBxIUNvwaz0AsfEz4pZycnG_W1tA1CxxxY2qzLHqlJi2WmoLy3A"
+      },
+      "continuity_qa": {
+        "id": "18W8y8hHqcK84rkSW66tRWIcT1R5YBxJhitsziRRNLEI",
+        "revision": "ANLCKQnsefr0aXxl1uYW9w8zJYICBa4GQDUOEyoh3Cg5fdZbpRmxZMKvxwrqnyeaGKQFwCi6W5bLdskCRs41TGfuMPLzmtey96VA3gq-tEM"
+      }
+    },
+    "workbook_id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+    "workbook_tabs": [
+      "69 R037 Research Harvest",
+      "70 R037 Prereg",
+      "71 R037 Source QA",
+      "72 R037 Parent Parity",
+      "73 R037 DH05 Parity QA",
+      "74 R037 DH05 Boundary QA"
+    ]
+  },
+  "github": {
+    "handoff_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_SAFE_HANDOFF_CHECKPOINT_09D.md",
+    "handoff_commit": "d5db76bfcd3bb91086a5635058005b4d940013bb",
+    "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_DH05_ACCEPTANCE_FAILURE_REENTRY_CHECKPOINT_09D_MANIFEST.json",
+    "active_rebuild_manifest_commit": "015dac2288c1b81b95713db1997e4baa82cbeca9",
+    "current_state_pointer_repair_commit": "31f02b22460e4590ae508d862730cb8c785a8544",
+    "durability_gate_run": 37093844911,
+    "durability_gate_conclusion": "SUCCESS"
+  },
+  "current_sources": {
+    "r032_backbone": "research/delta/experiments/delta_r037_r032_parent_backbone.py",
+    "sorb": "research/delta/experiments/delta_r037_sorb.py",
+    "dh05_09b": "research/delta/experiments/delta_r037_dh05_cleanroom_parity.py",
+    "dh05_09c": "research/delta/experiments/delta_r037_dh05_boundary_probe_parity.py",
+    "dh05_09d": "research/delta/experiments/delta_r037_dh05_acceptance_failure_reentry_parity.py"
+  },
+  "known_missing_historical_artifacts": [
+    {
+      "name": "r013_selective_handoff.py",
+      "status": "NOT_RECOVERABLE_FROM_LIVE_GITHUB_OR_DRIVE",
+      "disposition": "CLEAN_ROOM_RECONSTRUCTION_REQUIRED_NO_GUESSING",
+      "preserved_fixture_sha256": "2deb601035d3e460f6de76ab8045b890ba7c5065b00a8815fceaf482916e2eae"
+    }
+  ],
+  "r037": {
+    "sorb_status": "PREREGISTERED_SOURCE_QA_PASS_INTEGRATED_REPLAY_NOT_STARTED",
+    "sorb_blocker": "FULL_R032_PARENT_SPECIALIST_PARITY",
+    "dh05_09d_status": "MATERIAL_PARITY_BREAKTHROUGH_FULL_PARITY_NOT_ACHIEVED",
+    "next_unit": "R037_DH05_PROBE_QUALIFICATION_CLOCK_AND_EVENT_LIFECYCLE_PARITY_RECONSTRUCTION"
+  },
+  "recovery_rule": [
+    "READ_LIVE_CURRENT_STATE",
+    "READ_CURRENT_READ_FIRST_HANDOFF",
+    "READ_LAST_DURABLE_FULL_REBUILD_MANIFEST",
+    "VERIFY_CI_GATE",
+    "READ_EXACT_WORKBOOK_CHECKPOINT",
+    "RESUME_FIRST_INCOMPLETE_UNIT_ONLY",
+    "NEVER_RERUN_DURABLE_UNIT_DUE_TO_CHAT_TIMEOUT"
+  ]
+}
