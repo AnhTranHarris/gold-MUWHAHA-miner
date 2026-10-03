@@ -127,6 +127,14 @@ At the first tick on/after that S5 right edge:
 
 No future candle high/low/close is used.
 
+### First-confirmation consumption rule
+
+The first causal breakout confirmation attempt consumes that named session whether it executes or is rejected.
+
+For C01-C04, the first completed S5 close outside the frozen range is the confirmation attempt. For C05, the second consecutive completed S5 close outside the same side is the confirmation attempt.
+
+If the first executable tick on/after that confirmation edge fails because current Bid has re-entered the range, spread exceeds 25 points, another position is open, or R032-C03 wins a same-tick collision, the SORB event is recorded with the exact rejection/block reason and expires for that session. It is never deferred to a later breakout. This prevents adaptive retry/cherry-picking.
+
 ## Immutable configurations
 
 No configurations may be added after Stage-A results.
