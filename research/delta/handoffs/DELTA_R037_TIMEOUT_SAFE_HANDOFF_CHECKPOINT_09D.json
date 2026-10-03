@@ -41,6 +41,10 @@
       "continuity_qa": {
         "id": "18W8y8hHqcK84rkSW66tRWIcT1R5YBxJhitsziRRNLEI",
         "revision": "ANLCKQk8pRN2l7_NJZcQEj3kpQ5ptP2KEKPFiZqsz8PmLbCqZ_Qm2wcUoudBg3feBRKxsAGr5oHg5AP7v_GIhZKOwPcSYcNjXs4P0R4EtrM"
+      },
+      "completeness_gate": {
+        "id": "1G_UttTVYhz55eZ6OHiz7r4ZzVv3l5zDD0U6DvTScG-s",
+        "url": "https://docs.google.com/document/d/1G_UttTVYhz55eZ6OHiz7r4ZzVv3l5zDD0U6DvTScG-s/edit"
       }
     },
     "workbook_id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
@@ -63,7 +67,9 @@
     "durability_gate_conclusion": "SUCCESS",
     "final_registration_current_state_commit": "ffc33d908156b507e235864d5e7d75913a64cc88",
     "final_registration_gate_run": 37094384529,
-    "final_registration_gate_conclusion": "SUCCESS"
+    "final_registration_gate_conclusion": "SUCCESS",
+    "completeness_manifest_path": "research/delta/handoffs/DELTA_R037_REQUIRED_ARTIFACT_COMPLETENESS_CHECKPOINT_09D.json",
+    "completeness_manifest_commit": "5fd6248e490a47bb0c7b60ace1f55091d2b9c3e3"
   },
   "current_sources": {
     "r032_backbone": "research/delta/experiments/delta_r037_r032_parent_backbone.py",
@@ -94,5 +100,24 @@
     "READ_EXACT_WORKBOOK_CHECKPOINT",
     "RESUME_FIRST_INCOMPLETE_UNIT_ONLY",
     "NEVER_RERUN_DURABLE_UNIT_DUE_TO_CHAT_TIMEOUT"
-  ]
+  ],
+  "future_reconstructible_todos": [
+    {
+      "stream": "DH02-S11",
+      "vector_fingerprint": "50d1bb2e656e",
+      "status": "FROZEN_VECTOR_PRESENT_CURRENT_R037_PRODUCER_NOT_YET_REBUILT"
+    },
+    {
+      "stream": "DH02-S08",
+      "vector_fingerprint": "7c70b5304ff7",
+      "status": "FROZEN_VECTOR_PRESENT_CURRENT_R037_PRODUCER_NOT_YET_REBUILT"
+    },
+    {
+      "stream": "DH03-S06",
+      "vector_fingerprint": "a3a086b7344c",
+      "status": "FROZEN_VECTOR_PRESENT_CURRENT_R037_PRODUCER_NOT_YET_REBUILT"
+    }
+  ],
+  "current_required_missing_artifacts": [],
+  "anti_missing_helper_gate": "PASS_FOR_CURRENT_CONTINUATION_09D"
 }
