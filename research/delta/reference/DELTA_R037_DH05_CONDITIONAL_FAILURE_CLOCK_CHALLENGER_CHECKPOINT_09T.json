@@ -1,0 +1,152 @@
+{
+  "schema": "delta-r037-dh05-conditional-failure-clock-challenger-replay-checkpoint-09t-v1",
+  "status": "COMPLETE_NEGATIVE_QA_PROVENANCE_ROUTER_FALSIFIED_CAUSALLY",
+  "unit": "R037_DH05_CONDITIONAL_FAILURE_CLOCK_CHALLENGER_REPLAY_NON_PROMOTING",
+  "parent": "R037_DH05_SIGNAL_TRADE_GAP_PROVENANCE_ACCEPTANCE_CLOCK_CHECKPOINT_09S",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "producer_path": "research/delta/experiments/delta_r037_dh05_conditional_failure_clock_challenger_replay.py",
+  "producer_commit": "cf74119286100230bca2a5f8dc9c6909e85b23bf",
+  "producer_blob_sha": "0749a0f326ff0a81006f7234f5065963e26e8dab",
+  "producer_file_sha256": "2b041a90fe5fa8e9ea13e4489a36e309e48dfae06e21a1050037cbd6dd8101a7",
+  "helper_path": "research/delta/experiments/delta_r037_dh05_runtime_primitives.py",
+  "helper_commit": "fdebfe5f04d10ac6b35a8cf96c7e258b7cc75985",
+  "helper_blob_sha": "328b16a80cf5bff58734a556561625adf89100ae",
+  "helper_file_sha256": "5a53170d1a3f460a299a53aeaf067d4af5ac49db2726f576569d6c643b6f0848",
+  "runtime_result_sha256": "ff906dfd560902f564e5b6bcc586c37979d85e69db73aa9773773b224630e9bd",
+  "runtime": {
+    "elapsed_seconds": 15.18,
+    "max_rss_kb": 698640,
+    "exit_code": 0,
+    "timeout_seconds": 120
+  },
+  "numeric_vector_retune": false,
+  "august_accessed": false,
+  "control_postqual_reproduced": true,
+  "historical_trade_targets": {
+    "A03": 306,
+    "S05": 51,
+    "S06": 615,
+    "S09": 119,
+    "S10": 206,
+    "S16": 24
+  },
+  "profiles": {
+    "CONTROL_CURRENT_NEUTRAL": {
+      "signals": {
+        "A03": 192,
+        "S05": 9,
+        "S06": 651,
+        "S09": 11,
+        "S10": 227,
+        "S16": 7
+      },
+      "latch_trades": {
+        "A03": 192,
+        "S05": 9,
+        "S06": 649,
+        "S09": 11,
+        "S10": 227,
+        "S16": 7
+      },
+      "signal_error": 338,
+      "latch_trade_error": 336,
+      "s06": {
+        "signals": 651,
+        "trades": 649,
+        "wins": 274,
+        "net_usd": -150.35
+      }
+    },
+    "ACCEPTANCE_CLOCK_ROUTER": {
+      "signals": {
+        "A03": 16,
+        "S05": 3,
+        "S06": 651,
+        "S09": 1,
+        "S10": 227,
+        "S16": 7
+      },
+      "latch_trades": {
+        "A03": 16,
+        "S05": 3,
+        "S06": 649,
+        "S09": 1,
+        "S10": 227,
+        "S16": 7
+      },
+      "signal_error": 530,
+      "latch_trade_error": 528
+    },
+    "CLOCK_TOPOLOGY_ROUTER": {
+      "signals": {
+        "A03": 16,
+        "S05": 3,
+        "S06": 651,
+        "S09": 6,
+        "S10": 227,
+        "S16": 7
+      },
+      "latch_trades": {
+        "A03": 16,
+        "S05": 3,
+        "S06": 649,
+        "S09": 6,
+        "S10": 227,
+        "S16": 7
+      },
+      "signal_error": 525,
+      "latch_trade_error": 523
+    },
+    "UNIVERSAL_CURRENT_STAGE": {
+      "signals": {
+        "A03": 256,
+        "S05": 14,
+        "S06": 689,
+        "S09": 40,
+        "S10": 280,
+        "S16": 15
+      },
+      "latch_trades": {
+        "A03": 256,
+        "S05": 14,
+        "S06": 689,
+        "S09": 40,
+        "S10": 280,
+        "S16": 15
+      },
+      "signal_error": 323,
+      "latch_trade_error": 323,
+      "s06": {
+        "signals": 689,
+        "trades": 689,
+        "wins": 294,
+        "net_usd": -154.81
+      }
+    },
+    "UNIVERSAL_WAIT_NEUTRAL": {
+      "signal_error": 1225,
+      "latch_trade_error": 1225
+    },
+    "UNIVERSAL_WAIT_STAGE": {
+      "signal_error": 1206,
+      "latch_trade_error": 1206
+    }
+  },
+  "finding": {
+    "checkpoint09s_historical_topology_error": 61,
+    "causal_topology_signal_error": 525,
+    "causal_topology_latch_trade_error": 523,
+    "control_signal_error": 338,
+    "control_latch_trade_error": 336,
+    "topology_router_falsified": true,
+    "universal_current_stage_weak_count_clue": true,
+    "universal_current_stage_rejected_as_carry_forward": true,
+    "reason": "The predeclared 09S topology router depends on historical chronology not reproduced by the current clean-room causal generator. Universal current-stage normalization only slightly improves aggregate count error while materially worsening S06 trade and net parity."
+  },
+  "decision": "REJECT_09S_CONDITIONAL_FAILURE_CLOCK_ROUTER_NO_SEMANTIC_UNFREEZE",
+  "promoted": false,
+  "parity_complete": false,
+  "next_unit": "R037_DH05_GENERATOR_OWNERSHIP_NEW_BOUNDARY_RELEASE_PARITY_RECONSTRUCTION"
+}
