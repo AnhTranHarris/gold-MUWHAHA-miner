@@ -1,0 +1,223 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_CHECKPOINT_13D",
+  "status": "VERIFIED_COMPLETE_MATERIAL_ADMISSION_CLUE_FULL_PARITY_NOT_ACHIEVED",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH03_S06_EVENT_MULTIPLICITY_CHECKPOINT_13C",
+  "hypothesis": "Some fully causal DH03 ENTRY_ELIGIBLE attempts arriving while the one-position ledger is occupied survive as one pending specialist admission token across the position-observation boundary, but unconditional pending validity over-admits relative to the historical fixture.",
+  "falsification_condition": "Reject pending admission as relevant if exact 13C control fails or pending semantics do not materially reduce the remaining trade/win gap without generator changes. Reject unconditional pending validity if it overshoots historical trade/economic parity.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "historical DH03-S06 Stage-A standalone fixture",
+    "reference_count": 1563,
+    "minimum_count": 1563,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity reconstruction only; pending-all produces 1586 trades and therefore is not promoted."
+  },
+  "primary_metrics": {
+    "entry_quality": "DROP 674/1513 raw-positive; pending-all 703/1586; target 690/1563.",
+    "hold_persistence": "13C generator/event lifecycle frozen.",
+    "economics": "DROP net -339.14 is near target -338.93; pending-all net -358.07 overshoots loss magnitude.",
+    "gross_loss_drawdown": "DROP DD 339.14 near target 339.25; pending-all DD 358.07.",
+    "activity": "Historical 1563 lies between DROP 1513 and pending-all 1586; 23 of 83 pending admissions must be invalidated under the historical semantics if pending is the correct architecture."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_attempt_admission_parity.py",
+      "commit": "0a32e3e4823f18fcc3dd7fd6a88e6d5c9769753c",
+      "blob_sha": "1920eba680c434eb8f55e868ead686c48d8b267a",
+      "file_sha256": "e69bff0682ce60446c297d075332ffb4bc1281d561c169c70823af9eb6712ae3"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_event_multiplicity_engine.py",
+      "commit": "91fc4b03a0c9ad64ddf3683a63303fcb688f45fd",
+      "blob_sha": "0f5e458ec1c6274766a3b5fb7d04efc8bf4f661f",
+      "file_sha256": "b63996109e6cd4782d44dd7fa55e196d6407d6fe79e028c85dc5f8406308bae0"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_structure.py",
+      "commit": "9fd75852690003d8e6d65cfdb9bb67198264fcae",
+      "blob_sha": "edbe5ae9bcf2031fe06256467085889c4e108d52",
+      "file_sha256": "9df6fe9a2086cb4970e38a205f081ab0706e441629ce01a9292f4ddcbd445ce2"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "a78a8fe7550bd02433ce8a7d3fdae563fcd953e8",
+      "note": "120-second subprocess containment, isolated Numba cache, faulthandler, unbuffered output."
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "generator_changed": false,
+      "vector_fingerprint": "a3a086b7344c",
+      "generator_profile": "POST_PULLBACK_REARM_FRESH_EXHAUSTION",
+      "generator_signals": 1586,
+      "one_position_at_a_time": true,
+      "position_observation_boundary": true,
+      "pending_token_ttl": "NONE_TESTED",
+      "tested_policies": [
+        "DROP_OCCUPIED_CONTROL",
+        "EXIT_TICK_LATCH_DROP",
+        "PENDING_FIRST_AFTER_OBSERVATION",
+        "PENDING_LATEST_AFTER_OBSERVATION"
+      ]
+    },
+    "feature_order": [
+      "frozen 13C ENTRY_ELIGIBLE signal",
+      "one-position admission",
+      "optional one-token pending intent",
+      "position exit",
+      "later flat observation",
+      "pending admission"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "clean-room admission parity only; no optimization split"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "elapsed_seconds": 11.24,
+      "peak_rss_kb": 697844,
+      "faulthandler": true,
+      "python_unbuffered": true,
+      "isolated_numba_cache": true,
+      "producer_atomic_output": "NamedTemporaryFile + flush + fsync + os.replace via base helper",
+      "exact_git_blob_preexecution_verification": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "13D prereg evidence",
+      "path": "research/delta/reference/DELTA_R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_EVIDENCE_13D.json",
+      "commit": "8e9a68d9dfd310ad7e81c9ce1eae929e3bb290ea",
+      "blob_sha": "9e79d77db89aab767ece8458f13abcfa2f626c3f",
+      "file_sha256": "aab9750e942cfbc5dc66dd31a5cbf68ab049ac8ecea215d1153c151814d915fb"
+    },
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "Exact frozen 13C 1586-signal attempt stream; one-token pending admission counters."
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_CHECKPOINT_13D.json",
+      "commit": "cb752fed486dcabb5b17a313e0726212db8969f9",
+      "blob_sha": "b5c4126bff573b08050a4c8f6ef6d1889d785282",
+      "official_raw_result_sha256": "bf226137cda9b030851dae3317443383ad3659bfc166b648d29e0b386d0313c2"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_CHECKPOINT_13D.md",
+      "commit": "57e61314425eb533bd1537b4c902b5fbb04e8453",
+      "blob_sha": "3ccb8155ef27fbd812370ba7715c788da1089cfb"
+    }
+  ],
+  "qa": [
+    "13C durable cursor and CI success verified before 13D.",
+    "13D evidence and producer committed before official compute.",
+    "Producer and evidence local Git blobs exactly matched committed GitHub blobs.",
+    "Canonical January SHA and Stage-A tick count verified.",
+    "Exact frozen 13C generator reproduced: 1586 signals with exact SHA.",
+    "DROP_OCCUPIED reproduced 13C exactly: 1513 trades / 674 raw-positive / 661 official / net -339.14.",
+    "Exit-tick position-observation latch alone reduced trades to 1509 and is not the missing density mechanism.",
+    "First-pending and latest-pending were identical: 1586 trades / 703 raw-positive; 83 pending created/admitted; zero replacements and zero side changes.",
+    "Unconditional pending validity over-admits historical target by 23 trades and worsens net/DD parity.",
+    "Supersession order is irrelevant in this fixture because no pending token receives a later replacement.",
+    "Workbook tab 75 A441:H451 written and read back.",
+    "No generator/threshold/exit change; August not accessed; SORB blocked; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh03_s06_attempt_admission_parity.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_dh03_s06_attempt_admission_parity.py --source <canonical_january_gzip> --evidence research/delta/reference/DELTA_R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_EVIDENCE_13D.json --output <13D_result_json>",
+    "timing_semantics": "Frozen 13C signals; occupied attempts may be dropped or held in one pending slot; pending admission occurs only on a later tick observing flatness, never simultaneously with an existing position.",
+    "expected_fingerprints": {
+      "drop": {
+        "trades": 1513,
+        "raw_positive_wins": 674,
+        "official_wins": 661,
+        "gross_profit": 137.12,
+        "gross_loss": -476.26,
+        "net_profit": -339.14,
+        "rejected_while_occupied": 73
+      },
+      "pending_all": {
+        "trades": 1586,
+        "raw_positive_wins": 703,
+        "official_wins": 690,
+        "gross_profit": 141.28,
+        "gross_loss": -499.35,
+        "net_profit": -358.07,
+        "pending_created": 83,
+        "pending_admitted": 83,
+        "pending_replaced": 0
+      }
+    },
+    "selected_interpretation": "PENDING_ADMISSION_IS_RELEVANT_DIAGNOSTIC_BUT_REQUIRES_CAUSAL_VALIDITY_INVALIDATION"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — R032 specialist parity incomplete",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready; pending validity 13E unresolved",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA semantics",
+    "ownership_scheduler_spec": "not ready",
+    "session_dst_spec": "frozen DELTA semantics",
+    "risk_spec": "fixed 0.01 research semantics",
+    "trade_count_parity_spec": "blocked pending 13E pending-validity parity",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH03_S06_EVENT_MULTIPLICITY_CHECKPOINT_13C",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A441:H451"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH03_S06_PENDING_ATTEMPT_VALIDITY_AND_SUPERSESSION_PARITY_RECONSTRUCTION",
+  "github_commits": [
+    "8e9a68d9dfd310ad7e81c9ce1eae929e3bb290ea",
+    "0a32e3e4823f18fcc3dd7fd6a88e6d5c9769753c",
+    "cb752fed486dcabb5b17a313e0726212db8969f9",
+    "57e61314425eb533bd1537b4c902b5fbb04e8453"
+  ]
+}
