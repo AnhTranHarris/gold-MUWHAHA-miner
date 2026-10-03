@@ -11,19 +11,19 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_DH02_S08_CLEANROOM_PARITY_CHECKPOINT_12A",
-    "current_phase": "R037_DH02_S08_STATE_FUNNEL_AND_PROVENANCE_LOCALIZATION_NEXT",
-    "first_incomplete_unit": "R037_DH02_S08_STATE_FUNNEL_AND_PROVENANCE_LOCALIZATION",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH02_S08_CLEANROOM_PARITY_CHECKPOINT_12A_MANIFEST.json",
-    "current_state_commit": "780b3738a10971cd4f8bfdcdc7e623a919f12f10",
-    "current_state_ci_run": 37155095563,
+    "last_verified_durable_unit": "R037_DH02_S08_CONTEXT_PLACEMENT_CHECKPOINT_12B",
+    "current_phase": "R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION_NEXT",
+    "first_incomplete_unit": "R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DH02_S08_CONTEXT_PLACEMENT_CHECKPOINT_12B_MANIFEST.json",
+    "current_state_commit": "c045798d750c0d2c1559cc95dfc5973ca45dd5be",
+    "current_state_ci_run": 37155631120,
     "current_state_ci_conclusion": "success"
   },
   "in_flight_unit": {
-    "unit": "R037_DH02_S08_STATE_FUNNEL_AND_PROVENANCE_LOCALIZATION",
-    "status": "NOT_STARTED_FROM_DURABLE_12A",
+    "unit": "R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION",
+    "status": "NOT_STARTED_FROM_DURABLE_12B",
     "committed_artifacts": [],
-    "next_action": "Test only source-grounded parent-context placement/event-validity semantics against the frozen 12A signal/funnel control. Do not retune S08 numeric thresholds."
+    "next_action": "Determine whether surviving DH01/DH02 provenance independently fixes an exact S08 parent-direction/context aggregation algorithm. If not, freeze the best source-compatible S08 surrogate as non-promoting and move to DH03-S06. Do not retune thresholds."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
@@ -45,7 +45,14 @@
     "committed_recovery_snapshot_execution": true,
     "large_stdout_policy": "Keep official producers summary-only; persist detailed diagnostics to JSON rather than streaming them through the chat/tool transport.",
     "chat_delivery_timeout_policy": "Treat a ChatGPT message-delivery timeout as a transport/session interruption, not evidence of compute failure. On reconnect, read CURRENT_STATE and this pointer, compare branch HEAD with current_state_commit, inspect CI and committed result/report/workbook artifacts, and resume only missing durability steps. Never rerun a completed official compute merely because the assistant message failed to deliver.",
-    "github_workflow_policy": "Require rebuild gate success for every durable cursor; use workflow artifacts/recovery snapshots rather than uncommitted local state."
+    "github_workflow_policy": "Require rebuild gate success for every durable cursor; use workflow artifacts/recovery snapshots rather than uncommitted local state.",
+    "concurrent_old_chain_policy": [
+      "Before every durable write, re-read CURRENT_STATE.json and branch HEAD/recent CI.",
+      "Prefer immutable create-only artifact paths for preregistration, producer, result and report. Treat an already-existing create/HTTP 422 as evidence that another chain may have progressed; stop and reconcile rather than overwrite.",
+      "If CURRENT_STATE or HEAD advances beyond the state used to prepare a write, abandon that write and resume from the newer authoritative cursor.",
+      "Only one reconciled checkpoint may advance CURRENT_STATE for a bounded scientific unit; parallel diagnostics remain supplementary/non-promoting unless explicitly incorporated by the durable manifest.",
+      "Never rerun an official compute solely because ChatGPT message delivery timed out. Verify committed result/report/workbook/manifest/CI first."
+    ]
   },
   "constraints": {
     "august_2026": "SEALED",
