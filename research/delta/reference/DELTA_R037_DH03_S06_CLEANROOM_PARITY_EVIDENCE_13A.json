@@ -1,0 +1,142 @@
+{
+  "schema": "delta-r037-dh03-s06-cleanroom-parity-evidence-13a-v1",
+  "status": "PREREGISTERED_BEFORE_COMPUTE",
+  "unit": "R037_DH03_S06_CLEANROOM_PARITY_RECONSTRUCTION",
+  "parent_checkpoint": "R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION_CHECKPOINT_12C",
+  "active_parent": "R032-C03_PLUS_DH02_S11_S08",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "canonical_stage_a": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "ticks": 4205709,
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+  },
+  "vector": {
+    "id": "DH03-S06",
+    "fingerprint": "a3a086b7344c",
+    "sampling": "SPACE_FILL",
+    "tier": "EXTENSION",
+    "parameters": {
+      "counter_eff": 0.6468,
+      "exhaustion_decline": 0.4533,
+      "invalidation_buffer_atr": 0.3242,
+      "max_pullback_age_s": 513.6575,
+      "no_new_extreme_count": 1,
+      "parent_bundle": "M15/M30",
+      "parent_policy": "structural-priority",
+      "pullback_depth_atr": 0.4743,
+      "pullback_start_tf": "S15",
+      "reaccel_eff_min": 0.2854,
+      "reaccel_tf": "S5",
+      "reclaim_source": "S15 pivot"
+    }
+  },
+  "historical_stage_a_target": {
+    "trades": 1563,
+    "raw_positive_wins": 690,
+    "win_rate_pct": 44.145873,
+    "gross_profit": 151.82,
+    "gross_loss": -490.75,
+    "net_profit": -338.93,
+    "max_balance_drawdown": 339.25,
+    "expectancy_per_trade": -0.216846,
+    "activity_retention_pct": 9.303018,
+    "r006_disposition": "RESTRUCTURE_DENSITY_ANCHOR"
+  },
+  "execution_fixture": {
+    "signed_efficiency_lookback_completed_bars": {
+      "S5": 4,
+      "S15": 4,
+      "S30": 4,
+      "S45": 4,
+      "M1": 4,
+      "M5": 4,
+      "M15": 3,
+      "M30": 3,
+      "H1": 3,
+      "H4": 3
+    },
+    "atr_period_completed_bars": 14,
+    "downstream_lifecycle": "R9 downstream lifecycle frozen",
+    "run_sheet_context": "DH01-A02 base context implementation"
+  },
+  "dh01_a02_context": {
+    "fingerprint": "83f3ab88c224",
+    "parameters": {
+      "conflict_policy": "transition-cautious",
+      "directional_disp_atr": 0.3,
+      "parent_hysteresis": 2,
+      "signed_eff_threshold": 0.3,
+      "structure_source": "M1/M5 confluence",
+      "swing_confirm_width": 2
+    }
+  },
+  "source_grounded_grammar": [
+    "DH03 enters continuation only after a lower-timeframe counter-move weakens while parent directional structure remains intact.",
+    "Parent bundle for S06 is M15/M30 and parent policy is structural-priority.",
+    "Parent direction comes from DH01 confirmed structure plus signed efficiency/displacement, not one MA or one bar.",
+    "ParentImpulseExtreme is the most favorable causally known execution extreme established before pullback begins.",
+    "Pullback begins when fast signed movement becomes adverse to parent direction while parent remains intact.",
+    "DepthNorm = PullbackMove / ATR_M5.",
+    "CounterEfficiency_T = -d * SignedEfficiency_T; S06 threshold counter_eff is frozen at 0.6468 and pullback-start TF is S15.",
+    "EXHAUSTION_CANDIDATE requires weakening counterflow; source specifically records declining S15/S30 CounterEfficiency versus immediately prior completed observations plus no-new-adverse-extreme confirmations.",
+    "S06 exhaustion_decline is frozen at 0.4533 and no_new_extreme_count is 1.",
+    "LOCAL_RECLAIM uses a causally known S15 pivot for S06.",
+    "REACCELERATION uses completed S5 and requires parent-direction SignedEfficiency plus parent-direction NetMove after reclaim; reaccel_eff_min frozen 0.2854.",
+    "ENTRY_ELIGIBLE sequence is exhaustion -> reclaim -> reacceleration while parent remains valid.",
+    "Structural invalidation buffer is frozen at 0.3242 ATR_M5; max pullback age frozen at 513.6575 seconds.",
+    "All bars are left-closed/right-open and only completed/confirmed data may be used."
+  ],
+  "historical_provenance": {
+    "r006_report_path": "research/delta/research/DELTA_R006_STAGE_A_DIRECTION_HOLD_SPEEDRUN_RESULTS.md",
+    "r006_report_blob_sha": "fad377586cd737f1df7cc585b32bbf04372a8735",
+    "historical_specialist_source_name": "r005_specialists.py",
+    "historical_specialist_source_sha256": "fe1ccb8112f5bf37c83e7ce9e9dd82f782397a7710029716a61c159e4005afe0",
+    "historical_dh03_output_name": "dh03_results.jsonl",
+    "historical_dh03_output_sha256": "3095a170efcd7cd644e6d2a371bec7723efab12a2c5c8921eba853bde4a4eb34",
+    "historical_source_bytes_recovered": false,
+    "search_scope": "live GitHub tree/history query, Google Drive search, Project/Library exact-name/hash/semantic search",
+    "conclusion": "hashes/fingerprints survive; original historical producer/output bytes were not recovered"
+  },
+  "bounded_semantic_profiles": [
+    {
+      "id": "STRUCTURAL_PRIORITY_SWING_PARENT_S15_SWING_RECLAIM",
+      "role": "leading literal clean-room interpretation",
+      "parent": "M15/M30 confirmed width-2 swing structural state has priority; directional efficiency/displacement resolves only when structure is not directional",
+      "impulse_extreme": "running favorable midpoint extreme while parent valid, frozen at S15 adverse pullback start",
+      "pullback_start": "first newly completed S15 with counter-efficiency >= 0.6468 after a favorable impulse extreme exists",
+      "exhaustion": "both S15 and S30 counter-efficiency decline by at least 0.4533 versus immediately prior completed observation; one completed S15 checkpoint without a new adverse extreme",
+      "reclaim": "first completed S15 close crossing a causally confirmed width-2 S15 pivot in parent direction",
+      "reacceleration": "subsequent completed S5 has parent-direction SignedEfficiency >= 0.2854 and positive parent-direction NetMove"
+    },
+    {
+      "id": "STRUCTURAL_PRIORITY_SWING_PARENT_S15_EITHER_DECLINE",
+      "role": "bounded exhaustion interpretation",
+      "difference": "exhaustion when either S15 or S30 counter-efficiency declines by >=0.4533, with same no-new-extreme/reclaim/reacceleration semantics"
+    },
+    {
+      "id": "DIRECTIONAL_CONFLUENCE_PARENT_S15_SWING_RECLAIM",
+      "role": "bounded parent interpretation",
+      "difference": "parent requires M15 and M30 completed directional labels to agree using frozen DH01-A02 0.30 efficiency/displacement thresholds; other semantics same as leading profile"
+    },
+    {
+      "id": "STRUCTURAL_PRIORITY_SWING_PARENT_RECLAIM_LAST_PIVOT",
+      "role": "bounded reclaim timing interpretation",
+      "difference": "reclaim may use the latest causally confirmed S15 pivot already known before exhaustion rather than requiring a pivot revealed after pullback start"
+    }
+  ],
+  "selection_rule": "No threshold tuning. Prefer a source-grounded profile only if it materially approaches the preserved 1563/690/economic fingerprint across activity and winners, not merely one scalar net row. If every source-grounded profile is materially inconsistent, localize stage counts and run one next bounded semantic reconstruction rather than altering numbers.",
+  "forbidden": [
+    "numeric threshold retuning",
+    "August access",
+    "SORB integration",
+    "mature-exit optimization",
+    "capital/lot changes",
+    "MQL5",
+    "inventing historical source behavior"
+  ],
+  "next_if_exact": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
+  "next_if_nonexact_localized": "R037_DH03_S06_STATE_FUNNEL_SEMANTICS_PARITY_RECONSTRUCTION",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
