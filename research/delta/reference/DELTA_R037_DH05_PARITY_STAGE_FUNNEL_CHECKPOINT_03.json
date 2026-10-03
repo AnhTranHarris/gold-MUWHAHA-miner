@@ -1,0 +1,121 @@
+{
+  "schema": "delta-r037-dh05-stage-funnel-checkpoint-v1",
+  "status": "COMPLETE_QA_PASS_PARITY_FAIL",
+  "unit": "R037_DH05_PARITY_STAGE_FUNNEL_DIAGNOSTIC_M5_SWING_SIX_VECTOR",
+  "parent": "R032-C03_PLUS_DH02_S11_S08",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "ticks": 4205709,
+    "cold_start": true
+  },
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "funnel": {
+    "A03": {
+      "target_trades": 306,
+      "probe": 6731,
+      "qualified": 1009,
+      "accepted": 207,
+      "failure": 797,
+      "reentry": 432,
+      "reclaim": 266,
+      "reversal": 187,
+      "signal": 187,
+      "trades": 187,
+      "wins": 79,
+      "net_usd": -43.03
+    },
+    "S05": {
+      "target_trades": 51,
+      "probe": 7875,
+      "qualified": 318,
+      "accepted": 28,
+      "failure": 290,
+      "reentry": 51,
+      "reclaim": 15,
+      "reversal": 9,
+      "signal": 9,
+      "trades": 9,
+      "wins": 5,
+      "net_usd": -1.25
+    },
+    "S06": {
+      "target_signals": 672,
+      "target_trades": 615,
+      "target_wins": 307,
+      "target_net_usd": -101.08,
+      "probe": 3470,
+      "qualified": 1606,
+      "accepted": 245,
+      "failure": 1358,
+      "reentry": 1211,
+      "reclaim": 683,
+      "reversal": 617,
+      "signal": 617,
+      "trades": 617,
+      "wins": 258,
+      "net_usd": -152.88
+    },
+    "S09": {
+      "target_trades": 119,
+      "probe": 7748,
+      "qualified": 208,
+      "accepted": 40,
+      "failure": 168,
+      "reentry": 61,
+      "reclaim": 40,
+      "reversal": 9,
+      "signal": 9,
+      "trades": 9,
+      "wins": 6,
+      "net_usd": -0.61
+    },
+    "S10": {
+      "target_trades": 206,
+      "probe": 6496,
+      "qualified": 1316,
+      "accepted": 202,
+      "failure": 1106,
+      "reentry": 623,
+      "reclaim": 294,
+      "reversal": 206,
+      "signal": 206,
+      "trades": 206,
+      "wins": 90,
+      "net_usd": -46.87
+    },
+    "S16": {
+      "target_trades": 24,
+      "probe": 7870,
+      "qualified": 135,
+      "accepted": 43,
+      "failure": 92,
+      "reentry": 37,
+      "reclaim": 18,
+      "reversal": 8,
+      "signal": 8,
+      "trades": 8,
+      "wins": 3,
+      "net_usd": -2.6
+    }
+  },
+  "qa": {
+    "funnel_order_invariants_pass": true,
+    "s10_trade_density_exact": true,
+    "s06_trade_density_near_exact": true,
+    "s06_economics_parity": false,
+    "s05_s09_collapse_localized_post_failure": true,
+    "historical_signal_to_trade_gap_not_reconstructed": true,
+    "full_r9_s1_gate_remains_rejected": true,
+    "parameter_retuning": false
+  },
+  "diagnostic_hashes": {
+    "source": "127ac5ea402d0b52a659c29be46b676549b6d8a060ac25045afe31d0570c324b",
+    "output": "b43ee892ef5e71a4ed6b5fb03119288ed74bee949109227c84d003bd712a2d25"
+  },
+  "first_incomplete_substep": "R037_DH05_PARITY_REENTRY_RECLAIM_REVERSAL_FEATURE_SEMANTICS_FINGERPRINT",
+  "integrated_r037_replay_started": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
