@@ -91,7 +91,7 @@ DELTA is a standalone research lineage.
 
 Do not read/import/use prior internal research lineages unless the owner explicitly authorizes a narrow exception.
 
-The one-time Gamma exception used only to summarize R9 is CLOSED.
+The one-time prior-lineage exception used only to summarize R9 is CLOSED.
 
 Canonical governance:
 
