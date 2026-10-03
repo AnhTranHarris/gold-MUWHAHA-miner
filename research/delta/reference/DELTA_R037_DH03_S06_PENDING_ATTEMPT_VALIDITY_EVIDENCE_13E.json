@@ -1,0 +1,89 @@
+{
+  "schema": "delta-r037-dh03-s06-pending-attempt-validity-evidence-13e-v1",
+  "status": "PREREGISTERED_BEFORE_COMPUTE",
+  "unit": "R037_DH03_S06_PENDING_ATTEMPT_VALIDITY_AND_SUPERSESSION_PARITY_RECONSTRUCTION",
+  "parent_checkpoint": "R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_CHECKPOINT_13D",
+  "active_parent": "R032-C03_PLUS_DH02_S11_S08",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "canonical_stage_a": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "ticks": 4205709,
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+  },
+  "frozen_generator": {
+    "vector": "DH03-S06 / a3a086b7344c",
+    "profile": "POST_PULLBACK_REARM_FRESH_EXHAUSTION",
+    "signals": 1586,
+    "signal_sha256": "261b6ad5a1cab4dd4378ec40af7fdde4e5178e82694089b3bf2a28bc6bebfdea",
+    "numeric_retune": false
+  },
+  "frozen_admission_facts": {
+    "drop_occupied_trades": 1513,
+    "admit_all_pending_trades": 1586,
+    "historical_target_trades": 1563,
+    "pending_tokens_created": 83,
+    "pending_tokens_needed_if_count_only": 50,
+    "pending_tokens_that_must_be_invalidated_vs_admit_all": 23,
+    "first_latest_replacement_count": 0
+  },
+  "provenance": {
+    "event_identity": "13C eid persists across same-pullback fresh-exhaustion rearms until the pullback terminates",
+    "terminal_events": [
+      "parent direction becomes opposite",
+      "original pullback max-age expires",
+      "structural invalidation boundary is crossed"
+    ],
+    "position_observation": "pending admission may occur only on a later tick that observes flatness; same-tick post-exit admission is not presumed",
+    "no_ttl_fit": "No pending-token age threshold may be introduced or tuned."
+  },
+  "bounded_question": "Which already-frozen DH03 event terminal condition causally invalidates pending ENTRY_ELIGIBLE attempts before the next observed-flat admission boundary?",
+  "profiles": [
+    {
+      "id": "PENDING_ALL_CONTROL",
+      "semantics": "13D admit-all pending control; one first token survives occupation with no event-validity check"
+    },
+    {
+      "id": "PENDING_EXPIRY_VALID",
+      "semantics": "pending token survives only if the originating pullback has not hit its original frozen max-pullback age by admission"
+    },
+    {
+      "id": "PENDING_PARENT_VALID",
+      "semantics": "pending token survives only if the originating pullback has not terminated by parent-direction opposition before admission"
+    },
+    {
+      "id": "PENDING_STRUCTURAL_VALID",
+      "semantics": "pending token survives only if the originating pullback has not terminated by frozen structural invalidation before admission"
+    },
+    {
+      "id": "PENDING_EVENT_IDENTITY_LIVE",
+      "semantics": "pending token survives only while the original 13C pullback event identity remains active; reject after any frozen terminal event (parent opposition, structural invalidation, or max-age expiry)"
+    }
+  ],
+  "instrumentation": [
+    "exact 13C generator signal count/SHA",
+    "originating event id for each pending attempt",
+    "event start/end time and terminal reason",
+    "pending created/admitted/invalidated counts by reason",
+    "executed trades/raw-positive/official wins",
+    "GP/GL/net/DD",
+    "pending wait duration descriptive distribution only (no threshold fitting)"
+  ],
+  "selection_rule": "Carry a validity semantic only if it causally invalidates a source-grounded subset of the 83 pending attempts and materially closes the 1563-trade / 690-raw-win target while preserving the near-exact 13C economic fingerprint. Exact scalar fit is insufficient if it requires a fitted TTL or changes generator/exits.",
+  "forbidden": [
+    "numeric threshold retuning",
+    "pending TTL fitting",
+    "signal-generator changes",
+    "simultaneous positions",
+    "exit optimization",
+    "August access",
+    "SORB integration",
+    "capital/lot changes",
+    "MQL5"
+  ],
+  "next_if_exact": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
+  "next_if_material_nonexact": "R037_DH03_S06_PENDING_OBSERVATION_BOUNDARY_AND_EVENT_IDENTITY_PARITY_RECONSTRUCTION",
+  "next_if_negative": "R037_DH03_S06_SIGNAL_GENERATOR_RESIDUAL_PROVENANCE_DECISION",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
