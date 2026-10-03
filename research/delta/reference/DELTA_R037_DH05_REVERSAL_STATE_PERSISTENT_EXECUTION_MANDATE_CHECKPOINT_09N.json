@@ -1,0 +1,79 @@
+{
+  "schema": "delta-r037-dh05-reversal-state-persistent-execution-mandate-checkpoint-09n-v1",
+  "status": "COMPLETE_NEGATIVE_QA_STATE_PERSISTENCE_REJECTED_HYSTERESIS_CLUE",
+  "unit": "R037_DH05_REVERSAL_STATE_PERSISTENT_EXECUTION_MANDATE_PARITY_RECONSTRUCTION",
+  "parent": "R037_DH05_SIGNAL_TO_EXECUTION_MANDATE_CHECKPOINT_09M",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "august_accessed": false,
+  "numeric_vector_retune": false,
+  "producer_commit": "d6b7186fed5ec4d5442703f26de1ea2e967dd647",
+  "producer_blob_sha": "2c37baf5c1ac3cc94de131c16185bdc8a4fcaa98",
+  "producer_file_sha256": "63cace57bbd90d48beb56ceb4b546c90eafdd32ef3268119dc5f38cb92d3fc36",
+  "runtime_result_sha256": "5d73747be66b05658c7ea601473ace2dbae87f301b4da5c205405a62be2218b2",
+  "runtime_seconds": 7.51,
+  "max_rss_kb": 698036,
+  "control": {
+    "aggregate_trade_count_abs_error": 336,
+    "s06": {
+      "signals": 651,
+      "trades": 649,
+      "wins": 274,
+      "net_usd": -150.35
+    }
+  },
+  "profiles": {
+    "REV_DISP_CHAIN_MAXFAIL": {
+      "aggregate_trade_count_abs_error": 412,
+      "s06_trades": 707,
+      "s06_wins": 295,
+      "s06_net_usd": -164.88,
+      "s06_reentries": 58
+    },
+    "REV_DISP_CHAIN": {
+      "aggregate_trade_count_abs_error": 413,
+      "s06_trades": 707,
+      "s06_wins": 295,
+      "s06_net_usd": -164.88,
+      "s06_reentries": 58
+    },
+    "BODY_SIGN_CHAIN_MAXFAIL": {
+      "aggregate_trade_count_abs_error": 484,
+      "s06_trades": 781,
+      "s06_wins": 330,
+      "s06_net_usd": -178.83,
+      "s06_reentries": 132
+    },
+    "BODY_SIGN_CHAIN": {
+      "aggregate_trade_count_abs_error": 485,
+      "s06_trades": 781,
+      "s06_wins": 330,
+      "s06_net_usd": -178.83,
+      "s06_reentries": 132
+    }
+  },
+  "selected_vector_fingerprint": {
+    "BODY_SIGN_CHAIN": {
+      "A03": "306/306",
+      "S05": "16/51",
+      "S06": "781/615",
+      "S09": "14/119",
+      "S10": "377/206",
+      "S16": "16/24"
+    },
+    "REV_DISP_CHAIN_MAXFAIL": {
+      "A03": "225/306",
+      "S05": "9/51",
+      "S06": "707/615",
+      "S09": "12/119",
+      "S10": "280/206",
+      "S16": "8/24"
+    }
+  },
+  "decision": "REJECT_SIMPLE_REVERSAL_STATE_PERSISTENCE_AS_UNIVERSAL_EXECUTION_MANDATE",
+  "parity_complete": false,
+  "clue": "BODY_SIGN_CHAIN makes A03 trade count exact but simultaneously overproduces dense S06/S10; REV_DISP_CHAIN improves S06 win parity but still overtrades and leaves sparse vectors underfilled.",
+  "next_unit": "R037_DH05_REVERSAL_STATE_HYSTERESIS_RECONFIRMATION_PARITY_RECONSTRUCTION",
+  "next_hypothesis": "Use the existing reversal-displacement threshold as a causal hysteresis band: do not invalidate on weak/neutral bars; rearm only after a reset interval and later positive reconfirmation; invalidate only on explicit opposite reversal evidence."
+}
