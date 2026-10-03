@@ -1,0 +1,108 @@
+{
+  "schema": "delta-r037-dh03-s06-event-attempt-admission-checkpoint-13d-v1",
+  "status": "COMPLETE_MATERIAL_ADMISSION_CLUE_FULL_PARITY_NOT_ACHIEVED",
+  "unit": "R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_AND_EXECUTION_PARITY_RECONSTRUCTION",
+  "parent": "R037_DH03_S06_EVENT_MULTIPLICITY_CHECKPOINT_13C",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "vector_fingerprint": "a3a086b7344c",
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_dh03_s06_attempt_admission_parity.py",
+    "commit": "0a32e3e4823f18fcc3dd7fd6a88e6d5c9769753c",
+    "blob_sha": "1920eba680c434eb8f55e868ead686c48d8b267a",
+    "sha256": "e69bff0682ce60446c297d075332ffb4bc1281d561c169c70823af9eb6712ae3"
+  },
+  "evidence": {
+    "path": "research/delta/reference/DELTA_R037_DH03_S06_EVENT_ATTEMPT_ADMISSION_EVIDENCE_13D.json",
+    "commit": "8e9a68d9dfd310ad7e81c9ce1eae929e3bb290ea",
+    "blob_sha": "9e79d77db89aab767ece8458f13abcfa2f626c3f",
+    "sha256": "aab9750e942cfbc5dc66dd31a5cbf68ab049ac8ecea215d1153c151814d915fb"
+  },
+  "official_compute": {
+    "elapsed_seconds": 11.24,
+    "peak_rss_kb": 697844,
+    "raw_result_sha256": "bf226137cda9b030851dae3317443383ad3659bfc166b648d29e0b386d0313c2",
+    "generator_changed": false,
+    "numeric_vector_retune": false,
+    "august_accessed": false,
+    "control_13c_reproduced": true
+  },
+  "target": {
+    "trades": 1563,
+    "raw_positive_wins": 690,
+    "gross_profit": 151.82,
+    "gross_loss": -490.75,
+    "net_profit": -338.93,
+    "max_balance_drawdown": 339.25
+  },
+  "profiles": {
+    "DROP_OCCUPIED_CONTROL": {
+      "trades": 1513,
+      "raw_positive_wins": 674,
+      "official_wins": 661,
+      "gross_profit": 137.12,
+      "gross_loss": -476.26,
+      "net_profit": -339.14,
+      "max_balance_drawdown": 339.14,
+      "rejected_while_occupied": 73,
+      "unexecuted_generator_signals": 73
+    },
+    "EXIT_TICK_LATCH_DROP": {
+      "trades": 1509,
+      "raw_positive_wins": 673,
+      "official_wins": 661,
+      "gross_profit": 137.12,
+      "gross_loss": -474.54,
+      "net_profit": -337.42,
+      "max_balance_drawdown": 337.42,
+      "rejected_while_occupied": 73,
+      "exit_tick_latch_drops": 4,
+      "unexecuted_generator_signals": 77
+    },
+    "PENDING_FIRST_AFTER_OBSERVATION": {
+      "trades": 1586,
+      "raw_positive_wins": 703,
+      "official_wins": 690,
+      "gross_profit": 141.28,
+      "gross_loss": -499.35,
+      "net_profit": -358.07,
+      "max_balance_drawdown": 358.07,
+      "pending_created": 83,
+      "pending_admitted": 83,
+      "pending_replaced": 0,
+      "pending_side_changes": 0
+    },
+    "PENDING_LATEST_AFTER_OBSERVATION": {
+      "trades": 1586,
+      "raw_positive_wins": 703,
+      "official_wins": 690,
+      "gross_profit": 141.28,
+      "gross_loss": -499.35,
+      "net_profit": -358.07,
+      "max_balance_drawdown": 358.07,
+      "pending_created": 83,
+      "pending_admitted": 83,
+      "pending_replaced": 0,
+      "pending_side_changes": 0
+    }
+  },
+  "finding": {
+    "leading_profile": "PENDING_FIRST_AFTER_OBSERVATION",
+    "first_and_latest_identical": true,
+    "interpretation": "One pending specialist attempt can plausibly survive occupation across the position-observation boundary, but unconditional pending validity over-admits. The historical fixture lies between DROP and unconditional pending: 50 more trades than DROP, 23 fewer than admit-all pending.",
+    "historical_trade_position_between_controls": {
+      "drop": 1513,
+      "target": 1563,
+      "pending_all": 1586
+    },
+    "pending_attempts_created_under_pending_replay": 83,
+    "pending_replacements": 0,
+    "exact_historical_parity": false,
+    "decision": "CARRY_PENDING_ADMISSION_ONLY_AS_DIAGNOSTIC_CLUE; NEXT RECONSTRUCT CAUSAL PENDING VALIDITY/INVALIDATION",
+    "next": "R037_DH03_S06_PENDING_ATTEMPT_VALIDITY_AND_SUPERSESSION_PARITY_RECONSTRUCTION"
+  },
+  "integrated_r037_replay_started": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
