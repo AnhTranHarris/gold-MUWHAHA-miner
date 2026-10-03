@@ -1,0 +1,192 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH05_SHORT_PROBE_OWNERSHIP_PROVENANCE_PROMOTION_DECISION_CHECKPOINT_10B",
+  "status": "VERIFIED_DURABLE_PROVENANCE_DECISION_KEEP_ROBUST_CHALLENGER_REJECT_HISTORICAL_SEMANTIC_PROMOTION",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH05_SHORT_PROBE_OWNERSHIP_ANTI_OVERFIT_VALIDATION_CHECKPOINT_10A",
+  "hypothesis": "09Z may be promoted as reconstructed historical DH05 ownership semantics only if its exact duration-based release rule has independent pre-09Y provenance in addition to causal and OOS support.",
+  "falsification_condition": "Reject historical-semantic promotion when no independent pre-09Y source encodes the exact router or earlier causal release evidence conflicts with its interpretation.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Evidence-synthesis unit",
+    "reference_count": 7,
+    "minimum_count": 7,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "No market replay; all named provenance checkpoints reviewed."
+  },
+  "primary_metrics": {
+    "entry_quality": "Not optimized.",
+    "hold_persistence": "Ownership provenance only.",
+    "economics": "09Z/10A evidence reviewed, not optimized.",
+    "gross_loss_drawdown": "Not target.",
+    "activity": "09Z residual funnel used only to identify next frontier."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_short_probe_ownership_provenance_promotion_decision.py",
+      "commit": "cb9a749bff6487c5c61a09a9dbfe6b4246df1769",
+      "blob_sha": "7e802c346a7f132637eae8409308feb691be503a"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "raw_tick_accessed": false,
+      "numeric_vector_retune": false,
+      "same_sample_ownership_recuts_closed": true,
+      "promotion_requires_independent_pre09y_exact_rule_provenance": true
+    },
+    "feature_order": [
+      "R003 causal grammar",
+      "DH05 white paper",
+      "R006 DH05 status",
+      "09H release evidence",
+      "09I release evidence",
+      "09Y discovery",
+      "09Z causal replay",
+      "10A OOS robustness"
+    ],
+    "horizons_checkpoints": {
+      "role": "provenance synthesis only"
+    },
+    "train_cal_eval_boundaries": {
+      "stage_a": "09Y/09Z discovery evidence",
+      "late_january": "10A independent validation evidence"
+    },
+    "runtime_dependencies": [
+      "Python standard library"
+    ],
+    "crash_safety": {
+      "bounded_provenance_only": true,
+      "no_raw_market_data": true,
+      "committed_producer_before_decision": true,
+      "github_blob_readback": true,
+      "atomic_small_output": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "R003 causal grammar",
+      "path": "research/delta/research/DELTA_R003_DIRECTION_HOLD_CAUSAL_GRAMMAR_WHITEPAPERS.md"
+    },
+    {
+      "name": "DH-05 white paper",
+      "drive_doc_id": "1mIcrUUeK0lGwfR6L_26O47DQxQV7xygbnFcnkvE4s6k",
+      "revision_id": "ANLCKQmsDIYHH2ziMpGP8tgkzOM4Y5ofSEGMTU-9i9Wm2B9h8VtTbXlYs__xvtvTD6FPtegqtSE84Q2qibN946qglx7rB37--kPwCXNQ4kQ"
+    },
+    {
+      "name": "R006 speedrun",
+      "path": "research/delta/research/DELTA_R006_STAGE_A_DIRECTION_HOLD_SPEEDRUN_RESULTS.md"
+    },
+    {
+      "name": "09H",
+      "path": "research/delta/reference/DELTA_R037_DH05_DECOUPLED_GENERATOR_FAILURE_EPISODE_CHECKPOINT_09H.json"
+    },
+    {
+      "name": "09I",
+      "path": "research/delta/reference/DELTA_R037_DH05_PARTIAL_RELEASE_POINT_CHECKPOINT_09I.json"
+    },
+    {
+      "name": "09Y",
+      "path": "research/delta/reference/DELTA_R037_DH05_GENERATOR_RELEASE_TOPOLOGY_PROVENANCE_CHECKPOINT_09Y.json"
+    },
+    {
+      "name": "09Z",
+      "path": "research/delta/reference/DELTA_R037_DH05_SHORT_PROBE_RELATIVE_ACCEPTANCE_BAR_OWNERSHIP_CHECKPOINT_09Z.json"
+    },
+    {
+      "name": "10A",
+      "path": "research/delta/reference/DELTA_R037_DH05_SHORT_PROBE_OWNERSHIP_ANTI_OVERFIT_VALIDATION_CHECKPOINT_10A.json"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH05_SHORT_PROBE_OWNERSHIP_PROVENANCE_PROMOTION_DECISION_CHECKPOINT_10B.json",
+      "blob_sha": "ea0a5b3e55e874f71ae0658c137a93a6e08b800c",
+      "runtime_result_sha256": "5c34136aedca8fcfac0d62cda378a3b761b72c1abcfc33e90463ec219c13143b"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH05_SHORT_PROBE_OWNERSHIP_PROVENANCE_PROMOTION_DECISION_CHECKPOINT_10B.md",
+      "blob_sha": "f06cdf36314e434d259c9dc687b38a168ca10fcc"
+    }
+  ],
+  "qa": [
+    "09Z causal Stage-A gate passes and 10A later-January P50/P75/P90 robustness gate passes.",
+    "R003 and original DH05 white paper describe one causal failed-break state chain but do not specify the exact max_probe_age < acceptance_tf ownership router.",
+    "Original white paper states ProbeAge is elapsed time since first cross and expired probes go to EXPIRED, not automatically to reversal.",
+    "R006 labels DH05 a conditional specialist but does not encode the exact duration-based generator-release rule.",
+    "09H rejects universal FAILURE_CANDIDATE generator release as too early.",
+    "09I rejects REENTRY/RECLAIM release points and retains serial generator ownership for active reconstruction.",
+    "Therefore OOS robustness cannot identify the missing historical helper semantics.",
+    "09Z retained only as robust non-promoting challenger; further same-sample ownership-router recuts closed.",
+    "Largest remaining 09Z stage error is probe=449.",
+    "Workbook tab 75 A256:H264 written and read back.",
+    "No raw ticks, no retune, August sealed, SORB blocked, MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh05_short_probe_ownership_provenance_promotion_decision.py",
+    "command": "python research/delta/experiments/delta_r037_dh05_short_probe_ownership_provenance_promotion_decision.py --r003 <R003.md> --r006 <R006.md> --c09h <09H.json> --c09i <09I.json> --c09y <09Y.json> --c09z <09Z.json> --c10a <10A.json> --output <10B.json>",
+    "timing_semantics": "No market timing; provenance/evidence synthesis only.",
+    "expected_fingerprints": {
+      "promote_as_historical_dh05_semantics": false,
+      "retain_as_robust_non_promoting_challenger": true,
+      "largest_remaining_09z_stage_error": [
+        "probe",
+        449
+      ]
+    },
+    "selected_interpretation": "REJECT_HISTORICAL_SEMANTIC_PROMOTION_KEEP_ROBUST_CHALLENGER_CLOSE_OWNERSHIP_RECUTS"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — provenance decision only",
+    "feature_timing_spec": "Not ready.",
+    "state_machine_spec": "09Z not promoted.",
+    "model_inference_spec": "No model.",
+    "execution_quote_side_spec": "Frozen.",
+    "ownership_scheduler_spec": "09Z remains challenger only.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Frozen.",
+    "trade_count_parity_spec": "Blocked pending DH05 parity.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH05_SHORT_PROBE_OWNERSHIP_ANTI_OVERFIT_VALIDATION_CHECKPOINT_10A",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A256:H264"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH05_PROBE_COUNT_RESIDUAL_PROVENANCE_AND_BOUNDARY_LIFECYCLE_RECONCILIATION",
+  "github_commits": [
+    "cb9a749bff6487c5c61a09a9dbfe6b4246df1769",
+    "b020927e1ea61957dd271dd5532da56fbb7ceaab",
+    "c58b5a709473e7a14d2accd1f1403de735399531"
+  ]
+}
