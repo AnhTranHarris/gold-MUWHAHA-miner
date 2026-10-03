@@ -1,0 +1,165 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH05_PROBE_ATTEMPT_COUNTER_PROVENANCE_DECISION_CHECKPOINT_10F",
+  "status": "VERIFIED_PROVENANCE_LIMITATION_FREEZE",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH05_PROBE_ATTEMPT_TOUCH_RESET_CHECKPOINT_10E",
+  "hypothesis": "Any further universal DH05 repeated-probe counter/reset semantic requires independent surviving historical provenance; otherwise the residual must be frozen as a provenance limitation rather than fitted retrospectively.",
+  "falsification_condition": "If an independent surviving pre-10D source explicitly encodes another exact universal counter/reset semantic, do not freeze the residual and reopen a source-grounded bounded reconstruction.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "09Z six-vector DH05 reconstruction",
+    "reference_count": 6,
+    "minimum_count": 6,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Provenance-only unit; no market replay or trade population change."
+  },
+  "primary_metrics": {
+    "entry_quality": "not optimized",
+    "hold_persistence": "not optimized",
+    "economics": "not optimized",
+    "gross_loss_drawdown": "not optimized",
+    "activity": "09Z parity residual preserved without retuning"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_probe_attempt_counter_provenance_decision.py",
+      "commit": "f38608af271c39c5ab5981113c9e772ff3c4cc04",
+      "blob_sha": "38c0010a6ccc910afa167679639d1a3736db589a",
+      "file_sha256": "76f438617a6e362169fd66794328c0fb1b46ad79d181ff0902e78326512ccc20"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "commit": "3fb3b444e17cc9c496533ddbe8599ebac618f8da",
+      "blob_sha": "a78a8fe7550bd02433ce8a7d3fdae563fcd953e8",
+      "file_sha256": "f30d6ec7d47076eca6fbbc23cdcd1d4165664533a6dd12ea5ccce4d12ebdc307"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "raw_ticks_accessed": false,
+      "selected_surrogate": "09Z_CONTACT_INCLUSIVE_OPEN_STRICT_PREBREAK_RESET",
+      "claim_exact_historical_dh05_parity": false
+    },
+    "feature_order": [],
+    "horizons_checkpoints": {
+      "role": "provenance-only"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "no market data accessed"
+    },
+    "runtime_dependencies": [
+      "Python 3.11+"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 60,
+      "faulthandler": true,
+      "python_unbuffered": true,
+      "atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_blob_preexecution_verification": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "Frozen 10F provenance evidence ledger",
+      "path": "research/delta/reference/DELTA_R037_DH05_PROBE_ATTEMPT_COUNTER_PROVENANCE_EVIDENCE_10F.json",
+      "commit": "29fdac465320d92f40c4b580f0e9e5edf9f23e9c",
+      "blob_sha": "d65b2cca32fa386b11ef3c153bf44374d04d81aa",
+      "sha256": "35ddafee24b89de89c0233f68da091fd8d1f4741478e11c52395720f9198b426"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH05_PROBE_ATTEMPT_COUNTER_PROVENANCE_DECISION_CHECKPOINT_10F.json",
+      "blob_sha": "1e7ab8b92343fa53a52c9746614845665a4779eb",
+      "official_result_sha256": "d4add41152a75982eb6b21c987fbb7767a3390821550855a47f351a0901ca47b"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH05_PROBE_ATTEMPT_COUNTER_PROVENANCE_DECISION_CHECKPOINT_10F.md",
+      "blob_sha": "f6f4e5378e88ab0dd89e61bd7dfc2d6cfcdb14a1"
+    }
+  ],
+  "qa": [
+    "10E durable state and CI success verified before continuation.",
+    "Original DH-05 white paper read from Drive; ProbeAge is since first cross and no explicit repeated same-boundary counter/reset semantic is documented.",
+    "R003/R006/R032 surviving reports do not independently encode another exact repeated-attempt counter/reset semantic.",
+    "Checkpoint 09A confirms authoritative historical producer bytes remain unrecovered.",
+    "10D strict-beyond recuts worsen parity.",
+    "10E boundary-touch reset/rearm recuts worsen parity and trigger S06 veto.",
+    "Official producer/evidence/runner Git blob identities matched committed blobs before execution.",
+    "No raw market data accessed by this provenance-only unit.",
+    "Official result freezes 09Z as best reconstructible non-promoting surrogate and records remaining 449-probe error as a provenance limitation.",
+    "Exact historical DH05 parity is not claimed.",
+    "Workbook tab 75 rows A297:H305 written and read back.",
+    "August sealed; SORB blocked; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh05_probe_attempt_counter_provenance_decision.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 60 -- python -X faulthandler research/delta/experiments/delta_r037_dh05_probe_attempt_counter_provenance_decision.py --evidence research/delta/reference/DELTA_R037_DH05_PROBE_ATTEMPT_COUNTER_PROVENANCE_EVIDENCE_10F.json --output <checkpoint_10f.json>",
+    "timing_semantics": "No market chronology used; deterministic provenance synthesis only.",
+    "expected_fingerprints": {
+      "status": "COMPLETE_PROVENANCE_LIMITATION_FREEZE",
+      "remaining_probe_abs_error": 449,
+      "total_funnel_abs_error": 782,
+      "next": "R037_DH02_S11_CLEANROOM_PARITY_RECONSTRUCTION"
+    },
+    "selected_interpretation": "PROVENANCE_LIMITED_BEST_RECONSTRUCTION_09Z_NON_PROMOTING"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — R032 specialist parent parity incomplete",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA semantics",
+    "ownership_scheduler_spec": "not translation-ready",
+    "session_dst_spec": "frozen DELTA semantics",
+    "risk_spec": "fixed 0.01 research semantics",
+    "trade_count_parity_spec": "blocked pending remaining R032 specialist clean-room reconstruction",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH05_PROBE_ATTEMPT_TOUCH_RESET_CHECKPOINT_10E",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A297:H305"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH02_S11_CLEANROOM_PARITY_RECONSTRUCTION",
+  "github_commits": [
+    "900db02c3ea11dc1b7c941212489b0e9fc27d756",
+    "29fdac465320d92f40c4b580f0e9e5edf9f23e9c",
+    "f38608af271c39c5ab5981113c9e772ff3c4cc04",
+    "fc56b5b13ab35b1c4a41eaf26785ba2c776b93b6",
+    "2c5d8460361a42c3c4ebcb4d871db1a578f17390"
+  ]
+}
