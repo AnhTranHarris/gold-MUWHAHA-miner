@@ -1,0 +1,201 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_REARM_CHECKPOINT_11D",
+  "status": "VERIFIED_MATERIAL_NON_PROMOTING_CLUE_FULL_PARITY_NOT_ACHIEVED",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH02_S11_EVENT_OWNERSHIP_CONTEXT_STATE_CHECKPOINT_11C",
+  "hypothesis": "A qualifying completed-S1 boundary break that occurs while parent context is conflicted may stale/suspend the ARMED boundary rather than remaining immediately eligible when context later clears.",
+  "falsification_condition": "Reject rearm semantics that increase excess activity/winners, and do not promote any same-sample improvement lacking surviving source provenance.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "historical DH02-S11 Stage-A standalone fixture",
+    "reference_count": 75,
+    "minimum_count": 75,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Parity target only."
+  },
+  "primary_metrics": {
+    "entry_quality": "parity reconstruction only",
+    "hold_persistence": "frozen R9 lifecycle",
+    "economics": "target GP +9.39 / GL -17.60 / net -8.21",
+    "gross_loss_drawdown": "residual localization",
+    "activity": "target 75 trades / 41 raw-positive wins"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh02_s11_armed_boundary_lifetime_rearm.py",
+      "commit": "0e0cbe48fbbf07157b79e2bbcca26462cbc9ce3f",
+      "blob_sha": "49e5c91c41a56b84017a1d2f2dc8c4104ed9e12f",
+      "file_sha256": "29e0f01f675626187c4f28fadedc548d15a97ebc5a943698e2f1227b574c6dc9"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "a78a8fe7550bd02433ce8a7d3fdae563fcd953e8",
+      "file_sha256": "f30d6ec7d47076eca6fbbc23cdcd1d4165664533a6dd12ea5ccce4d12ebdc307"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "vector_id": "DH02-S11",
+      "vector_fingerprint": "50d1bb2e656e",
+      "profiles": [
+        "CONTROL_PERSIST_THROUGH_CONFLICT",
+        "CONFLICT_BREAK_CONSUME_UNTIL_NEW_BOUNDARY",
+        "CONFLICT_BREAK_S1_RESET_REARM",
+        "CONFLICT_BREAK_TICK_RESET_REARM"
+      ]
+    },
+    "feature_order": [
+      "M5 boundary",
+      "invalid-context completed-S1 break ownership",
+      "S1 break",
+      "tick acceptance",
+      "retest",
+      "tick failure",
+      "S5 rebreak",
+      "R9 lifecycle"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "historical parity reconstruction only"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "faulthandler": true,
+      "python_unbuffered": true,
+      "isolated_numba_cache": true,
+      "producer_atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_preexecution_verification": true,
+      "committed_recovery_snapshot_execution": true,
+      "control_gate": "11B control signal fingerprint must reproduce exactly"
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January Dukascopy XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "11D evidence",
+      "path": "research/delta/reference/DELTA_R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_REARM_EVIDENCE_11D.json",
+      "commit": "626148ece63468e2c3f60ca33a31e7c213672b19",
+      "blob_sha": "99716d27281e03a638158d6a17aada7bc52886d6",
+      "sha256": "afd61bf84d7ba6c14cc644553bc722e68f5fe7accda25332a243022adfeac87b"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "causal Stage-A P75 bars / ATR / swing / context arrays"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_REARM_CHECKPOINT_11D.json",
+      "commit": "9049a89e00bba5e43cf02cd76f2a921965b4b1d7",
+      "blob_sha": "8cd5f8e0258713f37f39554c0d7cfed488bb5e9a",
+      "official_result_sha256": "f21725af690fa82d7877a6d66d32a715411c1063fb9067fa7147cfa524daa2b3"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_REARM_CHECKPOINT_11D.md",
+      "commit": "995578c286dc385818e2dc87db5cfa674ecf4cb3",
+      "blob_sha": "4d8c22224f05cfb8645e03c761a76cbbc30f1db2"
+    }
+  ],
+  "qa": [
+    "11C durable cursor and CI success verified before 11D.",
+    "Evidence and producer committed before compute; timeout pointer recorded the in-flight unit.",
+    "Producer/evidence blobs verified from committed recovery snapshot; canonical January SHA verified.",
+    "Official replay completed in approximately 8.58 seconds.",
+    "Control reproduced 106 trades / 42 wins and exact signal SHA.",
+    "Conflict-break consume produced 103 trades / exactly 41 wins / GL -33.74; all three removed trades were from losing population.",
+    "S1-reset and tick-reset profiles both worsened to 109 trades / 45 wins and are rejected.",
+    "Leading effect is directionally useful but too small for full parity and post-invalid-break ownership provenance remains incomplete.",
+    "No numeric threshold retuned; August sealed; SORB blocked; MQL5 unauthorized.",
+    "Workbook tab 75 A338:H347 written and read back."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh02_s11_armed_boundary_lifetime_rearm.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python -X faulthandler research/delta/experiments/delta_r037_dh02_s11_armed_boundary_lifetime_rearm.py --source <canonical_january_gzip> --evidence research/delta/reference/DELTA_R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_REARM_EVIDENCE_11D.json --output <checkpoint_11d.json>",
+    "timing_semantics": "Completed-bar conflict-invalid qualifying break ownership; optional boundary consume/suspend/rearm; next-tick persistence; S5 rebreak; frozen R9 lifecycle.",
+    "expected_fingerprints": {
+      "target": {
+        "trades": 75,
+        "raw_positive_wins": 41,
+        "net_profit": -8.21
+      },
+      "control": {
+        "trades": 106,
+        "raw_positive_wins": 42,
+        "net_profit": -27.3
+      },
+      "consume": {
+        "trades": 103,
+        "raw_positive_wins": 41,
+        "net_profit": -26.03
+      }
+    },
+    "selected_interpretation": "CONFLICT_BREAK_CONSUME_UNTIL_NEW_BOUNDARY_NON_PROMOTING_CHALLENGER"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — R032 specialist parity incomplete",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA semantics",
+    "ownership_scheduler_spec": "not ready",
+    "session_dst_spec": "frozen DELTA semantics",
+    "risk_spec": "fixed 0.01 research semantics",
+    "trade_count_parity_spec": "blocked pending S11/S08/DH03 specialist reconstruction",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH02_S11_EVENT_OWNERSHIP_CONTEXT_STATE_CHECKPOINT_11C",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A338:H347"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH02_S11_CONTEXT_INVALID_BREAK_ADMISSION_PROVENANCE_DECISION",
+  "github_commits": [
+    "626148ece63468e2c3f60ca33a31e7c213672b19",
+    "0e0cbe48fbbf07157b79e2bbcca26462cbc9ce3f",
+    "9049a89e00bba5e43cf02cd76f2a921965b4b1d7",
+    "995578c286dc385818e2dc87db5cfa674ecf4cb3"
+  ]
+}
