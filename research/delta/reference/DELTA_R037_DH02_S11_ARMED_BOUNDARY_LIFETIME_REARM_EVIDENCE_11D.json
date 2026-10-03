@@ -1,0 +1,63 @@
+{
+  "schema": "delta-r037-dh02-s11-armed-boundary-lifetime-rearm-evidence-11d-v1",
+  "unit": "R037_DH02_S11_ARMED_BOUNDARY_LIFETIME_AND_REARM_PARITY_FINGERPRINT",
+  "parent_checkpoint": "R037_DH02_S11_EVENT_OWNERSHIP_CONTEXT_STATE_CHECKPOINT_11C",
+  "vector_fingerprint": "50d1bb2e656e",
+  "historical_target": {
+    "trades": 75,
+    "raw_positive_wins": 41,
+    "gross_profit": 9.39,
+    "gross_loss": -17.6,
+    "net_profit": -8.21
+  },
+  "control": {
+    "signals": 106,
+    "trades": 106,
+    "raw_positive_wins": 42,
+    "gross_profit": 7.8,
+    "gross_loss": -35.1,
+    "net_profit": -27.3,
+    "signal_sha256": "803fc20c55ed1d7f30356f2610392c12e6b43544f7f512bdd347cead69901dab"
+  },
+  "source_grounding": {
+    "armed_state": "ARMED precedes BROKEN; BROKEN is a completed-bar directional break beyond the boundary.",
+    "context": "ARMED requires parent context that permits breakout research; ENTRY_ELIGIBLE also requires context validity.",
+    "event_identity": "one boundary + one original break direction = one event",
+    "causal_constraint": "an invalid-context observation cannot be retrospectively converted into a valid earlier break after context later clears",
+    "provenance_gap": "historical treatment of a qualifying boundary break that occurs while parent context is conflicted is not preserved"
+  },
+  "closed_by_11c": [
+    "permanent consumption on any pre-break conflict is too destructive: 91 trades / 33 wins",
+    "reveal-time non-conflict eligibility is too destructive: 92 trades / 34 wins",
+    "control boundary persistence through conflict remains 106 trades / 42 wins"
+  ],
+  "diagnostic_profiles": [
+    {
+      "name": "CONTROL_PERSIST_THROUGH_CONFLICT",
+      "conflict_break_action": "ignore_and_keep_armed",
+      "reset_clock": "none"
+    },
+    {
+      "name": "CONFLICT_BREAK_CONSUME_UNTIL_NEW_BOUNDARY",
+      "conflict_break_action": "consume_boundary",
+      "reset_clock": "new_boundary_only"
+    },
+    {
+      "name": "CONFLICT_BREAK_S1_RESET_REARM",
+      "conflict_break_action": "suspend_boundary",
+      "reset_clock": "completed_S1_close_returns_prebreak_side"
+    },
+    {
+      "name": "CONFLICT_BREAK_TICK_RESET_REARM",
+      "conflict_break_action": "suspend_boundary",
+      "reset_clock": "first_live_tick_returns_prebreak_side"
+    }
+  ],
+  "selection_rule": "Carry forward only a source-grounded lifecycle rule that reduces excess trades and gross loss while keeping raw-positive wins close to the historical 41; no same-sample exact-fit promotion without later corroboration.",
+  "next_if_localized": "R037_DH02_S11_CONTEXT_INVALID_BREAK_ADMISSION_PROVENANCE_DECISION",
+  "canonical_source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "august_2026": "SEALED",
+  "sorb_integrated_replay_started": false,
+  "mql5_authorized": false
+}
