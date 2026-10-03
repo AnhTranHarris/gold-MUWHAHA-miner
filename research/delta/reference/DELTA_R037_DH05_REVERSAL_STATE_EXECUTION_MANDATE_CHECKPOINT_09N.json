@@ -1,0 +1,85 @@
+{
+  "schema": "delta-r037-dh05-reversal-state-execution-mandate-checkpoint-09n-v1",
+  "status": "COMPLETE_BOUNDED_QA_MIXED_STATE_PERSISTENCE_CLUES_NO_FREEZE",
+  "unit": "R037_DH05_REVERSAL_STATE_PERSISTENT_EXECUTION_MANDATE_PARITY_RECONSTRUCTION",
+  "parent": "R037_DH05_SIGNAL_TO_EXECUTION_MANDATE_CHECKPOINT_09M",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "august_accessed": false,
+  "numeric_vector_retune": false,
+  "producer_commit": "d6b7186fed5ec4d5442703f26de1ea2e967dd647",
+  "producer_blob_sha": "2c37baf5c1ac3cc94de131c16185bdc8a4fcaa98",
+  "producer_file_sha256": "63cace57bbd90d48beb56ceb4b546c90eafdd32ef3268119dc5f38cb92d3fc36",
+  "runtime_result_sha256": "5d73747be66b05658c7ea601473ace2dbae87f301b4da5c205405a62be2218b2",
+  "control": {
+    "aggregate_trade_count_abs_error": 336,
+    "s06": {
+      "signals": 651,
+      "trades": 649,
+      "wins": 274,
+      "net_usd": -150.35
+    }
+  },
+  "leading_by_aggregate": {
+    "profile": "REV_DISP_CHAIN_MAXFAIL",
+    "aggregate_trade_count_abs_error": 412,
+    "s06": {
+      "trades": 707,
+      "wins": 295,
+      "net_usd": -164.88,
+      "reentries": 58
+    },
+    "s06_errors": {
+      "trade_abs": 92,
+      "win_abs": 12,
+      "net_abs": 63.8
+    }
+  },
+  "strongest_local_clues": {
+    "body_sign_a03_exact": {
+      "profile": "BODY_SIGN_CHAIN",
+      "trades": 306,
+      "target": 306,
+      "wins": 124,
+      "net_usd": -71.58,
+      "reentries": 114
+    },
+    "rev_disp_s06_win_near_parity": {
+      "profile": "REV_DISP_CHAIN_MAXFAIL",
+      "wins": 295,
+      "target_wins": 307,
+      "win_abs_error": 12
+    }
+  },
+  "vector_trade_counts": {
+    "BODY_SIGN_CHAIN": {
+      "A03": "306/306",
+      "S05": "16/51",
+      "S06": "781/615",
+      "S09": "14/119",
+      "S10": "377/206",
+      "S16": "16/24"
+    },
+    "BODY_SIGN_CHAIN_MAXFAIL": {
+      "A03": "301/306",
+      "S05": "12/51",
+      "S06": "781/615",
+      "S09": "14/119",
+      "S10": "367/206",
+      "S16": "16/24"
+    },
+    "REV_DISP_CHAIN_MAXFAIL": {
+      "A03": "225/306",
+      "S05": "9/51",
+      "S06": "707/615",
+      "S09": "12/119",
+      "S10": "280/206",
+      "S16": "8/24"
+    }
+  },
+  "decision": "PRESERVE_BODY_SIGN_AND_REV_DISP_AS_MIXED_DIAGNOSTIC_CLUES; DO_NOT_FREEZE",
+  "parity_complete": false,
+  "next_unit": "R037_DH05_STATE_PERSISTENT_EXECUTION_WITH_GLOBAL_NO_REARM_PARITY_RECONSTRUCTION",
+  "next_hypothesis": "Apply the parent R032 GLOBAL NO_REARM semantics exactly: after a mandate trade exits, suppress same-minute downstream re-entry; allow a new qualifying reversal-bar admission only after the UTC minute changes while the mandate remains valid."
+}
