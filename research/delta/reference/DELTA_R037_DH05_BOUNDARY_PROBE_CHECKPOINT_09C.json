@@ -1,0 +1,53 @@
+{
+  "schema": "delta-r037-dh05-boundary-probe-checkpoint-09c-v1",
+  "status": "COMPLETE_MATERIAL_PARITY_CLUE_NOT_FULL_PARITY",
+  "unit": "R037_DH05_BOUNDARY_SOURCE_AND_PROBE_ELIGIBILITY_PARITY_RECONSTRUCTION",
+  "parent": "R032-C03_PLUS_DH02_S11_S08",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_ticks": 4205709,
+  "january_source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "producer_path": "research/delta/experiments/delta_r037_dh05_boundary_probe_parity.py",
+  "producer_file_sha256": "84093a3f5ce39d09c4241bfba4c7244770ba7b2ea4f7df041bbc28498e08a8f9",
+  "producer_commit": "9d8b3d0b53deedb69e81ffd132feb82888176c71",
+  "producer_blob_sha": "0cc173633ba8f91771b11ab2d39cc659340b6c3d",
+  "result_sha256": "c7afe32a538c1168523a664f67ed1f32f394f8ea7f537e92dbc6c590f2e64cf5",
+  "finding": {
+    "candidate_boundary": "symmetric two-bar confirmed M5 swing",
+    "probe_counter": "repeated causal same-boundary attempts before failure",
+    "probe_abs_error": 626,
+    "probe_target_total": 40190,
+    "probe_abs_error_pct": 1.557601393381438,
+    "qualified_abs_error": 383,
+    "qualified_target_total": 4592,
+    "qualified_abs_error_pct": 8.340592334494774,
+    "parity_complete": false
+  },
+  "width_comparison": {
+    "symmetric_width_1": {"total_abs_error": 14458, "probe_abs_error": 10795, "qualified_abs_error": 773},
+    "symmetric_width_2": {"total_abs_error": 3718, "probe_abs_error": 626, "qualified_abs_error": 383},
+    "symmetric_width_3": {"total_abs_error": 12859, "probe_abs_error": 7858, "qualified_abs_error": 1087}
+  },
+  "symmetric_width_2_actual": {
+    "A03": [6705,882,367,753,399,252,183,183],
+    "S05": [7699,245,48,230,49,17,8,8],
+    "S06": [3563,1589,735,1284,848,465,433,433],
+    "S09": [7651,163,116,134,39,29,8,8],
+    "S10": [6526,1216,465,948,549,268,189,189],
+    "S16": [7666,114,104,50,10,9,2,2]
+  },
+  "checkpoint03_target": {
+    "A03": [6731,1009,207,797,432,266,187,187],
+    "S05": [7875,318,28,290,51,15,9,9],
+    "S06": [3470,1606,245,1358,1211,683,617,617],
+    "S09": [7748,208,40,168,61,40,9,9],
+    "S10": [6496,1316,202,1106,623,294,206,206],
+    "S16": [7870,135,43,92,37,18,8,8]
+  },
+  "decision": "FREEZE_WIDTH2_PLUS_REPEATED_PREFAILURE_ATTEMPT_LEDGER_AS_PARITY_HYPOTHESIS; CONTINUE_ONLY_ACCEPTANCE_FAILURE_REENTRY_SEMANTICS",
+  "parity_complete": false,
+  "integrated_r037_replay_started": false,
+  "sorb_status": "BLOCKED_UNTIL_R032_PARENT_PARITY",
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "next": "R037_DH05_ACCEPTANCE_FAILURE_REENTRY_SEMANTICS_PARITY_RECONSTRUCTION"
+}
