@@ -1,0 +1,165 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH05_SIGNAL_TRADE_GAP_PROVENANCE_ACCEPTANCE_CLOCK_CHECKPOINT_09S",
+  "status": "VERIFIED_DURABLE_MATERIAL_PROVENANCE_CLUE_NON_PROMOTING",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH05_COMPLETED_BAR_BOUNDARY_INVALIDATION_CHECKPOINT_09R",
+  "hypothesis": "The preserved DH05 signal-to-trade gap is structurally partitioned by frozen acceptance/reversal timeframe topology, indicating conditional ownership of previously documented failure-clock/reversal semantics rather than a universal downstream execution persistence rule.",
+  "falsification_condition": "No predeclared categorical router materially beats the best live count-error fingerprint, or any apparent improvement depends on numeric retuning or undocumented semantics.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Preserved six-vector historical trade-count fingerprints",
+    "reference_count": 6,
+    "minimum_count": 6,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Provenance diagnostic only; no promotion from categorical count fit."
+  },
+  "primary_metrics": {
+    "entry_quality": "Not optimized.",
+    "hold_persistence": "Not optimized.",
+    "economics": "Not replayed in 09S; S06 economic parity required in 09T.",
+    "gross_loss_drawdown": "Not optimization target.",
+    "activity": "Six-vector target-vs-signal gap and categorical router aggregate absolute count error."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_signal_trade_gap_provenance_acceptance_clock.py",
+      "commit": "20689a8b985e1b30f76f46a1c24a03447c877e95",
+      "blob_sha": "f23f2f97f38e5805b812c89aa32fe4aa97022258",
+      "file_sha256": "39635fb853d69f252171df2a583a412f2f73ff184f3dbcf671aa3635ef2c6087"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "raw_tick_replay": false,
+      "numeric_vector_retune": false,
+      "frozen_failure_clock": "FAILURE_CANDIDATE",
+      "diagnostic_acceptance_router": "S5->NEUTRAL_CURRENT; S15->NEUTRAL_WAIT_REENTRY",
+      "diagnostic_topology_router": "S5->NEUTRAL_CURRENT; S15/S5->NEUTRAL_WAIT_REENTRY; S15/S1->STAGE_WAIT_REENTRY"
+    },
+    "feature_order": [
+      "historical_trade_target",
+      "postqual_signal",
+      "acceptance_tf",
+      "reversal_tf",
+      "preserved_clock_profile",
+      "routed_count"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "durable fingerprint only; no raw-tick access in this unit"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "provenance diagnostic only; causal replay deferred to 09T"
+    },
+    "runtime_dependencies": [
+      "Python 3.11"
+    ],
+    "crash_safety": {
+      "committed_producer_before_compute": true,
+      "producer_blob_readback": true,
+      "github_ci_each_commit": true,
+      "note": "09S source uses a small deterministic fingerprint transform; result/report were fully persisted before chat interruption."
+    }
+  },
+  "inputs": [
+    {
+      "name": "Preserved DH05 six-vector historical trades",
+      "source": "durable checkpoint fingerprints"
+    },
+    {
+      "name": "Frozen POST_QUAL signal counts",
+      "source": "durable post-qualification checkpoint fingerprints"
+    },
+    {
+      "name": "Preserved Checkpoint-09 semantic profile counts",
+      "source": "durable historical checkpoint fingerprints"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "No raw market cache; deterministic durable-fingerprint diagnostic only"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH05_SIGNAL_TRADE_GAP_PROVENANCE_ACCEPTANCE_CLOCK_CHECKPOINT_09S.json",
+      "blob_sha": "53d43f8f1c94e51e10c86396ca9343d623dbea1e",
+      "runtime_result_sha256": "bdf70beacf69f00b6f002190beae6cbc47905710368409664930783149948b27"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH05_SIGNAL_TRADE_GAP_PROVENANCE_ACCEPTANCE_CLOCK_CHECKPOINT_09S.md",
+      "blob_sha": "e0a6758deda53d4072d8c9088cb3f0a88b3049da"
+    }
+  ],
+  "qa": [
+    "No raw tick data accessed and no numeric vector retuning.",
+    "Acceptance-timeframe groups are perfectly sign-separated across all six frozen vectors: S5 target<POST_QUAL signal for both vectors; S15 target>POST_QUAL signal for all four vectors.",
+    "Acceptance-clock router aggregate absolute count error = 139.",
+    "Clock-topology router aggregate absolute count error = 61 versus best live 09L error 304.",
+    "The topology router is non-promoting because S15/S1 contains only S09 and the historical producer bytes are missing.",
+    "09T must replay the challenger causally on canonical Stage-A ticks and report S06 signal/trade/win/net before any semantic unfreeze.",
+    "August sealed; SORB blocked; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh05_signal_trade_gap_provenance_acceptance_clock.py",
+    "command": "python research/delta/experiments/delta_r037_dh05_signal_trade_gap_provenance_acceptance_clock.py --output <checkpoint_09s_json>",
+    "timing_semantics": "No new market timing semantics introduced; categorical mapping is diagnostic only.",
+    "expected_fingerprints": {
+      "acceptance_clock_router_error": 139,
+      "clock_topology_router_error": 61,
+      "best_prior_live_error": 304,
+      "postqual_signal_gap_error": 338
+    },
+    "selected_interpretation": "MATERIAL_CHALLENGER_ONLY_DO_NOT_UNFREEZE_FAILURE_CLOCK"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — non-promoting provenance diagnostic",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Current frozen state machine unchanged.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "Frozen.",
+    "ownership_scheduler_spec": "Challenger ownership unresolved pending 09T causal replay.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01.",
+    "trade_count_parity_spec": "Blocked until causal replay and full R032 specialist parity.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH05_COMPLETED_BAR_BOUNDARY_INVALIDATION_CHECKPOINT_09R",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A141:H154"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": false,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH05_CONDITIONAL_FAILURE_CLOCK_CHALLENGER_REPLAY_NON_PROMOTING",
+  "github_commits": [
+    "20689a8b985e1b30f76f46a1c24a03447c877e95",
+    "ab05aea2b5a53a9d40e83f802fa6a1a340a3d469",
+    "860410166f3c5b8b57049a15f8b7e20a3f9ecef3"
+  ]
+}
