@@ -1,0 +1,86 @@
+{
+  "schema": "delta-r037-dh05-short-probe-ownership-provenance-promotion-decision-10b-v1",
+  "status": "COMPLETE_PROVENANCE_PROMOTION_DECISION",
+  "unit": "R037_DH05_SHORT_PROBE_OWNERSHIP_PROVENANCE_PROMOTION_DECISION",
+  "parent": "R037_DH05_SHORT_PROBE_OWNERSHIP_ANTI_OVERFIT_VALIDATION_CHECKPOINT_10A",
+  "producer_path": "research/delta/experiments/delta_r037_dh05_short_probe_ownership_provenance_promotion_decision.py",
+  "producer_commit": "cb9a749bff6487c5c61a09a9dbfe6b4246df1769",
+  "raw_ticks_accessed": false,
+  "numeric_vector_retune": false,
+  "promotion_criteria": {
+    "pre_09y_exact_independent_rule_provenance": false,
+    "09z_causal_stage_a_gate": true,
+    "10a_independent_holdout_robustness": true,
+    "no_prior_causal_release_contradiction": false
+  },
+  "evidence": {
+    "r003_single_state_chain_present": true,
+    "r003_accepted_break_routed_away": true,
+    "r006_conditional_specialist_status_present": true,
+    "r006_exact_relative_duration_router_present": false,
+    "09h_decision": "REJECT_FULL_FAILURE_CANDIDATE_DECOUPLING_TEST_LATER_RELEASE_AT_REENTRY_OR_RECLAIM",
+    "09i_decision": "REJECT_REENTRY_AND_RECLAIM_RELEASE_POINTS_KEEP_SERIAL_GENERATOR_OWNERSHIP",
+    "09y_rule": "max_probe_age_s < acceptance_tf_seconds -> FAILURE_CANDIDATE release; otherwise SERIAL_POST_QUAL",
+    "09y_discovery_same_stage_a": true,
+    "09z_funnel_error_improvement": 196,
+    "09z_funnel_error_improvement_pct": 20.0408997955,
+    "10a_all_three_surfaces_no_worse_net": true,
+    "10a_effect_size": "TINY",
+    "dh05_whitepaper": {
+      "state_chain": "IDLE -> PROBE -> {BREAK_ACCEPTED -> hand off/not DH-05} OR {FAILURE_CANDIDATE -> REENTRY -> RECLAIM_CONFIRMED -> FAILED_BREAK_CONFIRMED -> REVERSAL_REBREAK -> ENTRY_ELIGIBLE}",
+      "probe_age_text": "ProbeAge = elapsed time since first cross.",
+      "expired_probe_text": "Expired probes go to EXPIRED, not automatically to reversal.",
+      "exact_relative_duration_release_rule_present": false
+    }
+  },
+  "decision": {
+    "promote_as_historical_dh05_semantics": false,
+    "retain_as_robust_non_promoting_challenger": true,
+    "close_same_sample_ownership_recut_family": true,
+    "reason": "OOS robustness survives, but no pre-09Y source independently encodes the exact relative-duration FAILURE_CANDIDATE release router; earlier causal release tests reject universal release interpretations. Robustness cannot establish missing historical helper identity.",
+    "largest_remaining_09z_stage_error": [
+      "probe",
+      449
+    ],
+    "remaining_09z_stage_errors_ranked": [
+      [
+        "probe",
+        449
+      ],
+      [
+        "reversal",
+        62
+      ],
+      [
+        "signal",
+        62
+      ],
+      [
+        "failure",
+        56
+      ],
+      [
+        "qualified",
+        49
+      ],
+      [
+        "reentry",
+        37
+      ],
+      [
+        "reclaim",
+        36
+      ],
+      [
+        "accepted",
+        31
+      ]
+    ],
+    "next": "R037_DH05_PROBE_COUNT_RESIDUAL_PROVENANCE_AND_BOUNDARY_LIFECYCLE_RECONCILIATION"
+  },
+  "parity_complete": false,
+  "integrated_r037_sorb_started": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "result_sha256": "5c34136aedca8fcfac0d62cda378a3b761b72c1abcfc33e90463ec219c13143b"
+}
