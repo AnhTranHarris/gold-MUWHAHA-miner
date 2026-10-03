@@ -1,0 +1,171 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION_CHECKPOINT_12C",
+  "status": "VERIFIED_COMPLETE_PROVENANCE_LIMITATION_FREEZE",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DH02_S08_CONTEXT_PLACEMENT_CHECKPOINT_12B",
+  "hypothesis": "Surviving DH01/DH02 provenance preserves a causal parent-context requirement at S08 entry eligibility but does not preserve the exact historical aggregation/veto algorithm; absent independent provenance, same-sample context recuts must stop.",
+  "falsification_condition": "Reopen only if an independent surviving artifact encodes the exact historical S08 parent-direction aggregation/veto algorithm. Stage-A fit alone is insufficient.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "historical DH02-S08 Stage-A standalone fixture",
+    "reference_count": 75,
+    "minimum_count": 75,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Provenance decision only; exact parity not claimed. Preserve R032 incremental S08 ownership fingerprint of 71 for later integrated parity."
+  },
+  "primary_metrics": {
+    "entry_quality": "Provenance close only; 12B context placements all retain 37 raw-positive winners vs historical 42.",
+    "hold_persistence": "unchanged",
+    "economics": "No new market replay; 12B best source-compatible surrogate remains non-promoting.",
+    "gross_loss_drawdown": "No optimization in 12C.",
+    "activity": "Preserve historical standalone 75-trade target and R032 incremental ownership fingerprint 71."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dh02_s08_parent_direction_provenance_decision.py",
+      "commit": "4b8b05f96c4cc5e1b7e982154645c4f978dfa72b",
+      "blob_sha": "fc11affc8f4ee426e655baf138f89b40f7753128",
+      "file_sha256": "13deee00916f9db3fd79e48c928f1edae88805bfcb55ecdf2b424f5031ea64f3"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "note": "Standard crash-safe runner available; official provenance replay used a 30-second OS timeout with unbuffered Python and faulthandler."
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_vector_retuning": false,
+      "frozen_general_parent_context_semantic": "DH02-S08 entry requires causally valid DH01 parent context at rebreak/entry eligibility.",
+      "exact_historical_parent_algorithm_preserved": false,
+      "source_compatible_surrogate": "REBREAK_ONLY_RAW_PARENT_DIRECTION_CONTINUOUS_DWELL",
+      "promote_surrogate_as_historical_truth": false,
+      "s08_stream_disposition": "PROVENANCE_LIMITED_SOURCE_COMPATIBLE_REBREAK_CONTEXT_NON_PROMOTING",
+      "preserve_r032_incremental_s08_ownership_fingerprint": 71
+    },
+    "feature_order": [
+      "source provenance gate"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "12A/12B fingerprints referenced; no raw market replay in 12C"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "provenance decision only"
+    },
+    "runtime_dependencies": [
+      "Python 3.11"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 30,
+      "elapsed_seconds": 0.66,
+      "peak_rss_kb": 92720,
+      "faulthandler": true,
+      "python_unbuffered": true,
+      "producer_atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_preexecution_verification": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "12C parent-direction provenance evidence",
+      "path": "research/delta/reference/DELTA_R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_EVIDENCE_12C.json",
+      "commit": "b430849965b4f4f1cf04bd68bba970c49aff9ca9",
+      "blob_sha": "63448cf3939f5c90ba0e017bfb251b933b179be5",
+      "file_sha256": "6aea5378d4231f5f28b9d580366d219a41ee5a303c82fb24cf6a4a149e17a30c"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION_CHECKPOINT_12C.json",
+      "commit": "a37048757b001da14ba857626e2c60781292abec",
+      "blob_sha": "ebb439ad26b3682f16ff49fc3795984c8e798860",
+      "official_result_sha256": "0c2147239902c16a35999d31c3fb4e883db24ff29c89738748c3f720ac584595"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION_CHECKPOINT_12C.md",
+      "commit": "8556c0df8aaf93ed769c7e79802a81d27a02dfe8",
+      "blob_sha": "3bbd4a6d031e4ec51d019b8b5b9ecebae1382fbc"
+    }
+  ],
+  "qa": [
+    "12B durable cursor and successful rebuild-gate CI verified before 12C.",
+    "12C evidence and producer committed before official execution.",
+    "Producer Git blob and evidence Git blob exactly verified locally before replay.",
+    "No raw ticks accessed; no numeric vector retune.",
+    "DH02 white paper preserves parent context at entry eligibility; exact aggregation/veto algorithm is not preserved.",
+    "All 12B bounded context placements retain 37 raw-positive winners vs historical 42.",
+    "Further same-sample parent-context recuts closed to prevent retrospective fit.",
+    "Source-compatible REBREAK_ONLY surrogate retained as non-promoting/not historical truth.",
+    "R032 incremental S08 ownership fingerprint 71 preserved for later integrated parity.",
+    "Workbook tab 75 A391:H399 written and read back.",
+    "August sealed; SORB blocked; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dh02_s08_parent_direction_provenance_decision.py",
+    "command": "timeout 30s env PYTHONFAULTHANDLER=1 PYTHONUNBUFFERED=1 python delta_r037_dh02_s08_parent_direction_provenance_decision.py --evidence <12C evidence> --output <12C result>",
+    "timing_semantics": "provenance-only deterministic decision; no market chronology accessed",
+    "expected_fingerprints": {
+      "exact_parent_algorithm_missing": true,
+      "all_12b_context_placements_winners": 37,
+      "historical_winner_target": 42,
+      "run_more_same_sample_parent_context_recuts": false,
+      "preserve_r032_incremental_s08_ownership_fingerprint": 71
+    },
+    "selected_interpretation": "PROVENANCE_LIMITED_S08_STREAM_CLOSE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — R032 specialist parity incomplete",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA semantics",
+    "ownership_scheduler_spec": "not ready",
+    "session_dst_spec": "frozen DELTA semantics",
+    "risk_spec": "fixed 0.01 research semantics",
+    "trade_count_parity_spec": "blocked pending DH03-S06 specialist reconstruction",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DH02_S08_CONTEXT_PLACEMENT_CHECKPOINT_12B",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A391:H399"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_DH03_S06_CLEANROOM_PARITY_RECONSTRUCTION",
+  "github_commits": [
+    "b430849965b4f4f1cf04bd68bba970c49aff9ca9",
+    "4b8b05f96c4cc5e1b7e982154645c4f978dfa72b",
+    "a37048757b001da14ba857626e2c60781292abec",
+    "8556c0df8aaf93ed769c7e79802a81d27a02dfe8"
+  ]
+}
