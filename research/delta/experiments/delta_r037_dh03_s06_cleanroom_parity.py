@@ -25,10 +25,10 @@ def main():
     b5=base.bars(t,mid,5000);b15=base.bars(t,mid,15000);b30=base.bars(t,mid,30000)
     m5=base.bars(t,mid,300000);m15=base.bars(t,mid,900000);m30=base.bars(t,mid,1800000)
     e5=base.signed_eff(b5,4);e15=base.signed_eff(b15,4);e30=base.signed_eff(b30,4);a5=base.atr14(m5)
-    pe,ps,pd,li,si=structure.parent_series(m15,m30);phi,plo,pht,plt=structure.latest_fast_pivots(b15)
+    pe,ps,pdir,li,si=structure.parent_series(m15,m30);phi,plo,pht,plt=structure.latest_fast_pivots(b15)
     profiles={}
     for k,name in enumerate(PROFILES):
-        st,ss,se,c=engine.detect(t,mid,b5["end_ms"],b5["close"],e5,b15["end_ms"],b15["high"],b15["low"],b15["close"],e15,b30["end_ms"],e30,m5["end_ms"],a5,pe,ps,pd,li,si,phi,plo,pht,plt,k)
+        st,ss,se,c=engine.detect(t,mid,b5["end_ms"],b5["close"],e5,b15["end_ms"],b15["high"],b15["low"],b15["close"],e15,b30["end_ms"],e30,m5["end_ms"],a5,pe,ps,pdir,li,si,phi,plo,pht,plt,k)
         x=base.execute_r9_lifecycle(t,ask,bid,st,ss)
         act={"signals":int(len(st)),"signal_sha256":base.signal_sha(st,ss,se),"pullbacks":int(c[0]),"exhaustion":int(c[1]),"reclaim":int(c[2]),"reacceleration_signal":int(c[3]),"parent_invalid":int(c[4]),"structural_invalid":int(c[5]),"expired":int(c[6]),"depth_ready_observations":int(c[7]),"countereff_ready_observations":int(c[8]),"no_new_extreme_ready_observations":int(c[9]),"pivot_unavailable_observations":int(c[10]),"trades":int(x[0]),"raw_positive_wins":int(x[1]),"official_wins":int(x[2]),"gross_profit":float(x[3]),"gross_loss":float(x[4]),"net_profit":float(x[5]),"max_balance_drawdown":float(x[6])}
         er={q:abs(act[q]-TARGET[q]) for q in TARGET}
