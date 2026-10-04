@@ -11,18 +11,18 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B",
+    "last_verified_durable_unit": "R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C",
     "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
     "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B_MANIFEST.json",
-    "current_state_commit": "270e21bbdd6799caabde7d68e3f8b9bba64384e2",
-    "current_state_ci_run": 37175189616,
-    "current_state_ci_conclusion": "success"
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C_MANIFEST.json",
+    "current_state_commit": null,
+    "current_state_ci_run": null,
+    "current_state_ci_conclusion": "PENDING"
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
+    "status": "COMPLETE",
+    "phase_rank": 7,
     "parent_durable_unit": "R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B",
     "committed_artifacts": [
       {
@@ -30,9 +30,19 @@
       },
       {
         "path": "research/delta/experiments/delta_r037_rsi2_stage_a.py"
+      },
+      {
+        "path": "research/delta/reference/DELTA_R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C.json",
+        "raw_sha256": "53785e62d6364dca84201404c573db75ec795c58bfa8d7a1b4b27ace4c653dc5"
+      },
+      {
+        "path": "research/delta/research/DELTA_R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C.md"
+      },
+      {
+        "path": "research/delta/artifacts/DELTA_R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C_MANIFEST.json"
       }
     ],
-    "next_action": "Verify the committed RSI2 17C producer bytes and run Stage-A once on canonical January P75; persist result before interpretation.",
+    "next_action": "Harvest next structurally independent causal transition-confirmed entry source; preregister before compute.",
     "completed_months": [],
     "next_month": null
   },

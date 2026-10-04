@@ -1,33 +1,35 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "INFLIGHT",
+  "status": "COMPLETE",
   "branch": "delta",
   "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
   "parent_durable_unit": "R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "phase": "COMPLETE",
+  "phase_rank": 7,
   "prereg": {
     "path": "research/delta/reference/DELTA_R037_RSI2_SOURCE_HARVEST_PREREG_17C.json"
   },
   "producer": {
     "path": "research/delta/experiments/delta_r037_rsi2_stage_a.py"
   },
-  "result": null,
-  "report": null,
-  "manifest": null,
+  "result": {
+    "path": "research/delta/reference/DELTA_R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C.json",
+    "raw_sha256": "53785e62d6364dca84201404c573db75ec795c58bfa8d7a1b4b27ace4c653dc5"
+  },
+  "report": {
+    "path": "research/delta/research/DELTA_R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C.md"
+  },
+  "manifest": {
+    "path": "research/delta/artifacts/DELTA_R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C_MANIFEST.json"
+  },
   "progress": {
     "family": "R037-RSI2-v1",
-    "configs": [
-      "R037-RSI2-C01_M1_CLASSIC_TREND200",
-      "R037-RSI2-C02_M1_PULLBACK3_TREND200",
-      "R037-RSI2-C03_M5_CLASSIC_TREND200",
-      "R037-RSI2-C04_M5_PULLBACK3_TREND200"
-    ],
-    "status": "PREREG_AND_PRODUCER_FROZEN_OFFICIAL_COMPUTE_NEXT"
+    "status": "COMPLETE_NO_SCREEN_SURVIVOR_FAMILY_RETIRED",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Verify committed RSI2 17C producer and run Stage-A once. If result exists, do not rerun.",
+    "resume_first_action": "Do not rerun RSI2 17C. Start fresh source harvest for a causal transition-confirmed independent entry family.",
     "idempotency_rule": "Prereg and producer immutable before compute; result create-only."
   },
   "last_verified_ci": {
@@ -40,8 +42,8 @@
   "mql5_authorized": false,
   "last_completed": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "checkpoint": "R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B",
+    "checkpoint": "R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C",
     "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "manifest": "research/delta/artifacts/DELTA_R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B_MANIFEST.json"
+    "manifest": "research/delta/artifacts/DELTA_R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C_MANIFEST.json"
   }
 }
