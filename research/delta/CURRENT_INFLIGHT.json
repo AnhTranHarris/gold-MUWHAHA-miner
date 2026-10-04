@@ -4,17 +4,17 @@
   "branch": "delta",
   "unit": "R037_SWEEP_RECLAIM_HOLD_RETEST_STAGE_A_SCREEN",
   "parent_durable_unit": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
-  "phase": "PREREGISTERED",
-  "phase_rank": 1,
+  "phase": "PRODUCER_VERIFIED",
+  "phase_rank": 3,
   "progress": {
     "status": "ACTIVE",
     "last_completed": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
     "current_candidate": "R037-SRHT-v1",
-    "next": "Build and commit exact 17AY producer; byte-verify; run official Stage-A compute only after source is durable."
+    "next": "Run official BOSLS 17AY Stage-A compute with exact producer blob 82ef4ba1a8e270d48a4eed515167bd41f07ac5f8 under 120-second timeout."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "17AY prereg is durable at commit 7b1ad1caf90a72cd5f9593d1e18c57250d7b4202. If producer absent, build/commit producer only.",
+    "resume_first_action": "BOSLS 17AY producer is byte-verified: commit 79d7bab327d1d032072df36806aa4c02793db10f, blob 82ef4ba1a8e270d48a4eed515167bd41f07ac5f8, local SHA-256 ca4366126dabca257bd9f5d7f82688c0d74d9283e7a4968c6f5fd8250428fc21. If result absent, run official compute only.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
