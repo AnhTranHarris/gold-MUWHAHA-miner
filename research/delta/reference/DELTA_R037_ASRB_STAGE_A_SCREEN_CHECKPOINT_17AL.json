@@ -1,0 +1,92 @@
+{
+  "schema": "delta-r037-asrb-stage-a-17al-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_ASIAN_SESSION_RANGE_BREAKOUT_STAGE_A_SCREEN",
+  "family": "R037-ASRB-v1",
+  "prereg_commit": "21d85a854b0c6b6123ef05f980ea97d978fe88da",
+  "producer_commit": "529a62390d66bd22f373bc8a18270f7da4b991fa",
+  "producer_blob_sha": "9f4d909f929e59a597585b9611440e88c215a781",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "configs": {
+    "C01_PERSIST": {
+      "stage_counts": {
+        "days": 11,
+        "breakouts": 6,
+        "confirmations": 5
+      },
+      "metrics": {
+        "proposals": 5,
+        "eligible": 5,
+        "trades": 5,
+        "distinct_days": 5,
+        "long": 4,
+        "short": 1,
+        "official_wins": 1,
+        "gross_profit": 0.08,
+        "gross_loss": -2.45,
+        "direct_net_usd": -2.37,
+        "exit_reasons": {
+          "STOP": 5,
+          "MAX_HOLD": 0,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_4": true,
+        "minimum_distinct_days_3": true,
+        "direct_net_min_minus_1": false,
+        "prescreen_pass": false,
+        "strong_pass": false
+      }
+    },
+    "C02_RETEST": {
+      "stage_counts": {
+        "days": 11,
+        "breakouts": 15,
+        "confirmations": 4
+      },
+      "metrics": {
+        "proposals": 4,
+        "eligible": 4,
+        "trades": 4,
+        "distinct_days": 4,
+        "long": 3,
+        "short": 1,
+        "official_wins": 4,
+        "gross_profit": 0.97,
+        "gross_loss": -0.04,
+        "direct_net_usd": 0.93,
+        "exit_reasons": {
+          "STOP": 4,
+          "MAX_HOLD": 0,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_4": true,
+        "minimum_distinct_days_3": true,
+        "direct_net_min_minus_1": true,
+        "prescreen_pass": true,
+        "strong_pass": true
+      }
+    }
+  },
+  "ranking": [
+    "C02_RETEST",
+    "C01_PERSIST"
+  ],
+  "finding": {
+    "leading_config": "C02_RETEST",
+    "strong_survivors": [
+      "C02_RETEST"
+    ],
+    "decision": "ADVANCE_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+    "next": "R037_ASRB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION"
+  },
+  "official_result_sha256": "3c143c5212566771fb0d2fd16cf08061cb128648348342d0bcc1b5ad702abcff",
+  "mql5_authorized": false
+}
