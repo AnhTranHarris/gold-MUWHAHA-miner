@@ -4,7 +4,7 @@
   "branch": "delta",
   "created_utc": "2026-10-01",
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
-  "last_verified_durable_unit": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_CHECKPOINT_17X",
+  "last_verified_durable_unit": "R037_ASIAN_RANGE_LONDON_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Y",
   "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
   "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
   "august_2026": "SEALED",
@@ -616,7 +616,7 @@
       "google_doc_url": "https://docs.google.com/document/d/18W8y8hHqcK84rkSW66tRWIcT1R5YBxJhitsziRRNLEI/edit",
       "google_doc_revision": "ANLCKQk8pRN2l7_NJZcQEj3kpQ5ptP2KEKPFiZqsz8PmLbCqZ_Qm2wcUoudBg3feBRKxsAGr5oHg5AP7v_GIhZKOwPcSYcNjXs4P0R4EtrM"
     },
-    "current_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PLSR_RECLAIM_QUALITY_CHECKPOINT_17X_MANIFEST.json",
+    "current_rebuild_manifest": "research/delta/artifacts/DELTA_R037_ASIAN_RANGE_LONDON_BREAKOUT_CHECKPOINT_17Y_MANIFEST.json",
     "verified_gate_run": 37149241116,
     "verified_gate_conclusion": "SUCCESS",
     "final_pack_revision_sync_commit": "5b21c2d06bbf4d98c10b3ee5bafeb0ca2c18a2fe",
@@ -660,7 +660,7 @@
   },
   "next_action": "Use DELTA_004 as the active parent. When the owner restates the first Entry + Initial-Hold research question, perform a fresh community scan, generate independent reconstructible hypotheses, use the GOV-014 spreadsheet-first quant harvesting loop to prioritize adjustments with >=10pp incremental scoped SYNTH-gap closure and seek >=30% scoped REAL-to-SYNTH gap closure before expensive replay, then preregister and test selected packages in the bounded Dukascopy tick-level cycle. Keep DELTA_005A-005M audit-only, August sealed, and MQL5 unauthorized.",
   "mql5_authorized": false,
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_PLSR_RECLAIM_QUALITY_CHECKPOINT_17X_MANIFEST.json",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_ASIAN_RANGE_LONDON_BREAKOUT_CHECKPOINT_17Y_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
   "first_incomplete_manifest_path": null,
   "first_incomplete_preregistration_path": null,
@@ -5441,6 +5441,24 @@
         "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
         "august_2026": "SEALED",
         "mql5_authorized": false
+      },
+      "asian_range_london_breakout_checkpoint_17y": {
+        "status": "COMPLETE_NO_SURVIVOR_SUPPLY_FAIL_POSITIVE_CLOSE_CONFIRMATION_CLUE",
+        "result_path": "research/delta/reference/DELTA_R037_ASIAN_RANGE_LONDON_BREAKOUT_CHECKPOINT_17Y.json",
+        "result_commit": "e36f3c454ac335a6599c01785c8069ca3e0b9848",
+        "result_sha256": "faacf626ddcc9640893ebd746d7fa6d5527377984b8d78e5657b1513ac5f9fc0",
+        "manifest_path": "research/delta/artifacts/DELTA_R037_ASIAN_RANGE_LONDON_BREAKOUT_CHECKPOINT_17Y_MANIFEST.json",
+        "manifest_commit": "7108a5dd602de34d7f3062815877169e2eb6304e",
+        "leader": {
+          "config": "C03_FIRST_COMPLETED_S15_CLOSE",
+          "trades": 6,
+          "official_wins": 4,
+          "direct_net_usd": 0.27
+        },
+        "decision": "RETIRE_FAMILY_NO_RETUNE_KEEP_CLOSE_CONFIRMATION_AS_FORENSIC_CLUE",
+        "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+        "august_2026": "SEALED",
+        "mql5_authorized": false
       }
     }
   },
@@ -5539,9 +5557,9 @@
   "timeout_recovery": {
     "status": "ENABLED",
     "pointer_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_RECOVERY_POINTER.json",
-    "durable_unit": "R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D",
+    "durable_unit": "R037_ASIAN_RANGE_LONDON_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Y",
     "in_flight_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "recovery_rule": "Read CURRENT_STATE then CURRENT_INFLIGHT and timeout pointer. Never rerun STX 17D solely because message delivery or runner receipt timed out; the atomic result hash was independently reproduced.",
+    "recovery_rule": "Read CURRENT_STATE, CURRENT_INFLIGHT, and timeout pointer. 17Y is durable; do not rerun it solely because message delivery timed out. Resume only the next unique independent-source preregistration.",
     "message_delivery_timeout_is_compute_failure": false,
     "august_2026": "SEALED",
     "mql5_authorized": false
