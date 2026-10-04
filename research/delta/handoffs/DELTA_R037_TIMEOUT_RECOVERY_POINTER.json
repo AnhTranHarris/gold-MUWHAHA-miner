@@ -10,17 +10,16 @@
     "active rebuild manifest"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_OSSMR_STAGE_A_SCREEN_CHECKPOINT_17AU",
+    "last_verified_durable_unit": "R037_QRBM_STAGE_A_SCREEN_CHECKPOINT_17AV",
     "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
     "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_OSSMR_STAGE_A_SCREEN_CHECKPOINT_17AU_MANIFEST.json"
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_QRBM_STAGE_A_SCREEN_CHECKPOINT_17AV_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_QUOTE_REVISION_BURST_MOMENTUM_STAGE_A_SCREEN",
-    "family": "R037-QRBM-v1",
-    "status": "PRODUCER_COMMITTED_COMPUTE_NEXT",
-    "phase_rank": 2,
-    "parent_durable_unit": "R037_OSSMR_STAGE_A_SCREEN_CHECKPOINT_17AU",
+    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "status": "IDLE",
+    "phase_rank": 0,
+    "parent_durable_unit": "R037_QRBM_STAGE_A_SCREEN_CHECKPOINT_17AV",
     "committed_artifacts": [
       {
         "path": "research/delta/reference/DELTA_R037_QRBM_STAGE_A_PREREG_17AV.json",
@@ -29,9 +28,21 @@
       {
         "path": "research/delta/experiments/delta_r037_qrbm_stage_a_17av.py",
         "commit": "7d013226f1d908f3852ac4cd2827964c67147f52"
+      },
+      {
+        "path": "research/delta/reference/DELTA_R037_QRBM_STAGE_A_CHECKPOINT_17AV.json",
+        "commit": "af63264bb3a5eca6c4c758750d05e1e70ab24b05"
+      },
+      {
+        "path": "research/delta/research/DELTA_R037_QRBM_STAGE_A_CHECKPOINT_17AV.md",
+        "commit": "e1e897935cfb689d0ae7bbd8bacdfd05cc74b729"
+      },
+      {
+        "path": "research/delta/artifacts/DELTA_R037_QRBM_STAGE_A_SCREEN_CHECKPOINT_17AV_MANIFEST.json",
+        "commit": "0f92be61246578af000155c778f81d7464f63e1e"
       }
     ],
-    "next_action": "Run bounded QRBM Stage-A compute; do not recreate prereg or producer.",
+    "next_action": "Harvest next independent larger-displacement entry-source family.",
     "completed_months": [],
     "next_month": null
   },
