@@ -1,0 +1,160 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_STRUCTURE_ANCHORED_VWAP_FAST_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BU_17BV",
+  "status": "VERIFIED_FAST_CAUSAL_PRESCREEN_NO_SURVIVOR",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_AVPBR_SUPPLY_CALIBRATED_STAGE_A_SCREEN_CHECKPOINT_17BR_17BT",
+  "hypothesis": "Fast structure-anchored VWAP retests after a committed away phase can create executable 30-second XAUUSD persistence.",
+  "falsification_condition": "No unchanged source-default lane satisfies >=20 trades, >=5 days and nonnegative direct net.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Two source-default Fast SAVWAP lanes",
+    "reference_count": 2,
+    "minimum_count": 2,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Both lanes executed unchanged."
+  },
+  "primary_metrics": {
+    "17BU": "178 trades / 12 days / 78 wins / -$39.04",
+    "17BV": "36 trades / 10 days / 20 wins / -$4.66"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_savwap_fast_retest_17bu_17bv.py",
+      "commit": "24895383407f1dadc01c580bb556440b319e90c9",
+      "blob_sha": "d36d59397d89cdc845fb4584de92aec4bead52f2",
+      "file_sha256": "715ca601aed36fdb2dad4a2c7258426f88084073691f29dbdac287186759263d"
+    }
+  ],
+  "helpers": [],
+  "models": [],
+  "config": {
+    "parameters": {
+      "fast_lookback": 30,
+      "price_source": "hl2",
+      "weighting": "cumulative",
+      "volume_clamp_multiple": 4,
+      "volume_median_lookback": 50,
+      "away_bars": 5,
+      "touch_tolerance_sigma": 0.25,
+      "zero_sigma_atr_fallback": 0.1,
+      "max_leg_bars": 4000
+    },
+    "feature_order": [
+      "Fast structural extreme anchor",
+      "cumulative hl2 anchored VWAP",
+      "weighted sigma",
+      "five-bar away commitment",
+      "0.25-sigma retest",
+      "P75 execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "fixed source-default Stage-A prescreen"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": true,
+      "exact_git_blob_preexecution_verification": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "SAVWAP prereg",
+      "path": "research/delta/reference/DELTA_R037_SAVWAP_FAST_RETEST_PREREG_17BU_17BV.json",
+      "commit": "79f607d93c476c3df815a1d13b19aa3d3d065de8"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "Fast leg anchored VWAP/sigma"
+    ]
+  },
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_SAVWAP_FAST_RETEST_STAGE_A_CHECKPOINT_17BU_17BV.json",
+      "result_sha256": "dcb0d85890a4b73d7edc3196d13fc2ff4f1c989bc9e49676f847a8b1c3a92d92"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_SAVWAP_FAST_RETEST_STAGE_A_CHECKPOINT_17BU_17BV.md"
+    }
+  ],
+  "qa": [
+    "Source-published Fast defaults used where exposed.",
+    "Dukascopy tick count used transparently as bar-volume proxy.",
+    "Exact committed producer blob matched local bytes.",
+    "Canonical January hash and Stage-A tick count verified.",
+    "Both lanes passed supply but failed economics.",
+    "No rescue tuning.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_savwap_fast_retest_17bu_17bv.py",
+    "timing_semantics": "Completed-bar Fast extremes only; leg VWAP/sigma reset causally at anchors; retest requires five committed away bars before touch; first P75 tick after completed retest bar.",
+    "expected_fingerprints": {
+      "17BU": {
+        "trades": 178,
+        "wins": 78,
+        "net_usd": -39.04
+      },
+      "17BV": {
+        "trades": 36,
+        "wins": 20,
+        "net_usd": -4.66
+      }
+    },
+    "selected_interpretation": "ADEQUATE_RETEST_SUPPLY_BUT_NEGATIVE_30_SECOND_PERSISTENCE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — family retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "None.",
+    "execution_quote_side_spec": "Frozen P75.",
+    "ownership_scheduler_spec": "No integration.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01.",
+    "trade_count_parity_spec": "Not applicable.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "github_commits": [
+    "79f607d93c476c3df815a1d13b19aa3d3d065de8",
+    "24895383407f1dadc01c580bb556440b319e90c9"
+  ],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+}
