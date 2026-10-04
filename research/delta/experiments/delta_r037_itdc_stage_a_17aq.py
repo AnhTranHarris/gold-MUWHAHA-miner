@@ -2,11 +2,11 @@
 
 Public-source reconstruction:
 - MetaQuotes/MQL5 "Intrinsic Time: From the Directional-Change Scaling Laws to
-  the Alpha Engine" online directional-change operator.
+  the source article's online directional-change operator.
 - Fixed delta = 0.02%, the finest threshold in the article's verified
   0.02%-2% real-tick scaling-law grid.
 - C01 enters in the newly confirmed direction to test the overshoot premise.
-- C02 enters the opposite direction to test the Alpha Engine first-unit
+- C02 enters the opposite direction to test the source article's first-unit
   contrarian premise under DELTA's one-position lifecycle.
 
 No threshold sweep, cascade, rescue filters, August access, or MQL5 build.
