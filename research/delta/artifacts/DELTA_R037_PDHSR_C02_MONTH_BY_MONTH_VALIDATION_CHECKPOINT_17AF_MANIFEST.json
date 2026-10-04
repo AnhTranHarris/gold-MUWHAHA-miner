@@ -1,0 +1,204 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION_CHECKPOINT_17AF",
+  "status": "VERIFIED_MONTHLY_ROBUSTNESS_FAIL_CANDIDATE_RETIRED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17AE",
+  "hypothesis": "Frozen C02 prior-day sweep plus completed S5 reclaim remains robust across February-July without retuning.",
+  "falsification_condition": "Fewer than 24 total trades, fewer than 4 nonnegative months, or aggregate direct net below zero.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "17AF Feb-Jul C02 monthly validation",
+    "reference_count": 109,
+    "minimum_count": 24,
+    "minimum_retention_fraction": 0.22018348623853212,
+    "owner_numeric_floor_defined": true
+  },
+  "primary_metrics": {
+    "entry_quality": "44/109 official wins",
+    "hold_persistence": "30s frozen",
+    "economics": "-$30.47 aggregate direct net",
+    "gross_loss_drawdown": "gross loss -$43.15",
+    "activity": "109 trades across six months"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_pdhsr_c02_monthly_validation.py",
+      "commit": "9d258a9fcda5f79cf9f4895d0aa43313bde4a74b",
+      "blob_sha": "d5a754817e95819ba867726ec0ac55c19a3f1389",
+      "file_sha256": "612d7d851462099350cd8f2f373a1ec5cac9125228d385fe95d476422e32676c"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "candidate": "R037-PDHSR-C02_S5_CLOSE_RECLAIM",
+      "max_spread_points": 25,
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30,
+      "numeric_retuning": false,
+      "side_filter": false,
+      "session_filter": false,
+      "weekday_filter": false,
+      "posthoc_level_split": false
+    },
+    "feature_order": [
+      "previous-day high/low",
+      "first strict sweep",
+      "completed S5 reclaim",
+      "execution quote still reclaimed"
+    ],
+    "horizons_checkpoints": {
+      "validation_months": [
+        "2026-02",
+        "2026-03",
+        "2026-04",
+        "2026-05",
+        "2026-06",
+        "2026-07"
+      ]
+    },
+    "train_cal_eval_boundaries": {
+      "january_stage_a": "historical discovery only",
+      "later_january": "independent holdout passed",
+      "feb_jul": "monthly robustness validation"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_verified": "d5a754817e95819ba867726ec0ac55c19a3f1389",
+      "transport_timeout_recovery": "Atomic result completed after foreground transport timeout; recovered without rerun."
+    }
+  },
+  "inputs": [
+    {
+      "month": "2026-01",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    },
+    {
+      "month": "2026-02",
+      "sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d"
+    },
+    {
+      "month": "2026-03",
+      "sha256": "814ba35e72f219a58badd806ed5c0f30ef0fb4ffe56a48205d873706513bd177"
+    },
+    {
+      "month": "2026-04",
+      "sha256": "30375098f62aed6cabc32ec6b67c57c20baec9b6d9be1ce0a204e09806c1ec0f"
+    },
+    {
+      "month": "2026-05",
+      "sha256": "3a50e0f1eba3076154238290ec02842cf3744ab192e5c9a2acc1cc07367c6a0d"
+    },
+    {
+      "month": "2026-06",
+      "sha256": "34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2"
+    },
+    {
+      "month": "2026-07",
+      "sha256": "e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_PDHSR_C02_MONTHLY_VALIDATION_CHECKPOINT_17AF.json",
+      "commit": "809f99c8f70a03ee27f1ce912277f77cecc1e8e5",
+      "blob_sha": "6c97c00bb6ffd864d8376aab97aa90ebf5e696a7",
+      "official_raw_result_sha256": "c46262eb9e5d9ef7ea4ce1c0d48c4553230ee0834e215dca29df62ff968dea97"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_PDHSR_C02_MONTHLY_VALIDATION_CHECKPOINT_17AF.md",
+      "commit": "b4625cff0273195cfe791196e2c2a7f4349c0a5e",
+      "blob_sha": "faaf959f932ff07a309d6cd61e0b83d163393d1c"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "C02"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "qa": [
+    "All Jan-Jul canonical source SHA-256 identities verified.",
+    "Initial run failed closed before compute on a one-character July expected-SHA typo; no result was written.",
+    "Canonical July SHA was verified against DUKASCOPY_JAN_JUL_SOURCE_MANIFEST.json and source was corrected before official compute.",
+    "Local producer Git blob matched committed blob d5a754817e95819ba867726ec0ac55c19a3f1389.",
+    "Foreground transport timed out while compute continued; atomic result completed and was recovered without rerun.",
+    "109 trades / 44 official wins / -$30.47 aggregate direct net.",
+    "0 of 6 validation months nonnegative.",
+    "Preregistered robustness gate failed; C02 retired without retuning.",
+    "Workbook tab 70 A182:H193 readback PASS.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_pdhsr_c02_monthly_validation.py",
+    "command": "python research/delta/experiments/delta_r037_pdhsr_c02_monthly_validation.py --sources <Jan> <Feb> <Mar> <Apr> <May> <Jun> <Jul> --output <17AF>",
+    "timing_semantics": "ordered ticks; prior-month seed for first trading day; first strict PDH/PDL sweep; first completed S5 reclaim; one trade/day",
+    "expected_fingerprints": {
+      "aggregate_trades": 109,
+      "official_wins": 44,
+      "direct_net_usd": -30.47,
+      "nonnegative_months": 0
+    },
+    "selected_interpretation": "C02_S5_CLOSE_RECLAIM_RETIRED"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen",
+    "ownership_scheduler_spec": "one/day",
+    "session_dst_spec": "UTC-day levels",
+    "risk_spec": "frozen",
+    "trade_count_parity_spec": "candidate retired",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17AE",
+  "drive_artifacts": [
+    {
+      "name": "working workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "70 R037 Prereg",
+      "range": "A182:H193",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "04341c0531990e8f3685baf4066aaf85b3c1ac32",
+    "b16595e27fe896bb4391572c6a3534529040d9be",
+    "9d258a9fcda5f79cf9f4895d0aa43313bde4a74b",
+    "809f99c8f70a03ee27f1ce912277f77cecc1e8e5",
+    "b4625cff0273195cfe791196e2c2a7f4349c0a5e"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "note": "Canonical timeout-recovery alias for 17AF; scientific outputs remain the immutable MONTHLY_VALIDATION result/report paths."
+}
