@@ -5,14 +5,12 @@ on:
     branches: [delta]
     paths:
       - "CURRENT_STATE.json"
-      - "research/delta/**"
       - "Experts/GoldMuwahahaMiner_R9_*.mq5"
       - ".github/workflows/delta-rebuild-artifact-gate.yml"
   pull_request:
     branches: [delta]
     paths:
       - "CURRENT_STATE.json"
-      - "research/delta/**"
       - "Experts/GoldMuwahahaMiner_R9_*.mq5"
       - ".github/workflows/delta-rebuild-artifact-gate.yml"
   workflow_dispatch:
