@@ -11,32 +11,31 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_COMEX_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AC",
-    "current_phase": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_17AD_INFLIGHT",
-    "first_incomplete_unit": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_17AD",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_COMEX_15M_OPENING_RANGE_CHECKPOINT_17AC_MANIFEST.json"
+    "last_verified_durable_unit": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_CHECKPOINT_17AD",
+    "current_phase": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION_NEXT",
+    "first_incomplete_unit": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PDH_PDL_SWEEP_RECLAIM_CHECKPOINT_17AD_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_17AD",
-    "status": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
-    "parent_durable_unit": "R037_COMEX_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AC",
+    "unit": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION",
+    "status": "IDLE",
+    "phase_rank": 0,
+    "parent_durable_unit": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_CHECKPOINT_17AD",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_PDH_PDL_SWEEP_RECLAIM_PREREG_17AD.json",
-        "commit": "e37857a09553454b4477a6bc00003288ce3fd775"
+        "path": "research/delta/reference/DELTA_R037_PDH_PDL_SWEEP_RECLAIM_CHECKPOINT_17AD.json",
+        "commit": "45e3347bd2b0bb59a4947a1885bd85ba32eb7e71"
       },
       {
-        "path": "research/delta/experiments/delta_r037_pdh_pdl_sweep_reclaim_17ad.py",
-        "commit": "1d286c88583b7c3208bd338d734749df439c2897",
-        "blob_sha": "4a30f52c33d86120940b7b6f6fa7cc7c908982fc"
+        "path": "research/delta/artifacts/DELTA_R037_PDH_PDL_SWEEP_RECLAIM_CHECKPOINT_17AD_MANIFEST.json",
+        "commit": "e9176c5257c50a90eceb12de49b73ab6399f4614"
       }
     ],
-    "next_action": "Run exact committed 17AD producer once; if result appears, resume only missing durability phases.",
+    "next_action": "Preregister frozen C02 later-January validation; 17AD is complete.",
     "completed_months": [
       "2026-01_STAGE_A"
     ],
-    "next_month": null
+    "next_month": "2026-01_LATER_HOLDOUT"
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
