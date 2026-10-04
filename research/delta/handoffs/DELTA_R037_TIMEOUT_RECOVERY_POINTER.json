@@ -16,33 +16,17 @@
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "IDLE",
-    "phase_rank": 0,
+    "unit": "R037_ORDER_FLOW_IMBALANCE_MOMENTUM_STAGE_A_SCREEN",
+    "status": "PREREGISTERED",
+    "phase_rank": 1,
     "parent_durable_unit": "R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_PBQ_STAGE_A_PREREG_17AR.json",
-        "commit": "50970048c0c6bcc448f9f95b8c02daaff26bd581"
-      },
-      {
-        "path": "research/delta/experiments/delta_r037_pbq_stage_a_17ar.py",
-        "commit": "924c3a12a1969e3f986558c4dd69855e99e6f453"
-      },
-      {
-        "path": "research/delta/reference/DELTA_R037_PBQ_STAGE_A_CHECKPOINT_17AR.json",
-        "commit": "486d9ecd51d4c5884d6af9b6387f30a9b5584ff3"
-      },
-      {
-        "path": "research/delta/research/DELTA_R037_PBQ_STAGE_A_CHECKPOINT_17AR.md",
-        "commit": "2e1daaa7e8afeb72d8f7f6856b331fa4512fe86e"
-      },
-      {
-        "path": "research/delta/artifacts/DELTA_R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR_MANIFEST.json",
-        "commit": "7b26f0f9c6abe07e81d54a9ccedc7a98dbe497e5"
+        "path": "research/delta/reference/DELTA_R037_OFM_STAGE_A_PREREG_17AS.json",
+        "commit": "b6eb77574ac32a151c371a4b4774b5946c3a300e"
       }
     ],
-    "next_action": "Preregister next independent entry-source family.",
+    "next_action": "Commit deterministic 17AS producer, verify exact Git blob, then run bounded Stage-A screen.",
     "completed_months": [],
     "next_month": null
   },
