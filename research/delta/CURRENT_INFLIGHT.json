@@ -4,22 +4,26 @@
   "branch": "delta",
   "unit": "R037_MICROTREND_PULLBACK_QUALITY_STAGE_A_SCREEN",
   "parent_durable_unit": "R037_ITDC_STAGE_A_SCREEN_CHECKPOINT_17AQ",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "phase": "RESULT_COMMITTED",
+  "phase_rank": 3,
   "progress": {
-    "status": "PRODUCER_COMMITTED",
+    "status": "RESULT_COMMITTED",
     "last_completed": "R037_ITDC_STAGE_A_SCREEN_CHECKPOINT_17AQ",
     "current_candidate": "R037-PBQ-v1",
     "prereg_path": "research/delta/reference/DELTA_R037_PBQ_STAGE_A_PREREG_17AR.json",
     "prereg_commit": "50970048c0c6bcc448f9f95b8c02daaff26bd581",
-    "next": "Verify exact Git blob, then run bounded Stage-A screen; persist result before any further research.",
+    "next": "Write report/workbook/manifest, then advance CURRENT_STATE to next independent source harvest.",
     "producer_path": "research/delta/experiments/delta_r037_pbq_stage_a_17ar.py",
     "producer_commit": "924c3a12a1969e3f986558c4dd69855e99e6f453",
-    "producer_blob_sha": "f6e86f2aab111599f03eae56830e5217c56f93e1"
+    "producer_blob_sha": "f6e86f2aab111599f03eae56830e5217c56f93e1",
+    "result_path": "research/delta/reference/DELTA_R037_PBQ_STAGE_A_CHECKPOINT_17AR.json",
+    "result_commit": "486d9ecd51d4c5884d6af9b6387f30a9b5584ff3",
+    "result_sha256": "843947f7fdd0040e9c761efa4035b621697d423de36b3d66db1ebb56a4734225",
+    "decision": "RETIRE_PBQ_STAGE_A_NO_SURVIVOR"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "17AR prereg + producer are durable; next action is bounded official Stage-A compute.",
+    "resume_first_action": "17AR compute + result are durable; do not rerun. Complete documentation/manifest/state closeout only.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
