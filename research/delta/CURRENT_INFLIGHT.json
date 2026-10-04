@@ -4,8 +4,8 @@
   "branch": "delta",
   "unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION",
   "parent_durable_unit": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "phase": "RESULT_COMMITTED",
+  "phase_rank": 3,
   "prereg": {
     "path": "research/delta/reference/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_EVIDENCE_15B.json",
     "blob_sha": "b28b55f7acfc9dcbfe4424cce8acd58e4d1bd90e"
@@ -15,12 +15,21 @@
     "commit": "a261b2c58a2c6d7039f5d522772cf5ec71ac8670",
     "blob_sha": "6d629239195866c7e194c9078f40eea7e024c183"
   },
-  "result": null,
+  "result": {
+    "path": "research/delta/reference/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B.json",
+    "commit": "a4828ee6484bc9cd631fdf9038ac16680d9cf366",
+    "local_raw_result_sha256": "334cc40a6a121acfc002bedeb4e7bf5401b92a14b1912cc3185719ca2b8488cb",
+    "deterministic_replay": true,
+    "independent_validation_pass": false,
+    "net_delta_usd": -5.25,
+    "trade_delta": 15,
+    "official_win_delta": 4
+  },
   "report": null,
   "manifest": null,
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Verify 15B producer/result artifacts. If no result exists, run the committed 15B producer only; do not rerun 15A.",
+    "resume_first_action": "Read CURRENT_STATE.json and CURRENT_INFLIGHT.json. 15B result is committed; do not rerun the holdout. Continue report/workbook/manifest durability, then retire C04 and harvest the next independent entry source.",
     "idempotency_rule": "Never rerun completed compute solely because chat delivery timed out."
   },
   "last_verified_ci": {
