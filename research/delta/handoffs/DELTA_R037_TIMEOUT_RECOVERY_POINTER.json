@@ -11,18 +11,18 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A",
+    "last_verified_durable_unit": "R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B",
     "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
     "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A_MANIFEST.json",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B_MANIFEST.json",
     "current_state_commit": null,
     "current_state_ci_run": null,
     "current_state_ci_conclusion": "PENDING"
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
+    "status": "COMPLETE",
+    "phase_rank": 7,
     "parent_durable_unit": "R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A",
     "committed_artifacts": [
       {
@@ -31,9 +31,19 @@
       {
         "path": "research/delta/experiments/delta_r037_dcb_stage_a.py",
         "sha256": "e1440f9d68e47cef3ee7820f85ef502e7eb3e9651fbdc00af51293c71b95d6da"
+      },
+      {
+        "path": "research/delta/reference/DELTA_R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B.json",
+        "raw_sha256": "31aed2ce69af15cfb7c7e77c1dce639d5e4ae40a05f038aac775ff6be80ceb11"
+      },
+      {
+        "path": "research/delta/research/DELTA_R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B.md"
+      },
+      {
+        "path": "research/delta/artifacts/DELTA_R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B_MANIFEST.json"
       }
     ],
-    "next_action": "Run the committed DCB 17B Stage-A producer once on canonical January P75; persist result before interpretation.",
+    "next_action": "Start fresh public/community scan for next structurally independent entry source; preregister the next family before compute.",
     "completed_months": [],
     "next_month": null
   },
