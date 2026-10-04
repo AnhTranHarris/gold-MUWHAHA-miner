@@ -1,0 +1,63 @@
+{
+  "schema": "delta-r037-london-opening-range-breakout-prereg-17z-v1",
+  "unit": "R037_LONDON_OPENING_RANGE_BREAKOUT_STAGE_A_SCREEN_17Z",
+  "checkpoint_target": "R037_LONDON_OPENING_RANGE_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Z",
+  "family": "R037-LORB-v1",
+  "status": "FROZEN_BEFORE_REPLAY",
+  "parent_durable_checkpoint": "R037_ASIAN_RANGE_LONDON_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Y",
+  "purpose": "Test a higher-density session-transition breakout family using the public London opening-range convention, preserving the 17Y completed-close clue without changing its failed supply gate.",
+  "source_basis": [
+    {
+      "source": "MQL5 Opening Range Breakouts MT5 session mapping",
+      "url": "https://www.mql5.com/en/market/product/138007/comments",
+      "logic": "Published session table defines London Opening Range as 07:00-08:00 GMT, preceding/corresponding to London session 08:00-17:00 GMT."
+    },
+    {
+      "source": "MQL5 Session Opening Range Breakout EA",
+      "url": "https://www.mql5.com/en/code/76153",
+      "logic": "Public CodeBase EA records the first N minutes around a chosen session open and opens one position on a confirmed close beyond the locked range."
+    },
+    {
+      "source": "TradingView London Breakout",
+      "url": "https://www.tradingview.com/script/4kYp5mtp-London-Breakout/",
+      "logic": "Open-source strategy locks a pre-session range then trades the first clean close beyond it during a defined London trade window."
+    }
+  ],
+  "frozen_common": {
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+    "range_window_utc": "07:00:00-08:00:00",
+    "breakout_window_utc": "08:00:00-10:00:00",
+    "range_price": "P75 Bid high/low formed only from ticks in completed 07:00-08:00 UTC interval",
+    "ownership": "one accepted source trade per UTC day maximum; first chronological side wins; no rearm",
+    "spread_gate": "<=25 P75 points at executable entry tick",
+    "lifecycle": "0.01 lot; $0.30 stop; +$0.10 trail activation; $0.03 trail distance; 30s max hold; $0.02 round-trip commission",
+    "breakout_buffer": "ZERO_BUFFER_CAUSAL_BASELINE"
+  },
+  "configs": {
+    "C01_FIRST_STRICT_TICK": "First P75 Bid tick strictly outside locked opening range.",
+    "C02_FIRST_COMPLETED_S5_CLOSE": "First completed causal S5 close outside range; execute first tick at/after edge if still outside.",
+    "C03_FIRST_COMPLETED_S15_CLOSE": "First completed causal S15 close outside range; execute first tick at/after edge if still outside."
+  },
+  "stage_a_gate": {
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "direct_net_min_usd": -2,
+    "strong_screen_requires_direct_net_nonnegative": true
+  },
+  "selection_rule": "Advance only a config passing all frozen supply/economic gates; prefer direct net, official wins, then activity. No rescue tuning.",
+  "forbidden": [
+    "range-duration sweep",
+    "breakout-window optimization",
+    "buffer sweep",
+    "weekday/side filters",
+    "EMA/ATR filters",
+    "exit tuning",
+    "August",
+    "MQL5"
+  ],
+  "next_if_strong_pass": "R037_LORB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_no_pass": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
