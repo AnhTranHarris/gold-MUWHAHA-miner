@@ -1,0 +1,66 @@
+{
+  "schema": "delta-r037-pdhsr-c02-independent-later-jan-checkpoint-17ae-v1",
+  "status": "COMPLETE_INDEPENDENT_VALIDATION_PASS_STRONG",
+  "unit": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION",
+  "checkpoint": "17AE",
+  "candidate": "R037-PDHSR-C02_S5_CLOSE_RECLAIM",
+  "parent_checkpoint": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_CHECKPOINT_17AD",
+  "prereg_commit": "e9a8ff5f08f136af9b4d9fb52e991610797a8f4e",
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_pdhsr_c02_independent_later_jan.py",
+    "commit": "32ab7407bfbe24a96a7741fe2214be8742d33ded",
+    "blob_sha": "e330f2cc994f3b9112a3a6ec4176e7af3afc7cce",
+    "file_sha256": "72e9593e593a1ac32a60c351ed2a40d8289ec0c774f50af32a3cbd7ff300b361"
+  },
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "warmup_start_utc": "2026-01-14T00:00:00Z",
+  "holdout_start_utc": "2026-01-18T12:00:00Z",
+  "holdout_end_exclusive_utc": "2026-02-01T00:00:00Z",
+  "loaded_ticks": 6076533,
+  "holdout_ticks": 4929353,
+  "metrics": {
+    "proposals": 8,
+    "eligible": 8,
+    "distinct_days": 8,
+    "long": 2,
+    "short": 6,
+    "trades": 8,
+    "official_wins": 7,
+    "raw_positive_wins": 7,
+    "gross_profit": 9.08,
+    "gross_loss": -0.73,
+    "direct_net_usd": 8.35,
+    "level_contribution": {
+      "PDH": {
+        "trades": 6,
+        "wins": 5,
+        "net": 0.58
+      },
+      "PDL": {
+        "trades": 2,
+        "wins": 2,
+        "net": 7.77
+      }
+    },
+    "exit_reasons": {
+      "STOP": 8,
+      "MAX_HOLD": 0,
+      "END": 0
+    }
+  },
+  "gate": {
+    "minimum_proposals_6": true,
+    "minimum_trades_5": true,
+    "minimum_distinct_days_4": true,
+    "direct_net_nonnegative": true,
+    "validation_pass": true
+  },
+  "raw_result_sha256": "393a2fc9e5bbdbe7c51fbffef28764c498ec3d4cef9d247c65d8c272d9ab4274",
+  "numeric_retuning": false,
+  "posthoc_level_split": false,
+  "august_accessed": false,
+  "decision": "FREEZE_C02_UNCHANGED_ADVANCE_MONTH_BY_MONTH_VALIDATION",
+  "next_unit": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION",
+  "mql5_authorized": false
+}
