@@ -1,20 +1,20 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "ACTIVE",
+  "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_ASIA_LONDON_RANGE_BREAKOUT_STAGE_A_SCREEN",
-  "parent_durable_unit": "R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ",
-  "phase": "PREREGISTERED",
-  "phase_rank": 1,
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "parent_durable_unit": "R037_ALRB_STAGE_A_SCREEN_CHECKPOINT_17BA",
+  "phase": "IDLE",
+  "phase_rank": 0,
   "progress": {
-    "status": "ACTIVE",
-    "last_completed": "R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ",
-    "current_candidate": "R037-ALRB-v1",
-    "next": "Build and commit exact 17BA producer; byte-verify; run official Stage-A compute only after source is durable."
+    "status": "IDLE",
+    "last_completed": "R037_ALRB_STAGE_A_SCREEN_CHECKPOINT_17BA",
+    "current_candidate": null,
+    "next": "Harvest next independent entry source with adequate event supply and demonstrable post-event asymmetry."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "ALRB 17BA prereg is durable at commit d6dda76b529da4c92114ffd2058cef210827888b. If producer absent, build/commit producer only.",
+    "resume_first_action": "ALRB 17BA is complete and retired for insufficient supply; do not rerun. Harvest next independent source.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
@@ -26,9 +26,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ",
-    "checkpoint": "R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ",
-    "current_state_next": "R037_ASIA_LONDON_RANGE_BREAKOUT_STAGE_A_SCREEN",
-    "manifest": "research/delta/artifacts/DELTA_R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ_MANIFEST.json"
+    "unit": "R037_ALRB_STAGE_A_SCREEN_CHECKPOINT_17BA",
+    "checkpoint": "R037_ALRB_STAGE_A_SCREEN_CHECKPOINT_17BA",
+    "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "manifest": "research/delta/artifacts/DELTA_R037_ALRB_STAGE_A_SCREEN_CHECKPOINT_17BA_MANIFEST.json"
   }
 }
