@@ -1,0 +1,177 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
+  "status": "VERIFIED_STAGE_A_FAIL_FAMILY_RETIRED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DCOS_STAGE_A_SCREEN_CHECKPOINT_17AW",
+  "hypothesis": "Statistically extreme completed M1 XAUUSD returns detected causally by the Lee-Mykland local bipower jump test exhibit enough immediate reversal to survive frozen P75 execution over 30 seconds.",
+  "falsification_condition": "The single preregistered M1 99% jump-fade profile fails supply/day or direct-net gate.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "R037-LMJF single preregistered Stage-A profile",
+    "reference_count": 1,
+    "minimum_count": 1,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "No K/significance/frequency/profile sweep."
+  },
+  "primary_metrics": {
+    "entry_quality": "58 statistically extreme M1 jumps; 58 executable trades; 21 official wins.",
+    "hold_persistence": "Frozen 30-second DELTA short-hold execution.",
+    "economics": "GP +$6.96; GL -$21.85; direct net -$15.47.",
+    "gross_loss_drawdown": "Gross loss -$21.85.",
+    "activity": "~4.14 jumps/day across 13 distinct Stage-A days."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_lmjf_stage_a_17ax.py",
+      "commit": "9ef4e75f841371e2b32ee98e6322e2c12b7c3b24",
+      "blob_sha": "ae777b4d6f4b7fa28dfcfed85634c0901848dd1e",
+      "file_sha256": "0a2acdb38a965836ab93e26c9780e1afa017a779e95f3aa331e24d5e4bde9e94"
+    }
+  ],
+  "helpers": [],
+  "models": [],
+  "config": {
+    "parameters": {
+      "bar_seconds": 60,
+      "K": 603,
+      "n_gumbel": 1440,
+      "beta_99": 4.6001,
+      "profile": "fade jump sign",
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "completed native M1 mid close",
+      "log return",
+      "prior local bipower variance",
+      "Lee-Mykland Gumbel rejection",
+      "fade jump sign"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "single-profile fixed Stage-A screen; no fitting"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "output_write": "NamedTemporaryFile + flush + fsync + os.replace",
+      "provenance_gate": "exact local Git blob matched committed producer before official compute"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "17AX preregistration",
+      "path": "research/delta/reference/DELTA_R037_LMJF_STAGE_A_PREREG_17AX.json",
+      "commit": "8acec24b7ccf3bbbf30f5733fe45ccefa3b73a83"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_LMJF_STAGE_A_CHECKPOINT_17AX.json",
+      "blob_sha": "4ed502eb6f60528d15bf9d4152b092affcb32bb3",
+      "official_raw_result_sha256": "243f27fc455a2da44329e4e4b769cc7b1e99f9e33bd3073ff77a78f0c85308d2"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_LMJF_STAGE_A_CHECKPOINT_17AX.md",
+      "blob_sha": "d884ecaacf7395b5e8aa9d040b59cb2f7e99fb8d"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "completed native M1 mid-close series",
+      "causal Lee-Mykland jump ledger",
+      "P75 executable quote surface"
+    ]
+  },
+  "qa": [
+    "Canonical January SHA and 4,205,709 Stage-A ticks verified.",
+    "Exact local producer Git blob matched committed blob ae777b4d6f4b7fa28dfcfed85634c0901848dd1e.",
+    "Python compile PASS.",
+    "Official replay completed under 120-second hard timeout with atomic result output.",
+    "Single preregistered M1 K=603 99% fade profile only; no rescue sweep.",
+    "Workbook tab 69 A121:H125 readback PASS.",
+    "C01 failed executable economics.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_lmjf_stage_a_17ax.py",
+    "command": "python research/delta/experiments/delta_r037_lmjf_stage_a_17ax.py --source <canonical_january_gzip> --output <checkpoint_17ax_json>",
+    "timing_semantics": "completed M1 jump detection; first P75 tick at/after right edge; one-position scheduler",
+    "expected_fingerprints": {
+      "C01_M1_LM99_JUMP_FADE": {
+        "signals": 58,
+        "trades": 58,
+        "wins": 21,
+        "gross_profit": 6.96,
+        "gross_loss": -21.85,
+        "direct_net_usd": -15.47
+      }
+    },
+    "selected_interpretation": "RARE_LARGE_M1_JUMPS_EXIST_BUT_IMMEDIATE_30S_FADE_DOES_NOT_SURVIVE_P75"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — family retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No fitted model.",
+    "execution_quote_side_spec": "DELTA frozen execution semantics unchanged.",
+    "ownership_scheduler_spec": "No integration or promotion.",
+    "session_dst_spec": "DELTA frozen semantics unchanged.",
+    "risk_spec": "Fixed 0.01 research semantics unchanged.",
+    "trade_count_parity_spec": "Not applicable; family retired.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DCOS_STAGE_A_SCREEN_CHECKPOINT_17AW",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A121:H125"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "8acec24b7ccf3bbbf30f5733fe45ccefa3b73a83",
+    "9ef4e75f841371e2b32ee98e6322e2c12b7c3b24",
+    "83752f16412b7574734a43bfd03fcf1ba6bc8629",
+    "58877beceb63f7e4d166a7dbd66a37075497b4b8"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
