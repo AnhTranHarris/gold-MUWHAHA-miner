@@ -1,0 +1,178 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_QRBM_STAGE_A_SCREEN_CHECKPOINT_17AV",
+  "status": "VERIFIED_STAGE_A_FAIL_FAMILY_RETIRED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_OSSMR_STAGE_A_SCREEN_CHECKPOINT_17AU",
+  "hypothesis": "Sparse completed one-second bursts of extreme native quote-revision intensity carry directional price impact that may persist long enough to survive independent P75 execution costs.",
+  "falsification_condition": "The single preregistered burst-continuation profile fails the direct-net gate despite adequate sparse-event supply.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "R037-QRBM single preregistered Stage-A profile",
+    "reference_count": 1,
+    "minimum_count": 1,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "No threshold/window/profile sweep."
+  },
+  "primary_metrics": {
+    "entry_quality": "10,577 directional burst starts; 7,561 executable trades; 3,267 official wins.",
+    "hold_persistence": "Frozen 30-second DELTA short-hold execution.",
+    "economics": "GP +$703.91; GL -$2,200.17; direct net -$1,571.87.",
+    "gross_loss_drawdown": "Gross loss -$2,200.17.",
+    "activity": "~755.5 directional burst signals/day across 14 Stage-A days."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_qrbm_stage_a_17av.py",
+      "commit": "7d013226f1d908f3852ac4cd2827964c67147f52",
+      "blob_sha": "4281ca1d3409c45897a881dc3ffdd4ff74e166b6",
+      "file_sha256": "42abce73d457868a42669583c1ecbd07cf704a2d424cb57e59e19d6579aa3310"
+    }
+  ],
+  "helpers": [],
+  "models": [],
+  "config": {
+    "parameters": {
+      "bin_seconds": 1,
+      "baseline_seconds": 600,
+      "extreme_rule": "revision_count > trailing median + 3*1.4826*MAD",
+      "direction": "completed burst-second native mid displacement",
+      "profile": "continuation only",
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "native quote revisions",
+      "completed 1s revision count",
+      "causal 600s robust baseline",
+      "completed burst displacement"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "single-profile fixed Stage-A screen; no fitting"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "output_write": "NamedTemporaryFile + flush + fsync + os.replace",
+      "provenance_gate": "exact local Git blob matched committed producer before official compute"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "17AV preregistration",
+      "path": "research/delta/reference/DELTA_R037_QRBM_STAGE_A_PREREG_17AV.json",
+      "commit": "06e151b552adafe5fed571c45e2581e30831f10f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_QRBM_STAGE_A_CHECKPOINT_17AV.json",
+      "blob_sha": "ac9a9ef563fc601a95750105ef7f1d53f5ea7f8d",
+      "official_raw_result_sha256": "f106a6c8776588a754145bf871015911246e4aaadd5f8096ec125b36bc8d1a73"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_QRBM_STAGE_A_CHECKPOINT_17AV.md",
+      "blob_sha": "e8c5da7fb92b65a49a5aba164b55a9b16d496a97"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "native one-second revision-count series",
+      "causal robust burst flags",
+      "P75 executable quote surface"
+    ]
+  },
+  "qa": [
+    "Canonical January SHA and Stage-A tick count verified.",
+    "Exact local Git blob matched committed producer before compute.",
+    "Python compile PASS.",
+    "Official replay completed under 120-second hard timeout with atomic result output.",
+    "Single preregistered profile only; no threshold/window/profile sweep.",
+    "Workbook tab 69 A110:H115 readback PASS.",
+    "C01 failed executable economics materially.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_qrbm_stage_a_17av.py",
+    "command": "python research/delta/experiments/delta_r037_qrbm_stage_a_17av.py --source <canonical_january_gzip> --output <checkpoint_17av_json>",
+    "timing_semantics": "completed one-second native BBO burst signal; first P75 tick at/after right edge; one-position scheduler",
+    "expected_fingerprints": {
+      "C01_BURST_CONTINUATION": {
+        "signals": 10577,
+        "trades": 7561,
+        "wins": 3267,
+        "gross_profit": 703.91,
+        "gross_loss": -2200.17,
+        "direct_net_usd": -1571.87
+      }
+    },
+    "selected_interpretation": "QUOTE_BURSTS_ARE_SPARSE_AND_PRICE_IMPACTFUL_BUT_POST_BURST_CONTINUATION_DOES_NOT_SURVIVE_P75_COST"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — family retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No fitted model.",
+    "execution_quote_side_spec": "DELTA frozen execution semantics unchanged.",
+    "ownership_scheduler_spec": "No integration or promotion.",
+    "session_dst_spec": "DELTA frozen semantics unchanged.",
+    "risk_spec": "Fixed 0.01 research semantics unchanged.",
+    "trade_count_parity_spec": "Not applicable; family retired.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_OSSMR_STAGE_A_SCREEN_CHECKPOINT_17AU",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A110:H115"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "06e151b552adafe5fed571c45e2581e30831f10f",
+    "7d013226f1d908f3852ac4cd2827964c67147f52",
+    "fb36816c211a335e93a0ad5fffb89894ff928ad9",
+    "0bc54700fa1e855f1830c31e5f602064ebc62922",
+    "af63264bb3a5eca6c4c758750d05e1e70ab24b05",
+    "e1e897935cfb689d0ae7bbd8bacdfd05cc74b729"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
