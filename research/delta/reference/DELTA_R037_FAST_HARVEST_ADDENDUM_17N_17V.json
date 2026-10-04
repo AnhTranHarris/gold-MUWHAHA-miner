@@ -1,0 +1,96 @@
+{
+  "schema": "delta-r037-fast-harvest-addendum-17n-17v-v1",
+  "status": "COMPLETE_FAST_HARVEST_NO_PROMOTED_SURVIVOR_STRUCTURAL_CLUES_NARROWED",
+  "parent_durable_checkpoint": "R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I",
+  "outcomes": {
+    "17N_ASR": {
+      "decision": "RETIRE",
+      "best": "C02_ASIA00_06_ACTIVE07_17",
+      "trades": 13,
+      "official_wins": 4,
+      "direct_net_usd": -4.29
+    },
+    "17O_PLSR_SESSION_CONTEXT": {
+      "decision": "RETIRE_REFINEMENT",
+      "best": "C02_NEWYORK_13_17_UTC",
+      "finding": "Positive only Jan/Jun/Jul; failed preregistered >=4 nonnegative-month gate; no month cherry-pick."
+    },
+    "17P_SMOR_DQ": {
+      "decision": "STAGE_A_CLUE_FAILED_INDEPENDENT_HOLDOUT",
+      "stage_a_leader": "C03_MSS_RANGE_GT_PREV_RANGE",
+      "stage_a": {
+        "trades": 8,
+        "official_wins": 6,
+        "direct_net_usd": 0.69
+      },
+      "later_jan": {
+        "proposals": 5,
+        "trades": 5,
+        "official_wins": 2,
+        "direct_net_usd": -0.9
+      },
+      "note": "No full-parent integration earned."
+    },
+    "17Q_MSF_DQ": {
+      "decision": "FORENSIC_CLUE_ONLY",
+      "best": "C02_RANGE_GT_PREV",
+      "proposals": 9,
+      "distinct_days": 6,
+      "trades": 9,
+      "official_wins": 5,
+      "direct_net_usd": -0.85,
+      "note": "Materially improves 17E direct loss but remains negative."
+    },
+    "17R_SMOR_EVENT_RANGE": {
+      "decision": "RETIRE_SUPPLY_FAIL",
+      "best_net_usd": 0.09,
+      "best_trade_count": 3,
+      "note": "Positive filters starved supply."
+    },
+    "17S_H1_LIQUIDITY_REVERSAL": {
+      "decision": "RETIRE_FAMILY",
+      "best_net_usd": -44.6,
+      "note": "High natural supply but poor 30-second economics."
+    },
+    "17T_H1_BREAKOUT_CONTINUATION": {
+      "decision": "RETIRE_FAMILY",
+      "best_net_usd": -39.45,
+      "note": "Opposite H1 hypothesis also poor."
+    },
+    "17U_TURTLE20_PUBLIC_DEFAULT": {
+      "decision": "RETIRE",
+      "proposals": 78,
+      "trades": 78,
+      "official_wins": 30,
+      "direct_net_usd": -23.41,
+      "note": "Published MQL5 defaults, no fitting."
+    },
+    "17V_SMOR_RETEST_REJECTION": {
+      "decision": "RETIRE_SUPPLY_OR_QUALITY_FAIL",
+      "wick_only": {
+        "proposals": 6,
+        "trades": 6,
+        "official_wins": 3,
+        "direct_net_usd": -1.22
+      },
+      "directional_colour": {
+        "proposals": 0
+      },
+      "both": {
+        "proposals": 0
+      }
+    }
+  },
+  "synthesis": [
+    "Dense indicator/order-flow families are strongly incompatible with frozen 30-second economics.",
+    "Simple H1 liquidity fade and breakout both fail despite adequate supply.",
+    "Published Turtle Soup defaults fail materially.",
+    "Near-neutral structural families 17E/17H remain the highest-information clues.",
+    "Within those families, event-relative range expansion is more useful than body expansion, but stronger range filters currently starve supply or fail holdout.",
+    "Next search should preserve delayed structural confirmation/retest while seeking a different naturally selective context that does not collapse event count."
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "next_search_bias": "delayed structural confirmation/retest + naturally selective context; avoid dense generic signals and avoid posthoc threshold filters",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
