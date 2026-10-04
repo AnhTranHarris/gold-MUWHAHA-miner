@@ -10,28 +10,36 @@
     "active rebuild manifest"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_RLSFG_STAGE_A_SCREEN_CHECKPOINT_17AO",
+    "last_verified_durable_unit": "R037_TCFH_STAGE_A_SCREEN_CHECKPOINT_17AP",
     "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
     "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_RLSFG_STAGE_A_SCREEN_CHECKPOINT_17AO_MANIFEST.json"
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_TCFH_STAGE_A_SCREEN_CHECKPOINT_17AP_MANIFEST.json"
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
     "status": "IDLE",
     "phase_rank": 0,
-    "parent_durable_unit": "R037_RLSFG_STAGE_A_SCREEN_CHECKPOINT_17AO",
+    "parent_durable_unit": "R037_TCFH_STAGE_A_SCREEN_CHECKPOINT_17AP",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_RLSFG_STAGE_A_SCREEN_CHECKPOINT_17AO.json",
-        "commit": "a2bc52a08348bdba8f49b5c90bf3e70638c23322"
+        "path": "research/delta/reference/DELTA_R037_TCFH_STAGE_A_PREREG_17AP.json",
+        "commit": "3e61506898ca72ebc537e99029176f238187aaa0"
       },
       {
-        "path": "research/delta/research/DELTA_R037_RLSFG_STAGE_A_SCREEN_CHECKPOINT_17AO.md",
-        "commit": "9d90d6577e03bd85145229cf65964f80cf23f440"
+        "path": "research/delta/experiments/delta_r037_tcfh_stage_a_17ap.py",
+        "commit": "d42f125b5dde1fc2313a6b8f1123470b6436212e"
       },
       {
-        "path": "research/delta/artifacts/DELTA_R037_RLSFG_STAGE_A_SCREEN_CHECKPOINT_17AO_MANIFEST.json",
-        "commit": "996588e3eb1385e4e8e91f733f729f0ae39f0ca2"
+        "path": "research/delta/reference/DELTA_R037_TCFH_STAGE_A_SCREEN_CHECKPOINT_17AP.json",
+        "commit": "ee7eff84b6ad35576930389e6088ea8ae4853c97"
+      },
+      {
+        "path": "research/delta/research/DELTA_R037_TCFH_STAGE_A_SCREEN_CHECKPOINT_17AP.md",
+        "commit": "45ef14164a647d38ce0456334a7e79d363b5e4ca"
+      },
+      {
+        "path": "research/delta/artifacts/DELTA_R037_TCFH_STAGE_A_SCREEN_CHECKPOINT_17AP_MANIFEST.json",
+        "commit": "65857b5e9d371b451e162ad9d753ab538a664231"
       }
     ],
     "next_action": "Preregister next independent entry-source family.",
