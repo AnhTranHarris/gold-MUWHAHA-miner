@@ -1,0 +1,44 @@
+{
+  "schema": "delta-r037-pdhsr-c02-independent-later-jan-prereg-v1",
+  "unit": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION",
+  "status": "PREREGISTERED_BEFORE_OFFICIAL_COMPUTE",
+  "parent_checkpoint": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_CHECKPOINT_17AD",
+  "candidate": "R037-PDHSR-C02_S5_CLOSE_RECLAIM",
+  "hypothesis": "The frozen 17AD C02 prior-day high/low sweep followed by completed S5 reclaim has positive source-only expectancy outside Stage-A on later-January data without retuning.",
+  "frozen_logic": {
+    "prior_day_definition": "most recent prior UTC trading day containing canonical ticks",
+    "sweep": "first strict tick breach of PDH or PDL",
+    "confirmation": "first completed S5 close reclaimed back inside swept prior-day boundary",
+    "execution_guard": "execution quote must still be reclaimed",
+    "one_trade_per_day": true,
+    "max_spread_points": 25,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "numeric_retuning": false,
+    "side_filter": false,
+    "session_filter": false,
+    "weekday_filter": false
+  },
+  "data": {
+    "source": "canonical January 2026 Dukascopy XAUUSD",
+    "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "warmup_start_utc": "2026-01-14T00:00:00Z",
+    "holdout_start_utc": "2026-01-18T12:00:00Z",
+    "holdout_end_exclusive_utc": "2026-02-01T00:00:00Z",
+    "pre_holdout_entries_forbidden": true,
+    "august_2026": "SEALED"
+  },
+  "gates": {
+    "minimum_proposals": 6,
+    "minimum_eligible_trades": 5,
+    "minimum_distinct_days": 4,
+    "strong_pass_direct_net_usd_min": 0,
+    "no_post_result_retuning": true
+  },
+  "decision_rule": "PASS only if all supply gates pass and frozen source-only direct net is nonnegative; otherwise retire C02 from active promotion path without threshold retuning.",
+  "if_pass_next": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION",
+  "if_fail_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "mql5_authorized": false
+}
