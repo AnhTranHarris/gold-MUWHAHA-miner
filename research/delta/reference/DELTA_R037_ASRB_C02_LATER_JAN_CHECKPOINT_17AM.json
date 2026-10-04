@@ -1,0 +1,62 @@
+{
+  "schema": "delta-r037-asrb-c02-later-jan-17am-v1",
+  "status": "COMPLETE_INDEPENDENT_LATER_JAN_VALIDATION",
+  "unit": "R037_ASRB_C02_INDEPENDENT_LATER_JAN_VALIDATION",
+  "family": "R037-ASRB-v1",
+  "candidate": "R037-ASRB-C02_RETEST",
+  "prereg_commit": "c74f570569bb577ae66681733774cf4ccb8616a8",
+  "producer_commit": "62af4b69a31c2f3cbf9204f10d67c9b5ea8439c6",
+  "producer_blob_sha": "f75655b2a955c056aed3b022aa926ce71c2cf5cf",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "loaded_ticks": 4929353,
+  "economics_start_ms": 1768737600000,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "configs": {
+    "C02_RETEST": {
+      "stage_counts": {
+        "days": 10,
+        "breakouts": 3202,
+        "confirmations": 7
+      },
+      "metrics": {
+        "proposals": 7,
+        "eligible": 6,
+        "trades": 6,
+        "distinct_days": 6,
+        "long": 5,
+        "short": 1,
+        "rejections": {
+          "RELOST_AT_EXEC": 1
+        },
+        "official_wins": 3,
+        "gross_profit": 0.43,
+        "gross_loss": -1.93,
+        "direct_net_usd": -1.5,
+        "exit_reasons": {
+          "STOP": 6,
+          "MAX_HOLD": 0,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_3": true,
+        "minimum_distinct_days_3": true,
+        "direct_net_nonnegative": false,
+        "holdout_pass": false
+      }
+    }
+  },
+  "ranking": [
+    "C02_RETEST"
+  ],
+  "official_result_sha256": "781ceea8d424f4fa49545ce59bb5cfdef70f8d04898b1d68cf3dff729090dbb9",
+  "finding": {
+    "leading_config": "C02_RETEST",
+    "holdout_survivors": [],
+    "decision": "RETIRE_ASRB_C02_NO_RETUNE",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "mql5_authorized": false
+}
