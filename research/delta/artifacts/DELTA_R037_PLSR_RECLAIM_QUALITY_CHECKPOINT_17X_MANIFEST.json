@@ -1,0 +1,178 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_CHECKPOINT_17X",
+  "status": "VERIFIED_CROSS_MONTH_NO_GATE_PASS_RETIRE_REFINEMENT",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I",
+  "hypothesis": "Lightweight completed-S5 reclaim quality may preserve PLSR event density while improving seven-surface 30-second economics.",
+  "falsification_condition": "No preregistered reclaim-quality variant passes retention, month breadth, nonnegative-month, nonnegative aggregate net, and baseline-improvement gates.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "source-only PLSR-C01 baseline",
+    "reference_count": 139,
+    "minimum_count": 70,
+    "minimum_retention_fraction": 0.5,
+    "owner_numeric_floor_defined": true,
+    "note": "17X comparative cross-month source-only screen."
+  },
+  "primary_metrics": {
+    "entry_quality": "seven-surface direct net and official wins",
+    "hold_persistence": "30s frozen",
+    "economics": "direct source-only net",
+    "gross_loss_drawdown": "not promotion-tested",
+    "activity": "trade retention and months with trades"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_plsr_reclaim_quality_17x.py",
+      "commit": "d8196fbe5699b053efc0c4ace60e8bd27fb8238b",
+      "blob_sha": "723605d9a255f82a5b946ca7d4fb43b6363d923c",
+      "file_sha256": "44d55674d78425f8448d6a9d4030f368d0e33b7511971affdbcf86061974adab"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "family": "R037-PLSR-RQ-v1",
+      "configs": [
+        "C01_DIRECTIONAL_RECLAIM",
+        "C02_REVERSAL_HALF_CLOSE",
+        "C03_ENGULFING_RECOVERY",
+        "C04_DIRECTIONAL_RANGE_EXPANSION"
+      ],
+      "numeric_retuning": false,
+      "post_result_retuning": false,
+      "max_hold_seconds": 30
+    },
+    "feature_order": [
+      "prior-day high/low",
+      "strict sweep",
+      "completed S5 reclaim",
+      "quality gate",
+      "source-only 30s execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "2026-01-01T00:00Z/2026-01-18T12:00Z",
+      "cross_month": "2026-02..2026-07"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "preregistered cross-month screen"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas"
+    ],
+    "crash_safety": {
+      "output_write": "NamedTemporaryFile + fsync + os.replace",
+      "transport_timeout_observed": true,
+      "recovery": "process continued and atomic result completed",
+      "raw_result_sha256": "6ff7c2db7955cea32fa56ffa0dab6ba6eac24b4c32e9d55cae364b60b404d336"
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical Dukascopy Jan-Jul",
+      "hashes": "CURRENT_STATE/producer frozen SHA map"
+    },
+    {
+      "name": "17X prereg",
+      "path": "research/delta/reference/DELTA_R037_PLSR_RECLAIM_QUALITY_PREREG_17X.json",
+      "commit": "46e893ebdbfc77e94f7719a61fa35c6b18324e5e"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_PLSR_RECLAIM_QUALITY_CHECKPOINT_17X.json",
+      "commit": "c3ff4da387ce97e0cb35c1fc7798b73a99fc191c"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "C01",
+      "C02",
+      "C03",
+      "C04"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "atomic local raw result retained by hash"
+    ]
+  },
+  "models": [],
+  "qa": [
+    "Canonical Jan-Jul source hashes verified before replay.",
+    "17X producer committed before official compute.",
+    "Transport timeout did not kill child process; atomic result completed with no orphan temp file.",
+    "Baseline 139 trades / -$30.59.",
+    "Best C04 55 trades / -$10.13; 39.57% retention; 3 nonnegative months.",
+    "No config passed preregistered gate.",
+    "No retune; August sealed; MQL5 unauthorized.",
+    "Workbook 70 R037 Prereg A121:H128 readback PASS."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_plsr_reclaim_quality_17x.py",
+    "command": "python delta_r037_plsr_reclaim_quality_17x.py --m01 <jan> ... --m07 <jul> --output <json>",
+    "timing_semantics": "P75 tick-rooted; prior-day fixed levels; strict sweep; first completed S5 reclaim; first executable tick; 30s lifecycle.",
+    "expected_fingerprints": {
+      "baseline": {
+        "trades": 139,
+        "net": -30.59
+      },
+      "leader": {
+        "config": "C04_DIRECTIONAL_RANGE_EXPANSION",
+        "trades": 55,
+        "net": -10.13,
+        "retention": 0.395683,
+        "nonnegative_months": 3
+      }
+    },
+    "selected_interpretation": "NO_GATE_PASS_RETIRE_REFINEMENT"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen P75",
+    "ownership_scheduler_spec": "source-only screen",
+    "session_dst_spec": "frozen",
+    "risk_spec": "0.01 lot frozen",
+    "trade_count_parity_spec": "not eligible",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I",
+  "drive_artifacts": [
+    {
+      "name": "working workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "70 R037 Prereg",
+      "range": "A121:H128",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "46e893ebdbfc77e94f7719a61fa35c6b18324e5e",
+    "d8196fbe5699b053efc0c4ace60e8bd27fb8238b",
+    "c3ff4da387ce97e0cb35c1fc7798b73a99fc191c"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
