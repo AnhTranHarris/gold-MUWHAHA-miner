@@ -1,20 +1,20 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "IDLE",
+  "status": "ACTIVE",
   "branch": "delta",
-  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "unit": "R037_LEE_MYKLAND_JUMP_FADE_STAGE_A_SCREEN",
   "parent_durable_unit": "R037_DCOS_STAGE_A_SCREEN_CHECKPOINT_17AW",
-  "phase": "IDLE",
-  "phase_rank": 0,
+  "phase": "PREREG_COMMITTED",
+  "phase_rank": 1,
   "progress": {
-    "status": "IDLE",
+    "status": "ACTIVE",
     "last_completed": "R037_DCOS_STAGE_A_SCREEN_CHECKPOINT_17AW",
-    "current_candidate": null,
-    "next": "Harvest next independent sparse entry source with demonstrable post-event residual asymmetry."
+    "current_candidate": "R037-LMJF-v1",
+    "next": "Commit exact M1 Lee-Mykland jump-fade producer; verify Git blob; run one bounded Stage-A screen."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "DCOS 17AW is complete and retired; do not rerun. Harvest the next independent entry source.",
+    "resume_first_action": "LMJF 17AX prereg is durable at commit 8acec24b7ccf3bbbf30f5733fe45ccefa3b73a83. Do not alter K/significance/profile. Resume from first missing producer/compute artifact.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
