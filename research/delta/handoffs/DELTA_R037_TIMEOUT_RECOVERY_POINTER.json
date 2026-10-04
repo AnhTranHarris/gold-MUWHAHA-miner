@@ -11,31 +11,31 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH",
-    "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
-    "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH_MANIFEST.json"
+    "last_verified_durable_unit": "R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI",
+    "current_phase": "R037_HTAR_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_NEXT",
+    "first_incomplete_unit": "R037_HTAR_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "unit": "R037_HTAR_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
     "status": "IDLE",
     "phase_rank": 0,
-    "parent_durable_unit": "R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH",
+    "parent_durable_unit": "R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH.json",
-        "commit": "0405bbec05f984b8c901e7341b3a5f3b29e45eff"
+        "path": "research/delta/reference/DELTA_R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI.json",
+        "commit": "b22bcbee445b34d067493291eb05e64aab94929b"
       },
       {
-        "path": "research/delta/research/DELTA_R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH.md",
-        "commit": "55198438dbdbfcf2d8271ff0c405e64481995be4"
+        "path": "research/delta/research/DELTA_R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI.md",
+        "commit": "da2bf8479d8423f60c76281461185b063b3ebf8c"
       },
       {
-        "path": "research/delta/artifacts/DELTA_R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH_MANIFEST.json",
-        "commit": "9cab76cbfc315605215af90203bc63795056e2a0"
+        "path": "research/delta/artifacts/DELTA_R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI_MANIFEST.json",
+        "commit": "dca4029d3f3f3318cb823af68e37f63d8b7d8546"
       }
     ],
-    "next_action": "Preregister higher-order sparse liquidity anchor candidate; do not retune 17AH.",
+    "next_action": "Preregister frozen C01 H1 later-January holdout; no retuning.",
     "completed_months": [],
     "next_month": null
   },
