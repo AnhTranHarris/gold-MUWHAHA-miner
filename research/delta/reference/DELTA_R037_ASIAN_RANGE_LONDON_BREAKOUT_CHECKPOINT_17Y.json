@@ -1,0 +1,54 @@
+{
+  "schema": "delta-r037-asian-range-london-breakout-stage-a-17y-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN_NO_SURVIVOR_SUPPLY_FAIL_POSITIVE_CLOSE_CONFIRMATION_CLUE",
+  "unit": "R037_ASIAN_RANGE_LONDON_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Y",
+  "family": "R037-ARLB-v1",
+  "prereg_path": "research/delta/reference/DELTA_R037_ASIAN_RANGE_LONDON_BREAKOUT_PREREG_17Y.json",
+  "prereg_commit": "8ea57494b5d4bb6b8dd072b00a45bdb71adffa9b",
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_asian_range_london_breakout_17y.py",
+    "commit": "2c09cba955e9da76c58bb1ca7ef8634ec1f9d018",
+    "blob_sha": "0f515d7132cd6a2385d0603d18da34e60acfb462",
+    "file_sha256": "9e131095f0b8fe0b676eb8608015129e584c5cc8451958df040161d3a2e88679"
+  },
+  "official_compute": {
+    "exit_code": 0,
+    "result_sha256": "faacf626ddcc9640893ebd746d7fa6d5527377984b8d78e5657b1513ac5f9fc0"
+  },
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "configs": {
+    "C01_FIRST_STRICT_TICK": {
+      "proposals": 6,
+      "trades": 6,
+      "official_wins": 4,
+      "direct_net_usd": -0.55,
+      "gate_pass": false
+    },
+    "C02_FIRST_COMPLETED_S5_CLOSE": {
+      "proposals": 6,
+      "trades": 6,
+      "official_wins": 3,
+      "direct_net_usd": 0.25,
+      "gate_pass": false
+    },
+    "C03_FIRST_COMPLETED_S15_CLOSE": {
+      "proposals": 6,
+      "trades": 6,
+      "official_wins": 4,
+      "direct_net_usd": 0.27,
+      "gate_pass": false
+    }
+  },
+  "finding": {
+    "leading_config": "C03_FIRST_COMPLETED_S15_CLOSE",
+    "interpretation": "Completed-close confirmation improved 30-second economics versus strict tick, but the full 00:00-06:00 range produced only six breakout days and failed the frozen minimum-8 supply gate.",
+    "decision": "RETIRE_FAMILY_NO_RETUNE_KEEP_CLOSE_CONFIRMATION_AS_FORENSIC_CLUE",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "numeric_retuning": false,
+  "post_result_retuning": false,
+  "august_accessed": false,
+  "mql5_authorized": false
+}
