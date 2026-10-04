@@ -92,6 +92,20 @@
       "atomic_output": true,
       "exact_git_blob_preexecution_verification": true,
       "recovery_snapshot_execution": true
+    },
+    "timezone_session_definitions": {
+      "utc_day": "UTC calendar day; prior active day is the most recent earlier UTC day containing canonical ticks"
+    },
+    "execution_cost_assumptions": {
+      "surface": "DUKAS_COINEXX_LIKE_P75",
+      "lot": 0.01,
+      "entry_commission_usd": 0.01,
+      "exit_commission_usd": 0.01,
+      "buy_entry": "ASK",
+      "buy_exit": "BID",
+      "sell_entry": "BID",
+      "sell_exit": "ASK",
+      "protective_fill": "first executable quote after stop cross"
     }
   },
   "inputs": [
@@ -177,7 +191,16 @@
         "plsr_net": -1.57
       }
     },
-    "selected_interpretation": "R037-PLSR-C01_PDH_PDL_S5_RECLAIM"
+    "selected_interpretation": "R037-PLSR-C01_PDH_PDL_S5_RECLAIM",
+    "required_artifact_order": [
+      "research/delta/reference/DELTA_R037_PLSR_STAGE_A_EVIDENCE_16A.json",
+      "research/delta/experiments/delta_r037_plsr_stage_a.py",
+      "canonical January Dukascopy gzip",
+      "research/delta/reference/DELTA_R037_PLSR_STAGE_A_CHECKPOINT_16A.json",
+      "research/delta/research/DELTA_R037_PLSR_STAGE_A_CHECKPOINT_16A.md"
+    ],
+    "timing_semantics": "Ordered Stage-A ticks; prior active UTC-day level becomes available only after that earlier UTC day is complete; strict tick sweep beyond PDH/PDL; reclaim bar visible only at its right edge; proposal on first executable tick at/after right edge while price remains inside; parent same-tick priority; blocked event not deferred; no PLSR rearm.",
+    "notes": "C01 remains the entire PDH+PDL S5-reclaim rule. Stage-A PDH/PDL contribution split is diagnostic only and cannot authorize a post-hoc level filter before independent validation."
   },
   "mt5_translation_contract": {
     "authoritative_python_parent": "NONE — discovery research only",
