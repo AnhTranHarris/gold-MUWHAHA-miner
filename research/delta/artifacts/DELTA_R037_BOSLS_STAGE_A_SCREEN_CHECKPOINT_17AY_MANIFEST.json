@@ -1,0 +1,176 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY",
+  "status": "VERIFIED_STAGE_A_FAIL_FAMILY_RETIRED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
+  "hypothesis": "A completed M5 liquidity sweep that rejects a confirmed swing in the direction implied by the latest BOS regime creates enough residual 30-second edge to survive P75 execution.",
+  "falsification_condition": "The single source-faithful M5 SwingLength=5 BOS sweep-reclaim profile fails supply/day or direct-net gate.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "R037-BOSLS single preregistered Stage-A profile",
+    "reference_count": 1,
+    "minimum_count": 1,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "No swing-length/timeframe/confirmation sweep."
+  },
+  "primary_metrics": {
+    "entry_quality": "113 confirmed structural sweep/reclaim signals; 62 official wins (54.9%).",
+    "hold_persistence": "Frozen 30-second DELTA short-hold execution.",
+    "economics": "GP +$15.72; GL -$26.69; direct net -$12.10.",
+    "gross_loss_drawdown": "Gross loss -$26.69.",
+    "activity": "~8.07 signals/day across 11 distinct days."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_bosls_stage_a_17ay.py",
+      "commit": "79d7bab327d1d032072df36806aa4c02793db10f",
+      "blob_sha": "82ef4ba1a8e270d48a4eed515167bd41f07ac5f8",
+      "file_sha256": "ca4366126dabca257bd9f5d7f82688c0d74d9283e7a4968c6f5fd8250428fc21"
+    }
+  ],
+  "helpers": [],
+  "models": [],
+  "config": {
+    "parameters": {
+      "timeframe_seconds": 300,
+      "swing_length": 5,
+      "trend_rule": "HH bullish BOS / LL bearish BOS",
+      "event_rule": "wick through opposing confirmed swing + close reclaim + directional candle",
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "completed M5 OHLC",
+      "confirmed 5-bar swing",
+      "BOS trend state",
+      "opposing swing wick sweep",
+      "close reclaim",
+      "directional candle"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "single-profile fixed Stage-A screen; no fitting"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "output_write": "NamedTemporaryFile + flush + fsync + os.replace",
+      "provenance_gate": "exact local Git blob matched committed producer before official compute"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "17AY preregistration",
+      "path": "research/delta/reference/DELTA_R037_BOSLS_STAGE_A_PREREG_17AY.json",
+      "commit": "34ef5741861a41f52807986260b86847005c759f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_BOSLS_STAGE_A_CHECKPOINT_17AY.json",
+      "blob_sha": "d8e004d3bc206474526a65341a195fd55eb02ef7",
+      "official_raw_result_sha256": "92e3a745908252ae5b80712a90602523bb7aa01d8d653fc77169b654f6b4d232"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_BOSLS_STAGE_A_CHECKPOINT_17AY.md",
+      "blob_sha": "572deaedad894fa168bc7f69557ec61265ed7a1f"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "completed native M5 structure ledger",
+      "P75 executable quote surface"
+    ]
+  },
+  "qa": [
+    "Canonical January SHA and Stage-A tick count verified.",
+    "Exact local producer Git blob matched 82ef4ba1a8e270d48a4eed515167bd41f07ac5f8.",
+    "Python compile PASS.",
+    "Official replay completed under 120-second hard timeout with atomic output.",
+    "Single source-faithful M5 SwingLength=5 profile only.",
+    "Workbook tab 69 A126:H130 readback PASS.",
+    "Quality improved to 54.9% official wins but direct net remained -$12.10; economic gate failed.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_bosls_stage_a_17ay.py",
+    "command": "python research/delta/experiments/delta_r037_bosls_stage_a_17ay.py --source <canonical_january_gzip> --output <checkpoint_17ay_json>",
+    "timing_semantics": "completed M5 bars only; symmetric swing revealed after two right bars; sweep/reclaim evaluated at completed bar; first P75 tick at/after bar edge; one-position scheduler",
+    "expected_fingerprints": {
+      "C01_M5_SWING5_BOS_SWEEP_RECLAIM": {
+        "signals": 113,
+        "trades": 113,
+        "wins": 62,
+        "gross_profit": 15.72,
+        "gross_loss": -26.69,
+        "direct_net_usd": -12.1
+      }
+    },
+    "selected_interpretation": "STRUCTURAL_RECLAIM_IMPROVES_ENTRY_QUALITY_BUT_SOURCE_FAITHFUL_BOS_SWEEP_STILL_FAILS_P75_ECONOMICS"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — family retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No fitted model.",
+    "execution_quote_side_spec": "DELTA frozen execution semantics unchanged.",
+    "ownership_scheduler_spec": "No integration or promotion.",
+    "session_dst_spec": "DELTA frozen semantics unchanged.",
+    "risk_spec": "Fixed 0.01 research semantics unchanged.",
+    "trade_count_parity_spec": "Not applicable; family retired.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A126:H130"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "34ef5741861a41f52807986260b86847005c759f",
+    "79d7bab327d1d032072df36806aa4c02793db10f",
+    "8f11b2ffbdba545d32966fe7daa8657fe276eedb",
+    "4029221d76a4b9146b8f4401f1d515a1b05f235e"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
