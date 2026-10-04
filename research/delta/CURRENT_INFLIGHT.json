@@ -4,19 +4,22 @@
   "branch": "delta",
   "unit": "R037_ORDER_FLOW_IMBALANCE_MOMENTUM_STAGE_A_SCREEN",
   "parent_durable_unit": "R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR",
-  "phase": "PREREGISTERED",
-  "phase_rank": 1,
+  "phase": "PRODUCER_COMMITTED",
+  "phase_rank": 2,
   "progress": {
-    "status": "PREREGISTERED",
+    "status": "PRODUCER_COMMITTED",
     "last_completed": "R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR",
     "current_candidate": "R037-OFM-v1",
     "prereg_path": "research/delta/reference/DELTA_R037_OFM_STAGE_A_PREREG_17AS.json",
     "prereg_commit": "b6eb77574ac32a151c371a4b4774b5946c3a300e",
-    "next": "Commit deterministic producer, verify exact Git blob, then run bounded Stage-A screen."
+    "next": "Verify exact producer bytes locally, then run bounded official Stage-A screen.",
+    "producer_path": "research/delta/experiments/delta_r037_ofm_stage_a_17as.py",
+    "producer_commit": "e27e9f9136d110f7f0f8ad41899bcda62d3db797",
+    "producer_blob_sha": "7aa5755960e1f262667f00b17e93a162b39deff2"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "17AS prereg is durable; continue with producer commit. Do not rerun 17AR.",
+    "resume_first_action": "17AS prereg + producer are durable; next action is exact-blob verification and bounded Stage-A compute.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
@@ -36,5 +39,10 @@
   "prereg": {
     "path": "research/delta/reference/DELTA_R037_OFM_STAGE_A_PREREG_17AS.json",
     "commit": "b6eb77574ac32a151c371a4b4774b5946c3a300e"
+  },
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_ofm_stage_a_17as.py",
+    "commit": "e27e9f9136d110f7f0f8ad41899bcda62d3db797",
+    "blob_sha": "7aa5755960e1f262667f00b17e93a162b39deff2"
   }
 }
