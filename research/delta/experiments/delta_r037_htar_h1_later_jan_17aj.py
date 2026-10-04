@@ -1,9 +1,10 @@
-"""DELTA R037 higher-timeframe anchored reversal Stage-A screen — 17AI.
+"""DELTA R037 HTAR H1 independent later-January validation — 17AJ.
 
-Preregistered public/reconstructible sequence:
-causally confirmed H1/H4 swing liquidity anchor -> S5 wick sweep + close back inside
+Frozen from 17AI before holdout compute:
+confirmed H1 swing liquidity anchor -> S5 wick sweep + close back inside
 -> S5 CISD through sweep-bar open -> post-CISD reversal FVG -> retrace/rejection
--> P75 tick execution. Frozen 30-second lifecycle. No fitting / no August / no MQL5.
+-> P75 tick execution. Jan-14 warm-up; economics begin Jan-18 12:00 UTC.
+No retuning / no August / no MQL5.
 """
 from __future__ import annotations
 import argparse, hashlib, json, os, tempfile
@@ -149,12 +150,14 @@ def main():
  ask,bid=p75(t,df.ask_raw.to_numpy(np.int64),df.bid_raw.to_numpy(np.int64))
  R={}
  for name,tf in CONFIGS:
-  P,stage=proposals(t,ask,bid,tf);m=evaluate(P,t,ask,bid)
+  P0,stage=proposals(t,ask,bid,tf)
+  P=[e for e in P0 if int(e.get("decision_ms",0))>=ECON]
+  m=evaluate(P,t,ask,bid)
   g={"minimum_proposals_6":m["proposals"]>=6,"minimum_trades_5":m["trades"]>=5,"minimum_distinct_days_4":m["distinct_days"]>=4,"direct_net_nonnegative":m["direct_net_usd"]>=0}
-  g["validation_pass"]=all(g.values());g["strong_pass"]=g["validation_pass"]
-  R[name]={"anchor_seconds":tf,"stage_counts":stage,"metrics":m,"gate":g}
- rank=sorted([c[0] for c in CONFIGS],key=lambda n:(R[n]["gate"]["validation_pass"],R[n]["metrics"]["direct_net_usd"],R[n]["metrics"]["official_wins"]),reverse=True)
- strong=[n for n in rank if R[n]["gate"]["strong_pass"]]
+  g["holdout_pass"]=all(g.values())
+  R[name]={"anchor_seconds":tf,"context_stage_counts":stage,"economics_proposals":len(P),"metrics":m,"gate":g}
+ rank=sorted([c[0] for c in CONFIGS],key=lambda n:(R[n]["gate"]["holdout_pass"],R[n]["metrics"]["direct_net_usd"],R[n]["metrics"]["official_wins"]),reverse=True)
+ strong=[n for n in rank if R[n]["gate"]["holdout_pass"]]
  out={"schema":"delta-r037-htar-h1-later-jan-17aj-v1","status":"COMPLETE_INDEPENDENT_LATER_JAN_VALIDATION","unit":"R037_HTAR_H1_INDEPENDENT_LATER_JAN_VALIDATION","family":"R037-HTAR-v1","candidate":"R037-HTAR-C01_H1_ANCHOR","prereg_commit":PREREG,"source_sha256":s,"warmup_ticks":int(len(t)),"economics_ticks":int(np.sum(t>=ECON)),"window":{"warmup_start_ms":WARMUP,"economics_start_ms":ECON,"end_exclusive_ms":END},"surface":"DUKAS_COINEXX_LIKE_P75","numeric_retuning":False,"august_accessed":False,"configs":R,"ranking":rank,"finding":{"leading_config":rank[0],"holdout_survivors":strong,"decision":"ADVANCE_FROZEN_H1_MONTH_BY_MONTH" if strong else "RETIRE_HTAR_H1_NO_RETUNE","next":"R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION" if strong else "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"},"mql5_authorized":False}
  atomic(x.output,out);print(json.dumps({"ranking":rank,"configs":R,"finding":out["finding"]},separators=(",",":")))
 
