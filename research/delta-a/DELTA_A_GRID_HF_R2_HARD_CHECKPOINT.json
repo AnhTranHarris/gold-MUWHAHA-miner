@@ -1,0 +1,154 @@
+{
+  "schema": "delta-a-grid-hf-hard-checkpoint-v1",
+  "checkpoint": "GRID-HF_R2_REFINEMENT_02_HARD_CHECKPOINT",
+  "checkpoint_date": "2026-10-04",
+  "lineage": "DELTA-A",
+  "branch": "delta-A",
+  "status": "HARD_CHECKPOINT_RESEARCH_ONLY_NOT_MT5_AUTHORIZED",
+  "main_delta_modified": false,
+  "august_2026": "SEALED",
+  "signal_source": "NATIVE_DUKAS_ORDERED_BID_ASK_TICKS",
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "dedup": {
+    "window_seconds": 1,
+    "policy": "chronological_first_eligible_event",
+    "future_payoff_used": false
+  },
+  "january": {
+    "events": 39253,
+    "events_per_day_approx": 1354,
+    "net_usd": 12239.46,
+    "avg_event_usd": 0.31181,
+    "profit_factor": 1.05976,
+    "positive_fraction_approx": 0.503,
+    "sequence_drawdown_usd_approx": 2057.6,
+    "early_half_net_usd": 203.37,
+    "late_half_net_usd": 12036.09,
+    "positive_week_buckets": 5,
+    "weekly_net_usd": {
+      "W1": 75.52,
+      "W2": 27.45,
+      "W3": 1172.73,
+      "W4": 1210.91,
+      "W5": 9752.85
+    }
+  },
+  "router": {
+    "volatile": {
+      "condition": "native_spread_usd > 0.90",
+      "owner": "CONTINUATION",
+      "lifecycle_s": 180
+    },
+    "quiet_225_250": {
+      "feature": "signed_momentum_60s",
+      "threshold": 2.9,
+      "above": [
+        "CONTINUATION",
+        1800
+      ],
+      "below": [
+        "REVERSION",
+        600
+      ]
+    },
+    "quiet_2375": {
+      "feature": "signed_momentum_15s",
+      "threshold": 3.9,
+      "above": [
+        "CONTINUATION",
+        1800
+      ],
+      "below": [
+        "REVERSION",
+        900
+      ]
+    },
+    "quiet_275_300": {
+      "feature": "prior_reclaim_fraction",
+      "threshold": 0.73,
+      "above": [
+        "CONTINUATION",
+        1200
+      ],
+      "below": [
+        "REVERSION",
+        900
+      ]
+    },
+    "quiet_350_500_1000": {
+      "owner": "REVERSION",
+      "lifecycle_s": 1200
+    },
+    "quiet_600_800": {
+      "feature": "signed_efficiency_60s",
+      "threshold": 0.82,
+      "above": [
+        "CONTINUATION",
+        300
+      ],
+      "below": [
+        "REVERSION",
+        900
+      ]
+    },
+    "persistence_override": {
+      "same_direction": true,
+      "reclaim_fraction_lte": 0.5,
+      "extension_fraction_gte": 1.5,
+      "owner": "CONTINUATION",
+      "lifecycle_s": 600
+    },
+    "agreement_override": {
+      "window_s": 10,
+      "positive_score_gte": 9,
+      "positive": [
+        "CONTINUATION",
+        180
+      ],
+      "negative_score_lte": -9,
+      "negative": [
+        "REVERSION",
+        600
+      ]
+    }
+  },
+  "neighborhood": {
+    "qualified_adjacent_configs": 156
+  },
+  "sessions": {
+    "off_session": {
+      "events": 11669,
+      "net_usd": 1873.78
+    },
+    "london_only": {
+      "events": 6102,
+      "net_usd": 920.37
+    },
+    "london_ny_overlap": {
+      "events": 10200,
+      "net_usd": 7583.84
+    },
+    "ny_only": {
+      "events": 11282,
+      "net_usd": 1861.47
+    },
+    "hard_session_exclusion_frozen": false
+  },
+  "r9_synth_reference": {
+    "jan_jul_trades": 219342,
+    "january_entries_approx": 27980,
+    "win_rate_pct": 87.14,
+    "net_usd": 309122.85,
+    "profit_factor": 20.04,
+    "expected_payoff_usd": 1.409
+  },
+  "blockers": [
+    "Unchanged February-July durability replay",
+    "Overlapping portfolio concurrency and floating-equity drawdown",
+    "Broker-native Coinexx MT5 validation",
+    "Session/news/event-aware routing evidence",
+    "Prop-firm deployment wrapper",
+    "Explicit production MQL5 authorization"
+  ],
+  "next_gate": "UNCHANGED_FEB_JUL_DURABILITY_AND_PORTFOLIO_CONCURRENCY"
+}
