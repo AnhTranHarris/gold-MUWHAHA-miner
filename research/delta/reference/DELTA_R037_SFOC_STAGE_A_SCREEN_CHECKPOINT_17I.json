@@ -1,0 +1,75 @@
+{
+  "schema": "delta-r037-sfoc-stage-a-screen-17i-v1",
+  "status": "COMPLETE_NO_SCREEN_SURVIVOR_SUPPLY_TOO_SPARSE",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "family": "R037-SFOC-v1",
+  "parent_checkpoint": "R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "producer": {
+    "commit": "1daf3647c7ebf42d1987612ef18b3ad9b31e975c",
+    "blob_sha": "fc9c4615b056b0ad6e5400be8582c3fafb933b6c",
+    "file_sha256": "88b6ad3cefbc9763b6d9aa5bc793007d2b4bceeeeaf28aafbb207c6502bfd93d",
+    "precompute_gate_run": 37178752110
+  },
+  "official_compute": {
+    "runtime_seconds": 20.625,
+    "exit_code": 0,
+    "raw_result_sha256": "9d47120a2612c078ea8ee40ab8d570c01beb284e6431abc1f219195d362e0399"
+  },
+  "parent_control": {
+    "trades": 14034,
+    "official_wins": 6349,
+    "net_profit": -2944.94
+  },
+  "configs": {
+    "R037-SFOC-C01_ANY_ACTIVE_FVG": {
+      "accepted_entries": 5,
+      "trade_delta": 5,
+      "official_win_delta": 3,
+      "net_delta": -0.56,
+      "direct_sfoc_net": -0.56,
+      "screen_pass": false,
+      "strong_screen_pass": false
+    },
+    "R037-SFOC-C02_MSS_OR_NEXT_FVG": {
+      "accepted_entries": 0,
+      "trade_delta": 0,
+      "official_win_delta": 0,
+      "net_delta": 0,
+      "direct_sfoc_net": 0,
+      "screen_pass": false,
+      "strong_screen_pass": false
+    },
+    "R037-SFOC-C03_OB_FVG_OVERLAP": {
+      "accepted_entries": 1,
+      "trade_delta": 1,
+      "official_win_delta": 1,
+      "net_delta": 0.19,
+      "direct_sfoc_net": 0.19,
+      "screen_pass": false,
+      "strong_screen_pass": false
+    },
+    "R037-SFOC-C04_RETEST_TOUCHES_FVG": {
+      "accepted_entries": 0,
+      "trade_delta": 0,
+      "official_win_delta": 0,
+      "net_delta": 0,
+      "direct_sfoc_net": 0,
+      "screen_pass": false,
+      "strong_screen_pass": false
+    }
+  },
+  "finding": {
+    "strong_screen_survivors": [],
+    "leading_config": "R037-SFOC-C03_OB_FVG_OVERLAP",
+    "interpretation": "FVG confluence can improve selectivity but collapses proposal/accepted-entry supply below frozen screen minimum; positive one-trade result is not a candidate.",
+    "decision": "RETIRE_R037_SFOC_V1_NO_RETUNE",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "numeric_retuning": false,
+  "post_result_retuning": false,
+  "august_accessed": false,
+  "mql5_authorized": false
+}
