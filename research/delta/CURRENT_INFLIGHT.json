@@ -4,8 +4,8 @@
   "branch": "delta",
   "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
   "parent_durable_unit": "R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "phase": "REPORT_COMMITTED",
+  "phase_rank": 4,
   "prereg": {
     "path": "research/delta/reference/DELTA_R037_MSF_SOURCE_HARVEST_PREREG_17E.json",
     "commit": "2739d418ad694f701a551743c2ff1561c5af0c37"
@@ -16,22 +16,25 @@
     "file_sha256": "4fbea383767200331138722bd27d0c83f3ee404a81468a26dbe2277c5521d7b4"
   },
   "result": {
-    "path": "research/delta/reference/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E.json"
+    "path": "research/delta/reference/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E.json",
+    "commit": "2e7dd13744cdb00fb0283578a326ec8982c5871a",
+    "raw_sha256": "f9f2b66f012dc9e6548d6bd031b0729f27a1ce6a52d4185b80e936a9cc425891"
   },
   "report": {
-    "path": "research/delta/research/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E.md"
+    "path": "research/delta/research/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E.md",
+    "commit": "e574b3923be5400da40b5ebbcb7c2e1e1f9c365a"
   },
   "manifest": {
     "path": "research/delta/artifacts/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E_MANIFEST.json"
   },
   "progress": {
     "family": "R037-MSF-v1",
-    "status": "PRODUCER_COMMITTED_AWAITING_OFFICIAL_COMPUTE",
-    "next": "OFFICIAL_STAGE_A_REPLAY"
+    "status": "COMPLETE_NO_STRONG_SURVIVOR_C04_ORDINARY_SCREEN_CLUE",
+    "next": "DURABILITY_MANIFEST_THEN_NEXT_SOURCE_HARVEST"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Verify committed MSF producer and prereg, then run exactly one official Stage-A replay if no committed 17E result exists.",
+    "resume_first_action": "Do not rerun MSF 17E. Result/report already committed; finish workbook/ledger, manifest, CURRENT_STATE and CI only.",
     "idempotency_rule": "Prereg and producer immutable before compute; result create-only.",
     "hash_reconciliation": "GitHub recovery snapshot git-blob 29ccec103226f3044a9fdb7f7213731ab1428dee exactly matched live GitHub producer blob; corrected stale precompute SHA-256 metadata before any official replay."
   },
