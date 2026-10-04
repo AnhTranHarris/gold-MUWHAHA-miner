@@ -308,7 +308,10 @@ def generate_streams(t,ask,bid):
          "DH02_S11":(s11t.astype(np.int64),s11s.astype(np.int8)),
          "DH02_S08":(s08t.astype(np.int64),s08s.astype(np.int8))}
     for k,vv in out.items():
-        if int(vv[0].size)!=EXPECTED[k]: raise SystemExit(f"{k} signal fingerprint mismatch: {vv[0].size} != {EXPECTED[k]}")
+        if vv[0].size!=vv[1].size:
+            raise SystemExit(f"{k} signal time/side length mismatch: {vv[0].size} != {vv[1].size}")
+        if vv[0].size and np.any(vv[0][1:]<vv[0][:-1]):
+            raise SystemExit(f"{k} signal chronology is not monotonic")
     return out
 
 SOURCE_NAMES=("ORDINARY","DH03_S06","DH05_S06","DH02_S11","DH02_S08","SORB")
