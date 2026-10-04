@@ -1,0 +1,119 @@
+{
+  "schema": "delta-r037-sweep-ifvg-retest-stage-a-17bx-17by-v1",
+  "status": "COMPLETE_FAST_CAUSAL_PRESCREEN",
+  "unit": "R037_SWEEP_IFVG_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BX_17BY",
+  "family": "R037-SIFVG-v1",
+  "parent_checkpoint": "R037_FIB_GOLDEN_POCKET_IMPULSE_RETRACE_STAGE_A_SCREEN_CHECKPOINT_17BW",
+  "prereg_commit": "8ce37fe1d54fddf62145e4edfa699deab4d1b79f",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "signal_surface": "NATIVE_DUKAS_COMPLETED_BAR_MID",
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "source_anchored_defaults": {
+    "extreme_lookback_bars": 50,
+    "sweep_validity_bars": 50,
+    "minimum_gap_ticks": 30
+  },
+  "fixed_cleanroom_approximations": {
+    "inversion_grace_bars": 50,
+    "retest_validity_bars": 50
+  },
+  "configs": {
+    "17BX_M1_SWEEP_IFVG_RETEST": {
+      "timeframe_ms": 60000,
+      "metrics": {
+        "signals": 152,
+        "busy_skips": 0,
+        "spread_rejects": 0,
+        "trades": 152,
+        "distinct_days": 11,
+        "long": 81,
+        "short": 71,
+        "official_wins": 73,
+        "gross_profit": 17.95,
+        "gross_loss": -43.29,
+        "direct_net_usd": -26.86,
+        "exit_reasons": {
+          "STOP": 148,
+          "MAX_HOLD": 4,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_20": true,
+        "minimum_distinct_days_5": true,
+        "nonnegative_direct_net": false,
+        "screen_pass": false
+      },
+      "diagnostics": {
+        "bars": 15180,
+        "confirmed_extreme_highs": 603,
+        "confirmed_extreme_lows": 464,
+        "buyside_sweeps": 291,
+        "sellside_sweeps": 221,
+        "candidate_bull_fvg": 144,
+        "candidate_bear_fvg": 164,
+        "inversions_bullish": 118,
+        "inversions_bearish": 103,
+        "retests_bullish": 81,
+        "retests_bearish": 71,
+        "sweep_expired": 1,
+        "candidate_expired": 73,
+        "retest_expired": 15
+      }
+    },
+    "17BY_M5_SWEEP_IFVG_RETEST": {
+      "timeframe_ms": 300000,
+      "metrics": {
+        "signals": 24,
+        "busy_skips": 0,
+        "spread_rejects": 0,
+        "trades": 24,
+        "distinct_days": 10,
+        "long": 17,
+        "short": 7,
+        "official_wins": 17,
+        "gross_profit": 5.71,
+        "gross_loss": -4.12,
+        "direct_net_usd": 1.35,
+        "exit_reasons": {
+          "STOP": 24,
+          "MAX_HOLD": 0,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_20": true,
+        "minimum_distinct_days_5": true,
+        "nonnegative_direct_net": true,
+        "screen_pass": true
+      },
+      "diagnostics": {
+        "bars": 3036,
+        "confirmed_extreme_highs": 131,
+        "confirmed_extreme_lows": 69,
+        "buyside_sweeps": 72,
+        "sellside_sweeps": 31,
+        "candidate_bull_fvg": 20,
+        "candidate_bear_fvg": 39,
+        "inversions_bullish": 27,
+        "inversions_bearish": 13,
+        "retests_bullish": 17,
+        "retests_bearish": 7,
+        "sweep_expired": 1,
+        "candidate_expired": 16,
+        "retest_expired": 5
+      }
+    }
+  },
+  "finding": {
+    "survivors": [
+      "17BY_M5_SWEEP_IFVG_RETEST"
+    ],
+    "decision": "ADVANCE_SIFVG_SURVIVOR",
+    "next": "R037_SWEEP_IFVG_INDEPENDENT_LATER_JAN_VALIDATION"
+  },
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "mql5_authorized": false
+}
