@@ -21,8 +21,8 @@
   },
   "in_flight_unit": {
     "unit": "R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_AND_SORB_READINESS_DECISION",
-    "status": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
+    "status": "RESULT_COMMITTED",
+    "phase_rank": 3,
     "parent_durable_unit": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A",
     "committed_artifacts": [
       {
@@ -32,9 +32,13 @@
       {
         "path": "research/delta/experiments/delta_r037_r032_specialist_parent_provenance_sorb_readiness_decision.py",
         "sha256": "62bcbd79b06467267bc08263e1a1c1c2e44c85983a78b9c09262a1d8a62c3dca"
+      },
+      {
+        "path": "research/delta/reference/DELTA_R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_DECISION_CHECKPOINT_14B.json",
+        "sha256": "c7df97c98589b42beff7d7ce5d53c176d434fe6dda5b9fb0499c65dae0bf17fe"
       }
     ],
-    "next_action": "Run the committed 14B decision producer. If result commits successfully, resume from RESULT_COMMITTED; do not rerun durable 14A."
+    "next_action": "Document 14B, write/read back workbook checkpoint, commit full manifest, then advance CURRENT_STATE last."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",

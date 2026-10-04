@@ -1,0 +1,33 @@
+{
+  "schema": "delta-r037-r032-specialist-parent-provenance-sorb-readiness-decision-14b-v1",
+  "status": "COMPLETE_PROVENANCE_LIMITED_PARENT_FREEZE_SURROGATE_SORB_LANE_AUTHORIZED",
+  "unit": "R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_AND_SORB_READINESS_DECISION",
+  "parent_checkpoint": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "all_four_specialist_recuts_exhausted": true,
+  "leading_scheduler": "BACKBONE_FIRST_FLAT_ONLY_CONFIG_ORDER",
+  "residual": {
+    "c00_specialist_entry_gap": -19,
+    "s11_increment_gap": 30,
+    "s08_increment_gap": 25,
+    "c03_increment_gap": 54,
+    "c03_total_trade_gap": 166,
+    "c03_official_win_gap": 18,
+    "c03_net_gap": -102.78
+  },
+  "decision": {
+    "claim_exact_historical_parent_parity": false,
+    "run_more_same_sample_historical_ownership_recuts": false,
+    "freeze_provenance_limited_parent": true,
+    "official_exact_parent_sorb_lane": "BLOCKED",
+    "authorize_non_promoting_surrogate_parent_sorb_stage_a_screen": true,
+    "surrogate_parent": "14A_BACKBONE_FIRST_C03_WITH_FROZEN_PROVENANCE_LIMITED_SPECIALISTS",
+    "surrogate_lane_can_promote_final_delta_candidate": false,
+    "reason": "All four specialist streams independently exhausted source-grounded reconstruction; 14A exact backbone plus scheduler localization isolates the remaining mismatch to unavailable historical specialist timing/ownership provenance. Continuing same-sample recuts would be retrospective fitting. Use the frozen 14A C03 surrogate only as a non-promoting research control so candidate families can be harvested without falsifying exact historical parity.",
+    "next": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN"
+  },
+  "sorb_integrated_replay_started": false,
+  "mql5_authorized": false
+}

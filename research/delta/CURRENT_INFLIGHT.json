@@ -4,8 +4,8 @@
   "branch": "delta",
   "unit": "R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_AND_SORB_READINESS_DECISION",
   "parent_durable_unit": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "phase": "RESULT_COMMITTED",
+  "phase_rank": 3,
   "prereg": {
     "path": "research/delta/reference/DELTA_R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_SORB_READINESS_EVIDENCE_14B.json",
     "sha256": "e3703f0caf1f64711d9fdaeaf54ce14dcaf673e3c5e323d013032bfb1cb3b83c"
@@ -14,7 +14,10 @@
     "path": "research/delta/experiments/delta_r037_r032_specialist_parent_provenance_sorb_readiness_decision.py",
     "sha256": "62bcbd79b06467267bc08263e1a1c1c2e44c85983a78b9c09262a1d8a62c3dca"
   },
-  "result": null,
+  "result": {
+    "path": "research/delta/reference/DELTA_R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_DECISION_CHECKPOINT_14B.json",
+    "sha256": "c7df97c98589b42beff7d7ce5d53c176d434fe6dda5b9fb0499c65dae0bf17fe"
+  },
   "report": null,
   "manifest": null,
   "timeout_recovery": {
