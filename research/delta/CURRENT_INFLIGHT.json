@@ -1,20 +1,20 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "IDLE",
+  "status": "ACTIVE",
   "branch": "delta",
-  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "unit": "R037_BOS_LIQUIDITY_SWEEP_RECLAIM_STAGE_A_SCREEN",
   "parent_durable_unit": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
-  "phase": "IDLE",
-  "phase_rank": 0,
+  "phase": "PREREG_COMMITTED",
+  "phase_rank": 1,
   "progress": {
-    "status": "IDLE",
+    "status": "ACTIVE",
     "last_completed": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
-    "current_candidate": null,
-    "next": "Harvest next independent entry source requiring confirmed post-event structural rejection/reclaim."
+    "current_candidate": "R037-BOSLS-v1",
+    "next": "Commit exact M5 SwingLength=5 BOS liquidity-sweep producer; verify Git blob; run one bounded Stage-A screen."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "LMJF 17AX is complete and retired; do not rerun. Harvest the next independent structural state-transition source.",
+    "resume_first_action": "BOSLS 17AY prereg is durable at commit 34ef5741861a41f52807986260b86847005c759f. Do not alter timeframe/swing length/profile. Resume from first missing producer/compute artifact.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
