@@ -1,0 +1,93 @@
+{
+  "schema": "delta-r037-avpbr-supply-calibrated-prereg-17br-17bt-v1",
+  "status": "PREREGISTERED_BEFORE_PRODUCER_AND_ECONOMIC_COMPUTE",
+  "unit": "R037_AVPBR_SUPPLY_CALIBRATED_STAGE_A_SCREEN_CHECKPOINT_17BR_17BT",
+  "parent_checkpoint": "R037_ACCUMULATION_VOLUME_PROFILE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BO_17BQ",
+  "family": "ACCUMULATION_VOLUME_PROFILE_BREAKOUT_POC_RETEST_CONTINUATION",
+  "calibration_firewall": {
+    "allowed_information": "Stage-A signal-side 20-bar range/ATR14 distribution only",
+    "prohibited_information": "No forward returns, wins, P&L, exit outcomes, side/session outcome slices, or economic result from the candidate mechanism was inspected to select the fixture.",
+    "observed_supply_scale": {
+      "M1": {
+        "min": 1.867,
+        "p10": 3.264,
+        "p25": 3.799,
+        "median": 4.508
+      },
+      "M5": {
+        "min": 2.356,
+        "p10": 3.283,
+        "p25": 3.799,
+        "median": 4.497
+      }
+    },
+    "selected_compression_multiple": 3.8,
+    "selection_reason": "Rounded common M1/M5 p25 ratio to create an operational but selective accumulation population before any economic test."
+  },
+  "source_basis": {
+    "tradingview": "Public open-source description: last-N range <= k*ATR starts accumulation; local volume-at-price profile; confirmed breakout freezes POC/VA; wait for POC-zone pullback; confirmed close back through POC triggers continuation; confirmed bars only.",
+    "source_defaults_claimed": false
+  },
+  "semantic_repair": {
+    "abandon_multiple_interpretation": "Project-defined: abandon when developing box height exceeds 1.5x its initial detected box height. The indexed source says 'abandon multiple' but does not expose numeric/source-code expression; this interpretation is explicit and frozen before economics.",
+    "reason": "The 17BO fixture applied abandon multiple to ATR despite the initial box itself requiring a much larger N-bar range/ATR ratio; that combination was internally inconsistent for an operational XAU accumulation box."
+  },
+  "fixtures": {
+    "atr_length": 14,
+    "range_lookback_bars": 20,
+    "compression_multiple": 3.8,
+    "min_box_bars": 20,
+    "max_box_bars": 40,
+    "abandon_initial_box_height_multiple": 1.5,
+    "profile_rows": 24,
+    "value_area_fraction": 0.7,
+    "poc_zone_fraction_of_box": 0.1,
+    "max_wait_bars": 20
+  },
+  "configs": [
+    {
+      "name": "17BR_C01_AVPBR_M1_CORE",
+      "bar_ms": 60000,
+      "htf_bias": false
+    },
+    {
+      "name": "17BS_C02_AVPBR_M5_CORE",
+      "bar_ms": 300000,
+      "htf_bias": false
+    },
+    {
+      "name": "17BT_C03_AVPBR_M1_H1_EMA_BIAS",
+      "bar_ms": 60000,
+      "htf_bias": true,
+      "htf_ms": 3600000,
+      "ema_length": 20
+    }
+  ],
+  "execution": {
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "commission_usd_each_side": 0.01
+  },
+  "gates": {
+    "minimum_trades": 20,
+    "minimum_distinct_days": 5,
+    "direct_net_usd_min": 0,
+    "advance_rule": "Advance unchanged profile only if all activity gates and nonnegative direct net pass."
+  },
+  "prohibited": [
+    "no further compression calibration if this operational screen fails economics",
+    "no threshold sweep",
+    "no session/side/weekday filter",
+    "no stop/trail/hold rescue",
+    "no August",
+    "no MQL5"
+  ],
+  "next_if_survivor": "R037_AVPBR_SURVIVOR_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_none": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
