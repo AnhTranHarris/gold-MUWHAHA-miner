@@ -1,0 +1,172 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH",
+  "status": "VERIFIED_STAGE_A_FAIL_FAMILY_RETIRED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG",
+  "hypothesis": "A causal confirmed-swing sweep -> CISD/state shift -> post-sweep FVG -> retrace/rejection sequence can suppress naked-sweep noise enough to produce viable frozen 30-second XAUUSD economics.",
+  "falsification_condition": "Fails if fewer than 12 trades, fewer than 4 distinct days, or direct net below -$1; strong pass requires nonnegative direct net.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "17AH SCFR Stage-A screen",
+    "reference_count": 947,
+    "minimum_count": 12,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true
+  },
+  "primary_metrics": {
+    "entry_quality": "431/947 official wins",
+    "hold_persistence": "30s frozen",
+    "economics": "-$187.74 direct net",
+    "gross_loss_drawdown": "gross loss -$285.20",
+    "activity": "947 trades / 14 distinct days"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_scfr_stage_a_17ah.py",
+      "commit": "0b34e4b28566d3976ba888d992f5ebb333a21837",
+      "blob_sha": "a4f65ba5d89fb27b559b277e5746515f2666a8fd",
+      "file_sha256": "b20df5826f380b20927f60202838b2ff70d3b073e72f13045791db3434027271"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "timeframe_seconds": 5,
+      "swing_width_bars": 2,
+      "cisd_max_bars": 6,
+      "fvg_max_bars_after_cisd": 2,
+      "retrace_max_bars": 6,
+      "max_spread_points": 25,
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "confirmed S5 swing",
+      "wick sweep + close back inside + reversal color",
+      "CISD through sweep-bar open",
+      "post-sweep reversal FVG",
+      "FVG-mid retrace/rejection",
+      "tick execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Stage-A source prescreen only"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_verified": "a4f65ba5d89fb27b559b277e5746515f2666a8fd"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH.json",
+      "blob_sha": "c299ab5cf454469788a21bd0179766463a94f9f1",
+      "official_raw_result_sha256": "1d7958a7512d99dc76b82da83634db0e360d954a8e027707d6ea32f74163f51e"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH.md",
+      "blob_sha": "f0f099128e8d738a8023ef63bb8978fa72372242"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "R037-SCFR-v1"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "qa": [
+    "Canonical January SHA verified.",
+    "Stage-A tick count 4,205,709 verified.",
+    "Exact committed producer blob verified before official compute.",
+    "Bounded official compute completed successfully under hard timeout.",
+    "Funnel 8,141 sweeps -> 7,500 CISD -> 3,137 FVG -> 947 retrace.",
+    "947 trades / 431 official wins / -$187.74 direct net.",
+    "Activity passed but preregistered economics gate failed decisively.",
+    "No numeric/post-hoc rescue used.",
+    "Workbook tab 70 A202:H209 readback PASS.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_scfr_stage_a_17ah.py",
+    "command": "python research/delta/experiments/delta_r037_scfr_stage_a_17ah.py --source <canonical_january_gzip> --output <17AH>",
+    "timing_semantics": "ordered ticks; completed S5 bars visible at right edge only; confirmed width-2 S5 swing; causal sweep/CISD/FVG/retrace sequence; execution first tick at/after rejection right edge",
+    "expected_fingerprints": {
+      "sweeps": 8141,
+      "cisd": 7500,
+      "fvg": 3137,
+      "retrace": 947,
+      "trades": 947,
+      "wins": 431,
+      "direct_net_usd": -187.74
+    },
+    "selected_interpretation": "RETIRE_S5_LOCAL_SCFR_NO_RETUNE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen",
+    "ownership_scheduler_spec": "not integrated",
+    "session_dst_spec": "frozen",
+    "risk_spec": "frozen",
+    "trade_count_parity_spec": "candidate retired",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG",
+  "drive_artifacts": [
+    {
+      "name": "working workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "70 R037 Prereg",
+      "range": "A202:H209",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "9e6e204e2fbf657a5cf3729e919b2ec25fa86c94",
+    "0b34e4b28566d3976ba888d992f5ebb333a21837",
+    "0405bbec05f984b8c901e7341b3a5f3b29e45eff",
+    "55198438dbdbfcf2d8271ff0c405e64481995be4"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
