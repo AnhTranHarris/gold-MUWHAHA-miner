@@ -1,0 +1,63 @@
+{
+  "schema": "delta-r037-london-orb-sweep-reclaim-reversal-prereg-17aa-v1",
+  "unit": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_PRESCREEN_17AA",
+  "checkpoint_target": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_CHECKPOINT_17AA",
+  "family": "R037-LORB-SRR-v1",
+  "status": "FROZEN_BEFORE_REPLAY",
+  "parent_durable_checkpoint": "R037_LONDON_OPENING_RANGE_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Z",
+  "purpose": "Test whether failed London opening-range breaks carry stronger immediate 30-second reversal economics than 17Z continuation entries.",
+  "source_basis": [
+    {
+      "source": "MQL5 Dynamic Session Range Sweep Detector",
+      "url": "https://www.mql5.com/en/code/76305",
+      "logic": "Locks a completed session range and defines a genuine liquidity sweep as a wick/pierce through the locked level followed by a close back inside."
+    },
+    {
+      "source": "MQL5 Session Range Breakout EA",
+      "url": "https://www.mql5.com/en/market/product/196804",
+      "logic": "Explicitly separates liquidity sweep-reversal from breakout-continuation across Asian/London transitions."
+    },
+    {
+      "source": "MQL5 breakout-trap discussion",
+      "url": "https://www.mql5.com/en/blogs/post/769680",
+      "logic": "Documents XAUUSD London-open breakout traps and rapid retracement through breakout levels."
+    }
+  ],
+  "frozen_common": {
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+    "range_window_utc": "07:00-08:00",
+    "event_window_utc": "08:00-10:00",
+    "range_price": "P75 Bid",
+    "sweep": "first strict tick beyond opening-range high or low",
+    "entry_direction": "opposite the swept side after causal reclaim",
+    "ownership": "one accepted reversal per UTC day; first sweep/reclaim sequence wins; no rearm",
+    "spread_gate": "<=25 P75 points",
+    "lifecycle": "0.01 lot; $0.30 stop; +$0.10 trail activation; $0.03 trail distance; 30s max hold; $0.02 RT commission"
+  },
+  "configs": {
+    "C01_FIRST_TICK_RECLAIM": "After first strict sweep, enter reversal on first later P75 Bid tick strictly back inside the swept boundary.",
+    "C02_FIRST_COMPLETED_S5_RECLAIM": "After sweep, require first completed S5 close back inside; execute first tick at/after close if still inside.",
+    "C03_FIRST_COMPLETED_S15_RECLAIM": "After sweep, require first completed S15 close back inside; execute first tick at/after close if still inside."
+  },
+  "stage_a_gate": {
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "direct_net_min_usd": -2,
+    "strong_screen_requires_direct_net_nonnegative": true
+  },
+  "selection_rule": "Advance only strong-pass config; prefer net, official wins, activity. No rescue tuning.",
+  "forbidden": [
+    "sweep-distance threshold",
+    "range-duration/window tuning",
+    "side/day filters",
+    "ATR/EMA/news filters",
+    "exit tuning",
+    "August",
+    "MQL5"
+  ],
+  "next_if_strong_pass": "R037_LORB_SRR_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_no_pass": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
