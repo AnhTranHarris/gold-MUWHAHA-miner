@@ -1,0 +1,22 @@
+{
+  "schema": "delta-r037-avpbr-stage-a-17bo-17bq-v1",
+  "status": "COMPLETE_FAST_CAUSAL_PRESCREEN",
+  "unit": "R037_ACCUMULATION_VOLUME_PROFILE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BO_17BQ",
+  "parent_checkpoint": "R037_PVACVD_FAILED_AUCTION_STAGE_A_SCREEN_CHECKPOINT_17BL_17BN",
+  "prereg_commit": "1c522c43631d9c11792673df07269a5c4b1f35cc",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "signal_surface": "NATIVE_DUKAS_M1_M5_ACCUMULATION_PROFILE",
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "numeric_retuning": false,
+  "source_defaults_claimed": false,
+  "august_accessed": false,
+  "fixtures": {"atr_length":14,"lookback":20,"compression_multiple":1.5,"min_box_bars":5,"max_box_bars":40,"abandon_multiple":2.0,"profile_rows":24,"value_area_fraction":0.7,"poc_zone_fraction":0.1,"max_wait_bars":20},
+  "configs": {
+    "17BO_C01_AVPBR_M1_CORE": {"timeframe_ms":60000,"htf_bias":false,"metrics":{"signals":0,"busy_skips":0,"spread_rejects":0,"trades":0,"distinct_days":0,"long":0,"short":0,"official_wins":0,"gross_profit":0.0,"gross_loss":0.0,"direct_net_usd":0.0,"exit_reasons":{"STOP":0,"MAX_HOLD":0,"END":0}},"gate":{"minimum_trades_20":false,"minimum_distinct_days_5":false,"nonnegative_direct_net":true,"screen_pass":false},"event_diagnostics":{"compression_starts":0,"abandoned":0,"breakouts":0,"htf_rejects":0,"pullback_touches":0,"far_edge_invalidations":0,"wait_expiries":0,"signals_long":0,"signals_short":0}},
+    "17BP_C02_AVPBR_M5_CORE": {"timeframe_ms":300000,"htf_bias":false,"metrics":{"signals":0,"busy_skips":0,"spread_rejects":0,"trades":0,"distinct_days":0,"long":0,"short":0,"official_wins":0,"gross_profit":0.0,"gross_loss":0.0,"direct_net_usd":0.0,"exit_reasons":{"STOP":0,"MAX_HOLD":0,"END":0}},"gate":{"minimum_trades_20":false,"minimum_distinct_days_5":false,"nonnegative_direct_net":true,"screen_pass":false},"event_diagnostics":{"compression_starts":0,"abandoned":0,"breakouts":0,"htf_rejects":0,"pullback_touches":0,"far_edge_invalidations":0,"wait_expiries":0,"signals_long":0,"signals_short":0}},
+    "17BQ_C03_AVPBR_M1_H1_EMA_BIAS": {"timeframe_ms":60000,"htf_bias":true,"metrics":{"signals":0,"busy_skips":0,"spread_rejects":0,"trades":0,"distinct_days":0,"long":0,"short":0,"official_wins":0,"gross_profit":0.0,"gross_loss":0.0,"direct_net_usd":0.0,"exit_reasons":{"STOP":0,"MAX_HOLD":0,"END":0}},"gate":{"minimum_trades_20":false,"minimum_distinct_days_5":false,"nonnegative_direct_net":true,"screen_pass":false},"event_diagnostics":{"compression_starts":0,"abandoned":0,"breakouts":0,"htf_rejects":0,"pullback_touches":0,"far_edge_invalidations":0,"wait_expiries":0,"signals_long":0,"signals_short":0}}
+  },
+  "finding":{"survivors":[],"decision":"FIXTURE_FEASIBILITY_FAIL_ECONOMICS_NOT_TESTED","next":"R037_AVPBR_SUPPLY_CALIBRATED_STAGE_A_SCREEN"},
+  "mql5_authorized": false
+}
