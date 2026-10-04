@@ -1,0 +1,179 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_ASIAN_RANGE_LONDON_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Y",
+  "status": "VERIFIED_NO_SURVIVOR_SUPPLY_FAIL_POSITIVE_CLOSE_CONFIRMATION_CLUE",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_CHECKPOINT_17X",
+  "hypothesis": "Gold's 00:00-06:00 UTC Asian range may produce a usable 30-second expansion signal during 06:00-10:00, with completed-close confirmation potentially reducing fakeouts.",
+  "falsification_condition": "All preregistered timing semantics fail minimum supply or economic gates.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "17Y Stage-A source supply",
+    "reference_count": 6,
+    "minimum_count": 8,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Preregistered minimum proposals 8; family failed supply."
+  },
+  "primary_metrics": {
+    "entry_quality": "official wins/direct net",
+    "hold_persistence": "30s frozen",
+    "economics": "source-only direct net",
+    "gross_loss_drawdown": "not promotion-tested",
+    "activity": "proposals/distinct days"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_asian_range_london_breakout_17y.py",
+      "commit": "2c09cba955e9da76c58bb1ca7ef8634ec1f9d018",
+      "blob_sha": "0f515d7132cd6a2385d0603d18da34e60acfb462",
+      "file_sha256": "9e131095f0b8fe0b676eb8608015129e584c5cc8451958df040161d3a2e88679"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "range_utc": "00:00-06:00",
+      "breakout_utc": "06:00-10:00",
+      "configs": [
+        "C01_FIRST_STRICT_TICK",
+        "C02_FIRST_COMPLETED_S5_CLOSE",
+        "C03_FIRST_COMPLETED_S15_CLOSE"
+      ],
+      "buffer": "zero",
+      "one_trade_per_day": true,
+      "numeric_retuning": false,
+      "max_hold_seconds": 30
+    },
+    "feature_order": [
+      "Asian range",
+      "breakout timing semantic",
+      "spread gate",
+      "30s lifecycle"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "2026-01-01T00:00Z/2026-01-18T12:00Z"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Stage-A prescreen"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas"
+    ],
+    "crash_safety": {
+      "timeout_seconds": 60,
+      "atomic_output": "NamedTemporaryFile + fsync + os.replace",
+      "exact_git_blob_verified": true,
+      "result_sha256": "faacf626ddcc9640893ebd746d7fa6d5527377984b8d78e5657b1513ac5f9fc0"
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "17Y prereg",
+      "path": "research/delta/reference/DELTA_R037_ASIAN_RANGE_LONDON_BREAKOUT_PREREG_17Y.json",
+      "commit": "8ea57494b5d4bb6b8dd072b00a45bdb71adffa9b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_ASIAN_RANGE_LONDON_BREAKOUT_CHECKPOINT_17Y.json",
+      "commit": "e36f3c454ac335a6599c01785c8069ca3e0b9848"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "C01",
+      "C02",
+      "C03"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "qa": [
+    "Canonical January hash and 4,205,709 Stage-A ticks verified.",
+    "Committed producer blob matched local compute bytes exactly.",
+    "C01 6 trades/4 wins/-$0.55.",
+    "C02 6/3/+$0.25.",
+    "C03 6/4/+$0.27.",
+    "All failed preregistered minimum-8 supply gate; no gate retune.",
+    "Workbook 70 R037 Prereg A129:H135 readback PASS.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_asian_range_london_breakout_17y.py",
+    "command": "python ... --source <canonical_jan> --output <17Y.json>",
+    "timing_semantics": "P75 Bid 00:00-06:00 range, 06:00-10:00 first break, one/day, tick/S5/S15 trigger variants.",
+    "expected_fingerprints": {
+      "C01": {
+        "trades": 6,
+        "wins": 4,
+        "net": -0.55
+      },
+      "C02": {
+        "trades": 6,
+        "wins": 3,
+        "net": 0.25
+      },
+      "C03": {
+        "trades": 6,
+        "wins": 4,
+        "net": 0.27
+      }
+    },
+    "selected_interpretation": "NO_SURVIVOR_SUPPLY_FAIL_CLOSE_CONFIRMATION_FORENSIC_CLUE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen P75",
+    "ownership_scheduler_spec": "one/day",
+    "session_dst_spec": "UTC fixed research window",
+    "risk_spec": "0.01 lot frozen",
+    "trade_count_parity_spec": "not eligible",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_CHECKPOINT_17X",
+  "drive_artifacts": [
+    {
+      "name": "working workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "70 R037 Prereg",
+      "range": "A129:H135",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "8ea57494b5d4bb6b8dd072b00a45bdb71adffa9b",
+    "2c09cba955e9da76c58bb1ca7ef8634ec1f9d018",
+    "e36f3c454ac335a6599c01785c8069ca3e0b9848"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
