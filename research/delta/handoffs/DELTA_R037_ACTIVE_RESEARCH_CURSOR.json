@@ -1,0 +1,28 @@
+{
+  "schema": "delta-r037-active-research-cursor-v1",
+  "status": "PRODUCER_COMMITTED_COMPUTE_PENDING",
+  "updated_utc": "2026-10-04",
+  "branch": "delta",
+  "last_verified_durable_unit": "R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ",
+  "current_incomplete_unit": "R037_QUOTE_PROPAGATION_LEADER_FOLLOWER_STAGE_A_SCREEN_17BA",
+  "current_family": "R037-QPLF-v1",
+  "preregistration": {
+    "path": "research/delta/reference/DELTA_R037_QPLF_STAGE_A_PREREG_17BA.json",
+    "commit": "ee771014b206b3e1a9f77777bfaf46b662168461"
+  },
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_qplf_stage_a_17ba.py",
+    "commit": "e40480d6ca6d004daf032831524ac3d068a301ed",
+    "blob_sha": "6412fff9ee24d3f40638c7b09e1099d046c17592"
+  },
+  "official_compute": {
+    "status": "PENDING",
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "expected_stage_a_ticks": 4205709,
+    "hard_timeout_seconds": 120,
+    "output_path": "research/delta/reference/DELTA_R037_QPLF_STAGE_A_CHECKPOINT_17BA.json"
+  },
+  "restart_rule": "If chat/message delivery fails now, do NOT restart prior checkpoints. Re-read CURRENT_STATE.json and this cursor. If CURRENT_STATE remains at 17AZ and this cursor says compute pending, run exactly the committed 17BA producer once against canonical January Stage-A, then persist result/report/manifest before advancing CURRENT_STATE.",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
