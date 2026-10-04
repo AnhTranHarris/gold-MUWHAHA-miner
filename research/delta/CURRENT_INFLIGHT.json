@@ -2,20 +2,20 @@
   "schema": "delta-timeout-recovery-inflight-v1",
   "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-  "parent_durable_unit": "R037_ASIAN_RANGE_LONDON_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Y",
+  "unit": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_PRESCREEN_17AA",
+  "parent_durable_unit": "R037_LONDON_OPENING_RANGE_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Z",
   "phase": "IDLE",
   "phase_rank": 0,
   "progress": {
-    "status": "READY_FOR_NEXT_UNIQUE_PREREG",
-    "last_completed": "R037_ASIAN_RANGE_LONDON_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Y",
-    "last_decision": "RETIRE_FAMILY_NO_RETUNE_KEEP_CLOSE_CONFIRMATION_AS_FORENSIC_CLUE",
-    "next": "Research and preregister the next independent source; do not retune or rerun 17Y."
+    "status": "READY_FOR_PREREG",
+    "last_completed": "R037_LONDON_OPENING_RANGE_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Z",
+    "last_decision": "NO_PROMOTION_FREEZE_AS_REVERSAL_RECOMBINATION_CLUE",
+    "next": "Preregister 17AA London ORB sweep-reclaim reversal."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read CURRENT_STATE; 17Y is durable. Start only the next unique preregistered unit.",
-    "idempotency_rule": "Reconcile branch before every write; completed 17Y artifacts are authoritative."
+    "resume_first_action": "Read CURRENT_STATE; 17Z durable; start 17AA only.",
+    "idempotency_rule": "Do not rerun 17Z."
   },
   "last_verified_ci": {
     "commit": "854baf7239bb88d2deb1d6ed8564fdaffe402112",
@@ -26,9 +26,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_ASIAN_RANGE_LONDON_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Y",
-    "checkpoint": "R037_ASIAN_RANGE_LONDON_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Y",
-    "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "manifest": "research/delta/artifacts/DELTA_R037_ASIAN_RANGE_LONDON_BREAKOUT_CHECKPOINT_17Y_MANIFEST.json"
+    "unit": "R037_LONDON_OPENING_RANGE_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Z",
+    "checkpoint": "R037_LONDON_OPENING_RANGE_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Z",
+    "current_state_next": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_PRESCREEN_17AA",
+    "manifest": "research/delta/artifacts/DELTA_R037_LONDON_OPENING_RANGE_BREAKOUT_CHECKPOINT_17Z_MANIFEST.json"
   }
 }
