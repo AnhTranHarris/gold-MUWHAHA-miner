@@ -1,0 +1,37 @@
+{
+  "schema": "delta-r037-quasimodo-source-default-stage-a-17ca-17cb-v1",
+  "status": "COMPLETE_FAST_CAUSAL_PRESCREEN",
+  "unit": "R037_QUASIMODO_SOURCE_DEFAULT_STAGE_A_SCREEN_CHECKPOINT_17CA_17CB",
+  "family": "R037-QM-v1",
+  "parent_checkpoint": "R037_SWEEP_IFVG_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17BZ",
+  "prereg_commit": "15155390a68b3e3eb53147737f735b34083d0030",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "source_defaults": {
+    "swing_lookback_each_side": 5,
+    "entry_buffer_points": 0,
+    "wait_for_rejection_close": false,
+    "max_wait_bars": 30,
+    "skip_shared_shoulder": true,
+    "require_prior_trend": true,
+    "trend_pivots": 2
+  },
+  "configs": {
+    "17CA_M5_QM_SOURCE_DEFAULT": {
+      "timeframe_ms": 300000,
+      "metrics": {"signals": 6,"trades": 6,"busy_skips": 0,"spread_rejects": 0,"distinct_days": 3,"long": 1,"short": 5,"official_wins": 4,"gross_profit": 1.51,"gross_loss": -1.04,"direct_net_usd": 0.41,"exit_reasons": {"STOP": 6,"MAX_HOLD": 0,"END": 0}},
+      "gate": {"minimum_trades_20": false,"minimum_distinct_days_5": false,"nonnegative_direct_net": true,"screen_pass": false},
+      "diagnostics": {"bars": 3036,"confirmed_highs": 177,"confirmed_lows": 170,"same_type_replacements": 30,"alternating_appends": 289,"bearish_patterns": 28,"bullish_patterns": 27,"prior_trend_rejects": 35,"shared_shoulder_rejects": 2,"armed": 18,"superseded": 0,"expired": 10,"head_invalidations": 2,"retrace_entries": 6}
+    },
+    "17CB_M15_QM_SOURCE_DEFAULT": {
+      "timeframe_ms": 900000,
+      "metrics": {"signals": 1,"trades": 1,"busy_skips": 0,"spread_rejects": 0,"distinct_days": 1,"long": 0,"short": 1,"official_wins": 0,"gross_profit": 0.0,"gross_loss": -0.75,"direct_net_usd": -0.76,"exit_reasons": {"STOP": 1,"MAX_HOLD": 0,"END": 0}},
+      "gate": {"minimum_trades_20": false,"minimum_distinct_days_5": false,"nonnegative_direct_net": false,"screen_pass": false},
+      "diagnostics": {"bars": 1012,"confirmed_highs": 60,"confirmed_lows": 70,"same_type_replacements": 17,"alternating_appends": 102,"bearish_patterns": 15,"bullish_patterns": 12,"prior_trend_rejects": 18,"shared_shoulder_rejects": 1,"armed": 8,"superseded": 0,"expired": 3,"head_invalidations": 3,"retrace_entries": 1}
+    }
+  },
+  "finding": {"survivors": [],"decision": "RETIRE_QM_NO_STAGE_A_SURVIVOR","next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"},
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "mql5_authorized": false
+}
