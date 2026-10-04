@@ -6,7 +6,7 @@ from numba import njit
 DAY=86400000;TICK=10;SCALE=1000;END=1768737600000
 US=1772953200000;UK=1774746000000;P75=np.asarray([20,20,21,21],np.int64)
 SHA='d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5';PREREG='8acec24b7ccf3bbbf30f5733fe45ccefa3b73a83'
-K=603;N_G=1440;BETA=4.6001;C=math.sqrt(2/math.pi)
+K=603;N_G=1440;GUMBEL_CRITICAL=4.6001;C=math.sqrt(2/math.pi)
 MAX_SPREAD=250;STOP=300;TRAIL_ACT=100;TRAIL_DIST=30;MAX_HOLD=30
 
 def sha(p):
@@ -49,7 +49,7 @@ def lm_events(t,end,close):
   lo=i-K+2;sm=cs[i]-cs[lo];sig=math.sqrt(sm/(K-2)) if sm>0 else 0.
   if sig<=0:continue
   L=abs(r[i])/sig;z=(L-cn)/sn
-  if z>BETA:
+  if z>GUMBEL_CRITICAL:
    j=int(np.searchsorted(t,end[i],side='left'))
    if j>=len(t):continue
    ei.append(j);es.append(-1 if r[i]>0 else 1);stat.append(z);abps.append(abs(r[i])*10000.)
@@ -106,6 +106,6 @@ def main():
  if gate['screen_pass']:leader='C01_M1_LM99_JUMP_FADE';decision='ADVANCE_LMJF_C01_INDEPENDENT_LATER_JAN_VALIDATION';nxt='R037_LMJF_C01_INDEPENDENT_LATER_JAN_VALIDATION'
  else:leader=None;decision='RETIRE_LMJF_STAGE_A_NO_EXECUTABLE_SURVIVOR';nxt='R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST'
  et=t[idx] if idx.size else np.empty(0,np.int64);g=np.diff(et).astype(np.float64)/1000 if et.size>1 else np.empty(0)
- out={'schema':'delta-r037-lmjf-stage-a-screen-17ax-v1','status':'COMPLETE_STAGE_A_SCREEN','unit':'R037_LEE_MYKLAND_JUMP_FADE_STAGE_A_SCREEN','family':'R037-LMJF-v1','parent_checkpoint':'R037_DCOS_STAGE_A_SCREEN_CHECKPOINT_17AW','prereg_commit':PREREG,'source_sha256':h,'stage_a_ticks':int(len(t)),'signal_surface':'NATIVE_DUKAS_M1_MID','execution_surface':'DUKAS_COINEXX_LIKE_P75','jump_test':{'bar_seconds':60,'K':K,'n_gumbel':N_G,'beta_99':BETA,'c':C,'profile':'fade jump sign'},'numeric_retuning':False,'august_accessed':False,'diagnostics':{'m1_bars':int(len(bc)),'jump_signals':int(idx.size),'signals_per_day':float(idx.size/14),'jump_stat_quantiles':qs(z),'jump_abs_return_bps_quantiles':qs(bps),'inter_event_seconds_quantiles':qs(g)},'configs':{'C01_M1_LM99_JUMP_FADE':{'metrics':met,'gate':gate}},'finding':{'leading_config':leader,'decision':decision,'next':nxt},'mql5_authorized':False}
+ out={'schema':'delta-r037-lmjf-stage-a-screen-17ax-v1','status':'COMPLETE_STAGE_A_SCREEN','unit':'R037_LEE_MYKLAND_JUMP_FADE_STAGE_A_SCREEN','family':'R037-LMJF-v1','parent_checkpoint':'R037_DCOS_STAGE_A_SCREEN_CHECKPOINT_17AW','prereg_commit':PREREG,'source_sha256':h,'stage_a_ticks':int(len(t)),'signal_surface':'NATIVE_DUKAS_M1_MID','execution_surface':'DUKAS_COINEXX_LIKE_P75','jump_test':{'bar_seconds':60,'K':K,'n_gumbel':N_G,'gumbel_critical_99':GUMBEL_CRITICAL,'c':C,'profile':'fade jump sign'},'numeric_retuning':False,'august_accessed':False,'diagnostics':{'m1_bars':int(len(bc)),'jump_signals':int(idx.size),'signals_per_day':float(idx.size/14),'jump_stat_quantiles':qs(z),'jump_abs_return_bps_quantiles':qs(bps),'inter_event_seconds_quantiles':qs(g)},'configs':{'C01_M1_LM99_JUMP_FADE':{'metrics':met,'gate':gate}},'finding':{'leading_config':leader,'decision':decision,'next':nxt},'mql5_authorized':False}
  atomic(a.output,out);print(json.dumps({'diagnostics':out['diagnostics'],'metrics':met,'gate':gate,'finding':out['finding']},separators=(',',':')))
 if __name__=='__main__':main()
