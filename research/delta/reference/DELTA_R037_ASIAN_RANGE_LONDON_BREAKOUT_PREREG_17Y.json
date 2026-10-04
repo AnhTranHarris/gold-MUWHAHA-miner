@@ -1,0 +1,64 @@
+{
+  "schema": "delta-r037-asian-range-london-breakout-prereg-17y-v1",
+  "unit": "R037_ASIAN_RANGE_LONDON_BREAKOUT_STAGE_A_SCREEN_17Y",
+  "checkpoint_target": "R037_ASIAN_RANGE_LONDON_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Y",
+  "family": "R037-ARLB-v1",
+  "status": "FROZEN_BEFORE_REPLAY",
+  "parent_durable_checkpoint": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_CHECKPOINT_17X",
+  "purpose": "Test a causally independent, gold-specific Asian-session compression -> London expansion entry source with natural one-trade-per-day density under the frozen 30-second lifecycle.",
+  "source_basis": [
+    {
+      "source": "MQL5 SessionRangeBreakout",
+      "url": "https://www.mql5.com/en/code/72882",
+      "logic": "Gold-specific public indicator builds 00:00-06:00 overnight range, waits for breakout until 10:00, one trade/day maximum; published author reports XAUUSD M15 use."
+    },
+    {
+      "source": "MQL5 GoldLondonBreakout",
+      "url": "https://www.mql5.com/en/code/75586",
+      "logic": "Gold-specific public EA measures Asian range and trades whichever side breaks during London using OCO logic."
+    },
+    {
+      "source": "TradingView GOLD Asian Range Breakout Signals",
+      "url": "https://www.tradingview.com/script/rCMX1vGE-GOLD-Asian-Range-Breakout-Signals/",
+      "logic": "Open-source gold script confirms London breakouts relative to Asian high/low; supports completed-close semantics."
+    }
+  ],
+  "frozen_common": {
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+    "range_window_utc": "00:00:00-06:00:00",
+    "breakout_window_utc": "06:00:00-10:00:00",
+    "range_price": "P75 Bid high/low formed only from ticks in the completed 00:00-06:00 UTC interval",
+    "ownership": "one accepted source trade per UTC day maximum; first chronological side wins; no rearm",
+    "spread_gate": "<=25 P75 points at executable entry tick",
+    "lifecycle": "0.01 lot; $0.30 stop; +$0.10 trail activation; $0.03 trail distance; 30s max hold; $0.02 round-trip commission",
+    "breakout_buffer": "ZERO_BUFFER_CAUSAL_BASELINE because public pages expose configurable buffer but no unambiguous broker-independent default"
+  },
+  "configs": {
+    "C01_FIRST_STRICT_TICK": "First P75 Bid tick strictly above Asian high => BUY, or strictly below Asian low => SELL.",
+    "C02_FIRST_COMPLETED_S5_CLOSE": "First completed causal S5 bar in breakout window closing strictly beyond Asian high/low; enter first executable tick at/after bar edge if still beyond.",
+    "C03_FIRST_COMPLETED_S15_CLOSE": "Same as C02 using S15 completed close; faster than source M15 chart but remains within frozen short-horizon research while testing close confirmation."
+  },
+  "stage_a_gate": {
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "direct_net_min_usd": -2,
+    "strong_screen_requires_direct_net_nonnegative": true
+  },
+  "selection_rule": "Advance only a config that passes all supply/economic prescreen gates; prefer higher direct net, then more official wins, then more accepted trades. No post-result semantic or numeric rescue.",
+  "forbidden": [
+    "range-width fitting or 300-2000 point filter until broker-point semantics are independently normalized",
+    "breakout-buffer sweep",
+    "hour/session optimization",
+    "weekday filters",
+    "EMA/ATR trend filters",
+    "side split",
+    "exit tuning",
+    "August",
+    "MQL5"
+  ],
+  "next_if_strong_pass": "R037_ARLB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_no_pass": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
