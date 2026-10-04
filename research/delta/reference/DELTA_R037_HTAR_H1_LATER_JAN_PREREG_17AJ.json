@@ -1,0 +1,44 @@
+{
+  "schema": "delta-r037-htar-h1-later-jan-prereg-17aj-v1",
+  "unit": "R037_HTAR_H1_INDEPENDENT_LATER_JAN_VALIDATION",
+  "checkpoint": "17AJ",
+  "status": "PREREGISTERED_BEFORE_OFFICIAL_COMPUTE",
+  "parent_checkpoint": "R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI",
+  "candidate": "R037-HTAR-C01_H1_ANCHOR",
+  "frozen_from_stage_a": {
+    "anchor_seconds": 3600,
+    "anchor_swing_width_bars": 1,
+    "ltf_seconds": 5,
+    "cisd_max_bars": 6,
+    "fvg_max_bars_after_cisd": 2,
+    "retrace_max_bars_after_fvg": 6,
+    "max_spread_points": 25,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30
+  },
+  "validation_window": {
+    "warmup_start_utc": "2026-01-14T00:00:00Z",
+    "economics_start_utc": "2026-01-18T12:00:00Z",
+    "end_exclusive_utc": "2026-02-01T00:00:00Z"
+  },
+  "gate": {
+    "minimum_proposals": 6,
+    "minimum_trades": 5,
+    "minimum_distinct_days": 4,
+    "direct_net_nonnegative": true,
+    "decision": "all gates must pass to freeze unchanged and advance month-by-month"
+  },
+  "restrictions": [
+    "no retuning",
+    "no side/session/weekday filter",
+    "no H4 rescue",
+    "no exit tuning",
+    "no August",
+    "no MQL5"
+  ],
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
