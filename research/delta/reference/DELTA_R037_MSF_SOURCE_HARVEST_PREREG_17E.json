@@ -1,0 +1,119 @@
+{
+  "schema": "delta-r037-msf-source-harvest-prereg-v1",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "family": "R037-MSF-v1",
+  "status": "FROZEN_BEFORE_STAGE_A_REPLAY",
+  "parent_checkpoint": "R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D",
+  "purpose": "Test whether a causal close-confirmed market-structure transition that creates a same-direction three-candle fair-value gap, followed by the first later midpoint-confirmed retest, can time the next 30 seconds better than the retired oscillator/channel families.",
+  "independence": [
+    "No session range.",
+    "No previous-day level or sweep.",
+    "No volatility-compression prerequisite.",
+    "No Donchian/price-channel breakout.",
+    "No RSI or stochastic state/transition.",
+    "Entry requires swing-structure break + same-break-bar FVG + later retest/rejection."
+  ],
+  "public_logic_sources": [
+    {
+      "source": "MetaQuotes MQL5 Article 18669 — Fair Value Gaps, Breakers and Market Structure Shifts",
+      "url": "https://www.mql5.com/en/articles/18669",
+      "disclosed_logic": "Three-candle FVG/imbalance, market-structure shift from breaking the last high/low, lower-timeframe scalping sequence, and GOLD emphasis.",
+      "role": "Primary reconstructible FVG + MSS source."
+    },
+    {
+      "source": "MetaQuotes Code Base 74575 — Market Structure SMC",
+      "url": "https://www.mql5.com/en/code/74575",
+      "disclosed_logic": "N-bar fractal swings, close-confirmed BOS/CHoCH, standard three-candle FVGs.",
+      "role": "Primary objective swing/BOS/CHoCH definition."
+    },
+    {
+      "source": "TradingView — Fair Value Gap Strategy with Break of Structure Confirmation",
+      "url": "https://www.tradingview.com/script/jyhTizLX-Fair-Value-Gap-Strategy-with-Break-of-Structure-Confirmation/",
+      "disclosed_logic": "Bullish FVG when candle-1 high is below candle-3 low, bearish inverse; FVG conditioned on confirmed structure break.",
+      "role": "Community corroboration."
+    },
+    {
+      "source": "ForexFactory — MT4 market-structure-shift/FVG implementation discussion",
+      "url": "https://www.forexfactory.com/thread/1277442-looking-for-an-mt4-indicator-coder-paid-work",
+      "disclosed_logic": "Closed-candle structure shift, imbalance/FVG after fast directional move, retrace into FVG for continuation.",
+      "role": "Community implementation corroboration."
+    }
+  ],
+  "structure_semantics": {
+    "swing": "symmetric two-bar confirmed swing high/low (five-bar fractal), revealed only after two right-side completed bars",
+    "structure_break": "completed Bid-bar close beyond latest revealed swing; each swing identity breaks once",
+    "classification": "CHOCH if break side opposes previous confirmed structure-break side; BOS if it agrees; initial unclassified break establishes state only",
+    "fvg": "same completed structure-break bar must form standard three-candle same-direction gap",
+    "retest": "first later completed bar overlapping gap and closing back through its 50% consequent-encroachment midpoint in structural direction",
+    "invalidation": "full close through far FVG boundary, opposite structure break, or newer same-side qualifying event",
+    "proposal_timing": "first executable tick at or after completed retest-bar right edge"
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "ticks": 4205709
+  },
+  "configs": {
+    "R037-MSF-C01_M1_CHOCH_FVG_RETEST": {
+      "timeframe": "M1",
+      "structure_class": "CHOCH",
+      "trigger": "same-break-bar bullish/bearish FVG then first later midpoint-confirmed retest"
+    },
+    "R037-MSF-C02_M1_BOS_FVG_RETEST": {
+      "timeframe": "M1",
+      "structure_class": "BOS",
+      "trigger": "same-break-bar bullish/bearish FVG then first later midpoint-confirmed retest"
+    },
+    "R037-MSF-C03_M5_CHOCH_FVG_RETEST": {
+      "timeframe": "M5",
+      "structure_class": "CHOCH",
+      "trigger": "same-break-bar bullish/bearish FVG then first later midpoint-confirmed retest"
+    },
+    "R037-MSF-C04_M5_BOS_FVG_RETEST": {
+      "timeframe": "M5",
+      "structure_class": "BOS",
+      "trigger": "same-break-bar bullish/bearish FVG then first later midpoint-confirmed retest"
+    }
+  },
+  "execution": {
+    "proposal_entry": "first executable tick at/after completed retest bar edge",
+    "spread_gate_points_max": 25,
+    "parent_same_tick_priority": true,
+    "blocked_event_deferred": false,
+    "candidate_rearm": "one proposal per armed structure/FVG event; consumed on first confirmed retest",
+    "one_position_at_a_time": true,
+    "lot": 0.01,
+    "stop_usd": 0.3,
+    "trail_activation_usd": 0.1,
+    "trail_distance_usd": 0.03,
+    "max_hold_seconds": 30,
+    "commission_round_trip_usd": 0.02
+  },
+  "screen_gate": {
+    "reuse": "Frozen R037 independent-source Stage-A screen.",
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "minimum_incremental_accepted_entries": 5,
+    "combined_trade_count_not_lower": true,
+    "winner_or_quality_gate": "official-win delta nonnegative OR positive net with improved gross loss",
+    "net_delta_min_usd": -2,
+    "max_balance_and_equity_dd_deterioration_pct": 1,
+    "strong_pass": "all gates plus net delta >= 0"
+  },
+  "forbidden": [
+    "swing width tuning after result",
+    "FVG midpoint/retest rule tuning after result",
+    "timeframe added after result",
+    "session filter after result",
+    "posthoc long/short split",
+    "posthoc candidate merge",
+    "candidate-specific exit tuning",
+    "August",
+    "MQL5"
+  ],
+  "next_if_strong_pass": "R037_MSF_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_no_strong_pass": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
