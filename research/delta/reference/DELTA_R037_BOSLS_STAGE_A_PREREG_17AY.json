@@ -1,0 +1,54 @@
+{
+  "schema": "delta-r037-bosls-stage-a-prereg-17ay-v1",
+  "status": "PREREGISTERED",
+  "unit": "R037_BOS_LIQUIDITY_SWEEP_RECLAIM_STAGE_A_SCREEN",
+  "family": "R037-BOSLS-v1",
+  "parent_checkpoint": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
+  "research_question": "Does a completed M5 liquidity sweep that rejects a confirmed swing in the direction implied by the latest BOS regime create enough residual 30-second reversal/continuation edge to survive P75 execution?",
+  "source_basis": [
+    "MetaQuotes MQL5 Part 46 defines SwingLength=5, labels HH/HL/LH/LL, sets bullish BOS on HH and bearish BOS on LL.",
+    "The source bullish setup requires bullish BOS, prior swing low swept by the completed bar low, close back above that swing low, and close above open; bearish setup mirrors the logic.",
+    "TradingView open-source swing-sweep logic independently uses wick beyond a confirmed swing followed by close back inside as a false-break/reclaim event."
+  ],
+  "frozen_signal": {
+    "timeframe_seconds": 300,
+    "swing_length": 5,
+    "swing_confirmation": "symmetric 2-left / 2-right completed M5 bars",
+    "trend_state": "latest confirmed higher-high => bullish BOS; latest confirmed lower-low => bearish BOS",
+    "bullish_event": "bullish BOS + completed M5 low below current confirmed swing low + close above swing low + close above open",
+    "bearish_event": "bearish BOS + completed M5 high above current confirmed swing high + close below swing high + close below open",
+    "direction": "BUY bullish SSL reclaim; SELL bearish BSL reclaim",
+    "entry": "first executable P75 tick at/after completed sweep-bar right edge"
+  },
+  "frozen_execution": {
+    "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01,
+    "one_position_at_a_time": true
+  },
+  "gates": {
+    "minimum_trades": 20,
+    "minimum_distinct_days": 5,
+    "ordinary_direct_net_usd": -1,
+    "strong_direct_net_usd": 0
+  },
+  "prohibited": [
+    "swing-length sweep",
+    "timeframe sweep",
+    "wick-depth/ATR filter rescue",
+    "session/side/weekday rescue",
+    "extra confirmation overlays",
+    "exit retuning",
+    "August access",
+    "MQL5 translation"
+  ],
+  "failure_rule": "If the single M5 SwingLength=5 source-faithful profile fails supply/day or direct-net gate, retire BOSLS rather than rescue it on Stage-A.",
+  "advance_rule": "If it passes, freeze unchanged for independent later-January validation.",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
