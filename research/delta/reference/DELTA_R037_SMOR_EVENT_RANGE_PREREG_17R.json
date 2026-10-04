@@ -1,0 +1,29 @@
+{
+  "schema": "delta-r037-smor-event-range-prereg-v1",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "checkpoint_target": "R037_SMOR_EVENT_RANGE_PRESCREEN_CHECKPOINT_17R",
+  "family": "R037-SMOR-ER-v1",
+  "status": "FROZEN_BEFORE_REPLAY",
+  "parent_clue": "R037-SMOR-C02_M1_MIDPOINT",
+  "hypothesis": "For sweep→MSS→OB setups, MSS range expansion relative to the initiating sweep event may identify genuine displacement better than body magnitude or prior-bar comparison.",
+  "configs": {
+    "C01": "MSS full range > original sweep-bar full range",
+    "C02": "MSS full range > both previous-bar range and original sweep-bar range",
+    "C03": "MSS full range > maximum full range of all completed bars strictly between sweep and MSS"
+  },
+  "gates": {
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "direct_net_min_usd": -2
+  },
+  "forbidden": [
+    "numeric multiplier",
+    "lookback optimization",
+    "session or side filter",
+    "exit tuning",
+    "August",
+    "MQL5"
+  ],
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
