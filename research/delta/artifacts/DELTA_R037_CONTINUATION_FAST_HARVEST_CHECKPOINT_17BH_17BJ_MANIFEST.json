@@ -1,0 +1,179 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
+  "status": "VERIFIED_FAST_CAUSAL_PRESCREEN_NO_SURVIVOR",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG",
+  "hypothesis": "Completed-bar continuation after a controlled pause can create immediate 30-second XAUUSD persistence under frozen P75 execution.",
+  "falsification_condition": "Each fixed preregistered family fails either >=20 trades / >=5 distinct days or direct net >= -$1.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Three fixed preregistered continuation profiles",
+    "reference_count": 3,
+    "minimum_count": 3,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "All three profiles retained unchanged; no post-result rescue."
+  },
+  "primary_metrics": {
+    "17BH_3BP_M1": "34 trades / 19 wins / -$2.96",
+    "17BI_IB_M15_BASE": "51 trades / 20 wins / -$7.21",
+    "17BJ_IB_M15_PUBLISHED_QUALITY": "2 trades / 2 wins / +$0.10"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_continuation_fast_harvest_17bh_17bj.py",
+      "commit": "a43b574f9f4253f024add1cc222f5bff79ce5e0a",
+      "blob_sha": "85ee4e060bc35839396d84b4ed8262a13c000061",
+      "file_sha256": "d22810f9fa96899598402f0df8f95ab9615f0fe78c16b397b6b41a798f26a675"
+    }
+  ],
+  "helpers": [],
+  "models": [],
+  "config": {
+    "parameters": {
+      "numeric_retuning": false,
+      "stage_a_surface": "DUKAS_COINEXX_LIKE_P75",
+      "families": [
+        "17BH_3BP_M1",
+        "17BI_IB_M15_BASE",
+        "17BJ_IB_M15_PUBLISHED_QUALITY"
+      ]
+    },
+    "feature_order": [
+      "completed native bar structure",
+      "source-specific continuation confirmation / boundary trigger",
+      "first executable P75 tick",
+      "frozen 30-second lifecycle"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "fixed Stage-A fast prescreen only; no fitting"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "output_write": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_preexecution_verification": true,
+      "phase_checkpointing": "CURRENT_INFLIGHT updated after prereg, producer and result"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "Batch preregistration",
+      "path": "research/delta/reference/DELTA_R037_CONTINUATION_FAST_HARVEST_PREREG_17BH_17BJ.json",
+      "commit": "f5d82ec9e5b07f28e737b03dc4c907ce95731bbe"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ.json",
+      "blob_sha": "9ca02795a4cff5a9a64fd2e9f89420246320f11e",
+      "result_sha256": "8528e9da6e5fef037c12398d4cfc32c9c331fee8a306d3508660900b272bd06d"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ.md",
+      "blob_sha": "7aef33ba520bb6e5cbc9177abc56ec1ef9479303"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "M1/M15 completed-bar continuation event ledgers",
+      "P75 executable quote surface"
+    ]
+  },
+  "qa": [
+    "Canonical January SHA and Stage-A tick count verified.",
+    "Local producer Git blob matched committed GitHub blob exactly before compute.",
+    "All three fixed profiles executed under the same frozen P75 execution.",
+    "17BH and 17BI passed supply/day but failed direct economics.",
+    "17BJ was positive only after source-published quality filters collapsed supply to two trades.",
+    "No timeframe/filter/session/side/exit rescue was performed.",
+    "Workbook tab 69 A154:H160 readback PASS.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_continuation_fast_harvest_17bh_17bj.py",
+    "command": "python research/delta/experiments/delta_r037_continuation_fast_harvest_17bh_17bj.py --source <canonical_january_gzip> --output <checkpoint_json>",
+    "timing_semantics": "Three-Bar Play uses completed M1 Bar3; Inside Bar trigger is causal P75 boundary crossing during the one immediately subsequent M15 bar.",
+    "expected_fingerprints": {
+      "17BH_3BP_M1": {
+        "trades": 34,
+        "wins": 19,
+        "net_usd": -2.96
+      },
+      "17BI_IB_M15_BASE": {
+        "trades": 51,
+        "wins": 20,
+        "net_usd": -7.21
+      },
+      "17BJ_IB_M15_PUBLISHED_QUALITY": {
+        "trades": 2,
+        "wins": 2,
+        "net_usd": 0.1
+      }
+    },
+    "selected_interpretation": "NO_SURVIVOR_META_HARVEST_BEFORE_MORE_SOURCE_FAMILIES"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — batch retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "DELTA frozen P75 semantics.",
+    "ownership_scheduler_spec": "No integration.",
+    "session_dst_spec": "DELTA frozen semantics unchanged.",
+    "risk_spec": "Fixed 0.01 research semantics unchanged.",
+    "trade_count_parity_spec": "Not applicable; families retired.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A154:H160"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "f5d82ec9e5b07f28e737b03dc4c907ce95731bbe",
+    "a43b574f9f4253f024add1cc222f5bff79ce5e0a",
+    "48e4f085409e995294e1e166ba54e1801886ca02",
+    "49f3c1141fd6d25ca3da65f83fdaf26fe6aeaa30",
+    "5b1d8870f2b9dd2993afeb7ae570cca32b5aa508"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
