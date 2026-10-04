@@ -1,0 +1,209 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G",
+  "status": "VERIFIED_RESULT_REPORT_WORKBOOK_NO_SCREEN_SURVIVOR_FAMILY_RETIRED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F",
+  "hypothesis": "Failure of a previously confirmed close-based engulfing commitment may create short-horizon continuation edge in the newly controlling direction.",
+  "falsification_condition": "No preregistered M1/M5 regular or Type-1 engulf-failure configuration passes the frozen independent-source Stage-A screen.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Frozen R037 independent-source Stage-A parent",
+    "reference_count": 14034,
+    "minimum_count": 14034,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Independent source adds entries only."
+  },
+  "primary_metrics": {
+    "entry_quality": "Official-win contribution and direct EGF net.",
+    "hold_persistence": "Frozen 30-second max-hold.",
+    "economics": "Combined net/gross deltas and direct EGF net.",
+    "gross_loss_drawdown": "Gross-loss and DD deterioration.",
+    "activity": "Proposal/accepted-entry/trade deltas."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_egf_stage_a.py",
+      "commit": "d9f8032e4221e17527ffa84667f1ddfae3dd06f0",
+      "blob_sha": "72737c7238915c0bca1b63512633adfc10bf18a4",
+      "file_sha256": "427c4715c328199c1efc3bbb13aa346ffe3e526c8a3ebd5bddf373767d9b733e"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "role": "Bounded child process / faulthandler / cleanup."
+    }
+  ],
+  "config": {
+    "parameters": {
+      "family": "R037-EGF-v1",
+      "configs": [
+        "R037-EGF-C01_M1_REGULAR_FAILURE",
+        "R037-EGF-C02_M1_TYPE1_FAILURE",
+        "R037-EGF-C03_M5_REGULAR_FAILURE",
+        "R037-EGF-C04_M5_TYPE1_FAILURE"
+      ],
+      "pattern_expiry": "NONE",
+      "numeric_retuning": false,
+      "post_result_retuning": false,
+      "spread_gate_points_max": 25,
+      "lot": 0.01,
+      "stop_usd": 0.3,
+      "trail_activation_usd": 0.1,
+      "trail_distance_usd": 0.03,
+      "max_hold_seconds": 30
+    },
+    "feature_order": [
+      "completed_base_confirm_pair",
+      "engulf_commitment",
+      "persistent_active_pattern",
+      "first_opposite_colour_close_through_far_edge",
+      "first_executable_tick",
+      "parent_priority_scheduler"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Stage-A discovery screen only; no post-result tuning."
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "atomic_output": true,
+      "recovery_run_id": 37178013014,
+      "official_runtime_seconds": 21.023,
+      "official_exit_code": 0,
+      "official_raw_result_sha256": "d124c1bac75ab8e098ac6118e16ab22fea46d317807fced81e9f9b25d2458628"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "EGF preregistration",
+      "path": "research/delta/reference/DELTA_R037_EGF_SOURCE_HARVEST_PREREG_17G.json",
+      "commit": "13f60e2dd83017085e944909a27ce3c9516073c8"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G.json",
+      "commit": "e0dbe8c1d49eb54534b084103101933f0774028a",
+      "blob_sha": "356598f5a516dbce97718325fe9b1460df70e288",
+      "official_raw_result_sha256": "d124c1bac75ab8e098ac6118e16ab22fea46d317807fced81e9f9b25d2458628"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G.md",
+      "commit": "f5e24744dd08bb1c570afa6fdfb2e423226e8176",
+      "blob_sha": "6e45a412706cf3d43a96910c989077d78f8758e4"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "1864 C01 proposals",
+      "662 C02 proposals",
+      "334 C03 proposals",
+      "133 C04 proposals"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "1751 C01 accepted",
+      "623 C02 accepted",
+      "319 C03 accepted",
+      "128 C04 accepted"
+    ],
+    "caches": [
+      "Commit-bound recovery snapshot; no post-result mutation."
+    ]
+  },
+  "models": [],
+  "qa": [
+    "Preregistration and producer committed before official replay.",
+    "Producer snapshot passed DELTA recovery/causality gate run 37178013014.",
+    "Canonical January hash and Stage-A chronology verified.",
+    "Official bounded replay exited 0 in 21.023 seconds.",
+    "C04 M5 Type-1 was least bad at +127 trades / +63 official wins / -$18.33 net delta.",
+    "No configuration passed frozen -$2 net gate; no rescue tuning.",
+    "Working workbook tab 70 A89:H97 write/readback verified.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_egf_stage_a.py",
+    "command": "PYTHONPATH=<recovery_root> python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_egf_stage_a.py --source <canonical_january_gzip> --output <result_json>",
+    "timing_semantics": "Ordered ticks; completed Bid bars; commitment confirmed on completed pair; no expiry; first qualifying close-through failure; first executable tick.",
+    "expected_fingerprints": {
+      "parent": {
+        "trades": 14034,
+        "official_wins": 6349,
+        "net_profit": -2944.94
+      },
+      "leader": {
+        "config": "R037-EGF-C04_M5_TYPE1_FAILURE",
+        "proposals": 133,
+        "accepted_entries": 128,
+        "trade_delta": 127,
+        "official_win_delta": 63,
+        "net_delta": -18.33,
+        "direct_egf_net": -16.44
+      }
+    },
+    "selected_interpretation": "NO_SCREEN_SURVIVOR_RETIRE_EGF_FAMILY"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — discovery screen only",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "DELTA frozen P75 semantics.",
+    "ownership_scheduler_spec": "Frozen parent-priority scheduler.",
+    "session_dst_spec": "No EGF session filter.",
+    "risk_spec": "Frozen 0.01 / stop/trail/30s.",
+    "trade_count_parity_spec": "Not MT5 eligible.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "70 R037 Prereg",
+      "range": "A89:H97",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": true
+  },
+  "github_commits": [
+    "13f60e2dd83017085e944909a27ce3c9516073c8",
+    "d9f8032e4221e17527ffa84667f1ddfae3dd06f0",
+    "e0dbe8c1d49eb54534b084103101933f0774028a",
+    "f5e24744dd08bb1c570afa6fdfb2e423226e8176"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
