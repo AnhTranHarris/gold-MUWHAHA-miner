@@ -1,0 +1,204 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B",
+  "status": "VERIFIED_DURABLE_NO_SCREEN_SURVIVOR_FAMILY_RETIRED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A",
+  "hypothesis": "A completed-close Donchian breakout source can add high-density independent entries with acceptable Stage-A quality under the frozen 30-second initial-hold execution contract.",
+  "falsification_condition": "No preregistered DCB configuration passes the frozen independent-source Stage-A screen, especially net and drawdown gates.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Frozen R037 independent-source Stage-A screen",
+    "reference_count": 14034,
+    "minimum_count": 14034,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Combined candidate trade count may not fall below parent; this unit adds an independent source lane only."
+  },
+  "primary_metrics": {
+    "entry_quality": "Official-win contribution and direct-source net under frozen execution.",
+    "hold_persistence": "Frozen 30-second max-hold contract; not retuned.",
+    "economics": "Combined net delta, gross-profit delta, gross-loss delta, direct DCB net.",
+    "gross_loss_drawdown": "Combined gross-loss delta and max balance/equity drawdown deterioration.",
+    "activity": "Incremental accepted DCB entries and combined trade delta."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_dcb_stage_a.py",
+      "commit": "24a51ec00ba2751e871982b13024deebf59933cc",
+      "blob_sha": "e24157a8e9d50af73538da5e61de1f23994e470b",
+      "file_sha256": "e1440f9d68e47cef3ee7820f85ef502e7eb3e9651fbdc00af51293c71b95d6da"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "bd0512d4d94f74167267a6b3bf7c265d984451ce",
+      "role": "120-second crash-contained official runner"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "family": "R037-DCB-v1",
+      "configs": [
+        "R037-DCB-C01_M1_DONCHIAN20",
+        "R037-DCB-C02_M1_DONCHIAN20_EMA200",
+        "R037-DCB-C03_M5_DONCHIAN20",
+        "R037-DCB-C04_M5_DONCHIAN20_EMA200"
+      ],
+      "numeric_retuning": false,
+      "post_result_retuning": false,
+      "spread_gate_points_max": 25,
+      "lot": 0.01,
+      "stop_usd": 0.3,
+      "trail_activation_usd": 0.1,
+      "trail_distance_usd": 0.03,
+      "max_hold_seconds": 30
+    },
+    "feature_order": [
+      "completed_bar_channel",
+      "optional_ema200_direction",
+      "first_executable_tick",
+      "parent_priority_scheduler"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Stage-A discovery screen only; no post-result tuning."
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "exact_committed_producer_sha_verified": true,
+      "recovery_snapshot_run_id": 37173833277,
+      "atomic_output": true,
+      "runner_elapsed_seconds": 30
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "DCB preregistration",
+      "path": "research/delta/reference/DELTA_R037_DCB_SOURCE_HARVEST_PREREG_17B.json",
+      "blob_sha": "61db1974c9f06d3dd7e366de82594ea0ef18deac"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B.json",
+      "commit": "e30265a798f77cc3a3f07c8769f2fac5b4bdd9a8",
+      "blob_sha": "8a54704bd0f0fb8fbe8e4f724cc68e1a8d2bd7e8",
+      "raw_result_sha256": "31aed2ce69af15cfb7c7e77c1dce639d5e4ae40a05f038aac775ff6be80ceb11"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B.md",
+      "commit": "beffb519309fce83cc05e0c0810b0528b45c78d1",
+      "blob_sha": "63365ddc5931f1d43c78478e65d1b58791328796"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "1898 M1 Donchian20 proposals",
+      "318 M5 Donchian20 proposals"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "C01 accepted 1799",
+      "C02 accepted 1421",
+      "C03 accepted 309",
+      "C04 accepted 235"
+    ],
+    "caches": [
+      "Latest successful GitHub Actions DELTA recovery snapshot used for exact dependency reconstruction"
+    ]
+  },
+  "models": [],
+  "qa": [
+    "Live CURRENT_STATE/CURRENT_INFLIGHT/timeout pointer reconciled before official compute.",
+    "No prior DCB result/report/manifest existed before replay.",
+    "Committed DCB producer SHA-256 matched CURRENT_INFLIGHT exactly.",
+    "Canonical January source SHA-256 verified.",
+    "Stage-A chronology and exact 4,205,709 tick count verified.",
+    "Parent control reproduced 14,034 trades / 6,349 official wins / -$2,944.94 net.",
+    "Bounded runner exited 0 in 30 seconds.",
+    "All four preregistered configs failed the frozen screen; no post-result retuning performed.",
+    "Best/least-bad C04 still produced -$38.14 combined net delta and +1.29% equity-DD deterioration.",
+    "Family retired from active promotion path; negative result preserved.",
+    "August remained sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_dcb_stage_a.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_dcb_stage_a.py --source <canonical_january_gzip> --output <result_json>",
+    "timing_semantics": "Ordered ticks; completed M1/M5 closes only; first executable tick at/after signal-bar right edge; frozen parent-priority scheduler.",
+    "expected_fingerprints": {
+      "parent": {
+        "trades": 14034,
+        "official_wins": 6349,
+        "net_profit": -2944.94
+      },
+      "leader": {
+        "config": "R037-DCB-C04_M5_DONCHIAN20_EMA200",
+        "trade_delta": 235,
+        "official_win_delta": 121,
+        "net_delta": -38.14,
+        "direct_dcb_net": -35.02
+      }
+    },
+    "selected_interpretation": "NO_SURVIVOR_RETIRED"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — independent-source discovery screen only",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "DELTA frozen P75 quote-side semantics.",
+    "ownership_scheduler_spec": "Frozen parent-priority scheduler.",
+    "session_dst_spec": "No DCB session filter.",
+    "risk_spec": "Frozen 0.01 lot / stop/trail/30-second initial-hold research semantics.",
+    "trade_count_parity_spec": "Not eligible for MT5 promotion.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "70 R037 Prereg",
+      "range": "A28:L37",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "24a51ec00ba2751e871982b13024deebf59933cc",
+    "e30265a798f77cc3a3f07c8769f2fac5b4bdd9a8",
+    "beffb519309fce83cc05e0c0810b0528b45c78d1"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
