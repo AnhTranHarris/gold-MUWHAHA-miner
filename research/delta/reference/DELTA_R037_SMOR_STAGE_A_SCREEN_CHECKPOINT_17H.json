@@ -1,0 +1,123 @@
+{
+  "schema": "delta-r037-smor-stage-a-screen-17h-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN_ORDINARY_PASS_NO_STRONG_PASS",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "family": "R037-SMOR-v1",
+  "parent_checkpoint": "R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "producer": {
+    "commit": "e5acbd86f244b739279b21b78c35b56ee286a6fb",
+    "blob_sha": "bb944bb9052b95f039e0cdd0942598d2a4b2d47d",
+    "file_sha256": "e28d27e0f79d1be79b4bc44653421e0de532297ce870b925e73febc4292ae6e0",
+    "precompute_gate_run": 37178401397
+  },
+  "official_compute": {
+    "runtime_seconds": 20.525,
+    "exit_code": 0,
+    "raw_result_sha256": "6937752f233b07c219b8e7b084cf37b7501f5e3c7c147da459d271a5c3b9aa20"
+  },
+  "sequence": "confirmed swing sweep -> frozen opposite-swing MSS -> last opposite candle OB -> first later unmitigated body retest",
+  "parent_control": {
+    "trades": 14034,
+    "official_wins": 6349,
+    "gross_profit": 1357.26,
+    "gross_loss": -4302.2,
+    "net_profit": -2944.94,
+    "max_balance_drawdown": 2945.93,
+    "max_equity_drawdown": 2946.43
+  },
+  "configs": {
+    "R037-SMOR-C01_M1_BODY_TOUCH": {
+      "supply": {
+        "proposals": 18,
+        "eligible": 18,
+        "distinct_days": 9,
+        "long": 1,
+        "short": 17
+      },
+      "accepted_entries": 16,
+      "trade_delta": 16,
+      "official_win_delta": 8,
+      "gross_profit_delta": 2.42,
+      "gross_loss_delta": -3.73,
+      "net_delta": -1.31,
+      "direct_smor_net": -1.61,
+      "equity_dd_delta_pct": 0.04446058450395718,
+      "screen_pass": true,
+      "strong_screen_pass": false
+    },
+    "R037-SMOR-C02_M1_MIDPOINT": {
+      "supply": {
+        "proposals": 11,
+        "eligible": 11,
+        "distinct_days": 6,
+        "long": 1,
+        "short": 10
+      },
+      "accepted_entries": 11,
+      "trade_delta": 11,
+      "official_win_delta": 7,
+      "gross_profit_delta": 2.1,
+      "gross_loss_delta": -2.13,
+      "net_delta": -0.03,
+      "direct_smor_net": -0.31,
+      "equity_dd_delta_pct": 0.0010181813245249366,
+      "screen_pass": true,
+      "strong_screen_pass": false
+    },
+    "R037-SMOR-C03_M5_BODY_TOUCH": {
+      "supply": {
+        "proposals": 7,
+        "eligible": 7,
+        "distinct_days": 6,
+        "long": 3,
+        "short": 4
+      },
+      "accepted_entries": 7,
+      "trade_delta": 7,
+      "official_win_delta": 1,
+      "gross_profit_delta": 0.4,
+      "gross_loss_delta": -3.64,
+      "net_delta": -3.24,
+      "direct_smor_net": -2.94,
+      "equity_dd_delta_pct": 0.10996358304796777,
+      "screen_pass": false,
+      "strong_screen_pass": false
+    },
+    "R037-SMOR-C04_M5_MIDPOINT": {
+      "supply": {
+        "proposals": 5,
+        "eligible": 5,
+        "distinct_days": 4,
+        "long": 2,
+        "short": 3
+      },
+      "accepted_entries": 5,
+      "trade_delta": 5,
+      "official_win_delta": 1,
+      "gross_profit_delta": 0.4,
+      "gross_loss_delta": -2.1,
+      "net_delta": -1.7,
+      "direct_smor_net": -1.7,
+      "equity_dd_delta_pct": 0.05769694172270418,
+      "screen_pass": false,
+      "strong_screen_pass": false
+    }
+  },
+  "finding": {
+    "strong_screen_survivors": [],
+    "ordinary_screen_survivors": [
+      "R037-SMOR-C02_M1_MIDPOINT",
+      "R037-SMOR-C01_M1_BODY_TOUCH"
+    ],
+    "leading_config": "R037-SMOR-C02_M1_MIDPOINT",
+    "decision": "NO_PROMOTION_FREEZE_AS_RECOMBINATION_CLUE",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "numeric_retuning": false,
+  "post_result_retuning": false,
+  "august_accessed": false,
+  "mql5_authorized": false
+}
