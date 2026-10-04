@@ -1,21 +1,21 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "INFLIGHT",
+  "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION",
-  "parent_durable_unit": "R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "parent_durable_unit": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_CHECKPOINT_17AK",
+  "phase": "IDLE",
+  "phase_rank": 0,
   "progress": {
-    "status": "PRODUCER_COMMITTED",
-    "last_completed": "R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ",
-    "last_decision": "FREEZE_H1_UNCHANGED_ADVANCE_FEB_JUL",
-    "next": "Blob-verify the committed producer locally, then execute month-isolated February through July official validations."
+    "status": "READY_FOR_PREREG",
+    "last_completed": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_CHECKPOINT_17AK",
+    "last_decision": "RETIRE_HTAR_H1_NO_RETUNE",
+    "next": "Harvest and preregister the next causally independent entry-source family; do not rescue HTAR."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read CURRENT_STATE/CURRENT_INFLIGHT/recovery pointer; 17AJ durable; resume 17AK from first missing phase only.",
-    "idempotency_rule": "Do not rerun completed months solely because chat delivery timed out; verify committed month result first."
+    "resume_first_action": "Read CURRENT_STATE/CURRENT_INFLIGHT/recovery pointer; 17AK durable; start only the next independent source harvest.",
+    "idempotency_rule": "Do not rerun 17AK solely because chat delivery timed out."
   },
   "last_verified_ci": {
     "commit": "164d20b91718a6bb84746350ba2a26b5c9a92ccb",
@@ -26,17 +26,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ",
-    "checkpoint": "R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ",
-    "current_state_next": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION",
-    "manifest": "research/delta/artifacts/DELTA_R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ_MANIFEST.json"
-  },
-  "prereg": {
-    "path": "research/delta/reference/DELTA_R037_HTAR_H1_FEB_JUL_PREREG_17AK.json",
-    "commit": "4731471b6fa4697552c28bbc3c8adaaff250a909"
-  },
-  "producer": {
-    "path": "research/delta/experiments/delta_r037_htar_h1_monthly_17ak.py",
-    "commit": "a07834f819907cbf1bdd1f8439fede1479f9c631"
+    "unit": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_CHECKPOINT_17AK",
+    "checkpoint": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_CHECKPOINT_17AK",
+    "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "manifest": "research/delta/artifacts/DELTA_R037_HTAR_H1_FEB_JUL_ROBUSTNESS_CHECKPOINT_17AK_MANIFEST.json"
   }
 }
