@@ -1,11 +1,11 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "INFLIGHT",
+  "status": "COMPLETE",
   "branch": "delta",
   "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
   "parent_durable_unit": "R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D",
-  "phase": "REPORT_COMMITTED",
-  "phase_rank": 4,
+  "phase": "COMPLETE",
+  "phase_rank": 7,
   "prereg": {
     "path": "research/delta/reference/DELTA_R037_MSF_SOURCE_HARVEST_PREREG_17E.json",
     "commit": "2739d418ad694f701a551743c2ff1561c5af0c37"
@@ -25,16 +25,17 @@
     "commit": "e574b3923be5400da40b5ebbcb7c2e1e1f9c365a"
   },
   "manifest": {
-    "path": "research/delta/artifacts/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E_MANIFEST.json"
+    "path": "research/delta/artifacts/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E_MANIFEST.json",
+    "commit": "32d5187bc85f8bc0849d5af2484c403856c22809"
   },
   "progress": {
     "family": "R037-MSF-v1",
     "status": "COMPLETE_NO_STRONG_SURVIVOR_C04_ORDINARY_SCREEN_CLUE",
-    "next": "DURABILITY_MANIFEST_THEN_NEXT_SOURCE_HARVEST"
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Do not rerun MSF 17E. Result/report already committed; finish workbook/ledger, manifest, CURRENT_STATE and CI only.",
+    "resume_first_action": "Do not rerun MSF 17E. Complete checkpoint exists; resume from CURRENT_STATE first incomplete unit after durability CI.",
     "idempotency_rule": "Prereg and producer immutable before compute; result create-only.",
     "hash_reconciliation": "GitHub recovery snapshot git-blob 29ccec103226f3044a9fdb7f7213731ab1428dee exactly matched live GitHub producer blob; corrected stale precompute SHA-256 metadata before any official replay."
   },
@@ -48,8 +49,8 @@
   "mql5_authorized": false,
   "last_completed": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "checkpoint": "R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D",
+    "checkpoint": "R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E",
     "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "manifest": "research/delta/artifacts/DELTA_R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D_MANIFEST.json"
+    "manifest": "research/delta/artifacts/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E_MANIFEST.json"
   }
 }
