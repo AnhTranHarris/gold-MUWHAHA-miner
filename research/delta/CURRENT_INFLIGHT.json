@@ -1,20 +1,20 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "ACTIVE",
+  "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_SWEEP_RECLAIM_HOLD_RETEST_STAGE_A_SCREEN",
-  "parent_durable_unit": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
-  "phase": "PRODUCER_VERIFIED",
-  "phase_rank": 3,
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "parent_durable_unit": "R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY",
+  "phase": "IDLE",
+  "phase_rank": 0,
   "progress": {
-    "status": "ACTIVE",
-    "last_completed": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
-    "current_candidate": "R037-SRHT-v1",
-    "next": "Run official SRHT 17AY Stage-A compute with exact producer blob ab6608125ce075ecfdbe094e7a9355e6c6c1de78 under 120-second timeout."
+    "status": "IDLE",
+    "last_completed": "R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY",
+    "current_candidate": null,
+    "next": "Harvest next independent structural rejection family; prioritize source-native depth/age filters rather than post-result rescue."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "SRHT 17AY producer is byte-verified: commit 6d2398a7de520138b65e27dc3af6daf26095a4e2, blob ab6608125ce075ecfdbe094e7a9355e6c6c1de78, local SHA-256 b412c3592bccc44568d8d05a20197bc50b92e73f0a29657d19a2c5c00aeec47c. If result absent, run official compute only.",
+    "resume_first_action": "BOSLS 17AY is complete and retired; do not rerun. Harvest the next independent source-native structural rejection family.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
@@ -26,9 +26,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
-    "checkpoint": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
+    "unit": "R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY",
+    "checkpoint": "R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY",
     "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "manifest": "research/delta/artifacts/DELTA_R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX_MANIFEST.json"
+    "manifest": "research/delta/artifacts/DELTA_R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY_MANIFEST.json"
   }
 }
