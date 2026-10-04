@@ -1,20 +1,20 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "IDLE",
+  "status": "ACTIVE",
   "branch": "delta",
-  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "unit": "R037_IMPULSE_EXHAUSTION_REVERSAL_STAGE_A_SCREEN",
   "parent_durable_unit": "R037_SQRM_STAGE_A_SCREEN_CHECKPOINT_17BC",
-  "phase": "IDLE",
-  "phase_rank": 0,
+  "phase": "PREREGISTERED",
+  "phase_rank": 1,
   "progress": {
-    "status": "IDLE",
+    "status": "ACTIVE",
     "last_completed": "R037_SQRM_STAGE_A_SCREEN_CHECKPOINT_17BC",
-    "current_candidate": null,
-    "next": "Harvest multi-stage price-structure source requiring confirmation beyond volatility release."
+    "current_candidate": "R037-IER-v1",
+    "next": "Build and commit exact 17BD producer, then execute the single preregistered faithful reconstruction."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "SQRM 17BC complete and retired; do not rerun. Harvest next independent source.",
+    "resume_first_action": "IER 17BD prereg is durable at commit 9f4c17f6f9247f6bf492bfe39922fc0437aa69a7. If producer absent, build/commit producer only.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
