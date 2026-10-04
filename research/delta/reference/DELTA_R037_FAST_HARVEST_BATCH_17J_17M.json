@@ -1,0 +1,65 @@
+{
+  "schema": "delta-r037-fast-harvest-batch-17j-17m-v1",
+  "status": "COMPLETE_FAST_CAUSAL_PRESCREEN_NO_SURVIVOR",
+  "parent_checkpoint": "R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I",
+  "purpose": "Timeout-safe fast source prescreen: reject obviously weak public/reconstructible families before expensive full parent integration.",
+  "canonical_source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "execution": "Frozen 0.01 lot, $0.30 stop, +$0.10 trail activation, $0.03 trail distance, 30s max hold, $0.02 round-trip commission; source-only causal prescreen.",
+  "families": {
+    "17J_SVR": {
+      "prereg": "research/delta/reference/DELTA_R037_SVR_SOURCE_HARVEST_PREREG_17J.json",
+      "decision": "RETIRE_NO_FULL_PARENT_INTEGRATION",
+      "best": {
+        "config": "C02_RECLAIM_RETEST_TRIGGER",
+        "proposals": 72,
+        "trades": 72,
+        "official_wins": 37,
+        "direct_net_usd": -13.56
+      }
+    },
+    "17K_ETP": {
+      "prereg": "research/delta/reference/DELTA_R037_ETP_SOURCE_HARVEST_PREREG_17K.json",
+      "decision": "RETIRE_NO_FULL_PARENT_INTEGRATION",
+      "best": {
+        "config": "C04_M5_EMA9_21_STRONG_RECLAIM",
+        "proposals": 1772,
+        "trades": 1772,
+        "official_wins": 803,
+        "direct_net_usd": -357.87
+      }
+    },
+    "17L_PRL": {
+      "prereg": "research/delta/reference/DELTA_R037_PRL_SOURCE_HARVEST_PREREG_17L.json",
+      "decision": "RETIRE_NO_FULL_PARENT_INTEGRATION",
+      "best": {
+        "config": "C03_TEN_DOLLAR_BREAK_RETEST",
+        "proposals": 474,
+        "trades": 474,
+        "official_wins": 220,
+        "direct_net_usd": -97.79
+      }
+    },
+    "17M_OFM": {
+      "prereg": "research/delta/reference/DELTA_R037_OFM_SOURCE_HARVEST_PREREG_17M.json",
+      "decision": "RETIRE_NO_FULL_PARENT_INTEGRATION",
+      "best": {
+        "config": "C03_FLOW_MOMENTUM_PRICE_AGREE",
+        "proposals": 15629,
+        "trades": 13043,
+        "official_wins": 5880,
+        "position_blocked": 2586,
+        "direct_net_usd": -2815.67
+      }
+    }
+  },
+  "interpretation": [
+    "Generic dense indicator/flow signals are grossly incompatible with the frozen 30-second economics.",
+    "The next harvest should emphasize sparse, event-defined structural asymmetry rather than signal density.",
+    "No threshold retuning, side rescue, session rescue, exit tuning, August access, or MQL5 was used."
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "next_search_bias": "sparse event-defined structural asymmetry with natural 30-second follow-through",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
