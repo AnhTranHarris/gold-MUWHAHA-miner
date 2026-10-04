@@ -144,10 +144,18 @@
     "status": "NOT_STARTED"
   },
   "rollback_target": "R037_RLSFG_STAGE_A_SCREEN_CHECKPOINT_17AO",
-  "drive_artifacts": [],
+  "drive_artifacts": [
+    {
+      "name": "working workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "71 R037 Source QA",
+      "range": "A81:H87",
+      "readback_verified": true
+    }
+  ],
   "verification": {
     "github_readback": true,
-    "drive_readback": false,
+    "drive_readback": true,
     "hashes_verified": true,
     "current_state_advanced": false
   },
