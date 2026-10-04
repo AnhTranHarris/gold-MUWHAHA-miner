@@ -1,0 +1,104 @@
+{
+  "schema": "delta-r037-sfp-source-harvest-prereg-v1",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "family": "R037-SFP-v1",
+  "checkpoint_target": "R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F",
+  "status": "FROZEN_BEFORE_STAGE_A_REPLAY",
+  "parent_checkpoint": "R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E",
+  "purpose": "Test whether a wick-only failure through a causally confirmed local swing followed by a completed close back inside the level can time immediate 30-second reversal entries better than prior continuation/oscillator families.",
+  "public_logic_sources": [
+    {
+      "source": "MetaQuotes Liquidity Sweep Detector Code Base 76586",
+      "url": "https://www.mql5.com/en/code/76586",
+      "logic": "fractal swing point; later closed bar wick pierces swing and closes back on the other side"
+    },
+    {
+      "source": "MetaQuotes Decoding Market Intent article 24184",
+      "url": "https://www.mql5.com/en/articles/24184",
+      "logic": "active swing high: high > level with close < level is a wick-only sweep; close beyond level is a true break"
+    },
+    {
+      "source": "TradingView SkuldX SFP open-source",
+      "url": "https://www.tradingview.com/script/eB3dChAT-SkuldX-SFP-Swing-Failure-Pattern/",
+      "logic": "bearish wick above prior swing high and close below; bullish wick below prior swing low and close above"
+    },
+    {
+      "source": "TradingView Confluencer SFP open-source",
+      "url": "https://www.tradingview.com/script/aBEgxFEw-Swing-Failure-Pattern-SFP-Advanced-Improved/",
+      "logic": "pivot sweep plus close rejection; optional stronger close-position filter"
+    }
+  ],
+  "independence": [
+    "No FVG requirement.",
+    "No BOS/CHOCH continuation entry.",
+    "No session range or previous-day level.",
+    "No volatility-compression/Donchian rule.",
+    "No RSI/stochastic oscillator.",
+    "Entry is a local swing false-break rejection event."
+  ],
+  "swing_semantics": "symmetric two-bar confirmed fractal swing, revealed only after two completed right-side bars; each swing identity consumed on its first wick/close interaction beyond the level",
+  "configs": {
+    "R037-SFP-C01_M1_BASIC": {
+      "timeframe": "M1",
+      "rule": "bear high>swingHigh and close<swingHigh; bull low<swingLow and close>swingLow"
+    },
+    "R037-SFP-C02_M1_HALF_REJECTION": {
+      "timeframe": "M1",
+      "rule": "basic SFP plus close in reversal half of sweep candle"
+    },
+    "R037-SFP-C03_M5_BASIC": {
+      "timeframe": "M5",
+      "rule": "same basic SFP"
+    },
+    "R037-SFP-C04_M5_HALF_REJECTION": {
+      "timeframe": "M5",
+      "rule": "basic SFP plus close in reversal half of sweep candle"
+    }
+  },
+  "ambiguity_rule": "If one completed bar simultaneously forms valid bullish and bearish SFPs against both active swings, consume both touched swing identities and emit no proposal.",
+  "proposal_timing": "first executable tick at/after completed SFP bar edge",
+  "execution": {
+    "spread_gate_points_max": 25,
+    "parent_same_tick_priority": true,
+    "blocked_event_deferred": false,
+    "one_position_at_a_time": true,
+    "lot": 0.01,
+    "stop_usd": 0.3,
+    "trail_activation_usd": 0.1,
+    "trail_distance_usd": 0.03,
+    "max_hold_seconds": 30,
+    "commission_round_trip_usd": 0.02
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "ticks": 4205709
+  },
+  "screen_gate": {
+    "reuse": "Frozen R037 independent-source Stage-A screen",
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "minimum_incremental_accepted_entries": 5,
+    "combined_trade_count_not_lower": true,
+    "winner_or_quality_gate": "official-win delta nonnegative OR positive net with improved gross loss",
+    "net_delta_min_usd": -2,
+    "max_balance_and_equity_dd_deterioration_pct": 1,
+    "strong_pass": "all gates plus net delta >= 0"
+  },
+  "forbidden": [
+    "swing width tuning",
+    "post-result wick/rejection threshold tuning",
+    "timeframe additions",
+    "session filter",
+    "posthoc side split",
+    "candidate merge",
+    "candidate-specific exit tuning",
+    "August",
+    "MQL5"
+  ],
+  "next_if_strong_pass": "R037_SFP_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_no_strong_pass": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
