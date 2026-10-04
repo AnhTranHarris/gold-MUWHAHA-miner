@@ -1,0 +1,29 @@
+{
+  "schema": "delta-r037-smor-departure-swing-prereg-v1",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "checkpoint_target": "R037_SMOR_DEPARTURE_SWING_PRESCREEN_CHECKPOINT_17W",
+  "family": "R037-SMOR-DS-v1",
+  "status": "FROZEN_BEFORE_REPLAY",
+  "parent_clue": "R037-SMOR-C02_M1_MIDPOINT",
+  "source_basis": [
+    "https://www.tradingview.com/script/XJ47OPr7-sweep-to-order-block-retest-sobr/"
+  ],
+  "hypothesis": "The first OB midpoint retest is higher quality when a same-direction width-2 minor swing is causally confirmed after MSS/departure and before the retest, proving price actually left the zone before returning.",
+  "rule": "Preserve exact 17H C02; bullish setup additionally requires a width-2 confirmed swing high with pivot index after MSS and reveal no later than retest bar; bearish requires symmetric swing low.",
+  "gates": {
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "direct_net_min_usd": -2
+  },
+  "forbidden": [
+    "swing-width tuning",
+    "minimum-distance tuning",
+    "bar-delay tuning",
+    "session or side filter",
+    "exit tuning",
+    "August",
+    "MQL5"
+  ],
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
