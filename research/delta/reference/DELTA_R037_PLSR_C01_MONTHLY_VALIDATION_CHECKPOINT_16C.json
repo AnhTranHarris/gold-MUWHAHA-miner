@@ -1,0 +1,100 @@
+{
+  "schema": "delta-r037-plsr-c01-monthly-validation-checkpoint-16c-v1",
+  "status": "COMPLETE_MONTHLY_ROBUSTNESS_FAIL_CANDIDATE_RETIRED_OR_RESERVE",
+  "unit": "R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION",
+  "parent_checkpoint": "R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B",
+  "candidate": "R037-PLSR-C01_PDH_PDL_S5_RECLAIM",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "validation_months": [
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-07"
+  ],
+  "candidate_retuned": false,
+  "posthoc_level_split": false,
+  "august_accessed": false,
+  "mql5_authorized": false,
+  "robustness_gate": {
+    "months_required": 6,
+    "all_months_recorded_even_if_negative": true,
+    "combined_trade_count_not_lower_each_month": true,
+    "maximum_single_month_net_worsening_usd": 2,
+    "aggregate_incremental_net_must_be_positive": true,
+    "aggregate_official_win_delta_must_be_nonnegative": true,
+    "minimum_nonnegative_net_months": 4
+  },
+  "monthly": {
+    "2026-02": {
+      "trade_delta": 17,
+      "official_win_delta": 6,
+      "net_delta": -4.08,
+      "plsr_entries": 17,
+      "plsr_net": -5.01,
+      "result_sha256": "6a5999710c71e88b2b93563583660c2c64d00f075284c23d38a63327876e8939"
+    },
+    "2026-03": {
+      "trade_delta": 23,
+      "official_win_delta": 9,
+      "net_delta": -6.2,
+      "plsr_entries": 23,
+      "plsr_net": -6.21,
+      "result_sha256": "90626ce663340ca13343f644b66c66f2b1b00f3bbd32511ee42511c861f8865e"
+    },
+    "2026-04": {
+      "trade_delta": 21,
+      "official_win_delta": 8,
+      "net_delta": -6.78,
+      "plsr_entries": 21,
+      "plsr_net": -6.78,
+      "result_sha256": "7ec4104afff1216f1748182a1c40df41f40de2b52a34694503b57ef94945e2f6"
+    },
+    "2026-05": {
+      "trade_delta": 20,
+      "official_win_delta": 8,
+      "net_delta": -6.34,
+      "plsr_entries": 20,
+      "plsr_net": -6.34,
+      "result_sha256": "a8b195ea49b3087c99eb7e94681f8d6137ac41eece0c66abe6785a8d80e63807"
+    },
+    "2026-06": {
+      "trade_delta": 18,
+      "official_win_delta": 8,
+      "net_delta": -2.78,
+      "plsr_entries": 18,
+      "plsr_net": -2.78,
+      "result_sha256": "1fa1ac00051140bafff89991f473b5a8096cf0942092a43e0097d35b246eecc5"
+    },
+    "2026-07": {
+      "trade_delta": 22,
+      "official_win_delta": 10,
+      "net_delta": -0.92,
+      "plsr_entries": 22,
+      "plsr_net": -1.88,
+      "result_sha256": "c305c1f781f5755586ee08461d72273e8fdea80eb230c9085d662083861da9f4"
+    }
+  },
+  "aggregate": {
+    "trade_delta": 121,
+    "official_win_delta": 49,
+    "incremental_net_delta_usd": -27.1,
+    "plsr_entries": 121,
+    "direct_plsr_net_usd": -29,
+    "incremental_net_per_entry_usd": -0.2239669421,
+    "nonnegative_net_months": 0,
+    "months_within_minus_2usd_tolerance": 1,
+    "worst_month": "2026-04",
+    "worst_month_net_delta_usd": -6.78,
+    "all_months_trade_count_nonlower": true,
+    "aggregate_official_win_delta_nonnegative": true,
+    "aggregate_incremental_net_positive": false,
+    "minimum_nonnegative_months_met": false,
+    "single_month_tolerance_met": false,
+    "robustness_pass": false
+  },
+  "decision": "RETIRE_FROM_ACTIVE_PROMOTION_PATH_KEEP_AS_FORENSIC_RESERVE_NO_POSTHOC_PDH_PDL_SPLIT",
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "next_action": "Harvest and preregister a new causally independent entry source; do not retune or rescue PLSR-C01 from these monthly results."
+}
