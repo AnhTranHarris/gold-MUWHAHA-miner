@@ -1,0 +1,270 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C",
+  "status": "VERIFIED_RESEARCH_COMPLETE_PENDING_STATE_ADVANCE",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B",
+  "hypothesis": "The unchanged R037-PLSR-C01 previous-active-day high/low sweep plus completed-S5 reclaim source remains economically additive across isolated February-July 2026 months without retuning or PDH/PDL splitting.",
+  "falsification_condition": "Any preregistered monthly robustness gate fails: a month worsens net by more than $2, aggregate incremental net is not positive, aggregate official-win delta is negative, fewer than four months have nonnegative incremental net, or combined trade count falls in any month.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Six month-isolated surrogate-parent controls",
+    "reference_count": 6,
+    "minimum_count": 6,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Combined trade count was non-lower in all six months; aggregate added trades +121."
+  },
+  "primary_metrics": {
+    "entry_quality": "Aggregate official-win delta +49, but added-entry economics negative.",
+    "hold_persistence": "Frozen R9 30-second initial lifecycle unchanged.",
+    "economics": "Aggregate incremental net -$27.10; direct PLSR net -$29.00 across Feb-Jul.",
+    "gross_loss_drawdown": "No monthly drawdown deterioration exceeded the preregistered 1% cap; economics gate failed independently.",
+    "activity": "121 incremental trades across six isolated months; no activity collapse."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_plsr_c01_monthly_validation.py",
+      "commit": "e8ab95ddee0ac07cc8b223e6b16ca56dd890bf0d",
+      "blob_sha": "46d01ab6800eabb3c2f0a87d71ee999ac03eeba6",
+      "sha256": "7405e85cb693ebbaa4a163e9d4d86c45606649139771a8fef68ef108d99860e6"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/experiments/delta_r037_sorb_c04_dual30_independent_validation.py",
+      "blob_sha": "bf4ef19bfe7e937b9510ef62bed7810189cd0911"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_plsr_stage_a.py",
+      "blob_sha": "294d47ad452273ba6e0210906c7747a2342f12b9"
+    },
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "bd0512d4d94f74167267a6b3bf7c265d984451ce",
+      "role": "bounded timeout/process-tree containment wrapper"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "candidate": "R037-PLSR-C01_PDH_PDL_S5_RECLAIM",
+      "validation_months": [
+        "2026-02",
+        "2026-03",
+        "2026-04",
+        "2026-05",
+        "2026-06",
+        "2026-07"
+      ],
+      "warmup_days": 7,
+      "prior_day": "most recent earlier UTC day containing canonical ticks",
+      "sweep": "strict Bid beyond PDH/PDL",
+      "reclaim": "first completed S5 Bid close strictly back inside swept level",
+      "proposal": "first executable tick at/after reclaim right edge while current Bid remains inside",
+      "one_event_per_level_per_day": true,
+      "spread_gate_points_max": 25,
+      "parent_same_tick_priority": true,
+      "blocked_event_deferred": false,
+      "candidate_rearm": false,
+      "stop_usd": 0.3,
+      "trail_activation_usd": 0.1,
+      "trail_distance_usd": 0.03,
+      "max_hold_seconds": 30,
+      "lot": 0.01,
+      "posthoc_level_split": false,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "prior active UTC-day PDH/PDL",
+      "strict sweep",
+      "completed S5 reclaim",
+      "parent-priority ownership",
+      "frozen lifecycle"
+    ],
+    "horizons_checkpoints": {
+      "monthly": "Each current calendar month receives only the final seven UTC calendar days of the immediately preceding canonical month as indicator/state warmup; no economic entries before month start."
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Month-isolated robustness validation after Stage-A and later-January independent validation; no monthly tuning."
+    },
+    "runtime_dependencies": [
+      "Python 3.11-compatible",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "faulthandler": true,
+      "python_unbuffered": true,
+      "isolated_numba_cache": true,
+      "exact_git_blob_preexecution_verification": true,
+      "producer_atomic_output": true,
+      "summary_only_stdout": true,
+      "recovery_rule": "Each month is create-only and durable before the next month starts; message-delivery timeout alone never triggers rerun."
+    },
+    "execution_cost_assumptions": {
+      "surface": "DUKAS_COINEXX_LIKE_P75",
+      "lot": 0.01,
+      "entry_commission_usd": 0.01,
+      "exit_commission_usd": 0.01,
+      "buy_entry": "ASK",
+      "buy_exit": "BID",
+      "sell_entry": "BID",
+      "sell_exit": "ASK",
+      "protective_fill": "first executable quote after stop cross"
+    }
+  },
+  "inputs": [
+    {
+      "name": "16C preregistration",
+      "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_EVIDENCE_16C.json",
+      "blob_sha": "73cb18ee90c5146158b9bb6bb7a09091c6596b53"
+    },
+    {
+      "name": "2026-02 result",
+      "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_2026_02_16C.json",
+      "commit": "afb8ca16fed7b0c5387c6224817881e585076f39",
+      "sha256": "6a5999710c71e88b2b93563583660c2c64d00f075284c23d38a63327876e8939"
+    },
+    {
+      "name": "2026-03 result",
+      "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_2026_03_16C.json",
+      "commit": "8a362c206863ac9db0122c1944e1f1016f5ce559",
+      "sha256": "90626ce663340ca13343f644b66c66f2b1b00f3bbd32511ee42511c861f8865e"
+    },
+    {
+      "name": "2026-04 result",
+      "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_2026_04_16C.json",
+      "commit": "adc54c1caad403880bd332fe84b262f2bfefa664",
+      "sha256": "7ec4104afff1216f1748182a1c40df41f40de2b52a34694503b57ef94945e2f6"
+    },
+    {
+      "name": "2026-05 result",
+      "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_2026_05_16C.json",
+      "commit": "fe5eeeb1e179a69ceb5b01be4eee551c92021f1c",
+      "sha256": "a8b195ea49b3087c99eb7e94681f8d6137ac41eece0c66abe6785a8d80e63807"
+    },
+    {
+      "name": "2026-06 result",
+      "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_2026_06_16C.json",
+      "commit": "17d3ee4513ca086b69738328cdedf7982c991a49",
+      "sha256": "1fa1ac00051140bafff89991f473b5a8096cf0942092a43e0097d35b246eecc5"
+    },
+    {
+      "name": "2026-07 result",
+      "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_2026_07_16C.json",
+      "commit": "e6213b72f39e405c5f850a1f6de5ef3e4bc1224a",
+      "sha256": "c305c1f781f5755586ee08461d72273e8fdea80eb230c9085d662083861da9f4"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "Frozen month-isolated PLSR proposals; no monthly retuning."
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "121 accepted incremental trades aggregate; +49 official-win delta; -$27.10 incremental net."
+    ],
+    "caches": [
+      "GitHub recovery snapshots persisted by DELTA rebuild workflow",
+      "canonical month-isolated P75 tick-rooted feature surfaces"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C.json",
+      "commit": "faa9e402627d7a02eec0425ee621f51184e14f65",
+      "blob_sha": "60d83e99c8151944b9eb0278d4cc94fba70cdaeb"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C.md",
+      "commit": "928c0ecdf2aa3fa0d1a7a30d1bd77734fe30baa2",
+      "blob_sha": "51071a6f810189e2b0ab7732efe1a5f13273fa4c"
+    }
+  ],
+  "qa": [
+    "All six preregistered months February-July were recorded; negative months were not dropped.",
+    "Each monthly result was persisted before the next month began.",
+    "May bounded run exited 0 in 31.050 seconds; June 30.700 seconds; July 30.901 seconds.",
+    "Canonical month source SHA checks passed inside the producer.",
+    "Combined trade count was non-lower in all six months.",
+    "Aggregate official-win delta was +49.",
+    "Aggregate incremental net was -$27.10 and therefore failed the positive aggregate gate.",
+    "Nonnegative-net months were 0/6 versus minimum 4/6.",
+    "Five months breached the preregistered -$2 maximum single-month worsening tolerance; worst April -$6.78.",
+    "No PDH-only/PDL-only rescue, timeframe change, spread change, or lifecycle retuning was performed.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_plsr_c01_monthly_validation.py",
+    "command": "python research/delta/experiments/delta_r037_plsr_c01_monthly_validation.py --prev <previous_month_gzip> --current <current_month_gzip> --month YYYY-MM --output <month_result_json>",
+    "timing_semantics": "Seven prior UTC calendar days are state-only warmup; economic entries begin at current month start. Prior active-day levels and completed S5 reclaim are causal. Parent same-tick priority; no deferred blocked event; no PLSR rearm.",
+    "expected_fingerprints": {
+      "aggregate": {
+        "trade_delta": 121,
+        "official_win_delta": 49,
+        "incremental_net_delta_usd": -27.1,
+        "direct_plsr_net_usd": -29,
+        "nonnegative_net_months": 0,
+        "worst_month": "2026-04",
+        "worst_month_net_delta_usd": -6.78
+      }
+    },
+    "selected_interpretation": "R037-PLSR-C01 fails broad cross-month robustness despite activity/winner additions."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — discovery/validation research only",
+    "feature_timing_spec": "NOT READY",
+    "state_machine_spec": "NOT READY",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA",
+    "ownership_scheduler_spec": "14A surrogate parent priority",
+    "session_dst_spec": "UTC-day level only",
+    "risk_spec": "fixed 0.01",
+    "trade_count_parity_spec": "Not yet",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B",
+  "github_commits": [
+    "877826057745a7e129778911ce0323fcecb58b83",
+    "e8ab95ddee0ac07cc8b223e6b16ca56dd890bf0d",
+    "afb8ca16fed7b0c5387c6224817881e585076f39",
+    "8a362c206863ac9db0122c1944e1f1016f5ce559",
+    "adc54c1caad403880bd332fe84b262f2bfefa664",
+    "fe5eeeb1e179a69ceb5b01be4eee551c92021f1c",
+    "17d3ee4513ca086b69738328cdedf7982c991a49",
+    "e6213b72f39e405c5f850a1f6de5ef3e4bc1224a",
+    "faa9e402627d7a02eec0425ee621f51184e14f65",
+    "928c0ecdf2aa3fa0d1a7a30d1bd77734fe30baa2"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A119:L120",
+      "readback_verified": false
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": false,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "decision": "RETIRE_FROM_ACTIVE_PROMOTION_PATH_KEEP_AS_FORENSIC_RESERVE_NO_POSTHOC_PDH_PDL_SPLIT",
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
