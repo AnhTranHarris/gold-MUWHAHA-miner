@@ -1,0 +1,58 @@
+{
+  "schema": "delta-r037-srht-stage-a-prereg-17ay-v1",
+  "status": "PREREGISTERED",
+  "unit": "R037_SWEEP_RECLAIM_HOLD_RETEST_STAGE_A_SCREEN",
+  "family": "R037-SRHT-v1",
+  "parent_checkpoint": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
+  "research_question": "Does a causal M1 swing-failure state transition—known prior swing, wick sweep beyond it, completed close back inside, then a one-bar retest that again closes on the reclaimed side—produce enough 30-second post-confirmation asymmetry to survive frozen P75 execution?",
+  "source_basis": [
+    "Open-source TradingView Swing Failure Pattern implementations define the core event as a wick beyond a prior swing followed by a completed close back inside the prior range.",
+    "Open-source SFP/CISD implementations emphasize confirmation after the liquidity sweep rather than entering on the wick itself.",
+    "XAUUSD community material explicitly describes sweep -> reclaim -> retest/hold as stronger confirmation than a wick-only reversal attempt.",
+    "Federal Reserve Bank of New York research on clustered stop-loss/take-profit orders provides a market-microstructure mechanism for unusual price behavior around widely observed support/resistance and stop clusters."
+  ],
+  "frozen_signal": {
+    "bar_seconds": 60,
+    "price": "completed native Dukascopy midquote M1 OHLC",
+    "swing": "symmetric 2-left/2-right completed M1 pivot; pivot must be fully confirmed before sweep bar begins",
+    "sweep_reclaim_bullish": "bar low < known pivot low AND bar close > pivot low",
+    "sweep_reclaim_bearish": "bar high > known pivot high AND bar close < pivot high",
+    "pivot_consumption": "consume pivot after first causal sweep-reclaim event",
+    "confirmation": "next completed M1 bar must retest the swept level and close again on reclaimed side",
+    "bullish_retest_hold": "next bar low <= swept low level AND close > level",
+    "bearish_retest_hold": "next bar high >= swept high level AND close < level",
+    "direction": "trade away from failed breakout",
+    "entry": "first executable P75 tick at/after retest-hold bar right edge"
+  },
+  "frozen_execution": {
+    "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01,
+    "one_position_at_a_time": true
+  },
+  "gates": {
+    "minimum_trades": 20,
+    "minimum_distinct_days": 5,
+    "ordinary_direct_net_usd": -1,
+    "strong_direct_net_usd": 0
+  },
+  "prohibited": [
+    "pivot-width sweep",
+    "retest-window sweep",
+    "ATR wick/reclaim threshold tuning",
+    "session/side/weekday rescue",
+    "QIM/order-flow overlay",
+    "exit retuning",
+    "August access",
+    "MQL5 translation"
+  ],
+  "failure_rule": "If the single preregistered causal sweep-reclaim-retest profile fails supply/day or direct-net gate, retire SRHT rather than rescue it on Stage-A.",
+  "advance_rule": "If it passes the preregistered gates, freeze unchanged for independent later-January validation.",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
