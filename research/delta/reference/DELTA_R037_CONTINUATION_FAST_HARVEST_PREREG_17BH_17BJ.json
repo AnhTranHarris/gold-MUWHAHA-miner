@@ -1,0 +1,88 @@
+{
+  "schema": "delta-r037-continuation-fast-harvest-prereg-17bh-17bj-v1",
+  "status": "PREREGISTERED",
+  "unit": "R037_CONTROLLED_PAUSE_CONTINUATION_FAST_HARVEST_17BH_17BJ",
+  "parent_checkpoint": "R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG",
+  "purpose": "Fast causal prescreen of continuation after a controlled pause, selected to test immediate expansion rather than another reversal/fade family.",
+  "canonical_source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_window": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "frozen_execution": {
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01,
+    "one_position_at_a_time": true
+  },
+  "families": {
+    "17BH_3BP_M1": {
+      "family": "R037-3BP-v1",
+      "source_url": "https://www.tradingview.com/script/vmMiZzbS-3-Bar-Play/",
+      "corroborating_source_url": "https://www.tradingview.com/script/xO3hDxjU-Three-3-Bar-and-Four-4-Bar-Plays-Strategy/",
+      "source_disclosure": "Open-source three-bar-play logic; related open-source research states the pattern is commonly used on 1m/2m/5m/10m charts.",
+      "timeframe_seconds": 60,
+      "signal": {
+        "long": "Bar1 bullish; Bar2 bearish with low above Bar1 low; Bar3 open and close above Bar2 open/close and Bar3 close above Bar2 high.",
+        "short": "Bar1 bearish; Bar2 bullish with high below Bar1 high; Bar3 open and close below Bar2 open/close and Bar3 close below Bar2 low.",
+        "entry": "first executable P75 tick at/after completed Bar3 right edge"
+      }
+    },
+    "17BI_IB_M15_BASE": {
+      "family": "R037-IB-v1",
+      "source_url": "https://www.mql5.com/en/code/73884",
+      "source_report_url": "https://www.mql5.com/en/blogs/post/771362",
+      "source_disclosure": "Open-source MQL5 Inside-Bar continuation EA; tested on XAUUSD and other markets on H1/M15.",
+      "timeframe_seconds": 900,
+      "signal": {
+        "pattern": "Signal Bar fully inside Main Bar; Main Bar close direction defines pending order direction.",
+        "long_trigger": "bullish Main Bar -> P75 Ask first crosses Main-Bar high after Signal-Bar completion",
+        "short_trigger": "bearish Main Bar -> P75 Bid first crosses Main-Bar low after Signal-Bar completion",
+        "pending_expiry": "one subsequent M15 bar; explicit project immediate-continuation adaptation",
+        "filters": "baseline: no optional ATR/body/inside-size quality filters"
+      }
+    },
+    "17BJ_IB_M15_PUBLISHED_QUALITY": {
+      "family": "R037-IBQ-v1",
+      "source_url": "https://www.mql5.com/en/blogs/post/771362",
+      "source_code_url": "https://www.mql5.com/en/code/73884",
+      "source_disclosure": "Predeclared from the source author's published XAUUSD research findings, not derived from DELTA results.",
+      "timeframe_seconds": 900,
+      "signal": {
+        "pattern": "same Inside-Bar continuation trigger as 17BI",
+        "main_bar_body_fraction_min": 0.8,
+        "inside_bar_range_fraction_max": 0.5,
+        "main_bar_range_min_atr14_multiple": 0.6,
+        "pending_expiry": "one subsequent M15 bar; explicit project immediate-continuation adaptation"
+      }
+    }
+  },
+  "gates": {
+    "minimum_trades": 20,
+    "minimum_distinct_days": 5,
+    "ordinary_direct_net_usd": -1,
+    "strong_direct_net_usd": 0
+  },
+  "selection_rule": "Any fixed profile passing supply/day and direct-net gate freezes unchanged for independent later-January validation. No winner is retuned on Stage-A.",
+  "prohibited": [
+    "timeframe rescue",
+    "filter threshold sweep",
+    "pending-expiry sweep",
+    "session/side/weekday rescue",
+    "exit retuning",
+    "post-result rescue",
+    "August access",
+    "MQL5 translation"
+  ],
+  "timeout_safety": {
+    "producer_must_be_committed_before_compute": true,
+    "exact_git_blob_preexecution_verification": true,
+    "hard_timeout_seconds": 120,
+    "atomic_result_write": true,
+    "phase_checkpoint_after_each_durable_step": true
+  },
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
