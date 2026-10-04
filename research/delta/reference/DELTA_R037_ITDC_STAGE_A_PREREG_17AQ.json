@@ -1,0 +1,65 @@
+{
+  "schema": "delta-r037-itdc-stage-a-prereg-17aq-v1",
+  "unit": "R037_INTRINSIC_TIME_DIRECTIONAL_CHANGE_STAGE_A_SCREEN",
+  "checkpoint": "17AQ",
+  "status": "PREREGISTERED_BEFORE_OFFICIAL_COMPUTE",
+  "parent_checkpoint": "R037_TCFH_STAGE_A_SCREEN_CHECKPOINT_17AP",
+  "family": "R037-ITDC-v1",
+  "public_basis": {
+    "source": "Intrinsic Time: From the Directional-Change Scaling Laws to the Alpha Engine",
+    "source_url": "https://www.mql5.com/en/articles/23814",
+    "operator": "online directional-change extreme tracker; no look-ahead",
+    "threshold_fraction": 0.0002,
+    "threshold_basis": "0.02% is the finest threshold in the article's verified 0.02%-2% real-tick scaling-law grid",
+    "directional_change_premise": "after a confirmed directional change, the new-direction overshoot is an intrinsic-time continuation segment",
+    "alpha_engine_premise": "the article also implements the reference contrarian coastline interpretation, whose first unit is opened against the move"
+  },
+  "profiles": {
+    "C01_OVERSHOOT_CONTINUATION": {
+      "direction": "same as confirmed directional change"
+    },
+    "C02_ALPHA_FIRST_UNIT_CONTRARIAN": {
+      "direction": "opposite confirmed directional change"
+    }
+  },
+  "logic": {
+    "price_stream": "causal P75 midpoint from canonical bid/ask ticks",
+    "initialization": "track initial high and low from first Stage-A tick until first 0.02% directional move establishes mode",
+    "down_change": "while in up mode, confirm when midpoint falls >=0.02% from running high; reset extreme to current midpoint",
+    "up_change": "while in down mode, confirm when midpoint rises >=0.02% from running low; reset extreme to current midpoint",
+    "event_ownership": "one directional-change event at a time; operator alternates modes after each confirmation",
+    "entry": "event tick itself, using executable P75 ask for long / bid for short; if position busy, event is skipped rather than queued"
+  },
+  "execution": {
+    "max_spread_points": 25,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "lot": 0.01,
+    "commission_entry_usd": 0.01,
+    "commission_exit_usd": 0.01
+  },
+  "stage_a_window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_exclusive_utc": "2026-01-18T12:00:00Z"
+  },
+  "gate": {
+    "minimum_trades": 6,
+    "minimum_distinct_days": 4,
+    "direct_net_min_minus_1": true,
+    "strong_pass_requires_nonnegative_net": true
+  },
+  "selection_rule": "advance only preregistered direction semantics passing supply/economic gates; rank strong survivors by direct net then official wins; no threshold retuning",
+  "restrictions": [
+    "no delta threshold sweep",
+    "no multi-unit cascade",
+    "no post-result session/side/weekday filters",
+    "no exit tuning",
+    "no August",
+    "no MQL5 build"
+  ],
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
