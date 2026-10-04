@@ -16,39 +16,28 @@
     "first_incomplete_unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION",
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A_MANIFEST.json",
     "current_state_commit": "cc41515252e5f24bacee2e05d19002a0243a675b",
-    "current_state_ci_run": 37166140926,
-    "current_state_ci_conclusion": "RETRY_AFTER_POINTER_SYNC"
+    "current_state_ci_run": 37166233147,
+    "current_state_ci_conclusion": "SUCCESS"
   },
   "in_flight_unit": {
-    "unit": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN",
-    "status": "COMPLETE",
-    "phase_rank": 7,
-    "parent_durable_unit": "R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_CHECKPOINT_14B",
+    "unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION",
+    "status": "PRODUCER_COMMITTED",
+    "phase_rank": 2,
+    "parent_durable_unit": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_SORB_SURROGATE_PARENT_STAGE_A_EVIDENCE_15A.json",
-        "blob_sha": "9c0c98a68994bb0d6ab9cd017ed7e9757348af77"
+        "path": "research/delta/reference/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_EVIDENCE_15B.json",
+        "commit": "619d27ea1095dc991cb5d657d63379dde96248e0",
+        "blob_sha": "b28b55f7acfc9dcbfe4424cce8acd58e4d1bd90e"
       },
       {
-        "path": "research/delta/experiments/delta_r037_sorb_surrogate_parent_stage_a.py",
-        "commit": "d1c5a36f502bf2ec59ce81388472963a4d4a71c1",
-        "blob_sha": "4dd2209c161d555cb814e3875553219373ad1f9b",
-        "sha256": "0e0db32717636e54a160fbca34dac4a112712fb401b1f011f66e60361c2306b5"
-      },
-      {
-        "path": "research/delta/reference/DELTA_R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A.json",
-        "commit": "7795b0a62480ac3094a4304fdb27e34b9b480459"
-      },
-      {
-        "path": "research/delta/research/DELTA_R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A.md",
-        "commit": "ec1116e529f41dbbe659f371febf5093431a52c6"
-      },
-      {
-        "path": "research/delta/artifacts/DELTA_R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A_MANIFEST.json",
-        "commit": "88f225d71afc8b4e2f2acf6302de701a5a073f5d"
+        "path": "research/delta/experiments/delta_r037_sorb_c04_dual30_late_jan_oos.py",
+        "commit": "10bd1f16f3f4757b652cfe50bc90dab920f134cf",
+        "blob_sha": "87787466855efb1bc5a0602b195299380037e700",
+        "sha256": "560a7e2c8802ab9a14891d2f008efb0fbb9da0c6f68abee02791a708329ac8bd"
       }
     ],
-    "next_action": "Continue R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION from CURRENT_STATE; do not rerun 15A."
+    "next_action": "Run exactly one bounded later-January OOS validation of frozen C04. If result exists after a message timeout, do not rerun."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
