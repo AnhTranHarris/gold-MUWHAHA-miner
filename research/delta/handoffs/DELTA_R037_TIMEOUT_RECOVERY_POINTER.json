@@ -20,25 +20,22 @@
     "current_state_ci_conclusion": "PENDING"
   },
   "in_flight_unit": {
-    "unit": "R037_PREVIOUS_LIQUIDITY_SWEEP_RECLAIM_STAGE_A_SCREEN",
-    "status": "COMPLETE",
-    "phase_rank": 7,
-    "parent_durable_unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B",
+    "unit": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION",
+    "status": "IN_PROGRESS",
+    "phase_rank": 2,
+    "parent_durable_unit": "R037_PLSR_STAGE_A_SCREEN_CHECKPOINT_16A",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_PLSR_STAGE_A_CHECKPOINT_16A.json",
-        "commit": "4f6d39a2044b1e6b810d4f21165fd98c9cf4a34d"
+        "path": "research/delta/reference/DELTA_R037_PLSR_C01_INDEPENDENT_VALIDATION_EVIDENCE_16B.json",
+        "commit": "a135f5c16718af43de7022cfc35d60bd0b87e0e5"
       },
       {
-        "path": "research/delta/research/DELTA_R037_PLSR_STAGE_A_CHECKPOINT_16A.md",
-        "commit": "04e3c9cc8af97c2be878d842492d040e220292e8"
-      },
-      {
-        "path": "research/delta/artifacts/DELTA_R037_PLSR_STAGE_A_CHECKPOINT_16A_MANIFEST.json",
-        "commit": "6d528c06a5077bbb145903f458cab1a16889cb58"
+        "path": "research/delta/experiments/delta_r037_plsr_c01_independent_validation.py",
+        "commit": "ccef1cd460d585857b19b30532fd91e7d2ccc7de",
+        "blob_sha": "382b641e1b8598b4296da52401ec9ce795d1931a"
       }
     ],
-    "next_action": "Continue R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION; leader frozen exactly as C01 PDH+PDL S5 reclaim."
+    "next_action": "Run committed 16B C01 producer on later-January holdout; if a result exists after timeout, verify it and finish durability only."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
