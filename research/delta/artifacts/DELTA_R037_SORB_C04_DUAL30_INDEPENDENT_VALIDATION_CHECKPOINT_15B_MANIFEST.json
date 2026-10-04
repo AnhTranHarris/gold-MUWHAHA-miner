@@ -1,0 +1,218 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B",
+  "status": "VERIFIED_RESEARCH_COMPLETE_PENDING_STATE_ADVANCE",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A",
+  "hypothesis": "The frozen Stage-A SORB winner R037-C04_DUAL_30 will retain a strong-screen pass on the preregistered later-January independent holdout without retuning.",
+  "falsification_condition": "The frozen C04 candidate fails any preregistered strong-screen requirement on the independent holdout, including net worsening beyond $2 or negative incremental economics.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Later-January surrogate parent holdout",
+    "reference_count": 13630,
+    "minimum_count": 13630,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "C04 added 15 trades; activity passed but economics failed."
+  },
+  "primary_metrics": {
+    "entry_quality": "15 incremental SORB entries produced only 4 official wins.",
+    "hold_persistence": "Frozen R9 lifecycle; no exit retuning.",
+    "economics": "Combined net delta -$5.25; SORB direct net -$4.72.",
+    "gross_loss_drawdown": "Gross loss worsened by $6.22; max equity DD worsened 0.1834%.",
+    "activity": "20 proposals / 19 eligible / 10 distinct days / 15 accepted entries."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_sorb_c04_dual30_independent_validation.py",
+      "producing_commit": "10bd1f16f3f4757b652cfe50bc90dab920f134cf",
+      "producing_blob_sha": "87787466855efb1bc5a0602b195299380037e700",
+      "producing_sha256": "560a7e2c8802ab9a14891d2f008efb0fbb9da0c6f68abee02791a708329ac8bd",
+      "note": "Canonical result provenance. Later harness-only commits may exist at the live path; reproduce from this immutable commit/blob."
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/experiments/delta_r037_sorb_surrogate_parent_stage_a.py",
+      "blob_sha": "4dd2209c161d555cb814e3875553219373ad1f9b"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_sorb.py"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_r032_parent_backbone.py",
+      "blob_sha": "12e037bc44c8587f2305357ff085380473c40963"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "candidate": "R037-C04_DUAL_30",
+      "sessions": [
+        "LONDON",
+        "COMEX_GOLD"
+      ],
+      "range_minutes": 30,
+      "confirm_closes": 1,
+      "expiry_minutes": 120,
+      "max_spread_points": 25,
+      "numeric_retuning": false,
+      "parent_same_tick_priority": true,
+      "one_position_at_a_time": true,
+      "blocked_event_deferred": false,
+      "sorb_rearm": false,
+      "stop_usd": 0.3,
+      "trail_activation_usd": 0.1,
+      "trail_distance_usd": 0.03,
+      "max_hold_seconds": 30,
+      "lot": 0.01
+    },
+    "feature_order": [
+      "14A surrogate parent",
+      "frozen specialists",
+      "C04 SORB proposal",
+      "parent-priority ownership",
+      "frozen R9 lifecycle"
+    ],
+    "horizons_checkpoints": {
+      "warmup": "[2026-01-14T00:00:00Z,2026-01-18T12:00:00Z)",
+      "holdout": "[2026-01-18T12:00:00Z,final January tick]"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Pristine later-January independent validation; no holdout retuning."
+    },
+    "runtime_dependencies": [
+      "Python 3.11-compatible semantics",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_runner_timeout_seconds": 120,
+      "atomic_result_write": true,
+      "exact_git_blob_preexecution_verification": true,
+      "recovery_snapshot_supported": true,
+      "deterministic_replay_byte_identical": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    },
+    {
+      "name": "15B preregistration",
+      "path": "research/delta/reference/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_EVIDENCE_15B.json",
+      "blob_sha": "b28b55f7acfc9dcbfe4424cce8acd58e4d1bd90e"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "20 holdout SORB proposals / 19 source eligible"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "15 accepted C04 SORB entries"
+    ],
+    "caches": [
+      "Tick-rooted causal helper surfaces restored from DELTA recovery artifact when local network cloning was unavailable."
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B.json",
+      "blob_sha": "75e1a8df7b022fcb01c4de03c2e04be623707e76",
+      "raw_result_sha256": "334cc40a6a121acfc002bedeb4e7bf5401b92a14b1912cc3185719ca2b8488cb"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B.md",
+      "blob_sha": "7cd5ccc861e2da2b671ba29a2b0e9cabbfd2c897"
+    }
+  ],
+  "qa": [
+    "Canonical January source hash verified.",
+    "Warmup contains no economic entries.",
+    "Holdout contains 4,929,353 ticks.",
+    "Parent and candidate final positions flat.",
+    "Canonical run repeated with byte-identical JSON.",
+    "20 proposals / 19 source eligible / 10 distinct days: sample not starved.",
+    "C04 adds 15 trades and 4 official wins but worsens net by $5.25.",
+    "Direct SORB contribution is -$4.72.",
+    "Both London and COMEX session contributions are negative.",
+    "No retuning performed after holdout.",
+    "August sealed; MQL5 unauthorized.",
+    "Workbook 69 R037 Research Harvest contains 15B block and canonical raw-result SHA read back."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_sorb_c04_dual30_independent_validation.py",
+    "timing_semantics": "Warmup state only before Jan 18 12:00 UTC; holdout economic entries afterward; parent same-tick priority; first confirmation consumes session; blocked events not deferred; no SORB rearm; final position flattened at last observed January executable quote.",
+    "expected_fingerprints": {
+      "parent": {
+        "trades": 13630,
+        "official_wins": 5912,
+        "net_profit": -2857.01,
+        "max_equity_drawdown": 2862
+      },
+      "candidate": {
+        "trades": 13645,
+        "official_wins": 5916,
+        "net_profit": -2862.26,
+        "max_equity_drawdown": 2867.25,
+        "sorb_entries": 15,
+        "sorb_net": -4.72
+      },
+      "delta": {
+        "trades": 15,
+        "official_wins": 4,
+        "net_profit": -5.25
+      }
+    },
+    "decision": "RETIRE_R037_C04_DUAL_30_NO_RETUNING"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — C04 failed independent validation",
+    "feature_timing_spec": "NOT READY",
+    "state_machine_spec": "NOT READY",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA semantics",
+    "ownership_scheduler_spec": "14A surrogate parent priority",
+    "session_dst_spec": "frozen London/COMEX civil-session rules",
+    "risk_spec": "fixed 0.01 research semantics",
+    "trade_count_parity_spec": "Not applicable for retired C04.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "supersedes": [],
+  "rollback_target": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A",
+  "github_commits": [
+    "619d27ea1095dc991cb5d657d63379dde96248e0",
+    "10bd1f16f3f4757b652cfe50bc90dab920f134cf",
+    "a4828ee6484bc9cd631fdf9038ac16680d9cf366"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A91:L100",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_AND_STAGE_A_PREREGISTRATION"
+}
