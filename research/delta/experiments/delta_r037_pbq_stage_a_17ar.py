@@ -128,9 +128,9 @@ def ema(arr,period):
     if len(arr)<period:
         return out
     out[period-1]=float(np.mean(arr[:period]))
-    alpha=2.0/(period+1.0)
+    ema_weight=2.0/(period+1.0)
     for i in range(period,len(arr)):
-        out[i]=alpha*arr[i]+(1.0-alpha)*out[i-1]
+        out[i]=ema_weight*arr[i]+(1.0-ema_weight)*out[i-1]
     return out
 
 def atr_wilder(h,l,c,period=14):
