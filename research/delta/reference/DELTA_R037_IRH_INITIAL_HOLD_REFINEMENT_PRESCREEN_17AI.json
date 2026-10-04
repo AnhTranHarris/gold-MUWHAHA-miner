@@ -1,0 +1,72 @@
+{
+  "schema": "delta-r037-irh-stage-a-17ai-v1",
+  "status": "COMPLETE_STAGE_A_PRESCREEN",
+  "unit": "R037_IRH_INITIAL_HOLD_REFINEMENT_PRESCREEN",
+  "family": "R037-IRH-v1",
+  "prereg_commit": "ee4e632dc0ee51505121745bdc8fe0aaeffccd6d",
+  "producer_path": "research/delta/experiments/delta_r037_irh_stage_a_17ai.py",
+  "producer_commit": "90800a58c42e499bae71131f35db1221e2c6cff4",
+  "producer_blob_sha": "2f08b4cb99d235faff5fb1994c7064ae8df1358c",
+  "producer_file_sha256": "7a31918b83f2a8f17609d5971f9d93ca2b0aa920696e9074487d5b4c4e91f734",
+  "official_raw_result_sha256": "689ab85c1d896140d7daf4c74d665b98fefeb06a2aa77375e2747ed815e904ff",
+  "runtime_seconds": 6.367,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "entry_source": "R037-VCE-C03_BBKC_RELEASE",
+  "events": 27,
+  "base": {
+    "trades": 27,
+    "official_wins": 20,
+    "official_win_rate": 0.7407407407407407,
+    "gross_profit": 4.02,
+    "gross_loss": -3.31,
+    "direct_net_usd": 0.71,
+    "irh_exits": 0
+  },
+  "variants": {
+    "3": {
+      "trades": 27,
+      "official_wins": 15,
+      "official_win_rate": 0.5555555555555556,
+      "gross_profit": 3.39,
+      "gross_loss": -3.95,
+      "direct_net_usd": -0.56,
+      "irh_exits": 8,
+      "improvement_vs_base_usd": -1.27,
+      "prescreen_pass": false
+    },
+    "5": {
+      "trades": 27,
+      "official_wins": 17,
+      "official_win_rate": 0.6296296296296297,
+      "gross_profit": 3.68,
+      "gross_loss": -2.88,
+      "direct_net_usd": 0.8,
+      "irh_exits": 6,
+      "improvement_vs_base_usd": 0.09,
+      "prescreen_pass": true
+    },
+    "10": {
+      "trades": 27,
+      "official_wins": 19,
+      "official_win_rate": 0.7037037037037037,
+      "gross_profit": 3.94,
+      "gross_loss": -3.29,
+      "direct_net_usd": 0.65,
+      "irh_exits": 3,
+      "improvement_vs_base_usd": -0.06,
+      "prescreen_pass": false
+    }
+  },
+  "finding": {
+    "survivors": [
+      "VCE_C03_IRH5"
+    ],
+    "leading": "VCE_C03_IRH5",
+    "next": "R037_IRH_LEADER_INDEPENDENT_LATER_JAN_VALIDATION"
+  },
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "mql5_authorized": false
+}
