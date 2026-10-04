@@ -1,0 +1,30 @@
+{
+  "schema":"delta-r037-qrbm-stage-a-screen-17av-v1",
+  "status":"COMPLETE_STAGE_A_SCREEN",
+  "unit":"R037_QUOTE_REVISION_BURST_MOMENTUM_STAGE_A_SCREEN",
+  "family":"R037-QRBM-v1",
+  "parent_checkpoint":"R037_OSSMR_STAGE_A_SCREEN_CHECKPOINT_17AU",
+  "prereg_commit":"06e151b552adafe5fed571c45e2581e30831f10f",
+  "source_sha256":"d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks":4205709,
+  "signal_surface":"NATIVE_DUKASCOPY_BBO",
+  "execution_surface":"DUKAS_COINEXX_LIKE_P75",
+  "burst_definition":{"bin_seconds":1,"baseline_seconds":600,"threshold":"count > trailing median + 3*1.4826*MAD"},
+  "numeric_retuning":false,
+  "august_accessed":false,
+  "diagnostics":{
+    "completed_seconds":1292400,
+    "extreme_seconds":18668,
+    "burst_start_directional_signals":10577,
+    "signals_per_day":755.5,
+    "revision_count_all_seconds_quantiles":{"p10":0.0,"p25":0.0,"p50":2.0,"p75":6.0,"p90":9.0,"p99":13.0},
+    "burst_revision_count_quantiles":{"p10":3.0,"p25":6.0,"p50":9.0,"p75":13.0,"p90":14.0,"p99":17.0},
+    "burst_abs_mid2_displacement_quantiles":{"p10":30.0,"p25":87.0,"p50":220.0,"p75":503.0,"p90":940.0,"p99":2740.72}
+  },
+  "configs":{"C01_BURST_CONTINUATION":{
+    "metrics":{"signals":10577,"busy_skips":3016,"spread_rejects":0,"trades":7561,"distinct_days":14,"long":3702,"short":3859,"official_wins":3267,"gross_profit":703.91,"gross_loss":-2200.17,"direct_net_usd":-1571.87,"exit_reasons":{"STOP":6989,"MAX_HOLD":572,"END":0}},
+    "gate":{"minimum_trades_50":true,"minimum_distinct_days_6":true,"direct_net_min_minus_1":false,"screen_pass":false,"strong_pass":false}
+  }},
+  "finding":{"leading_config":null,"decision":"RETIRE_QRBM_STAGE_A_NO_EXECUTABLE_SURVIVOR","next":"R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"},
+  "mql5_authorized":false
+}
