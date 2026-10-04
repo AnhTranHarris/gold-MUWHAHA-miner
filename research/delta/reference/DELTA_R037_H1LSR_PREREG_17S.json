@@ -1,0 +1,35 @@
+{
+  "schema": "delta-r037-h1lsr-prereg-v1",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "checkpoint_target": "R037_H1LSR_STAGE_A_PRESCREEN_CHECKPOINT_17S",
+  "family": "R037-H1LSR-v1",
+  "status": "FROZEN_BEFORE_REPLAY",
+  "hypothesis": "Previous completed H1 high/low supplies a fixed intraday liquidity reference; an M1 sweep and close-back-inside may create sparse 30-second reversal opportunities with more natural supply than daily/session levels.",
+  "source_basis": [
+    "https://www.mql5.com/en/articles/21581",
+    "https://www.tradingview.com/script/hLV3gFmw/",
+    "https://www.mql5.com/en/articles/18379"
+  ],
+  "configs": {
+    "C01": "First M1 bar per side/hour wicks beyond previous completed H1 high/low and closes back inside.",
+    "C02": "C01 plus rejection-direction candle colour.",
+    "C03": "C02 plus rejection-side wick larger than opposite wick.",
+    "C04": "C02 plus M1 close also beyond its own midpoint in rejection direction."
+  },
+  "lifecycle": "Frozen DELTA 30-second direct prescreen lifecycle.",
+  "gates": {
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "direct_net_min_usd": -2
+  },
+  "forbidden": [
+    "distance threshold",
+    "session rescue",
+    "side split",
+    "exit tuning",
+    "August",
+    "MQL5"
+  ],
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
