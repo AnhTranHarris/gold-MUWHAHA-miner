@@ -21,8 +21,8 @@
   },
   "in_flight_unit": {
     "unit": "R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_AND_SORB_READINESS_DECISION",
-    "status": "RESULT_COMMITTED",
-    "phase_rank": 3,
+    "status": "REPORT_COMMITTED",
+    "phase_rank": 4,
     "parent_durable_unit": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A",
     "committed_artifacts": [
       {
@@ -36,9 +36,13 @@
       {
         "path": "research/delta/reference/DELTA_R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_DECISION_CHECKPOINT_14B.json",
         "sha256": "c7df97c98589b42beff7d7ce5d53c176d434fe6dda5b9fb0499c65dae0bf17fe"
+      },
+      {
+        "path": "research/delta/research/DELTA_R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_CHECKPOINT_14B.md",
+        "commit": "1369c27c440d64520d7f382aa85c193cb10bd939"
       }
     ],
-    "next_action": "Document 14B, write/read back workbook checkpoint, commit full manifest, then advance CURRENT_STATE last."
+    "next_action": "Write/read back 14B workbook checkpoint, commit full manifest, then advance CURRENT_STATE last."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
