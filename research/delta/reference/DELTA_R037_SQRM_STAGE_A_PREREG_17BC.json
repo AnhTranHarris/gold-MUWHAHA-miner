@@ -1,0 +1,60 @@
+{
+  "schema": "delta-r037-sqrm-stage-a-prereg-17bc-v1",
+  "status": "PREREGISTERED",
+  "unit": "R037_SQUEEZE_RELEASE_MOMENTUM_STAGE_A_SCREEN",
+  "family": "R037-SQRM-v1",
+  "parent_checkpoint": "R037_CORB_STAGE_A_SCREEN_CHECKPOINT_17BB",
+  "research_question": "Does a causal M1 Bollinger-inside-Keltner compression state followed by a completed-bar release, traded in the direction of standard detrended linear-regression momentum, create enough immediate XAUUSD continuation to survive frozen P75 execution over 30 seconds?",
+  "source_basis": [
+    "MetaQuotes Bollinger bands squeeze code base: squeeze occurs while Bollinger Bands are inside Keltner Channel; no-entry during compression and breakout state after release.",
+    "Open-source TradingView Keltner/Bollinger Squeeze: squeeze = Bollinger Bands encapsulated by Keltner Channel.",
+    "Current MT5 Squeeze Momentum implementations use Bollinger/Keltner state plus a detrended linear-regression momentum histogram whose sign gives direction.",
+    "Open-source XAUUSD Bollinger Scalper explicitly applies Bollinger/Keltner squeeze logic to gold."
+  ],
+  "frozen_signal": {
+    "bar_seconds": 60,
+    "length": 20,
+    "bollinger_std_multiplier": 2,
+    "keltner_range_multiplier": 1.5,
+    "keltner_range": "SMA20 of true range",
+    "squeeze_on": "BB upper < KC upper AND BB lower > KC lower",
+    "release": "previous completed M1 bar squeeze_on AND current completed M1 bar not squeeze_on",
+    "momentum": "20-bar linear-regression endpoint of close minus average(midpoint of 20-bar highest-high/lowest-low, SMA20 close)",
+    "buy": "release AND momentum > 0",
+    "sell": "release AND momentum < 0",
+    "entry": "first executable P75 tick at/after release bar right edge"
+  },
+  "frozen_execution": {
+    "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01,
+    "one_position_at_a_time": true
+  },
+  "gates": {
+    "minimum_trades": 20,
+    "minimum_distinct_days": 5,
+    "ordinary_direct_net_usd": -1,
+    "strong_direct_net_usd": 0
+  },
+  "prohibited": [
+    "length sweep",
+    "BB multiplier sweep",
+    "KC multiplier sweep",
+    "timeframe sweep",
+    "minimum squeeze-duration tuning",
+    "momentum-threshold tuning",
+    "session/side/weekday rescue",
+    "exit retuning",
+    "August access",
+    "MQL5 translation"
+  ],
+  "failure_rule": "If the single classic M1 squeeze-release profile fails supply/day or direct-net gate, retire SQRM rather than tune it on Stage-A.",
+  "advance_rule": "If it passes, freeze unchanged for independent later-January validation.",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
