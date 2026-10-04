@@ -1,0 +1,57 @@
+{
+  "schema": "delta-r037-alrb-stage-a-prereg-17ba-v1",
+  "status": "PREREGISTERED",
+  "unit": "R037_ASIA_LONDON_RANGE_BREAKOUT_STAGE_A_SCREEN",
+  "family": "R037-ALRB-v1",
+  "parent_checkpoint": "R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ",
+  "research_question": "Does a completed Asian-session XAUUSD range followed by a confirmed M15 close beyond that range during the early London window create enough immediate continuation to survive frozen P75 execution over 30 seconds?",
+  "source_basis": [
+    "MetaQuotes SessionRangeBreakout: XAUUSD M15, overnight Asian range, then London breakout.",
+    "Open-source TradingView GOLD Asian Range Breakout: completed Asian high/low and London close outside the range, one signal per direction per day.",
+    "Open-source X-Break: Asian range followed by London-session breakout confirmation on completed candle closes."
+  ],
+  "frozen_signal": {
+    "range_window_utc": "00:00-06:00",
+    "london_test_window_utc": "08:00-10:00",
+    "bar_seconds": 900,
+    "range": "high/low of completed native-mid M15 bars whose opens fall in 00:00-06:00 UTC",
+    "buy": "first completed M15 close above that day's frozen Asian high during 08:00-10:00 UTC",
+    "sell": "first completed M15 close below that day's frozen Asian low during 08:00-10:00 UTC",
+    "maximum_per_direction_per_day": 1,
+    "entry": "first executable P75 tick at/after breakout bar right edge"
+  },
+  "frozen_execution": {
+    "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01,
+    "one_position_at_a_time": true
+  },
+  "gates": {
+    "minimum_trades": 20,
+    "minimum_distinct_days": 5,
+    "ordinary_direct_net_usd": -1,
+    "strong_direct_net_usd": 0
+  },
+  "prohibited": [
+    "session-time sweep",
+    "range-width filter",
+    "ATR filter",
+    "EMA/trend filter",
+    "weekday filter",
+    "side rescue",
+    "breakout-buffer tuning",
+    "retest rescue",
+    "exit retuning",
+    "August access",
+    "MQL5 translation"
+  ],
+  "failure_rule": "If the single preregistered common-denominator Asian-range/London-breakout profile fails supply/day or direct-net gate, retire ALRB rather than tune it on Stage-A.",
+  "advance_rule": "If it passes, freeze unchanged for independent later-January validation.",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
