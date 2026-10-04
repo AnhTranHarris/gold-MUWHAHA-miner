@@ -1,0 +1,147 @@
+{
+  "schema": "delta-r037-plsr-stage-a-screen-16a-compact-v1",
+  "status": "COMPLETE_STAGE_A_STRONG_SCREEN_PASS_NON_PROMOTING",
+  "unit": "R037_PREVIOUS_LIQUIDITY_SWEEP_RECLAIM_STAGE_A_SCREEN",
+  "family": "R037-PLSR-v1",
+  "parent_checkpoint": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_window": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_plsr_stage_a.py",
+    "commit": "2d501788374f69a2eb3c67b0c4eabac2cfb97374",
+    "blob_sha": "294d47ad452273ba6e0210906c7747a2342f12b9",
+    "sha256": "42f2a7d31cfa9996504833eb55a69ac408d696082f88a0d2da56948bc4bc8b06"
+  },
+  "official_local_raw_result_sha256": "ac9a8aafb30913c4f1cc7e0e4988a40d1bac7d295c15ed8a41ce54bf958cf99c",
+  "parent_control": {
+    "trades": 14034,
+    "official_wins": 6349,
+    "gross_profit": 1357.26,
+    "gross_loss": -4302.2,
+    "net_profit": -2944.94,
+    "max_balance_drawdown": 2945.93,
+    "max_equity_drawdown": 2946.43,
+    "parent_specialist_entries": 2118,
+    "parent_specialist_net": -491.44
+  },
+  "configs": {
+    "R037-PLSR-C01_PDH_PDL_S5_RECLAIM": {
+      "supply": {
+        "proposals": 13,
+        "source_eligible": 11,
+        "distinct_days": 12,
+        "proposal_long": 5,
+        "proposal_short": 8,
+        "PDH": 8,
+        "PDL": 5,
+        "relost_reclaim": 2
+      },
+      "combined": {
+        "trades": 14043,
+        "official_wins": 6353,
+        "gross_profit": 1361.81,
+        "gross_loss": -4304.61,
+        "net_profit": -2942.8,
+        "max_balance_drawdown": 2943.83,
+        "max_equity_drawdown": 2944.33,
+        "plsr_entries": 9,
+        "plsr_net": 2.14,
+        "PDH": {
+          "entries": 5,
+          "wins": 4,
+          "net": 3.98
+        },
+        "PDL": {
+          "entries": 4,
+          "wins": 0,
+          "net": -1.84
+        }
+      },
+      "decision": {
+        "screen_pass": true,
+        "strong_screen_pass": true,
+        "trade_delta": 9,
+        "official_win_delta": 4,
+        "gross_profit_delta": 4.55,
+        "gross_loss_delta": -2.41,
+        "net_delta": 2.14,
+        "max_balance_dd_delta_pct": -0.0712847895,
+        "max_equity_dd_delta_pct": -0.0712726927,
+        "incremental_net_per_plsr_entry": 0.24
+      }
+    },
+    "R037-PLSR-C02_PDH_PDL_S5_RECLAIM_CONFIRM1": {
+      "supply": {
+        "proposals": 13,
+        "source_eligible": 9,
+        "distinct_days": 12,
+        "proposal_long": 5,
+        "proposal_short": 8,
+        "PDH": 8,
+        "PDL": 5,
+        "confirm_fail": 4
+      },
+      "combined": {
+        "trades": 14042,
+        "official_wins": 6354,
+        "gross_profit": 1357.91,
+        "gross_loss": -4303.39,
+        "net_profit": -2945.48,
+        "max_balance_drawdown": 2945.88,
+        "max_equity_drawdown": 2946.38,
+        "plsr_entries": 8,
+        "plsr_net": -0.54
+      },
+      "decision": {
+        "screen_pass": true,
+        "strong_screen_pass": false,
+        "trade_delta": 8,
+        "official_win_delta": 5,
+        "net_delta": -0.54,
+        "incremental_net_per_plsr_entry": -0.07
+      }
+    },
+    "R037-PLSR-C03_PDH_PDL_S15_RECLAIM": {
+      "supply": {
+        "proposals": 13,
+        "source_eligible": 13,
+        "distinct_days": 12,
+        "proposal_long": 5,
+        "proposal_short": 8,
+        "PDH": 8,
+        "PDL": 5
+      },
+      "combined": {
+        "trades": 14047,
+        "official_wins": 6355,
+        "gross_profit": 1358.39,
+        "gross_loss": -4306.26,
+        "net_profit": -2947.87,
+        "max_balance_drawdown": 2948.27,
+        "max_equity_drawdown": 2948.77,
+        "plsr_entries": 12,
+        "plsr_net": -1.57
+      },
+      "decision": {
+        "screen_pass": false,
+        "strong_screen_pass": false,
+        "trade_delta": 13,
+        "official_win_delta": 6,
+        "net_delta": -2.93,
+        "incremental_net_per_plsr_entry": -0.24
+      }
+    }
+  },
+  "finding": {
+    "leading_config": "R037-PLSR-C01_PDH_PDL_S5_RECLAIM",
+    "interpretation": "The minimal completed-S5 reclaim is the only strong Stage-A survivor; extra confirmation delays or S15 delay do not improve the family.",
+    "no_posthoc_level_split": true,
+    "candidate_frozen_for_holdout": "R037-PLSR-C01_PDH_PDL_S5_RECLAIM",
+    "next": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION"
+  },
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "mql5_authorized": false
+}
