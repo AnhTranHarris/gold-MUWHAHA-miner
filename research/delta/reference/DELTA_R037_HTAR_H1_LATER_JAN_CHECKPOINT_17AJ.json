@@ -1,0 +1,71 @@
+{
+  "schema": "delta-r037-htar-h1-later-jan-17aj-v1",
+  "status": "COMPLETE_INDEPENDENT_LATER_JAN_VALIDATION",
+  "unit": "R037_HTAR_H1_INDEPENDENT_LATER_JAN_VALIDATION",
+  "family": "R037-HTAR-v1",
+  "candidate": "R037-HTAR-C01_H1_ANCHOR",
+  "prereg_commit": "5cb4f19ea4c098ce9d8589d59bd4a6bb874ef778",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "warmup_ticks": 6076533,
+  "economics_ticks": 4929353,
+  "window": {
+    "warmup_start_ms": 1768348800000,
+    "economics_start_ms": 1768737600000,
+    "end_exclusive_ms": 1769904000000
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "configs": {
+    "C01_H1_ANCHOR": {
+      "anchor_seconds": 3600000,
+      "stage_counts": {
+        "anchors_high": 68,
+        "anchors_low": 72,
+        "sweeps": 59,
+        "cisd": 56,
+        "fvg": 26,
+        "retrace": 7
+      },
+      "metrics": {
+        "proposals": 7,
+        "eligible": 7,
+        "trades": 7,
+        "distinct_days": 7,
+        "long": 5,
+        "short": 2,
+        "rejections": {},
+        "official_wins": 3,
+        "raw_positive_wins": 3,
+        "gross_profit": 1.92,
+        "gross_loss": -1.27,
+        "direct_net_usd": 0.65,
+        "exit_reasons": {
+          "STOP": 7,
+          "MAX_HOLD": 0,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_proposals_6": true,
+        "minimum_trades_5": true,
+        "minimum_distinct_days_4": true,
+        "direct_net_nonnegative": true,
+        "validation_pass": true,
+        "strong_pass": true
+      }
+    }
+  },
+  "ranking": [
+    "C01_H1_ANCHOR"
+  ],
+  "finding": {
+    "leading_config": "C01_H1_ANCHOR",
+    "holdout_survivors": [
+      "C01_H1_ANCHOR"
+    ],
+    "decision": "ADVANCE_FROZEN_H1_MONTH_BY_MONTH",
+    "next": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION"
+  },
+  "mql5_authorized": false
+}
