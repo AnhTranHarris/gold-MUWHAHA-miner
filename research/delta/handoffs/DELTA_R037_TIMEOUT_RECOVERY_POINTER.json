@@ -2,136 +2,65 @@
   "schema": "delta-timeout-recovery-pointer-v1",
   "updated_utc": "2026-10-04",
   "lineage": "DELTA",
-  "purpose": "Recover safely after ChatGPT message-delivery timeout or interrupted foreground tool chain without repeating durable research.",
+  "purpose": "Crash-safe restart cursor after transport interruption.",
   "authority_order": [
     "delta/CURRENT_STATE.json",
     "research/delta/CURRENT_INFLIGHT.json",
     "this pointer",
-    "active rebuild manifest",
-    "older Drive timeout-safe handoff pack"
+    "active rebuild manifest"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ",
-    "current_phase": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION_NEXT",
-    "first_incomplete_unit": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ_MANIFEST.json"
+    "last_verified_durable_unit": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_CHECKPOINT_17AK",
+    "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
+    "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_HTAR_H1_FEB_JUL_ROBUSTNESS_CHECKPOINT_17AK_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION",
-    "status": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
-    "parent_durable_unit": "R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ",
+    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "status": "IDLE",
+    "phase_rank": 0,
+    "parent_durable_unit": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_CHECKPOINT_17AK",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ.json",
-        "commit": "0c49c48ccce3bdeaa1cb9d57c7a6031cd27e4208"
+        "path": "research/delta/reference/DELTA_R037_HTAR_H1_FEB_JUL_ROBUSTNESS_CHECKPOINT_17AK.json",
+        "commit": "e84eedaff827cb3156e8f7b67616baa89063f02b"
       },
       {
-        "path": "research/delta/research/DELTA_R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ.md",
-        "commit": "196d24afac249544faf3e4842624d06647f1efb4"
+        "path": "research/delta/research/DELTA_R037_HTAR_H1_FEB_JUL_ROBUSTNESS_CHECKPOINT_17AK.md",
+        "commit": "095fef81bd1ab059ce318da7c9299424b5be1442"
       },
       {
-        "path": "research/delta/artifacts/DELTA_R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ_MANIFEST.json",
-        "commit": "a3231f44c60183c413faf343978697cdb49714a9"
-      },
-      {
-        "path": "research/delta/reference/DELTA_R037_HTAR_H1_FEB_JUL_PREREG_17AK.json",
-        "commit": "4731471b6fa4697552c28bbc3c8adaaff250a909"
-      },
-      {
-        "path": "research/delta/experiments/delta_r037_htar_h1_monthly_17ak.py",
-        "commit": "a07834f819907cbf1bdd1f8439fede1479f9c631"
+        "path": "research/delta/artifacts/DELTA_R037_HTAR_H1_FEB_JUL_ROBUSTNESS_CHECKPOINT_17AK_MANIFEST.json",
+        "commit": "54f43d3808e82b719669ae4571611dc5f13f1932"
       }
     ],
-    "next_action": "Blob-verify the frozen monthly producer and execute 2026-02 through 2026-07; persist each completed month before advancing.",
-    "completed_months": [],
-    "next_month": "2026-02"
+    "next_action": "Preregister next independent entry-source family.",
+    "completed_months": [
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06",
+      "2026-07"
+    ],
+    "next_month": null
   },
   "timeout_recovery_algorithm": [
-    "Read CURRENT_STATE.json first.",
-    "Read research/delta/CURRENT_INFLIGHT.json second.",
-    "Read this pointer third; CI requires it to agree with the two authoritative cursors.",
-    "Compare delta branch HEAD with the latest durable/current in-flight commits.",
-    "If the in-flight phase already references a committed artifact, verify it and resume from the next missing phase; do not recreate or rerun it solely because a chat message timed out.",
-    "Official compute is valid only from producer bytes committed before execution and exact blob-verified locally.",
-    "Persist result, report, workbook readback, full manifest, then advance CURRENT_STATE last.",
-    "Require DELTA rebuild artifact gate success before calling the unit durable."
+    "Read CURRENT_STATE, then CURRENT_INFLIGHT, then this pointer.",
+    "Resume from first missing committed phase; do not rerun durable compute solely because message delivery failed.",
+    "Official compute requires committed producer bytes and exact local Git-blob verification.",
+    "Persist result, report, workbook readback and manifest before advancing CURRENT_STATE.",
+    "Require DELTA rebuild artifact gate success."
   ],
   "execution_hardening": {
-    "python_runner": "research/delta/qa/delta_bounded_python_runner.py",
     "bounded_timeout_seconds": 120,
-    "faulthandler": true,
-    "python_unbuffered": true,
-    "isolated_numba_cache": true,
     "producer_atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
     "exact_git_blob_preexecution_verification": true,
-    "committed_recovery_snapshot_execution": true,
-    "large_stdout_policy": "Keep official producers summary-only; persist detailed diagnostics to JSON rather than streaming them through the chat/tool transport.",
-    "chat_delivery_timeout_policy": "Treat message delivery timeout as transport/session interruption. Recovery order must check CURRENT_STATE, timeout pointer, branch commits/CI, committed result/report/manifest, and workbook raw-result SHA before rerunning compute. If the workbook or committed result proves an official compute already completed, finish only the missing durability steps.",
-    "github_workflow_policy": "Require rebuild gate success for every durable cursor; use workflow artifacts/recovery snapshots rather than uncommitted local state.",
-    "concurrent_old_chain_policy": [
-      "Before every durable write, re-read CURRENT_STATE.json and branch HEAD/recent CI.",
-      "Prefer immutable create-only artifact paths for preregistration, producer, result and report. Treat an already-existing create/HTTP 422 as evidence that another chain may have progressed; stop and reconcile rather than overwrite.",
-      "If CURRENT_STATE or HEAD advances beyond the state used to prepare a write, abandon that write and resume from the newer authoritative cursor.",
-      "Only one reconciled checkpoint may advance CURRENT_STATE for a bounded scientific unit; parallel diagnostics remain supplementary/non-promoting unless explicitly incorporated by the durable manifest.",
-      "Never rerun an official compute solely because ChatGPT message delivery timed out. Verify committed result/report/workbook/manifest/CI first."
-    ],
-    "pointer_consistency_gate": "DELTA_TIMEOUT_RECOVERY_GUARD.py must reject mismatch among CURRENT_STATE.json, CURRENT_INFLIGHT.json, and this timeout-recovery pointer.",
-    "atomic_cursor_policy": "Whenever CURRENT_INFLIGHT changes phase, update the recovery pointer in the same Git commit when possible; CURRENT_STATE and CURRENT_INFLIGHT remain authoritative.",
-    "current_sorb_producer_hotfix": "d1c5a36f502bf2ec59ce81388472963a4d4a71c1 / blob 4dd2209c161d555cb814e3875553219373ad1f9b"
+    "large_stdout_policy": "Persist detailed diagnostics to JSON; keep transport output compact."
   },
   "constraints": {
     "august_2026": "SEALED",
-    "sorb_integrated_replay": "OFFICIAL_EXACT_PARENT_BLOCKED; NON_PROMOTING_SURROGATE_STAGE_A_AUTHORIZED",
     "mql5_authorized": false,
     "numeric_threshold_retuning": false
-  },
-  "external_references": {
-    "python": [
-      "https://docs.python.org/3.11/library/tempfile.html",
-      "https://docs.python.org/3.11/library/os.html",
-      "https://docs.python.org/3.11/library/subprocess.html"
-    ],
-    "github": [
-      "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax",
-      "https://docs.github.com/en/actions/concepts/workflows-and-actions/workflow-artifacts",
-      "https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency"
-    ],
-    "note": "Python/GitHub controls harden compute and persistence but cannot directly eliminate a ChatGPT UI/message-delivery timeout. OpenAI troubleshooting treats conversation/network/browser/server errors separately from local compute; recent community reports show the same delivery error in long/project chats. Treat message delivery failure as transport unless durable artifacts/CI show scientific failure.",
-    "openai": [
-      "https://help.openai.com/en/articles/7996703-chatgpt-error-messages",
-      "https://help.openai.com/en/articles/9047779-why-is-mychatgpt-taking-so-long-to-respond",
-      "https://status.openai.com/"
-    ]
-  },
-  "reconciled_race": {
-    "unit": "13G",
-    "scientific_output_sha256": "25c685e579ab30728dbc2cd649ecc22fdb94000a0371813ef272aeb07da8cbdb",
-    "canonical_live_artifacts": [
-      {
-        "role": "result",
-        "path": "research/delta/reference/DELTA_R037_DH03_S06_RECLAIM_LEVEL_CONSUMPTION_CHECKPOINT_13G.json",
-        "commit": "7caada6e86cf51df648dc06852610d59b5655b4a",
-        "blob_sha": "26ccd8eb6db9f1007718530c3f352e71268ea4a9"
-      },
-      {
-        "role": "report",
-        "path": "research/delta/research/DELTA_R037_DH03_S06_RECLAIM_CONSUMPTION_CHECKPOINT_13G.md",
-        "commit": "169fd8536956b627e0856d0a034e0d437bd995f1",
-        "blob_sha": "cbfba939b997deee2c640b9be1a841c613fd5218"
-      },
-      {
-        "role": "manifest",
-        "path": "research/delta/artifacts/DELTA_R037_DH03_S06_RECLAIM_CONSUMPTION_CHECKPOINT_13G_MANIFEST.json",
-        "commit": "46984e21f0f44e24614b90617728a67654f39c89",
-        "blob_sha": "ebd27746deb4b6d50a16ccc9bc8a3216e5e0c0f5"
-      }
-    ],
-    "supplementary_duplicate_commits": [
-      "959fed30ab0c695328334e79eee55037530d6c61",
-      "38ae09a52463e0a8e232ed734529985c11940d80",
-      "4923a311cdb61bbc0afab352c608d71453ce68fa"
-    ],
-    "disposition": "Same official raw result SHA; duplicate race preserved in history but non-authoritative. Canonical live files are the latest blobs."
   }
 }
