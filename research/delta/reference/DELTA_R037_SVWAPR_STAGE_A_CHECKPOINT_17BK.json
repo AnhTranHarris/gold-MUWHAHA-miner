@@ -1,0 +1,56 @@
+{
+  "schema": "delta-r037-svwapr-stage-a-screen-17bk-v1",
+  "status": "COMPLETE_FAST_CAUSAL_PRESCREEN",
+  "unit": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
+  "parent_checkpoint": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
+  "prereg_commit": "464a536e3fe7b5249877218e628fc2f047a6a4ce",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "signal_surface": "NATIVE_DUKAS_COMPLETED_BAR_MID",
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "feature_definition": {
+    "typical_price": "(high+low+close)/3",
+    "volume": "completed-bar tick count",
+    "vwap": "session cumulative sum(typical_price*volume)/sum(volume)",
+    "sigma": "sqrt(sum(typical_price^2*volume)/sum(volume)-VWAP^2)",
+    "arm": "close beyond +/-1 sigma with same-direction VWAP slope",
+    "trigger": "first subsequent VWAP interaction; confirm same-side open/close plus directional body and slope",
+    "consumption": "first interaction consumes event whether confirm or fail",
+    "rearm": "fresh +/-1 sigma completed-bar excursion required",
+    "session_limit": "at most one executed trade per side per session"
+  },
+  "configs": {
+    "17BK_C01_LONDON_M1_FIRST_TOUCH_RECLAIM": {
+      "session": "LONDON",
+      "timeframe_ms": 60000,
+      "metrics": {"signals":16,"busy_skips":0,"spread_rejects":0,"session_limit_skips":5,"trades":11,"distinct_days":8,"long":6,"short":5,"official_wins":6,"gross_profit":0.88,"gross_loss":-3.72,"direct_net_usd":-2.95,"exit_reasons":{"STOP":11,"MAX_HOLD":0,"END":0}},
+      "gate": {"minimum_trades_20":false,"minimum_distinct_days_5":true,"direct_net_min_minus_1":false,"nonnegative_direct_net":false,"screen_pass":false},
+      "event_diagnostics": {"session_days":11,"bars_in_session":5610,"arm_long":65,"arm_short":61,"interaction_long":59,"interaction_short":59,"confirmed_long":9,"confirmed_short":7,"failed_first_touch_long":50,"failed_first_touch_short":52}
+    },
+    "17BK_C02_NEWYORK_M1_FIRST_TOUCH_RECLAIM": {
+      "session": "NEW_YORK",
+      "timeframe_ms": 60000,
+      "metrics": {"signals":18,"busy_skips":0,"spread_rejects":0,"session_limit_skips":4,"trades":14,"distinct_days":10,"long":8,"short":6,"official_wins":5,"gross_profit":0.93,"gross_loss":-4.39,"direct_net_usd":-3.6,"exit_reasons":{"STOP":14,"MAX_HOLD":0,"END":0}},
+      "gate": {"minimum_trades_20":false,"minimum_distinct_days_5":true,"direct_net_min_minus_1":false,"nonnegative_direct_net":false,"screen_pass":false},
+      "event_diagnostics": {"session_days":11,"bars_in_session":5940,"arm_long":53,"arm_short":38,"interaction_long":49,"interaction_short":35,"confirmed_long":11,"confirmed_short":7,"failed_first_touch_long":38,"failed_first_touch_short":28}
+    },
+    "17BK_C03_LONDON_M5_FIRST_TOUCH_RECLAIM": {
+      "session": "LONDON",
+      "timeframe_ms": 300000,
+      "metrics": {"signals":19,"busy_skips":0,"spread_rejects":0,"session_limit_skips":6,"trades":13,"distinct_days":9,"long":7,"short":6,"official_wins":8,"gross_profit":2.05,"gross_loss":-2.53,"direct_net_usd":-0.61,"exit_reasons":{"STOP":13,"MAX_HOLD":0,"END":0}},
+      "gate": {"minimum_trades_20":false,"minimum_distinct_days_5":true,"direct_net_min_minus_1":true,"nonnegative_direct_net":false,"screen_pass":false},
+      "event_diagnostics": {"session_days":11,"bars_in_session":1122,"arm_long":51,"arm_short":43,"interaction_long":45,"interaction_short":41,"confirmed_long":9,"confirmed_short":10,"failed_first_touch_long":36,"failed_first_touch_short":31}
+    },
+    "17BK_C04_NEWYORK_M5_FIRST_TOUCH_RECLAIM": {
+      "session": "NEW_YORK",
+      "timeframe_ms": 300000,
+      "metrics": {"signals":16,"busy_skips":0,"spread_rejects":0,"session_limit_skips":4,"trades":12,"distinct_days":9,"long":8,"short":4,"official_wins":8,"gross_profit":2.57,"gross_loss":-2.25,"direct_net_usd":0.2,"exit_reasons":{"STOP":12,"MAX_HOLD":0,"END":0}},
+      "gate": {"minimum_trades_20":false,"minimum_distinct_days_5":true,"direct_net_min_minus_1":true,"nonnegative_direct_net":true,"screen_pass":false},
+      "event_diagnostics": {"session_days":11,"bars_in_session":1188,"arm_long":40,"arm_short":29,"interaction_long":36,"interaction_short":26,"confirmed_long":12,"confirmed_short":4,"failed_first_touch_long":24,"failed_first_touch_short":22}
+    }
+  },
+  "finding": {"survivors":[],"decision":"RETIRE_SVWAPR_NO_STAGE_A_SURVIVOR","next":"R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"},
+  "mql5_authorized": false
+}
