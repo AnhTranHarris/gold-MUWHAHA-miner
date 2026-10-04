@@ -1,0 +1,110 @@
+{
+  "schema": "delta-r037-pvacvd-failed-auction-stage-a-prereg-v1",
+  "status": "PREREGISTERED_BEFORE_PRODUCER_AND_OFFICIAL_COMPUTE",
+  "unit": "R037_PVACVD_FAILED_AUCTION_STAGE_A_SCREEN_CHECKPOINT_17BL_17BN",
+  "family": "PREVIOUS_DAY_VOLUME_PROFILE_FAILED_AUCTION_CVD",
+  "parent_checkpoint": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
+  "research_question": "Can previous-available-UTC-day Volume Profile value-area edges become executable 30-second XAUUSD reversal anchors when a causal failed auction is confirmed by directional tick delta, without post-result tuning?",
+  "rationale": [
+    "Completed R037 meta-harvest repeatedly favors durable anchors plus delayed causal confirmation/retest over raw indicators and naked breakouts.",
+    "17BK session VWAP showed better M5 economics but insufficient supply; this unit changes the anchor mechanism to prior-day auction distribution rather than retuning VWAP.",
+    "Prior PDH/PDL sweep/reclaim is retired; this is not a PDH/PDL rescue. VAH/VAL are volume-distribution boundaries and the delta lane adds participation confirmation."
+  ],
+  "source_basis": [
+    {
+      "source": "TradingView Volume Profile basic concepts",
+      "url": "https://www.tradingview.com/support/solutions/43000502040-volume-profile-indicators-basic-concepts/",
+      "use": "POC and 70% value-area construction semantics"
+    },
+    {
+      "source": "TradingView Cumulative Volume Delta",
+      "url": "https://www.tradingview.com/support/solutions/43000725058-cumulative-volume-delta/",
+      "use": "directional volume classification and accumulation semantics"
+    },
+    {
+      "source": "MQL5 open-source CVD indicator",
+      "url": "https://www.mql5.com/en/code/65527",
+      "use": "reconstructible signed tick-volume proxy logic for MT5/forex"
+    },
+    {
+      "source": "Reddit XAUUSD previous-day Volume Profile discussion",
+      "url": "https://www.reddit.com/r/Daytrading/comments/1vueykw/how_to_enhance_volume_profile_strategy/",
+      "use": "community evidence that VAH/VAL sweep-close-back-inside needs context/confirmation rather than blind edge fading"
+    }
+  ],
+  "frozen_data": {
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "stage_a_window": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+    "stage_a_ticks": 4205709,
+    "august_2026": "SEALED"
+  },
+  "profile_construction": {
+    "source": "prior available UTC trading day only",
+    "price": "native Dukascopy midpoint quantized to frozen $0.01 raw tick",
+    "volume": "one count per source tick",
+    "row_size": "one frozen $0.01 price tick; no row-count optimization",
+    "poc": "price row with maximum tick count; deterministic lower-price tie break",
+    "value_area_fraction": 0.7,
+    "value_area": "expand outward from POC using adjacent-row tick counts until the 70% target is reached; deterministic lower-price tie break",
+    "causality": "current-day signals may use only a completed prior available UTC trading-day profile"
+  },
+  "delta_proxy": {
+    "input": "native midpoint ticks",
+    "tick_classification": "+1 on uptick, -1 on downtick, 0 on unchanged tick",
+    "bar_delta": "sum signed tick classifications inside the completed confirmation bar",
+    "role": "confirmation sign only; no numeric delta threshold"
+  },
+  "event_grammar": {
+    "short_edge": "completed bar high strictly above prior-day VAH, then close strictly back below VAH with bearish body",
+    "long_edge": "completed bar low strictly below prior-day VAL, then close strictly back above VAL with bullish body",
+    "delta_confirmation": "when enabled, short requires bar delta < 0 and long requires bar delta > 0",
+    "entry": "first executable P75 tick at or after confirming completed bar end",
+    "rearm": "after an edge event, that side rearms only after a completed bar no longer touches the boundary (high < VAH for short edge; low > VAL for long edge)",
+    "ownership": "global frozen one-position-at-a-time evaluator; no side/session/day filter"
+  },
+  "configs": [
+    {
+      "name": "17BL_C01_PVA_S5_PRICE_FAILED_AUCTION",
+      "bar_ms": 5000,
+      "delta_required": false
+    },
+    {
+      "name": "17BM_C02_PVA_S5_DELTA_FAILED_AUCTION",
+      "bar_ms": 5000,
+      "delta_required": true
+    },
+    {
+      "name": "17BN_C03_PVA_M1_DELTA_FAILED_AUCTION",
+      "bar_ms": 60000,
+      "delta_required": true
+    }
+  ],
+  "execution": {
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "commission_usd_each_side": 0.01
+  },
+  "gates": {
+    "minimum_trades_per_profile": 20,
+    "minimum_distinct_days": 5,
+    "strong_direct_net_usd_min": 0,
+    "advance_rule": "Advance only unchanged profile(s) meeting all activity gates and nonnegative direct net to independent later-January validation."
+  },
+  "prohibited": [
+    "no profile-row-size tuning",
+    "no value-area percentage tuning",
+    "no delta-magnitude threshold sweep",
+    "no session/side/weekday filters",
+    "no stop/trail/hold optimization",
+    "no PDH/PDL or VWAP rescue overlay",
+    "no August access",
+    "no MQL5"
+  ],
+  "next_if_survivor": "R037_PVACVD_SURVIVOR_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_none": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+  "mql5_authorized": false
+}

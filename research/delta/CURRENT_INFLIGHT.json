@@ -1,16 +1,16 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "IDLE",
+  "status": "INFLIGHT",
   "branch": "delta",
-  "unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+  "unit": "R037_PVACVD_FAILED_AUCTION_STAGE_A_SCREEN_CHECKPOINT_17BL_17BN",
   "parent_durable_unit": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
-  "phase": "IDLE",
-  "phase_rank": 0,
+  "phase": "PREREGISTERED",
+  "phase_rank": 1,
   "progress": {
-    "status": "IDLE_DURABLE",
+    "status": "PREREGISTERED",
     "last_completed": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
-    "current_candidate": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
-    "next": "Research and preregister the next independent high-value entry source; do not rerun completed 17BK."
+    "current_candidate": "R037_PVACVD_FAILED_AUCTION_STAGE_A_SCREEN_CHECKPOINT_17BL_17BN",
+    "next": "Commit exact PVACVD producer before official Stage-A compute."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
@@ -30,7 +30,10 @@
   "last_completed": {
     "unit": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
     "checkpoint": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
-    "current_state_next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+    "current_state_next": "R037_PVACVD_FAILED_AUCTION_STAGE_A_SCREEN_CHECKPOINT_17BL_17BN",
     "manifest": "research/delta/artifacts/DELTA_R037_SVWAPR_STAGE_A_CHECKPOINT_17BK_MANIFEST.json"
+  },
+  "prereg": {
+    "path": "research/delta/reference/DELTA_R037_PVACVD_FAILED_AUCTION_PREREG_17BL_17BN.json"
   }
 }
