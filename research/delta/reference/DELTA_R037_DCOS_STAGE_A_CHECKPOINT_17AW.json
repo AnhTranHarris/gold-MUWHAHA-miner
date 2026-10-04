@@ -1,0 +1,63 @@
+{
+  "schema": "delta-r037-dcos-stage-a-screen-17aw-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_DIRECTIONAL_CHANGE_OVERSHOOT_STAGE_A_SCREEN",
+  "family": "R037-DCOS-v1",
+  "parent_checkpoint": "R037_QRBM_STAGE_A_SCREEN_CHECKPOINT_17AV",
+  "prereg_commit": "fdc3ec8d81d9183ebd9f8985e513ac128797ec99",
+  "producer_commit": "02e016d5acce736ee9695cf2a4ad3c67cc902b1b",
+  "producer_blob": "3ab76ce6a215da928132de02a30d5da135e4dd8b",
+  "producer_sha256": "fb8378a2c62943b878e24eef01f1f6adffe99db2157a1d2eb7f0970f4e1007d0",
+  "official_raw_result_sha256": "09aa6915f7cc22ca95a15415ebe8cd3a50f8659af49c05c9215b2af9950317c9",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "signal_surface": "NATIVE_DUKAS_BBO",
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "event_definition": {
+    "threshold_fraction": 0.0005,
+    "threshold_pct": 0.05,
+    "direction": "new directional-change trend / overshoot continuation",
+    "entry": "first strictly subsequent tick"
+  },
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "diagnostics": {
+    "signals": 5729,
+    "signals_per_day": 409.2142857142857,
+    "median_confirmation_move_mid2": 4670,
+    "median_inter_event_seconds": 87.411
+  },
+  "configs": {
+    "C01_DC_005_OVERSHOOT_CONTINUATION": {
+      "metrics": {
+        "signals": 5729,
+        "trades": 5729,
+        "distinct_days": 14,
+        "long": 2865,
+        "short": 2864,
+        "official_wins": 2471,
+        "gross_profit": 618.04,
+        "gross_loss": -1800.48,
+        "direct_net_usd": -1239.73,
+        "exit_reasons": {
+          "STOP": 5663,
+          "MAX_HOLD": 66,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_50": true,
+        "minimum_distinct_days_6": true,
+        "direct_net_min_minus_1": false,
+        "screen_pass": false,
+        "strong_pass": false
+      }
+    }
+  },
+  "finding": {
+    "leading_config": null,
+    "decision": "RETIRE_DCOS_STAGE_A_NO_EXECUTABLE_SURVIVOR",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "mql5_authorized": false
+}
