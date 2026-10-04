@@ -21,11 +21,19 @@
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "IDLE",
-    "phase_rank": 0,
+    "status": "PRODUCER_COMMITTED",
+    "phase_rank": 2,
     "parent_durable_unit": "R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A",
-    "committed_artifacts": [],
-    "next_action": "Harvest and preregister the next causally independent entry-source family; commit producer before official compute.",
+    "committed_artifacts": [
+      {
+        "path": "research/delta/reference/DELTA_R037_DCB_SOURCE_HARVEST_PREREG_17B.json"
+      },
+      {
+        "path": "research/delta/experiments/delta_r037_dcb_stage_a.py",
+        "sha256": "e1440f9d68e47cef3ee7820f85ef502e7eb3e9651fbdc00af51293c71b95d6da"
+      }
+    ],
+    "next_action": "Run the committed DCB 17B Stage-A producer once on canonical January P75; persist result before interpretation.",
     "completed_months": [],
     "next_month": null
   },
