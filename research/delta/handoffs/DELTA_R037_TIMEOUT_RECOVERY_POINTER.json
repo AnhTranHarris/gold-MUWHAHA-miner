@@ -10,39 +10,39 @@
     "active rebuild manifest"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY",
+    "last_verified_durable_unit": "R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ",
     "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
     "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY_MANIFEST.json"
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ_MANIFEST.json"
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
     "status": "IDLE",
     "phase_rank": 0,
-    "parent_durable_unit": "R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY",
+    "parent_durable_unit": "R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_BOSLS_STAGE_A_PREREG_17AY.json",
-        "commit": "34ef5741861a41f52807986260b86847005c759f"
+        "path": "research/delta/reference/DELTA_R037_TSO_STAGE_A_PREREG_17AZ.json",
+        "commit": "ff80d0724f7a657f2fcd4b1b9ab4c5e6b1e5aca0"
       },
       {
-        "path": "research/delta/experiments/delta_r037_bosls_stage_a_17ay.py",
-        "commit": "79d7bab327d1d032072df36806aa4c02793db10f"
+        "path": "research/delta/experiments/delta_r037_tso_stage_a_17az.py",
+        "commit": "19a0e42732e2d3f759b96de1b29ed323e32b5e8d"
       },
       {
-        "path": "research/delta/reference/DELTA_R037_BOSLS_STAGE_A_CHECKPOINT_17AY.json",
-        "commit": "8f11b2ffbdba545d32966fe7daa8657fe276eedb"
+        "path": "research/delta/reference/DELTA_R037_TSO_STAGE_A_CHECKPOINT_17AZ.json",
+        "commit": "b634238422c6f74cb151e781ed8c0f6df47aa56d"
       },
       {
-        "path": "research/delta/research/DELTA_R037_BOSLS_STAGE_A_CHECKPOINT_17AY.md",
-        "commit": "4029221d76a4b9146b8f4401f1d515a1b05f235e"
+        "path": "research/delta/research/DELTA_R037_TSO_STAGE_A_CHECKPOINT_17AZ.md",
+        "commit": "0ffd66e51c79629f74572d7546ba88af66c5df29"
       },
       {
-        "path": "research/delta/artifacts/DELTA_R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY_MANIFEST.json",
-        "commit": "73604d98cc51d3d9c714d4e0890c757db4a2404f"
+        "path": "research/delta/artifacts/DELTA_R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ_MANIFEST.json",
+        "commit": "471783ea7716d767bd082b6de0c8b99d74beb605"
       }
     ],
-    "next_action": "Harvest next independent structural rejection family.",
+    "next_action": "Harvest next independent multi-leg state-transition entry source.",
     "completed_months": [],
     "next_month": null
   },
