@@ -1,0 +1,50 @@
+{
+  "schema": "delta-r037-psych-round-liquidity-stage-a-prereg-v1",
+  "unit": "R037_PSYCHOLOGICAL_ROUND_LIQUIDITY_STAGE_A_SCREEN",
+  "status": "PREREGISTERED_BEFORE_OFFICIAL_COMPUTE",
+  "parent_checkpoint": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION_CHECKPOINT_17AF",
+  "family": "R037-PRN-v1",
+  "source_basis": [
+    "MetaQuotes 2026 round-number liquidity article: tick-size normalized psychological levels; Gold sensitivity; rejection/fade timing.",
+    "Public Gold community/EA descriptions using $5/$10 psychological marks and confirmation rather than blind level touch."
+  ],
+  "reconstructibility": "PUBLIC_LOGIC_ONLY_NO_OPAQUE_SCORING",
+  "hypothesis": "XAUUSD stop-runs through psychologically salient $5/$10 price grids followed by a causal completed-bar reclaim may provide a higher-density short-horizon reversal source than prior-day/session-level families.",
+  "configs": {
+    "C01_10_S5_RECLAIM": {
+      "grid_usd": 10,
+      "confirmation_seconds": 5
+    },
+    "C02_5_S5_RECLAIM": {
+      "grid_usd": 5,
+      "confirmation_seconds": 5
+    },
+    "C03_10_S15_RECLAIM": {
+      "grid_usd": 10,
+      "confirmation_seconds": 15
+    },
+    "C04_5_S15_RECLAIM": {
+      "grid_usd": 5,
+      "confirmation_seconds": 15
+    }
+  },
+  "event_semantics": {
+    "trigger": "strict tick cross through nearest grid level from inside to outside",
+    "confirmation": "first completed configured bar close back across the same grid level",
+    "execution_guard": "live P75 Bid remains reclaimed at confirmation edge",
+    "level_rearm": "same grid level and sweep direction unavailable until price moves at least $1.00 back inside before a new sweep",
+    "one_position_at_a_time": true,
+    "max_spread_points": 25,
+    "frozen_30_second_lifecycle": true,
+    "numeric_retuning": false
+  },
+  "stage_a_gate": {
+    "minimum_trades": 30,
+    "minimum_distinct_days": 6,
+    "direct_net_min_usd": -2,
+    "strong_pass_direct_net_min_usd": 0
+  },
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
