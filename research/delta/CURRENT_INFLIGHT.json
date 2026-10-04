@@ -1,31 +1,20 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "COMPLETE",
+  "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_MICROTREND_PULLBACK_QUALITY_STAGE_A_SCREEN",
-  "parent_durable_unit": "R037_ITDC_STAGE_A_SCREEN_CHECKPOINT_17AQ",
-  "phase": "DURABLE_CLOSEOUT_COMPLETE",
-  "phase_rank": 5,
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "parent_durable_unit": "R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR",
+  "phase": "IDLE",
+  "phase_rank": 0,
   "progress": {
-    "status": "COMPLETE",
-    "last_completed": "R037_ITDC_STAGE_A_SCREEN_CHECKPOINT_17AQ",
-    "current_candidate": "R037-PBQ-v1",
-    "prereg_path": "research/delta/reference/DELTA_R037_PBQ_STAGE_A_PREREG_17AR.json",
-    "prereg_commit": "50970048c0c6bcc448f9f95b8c02daaff26bd581",
-    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "producer_path": "research/delta/experiments/delta_r037_pbq_stage_a_17ar.py",
-    "producer_commit": "924c3a12a1969e3f986558c4dd69855e99e6f453",
-    "producer_blob_sha": "f6e86f2aab111599f03eae56830e5217c56f93e1",
-    "result_path": "research/delta/reference/DELTA_R037_PBQ_STAGE_A_CHECKPOINT_17AR.json",
-    "result_commit": "486d9ecd51d4c5884d6af9b6387f30a9b5584ff3",
-    "result_sha256": "843947f7fdd0040e9c761efa4035b621697d423de36b3d66db1ebb56a4734225",
-    "decision": "RETIRE_PBQ_STAGE_A_NO_SURVIVOR",
-    "manifest_path": "research/delta/artifacts/DELTA_R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR_MANIFEST.json",
-    "manifest_commit": "7b26f0f9c6abe07e81d54a9ccedc7a98dbe497e5"
+    "status": "IDLE",
+    "last_completed": "R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR",
+    "current_candidate": null,
+    "next": "Preregister next independent entry-source family."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "17AR is complete and retired; do not rerun. Resume at R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST.",
+    "resume_first_action": "17AR is complete and retired; do not rerun. Preregister the next independent entry-source family.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
