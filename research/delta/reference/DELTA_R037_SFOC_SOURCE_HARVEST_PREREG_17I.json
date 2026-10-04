@@ -1,0 +1,101 @@
+{
+  "schema": "delta-r037-sfoc-source-harvest-prereg-v1",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "checkpoint_target": "R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I",
+  "family": "R037-SFOC-v1",
+  "status": "FROZEN_BEFORE_STAGE_A_REPLAY",
+  "parent_checkpoint": "R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H",
+  "purpose": "Preregistered recombination of two independently discovered near-neutral clues: sweep->MSS->OB-midpoint timing from 17H and structure-aligned FVG context from 17E. Test whether FVG confirmation improves the same frozen 30-second entry economics without modifying 17H C02.",
+  "source_basis": [
+    {
+      "source": "DELTA 17H independent clue",
+      "logic": "M1 sweep->MSS->OB midpoint retest ordinary-pass, -$0.03 net delta; no strong pass."
+    },
+    {
+      "source": "DELTA 17E independent clue",
+      "logic": "M5 BOS+FVG retest ordinary-pass, -$0.05 net delta; no strong pass."
+    },
+    {
+      "source": "TradingView open source — Fair Value Gap Strategy with BOS Confirmation",
+      "url": "https://www.tradingview.com/script/jyhTizLX-Fair-Value-Gap-Strategy-with-Break-of-Structure-Confirmation/",
+      "logic": "Classic three-candle FVG is contextualized by confirmed structure rather than traded alone."
+    },
+    {
+      "source": "TradingView open source — MU indicator ICT",
+      "url": "https://www.tradingview.com/script/5EoUhtuL-MU-indicator-ict/",
+      "logic": "Reconstructible sweep, MSS, FVG and OB concepts are combined as confluence."
+    },
+    {
+      "source": "MetaQuotes — Inverse Fair Value Gap Trading Strategy",
+      "url": "https://www.mql5.com/en/articles/16659",
+      "logic": "FVG is a three-candle price imbalance with state that can later be respected or invalidated."
+    }
+  ],
+  "frozen_base": "Exact 17H C02 lifecycle: M1 width-2 swing sweep -> frozen opposite-swing MSS -> last opposite-colour OB -> first OB body interaction must reach midpoint and close on shift-direction side.",
+  "fvg_semantics": {
+    "bullish": "completed bar i forms bullish FVG when low[i] > high[i-2]; zone [high[i-2], low[i]]",
+    "bearish": "completed bar i forms bearish FVG when high[i] < low[i-2]; zone [high[i], low[i-2]]",
+    "creation": "completed bars only; FVG visible at bar i close",
+    "unmitigated": "bullish FVG remains active until a later completed bar low <= lower edge; bearish remains active until later completed bar high >= upper edge",
+    "direction": "only FVGs matching the SMOR shift direction count",
+    "causality": "FVG must be created after the sweep and no later than the OB-retest decision bar"
+  },
+  "configs": {
+    "R037-SFOC-C01_ANY_ACTIVE_FVG": {
+      "rule": "At SMOR midpoint retest, at least one same-direction unmitigated M1 FVG created since the sweep must remain active."
+    },
+    "R037-SFOC-C02_MSS_OR_NEXT_FVG": {
+      "rule": "As C01, and at least one qualifying FVG must have been created on the MSS bar or the immediately following completed bar."
+    },
+    "R037-SFOC-C03_OB_FVG_OVERLAP": {
+      "rule": "As C01, and at least one qualifying active FVG zone must geometrically overlap the OB body zone."
+    },
+    "R037-SFOC-C04_RETEST_TOUCHES_FVG": {
+      "rule": "As C01, and the first OB-midpoint retest bar must also intersect at least one qualifying active same-direction FVG zone."
+    }
+  },
+  "execution": {
+    "spread_gate_points_max": 25,
+    "parent_same_tick_priority": true,
+    "blocked_event_deferred": false,
+    "one_position_at_a_time": true,
+    "lot": 0.01,
+    "stop_usd": 0.3,
+    "trail_activation_usd": 0.1,
+    "trail_distance_usd": 0.03,
+    "max_hold_seconds": 30,
+    "commission_round_trip_usd": 0.02
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "ticks": 4205709
+  },
+  "screen_gate": {
+    "reuse": "Frozen R037 independent-source Stage-A screen",
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "minimum_incremental_accepted_entries": 5,
+    "combined_trade_count_not_lower": true,
+    "winner_or_quality_gate": "official-win delta nonnegative OR positive net with improved gross loss",
+    "net_delta_min_usd": -2,
+    "max_balance_and_equity_dd_deterioration_pct": 1,
+    "strong_pass": "all gates plus net delta >= 0"
+  },
+  "forbidden": [
+    "change any 17H C02 lifecycle rule",
+    "FVG size threshold tuning",
+    "FVG lifetime tuning after result",
+    "session filter",
+    "posthoc side split",
+    "posthoc config merge",
+    "candidate-specific exit tuning",
+    "August",
+    "MQL5"
+  ],
+  "next_if_strong_pass": "R037_SFOC_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_no_strong_pass": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
