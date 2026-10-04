@@ -1,34 +1,36 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "IDLE",
+  "status": "INFLIGHT",
   "branch": "delta",
-  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "unit": "R037_COMEX_15M_OPENING_RANGE_STAGE_A_SCREEN_17AC",
   "parent_durable_unit": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AB",
-  "phase": "IDLE",
-  "phase_rank": 0,
+  "phase": "PRODUCER_COMMITTED",
+  "phase_rank": 2,
   "progress": {
-    "status": "READY_FOR_PREREG",
+    "status": "READY_FOR_OFFICIAL_COMPUTE",
     "last_completed": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AB",
     "last_decision": "RETIRE_FAMILY_NO_RETUNE",
-    "next": "Harvest and preregister the next unique independent entry source; do not retune London ORB."
+    "next": "Run exact committed 17AC producer on canonical January Stage-A."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read CURRENT_STATE/CURRENT_INFLIGHT/recovery pointer; 17AB durable; begin only next independent source.",
-    "idempotency_rule": "Do not rerun 17AB solely because chat delivery timed out."
+    "resume_first_action": "Verify prereg/producer; if result absent run official compute once, otherwise resume the next missing durability phase.",
+    "idempotency_rule": "Never rerun official compute if a committed result or verified workbook raw-result SHA exists."
   },
   "last_verified_ci": {
-    "commit": "36649ef2507cecbfc23ecb1471f183706920fc59",
-    "run_id": 37208675980,
+    "commit": "20090c3e9a46c4558316ed3d812f7f7b15a92b6d",
+    "run_id": 37209158870,
     "conclusion": "success"
   },
   "august_2026": "SEALED",
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
-  "last_completed": {
-    "unit": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AB",
-    "checkpoint": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AB",
-    "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "manifest": "research/delta/artifacts/DELTA_R037_LONDON_15M_OPENING_RANGE_CHECKPOINT_17AB_MANIFEST.json"
+  "prereg": {
+    "path": "research/delta/reference/DELTA_R037_COMEX_15M_OPENING_RANGE_PREREG_17AC.json",
+    "commit": "2eb2c6b6383234a863f435dd40135aa4ec78163f"
+  },
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_comex_15m_opening_range_17ac.py",
+    "commit": "c50b16fad12e5f21f43ed6734213590603e6da43"
   }
 }
