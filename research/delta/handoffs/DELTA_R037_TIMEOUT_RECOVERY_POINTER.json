@@ -31,12 +31,12 @@
       },
       {
         "path": "research/delta/experiments/delta_r037_sorb_surrogate_parent_stage_a.py",
-        "commit": "1bd1743a854cdecc77b4502296718fcd60573726",
-        "blob_sha": "459eb394d3ee6250e7b1dec9d2f3022253cc1f49",
-        "sha256": "4cde1d5e2744a5d82101f3fa405eee2f4051a22fa9babfbb4fc864143b271047"
+        "commit": "d1c5a36f502bf2ec59ce81388472963a4d4a71c1",
+        "blob_sha": "4dd2209c161d555cb814e3875553219373ad1f9b",
+        "sha256": "0e0db32717636e54a160fbca34dac4a112712fb401b1f011f66e60361c2306b5"
       }
     ],
-    "next_action": "Run exactly one official bounded Stage-A SORB screen from producer blob 459eb394d3ee6250e7b1dec9d2f3022253cc1f49. Do not retune frozen configs."
+    "next_action": "Run exactly one official bounded Stage-A SORB screen from hotfixed producer blob 4dd2209c161d555cb814e3875553219373ad1f9b. Do not retune frozen configs."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
@@ -68,7 +68,8 @@
       "Never rerun an official compute solely because ChatGPT message delivery timed out. Verify committed result/report/workbook/manifest/CI first."
     ],
     "pointer_consistency_gate": "DELTA_TIMEOUT_RECOVERY_GUARD.py must reject mismatch among CURRENT_STATE.json, CURRENT_INFLIGHT.json, and this timeout-recovery pointer.",
-    "atomic_cursor_policy": "Whenever CURRENT_INFLIGHT changes phase, update the recovery pointer in the same Git commit when possible; CURRENT_STATE and CURRENT_INFLIGHT remain authoritative."
+    "atomic_cursor_policy": "Whenever CURRENT_INFLIGHT changes phase, update the recovery pointer in the same Git commit when possible; CURRENT_STATE and CURRENT_INFLIGHT remain authoritative.",
+    "current_sorb_producer_hotfix": "d1c5a36f502bf2ec59ce81388472963a4d4a71c1 / blob 4dd2209c161d555cb814e3875553219373ad1f9b"
   },
   "constraints": {
     "august_2026": "SEALED",
