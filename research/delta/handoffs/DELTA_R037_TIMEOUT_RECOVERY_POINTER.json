@@ -11,35 +11,37 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I",
-    "current_phase": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_17X_PREREGISTERED",
-    "first_incomplete_unit": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_17X",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I_MANIFEST.json"
+    "last_verified_durable_unit": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_CHECKPOINT_17X",
+    "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
+    "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PLSR_RECLAIM_QUALITY_CHECKPOINT_17X_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_17X",
-    "status": "PREREGISTERED",
-    "phase_rank": 1,
-    "parent_durable_unit": "R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I",
+    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "status": "IDLE",
+    "phase_rank": 0,
+    "parent_durable_unit": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_CHECKPOINT_17X",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_PLSR_RECLAIM_QUALITY_PREREG_17X.json",
-        "commit": "46e893ebdbfc77e94f7719a61fa35c6b18324e5e"
+        "path": "research/delta/reference/DELTA_R037_PLSR_RECLAIM_QUALITY_CHECKPOINT_17X.json",
+        "commit": "c3ff4da387ce97e0cb35c1fc7798b73a99fc191c"
       },
       {
-        "path": "research/delta/reference/DELTA_R037_SMOR_DEPARTURE_SWING_PRESCREEN_CHECKPOINT_17W.json",
-        "commit": "f0505409f33b3e05332ce57271235b839ec99da1",
-        "role": "completed_nonpromoting_prescreen"
-      },
-      {
-        "path": "research/delta/reference/DELTA_R037_PDSM_FAST_PRESCREEN_17J.json",
-        "commit": "456254850792edfb8d48c6326a938647b05289c1",
-        "role": "completed_nonpromoting_prescreen"
+        "path": "research/delta/artifacts/DELTA_R037_PLSR_RECLAIM_QUALITY_CHECKPOINT_17X_MANIFEST.json",
+        "commit": "8c20587542459bba161b6f8692d48b1d07f8a305"
       }
     ],
-    "next_action": "Commit 17X producer and run Jan Stage-A plus Feb-Jul cross-month screen. Do not rerun completed fast prescreens.",
-    "completed_months": [],
-    "next_month": "2026-01_STAGE_A"
+    "next_action": "Research and preregister one uniquely named independent entry/initial-hold candidate; 17X is complete and must not be rerun.",
+    "completed_months": [
+      "01A",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07"
+    ],
+    "next_month": null
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
