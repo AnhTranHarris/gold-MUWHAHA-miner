@@ -1,0 +1,186 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_VSBR_STAGE_A_SCREEN_CHECKPOINT_17AN",
+  "status": "VERIFIED_STAGE_A_FAIL_FAMILY_RETIRED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_ASRB_C02_LATER_JAN_CHECKPOINT_17AM",
+  "hypothesis": "A 20-bar Bollinger-inside-Keltner volatility squeeze followed by the first completed-bar release, with direction from release close versus SMA20, can provide a high-supply causal XAUUSD entry source under the frozen 30-second P75 lifecycle.",
+  "falsification_condition": "Each preregistered profile requires >=6 trades, >=4 distinct days, and direct net >= -$1; otherwise retire without rescue tuning.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "17AN VSBR Stage-A profiles",
+    "reference_count": 538,
+    "minimum_count": 12,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true
+  },
+  "primary_metrics": {
+    "entry_quality": "C01 200/446 wins; C02 48/92 wins",
+    "hold_persistence": "30s frozen",
+    "economics": "C01 -$93.95; C02 -$15.47",
+    "gross_loss_drawdown": "C01 gross loss -$137.01; C02 -$25.53",
+    "activity": "538 aggregate trades across preregistered profiles"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_vsbr_stage_a_17an.py",
+      "commit": "57979c3ecd0f1f17d3785eccb1e7c8c183151a5b",
+      "blob_sha": "4a99f047426c8619eec11b5b41868d4c9dfbecdb",
+      "file_sha256": "f929f86bca9b1df694d629ca722bee98de7865839e44c8892f7e416614da3081"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "bollinger_lookback": 20,
+      "bollinger_std_mult": 2,
+      "bollinger_std_ddof": 0,
+      "keltner_atr_lookback": 20,
+      "keltner_atr_mult": 1.5,
+      "signal_timeframes_seconds": [
+        60,
+        300
+      ],
+      "max_spread_points": 25,
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "completed-bar BB/KC squeeze",
+      "completed-bar squeeze release",
+      "release close vs SMA20 basis",
+      "first P75 tick at/after release bar"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "stage_a": "preregistered screen only"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_verified": "4a99f047426c8619eec11b5b41868d4c9dfbecdb",
+      "compile_pass": true,
+      "transfer_mismatch_discarded_before_official_compute": true,
+      "compact_stdout": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_VSBR_STAGE_A_SCREEN_CHECKPOINT_17AN.json",
+      "blob_sha": "ef6f6e3bb782af98abe61fc79b5bbd0ef422ceeb",
+      "official_raw_result_sha256": "e01b1b7447642709f907efb724196d5c2f52fa931ebdc7f1b0c2d412365019dc"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_VSBR_STAGE_A_SCREEN_CHECKPOINT_17AN.md",
+      "blob_sha": "14da4a3f02a81bb3951ad0dd18d0a6d24897f9cf"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "R037-VSBR-C01_M1",
+      "R037-VSBR-C02_M5"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "qa": [
+    "Preregistration committed before producer and official compute.",
+    "Canonical January SHA verified.",
+    "Stage-A tick count 4,205,709 verified.",
+    "Exact committed producer Git blob verified before official compute.",
+    "Python compile passed.",
+    "Official compute ran under 120-second hard timeout and atomically wrote result.",
+    "C01_M1: 446 trades / 13 days / 200 wins / -$93.95.",
+    "C02_M5: 92 trades / 12 days / 48 wins / -$15.47.",
+    "Both profiles passed supply gates and failed the preregistered economic floor.",
+    "No parameter sweep or rescue filters.",
+    "Workbook tab 71 A66:H73 readback PASS.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_vsbr_stage_a_17an.py",
+    "command": "python research/delta/experiments/delta_r037_vsbr_stage_a_17an.py --source <canonical_january_gzip> --output <17AN>",
+    "timing_semantics": "completed bars only; squeeze release evaluated at right edge; execute first P75 tick at/after release edge",
+    "expected_fingerprints": {
+      "C01_M1": {
+        "trades": 446,
+        "distinct_days": 13,
+        "wins": 200,
+        "net": -93.95
+      },
+      "C02_M5": {
+        "trades": 92,
+        "distinct_days": 12,
+        "wins": 48,
+        "net": -15.47
+      }
+    },
+    "selected_interpretation": "RETIRE_VSBR_STAGE_A_NO_SURVIVOR"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — retired Stage-A family",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "P75 frozen",
+    "ownership_scheduler_spec": "not integrated",
+    "session_dst_spec": "frozen P75 session spread reconstruction",
+    "risk_spec": "frozen",
+    "trade_count_parity_spec": "candidate retired",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_ASRB_C02_LATER_JAN_CHECKPOINT_17AM",
+  "drive_artifacts": [
+    {
+      "name": "working workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "71 R037 Source QA",
+      "range": "A66:H73",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "7c323efa14fc6bcdcfdb38402e7f4c478cdf8996",
+    "57979c3ecd0f1f17d3785eccb1e7c8c183151a5b",
+    "5153d879db220f6f779185388dfc46d554bc8dc5",
+    "2912c26d9224416a30df35665508ada12efe434f",
+    "839c345a104e0cda7f7a79538552f63aa4e69a7b"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
