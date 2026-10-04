@@ -1,35 +1,37 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "COMPLETE",
+  "status": "INFLIGHT",
   "branch": "delta",
   "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-  "parent_durable_unit": "R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C",
-  "phase": "COMPLETE",
-  "phase_rank": 7,
+  "parent_durable_unit": "R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D",
+  "phase": "PRODUCER_COMMITTED",
+  "phase_rank": 2,
   "prereg": {
-    "path": "research/delta/reference/DELTA_R037_STX_SOURCE_HARVEST_PREREG_17D.json"
+    "path": "research/delta/reference/DELTA_R037_MSF_SOURCE_HARVEST_PREREG_17E.json",
+    "commit": "2739d418ad694f701a551743c2ff1561c5af0c37"
   },
   "producer": {
-    "path": "research/delta/experiments/delta_r037_stx_stage_a.py"
+    "path": "research/delta/experiments/delta_r037_msf_stage_a.py",
+    "commit": "f700029a41abda79c775327c5f8497d6b69c0404",
+    "file_sha256": "7fa7bad7daff3a106efc9ea327d38e8ade03cf70e84b01aa360eaa7c78e9e716"
   },
   "result": {
-    "path": "research/delta/reference/DELTA_R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D.json",
-    "raw_sha256": "67c6e52866cdd025a7f19541d2faa0f3b7416fa0f31e30517101290c2b4a5f21"
+    "path": "research/delta/reference/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E.json"
   },
   "report": {
-    "path": "research/delta/research/DELTA_R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D.md"
+    "path": "research/delta/research/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E.md"
   },
   "manifest": {
-    "path": "research/delta/artifacts/DELTA_R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D_MANIFEST.json"
+    "path": "research/delta/artifacts/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E_MANIFEST.json"
   },
   "progress": {
-    "family": "R037-STX-v1",
-    "status": "COMPLETE_NO_SCREEN_SURVIVOR_FAMILY_RETIRED",
-    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+    "family": "R037-MSF-v1",
+    "status": "PRODUCER_COMMITTED_AWAITING_OFFICIAL_COMPUTE",
+    "next": "OFFICIAL_STAGE_A_REPLAY"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Do not rerun STX 17D. Harvest a price-action/structure-transition independent source and preregister it before compute.",
+    "resume_first_action": "Verify committed MSF producer and prereg, then run exactly one official Stage-A replay if no committed 17E result exists.",
     "idempotency_rule": "Prereg and producer immutable before compute; result create-only."
   },
   "last_verified_ci": {
