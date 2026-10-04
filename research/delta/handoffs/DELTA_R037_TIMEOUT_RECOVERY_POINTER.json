@@ -10,16 +10,16 @@
     "active rebuild manifest"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR",
+    "last_verified_durable_unit": "R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS",
     "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
     "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR_MANIFEST.json"
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_ORDER_FLOW_IMBALANCE_MOMENTUM_STAGE_A_SCREEN",
-    "status": "MANIFEST_COMMITTED",
-    "phase_rank": 5,
-    "parent_durable_unit": "R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR",
+    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "status": "IDLE",
+    "phase_rank": 0,
+    "parent_durable_unit": "R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS",
     "committed_artifacts": [
       {
         "path": "research/delta/reference/DELTA_R037_OFM_STAGE_A_PREREG_17AS.json",
@@ -42,7 +42,7 @@
         "commit": "eeb9107eabccfdcc2255385731b1b366a5d37615"
       }
     ],
-    "next_action": "Advance CURRENT_STATE to 17AS, then reset cursor to next independent source harvest; do not rerun 17AS.",
+    "next_action": "Preregister next independent entry-source family.",
     "completed_months": [],
     "next_month": null
   },
