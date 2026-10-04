@@ -4,17 +4,17 @@
   "branch": "delta",
   "unit": "R037_DIRECTIONAL_CHANGE_OVERSHOOT_STAGE_A_SCREEN",
   "parent_durable_unit": "R037_QRBM_STAGE_A_SCREEN_CHECKPOINT_17AV",
-  "phase": "PREREG_COMMITTED",
-  "phase_rank": 1,
+  "phase": "PRODUCER_COMMITTED",
+  "phase_rank": 2,
   "progress": {
     "status": "ACTIVE",
     "last_completed": "R037_QRBM_STAGE_A_SCREEN_CHECKPOINT_17AV",
     "current_candidate": "R037-DCOS-v1",
-    "next": "Commit exact producer bytes, verify Git blob, run one 0.05% DC overshoot-continuation Stage-A screen."
+    "next": "Verify committed producer blob locally, then run official Stage-A compute under hard timeout."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "DCOS 17AW prereg is durable at commit fdc3ec8d81d9183ebd9f8985e513ac128797ec99. Do not change threshold/profile. Resume by committing producer if absent, otherwise execute first missing phase.",
+    "resume_first_action": "DCOS 17AW prereg and producer are durable. Producer commit ec3cbf55a7a8bdaf91065f1e10ec12d15906231b, blob 8b703d14d1824d89910c4c1a3004a9b2f0657cc3. Resume at local blob verification/official compute if result artifact is absent.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate durable compute after transport timeout."
   },
   "last_verified_ci": {
