@@ -1,0 +1,29 @@
+{
+  "schema": "delta-r037-itdc-stage-a-screen-17aq-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_INTRINSIC_TIME_DIRECTIONAL_CHANGE_STAGE_A_SCREEN",
+  "family": "R037-ITDC-v1",
+  "parent_checkpoint": "R037_TCFH_STAGE_A_SCREEN_CHECKPOINT_17AP",
+  "prereg_commit": "adccb54efa49aa4f91b9701ec5c393d51be25fa4",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "delta_fraction": 0.0002,
+  "stage_counts": {"events":26782,"up":13391,"down":13391},
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "configs": {
+    "C01_OVERSHOOT_CONTINUATION": {
+      "polarity": 1,
+      "metrics": {"events":26782,"spread_rejects":0,"busy_skips":192,"trades":26590,"distinct_days":14,"long":13295,"short":13295,"official_wins":12082,"gross_profit":2933.83,"gross_loss":-8219.12,"direct_net_usd":-5285.29,"exit_reasons":{"STOP":26194,"MAX_HOLD":396,"END":0}},
+      "gate": {"minimum_trades_6":true,"minimum_distinct_days_4":true,"direct_net_min_minus_1":false,"screen_pass":false,"strong_pass":false}
+    },
+    "C02_ALPHA_FIRST_UNIT_CONTRARIAN": {
+      "polarity": -1,
+      "metrics": {"events":26782,"spread_rejects":0,"busy_skips":907,"trades":25875,"distinct_days":14,"long":12937,"short":12938,"official_wins":11403,"gross_profit":2440.33,"gross_loss":-8535.11,"direct_net_usd":-6094.78,"exit_reasons":{"STOP":25474,"MAX_HOLD":401,"END":0}},
+      "gate": {"minimum_trades_6":true,"minimum_distinct_days_4":true,"direct_net_min_minus_1":false,"screen_pass":false,"strong_pass":false}
+    }
+  },
+  "finding": {"leading_config":null,"ordinary_survivors":[],"strong_survivors":[],"decision":"RETIRE_ITDC_STAGE_A_NO_SURVIVOR","next":"R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"},
+  "mql5_authorized": false
+}
