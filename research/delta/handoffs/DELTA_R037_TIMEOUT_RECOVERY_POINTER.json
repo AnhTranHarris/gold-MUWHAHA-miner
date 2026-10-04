@@ -12,40 +12,34 @@
   ],
   "durable_cursor": {
     "last_verified_durable_unit": "R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I",
-    "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
-    "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "current_phase": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_17X_PREREGISTERED",
+    "first_incomplete_unit": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_17X",
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "COMPLETE",
-    "phase_rank": 7,
-    "parent_durable_unit": "R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H",
+    "unit": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_17X",
+    "status": "PREREGISTERED",
+    "phase_rank": 1,
+    "parent_durable_unit": "R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_SFOC_SOURCE_HARVEST_PREREG_17I.json",
-        "commit": "844d9bdda78e61125c6d2994c25b4f8bc22dd0cb"
+        "path": "research/delta/reference/DELTA_R037_PLSR_RECLAIM_QUALITY_PREREG_17X.json",
+        "commit": "46e893ebdbfc77e94f7719a61fa35c6b18324e5e"
       },
       {
-        "path": "research/delta/experiments/delta_r037_sfoc_stage_a.py",
-        "commit": "1daf3647c7ebf42d1987612ef18b3ad9b31e975c",
-        "blob_sha": "fc9c4615b056b0ad6e5400be8582c3fafb933b6c"
+        "path": "research/delta/reference/DELTA_R037_SMOR_DEPARTURE_SWING_PRESCREEN_CHECKPOINT_17W.json",
+        "commit": "f0505409f33b3e05332ce57271235b839ec99da1",
+        "role": "completed_nonpromoting_prescreen"
       },
       {
-        "path": "research/delta/reference/DELTA_R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I.json",
-        "commit": "7c7fae87bb40f60b197a470c8bf32483a6b6863e"
-      },
-      {
-        "path": "research/delta/research/DELTA_R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I.md",
-        "commit": "70f0869417f4d68669c167cedaa9f7717359b1c2"
-      },
-      {
-        "path": "research/delta/artifacts/DELTA_R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I_MANIFEST.json"
+        "path": "research/delta/reference/DELTA_R037_PDSM_FAST_PRESCREEN_17J.json",
+        "commit": "456254850792edfb8d48c6326a938647b05289c1",
+        "role": "completed_nonpromoting_prescreen"
       }
     ],
-    "next_action": "Begin next harvest from durable 17I; never rerun 17I.",
+    "next_action": "Commit 17X producer and run Jan Stage-A plus Feb-Jul cross-month screen. Do not rerun completed fast prescreens.",
     "completed_months": [],
-    "next_month": null
+    "next_month": "2026-01_STAGE_A"
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
