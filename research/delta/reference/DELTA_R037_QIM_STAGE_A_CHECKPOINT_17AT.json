@@ -1,0 +1,202 @@
+{
+  "schema": "delta-r037-qim-stage-a-screen-17at-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_QUEUE_IMBALANCE_MICROPRICE_STAGE_A_SCREEN",
+  "family": "R037-QIM-v1",
+  "parent_checkpoint": "R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS",
+  "prereg_commit": "c2390a95eebf1c60c0a75f0d524916948211286a",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "queue_imbalance": "(bid_volume-ask_volume)/(bid_volume+ask_volume)",
+  "feature_diagnostics": {
+    "valid_volume_ticks": 4205709,
+    "invalid_or_zero_volume_ticks": 0,
+    "imbalance_quantiles": {
+      "p01": -0.6962025316455697,
+      "p10": -0.29411764705882354,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0,
+      "p90": 0.29411764705882354,
+      "p99": 0.6962025316455697
+    },
+    "exact_zero_imbalance_ticks": 2920333,
+    "positive_imbalance_ticks": 603234,
+    "negative_imbalance_ticks": 682142
+  },
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "configs": {
+    "C01_QI_025": {
+      "threshold": 0.25,
+      "prediction": {
+        "events": 338904,
+        "next_nonzero_mid_move": {
+          "eligible": 338904,
+          "correct": 192990,
+          "accuracy": 0.5694532965087459
+        },
+        "forward": {
+          "250ms": {
+            "eligible": 330489,
+            "correct": 186564,
+            "accuracy": 0.5645089549122664
+          },
+          "1000ms": {
+            "eligible": 334041,
+            "correct": 183042,
+            "accuracy": 0.5479626752404645
+          },
+          "5000ms": {
+            "eligible": 337269,
+            "correct": 175445,
+            "accuracy": 0.5201930803008874
+          }
+        }
+      },
+      "metrics": {
+        "proposals": 338904,
+        "busy_skips": 253155,
+        "spread_rejects": 0,
+        "trades": 85749,
+        "distinct_days": 14,
+        "long": 41919,
+        "short": 43830,
+        "official_wins": 42084,
+        "gross_profit": 9092.92,
+        "gross_loss": -23917.78,
+        "direct_net_usd": -15682.35,
+        "exit_reasons": {
+          "STOP": 83989,
+          "MAX_HOLD": 1760,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_50": true,
+        "minimum_distinct_days_6": true,
+        "direct_net_min_minus_1": false,
+        "predictive_next_move_accuracy_min_0_5": true,
+        "screen_pass": false,
+        "strong_pass": false
+      }
+    },
+    "C02_QI_050": {
+      "threshold": 0.5,
+      "prediction": {
+        "events": 119475,
+        "next_nonzero_mid_move": {
+          "eligible": 119475,
+          "correct": 66660,
+          "accuracy": 0.5579409918392969
+        },
+        "forward": {
+          "250ms": {
+            "eligible": 116324,
+            "correct": 64431,
+            "accuracy": 0.5538925759086689
+          },
+          "1000ms": {
+            "eligible": 117520,
+            "correct": 63722,
+            "accuracy": 0.5422226004084412
+          },
+          "5000ms": {
+            "eligible": 118902,
+            "correct": 61039,
+            "accuracy": 0.5133555364922373
+          }
+        }
+      },
+      "metrics": {
+        "proposals": 119475,
+        "busy_skips": 84375,
+        "spread_rejects": 0,
+        "trades": 35100,
+        "distinct_days": 14,
+        "long": 17291,
+        "short": 17809,
+        "official_wins": 16574,
+        "gross_profit": 3501.0,
+        "gross_loss": -10230.52,
+        "direct_net_usd": -7080.52,
+        "exit_reasons": {
+          "STOP": 34201,
+          "MAX_HOLD": 899,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_50": true,
+        "minimum_distinct_days_6": true,
+        "direct_net_min_minus_1": false,
+        "predictive_next_move_accuracy_min_0_5": true,
+        "screen_pass": false,
+        "strong_pass": false
+      }
+    },
+    "C03_QI_075": {
+      "threshold": 0.75,
+      "prediction": {
+        "events": 26123,
+        "next_nonzero_mid_move": {
+          "eligible": 26123,
+          "correct": 14889,
+          "accuracy": 0.5699575087088007
+        },
+        "forward": {
+          "250ms": {
+            "eligible": 25438,
+            "correct": 14480,
+            "accuracy": 0.5692271404984669
+          },
+          "1000ms": {
+            "eligible": 25657,
+            "correct": 14257,
+            "accuracy": 0.5556768133452858
+          },
+          "5000ms": {
+            "eligible": 25977,
+            "correct": 13459,
+            "accuracy": 0.5181121761558302
+          }
+        }
+      },
+      "metrics": {
+        "proposals": 26123,
+        "busy_skips": 15933,
+        "spread_rejects": 0,
+        "trades": 10190,
+        "distinct_days": 14,
+        "long": 4337,
+        "short": 5853,
+        "official_wins": 4796,
+        "gross_profit": 1026.63,
+        "gross_loss": -2991.59,
+        "direct_net_usd": -2066.86,
+        "exit_reasons": {
+          "STOP": 9944,
+          "MAX_HOLD": 246,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_50": true,
+        "minimum_distinct_days_6": true,
+        "direct_net_min_minus_1": false,
+        "predictive_next_move_accuracy_min_0_5": true,
+        "screen_pass": false,
+        "strong_pass": false
+      }
+    }
+  },
+  "finding": {
+    "leading_config": null,
+    "ordinary_survivors": [],
+    "strong_survivors": [],
+    "decision": "RETIRE_QIM_STAGE_A_NO_EXECUTABLE_SURVIVOR",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "mql5_authorized": false
+}
