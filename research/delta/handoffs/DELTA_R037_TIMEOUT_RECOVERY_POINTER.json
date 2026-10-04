@@ -16,33 +16,18 @@
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "IDLE",
-    "phase_rank": 0,
+    "unit": "R037_QUEUE_IMBALANCE_MICROPRICE_STAGE_A_SCREEN",
+    "family": "R037-QIM-v1",
+    "status": "PREREGISTERED_PRODUCER_NEXT",
+    "phase_rank": 1,
     "parent_durable_unit": "R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_OFM_STAGE_A_PREREG_17AS.json",
-        "commit": "b6eb77574ac32a151c371a4b4774b5946c3a300e"
-      },
-      {
-        "path": "research/delta/experiments/delta_r037_ofm_stage_a_17as.py",
-        "commit": "e27e9f9136d110f7f0f8ad41899bcda62d3db797"
-      },
-      {
-        "path": "research/delta/reference/DELTA_R037_OFM_STAGE_A_CHECKPOINT_17AS.json",
-        "commit": "1cf7fae2295b19389d5248c604fe5647be83dadc"
-      },
-      {
-        "path": "research/delta/research/DELTA_R037_OFM_STAGE_A_CHECKPOINT_17AS.md",
-        "commit": "f46e6b37de8a2de5b9005145d2e3021263c395b8"
-      },
-      {
-        "path": "research/delta/artifacts/DELTA_R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS_MANIFEST.json",
-        "commit": "eeb9107eabccfdcc2255385731b1b366a5d37615"
+        "path": "research/delta/reference/DELTA_R037_QIM_STAGE_A_PREREG_17AT.json",
+        "commit": "c2390a95eebf1c60c0a75f0d524916948211286a"
       }
     ],
-    "next_action": "Preregister next independent entry-source family.",
+    "next_action": "Commit QIM producer; verify exact committed blob; run bounded Stage-A compute.",
     "completed_months": [],
     "next_month": null
   },
