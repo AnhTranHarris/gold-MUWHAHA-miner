@@ -1,0 +1,57 @@
+{
+  "schema": "delta-r037-immediate-reaction-initial-hold-prereg-v1",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "family": "R037-IRH-v1",
+  "checkpoint_target": "R037_IRH_INITIAL_HOLD_REFINEMENT_PRESCREEN_17AI",
+  "status": "FROZEN_BEFORE_COMPUTE",
+  "parent_checkpoint": "R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG",
+  "rationale": "Initial-hold refinement of two prior non-promoting near-miss entry sources. Very-short-horizon winners should show executable favorable reaction promptly; zero favorable excursion by a fixed early deadline is treated as causal entry invalidation, not mature-exit optimization.",
+  "frozen_entry_sources": {
+    "VCE_C03": "R037-VCE-C03_BBKC_RELEASE exactly as checkpoint 17A",
+    "MSF_C04": "R037-MSF-C04_M5_BOS_FVG_RETEST exactly as checkpoint 17E"
+  },
+  "rule": "Protective stop remains first. Track maximum executable favorable excursion since entry using Bid-entry for long and entry-Ask for short. At the first tick at/after the reaction deadline, include that quote in max favorable excursion. If max favorable excursion <= 0 raw units, close immediately at the executable quote; otherwise continue the original frozen DELTA stop/trail/30-second lifecycle unchanged.",
+  "deadlines_seconds": [
+    3,
+    5,
+    10
+  ],
+  "basket": [
+    "VCE_C03_IRH3",
+    "VCE_C03_IRH5",
+    "VCE_C03_IRH10",
+    "MSF_C04_IRH3",
+    "MSF_C04_IRH5",
+    "MSF_C04_IRH10"
+  ],
+  "execution": {
+    "lot": 0.01,
+    "stop_usd": 0.3,
+    "trail_activation_usd": 0.1,
+    "trail_distance_usd": 0.03,
+    "max_hold_seconds": 30,
+    "commission_round_trip_usd": 0.02,
+    "spread_gate_points_max": 25
+  },
+  "prescreen_gate": {
+    "minimum_trades": 5,
+    "minimum_official_win_rate": 0.5,
+    "direct_net_positive": true,
+    "improvement_vs_same_entry_source_baseline_required": true
+  },
+  "anti_overfit": "Only 3/5/10-second deadlines are permitted. No favorable-excursion magnitude threshold, no session/side/weekday filter, and no new deadline after results. Any survivor must pass independent later-January validation unchanged.",
+  "forbidden": [
+    "entry threshold retuning",
+    "profit target change",
+    "mature exit optimization",
+    "session filter",
+    "side split",
+    "weekday filter",
+    "August",
+    "MQL5"
+  ],
+  "next_if_survivor": "R037_IRH_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_none": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
