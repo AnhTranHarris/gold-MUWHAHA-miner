@@ -1,0 +1,115 @@
+{
+  "schema": "delta-r037-egf-stage-a-screen-17g-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "family": "R037-EGF-v1",
+  "parent_checkpoint": "R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F",
+  "surrogate_parent": "14A_BACKBONE_FIRST_C03_WITH_FROZEN_PROVENANCE_LIMITED_SPECIALISTS",
+  "promotable": false,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "pattern_semantics": "confirmed engulf commitment retained until first opposite-colour close through Base far edge; failure follows newly controlling side",
+  "numeric_retuning": false,
+  "post_result_retuning": false,
+  "august_accessed": false,
+  "parent_control": {
+    "trades": 14034, "raw_positive_wins": 6422, "official_wins": 6349, "losses": 7612, "p01_hits": 5208, "m30_only_hits": 1560, "owned_exit_suppressed_rearms": 8801, "ordinary_entries": 11916,
+    "gross_profit": 1357.26, "gross_loss": -4302.2, "net_profit": -2944.94, "max_balance_drawdown": 2945.93, "max_equity_drawdown": 2946.43, "average_hold_seconds": 6.779036625338463,
+    "parent_specialist_entries": 2118, "sorb_entries": 0, "parent_specialist_net": -491.44, "sorb_net": 0.0,
+    "sources": {
+      "DH03_S06": {"entries": 1329, "official_wins": 582, "net_profit": -298.55},
+      "DH05_S06": {"entries": 598, "official_wins": 249, "net_profit": -140.23},
+      "DH02_S11": {"entries": 95, "official_wins": 38, "net_profit": -24.68},
+      "DH02_S08": {"entries": 96, "official_wins": 33, "net_profit": -27.98},
+      "SORB": {"entries": 0, "official_wins": 0, "net_profit": 0.0}
+    },
+    "sorb_outcomes": {"ACCEPTED": 0, "POSITION_BLOCKED": 0, "PARENT_SAME_TICK_COLLISION": 0, "OTHER_BLOCKED": 0},
+    "sorb_session_contribution": {
+      "LONDON": {"entries": 0, "official_wins": 0, "net_profit": 0.0},
+      "COMEX_GOLD": {"entries": 0, "official_wins": 0, "net_profit": 0.0}
+    }
+  },
+  "configs": {
+    "R037-EGF-C01_M1_REGULAR_FAILURE": {
+      "supply": {"proposals": 1864, "source_eligible": 1864, "distinct_days": 14, "proposal_long": 940, "proposal_short": 924, "source_rejections": {"SPREAD_GATE": 0, "NO_EXECUTABLE_TICK": 0}},
+      "combined": {
+        "trades": 15738, "raw_positive_wins": 7230, "official_wins": 7147, "losses": 8508, "p01_hits": 5240, "m30_only_hits": 1536, "owned_exit_suppressed_rearms": 8789, "ordinary_entries": 11892,
+        "gross_profit": 1536.48, "gross_loss": -4812.37, "net_profit": -3275.89, "max_balance_drawdown": 3275.89, "max_equity_drawdown": 3276.12, "average_hold_seconds": 6.664696911932901,
+        "parent_specialist_entries": 2095, "parent_specialist_net": -486.92,
+        "sources": {
+          "DH03_S06": {"entries": 1316, "official_wins": 574, "net_profit": -297.29},
+          "DH05_S06": {"entries": 595, "official_wins": 248, "net_profit": -139.32},
+          "DH02_S11": {"entries": 91, "official_wins": 37, "net_profit": -22.95},
+          "DH02_S08": {"entries": 93, "official_wins": 32, "net_profit": -27.36},
+          "SORB": {"entries": 1751, "official_wins": 811, "net_profit": -342.89}
+        },
+        "sorb_outcomes": {"ACCEPTED": 1751, "POSITION_BLOCKED": 85, "PARENT_SAME_TICK_COLLISION": 28, "OTHER_BLOCKED": 0},
+        "egf_entries": 1751, "egf_net": -342.89, "egf_source_contribution": {"entries": 1751, "official_wins": 811, "net_profit": -342.89}
+      },
+      "decision": {"proposal_supply_ok": true, "incremental_entry_floor_ok": true, "combined_trade_count_not_lower": true, "winner_or_quality_gate_ok": true, "net_not_worse_than_2usd": false, "drawdown_deterioration_within_1pct": false, "screen_pass": false, "strong_screen_pass": false, "trade_delta": 1704, "official_win_delta": 798, "gross_profit_delta": 179.22, "gross_loss_delta": -510.17, "net_delta": -330.95, "max_balance_dd_delta_pct": 11.200537690983833, "max_equity_dd_delta_pct": 11.189473362679585, "incremental_net_per_egf_entry": -0.19}
+    },
+    "R037-EGF-C02_M1_TYPE1_FAILURE": {
+      "supply": {"proposals": 662, "source_eligible": 662, "distinct_days": 14, "proposal_long": 333, "proposal_short": 329, "source_rejections": {"SPREAD_GATE": 0, "NO_EXECUTABLE_TICK": 0}},
+      "combined": {
+        "trades": 14642, "raw_positive_wins": 6708, "official_wins": 6632, "losses": 7934, "p01_hits": 5219, "m30_only_hits": 1548, "owned_exit_suppressed_rearms": 8791, "ordinary_entries": 11911,
+        "gross_profit": 1419.88, "gross_loss": -4490.13, "net_profit": -3070.25, "max_balance_drawdown": 3070.25, "max_equity_drawdown": 3070.48, "average_hold_seconds": 6.725447343259118,
+        "parent_specialist_entries": 2108, "parent_specialist_net": -488.71,
+        "sources": {
+          "DH03_S06": {"entries": 1322, "official_wins": 579, "net_profit": -297.15},
+          "DH05_S06": {"entries": 597, "official_wins": 249, "net_profit": -139.58},
+          "DH02_S11": {"entries": 94, "official_wins": 38, "net_profit": -24.15},
+          "DH02_S08": {"entries": 95, "official_wins": 33, "net_profit": -27.83},
+          "SORB": {"entries": 623, "official_wins": 288, "net_profit": -122.12}
+        },
+        "sorb_outcomes": {"ACCEPTED": 623, "POSITION_BLOCKED": 29, "PARENT_SAME_TICK_COLLISION": 10, "OTHER_BLOCKED": 0},
+        "egf_entries": 623, "egf_net": -122.12, "egf_source_contribution": {"entries": 623, "official_wins": 288, "net_profit": -122.12}
+      },
+      "decision": {"proposal_supply_ok": true, "incremental_entry_floor_ok": true, "combined_trade_count_not_lower": true, "winner_or_quality_gate_ok": true, "net_not_worse_than_2usd": false, "drawdown_deterioration_within_1pct": false, "screen_pass": false, "strong_screen_pass": false, "trade_delta": 608, "official_win_delta": 283, "gross_profit_delta": 62.62, "gross_loss_delta": -187.93, "net_delta": -125.31, "max_balance_dd_delta_pct": 4.220059539771826, "max_equity_dd_delta_pct": 4.210179776882539, "incremental_net_per_egf_entry": -0.2}
+    },
+    "R037-EGF-C03_M5_REGULAR_FAILURE": {
+      "supply": {"proposals": 334, "source_eligible": 334, "distinct_days": 13, "proposal_long": 172, "proposal_short": 162, "source_rejections": {"SPREAD_GATE": 0, "NO_EXECUTABLE_TICK": 0}},
+      "combined": {
+        "trades": 14349, "raw_positive_wins": 6600, "official_wins": 6526, "losses": 7749, "p01_hits": 5217, "m30_only_hits": 1558, "owned_exit_suppressed_rearms": 8803, "ordinary_entries": 11917,
+        "gross_profit": 1401.69, "gross_loss": -4379.09, "net_profit": -2977.4, "max_balance_drawdown": 2978.39, "max_equity_drawdown": 2978.89, "average_hold_seconds": 6.721931841940205,
+        "parent_specialist_entries": 2113, "parent_specialist_net": -491.27,
+        "sources": {
+          "DH03_S06": {"entries": 1327, "official_wins": 582, "net_profit": -297.62},
+          "DH05_S06": {"entries": 596, "official_wins": 247, "net_profit": -141.5},
+          "DH02_S11": {"entries": 95, "official_wins": 38, "net_profit": -24.68},
+          "DH02_S08": {"entries": 95, "official_wins": 33, "net_profit": -27.47},
+          "SORB": {"entries": 319, "official_wins": 174, "net_profit": -34.91}
+        },
+        "sorb_outcomes": {"ACCEPTED": 319, "POSITION_BLOCKED": 12, "PARENT_SAME_TICK_COLLISION": 3, "OTHER_BLOCKED": 0},
+        "egf_entries": 319, "egf_net": -34.91, "egf_source_contribution": {"entries": 319, "official_wins": 174, "net_profit": -34.91}
+      },
+      "decision": {"proposal_supply_ok": true, "incremental_entry_floor_ok": true, "combined_trade_count_not_lower": true, "winner_or_quality_gate_ok": true, "net_not_worse_than_2usd": false, "drawdown_deterioration_within_1pct": false, "screen_pass": false, "strong_screen_pass": false, "trade_delta": 315, "official_win_delta": 177, "gross_profit_delta": 44.43, "gross_loss_delta": -76.89, "net_delta": -32.46, "max_balance_dd_delta_pct": 1.1018591752010414, "max_equity_dd_delta_pct": 1.1016721931286348, "incremental_net_per_egf_entry": -0.1}
+    },
+    "R037-EGF-C04_M5_TYPE1_FAILURE": {
+      "supply": {"proposals": 133, "source_eligible": 133, "distinct_days": 11, "proposal_long": 67, "proposal_short": 66, "source_rejections": {"SPREAD_GATE": 0, "NO_EXECUTABLE_TICK": 0}},
+      "combined": {
+        "trades": 14161, "raw_positive_wins": 6484, "official_wins": 6412, "losses": 7677, "p01_hits": 5209, "m30_only_hits": 1560, "owned_exit_suppressed_rearms": 8803, "ordinary_entries": 11915,
+        "gross_profit": 1375.48, "gross_loss": -4338.75, "net_profit": -2963.27, "max_balance_drawdown": 2964.26, "max_equity_drawdown": 2964.76, "average_hold_seconds": 6.7574323847185935,
+        "parent_specialist_entries": 2118, "parent_specialist_net": -491.44,
+        "sources": {
+          "DH03_S06": {"entries": 1329, "official_wins": 582, "net_profit": -298.55},
+          "DH05_S06": {"entries": 598, "official_wins": 249, "net_profit": -140.23},
+          "DH02_S11": {"entries": 95, "official_wins": 38, "net_profit": -24.68},
+          "DH02_S08": {"entries": 96, "official_wins": 33, "net_profit": -27.98},
+          "SORB": {"entries": 128, "official_wins": 64, "net_profit": -16.44}
+        },
+        "sorb_outcomes": {"ACCEPTED": 128, "POSITION_BLOCKED": 3, "PARENT_SAME_TICK_COLLISION": 2, "OTHER_BLOCKED": 0},
+        "egf_entries": 128, "egf_net": -16.44, "egf_source_contribution": {"entries": 128, "official_wins": 64, "net_profit": -16.44}
+      },
+      "decision": {"proposal_supply_ok": true, "incremental_entry_floor_ok": true, "combined_trade_count_not_lower": true, "winner_or_quality_gate_ok": true, "net_not_worse_than_2usd": false, "drawdown_deterioration_within_1pct": true, "screen_pass": false, "strong_screen_pass": false, "trade_delta": 127, "official_win_delta": 63, "gross_profit_delta": 18.22, "gross_loss_delta": -36.55, "net_delta": -18.33, "max_balance_dd_delta_pct": 0.6222143771237056, "max_equity_dd_delta_pct": 0.6221087892806, "incremental_net_per_egf_entry": -0.14}
+    }
+  },
+  "ranking": [
+    {"config_id": "R037-EGF-C04_M5_TYPE1_FAILURE", "strong_screen_pass": false, "screen_pass": false, "net_delta": -18.33, "trade_delta": 127, "official_win_delta": 63, "accepted_entries": 128, "direct_egf_net": -16.44},
+    {"config_id": "R037-EGF-C03_M5_REGULAR_FAILURE", "strong_screen_pass": false, "screen_pass": false, "net_delta": -32.46, "trade_delta": 315, "official_win_delta": 177, "accepted_entries": 319, "direct_egf_net": -34.91},
+    {"config_id": "R037-EGF-C02_M1_TYPE1_FAILURE", "strong_screen_pass": false, "screen_pass": false, "net_delta": -125.31, "trade_delta": 608, "official_win_delta": 283, "accepted_entries": 623, "direct_egf_net": -122.12},
+    {"config_id": "R037-EGF-C01_M1_REGULAR_FAILURE", "strong_screen_pass": false, "screen_pass": false, "net_delta": -330.95, "trade_delta": 1704, "official_win_delta": 798, "accepted_entries": 1751, "direct_egf_net": -342.89}
+  ],
+  "finding": {"strong_screen_survivors": [], "leading_config": "R037-EGF-C04_M5_TYPE1_FAILURE", "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"},
+  "mql5_authorized": false
+}
