@@ -2,20 +2,20 @@
   "schema": "delta-timeout-recovery-inflight-v1",
   "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_PRESCREEN_17AA",
-  "parent_durable_unit": "R037_LONDON_OPENING_RANGE_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Z",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "parent_durable_unit": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_CHECKPOINT_17AA",
   "phase": "IDLE",
   "phase_rank": 0,
   "progress": {
     "status": "READY_FOR_PREREG",
-    "last_completed": "R037_LONDON_OPENING_RANGE_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Z",
-    "last_decision": "NO_PROMOTION_FREEZE_AS_REVERSAL_RECOMBINATION_CLUE",
-    "next": "Preregister 17AA London ORB sweep-reclaim reversal."
+    "last_completed": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_CHECKPOINT_17AA",
+    "last_decision": "RETIRE_FAMILY_NO_RETUNE",
+    "next": "Preregister next unique independent source; 17AA is complete."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read CURRENT_STATE; 17Z durable; start 17AA only.",
-    "idempotency_rule": "Do not rerun 17Z."
+    "resume_first_action": "Read CURRENT_STATE, CURRENT_INFLIGHT, and timeout pointer; 17AA durable; start only the next independent entry-source harvest.",
+    "idempotency_rule": "Do not rerun 17AA solely because a chat/message delivery timed out."
   },
   "last_verified_ci": {
     "commit": "854baf7239bb88d2deb1d6ed8564fdaffe402112",
@@ -26,9 +26,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_LONDON_OPENING_RANGE_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Z",
-    "checkpoint": "R037_LONDON_OPENING_RANGE_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Z",
-    "current_state_next": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_PRESCREEN_17AA",
-    "manifest": "research/delta/artifacts/DELTA_R037_LONDON_OPENING_RANGE_BREAKOUT_CHECKPOINT_17Z_MANIFEST.json"
+    "unit": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_CHECKPOINT_17AA",
+    "checkpoint": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_CHECKPOINT_17AA",
+    "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "manifest": "research/delta/artifacts/DELTA_R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_CHECKPOINT_17AA_MANIFEST.json"
   }
 }

@@ -105,7 +105,9 @@
     "C01 10/4/-2.18; C02 10/4/-1.44; C03 10/3/-3.07.",
     "No strong pass; no retune.",
     "Workbook readback PASS.",
-    "August sealed; MQL5 unauthorized."
+    "August sealed; MQL5 unauthorized.",
+    "Timeout recovery reconciliation: completed 17AA result/manifest/workbook were preserved; no recompute performed.",
+    "CURRENT_STATE and CURRENT_INFLIGHT advanced atomically to agree with the already-advanced recovery pointer."
   ],
   "reconstruction": {
     "entry_point": "research/delta/experiments/delta_r037_london_orb_sweep_reclaim_reversal_17aa.py",
@@ -161,7 +163,7 @@
     "github_readback": true,
     "drive_readback": true,
     "hashes_verified": true,
-    "current_state_advanced": false
+    "current_state_advanced": true
   },
   "github_commits": [
     "78db1c2b1806fb2605f3715cb1510ce31210902e",
