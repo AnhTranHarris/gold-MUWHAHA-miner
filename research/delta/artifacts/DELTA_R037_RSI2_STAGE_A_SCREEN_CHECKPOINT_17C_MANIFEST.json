@@ -1,0 +1,216 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C",
+  "status": "VERIFIED_DURABLE_NO_SCREEN_SURVIVOR_FAMILY_RETIRED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B",
+  "hypothesis": "A completed-bar RSI(2) exhaustion source aligned with SMA200 can add independent short-horizon mean-reversion entries with acceptable Stage-A quality.",
+  "falsification_condition": "No preregistered classic or three-extreme M1/M5 RSI2 configuration passes the frozen independent-source Stage-A screen.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Frozen R037 independent-source Stage-A screen",
+    "reference_count": 14034,
+    "minimum_count": 14034,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Combined candidate trade count may not fall below parent."
+  },
+  "primary_metrics": {
+    "entry_quality": "Official-win contribution and direct RSI2 net.",
+    "hold_persistence": "Frozen 30-second max hold.",
+    "economics": "Combined net/gross deltas and direct source net.",
+    "gross_loss_drawdown": "Gross-loss delta and balance/equity DD deterioration.",
+    "activity": "Accepted RSI2 entries and combined trade delta."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_rsi2_stage_a.py",
+      "commit": "a292a57c6f5b946c450c9ebc8a3703e89e183bd1",
+      "blob_sha": "b521ff0b7c7273d8421cdfc262eb4d81c287c33a",
+      "file_sha256": "2dce5517cf885ebd071a77f5a91a50c33012269a45f685ba9951ace82f6b8577"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "bd0512d4d94f74167267a6b3bf7c265d984451ce",
+      "role": "120-second crash-contained official runner"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "family": "R037-RSI2-v1",
+      "configs": [
+        "R037-RSI2-C01_M1_CLASSIC_TREND200",
+        "R037-RSI2-C02_M1_PULLBACK3_TREND200",
+        "R037-RSI2-C03_M5_CLASSIC_TREND200",
+        "R037-RSI2-C04_M5_PULLBACK3_TREND200"
+      ],
+      "rsi_period": 2,
+      "sma_period": 200,
+      "numeric_retuning": false,
+      "post_result_retuning": false,
+      "spread_gate_points_max": 25,
+      "lot": 0.01,
+      "stop_usd": 0.3,
+      "trail_activation_usd": 0.1,
+      "trail_distance_usd": 0.03,
+      "max_hold_seconds": 30
+    },
+    "feature_order": [
+      "completed_bar_RSI2",
+      "completed_bar_SMA200",
+      "trend_alignment",
+      "first_executable_tick",
+      "parent_priority_scheduler"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Stage-A discovery screen only; no post-result tuning."
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "exact_git_blob_verified": true,
+      "producer_sha256_verified": true,
+      "recovery_snapshot_run_id": 37175391190,
+      "recovery_artifact_id": 11293305615,
+      "atomic_output": true,
+      "runner_elapsed_seconds": 27.188
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "RSI2 preregistration",
+      "path": "research/delta/reference/DELTA_R037_RSI2_SOURCE_HARVEST_PREREG_17C.json",
+      "blob_sha": "4da5d4b4362231598e549748f31752290f8faf99"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C.json",
+      "commit": "32da127f0941a924cd1abd9d3aad0432b14ad475",
+      "blob_sha": "c85796d564e50a635fb5a5ed503865f5d68f5037",
+      "raw_result_sha256": "53785e62d6364dca84201404c573db75ec795c58bfa8d7a1b4b27ace4c653dc5"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C.md",
+      "commit": "32da127f0941a924cd1abd9d3aad0432b14ad475",
+      "blob_sha": "ebe8757f9e7e2e5d2cc292fbd2a136cc67444b27"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "614 C01 proposals",
+      "271 C02 proposals",
+      "102 C03 proposals",
+      "45 C04 proposals"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "580 C01 accepted",
+      "254 C02 accepted",
+      "98 C03 accepted",
+      "44 C04 accepted"
+    ],
+    "caches": [
+      "Commit-bound GitHub Actions recovery snapshot used for exact producer/dependency reconstruction"
+    ]
+  },
+  "models": [],
+  "qa": [
+    "Fresh research ledger preregistration was written before producer compute.",
+    "Producer/prereg/recovery cursor committed before official compute.",
+    "CI timeout-recovery and manifest gates passed before official compute.",
+    "Producer Git blob and SHA-256 verified from commit-bound recovery artifact.",
+    "Canonical January SHA and exact 4,205,709 Stage-A ticks verified.",
+    "Parent control reproduced 14,034 trades / 6,349 official wins / -$2,944.94.",
+    "Bounded runner exited 0 in 27.188 seconds.",
+    "All four preregistered RSI2 configs failed frozen -$2 net gate; no post-result tuning.",
+    "Least-bad C04 M5 pullback3 remained -$9.63 combined net delta.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_rsi2_stage_a.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_rsi2_stage_a.py --source <canonical_january_gzip> --output <result_json>",
+    "timing_semantics": "Ordered ticks; Wilder RSI2 and SMA200 only on completed Bid bars; first executable tick at/after signal-bar edge.",
+    "expected_fingerprints": {
+      "parent": {
+        "trades": 14034,
+        "official_wins": 6349,
+        "net_profit": -2944.94
+      },
+      "leader": {
+        "config": "R037-RSI2-C04_M5_PULLBACK3_TREND200",
+        "trade_delta": 44,
+        "official_win_delta": 20,
+        "net_delta": -9.63,
+        "direct_rsi2_net": -11.56
+      }
+    },
+    "selected_interpretation": "NO_SURVIVOR_RETIRED"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — independent-source discovery screen only",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "DELTA frozen P75 semantics.",
+    "ownership_scheduler_spec": "Frozen parent-priority scheduler.",
+    "session_dst_spec": "No RSI2 session filter.",
+    "risk_spec": "Frozen 0.01 / stop/trail/30-second initial-hold.",
+    "trade_count_parity_spec": "Not eligible for MT5 promotion.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "70 R037 Prereg",
+      "range": "A38:L47",
+      "readback_verified": true
+    },
+    {
+      "name": "DELTA Fresh Research Ledger",
+      "id": "1dXe4I98dFgIiybMSPQMoFnXOYNcTvtqNYDp85XeO34M",
+      "tab": "t.0",
+      "range_description": "17B result + RSI2 preregistration appended before compute",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "a292a57c6f5b946c450c9ebc8a3703e89e183bd1",
+    "32da127f0941a924cd1abd9d3aad0432b14ad475"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
