@@ -1,0 +1,68 @@
+{
+  "schema": "delta-r037-tso-stage-a-screen-17az-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_TURTLE_SOUP_SOURCE_DEFAULT_STAGE_A_SCREEN",
+  "family": "R037-TSO-v1",
+  "parent_checkpoint": "R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY",
+  "prereg_commit": "ff80d0724f7a657f2fcd4b1b9ab4c5e6b1e5aca0",
+  "producer_commit": "19a0e42732e2d3f759b96de1b29ed323e32b5e8d",
+  "producer_blob": "d22d2dd225016f3292b94bc6c93e9628be76a5fb",
+  "producer_sha256": "f89012c5f8070fed507c35a1a2629f7aa2b03a912e9cb295b22ca962dd3efa14",
+  "official_raw_result_sha256": "1e9fbd629fb03c3403564719c69d6d544b6ddfe17881e0f72bd21687e8ba3ba6",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "signal_surface": "NATIVE_DUKAS_M5_MID",
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "signal_definition": {
+    "timeframe_seconds": 300,
+    "lookback_bars": 20,
+    "min_extreme_age_bars": 4,
+    "sweep_window_bars": 1,
+    "confirm_close_bars": 1,
+    "require_reversal_body": true,
+    "min_sweep_depth_native_points": 30,
+    "min_sweep_depth_pct_range": 2
+  },
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "diagnostics": {
+    "m5_bars": 3036,
+    "signals": 23,
+    "signals_per_day": 1.6428571428571428
+  },
+  "configs": {
+    "C01_M5_SOURCE_DEFAULT_TURTLE_SOUP": {
+      "metrics": {
+        "signals": 23,
+        "busy_skips": 0,
+        "spread_rejects": 0,
+        "trades": 23,
+        "distinct_days": 8,
+        "long": 10,
+        "short": 13,
+        "official_wins": 11,
+        "gross_profit": 2.32,
+        "gross_loss": -7.02,
+        "direct_net_usd": -4.93,
+        "exit_reasons": {
+          "STOP": 22,
+          "MAX_HOLD": 1,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_20": true,
+        "minimum_distinct_days_5": true,
+        "direct_net_min_minus_1": false,
+        "screen_pass": false,
+        "strong_pass": false
+      }
+    }
+  },
+  "finding": {
+    "leading_config": null,
+    "decision": "RETIRE_TSO_STAGE_A_NO_EXECUTABLE_SURVIVOR",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "mql5_authorized": false
+}
