@@ -1,0 +1,104 @@
+{
+  "schema": "delta-r037-ossmr-stage-a-prereg-17au-v1",
+  "status": "PREREGISTERED_BEFORE_OFFICIAL_COMPUTE",
+  "unit": "R037_ONE_SIDED_SPREAD_SHOCK_MEAN_REVERSION_STAGE_A_SCREEN",
+  "family": "R037-OSSMR-v1",
+  "parent_checkpoint": "R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT",
+  "research_question": "Can a causal one-sided widening of the native Dukascopy XAUUSD bid-ask spread identify a short-lived quote-price dislocation whose subsequent spread mean reversion is tradeable on the independent Coinexx-like P75 execution surface?",
+  "sources": [
+    {
+      "name": "Engle & Patton — Impacts of Trades in an Error-Correction Model of Quote Prices",
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1295235",
+      "reconstruction": "Bid and ask quotes are cointegrated through the spread; the paper reports strong spread mean reversion and asymmetric quote response, with buyer-initiated trades primarily moving ask and seller-initiated trades primarily moving bid."
+    },
+    {
+      "name": "Jegadeesh & Titman — Short-Horizon Return Reversals and the Bid-Ask Spread",
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6471",
+      "reconstruction": "Short-horizon negative serial covariance/reversal is consistent with inventory-based microstructure effects; used only as reversal mechanism support, not for fitted coefficients."
+    },
+    {
+      "name": "Larkin & Larkin — When, Not Which Way",
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6919443",
+      "reconstruction": "Dukascopy FX quote data show timing can be predictable while direction-agnostic breakout monetisation fails and spreads defend high-activity windows; motivates testing a quote-state transition rather than another activity threshold."
+    }
+  ],
+  "source_qa": {
+    "fully_reconstructible_from_available_fields": true,
+    "required_fields": [
+      "timestamp_ms_utc",
+      "ask_raw",
+      "bid_raw"
+    ],
+    "unavailable_mechanics_explicitly_rejected": [
+      "individual limit-order cancellation identity",
+      "L2/L3 queue replenishment",
+      "true trade initiator classification"
+    ],
+    "signal_surface": "native Dukascopy best bid/ask only",
+    "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+    "separation_rule": "native spread is signal information only; executable P75 quotes determine entry/exit economics"
+  },
+  "frozen_input": {
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "stage_a_window": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+    "expected_ticks": 4205709,
+    "surface": "DUKAS_COINEXX_LIKE_P75"
+  },
+  "event_grammar": {
+    "shock": "relative to the immediately previous native BBO snapshot, exactly one quote side moves outward and the other side is unchanged, so native spread widens",
+    "sell_shock": "ask moves upward while bid is unchanged; mean-reversion direction=SELL",
+    "buy_shock": "bid moves downward while ask is unchanged; mean-reversion direction=BUY",
+    "event_identity": "consecutive outward changes on the same side belong to one shock episode until the native spread first narrows or the opposite quote changes",
+    "no_numeric_shock_size_threshold": true
+  },
+  "profiles": [
+    {
+      "id": "C01_IMMEDIATE_FADE",
+      "rule": "enter mean-reversion direction at the first executable P75 tick at/after the one-sided outward shock"
+    },
+    {
+      "id": "C02_FIRST_NARROW_CONFIRM",
+      "rule": "do not enter at shock; enter only when the moved native quote first moves inward and thereby narrows the spread before the opposite quote has moved; direction remains the original mean-reversion direction"
+    },
+    {
+      "id": "C03_FULL_SPREAD_RESTORE_CONFIRM",
+      "rule": "do not enter until native spread has returned to or below the pre-shock spread before the opposite quote has moved in the shock direction; direction remains the original mean-reversion direction"
+    }
+  ],
+  "evaluation": {
+    "economics": "frozen DELTA 30-second initial-hold execution: 0.01 lot, P75 BUY ask/SELL bid entry, protective stop 300 raw, trail activate 100 raw, trail distance 30 raw, max hold 30s, $0.01 entry + $0.01 exit commission",
+    "scheduler": "one position at a time",
+    "gates": {
+      "minimum_trades": 50,
+      "minimum_distinct_days": 6,
+      "direct_net_usd_min": -1,
+      "strong_direct_net_usd_min": 0
+    },
+    "diagnostics": [
+      "shock episodes",
+      "confirmation rate",
+      "median and p90 native shock-spread expansion",
+      "time-to-first-narrow quantiles",
+      "executable trade counts and economics"
+    ]
+  },
+  "anti_overfit": [
+    "No shock-size threshold sweep.",
+    "No rolling percentile/ATR/volatility threshold.",
+    "No session/side/weekday rescue.",
+    "No exit retuning.",
+    "No QIM/OFI overlay in this unit.",
+    "No August access.",
+    "If all three structural timing semantics fail executable economics, retire family."
+  ],
+  "crash_safety": {
+    "hard_process_timeout_seconds": 120,
+    "atomic_output": "NamedTemporaryFile + flush + os.fsync + os.replace",
+    "compact_stdout": true,
+    "exact_git_blob_required_before_compute": true
+  },
+  "next_if_survivor": "R037_OSSMR_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_fail": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
