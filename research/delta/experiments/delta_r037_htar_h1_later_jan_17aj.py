@@ -104,7 +104,7 @@ def proposals(t,a,b,anchor_tf):
    live=(sd>0 and int(b[ii])>=zl) or (sd<0 and int(b[ii])<=zh)
    if not live:out.append({"eligible":False,"reason":"RELOST_AT_EXEC","decision_ms":edge});state=None;continue
    if int(t[ii])<ECON:state=None;continue
-   out.append({"eligible":True,"decision_index":ii,"side":sd,"day":int(t[ii])//DAY,"anchor":state["level"],"zl":zl,"zh":zh});cnt["retrace"]+=1;state=None
+   out.append({"eligible":True,"decision_index":ii,"decision_ms":int(t[ii]),"side":sd,"day":int(t[ii])//DAY,"anchor":state["level"],"zl":zl,"zh":zh});cnt["retrace"]+=1;state=None
  return out,cnt
 
 def trade(ev,t,a,b):
