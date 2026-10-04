@@ -13,7 +13,7 @@ Can the source-grounded intrinsic-time directional-change operator provide a via
 
 Two preregistered direction semantics were tested without threshold tuning:
 1. **Overshoot continuation:** trade in the newly confirmed directional-change direction.
-2. **Alpha first-unit contrarian:** trade against the newly confirmed move, representing only the first contrarian unit rather than the article's multi-unit cascade.
+2. **Source first-unit contrarian:** trade against the newly confirmed move, representing only the first contrarian unit rather than the article's multi-unit cascade.
 
 ## Integrity
 
