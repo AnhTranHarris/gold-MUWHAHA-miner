@@ -1,0 +1,67 @@
+{
+  "schema": "delta-r037-srht-stage-a-screen-17ay-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_SWEEP_RECLAIM_HOLD_RETEST_STAGE_A_SCREEN",
+  "family": "R037-SRHT-v1",
+  "parent_checkpoint": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
+  "prereg_commit": "7b1ad1caf90a72cd5f9593d1e18c57250d7b4202",
+  "producer_commit": "6d2398a7de520138b65e27dc3af6daf26095a4e2",
+  "producer_blob": "ab6608125ce075ecfdbe094e7a9355e6c6c1de78",
+  "producer_sha256": "b412c3592bccc44568d8d05a20197bc50b92e73f0a29657d19a2c5c00aeec47c",
+  "official_raw_result_sha256": "ebf35dddc603e44213afdeab7c3b0535bdd0cb5fbca5208f547fdd08e0a6272a",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "signal_surface": "NATIVE_DUKAS_M1_MID",
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "signal_spec": {
+    "bar_seconds": 60,
+    "swing_width_each_side": 2,
+    "pivot_known_before_sweep_bar": true,
+    "sweep_close_reclaim": true,
+    "next_bar_retest_hold": true,
+    "profile": "fade failed breakout after confirmed retest hold"
+  },
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "diagnostics": {
+    "m1_bars": 15180,
+    "signals": 435,
+    "signals_per_day": 31.071428571428573,
+    "median_inter_event_seconds": 1619.9470000000001
+  },
+  "configs": {
+    "C01_M1_SWEEP_RECLAIM_RETEST": {
+      "metrics": {
+        "signals": 435,
+        "busy_skips": 0,
+        "spread_rejects": 0,
+        "trades": 435,
+        "distinct_days": 14,
+        "long": 214,
+        "short": 221,
+        "official_wins": 172,
+        "gross_profit": 38.78,
+        "gross_loss": -145.02,
+        "direct_net_usd": -110.59,
+        "exit_reasons": {
+          "STOP": 413,
+          "MAX_HOLD": 22,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_20": true,
+        "minimum_distinct_days_5": true,
+        "direct_net_min_minus_1": false,
+        "screen_pass": false,
+        "strong_pass": false
+      }
+    }
+  },
+  "finding": {
+    "leading_config": null,
+    "decision": "RETIRE_SRHT_STAGE_A_NO_EXECUTABLE_SURVIVOR",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "mql5_authorized": false
+}
