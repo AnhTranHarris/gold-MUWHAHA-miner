@@ -18,8 +18,8 @@
   },
   "in_flight_unit": {
     "unit": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION",
-    "status": "PREREGISTERED",
-    "phase_rank": 1,
+    "status": "PRODUCER_COMMITTED",
+    "phase_rank": 2,
     "parent_durable_unit": "R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ",
     "committed_artifacts": [
       {
@@ -37,9 +37,13 @@
       {
         "path": "research/delta/reference/DELTA_R037_HTAR_H1_FEB_JUL_PREREG_17AK.json",
         "commit": "4731471b6fa4697552c28bbc3c8adaaff250a909"
+      },
+      {
+        "path": "research/delta/experiments/delta_r037_htar_h1_monthly_17ak.py",
+        "commit": "a07834f819907cbf1bdd1f8439fede1479f9c631"
       }
     ],
-    "next_action": "Commit frozen HTAR H1 month-isolated producer and run February-July without retuning.",
+    "next_action": "Blob-verify the frozen monthly producer and execute 2026-02 through 2026-07; persist each completed month before advancing.",
     "completed_months": [],
     "next_month": "2026-02"
   },
