@@ -1,47 +1,46 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "COMPLETE",
+  "status": "INFLIGHT",
   "branch": "delta",
   "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-  "parent_durable_unit": "R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D",
-  "phase": "COMPLETE",
-  "phase_rank": 7,
+  "parent_durable_unit": "R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E",
+  "phase": "PRODUCER_COMMITTED",
+  "phase_rank": 2,
   "prereg": {
-    "path": "research/delta/reference/DELTA_R037_MSF_SOURCE_HARVEST_PREREG_17E.json",
-    "commit": "2739d418ad694f701a551743c2ff1561c5af0c37"
+    "path": "research/delta/reference/DELTA_R037_SFP_SOURCE_HARVEST_PREREG_17F.json",
+    "commit": "83861bf58aaff8e393950d1fd771fe24dfc0ec54"
   },
   "producer": {
-    "path": "research/delta/experiments/delta_r037_msf_stage_a.py",
-    "commit": "f700029a41abda79c775327c5f8497d6b69c0404",
-    "file_sha256": "4fbea383767200331138722bd27d0c83f3ee404a81468a26dbe2277c5521d7b4"
+    "path": "research/delta/experiments/delta_r037_sfp_stage_a.py",
+    "commit": "d05a78fa8384906f2da14a3a1eaba7e29718c205",
+    "blob_sha": "8aaedf366dce60f52e83b21dba6de264f94dc1e2",
+    "file_sha256": "2d164150f7d604283ef52f9b665c82c172b1a9ffb9dcc1149c4cf51fa45c04e5"
   },
   "result": {
-    "path": "research/delta/reference/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E.json",
-    "commit": "2e7dd13744cdb00fb0283578a326ec8982c5871a",
-    "raw_sha256": "f9f2b66f012dc9e6548d6bd031b0729f27a1ce6a52d4185b80e936a9cc425891"
+    "path": "research/delta/reference/DELTA_R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F.json"
   },
   "report": {
-    "path": "research/delta/research/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E.md",
-    "commit": "e574b3923be5400da40b5ebbcb7c2e1e1f9c365a"
+    "path": "research/delta/research/DELTA_R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F.md"
   },
   "manifest": {
-    "path": "research/delta/artifacts/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E_MANIFEST.json",
-    "commit": "32d5187bc85f8bc0849d5af2484c403856c22809"
+    "path": "research/delta/artifacts/DELTA_R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F_MANIFEST.json"
   },
   "progress": {
-    "family": "R037-MSF-v1",
-    "status": "COMPLETE_NO_STRONG_SURVIVOR_C04_ORDINARY_SCREEN_CLUE",
-    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+    "family": "R037-SFP-v1",
+    "status": "PRODUCER_COMMITTED_AWAITING_OFFICIAL_COMPUTE",
+    "next": "OFFICIAL_STAGE_A_REPLAY"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Do not rerun MSF 17E. Complete checkpoint exists; resume from CURRENT_STATE first incomplete unit after durability CI.",
+    "resume_first_action": "Verify committed SFP producer and prereg, then run exactly one official Stage-A replay if no committed 17F result exists.",
     "idempotency_rule": "Prereg and producer immutable before compute; result create-only.",
-    "hash_reconciliation": "GitHub recovery snapshot git-blob 29ccec103226f3044a9fdb7f7213731ab1428dee exactly matched live GitHub producer blob; corrected stale precompute SHA-256 metadata before any official replay."
+    "recovery_run_id": 37177568521,
+    "recovery_artifact_id": 11293469126,
+    "git_blob_verified": "8aaedf366dce60f52e83b21dba6de264f94dc1e2"
   },
   "last_verified_ci": {
-    "commit": "bd96bd2f9c9723ca2491a2286e038243b006caa3",
-    "run_id": 37176187737,
+    "commit": "854baf7239bb88d2deb1d6ed8564fdaffe402112",
+    "run_id": 37177464036,
     "conclusion": "success"
   },
   "august_2026": "SEALED",
