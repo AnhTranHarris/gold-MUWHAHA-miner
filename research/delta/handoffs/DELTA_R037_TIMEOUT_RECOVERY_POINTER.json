@@ -16,33 +16,22 @@
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_OSSMR_STAGE_A_SCREEN_CHECKPOINT_17AU_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "IDLE",
-    "phase_rank": 0,
+    "unit": "R037_QUOTE_REVISION_BURST_MOMENTUM_STAGE_A_SCREEN",
+    "family": "R037-QRBM-v1",
+    "status": "PRODUCER_COMMITTED_COMPUTE_NEXT",
+    "phase_rank": 2,
     "parent_durable_unit": "R037_OSSMR_STAGE_A_SCREEN_CHECKPOINT_17AU",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_OSSMR_STAGE_A_PREREG_17AU.json",
-        "commit": "1c2896ff2d5602282c25c88a62d9e528eb69d15b"
+        "path": "research/delta/reference/DELTA_R037_QRBM_STAGE_A_PREREG_17AV.json",
+        "commit": "06e151b552adafe5fed571c45e2581e30831f10f"
       },
       {
-        "path": "research/delta/experiments/delta_r037_ossmr_stage_a_17au.py",
-        "commit": "7a66e2134b59959d6b75b7f5806ea9006dfc45c9"
-      },
-      {
-        "path": "research/delta/reference/DELTA_R037_OSSMR_STAGE_A_CHECKPOINT_17AU.json",
-        "commit": "2758c2a802904c7ede0146936ffb11fce1d9ee1a"
-      },
-      {
-        "path": "research/delta/research/DELTA_R037_OSSMR_STAGE_A_CHECKPOINT_17AU.md",
-        "commit": "5430d861df393a1774b184e6518236a2b804a2da"
-      },
-      {
-        "path": "research/delta/artifacts/DELTA_R037_OSSMR_STAGE_A_SCREEN_CHECKPOINT_17AU_MANIFEST.json",
-        "commit": "f998997f847b37b24f523246dcce5967182c2845"
+        "path": "research/delta/experiments/delta_r037_qrbm_stage_a_17av.py",
+        "commit": "7d013226f1d908f3852ac4cd2827964c67147f52"
       }
     ],
-    "next_action": "Preregister next independent sparse-by-construction entry-source family.",
+    "next_action": "Run bounded QRBM Stage-A compute; do not recreate prereg or producer.",
     "completed_months": [],
     "next_month": null
   },
