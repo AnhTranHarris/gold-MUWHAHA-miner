@@ -1,0 +1,47 @@
+{
+  "schema": "delta-r037-cxr-recombination-prereg-v1",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "family": "R037-CXR-v1",
+  "checkpoint_target": "R037_CXR_VCE_MSF_RECOMBINATION_PRESCREEN_17AH",
+  "status": "FROZEN_BEFORE_COMPUTE",
+  "parent_checkpoint": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION_CHECKPOINT_17AF",
+  "rationale": "Recombine two prior non-promoting near-miss clues without changing their internal thresholds: VCE C03 BB/Keltner compression release (+0.71 direct, 20/27 wins) as volatility-context evidence, and MSF C04 M5 BOS/FVG midpoint retest (near-neutral integrated delta -0.05, +11 official-win delta) as structural entry.",
+  "frozen_components": {
+    "vce": "R037-VCE-C03_BBKC_RELEASE exactly as checkpoint 17A",
+    "msf": "R037-MSF-C04_M5_BOS_FVG_RETEST exactly as checkpoint 17E",
+    "direction_rule": "MSF signal side must equal most recent earlier eligible VCE-C03 release side",
+    "chronology": "VCE release must occur strictly before MSF decision; no same-edge lookahead"
+  },
+  "configs": {
+    "R037-CXR-C01_RECENT30M": {
+      "max_vce_age_minutes": 30
+    },
+    "R037-CXR-C02_RECENT60M": {
+      "max_vce_age_minutes": 60
+    },
+    "R037-CXR-C03_RECENT120M": {
+      "max_vce_age_minutes": 120
+    }
+  },
+  "prescreen": {
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+    "execution": "frozen 0.01 lot / <=25 point spread / $0.30 stop / +$0.10 trail activate / $0.03 trail / 30s max hold / $0.02 round trip commission",
+    "minimum_events": 5,
+    "minimum_distinct_days": 4,
+    "strong_direct_gate": "direct net > 0 and official win rate >= 0.50"
+  },
+  "anti_overfit": "Three structural recency windows are preregistered together; no additional window may be introduced after results. Any survivor must pass independent later-January validation unchanged before integrated promotion work.",
+  "forbidden": [
+    "retune VCE",
+    "retune MSF",
+    "side/session/weekday filters",
+    "new indicators after result",
+    "August",
+    "MQL5"
+  ],
+  "next_if_survivor": "R037_CXR_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_none": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
