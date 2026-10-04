@@ -11,33 +11,37 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI",
-    "current_phase": "R037_HTAR_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_NEXT",
-    "first_incomplete_unit": "R037_HTAR_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI_MANIFEST.json"
+    "last_verified_durable_unit": "R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ",
+    "current_phase": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION_NEXT",
+    "first_incomplete_unit": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_HTAR_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
-    "status": "IDLE",
-    "phase_rank": 0,
-    "parent_durable_unit": "R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI",
+    "unit": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION",
+    "status": "PREREGISTERED",
+    "phase_rank": 1,
+    "parent_durable_unit": "R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI.json",
-        "commit": "b22bcbee445b34d067493291eb05e64aab94929b"
+        "path": "research/delta/reference/DELTA_R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ.json",
+        "commit": "0c49c48ccce3bdeaa1cb9d57c7a6031cd27e4208"
       },
       {
-        "path": "research/delta/research/DELTA_R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI.md",
-        "commit": "da2bf8479d8423f60c76281461185b063b3ebf8c"
+        "path": "research/delta/research/DELTA_R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ.md",
+        "commit": "196d24afac249544faf3e4842624d06647f1efb4"
       },
       {
-        "path": "research/delta/artifacts/DELTA_R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI_MANIFEST.json",
-        "commit": "dca4029d3f3f3318cb823af68e37f63d8b7d8546"
+        "path": "research/delta/artifacts/DELTA_R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ_MANIFEST.json",
+        "commit": "a3231f44c60183c413faf343978697cdb49714a9"
+      },
+      {
+        "path": "research/delta/reference/DELTA_R037_HTAR_H1_FEB_JUL_PREREG_17AK.json",
+        "commit": "4731471b6fa4697552c28bbc3c8adaaff250a909"
       }
     ],
-    "next_action": "Preregister frozen C01 H1 later-January holdout; no retuning.",
+    "next_action": "Commit frozen HTAR H1 month-isolated producer and run February-July without retuning.",
     "completed_months": [],
-    "next_month": null
+    "next_month": "2026-02"
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
