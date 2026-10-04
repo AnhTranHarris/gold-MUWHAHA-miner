@@ -1,21 +1,21 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "ACTIVE",
+  "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_IMPULSE_EXHAUSTION_REVERSAL_STAGE_A_SCREEN",
-  "parent_durable_unit": "R037_SQRM_STAGE_A_SCREEN_CHECKPOINT_17BC",
-  "phase": "RESULT_COMMITTED",
-  "phase_rank": 3,
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "parent_durable_unit": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
+  "phase": "IDLE",
+  "phase_rank": 0,
   "progress": {
-    "status": "ACTIVE",
-    "last_completed": "R037_SQRM_STAGE_A_SCREEN_CHECKPOINT_17BC",
-    "current_candidate": "R037-IER-v1",
-    "next": "Write report/workbook/manifest for 17BD result, then retire IER and continue independent harvest."
+    "status": "IDLE",
+    "last_completed": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
+    "current_candidate": null,
+    "next": "Harvest and preregister next independent high-supply entry source."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "17BD compact result is durable at commit 4cdb079b75a1825616cade08afe157ee62ec634e. Resume with report/workbook/manifest; do not rerun compute.",
-    "idempotency_rule": "Resume first missing committed phase; never duplicate durable prereg, producer, or result after transport timeout."
+    "resume_first_action": "17BD is durable. Resume at independent entry-source harvest; do not rerun IER.",
+    "idempotency_rule": "Resume first missing committed phase only."
   },
   "last_verified_ci": {
     "commit": "164d20b91718a6bb84746350ba2a26b5c9a92ccb",
@@ -26,25 +26,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_SQRM_STAGE_A_SCREEN_CHECKPOINT_17BC",
-    "checkpoint": "R037_SQRM_STAGE_A_SCREEN_CHECKPOINT_17BC",
+    "unit": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
+    "checkpoint": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
     "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "manifest": "research/delta/artifacts/DELTA_R037_SQRM_STAGE_A_SCREEN_CHECKPOINT_17BC_MANIFEST.json"
-  },
-  "inflight_artifacts": {
-    "prereg": {
-      "path": "research/delta/reference/DELTA_R037_IER_STAGE_A_PREREG_17BD.json",
-      "commit": "9f4c17f6f9247f6bf492bfe39922fc0437aa69a7"
-    },
-    "producer": {
-      "path": "research/delta/experiments/delta_r037_ier_stage_a_17bd.py",
-      "commit": "c26cb43511c3e63ded2ed4fab2bc469b293b9897",
-      "blob_sha": "98375b1c8f6fb93dad442314785f784535831ef9"
-    },
-    "result": {
-      "path": "research/delta/reference/DELTA_R037_IER_STAGE_A_CHECKPOINT_17BD.json",
-      "commit": "4cdb079b75a1825616cade08afe157ee62ec634e",
-      "sha256": "6b429647dcdff31d44c1d42333d58ad89a86dc4c4d0e88a4706390b6d3dfb189"
-    }
+    "manifest": "research/delta/artifacts/DELTA_R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD_MANIFEST.json"
   }
 }
