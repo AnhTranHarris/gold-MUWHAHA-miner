@@ -1,113 +1,24 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "INFLIGHT",
+  "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION",
-  "parent_durable_unit": "R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B",
-  "phase": "READY_TO_ADVANCE",
-  "phase_rank": 6,
-  "prereg": {
-    "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_EVIDENCE_16C.json",
-    "commit": "877826057745a7e129778911ce0323fcecb58b83"
-  },
-  "producer": {
-    "path": "research/delta/experiments/delta_r037_plsr_c01_monthly_validation.py",
-    "commit": "e8ab95ddee0ac07cc8b223e6b16ca56dd890bf0d",
-    "blob_sha": "46d01ab6800eabb3c2f0a87d71ee999ac03eeba6",
-    "sha256": "7405e85cb693ebbaa4a163e9d4d86c45606649139771a8fef68ef108d99860e6"
-  },
-  "result": {
-    "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C.json",
-    "commit": "faa9e402627d7a02eec0425ee621f51184e14f65",
-    "blob_sha": "60d83e99c8151944b9eb0278d4cc94fba70cdaeb"
-  },
-  "report": {
-    "path": "research/delta/research/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C.md",
-    "commit": "928c0ecdf2aa3fa0d1a7a30d1bd77734fe30baa2",
-    "blob_sha": "51071a6f810189e2b0ab7732efe1a5f13273fa4c"
-  },
-  "manifest": {
-    "path": "research/delta/artifacts/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C_MANIFEST.json",
-    "commit": "9d898b7e2d84aa59006e67ebdb8f879e1252f403",
-    "blob_sha": "1307b243e3f79c967f171f896e0431cd8a298def"
-  },
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "parent_durable_unit": "R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C",
+  "phase": "IDLE",
+  "phase_rank": 0,
+  "prereg": null,
+  "producer": null,
+  "result": null,
+  "report": null,
+  "manifest": null,
   "progress": {
-    "completed_months": [
-      "2026-02",
-      "2026-03",
-      "2026-04",
-      "2026-05",
-      "2026-06",
-      "2026-07"
-    ],
-    "next_month": null,
-    "monthly_results": {
-      "2026-02": {
-        "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_2026_02_16C.json",
-        "commit": "afb8ca16fed7b0c5387c6224817881e585076f39",
-        "raw_result_sha256": "6a5999710c71e88b2b93563583660c2c64d00f075284c23d38a63327876e8939",
-        "trade_delta": 17,
-        "official_win_delta": 6,
-        "net_delta": -4.08,
-        "plsr_entries": 17,
-        "plsr_net": -5.01
-      },
-      "2026-03": {
-        "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_2026_03_16C.json",
-        "commit": "8a362c206863ac9db0122c1944e1f1016f5ce559",
-        "raw_result_sha256": "90626ce663340ca13343f644b66c66f2b1b00f3bbd32511ee42511c861f8865e",
-        "trade_delta": 23,
-        "official_win_delta": 9,
-        "net_delta": -6.2,
-        "plsr_entries": 23,
-        "plsr_net": -6.21
-      },
-      "2026-04": {
-        "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_2026_04_16C.json",
-        "commit": "adc54c1caad403880bd332fe84b262f2bfefa664",
-        "raw_result_sha256": "7ec4104afff1216f1748182a1c40df41f40de2b52a34694503b57ef94945e2f6",
-        "trade_delta": 21,
-        "official_win_delta": 8,
-        "net_delta": -6.78,
-        "plsr_entries": 21,
-        "plsr_net": -6.78
-      },
-      "2026-05": {
-        "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_2026_05_16C.json",
-        "commit": "fe5eeeb1e179a69ceb5b01be4eee551c92021f1c",
-        "raw_result_sha256": "a8b195ea49b3087c99eb7e94681f8d6137ac41eece0c66abe6785a8d80e63807",
-        "trade_delta": 20,
-        "official_win_delta": 8,
-        "net_delta": -6.34,
-        "plsr_entries": 20,
-        "plsr_net": -6.34
-      },
-      "2026-06": {
-        "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_2026_06_16C.json",
-        "commit": "17d3ee4513ca086b69738328cdedf7982c991a49",
-        "raw_result_sha256": "1fa1ac00051140bafff89991f473b5a8096cf0942092a43e0097d35b246eecc5",
-        "trade_delta": 18,
-        "official_win_delta": 8,
-        "net_delta": -2.78,
-        "plsr_entries": 18,
-        "plsr_net": -2.78
-      },
-      "2026-07": {
-        "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_2026_07_16C.json",
-        "commit": "e6213b72f39e405c5f850a1f6de5ef3e4bc1224a",
-        "raw_result_sha256": "c305c1f781f5755586ee08461d72273e8fdea80eb230c9085d662083861da9f4",
-        "trade_delta": 22,
-        "official_win_delta": 10,
-        "net_delta": -0.92,
-        "plsr_entries": 22,
-        "plsr_net": -1.88
-      }
-    }
+    "status": "NOT_STARTED",
+    "next_action": "Harvest a new causally independent entry source, freeze a bounded preregistered candidate set, then commit producer before official tick replay."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "16C durability package is complete. Advance CURRENT_STATE to 16C and set next unit R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST; never rerun monthly compute.",
-    "idempotency_rule": "Each month result is create-only and durable before the next month starts."
+    "resume_first_action": "Read CURRENT_STATE then this file. Begin R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST; do not rerun PLSR-C01 16C monthly validation.",
+    "idempotency_rule": "Create-only research artifacts; reconcile branch HEAD before every durable write."
   },
   "last_verified_ci": {
     "commit": "50f64cef0924554cea05ac80be81c9c48339bd5c",
@@ -118,9 +29,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION",
-    "checkpoint": "R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B",
-    "current_state_next": "R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION",
-    "manifest": "research/delta/artifacts/DELTA_R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B_MANIFEST.json"
+    "unit": "R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION",
+    "checkpoint": "R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C",
+    "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "manifest": "research/delta/artifacts/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C_MANIFEST.json"
   }
 }

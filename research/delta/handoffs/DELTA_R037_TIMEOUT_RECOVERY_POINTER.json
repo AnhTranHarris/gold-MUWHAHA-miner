@@ -11,39 +11,22 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B",
-    "current_phase": "R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION_NEXT",
-    "first_incomplete_unit": "R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B_MANIFEST.json",
-    "current_state_commit": "ed607f78a7cc66d1b9c4d3c194879131bf410c70",
+    "last_verified_durable_unit": "R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C",
+    "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
+    "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C_MANIFEST.json",
+    "current_state_commit": null,
     "current_state_ci_run": null,
     "current_state_ci_conclusion": "PENDING"
   },
   "in_flight_unit": {
-    "unit": "R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION",
-    "status": "READY_TO_ADVANCE",
-    "phase_rank": 6,
-    "parent_durable_unit": "R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B",
-    "committed_artifacts": [
-      {
-        "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_EVIDENCE_16C.json",
-        "commit": "877826057745a7e129778911ce0323fcecb58b83"
-      },
-      {
-        "path": "research/delta/experiments/delta_r037_plsr_c01_monthly_validation.py",
-        "commit": "e8ab95ddee0ac07cc8b223e6b16ca56dd890bf0d",
-        "blob_sha": "46d01ab6800eabb3c2f0a87d71ee999ac03eeba6"
-      }
-    ],
-    "next_action": "16C durability package complete; advance CURRENT_STATE to 16C and begin fresh independent entry-source harvest.",
-    "completed_months": [
-      "2026-02",
-      "2026-03",
-      "2026-04",
-      "2026-05",
-      "2026-06",
-      "2026-07"
-    ],
+    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "status": "IDLE",
+    "phase_rank": 0,
+    "parent_durable_unit": "R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C",
+    "committed_artifacts": [],
+    "next_action": "Harvest and preregister the next causally independent entry-source family; commit producer before official compute.",
+    "completed_months": [],
     "next_month": null
   },
   "timeout_recovery_algorithm": [
