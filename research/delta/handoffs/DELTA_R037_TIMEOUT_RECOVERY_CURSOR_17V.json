@@ -1,0 +1,20 @@
+{
+  "schema": "delta-r037-timeout-recovery-cursor-v1",
+  "created_utc": "2026-10-04",
+  "authoritative_last_full_durable_checkpoint": "R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I",
+  "completed_after_full_checkpoint": [
+    {
+      "artifact": "research/delta/reference/DELTA_R037_FAST_HARVEST_BATCH_17J_17M.json",
+      "commit": "cbf36f05de86d3c46ca04b466539e36121ac6265"
+    },
+    {
+      "artifact": "research/delta/reference/DELTA_R037_FAST_HARVEST_ADDENDUM_17N_17V.json",
+      "commit": "1f0d9d616223a7c21ba37f8ef2d29792c54d3c2a"
+    }
+  ],
+  "first_incomplete_scientific_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "resume_instruction": "Do not rerun 17J-17V. Read both fast-harvest artifacts, preserve 17E MSF-C04 and 17H SMOR-C02 only as near-neutral structural clues, then harvest a new naturally selective delayed structural confirmation/retest context. Do not retune retired families.",
+  "current_state_update_note": "CURRENT_STATE remained pointed at the same first-incomplete scientific unit; direct mutation after 17V was blocked by repository write safety, so this cursor is the explicit timeout-recovery pointer.",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
