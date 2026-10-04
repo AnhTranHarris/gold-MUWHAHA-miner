@@ -13,7 +13,7 @@
   "producer": {
     "path": "research/delta/experiments/delta_r037_vce_stage_a.py",
     "commit": "SAME_ATOMIC_COMMIT",
-    "sha256": "11c2456208baf4f276be26d1f1ca9c5d6cba4046d3499a7710a71cab9cb7bdd0"
+    "sha256": "d52630b39bf0bd048e57b9e148773c8f67767dcc7ba8e9e94e9b67112432136c"
   },
   "result": null,
   "report": null,
@@ -26,11 +26,11 @@
       "R037-VCE-C03_BBKC_RELEASE",
       "R037-VCE-C04_BBKC_RELEASE_MOM12"
     ],
-    "status": "PREREG_AND_PRODUCER_FROZEN_OFFICIAL_COMPUTE_NEXT"
+    "status": "PRODUCER_CLEAN_ROOM_PATCH_COMMITTED_OFFICIAL_COMPUTE_NEXT"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Verify committed VCE 17A producer blob/hash and run Stage-A once. If a committed result already exists, do not rerun; finish only missing durability steps.",
+    "resume_first_action": "Run only the clean-room-patched committed VCE 17A producer. Prior pre-patch local result is diagnostic only and must not be promoted.",
     "idempotency_rule": "Producer and prereg are immutable before official compute; result path is create-only."
   },
   "last_verified_ci": {

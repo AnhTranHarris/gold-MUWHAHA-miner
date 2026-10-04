@@ -78,11 +78,11 @@ def ema(x: np.ndarray, period: int) -> np.ndarray:
     out = np.full(len(x), np.nan, np.float64)
     if len(x) < period:
         return out
-    alpha = 2.0 / (period + 1.0)
+    ema_k = 2.0 / (period + 1.0)
     seed = float(np.mean(x[:period]))
     out[period - 1] = seed
     for i in range(period, len(x)):
-        out[i] = alpha * float(x[i]) + (1.0 - alpha) * out[i - 1]
+        out[i] = ema_k * float(x[i]) + (1.0 - ema_k) * out[i - 1]
     return out
 
 
