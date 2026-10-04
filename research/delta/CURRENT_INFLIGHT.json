@@ -10,11 +10,11 @@
     "status": "ACTIVE",
     "last_completed": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
     "current_candidate": "R037-SRHT-v1",
-    "next": "Run official BOSLS 17AY Stage-A compute with exact producer blob 82ef4ba1a8e270d48a4eed515167bd41f07ac5f8 under 120-second timeout."
+    "next": "Run official SRHT 17AY Stage-A compute with exact producer blob ab6608125ce075ecfdbe094e7a9355e6c6c1de78 under 120-second timeout."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "BOSLS 17AY producer is byte-verified: commit 79d7bab327d1d032072df36806aa4c02793db10f, blob 82ef4ba1a8e270d48a4eed515167bd41f07ac5f8, local SHA-256 ca4366126dabca257bd9f5d7f82688c0d74d9283e7a4968c6f5fd8250428fc21. If result absent, run official compute only.",
+    "resume_first_action": "SRHT 17AY producer is byte-verified: commit 6d2398a7de520138b65e27dc3af6daf26095a4e2, blob ab6608125ce075ecfdbe094e7a9355e6c6c1de78, local SHA-256 b412c3592bccc44568d8d05a20197bc50b92e73f0a29657d19a2c5c00aeec47c. If result absent, run official compute only.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
