@@ -21,8 +21,8 @@
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "REPORT_COMMITTED",
-    "phase_rank": 4,
+    "status": "COMPLETE",
+    "phase_rank": 7,
     "parent_durable_unit": "R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E",
     "committed_artifacts": [
       {
@@ -43,9 +43,13 @@
       {
         "path": "research/delta/research/DELTA_R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F.md",
         "commit": "5ef733a1cdeed0681b767d8f3fa87cb9acda6162"
+      },
+      {
+        "path": "research/delta/artifacts/DELTA_R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F_MANIFEST.json",
+        "commit": "5518531892ae57a88be1fa03295bd18ac06106bb"
       }
     ],
-    "next_action": "Do not rerun SFP 17F. Finish ledger/workbook, full manifest, CURRENT_STATE last, and durability CI.",
+    "next_action": "After CURRENT_STATE advances and durability CI passes, begin next independent entry-source harvest. Never rerun SFP 17F.",
     "completed_months": [],
     "next_month": null
   },
