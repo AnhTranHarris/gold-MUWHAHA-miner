@@ -1,0 +1,55 @@
+{
+  "schema": "delta-r037-fib-golden-pocket-retrace-prereg-17bw-v1",
+  "status": "PREREGISTERED_BEFORE_PRODUCER_AND_OFFICIAL_COMPUTE",
+  "unit": "R037_FIB_GOLDEN_POCKET_IMPULSE_RETRACE_STAGE_A_SCREEN_CHECKPOINT_17BW",
+  "family": "ATR_QUALIFIED_IMPULSE_GOLDEN_POCKET_RETRACE",
+  "parent_checkpoint": "R037_STRUCTURE_ANCHORED_VWAP_FAST_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BU_17BV",
+  "source_basis": {
+    "tradingview": "AYK Fib Scalper public protected-script description",
+    "intended_symbol": "XAUUSD",
+    "intended_timeframe": "M5",
+    "pivot_length": 3,
+    "atr_length": 14,
+    "minimum_impulse_atr": 2.5,
+    "entry_retracement": 0.705,
+    "validity_bars": 15,
+    "source_risk_note": "Source describes 0.786+ATR-buffer stop, 2R target and 1R breakeven; DELTA does not import source exits because this unit isolates entry quality under frozen 30-second execution."
+  },
+  "causal_grammar": {
+    "pivot": "Strict symmetric 3-left/3-right confirmed swing high/low, visible only after right-side bar 3 completes.",
+    "leg": "Alternate confirmed pivot types. A low->high leg is bullish; high->low is bearish. Same-type more-extreme pivots supersede but do not form a leg.",
+    "qualification": "At the newly confirmed endpoint, absolute pivot-to-pivot range must be >=2.5 * ATR14 visible at endpoint confirmation.",
+    "arm": "One pending setup at a time. Bullish entry = high - 0.705*(high-low). Bearish entry = low + 0.705*(high-low).",
+    "fill": "Within next 15 completed M5 bars, first causal price interaction with projected entry arms a signal; execute at first P75 tick at/after interaction bar end.",
+    "expiry": "Erase unfilled setup after 15 bars or when a new qualifying impulse supersedes it."
+  },
+  "config": {
+    "name": "17BW_C01_AYK_DEFAULT_M5_ENTRY",
+    "bar_ms": 300000
+  },
+  "execution": {
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "commission_usd_each_side": 0.01
+  },
+  "gates": {
+    "minimum_trades": 20,
+    "minimum_distinct_days": 5,
+    "direct_net_usd_min": 0,
+    "advance_rule": "Advance unchanged M5 default entry only if supply and nonnegative direct net pass."
+  },
+  "prohibited": [
+    "no pivot/ATR/impulse/fib/validity sweep",
+    "no session/side/weekday filter",
+    "no source-exit optimization",
+    "no frozen DELTA exit rescue",
+    "no August",
+    "no MQL5"
+  ],
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
