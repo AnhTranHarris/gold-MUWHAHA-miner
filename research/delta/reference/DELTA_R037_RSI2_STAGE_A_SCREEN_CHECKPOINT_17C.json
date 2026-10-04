@@ -1,0 +1,194 @@
+{
+  "schema": "delta-r037-rsi2-stage-a-screen-17c-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "family": "R037-RSI2-v1",
+  "parent_checkpoint": "R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B",
+  "surrogate_parent": "14A_BACKBONE_FIRST_C03_WITH_FROZEN_PROVENANCE_LIMITED_SPECIALISTS",
+  "promotable": false,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "indicator_semantics": "Wilder RSI2 and SMA200 on completed Bid closes",
+  "numeric_retuning": false,
+  "post_result_retuning": false,
+  "august_accessed": false,
+  "official_raw_result_sha256": "53785e62d6364dca84201404c573db75ec795c58bfa8d7a1b4b27ace4c653dc5",
+  "producer": {
+    "commit": "a292a57c6f5b946c450c9ebc8a3703e89e183bd1",
+    "blob_sha": "b521ff0b7c7273d8421cdfc262eb4d81c287c33a",
+    "sha256": "2dce5517cf885ebd071a77f5a91a50c33012269a45f685ba9951ace82f6b8577"
+  },
+  "runtime": {
+    "bounded_runner_seconds": 27.188,
+    "ci_run": 37175391190,
+    "recovery_artifact_id": 11293305615
+  },
+  "parent_control": {
+    "trades": 14034,
+    "official_wins": 6349,
+    "gross_profit": 1357.26,
+    "gross_loss": -4302.2,
+    "net_profit": -2944.94,
+    "max_balance_drawdown": 2945.93,
+    "max_equity_drawdown": 2946.43
+  },
+  "configs": {
+    "R037-RSI2-C01_M1_CLASSIC_TREND200": {
+      "supply": {
+        "proposals": 614,
+        "source_eligible": 614,
+        "distinct_days": 12,
+        "long": 344,
+        "short": 270
+      },
+      "combined": {
+        "trades": 14599,
+        "official_wins": 6568,
+        "net_profit": -3099.2,
+        "max_equity_drawdown": 3100.69,
+        "rsi2_entries": 580,
+        "rsi2_net": -149.85
+      },
+      "decision": {
+        "screen_pass": false,
+        "strong_screen_pass": false,
+        "trade_delta": 565,
+        "official_win_delta": 219,
+        "gross_profit_delta": 44.76,
+        "gross_loss_delta": -199.02,
+        "net_delta": -154.26,
+        "max_equity_dd_delta_pct": 5.2354883706723125
+      }
+    },
+    "R037-RSI2-C02_M1_PULLBACK3_TREND200": {
+      "supply": {
+        "proposals": 271,
+        "source_eligible": 271,
+        "distinct_days": 12,
+        "long": 154,
+        "short": 117
+      },
+      "combined": {
+        "trades": 14281,
+        "official_wins": 6449,
+        "net_profit": -3010.65,
+        "max_equity_drawdown": 3012.14,
+        "rsi2_entries": 254,
+        "rsi2_net": -65.99
+      },
+      "decision": {
+        "screen_pass": false,
+        "strong_screen_pass": false,
+        "trade_delta": 247,
+        "official_win_delta": 100,
+        "gross_profit_delta": 23.63,
+        "gross_loss_delta": -89.34,
+        "net_delta": -65.71,
+        "max_equity_dd_delta_pct": 2.23015649446958
+      }
+    },
+    "R037-RSI2-C03_M5_CLASSIC_TREND200": {
+      "supply": {
+        "proposals": 102,
+        "source_eligible": 102,
+        "distinct_days": 12,
+        "long": 49,
+        "short": 53
+      },
+      "combined": {
+        "trades": 14131,
+        "official_wins": 6393,
+        "net_profit": -2966.03,
+        "max_equity_drawdown": 2967.52,
+        "rsi2_entries": 98,
+        "rsi2_net": -23.93
+      },
+      "decision": {
+        "screen_pass": false,
+        "strong_screen_pass": false,
+        "trade_delta": 97,
+        "official_win_delta": 44,
+        "gross_profit_delta": 10.46,
+        "gross_loss_delta": -31.55,
+        "net_delta": -21.09,
+        "max_equity_dd_delta_pct": 0.7157814711362614
+      }
+    },
+    "R037-RSI2-C04_M5_PULLBACK3_TREND200": {
+      "supply": {
+        "proposals": 45,
+        "source_eligible": 45,
+        "distinct_days": 10,
+        "long": 15,
+        "short": 30
+      },
+      "combined": {
+        "trades": 14078,
+        "official_wins": 6369,
+        "net_profit": -2954.57,
+        "max_equity_drawdown": 2956.06,
+        "rsi2_entries": 44,
+        "rsi2_net": -11.56
+      },
+      "decision": {
+        "screen_pass": false,
+        "strong_screen_pass": false,
+        "trade_delta": 44,
+        "official_win_delta": 20,
+        "gross_profit_delta": 4.5,
+        "gross_loss_delta": -14.13,
+        "net_delta": -9.63,
+        "max_equity_dd_delta_pct": 0.32683620517032846
+      }
+    }
+  },
+  "ranking": [
+    {
+      "config_id": "R037-RSI2-C04_M5_PULLBACK3_TREND200",
+      "strong_screen_pass": false,
+      "screen_pass": false,
+      "net_delta": -9.63,
+      "trade_delta": 44,
+      "official_win_delta": 20,
+      "accepted_entries": 44,
+      "direct_rsi2_net": -11.56
+    },
+    {
+      "config_id": "R037-RSI2-C03_M5_CLASSIC_TREND200",
+      "strong_screen_pass": false,
+      "screen_pass": false,
+      "net_delta": -21.09,
+      "trade_delta": 97,
+      "official_win_delta": 44,
+      "accepted_entries": 98,
+      "direct_rsi2_net": -23.93
+    },
+    {
+      "config_id": "R037-RSI2-C02_M1_PULLBACK3_TREND200",
+      "strong_screen_pass": false,
+      "screen_pass": false,
+      "net_delta": -65.71,
+      "trade_delta": 247,
+      "official_win_delta": 100,
+      "accepted_entries": 254,
+      "direct_rsi2_net": -65.99
+    },
+    {
+      "config_id": "R037-RSI2-C01_M1_CLASSIC_TREND200",
+      "strong_screen_pass": false,
+      "screen_pass": false,
+      "net_delta": -154.26,
+      "trade_delta": 565,
+      "official_win_delta": 219,
+      "accepted_entries": 580,
+      "direct_rsi2_net": -149.85
+    }
+  ],
+  "finding": {
+    "strong_screen_survivors": [],
+    "leading_config": "R037-RSI2-C04_M5_PULLBACK3_TREND200",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "mql5_authorized": false
+}
