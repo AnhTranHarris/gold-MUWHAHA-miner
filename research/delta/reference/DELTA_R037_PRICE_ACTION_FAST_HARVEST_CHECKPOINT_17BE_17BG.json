@@ -1,0 +1,34 @@
+{
+  "schema": "delta-r037-price-action-fast-harvest-17be-17bg-v1",
+  "status": "COMPLETE_FAST_CAUSAL_PRESCREEN",
+  "unit": "R037_PRICE_ACTION_FAST_HARVEST_17BE_17BG",
+  "parent_checkpoint": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
+  "prereg_commit": "95a7ed14925c4acba1ca19fd6db78a21c5ab33f6",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "signal_surfaces": {
+    "17BE_TBR9_21": "NATIVE_DUKAS_M1_MID",
+    "17BF_PCR": "NATIVE_DUKAS_M1_MID",
+    "17BG_FAKEY": "NATIVE_DUKAS_M5_MID"
+  },
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "diagnostics": {"m1_bars": 15180, "m5_bars": 3036},
+  "configs": {
+    "17BE_TBR9_21": {
+      "metrics": {"signals":565,"busy_skips":0,"spread_rejects":0,"trades":565,"distinct_days":14,"long":298,"short":267,"official_wins":267,"gross_profit":59.03,"gross_loss":-160.53,"direct_net_usd":-107.15,"exit_reasons":{"STOP":546,"MAX_HOLD":19,"END":0}},
+      "gate": {"minimum_trades_20":true,"minimum_distinct_days_5":true,"direct_net_min_minus_1":false,"screen_pass":false,"strong_pass":false}
+    },
+    "17BF_PCR": {
+      "metrics": {"signals":2253,"busy_skips":0,"spread_rejects":0,"trades":2253,"distinct_days":14,"long":1249,"short":1004,"official_wins":963,"gross_profit":219.2,"gross_loss":-695.28,"direct_net_usd":-498.61,"exit_reasons":{"STOP":2164,"MAX_HOLD":89,"END":0}},
+      "gate": {"minimum_trades_20":true,"minimum_distinct_days_5":true,"direct_net_min_minus_1":false,"screen_pass":false,"strong_pass":false}
+    },
+    "17BG_FAKEY": {
+      "metrics": {"signals":34,"busy_skips":0,"spread_rejects":0,"trades":34,"distinct_days":11,"long":12,"short":22,"official_wins":15,"gross_profit":5.23,"gross_loss":-9.78,"direct_net_usd":-4.89,"exit_reasons":{"STOP":33,"MAX_HOLD":1,"END":0}},
+      "gate": {"minimum_trades_20":true,"minimum_distinct_days_5":true,"direct_net_min_minus_1":false,"screen_pass":false,"strong_pass":false}
+    }
+  },
+  "finding": {"survivors":[],"decision":"RETIRE_BATCH_NO_EXECUTABLE_SURVIVOR","next":"R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"},
+  "mql5_authorized": false
+}
