@@ -11,27 +11,27 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AB",
-    "current_phase": "R037_COMEX_15M_OPENING_RANGE_STAGE_A_SCREEN_17AC_INFLIGHT",
-    "first_incomplete_unit": "R037_COMEX_15M_OPENING_RANGE_STAGE_A_SCREEN_17AC",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_LONDON_15M_OPENING_RANGE_CHECKPOINT_17AB_MANIFEST.json"
+    "last_verified_durable_unit": "R037_COMEX_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AC",
+    "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
+    "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_COMEX_15M_OPENING_RANGE_CHECKPOINT_17AC_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_COMEX_15M_OPENING_RANGE_STAGE_A_SCREEN_17AC",
-    "status": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
-    "parent_durable_unit": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AB",
+    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "status": "IDLE",
+    "phase_rank": 0,
+    "parent_durable_unit": "R037_COMEX_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AC",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_COMEX_15M_OPENING_RANGE_PREREG_17AC.json",
-        "commit": "2eb2c6b6383234a863f435dd40135aa4ec78163f"
+        "path": "research/delta/reference/DELTA_R037_COMEX_15M_OPENING_RANGE_CHECKPOINT_17AC.json",
+        "commit": "5122a874de4a536b944a138943872c5d15222a9e"
       },
       {
-        "path": "research/delta/experiments/delta_r037_comex_15m_opening_range_17ac.py",
-        "commit": "c50b16fad12e5f21f43ed6734213590603e6da43"
+        "path": "research/delta/artifacts/DELTA_R037_COMEX_15M_OPENING_RANGE_CHECKPOINT_17AC_MANIFEST.json",
+        "commit": "52fdddcbfefc965bf7e78644c14680d15c59c38e"
       }
     ],
-    "next_action": "Run exact committed 17AC producer once; if result appears, resume only missing durability phases.",
+    "next_action": "Preregister next structurally distinct independent source; 17AC is complete and retired.",
     "completed_months": [
       "2026-01_STAGE_A"
     ],
