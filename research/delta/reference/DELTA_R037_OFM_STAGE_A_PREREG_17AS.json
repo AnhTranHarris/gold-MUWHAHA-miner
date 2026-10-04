@@ -1,0 +1,96 @@
+{
+  "schema": "delta-r037-ofm-stage-a-prereg-17as-v1",
+  "unit": "R037_ORDER_FLOW_IMBALANCE_MOMENTUM_STAGE_A_SCREEN",
+  "checkpoint": "17AS",
+  "status": "PREREGISTERED_BEFORE_OFFICIAL_COMPUTE",
+  "parent_checkpoint": "R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR",
+  "family": "R037-OFM-v1",
+  "research_question": "Can source-defined M1 signed flow pressure, informed-late-flow direction, and microstructure reliability gates produce economically viable 30-second XAUUSD entries on canonical Stage-A without parameter rescue?",
+  "public_basis": {
+    "part4": {
+      "title": "Market Microstructure in MQL5 (Part 4): Volatility That Remembers",
+      "url": "https://www.mql5.com/en/articles/22638",
+      "jump_intensity": "90 completed M1 close returns; bipower variation = (pi/2)*mean(abs(r_t)*abs(r_t-1)); jump when r^2 > 9*BPV; jump intensity = jump count / valid return count",
+      "jump_gate": 0.021
+    },
+    "part5": {
+      "title": "Market Microstructure in MQL5 (Part 5): Microstructure Noise",
+      "url": "https://www.mql5.com/en/articles/22938",
+      "window": 90,
+      "enhanced_noise": "0.40*close_to_mid_variance_fraction + 0.40*(1-mean_body_to_range) + 0.20*open_close_variance_fraction, clipped [0,1]",
+      "clean_noise_threshold": 0.63,
+      "order_imbalance": "volume-weighted centered close location within bar range, clipped [-1,1]",
+      "order_imbalance_abs_threshold": 0.09
+    },
+    "part6": {
+      "title": "Market Microstructure in MQL5 (Part 6): Order Flow",
+      "url": "https://www.mql5.com/en/articles/22939",
+      "window": 90,
+      "flow_imbalance": "sum((((close-low)/(high-low))-0.5)*2*tick_volume) / sum(tick_volume), clipped [-1,1]",
+      "smart_money": "late 15-bar log-return sum minus early 15-bar log-return sum, normalized by 90-bar range/midpoint, clipped [-1,1]",
+      "flow_momentum": "OrderFlowImbalance(10) - OrderFlowImbalance(30), clipped [-2,2]",
+      "flow_confidence": "0 if jump_intensity>0.021; if noise>0.632 then max(0,0.7*(1-(noise-0.632)/(1-0.632))); else clip(1-(noise/0.632)*0.3,0,1)",
+      "flow_confidence_min": 0.565,
+      "long_flow_threshold": 0.092,
+      "short_flow_threshold": -0.055,
+      "note": "Published thresholds were calibrated on NQ M1; this is a strict source-threshold XAUUSD screen, not an instrument-calibrated optimization."
+    }
+  },
+  "profiles": {
+    "C01_SOURCE_FLOW_SMI": {
+      "condition": "flow_confidence >= 0.565 AND ((flow_imbalance > 0.092 AND smart_money > 0) OR (flow_imbalance < -0.055 AND smart_money < 0))",
+      "direction": "sign of qualifying flow imbalance",
+      "role": "exact Part-6 example direction gate"
+    },
+    "C02_FLOW_SMI_MOMENTUM": {
+      "condition": "C01 plus flow_momentum has the same sign as entry direction",
+      "direction": "sign of qualifying flow imbalance",
+      "role": "source-derived persistence check using Part-6 flow-momentum semantics"
+    },
+    "C03_PART5_CLEAN_IMBALANCE": {
+      "condition": "enhanced_noise < 0.63 AND abs(order_imbalance) > 0.09",
+      "direction": "sign of Part-5 order imbalance",
+      "role": "exact Part-5 clean-noise imbalance example without Part-6 SMI"
+    }
+  },
+  "timing": {
+    "source_bars": "completed M1 P75-bid bars only",
+    "decision": "bar right edge",
+    "entry": "first executable P75 tick at/after decision edge",
+    "tick_volume": "count of source ticks inside each completed M1 bar",
+    "rolling_windows": "include the just-completed decision bar and only earlier completed bars",
+    "no_lookahead": true
+  },
+  "execution": {
+    "max_spread_points": 25,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "lot": 0.01,
+    "commission_entry_usd": 0.01,
+    "commission_exit_usd": 0.01
+  },
+  "stage_a_window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_exclusive_utc": "2026-01-18T12:00:00Z"
+  },
+  "gate": {
+    "minimum_trades": 6,
+    "minimum_distinct_days": 4,
+    "direct_net_min_minus_1": true,
+    "strong_pass_requires_nonnegative_net": true
+  },
+  "selection_rule": "Advance only preregistered profiles passing supply/economic gates. Rank strong survivors by direct net, then official wins, then trade count. No threshold or execution rescue after results.",
+  "restrictions": [
+    "no XAUUSD threshold calibration inside this Stage-A screen",
+    "no flow/noise/jump/window sweep",
+    "no session/side/weekday rescue filter",
+    "no exit tuning",
+    "no August",
+    "no MQL5 build"
+  ],
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
