@@ -1,0 +1,198 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI",
+  "status": "VERIFIED_STAGE_A_STRONG_SURVIVOR_ADVANCE_HOLDOUT",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH",
+  "hypothesis": "Causally confirmed H1/H4 structural swing anchors combined with the frozen S5 sweep -> CISD -> FVG -> retrace sequence can reduce local-liquidity noise without starving opportunity supply.",
+  "falsification_condition": "Each config must have >=4 trades, >=3 distinct days and direct net >= -$1; strong survivor additionally requires nonnegative direct net.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "17AI H1 Stage-A survivor",
+    "reference_count": 8,
+    "minimum_count": 4,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true
+  },
+  "primary_metrics": {
+    "entry_quality": "H1 4/8 official wins; H4 0/3",
+    "hold_persistence": "30s frozen",
+    "economics": "H1 +$0.94; H4 -$1.19",
+    "gross_loss_drawdown": "H1 gross loss -$0.21",
+    "activity": "H1 8 trades / 5 days"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_htar_stage_a_17ai.py",
+      "commit": "2e2f04dbc3b58f68853197f731b5955b6d5de2c8",
+      "blob_sha": "280c3b1d852dc4fdb55c322391cf3091575c67fa",
+      "file_sha256": "3dc5331e0f4704002d2a482e01fc8acefc2996e280b62b9c6e22aa8029a9098c"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "anchor_configs": {
+        "C01_H1_ANCHOR": {
+          "seconds": 3600,
+          "swing_width": 1
+        },
+        "C02_H4_ANCHOR": {
+          "seconds": 14400,
+          "swing_width": 1
+        }
+      },
+      "ltf_seconds": 5,
+      "cisd_max_bars": 6,
+      "fvg_max_bars": 2,
+      "retrace_max_bars": 6,
+      "max_spread_points": 25,
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "confirmed HTF swing anchor",
+      "S5 wick sweep + close back inside",
+      "S5 CISD",
+      "post-CISD reversal FVG",
+      "FVG-mid retrace/rejection",
+      "P75 tick execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "stage_a": "discovery/prescreen",
+      "later_january": "independent holdout next"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_verified": "280c3b1d852dc4fdb55c322391cf3091575c67fa",
+      "transfer_corruption_guard": "two corrupted local transfers rejected before compute by Git blob mismatch"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI.json",
+      "blob_sha": "081527a0a9a95b6b69bf12bfd58b7038570a87bf",
+      "official_raw_result_sha256": "15406d51f62a7140f2dd36193bd7dbcc7fbf7a98030ba1e6924d96af1b5f59fb"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI.md",
+      "blob_sha": "708eb3053ce57e14b57aef9b753f0219acdd057c"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "C01_H1_ANCHOR",
+      "C02_H4_ANCHOR"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "qa": [
+    "Canonical January SHA and 4,205,709 Stage-A ticks verified.",
+    "Preregistration committed before producer and official compute.",
+    "Local producer Git blob matched committed blob exactly before compute.",
+    "Corrupted transfer bytes were rejected before compute; no invalid result produced.",
+    "H1: 8 trades / 5 days / 4 wins / +$0.94 net; all strong-pass gates satisfied.",
+    "H4: 3 trades / 3 days / 0 wins / -$1.19; failed.",
+    "No retuning, session/side rescue, or exit changes.",
+    "Workbook tab 70 A210:H218 readback PASS.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_htar_stage_a_17ai.py",
+    "command": "python research/delta/experiments/delta_r037_htar_stage_a_17ai.py --source <canonical_january_gzip> --output <17AI>",
+    "timing_semantics": "HTF swing revealed only after one completed right-side anchor bar; all S5 sequence states completed-bar causal; first tick at/after rejection edge executes",
+    "expected_fingerprints": {
+      "H1": {
+        "anchors_high": 55,
+        "anchors_low": 65,
+        "sweeps": 60,
+        "cisd": 57,
+        "fvg": 25,
+        "retrace": 8,
+        "trades": 8,
+        "wins": 4,
+        "net": 0.94
+      },
+      "H4": {
+        "anchors_high": 16,
+        "anchors_low": 18,
+        "sweeps": 18,
+        "cisd": 18,
+        "fvg": 7,
+        "retrace": 3,
+        "trades": 3,
+        "wins": 0,
+        "net": -1.19
+      }
+    },
+    "selected_interpretation": "FREEZE_C01_H1_ANCHOR_ADVANCE_INDEPENDENT_LATER_JAN"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — candidate validation only",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen P75",
+    "ownership_scheduler_spec": "not integrated",
+    "session_dst_spec": "frozen",
+    "risk_spec": "frozen 0.01 lifecycle",
+    "trade_count_parity_spec": "not applicable until candidate robustness passes",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH",
+  "drive_artifacts": [
+    {
+      "name": "working workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "70 R037 Prereg",
+      "range": "A210:H218",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "65ac522bd99ed1477b83746c5afc2d26299515df",
+    "2e2f04dbc3b58f68853197f731b5955b6d5de2c8",
+    "b22bcbee445b34d067493291eb05e64aab94929b",
+    "da2bf8479d8423f60c76281461185b063b3ebf8c"
+  ],
+  "next_unit": "R037_HTAR_LEADER_INDEPENDENT_LATER_JAN_VALIDATION"
+}
