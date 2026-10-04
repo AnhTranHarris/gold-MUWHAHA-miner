@@ -1,0 +1,58 @@
+{
+  "schema": "delta-r037-london-15m-opening-range-prereg-17ab-v1",
+  "unit": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_17AB",
+  "family": "R037-L15ORB-v1",
+  "parent_durable_unit": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_CHECKPOINT_17AA",
+  "purpose": "Test a distinct 15-minute London opening-range continuation source after the 60-minute London ORB family and its sweep-reclaim reversal were retired.",
+  "hypothesis": "The first 15 minutes of the London session contain a sharper causal opening impulse than the prior 60-minute opening range; completed S5/S15 confirmation may preserve the 17Z high-win clue while improving frozen 30-second economics.",
+  "falsification_condition": "No timing semantic reaches the frozen Stage-A prescreen gate, or none strong-passes nonnegative direct net.",
+  "source_basis": [
+    {
+      "title": "15-Min Opening Range Breakout",
+      "source": "TradingView open-source",
+      "logic": "first 15-minute session high/low; breakout after range; one side activated; time-limited entry window"
+    },
+    {
+      "title": "Gold Opening 15-Min ORB INDICATOR",
+      "source": "TradingView open-source",
+      "logic": "gold/XAUUSD first 15 minutes of major market opens; persist high/low; breakout signals"
+    },
+    {
+      "title": "Gold ORB Strategy (15-min Range, 5-min Entry)",
+      "source": "TradingView open-source",
+      "logic": "15-minute range with completed 5-minute close outside range"
+    },
+    {
+      "title": "Recent XAUUSD ORB community reports",
+      "source": "Reddit",
+      "logic": "15-minute ORB followed by lower-timeframe confirmation/retest; treated only as community clue, not performance evidence"
+    }
+  ],
+  "causal_contract": {
+    "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "range_utc": "08:00:00-08:15:00",
+    "breakout_window_utc": "08:15:00-10:00:00",
+    "one_accepted_trade_per_day": true,
+    "buffer_points": 0,
+    "spread_gate_points": 25,
+    "configs": [
+      "C01_FIRST_STRICT_TICK",
+      "C02_FIRST_COMPLETED_S5_CLOSE",
+      "C03_FIRST_COMPLETED_S15_CLOSE"
+    ],
+    "economics": "Reuse frozen 17Z 30-second lifecycle unchanged",
+    "numeric_retuning": false,
+    "side_filter": false,
+    "weekday_filter": false,
+    "august_2026": "SEALED"
+  },
+  "gates": {
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "direct_net_prescreen_min_usd": -2,
+    "strong_pass_requires_nonnegative_direct_net": true
+  },
+  "decision_rule": "Advance only a preregistered strong-pass configuration; otherwise retire the family without post-result rescue tuning.",
+  "mql5_authorized": false
+}
