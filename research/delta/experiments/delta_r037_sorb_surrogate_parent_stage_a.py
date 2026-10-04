@@ -275,77 +275,80 @@ def generate_streams(t,ask,bid):
         if int(vv[0].size)!=EXPECTED[k]: raise SystemExit(f"{k} signal fingerprint mismatch: {vv[0].size} != {EXPECTED[k]}")
     return out
 
-def pack(ret):
-    ints,flt,ent,sw,snet=ret; src={}
-    for i in range(1,5):
+SOURCE_NAMES=("ORDINARY","DH03_S06","DH05_S06","DH02_S11","DH02_S08","SORB")
+CONFIG_ORDER=("R037-C01_LONDON_15","R037-C02_COMEX_15","R037-C03_DUAL_15","R037-C04_DUAL_30","R037-C05_DUAL_15_CONFIRM2")
+PARENT_EXPECTED={"trades":14034,"raw_positive_wins":6422,"official_wins":6349,"ordinary_entries":11916,"parent_specialist_entries":2118,"gross_profit":1357.26,"gross_loss":-4302.20,"net_profit":-2944.94,"max_balance_drawdown":2945.93,"max_equity_drawdown":2946.43}
+
+def pack_sorb(ret):
+    ints,flt,ent,sw,snet,outcomes,se,sv,sn=ret; src={}
+    for i in range(1,6):
         src[SOURCE_NAMES[i]]={"entries":int(ent[i]),"official_wins":int(sw[i]),"net_profit":r2(snet[i])}
-    return {"trades":int(ints[0]),"raw_positive_wins":int(ints[1]),"official_wins":int(ints[2]),
-        "losses":int(ints[3]),"p01_hits":int(ints[4]),"m30_only_hits":int(ints[5]),
-        "owned_exit_suppressed_rearms":int(ints[6]),"ordinary_entries":int(ints[7]),
-        "gross_profit":r2(flt[0]),"gross_loss":r2(flt[1]),"net_profit":r2(flt[2]),
-        "max_balance_drawdown":r2(flt[3]),"max_equity_drawdown":r2(flt[4]),
-        "average_hold_seconds":float(flt[5]),"specialist_entries":int(np.sum(ent[1:])),
-        "specialist_net":r2(np.sum(snet[1:])), "sources":src}
+    return {"trades":int(ints[0]),"raw_positive_wins":int(ints[1]),"official_wins":int(ints[2]),"losses":int(ints[3]),
+        "p01_hits":int(ints[4]),"m30_only_hits":int(ints[5]),"owned_exit_suppressed_rearms":int(ints[6]),"ordinary_entries":int(ints[7]),
+        "gross_profit":r2(flt[0]),"gross_loss":r2(flt[1]),"net_profit":r2(flt[2]),"max_balance_drawdown":r2(flt[3]),"max_equity_drawdown":r2(flt[4]),
+        "average_hold_seconds":float(flt[5]),"parent_specialist_entries":int(np.sum(ent[1:5])),"sorb_entries":int(ent[5]),
+        "parent_specialist_net":r2(np.sum(snet[1:5])),"sorb_net":r2(snet[5]),"sources":src,
+        "sorb_outcomes":{"ACCEPTED":int(np.sum(outcomes==1)),"POSITION_BLOCKED":int(np.sum(outcomes==2)),"PARENT_SAME_TICK_COLLISION":int(np.sum(outcomes==3)),"OTHER_BLOCKED":int(np.sum(outcomes==4))},
+        "sorb_session_contribution":{"LONDON":{"entries":int(se[1]),"official_wins":int(sv[1]),"net_profit":r2(sn[1])},
+        "COMEX_GOLD":{"entries":int(se[2]),"official_wins":int(sv[2]),"net_profit":r2(sn[2])}}}
 
-def err(a,t):
-    return {"trades":abs(a["trades"]-t["trades"]),"official_wins":abs(a["official_wins"]-t["official_wins"]),
-        "net_profit":abs(a["net_profit"]-t["net_profit"]),"specialist_entries":abs(a["specialist_entries"]-t["specialist_entries"]),
-        "specialist_net":abs(a["specialist_net"]-t["specialist_net"])}
+def parent_gate(a):
+    for k,v in PARENT_EXPECTED.items():
+        if abs(float(a[k])-float(v))>.011:
+            raise SystemExit(f"14A surrogate parent gate failed {k}: {a[k]} != {v}")
 
-def score(e): return float(200*e["specialist_entries"]+100*e["trades"]+50*e["official_wins"]+e["net_profit"]+e["specialist_net"])
+def supply(props):
+    return {"proposals":len(props),"source_eligible":sum(p.eligible for p in props),"distinct_days":len({p.utc_day_ms for p in props}),
+        "source_rejections":{"REENTERED_RANGE":sum(p.reason=="REENTERED_RANGE" for p in props),"SPREAD_GATE":sum(p.reason=="SPREAD_GATE" for p in props)},
+        "proposal_long":sum(p.side>0 for p in props),"proposal_short":sum(p.side<0 for p in props),
+        "sessions":{"LONDON":sum(p.session=="LONDON" for p in props),"COMEX_GOLD":sum(p.session=="COMEX_GOLD" for p in props)}}
+
+def decision(p,c,s):
+    nd=r2(c["net_profit"]-p["net_profit"]); gd=r2(c["gross_profit"]-p["gross_profit"]); ld=r2(c["gross_loss"]-p["gross_loss"])
+    td=c["trades"]-p["trades"]; wd=c["official_wins"]-p["official_wins"]
+    bd=100*(c["max_balance_drawdown"]-p["max_balance_drawdown"])/p["max_balance_drawdown"]
+    ed=100*(c["max_equity_drawdown"]-p["max_equity_drawdown"])/p["max_equity_drawdown"]
+    q=s["proposals"]>=8 and s["distinct_days"]>=4; a=c["sorb_entries"]>=5; tc=td>=0
+    w=wd>=0 or (nd>0 and ld>0); n=nd>=-2; dd=bd<=1+1e-12 and ed<=1+1e-12; ok=q and a and tc and w and n and dd
+    return {"proposal_supply_ok":q,"incremental_entry_floor_ok":a,"combined_trade_count_not_lower":tc,"winner_or_quality_gate_ok":w,
+        "net_not_worse_than_2usd":n,"drawdown_deterioration_within_1pct":dd,"screen_pass":ok,"strong_screen_pass":ok and nd>=0,
+        "trade_delta":int(td),"official_win_delta":int(wd),"gross_profit_delta":gd,"gross_loss_delta":ld,"net_delta":nd,
+        "max_balance_dd_delta_pct":float(bd),"max_equity_dd_delta_pct":float(ed),
+        "incremental_net_per_sorb_entry":r2(nd/c["sorb_entries"]) if c["sorb_entries"] else None}
 
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument("--source",type=Path,required=True)
-    ap.add_argument("--evidence",type=Path,required=True); ap.add_argument("--output",type=Path,required=True); a=ap.parse_args()
-    ev=json.loads(a.evidence.read_text())
-    if ev.get("schema")!=EVIDENCE_SCHEMA: raise SystemExit("14A evidence schema mismatch")
+    ap=argparse.ArgumentParser(); ap.add_argument("--source",type=Path,required=True); ap.add_argument("--output",type=Path,required=True); a=ap.parse_args()
     sha=base.sha256_file(a.source)
     if sha!=base.CANONICAL_JAN_SHA256: raise SystemExit("canonical January SHA mismatch: "+sha)
     df=pd.read_csv(a.source,compression="gzip",usecols=["timestamp_ms_utc","ask_raw","bid_raw"],dtype=np.int64)
-    df=df[df.timestamp_ms_utc<base.STAGE_A_END_MS]; t=df.timestamp_ms_utc.to_numpy(np.int64)
-    if t.size!=4205709: raise SystemExit(f"Stage-A tick mismatch: {t.size}")
-    if t.size and np.any(t[1:]<t[:-1]): raise SystemExit("non-monotonic Stage-A ticks")
+    df=df[(df.timestamp_ms_utc>=sorb.STAGE_A_START_MS)&(df.timestamp_ms_utc<base.STAGE_A_END_MS)]; t=df.timestamp_ms_utc.to_numpy(np.int64)
+    if t.size!=4205709 or (t.size and np.any(t[1:]<t[:-1])): raise SystemExit(f"Stage-A chronology mismatch: {t.size}")
     ask,bid=base.p75(t,df.ask_raw.to_numpy(np.int64),df.bid_raw.to_numpy(np.int64))
     feat=parent.build_parent_features(t,ask,bid); streams=generate_streams(t,ask,bid)
-    zt=np.empty(0,np.int64); zs=np.empty(0,np.int8)
-    ctrl=pack(run_integrated(t,ask,bid,feat["impulse250"],feat["h1_netatr"],feat["m30_netatr"],
-        zt,zs,zt,zs,zt,zs,zt,zs,0,0,0,0,0))
-    b=ev["exact_backbone"]
-    if not (ctrl["trades"]==b["trades"] and ctrl["official_wins"]==b["official_wins"] and
-            abs(ctrl["gross_profit"]-b["gross_profit"])<.011 and abs(ctrl["gross_loss"]-b["gross_loss"])<.011 and
-            abs(ctrl["net_profit"]-b["net_profit"])<.011):
-        raise SystemExit("integrated no-specialist backbone parity gate failed: "+json.dumps(ctrl,sort_keys=True))
-
-    d3t,d3s=streams["DH03_S06"]; d5t,d5s=streams["DH05_S06"]; a11,a11s=streams["DH02_S11"]; a08,a08s=streams["DH02_S08"]
-    results={}; rank=[]; targets=ev["historical_p75_targets"]
-    for si,sname in enumerate(SCHEDULERS):
-        cfg={}; joint=0.
-        for cname,u3,u5,u11,u08 in CONFIGS:
-            actual=pack(run_integrated(t,ask,bid,feat["impulse250"],feat["h1_netatr"],feat["m30_netatr"],
-                d3t,d3s,d5t,d5s,a11,a11s,a08,a08s,u3,u5,u11,u08,si))
-            ee=err(actual,targets[cname]); sc=score(ee); joint+=sc
-            cfg[cname]={"actual":actual,"target":targets[cname],"abs_error":ee,"parity_score":sc}
-        c0=cfg["C00"]["actual"]; c1=cfg["C01"]["actual"]; c2=cfg["C02"]["actual"]; c3=cfg["C03"]["actual"]
-        inc={"c01_s11_incremental_specialist_entries":c1["specialist_entries"]-c0["specialist_entries"],
-             "c02_s08_incremental_specialist_entries":c2["specialist_entries"]-c0["specialist_entries"],
-             "c03_increment_vs_c00":c3["specialist_entries"]-c0["specialist_entries"]}
-        it=ev["ownership_fingerprints"]; ie=sum(abs(inc[k]-it[k]) for k in inc); joint+=500*ie
-        results[sname]={"configs":cfg,"ownership_increments":inc,"ownership_increment_abs_error_sum":int(ie),"joint_parity_score":float(joint)}
-        rank.append((joint,sname))
-    rank.sort(); lead=rank[0][1]; lr=results[lead]; exact=True
-    for cname in ("C00","C01","C02","C03"):
-        ee=lr["configs"][cname]["abs_error"]
-        if ee["trades"] or ee["official_wins"] or ee["specialist_entries"] or ee["net_profit"]>=.011 or ee["specialist_net"]>=.011: exact=False
-    out={"schema":"delta-r037-r032-full-specialist-parent-parity-14a-v1",
-         "status":"COMPLETE_EXACT_PARENT_PARITY" if exact else "COMPLETE_SCHEDULER_LOCALIZATION_FULL_PARENT_PARITY_NOT_ACHIEVED",
-         "unit":ev["unit"],"parent_checkpoint":ev["parent_checkpoint"],"source_sha256":sha,
-         "stage_a_ticks":int(t.size),"surface":ev["surface"],"numeric_retuning":False,"august_accessed":False,
-         "backbone_control":ctrl,"signal_fingerprints":{k:int(v[0].size) for k,v in streams.items()},
-         "scheduler_results":results,"ranking":[n for _,n in rank],
-         "finding":{"leading_scheduler":lead,"exact_historical_parent_parity":exact,
-                    "ownership_increment_abs_error_sum":lr["ownership_increment_abs_error_sum"],
-                    "next":ev["next_if_scheduler_localized"]},
-         "sorb_integrated_replay_started":False,"mql5_authorized":False}
-    base.atomic_write_json(a.output,out); print(json.dumps(out["finding"],separators=(",",":")))
+    d3t,d3s=streams["DH03_S06"]; d5t,d5s=streams["DH05_S06"]; s11t,s11s=streams["DH02_S11"]; s08t,s08s=streams["DH02_S08"]
+    zi=np.empty(0,np.int64); zs=np.empty(0,np.int8)
+    p=pack_sorb(run_integrated_sorb(t,ask,bid,feat["impulse250"],feat["h1_netatr"],feat["m30_netatr"],d3t,d3s,d5t,d5s,s11t,s11s,s08t,s08s,zi,zs,zs,1,1,1,1,1)); parent_gate(p)
+    results={}; rank=[]
+    for cid in CONFIG_ORDER:
+        props=sorb.generate_proposals(t,ask,bid,cid); sp=supply(props); ep=[x for x in props if x.eligible]
+        ii=np.asarray([x.decision_index for x in ep],np.int64); ss=np.asarray([x.side for x in ep],np.int8)
+        se=np.asarray([1 if x.session=="LONDON" else 2 for x in ep],np.int8)
+        c=pack_sorb(run_integrated_sorb(t,ask,bid,feat["impulse250"],feat["h1_netatr"],feat["m30_netatr"],d3t,d3s,d5t,d5s,s11t,s11s,s08t,s08s,ii,ss,se,1,1,1,1,1))
+        d=decision(p,c,sp); results[cid]={"supply":sp,"combined":c,"decision":d}
+        rank.append((int(d["strong_screen_pass"]),int(d["screen_pass"]),d["net_delta"],c["sorb_entries"],-d["max_equity_dd_delta_pct"],cid))
+    rank.sort(reverse=True); order=[x[-1] for x in rank]
+    leaders=[{"config_id":cid,"screen_pass":results[cid]["decision"]["screen_pass"],"strong_screen_pass":results[cid]["decision"]["strong_screen_pass"],
+        "accepted_entries":results[cid]["combined"]["sorb_entries"],"trade_delta":results[cid]["decision"]["trade_delta"],
+        "official_win_delta":results[cid]["decision"]["official_win_delta"],"net_delta":results[cid]["decision"]["net_delta"],
+        "max_equity_dd_delta_pct":results[cid]["decision"]["max_equity_dd_delta_pct"]} for cid in order]
+    anypass=any(results[c]["decision"]["screen_pass"] for c in CONFIG_ORDER); anystrong=any(results[c]["decision"]["strong_screen_pass"] for c in CONFIG_ORDER)
+    out={"schema":"delta-r037-sorb-surrogate-parent-stage-a-screen-v1","status":"COMPLETE_NON_PROMOTING_SURROGATE_PARENT_STAGE_A_SCREEN",
+        "unit":"R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN","parent_checkpoint":"R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_CHECKPOINT_14B",
+        "surrogate_parent":"14A_BACKBONE_FIRST_C03_WITH_FROZEN_PROVENANCE_LIMITED_SPECIALISTS","promotable":False,"source_sha256":sha,
+        "stage_a_ticks":int(t.size),"surface":"DUKAS_COINEXX_LIKE_P75","numeric_retuning":False,"august_accessed":False,"parent_control":p,
+        "configs":results,"ranking":leaders,"finding":{"leading_config":order[0],"any_screen_pass":anypass,"any_strong_screen_pass":anystrong,
+        "next":"R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION" if anystrong else "R037_SORB_SURROGATE_REFINEMENT_OR_NEXT_SOURCE"},"mql5_authorized":False}
+    base.atomic_write_json(a.output,out)
+    print(json.dumps({"ranking":leaders,"finding":out["finding"]},separators=(",",":")))
 
 if __name__=="__main__": main()
