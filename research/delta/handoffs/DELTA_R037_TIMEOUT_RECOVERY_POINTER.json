@@ -11,18 +11,18 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C",
+    "last_verified_durable_unit": "R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D",
     "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
     "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C_MANIFEST.json",
-    "current_state_commit": "60ff0d21f6e2e927bc068bd13416eee32c39cd0b",
-    "current_state_ci_run": 37175599798,
-    "current_state_ci_conclusion": "success"
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D_MANIFEST.json",
+    "current_state_commit": null,
+    "current_state_ci_run": null,
+    "current_state_ci_conclusion": "PENDING"
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
+    "status": "COMPLETE",
+    "phase_rank": 7,
     "parent_durable_unit": "R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C",
     "committed_artifacts": [
       {
@@ -30,9 +30,19 @@
       },
       {
         "path": "research/delta/experiments/delta_r037_stx_stage_a.py"
+      },
+      {
+        "path": "research/delta/reference/DELTA_R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D.json",
+        "raw_sha256": "67c6e52866cdd025a7f19541d2faa0f3b7416fa0f31e30517101290c2b4a5f21"
+      },
+      {
+        "path": "research/delta/research/DELTA_R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D.md"
+      },
+      {
+        "path": "research/delta/artifacts/DELTA_R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D_MANIFEST.json"
       }
     ],
-    "next_action": "Verify STX 17D producer bytes and run Stage-A once on canonical January P75; persist result before interpretation.",
+    "next_action": "Harvest next price-action/structure-transition independent source; preregister before compute.",
     "completed_months": [],
     "next_month": null
   },
