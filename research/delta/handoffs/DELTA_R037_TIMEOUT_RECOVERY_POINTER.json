@@ -11,32 +11,40 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17AE",
-    "current_phase": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION_NEXT",
-    "first_incomplete_unit": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PDHSR_C02_INDEPENDENT_LATER_JAN_CHECKPOINT_17AE_MANIFEST.json"
+    "last_verified_durable_unit": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION_CHECKPOINT_17AF",
+    "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
+    "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PDHSR_C02_MONTHLY_VALIDATION_CHECKPOINT_17AF_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION",
+    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
     "status": "IDLE",
     "phase_rank": 0,
-    "parent_durable_unit": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17AE",
+    "parent_durable_unit": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION_CHECKPOINT_17AF",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_PDHSR_C02_INDEPENDENT_LATER_JAN_CHECKPOINT_17AE.json",
-        "commit": "c7ec0220ff40bf62d7bc6eb28984b941875c92f0"
+        "path": "research/delta/reference/DELTA_R037_PDHSR_C02_MONTHLY_VALIDATION_CHECKPOINT_17AF.json",
+        "commit": "809f99c8f70a03ee27f1ce912277f77cecc1e8e5"
       },
       {
-        "path": "research/delta/artifacts/DELTA_R037_PDHSR_C02_INDEPENDENT_LATER_JAN_CHECKPOINT_17AE_MANIFEST.json",
-        "commit": "f2ba999be6754049941dab0e2bc5aee43ff6d6aa"
+        "path": "research/delta/research/DELTA_R037_PDHSR_C02_MONTHLY_VALIDATION_CHECKPOINT_17AF.md",
+        "commit": "b4625cff0273195cfe791196e2c2a7f4349c0a5e"
+      },
+      {
+        "path": "research/delta/artifacts/DELTA_R037_PDHSR_C02_MONTHLY_VALIDATION_CHECKPOINT_17AF_MANIFEST.json",
+        "commit": "f48b5113894cdb65b005801605bd3fb94ef31ae0"
       }
     ],
-    "next_action": "Preregister frozen C02 February-July month-by-month validation; 17AE is complete.",
+    "next_action": "Preregister next independent entry-source harvest; do not retune retired C02.",
     "completed_months": [
-      "2026-01_STAGE_A",
-      "2026-01_LATER_HOLDOUT"
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06",
+      "2026-07"
     ],
-    "next_month": "2026-02"
+    "next_month": null
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
