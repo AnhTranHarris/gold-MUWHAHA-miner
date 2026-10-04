@@ -1,0 +1,53 @@
+{
+  "schema": "delta-r037-dcos-stage-a-prereg-17aw-v1",
+  "status": "PREREGISTERED",
+  "unit": "R037_DIRECTIONAL_CHANGE_OVERSHOOT_STAGE_A_SCREEN",
+  "family": "R037-DCOS-v1",
+  "parent_checkpoint": "R037_QRBM_STAGE_A_SCREEN_CHECKPOINT_17AV",
+  "research_question": "Does a causal 0.05% directional-change confirmation on native XAUUSD midquote identify a sparse intrinsic-time state transition whose same-direction overshoot survives frozen P75 execution costs over the DELTA 30-second initial-hold lifecycle?",
+  "source_basis": [
+    "Directional-change literature defines events by a reversal threshold from a local extreme and documents overshoot as the continuation following a directional-change confirmation.",
+    "BRACIL directional-change FX sample summaries use a fixed 0.05% threshold for EURGBP/EURUSD/GBPUSD.",
+    "Published high-frequency FX scaling-law work reports average overshoot length approximately proportional to the directional-change threshold."
+  ],
+  "frozen_signal": {
+    "signal_surface": "NATIVE_DUKASCOPY_BBO",
+    "price": "native midquote",
+    "threshold_fraction": 0.0005,
+    "threshold_pct": 0.05,
+    "event": "causal directional-change confirmation from running local extreme",
+    "profile": "same-direction overshoot continuation only",
+    "execution_tick": "first strictly subsequent canonical tick after confirmation",
+    "no_same_tick_execution": true
+  },
+  "frozen_execution": {
+    "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01,
+    "one_position_at_a_time": true
+  },
+  "gates": {
+    "minimum_trades": 50,
+    "minimum_distinct_days": 6,
+    "ordinary_direct_net_usd": -1,
+    "strong_direct_net_usd": 0
+  },
+  "prohibited": [
+    "threshold sweep",
+    "post-result threshold calibration",
+    "session/weekday/side rescue",
+    "QIM/OFI/quote-burst overlay",
+    "exit retuning",
+    "August access",
+    "MQL5 translation"
+  ],
+  "failure_rule": "If the single 0.05% continuation profile fails the ordinary direct-net gate, retire DCOS rather than rescue it on Stage-A.",
+  "advance_rule": "If it passes supply/day and direct-net gates, freeze unchanged for independent later-January validation.",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
