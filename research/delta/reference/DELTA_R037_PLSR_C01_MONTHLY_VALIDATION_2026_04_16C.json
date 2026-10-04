@@ -1,0 +1,63 @@
+{
+  "schema": "delta-r037-plsr-c01-month-isolated-validation-16c-compact-v1",
+  "status": "COMPLETE_MONTH_ISOLATED_VALIDATION",
+  "unit": "R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION",
+  "candidate": "R037-PLSR-C01_PDH_PDL_S5_RECLAIM",
+  "month": "2026-04",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "raw_result_sha256": "7ec4104afff1216f1748182a1c40df41f40de2b52a34694503b57ef94945e2f6",
+  "loaded_ticks": 9556204,
+  "economic_ticks": 7470570,
+  "source_sha256": {
+    "previous": "814ba35e72f219a58badd806ed5c0f30ef0fb4ffe56a48205d873706513bd177",
+    "current": "30375098f62aed6cabc32ec6b67c57c20baec9b6d9be1ce0a204e09806c1ec0f"
+  },
+  "supply": {
+    "proposals": 23,
+    "source_eligible": 22,
+    "distinct_days": 20,
+    "proposal_long": 12,
+    "proposal_short": 11,
+    "PDH": 11,
+    "PDL": 12
+  },
+  "parent": {
+    "trades": 27841,
+    "official_wins": 12269,
+    "net_profit": -5977.11,
+    "max_equity_drawdown": 5977.46
+  },
+  "combined": {
+    "trades": 27862,
+    "official_wins": 12277,
+    "net_profit": -5983.89,
+    "max_equity_drawdown": 5984.31,
+    "plsr_entries": 21,
+    "plsr_net": -6.78
+  },
+  "level_contribution": {
+    "PDH": {
+      "entries": 9,
+      "official_wins": 4,
+      "net_profit": -1.96
+    },
+    "PDL": {
+      "entries": 12,
+      "official_wins": 4,
+      "net_profit": -4.82
+    }
+  },
+  "decision": {
+    "trade_delta": 21,
+    "official_win_delta": 8,
+    "gross_profit_delta": 2.5,
+    "gross_loss_delta": -9.28,
+    "net_delta": -6.78,
+    "max_equity_dd_delta_pct": 0.11459717003543919,
+    "single_month_net_tolerance_pass": false
+  },
+  "candidate_retuned": false,
+  "posthoc_level_split": false,
+  "august_accessed": false,
+  "mql5_authorized": false
+}
