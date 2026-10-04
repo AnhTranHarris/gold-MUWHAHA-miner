@@ -16,33 +16,18 @@
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "IDLE",
-    "phase_rank": 0,
+    "unit": "R037_ONE_SIDED_SPREAD_SHOCK_MEAN_REVERSION_STAGE_A_SCREEN",
+    "family": "R037-OSSMR-v1",
+    "status": "PREREGISTERED_PRODUCER_NEXT",
+    "phase_rank": 1,
     "parent_durable_unit": "R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_QIM_STAGE_A_PREREG_17AT.json",
-        "commit": "c2390a95eebf1c60c0a75f0d524916948211286a"
-      },
-      {
-        "path": "research/delta/experiments/delta_r037_qim_stage_a_17at.py",
-        "commit": "3f11c0bfc632a6c018dc6e28304e2c4e51adfd7a"
-      },
-      {
-        "path": "research/delta/reference/DELTA_R037_QIM_STAGE_A_CHECKPOINT_17AT.json",
-        "commit": "6cb0476175c1c7fb4c979e9f969202626e766056"
-      },
-      {
-        "path": "research/delta/research/DELTA_R037_QIM_STAGE_A_CHECKPOINT_17AT.md",
-        "commit": "b641e1b23faff0989b0370de0ed092c90db28fa8"
-      },
-      {
-        "path": "research/delta/artifacts/DELTA_R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT_MANIFEST.json",
-        "commit": "32d89f0f89efc119f0f4e9d4522bde167ee196d0"
+        "path": "research/delta/reference/DELTA_R037_OSSMR_STAGE_A_PREREG_17AU.json",
+        "commit": "1c2896ff2d5602282c25c88a62d9e528eb69d15b"
       }
     ],
-    "next_action": "Preregister next independent sparse state-transition entry-source family.",
+    "next_action": "Commit OSSMR producer; verify exact committed blob; run bounded Stage-A compute.",
     "completed_months": [],
     "next_month": null
   },
