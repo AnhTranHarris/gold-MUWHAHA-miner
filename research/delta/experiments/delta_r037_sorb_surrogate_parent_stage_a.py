@@ -153,9 +153,9 @@ def run_integrated_sorb(t,ask,bid,i250v,h1v,m30v,
                 if raw>0: gp+=deal; raw_wins+=1
                 else: gl+=deal; losses+=1
                 if pos_source>0: snet[pos_source]+=deal
-            if pos_source==5 and pos_sess>0:
-                sess_net[pos_sess]+=deal
-                if deal>1e-12: sess_win[pos_sess]+=1
+                if pos_source==5 and pos_sess>0:
+                    sess_net[pos_sess]+=deal
+                    if deal>1e-12: sess_win[pos_sess]+=1
                 bal+=deal; trades+=1; holdsum+=sec-entrysec; pos=0; entry=stop=0; pos_sess=0
             else:
                 fav=(b-entry) if pos==1 else (entry-a)
