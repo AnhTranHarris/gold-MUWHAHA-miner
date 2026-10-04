@@ -17,7 +17,7 @@
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E_MANIFEST.json",
     "current_state_commit": "3e8f4d06457e86441b122d9e6a2ce185d85bf835",
     "current_state_ci_run": 37177406300,
-    "current_state_ci_conclusion": "RECOVERY_POINTER_SYNC_REQUIRED"
+    "current_state_ci_conclusion": "failure_due_stale_pointer_repaired_by_this_commit"
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
@@ -48,7 +48,7 @@
         "commit": "32d5187bc85f8bc0849d5af2484c403856c22809"
       }
     ],
-    "next_action": "MSF 17E scientific compute is complete and must never be rerun. Resume R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST after recovery gate success.",
+    "next_action": "Begin R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST from durable MSF 17E; never rerun MSF 17E.",
     "completed_months": [],
     "next_month": null
   },
