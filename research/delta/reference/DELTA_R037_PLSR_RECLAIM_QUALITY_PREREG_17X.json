@@ -1,0 +1,75 @@
+{
+  "schema": "delta-r037-plsr-reclaim-quality-prereg-17x-v1",
+  "unit": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_17X",
+  "checkpoint_target": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_CHECKPOINT_17X",
+  "family": "R037-PLSR-RQ-v1",
+  "status": "FROZEN_BEFORE_REPLAY",
+  "parent_clue": "R037-PLSR-C01_PDH_PDL_S5_RECLAIM",
+  "purpose": "Preserve the fast previous-day liquidity sweep/reclaim timing while testing lightweight completed-S5 rejection quality that does not add a multi-stage delay.",
+  "source_basis": [
+    {
+      "source": "DELTA PLSR 16A-16C",
+      "logic": "Exact PDH+PDL S5 reclaim strong-passed Stage-A but failed Jan-Jul robustness; keep prior-day anchor and timing, do not side/month split."
+    },
+    {
+      "source": "MQL5 Dynamic STF Liquidity Sweep",
+      "url": "https://www.mql5.com/en/articles/22140",
+      "logic": "Public reconstructible sweep logic distinguishes wick and dual-candle sweeps and uses an engulfing recovery candle as additional confirmation."
+    },
+    {
+      "source": "MQL5 Liquidity Sweep with MA Filter",
+      "url": "https://www.mql5.com/en/articles/18379",
+      "logic": "Completed-bar liquidity sweep detection uses close-back-inside plus candle color-change/reversal behavior."
+    },
+    {
+      "source": "MQL5 Structural Validity",
+      "url": "https://www.mql5.com/en/articles/21888",
+      "logic": "Liquidity sweep failure is defined causally by temporary level violation followed by completed close back inside; structural validity emphasizes reaction quality rather than dense indicators."
+    }
+  ],
+  "frozen_base": {
+    "levels": "previous active UTC-day P75 Bid high and low, both retained",
+    "sweep": "first strict tick beyond fixed PDH/PDL",
+    "reclaim": "first completed S5 bar closing back inside swept level within same UTC day",
+    "ownership": "one event per PDH/PDL level/day; no rearm",
+    "decision": "first executable tick at/after reclaim edge; reclaim must still hold; <=25-point spread",
+    "lifecycle": "0.01 lot; $0.30 stop; +$0.10 trail activation; $0.03 trail distance; 30s max hold; $0.02 round-trip commission"
+  },
+  "configs": {
+    "C01_DIRECTIONAL_RECLAIM": "Require reclaim S5 candle bearish for PDH / bullish for PDL.",
+    "C02_REVERSAL_HALF_CLOSE": "Require reclaim close in reversal-direction half of its own S5 high-low range.",
+    "C03_ENGULFING_RECOVERY": "Require reversal-direction reclaim candle to body-engulf immediately previous completed S5 candle.",
+    "C04_DIRECTIONAL_RANGE_EXPANSION": "Require directional reclaim candle and reclaim high-low range > immediately previous S5 range."
+  },
+  "validation_months": [
+    "2026-01_STAGE_A",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-07"
+  ],
+  "comparative_gate": {
+    "baseline": "Exact source-only PLSR C01 on same files and execution",
+    "minimum_trade_retention_fraction": 0.5,
+    "minimum_months_with_trades": 5,
+    "minimum_nonnegative_months": 4,
+    "aggregate_direct_net_min_usd": 0,
+    "aggregate_direct_net_must_improve_vs_baseline": true
+  },
+  "forbidden": [
+    "PDH-only/PDL-only split",
+    "hour/session optimization",
+    "month-specific config",
+    "numeric wick/body threshold sweep",
+    "confirmation delay tuning",
+    "exit tuning",
+    "August",
+    "MQL5"
+  ],
+  "next_if_pass": "R037_PLSR_RQ_LEADER_FULL_SURROGATE_PARENT_CROSS_MONTH_VALIDATION",
+  "next_if_fail": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
