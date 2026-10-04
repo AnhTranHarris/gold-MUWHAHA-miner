@@ -3,12 +3,12 @@
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "branch": "delta",
   "research_scope": "DELTA_ONLY_CLEAN_ROOM",
-  "last_verified_durable_unit": "R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS",
+  "last_verified_durable_unit": "R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT",
   "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
   "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS_MANIFEST.json",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT_MANIFEST.json",
   "active_candidate": null,
-  "last_candidate_disposition": "R037-ITDC-v1 retired after Stage-A economic failure",
+  "last_candidate_disposition": "R037-QIM-v1 retired after Stage-A executable economic failure despite 55.8%-57.0% next-move predictive accuracy",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -17,7 +17,7 @@
   "timeout_recovery": {
     "inflight_path": "research/delta/CURRENT_INFLIGHT.json",
     "pointer_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_RECOVERY_POINTER.json",
-    "rule": "On message-delivery interruption, verify committed artifacts and resume the first missing phase; do not rerun durable compute solely because chat delivery failed."
+    "rule": "On message-delivery interruption, trust committed prereg/source/result/report/manifest and resume the first missing phase; chat delivery timeout is not itself compute failure."
   },
   "canonical_data": {
     "january_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
@@ -31,9 +31,9 @@
     "prior_full_state_preserved_in_git_history": true
   },
   "recovery_pointer_sync": {
-    "inflight_commit": "73c82a79729ba1dab88f6a57f188e8eb010f492b",
-    "pointer_commit": "0024830aa45c1dbadaf64a265bc45bd2720c1927",
-    "status": "IDLE_AT_NEXT_HARVEST"
+    "inflight_commit": "c35892d56b4b94c70a99b6c0d05958bf0fb6d1c7",
+    "pointer_commit": "136252d173e21ef43bfbe2a7afd859fba1f058ec",
+    "status": "QIM_17AT_RESULT_DURABLE_AWAITING_CI_THEN_NEXT_HARVEST"
   },
   "clean_room_maintenance": {
     "status": "RECENT_DELTA_DIFF_PREFLIGHT_CLEAN",
