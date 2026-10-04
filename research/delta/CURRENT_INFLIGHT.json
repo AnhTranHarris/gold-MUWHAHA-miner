@@ -1,27 +1,20 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "IN_PROGRESS",
+  "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_ONE_SIDED_SPREAD_SHOCK_MEAN_REVERSION_STAGE_A_SCREEN",
-  "parent_durable_unit": "R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT",
-  "phase": "PRODUCER_COMMITTED_COMPUTE_NEXT",
-  "phase_rank": 2,
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "parent_durable_unit": "R037_OSSMR_STAGE_A_SCREEN_CHECKPOINT_17AU",
+  "phase": "IDLE",
+  "phase_rank": 0,
   "progress": {
-    "status": "PRODUCER_COMMITTED",
-    "last_completed": "R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT",
-    "current_candidate": "R037-OSSMR-v1",
-    "prereg_path": "research/delta/reference/DELTA_R037_OSSMR_STAGE_A_PREREG_17AU.json",
-    "prereg_commit": "1c2896ff2d5602282c25c88a62d9e528eb69d15b",
-    "prereg_blob_sha": "7706c36364ac1a9cd57fa330a542c64a697ad59e",
-    "next": "Run bounded official Stage-A compute; persist result if complete.",
-    "producer_path": "research/delta/experiments/delta_r037_ossmr_stage_a_17au.py",
-    "producer_commit": "7a66e2134b59959d6b75b7f5806ea9006dfc45c9",
-    "producer_blob_sha": "31b41ab74e5779476254a8f6e7e1e606f1ed9181",
-    "producer_file_sha256": "036deca4eb3876c39f03f5ec5a8073927874a47184fa57dbb1ec778690c5cf9e"
+    "status": "IDLE",
+    "last_completed": "R037_OSSMR_STAGE_A_SCREEN_CHECKPOINT_17AU",
+    "current_candidate": null,
+    "next": "Preregister next independent sparse-by-construction entry-source family."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "OSSMR prereg and producer are durable. Verify blob 31b41ab74e5779476254a8f6e7e1e606f1ed9181 and resume official compute; do not recreate source.",
+    "resume_first_action": "OSSMR 17AU is complete and retired; do not rerun. Preregister the next independent sparse-by-construction entry-source family.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
@@ -33,9 +26,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT",
-    "checkpoint": "R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT",
+    "unit": "R037_OSSMR_STAGE_A_SCREEN_CHECKPOINT_17AU",
+    "checkpoint": "R037_OSSMR_STAGE_A_SCREEN_CHECKPOINT_17AU",
     "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "manifest": "research/delta/artifacts/DELTA_R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT_MANIFEST.json"
+    "manifest": "research/delta/artifacts/DELTA_R037_OSSMR_STAGE_A_SCREEN_CHECKPOINT_17AU_MANIFEST.json"
   }
 }
