@@ -4,9 +4,9 @@
   "branch": "delta",
   "created_utc": "2026-10-01",
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
-  "last_verified_durable_unit": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17AE",
-  "first_incomplete_unit": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION",
-  "current_phase": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION_NEXT",
+  "last_verified_durable_unit": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION_CHECKPOINT_17AF",
+  "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -660,7 +660,7 @@
   },
   "next_action": "Use DELTA_004 as the active parent. When the owner restates the first Entry + Initial-Hold research question, perform a fresh community scan, generate independent reconstructible hypotheses, use the GOV-014 spreadsheet-first quant harvesting loop to prioritize adjustments with >=10pp incremental scoped SYNTH-gap closure and seek >=30% scoped REAL-to-SYNTH gap closure before expensive replay, then preregister and test selected packages in the bounded Dukascopy tick-level cycle. Keep DELTA_005A-005M audit-only, August sealed, and MQL5 unauthorized.",
   "mql5_authorized": false,
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_PDHSR_C02_INDEPENDENT_LATER_JAN_CHECKPOINT_17AE_MANIFEST.json",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_PDHSR_C02_MONTHLY_VALIDATION_CHECKPOINT_17AF_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
   "first_incomplete_manifest_path": null,
   "first_incomplete_preregistration_path": null,
@@ -3686,7 +3686,7 @@
         "august_2026": "SEALED",
         "mql5_authorized": false
       },
-      "first_incomplete_substep": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION",
+      "first_incomplete_substep": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
       "dh05_reversal_efficiency_stage_normalization_checkpoint_08": {
         "status": "COMPLETE_MATERIAL_CLUE_PARITY_NOT_ACHIEVED",
         "github_report_path": "research/delta/research/DELTA_R037_DH05_REVERSAL_EFFICIENCY_STAGE_NORMALIZATION_CHECKPOINT_08.md",
@@ -5566,6 +5566,21 @@
         "next_unit": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION",
         "august_2026": "SEALED",
         "mql5_authorized": false
+      },
+      "pdhsr_c02_monthly_validation_checkpoint_17af": {
+        "status": "COMPLETE_MONTHLY_ROBUSTNESS_FAIL_CANDIDATE_RETIRED",
+        "result_path": "research/delta/reference/DELTA_R037_PDHSR_C02_MONTHLY_VALIDATION_CHECKPOINT_17AF.json",
+        "result_commit": "809f99c8f70a03ee27f1ce912277f77cecc1e8e5",
+        "result_sha256": "c46262eb9e5d9ef7ea4ce1c0d48c4553230ee0834e215dca29df62ff968dea97",
+        "report_path": "research/delta/research/DELTA_R037_PDHSR_C02_MONTHLY_VALIDATION_CHECKPOINT_17AF.md",
+        "report_commit": "b4625cff0273195cfe791196e2c2a7f4349c0a5e",
+        "manifest_path": "research/delta/artifacts/DELTA_R037_PDHSR_C02_MONTHLY_VALIDATION_CHECKPOINT_17AF_MANIFEST.json",
+        "manifest_commit": "f48b5113894cdb65b005801605bd3fb94ef31ae0",
+        "aggregate": "109 trades / 44 official wins / -30.47 net / 0 of 6 nonnegative months",
+        "decision": "RETIRE_C02_NO_RETUNE",
+        "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+        "august_2026": "SEALED",
+        "mql5_authorized": false
       }
     }
   },
@@ -5602,8 +5617,8 @@
     "github_commit": "d5db76bfcd3bb91086a5635058005b4d940013bb",
     "manifest_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_SAFE_HANDOFF_CHECKPOINT_09D.json",
     "manifest_commit": "5b21c2d06bbf4d98c10b3ee5bafeb0ca2c18a2fe",
-    "restart_phase": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION_NEXT",
-    "next_action": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION",
+    "restart_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
+    "next_action": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
     "starter_prompt_doc_id": "15bKGqPsBebEXBdpgqhI1f6ItjoeJ4jc_3ZBzkN7woAU",
     "starter_prompt_doc_url": "https://docs.google.com/document/d/15bKGqPsBebEXBdpgqhI1f6ItjoeJ4jc_3ZBzkN7woAU/edit",
     "completeness_gate_doc_id": "1G_UttTVYhz55eZ6OHiz7r4ZzVv3l5zDD0U6DvTScG-s",
@@ -5664,9 +5679,9 @@
   "timeout_recovery": {
     "status": "ENABLED",
     "pointer_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_RECOVERY_POINTER.json",
-    "durable_unit": "R037_LONDON_OPENING_RANGE_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Z",
-    "in_flight_unit": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_PRESCREEN_17AA",
-    "recovery_rule": "17Z is durable. Resume 17AA sweep-reclaim reversal; do not retune or rerun 17Z after a delivery timeout.",
+    "durable_unit": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION_CHECKPOINT_17AF",
+    "in_flight_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "recovery_rule": "17AF is durable. Resume next independent entry-source harvest; do not retune or rerun retired C02 after a delivery timeout.",
     "message_delivery_timeout_is_compute_failure": false,
     "august_2026": "SEALED",
     "mql5_authorized": false
