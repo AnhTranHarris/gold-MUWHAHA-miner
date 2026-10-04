@@ -1,0 +1,58 @@
+{
+  "schema": "delta-r037-scfr-stage-a-prereg-17ah-v1",
+  "unit": "R037_SWEEP_CISD_FVG_RETRACE_STAGE_A_SCREEN",
+  "checkpoint": "17AH",
+  "status": "PREREGISTERED_BEFORE_OFFICIAL_COMPUTE",
+  "parent_checkpoint": "R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG",
+  "family": "R037-SCFR-v1",
+  "source_basis": [
+    {
+      "source": "TradingView open-source: Liquidity Sweep + CISD + FVG Reversal",
+      "url": "https://www.tradingview.com/script/Jtn829St-Liquidity-Sweep-CISD-FVG-Reversal/",
+      "logic": "confirmed pivot liquidity pool -> wick sweep and close back inside -> CISD through sweep delivery-run open -> FVG from displacement -> retrace/rejection entry"
+    },
+    {
+      "source": "TradingView open-source: Liquidity Sweep Signals",
+      "url": "https://www.tradingview.com/script/loNFaWST-Liquidity-Sweep-Signals/",
+      "logic": "sweep -> post-sweep FVG only -> retrace entry; no same-bar entry"
+    },
+    {
+      "source": "MetaQuotes: Liquidity Sweep on Break of Structure",
+      "url": "https://www.mql5.com/en/articles/20569",
+      "logic": "confirmed swings; wick beyond swing with close back inside and directional candle"
+    },
+    {
+      "source": "Reddit Gold strategy discussion",
+      "url": "https://www.reddit.com/r/Forexstrategy/comments/1v8x77s/thoughts_on_my_strategy/",
+      "logic": "XAUUSD sweep -> lower-timeframe displacement/CHoCH -> FVG retrace; skip chop without displacement"
+    }
+  ],
+  "reconstructibility": "PUBLIC_LOGIC_ONLY_NO_PROTECTED_OR_OPAQUE_SCORING",
+  "hypothesis": "Requiring a causal post-sweep state change plus displacement FVG and retrace/rejection will remove the high-noise naked sweep population while preserving enough XAUUSD Stage-A opportunity density to improve 30-second direct economics.",
+  "frozen_logic": {
+    "timeframe_seconds": 5,
+    "swing_width_bars": 2,
+    "sweep": "confirmed S5 swing wick violation with completed S5 close back inside and reversal-colored sweep candle",
+    "cisd": "within 6 completed S5 bars after sweep, close through sweep-bar open in reversal direction",
+    "fvg": "classic three-bar post-sweep FVG in reversal direction, formed no earlier than CISD bar and within two completed S5 bars after CISD",
+    "retrace": "within 6 completed S5 bars after FVG, bar range touches FVG midpoint and completed bar closes back in reversal direction without closing through the far edge",
+    "execution": "first tick at or after rejection-bar right edge; P75 quote; max spread 25 points",
+    "position": "one position at a time",
+    "lifecycle": {
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30
+    },
+    "numeric_retuning": false
+  },
+  "stage_a_gate": {
+    "minimum_trades": 12,
+    "minimum_distinct_days": 4,
+    "direct_net_min_usd": -1,
+    "strong_pass_direct_net_min_usd": 0
+  },
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
