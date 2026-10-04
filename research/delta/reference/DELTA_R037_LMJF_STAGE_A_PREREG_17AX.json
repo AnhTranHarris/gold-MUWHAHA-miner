@@ -1,0 +1,59 @@
+{
+  "schema": "delta-r037-lmjf-stage-a-prereg-17ax-v1",
+  "status": "PREREGISTERED",
+  "unit": "R037_LEE_MYKLAND_JUMP_FADE_STAGE_A_SCREEN",
+  "family": "R037-LMJF-v1",
+  "parent_checkpoint": "R037_DCOS_STAGE_A_SCREEN_CHECKPOINT_17AW",
+  "research_question": "Do statistically extreme completed one-minute XAUUSD returns, detected causally with the Lee-Mykland local bipower-variation jump test, exhibit enough immediate post-jump reversal to survive frozen P75 execution over 30 seconds?",
+  "source_basis": [
+    "Lee & Mykland (2008) nonparametric jump test: return divided by prior local bipower variation, with Gumbel maximum-statistic rejection rule.",
+    "Lee-Mykland recommended local-volatility window for 1-minute sampling: K=603.",
+    "FX jump literature reports post-jump reversal/liquidity-provider response, motivating a single fade profile.",
+    "Gold high-frequency literature documents rare, extreme intraday jump events and uses 1/3/5/10-minute jump detection robustness."
+  ],
+  "frozen_signal": {
+    "bar_seconds": 60,
+    "price": "completed native midquote M1 close",
+    "return": "log(close_i/close_{i-1})",
+    "local_variance": "mean of |r_j|*|r_{j-1}| over prior K-2 products, excluding current return",
+    "K": 603,
+    "c": "sqrt(2/pi)",
+    "n_for_gumbel": 1440,
+    "beta_99": 4.6001,
+    "jump_rule": "(|L_i|-C_n)/S_n > 4.6001",
+    "direction": "FADE jump sign",
+    "entry": "first executable P75 tick at/after completed M1 bar right edge"
+  },
+  "frozen_execution": {
+    "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01,
+    "one_position_at_a_time": true
+  },
+  "gates": {
+    "minimum_trades": 20,
+    "minimum_distinct_days": 5,
+    "ordinary_direct_net_usd": -1,
+    "strong_direct_net_usd": 0
+  },
+  "prohibited": [
+    "K sweep",
+    "significance sweep",
+    "sampling-frequency sweep",
+    "continuation profile rescue",
+    "session/side/weekday rescue",
+    "QIM/OFI overlay",
+    "exit retuning",
+    "August access",
+    "MQL5 translation"
+  ],
+  "failure_rule": "If the single preregistered M1 99% jump-fade profile fails supply/day or direct-net gate, retire LMJF rather than rescue it on Stage-A.",
+  "advance_rule": "If it passes the preregistered gates, freeze unchanged for independent later-January validation.",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
