@@ -11,31 +11,31 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG",
+    "last_verified_durable_unit": "R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH",
     "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
     "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG_MANIFEST.json"
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH_MANIFEST.json"
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
     "status": "IDLE",
     "phase_rank": 0,
-    "parent_durable_unit": "R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG",
+    "parent_durable_unit": "R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG.json",
-        "commit": "566cde906057ee7195f2069494429ca1707d9a20"
+        "path": "research/delta/reference/DELTA_R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH.json",
+        "commit": "0405bbec05f984b8c901e7341b3a5f3b29e45eff"
       },
       {
-        "path": "research/delta/research/DELTA_R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG.md",
-        "commit": "d5095b5a3a84758f7a25b1da56acdd220d707078"
+        "path": "research/delta/research/DELTA_R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH.md",
+        "commit": "55198438dbdbfcf2d8271ff0c405e64481995be4"
       },
       {
-        "path": "research/delta/artifacts/DELTA_R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG_MANIFEST.json",
-        "commit": "feb5cec71b12c19db732f85b418b5525c561842a"
+        "path": "research/delta/artifacts/DELTA_R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH_MANIFEST.json",
+        "commit": "9cab76cbfc315605215af90203bc63795056e2a0"
       }
     ],
-    "next_action": "Preregister next independent entry-source harvest; prefer displacement/state-shift confirmation over naked sweep/reclaim.",
+    "next_action": "Preregister higher-order sparse liquidity anchor candidate; do not retune 17AH.",
     "completed_months": [],
     "next_month": null
   },
