@@ -3,12 +3,12 @@
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "branch": "delta",
   "research_scope": "DELTA_ONLY_CLEAN_ROOM",
-  "last_verified_durable_unit": "R037_STRUCTURE_ANCHORED_VWAP_FAST_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BU_17BV",
+  "last_verified_durable_unit": "R037_FIB_GOLDEN_POCKET_IMPULSE_RETRACE_STAGE_A_SCREEN_CHECKPOINT_17BW",
   "first_incomplete_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
   "current_phase": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST_NEXT",
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_SAVWAP_FAST_RETEST_STAGE_A_CHECKPOINT_17BU_17BV_MANIFEST.json",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_FIB_GOLDEN_POCKET_RETRACE_STAGE_A_CHECKPOINT_17BW_MANIFEST.json",
   "active_candidate": null,
-  "last_candidate_disposition": "17BU–17BV Structure-Anchored VWAP Fast retest retired: M1 -$39.04/178 trades; M5 -$4.66/36. Adequate supply, no nonnegative lane, no rescue.",
+  "last_candidate_disposition": "17BW Golden-Pocket Retrace retired: 138 trades / 11 days / 54 wins / -$35.70. Adequate source-default supply, negative immediate persistence, no rescue tuning.",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -31,10 +31,10 @@
     "prior_full_state_preserved_in_git_history": true
   },
   "recovery_pointer_sync": {
-    "status": "DURABLE_17BL_17BN_RETIRED",
-    "last_completed": "R037_PVACVD_FAILED_AUCTION_STAGE_A_SCREEN_CHECKPOINT_17BL_17BN",
+    "status": "DURABLE_17BW_RETIRED",
+    "last_completed": "R037_FIB_GOLDEN_POCKET_IMPULSE_RETRACE_STAGE_A_SCREEN_CHECKPOINT_17BW",
     "current_candidate": null,
-    "next": "Select distinct high-value source-grounded entry mechanism from completed R037 meta-harvest; preregister before producer."
+    "next": "Select a materially distinct, source-grounded high-value entry mechanism from the completed R037 harvest; prioritize evidence-rich structures with adequate supply and no overlap with retired VWAP/profile/Fibonacci families; preregister before producer."
   },
   "clean_room_maintenance": {
     "status": "RECENT_DELTA_DIFF_PREFLIGHT_CLEAN",
@@ -44,13 +44,16 @@
     "scientific_results_changed": false
   },
   "concurrency_recovery": {
-    "status": "RESOLVED_TO_AUTHORITATIVE_PREEXISTING_CHAIN",
-    "authoritative_checkpoint": "R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY",
-    "current_candidate": "R037-TSO-v1",
-    "side_screen_preserved": "R037_SRHT_STAGE_A_SCREEN_CHECKPOINT_17AY",
-    "side_screen_role": "NON_AUTHORITATIVE_PARALLEL_SCREEN_DUE_TIMEOUT_CONCURRENCY",
-    "note": "SRHT artifacts remain preserved but do not replace the earlier CI-passed BOSLS 17AY -> Turtle Soup 17AZ chain."
+    "status": "NO_ACTIVE_CONCURRENCY_CONFLICT",
+    "authoritative_checkpoint": "R037_FIB_GOLDEN_POCKET_IMPULSE_RETRACE_STAGE_A_SCREEN_CHECKPOINT_17BW",
+    "current_candidate": null,
+    "historical_incident": {
+      "checkpoint": "R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY",
+      "side_screen_preserved": "R037_SRHT_STAGE_A_SCREEN_CHECKPOINT_17AY",
+      "resolution": "RESOLVED_TO_AUTHORITATIVE_PREEXISTING_CHAIN"
+    },
+    "note": "Historical 17AY timeout-concurrency incident is audit-only and is not an active cursor."
   },
   "search_bias": "Use completed-R037 meta-harvest before admitting more candidate families; prioritize high-information structures with adequate supply and near-neutral/positive out-of-sample evidence.",
-  "timeout_recovery_cursor_commit": "1fb2fe9e9a1df7a2f63f7087bfa7e546822947b2"
+  "timeout_recovery_cursor_semantics": "The final CURRENT_STATE commit closes a unit only after CURRENT_INFLIGHT and recovery pointer already match it; use Git history for the cursor commit SHA."
 }
