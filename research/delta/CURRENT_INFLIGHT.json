@@ -3,19 +3,19 @@
   "status": "IDLE",
   "branch": "delta",
   "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-  "parent_durable_unit": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION_CHECKPOINT_17AF",
+  "parent_durable_unit": "R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG",
   "phase": "IDLE",
   "phase_rank": 0,
   "progress": {
     "status": "READY_FOR_PREREG",
-    "last_completed": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION_CHECKPOINT_17AF",
-    "last_decision": "RETIRE_C02_NO_RETUNE",
-    "next": "Preregister next independent entry-source harvest; preserve C02 as retired forensic evidence only."
+    "last_completed": "R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG",
+    "last_decision": "RETIRE_PRN_NO_RETUNE",
+    "next": "Preregister next independent entry-source harvest; bias toward liquidity sweep -> displacement/state shift -> retest, not naked reclaim."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read CURRENT_STATE/CURRENT_INFLIGHT/recovery pointer; 17AF durable; start next independent entry-source harvest only.",
-    "idempotency_rule": "Do not rerun 17AF solely because chat delivery timed out; verify committed result/report/workbook/manifest/CI first."
+    "resume_first_action": "Read CURRENT_STATE/CURRENT_INFLIGHT/recovery pointer; 17AG durable; start next independent entry-source harvest only.",
+    "idempotency_rule": "Do not rerun 17AG solely because chat delivery timed out; verify committed result/report/workbook/manifest/CI first."
   },
   "last_verified_ci": {
     "commit": "164d20b91718a6bb84746350ba2a26b5c9a92ccb",
@@ -26,9 +26,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION_CHECKPOINT_17AF",
-    "checkpoint": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION_CHECKPOINT_17AF",
+    "unit": "R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG",
+    "checkpoint": "R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG",
     "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "manifest": "research/delta/artifacts/DELTA_R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION_CHECKPOINT_17AF_MANIFEST.json"
+    "manifest": "research/delta/artifacts/DELTA_R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG_MANIFEST.json"
   }
 }
