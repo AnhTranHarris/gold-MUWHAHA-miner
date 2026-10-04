@@ -21,8 +21,8 @@
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
+    "status": "REPORT_COMMITTED",
+    "phase_rank": 4,
     "parent_durable_unit": "R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E",
     "committed_artifacts": [
       {
@@ -34,9 +34,18 @@
         "commit": "d05a78fa8384906f2da14a3a1eaba7e29718c205",
         "blob_sha": "8aaedf366dce60f52e83b21dba6de264f94dc1e2",
         "file_sha256": "2d164150f7d604283ef52f9b665c82c172b1a9ffb9dcc1149c4cf51fa45c04e5"
+      },
+      {
+        "path": "research/delta/reference/DELTA_R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F.json",
+        "commit": "d16cc7c09c340dd5d28ceb6532d62891303f5288",
+        "raw_sha256": "23deec8f7c1f3250b880b9b510ee25effb1c5de4fc271305950ba5453bab7b5f"
+      },
+      {
+        "path": "research/delta/research/DELTA_R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F.md",
+        "commit": "5ef733a1cdeed0681b767d8f3fa87cb9acda6162"
       }
     ],
-    "next_action": "Run one official bounded Stage-A SFP replay after recovery gate passes; if a 17F result already exists, do not rerun.",
+    "next_action": "Do not rerun SFP 17F. Finish ledger/workbook, full manifest, CURRENT_STATE last, and durability CI.",
     "completed_months": [],
     "next_month": null
   },
