@@ -1,0 +1,33 @@
+{
+  "schema": "delta-r037-ossmr-stage-a-screen-17au-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_ONE_SIDED_SPREAD_SHOCK_MEAN_REVERSION_STAGE_A_SCREEN",
+  "family": "R037-OSSMR-v1",
+  "parent_checkpoint": "R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT",
+  "prereg_commit": "1c2896ff2d5602282c25c88a62d9e528eb69d15b",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "signal_surface": "NATIVE_DUKASCOPY_BBO",
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "diagnostics": {
+    "shock_episodes": 471000,
+    "sell_shocks": 223928,
+    "buy_shocks": 247072,
+    "first_narrow_confirmations": 155047,
+    "full_restore_confirmations": 84152,
+    "first_narrow_confirmation_rate": 0.3291868365180467,
+    "full_restore_confirmation_rate": 0.17866666666666667,
+    "pre_shock_native_spread_quantiles_raw": {"p10":550.0,"p25":620.0,"p50":706.0,"p75":787.0,"p90":870.0,"p99":1140.0},
+    "peak_native_spread_expansion_quantiles_raw": {"p10":10.0,"p25":21.0,"p50":40.0,"p75":70.0,"p90":120.0,"p99":287.0},
+    "time_to_first_narrow_ms_quantiles": {"p10":50.0,"p25":51.0,"p50":101.0,"p75":251.0,"p90":554.0,"p99":2255.0}
+  },
+  "configs": {
+    "C01_IMMEDIATE_FADE":{"metrics":{"signals":471000,"busy_skips":377626,"spread_rejects":0,"trades":93374,"distinct_days":14,"long":48437,"short":44937,"official_wins":42204,"gross_profit":9240.46,"gross_loss":-28202.02,"direct_net_usd":-19895.3,"exit_reasons":{"STOP":91194,"MAX_HOLD":2180,"END":0}},"gate":{"minimum_trades_50":true,"minimum_distinct_days_6":true,"direct_net_min_minus_1":false,"screen_pass":false,"strong_pass":false}},
+    "C02_FIRST_NARROW_CONFIRM":{"metrics":{"signals":155047,"busy_skips":108575,"spread_rejects":0,"trades":46472,"distinct_days":14,"long":25248,"short":21224,"official_wins":21237,"gross_profit":4657.62,"gross_loss":-13703.04,"direct_net_usd":-9510.14,"exit_reasons":{"STOP":45129,"MAX_HOLD":1343,"END":0}},"gate":{"minimum_trades_50":true,"minimum_distinct_days_6":true,"direct_net_min_minus_1":false,"screen_pass":false,"strong_pass":false}},
+    "C03_FULL_SPREAD_RESTORE_CONFIRM":{"metrics":{"signals":84152,"busy_skips":49276,"spread_rejects":0,"trades":34876,"distinct_days":14,"long":18983,"short":15893,"official_wins":16017,"gross_profit":3487.98,"gross_loss":-10207.19,"direct_net_usd":-7067.97,"exit_reasons":{"STOP":33743,"MAX_HOLD":1133,"END":0}},"gate":{"minimum_trades_50":true,"minimum_distinct_days_6":true,"direct_net_min_minus_1":false,"screen_pass":false,"strong_pass":false}}
+  },
+  "finding":{"leading_config":null,"ordinary_survivors":[],"strong_survivors":[],"decision":"RETIRE_OSSMR_STAGE_A_NO_EXECUTABLE_SURVIVOR","next":"R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"},
+  "mql5_authorized":false
+}
