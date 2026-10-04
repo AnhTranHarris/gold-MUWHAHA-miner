@@ -1,0 +1,51 @@
+{
+  "schema": "delta-r037-scfr-stage-a-17ah-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_SWEEP_CISD_FVG_RETRACE_STAGE_A_SCREEN",
+  "family": "R037-SCFR-v1",
+  "prereg_commit": "9e6e204e2fbf657a5cf3729e919b2ec25fa86c94",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "stage_counts": {
+    "sweeps": 8141,
+    "cisd": 7500,
+    "fvg": 3137,
+    "retrace": 947
+  },
+  "metrics": {
+    "proposals": 964,
+    "eligible": 947,
+    "trades": 947,
+    "distinct_days": 14,
+    "long": 483,
+    "short": 464,
+    "rejections": {
+      "RELOST_AT_EXEC": 17
+    },
+    "official_wins": 431,
+    "raw_positive_wins": 434,
+    "gross_profit": 97.46,
+    "gross_loss": -285.2,
+    "direct_net_usd": -187.74,
+    "exit_reasons": {
+      "STOP": 907,
+      "MAX_HOLD": 40,
+      "END": 0
+    }
+  },
+  "gate": {
+    "minimum_trades_12": true,
+    "minimum_distinct_days_4": true,
+    "direct_net_min_minus_1": false,
+    "prescreen_pass": false,
+    "strong_pass": false
+  },
+  "finding": {
+    "decision": "RETIRE_FAMILY_NO_RETUNE",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "mql5_authorized": false
+}
