@@ -1,0 +1,69 @@
+{
+  "schema": "delta-r037-htar-stage-a-prereg-17ai-v1",
+  "unit": "R037_HIGHER_TIMEFRAME_ANCHORED_REVERSAL_STAGE_A_SCREEN",
+  "checkpoint": "17AI",
+  "status": "PREREGISTERED_BEFORE_OFFICIAL_COMPUTE",
+  "parent_checkpoint": "R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH",
+  "family": "R037-HTAR-v1",
+  "source_basis": [
+    {
+      "source": "TradingView SMC Gold Helper: Dynamic FVG & Liquidity Sweeps",
+      "url": "https://www.tradingview.com/script/PZ1wfXwM/",
+      "logic": "Gold-focused 4H liquidity sweeps + FVG + market-structure shift"
+    },
+    {
+      "source": "TradingView Smart Money Flow",
+      "url": "https://www.tradingview.com/script/u3Y9CRFZ/",
+      "logic": "Gold 4H swing-liquidity sweep -> MSS/CHoCH -> FVG entry zone"
+    },
+    {
+      "source": "Reddit XAUUSD 4H sweep/supply examples",
+      "url": "https://www.reddit.com/r/Forexstrategy/comments/1trzxhz/xauusd_4h_fresh_short_setup_sweep_of_the_45754600/",
+      "logic": "4H liquidity/supply anchor -> lower-timeframe CHoCH/BOS -> pullback entry"
+    },
+    {
+      "source": "Reddit Gold strategy feedback",
+      "url": "https://www.reddit.com/r/Forexstrategy/comments/1v8x77s/thoughts_on_my_strategy/",
+      "logic": "weekly/daily or higher-timeframe liquidity anchor cited as probability context before LTF displacement/FVG"
+    }
+  ],
+  "reconstructibility": "PUBLIC_LOGIC_ONLY_NO_OPAQUE_SCORING",
+  "hypothesis": "Replacing S5-local liquidity pools with causally confirmed H1/H4 swing anchors, while preserving the same S5 sweep -> state shift -> FVG -> retrace sequence, will sharply reduce noise without starving opportunity supply.",
+  "configs": {
+    "C01_H1_ANCHOR": {
+      "anchor_seconds": 3600,
+      "swing_width_bars": 1
+    },
+    "C02_H4_ANCHOR": {
+      "anchor_seconds": 14400,
+      "swing_width_bars": 1
+    }
+  },
+  "frozen_ltf_logic": {
+    "timeframe_seconds": 5,
+    "anchor_visibility": "higher-timeframe swing visible only after one completed bar to the right",
+    "sweep": "S5 wick strictly violates latest confirmed unswept HTF swing and completed S5 bar closes back inside with reversal color",
+    "cisd": "within 6 completed S5 bars after sweep, close through sweep-bar open in reversal direction",
+    "fvg": "classic 3-bar reversal-direction FVG no earlier than CISD and within 2 S5 bars after CISD",
+    "retrace": "within 6 S5 bars after FVG, range reaches FVG midpoint and completed bar rejects in reversal direction without closing through far edge",
+    "anchor_consumption": "each confirmed HTF swing level may trigger at most one sweep sequence; new confirmed swing creates a new anchor",
+    "execution": "first tick at/after rejection right edge on P75; spread <=25 points",
+    "lifecycle": {
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30
+    },
+    "numeric_retuning": false
+  },
+  "stage_a_gate": {
+    "per_config_minimum_trades": 4,
+    "per_config_minimum_distinct_days": 3,
+    "direct_net_min_usd": -1,
+    "strong_pass_direct_net_min_usd": 0,
+    "survivor_rule": "at least one preregistered HTF anchor config must strong-pass before later-January validation"
+  },
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
