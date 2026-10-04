@@ -1,0 +1,55 @@
+{
+  "schema": "delta-r037-corb-stage-a-prereg-17bb-v1",
+  "status": "PREREGISTERED",
+  "unit": "R037_COMEX_OPENING_RANGE_BREAKOUT_STAGE_A_SCREEN",
+  "family": "R037-CORB-v1",
+  "parent_checkpoint": "R037_ALRB_STAGE_A_SCREEN_CHECKPOINT_17BA",
+  "research_question": "Does the 15-minute range immediately after the traditional 08:20 ET COMEX gold open contain enough price-discovery information that a subsequent completed M1 breakout during the next 85 minutes has executable 30-second continuation on P75?",
+  "source_basis": [
+    "CME gold trading-hours material identifies the traditional gold open at 08:20 ET.",
+    "MetaQuotes session-based Opening Range Breakout framework defines a 5-60 minute opening range, then trades confirmed breaks in the break direction.",
+    "Contemporary XAUUSD New York breakout systems explicitly target New York opening volatility and confirmed range breaks."
+  ],
+  "frozen_signal": {
+    "january_utc_open": "13:20",
+    "opening_range_utc": "13:20-13:35",
+    "breakout_window_utc": "13:35-15:00",
+    "opening_range_source": "native tick midquote high/low",
+    "confirmation_bar_seconds": 60,
+    "buy": "first completed M1 close above frozen opening-range high",
+    "sell": "first completed M1 close below frozen opening-range low",
+    "maximum_per_direction_per_day": 1,
+    "entry": "first executable P75 tick at/after breakout M1 right edge"
+  },
+  "frozen_execution": {
+    "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01,
+    "one_position_at_a_time": true
+  },
+  "gates": {
+    "minimum_trades": 20,
+    "minimum_distinct_days": 5,
+    "ordinary_direct_net_usd": -1,
+    "strong_direct_net_usd": 0
+  },
+  "prohibited": [
+    "opening-range-duration sweep",
+    "breakout-window sweep",
+    "buffer tuning",
+    "trend/side/weekday rescue",
+    "retest rescue",
+    "exit retuning",
+    "August access",
+    "MQL5 translation"
+  ],
+  "failure_rule": "If the single preregistered COMEX-opening-range profile fails supply/day or direct-net gate, retire CORB rather than tune it on Stage-A.",
+  "advance_rule": "If it passes, freeze unchanged for independent later-January validation.",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
