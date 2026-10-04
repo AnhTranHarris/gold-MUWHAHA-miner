@@ -1,0 +1,45 @@
+{
+  "schema": "delta-a-grid-hf-r2-checkpoint-v1",
+  "lineage": "DELTA-A",
+  "branch": "delta-A",
+  "checkpoint": "GRID-HF_R2_DIRECTIONAL_OWNERSHIP_01",
+  "status": "INTERIM_RESEARCH_NOT_MT5_AUTHORIZED",
+  "dedup": {
+    "window_ms": 1000,
+    "policy": "chronological first eligible event",
+    "future_payoff_used": false
+  },
+  "january": {
+    "events": 39253,
+    "events_per_day_approx": 1354,
+    "baseline_r1_comparable": {
+      "net_usd": 3096.19,
+      "avg_event_usd": 0.07888,
+      "profit_factor": 1.01861,
+      "positive_fraction": 0.49293,
+      "sequence_drawdown_usd": 3380.99
+    },
+    "selected_router": {
+      "quiet_condition": "native_dukascopy_spread_usd <= 0.90",
+      "quiet_owner": "REVERSION",
+      "quiet_lifecycle_seconds": 600,
+      "volatile_condition": "native_dukascopy_spread_usd > 0.90",
+      "volatile_owner": "CONTINUATION",
+      "volatile_lifecycle_seconds": 180,
+      "event_filtering": false
+    },
+    "result": {
+      "net_usd": 5428.69,
+      "avg_event_usd": 0.1383,
+      "profit_factor": 1.02874,
+      "positive_fraction": 0.49892,
+      "sequence_drawdown_usd": 2878.93,
+      "early_half_net_usd": 66.99,
+      "late_half_net_usd": 5361.7
+    }
+  },
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "august_2026": "SEALED",
+  "production_mql5_authorized": false,
+  "next_unit": "GRID-HF_R2_CONTINUE_DIRECTIONAL_OWNERSHIP_AND_SPECIALIST_ROUTING"
+}
