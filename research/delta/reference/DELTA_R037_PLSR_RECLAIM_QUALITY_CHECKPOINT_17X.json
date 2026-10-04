@@ -1,0 +1,32 @@
+{
+  "schema": "delta-r037-plsr-reclaim-quality-cross-month-17x-v1",
+  "status": "COMPLETE_CROSS_MONTH_SCREEN",
+  "unit": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_CHECKPOINT_17X",
+  "family": "R037-PLSR-RQ-v1",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "months": ["01A","02","03","04","05","06","07"],
+  "numeric_retuning": false,
+  "post_result_retuning": false,
+  "august_accessed": false,
+  "baseline": {"trades":139,"net":-30.59},
+  "summary": {
+    "C01_DIRECTIONAL_RECLAIM": {"trades":105,"retention":0.755396,"months_with_trades":7,"nonnegative_months":1,"net":-21.28,"baseline_net":-30.59,"improvement":9.31,"gate":{"retention_0_5":true,"months_with_trades_5":true,"nonnegative_months_4":false,"aggregate_net_nonnegative":false,"improves_baseline":true,"pass":false}},
+    "C02_REVERSAL_HALF_CLOSE": {"trades":113,"retention":0.81295,"months_with_trades":7,"nonnegative_months":1,"net":-23.75,"baseline_net":-30.59,"improvement":6.84,"gate":{"retention_0_5":true,"months_with_trades_5":true,"nonnegative_months_4":false,"aggregate_net_nonnegative":false,"improves_baseline":true,"pass":false}},
+    "C03_ENGULFING_RECOVERY": {"trades":14,"retention":0.100719,"months_with_trades":7,"nonnegative_months":2,"net":-4.78,"baseline_net":-30.59,"improvement":25.81,"gate":{"retention_0_5":false,"months_with_trades_5":true,"nonnegative_months_4":false,"aggregate_net_nonnegative":false,"improves_baseline":true,"pass":false}},
+    "C04_DIRECTIONAL_RANGE_EXPANSION": {"trades":55,"retention":0.395683,"months_with_trades":7,"nonnegative_months":3,"net":-10.13,"baseline_net":-30.59,"improvement":20.46,"gate":{"retention_0_5":false,"months_with_trades_5":true,"nonnegative_months_4":false,"aggregate_net_nonnegative":false,"improves_baseline":true,"pass":false}}
+  },
+  "ranking": ["C04_DIRECTIONAL_RANGE_EXPANSION","C03_ENGULFING_RECOVERY","C01_DIRECTIONAL_RECLAIM","C02_REVERSAL_HALF_CLOSE"],
+  "finding": {"leading_config":"C04_DIRECTIONAL_RANGE_EXPANSION","any_gate_pass":false,"decision":"RETIRE_RECLAIM_QUALITY_REFINEMENT_NO_RETUNE","next":"R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"},
+  "mql5_authorized": false,
+  "raw_result_sha256": "6ff7c2db7955cea32fa56ffa0dab6ba6eac24b4c32e9d55cae364b60b404d336",
+  "producer": {"path":"research/delta/experiments/delta_r037_plsr_reclaim_quality_17x.py","commit":"d8196fbe5699b053efc0c4ace60e8bd27fb8238b","blob_sha":"723605d9a255f82a5b946ca7d4fb43b6363d923c","file_sha256":"44d55674d78425f8448d6a9d4030f368d0e33b7511971affdbcf86061974adab"},
+  "monthly_compact": {
+    "01A":{"baseline":{"trades":11,"net":1.01},"configs":{"C01_DIRECTIONAL_RECLAIM":{"trades":9,"net":0.94},"C02_REVERSAL_HALF_CLOSE":{"trades":10,"net":1.14},"C03_ENGULFING_RECOVERY":{"trades":1,"net":1.34},"C04_DIRECTIONAL_RANGE_EXPANSION":{"trades":5,"net":2.59}}},
+    "02":{"baseline":{"trades":18,"net":-5.65},"configs":{"C01_DIRECTIONAL_RECLAIM":{"trades":11,"net":-2.12},"C02_REVERSAL_HALF_CLOSE":{"trades":14,"net":-3.27},"C03_ENGULFING_RECOVERY":{"trades":2,"net":-0.77},"C04_DIRECTIONAL_RANGE_EXPANSION":{"trades":7,"net":-0.64}}},
+    "03":{"baseline":{"trades":24,"net":-7.04},"configs":{"C01_DIRECTIONAL_RECLAIM":{"trades":22,"net":-6.71},"C02_REVERSAL_HALF_CLOSE":{"trades":22,"net":-6.71},"C03_ENGULFING_RECOVERY":{"trades":2,"net":-1.1},"C04_DIRECTIONAL_RANGE_EXPANSION":{"trades":13,"net":-5.68}}},
+    "04":{"baseline":{"trades":22,"net":-6.33},"configs":{"C01_DIRECTIONAL_RECLAIM":{"trades":16,"net":-6.16},"C02_REVERSAL_HALF_CLOSE":{"trades":16,"net":-6.04},"C03_ENGULFING_RECOVERY":{"trades":3,"net":-2.7},"C04_DIRECTIONAL_RANGE_EXPANSION":{"trades":10,"net":-5.95}}},
+    "05":{"baseline":{"trades":21,"net":-6.96},"configs":{"C01_DIRECTIONAL_RECLAIM":{"trades":14,"net":-4.83},"C02_REVERSAL_HALF_CLOSE":{"trades":17,"net":-5.97},"C03_ENGULFING_RECOVERY":{"trades":2,"net":0.46},"C04_DIRECTIONAL_RANGE_EXPANSION":{"trades":6,"net":-2.1}}},
+    "06":{"baseline":{"trades":21,"net":-3.74},"configs":{"C01_DIRECTIONAL_RECLAIM":{"trades":15,"net":-1.87},"C02_REVERSAL_HALF_CLOSE":{"trades":15,"net":-2.38},"C03_ENGULFING_RECOVERY":{"trades":1,"net":-0.53},"C04_DIRECTIONAL_RANGE_EXPANSION":{"trades":4,"net":0.16}}},
+    "07":{"baseline":{"trades":22,"net":-1.88},"configs":{"C01_DIRECTIONAL_RECLAIM":{"trades":18,"net":-0.53},"C02_REVERSAL_HALF_CLOSE":{"trades":19,"net":-0.52},"C03_ENGULFING_RECOVERY":{"trades":3,"net":-1.48},"C04_DIRECTIONAL_RANGE_EXPANSION":{"trades":10,"net":1.49}}}
+  }
+}
