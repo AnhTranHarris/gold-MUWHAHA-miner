@@ -1,0 +1,55 @@
+{
+  "schema": "delta-r037-sorb-surrogate-parent-stage-a-evidence-15a-v1",
+  "unit": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN",
+  "parent_checkpoint": "R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_CHECKPOINT_14B",
+  "lane": "NON_PROMOTING_SURROGATE_PARENT_RESEARCH",
+  "surrogate_parent": "14A_BACKBONE_FIRST_C03_WITH_FROZEN_PROVENANCE_LIMITED_SPECIALISTS",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_window": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+  "stage_a_ticks": 4205709,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "numeric_retuning": false,
+  "august_2026": "SEALED",
+  "parent_control_expected": {
+    "trades": 14034,
+    "raw_positive_wins": 6422,
+    "official_wins": 6349,
+    "ordinary_entries": 11916,
+    "parent_specialist_entries": 2118,
+    "gross_profit": 1357.26,
+    "gross_loss": -4302.2,
+    "net_profit": -2944.94,
+    "max_balance_drawdown": 2945.93,
+    "max_equity_drawdown": 2946.43
+  },
+  "frozen_configs": [
+    "R037-C01_LONDON_15",
+    "R037-C02_COMEX_15",
+    "R037-C03_DUAL_15",
+    "R037-C04_DUAL_30",
+    "R037-C05_DUAL_15_CONFIRM2"
+  ],
+  "integration_semantics": {
+    "parent_same_tick_priority": true,
+    "one_position_at_a_time": true,
+    "occupied_at_confirmation": "consume as POSITION_BLOCKED even if existing position exits later on same tick",
+    "first_confirmation_consumes_session": true,
+    "blocked_event_deferred": false,
+    "sorb_rearm": false,
+    "sorb_exit_suppresses_unrelated_parent_opportunity": false,
+    "parent_signals_while_sorb_open": "blocked and never queued"
+  },
+  "screen_rules": {
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "minimum_incremental_accepted_entries": 5,
+    "combined_trade_count_not_lower": true,
+    "winner_count_not_lower_unless_net_and_gross_loss_both_improve": true,
+    "maximum_net_worsening_usd": 2,
+    "maximum_balance_and_equity_dd_deterioration_pct": 1,
+    "strong_requires_nonnegative_incremental_net": true
+  },
+  "promotion_constraint": "NON_PROMOTING surrogate-parent screen only; cannot establish exact historical R032-C03 or promote final DELTA candidate.",
+  "next_if_strong": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION",
+  "next_if_none": "RETIRE_OR_RESTRUCTURE_SORB_AND_HARVEST_NEXT_INDEPENDENT_SOURCE"
+}

@@ -1,13 +1,21 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "IDLE",
+  "status": "INFLIGHT",
   "branch": "delta",
-  "unit": null,
+  "unit": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN",
   "parent_durable_unit": "R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_CHECKPOINT_14B",
-  "phase": "IDLE",
-  "phase_rank": 0,
-  "prereg": null,
-  "producer": null,
+  "phase": "PRODUCER_COMMITTED",
+  "phase_rank": 2,
+  "prereg": {
+    "path": "research/delta/reference/DELTA_R037_SORB_SURROGATE_PARENT_STAGE_A_EVIDENCE_15A.json",
+    "blob_sha": "9c0c98a68994bb0d6ab9cd017ed7e9757348af77"
+  },
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_sorb_surrogate_parent_stage_a.py",
+    "commit": "1bd1743a854cdecc77b4502296718fcd60573726",
+    "blob_sha": "459eb394d3ee6250e7b1dec9d2f3022253cc1f49",
+    "sha256": "4cde1d5e2744a5d82101f3fa405eee2f4051a22fa9babfbb4fc864143b271047"
+  },
   "result": null,
   "report": null,
   "manifest": null,
@@ -23,7 +31,7 @@
     "conclusion": "success"
   },
   "august_2026": "SEALED",
-  "sorb_integrated_replay_started": false,
+  "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
     "unit": "R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_AND_SORB_READINESS_DECISION",
