@@ -1,0 +1,70 @@
+{
+  "schema": "delta-r037-savwap-fast-retest-stage-a-17bu-17bv-v1",
+  "status": "COMPLETE_FAST_CAUSAL_PRESCREEN",
+  "unit": "R037_STRUCTURE_ANCHORED_VWAP_FAST_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BU_17BV",
+  "parent_checkpoint": "R037_AVPBR_SUPPLY_CALIBRATED_STAGE_A_SCREEN_CHECKPOINT_17BR_17BT",
+  "prereg_commit": "79f607d93c476c3df815a1d13b19aa3d3d065de8",
+  "producer": {
+    "commit": "24895383407f1dadc01c580bb556440b319e90c9",
+    "blob_sha": "d36d59397d89cdc845fb4584de92aec4bead52f2",
+    "file_sha256": "715ca601aed36fdb2dad4a2c7258426f88084073691f29dbdac287186759263d"
+  },
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "source_defaults": {
+    "fast_lookback": 30,
+    "price_source": "hl2",
+    "weighting": "cumulative",
+    "volume_clamp_multiple": 4,
+    "volume_median_lookback": 50,
+    "away_bars": 5,
+    "touch_tolerance_sigma": 0.25,
+    "zero_sigma_atr_fallback": 0.1,
+    "max_leg_bars": 4000
+  },
+  "volume_proxy": "Dukascopy tick count per derived bar",
+  "configs": {
+    "17BU_C01_SAVWAP_FAST_M1": {
+      "metrics": {
+        "trades": 178,
+        "distinct_days": 12,
+        "official_wins": 78,
+        "direct_net_usd": -39.04
+      },
+      "diagnostics": {
+        "anchors_bull": 1289,
+        "anchors_bear": 1687,
+        "same_type_refresh": 2653,
+        "flips": 322,
+        "away_bars": 4084,
+        "touches": 10333,
+        "qualified_retests": 178
+      }
+    },
+    "17BV_C02_SAVWAP_FAST_M5": {
+      "metrics": {
+        "trades": 36,
+        "distinct_days": 10,
+        "official_wins": 20,
+        "direct_net_usd": -4.66
+      },
+      "diagnostics": {
+        "anchors_bull": 213,
+        "anchors_bear": 334,
+        "same_type_refresh": 484,
+        "flips": 62,
+        "away_bars": 805,
+        "touches": 2007,
+        "qualified_retests": 36
+      }
+    }
+  },
+  "finding": {
+    "survivors": [],
+    "decision": "RETIRE_SAVWAP_FAST_NO_STAGE_A_SURVIVOR",
+    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+  },
+  "official_raw_result_sha256": "dcb0d85890a4b73d7edc3196d13fc2ff4f1c989bc9e49676f847a8b1c3a92d92",
+  "august_accessed": false,
+  "mql5_authorized": false
+}
