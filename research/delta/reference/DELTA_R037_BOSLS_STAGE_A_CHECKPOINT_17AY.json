@@ -1,0 +1,65 @@
+{
+  "schema": "delta-r037-bosls-stage-a-screen-17ay-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_BOS_LIQUIDITY_SWEEP_RECLAIM_STAGE_A_SCREEN",
+  "family": "R037-BOSLS-v1",
+  "parent_checkpoint": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
+  "prereg_commit": "34ef5741861a41f52807986260b86847005c759f",
+  "producer_commit": "79d7bab327d1d032072df36806aa4c02793db10f",
+  "producer_blob": "82ef4ba1a8e270d48a4eed515167bd41f07ac5f8",
+  "producer_sha256": "ca4366126dabca257bd9f5d7f82688c0d74d9283e7a4968c6f5fd8250428fc21",
+  "official_raw_result_sha256": "92e3a745908252ae5b80712a90602523bb7aa01d8d653fc77169b654f6b4d232",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "signal_surface": "NATIVE_DUKAS_M5_MID",
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "signal_definition": {
+    "timeframe_seconds": 300,
+    "swing_length": 5,
+    "trend": "HH bullish BOS / LL bearish BOS",
+    "event": "wick through opposing confirmed swing + close reclaim + directional candle",
+    "entry": "first P75 tick at/after completed bar right edge"
+  },
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "diagnostics": {
+    "m5_bars": 3036,
+    "signals": 113,
+    "signals_per_day": 8.071428571428571
+  },
+  "configs": {
+    "C01_M5_SWING5_BOS_SWEEP_RECLAIM": {
+      "metrics": {
+        "signals": 113,
+        "busy_skips": 0,
+        "spread_rejects": 0,
+        "trades": 113,
+        "distinct_days": 11,
+        "long": 51,
+        "short": 62,
+        "official_wins": 62,
+        "gross_profit": 15.72,
+        "gross_loss": -26.69,
+        "direct_net_usd": -12.1,
+        "exit_reasons": {
+          "STOP": 109,
+          "MAX_HOLD": 4,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_20": true,
+        "minimum_distinct_days_5": true,
+        "direct_net_min_minus_1": false,
+        "screen_pass": false,
+        "strong_pass": false
+      }
+    }
+  },
+  "finding": {
+    "leading_config": null,
+    "decision": "RETIRE_BOSLS_STAGE_A_NO_EXECUTABLE_SURVIVOR",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "mql5_authorized": false
+}
