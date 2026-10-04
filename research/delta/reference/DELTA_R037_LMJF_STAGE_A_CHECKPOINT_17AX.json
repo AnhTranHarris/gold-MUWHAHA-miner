@@ -1,0 +1,69 @@
+{
+  "schema": "delta-r037-lmjf-stage-a-screen-17ax-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_LEE_MYKLAND_JUMP_FADE_STAGE_A_SCREEN",
+  "family": "R037-LMJF-v1",
+  "parent_checkpoint": "R037_DCOS_STAGE_A_SCREEN_CHECKPOINT_17AW",
+  "prereg_commit": "8acec24b7ccf3bbbf30f5733fe45ccefa3b73a83",
+  "producer_commit": "9ef4e75f841371e2b32ee98e6322e2c12b7c3b24",
+  "producer_blob": "ae777b4d6f4b7fa28dfcfed85634c0901848dd1e",
+  "producer_sha256": "0a2acdb38a965836ab93e26c9780e1afa017a779e95f3aa331e24d5e4bde9e94",
+  "official_raw_result_sha256": "243f27fc455a2da44329e4e4b769cc7b1e99f9e33bd3073ff77a78f0c85308d2",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "signal_surface": "NATIVE_DUKAS_M1_MID",
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "jump_test": {
+    "bar_seconds": 60,
+    "K": 603,
+    "n_gumbel": 1440,
+    "beta_99": 4.6001,
+    "c": 0.7978845608028654,
+    "profile": "fade jump sign"
+  },
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "diagnostics": {
+    "m1_bars": 15180,
+    "jump_signals": 58,
+    "signals_per_day": 4.142857142857143,
+    "median_jump_stat": 7.949262149692936,
+    "median_abs_return_bps": 16.366604253020725,
+    "median_inter_event_seconds": 2880.039
+  },
+  "configs": {
+    "C01_M1_LM99_JUMP_FADE": {
+      "metrics": {
+        "signals": 58,
+        "busy_skips": 0,
+        "spread_rejects": 0,
+        "trades": 58,
+        "distinct_days": 13,
+        "long": 36,
+        "short": 22,
+        "official_wins": 21,
+        "gross_profit": 6.96,
+        "gross_loss": -21.85,
+        "direct_net_usd": -15.47,
+        "exit_reasons": {
+          "STOP": 58,
+          "MAX_HOLD": 0,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_20": true,
+        "minimum_distinct_days_5": true,
+        "direct_net_min_minus_1": false,
+        "screen_pass": false,
+        "strong_pass": false
+      }
+    }
+  },
+  "finding": {
+    "leading_config": null,
+    "decision": "RETIRE_LMJF_STAGE_A_NO_EXECUTABLE_SURVIVOR",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "mql5_authorized": false
+}
