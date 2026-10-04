@@ -4,8 +4,8 @@
   "branch": "delta",
   "unit": "R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION",
   "parent_durable_unit": "R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "phase": "MONTHLY_COMPUTE_COMPLETE_AGGREGATION_PENDING",
+  "phase_rank": 3,
   "prereg": {
     "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_EVIDENCE_16C.json",
     "commit": "877826057745a7e129778911ce0323fcecb58b83"
@@ -25,9 +25,10 @@
       "2026-03",
       "2026-04",
       "2026-05",
-      "2026-06"
+      "2026-06",
+      "2026-07"
     ],
-    "next_month": "2026-07",
+    "next_month": null,
     "monthly_results": {
       "2026-02": {
         "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_2026_02_16C.json",
@@ -78,12 +79,22 @@
         "net_delta": -2.78,
         "plsr_entries": 18,
         "plsr_net": -2.78
+      },
+      "2026-07": {
+        "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_2026_07_16C.json",
+        "commit": "e6213b72f39e405c5f850a1f6de5ef3e4bc1224a",
+        "raw_result_sha256": "c305c1f781f5755586ee08461d72273e8fdea80eb230c9085d662083861da9f4",
+        "trade_delta": 22,
+        "official_win_delta": 10,
+        "net_delta": -0.92,
+        "plsr_entries": 22,
+        "plsr_net": -1.88
       }
     }
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read 16C progress. February-June are committed. Run only July 2026 next; never rerun an already committed monthly result solely because chat delivery timed out.",
+    "resume_first_action": "All 16C monthly computes February-July are committed. Do not rerun them. Aggregate the six immutable monthly results, persist report/manifest/workbook, then advance CURRENT_STATE last.",
     "idempotency_rule": "Each month result is create-only and durable before the next month starts."
   },
   "last_verified_ci": {
