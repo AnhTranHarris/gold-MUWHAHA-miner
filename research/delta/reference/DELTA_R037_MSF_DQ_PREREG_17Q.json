@@ -1,0 +1,34 @@
+{
+  "schema": "delta-r037-msf-dq-prereg-v1",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "checkpoint_target": "R037_MSF_DQ_STAGE_A_PRESCREEN_CHECKPOINT_17Q",
+  "family": "R037-MSF-DQ-v1",
+  "status": "FROZEN_BEFORE_REPLAY",
+  "parent_clue": "R037-MSF-C04_M5_BOS_FVG_RETEST",
+  "hypothesis": "The near-neutral 17E M5 BOS+FVG clue improves when the BOS/FVG creation bar shows event-relative displacement intensity, while all original structure/FVG/retest semantics remain unchanged.",
+  "source_basis": [
+    "https://www.mql5.com/en/articles/23341",
+    "https://www.mql5.com/en/articles/21212"
+  ],
+  "configs": {
+    "C01": "BOS/FVG break-bar body > immediately preceding M5 bar body",
+    "C02": "BOS/FVG break-bar full range > immediately preceding M5 bar range",
+    "C03": "BOS/FVG break-bar body > body of bar two positions earlier",
+    "C04": "BOS/FVG break-bar body > both immediately preceding and two-bars-earlier bodies"
+  },
+  "gates": {
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "direct_net_min_usd": -2
+  },
+  "forbidden": [
+    "absolute threshold sweep",
+    "ATR multiplier tuning",
+    "session or side rescue",
+    "retest-rule tuning",
+    "August",
+    "MQL5"
+  ],
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
