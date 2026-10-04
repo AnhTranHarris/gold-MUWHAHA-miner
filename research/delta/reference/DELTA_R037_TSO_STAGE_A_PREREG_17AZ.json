@@ -1,0 +1,59 @@
+{
+  "schema": "delta-r037-tso-stage-a-prereg-17az-v1",
+  "status": "PREREGISTERED",
+  "unit": "R037_TURTLE_SOUP_SOURCE_DEFAULT_STAGE_A_SCREEN",
+  "family": "R037-TSO-v1",
+  "parent_checkpoint": "R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY",
+  "research_question": "Do source-default Turtle Soup false-breakout filters on completed M5 XAUUSD bars isolate sufficiently strong post-reclaim reversals to survive frozen P75 execution over 30 seconds?",
+  "source_basis": [
+    "MetaQuotes MQL5 Part 50 defines Turtle Soup as fading failed breaks of N-bar highs/lows after a meaningful sweep and confirmed close back inside.",
+    "Source defaults: lookback 20 bars, minimum extreme age 4 bars, sweep window 1 bar, confirmation closes 1, reversal body required, depth filter enabled, minimum 30 points and 2% of lookback range.",
+    "The detector works once per new bar on closed-bar information."
+  ],
+  "frozen_signal": {
+    "timeframe_seconds": 300,
+    "lookback_bars": 20,
+    "min_extreme_age_bars": 4,
+    "sweep_window_bars": 1,
+    "confirm_close_bars": 1,
+    "require_reversal_body": true,
+    "use_sweep_depth_filter": true,
+    "min_sweep_depth_native_points": 30,
+    "min_sweep_depth_pct_range": 2,
+    "native_point_raw": 1,
+    "sell": "completed bar high above prior 20-bar reference high, close below reference, bearish body, reference high age >=4, sweep depth >=30 native raw and >=2% of lookback range",
+    "buy": "mirror below prior 20-bar reference low",
+    "entry": "first executable P75 tick at/after completed sweep-bar right edge"
+  },
+  "frozen_execution": {
+    "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01,
+    "one_position_at_a_time": true
+  },
+  "gates": {
+    "minimum_trades": 20,
+    "minimum_distinct_days": 5,
+    "ordinary_direct_net_usd": -1,
+    "strong_direct_net_usd": 0
+  },
+  "prohibited": [
+    "lookback sweep",
+    "timeframe sweep",
+    "age/window/confirmation/depth tuning",
+    "session/side/weekday rescue",
+    "extra overlays",
+    "exit retuning",
+    "August access",
+    "MQL5 translation"
+  ],
+  "failure_rule": "If the source-default M5 profile fails supply/day or direct-net gate, retire TSO rather than tune defaults on Stage-A.",
+  "advance_rule": "If it passes, freeze unchanged for independent later-January validation.",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
