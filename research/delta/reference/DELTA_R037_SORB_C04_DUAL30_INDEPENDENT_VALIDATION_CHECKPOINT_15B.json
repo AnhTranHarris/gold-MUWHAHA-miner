@@ -1,0 +1,138 @@
+{
+  "schema": "delta-r037-sorb-c04-dual30-independent-validation-15b-v1",
+  "status": "COMPLETE_INDEPENDENT_VALIDATION_FAIL",
+  "unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION",
+  "parent_checkpoint": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A",
+  "candidate": "R037-C04_DUAL_30",
+  "candidate_retuned": false,
+  "surrogate_parent": "14A_BACKBONE_FIRST_C03_WITH_FROZEN_PROVENANCE_LIMITED_SPECIALISTS",
+  "promotable": false,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "warmup": {
+    "start_ms": 1768348800000,
+    "end_ms_exclusive": 1768737600000,
+    "economic_entries_permitted": false
+  },
+  "holdout": {
+    "start_ms": 1768737600000,
+    "end_ms_exclusive": 1769810391955,
+    "ticks": 4929353
+  },
+  "total_loaded_ticks": 6076533,
+  "specialist_holdout_signal_counts": {
+    "DH03_S06": 1524,
+    "DH05_S06": 537,
+    "DH02_S11": 75,
+    "DH02_S08": 81
+  },
+  "parent_control": {
+    "trades": 13630,
+    "raw_positive_wins": 5984,
+    "official_wins": 5912,
+    "losses": 7646,
+    "p01_hits": 5284,
+    "m30_only_hits": 1430,
+    "owned_exit_suppressed_rearms": 8400,
+    "ordinary_entries": 11606,
+    "gross_profit": 1877.63,
+    "gross_loss": -4734.64,
+    "net_profit": -2857.01,
+    "max_balance_drawdown": 2861.05,
+    "max_equity_drawdown": 2862,
+    "parent_specialist_entries": 2024,
+    "parent_specialist_net": -407.55
+  },
+  "supply": {
+    "proposals": 20,
+    "source_eligible": 19,
+    "distinct_days": 10,
+    "source_rejections": {
+      "REENTERED_RANGE": 1,
+      "SPREAD_GATE": 0
+    },
+    "proposal_long": 9,
+    "proposal_short": 11,
+    "sessions": {
+      "LONDON": 10,
+      "COMEX_GOLD": 10
+    }
+  },
+  "combined": {
+    "trades": 13645,
+    "raw_positive_wins": 5988,
+    "official_wins": 5916,
+    "losses": 7657,
+    "p01_hits": 5285,
+    "m30_only_hits": 1430,
+    "owned_exit_suppressed_rearms": 8401,
+    "ordinary_entries": 11606,
+    "gross_profit": 1878.6,
+    "gross_loss": -4740.86,
+    "net_profit": -2862.26,
+    "max_balance_drawdown": 2866.3,
+    "max_equity_drawdown": 2867.25,
+    "parent_specialist_entries": 2024,
+    "parent_specialist_net": -407.55,
+    "sorb_entries": 15,
+    "sorb_net": -4.72,
+    "sorb_outcomes": {
+      "ACCEPTED": 15,
+      "POSITION_BLOCKED": 3,
+      "PARENT_SAME_TICK_COLLISION": 1,
+      "OTHER_BLOCKED": 0
+    },
+    "sorb_session_contribution": {
+      "LONDON": {
+        "entries": 7,
+        "official_wins": 2,
+        "net_profit": -2.66
+      },
+      "COMEX_GOLD": {
+        "entries": 8,
+        "official_wins": 2,
+        "net_profit": -2.06
+      }
+    }
+  },
+  "decision": {
+    "proposal_supply_ok": true,
+    "incremental_entry_floor_ok": true,
+    "combined_trade_count_not_lower": true,
+    "winner_or_quality_gate_ok": true,
+    "net_not_worse_than_2usd": false,
+    "drawdown_deterioration_within_1pct": true,
+    "screen_pass": false,
+    "strong_screen_pass": false,
+    "trade_delta": 15,
+    "official_win_delta": 4,
+    "gross_profit_delta": 0.97,
+    "gross_loss_delta": -6.22,
+    "net_delta": -5.25,
+    "max_balance_dd_delta_pct": 0.1834990650285734,
+    "max_equity_dd_delta_pct": 0.18343815513626835,
+    "incremental_net_per_sorb_entry": -0.35
+  },
+  "qa": {
+    "parent_final_position": 0,
+    "candidate_final_position": 0,
+    "final_position_flat": true,
+    "august_accessed": false,
+    "deterministic_replay_byte_identical": true
+  },
+  "finding": {
+    "independent_validation_pass": false,
+    "decision": "RETIRE_R037_C04_DUAL_30_NO_RETUNING",
+    "next": "HARVEST_NEXT_INDEPENDENT_ENTRY_SOURCE"
+  },
+  "mql5_authorized": false,
+  "execution_provenance": {
+    "prereg_commit": "619d27ea1095dc991cb5d657d63379dde96248e0",
+    "producer_commit": "10bd1f16f3f4757b652cfe50bc90dab920f134cf",
+    "producer_blob_sha": "87787466855efb1bc5a0602b195299380037e700",
+    "producer_sha256": "560a7e2c8802ab9a14891d2f008efb0fbb9da0c6f68abee02791a708329ac8bd",
+    "local_raw_result_sha256": "334cc40a6a121acfc002bedeb4e7bf5401b92a14b1912cc3185719ca2b8488cb",
+    "repeated_local_raw_result_sha256": "334cc40a6a121acfc002bedeb4e7bf5401b92a14b1912cc3185719ca2b8488cb",
+    "note": "Canonical-data compute used the local DELTA helper harness implementing the committed 15B semantics; the bounded run was repeated and produced byte-identical result JSON."
+  }
+}
