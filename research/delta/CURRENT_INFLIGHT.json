@@ -4,13 +4,13 @@
   "branch": "delta",
   "unit": "R037_PVACVD_FAILED_AUCTION_STAGE_A_SCREEN_CHECKPOINT_17BL_17BN",
   "parent_durable_unit": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
-  "phase": "PREREGISTERED",
-  "phase_rank": 1,
+  "phase": "PRODUCER_COMMITTED",
+  "phase_rank": 2,
   "progress": {
-    "status": "PREREGISTERED",
+    "status": "PRODUCER_COMMITTED",
     "last_completed": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
     "current_candidate": "R037_PVACVD_FAILED_AUCTION_STAGE_A_SCREEN_CHECKPOINT_17BL_17BN",
-    "next": "Commit exact PVACVD producer before official Stage-A compute."
+    "next": "Verify exact committed PVACVD producer blob locally, then run bounded official Stage-A compute."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
@@ -35,5 +35,10 @@
   },
   "prereg": {
     "path": "research/delta/reference/DELTA_R037_PVACVD_FAILED_AUCTION_PREREG_17BL_17BN.json"
+  },
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_pvacvd_failed_auction_17bl_17bn.py",
+    "commit": "1ac1e168216d89721e7316233415559d3738cd39",
+    "blob_sha": "49d3ac127b0698b16d65467ebd51befb6e52711c"
   }
 }
