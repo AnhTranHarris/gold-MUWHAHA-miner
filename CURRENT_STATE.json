@@ -3,12 +3,12 @@
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "branch": "delta",
   "research_scope": "DELTA_ONLY_CLEAN_ROOM",
-  "last_verified_durable_unit": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
+  "last_verified_durable_unit": "R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG",
   "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
   "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD_MANIFEST.json",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG_MANIFEST.json",
   "active_candidate": null,
-  "last_candidate_disposition": "R037-IER-v1 retired after Stage-A supply failure; 5 executable M5 impulse-exhaustion reversal trades across 5 days netted +$1.02 but failed the preregistered 20-trade floor.",
+  "last_candidate_disposition": "17BE TBR, 17BF PCR, and 17BG FAKEY all retired after fixed Stage-A economic failure; no rescue search.",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -31,10 +31,8 @@
     "prior_full_state_preserved_in_git_history": true
   },
   "recovery_pointer_sync": {
-    "inflight_commit": "ab220701a08769426a74230a9210d78f4565acaa",
-    "pointer_commit": "b78fc2cb61056ecabfad15166a90236290a2e262",
-    "status": "IDLE_AT_NEXT_HARVEST",
-    "last_completed": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
+    "status": "FINALIZING_17BE_17BG",
+    "last_completed": "R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG",
     "current_candidate": null,
     "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
   },
@@ -52,5 +50,6 @@
     "side_screen_preserved": "R037_SRHT_STAGE_A_SCREEN_CHECKPOINT_17AY",
     "side_screen_role": "NON_AUTHORITATIVE_PARALLEL_SCREEN_DUE_TIMEOUT_CONCURRENCY",
     "note": "SRHT artifacts remain preserved but do not replace the earlier CI-passed BOSLS 17AY -> Turtle Soup 17AZ chain."
-  }
+  },
+  "search_bias": "controlled-pause continuation / breakout acceptance with natural selectivity and sufficient Stage-A supply; avoid generic reversal-candle permutations and dense generic indicators"
 }
