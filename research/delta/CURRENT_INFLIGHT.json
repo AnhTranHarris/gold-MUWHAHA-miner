@@ -1,53 +1,46 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "COMPLETE",
+  "status": "INFLIGHT",
   "branch": "delta",
-  "unit": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION",
-  "parent_durable_unit": "R037_PLSR_STAGE_A_SCREEN_CHECKPOINT_16A",
-  "phase": "COMPLETE",
-  "phase_rank": 7,
+  "unit": "R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION",
+  "parent_durable_unit": "R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B",
+  "phase": "PRODUCER_COMMITTED",
+  "phase_rank": 2,
   "prereg": {
-    "path": "research/delta/reference/DELTA_R037_PLSR_C01_INDEPENDENT_VALIDATION_EVIDENCE_16B.json",
-    "commit": "a135f5c16718af43de7022cfc35d60bd0b87e0e5"
+    "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_EVIDENCE_16C.json",
+    "commit": "877826057745a7e129778911ce0323fcecb58b83"
   },
   "producer": {
-    "path": "research/delta/experiments/delta_r037_plsr_c01_independent_validation.py",
-    "commit": "ccef1cd460d585857b19b30532fd91e7d2ccc7de",
-    "blob_sha": "382b641e1b8598b4296da52401ec9ce795d1931a"
+    "path": "research/delta/experiments/delta_r037_plsr_c01_monthly_validation.py",
+    "commit": "e8ab95ddee0ac07cc8b223e6b16ca56dd890bf0d",
+    "blob_sha": "46d01ab6800eabb3c2f0a87d71ee999ac03eeba6",
+    "sha256": "7405e85cb693ebbaa4a163e9d4d86c45606649139771a8fef68ef108d99860e6"
   },
-  "result": {
-    "path": "research/delta/reference/DELTA_R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B.json",
-    "commit": "bdf5c44c16488b6d53c2a9999ebfc1babd66dede",
-    "blob_sha": "2544c987b14f1653e498129ec0e1328b587e3506",
-    "sha256": "c4ac99a81b1806f559c9d7ed8a3ba34b5fe11fac469c72ec39b33de35a8c1b5a"
-  },
-  "report": {
-    "path": "research/delta/research/DELTA_R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B.md",
-    "commit": "dc61808d28208bf9a0e71f597bd761adc46378fa",
-    "blob_sha": "827454673146f2171160226bd976e9fe253e7bfc"
-  },
-  "manifest": {
-    "path": "research/delta/artifacts/DELTA_R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B_MANIFEST.json",
-    "commit": "345319a6e5fd01f4bfa3fb94195556baa732611a",
-    "blob_sha": "7b0dcfeb39adbc96be979f5f9a2b4058a192a6e6"
+  "result": null,
+  "report": null,
+  "manifest": null,
+  "progress": {
+    "completed_months": [],
+    "next_month": "2026-02",
+    "monthly_results": {}
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read CURRENT_STATE. 16B is durable; resume only R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION.",
-    "idempotency_rule": "Never rerun completed compute solely because chat delivery timed out."
+    "resume_first_action": "Read 16C progress. Run only the first incomplete month from 2026-02..2026-07; never rerun an already committed monthly result solely because chat delivery timed out.",
+    "idempotency_rule": "Each month result is create-only and durable before the next month starts."
   },
   "last_verified_ci": {
-    "commit": "0694849bef087f7bffe9ac33e68b8b9a4470840f",
-    "run_id": 37166233147,
+    "commit": "50f64cef0924554cea05ac80be81c9c48339bd5c",
+    "run_id": 37170948476,
     "conclusion": "success"
   },
   "august_2026": "SEALED",
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN",
-    "checkpoint": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A",
-    "current_state_next": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION",
-    "manifest": "research/delta/artifacts/DELTA_R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A_MANIFEST.json"
+    "unit": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION",
+    "checkpoint": "R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B",
+    "current_state_next": "R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION",
+    "manifest": "research/delta/artifacts/DELTA_R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B_MANIFEST.json"
   }
 }
