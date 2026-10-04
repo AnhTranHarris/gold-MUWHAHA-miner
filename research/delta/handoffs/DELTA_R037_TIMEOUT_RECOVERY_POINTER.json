@@ -11,39 +11,32 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION_CHECKPOINT_17AF",
+    "last_verified_durable_unit": "R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG",
     "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
     "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION_CHECKPOINT_17AF_MANIFEST.json"
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG_MANIFEST.json"
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
     "status": "IDLE",
     "phase_rank": 0,
-    "parent_durable_unit": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION_CHECKPOINT_17AF",
+    "parent_durable_unit": "R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_PDHSR_C02_MONTHLY_VALIDATION_CHECKPOINT_17AF.json",
-        "commit": "809f99c8f70a03ee27f1ce912277f77cecc1e8e5"
+        "path": "research/delta/reference/DELTA_R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG.json",
+        "commit": "566cde906057ee7195f2069494429ca1707d9a20"
       },
       {
-        "path": "research/delta/research/DELTA_R037_PDHSR_C02_MONTHLY_VALIDATION_CHECKPOINT_17AF.md",
-        "commit": "b4625cff0273195cfe791196e2c2a7f4349c0a5e"
+        "path": "research/delta/research/DELTA_R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG.md",
+        "commit": "d5095b5a3a84758f7a25b1da56acdd220d707078"
       },
       {
-        "path": "research/delta/artifacts/DELTA_R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION_CHECKPOINT_17AF_MANIFEST.json",
-        "commit": "f48b5113894cdb65b005801605bd3fb94ef31ae0"
+        "path": "research/delta/artifacts/DELTA_R037_PRN_STAGE_A_SCREEN_CHECKPOINT_17AG_MANIFEST.json",
+        "commit": "feb5cec71b12c19db732f85b418b5525c561842a"
       }
     ],
-    "next_action": "Preregister next independent entry-source harvest; do not retune retired C02.",
-    "completed_months": [
-      "2026-02",
-      "2026-03",
-      "2026-04",
-      "2026-05",
-      "2026-06",
-      "2026-07"
-    ],
+    "next_action": "Preregister next independent entry-source harvest; prefer displacement/state-shift confirmation over naked sweep/reclaim.",
+    "completed_months": [],
     "next_month": null
   },
   "timeout_recovery_algorithm": [
