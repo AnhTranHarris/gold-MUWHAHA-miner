@@ -1,0 +1,202 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_CHECKPOINT_17AD",
+  "status": "VERIFIED_STRONG_STAGE_A_SURVIVOR_ADVANCE_INDEPENDENT_VALIDATION",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_COMEX_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AC",
+  "hypothesis": "A first sweep of the previous available UTC trading-day high/low followed by causal reclaim can identify a stronger short-horizon reversal source than plain session opening-range breakout under the frozen 30-second lifecycle.",
+  "falsification_condition": "No preregistered confirmation lane passes both frozen supply and nonnegative strong-pass economic gates.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "17AD PDH/PDL source proposals",
+    "reference_count": 12,
+    "minimum_count": 8,
+    "minimum_retention_fraction": 0.5,
+    "owner_numeric_floor_defined": true,
+    "note": "C02 retained 10/12 eligible and passed; C03 retained 7 and prescreen only."
+  },
+  "primary_metrics": {
+    "entry_quality": "official wins/direct net by frozen causal confirmation lane",
+    "hold_persistence": "30s frozen",
+    "economics": "source-only direct net",
+    "gross_loss_drawdown": "not promotion-tested",
+    "activity": "proposals/eligible/distinct days"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_pdh_pdl_sweep_reclaim_17ad.py",
+      "commit": "1d286c88583b7c3208bd338d734749df439c2897",
+      "blob_sha": "4a30f52c33d86120940b7b6f6fa7cc7c908982fc",
+      "file_sha256": "008cf1c703037e3a864560a3753ab8a1b7ab97b05152aa45d73691f5458f101e"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "prior_day_definition": "most recent prior UTC trading day containing canonical ticks",
+      "sweep": "first strict tick breach of PDH or PDL",
+      "configs": [
+        "C01_TICK_RECLAIM",
+        "C02_S5_CLOSE_RECLAIM",
+        "C03_S5_RECLAIM_PLUS_MSS5"
+      ],
+      "selected_candidate": "C02_S5_CLOSE_RECLAIM",
+      "max_hold_seconds": 30,
+      "spread_gate_points": 25,
+      "numeric_retuning": false,
+      "session_filter": false,
+      "side_filter": false,
+      "weekday_filter": false
+    },
+    "feature_order": [
+      "previous trading-day high/low",
+      "first strict sweep",
+      "causal reclaim confirmation",
+      "spread gate",
+      "30s execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "2026-01-01T00:00Z/2026-01-18T12:00Z"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Stage-A screen; later-Jan remains independent validation"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas"
+    ],
+    "crash_safety": {
+      "timeout_seconds": 60,
+      "atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "first_local_draft_rejected_on_blob_mismatch": true,
+      "exact_git_blob_verified": "4a30f52c33d86120940b7b6f6fa7cc7c908982fc",
+      "result_sha256": "2696aa72d77f3a13811a20ab223feb238ebfcc9813cd5ba3a3d0d4cbf0ad6233",
+      "runtime_seconds": 3.544
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "17AD prereg",
+      "path": "research/delta/reference/DELTA_R037_PDH_PDL_SWEEP_RECLAIM_PREREG_17AD.json",
+      "commit": "e37857a09553454b4477a6bc00003288ce3fd775",
+      "blob_sha": "e1a6a43963cf5149a0525ab1b08c57bc21147b2d"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_PDH_PDL_SWEEP_RECLAIM_CHECKPOINT_17AD.json",
+      "commit": "45e3347bd2b0bb59a4947a1885bd85ba32eb7e71",
+      "blob_sha": "e723c5f8d3a661f47ec7a92455f7d070ff964d74",
+      "official_raw_result_sha256": "2696aa72d77f3a13811a20ab223feb238ebfcc9813cd5ba3a3d0d4cbf0ad6233"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_PDH_PDL_SWEEP_RECLAIM_CHECKPOINT_17AD.md",
+      "commit": "e1d35421a6c55c0ce27346d8716d4b676c70d517",
+      "blob_sha": "34a37e205b3dd9940207cd2834386c5f1ab95c2c"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "C01",
+      "C02",
+      "C03"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "qa": [
+    "Canonical January hash and 4,205,709 Stage-A ticks verified.",
+    "A non-matching local draft was rejected before compute.",
+    "Exact local execution producer matched committed GitHub blob 4a30f52c33d86120940b7b6f6fa7cc7c908982fc and py_compile passed.",
+    "Official compute exit code 0 in 3.544 seconds.",
+    "C01 12 trades / 5 wins / -$2.27: fail.",
+    "C02 10 trades / 4 wins / +$1.58: STRONG PASS.",
+    "C03 7 trades / 3 wins / -$1.06: prescreen only.",
+    "C02 rejected two relost-at-execution observations causally.",
+    "Workbook A166:H173 readback PASS.",
+    "No post-result retune; August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_pdh_pdl_sweep_reclaim_17ad.py",
+    "command": "python research/delta/experiments/delta_r037_pdh_pdl_sweep_reclaim_17ad.py --source <canonical_january_gzip> --output <17AD>",
+    "timing_semantics": "Prior available UTC trading-day high/low from P75 Bid; first strict current-day breach; C02 waits completed S5 close back inside, then verifies execution quote remains reclaimed.",
+    "expected_fingerprints": {
+      "C01": {
+        "proposals": 12,
+        "trades": 12,
+        "wins": 5,
+        "net": -2.27
+      },
+      "C02": {
+        "proposals": 12,
+        "eligible": 10,
+        "trades": 10,
+        "wins": 4,
+        "net": 1.58
+      },
+      "C03": {
+        "proposals": 12,
+        "eligible": 7,
+        "trades": 7,
+        "wins": 3,
+        "net": -1.06
+      }
+    },
+    "selected_interpretation": "C02_S5_CLOSE_RECLAIM"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen",
+    "ownership_scheduler_spec": "one/day",
+    "session_dst_spec": "UTC-day levels",
+    "risk_spec": "frozen",
+    "trade_count_parity_spec": "not eligible until independent validation",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_COMEX_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AC",
+  "drive_artifacts": [
+    {
+      "name": "working workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "70 R037 Prereg",
+      "range": "A166:H173",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "e37857a09553454b4477a6bc00003288ce3fd775",
+    "1d286c88583b7c3208bd338d734749df439c2897",
+    "13aa17ae35b80d66f8c3732068e6576872ed571b",
+    "45e3347bd2b0bb59a4947a1885bd85ba32eb7e71",
+    "e1d35421a6c55c0ce27346d8716d4b676c70d517"
+  ],
+  "next_unit": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION"
+}
