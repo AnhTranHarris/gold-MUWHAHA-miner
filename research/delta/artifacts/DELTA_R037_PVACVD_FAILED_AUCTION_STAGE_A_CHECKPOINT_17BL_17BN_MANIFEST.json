@@ -1,0 +1,176 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_PVACVD_FAILED_AUCTION_STAGE_A_SCREEN_CHECKPOINT_17BL_17BN",
+  "status": "VERIFIED_FAST_CAUSAL_PRESCREEN_NO_SURVIVOR",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
+  "hypothesis": "Prior-day value-area edges plus completed failed-auction confirmation and optional directional tick-delta sign can create executable 30-second XAUUSD reversal persistence.",
+  "falsification_condition": "Every fixed profile fails the >=20 trades / >=5 distinct days / nonnegative direct-net gate.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Three fixed preregistered PVACVD profiles",
+    "reference_count": 3,
+    "minimum_count": 3,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "All three profiles executed unchanged; no rescue."
+  },
+  "primary_metrics": {
+    "17BL": "350 trades / 10 days / 159 wins / -$72.29",
+    "17BM": "272 trades / 10 days / 120 wins / -$59.55",
+    "17BN": "76 trades / 10 days / 42 wins / -$10.09"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_pvacvd_failed_auction_17bl_17bn.py",
+      "commit": "1ac1e168216d89721e7316233415559d3738cd39",
+      "blob_sha": "49d3ac127b0698b16d65467ebd51befb6e52711c",
+      "file_sha256": "ae6c6d90380f77b41d973539d824a25b726709a8d7ca03f0da2e671324b65b38"
+    }
+  ],
+  "helpers": [],
+  "models": [],
+  "config": {
+    "parameters": {
+      "numeric_retuning": false,
+      "stage_a_surface": "DUKAS_COINEXX_LIKE_P75",
+      "value_area_fraction": 0.7,
+      "row_size_raw": 10,
+      "min_trades": 20,
+      "min_distinct_days": 5,
+      "advance_net_usd_min": 0
+    },
+    "feature_order": [
+      "prior-day tick-count profile",
+      "70% value area",
+      "completed failed auction",
+      "optional delta sign",
+      "first P75 tick",
+      "frozen 30-second lifecycle"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "fixed Stage-A fast prescreen only; no fitting"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "output_write": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_preexecution_verification": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "PVACVD preregistration",
+      "path": "research/delta/reference/DELTA_R037_PVACVD_FAILED_AUCTION_PREREG_17BL_17BN.json",
+      "commit": "ef0f21e67d6c389024f88d60bd6768d1e2d3c191"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "prior-day value profile",
+      "native S5/M1 delta",
+      "P75 execution"
+    ]
+  },
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_PVACVD_FAILED_AUCTION_STAGE_A_CHECKPOINT_17BL_17BN.json",
+      "result_sha256": "890c96a49e58780690ed7ef93797537a3d92f66f50e1aabad70495ec64846ea5"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_PVACVD_FAILED_AUCTION_STAGE_A_CHECKPOINT_17BL_17BN.md"
+    }
+  ],
+  "qa": [
+    "Canonical January SHA and Stage-A tick count verified.",
+    "Exact producer blob matched local official execution bytes.",
+    "Official compute exit code 0 under hard timeout.",
+    "Atomic result SHA verified.",
+    "All three fixed profiles executed unchanged.",
+    "No profile reached nonnegative direct net.",
+    "Workbook A169:H176 readback PASS.",
+    "No post-result rescue.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_pvacvd_failed_auction_17bl_17bn.py",
+    "command": "python research/delta/experiments/delta_r037_pvacvd_failed_auction_17bl_17bn.py --source <canonical_january_gzip> --output <checkpoint_json>",
+    "timing_semantics": "Prior completed UTC-day profile only; completed S5/M1 confirmation; first executable P75 tick at/after bar end; frozen one-position-at-a-time 30-second evaluator.",
+    "expected_fingerprints": {
+      "17BL": {
+        "trades": 350,
+        "wins": 159,
+        "net_usd": -72.29
+      },
+      "17BM": {
+        "trades": 272,
+        "wins": 120,
+        "net_usd": -59.55
+      },
+      "17BN": {
+        "trades": 76,
+        "wins": 42,
+        "net_usd": -10.09
+      }
+    },
+    "selected_interpretation": "NO_SURVIVOR_DELTA_SIGN_REDUCES_LOSS_BUT_DOES_NOT_CREATE_EDGE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — family retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "DELTA frozen P75 semantics.",
+    "ownership_scheduler_spec": "No integration.",
+    "session_dst_spec": "Not candidate-specific.",
+    "risk_spec": "Fixed 0.01 research semantics unchanged.",
+    "trade_count_parity_spec": "Not applicable; family retired.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "github_commits": [
+    "ef0f21e67d6c389024f88d60bd6768d1e2d3c191",
+    "1ac1e168216d89721e7316233415559d3738cd39"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A169:H176"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+}
