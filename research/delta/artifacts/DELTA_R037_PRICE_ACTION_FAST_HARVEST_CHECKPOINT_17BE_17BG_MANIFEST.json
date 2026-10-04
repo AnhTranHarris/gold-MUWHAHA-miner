@@ -1,0 +1,178 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG",
+  "status": "VERIFIED_FAST_CAUSAL_PRESCREEN_NO_SURVIVOR",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
+  "hypothesis": "Completed-bar price-action patterns with natural selectivity can produce immediate 30-second XAUUSD persistence under P75 execution.",
+  "falsification_condition": "Each preregistered family fails either >=20 trades / >=5 days or direct net >= -$1.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Three fixed preregistered independent source families",
+    "reference_count": 3,
+    "minimum_count": 3,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "All three fixed profiles retained; no rescue sweeps."
+  },
+  "primary_metrics": {
+    "17BE_TBR9_21": "565 trades / 267 wins / -$107.15",
+    "17BF_PCR": "2253 trades / 963 wins / -$498.61",
+    "17BG_FAKEY": "34 trades / 15 wins / -$4.89"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_price_action_fast_harvest_17be_17bg.py",
+      "commit": "beb578b4f94cc0123ef817eb0d0d195e20a5b0d0",
+      "blob_sha": "d3d63f6ef21c57c9a1d3488766d49e4cc1025037",
+      "file_sha256": "b4f4812734a6a094ed7f446a3615cc14864ffe0d354175e88c17572004cdcd8b"
+    }
+  ],
+  "helpers": [],
+  "models": [],
+  "config": {
+    "parameters": {
+      "numeric_retuning": false,
+      "stage_a_surface": "DUKAS_COINEXX_LIKE_P75",
+      "families": [
+        "17BE_TBR9_21",
+        "17BF_PCR",
+        "17BG_FAKEY"
+      ]
+    },
+    "feature_order": [
+      "completed native bars",
+      "source-specific pattern confirmation",
+      "first executable P75 tick",
+      "frozen 30-second lifecycle"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "fixed Stage-A fast prescreen only; no fitting"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "output_write": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_preexecution_verification": true,
+      "phase_checkpointing": "CURRENT_INFLIGHT updated after prereg, producer and result"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "Batch preregistration",
+      "path": "research/delta/reference/DELTA_R037_PRICE_ACTION_FAST_HARVEST_PREREG_17BE_17BG.json",
+      "commit": "95a7ed14925c4acba1ca19fd6db78a21c5ab33f6"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG.json",
+      "blob_sha": "354164ad154bc0985676b01e945c3a7ca28dc59a",
+      "result_sha256": "42d8511ec8077c196e69b2750438b3ac0a3c55244cc1e6663ee28a3e25b8aa8b"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG.md",
+      "blob_sha": "c87f3a5f05ecf3f196b6c0d8cfbbbd4a719f9339"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "M1/M5 native completed-bar event ledgers",
+      "P75 executable quote surface"
+    ]
+  },
+  "qa": [
+    "Canonical January SHA and Stage-A tick count verified.",
+    "Local producer Git blob matched committed GitHub blob exactly before compute.",
+    "All three fixed profiles executed in one bounded run under 120 seconds.",
+    "No numeric/timeframe/session/side/exit rescue after results.",
+    "Workbook tab 69 A147:H153 readback PASS.",
+    "No family passed the direct-net gate despite adequate supply.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_price_action_fast_harvest_17be_17bg.py",
+    "command": "python research/delta/experiments/delta_r037_price_action_fast_harvest_17be_17bg.py --source <canonical_january_gzip> --output <checkpoint_json>",
+    "timing_semantics": "All signals use only completed bars; entry at first executable P75 tick at/after signal-bar right edge.",
+    "expected_fingerprints": {
+      "17BE_TBR9_21": {
+        "trades": 565,
+        "wins": 267,
+        "net_usd": -107.15
+      },
+      "17BF_PCR": {
+        "trades": 2253,
+        "wins": 963,
+        "net_usd": -498.61
+      },
+      "17BG_FAKEY": {
+        "trades": 34,
+        "wins": 15,
+        "net_usd": -4.89
+      }
+    },
+    "selected_interpretation": "NO_SURVIVOR_SHIFT_SEARCH_TO_CONTROLLED_PAUSE_CONTINUATION"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — batch retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "DELTA frozen P75 semantics.",
+    "ownership_scheduler_spec": "No integration.",
+    "session_dst_spec": "DELTA frozen semantics unchanged.",
+    "risk_spec": "Fixed 0.01 research semantics unchanged.",
+    "trade_count_parity_spec": "Not applicable; families retired.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A147:H153"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "95a7ed14925c4acba1ca19fd6db78a21c5ab33f6",
+    "beb578b4f94cc0123ef817eb0d0d195e20a5b0d0",
+    "133e456fc5997cf6f2dca0760b9ef271fd65244d",
+    "1cb43887b08704a2011ebe2efbf5d91a80f57366",
+    "fcd2e9f746f20e34ff0a788a594fc14835174ba7"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
