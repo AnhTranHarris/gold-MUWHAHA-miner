@@ -1,20 +1,20 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "ACTIVE",
+  "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_LEE_MYKLAND_JUMP_FADE_STAGE_A_SCREEN",
-  "parent_durable_unit": "R037_DCOS_STAGE_A_SCREEN_CHECKPOINT_17AW",
-  "phase": "PRODUCER_VERIFIED",
-  "phase_rank": 3,
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "parent_durable_unit": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
+  "phase": "IDLE",
+  "phase_rank": 0,
   "progress": {
-    "status": "ACTIVE",
-    "last_completed": "R037_DCOS_STAGE_A_SCREEN_CHECKPOINT_17AW",
-    "current_candidate": "R037-LMJF-v1",
-    "next": "Run official LMJF Stage-A compute with exact producer blob ae777b4d6f4b7fa28dfcfed85634c0901848dd1e under 120-second timeout."
+    "status": "IDLE",
+    "last_completed": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
+    "current_candidate": null,
+    "next": "Harvest next independent entry source requiring confirmed post-event structural rejection/reclaim."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "LMJF 17AX producer is byte-verified: commit 9ef4e75f841371e2b32ee98e6322e2c12b7c3b24, blob ae777b4d6f4b7fa28dfcfed85634c0901848dd1e, local SHA-256 0a2acdb38a965836ab93e26c9780e1afa017a779e95f3aa331e24d5e4bde9e94. If result absent, run official compute only.",
+    "resume_first_action": "LMJF 17AX is complete and retired; do not rerun. Harvest the next independent structural state-transition source.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
@@ -26,9 +26,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_DCOS_STAGE_A_SCREEN_CHECKPOINT_17AW",
-    "checkpoint": "R037_DCOS_STAGE_A_SCREEN_CHECKPOINT_17AW",
+    "unit": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
+    "checkpoint": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
     "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "manifest": "research/delta/artifacts/DELTA_R037_DCOS_STAGE_A_SCREEN_CHECKPOINT_17AW_MANIFEST.json"
+    "manifest": "research/delta/artifacts/DELTA_R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX_MANIFEST.json"
   }
 }
