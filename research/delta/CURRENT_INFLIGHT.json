@@ -1,27 +1,15 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "INFLIGHT",
+  "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_AND_SORB_READINESS_DECISION",
-  "parent_durable_unit": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A",
-  "phase": "REPORT_COMMITTED",
-  "phase_rank": 4,
-  "prereg": {
-    "path": "research/delta/reference/DELTA_R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_SORB_READINESS_EVIDENCE_14B.json",
-    "sha256": "e3703f0caf1f64711d9fdaeaf54ce14dcaf673e3c5e323d013032bfb1cb3b83c"
-  },
-  "producer": {
-    "path": "research/delta/experiments/delta_r037_r032_specialist_parent_provenance_sorb_readiness_decision.py",
-    "sha256": "62bcbd79b06467267bc08263e1a1c1c2e44c85983a78b9c09262a1d8a62c3dca"
-  },
-  "result": {
-    "path": "research/delta/reference/DELTA_R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_DECISION_CHECKPOINT_14B.json",
-    "sha256": "c7df97c98589b42beff7d7ce5d53c176d434fe6dda5b9fb0499c65dae0bf17fe"
-  },
-  "report": {
-    "path": "research/delta/research/DELTA_R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_CHECKPOINT_14B.md",
-    "commit": "1369c27c440d64520d7f382aa85c193cb10bd939"
-  },
+  "unit": null,
+  "parent_durable_unit": "R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_CHECKPOINT_14B",
+  "phase": "IDLE",
+  "phase_rank": 0,
+  "prereg": null,
+  "producer": null,
+  "result": null,
+  "report": null,
   "manifest": null,
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
@@ -38,9 +26,9 @@
   "sorb_integrated_replay_started": false,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_RECONSTRUCTION",
-    "checkpoint": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A",
-    "current_state_next": "R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_AND_SORB_READINESS_DECISION",
-    "manifest": "research/delta/artifacts/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A_MANIFEST.json"
+    "unit": "R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_AND_SORB_READINESS_DECISION",
+    "checkpoint": "R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_CHECKPOINT_14B",
+    "current_state_next": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN",
+    "manifest": "research/delta/artifacts/DELTA_R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_CHECKPOINT_14B_MANIFEST.json"
   }
 }
