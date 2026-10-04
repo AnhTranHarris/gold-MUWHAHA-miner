@@ -11,18 +11,18 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_PLSR_STAGE_A_SCREEN_CHECKPOINT_16A",
-    "current_phase": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION_NEXT",
-    "first_incomplete_unit": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PLSR_STAGE_A_CHECKPOINT_16A_MANIFEST.json",
-    "current_state_commit": "PENDING_THIS_ATOMIC_CURSOR_COMMIT",
+    "last_verified_durable_unit": "R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B",
+    "current_phase": "R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION_NEXT",
+    "first_incomplete_unit": "R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B_MANIFEST.json",
+    "current_state_commit": "ed607f78a7cc66d1b9c4d3c194879131bf410c70",
     "current_state_ci_run": null,
     "current_state_ci_conclusion": "PENDING"
   },
   "in_flight_unit": {
     "unit": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION",
-    "status": "MANIFEST_COMMITTED",
-    "phase_rank": 5,
+    "status": "COMPLETE",
+    "phase_rank": 7,
     "parent_durable_unit": "R037_PLSR_STAGE_A_SCREEN_CHECKPOINT_16A",
     "committed_artifacts": [
       {
@@ -50,7 +50,7 @@
         "blob_sha": "7b0dcfeb39adbc96be979f5f9a2b4058a192a6e6"
       }
     ],
-    "next_action": "Advance CURRENT_STATE to durable 16B after verifying workbook readback/result SHA; then start 16C month-by-month validation."
+    "next_action": "Read CURRENT_STATE; 16B is durable. Start only R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
