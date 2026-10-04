@@ -1,0 +1,71 @@
+{
+  "schema": "delta-r037-breaker-block-retest-prereg-17cc-17cd-v1",
+  "status": "PREREGISTERED_BEFORE_PRODUCER",
+  "unit": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
+  "family": "R037-BBR-v1",
+  "parent_checkpoint": "R037_QUASIMODO_SOURCE_DEFAULT_STAGE_A_SCREEN_CHECKPOINT_17CA_17CB",
+  "research_question": "Does the source-default MetaQuotes breaker-block invalidation -> move-away -> swing-validated retest entry grammar produce positive frozen 30-second XAUUSD persistence with adequate activity on M5 or M15?",
+  "source_basis": [
+    {
+      "source": "MQL5 Part 35: Creating a Breaker Block Trading System",
+      "url": "https://www.mql5.com/en/articles/19638",
+      "fixed_rules": [
+        "7-bar consolidation",
+        "50-point adjacent high/low tolerance",
+        "3 bars after breakout",
+        "1.0x consolidation-range impulse",
+        "swing validation enabled",
+        "50-point move-away",
+        "invalidated OB flips breaker direction",
+        "retest requires zone touch and close back beyond near boundary",
+        "post-invalidation higher-high/lower-low swing validation"
+      ]
+    },
+    {
+      "source": "MQL5 Part 48: Order Blocks, Inducement, Break of Structure",
+      "url": "https://www.mql5.com/en/articles/22078",
+      "fixed_bridge": [
+        "300-bar deterministic OB extension used only to replace Part-35 chart-visible-bars lifetime, which is GUI-state dependent"
+      ]
+    }
+  ],
+  "frozen_defaults": {
+    "consolidation_bars": 7,
+    "max_consolidation_spread_points": 50,
+    "bars_to_wait_after_breakout": 3,
+    "impulse_multiplier": 1,
+    "move_away_points": 50,
+    "enable_swing_validation": true,
+    "deterministic_block_lifetime_bars": 300
+  },
+  "lanes": {
+    "17CC_M5_BREAKER_BLOCK_RETEST": {
+      "timeframe_ms": 300000
+    },
+    "17CD_M15_BREAKER_BLOCK_RETEST": {
+      "timeframe_ms": 900000
+    }
+  },
+  "execution_contract": {
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_points": 25,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01
+  },
+  "gate": {
+    "minimum_trades": 20,
+    "minimum_distinct_days": 5,
+    "direct_net_nonnegative": true,
+    "advance_if": "at least one fixed lane passes unchanged",
+    "no_rescue_rule": "No timeframe/consolidation/impulse/move-away/lifetime/swing/session/side/exit tuning if both lanes fail."
+  },
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_window": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+  "numeric_retuning": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
