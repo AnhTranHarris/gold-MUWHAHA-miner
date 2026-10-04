@@ -98,11 +98,12 @@ def proposals(t,a,b,anchor_tf):
    ok=(sd>0 and int(L[i])<=mid and int(C[i])>mid and int(C[i])>int(O[i]) and int(C[i])>=zl) or (sd<0 and int(H[i])>=mid and int(C[i])<mid and int(C[i])<int(O[i]) and int(C[i])<=zh)
    if not ok:continue
    ii=int(np.searchsorted(t,edge,side="left"))
-   if ii>=len(t) or int(t[ii])>=END:out.append({"eligible":False,"reason":"NO_EXEC","decision_ms":edge});state=None;continue
-   if int(a[ii]-b[ii])>MAXSP:out.append({"eligible":False,"reason":"SPREAD","decision_ms":edge});state=None;continue
+   if ii>=len(t) or int(t[ii])>=END:out.append({"eligible":False,"reason":"NO_EXEC"});state=None;continue
+   if int(a[ii]-b[ii])>MAXSP:out.append({"eligible":False,"reason":"SPREAD"});state=None;continue
    live=(sd>0 and int(b[ii])>=zl) or (sd<0 and int(b[ii])<=zh)
-   if not live:out.append({"eligible":False,"reason":"RELOST_AT_EXEC","decision_ms":edge});state=None;continue
-   out.append({"eligible":True,"decision_index":ii,"decision_ms":int(t[ii]),"side":sd,"day":int(t[ii])//DAY,"anchor":state["level"],"zl":zl,"zh":zh});cnt["retrace"]+=1;state=None
+   if not live:out.append({"eligible":False,"reason":"RELOST_AT_EXEC"});state=None;continue
+   if int(t[ii])<ECON:state=None;continue
+   out.append({"eligible":True,"decision_index":ii,"side":sd,"day":int(t[ii])//DAY,"anchor":state["level"],"zl":zl,"zh":zh});cnt["retrace"]+=1;state=None
  return out,cnt
 
 def trade(ev,t,a,b):
@@ -149,10 +150,10 @@ def main():
  R={}
  for name,tf in CONFIGS:
   P,stage=proposals(t,ask,bid,tf);m=evaluate(P,t,ask,bid)
-  g={"minimum_trades_4":m["trades"]>=4,"minimum_distinct_days_3":m["distinct_days"]>=3,"direct_net_min_minus_1":m["direct_net_usd"]>=-1}
-  g["prescreen_pass"]=all(g.values());g["strong_pass"]=g["prescreen_pass"] and m["direct_net_usd"]>=0
+  g={"minimum_proposals_6":m["proposals"]>=6,"minimum_trades_5":m["trades"]>=5,"minimum_distinct_days_4":m["distinct_days"]>=4,"direct_net_nonnegative":m["direct_net_usd"]>=0}
+  g["validation_pass"]=all(g.values());g["strong_pass"]=g["validation_pass"]
   R[name]={"anchor_seconds":tf,"stage_counts":stage,"metrics":m,"gate":g}
- rank=sorted([c[0] for c in CONFIGS],key=lambda n:(R[n]["gate"]["strong_pass"],R[n]["gate"]["prescreen_pass"],R[n]["metrics"]["direct_net_usd"],R[n]["metrics"]["official_wins"]),reverse=True)
+ rank=sorted([c[0] for c in CONFIGS],key=lambda n:(R[n]["gate"]["validation_pass"],R[n]["metrics"]["direct_net_usd"],R[n]["metrics"]["official_wins"]),reverse=True)
  strong=[n for n in rank if R[n]["gate"]["strong_pass"]]
  out={"schema":"delta-r037-htar-h1-later-jan-17aj-v1","status":"COMPLETE_INDEPENDENT_LATER_JAN_VALIDATION","unit":"R037_HTAR_H1_INDEPENDENT_LATER_JAN_VALIDATION","family":"R037-HTAR-v1","candidate":"R037-HTAR-C01_H1_ANCHOR","prereg_commit":PREREG,"source_sha256":s,"warmup_ticks":int(len(t)),"economics_ticks":int(np.sum(t>=ECON)),"window":{"warmup_start_ms":WARMUP,"economics_start_ms":ECON,"end_exclusive_ms":END},"surface":"DUKAS_COINEXX_LIKE_P75","numeric_retuning":False,"august_accessed":False,"configs":R,"ranking":rank,"finding":{"leading_config":rank[0],"holdout_survivors":strong,"decision":"ADVANCE_FROZEN_H1_MONTH_BY_MONTH" if strong else "RETIRE_HTAR_H1_NO_RETUNE","next":"R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION" if strong else "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"},"mql5_authorized":False}
  atomic(x.output,out);print(json.dumps({"ranking":rank,"configs":R,"finding":out["finding"]},separators=(",",":")))
