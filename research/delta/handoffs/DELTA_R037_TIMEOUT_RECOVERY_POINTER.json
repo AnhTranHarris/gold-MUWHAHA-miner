@@ -11,27 +11,27 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_ASIAN_RANGE_LONDON_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Y",
-    "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
-    "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_ASIAN_RANGE_LONDON_BREAKOUT_CHECKPOINT_17Y_MANIFEST.json"
+    "last_verified_durable_unit": "R037_LONDON_OPENING_RANGE_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Z",
+    "current_phase": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_PRESCREEN_17AA_NEXT",
+    "first_incomplete_unit": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_PRESCREEN_17AA",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_LONDON_OPENING_RANGE_BREAKOUT_CHECKPOINT_17Z_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "unit": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_PRESCREEN_17AA",
     "status": "IDLE",
     "phase_rank": 0,
-    "parent_durable_unit": "R037_ASIAN_RANGE_LONDON_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Y",
+    "parent_durable_unit": "R037_LONDON_OPENING_RANGE_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Z",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_ASIAN_RANGE_LONDON_BREAKOUT_CHECKPOINT_17Y.json",
-        "commit": "e36f3c454ac335a6599c01785c8069ca3e0b9848"
+        "path": "research/delta/reference/DELTA_R037_LONDON_OPENING_RANGE_BREAKOUT_CHECKPOINT_17Z.json",
+        "commit": "2a16f6135ac0a3175f856fcdf78c0b460f7d8397"
       },
       {
-        "path": "research/delta/artifacts/DELTA_R037_ASIAN_RANGE_LONDON_BREAKOUT_CHECKPOINT_17Y_MANIFEST.json",
-        "commit": "7108a5dd602de34d7f3062815877169e2eb6304e"
+        "path": "research/delta/artifacts/DELTA_R037_LONDON_OPENING_RANGE_BREAKOUT_CHECKPOINT_17Z_MANIFEST.json",
+        "commit": "b3d647e158f3f79c8468b7e9e3d070e5c1971f62"
       }
     ],
-    "next_action": "Research and preregister one uniquely named independent entry/initial-hold candidate; 17Y is complete and must not be rerun.",
+    "next_action": "Preregister and test 17AA London ORB sweep-reclaim reversal; 17Z is complete.",
     "completed_months": [
       "2026-01_STAGE_A"
     ],
