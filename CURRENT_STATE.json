@@ -3,12 +3,22 @@
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "branch": "delta",
   "research_scope": "DELTA_ONLY_CLEAN_ROOM",
-  "last_verified_durable_unit": "R037_FIB_GOLDEN_POCKET_IMPULSE_RETRACE_STAGE_A_SCREEN_CHECKPOINT_17BW",
-  "first_incomplete_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
-  "current_phase": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST_NEXT",
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_FIB_GOLDEN_POCKET_RETRACE_STAGE_A_CHECKPOINT_17BW_MANIFEST.json",
-  "active_candidate": null,
-  "last_candidate_disposition": "17BW Golden-Pocket Retrace retired: 138 trades / 11 days / 54 wins / -$35.70. Adequate source-default supply, negative immediate persistence, no rescue tuning.",
+  "last_verified_durable_unit": "R037_SWEEP_IFVG_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BX_17BY",
+  "first_incomplete_unit": "R037_SWEEP_IFVG_INDEPENDENT_LATER_JAN_VALIDATION",
+  "current_phase": "R037_SWEEP_IFVG_INDEPENDENT_LATER_JAN_VALIDATION_NEXT",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_SWEEP_IFVG_RETEST_STAGE_A_CHECKPOINT_17BX_17BY_MANIFEST.json",
+  "active_candidate": {
+    "family": "R037-SIFVG-v1",
+    "lane": "17BY_M5_SWEEP_IFVG_RETEST",
+    "stage_a": {
+      "trades": 24,
+      "distinct_days": 10,
+      "official_wins": 17,
+      "direct_net_usd": 1.35
+    },
+    "status": "STAGE_A_SURVIVOR_PENDING_INDEPENDENT_LATER_JAN"
+  },
+  "last_candidate_disposition": "17BY M5 Sweep->FVG->IFVG->retest survives Stage-A: 24 trades / 10 days / 17 wins / +$1.35. M1 companion failed -$26.86/152. Advance M5 unchanged.",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -31,10 +41,10 @@
     "prior_full_state_preserved_in_git_history": true
   },
   "recovery_pointer_sync": {
-    "status": "DURABLE_17BW_RETIRED",
-    "last_completed": "R037_FIB_GOLDEN_POCKET_IMPULSE_RETRACE_STAGE_A_SCREEN_CHECKPOINT_17BW",
-    "current_candidate": null,
-    "next": "Select a materially distinct, source-grounded high-value entry mechanism from the completed R037 harvest; prioritize evidence-rich structures with adequate supply and no overlap with retired VWAP/profile/Fibonacci families; preregister before producer."
+    "status": "DURABLE_17BX_17BY_STAGE_A_SURVIVOR",
+    "last_completed": "R037_SWEEP_IFVG_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BX_17BY",
+    "current_candidate": "17BY_M5_SWEEP_IFVG_RETEST",
+    "next": "Validate unchanged 17BY M5 Sweep->FVG->IFVG->retest rule on untouched later-January holdout; no retuning."
   },
   "clean_room_maintenance": {
     "status": "RECENT_DELTA_DIFF_PREFLIGHT_CLEAN",
@@ -45,14 +55,9 @@
   },
   "concurrency_recovery": {
     "status": "NO_ACTIVE_CONCURRENCY_CONFLICT",
-    "authoritative_checkpoint": "R037_FIB_GOLDEN_POCKET_IMPULSE_RETRACE_STAGE_A_SCREEN_CHECKPOINT_17BW",
-    "current_candidate": null,
-    "historical_incident": {
-      "checkpoint": "R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY",
-      "side_screen_preserved": "R037_SRHT_STAGE_A_SCREEN_CHECKPOINT_17AY",
-      "resolution": "RESOLVED_TO_AUTHORITATIVE_PREEXISTING_CHAIN"
-    },
-    "note": "Historical 17AY timeout-concurrency incident is audit-only and is not an active cursor."
+    "authoritative_checkpoint": "R037_SWEEP_IFVG_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BX_17BY",
+    "current_candidate": "17BY_M5_SWEEP_IFVG_RETEST",
+    "note": "Proceed only with independent later-January validation of unchanged M5 survivor."
   },
   "search_bias": "Use completed-R037 meta-harvest before admitting more candidate families; prioritize high-information structures with adequate supply and near-neutral/positive out-of-sample evidence.",
   "timeout_recovery_cursor_semantics": "The final CURRENT_STATE commit closes a unit only after CURRENT_INFLIGHT and recovery pointer already match it; use Git history for the cursor commit SHA."
