@@ -99,10 +99,10 @@ def proposals(t,a,b,anchor_tf):
    ok=(sd>0 and int(L[i])<=mid and int(C[i])>mid and int(C[i])>int(O[i]) and int(C[i])>=zl) or (sd<0 and int(H[i])>=mid and int(C[i])<mid and int(C[i])<int(O[i]) and int(C[i])<=zh)
    if not ok:continue
    ii=int(np.searchsorted(t,edge,side="left"))
-   if ii>=len(t) or int(t[ii])>=END:out.append({"eligible":False,"reason":"NO_EXEC"});state=None;continue
-   if int(a[ii]-b[ii])>MAXSP:out.append({"eligible":False,"reason":"SPREAD"});state=None;continue
+   if ii>=len(t) or int(t[ii])>=END:out.append({"eligible":False,"reason":"NO_EXEC","decision_ms":edge});state=None;continue
+   if int(a[ii]-b[ii])>MAXSP:out.append({"eligible":False,"reason":"SPREAD","decision_ms":edge});state=None;continue
    live=(sd>0 and int(b[ii])>=zl) or (sd<0 and int(b[ii])<=zh)
-   if not live:out.append({"eligible":False,"reason":"RELOST_AT_EXEC"});state=None;continue
+   if not live:out.append({"eligible":False,"reason":"RELOST_AT_EXEC","decision_ms":edge});state=None;continue
    if int(t[ii])<ECON:state=None;continue
    out.append({"eligible":True,"decision_index":ii,"side":sd,"day":int(t[ii])//DAY,"anchor":state["level"],"zl":zl,"zh":zh});cnt["retrace"]+=1;state=None
  return out,cnt
