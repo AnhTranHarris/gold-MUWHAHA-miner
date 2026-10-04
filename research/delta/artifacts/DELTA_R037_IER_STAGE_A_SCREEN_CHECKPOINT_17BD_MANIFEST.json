@@ -1,0 +1,170 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
+  "status": "VERIFIED_STAGE_A_FAIL_SUPPLY_FAMILY_RETIRED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_SQRM_STAGE_A_SCREEN_CHECKPOINT_17BC",
+  "hypothesis": "A source-faithful M5 impulse-exhaustion pattern with a large full-bodied impulse followed by an opposite candle closing through the impulse body creates immediate 30-second reversal persistence.",
+  "falsification_condition": "Fails minimum 20 trades / 5 distinct days or direct-net gate.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "R037-IER single preregistered Stage-A profile",
+    "reference_count": 1,
+    "minimum_count": 1,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "5 executable trades retained; preregistered family supply floor of 20 trades failed."
+  },
+  "primary_metrics": {
+    "entry_quality": "5 trades / 4 wins.",
+    "hold_persistence": "5 STOP / 0 MAX_HOLD.",
+    "economics": "GP +$1.07; GL $0.00; net +$1.02.",
+    "gross_loss_drawdown": "Gross loss $0.00 in a five-trade micro-sample; not promotion-worthy.",
+    "activity": "5 signals/trades across 5 days."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_ier_stage_a_17bd.py",
+      "commit": "c26cb43511c3e63ded2ed4fab2bc469b293b9897",
+      "blob_sha": "98375b1c8f6fb93dad442314785f784535831ef9",
+      "file_sha256": "553286477fe728d1ae7e85d3ede687f7914bc0cba94129226a2dd856b3ee94ee"
+    }
+  ],
+  "helpers": [],
+  "models": [],
+  "config": {
+    "parameters": {
+      "bar_seconds": 300,
+      "range_lookback_bars": 20,
+      "impulse_range_multiple": 1.5,
+      "minimum_body_fraction": 0.7,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "completed M5 average-range context",
+      "large full-bodied impulse",
+      "next opposite M5 candle closes through prior impulse body",
+      "first executable P75 tick"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "single fixed Stage-A screen; no fitting"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "output_write": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_preexecution_verification": true,
+      "phase_checkpointing": "CURRENT_INFLIGHT and timeout recovery pointer updated after durable result commit"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "17BD preregistration",
+      "path": "research/delta/reference/DELTA_R037_IER_STAGE_A_PREREG_17BD.json",
+      "commit": "9f4c17f6f9247f6bf492bfe39922fc0437aa69a7"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_IER_STAGE_A_CHECKPOINT_17BD.json",
+      "blob_sha": "26fcc43f8d8fcacfc01565b4dc5286c1f41fe0f3",
+      "result_sha256": "6b429647dcdff31d44c1d42333d58ad89a86dc4c4d0e88a4706390b6d3dfb189"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_IER_STAGE_A_CHECKPOINT_17BD.md",
+      "blob_sha": "e03d48d6e6fcae2cef30c6f705e279142d9772f9"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "M5 impulse/reversal event ledger",
+      "P75 executable quote surface"
+    ]
+  },
+  "qa": [
+    "Canonical January SHA/tick count verified.",
+    "Local producer Git blob matched committed GitHub blob exactly before compute.",
+    "Single preregistered faithful reconstruction only; no threshold/timeframe/session/side/exit rescue.",
+    "5 trades across 5 days; supply gate fails despite +$1.02 direct net.",
+    "Workbook tab 69 A141:H146 readback PASS.",
+    "Timeout recovery pointer checkpointed after durable result commit.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_ier_stage_a_17bd.py",
+    "command": "python research/delta/experiments/delta_r037_ier_stage_a_17bd.py --source <canonical_january_gzip> --output <checkpoint_17bd_json>",
+    "timing_semantics": "completed M5 confirmation candle; first P75 tick at/after confirmation right edge",
+    "expected_fingerprints": {
+      "C01_M5_IMPULSE_EXHAUSTION_REVERSAL": {
+        "signals": 5,
+        "trades": 5,
+        "distinct_days": 5,
+        "direct_net_usd": 1.02
+      }
+    },
+    "selected_interpretation": "POSITIVE_MICRO_SAMPLE_BUT_INSUFFICIENT_SUPPLY"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — family retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No fitted model.",
+    "execution_quote_side_spec": "DELTA frozen execution semantics unchanged.",
+    "ownership_scheduler_spec": "No integration.",
+    "session_dst_spec": "DELTA frozen semantics unchanged.",
+    "risk_spec": "Fixed 0.01 research semantics unchanged.",
+    "trade_count_parity_spec": "Not applicable; family retired.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_SQRM_STAGE_A_SCREEN_CHECKPOINT_17BC",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A141:H146"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "9f4c17f6f9247f6bf492bfe39922fc0437aa69a7",
+    "c26cb43511c3e63ded2ed4fab2bc469b293b9897",
+    "4cdb079b75a1825616cade08afe157ee62ec634e",
+    "eb9540be74811aea512da905cbd12855833e133e",
+    "6f524df1995953add33e4a78eef87d200d951003",
+    "44570c594cf3d269c68f79adf361d18fe3b51a48"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
