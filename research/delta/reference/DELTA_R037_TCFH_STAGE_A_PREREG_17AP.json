@@ -1,0 +1,70 @@
+{
+  "schema": "delta-r037-tcfh-stage-a-prereg-17ap-v1",
+  "unit": "R037_TICK_COUNT_FLOW_HYSTERESIS_STAGE_A_SCREEN",
+  "checkpoint": "17AP",
+  "status": "PREREGISTERED_BEFORE_OFFICIAL_COMPUTE",
+  "parent_checkpoint": "R037_RLSFG_STAGE_A_SCREEN_CHECKPOINT_17AO",
+  "family": "R037-TCFH-v1",
+  "public_basis": {
+    "metaquotes_article": "Price Action Analysis Toolkit Development (Part 38): Tick Buffer VWAP and Short-Window Imbalance Engine",
+    "source_url": "https://www.mql5.com/en/articles/19290",
+    "stated_flow_formula": "(upticks-downticks)/(upticks+downticks), tick-count based",
+    "default_window_seconds": 30,
+    "default_flow_threshold": 0.3,
+    "default_hysteresis_factor": 0.8,
+    "default_decision_cadence_seconds": 2,
+    "portability_note": "Tick-count flow is a proxy for short-term directional pressure, not true exchange order-flow imbalance; uses bid/ask-derived midpoint changes and is reconstructible from MT5 tick history."
+  },
+  "logic": {
+    "price_stream": "P75 synthetic midpoint derived causally from canonical bid/ask ticks",
+    "flow_window_seconds": 30,
+    "flow": "forward-chronology count of nonzero midpoint upticks vs downticks in trailing 30 seconds",
+    "trigger": "long when flow >= +0.30 and buy latch is clear; short when flow <= -0.30 and sell latch is clear",
+    "hysteresis": "buy latch rearms only after flow < +0.24; sell latch rearms only after flow > -0.24",
+    "cadence": "evaluate on completed 2-second UTC grid boundaries",
+    "entry": "first executable P75 tick at/after decision boundary",
+    "side_semantics": "continuation in flow direction",
+    "note": "No true DOM/order-size claim. This is a transparent tick-count directional-flow proxy."
+  },
+  "profiles": {
+    "C01_DEFAULT_30S": {
+      "window_seconds": 30,
+      "flow_threshold": 0.3,
+      "hysteresis_factor": 0.8,
+      "cadence_seconds": 2
+    }
+  },
+  "execution": {
+    "max_spread_points": 25,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "lot": 0.01,
+    "commission_entry_usd": 0.01,
+    "commission_exit_usd": 0.01
+  },
+  "stage_a_window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_exclusive_utc": "2026-01-18T12:00:00Z"
+  },
+  "gate": {
+    "minimum_trades": 6,
+    "minimum_distinct_days": 4,
+    "direct_net_min_minus_1": true,
+    "strong_pass_requires_nonnegative_net": true
+  },
+  "selection_rule": "advance the single published-default profile only if supply/economic gates pass; no threshold retuning after result",
+  "restrictions": [
+    "no flow-window sweep",
+    "no threshold sweep",
+    "no session/side/weekday rescue filters",
+    "no VWAP/EMA/RSI add-on after result",
+    "no exit tuning",
+    "no August",
+    "no MQL5 build"
+  ],
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
