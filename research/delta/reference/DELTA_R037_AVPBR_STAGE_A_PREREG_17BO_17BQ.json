@@ -1,0 +1,103 @@
+{
+  "schema": "delta-r037-avpbr-stage-a-prereg-v1",
+  "status": "PREREGISTERED_BEFORE_PRODUCER_AND_OFFICIAL_COMPUTE",
+  "unit": "R037_ACCUMULATION_VOLUME_PROFILE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BO_17BQ",
+  "family": "ACCUMULATION_VOLUME_PROFILE_BREAKOUT_POC_RETEST_CONTINUATION",
+  "parent_checkpoint": "R037_PVACVD_FAILED_AUCTION_STAGE_A_SCREEN_CHECKPOINT_17BL_17BN",
+  "research_question": "Can a causally detected accumulation range create a local volume-profile POC that becomes an executable continuation anchor after confirmed breakout, pullback, and POC reclaim, under frozen 30-second P75 execution?",
+  "rationale": [
+    "Completed R037 meta-harvest repeatedly favors durable anchors plus delayed causal confirmation/retest over naked breakouts, raw indicators, and first-touch fades.",
+    "PVACVD showed prior-day auction edges had ample supply but negative 30-second economics; this unit is structurally distinct because the profile is built only from the pre-break accumulation that generated the breakout.",
+    "The tested public mechanism is explicitly a state machine: compression -> local profile -> confirmed breakout -> POC pullback -> confirmed continuation through POC."
+  ],
+  "source_basis": [
+    {
+      "source": "TradingView open-source Volume Profile Breakout Continuation",
+      "url": "https://www.tradingview.com/script/JoK0u4ld-Volume-Profile-Breakout-Continuation/",
+      "use": "state-machine grammar: causal accumulation, local profile, confirmed breakout, POC-zone pullback, confirmed POC continuation trigger; confirmed bars/non-repainting"
+    },
+    {
+      "source": "MQL5 TDM VP Embedded",
+      "url": "https://www.mql5.com/en/market/product/183344",
+      "use": "independent MT5 evidence that POC-zone retest mechanics are implementable for XAUUSD; not used for proprietary thresholds"
+    },
+    {
+      "source": "Reddit/community volume-profile retest discussions",
+      "url": "https://www.reddit.com/r/Daytrading/",
+      "use": "secondary qualitative support for waiting for retest/hold/confirmation rather than first-touch entries"
+    }
+  ],
+  "source_default_disclosure": "TradingView indexed text exposes parameter categories but not numeric defaults. Numeric fixtures below are project-defined bounded research fixtures and are NOT represented as source defaults.",
+  "frozen_data": {
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "stage_a_window": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+    "stage_a_ticks": 4205709,
+    "august_2026": "SEALED"
+  },
+  "common_mechanism": {
+    "accumulation": "On completed bar, rolling N-bar high-low range <= compression_multiple * ATR14 opens an accumulation box; box grows while completed bars remain inside. Abandon if expanded box range > abandon_multiple * ATR14 or age exceeds max_box_bars.",
+    "profile": "Within completed accumulation bars, each bar's tick count is distributed evenly across 24 equal price rows spanned by that bar. POC is max-volume row with deterministic lower-price tie break; 70% value area expands outward from POC with lower-price tie break.",
+    "breakout": "First confirmed close outside box freezes POC/VAL/VAH and breakout direction.",
+    "pullback": "Within max_wait bars, bar range must touch POC +/- poc_zone_fraction * frozen box height; close through far value-area edge invalidates.",
+    "trigger": "After a pullback touch, first confirmed close back through POC in breakout direction with directional candle enters at first executable P75 tick at/after bar end.",
+    "ownership": "global frozen one-position-at-a-time evaluator"
+  },
+  "project_defined_fixtures": {
+    "atr_length": 14,
+    "range_lookback_bars": 20,
+    "compression_multiple": 1.5,
+    "min_box_bars": 5,
+    "max_box_bars": 40,
+    "abandon_multiple": 2,
+    "profile_rows": 24,
+    "value_area_fraction": 0.7,
+    "poc_zone_fraction_of_box": 0.1,
+    "max_wait_bars": 20
+  },
+  "configs": [
+    {
+      "name": "17BO_C01_AVPBR_M1_CORE",
+      "bar_ms": 60000,
+      "htf_bias": false
+    },
+    {
+      "name": "17BP_C02_AVPBR_M5_CORE",
+      "bar_ms": 300000,
+      "htf_bias": false
+    },
+    {
+      "name": "17BQ_C03_AVPBR_M1_H1_EMA_BIAS",
+      "bar_ms": 60000,
+      "htf_bias": true,
+      "htf_ms": 3600000,
+      "ema_length": 20,
+      "bias_semantics": "prior completed H1 close above prior completed H1 EMA20 for long breakout; below for short"
+    }
+  ],
+  "execution": {
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "commission_usd_each_side": 0.01
+  },
+  "gates": {
+    "minimum_trades_per_profile": 20,
+    "minimum_distinct_days": 5,
+    "strong_direct_net_usd_min": 0,
+    "advance_rule": "Advance only unchanged profile(s) meeting all activity gates and nonnegative direct net to independent later-January validation."
+  },
+  "prohibited": [
+    "no compression/ATR/lookback/profile-row/value-area/POC-zone/wait sweep",
+    "no session/side/weekday filters",
+    "no stop/trail/hold optimization",
+    "no reuse of prior-day failed-auction logic",
+    "no August access",
+    "no MQL5"
+  ],
+  "next_if_survivor": "R037_AVPBR_SURVIVOR_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_none": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+  "mql5_authorized": false
+}
