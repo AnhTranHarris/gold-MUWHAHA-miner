@@ -1,0 +1,48 @@
+{
+  "schema": "delta-r037-pbq-stage-a-screen-17ar-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_MICROTREND_PULLBACK_QUALITY_STAGE_A_SCREEN",
+  "family": "R037-PBQ-v1",
+  "parent_checkpoint": "R037_ITDC_STAGE_A_SCREEN_CHECKPOINT_17AQ",
+  "prereg_commit": "50970048c0c6bcc448f9f95b8c02daaff26bd581",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "signal_timeframe_seconds": 60,
+  "feature_counts": {
+    "bars": 15180,
+    "usable_bars": 15121,
+    "binary_bars": 9127,
+    "healthy_bars": 3698,
+    "shallow_bars": 11271,
+    "persistent_binary_bars": 5097
+  },
+  "numeric_retuning": false,
+  "composite_used_as_binary_gate": false,
+  "august_accessed": false,
+  "configs": {
+    "C01_BINARY_HEALTHY": {
+      "stage_counts": {"condition_bars": 1644, "no_exec": 0, "spread_rejects": 0, "eligible": 1644},
+      "metrics": {"proposals": 1644, "busy_skips": 0, "trades": 1644, "distinct_days": 13, "long": 754, "short": 890, "official_wins": 751, "gross_profit": 165.95, "gross_loss": -507.88, "direct_net_usd": -341.93, "exit_reasons": {"STOP": 1583, "MAX_HOLD": 61, "END": 0}},
+      "gate": {"minimum_trades_6": true, "minimum_distinct_days_4": true, "direct_net_min_minus_1": false, "screen_pass": false, "strong_pass": false}
+    },
+    "C02_PERSISTENT_HEALTHY": {
+      "stage_counts": {"condition_bars": 570, "no_exec": 0, "spread_rejects": 0, "eligible": 570},
+      "metrics": {"proposals": 570, "busy_skips": 0, "trades": 570, "distinct_days": 12, "long": 232, "short": 338, "official_wins": 259, "gross_profit": 49.44, "gross_loss": -176.46, "direct_net_usd": -127.02, "exit_reasons": {"STOP": 554, "MAX_HOLD": 16, "END": 0}},
+      "gate": {"minimum_trades_6": true, "minimum_distinct_days_4": true, "direct_net_min_minus_1": false, "screen_pass": false, "strong_pass": false}
+    },
+    "C03_PERSISTENT_SHALLOW": {
+      "stage_counts": {"condition_bars": 4999, "no_exec": 1, "spread_rejects": 0, "eligible": 4998},
+      "metrics": {"proposals": 4998, "busy_skips": 0, "trades": 4998, "distinct_days": 13, "long": 2748, "short": 2250, "official_wins": 2333, "gross_profit": 517.24, "gross_loss": -1489.08, "direct_net_usd": -971.84, "exit_reasons": {"STOP": 4815, "MAX_HOLD": 183, "END": 0}},
+      "gate": {"minimum_trades_6": true, "minimum_distinct_days_4": true, "direct_net_min_minus_1": false, "screen_pass": false, "strong_pass": false}
+    }
+  },
+  "finding": {
+    "leading_config": null,
+    "ordinary_survivors": [],
+    "strong_survivors": [],
+    "decision": "RETIRE_PBQ_STAGE_A_NO_SURVIVOR",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "mql5_authorized": false
+}
