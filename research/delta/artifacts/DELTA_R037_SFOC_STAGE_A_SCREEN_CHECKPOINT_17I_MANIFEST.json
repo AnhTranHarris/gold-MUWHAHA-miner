@@ -1,0 +1,187 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I",
+  "status": "VERIFIED_NO_SCREEN_SURVIVOR_SUPPLY_TOO_SPARSE",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H",
+  "hypothesis": "Same-direction unmitigated FVG confluence may improve the near-neutral 17H C02 SMOR signal without altering its lifecycle.",
+  "falsification_condition": "Confluence collapses supply below frozen minimum or fails economic gates.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Frozen Stage-A parent",
+    "reference_count": 14034,
+    "minimum_count": 14034,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Independent/recombination source."
+  },
+  "primary_metrics": {
+    "entry_quality": "wins and direct SFOC net",
+    "hold_persistence": "30s frozen",
+    "economics": "net/gross deltas",
+    "gross_loss_drawdown": "GL/DD",
+    "activity": "proposal/accepted/trade supply"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_sfoc_stage_a.py",
+      "commit": "1daf3647c7ebf42d1987612ef18b3ad9b31e975c",
+      "blob_sha": "fc9c4615b056b0ad6e5400be8582c3fafb933b6c",
+      "file_sha256": "88b6ad3cefbc9763b6d9aa5bc793007d2b4bceeeeaf28aafbb207c6502bfd93d"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "role": "bounded compute"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "family": "R037-SFOC-v1",
+      "configs": [
+        "C01_ANY_ACTIVE_FVG",
+        "C02_MSS_OR_NEXT_FVG",
+        "C03_OB_FVG_OVERLAP",
+        "C04_RETEST_TOUCHES_FVG"
+      ],
+      "base": "exact 17H C02",
+      "numeric_retuning": false,
+      "post_result_retuning": false,
+      "max_hold_seconds": 30
+    },
+    "feature_order": [
+      "17H_C02",
+      "same_direction_FVG_state",
+      "confluence_gate",
+      "parent_scheduler"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "2026-01-01T00:00Z/2026-01-18T12:00Z"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Stage-A only"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "timeout_seconds": 120,
+      "precompute_gate_run": 37178752110,
+      "official_runtime_seconds": 20.625,
+      "official_raw_result_sha256": "9d47120a2612c078ea8ee40ab8d570c01beb284e6431abc1f219195d362e0399"
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "SFOC prereg",
+      "path": "research/delta/reference/DELTA_R037_SFOC_SOURCE_HARVEST_PREREG_17I.json",
+      "commit": "844d9bdda78e61125c6d2994c25b4f8bc22dd0cb"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I.json",
+      "commit": "7c7fae87bb40f60b197a470c8bf32483a6b6863e",
+      "blob_sha": "b38450b4937315c87a9359928cf5083ac08a0ca5"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I.md",
+      "commit": "70f0869417f4d68669c167cedaa9f7717359b1c2",
+      "blob_sha": "e8d204b4e68fbf06a1ffb9ffb1448574ba256e58"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "C01 5",
+      "C02 0",
+      "C03 1",
+      "C04 0"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "C01 5",
+      "C03 1"
+    ],
+    "caches": [
+      "commit-bound snapshot"
+    ]
+  },
+  "models": [],
+  "qa": [
+    "Precompute gate PASS.",
+    "Official compute exit 0 in 20.625s.",
+    "C03 +$0.19 but only 1 trade; invalid supply.",
+    "C01 5 trades / 3 wins / -$0.56; invalid supply.",
+    "No retune.",
+    "Workbook 70!A106:H112 readback PASS.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_sfoc_stage_a.py",
+    "command": "bounded runner ... delta_r037_sfoc_stage_a.py",
+    "timing_semantics": "Exact 17H C02 + preregistered causal FVG state.",
+    "expected_fingerprints": {
+      "leader": {
+        "config": "C03_OB_FVG_OVERLAP",
+        "accepted_entries": 1,
+        "net_delta": 0.19
+      }
+    },
+    "selected_interpretation": "NO_SURVIVOR_SUPPLY_TOO_SPARSE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE",
+    "feature_timing_spec": "Not ready",
+    "state_machine_spec": "Not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen",
+    "ownership_scheduler_spec": "frozen",
+    "session_dst_spec": "none",
+    "risk_spec": "frozen",
+    "trade_count_parity_spec": "not eligible",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H",
+  "drive_artifacts": [
+    {
+      "name": "working workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "70 R037 Prereg",
+      "range": "A106:H112",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": true
+  },
+  "github_commits": [
+    "844d9bdda78e61125c6d2994c25b4f8bc22dd0cb",
+    "1daf3647c7ebf42d1987612ef18b3ad9b31e975c",
+    "7c7fae87bb40f60b197a470c8bf32483a6b6863e",
+    "70f0869417f4d68669c167cedaa9f7717359b1c2"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}

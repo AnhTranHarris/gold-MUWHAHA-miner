@@ -11,15 +11,15 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H",
+    "last_verified_durable_unit": "R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I",
     "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
     "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H_MANIFEST.json"
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I_MANIFEST.json"
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
+    "status": "COMPLETE",
+    "phase_rank": 7,
     "parent_durable_unit": "R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H",
     "committed_artifacts": [
       {
@@ -30,9 +30,20 @@
         "path": "research/delta/experiments/delta_r037_sfoc_stage_a.py",
         "commit": "1daf3647c7ebf42d1987612ef18b3ad9b31e975c",
         "blob_sha": "fc9c4615b056b0ad6e5400be8582c3fafb933b6c"
+      },
+      {
+        "path": "research/delta/reference/DELTA_R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I.json",
+        "commit": "7c7fae87bb40f60b197a470c8bf32483a6b6863e"
+      },
+      {
+        "path": "research/delta/research/DELTA_R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I.md",
+        "commit": "70f0869417f4d68669c167cedaa9f7717359b1c2"
+      },
+      {
+        "path": "research/delta/artifacts/DELTA_R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I_MANIFEST.json"
       }
     ],
-    "next_action": "Run exactly one official bounded SFOC 17I replay after recovery gate; if result exists do not rerun.",
+    "next_action": "Begin next harvest from durable 17I; never rerun 17I.",
     "completed_months": [],
     "next_month": null
   },
