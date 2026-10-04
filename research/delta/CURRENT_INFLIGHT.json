@@ -1,11 +1,11 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "INFLIGHT",
+  "status": "COMPLETE",
   "branch": "delta",
   "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
   "parent_durable_unit": "R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "phase": "COMPLETE",
+  "phase_rank": 7,
   "prereg": {
     "path": "research/delta/reference/DELTA_R037_SMOR_SOURCE_HARVEST_PREREG_17H.json",
     "commit": "947b101e1a8d289b5832556e1795d71b653a444b"
@@ -16,22 +16,25 @@
     "blob_sha": "bb944bb9052b95f039e0cdd0942598d2a4b2d47d"
   },
   "result": {
-    "path": "research/delta/reference/DELTA_R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H.json"
+    "path": "research/delta/reference/DELTA_R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H.json",
+    "commit": "56b9dc159a1801da0a0a45e7c4aa7c7f0282c238",
+    "raw_sha256": "6937752f233b07c219b8e7b084cf37b7501f5e3c7c147da459d271a5c3b9aa20"
   },
   "report": {
-    "path": "research/delta/research/DELTA_R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H.md"
+    "path": "research/delta/research/DELTA_R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H.md",
+    "commit": "010e841b1165cc24cdcfb5d04d25bc09057afbd0"
   },
   "manifest": {
     "path": "research/delta/artifacts/DELTA_R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H_MANIFEST.json"
   },
   "progress": {
     "family": "R037-SMOR-v1",
-    "status": "PRODUCER_COMMITTED_AWAITING_OFFICIAL_COMPUTE",
-    "next": "OFFICIAL_STAGE_A_REPLAY"
+    "status": "ORDINARY_PASS_NO_STRONG_PASS_RECOMBINATION_CLUE",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Verify committed SMOR producer and prereg/implementation contract; run exactly one official Stage-A replay only if no committed 17H result exists.",
+    "resume_first_action": "Do not rerun SMOR 17H. Begin next independent/recombination harvest from CURRENT_STATE.",
     "idempotency_rule": "Prereg/contract/producer immutable before compute; result create-only.",
     "git_blob_verified": "bb944bb9052b95f039e0cdd0942598d2a4b2d47d"
   },
@@ -45,8 +48,8 @@
   "mql5_authorized": false,
   "last_completed": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "checkpoint": "R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G",
+    "checkpoint": "R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H",
     "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "manifest": "research/delta/artifacts/DELTA_R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G_MANIFEST.json"
+    "manifest": "research/delta/artifacts/DELTA_R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H_MANIFEST.json"
   }
 }

@@ -1,0 +1,215 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H",
+  "status": "VERIFIED_ORDINARY_SCREEN_PASS_NO_STRONG_PASS_RECOMBINATION_CLUE",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G",
+  "hypothesis": "Delaying entry through liquidity sweep -> opposite MSS -> first unmitigated OB retest can improve frozen 30-second entry quality relative to immediate rejection entries.",
+  "falsification_condition": "No preregistered configuration materially approaches the frozen independent-source gate, or a near-pass requires post-result tuning.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Frozen R037 independent-source Stage-A parent",
+    "reference_count": 14034,
+    "minimum_count": 14034,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Independent source adds entries only."
+  },
+  "primary_metrics": {
+    "entry_quality": "Official-win delta and direct SMOR net.",
+    "hold_persistence": "Frozen 30-second max-hold.",
+    "economics": "Net/gross deltas.",
+    "gross_loss_drawdown": "GL and DD deltas.",
+    "activity": "Proposal/accepted/trade deltas."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_smor_stage_a.py",
+      "commit": "e5acbd86f244b739279b21b78c35b56ee286a6fb",
+      "blob_sha": "bb944bb9052b95f039e0cdd0942598d2a4b2d47d",
+      "file_sha256": "e28d27e0f79d1be79b4bc44653421e0de532297ce870b925e73febc4292ae6e0"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "role": "120s bounded child process and cleanup."
+    }
+  ],
+  "config": {
+    "parameters": {
+      "family": "R037-SMOR-v1",
+      "configs": [
+        "R037-SMOR-C01_M1_BODY_TOUCH",
+        "R037-SMOR-C02_M1_MIDPOINT",
+        "R037-SMOR-C03_M5_BODY_TOUCH",
+        "R037-SMOR-C04_M5_MIDPOINT"
+      ],
+      "swing_width": 2,
+      "numeric_retuning": false,
+      "post_result_retuning": false,
+      "spread_gate_points_max": 25,
+      "lot": 0.01,
+      "stop_usd": 0.3,
+      "trail_activation_usd": 0.1,
+      "trail_distance_usd": 0.03,
+      "max_hold_seconds": 30
+    },
+    "feature_order": [
+      "confirmed_swing_sweep",
+      "frozen_opposite_swing_MSS",
+      "last_opposite_candle_OB",
+      "first_unmitigated_body_retest",
+      "first_executable_tick"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Stage-A discovery; no post-result tuning."
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "atomic_output": true,
+      "precompute_gate_run": 37178401397,
+      "official_runtime_seconds": 20.525,
+      "official_exit_code": 0,
+      "official_raw_result_sha256": "6937752f233b07c219b8e7b084cf37b7501f5e3c7c147da459d271a5c3b9aa20"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "SMOR prereg",
+      "path": "research/delta/reference/DELTA_R037_SMOR_SOURCE_HARVEST_PREREG_17H.json",
+      "commit": "947b101e1a8d289b5832556e1795d71b653a444b"
+    },
+    {
+      "name": "SMOR lifecycle contract",
+      "path": "research/delta/reference/DELTA_R037_SMOR_IMPLEMENTATION_CONTRACT_17H.json",
+      "commit": "15334fe4d1f19ef0d58ca27552243fb08037bd58"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H.json",
+      "commit": "56b9dc159a1801da0a0a45e7c4aa7c7f0282c238",
+      "blob_sha": "3fc5593c5c5e3ee832cf63fd611e4706792410d3",
+      "official_raw_result_sha256": "6937752f233b07c219b8e7b084cf37b7501f5e3c7c147da459d271a5c3b9aa20"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H.md",
+      "commit": "010e841b1165cc24cdcfb5d04d25bc09057afbd0",
+      "blob_sha": "890388c66abef1ec98370320da5c5e258d136d7d"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "18 C01 proposals",
+      "11 C02 proposals",
+      "7 C03 proposals",
+      "5 C04 proposals"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "16 C01 accepted",
+      "11 C02 accepted",
+      "7 C03 accepted",
+      "5 C04 accepted"
+    ],
+    "caches": [
+      "commit-bound snapshot"
+    ]
+  },
+  "models": [],
+  "qa": [
+    "Prereg, lifecycle contract and producer committed before official compute.",
+    "Precompute recovery gate 37178401397 passed.",
+    "Canonical January hash and 4,205,709 Stage-A ticks verified.",
+    "Official replay exit 0 / 20.525s.",
+    "C02 M1 midpoint: +11 trades / +7 official wins / -$0.03 net delta / +0.0010% equity DD; ordinary screen PASS, strong FAIL.",
+    "C01 M1 body: ordinary PASS at -$1.31.",
+    "No post-result C02 retuning or promotion.",
+    "Workbook tab 70 A98:H105 write/readback verified.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_smor_stage_a.py",
+    "command": "PYTHONPATH=<recovery_root> python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_smor_stage_a.py --source <canonical_january_gzip> --output <result_json>",
+    "timing_semantics": "Completed bars only; width-2 causal swings; frozen opposite swing at sweep; MSS then OB then first retest.",
+    "expected_fingerprints": {
+      "parent": {
+        "trades": 14034,
+        "official_wins": 6349,
+        "net_profit": -2944.94
+      },
+      "leader": {
+        "config": "R037-SMOR-C02_M1_MIDPOINT",
+        "proposals": 11,
+        "accepted_entries": 11,
+        "trade_delta": 11,
+        "official_win_delta": 7,
+        "net_delta": -0.03,
+        "direct_smor_net": -0.31
+      }
+    },
+    "selected_interpretation": "NO_PROMOTION_FREEZE_C02_AS_RECOMBINATION_CLUE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — discovery clue only",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "DELTA frozen P75.",
+    "ownership_scheduler_spec": "Frozen parent priority.",
+    "session_dst_spec": "No session filter.",
+    "risk_spec": "Frozen 0.01 / stop-trail /30s.",
+    "trade_count_parity_spec": "Not MT5 eligible.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "70 R037 Prereg",
+      "range": "A98:H105",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": true
+  },
+  "github_commits": [
+    "947b101e1a8d289b5832556e1795d71b653a444b",
+    "15334fe4d1f19ef0d58ca27552243fb08037bd58",
+    "e5acbd86f244b739279b21b78c35b56ee286a6fb",
+    "56b9dc159a1801da0a0a45e7c4aa7c7f0282c238",
+    "010e841b1165cc24cdcfb5d04d25bc09057afbd0"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
