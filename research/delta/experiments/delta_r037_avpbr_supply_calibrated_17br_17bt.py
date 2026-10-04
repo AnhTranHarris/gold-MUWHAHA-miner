@@ -273,7 +273,7 @@ def main():
         if g["screen_pass"]: survivors.append(name)
     out={
       "schema":"delta-r037-avpbr-supply-calibrated-stage-a-17br-17bt-v1","status":"COMPLETE_FAST_CAUSAL_PRESCREEN",
-      "unit":"R037_ACCUMULATION_VOLUME_PROFILE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BO_17BQ",
+      "unit":"R037_AVPBR_SUPPLY_CALIBRATED_STAGE_A_SCREEN_CHECKPOINT_17BR_17BT",
       "parent_checkpoint":"R037_ACCUMULATION_VOLUME_PROFILE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BO_17BQ",
       "prereg_commit":PREREG_COMMIT,"source_sha256":source_sha,"stage_a_ticks":int(len(t)),
       "signal_surface":"NATIVE_DUKAS_M1_M5_ACCUMULATION_PROFILE","execution_surface":"DUKAS_COINEXX_LIKE_P75",
