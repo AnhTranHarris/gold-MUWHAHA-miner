@@ -4,19 +4,23 @@
   "branch": "delta",
   "unit": "R037_QUEUE_IMBALANCE_MICROPRICE_STAGE_A_SCREEN",
   "parent_durable_unit": "R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS",
-  "phase": "PREREGISTERED_PRODUCER_NEXT",
-  "phase_rank": 1,
+  "phase": "PRODUCER_COMMITTED_COMPUTE_NEXT",
+  "phase_rank": 2,
   "progress": {
-    "status": "PREREGISTERED",
+    "status": "PRODUCER_COMMITTED",
     "last_completed": "R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS",
     "current_candidate": "R037-QIM-v1",
     "prereg_path": "research/delta/reference/DELTA_R037_QIM_STAGE_A_PREREG_17AT.json",
     "prereg_commit": "c2390a95eebf1c60c0a75f0d524916948211286a",
-    "next": "Commit QIM Stage-A producer, verify exact Git blob locally, then official bounded compute."
+    "next": "Run bounded official Stage-A compute; persist result if complete.",
+    "producer_path": "research/delta/experiments/delta_r037_qim_stage_a_17at.py",
+    "producer_commit": "3f11c0bfc632a6c018dc6e28304e2c4e51adfd7a",
+    "producer_blob_sha": "daadafa78b941bfda18daaa277b40600bf942495",
+    "producer_file_sha256": "37f08a0df5f5a1777ddc53ed1487608b63dde457e528cd5562fd666143e4f251"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "QIM 17AT preregistration is durable; do not repeat source harvest/prereg. Resume at producer commit.",
+    "resume_first_action": "QIM prereg and producer are durable. Verify blob daadafa78b941bfda18daaa277b40600bf942495 and resume official compute; do not recreate source.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate preregistration or durable compute after transport timeout."
   },
   "last_verified_ci": {
