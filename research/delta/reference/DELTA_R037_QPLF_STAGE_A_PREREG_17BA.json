@@ -1,0 +1,68 @@
+{
+  "schema": "delta-r037-qplf-stage-a-prereg-17ba-v1",
+  "status": "PREREGISTERED_BEFORE_OFFICIAL_COMPUTE",
+  "unit": "R037_QUOTE_PROPAGATION_LEADER_FOLLOWER_STAGE_A_SCREEN",
+  "family": "R037-QPLF-v1",
+  "parent_checkpoint": "R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ",
+  "research_question": "Does a sparse two-step BBO quote-propagation event—an outward one-sided price revision followed by same-direction opposite-side catch-up with full spread restoration—leave enough residual directional asymmetry to survive frozen Coinexx-like P75 execution for 30 seconds?",
+  "source_basis": [
+    {
+      "source": "Quote revision and information flow among foreign exchange dealers",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S1042443100000469",
+      "reconstructible_claim": "FX quote revisions carry information and revisions on one side can influence subsequent pricing decisions."
+    },
+    {
+      "source": "An Empirical Analysis of Exchange Rates using High Frequency Data",
+      "url": "https://etheses.lse.ac.uk/1499/1/U111694.pdf",
+      "reconstructible_claim": "Observed FX quote-side asymmetry includes periods in which ask revisions lead and bid revisions subsequently respond; quote revisions on opposite sides can be positively related."
+    },
+    {
+      "source": "A Structural Error-Correction Model of Best Prices and Depths in the Foreign Exchange Limit Order Market",
+      "url": "https://ideas.repec.org/p/bca/bocawp/06-8.html",
+      "reconstructible_claim": "Best bid/ask prices are dynamically linked; spread deviations induce quote adjustment toward equilibrium."
+    }
+  ],
+  "hypothesis": "A completed ask-up-only -> bid-up-only sequence with restored-or-tighter spread is bullish; a completed bid-down-only -> ask-down-only sequence with restored-or-tighter spread is bearish. Entry on the first strictly subsequent executable P75 quote captures residual information propagation after both sides have repriced.",
+  "falsification_condition": "The single preregistered event definition fails the Stage-A supply/day gate or direct-net gate under frozen execution. No rescue with thresholds, sessions, sides, volume imbalance, timing windows, or exit retuning.",
+  "event_definition": {
+    "event_stream": "consecutive native Dukascopy BBO price-changing events; volume-only revisions are ignored for event adjacency",
+    "bullish_leader": "ask increases while bid is unchanged",
+    "bullish_follower": "the next BBO price-changing event is bid increase while ask is unchanged",
+    "bearish_leader": "bid decreases while ask is unchanged",
+    "bearish_follower": "the next BBO price-changing event is ask decrease while bid is unchanged",
+    "spread_restoration": "follower spread must be <= spread immediately before leader event",
+    "entry": "first strictly subsequent raw tick after follower event",
+    "overlap": "each completed follower closes its event; the same follower row cannot simultaneously seed another event"
+  },
+  "fixed_execution": {
+    "signal_surface": "NATIVE_DUKASCOPY_BBO",
+    "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_entry_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "fixed_lot": 0.01,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01,
+    "one_position_at_a_time": true
+  },
+  "stage_a": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "canonical_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "expected_ticks": 4205709
+  },
+  "gates": {
+    "minimum_trades": 50,
+    "minimum_distinct_days": 6,
+    "direct_net_usd_min": -1,
+    "strong_pass_direct_net_usd_min": 0
+  },
+  "numeric_retuning": false,
+  "no_stage_a_rescue_search": true,
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "next_if_fail": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "next_if_pass": "R037_QPLF_C01_INDEPENDENT_LATER_JAN_VALIDATION"
+}
