@@ -1,0 +1,62 @@
+{
+  "schema": "delta-r037-htar-h1-feb-jul-prereg-17ak-v1",
+  "unit": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION",
+  "checkpoint": "17AK",
+  "status": "PREREGISTERED_BEFORE_OFFICIAL_COMPUTE",
+  "parent_checkpoint": "R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ",
+  "candidate": "R037-HTAR-C01_H1_ANCHOR",
+  "frozen_from_17ai_17aj": {
+    "anchor_seconds": 3600,
+    "anchor_swing_width_bars": 1,
+    "ltf_seconds": 5,
+    "cisd_max_bars": 6,
+    "fvg_max_bars_after_cisd": 2,
+    "retrace_max_bars_after_fvg": 6,
+    "max_spread_points": 25,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30
+  },
+  "validation_design": {
+    "months": [
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06",
+      "2026-07"
+    ],
+    "warmup_days_from_immediately_prior_month": 7,
+    "economic_entries": "current calendar month only",
+    "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+    "month_isolated": true
+  },
+  "aggregate_gate": {
+    "total_trades_min_24": true,
+    "nonnegative_months_min_4": true,
+    "aggregate_net_nonnegative": true,
+    "decision": "all gates must pass to advance unchanged; otherwise retire without rescue tuning"
+  },
+  "rationale": "Use the repository's existing month-by-month robustness convention rather than fit a candidate-specific gate after seeing results.",
+  "restrictions": [
+    "no retuning",
+    "no side/session/weekday filters",
+    "no anchor-width changes",
+    "no CISD/FVG/retrace timing changes",
+    "no stop/trail/hold changes",
+    "no August",
+    "no MQL5"
+  ],
+  "source_sha256": {
+    "2026-01": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "2026-02": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+    "2026-03": "814ba35e72f219a58badd806ed5c0f30ef0fb4ffe56a48205d873706513bd177",
+    "2026-04": "30375098f62aed6cabc32ec6b67c57c20baec9b6d9be1ce0a204e09806c1ec0f",
+    "2026-05": "3a50e0f1eba3076154238290ec02842cf3744ab192e5c9a2acc1cc07367c6a0d",
+    "2026-06": "34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2",
+    "2026-07": "e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7"
+  },
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
