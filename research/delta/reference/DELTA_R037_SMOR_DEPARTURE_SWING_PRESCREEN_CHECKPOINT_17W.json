@@ -1,0 +1,83 @@
+{
+  "schema": "delta-r037-smor-departure-swing-prescreen-17w-v1",
+  "status": "COMPLETE_PRESCREEN_RETIRE_NO_RETUNE",
+  "unit": "R037_SMOR_DEPARTURE_SWING_PRESCREEN_CHECKPOINT_17W",
+  "family": "R037-SMOR-DS-v1",
+  "prereg_path": "research/delta/reference/DELTA_R037_SMOR_DEPARTURE_SWING_PREREG_17W.json",
+  "prereg_commit": "12e9f443e65985b66657ac5c77aeff37e47b3287",
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_smor_departure_swing_prescreen.py",
+    "commit": "132d7f6629a0c7b08a0f34f55ebb3447a8d89c96",
+    "blob_sha": "4c40c76a9d18fc24a8689899315729c242475d07",
+    "file_sha256": "e1097225570f2434df6b0d9aa27308a76a4b753c1b02d08fc4d77c51acdb505d"
+  },
+  "official_compute": {
+    "runtime_seconds": 5.933,
+    "exit_code": 0,
+    "raw_result_sha256": "2fb2967c6f26ed8b38c01b8ad6c9c5d3623e3a695cf13fcfcaa0d9d700949e9f"
+  },
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "control_17h_c02": {
+    "supply": {
+      "proposals": 11,
+      "eligible": 11,
+      "distinct_days": 6,
+      "long": 1,
+      "short": 10,
+      "spread_rejected": 0,
+      "no_tick_rejected": 0
+    },
+    "source_only_execution": {
+      "accepted_entries": 11,
+      "blocked_position": 0,
+      "trades": 11,
+      "official_wins": 7,
+      "raw_positive_wins": 7,
+      "gross_profit": 2.1,
+      "gross_loss": -2.41,
+      "direct_net_usd": -0.31,
+      "long_entries": 1,
+      "short_entries": 10
+    }
+  },
+  "candidate_17w": {
+    "supply": {
+      "proposals": 6,
+      "eligible": 6,
+      "distinct_days": 4,
+      "long": 1,
+      "short": 5,
+      "spread_rejected": 0,
+      "no_tick_rejected": 0
+    },
+    "source_only_execution": {
+      "accepted_entries": 6,
+      "blocked_position": 0,
+      "trades": 6,
+      "official_wins": 3,
+      "raw_positive_wins": 3,
+      "gross_profit": 0.87,
+      "gross_loss": -1.82,
+      "direct_net_usd": -0.95,
+      "long_entries": 1,
+      "short_entries": 5
+    }
+  },
+  "gate": {
+    "minimum_proposals_8": false,
+    "minimum_distinct_days_4": true,
+    "direct_net_min_minus_2": true,
+    "prescreen_pass": false
+  },
+  "finding": {
+    "interpretation": "Confirmed post-MSS departure swing worsened quality and collapsed supply relative to exact 17H C02 control.",
+    "decision": "RETIRE_NO_RETUNE",
+    "next": "R037_PDSM_FAST_PRESCREEN"
+  },
+  "numeric_retuning": false,
+  "post_result_retuning": false,
+  "august_accessed": false,
+  "mql5_authorized": false
+}
