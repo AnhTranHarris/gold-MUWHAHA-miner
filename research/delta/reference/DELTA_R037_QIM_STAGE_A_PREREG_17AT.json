@@ -1,0 +1,86 @@
+{
+  "schema": "delta-r037-qim-stage-a-prereg-17at-v1",
+  "status": "PREREGISTERED_BEFORE_OFFICIAL_COMPUTE",
+  "unit": "R037_QUEUE_IMBALANCE_MICROPRICE_STAGE_A_SCREEN",
+  "family": "R037-QIM-v1",
+  "parent_checkpoint": "R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS",
+  "research_question": "Can causal top-of-book bid/ask quoted-volume imbalance in the canonical Dukascopy XAUUSD tick feed provide a high-frequency entry edge that survives Coinexx-like P75 executable spread/costs?",
+  "sources": [
+    {
+      "name": "Gould & Bonart — Queue Imbalance as a One-Tick-Ahead Price Predictor in a Limit Order Book",
+      "url": "https://arxiv.org/abs/1512.03492",
+      "reconstruction": "I=(bid_size-ask_size)/(bid_size+ask_size); sign predicts direction of next mid-price move; paper identifies a central regime around -0.25..0.25 and stronger practical forecasts away from zero."
+    },
+    {
+      "name": "Stoikov — The Micro-Price: A High Frequency Estimator of Future Prices",
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2970694",
+      "reconstruction": "microprice/fair-price adjustment uses spread and bid/ask imbalance; used here as theoretical support for imbalance direction, not as a fitted model."
+    },
+    {
+      "name": "Cont, Kukanov & Stoikov — The Price Impact of Order Book Events",
+      "url": "https://arxiv.org/abs/1011.6402",
+      "reconstruction": "short-horizon price changes are strongly related to order-flow imbalance at best bid/ask; no fitted coefficients imported."
+    }
+  ],
+  "frozen_input": {
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "stage_a_window": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+    "expected_ticks": 4205709,
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "volume_fields": [
+      "bid_volume",
+      "ask_volume"
+    ]
+  },
+  "profiles": [
+    {
+      "id": "C01_QI_025",
+      "threshold": 0.25,
+      "rule": "enter on first causal tick entering |I|>=0.25; direction=sign(I)"
+    },
+    {
+      "id": "C02_QI_050",
+      "threshold": 0.5,
+      "rule": "enter on first causal tick entering |I|>=0.50; direction=sign(I)"
+    },
+    {
+      "id": "C03_QI_075",
+      "threshold": 0.75,
+      "rule": "enter on first causal tick entering |I|>=0.75; direction=sign(I)"
+    }
+  ],
+  "event_semantics": "A new event requires prior tick below the profile absolute-imbalance threshold or opposite sign; repeated ticks inside the same same-sign strong regime do not create duplicate proposals.",
+  "evaluation": {
+    "prediction": [
+      "next_nonzero_mid_move_direction",
+      "250ms_forward_mid_direction",
+      "1s_forward_mid_direction",
+      "5s_forward_mid_direction"
+    ],
+    "economics": "existing DELTA 30-second initial-hold execution: 0.01 lot, P75 BUY ask/SELL bid entry, protective stop 300 raw, trail activate 100 raw, trail distance 30 raw, max hold 30s, $0.01 entry + $0.01 exit commission",
+    "scheduler": "one position at a time",
+    "gates": {
+      "minimum_trades": 50,
+      "minimum_distinct_days": 6,
+      "direct_net_usd_min": -1,
+      "predictive_next_move_accuracy_min": 0.5
+    }
+  },
+  "anti_overfit": [
+    "No Stage-A threshold sweep.",
+    "No session/side/weekday rescue.",
+    "No exit retuning.",
+    "No model fitting on Stage-A.",
+    "No August access.",
+    "If all fixed profiles fail executable economics, retire family even if one-tick classification is statistically positive."
+  ],
+  "crash_safety": {
+    "hard_process_timeout_seconds": 120,
+    "atomic_output": "NamedTemporaryFile + flush + os.fsync + os.replace",
+    "compact_stdout": true
+  },
+  "next_if_survivor": "R037_QIM_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_fail": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
