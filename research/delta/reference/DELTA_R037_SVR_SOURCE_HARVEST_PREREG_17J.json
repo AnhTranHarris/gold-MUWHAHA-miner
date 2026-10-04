@@ -1,0 +1,95 @@
+{
+  "schema": "delta-r037-svr-source-harvest-prereg-v1",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "checkpoint_target": "R037_SVR_STAGE_A_SCREEN_CHECKPOINT_17J",
+  "family": "R037-SVR-v1",
+  "status": "FROZEN_BEFORE_STAGE_A_REPLAY",
+  "parent_checkpoint": "R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I",
+  "purpose": "Test a genuinely independent, reconstructible session-VWAP reclaim/retest entry source with sufficient natural event density, without importing prior-trade state or retuning exits.",
+  "source_basis": [
+    {
+      "source": "TradingView open source — VWAP Rejection Strategy XAUUSD",
+      "url": "https://www.tradingview.com/script/8HZyJpXV-VWAP-Rejection-Strategy-XAUUSD/",
+      "logic": "Gold-specific VWAP rejection/reaction is used as an intraday entry reference."
+    },
+    {
+      "source": "TradingView open source — VWAP Reclaim",
+      "url": "https://www.tradingview.com/script/glll4xvz-VWAP-Reclaim/",
+      "logic": "Mechanical sequence: reclaim by completed close, retest/hold of VWAP, then later trigger beyond the retest candle."
+    },
+    {
+      "source": "MetaQuotes — Building an Object-Oriented Session VWAP Engine in MQL5",
+      "url": "https://www.mql5.com/en/articles/22990",
+      "logic": "Session-reset VWAP as an intraday fair-value baseline; warns early-session accumulation is unstable."
+    },
+    {
+      "source": "MetaQuotes — Decoding Opening Range Breakout Intraday Trading Strategies",
+      "url": "https://www.mql5.com/en/articles/17745",
+      "logic": "Reconstructible VWAP trend-following example enters by completed-bar relationship to VWAP."
+    }
+  ],
+  "data_semantics": {
+    "price": "P75 synthetic Coinexx-like bid/ask derived from canonical Dukascopy ticks",
+    "vwap_weight": "Each source tick contributes one observation; session VWAP is cumulative arithmetic mean of tick mid2 from the selected civil-session anchor. No unavailable exchange volume is invented.",
+    "causality": "VWAP value for a completed M1 bar uses ticks only through that bar close. Entry decision occurs only after the completed retest/trigger bar.",
+    "session_reset": "UTC day anchor; first 30 completed M1 bars are warmup/no proposals to avoid unstable early-session denominator.",
+    "no_lookahead": true
+  },
+  "configs": {
+    "R037-SVR-C01_RECLAIM_RETEST": {
+      "rule": "M1 close crosses from below to above session VWAP for long (inverse short); within next 5 completed M1 bars, price touches VWAP and closes back on reclaimed side; propose at retest close."
+    },
+    "R037-SVR-C02_RECLAIM_RETEST_TRIGGER": {
+      "rule": "As C01, but require a later completed M1 close beyond the retest candle high for long / low for short within 3 bars; propose at trigger close."
+    },
+    "R037-SVR-C03_REJECTION": {
+      "rule": "After at least 30 completed session minutes, M1 bar crosses through VWAP intrabar but closes back on the original side; propose in rejection direction at that close."
+    },
+    "R037-SVR-C04_TWO_CLOSE_ACCEPT_RETEST": {
+      "rule": "Require two consecutive completed M1 closes on the new VWAP side after cross, then a VWAP touch that closes on that same side within 5 bars; propose at retest close."
+    }
+  },
+  "execution": {
+    "spread_gate_points_max": 25,
+    "parent_same_tick_priority": true,
+    "blocked_event_deferred": false,
+    "one_position_at_a_time": true,
+    "lot": 0.01,
+    "stop_usd": 0.3,
+    "trail_activation_usd": 0.1,
+    "trail_distance_usd": 0.03,
+    "max_hold_seconds": 30,
+    "commission_round_trip_usd": 0.02
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "ticks": 4205709
+  },
+  "screen_gate": {
+    "reuse": "Frozen R037 independent-source Stage-A screen",
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "minimum_incremental_accepted_entries": 5,
+    "combined_trade_count_not_lower": true,
+    "winner_or_quality_gate": "official-win delta nonnegative OR positive net with improved gross loss",
+    "net_delta_min_usd": -2,
+    "max_balance_and_equity_dd_deterioration_pct": 1,
+    "strong_pass": "all gates plus net delta >= 0"
+  },
+  "forbidden": [
+    "post-result threshold tuning",
+    "session-filter rescue",
+    "side-only rescue",
+    "VWAP band multiplier sweep",
+    "candidate-specific exit tuning",
+    "import unavailable exchange volume",
+    "August",
+    "MQL5"
+  ],
+  "next_if_strong_pass": "R037_SVR_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_no_strong_pass": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
