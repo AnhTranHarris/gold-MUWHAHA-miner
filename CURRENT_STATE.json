@@ -3,10 +3,10 @@
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "branch": "delta",
   "research_scope": "DELTA_ONLY_CLEAN_ROOM",
-  "last_verified_durable_unit": "R037_SRHT_STAGE_A_SCREEN_CHECKPOINT_17AY",
-  "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-  "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_SRHT_STAGE_A_SCREEN_CHECKPOINT_17AY_MANIFEST.json",
+  "last_verified_durable_unit": "R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY",
+  "first_incomplete_unit": "R037_TURTLE_SOUP_SOURCE_DEFAULT_STAGE_A_SCREEN",
+  "current_phase": "R037_TURTLE_SOUP_SOURCE_DEFAULT_STAGE_A_SCREEN_INFLIGHT",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY_MANIFEST.json",
   "active_candidate": null,
   "last_candidate_disposition": "R037-BOSLS-v1 retired after Stage-A failure; 113 M5 BOS sweep/reclaim trades won 62 but netted -$12.10 under frozen P75 execution",
   "august_2026": "SEALED",
@@ -44,5 +44,13 @@
     "latest_cleanup_commit": "f43eef22eac0fec3cec8b91bf27faa553eb3296b",
     "forbidden_new_literals": 0,
     "scientific_results_changed": false
+  },
+  "concurrency_recovery": {
+    "status": "RESOLVED_TO_AUTHORITATIVE_PREEXISTING_CHAIN",
+    "authoritative_checkpoint": "R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY",
+    "current_candidate": "R037-TSO-v1",
+    "side_screen_preserved": "R037_SRHT_STAGE_A_SCREEN_CHECKPOINT_17AY",
+    "side_screen_role": "NON_AUTHORITATIVE_PARALLEL_SCREEN_DUE_TIMEOUT_CONCURRENCY",
+    "note": "SRHT artifacts remain preserved but do not replace the earlier CI-passed BOSLS 17AY -> Turtle Soup 17AZ chain."
   }
 }
