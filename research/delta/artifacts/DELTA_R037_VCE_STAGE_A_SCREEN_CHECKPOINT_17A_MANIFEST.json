@@ -1,0 +1,224 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A",
+  "status": "VERIFIED_DURABLE_STAGE_A_NO_STRONG_SURVIVOR_RESERVE_CLUE",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C",
+  "hypothesis": "A price-only volatility compression-to-expansion entry source can add causally independent XAUUSD opportunities without session-opening or prior-day sweep dependencies.",
+  "falsification_condition": "No frozen candidate achieves the preregistered strong Stage-A screen.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "14A Stage-A surrogate parent",
+    "reference_count": 14034,
+    "minimum_count": 14034,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "All candidates preserve or increase combined trade count; no strong economic survivor."
+  },
+  "primary_metrics": {
+    "entry_quality": "Leading C03/C04 each add 27 trades and +20 official wins; direct source net +$0.71.",
+    "hold_persistence": "Frozen 30-second parent lifecycle unchanged.",
+    "economics": "Leading C03/C04 combined net delta -$0.13; strong screen therefore false.",
+    "gross_loss_drawdown": "Leading C03/C04 gross loss delta -$4.26 and equity-DD deterioration only ~0.0044%.",
+    "activity": "C01 36 accepted; C02 27; C03 27; C04 27."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_vce_stage_a.py",
+      "commit": "057dbd9200feb40c2fae289fba675080c55fccd3",
+      "blob_sha": "1f9cbed1480fe35916b3f26f733f65f87979a8be",
+      "sha256": "d52630b39bf0bd048e57b9e148773c8f67767dcc7ba8e9e94e9b67112432136c"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/experiments/delta_r037_sorb_c04_dual30_independent_validation.py",
+      "blob_sha": "bf4ef19bfe7e937b9510ef62bed7810189cd0911"
+    },
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "bd0512d4d94f74167267a6b3bf7c265d984451ce",
+      "role": "bounded timeout/process-tree containment"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "candidates": [
+        "R037-VCE-C01_ORION_M5_BOX15",
+        "R037-VCE-C02_ORION_M5_BOX15_EMA150",
+        "R037-VCE-C03_BBKC_RELEASE",
+        "R037-VCE-C04_BBKC_RELEASE_MOM12"
+      ],
+      "timeframe": "M5",
+      "spread_gate_points_max": 25,
+      "parent_same_tick_priority": true,
+      "candidate_rearm": false,
+      "blocked_event_deferred": false,
+      "lot": 0.01,
+      "stop_usd": 0.3,
+      "trail_activation_usd": 0.1,
+      "trail_distance_usd": 0.03,
+      "max_hold_seconds": 30,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "completed M5 compression state",
+      "completed breakout/release bar",
+      "optional frozen direction filter",
+      "first executable tick after bar edge",
+      "parent-priority ownership"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Stage-A source screen only; no independent validation unless strong screen passes."
+    },
+    "runtime_dependencies": [
+      "Python 3.11-compatible",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "faulthandler": true,
+      "python_unbuffered": true,
+      "isolated_numba_cache": true,
+      "producer_atomic_output": true,
+      "summary_only_stdout": true
+    },
+    "execution_cost_assumptions": {
+      "surface": "DUKAS_COINEXX_LIKE_P75",
+      "lot": 0.01,
+      "entry_commission_usd": 0.01,
+      "exit_commission_usd": 0.01,
+      "buy_entry": "ASK",
+      "buy_exit": "BID",
+      "sell_entry": "BID",
+      "sell_exit": "ASK"
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "frozen VCE source harvest/preregistration",
+      "path": "research/delta/reference/DELTA_R037_VCE_SOURCE_HARVEST_PREREG_17A.json",
+      "blob_sha": "7f64a4ea4e6cc034809c7b33879ab8a8e12a66aa"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "C01 38 proposals",
+      "C02 38 proposals / 27 source eligible",
+      "C03 27 proposals",
+      "C04 27 proposals"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "C01 36 accepted",
+      "C02 27 accepted",
+      "C03 27 accepted",
+      "C04 27 accepted"
+    ],
+    "caches": [
+      "canonical P75 tick-rooted M5 bars reconstructed causally inside committed producer"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A.json",
+      "commit": "8096d4d650469fb8aa26410408f8b32abe1afddd",
+      "blob_sha": "406e4b3bc83654b97c3029af74a1fc12567bb459",
+      "raw_result_sha256": "045b537be38674b3e834bfd42d0207eb24891a9f9db3c79afd625bd7448c518e"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A.md",
+      "commit": "8096d4d650469fb8aa26410408f8b32abe1afddd",
+      "blob_sha": "ae623bd363c8547337bf5e3f7792a4768e1202b1"
+    }
+  ],
+  "qa": [
+    "Canonical January source hash and 4,205,709 Stage-A tick count verified.",
+    "Final producer was committed before the official replay.",
+    "Clean-room gate rejected the first producer solely because an EMA coefficient variable used a reserved lineage token; formula was unchanged, source was recommitted, and official replay was rerun.",
+    "Final bounded runner exited 0 in 20.117 seconds.",
+    "Official raw result SHA-256 045b537be38674b3e834bfd42d0207eb24891a9f9db3c79afd625bd7448c518e.",
+    "C03/C04 ordinary screen pass but strong screen false at -$0.13 combined net delta.",
+    "C03/C04 direct source net +$0.71; 12-bar momentum rejected zero Stage-A events.",
+    "No post-result threshold changes or candidate merges.",
+    "Workbook tab 70 A20:L27 written and read back.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_vce_stage_a.py",
+    "command": "python research/delta/experiments/delta_r037_vce_stage_a.py --source <canonical_january_gzip> --output <17a_json>",
+    "timing_semantics": "All compression, squeeze, trend, and breakout decisions use completed M5 bars only; entries occur at first executable tick at/after signal-bar right edge; parent same-tick priority; no deferred blocked events.",
+    "expected_fingerprints": {
+      "parent": {
+        "trades": 14034,
+        "official_wins": 6349,
+        "net_profit": -2944.94
+      },
+      "leading": {
+        "config": "R037-VCE-C03_BBKC_RELEASE",
+        "trade_delta": 27,
+        "official_win_delta": 20,
+        "net_delta": -0.13,
+        "direct_source_net": 0.71
+      }
+    },
+    "selected_interpretation": "No strong survivor; BB/KC release retained as reserve clue only."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — discovery research only",
+    "feature_timing_spec": "NOT READY",
+    "state_machine_spec": "NOT READY",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA",
+    "ownership_scheduler_spec": "14A surrogate parent priority",
+    "session_dst_spec": "not session-clock dependent",
+    "risk_spec": "fixed 0.01",
+    "trade_count_parity_spec": "not yet",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C",
+  "github_commits": [
+    "4614a530ae9e6e45523696b4d6923981d3842032",
+    "057dbd9200feb40c2fae289fba675080c55fccd3",
+    "8096d4d650469fb8aa26410408f8b32abe1afddd"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "70 R037 Prereg",
+      "range": "A20:L27",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": true
+  },
+  "decision": "NO_STRONG_SURVIVOR_NO_RETUNE_RESERVE_BBKC_CLUE",
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}

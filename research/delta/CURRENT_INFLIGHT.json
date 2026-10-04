@@ -1,40 +1,24 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "INFLIGHT",
+  "status": "IDLE",
   "branch": "delta",
   "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-  "parent_durable_unit": "R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C",
-  "phase": "REPORT_COMMITTED",
-  "phase_rank": 4,
-  "prereg": {
-    "path": "research/delta/reference/DELTA_R037_VCE_SOURCE_HARVEST_PREREG_17A.json",
-    "commit": "SAME_ATOMIC_COMMIT"
-  },
-  "producer": {
-    "path": "research/delta/experiments/delta_r037_vce_stage_a.py",
-    "commit": "SAME_ATOMIC_COMMIT",
-    "sha256": "d52630b39bf0bd048e57b9e148773c8f67767dcc7ba8e9e94e9b67112432136c"
-  },
-  "result": {
-    "path": "research/delta/reference/DELTA_R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A.json",
-    "blob_sha": "406e4b3bc83654b97c3029af74a1fc12567bb459",
-    "raw_result_sha256": "045b537be38674b3e834bfd42d0207eb24891a9f9db3c79afd625bd7448c518e"
-  },
-  "report": {
-    "path": "research/delta/research/DELTA_R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A.md",
-    "blob_sha": "ae623bd363c8547337bf5e3f7792a4768e1202b1"
-  },
+  "parent_durable_unit": "R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A",
+  "phase": "IDLE",
+  "phase_rank": 0,
+  "prereg": null,
+  "producer": null,
+  "result": null,
+  "report": null,
   "manifest": null,
   "progress": {
-    "family": "R037-VCE-v1",
-    "status": "OFFICIAL_STAGE_A_COMPLETE_NO_STRONG_SURVIVOR",
-    "leading_config": "R037-VCE-C04_BBKC_RELEASE_MOM12",
-    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+    "status": "NOT_STARTED",
+    "next_action": "Harvest the next causally independent price-only entry source; freeze a small public-logic basket before official Stage-A replay."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "VCE 17A official result/report are committed. Do not rerun Stage-A. Finish workbook/manifest/state closeout, then begin the next independent entry-source harvest.",
-    "idempotency_rule": "Producer and prereg are immutable before official compute; result path is create-only."
+    "resume_first_action": "Begin next independent source harvest. Do not rerun VCE 17A.",
+    "idempotency_rule": "Create-only artifacts; reconcile HEAD before durable write."
   },
   "last_verified_ci": {
     "commit": "50f64cef0924554cea05ac80be81c9c48339bd5c",
@@ -45,9 +29,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION",
-    "checkpoint": "R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C",
+    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "checkpoint": "R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A",
     "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "manifest": "research/delta/artifacts/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C_MANIFEST.json"
+    "manifest": "research/delta/artifacts/DELTA_R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A_MANIFEST.json"
   }
 }
