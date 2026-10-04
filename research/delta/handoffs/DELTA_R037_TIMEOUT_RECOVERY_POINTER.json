@@ -11,27 +11,27 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_CHECKPOINT_17AA",
-    "current_phase": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_17AB_INFLIGHT",
-    "first_incomplete_unit": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_17AB",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_CHECKPOINT_17AA_MANIFEST.json"
+    "last_verified_durable_unit": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AB",
+    "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
+    "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_LONDON_15M_OPENING_RANGE_CHECKPOINT_17AB_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_17AB",
-    "status": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
-    "parent_durable_unit": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_CHECKPOINT_17AA",
+    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "status": "IDLE",
+    "phase_rank": 0,
+    "parent_durable_unit": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AB",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_LONDON_15M_OPENING_RANGE_PREREG_17AB.json",
-        "commit": "4f2ebf9de9ed6fd164013e87daaa0099581e0ce7"
+        "path": "research/delta/reference/DELTA_R037_LONDON_15M_OPENING_RANGE_CHECKPOINT_17AB.json",
+        "commit": "f76cc11c4bcee40eedbfcf877285b09e82af8687"
       },
       {
-        "path": "research/delta/experiments/delta_r037_london_15m_opening_range_17ab.py",
-        "commit": "26a20ec154f33bc71dfd48f8cc20fd167dedee04"
+        "path": "research/delta/artifacts/DELTA_R037_LONDON_15M_OPENING_RANGE_CHECKPOINT_17AB_MANIFEST.json",
+        "commit": "efe6d689d75d4373dccf5c58500ba8972fafe5a6"
       }
     ],
-    "next_action": "Run exact committed 17AB producer once; if result appears, resume only missing durability phases.",
+    "next_action": "Preregister next unique independent source; 17AB is complete and retired.",
     "completed_months": [
       "2026-01_STAGE_A"
     ],

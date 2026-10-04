@@ -1,21 +1,21 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "INFLIGHT",
+  "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_17AB",
-  "parent_durable_unit": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_CHECKPOINT_17AA",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "parent_durable_unit": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AB",
+  "phase": "IDLE",
+  "phase_rank": 0,
   "progress": {
-    "status": "READY_FOR_OFFICIAL_COMPUTE",
-    "last_completed": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_CHECKPOINT_17AA",
+    "status": "READY_FOR_PREREG",
+    "last_completed": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AB",
     "last_decision": "RETIRE_FAMILY_NO_RETUNE",
-    "next": "Run exact committed 17AB producer on canonical January Stage-A."
+    "next": "Harvest and preregister the next unique independent entry source; do not retune London ORB."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Verify prereg and producer commits; if result absent run official compute once, otherwise resume next missing durability phase.",
-    "idempotency_rule": "Never rerun official compute if committed result or verified workbook raw-result SHA already exists."
+    "resume_first_action": "Read CURRENT_STATE/CURRENT_INFLIGHT/recovery pointer; 17AB durable; begin only next independent source.",
+    "idempotency_rule": "Do not rerun 17AB solely because chat delivery timed out."
   },
   "last_verified_ci": {
     "commit": "36649ef2507cecbfc23ecb1471f183706920fc59",
@@ -25,12 +25,10 @@
   "august_2026": "SEALED",
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
-  "prereg": {
-    "path": "research/delta/reference/DELTA_R037_LONDON_15M_OPENING_RANGE_PREREG_17AB.json",
-    "commit": "4f2ebf9de9ed6fd164013e87daaa0099581e0ce7"
-  },
-  "producer": {
-    "path": "research/delta/experiments/delta_r037_london_15m_opening_range_17ab.py",
-    "commit": "26a20ec154f33bc71dfd48f8cc20fd167dedee04"
+  "last_completed": {
+    "unit": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AB",
+    "checkpoint": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AB",
+    "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "manifest": "research/delta/artifacts/DELTA_R037_LONDON_15M_OPENING_RANGE_CHECKPOINT_17AB_MANIFEST.json"
   }
 }
