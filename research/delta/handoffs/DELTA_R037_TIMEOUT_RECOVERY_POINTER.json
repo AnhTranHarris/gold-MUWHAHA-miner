@@ -21,11 +21,21 @@
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "IDLE",
-    "phase_rank": 0,
+    "status": "PRODUCER_COMMITTED",
+    "phase_rank": 2,
     "parent_durable_unit": "R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C",
-    "committed_artifacts": [],
-    "next_action": "Harvest and preregister the next causally independent entry-source family; commit producer before official compute.",
+    "committed_artifacts": [
+      {
+        "path": "research/delta/reference/DELTA_R037_VCE_SOURCE_HARVEST_PREREG_17A.json",
+        "commit": "SAME_ATOMIC_COMMIT"
+      },
+      {
+        "path": "research/delta/experiments/delta_r037_vce_stage_a.py",
+        "commit": "SAME_ATOMIC_COMMIT",
+        "sha256": "11c2456208baf4f276be26d1f1ca9c5d6cba4046d3499a7710a71cab9cb7bdd0"
+      }
+    ],
+    "next_action": "Run the committed R037-VCE-v1 Stage-A producer once on canonical January P75; persist result before any interpretation.",
     "completed_months": [],
     "next_month": null
   },

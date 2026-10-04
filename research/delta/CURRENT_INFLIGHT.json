@@ -1,24 +1,37 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "IDLE",
+  "status": "INFLIGHT",
   "branch": "delta",
   "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
   "parent_durable_unit": "R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C",
-  "phase": "IDLE",
-  "phase_rank": 0,
-  "prereg": null,
-  "producer": null,
+  "phase": "PRODUCER_COMMITTED",
+  "phase_rank": 2,
+  "prereg": {
+    "path": "research/delta/reference/DELTA_R037_VCE_SOURCE_HARVEST_PREREG_17A.json",
+    "commit": "SAME_ATOMIC_COMMIT"
+  },
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_vce_stage_a.py",
+    "commit": "SAME_ATOMIC_COMMIT",
+    "sha256": "11c2456208baf4f276be26d1f1ca9c5d6cba4046d3499a7710a71cab9cb7bdd0"
+  },
   "result": null,
   "report": null,
   "manifest": null,
   "progress": {
-    "status": "NOT_STARTED",
-    "next_action": "Harvest a new causally independent entry source, freeze a bounded preregistered candidate set, then commit producer before official tick replay."
+    "family": "R037-VCE-v1",
+    "configs": [
+      "R037-VCE-C01_ORION_M5_BOX15",
+      "R037-VCE-C02_ORION_M5_BOX15_EMA150",
+      "R037-VCE-C03_BBKC_RELEASE",
+      "R037-VCE-C04_BBKC_RELEASE_MOM12"
+    ],
+    "status": "PREREG_AND_PRODUCER_FROZEN_OFFICIAL_COMPUTE_NEXT"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read CURRENT_STATE then this file. Begin R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST; do not rerun PLSR-C01 16C monthly validation.",
-    "idempotency_rule": "Create-only research artifacts; reconcile branch HEAD before every durable write."
+    "resume_first_action": "Verify committed VCE 17A producer blob/hash and run Stage-A once. If a committed result already exists, do not rerun; finish only missing durability steps.",
+    "idempotency_rule": "Producer and prereg are immutable before official compute; result path is create-only."
   },
   "last_verified_ci": {
     "commit": "50f64cef0924554cea05ac80be81c9c48339bd5c",

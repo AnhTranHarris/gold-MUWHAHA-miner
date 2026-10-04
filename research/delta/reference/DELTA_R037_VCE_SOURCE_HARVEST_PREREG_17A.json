@@ -1,0 +1,124 @@
+{
+  "schema": "delta-r037-vce-source-harvest-prereg-v1",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "family": "R037-VCE-v1",
+  "status": "FROZEN_BEFORE_STAGE_A_REPLAY",
+  "parent_checkpoint": "R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C",
+  "purpose": "Harvest a new causally independent, price-only, high-opportunity-density entry source after SORB and PLSR failed independent/monthly robustness.",
+  "independence": [
+    "No civil-session opening range.",
+    "No prior-day high/low sweep-reclaim.",
+    "No prior trade or post-exit rearm dependency.",
+    "No volume/VWAP/news input.",
+    "Completed-bar decisions only."
+  ],
+  "public_logic_sources": [
+    {
+      "source": "TradingView ORION: Hybrid Volatility Breakout Strategy",
+      "url": "https://www.tradingview.com/script/6xLkMWMC-ORION-Hybrid-Volatility-Breakout-Strategy/",
+      "disclosed_logic": "XAUUSD M5; last-15-candle box; range height <2.5x ATR; completed candle close outside box; EMA150 direction filter; box stale after 45 bars.",
+      "role": "C01/C02 mechanism source; performance claims ignored."
+    },
+    {
+      "source": "TradingView Bollinger Band Squeeze with Dotted Midlines",
+      "url": "https://www.tradingview.com/script/aMSEWpNJ-Bollinger-Band-Squeeze-with-Dotted-Midlines/",
+      "disclosed_logic": "BB length 20 / 2.0 stddev; KC length 20 / 1.5 ATR; squeeze when BB is inside KC.",
+      "role": "C03/C04 squeeze parameter source."
+    },
+    {
+      "source": "MQL5 Squeeze Breakout Trader",
+      "url": "https://www.mql5.com/en/market/product/195916",
+      "disclosed_logic": "Prior closed bar squeeze; entry when price closes beyond Keltner upper/lower after squeeze; one position; spread filter.",
+      "role": "C03/C04 release and breakout semantics; performance claims ignored."
+    },
+    {
+      "source": "TradingView LazyBear Squeeze Momentum",
+      "url": "https://www.tradingview.com/script/nqQ1DT5a-Squeeze-Momentum-Indicator-LazyBear/",
+      "disclosed_logic": "Squeeze release followed in direction of momentum.",
+      "role": "C04 momentum-confirmed variant."
+    },
+    {
+      "source": "QuantForge Volatility Squeeze",
+      "url": "https://www.quantforge.site/blog/volatility-squeeze-breakout",
+      "disclosed_logic": "BB20/2.0 inside KC20/1.5; squeeze fires on release; 12-period momentum gives direction.",
+      "role": "C04 12-bar momentum anchor; no performance claim imported."
+    }
+  ],
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "ticks": 4205709
+  },
+  "configs": {
+    "R037-VCE-C01_ORION_M5_BOX15": {
+      "timeframe": "M5",
+      "box_bars": 15,
+      "compression": "box high-low < 2.5 * ATR14",
+      "breakout": "first later completed M5 close outside frozen box",
+      "expiry_bars": 45,
+      "trend_filter": "none"
+    },
+    "R037-VCE-C02_ORION_M5_BOX15_EMA150": {
+      "timeframe": "M5",
+      "box_bars": 15,
+      "compression": "box high-low < 2.5 * ATR14",
+      "breakout": "first later completed M5 close outside frozen box",
+      "expiry_bars": 45,
+      "trend_filter": "long close > EMA150; short close < EMA150"
+    },
+    "R037-VCE-C03_BBKC_RELEASE": {
+      "timeframe": "M5",
+      "squeeze": "prior bar BB20 SMA +/-2.0 stddev fully inside KC EMA20 +/-1.5 ATR20",
+      "release": "current bar no longer squeezed",
+      "breakout": "current completed close beyond current KC outer band",
+      "momentum_filter": "none"
+    },
+    "R037-VCE-C04_BBKC_RELEASE_MOM12": {
+      "timeframe": "M5",
+      "squeeze": "prior bar BB20 SMA +/-2.0 stddev fully inside KC EMA20 +/-1.5 ATR20",
+      "release": "current bar no longer squeezed",
+      "breakout": "current completed close beyond current KC outer band",
+      "momentum_filter": "12-bar close displacement must agree with breakout"
+    }
+  },
+  "execution": {
+    "proposal_entry": "first executable tick at/after completed signal bar right edge",
+    "spread_gate_points_max": 25,
+    "parent_same_tick_priority": true,
+    "blocked_event_deferred": false,
+    "candidate_rearm": false,
+    "one_position_at_a_time": true,
+    "lot": 0.01,
+    "stop_usd": 0.3,
+    "trail_activation_usd": 0.1,
+    "trail_distance_usd": 0.03,
+    "max_hold_seconds": 30,
+    "commission_round_trip_usd": 0.02
+  },
+  "screen_gate": {
+    "reuse": "Frozen R037 independent-source Stage-A screen from SORB/PLSR.",
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "minimum_incremental_accepted_entries": 5,
+    "combined_trade_count_not_lower": true,
+    "winner_or_quality_gate": "official-win delta nonnegative OR positive net with improved gross loss",
+    "net_delta_min_usd": -2,
+    "max_balance_and_equity_dd_deterioration_pct": 1,
+    "strong_pass": "all gates plus net delta >= 0"
+  },
+  "selection": "Only preregistered configs may survive. Rank strong screen first, then screen pass, net delta, official-win delta, accepted entries. No post-result parameter changes.",
+  "forbidden": [
+    "threshold sweep",
+    "new config after seeing Stage-A",
+    "session filter added after result",
+    "posthoc long/short split",
+    "posthoc candidate merge",
+    "August",
+    "MQL5"
+  ],
+  "next_if_strong_pass": "R037_VCE_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_no_strong_pass": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
