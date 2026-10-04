@@ -1,11 +1,11 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "INFLIGHT",
+  "status": "COMPLETE",
   "branch": "delta",
   "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
   "parent_durable_unit": "R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E",
-  "phase": "REPORT_COMMITTED",
-  "phase_rank": 4,
+  "phase": "COMPLETE",
+  "phase_rank": 7,
   "prereg": {
     "path": "research/delta/reference/DELTA_R037_SFP_SOURCE_HARVEST_PREREG_17F.json",
     "commit": "83861bf58aaff8e393950d1fd771fe24dfc0ec54"
@@ -26,16 +26,17 @@
     "commit": "5ef733a1cdeed0681b767d8f3fa87cb9acda6162"
   },
   "manifest": {
-    "path": "research/delta/artifacts/DELTA_R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F_MANIFEST.json"
+    "path": "research/delta/artifacts/DELTA_R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F_MANIFEST.json",
+    "commit": "5518531892ae57a88be1fa03295bd18ac06106bb"
   },
   "progress": {
     "family": "R037-SFP-v1",
     "status": "COMPLETE_NO_SCREEN_SURVIVOR_FAMILY_RETIRED",
-    "next": "DURABILITY_MANIFEST_THEN_NEXT_SOURCE_HARVEST"
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Do not rerun SFP 17F. Result/report already committed; finish ledger/workbook, manifest, CURRENT_STATE and CI only.",
+    "resume_first_action": "Do not rerun SFP 17F. Resume from CURRENT_STATE next unit after durability CI.",
     "idempotency_rule": "Prereg and producer immutable before compute; result create-only.",
     "recovery_run_id": 37177568521,
     "recovery_artifact_id": 11293469126,
@@ -51,8 +52,8 @@
   "mql5_authorized": false,
   "last_completed": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "checkpoint": "R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E",
+    "checkpoint": "R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F",
     "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "manifest": "research/delta/artifacts/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E_MANIFEST.json"
+    "manifest": "research/delta/artifacts/DELTA_R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F_MANIFEST.json"
   }
 }
