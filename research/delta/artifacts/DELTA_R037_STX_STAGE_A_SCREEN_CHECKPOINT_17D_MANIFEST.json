@@ -1,0 +1,230 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D",
+  "status": "VERIFIED_DURABLE_NO_SCREEN_SURVIVOR_FAMILY_RETIRED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C",
+  "hypothesis": "Completed-bar stochastic transition signals can time the next 30 seconds better than oscillator extreme-state entry.",
+  "falsification_condition": "No preregistered M1/M5 %D-exit or extreme K/D-cross configuration passes the frozen independent-source Stage-A screen.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Frozen R037 independent-source Stage-A screen",
+    "reference_count": 14034,
+    "minimum_count": 14034,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Independent source adds entries only; combined trade count may not fall below parent."
+  },
+  "primary_metrics": {
+    "entry_quality": "Official-win contribution and direct STX net.",
+    "hold_persistence": "Frozen 30-second max-hold contract.",
+    "economics": "Combined net/gross deltas and direct STX net.",
+    "gross_loss_drawdown": "Gross-loss delta and balance/equity DD deterioration.",
+    "activity": "Accepted STX entries and combined trade delta."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_stx_stage_a.py",
+      "commit": "df0cc09f4ad5c3c79b2f53db9f3b734c5ce541dd",
+      "blob_sha": "611c651e1c478716bf721fcac40f1c1183b6a3c1",
+      "file_sha256": "6876a73c7a30e19bd04b63cba62f21f8de4d5a9a0412b38f0fc02d2be797043f"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "bd0512d4d94f74167267a6b3bf7c265d984451ce",
+      "role": "Crash-contained runner; official child produced atomic result before foreground wrapper/transport timeout."
+    }
+  ],
+  "config": {
+    "parameters": {
+      "family": "R037-STX-v1",
+      "configs": [
+        "R037-STX-C01_M1_D_EXIT20_80",
+        "R037-STX-C02_M1_KD_CROSS_EXTREME",
+        "R037-STX-C03_M5_D_EXIT20_80",
+        "R037-STX-C04_M5_KD_CROSS_EXTREME"
+      ],
+      "stochastic_k_period": 14,
+      "stochastic_d_period": 3,
+      "stochastic_slowing": 3,
+      "zones": [
+        20,
+        80
+      ],
+      "numeric_retuning": false,
+      "post_result_retuning": false,
+      "spread_gate_points_max": 25,
+      "lot": 0.01,
+      "stop_usd": 0.3,
+      "trail_activation_usd": 0.1,
+      "trail_distance_usd": 0.03,
+      "max_hold_seconds": 30
+    },
+    "feature_order": [
+      "completed_bar_stochastic",
+      "transition_confirmation",
+      "first_executable_tick",
+      "parent_priority_scheduler"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Stage-A discovery screen only; no post-result tuning."
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "exact_git_blob_verified": true,
+      "producer_sha256_verified": true,
+      "recovery_snapshot_run_id": 37175742195,
+      "recovery_artifact_id": 11292134552,
+      "atomic_output": true,
+      "official_result_was_complete_before_foreground_timeout": true,
+      "official_result_sha256": "67c6e52866cdd025a7f19541d2faa0f3b7416fa0f31e30517101290c2b4a5f21",
+      "deterministic_execution_diagnostic": {
+        "role": "non-scientific execution/transport diagnosis only",
+        "elapsed_seconds": 18.02,
+        "exit_code": 0,
+        "result_sha256": "67c6e52866cdd025a7f19541d2faa0f3b7416fa0f31e30517101290c2b4a5f21",
+        "bit_identical": true
+      }
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "STX preregistration",
+      "path": "research/delta/reference/DELTA_R037_STX_SOURCE_HARVEST_PREREG_17D.json",
+      "blob_sha": "00aba62db3f436da763ce8011aec18b157d38c36"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D.json",
+      "commit": "8e022865dedeb8b148f475be9aaaac4011e432d8",
+      "blob_sha": "b03e96610eb5de3ca1b223f3215dea14397a8b9a",
+      "raw_result_sha256": "67c6e52866cdd025a7f19541d2faa0f3b7416fa0f31e30517101290c2b4a5f21"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D.md",
+      "commit": "8e022865dedeb8b148f475be9aaaac4011e432d8",
+      "blob_sha": "880e110b8752a2b50231acd1ffe79f42b12225f5"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "941 C01 proposals",
+      "1316 C02 proposals",
+      "177 C03 proposals",
+      "243 C04 proposals"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "898 C01 accepted",
+      "1245 C02 accepted",
+      "169 C03 accepted",
+      "230 C04 accepted"
+    ],
+    "caches": [
+      "Commit-bound GitHub Actions recovery snapshot; deterministic diagnostic reused already-built cache only to diagnose execution-return behavior."
+    ]
+  },
+  "models": [],
+  "qa": [
+    "Fresh research ledger STX preregistration written/read back before compute.",
+    "Preregistration, producer and recovery cursor committed before official compute.",
+    "CI timeout-recovery/rebuild gate passed before official compute.",
+    "Producer Git blob and SHA-256 verified from commit-bound recovery artifact.",
+    "Canonical January hash and Stage-A chronology preserved.",
+    "Atomic official result existed before foreground wrapper/transport timeout.",
+    "A non-scientific execution diagnostic reproduced the exact official result SHA and exited 0 in ~18.02 seconds.",
+    "No candidate parameters or result bytes changed after the timeout.",
+    "All four preregistered configs failed the -$2 net gate.",
+    "Least-bad C03 M5 D-exit remained -$26.78 net delta.",
+    "Workbook write/readback verified.",
+    "August remained sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_stx_stage_a.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_stx_stage_a.py --source <canonical_january_gzip> --output <result_json>",
+    "timing_semantics": "Ordered ticks; slow stochastic 14/3/3 only on completed Bid bars; transition evaluated at bar close; first executable tick at/after signal-bar edge.",
+    "expected_fingerprints": {
+      "parent": {
+        "trades": 14034,
+        "official_wins": 6349,
+        "net_profit": -2944.94
+      },
+      "leader": {
+        "config": "R037-STX-C03_M5_D_EXIT20_80",
+        "trade_delta": 167,
+        "official_win_delta": 79,
+        "net_delta": -26.78,
+        "direct_stx_net": -28.63
+      }
+    },
+    "selected_interpretation": "NO_SURVIVOR_RETIRED"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — independent-source discovery screen only",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "DELTA frozen P75 semantics.",
+    "ownership_scheduler_spec": "Frozen parent-priority scheduler.",
+    "session_dst_spec": "No STX session filter.",
+    "risk_spec": "Frozen 0.01 / stop/trail/30-second initial-hold.",
+    "trade_count_parity_spec": "Not eligible for MT5 promotion.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "70 R037 Prereg",
+      "range": "A48:L57",
+      "readback_verified": true
+    },
+    {
+      "name": "DELTA Fresh Research Ledger",
+      "id": "1dXe4I98dFgIiybMSPQMoFnXOYNcTvtqNYDp85XeO34M",
+      "tab": "t.0",
+      "range_description": "17C result + STX 17D preregistration appended before compute",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "df0cc09f4ad5c3c79b2f53db9f3b734c5ce541dd",
+    "8e022865dedeb8b148f475be9aaaac4011e432d8"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
