@@ -1,42 +1,30 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "COMPLETE",
+  "status": "INFLIGHT",
   "branch": "delta",
-  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-  "parent_durable_unit": "R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H",
-  "phase": "COMPLETE",
-  "phase_rank": 7,
+  "unit": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_17X",
+  "parent_durable_unit": "R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I",
+  "phase": "PREREGISTERED",
+  "phase_rank": 1,
   "prereg": {
-    "path": "research/delta/reference/DELTA_R037_SFOC_SOURCE_HARVEST_PREREG_17I.json",
-    "commit": "844d9bdda78e61125c6d2994c25b4f8bc22dd0cb"
-  },
-  "producer": {
-    "path": "research/delta/experiments/delta_r037_sfoc_stage_a.py",
-    "commit": "1daf3647c7ebf42d1987612ef18b3ad9b31e975c",
-    "blob_sha": "fc9c4615b056b0ad6e5400be8582c3fafb933b6c"
-  },
-  "result": {
-    "path": "research/delta/reference/DELTA_R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I.json",
-    "commit": "7c7fae87bb40f60b197a470c8bf32483a6b6863e",
-    "raw_sha256": "9d47120a2612c078ea8ee40ab8d570c01beb284e6431abc1f219195d362e0399"
-  },
-  "report": {
-    "path": "research/delta/research/DELTA_R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I.md",
-    "commit": "70f0869417f4d68669c167cedaa9f7717359b1c2"
-  },
-  "manifest": {
-    "path": "research/delta/artifacts/DELTA_R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I_MANIFEST.json"
+    "path": "research/delta/reference/DELTA_R037_PLSR_RECLAIM_QUALITY_PREREG_17X.json",
+    "commit": "46e893ebdbfc77e94f7719a61fa35c6b18324e5e"
   },
   "progress": {
-    "family": "R037-SFOC-v1",
-    "status": "COMPLETE_NO_SURVIVOR_SUPPLY_TOO_SPARSE",
-    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+    "family": "R037-PLSR-RQ-v1",
+    "status": "PREREG_COMMITTED",
+    "completed_fast_prescreens": [
+      "17J-17V fast harvest committed",
+      "17W departure-swing retired: 6 trades / 3 wins / -$0.95 / supply fail",
+      "PDSM retired: best 2 trades / 1 win / +$0.06 / supply fail"
+    ],
+    "next": "Commit 17X producer and run Jan Stage-A plus Feb-Jul cross-month screen."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Do not rerun SFOC 17I. Begin next harvest.",
-    "idempotency_rule": "Prereg/producer immutable; result create-only.",
-    "git_blob_verified": "fc9c4615b056b0ad6e5400be8582c3fafb933b6c"
+    "resume_first_action": "Resume 17X at first missing phase; do not rerun 17J-17W or PDSM solely because chat delivery timed out.",
+    "idempotency_rule": "Reconcile branch before every write; committed prereg/result artifacts are authoritative.",
+    "prereg_commit": "46e893ebdbfc77e94f7719a61fa35c6b18324e5e"
   },
   "last_verified_ci": {
     "commit": "854baf7239bb88d2deb1d6ed8564fdaffe402112",
