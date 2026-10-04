@@ -1,0 +1,87 @@
+{
+  "schema": "delta-r037-sweep-ifvg-retest-prereg-17bx-17by-v1",
+  "status": "PREREGISTERED_BEFORE_PRODUCER",
+  "unit": "R037_SWEEP_IFVG_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BX_17BY",
+  "family": "R037-SIFVG-v1",
+  "parent_checkpoint": "R037_FIB_GOLDEN_POCKET_IMPULSE_RETRACE_STAGE_A_SCREEN_CHECKPOINT_17BW",
+  "research_question": "Does a causal liquidity-sweep -> displacement FVG -> body-close inversion -> first confirmed retest sequence create positive frozen 30-second XAUUSD persistence on M1 or M5?",
+  "source_basis": [
+    {
+      "source": "TradingView Sweep IFVG (M1D), mayb1dayy",
+      "role": "primary reconstructible sequence semantics",
+      "reconstructible_rules": [
+        "confirmed-bar-only detection",
+        "three-candle swing structure",
+        "sweep = wick through confirmed swing and close back inside",
+        "swing must be extreme of preceding 50 bars",
+        "sweep validity window 50 bars",
+        "minimum FVG size 30 ticks",
+        "FVG displacement must agree with sweep-implied reaction",
+        "inversion requires body close through candidate gap rather than wick probe"
+      ]
+    },
+    {
+      "source": "MQL5 The Inverse Fair Value Gap Trading Strategy / MQL5 IFVG implementation articles",
+      "role": "independent IFVG polarity-flip and retest support",
+      "reconstructible_rules": [
+        "three-candle FVG",
+        "failed FVG flips polarity",
+        "re-entry/retest after inversion is a distinct state",
+        "low execution timeframes are appropriate for IFVG logic"
+      ]
+    }
+  ],
+  "source_urls": [
+    "https://www.tradingview.com/script/XXWVc6m3-Sweep-IFVG-M1D/",
+    "https://www.mql5.com/en/articles/16659"
+  ],
+  "causal_semantics": {
+    "bar_detection": "completed bars only",
+    "swing_shape": "one bar left + center + one bar right; becomes visible after right bar closes",
+    "liquidity_extreme_lookback_bars": 50,
+    "sweep": "price wicks beyond latest eligible confirmed extreme and closes back inside on same completed bar",
+    "sweep_validity_bars": 50,
+    "fvg": "wick-to-wick 3-bar imbalance formed in sweep-implied reaction direction",
+    "minimum_gap_ticks": 30,
+    "inversion": "first later completed candle close cleanly through far edge of candidate FVG",
+    "retest": "first later completed bar overlaps inverted zone and closes back on inversion side with matching directional body",
+    "entry": "first P75 executable tick at/after retest-bar right edge",
+    "calendar_gap_rule": "FVG construction requires consecutive chart bars; prevents weekend/session discontinuity artifact"
+  },
+  "fixed_cleanroom_approximations": {
+    "inversion_grace_bars": 50,
+    "retest_validity_bars": 50,
+    "rationale": "Primary source exposes both as configurable windows but public prose does not disclose exact current defaults; fixed to the same disclosed 50-bar lifecycle horizon before compute. No result-dependent tuning allowed."
+  },
+  "lanes": {
+    "17BX_M1_SWEEP_IFVG_RETEST": {
+      "timeframe_ms": 60000
+    },
+    "17BY_M5_SWEEP_IFVG_RETEST": {
+      "timeframe_ms": 300000
+    }
+  },
+  "execution_semantics": {
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01
+  },
+  "gate": {
+    "minimum_trades": 20,
+    "minimum_distinct_days": 5,
+    "direct_net_usd_floor": 0,
+    "advance_if": "at least one fixed lane satisfies all three gates",
+    "no_rescue_rule": "No threshold/session/exit tuning if both fixed lanes fail."
+  },
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_window": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+  "stage_a_ticks": 4205709,
+  "numeric_retuning": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
