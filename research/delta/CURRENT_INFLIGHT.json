@@ -1,20 +1,23 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "IDLE",
+  "status": "IN_PROGRESS",
   "branch": "delta",
-  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "unit": "R037_ONE_SIDED_SPREAD_SHOCK_MEAN_REVERSION_STAGE_A_SCREEN",
   "parent_durable_unit": "R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT",
-  "phase": "IDLE",
-  "phase_rank": 0,
+  "phase": "PREREGISTERED_PRODUCER_NEXT",
+  "phase_rank": 1,
   "progress": {
-    "status": "IDLE",
+    "status": "PREREGISTERED",
     "last_completed": "R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT",
-    "current_candidate": null,
-    "next": "Preregister next independent sparse state-transition entry-source family."
+    "current_candidate": "R037-OSSMR-v1",
+    "prereg_path": "research/delta/reference/DELTA_R037_OSSMR_STAGE_A_PREREG_17AU.json",
+    "prereg_commit": "1c2896ff2d5602282c25c88a62d9e528eb69d15b",
+    "prereg_blob_sha": "7706c36364ac1a9cd57fa330a542c64a697ad59e",
+    "next": "Commit OSSMR Stage-A producer, verify exact Git blob locally, then official bounded compute."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "QIM 17AT is complete and retired; do not rerun. Preregister the next independent sparse state-transition entry-source family.",
+    "resume_first_action": "OSSMR 17AU preregistration is durable; do not repeat source harvest/prereg. Resume at producer commit.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
