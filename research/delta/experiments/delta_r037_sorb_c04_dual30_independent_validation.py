@@ -392,7 +392,7 @@ def main():
         1,1,1,1,1,HOLDOUT_START_MS
     ))
 
-    props_all=sorb.generate_proposals(t,ask,bid,CANDIDATE_ID)
+    props_all=sorb.generate_proposals(t,ask,bid,CANDIDATE_ID,start_ms=HOLDOUT_START_MS,end_ms=JAN_END_MS)
     props=[x for x in props_all if int(t[x.decision_index])>=HOLDOUT_START_MS]
     sp=supply(props)
     ep=[x for x in props if x.eligible]
