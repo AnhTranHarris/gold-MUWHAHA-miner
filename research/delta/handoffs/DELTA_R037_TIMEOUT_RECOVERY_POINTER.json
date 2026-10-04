@@ -16,12 +16,15 @@
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PVACVD_FAILED_AUCTION_STAGE_A_CHECKPOINT_17BL_17BN_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
-    "status": "IDLE",
-    "phase_rank": 0,
+    "unit": "R037_ACCUMULATION_VOLUME_PROFILE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BO_17BQ",
+    "status": "PRODUCER_COMMITTED",
+    "phase_rank": 2,
     "parent_durable_unit": "R037_PVACVD_FAILED_AUCTION_STAGE_A_SCREEN_CHECKPOINT_17BL_17BN",
-    "committed_artifacts": [],
-    "next_action": "Select distinct high-value source-grounded mechanism from completed R037 meta-harvest and preregister it before producer.",
+    "committed_artifacts": [
+      "research/delta/reference/DELTA_R037_AVPBR_STAGE_A_PREREG_17BO_17BQ.json",
+      "research/delta/experiments/delta_r037_avpbr_stage_a_17bo_17bq.py"
+    ],
+    "next_action": "Verify exact committed AVPBR producer blob locally, then run bounded official Stage-A compute.",
     "completed_months": [],
     "next_month": null
   },
