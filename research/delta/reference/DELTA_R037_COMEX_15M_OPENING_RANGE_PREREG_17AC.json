@@ -1,0 +1,55 @@
+{
+  "schema": "delta-r037-comex-15m-opening-range-prereg-17ac-v1",
+  "unit": "R037_COMEX_15M_OPENING_RANGE_STAGE_A_SCREEN_17AC",
+  "family": "R037-C15ORB-v1",
+  "parent_durable_unit": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AB",
+  "purpose": "Test a gold-specific COMEX opening-range source independent of the retired London ORB families.",
+  "hypothesis": "The first 15 minutes after the COMEX gold pit open may contain a stronger immediate directional impulse than London opening ranges under the frozen 30-second lifecycle.",
+  "falsification_condition": "No preregistered trigger timing strong-passes nonnegative direct net under frozen Stage-A supply/economic gates.",
+  "source_basis": [
+    {
+      "title": "[Chrona] Opening Range Breakout",
+      "source": "TradingView open-source",
+      "logic": "session-specific first 15/30-minute ranges; explicitly notes COMEX gold pit open at 08:20 New York time; touch/chart-close/5-minute-close break confirmation"
+    },
+    {
+      "title": "Gold ORB Strategy (15-min Range, 5-min Entry)",
+      "source": "TradingView open-source",
+      "logic": "gold-specific first-15-minute ORB with completed 5-minute close confirmation"
+    },
+    {
+      "title": "Recent gold/GC/XAUUSD 15m ORB community reports",
+      "source": "Reddit",
+      "logic": "community clue that gold opening impulse plus lower-timeframe confirmation can produce short-duration continuation; not treated as validated performance evidence"
+    }
+  ],
+  "causal_contract": {
+    "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "january_new_york_offset": "EST UTC-5",
+    "comex_pit_open_local": "08:20 America/New_York",
+    "range_utc": "13:20:00-13:35:00",
+    "breakout_window_utc": "13:35:00-15:20:00",
+    "one_accepted_trade_per_day": true,
+    "buffer_points": 0,
+    "spread_gate_points": 25,
+    "configs": [
+      "C01_FIRST_STRICT_TICK",
+      "C02_FIRST_COMPLETED_S5_CLOSE",
+      "C03_FIRST_COMPLETED_S15_CLOSE"
+    ],
+    "economics": "Reuse frozen 17Z/17AB 30-second lifecycle unchanged",
+    "numeric_retuning": false,
+    "side_filter": false,
+    "weekday_filter": false,
+    "august_2026": "SEALED"
+  },
+  "gates": {
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "direct_net_prescreen_min_usd": -2,
+    "strong_pass_requires_nonnegative_direct_net": true
+  },
+  "decision_rule": "Advance only a preregistered strong-pass configuration; otherwise retire without post-result rescue tuning.",
+  "mql5_authorized": false
+}
