@@ -1,0 +1,192 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_QUASIMODO_SOURCE_DEFAULT_STAGE_A_SCREEN_CHECKPOINT_17CA_17CB",
+  "status": "VERIFIED_NO_STAGE_A_SURVIVOR_FAMILY_RETIRED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_SWEEP_IFVG_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17BZ",
+  "hypothesis": "MetaQuotes source-default Quasimodo multi-leg reversal geometry can create positive frozen 30-second XAUUSD persistence with sufficient activity on fixed M5 or M15 lanes.",
+  "falsification_condition": "Neither fixed source-default lane satisfies >=20 trades, >=5 distinct days and nonnegative direct net.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Two fixed source-default QM lanes",
+    "reference_count": 2,
+    "minimum_count": 2,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "M5 and M15 source-default lanes both executed unchanged."
+  },
+  "primary_metrics": {
+    "17CA_M5": "6 trades / 3 days / 4 wins / +$0.41 — supply fail",
+    "17CB_M15": "1 trade / 1 day / 0 wins / -$0.76 — fail"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_quasimodo_source_default_17ca_17cb.py",
+      "commit": "16c22423a84902b6560078191220cd129b9c6646",
+      "blob_sha": "67650280824c36c280d3596714c2b68161fe05f4",
+      "file_sha256": "8d5b88dd408680fd60a93f7a6a9060346ad87bcc2e30d24c4c906f575b2f4fed"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "0067707d2a45755fd4fa69fa164bbdd379aea5fe",
+      "file_sha256": "a0816a19445537f8a9c199c46212bbadb006a2773a9e03715afa49d489b8c281"
+    }
+  ],
+  "models": [],
+  "config": {
+    "parameters": {
+      "swing_lookback_each_side": 5,
+      "entry_buffer_points": 0,
+      "wait_for_rejection_close": false,
+      "max_wait_bars": 30,
+      "skip_shared_shoulder": true,
+      "require_prior_trend": true,
+      "trend_pivots": 2,
+      "lanes": [
+        "M5",
+        "M15"
+      ],
+      "max_spread_raw": 250,
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30
+    },
+    "feature_order": [
+      "confirmed centered pivots",
+      "alternating zigzag",
+      "QM shoulder/leg/head/BOS geometry",
+      "prior-trend gate",
+      "left-shoulder retest",
+      "P75 execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "fixed source-default Stage-A prescreen"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": true,
+      "exact_git_blob_preexecution_verification": true,
+      "parent_death_signal": true,
+      "compact_stdout": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "QM prereg",
+      "path": "research/delta/reference/DELTA_R037_QUASIMODO_PREREG_17CA_17CB.json",
+      "commit": "15155390a68b3e3eb53147737f735b34083d0030"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "M5/M15 confirmed pivot zigzag and active QM setup state"
+    ]
+  },
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_QUASIMODO_STAGE_A_CHECKPOINT_17CA_17CB.json",
+      "blob_sha": "ada901ec5eb55c94bd8d14471bcc7e91e9ab217b",
+      "result_sha256": "113775153bcc7975ecf2c2a17fee7a54c23d9e5664417f65b557f292054921c1"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_QUASIMODO_STAGE_A_CHECKPOINT_17CA_17CB.md",
+      "blob_sha": "af1ce59db4a6921e5e0bf429a6694695208666d1"
+    }
+  ],
+  "qa": [
+    "MetaQuotes source defaults preregistered before producer.",
+    "Producer committed before official compute.",
+    "Local producer Git blob exactly matched committed GitHub blob.",
+    "Canonical January SHA and Stage-A tick chronology verified.",
+    "Official compute completed under the bounded crash-contained runner in approximately 5.5 seconds.",
+    "M5 showed +$0.41 but only 6 trades across 3 days and failed activity gates.",
+    "M15 produced 1 trade / 1 day / -$0.76.",
+    "No post-result lookback, wait, rejection, timeframe, session, side or exit tuning.",
+    "Workbook write/readback completed.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_quasimodo_source_default_17ca_17cb.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_quasimodo_source_default_17ca_17cb.py --source <canonical_january_gzip> --output <checkpoint_json>",
+    "timing_semantics": "Centered pivot becomes visible after five right bars; setups arm only after final BOS pivot confirmation; direct source-default shoulder retest is evaluated on later completed bars; close beyond Head invalidates.",
+    "expected_fingerprints": {
+      "17CA_M5": {
+        "trades": 6,
+        "days": 3,
+        "wins": 4,
+        "net_usd": 0.41
+      },
+      "17CB_M15": {
+        "trades": 1,
+        "days": 1,
+        "wins": 0,
+        "net_usd": -0.76
+      }
+    },
+    "selected_interpretation": "SOURCE_DEFAULT_QM_QUALITY_CLUE_BUT_ACTIVITY_TOO_SPARSE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — family retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "None.",
+    "execution_quote_side_spec": "Frozen P75.",
+    "ownership_scheduler_spec": "No integration.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01 research semantics.",
+    "trade_count_parity_spec": "Not applicable.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "github_commits": [
+    "15155390a68b3e3eb53147737f735b34083d0030",
+    "16c22423a84902b6560078191220cd129b9c6646",
+    "c889f253150093f88084e49afc0091bf5c291944",
+    "fff457d115201502d5c4098d7f51f379522ca841"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A227:I234"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+}
