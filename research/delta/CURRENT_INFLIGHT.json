@@ -2,33 +2,19 @@
   "schema": "delta-timeout-recovery-inflight-v1",
   "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_ORDER_FLOW_IMBALANCE_MOMENTUM_STAGE_A_SCREEN",
-  "parent_durable_unit": "R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR",
-  "phase": "MANIFEST_COMMITTED",
-  "phase_rank": 5,
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "parent_durable_unit": "R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS",
+  "phase": "IDLE",
+  "phase_rank": 0,
   "progress": {
-    "status": "MANIFEST_COMMITTED",
-    "last_completed": "R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR",
-    "current_candidate": "R037-OFM-v1",
-    "prereg_path": "research/delta/reference/DELTA_R037_OFM_STAGE_A_PREREG_17AS.json",
-    "prereg_commit": "b6eb77574ac32a151c371a4b4774b5946c3a300e",
-    "next": "Advance CURRENT_STATE to 17AS and reset in-flight cursor to next independent source harvest.",
-    "producer_path": "research/delta/experiments/delta_r037_ofm_stage_a_17as.py",
-    "producer_commit": "e27e9f9136d110f7f0f8ad41899bcda62d3db797",
-    "producer_blob_sha": "7aa5755960e1f262667f00b17e93a162b39deff2",
-    "result_path": "research/delta/reference/DELTA_R037_OFM_STAGE_A_CHECKPOINT_17AS.json",
-    "result_commit": "1cf7fae2295b19389d5248c604fe5647be83dadc",
-    "result_blob_sha": "2627df5702ac729deabc49278ebb22febee9e9a6",
-    "official_raw_sha256": "c7d07ce28fbd515674e733282c4191934a6d310cc931d158fe1ec252fd906cd0",
-    "decision": "RETIRE_OFM_PUBLISHED_THRESHOLD_STAGE_A_NO_SURVIVOR",
-    "report_path": "research/delta/research/DELTA_R037_OFM_STAGE_A_CHECKPOINT_17AS.md",
-    "workbook": "71 R037 Source QA!A101:H106 readback PASS",
-    "manifest_path": "research/delta/artifacts/DELTA_R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS_MANIFEST.json",
-    "manifest_commit": "eeb9107eabccfdcc2255385731b1b366a5d37615"
+    "status": "IDLE",
+    "last_completed": "R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS",
+    "current_candidate": null,
+    "next": "Preregister next independent entry-source family."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "17AS is fully manifested; do not rerun. Advance durable state/reset cursor only.",
+    "resume_first_action": "17AS is complete and retired; do not rerun. Preregister the next independent entry-source family.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
@@ -40,34 +26,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR",
-    "checkpoint": "R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR",
+    "unit": "R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS",
+    "checkpoint": "R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS",
     "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "manifest": "research/delta/artifacts/DELTA_R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR_MANIFEST.json"
-  },
-  "prereg": {
-    "path": "research/delta/reference/DELTA_R037_OFM_STAGE_A_PREREG_17AS.json",
-    "commit": "b6eb77574ac32a151c371a4b4774b5946c3a300e"
-  },
-  "producer": {
-    "path": "research/delta/experiments/delta_r037_ofm_stage_a_17as.py",
-    "commit": "e27e9f9136d110f7f0f8ad41899bcda62d3db797",
-    "blob_sha": "7aa5755960e1f262667f00b17e93a162b39deff2"
-  },
-  "result": {
-    "path": "research/delta/reference/DELTA_R037_OFM_STAGE_A_CHECKPOINT_17AS.json",
-    "commit": "1cf7fae2295b19389d5248c604fe5647be83dadc",
-    "blob_sha": "2627df5702ac729deabc49278ebb22febee9e9a6",
-    "official_raw_sha256": "c7d07ce28fbd515674e733282c4191934a6d310cc931d158fe1ec252fd906cd0"
-  },
-  "report": {
-    "path": "research/delta/research/DELTA_R037_OFM_STAGE_A_CHECKPOINT_17AS.md",
-    "commit": "f46e6b37de8a2de5b9005145d2e3021263c395b8",
-    "blob_sha": "a7456d3f18911ce9f93c23b8bd7258005a0904e5"
-  },
-  "manifest": {
-    "path": "research/delta/artifacts/DELTA_R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS_MANIFEST.json",
-    "commit": "eeb9107eabccfdcc2255385731b1b366a5d37615",
-    "blob_sha": "c1ed00e15e92e8bacefdcf0af78545ba88503194"
+    "manifest": "research/delta/artifacts/DELTA_R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS_MANIFEST.json"
   }
 }
