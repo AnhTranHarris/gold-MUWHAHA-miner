@@ -1,0 +1,21 @@
+{
+  "schema": "delta-r037-prn-stage-a-17ag-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_PSYCHOLOGICAL_ROUND_LIQUIDITY_STAGE_A_SCREEN",
+  "family": "R037-PRN-v1",
+  "prereg_commit": "966e7ab5d868b6a622eaef5ea598deb0cd7e1b98",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "configs": {
+    "C01_10_S5_RECLAIM": {"metrics":{"proposals":2628,"eligible":908,"trades":906,"distinct_days":14,"long":447,"short":459,"rejections":{"CONFIRM_FAIL":1644,"RELOST_AT_EXEC":76},"official_wins":426,"raw_positive_wins":432,"gross_profit":93.33,"gross_loss":-278.39,"direct_net_usd":-185.06,"exit_reasons":{"STOP":893,"MAX_HOLD":13,"END":0}},"gate":{"minimum_trades_30":true,"minimum_distinct_days_6":true,"direct_net_min_minus_2":false,"prescreen_pass":false,"strong_pass":false}},
+    "C02_5_S5_RECLAIM": {"metrics":{"proposals":5469,"eligible":1843,"trades":1841,"distinct_days":14,"long":921,"short":920,"rejections":{"CONFIRM_FAIL":3472,"RELOST_AT_EXEC":154},"official_wins":858,"raw_positive_wins":869,"gross_profit":190.74,"gross_loss":-575.07,"direct_net_usd":-384.33,"exit_reasons":{"STOP":1818,"MAX_HOLD":23,"END":0}},"gate":{"minimum_trades_30":true,"minimum_distinct_days_6":true,"direct_net_min_minus_2":false,"prescreen_pass":false,"strong_pass":false}},
+    "C03_10_S15_RECLAIM": {"metrics":{"proposals":2628,"eligible":1038,"trades":1030,"distinct_days":14,"long":489,"short":541,"rejections":{"CONFIRM_FAIL":1535,"RELOST_AT_EXEC":55},"official_wins":444,"raw_positive_wins":448,"gross_profit":95.06,"gross_loss":-348.81,"direct_net_usd":-253.75,"exit_reasons":{"STOP":1016,"MAX_HOLD":14,"END":0}},"gate":{"minimum_trades_30":true,"minimum_distinct_days_6":true,"direct_net_min_minus_2":false,"prescreen_pass":false,"strong_pass":false}},
+    "C04_5_S15_RECLAIM": {"metrics":{"proposals":5469,"eligible":2150,"trades":2123,"distinct_days":14,"long":1034,"short":1089,"rejections":{"CONFIRM_FAIL":3203,"RELOST_AT_EXEC":116},"official_wins":946,"raw_positive_wins":956,"gross_profit":209.8,"gross_loss":-687.78,"direct_net_usd":-477.98,"exit_reasons":{"STOP":2091,"MAX_HOLD":32,"END":0}},"gate":{"minimum_trades_30":true,"minimum_distinct_days_6":true,"direct_net_min_minus_2":false,"prescreen_pass":false,"strong_pass":false}}
+  },
+  "ranking": ["C01_10_S5_RECLAIM","C03_10_S15_RECLAIM","C02_5_S5_RECLAIM","C04_5_S15_RECLAIM"],
+  "finding": {"leading_config":"C01_10_S5_RECLAIM","strong_survivors":[],"decision":"RETIRE_FAMILY_NO_RETUNE","next":"R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"},
+  "mql5_authorized": false
+}
