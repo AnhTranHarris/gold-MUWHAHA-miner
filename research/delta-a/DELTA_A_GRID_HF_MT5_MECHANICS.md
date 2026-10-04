@@ -1,41 +1,42 @@
-# DELTA-A GRID-HF R1 — MT5 Mechanics / Translation Contract
+# DELTA-A GRID-HF R2 HARD CHECKPOINT — MT5 Mechanics / Translation Contract
 
 ## Status
 
 **MECHANICS SPECIFICATION ONLY — NOT AN AUTHORIZED PRODUCTION EA**
 
-This file captures deterministic MT5-translatable mechanics so the current research checkpoint is not lost. It does not authorize creation, sale, deployment, or certification of an MQL5 EA.
+This contract supersedes the earlier R1 mechanics checkpoint. It captures the current GRID-HF R2 Refinement 02 state so later MT5 translation does not depend on chat reconstruction.
 
 ## 1. Architectural rule
 
-Do **not** implement GRID-HF as a classic unlimited physical grid.
+Do **not** implement GRID-HF as a conventional unlimited physical grid.
 
-Implement it as:
+The intended architecture is:
 
 1. virtual multi-scale grid event detector,
-2. causal regime owner,
-3. specialist router,
-4. entry de-duplication/arbitration layer,
-5. specialist-specific lifecycle,
-6. account/risk layer.
+2. causal feature/state engine,
+3. directional specialist router,
+4. deterministic de-duplication/arbitration,
+5. specialist-specific bounded lifecycle,
+6. broker execution layer,
+7. portfolio/risk wrapper.
 
-The virtual event detector may emit many candidate events without opening multiple physical grid positions.
+Virtual events may be numerous. A virtual crossing does not automatically imply a physical grid basket.
 
 ## 2. Tick clock
 
-On every new XAUUSD tick:
+On each XAUUSD tick:
 
-- capture broker `time_msc` where available,
-- read Bid and Ask,
-- compute midpoint only for signal geometry where specified,
-- never use future ticks,
-- maintain all virtual-grid state causally.
+- use broker `time_msc` where available,
+- read current Bid and Ask,
+- compute midpoint only where signal geometry requires it,
+- never use future ticks or incomplete future bars,
+- update all event/router state causally.
 
 Research parity uses native Dukascopy timing. Live MT5 uses the broker's actual tick stream.
 
 ## 3. Virtual grid state
 
-Maintain an independent state object for each configured grid scale.
+Maintain independent state per configured scale.
 
 Suggested structure:
 
@@ -46,182 +47,230 @@ GridState
   initialized
   last_event_time_msc
   last_cross_direction
-  regime_owner
 ```
 
-### Crossing rule
+Crossing semantics:
 
-For each scale:
+- midpoint >= anchor + gap -> UP event,
+- midpoint <= anchor - gap -> DOWN event,
+- at most one new event per observed tick per scale,
+- after an event, reset that scale's anchor to the observed causal price.
 
-- if midpoint >= anchor + gap: emit UP crossing;
-- if midpoint <= anchor - gap: emit DOWN crossing;
-- emit at most one new event per observed tick per scale;
-- after the event, reset that scale's anchor to the observed causal price rather than retroactively emitting every skipped intermediate grid level.
+Do not backfill intermediate skipped levels from a large price jump.
 
-This prevents a single price jump from manufacturing many same-price pseudo-opportunities.
+## 4. Candidate-event de-duplication
 
-## 4. Candidate direction
+Hard-checkpoint rule:
 
-### Continuation owner
+- combine eligible virtual events chronologically,
+- retain the first eligible event inside a rolling **1-second** cluster,
+- do not use future PnL to select the winner,
+- log all suppressed duplicates.
 
-UP crossing -> BUY candidate.
-DOWN crossing -> SELL candidate.
+January hard-checkpoint result after this rule: **39,253 retained events**.
 
-Current leading volatile/persistent research profile:
+## 5. Required causal features
 
-- gap approximately $2.375,
-- hold approximately 120 seconds.
+The R2 router uses only as-of-event information:
 
-### Reversion owner
-
-UP crossing -> SELL candidate.
-DOWN crossing -> BUY candidate.
-
-Current quiet-state research scales:
-
-- $4
-- $5
-- $6
-- $8
-- $10
-
-The exact scale-to-lifecycle mapping is not yet translation-locked and must be verified from the next reproducibility checkpoint before executable MQL5 code.
-
-## 5. Regime ownership
-
-The R1 research bank used a causal native-market spread/volatility proxy with a threshold near 0.60 to route between quiet/reversion and volatile/continuation ownership.
-
-MT5 translation requirements:
-
-- compute the chosen proxy only from information available at the event tick,
-- no future bar completion,
-- no future outcome labels,
-- maintain the threshold as an external parameter until neighborhood validation is finished.
-
-The current threshold is **research provisional**.
-
-## 6. Event de-duplication
-
-The HF system must prevent multi-scale correlated events from becoming artificial trade inflation.
-
-Required behavior:
-
-- order candidate events by time,
-- apply a short clock-level de-duplication/arbitration window,
-- preserve one owner for materially simultaneous correlated candidate clocks,
-- record rejected duplicates for parity diagnostics.
-
-The January checkpoint reports a 1-second de-duplication stage and 29,540 unique candidate trades. The exact winner-selection policy inside that window must be explicitly reconstructed and frozen before MQL5 certification.
-
-Until then, this is a **translation blocker**, not permission to guess.
-
-## 7. Lifecycle
-
-R1 uses fixed research horizons, not an unlimited grid hold.
-
-For the leading continuation specialist:
-
-- entry on current executable side,
-- maximum lifecycle approximately 120 seconds,
-- mark/exit using the opposite executable quote side.
-
-Quiet reversion specialists use longer bounded horizons in current research. Those exact per-scale horizons remain to be formally frozen.
-
-No Martingale.
-
-## 8. Execution-side semantics
-
-For live MT5:
-
-- BUY enters at Ask and exits/marks at Bid;
-- SELL enters at Bid and exits/marks at Ask;
-- use actual broker spread and symbol contract details.
-
-For Python/DELTA-comparable research only:
-
-- signal clock remains native Dukascopy,
-- execution may use `DUKAS_COINEXX_LIKE_P75`,
-- current P75 implementation models approximately $0.20-$0.21 session-dependent spread.
-
-Do not synthesize P75 quotes inside a live EA.
-
-## 9. Cost accounting
-
-Research parity must explicitly account for:
-
-- spread through executable Bid/Ask,
-- configured round-trip/side cost convention,
-- any later verified commission,
-- slippage sensitivity when added.
-
-Do not infer profit from midpoint markout.
-
-## 10. High-volume preservation rule
-
-The specialist router must not improve apparent quality merely by deleting most opportunities.
-
-R1 design objective:
-
-- preserve approximately >=1,000 unique candidate events/day as a research floor,
-- improve directional ownership/lifecycle inside that population,
-- measure all rejected candidates and reasons.
-
-This floor is a research objective, not a broker order-rate promise.
-
-## 11. State-machine pseudocode
-
-```
-on_tick(tick):
-    update_causal_market_state(tick)
-
-    for scale in virtual_grid_scales:
-        event = scale.detect_crossing(tick)
-        if event:
-            regime = regime_router(causal_state)
-            candidate = specialist_route(event, regime)
-            queue(candidate)
-
-    unique = deduplicate_and_arbitrate(queue, short_time_window)
-
-    for candidate in unique:
-        if execution_and_risk_gate(candidate):
-            open_specialist_trade(candidate)
-
-    manage_open_specialist_lifecycles(tick)
-```
-
-## 12. Required telemetry
-
-Every emitted candidate should log:
-
-- event time_msc,
-- grid scale,
-- anchor before crossing,
-- observed crossing price,
+- native quoted spread,
 - crossing direction,
-- regime state/proxy,
-- specialist owner,
-- proposed BUY/SELL,
+- grid/source scale,
+- signed 15-second momentum,
+- signed 60-second momentum,
+- signed 60-second efficiency (signed movement divided by causal local range),
+- previous retained-event direction,
+- previous retained-event reclaim fraction,
+- previous retained-event extension fraction,
+- 10-second cross-scale agreement score.
+
+Exact feature implementation must be parity-tested against the research producer before production certification.
+
+## 6. Frozen router
+
+### 6.1 Volatile branch
+
+If native Dukascopy spread > **$0.90**:
+
+- owner: **CONTINUATION**
+- lifecycle: **180 seconds**
+
+### 6.2 Quiet $2.25-$2.50 family
+
+Use signed 60-second momentum relative to crossing direction.
+
+- threshold center: **2.9**
+- above threshold -> continuation / **1800 seconds**
+- below threshold -> reversion / **600 seconds**
+
+### 6.3 Quiet $2.375 family
+
+Use signed 15-second momentum relative to crossing direction.
+
+- threshold center: **3.9**
+- above threshold -> continuation / **1800 seconds**
+- below threshold -> reversion / **900 seconds**
+
+### 6.4 Quiet $2.75-$3.00 family
+
+Use prior retained-event causal reclaim fraction.
+
+- threshold center: **0.73**
+- above threshold -> continuation / **1200 seconds**
+- below threshold -> reversion / **900 seconds**
+
+### 6.5 Quiet $3.50-$5.00 and $10.00 families
+
+- reversion / **1200 seconds**
+
+### 6.6 Quiet $6.00-$8.00 family
+
+Use signed 60-second efficiency.
+
+- threshold center: **0.82**
+- above threshold -> continuation / **300 seconds**
+- below threshold -> reversion / **900 seconds**
+
+## 7. Global overrides
+
+### 7.1 Failed-reclaim persistence
+
+If the prior retained event is same-direction and:
+
+- prior reclaim fraction <= **0.50**
+- prior extension fraction >= **1.50**
+
+then:
+
+- continuation / **600 seconds**
+
+### 7.2 Immediate multi-scale agreement
+
+Compute the causal agreement score using the prior/current 10-second multi-scale state.
+
+- score >= **9** -> continuation / **180 seconds**
+- score <= **-9** -> reversion / **600 seconds**
+
+Override ordering must match the authoritative research producer when that producer is frozen for Jan-Jul replay.
+
+## 8. Direction semantics
+
+Continuation:
+
+- UP crossing -> BUY
+- DOWN crossing -> SELL
+
+Reversion:
+
+- UP crossing -> SELL
+- DOWN crossing -> BUY
+
+## 9. Lifecycle semantics
+
+All R2 lifecycles are bounded time horizons.
+
+At lifecycle expiration:
+
+- BUY marks/exits at executable Bid,
+- SELL marks/exits at executable Ask.
+
+No unlimited recovery cycle is implied by GRID-HF R2.
+
+## 10. Research execution surface
+
+Python/DELTA-comparable research:
+
+- signal clock: native Dukascopy,
+- execution surface: `DUKAS_COINEXX_LIKE_P75`,
+- session-dependent modeled spread remains approximately $0.20-$0.21 under the current DELTA P75 implementation.
+
+Live MT5:
+
+- use actual broker Bid/Ask,
+- use verified commission/slippage/contract details,
+- do **not** synthesize P75 quotes.
+
+## 11. Hard-checkpoint metrics
+
+January:
+
+- retained events: **39,253**
+- net: **+$12,239.46**
+- average/event: **+$0.31181**
+- PF: **1.05976**
+- positive outcomes: **~50.30%**
+- closed-event-sequence DD: **~$2,057.60**
+- early-half net: **+$203.37**
+- late-half net: **+$12,036.09**
+- positive week buckets: **5/5**
+
+These metrics are research parity targets, not production promises.
+
+## 12. Session semantics
+
+No hard session gate is part of the hard checkpoint.
+
+January session diagnostics were all positive:
+
+- off-session,
+- London-only,
+- London/NY overlap,
+- NY-only.
+
+London/NY overlap was strongest. A later session-aware router may change lifecycle, ownership confidence, or risk, but must be justified out of sample.
+
+## 13. Prop-firm semantics
+
+Prop-firm constraints are a separate wrapper. They must not redefine the alpha signal.
+
+A later wrapper may enforce:
+
+- daily loss ceiling,
+- trailing/overall drawdown,
+- maximum concurrent exposure,
+- news restrictions,
+- overnight/weekend rules,
+- broker/firm trading-hour rules,
+- account-specific lot scaling.
+
+## 14. Required telemetry
+
+Log every retained event:
+
+- event `time_msc`,
+- source/grid scale,
+- anchor before crossing,
+- crossing price,
+- crossing direction,
+- native spread,
+- momentum/efficiency features,
+- prior reclaim/extension state,
+- agreement score,
+- chosen specialist owner,
+- lifecycle,
 - duplicate/arbitration disposition,
-- executable Bid/Ask,
-- spread,
-- lifecycle profile,
-- exit time,
-- exit reason,
+- executable entry Bid/Ask,
+- exit time and reason,
 - gross/net PnL,
 - MFE/MAE,
-- concurrent-position state.
+- concurrent open-trade state.
 
-## 13. Translation blockers before production code
+## 15. Translation blockers
 
-1. Exact R1 de-duplication winner-selection rule must be frozen.
-2. Quiet-regime per-scale lifecycle mappings must be frozen.
-3. Jan-Jul durability must be completed for the HF architecture.
-4. Portfolio concurrency/floating-equity DD must be measured, not only event-sequence DD.
-5. Session/news/event-aware structure remains deferred.
-6. Coinexx-native MT5 Every tick based on real ticks certification remains separate.
-7. Main DELTA is not modified by this branch.
+Before production MQL5:
 
-## 14. Rollback
+1. freeze the authoritative research producer implementing this exact router,
+2. complete unchanged February-July replay,
+3. measure overlapping-portfolio floating-equity DD,
+4. validate Coinexx broker-native tick execution,
+5. decide session/news/event routing only from out-of-sample evidence,
+6. define any prop-firm wrapper independently,
+7. obtain explicit owner authorization for production MQL5.
 
-If later GRID-HF refinement fails, this R1 specification remains the rollback checkpoint for the high-volume virtual-grid architecture.
+## 16. Rollback
+
+The authoritative rollback checkpoint is:
+
+`DELTA_A_GRID_HF_R2_HARD_CHECKPOINT.md`
+
+If later refinement fails, restore this router and metrics rather than an intermediate experiment.
