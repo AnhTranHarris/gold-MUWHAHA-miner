@@ -10,39 +10,18 @@
     "active rebuild manifest"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
+    "last_verified_durable_unit": "R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG",
     "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
     "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD_MANIFEST.json"
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG_MANIFEST.json"
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
     "status": "IDLE",
     "phase_rank": 0,
-    "parent_durable_unit": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
-    "committed_artifacts": [
-      {
-        "path": "research/delta/reference/DELTA_R037_IER_STAGE_A_PREREG_17BD.json",
-        "commit": "9f4c17f6f9247f6bf492bfe39922fc0437aa69a7"
-      },
-      {
-        "path": "research/delta/experiments/delta_r037_ier_stage_a_17bd.py",
-        "commit": "c26cb43511c3e63ded2ed4fab2bc469b293b9897"
-      },
-      {
-        "path": "research/delta/reference/DELTA_R037_IER_STAGE_A_CHECKPOINT_17BD.json",
-        "commit": "4cdb079b75a1825616cade08afe157ee62ec634e"
-      },
-      {
-        "path": "research/delta/research/DELTA_R037_IER_STAGE_A_CHECKPOINT_17BD.md",
-        "commit": "eb9540be74811aea512da905cbd12855833e133e"
-      },
-      {
-        "path": "research/delta/artifacts/DELTA_R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD_MANIFEST.json",
-        "commit": "4a93d6384ffa51ca98600ef482544f30d132e423"
-      }
-    ],
-    "next_action": "Harvest and preregister next independent high-supply entry source.",
+    "parent_durable_unit": "R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG",
+    "committed_artifacts": [],
+    "next_action": "Preregister continuation-biased fast batch.",
     "completed_months": [],
     "next_month": null
   },
