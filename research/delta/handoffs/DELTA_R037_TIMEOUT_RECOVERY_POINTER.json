@@ -17,8 +17,8 @@
   },
   "in_flight_unit": {
     "unit": "R037_ORDER_FLOW_IMBALANCE_MOMENTUM_STAGE_A_SCREEN",
-    "status": "REPORT_COMMITTED",
-    "phase_rank": 4,
+    "status": "MANIFEST_COMMITTED",
+    "phase_rank": 5,
     "parent_durable_unit": "R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR",
     "committed_artifacts": [
       {
@@ -36,9 +36,13 @@
       {
         "path": "research/delta/research/DELTA_R037_OFM_STAGE_A_CHECKPOINT_17AS.md",
         "commit": "f46e6b37de8a2de5b9005145d2e3021263c395b8"
+      },
+      {
+        "path": "research/delta/artifacts/DELTA_R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS_MANIFEST.json",
+        "commit": "eeb9107eabccfdcc2255385731b1b366a5d37615"
       }
     ],
-    "next_action": "Create 17AS rebuild manifest, then advance CURRENT_STATE; compute must not rerun.",
+    "next_action": "Advance CURRENT_STATE to 17AS, then reset cursor to next independent source harvest; do not rerun 17AS.",
     "completed_months": [],
     "next_month": null
   },
