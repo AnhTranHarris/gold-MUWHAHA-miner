@@ -1,0 +1,18 @@
+{
+  "schema": "delta-r037-smor-implementation-contract-17h-v1",
+  "checkpoint": "R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H",
+  "status": "FROZEN_BEFORE_PRODUCER_AND_REPLAY",
+  "lifecycle": {
+    "per_direction_state": "at most one pending sweep/MSS event and one active OB; active OB blocks replacement in that direction",
+    "pending_supersession": "before MSS, a newer causal same-direction sweep supersedes the older pending sweep and freezes the then-visible opposite swing as its MSS target",
+    "active_zone_ownership": "after MSS creates an OB, later same-direction sweeps are ignored until that zone is consumed or invalidated",
+    "first_interaction": "the first later completed bar whose range intersects the OB body consumes the zone; BODY_TOUCH may emit if rejection-close rule passes; MIDPOINT additionally requires midpoint reach on that same first interaction",
+    "invalidating_touch": "if the first interaction closes through the OB far edge against the shift direction, consume with no proposal",
+    "opposite_direction": "bullish and bearish state machines may coexist; if one completed bar would produce both entry directions, consume both touched zones and emit no proposal"
+  },
+  "causality": "all swing reveals, sweeps, MSS closes, OB selection, retests and proposal decisions use only completed bars visible at the decision edge",
+  "numeric_retuning": false,
+  "post_result_changes_forbidden": true,
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
