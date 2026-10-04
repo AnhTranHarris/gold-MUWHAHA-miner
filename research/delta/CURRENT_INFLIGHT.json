@@ -1,44 +1,39 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "COMPLETE",
+  "status": "INFLIGHT",
   "branch": "delta",
   "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-  "parent_durable_unit": "R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F",
-  "phase": "COMPLETE",
-  "phase_rank": 7,
+  "parent_durable_unit": "R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G",
+  "phase": "PRODUCER_COMMITTED",
+  "phase_rank": 2,
   "prereg": {
-    "path": "research/delta/reference/DELTA_R037_EGF_SOURCE_HARVEST_PREREG_17G.json",
-    "commit": "13f60e2dd83017085e944909a27ce3c9516073c8"
+    "path": "research/delta/reference/DELTA_R037_SMOR_SOURCE_HARVEST_PREREG_17H.json",
+    "commit": "947b101e1a8d289b5832556e1795d71b653a444b"
   },
   "producer": {
-    "path": "research/delta/experiments/delta_r037_egf_stage_a.py",
-    "commit": "d9f8032e4221e17527ffa84667f1ddfae3dd06f0",
-    "blob_sha": "72737c7238915c0bca1b63512633adfc10bf18a4",
-    "file_sha256": "427c4715c328199c1efc3bbb13aa346ffe3e526c8a3ebd5bddf373767d9b733e"
+    "path": "research/delta/experiments/delta_r037_smor_stage_a.py",
+    "commit": "e5acbd86f244b739279b21b78c35b56ee286a6fb",
+    "blob_sha": "bb944bb9052b95f039e0cdd0942598d2a4b2d47d"
   },
   "result": {
-    "path": "research/delta/reference/DELTA_R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G.json",
-    "commit": "e0dbe8c1d49eb54534b084103101933f0774028a",
-    "raw_sha256": "d124c1bac75ab8e098ac6118e16ab22fea46d317807fced81e9f9b25d2458628"
+    "path": "research/delta/reference/DELTA_R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H.json"
   },
   "report": {
-    "path": "research/delta/research/DELTA_R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G.md",
-    "commit": "f5e24744dd08bb1c570afa6fdfb2e423226e8176"
+    "path": "research/delta/research/DELTA_R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H.md"
   },
   "manifest": {
-    "path": "research/delta/artifacts/DELTA_R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G_MANIFEST.json"
+    "path": "research/delta/artifacts/DELTA_R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H_MANIFEST.json"
   },
   "progress": {
-    "family": "R037-EGF-v1",
-    "status": "COMPLETE_NO_SCREEN_SURVIVOR_FAMILY_RETIRED",
-    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+    "family": "R037-SMOR-v1",
+    "status": "PRODUCER_COMMITTED_AWAITING_OFFICIAL_COMPUTE",
+    "next": "OFFICIAL_STAGE_A_REPLAY"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Do not rerun EGF 17G. Begin next independent source harvest from CURRENT_STATE.",
-    "idempotency_rule": "Prereg and producer immutable before compute; result create-only.",
-    "recovery_run_id": 37178013014,
-    "git_blob_verified": "72737c7238915c0bca1b63512633adfc10bf18a4"
+    "resume_first_action": "Verify committed SMOR producer and prereg/implementation contract; run exactly one official Stage-A replay only if no committed 17H result exists.",
+    "idempotency_rule": "Prereg/contract/producer immutable before compute; result create-only.",
+    "git_blob_verified": "bb944bb9052b95f039e0cdd0942598d2a4b2d47d"
   },
   "last_verified_ci": {
     "commit": "854baf7239bb88d2deb1d6ed8564fdaffe402112",

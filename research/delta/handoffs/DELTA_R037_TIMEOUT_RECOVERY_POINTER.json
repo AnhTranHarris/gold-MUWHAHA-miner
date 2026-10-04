@@ -18,34 +18,25 @@
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "COMPLETE",
-    "phase_rank": 7,
-    "parent_durable_unit": "R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F",
+    "status": "PRODUCER_COMMITTED",
+    "phase_rank": 2,
+    "parent_durable_unit": "R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_EGF_SOURCE_HARVEST_PREREG_17G.json",
-        "commit": "13f60e2dd83017085e944909a27ce3c9516073c8"
+        "path": "research/delta/reference/DELTA_R037_SMOR_SOURCE_HARVEST_PREREG_17H.json",
+        "commit": "947b101e1a8d289b5832556e1795d71b653a444b"
       },
       {
-        "path": "research/delta/experiments/delta_r037_egf_stage_a.py",
-        "commit": "d9f8032e4221e17527ffa84667f1ddfae3dd06f0",
-        "blob_sha": "72737c7238915c0bca1b63512633adfc10bf18a4",
-        "file_sha256": "427c4715c328199c1efc3bbb13aa346ffe3e526c8a3ebd5bddf373767d9b733e"
+        "path": "research/delta/reference/DELTA_R037_SMOR_IMPLEMENTATION_CONTRACT_17H.json",
+        "commit": "15334fe4d1f19ef0d58ca27552243fb08037bd58"
       },
       {
-        "path": "research/delta/reference/DELTA_R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G.json",
-        "commit": "e0dbe8c1d49eb54534b084103101933f0774028a",
-        "raw_sha256": "d124c1bac75ab8e098ac6118e16ab22fea46d317807fced81e9f9b25d2458628"
-      },
-      {
-        "path": "research/delta/research/DELTA_R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G.md",
-        "commit": "f5e24744dd08bb1c570afa6fdfb2e423226e8176"
-      },
-      {
-        "path": "research/delta/artifacts/DELTA_R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G_MANIFEST.json"
+        "path": "research/delta/experiments/delta_r037_smor_stage_a.py",
+        "commit": "e5acbd86f244b739279b21b78c35b56ee286a6fb",
+        "blob_sha": "bb944bb9052b95f039e0cdd0942598d2a4b2d47d"
       }
     ],
-    "next_action": "Begin R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST from durable EGF 17G; never rerun EGF 17G.",
+    "next_action": "Run exactly one official bounded SMOR 17H replay after recovery gate; if result exists, do not rerun.",
     "completed_months": [],
     "next_month": null
   },
