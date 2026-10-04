@@ -20,37 +20,22 @@
     "current_state_ci_conclusion": "PENDING"
   },
   "in_flight_unit": {
-    "unit": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION",
-    "status": "COMPLETE",
-    "phase_rank": 7,
-    "parent_durable_unit": "R037_PLSR_STAGE_A_SCREEN_CHECKPOINT_16A",
+    "unit": "R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION",
+    "status": "PRODUCER_COMMITTED",
+    "phase_rank": 2,
+    "parent_durable_unit": "R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_PLSR_C01_INDEPENDENT_VALIDATION_EVIDENCE_16B.json",
-        "commit": "a135f5c16718af43de7022cfc35d60bd0b87e0e5"
+        "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_EVIDENCE_16C.json",
+        "commit": "877826057745a7e129778911ce0323fcecb58b83"
       },
       {
-        "path": "research/delta/experiments/delta_r037_plsr_c01_independent_validation.py",
-        "commit": "ccef1cd460d585857b19b30532fd91e7d2ccc7de",
-        "blob_sha": "382b641e1b8598b4296da52401ec9ce795d1931a"
-      },
-      {
-        "path": "research/delta/reference/DELTA_R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B.json",
-        "commit": "bdf5c44c16488b6d53c2a9999ebfc1babd66dede",
-        "blob_sha": "2544c987b14f1653e498129ec0e1328b587e3506"
-      },
-      {
-        "path": "research/delta/research/DELTA_R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B.md",
-        "commit": "dc61808d28208bf9a0e71f597bd761adc46378fa",
-        "blob_sha": "827454673146f2171160226bd976e9fe253e7bfc"
-      },
-      {
-        "path": "research/delta/artifacts/DELTA_R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B_MANIFEST.json",
-        "commit": "345319a6e5fd01f4bfa3fb94195556baa732611a",
-        "blob_sha": "7b0dcfeb39adbc96be979f5f9a2b4058a192a6e6"
+        "path": "research/delta/experiments/delta_r037_plsr_c01_monthly_validation.py",
+        "commit": "e8ab95ddee0ac07cc8b223e6b16ca56dd890bf0d",
+        "blob_sha": "46d01ab6800eabb3c2f0a87d71ee999ac03eeba6"
       }
     ],
-    "next_action": "Read CURRENT_STATE; 16B is durable. Start only R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION."
+    "next_action": "Run only the first incomplete 16C month from Feb-Jul; persist each month before continuing."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
