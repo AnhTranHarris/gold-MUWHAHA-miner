@@ -1,6 +1,6 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "INFLIGHT",
+  "status": "IN_PROGRESS",
   "branch": "delta",
   "unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION",
   "parent_durable_unit": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A",
@@ -8,23 +8,20 @@
   "phase_rank": 2,
   "prereg": {
     "path": "research/delta/reference/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_EVIDENCE_15B.json",
-    "blob_sha": "b28b55f7acfc9dcbfe4424cce8acd58e4d1bd90e",
-    "commit": "619d27ea1095dc991cb5d657d63379dde96248e0"
+    "blob_sha": "b28b55f7acfc9dcbfe4424cce8acd58e4d1bd90e"
   },
   "producer": {
-    "path": "research/delta/experiments/delta_r037_sorb_c04_dual30_late_jan_oos.py",
-    "commit": "10bd1f16f3f4757b652cfe50bc90dab920f134cf",
-    "blob_sha": "87787466855efb1bc5a0602b195299380037e700",
-    "sha256": "560a7e2c8802ab9a14891d2f008efb0fbb9da0c6f68abee02791a708329ac8bd"
+    "path": "research/delta/experiments/delta_r037_sorb_c04_dual30_independent_validation.py",
+    "commit": "a261b2c58a2c6d7039f5d522772cf5ec71ac8670",
+    "blob_sha": "6d629239195866c7e194c9078f40eea7e024c183"
   },
   "result": null,
   "report": null,
   "manifest": null,
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read CURRENT_STATE.json and CURRENT_INFLIGHT.json. If 15B result already exists, verify it and continue from the next missing phase; otherwise run the committed producer exactly once.",
-    "idempotency_rule": "Never rerun a completed phase solely because the chat delivery timed out.",
-    "validation_window": "Warmup 2026-01-14T00:00Z to 2026-01-18T12:00Z; holdout from 2026-01-18T12:00Z through final January tick."
+    "resume_first_action": "Verify 15B producer/result artifacts. If no result exists, run the committed 15B producer only; do not rerun 15A.",
+    "idempotency_rule": "Never rerun completed compute solely because chat delivery timed out."
   },
   "last_verified_ci": {
     "commit": "0694849bef087f7bffe9ac33e68b8b9a4470840f",

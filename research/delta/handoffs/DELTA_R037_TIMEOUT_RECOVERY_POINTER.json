@@ -1,6 +1,6 @@
 {
   "schema": "delta-timeout-recovery-pointer-v1",
-  "updated_utc": "2026-10-03",
+  "updated_utc": "2026-10-04",
   "lineage": "DELTA",
   "purpose": "Recover safely after ChatGPT message-delivery timeout or interrupted foreground tool chain without repeating durable research.",
   "authority_order": [
@@ -21,23 +21,21 @@
   },
   "in_flight_unit": {
     "unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION",
-    "status": "PRODUCER_COMMITTED",
+    "status": "IN_PROGRESS",
     "phase_rank": 2,
     "parent_durable_unit": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A",
     "committed_artifacts": [
       {
         "path": "research/delta/reference/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_EVIDENCE_15B.json",
-        "commit": "619d27ea1095dc991cb5d657d63379dde96248e0",
         "blob_sha": "b28b55f7acfc9dcbfe4424cce8acd58e4d1bd90e"
       },
       {
-        "path": "research/delta/experiments/delta_r037_sorb_c04_dual30_late_jan_oos.py",
-        "commit": "10bd1f16f3f4757b652cfe50bc90dab920f134cf",
-        "blob_sha": "87787466855efb1bc5a0602b195299380037e700",
-        "sha256": "560a7e2c8802ab9a14891d2f008efb0fbb9da0c6f68abee02791a708329ac8bd"
+        "path": "research/delta/experiments/delta_r037_sorb_c04_dual30_independent_validation.py",
+        "commit": "a261b2c58a2c6d7039f5d522772cf5ec71ac8670",
+        "blob_sha": "6d629239195866c7e194c9078f40eea7e024c183"
       }
     ],
-    "next_action": "Run exactly one bounded later-January OOS validation of frozen C04. If result exists after a message timeout, do not rerun."
+    "next_action": "Run committed 15B producer on canonical January holdout; if result already exists after timeout, verify and continue durability steps only."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
