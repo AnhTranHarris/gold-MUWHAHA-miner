@@ -1,20 +1,20 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "ACTIVE",
+  "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_TURTLE_SOUP_SOURCE_DEFAULT_STAGE_A_SCREEN",
-  "parent_durable_unit": "R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "parent_durable_unit": "R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ",
+  "phase": "IDLE",
+  "phase_rank": 0,
   "progress": {
-    "status": "ACTIVE",
-    "last_completed": "R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY",
-    "current_candidate": "R037-TSO-v1",
-    "next": "Byte-verify committed Turtle Soup producer d22d2dd225016f3292b94bc6c93e9628be76a5fb, then run official Stage-A compute only if exact."
+    "status": "IDLE",
+    "last_completed": "R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ",
+    "current_candidate": null,
+    "next": "Harvest next independent multi-leg state-transition entry source; avoid single-bar reclaim families."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Turtle Soup 17AZ prereg and producer are durable. Do not recreate either. First missing phase is producer byte-verification, then official compute.",
+    "resume_first_action": "TSO 17AZ is complete and retired; do not rerun. Harvest next independent multi-leg state-transition source.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
@@ -26,9 +26,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY",
-    "checkpoint": "R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY",
-    "current_state_next": "R037_TURTLE_SOUP_SOURCE_DEFAULT_STAGE_A_SCREEN",
-    "manifest": "research/delta/artifacts/DELTA_R037_BOSLS_STAGE_A_SCREEN_CHECKPOINT_17AY_MANIFEST.json"
+    "unit": "R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ",
+    "checkpoint": "R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ",
+    "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "manifest": "research/delta/artifacts/DELTA_R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ_MANIFEST.json"
   }
 }
