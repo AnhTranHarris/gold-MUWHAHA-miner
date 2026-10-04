@@ -16,16 +16,25 @@
     "first_incomplete_unit": "R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_AND_SORB_READINESS_DECISION",
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A_MANIFEST.json",
     "current_state_commit": "e7bf98fa10357675bb773c4227f3305c33f65b13",
-    "current_state_ci_run": 37162324959,
-    "current_state_ci_conclusion": "pending_recovery_pointer_reconcile"
+    "current_state_ci_run": 37162364783,
+    "current_state_ci_conclusion": "success"
   },
   "in_flight_unit": {
-    "unit": null,
-    "status": "IDLE",
-    "phase_rank": 0,
+    "unit": "R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_AND_SORB_READINESS_DECISION",
+    "status": "PRODUCER_COMMITTED",
+    "phase_rank": 2,
     "parent_durable_unit": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A",
-    "committed_artifacts": [],
-    "next_action": "Start only CURRENT_STATE.first_incomplete_unit. Before any compute, preregister and commit a fresh CURRENT_INFLIGHT cursor. Do not rerun durable 14A."
+    "committed_artifacts": [
+      {
+        "path": "research/delta/reference/DELTA_R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_SORB_READINESS_EVIDENCE_14B.json",
+        "sha256": "e3703f0caf1f64711d9fdaeaf54ce14dcaf673e3c5e323d013032bfb1cb3b83c"
+      },
+      {
+        "path": "research/delta/experiments/delta_r037_r032_specialist_parent_provenance_sorb_readiness_decision.py",
+        "sha256": "62bcbd79b06467267bc08263e1a1c1c2e44c85983a78b9c09262a1d8a62c3dca"
+      }
+    ],
+    "next_action": "Run the committed 14B decision producer. If result commits successfully, resume from RESULT_COMMITTED; do not rerun durable 14A."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
