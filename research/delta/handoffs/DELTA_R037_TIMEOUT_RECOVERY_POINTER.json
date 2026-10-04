@@ -16,25 +16,22 @@
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_ASRB_C02_LATER_JAN_CHECKPOINT_17AM_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "IDLE",
-    "phase_rank": 0,
+    "unit": "R037_VOLATILITY_SQUEEZE_BREAKOUT_RELEASE_STAGE_A_SCREEN",
+    "status": "IN_PROGRESS",
+    "phase": "PRODUCER_COMMITTED",
+    "phase_rank": 2,
     "parent_durable_unit": "R037_ASRB_C02_LATER_JAN_CHECKPOINT_17AM",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_ASRB_C02_LATER_JAN_CHECKPOINT_17AM.json",
-        "commit": "9e8b4068f368ed52cf1a5038abf57319f9d6f0f8"
+        "path": "research/delta/reference/DELTA_R037_VSBR_STAGE_A_PREREG_17AN.json",
+        "commit": "7c323efa14fc6bcdcfdb38402e7f4c478cdf8996"
       },
       {
-        "path": "research/delta/research/DELTA_R037_ASRB_C02_LATER_JAN_CHECKPOINT_17AM.md",
-        "commit": "200bc68473d9535c5f7711da8b39e9123cc23b48"
-      },
-      {
-        "path": "research/delta/artifacts/DELTA_R037_ASRB_C02_LATER_JAN_CHECKPOINT_17AM_MANIFEST.json",
-        "commit": "d2758bacf8d39b4d34b8d071cc9acff02708d8c5"
+        "path": "research/delta/experiments/delta_r037_vsbr_stage_a_17an.py",
+        "commit": "57979c3ecd0f1f17d3785eccb1e7c8c183151a5b"
       }
     ],
-    "next_action": "Preregister next independent entry-source family.",
+    "next_action": "Exact-blob verify producer, then run official Stage-A compute with canonical January under 120-second hard timeout.",
     "completed_months": [],
     "next_month": null
   },
