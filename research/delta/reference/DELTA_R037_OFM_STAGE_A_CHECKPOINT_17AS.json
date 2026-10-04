@@ -1,0 +1,53 @@
+{
+  "schema": "delta-r037-ofm-stage-a-screen-17as-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_ORDER_FLOW_IMBALANCE_MOMENTUM_STAGE_A_SCREEN",
+  "family": "R037-OFM-v1",
+  "parent_checkpoint": "R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR",
+  "prereg_commit": "b6eb77574ac32a151c371a4b4774b5946c3a300e",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "signal_timeframe_seconds": 60,
+  "feature_diagnostics": {
+    "usable_feature_bars": 15090,
+    "noise_quantiles": {"p10": 0.571679438018565, "p25": 0.6152078633174136, "p50": 0.6743472263286379, "p75": 0.7349117026496863, "p90": 0.7794371374936385},
+    "jump_quantiles": {"p10": 0.0, "p25": 0.0, "p50": 0.011111111111111112, "p75": 0.022222222222222223, "p90": 0.022222222222222223},
+    "flow_imbalance_quantiles": {"p10": -0.05788483270352345, "p25": -0.016862604825508193, "p50": 0.026881145621934006, "p75": 0.0697180683539399, "p90": 0.11430329289178706},
+    "smart_money_quantiles": {"p10": -0.49284021752466206, "p25": -0.2550740182548932, "p50": -0.004138930570202034, "p75": 0.24372544421037046, "p90": 0.47487959928583995},
+    "flow_momentum_quantiles": {"p10": -0.21524514878142476, "p25": -0.11191267994840078, "p50": -0.001774608391563859, "p75": 0.11504886003677367, "p90": 0.21640810629630688},
+    "flow_confidence_quantiles": {"p10": 0.0, "p25": 0.0, "p50": 0.5047159998794994, "p75": 0.6418607646903185, "p90": 0.7139230397016861},
+    "jump_contaminated_bars": 4005,
+    "confidence_eligible_bars": 5882,
+    "part5_clean_noise_bars": 4735
+  },
+  "published_threshold_screen": true,
+  "xauusd_threshold_calibration": false,
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "configs": {
+    "C01_SOURCE_FLOW_SMI": {
+      "stage_counts": {"feature_bars": 15090, "condition_bars": 846, "no_exec": 0, "spread_rejects": 0, "eligible": 846},
+      "metrics": {"proposals": 846, "busy_skips": 0, "trades": 846, "distinct_days": 11, "long": 550, "short": 296, "official_wins": 376, "gross_profit": 93.2, "gross_loss": -263.07, "direct_net_usd": -169.87, "exit_reasons": {"STOP": 810, "MAX_HOLD": 36, "END": 0}},
+      "gate": {"minimum_trades_6": true, "minimum_distinct_days_4": true, "direct_net_min_minus_1": false, "screen_pass": false, "strong_pass": false}
+    },
+    "C02_FLOW_SMI_MOMENTUM": {
+      "stage_counts": {"feature_bars": 15090, "condition_bars": 451, "no_exec": 0, "spread_rejects": 0, "eligible": 451},
+      "metrics": {"proposals": 451, "busy_skips": 0, "trades": 451, "distinct_days": 11, "long": 278, "short": 173, "official_wins": 205, "gross_profit": 43.34, "gross_loss": -135.93, "direct_net_usd": -92.59, "exit_reasons": {"STOP": 432, "MAX_HOLD": 19, "END": 0}},
+      "gate": {"minimum_trades_6": true, "minimum_distinct_days_4": true, "direct_net_min_minus_1": false, "screen_pass": false, "strong_pass": false}
+    },
+    "C03_PART5_CLEAN_IMBALANCE": {
+      "stage_counts": {"feature_bars": 15090, "condition_bars": 1158, "no_exec": 1, "spread_rejects": 0, "eligible": 1157},
+      "metrics": {"proposals": 1157, "busy_skips": 0, "trades": 1157, "distinct_days": 13, "long": 996, "short": 161, "official_wins": 491, "gross_profit": 121.91, "gross_loss": -380.29, "direct_net_usd": -258.38, "exit_reasons": {"STOP": 1106, "MAX_HOLD": 51, "END": 0}},
+      "gate": {"minimum_trades_6": true, "minimum_distinct_days_4": true, "direct_net_min_minus_1": false, "screen_pass": false, "strong_pass": false}
+    }
+  },
+  "finding": {
+    "leading_config": null,
+    "ordinary_survivors": [],
+    "strong_survivors": [],
+    "decision": "RETIRE_OFM_PUBLISHED_THRESHOLD_STAGE_A_NO_SURVIVOR",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "mql5_authorized": false
+}
