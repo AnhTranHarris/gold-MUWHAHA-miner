@@ -1,21 +1,21 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "IDLE",
+  "status": "ACTIVE",
   "branch": "delta",
-  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "unit": "R037_DIRECTIONAL_CHANGE_OVERSHOOT_STAGE_A_SCREEN",
   "parent_durable_unit": "R037_QRBM_STAGE_A_SCREEN_CHECKPOINT_17AV",
-  "phase": "IDLE",
-  "phase_rank": 0,
+  "phase": "PREREG_COMMITTED",
+  "phase_rank": 1,
   "progress": {
-    "status": "IDLE",
+    "status": "ACTIVE",
     "last_completed": "R037_QRBM_STAGE_A_SCREEN_CHECKPOINT_17AV",
-    "current_candidate": null,
-    "next": "Harvest next independent entry source with larger intrinsic displacement budget."
+    "current_candidate": "R037-DCOS-v1",
+    "next": "Commit exact producer bytes, verify Git blob, run one 0.05% DC overshoot-continuation Stage-A screen."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "QRBM 17AV is complete and retired; do not rerun. Harvest the next independent larger-displacement entry source.",
-    "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
+    "resume_first_action": "DCOS 17AW prereg is durable at commit fdc3ec8d81d9183ebd9f8985e513ac128797ec99. Do not change threshold/profile. Resume by committing producer if absent, otherwise execute first missing phase.",
+    "idempotency_rule": "Resume first missing committed phase; never duplicate durable compute after transport timeout."
   },
   "last_verified_ci": {
     "commit": "164d20b91718a6bb84746350ba2a26b5c9a92ccb",
