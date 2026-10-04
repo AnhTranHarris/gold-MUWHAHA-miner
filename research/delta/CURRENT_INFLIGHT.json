@@ -4,8 +4,8 @@
   "branch": "delta",
   "unit": "R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION",
   "parent_durable_unit": "R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B",
-  "phase": "MONTHLY_COMPUTE_COMPLETE_AGGREGATION_PENDING",
-  "phase_rank": 3,
+  "phase": "READY_TO_ADVANCE",
+  "phase_rank": 6,
   "prereg": {
     "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_EVIDENCE_16C.json",
     "commit": "877826057745a7e129778911ce0323fcecb58b83"
@@ -16,9 +16,21 @@
     "blob_sha": "46d01ab6800eabb3c2f0a87d71ee999ac03eeba6",
     "sha256": "7405e85cb693ebbaa4a163e9d4d86c45606649139771a8fef68ef108d99860e6"
   },
-  "result": null,
-  "report": null,
-  "manifest": null,
+  "result": {
+    "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C.json",
+    "commit": "faa9e402627d7a02eec0425ee621f51184e14f65",
+    "blob_sha": "60d83e99c8151944b9eb0278d4cc94fba70cdaeb"
+  },
+  "report": {
+    "path": "research/delta/research/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C.md",
+    "commit": "928c0ecdf2aa3fa0d1a7a30d1bd77734fe30baa2",
+    "blob_sha": "51071a6f810189e2b0ab7732efe1a5f13273fa4c"
+  },
+  "manifest": {
+    "path": "research/delta/artifacts/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C_MANIFEST.json",
+    "commit": "9d898b7e2d84aa59006e67ebdb8f879e1252f403",
+    "blob_sha": "1307b243e3f79c967f171f896e0431cd8a298def"
+  },
   "progress": {
     "completed_months": [
       "2026-02",
@@ -94,7 +106,7 @@
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "All 16C monthly computes February-July are committed. Do not rerun them. Aggregate the six immutable monthly results, persist report/manifest/workbook, then advance CURRENT_STATE last.",
+    "resume_first_action": "16C durability package is complete. Advance CURRENT_STATE to 16C and set next unit R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST; never rerun monthly compute.",
     "idempotency_rule": "Each month result is create-only and durable before the next month starts."
   },
   "last_verified_ci": {
