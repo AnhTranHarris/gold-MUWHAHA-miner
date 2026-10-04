@@ -1,0 +1,67 @@
+{
+  "schema": "delta-r037-tcfh-stage-a-screen-17ap-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_TICK_COUNT_FLOW_HYSTERESIS_STAGE_A_SCREEN",
+  "family": "R037-TCFH-v1",
+  "parent_checkpoint": "R037_RLSFG_STAGE_A_SCREEN_CHECKPOINT_17AO",
+  "prereg_commit": "3e61506898ca72ebc537e99029176f238187aaa0",
+  "producer_commit": "d42f125b5dde1fc2313a6b8f1123470b6436212e",
+  "producer_blob_sha": "2a5d8f4c9bc21d1be5b7a52ec5bfb2eb25ca84e5",
+  "producer_file_sha256": "e8f4ac9120c66481062de27a8dc01b725dcd2fad0df167817b3f9afa3078d783",
+  "official_raw_result_sha256": "5b2da282a6218951ff8d063d05a086362f8f241c4613eb46b302dcdfdf0b089c",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "public_defaults": {
+    "flow_window_seconds": 30,
+    "flow_threshold": 0.3,
+    "hysteresis_factor": 0.8,
+    "cadence_seconds": 2
+  },
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "config": {
+    "C01_DEFAULT_30S": {
+      "stage_counts": {
+        "decision_edges": 714584,
+        "nonzero_flow_edges": 455533,
+        "buy_threshold_crossings": 857,
+        "sell_threshold_crossings": 851,
+        "spread_rejects": 0,
+        "no_exec_rejects": 1,
+        "eligible_proposals": 1707
+      },
+      "metrics": {
+        "proposals": 1707,
+        "trades": 1598,
+        "distinct_days": 14,
+        "long": 799,
+        "short": 799,
+        "official_wins": 677,
+        "gross_profit": 156.7,
+        "gross_loss": -488.69,
+        "direct_net_usd": -331.99,
+        "exit_reasons": {
+          "STOP": 1445,
+          "MAX_HOLD": 153,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_6": true,
+        "minimum_distinct_days_4": true,
+        "direct_net_min_minus_1": false,
+        "screen_pass": false,
+        "strong_pass": false
+      }
+    }
+  },
+  "finding": {
+    "leading_config": null,
+    "ordinary_survivors": [],
+    "strong_survivors": [],
+    "decision": "RETIRE_TCFH_STAGE_A_NO_SURVIVOR",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "mql5_authorized": false
+}
