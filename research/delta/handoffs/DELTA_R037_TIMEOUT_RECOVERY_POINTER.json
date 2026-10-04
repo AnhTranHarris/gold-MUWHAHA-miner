@@ -31,11 +31,11 @@
       },
       {
         "path": "research/delta/experiments/delta_r037_sorb_c04_dual30_independent_validation.py",
-        "commit": "a261b2c58a2c6d7039f5d522772cf5ec71ac8670",
-        "blob_sha": "6d629239195866c7e194c9078f40eea7e024c183"
+        "commit": "fd7cc2262cb615a350ebee7d48bc7b017261dd4a",
+        "blob_sha": "472ce67fa4a1d7615b256236e8b78701d528ae65"
       }
     ],
-    "next_action": "Run committed 15B producer on canonical January holdout; if result already exists after timeout, verify and continue durability steps only."
+    "next_action": "Run hotfixed committed 15B producer with repo root on PYTHONPATH; if result exists after timeout, verify and continue durability steps only."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
