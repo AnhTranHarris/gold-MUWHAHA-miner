@@ -4,20 +4,24 @@
   "branch": "delta",
   "unit": "R037_ONE_SIDED_SPREAD_SHOCK_MEAN_REVERSION_STAGE_A_SCREEN",
   "parent_durable_unit": "R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT",
-  "phase": "PREREGISTERED_PRODUCER_NEXT",
-  "phase_rank": 1,
+  "phase": "PRODUCER_COMMITTED_COMPUTE_NEXT",
+  "phase_rank": 2,
   "progress": {
-    "status": "PREREGISTERED",
+    "status": "PRODUCER_COMMITTED",
     "last_completed": "R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT",
     "current_candidate": "R037-OSSMR-v1",
     "prereg_path": "research/delta/reference/DELTA_R037_OSSMR_STAGE_A_PREREG_17AU.json",
     "prereg_commit": "1c2896ff2d5602282c25c88a62d9e528eb69d15b",
     "prereg_blob_sha": "7706c36364ac1a9cd57fa330a542c64a697ad59e",
-    "next": "Commit OSSMR Stage-A producer, verify exact Git blob locally, then official bounded compute."
+    "next": "Run bounded official Stage-A compute; persist result if complete.",
+    "producer_path": "research/delta/experiments/delta_r037_ossmr_stage_a_17au.py",
+    "producer_commit": "7a66e2134b59959d6b75b7f5806ea9006dfc45c9",
+    "producer_blob_sha": "31b41ab74e5779476254a8f6e7e1e606f1ed9181",
+    "producer_file_sha256": "036deca4eb3876c39f03f5ec5a8073927874a47184fa57dbb1ec778690c5cf9e"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "OSSMR 17AU preregistration is durable; do not repeat source harvest/prereg. Resume at producer commit.",
+    "resume_first_action": "OSSMR prereg and producer are durable. Verify blob 31b41ab74e5779476254a8f6e7e1e606f1ed9181 and resume official compute; do not recreate source.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
