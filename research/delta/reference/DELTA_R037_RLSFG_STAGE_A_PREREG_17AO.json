@@ -1,0 +1,58 @@
+{
+  "schema": "delta-r037-rlsfg-stage-a-prereg-17ao-v1",
+  "unit": "R037_ROLLING_LIQUIDITY_SWEEP_FOLLOW_THROUGH_GUARD_STAGE_A_SCREEN",
+  "checkpoint": "17AO",
+  "status": "PREREGISTERED_BEFORE_OFFICIAL_COMPUTE",
+  "parent_checkpoint": "R037_VSBR_STAGE_A_SCREEN_CHECKPOINT_17AN",
+  "family": "R037-RLSFG-v1",
+  "source_logic": {
+    "public_basis": "Open-source Liquidity Sweep Follow-Through Guard reconstruction",
+    "reference_level": "highest high / lowest low of previous 20 completed bars, excluding current bar",
+    "sweep_depth": "current bar must pierce reference by at least 0.10 previous-bar ATR20",
+    "reclaim": "sweep bar must close back inside the frozen reference",
+    "rejection_wick": "rejection-side wick >= 35% of sweep-bar full range",
+    "dual_sweep_resolution": "if one bar qualifies both sides, closing direction selects the episode",
+    "episode_ownership": "only one sweep episode active at a time",
+    "follow_through": "the next two completed closes must remain on the reclaimed side",
+    "extension": "second follow-through close must be at least 0.30 frozen ATR from sweep close in reversal direction",
+    "path_efficiency": "abs directional progress from sweep close to second follow-through close / cumulative absolute close-to-close path across the two follow-through bars >= 0.45",
+    "entry": "first executable P75 tick at/after second follow-through bar right edge"
+  },
+  "profiles": {
+    "C01_M1": {
+      "timeframe_seconds": 60
+    },
+    "C02_M5": {
+      "timeframe_seconds": 300
+    }
+  },
+  "execution": {
+    "max_spread_points": 25,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30
+  },
+  "stage_a_window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_exclusive_utc": "2026-01-18T12:00:00Z"
+  },
+  "gate": {
+    "minimum_trades": 6,
+    "minimum_distinct_days": 4,
+    "direct_net_min_minus_1": true,
+    "strong_pass_requires_nonnegative_net": true
+  },
+  "selection_rule": "advance only preregistered profiles that pass supply/economic gates; rank strong survivors by direct net then official wins then trade count; no retuning",
+  "restrictions": [
+    "no threshold sweep",
+    "no session/side/weekday filters",
+    "no alternate lookback after results",
+    "no exit tuning",
+    "no August",
+    "no MQL5"
+  ],
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
