@@ -1,21 +1,22 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "IDLE",
+  "status": "INFLIGHT",
   "branch": "delta",
-  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "unit": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
   "parent_durable_unit": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
-  "phase": "IDLE",
-  "phase_rank": 0,
+  "phase": "PREREGISTERED",
+  "phase_rank": 1,
   "progress": {
-    "status": "IDLE",
+    "status": "PREREGISTERED",
     "last_completed": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
-    "current_candidate": null,
-    "next": "Complete empirical meta-harvest of R037 17-series screens; preregister only highest-value untested source class."
+    "current_candidate": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
+    "next": "Commit exact SVWAPR producer before official Stage-A compute."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "17BH-17BJ is durable. Resume completed-R037 meta-harvest; do not rerun continuation batch.",
-    "idempotency_rule": "Resume first missing committed phase only."
+    "resume_first_action": "Read CURRENT_STATE/CURRENT_INFLIGHT/pointer and resume first missing committed phase; do not rerun completed compute because browser delivery failed.",
+    "idempotency_rule": "Resume first missing committed phase only.",
+    "atomic_pointer_update_rule": "Durable cursor/pointer changes must be committed in one Git tree/commit whenever multiple files must agree."
   },
   "last_verified_ci": {
     "commit": "164d20b91718a6bb84746350ba2a26b5c9a92ccb",
@@ -26,9 +27,12 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
-    "checkpoint": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
-    "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "manifest": "research/delta/artifacts/DELTA_R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD_MANIFEST.json"
+    "unit": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
+    "checkpoint": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
+    "current_state_next": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
+    "manifest": "research/delta/artifacts/DELTA_R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ_MANIFEST.json"
+  },
+  "prereg": {
+    "path": "research/delta/reference/DELTA_R037_SVWAPR_STAGE_A_PREREG_17BK.json"
   }
 }

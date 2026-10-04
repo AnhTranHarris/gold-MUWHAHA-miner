@@ -4,8 +4,8 @@
   "branch": "delta",
   "research_scope": "DELTA_ONLY_CLEAN_ROOM",
   "last_verified_durable_unit": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
-  "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-  "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
+  "first_incomplete_unit": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
+  "current_phase": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK_IN_PROGRESS",
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ_MANIFEST.json",
   "active_candidate": null,
   "last_candidate_disposition": "17BH Three-Bar Play and 17BI Inside-Bar baseline failed Stage-A economics; 17BJ source-published quality profile was +$0.10 but only 2 trades and failed supply. Batch retired without rescue.",
@@ -31,12 +31,11 @@
     "prior_full_state_preserved_in_git_history": true
   },
   "recovery_pointer_sync": {
-    "inflight_commit": "416bd9b38b398e95009f6607c7c6fdf3269335b8",
-    "pointer_commit": "a45c5271ebe316a90d00338b66d2aa7875f0bae1",
-    "status": "IDLE_AT_META_HARVEST",
+    "status": "INFLIGHT_PREREGISTERED_17BK",
     "last_completed": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
-    "current_candidate": null,
-    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+    "current_candidate": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
+    "next": "COMMIT_PRODUCER_BEFORE_OFFICIAL_COMPUTE",
+    "atomic_git_tree_advancement": true
   },
   "clean_room_maintenance": {
     "status": "RECENT_DELTA_DIFF_PREFLIGHT_CLEAN",

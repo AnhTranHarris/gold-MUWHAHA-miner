@@ -11,17 +11,20 @@
   ],
   "durable_cursor": {
     "last_verified_durable_unit": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
-    "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
-    "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "current_phase": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK_IN_PROGRESS",
+    "first_incomplete_unit": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "IDLE",
-    "phase_rank": 0,
+    "unit": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
+    "status": "PREREGISTERED",
+    "phase_rank": 1,
     "parent_durable_unit": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
-    "committed_artifacts": [],
-    "next_action": "Complete R037 17-series meta-harvest; preregister only highest-value untested source class.",
+    "committed_artifacts": [
+      "research/delta/reference/DELTA_R037_SVWAPR_STAGE_A_PREREG_17BK.json",
+      "research/delta/research/DELTA_R037_STAGE_A_META_HARVEST_17A_17BJ.md"
+    ],
+    "next_action": "Commit exact SVWAPR producer before official Stage-A compute.",
     "completed_months": [],
     "next_month": null
   },
@@ -37,7 +40,8 @@
     "producer_atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
     "exact_git_blob_preexecution_verification": true,
     "large_stdout_policy": "Persist detailed diagnostics to JSON; keep transport output compact.",
-    "phase_checkpoint_policy": "Update CURRENT_INFLIGHT and recovery pointer immediately after each durable phase so browser transport timeout cannot force recompute."
+    "phase_checkpoint_policy": "Update CURRENT_INFLIGHT and recovery pointer immediately after each durable phase so browser transport timeout cannot force recompute.",
+    "atomic_multi_file_cursor_commit": true
   },
   "constraints": {
     "august_2026": "SEALED",

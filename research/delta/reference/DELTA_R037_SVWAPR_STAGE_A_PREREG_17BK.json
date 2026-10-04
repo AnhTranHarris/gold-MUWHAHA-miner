@@ -1,0 +1,104 @@
+{
+  "schema": "delta-r037-svwapr-stage-a-prereg-v1",
+  "status": "PREREGISTERED_BEFORE_OFFICIAL_COMPUTE",
+  "unit": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
+  "parent_durable_unit": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
+  "family": "SESSION_VWAP_PULLBACK_RECLAIM",
+  "rationale": "R037 17-series meta-harvest shows the best clues cluster around anchored liquidity/value plus delayed confirmation/retest, while raw indicators, naked breakouts, generic candlesticks and raw microstructure repeatedly fail. SVWAPR tests a previously untested volume-weighted session-value anchor with causal first-touch reclaim timing.",
+  "source_basis": [
+    {
+      "source": "MetaQuotes/MQL5 Anchored VWAP article",
+      "url": "https://www.mql5.com/en/articles/22963",
+      "use": "VWAP = cumulative typical-price x tick-volume / cumulative tick-volume; session reset; volume-weighted sigma bands; tick volume is an accepted Forex proxy."
+    },
+    {
+      "source": "MQL5 Anchored VWAP MTF",
+      "url": "https://www.mql5.com/en/market/product/195701",
+      "use": "Confirmed-anchor / deviation-band implementation; first-touch retest vs breakaway framing; tick volume disclosure."
+    },
+    {
+      "source": "TradingView Anchored VWAP documentation",
+      "url": "https://www.tradingview.com/support/solutions/43000669764-anchored-vwap-drawing-tool/",
+      "use": "Public AVWAP definition and volume-weighted anchor semantics."
+    },
+    {
+      "source": "Reddit Daytrading VWAP discussion",
+      "url": "https://www.reddit.com/r/Daytrading/comments/1vhqxok/vwap_trading_trend_filter_mean_reversion_tool_or/",
+      "use": "Community caution that VWAP should be context plus reaction rather than touch-only; trend-day pullback framing."
+    },
+    {
+      "source": "Reddit gold VWAP first-touch discussion",
+      "url": "https://www.reddit.com/r/Daytrading/comments/1s7vqaz/been_trading_vwap_for_months_on_gold_starting_to/",
+      "use": "Reconstructible XAUUSD M5 rule: wick touch with open and close on same side; first valid setup."
+    },
+    {
+      "source": "TradeWhy Chinese VWAP/GC research summary",
+      "url": "https://tradewhy.ai/learn/vwap/",
+      "use": "Negative control: unconditional VWAP mean-reversion in COMEX gold is not promoted; this prereg explicitly tests trend-side reclaim instead of naked fade."
+    }
+  ],
+  "frozen_surface": {
+    "data": "canonical January 2026 Dukascopy XAUUSD ticks",
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "stage_a_window": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+    "stage_a_ticks": 4205709,
+    "signal_price": "native Dukascopy midpoint",
+    "execution": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "lot": 0.01,
+    "stop_raw": 300,
+    "trail_arm_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "commission_round_trip_usd": 0.02,
+    "one_position_at_a_time": true
+  },
+  "feature_definition": {
+    "bars": [
+      "M1",
+      "M5"
+    ],
+    "typical_price": "(high+low+close)/3 on completed native-mid bars",
+    "volume": "bar tick count (MT5-portable tick-volume proxy)",
+    "vwap": "cumulative sum(typical_price*tick_count)/cumulative tick_count within session",
+    "sigma": "sqrt(cumulative sum(typical_price^2*tick_count)/cumulative tick_count - VWAP^2)",
+    "sessions": {
+      "LONDON": "project DST-aware London session open; January open 08:00 UTC",
+      "NEW_YORK": "project DST-aware New York session open; January open 13:00 UTC"
+    }
+  },
+  "event_grammar": {
+    "arm_long": "completed bar closes >= VWAP + 1 sigma and VWAP slope is positive",
+    "arm_short": "completed bar closes <= VWAP - 1 sigma and VWAP slope is negative",
+    "trigger_long": "first subsequent completed bar whose wick touches/crosses VWAP, open and close remain above VWAP, close>open, VWAP slope remains positive",
+    "trigger_short": "first subsequent completed bar whose wick touches/crosses VWAP, open and close remain below VWAP, close<open, VWAP slope remains negative",
+    "first_touch_consumption": "the first VWAP interaction after arming consumes the event whether it confirms or fails",
+    "rearm": "requires a fresh completed-bar close beyond the same 1-sigma excursion after consumption",
+    "session_reset": "all state resets at session end",
+    "signal_time": "first executable P75 tick at or after the confirming completed-bar end",
+    "per_session_limit": "at most one executed signal per side per session"
+  },
+  "profiles": [
+    "C01_LONDON_M1_FIRST_TOUCH_RECLAIM",
+    "C02_NEWYORK_M1_FIRST_TOUCH_RECLAIM",
+    "C03_LONDON_M5_FIRST_TOUCH_RECLAIM",
+    "C04_NEWYORK_M5_FIRST_TOUCH_RECLAIM"
+  ],
+  "gates": {
+    "minimum_trades": 20,
+    "minimum_distinct_days": 5,
+    "ordinary_direct_net_usd_min": -1,
+    "strong_direct_net_usd_min": 0,
+    "advance_rule": "Only a preregistered profile passing all activity gates and nonnegative direct net may advance to independent later-January validation."
+  },
+  "prohibited": [
+    "no sigma multiplier tuning",
+    "no session-window tuning",
+    "no side/day filtering",
+    "no timeframe additions after result",
+    "no VWAP mean-reversion rescue",
+    "no stop/trail/hold optimization",
+    "no August access",
+    "no MQL5 build"
+  ]
+}
