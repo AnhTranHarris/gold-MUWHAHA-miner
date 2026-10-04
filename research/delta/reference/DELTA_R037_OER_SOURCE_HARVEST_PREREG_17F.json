@@ -1,0 +1,99 @@
+{
+  "schema": "delta-r037-oer-source-harvest-prereg-v1",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "checkpoint": "17F",
+  "family": "R037-OER-v1",
+  "status": "FROZEN_BEFORE_STAGE_A_REPLAY",
+  "parent_checkpoint": "R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E",
+  "purpose": "Test whether a completed-bar two-candle absorption/rejection pattern can improve immediate 30-second entry quality without oscillator, channel, FVG, session-range, or previous-day-level logic.",
+  "independence": [
+    "No oscillator or stochastic/RSI state.",
+    "No Donchian/channel breakout.",
+    "No volatility-compression prerequisite.",
+    "No previous-day or session level.",
+    "No swing/BOS/CHOCH/FVG dependency.",
+    "Signal is only two completed candle ranges/bodies and current close location."
+  ],
+  "public_logic_sources": [
+    {
+      "source": "MetaQuotes MQL5 Article 12385 — How to use MQL5 to detect candlestick patterns",
+      "url": "https://www.mql5.com/en/articles/12385",
+      "disclosed_logic": "Bullish/bearish engulfing requires opposite candle colors, current high above prior high and low below prior low, and current body fully crossing prior body.",
+      "role": "Primary exact full-range engulfing definition."
+    },
+    {
+      "source": "TradingView — Strong Engulfing",
+      "url": "https://www.tradingview.com/script/3MoEsu1L-Strong-Engulfing/",
+      "disclosed_logic": "Outside-bar sweep of both prior extremes, close beyond prior body, and close in the signal-side outer third of current range, evaluated on confirmed bars.",
+      "role": "Primary strong rejection definition."
+    },
+    {
+      "source": "MetaQuotes MQL5 Article 987 — Outside Bar",
+      "url": "https://www.mql5.com/en/articles/987",
+      "disclosed_logic": "Outside bar overlaps both previous high and low and represents volatility expansion followed by directed movement.",
+      "role": "MetaQuotes corroboration of outside-bar semantics."
+    },
+    {
+      "source": "TradingView — Engulfing Pattern [SpeculationLab]",
+      "url": "https://www.tradingview.com/script/0i48vaOr/",
+      "disclosed_logic": "Open-source body/range engulfing detection.",
+      "role": "Community corroboration."
+    }
+  ],
+  "configs": {
+    "R037-OER-C01_M1_MQL5_FULL_ENGULF": {
+      "timeframe": "M1",
+      "pattern": "MetaQuotes full-range + body engulfing"
+    },
+    "R037-OER-C02_M1_STRONG_OUTSIDE_THIRD": {
+      "timeframe": "M1",
+      "pattern": "outside sweep + prior-body close break + outer-third close"
+    },
+    "R037-OER-C03_M5_MQL5_FULL_ENGULF": {
+      "timeframe": "M5",
+      "pattern": "MetaQuotes full-range + body engulfing"
+    },
+    "R037-OER-C04_M5_STRONG_OUTSIDE_THIRD": {
+      "timeframe": "M5",
+      "pattern": "outside sweep + prior-body close break + outer-third close"
+    }
+  },
+  "timing": "completed Bid bar only; first executable tick at/after completed signal-bar right edge",
+  "execution": {
+    "spread_gate_points_max": 25,
+    "parent_same_tick_priority": true,
+    "blocked_event_deferred": false,
+    "one_position_at_a_time": true,
+    "lot": 0.01,
+    "stop_usd": 0.3,
+    "trail_activation_usd": 0.1,
+    "trail_distance_usd": 0.03,
+    "max_hold_seconds": 30,
+    "commission_round_trip_usd": 0.02
+  },
+  "screen_gate": {
+    "reuse": "Frozen R037 independent-source Stage-A screen",
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "minimum_incremental_accepted_entries": 5,
+    "combined_trade_count_not_lower": true,
+    "winner_or_quality_gate": "official-win delta nonnegative OR positive net with improved gross loss",
+    "net_delta_min_usd": -2,
+    "max_balance_and_equity_dd_deterioration_pct": 1,
+    "strong_pass": "all gates plus net delta >= 0"
+  },
+  "forbidden": [
+    "pattern-threshold retuning after result",
+    "timeframe added after result",
+    "session filter after result",
+    "posthoc long/short split",
+    "posthoc merge with MSF/VCE/PLSR",
+    "candidate-specific exit tuning",
+    "August",
+    "MQL5"
+  ],
+  "next_if_strong_pass": "R037_OER_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_no_strong_pass": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
