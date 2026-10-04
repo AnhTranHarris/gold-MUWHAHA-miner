@@ -4,19 +4,22 @@
   "branch": "delta",
   "unit": "R037_MICROTREND_PULLBACK_QUALITY_STAGE_A_SCREEN",
   "parent_durable_unit": "R037_ITDC_STAGE_A_SCREEN_CHECKPOINT_17AQ",
-  "phase": "PREREG_COMMITTED",
-  "phase_rank": 1,
+  "phase": "PRODUCER_COMMITTED",
+  "phase_rank": 2,
   "progress": {
-    "status": "PREREG_COMMITTED",
+    "status": "PRODUCER_COMMITTED",
     "last_completed": "R037_ITDC_STAGE_A_SCREEN_CHECKPOINT_17AQ",
     "current_candidate": "R037-PBQ-v1",
     "prereg_path": "research/delta/reference/DELTA_R037_PBQ_STAGE_A_PREREG_17AR.json",
     "prereg_commit": "50970048c0c6bcc448f9f95b8c02daaff26bd581",
-    "next": "Commit deterministic producer, verify exact Git blob, then run bounded Stage-A screen."
+    "next": "Verify exact Git blob, then run bounded Stage-A screen; persist result before any further research.",
+    "producer_path": "research/delta/experiments/delta_r037_pbq_stage_a_17ar.py",
+    "producer_commit": "924c3a12a1969e3f986558c4dd69855e99e6f453",
+    "producer_blob_sha": "f6e86f2aab111599f03eae56830e5217c56f93e1"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "17AR prereg is durable; continue with producer commit.",
+    "resume_first_action": "17AR prereg + producer are durable; next action is bounded official Stage-A compute.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
