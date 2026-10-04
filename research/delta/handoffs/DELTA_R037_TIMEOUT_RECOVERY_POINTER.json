@@ -16,12 +16,15 @@
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_AVPBR_STAGE_A_CHECKPOINT_17BO_17BQ_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_AVPBR_SUPPLY_CALIBRATED_STAGE_A_SCREEN",
-    "status": "IDLE",
-    "phase_rank": 0,
+    "unit": "R037_AVPBR_SUPPLY_CALIBRATED_STAGE_A_SCREEN_CHECKPOINT_17BR_17BT",
+    "status": "PRODUCER_COMMITTED",
+    "phase_rank": 2,
     "parent_durable_unit": "R037_ACCUMULATION_VOLUME_PROFILE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BO_17BQ",
-    "committed_artifacts": [],
-    "next_action": "Preregister one supply-calibrated AVPBR fixture using event-frequency calibration only; no P&L tuning.",
+    "committed_artifacts": [
+      "research/delta/reference/DELTA_R037_AVPBR_SUPPLY_CALIBRATED_PREREG_17BR_17BT.json",
+      "research/delta/experiments/delta_r037_avpbr_supply_calibrated_17br_17bt.py"
+    ],
+    "next_action": "Verify exact supply-calibrated AVPBR producer blob locally, then run bounded official Stage-A economic compute.",
     "completed_months": [],
     "next_month": null
   },
