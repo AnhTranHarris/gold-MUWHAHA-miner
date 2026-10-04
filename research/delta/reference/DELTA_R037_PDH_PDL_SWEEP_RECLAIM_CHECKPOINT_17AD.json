@@ -1,0 +1,72 @@
+{
+  "schema": "delta-r037-pdh-pdl-sweep-reclaim-stage-a-17ad-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN_STRONG_SURVIVOR",
+  "unit": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_CHECKPOINT_17AD",
+  "family": "R037-PDHSR-v1",
+  "prereg_commit": "e37857a09553454b4477a6bc00003288ce3fd775",
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_pdh_pdl_sweep_reclaim_17ad.py",
+    "commit": "1d286c88583b7c3208bd338d734749df439c2897",
+    "blob_sha": "4a30f52c33d86120940b7b6f6fa7cc7c908982fc",
+    "file_sha256": "008cf1c703037e3a864560a3753ab8a1b7ab97b05152aa45d73691f5458f101e"
+  },
+  "official_compute": {
+    "exit_code": 0,
+    "runtime_seconds": 3.544,
+    "result_sha256": "2696aa72d77f3a13811a20ab223feb238ebfcc9813cd5ba3a3d0d4cbf0ad6233"
+  },
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "configs": {
+    "C01_TICK_RECLAIM": {
+      "proposals": 12,
+      "trades": 12,
+      "official_wins": 5,
+      "gross_profit": 2.47,
+      "gross_loss": -4.74,
+      "direct_net_usd": -2.27,
+      "prescreen_pass": false,
+      "strong_pass": false
+    },
+    "C02_S5_CLOSE_RECLAIM": {
+      "proposals": 12,
+      "eligible": 10,
+      "rejections": {
+        "RELOST_AT_EXEC": 2
+      },
+      "trades": 10,
+      "official_wins": 4,
+      "gross_profit": 4.55,
+      "gross_loss": -2.97,
+      "direct_net_usd": 1.58,
+      "prescreen_pass": true,
+      "strong_pass": true
+    },
+    "C03_S5_RECLAIM_PLUS_MSS5": {
+      "proposals": 12,
+      "eligible": 7,
+      "rejections": {
+        "NO_MSS": 4,
+        "RELOST_AT_EXEC": 1
+      },
+      "trades": 7,
+      "official_wins": 3,
+      "gross_profit": 0.84,
+      "gross_loss": -1.9,
+      "direct_net_usd": -1.06,
+      "prescreen_pass": true,
+      "strong_pass": false
+    }
+  },
+  "finding": {
+    "leading_config": "C02_S5_CLOSE_RECLAIM",
+    "interpretation": "First prior-trading-day high/low sweep followed by completed S5 reclaim is the only preregistered strong survivor. Strict tick reclaim is too noisy; adding the preregistered five-bar MSS confirmation loses supply/economics.",
+    "decision": "FREEZE_C02_AND_ADVANCE_INDEPENDENT_LATER_JAN_VALIDATION",
+    "next": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION"
+  },
+  "numeric_retuning": false,
+  "post_result_retuning": false,
+  "august_accessed": false,
+  "mql5_authorized": false
+}
