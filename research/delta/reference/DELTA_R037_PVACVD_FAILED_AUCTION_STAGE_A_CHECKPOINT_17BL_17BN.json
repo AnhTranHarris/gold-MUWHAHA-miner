@@ -1,0 +1,48 @@
+{
+  "schema": "delta-r037-pvacvd-failed-auction-stage-a-17bl-17bn-v1",
+  "status": "COMPLETE_FAST_CAUSAL_PRESCREEN",
+  "unit": "R037_PVACVD_FAILED_AUCTION_STAGE_A_SCREEN_CHECKPOINT_17BL_17BN",
+  "parent_checkpoint": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
+  "prereg_commit": "ef0f21e67d6c389024f88d60bd6768d1e2d3c191",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "signal_surface": "NATIVE_DUKAS_TICK_ROOTED_S5_M1",
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "profile_semantics": {
+    "source": "prior available UTC trading day",
+    "row_size_raw": 10,
+    "value_area_fraction": 0.7,
+    "volume": "one count per source tick",
+    "poc_tie_break": "lower price",
+    "value_area_tie_break": "lower price"
+  },
+  "delta_semantics": {"tick_up": 1, "tick_down": -1, "unchanged": 0, "threshold": "sign only"},
+  "configs": {
+    "17BL_C01_PVA_S5_PRICE_FAILED_AUCTION": {
+      "timeframe_ms": 5000,
+      "delta_required": false,
+      "metrics": {"signals": 358, "busy_skips": 8, "spread_rejects": 0, "trades": 350, "distinct_days": 10, "long": 234, "short": 116, "official_wins": 159, "gross_profit": 34.8, "gross_loss": -103.59, "direct_net_usd": -72.29, "exit_reasons": {"STOP": 338, "MAX_HOLD": 12, "END": 0}},
+      "gate": {"minimum_trades_20": true, "minimum_distinct_days_5": true, "nonnegative_direct_net": false, "screen_pass": false},
+      "event_diagnostics": {"profile_days": 13, "bars_with_profile": 180271, "short_price_events": 119, "long_price_events": 239, "short_delta_rejects": 0, "long_delta_rejects": 0, "short_signals": 119, "long_signals": 239, "short_rearms": 115, "long_rearms": 239}
+    },
+    "17BM_C02_PVA_S5_DELTA_FAILED_AUCTION": {
+      "timeframe_ms": 5000,
+      "delta_required": true,
+      "metrics": {"signals": 275, "busy_skips": 3, "spread_rejects": 0, "trades": 272, "distinct_days": 10, "long": 179, "short": 93, "official_wins": 120, "gross_profit": 26.49, "gross_loss": -83.32, "direct_net_usd": -59.55, "exit_reasons": {"STOP": 263, "MAX_HOLD": 9, "END": 0}},
+      "gate": {"minimum_trades_20": true, "minimum_distinct_days_5": true, "nonnegative_direct_net": false, "screen_pass": false},
+      "event_diagnostics": {"profile_days": 13, "bars_with_profile": 180271, "short_price_events": 119, "long_price_events": 239, "short_delta_rejects": 25, "long_delta_rejects": 58, "short_signals": 94, "long_signals": 181, "short_rearms": 115, "long_rearms": 239}
+    },
+    "17BN_C03_PVA_M1_DELTA_FAILED_AUCTION": {
+      "timeframe_ms": 60000,
+      "delta_required": true,
+      "metrics": {"signals": 76, "busy_skips": 0, "spread_rejects": 0, "trades": 76, "distinct_days": 10, "long": 54, "short": 22, "official_wins": 42, "gross_profit": 9.99, "gross_loss": -19.32, "direct_net_usd": -10.09, "exit_reasons": {"STOP": 74, "MAX_HOLD": 2, "END": 0}},
+      "gate": {"minimum_trades_20": true, "minimum_distinct_days_5": true, "nonnegative_direct_net": false, "screen_pass": false},
+      "event_diagnostics": {"profile_days": 13, "bars_with_profile": 15120, "short_price_events": 36, "long_price_events": 79, "short_delta_rejects": 14, "long_delta_rejects": 25, "short_signals": 22, "long_signals": 54, "short_rearms": 33, "long_rearms": 79}
+    }
+  },
+  "delta_incremental_effect_s5": {"signals_change": -83, "trades_change": -78, "wins_change": -39, "net_change_usd": 12.74},
+  "finding": {"survivors": [], "decision": "RETIRE_PVACVD_NO_STAGE_A_SURVIVOR", "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"},
+  "mql5_authorized": false
+}
