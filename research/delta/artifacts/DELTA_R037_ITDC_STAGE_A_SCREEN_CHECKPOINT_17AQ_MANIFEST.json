@@ -1,0 +1,174 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_ITDC_STAGE_A_SCREEN_CHECKPOINT_17AQ",
+  "status": "VERIFIED_STAGE_A_FAIL_FAMILY_RETIRED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_TCFH_STAGE_A_SCREEN_CHECKPOINT_17AP",
+  "hypothesis": "A source-grounded 0.02% intrinsic-time directional-change event can provide viable short-horizon XAUUSD entries either through immediate overshoot continuation or the Alpha Engine's first contrarian unit.",
+  "falsification_condition": "Require >=6 trades, >=4 distinct days and direct net >= -$1; otherwise retire both fixed direction semantics without threshold/exit rescue.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "17AQ ITDC Stage-A profiles",
+    "reference_count": 52465,
+    "minimum_count": 12,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true
+  },
+  "primary_metrics": {
+    "entry_quality": "C01 12082/26590 wins; C02 11403/25875 wins",
+    "hold_persistence": "30s frozen",
+    "economics": "C01 -$5285.29; C02 -$6094.78",
+    "gross_loss_drawdown": "C01 -$8219.12; C02 -$8535.11 gross loss",
+    "activity": "26,782 intrinsic-time events"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_itdc_stage_a_17aq.py",
+      "commit": "b6317dfd8cbe98616e2eb0e8e150a06ea9e1f522",
+      "blob_sha": "af3c5ac2d2533c97f14ef9b00ccaae69172d3dee",
+      "file_sha256": "96b24dabb068cc7c8759fd2972cb208cd19e1cf7e0f9f651bb8fc705a58e7dee"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "delta_fraction": 0.0002,
+      "max_spread_points": 25,
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "online directional-change extreme tracker",
+      "0.02% confirmation",
+      "source-grounded direction polarity",
+      "event-tick P75 execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "stage_a": "preregistered screen only"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_verified": "af3c5ac2d2533c97f14ef9b00ccaae69172d3dee",
+      "compile_pass": true,
+      "compact_stdout": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_ITDC_STAGE_A_SCREEN_CHECKPOINT_17AQ.json",
+      "blob_sha": "41b4997a34185a63b0e8bb47563ed9a1f7a1df4d",
+      "official_raw_result_sha256": "f34c5d187886da5be0a7e7fa0d56dee6b9dabce151b51084443a91cc7344dfcf"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_ITDC_STAGE_A_SCREEN_CHECKPOINT_17AQ.md",
+      "blob_sha": "b2cedb2b56ccf6cba21f8a64e2b8195741d175af"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "R037-ITDC-C01_OVERSHOOT_CONTINUATION",
+      "R037-ITDC-C02_ALPHA_FIRST_UNIT_CONTRARIAN"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "qa": [
+    "Prereg committed before producer and compute.",
+    "Canonical January SHA and 4,205,709 Stage-A ticks verified.",
+    "Exact producer Git blob verified and compiled before official replay.",
+    "Official replay used 120-second hard timeout and atomic output.",
+    "26,782 alternating directional-change events observed.",
+    "C01 direct net -$5,285.29; C02 direct net -$6,094.78; both fail economics decisively.",
+    "No delta threshold, session, side, or exit rescue tuning performed.",
+    "Workbook tab 71 A88:H94 readback PASS.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_itdc_stage_a_17aq.py",
+    "command": "python research/delta/experiments/delta_r037_itdc_stage_a_17aq.py --source <canonical_january_gzip> --output <17AQ>",
+    "timing_semantics": "online tick-by-tick directional-change operator; current event tick is causal; no look-ahead",
+    "expected_fingerprints": {
+      "C01_OVERSHOOT_CONTINUATION": {
+        "trades": 26590,
+        "distinct_days": 14,
+        "official_wins": 12082,
+        "direct_net_usd": -5285.29
+      },
+      "C02_ALPHA_FIRST_UNIT_CONTRARIAN": {
+        "trades": 25875,
+        "distinct_days": 14,
+        "official_wins": 11403,
+        "direct_net_usd": -6094.78
+      }
+    },
+    "selected_interpretation": "RETIRE_ITDC_STAGE_A_NO_SURVIVOR"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE - retired Stage-A family",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "P75 frozen",
+    "ownership_scheduler_spec": "not integrated",
+    "session_dst_spec": "frozen",
+    "risk_spec": "frozen",
+    "trade_count_parity_spec": "candidate retired",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_TCFH_STAGE_A_SCREEN_CHECKPOINT_17AP",
+  "drive_artifacts": [
+    {
+      "name": "working workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "71 R037 Source QA",
+      "range": "A88:H94",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "adccb54efa49aa4f91b9701ec5c393d51be25fa4",
+    "48d343e22008cffab23cd2853622ee695e5c0fb4",
+    "b6317dfd8cbe98616e2eb0e8e150a06ea9e1f522",
+    "8c844a841993d4b70b1f19b833032ed192685ffd",
+    "0e78cbe7697926f3c7d54cd28fda40981273b3f5"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
