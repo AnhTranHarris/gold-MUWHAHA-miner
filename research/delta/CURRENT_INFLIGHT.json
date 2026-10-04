@@ -1,21 +1,23 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "IDLE",
+  "status": "IN_PROGRESS",
   "branch": "delta",
-  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "unit": "R037_MICROTREND_PULLBACK_QUALITY_STAGE_A_SCREEN",
   "parent_durable_unit": "R037_ITDC_STAGE_A_SCREEN_CHECKPOINT_17AQ",
-  "phase": "IDLE",
-  "phase_rank": 0,
+  "phase": "PREREG_COMMITTED",
+  "phase_rank": 1,
   "progress": {
-    "status": "READY_FOR_PREREG",
+    "status": "PREREG_COMMITTED",
     "last_completed": "R037_ITDC_STAGE_A_SCREEN_CHECKPOINT_17AQ",
-    "last_decision": "RETIRE_ITDC_STAGE_A_NO_SURVIVOR",
-    "next": "Harvest next causally independent entry-source family."
+    "current_candidate": "R037-PBQ-v1",
+    "prereg_path": "research/delta/reference/DELTA_R037_PBQ_STAGE_A_PREREG_17AR.json",
+    "prereg_commit": "50970048c0c6bcc448f9f95b8c02daaff26bd581",
+    "next": "Commit deterministic producer, verify exact Git blob, then run bounded Stage-A screen."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "17AQ is durable once CI passes; begin next independent harvest only.",
-    "idempotency_rule": "Do not rerun 17AQ solely because chat delivery timed out."
+    "resume_first_action": "17AR prereg is durable; continue with producer commit.",
+    "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
     "commit": "164d20b91718a6bb84746350ba2a26b5c9a92ccb",
