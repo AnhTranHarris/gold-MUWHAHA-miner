@@ -1,0 +1,198 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT",
+  "status": "VERIFIED_STAGE_A_FAIL_PREDICTIVE_EDGE_PRESENT_FAMILY_RETIRED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS",
+  "hypothesis": "Source-defined best-bid/best-ask quoted-volume imbalance contains short-horizon predictive information that may survive Coinexx-like P75 executable costs as a standalone entry trigger.",
+  "falsification_condition": "All preregistered fixed-threshold profiles fail the frozen direct-net gate despite adequate event supply and next-move predictive accuracy.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "R037-QIM three preregistered Stage-A profiles",
+    "reference_count": 3,
+    "minimum_count": 3,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "All fixed profiles evaluated; no post-result threshold calibration or rescue filtering."
+  },
+  "primary_metrics": {
+    "entry_quality": "Next nonzero mid accuracy 55.79%-57.00%; executable win counts 42,084/16,574/4,796.",
+    "hold_persistence": "Frozen 30-second DELTA short-hold execution.",
+    "economics": "C01 -$15,682.35; C02 -$7,080.52; C03 -$2,066.86.",
+    "gross_loss_drawdown": "C01 -$23,917.78; C02 -$10,230.52; C03 -$2,991.59 gross loss.",
+    "activity": "338,904 / 119,475 / 26,123 raw events; 85,749 / 35,100 / 10,190 executable trades."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_qim_stage_a_17at.py",
+      "commit": "3f11c0bfc632a6c018dc6e28304e2c4e51adfd7a",
+      "blob_sha": "daadafa78b941bfda18daaa277b40600bf942495",
+      "file_sha256": "37f08a0df5f5a1777ddc53ed1487608b63dde457e528cd5562fd666143e4f251"
+    }
+  ],
+  "helpers": [],
+  "models": [],
+  "config": {
+    "parameters": {
+      "queue_imbalance_formula": "(bid_volume-ask_volume)/(bid_volume+ask_volume)",
+      "thresholds": [
+        0.25,
+        0.5,
+        0.75
+      ],
+      "event_semantics": "new event on causal entry into absolute-threshold regime or opposite-sign strong regime",
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "bid_volume",
+      "ask_volume",
+      "queue_imbalance",
+      "source_mid2"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "published/source-grounded fixed-threshold Stage-A screen; no XAUUSD threshold calibration"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "output_write": "NamedTemporaryFile + flush + fsync + os.replace",
+      "provenance_gate": "local Git blob exactly matched committed producer before official compute"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "17AT preregistration",
+      "path": "research/delta/reference/DELTA_R037_QIM_STAGE_A_PREREG_17AT.json",
+      "commit": "c2390a95eebf1c60c0a75f0d524916948211286a",
+      "blob_sha": "b63aa7bfa5f13fbc57b0ad4017b3deddb6707496"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_QIM_STAGE_A_CHECKPOINT_17AT.json",
+      "blob_sha": "fe082bd92170a2849edb82ca9e614ecac2d8b75b",
+      "official_raw_result_sha256": "c7d4e7bd85dba68f40b8b0df340889d7fa4c8e7bc1cedaa0646f22cc1d8b62e0"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_QIM_STAGE_A_CHECKPOINT_17AT.md",
+      "blob_sha": "d91c1e4479a3b1177ba743ded85c8f9b589d22df"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [
+      "next_nonzero_mid_move_direction",
+      "250ms_forward_mid_direction",
+      "1s_forward_mid_direction",
+      "5s_forward_mid_direction"
+    ],
+    "selected_owned_ledger": [],
+    "caches": [
+      "P75 executable quote surface reconstructed causally from canonical Stage-A ticks"
+    ]
+  },
+  "qa": [
+    "Preregistration was already durable before recovery and was adopted rather than duplicated.",
+    "Canonical January SHA and Stage-A tick count 4,205,709 verified.",
+    "All Stage-A ticks had valid positive bid+ask quoted-volume denominator.",
+    "Local producer Git blob exactly matched committed blob daadafa78b941bfda18daaa277b40600bf942495 before official compute.",
+    "Python compilation passed before official replay.",
+    "Official replay completed under 120-second hard process timeout with atomic result output.",
+    "All three profiles exceeded 50% next-nonzero-mid directional accuracy.",
+    "All three profiles failed executable economics by large margins.",
+    "No Stage-A threshold sweep, session/side rescue or exit retuning performed.",
+    "Workbook tab 71 A108:H114 readback PASS.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_qim_stage_a_17at.py",
+    "command": "python research/delta/experiments/delta_r037_qim_stage_a_17at.py --source <canonical_january_gzip> --output <checkpoint_17at_json>",
+    "timing_semantics": "Tick-level causal queue imbalance; signal at current source tick; prediction uses future source mid only for evaluation; executable entry uses current P75 quote; one-position scheduler.",
+    "expected_fingerprints": {
+      "C01_QI_025": {
+        "events": 338904,
+        "next_move_accuracy": 0.5694532965087459,
+        "trades": 85749,
+        "direct_net_usd": -15682.35
+      },
+      "C02_QI_050": {
+        "events": 119475,
+        "next_move_accuracy": 0.5579409918392969,
+        "trades": 35100,
+        "direct_net_usd": -7080.52
+      },
+      "C03_QI_075": {
+        "events": 26123,
+        "next_move_accuracy": 0.5699575087088007,
+        "trades": 10190,
+        "direct_net_usd": -2066.86
+      }
+    },
+    "selected_interpretation": "PREDICTIVE_MICROSTRUCTURE_INFORMATION_EXISTS_BUT_RAW_QIM_NOT_EXECUTABLE_AS_STANDALONE_ENTRY"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — family retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No fitted model.",
+    "execution_quote_side_spec": "DELTA frozen execution semantics unchanged.",
+    "ownership_scheduler_spec": "No integration or promotion.",
+    "session_dst_spec": "DELTA frozen semantics unchanged.",
+    "risk_spec": "Fixed 0.01 research semantics unchanged.",
+    "trade_count_parity_spec": "Not applicable; family retired.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "71 R037 Source QA",
+      "range": "A108:H114"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "c2390a95eebf1c60c0a75f0d524916948211286a",
+    "39f63b3f62b89cca968fd68df0c80d433bc40b6b",
+    "ad6046f18589344acacb075c8710f5f3fa62b2cd",
+    "3f11c0bfc632a6c018dc6e28304e2c4e51adfd7a",
+    "8b78a35f46fe339b75c9a80fed91bcab0853bdee",
+    "6cb0476175c1c7fb4c979e9f969202626e766056",
+    "b641e1b23faff0989b0370de0ed092c90db28fa8"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
