@@ -1,0 +1,42 @@
+{
+  "schema": "delta-r037-pdhsr-c02-monthly-validation-prereg-v1",
+  "unit": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION",
+  "status": "PREREGISTERED_BEFORE_OFFICIAL_COMPUTE",
+  "parent_checkpoint": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17AE",
+  "candidate": "R037-PDHSR-C02_S5_CLOSE_RECLAIM",
+  "months": [
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-07"
+  ],
+  "frozen_logic": {
+    "prior_day_definition": "most recent prior UTC trading day containing canonical ticks, including prior-month seed for first trading day",
+    "sweep": "first strict tick breach of PDH or PDL",
+    "confirmation": "first completed S5 close reclaimed back inside swept boundary",
+    "execution_guard": "execution quote must still be reclaimed",
+    "one_trade_per_day": true,
+    "max_spread_points": 25,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "numeric_retuning": false,
+    "side_filter": false,
+    "session_filter": false,
+    "weekday_filter": false,
+    "posthoc_level_split": false
+  },
+  "robustness_gate": {
+    "total_trades_min": 24,
+    "nonnegative_months_min": 4,
+    "aggregate_direct_net_usd_min": 0,
+    "note": "Strong monthly robustness requires all three. Failure retires C02 from active promotion path without retuning."
+  },
+  "august_2026": "SEALED",
+  "if_pass_next": "R037_PDHSR_C02_SURROGATE_PARENT_INTEGRATION_VALIDATION",
+  "if_fail_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "mql5_authorized": false
+}
