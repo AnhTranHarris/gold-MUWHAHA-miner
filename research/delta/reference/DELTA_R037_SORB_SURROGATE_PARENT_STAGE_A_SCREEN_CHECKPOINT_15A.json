@@ -1,0 +1,645 @@
+{
+  "schema": "delta-r037-sorb-surrogate-parent-stage-a-screen-v1",
+  "status": "COMPLETE_NON_PROMOTING_SURROGATE_PARENT_STAGE_A_SCREEN",
+  "unit": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN",
+  "parent_checkpoint": "R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_CHECKPOINT_14B",
+  "surrogate_parent": "14A_BACKBONE_FIRST_C03_WITH_FROZEN_PROVENANCE_LIMITED_SPECIALISTS",
+  "promotable": false,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "parent_control": {
+    "trades": 14034,
+    "raw_positive_wins": 6422,
+    "official_wins": 6349,
+    "losses": 7612,
+    "p01_hits": 5208,
+    "m30_only_hits": 1560,
+    "owned_exit_suppressed_rearms": 8801,
+    "ordinary_entries": 11916,
+    "gross_profit": 1357.26,
+    "gross_loss": -4302.2,
+    "net_profit": -2944.94,
+    "max_balance_drawdown": 2945.93,
+    "max_equity_drawdown": 2946.43,
+    "average_hold_seconds": 6.779036625338463,
+    "parent_specialist_entries": 2118,
+    "sorb_entries": 0,
+    "parent_specialist_net": -491.44,
+    "sorb_net": 0,
+    "sources": {
+      "DH03_S06": {
+        "entries": 1329,
+        "official_wins": 582,
+        "net_profit": -298.55
+      },
+      "DH05_S06": {
+        "entries": 598,
+        "official_wins": 249,
+        "net_profit": -140.23
+      },
+      "DH02_S11": {
+        "entries": 95,
+        "official_wins": 38,
+        "net_profit": -24.68
+      },
+      "DH02_S08": {
+        "entries": 96,
+        "official_wins": 33,
+        "net_profit": -27.98
+      },
+      "SORB": {
+        "entries": 0,
+        "official_wins": 0,
+        "net_profit": 0
+      }
+    },
+    "sorb_outcomes": {
+      "ACCEPTED": 0,
+      "POSITION_BLOCKED": 0,
+      "PARENT_SAME_TICK_COLLISION": 0,
+      "OTHER_BLOCKED": 0
+    },
+    "sorb_session_contribution": {
+      "LONDON": {
+        "entries": 0,
+        "official_wins": 0,
+        "net_profit": 0
+      },
+      "COMEX_GOLD": {
+        "entries": 0,
+        "official_wins": 0,
+        "net_profit": 0
+      }
+    }
+  },
+  "configs": {
+    "R037-C01_LONDON_15": {
+      "supply": {
+        "proposals": 11,
+        "source_eligible": 11,
+        "distinct_days": 11,
+        "source_rejections": {
+          "REENTERED_RANGE": 0,
+          "SPREAD_GATE": 0
+        },
+        "proposal_long": 6,
+        "proposal_short": 5,
+        "sessions": {
+          "LONDON": 11,
+          "COMEX_GOLD": 0
+        }
+      },
+      "combined": {
+        "trades": 14043,
+        "raw_positive_wins": 6429,
+        "official_wins": 6356,
+        "losses": 7614,
+        "p01_hits": 5208,
+        "m30_only_hits": 1560,
+        "owned_exit_suppressed_rearms": 8801,
+        "ordinary_entries": 11916,
+        "gross_profit": 1358.41,
+        "gross_loss": -4303.85,
+        "net_profit": -2945.44,
+        "max_balance_drawdown": 2946.43,
+        "max_equity_drawdown": 2946.93,
+        "average_hold_seconds": 6.778537349569181,
+        "parent_specialist_entries": 2118,
+        "sorb_entries": 9,
+        "parent_specialist_net": -491.44,
+        "sorb_net": -0.5,
+        "sources": {
+          "DH03_S06": {
+            "entries": 1329,
+            "official_wins": 582,
+            "net_profit": -298.55
+          },
+          "DH05_S06": {
+            "entries": 598,
+            "official_wins": 249,
+            "net_profit": -140.23
+          },
+          "DH02_S11": {
+            "entries": 95,
+            "official_wins": 38,
+            "net_profit": -24.68
+          },
+          "DH02_S08": {
+            "entries": 96,
+            "official_wins": 33,
+            "net_profit": -27.98
+          },
+          "SORB": {
+            "entries": 9,
+            "official_wins": 7,
+            "net_profit": -0.5
+          }
+        },
+        "sorb_outcomes": {
+          "ACCEPTED": 9,
+          "POSITION_BLOCKED": 2,
+          "PARENT_SAME_TICK_COLLISION": 0,
+          "OTHER_BLOCKED": 0
+        },
+        "sorb_session_contribution": {
+          "LONDON": {
+            "entries": 9,
+            "official_wins": 7,
+            "net_profit": -0.5
+          },
+          "COMEX_GOLD": {
+            "entries": 0,
+            "official_wins": 0,
+            "net_profit": 0
+          }
+        }
+      },
+      "decision": {
+        "proposal_supply_ok": true,
+        "incremental_entry_floor_ok": true,
+        "combined_trade_count_not_lower": true,
+        "winner_or_quality_gate_ok": true,
+        "net_not_worse_than_2usd": true,
+        "drawdown_deterioration_within_1pct": true,
+        "screen_pass": true,
+        "strong_screen_pass": false,
+        "trade_delta": 9,
+        "official_win_delta": 7,
+        "gross_profit_delta": 1.15,
+        "gross_loss_delta": -1.65,
+        "net_delta": -0.5,
+        "max_balance_dd_delta_pct": 0.016972568934088727,
+        "max_equity_dd_delta_pct": 0.016969688741969097,
+        "incremental_net_per_sorb_entry": -0.06
+      }
+    },
+    "R037-C02_COMEX_15": {
+      "supply": {
+        "proposals": 11,
+        "source_eligible": 10,
+        "distinct_days": 11,
+        "source_rejections": {
+          "REENTERED_RANGE": 1,
+          "SPREAD_GATE": 0
+        },
+        "proposal_long": 7,
+        "proposal_short": 4,
+        "sessions": {
+          "LONDON": 0,
+          "COMEX_GOLD": 11
+        }
+      },
+      "combined": {
+        "trades": 14042,
+        "raw_positive_wins": 6426,
+        "official_wins": 6353,
+        "losses": 7616,
+        "p01_hits": 5208,
+        "m30_only_hits": 1560,
+        "owned_exit_suppressed_rearms": 8801,
+        "ordinary_entries": 11916,
+        "gross_profit": 1358.18,
+        "gross_loss": -4304.64,
+        "net_profit": -2946.46,
+        "max_balance_drawdown": 2947.45,
+        "max_equity_drawdown": 2947.95,
+        "average_hold_seconds": 6.776385130323316,
+        "parent_specialist_entries": 2118,
+        "sorb_entries": 8,
+        "parent_specialist_net": -491.44,
+        "sorb_net": -1.52,
+        "sources": {
+          "DH03_S06": {
+            "entries": 1329,
+            "official_wins": 582,
+            "net_profit": -298.55
+          },
+          "DH05_S06": {
+            "entries": 598,
+            "official_wins": 249,
+            "net_profit": -140.23
+          },
+          "DH02_S11": {
+            "entries": 95,
+            "official_wins": 38,
+            "net_profit": -24.68
+          },
+          "DH02_S08": {
+            "entries": 96,
+            "official_wins": 33,
+            "net_profit": -27.98
+          },
+          "SORB": {
+            "entries": 8,
+            "official_wins": 4,
+            "net_profit": -1.52
+          }
+        },
+        "sorb_outcomes": {
+          "ACCEPTED": 8,
+          "POSITION_BLOCKED": 0,
+          "PARENT_SAME_TICK_COLLISION": 2,
+          "OTHER_BLOCKED": 0
+        },
+        "sorb_session_contribution": {
+          "LONDON": {
+            "entries": 0,
+            "official_wins": 0,
+            "net_profit": 0
+          },
+          "COMEX_GOLD": {
+            "entries": 8,
+            "official_wins": 4,
+            "net_profit": -1.52
+          }
+        }
+      },
+      "decision": {
+        "proposal_supply_ok": true,
+        "incremental_entry_floor_ok": true,
+        "combined_trade_count_not_lower": true,
+        "winner_or_quality_gate_ok": true,
+        "net_not_worse_than_2usd": true,
+        "drawdown_deterioration_within_1pct": true,
+        "screen_pass": true,
+        "strong_screen_pass": false,
+        "trade_delta": 8,
+        "official_win_delta": 4,
+        "gross_profit_delta": 0.92,
+        "gross_loss_delta": -2.44,
+        "net_delta": -1.52,
+        "max_balance_dd_delta_pct": 0.05159660955962911,
+        "max_equity_dd_delta_pct": 0.05158785377558543,
+        "incremental_net_per_sorb_entry": -0.19
+      }
+    },
+    "R037-C03_DUAL_15": {
+      "supply": {
+        "proposals": 22,
+        "source_eligible": 21,
+        "distinct_days": 11,
+        "source_rejections": {
+          "REENTERED_RANGE": 1,
+          "SPREAD_GATE": 0
+        },
+        "proposal_long": 13,
+        "proposal_short": 9,
+        "sessions": {
+          "LONDON": 11,
+          "COMEX_GOLD": 11
+        }
+      },
+      "combined": {
+        "trades": 14051,
+        "raw_positive_wins": 6433,
+        "official_wins": 6360,
+        "losses": 7618,
+        "p01_hits": 5208,
+        "m30_only_hits": 1560,
+        "owned_exit_suppressed_rearms": 8801,
+        "ordinary_entries": 11916,
+        "gross_profit": 1359.33,
+        "gross_loss": -4306.29,
+        "net_profit": -2946.96,
+        "max_balance_drawdown": 2947.95,
+        "max_equity_drawdown": 2948.45,
+        "average_hold_seconds": 6.775887837164615,
+        "parent_specialist_entries": 2118,
+        "sorb_entries": 17,
+        "parent_specialist_net": -491.44,
+        "sorb_net": -2.02,
+        "sources": {
+          "DH03_S06": {
+            "entries": 1329,
+            "official_wins": 582,
+            "net_profit": -298.55
+          },
+          "DH05_S06": {
+            "entries": 598,
+            "official_wins": 249,
+            "net_profit": -140.23
+          },
+          "DH02_S11": {
+            "entries": 95,
+            "official_wins": 38,
+            "net_profit": -24.68
+          },
+          "DH02_S08": {
+            "entries": 96,
+            "official_wins": 33,
+            "net_profit": -27.98
+          },
+          "SORB": {
+            "entries": 17,
+            "official_wins": 11,
+            "net_profit": -2.02
+          }
+        },
+        "sorb_outcomes": {
+          "ACCEPTED": 17,
+          "POSITION_BLOCKED": 2,
+          "PARENT_SAME_TICK_COLLISION": 2,
+          "OTHER_BLOCKED": 0
+        },
+        "sorb_session_contribution": {
+          "LONDON": {
+            "entries": 9,
+            "official_wins": 7,
+            "net_profit": -0.5
+          },
+          "COMEX_GOLD": {
+            "entries": 8,
+            "official_wins": 4,
+            "net_profit": -1.52
+          }
+        }
+      },
+      "decision": {
+        "proposal_supply_ok": true,
+        "incremental_entry_floor_ok": true,
+        "combined_trade_count_not_lower": true,
+        "winner_or_quality_gate_ok": true,
+        "net_not_worse_than_2usd": false,
+        "drawdown_deterioration_within_1pct": true,
+        "screen_pass": false,
+        "strong_screen_pass": false,
+        "trade_delta": 17,
+        "official_win_delta": 11,
+        "gross_profit_delta": 2.07,
+        "gross_loss_delta": -4.09,
+        "net_delta": -2.02,
+        "max_balance_dd_delta_pct": 0.06856917849371784,
+        "max_equity_dd_delta_pct": 0.06855754251755453,
+        "incremental_net_per_sorb_entry": -0.12
+      }
+    },
+    "R037-C04_DUAL_30": {
+      "supply": {
+        "proposals": 22,
+        "source_eligible": 21,
+        "distinct_days": 11,
+        "source_rejections": {
+          "REENTERED_RANGE": 1,
+          "SPREAD_GATE": 0
+        },
+        "proposal_long": 15,
+        "proposal_short": 7,
+        "sessions": {
+          "LONDON": 11,
+          "COMEX_GOLD": 11
+        }
+      },
+      "combined": {
+        "trades": 14051,
+        "raw_positive_wins": 6434,
+        "official_wins": 6361,
+        "losses": 7617,
+        "p01_hits": 5209,
+        "m30_only_hits": 1560,
+        "owned_exit_suppressed_rearms": 8802,
+        "ordinary_entries": 11916,
+        "gross_profit": 1361.8,
+        "gross_loss": -4305.22,
+        "net_profit": -2943.42,
+        "max_balance_drawdown": 2944.41,
+        "max_equity_drawdown": 2944.91,
+        "average_hold_seconds": 6.773895096434417,
+        "parent_specialist_entries": 2118,
+        "sorb_entries": 17,
+        "parent_specialist_net": -491.44,
+        "sorb_net": 0.84,
+        "sources": {
+          "DH03_S06": {
+            "entries": 1329,
+            "official_wins": 582,
+            "net_profit": -298.55
+          },
+          "DH05_S06": {
+            "entries": 598,
+            "official_wins": 249,
+            "net_profit": -140.23
+          },
+          "DH02_S11": {
+            "entries": 95,
+            "official_wins": 38,
+            "net_profit": -24.68
+          },
+          "DH02_S08": {
+            "entries": 96,
+            "official_wins": 33,
+            "net_profit": -27.98
+          },
+          "SORB": {
+            "entries": 17,
+            "official_wins": 11,
+            "net_profit": 0.84
+          }
+        },
+        "sorb_outcomes": {
+          "ACCEPTED": 17,
+          "POSITION_BLOCKED": 3,
+          "PARENT_SAME_TICK_COLLISION": 1,
+          "OTHER_BLOCKED": 0
+        },
+        "sorb_session_contribution": {
+          "LONDON": {
+            "entries": 7,
+            "official_wins": 5,
+            "net_profit": 0.14
+          },
+          "COMEX_GOLD": {
+            "entries": 10,
+            "official_wins": 6,
+            "net_profit": 0.7
+          }
+        }
+      },
+      "decision": {
+        "proposal_supply_ok": true,
+        "incremental_entry_floor_ok": true,
+        "combined_trade_count_not_lower": true,
+        "winner_or_quality_gate_ok": true,
+        "net_not_worse_than_2usd": true,
+        "drawdown_deterioration_within_1pct": true,
+        "screen_pass": true,
+        "strong_screen_pass": true,
+        "trade_delta": 17,
+        "official_win_delta": 12,
+        "gross_profit_delta": 4.54,
+        "gross_loss_delta": -3.02,
+        "net_delta": 1.52,
+        "max_balance_dd_delta_pct": -0.05159660955962911,
+        "max_equity_dd_delta_pct": -0.05158785377558543,
+        "incremental_net_per_sorb_entry": 0.09
+      }
+    },
+    "R037-C05_DUAL_15_CONFIRM2": {
+      "supply": {
+        "proposals": 22,
+        "source_eligible": 22,
+        "distinct_days": 11,
+        "source_rejections": {
+          "REENTERED_RANGE": 0,
+          "SPREAD_GATE": 0
+        },
+        "proposal_long": 14,
+        "proposal_short": 8,
+        "sessions": {
+          "LONDON": 11,
+          "COMEX_GOLD": 11
+        }
+      },
+      "combined": {
+        "trades": 14051,
+        "raw_positive_wins": 6432,
+        "official_wins": 6359,
+        "losses": 7619,
+        "p01_hits": 5208,
+        "m30_only_hits": 1560,
+        "owned_exit_suppressed_rearms": 8801,
+        "ordinary_entries": 11916,
+        "gross_profit": 1358.97,
+        "gross_loss": -4306.22,
+        "net_profit": -2947.25,
+        "max_balance_drawdown": 2948.24,
+        "max_equity_drawdown": 2948.74,
+        "average_hold_seconds": 6.77474912817593,
+        "parent_specialist_entries": 2118,
+        "sorb_entries": 17,
+        "parent_specialist_net": -491.44,
+        "sorb_net": -2.31,
+        "sources": {
+          "DH03_S06": {
+            "entries": 1329,
+            "official_wins": 582,
+            "net_profit": -298.55
+          },
+          "DH05_S06": {
+            "entries": 598,
+            "official_wins": 249,
+            "net_profit": -140.23
+          },
+          "DH02_S11": {
+            "entries": 95,
+            "official_wins": 38,
+            "net_profit": -24.68
+          },
+          "DH02_S08": {
+            "entries": 96,
+            "official_wins": 33,
+            "net_profit": -27.98
+          },
+          "SORB": {
+            "entries": 17,
+            "official_wins": 10,
+            "net_profit": -2.31
+          }
+        },
+        "sorb_outcomes": {
+          "ACCEPTED": 17,
+          "POSITION_BLOCKED": 3,
+          "PARENT_SAME_TICK_COLLISION": 2,
+          "OTHER_BLOCKED": 0
+        },
+        "sorb_session_contribution": {
+          "LONDON": {
+            "entries": 10,
+            "official_wins": 7,
+            "net_profit": -0.35
+          },
+          "COMEX_GOLD": {
+            "entries": 7,
+            "official_wins": 3,
+            "net_profit": -1.96
+          }
+        }
+      },
+      "decision": {
+        "proposal_supply_ok": true,
+        "incremental_entry_floor_ok": true,
+        "combined_trade_count_not_lower": true,
+        "winner_or_quality_gate_ok": true,
+        "net_not_worse_than_2usd": false,
+        "drawdown_deterioration_within_1pct": true,
+        "screen_pass": false,
+        "strong_screen_pass": false,
+        "trade_delta": 17,
+        "official_win_delta": 10,
+        "gross_profit_delta": 1.71,
+        "gross_loss_delta": -4.02,
+        "net_delta": -2.31,
+        "max_balance_dd_delta_pct": 0.07841326847548806,
+        "max_equity_dd_delta_pct": 0.07839996198789537,
+        "incremental_net_per_sorb_entry": -0.14
+      }
+    }
+  },
+  "ranking": [
+    {
+      "config_id": "R037-C04_DUAL_30",
+      "screen_pass": true,
+      "strong_screen_pass": true,
+      "accepted_entries": 17,
+      "trade_delta": 17,
+      "official_win_delta": 12,
+      "net_delta": 1.52,
+      "max_equity_dd_delta_pct": -0.05158785377558543
+    },
+    {
+      "config_id": "R037-C01_LONDON_15",
+      "screen_pass": true,
+      "strong_screen_pass": false,
+      "accepted_entries": 9,
+      "trade_delta": 9,
+      "official_win_delta": 7,
+      "net_delta": -0.5,
+      "max_equity_dd_delta_pct": 0.016969688741969097
+    },
+    {
+      "config_id": "R037-C02_COMEX_15",
+      "screen_pass": true,
+      "strong_screen_pass": false,
+      "accepted_entries": 8,
+      "trade_delta": 8,
+      "official_win_delta": 4,
+      "net_delta": -1.52,
+      "max_equity_dd_delta_pct": 0.05158785377558543
+    },
+    {
+      "config_id": "R037-C03_DUAL_15",
+      "screen_pass": false,
+      "strong_screen_pass": false,
+      "accepted_entries": 17,
+      "trade_delta": 17,
+      "official_win_delta": 11,
+      "net_delta": -2.02,
+      "max_equity_dd_delta_pct": 0.06855754251755453
+    },
+    {
+      "config_id": "R037-C05_DUAL_15_CONFIRM2",
+      "screen_pass": false,
+      "strong_screen_pass": false,
+      "accepted_entries": 17,
+      "trade_delta": 17,
+      "official_win_delta": 10,
+      "net_delta": -2.31,
+      "max_equity_dd_delta_pct": 0.07839996198789537
+    }
+  ],
+  "finding": {
+    "leading_config": "R037-C04_DUAL_30",
+    "any_screen_pass": true,
+    "any_strong_screen_pass": true,
+    "next": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION"
+  },
+  "mql5_authorized": false,
+  "execution_provenance": {
+    "producer_commit": "d1c5a36f502bf2ec59ce81388472963a4d4a71c1",
+    "producer_blob_sha": "4dd2209c161d555cb814e3875553219373ad1f9b",
+    "producer_sha256": "0e0db32717636e54a160fbca34dac4a112712fb401b1f011f66e60361c2306b5",
+    "official_local_raw_result_sha256": "7a9033a544cd7b6969b842bd84c868d4fcd63ed063129821c69255f05f1ebcf8"
+  }
+}
