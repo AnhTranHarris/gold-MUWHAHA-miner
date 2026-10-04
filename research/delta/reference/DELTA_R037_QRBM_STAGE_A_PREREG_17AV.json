@@ -1,0 +1,92 @@
+{
+  "schema": "delta-r037-qrbm-stage-a-prereg-17av-v1",
+  "status": "PREREGISTERED_BEFORE_OFFICIAL_COMPUTE",
+  "unit": "R037_QUOTE_REVISION_BURST_MOMENTUM_STAGE_A_SCREEN",
+  "family": "R037-QRBM-v1",
+  "parent_checkpoint": "R037_OSSMR_STAGE_A_SCREEN_CHECKPOINT_17AU",
+  "research_question": "Do sparse completed one-second bursts of extreme native XAUUSD quote-revision intensity carry persistent directional information that survives independent P75 executable costs?",
+  "sources": [
+    {
+      "name": "Gençay, Mahmoodzadeh, Rojček & Tseng — Price Impact and Bursts in Liquidity Provision",
+      "url": "https://www.tandfonline.com/doi/full/10.1080/14697688.2017.1420209",
+      "reconstruction": "Brief episodes of extremely high quote arrival/revision intensity have material price impact, approximately five times non-burst periods; reported burst duration is about 1.09 seconds."
+    },
+    {
+      "name": "Russell & Engle — Forecasting the Frequency of Changes in Quoted Foreign Exchange Prices with the ACD Model",
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6834",
+      "reconstruction": "FX quote-change intensity is an economically meaningful state variable in irregular tick time; repeated quotes can be thinned to focus on actual price revisions."
+    }
+  ],
+  "source_qa": {
+    "fully_reconstructible_from_available_fields": true,
+    "required_fields": [
+      "timestamp_ms_utc",
+      "ask_raw",
+      "bid_raw"
+    ],
+    "signal_surface": "native Dukascopy BBO",
+    "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+    "approximation_note": "The published burst paper does not expose an exchange-portable universal intensity cutoff in the surfaced public text. This prereg uses a fixed robust statistical extreme criterion, not an XAUUSD-tuned percentile.",
+    "rejected_proxies": [
+      "order IDs",
+      "cancellation identity",
+      "participant identity",
+      "trade initiator"
+    ]
+  },
+  "event_grammar": {
+    "binning": "completed UTC 1-second bins, matching the approximately 1.09-second burst duration reported in source literature",
+    "revision_count": "count native snapshots in the second for which ask or bid differs from the immediately prior snapshot",
+    "baseline": "previous 600 completed one-second bins only",
+    "extreme_rule": "revision_count > trailing_median + 3 * 1.4826 * trailing_MAD",
+    "minimum_history_seconds": 600,
+    "event_start": "current completed second is extreme and immediately previous completed second was not extreme",
+    "direction": "sign of native midquote displacement from first to last revision inside the completed burst second",
+    "zero_displacement": "no signal",
+    "entry": "first P75 tick at or after burst-second right edge, in burst displacement direction",
+    "same_burst_dedup": "consecutive extreme seconds form one burst; only first extreme second can signal"
+  },
+  "profiles": [
+    {
+      "id": "C01_BURST_CONTINUATION",
+      "rule": "single preregistered continuation interpretation; no fade variant in this unit"
+    }
+  ],
+  "evaluation": {
+    "economics": "frozen DELTA 30-second initial-hold engine; fixed 0.01 lot; P75 executable quote side; stop 300 raw; trail activation 100; trail distance 30; max hold 30s; $0.01 entry + $0.01 exit commission",
+    "scheduler": "one position at a time",
+    "gates": {
+      "minimum_trades": 50,
+      "minimum_distinct_days": 6,
+      "direct_net_usd_min": -1,
+      "strong_direct_net_usd_min": 0
+    },
+    "diagnostics": [
+      "burst count",
+      "bursts/day",
+      "revision-count distribution",
+      "burst native displacement distribution",
+      "trade economics"
+    ]
+  },
+  "anti_overfit": [
+    "One structural profile only.",
+    "No robust-z threshold sweep.",
+    "No baseline-window sweep.",
+    "No session/side/weekday rescue.",
+    "No QIM/OFI overlay.",
+    "No exit retuning.",
+    "No August access.",
+    "If C01 fails executable economics, retire QRBM."
+  ],
+  "crash_safety": {
+    "hard_process_timeout_seconds": 120,
+    "atomic_output": "NamedTemporaryFile + flush + os.fsync + os.replace",
+    "compact_stdout": true,
+    "exact_git_blob_required_before_compute": true
+  },
+  "next_if_survivor": "R037_QRBM_C01_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_fail": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
