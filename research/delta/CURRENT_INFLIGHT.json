@@ -2,20 +2,20 @@
   "schema": "delta-timeout-recovery-inflight-v1",
   "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_ASRB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
-  "parent_durable_unit": "R037_ASRB_STAGE_A_SCREEN_CHECKPOINT_17AL",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "parent_durable_unit": "R037_ASRB_C02_LATER_JAN_CHECKPOINT_17AM",
   "phase": "IDLE",
   "phase_rank": 0,
   "progress": {
     "status": "READY_FOR_PREREG",
-    "last_completed": "R037_ASRB_STAGE_A_SCREEN_CHECKPOINT_17AL",
-    "last_decision": "FREEZE_C02_RETEST_ADVANCE_HOLDOUT",
-    "next": "Preregister independent later-January validation of frozen C02_RETEST; no retuning."
+    "last_completed": "R037_ASRB_C02_LATER_JAN_CHECKPOINT_17AM",
+    "last_decision": "RETIRE_ASRB_C02_NO_RETUNE",
+    "next": "Harvest next causally independent entry-source family."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "17AL is durable; resume only C02_RETEST later-January holdout.",
-    "idempotency_rule": "Do not rerun 17AL solely because message delivery timed out."
+    "resume_first_action": "Read compact CURRENT_STATE, CURRENT_INFLIGHT and recovery pointer; 17AM durable; start next independent source only.",
+    "idempotency_rule": "Do not rerun 17AM solely because delivery timed out."
   },
   "last_verified_ci": {
     "commit": "164d20b91718a6bb84746350ba2a26b5c9a92ccb",
@@ -26,9 +26,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_ASRB_STAGE_A_SCREEN_CHECKPOINT_17AL",
-    "checkpoint": "R037_ASRB_STAGE_A_SCREEN_CHECKPOINT_17AL",
-    "current_state_next": "R037_ASRB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
-    "manifest": "research/delta/artifacts/DELTA_R037_ASRB_STAGE_A_SCREEN_CHECKPOINT_17AL_MANIFEST.json"
+    "unit": "R037_ASRB_C02_LATER_JAN_CHECKPOINT_17AM",
+    "checkpoint": "R037_ASRB_C02_LATER_JAN_CHECKPOINT_17AM",
+    "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "manifest": "research/delta/artifacts/DELTA_R037_ASRB_C02_LATER_JAN_CHECKPOINT_17AM_MANIFEST.json"
   }
 }
