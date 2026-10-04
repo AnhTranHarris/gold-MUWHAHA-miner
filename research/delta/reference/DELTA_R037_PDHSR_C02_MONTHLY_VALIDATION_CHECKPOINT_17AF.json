@@ -1,0 +1,24 @@
+{
+  "schema": "delta-r037-pdhsr-c02-monthly-validation-v1",
+  "status": "COMPLETE_MONTH_BY_MONTH_VALIDATION",
+  "unit": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION",
+  "candidate": "R037-PDHSR-C02_S5_CLOSE_RECLAIM",
+  "parent_checkpoint": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17AE",
+  "prereg_commit": "04341c0531990e8f3685baf4066aaf85b3c1ac32",
+  "months": {
+    "2026-02": {"proposals":20,"eligible":17,"distinct_days":17,"long":6,"short":11,"rejections":{"RELOST_AT_EXEC":2,"NO_RECLAIM":1},"trades":17,"official_wins":4,"raw_positive_wins":4,"gross_profit":0.87,"gross_loss":-10.01,"direct_net_usd":-9.14,"level_contribution":{"PDH":{"trades":11,"wins":3,"net":-6.41},"PDL":{"trades":6,"wins":1,"net":-2.73}},"exit_reasons":{"STOP":17,"MAX_HOLD":0,"END":0}},
+    "2026-03": {"proposals":23,"eligible":21,"distinct_days":21,"long":13,"short":8,"rejections":{"NO_RECLAIM":2},"trades":21,"official_wins":9,"raw_positive_wins":10,"gross_profit":3.05,"gross_loss":-8.4,"direct_net_usd":-5.35,"level_contribution":{"PDH":{"trades":8,"wins":3,"net":-2.63},"PDL":{"trades":13,"wins":6,"net":-2.72}},"exit_reasons":{"STOP":21,"MAX_HOLD":0,"END":0}},
+    "2026-04": {"proposals":21,"eligible":19,"distinct_days":19,"long":12,"short":7,"rejections":{"NO_RECLAIM":1,"RELOST_AT_EXEC":1},"trades":19,"official_wins":8,"raw_positive_wins":8,"gross_profit":2.12,"gross_loss":-7.14,"direct_net_usd":-5.02,"level_contribution":{"PDH":{"trades":7,"wins":4,"net":-0.2},"PDL":{"trades":12,"wins":4,"net":-4.82}},"exit_reasons":{"STOP":19,"MAX_HOLD":0,"END":0}},
+    "2026-05": {"proposals":19,"eligible":17,"distinct_days":17,"long":9,"short":8,"rejections":{"RELOST_AT_EXEC":2},"trades":17,"official_wins":8,"raw_positive_wins":8,"gross_profit":1.36,"gross_loss":-5.51,"direct_net_usd":-4.15,"level_contribution":{"PDH":{"trades":8,"wins":7,"net":0.61},"PDL":{"trades":9,"wins":1,"net":-4.76}},"exit_reasons":{"STOP":17,"MAX_HOLD":0,"END":0}},
+    "2026-06": {"proposals":20,"eligible":17,"distinct_days":17,"long":9,"short":8,"rejections":{"NO_RECLAIM":1,"RELOST_AT_EXEC":2},"trades":17,"official_wins":8,"raw_positive_wins":8,"gross_profit":2.88,"gross_loss":-5.57,"direct_net_usd":-2.69,"level_contribution":{"PDH":{"trades":8,"wins":5,"net":-1.0},"PDL":{"trades":9,"wins":3,"net":-1.69}},"exit_reasons":{"STOP":17,"MAX_HOLD":0,"END":0}},
+    "2026-07": {"proposals":24,"eligible":18,"distinct_days":18,"long":14,"short":4,"rejections":{"RELOST_AT_EXEC":4,"NO_RECLAIM":2},"trades":18,"official_wins":7,"raw_positive_wins":7,"gross_profit":2.4,"gross_loss":-6.52,"direct_net_usd":-4.12,"level_contribution":{"PDH":{"trades":4,"wins":2,"net":-0.14},"PDL":{"trades":14,"wins":5,"net":-3.98}},"exit_reasons":{"STOP":18,"MAX_HOLD":0,"END":0}}
+  },
+  "aggregate": {"trades":109,"official_wins":44,"gross_profit":12.68,"gross_loss":-43.15,"direct_net_usd":-30.47,"nonnegative_months":0},
+  "gate": {"total_trades_min_24":true,"nonnegative_months_min_4":false,"aggregate_net_nonnegative":false,"robustness_pass":false},
+  "candidate_retuned": false,
+  "posthoc_level_split": false,
+  "august_accessed": false,
+  "decision": "RETIRE_C02_NO_RETUNE",
+  "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "mql5_authorized": false
+}
