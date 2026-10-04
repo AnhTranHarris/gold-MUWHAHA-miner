@@ -1,0 +1,105 @@
+{
+  "schema": "delta-r037-egf-source-harvest-prereg-v1",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "checkpoint_target": "R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G",
+  "family": "R037-EGF-v1",
+  "status": "FROZEN_BEFORE_STAGE_A_REPLAY",
+  "parent_checkpoint": "R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F",
+  "purpose": "Test whether failure of a previously confirmed close-based engulfing structure creates short-horizon continuation edge: one side commits, is later invalidated by an opposite-colour close through the Base candle far edge, and entry follows the newly controlling side.",
+  "public_logic_sources": [
+    {
+      "source": "TradingView — Engulfing Failed Zone [8 Types] / Engulfing Overlap Zone",
+      "url": "https://www.tradingview.com/scripts/bullishengulfing/",
+      "disclosed_logic": "Regular Buy engulf = Red Base then next Green close above Base High; Regular Sell mirror. Type-1 additionally sweeps the opposite Base edge before confirmation. Buy engulf fails on first later Red close strictly below Base Low; Sell engulf fails on first later Green close strictly above Base High. Closed bars only.",
+      "role": "Primary exact pattern-confirmation and failure semantics."
+    },
+    {
+      "source": "MetaQuotes — How to use MQL5 to detect candlestick patterns",
+      "url": "https://www.mql5.com/en/articles/12385",
+      "disclosed_logic": "Closed-candle bullish/bearish engulfing pattern construction and deterministic OHLC pattern detection.",
+      "role": "MetaQuotes corroboration of reconstructible completed-bar engulfing logic."
+    }
+  ],
+  "independence": [
+    "No oscillator.",
+    "No Donchian/channel rule.",
+    "No volatility-compression prerequisite.",
+    "No session/previous-day level.",
+    "No swing/BOS/CHOCH/FVG dependency.",
+    "Entry is generated only by causal failure of a previously confirmed engulfing commitment."
+  ],
+  "pattern_semantics": {
+    "regular_buy": "Base is Red; immediately following completed bar is Green and closes strictly above Base High.",
+    "regular_sell": "Base is Green; immediately following completed bar is Red and closes strictly below Base Low.",
+    "type1_buy": "Regular Buy plus Confirm-bar Low <= Base Low before/while closing above Base High.",
+    "type1_sell": "Regular Sell plus Confirm-bar High >= Base High before/while closing below Base Low.",
+    "buy_failure": "First later completed Red bar closes strictly below Base Low; trade direction SELL.",
+    "sell_failure": "First later completed Green bar closes strictly above Base High; trade direction BUY.",
+    "wick_only_breach": "Does not fail a pattern.",
+    "lifecycle": "Each confirmed pattern remains active until its first qualifying close-based failure. No retrospective expiry.",
+    "collision_rule": "On one completed bar, collapse multiple same-direction pattern failures to one proposal using the most recently confirmed failed pattern. If both long and short failure directions occur on the same completed bar, emit no ambiguous proposal."
+  },
+  "configs": {
+    "R037-EGF-C01_M1_REGULAR_FAILURE": {
+      "timeframe": "M1",
+      "pattern_class": "Regular two-candle engulf failure"
+    },
+    "R037-EGF-C02_M1_TYPE1_FAILURE": {
+      "timeframe": "M1",
+      "pattern_class": "Type-1 Regular two-candle sweep+engulf failure"
+    },
+    "R037-EGF-C03_M5_REGULAR_FAILURE": {
+      "timeframe": "M5",
+      "pattern_class": "Regular two-candle engulf failure"
+    },
+    "R037-EGF-C04_M5_TYPE1_FAILURE": {
+      "timeframe": "M5",
+      "pattern_class": "Type-1 Regular two-candle sweep+engulf failure"
+    }
+  },
+  "proposal_timing": "First executable tick at/after completed failure-bar right edge.",
+  "execution": {
+    "spread_gate_points_max": 25,
+    "parent_same_tick_priority": true,
+    "blocked_event_deferred": false,
+    "one_position_at_a_time": true,
+    "lot": 0.01,
+    "stop_usd": 0.3,
+    "trail_activation_usd": 0.1,
+    "trail_distance_usd": 0.03,
+    "max_hold_seconds": 30,
+    "commission_round_trip_usd": 0.02
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "ticks": 4205709
+  },
+  "screen_gate": {
+    "reuse": "Frozen R037 independent-source Stage-A screen",
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "minimum_incremental_accepted_entries": 5,
+    "combined_trade_count_not_lower": true,
+    "winner_or_quality_gate": "official-win delta nonnegative OR positive net with improved gross loss",
+    "net_delta_min_usd": -2,
+    "max_balance_and_equity_dd_deterioration_pct": 1,
+    "strong_pass": "all gates plus net delta >= 0"
+  },
+  "forbidden": [
+    "engulf/failure rule retuning after result",
+    "pattern expiry tuning",
+    "timeframe additions",
+    "session filter",
+    "posthoc long/short split",
+    "posthoc merge",
+    "candidate-specific exit tuning",
+    "August",
+    "MQL5"
+  ],
+  "next_if_strong_pass": "R037_EGF_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_no_strong_pass": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
