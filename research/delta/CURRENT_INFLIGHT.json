@@ -1,20 +1,20 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "ACTIVE",
+  "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_SQUEEZE_RELEASE_MOMENTUM_STAGE_A_SCREEN",
-  "parent_durable_unit": "R037_CORB_STAGE_A_SCREEN_CHECKPOINT_17BB",
-  "phase": "PREREGISTERED",
-  "phase_rank": 1,
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "parent_durable_unit": "R037_SQRM_STAGE_A_SCREEN_CHECKPOINT_17BC",
+  "phase": "IDLE",
+  "phase_rank": 0,
   "progress": {
-    "status": "ACTIVE",
-    "last_completed": "R037_CORB_STAGE_A_SCREEN_CHECKPOINT_17BB",
-    "current_candidate": "R037-SQRM-v1",
-    "next": "Build and commit exact 17BC squeeze-release producer, then run Stage-A."
+    "status": "IDLE",
+    "last_completed": "R037_SQRM_STAGE_A_SCREEN_CHECKPOINT_17BC",
+    "current_candidate": null,
+    "next": "Harvest multi-stage price-structure source requiring confirmation beyond volatility release."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "SQRM 17BC prereg is durable at commit 991116acd193dfeb950772fac89f18c4fc2ef4b3. If producer absent, build/commit producer only.",
+    "resume_first_action": "SQRM 17BC complete and retired; do not rerun. Harvest next independent source.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
@@ -26,9 +26,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_CORB_STAGE_A_SCREEN_CHECKPOINT_17BB",
-    "checkpoint": "R037_CORB_STAGE_A_SCREEN_CHECKPOINT_17BB",
+    "unit": "R037_SQRM_STAGE_A_SCREEN_CHECKPOINT_17BC",
+    "checkpoint": "R037_SQRM_STAGE_A_SCREEN_CHECKPOINT_17BC",
     "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "manifest": "research/delta/artifacts/DELTA_R037_CORB_STAGE_A_SCREEN_CHECKPOINT_17BB_MANIFEST.json"
+    "manifest": "research/delta/artifacts/DELTA_R037_SQRM_STAGE_A_SCREEN_CHECKPOINT_17BC_MANIFEST.json"
   }
 }
