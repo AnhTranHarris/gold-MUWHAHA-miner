@@ -4,17 +4,17 @@
   "branch": "delta",
   "unit": "R037_PRICE_ACTION_FAST_HARVEST_17BE_17BG",
   "parent_durable_unit": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "phase": "RESULT_COMMITTED",
+  "phase_rank": 3,
   "progress": {
     "status": "ACTIVE",
     "last_completed": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
     "current_candidate": "R037-TBR-v1 / R037-PCR-v1 / R037-FAKEY-v1",
-    "next": "Execute exact committed fast-harvest producer under hard timeout; persist compact result immediately."
+    "next": "Persist batch report/workbook/manifest and advance cursor; then immediately harvest next continuation-biased source batch."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Producer is durable at commit beb578b4f94cc0123ef817eb0d0d195e20a5b0d0, blob d3d63f6ef21c57c9a1d3488766d49e4cc1025037. If result absent, execute exact producer only.",
+    "resume_first_action": "17BE-17BG compact result is durable at commit 133e456fc5997cf6f2dca0760b9ef271fd65244d. Do not rerun compute; resume report/workbook/manifest.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
@@ -40,6 +40,11 @@
       "path": "research/delta/experiments/delta_r037_price_action_fast_harvest_17be_17bg.py",
       "commit": "beb578b4f94cc0123ef817eb0d0d195e20a5b0d0",
       "blob_sha": "d3d63f6ef21c57c9a1d3488766d49e4cc1025037"
+    },
+    "result": {
+      "path": "research/delta/reference/DELTA_R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG.json",
+      "commit": "133e456fc5997cf6f2dca0760b9ef271fd65244d",
+      "sha256": "42d8511ec8077c196e69b2750438b3ac0a3c55244cc1e6663ee28a3e25b8aa8b"
     }
   }
 }
