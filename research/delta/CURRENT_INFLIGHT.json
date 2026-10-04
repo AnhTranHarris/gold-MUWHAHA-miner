@@ -13,7 +13,7 @@
   "producer": {
     "path": "research/delta/experiments/delta_r037_msf_stage_a.py",
     "commit": "f700029a41abda79c775327c5f8497d6b69c0404",
-    "file_sha256": "7fa7bad7daff3a106efc9ea327d38e8ade03cf70e84b01aa360eaa7c78e9e716"
+    "file_sha256": "4fbea383767200331138722bd27d0c83f3ee404a81468a26dbe2277c5521d7b4"
   },
   "result": {
     "path": "research/delta/reference/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E.json"
@@ -32,7 +32,8 @@
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
     "resume_first_action": "Verify committed MSF producer and prereg, then run exactly one official Stage-A replay if no committed 17E result exists.",
-    "idempotency_rule": "Prereg and producer immutable before compute; result create-only."
+    "idempotency_rule": "Prereg and producer immutable before compute; result create-only.",
+    "hash_reconciliation": "GitHub recovery snapshot git-blob 29ccec103226f3044a9fdb7f7213731ab1428dee exactly matched live GitHub producer blob; corrected stale precompute SHA-256 metadata before any official replay."
   },
   "last_verified_ci": {
     "commit": "bd96bd2f9c9723ca2491a2286e038243b006caa3",
