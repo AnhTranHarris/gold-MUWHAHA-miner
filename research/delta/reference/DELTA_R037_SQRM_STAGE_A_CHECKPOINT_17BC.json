@@ -1,0 +1,65 @@
+{
+  "schema": "delta-r037-sqrm-stage-a-screen-17bc-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_SQUEEZE_RELEASE_MOMENTUM_STAGE_A_SCREEN",
+  "family": "R037-SQRM-v1",
+  "parent_checkpoint": "R037_CORB_STAGE_A_SCREEN_CHECKPOINT_17BB",
+  "prereg_commit": "991116acd193dfeb950772fac89f18c4fc2ef4b3",
+  "producer_commit": "a1c2df997f884044e5e4b707e6b6c78052ebd08c",
+  "producer_blob": "d63e60cf8dff39a5d8ff334b6d5554828d85e15b",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "signal_surface": "NATIVE_DUKAS_M1_MID",
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "signal_definition": {
+    "bar_seconds": 60,
+    "length": 20,
+    "bollinger_std_multiplier": 2,
+    "keltner_range_multiplier": 1.5,
+    "release": "prior squeeze on/current off",
+    "direction": "detrended 20-bar linear-regression endpoint sign"
+  },
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "diagnostics": {
+    "m1_bars": 15180,
+    "squeeze_bars": 3284,
+    "release_signals": 445,
+    "signals_per_day": 31.785714285714285
+  },
+  "configs": {
+    "C01_M1_BBKC_RELEASE_LINREG_MOM": {
+      "metrics": {
+        "signals": 445,
+        "busy_skips": 0,
+        "spread_rejects": 0,
+        "trades": 445,
+        "distinct_days": 13,
+        "long": 219,
+        "short": 226,
+        "official_wins": 210,
+        "gross_profit": 45.09,
+        "gross_loss": -127.59,
+        "direct_net_usd": -86.95,
+        "exit_reasons": {
+          "STOP": 423,
+          "MAX_HOLD": 22,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_20": true,
+        "minimum_distinct_days_5": true,
+        "direct_net_min_minus_1": false,
+        "screen_pass": false,
+        "strong_pass": false
+      }
+    }
+  },
+  "finding": {
+    "leading_config": null,
+    "decision": "RETIRE_SQRM_STAGE_A_NO_EXECUTABLE_SURVIVOR",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "mql5_authorized": false
+}
