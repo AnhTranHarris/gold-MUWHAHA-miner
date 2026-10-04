@@ -1,0 +1,82 @@
+{
+  "schema": "delta-r037-price-action-fast-harvest-prereg-17be-17bg-v1",
+  "status": "PREREGISTERED",
+  "unit": "R037_PRICE_ACTION_FAST_HARVEST_17BE_17BG",
+  "parent_checkpoint": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
+  "purpose": "Fast causal prescreen of three fully reconstructible completed-bar price-action families selected for natural event selectivity and plausible immediate 30-second follow-through.",
+  "canonical_source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_window": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "frozen_execution": {
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01,
+    "one_position_at_a_time": true
+  },
+  "families": {
+    "17BE_TBR9_21": {
+      "family": "R037-TBR-v1",
+      "source_url": "https://www.tradingview.com/script/KzDji3Zt-Three-Bar-Reversal/",
+      "source_disclosure": "Open-source TradingView description explicitly recommends 1-minute for short scalps and, after the July 2024 update, requires EMA9>EMA21 for bullish reversals and EMA9<EMA21 for bearish reversals.",
+      "timeframe_seconds": 60,
+      "signal": {
+        "long": "Bar1 closes down; Bar2 low is below Bar1 and Bar3 lows; Bar3 closes above highs of Bar1 and Bar2; EMA9 > EMA21 on completed Bar3.",
+        "short": "Bar1 closes up; Bar2 high is above Bar1 and Bar3 highs; Bar3 closes below lows of Bar1 and Bar2; EMA9 < EMA21 on completed Bar3.",
+        "entry": "first executable P75 tick at/after completed Bar3 right edge"
+      }
+    },
+    "17BF_PCR": {
+      "family": "R037-PCR-v1",
+      "source_url": "https://www.tradingview.com/script/85lnEAlN-Pullback-Candle-Bullish-Bearish-No-EMA/",
+      "source_disclosure": "Open-source no-input TradingView pattern. M1 is a project-target adaptation, not claimed as a source default.",
+      "timeframe_seconds": 60,
+      "signal": {
+        "long": "Three successively lower closes across Bars3->2->1; current completed bar closes above Bar1; one of Bar1/current has the lowest low of the trailing six completed bars.",
+        "short": "Three successively higher closes across Bars3->2->1; current completed bar closes below Bar1; one of Bar1/current has the highest high of the trailing ten completed bars.",
+        "entry": "first executable P75 tick at/after completed current-bar right edge"
+      }
+    },
+    "17BG_FAKEY": {
+      "family": "R037-FAKEY-v1",
+      "source_url": "https://www.forexfactory.com/thread/635859-day-trade-setup?page=86",
+      "source_disclosure": "ForexFactory rule description: Mother Bar, fully contained Inside Bar, third bar breaks one Mother-Bar wick, fourth bar exceeds the opposite Mother-Bar wick revealing the fake break. XAUUSD M5 examples are present in the same discussion.",
+      "timeframe_seconds": 300,
+      "signal": {
+        "long": "Mother Bar; next bar fully inside; third bar breaks below Mother low without opposite break; fourth completed bar breaks above Mother high.",
+        "short": "Mother Bar; next bar fully inside; third bar breaks above Mother high without opposite break; fourth completed bar breaks below Mother low.",
+        "entry": "first executable P75 tick at/after completed fourth-bar right edge"
+      }
+    }
+  },
+  "gates": {
+    "minimum_trades": 20,
+    "minimum_distinct_days": 5,
+    "ordinary_direct_net_usd": -1,
+    "strong_direct_net_usd": 0
+  },
+  "selection_rule": "Any family that passes minimum supply/day and direct-net gate freezes unchanged for independent later-January validation. A family that fails is retired without Stage-A rescue.",
+  "prohibited": [
+    "timeframe sweep",
+    "EMA-length sweep",
+    "pattern relaxation",
+    "session/side/weekday rescue",
+    "extra confirmation overlay",
+    "exit retuning",
+    "post-result threshold tuning",
+    "August access",
+    "MQL5 translation"
+  ],
+  "timeout_safety": {
+    "producer_must_be_committed_before_compute": true,
+    "exact_git_blob_preexecution_verification": true,
+    "hard_timeout_seconds": 120,
+    "atomic_result_write": true,
+    "phase_checkpoint_after_each_durable_step": true
+  },
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
