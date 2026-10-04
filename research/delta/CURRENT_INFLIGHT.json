@@ -1,42 +1,25 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "COMPLETE",
+  "status": "IN_PROGRESS",
   "branch": "delta",
-  "unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION",
-  "parent_durable_unit": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A",
-  "phase": "COMPLETE",
-  "phase_rank": 7,
+  "unit": "R037_PREVIOUS_LIQUIDITY_SWEEP_RECLAIM_STAGE_A_SCREEN",
+  "parent_durable_unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B",
+  "phase": "PRODUCER_COMMITTED",
+  "phase_rank": 2,
   "prereg": {
-    "path": "research/delta/reference/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_EVIDENCE_15B.json",
-    "blob_sha": "b28b55f7acfc9dcbfe4424cce8acd58e4d1bd90e"
+    "path": "research/delta/reference/DELTA_R037_PLSR_STAGE_A_EVIDENCE_16A.json"
   },
   "producer": {
-    "path": "research/delta/experiments/delta_r037_sorb_c04_dual30_independent_validation.py",
-    "commit": "10bd1f16f3f4757b652cfe50bc90dab920f134cf",
-    "blob_sha": "87787466855efb1bc5a0602b195299380037e700",
-    "sha256": "560a7e2c8802ab9a14891d2f008efb0fbb9da0c6f68abee02791a708329ac8bd"
+    "path": "research/delta/experiments/delta_r037_plsr_stage_a.py",
+    "commit": "2d501788374f69a2eb3c67b0c4eabac2cfb97374",
+    "blob_sha": "294d47ad452273ba6e0210906c7747a2342f12b9"
   },
-  "result": {
-    "path": "research/delta/reference/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B.json",
-    "commit": "a4828ee6484bc9cd631fdf9038ac16680d9cf366",
-    "local_raw_result_sha256": "334cc40a6a121acfc002bedeb4e7bf5401b92a14b1912cc3185719ca2b8488cb",
-    "deterministic_replay": true,
-    "independent_validation_pass": false,
-    "net_delta_usd": -5.25,
-    "trade_delta": 15,
-    "official_win_delta": 4
-  },
-  "report": {
-    "path": "research/delta/research/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B.md",
-    "blob_sha": "7cd5ccc861e2da2b671ba29a2b0e9cabbfd2c897"
-  },
-  "manifest": {
-    "path": "research/delta/artifacts/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B_MANIFEST.json",
-    "commit": "50fc9347977c82c071a45bc033b3e88b5708e18b"
-  },
+  "result": null,
+  "report": null,
+  "manifest": null,
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "15B is complete. Read CURRENT_STATE.json; continue only R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_AND_STAGE_A_PREREGISTRATION. Do not rerun 15A or 15B.",
+    "resume_first_action": "Verify 16A producer blob and result path. If no result exists, run committed PLSR 16A producer only. Do not rerun 15B.",
     "idempotency_rule": "Never rerun completed compute solely because chat delivery timed out."
   },
   "last_verified_ci": {

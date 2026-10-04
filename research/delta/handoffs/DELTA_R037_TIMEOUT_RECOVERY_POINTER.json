@@ -20,25 +20,24 @@
     "current_state_ci_conclusion": "PENDING"
   },
   "in_flight_unit": {
-    "unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION",
-    "status": "COMPLETE",
-    "phase_rank": 7,
-    "parent_durable_unit": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A",
+    "unit": "R037_PREVIOUS_LIQUIDITY_SWEEP_RECLAIM_STAGE_A_SCREEN",
+    "status": "IN_PROGRESS",
+    "phase_rank": 2,
+    "parent_durable_unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B.json",
-        "blob_sha": "75e1a8df7b022fcb01c4de03c2e04be623707e76"
+        "path": "research/delta/reference/DELTA_R037_PLSR_STAGE_A_EVIDENCE_16A.json"
       },
       {
-        "path": "research/delta/research/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B.md",
-        "blob_sha": "7cd5ccc861e2da2b671ba29a2b0e9cabbfd2c897"
+        "path": "research/delta/research/DELTA_R037_PLSR_STAGE_A_PREREG_16A.md"
       },
       {
-        "path": "research/delta/artifacts/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B_MANIFEST.json",
-        "commit": "50fc9347977c82c071a45bc033b3e88b5708e18b"
+        "path": "research/delta/experiments/delta_r037_plsr_stage_a.py",
+        "commit": "2d501788374f69a2eb3c67b0c4eabac2cfb97374",
+        "blob_sha": "294d47ad452273ba6e0210906c7747a2342f12b9"
       }
     ],
-    "next_action": "Continue R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_AND_STAGE_A_PREREGISTRATION; SORB C04 is retired and must not be retuned or reopened."
+    "next_action": "Run committed PLSR 16A producer on canonical Stage-A. If result already exists after timeout, verify and continue durability steps only."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
