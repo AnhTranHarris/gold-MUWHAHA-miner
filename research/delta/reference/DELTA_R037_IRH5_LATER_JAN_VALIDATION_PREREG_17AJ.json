@@ -1,0 +1,43 @@
+{
+  "schema": "delta-r037-irh5-later-jan-prereg-v1",
+  "unit": "R037_IRH_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+  "candidate": "R037-IRH-C01_VCE_C03_IRH5",
+  "status": "PREREGISTERED_BEFORE_OFFICIAL_COMPUTE",
+  "parent_checkpoint": "R037_IRH_INITIAL_HOLD_REFINEMENT_PRESCREEN_17AI",
+  "holdout": {
+    "warmup_start_utc": "2026-01-01T00:00:00Z",
+    "entry_start_utc": "2026-01-18T12:00:00Z",
+    "end_utc_exclusive": "2026-02-01T00:00:00Z"
+  },
+  "frozen_logic": {
+    "entry_source": "R037-VCE-C03_BBKC_RELEASE unchanged: M5 BB20/2 inside KC EMA20 +/-1.5 ATR20, then release and completed close beyond KC",
+    "initial_hold": "5-second zero-favorable-excursion invalidation; protective stop first; if any positive executable favorable excursion occurs by 5s, original stop/trail/30s lifecycle continues unchanged",
+    "spread_gate_points_max": 25,
+    "stop_usd": 0.3,
+    "trail_activation_usd": 0.1,
+    "trail_distance_usd": 0.03,
+    "max_hold_seconds": 30,
+    "commission_round_trip_usd": 0.02,
+    "numeric_retuning": false
+  },
+  "gate": {
+    "minimum_trades": 5,
+    "direct_net_nonnegative": true,
+    "official_win_rate_min": 0.5,
+    "irh5_must_outperform_same_entry_source_base_net": true,
+    "irh5_gross_loss_not_worse_than_base": true,
+    "strong_pass": "all gates"
+  },
+  "forbidden": [
+    "deadline retuning",
+    "entry threshold retuning",
+    "session/side/weekday filter",
+    "profit target change",
+    "August",
+    "MQL5"
+  ],
+  "if_pass_next": "R037_IRH5_MONTH_BY_MONTH_VALIDATION",
+  "if_fail_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
