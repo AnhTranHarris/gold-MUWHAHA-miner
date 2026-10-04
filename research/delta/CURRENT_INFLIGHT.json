@@ -1,21 +1,21 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "ACTIVE",
+  "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_DIRECTIONAL_CHANGE_OVERSHOOT_STAGE_A_SCREEN",
-  "parent_durable_unit": "R037_QRBM_STAGE_A_SCREEN_CHECKPOINT_17AV",
-  "phase": "PRODUCER_VERIFIED",
-  "phase_rank": 3,
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "parent_durable_unit": "R037_DCOS_STAGE_A_SCREEN_CHECKPOINT_17AW",
+  "phase": "IDLE",
+  "phase_rank": 0,
   "progress": {
-    "status": "ACTIVE",
-    "last_completed": "R037_QRBM_STAGE_A_SCREEN_CHECKPOINT_17AV",
-    "current_candidate": "R037-DCOS-v1",
-    "next": "Run official DCOS Stage-A compute with exact producer blob 3ab76ce6a215da928132de02a30d5da135e4dd8b under 120-second timeout."
+    "status": "IDLE",
+    "last_completed": "R037_DCOS_STAGE_A_SCREEN_CHECKPOINT_17AW",
+    "current_candidate": null,
+    "next": "Harvest next independent sparse entry source with demonstrable post-event residual asymmetry."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "DCOS 17AW producer is byte-verified: commit 02e016d5acce736ee9695cf2a4ad3c67cc902b1b, blob 3ab76ce6a215da928132de02a30d5da135e4dd8b, local SHA-256 fb8378a2c62943b878e24eef01f1f6adffe99db2157a1d2eb7f0970f4e1007d0. If result absent, run official compute only.",
-    "idempotency_rule": "Resume first missing committed phase; never duplicate durable compute after transport timeout."
+    "resume_first_action": "DCOS 17AW is complete and retired; do not rerun. Harvest the next independent entry source.",
+    "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
     "commit": "164d20b91718a6bb84746350ba2a26b5c9a92ccb",
@@ -26,9 +26,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_QRBM_STAGE_A_SCREEN_CHECKPOINT_17AV",
-    "checkpoint": "R037_QRBM_STAGE_A_SCREEN_CHECKPOINT_17AV",
+    "unit": "R037_DCOS_STAGE_A_SCREEN_CHECKPOINT_17AW",
+    "checkpoint": "R037_DCOS_STAGE_A_SCREEN_CHECKPOINT_17AW",
     "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "manifest": "research/delta/artifacts/DELTA_R037_QRBM_STAGE_A_SCREEN_CHECKPOINT_17AV_MANIFEST.json"
+    "manifest": "research/delta/artifacts/DELTA_R037_DCOS_STAGE_A_SCREEN_CHECKPOINT_17AW_MANIFEST.json"
   }
 }
