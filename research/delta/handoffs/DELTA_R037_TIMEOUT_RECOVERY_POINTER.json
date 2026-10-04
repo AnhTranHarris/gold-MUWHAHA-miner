@@ -12,26 +12,26 @@
   ],
   "durable_cursor": {
     "last_verified_durable_unit": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_CHECKPOINT_17AA",
-    "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
-    "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "current_phase": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_17AB_INFLIGHT",
+    "first_incomplete_unit": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_17AB",
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_CHECKPOINT_17AA_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "IDLE",
-    "phase_rank": 0,
+    "unit": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_17AB",
+    "status": "PRODUCER_COMMITTED",
+    "phase_rank": 2,
     "parent_durable_unit": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_CHECKPOINT_17AA",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_CHECKPOINT_17AA.json",
-        "commit": "3b4ad091ec9b2f371758834297722531eff56232"
+        "path": "research/delta/reference/DELTA_R037_LONDON_15M_OPENING_RANGE_PREREG_17AB.json",
+        "commit": "4f2ebf9de9ed6fd164013e87daaa0099581e0ce7"
       },
       {
-        "path": "research/delta/artifacts/DELTA_R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_CHECKPOINT_17AA_MANIFEST.json",
-        "commit": "161b327550a6fcfae3f38e22578ab1ac5560c41b"
+        "path": "research/delta/experiments/delta_r037_london_15m_opening_range_17ab.py",
+        "commit": "26a20ec154f33bc71dfd48f8cc20fd167dedee04"
       }
     ],
-    "next_action": "Preregister next unique independent source; 17AA is complete.",
+    "next_action": "Run exact committed 17AB producer once; if result appears, resume only missing durability phases.",
     "completed_months": [
       "2026-01_STAGE_A"
     ],
