@@ -15,35 +15,24 @@
     "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
     "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B_MANIFEST.json",
-    "current_state_commit": null,
-    "current_state_ci_run": null,
-    "current_state_ci_conclusion": "PENDING"
+    "current_state_commit": "270e21bbdd6799caabde7d68e3f8b9bba64384e2",
+    "current_state_ci_run": 37175189616,
+    "current_state_ci_conclusion": "success"
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "COMPLETE",
-    "phase_rank": 7,
-    "parent_durable_unit": "R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A",
+    "status": "PRODUCER_COMMITTED",
+    "phase_rank": 2,
+    "parent_durable_unit": "R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_DCB_SOURCE_HARVEST_PREREG_17B.json"
+        "path": "research/delta/reference/DELTA_R037_RSI2_SOURCE_HARVEST_PREREG_17C.json"
       },
       {
-        "path": "research/delta/experiments/delta_r037_dcb_stage_a.py",
-        "sha256": "e1440f9d68e47cef3ee7820f85ef502e7eb3e9651fbdc00af51293c71b95d6da"
-      },
-      {
-        "path": "research/delta/reference/DELTA_R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B.json",
-        "raw_sha256": "31aed2ce69af15cfb7c7e77c1dce639d5e4ae40a05f038aac775ff6be80ceb11"
-      },
-      {
-        "path": "research/delta/research/DELTA_R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B.md"
-      },
-      {
-        "path": "research/delta/artifacts/DELTA_R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B_MANIFEST.json"
+        "path": "research/delta/experiments/delta_r037_rsi2_stage_a.py"
       }
     ],
-    "next_action": "Start fresh public/community scan for next structurally independent entry source; preregister the next family before compute.",
+    "next_action": "Verify the committed RSI2 17C producer bytes and run Stage-A once on canonical January P75; persist result before interpretation.",
     "completed_months": [],
     "next_month": null
   },

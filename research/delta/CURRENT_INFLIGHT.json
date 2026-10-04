@@ -1,36 +1,33 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "COMPLETE",
+  "status": "INFLIGHT",
   "branch": "delta",
   "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-  "parent_durable_unit": "R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A",
-  "phase": "COMPLETE",
-  "phase_rank": 7,
+  "parent_durable_unit": "R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B",
+  "phase": "PRODUCER_COMMITTED",
+  "phase_rank": 2,
   "prereg": {
-    "path": "research/delta/reference/DELTA_R037_DCB_SOURCE_HARVEST_PREREG_17B.json"
+    "path": "research/delta/reference/DELTA_R037_RSI2_SOURCE_HARVEST_PREREG_17C.json"
   },
   "producer": {
-    "path": "research/delta/experiments/delta_r037_dcb_stage_a.py",
-    "sha256": "e1440f9d68e47cef3ee7820f85ef502e7eb3e9651fbdc00af51293c71b95d6da"
+    "path": "research/delta/experiments/delta_r037_rsi2_stage_a.py"
   },
-  "result": {
-    "path": "research/delta/reference/DELTA_R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B.json",
-    "raw_sha256": "31aed2ce69af15cfb7c7e77c1dce639d5e4ae40a05f038aac775ff6be80ceb11"
-  },
-  "report": {
-    "path": "research/delta/research/DELTA_R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B.md"
-  },
-  "manifest": {
-    "path": "research/delta/artifacts/DELTA_R037_DCB_STAGE_A_SCREEN_CHECKPOINT_17B_MANIFEST.json"
-  },
+  "result": null,
+  "report": null,
+  "manifest": null,
   "progress": {
-    "family": "R037-DCB-v1",
-    "status": "COMPLETE_NO_SCREEN_SURVIVOR_FAMILY_RETIRED",
-    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+    "family": "R037-RSI2-v1",
+    "configs": [
+      "R037-RSI2-C01_M1_CLASSIC_TREND200",
+      "R037-RSI2-C02_M1_PULLBACK3_TREND200",
+      "R037-RSI2-C03_M5_CLASSIC_TREND200",
+      "R037-RSI2-C04_M5_PULLBACK3_TREND200"
+    ],
+    "status": "PREREG_AND_PRODUCER_FROZEN_OFFICIAL_COMPUTE_NEXT"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Do not rerun DCB 17B. Start a fresh public/community scan for the next structurally independent entry source, then preregister before producer compute.",
+    "resume_first_action": "Verify committed RSI2 17C producer and run Stage-A once. If result exists, do not rerun.",
     "idempotency_rule": "Prereg and producer immutable before compute; result create-only."
   },
   "last_verified_ci": {
