@@ -1,0 +1,66 @@
+{
+  "schema": "delta-r037-pdsm-fast-prescreen-v1",
+  "status": "COMPLETE_FAST_CAUSAL_PRESCREEN_RETIRE_SUPPLY_FAIL",
+  "unit": "R037_PDSM_FAST_PRESCREEN",
+  "family": "R037-PDSM-v1",
+  "prereg_path": "research/delta/reference/DELTA_R037_PDSM_SOURCE_HARVEST_PREREG_17J.json",
+  "prereg_commit": "d59e59da8b06cfb4848473435deb76b5dc130300",
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_pdsm_fast_prescreen.py",
+    "commit": "4b3cfeea592a12e87adbe751b7f54621bb637b9f",
+    "blob_sha": "53eab3ddc52803370de0eba44e24559f15d19049",
+    "file_sha256": "9746d1e3fe9d21daa34293a5d13db4617ffe57448272e2d43455ef1bd306a5e4"
+  },
+  "official_compute": {
+    "runtime_seconds": 10.162,
+    "exit_code": 0,
+    "raw_result_sha256": "9353d822b3fdea71d6b95b7112c4326dc6d9f5e977278a1ecedee4fa9bf7d33f"
+  },
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "configs": {
+    "R037-PDSM-C01_M1_BODY_TOUCH": {
+      "proposals": 0,
+      "trades": 0,
+      "official_wins": 0,
+      "direct_net_usd": 0,
+      "distinct_days": 0,
+      "fast_screen_pass": false
+    },
+    "R037-PDSM-C02_M1_MIDPOINT": {
+      "proposals": 0,
+      "trades": 0,
+      "official_wins": 0,
+      "direct_net_usd": 0,
+      "distinct_days": 0,
+      "fast_screen_pass": false
+    },
+    "R037-PDSM-C03_M5_BODY_TOUCH": {
+      "proposals": 2,
+      "trades": 2,
+      "official_wins": 1,
+      "direct_net_usd": 0.06,
+      "distinct_days": 2,
+      "fast_screen_pass": false
+    },
+    "R037-PDSM-C04_M5_MIDPOINT": {
+      "proposals": 0,
+      "trades": 0,
+      "official_wins": 0,
+      "direct_net_usd": 0,
+      "distinct_days": 0,
+      "fast_screen_pass": false
+    }
+  },
+  "finding": {
+    "leading_config": "R037-PDSM-C03_M5_BODY_TOUCH",
+    "interpretation": "Full prior-day sweep -> frozen local MSS -> OB retest chain is far too sparse for Stage-A. Slightly positive 2-trade M5 subset is invalid supply.",
+    "decision": "RETIRE_R037_PDSM_NO_RETUNE",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "numeric_retuning": false,
+  "post_result_retuning": false,
+  "august_accessed": false,
+  "mql5_authorized": false
+}
