@@ -21,8 +21,8 @@
   },
   "in_flight_unit": {
     "unit": "R037_PLSR_C01_MONTH_BY_MONTH_SURROGATE_VALIDATION",
-    "status": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
+    "status": "MONTHLY_COMPUTE_COMPLETE_AGGREGATION_PENDING",
+    "phase_rank": 3,
     "parent_durable_unit": "R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B",
     "committed_artifacts": [
       {
@@ -35,15 +35,16 @@
         "blob_sha": "46d01ab6800eabb3c2f0a87d71ee999ac03eeba6"
       }
     ],
-    "next_action": "February-June are committed. Run only July 2026 next; persist July before aggregate 16C closeout.",
+    "next_action": "All February-July month results are committed. Aggregate/close 16C only; do not rerun monthly compute.",
     "completed_months": [
       "2026-02",
       "2026-03",
       "2026-04",
       "2026-05",
-      "2026-06"
+      "2026-06",
+      "2026-07"
     ],
-    "next_month": "2026-07"
+    "next_month": null
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
