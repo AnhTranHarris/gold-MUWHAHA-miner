@@ -1,0 +1,62 @@
+{
+  "schema": "delta-r037-ier-stage-a-screen-17bd-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_IMPULSE_EXHAUSTION_REVERSAL_STAGE_A_SCREEN",
+  "family": "R037-IER-v1",
+  "parent_checkpoint": "R037_SQRM_STAGE_A_SCREEN_CHECKPOINT_17BC",
+  "prereg_commit": "9f4c17f6f9247f6bf492bfe39922fc0437aa69a7",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "signal_surface": "NATIVE_DUKAS_M5_MID",
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "signal_definition": {
+    "bar_seconds": 300,
+    "range_lookback_bars": 20,
+    "impulse_range_multiple": 1.5,
+    "minimum_body_fraction": 0.7,
+    "confirmation": "opposite next bar closes beyond impulse body"
+  },
+  "numeric_retuning": false,
+  "source_defaults_incomplete": true,
+  "august_accessed": false,
+  "diagnostics": {
+    "m5_bars": 3036,
+    "signals": 5,
+    "signals_per_day": 0.35714285714285715
+  },
+  "configs": {
+    "C01_M5_IMPULSE_EXHAUSTION_REVERSAL": {
+      "metrics": {
+        "signals": 5,
+        "busy_skips": 0,
+        "spread_rejects": 0,
+        "trades": 5,
+        "distinct_days": 5,
+        "long": 2,
+        "short": 3,
+        "official_wins": 4,
+        "gross_profit": 1.07,
+        "gross_loss": 0.0,
+        "direct_net_usd": 1.02,
+        "exit_reasons": {
+          "STOP": 5,
+          "MAX_HOLD": 0,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_20": false,
+        "minimum_distinct_days_5": true,
+        "direct_net_min_minus_1": true,
+        "screen_pass": false,
+        "strong_pass": false
+      }
+    }
+  },
+  "finding": {
+    "leading_config": null,
+    "decision": "RETIRE_IER_STAGE_A_NO_EXECUTABLE_SURVIVOR",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "mql5_authorized": false
+}
