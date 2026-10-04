@@ -1,0 +1,70 @@
+{
+  "schema": "delta-r037-etp-source-harvest-prereg-v1",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "checkpoint_target": "R037_ETP_STAGE_A_PRESCREEN_CHECKPOINT_17K",
+  "family": "R037-ETP-v1",
+  "status": "FROZEN_BEFORE_STAGE_A_REPLAY",
+  "parent_checkpoint": "R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I",
+  "purpose": "Fast causal source pre-screen of EMA trend-pullback/reclaim grammars before expensive parent integration.",
+  "source_basis": [
+    {
+      "source": "TradingView open source — XAUUSD Multi-TF Buy/Sell INSTANT",
+      "url": "https://www.tradingview.com/script/BzWLdfYr-XAUUSD-Multi-TF-Buy-Sell-INSTANT-1m-1H/",
+      "logic": "Gold trend filter uses EMA 9/21 alignment with closed-bar confirmation."
+    },
+    {
+      "source": "TradingView open source — Gold Pullback Strategy",
+      "url": "https://www.tradingview.com/script/gofnAfR7/",
+      "logic": "Gold M5/M15 pullback framework uses EMA21 as continuation reference."
+    },
+    {
+      "source": "TradingView open source — VWAP + EMA9/EMA21 Pullback Scalper",
+      "url": "https://www.tradingview.com/script/Zdz7QFNM-VWAP-EMA9-EMA21-Pullback-Scalper/",
+      "logic": "Trend bias then pullback to fast EMA and close-based reclaim trigger."
+    },
+    {
+      "source": "MetaQuotes — Market Microstructure Part 9: Pullback Quality",
+      "url": "https://www.mql5.com/en/articles/23628",
+      "logic": "Closed-bar EMA alignment identifies micro-trend before measuring pullback quality."
+    }
+  ],
+  "configs": {
+    "C01_M1_EMA9_21_RECLAIM": "M1 EMA9>EMA21 long / inverse short; bar touches EMA9 and closes back beyond EMA9 in trend direction.",
+    "C02_M5_EMA9_21_M1_EMA9_RECLAIM": "M5 EMA9/21 provides direction; M1 touches and reclaims M1 EMA9 in same direction.",
+    "C03_M5_EMA20_50_M1_EMA20_RECLAIM": "M5 EMA20/50 provides direction; M1 touches and reclaims M1 EMA20.",
+    "C04_M5_EMA9_21_STRONG_RECLAIM": "As C02 plus reclaim candle body is at least half of its full M1 range and directional."
+  },
+  "execution": {
+    "spread_gate_points_max": 25,
+    "one_position_at_a_time": true,
+    "lot": 0.01,
+    "stop_usd": 0.3,
+    "trail_activation_usd": 0.1,
+    "trail_distance_usd": 0.03,
+    "max_hold_seconds": 30,
+    "commission_round_trip_usd": 0.02
+  },
+  "stage_a_window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "ticks": 4205709
+  },
+  "prescreen_gate": {
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "minimum_executed_trades": 5,
+    "direct_net_min_usd": -2
+  },
+  "forbidden": [
+    "parameter sweep",
+    "posthoc side split",
+    "session rescue",
+    "exit tuning",
+    "August",
+    "MQL5"
+  ],
+  "next_if_pass": "R037_ETP_FULL_PARENT_STAGE_A_SCREEN",
+  "next_if_fail": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
