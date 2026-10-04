@@ -1,0 +1,186 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_CHECKPOINT_14B",
+  "status": "VERIFIED_RESEARCH_COMPLETE_PENDING_STATE_ADVANCE",
+  "date_utc": "2026-10-03",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A",
+  "hypothesis": "After four independent provenance freezes and 14A scheduler localization, the unresolved R032 specialist-parent residual is no longer reconstructible from surviving source evidence without retrospective fitting; research may continue only through a clearly non-promoting surrogate-parent candidate lane.",
+  "falsification_condition": "An independent source-grounded historical timing/ownership semantic survives that was not already tested/frozen, or 14A did not actually localize the residual away from the exact ordinary backbone.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Four frozen specialist provenance streams plus 14A integrated parent",
+    "reference_count": 4,
+    "minimum_count": 4,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Decision/provenance unit only; no candidate promotion or trade-count optimization."
+  },
+  "primary_metrics": {
+    "entry_quality": "Not optimized; provenance/readiness decision only.",
+    "hold_persistence": "Not optimized.",
+    "economics": "14A residual used diagnostically; no economic promotion.",
+    "gross_loss_drawdown": "Not optimized.",
+    "activity": "Historical specialist ownership residual and provenance availability."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_r032_specialist_parent_provenance_sorb_readiness_decision.py",
+      "commit": "399ce49bca5baf02963fde9ed7e9e7961859eea4",
+      "blob_sha": "23ed87f6b424b0632477de6fbc5378ecf8ae29ed",
+      "sha256": "62bcbd79b06467267bc08263e1a1c1c2e44c85983a78b9c09262a1d8a62c3dca"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "numeric_retuning": false,
+      "exact_historical_parent_parity": false,
+      "leading_scheduler": "BACKBONE_FIRST_FLAT_ONLY_CONFIG_ORDER",
+      "surrogate_parent": "14A_BACKBONE_FIRST_C03_WITH_FROZEN_PROVENANCE_LIMITED_SPECIALISTS",
+      "surrogate_lane_promotable": false,
+      "official_exact_parent_sorb_lane": "BLOCKED"
+    },
+    "feature_order": [
+      "10F DH05 provenance freeze",
+      "11G S11 provenance freeze",
+      "12C S08 provenance freeze",
+      "13H DH03 provenance freeze",
+      "14A integrated residual",
+      "14B readiness decision"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Provenance decision; no parameter fitting."
+    },
+    "runtime_dependencies": [
+      "Python 3.11"
+    ],
+    "crash_safety": {
+      "bounded_runner_timeout_seconds": 120,
+      "atomic_result_write": true,
+      "exact_git_blob_preexecution_verification": true,
+      "current_inflight_cursor": true,
+      "timeout_recovery_pointer": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "14B durable evidence",
+      "path": "research/delta/reference/DELTA_R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_SORB_READINESS_EVIDENCE_14B.json",
+      "blob_sha": "b18e5e5a93f552e04f99d4942ac29f66b2817300",
+      "sha256": "e3703f0caf1f64711d9fdaeaf54ce14dcaf673e3c5e323d013032bfb1cb3b83c"
+    },
+    {
+      "name": "Checkpoint 14A",
+      "path": "research/delta/reference/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A.json"
+    },
+    {
+      "name": "Frozen provenance decisions",
+      "checkpoints": [
+        "10F",
+        "11G",
+        "12C",
+        "13H"
+      ]
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "No raw tick replay; decision consumed only durable checkpoint evidence."
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_DECISION_CHECKPOINT_14B.json",
+      "blob_sha": "b60c8b45588483ebbb6af59e4d9726456898acdd",
+      "result_sha256": "c7df97c98589b42beff7d7ce5d53c176d434fe6dda5b9fb0499c65dae0bf17fe"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_CHECKPOINT_14B.md",
+      "blob_sha": "7736ddc06f0acbb283b9b4b1098760d32cd2ba56"
+    }
+  ],
+  "qa": [
+    "All four specialist provenance decisions independently prohibit further same-sample recuts.",
+    "14A exact ordinary backbone remains the hard control.",
+    "14A leading scheduler remains BACKBONE_FIRST_FLAT_ONLY_CONFIG_ORDER.",
+    "14A residual is concentrated in unavailable specialist timing/ownership provenance, especially S11/S08 over-admission.",
+    "Official decision producer and evidence bytes matched committed Git blobs before official run.",
+    "Official bounded decision completed exit 0 in 0.618 seconds.",
+    "Official result SHA-256 = c7df97c98589b42beff7d7ce5d53c176d434fe6dda5b9fb0499c65dae0bf17fe.",
+    "Workbook tab 75 A511:H521 written and read back.",
+    "Exact historical parent parity remains unclaimed.",
+    "Official exact-parent SORB lane remains blocked.",
+    "Non-promoting surrogate-parent SORB Stage-A candidate screen authorized.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_r032_specialist_parent_provenance_sorb_readiness_decision.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python -X faulthandler research/delta/experiments/delta_r037_r032_specialist_parent_provenance_sorb_readiness_decision.py --evidence research/delta/reference/DELTA_R037_R032_SPECIALIST_PARENT_RESIDUAL_PROVENANCE_SORB_READINESS_EVIDENCE_14B.json --output <14b_result_json>",
+    "timing_semantics": "No raw tick replay in 14B; all inputs are durable provenance/14A fingerprints.",
+    "expected_fingerprints": {
+      "c00_specialist_entry_gap": -19,
+      "s11_increment_gap": 30,
+      "s08_increment_gap": 25,
+      "c03_increment_gap": 54,
+      "c03_total_trade_gap": 166,
+      "c03_official_win_gap": 18,
+      "c03_net_gap": -102.78
+    },
+    "decision": "FREEZE_PROVENANCE_LIMITED_PARENT_AND_AUTHORIZE_NON_PROMOTING_SORB_SURROGATE_LANE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — provenance-limited research surrogate only",
+    "feature_timing_spec": "NOT READY",
+    "state_machine_spec": "NOT READY",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA semantics",
+    "ownership_scheduler_spec": "14A BACKBONE_FIRST scheduler is surrogate research hypothesis only",
+    "session_dst_spec": "frozen DELTA 2026 sessions",
+    "risk_spec": "fixed 0.01 research semantics",
+    "trade_count_parity_spec": "Exact historical parent parity unresolved and frozen as provenance-limited.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "supersedes": [],
+  "rollback_target": "R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A",
+  "github_commits": [
+    "399ce49bca5baf02963fde9ed7e9e7961859eea4",
+    "af7e30c67e0f5005a64da99cd9a6b569d34b3458",
+    "2f280fd217905e152019fa0a8ecc77fac8ea3c73",
+    "1369c27c440d64520d7f382aa85c193cb10bd939",
+    "c8704c9bb3de4411353b07440c909e3e27bbbe44"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "75 R037 DH05 Episode QA",
+      "range": "A511:H521",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN"
+}
