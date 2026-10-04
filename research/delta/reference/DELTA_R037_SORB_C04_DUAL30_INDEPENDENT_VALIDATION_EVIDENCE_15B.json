@@ -1,0 +1,63 @@
+{
+  "schema": "delta-r037-sorb-c04-dual30-independent-validation-evidence-15b-v1",
+  "unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION",
+  "parent_checkpoint": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A",
+  "lane": "NON_PROMOTING_SURROGATE_PARENT_INDEPENDENT_VALIDATION",
+  "candidate": "R037-C04_DUAL_30",
+  "candidate_freeze": {
+    "sessions": [
+      "LONDON",
+      "COMEX_GOLD"
+    ],
+    "range_minutes": 30,
+    "confirm_closes": 1,
+    "expiry_minutes": 120,
+    "first_confirmation_consumes_session": true,
+    "spread_gate_points_max": 25,
+    "parent_same_tick_priority": true,
+    "one_position_at_a_time": true,
+    "blocked_event_deferred": false,
+    "sorb_rearm": false,
+    "stop_usd": 0.3,
+    "trail_activation_usd": 0.1,
+    "trail_distance_usd": 0.03,
+    "max_hold_seconds": 30,
+    "lot": 0.01
+  },
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "warmup_window": {
+    "start_utc": "2026-01-14T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "role": "indicator/state warmup only; no economic entries permitted"
+  },
+  "holdout_window": {
+    "start_utc": "2026-01-18T12:00:00Z",
+    "end": "final observed January tick",
+    "precedent": "DELTA R034 later-January OOS convention",
+    "pristine_rule": "No threshold/configuration changes after observing holdout outcome."
+  },
+  "validation_rules": {
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "minimum_incremental_accepted_entries": 5,
+    "combined_trade_count_not_lower": true,
+    "winner_count_not_lower_unless_net_and_gross_loss_both_improve": true,
+    "maximum_net_worsening_usd": 2,
+    "maximum_balance_and_equity_dd_deterioration_pct": 1,
+    "strong_requires_nonnegative_incremental_net": true,
+    "independent_validation_pass_requires_strong_screen_pass": true,
+    "final_position_must_be_flat": true
+  },
+  "hard_gates": {
+    "frozen_specialist_generators": true,
+    "numeric_retuning": false,
+    "no_stage_a_reselection": true,
+    "no_holdout_threshold_search": true,
+    "august_2026": "SEALED",
+    "mql5_authorized": false,
+    "surrogate_parent_promotable": false
+  },
+  "next_if_pass": "R037_SORB_C04_DUAL30_CROSS_MONTH_SURROGATE_VALIDATION",
+  "next_if_fail": "RETIRE_SORB_C04_AND_HARVEST_NEXT_INDEPENDENT_ENTRY_SOURCE"
+}
