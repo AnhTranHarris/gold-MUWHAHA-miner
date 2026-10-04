@@ -1,0 +1,221 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F",
+  "status": "VERIFIED_NO_SCREEN_SURVIVOR_FAMILY_RETIRED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E",
+  "hypothesis": "A wick-only failure through a causally confirmed local swing followed by a completed close back inside can time immediate reversal entries under the frozen 30-second hold.",
+  "falsification_condition": "No preregistered M1/M5 basic or reversal-half SFP passes the frozen independent-source Stage-A screen.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Frozen R037 independent-source Stage-A parent",
+    "reference_count": 14034,
+    "minimum_count": 14034,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Independent source adds entries only."
+  },
+  "primary_metrics": {
+    "entry_quality": "Official-win contribution/direct SFP net",
+    "hold_persistence": "Frozen 30-second max hold",
+    "economics": "Combined net/gross deltas",
+    "gross_loss_drawdown": "Gross-loss and DD deterioration",
+    "activity": "Proposal/accepted/trade deltas"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_sfp_stage_a.py",
+      "commit": "d05a78fa8384906f2da14a3a1eaba7e29718c205",
+      "blob_sha": "8aaedf366dce60f52e83b21dba6de264f94dc1e2",
+      "file_sha256": "2d164150f7d604283ef52f9b665c82c172b1a9ffb9dcc1149c4cf51fa45c04e5"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "bd0512d4d94f74167267a6b3bf7c265d984451ce",
+      "role": "bounded crash-safe execution"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "configs": [
+        "R037-SFP-C01_M1_BASIC",
+        "R037-SFP-C02_M1_HALF_REJECTION",
+        "R037-SFP-C03_M5_BASIC",
+        "R037-SFP-C04_M5_HALF_REJECTION"
+      ],
+      "swing_width_completed_bars": 2,
+      "basic_rule": "wick beyond active swing and completed close back inside",
+      "strong_rule": "basic plus reversal-half close",
+      "numeric_retuning": false,
+      "post_result_retuning": false,
+      "spread_gate_points_max": 25,
+      "lot": 0.01,
+      "stop_usd": 0.3,
+      "trail_activation_usd": 0.1,
+      "trail_distance_usd": 0.03,
+      "max_hold_seconds": 30
+    },
+    "feature_order": [
+      "causal_fractal_reveal",
+      "first_beyond_level_interaction",
+      "wick_close_rejection",
+      "first_executable_tick",
+      "parent_priority_scheduler"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Stage-A discovery only; no post-result tuning"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "atomic_output": true,
+      "recovery_run_id": 37177568521,
+      "recovery_artifact_id": 11293469126,
+      "precompute_pointer_gate_run_id": 37177616703,
+      "official_runtime_seconds": 20.172,
+      "official_exit_code": 0,
+      "official_raw_result_sha256": "23deec8f7c1f3250b880b9b510ee25effb1c5de4fc271305950ba5453bab7b5f"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "SFP preregistration",
+      "path": "research/delta/reference/DELTA_R037_SFP_SOURCE_HARVEST_PREREG_17F.json",
+      "commit": "83861bf58aaff8e393950d1fd771fe24dfc0ec54"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F.json",
+      "commit": "d16cc7c09c340dd5d28ceb6532d62891303f5288",
+      "blob_sha": "17cc06dd5ef157848c7870099aa81e9fa600d5dc",
+      "official_raw_result_sha256": "23deec8f7c1f3250b880b9b510ee25effb1c5de4fc271305950ba5453bab7b5f"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F.md",
+      "commit": "5ef733a1cdeed0681b767d8f3fa87cb9acda6162",
+      "blob_sha": "745d86034a1e71661e86f1646009ffa64d1730b6"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "911 C01",
+      "501 C02",
+      "196 C03",
+      "107 C04"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "877 C01",
+      "485 C02",
+      "185 C03",
+      "102 C04"
+    ],
+    "caches": [
+      "commit-bound recovery snapshot"
+    ]
+  },
+  "models": [],
+  "qa": [
+    "Prereg/source committed before compute.",
+    "Git blob and SHA verified from recovery artifact.",
+    "Precompute recovery pointer gate passed.",
+    "Canonical January and Stage-A chronology preserved.",
+    "Official bounded replay exited 0 in ~20.172s.",
+    "No configuration passed the frozen screen.",
+    "No post-result tuning.",
+    "Ledger/workbook result persisted.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_sfp_stage_a.py",
+    "command": "PYTHONPATH=<recovery_root> python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_sfp_stage_a.py --source <canonical_january_gzip> --output <result_json>",
+    "timing_semantics": "completed Bid bars; causal two-right-bar swing reveal; first beyond-level interaction consumes swing; wick-through close-back signal; first executable tick after bar edge",
+    "expected_fingerprints": {
+      "parent": {
+        "trades": 14034,
+        "official_wins": 6349,
+        "net_profit": -2944.94
+      },
+      "leader": {
+        "config": "R037-SFP-C04_M5_HALF_REJECTION",
+        "proposals": 107,
+        "accepted_entries": 102,
+        "trade_delta": 97,
+        "official_win_delta": 44,
+        "net_delta": -18.85,
+        "direct_sfp_net": -22.03
+      }
+    },
+    "selected_interpretation": "RETIRE_SFP_NO_RETUNE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — discovery screen only",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "DELTA frozen P75",
+    "ownership_scheduler_spec": "Frozen parent-priority",
+    "session_dst_spec": "No SFP session filter",
+    "risk_spec": "Frozen 0.01 stop/trail/30s",
+    "trade_count_parity_spec": "Not eligible",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "70 R037 Prereg",
+      "range": "A74:L88",
+      "readback_verified": true
+    },
+    {
+      "name": "DELTA Fresh Research Ledger",
+      "id": "1dXe4I98dFgIiybMSPQMoFnXOYNcTvtqNYDp85XeO34M",
+      "tab": "t.0",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": true
+  },
+  "github_commits": [
+    "83861bf58aaff8e393950d1fd771fe24dfc0ec54",
+    "d05a78fa8384906f2da14a3a1eaba7e29718c205",
+    "4e610185c5368fbfe2f651f6df468e1a740605e2",
+    "d16cc7c09c340dd5d28ceb6532d62891303f5288",
+    "5ef733a1cdeed0681b767d8f3fa87cb9acda6162",
+    "b5a5d52e44c2d5f13577122ab383598b74a5382b"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
