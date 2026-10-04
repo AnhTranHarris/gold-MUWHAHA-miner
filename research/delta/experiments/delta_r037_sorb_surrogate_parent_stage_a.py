@@ -19,6 +19,7 @@ import delta_r037_dh03_s06_structure as d3struct
 import delta_r037_dh03_s06_event_multiplicity_engine as d3engine
 import delta_r037_dh05_conditional_failure_clock_challenger_replay as d5
 import delta_r037_dh05_runtime_primitives as d5p
+import delta_r037_sorb as sorb
 import delta_r037_r032_parent_backbone as parent
 from research.delta.lab.coinexx_r9_adapter import _q_half_raw2_to_tick, _q_tick_raw, _session_2026
 
@@ -31,9 +32,9 @@ SOURCE_NAMES=("ORDINARY","DH03_S06","DH05_S06","DH02_S11","DH02_S08")
 def r2(x): return float(round(float(x),2))
 
 @njit(cache=True)
-def run_integrated(t,ask,bid,i250v,h1v,m30v,
+def run_integrated_sorb(t,ask,bid,i250v,h1v,m30v,
                    d3t,d3s,d5t,d5s,s11t,s11s,s08t,s08s,
-                   u3,u5,u11,u08,scheduler,price_scale=1000):
+                   sorbi,sorbs,sorbsess,u3,u5,u11,u08,scheduler,price_scale=1000):
     tick=max(1,int(round(.01*price_scale))); half=int(round(.15*price_scale))
     stopd=int(round(.30*price_scale)); tact=int(round(.10*price_scale)); tdist=int(round(.03*price_scale))
     minrng=int(round(.50*price_scale)); mindisp=int(round(.15*price_scale))
@@ -44,15 +45,17 @@ def run_integrated(t,ask,bid,i250v,h1v,m30v,
     mh=ml=mclose=prevclose=0; haveprev=False
     minute=-1; cycle_buy=cycle_sell=0; pending=0; rearm=0
     pos=0; entry=stop=entrysec=0; had=False; last_side=0
-    pos_owned=False; last_owned=False; pos_source=0
-    p1=p2=p3=p4=0
+    pos_owned=False; last_owned=False; pos_source=0; pos_sess=0
+    p1=p2=p3=p4=p5=0
 
     trades=raw_wins=official=losses=p01hits=m30hits=suppressed=ordinary_entries=0
-    sentries=np.zeros(5,np.int64); swins=np.zeros(5,np.int64); snet=np.zeros(5,np.float64)
+    sentries=np.zeros(6,np.int64); swins=np.zeros(6,np.int64); snet=np.zeros(6,np.float64)
     gp=0.; gl=0.; bal=100000.; bpeak=bal; epeak=bal; maxbdd=0.; maxedd=0.; holdsum=0.
+    outcomes=np.zeros(sorbi.size,np.int8); sess_ent=np.zeros(3,np.int64); sess_win=np.zeros(3,np.int64); sess_net=np.zeros(3,np.float64)
 
     for i in range(t.size):
         tm=np.int64(t[i]); a=np.int64(ask[i]); b=np.int64(bid[i]); sec=tm//1000
+        occupied_start=pos!=0; sorb_evt=p5<sorbi.size and sorbi[p5]==i
 
         av1=u3 and p1<d3t.size and d3t[p1]<=tm
         av2=u5 and p2<d5t.size and d5t[p2]<=tm
@@ -71,7 +74,10 @@ def run_integrated(t,ask,bid,i250v,h1v,m30v,
             if raw>0: gp+=deal; raw_wins+=1
             else: gl+=deal; losses+=1
             if pos_source>0: snet[pos_source]+=deal
-            bal+=deal; trades+=1; holdsum+=sec-entrysec; pos=0; entry=stop=0
+            if pos_source==5 and pos_sess>0:
+                sess_net[pos_sess]+=deal
+                if deal>1e-12: sess_win[pos_sess]+=1
+            bal+=deal; trades+=1; holdsum+=sec-entrysec; pos=0; entry=stop=0; pos_sess=0
         elif pos==-1 and a>=stop:
             raw=(entry-a)/price_scale; deal=raw-.01; exited_source=pos_source
             if deal>1e-12:
@@ -80,7 +86,10 @@ def run_integrated(t,ask,bid,i250v,h1v,m30v,
             if raw>0: gp+=deal; raw_wins+=1
             else: gl+=deal; losses+=1
             if pos_source>0: snet[pos_source]+=deal
-            bal+=deal; trades+=1; holdsum+=sec-entrysec; pos=0; entry=stop=0
+            if pos_source==5 and pos_sess>0:
+                sess_net[pos_sess]+=deal
+                if deal>1e-12: sess_win[pos_sess]+=1
+            bal+=deal; trades+=1; holdsum+=sec-entrysec; pos=0; entry=stop=0; pos_sess=0
 
         # Completed-S1 ring.
         if cursec<0: cursec=sec; sh=sl=sclose=b
@@ -132,7 +141,10 @@ def run_integrated(t,ask,bid,i250v,h1v,m30v,
             cycle_sell=_q_half_raw2_to_tick(b+a-2*half,tick)
 
         if pos!=0:
-            had=True; last_side=pos; last_owned=pos_owned
+            if pos_source!=5:
+                had=True; last_side=pos; last_owned=pos_owned
+            else:
+                had=False; last_side=0; last_owned=False
             if sec-entrysec>=30:
                 raw=((b-entry) if pos==1 else (entry-a))/price_scale; deal=raw-.01
                 if deal>1e-12:
@@ -141,7 +153,10 @@ def run_integrated(t,ask,bid,i250v,h1v,m30v,
                 if raw>0: gp+=deal; raw_wins+=1
                 else: gl+=deal; losses+=1
                 if pos_source>0: snet[pos_source]+=deal
-                bal+=deal; trades+=1; holdsum+=sec-entrysec; pos=0; entry=stop=0
+            if pos_source==5 and pos_sess>0:
+                sess_net[pos_sess]+=deal
+                if deal>1e-12: sess_win[pos_sess]+=1
+                bal+=deal; trades+=1; holdsum+=sec-entrysec; pos=0; entry=stop=0; pos_sess=0
             else:
                 fav=(b-entry) if pos==1 else (entry-a)
                 if fav>=tact:
@@ -193,13 +208,27 @@ def run_integrated(t,ask,bid,i250v,h1v,m30v,
         while p3<s11t.size and s11t[p3]<=tm: p3+=1
         while p4<s08t.size and s08t[p4]<=tm: p4+=1
 
+        if sorb_evt:
+            if occupied_start:
+                outcomes[p5]=2
+            elif pos!=0:
+                outcomes[p5]=3
+            else:
+                pos=int(sorbs[p5]); pos_source=5; pos_owned=False; pos_sess=int(sorbsess[p5])
+                entry=a if pos==1 else b; entrysec=sec
+                stop=_q_tick_raw(b-stopd if pos==1 else a+stopd,tick)
+                bal-=.01; gl-=.01; sentries[5]+=1; snet[5]-=.01
+                if pos_sess>0: sess_ent[pos_sess]+=1; sess_net[pos_sess]-=.01
+                outcomes[p5]=1
+            p5+=1
+
         bpeak=max(bpeak,bal); maxbdd=max(maxbdd,bpeak-bal)
         equity=bal+(b-entry)/price_scale if pos==1 else bal+(entry-a)/price_scale if pos==-1 else bal
         epeak=max(epeak,equity); maxedd=max(maxedd,epeak-equity)
 
     ints=np.array([trades,raw_wins,official,losses,p01hits,m30hits,suppressed,ordinary_entries],np.int64)
     flt=np.array([gp,gl,gp+gl,maxbdd,maxedd,holdsum/trades if trades else 0.],np.float64)
-    return ints,flt,sentries,swins,snet
+    return ints,flt,sentries,swins,snet,outcomes,sess_ent,sess_win,sess_net
 
 def generate_streams(t,ask,bid):
     mid=ask+bid
