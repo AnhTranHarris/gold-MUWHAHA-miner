@@ -11,13 +11,13 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A",
-    "current_phase": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_NEXT",
-    "first_incomplete_unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A_MANIFEST.json",
-    "current_state_commit": "cc41515252e5f24bacee2e05d19002a0243a675b",
-    "current_state_ci_run": 37166233147,
-    "current_state_ci_conclusion": "SUCCESS"
+    "last_verified_durable_unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B",
+    "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_AND_STAGE_A_PREREGISTRATION_NEXT",
+    "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_AND_STAGE_A_PREREGISTRATION",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B_MANIFEST.json",
+    "current_state_commit": "PENDING_THIS_ATOMIC_CURSOR_COMMIT",
+    "current_state_ci_run": null,
+    "current_state_ci_conclusion": "PENDING"
   },
   "in_flight_unit": {
     "unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION",
@@ -26,17 +26,7 @@
     "parent_durable_unit": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_EVIDENCE_15B.json",
-        "blob_sha": "b28b55f7acfc9dcbfe4424cce8acd58e4d1bd90e"
-      },
-      {
-        "path": "research/delta/experiments/delta_r037_sorb_c04_dual30_independent_validation.py",
-        "commit": "10bd1f16f3f4757b652cfe50bc90dab920f134cf",
-        "blob_sha": "87787466855efb1bc5a0602b195299380037e700"
-      },
-      {
         "path": "research/delta/reference/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B.json",
-        "commit": "a4828ee6484bc9cd631fdf9038ac16680d9cf366",
         "blob_sha": "75e1a8df7b022fcb01c4de03c2e04be623707e76"
       },
       {
@@ -48,7 +38,7 @@
         "commit": "50fc9347977c82c071a45bc033b3e88b5708e18b"
       }
     ],
-    "next_action": "15B complete; advance durable cursor then harvest/preregister the next structurally independent entry source. Do not retune or reopen SORB."
+    "next_action": "Continue R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_AND_STAGE_A_PREREGISTRATION; SORB C04 is retired and must not be retuned or reopened."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
