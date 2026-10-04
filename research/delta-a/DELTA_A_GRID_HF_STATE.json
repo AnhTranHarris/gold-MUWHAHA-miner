@@ -1,0 +1,62 @@
+{
+  "schema": "delta-a-grid-hf-state-v1",
+  "lineage": "DELTA-A",
+  "branch": "delta-A",
+  "checkpoint": "GRID-HF_R1_PAUSED",
+  "status": "RESEARCH_CHECKPOINT_NOT_MT5_AUTHORIZED",
+  "parent_branch": "delta",
+  "main_delta_modified": false,
+  "instrument": "XAUUSD",
+  "harvest_month": "2026-01",
+  "august_2026": "SEALED",
+  "signal_source": "NATIVE_DUKAS_ORDERED_BID_ASK_TICKS",
+  "research_execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "r9_synth_reference": {
+    "jan_jul_trades": 219342,
+    "win_rate_pct": 87.14,
+    "net_usd": 309122.85,
+    "profit_factor": 20.04,
+    "expected_payoff_usd": 1.409
+  },
+  "current_r1_reported_metrics": {
+    "january_unique_candidates": 29540,
+    "candidates_per_day_approx": 1019,
+    "net_usd": 5486.71,
+    "avg_pnl_per_event_usd": 0.1857,
+    "profit_factor": 1.0424,
+    "positive_outcome_pct_approx": 49.2,
+    "closed_event_sequence_drawdown_usd_approx": 2195,
+    "continuation_events": 26090,
+    "reversion_events": 3450
+  },
+  "volatile_continuation_profile": {
+    "grid_gap_usd": 2.375,
+    "lifecycle_seconds": 120,
+    "mode": "CONTINUATION"
+  },
+  "quiet_reversion_grid_scales_usd": [
+    4,
+    5,
+    6,
+    8,
+    10
+  ],
+  "regime_proxy_threshold_approx": 0.6,
+  "dedup_window_seconds_reported": 1,
+  "hard_rules": {
+    "martingale": false,
+    "lookahead": false,
+    "production_mql5_authorized": false,
+    "jan_jul_hf_durability_complete": false,
+    "session_news_event_layer_deferred": true
+  },
+  "translation_blockers": [
+    "Freeze exact de-duplication winner-selection policy",
+    "Freeze quiet-regime per-scale lifecycle mapping",
+    "Run current HF architecture unchanged Jan-Jul",
+    "Measure portfolio floating-equity/concurrency drawdown",
+    "Complete later session/news/event-aware refinement",
+    "Obtain explicit owner authorization before production MQL5"
+  ],
+  "next_unit": "GRID-HF_R2_HIGH_VOLUME_DIRECTIONAL_OWNERSHIP_AND_SPECIALIST_ROUTING"
+}
