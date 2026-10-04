@@ -1,0 +1,101 @@
+{
+  "schema": "delta-r037-htar-stage-a-17ai-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_HIGHER_TIMEFRAME_ANCHORED_REVERSAL_STAGE_A_SCREEN",
+  "family": "R037-HTAR-v1",
+  "prereg_commit": "65ac522bd99ed1477b83746c5afc2d26299515df",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "configs": {
+    "C01_H1_ANCHOR": {
+      "anchor_seconds": 3600000,
+      "stage_counts": {
+        "anchors_high": 55,
+        "anchors_low": 65,
+        "sweeps": 60,
+        "cisd": 57,
+        "fvg": 25,
+        "retrace": 8
+      },
+      "metrics": {
+        "proposals": 8,
+        "eligible": 8,
+        "trades": 8,
+        "distinct_days": 5,
+        "long": 5,
+        "short": 3,
+        "rejections": {},
+        "official_wins": 4,
+        "raw_positive_wins": 4,
+        "gross_profit": 1.15,
+        "gross_loss": -0.21,
+        "direct_net_usd": 0.94,
+        "exit_reasons": {
+          "STOP": 7,
+          "MAX_HOLD": 1,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_4": true,
+        "minimum_distinct_days_3": true,
+        "direct_net_min_minus_1": true,
+        "prescreen_pass": true,
+        "strong_pass": true
+      }
+    },
+    "C02_H4_ANCHOR": {
+      "anchor_seconds": 14400000,
+      "stage_counts": {
+        "anchors_high": 16,
+        "anchors_low": 18,
+        "sweeps": 18,
+        "cisd": 18,
+        "fvg": 7,
+        "retrace": 3
+      },
+      "metrics": {
+        "proposals": 3,
+        "eligible": 3,
+        "trades": 3,
+        "distinct_days": 3,
+        "long": 1,
+        "short": 2,
+        "rejections": {},
+        "official_wins": 0,
+        "raw_positive_wins": 0,
+        "gross_profit": 0,
+        "gross_loss": -1.19,
+        "direct_net_usd": -1.19,
+        "exit_reasons": {
+          "STOP": 3,
+          "MAX_HOLD": 0,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_4": false,
+        "minimum_distinct_days_3": true,
+        "direct_net_min_minus_1": false,
+        "prescreen_pass": false,
+        "strong_pass": false
+      }
+    }
+  },
+  "ranking": [
+    "C01_H1_ANCHOR",
+    "C02_H4_ANCHOR"
+  ],
+  "finding": {
+    "leading_config": "C01_H1_ANCHOR",
+    "strong_survivors": [
+      "C01_H1_ANCHOR"
+    ],
+    "decision": "ADVANCE_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+    "next": "R037_HTAR_LEADER_INDEPENDENT_LATER_JAN_VALIDATION"
+  },
+  "mql5_authorized": false
+}
