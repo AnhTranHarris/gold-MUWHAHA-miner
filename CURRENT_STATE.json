@@ -4,9 +4,9 @@
   "branch": "delta",
   "created_utc": "2026-10-01",
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
-  "last_verified_durable_unit": "R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI",
-  "first_incomplete_unit": "R037_HTAR_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
-  "current_phase": "R037_HTAR_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_NEXT",
+  "last_verified_durable_unit": "R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ",
+  "first_incomplete_unit": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION",
+  "current_phase": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -616,7 +616,7 @@
       "google_doc_url": "https://docs.google.com/document/d/18W8y8hHqcK84rkSW66tRWIcT1R5YBxJhitsziRRNLEI/edit",
       "google_doc_revision": "ANLCKQk8pRN2l7_NJZcQEj3kpQ5ptP2KEKPFiZqsz8PmLbCqZ_Qm2wcUoudBg3feBRKxsAGr5oHg5AP7v_GIhZKOwPcSYcNjXs4P0R4EtrM"
     },
-    "current_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PDH_PDL_SWEEP_RECLAIM_CHECKPOINT_17AD_MANIFEST.json",
+    "current_rebuild_manifest": "research/delta/artifacts/DELTA_R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ_MANIFEST.json",
     "verified_gate_run": 37149241116,
     "verified_gate_conclusion": "SUCCESS",
     "final_pack_revision_sync_commit": "5b21c2d06bbf4d98c10b3ee5bafeb0ca2c18a2fe",
@@ -660,7 +660,7 @@
   },
   "next_action": "Use DELTA_004 as the active parent. When the owner restates the first Entry + Initial-Hold research question, perform a fresh community scan, generate independent reconstructible hypotheses, use the GOV-014 spreadsheet-first quant harvesting loop to prioritize adjustments with >=10pp incremental scoped SYNTH-gap closure and seek >=30% scoped REAL-to-SYNTH gap closure before expensive replay, then preregister and test selected packages in the bounded Dukascopy tick-level cycle. Keep DELTA_005A-005M audit-only, August sealed, and MQL5 unauthorized.",
   "mql5_authorized": false,
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI_MANIFEST.json",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
   "first_incomplete_manifest_path": null,
   "first_incomplete_preregistration_path": null,
@@ -3686,7 +3686,7 @@
         "august_2026": "SEALED",
         "mql5_authorized": false
       },
-      "first_incomplete_substep": "R037_HTAR_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+      "first_incomplete_substep": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION",
       "dh05_reversal_efficiency_stage_normalization_checkpoint_08": {
         "status": "COMPLETE_MATERIAL_CLUE_PARITY_NOT_ACHIEVED",
         "github_report_path": "research/delta/research/DELTA_R037_DH05_REVERSAL_EFFICIENCY_STAGE_NORMALIZATION_CHECKPOINT_08.md",
@@ -5610,6 +5610,22 @@
         "stage_a_wins": 4,
         "stage_a_net_usd": 0.94,
         "next_unit": "R037_HTAR_LEADER_INDEPENDENT_LATER_JAN_VALIDATION"
+      },
+      "htar_h1_later_jan_checkpoint_17aj": {
+        "status": "COMPLETE_INDEPENDENT_HOLDOUT_PASS",
+        "manifest_path": "research/delta/artifacts/DELTA_R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ_MANIFEST.json",
+        "manifest_commit": "a3231f44c60183c413faf343978697cdb49714a9",
+        "result_path": "research/delta/reference/DELTA_R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ.json",
+        "result_sha256": "0ab1b6c36cd3cdadd8add8d7dbb73d2604cc3da3b87c78682f417280abdf96a6",
+        "selected": "R037-HTAR-C01_H1_ANCHOR",
+        "later_jan_trades": 7,
+        "later_jan_wins": 3,
+        "later_jan_net_usd": 0.65,
+        "producer_commit": "2054a0fc0cd7f003802dffaf056592cef765b603",
+        "producer_blob_sha": "a7ea2330ae0df805bc32780ce40eb0d22f60b694",
+        "next_unit": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION",
+        "august_2026": "SEALED",
+        "mql5_authorized": false
       }
     }
   },
@@ -5646,8 +5662,8 @@
     "github_commit": "d5db76bfcd3bb91086a5635058005b4d940013bb",
     "manifest_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_SAFE_HANDOFF_CHECKPOINT_09D.json",
     "manifest_commit": "5b21c2d06bbf4d98c10b3ee5bafeb0ca2c18a2fe",
-    "restart_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
-    "next_action": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "restart_phase": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION_NEXT",
+    "next_action": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION",
     "starter_prompt_doc_id": "15bKGqPsBebEXBdpgqhI1f6ItjoeJ4jc_3ZBzkN7woAU",
     "starter_prompt_doc_url": "https://docs.google.com/document/d/15bKGqPsBebEXBdpgqhI1f6ItjoeJ4jc_3ZBzkN7woAU/edit",
     "completeness_gate_doc_id": "1G_UttTVYhz55eZ6OHiz7r4ZzVv3l5zDD0U6DvTScG-s",
