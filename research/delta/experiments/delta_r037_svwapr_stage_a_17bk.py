@@ -66,8 +66,7 @@ def atomic_json(path: Path, payload: dict) -> None:
         with tempfile.NamedTemporaryFile(
             "w",
             encoding="utf-8",
-            newline="
-",
+            newline="\\n",
             dir=path.parent,
             prefix=f".{path.name}.",
             suffix=".tmp",
@@ -75,8 +74,7 @@ def atomic_json(path: Path, payload: dict) -> None:
         ) as tmp:
             tmp_name = tmp.name
             json.dump(payload, tmp, indent=2)
-            tmp.write("
-")
+            tmp.write("\\n")
             tmp.flush()
             os.fsync(tmp.fileno())
         os.replace(tmp_name, path)
