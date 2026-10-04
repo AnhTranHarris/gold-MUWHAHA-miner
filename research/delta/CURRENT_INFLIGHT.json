@@ -4,17 +4,17 @@
   "branch": "delta",
   "unit": "R037_CONTROLLED_PAUSE_CONTINUATION_FAST_HARVEST_17BH_17BJ",
   "parent_durable_unit": "R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG",
-  "phase": "PREREGISTERED",
-  "phase_rank": 1,
+  "phase": "PRODUCER_COMMITTED",
+  "phase_rank": 2,
   "progress": {
     "status": "ACTIVE",
     "last_completed": "R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG",
     "current_candidate": "R037-3BP-v1 / R037-IB-v1 / R037-IBQ-v1",
-    "next": "Build and commit exact continuation producer, then Stage-A prescreen."
+    "next": "Execute exact committed continuation producer under hard timeout; persist compact result immediately."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "17BH-17BJ prereg durable at f5d82ec9e5b07f28e737b03dc4c907ce95731bbe. If producer absent, build/commit producer only.",
+    "resume_first_action": "17BH-17BJ producer durable at a43b574f9f4253f024add1cc222f5bff79ce5e0a, blob 85ee4e060bc35839396d84b4ed8262a13c000061. If result absent, execute exact producer only.",
     "idempotency_rule": "Resume first missing committed phase only."
   },
   "last_verified_ci": {
@@ -35,6 +35,11 @@
     "prereg": {
       "path": "research/delta/reference/DELTA_R037_CONTINUATION_FAST_HARVEST_PREREG_17BH_17BJ.json",
       "commit": "f5d82ec9e5b07f28e737b03dc4c907ce95731bbe"
+    },
+    "producer": {
+      "path": "research/delta/experiments/delta_r037_continuation_fast_harvest_17bh_17bj.py",
+      "commit": "a43b574f9f4253f024add1cc222f5bff79ce5e0a",
+      "blob_sha": "85ee4e060bc35839396d84b4ed8262a13c000061"
     }
   }
 }
