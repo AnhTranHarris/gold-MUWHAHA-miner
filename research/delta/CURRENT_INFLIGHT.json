@@ -1,22 +1,23 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "INFLIGHT",
+  "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
-  "parent_durable_unit": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
-  "phase": "PREREGISTERED",
-  "phase_rank": 1,
+  "unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+  "parent_durable_unit": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
+  "phase": "IDLE",
+  "phase_rank": 0,
   "progress": {
-    "status": "PREREGISTERED",
-    "last_completed": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
-    "current_candidate": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
-    "next": "Commit exact SVWAPR producer before official Stage-A compute."
+    "status": "IDLE_DURABLE",
+    "last_completed": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
+    "current_candidate": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+    "next": "Research and preregister the next independent high-value entry source; do not rerun completed 17BK."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read CURRENT_STATE/CURRENT_INFLIGHT/pointer and resume first missing committed phase; do not rerun completed compute because browser delivery failed.",
+    "resume_first_action": "Read CURRENT_STATE/CURRENT_INFLIGHT/pointer and resume first missing committed phase; never infer compute failure from browser delivery failure.",
     "idempotency_rule": "Resume first missing committed phase only.",
-    "atomic_pointer_update_rule": "Durable cursor/pointer changes must be committed in one Git tree/commit whenever multiple files must agree."
+    "atomic_pointer_update_rule": "Durable cursor/pointer changes that must agree are committed in one Git tree/commit.",
+    "compute_boundary_rule": "Every official producer uses a bounded process timeout and atomic result replacement."
   },
   "last_verified_ci": {
     "commit": "164d20b91718a6bb84746350ba2a26b5c9a92ccb",
@@ -27,12 +28,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
-    "checkpoint": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
-    "current_state_next": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
-    "manifest": "research/delta/artifacts/DELTA_R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ_MANIFEST.json"
-  },
-  "prereg": {
-    "path": "research/delta/reference/DELTA_R037_SVWAPR_STAGE_A_PREREG_17BK.json"
+    "unit": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
+    "checkpoint": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
+    "current_state_next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+    "manifest": "research/delta/artifacts/DELTA_R037_SVWAPR_STAGE_A_CHECKPOINT_17BK_MANIFEST.json"
   }
 }
