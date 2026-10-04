@@ -1,0 +1,80 @@
+{
+  "schema": "delta-r037-london-15m-opening-range-stage-a-17ab-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AB",
+  "family": "R037-L15ORB-v1",
+  "prereg_commit": "4f2ebf9de9ed6fd164013e87daaa0099581e0ce7",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "numeric_retuning": false,
+  "post_result_retuning": false,
+  "august_accessed": false,
+  "configs": {
+    "C01_FIRST_STRICT_TICK": {
+      "metrics": {
+        "proposals": 11,
+        "eligible": 11,
+        "distinct_days": 11,
+        "long": 6,
+        "short": 5,
+        "spread_rejected": 0,
+        "relost_rejected": 0,
+        "trades": 11,
+        "official_wins": 5,
+        "raw_positive_wins": 6,
+        "gross_profit": 1.06,
+        "gross_loss": -2.73,
+        "direct_net_usd": -1.67,
+        "exit_reasons": {"STOP": 10, "MAX_HOLD": 1, "END": 0}
+      },
+      "gate": {"minimum_proposals_8": true,"minimum_distinct_days_4": true,"direct_net_min_minus_2": true,"prescreen_pass": true,"strong_pass": false}
+    },
+    "C02_FIRST_COMPLETED_S5_CLOSE": {
+      "metrics": {
+        "proposals": 11,
+        "eligible": 11,
+        "distinct_days": 11,
+        "long": 6,
+        "short": 5,
+        "spread_rejected": 0,
+        "relost_rejected": 0,
+        "trades": 11,
+        "official_wins": 8,
+        "raw_positive_wins": 8,
+        "gross_profit": 1.43,
+        "gross_loss": -1.84,
+        "direct_net_usd": -0.41,
+        "exit_reasons": {"STOP": 10, "MAX_HOLD": 1, "END": 0}
+      },
+      "gate": {"minimum_proposals_8": true,"minimum_distinct_days_4": true,"direct_net_min_minus_2": true,"prescreen_pass": true,"strong_pass": false}
+    },
+    "C03_FIRST_COMPLETED_S15_CLOSE": {
+      "metrics": {
+        "proposals": 11,
+        "eligible": 11,
+        "distinct_days": 11,
+        "long": 6,
+        "short": 5,
+        "spread_rejected": 0,
+        "relost_rejected": 0,
+        "trades": 11,
+        "official_wins": 7,
+        "raw_positive_wins": 7,
+        "gross_profit": 1.58,
+        "gross_loss": -2.66,
+        "direct_net_usd": -1.08,
+        "exit_reasons": {"STOP": 11, "MAX_HOLD": 0, "END": 0}
+      },
+      "gate": {"minimum_proposals_8": true,"minimum_distinct_days_4": true,"direct_net_min_minus_2": true,"prescreen_pass": true,"strong_pass": false}
+    }
+  },
+  "ranking": ["C02_FIRST_COMPLETED_S5_CLOSE","C03_FIRST_COMPLETED_S15_CLOSE","C01_FIRST_STRICT_TICK"],
+  "finding": {
+    "leading_config": "C02_FIRST_COMPLETED_S5_CLOSE",
+    "strong_survivors": [],
+    "decision": "RETIRE_FAMILY_NO_RETUNE",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "mql5_authorized": false
+}
