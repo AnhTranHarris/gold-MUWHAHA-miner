@@ -3,12 +3,12 @@
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "branch": "delta",
   "research_scope": "DELTA_ONLY_CLEAN_ROOM",
-  "last_verified_durable_unit": "R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG",
+  "last_verified_durable_unit": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
   "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
   "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG_MANIFEST.json",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ_MANIFEST.json",
   "active_candidate": null,
-  "last_candidate_disposition": "17BE TBR, 17BF PCR, and 17BG FAKEY all retired after fixed Stage-A economic failure; no rescue search.",
+  "last_candidate_disposition": "17BH Three-Bar Play and 17BI Inside-Bar baseline failed Stage-A economics; 17BJ source-published quality profile was +$0.10 but only 2 trades and failed supply. Batch retired without rescue.",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -31,10 +31,8 @@
     "prior_full_state_preserved_in_git_history": true
   },
   "recovery_pointer_sync": {
-    "inflight_commit": "59948e2b3ed1babf4eff02aa9c84263125273d41",
-    "pointer_commit": "a60a9a9eaa2d5546e26cf144435fb00ced1f0579",
-    "status": "IDLE_AT_NEXT_HARVEST",
-    "last_completed": "R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG",
+    "status": "FINALIZING_17BH_17BJ",
+    "last_completed": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
     "current_candidate": null,
     "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
   },
@@ -53,5 +51,5 @@
     "side_screen_role": "NON_AUTHORITATIVE_PARALLEL_SCREEN_DUE_TIMEOUT_CONCURRENCY",
     "note": "SRHT artifacts remain preserved but do not replace the earlier CI-passed BOSLS 17AY -> Turtle Soup 17AZ chain."
   },
-  "search_bias": "controlled-pause continuation / breakout acceptance with natural selectivity and sufficient Stage-A supply; avoid generic reversal-candle permutations and dense generic indicators"
+  "search_bias": "Use completed-R037 meta-harvest before admitting more candidate families; prioritize high-information structures with adequate supply and near-neutral/positive out-of-sample evidence."
 }
