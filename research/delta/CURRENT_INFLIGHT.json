@@ -4,8 +4,8 @@
   "branch": "delta",
   "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
   "parent_durable_unit": "R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "phase": "REPORT_COMMITTED",
+  "phase_rank": 4,
   "prereg": {
     "path": "research/delta/reference/DELTA_R037_VCE_SOURCE_HARVEST_PREREG_17A.json",
     "commit": "SAME_ATOMIC_COMMIT"
@@ -15,22 +15,25 @@
     "commit": "SAME_ATOMIC_COMMIT",
     "sha256": "d52630b39bf0bd048e57b9e148773c8f67767dcc7ba8e9e94e9b67112432136c"
   },
-  "result": null,
-  "report": null,
+  "result": {
+    "path": "research/delta/reference/DELTA_R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A.json",
+    "blob_sha": "406e4b3bc83654b97c3029af74a1fc12567bb459",
+    "raw_result_sha256": "045b537be38674b3e834bfd42d0207eb24891a9f9db3c79afd625bd7448c518e"
+  },
+  "report": {
+    "path": "research/delta/research/DELTA_R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A.md",
+    "blob_sha": "ae623bd363c8547337bf5e3f7792a4768e1202b1"
+  },
   "manifest": null,
   "progress": {
     "family": "R037-VCE-v1",
-    "configs": [
-      "R037-VCE-C01_ORION_M5_BOX15",
-      "R037-VCE-C02_ORION_M5_BOX15_EMA150",
-      "R037-VCE-C03_BBKC_RELEASE",
-      "R037-VCE-C04_BBKC_RELEASE_MOM12"
-    ],
-    "status": "PRODUCER_CLEAN_ROOM_PATCH_COMMITTED_OFFICIAL_COMPUTE_NEXT"
+    "status": "OFFICIAL_STAGE_A_COMPLETE_NO_STRONG_SURVIVOR",
+    "leading_config": "R037-VCE-C04_BBKC_RELEASE_MOM12",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Run only the clean-room-patched committed VCE 17A producer. Prior pre-patch local result is diagnostic only and must not be promoted.",
+    "resume_first_action": "VCE 17A official result/report are committed. Do not rerun Stage-A. Finish workbook/manifest/state closeout, then begin the next independent entry-source harvest.",
     "idempotency_rule": "Producer and prereg are immutable before official compute; result path is create-only."
   },
   "last_verified_ci": {

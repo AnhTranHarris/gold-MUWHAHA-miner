@@ -21,21 +21,28 @@
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
+    "status": "REPORT_COMMITTED",
+    "phase_rank": 4,
     "parent_durable_unit": "R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_VCE_SOURCE_HARVEST_PREREG_17A.json",
-        "commit": "SAME_ATOMIC_COMMIT"
+        "path": "research/delta/reference/DELTA_R037_VCE_SOURCE_HARVEST_PREREG_17A.json"
       },
       {
         "path": "research/delta/experiments/delta_r037_vce_stage_a.py",
-        "commit": "SAME_ATOMIC_COMMIT",
         "sha256": "d52630b39bf0bd048e57b9e148773c8f67767dcc7ba8e9e94e9b67112432136c"
+      },
+      {
+        "path": "research/delta/reference/DELTA_R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A.json",
+        "blob_sha": "406e4b3bc83654b97c3029af74a1fc12567bb459",
+        "raw_result_sha256": "045b537be38674b3e834bfd42d0207eb24891a9f9db3c79afd625bd7448c518e"
+      },
+      {
+        "path": "research/delta/research/DELTA_R037_VCE_STAGE_A_SCREEN_CHECKPOINT_17A.md",
+        "blob_sha": "ae623bd363c8547337bf5e3f7792a4768e1202b1"
       }
     ],
-    "next_action": "Run the clean-room-patched committed VCE 17A producer once on canonical January P75; ignore the pre-patch diagnostic result.",
+    "next_action": "Do not rerun VCE 17A. Finish workbook + rebuild manifest + CURRENT_STATE closeout, then continue next independent source harvest.",
     "completed_months": [],
     "next_month": null
   },

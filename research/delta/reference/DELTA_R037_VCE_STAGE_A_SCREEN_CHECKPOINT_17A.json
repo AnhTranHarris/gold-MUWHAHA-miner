@@ -1,0 +1,498 @@
+{
+  "schema": "delta-r037-vce-stage-a-screen-17a-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "family": "R037-VCE-v1",
+  "parent_checkpoint": "R037_PLSR_C01_MONTHLY_VALIDATION_CHECKPOINT_16C",
+  "surrogate_parent": "14A_BACKBONE_FIRST_C03_WITH_FROZEN_PROVENANCE_LIMITED_SPECIALISTS",
+  "promotable": false,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "numeric_retuning": false,
+  "post_result_retuning": false,
+  "august_accessed": false,
+  "parent_control": {
+    "trades": 14034,
+    "raw_positive_wins": 6422,
+    "official_wins": 6349,
+    "losses": 7612,
+    "p01_hits": 5208,
+    "m30_only_hits": 1560,
+    "owned_exit_suppressed_rearms": 8801,
+    "ordinary_entries": 11916,
+    "gross_profit": 1357.26,
+    "gross_loss": -4302.2,
+    "net_profit": -2944.94,
+    "max_balance_drawdown": 2945.93,
+    "max_equity_drawdown": 2946.43,
+    "average_hold_seconds": 6.779036625338463,
+    "parent_specialist_entries": 2118,
+    "sorb_entries": 0,
+    "parent_specialist_net": -491.44,
+    "sorb_net": 0.0,
+    "sources": {
+      "DH03_S06": {
+        "entries": 1329,
+        "official_wins": 582,
+        "net_profit": -298.55
+      },
+      "DH05_S06": {
+        "entries": 598,
+        "official_wins": 249,
+        "net_profit": -140.23
+      },
+      "DH02_S11": {
+        "entries": 95,
+        "official_wins": 38,
+        "net_profit": -24.68
+      },
+      "DH02_S08": {
+        "entries": 96,
+        "official_wins": 33,
+        "net_profit": -27.98
+      },
+      "SORB": {
+        "entries": 0,
+        "official_wins": 0,
+        "net_profit": 0.0
+      }
+    },
+    "sorb_outcomes": {
+      "ACCEPTED": 0,
+      "POSITION_BLOCKED": 0,
+      "PARENT_SAME_TICK_COLLISION": 0,
+      "OTHER_BLOCKED": 0
+    },
+    "sorb_session_contribution": {
+      "LONDON": {
+        "entries": 0,
+        "official_wins": 0,
+        "net_profit": 0.0
+      },
+      "COMEX_GOLD": {
+        "entries": 0,
+        "official_wins": 0,
+        "net_profit": 0.0
+      }
+    }
+  },
+  "configs": {
+    "R037-VCE-C01_ORION_M5_BOX15": {
+      "supply": {
+        "proposals": 38,
+        "source_eligible": 38,
+        "distinct_days": 10,
+        "proposal_long": 23,
+        "proposal_short": 15,
+        "source_rejections": {
+          "EMA_NOT_READY": 0,
+          "EMA150_DIRECTION": 0,
+          "MOM12_DIRECTION": 0,
+          "SPREAD_GATE": 0,
+          "NO_EXECUTABLE_TICK": 0
+        }
+      },
+      "combined": {
+        "trades": 14070,
+        "raw_positive_wins": 6442,
+        "official_wins": 6369,
+        "losses": 7628,
+        "p01_hits": 5211,
+        "m30_only_hits": 1560,
+        "owned_exit_suppressed_rearms": 8804,
+        "ordinary_entries": 11916,
+        "gross_profit": 1361.76,
+        "gross_loss": -4311.8,
+        "net_profit": -2950.04,
+        "max_balance_drawdown": 2951.03,
+        "max_equity_drawdown": 2951.53,
+        "average_hold_seconds": 6.77363184079602,
+        "parent_specialist_entries": 2118,
+        "parent_specialist_net": -491.44,
+        "sources": {
+          "DH03_S06": {
+            "entries": 1329,
+            "official_wins": 582,
+            "net_profit": -298.55
+          },
+          "DH05_S06": {
+            "entries": 598,
+            "official_wins": 249,
+            "net_profit": -140.23
+          },
+          "DH02_S11": {
+            "entries": 95,
+            "official_wins": 38,
+            "net_profit": -24.68
+          },
+          "DH02_S08": {
+            "entries": 96,
+            "official_wins": 33,
+            "net_profit": -27.98
+          },
+          "SORB": {
+            "entries": 36,
+            "official_wins": 18,
+            "net_profit": -6.44
+          }
+        },
+        "sorb_outcomes": {
+          "ACCEPTED": 36,
+          "POSITION_BLOCKED": 1,
+          "PARENT_SAME_TICK_COLLISION": 1,
+          "OTHER_BLOCKED": 0
+        },
+        "vce_entries": 36,
+        "vce_net": -6.44,
+        "vce_source_contribution": {
+          "entries": 36,
+          "official_wins": 18,
+          "net_profit": -6.44
+        }
+      },
+      "decision": {
+        "proposal_supply_ok": true,
+        "incremental_entry_floor_ok": true,
+        "combined_trade_count_not_lower": true,
+        "winner_or_quality_gate_ok": true,
+        "net_not_worse_than_2usd": false,
+        "drawdown_deterioration_within_1pct": true,
+        "screen_pass": false,
+        "strong_screen_pass": false,
+        "trade_delta": 36,
+        "official_win_delta": 20,
+        "gross_profit_delta": 4.5,
+        "gross_loss_delta": -9.6,
+        "net_delta": -5.1,
+        "max_balance_dd_delta_pct": 0.17312020312771736,
+        "max_equity_dd_delta_pct": 0.17309082516809712,
+        "incremental_net_per_vce_entry": -0.14
+      }
+    },
+    "R037-VCE-C02_ORION_M5_BOX15_EMA150": {
+      "supply": {
+        "proposals": 38,
+        "source_eligible": 27,
+        "distinct_days": 10,
+        "proposal_long": 23,
+        "proposal_short": 15,
+        "source_rejections": {
+          "EMA_NOT_READY": 4,
+          "EMA150_DIRECTION": 7,
+          "MOM12_DIRECTION": 0,
+          "SPREAD_GATE": 0,
+          "NO_EXECUTABLE_TICK": 0
+        }
+      },
+      "combined": {
+        "trades": 14061,
+        "raw_positive_wins": 6438,
+        "official_wins": 6365,
+        "losses": 7623,
+        "p01_hits": 5210,
+        "m30_only_hits": 1560,
+        "owned_exit_suppressed_rearms": 8803,
+        "ordinary_entries": 11916,
+        "gross_profit": 1360.59,
+        "gross_loss": -4308.67,
+        "net_profit": -2948.08,
+        "max_balance_drawdown": 2949.07,
+        "max_equity_drawdown": 2949.57,
+        "average_hold_seconds": 6.77398478059882,
+        "parent_specialist_entries": 2118,
+        "parent_specialist_net": -491.44,
+        "sources": {
+          "DH03_S06": {
+            "entries": 1329,
+            "official_wins": 582,
+            "net_profit": -298.55
+          },
+          "DH05_S06": {
+            "entries": 598,
+            "official_wins": 249,
+            "net_profit": -140.23
+          },
+          "DH02_S11": {
+            "entries": 95,
+            "official_wins": 38,
+            "net_profit": -24.68
+          },
+          "DH02_S08": {
+            "entries": 96,
+            "official_wins": 33,
+            "net_profit": -27.98
+          },
+          "SORB": {
+            "entries": 27,
+            "official_wins": 15,
+            "net_profit": -3.9
+          }
+        },
+        "sorb_outcomes": {
+          "ACCEPTED": 27,
+          "POSITION_BLOCKED": 0,
+          "PARENT_SAME_TICK_COLLISION": 0,
+          "OTHER_BLOCKED": 0
+        },
+        "vce_entries": 27,
+        "vce_net": -3.9,
+        "vce_source_contribution": {
+          "entries": 27,
+          "official_wins": 15,
+          "net_profit": -3.9
+        }
+      },
+      "decision": {
+        "proposal_supply_ok": true,
+        "incremental_entry_floor_ok": true,
+        "combined_trade_count_not_lower": true,
+        "winner_or_quality_gate_ok": true,
+        "net_not_worse_than_2usd": false,
+        "drawdown_deterioration_within_1pct": true,
+        "screen_pass": false,
+        "strong_screen_pass": false,
+        "trade_delta": 27,
+        "official_win_delta": 16,
+        "gross_profit_delta": 3.33,
+        "gross_loss_delta": -6.47,
+        "net_delta": -3.14,
+        "max_balance_dd_delta_pct": 0.10658773290608832,
+        "max_equity_dd_delta_pct": 0.10656964529957703,
+        "incremental_net_per_vce_entry": -0.12
+      }
+    },
+    "R037-VCE-C03_BBKC_RELEASE": {
+      "supply": {
+        "proposals": 27,
+        "source_eligible": 27,
+        "distinct_days": 11,
+        "proposal_long": 16,
+        "proposal_short": 11,
+        "source_rejections": {
+          "EMA_NOT_READY": 0,
+          "EMA150_DIRECTION": 0,
+          "MOM12_DIRECTION": 0,
+          "SPREAD_GATE": 0,
+          "NO_EXECUTABLE_TICK": 0
+        }
+      },
+      "combined": {
+        "trades": 14061,
+        "raw_positive_wins": 6442,
+        "official_wins": 6369,
+        "losses": 7619,
+        "p01_hits": 5211,
+        "m30_only_hits": 1559,
+        "owned_exit_suppressed_rearms": 8803,
+        "ordinary_entries": 11916,
+        "gross_profit": 1361.39,
+        "gross_loss": -4306.46,
+        "net_profit": -2945.07,
+        "max_balance_drawdown": 2946.06,
+        "max_equity_drawdown": 2946.56,
+        "average_hold_seconds": 6.773629187113292,
+        "parent_specialist_entries": 2118,
+        "parent_specialist_net": -491.44,
+        "sources": {
+          "DH03_S06": {
+            "entries": 1329,
+            "official_wins": 582,
+            "net_profit": -298.55
+          },
+          "DH05_S06": {
+            "entries": 598,
+            "official_wins": 249,
+            "net_profit": -140.23
+          },
+          "DH02_S11": {
+            "entries": 95,
+            "official_wins": 38,
+            "net_profit": -24.68
+          },
+          "DH02_S08": {
+            "entries": 96,
+            "official_wins": 33,
+            "net_profit": -27.98
+          },
+          "SORB": {
+            "entries": 27,
+            "official_wins": 20,
+            "net_profit": 0.71
+          }
+        },
+        "sorb_outcomes": {
+          "ACCEPTED": 27,
+          "POSITION_BLOCKED": 0,
+          "PARENT_SAME_TICK_COLLISION": 0,
+          "OTHER_BLOCKED": 0
+        },
+        "vce_entries": 27,
+        "vce_net": 0.71,
+        "vce_source_contribution": {
+          "entries": 27,
+          "official_wins": 20,
+          "net_profit": 0.71
+        }
+      },
+      "decision": {
+        "proposal_supply_ok": true,
+        "incremental_entry_floor_ok": true,
+        "combined_trade_count_not_lower": true,
+        "winner_or_quality_gate_ok": true,
+        "net_not_worse_than_2usd": true,
+        "drawdown_deterioration_within_1pct": true,
+        "screen_pass": true,
+        "strong_screen_pass": false,
+        "trade_delta": 27,
+        "official_win_delta": 20,
+        "gross_profit_delta": 4.13,
+        "gross_loss_delta": -4.26,
+        "net_delta": -0.13,
+        "max_balance_dd_delta_pct": 0.0044128679228667735,
+        "max_equity_dd_delta_pct": 0.004412119072915669,
+        "incremental_net_per_vce_entry": -0.0
+      }
+    },
+    "R037-VCE-C04_BBKC_RELEASE_MOM12": {
+      "supply": {
+        "proposals": 27,
+        "source_eligible": 27,
+        "distinct_days": 11,
+        "proposal_long": 16,
+        "proposal_short": 11,
+        "source_rejections": {
+          "EMA_NOT_READY": 0,
+          "EMA150_DIRECTION": 0,
+          "MOM12_DIRECTION": 0,
+          "SPREAD_GATE": 0,
+          "NO_EXECUTABLE_TICK": 0
+        }
+      },
+      "combined": {
+        "trades": 14061,
+        "raw_positive_wins": 6442,
+        "official_wins": 6369,
+        "losses": 7619,
+        "p01_hits": 5211,
+        "m30_only_hits": 1559,
+        "owned_exit_suppressed_rearms": 8803,
+        "ordinary_entries": 11916,
+        "gross_profit": 1361.39,
+        "gross_loss": -4306.46,
+       "net_profit": -2945.07,
+        "max_balance_drawdown": 2946.06,
+        "max_equity_drawdown": 2946.56,
+        "average_hold_seconds": 6.773629187113292,
+        "parent_specialist_entries": 2118,
+        "parent_specialist_net": -491.44,
+        "sources": {
+          "DH03_S06": {
+            "entries": 1329,
+            "official_wins": 582,
+            "net_profit": -298.55
+          },
+          "DH05_S06": {
+            "entries": 598,
+            "official_wins": 249,
+            "net_profit": -140.23
+          },
+          "DH02_S11": {
+            "entries": 95,
+            "official_wins": 38,
+            "net_profit": -24.68
+          },
+          "DH02_S08": {
+            "entries": 96,
+            "official_wins": 33,
+            "net_profit": -27.98
+          },
+          "SORB": {
+            "entries": 27,
+            "official_wins": 20,
+            "net_profit": 0.71
+          }
+        },
+        "sorb_outcomes": {
+          "ACCEPTED": 27,
+          "POSITION_BLOCKED": 0,
+          "PARENT_SAME_TICK_COLLISION": 0,
+          "OTHER_BLOCKED": 0
+        },
+        "vce_entries": 27,
+        "vce_net": 0.71,
+        "vce_source_contribution": {
+          "entries": 27,
+          "official_wins": 20,
+          "net_profit": 0.71
+        }
+      },
+      "decision": {
+        "proposal_supply_ok": true,
+        "incremental_entry_floor_ok": true,
+        "combined_trade_count_not_lower": true,
+        "winner_or_quality_gate_ok": true,
+        "net_not_worse_than_2usd": true,
+        "drawdown_deterioration_within_1pct": true,
+        "screen_pass": true,
+        "strong_screen_pass": false,
+        "trade_delta": 27,
+        "official_win_delta": 20,
+        "gross_profit_delta": 4.13,
+        "gross_loss_delta": -4.26,
+        "net_delta": -0.13,
+        "max_balance_dd_delta_pct": 0.0044128679228667735,
+        "max_equity_dd_delta_pct": 0.004412119072915669,
+        "incremental_net_per_vce_entry": -0.0
+      }
+    }
+  },
+  "ranking": [
+    {
+      "config_id": "R037-VCE-C04_BBKC_RELEASE_MOM12",
+      "strong_screen_pass": false,
+      "screen_pass": true,
+      "net_delta": -0.13,
+      "trade_delta": 27,
+      "official_win_delta": 20,
+      "accepted_entries": 27,
+      "direct_vce_net": 0.71
+    },
+    {
+      "config_id": "R037-VCE-C03_BBKC_RELEASE",
+      "strong_screen_pass": false,
+      "screen_pass": true,
+      "net_delta": -0.13,
+      "trade_delta": 27,
+      "official_win_delta": 20,
+      "accepted_entries": 27,
+      "direct_vce_net": 0.71
+    },
+    {
+      "config_id": "R037-VCE-C02_ORION_M5_BOX15_EMA150",
+      "strong_screen_pass": false,
+      "screen_pass": false,
+      "net_delta": -3.14,
+      "trade_delta": 27,
+      "official_win_delta": 16,
+      "accepted_entries": 27,
+      "direct_vce_net": -3.9
+    },
+    {
+      "config_id": "R037-VCE-C01_ORION_M5_BOX15",
+      "strong_screen_pass": false,
+      "screen_pass": false,
+      "net_delta": -5.1,
+      "trade_delta": 36,
+      "official_win_delta": 20,
+      "accepted_entries": 36,
+      "direct_vce_net": -6.44
+    }
+  ],
+  "finding": {
+    "strong_screen_survivors": [],
+    "leading_config": "R037-VCE-C04_BBKC_RELEASE_MOM12",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "mql5_authorized": false
+}
