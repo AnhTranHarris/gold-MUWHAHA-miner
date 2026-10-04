@@ -12,26 +12,27 @@
   ],
   "durable_cursor": {
     "last_verified_durable_unit": "R037_COMEX_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AC",
-    "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
-    "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "current_phase": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_17AD_INFLIGHT",
+    "first_incomplete_unit": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_17AD",
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_COMEX_15M_OPENING_RANGE_CHECKPOINT_17AC_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "IDLE",
-    "phase_rank": 0,
+    "unit": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_17AD",
+    "status": "PRODUCER_COMMITTED",
+    "phase_rank": 2,
     "parent_durable_unit": "R037_COMEX_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AC",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_COMEX_15M_OPENING_RANGE_CHECKPOINT_17AC.json",
-        "commit": "5122a874de4a536b944a138943872c5d15222a9e"
+        "path": "research/delta/reference/DELTA_R037_PDH_PDL_SWEEP_RECLAIM_PREREG_17AD.json",
+        "commit": "e37857a09553454b4477a6bc00003288ce3fd775"
       },
       {
-        "path": "research/delta/artifacts/DELTA_R037_COMEX_15M_OPENING_RANGE_CHECKPOINT_17AC_MANIFEST.json",
-        "commit": "52fdddcbfefc965bf7e78644c14680d15c59c38e"
+        "path": "research/delta/experiments/delta_r037_pdh_pdl_sweep_reclaim_17ad.py",
+        "commit": "1d286c88583b7c3208bd338d734749df439c2897",
+        "blob_sha": "4a30f52c33d86120940b7b6f6fa7cc7c908982fc"
       }
     ],
-    "next_action": "Preregister next structurally distinct independent source; 17AC is complete and retired.",
+    "next_action": "Run exact committed 17AD producer once; if result appears, resume only missing durability phases.",
     "completed_months": [
       "2026-01_STAGE_A"
     ],
