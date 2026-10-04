@@ -10,28 +10,31 @@
     "active rebuild manifest"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_VSBR_STAGE_A_SCREEN_CHECKPOINT_17AN",
+    "last_verified_durable_unit": "R037_RLSFG_STAGE_A_SCREEN_CHECKPOINT_17AO",
     "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
     "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_VSBR_STAGE_A_SCREEN_CHECKPOINT_17AN_MANIFEST.json"
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_RLSFG_STAGE_A_SCREEN_CHECKPOINT_17AO_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_ROLLING_LIQUIDITY_SWEEP_FOLLOW_THROUGH_GUARD_STAGE_A_SCREEN",
-    "status": "IN_PROGRESS",
-    "phase": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
-    "parent_durable_unit": "R037_VSBR_STAGE_A_SCREEN_CHECKPOINT_17AN",
+    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "status": "IDLE",
+    "phase_rank": 0,
+    "parent_durable_unit": "R037_RLSFG_STAGE_A_SCREEN_CHECKPOINT_17AO",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_RLSFG_STAGE_A_PREREG_17AO.json",
-        "commit": "b13e98eccf79d4394a6e47f7c79a073ec0b66727"
+        "path": "research/delta/reference/DELTA_R037_RLSFG_STAGE_A_SCREEN_CHECKPOINT_17AO.json",
+        "commit": "a2bc52a08348bdba8f49b5c90bf3e70638c23322"
       },
       {
-        "path": "research/delta/experiments/delta_r037_rlsfg_stage_a_17ao.py",
-        "commit": "819638dcb2a9fd47e2251ce0aec3a987930e1df4"
+        "path": "research/delta/research/DELTA_R037_RLSFG_STAGE_A_SCREEN_CHECKPOINT_17AO.md",
+        "commit": "9d90d6577e03bd85145229cf65964f80cf23f440"
+      },
+      {
+        "path": "research/delta/artifacts/DELTA_R037_RLSFG_STAGE_A_SCREEN_CHECKPOINT_17AO_MANIFEST.json",
+        "commit": "996588e3eb1385e4e8e91f733f729f0ae39f0ca2"
       }
     ],
-    "next_action": "Exact-blob verify 17AO producer then run official Stage-A compute under 120-second hard timeout.",
+    "next_action": "Preregister next independent entry-source family.",
     "completed_months": [],
     "next_month": null
   },
