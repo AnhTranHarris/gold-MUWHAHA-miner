@@ -1,0 +1,65 @@
+{
+  "schema": "delta-r037-savwap-fast-retest-prereg-17bu-17bv-v1",
+  "status": "PREREGISTERED_BEFORE_PRODUCER_AND_OFFICIAL_COMPUTE",
+  "unit": "R037_STRUCTURE_ANCHORED_VWAP_FAST_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BU_17BV",
+  "family": "STRUCTURE_ANCHORED_VWAP_FAST_RETEST",
+  "parent_checkpoint": "R037_AVPBR_SUPPLY_CALIBRATED_STAGE_A_SCREEN_CHECKPOINT_17BR_17BT",
+  "source_basis": {
+    "tradingview": "Structure-Anchored VWAP [WillyAlgoTrader], open-source public description.",
+    "anchor_mode": "Fast",
+    "fast_extreme_lookback": 30,
+    "price_source": "hl2",
+    "weighting": "Cumulative",
+    "clamp_volume_spikes": true,
+    "volume_spike_cap_multiple_of_median": 4,
+    "volume_median_lookback_bars": 50,
+    "bars_away_before_retest": 5,
+    "touch_tolerance_sigma": 0.25,
+    "zero_sigma_fallback_atr_multiple": 0.1,
+    "max_leg_length_bars": 4000,
+    "note": "Source-published defaults. DELTA uses Dukascopy tick count as bar-volume proxy because centralized exchange volume is unavailable."
+  },
+  "causal_grammar": {
+    "fast_anchor": "A strict new 30-bar low starts/refreshes a bullish leg; a strict new 30-bar high starts/refreshes a bearish leg. If both occur on one bar, candle direction resolves: bullish candle -> bullish leg from the low, bearish candle -> bearish leg from the high.",
+    "same_type_extreme": "A more extreme same-direction anchor refreshes that leg from the new extreme.",
+    "opposite_extreme": "Flips leg direction and reanchors immediately on the completed bar.",
+    "vwap": "Cumulative sum(hl2 * capped tick-count weight) / sum(capped tick-count weight), reset on anchor.",
+    "sigma": "Volume-weighted standard deviation from same anchor.",
+    "retest": "touch low<=VWAP+tol and high>=VWAP-tol after committed away counter >=5; away bullish if low>VWAP+tol, bearish if high<VWAP-tol.",
+    "entry": "Retest bar itself is the signal; execute first P75 tick at/after completed bar end."
+  },
+  "configs": [
+    {
+      "name": "17BU_C01_SAVWAP_FAST_M1",
+      "bar_ms": 60000
+    },
+    {
+      "name": "17BV_C02_SAVWAP_FAST_M5",
+      "bar_ms": 300000
+    }
+  ],
+  "execution": {
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "commission_usd_each_side": 0.01
+  },
+  "gates": {
+    "minimum_trades": 20,
+    "minimum_distinct_days": 5,
+    "direct_net_usd_min": 0,
+    "advance_rule": "Advance unchanged lane only if supply and nonnegative direct net pass."
+  },
+  "prohibited": [
+    "no lookback/touch/away/volume-cap sweep",
+    "no session/side/weekday filter",
+    "no stop/trail/hold rescue",
+    "no August",
+    "no MQL5"
+  ],
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
