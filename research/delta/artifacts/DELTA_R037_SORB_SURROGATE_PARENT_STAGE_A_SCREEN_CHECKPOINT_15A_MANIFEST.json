@@ -1,0 +1,232 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A",
+  "status": "VERIFIED_RESEARCH_COMPLETE_PENDING_STATE_ADVANCE",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_CHECKPOINT_14B",
+  "hypothesis": "Among the five preregistered frozen SORB configurations, at least one may add causally independent opening-range entries to the provenance-limited 14A surrogate parent without reducing combined activity/winners, worsening net by more than $2, or deteriorating drawdown by more than 1%.",
+  "falsification_condition": "No frozen SORB configuration passes the preregistered surrogate-parent screen, or any apparent improvement depends on retuning, stale producer bytes, specialist fingerprint drift, parent-control drift, August access, or a compensating drawdown/winner failure.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "14A surrogate parent plus preregistered SORB Stage-A supply",
+    "reference_count": 14034,
+    "minimum_count": 14034,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Strong winner C04 increased combined trade count 14,034 -> 14,051; this is a non-promoting surrogate-parent screen."
+  },
+  "primary_metrics": {
+    "entry_quality": "Incremental SORB proposal/acceptance quality under exact causal scheduler interaction.",
+    "hold_persistence": "Frozen R9 lifecycle; no exit retuning.",
+    "economics": "Combined net delta and direct SORB contribution versus exact 14A surrogate parent.",
+    "gross_loss_drawdown": "Gross-loss delta plus balance/equity drawdown percentage delta.",
+    "activity": "Trade-count and official-win deltas plus distinct-day/proposal supply."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_sorb_surrogate_parent_stage_a.py",
+      "commit": "d1c5a36f502bf2ec59ce81388472963a4d4a71c1",
+      "blob_sha": "4dd2209c161d555cb814e3875553219373ad1f9b",
+      "sha256": "0e0db32717636e54a160fbca34dac4a112712fb401b1f011f66e60361c2306b5"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/experiments/delta_r037_sorb.py",
+      "blob_sha": "3c701ec52b435b907a2f7d96a143f6a4460551a6"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_r032_parent_backbone.py",
+      "blob_sha": "12e037bc44c8587f2305357ff085380473c40963"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_event_multiplicity_engine.py",
+      "blob_sha": "0f5e458ec1c6274766a3b5fb7d04efc8bf4f661f"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_conditional_failure_clock_challenger_replay.py",
+      "blob_sha": "0749a0f326ff0a81006f7234f5065963e26e8dab"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh02_s11_armed_boundary_lifetime_rearm.py",
+      "blob_sha": "49e5c91c41a56b84017a1d2f2dc8c4104ed9e12f"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh02_s08_context_placement_parity.py"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "numeric_retuning": false,
+      "surrogate_parent": "14A_BACKBONE_FIRST_C03_WITH_FROZEN_PROVENANCE_LIMITED_SPECIALISTS",
+      "scheduler": "BACKBONE_FIRST_FLAT_ONLY_CONFIG_ORDER",
+      "frozen_configs": [
+        "R037-C01_LONDON_15",
+        "R037-C02_COMEX_15",
+        "R037-C03_DUAL_15",
+        "R037-C04_DUAL_30",
+        "R037-C05_DUAL_15_CONFIRM2"
+      ],
+      "leading_config": "R037-C04_DUAL_30",
+      "promotable": false
+    },
+    "feature_order": [
+      "14A exact surrogate-parent control",
+      "DH03-S06",
+      "DH05-S06",
+      "DH02-S11",
+      "DH02-S08",
+      "SORB first-confirmation session proposals"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Preregistered Stage-A screen only; winner must proceed to independent validation without retuning."
+    },
+    "runtime_dependencies": [
+      "Python 3.11-compatible semantics",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_runner_timeout_seconds": 120,
+      "atomic_result_write": true,
+      "exact_git_blob_preexecution_verification": true,
+      "current_inflight_cursor": true,
+      "timeout_recovery_pointer": true,
+      "specialist_signal_fingerprint_gate": true,
+      "parent_control_gate": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "15A preregistration",
+      "path": "research/delta/reference/DELTA_R037_SORB_SURROGATE_PARENT_STAGE_A_EVIDENCE_15A.json",
+      "blob_sha": "9c0c98a68994bb0d6ab9cd017ed7e9757348af77"
+    },
+    {
+      "name": "14B parent readiness checkpoint",
+      "path": "research/delta/artifacts/DELTA_R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_CHECKPOINT_14B_MANIFEST.json"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "SORB proposals by frozen session/range/confirmation configuration"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "C04 accepted SORB entries: 17"
+    ],
+    "caches": [
+      "Tick-rooted S1/S5/S15/M1/M5/M15/M30/H1/H4 causal helper surfaces; Numba cache isolated for bounded local compute."
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A.json",
+      "blob_sha": "ca1a833e400a7bb6de681bf7e3f2024757885830",
+      "official_local_raw_result_sha256": "7a9033a544cd7b6969b842bd84c868d4fcd63ed063129821c69255f05f1ebcf8"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A.md",
+      "blob_sha": "34af2f3fa1ba35c028f73c81f73d657de4172d1c"
+    }
+  ],
+  "qa": [
+    "Canonical January SHA-256 verified exactly.",
+    "Stage-A tick count = 4,205,709 and tick chronology monotonic.",
+    "DH03-S06 signal fingerprint reproduced exactly at 1,586.",
+    "DH05-S06 signal fingerprint reproduced exactly at 651 with zero overflow.",
+    "DH02-S11 signal fingerprint reproduced exactly at 103.",
+    "DH02-S08 signal fingerprint reproduced exactly at 104.",
+    "14A surrogate parent reproduced exactly at 14,034 trades / 6,349 official wins / -$2,944.94 net / $2,946.43 max equity DD.",
+    "C04 DUAL_30 produced 22 proposals, 21 source-eligible, 11 distinct days, and 17 accepted entries.",
+    "C04 combined trade delta +17 and official-win delta +12.",
+    "C04 combined net delta +$1.52 and max equity DD delta -0.0516%.",
+    "C04 direct SORB contribution +$0.84; London +$0.14 and COMEX +$0.70.",
+    "C04 is the only strong-screen pass; C01/C02 ordinary pass only; C03/C05 fail.",
+    "No numeric retuning; August sealed; MQL5 unauthorized.",
+    "Workbook 69 R037 Research Harvest A80:L90 written and read back.",
+    "Result committed before report/manifest/state advance."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_sorb_surrogate_parent_stage_a.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python -X faulthandler research/delta/experiments/delta_r037_sorb_surrogate_parent_stage_a.py --source <canonical_january_gzip> --output <15a_result_json>",
+    "timing_semantics": "Ordered ticks; completed bars only after right edge; parent same-tick priority; one position at a time; first SORB confirmation consumes session; blocked events are never deferred; no SORB rearm.",
+    "expected_fingerprints": {
+      "parent_trades": 14034,
+      "parent_official_wins": 6349,
+      "parent_net": -2944.94,
+      "specialist_signal_counts": {
+        "DH03_S06": 1586,
+        "DH05_S06": 651,
+        "DH02_S11": 103,
+        "DH02_S08": 104
+      },
+      "c04": {
+        "accepted_entries": 17,
+        "trade_delta": 17,
+        "official_win_delta": 12,
+        "net_delta": 1.52,
+        "max_equity_dd_delta_pct": -0.05158785377558543
+      }
+    },
+    "decision": "FREEZE_R037_C04_DUAL_30_FOR_INDEPENDENT_VALIDATION_NON_PROMOTING"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — surrogate-parent research lane only",
+    "feature_timing_spec": "NOT READY",
+    "state_machine_spec": "NOT READY",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA Bid/Ask semantics",
+    "ownership_scheduler_spec": "14A BACKBONE_FIRST surrogate scheduler plus SORB parent-priority collision semantics",
+    "session_dst_spec": "frozen 2026 London/COMEX UTC conversion",
+    "risk_spec": "fixed 0.01 research semantics",
+    "trade_count_parity_spec": "Independent C04 validation required before any promotion discussion.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "supersedes": [],
+  "rollback_target": "R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_CHECKPOINT_14B",
+  "github_commits": [
+    "d1c5a36f502bf2ec59ce81388472963a4d4a71c1",
+    "2418379d2cb1374c17e584ea71d9ef0b6596d192",
+    "7795b0a62480ac3094a4304fdb27e34b9b480459",
+    "1ef471761e921c68434fb4f3e8e055ac9bb9ef59",
+    "ec1116e529f41dbbe659f371febf5093431a52c6"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A80:L90",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION"
+}
