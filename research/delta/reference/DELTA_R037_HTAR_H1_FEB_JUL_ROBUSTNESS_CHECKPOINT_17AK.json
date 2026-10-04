@@ -1,0 +1,151 @@
+{
+  "schema": "delta-r037-htar-h1-feb-jul-robustness-17ak-v1",
+  "status": "COMPLETE_MONTH_BY_MONTH_VALIDATION",
+  "unit": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_VALIDATION",
+  "candidate": "R037-HTAR-C01_H1_ANCHOR",
+  "parent_checkpoint": "R037_HTAR_H1_LATER_JAN_CHECKPOINT_17AJ",
+  "prereg_commit": "4731471b6fa4697552c28bbc3c8adaaff250a909",
+  "producer_commit": "a07834f819907cbf1bdd1f8439fede1479f9c631",
+  "producer_blob_sha": "3577223d7be4b0ee6282fff34a17dfb366741e56",
+  "months": {
+    "2026-02": {
+      "metrics": {
+        "proposals": 13,
+        "eligible": 13,
+        "trades": 13,
+        "distinct_days": 8,
+        "long": 10,
+        "short": 3,
+        "official_wins": 8,
+        "gross_profit": 3.28,
+        "gross_loss": -4.5,
+        "direct_net_usd": -1.22,
+        "exit_reasons": {
+          "STOP": 13,
+          "MAX_HOLD": 0,
+          "END": 0
+        }
+      },
+      "result_sha256": "1de10a5fa09851ff065d866edb61840e626d0cb823944c519182b97bb5bbb035"
+    },
+    "2026-03": {
+      "metrics": {
+        "proposals": 9,
+        "eligible": 8,
+        "trades": 8,
+        "distinct_days": 7,
+        "long": 3,
+        "short": 5,
+        "official_wins": 4,
+        "gross_profit": 1.76,
+        "gross_loss": -2.93,
+        "direct_net_usd": -1.17,
+        "exit_reasons": {
+          "STOP": 8,
+          "MAX_HOLD": 0,
+          "END": 0
+        }
+      },
+      "result_sha256": "afd25fab0da4ded6c1ff9197698841446e4a53fc34e0cbc59e66451747ac7c86"
+    },
+    "2026-04": {
+      "metrics": {
+        "proposals": 14,
+        "eligible": 13,
+        "trades": 13,
+        "distinct_days": 11,
+        "long": 9,
+        "short": 4,
+        "official_wins": 4,
+        "gross_profit": 1.1,
+        "gross_loss": -5.61,
+        "direct_net_usd": -4.51,
+        "exit_reasons": {
+          "STOP": 13,
+          "MAX_HOLD": 0,
+          "END": 0
+        }
+      },
+      "result_sha256": "2fa80c7219a57e4c2598bd9b0ae79b3fdc34ce8cb9d7abec7e3c39e9a45cd113"
+    },
+    "2026-05": {
+      "metrics": {
+        "proposals": 7,
+        "eligible": 7,
+        "trades": 7,
+        "distinct_days": 7,
+        "long": 3,
+        "short": 4,
+        "official_wins": 4,
+        "gross_profit": 0.78,
+        "gross_loss": -1.77,
+        "direct_net_usd": -0.99,
+        "exit_reasons": {
+          "STOP": 7,
+          "MAX_HOLD": 0,
+          "END": 0
+        }
+      },
+      "result_sha256": "c6b46f585866a5c239ec4c73d8ce31765194b59099f7c0c83790c2214b5e5225"
+    },
+    "2026-06": {
+      "metrics": {
+        "proposals": 9,
+        "eligible": 9,
+        "trades": 9,
+        "distinct_days": 8,
+        "long": 4,
+        "short": 5,
+        "official_wins": 5,
+        "gross_profit": 1.7,
+        "gross_loss": -1.86,
+        "direct_net_usd": -0.16,
+        "exit_reasons": {
+          "STOP": 9,
+          "MAX_HOLD": 0,
+          "END": 0
+        }
+      },
+      "result_sha256": "52ae65ed4ded280fd072e0bb19dfba91a1b02eb6df8b77e05dade11dbab16f3c"
+    },
+    "2026-07": {
+      "metrics": {
+        "proposals": 15,
+        "eligible": 15,
+        "trades": 15,
+        "distinct_days": 12,
+        "long": 5,
+        "short": 10,
+        "official_wins": 4,
+        "gross_profit": 0.94,
+        "gross_loss": -6.25,
+        "direct_net_usd": -5.31,
+        "exit_reasons": {
+          "STOP": 15,
+          "MAX_HOLD": 0,
+          "END": 0
+        }
+      },
+      "result_sha256": "606c0a099200206e563e89cad3297e46894b7bf9a90eb87a58663d7fe5f9bf7a"
+    }
+  },
+  "aggregate": {
+    "trades": 65,
+    "official_wins": 29,
+    "gross_profit": 9.56,
+    "gross_loss": -22.92,
+    "direct_net_usd": -13.36,
+    "nonnegative_months": 0
+  },
+  "gate": {
+    "total_trades_min_24": true,
+    "nonnegative_months_min_4": false,
+    "aggregate_net_nonnegative": false,
+    "robustness_pass": false
+  },
+  "candidate_retuned": false,
+  "august_accessed": false,
+  "decision": "RETIRE_HTAR_H1_NO_RETUNE",
+  "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "mql5_authorized": false
+}
