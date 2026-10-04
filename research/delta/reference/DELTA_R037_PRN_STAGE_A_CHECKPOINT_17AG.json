@@ -1,0 +1,46 @@
+{
+  "schema": "delta-r037-prn-stage-a-checkpoint-17ag-v1",
+  "status": "COMPLETE_STAGE_A_FAIL_FAMILY_RETIRED",
+  "unit": "R037_PSYCHOLOGICAL_ROUND_LIQUIDITY_STAGE_A_SCREEN",
+  "checkpoint": "17AG",
+  "family": "R037-PRN-v1",
+  "prereg_commit": "966e7ab5d868b6a622eaef5ea598deb0cd7e1b98",
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_prn_stage_a_17ag.py",
+    "commit": "8833a795c9f2fa2ed3839d6ba927e0ac028ac545",
+    "blob_sha": "800a3bf113e045b59c879735d46ba66cd95bca59"
+  },
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "configs": {
+    "C01_10_S5_RECLAIM": {
+      "trades": 906,
+      "wins": 426,
+      "net": -185.06
+    },
+    "C02_5_S5_RECLAIM": {
+      "trades": 1841,
+      "wins": 858,
+      "net": -384.33
+    },
+    "C03_10_S15_RECLAIM": {
+      "trades": 1030,
+      "wins": 444,
+      "net": -253.75
+    },
+    "C04_5_S15_RECLAIM": {
+      "trades": 2123,
+      "wins": 946,
+      "net": -477.98
+    }
+  },
+  "leading_config": "C01_10_S5_RECLAIM",
+  "raw_result_sha256": "8421ed2f4f349dca68160a19f2b679ac74afb3ac69bcf7b8ed46478d16a5ac59",
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "decision": "RETIRE_FAMILY_NO_RETUNE",
+  "forensic_finding": "Psychological round levels provide abundant locations but simple S5/S15 reclaim is not a viable 30-second entry edge.",
+  "next_unit": "R037_CONFIRMED_SWING_SWEEP_DISPLACEMENT_STAGE_A_SCREEN",
+  "mql5_authorized": false
+}
