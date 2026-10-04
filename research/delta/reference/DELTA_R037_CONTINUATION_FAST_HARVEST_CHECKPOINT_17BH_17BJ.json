@@ -1,0 +1,21 @@
+{
+  "schema": "delta-r037-continuation-fast-harvest-17bh-17bj-v1",
+  "status": "COMPLETE_FAST_CAUSAL_PRESCREEN",
+  "unit": "R037_CONTROLLED_PAUSE_CONTINUATION_FAST_HARVEST_17BH_17BJ",
+  "parent_checkpoint": "R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG",
+  "prereg_commit": "f5d82ec9e5b07f28e737b03dc4c907ce95731bbe",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "signal_surfaces": {"17BH_3BP_M1":"NATIVE_DUKAS_M1_MID","17BI_IB_M15_BASE":"NATIVE_DUKAS_M15_MID","17BJ_IB_M15_PUBLISHED_QUALITY":"NATIVE_DUKAS_M15_MID"},
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "diagnostics": {"m1_bars":15180,"m15_bars":1012},
+  "configs": {
+    "17BH_3BP_M1":{"metrics":{"signals":34,"busy_skips":0,"spread_rejects":0,"trades":34,"distinct_days":13,"long":16,"short":18,"official_wins":19,"gross_profit":4.87,"gross_loss":-7.49,"direct_net_usd":-2.96,"exit_reasons":{"STOP":33,"MAX_HOLD":1,"END":0}},"gate":{"minimum_trades_20":true,"minimum_distinct_days_5":true,"direct_net_min_minus_1":false,"screen_pass":false,"strong_pass":false}},
+    "17BI_IB_M15_BASE":{"metrics":{"signals":51,"busy_skips":0,"spread_rejects":0,"trades":51,"distinct_days":11,"long":31,"short":20,"official_wins":20,"gross_profit":10.26,"gross_loss":-16.96,"direct_net_usd":-7.21,"exit_reasons":{"STOP":48,"MAX_HOLD":3,"END":0}},"gate":{"minimum_trades_20":true,"minimum_distinct_days_5":true,"direct_net_min_minus_1":false,"screen_pass":false,"strong_pass":false},"pattern_diagnostics":{"patterns":132,"qualified":132,"expired":81}},
+    "17BJ_IB_M15_PUBLISHED_QUALITY":{"metrics":{"signals":2,"busy_skips":0,"spread_rejects":0,"trades":2,"distinct_days":2,"long":2,"short":0,"official_wins":2,"gross_profit":0.12,"gross_loss":0.0,"direct_net_usd":0.1,"exit_reasons":{"STOP":2,"MAX_HOLD":0,"END":0}},"gate":{"minimum_trades_20":false,"minimum_distinct_days_5":false,"direct_net_min_minus_1":true,"screen_pass":false,"strong_pass":false},"pattern_diagnostics":{"patterns":132,"qualified":3,"expired":1}}
+  },
+  "finding":{"survivors":[],"decision":"RETIRE_BATCH_NO_EXECUTABLE_SURVIVOR","next":"R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"},
+  "mql5_authorized":false
+}
