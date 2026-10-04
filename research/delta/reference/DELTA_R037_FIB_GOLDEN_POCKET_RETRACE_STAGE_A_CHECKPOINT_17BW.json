@@ -1,0 +1,51 @@
+{
+  "schema": "delta-r037-fib-golden-pocket-retrace-stage-a-17bw-v1",
+  "status": "COMPLETE_FAST_CAUSAL_PRESCREEN",
+  "unit": "R037_FIB_GOLDEN_POCKET_IMPULSE_RETRACE_STAGE_A_SCREEN_CHECKPOINT_17BW",
+  "parent_checkpoint": "R037_STRUCTURE_ANCHORED_VWAP_FAST_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BU_17BV",
+  "prereg_commit": "48e0ce12f2c7bebb23f0fa3c5f7b882099f84dbc",
+  "producer": {
+    "commit": "3a8bc36a1131ad7ad7929116979f0c0db3a39cb3",
+    "blob_sha": "046994a2c1cc4ee17a8017004d1aa1d9536a5052",
+    "file_sha256": "9ccaec594bdac66d6a6c7a75bd453b622fc83ea97faceb1592a0a6d1b6fa961c"
+  },
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "source_defaults": {
+    "timeframe": "M5",
+    "pivot_length": 3,
+    "atr_length": 14,
+    "minimum_impulse_atr": 2.5,
+    "entry_retracement": 0.705,
+    "validity_bars": 15
+  },
+  "metrics": {
+    "signals": 138,
+    "trades": 138,
+    "distinct_days": 11,
+    "long": 64,
+    "short": 74,
+    "official_wins": 54,
+    "gross_profit": 14.02,
+    "gross_loss": -48.34,
+    "direct_net_usd": -35.7
+  },
+  "diagnostics": {
+    "confirmed_highs": 290,
+    "confirmed_lows": 281,
+    "same_type_supersedes": 52,
+    "opposite_legs": 474,
+    "qualified_impulses": 268,
+    "unqualified_legs": 206,
+    "pending_superseded": 95,
+    "expired": 34,
+    "fills": 138
+  },
+  "finding": {
+    "decision": "RETIRE_FIB_GOLDEN_POCKET_NO_STAGE_A_SURVIVOR",
+    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+  },
+  "official_raw_result_sha256": "b6d9d038a9a5d90c437c7ee59598f5462a13200ad0cef50dc15c239867571e6c",
+  "august_accessed": false,
+  "mql5_authorized": false
+}
