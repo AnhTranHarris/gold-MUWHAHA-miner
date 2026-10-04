@@ -21,8 +21,8 @@
   },
   "in_flight_unit": {
     "unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION",
-    "status": "IN_PROGRESS",
-    "phase_rank": 2,
+    "status": "COMPLETE",
+    "phase_rank": 7,
     "parent_durable_unit": "R037_SORB_SURROGATE_PARENT_STAGE_A_SCREEN_CHECKPOINT_15A",
     "committed_artifacts": [
       {
@@ -31,11 +31,24 @@
       },
       {
         "path": "research/delta/experiments/delta_r037_sorb_c04_dual30_independent_validation.py",
-        "commit": "fd7cc2262cb615a350ebee7d48bc7b017261dd4a",
-        "blob_sha": "472ce67fa4a1d7615b256236e8b78701d528ae65"
+        "commit": "10bd1f16f3f4757b652cfe50bc90dab920f134cf",
+        "blob_sha": "87787466855efb1bc5a0602b195299380037e700"
+      },
+      {
+        "path": "research/delta/reference/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B.json",
+        "commit": "a4828ee6484bc9cd631fdf9038ac16680d9cf366",
+        "blob_sha": "75e1a8df7b022fcb01c4de03c2e04be623707e76"
+      },
+      {
+        "path": "research/delta/research/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B.md",
+        "blob_sha": "7cd5ccc861e2da2b671ba29a2b0e9cabbfd2c897"
+      },
+      {
+        "path": "research/delta/artifacts/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B_MANIFEST.json",
+        "commit": "50fc9347977c82c071a45bc033b3e88b5708e18b"
       }
     ],
-    "next_action": "Run hotfixed committed 15B producer with repo root on PYTHONPATH; if result exists after timeout, verify and continue durability steps only."
+    "next_action": "15B complete; advance durable cursor then harvest/preregister the next structurally independent entry source. Do not retune or reopen SORB."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
