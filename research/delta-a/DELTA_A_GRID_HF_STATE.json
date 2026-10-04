@@ -2,8 +2,8 @@
   "schema": "delta-a-grid-hf-state-v1",
   "lineage": "DELTA-A",
   "branch": "delta-A",
-  "checkpoint": "GRID-HF_R1_PAUSED",
-  "status": "RESEARCH_CHECKPOINT_NOT_MT5_AUTHORIZED",
+  "checkpoint": "GRID-HF_R2_REFINEMENT_02",
+  "status": "INTERIM_RESEARCH_NOT_MT5_AUTHORIZED",
   "parent_branch": "delta",
   "main_delta_modified": false,
   "instrument": "XAUUSD",
@@ -58,5 +58,16 @@
     "Complete later session/news/event-aware refinement",
     "Obtain explicit owner authorization before production MQL5"
   ],
-  "next_unit": "GRID-HF_R2_HIGH_VOLUME_DIRECTIONAL_OWNERSHIP_AND_SPECIALIST_ROUTING"
+  "next_unit": "R2_UNCHANGED_JAN_JUL_DURABILITY_AND_PORTFOLIO_CONCURRENCY",
+  "current_r2_refinement_02": {
+    "january_events": 39253,
+    "net_usd": 12239.46,
+    "avg_event_usd": 0.31181,
+    "profit_factor": 1.05976,
+    "positive_fraction": 0.503,
+    "sequence_drawdown_usd": 2057.6,
+    "positive_week_buckets": 5,
+    "all_broad_sessions_positive": true,
+    "hard_session_gate_recommended_now": false
+  }
 }
