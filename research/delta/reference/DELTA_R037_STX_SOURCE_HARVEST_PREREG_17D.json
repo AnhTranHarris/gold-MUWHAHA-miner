@@ -1,0 +1,99 @@
+{
+  "schema": "delta-r037-stx-source-harvest-prereg-v1",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "family": "R037-STX-v1",
+  "status": "FROZEN_BEFORE_STAGE_A_REPLAY",
+  "parent_checkpoint": "R037_RSI2_STAGE_A_SCREEN_CHECKPOINT_17C",
+  "purpose": "Test whether completed-bar stochastic reversal transitions time the next 30 seconds better than merely being in an extreme oscillator state.",
+  "independence": [
+    "No session range.",
+    "No previous-day level.",
+    "No compression prerequisite.",
+    "No price-channel breakout.",
+    "No RSI state entry.",
+    "Transition is defined by stochastic exit/crossover on completed bars."
+  ],
+  "public_logic_sources": [
+    {
+      "source": "MetaQuotes Code Base — Stochastic Protector",
+      "url": "https://www.mql5.com/en/code/74661",
+      "disclosed_logic": "Stochastic 14/3/3, 20/80 zones, explicit Crossing/Entering/Exiting semantics.",
+      "role": "Primary transition-semantics source."
+    },
+    {
+      "source": "MetaQuotes MQL5 forum — Stochastics recap",
+      "url": "https://www.mql5.com/en/forum/175236",
+      "disclosed_logic": "Classic stochastic construction, 20/80 extreme zones, %K/%D crossover signals, and exit-from-extreme signals.",
+      "role": "Formula and signal corroboration."
+    }
+  ],
+  "indicator_semantics": {
+    "stochastic": "slow stochastic: raw %K over 14 completed bars using high/low range; slow %K = SMA3(raw %K); %D = SMA3(slow %K)",
+    "zones": "oversold <20; overbought >80",
+    "proposal_timing": "first executable tick at or after completed signal-bar right edge"
+  },
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "stage_a_window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "ticks": 4205709
+  },
+  "configs": {
+    "R037-STX-C01_M1_D_EXIT20_80": {
+      "timeframe": "M1",
+      "trigger": "long when previous %D<20 and current %D>=20; short when previous %D>80 and current %D<=80"
+    },
+    "R037-STX-C02_M1_KD_CROSS_EXTREME": {
+      "timeframe": "M1",
+      "trigger": "long when %K crosses above %D with current %D<20; short when %K crosses below %D with current %D>80"
+    },
+    "R037-STX-C03_M5_D_EXIT20_80": {
+      "timeframe": "M5",
+      "trigger": "same %D exit grammar on M5"
+    },
+    "R037-STX-C04_M5_KD_CROSS_EXTREME": {
+      "timeframe": "M5",
+      "trigger": "same %K/%D extreme crossover grammar on M5"
+    }
+  },
+  "execution": {
+    "proposal_entry": "first executable tick at/after completed signal bar edge",
+    "spread_gate_points_max": 25,
+    "parent_same_tick_priority": true,
+    "blocked_event_deferred": false,
+    "candidate_rearm": "one independent proposal per qualifying completed-bar transition",
+    "one_position_at_a_time": true,
+    "lot": 0.01,
+    "stop_usd": 0.3,
+    "trail_activation_usd": 0.1,
+    "trail_distance_usd": 0.03,
+    "max_hold_seconds": 30,
+    "commission_round_trip_usd": 0.02
+  },
+  "screen_gate": {
+    "reuse": "Frozen R037 independent-source Stage-A screen.",
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "minimum_incremental_accepted_entries": 5,
+    "combined_trade_count_not_lower": true,
+    "winner_or_quality_gate": "official-win delta nonnegative OR positive net with improved gross loss",
+    "net_delta_min_usd": -2,
+    "max_balance_and_equity_dd_deterioration_pct": 1,
+    "strong_pass": "all gates plus net delta >= 0"
+  },
+  "forbidden": [
+    "Stochastic period/D/slowing tuning after result",
+    "20/80 threshold tuning after result",
+    "timeframe added after result",
+    "trend/session filter after result",
+    "posthoc long/short split",
+    "posthoc candidate merge",
+    "candidate-specific exit tuning",
+    "August",
+    "MQL5"
+  ],
+  "next_if_strong_pass": "R037_STX_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_no_strong_pass": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
