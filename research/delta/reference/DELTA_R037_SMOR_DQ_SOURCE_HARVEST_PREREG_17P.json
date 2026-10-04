@@ -1,0 +1,66 @@
+{
+  "schema": "delta-r037-smor-dq-source-harvest-prereg-v1",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "checkpoint_target": "R037_SMOR_DQ_STAGE_A_PRESCREEN_CHECKPOINT_17P",
+  "family": "R037-SMOR-DQ-v1",
+  "status": "FROZEN_BEFORE_STAGE_A_REPLAY",
+  "parent_clue": "R037-SMOR-C02_M1_MIDPOINT",
+  "purpose": "Refine the near-neutral 17H SMOR clue by adding only event-relative MSS displacement-quality semantics explicitly motivated by public MSS/OB logic; preserve the entire sweep→MSS→OB-midpoint lifecycle and frozen 30-second execution.",
+  "source_basis": [
+    {
+      "source": "MetaQuotes — Optimizing Liquidity Raids: Difference Between Liquidity Raids and Market Structure Shifts",
+      "url": "https://www.mql5.com/en/articles/21212",
+      "logic": "A valid MSS breaks opposing structure with speed and power; high-quality MSS often follows a liquidity grab."
+    },
+    {
+      "source": "MetaQuotes — Building an Object-Oriented Order Block Engine in MQL5",
+      "url": "https://www.mql5.com/en/articles/23341",
+      "logic": "Order-block validation separates displacement intensity from structural break; the impulse should show clear size imbalance versus prior quiet ranges."
+    }
+  ],
+  "frozen_base": "Exact 17H C02 M1 MIDPOINT: symmetric width-2 confirmed swing sweep/close-back-inside -> first later completed close through frozen opposite swing -> last opposite-colour candle between sweep and MSS becomes OB body -> first later interaction must reach OB midpoint and close on shift side -> first executable tick at right edge.",
+  "configs": {
+    "C01_MSS_BODY_GT_PREV_BODY": "MSS bar directional body magnitude must exceed immediately preceding completed M1 bar body magnitude.",
+    "C02_MSS_BODY_GT_SWEEP_BODY": "MSS bar directional body magnitude must exceed the original sweep-bar body magnitude.",
+    "C03_MSS_RANGE_GT_PREV_RANGE": "MSS bar full high-low range must exceed immediately preceding completed M1 bar range.",
+    "C04_MSS_BODY_GT_PREV_AND_SWEEP": "MSS bar directional body magnitude must exceed both immediately preceding-bar body and original sweep-bar body."
+  },
+  "execution": {
+    "spread_gate_points_max": 25,
+    "one_position_at_a_time": true,
+    "lot": 0.01,
+    "stop_usd": 0.3,
+    "trail_activation_usd": 0.1,
+    "trail_distance_usd": 0.03,
+    "max_hold_seconds": 30,
+    "commission_round_trip_usd": 0.02
+  },
+  "stage_a_window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "ticks": 4205709
+  },
+  "prescreen_gate": {
+    "minimum_proposals": 8,
+    "minimum_distinct_days": 4,
+    "minimum_executed_trades": 5,
+    "direct_net_min_usd": -2,
+    "preference": "improve direct source economics while retaining at least 8 proposals; no downstream retune"
+  },
+  "forbidden": [
+    "absolute displacement threshold sweep",
+    "ATR multiplier tuning",
+    "swing width tuning",
+    "OB zone tuning",
+    "retest-depth tuning",
+    "session filter",
+    "posthoc side split",
+    "exit tuning",
+    "August",
+    "MQL5"
+  ],
+  "next_if_pass": "R037_SMOR_DQ_FULL_PARENT_STAGE_A_SCREEN",
+  "next_if_fail": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
