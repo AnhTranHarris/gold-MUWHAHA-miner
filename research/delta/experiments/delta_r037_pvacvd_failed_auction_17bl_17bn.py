@@ -480,14 +480,15 @@ def main():
 
     ask_raw = d.ask_raw.to_numpy(np.int64)
     bid_raw = d.bid_raw.to_numpy(np.int64)
-    native_mid = quantize_mid(ask_raw, bid_raw)
-    tdir = tick_direction(native_mid)
+    native_mid_unquantized = (ask_raw.astype(np.int64) + bid_raw.astype(np.int64)) // 2
+    profile_mid = quantize_mid(ask_raw, bid_raw)
+    tdir = tick_direction(native_mid_unquantized)
     exec_ask, exec_bid = p75_surface(t, ask_raw, bid_raw)
-    profiles = build_prior_day_profiles(t, native_mid)
+    profiles = build_prior_day_profiles(t, profile_mid)
 
     bars_by_tf = {
-        5_000: make_bars(t, native_mid, tdir, 5_000),
-        60_000: make_bars(t, native_mid, tdir, 60_000),
+        5_000: make_bars(t, profile_mid, tdir, 5_000),
+        60_000: make_bars(t, profile_mid, tdir, 60_000),
     }
 
     configs = {}
