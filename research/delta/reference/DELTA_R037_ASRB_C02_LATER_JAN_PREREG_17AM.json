@@ -1,0 +1,42 @@
+{
+  "schema": "delta-r037-asrb-c02-later-jan-prereg-17am-v1",
+  "unit": "R037_ASRB_C02_INDEPENDENT_LATER_JAN_VALIDATION",
+  "checkpoint": "17AM",
+  "status": "PREREGISTERED_BEFORE_OFFICIAL_COMPUTE",
+  "parent_checkpoint": "R037_ASRB_STAGE_A_SCREEN_CHECKPOINT_17AL",
+  "candidate": "R037-ASRB-C02_RETEST",
+  "frozen_logic": {
+    "asian_range_utc": "00:00-06:00",
+    "trade_window_utc": "07:00-10:00",
+    "signal_tf_seconds": 5,
+    "rule": "completed S5 breakout of frozen Asian high/low; within next six completed S5 bars boundary must be touched and bar close directionally back outside; execute first P75 tick at/after retest bar right edge",
+    "one_trade_per_direction_per_day": true,
+    "retest_max_bars": 6,
+    "max_spread_points": 25,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30
+  },
+  "validation_window": {
+    "economics_start_utc": "2026-01-18T12:00:00Z",
+    "end_exclusive_utc": "2026-02-01T00:00:00Z"
+  },
+  "gate": {
+    "minimum_trades": 3,
+    "minimum_distinct_days": 3,
+    "direct_net_nonnegative": true,
+    "decision": "all gates must pass to advance unchanged to month-by-month robustness"
+  },
+  "restrictions": [
+    "no retuning",
+    "no session/side/weekday filters",
+    "no range-width filter",
+    "no exit changes",
+    "no August",
+    "no MQL5"
+  ],
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
