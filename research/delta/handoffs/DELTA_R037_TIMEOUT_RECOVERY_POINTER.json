@@ -16,25 +16,22 @@
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_VSBR_STAGE_A_SCREEN_CHECKPOINT_17AN_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "IDLE",
-    "phase_rank": 0,
+    "unit": "R037_ROLLING_LIQUIDITY_SWEEP_FOLLOW_THROUGH_GUARD_STAGE_A_SCREEN",
+    "status": "IN_PROGRESS",
+    "phase": "PRODUCER_COMMITTED",
+    "phase_rank": 2,
     "parent_durable_unit": "R037_VSBR_STAGE_A_SCREEN_CHECKPOINT_17AN",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_VSBR_STAGE_A_SCREEN_CHECKPOINT_17AN.json",
-        "commit": "2912c26d9224416a30df35665508ada12efe434f"
+        "path": "research/delta/reference/DELTA_R037_RLSFG_STAGE_A_PREREG_17AO.json",
+        "commit": "b13e98eccf79d4394a6e47f7c79a073ec0b66727"
       },
       {
-        "path": "research/delta/research/DELTA_R037_VSBR_STAGE_A_SCREEN_CHECKPOINT_17AN.md",
-        "commit": "839c345a104e0cda7f7a79538552f63aa4e69a7b"
-      },
-      {
-        "path": "research/delta/artifacts/DELTA_R037_VSBR_STAGE_A_SCREEN_CHECKPOINT_17AN_MANIFEST.json",
-        "commit": "7f1dc8ecc830c8995cf410c236e697a3f78a3242"
+        "path": "research/delta/experiments/delta_r037_rlsfg_stage_a_17ao.py",
+        "commit": "819638dcb2a9fd47e2251ce0aec3a987930e1df4"
       }
     ],
-    "next_action": "Preregister next independent entry-source family.",
+    "next_action": "Exact-blob verify 17AO producer then run official Stage-A compute under 120-second hard timeout.",
     "completed_months": [],
     "next_month": null
   },
