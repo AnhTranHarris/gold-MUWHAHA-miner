@@ -21,8 +21,8 @@
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
+    "status": "REPORT_COMMITTED",
+    "phase_rank": 4,
     "parent_durable_unit": "R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D",
     "committed_artifacts": [
       {
@@ -33,9 +33,18 @@
         "path": "research/delta/experiments/delta_r037_msf_stage_a.py",
         "commit": "f700029a41abda79c775327c5f8497d6b69c0404",
         "file_sha256": "4fbea383767200331138722bd27d0c83f3ee404a81468a26dbe2277c5521d7b4"
+      },
+      {
+        "path": "research/delta/reference/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E.json",
+        "commit": "2e7dd13744cdb00fb0283578a326ec8982c5871a",
+        "raw_sha256": "f9f2b66f012dc9e6548d6bd031b0729f27a1ce6a52d4185b80e936a9cc425891"
+      },
+      {
+        "path": "research/delta/research/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E.md",
+        "commit": "e574b3923be5400da40b5ebbcb7c2e1e1f9c365a"
       }
     ],
-    "next_action": "Run one official bounded Stage-A MSF replay after recovery gate passes; if a 17E result already exists, do not rerun.",
+    "next_action": "Do not rerun MSF 17E. Finish ledger/workbook, full manifest, CURRENT_STATE last, and durability CI.",
     "completed_months": [],
     "next_month": null,
     "hash_reconciliation": "Recovery snapshot git-blob matched live GitHub producer blob 29ccec103226f3044a9fdb7f7213731ab1428dee; SHA-256 corrected to 4fbea383767200331138722bd27d0c83f3ee404a81468a26dbe2277c5521d7b4 before compute."
