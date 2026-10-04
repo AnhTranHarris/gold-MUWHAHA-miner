@@ -1,0 +1,166 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_ASRB_C02_LATER_JAN_CHECKPOINT_17AM",
+  "status": "VERIFIED_INDEPENDENT_HOLDOUT_FAIL_RETIRED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_ASRB_STAGE_A_SCREEN_CHECKPOINT_17AL",
+  "hypothesis": "Frozen ASRB C02 retest/rejection logic remains profitable on non-overlapping later-January economics.",
+  "falsification_condition": "Holdout requires >=3 trades, >=3 distinct days, and nonnegative direct net; any failure retires the candidate unchanged.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "17AM ASRB C02 later-Jan",
+    "reference_count": 6,
+    "minimum_count": 3,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true
+  },
+  "primary_metrics": {
+    "entry_quality": "3/6 official wins",
+    "hold_persistence": "30s frozen",
+    "economics": "-$1.50 direct net",
+    "gross_loss_drawdown": "gross loss -$1.93",
+    "activity": "6 trades / 6 days"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_asrb_c02_later_jan_17am.py",
+      "commit": "62af4b69a31c2f3cbf9204f10d67c9b5ea8439c6",
+      "blob_sha": "f75655b2a955c056aed3b022aa926ce71c2cf5cf"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "asian_range_utc": "00:00-06:00",
+      "trade_window_utc": "07:00-10:00",
+      "signal_tf_seconds": 5,
+      "retest_max_bars": 6,
+      "max_spread_points": 25,
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "freeze Asian range",
+      "completed S5 breakout",
+      "causal boundary retest/rejection within six bars",
+      "P75 execution"
+    ],
+    "horizons_checkpoints": {
+      "economics_start_utc": "2026-01-18T12:00:00Z",
+      "end_exclusive_utc": "2026-02-01T00:00:00Z"
+    },
+    "train_cal_eval_boundaries": {
+      "stage_a": "17AL passed",
+      "later_january": "17AM independent validation"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_verified": "f75655b2a955c056aed3b022aa926ce71c2cf5cf",
+      "discarded_mismatched_local_run": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "loaded_ticks": 4929353
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_ASRB_C02_LATER_JAN_CHECKPOINT_17AM.json",
+      "official_raw_result_sha256": "781ceea8d424f4fa49545ce59bb5cfdef70f8d04898b1d68cf3dff729090dbb9"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_ASRB_C02_LATER_JAN_CHECKPOINT_17AM.md"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "R037-ASRB-C02_RETEST"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "qa": [
+    "Frozen Stage-A leader carried unchanged.",
+    "A mismatched local-docstring execution was rejected before evidence use.",
+    "Exact committed producer Git blob verified before official replay.",
+    "6 trades / 6 distinct days / 3 wins / -$1.50 direct net.",
+    "Supply gates passed; nonnegative-net holdout gate failed.",
+    "No rescue tuning.",
+    "Workbook tab 71 A60:H65 readback PASS.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_asrb_c02_later_jan_17am.py",
+    "command": "python research/delta/experiments/delta_r037_asrb_c02_later_jan_17am.py --source <canonical_january_gzip> --output <17AM>",
+    "timing_semantics": "only confirmation edges >= 2026-01-18 12:00 UTC count; session range and bars are causal/right-edge visible",
+    "expected_fingerprints": {
+      "trades": 6,
+      "distinct_days": 6,
+      "wins": 3,
+      "gross_profit": 0.43,
+      "gross_loss": -1.93,
+      "net": -1.5
+    },
+    "selected_interpretation": "RETIRE_ASRB_C02_NO_RETUNE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — retired candidate",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "P75 frozen",
+    "ownership_scheduler_spec": "not integrated",
+    "session_dst_spec": "fixed UTC research window",
+    "risk_spec": "frozen",
+    "trade_count_parity_spec": "candidate retired",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_ASRB_STAGE_A_SCREEN_CHECKPOINT_17AL",
+  "drive_artifacts": [
+    {
+      "name": "working workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "71 R037 Source QA",
+      "range": "A60:H65",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "c74f570569bb577ae66681733774cf4ccb8616a8",
+    "62af4b69a31c2f3cbf9204f10d67c9b5ea8439c6",
+    "9e8b4068f368ed52cf1a5038abf57319f9d6f0f8",
+    "200bc68473d9535c5f7711da8b39e9123cc23b48"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
