@@ -4,8 +4,8 @@
   "branch": "delta",
   "unit": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION",
   "parent_durable_unit": "R037_PLSR_STAGE_A_SCREEN_CHECKPOINT_16A",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "phase": "MANIFEST_COMMITTED",
+  "phase_rank": 5,
   "prereg": {
     "path": "research/delta/reference/DELTA_R037_PLSR_C01_INDEPENDENT_VALIDATION_EVIDENCE_16B.json",
     "commit": "a135f5c16718af43de7022cfc35d60bd0b87e0e5"
@@ -15,12 +15,25 @@
     "commit": "ccef1cd460d585857b19b30532fd91e7d2ccc7de",
     "blob_sha": "382b641e1b8598b4296da52401ec9ce795d1931a"
   },
-  "result": null,
-  "report": null,
-  "manifest": null,
+  "result": {
+    "path": "research/delta/reference/DELTA_R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B.json",
+    "commit": "bdf5c44c16488b6d53c2a9999ebfc1babd66dede",
+    "blob_sha": "2544c987b14f1653e498129ec0e1328b587e3506",
+    "sha256": "c4ac99a81b1806f559c9d7ed8a3ba34b5fe11fac469c72ec39b33de35a8c1b5a"
+  },
+  "report": {
+    "path": "research/delta/research/DELTA_R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B.md",
+    "commit": "dc61808d28208bf9a0e71f597bd761adc46378fa",
+    "blob_sha": "827454673146f2171160226bd976e9fe253e7bfc"
+  },
+  "manifest": {
+    "path": "research/delta/artifacts/DELTA_R037_PLSR_C01_INDEPENDENT_VALIDATION_CHECKPOINT_16B_MANIFEST.json",
+    "commit": "345319a6e5fd01f4bfa3fb94195556baa732611a",
+    "blob_sha": "7b0dcfeb39adbc96be979f5f9a2b4058a192a6e6"
+  },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Verify 16B producer blob/result. If no result exists, run committed C01 later-Jan producer only; do not rerun 16A.",
+    "resume_first_action": "Verify 16B result/report/manifest and workbook SHA; if all present, advance CURRENT_STATE to 16B without rerunning compute.",
     "idempotency_rule": "Never rerun completed compute solely because chat delivery timed out."
   },
   "last_verified_ci": {
