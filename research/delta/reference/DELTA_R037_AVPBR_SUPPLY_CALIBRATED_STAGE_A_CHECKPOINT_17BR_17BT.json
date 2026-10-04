@@ -1,0 +1,88 @@
+{
+  "schema": "delta-r037-avpbr-supply-calibrated-stage-a-17br-17bt-v1",
+  "status": "COMPLETE_FAST_CAUSAL_PRESCREEN",
+  "unit": "R037_AVPBR_SUPPLY_CALIBRATED_STAGE_A_SCREEN_CHECKPOINT_17BR_17BT",
+  "parent_checkpoint": "R037_ACCUMULATION_VOLUME_PROFILE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BO_17BQ",
+  "prereg_commit": "0a84c8512bac8bd1a7ff82e51ec7b58c98d7cf04",
+  "producer": {
+    "commit": "7bf5b416e109e4974e590718657aab84251430e1",
+    "blob_sha": "7c7bc60c063c603b47b43f2b7e067dbe463f5595",
+    "file_sha256": "0b19464230a6f18c010a71448c9eb934fc6f11afc2712f32a8bf033ce0cf24e3"
+  },
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "fixtures": {
+    "atr_length": 14,
+    "lookback": 20,
+    "compression_multiple": 3.8,
+    "min_box_bars": 20,
+    "max_box_bars": 40,
+    "abandon_initial_box_height_multiple": 1.5,
+    "profile_rows": 24,
+    "value_area_fraction": 0.7,
+    "poc_zone_fraction": 0.1,
+    "max_wait_bars": 20
+  },
+  "configs": {
+    "17BR_C01_AVPBR_M1_CORE": {
+      "metrics": {
+        "signals": 140,
+        "trades": 140,
+        "distinct_days": 12,
+        "official_wins": 63,
+        "direct_net_usd": -28.29
+      },
+      "event_diagnostics": {
+        "compression_starts": 422,
+        "abandoned": 71,
+        "breakouts": 350,
+        "pullback_touches": 179,
+        "far_edge_invalidations": 52,
+        "wait_expiries": 158
+      }
+    },
+    "17BS_C02_AVPBR_M5_CORE": {
+      "metrics": {
+        "signals": 23,
+        "trades": 23,
+        "distinct_days": 9,
+        "official_wins": 11,
+        "direct_net_usd": -2.36
+      },
+      "event_diagnostics": {
+        "compression_starts": 89,
+        "abandoned": 19,
+        "breakouts": 70,
+        "pullback_touches": 35,
+        "far_edge_invalidations": 14,
+        "wait_expiries": 32
+      }
+    },
+    "17BT_C03_AVPBR_M1_H1_EMA_BIAS": {
+      "metrics": {
+        "signals": 57,
+        "trades": 57,
+        "distinct_days": 10,
+        "official_wins": 30,
+        "direct_net_usd": -8.08
+      },
+      "event_diagnostics": {
+        "compression_starts": 479,
+        "abandoned": 79,
+        "breakouts": 174,
+        "htf_rejects": 225,
+        "pullback_touches": 80,
+        "far_edge_invalidations": 32,
+        "wait_expiries": 85
+      }
+    }
+  },
+  "finding": {
+    "survivors": [],
+    "decision": "RETIRE_AVPBR_SUPPLY_CALIBRATED_NO_STAGE_A_SURVIVOR",
+    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+  },
+  "official_raw_result_sha256": "608726c236905edb678d658a6199e63841cd10ec29b2ffd68fa7aea7bb521e20",
+  "august_accessed": false,
+  "mql5_authorized": false
+}
