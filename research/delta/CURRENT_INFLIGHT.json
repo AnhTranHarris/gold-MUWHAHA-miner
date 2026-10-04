@@ -2,19 +2,19 @@
   "schema": "delta-timeout-recovery-inflight-v1",
   "status": "ACTIVE",
   "branch": "delta",
-  "unit": "R037_BOS_LIQUIDITY_SWEEP_RECLAIM_STAGE_A_SCREEN",
+  "unit": "R037_SWEEP_RECLAIM_HOLD_RETEST_STAGE_A_SCREEN",
   "parent_durable_unit": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
-  "phase": "PREREG_COMMITTED",
+  "phase": "PREREGISTERED",
   "phase_rank": 1,
   "progress": {
     "status": "ACTIVE",
     "last_completed": "R037_LMJF_STAGE_A_SCREEN_CHECKPOINT_17AX",
-    "current_candidate": "R037-BOSLS-v1",
-    "next": "Commit exact M5 SwingLength=5 BOS liquidity-sweep producer; verify Git blob; run one bounded Stage-A screen."
+    "current_candidate": "R037-SRHT-v1",
+    "next": "Build and commit exact 17AY producer; byte-verify; run official Stage-A compute only after source is durable."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "BOSLS 17AY prereg is durable at commit 34ef5741861a41f52807986260b86847005c759f. Do not alter timeframe/swing length/profile. Resume from first missing producer/compute artifact.",
+    "resume_first_action": "17AY prereg is durable at commit 7b1ad1caf90a72cd5f9593d1e18c57250d7b4202. If producer absent, build/commit producer only.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
