@@ -10,18 +10,18 @@
     "active rebuild manifest"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG",
+    "last_verified_durable_unit": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
     "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
     "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG_MANIFEST.json"
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ_MANIFEST.json"
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
     "status": "IDLE",
     "phase_rank": 0,
-    "parent_durable_unit": "R037_PRICE_ACTION_FAST_HARVEST_CHECKPOINT_17BE_17BG",
+    "parent_durable_unit": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
     "committed_artifacts": [],
-    "next_action": "Preregister continuation-biased fast batch.",
+    "next_action": "Complete R037 17-series meta-harvest; preregister only highest-value untested source class.",
     "completed_months": [],
     "next_month": null
   },
