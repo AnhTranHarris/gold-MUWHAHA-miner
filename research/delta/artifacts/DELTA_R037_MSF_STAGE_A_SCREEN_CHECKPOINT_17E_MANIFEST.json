@@ -1,0 +1,236 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E",
+  "status": "VERIFIED_RESULT_REPORT_LEDGER_WORKBOOK_NO_STRONG_SURVIVOR_C04_ORDINARY_SCREEN_CLUE",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D",
+  "hypothesis": "A causal completed-bar market-structure break that creates a same-direction three-candle FVG, followed by the first later midpoint-confirmed retest, can add incremental 30-second entries with better quality than the retired oscillator/channel families.",
+  "falsification_condition": "No preregistered M1/M5 CHOCH/BOS FVG-retest configuration passes the frozen strong independent-source Stage-A screen.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Frozen R037 independent-source Stage-A parent",
+    "reference_count": 14034,
+    "minimum_count": 14034,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Independent source adds entries only; combined trade count may not fall below parent."
+  },
+  "primary_metrics": {
+    "entry_quality": "Official-win contribution and direct MSF net.",
+    "hold_persistence": "Frozen 30-second max-hold contract.",
+    "economics": "Combined net/gross deltas and direct MSF net.",
+    "gross_loss_drawdown": "Gross-loss delta and balance/equity DD deterioration.",
+    "activity": "Proposal/accepted-entry/trade deltas."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_msf_stage_a.py",
+      "commit": "f700029a41abda79c775327c5f8497d6b69c0404",
+      "blob_sha": "29ccec103226f3044a9fdb7f7213731ab1428dee",
+      "file_sha256": "4fbea383767200331138722bd27d0c83f3ee404a81468a26dbe2277c5521d7b4"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "bd0512d4d94f74167267a6b3bf7c265d984451ce",
+      "role": "Isolated Numba cache, faulthandler/unbuffered child, process-group timeout and cleanup."
+    }
+  ],
+  "config": {
+    "parameters": {
+      "family": "R037-MSF-v1",
+      "configs": [
+        "R037-MSF-C01_M1_CHOCH_FVG_RETEST",
+        "R037-MSF-C02_M1_BOS_FVG_RETEST",
+        "R037-MSF-C03_M5_CHOCH_FVG_RETEST",
+        "R037-MSF-C04_M5_BOS_FVG_RETEST"
+      ],
+      "swing_width_completed_bars": 2,
+      "structure_break": "completed Bid close beyond latest causally revealed swing",
+      "classification": "INIT establishes state; same-direction later break=BOS; opposite-direction break=CHOCH",
+      "fvg": "same-break-bar standard three-candle gap",
+      "retest": "first later overlap plus close through 50% gap midpoint in structural direction",
+      "numeric_retuning": false,
+      "post_result_retuning": false,
+      "spread_gate_points_max": 25,
+      "lot": 0.01,
+      "stop_usd": 0.3,
+      "trail_activation_usd": 0.1,
+      "trail_distance_usd": 0.03,
+      "max_hold_seconds": 30
+    },
+    "feature_order": [
+      "causal_fractal_reveal",
+      "completed_close_structure_break",
+      "same_break_bar_fvg",
+      "first_midpoint_confirmed_retest",
+      "first_executable_tick",
+      "parent_priority_scheduler"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Stage-A discovery screen only; no post-result tuning."
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "pythonpath_recovery_root_required": true,
+      "atomic_output": true,
+      "exact_git_blob_verified": true,
+      "producer_sha256_verified": true,
+      "recovery_gate_run_id": 37177106978,
+      "recovery_artifact_id": 11293378482,
+      "initial_launch_import_failure": {
+        "scientific_compute_started": false,
+        "result_written": false,
+        "error": "ModuleNotFoundError: No module named 'research'",
+        "correction": "Set PYTHONPATH to commit-bound recovery snapshot root; producer bytes unchanged."
+      },
+      "official_runtime_seconds": 20.026,
+      "official_exit_code": 0,
+      "official_raw_result_sha256": "f9f2b66f012dc9e6548d6bd031b0729f27a1ce6a52d4185b80e936a9cc425891"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "MSF preregistration",
+      "path": "research/delta/reference/DELTA_R037_MSF_SOURCE_HARVEST_PREREG_17E.json",
+      "commit": "2739d418ad694f701a551743c2ff1561c5af0c37"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E.json",
+      "commit": "2e7dd13744cdb00fb0283578a326ec8982c5871a",
+      "blob_sha": "17cbcec80c283a601cbee89f1a29526c93edf638",
+      "official_raw_result_sha256": "f9f2b66f012dc9e6548d6bd031b0729f27a1ce6a52d4185b80e936a9cc425891"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E.md",
+      "commit": "e574b3923be5400da40b5ebbcb7c2e1e1f9c365a",
+      "blob_sha": "8b680faf946e47c3fb7868d2cb49832f8a1e3d94"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "136 C01 proposals",
+      "86 C02 proposals",
+      "21 C03 proposals",
+      "20 C04 proposals"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "127 C01 accepted",
+      "84 C02 accepted",
+      "20 C03 accepted",
+      "16 C04 accepted"
+    ],
+    "caches": [
+      "Commit-bound GitHub Actions recovery snapshot; no candidate-specific post-result cache mutation."
+    ]
+  },
+  "models": [],
+  "qa": [
+    "Fresh research ledger preregistration written before official compute and read-back verified.",
+    "Working workbook preregistration written before official compute and read-back verified.",
+    "Recovery CI run 37177106978 passed before official replay.",
+    "Recovery snapshot producer Git blob exactly matched live GitHub blob 29ccec103226f3044a9fdb7f7213731ab1428dee.",
+    "Stale producer SHA metadata was corrected before replay; verified SHA-256 is 4fbea383767200331138722bd27d0c83f3ee404a81468a26dbe2277c5521d7b4.",
+    "Initial launch import error happened before data loading/compute and wrote no result; producer bytes remained unchanged.",
+    "Canonical January SHA and Stage-A chronology preserved.",
+    "Official bounded replay exited 0 in ~20.026 seconds.",
+    "C04 M5 BOS+FVG retest passed ordinary screen at -$0.05 net delta but failed the strong nonnegative-net gate.",
+    "No post-result swing/FVG/timeframe/session/side/exit tuning.",
+    "Post-result ledger and workbook write/readback verified.",
+    "August remained sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_msf_stage_a.py",
+    "command": "PYTHONPATH=<recovery_root> python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_msf_stage_a.py --source <canonical_january_gzip> --output <result_json>",
+    "timing_semantics": "Ordered ticks; completed Bid bars only; two-right-bar swing reveal; completed close structure break; same-break-bar FVG; first later midpoint-confirmed retest; first executable tick at/after retest edge.",
+    "expected_fingerprints": {
+      "parent": {
+        "trades": 14034,
+        "official_wins": 6349,
+        "net_profit": -2944.94
+      },
+      "leader": {
+        "config": "R037-MSF-C04_M5_BOS_FVG_RETEST",
+        "proposals": 20,
+        "accepted_entries": 16,
+        "trade_delta": 16,
+        "official_win_delta": 11,
+        "net_delta": -0.05,
+        "direct_msf_net": -1.12
+      }
+    },
+    "selected_interpretation": "NO_STRONG_SURVIVOR_PRESERVE_C04_AS_FORENSIC_RECOMBINATION_CLUE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — independent-source discovery screen only",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "DELTA frozen P75 semantics.",
+    "ownership_scheduler_spec": "Frozen parent-priority scheduler.",
+    "session_dst_spec": "No MSF session filter.",
+    "risk_spec": "Frozen 0.01 / stop/trail/30-second initial-hold.",
+    "trade_count_parity_spec": "Not eligible for MT5 promotion.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_STX_STAGE_A_SCREEN_CHECKPOINT_17D",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "70 R037 Prereg",
+      "range": "A58:L73",
+      "readback_verified": true
+    },
+    {
+      "name": "DELTA Fresh Research Ledger",
+      "id": "1dXe4I98dFgIiybMSPQMoFnXOYNcTvtqNYDp85XeO34M",
+      "tab": "t.0",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "2739d418ad694f701a551743c2ff1561c5af0c37",
+    "f700029a41abda79c775327c5f8497d6b69c0404",
+    "a8a47d4bfa6cc003f2673f5a7009ddf95c14708f",
+    "2e7dd13744cdb00fb0283578a326ec8982c5871a",
+    "e574b3923be5400da40b5ebbcb7c2e1e1f9c365a",
+    "589de2c5f7407a1b063ad82e1866d5d0e17769c1"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
