@@ -1,0 +1,202 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK",
+  "status": "VERIFIED_FAST_CAUSAL_PRESCREEN_NO_SURVIVOR",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
+  "hypothesis": "Session-reset tick-volume-weighted VWAP with trend-side first-touch reclaim can create sufficient 30-second XAUUSD persistence under frozen P75 execution.",
+  "falsification_condition": "Every fixed London/NY x M1/M5 profile fails either >=20 trades / >=5 distinct days or nonnegative direct net.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Four fixed preregistered SVWAPR profiles",
+    "reference_count": 4,
+    "minimum_count": 4,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "All four profiles executed unchanged; no post-result rescue."
+  },
+  "primary_metrics": {
+    "17BK_C01_LONDON_M1_FIRST_TOUCH_RECLAIM": "11 trades / 8 days / 6 wins / -$2.95",
+    "17BK_C02_NEWYORK_M1_FIRST_TOUCH_RECLAIM": "14 trades / 10 days / 5 wins / -$3.60",
+    "17BK_C03_LONDON_M5_FIRST_TOUCH_RECLAIM": "13 trades / 9 days / 8 wins / -$0.61",
+    "17BK_C04_NEWYORK_M5_FIRST_TOUCH_RECLAIM": "12 trades / 9 days / 8 wins / +$0.20"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_svwapr_stage_a_17bk.py",
+      "commit": "f3de5dd5958feebf3c06f8b1a607de05db2974cb",
+      "blob_sha": "674b1c903e2107163411fa0fc7799ac29b5b11ad",
+      "file_sha256": "83a8bdab353259774cd251deb508d34b80a0da428deae9f63ab3cfefcbe3088b"
+    }
+  ],
+  "helpers": [],
+  "models": [],
+  "config": {
+    "parameters": {
+      "numeric_retuning": false,
+      "stage_a_surface": "DUKAS_COINEXX_LIKE_P75",
+      "profiles": [
+        "17BK_C01_LONDON_M1_FIRST_TOUCH_RECLAIM",
+        "17BK_C02_NEWYORK_M1_FIRST_TOUCH_RECLAIM",
+        "17BK_C03_LONDON_M5_FIRST_TOUCH_RECLAIM",
+        "17BK_C04_NEWYORK_M5_FIRST_TOUCH_RECLAIM"
+      ],
+      "min_trades": 20,
+      "min_distinct_days": 5,
+      "advance_net_usd_min": 0
+    },
+    "feature_order": [
+      "completed native M1/M5 midpoint bars",
+      "session-reset tick-volume-weighted VWAP and sigma",
+      "trend-side +/-1 sigma excursion arm",
+      "first subsequent VWAP interaction",
+      "same-side directional completed-bar reclaim",
+      "first executable P75 tick",
+      "frozen 30-second lifecycle"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "fixed Stage-A fast prescreen only; no fitting"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "output_write": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_preexecution_verification": true,
+      "rejected_tooling_runs": 2,
+      "accepted_result_only_after_clean_compile_and_exact_blob_match": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "SVWAPR preregistration",
+      "path": "research/delta/reference/DELTA_R037_SVWAPR_STAGE_A_PREREG_17BK.json",
+      "commit": "464a536e3fe7b5249877218e628fc2f047a6a4ce"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_SVWAPR_STAGE_A_CHECKPOINT_17BK.json",
+      "blob_sha": "73b337d4f06b475ccb22023c325d405344f4a36d",
+      "result_sha256": "a9ee9321222786135b272084eaa5689b119569e5f096bbdd04bd973e919ed1ea"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_SVWAPR_STAGE_A_SCREEN_CHECKPOINT_17BK.md",
+      "blob_sha": "8310984549ec559dd6d206f7e99a3afbc7f7f1dc"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "Native M1/M5 session VWAP/sigma reconstruction",
+      "P75 executable quote surface"
+    ]
+  },
+  "qa": [
+    "Canonical January SHA and Stage-A tick count verified.",
+    "Exact final GitHub producer blob matched the local official execution copy.",
+    "Producer compiled cleanly before accepted compute.",
+    "Official compute completed under 120-second hard timeout in approximately 5.1 seconds.",
+    "Two prior tooling-only newline serialization failures wrote no accepted result.",
+    "All four preregistered profiles executed unchanged.",
+    "No profile passed the >=20 trades and nonnegative-net advance gate.",
+    "New York M5 was +$0.20 but only 12 trades; supply fail, not promoted.",
+    "Workbook tab 69 A161:H168 readback PASS.",
+    "No post-result sigma/session/side/timeframe/exit rescue.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_svwapr_stage_a_17bk.py",
+    "command": "python research/delta/experiments/delta_r037_svwapr_stage_a_17bk.py --source <canonical_january_gzip> --output <checkpoint_json>",
+    "timing_semantics": "Completed native bars only; first subsequent VWAP interaction consumes an armed event; confirming bar executes at first P75 tick at/after bar end; one executed trade per side/session.",
+    "expected_fingerprints": {
+      "17BK_C01_LONDON_M1_FIRST_TOUCH_RECLAIM": {
+        "trades": 11,
+        "days": 8,
+        "wins": 6,
+        "net_usd": -2.95
+      },
+      "17BK_C02_NEWYORK_M1_FIRST_TOUCH_RECLAIM": {
+        "trades": 14,
+        "days": 10,
+        "wins": 5,
+        "net_usd": -3.6
+      },
+      "17BK_C03_LONDON_M5_FIRST_TOUCH_RECLAIM": {
+        "trades": 13,
+        "days": 9,
+        "wins": 8,
+        "net_usd": -0.61
+      },
+      "17BK_C04_NEWYORK_M5_FIRST_TOUCH_RECLAIM": {
+        "trades": 12,
+        "days": 9,
+        "wins": 8,
+        "net_usd": 0.2
+      }
+    },
+    "selected_interpretation": "NO_SURVIVOR_M5_VALUE_RECLAIM_ECONOMICS_IMPROVE_BUT_SUPPLY_COLLAPSES"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — family retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "DELTA frozen P75 semantics.",
+    "ownership_scheduler_spec": "No integration.",
+    "session_dst_spec": "Project DST-aware London/New York sessions.",
+    "risk_spec": "Fixed 0.01 research semantics unchanged.",
+    "trade_count_parity_spec": "Not applicable; family retired.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_CONTINUATION_FAST_HARVEST_CHECKPOINT_17BH_17BJ",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A161:H168"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "464a536e3fe7b5249877218e628fc2f047a6a4ce",
+    "850f469243840f3caf26545b64886d4ac3d29ff5",
+    "848d564d16663211f140176dfad7d94c8f1a1a9d",
+    "7fad08c91f2b3932a3b18ec78a049ceff8c4fef2",
+    "f3de5dd5958feebf3c06f8b1a607de05db2974cb",
+    "04e8c3a89ae01ae830aaeac54c822cb89742b468",
+    "9b7f3b96422fcb27d9924db2b21ce42c9370e694"
+  ],
+  "next_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+}
