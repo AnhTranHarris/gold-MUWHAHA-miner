@@ -1,0 +1,30 @@
+{
+  "schema": "delta-r037-vsbr-stage-a-screen-17an-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_VOLATILITY_SQUEEZE_BREAKOUT_RELEASE_STAGE_A_SCREEN",
+  "family": "R037-VSBR-v1",
+  "parent_checkpoint": "R037_ASRB_C02_LATER_JAN_CHECKPOINT_17AM",
+  "prereg_commit": "7c323efa14fc6bcdcfdb38402e7f4c478cdf8996",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "configs": {
+    "C01_M1": {
+      "timeframe_seconds": 60,
+      "stage_counts": {"bars":15180,"squeeze_bars":3286,"release_bars":446,"directional_releases":446},
+      "metrics": {"proposals":446,"eligible":446,"trades":446,"distinct_days":13,"long":231,"short":215,"rejections":{},"official_wins":200,"gross_profit":43.06,"gross_loss":-137.01,"direct_net_usd":-93.95,"exit_reasons":{"STOP":423,"MAX_HOLD":23,"END":0}},
+      "gate": {"minimum_trades_6":true,"minimum_distinct_days_4":true,"direct_net_min_minus_1":false,"screen_pass":false,"strong_pass":false}
+    },
+    "C02_M5": {
+      "timeframe_seconds": 300,
+      "stage_counts": {"bars":3036,"squeeze_bars":747,"release_bars":92,"directional_releases":92},
+      "metrics": {"proposals":92,"eligible":92,"trades":92,"distinct_days":12,"long":50,"short":42,"rejections":{},"official_wins":48,"gross_profit":10.06,"gross_loss":-25.53,"direct_net_usd":-15.47,"exit_reasons":{"STOP":90,"MAX_HOLD":2,"END":0}},
+      "gate": {"minimum_trades_6":true,"minimum_distinct_days_4":true,"direct_net_min_minus_1":false,"screen_pass":false,"strong_pass":false}
+    }
+  },
+  "ranking": [],
+  "finding": {"leading_config":null,"ordinary_survivors":[],"strong_survivors":[],"decision":"RETIRE_VSBR_STAGE_A_NO_SURVIVOR","next":"R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"},
+  "mql5_authorized": false
+}
