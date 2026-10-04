@@ -1,0 +1,140 @@
+{
+  "schema": "delta-r037-qplf-stage-a-screen-17ba-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_QUOTE_PROPAGATION_LEADER_FOLLOWER_STAGE_A_SCREEN",
+  "family": "R037-QPLF-v1",
+  "parent_checkpoint": "R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ",
+  "prereg_commit": "ee771014b206b3e1a9f77777bfaf46b662168461",
+  "producer_commit": "e40480d6ca6d004daf032831524ac3d068a301ed",
+  "producer_blob": "6412fff9ee24d3f40638c7b09e1099d046c17592",
+  "producer_sha256": "e7302c93d626f7212d5f1fe400c8f3fcdd210635faf7177dafda3642a04ef86e",
+  "official_raw_result_sha256": "62378ab24fa02e49d37e51206f3e1f664a8b37ce6290b0a3f26e429c342e5e43",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "signal_surface": "NATIVE_DUKASCOPY_BBO",
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "event_definition": {
+    "bullish": "ask-up-only leader -> next price-changing event bid-up-only follower",
+    "bearish": "bid-down-only leader -> next price-changing event ask-down-only follower",
+    "spread_restoration": "post-follower spread <= pre-leader spread",
+    "entry": "first strictly subsequent raw tick after follower"
+  },
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "diagnostics": {
+    "native_price_change_events": 4205648,
+    "bullish_ask_up_only_leaders": 250918,
+    "bearish_bid_down_only_leaders": 279381,
+    "same_direction_follower_pairs_before_restore_gate": 49447,
+    "restored_spread_signals": 25182,
+    "signals_per_day": 1798.7142857142858,
+    "leader_to_follower_latency_ms_quantiles": {
+      "p10": 50,
+      "p25": 51,
+      "p50": 101,
+      "p75": 202,
+      "p90": 503,
+      "p99": 2107
+    },
+    "pre_leader_spread_raw_quantiles": {
+      "p10": 577,
+      "p25": 647,
+      "p50": 737,
+      "p75": 806,
+      "p90": 927,
+      "p99": 1404
+    },
+    "leader_peak_spread_raw_quantiles": {
+      "p10": 600,
+      "p25": 670,
+      "p50": 760,
+      "p75": 827,
+      "p90": 957,
+      "p99": 1504
+    },
+    "post_follower_spread_raw_quantiles": {
+      "p10": 547,
+      "p25": 617,
+      "p50": 700,
+      "p75": 777,
+      "p90": 877,
+      "p99": 1354
+    },
+    "leader_move_raw_quantiles": {
+      "p10": 10,
+      "p25": 10,
+      "p50": 20,
+      "p75": 30,
+      "p90": 50,
+      "p99": 100
+    },
+    "follower_move_raw_quantiles": {
+      "p10": 20,
+      "p25": 30,
+      "p50": 40,
+      "p75": 80,
+      "p90": 100,
+      "p99": 230
+    }
+  },
+  "prediction": {
+    "next_nonzero_mid_move": {
+      "eligible": 25182,
+      "correct": 13091,
+      "accuracy": 0.5198554523072035
+    },
+    "forward": {
+      "250ms": {
+        "eligible": 24331,
+        "correct": 12502,
+        "accuracy": 0.5138300932966174
+      },
+      "1000ms": {
+        "eligible": 24687,
+        "correct": 12546,
+        "accuracy": 0.5082026977761575
+      },
+      "5000ms": {
+        "eligible": 25013,
+        "correct": 12613,
+        "accuracy": 0.5042577859513053
+      }
+    }
+  },
+  "configs": {
+    "C01_OUTWARD_LEADER_FOLLOWER_CONTINUATION": {
+      "metrics": {
+        "signals": 25182,
+        "busy_skips": 8272,
+        "spread_rejects": 0,
+        "trades": 16910,
+        "distinct_days": 14,
+        "long": 8428,
+        "short": 8482,
+        "official_wins": 7665,
+        "gross_profit": 1610.11,
+        "gross_loss": -5073.49,
+        "direct_net_usd": -3632.48,
+        "exit_reasons": {
+          "STOP": 16348,
+          "MAX_HOLD": 562,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_50": true,
+        "minimum_distinct_days_6": true,
+        "direct_net_min_minus_1": false,
+        "screen_pass": false,
+        "strong_pass": false
+      }
+    }
+  },
+  "finding": {
+    "leading_config": null,
+    "decision": "RETIRE_QPLF_STAGE_A_NO_EXECUTABLE_SURVIVOR",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "lesson": "Two-step quote-side propagation retains only a weak residual directional edge after confirmation; predictive accuracy decays toward 50% within seconds and cannot cover P75 execution."
+  },
+  "mql5_authorized": false
+}
