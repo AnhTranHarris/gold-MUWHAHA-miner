@@ -1,0 +1,54 @@
+{
+  "schema": "delta-r037-ier-stage-a-prereg-17bd-v1",
+  "status": "PREREGISTERED",
+  "unit": "R037_IMPULSE_EXHAUSTION_REVERSAL_STAGE_A_SCREEN",
+  "family": "R037-IER-v1",
+  "parent_checkpoint": "R037_SQRM_STAGE_A_SCREEN_CHECKPOINT_17BC",
+  "research_question": "Does a source-faithful M5 gold impulse-exhaustion pattern—unusually large full-bodied impulse followed immediately by an opposite candle closing through the impulse body—create executable 30-second reversal persistence under frozen P75 execution?",
+  "source_basis": [
+    "Open-source TradingView 5 Min Gold Reversal Signals: unusually strong candle based on recent range and minimum body percentage, followed by an opposite candle that closes beyond the previous candle's body.",
+    "The publication exposes adjustable impulse lookback/range multiplier/body percentage but not the exact defaults; this checkpoint therefore preregisters a transparent faithful reconstruction rather than claiming exact reproduction."
+  ],
+  "reconstruction_disclosure": "Source defaults are incomplete. Freeze 20-bar range lookback, 1.5x average-range impulse threshold and 70% minimum body before compute; no post-result tuning.",
+  "frozen_signal": {
+    "bar_seconds": 300,
+    "range_lookback_bars": 20,
+    "impulse_range_multiple": 1.5,
+    "minimum_body_fraction": 0.7,
+    "bearish_reversal": "prior bar bullish impulse; current bar bearish and closes below prior bar open",
+    "bullish_reversal": "prior bar bearish impulse; current bar bullish and closes above prior bar open",
+    "entry": "first executable P75 tick at/after confirmation bar right edge"
+  },
+  "frozen_execution": {
+    "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01,
+    "one_position_at_a_time": true
+  },
+  "gates": {
+    "minimum_trades": 20,
+    "minimum_distinct_days": 5,
+    "ordinary_direct_net_usd": -1,
+    "strong_direct_net_usd": 0
+  },
+  "prohibited": [
+    "lookback sweep",
+    "range-multiple sweep",
+    "body-percent sweep",
+    "timeframe sweep",
+    "SMA trend rescue",
+    "session/side/weekday rescue",
+    "exit retuning",
+    "August access",
+    "MQL5 translation"
+  ],
+  "failure_rule": "If the single preregistered faithful reconstruction fails supply/day or direct-net gate, retire IER rather than tune it on Stage-A.",
+  "advance_rule": "If it passes, freeze unchanged for independent later-January validation.",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
