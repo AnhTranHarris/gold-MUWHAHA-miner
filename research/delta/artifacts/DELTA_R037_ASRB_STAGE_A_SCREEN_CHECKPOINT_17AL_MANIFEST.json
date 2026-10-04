@@ -1,0 +1,169 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_ASRB_STAGE_A_SCREEN_CHECKPOINT_17AL",
+  "status": "VERIFIED_STAGE_A_STRONG_SURVIVOR_ADVANCE_HOLDOUT",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_CHECKPOINT_17AK",
+  "hypothesis": "A fixed Asian-session range followed by a causal London-window breakout confirmation can provide a reconstructible XAUUSD entry source independent of structural swing anchors.",
+  "falsification_condition": "Each preregistered profile must have >=4 trades, >=3 distinct days and direct net >= -$1; strong survivor additionally requires nonnegative direct net.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "17AL ASRB Stage-A survivor",
+    "reference_count": 4,
+    "minimum_count": 4,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true
+  },
+  "primary_metrics": {
+    "entry_quality": "C02 4/4 official wins; C01 1/5",
+    "hold_persistence": "30s frozen",
+    "economics": "C02 +$0.93; C01 -$2.37",
+    "gross_loss_drawdown": "C02 gross loss -$0.04",
+    "activity": "C02 4 trades / 4 days"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_asrb_stage_a_17al.py",
+      "commit": "529a62390d66bd22f373bc8a18270f7da4b991fa",
+      "blob_sha": "9f4d909f929e59a597585b9611440e88c215a781"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "asian_range_utc": "00:00-06:00",
+      "trade_window_utc": "07:00-10:00",
+      "signal_tf_seconds": 5,
+      "retest_max_bars": 6,
+      "max_spread_points": 25,
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "freeze daily Asian high/low",
+      "completed S5 breakout",
+      "C01 persistence OR C02 causal retest/rejection",
+      "P75 first executable tick"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "stage_a": "discovery/prescreen",
+      "later_january": "independent holdout next"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_verified": "9f4d909f929e59a597585b9611440e88c215a781"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_ASRB_STAGE_A_SCREEN_CHECKPOINT_17AL.json",
+      "official_raw_result_sha256": "3c143c5212566771fb0d2fd16cf08061cb128648348342d0bcc1b5ad702abcff"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_ASRB_STAGE_A_SCREEN_CHECKPOINT_17AL.md"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "R037-ASRB-C01_PERSIST",
+      "R037-ASRB-C02_RETEST"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "qa": [
+    "Preregistration committed before producer and official compute.",
+    "Local executable Git blob matched committed producer exactly.",
+    "Canonical January SHA and Stage-A tick count verified.",
+    "C01 persistence: 5 trades / 1 win / -$2.37; rejected.",
+    "C02 retest: 4 trades / 4 wins / +$0.93; all strong-pass gates satisfied.",
+    "No range/session/side/exit retuning.",
+    "Workbook tab 74 A73:H80 readback PASS.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_asrb_stage_a_17al.py",
+    "command": "python research/delta/experiments/delta_r037_asrb_stage_a_17al.py --source <canonical_january_gzip> --output <17AL>",
+    "timing_semantics": "00:00-06:00 UTC range frozen causally; signals only after 07:00; completed S5 confirmations; P75 first tick at/after confirmation right edge",
+    "expected_fingerprints": {
+      "C01_PERSIST": {
+        "trades": 5,
+        "wins": 1,
+        "net": -2.37
+      },
+      "C02_RETEST": {
+        "trades": 4,
+        "wins": 4,
+        "net": 0.93
+      }
+    },
+    "selected_interpretation": "FREEZE_C02_RETEST_ADVANCE_INDEPENDENT_LATER_JAN"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — candidate validation only",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "P75 frozen",
+    "ownership_scheduler_spec": "not integrated",
+    "session_dst_spec": "fixed UTC source window for research",
+    "risk_spec": "frozen",
+    "trade_count_parity_spec": "blocked pending validation",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_CHECKPOINT_17AK",
+  "drive_artifacts": [
+    {
+      "name": "working workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "74 R037 DH05 Boundary QA",
+      "range": "A73:H80",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "21d85a854b0c6b6123ef05f980ea97d978fe88da",
+    "529a62390d66bd22f373bc8a18270f7da4b991fa",
+    "958b368665d652963b5fd8dec168be082ba90d54",
+    "098ae0254cdcdbec3cac1bc02871377f33557730"
+  ],
+  "next_unit": "R037_ASRB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION"
+}
