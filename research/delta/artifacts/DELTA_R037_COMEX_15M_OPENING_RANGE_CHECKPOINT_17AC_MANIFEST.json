@@ -1,0 +1,188 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_COMEX_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AC",
+  "status": "VERIFIED_PRESCREEN_PASS_STRONG_FAIL_RETIRE",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AB",
+  "hypothesis": "The first 15 minutes after the COMEX gold pit open may provide a stronger immediate directional impulse than the retired London ORB sources under the frozen 30-second lifecycle.",
+  "falsification_condition": "No preregistered timing semantic strong-passes nonnegative direct net under frozen Stage-A gates.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "17AC Stage-A source supply",
+    "reference_count": 11,
+    "minimum_count": 8,
+    "minimum_retention_fraction": 0.7272727273,
+    "owner_numeric_floor_defined": true,
+    "note": "C01/C03 retained 11 trades; C02 retained 10."
+  },
+  "primary_metrics": {
+    "entry_quality": "official wins/direct net",
+    "hold_persistence": "30s frozen",
+    "economics": "source-only direct net",
+    "gross_loss_drawdown": "not promotion-tested",
+    "activity": "proposals/distinct days"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_comex_15m_opening_range_17ac.py",
+      "commit": "c50b16fad12e5f21f43ed6734213590603e6da43",
+      "blob_sha": "abc9db4bafa56e244b66237a0d24d6c73c380971",
+      "file_sha256": "b86a37df596b75151b562f68bb94fbee5ddc21d8c3a186ce666e6eba1768d19f"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "range_utc": "13:20-13:35",
+      "breakout_utc": "13:35-15:20",
+      "configs": [
+        "C01_FIRST_STRICT_TICK",
+        "C02_FIRST_COMPLETED_S5_CLOSE",
+        "C03_FIRST_COMPLETED_S15_CLOSE"
+      ],
+      "numeric_retuning": false,
+      "max_hold_seconds": 30,
+      "buffer_points": 0
+    },
+    "feature_order": [
+      "COMEX 15-minute opening range",
+      "trigger timing",
+      "spread gate",
+      "30s execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "2026-01-01T00:00Z/2026-01-18T12:00Z"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Stage-A prescreen"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas"
+    ],
+    "crash_safety": {
+      "timeout_seconds": 60,
+      "atomic_output": "temp+fsync+replace",
+      "exact_git_blob_verified": true,
+      "result_sha256": "1ae3119cd1d81ab83b95064f2bd94b8d3feac22cfba97a19fda5294e91ee7f7d",
+      "runtime_seconds": 6.449
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "17AC prereg",
+      "path": "research/delta/reference/DELTA_R037_COMEX_15M_OPENING_RANGE_PREREG_17AC.json",
+      "commit": "2eb2c6b6383234a863f435dd40135aa4ec78163f",
+      "blob_sha": "9e11f4fb2cf4afed0120e88ef3a4aa58cd3d018e"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_COMEX_15M_OPENING_RANGE_CHECKPOINT_17AC.json",
+      "commit": "5122a874de4a536b944a138943872c5d15222a9e",
+      "blob_sha": "1078f105b12cba1e3dd5c57e07c1d14e86f8dabf",
+      "result_sha256": "1ae3119cd1d81ab83b95064f2bd94b8d3feac22cfba97a19fda5294e91ee7f7d"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_COMEX_15M_OPENING_RANGE_CHECKPOINT_17AC.md",
+      "commit": "8f849494d37ab096071a7e1b383ebb546e254441",
+      "blob_sha": "3030d62ba61c607bcf81d787f4cac28d072e5eb2"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "C01",
+      "C02",
+      "C03"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "qa": [
+    "Canonical January hash and Stage-A tick count verified.",
+    "Exact local producer git blob matched committed GitHub blob abc9db4bafa56e244b66237a0d24d6c73c380971 before compute.",
+    "Official compute exit code 0 in approximately 6.45 seconds.",
+    "C01 11/7/-$0.85; C02 10/4/-$1.68; C03 11/6/-$2.82.",
+    "No configuration strong-passed nonnegative direct net.",
+    "Workbook A158:H165 readback PASS.",
+    "No retune; August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_comex_15m_opening_range_17ac.py",
+    "command": "python research/delta/experiments/delta_r037_comex_15m_opening_range_17ac.py --source <canonical_january_gzip> --output <17AC>",
+    "timing_semantics": "13:20-13:35 UTC P75 Bid range; 13:35-15:20 one/day breakout; strict tick/S5/S15 close trigger semantics.",
+    "expected_fingerprints": {
+      "C01": {
+        "trades": 11,
+        "wins": 7,
+        "net": -0.85
+      },
+      "C02": {
+        "trades": 10,
+        "wins": 4,
+        "net": -1.68
+      },
+      "C03": {
+        "trades": 11,
+        "wins": 6,
+        "net": -2.82
+      }
+    },
+    "selected_interpretation": "RETIRE_NO_STRONG_SURVIVOR"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen",
+    "ownership_scheduler_spec": "one/day",
+    "session_dst_spec": "America/New_York -> UTC January",
+    "risk_spec": "frozen",
+    "trade_count_parity_spec": "not eligible",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_LONDON_15M_OPENING_RANGE_STAGE_A_SCREEN_CHECKPOINT_17AB",
+  "drive_artifacts": [
+    {
+      "name": "working workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "70 R037 Prereg",
+      "range": "A158:H165",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "2eb2c6b6383234a863f435dd40135aa4ec78163f",
+    "c50b16fad12e5f21f43ed6734213590603e6da43",
+    "082142812677162133e9d2732839ead994f66ae4",
+    "5122a874de4a536b944a138943872c5d15222a9e",
+    "8f849494d37ab096071a7e1b383ebb546e254441"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
