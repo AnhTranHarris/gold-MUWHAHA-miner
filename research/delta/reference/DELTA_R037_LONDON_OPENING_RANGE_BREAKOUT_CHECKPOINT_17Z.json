@@ -1,0 +1,58 @@
+{
+  "schema": "delta-r037-london-opening-range-breakout-stage-a-17z-v1",
+  "status": "COMPLETE_PRESCREEN_PASS_STRONG_FAIL_NEAR_NEUTRAL_HIGH_WIN_CLUE",
+  "unit": "R037_LONDON_OPENING_RANGE_BREAKOUT_STAGE_A_SCREEN_CHECKPOINT_17Z",
+  "family": "R037-LORB-v1",
+  "prereg_path": "research/delta/reference/DELTA_R037_LONDON_OPENING_RANGE_BREAKOUT_PREREG_17Z.json",
+  "prereg_commit": "2198673881f780a43bf030d7c8dd530ed8637b80",
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_london_opening_range_breakout_17z.py",
+    "commit": "03e1e9015f5a6a97746a4f45148395c61ce763de",
+    "blob_sha": "38167cc012f03f190dec6fcdce876131364a037e",
+    "file_sha256": "3e273f28d5d9db805c81d525f3938b6e82e75dac1f33462270dd5904fe43af15"
+  },
+  "official_compute": {
+    "exit_code": 0,
+    "result_sha256": "107166b2f0178868c003b5b61adfabb59405c4924a83cba6400048f6c3789e6b"
+  },
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "configs": {
+    "C01_FIRST_STRICT_TICK": {
+      "proposals": 10,
+      "trades": 10,
+      "official_wins": 6,
+      "direct_net_usd": -1.06,
+      "prescreen_pass": true,
+      "strong_pass": false
+    },
+    "C02_FIRST_COMPLETED_S5_CLOSE": {
+      "proposals": 10,
+      "eligible": 9,
+      "trades": 9,
+      "official_wins": 4,
+      "direct_net_usd": -1.71,
+      "prescreen_pass": true,
+      "strong_pass": false
+    },
+    "C03_FIRST_COMPLETED_S15_CLOSE": {
+      "proposals": 10,
+      "trades": 10,
+      "official_wins": 7,
+      "direct_net_usd": -0.59,
+      "prescreen_pass": true,
+      "strong_pass": false
+    }
+  },
+  "finding": {
+    "leading_config": "C03_FIRST_COMPLETED_S15_CLOSE",
+    "interpretation": "Opening-range timing restores supply and S15 confirmation yields 70% official wins, but direct net remains negative under frozen 30s economics; preserve as high-information near-neutral clue, not candidate.",
+    "decision": "NO_PROMOTION_FREEZE_AS_REVERSAL_RECOMBINATION_CLUE",
+    "next": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_PRESCREEN_17AA"
+  },
+  "numeric_retuning": false,
+  "post_result_retuning": false,
+  "august_accessed": false,
+  "mql5_authorized": false
+}
