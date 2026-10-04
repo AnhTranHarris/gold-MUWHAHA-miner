@@ -17,8 +17,8 @@
   },
   "in_flight_unit": {
     "unit": "R037_ORDER_FLOW_IMBALANCE_MOMENTUM_STAGE_A_SCREEN",
-    "status": "RESULT_COMMITTED",
-    "phase_rank": 3,
+    "status": "REPORT_COMMITTED",
+    "phase_rank": 4,
     "parent_durable_unit": "R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR",
     "committed_artifacts": [
       {
@@ -32,9 +32,13 @@
       {
         "path": "research/delta/reference/DELTA_R037_OFM_STAGE_A_CHECKPOINT_17AS.json",
         "commit": "1cf7fae2295b19389d5248c604fe5647be83dadc"
+      },
+      {
+        "path": "research/delta/research/DELTA_R037_OFM_STAGE_A_CHECKPOINT_17AS.md",
+        "commit": "f46e6b37de8a2de5b9005145d2e3021263c395b8"
       }
     ],
-    "next_action": "17AS compute/result durable. Write report, workbook checkpoint and rebuild manifest; do not rerun compute.",
+    "next_action": "Create 17AS rebuild manifest, then advance CURRENT_STATE; compute must not rerun.",
     "completed_months": [],
     "next_month": null
   },
