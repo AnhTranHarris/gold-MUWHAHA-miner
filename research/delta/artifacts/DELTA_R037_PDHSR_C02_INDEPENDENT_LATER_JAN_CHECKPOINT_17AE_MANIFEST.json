@@ -1,0 +1,164 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17AE",
+  "status": "VERIFIED_INDEPENDENT_HOLDOUT_PASS_STRONG_ADVANCE_MONTHLY",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_CHECKPOINT_17AD",
+  "hypothesis": "Frozen C02 prior-day sweep plus completed S5 reclaim remains positive on independent later-January data without retuning.",
+  "falsification_condition": "Any preregistered supply gate fails or source-only direct net is negative.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "17AE holdout C02",
+    "reference_count": 8,
+    "minimum_count": 5,
+    "minimum_retention_fraction": 0.625,
+    "owner_numeric_floor_defined": true
+  },
+  "primary_metrics": {
+    "entry_quality": "7/8 official wins",
+    "hold_persistence": "30s frozen",
+    "economics": "+$8.35 source-only",
+    "gross_loss_drawdown": "gross loss -$0.73",
+    "activity": "8 trades / 8 days"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_pdhsr_c02_independent_later_jan.py",
+      "commit": "32ab7407bfbe24a96a7741fe2214be8742d33ded",
+      "blob_sha": "e330f2cc994f3b9112a3a6ec4176e7af3afc7cce",
+      "file_sha256": "72e9593e593a1ac32a60c351ed2a40d8289ec0c774f50af32a3cbd7ff300b361"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "candidate": "R037-PDHSR-C02_S5_CLOSE_RECLAIM",
+      "max_spread_points": 25,
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30,
+      "numeric_retuning": false,
+      "side_filter": false,
+      "session_filter": false,
+      "weekday_filter": false
+    },
+    "feature_order": [
+      "previous-day high/low",
+      "first strict sweep",
+      "completed S5 reclaim",
+      "execution quote still reclaimed"
+    ],
+    "horizons_checkpoints": {
+      "holdout": "2026-01-18T12:00:00Z/2026-02-01T00:00:00Z"
+    },
+    "train_cal_eval_boundaries": {
+      "warmup_start": "2026-01-14T00:00:00Z",
+      "economic_holdout_start": "2026-01-18T12:00:00Z"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 60,
+      "atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_verified": "e330f2cc994f3b9112a3a6ec4176e7af3afc7cce"
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_PDHSR_C02_INDEPENDENT_LATER_JAN_CHECKPOINT_17AE.json",
+      "commit": "c7ec0220ff40bf62d7bc6eb28984b941875c92f0",
+      "blob_sha": "9ed5c4fa2653bcc856c8b21787488afc16a451d2",
+      "official_raw_result_sha256": "393a2fc9e5bbdbe7c51fbffef28764c498ec3d4cef9d247c65d8c272d9ab4274"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_PDHSR_C02_INDEPENDENT_LATER_JAN_CHECKPOINT_17AE.md",
+      "commit": "9eb35addb39ad5a028cdd6e7d9ea6cbfed7c45c8",
+      "blob_sha": "71388239cb630d38502dda2864032d5f97ee09ca"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "C02"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "qa": [
+    "Canonical January hash verified.",
+    "Exact producer Git blob verified before compute.",
+    "Official compute completed within 60-second hard timeout.",
+    "8 proposals / 8 eligible / 8 distinct days.",
+    "7/8 official wins; +$8.35 direct net.",
+    "Workbook A174:H181 readback PASS.",
+    "No retune; no PDH/PDL split; August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_pdhsr_c02_independent_later_jan.py",
+    "command": "python research/delta/experiments/delta_r037_pdhsr_c02_independent_later_jan.py --source <canonical_january_gzip> --output <17AE>",
+    "timing_semantics": "warmup allowed; no economic decision before 2026-01-18T12:00Z; one trade/day; S5 close reclaim",
+    "expected_fingerprints": {
+      "trades": 8,
+      "official_wins": 7,
+      "direct_net_usd": 8.35
+    },
+    "selected_interpretation": "C02_S5_CLOSE_RECLAIM"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen",
+    "ownership_scheduler_spec": "one/day",
+    "session_dst_spec": "UTC-day levels",
+    "risk_spec": "frozen",
+    "trade_count_parity_spec": "not eligible until monthly validation",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_CHECKPOINT_17AD",
+  "drive_artifacts": [
+    {
+      "name": "working workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "70 R037 Prereg",
+      "range": "A174:H181",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "e9a8ff5f08f136af9b4d9fb52e991610797a8f4e",
+    "32ab7407bfbe24a96a7741fe2214be8742d33ded",
+    "c7ec0220ff40bf62d7bc6eb28984b941875c92f0",
+    "9eb35addb39ad5a028cdd6e7d9ea6cbfed7c45c8"
+  ],
+  "next_unit": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION"
+}
