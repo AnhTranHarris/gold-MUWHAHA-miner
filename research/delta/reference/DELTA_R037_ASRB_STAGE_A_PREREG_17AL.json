@@ -1,0 +1,60 @@
+{
+  "schema": "delta-r037-asrb-stage-a-prereg-17al-v1",
+  "unit": "R037_ASIAN_SESSION_RANGE_BREAKOUT_STAGE_A_SCREEN",
+  "checkpoint": "17AL",
+  "status": "PREREGISTERED_BEFORE_OFFICIAL_COMPUTE",
+  "parent_checkpoint": "R037_HTAR_H1_FEB_JUL_ROBUSTNESS_CHECKPOINT_17AK",
+  "family": "R037-ASRB-v1",
+  "public_logic_basis": [
+    "Asian-session XAUUSD range frozen before London trading window",
+    "completed-bar breakout confirmation",
+    "persistence or causal retest confirmation before entry"
+  ],
+  "frozen_profiles": {
+    "C01_PERSIST": {
+      "range_utc": "00:00-06:00",
+      "trade_window_utc": "07:00-10:00",
+      "signal_tf_seconds": 5,
+      "rule": "first S5 close outside frozen Asian range; next completed S5 close must remain outside; execute first tick at/after second bar right edge",
+      "one_trade_per_direction_per_day": true
+    },
+    "C02_RETEST": {
+      "range_utc": "00:00-06:00",
+      "trade_window_utc": "07:00-10:00",
+      "signal_tf_seconds": 5,
+      "rule": "first S5 close outside range; within next 6 completed S5 bars price must touch boundary and close back outside in breakout direction; execute first tick at/after retest bar right edge",
+      "one_trade_per_direction_per_day": true
+    }
+  },
+  "execution": {
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_points": 25,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30
+  },
+  "stage_a_window": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_exclusive_utc": "2026-01-18T12:00:00Z"
+  },
+  "gate": {
+    "minimum_trades": 4,
+    "minimum_distinct_days": 3,
+    "direct_net_min_minus_1": true,
+    "strong_pass_requires_nonnegative_net": true
+  },
+  "selection_rule": "advance only a preregistered profile that passes all supply/economic gates; if multiple strong-pass, rank by direct net then wins without retuning",
+  "restrictions": [
+    "no numeric retuning",
+    "no range-width fitting",
+    "no weekday/side filters",
+    "no exit tuning",
+    "no August",
+    "no MQL5"
+  ],
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "citations_note": "Logic reconstructed from current MetaQuotes/MQL5 ORB and Asian-range breakout descriptions plus open-source TradingView ORB descriptions; external profitability claims are not treated as evidence.",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
