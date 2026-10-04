@@ -1,0 +1,162 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_TCFH_STAGE_A_SCREEN_CHECKPOINT_17AP",
+  "status": "VERIFIED_STAGE_A_FAIL_FAMILY_RETIRED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_RLSFG_STAGE_A_SCREEN_CHECKPOINT_17AO",
+  "hypothesis": "Published-default 30-second tick-count directional flow with +/-0.30 trigger, 0.80 hysteresis and 2-second cadence can supply a causal short-horizon XAUUSD entry source.",
+  "falsification_condition": "Require >=6 trades, >=4 distinct days and direct net >= -$1; otherwise retire without threshold or exit rescue.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "17AP TCFH Stage-A profile",
+    "reference_count": 1598,
+    "minimum_count": 6,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true
+  },
+  "primary_metrics": {
+    "entry_quality": "677/1598 official wins",
+    "hold_persistence": "30s frozen",
+    "economics": "direct net -$331.99",
+    "gross_loss_drawdown": "gross loss -$488.69",
+    "activity": "1,598 trades across 14 distinct days"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_tcfh_stage_a_17ap.py",
+      "commit": "d42f125b5dde1fc2313a6b8f1123470b6436212e",
+      "blob_sha": "2a5d8f4c9bc21d1be5b7a52ec5bfb2eb25ca84e5",
+      "file_sha256": "e8f4ac9120c66481062de27a8dc01b725dcd2fad0df167817b3f9afa3078d783"
+    }
+  ],
+  "helpers": [],
+  "config": {
+    "parameters": {
+      "flow_window_seconds": 30,
+      "flow_threshold": 0.3,
+      "hysteresis_factor": 0.8,
+      "cadence_seconds": 2,
+      "max_spread_points": 25,
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "trailing tick-count flow",
+      "hysteresis latch",
+      "2-second causal decision edge",
+      "first executable P75 tick"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "stage_a": "preregistered screen only"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+      "exact_git_blob_verified": "2a5d8f4c9bc21d1be5b7a52ec5bfb2eb25ca84e5",
+      "compile_pass": true,
+      "compact_stdout": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_TCFH_STAGE_A_SCREEN_CHECKPOINT_17AP.json",
+      "blob_sha": "625858a8dfcbd679d7ed464071a45a680690217a",
+      "official_raw_result_sha256": "5b2da282a6218951ff8d063d05a086362f8f241c4613eb46b302dcdfdf0b089c"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_TCFH_STAGE_A_SCREEN_CHECKPOINT_17AP.md",
+      "blob_sha": "2299279e40cfdbfeebed719f5c735e4deed0ef8e"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "R037-TCFH-C01_DEFAULT_30S"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": []
+  },
+  "models": [],
+  "qa": [
+    "Prereg committed before producer and official compute.",
+    "Canonical January SHA and 4,205,709 Stage-A tick count verified.",
+    "Exact committed producer Git blob verified locally before official compute.",
+    "Producer compile passed.",
+    "Official compute used 120-second hard timeout and atomic output.",
+    "Published-default TCFH produced 1,598 trades across 14 days.",
+    "Direct net -$331.99 fails the economic floor decisively.",
+    "No threshold/window/session/side/exit rescue tuning performed.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_tcfh_stage_a_17ap.py",
+    "command": "python research/delta/experiments/delta_r037_tcfh_stage_a_17ap.py --source <canonical_january_gzip> --output <17AP>",
+    "timing_semantics": "trailing [edge-30s,edge) tick-count flow; evaluate each 2-second UTC edge; enter first P75 tick at/after edge",
+    "expected_fingerprints": {
+      "C01_DEFAULT_30S": {
+        "trades": 1598,
+        "distinct_days": 14,
+        "official_wins": 677,
+        "direct_net_usd": -331.99
+      }
+    },
+    "selected_interpretation": "RETIRE_TCFH_STAGE_A_NO_SURVIVOR"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE - retired Stage-A family",
+    "feature_timing_spec": "not ready",
+    "state_machine_spec": "not ready",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "P75 frozen",
+    "ownership_scheduler_spec": "not integrated",
+    "session_dst_spec": "frozen",
+    "risk_spec": "frozen",
+    "trade_count_parity_spec": "candidate retired",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_RLSFG_STAGE_A_SCREEN_CHECKPOINT_17AO",
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": false,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "3e61506898ca72ebc537e99029176f238187aaa0",
+    "04a8eabbdf48f43b2a18437d3de28cd97add0e41",
+    "d42f125b5dde1fc2313a6b8f1123470b6436212e",
+    "ee7eff84b6ad35576930389e6088ea8ae4853c97",
+    "45ef14164a647d38ce0456334a7e79d363b5e4ca"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
