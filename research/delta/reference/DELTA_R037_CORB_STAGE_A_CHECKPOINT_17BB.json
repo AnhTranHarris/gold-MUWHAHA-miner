@@ -1,0 +1,69 @@
+{
+  "schema": "delta-r037-corb-stage-a-screen-17bb-v1",
+  "status": "COMPLETE_STAGE_A_SCREEN",
+  "unit": "R037_COMEX_OPENING_RANGE_BREAKOUT_STAGE_A_SCREEN",
+  "family": "R037-CORB-v1",
+  "parent_checkpoint": "R037_ALRB_STAGE_A_SCREEN_CHECKPOINT_17BA",
+  "prereg_commit": "2b4ab9d6d1a875e80e4149fbe9c20f3711655079",
+  "producer_commit": "4e32dad65f53db340f131bb5d62a478e620431d9",
+  "producer_blob": "9f132a7d0b9bd9583280f30ed7c0d36959f56e9a",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "signal_surface": "NATIVE_DUKAS_TICK_PLUS_M1_MID",
+  "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "signal_definition": {
+    "january_utc_open": "13:20",
+    "opening_range_utc": "13:20-13:35",
+    "breakout_window_utc": "13:35-15:00",
+    "confirmation_bar_seconds": 60,
+    "one_signal_per_direction_per_day": true
+  },
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "diagnostics": {
+    "signals": 15,
+    "signals_per_day": 1.0714285714285714,
+    "opening_range_raw_quantiles": {
+      "p10": 8163.4,
+      "p25": 10638.5,
+      "p50": 14220,
+      "p75": 15817,
+      "p90": 24284.8
+    }
+  },
+  "configs": {
+    "C01_COMEX_15M_OR_M1_BREAK": {
+      "metrics": {
+        "signals": 15,
+        "busy_skips": 0,
+        "spread_rejects": 0,
+        "trades": 15,
+        "distinct_days": 11,
+        "long": 10,
+        "short": 5,
+        "official_wins": 9,
+        "gross_profit": 1.79,
+        "gross_loss": -3.32,
+        "direct_net_usd": -1.68,
+        "exit_reasons": {
+          "STOP": 15,
+          "MAX_HOLD": 0,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_20": false,
+        "minimum_distinct_days_5": true,
+        "direct_net_min_minus_1": false,
+        "screen_pass": false,
+        "strong_pass": false
+      }
+    }
+  },
+  "finding": {
+    "leading_config": null,
+    "decision": "RETIRE_CORB_STAGE_A_NO_EXECUTABLE_SURVIVOR",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "mql5_authorized": false
+}
