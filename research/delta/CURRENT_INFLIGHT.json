@@ -1,11 +1,11 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "IN_PROGRESS",
+  "status": "COMPLETE",
   "branch": "delta",
   "unit": "R037_PREVIOUS_LIQUIDITY_SWEEP_RECLAIM_STAGE_A_SCREEN",
   "parent_durable_unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "phase": "COMPLETE",
+  "phase_rank": 7,
   "prereg": {
     "path": "research/delta/reference/DELTA_R037_PLSR_STAGE_A_EVIDENCE_16A.json"
   },
@@ -14,12 +14,24 @@
     "commit": "2d501788374f69a2eb3c67b0c4eabac2cfb97374",
     "blob_sha": "294d47ad452273ba6e0210906c7747a2342f12b9"
   },
-  "result": null,
-  "report": null,
-  "manifest": null,
+  "result": {
+    "path": "research/delta/reference/DELTA_R037_PLSR_STAGE_A_CHECKPOINT_16A.json",
+    "commit": "4f6d39a2044b1e6b810d4f21165fd98c9cf4a34d",
+    "raw_result_sha256": "ac9a8aafb30913c4f1cc7e0e4988a40d1bac7d295c15ed8a41ce54bf958cf99c",
+    "strong_screen_pass": true,
+    "leader": "R037-PLSR-C01_PDH_PDL_S5_RECLAIM"
+  },
+  "report": {
+    "path": "research/delta/research/DELTA_R037_PLSR_STAGE_A_CHECKPOINT_16A.md",
+    "commit": "04e3c9cc8af97c2be878d842492d040e220292e8"
+  },
+  "manifest": {
+    "path": "research/delta/artifacts/DELTA_R037_PLSR_STAGE_A_CHECKPOINT_16A_MANIFEST.json",
+    "commit": "6d528c06a5077bbb145903f458cab1a16889cb58"
+  },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Verify 16A producer blob and result path. If no result exists, run committed PLSR 16A producer only. Do not rerun 15B.",
+    "resume_first_action": "16A complete. Continue only R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION; do not rerun 16A.",
     "idempotency_rule": "Never rerun completed compute solely because chat delivery timed out."
   },
   "last_verified_ci": {

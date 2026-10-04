@@ -11,33 +11,34 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B",
-    "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_AND_STAGE_A_PREREGISTRATION_NEXT",
-    "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_AND_STAGE_A_PREREGISTRATION",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B_MANIFEST.json",
+    "last_verified_durable_unit": "R037_PLSR_STAGE_A_SCREEN_CHECKPOINT_16A",
+    "current_phase": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION_NEXT",
+    "first_incomplete_unit": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PLSR_STAGE_A_CHECKPOINT_16A_MANIFEST.json",
     "current_state_commit": "PENDING_THIS_ATOMIC_CURSOR_COMMIT",
     "current_state_ci_run": null,
     "current_state_ci_conclusion": "PENDING"
   },
   "in_flight_unit": {
     "unit": "R037_PREVIOUS_LIQUIDITY_SWEEP_RECLAIM_STAGE_A_SCREEN",
-    "status": "IN_PROGRESS",
-    "phase_rank": 2,
+    "status": "COMPLETE",
+    "phase_rank": 7,
     "parent_durable_unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_PLSR_STAGE_A_EVIDENCE_16A.json"
+        "path": "research/delta/reference/DELTA_R037_PLSR_STAGE_A_CHECKPOINT_16A.json",
+        "commit": "4f6d39a2044b1e6b810d4f21165fd98c9cf4a34d"
       },
       {
-        "path": "research/delta/research/DELTA_R037_PLSR_STAGE_A_PREREG_16A.md"
+        "path": "research/delta/research/DELTA_R037_PLSR_STAGE_A_CHECKPOINT_16A.md",
+        "commit": "04e3c9cc8af97c2be878d842492d040e220292e8"
       },
       {
-        "path": "research/delta/experiments/delta_r037_plsr_stage_a.py",
-        "commit": "2d501788374f69a2eb3c67b0c4eabac2cfb97374",
-        "blob_sha": "294d47ad452273ba6e0210906c7747a2342f12b9"
+        "path": "research/delta/artifacts/DELTA_R037_PLSR_STAGE_A_CHECKPOINT_16A_MANIFEST.json",
+        "commit": "6d528c06a5077bbb145903f458cab1a16889cb58"
       }
     ],
-    "next_action": "Run committed PLSR 16A producer on canonical Stage-A. If result already exists after timeout, verify and continue durability steps only."
+    "next_action": "Continue R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION; leader frozen exactly as C01 PDH+PDL S5 reclaim."
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",

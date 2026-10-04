@@ -4,9 +4,9 @@
   "branch": "delta",
   "created_utc": "2026-10-01",
   "active_science_parent": "DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE",
-  "last_verified_durable_unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B",
-  "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_AND_STAGE_A_PREREGISTRATION",
-  "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_AND_STAGE_A_PREREGISTRATION_NEXT",
+  "last_verified_durable_unit": "R037_PLSR_STAGE_A_SCREEN_CHECKPOINT_16A",
+  "first_incomplete_unit": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION",
+  "current_phase": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION_NEXT",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -588,8 +588,8 @@
     "github_commit": "d5db76bfcd3bb91086a5635058005b4d940013bb",
     "manifest_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_SAFE_HANDOFF_CHECKPOINT_09D.json",
     "manifest_commit": "5b21c2d06bbf4d98c10b3ee5bafeb0ca2c18a2fe",
-    "restart_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_AND_STAGE_A_PREREGISTRATION_NEXT",
-    "next_action": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_AND_STAGE_A_PREREGISTRATION",
+    "restart_phase": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION_NEXT",
+    "next_action": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION",
     "drive_folder_title": "00 CURRENT — DELTA R037 Timeout-Safe Handoff Pack — Checkpoint 09D — 2026-10-02",
     "restart_contract": {
       "google_doc_id": "1LlZrGb_ZEXOHRrtmDE-IL2wHiYuW6vRGcN4_UF_ryXc",
@@ -616,7 +616,7 @@
       "google_doc_url": "https://docs.google.com/document/d/18W8y8hHqcK84rkSW66tRWIcT1R5YBxJhitsziRRNLEI/edit",
       "google_doc_revision": "ANLCKQk8pRN2l7_NJZcQEj3kpQ5ptP2KEKPFiZqsz8PmLbCqZ_Qm2wcUoudBg3feBRKxsAGr5oHg5AP7v_GIhZKOwPcSYcNjXs4P0R4EtrM"
     },
-    "current_rebuild_manifest": "research/delta/artifacts/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B_MANIFEST.json",
+    "current_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PLSR_STAGE_A_CHECKPOINT_16A_MANIFEST.json",
     "verified_gate_run": 37149241116,
     "verified_gate_conclusion": "SUCCESS",
     "final_pack_revision_sync_commit": "5b21c2d06bbf4d98c10b3ee5bafeb0ca2c18a2fe",
@@ -660,7 +660,7 @@
   },
   "next_action": "Use DELTA_004 as the active parent. When the owner restates the first Entry + Initial-Hold research question, perform a fresh community scan, generate independent reconstructible hypotheses, use the GOV-014 spreadsheet-first quant harvesting loop to prioritize adjustments with >=10pp incremental scoped SYNTH-gap closure and seek >=30% scoped REAL-to-SYNTH gap closure before expensive replay, then preregister and test selected packages in the bounded Dukascopy tick-level cycle. Keep DELTA_005A-005M audit-only, August sealed, and MQL5 unauthorized.",
   "mql5_authorized": false,
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B_MANIFEST.json",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_PLSR_STAGE_A_CHECKPOINT_16A_MANIFEST.json",
   "bootstrap_manifest_commit": "f8b4ef6d9bfd047e1ee48801cecd0d0a1b4bec1c",
   "first_incomplete_manifest_path": null,
   "first_incomplete_preregistration_path": null,
@@ -3686,7 +3686,7 @@
         "august_2026": "SEALED",
         "mql5_authorized": false
       },
-      "first_incomplete_substep": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_AND_STAGE_A_PREREGISTRATION",
+      "first_incomplete_substep": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION",
       "dh05_reversal_efficiency_stage_normalization_checkpoint_08": {
         "status": "COMPLETE_MATERIAL_CLUE_PARITY_NOT_ACHIEVED",
         "github_report_path": "research/delta/research/DELTA_R037_DH05_REVERSAL_EFFICIENCY_STAGE_NORMALIZATION_CHECKPOINT_08.md",
@@ -5164,6 +5164,16 @@
         "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_AND_STAGE_A_PREREGISTRATION",
         "august_2026": "SEALED",
         "mql5_authorized": false
+      },
+      "plsr_stage_a_checkpoint_16a": {
+        "status": "COMPLETE_STRONG_STAGE_A_SCREEN_PASS_NON_PROMOTING",
+        "leader": "R037-PLSR-C01_PDH_PDL_S5_RECLAIM",
+        "raw_result_sha256": "ac9a8aafb30913c4f1cc7e0e4988a40d1bac7d295c15ed8a41ce54bf958cf99c",
+        "full_manifest_path": "research/delta/artifacts/DELTA_R037_PLSR_STAGE_A_CHECKPOINT_16A_MANIFEST.json",
+        "full_manifest_commit": "6d528c06a5077bbb145903f458cab1a16889cb58",
+        "next_unit": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION",
+        "august_2026": "SEALED",
+        "mql5_authorized": false
       }
     }
   },
@@ -5200,8 +5210,8 @@
     "github_commit": "d5db76bfcd3bb91086a5635058005b4d940013bb",
     "manifest_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_SAFE_HANDOFF_CHECKPOINT_09D.json",
     "manifest_commit": "5b21c2d06bbf4d98c10b3ee5bafeb0ca2c18a2fe",
-    "restart_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_AND_STAGE_A_PREREGISTRATION_NEXT",
-    "next_action": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_AND_STAGE_A_PREREGISTRATION",
+    "restart_phase": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION_NEXT",
+    "next_action": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION",
     "starter_prompt_doc_id": "15bKGqPsBebEXBdpgqhI1f6ItjoeJ4jc_3ZBzkN7woAU",
     "starter_prompt_doc_url": "https://docs.google.com/document/d/15bKGqPsBebEXBdpgqhI1f6ItjoeJ4jc_3ZBzkN7woAU/edit",
     "completeness_gate_doc_id": "1G_UttTVYhz55eZ6OHiz7r4ZzVv3l5zDD0U6DvTScG-s",
@@ -5262,7 +5272,7 @@
   "timeout_recovery": {
     "status": "ENABLED",
     "pointer_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_RECOVERY_POINTER.json",
-    "durable_unit": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B",
+    "durable_unit": "R037_PLSR_STAGE_A_SCREEN_CHECKPOINT_16A",
     "in_flight_unit": null,
     "recovery_rule": "CURRENT_STATE is the durable cursor. Read CURRENT_INFLIGHT and timeout pointer next; never rerun a durable unit solely because message delivery timed out.",
     "message_delivery_timeout_is_compute_failure": false,
