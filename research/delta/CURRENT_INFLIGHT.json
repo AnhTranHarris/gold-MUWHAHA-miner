@@ -1,21 +1,24 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "IDLE",
+  "status": "IN_PROGRESS",
   "branch": "delta",
-  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "unit": "R037_TICK_COUNT_FLOW_HYSTERESIS_STAGE_A_SCREEN",
   "parent_durable_unit": "R037_RLSFG_STAGE_A_SCREEN_CHECKPOINT_17AO",
-  "phase": "IDLE",
-  "phase_rank": 0,
+  "phase": "PREREG_COMMITTED",
+  "phase_rank": 1,
   "progress": {
-    "status": "READY_FOR_PREREG",
+    "status": "PREREG_COMMITTED",
     "last_completed": "R037_RLSFG_STAGE_A_SCREEN_CHECKPOINT_17AO",
     "last_decision": "RETIRE_RLSFG_STAGE_A_NO_SURVIVOR",
-    "next": "Harvest next causally independent entry-source family in a different information domain."
+    "current_candidate": "R037-TCFH-v1",
+    "prereg_path": "research/delta/reference/DELTA_R037_TCFH_STAGE_A_PREREG_17AP.json",
+    "prereg_commit": "3e61506898ca72ebc537e99029176f238187aaa0",
+    "next": "Commit deterministic producer, verify Git blob, then official Stage-A compute."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "17AO is durable; begin next independent entry-source harvest only.",
-    "idempotency_rule": "Do not rerun 17AO solely because message delivery timed out."
+    "resume_first_action": "17AP prereg is durable; do not create a second prereg. Continue with producer commit.",
+    "idempotency_rule": "Resume first missing committed phase; never rerun a durable phase solely because chat delivery timed out."
   },
   "last_verified_ci": {
     "commit": "164d20b91718a6bb84746350ba2a26b5c9a92ccb",
