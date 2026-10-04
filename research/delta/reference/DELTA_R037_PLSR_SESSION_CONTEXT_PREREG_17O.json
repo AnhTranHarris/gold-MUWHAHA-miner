@@ -1,0 +1,69 @@
+{
+  "schema": "delta-r037-plsr-session-context-prereg-v1",
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "checkpoint_target": "R037_PLSR_SESSION_CONTEXT_CROSS_MONTH_CHECKPOINT_17O",
+  "family": "R037-PLSR-SC-v1",
+  "status": "FROZEN_BEFORE_CROSS_MONTH_REPLAY",
+  "parent_clue": "R037-PLSR-C01_PDH_PDL_S5_RECLAIM",
+  "purpose": "Test whether fixed public civil-session placement explains the original PLSR clue's lack of monthly robustness without changing its prior-day level, sweep, reclaim, or 30-second lifecycle semantics.",
+  "source_basis": [
+    {
+      "source": "TradingView Session Sweep System",
+      "url": "https://www.tradingview.com/script/RY1SZR8x-Session-Sweep-System-WarRoomXYZ-V1/",
+      "logic": "Liquidity behavior is explicitly mapped across Asia, London and New York sessions."
+    },
+    {
+      "source": "TradingView Gold Session Map & Sweep Signals",
+      "url": "https://www.tradingview.com/script/bo1WdFiL-Gold-Session-Map-Sweep-Signals/",
+      "logic": "Gold sweep/reclaim behavior is evaluated during London and London-NY overlap after reference levels are frozen."
+    },
+    {
+      "source": "TradingView Smart Killzones Gold & BTC",
+      "url": "https://www.tradingview.com/script/XNPriaYA/",
+      "logic": "Gold session highs/lows are treated as liquidity pools with strongest activity around London/New York transition and overlap."
+    }
+  ],
+  "frozen_base": "Exact PLSR C01 concept: previous active UTC-day Bid high/low; strict Bid sweep beyond fixed level; completed S5 reclaim; one event per level/day; no rearm; frozen 30-second lifecycle.",
+  "configs": {
+    "C01_LONDON_07_12_UTC": "Only PLSR reclaim decision edges from 07:00<=UTC<12:00.",
+    "C02_NEWYORK_13_17_UTC": "Only PLSR reclaim decision edges from 13:00<=UTC<17:00.",
+    "C03_LONDON_OR_NY_07_12_13_17": "Allow either 07:00<=UTC<12:00 or 13:00<=UTC<17:00."
+  },
+  "validation_months": [
+    "2026-01_STAGE_A",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-07"
+  ],
+  "execution": {
+    "spread_gate_points_max": 25,
+    "one_position_at_a_time": true,
+    "lot": 0.01,
+    "stop_usd": 0.3,
+    "trail_activation_usd": 0.1,
+    "trail_distance_usd": 0.03,
+    "max_hold_seconds": 30,
+    "commission_round_trip_usd": 0.02
+  },
+  "gate": {
+    "minimum_total_trades": 8,
+    "minimum_nonnegative_months": 4,
+    "aggregate_direct_net_min_usd": 0
+  },
+  "forbidden": [
+    "change PLSR sweep/reclaim semantics",
+    "hour optimization",
+    "side split",
+    "month-specific config",
+    "exit tuning",
+    "August",
+    "MQL5"
+  ],
+  "next_if_pass": "R037_PLSR_SC_FULL_PARENT_CROSS_MONTH_VALIDATION",
+  "next_if_fail": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
