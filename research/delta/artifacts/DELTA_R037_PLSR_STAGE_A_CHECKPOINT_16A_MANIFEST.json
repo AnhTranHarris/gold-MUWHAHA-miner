@@ -1,0 +1,223 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_PLSR_STAGE_A_SCREEN_CHECKPOINT_16A",
+  "status": "VERIFIED_RESEARCH_COMPLETE_PENDING_STATE_ADVANCE",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B",
+  "hypothesis": "A prior-active-UTC-day high/low sweep followed by causal completed-bar reclaim can add independent first-entry opportunity to the frozen 14A surrogate parent; one of three preregistered confirmation anchors may survive Stage-A.",
+  "falsification_condition": "No preregistered configuration achieves the strong Stage-A screen without post-hoc retuning.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "14A surrogate Stage-A parent",
+    "reference_count": 14034,
+    "minimum_count": 14034,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "C01 adds 9 trades; activity preserved."
+  },
+  "primary_metrics": {
+    "entry_quality": "C01 +4 official wins across +9 trades.",
+    "hold_persistence": "Frozen 30-second R9 lifecycle.",
+    "economics": "C01 combined net delta +$2.14; direct PLSR +$2.14.",
+    "gross_loss_drawdown": "C01 GL delta -$2.41; max equity DD improves 0.0713%.",
+    "activity": "13 proposals / 11 eligible / 12 days / 9 accepted."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_plsr_stage_a.py",
+      "commit": "2d501788374f69a2eb3c67b0c4eabac2cfb97374",
+      "blob_sha": "294d47ad452273ba6e0210906c7747a2342f12b9",
+      "sha256": "42f2a7d31cfa9996504833eb55a69ac408d696082f88a0d2da56948bc4bc8b06"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/experiments/delta_r037_sorb_surrogate_parent_stage_a.py",
+      "blob_sha": "4dd2209c161d555cb814e3875553219373ad1f9b"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_r032_parent_backbone.py",
+      "blob_sha": "12e037bc44c8587f2305357ff085380473c40963"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "family": "R037-PLSR-v1",
+      "level": "previous active UTC day Bid high/low",
+      "sweep": "strict Bid beyond fixed prior-day level",
+      "candidates": [
+        "C01 completed S5 reclaim",
+        "C02 completed S5 reclaim + one immediate directional S5 confirmation",
+        "C03 completed S15 reclaim"
+      ],
+      "one_event_per_level_per_day": true,
+      "no_posthoc_level_split": true,
+      "spread_gate_points_max": 25,
+      "parent_same_tick_priority": true,
+      "blocked_event_deferred": false,
+      "candidate_rearm": false,
+      "stop_usd": 0.3,
+      "trail_activation_usd": 0.1,
+      "trail_distance_usd": 0.03,
+      "max_hold_seconds": 30,
+      "lot": 0.01
+    },
+    "feature_order": [
+      "prior active UTC day level",
+      "strict sweep",
+      "completed-bar reclaim/confirmation",
+      "parent-priority ownership",
+      "frozen R9 lifecycle"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Stage-A discovery screen; later-January remains independent."
+    },
+    "runtime_dependencies": [
+      "Python 3.11-compatible",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "bounded_timeout_seconds": 120,
+      "atomic_output": true,
+      "exact_git_blob_preexecution_verification": true,
+      "recovery_snapshot_execution": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "16A preregistration",
+      "path": "research/delta/reference/DELTA_R037_PLSR_STAGE_A_EVIDENCE_16A.json",
+      "blob_sha": "b9cb46ec63728e317bc3e5d989907a2a95e53567"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [
+      "C01 13 proposals/11 eligible",
+      "C02 13/9",
+      "C03 13/13"
+    ],
+    "predictions": [],
+    "selected_owned_ledger": [
+      "C01 9 accepted",
+      "C02 8",
+      "C03 12"
+    ],
+    "caches": [
+      "14A surrogate-parent tick-rooted feature surfaces"
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_PLSR_STAGE_A_CHECKPOINT_16A.json",
+      "commit": "4f6d39a2044b1e6b810d4f21165fd98c9cf4a34d",
+      "raw_result_sha256": "ac9a8aafb30913c4f1cc7e0e4988a40d1bac7d295c15ed8a41ce54bf958cf99c"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_PLSR_STAGE_A_CHECKPOINT_16A.md",
+      "commit": "04e3c9cc8af97c2be878d842492d040e220292e8"
+    }
+  ],
+  "qa": [
+    "Canonical January SHA verified.",
+    "Exact producer Git blob verified before compute.",
+    "Stage-A ticks exactly 4,205,709 and chronology monotonic.",
+    "Bounded runner exited 0 in ~20.4 seconds.",
+    "14A parent gate reproduced exact control.",
+    "Only C01 strong-pass; C02 ordinary pass; C03 fail.",
+    "No numeric retuning or PDH/PDL cherry-pick after results.",
+    "Workbook tab 69 A102:L110 written and read back with raw result SHA.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_plsr_stage_a.py",
+    "command": "python research/delta/experiments/delta_r037_plsr_stage_a.py --source <canonical_january_gzip> --output <16a_json>",
+    "expected_fingerprints": {
+      "parent": {
+        "trades": 14034,
+        "official_wins": 6349,
+        "net_profit": -2944.94,
+        "max_equity_drawdown": 2946.43
+      },
+      "C01": {
+        "trades": 14043,
+        "official_wins": 6353,
+        "net_profit": -2942.8,
+        "plsr_entries": 9,
+        "plsr_net": 2.14
+      },
+      "C02": {
+        "trades": 14042,
+        "official_wins": 6354,
+        "net_profit": -2945.48,
+        "plsr_entries": 8,
+        "plsr_net": -0.54
+      },
+      "C03": {
+        "trades": 14047,
+        "official_wins": 6355,
+        "net_profit": -2947.87,
+        "plsr_entries": 12,
+        "plsr_net": -1.57
+      }
+    },
+    "selected_interpretation": "R037-PLSR-C01_PDH_PDL_S5_RECLAIM"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — discovery research only",
+    "feature_timing_spec": "NOT READY",
+    "state_machine_spec": "NOT READY",
+    "model_inference_spec": "none",
+    "execution_quote_side_spec": "frozen DELTA",
+    "ownership_scheduler_spec": "14A surrogate parent priority",
+    "session_dst_spec": "UTC-day level only",
+    "risk_spec": "fixed 0.01",
+    "trade_count_parity_spec": "Not yet",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_SORB_C04_DUAL30_INDEPENDENT_VALIDATION_CHECKPOINT_15B",
+  "github_commits": [
+    "9c11543243532e39c03865bc0ae7f55a4c008768",
+    "bf3c3fd4b0d9a04cc8f6e2179269ad643fa29f51",
+    "2d501788374f69a2eb3c67b0c4eabac2cfb97374",
+    "4f6d39a2044b1e6b810d4f21165fd98c9cf4a34d",
+    "04e3c9cc8af97c2be878d842492d040e220292e8"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A102:L110",
+      "readback_verified": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_PLSR_C01_INDEPENDENT_LATER_JAN_VALIDATION"
+}
