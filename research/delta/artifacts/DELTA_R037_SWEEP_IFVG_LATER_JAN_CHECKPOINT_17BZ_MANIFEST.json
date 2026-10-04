@@ -1,0 +1,188 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_SWEEP_IFVG_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17BZ",
+  "status": "VERIFIED_INDEPENDENT_HOLDOUT_FAIL_FAMILY_RETIRED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_SWEEP_IFVG_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BX_17BY",
+  "hypothesis": "The unchanged Stage-A surviving M5 Sweep->FVG->IFVG->retest sequence retains nonnegative frozen 30-second expectancy outside Stage-A.",
+  "falsification_condition": "Supply gates pass but direct net is negative, or supply gates fail.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Independent later-January frozen M5 candidate",
+    "reference_count": 1,
+    "minimum_count": 1,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Unchanged 17BY M5 only; no M1 or tuned rescue."
+  },
+  "primary_metrics": {
+    "stage_a": "24 trades / 10 days / 17 wins / +$1.35",
+    "later_january": "27 trades / 10 days / 9 wins / -$7.30"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_sweep_ifvg_later_jan_17bz.py",
+      "commit": "417a25888204f00188a7673e7e32f46bf926e753",
+      "blob_sha": "f76872542d0261e6eb7c3431ba6f43abdcf982ca",
+      "file_sha256": "ab8e2e295434793a6e4bb5dcab46f3389c5ca6abab0c29dd789b2a0bc5a36bc1"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "0067707d2a45755fd4fa69fa164bbdd379aea5fe",
+      "file_sha256": "a0816a19445537f8a9c199c46212bbadb006a2773a9e03715afa49d489b8c281"
+    }
+  ],
+  "models": [],
+  "config": {
+    "parameters": {
+      "timeframe_ms": 300000,
+      "extreme_lookback_bars": 50,
+      "sweep_validity_bars": 50,
+      "minimum_gap_ticks": 30,
+      "inversion_grace_bars": 50,
+      "retest_validity_bars": 50,
+      "max_spread_raw": 250,
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30
+    },
+    "feature_order": [
+      "warmup eligible swing context only",
+      "post-cutoff sweep",
+      "directional FVG",
+      "body-close inversion",
+      "first IFVG retest",
+      "P75 execution"
+    ],
+    "horizons_checkpoints": {
+      "warmup": "[2026-01-14T00:00:00Z,2026-01-18T12:00:00Z)",
+      "holdout": "[2026-01-18T12:00:00Z,2026-02-01T00:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "independent later-January holdout; no pre-holdout sweep/event sequence"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": true,
+      "exact_git_blob_preexecution_verification": true,
+      "parent_death_signal": true,
+      "compact_stdout": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "loaded_ticks": 5675793
+    },
+    {
+      "name": "17BZ prereg",
+      "path": "research/delta/reference/DELTA_R037_SWEEP_IFVG_LATER_JAN_PREREG_17BZ.json",
+      "commit": "49191b02efcd60df5cceec67ad434d0cce649c87"
+    },
+    {
+      "name": "Stage-A parent",
+      "path": "research/delta/reference/DELTA_R037_SWEEP_IFVG_RETEST_STAGE_A_CHECKPOINT_17BX_17BY.json"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "M5 completed-bar holdout state"
+    ]
+  },
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_SWEEP_IFVG_LATER_JAN_CHECKPOINT_17BZ.json",
+      "blob_sha": "b0b529c4f00e23117283d34318c47e23ac4ef17e",
+      "result_sha256": "9723855c9a07b65847a625dc0b49270cba977e3ef0b29de0270808f5e95d4bb8"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_SWEEP_IFVG_LATER_JAN_CHECKPOINT_17BZ.md",
+      "blob_sha": "a7766fb98f2a47bb11a32b12ecd77a3ead9bdfda"
+    }
+  ],
+  "qa": [
+    "Later-January validation preregistered before producer.",
+    "Producer committed before official compute.",
+    "Local producer Git blob exactly matched committed GitHub blob.",
+    "Canonical January source hash verified.",
+    "Warmup allowed eligible swing context only; pre-holdout sweep/event sequences forbidden.",
+    "Official compute completed normally under 120-second crash-contained runner in approximately 5.7 seconds.",
+    "Supply gates passed: 27 proposals/trades over 10 days.",
+    "Economics failed: 9 wins / -$7.30 direct net.",
+    "No post-result rescue tuning.",
+    "Workbook write/readback completed.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_sweep_ifvg_later_jan_17bz.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_sweep_ifvg_later_jan_17bz.py --source <canonical_january_gzip> --output <checkpoint_json>",
+    "timing_semantics": "Warmup may define confirmed swings; sweep/event sequences start after economics cutoff only; all transitions completed-bar causal.",
+    "expected_fingerprints": {
+      "later_january": {
+        "proposals": 27,
+        "trades": 27,
+        "days": 10,
+        "wins": 9,
+        "net_usd": -7.3
+      }
+    },
+    "selected_interpretation": "STAGE_A_SURVIVOR_FAILS_INDEPENDENT_LATER_JAN"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — family retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "None.",
+    "execution_quote_side_spec": "Frozen P75.",
+    "ownership_scheduler_spec": "No integration.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01 research semantics.",
+    "trade_count_parity_spec": "Not applicable.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "github_commits": [
+    "49191b02efcd60df5cceec67ad434d0cce649c87",
+    "417a25888204f00188a7673e7e32f46bf926e753",
+    "5a19e3a10df3b8b03dc5a41dbe0f22be71971544",
+    "533456fadfa9350776cb4b1dc59769b6415a9061"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A219:H226"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+}
