@@ -10,17 +10,16 @@
     "active rebuild manifest"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS",
+    "last_verified_durable_unit": "R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT",
     "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
     "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS_MANIFEST.json"
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_QUEUE_IMBALANCE_MICROPRICE_STAGE_A_SCREEN",
-    "family": "R037-QIM-v1",
-    "status": "RESULT_MANIFEST_DURABLE_STATE_NEXT",
-    "phase_rank": 5,
-    "parent_durable_unit": "R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS",
+    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "status": "IDLE",
+    "phase_rank": 0,
+    "parent_durable_unit": "R037_QIM_STAGE_A_SCREEN_CHECKPOINT_17AT",
     "committed_artifacts": [
       {
         "path": "research/delta/reference/DELTA_R037_QIM_STAGE_A_PREREG_17AT.json",
@@ -43,7 +42,7 @@
         "commit": "32d89f0f89efc119f0f4e9d4522bde167ee196d0"
       }
     ],
-    "next_action": "Advance CURRENT_STATE to QIM 17AT retired checkpoint and require rebuild gate PASS; then harvest next independent entry-source family.",
+    "next_action": "Preregister next independent sparse state-transition entry-source family.",
     "completed_months": [],
     "next_month": null
   },
