@@ -1,0 +1,71 @@
+{
+  "schema": "delta-r037-sifvg-m5-later-jan-17bz-v1",
+  "status": "COMPLETE_INDEPENDENT_LATER_JAN_VALIDATION",
+  "unit": "R037_SWEEP_IFVG_INDEPENDENT_LATER_JAN_VALIDATION",
+  "checkpoint": "17BZ",
+  "candidate": "17BY_M5_SWEEP_IFVG_RETEST",
+  "parent_checkpoint": "R037_SWEEP_IFVG_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BX_17BY",
+  "prereg_commit": "49191b02efcd60df5cceec67ad434d0cce649c87",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "validation_window": {
+    "warmup_start_utc": "2026-01-14T00:00:00Z",
+    "economics_start_utc": "2026-01-18T12:00:00Z",
+    "end_exclusive_utc": "2026-02-01T00:00:00Z",
+    "loaded_ticks": 5675793,
+    "pre_holdout_sweeps_forbidden": true
+  },
+  "frozen_logic": {
+    "timeframe_ms": 300000,
+    "extreme_lookback_bars": 50,
+    "sweep_validity_bars": 50,
+    "minimum_gap_ticks": 30,
+    "inversion_grace_bars": 50,
+    "retest_validity_bars": 50
+  },
+  "metrics": {
+    "proposals": 27,
+    "trades": 27,
+    "busy_skips": 0,
+    "spread_rejects": 0,
+    "distinct_days": 10,
+    "long": 21,
+    "short": 6,
+    "official_wins": 9,
+    "gross_profit": 4.73,
+    "gross_loss": -11.76,
+    "direct_net_usd": -7.3,
+    "exit_reasons": {"STOP": 27, "MAX_HOLD": 0, "END": 0}
+  },
+  "gate": {
+    "minimum_proposals_6": true,
+    "minimum_trades_5": true,
+    "minimum_distinct_days_4": true,
+    "direct_net_nonnegative": false,
+    "pass": false
+  },
+  "diagnostics": {
+    "bars": 3270,
+    "warmup_bars": 538,
+    "holdout_bars": 2730,
+    "confirmed_extreme_highs": 139,
+    "confirmed_extreme_lows": 61,
+    "buyside_sweeps": 53,
+    "sellside_sweeps": 20,
+    "candidate_bull_fvg": 11,
+    "candidate_bear_fvg": 32,
+    "inversions_bullish": 25,
+    "inversions_bearish": 8,
+    "retests_bullish": 21,
+    "retests_bearish": 6,
+    "sweep_expired": 0,
+    "candidate_expired": 7,
+    "retest_expired": 3
+  },
+  "finding": {
+    "decision": "RETIRE_SIFVG_AFTER_LATER_JAN_FAIL",
+    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+  },
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "mql5_authorized": false
+}
