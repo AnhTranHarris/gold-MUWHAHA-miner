@@ -1,0 +1,169 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_AVPBR_SUPPLY_CALIBRATED_STAGE_A_SCREEN_CHECKPOINT_17BR_17BT",
+  "status": "VERIFIED_FAST_CAUSAL_PRESCREEN_NO_SURVIVOR",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_ACCUMULATION_VOLUME_PROFILE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BO_17BQ",
+  "hypothesis": "Supply-calibrated accumulation profile POC breakout-retest continuation can create 30-second XAUUSD persistence.",
+  "falsification_condition": "No unchanged lane satisfies >=20 trades, >=5 distinct days and nonnegative direct net.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Three preregistered supply-calibrated AVPBR lanes",
+    "reference_count": 3,
+    "minimum_count": 3,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "All three lanes executed unchanged."
+  },
+  "primary_metrics": {
+    "17BR": "140 trades / 63 wins / -$28.29",
+    "17BS": "23 trades / 11 wins / -$2.36",
+    "17BT": "57 trades / 30 wins / -$8.08"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_avpbr_supply_calibrated_17br_17bt.py",
+      "commit": "7bf5b416e109e4974e590718657aab84251430e1",
+      "blob_sha": "7c7bc60c063c603b47b43f2b7e067dbe463f5595",
+      "file_sha256": "0b19464230a6f18c010a71448c9eb934fc6f11afc2712f32a8bf033ce0cf24e3"
+    }
+  ],
+  "helpers": [],
+  "models": [],
+  "config": {
+    "parameters": {
+      "atr_length": 14,
+      "lookback": 20,
+      "compression_multiple": 3.8,
+      "min_box_bars": 20,
+      "max_box_bars": 40,
+      "abandon_initial_box_height_multiple": 1.5,
+      "profile_rows": 24,
+      "value_area_fraction": 0.7,
+      "poc_zone_fraction": 0.1,
+      "max_wait_bars": 20
+    },
+    "feature_order": [
+      "supply-calibrated accumulation",
+      "local profile",
+      "confirmed breakout",
+      "POC pullback",
+      "directional POC reclaim",
+      "P75 execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "single economic screen after supply-only calibration"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": true,
+      "exact_git_blob_preexecution_verification": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "supply-calibrated prereg",
+      "path": "research/delta/reference/DELTA_R037_AVPBR_SUPPLY_CALIBRATED_PREREG_17BR_17BT.json",
+      "commit": "0a84c8512bac8bd1a7ff82e51ec7b58c98d7cf04"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "M1/M5 local accumulation profile"
+    ]
+  },
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_AVPBR_SUPPLY_CALIBRATED_STAGE_A_CHECKPOINT_17BR_17BT.json",
+      "result_sha256": "608726c236905edb678d658a6199e63841cd10ec29b2ffd68fa7aea7bb521e20"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_AVPBR_SUPPLY_CALIBRATED_STAGE_A_CHECKPOINT_17BR_17BT.md"
+    }
+  ],
+  "qa": [
+    "Supply-only calibration used no P&L.",
+    "Corrected committed producer identity verified before compute.",
+    "Exact Git blob matched local source.",
+    "Canonical January hash/tick count verified.",
+    "All three lanes produced operational event supply.",
+    "All three economics negative.",
+    "No rescue tuning.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_avpbr_supply_calibrated_17br_17bt.py",
+    "timing_semantics": "Completed bars only; initial accumulation detected causally; local profile frozen at confirmed breakout; delayed POC pullback/reclaim; first executable P75 tick after confirmation.",
+    "expected_fingerprints": {
+      "17BR": {
+        "trades": 140,
+        "wins": 63,
+        "net_usd": -28.29
+      },
+      "17BS": {
+        "trades": 23,
+        "wins": 11,
+        "net_usd": -2.36
+      },
+      "17BT": {
+        "trades": 57,
+        "wins": 30,
+        "net_usd": -8.08
+      }
+    },
+    "selected_interpretation": "OPERATIONAL_MECHANISM_NEGATIVE_UNDER_FROZEN_30_SECOND_EXECUTION"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — family retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "None.",
+    "execution_quote_side_spec": "Frozen P75.",
+    "ownership_scheduler_spec": "No integration.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01.",
+    "trade_count_parity_spec": "Not applicable.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "github_commits": [
+    "0a84c8512bac8bd1a7ff82e51ec7b58c98d7cf04",
+    "6a0ed3901109fee28a6ed629902622431e98d8bd",
+    "7bf5b416e109e4974e590718657aab84251430e1"
+  ],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+}
