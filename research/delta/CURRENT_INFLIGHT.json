@@ -1,42 +1,39 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "COMPLETE",
+  "status": "INFLIGHT",
   "branch": "delta",
   "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-  "parent_durable_unit": "R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G",
-  "phase": "COMPLETE",
-  "phase_rank": 7,
+  "parent_durable_unit": "R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H",
+  "phase": "PRODUCER_COMMITTED",
+  "phase_rank": 2,
   "prereg": {
-    "path": "research/delta/reference/DELTA_R037_SMOR_SOURCE_HARVEST_PREREG_17H.json",
-    "commit": "947b101e1a8d289b5832556e1795d71b653a444b"
+    "path": "research/delta/reference/DELTA_R037_SFOC_SOURCE_HARVEST_PREREG_17I.json",
+    "commit": "844d9bdda78e61125c6d2994c25b4f8bc22dd0cb"
   },
   "producer": {
-    "path": "research/delta/experiments/delta_r037_smor_stage_a.py",
-    "commit": "e5acbd86f244b739279b21b78c35b56ee286a6fb",
-    "blob_sha": "bb944bb9052b95f039e0cdd0942598d2a4b2d47d"
+    "path": "research/delta/experiments/delta_r037_sfoc_stage_a.py",
+    "commit": "1daf3647c7ebf42d1987612ef18b3ad9b31e975c",
+    "blob_sha": "fc9c4615b056b0ad6e5400be8582c3fafb933b6c"
   },
   "result": {
-    "path": "research/delta/reference/DELTA_R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H.json",
-    "commit": "56b9dc159a1801da0a0a45e7c4aa7c7f0282c238",
-    "raw_sha256": "6937752f233b07c219b8e7b084cf37b7501f5e3c7c147da459d271a5c3b9aa20"
+    "path": "research/delta/reference/DELTA_R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I.json"
   },
   "report": {
-    "path": "research/delta/research/DELTA_R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H.md",
-    "commit": "010e841b1165cc24cdcfb5d04d25bc09057afbd0"
+    "path": "research/delta/research/DELTA_R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I.md"
   },
   "manifest": {
-    "path": "research/delta/artifacts/DELTA_R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H_MANIFEST.json"
+    "path": "research/delta/artifacts/DELTA_R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I_MANIFEST.json"
   },
   "progress": {
-    "family": "R037-SMOR-v1",
-    "status": "ORDINARY_PASS_NO_STRONG_PASS_RECOMBINATION_CLUE",
-    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+    "family": "R037-SFOC-v1",
+    "status": "PRODUCER_COMMITTED_AWAITING_OFFICIAL_COMPUTE",
+    "next": "OFFICIAL_STAGE_A_REPLAY"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Do not rerun SMOR 17H. Begin next independent/recombination harvest from CURRENT_STATE.",
-    "idempotency_rule": "Prereg/contract/producer immutable before compute; result create-only.",
-    "git_blob_verified": "bb944bb9052b95f039e0cdd0942598d2a4b2d47d"
+    "resume_first_action": "Run exactly one SFOC 17I replay only if no committed 17I result exists.",
+    "idempotency_rule": "Prereg/producer immutable; result create-only.",
+    "git_blob_verified": "fc9c4615b056b0ad6e5400be8582c3fafb933b6c"
   },
   "last_verified_ci": {
     "commit": "854baf7239bb88d2deb1d6ed8564fdaffe402112",

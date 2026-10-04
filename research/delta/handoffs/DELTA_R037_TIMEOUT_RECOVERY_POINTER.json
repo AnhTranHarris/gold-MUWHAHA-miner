@@ -18,38 +18,21 @@
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "status": "COMPLETE",
-    "phase_rank": 7,
-    "parent_durable_unit": "R037_EGF_STAGE_A_SCREEN_CHECKPOINT_17G",
+    "status": "PRODUCER_COMMITTED",
+    "phase_rank": 2,
+    "parent_durable_unit": "R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_SMOR_SOURCE_HARVEST_PREREG_17H.json",
-        "commit": "947b101e1a8d289b5832556e1795d71b653a444b"
+        "path": "research/delta/reference/DELTA_R037_SFOC_SOURCE_HARVEST_PREREG_17I.json",
+        "commit": "844d9bdda78e61125c6d2994c25b4f8bc22dd0cb"
       },
       {
-        "path": "research/delta/reference/DELTA_R037_SMOR_IMPLEMENTATION_CONTRACT_17H.json",
-        "commit": "15334fe4d1f19ef0d58ca27552243fb08037bd58"
-      },
-      {
-        "path": "research/delta/experiments/delta_r037_smor_stage_a.py",
-        "commit": "e5acbd86f244b739279b21b78c35b56ee286a6fb",
-        "blob_sha": "bb944bb9052b95f039e0cdd0942598d2a4b2d47d",
-        "file_sha256": "e28d27e0f79d1be79b4bc44653421e0de532297ce870b925e73febc4292ae6e0"
-      },
-      {
-        "path": "research/delta/reference/DELTA_R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H.json",
-        "commit": "56b9dc159a1801da0a0a45e7c4aa7c7f0282c238",
-        "raw_sha256": "6937752f233b07c219b8e7b084cf37b7501f5e3c7c147da459d271a5c3b9aa20"
-      },
-      {
-        "path": "research/delta/research/DELTA_R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H.md",
-        "commit": "010e841b1165cc24cdcfb5d04d25bc09057afbd0"
-      },
-      {
-        "path": "research/delta/artifacts/DELTA_R037_SMOR_STAGE_A_SCREEN_CHECKPOINT_17H_MANIFEST.json"
+        "path": "research/delta/experiments/delta_r037_sfoc_stage_a.py",
+        "commit": "1daf3647c7ebf42d1987612ef18b3ad9b31e975c",
+        "blob_sha": "fc9c4615b056b0ad6e5400be8582c3fafb933b6c"
       }
     ],
-    "next_action": "Begin next harvest from durable SMOR 17H; never rerun 17H.",
+    "next_action": "Run exactly one official bounded SFOC 17I replay after recovery gate; if result exists do not rerun.",
     "completed_months": [],
     "next_month": null
   },
