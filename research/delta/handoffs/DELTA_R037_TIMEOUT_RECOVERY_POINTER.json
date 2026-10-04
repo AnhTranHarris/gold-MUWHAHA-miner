@@ -11,13 +11,13 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E",
+    "last_verified_durable_unit": "R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F",
     "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
     "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_MSF_STAGE_A_SCREEN_CHECKPOINT_17E_MANIFEST.json",
-    "current_state_commit": "3e8f4d06457e86441b122d9e6a2ce185d85bf835",
-    "current_state_ci_run": 37177406300,
-    "current_state_ci_conclusion": "failure_due_stale_pointer_repaired_by_this_commit"
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_SFP_STAGE_A_SCREEN_CHECKPOINT_17F_MANIFEST.json",
+    "current_state_commit": "24147639f31418b67c0ce333bf37a7102e92d932",
+    "current_state_ci_run": null,
+    "current_state_ci_conclusion": "PENDING_POINTER_SYNC_CI"
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
@@ -49,7 +49,7 @@
         "commit": "5518531892ae57a88be1fa03295bd18ac06106bb"
       }
     ],
-    "next_action": "After CURRENT_STATE advances and durability CI passes, begin next independent entry-source harvest. Never rerun SFP 17F.",
+    "next_action": "Begin R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST only after this recovery/durability gate passes; never rerun SFP 17F.",
     "completed_months": [],
     "next_month": null
   },
