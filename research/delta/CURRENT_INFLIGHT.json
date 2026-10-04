@@ -2,19 +2,19 @@
   "schema": "delta-timeout-recovery-inflight-v1",
   "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION",
-  "parent_durable_unit": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_CHECKPOINT_17AD",
+  "unit": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION",
+  "parent_durable_unit": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17AE",
   "phase": "IDLE",
   "phase_rank": 0,
   "progress": {
     "status": "READY_FOR_PREREG",
-    "last_completed": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_CHECKPOINT_17AD",
-    "last_decision": "FREEZE_C02_AND_ADVANCE_INDEPENDENT_LATER_JAN_VALIDATION",
-    "next": "Preregister frozen C02 later-January validation; no retune."
+    "last_completed": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17AE",
+    "last_decision": "FREEZE_C02_UNCHANGED_ADVANCE_MONTH_BY_MONTH_VALIDATION",
+    "next": "Preregister frozen C02 February-July month-by-month validation; no retune."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read CURRENT_STATE/CURRENT_INFLIGHT/recovery pointer; 17AD durable; start frozen C02 later-January validation only.",
+    "resume_first_action": "Read CURRENT_STATE/CURRENT_INFLIGHT/recovery pointer; 17AE durable; start frozen C02 month-by-month validation only.",
     "idempotency_rule": "Do not rerun 17AD solely because chat delivery timed out."
   },
   "last_verified_ci": {
@@ -26,9 +26,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_CHECKPOINT_17AD",
-    "checkpoint": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_CHECKPOINT_17AD",
-    "current_state_next": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION",
-    "manifest": "research/delta/artifacts/DELTA_R037_PDH_PDL_SWEEP_RECLAIM_CHECKPOINT_17AD_MANIFEST.json"
+    "unit": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17AE",
+    "checkpoint": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17AE",
+    "current_state_next": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION",
+    "manifest": "research/delta/artifacts/DELTA_R037_PDHSR_C02_INDEPENDENT_LATER_JAN_CHECKPOINT_17AE_MANIFEST.json"
   }
 }

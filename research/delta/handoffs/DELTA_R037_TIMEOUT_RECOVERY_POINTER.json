@@ -11,31 +11,32 @@
     "older Drive timeout-safe handoff pack"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_CHECKPOINT_17AD",
-    "current_phase": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION_NEXT",
-    "first_incomplete_unit": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PDH_PDL_SWEEP_RECLAIM_CHECKPOINT_17AD_MANIFEST.json"
+    "last_verified_durable_unit": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17AE",
+    "current_phase": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION_NEXT",
+    "first_incomplete_unit": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_PDHSR_C02_INDEPENDENT_LATER_JAN_CHECKPOINT_17AE_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION",
+    "unit": "R037_PDHSR_C02_MONTH_BY_MONTH_VALIDATION",
     "status": "IDLE",
     "phase_rank": 0,
-    "parent_durable_unit": "R037_PDH_PDL_SWEEP_RECLAIM_STAGE_A_SCREEN_CHECKPOINT_17AD",
+    "parent_durable_unit": "R037_PDHSR_C02_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17AE",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_PDH_PDL_SWEEP_RECLAIM_CHECKPOINT_17AD.json",
-        "commit": "45e3347bd2b0bb59a4947a1885bd85ba32eb7e71"
+        "path": "research/delta/reference/DELTA_R037_PDHSR_C02_INDEPENDENT_LATER_JAN_CHECKPOINT_17AE.json",
+        "commit": "c7ec0220ff40bf62d7bc6eb28984b941875c92f0"
       },
       {
-        "path": "research/delta/artifacts/DELTA_R037_PDH_PDL_SWEEP_RECLAIM_CHECKPOINT_17AD_MANIFEST.json",
-        "commit": "e9176c5257c50a90eceb12de49b73ab6399f4614"
+        "path": "research/delta/artifacts/DELTA_R037_PDHSR_C02_INDEPENDENT_LATER_JAN_CHECKPOINT_17AE_MANIFEST.json",
+        "commit": "f2ba999be6754049941dab0e2bc5aee43ff6d6aa"
       }
     ],
-    "next_action": "Preregister frozen C02 later-January validation; 17AD is complete.",
+    "next_action": "Preregister frozen C02 February-July month-by-month validation; 17AE is complete.",
     "completed_months": [
-      "2026-01_STAGE_A"
+      "2026-01_STAGE_A",
+      "2026-01_LATER_HOLDOUT"
     ],
-    "next_month": "2026-01_LATER_HOLDOUT"
+    "next_month": "2026-02"
   },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE.json first.",
