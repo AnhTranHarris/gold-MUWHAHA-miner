@@ -29,11 +29,11 @@ The family is sufficiently sparse and the jump magnitude is economically nontriv
 
 ## Integrity
 
-- prereg commit: `8acec24b7ccf3bbbf30f5733fe45ccefa3b73a83`
-- producer commit: `9ef4e75f841371e2b32ee98e6322e2c12b7c3b24`
-- producer blob: `ae777b4d6f4b7fa28dfcfed85634c0901848dd1e`
-- producer SHA-256: `0a2acdb38a965836ab93e26c9780e1afa017a779e95f3aa331e24d5e4bde9e94`
-- official result SHA-256: `243f27fc455a2da44329e4e4b769cc7b1e99f9e33bd3073ff77a78f0c85308d2`
+- prereg commit: `d7896da5f43d146fe95c703013013ccebc4db87c`
+- producer commit: `e2bb64c479e7d22cd24fedc34b1667328ebc6a14`
+- producer blob: `f376dfecb4cbdbf08648cf74ec103400e04210f4`
+- producer SHA-256: `fc7b7c8ae960d899dac018bd57898bc2bb7c617a60155e0ecd527eabf04d6104`
+- official result SHA-256: `1a585c0d9240ca3eef67b7452fdf75bac1507b2b519085da82296a6d76f52380`
 - canonical January hash/tick count PASS
 - exact local Git blob verification PASS
 - hard process timeout 120 s
