@@ -1,21 +1,21 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "IDLE",
+  "status": "ACTIVE",
   "branch": "delta",
-  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "unit": "R037_PRICE_ACTION_FAST_HARVEST_17BE_17BG",
   "parent_durable_unit": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
-  "phase": "IDLE",
-  "phase_rank": 0,
+  "phase": "PREREGISTERED",
+  "phase_rank": 1,
   "progress": {
-    "status": "IDLE",
+    "status": "ACTIVE",
     "last_completed": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
-    "current_candidate": null,
-    "next": "Harvest and preregister next independent high-supply entry source."
+    "current_candidate": "R037-TBR-v1 / R037-PCR-v1 / R037-FAKEY-v1",
+    "next": "Build and commit exact fast-harvest producer, then execute the fixed three-family Stage-A prescreen."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "17BD is durable. Resume at independent entry-source harvest; do not rerun IER.",
-    "idempotency_rule": "Resume first missing committed phase only."
+    "resume_first_action": "Fast-harvest prereg is durable at commit 95a7ed14925c4acba1ca19fd6db78a21c5ab33f6. If producer absent, build/commit producer only.",
+    "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
     "commit": "164d20b91718a6bb84746350ba2a26b5c9a92ccb",
@@ -30,5 +30,11 @@
     "checkpoint": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
     "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
     "manifest": "research/delta/artifacts/DELTA_R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD_MANIFEST.json"
+  },
+  "inflight_artifacts": {
+    "prereg": {
+      "path": "research/delta/reference/DELTA_R037_PRICE_ACTION_FAST_HARVEST_PREREG_17BE_17BG.json",
+      "commit": "95a7ed14925c4acba1ca19fd6db78a21c5ab33f6"
+    }
   }
 }
