@@ -4,17 +4,17 @@
   "branch": "delta",
   "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
   "parent_durable_unit": "R037_SRHT_STAGE_A_SCREEN_CHECKPOINT_17AY",
-  "phase": "IDLE",
-  "phase_rank": 0,
+  "phase": "PRODUCER_VERIFIED",
+  "phase_rank": 3,
   "progress": {
     "status": "IDLE",
     "last_completed": "R037_SRHT_STAGE_A_SCREEN_CHECKPOINT_17AY",
     "current_candidate": null,
-    "next": "Harvest next independent entry source with demonstrable post-event residual asymmetry."
+    "next": "Run official TSO 17AZ Stage-A compute with exact producer blob d22d2dd225016f3292b94bc6c93e9628be76a5fb under 120-second timeout."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "SRHT 17AY is complete and retired; do not rerun. Harvest the next independent entry source.",
+    "resume_first_action": "TSO 17AZ producer is byte-verified: commit 19a0e42732e2d3f759b96de1b29ed323e32b5e8d, blob d22d2dd225016f3292b94bc6c93e9628be76a5fb, local SHA-256 f89012c5f8070fed507c35a1a2629f7aa2b03a912e9cb295b22ca962dd3efa14. If result absent, run official compute only.",
     "idempotency_rule": "Resume first missing committed phase; never duplicate a durable phase after transport timeout."
   },
   "last_verified_ci": {
