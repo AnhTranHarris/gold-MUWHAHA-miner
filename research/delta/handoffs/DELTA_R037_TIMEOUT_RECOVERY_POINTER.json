@@ -10,16 +10,16 @@
     "active rebuild manifest"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_SQRM_STAGE_A_SCREEN_CHECKPOINT_17BC",
-    "current_phase": "R037_IMPULSE_EXHAUSTION_REVERSAL_STAGE_A_SCREEN_IN_PROGRESS",
-    "first_incomplete_unit": "R037_IMPULSE_EXHAUSTION_REVERSAL_STAGE_A_SCREEN",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_SQRM_STAGE_A_SCREEN_CHECKPOINT_17BC_MANIFEST.json"
+    "last_verified_durable_unit": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
+    "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
+    "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_IMPULSE_EXHAUSTION_REVERSAL_STAGE_A_SCREEN",
-    "status": "RESULT_COMMITTED",
-    "phase_rank": 3,
-    "parent_durable_unit": "R037_SQRM_STAGE_A_SCREEN_CHECKPOINT_17BC",
+    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+    "status": "IDLE",
+    "phase_rank": 0,
+    "parent_durable_unit": "R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD",
     "committed_artifacts": [
       {
         "path": "research/delta/reference/DELTA_R037_IER_STAGE_A_PREREG_17BD.json",
@@ -32,9 +32,17 @@
       {
         "path": "research/delta/reference/DELTA_R037_IER_STAGE_A_CHECKPOINT_17BD.json",
         "commit": "4cdb079b75a1825616cade08afe157ee62ec634e"
+      },
+      {
+        "path": "research/delta/research/DELTA_R037_IER_STAGE_A_CHECKPOINT_17BD.md",
+        "commit": "eb9540be74811aea512da905cbd12855833e133e"
+      },
+      {
+        "path": "research/delta/artifacts/DELTA_R037_IER_STAGE_A_SCREEN_CHECKPOINT_17BD_MANIFEST.json",
+        "commit": "4a93d6384ffa51ca98600ef482544f30d132e423"
       }
     ],
-    "next_action": "Persist 17BD report/workbook/manifest; retire IER for insufficient supply; continue independent entry-source harvest.",
+    "next_action": "Harvest and preregister next independent high-supply entry source.",
     "completed_months": [],
     "next_month": null
   },
