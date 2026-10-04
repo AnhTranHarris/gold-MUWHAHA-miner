@@ -10,39 +10,39 @@
     "active rebuild manifest"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ",
+    "last_verified_durable_unit": "R037_ALRB_STAGE_A_SCREEN_CHECKPOINT_17BA",
     "current_phase": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST_NEXT",
     "first_incomplete_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ_MANIFEST.json"
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_ALRB_STAGE_A_SCREEN_CHECKPOINT_17BA_MANIFEST.json"
   },
   "in_flight_unit": {
     "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
     "status": "IDLE",
     "phase_rank": 0,
-    "parent_durable_unit": "R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ",
+    "parent_durable_unit": "R037_ALRB_STAGE_A_SCREEN_CHECKPOINT_17BA",
     "committed_artifacts": [
       {
-        "path": "research/delta/reference/DELTA_R037_TSO_STAGE_A_PREREG_17AZ.json",
-        "commit": "ff80d0724f7a657f2fcd4b1b9ab4c5e6b1e5aca0"
+        "path": "research/delta/reference/DELTA_R037_ALRB_STAGE_A_PREREG_17BA.json",
+        "commit": "d6dda76b529da4c92114ffd2058cef210827888b"
       },
       {
-        "path": "research/delta/experiments/delta_r037_tso_stage_a_17az.py",
-        "commit": "19a0e42732e2d3f759b96de1b29ed323e32b5e8d"
+        "path": "research/delta/experiments/delta_r037_alrb_stage_a_17ba.py",
+        "commit": "e729ba94b3b780f10f203ae816908969fc669746"
       },
       {
-        "path": "research/delta/reference/DELTA_R037_TSO_STAGE_A_CHECKPOINT_17AZ.json",
-        "commit": "b634238422c6f74cb151e781ed8c0f6df47aa56d"
+        "path": "research/delta/reference/DELTA_R037_ALRB_STAGE_A_CHECKPOINT_17BA.json",
+        "commit": "b345924dec4c0ac22cf4251d7ba443c41bf2aa9f"
       },
       {
-        "path": "research/delta/research/DELTA_R037_TSO_STAGE_A_CHECKPOINT_17AZ.md",
-        "commit": "0ffd66e51c79629f74572d7546ba88af66c5df29"
+        "path": "research/delta/research/DELTA_R037_ALRB_STAGE_A_CHECKPOINT_17BA.md",
+        "commit": "dca25d234040e19d248074bc505abd5d84b2b5dd"
       },
       {
-        "path": "research/delta/artifacts/DELTA_R037_TSO_STAGE_A_SCREEN_CHECKPOINT_17AZ_MANIFEST.json",
-        "commit": "471783ea7716d767bd082b6de0c8b99d74beb605"
+        "path": "research/delta/artifacts/DELTA_R037_ALRB_STAGE_A_SCREEN_CHECKPOINT_17BA_MANIFEST.json",
+        "commit": "7910549cefe44594cfe05dc5cf43349b46f668ae"
       }
     ],
-    "next_action": "Harvest next independent multi-leg state-transition entry source.",
+    "next_action": "Harvest next independent entry source with adequate event supply and demonstrable post-event asymmetry.",
     "completed_months": [],
     "next_month": null
   },
