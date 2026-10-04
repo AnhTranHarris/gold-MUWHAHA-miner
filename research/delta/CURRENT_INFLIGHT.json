@@ -1,30 +1,21 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "INFLIGHT",
+  "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_17X",
-  "parent_durable_unit": "R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I",
-  "phase": "PREREGISTERED",
-  "phase_rank": 1,
-  "prereg": {
-    "path": "research/delta/reference/DELTA_R037_PLSR_RECLAIM_QUALITY_PREREG_17X.json",
-    "commit": "46e893ebdbfc77e94f7719a61fa35c6b18324e5e"
-  },
+  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
+  "parent_durable_unit": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_CHECKPOINT_17X",
+  "phase": "IDLE",
+  "phase_rank": 0,
   "progress": {
-    "family": "R037-PLSR-RQ-v1",
-    "status": "PREREG_COMMITTED",
-    "completed_fast_prescreens": [
-      "17J-17V fast harvest committed",
-      "17W departure-swing retired: 6 trades / 3 wins / -$0.95 / supply fail",
-      "PDSM retired: best 2 trades / 1 win / +$0.06 / supply fail"
-    ],
-    "next": "Commit 17X producer and run Jan Stage-A plus Feb-Jul cross-month screen."
+    "status": "READY_FOR_NEXT_UNIQUE_PREREG",
+    "last_completed": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_CHECKPOINT_17X",
+    "last_decision": "RETIRE_RECLAIM_QUALITY_REFINEMENT_NO_RETUNE",
+    "next": "Research and preregister a unique next entry-source unit; do not rerun 17X after transport timeout."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Resume 17X at first missing phase; do not rerun 17J-17W or PDSM solely because chat delivery timed out.",
-    "idempotency_rule": "Reconcile branch before every write; committed prereg/result artifacts are authoritative.",
-    "prereg_commit": "46e893ebdbfc77e94f7719a61fa35c6b18324e5e"
+    "resume_first_action": "Read CURRENT_STATE; 17X is durable. Start only the next unique preregistered unit.",
+    "idempotency_rule": "Reconcile branch before every write; completed 17X artifacts are authoritative."
   },
   "last_verified_ci": {
     "commit": "854baf7239bb88d2deb1d6ed8564fdaffe402112",
@@ -35,9 +26,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "checkpoint": "R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I",
+    "unit": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_CHECKPOINT_17X",
+    "checkpoint": "R037_PLSR_RECLAIM_QUALITY_CROSS_MONTH_CHECKPOINT_17X",
     "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "manifest": "research/delta/artifacts/DELTA_R037_SFOC_STAGE_A_SCREEN_CHECKPOINT_17I_MANIFEST.json"
+    "manifest": "research/delta/artifacts/DELTA_R037_PLSR_RECLAIM_QUALITY_CHECKPOINT_17X_MANIFEST.json"
   }
 }
