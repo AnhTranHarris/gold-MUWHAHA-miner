@@ -2,20 +2,20 @@
   "schema": "delta-timeout-recovery-inflight-v1",
   "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-  "parent_durable_unit": "R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH",
+  "unit": "R037_HTAR_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+  "parent_durable_unit": "R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI",
   "phase": "IDLE",
   "phase_rank": 0,
   "progress": {
     "status": "READY_FOR_PREREG",
-    "last_completed": "R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH",
-    "last_decision": "RETIRE_SCFR_NO_RETUNE",
-    "next": "Preregister next independent source with naturally sparse higher-order liquidity anchor; do not retune 17AH."
+    "last_completed": "R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI",
+    "last_decision": "FREEZE_C01_H1_ANCHOR_ADVANCE_HOLDOUT",
+    "next": "Preregister independent later-January validation of frozen C01 H1 anchor."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read CURRENT_STATE/CURRENT_INFLIGHT/recovery pointer; 17AH durable; start next independent entry-source harvest only.",
-    "idempotency_rule": "Do not rerun 17AH solely because chat delivery timed out; verify committed result/report/workbook/manifest/CI first."
+    "resume_first_action": "Read CURRENT_STATE/CURRENT_INFLIGHT/recovery pointer; 17AI durable; start frozen H1 later-January holdout only.",
+    "idempotency_rule": "Do not rerun 17AI solely because chat delivery timed out."
   },
   "last_verified_ci": {
     "commit": "164d20b91718a6bb84746350ba2a26b5c9a92ccb",
@@ -26,9 +26,9 @@
   "sorb_integrated_replay_started": true,
   "mql5_authorized": false,
   "last_completed": {
-    "unit": "R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH",
-    "checkpoint": "R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH",
-    "current_state_next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST",
-    "manifest": "research/delta/artifacts/DELTA_R037_SCFR_STAGE_A_SCREEN_CHECKPOINT_17AH_MANIFEST.json"
+    "unit": "R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI",
+    "checkpoint": "R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI",
+    "current_state_next": "R037_HTAR_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+    "manifest": "research/delta/artifacts/DELTA_R037_HTAR_STAGE_A_SCREEN_CHECKPOINT_17AI_MANIFEST.json"
   }
 }
