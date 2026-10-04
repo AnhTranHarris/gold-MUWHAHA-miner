@@ -24,9 +24,10 @@
       "2026-02",
       "2026-03",
       "2026-04",
-      "2026-05"
+      "2026-05",
+      "2026-06"
     ],
-    "next_month": "2026-06",
+    "next_month": "2026-07",
     "monthly_results": {
       "2026-02": {
         "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_2026_02_16C.json",
@@ -67,12 +68,22 @@
         "net_delta": -6.34,
         "plsr_entries": 20,
         "plsr_net": -6.34
+      },
+      "2026-06": {
+        "path": "research/delta/reference/DELTA_R037_PLSR_C01_MONTHLY_VALIDATION_2026_06_16C.json",
+        "commit": "17d3ee4513ca086b69738328cdedf7982c991a49",
+        "raw_result_sha256": "1fa1ac00051140bafff89991f473b5a8096cf0942092a43e0097d35b246eecc5",
+        "trade_delta": 18,
+        "official_win_delta": 8,
+        "net_delta": -2.78,
+        "plsr_entries": 18,
+        "plsr_net": -2.78
       }
     }
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read 16C progress. February-May are committed. Run only June 2026 next; never rerun an already committed monthly result solely because chat delivery timed out.",
+    "resume_first_action": "Read 16C progress. February-June are committed. Run only July 2026 next; never rerun an already committed monthly result solely because chat delivery timed out.",
     "idempotency_rule": "Each month result is create-only and durable before the next month starts."
   },
   "last_verified_ci": {
