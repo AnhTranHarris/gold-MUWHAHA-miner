@@ -1,0 +1,147 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_ACCUMULATION_VOLUME_PROFILE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BO_17BQ",
+  "status": "VERIFIED_FIXTURE_FEASIBILITY_FAIL_ECONOMICS_NOT_TESTED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_PVACVD_FAILED_AUCTION_STAGE_A_SCREEN_CHECKPOINT_17BL_17BN",
+  "hypothesis": "A local accumulation volume-profile POC can act as a delayed breakout-retest continuation anchor.",
+  "falsification_condition": "Operational fixture must first produce natural Stage-A accumulation events before economics can be interpreted.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Three preregistered AVPBR feasibility profiles",
+    "reference_count": 3,
+    "minimum_count": 3,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "All profiles executed; zero accumulation events means economics not tested."
+  },
+  "primary_metrics": {
+    "compression_starts": 0,
+    "trades": 0,
+    "interpretation": "FEASIBILITY_FAIL_NOT_ECONOMIC_FAIL"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_avpbr_stage_a_17bo_17bq.py",
+      "commit": "9bc6a2fcb62933e47c55e4c188a1ff7be3b2924c",
+      "blob_sha": "341993896387fba6e19c6f72547fdf0c959087a6",
+      "file_sha256": "d831ccf6ffd9467130c68778435942d1cbfc6fe0c985d08cf3d0b1f83dffe70b"
+    }
+  ],
+  "helpers": [],
+  "models": [],
+  "config": {
+    "parameters": {
+      "compression_multiple": 1.5,
+      "lookback": 20,
+      "atr_length": 14,
+      "source_defaults_claimed": false
+    },
+    "feature_order": [
+      "compression",
+      "local profile",
+      "breakout",
+      "POC pullback",
+      "POC reclaim"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "fixture feasibility + fixed prescreen"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": true,
+      "exact_git_blob_preexecution_verification": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "AVPBR prereg",
+      "path": "research/delta/reference/DELTA_R037_AVPBR_STAGE_A_PREREG_17BO_17BQ.json",
+      "commit": "1c522c43631d9c11792673df07269a5c4b1f35cc"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "M1/M5 range-to-ATR supply diagnostic; no P&L inspected"
+    ]
+  },
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_AVPBR_STAGE_A_CHECKPOINT_17BO_17BQ.json",
+      "result_sha256": "997756c5d1373eb4e19ae1106f6c825f13bc44901549412f68e2c0c30c5bc685"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_AVPBR_STAGE_A_CHECKPOINT_17BO_17BQ.md"
+    }
+  ],
+  "qa": [
+    "Canonical source hash/tick count verified.",
+    "Exact committed producer blob matched local bytes.",
+    "Producer compiled cleanly.",
+    "Bounded compute exit 0 in ~6 seconds.",
+    "Zero compression starts in all lanes.",
+    "Supply-only ratio diagnostic used no returns/P&L.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_avpbr_stage_a_17bo_17bq.py",
+    "timing_semantics": "Completed bars only; local compression profile frozen at breakout; delayed POC retest/reclaim.",
+    "expected_fingerprints": {
+      "compression_starts": 0,
+      "trades": 0
+    },
+    "selected_interpretation": "PROJECT_COMPRESSION_FIXTURE_TOO_TIGHT_FOR_XAU_SCALE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "None.",
+    "execution_quote_side_spec": "Frozen P75.",
+    "ownership_scheduler_spec": "No integration.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01.",
+    "trade_count_parity_spec": "Not applicable.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "github_commits": [
+    "1c522c43631d9c11792673df07269a5c4b1f35cc",
+    "9bc6a2fcb62933e47c55e4c188a1ff7be3b2924c"
+  ],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_AVPBR_SUPPLY_CALIBRATED_STAGE_A_SCREEN"
+}
