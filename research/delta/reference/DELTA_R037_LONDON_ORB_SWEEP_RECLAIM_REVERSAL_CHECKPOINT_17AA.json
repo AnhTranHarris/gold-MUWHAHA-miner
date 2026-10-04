@@ -1,0 +1,45 @@
+{
+  "schema": "delta-r037-london-orb-sweep-reclaim-reversal-17aa-v1",
+  "status": "COMPLETE_NO_SURVIVOR",
+  "unit": "R037_LONDON_ORB_SWEEP_RECLAIM_REVERSAL_CHECKPOINT_17AA",
+  "family": "R037-LORB-SRR-v1",
+  "prereg_commit": "78db1c2b1806fb2605f3715cb1510ce31210902e",
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_london_orb_sweep_reclaim_reversal_17aa.py",
+    "commit": "36a963608dbcd63fc4210695016de002e1ff4b46",
+    "blob_sha": "745134387c241a3a02fa5aa86bf283a29f3df168",
+    "file_sha256": "f129a46caa5fbbbe11c5bd3d9b4b0933796df175df83ffa8d878209c5cd03f3f"
+  },
+  "official_compute": {
+    "result_sha256": "7a30c28f609bea97b0e4b541da6526b53063eeb046f31f58f1fd380902eade37"
+  },
+  "configs": {
+    "C01_FIRST_TICK_RECLAIM": {
+      "trades": 10,
+      "wins": 4,
+      "net": -2.18,
+      "prescreen_pass": false
+    },
+    "C02_FIRST_COMPLETED_S5_RECLAIM": {
+      "trades": 10,
+      "wins": 4,
+      "net": -1.44,
+      "prescreen_pass": true,
+      "strong_pass": false
+    },
+    "C03_FIRST_COMPLETED_S15_RECLAIM": {
+      "trades": 10,
+      "wins": 3,
+      "net": -3.07,
+      "prescreen_pass": false
+    }
+  },
+  "finding": {
+    "leading_config": "C02_FIRST_COMPLETED_S5_RECLAIM",
+    "decision": "RETIRE_FAMILY_NO_RETUNE",
+    "next": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+  },
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "mql5_authorized": false
+}
