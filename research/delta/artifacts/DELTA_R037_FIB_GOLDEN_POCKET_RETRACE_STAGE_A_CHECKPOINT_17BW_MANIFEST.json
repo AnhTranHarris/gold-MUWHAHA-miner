@@ -1,0 +1,147 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_FIB_GOLDEN_POCKET_IMPULSE_RETRACE_STAGE_A_SCREEN_CHECKPOINT_17BW",
+  "status": "VERIFIED_FAST_CAUSAL_PRESCREEN_NO_SURVIVOR",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_STRUCTURE_ANCHORED_VWAP_FAST_RETEST_STAGE_A_SCREEN_CHECKPOINT_17BU_17BV",
+  "hypothesis": "ATR-qualified XAUUSD M5 impulse legs followed by source-default 0.705 retracement fills create immediate continuation persistence.",
+  "falsification_condition": "Fixed default entry population has adequate supply but negative direct net.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Source-default XAU M5 golden-pocket entry lane",
+    "reference_count": 1,
+    "minimum_count": 1,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Single intended-default M5 lane executed unchanged."
+  },
+  "primary_metrics": {
+    "17BW": "138 trades / 11 days / 54 wins / -$35.70"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_fib_golden_pocket_retrace_17bw.py",
+      "commit": "3a8bc36a1131ad7ad7929116979f0c0db3a39cb3",
+      "blob_sha": "046994a2c1cc4ee17a8017004d1aa1d9536a5052",
+      "file_sha256": "9ccaec594bdac66d6a6c7a75bd453b622fc83ea97faceb1592a0a6d1b6fa961c"
+    }
+  ],
+  "helpers": [],
+  "models": [],
+  "config": {
+    "parameters": {
+      "timeframe": "M5",
+      "pivot_length": 3,
+      "atr_length": 14,
+      "minimum_impulse_atr": 2.5,
+      "entry_retracement": 0.705,
+      "validity_bars": 15
+    },
+    "feature_order": [
+      "confirmed pivot leg",
+      "2.5x ATR impulse qualification",
+      "0.705 projected retracement",
+      "15-bar pending fill",
+      "P75 execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "fixed source-default entry-quality prescreen"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": true,
+      "exact_git_blob_preexecution_verification": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "17BW prereg",
+      "path": "research/delta/reference/DELTA_R037_FIB_GOLDEN_POCKET_RETRACE_PREREG_17BW.json",
+      "commit": "48e0ce12f2c7bebb23f0fa3c5f7b882099f84dbc"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "confirmed M5 pivot legs and pending fib entries"
+    ]
+  },
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_FIB_GOLDEN_POCKET_RETRACE_STAGE_A_CHECKPOINT_17BW.json",
+      "result_sha256": "b6d9d038a9a5d90c437c7ee59598f5462a13200ad0cef50dc15c239867571e6c"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_FIB_GOLDEN_POCKET_RETRACE_STAGE_A_CHECKPOINT_17BW.md"
+    }
+  ],
+  "qa": [
+    "Exact producer Git blob matched local bytes.",
+    "Canonical January hash/tick count verified.",
+    "Adequate supply: 268 qualified impulses / 138 fills.",
+    "Economics negative.",
+    "No rescue tuning.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_fib_golden_pocket_retrace_17bw.py",
+    "timing_semantics": "Symmetric pivots visible only after three right bars; leg qualification occurs at endpoint confirmation; pending fib touch within next 15 completed M5 bars; P75 execution after interaction bar.",
+    "expected_fingerprints": {
+      "trades": 138,
+      "wins": 54,
+      "net_usd": -35.7
+    },
+    "selected_interpretation": "ADEQUATE_SOURCE_DEFAULT_SUPPLY_BUT_NEGATIVE_IMMEDIATE_PERSISTENCE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — family retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "None.",
+    "execution_quote_side_spec": "Frozen P75.",
+    "ownership_scheduler_spec": "No integration.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01.",
+    "trade_count_parity_spec": "Not applicable.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "github_commits": [
+    "48e0ce12f2c7bebb23f0fa3c5f7b882099f84dbc",
+    "3a8bc36a1131ad7ad7929116979f0c0db3a39cb3"
+  ],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+}
