@@ -1,0 +1,194 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_OFM_STAGE_A_SCREEN_CHECKPOINT_17AS",
+  "status": "VERIFIED_STAGE_A_FAIL_FAMILY_RETIRED",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR",
+  "hypothesis": "Source-defined M1 order-flow pressure plus microstructure reliability gates can produce viable short-horizon XAUUSD entries without Stage-A threshold calibration.",
+  "falsification_condition": "All preregistered source-derived profiles fail the frozen direct-net gate despite adequate signal supply and day coverage.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "R037-OFM three preregistered Stage-A profiles",
+    "reference_count": 3,
+    "minimum_count": 3,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "All preregistered profiles evaluated; no post-result threshold calibration or rescue profile."
+  },
+  "primary_metrics": {
+    "entry_quality": "C01 376/846 wins; C02 205/451; C03 491/1157",
+    "hold_persistence": "30-second frozen short-hold execution",
+    "economics": "C01 -$169.87; C02 -$92.59; C03 -$258.38",
+    "gross_loss_drawdown": "C01 -$263.07; C02 -$135.93; C03 -$380.29 gross loss",
+    "activity": "15,090 usable completed M1 feature bars"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_ofm_stage_a_17as.py",
+      "commit": "e27e9f9136d110f7f0f8ad41899bcda62d3db797",
+      "blob_sha": "7aa5755960e1f262667f00b17e93a162b39deff2",
+      "file_sha256": "f6dea91c48d55eb08546d5d02b80d24332368fb0b8ff81d839c5ebb989394574"
+    }
+  ],
+  "helpers": [],
+  "models": [],
+  "config": {
+    "parameters": {
+      "timeframe_seconds": 60,
+      "rolling_window": 90,
+      "smi_end_bars": 15,
+      "flow_short_window": 10,
+      "flow_long_window": 30,
+      "jump_sigma": 3,
+      "jump_gate": 0.021,
+      "noise_confidence_p75": 0.632,
+      "flow_confidence_min": 0.565,
+      "flow_long_threshold": 0.092,
+      "flow_short_threshold": -0.055,
+      "part5_noise_clean": 0.63,
+      "part5_order_imbalance_abs": 0.09,
+      "max_spread_points": 25,
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "enhanced_noise",
+      "jump_intensity",
+      "signed_flow_imbalance",
+      "smart_money_index",
+      "flow_momentum",
+      "flow_confidence"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "published-threshold independent Stage-A screen; no XAUUSD threshold calibration"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "output_write": "NamedTemporaryFile + flush + fsync + os.replace",
+      "provenance_gate": "local Git blob exactly matched committed producer before official compute"
+    }
+  },
+  "inputs": [
+    {
+      "name": "January 2026 canonical Dukascopy XAUUSD ticks",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "17AS preregistration",
+      "path": "research/delta/reference/DELTA_R037_OFM_STAGE_A_PREREG_17AS.json",
+      "commit": "b6eb77574ac32a151c371a4b4774b5946c3a300e",
+      "blob_sha": "7e2a47143f8c702a3157a155dfea5b03ec204b2b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_OFM_STAGE_A_CHECKPOINT_17AS.json",
+      "blob_sha": "2627df5702ac729deabc49278ebb22febee9e9a6",
+      "official_raw_result_sha256": "c7d07ce28fbd515674e733282c4191934a6d310cc931d158fe1ec252fd906cd0"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_OFM_STAGE_A_CHECKPOINT_17AS.md",
+      "blob_sha": "a7456d3f18911ce9f93c23b8bd7258005a0904e5"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "Causal completed-M1 P75-bid OHLC plus tick-count volume features"
+    ]
+  },
+  "qa": [
+    "Preregistration committed before producer and official compute.",
+    "Canonical January SHA and Stage-A tick count 4,205,709 verified.",
+    "Local producer Git blob exactly matched committed blob 7aa5755960e1f262667f00b17e93a162b39deff2.",
+    "Python compilation passed before official replay.",
+    "Official replay completed under 120-second hard process timeout with atomic result output.",
+    "All three profiles passed supply/day coverage but failed economics materially.",
+    "Best profile C02 retained 451 trades across 11 days but lost $92.59.",
+    "Observed XAUUSD flow/noise/confidence distributions overlap the published threshold regions, so immediate same-window threshold calibration is rejected as rescue tuning.",
+    "Workbook tab 71 A101:H106 readback PASS.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_ofm_stage_a_17as.py",
+    "command": "python research/delta/experiments/delta_r037_ofm_stage_a_17as.py --source <canonical_january_gzip> --output <checkpoint_17as_json>",
+    "timing_semantics": "Completed M1 P75-bid bars only; rolling features include the just-completed bar and earlier completed bars; decision at right edge; entry first executable P75 tick at/after edge.",
+    "expected_fingerprints": {
+      "C01_SOURCE_FLOW_SMI": {
+        "trades": 846,
+        "official_wins": 376,
+        "direct_net_usd": -169.87
+      },
+      "C02_FLOW_SMI_MOMENTUM": {
+        "trades": 451,
+        "official_wins": 205,
+        "direct_net_usd": -92.59
+      },
+      "C03_PART5_CLEAN_IMBALANCE": {
+        "trades": 1157,
+        "official_wins": 491,
+        "direct_net_usd": -258.38
+      }
+    },
+    "selected_interpretation": "NO_SURVIVOR_RETIRE_PUBLISHED_THRESHOLD_FAMILY"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — family retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "DELTA frozen execution semantics unchanged.",
+    "ownership_scheduler_spec": "No integration or promotion.",
+    "session_dst_spec": "DELTA frozen semantics unchanged.",
+    "risk_spec": "Fixed 0.01 research semantics unchanged.",
+    "trade_count_parity_spec": "Not applicable; family retired.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "rollback_target": "R037_PBQ_STAGE_A_SCREEN_CHECKPOINT_17AR",
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "71 R037 Source QA",
+      "range": "A101:H106"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "github_commits": [
+    "b6eb77574ac32a151c371a4b4774b5946c3a300e",
+    "e27e9f9136d110f7f0f8ad41899bcda62d3db797",
+    "1cf7fae2295b19389d5248c604fe5647be83dadc",
+    "f46e6b37de8a2de5b9005145d2e3021263c395b8"
+  ],
+  "next_unit": "R037_NEXT_INDEPENDENT_ENTRY_SOURCE_HARVEST"
+}
