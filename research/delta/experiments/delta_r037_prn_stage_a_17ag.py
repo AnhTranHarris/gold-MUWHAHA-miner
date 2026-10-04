@@ -65,37 +65,38 @@ def crossed(prev,cur,grid):
 
 def proposals(t,a,b,grid,tf):
  B=bars(t,b,tf);E,C=B["end"],B["close"];out=[]
- # armed[(side, level)] = bool; rearm happens only after $1 inside the level.
- armed={}
- for i in range(1,len(t)):
-  px=int(b[i]);prev=int(b[i-1])
-  # update only keys currently disarmed; number of live keys stays small.
-  if armed:
-   for key,val in list(armed.items()):
-    if val:continue
-    side,level=key
-    if (side<0 and px<=level-REARM) or (side>0 and px>=level+REARM):
-     armed[key]=True
-  cr=crossed(prev,px,grid)
-  if cr is None:continue
-  side,level=cr;key=(side,level)
-  if key in armed and not armed[key]:continue
-  armed[key]=False
+ # Vectorize grid-cross detection; lifecycle logic is then applied only to actual crossings.
+ prev=b[:-1];cur=b[1:]
+ up=((prev//grid)+1)*grid;dn=(prev//grid)*grid
+ um=(prev<up)&(cur>up);dm=(prev>dn)&(cur<dn)
+ ui=np.flatnonzero(um)+1;di=np.flatnonzero(dm)+1
+ ix=np.r_[ui,di];side=np.r_[np.full(ui.size,-1,np.int8),np.full(di.size,1,np.int8)]
+ lev=np.r_[up[um],dn[dm]].astype(np.int64)
+ order=np.argsort(ix,kind="stable");ix=ix[order];side=side[order];lev=lev[order]
+ last={}
+ for z in range(ix.size):
+  i=int(ix[z]);sd=int(side[z]);level=int(lev[z]);key=(sd,level)
+  prior=last.get(key)
+  if prior is not None:
+   seg=b[prior:i+1]
+   rearmed=(int(np.min(seg))<=level-REARM) if sd<0 else (int(np.max(seg))>=level+REARM)
+   if not rearmed:continue
+  last[key]=i
   stm=int(t[i]);j=int(np.searchsorted(E,stm,side="right"))
   if j>=len(E):
-   out.append({"eligible":False,"reason":"NO_CONFIRM_BAR","sweep_index":i,"side":side,"level":level});continue
+   out.append({"eligible":False,"reason":"NO_CONFIRM_BAR","sweep_index":i,"side":sd,"level":level});continue
   edge=int(E[j]);ii=int(np.searchsorted(t,edge,side="left"))
   if ii>=len(t) or int(t[ii])>=END:
-   out.append({"eligible":False,"reason":"NO_EXEC","sweep_index":i,"side":side,"level":level});continue
-  reclaimed=(int(C[j])<level) if side<0 else (int(C[j])>level)
+   out.append({"eligible":False,"reason":"NO_EXEC","sweep_index":i,"side":sd,"level":level});continue
+  reclaimed=(int(C[j])<level) if sd<0 else (int(C[j])>level)
   if not reclaimed:
-   out.append({"eligible":False,"reason":"CONFIRM_FAIL","sweep_index":i,"side":side,"level":level});continue
-  live=(int(b[ii])<level) if side<0 else (int(b[ii])>level)
+   out.append({"eligible":False,"reason":"CONFIRM_FAIL","sweep_index":i,"side":sd,"level":level});continue
+  live=(int(b[ii])<level) if sd<0 else (int(b[ii])>level)
   if not live:
-   out.append({"eligible":False,"reason":"RELOST_AT_EXEC","sweep_index":i,"side":side,"level":level});continue
+   out.append({"eligible":False,"reason":"RELOST_AT_EXEC","sweep_index":i,"side":sd,"level":level});continue
   if int(a[ii]-b[ii])>MAXSP:
-   out.append({"eligible":False,"reason":"SPREAD","sweep_index":i,"side":side,"level":level});continue
-  out.append({"eligible":True,"reason":"ELIGIBLE","sweep_index":i,"decision_index":ii,"side":side,"level":level,"day":int(t[ii])//DAY})
+   out.append({"eligible":False,"reason":"SPREAD","sweep_index":i,"side":sd,"level":level});continue
+  out.append({"eligible":True,"reason":"ELIGIBLE","sweep_index":i,"decision_index":ii,"side":sd,"level":level,"day":int(t[ii])//DAY})
  return out
 
 def trade(ev,t,a,b):
