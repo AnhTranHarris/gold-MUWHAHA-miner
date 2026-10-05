@@ -1,0 +1,72 @@
+{
+  "schema": "delta-r037-squeeze-range-breakout-retest-prereg-17cm-17cn-v1",
+  "status": "PREREGISTERED_BEFORE_PRODUCER",
+  "unit": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
+  "family": "R037-SRBRT-v1",
+  "parent_checkpoint": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
+  "research_question": "Does BB/Keltner compression release followed by the first causal retest-and-hold of the locked squeeze range produce positive frozen 30-second executable persistence with usable Stage-A supply?",
+  "rationale": {
+    "corpus_clue": "R037 VCE BB/KC release produced 27 direct entries, 20 official wins and +$0.71; completed meta-harvest repeatedly favors durable anchors plus delayed causal confirmation/retest over naked release.",
+    "source_logic": [
+      "Open-source squeeze-channel logic: BB-inside-KC compression, lock squeeze high/low channel, breakout, retain channel as later support/resistance.",
+      "MQL5 breakout/retest logic: completed breakout, later retest touch, then directional confirming candle before entry.",
+      "Gold/XAUUSD public pullback logic: after a squeeze breakout, avoid chasing the initial break and seek the subsequent pullback/rebound."
+    ]
+  },
+  "source_references": [
+    "TradingView: Squeeze Channel (open source)",
+    "MQL5 Article 19968: breakout, retest and confirmation sequence",
+    "TradingView: Ultimate Squeeze & Breakout (open source)",
+    "GRP Gold Runner Pullback EA public logic summary",
+    "ForexFactory Gold discussion: squeeze followed by break/retest"
+  ],
+  "frozen_common_semantics": {
+    "source_timeframe": "M5",
+    "bb_length": 20,
+    "bb_stddev": 2,
+    "kc_length": 20,
+    "kc_atr_multiplier": 1.5,
+    "squeeze": "completed M5 BB upper < KC upper AND BB lower > KC lower",
+    "range_anchor": "continuous squeeze segment high/low; lock segment range when squeeze ends",
+    "breakout": "first later completed M5 close outside locked squeeze high/low; if a new squeeze begins before breakout, replace stale lock with new squeeze segment",
+    "event_invalidation": "after breakout, event dies if a new M5 squeeze begins before retest confirmation or a completed bar closes beyond the opposite locked range boundary",
+    "one_event_one_decision": true,
+    "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "fixed_lot": 0.01,
+    "numeric_retuning": false
+  },
+  "lanes": {
+    "17CM_M5_SQUEEZE_RANGE_RETEST": {
+      "confirmation_timeframe": "M5",
+      "long_retest": "first completed M5 bar after bullish breakout with low <= locked range high AND close > locked range high",
+      "short_retest": "first completed M5 bar after bearish breakout with high >= locked range low AND close < locked range low",
+      "entry": "first executable tick at/after confirmation-bar close"
+    },
+    "17CN_M1_SQUEEZE_RANGE_RETEST": {
+      "confirmation_timeframe": "M1",
+      "long_retest": "first completed M1 bar after bullish M5 breakout with low <= locked range high AND close > locked range high",
+      "short_retest": "first completed M1 bar after bearish M5 breakout with high >= locked range low AND close < locked range low",
+      "entry": "first executable tick at/after confirmation-bar close"
+    }
+  },
+  "gate": {
+    "minimum_trades": 10,
+    "minimum_distinct_days": 5,
+    "direct_net_usd": "strictly_positive",
+    "advance_if": "any lane passes all three without post-result rescue",
+    "retire_if": "both lanes fail; no threshold/timeframe/session/side/exit rescue"
+  },
+  "stage_a": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "canonical_january_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "expected_ticks": 4205709
+  },
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
