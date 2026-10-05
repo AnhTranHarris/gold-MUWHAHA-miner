@@ -87,3 +87,22 @@ The concept is still valuable as an ownership classifier:
 5. strength qualifiers reduce gross-loss exposure disproportionately.
 
 For DELTA-A, import these as causal state features/ownership hypotheses only. Do not import the historical profit metrics as current proof. Any promotion requires fresh chronological tick replay on DELTA-A plus preservation of the frozen $100-$1,000 survival guardrails.
+
+
+## Fresh falsification 3 — Coinexx REAL events on Dukascopy path
+A first attempt failed before simulation because the runtime dependency import was missing. Per timeout/helper policy it was not resumed; the run was discarded and restarted from zero.
+
+Fresh rerun:
+- frozen Coinexx R9 REAL January entry events: 31,915
+- balanced-strengthened routed trades: 4,529
+- net: -$858.27
+- GP: +$827.64
+- GL: -$1,685.91
+- PF: 0.49092
+- win: 68.47%
+- closed DD: ~$858.27
+
+Decision: this hybrid interpretation also fails. The old positive headline is now excluded from three fresh chronological interpretations.
+
+## Reconstruction conclusion
+The transparent mechanics are recovered. The historical economic headline can be arithmetically reconciled to its surviving predecessor frontier, but the original counterfactual scorer implementation/outcome surface has not yet been recovered well enough to claim a fresh <=5% metric reproduction. Do not manufacture parity. Carry the router mechanics forward as a causal ownership hypothesis only.
