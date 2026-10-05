@@ -11,47 +11,25 @@
   ],
   "durable_cursor": {
     "last_verified_durable_unit": "R037_VCE_RAW_RELEASE_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CO",
-    "current_phase": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST_NEXT",
-    "first_incomplete_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+    "current_phase": "R037_XAUUSD_EMA_CROSS_TOUCH_SWING_BREAK_STAGE_A_17CP_17CQ_INFLIGHT",
+    "first_incomplete_unit": "R037_XAUUSD_EMA_CROSS_TOUCH_SWING_BREAK_STAGE_A_SCREEN_CHECKPOINT_17CP_17CQ",
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_VCE_RAW_RELEASE_LATER_JAN_CHECKPOINT_17CO_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_VCE_RAW_RELEASE_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CO",
-    "family": "R037-VCE-v1",
-    "status": "COMPLETE",
-    "phase_rank": 7,
-    "parent_durable_unit": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
-    "current_candidate": null,
+    "unit": "R037_XAUUSD_EMA_CROSS_TOUCH_SWING_BREAK_STAGE_A_SCREEN_CHECKPOINT_17CP_17CQ",
+    "family": "R037-XECTSB-v1",
+    "status": "PREREG_COMMITTED",
+    "phase_rank": 1,
+    "parent_durable_unit": "R037_VCE_RAW_RELEASE_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CO",
+    "current_candidate": "R037-XECTSB-v1",
     "committed_artifacts": [
       {
         "role": "prereg",
-        "path": "research/delta/reference/DELTA_R037_VCE_RAW_RELEASE_LATER_JAN_PREREG_17CO.json",
-        "commit": "105243f7bede082a37012c85de75bb8f0f1c1c63"
-      },
-      {
-        "role": "producer",
-        "path": "research/delta/experiments/delta_r037_vce_raw_release_later_jan_17co.py",
-        "commit": "cf4f07ad6064927200443ba1aa948c8e3817f2f2",
-        "blob_sha": "1914f7cd48f9bad10a853556cfe2c6fdad94d266"
-      },
-      {
-        "role": "result",
-        "path": "research/delta/reference/DELTA_R037_VCE_RAW_RELEASE_LATER_JAN_CHECKPOINT_17CO.json",
-        "commit": "fbaaccb77f66b2fd52659824fec2a83307224001",
-        "sha256": "c6cf1b2360e0694d74683100bf04c8db867b559fb49ffd407b56173268181a39"
-      },
-      {
-        "role": "report",
-        "path": "research/delta/research/DELTA_R037_VCE_RAW_RELEASE_LATER_JAN_CHECKPOINT_17CO.md",
-        "commit": "f357c2a8b5a2dbc455258c407556a42ac6632309"
-      },
-      {
-        "role": "manifest",
-        "path": "research/delta/artifacts/DELTA_R037_VCE_RAW_RELEASE_LATER_JAN_CHECKPOINT_17CO_MANIFEST.json",
-        "commit": "a463bec2b9fa2a3e20889ed16b8c2abb9807b9f2"
+        "path": "research/delta/reference/DELTA_R037_XECTSB_PREREG_17CP_17CQ.json",
+        "commit": "2d5bc884d77e9ae6b327429ce28a0784928de925"
       }
     ],
-    "next_action": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+    "next_action": "COMMIT_PRODUCER",
     "completed_months": [],
     "next_month": null
   },
