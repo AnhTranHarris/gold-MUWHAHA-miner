@@ -5,13 +5,13 @@
   "unit": "R037_XAUUSD_EMA_CROSS_TOUCH_SWING_BREAK_STAGE_A_SCREEN_CHECKPOINT_17CP_17CQ",
   "family": "R037-XECTSB-v1",
   "parent_durable_unit": "R037_VCE_RAW_RELEASE_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CO",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "phase": "RESULT_COMMITTED",
+  "phase_rank": 3,
   "progress": {
-    "status": "PRODUCER_DURABLE",
+    "status": "STAGE_A_RESULT_DURABLE",
     "last_completed": "R037_VCE_RAW_RELEASE_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CO",
     "current_candidate": "R037-XECTSB-v1",
-    "next": "RUN_BOUNDED_STAGE_A"
+    "next": "WRITE_REPORT_WORKBOOK_MANIFEST"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
@@ -38,6 +38,13 @@
     "file_sha256": "c26dc710879a86b9447dfaf2e236c4f3621151a3ab2a62d35aef8f34f44ae03e",
     "local_blob_verified": true
   },
-  "result": null,
+  "result": {
+    "path": "research/delta/reference/DELTA_R037_XECTSB_STAGE_A_CHECKPOINT_17CP_17CQ.json",
+    "commit": "28d260b1a5e294a038cfe13b841a5fe20d516467",
+    "blob_sha": "8222ec1a2ed3a280e3c9261dfff9f6369e77128d",
+    "result_sha256": "7d941b248db91d42f7c56f1cf79b06efe5e037aedca85719d9b39333ac71c75b",
+    "leader": "17CQ_M15_EMA9_21_TOUCH_SWING10",
+    "leader_metrics": "20 trades / 10 days / 11 wins / +$0.68"
+  },
   "manifest": null
 }
