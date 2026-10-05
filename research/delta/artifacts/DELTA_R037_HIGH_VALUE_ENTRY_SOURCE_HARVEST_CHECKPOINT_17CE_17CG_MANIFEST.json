@@ -1,0 +1,194 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_HIGH_VALUE_ENTRY_SOURCE_HARVEST_CHECKPOINT_17CE_17CG",
+  "status": "VERIFIED_NO_EXECUTABLE_SURVIVOR",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
+  "hypothesis": "Three independent source-grounded continuation families with adequate expected supply may produce positive frozen 30-second XAUUSD persistence.",
+  "falsification_condition": "No lane satisfies >=20 trades, >=5 distinct days and direct net >= -$1 under frozen P75 execution.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Three preregistered independent entry-source lanes",
+    "reference_count": 3,
+    "minimum_count": 3,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "All preregistered lanes executed unchanged."
+  },
+  "primary_metrics": {
+    "17CE_KUMO_AO_M5": "64 trades / 11 days / 25 wins / -$15.45",
+    "17CF_EMA_OBV_RECLAIM_M1_NY": "40 trades / 8 days / 16 wins / -$9.78",
+    "17CG_DARVAS_M5": "4 trades / 3 days / 3 wins / +$0.46 — supply fail"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_high_value_entry_harvest_17ce_17cg.py",
+      "commit": "062ff64772b8b90d67298aac171b7d7b07d09fd6",
+      "blob_sha": "e559fd825f86334cf6a5e018f823e00531c3b15d",
+      "file_sha256": "b4b8342b63c8ebcae1519f7d8d5f859d34d5f37ac60f9a3d3b349b85ea85aed1"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "0067707d2a45755fd4fa69fa164bbdd379aea5fe",
+      "file_sha256": "a0816a19445537f8a9c199c46212bbadb006a2773a9e03715afa49d489b8c281"
+    }
+  ],
+  "models": [],
+  "config": {
+    "parameters": {
+      "lanes": [
+        "17CE_KUMO_AO_M5",
+        "17CF_EMA_OBV_RECLAIM_M1_NY",
+        "17CG_DARVAS_M5"
+      ],
+      "max_spread_raw": 250,
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "completed-bar source grammar",
+      "first executable P75 tick",
+      "frozen 30-second execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "source-default Stage-A prescreen"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": true,
+      "exact_git_blob_preexecution_verification": true,
+      "parent_death_signal": true,
+      "compact_stdout": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "prereg",
+      "path": "research/delta/reference/DELTA_R037_HIGH_VALUE_ENTRY_SOURCE_HARVEST_PREREG_17CE_17CG.json",
+      "commit": "248b3628ef3d3a357ff4272286e48292f4490f34",
+      "blob_sha": "04004bbe50e41990a181eb2d721833cfc7be6583"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "M1/M5 completed bars and source indicator state"
+    ],
+    "diagnostics": [
+      "Darvas box supply counts"
+    ]
+  },
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_HIGH_VALUE_ENTRY_SOURCE_HARVEST_CHECKPOINT_17CE_17CG.json",
+      "blob_sha": "358473257e6428460e44d44ab2a9a15537a19804",
+      "result_sha256": "2f909cbe54d8b8c690154fe704625bc398e0356cb5e35d3b7b3fe7fc08f98e82"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_HIGH_VALUE_ENTRY_SOURCE_HARVEST_CHECKPOINT_17CE_17CG.md",
+      "blob_sha": "f97789d80377cec7d43bfa1e141cf64ba40cb9ee"
+    }
+  ],
+  "qa": [
+    "Preregistration committed before producer.",
+    "Producer committed before official compute.",
+    "Committed producer bytes were fetched from GitHub for official compute.",
+    "Canonical January SHA and 4,205,709 Stage-A ticks verified by producer.",
+    "Official compute completed under bounded runner in approximately 5.938 seconds.",
+    "No post-result threshold, timeframe, side, session or exit rescue tuning.",
+    "No lane passed the fixed screen.",
+    "Workbook 69 R037 Research Harvest A243:I250 written and read back.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_high_value_entry_harvest_17ce_17cg.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_high_value_entry_harvest_17ce_17cg.py --source <canonical_january_gzip> --output <checkpoint_json>",
+    "timing_semantics": "All signals use completed bars; entry is first executable P75 tick at/after completed signal bar.",
+    "expected_fingerprints": {
+      "17CE_KUMO_AO_M5": {
+        "trades": 64,
+        "days": 11,
+        "wins": 25,
+        "net_usd": -15.45
+      },
+      "17CF_EMA_OBV_RECLAIM_M1_NY": {
+        "trades": 40,
+        "days": 8,
+        "wins": 16,
+        "net_usd": -9.78
+      },
+      "17CG_DARVAS_M5": {
+        "trades": 4,
+        "days": 3,
+        "wins": 3,
+        "net_usd": 0.46
+      }
+    },
+    "selected_interpretation": "NO_EXECUTABLE_SURVIVOR"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — batch retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "None.",
+    "execution_quote_side_spec": "Frozen P75.",
+    "ownership_scheduler_spec": "No integration.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01 research semantics.",
+    "trade_count_parity_spec": "Not applicable.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "github_commits": [
+    "248b3628ef3d3a357ff4272286e48292f4490f34",
+    "062ff64772b8b90d67298aac171b7d7b07d09fd6",
+    "904b863e35f25dbb1ce4c7dbccc2c584fd298ad9",
+    "c2aa578ca53664a87c8715ab3e0c2e3cc7b737ec"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A243:I250"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+}
