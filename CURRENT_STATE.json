@@ -3,12 +3,12 @@
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "branch": "delta",
   "research_scope": "DELTA_ONLY_CLEAN_ROOM",
-  "last_verified_durable_unit": "R037_QUASIMODO_SOURCE_DEFAULT_STAGE_A_SCREEN_CHECKPOINT_17CA_17CB",
+  "last_verified_durable_unit": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
   "first_incomplete_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
   "current_phase": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST_NEXT",
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_QUASIMODO_STAGE_A_CHECKPOINT_17CA_17CB_MANIFEST.json",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_BREAKER_BLOCK_RETEST_STAGE_A_CHECKPOINT_17CC_17CD_MANIFEST.json",
   "active_candidate": null,
-  "last_candidate_disposition": "Source-default Quasimodo retired: M5 +$0.41 but only 6 trades / 3 days; M15 1 trade / -$0.76. Preserve multi-leg geometry as quality clue; no activity-gate weakening or QM rescue tuning.",
+  "last_candidate_disposition": "Source-default breaker-block retired: M5/M15 produced zero consolidations/signals/trades because the frozen 7-bar / 50-point adjacent H/L tolerance never formed (M5 longest qualifying run 3 vs 6 required; M15 1 vs 6). No rescue tuning.",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -31,10 +31,10 @@
     "prior_full_state_preserved_in_git_history": true
   },
   "recovery_pointer_sync": {
-    "status": "DURABLE_17CA_17CB_QM_RETIRED",
-    "last_completed": "R037_QUASIMODO_SOURCE_DEFAULT_STAGE_A_SCREEN_CHECKPOINT_17CA_17CB",
+    "status": "DURABLE_17CC_17CD_BREAKER_BLOCK_RETIRED",
+    "last_completed": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
     "current_candidate": null,
-    "next": "Select a materially distinct higher-supply structural entry mechanism; preserve QM as a quality clue only, do not rescue it by tuning."
+    "next": "Select next high-supply, causally reconstructible entry family from completed R037 meta-harvest; prioritize prior OOS/holdout evidence."
   },
   "clean_room_maintenance": {
     "status": "RECENT_DELTA_DIFF_PREFLIGHT_CLEAN",
@@ -45,10 +45,10 @@
   },
   "concurrency_recovery": {
     "status": "NO_ACTIVE_CONCURRENCY_CONFLICT",
-    "authoritative_checkpoint": "R037_QUASIMODO_SOURCE_DEFAULT_STAGE_A_SCREEN_CHECKPOINT_17CA_17CB",
+    "authoritative_checkpoint": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
     "current_candidate": null,
-    "note": "QM retired due insufficient source-default supply; resume distinct high-value harvest."
+    "note": "Breaker-block source-default family retired at event-supply layer; resume high-value harvest."
   },
-  "search_bias": "Use completed-R037 meta-harvest before admitting more candidate families; prioritize high-information structures with adequate supply and near-neutral/positive out-of-sample evidence.",
+  "search_bias": "Use completed-R037 meta-harvest before admitting more candidate families; prioritize high-information structures with adequate native XAUUSD supply and near-neutral/positive independent evidence. Reject sparse source-default grammars quickly; no rescue tuning.",
   "timeout_recovery_cursor_semantics": "The final CURRENT_STATE commit closes a unit only after CURRENT_INFLIGHT and recovery pointer already match it; use Git history for the cursor commit SHA."
 }
