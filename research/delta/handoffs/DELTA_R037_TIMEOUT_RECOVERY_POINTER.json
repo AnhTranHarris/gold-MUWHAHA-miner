@@ -16,12 +16,20 @@
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_QUASIMODO_STAGE_A_CHECKPOINT_17CA_17CB_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
-    "status": "IDLE",
-    "phase_rank": 0,
+    "unit": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
+    "status": "IN_PROGRESS",
+    "phase": "PREREG_COMMITTED",
+    "phase_rank": 1,
     "parent_durable_unit": "R037_QUASIMODO_SOURCE_DEFAULT_STAGE_A_SCREEN_CHECKPOINT_17CA_17CB",
-    "committed_artifacts": [],
-    "next_action": "Select a materially distinct higher-supply structural entry mechanism; preserve QM as a quality clue only, do not rescue it by tuning.",
+    "committed_artifacts": [
+      {
+        "role": "prereg",
+        "path": "research/delta/reference/DELTA_R037_BREAKER_BLOCK_RETEST_PREREG_17CC_17CD.json",
+        "commit": "cfcb44d1065a30f23aebee1b8193d749346a99d4",
+        "blob_sha": "efd3b24efea9f39c97a77c8d3fa752c2b2029c27"
+      }
+    ],
+    "next_action": "Build and commit fixed breaker-block producer; then run bounded Stage-A screen.",
     "completed_months": [],
     "next_month": null
   },
