@@ -1,0 +1,134 @@
+{
+  "schema": "delta-r037-breaker-block-retest-stage-a-17cc-17cd-v1",
+  "status": "COMPLETE_FAST_CAUSAL_PRESCREEN",
+  "unit": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
+  "family": "R037-BBR-v1",
+  "parent_checkpoint": "R037_QUASIMODO_SOURCE_DEFAULT_STAGE_A_SCREEN_CHECKPOINT_17CA_17CB",
+  "prereg_commit": "cfcb44d1065a30f23aebee1b8193d749346a99d4",
+  "source_basis": [
+    "MQL5 Part 35 breaker-block source-default state grammar",
+    "MQL5 Part 48 deterministic 300-bar lifetime bridge only"
+  ],
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "frozen_defaults": {
+    "consolidation_bars": 7,
+    "max_consolidation_spread_points": 50,
+    "bars_to_wait_after_breakout": 3,
+    "impulse_multiplier": 1.0,
+    "move_away_points": 50,
+    "enable_swing_validation": true,
+    "deterministic_block_lifetime_bars": 300
+  },
+  "configs": {
+    "17CC_M5_BREAKER_BLOCK_RETEST": {
+      "timeframe_ms": 300000,
+      "metrics": {
+        "signals": 0,
+        "trades": 0,
+        "busy_skips": 0,
+        "spread_rejects": 0,
+        "distinct_days": 0,
+        "long": 0,
+        "short": 0,
+        "official_wins": 0,
+        "gross_profit": 0.0,
+        "gross_loss": 0.0,
+        "direct_net_usd": 0.0,
+        "exit_reasons": {
+          "STOP": 0,
+          "MAX_HOLD": 0,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_20": false,
+        "minimum_distinct_days_5": false,
+        "nonnegative_direct_net": true,
+        "screen_pass": false
+      },
+      "diagnostics": {
+        "bars": 3036,
+        "consolidations": 0,
+        "range_extensions": 0,
+        "range_outside_without_close_break": 0,
+        "breakouts": 0,
+        "pending_overwrites": 0,
+        "impulse_checks": 0,
+        "bullish_impulses": 0,
+        "bearish_impulses": 0,
+        "no_impulse": 0,
+        "blocks_created": 0,
+        "blocks_expired": 0,
+        "invalidation_conditions": 0,
+        "invalidation_swing_pass": 0,
+        "invalidation_swing_fail": 0,
+        "move_aways": 0,
+        "retest_conditions": 0,
+        "retest_swing_pass": 0,
+        "retest_swing_fail": 0,
+        "same_bar_moveaway_retest": 0,
+        "signals": 0
+      }
+    },
+    "17CD_M15_BREAKER_BLOCK_RETEST": {
+      "timeframe_ms": 900000,
+      "metrics": {
+        "signals": 0,
+        "trades": 0,
+        "busy_skips": 0,
+        "spread_rejects": 0,
+        "distinct_days": 0,
+        "long": 0,
+        "short": 0,
+        "official_wins": 0,
+        "gross_profit": 0.0,
+        "gross_loss": 0.0,
+        "direct_net_usd": 0.0,
+        "exit_reasons": {
+          "STOP": 0,
+          "MAX_HOLD": 0,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_20": false,
+        "minimum_distinct_days_5": false,
+        "nonnegative_direct_net": true,
+        "screen_pass": false
+      },
+      "diagnostics": {
+        "bars": 1012,
+        "consolidations": 0,
+        "range_extensions": 0,
+        "range_outside_without_close_break": 0,
+        "breakouts": 0,
+        "pending_overwrites": 0,
+        "impulse_checks": 0,
+        "bullish_impulses": 0,
+        "bearish_impulses": 0,
+        "no_impulse": 0,
+        "blocks_created": 0,
+        "blocks_expired": 0,
+        "invalidation_conditions": 0,
+        "invalidation_swing_pass": 0,
+        "invalidation_swing_fail": 0,
+        "move_aways": 0,
+        "retest_conditions": 0,
+        "retest_swing_pass": 0,
+        "retest_swing_fail": 0,
+        "same_bar_moveaway_retest": 0,
+        "signals": 0
+      }
+    }
+  },
+  "finding": {
+    "survivors": [],
+    "decision": "RETIRE_BREAKER_BLOCK_NO_STAGE_A_SURVIVOR",
+    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+  },
+  "causal_note": "Entries occur only on first tick at/after completed retest bar. Source code may set move-away and retest on the same completed bar; diagnostic count is retained explicitly rather than hidden.",
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "mql5_authorized": false
+}
