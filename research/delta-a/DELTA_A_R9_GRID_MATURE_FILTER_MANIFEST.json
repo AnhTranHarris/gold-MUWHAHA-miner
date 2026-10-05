@@ -1,0 +1,50 @@
+{
+  "schema": "delta-a-r34-a1-mature-filter-manifest-v1",
+  "base_exit_policy": {
+    "ALPHA_FSV_M1800": {"stop_start_s":180,"stop_loss_usd":2.0,"take_profit_usd":1},
+    "CORE_H2V_M1800_RESID": {"stop_start_s":2700,"stop_loss_usd":2.0,"take_profit_usd":1},
+    "CORE_H4V_M1800_RESID": {"stop_start_s":180,"stop_loss_usd":2.0,"take_profit_usd":1},
+    "CORE_H4_M1800": {"stop_start_s":3600,"stop_loss_usd":80.0,"take_profit_usd":20},
+    "HI1_A900_OPP": {"stop_start_s":180,"stop_loss_usd":2.0,"take_profit_usd":1},
+    "HI2_FE_A36_LM": {"stop_start_s":180,"stop_loss_usd":2.0,"take_profit_usd":1},
+    "HI2_H2V_A300": {"stop_start_s":180,"stop_loss_usd":2.0,"take_profit_usd":1},
+    "HI2_H2V_A900": {"stop_start_s":180,"stop_loss_usd":2.0,"take_profit_usd":1},
+    "VOLUME_H2V_A900": {"stop_start_s":2700,"stop_loss_usd":3.0,"take_profit_usd":1}
+  },
+  "toxic_filter_limit_fraction": 0.05,
+  "calibration_months": ["Feb","Mar","Apr"],
+  "selected_cells": [
+    {"cid":0,"fam":"source+gap_b+flow_align900_b+sm1800_gap_b","key":["ALPHA_FSV_M1800","2.375","(0.0, 0.2]","(-inf, -4.0]"],"n":322,"cal_net":-1540.65,"cal_gl":2661.65,"cal_wins":117},
+    {"cid":1,"fam":"source+sess_b+sm900_gap_b+sm1800_gap_b","key":["ALPHA_FSV_M1800","0","(-2.0, -1.0]","(4.0, inf]"],"n":158,"cal_net":-431.98,"cal_gl":591.31,"cal_wins":24},
+    {"cid":2,"fam":"source+gap_b+flow_align300_b+opp_b","key":["ALPHA_FSV_M1800","2.375","(0.5, inf]","(-inf, 10.0]"],"n":75,"cal_net":-382.45,"cal_gl":548.97,"cal_wins":23},
+    {"cid":3,"fam":"source+vol_b+rec_b+ext_b","key":["HI1_A900_OPP","H","(0.25, 0.5]","(1.5, 3.0]"],"n":144,"cal_net":-487.65,"cal_gl":1045.01,"cal_wins":45},
+    {"cid":4,"fam":"source+hour_b+vol_b+sm1800_gap_b","key":["ALPHA_FSV_M1800","5","H","(-inf, -4.0]"],"n":615,"cal_net":-2528.59,"cal_gl":4369.05,"cal_wins":248},
+    {"cid":5,"fam":"source+gap_b+flow_align300_b+opp_b","key":["HI1_A900_OPP","2.375","(0.2, 0.5]","(-inf, 10.0]"],"n":540,"cal_net":-2043.20,"cal_gl":4559.93,"cal_wins":237},
+    {"cid":6,"fam":"source+sess_b+sm900_gap_b+sm1800_gap_b","key":["HI1_A900_OPP","0","(-inf, -4.0]","(4.0, inf]"],"n":215,"cal_net":-873.73,"cal_gl":1595.31,"cal_wins":86},
+    {"cid":7,"fam":"source+sess_b+sm900_gap_b+sm1800_gap_b","key":["VOLUME_H2V_A900","2","(1.0, 2.0]","(-1.0, 0.0]"],"n":95,"cal_net":-358.41,"cal_gl":533.93,"cal_wins":25},
+    {"cid":8,"fam":"source+gap_b+flow_align300_b+opp_b","key":["HI1_A900_OPP","2.375","(0.0, 0.2]","(-inf, 10.0]"],"n":1065,"cal_net":-3010.93,"cal_gl":8755.81,"cal_wins":483},
+    {"cid":9,"fam":"source+sess_b+sm900_gap_b+sm1800_gap_b","key":["CORE_H4_M1800","0","(0.0, 1.0]","(-2.0, -1.0]"],"n":211,"cal_net":-402.26,"cal_gl":887.65,"cal_wins":46},
+    {"cid":10,"fam":"source+gap_b+flow_align300_b+opp_b","key":["ALPHA_FSV_M1800","2.375","(0.5, inf]","(10.0, 30.0]"],"n":150,"cal_net":-401.31,"cal_gl":647.15,"cal_wins":36},
+    {"cid":11,"fam":"source+sess_b+sm900_gap_b+sm1800_gap_b","key":["HI2_H2V_A300","0","(-inf, -4.0]","(-inf, -4.0]"],"n":131,"cal_net":-265.90,"cal_gl":419.09,"cal_wins":23},
+    {"cid":12,"fam":"source+hour_b+vol_b+sm1800_gap_b","key":["ALPHA_FSV_M1800","5","H","(4.0, inf]"],"n":897,"cal_net":-2294.53,"cal_gl":4862.37,"cal_wins":350},
+    {"cid":13,"fam":"source+sess_b+sm900_gap_b+sm1800_gap_b","key":["ALPHA_FSV_M1800","0","(-inf, -4.0]","(4.0, inf]"],"n":144,"cal_net":-266.21,"cal_gl":925.55,"cal_wins":50},
+    {"cid":14,"fam":"source+hour_b+vol_b+sm1800_gap_b","key":["CORE_H4_M1800","5","H","(-2.0, -1.0]"],"n":120,"cal_net":-153.73,"cal_gl":1257.20,"cal_wins":63},
+    {"cid":15,"fam":"source+sess_b+sm900_gap_b+sm1800_gap_b","key":["VOLUME_H2V_A900","0","(-4.0, -2.0]","(-4.0, -2.0]"],"n":130,"cal_net":-391.86,"cal_gl":584.42,"cal_wins":43},
+    {"cid":16,"fam":"source+gap_b+flow_align300_b+opp_b","key":["CORE_H4_M1800","2.5","(-0.2, 0.0]","(10.0, 30.0]"],"n":158,"cal_net":-109.51,"cal_gl":503.44,"cal_wins":24},
+    {"cid":17,"fam":"source+gap_b+flow_align300_b+opp_b","key":["CORE_H4_M1800","2.5","(0.0, 0.2]","(60.0, 180.0]"],"n":313,"cal_net":-211.29,"cal_gl":504.78,"cal_wins":30},
+    {"cid":18,"fam":"source+gap_b+flow_align900_b+sm1800_gap_b","key":["CORE_H4_M1800","2.5","(0.0, 0.2]","(-inf, -4.0]"],"n":211,"cal_net":-140.12,"cal_gl":436.94,"cal_wins":22},
+    {"cid":19,"fam":"source+gap_b+flow_align300_b+opp_b","key":["ALPHA_FSV_M1800","2.375","(0.0, 0.2]","(10.0, 30.0]"],"n":1028,"cal_net":-1619.97,"cal_gl":6730.40,"cal_wins":458},
+    {"cid":20,"fam":"source+gap_b+flow_align900_b+sm1800_gap_b","key":["VOLUME_H2V_A900","2.25","(-0.5, -0.2]","(-inf, -4.0]"],"n":56,"cal_net":-174.30,"cal_gl":252.60,"cal_wins":15},
+    {"cid":21,"fam":"source+hour_b+vol_b+sm1800_gap_b","key":["CORE_H4_M1800","14","L","(4.0, inf]"],"n":390,"cal_net":-215.98,"cal_gl":837.86,"cal_wins":53},
+    {"cid":22,"fam":"source+sess_b+sm900_gap_b+sm1800_gap_b","key":["CORE_H4_M1800","0","(2.0, 4.0]","(0.0, 1.0]"],"n":88,"cal_net":-135.62,"cal_gl":442.41,"cal_wins":25},
+    {"cid":23,"fam":"source+gap_b+flow_align300_b+opp_b","key":["CORE_H4_M1800","2.375","(-0.2, 0.0]","(600.0, inf]"],"n":172,"cal_net":-147.09,"cal_gl":653.20,"cal_wins":38},
+    {"cid":24,"fam":"source+hour_b+vol_b+sm1800_gap_b","key":["HI1_A900_OPP","9","H","(-1.0, 0.0]"],"n":57,"cal_net":-186.63,"cal_gl":285.39,"cal_wins":19},
+    {"cid":25,"fam":"source+sess_b+sm900_gap_b+sm1800_gap_b","key":["CORE_H2V_M1800_RESID","0","(-4.0, -2.0]","(4.0, inf]"],"n":153,"cal_net":-339.16,"cal_gl":640.13,"cal_wins":51},
+    {"cid":26,"fam":"source+gap_b+flow_align900_b+sm1800_gap_b","key":["CORE_H4_M1800","2.375","(0.2, 0.5]","(-inf, -4.0]"],"n":139,"cal_net":-73.58,"cal_gl":701.90,"cal_wins":39},
+    {"cid":27,"fam":"source+sess_b+sm900_gap_b+sm1800_gap_b","key":["HI2_H2V_A300","2","(-4.0, -2.0]","(-2.0, -1.0]"],"n":38,"cal_net":-116.31,"cal_gl":164.79,"cal_wins":11}
+  ],
+  "recovery_cells": [
+    {"cid":0,"action":"c7200","cal_avg":52.56625874125874,"worst_month_mean":22.275714285714283},
+    {"cid":13,"action":"r7200","cal_avg":46.666017699115045,"worst_month_mean":22.371666666666663}
+  ]
+}
