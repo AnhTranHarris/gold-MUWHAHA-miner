@@ -50,7 +50,7 @@
     "cross_month_decision_completed": false,
     "required_action": "Rerun the helper work unit from scratch starting with January."
   },
-  "next_unit": "SA100_TO_1000_FEB_VALIDATION_01",
+  "next_unit": "SA100_TO_1000_FEB_SOURCE_RECOVERY_AND_PARITY_01",
   "hard_rules": {
     "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
@@ -380,5 +380,41 @@
       "median_days1000_15d": 21.882455
     },
     "handoff_before_1000": false
+  },
+  "february_validation_source_recovery": {
+    "status": "BLOCKED_ON_UNBIASED_MATURE_EVENT_SOURCE__DO_NOT_SUBSTITUTE_PATH_CONDITIONED_LEDGER",
+    "target_unit": "SA100_TO_1000_FEB_VALIDATION_01",
+    "raw_ticks": "XAUUSD_DUKAS_2026_02_ticks.csv(3).gz",
+    "raw_ticks_available": true,
+    "missing_required_source": "Exact unbiased mature CORE_H4_M1800 February opportunity ledger or producer with parity.",
+    "recovered_provenance": [
+      {
+        "file": "sa100_rampH_candidate.csv",
+        "rows": 73205,
+        "months": "Feb-Jul",
+        "core_h4_rows": 31958,
+        "feb_rows": 4399,
+        "feb_core_h4_rows": 1365,
+        "status": "RECOVERED_BUT_PATH_CONDITIONED",
+        "reason": "Physical/admitted trade ledger from an older staged RecoveryBoost capital policy; inclusion depends on prior balance/concurrency and cannot serve as the unbiased February opportunity stream."
+      },
+      {
+        "file": "delta_a_r3_adaptive_walkforward_lifecycle.csv",
+        "status": "RECOVERED_ROUTING_RESEARCH_SUMMARY_NOT_EVENT_PRODUCER"
+      },
+      {
+        "file": "delta_a_r3_robust_specialist_cells.csv",
+        "status": "RECOVERED_SPECIALIST_CELL_SUMMARY_NOT_EVENT_PRODUCER"
+      },
+      {
+        "file": "delta_a_r3_recovery_checkpoint.md",
+        "status": "RECOVERED_PROVENANCE",
+        "finding": "R3 selection was rebuilt from saved February-July teacher ledgers, but those teacher ledgers/producer are not currently mounted as unbiased event files."
+      }
+    ],
+    "github_history_check": "Between R2 hard checkpoint and R9 Grid milestone, changed files were state/manifests/milestone artifacts only; no event producer/helper was committed.",
+    "allowed_next_action": "Recover an unbiased Feb-Jul teacher/event ledger from persistent Library/project sources OR reconstruct producer from raw ticks and require parity against durable aggregate/event fingerprints before validation.",
+    "forbidden_shortcut": "Do not use sa100_rampH_candidate.csv or old incomplete stop-variant matrices as proof of February validation.",
+    "august_accessed": false
   }
 }
