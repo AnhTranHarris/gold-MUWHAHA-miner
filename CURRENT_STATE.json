@@ -3,12 +3,12 @@
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "branch": "delta",
   "research_scope": "DELTA_ONLY_CLEAN_ROOM",
-  "last_verified_durable_unit": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
+  "last_verified_durable_unit": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
   "first_incomplete_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
   "current_phase": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST_NEXT",
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_XECTSB_LATER_JAN_CHECKPOINT_17CR_MANIFEST.json",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV_MANIFEST.json",
   "active_candidate": null,
-  "last_candidate_disposition": "R037-XECTSB-v1 retired unchanged after exact-control holdout: Stage-A M15 20 trades / 10 days / 11 wins / +$0.68 reproduced exactly; independent later-Jan 20 trades / 10 days / 7 wins / -$3.79. Supply passed, economics failed. No parameter/session/side/timeframe/exit rescue.",
+  "last_candidate_disposition": "R037-123NB-v1 and R037-MSnR-DBO-v1 retired unchanged after Stage-A: 608/-$104.96, 120/-$22.26, 942/-$187.95, 177/-$34.02. Supply abundant; economics failed. No rescue.",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -32,12 +32,12 @@
     "prior_full_state_preserved_in_git_history": true
   },
   "recovery_pointer_sync": {
-    "status": "DURABLE_XECTSB_RETIRED_AFTER_LATER_JAN",
-    "last_completed": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
+    "status": "DURABLE_STRUCTURAL_HARVEST_RETIRED_NO_SURVIVOR",
+    "last_completed": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
     "current_candidate": null,
     "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
-    "inflight_close_commit": "0b926908c482a740530103c229c79405c4100395",
-    "pointer_sync_commit": "76285a762ce9949d0b9cea7d2ef70bc9e42ed9a7"
+    "inflight_close_commit": "06d6b84f9d01b49b76cdcd39b25067c6e3a3f829",
+    "pointer_sync_commit": "98184401c442541f7c5c2558bc1ef7fdbb5ec3cc"
   },
   "clean_room_maintenance": {
     "status": "RECENT_DELTA_DIFF_PREFLIGHT_CLEAN",
@@ -48,9 +48,9 @@
   },
   "concurrency_recovery": {
     "status": "CURRENT_CHAIN_DURABLE_NO_RESULT_LOSS",
-    "authoritative_checkpoint": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
+    "authoritative_checkpoint": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
     "current_candidate": null,
-    "note": "Exact Stage-A control reproduced; later-Jan failed. Browser transport errors do not alter committed result."
+    "note": "Transport timeout does not alter committed result; resume next source harvest."
   },
   "search_bias": "XECTSB and VCE branches are retired by adjacent OOS failure. Do not rescue or retune them. Harvest genuinely independent, source-grounded XAUUSD entry classes with causal event lifecycles, expected >=10 Stage-A trades, and native short-horizon persistence. Prefer structural price-action/session/liquidity anchors over another generic oscillator or EMA derivative.",
   "timeout_recovery_cursor_semantics": "Connector-safe serial closure used when low-level multi-file tree commit is blocked; verify each cursor write and require final DELTA rebuild artifact gate before trusting advancement."
