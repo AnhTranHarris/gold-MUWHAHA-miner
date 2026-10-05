@@ -10,18 +10,18 @@
     "active rebuild manifest"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_XAUUSD_SESSION_LIQUIDITY_SWEEP_RECLAIM_HARVEST_CHECKPOINT_17CW_17CZ",
-    "current_phase": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD_IN_PROGRESS",
-    "first_incomplete_unit": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_SESSION_LIQUIDITY_SWEEP_RECLAIM_CHECKPOINT_17CW_17CZ_MANIFEST.json"
+    "last_verified_durable_unit": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
+    "current_phase": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST_NEXT",
+    "first_incomplete_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_SSRP_QUALIFIED_SWEEP_CHECKPOINT_17DA_17DD_MANIFEST.json"
   },
   "in_flight_unit": {
     "unit": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
     "family": "R037-SSRP-QUALIFIED-SWEEP-v1",
-    "status": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
+    "status": "COMPLETE",
+    "phase_rank": 7,
     "parent_durable_unit": "R037_XAUUSD_SESSION_LIQUIDITY_SWEEP_RECLAIM_HARVEST_CHECKPOINT_17CW_17CZ",
-    "current_candidate": "17DA-17DD displacement-qualified session sweep",
+    "current_candidate": null,
     "committed_artifacts": [
       {
         "role": "prereg",
@@ -33,9 +33,24 @@
         "path": "research/delta/experiments/delta_r037_ssrp_qualified_sweep_17da_17dd.py",
         "commit": "5bce4e0708079bc85dbe9fcfcef2188abb8125a5",
         "blob_sha": "438647c27b651d2468bf45bfbfb34e44d6ba78b0"
+      },
+      {
+        "role": "result",
+        "path": "research/delta/reference/DELTA_R037_SSRP_QUALIFIED_SWEEP_CHECKPOINT_17DA_17DD.json",
+        "commit": "60f2d378d9e800967e59b36329c4b66ff096a56e"
+      },
+      {
+        "role": "report",
+        "path": "research/delta/research/DELTA_R037_SSRP_QUALIFIED_SWEEP_CHECKPOINT_17DA_17DD.md",
+        "commit": "8a3a23ddbb959e5bc5a67b14a14839a7cb0c6283"
+      },
+      {
+        "role": "manifest",
+        "path": "research/delta/artifacts/DELTA_R037_SSRP_QUALIFIED_SWEEP_CHECKPOINT_17DA_17DD_MANIFEST.json",
+        "commit": "59e7c48fe465be8701650cb857f60d0d9d4e5e0b"
       }
     ],
-    "next_action": "RUN_BOUNDED_COMPUTE",
+    "next_action": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
     "completed_months": [],
     "next_month": null
   },
