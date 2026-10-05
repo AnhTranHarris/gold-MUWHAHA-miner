@@ -1,17 +1,17 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "INFLIGHT",
+  "status": "COMPLETE",
   "branch": "delta",
   "unit": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
   "family": "R037-123NB-v1 + R037-MSnR-DBO-v1",
   "parent_durable_unit": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "phase": "DURABLE_CLOSED",
+  "phase_rank": 6,
   "progress": {
-    "status": "PRODUCER_DURABLE_EXACT_BLOB_VERIFIED",
-    "last_completed": "PREREGISTERED",
-    "current_candidate": "17CS-17CV structural harvest",
-    "next": "RUN_BOUNDED_COMPUTE"
+    "status": "NO_STAGE_A_SURVIVOR_RETIRED_NO_RESCUE",
+    "last_completed": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
+    "current_candidate": null,
+    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
@@ -33,7 +33,17 @@
     "file_sha256": "d9827814b9bbabad867a01cdcc71451e1c48d6aa93f04d7b03c6e0cd8144596b",
     "local_git_blob_verified": true
   },
-  "result": null,
-  "report": null,
-  "manifest": null
+  "result": {
+    "path": "research/delta/reference/DELTA_R037_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV.json",
+    "commit": "cbd58f7673a9d747b412b7c6f7b6dec9f6218657",
+    "sha256": "cb2deae8dc8ef84d7bb0bd56a8be4fbd0ba85be1ed0236edf2f97cae3a59c600"
+  },
+  "report": {
+    "path": "research/delta/research/DELTA_R037_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV.md",
+    "commit": "f8851ea3ab55c1ce189e29a451adbcfb1e7ee3de"
+  },
+  "manifest": {
+    "path": "research/delta/artifacts/DELTA_R037_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV_MANIFEST.json",
+    "commit": "cf522d12fc22f94fe4b34b384b9a0aaed1690cec"
+  }
 }
