@@ -1,0 +1,59 @@
+{
+  "id": "SA100_R10Q_SHADOW_SLOT_R10IJ_EXACT01",
+  "status": "COMPLETE_EXACT_SHADOW_R10IJ_BREAKTHROUGH",
+  "control": {
+    "net_usd": 1242.09,
+    "leg_n": 5414,
+    "leg_gl_usd": -20356.56,
+    "episode_n": 3841,
+    "episode_win": 0.4951835459515751,
+    "max_balance_dd_usd": 550.27
+  },
+  "best_net_lane": {
+    "profile": "R10IJ",
+    "activate_shadow_balance": 400,
+    "net_usd": 2137.147,
+    "leg_n": 5345,
+    "leg_gl_usd": -17888.573,
+    "leg_pf": 1.1194699544,
+    "episode_win": 0.5370997136,
+    "changed_win": 0.7609108159,
+    "max_balance_dd_usd": 367.58,
+    "min_balance_usd": 96.88,
+    "converted_losses": 222,
+    "delta_net_usd": 895.057,
+    "gl_reduction_usd": 2467.987,
+    "dd_reduction_usd": 182.69
+  },
+  "best_loss_lane": {
+    "profile": "R10IJ",
+    "activate_shadow_balance": 300,
+    "net_usd": 2132.4545,
+    "leg_n": 5361,
+    "leg_gl_usd": -17673.5415,
+    "leg_pf": 1.1206580187,
+    "episode_win": 0.5407445978,
+    "changed_win": 0.73290938,
+    "max_balance_dd_usd": 367.58,
+    "min_balance_usd": 96.88,
+    "converted_losses": 256,
+    "delta_net_usd": 890.3645,
+    "gl_reduction_usd": 2683.0185,
+    "dd_reduction_usd": 182.69
+  },
+  "tested": 16,
+  "qualified_count": 10,
+  "concept": "Frozen control admission/shadow slots. R10I/R10J can change physical lifecycle after shadow-balance activation; original virtual slot stays reserved to original terminal time, preventing recursive admission flood.",
+  "soft_success_target": "episode win >=50% and changed-action win >=50%",
+  "source_sha256": {
+    "raw": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "legs": "52c2131caa5f25758594d33e0f59af0ad159cc7ef996e54624af9a3a0667d81c",
+    "episodes": "bd86f25320a2de92547b3c4203cc1de1e5daad48c6da846b34b00d9d856a1827",
+    "annotated": "ac497a24e3f3fdbb20e7bf0941a7a6ceec235e408c643d021556ca74803fd9d1",
+    "output_json": "51ca19aa5dc433604b9684420a6b97793106777e0478ef41ae28cd3789c494f5",
+    "output_csv": "c7b2a10a27dc850586a50b5df93449ef575ba28edbbd5a62503fd5592ecf0ffc",
+    "helper": "a549e564d0dc57bd3bd01945c9072196af83cd66fd46d5b275b2727897512cb6"
+  },
+  "august_accessed": false,
+  "production_mql5_authorized": false
+}
