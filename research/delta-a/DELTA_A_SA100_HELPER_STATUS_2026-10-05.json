@@ -353,6 +353,32 @@
         "total_long_cont_locks": 10
       },
       "conclusion": "BREAKTHROUGH: zero sub-$30 January starts while restoring the Research07B $1k velocity. Freeze January mechanic neighborhood before Feb-Jul validation."
+    },
+    {
+      "id": "SA100_S1_FIXED_ENTRY_JAN_REBUILD01",
+      "status": "COMPLETE_FRESH_JAN_FIXED_ENTRY_REBUILD",
+      "helper_sha256": "ab6624b42eea0c19e220b3a6c9507e1650ffa0df42c1a10fdfcbc3277d7c97eb",
+      "output_json_sha256": "a6149b090b3b9a1525352ff484915d703150863a3fe72038327de1a523331b93",
+      "result": "Dukascopy January balanced-strengthened 9,513 trades, -$1,922.42, PF 0.47665; historical positive frontier not reproduced."
+    },
+    {
+      "id": "SA100_S1_COINEXX_REAL_FIXED_ENTRY_JAN_REBUILD02",
+      "status": "COMPLETE_FRESH_COINEXX_REAL_REPLAY",
+      "helper_sha256": "407f0b2eaeb8b0b0c484a085b485d2aac29641e44888c24a8a8845eda3538b74",
+      "output_json_sha256": "077f4a918edd907c6f8da342abea7fec8d4e7008d3efcb24f22550429b082f9e",
+      "result": "Actual Coinexx REAL January balanced-strengthened 7,423 trades, -$1,278.86, PF 0.50753; historical positive frontier not reproduced."
+    },
+    {
+      "id": "SA100_S1_HYBRID_REAL_EVENTS_DUKAS_JAN_REBUILD03_TIMEOUT",
+      "status": "INCOMPLETE_TECHNICAL_FAILURE_DO_NOT_RESUME",
+      "disposition": "Dependency import failed before simulation; no economics produced; discarded."
+    },
+    {
+      "id": "SA100_S1_HYBRID_REAL_EVENTS_DUKAS_JAN_REBUILD03_RERUN01",
+      "status": "COMPLETE_FRESH_RERUN",
+      "helper_sha256": "cdd122407cf94980912e3f78eaac81919668b322468f68dfa1789b689200857f",
+      "output_json_sha256": "affc2330ab0d7c8325ab18bbfff953f5f50df1c8ce6e7582f0569238da5f636d",
+      "result": "Coinexx REAL event timestamps/directions on Dukascopy path: 4,529 balanced-strengthened trades, -$858.27, PF 0.49092; historical positive frontier not reproduced."
     }
   ],
   "current_leading_experimental_lane": {
@@ -418,7 +444,7 @@
     "august_accessed": false
   },
   "research10_january_parity_speedrun": {
-    "status": "ACTIVE_FAST_FALSIFICATION",
+    "status": "ACTIVE_AFTER_S1_FRONTIER_REDISCOVERY",
     "objective": "Converge toward R9 SYNTH economic shape while preserving frozen $100-$1,000 survival guardrails.",
     "control": {
       "candidate": "SA100_TO_1000_JAN_CANDIDATE_01",
@@ -499,6 +525,31 @@
       "status": "REJECTED_DO_NOT_USE",
       "reason": "Later forensic lineage found intrasecond look-ahead."
     },
-    "promotion_policy": "Cheap causal screen first. Full tick/equity replay only for candidates that jointly move net, gross loss, drawdown, and useful velocity."
-  }
+    "promotion_policy": "Cheap causal screen first. Full tick/equity replay only for candidates that jointly move net, gross loss, drawdown, and useful velocity.",
+    "s1_frontier_rediscovery": {
+      "status": "COMPLETE_MECHANICS_RECOVERED_HEADLINE_NOT_CAUSALLY_REPRODUCED",
+      "preserved_predecessor": {
+        "trades": 61646,
+        "net_usd": 19247.98136718749,
+        "gross_loss_usd": -859.8909472656248,
+        "pf": 23.38421212410054,
+        "closed_dd_usd": 5.359785156248108
+      },
+      "documented_balanced_strengthened": {
+        "trades": 54119,
+        "net_usd": 18983.36,
+        "gross_loss_usd": -649.16,
+        "pf": 30.242960133095078,
+        "closed_dd_usd": 5.33
+      },
+      "recovered_strengthening_delta": {
+        "trade_reduction_pct": 12.210037958667229,
+        "net_sacrifice_pct": 1.3748006200722787,
+        "gross_loss_reduction_pct": 24.506706104504318
+      },
+      "conclusion": "Concept/mechanics recovered; original counterfactual scorer has not been freshly reproduced within 5%. Three chronological interpretations are negative."
+    }
+  },
+  "last_completed_helper": "SA100_S1_HYBRID_REAL_EVENTS_DUKAS_JAN_REBUILD03_RERUN01",
+  "last_completed_helper_result": "COMPLETE_NEGATIVE__HISTORICAL_S1_FRONTIER_REMAINS_COUNTERFACTUAL_ONLY"
 }
