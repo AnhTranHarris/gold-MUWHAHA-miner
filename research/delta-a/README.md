@@ -1,88 +1,87 @@
-# DELTA-A — GRID-HF Side Research
+# DELTA-A — R9 Grid Side Research
 
-Status: **HARD CHECKPOINT — GRID-HF R2 REFINEMENT 02**
+Status: **MAJOR RESEARCH MILESTONE — R9 GRID MILESTONE 01 / PRE-AUGUST**
 
 This branch is an isolated side-research lineage derived from the DELTA evidence base. It must not modify or advance `delta/CURRENT_STATE.json`, DELTA promotion state, the DELTA workbook cursor, or any DELTA candidate.
 
-## Authoritative rollback target
+## Current authoritative rollback target
 
-The current hard checkpoint is:
+- `research/delta-a/DELTA_A_R9_GRID_MILESTONE_01.md`
+- `research/delta-a/DELTA_A_R9_GRID_MILESTONE_01.json`
+- `research/delta-a/DELTA_A_R9_GRID_MATURE_FILTER_MANIFEST.json`
+- `research/delta-a/DELTA_A_R9_GRID_MT5_BUILD_CANDIDATE.md`
 
-`research/delta-a/DELTA_A_GRID_HF_R2_HARD_CHECKPOINT.md`
-
-Machine-readable manifest:
-
-`research/delta-a/DELTA_A_GRID_HF_R2_HARD_CHECKPOINT.json`
-
-## Purpose
-
-Investigate whether reconstructible grid mechanics can become a high-frequency XAUUSD specialist substrate without inheriting classic grid/Martingale tail risk.
+The earlier R2 hard checkpoint remains preserved as historical provenance.
 
 ## Current architecture
 
-GRID-HF is **not** a classic unlimited physical grid. It is a virtual multi-scale event engine that separates:
+The grid is no longer a conventional unlimited physical basket system. It is a causal high-frequency specialist substrate with:
 
-- event detection,
-- directional ownership,
-- lifecycle assignment,
-- failed-reclaim / persistence state,
-- multi-scale agreement,
-- deterministic de-duplication,
-- execution/risk arbitration.
+- volatility-normalized virtual grid geometry,
+- cold-start BOOTSTRAP routing,
+- a calendar-blind maturity gate,
+- a mature multi-specialist bank,
+- source-specific bounded lifecycles,
+- selective recovery handoff,
+- deterministic event de-duplication,
+- a portfolio-pressure wrapper.
 
-## Hard-checkpoint January summary
+### Cold-start -> mature transition
 
-- unique events: **39,253**
-- approximately **1,354 events/day**
-- research net: **+$12,239.46**
-- average/event: **+$0.31181**
-- PF: **1.05976**
-- positive outcomes: **~50.30%**
-- closed-event-sequence DD: **~$2,057.60**
-- positive week buckets: **5/5**
-- adjacent qualified router configurations: **156**
+The system becomes mature-eligible only after:
 
-These are **research metrics, not live-investor results**.
+- 25 active signal days, and
+- 25,000 completed outcomes.
 
-## Execution semantics
+The actual switch waits for the next market inactivity gap of at least 24 hours. No month name is used in the rule.
 
-Signal timing comes from native ordered Dukascopy XAUUSD quotes. Fair DELTA-comparable research execution uses the frozen `DUKAS_COINEXX_LIKE_P75` surface.
+A parity audit reconstructed all **186,901** pre-pressure Jan-Jul events exactly.
 
-Live MT5 must use actual broker Bid/Ask and verified broker contract economics. The P75 transform is a research comparator and must not be synthesized inside a production EA.
+## Jan-Jul tick-level milestone
 
-## Session / prop-firm status
+Research execution: native ordered Dukascopy signal ticks + frozen `DUKAS_COINEXX_LIKE_P75` comparison fills.
 
-All four broad January session buckets were positive at the hard checkpoint. Therefore:
+- trades: **186,569**
+- winners: **113,958**
+- win rate: **61.08%**
+- net: **+$194,674.33**
+- expected payoff: **+$1.0434/trade**
+- PF: **1.2525**
+- gross loss: **-$770,911.86**
+- true max floating-equity DD: **$27,904.26**
+- max simultaneous positions: **250**
+- max absolute directional imbalance: **231**
 
-- no hard session-disable rule is frozen into alpha;
-- adaptive session context may be researched later;
-- prop-firm rules belong in a separate deployment/risk wrapper.
+All Jan-Jul months are positive in the accepted trade ledger.
 
-## Production status
+## R9 SYNTH alignment
+
+- trade count: **85.1%**
+- winning-entry count: **59.6%**
+- net profit: **63.0%**
+- expected payoff: **74.0%**
+
+The remaining large weakness is loss efficiency / PF, not signal frequency.
+
+## MT5 status
+
+This milestone is a **potential future MT5 EA build candidate**, not an authorized EA.
+
+Before MQL5 production:
+
+1. owner must explicitly authorize the build;
+2. August holdout must be separately unsealed/validated;
+3. physical-exposure scaling must be designed for the intended account size;
+4. Coinexx `Every tick based on real ticks` parity must be run;
+5. live-demo forward testing must pass before funded deployment.
+
+The research account can reach 250 simultaneous 0.01-lot positions. That is not suitable for a $100-$500 account without a separate physical-exposure/margin adapter.
+
+## Hard rules
 
 - August 2026: **SEALED**
 - Martingale: **FORBIDDEN**
 - lookahead: **FORBIDDEN**
 - main Delta promotion: **NONE**
 - production MQL5 authorization: **NO**
-- current R2 Jan-Jul durability: **NOT YET COMPLETE**
-
-## Next gate
-
-Replay the exact hard-checkpoint router unchanged across February-July with:
-
-1. complete event parity,
-2. portfolio concurrency accounting,
-3. floating-equity drawdown,
-4. cross-month session residual diagnostics.
-
-Only after that evidence should session/news/event-aware rules be promoted.
-
-## Key files
-
-- `DELTA_A_GRID_HF_R2_HARD_CHECKPOINT.md`
-- `DELTA_A_GRID_HF_R2_HARD_CHECKPOINT.json`
-- `DELTA_A_GRID_HF_R2_REFINEMENT_02.md`
-- `DELTA_A_GRID_HF_R2_REFINEMENT_02.json`
-- `DELTA_A_GRID_HF_MT5_MECHANICS.md`
-- `DELTA_A_GRID_HF_STATE.json`
+- P75 synthesis inside live EA: **FORBIDDEN**
