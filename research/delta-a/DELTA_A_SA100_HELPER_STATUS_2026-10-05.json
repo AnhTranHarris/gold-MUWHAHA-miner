@@ -50,7 +50,7 @@
     "cross_month_decision_completed": false,
     "required_action": "Rerun the helper work unit from scratch starting with January."
   },
-  "next_unit": "SA100_JAN_OVERLAY_TAIL_FLOOR_RESEARCH03",
+  "next_unit": "SA100_JAN_OVERLAY_EXIT_LIFECYCLE_RESEARCH04",
   "hard_rules": {
     "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
@@ -152,6 +152,33 @@
       "status": "COMPLETE_NEGATIVE_REFINEMENT",
       "output_sha256": "190fe2f53876336b66db769cbe6882abf38028341f5b77476028e011e613130d",
       "conclusion": "Stricter low-balance CONT + $2.375-only gates starved velocity and worsened survival. Preserve broad London/NY-overlap gate below $200 as current leading seed admission rule."
+    },
+    {
+      "id": "SA100_OVERLAY_ADAPTIVE_VOL_JAN_RESEARCH03",
+      "status": "COMPLETE_NEGATIVE_REFINEMENT",
+      "helper": "research/delta-a/helpers/sa100_overlay_adaptive_vol_jan_research03.py",
+      "helper_sha256": "1c067ea80feb189acb57217b5eeb845da7620408736562c4b13ea84e6613279a",
+      "output_sha256": "a27b981218bbbdbb17aca4d081cdfb5591b94133a6737b5827b5de084467d148",
+      "starts_output_sha256": "da78b71cb540b6e91cc644357ccb4cf152cc4a277c2cc08cad32fb55d0742b8c",
+      "causal_feature": "mean completed-minute native-mid range over prior 15 completed minutes, shifted one minute",
+      "control": {
+        "rule": "FIXED7P5",
+        "survival_pct": 100,
+        "below60_pct": 23.0769,
+        "below30_pct": 3.8462,
+        "worst_realized_balance_usd": 17.68,
+        "reach1000_15d_pct": 100,
+        "median_days1000_15d": 21.9648
+      },
+      "best_adaptive_tested": {
+        "rule": "V3_5_7P5_15",
+        "survival_pct": 96.1538,
+        "below60_pct": 38.4615,
+        "below30_pct": 19.2308,
+        "worst_realized_balance_usd": -9.47,
+        "reach1000_15d_pct": 100
+      },
+      "conclusion": "Simple causal volatility-scaling of the adverse overlay trigger is rejected. Fixed $7.50 trigger remains stronger; next research should change overlay lifecycle/exit behavior rather than trigger depth."
     }
   ],
   "current_leading_experimental_lane": {
