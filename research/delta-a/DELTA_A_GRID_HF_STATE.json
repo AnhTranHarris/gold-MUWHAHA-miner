@@ -73,7 +73,7 @@
     "Coinexx broker-native Every tick based on real ticks parity not yet completed",
     "Live-demo forward validation required before funded deployment"
   ],
-  "next_unit": "SA100_TO_1000_FEB_SOURCE_RECOVERY_AND_PARITY_01",
+  "next_unit": "SA100_R9_SYNTH_JAN_PARITY_RESEARCH10H",
   "fallback_milestones": [
     {
       "id": "R9_GRID_SMALL500_V1",
@@ -135,15 +135,24 @@
       "max_physical_positions": 8
     },
     "current_research_note": "research/delta-a/DELTA_A_SA100_TO_1000_TIMEOUT_RERUN_2026-10-05.md",
-    "last_completed_helper": "SA100_LONG_CONT_LOCK_RELEASE_RESEARCH09C_STAGE2",
-    "last_completed_helper_result": "BREAKTHROUGH_ZERO_SUB30_JAN_WITH_VELOCITY_RESTORED",
+    "last_completed_helper": "HISTORICAL_TRANSPARENT_S1_ROUTER_FRESH_JAN_RECONSTRUCTION01",
+    "last_completed_helper_result": "REJECTED_ON_FRESH_JAN_P75_REPLAY",
     "current_tail_forensics": {
       "jan23_25_26": "long-lived REVERT failed-rescue state improved by selective second counter pulse",
       "jan30": "short-horizon CONT loss of about $38.40 after a $7.50 adverse trigger; requires separate capital-floor persistent-lock specialist"
     },
     "january_candidate_id": "SA100_TO_1000_JAN_CANDIDATE_01",
     "february_validation_status": "BLOCKED_PENDING_UNBIASED_CORE_H4_EVENT_SOURCE_OR_PRODUCER_PARITY",
-    "february_path_conditioned_ledger_forbidden_as_validation": true
+    "february_path_conditioned_ledger_forbidden_as_validation": true,
+    "research10_control": {
+      "physical_legs": 5414,
+      "primary_episodes": 3841,
+      "net_usd": 1242.09,
+      "gross_profit_usd": 21598.65,
+      "gross_loss_usd": -20356.56,
+      "realized_balance_max_dd_usd": 550.27
+    },
+    "active_objective": "R9 SYNTH January parity: improve trade count, net, gross loss and DD together; frozen survival metrics are guardrails."
   },
   "helper_forensics": {
     "completed_failed": "research/delta-a/artifacts/SA100_DTOPP_FAILURE_SUMMARY.json",
