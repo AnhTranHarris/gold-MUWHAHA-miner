@@ -50,7 +50,7 @@
     "cross_month_decision_completed": false,
     "required_action": "Rerun the helper work unit from scratch starting with January."
   },
-  "next_unit": "SA100_JAN_CAPITAL_FLOOR_PERSISTENT_LOCK_RESEARCH06",
+  "next_unit": "SA100_JAN_REVERT_PERSISTENT_FLOOR_RESEARCH07",
   "hard_rules": {
     "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
@@ -222,18 +222,58 @@
         "reached1000_15d_pct": 100
       },
       "conclusion": "Seed-limited second rescue improves long-lived REVERT tails but Jan30 is a different toxic state and remains the overall floor."
+    },
+    {
+      "id": "SA100_JAN_CAPITAL_FLOOR_PERSISTENT_LOCK_RESEARCH06_TIMEOUT",
+      "status": "INCOMPLETE_TIMEOUT_DO_NOT_RESUME",
+      "action": "Discarded broad partial replay. Fresh two-stage rerun started from zero."
+    },
+    {
+      "id": "SA100_JAN_CAPITAL_FLOOR_PERSISTENT_LOCK_RESEARCH06_RERUN01",
+      "status": "COMPLETE_FRESH_TWO_STAGE_RERUN_BREAKTHROUGH",
+      "stage1_sha256": "34da2aa887a3c50575fd318fab4741c3e71af4c6d177db13f410563d35041758",
+      "stage2_tick_sha256": "50be698e82721edf2d4fcb0029c5571bdb1d2e4f81e0d5ecb89776892b53dedc",
+      "stage2_summary_sha256": "2521b98f9d763b44219bf6c3002c79b64b05e8d90077427bde70ba2e4aa02f9b",
+      "mechanism": "After the normal 30s counter rescue expires, if a short-horizon CONT primary is still <= -$7.50 and seed balance is below the cap, open one second equal 0.01 opposite counter and hold it until the primary closes.",
+      "leading_caps_usd": [
+        175,
+        200
+      ],
+      "result": {
+        "equity_positive_pct": 100,
+        "margin_above100_pct": 100,
+        "below60_equity_pct": 26.9231,
+        "below30_equity_pct": 11.5385,
+        "worst_min_equity_usd": 21.16,
+        "worst_min_free_margin_usd": 10.56317,
+        "worst_margin_level_pct": 152.36642,
+        "max_physical_positions": 8,
+        "reach1000_all_pct": 96.153846,
+        "reach1000_15d_pct": 100,
+        "median_days1000_15d_s175": 21.882455,
+        "median_days1000_15d_s200": 21.848017
+      },
+      "comparison": {
+        "prior_worst_min_equity_usd": 14.19,
+        "prior_below30_equity_pct": 15.3846,
+        "prior_reach1000_all_pct": 88.461538
+      },
+      "conclusion": "BREAKTHROUGH: persistent failed-CONT lock removes Jan30 as the dominant tail without sacrificing >=15d $1k velocity. New floor is the long-lived REVERT Jan23 state at $21.16."
     }
   ],
   "current_leading_experimental_lane": {
-    "id": "OVERLAY7P5_H30_SAFE_OVERLAP200_PLUS_SEED_REVERT_RESCUE_DIAGNOSTIC",
-    "status": "PROMISING_NOT_PROMOTED",
+    "id": "OVERLAY7P5_H30_SAFE_OVERLAP200_PLUS_SEED_REVERT_RESCUE_PLUS_FAILED_CONT_LOCK",
+    "status": "PROMISING_BREAKTHROUGH_NOT_PROMOTED",
     "start_balance_usd": 100,
     "target_balance_usd": 1000,
     "lot": 0.01,
-    "primary_episode_slots": "SAFE ladder: 1 below $250, 2 below $500, 3 below $750, 4 below $1,000",
     "low_capital_gate": "London/NY overlap only while realized balance < $200",
-    "recovery": "If primary reaches -$7.50 adverse P&L, open one equal 0.01 opposite-direction counter overlay for 30 seconds while keeping primary open.",
+    "primary_episode_slots": "SAFE ladder: 1 below $250, 2 below $500, 3 below $750, 4 below $1,000",
+    "base_recovery": "At -$7.50 adverse primary P&L, open equal 0.01 opposite counter for 30s while primary stays open.",
+    "revert_tail_recovery": "Seed-limited second 30s rescue after failed first rescue on long-lived REVERT state (Research05C).",
+    "cont_tail_recovery": "If short-horizon CONT is still <= -$7.50 after first rescue expires and balance < $175-$200, open a second equal counter and hold until primary closes (Research06).",
     "handoff_before_1000": false,
-    "blocker": "Long-lived REVERT tail improved via seed-limited second rescue, but Jan30 short-horizon CONT failure still drives a $14.19 minimum equity path. Test low-capital persistent hedge/reclaim lock."
+    "current_worst_min_equity_usd": 21.16,
+    "current_blocker": "Jan23/25/26 long-lived REVERT path now defines floor. Raise that floor without slowing >=15d $1k completion."
   }
 }
