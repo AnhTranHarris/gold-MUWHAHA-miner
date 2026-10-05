@@ -1,0 +1,38 @@
+{
+  "schema": "delta-r037-vce-raw-release-later-jan-prereg-17co-v1",
+  "status": "PREREGISTERED_BEFORE_PRODUCER",
+  "unit": "R037_VCE_RAW_RELEASE_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CO",
+  "candidate": "R037-VCE-C03_BBKC_RELEASE",
+  "parent_checkpoint": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
+  "question": "Does the unchanged M5 BB/KC release grammar retain nonnegative frozen 30-second persistence in independent later January?",
+  "frozen": {
+    "timeframe": "M5",
+    "squeeze": "prior completed bar BB20/2.0 fully inside KC EMA20 +/-1.5 ATR20",
+    "release": "current completed bar exits squeeze and closes beyond current Keltner channel",
+    "entry": "first executable P75 tick after completed release bar",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "fixed_lot": 0.01,
+    "numeric_retuning": false
+  },
+  "validation": {
+    "warmup_start_utc": "2026-01-14T00:00:00Z",
+    "economic_start_utc": "2026-01-18T12:00:00Z",
+    "economic_end": "final January tick",
+    "warmup_entries": false
+  },
+  "gate": {
+    "minimum_trades": 10,
+    "minimum_distinct_days": 5,
+    "direct_net_nonnegative": true,
+    "pass_action": "advance unchanged candidate to Feb-Jul monthly validation",
+    "fail_action": "retire unchanged; no rescue"
+  },
+  "stage_a_reference": "27 trades / 20 wins / +$0.71 direct",
+  "canonical_january_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
