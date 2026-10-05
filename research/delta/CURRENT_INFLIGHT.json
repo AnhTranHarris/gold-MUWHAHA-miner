@@ -4,13 +4,13 @@
   "branch": "delta",
   "unit": "R037_VCE_QIM_CONFIRMATION_STAGE_A_SCREEN_CHECKPOINT_17CE_17CH",
   "parent_durable_unit": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "phase": "RESULT_COMMITTED",
+  "phase_rank": 3,
   "progress": {
-    "status": "PRODUCER_DURABLE_OFFICIAL_COMPUTE_NEXT",
+    "status": "RESULT_DURABLE_REPORT_NEXT",
     "last_completed": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
     "current_candidate": "R037-VQCF-v1 / M5 VCE release + causal QI confirmation",
-    "next": "Run exact committed 17CE-17CH producer under bounded runner on canonical Stage-A ticks."
+    "next": "Persist report, workbook readback and rebuild manifest; do not rerun compute."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
@@ -45,5 +45,10 @@
     "blob_sha": "204a6587d0c941d18db098f8dab011b845bb5258",
     "file_sha256": "844dc08593e641294ac46d7d0839ad99b123488a90574409add867926c47d453",
     "local_blob_verified": true
+  },
+  "result": {
+    "path": "research/delta/reference/DELTA_R037_VCE_QIM_CONFIRMATION_STAGE_A_CHECKPOINT_17CE_17CH.json",
+    "commit": "1d5b75479f517d9177717db913cec42396a0ec75",
+    "result_sha256": "1775b2c2787563311f2d8c050e0ea1615f698f05f09b09e5d62ac8160e335855"
   }
 }
