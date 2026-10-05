@@ -1,17 +1,17 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "INFLIGHT",
+  "status": "COMPLETE",
   "branch": "delta",
   "unit": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
   "family": "R037-SSRP-QUALIFIED-SWEEP-v1",
   "parent_durable_unit": "R037_XAUUSD_SESSION_LIQUIDITY_SWEEP_RECLAIM_HARVEST_CHECKPOINT_17CW_17CZ",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "phase": "COMPLETE",
+  "phase_rank": 7,
   "progress": {
-    "status": "PRODUCER_DURABLE_EXACT_BLOB_VERIFIED",
-    "last_completed": "PREREGISTERED",
-    "current_candidate": "17DA-17DD displacement-qualified session sweep",
-    "next": "RUN_BOUNDED_COMPUTE"
+    "status": "NO_STAGE_A_SURVIVOR_RETIRED_NO_RESCUE",
+    "last_completed": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
+    "current_candidate": null,
+    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
@@ -33,7 +33,17 @@
     "file_sha256": "c6317405c6a08872aaeb6f1e1f8007b6002e6b3d9668d8f1da3e8bdb655dead0",
     "local_git_blob_verified": true
   },
-  "result": null,
-  "report": null,
-  "manifest": null
+  "result": {
+    "path": "research/delta/reference/DELTA_R037_SSRP_QUALIFIED_SWEEP_CHECKPOINT_17DA_17DD.json",
+    "commit": "60f2d378d9e800967e59b36329c4b66ff096a56e",
+    "sha256": "cf5361f8bf489cb322c27b8e51b9d06a75ad97c84d52be620c324728a8c56361"
+  },
+  "report": {
+    "path": "research/delta/research/DELTA_R037_SSRP_QUALIFIED_SWEEP_CHECKPOINT_17DA_17DD.md",
+    "commit": "8a3a23ddbb959e5bc5a67b14a14839a7cb0c6283"
+  },
+  "manifest": {
+    "path": "research/delta/artifacts/DELTA_R037_SSRP_QUALIFIED_SWEEP_CHECKPOINT_17DA_17DD_MANIFEST.json",
+    "commit": "59e7c48fe465be8701650cb857f60d0d9d4e5e0b"
+  }
 }
