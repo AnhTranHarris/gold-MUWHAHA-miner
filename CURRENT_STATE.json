@@ -17,7 +17,8 @@
   "timeout_recovery": {
     "inflight_path": "research/delta/CURRENT_INFLIGHT.json",
     "pointer_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_RECOVERY_POINTER.json",
-    "rule": "On message-delivery interruption, trust committed prereg/source/result/report/manifest and resume the first missing phase; chat delivery timeout is not itself compute failure."
+    "rule": "On message-delivery interruption, trust committed prereg/source/result/report/manifest and resume the first missing phase; chat delivery timeout is not itself compute failure.",
+    "guard_alignment": "COMPLETE_PHASE_SCHEMA_ALIGNED_AFTER_17CK_17CL"
   },
   "canonical_data": {
     "january_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
