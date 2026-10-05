@@ -50,7 +50,7 @@
     "cross_month_decision_completed": false,
     "required_action": "Rerun the helper work unit from scratch starting with January."
   },
-  "next_unit": "SA100_R10X_REMAINING_LOSS_CONVERSION_AUTOPSY01",
+  "next_unit": "SA100_R10Y_CONT180_FAILURE_STATE_SPECIALIST01",
   "hard_rules": {
     "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
@@ -616,6 +616,44 @@
         "min_tick_equity_usd": 88.51,
         "august_accessed": false
       }
+    },
+    {
+      "id": "SA100_R10X_REMAINING_LOSS_CONVERSION_AUTOPSY01",
+      "status": "COMPLETE_AUTOPSY",
+      "finding": "After R10W2, HOLD episodes own ~97% of remaining episode GL. CONT180 HOLDs alone contribute about -$7,420.86 GL; long CONT1800 losses average ~-$15.93."
+    },
+    {
+      "id": "SA100_R10X2_HOLD_BASKET_KILL_SCREEN01",
+      "status": "COMPLETE_PROMISING_1S_SCREEN",
+      "finding": "Conservative 1s screen found CONT1800 combined basket floor -$30 as highest-value low-touch tail cap; exact replay required."
+    },
+    {
+      "id": "SA100_R10X3_CONT1800_BASKETKILL_EXACT01",
+      "status": "INVALID_RISK_UNIT_SCAN_DO_NOT_USE",
+      "finding": "Economics were valid but tick-risk scan mixed dollar quotes with raw-unit division. Discarded as current helper and rerun from zero with corrected risk units."
+    },
+    {
+      "id": "SA100_R10X3_CONT1800_BASKETKILL_EXACT01_RERUN01",
+      "status": "COMPLETE_EXACT_BREAKTHROUGH_NEW_JAN_FRONTIER",
+      "finding": "R10W2 plus combined basket floor -$30 only for remaining HOLD CONT horizon1800. 11 kills/105 target episodes. +$2,986.94 net, physical GL -$14,074.91, episode GL -$11,336.49, balance DD $291.23, tick DD $312.81, executed episode win 56.35%, discovery 56.00%, holdout 56.52%.",
+      "result": {
+        "net_usd": 2986.9445,
+        "physical_legs": 4433,
+        "physical_gl_usd": -14074.9115,
+        "physical_pf": 1.2122176399,
+        "physical_win": 0.5307917889,
+        "episode_gl_usd": -11336.491,
+        "episode_pf": 1.2634805161,
+        "executed_episode_win": 0.5635324015,
+        "discovery_exec_win": 0.5600393701,
+        "holdout_exec_win": 0.5651969981,
+        "balance_dd_usd": 291.227,
+        "tick_dd_usd": 312.8135,
+        "min_tick_equity_usd": 88.51,
+        "kill_hits": 11,
+        "target_episodes": 105,
+        "august_accessed": false
+      }
     }
   ],
   "current_leading_experimental_lane": {
@@ -681,7 +719,7 @@
     "august_accessed": false
   },
   "research10_january_parity_speedrun": {
-    "status": "ACTIVE_R10X_REMAINING_LOSS_CONVERSION",
+    "status": "ACTIVE_R10Y_CONT180_LOSS_CONVERSION",
     "objective": "Converge toward R9 SYNTH economic shape while preserving frozen $100-$1,000 survival guardrails.",
     "control": {
       "candidate": "SA100_TO_1000_JAN_CANDIDATE_01",
@@ -950,8 +988,24 @@
       "retention": 0.8195782348,
       "balance_dd_usd": 367.58,
       "tick_dd_usd": 312.8135
+    },
+    "r10x3": {
+      "status": "COMPLETE_EXACT_BREAKTHROUGH",
+      "net_usd": 2986.9445,
+      "physical_gl_usd": -14074.9115,
+      "episode_gl_usd": -11336.491,
+      "balance_dd_usd": 291.227,
+      "tick_dd_usd": 312.8135,
+      "executed_episode_win": 0.5635324015,
+      "retention": 0.8195782348
+    },
+    "next_loss_target": {
+      "state": "remaining executed HOLD owner=CONT horizon=180s",
+      "gross_loss_usd": -7420.859,
+      "share_of_remaining_episode_gl_pct": 65.46,
+      "rule": "No more broad abstention below 80% retention; seek actual loss-to-win/early-failure conversion."
     }
   },
-  "last_completed_helper": "SA100_R10W2_RESIDUAL_GAP35_EXACT",
-  "last_completed_helper_result": "COMPLETE_BREAKTHROUGH__JAN_FRONTIER_NET2763_GL14310_EXECWIN56P39"
+  "last_completed_helper": "SA100_R10X3_CONT1800_BASKETKILL_EXACT01_RERUN01",
+  "last_completed_helper_result": "COMPLETE_BREAKTHROUGH__JAN_FRONTIER_NET2987_GL14075_BALDD291"
 }
