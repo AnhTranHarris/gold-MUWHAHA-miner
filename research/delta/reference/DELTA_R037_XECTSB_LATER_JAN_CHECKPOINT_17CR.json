@@ -1,0 +1,31 @@
+{
+  "schema": "delta-r037-xectsb-later-jan-17cr-v1",
+  "status": "COMPLETE_INDEPENDENT_LATER_JAN_VALIDATION",
+  "unit": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
+  "family": "R037-XECTSB-v1",
+  "candidate": "17CQ_M15_EMA9_21_TOUCH_SWING10",
+  "parent_checkpoint": "R037_XAUUSD_EMA_CROSS_TOUCH_SWING_BREAK_STAGE_A_SCREEN_CHECKPOINT_17CP_17CQ",
+  "prereg_commit": "11bb98ec46eaf2d30e1a8bed872b696c0abd1922",
+  "parent_producer_sha256": "c26dc710879a86b9447dfaf2e236c4f3621151a3ab2a62d35aef8f34f44ae03e",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_control": {
+    "metrics": {"signals":20,"trades":20,"busy_skips":0,"spread_rejects":0,"distinct_days":10,"long":12,"short":8,"official_wins":11,"gross_profit":6.19,"gross_loss":-5.31,"direct_net_usd":0.68,"exit_reasons":{"STOP":20,"MAX_HOLD":0,"END":0}},
+    "diagnostics": {"crosses":46,"bull":23,"bear":23,"resets":25,"touches":38,"bots":26,"enters":20,"spread_rejects":0},
+    "ticks": 4205709
+  },
+  "later_jan": {
+    "warmup_start_ms": 1768348800000,
+    "economic_start_ms": 1768737600000,
+    "end_exclusive_ms": 1769904000000,
+    "metrics": {"signals":20,"trades":20,"busy_skips":0,"spread_rejects":0,"distinct_days":10,"long":11,"short":9,"official_wins":7,"gross_profit":4.03,"gross_loss":-7.62,"direct_net_usd":-3.79,"exit_reasons":{"STOP":20,"MAX_HOLD":0,"END":0}},
+    "diagnostics": {"crosses":49,"bull":24,"bear":25,"resets":23,"touches":41,"bots":27,"enters":20,"prewindow_entries":6,"spread_rejects":0},
+    "ticks":6076533,
+    "gate":{"minimum_trades_10":true,"minimum_distinct_days_5":true,"direct_net_positive":false,"validation_pass":false}
+  },
+  "finding":{"decision":"RETIRE_XECTSB_AFTER_LATER_JAN_FAIL","next":"R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"},
+  "numeric_retuning":false,
+  "post_result_rescue":false,
+  "august_accessed":false,
+  "mql5_authorized":false,
+  "runtime_seconds":3.849
+}
