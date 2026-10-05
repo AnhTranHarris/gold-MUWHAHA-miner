@@ -1,16 +1,16 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "IDLE",
+  "status": "IN_PROGRESS",
   "branch": "delta",
-  "unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+  "unit": "R037_VCE_QIM_CONFIRMATION_STAGE_A_SCREEN_CHECKPOINT_17CE_17CH",
   "parent_durable_unit": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
-  "phase": "IDLE",
-  "phase_rank": 0,
+  "phase": "PREREG_COMMITTED",
+  "phase_rank": 1,
   "progress": {
-    "status": "IDLE_DURABLE_PREVIOUS_UNIT_COMPLETE",
+    "status": "PREREG_DURABLE_PRODUCER_NEXT",
     "last_completed": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
-    "current_candidate": null,
-    "next": "Select next high-supply, causally reconstructible entry family from completed R037 meta-harvest; prioritize prior OOS/holdout evidence."
+    "current_candidate": "R037-VQCF-v1 / M5 VCE release + causal QI confirmation",
+    "next": "Build/commit exact producer; run bounded Stage-A baseline + QI025/QI050/QI075."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
@@ -33,6 +33,11 @@
     "current_state_next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
     "manifest": "research/delta/artifacts/DELTA_R037_BREAKER_BLOCK_RETEST_STAGE_A_CHECKPOINT_17CC_17CD_MANIFEST.json"
   },
-  "prereg": null,
+  "prereg": {
+    "path": "research/delta/reference/DELTA_R037_VCE_QIM_CONFIRMATION_PREREG_17CE_17CH.json",
+    "commit": "26d6e97a7ea5c2a6fadc7b903a6dde193b85cf9d",
+    "blob_sha": "3643ed57e58fc80020fa60f96d1e755f145bd6a0",
+    "status": "PREREGISTERED_BEFORE_PRODUCER"
+  },
   "producer": null
 }
