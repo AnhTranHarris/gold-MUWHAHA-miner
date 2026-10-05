@@ -1,0 +1,92 @@
+{
+  "schema": "delta-r037-displacement-qualified-session-sweep-prereg-17da-17dd-v1",
+  "status": "PREREGISTERED_BEFORE_PRODUCER_AND_COMPUTE",
+  "unit": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
+  "parent_checkpoint": "R037_XAUUSD_SESSION_LIQUIDITY_SWEEP_RECLAIM_HARVEST_CHECKPOINT_17CW_17CZ",
+  "purpose": "Test source-grounded qualified liquidity sweeps with exact default session map and displacement quality, after raw London-only reclaims failed supply.",
+  "source_basis": [
+    {
+      "family": "R037-SSRP-QUALIFIED-SWEEP-v1",
+      "sources": [
+        "https://www.tradingview.com/script/O148939n-Session-Sweep-Reversal-Predictor-PhenLabs/"
+      ],
+      "disclosed_logic": "Default America/New_York sessions: Asian 18:00-03:00, London 03:00-07:59, New York 08:00-16:00. London may sweep Asian range; New York may sweep London first then Asian. Wick sweep trades beyond a locked range level and closes back through it. Qualified sweep requires candle range >=1.5x ATR(14) and body/range >=0.5.",
+      "project_fixture_disclosure": "January 2026 is EST (UTC-5), so deterministic UTC windows are Asia 23:00-08:00 crossing UTC date, London 08:00-13:00, New York 13:00-21:00. No Bayesian probability layer is imported; this bounded unit tests the publicly disclosed qualified-sweep event itself."
+    }
+  ],
+  "data": {
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "stage_a_window": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+    "stage_a_ticks": 4205709,
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "august_2026": "SEALED"
+  },
+  "frozen_execution": {
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "fixed_lot": 0.01,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01,
+    "one_position_at_a_time": true
+  },
+  "lanes": {
+    "17DA_SSRP_WICK_M1": {
+      "bar_ms": 60000,
+      "sweep_mode": "WICK_RECLAIM",
+      "atr_length": 14,
+      "min_range_atr": 1.5,
+      "min_body_range": 0.5
+    },
+    "17DB_SSRP_WICK_M5": {
+      "bar_ms": 300000,
+      "sweep_mode": "WICK_RECLAIM",
+      "atr_length": 14,
+      "min_range_atr": 1.5,
+      "min_body_range": 0.5
+    },
+    "17DC_SSRP_FAILED_CLOSE_M1": {
+      "bar_ms": 60000,
+      "sweep_mode": "FAILED_CLOSE_NEXT_BAR_RECLAIM",
+      "atr_length": 14,
+      "min_range_atr": 1.5,
+      "min_body_range": 0.5
+    },
+    "17DD_SSRP_FAILED_CLOSE_M5": {
+      "bar_ms": 300000,
+      "sweep_mode": "FAILED_CLOSE_NEXT_BAR_RECLAIM",
+      "atr_length": 14,
+      "min_range_atr": 1.5,
+      "min_body_range": 0.5
+    }
+  },
+  "gate": {
+    "minimum_trades": 10,
+    "minimum_distinct_days": 5,
+    "strong_direct_net_usd_min": 0,
+    "selection_rule": "Advance any unchanged lane meeting all activity gates and nonnegative direct net immediately to independent later-January validation; retire failures without rescue."
+  },
+  "prohibited": [
+    "ATR threshold sweep",
+    "body ratio sweep",
+    "session-window sweep",
+    "timeframe rescue",
+    "side/weekday filter",
+    "Bayesian threshold fitting",
+    "exit retuning",
+    "post-result rescue",
+    "August access",
+    "MQL5"
+  ],
+  "crash_safety": {
+    "hard_timeout_seconds": 120,
+    "exact_git_blob_preexecution_verification": true,
+    "atomic_output_required": true,
+    "compact_stdout": true,
+    "pycache_redirect_to_writable_temp": true,
+    "phase_checkpoint_after_each_durable_step": true
+  },
+  "mql5_authorized": false
+}
