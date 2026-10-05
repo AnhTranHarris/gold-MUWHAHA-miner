@@ -50,7 +50,7 @@
     "cross_month_decision_completed": false,
     "required_action": "Rerun the helper work unit from scratch starting with January."
   },
-  "next_unit": "SA100_R10T_P4_ROTATION_RECONSTRUCTION01",
+  "next_unit": "SA100_R10W_RESIDUAL_TOXIC_CELL_MINER01",
   "hard_rules": {
     "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
@@ -541,6 +541,54 @@
       "status": "COMPLETE_NEGATIVE_NO_ROBUST_POLICY",
       "output_sha256": "cf1ffecc17ab077e81ce33bc59eb7ba56fd21989e7963bfc3b2678fcbd6631d9",
       "finding": "1,070 rescue-expiry episodes; 45 shallow KEEP/PULSE/LOCK/SWITCH policies; robust_count=0. Rescue-expiry auction family retired."
+    },
+    {
+      "id": "SA100_R10T_P4_ROTATION_RECONSTRUCTION01",
+      "status": "COMPLETE_NEGATIVE_NO_ROBUST_DISCOVERY_HOLDOUT",
+      "finding": "576 causal completed-second P4 statistical-rotation lanes screened; robust_count=0. High raw win rates were overwhelmed by rare persistent-expansion losses; family retired.",
+      "output_sha256": "stage1_local"
+    },
+    {
+      "id": "SA100_R10T2_P4_P6_EXTREME_ROUTER01",
+      "status": "COMPLETE_NEGATIVE_NO_ROBUST_DISCOVERY_HOLDOUT",
+      "finding": "972 transparent P4/P6 fade/continue router lanes screened; robust_count=0. Holdout sometimes positive but discovery strongly negative; family retired.",
+      "output_sha256": "stage1_local"
+    },
+    {
+      "id": "SA100_R10U_TOXIC_ABSTENTION_ON_R10Q01",
+      "status": "COMPLETE_ROBUST_SCREEN",
+      "finding": "Toxic HOLD-state abstention has multiple discovery/holdout-robust cells. Re-ranking on executed-trade win rate identified a stronger combined lane while retaining >80% of R10Q episodes."
+    },
+    {
+      "id": "SA100_R10U4_EXACT_R10Q300_TOXIC_COMBO_INITIAL",
+      "status": "INVALID_ACTION_ORDER_DO_NOT_USE",
+      "finding": "First exact replay applied toxicity before final R10J action assignment and skipped 672 instead of preregistered 636 episodes. Discarded and rerun from zero."
+    },
+    {
+      "id": "SA100_R10U4_TOXIC_ABSTENTION_EXACT_R10Q300_COMBO_RERUN01",
+      "status": "COMPLETE_EXACT_BREAKTHROUGH",
+      "finding": "Correct final-action-order replay. shadow>=300 + true HOLD + (London-only gap2.375 OR REVERT horizon600) => abstain. 636 skipped; 83.44% episode retention; +$2,631.12 net; physical GL -$14,580.68; episode GL -$11,820.88; physical win 52.86%; executed episode win ~56.10%; balance DD $367.58; tick DD $312.81; min tick equity $88.51.",
+      "result": {
+        "net_usd": 2631.1245,
+        "physical_legs": 4512,
+        "physical_gl_usd": -14580.6815,
+        "physical_pf": 1.1804527792,
+        "physical_win": 0.5285904255,
+        "episode_gl_usd": -11820.881,
+        "episode_pf": 1.2225827753,
+        "executed_episode_win_approx": 0.560998,
+        "balance_dd_usd": 367.58,
+        "tick_dd_usd": 312.8135,
+        "min_tick_equity_usd": 88.51,
+        "skipped_episodes": 636,
+        "retention": 0.834418,
+        "august_accessed": false
+      }
+    },
+    {
+      "id": "SA100_R10V_TOXIC_COUNTEROWNER_ON_R10Q01",
+      "status": "COMPLETE_NEGATIVE",
+      "finding": "Selective +5s EXIT/REV90/REV120 attempts on toxic abstention cohort produced zero robust discovery+holdout candidates. Abstention remains superior to forced ownership transfer."
     }
   ],
   "current_leading_experimental_lane": {
@@ -606,7 +654,7 @@
     "august_accessed": false
   },
   "research10_january_parity_speedrun": {
-    "status": "ACTIVE_R10T_ORTHOGONAL_ROTATION_RECONSTRUCTION",
+    "status": "ACTIVE_R10W_RESIDUAL_TOXIC_MINING",
     "objective": "Converge toward R9 SYNTH economic shape while preserving frozen $100-$1,000 survival guardrails.",
     "control": {
       "candidate": "SA100_TO_1000_JAN_CANDIDATE_01",
@@ -842,8 +890,29 @@
       "status": "STARTED_SOURCE_RECOVERY",
       "historical_evidence_only": "Prior causal sandbox P1+P4 increased May-Jul OOS from about +$1,111 to +$2,703 and Jan-Jul from +$6,481 to +$21,388; exact P4 mechanics must be reconstructed before testing.",
       "hard_rule": "Do not inherit historical P4 profits. Rebuild causal mechanics independently on current January raw ticks and require >50% specialist success plus positive discovery/holdout economics."
+    },
+    "r10u4": {
+      "status": "COMPLETE_EXACT_BREAKTHROUGH",
+      "rule": "shadow balance >=300; final R10Q action HOLD; abstain if London-only gap=2.375 OR REVERT horizon=600",
+      "net_usd": 2631.1245,
+      "physical_gl_usd": -14580.6815,
+      "episode_gl_usd": -11820.881,
+      "balance_dd_usd": 367.58,
+      "tick_dd_usd": 312.8135,
+      "physical_win": 0.5285904255,
+      "executed_episode_win_approx": 0.560998,
+      "retention": 0.834418,
+      "comparison_to_r10q400": {
+        "delta_net_usd": 493.9775,
+        "physical_gl_reduction_usd": 3307.8915,
+        "episode_gl_reduction_usd": 2866.539
+      }
+    },
+    "r10v": {
+      "status": "COMPLETE_NEGATIVE",
+      "finding": "Forced counter-owner on toxic state does not generalize; keep abstention."
     }
   },
-  "last_completed_helper": "SA100_R10S_RESCUE_EXPIRY_AUCTION01",
-  "last_completed_helper_result": "COMPLETE_NEGATIVE__RESCUE_EXPIRY_AUCTION_RETIRED"
+  "last_completed_helper": "SA100_R10U4_TOXIC_ABSTENTION_EXACT_R10Q300_COMBO_RERUN01",
+  "last_completed_helper_result": "COMPLETE_BREAKTHROUGH__R10Q_TOXIC_ABSTENTION_NET_GL_WIN_IMPROVEMENT"
 }
