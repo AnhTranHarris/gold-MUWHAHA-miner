@@ -71,5 +71,14 @@
     "Coinexx broker-native Every tick based on real ticks parity not yet completed",
     "Live-demo forward validation required before funded deployment"
   ],
-  "next_unit": "MILESTONE_FROZEN_AWAIT_OWNER_NEXT_DIRECTION"
+  "next_unit": "MILESTONE_FROZEN_AWAIT_OWNER_NEXT_DIRECTION",
+  "fallback_milestones": [
+    {
+      "id": "R9_GRID_SMALL500_V1",
+      "status": "MINOR_FALLBACK_MILESTONE",
+      "start_balance_usd": 500,
+      "fixed_lot": 0.01,
+      "file": "research/delta-a/DELTA_A_R9_GRID_SMALL500_FALLBACK_MILESTONE.md"
+    }
+  ]
 }
