@@ -1,0 +1,100 @@
+{
+  "schema": "delta-r037-squeeze-range-breakout-retest-17cm-17cn-v1",
+  "status": "COMPLETE_FAST_CAUSAL_PRESCREEN",
+  "unit": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
+  "family": "R037-SRBRT-v1",
+  "parent_checkpoint": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
+  "prereg_commit": "038d1750aaf510cd2929f7301f46af2a994d9d90",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "breakout_diagnostics": {
+    "squeeze_segments": 69,
+    "locked_ranges": 69,
+    "breakouts": 56,
+    "bull_breakouts": 32,
+    "bear_breakouts": 24,
+    "locks_replaced_by_new_squeeze": 13
+  },
+  "configs": {
+    "17CM_M5_SQUEEZE_RANGE_RETEST": {
+      "metrics": {
+        "signals": 38,
+        "trades": 38,
+        "busy_skips": 0,
+        "spread_rejects": 0,
+        "distinct_days": 11,
+        "long": 19,
+        "short": 19,
+        "official_wins": 18,
+        "gross_profit": 5.16,
+        "gross_loss": -10.89,
+        "direct_net_usd": -6.11,
+        "exit_reasons": {
+          "STOP": 36,
+          "MAX_HOLD": 2,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_10": true,
+        "minimum_distinct_days_5": true,
+        "direct_net_positive": false,
+        "screen_pass": false
+      },
+      "diagnostics": {
+        "events": 56,
+        "retests": 38,
+        "invalid_opposite": 6,
+        "invalid_new_squeeze": 11,
+        "no_executable_tick": 1,
+        "no_retest_before_end": 0
+      }
+    },
+    "17CN_M1_SQUEEZE_RANGE_RETEST": {
+      "metrics": {
+        "signals": 43,
+        "trades": 43,
+        "busy_skips": 0,
+        "spread_rejects": 0,
+        "distinct_days": 11,
+        "long": 23,
+        "short": 20,
+        "official_wins": 22,
+        "gross_profit": 5.13,
+        "gross_loss": -11.06,
+        "direct_net_usd": -6.36,
+        "exit_reasons": {
+          "STOP": 41,
+          "MAX_HOLD": 2,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_10": true,
+        "minimum_distinct_days_5": true,
+        "direct_net_positive": false,
+        "screen_pass": false
+      },
+      "diagnostics": {
+        "events": 56,
+        "retests": 43,
+        "invalid_opposite": 6,
+        "invalid_new_squeeze": 7,
+        "no_executable_tick": 0,
+        "no_retest_before_end": 0
+      }
+    }
+  },
+  "finding": {
+    "survivors": [],
+    "leader": null,
+    "decision": "RETIRE_SRBRT_NO_STAGE_A_SURVIVOR",
+    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+  },
+  "numeric_retuning": false,
+  "post_result_rescue": false,
+  "august_accessed": false,
+  "mql5_authorized": false,
+  "runtime_seconds": 8.654
+}
