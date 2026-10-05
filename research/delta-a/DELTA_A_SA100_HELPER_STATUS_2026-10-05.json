@@ -50,7 +50,7 @@
     "cross_month_decision_completed": false,
     "required_action": "Rerun the helper work unit from scratch starting with January."
   },
-  "next_unit": "SA100_TO_1000_FEB_SOURCE_RECOVERY_AND_PARITY_01",
+  "next_unit": "SA100_R9_SYNTH_JAN_PARITY_RESEARCH10H",
   "hard_rules": {
     "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
@@ -416,5 +416,89 @@
     "allowed_next_action": "Recover an unbiased Feb-Jul teacher/event ledger from persistent Library/project sources OR reconstruct producer from raw ticks and require parity against durable aggregate/event fingerprints before validation.",
     "forbidden_shortcut": "Do not use sa100_rampH_candidate.csv or old incomplete stop-variant matrices as proof of February validation.",
     "august_accessed": false
+  },
+  "research10_january_parity_speedrun": {
+    "status": "ACTIVE_FAST_FALSIFICATION",
+    "objective": "Converge toward R9 SYNTH economic shape while preserving frozen $100-$1,000 survival guardrails.",
+    "control": {
+      "candidate": "SA100_TO_1000_JAN_CANDIDATE_01",
+      "physical_legs": 5414,
+      "primary_episodes": 3841,
+      "net_usd": 1242.09,
+      "gross_profit_usd": 21598.65,
+      "gross_loss_usd": -20356.56,
+      "realized_balance_max_dd_usd": 550.27,
+      "start_balance_usd": 100,
+      "end_balance_usd": 1342.09
+    },
+    "completed": [
+      {
+        "id": "SA100_R10_JAN_LOSS_AUTOPSY",
+        "status": "COMPLETE",
+        "summary_sha256": "1f9c69a925ed32b9e5407e461bc0325e853f9240e751108a8a298ec5779c4b91",
+        "finding": "Primary legs dominate loss: 3,841 primaries net +$987.56 with $17,480 gross loss. Base 30s counters net +$252.98; REVERT rescue pulses net positive. Excess loss is broad primary inefficiency, not recovery machinery.",
+        "loss_concentration": "Top 1% losing episodes ~8.23% GL; top 5% ~23.11%; top 10% ~35.89%. Not a tiny-tail-only problem."
+      },
+      {
+        "id": "SA100_R10B_PRIMARY_FAILURE_SCREEN",
+        "status": "COMPLETE_NEGATIVE_INSUFFICIENT",
+        "output_sha256": "571f58b6f3a9539a75c11820f945d502b0bd349982e261321127f0ffbc888d08",
+        "finding": "Early causal failure checkpoints reduce primary gross loss at most ~17% while preserving baseline net; insufficient for SYNTH gap."
+      },
+      {
+        "id": "SA100_R10C_GIVEBACK_SCREEN",
+        "status": "COMPLETE_NEGATIVE_INSUFFICIENT",
+        "output_sha256": "e338d256e8d3347cea5e81a1e7d3f8155438521f1319ed84460c195e708dc81f",
+        "finding": "Profit-state/giveback logic can cut primary gross loss ~30-40%, but gives back too much gross profit; not promoted."
+      },
+      {
+        "id": "SA100_R10D_SYSTEMWIDE_RECOVERY_SCREEN",
+        "status": "COMPLETE_NEGATIVE",
+        "output_sha256": "39c41188a18e401d82352c4d64d195fa2aeb82c31af09c3d3f7e911db925a0b0",
+        "finding": "Extending seed rescue specialists system-wide modestly raises net in some lanes but worsens gross loss/DD; family retired."
+      },
+      {
+        "id": "SA100_R10E_MICROHARVESTER_SCREEN",
+        "status": "COMPLETE_NEGATIVE_WITH_SUBSET_CLUE",
+        "output_sha256": "00e65d132c8d3f11be57674e36cbc65c76f3623d8167b289ce7cb8eefbb17e59",
+        "finding": "Universal R9-like short lifecycle is negative on 39,253 Grid events. CONT subset of best 120s lane is positive (+$1,250 on 20,883 events), REVERT strongly negative."
+      },
+      {
+        "id": "SA100_R10F_HYBRID_CONT_HARVESTER",
+        "status": "COMPLETE_NEGATIVE",
+        "output_sha256": "e240efebd8b8901bcf10addc6c0f0c0635cf2c1d8805a68616705d67368791a5",
+        "finding": "CONT short harvester + REVERT original more than doubles activity but worsens net, gross loss and DD under the $100 governor; retired."
+      },
+      {
+        "id": "SA100_R10G_ROBUST_MICROHARVESTER_CELLS",
+        "status": "COMPLETE_LOW_COVERAGE_NOT_PROMOTED",
+        "cells_sha256": "39be96fb9eb4c7d7c936a20bf174f237c9a507fe13ffc0a554141e154224fd19",
+        "unions_sha256": "6fe2a86ca4fb405d048834bda82a87c3e76389753420083bf8feed4110623f25",
+        "finding": "Weekly-robust coarse CONT harvester cells cover only ~2.9% of January event population; too small to bridge parity."
+      },
+      {
+        "id": "HISTORICAL_TRANSPARENT_S1_ROUTER_FRESH_JAN_RECONSTRUCTION01",
+        "status": "COMPLETE_REJECTED_FOR_DELTA_A_PROMOTION",
+        "historical_spec_branch": "carson/r10-r9-breakthrough-research-14-integration",
+        "historical_documented_claim": "~54,119 Jan-Jul trades, +$18,983.36 net, -$649.16 gross loss, closed DD ~$5.33; treated as hypothesis only.",
+        "fresh_surface": "January Dukascopy ordered ticks transformed to Delta-A DUKAS_COINEXX_LIKE_P75 quotes",
+        "fresh_result": {
+          "trades": 7634,
+          "net_usd": -1527.92,
+          "gross_profit_usd": 1400.32,
+          "gross_loss_usd": -2928.24,
+          "profit_factor": 0.4782121684,
+          "win_rate": 0.6577154834,
+          "closed_trade_max_dd_usd": 1540.4
+        },
+        "conclusion": "Historical transparent S1 router does not reproduce on independent January Delta-A market path; do not promote. Native Duk spread replay was additionally invalid as a direct test because the EA's Coinexx 25-point spread gate admits almost no native Duk ticks; P75 replay is the relevant Delta-A research comparison."
+      }
+    ],
+    "invalidated_prior_result": {
+      "name": "Event -> Observe -> Confirm -> Harvest ~+$102K Jan-Jul",
+      "status": "REJECTED_DO_NOT_USE",
+      "reason": "Later forensic lineage found intrasecond look-ahead."
+    },
+    "promotion_policy": "Cheap causal screen first. Full tick/equity replay only for candidates that jointly move net, gross loss, drawdown, and useful velocity."
   }
 }
