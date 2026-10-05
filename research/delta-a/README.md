@@ -98,3 +98,24 @@ The first preserved micro-capital fallback is **R9 Grid Small-Capital $500 Adapt
 - Feb-Jul tick-level survival from $500.
 
 See `DELTA_A_R9_GRID_SMALL500_FALLBACK_MILESTONE.md`. This fallback does not replace R9 Grid Milestone 01.
+
+
+## Current handoff / restart
+
+Conversation-length/timeouts forced a formal restart package.
+
+Authoritative restart file:
+
+`research/delta-a/DELTA_A_CURRENT_HANDOFF_2026-10-05.md`
+
+Helper forensic manifest:
+
+`research/delta-a/DELTA_A_SA100_HELPER_STATUS_2026-10-05.json`
+
+Current next unit:
+
+`SA100_JAN_SPEEDRUN_RESTART_01`
+
+The $100 seed research remains experimental. The last complete research state is `SA100_PROFIT_RAMP_RESEARCH01` (~78.1% rolling-start success to $500 within 90 days). The later stop-variant helper is explicitly **INCOMPLETE — DO NOT RESUME** and must be rerun from scratch beginning with January.
+
+August remains SEALED and production MQL5 remains unauthorized.
