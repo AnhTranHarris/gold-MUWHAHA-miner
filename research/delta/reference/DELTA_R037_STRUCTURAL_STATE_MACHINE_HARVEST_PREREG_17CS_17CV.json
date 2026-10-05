@@ -1,0 +1,100 @@
+{
+  "schema": "delta-r037-structural-state-machine-harvest-prereg-17cs-17cv-v1",
+  "status": "PREREGISTERED_BEFORE_PRODUCER_AND_COMPUTE",
+  "unit": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
+  "parent_checkpoint": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
+  "purpose": "Fast causal Stage-A screen of two independent, closed-bar structural state machines not previously tested in DELTA: classic 1-2-3 reversal neckline break and MSnR rolling double-breakout staircase.",
+  "source_basis": [
+    {
+      "family": "R037-123NB-v1",
+      "sources": [
+        "https://www.mql5.com/en/forum/178496/page16",
+        "https://www.tradingview.com/script/W9OHw6fk-1-2-3-Reversal-Map-AGPro-Series/"
+      ],
+      "disclosed_logic": "Confirmed 1-2-3 swing reversal: point 1 extreme, point 2 reaction/neckline, point 3 holds on the reversal side of point 1, then neckline break confirms the reversal. Public TradingView implementation explicitly uses confirmed pivots and close-confirmed neckline breaks.",
+      "project_fixture_disclosure": "Pivot width 3 completed bars on each side is fixed before compute, consistent with the MQL5 discussion's up-to-three-bar swing description; no ATR score/buffer/retest layer is imported."
+    },
+    {
+      "family": "R037-MSnR-DBO-v1",
+      "sources": [
+        "https://www.tradingview.com/script/0jssxZUC-MSnR-Double-Breakout-Level/"
+      ],
+      "disclosed_logic": "A level = green candle followed by red, using green close; V level = red followed by green, using red close. Hold a rolling descending A pair or ascending V pair; breakout is checked before any new level; non-breaking new same-side level slides the pair, inner-step break restarts it; completed close through outer step confirms a Double Breakout.",
+      "project_fixture_disclosure": "The source exposes a Scan Length but indexed public text does not reveal its default. DELTA fixes scan_length_bars=120 before compute solely as a bounded stale-state guard; this is not represented as a source default."
+    }
+  ],
+  "data": {
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "stage_a_window": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+    "stage_a_ticks": 4205709,
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "august_2026": "SEALED"
+  },
+  "frozen_execution": {
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "fixed_lot": 0.01,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01,
+    "one_position_at_a_time": true
+  },
+  "lanes": {
+    "17CS_123NB_M1": {
+      "family": "R037-123NB-v1",
+      "bar_ms": 60000,
+      "pivot_width": 3,
+      "rule": "confirmed alternating L-H-L with third low > first low -> first later completed close > middle high = LONG; mirror H-L-H with third high < first high -> first later completed close < middle low = SHORT; close beyond point1 invalidates before neckline break",
+      "entry": "first executable P75 tick at/after completed neckline-break bar edge"
+    },
+    "17CT_123NB_M5": {
+      "family": "R037-123NB-v1",
+      "bar_ms": 300000,
+      "pivot_width": 3,
+      "rule": "same 1-2-3 neckline-break grammar",
+      "entry": "first executable P75 tick at/after completed neckline-break bar edge"
+    },
+    "17CU_MSNR_DBO_M1": {
+      "family": "R037-MSnR-DBO-v1",
+      "bar_ms": 60000,
+      "scan_length_bars": 120,
+      "rule": "source-described A/V rolling-pair state machine; completed Double A breakout emits LONG, completed Double V breakout emits SHORT; breakout check precedes new-level update",
+      "entry": "first executable P75 tick at/after completed DBO bar edge"
+    },
+    "17CV_MSNR_DBO_M5": {
+      "family": "R037-MSnR-DBO-v1",
+      "bar_ms": 300000,
+      "scan_length_bars": 120,
+      "rule": "same MSnR rolling-pair state machine",
+      "entry": "first executable P75 tick at/after completed DBO bar edge"
+    }
+  },
+  "gate": {
+    "minimum_trades": 20,
+    "minimum_distinct_days": 5,
+    "strong_direct_net_usd_min": 0,
+    "selection_rule": "Advance any unchanged lane meeting all activity gates and nonnegative direct net directly to independent later-January validation; retire failures without rescue."
+  },
+  "prohibited": [
+    "pivot-width sweep",
+    "MSnR scan-length sweep",
+    "timeframe rescue",
+    "session/side/weekday filter",
+    "ATR/volume/EMA overlay",
+    "exit retuning",
+    "post-result threshold rescue",
+    "August access",
+    "MQL5"
+  ],
+  "crash_safety": {
+    "hard_timeout_seconds": 120,
+    "exact_git_blob_preexecution_verification": true,
+    "atomic_output_required": true,
+    "compact_stdout": true,
+    "pycache_redirect_to_writable_temp": true,
+    "phase_checkpoint_after_each_durable_step": true
+  },
+  "mql5_authorized": false
+}
