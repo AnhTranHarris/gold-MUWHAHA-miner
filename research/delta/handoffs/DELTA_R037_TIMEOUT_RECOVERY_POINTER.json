@@ -11,46 +11,31 @@
   ],
   "durable_cursor": {
     "last_verified_durable_unit": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
-    "current_phase": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST_NEXT",
-    "first_incomplete_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+    "current_phase": "R037_XAUUSD_SESSION_LIQUIDITY_SWEEP_RECLAIM_HARVEST_CHECKPOINT_17CW_17CZ_IN_PROGRESS",
+    "first_incomplete_unit": "R037_XAUUSD_SESSION_LIQUIDITY_SWEEP_RECLAIM_HARVEST_CHECKPOINT_17CW_17CZ",
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
-    "family": "R037-123NB-v1 + R037-MSnR-DBO-v1",
-    "status": "COMPLETE",
-    "phase_rank": 7,
-    "parent_durable_unit": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
-    "current_candidate": null,
+    "unit": "R037_XAUUSD_SESSION_LIQUIDITY_SWEEP_RECLAIM_HARVEST_CHECKPOINT_17CW_17CZ",
+    "family": "R037-ASIA-LONDON-SWEEP-v1 + R037-XAUGOLD-SWEEP5-v1",
+    "status": "PRODUCER_COMMITTED",
+    "phase_rank": 2,
+    "parent_durable_unit": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
+    "current_candidate": "17CW-17CZ session liquidity sweep-reclaim harvest",
     "committed_artifacts": [
       {
         "role": "prereg",
-        "path": "research/delta/reference/DELTA_R037_STRUCTURAL_STATE_MACHINE_HARVEST_PREREG_17CS_17CV.json",
-        "commit": "0f5e4299eab2e76ead38ad63a5a1376a62de8dc1"
+        "path": "research/delta/reference/DELTA_R037_SESSION_LIQUIDITY_SWEEP_RECLAIM_PREREG_17CW_17CZ.json",
+        "commit": "11805b3273a3ddc336114ee271aed15ac018bd07"
       },
       {
         "role": "producer",
-        "path": "research/delta/experiments/delta_r037_structural_state_machine_harvest_17cs_17cv.py",
-        "commit": "074eaca06b5dcebeb1d9b7c2b9ca570fc2e551e8",
-        "blob_sha": "7f8c5bafb9d4e23844764d4c5787fe7b0e1c90d6"
-      },
-      {
-        "role": "result",
-        "path": "research/delta/reference/DELTA_R037_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV.json",
-        "commit": "cbd58f7673a9d747b412b7c6f7b6dec9f6218657"
-      },
-      {
-        "role": "report",
-        "path": "research/delta/research/DELTA_R037_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV.md",
-        "commit": "f8851ea3ab55c1ce189e29a451adbcfb1e7ee3de"
-      },
-      {
-        "role": "manifest",
-        "path": "research/delta/artifacts/DELTA_R037_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV_MANIFEST.json",
-        "commit": "cf522d12fc22f94fe4b34b384b9a0aaed1690cec"
+        "path": "research/delta/experiments/delta_r037_session_liquidity_sweep_reclaim_17cw_17cz.py",
+        "commit": "a000eceb577dcb0a17386f970d87c576bb029126",
+        "blob_sha": "5a60c25a0bbaf37e96618655fb912518df571d3d"
       }
     ],
-    "next_action": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+    "next_action": "RUN_BOUNDED_COMPUTE",
     "completed_months": [],
     "next_month": null
   },
