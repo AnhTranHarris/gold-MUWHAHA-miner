@@ -1,62 +1,37 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "COMPLETE",
+  "status": "IN_PROGRESS",
   "branch": "delta",
-  "unit": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
-  "family": "R037-SRBRT-v1",
-  "parent_durable_unit": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
-  "phase": "COMPLETE",
-  "phase_rank": 7,
+  "unit": "R037_VCE_RAW_RELEASE_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CO",
+  "family": "R037-VCE-v1",
+  "parent_durable_unit": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
+  "phase": "PREREG_COMMITTED",
+  "phase_rank": 1,
   "progress": {
-    "status": "COMPLETE_NO_SURVIVOR",
+    "status": "PREREG_DURABLE",
     "last_completed": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
-    "current_candidate": null,
-    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+    "current_candidate": "R037-VCE-C03_BBKC_RELEASE",
+    "next": "COMMIT_PRODUCER"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read CURRENT_STATE/CURRENT_INFLIGHT/pointer; producer is the first missing phase.",
+    "resume_first_action": "Read CURRENT_STATE/CURRENT_INFLIGHT/pointer and resume first missing committed phase.",
     "idempotency_rule": "Resume first missing committed phase only.",
-    "atomic_pointer_update_rule": "Cursor/pointer files that must agree should be committed together when connector permits; otherwise update serially and verify.",
-    "compute_boundary_rule": "Official producer must be committed and exact blob verified before bounded compute."
+    "compute_boundary_rule": "Producer must be committed and exact blob verified before bounded compute."
   },
   "last_verified_ci": {
-    "commit": "608e291fff4a14e1c44296cedb5840d28157adcb",
-    "run_id": 37264118745,
+    "commit": "2998a03338a57989e239be5c511948b3920380b5",
+    "run_id": 37265508810,
     "conclusion": "success"
   },
   "august_2026": "SEALED",
   "mql5_authorized": false,
   "prereg": {
-    "path": "research/delta/reference/DELTA_R037_SQUEEZE_RANGE_BREAKOUT_RETEST_PREREG_17CM_17CN.json",
-    "commit": "038d1750aaf510cd2929f7301f46af2a994d9d90",
+    "path": "research/delta/reference/DELTA_R037_VCE_RAW_RELEASE_LATER_JAN_PREREG_17CO.json",
+    "commit": "105243f7bede082a37012c85de75bb8f0f1c1c63",
     "status": "PREREGISTERED_BEFORE_PRODUCER"
   },
-  "producer": {
-    "path": "research/delta/experiments/delta_r037_squeeze_range_breakout_retest_17cm_17cn.py",
-    "commit": "17958c71ddb2133d993fa9a3a8a08177bb2d3248",
-    "blob_sha": "599cac3a5fdfa302695f3af13e88a25c25932a2b",
-    "file_sha256": "b462fb6e12248d5740f3bff332f4ec8358ef44bde97ea059c08e51581ed033fe",
-    "local_blob_verified": true
-  },
-  "result": {
-    "path": "research/delta/reference/DELTA_R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_CHECKPOINT_17CM_17CN.json",
-    "commit": "279873a1959fa90aa77bb106c5e5b2909cc88d82",
-    "sha256": "caf430d9dce0ff28584f67d0568ec24b9921fd95f25c5227bc6f1aff8fd86939",
-    "status": "COMPLETE_NO_SURVIVOR"
-  },
-  "manifest": {
-    "path": "research/delta/artifacts/DELTA_R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_CHECKPOINT_17CM_17CN_MANIFEST.json",
-    "commit": "b4f823ae2e6700b251a6c75be164ea20c6dc607d"
-  },
-  "report": {
-    "path": "research/delta/research/DELTA_R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_CHECKPOINT_17CM_17CN.md",
-    "commit": "234a3aef099237086c68ee60e6bd4df41211fda6"
-  },
-  "last_completed": {
-    "unit": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
-    "checkpoint": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
-    "current_state_next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
-    "manifest": "research/delta/artifacts/DELTA_R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_CHECKPOINT_17CM_17CN_MANIFEST.json"
-  }
+  "producer": null,
+  "result": null,
+  "manifest": null
 }
