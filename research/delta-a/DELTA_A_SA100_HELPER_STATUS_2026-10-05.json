@@ -50,7 +50,7 @@
     "cross_month_decision_completed": false,
     "required_action": "Rerun the helper work unit from scratch starting with January."
   },
-  "next_unit": "SA100_JAN_REVERT_PERSISTENT_FLOOR_RESEARCH07",
+  "next_unit": "SA100_JAN_BOUNDED_RESCUE_LADDER_RESEARCH08",
   "hard_rules": {
     "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
@@ -259,21 +259,63 @@
         "prior_reach1000_all_pct": 88.461538
       },
       "conclusion": "BREAKTHROUGH: persistent failed-CONT lock removes Jan30 as the dominant tail without sacrificing >=15d $1k velocity. New floor is the long-lived REVERT Jan23 state at $21.16."
+    },
+    {
+      "id": "SA100_JAN_REVERT_PERSISTENT_FLOOR_RESEARCH07_RERUN01",
+      "status": "COMPLETE_FAST_FALSIFICATION",
+      "stage1_sha256": "f460160b8ea9891bc827c5d5a3d97ba9bf8046547e629c5dcf6264e3d816d7c2",
+      "conclusion": "Hold-to-close, reclaim-close, and failed-lock REVERT variants were killed. Broad third pulse improved floor but damaged >=15d velocity."
+    },
+    {
+      "id": "SA100_REVERT_SELECTIVE_THIRD_PULSE_RESEARCH07B_STAGE2_TIMEOUT_WRAPPER",
+      "status": "INCOMPLETE_TECHNICAL_FAILURE_DO_NOT_RESUME",
+      "action": "Wrapper syntax failed before simulation; no result used. Fresh stage2 rerun followed."
+    },
+    {
+      "id": "SA100_REVERT_SELECTIVE_THIRD_PULSE_RESEARCH07B_STAGE2_RERUN01",
+      "status": "COMPLETE_FRESH_FULL_26_START_BREAKTHROUGH",
+      "stage1_sha256": "dd32e91f50991dc7f275426481bd0533946beb7d50923e9235ce2dcd923fc829",
+      "stage2_tick_sha256": "8ce0f280e909e429ba439b0b065494deefc494ac40d96431f3aef85bc81616fb",
+      "stage2_summary_sha256": "7c692a5163b3076bb58bf99e3ccae822b543d515cbbfe795e54fe64f66d8a8a0",
+      "leading_variant": "P3_S125_P2L05",
+      "mechanism": "On long-lived REVERT seed trades, after the existing second 30s rescue, allow one third 30s pulse only if second-rescue P&L <= -$0.50, a causal reclaim/re-break occurs, and balance is below $125.",
+      "result": {
+        "equity_positive_pct": 100,
+        "margin_above100_pct": 100,
+        "below60_equity_pct": 26.9231,
+        "below30_equity_pct": 11.5385,
+        "worst_min_equity_usd": 24.65,
+        "worst_min_free_margin_usd": 14.05317,
+        "worst_margin_level_pct": 168.197286,
+        "max_physical_positions": 8,
+        "reach1000_all_pct": 96.153846,
+        "reach1000_15d_pct": 100,
+        "median_days1000_15d": 21.882455,
+        "p90_days1000_15d": 27.499006,
+        "total_third_pulses": 8
+      },
+      "comparison_to_research06": {
+        "prior_worst_min_equity_usd": 21.16,
+        "prior_min_free_margin_usd": 10.56317,
+        "prior_reach1000_all_pct": 96.153846
+      },
+      "conclusion": "BREAKTHROUGH: selective third rescue raises the remaining long-REVERT floor with no loss of $1k completion velocity."
     }
   ],
   "current_leading_experimental_lane": {
-    "id": "OVERLAY7P5_H30_SAFE_OVERLAP200_PLUS_SEED_REVERT_RESCUE_PLUS_FAILED_CONT_LOCK",
-    "status": "PROMISING_BREAKTHROUGH_NOT_PROMOTED",
+    "id": "OVERLAY7P5_H30_SAFE_OVERLAP200_PLUS_05C_REVERT2_PLUS_R06_CONT_LOCK_PLUS_R07B_SELECTIVE_REVERT3",
+    "status": "PROMISING_MULTI_BREAKTHROUGH_NOT_PROMOTED",
     "start_balance_usd": 100,
     "target_balance_usd": 1000,
     "lot": 0.01,
-    "low_capital_gate": "London/NY overlap only while realized balance < $200",
-    "primary_episode_slots": "SAFE ladder: 1 below $250, 2 below $500, 3 below $750, 4 below $1,000",
-    "base_recovery": "At -$7.50 adverse primary P&L, open equal 0.01 opposite counter for 30s while primary stays open.",
-    "revert_tail_recovery": "Seed-limited second 30s rescue after failed first rescue on long-lived REVERT state (Research05C).",
-    "cont_tail_recovery": "If short-horizon CONT is still <= -$7.50 after first rescue expires and balance < $175-$200, open a second equal counter and hold until primary closes (Research06).",
-    "handoff_before_1000": false,
-    "current_worst_min_equity_usd": 21.16,
-    "current_blocker": "Jan23/25/26 long-lived REVERT path now defines floor. Raise that floor without slowing >=15d $1k completion."
+    "current_worst_min_equity_usd": 24.65,
+    "current_worst_min_free_margin_usd": 14.05317,
+    "reach1000_all_pct": 96.153846,
+    "reach1000_15d_pct": 100,
+    "base_recovery": "-$7.50 adverse => equal 0.01 opposite counter for 30s",
+    "failed_cont_lock": "Research06 seed failed-CONT second counter held until primary closes",
+    "long_revert_rescue2": "Research05C seed-limited second 30s counter pulse after causal reclaim/re-break",
+    "long_revert_rescue3": "Research07B one third 30s pulse only when rescue2 lost <= -$0.50 and balance < $125",
+    "blocker": "Three fragile late-January starts still dip below $30 (floor $24.65). Test one bounded fourth pulse only after rescue3 failure."
   }
 }
