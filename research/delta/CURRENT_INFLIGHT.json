@@ -5,13 +5,13 @@
   "unit": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
   "family": "R037-SRBRT-v1",
   "parent_durable_unit": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
-  "phase": "PREREG_COMMITTED",
-  "phase_rank": 1,
+  "phase": "PRODUCER_COMMITTED",
+  "phase_rank": 2,
   "progress": {
-    "status": "PREREG_DURABLE",
+    "status": "PRODUCER_DURABLE",
     "last_completed": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
     "current_candidate": "R037-SRBRT-v1",
-    "next": "COMMIT_PRODUCER"
+    "next": "RUN_BOUNDED_STAGE_A"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
@@ -32,7 +32,13 @@
     "commit": "038d1750aaf510cd2929f7301f46af2a994d9d90",
     "status": "PREREGISTERED_BEFORE_PRODUCER"
   },
-  "producer": null,
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_squeeze_range_breakout_retest_17cm_17cn.py",
+    "commit": "17958c71ddb2133d993fa9a3a8a08177bb2d3248",
+    "blob_sha": "599cac3a5fdfa302695f3af13e88a25c25932a2b",
+    "file_sha256": "b462fb6e12248d5740f3bff332f4ec8358ef44bde97ea059c08e51581ed033fe",
+    "local_blob_verified": true
+  },
   "result": null,
   "manifest": null
 }
