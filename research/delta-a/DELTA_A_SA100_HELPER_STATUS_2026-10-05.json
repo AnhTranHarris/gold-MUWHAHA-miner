@@ -50,7 +50,7 @@
     "cross_month_decision_completed": false,
     "required_action": "Rerun the helper work unit from scratch starting with January."
   },
-  "next_unit": "SA100_R9_SYNTH_JAN_PARITY_RESEARCH10H",
+  "next_unit": "SA100_R10I_EXACT_CAPITAL_TICK_REPLAY01",
   "hard_rules": {
     "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
@@ -465,7 +465,7 @@
     "august_accessed": false
   },
   "research10_january_parity_speedrun": {
-    "status": "ACTIVE_R10I_BREAKTHROUGH_PENDING_CAPITAL_REPLAY",
+    "status": "ACTIVE_R10I_EXACT_REPLAY_GATE",
     "objective": "Converge toward R9 SYNTH economic shape while preserving frozen $100-$1,000 survival guardrails.",
     "control": {
       "candidate": "SA100_TO_1000_JAN_CANDIDATE_01",
@@ -591,24 +591,25 @@
       }
     },
     "r10i": {
-      "status": "PROMISING_SPECIALIST_FAMILY",
-      "balanced": {
-        "candidate_net_usd": 1981.595,
-        "candidate_gl_usd": -15114.6155,
-        "overall_win_rate": 0.5378807602,
-        "modified_win_rate": 0.796812749,
-        "converted_losses": 228
+      "status": "COMPLETE_LEDGER_SCREEN_PENDING_EXACT_CAPITAL_REPLAY",
+      "rules": [
+        "R1 pre30 range 2.5-4.0 + first5 aligned disp >1.0 => exit primary at +5s",
+        "R2 UTC18-21 + first5 aligned disp [-0.5,0) => exit + reverse 0.01 for 120s",
+        "R3 London-only + first5 aligned disp [0.5,1.0] => exit at +5s",
+        "R4 source_gap<=2.375 + first5 aligned disp [0,0.5) + efficiency [0.3,0.5) => exit + reverse 0.01 for 90s"
+      ],
+      "all_january": {
+        "net_usd": 1822.695,
+        "gross_loss_usd": -15486.4545,
+        "win_rate": 0.5266857589,
+        "incremental_net_usd": 580.605,
+        "gross_loss_reduction_usd": 1239.0655,
+        "changed_win_rate": 0.7931937173,
+        "converted_losses": 176
       },
-      "loss_defense": {
-        "candidate_net_usd": 1750.7545,
-        "candidate_gl_usd": -14890.2555,
-        "overall_win_rate": 0.544389,
-        "modified_win_rate": 0.826531,
-        "converted_losses": 253
-      },
-      "exact_capital_replay_required": true
+      "warning": "Counterfactual episode ledger only; early exits alter later slot admission. Exact event-driven capital replay required before promotion."
     }
   },
-  "last_completed_helper": "SA100_R10I_PLATEAU_REFINEMENT01",
-  "last_completed_helper_result": "COMPLETE_ROBUST_PLATEAU_BREAKTHROUGH__EXACT_CAPITAL_REPLAY_REQUIRED"
+  "last_completed_helper": "SA100_R10I_TRANSPARENT_MICRO_LOSS_CONVERSION_JAN_SCREEN",
+  "last_completed_helper_result": "COMPLETE_PROMISING__EXACT_CAPITAL_REPLAY_REQUIRED"
 }
