@@ -21,11 +21,13 @@ SHA="d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
 PREREG="0f5e4299eab2e76ead38ad63a5a1376a62de8dc1"
 MAX_SPREAD=250; STOP=300; TRAIL_ACT=100; TRAIL_DIST=30; MAX_HOLD=30
 
+
 def sha256_file(p:Path)->str:
     h=hashlib.sha256()
     with p.open('rb') as f:
         for b in iter(lambda:f.read(1<<20),b''): h.update(b)
     return h.hexdigest()
+
 
 def atomic_json(p:Path,o:dict)->None:
     p.parent.mkdir(parents=True,exist_ok=True); tmp=None
@@ -38,15 +40,18 @@ def atomic_json(p:Path,o:dict)->None:
             try: os.unlink(tmp)
             except FileNotFoundError: pass
 
+
 def session_code(t):
     tod=t%D; ls=np.where(t>=UKD,7,8)*H; ns=np.where(t>=USD,12,13)*H
     london=(tod>=ls)&(tod<ls+30_600_000); ny=(tod>=ns)&(tod<ns+32_400_000)
     return np.where(london&ny,2,np.where(london,1,np.where(ny,3,0))).astype(np.int8)
 
+
 def p75(t,a,b):
     sp=P75[session_code(t)]*TICK; mid2=a+b
     bid=((mid2-sp+TICK)//(2*TICK))*TICK
     return (bid+sp).astype(np.int64),bid.astype(np.int64)
+
 
 def bars(t,x,tf):
     q=t//tf; st=np.r_[0,np.flatnonzero(q[1:]!=q[:-1])+1]; en=np.r_[st[1:],len(t)]
@@ -57,6 +62,7 @@ def bars(t,x,tf):
         'h':np.maximum.reduceat(x,st).astype(np.int64),
         'l':np.minimum.reduceat(x,st).astype(np.int64),
     }
+
 
 def confirmed_pivots(z,w=3):
     h,l,e=z['h'],z['l'],z['e']; ev=[]
@@ -69,6 +75,7 @@ def confirmed_pivots(z,w=3):
     ev.sort(key=lambda x:(x[0],x[1],-x[2]))
     return ev
 
+
 def sig_123(t,ask,bid,z,w=3):
     piv=confirmed_pivots(z,w); e,c=z['e'],z['c']; by_reveal={}
     for x in piv: by_reveal.setdefault(x[0],[]).append(x)
@@ -78,6 +85,7 @@ def sig_123(t,ask,bid,z,w=3):
         tm=int(e[k])
         if tm<START: continue
         if tm>END: break
+        # Existing armed structure resolves on completed close before newly revealed pivots alter identity.
         if active is not None and k>active['armed_bar']:
             side=active['side']; p1=active['p1']; neck=active['neck']
             invalid=(side>0 and c[k]<p1) or (side<0 and c[k]>p1)
@@ -90,8 +98,10 @@ def sig_123(t,ask,bid,z,w=3):
                     ix.append(j); sd.append(side); d['neckline_breaks']+=1
                 elif j<len(t): d['spread_rejects']+=1
                 active=None
+        # Intake only pivots causally revealed at this completed bar edge.
         for _,pk,ps,pv in by_reveal.get(tm,[]):
             if recent and recent[-1][1]==ps:
+                # Same-side pivot replacement keeps the more extreme confirmed pivot.
                 if (ps>0 and pv>=recent[-1][2]) or (ps<0 and pv<=recent[-1][2]):
                     recent[-1]=(pk,ps,pv)
                 continue
@@ -105,16 +115,20 @@ def sig_123(t,ask,bid,z,w=3):
                     active={'side':-1,'p1':a[2],'neck':b_[2],'armed_bar':k}; d['structures']+=1
     return np.asarray(ix,np.int64),np.asarray(sd,np.int8),d
 
+
 def sig_msnr(t,ask,bid,z,scan=120):
     e,o,c=z['e'],z['o'],z['c']; ix=[]; sd=[]
+    # each side: first seed, then rolling pair outer/inner with bar origins
     A=[]; V=[]
     d={'a_levels':0,'v_levels':0,'a_pair_slides':0,'v_pair_slides':0,'a_restarts':0,'v_restarts':0,'a_expiries':0,'v_expiries':0,'double_a_breakouts':0,'double_v_breakouts':0,'spread_rejects':0}
     for k in range(1,len(e)):
         tm=int(e[k])
         if tm<START: continue
         if tm>END: break
+        # Expire stale working states before evaluating this closed bar.
         if A and k-A[0][0]>scan: A=[]; d['a_expiries']+=1
         if V and k-V[0][0]>scan: V=[]; d['v_expiries']+=1
+        # Breakout priority: current bar closes through outer step before it can create a new level.
         broke_a=len(A)==2 and c[k]>A[0][1]
         broke_v=len(V)==2 and c[k]<V[0][1]
         if broke_a:
@@ -129,6 +143,7 @@ def sig_msnr(t,ask,bid,z,scan=120):
                 ix.append(j); sd.append(-1); d['double_v_breakouts']+=1
             elif j<len(t): d['spread_rejects']+=1
             V=[]
+        # If breakout happened on this bar, any level created by this bar belongs to the next search.
         prev_green=c[k-1]>o[k-1]; prev_red=c[k-1]<o[k-1]
         cur_green=c[k]>o[k]; cur_red=c[k]<o[k]
         newA=prev_green and cur_red
@@ -153,8 +168,10 @@ def sig_msnr(t,ask,bid,z,scan=120):
                 else: V=[(k-1,lv)]; d['v_restarts']+=1
     return np.asarray(ix,np.int64),np.asarray(sd,np.int8),d
 
+
 @njit(cache=True)
 def qt(x): return ((int(x)+5)//10)*10
+
 
 @njit(cache=True)
 def eval_trades(ix,sd,t,a,b):
@@ -186,12 +203,14 @@ def eval_trades(ix,sd,t,a,b):
         for k in range(1,x.size): days_n+=x[k]!=x[k-1]
     return tr,bs,sr,days_n,lg,sh,w,gp,gl,net,stp,mh,endn
 
+
 def pack(ix,sd,t,a,b):
     q=eval_trades(ix,sd,t,a,b)
     m={'signals':int(len(ix)),'trades':int(q[0]),'busy_skips':int(q[1]),'spread_rejects':int(q[2]),'distinct_days':int(q[3]),'long':int(q[4]),'short':int(q[5]),'official_wins':int(q[6]),'gross_profit':round(float(q[7]),2),'gross_loss':round(float(q[8]),2),'direct_net_usd':round(float(q[9]),2),'exit_reasons':{'STOP':int(q[10]),'MAX_HOLD':int(q[11]),'END':int(q[12])}}
     g={'minimum_trades_20':m['trades']>=20,'minimum_distinct_days_5':m['distinct_days']>=5,'direct_net_nonnegative':m['direct_net_usd']>=0}
     g['screen_pass']=all(g.values())
     return m,g
+
 
 def main():
     st=time.monotonic(); ap=argparse.ArgumentParser(); ap.add_argument('--source',type=Path,required=True); ap.add_argument('--output',type=Path,required=True); x=ap.parse_args()
@@ -216,5 +235,6 @@ def main():
     out={'schema':'delta-r037-structural-state-machine-harvest-17cs-17cv-v1','status':'COMPLETE_FAST_CAUSAL_STAGE_A_SCREEN','unit':'R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV','parent_checkpoint':'R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR','prereg_commit':PREREG,'source_sha256':hs,'stage_a_ticks':int(len(t)),'surface':'DUKAS_COINEXX_LIKE_P75','configs':configs,'finding':{'survivors':surv,'leader':surv[0] if surv else None,'decision':'ADVANCE_LEADER_TO_INDEPENDENT_LATER_JAN_VALIDATION' if surv else 'RETIRE_BOTH_STRUCTURAL_FAMILIES_NO_STAGE_A_SURVIVOR','next':'R037_STRUCTURAL_LEADER_INDEPENDENT_LATER_JAN_VALIDATION' if surv else 'R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST'},'numeric_retuning':False,'post_result_rescue':False,'august_accessed':False,'mql5_authorized':False,'runtime_seconds':round(time.monotonic()-st,3)}
     atomic_json(x.output,out)
     print(json.dumps({'configs':{n:{'trades':v['metrics']['trades'],'days':v['metrics']['distinct_days'],'wins':v['metrics']['official_wins'],'net':v['metrics']['direct_net_usd'],'pass':v['gate']['screen_pass'],'diag':v['diagnostics']} for n,v in configs.items()},'finding':out['finding'],'runtime_seconds':out['runtime_seconds']},separators=(',',':')))
+
 
 if __name__=='__main__': main()
