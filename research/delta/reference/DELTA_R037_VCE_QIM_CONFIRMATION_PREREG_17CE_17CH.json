@@ -1,0 +1,109 @@
+{
+  "schema": "delta-r037-vce-qim-confirmation-prereg-17ce-17ch-v1",
+  "status": "PREREGISTERED_BEFORE_PRODUCER",
+  "unit": "R037_VCE_QIM_CONFIRMATION_STAGE_A_SCREEN_CHECKPOINT_17CE_17CH",
+  "family": "R037-VQCF-v1",
+  "parent_checkpoint": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
+  "research_question": "Can causal top-of-book quoted-volume imbalance confirm the direction of the previously near-neutral M5 BB/KC volatility-release source strongly enough to improve frozen 30-second executable persistence while preserving usable event supply?",
+  "rationale": {
+    "vce_clue": "R037-VCE-C04_BBKC_RELEASE_MOM12 produced 27 accepted entries and +$0.71 direct source net on Stage-A, but only -$0.13 integrated net delta; preserve source-default M5 release grammar unchanged.",
+    "qim_clue": "R037-QIM-v1 showed ~0.56-0.57 next-mid/250ms directional accuracy at frozen |I| thresholds but failed when treated as a standalone high-frequency entry source because costs overwhelmed tiny moves.",
+    "synthesis": "Use QIM only as a causal confirmation filter at a larger completed volatility-release event; do not create entries from QIM alone."
+  },
+  "source_basis": [
+    {
+      "artifact": "research/delta/reference/DELTA_R037_VCE_SOURCE_HARVEST_PREREG_17A.json",
+      "role": "frozen M5 BB20/2.0 inside KC EMA20/1.5ATR20 squeeze -> release -> close beyond KC; C04 requires 12-bar close momentum alignment."
+    },
+    {
+      "artifact": "research/delta/reference/DELTA_R037_QIM_STAGE_A_PREREG_17AT.json",
+      "role": "frozen level-1 queue imbalance I=(bid_volume-ask_volume)/(bid_volume+ask_volume); thresholds 0.25/0.50/0.75."
+    }
+  ],
+  "frozen_input": {
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "stage_a_window": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+    "expected_ticks": 4205709,
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "required_fields": [
+      "timestamp_ms_utc",
+      "ask_raw",
+      "bid_raw",
+      "ask_volume",
+      "bid_volume"
+    ]
+  },
+  "baseline": {
+    "id": "17CE_VCE_C04_CONTROL",
+    "rule": "Exact R037-VCE-C04 M5 BB/KC release + MOM12 proposal grammar, no QI gate.",
+    "expected_reference": {
+      "accepted_entries": 27,
+      "direct_net_usd": 0.71
+    },
+    "role": "implementation/control fingerprint only; not a new candidate"
+  },
+  "profiles": [
+    {
+      "id": "17CF_VCE_QI025_ALIGN",
+      "threshold": 0.25,
+      "rule": "At first executable tick after completed VCE-C04 signal bar, require |I|>=0.25 and sign(I)==VCE direction."
+    },
+    {
+      "id": "17CG_VCE_QI050_ALIGN",
+      "threshold": 0.5,
+      "rule": "At first executable tick after completed VCE-C04 signal bar, require |I|>=0.50 and sign(I)==VCE direction."
+    },
+    {
+      "id": "17CH_VCE_QI075_ALIGN",
+      "threshold": 0.75,
+      "rule": "At first executable tick after completed VCE-C04 signal bar, require |I|>=0.75 and sign(I)==VCE direction."
+    }
+  ],
+  "event_semantics": {
+    "vce": "Completed M5 bars only; prior bar squeezed, current bar released, current close beyond current KC, 12-bar close displacement agrees.",
+    "qim": "Current canonical Dukascopy best-bid/ask quoted volumes only at the first executable tick; no forward volume, no persistence/lookahead.",
+    "entry": "If profile gate passes, enter on that same first executable tick under P75 quote-side execution.",
+    "candidate_rearm": false,
+    "scheduler": "one position at a time"
+  },
+  "execution_contract": {
+    "max_spread_points": 25,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "commission_round_trip_usd": 0.02
+  },
+  "gate": {
+    "control_must_reproduce_reference": true,
+    "minimum_trades": 10,
+    "minimum_distinct_days": 5,
+    "minimum_retention_vs_control": 0.35,
+    "direct_net_usd_must_exceed_control": true,
+    "advance_if": "At least one fixed QI-confirmed lane satisfies all gates unchanged.",
+    "ranking": "direct net USD, then official wins, then trades; no profile creation after result.",
+    "no_micro_sample_rule": "A positive lane with <10 trades or <5 distinct days is a clue only and cannot advance."
+  },
+  "anti_overfit": [
+    "No VCE parameter changes.",
+    "No QI threshold interpolation or new threshold after result.",
+    "No session/side/weekday rescue.",
+    "No M1/M15 rescue.",
+    "No exit retuning.",
+    "No parent-integration interpretation until a direct Stage-A lane passes.",
+    "No August access.",
+    "No MQL5."
+  ],
+  "crash_safety": {
+    "hard_process_timeout_seconds": 120,
+    "producer_committed_before_compute": true,
+    "exact_git_blob_preexecution_verification": true,
+    "atomic_output": "NamedTemporaryFile + flush + os.fsync + os.replace",
+    "compact_stdout": true
+  },
+  "next_if_survivor": "R037_VCE_QIM_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_fail": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+  "numeric_retuning": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
