@@ -50,7 +50,7 @@
     "cross_month_decision_completed": false,
     "required_action": "Rerun the helper work unit from scratch starting with January."
   },
-  "next_unit": "SA100_R10R_RESIDUAL_PLUS10_ACTION_TREE01",
+  "next_unit": "SA100_R10T_P4_ROTATION_RECONSTRUCTION01",
   "hard_rules": {
     "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
@@ -524,6 +524,23 @@
       "status": "COMPLETE_EXACT_SHADOW_BREAKTHROUGH",
       "output_sha256": "51ca19aa5dc433604b9684420a6b97793106777e0478ef41ae28cd3789c494f5",
       "finding": "R10IJ under frozen shadow admission clears >50% episode success and sharply improves net/GL/DD without admission flooding. $400 lane: +$2,137.15 net, -$17,888.57 GL, $367.58 DD, 53.71% episode win, 76.09% changed-action win. $300 lane gives slightly better GL and 54.07% episode win."
+    },
+    {
+      "id": "SA100_R10R_RESIDUAL_PLUS10_ACTION_TREE01_FAILED",
+      "status": "INCOMPLETE_TECHNICAL_FAILURE_DO_NOT_RESUME",
+      "disposition": "Boolean-index implementation bug before any valid result; discarded and rerun from zero."
+    },
+    {
+      "id": "SA100_R10R_RESIDUAL_PLUS10_ACTION_TREE01_RERUN01",
+      "status": "COMPLETE_NEGATIVE_NO_ROBUST_POLICY",
+      "output_sha256": "e4eb59b582d6f72f3e4c4c8e16cae936a78fe7c838ca923ee34089c982beb057",
+      "finding": "300 +10s residual KEEP/EXIT/REVERSE shallow policies tested; robust_count=0. Family retired."
+    },
+    {
+      "id": "SA100_R10S_RESCUE_EXPIRY_AUCTION01",
+      "status": "COMPLETE_NEGATIVE_NO_ROBUST_POLICY",
+      "output_sha256": "cf1ffecc17ab077e81ce33bc59eb7ba56fd21989e7963bfc3b2678fcbd6631d9",
+      "finding": "1,070 rescue-expiry episodes; 45 shallow KEEP/PULSE/LOCK/SWITCH policies; robust_count=0. Rescue-expiry auction family retired."
     }
   ],
   "current_leading_experimental_lane": {
@@ -589,7 +606,7 @@
     "august_accessed": false
   },
   "research10_january_parity_speedrun": {
-    "status": "ACTIVE_R10R_RESIDUAL_LOSS_CONVERSION",
+    "status": "ACTIVE_R10T_ORTHOGONAL_ROTATION_RECONSTRUCTION",
     "objective": "Converge toward R9 SYNTH economic shape while preserving frozen $100-$1,000 survival guardrails.",
     "control": {
       "candidate": "SA100_TO_1000_JAN_CANDIDATE_01",
@@ -812,8 +829,21 @@
         "dd_reduction_usd": 182.69
       },
       "next": "Train a second-stage +10s causal specialist only on R10Q residual HOLD episodes; do not alter already-successful modified actions."
+    },
+    "r10r": {
+      "status": "COMPLETE_NEGATIVE",
+      "finding": "No robust +10s residual action tree."
+    },
+    "r10s": {
+      "status": "COMPLETE_NEGATIVE",
+      "finding": "No robust rescue-expiry KEEP/PULSE/LOCK/SWITCH router."
+    },
+    "r10t": {
+      "status": "STARTED_SOURCE_RECOVERY",
+      "historical_evidence_only": "Prior causal sandbox P1+P4 increased May-Jul OOS from about +$1,111 to +$2,703 and Jan-Jul from +$6,481 to +$21,388; exact P4 mechanics must be reconstructed before testing.",
+      "hard_rule": "Do not inherit historical P4 profits. Rebuild causal mechanics independently on current January raw ticks and require >50% specialist success plus positive discovery/holdout economics."
     }
   },
-  "last_completed_helper": "SA100_R10Q_SHADOW_SLOT_R10IJ_EXACT01",
-  "last_completed_helper_result": "COMPLETE_BREAKTHROUGH__R10IJ_SHADOW_STACK_CLEARS_50PCT_AND_IMPROVES_NET_GL_DD"
+  "last_completed_helper": "SA100_R10S_RESCUE_EXPIRY_AUCTION01",
+  "last_completed_helper_result": "COMPLETE_NEGATIVE__RESCUE_EXPIRY_AUCTION_RETIRED"
 }
