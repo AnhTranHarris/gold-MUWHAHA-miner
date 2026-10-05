@@ -3,12 +3,12 @@
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "branch": "delta",
   "research_scope": "DELTA_ONLY_CLEAN_ROOM",
-  "last_verified_durable_unit": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
-  "first_incomplete_unit": "R037_XAUUSD_SESSION_LIQUIDITY_SWEEP_RECLAIM_HARVEST_CHECKPOINT_17CW_17CZ",
-  "current_phase": "R037_XAUUSD_SESSION_LIQUIDITY_SWEEP_RECLAIM_HARVEST_CHECKPOINT_17CW_17CZ_IN_PROGRESS",
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV_MANIFEST.json",
-  "active_candidate": "17CW-17CZ session liquidity sweep-reclaim harvest",
-  "last_candidate_disposition": "R037-123NB-v1 and R037-MSnR-DBO-v1 retired unchanged after Stage-A: 608/-$104.96, 120/-$22.26, 942/-$187.95, 177/-$34.02. Supply abundant; economics failed. No rescue.",
+  "last_verified_durable_unit": "R037_XAUUSD_SESSION_LIQUIDITY_SWEEP_RECLAIM_HARVEST_CHECKPOINT_17CW_17CZ",
+  "first_incomplete_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+  "current_phase": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST_NEXT",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_SESSION_LIQUIDITY_SWEEP_RECLAIM_CHECKPOINT_17CW_17CZ_MANIFEST.json",
+  "active_candidate": null,
+  "last_candidate_disposition": "Session liquidity sweep/reclaim 17CW-17CZ retired unchanged: strict M5/M15 only 4 trades each and negative; 5%-depth Gold lanes 0 trades. No rescue.",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -32,12 +32,12 @@
     "prior_full_state_preserved_in_git_history": true
   },
   "recovery_pointer_sync": {
-    "status": "INFLIGHT_PRODUCER_COMMITTED",
-    "last_completed": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
-    "current_candidate": "17CW-17CZ session liquidity sweep-reclaim harvest",
-    "next": "RUN_BOUNDED_COMPUTE",
-    "inflight_close_commit": "66453658f73436043745dc10e4855427b9238369",
-    "pointer_sync_commit": "e531fd1f319c9df0f3612a134ce06457fb2c3a7c"
+    "status": "DURABLE_SESSION_SWEEP_RETIRED_NO_SURVIVOR",
+    "last_completed": "R037_XAUUSD_SESSION_LIQUIDITY_SWEEP_RECLAIM_HARVEST_CHECKPOINT_17CW_17CZ",
+    "current_candidate": null,
+    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+    "inflight_close_commit": "a12553b9512c546d5bb5f357b55004de7d61a7ae",
+    "pointer_sync_commit": "581444147d7d1a103758968922393fa0dccf4e27"
   },
   "clean_room_maintenance": {
     "status": "RECENT_DELTA_DIFF_PREFLIGHT_CLEAN",
@@ -47,10 +47,10 @@
     "scientific_results_changed": false
   },
   "concurrency_recovery": {
-    "status": "INFLIGHT_DURABLE_AT_PRODUCER",
-    "authoritative_checkpoint": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
-    "current_candidate": "17CW-17CZ session liquidity sweep-reclaim harvest",
-    "note": "If delivery fails now, resume at bounded compute; prereg and exact producer are durable."
+    "status": "CURRENT_CHAIN_DURABLE_NO_RESULT_LOSS",
+    "authoritative_checkpoint": "R037_XAUUSD_SESSION_LIQUIDITY_SWEEP_RECLAIM_HARVEST_CHECKPOINT_17CW_17CZ",
+    "current_candidate": null,
+    "note": "Transport timeout does not alter committed result; resume next source harvest."
   },
   "search_bias": "XECTSB and VCE branches are retired by adjacent OOS failure. Do not rescue or retune them. Harvest genuinely independent, source-grounded XAUUSD entry classes with causal event lifecycles, expected >=10 Stage-A trades, and native short-horizon persistence. Prefer structural price-action/session/liquidity anchors over another generic oscillator or EMA derivative.",
   "timeout_recovery_cursor_semantics": "Connector-safe serial closure used when low-level multi-file tree commit is blocked; verify each cursor write and require final DELTA rebuild artifact gate before trusting advancement."
