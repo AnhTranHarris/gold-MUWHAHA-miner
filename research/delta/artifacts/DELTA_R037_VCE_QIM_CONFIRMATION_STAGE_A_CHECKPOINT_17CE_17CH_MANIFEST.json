@@ -1,0 +1,212 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_VCE_QIM_CONFIRMATION_STAGE_A_SCREEN_CHECKPOINT_17CE_17CH",
+  "status": "VERIFIED_NO_PREREGISTERED_SURVIVOR_MICROSTRUCTURE_CONFIRMATION_CLUE_ONLY",
+  "date_utc": "2026-10-05",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
+  "hypothesis": "Causal quoted-volume imbalance can confirm the direction of the previously near-neutral VCE-C04 BB/KC release source strongly enough to improve 30-second persistence while preserving usable supply.",
+  "falsification_condition": "No fixed QI lane satisfies >=10 trades, >=5 days, >=35% retention versus exact 27-trade control, and direct net strictly above +$0.71.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Exact VCE-C04 control plus three frozen QI thresholds",
+    "reference_count": 4,
+    "minimum_count": 4,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Control and all three preregistered QI lanes executed unchanged."
+  },
+  "primary_metrics": {
+    "control": "27 trades / 11 days / 20 wins / +$0.71",
+    "qi025": "8 trades / 6 days / 7 wins / +$1.19 / retention 29.63% — fail sample+retention",
+    "qi050": "2 trades / 2 days / 2 wins / +$0.30 — fail",
+    "qi075": "1 trade / 1 day / 1 win / +$0.16 — fail"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_vce_qim_confirmation_17ce_17ch.py",
+      "commit": "97d0aa6b6784e5ddc1464ba6f2d1dddaed8d9fea",
+      "blob_sha": "204a6587d0c941d18db098f8dab011b845bb5258",
+      "file_sha256": "844dc08593e641294ac46d7d0839ad99b123488a90574409add867926c47d453"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "0067707d2a45755fd4fa69fa164bbdd379aea5fe",
+      "file_sha256": "a0816a19445537f8a9c199c46212bbadb006a2773a9e03715afa49d489b8c281"
+    }
+  ],
+  "models": [],
+  "config": {
+    "parameters": {
+      "vce": "frozen C04 M5 BB20/2 inside KC EMA20/1.5ATR20 release + MOM12",
+      "qi_thresholds": [
+        0.25,
+        0.5,
+        0.75
+      ],
+      "max_spread_raw": 250,
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "completed M5 VCE release",
+      "MOM12 directional alignment",
+      "first executable P75 tick",
+      "current quoted-volume imbalance threshold/sign gate",
+      "frozen 30-second execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "fixed synthesis Stage-A prescreen"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": true,
+      "exact_git_blob_preexecution_verification": true,
+      "parent_death_signal": true,
+      "compact_stdout": true,
+      "control_fingerprint_gate": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January XAUUSD with quoted volumes",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "prereg",
+      "path": "research/delta/reference/DELTA_R037_VCE_QIM_CONFIRMATION_PREREG_17CE_17CH.json",
+      "commit": "26d6e97a7ea5c2a6fadc7b903a6dde193b85cf9d",
+      "blob_sha": "3643ed57e58fc80020fa60f96d1e755f145bd6a0"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "M5 BB/KC squeeze/release bars",
+      "top-of-book imbalance at entry tick"
+    ],
+    "diagnostics": [
+      "69 releases -> 27 breakout+MOM12 proposals",
+      "exact control fingerprint"
+    ]
+  },
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_VCE_QIM_CONFIRMATION_STAGE_A_CHECKPOINT_17CE_17CH.json",
+      "blob_sha": "4f8d4f3b837253e084d8b1aa1072aa661537aeaa",
+      "result_sha256": "1775b2c2787563311f2d8c050e0ea1615f698f05f09b09e5d62ac8160e335855"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_VCE_QIM_CONFIRMATION_STAGE_A_CHECKPOINT_17CE_17CH.md",
+      "blob_sha": "c17896507d49e88200df91c34040ace2544cdc3c"
+    }
+  ],
+  "qa": [
+    "Timeout recovery resumed the first missing official-compute phase; preregistration and producer were not repeated.",
+    "Recovery cursor metadata was reconciled and CI run 37259339942 passed before official compute.",
+    "Local producer SHA-256 exactly matched committed producer fingerprint.",
+    "Local bounded runner SHA-256 exactly matched committed helper fingerprint.",
+    "Canonical January SHA and exact 4,205,709 Stage-A chronology verified.",
+    "Control reproduced 27 trades / 20 wins / +$0.71 / 11 days exactly before candidate results were accepted.",
+    "Official bounded compute completed in approximately 7.241 seconds.",
+    "QI025 improved direct net to +$1.19 with 7/8 wins but failed >=10 trades and >=35% retention; no rescue.",
+    "No threshold interpolation, session/side/timeframe rescue or exit tuning.",
+    "Workbook 69 R037 Research Harvest A251:I259 written and read back.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_vce_qim_confirmation_17ce_17ch.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_vce_qim_confirmation_17ce_17ch.py --source <canonical_january_gzip> --output <checkpoint_json>",
+    "timing_semantics": "VCE uses completed M5 bars. QI is sampled only from current quoted volumes at first executable post-bar tick. No forward persistence/lookahead.",
+    "expected_fingerprints": {
+      "control": {
+        "trades": 27,
+        "days": 11,
+        "wins": 20,
+        "net_usd": 0.71
+      },
+      "qi025": {
+        "trades": 8,
+        "days": 6,
+        "wins": 7,
+        "net_usd": 1.19,
+        "retention": 0.296296
+      },
+      "qi050": {
+        "trades": 2,
+        "days": 2,
+        "wins": 2,
+        "net_usd": 0.3,
+        "retention": 0.074074
+      },
+      "qi075": {
+        "trades": 1,
+        "days": 1,
+        "wins": 1,
+        "net_usd": 0.16,
+        "retention": 0.037037
+      }
+    },
+    "selected_interpretation": "NO_PROMOTABLE_SURVIVOR_QI_CONFIRMATION_INFORMATIONAL_CLUE_ONLY"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — family not promoted",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "None.",
+    "execution_quote_side_spec": "Frozen P75.",
+    "ownership_scheduler_spec": "No new integration.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01 research semantics.",
+    "trade_count_parity_spec": "Not applicable.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "github_commits": [
+    "26d6e97a7ea5c2a6fadc7b903a6dde193b85cf9d",
+    "97d0aa6b6784e5ddc1464ba6f2d1dddaed8d9fea",
+    "1d5b75479f517d9177717db913cec42396a0ec75",
+    "41de4c6145590eb4c28945078d51b800aef9c87c"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A251:I259"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+}
