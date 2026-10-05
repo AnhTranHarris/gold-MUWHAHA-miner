@@ -1,7 +1,7 @@
 {
   "schema": "delta-a-sa100-helper-status-v1",
   "lineage": "DELTA-A",
-  "status": "HANDOFF_READY",
+  "status": "HANDOFF_READY_AFTER_TIMEOUT_RERUN",
   "august_accessed": false,
   "production_mql5_authorized": false,
   "last_complete_sa100_research": {
@@ -11,31 +11,159 @@
     "rolling_start_below_60_pct": 14.2,
     "rolling_start_below_30_pct": 1.9,
     "median_success_days_to_500": 13.12,
-    "next_gate_pct": 95.0
+    "next_gate_pct": 95
   },
   "completed_negative_helper": {
     "script": "sa100_r2_port_month.py",
     "status": "COMPLETE_FAILED_CANDIDATE",
     "mechanic": "R2 core run>=2 and time-since-opposite<=10s with $5 stop",
-    "months": ["Feb","Mar","Apr","May","Jun","Jul"],
+    "months": [
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul"
+    ],
     "conclusion": "All tested $100 capital runs with 1/2/3 slots failed before $500; retain only as negative evidence."
   },
   "incomplete_helper": {
     "script": "sa100_build_core_stop_variants.py",
     "status": "INCOMPLETE_ANALYSIS_DO_NOT_RESUME",
-    "generated_months": ["Feb","Mar","Apr","May","Jun","Jul"],
-    "stop_variants_usd": [3.0,5.0,7.5,10.0,15.0],
+    "generated_months": [
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul"
+    ],
+    "stop_variants_usd": [
+      3,
+      5,
+      7.5,
+      10,
+      15
+    ],
     "january_generated": false,
     "selector_completed": false,
     "cross_month_decision_completed": false,
     "required_action": "Rerun the helper work unit from scratch starting with January."
   },
-  "next_unit": "SA100_JAN_SPEEDRUN_RESTART_01",
+  "next_unit": "SA100_JAN_OVERLAY_TAIL_FLOOR_RESEARCH03",
   "hard_rules": {
-    "martingale": false,
+    "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
     "fixed_minimum_lot_seed": 0.01,
     "august_sealed": true,
-    "main_delta_modified": false
+    "main_delta_modified": false,
+    "minimum_real_handoff_balance_usd": 1000
+  },
+  "timeout_recovery_2026_10_05_1355": {
+    "prior_last_complete_helper": {
+      "script": "sa100_r2_port_month.py",
+      "status": "COMPLETE_FAILED_CANDIDATE",
+      "conclusion": "This was the last helper marked COMPLETE before the timeout recovery. The later sa100_build_core_stop_variants.py state was INCOMPLETE and was not resumed."
+    },
+    "incomplete_helper_disposition": {
+      "script": "sa100_build_core_stop_variants.py",
+      "prior_status": "INCOMPLETE_ANALYSIS_DO_NOT_RESUME",
+      "action": "RERUN_FROM_SCRATCH_BEGINNING_WITH_JANUARY",
+      "resumed_partial_state": false
+    },
+    "quarantined_unverified_timeout_scratch": [
+      "DELTA_A_R2_EVENT_SHOCK_FEATURES.csv",
+      "DELTA_A_SHOCK_GUARD_SIGNAL_SCREEN04.csv",
+      "DELTA_A_SHOCK_GUARD_CAPITAL_NARROW04.csv"
+    ]
+  },
+  "completed_reruns": [
+    {
+      "id": "SA100_JAN_STOPVARIANTS_RERUN01",
+      "status": "COMPLETE_REBUILT_FROM_JANUARY",
+      "source_event_rows": 39253,
+      "event_ledger_sha256": "00343daacb5aed5ac8c2fb45b2cee87f36e8347aa0bcd56f6c7d3e43d5500eef",
+      "parity_exact_fraction": 1,
+      "ledger_net_usd": 12239.46,
+      "best_preregistered_stop_usd": 15,
+      "stop15_net_usd": 12468.31,
+      "output_sha256": "32795be141ae6edf2fa9cbd335e22bbea21cda999be5d34b026ca61458a3813e"
+    },
+    {
+      "id": "SA100_TO_1000_JAN_CAPITAL_SCREEN_RERUN02",
+      "status": "COMPLETE_DIAGNOSTIC_NOT_PROMOTABLE",
+      "output_sha256": "f708449ef44ced81ed07c51f67b4f43e31ea4f156ef8d0874d4e5410218d46b8",
+      "conclusion": "Plain stop/slot/session logic can show 100% realized-balance survival only with unacceptable distress; minimum below-$60 incidence among 100%-survival configs was 69.23%, worst realized balance about $1.94."
+    },
+    {
+      "id": "SA100_RECOVERY_DIRECTIONAL_SCREEN_JAN_RERUN01",
+      "status": "COMPLETE_EVENT_ECONOMICS_SCREEN",
+      "output_sha256": "ca36fed4d3b0d05acd58837036e53e94d43b227d8e6c59a25de815ca619a0223",
+      "best_overlay": {
+        "adverse_usd": 10,
+        "horizon_s": 30,
+        "net_usd": 14574.76,
+        "pf": 1.073751
+      },
+      "best_switch": {
+        "adverse_usd": 7.5,
+        "horizon_s": 30,
+        "net_usd": 11687.24,
+        "pf": 1.071571
+      },
+      "conclusion": "Counter overlays improve event economics; same-side fixed add and delayed-same mechanics are negative. Counter-switch tail improves at event level but crystallizes losses too early for $100 capital."
+    },
+    {
+      "id": "SA100_COUNTER_SWITCH_CAPITAL_JAN_RERUN01",
+      "status": "COMPLETE_FAILED_SEED_CAPITAL_CANDIDATE",
+      "output_sha256": "b2cbd5f7fb233d14861442b574e4c0ecb72ee92ae43c077aa450163c606490d1",
+      "conclusion": "Reject switch-as-rescue for seed capital; realizing the primary adverse loss before recovery destroys rolling-start survivability."
+    },
+    {
+      "id": "SA100_COUNTER_OVERLAY_CAPITAL_JAN_RERUN01",
+      "status": "COMPLETE_PROMISING_DIAGNOSTIC",
+      "output_sha256": "548d04d4d550d7f50cbd19074fdf7236855d4ba15d85c0d81c29dcdc7882cdf7",
+      "leading_lane": "OVERLAY7P5_H30 + SAFE slots + OVERLAP_ONLY_BELOW_200 + no DD ratchet",
+      "realized_balance_survival_pct": 100,
+      "realized_below60_pct": 23.0769,
+      "realized_below30_pct": 3.8462,
+      "worst_realized_balance_usd": 17.68,
+      "reach1000_pct_for_starts_with_at_least_15d_runway": 100
+    },
+    {
+      "id": "SA100_OVERLAY7P5_SAFE_OVERLAP200_TICK_EQUITY_JAN_RERUN01",
+      "status": "COMPLETE_TICK_EQUITY_MARGIN_SENSITIVITY_NOT_PROMOTED",
+      "output_sha256": "dfeb289bc1f4c08b610399045eeba09d4e6ed5ca78a0e557cefeac0dd869c42d",
+      "starts": 26,
+      "equity_positive_pct": 100,
+      "margin_level_above_100_pct_at_full_1_to_500_sensitivity": 100,
+      "reached1000_pct_all_starts": 92.3077,
+      "below60_equity_pct": 26.9231,
+      "below30_equity_pct": 15.3846,
+      "worst_min_equity_usd": 12.49,
+      "worst_min_free_margin_usd": 1.48947,
+      "worst_margin_level_pct": 109.3007,
+      "max_physical_positions": 8,
+      "median_days_to_1000_successes": 15.5697,
+      "conclusion": "Promising survival architecture but tail remains too close to margin/equity cliff for the owner's survivability objective."
+    },
+    {
+      "id": "SA100_OVERLAY7P5_SEEDGATE_JAN_RERUN01",
+      "status": "COMPLETE_NEGATIVE_REFINEMENT",
+      "output_sha256": "190fe2f53876336b66db769cbe6882abf38028341f5b77476028e011e613130d",
+      "conclusion": "Stricter low-balance CONT + $2.375-only gates starved velocity and worsened survival. Preserve broad London/NY-overlap gate below $200 as current leading seed admission rule."
+    }
+  ],
+  "current_leading_experimental_lane": {
+    "id": "OVERLAY7P5_H30_SAFE_OVERLAP200",
+    "status": "PROMISING_NOT_PROMOTED",
+    "start_balance_usd": 100,
+    "target_balance_usd": 1000,
+    "lot": 0.01,
+    "primary_episode_slots": "SAFE ladder: 1 below $250, 2 below $500, 3 below $750, 4 below $1,000",
+    "low_capital_gate": "London/NY overlap only while realized balance < $200",
+    "recovery": "If primary reaches -$7.50 adverse P&L, open one equal 0.01 opposite-direction counter overlay for 30 seconds while keeping primary open.",
+    "handoff_before_1000": false,
+    "blocker": "Tick-equity tail still falls as low as $12.49 and free-margin sensitivity as low as $1.49; requires tail-floor/regime-aware improvement before promotion."
   }
 }
