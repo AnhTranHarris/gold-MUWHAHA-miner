@@ -17,9 +17,9 @@
   },
   "in_flight_unit": {
     "unit": "R037_VCE_QIM_CONFIRMATION_STAGE_A_SCREEN_CHECKPOINT_17CE_17CH",
-    "status": "PRODUCER_COMMITTED",
+    "status": "RESULT_COMMITTED",
     "phase": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
+    "phase_rank": 3,
     "parent_durable_unit": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
     "committed_artifacts": [
       {
@@ -34,9 +34,15 @@
         "commit": "97d0aa6b6784e5ddc1464ba6f2d1dddaed8d9fea",
         "blob_sha": "204a6587d0c941d18db098f8dab011b845bb5258",
         "file_sha256": "844dc08593e641294ac46d7d0839ad99b123488a90574409add867926c47d453"
+      },
+      {
+        "role": "result",
+        "path": "research/delta/reference/DELTA_R037_VCE_QIM_CONFIRMATION_STAGE_A_CHECKPOINT_17CE_17CH.json",
+        "commit": "1d5b75479f517d9177717db913cec42396a0ec75",
+        "result_sha256": "1775b2c2787563311f2d8c050e0ea1615f698f05f09b09e5d62ac8160e335855"
       }
     ],
-    "next_action": "Run exact committed 17CE-17CH producer under bounded runner on canonical Stage-A ticks.",
+    "next_action": "Persist report, workbook readback and rebuild manifest; do not rerun compute.",
     "completed_months": [],
     "next_month": null
   },
