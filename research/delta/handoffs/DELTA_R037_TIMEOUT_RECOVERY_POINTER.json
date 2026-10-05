@@ -10,18 +10,18 @@
     "active rebuild manifest"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_XAUUSD_EMA_CROSS_TOUCH_SWING_BREAK_STAGE_A_SCREEN_CHECKPOINT_17CP_17CQ",
-    "current_phase": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_NEXT",
-    "first_incomplete_unit": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_XECTSB_STAGE_A_CHECKPOINT_17CP_17CQ_MANIFEST.json"
+    "last_verified_durable_unit": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
+    "current_phase": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST_NEXT",
+    "first_incomplete_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_XECTSB_LATER_JAN_CHECKPOINT_17CR_MANIFEST.json"
   },
   "in_flight_unit": {
     "unit": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
     "family": "R037-XECTSB-v1",
-    "status": "RESULT_COMMITTED",
-    "phase_rank": 3,
+    "status": "COMPLETE",
+    "phase_rank": 7,
     "parent_durable_unit": "R037_XAUUSD_EMA_CROSS_TOUCH_SWING_BREAK_STAGE_A_SCREEN_CHECKPOINT_17CP_17CQ",
-    "current_candidate": "17CQ_M15_EMA9_21_TOUCH_SWING10",
+    "current_candidate": null,
     "committed_artifacts": [
       {
         "role": "prereg",
@@ -41,9 +41,21 @@
         "commit": "a46512cd96cd203d800a81800e445038923f8771",
         "blob_sha": "9e0a8090dfe0b1e5f248566c5018474e2478a22a",
         "result_sha256": "03cccb90eb3d34e69e3896b1a0b486c974b2380c0bbd7f48673d4b8d7f7ff191"
+      },
+      {
+        "role": "report",
+        "path": "research/delta/research/DELTA_R037_XECTSB_LATER_JAN_CHECKPOINT_17CR.md",
+        "commit": "10a67788169310c0ac40d7e2df24d505da342ed8",
+        "blob_sha": "58a65386136feca9595ab7153630d57501f157f9"
+      },
+      {
+        "role": "manifest",
+        "path": "research/delta/artifacts/DELTA_R037_XECTSB_LATER_JAN_CHECKPOINT_17CR_MANIFEST.json",
+        "commit": "849192d9427e976c94a3cb6ad20b6c49b920d9e0",
+        "blob_sha": "72e9d7b901c6eaefaf434131286c9bc3708688d8"
       }
     ],
-    "next_action": "WRITE_REPORT_WORKBOOK_MANIFEST",
+    "next_action": "START_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
     "completed_months": [],
     "next_month": null
   },
