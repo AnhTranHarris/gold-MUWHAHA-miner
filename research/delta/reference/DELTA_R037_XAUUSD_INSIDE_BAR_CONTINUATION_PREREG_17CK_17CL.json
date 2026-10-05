@@ -1,0 +1,79 @@
+{
+  "schema": "delta-r037-xauusd-inside-bar-continuation-prereg-17ck-17cl-v1",
+  "status": "PREREGISTERED_BEFORE_PRODUCER",
+  "unit": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
+  "family": "R037-XIBC-v1",
+  "parent_checkpoint": "R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CI_17CJ",
+  "research_question": "Does the strongest publicly reported XAUUSD Inside-Bar continuation structure—high-directionality Main Bar plus compact Inside Bar—produce positive frozen 30-second executable persistence on January Stage-A?",
+  "source_basis": [
+    {
+      "url": "https://www.mql5.com/en/code/73884",
+      "role": "Open-source EA grammar: fully contained Signal Bar; Main Bar direction determines Buy Stop above Main high / Sell Stop below Main low; one position/pending order."
+    },
+    {
+      "url": "https://www.mql5.com/en/blogs/post/771362",
+      "role": "XAUUSD research: strongest disclosed relation around Main Bar body ~80% of total range and Signal Bar size ~50% of Main range; ATR filter less influential; XAUUSD remained reasonably strong on M15."
+    }
+  ],
+  "lanes": {
+    "17CK_XIBC_M15_BODY80_INSIDE50": {
+      "timeframe": "M15",
+      "pattern": "Main Bar then fully contained Inside/Signal Bar",
+      "main_bar_body_min_fraction": 0.8,
+      "signal_bar_range_max_fraction_of_main": 0.5,
+      "atr_filter": false,
+      "direction": "Main Bar close > open => long; close < open => short",
+      "breakout": "Long first Ask >= Main high + $0.01; short first Bid <= Main low - $0.01",
+      "expiry": "one signal timeframe bar after Signal Bar closes",
+      "rationale": "Bound stale-pending influence and preserve impulse-pullback-continuation interpretation."
+    },
+    "17CL_XIBC_H1_BODY80_INSIDE50": {
+      "timeframe": "H1",
+      "pattern": "same",
+      "main_bar_body_min_fraction": 0.8,
+      "signal_bar_range_max_fraction_of_main": 0.5,
+      "atr_filter": false,
+      "direction": "same",
+      "breakout": "same",
+      "expiry": "one H1 bar after Signal Bar closes"
+    }
+  },
+  "execution": {
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "commission_round_trip_usd": 0.02,
+    "one_position_at_a_time": true
+  },
+  "gate": {
+    "minimum_trades": 10,
+    "minimum_distinct_days": 5,
+    "direct_net_usd_must_be_positive": true,
+    "advance_if": "At least one lane satisfies all gates unchanged.",
+    "ranking": "direct net, wins, trades"
+  },
+  "anti_overfit": [
+    "No body threshold change after result",
+    "No inside-size threshold change after result",
+    "No ATR rescue",
+    "No timeframe rescue beyond fixed M15/H1 lanes",
+    "No side/session/weekday rescue",
+    "No exit tuning",
+    "No August",
+    "No MQL5"
+  ],
+  "crash_safety": {
+    "hard_process_timeout_seconds": 120,
+    "producer_committed_before_compute": true,
+    "exact_git_blob_preexecution_verification": true,
+    "atomic_output": true,
+    "compact_stdout": true
+  },
+  "next_if_survivor": "R037_XAUUSD_INSIDE_BAR_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+  "next_if_fail": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
