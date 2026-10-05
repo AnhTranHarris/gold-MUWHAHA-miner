@@ -1,17 +1,17 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "IN_PROGRESS",
+  "status": "COMPLETE_DURABLE_PENDING_STATE_ADVANCE",
   "branch": "delta",
   "unit": "R037_XAUUSD_EMA_CROSS_TOUCH_SWING_BREAK_STAGE_A_SCREEN_CHECKPOINT_17CP_17CQ",
   "family": "R037-XECTSB-v1",
   "parent_durable_unit": "R037_VCE_RAW_RELEASE_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CO",
-  "phase": "RESULT_COMMITTED",
-  "phase_rank": 3,
+  "phase": "MANIFEST_AND_WORKBOOK_COMPLETE",
+  "phase_rank": 5,
   "progress": {
-    "status": "STAGE_A_RESULT_DURABLE",
+    "status": "CHECKPOINT_PACKET_DURABLE",
     "last_completed": "R037_VCE_RAW_RELEASE_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CO",
     "current_candidate": "R037-XECTSB-v1",
-    "next": "WRITE_REPORT_WORKBOOK_MANIFEST"
+    "next": "ADVANCE_CURRENT_STATE_AND_VERIFY_CI"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
@@ -46,5 +46,9 @@
     "leader": "17CQ_M15_EMA9_21_TOUCH_SWING10",
     "leader_metrics": "20 trades / 10 days / 11 wins / +$0.68"
   },
-  "manifest": null
+  "manifest": {
+    "path": "research/delta/artifacts/DELTA_R037_XECTSB_STAGE_A_CHECKPOINT_17CP_17CQ_MANIFEST.json",
+    "commit": "7c86c796de412ce7e860eab2882ac8b5c2832a0b",
+    "blob_sha": "ba7cc8e6c5b6551bb234aacec9104522ef2d567c"
+  }
 }
