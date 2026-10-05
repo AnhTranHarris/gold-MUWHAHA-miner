@@ -1,0 +1,41 @@
+{
+  "schema": "delta-a-sa100-helper-status-v1",
+  "lineage": "DELTA-A",
+  "status": "HANDOFF_READY",
+  "august_accessed": false,
+  "production_mql5_authorized": false,
+  "last_complete_sa100_research": {
+    "id": "SA100_PROFIT_RAMP_RESEARCH01",
+    "status": "COMPLETE_EXPERIMENTAL_NOT_MILESTONE",
+    "rolling_start_success_to_500_pct": 78.1,
+    "rolling_start_below_60_pct": 14.2,
+    "rolling_start_below_30_pct": 1.9,
+    "median_success_days_to_500": 13.12,
+    "next_gate_pct": 95.0
+  },
+  "completed_negative_helper": {
+    "script": "sa100_r2_port_month.py",
+    "status": "COMPLETE_FAILED_CANDIDATE",
+    "mechanic": "R2 core run>=2 and time-since-opposite<=10s with $5 stop",
+    "months": ["Feb","Mar","Apr","May","Jun","Jul"],
+    "conclusion": "All tested $100 capital runs with 1/2/3 slots failed before $500; retain only as negative evidence."
+  },
+  "incomplete_helper": {
+    "script": "sa100_build_core_stop_variants.py",
+    "status": "INCOMPLETE_ANALYSIS_DO_NOT_RESUME",
+    "generated_months": ["Feb","Mar","Apr","May","Jun","Jul"],
+    "stop_variants_usd": [3.0,5.0,7.5,10.0,15.0],
+    "january_generated": false,
+    "selector_completed": false,
+    "cross_month_decision_completed": false,
+    "required_action": "Rerun the helper work unit from scratch starting with January."
+  },
+  "next_unit": "SA100_JAN_SPEEDRUN_RESTART_01",
+  "hard_rules": {
+    "martingale": false,
+    "lookahead": false,
+    "fixed_minimum_lot_seed": 0.01,
+    "august_sealed": true,
+    "main_delta_modified": false
+  }
+}
