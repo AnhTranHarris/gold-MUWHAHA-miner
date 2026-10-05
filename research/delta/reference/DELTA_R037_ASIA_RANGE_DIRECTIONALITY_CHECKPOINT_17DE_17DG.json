@@ -1,0 +1,56 @@
+{
+  "schema": "delta-r037-asia-range-directionality-17de-17dg-v1",
+  "status": "COMPLETE_FAST_CAUSAL_STAGE_A_SCREEN",
+  "unit": "R037_XAUUSD_ASIA_RANGE_DIRECTIONALITY_HARVEST_CHECKPOINT_17DE_17DG",
+  "parent_checkpoint": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
+  "prereg_commit": "b788e7aa4c3d83b7bea43beb453b705b34b340b1",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "configs": {
+    "17DE_XBREAK_M15_CONTINUATION": {
+      "metrics": {
+        "trades": 5,
+        "distinct_days": 5,
+        "official_wins": 3,
+        "direct_net_usd": -0.16
+      },
+      "gate": {
+        "screen_pass": false
+      }
+    },
+    "17DF_SUNALGO_M15_SAME_BAR": {
+      "metrics": {
+        "trades": 4,
+        "distinct_days": 4,
+        "official_wins": 1,
+        "direct_net_usd": -1.76
+      },
+      "gate": {
+        "screen_pass": false
+      }
+    },
+    "17DG_SUNALGO_M15_NEXT_BAR": {
+      "metrics": {
+        "trades": 2,
+        "distinct_days": 2,
+        "official_wins": 0,
+        "direct_net_usd": -1.42
+      },
+      "gate": {
+        "screen_pass": false
+      }
+    }
+  },
+  "finding": {
+    "survivors": [],
+    "leader": null,
+    "decision": "RETIRE_ASIA_RANGE_DIRECTIONALITY_NO_STAGE_A_SURVIVOR",
+    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+  },
+  "numeric_retuning": false,
+  "post_result_rescue": false,
+  "august_accessed": false,
+  "mql5_authorized": false,
+  "runtime_seconds": 5.451
+}
