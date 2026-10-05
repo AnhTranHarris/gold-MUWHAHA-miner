@@ -278,3 +278,17 @@ To avoid a prior-lineage-style reconstruction failure:
 ## 12. Immediate new-chat instruction
 
 When a new chat is opened, say: **"Bootstrap DELTA-A from the current handoff Google Drive and GitHub branch delta-A. Verify the state file and helper-status manifest. Then restart SA100_JAN_SPEEDRUN_RESTART_01 from January from scratch. Do not access August and do not build MQL5."**
+
+
+## Google Drive handoff package
+
+Folder:
+https://drive.google.com/drive/folders/1LMJvX9y_PVFSXP5xyLHYisNwJD4_nstc
+
+Current handoff Google Doc:
+https://docs.google.com/document/d/1lbNoxb-EFoU3zuRDkE3clS5a1DII_wDWsegoHIzsOLI/edit
+
+Frozen white-paper snapshot:
+https://docs.google.com/document/d/1S9ZXXfhUmHRSzn0M4CPOSfzid9rDtX_LeMWVTjNfrkg/edit
+
+The Drive handoff folder and GitHub handoff are complementary. GitHub is authoritative for executable/reconstructible state, helper source, manifests, hashes and branch history. The Google Drive handoff is the human-readable bootstrap and frozen white-paper snapshot.
