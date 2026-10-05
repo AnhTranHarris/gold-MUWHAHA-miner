@@ -1,0 +1,29 @@
+{
+  "schema": "delta-r037-vce-raw-release-later-jan-17co-v1",
+  "status": "COMPLETE_INDEPENDENT_LATER_JAN_VALIDATION",
+  "unit": "R037_VCE_RAW_RELEASE_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CO",
+  "candidate": "R037-VCE-C03_BBKC_RELEASE",
+  "parent_checkpoint": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
+  "prereg_commit": "105243f7bede082a37012c85de75bb8f0f1c1c63",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_control": {
+    "metrics": {"signals":27,"trades":27,"busy_skips":0,"spread_rejects":0,"distinct_days":11,"long":16,"short":11,"official_wins":20,"gross_profit":4.22,"gross_loss":-3.24,"direct_net_usd":0.71,"exit_reasons":{"STOP":27,"MAX_HOLD":0,"END":0}},
+    "diagnostics": {"bars":3036,"release":69,"breakout":27,"spread_reject":0,"prewindow_release":0},
+    "ticks": 4205709
+  },
+  "later_jan": {
+    "warmup_start_ms": 1768348800000,
+    "economic_start_ms": 1768737600000,
+    "end_exclusive_ms": 1769904000000,
+    "metrics": {"signals":28,"trades":28,"busy_skips":0,"spread_rejects":0,"distinct_days":11,"long":18,"short":10,"official_wins":10,"gross_profit":3.97,"gross_loss":-12.74,"direct_net_usd":-9.05,"exit_reasons":{"STOP":28,"MAX_HOLD":0,"END":0}},
+    "diagnostics": {"bars":3546,"release":65,"breakout":28,"spread_reject":0,"prewindow_release":23},
+    "ticks": 6076533,
+    "gate": {"minimum_trades_10":true,"minimum_distinct_days_5":true,"direct_net_nonnegative":false,"validation_pass":false}
+  },
+  "finding": {"decision":"RETIRE_VCE_RAW_RELEASE_AFTER_LATER_JAN_FAIL","next":"R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"},
+  "numeric_retuning": false,
+  "post_result_rescue": false,
+  "august_accessed": false,
+  "mql5_authorized": false,
+  "runtime_seconds": 7.752
+}
