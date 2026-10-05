@@ -1,0 +1,105 @@
+{
+  "schema": "delta-r037-session-liquidity-sweep-reclaim-prereg-17cw-17cz-v1",
+  "status": "PREREGISTERED_BEFORE_PRODUCER_AND_COMPUTE",
+  "unit": "R037_XAUUSD_SESSION_LIQUIDITY_SWEEP_RECLAIM_HARVEST_CHECKPOINT_17CW_17CZ",
+  "parent_checkpoint": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
+  "purpose": "Fast causal Stage-A screen of session/liquidity-reversal entries after raw structural breakout families showed abundant supply but negative immediate persistence.",
+  "source_basis": [
+    {
+      "family": "R037-ASIA-LONDON-SWEEP-v1",
+      "sources": [
+        "https://www.tradingview.com/script/RY1SZR8x-Session-Sweep-System-WarRoomXYZ-V1/",
+        "https://www.tradingview.com/script/SlWseGFp-ICT-Daily-Liquidity-Sweep-PineGen-AI/"
+      ],
+      "disclosed_logic": "Build and lock Asian-session high/low, then during London require price to trade beyond a locked level and close back on the original side; enter in reversal direction.",
+      "project_fixture_disclosure": "Use WarRoom explicit GMT windows: Asia 00:00-06:00, London killzone 07:00-10:00. One first qualifying sweep per side/day. Closed-bar only."
+    },
+    {
+      "family": "R037-XAUGOLD-SWEEP5-v1",
+      "sources": [
+        "https://www.tradingview.com/script/bo1WdFiL-Gold-Session-Map-Sweep-Signals/",
+        "https://www.tradingview.com/script/RY1SZR8x-Session-Sweep-System-WarRoomXYZ-V1/"
+      ],
+      "disclosed_logic": "XAUUSD M5/M15: after Asian range closes, price must trade beyond Asian high/low by at least 5% of the range and close back inside; reversal entry at reclaim close.",
+      "project_fixture_disclosure": "Use WarRoom explicit Asia 00:00-06:00 GMT and London killzone 07:00-10:00 GMT so session boundaries are deterministic. ADR/news/trend overlays from source are intentionally excluded for this minimal entry-quality screen."
+    }
+  ],
+  "data": {
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "stage_a_window": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+    "stage_a_ticks": 4205709,
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "august_2026": "SEALED"
+  },
+  "frozen_execution": {
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "fixed_lot": 0.01,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01,
+    "one_position_at_a_time": true
+  },
+  "lanes": {
+    "17CW_ASIA_LONDON_SWEEP_M5": {
+      "family": "R037-ASIA-LONDON-SWEEP-v1",
+      "bar_ms": 300000,
+      "asia_utc": "00:00-06:00",
+      "entry_window_utc": "07:00-10:00",
+      "minimum_sweep_fraction": 0,
+      "rule": "first completed London-killzone bar whose high > locked Asia high and close < Asia high => SHORT; low < Asia low and close > Asia low => LONG; one first event per side/day"
+    },
+    "17CX_ASIA_LONDON_SWEEP_M15": {
+      "family": "R037-ASIA-LONDON-SWEEP-v1",
+      "bar_ms": 900000,
+      "asia_utc": "00:00-06:00",
+      "entry_window_utc": "07:00-10:00",
+      "minimum_sweep_fraction": 0,
+      "rule": "same strict wick-through and close-back-inside grammar"
+    },
+    "17CY_XAUGOLD_SWEEP5_M5": {
+      "family": "R037-XAUGOLD-SWEEP5-v1",
+      "bar_ms": 300000,
+      "asia_utc": "00:00-06:00",
+      "entry_window_utc": "07:00-10:00",
+      "minimum_sweep_fraction": 0.05,
+      "rule": "same reclaim, but wick must extend beyond locked Asia boundary by >=5% of Asia range"
+    },
+    "17CZ_XAUGOLD_SWEEP5_M15": {
+      "family": "R037-XAUGOLD-SWEEP5-v1",
+      "bar_ms": 900000,
+      "asia_utc": "00:00-06:00",
+      "entry_window_utc": "07:00-10:00",
+      "minimum_sweep_fraction": 0.05,
+      "rule": "same 5%-depth reclaim grammar"
+    }
+  },
+  "gate": {
+    "minimum_trades": 10,
+    "minimum_distinct_days": 5,
+    "strong_direct_net_usd_min": 0,
+    "selection_rule": "Advance any unchanged lane meeting activity gates and nonnegative direct net immediately to independent later-January validation; retire failures without rescue."
+  },
+  "prohibited": [
+    "session-window sweep",
+    "minimum-depth sweep",
+    "timeframe rescue",
+    "side/weekday filter",
+    "ADR/news/trend overlay",
+    "exit retuning",
+    "post-result threshold rescue",
+    "August access",
+    "MQL5"
+  ],
+  "crash_safety": {
+    "hard_timeout_seconds": 120,
+    "exact_git_blob_preexecution_verification": true,
+    "atomic_output_required": true,
+    "compact_stdout": true,
+    "pycache_redirect_to_writable_temp": true,
+    "phase_checkpoint_after_each_durable_step": true
+  },
+  "mql5_authorized": false
+}
