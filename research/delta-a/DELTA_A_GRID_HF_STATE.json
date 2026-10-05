@@ -58,20 +58,22 @@
   },
   "runtime_note": "Portfolio-pressure decision logic benchmarked at ~17.1M events/s in compiled Python; not an MT5 latency guarantee.",
   "hard_rules": {
-    "martingale": false,
+    "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
     "production_mql5_authorized": false,
     "p75_inside_live_ea": false,
-    "august_accessed": false
+    "august_accessed": false,
+    "bounded_recovery_research_authorized": true,
+    "minimum_real_handoff_balance_usd": 1000
   },
   "blockers": [
+    "$100-$1,000 micro-capital bridge has not yet demonstrated the 100% rolling-start survival design target",
     "August holdout requires explicit owner unseal",
     "Production MQL5 requires explicit owner authorization",
-    "$100 seed/ignition adapter has not yet met the >=95% rolling-start survival gate",
     "Coinexx broker-native Every tick based on real ticks parity not yet completed",
     "Live-demo forward validation required before funded deployment"
   ],
-  "next_unit": "SA100_JAN_SPEEDRUN_RESTART_01",
+  "next_unit": "SA100_JAN_SPEEDRUN_RESTART_02_1000_BRIDGE",
   "fallback_milestones": [
     {
       "id": "R9_GRID_SMALL500_V1",
@@ -102,7 +104,21 @@
     "rolling_start_below_30_pct": 1.9,
     "median_success_days_to_500": 13.12,
     "promotion_gate_pct": 95,
-    "file": "research/delta-a/DELTA_A_SMALL100_PROFIT_RAMP_RESEARCH01.md"
+    "file": "research/delta-a/DELTA_A_SA100_TO_1000_SURVIVAL_RESEARCH02.md",
+    "successor_id": "SA100_TO_1000_SURVIVAL_RESEARCH02",
+    "successor_status": "ACTIVE_EXPERIMENTAL_NOT_MILESTONE",
+    "minimum_real_handoff_balance_usd": 1000,
+    "survival_design_target_pct": 100,
+    "long_horizon_survival_priority_below_usd": 50000,
+    "january_regime_audit": {
+      "ordered_ticks": 9135062,
+      "daily_range_min_usd": 27.135,
+      "daily_range_median_usd": 79.9825,
+      "daily_range_max_usd": 769.11,
+      "daily_range_max_min_ratio": 28.3438,
+      "rolling_60m_proxy_p10_usd": 1.2945,
+      "rolling_60m_proxy_p99_usd": 16.0507
+    }
   },
   "helper_forensics": {
     "completed_failed": "research/delta-a/artifacts/SA100_DTOPP_FAILURE_SUMMARY.json",
