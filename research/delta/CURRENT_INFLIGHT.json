@@ -4,13 +4,13 @@
   "branch": "delta",
   "unit": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
   "parent_durable_unit": "R037_QUASIMODO_SOURCE_DEFAULT_STAGE_A_SCREEN_CHECKPOINT_17CA_17CB",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "phase": "RESULT_COMMITTED",
+  "phase_rank": 3,
   "progress": {
-    "status": "PRODUCER_DURABLE_OFFICIAL_COMPUTE_NEXT",
+    "status": "RESULT_DURABLE_REPORT_WORKBOOK_MANIFEST_NEXT",
     "last_completed": "R037_QUASIMODO_SOURCE_DEFAULT_STAGE_A_SCREEN_CHECKPOINT_17CA_17CB",
     "current_candidate": "R037-BBR-v1 / source-default breaker-block retest M5+M15",
-    "next": "Run exact committed 17CC/17CD producer through bounded runner on canonical Stage-A ticks."
+    "next": "Document source-default supply failure, write workbook/readback, build full manifest, close cursor."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
@@ -45,5 +45,12 @@
     "blob_sha": "6f0c706b9921df0cd0624cc327ee150d59b3f16d",
     "file_sha256": "b6e29e1a7d2bbd542e74d5dbe1834c88ffc9ca030dac35e01652fc33c6d648d8",
     "local_blob_verified": true
+  },
+  "result": {
+    "path": "research/delta/reference/DELTA_R037_BREAKER_BLOCK_RETEST_STAGE_A_CHECKPOINT_17CC_17CD.json",
+    "commit": "ab2b34d4dbedc3181bff77b4777a2695f11cce91",
+    "blob_sha": "7996428163e8df25f075a93427e0418732d26bfa",
+    "result_sha256": "e7afd6b6210a02f87a6b52587d70ada3b6ab808dbc962665512d02cf8941a4bc",
+    "finding": "RETIRE_BREAKER_BLOCK_NO_STAGE_A_SURVIVOR"
   }
 }
