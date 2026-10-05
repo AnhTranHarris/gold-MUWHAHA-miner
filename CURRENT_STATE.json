@@ -3,12 +3,12 @@
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "branch": "delta",
   "research_scope": "DELTA_ONLY_CLEAN_ROOM",
-  "last_verified_durable_unit": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
+  "last_verified_durable_unit": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
   "first_incomplete_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
   "current_phase": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST_NEXT",
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_CHECKPOINT_17CK_17CL_MANIFEST.json",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_CHECKPOINT_17CM_17CN_MANIFEST.json",
   "active_candidate": null,
-  "last_candidate_disposition": "R037-XIBC-v1 retired unchanged: M15 produced 2 trades across 2 days (+$0.16) and H1 produced zero qualified signals; both fail preregistered supply gates. No threshold rescue.",
+  "last_candidate_disposition": "R037-SRBRT-v1 retired unchanged: M5 retest 38 trades / 11 days / 18 wins / -$6.11; M1 retest 43 trades / 11 days / 22 wins / -$6.36. Supply passed, economics failed. No post-result rescue.",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -18,7 +18,7 @@
     "inflight_path": "research/delta/CURRENT_INFLIGHT.json",
     "pointer_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_RECOVERY_POINTER.json",
     "rule": "On message-delivery interruption, trust committed prereg/source/result/report/manifest and resume the first missing phase; chat delivery timeout is not itself compute failure.",
-    "guard_alignment": "COMPLETE_PHASE_SCHEMA_ALIGNED_AFTER_17CK_17CL"
+    "guard_alignment": "COMPLETE_PHASE_SCHEMA_ALIGNED_AFTER_17CM_17CN"
   },
   "canonical_data": {
     "january_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
@@ -32,8 +32,8 @@
     "prior_full_state_preserved_in_git_history": true
   },
   "recovery_pointer_sync": {
-    "status": "DURABLE_17CK_17CL_XIBC_RETIRED",
-    "last_completed": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
+    "status": "DURABLE_17CM_17CN_SRBRT_RETIRED",
+    "last_completed": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
     "current_candidate": null,
     "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
   },
@@ -45,11 +45,11 @@
     "scientific_results_changed": false
   },
   "concurrency_recovery": {
-    "status": "RECOVERED_PARTIAL_TIMEOUT_CHAIN_NO_RESULT_LOSS",
-    "authoritative_checkpoint": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
+    "status": "CURRENT_CHAIN_DURABLE_NO_RESULT_LOSS",
+    "authoritative_checkpoint": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
     "current_candidate": null,
-    "note": "Official result survived browser delivery timeout; closure resumed from durable result."
+    "note": "Browser delivery timeout is not compute failure; committed phases and bounded runner define recovery. SRBRT closed without rescue."
   },
-  "search_bias": "Use completed-R037 meta-harvest before admitting more candidate families; prioritize high-information structures with adequate native XAUUSD supply and near-neutral/positive independent evidence. Reject sparse source-default grammars quickly; no rescue tuning.",
-  "timeout_recovery_cursor_semantics": "Final closure uses one multi-file Git tree commit followed by non-force fast-forward ref update; chat delivery timeout cannot leave report/manifest/cursors split across separate commits."
+  "search_bias": "Prioritize the strongest near-positive/high-supply R037 fingerprints from the research-harvest ledger before admitting another external family. Prefer source-grounded event structures with >=10 Stage-A trades and independent evidence; raw BB/KC release remains a stronger clue than delayed squeeze-range retest. Reject generic oscillator/rare-pattern candidates quickly; no rescue tuning.",
+  "timeout_recovery_cursor_semantics": "Connector-safe serial closure used when low-level multi-file tree commit is blocked; verify each cursor write and require final DELTA rebuild artifact gate before trusting advancement."
 }
