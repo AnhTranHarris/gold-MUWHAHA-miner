@@ -11,35 +11,25 @@
   ],
   "durable_cursor": {
     "last_verified_durable_unit": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
-    "current_phase": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST_NEXT",
-    "first_incomplete_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+    "current_phase": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_17CM_17CN_INFLIGHT",
+    "first_incomplete_unit": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_CHECKPOINT_17CK_17CL_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
-    "status": "COMPLETE",
-    "phase_rank": 7,
-    "parent_durable_unit": "R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CI_17CJ",
+    "unit": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
+    "family": "R037-SRBRT-v1",
+    "status": "PREREG_COMMITTED",
+    "phase_rank": 1,
+    "parent_durable_unit": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
+    "current_candidate": "R037-SRBRT-v1",
     "committed_artifacts": [
       {
         "role": "prereg",
-        "path": "research/delta/reference/DELTA_R037_XAUUSD_INSIDE_BAR_CONTINUATION_PREREG_17CK_17CL.json",
-        "commit": "db42a2c1f3ca3508be429b1040013705ec635dea"
-      },
-      {
-        "role": "producer",
-        "path": "research/delta/experiments/delta_r037_xauusd_inside_bar_continuation_17ck_17cl.py",
-        "commit": "a2fe05cf918b0d57e0a74b29f7fd57105e7d80be",
-        "blob_sha": "a402aa9f98cce954da087e616363b36264115b51"
-      },
-      {
-        "role": "result",
-        "path": "research/delta/reference/DELTA_R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_CHECKPOINT_17CK_17CL.json",
-        "commit": "b6d984e97479dbf008701055bb7ea9435b7f444f",
-        "blob_sha": "fb081402033bd0073b19f8eb74de299ede87b0fc"
+        "path": "research/delta/reference/DELTA_R037_SQUEEZE_RANGE_BREAKOUT_RETEST_PREREG_17CM_17CN.json",
+        "commit": "038d1750aaf510cd2929f7301f46af2a994d9d90"
       }
     ],
-    "next_action": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+    "next_action": "COMMIT_PRODUCER",
     "completed_months": [],
     "next_month": null
   },
@@ -57,7 +47,7 @@
     "large_stdout_policy": "Persist detailed diagnostics to JSON; keep transport output compact.",
     "phase_checkpoint_policy": "Advance CURRENT_INFLIGHT and recovery pointer immediately after each durable phase.",
     "atomic_multi_file_cursor_commit": true,
-    "cursor_close_sequence": "Report + rebuild manifest + CURRENT_INFLIGHT + recovery pointer + CURRENT_STATE are committed in one Git tree; branch moves only by non-force fast-forward."
+    "cursor_close_sequence": "Report + rebuild manifest + CURRENT_INFLIGHT + recovery pointer + CURRENT_STATE should close together; if connector blocks multi-file tree commit, serialize writes and verify final CI."
   },
   "constraints": {
     "august_2026": "SEALED",
