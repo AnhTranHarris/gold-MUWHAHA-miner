@@ -1,0 +1,42 @@
+{
+  "id": "SA100_R10I_TRANSPARENT_MICRO_LOSS_CONVERSION_JAN_SCREEN",
+  "status": "COMPLETE_LEDGER_COUNTERFACTUAL_SCREEN__EXACT_CAPITAL_REPLAY_REQUIRED",
+  "causality": "Rules act at +5s using pre-entry completed-second state and observed first-5s tick path only. Future path used only to settle the chosen fixed-horizon reverse action.",
+  "execution_model": {
+    "fixed_round_trip_cost_usd_per_0p01_leg": 0.225,
+    "note": "Screening approximation calibrated to current P75-like primary cost mean ~0.225; exact tick/broker replay required before promotion."
+  },
+  "rules": [
+    {"id":"R1","condition":"prior completed 30s range >=2.5 and <4.0; first-5s aligned displacement > +1.0","action":"EXIT primary at +5s"},
+    {"id":"R2","condition":"UTC hour 18-21; first-5s aligned displacement >=-0.5 and <0","action":"EXIT primary at +5s; reverse equal 0.01 for 120s"},
+    {"id":"R3","condition":"LONDON_ONLY; first-5s aligned displacement >=+0.5 and <=+1.0","action":"EXIT primary at +5s"},
+    {"id":"R4","condition":"source gap <=2.375; first-5s aligned displacement >=0 and <+0.5; first-5s efficiency >=0.3 and <0.5","action":"EXIT primary at +5s; reverse equal 0.01 for 90s"}
+  ],
+  "discovery_through_jan23": {
+    "baseline_net_usd":394.27,"candidate_net_usd":624.6175,"incremental_net_usd":230.3475,
+    "baseline_gl_usd":-3265.14,"candidate_gl_usd":-2864.279,"gl_reduction_usd":400.861,
+    "candidate_win_rate":0.5265180630,"changed_episodes":156,"changed_win_rate":0.7115384615,"converted_losses":65
+  },
+  "late_january_holdout": {
+    "baseline_net_usd":847.82,"candidate_net_usd":1198.0775,"incremental_net_usd":350.2575,
+    "baseline_gl_usd":-13460.38,"candidate_gl_usd":-12622.1755,"gl_reduction_usd":838.2045,
+    "candidate_win_rate":0.5267716535,"changed_episodes":226,"changed_win_rate":0.8495575221,"converted_losses":111
+  },
+  "all_january": {
+    "episodes":3841,"baseline_net_usd":1242.09,"candidate_net_usd":1822.695,"incremental_net_usd":580.605,
+    "baseline_gp_usd":17967.61,"candidate_gp_usd":17309.1495,
+    "baseline_gl_usd":-16725.52,"candidate_gl_usd":-15486.4545,"gl_reduction_usd":1239.0655,
+    "baseline_pf":1.0742631619,"candidate_pf":1.1176960808,
+    "baseline_win_rate":0.4951835460,"candidate_win_rate":0.5266857589,
+    "changed_episodes":382,"changed_win_rate":0.7931937173,"converted_losses":176
+  },
+  "r9_synth_january_reference":{"trades":27980,"net_usd":41520.82,"gross_loss_usd":-1827.87},
+  "alignment_vs_synth_january":{"trade_count_ratio":0.1372766262,"net_ratio":0.0438983382,"gross_loss_magnitude_ratio":8.4724047662},
+  "soft_success_target_pct":50,"soft_target_met":true,
+  "decision":"PROMISING_BREAKTHROUGH_FOR_EXACT_CAPITAL_REPLAY. Do not promote from ledger screen alone because changed close times can alter slot availability and later physical admissions.",
+  "august_accessed":false,"production_mql5_authorized":false,
+  "source_sha256":{"raw":"d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5","legs":"52c2131caa5f25758594d33e0f59af0ad159cc7ef996e54624af9a3a0667d81c","episodes":"bd86f25320a2de92547b3c4203cc1de1e5daad48c6da846b34b00d9d856a1827"},
+  "local_helper_sha256":"2b05ff9e22bd8729762c1457023b5332910fc4bcb83ca01f74ec4d21649276d2",
+  "local_result_sha256":"8c0eb9bb31cb198a428696acdf50a7e3379ab3633264958210aae9fc45f087fc",
+  "local_rule_csv_sha256":"6bd2d2a421870804ef93f6574c9de196e9e15ab963634cf1022a69e1f18e1586"
+}
