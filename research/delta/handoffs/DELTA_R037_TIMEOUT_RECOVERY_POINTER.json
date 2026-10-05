@@ -10,18 +10,18 @@
     "active rebuild manifest"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
-    "current_phase": "R037_XAUUSD_SESSION_LIQUIDITY_SWEEP_RECLAIM_HARVEST_CHECKPOINT_17CW_17CZ_IN_PROGRESS",
-    "first_incomplete_unit": "R037_XAUUSD_SESSION_LIQUIDITY_SWEEP_RECLAIM_HARVEST_CHECKPOINT_17CW_17CZ",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV_MANIFEST.json"
+    "last_verified_durable_unit": "R037_XAUUSD_SESSION_LIQUIDITY_SWEEP_RECLAIM_HARVEST_CHECKPOINT_17CW_17CZ",
+    "current_phase": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST_NEXT",
+    "first_incomplete_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_SESSION_LIQUIDITY_SWEEP_RECLAIM_CHECKPOINT_17CW_17CZ_MANIFEST.json"
   },
   "in_flight_unit": {
     "unit": "R037_XAUUSD_SESSION_LIQUIDITY_SWEEP_RECLAIM_HARVEST_CHECKPOINT_17CW_17CZ",
     "family": "R037-ASIA-LONDON-SWEEP-v1 + R037-XAUGOLD-SWEEP5-v1",
-    "status": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
+    "status": "COMPLETE",
+    "phase_rank": 7,
     "parent_durable_unit": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
-    "current_candidate": "17CW-17CZ session liquidity sweep-reclaim harvest",
+    "current_candidate": null,
     "committed_artifacts": [
       {
         "role": "prereg",
@@ -33,9 +33,24 @@
         "path": "research/delta/experiments/delta_r037_session_liquidity_sweep_reclaim_17cw_17cz.py",
         "commit": "a000eceb577dcb0a17386f970d87c576bb029126",
         "blob_sha": "5a60c25a0bbaf37e96618655fb912518df571d3d"
+      },
+      {
+        "role": "result",
+        "path": "research/delta/reference/DELTA_R037_SESSION_LIQUIDITY_SWEEP_RECLAIM_CHECKPOINT_17CW_17CZ.json",
+        "commit": "0625cca3099c78fc33b0d8386e3704c81d1fe7c7"
+      },
+      {
+        "role": "report",
+        "path": "research/delta/research/DELTA_R037_SESSION_LIQUIDITY_SWEEP_RECLAIM_CHECKPOINT_17CW_17CZ.md",
+        "commit": "1b5f79d831a69ba3ed1bc48cbca2c534965a21e5"
+      },
+      {
+        "role": "manifest",
+        "path": "research/delta/artifacts/DELTA_R037_SESSION_LIQUIDITY_SWEEP_RECLAIM_CHECKPOINT_17CW_17CZ_MANIFEST.json",
+        "commit": "a89a1d7ae054e9cddf18853440e79614b7c56420"
       }
     ],
-    "next_action": "RUN_BOUNDED_COMPUTE",
+    "next_action": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
     "completed_months": [],
     "next_month": null
   },
