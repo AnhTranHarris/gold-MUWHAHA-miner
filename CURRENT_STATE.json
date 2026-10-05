@@ -7,8 +7,13 @@
   "first_incomplete_unit": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
   "current_phase": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_NEXT",
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_XECTSB_STAGE_A_CHECKPOINT_17CP_17CQ_MANIFEST.json",
-  "active_candidate": null,
-  "last_candidate_disposition": "R037-VCE-C03_BBKC_RELEASE retired unchanged after exact-control holdout: Stage-A 27 trades / 20 wins / +$0.71 reproduced exactly; independent later-Jan 28 trades / 10 wins / -$9.05. Supply passed, economics failed. No QI/parameter/session/side/exit rescue.",
+  "active_candidate": {
+    "family": "R037-XECTSB-v1",
+    "lane": "17CQ_M15_EMA9_21_TOUCH_SWING10",
+    "status": "STAGE_A_SURVIVOR_PENDING_INDEPENDENT_LATER_JAN",
+    "stage_a": "20 trades / 10 days / 11 wins / +$0.68"
+  },
+  "last_candidate_disposition": "R037-XECTSB-v1 Stage-A: M5 retired at 76 trades / 37 wins / -$14.88; M15 survived unchanged at 20 trades / 11 wins / +$0.68 and advances to independent later-January validation.",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -18,7 +23,7 @@
     "inflight_path": "research/delta/CURRENT_INFLIGHT.json",
     "pointer_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_RECOVERY_POINTER.json",
     "rule": "On message-delivery interruption, trust committed prereg/source/result/report/manifest and resume the first missing phase; chat delivery timeout is not itself compute failure.",
-    "guard_alignment": "COMPLETE_PHASE_SCHEMA_ALIGNED_AFTER_17CO"
+    "guard_alignment": "COMPLETE_PHASE_SCHEMA_ALIGNED_AFTER_XECTSB_17CP_17CQ"
   },
   "canonical_data": {
     "january_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
@@ -32,10 +37,12 @@
     "prior_full_state_preserved_in_git_history": true
   },
   "recovery_pointer_sync": {
-    "status": "DURABLE_17CO_VCE_RAW_RELEASE_RETIRED",
-    "last_completed": "R037_VCE_RAW_RELEASE_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CO",
-    "current_candidate": null,
-    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+    "status": "DURABLE_XECTSB_STAGE_A_SURVIVOR",
+    "last_completed": "R037_XAUUSD_EMA_CROSS_TOUCH_SWING_BREAK_STAGE_A_SCREEN_CHECKPOINT_17CP_17CQ",
+    "current_candidate": "17CQ_M15_EMA9_21_TOUCH_SWING10",
+    "next": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
+    "inflight_close_commit": "2a7094e887cd922229d184eb3e2b920e87260fb4",
+    "pointer_sync_commit": "65e04f212d31fd6bf37a62c6f756030d2a86db3e"
   },
   "clean_room_maintenance": {
     "status": "RECENT_DELTA_DIFF_PREFLIGHT_CLEAN",
