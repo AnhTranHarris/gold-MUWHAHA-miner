@@ -379,6 +379,15 @@
       "helper_sha256": "cdd122407cf94980912e3f78eaac81919668b322468f68dfa1789b689200857f",
       "output_json_sha256": "affc2330ab0d7c8325ab18bbfff953f5f50df1c8ce6e7582f0569238da5f636d",
       "result": "Coinexx REAL event timestamps/directions on Dukascopy path: 4,529 balanced-strengthened trades, -$858.27, PF 0.49092; historical positive frontier not reproduced."
+    },
+    {
+      "id": "SA100_R10H_S1_OWNERSHIP_PRIMARY_SCREEN",
+      "status": "COMPLETE_CAUSAL_FIXED_THRESHOLD_DIAGNOSTIC_REJECT_LITERAL_TRANSFER",
+      "helper_sha256": "a172d8c7adaf9b0e8b23ac7ac44b5d95ff7962820b818bc53b4a0b8ab708369a",
+      "output_json_sha256": "ea5aae896f0e6ea6b7f19a7158a5881364bd64319e41aa10bc20af676d24984b",
+      "finding": "Recovered historical S1 actions do not transfer literally to Delta-A primaries. S1_CONTINUE cohort is negative; S1_FADE is positive on the existing side. CONT|S1_CONTINUE pocket loses -$148.44 episode net but 191/195 events occur in ISO week 5, so it fails robustness gate and does not justify exact capital replay.",
+      "primary_rows": 3841,
+      "august_accessed": false
     }
   ],
   "current_leading_experimental_lane": {
@@ -444,7 +453,7 @@
     "august_accessed": false
   },
   "research10_january_parity_speedrun": {
-    "status": "ACTIVE_AFTER_S1_FRONTIER_REDISCOVERY",
+    "status": "ACTIVE_AFTER_R10H_S1_TRANSFER_FALSIFICATION",
     "objective": "Converge toward R9 SYNTH economic shape while preserving frozen $100-$1,000 survival guardrails.",
     "control": {
       "candidate": "SA100_TO_1000_JAN_CANDIDATE_01",
@@ -547,9 +556,29 @@
         "net_sacrifice_pct": 1.3748006200722787,
         "gross_loss_reduction_pct": 24.506706104504318
       },
-      "conclusion": "Concept/mechanics recovered; original counterfactual scorer has not been freshly reproduced within 5%. Three chronological interpretations are negative."
+      "conclusion": "Concept/mechanics recovered; original counterfactual scorer has not been freshly reproduced within 5%. Three chronological interpretations are negative.",
+      "transfer_to_delta_a": {
+        "status": "REJECT_LITERAL_ACTION_TRANSFER",
+        "primary_counts": {
+          "ABSTAIN": 2272,
+          "S1_CONTINUE": 549,
+          "S1_FADE": 1020
+        },
+        "primary_net_usd": {
+          "ABSTAIN": 866.43,
+          "S1_CONTINUE": -160.03,
+          "S1_FADE": 281.16
+        },
+        "episode_net_usd": {
+          "ABSTAIN": 718.76,
+          "S1_CONTINUE": -90.86,
+          "S1_FADE": 614.19
+        },
+        "conditional_pocket": "CONT|S1_CONTINUE = 195 episodes, -$148.44 episode net, but 191 occur in ISO week 5; insufficient robustness.",
+        "next_rule": "Retire literal S1 action mapping. Preserve only completed-second geometry as generic features for future orthogonal specialists."
+      }
     }
   },
-  "last_completed_helper": "SA100_S1_HYBRID_REAL_EVENTS_DUKAS_JAN_REBUILD03_RERUN01",
-  "last_completed_helper_result": "COMPLETE_NEGATIVE__HISTORICAL_S1_FRONTIER_REMAINS_COUNTERFACTUAL_ONLY"
+  "last_completed_helper": "SA100_R10H_S1_OWNERSHIP_PRIMARY_SCREEN",
+  "last_completed_helper_result": "COMPLETE_NEGATIVE__LITERAL_S1_ACTION_TRANSFER_REJECTED"
 }
