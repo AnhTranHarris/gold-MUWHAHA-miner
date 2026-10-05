@@ -10,32 +10,20 @@
     "active rebuild manifest"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
+    "last_verified_durable_unit": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
     "current_phase": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST_NEXT",
     "first_incomplete_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_XECTSB_LATER_JAN_CHECKPOINT_17CR_MANIFEST.json"
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
-    "family": "R037-123NB-v1 + R037-MSnR-DBO-v1",
-    "status": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
-    "parent_durable_unit": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
-    "current_candidate": "17CS-17CV structural harvest",
-    "committed_artifacts": [
-      {
-        "role": "prereg",
-        "path": "research/delta/reference/DELTA_R037_STRUCTURAL_STATE_MACHINE_HARVEST_PREREG_17CS_17CV.json",
-        "commit": "0f5e4299eab2e76ead38ad63a5a1376a62de8dc1"
-      },
-      {
-        "role": "producer",
-        "path": "research/delta/experiments/delta_r037_structural_state_machine_harvest_17cs_17cv.py",
-        "commit": "074eaca06b5dcebeb1d9b7c2b9ca570fc2e551e8",
-        "blob_sha": "7f8c5bafb9d4e23844764d4c5787fe7b0e1c90d6"
-      }
-    ],
-    "next_action": "RUN_BOUNDED_COMPUTE",
+    "unit": null,
+    "family": null,
+    "status": "NONE",
+    "phase_rank": 0,
+    "parent_durable_unit": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
+    "current_candidate": null,
+    "committed_artifacts": [],
+    "next_action": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
     "completed_months": [],
     "next_month": null
   },
