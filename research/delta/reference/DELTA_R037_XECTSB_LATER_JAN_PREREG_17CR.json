@@ -1,0 +1,61 @@
+{
+  "schema": "delta-r037-xectsb-later-jan-prereg-17cr-v1",
+  "status": "PREREGISTERED_BEFORE_PRODUCER",
+  "unit": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
+  "family": "R037-XECTSB-v1",
+  "candidate": "17CQ_M15_EMA9_21_TOUCH_SWING10",
+  "parent_checkpoint": "R037_XAUUSD_EMA_CROSS_TOUCH_SWING_BREAK_STAGE_A_SCREEN_CHECKPOINT_17CP_17CQ",
+  "research_question": "Does the unchanged M15 EMA9/21 cross -> later EMA9 touch -> later touch-candle break -> later completed close beyond the frozen pre-cross 10-bar swing retain positive frozen 30-second executable persistence in independent later January?",
+  "frozen_grammar": {
+    "timeframe_ms": 900000,
+    "ema_fast": 9,
+    "ema_slow": 21,
+    "swing_lookback_bars": 10,
+    "same_bar_transitions": false,
+    "opposite_cross_reset": true,
+    "one_entry_per_cross": true,
+    "stages": [
+      "completed EMA9/21 cross",
+      "later completed EMA9 touch",
+      "later completed touch-candle break",
+      "later completed close beyond frozen pre-cross 10-bar swing",
+      "first executable P75 tick"
+    ]
+  },
+  "frozen_execution": {
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "fixed_lot": 0.01
+  },
+  "control_gate": {
+    "interval": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+    "expected": {
+      "trades": 20,
+      "distinct_days": 10,
+      "official_wins": 11,
+      "direct_net_usd": 0.68
+    },
+    "rule": "Holdout result must not be persisted unless Stage-A control reproduces exactly."
+  },
+  "holdout": {
+    "warmup_start_utc": "2026-01-14T00:00:00Z",
+    "economic_start_utc": "2026-01-18T12:00:00Z",
+    "end_utc_exclusive": "2026-02-01T00:00:00Z",
+    "gate": {
+      "minimum_trades": 10,
+      "minimum_distinct_days": 5,
+      "direct_net_usd": "strictly_positive",
+      "pass_action": "retain XECTSB M15 as independently validated entry candidate for next DELTA refinement/comparison gate",
+      "fail_action": "retire XECTSB family unchanged; no rescue"
+    }
+  },
+  "canonical_january_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "numeric_retuning": false,
+  "post_result_rescue": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
