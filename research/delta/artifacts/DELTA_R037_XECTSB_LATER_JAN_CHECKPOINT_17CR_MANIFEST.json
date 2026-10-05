@@ -1,0 +1,202 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
+  "status": "VERIFIED_INDEPENDENT_VALIDATION_FAIL_RETIRED",
+  "date_utc": "2026-10-05",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_XAUUSD_EMA_CROSS_TOUCH_SWING_BREAK_STAGE_A_SCREEN_CHECKPOINT_17CP_17CQ",
+  "hypothesis": "The unchanged M15 XECTSB grammar that produced 20 trades / 11 wins / +$0.68 in Stage-A retains positive frozen 30-second direct persistence in independent later January.",
+  "falsification_condition": "Holdout fails any of >=10 trades, >=5 distinct days, or strictly positive direct net.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "unchanged XECTSB M15 leader",
+    "reference_count": 20,
+    "minimum_count": 10,
+    "minimum_retention_fraction": 0.5,
+    "owner_numeric_floor_defined": true,
+    "note": "Later-Jan supplied 20 trades; economics failed."
+  },
+  "primary_metrics": {
+    "stage_a_control": "20 trades / 10 days / 11 wins / +$0.68",
+    "later_jan": "20 trades / 10 days / 7 wins / -$3.79",
+    "win_rate_shift": "55.0% -> 35.0%"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_xectsb_later_jan_17cr.py",
+      "commit": "f5395817cfbb08e0f237f6a50298f2998534f063",
+      "blob_sha": "095b44e83272ef4cbfab850d9786e9a2f44711f7",
+      "file_sha256": "bba34e6176f66ab9e013a7c93fa469bf0370101fef33ef5d1fa6580071900e2b"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_xectsb_stage_a_17cp_17cq.py",
+      "commit": "d10d553a141a510ff654fa221f7f3cdc5b223ecc",
+      "blob_sha": "19c9e12a54ef4c6dd89da4875a5d68d726288aa1",
+      "file_sha256": "c26dc710879a86b9447dfaf2e236c4f3621151a3ab2a62d35aef8f34f44ae03e"
+    }
+  ],
+  "helpers": [],
+  "models": [],
+  "config": {
+    "parameters": {
+      "timeframe": "M15",
+      "ema_fast": 9,
+      "ema_slow": 21,
+      "swing_lookback_bars": 10,
+      "max_spread_raw": 250,
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30,
+      "fixed_lot": 0.01,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "completed EMA9/21 cross",
+      "later completed EMA9 touch",
+      "later completed touch-candle break",
+      "later completed close beyond frozen pre-cross 10-bar swing",
+      "first executable P75 tick",
+      "frozen 30-second execution"
+    ],
+    "horizons_checkpoints": {
+      "control": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+      "holdout": "[2026-01-18T12:00:00Z,2026-02-01T00:00:00Z) with warmup from 2026-01-14"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Stage-A exact control + adjacent independent holdout"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": true,
+      "exact_git_blob_preexecution_verification": true,
+      "compact_stdout": true,
+      "parent_control_fingerprint_gate": true,
+      "pycache_redirected_to_writable_temp": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    },
+    {
+      "name": "prereg",
+      "path": "research/delta/reference/DELTA_R037_XECTSB_LATER_JAN_PREREG_17CR.json",
+      "commit": "11bb98ec46eaf2d30e1a8bed872b696c0abd1922"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "M15 bars/EMA9/21 state from canonical January ticks"
+    ],
+    "diagnostics": [
+      "Stage-A exact control reproduced 20/10 days/11 wins/+0.68",
+      "Later-Jan 49 crosses / 41 touches / 27 touch-breaks / 20 entries",
+      "6 warmup-period entry completions were suppressed from economics"
+    ]
+  },
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_XECTSB_LATER_JAN_CHECKPOINT_17CR.json",
+      "commit": "a46512cd96cd203d800a81800e445038923f8771",
+      "blob_sha": "9e0a8090dfe0b1e5f248566c5018474e2478a22a",
+      "result_sha256": "03cccb90eb3d34e69e3896b1a0b486c974b2380c0bbd7f48673d4b8d7f7ff191"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_XECTSB_LATER_JAN_CHECKPOINT_17CR.md",
+      "commit": "10a67788169310c0ac40d7e2df24d505da342ed8",
+      "blob_sha": "58a65386136feca9595ab7153630d57501f157f9"
+    }
+  ],
+  "qa": [
+    "Prereg committed before producer.",
+    "Producer committed before official compute.",
+    "Validator and Stage-A parent exact file SHA-256 verified locally.",
+    "Canonical January SHA verified.",
+    "Stage-A control reproduced exactly: 20 trades / 10 days / 11 wins / +$0.68.",
+    "Official bounded replay completed normally in 3.849 seconds.",
+    "Later-Jan supply gates passed and economics failed: 20 trades / -$3.79.",
+    "Workbook A297:I303 written and read back.",
+    "No threshold, side, session, timeframe or exit rescue.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_xectsb_later_jan_17cr.py",
+    "command": "PYTHONPYCACHEPREFIX=<writable_tmp> timeout --signal=TERM --kill-after=5s 120s python research/delta/experiments/delta_r037_xectsb_later_jan_17cr.py --source <canonical_january_gzip> --output <checkpoint_json>",
+    "timing_semantics": "Completed M15 state transitions on later bars only; warmup carries causal state without economic entries; first executable P75 tick after completed swing-break close.",
+    "expected_fingerprints": {
+      "stage_a": {
+        "trades": 20,
+        "days": 10,
+        "wins": 11,
+        "net": 0.68
+      },
+      "later_jan": {
+        "trades": 20,
+        "days": 10,
+        "wins": 7,
+        "net": -3.79
+      }
+    },
+    "selected_interpretation": "STAGE_A_XECTSB_EDGE_NOT_ROBUST_TO_ADJACENT_HOLDOUT"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — candidate retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "None.",
+    "execution_quote_side_spec": "Frozen P75.",
+    "ownership_scheduler_spec": "No integration.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01 research semantics.",
+    "trade_count_parity_spec": "Not applicable.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "github_commits": [
+    "11bb98ec46eaf2d30e1a8bed872b696c0abd1922",
+    "96a158d66f8dda8dabfd943f76613a536c4a1d6e",
+    "a8fff45b214c8e850baa448eab699ef073c34f3a",
+    "f5395817cfbb08e0f237f6a50298f2998534f063",
+    "e2f759fc7b3c9ac678bab8a9cd0f2320cd841a2b",
+    "de096ee3a65f72c8b62fbb09286853c8d2fc58ee",
+    "a46512cd96cd203d800a81800e445038923f8771",
+    "56ce3093bde54fb8e0c99a1f5c0c358be7f7e5bb",
+    "5de1fa1961f885aa07800687adc3e207a8b901ce",
+    "10a67788169310c0ac40d7e2df24d505da342ed8"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A297:I303"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+}
