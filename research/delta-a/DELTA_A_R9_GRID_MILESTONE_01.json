@@ -1,0 +1,48 @@
+{
+  "schema": "delta-a-r9-grid-milestone-01-v1",
+  "lineage": "DELTA-A",
+  "status": "MAJOR_RESEARCH_MILESTONE_PRE_AUGUST_NOT_MT5_AUTHORIZED",
+  "instrument": "XAUUSD",
+  "months": "2026-01 through 2026-07",
+  "august_2026": "SEALED",
+  "signal_source": "NATIVE_DUKAS_ORDERED_BID_ASK_TICKS",
+  "research_execution_surface": "DUKAS_COINEXX_LIKE_P75",
+  "state_machine": {
+    "bootstrap_min_active_signal_days": 25,
+    "bootstrap_min_completed_outcomes": 25000,
+    "switch_only_after_market_inactivity_gap_hours": 24,
+    "calendar_month_used_for_switch": false,
+    "event_spec_sha256": "55f04e2b8c39e3b7693a6850cb540b7cc00705623f6dccd12b1736b379fd249a",
+    "event_spec_rows": 186901,
+    "parity_exact": true
+  },
+  "portfolio_pressure": {
+    "max_concurrent_positions": 250,
+    "same_direction_net_entry_cap": 225,
+    "dropped_trades": 332
+  },
+  "jan_jul_tick_result": {
+    "trades": 186569,
+    "wins": 113958,
+    "win_rate": 0.6108088696407228,
+    "net_usd": 194674.33,
+    "gross_loss_usd": 770911.86,
+    "profit_factor": 1.2525247568509321,
+    "expected_payoff_usd": 1.0434441413096494,
+    "max_floating_equity_drawdown_usd": 27904.26,
+    "min_equity_usd": 92519.38,
+    "max_concurrent_positions": 250,
+    "max_long_positions": 235,
+    "max_short_positions": 181,
+    "max_abs_net_positions": 231
+  },
+  "r9_synth_alignment_pct": {
+    "trades": 85.0585,
+    "winning_entries": 59.6214,
+    "net_profit": 62.9764,
+    "expected_payoff": 74.0389,
+    "win_rate_relative": 70.0951,
+    "profit_factor_relative": 6.2513
+  },
+  "production_mql5_authorized": false
+}
