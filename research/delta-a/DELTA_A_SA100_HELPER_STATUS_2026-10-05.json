@@ -50,7 +50,7 @@
     "cross_month_decision_completed": false,
     "required_action": "Rerun the helper work unit from scratch starting with January."
   },
-  "next_unit": "SA100_JAN_OVERLAY_EXIT_LIFECYCLE_RESEARCH04",
+  "next_unit": "SA100_JAN_CAPITAL_FLOOR_PERSISTENT_LOCK_RESEARCH06",
   "hard_rules": {
     "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
@@ -179,10 +179,53 @@
         "reach1000_15d_pct": 100
       },
       "conclusion": "Simple causal volatility-scaling of the adverse overlay trigger is rejected. Fixed $7.50 trigger remains stronger; next research should change overlay lifecycle/exit behavior rather than trigger depth."
+    },
+    {
+      "id": "SA100_OVERLAY_EXIT_LIFECYCLE_JAN_RESEARCH04",
+      "status": "COMPLETE_DIAGNOSTIC",
+      "helper_local": "sa100_overlay_exit_lifecycle_jan_research04.py",
+      "helper_sha256": "76cd37939212422023a2180a972e82f3b28a288d5c3bfe85ef4cc603bb8a55b8",
+      "output_sha256": "ffb20e3967f9d1aeee6022117f6321c660259d6abbe3e022fc987d219f9adb81",
+      "tick_summary_sha256": "d892d665a162da1ace00e49dbc45033723cebac08dcfb527c93508ef9ab74e96",
+      "conclusion": "Closed-balance improvements from reclaim/TP exits did not materially raise the dangerous tick-equity floor. CTP2_H60 reduced below-$30 incidence but sacrificed velocity; fixed 30s remained the stronger overall control."
+    },
+    {
+      "id": "SA100_OVERLAY_REARM_PULSES_JAN_RESEARCH05",
+      "status": "COMPLETE_NEGATIVE_MODEL_VARIANT",
+      "output_sha256": "4fc29b67604e4eea2f453de39e7784e9a93f07c7019091f1f3735d3a61ae0ca1",
+      "conclusion": "Linked-to-primary rearm model changed baseline semantics and degraded survival; not used as evidence for the original lane."
+    },
+    {
+      "id": "SA100_OVERLAY_SELECTIVE_REARM_JAN_RESEARCH05B",
+      "status": "COMPLETE_PROMISING_DIAGNOSTIC",
+      "helper_sha256": "cbc026479cdab39a15a3ccacf9d92c5c895a1e20eb56ec25d65993ab13e807f1",
+      "output_sha256": "88bc9f5b8344a17c23fc6e32be14933ced2dd84992dd4dcf58ef6266a33aa158",
+      "finding": "A second 30s counter pulse after a failed first rescue on long-lived REVERT trades raised fragile Jan23/25/26 tick-equity floors into roughly $21-$24, but broad use altered later admissions and reduced some $1,000 completion rates."
+    },
+    {
+      "id": "SA100_OVERLAY_SEED_REARM_JAN_RESEARCH05C_TIMEOUT",
+      "status": "INCOMPLETE_TIMEOUT_DO_NOT_RESUME",
+      "action": "Discard partial run. Fresh rerun executed as two stages from the beginning."
+    },
+    {
+      "id": "SA100_OVERLAY_SEED_REARM_JAN_RESEARCH05C_RERUN01",
+      "status": "COMPLETE_FRESH_TWO_STAGE_RERUN",
+      "stage1_helper_sha256": "98854b3c2ea713220972e949ca467534c1370533d35fea2cdb40e37bfbd6ac47",
+      "stage2_helper_sha256": "dbaf226f2c4bb9088ed2e0c42c421913354bc1a634fb5662796b6dd4728fa03e",
+      "stage1_output_sha256": "66498c91081a39285fafd7a21378bb8d20a3b45c756a0b626e92eb19f18b9e25",
+      "stage2_output_sha256": "4a6dc41c99239fd5abcb644d5d226f7c98d5841378baabc4acca6c87306a90de",
+      "result": {
+        "equity_positive_pct": 100,
+        "margin_above100_pct": 100,
+        "best_fragile_start_improvement": "Jan23 $12.49 -> $21.16; Jan25/26 $13.32 -> $22.55",
+        "remaining_worst_start": "Jan30 $14.19",
+        "reached1000_15d_pct": 100
+      },
+      "conclusion": "Seed-limited second rescue improves long-lived REVERT tails but Jan30 is a different toxic state and remains the overall floor."
     }
   ],
   "current_leading_experimental_lane": {
-    "id": "OVERLAY7P5_H30_SAFE_OVERLAP200",
+    "id": "OVERLAY7P5_H30_SAFE_OVERLAP200_PLUS_SEED_REVERT_RESCUE_DIAGNOSTIC",
     "status": "PROMISING_NOT_PROMOTED",
     "start_balance_usd": 100,
     "target_balance_usd": 1000,
@@ -191,6 +234,6 @@
     "low_capital_gate": "London/NY overlap only while realized balance < $200",
     "recovery": "If primary reaches -$7.50 adverse P&L, open one equal 0.01 opposite-direction counter overlay for 30 seconds while keeping primary open.",
     "handoff_before_1000": false,
-    "blocker": "Tick-equity tail still falls as low as $12.49 and free-margin sensitivity as low as $1.49; requires tail-floor/regime-aware improvement before promotion."
+    "blocker": "Long-lived REVERT tail improved via seed-limited second rescue, but Jan30 short-horizon CONT failure still drives a $14.19 minimum equity path. Test low-capital persistent hedge/reclaim lock."
   }
 }
