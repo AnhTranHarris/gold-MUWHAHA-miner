@@ -16,45 +16,20 @@
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_XECTSB_STAGE_A_CHECKPOINT_17CP_17CQ_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_XAUUSD_EMA_CROSS_TOUCH_SWING_BREAK_STAGE_A_SCREEN_CHECKPOINT_17CP_17CQ",
+    "unit": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
     "family": "R037-XECTSB-v1",
-    "status": "COMPLETE",
-    "phase_rank": 7,
-    "parent_durable_unit": "R037_VCE_RAW_RELEASE_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CO",
+    "status": "PREREGISTERED",
+    "phase_rank": 1,
+    "parent_durable_unit": "R037_XAUUSD_EMA_CROSS_TOUCH_SWING_BREAK_STAGE_A_SCREEN_CHECKPOINT_17CP_17CQ",
     "current_candidate": "17CQ_M15_EMA9_21_TOUCH_SWING10",
     "committed_artifacts": [
       {
         "role": "prereg",
-        "path": "research/delta/reference/DELTA_R037_XECTSB_PREREG_17CP_17CQ.json",
-        "commit": "2d5bc884d77e9ae6b327429ce28a0784928de925"
-      },
-      {
-        "role": "producer",
-        "path": "research/delta/experiments/delta_r037_xectsb_stage_a_17cp_17cq.py",
-        "commit": "d10d553a141a510ff654fa221f7f3cdc5b223ecc",
-        "blob_sha": "19c9e12a54ef4c6dd89da4875a5d68d726288aa1"
-      },
-      {
-        "role": "result",
-        "path": "research/delta/reference/DELTA_R037_XECTSB_STAGE_A_CHECKPOINT_17CP_17CQ.json",
-        "commit": "28d260b1a5e294a038cfe13b841a5fe20d516467",
-        "blob_sha": "8222ec1a2ed3a280e3c9261dfff9f6369e77128d",
-        "result_sha256": "7d941b248db91d42f7c56f1cf79b06efe5e037aedca85719d9b39333ac71c75b"
-      },
-      {
-        "role": "report",
-        "path": "research/delta/research/DELTA_R037_XECTSB_STAGE_A_CHECKPOINT_17CP_17CQ.md",
-        "commit": "618f358731d56fc0e0d03e32923c347774167bf0",
-        "blob_sha": "d9b2889b78299de29df2a2582b682b3c03ee246f"
-      },
-      {
-        "role": "manifest",
-        "path": "research/delta/artifacts/DELTA_R037_XECTSB_STAGE_A_CHECKPOINT_17CP_17CQ_MANIFEST.json",
-        "commit": "7c86c796de412ce7e860eab2882ac8b5c2832a0b",
-        "blob_sha": "ba7cc8e6c5b6551bb234aacec9104522ef2d567c"
+        "path": "research/delta/reference/DELTA_R037_XECTSB_LATER_JAN_PREREG_17CR.json",
+        "commit": "11bb98ec46eaf2d30e1a8bed872b696c0abd1922"
       }
     ],
-    "next_action": "START_NEXT_PREREGISTERED_VALIDATION_UNIT",
+    "next_action": "COMMIT_PRODUCER",
     "completed_months": [],
     "next_month": null
   },
