@@ -1,0 +1,166 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_XAUUSD_ASIA_RANGE_DIRECTIONALITY_HARVEST_CHECKPOINT_17DE_17DG",
+  "status": "VERIFIED_STAGE_A_FAIL_RETIRED_NO_RESCUE",
+  "date_utc": "2026-10-05",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
+  "hypothesis": "Immediate XAUUSD post-Asia persistence may favor either strong-break continuation or false-break engulfing reversal.",
+  "falsification_condition": "Retire lane if <10 trades, <5 days, or negative direct net.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "directionality lanes",
+    "reference_count": 3,
+    "minimum_count": 3,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true
+  },
+  "primary_metrics": {
+    "entry_quality": "No survivor",
+    "hold_persistence": "30s frozen",
+    "economics": "all fail",
+    "gross_loss_drawdown": "not promoted",
+    "activity": "5/4/2 trades"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_asia_range_directionality_17de_17dg.py",
+      "commit": "a6a9c048b791533b690072a2aeef6132e88f1d28",
+      "blob_sha": "562d3abc0bc52e715eab7e6423290e6f7592c9a3",
+      "file_sha256": "1a4d707752a85d81edb8a75b37a19c6c75d049ee7731d07a81c3a768598df196"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/experiments/delta_r037_session_liquidity_sweep_reclaim_17cw_17cz.py",
+      "role": "mechanical utilities"
+    }
+  ],
+  "models": [],
+  "config": {
+    "parameters": {
+      "xbreak_body_bar": 0.6,
+      "xbreak_body_asia": 0.3,
+      "sunalgo_tf": "M15",
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "locked Asia range",
+      "published confirmation",
+      "first executable P75 tick",
+      "30s evaluation"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01,2026-01-18T12Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "Stage-A prescreen"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ]
+  },
+  "inputs": [
+    {
+      "name": "canonical January XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "M15 causal bars"
+    ],
+    "diagnostics": [
+      "17DE 5/-0.16",
+      "17DF 4/-1.76",
+      "17DG 2/-1.42"
+    ]
+  },
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_ASIA_RANGE_DIRECTIONALITY_CHECKPOINT_17DE_17DG.json",
+      "commit": "2bb69cba8ff38a042cf31543588f842dcad6e21a",
+      "blob_sha": "1371aed0a7dc149c237da4b94484700ea8f46fc9",
+      "result_sha256": "4bee800d58fcdee889703a761be481113eecbec8aeb5a090a68d6861643128e9"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_ASIA_RANGE_DIRECTIONALITY_CHECKPOINT_17DE_17DG.md",
+      "commit": "d559abe257d5ae62fe535b91f21b59ea5f27c5a7",
+      "blob_sha": "3bb84766560c43727e79b59093cd5940f23b237d"
+    }
+  ],
+  "qa": [
+    "Prereg before compute",
+    "exact Git blob verified",
+    "canonical Jan verified",
+    "runtime 5.451s",
+    "no rescue",
+    "workbook readback pass"
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_asia_range_directionality_17de_17dg.py",
+    "expected_fingerprints": {
+      "17DE": {
+        "trades": 5,
+        "net": -0.16
+      },
+      "17DF": {
+        "trades": 4,
+        "net": -1.76
+      },
+      "17DG": {
+        "trades": 2,
+        "net": -1.42
+      }
+    },
+    "selected_interpretation": "NO_SURVIVOR"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE",
+    "feature_timing_spec": "Not ready",
+    "state_machine_spec": "Not ready",
+    "model_inference_spec": "None",
+    "execution_quote_side_spec": "Frozen P75",
+    "ownership_scheduler_spec": "No integration",
+    "session_dst_spec": "Frozen",
+    "risk_spec": "0.01",
+    "trade_count_parity_spec": "N/A",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "github_commits": [
+    "b788e7aa4c3d83b7bea43beb453b705b34b340b1",
+    "a6a9c048b791533b690072a2aeef6132e88f1d28",
+    "2bb69cba8ff38a042cf31543588f842dcad6e21a",
+    "d559abe257d5ae62fe535b91f21b59ea5f27c5a7"
+  ],
+  "drive_artifacts": [
+    {
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A331:I339"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+}
