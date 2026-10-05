@@ -73,7 +73,7 @@
     "Coinexx broker-native Every tick based on real ticks parity not yet completed",
     "Live-demo forward validation required before funded deployment"
   ],
-  "next_unit": "SA100_JAN_BOUNDED_RESCUE_LADDER_RESEARCH08",
+  "next_unit": "SA100_TO_1000_FEB_VALIDATION_01",
   "fallback_milestones": [
     {
       "id": "R9_GRID_SMALL500_V1",
@@ -126,21 +126,22 @@
       "starts": 26,
       "equity_positive_pct": 100,
       "margin_above100_pct": 100,
+      "below30_equity_pct": 0,
+      "worst_min_equity_usd": 35.32,
+      "worst_min_free_margin_usd": 24.72317,
       "reach1000_all_pct": 96.153846,
       "reach1000_15d_pct": 100,
-      "worst_min_equity_usd": 24.65,
-      "worst_min_free_margin_usd": 14.05317,
-      "below60_equity_pct": 26.9231,
-      "below30_equity_pct": 11.5385,
+      "median_days1000_15d": 21.882455,
       "max_physical_positions": 8
     },
     "current_research_note": "research/delta-a/DELTA_A_SA100_TO_1000_TIMEOUT_RERUN_2026-10-05.md",
-    "last_completed_helper": "SA100_REVERT_SELECTIVE_THIRD_PULSE_RESEARCH07B_STAGE2_RERUN01",
-    "last_completed_helper_result": "BREAKTHROUGH_SELECTIVE_REVERT_THIRD_PULSE",
+    "last_completed_helper": "SA100_LONG_CONT_LOCK_RELEASE_RESEARCH09C_STAGE2",
+    "last_completed_helper_result": "BREAKTHROUGH_ZERO_SUB30_JAN_WITH_VELOCITY_RESTORED",
     "current_tail_forensics": {
       "jan23_25_26": "long-lived REVERT failed-rescue state improved by selective second counter pulse",
       "jan30": "short-horizon CONT loss of about $38.40 after a $7.50 adverse trigger; requires separate capital-floor persistent-lock specialist"
-    }
+    },
+    "january_candidate_id": "SA100_TO_1000_JAN_CANDIDATE_01"
   },
   "helper_forensics": {
     "completed_failed": "research/delta-a/artifacts/SA100_DTOPP_FAILURE_SUMMARY.json",
