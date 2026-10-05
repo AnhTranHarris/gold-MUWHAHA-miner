@@ -1,0 +1,211 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
+  "status": "VERIFIED_NO_STAGE_A_SURVIVOR_SOURCE_DEFAULT_SUPPLY_FAILURE",
+  "date_utc": "2026-10-04",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_QUASIMODO_SOURCE_DEFAULT_STAGE_A_SCREEN_CHECKPOINT_17CA_17CB",
+  "hypothesis": "Source-default MetaQuotes breaker-block invalidation -> move-away -> swing-validated retest can produce positive frozen 30-second XAUUSD persistence with adequate activity on M5 or M15.",
+  "falsification_condition": "Neither fixed source-default lane satisfies >=20 trades, >=5 distinct days and nonnegative direct net; upstream source-default event supply failure is sufficient to retire without threshold rescue.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Two fixed source-default breaker-block lanes",
+    "reference_count": 2,
+    "minimum_count": 2,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "M5 and M15 source-default lanes executed unchanged; both generated zero signals because the source-default consolidation never formed."
+  },
+  "primary_metrics": {
+    "17CC_M5": "0 signals / 0 trades / 0 days / $0.00 — supply fail",
+    "17CD_M15": "0 signals / 0 trades / 0 days / $0.00 — supply fail",
+    "supply_qa": "M5 188/3035 adjacent pairs pass tolerance, longest run 3 vs 6 required; M15 20/1011, longest run 1 vs 6 required."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_breaker_block_retest_17cc_17cd.py",
+      "commit": "38f6d90538f24d6fc728e5ce7f9e9ef00b3b7002",
+      "blob_sha": "6f0c706b9921df0cd0624cc327ee150d59b3f16d",
+      "file_sha256": "b6e29e1a7d2bbd542e74d5dbe1834c88ffc9ca030dac35e01652fc33c6d648d8"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "0067707d2a45755fd4fa69fa164bbdd379aea5fe",
+      "file_sha256": "a0816a19445537f8a9c199c46212bbadb006a2773a9e03715afa49d489b8c281"
+    }
+  ],
+  "models": [],
+  "config": {
+    "parameters": {
+      "consolidation_bars": 7,
+      "max_consolidation_spread_points": 50,
+      "bars_to_wait_after_breakout": 3,
+      "impulse_multiplier": 1,
+      "move_away_points": 50,
+      "enable_swing_validation": true,
+      "deterministic_block_lifetime_bars": 300,
+      "lanes": [
+        "M5",
+        "M15"
+      ],
+      "max_spread_raw": 250,
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30
+    },
+    "feature_order": [
+      "7-bar adjacent H/L-tolerance consolidation",
+      "close breakout",
+      "3-bar 1.0x range impulse",
+      "order-block creation",
+      "opposite close invalidation",
+      "post-creation swing validation",
+      "50-point move-away",
+      "zone retest close",
+      "post-invalidation swing validation",
+      "P75 execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "fixed source-default Stage-A prescreen"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": true,
+      "exact_git_blob_preexecution_verification": true,
+      "parent_death_signal": true,
+      "compact_stdout": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "breaker-block prereg",
+      "path": "research/delta/reference/DELTA_R037_BREAKER_BLOCK_RETEST_PREREG_17CC_17CD.json",
+      "commit": "cfcb44d1065a30f23aebee1b8193d749346a99d4",
+      "blob_sha": "efd3b24efea9f39c97a77c8d3fa752c2b2029c27"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "M5/M15 completed-bar consolidation and active breaker-block state"
+    ],
+    "diagnostics": [
+      "Source-default adjacent-pair tolerance supply QA"
+    ]
+  },
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_BREAKER_BLOCK_RETEST_STAGE_A_CHECKPOINT_17CC_17CD.json",
+      "blob_sha": "7996428163e8df25f075a93427e0418732d26bfa",
+      "result_sha256": "e7afd6b6210a02f87a6b52587d70ada3b6ab808dbc962665512d02cf8941a4bc"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_BREAKER_BLOCK_RETEST_STAGE_A_CHECKPOINT_17CC_17CD.md",
+      "blob_sha": "57c4c861e9e4815bd8e655997c4f0e947272e1d3"
+    }
+  ],
+  "qa": [
+    "Preregistration committed before producer.",
+    "Producer committed before official compute.",
+    "Exact committed Git blob verified before official compute; a differing local draft was rejected and not run.",
+    "Canonical January SHA and exact 4,205,709 Stage-A chronology verified.",
+    "Official compute completed under bounded crash-contained runner in approximately 5.64 seconds.",
+    "Both source-default lanes generated zero consolidations, zero signals and zero trades.",
+    "Post-result supply QA localized the zero to source-default 7-bar/50-point consolidation rarity rather than downstream code.",
+    "M5 longest qualifying adjacent-pair run = 3 vs 6 required; M15 longest = 1 vs 6 required.",
+    "No post-result threshold/timeframe/session/side/exit rescue tuning.",
+    "Workbook A235:I242 written and read back.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_breaker_block_retest_17cc_17cd.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_breaker_block_retest_17cc_17cd.py --source <canonical_january_gzip> --output <checkpoint_json>",
+    "timing_semantics": "All structural decisions use completed bars; entries occur only at first tick at/after a completed retest bar; source code permits move-away and retest on one completed bar and diagnostic count preserves that behavior.",
+    "expected_fingerprints": {
+      "17CC_M5": {
+        "signals": 0,
+        "trades": 0,
+        "days": 0,
+        "net_usd": 0
+      },
+      "17CD_M15": {
+        "signals": 0,
+        "trades": 0,
+        "days": 0,
+        "net_usd": 0
+      },
+      "source_supply": {
+        "m5_pairs_pass": 188,
+        "m5_pairs_total": 3035,
+        "m5_longest_run": 3,
+        "m15_pairs_pass": 20,
+        "m15_pairs_total": 1011,
+        "m15_longest_run": 1,
+        "required_run": 6
+      }
+    },
+    "selected_interpretation": "SOURCE_DEFAULT_BREAKER_BLOCK_SUPPLY_INCOMPATIBLE_WITH_STAGE_A_XAUUSD"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — family retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "None.",
+    "execution_quote_side_spec": "Frozen P75.",
+    "ownership_scheduler_spec": "No integration.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01 research semantics.",
+    "trade_count_parity_spec": "Not applicable.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "github_commits": [
+    "cfcb44d1065a30f23aebee1b8193d749346a99d4",
+    "38f6d90538f24d6fc728e5ce7f9e9ef00b3b7002",
+    "ab2b34d4dbedc3181bff77b4777a2695f11cce91",
+    "cb97b3df9ea291c92ec25bca459badc09d6e3a82"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A235:I242"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+}
