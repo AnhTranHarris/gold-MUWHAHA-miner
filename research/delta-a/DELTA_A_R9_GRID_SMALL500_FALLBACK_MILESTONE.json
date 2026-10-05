@@ -1,0 +1,57 @@
+{
+  "schema": "delta-a-r9-grid-small500-fallback-v1",
+  "lineage": "DELTA-A",
+  "status": "MINOR_FALLBACK_MILESTONE_RESEARCH_ONLY_NOT_MT5_AUTHORIZED",
+  "parent_milestone": "R9_GRID_MILESTONE_01_PREAUG",
+  "starting_balance_usd": 500,
+  "physical_lot": 0.01,
+  "physical_source_initial": "CORE_H4_M1800",
+  "concurrency_ladder": [
+    {
+      "balance_lt": 750,
+      "max_positions": 1
+    },
+    {
+      "balance_gte": 750,
+      "balance_lt": 1500,
+      "max_positions": 2
+    },
+    {
+      "balance_gte": 1500,
+      "balance_lt": 3000,
+      "max_positions": 3
+    },
+    {
+      "balance_gte": 3000,
+      "balance_lt": 6000,
+      "max_positions": 4
+    },
+    {
+      "balance_gte": 6000,
+      "max_positions": 5
+    }
+  ],
+  "scheduled_gap_guard": {
+    "buffer_seconds": 300,
+    "condition": "time_to_next_trading_break <= planned_lifecycle + buffer"
+  },
+  "tick_result": {
+    "months": "2026-02 through 2026-07",
+    "trades": 8520,
+    "net_usd": 13754.29,
+    "end_balance_usd": 14254.29,
+    "min_equity_usd": 469.82,
+    "max_floating_dd_usd": 750.3,
+    "max_concurrency": 5,
+    "max_estimated_margin_500x_usd": 48.91,
+    "min_estimated_free_margin_500x_usd": 459.59,
+    "all_months_positive": true
+  },
+  "hard_rules": {
+    "martingale": false,
+    "lot_scaling": false,
+    "production_mql5_authorized": false,
+    "august_accessed": false
+  },
+  "role": "fallback_if_lower_capital_research_fails"
+}
