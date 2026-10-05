@@ -1,0 +1,76 @@
+{
+  "schema": "delta-r037-displacement-qualified-session-sweep-17da-17dd-v1",
+  "status": "COMPLETE_FAST_CAUSAL_STAGE_A_SCREEN",
+  "unit": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
+  "parent_checkpoint": "R037_XAUUSD_SESSION_LIQUIDITY_SWEEP_RECLAIM_HARVEST_CHECKPOINT_17CW_17CZ",
+  "prereg_commit": "354bb0bf176d615b6495fc282d203e10c7385144",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "source_defaults": {
+    "session_timezone": "America/New_York",
+    "asia": "18:00-03:00",
+    "london": "03:00-07:59",
+    "new_york": "08:00-16:00",
+    "atr_length": 14,
+    "min_range_atr": 1.5,
+    "min_body_range": 0.5
+  },
+  "configs": {
+    "17DA_SSRP_WICK_M1": {
+      "metrics": {
+        "trades": 26,
+        "distinct_days": 11,
+        "official_wins": 10,
+        "direct_net_usd": -7.87
+      },
+      "gate": {
+        "screen_pass": false
+      }
+    },
+    "17DB_SSRP_WICK_M5": {
+      "metrics": {
+        "trades": 18,
+        "distinct_days": 9,
+        "official_wins": 6,
+        "direct_net_usd": -4.68
+      },
+      "gate": {
+        "screen_pass": false
+      }
+    },
+    "17DC_SSRP_FAILED_CLOSE_M1": {
+      "metrics": {
+        "trades": 20,
+        "distinct_days": 10,
+        "official_wins": 11,
+        "direct_net_usd": -3.21
+      },
+      "gate": {
+        "screen_pass": false
+      }
+    },
+    "17DD_SSRP_FAILED_CLOSE_M5": {
+      "metrics": {
+        "trades": 12,
+        "distinct_days": 7,
+        "official_wins": 5,
+        "direct_net_usd": -2.42
+      },
+      "gate": {
+        "screen_pass": false
+      }
+    }
+  },
+  "finding": {
+    "survivors": [],
+    "leader": null,
+    "decision": "RETIRE_SSRP_QUALIFIED_SWEEP_NO_STAGE_A_SURVIVOR",
+    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+  },
+  "numeric_retuning": false,
+  "post_result_rescue": false,
+  "august_accessed": false,
+  "mql5_authorized": false,
+  "runtime_seconds": 8.708
+}
