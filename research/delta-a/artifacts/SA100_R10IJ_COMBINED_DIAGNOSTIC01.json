@@ -1,0 +1,44 @@
+{
+  "id":"SA100_R10IJ_COMBINED_DIAGNOSTIC01",
+  "status":"COMPLETE_LEDGER_PLUS_CONSERVATIVE_FIXED_STREAM_DIAGNOSTIC__NOT_PROMOTED",
+  "january":{
+    "episodes":3841,
+    "baseline_net_usd":1242.09,
+    "candidate_net_usd":2148.5665,
+    "incremental_net_usd":906.4765,
+    "baseline_gl_usd":-16725.52,
+    "candidate_gl_usd":-14281.8345,
+    "gross_loss_reduction_usd":2443.6855,
+    "baseline_pf":1.0742631619,
+    "candidate_pf":1.1504405124,
+    "baseline_win_rate":0.4951835460,
+    "candidate_win_rate":0.5436084353,
+    "modified_episodes":725,
+    "modified_win_rate":0.7227586207,
+    "converted_losses":287
+  },
+  "late_january_holdout":{
+    "incremental_net_usd":655.9415,
+    "gross_loss_reduction_usd":1645.193,
+    "candidate_win_rate":0.5464566929,
+    "modified_win_rate":0.7764705882,
+    "converted_losses":184
+  },
+  "conservative_fixed_stream_rolling":{
+    "warning":"This replay omits Research09C low-balance rescue locks and cannot admit opportunities absent from the current 3,841-event physical stream. It is directional evidence only.",
+    "stripped_control":{"reach1000_15d":0.7857142857,"below30":0.1538461538,"worst_min_balance_usd":0.82,"median_days1000_15d":23.10208},
+    "r10ij":{"reach1000_15d":1.0,"below30":0.0384615385,"worst_min_balance_usd":14.52,"median_days1000_15d":20.74057}
+  },
+  "r9_synth_january_reference":{"trades":27980,"net_usd":41520.82,"gross_loss_usd":-1827.87},
+  "distance_after_r10ij":{
+    "net_ratio_to_synth":0.051746,
+    "gross_loss_magnitude_ratio_to_synth":7.8134,
+    "physical_episode_count_ratio_to_synth_trade_count":0.137277
+  },
+  "decision":"R10I+R10J is the new leading January loss-conversion stack, pending exact Research09C capital/tick integration. Do not extrapolate to all virtual events.",
+  "helper_sha256":"01854455250f0ddfcdcca9076af0473bef1437935d24918898121b52e8d54599",
+  "result_sha256":"aa1a46ebae7c0efaa845d5b78b44e116ab4b1f97a13183c4a8873985b786ac4d",
+  "rolling_csv_sha256":"c0accf6a1e3043278c3cf86503854e9d791a0b8a562d29705dfa72ff364c6fc4",
+  "august_accessed":false,
+  "production_mql5_authorized":false
+}
