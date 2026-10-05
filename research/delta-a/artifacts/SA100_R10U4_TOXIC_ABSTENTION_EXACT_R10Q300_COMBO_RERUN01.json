@@ -1,0 +1,42 @@
+{
+  "id": "SA100_R10U4_TOXIC_ABSTENTION_EXACT_R10Q300_COMBO_RERUN01",
+  "status": "COMPLETE_EXACT_BREAKTHROUGH",
+  "rule": "shadow_balance>=300 AND final_R10Q_action=HOLD AND ((session=LONDON_ONLY AND source_gap=2.375) OR (owner=REVERT AND horizon_s=600)) => ABSTAIN",
+  "skipped_episodes": 636,
+  "episode_retention": 0.834418,
+  "physical_legs": {
+    "n": 4512,
+    "net": 2631.1245,
+    "gp": 17211.806,
+    "gl": -14580.6815,
+    "pf": 1.1804527792,
+    "win": 0.5285904255
+  },
+  "episodes": {
+    "net": 2631.1245,
+    "gp": 14452.0055,
+    "gl": -11820.881,
+    "pf": 1.2225827753,
+    "executed_win_approx": 0.560998
+  },
+  "discovery": {
+    "net": 749.944,
+    "pf": 1.3782198686,
+    "executed_win_approx": 0.556405
+  },
+  "holdout": {
+    "net": 1881.1805,
+    "pf": 1.1912146664,
+    "executed_win_approx": 0.563224
+  },
+  "risk": {
+    "balance_dd": 367.58,
+    "tick_equity_dd": 312.8135,
+    "min_tick_equity": 88.51,
+    "min_free_margin": 75.77994,
+    "min_margin_level_pct": 535.0154,
+    "max_positions": 8
+  },
+  "august_accessed": false,
+  "production_mql5_authorized": false
+}
