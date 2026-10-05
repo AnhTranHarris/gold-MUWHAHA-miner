@@ -1,16 +1,16 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "INFLIGHT",
+  "status": "COMPLETE",
   "branch": "delta",
   "unit": "R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CI_17CJ",
   "parent_durable_unit": "R037_VCE_QIM_CONFIRMATION_STAGE_A_SCREEN_CHECKPOINT_17CE_17CH",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "phase": "COMPLETE",
+  "phase_rank": 7,
   "progress": {
-    "status": "PRODUCER_DURABLE_OFFICIAL_COMPUTE_NEXT",
-    "last_completed": "R037_VCE_QIM_CONFIRMATION_STAGE_A_SCREEN_CHECKPOINT_17CE_17CH",
+    "status": "COMPLETE_NO_STAGE_A_SURVIVOR",
+    "last_completed": "R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CI_17CJ",
     "current_candidate": "R037-CPC-v1 / SuperTrend pullback + NR7 M30 breakout",
-    "next": "Run exact committed 17CI-17CJ producer under bounded runner on canonical Stage-A ticks."
+    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
@@ -43,5 +43,18 @@
     "commit": "79ef49f6936d22b0ab3b0166934247f0f4dd99cc",
     "blob_sha": "55e1b29b76ed3cd039e3e7d96c482a6291c2d6e9",
     "local_blob_verified": false
+  },
+  "result": {
+    "path": "research/delta/reference/DELTA_R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_CHECKPOINT_17CI_17CJ.json",
+    "commit": "5529cf71ed77500f015d05610197c6ddcdf97de4",
+    "result_sha256": "45db038715b6d239930e86f3a5b138324db0460552576dc8a1e3ec58cbcc56ad"
+  },
+  "report": {
+    "path": "research/delta/research/DELTA_R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_CHECKPOINT_17CI_17CJ.md",
+    "commit": "37f8acefef89b428efa5515ab5dfa74ead04e1e6"
+  },
+  "manifest": {
+    "path": "research/delta/artifacts/DELTA_R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_CHECKPOINT_17CI_17CJ_MANIFEST.json",
+    "commit": "33faa8d1f686291b0186b397299b6c1cced944ca"
   }
 }
