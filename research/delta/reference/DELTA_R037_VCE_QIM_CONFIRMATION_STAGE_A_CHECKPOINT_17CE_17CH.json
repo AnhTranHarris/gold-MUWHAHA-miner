@@ -1,0 +1,119 @@
+{
+  "schema": "delta-r037-vce-qim-confirmation-stage-a-17ce-17ch-v1",
+  "status": "COMPLETE_FAST_CAUSAL_PRESCREEN",
+  "unit": "R037_VCE_QIM_CONFIRMATION_STAGE_A_SCREEN_CHECKPOINT_17CE_17CH",
+  "family": "R037-VQCF-v1",
+  "parent_checkpoint": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
+  "prereg_commit": "26d6e97a7ea5c2a6fadc7b903a6dde193b85cf9d",
+  "producer_commit": "97d0aa6b6784e5ddc1464ba6f2d1dddaed8d9fea",
+  "producer_blob_sha": "204a6587d0c941d18db098f8dab011b845bb5258",
+  "producer_file_sha256": "844dc08593e641294ac46d7d0839ad99b123488a90574409add867926c47d453",
+  "result_sha256": "1775b2c2787563311f2d8c050e0ea1615f698f05f09b09e5d62ac8160e335855",
+  "runtime_seconds": 7.241,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "vce_diagnostics": {
+    "bars": 3036,
+    "release": 69,
+    "breakout": 27,
+    "mom12_pass": 27,
+    "spread_reject": 0
+  },
+  "configs": {
+    "17CE_VCE_C04_CONTROL": {
+      "threshold": null,
+      "metrics": {
+        "source_proposals": 27,
+        "qi_pass": 27,
+        "trades": 27,
+        "distinct_days": 11,
+        "long": 16,
+        "short": 11,
+        "official_wins": 20,
+        "gross_profit": 4.22,
+        "gross_loss": -3.24,
+        "direct_net_usd": 0.71
+      }
+    },
+    "17CF_VCE_QI025_ALIGN": {
+      "threshold": 0.25,
+      "metrics": {
+        "source_proposals": 27,
+        "qi_pass": 8,
+        "trades": 8,
+        "distinct_days": 6,
+        "long": 6,
+        "short": 2,
+        "official_wins": 7,
+        "gross_profit": 1.82,
+        "gross_loss": -0.55,
+        "direct_net_usd": 1.19
+      },
+      "retention_vs_control": 0.296296,
+      "gate": {
+        "minimum_trades_10": false,
+        "minimum_distinct_days_5": true,
+        "retention_vs_control_min_0_35": false,
+        "direct_net_exceeds_control": true,
+        "screen_pass": false
+      }
+    },
+    "17CG_VCE_QI050_ALIGN": {
+      "threshold": 0.5,
+      "metrics": {
+        "source_proposals": 27,
+        "qi_pass": 2,
+        "trades": 2,
+        "distinct_days": 2,
+        "long": 2,
+        "short": 0,
+        "official_wins": 2,
+        "gross_profit": 0.32,
+        "gross_loss": 0,
+        "direct_net_usd": 0.3
+      },
+      "retention_vs_control": 0.074074,
+      "gate": {
+        "minimum_trades_10": false,
+        "minimum_distinct_days_5": false,
+        "retention_vs_control_min_0_35": false,
+        "direct_net_exceeds_control": false,
+        "screen_pass": false
+      }
+    },
+    "17CH_VCE_QI075_ALIGN": {
+      "threshold": 0.75,
+      "metrics": {
+        "source_proposals": 27,
+        "qi_pass": 1,
+        "trades": 1,
+        "distinct_days": 1,
+        "long": 1,
+        "short": 0,
+        "official_wins": 1,
+        "gross_profit": 0.17,
+        "gross_loss": 0,
+        "direct_net_usd": 0.16
+      },
+      "retention_vs_control": 0.037037,
+      "gate": {
+        "minimum_trades_10": false,
+        "minimum_distinct_days_5": false,
+        "retention_vs_control_min_0_35": false,
+        "direct_net_exceeds_control": false,
+        "screen_pass": false
+      }
+    }
+  },
+  "finding": {
+    "survivors": [],
+    "leader": null,
+    "decision": "RETIRE_VCE_QIM_NO_STAGE_A_SURVIVOR",
+    "clue": "QI025 improved direct net and win concentration but failed fixed sample/retention gates; do not rescue.",
+    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+  },
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "mql5_authorized": false
+}
