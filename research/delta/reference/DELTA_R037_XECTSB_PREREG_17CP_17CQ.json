@@ -1,0 +1,54 @@
+{
+  "schema": "delta-r037-xectsb-prereg-17cp-17cq-v1",
+  "status": "PREREGISTERED_BEFORE_PRODUCER",
+  "unit": "R037_XAUUSD_EMA_CROSS_TOUCH_SWING_BREAK_STAGE_A_SCREEN_CHECKPOINT_17CP_17CQ",
+  "family": "R037-XECTSB-v1",
+  "parent_checkpoint": "R037_VCE_RAW_RELEASE_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CO",
+  "research_question": "Does the reconstructible XAUUSD EMA9/21 cross -> later EMA9 touch -> later touch-candle break -> later completed close beyond the frozen pre-cross 10-bar swing generate positive frozen 30-second executable persistence with usable Stage-A supply?",
+  "public_source": {
+    "name": "TradingView — XAUUSD Session 9EMA Last-Cross + Touch + Enter/R.Enter",
+    "ref": "turn263588search0",
+    "access": "open-source",
+    "disclosed_logic": "EMA9/21 cross sets bias; freeze prior 10-bar swing excluding cross bar; wait for EMA9 touch; then break touch candle; then completed close beyond frozen swing; opposite cross resets; one ENTER per cross."
+  },
+  "causal_reconstruction": {
+    "same_bar_transitions": false,
+    "rule": "Every stage transition must occur on a later completed bar than the prior transition; this avoids retrospective intrabar ordering.",
+    "opposite_cross_reset": true,
+    "one_entry_per_cross": true
+  },
+  "lanes": {
+    "17CP_M5_EMA9_21_TOUCH_SWING10": {
+      "timeframe_ms": 300000
+    },
+    "17CQ_M15_EMA9_21_TOUCH_SWING10": {
+      "timeframe_ms": 900000
+    }
+  },
+  "frozen_execution": {
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "fixed_lot": 0.01
+  },
+  "gate": {
+    "minimum_trades": 10,
+    "minimum_distinct_days": 5,
+    "direct_net_usd": "strictly_positive",
+    "pass_action": "advance best preregistered survivor to independent later-January validation",
+    "fail_action": "retire family unchanged; no rescue"
+  },
+  "stage_a": {
+    "start_utc": "2026-01-01T00:00:00Z",
+    "end_utc_exclusive": "2026-01-18T12:00:00Z",
+    "expected_ticks": 4205709,
+    "canonical_january_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+  },
+  "numeric_retuning": false,
+  "post_result_rescue": false,
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
