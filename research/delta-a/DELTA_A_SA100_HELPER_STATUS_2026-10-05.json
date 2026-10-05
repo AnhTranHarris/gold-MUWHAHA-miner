@@ -50,7 +50,7 @@
     "cross_month_decision_completed": false,
     "required_action": "Rerun the helper work unit from scratch starting with January."
   },
-  "next_unit": "SA100_R10I_EXACT_CAPITAL_TICK_REPLAY01",
+  "next_unit": "SA100_R10N_TREE_POLICY_EXACT_CAPITAL_REPLAY01",
   "hard_rules": {
     "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
@@ -415,6 +415,36 @@
       "id": "SA100_R10IJ_COMBINED_DIAGNOSTIC01",
       "status": "COMPLETE_LEADING_JANUARY_STACK_NOT_PROMOTED",
       "finding": "Combined stack adds +$906.48 vs current episode control, cuts $2,443.69 GL, lifts win rate to 54.36%, converts 287 losses. Conservative fixed-stream rolling test improves seed path; exact Research09C replay still required."
+    },
+    {
+      "id": "SA100_R10I_EXACT_CAPITAL_TICK_REPLAY01_FAILED",
+      "status": "INCOMPLETE_PARITY_FAILURE_DO_NOT_RESUME",
+      "finding": "First event-driven replay used trigger-time rather than admission-time seed-rescue balance and failed frozen control parity; discarded."
+    },
+    {
+      "id": "SA100_R10I_EXACT_CAPITAL_TICK_REPLAY01_RERUN01",
+      "status": "COMPLETE_EXACT_REPLAY_NEGATIVE",
+      "finding": "Control parity exact. Ungated R10I starved seed account: 735 episodes, +$75.31, GL -$3,779.02, episode win 50.88%; not promoted."
+    },
+    {
+      "id": "SA100_R10J_CAPITAL_GATED_R10I_SCREEN01",
+      "status": "COMPLETE_EXACT_CAPITAL_SCREEN",
+      "finding": "$500 activation is first strong Pareto lane: +$1,760.17 net, GL -$15,939.96, DD $409.04, episode win 52.20%; improves net +$518 and GL by $4,416 vs control."
+    },
+    {
+      "id": "SA100_R10K2_500_PHASE_ACTIVATION_SCREEN01",
+      "status": "COMPLETE_ROLLING_PHASE_SCREEN",
+      "finding": "On $500 rolling starts, $700 activation preserves 100% reach-$1,000 and 100% survival while maintaining >50% episode-win behavior; $500 activation dropped reach-$1,000 to 73.08%."
+    },
+    {
+      "id": "SA100_R10L_RULE_PLATEAU_EXACT_SCREEN01",
+      "status": "COMPLETE_EXACT_PLATEAU_SCREEN",
+      "finding": "Nearby transparent threshold refinements did not beat the base four-rule sleeve at the safe $700 activation boundary on joint net+GL+survival economics. Stop threshold nudging."
+    },
+    {
+      "id": "SA100_R10M_CAUSAL_ACTION_TREE_SCREEN01",
+      "status": "COMPLETE_CAUSAL_CHRONOLOGICAL_TREE_SCREEN",
+      "finding": "10 robust shallow-tree candidates. High-value depth3 cp=1s leaf=120 policy: all delta +$364.67, GL reduction $3,533.93, all episode win 52.28%, holdout win 53.94%, changed holdout win 73.60%. Candidate for exact capital replay at $700 activation."
     }
   ],
   "current_leading_experimental_lane": {
@@ -480,7 +510,7 @@
     "august_accessed": false
   },
   "research10_january_parity_speedrun": {
-    "status": "ACTIVE_R10IJ_LEADING_STACK",
+    "status": "ACTIVE_R10N_TREE_EXACT_REPLAY",
     "objective": "Converge toward R9 SYNTH economic shape while preserving frozen $100-$1,000 survival guardrails.",
     "control": {
       "candidate": "SA100_TO_1000_JAN_CANDIDATE_01",
@@ -633,8 +663,25 @@
       "modified_win_rate": 0.7227586207,
       "converted_losses": 287,
       "exact_research09c_integration_required": true
+    },
+    "r10m": {
+      "status": "COMPLETE_PROMISING",
+      "selected_for_exact_replay": {
+        "checkpoint_s": 1,
+        "depth": 3,
+        "min_leaf": 120,
+        "adv_threshold": 0,
+        "reverse_horizon_s": 90,
+        "all_delta_usd": 364.67,
+        "all_gl_reduction_usd": 3533.93,
+        "all_episode_win": 0.5227805259,
+        "holdout_episode_win": 0.5393700787,
+        "holdout_changed_win": 0.7359855335
+      },
+      "activation_balance_usd": 700,
+      "rationale": "Preserves >50% all/holdout episode success while materially reducing gross loss with a reconstructible shallow tree."
     }
   },
-  "last_completed_helper": "SA100_R10IJ_COMBINED_DIAGNOSTIC01",
-  "last_completed_helper_result": "COMPLETE_LEADING_JANUARY_STACK__EXACT_CAPITAL_INTEGRATION_REQUIRED"
+  "last_completed_helper": "SA100_R10M_CAUSAL_ACTION_TREE_SCREEN01",
+  "last_completed_helper_result": "COMPLETE_PROMISING_SHALLOW_TREE__EXACT_CAPITAL_REPLAY_REQUIRED"
 }
