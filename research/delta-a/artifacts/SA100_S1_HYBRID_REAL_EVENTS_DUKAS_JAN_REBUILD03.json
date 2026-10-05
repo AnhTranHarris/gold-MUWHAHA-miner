@@ -1,0 +1,34 @@
+{
+  "status": "COMPLETE_HYBRID_REAL_EVENTS_DUKAS_JAN",
+  "prior_failed_attempt": {
+    "status": "INCOMPLETE_TECHNICAL_FAILURE_DO_NOT_RESUME",
+    "reason": "Runtime dependency import missing before simulation; no economics produced.",
+    "disposition": "Discarded and rerun from zero after restoring dependency."
+  },
+  "helper_sha256": "cdd122407cf94980912e3f78eaac81919668b322468f68dfa1789b689200857f",
+  "result_sha256": "affc2330ab0d7c8325ab18bbfff953f5f50df1c8ce6e7582f0569238da5f636d",
+  "source_real_events": 31915,
+  "surface": "Coinexx R9 REAL ENTRY timestamps/directions scored on January Dukascopy modeled Coinexx-like $0.20 spread path",
+  "balanced_strengthened": {
+    "trades": 4529,
+    "net_usd": -858.2700000033819,
+    "gross_profit_usd": 827.6394999976801,
+    "gross_loss_usd": -1685.909500001062,
+    "pf": 0.4909157342058745,
+    "win_rate": 0.6846986089644513,
+    "closed_dd_usd": 858.2700000033819,
+    "avg_hold_s": 15.9611044380658,
+    "continue_trades": 2431,
+    "fade_trades": 2098
+  },
+  "defensive": {
+    "trades": 3948,
+    "net_usd": -742.9805000029673,
+    "gross_profit_usd": 739.4089999979651,
+    "gross_loss_usd": -1482.3895000009325,
+    "pf": 0.4987953570890107,
+    "win_rate": 0.6851570415400202,
+    "closed_dd_usd": 742.9805000029673
+  },
+  "conclusion": "Hybrid interpretation also fails. Historical positive frontier remains counterfactual/event-scoring evidence, not a fresh chronological reproduction."
+}
