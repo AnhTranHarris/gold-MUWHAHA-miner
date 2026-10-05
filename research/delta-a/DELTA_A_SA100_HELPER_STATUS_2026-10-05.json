@@ -400,6 +400,21 @@
       "status": "COMPLETE_ROBUST_PLATEAU_BREAKTHROUGH_NOT_PROMOTED",
       "finding": "38/38 local one-parameter neighborhoods passed discovery+holdout. Balanced profile adds +$739.50 and removes $1,610.90 GL; loss-defense adds +$508.66 and removes $1,835.26 GL. Both exceed 50% overall and activated success targets.",
       "august_accessed": false
+    },
+    {
+      "id": "SA100_R10I_FULL_39253_OPPORTUNITY_SURFACE01",
+      "status": "COMPLETE_NEGATIVE_SCALING_BOUNDARY",
+      "finding": "Universal application cuts GL but reduces net; R10I must remain admission-conditioned."
+    },
+    {
+      "id": "SA100_R10J_RESIDUAL_STAGE2_SCREEN01",
+      "status": "COMPLETE_PROMISING_RESIDUAL_SPECIALIST",
+      "finding": "OFF_SESSION +10s slight-positive stall exit wins 55.6%, adds +$166.97 and cuts $832.78 GL on R10I residual episodes."
+    },
+    {
+      "id": "SA100_R10IJ_COMBINED_DIAGNOSTIC01",
+      "status": "COMPLETE_LEADING_JANUARY_STACK_NOT_PROMOTED",
+      "finding": "Combined stack adds +$906.48 vs current episode control, cuts $2,443.69 GL, lifts win rate to 54.36%, converts 287 losses. Conservative fixed-stream rolling test improves seed path; exact Research09C replay still required."
     }
   ],
   "current_leading_experimental_lane": {
@@ -465,7 +480,7 @@
     "august_accessed": false
   },
   "research10_january_parity_speedrun": {
-    "status": "ACTIVE_R10I_EXACT_REPLAY_GATE",
+    "status": "ACTIVE_R10IJ_LEADING_STACK",
     "objective": "Converge toward R9 SYNTH economic shape while preserving frozen $100-$1,000 survival guardrails.",
     "control": {
       "candidate": "SA100_TO_1000_JAN_CANDIDATE_01",
@@ -608,8 +623,18 @@
         "converted_losses": 176
       },
       "warning": "Counterfactual episode ledger only; early exits alter later slot admission. Exact event-driven capital replay required before promotion."
+    },
+    "r10ij": {
+      "status": "LEADING_JANUARY_LOSS_CONVERSION_STACK",
+      "net_usd": 2148.5665,
+      "gross_loss_usd": -14281.8345,
+      "profit_factor": 1.1504405124,
+      "win_rate": 0.5436084353,
+      "modified_win_rate": 0.7227586207,
+      "converted_losses": 287,
+      "exact_research09c_integration_required": true
     }
   },
-  "last_completed_helper": "SA100_R10I_TRANSPARENT_MICRO_LOSS_CONVERSION_JAN_SCREEN",
-  "last_completed_helper_result": "COMPLETE_PROMISING__EXACT_CAPITAL_REPLAY_REQUIRED"
+  "last_completed_helper": "SA100_R10IJ_COMBINED_DIAGNOSTIC01",
+  "last_completed_helper_result": "COMPLETE_LEADING_JANUARY_STACK__EXACT_CAPITAL_INTEGRATION_REQUIRED"
 }
