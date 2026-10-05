@@ -5,13 +5,13 @@
   "unit": "R037_XAUUSD_EMA_CROSS_TOUCH_SWING_BREAK_STAGE_A_SCREEN_CHECKPOINT_17CP_17CQ",
   "family": "R037-XECTSB-v1",
   "parent_durable_unit": "R037_VCE_RAW_RELEASE_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CO",
-  "phase": "PREREG_COMMITTED",
-  "phase_rank": 1,
+  "phase": "PRODUCER_COMMITTED",
+  "phase_rank": 2,
   "progress": {
-    "status": "PREREG_DURABLE",
+    "status": "PRODUCER_DURABLE",
     "last_completed": "R037_VCE_RAW_RELEASE_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CO",
     "current_candidate": "R037-XECTSB-v1",
-    "next": "COMMIT_PRODUCER"
+    "next": "RUN_BOUNDED_STAGE_A"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
@@ -31,7 +31,13 @@
     "commit": "2d5bc884d77e9ae6b327429ce28a0784928de925",
     "status": "PREREGISTERED_BEFORE_PRODUCER"
   },
-  "producer": null,
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_xectsb_stage_a_17cp_17cq.py",
+    "commit": "d10d553a141a510ff654fa221f7f3cdc5b223ecc",
+    "blob_sha": "19c9e12a54ef4c6dd89da4875a5d68d726288aa1",
+    "file_sha256": "c26dc710879a86b9447dfaf2e236c4f3621151a3ab2a62d35aef8f34f44ae03e",
+    "local_blob_verified": true
+  },
   "result": null,
   "manifest": null
 }
