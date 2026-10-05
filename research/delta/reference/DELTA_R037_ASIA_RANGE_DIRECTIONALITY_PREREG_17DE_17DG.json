@@ -1,0 +1,91 @@
+{
+  "schema": "delta-r037-asia-range-directionality-prereg-17de-17dg-v1",
+  "status": "PREREGISTERED_BEFORE_PRODUCER_AND_COMPUTE",
+  "unit": "R037_XAUUSD_ASIA_RANGE_DIRECTIONALITY_HARVEST_CHECKPOINT_17DE_17DG",
+  "parent_checkpoint": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
+  "purpose": "Determine whether XAUUSD immediate post-Asia edge is strong-break continuation or false-break engulfing reversal, after three raw/qualified sweep-reversal families failed.",
+  "source_basis": [
+    {
+      "family": "R037-XBREAK-v1",
+      "sources": [
+        "https://www.tradingview.com/script/R5KdFAed-X-Break/"
+      ],
+      "disclosed_logic": "XAUUSD-capable London Asian-range breakout. Build Asia 03:00-10:00 UTC+3 (00:00-07:00 UTC), after London open 11:00 UTC+3 (08:00 UTC) require completed close outside Asia range, candle body >=60% of full bar and body >=30% of Asian range. M15 described as best timeframe.",
+      "project_fixture_disclosure": "EMA and ATR optional filters OFF. One first signal per direction/day. After-London-open window runs until UTC day end because source gives a start but no end."
+    },
+    {
+      "family": "R037-SUNALGO-FAKEOUT-ENGULF-v1",
+      "sources": [
+        "https://www.tradingview.com/script/wkMI2EXz-XAUUSD-Fake-Breakout-Reversal-Strategy-SunAlgo/"
+      ],
+      "disclosed_logic": "XAUUSD M15: build Asian range 00:00-08:00 UTC, detect false breakout/liquidity sweep, confirm reversal with bullish/bearish engulfing candle, best during London-New York overlap.",
+      "project_fixture_disclosure": "DELTA frozen January overlap is 13:00-16:30 UTC. Because indexed source does not disclose whether engulfing must be same bar or next bar, preregister both strict reconstructible interpretations before compute: same-bar sweep+engulf and one-bar failed-break then engulfing reclaim."
+    }
+  ],
+  "data": {
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "stage_a_window": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)",
+    "stage_a_ticks": 4205709,
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "august_2026": "SEALED"
+  },
+  "frozen_execution": {
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "fixed_lot": 0.01,
+    "entry_commission_usd": 0.01,
+    "exit_commission_usd": 0.01,
+    "one_position_at_a_time": true
+  },
+  "lanes": {
+    "17DE_XBREAK_M15_CONTINUATION": {
+      "bar_ms": 900000,
+      "asia_utc": "00:00-07:00",
+      "entry_start_utc": "08:00",
+      "min_body_bar_ratio": 0.6,
+      "min_body_asia_range_ratio": 0.3,
+      "rule": "bullish strong-body close above locked Asia high => LONG; bearish mirror below Asia low => SHORT; one first per direction/day"
+    },
+    "17DF_SUNALGO_M15_SAME_BAR": {
+      "bar_ms": 900000,
+      "asia_utc": "00:00-08:00",
+      "entry_window_utc": "13:00-16:30",
+      "rule": "same completed M15 bar sweeps Asia boundary, closes back inside, and directionally engulfs prior candle body => reversal"
+    },
+    "17DG_SUNALGO_M15_NEXT_BAR": {
+      "bar_ms": 900000,
+      "asia_utc": "00:00-08:00",
+      "entry_window_utc": "13:00-16:30",
+      "rule": "bar k closes beyond Asia boundary; immediately next completed M15 bar is opposite-direction engulfing and closes back inside => reversal"
+    }
+  },
+  "gate": {
+    "minimum_trades": 10,
+    "minimum_distinct_days": 5,
+    "strong_direct_net_usd_min": 0,
+    "selection_rule": "Advance any unchanged lane meeting all activity gates and nonnegative direct net immediately to independent later-January validation; retire failures without rescue."
+  },
+  "prohibited": [
+    "body threshold sweep",
+    "session-window sweep",
+    "timeframe rescue",
+    "EMA/ATR optional filter rescue",
+    "side/weekday filter",
+    "exit retuning",
+    "post-result rescue",
+    "August access",
+    "MQL5"
+  ],
+  "crash_safety": {
+    "hard_timeout_seconds": 120,
+    "exact_git_blob_preexecution_verification": true,
+    "atomic_output_required": true,
+    "compact_stdout": true,
+    "pycache_redirect_to_writable_temp": true,
+    "phase_checkpoint_after_each_durable_step": true
+  },
+  "mql5_authorized": false
+}
