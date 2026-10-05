@@ -4,10 +4,10 @@
   "branch": "delta",
   "research_scope": "DELTA_ONLY_CLEAN_ROOM",
   "last_verified_durable_unit": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
-  "first_incomplete_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
-  "current_phase": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST_NEXT",
+  "first_incomplete_unit": "R037_XAUUSD_ASIA_RANGE_DIRECTIONALITY_HARVEST_CHECKPOINT_17DE_17DG",
+  "current_phase": "R037_XAUUSD_ASIA_RANGE_DIRECTIONALITY_HARVEST_CHECKPOINT_17DE_17DG_IN_PROGRESS",
   "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_SSRP_QUALIFIED_SWEEP_CHECKPOINT_17DA_17DD_MANIFEST.json",
-  "active_candidate": null,
+  "active_candidate": "17DE-17DG Asia-range directionality bake-off",
   "last_candidate_disposition": "SSRP qualified-sweep family retired unchanged: 26/-$7.87, 18/-$4.68, 20/-$3.21, 12/-$2.42. No threshold/session/timeframe rescue.",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
@@ -32,12 +32,12 @@
     "prior_full_state_preserved_in_git_history": true
   },
   "recovery_pointer_sync": {
-    "status": "DURABLE_SSRP_RETIRED_NO_SURVIVOR",
+    "status": "INFLIGHT_PRODUCER_COMMITTED",
     "last_completed": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
-    "current_candidate": null,
-    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
-    "inflight_close_commit": "4104922b45b133f39a55a3b9ddaed831b18eb91f",
-    "pointer_sync_commit": "4505efe4f41d64b802f48b8c3c317cba7a42f849"
+    "current_candidate": "17DE-17DG Asia-range directionality bake-off",
+    "next": "RUN_BOUNDED_COMPUTE",
+    "inflight_close_commit": "559622b3fae8306b7db076e5c8a9641742858db4",
+    "pointer_sync_commit": "75f3cc98276b10a62b9587067f2ee6ce5dc19057"
   },
   "clean_room_maintenance": {
     "status": "RECENT_DELTA_DIFF_PREFLIGHT_CLEAN",
@@ -47,10 +47,10 @@
     "scientific_results_changed": false
   },
   "concurrency_recovery": {
-    "status": "CURRENT_CHAIN_DURABLE_NO_RESULT_LOSS",
+    "status": "INFLIGHT_DURABLE_AT_PRODUCER",
     "authoritative_checkpoint": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
-    "current_candidate": null,
-    "note": "Transport timeout does not alter committed result; resume next source harvest."
+    "current_candidate": "17DE-17DG Asia-range directionality bake-off",
+    "note": "If delivery fails now, resume at bounded compute; prereg and exact producer are durable."
   },
   "search_bias": "XECTSB and VCE branches are retired by adjacent OOS failure. Do not rescue or retune them. Harvest genuinely independent, source-grounded XAUUSD entry classes with causal event lifecycles, expected >=10 Stage-A trades, and native short-horizon persistence. Prefer structural price-action/session/liquidity anchors over another generic oscillator or EMA derivative.",
   "timeout_recovery_cursor_semantics": "Connector-safe serial closure used when low-level multi-file tree commit is blocked; verify each cursor write and require final DELTA rebuild artifact gate before trusting advancement."
