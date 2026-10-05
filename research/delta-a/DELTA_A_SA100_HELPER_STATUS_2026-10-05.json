@@ -50,7 +50,7 @@
     "cross_month_decision_completed": false,
     "required_action": "Rerun the helper work unit from scratch starting with January."
   },
-  "next_unit": "SA100_R10Q_SHADOW_SLOT_R10IJ_EXACT01",
+  "next_unit": "SA100_R10R_RESIDUAL_PLUS10_ACTION_TREE01",
   "hard_rules": {
     "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
@@ -518,6 +518,12 @@
       "status": "COMPLETE_NEGATIVE_CHRONOLOGICAL_VALIDATION",
       "output_sha256": "1dc5155f6c2ac3ab88dde1dacae5e7a8a664596d1dcea7df38fe20f9c3a0e2d0",
       "finding": "Virtual-pretrained freed-capacity models were positive in training but negative/sub-50% in validation; robust_hyperparams=0. Freed-capacity velocity family retired."
+    },
+    {
+      "id": "SA100_R10Q_SHADOW_SLOT_R10IJ_EXACT01",
+      "status": "COMPLETE_EXACT_SHADOW_BREAKTHROUGH",
+      "output_sha256": "51ca19aa5dc433604b9684420a6b97793106777e0478ef41ae28cd3789c494f5",
+      "finding": "R10IJ under frozen shadow admission clears >50% episode success and sharply improves net/GL/DD without admission flooding. $400 lane: +$2,137.15 net, -$17,888.57 GL, $367.58 DD, 53.71% episode win, 76.09% changed-action win. $300 lane gives slightly better GL and 54.07% episode win."
     }
   ],
   "current_leading_experimental_lane": {
@@ -583,7 +589,7 @@
     "august_accessed": false
   },
   "research10_january_parity_speedrun": {
-    "status": "ACTIVE_R10Q_SHADOW_R10IJ",
+    "status": "ACTIVE_R10R_RESIDUAL_LOSS_CONVERSION",
     "objective": "Converge toward R9 SYNTH economic shape while preserving frozen $100-$1,000 survival guardrails.",
     "control": {
       "candidate": "SA100_TO_1000_JAN_CANDIDATE_01",
@@ -770,8 +776,44 @@
     "r10p": {
       "status": "COMPLETE_NEGATIVE",
       "conclusion": "Do not reopen freed physical capacity recursively. Continue loss conversion on frozen shadow admission."
+    },
+    "r10q": {
+      "status": "COMPLETE_BREAKTHROUGH",
+      "leading_net_lane": {
+        "profile": "R10IJ",
+        "activate_shadow_balance": 400,
+        "net_usd": 2137.147,
+        "leg_n": 5345,
+        "leg_gl_usd": -17888.573,
+        "leg_pf": 1.1194699544,
+        "episode_win": 0.5370997136,
+        "changed_win": 0.7609108159,
+        "max_balance_dd_usd": 367.58,
+        "min_balance_usd": 96.88,
+        "converted_losses": 222,
+        "delta_net_usd": 895.057,
+        "gl_reduction_usd": 2467.987,
+        "dd_reduction_usd": 182.69
+      },
+      "leading_loss_lane": {
+        "profile": "R10IJ",
+        "activate_shadow_balance": 300,
+        "net_usd": 2132.4545,
+        "leg_n": 5361,
+        "leg_gl_usd": -17673.5415,
+        "leg_pf": 1.1206580187,
+        "episode_win": 0.5407445978,
+        "changed_win": 0.73290938,
+        "max_balance_dd_usd": 367.58,
+        "min_balance_usd": 96.88,
+        "converted_losses": 256,
+        "delta_net_usd": 890.3645,
+        "gl_reduction_usd": 2683.0185,
+        "dd_reduction_usd": 182.69
+      },
+      "next": "Train a second-stage +10s causal specialist only on R10Q residual HOLD episodes; do not alter already-successful modified actions."
     }
   },
-  "last_completed_helper": "SA100_R10P2_VIRTUAL_PRETRAIN_FREED_HOLDOUT01",
-  "last_completed_helper_result": "COMPLETE_NEGATIVE__FREED_CAPACITY_VELOCITY_FAMILY_RETIRED"
+  "last_completed_helper": "SA100_R10Q_SHADOW_SLOT_R10IJ_EXACT01",
+  "last_completed_helper_result": "COMPLETE_BREAKTHROUGH__R10IJ_SHADOW_STACK_CLEARS_50PCT_AND_IMPROVES_NET_GL_DD"
 }
