@@ -1,0 +1,85 @@
+{
+  "schema": "delta-r037-controlled-pause-continuation-17ci-17cj-v1",
+  "status": "COMPLETE_FAST_CAUSAL_PRESCREEN",
+  "unit": "R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CI_17CJ",
+  "family": "R037-CPC-v1",
+  "parent_checkpoint": "R037_VCE_QIM_CONFIRMATION_STAGE_A_SCREEN_CHECKPOINT_17CE_17CH",
+  "prereg_commit": "0c779b1cf94a9d4b29b3e5c0ea5a0b7f94b17409",
+  "producer_commit": "79ef49f6936d22b0ab3b0166934247f0f4dd99cc",
+  "producer_blob_sha": "55e1b29b76ed3cd039e3e7d96c482a6291c2d6e9",
+  "producer_file_sha256": "da6fae9a5b165a0ee5f4c4b542db0e8f8ec89f00dba0e1643be19b0a4e82cdaa",
+  "result_sha256": "45db038715b6d239930e86f3a5b138324db0460552576dc8a1e3ec58cbcc56ad",
+  "runtime_seconds": 6.24,
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "configs": {
+    "17CI_SUPERTREND_PULLBACK_M5": {
+      "metrics": {
+        "signals": 39,
+        "trades": 39,
+        "distinct_days": 10,
+        "long": 16,
+        "short": 23,
+        "official_wins": 19,
+        "gross_profit": 5.71,
+        "gross_loss": -11.04,
+        "direct_net_usd": -5.72,
+        "exit_reasons": {
+          "STOP": 38,
+          "MAX_HOLD": 1,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_10": true,
+        "minimum_distinct_days_5": true,
+        "direct_net_positive": false,
+        "screen_pass": false
+      },
+      "diagnostics": {
+        "pullbacks": 78,
+        "confirmed": 39
+      }
+    },
+    "17CJ_NR7_M30_SESSION_BREAKOUT": {
+      "metrics": {
+        "signals": 34,
+        "trades": 34,
+        "distinct_days": 11,
+        "long": 25,
+        "short": 9,
+        "official_wins": 14,
+        "gross_profit": 6.24,
+        "gross_loss": -10.27,
+        "direct_net_usd": -4.37,
+        "exit_reasons": {
+          "STOP": 34,
+          "MAX_HOLD": 0,
+          "END": 0
+        }
+      },
+      "gate": {
+        "minimum_trades_10": true,
+        "minimum_distinct_days_5": true,
+        "direct_net_positive": false,
+        "screen_pass": false
+      },
+      "diagnostics": {
+        "nr7": 82,
+        "armed": 44,
+        "triggered": 34,
+        "expired": 10
+      }
+    }
+  },
+  "finding": {
+    "survivors": [],
+    "leader": null,
+    "decision": "RETIRE_CONTROLLED_PAUSE_NO_STAGE_A_SURVIVOR",
+    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+  },
+  "numeric_retuning": false,
+  "august_accessed": false,
+  "mql5_authorized": false
+}
