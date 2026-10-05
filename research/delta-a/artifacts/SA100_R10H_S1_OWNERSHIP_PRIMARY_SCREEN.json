@@ -1,0 +1,35 @@
+{
+  "id": "SA100_R10H_S1_OWNERSHIP_PRIMARY_SCREEN",
+  "status": "COMPLETE_CAUSAL_FIXED_THRESHOLD_DIAGNOSTIC",
+  "scope": "January 2026; fixed recovered S1 thresholds; diagnostic association only; no action promoted",
+  "primary_rows": 3841,
+  "raw_ticks": 9135062,
+  "prior_completed_second_only": true,
+  "future_visibility_violations": 0,
+  "s1_counts": {"ABSTAIN":2272,"S1_FADE":1020,"S1_CONTINUE":549},
+  "primary_all": {"n":3841,"net":987.56,"gp":18467.56,"gl":-17480.00,"pf":1.0564965675,"win":0.5009112210,"avg":0.2571101276},
+  "primary_by_s1": {
+    "ABSTAIN":{"n":2272,"net":866.43,"gp":9319.43,"gl":-8453.00,"pf":1.1024997042,"win":0.5079225352,"avg":0.3813512324},
+    "S1_CONTINUE":{"n":549,"net":-160.03,"gp":2581.19,"gl":-2741.22,"pf":0.9416208841,"win":0.4881602914,"avg":-0.2914936248},
+    "S1_FADE":{"n":1020,"net":281.16,"gp":6566.94,"gl":-6285.78,"pf":1.0447295324,"win":0.4921568627,"avg":0.2756470588}
+  },
+  "episode_by_s1": {
+    "ABSTAIN":{"n":2272,"net":718.76,"gp":8999.22,"gl":-8280.46,"pf":1.0868019410,"win":0.5017605634,"avg":0.3163556338},
+    "S1_CONTINUE":{"n":549,"net":-90.86,"gp":2490.13,"gl":-2580.99,"pf":0.9647964541,"win":0.4845173042,"avg":-0.1655009107},
+    "S1_FADE":{"n":1020,"net":614.19,"gp":6478.26,"gl":-5864.07,"pf":1.1047378357,"win":0.4862745098,"avg":0.6021470588}
+  },
+  "owner_interactions": {
+    "CONT|ABSTAIN":{"n":1028,"primary_net":1301.72,"episode_net":1072.56},
+    "CONT|S1_CONTINUE":{"n":195,"primary_net":-247.56,"episode_net":-148.44},
+    "CONT|S1_FADE":{"n":997,"primary_net":237.95,"episode_net":558.21},
+    "REVERT|ABSTAIN":{"n":1244,"primary_net":-435.29,"episode_net":-353.80},
+    "REVERT|S1_CONTINUE":{"n":354,"primary_net":87.53,"episode_net":57.58},
+    "REVERT|S1_FADE":{"n":23,"primary_net":43.21,"episode_net":55.98}
+  },
+  "stability_note": "CONT|S1_CONTINUE negative result is dominated by ISO week 5 (191/195 events); not robust enough to justify an exact capital replay.",
+  "decision": "REJECT_LITERAL_S1_ACTION_TRANSFER. Preserve completed-second S1 geometry only as generic causal features.",
+  "august_accessed": false,
+  "production_mql5_authorized": false,
+  "helper_sha256": "a172d8c7adaf9b0e8b23ac7ac44b5d95ff7962820b818bc53b4a0b8ab708369a",
+  "result_sha256": "ea5aae896f0e6ea6b7f19a7158a5881364bd64319e41aa10bc20af676d24984b"
+}
