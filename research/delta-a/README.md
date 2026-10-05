@@ -119,3 +119,10 @@ Current next unit:
 The $100 seed research remains experimental. The last complete research state is `SA100_PROFIT_RAMP_RESEARCH01` (~78.1% rolling-start success to $500 within 90 days). The later stop-variant helper is explicitly **INCOMPLETE — DO NOT RESUME** and must be rerun from scratch beginning with January.
 
 August remains SEALED and production MQL5 remains unauthorized.
+
+
+Google Drive handoff folder:
+https://drive.google.com/drive/folders/1LMJvX9y_PVFSXP5xyLHYisNwJD4_nstc
+
+Current handoff Google Doc:
+https://docs.google.com/document/d/1lbNoxb-EFoU3zuRDkE3clS5a1DII_wDWsegoHIzsOLI/edit
