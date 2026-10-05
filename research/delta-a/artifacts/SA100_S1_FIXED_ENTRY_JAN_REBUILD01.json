@@ -1,0 +1,38 @@
+{
+  "status": "COMPLETE_FRESH_JAN_FIXED_ENTRY_REBUILD",
+  "helper_sha256": "ab6624b42eea0c19e220b3a6c9507e1650ffa0df42c1a10fdfcbc3277d7c97eb",
+  "dependency_sha256": "7cae7814f4e06e789e67803be9ec3b91d794c4b7f72c80bff9b9326a4c43f9a9",
+  "output_json_sha256": "a6149b090b3b9a1525352ff484915d703150863a3fe72038327de1a523331b93",
+  "output_csv_sha256": "8e5a2918efa398a6852f4b0a153946c795195d86a9fcce0a91c3ad94a0ada2d6",
+  "source": "January Dukascopy ordered ticks, modeled Coinexx-like $0.20 spread",
+  "baseline": {
+    "events": 33793,
+    "trades": 33793,
+    "net_usd": -6253.808000024798,
+    "gross_profit_usd": 4301.471499988871,
+    "gross_loss_usd": -10555.279500013668,
+    "pf": 0.407518483994981,
+    "win_rate": 0.44630544787382004
+  },
+  "balanced_strengthened": {
+    "trades": 9513,
+    "net_usd": -1922.41800000694,
+    "gross_profit_usd": 1750.8604999952167,
+    "gross_loss_usd": -3673.2785000021568,
+    "pf": 0.4766479045882823,
+    "win_rate": 0.6859035004730369,
+    "closed_dd_usd": 1940.897000006892,
+    "continue_trades": 302,
+    "fade_trades": 9211
+  },
+  "defensive": {
+    "trades": 8639,
+    "net_usd": -1721.2075000063296,
+    "gross_profit_usd": 1625.4479999956166,
+    "gross_loss_usd": -3346.655500001946,
+    "pf": 0.48569325405458413,
+    "win_rate": 0.6874638268318093,
+    "closed_dd_usd": 1749.6470000062536
+  },
+  "conclusion": "Complete fresh rerun. Historical positive S1 frontier does not reproduce on January Delta-A/Dukascopy chronology."
+}
