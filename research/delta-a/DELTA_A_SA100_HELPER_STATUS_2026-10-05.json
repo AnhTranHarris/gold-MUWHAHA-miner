@@ -50,7 +50,7 @@
     "cross_month_decision_completed": false,
     "required_action": "Rerun the helper work unit from scratch starting with January."
   },
-  "next_unit": "SA100_R10W_RESIDUAL_TOXIC_CELL_MINER01",
+  "next_unit": "SA100_R10X_REMAINING_LOSS_CONVERSION_AUTOPSY01",
   "hard_rules": {
     "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
@@ -589,6 +589,33 @@
       "id": "SA100_R10V_TOXIC_COUNTEROWNER_ON_R10Q01",
       "status": "COMPLETE_NEGATIVE",
       "finding": "Selective +5s EXIT/REV90/REV120 attempts on toxic abstention cohort produced zero robust discovery+holdout candidates. Abstention remains superior to forced ownership transfer."
+    },
+    {
+      "id": "SA100_R10W_RESIDUAL_TOXIC_CELL_MINER01",
+      "status": "COMPLETE_ROBUST_RESIDUAL_MINER",
+      "finding": "Only additional robust residual cell under the retention constraint was final-action HOLD source_gap=3.5; negative in discovery and holdout. gap=3.0 also negative but would consume too much remaining retention when stacked."
+    },
+    {
+      "id": "SA100_R10W2_RESIDUAL_GAP35_EXACT",
+      "status": "COMPLETE_EXACT_BREAKTHROUGH_NEW_JAN_FRONTIER",
+      "finding": "R10U4 plus remaining true HOLD gap=3.5 abstention. 693 total skips, 81.95% retention, +$2,763.29 net, physical GL -$14,310.06, episode GL -$11,570.28, physical PF1.193, physical win53.10%, executed episode win56.39%, discovery56.00%, holdout56.57%, balance DD $367.58, tick DD $312.81.",
+      "result": {
+        "net_usd": 2763.2945,
+        "physical_legs": 4433,
+        "physical_gl_usd": -14310.0615,
+        "physical_pf": 1.1931015111,
+        "physical_win": 0.5310173697,
+        "episode_gl_usd": -11570.281,
+        "episode_pf": 1.2388269135,
+        "executed_episode_win": 0.5638500635,
+        "discovery_exec_win": 0.5600393701,
+        "holdout_exec_win": 0.5656660413,
+        "retention": 0.8195782348,
+        "balance_dd_usd": 367.58,
+        "tick_dd_usd": 312.8135,
+        "min_tick_equity_usd": 88.51,
+        "august_accessed": false
+      }
     }
   ],
   "current_leading_experimental_lane": {
@@ -654,7 +681,7 @@
     "august_accessed": false
   },
   "research10_january_parity_speedrun": {
-    "status": "ACTIVE_R10W_RESIDUAL_TOXIC_MINING",
+    "status": "ACTIVE_R10X_REMAINING_LOSS_CONVERSION",
     "objective": "Converge toward R9 SYNTH economic shape while preserving frozen $100-$1,000 survival guardrails.",
     "control": {
       "candidate": "SA100_TO_1000_JAN_CANDIDATE_01",
@@ -911,8 +938,20 @@
     "r10v": {
       "status": "COMPLETE_NEGATIVE",
       "finding": "Forced counter-owner on toxic state does not generalize; keep abstention."
+    },
+    "r10w2": {
+      "status": "COMPLETE_EXACT_BREAKTHROUGH",
+      "net_usd": 2763.2945,
+      "physical_gl_usd": -14310.0615,
+      "episode_gl_usd": -11570.281,
+      "physical_legs": 4433,
+      "physical_win": 0.5310173697,
+      "executed_episode_win": 0.5638500635,
+      "retention": 0.8195782348,
+      "balance_dd_usd": 367.58,
+      "tick_dd_usd": 312.8135
     }
   },
-  "last_completed_helper": "SA100_R10U4_TOXIC_ABSTENTION_EXACT_R10Q300_COMBO_RERUN01",
-  "last_completed_helper_result": "COMPLETE_BREAKTHROUGH__R10Q_TOXIC_ABSTENTION_NET_GL_WIN_IMPROVEMENT"
+  "last_completed_helper": "SA100_R10W2_RESIDUAL_GAP35_EXACT",
+  "last_completed_helper_result": "COMPLETE_BREAKTHROUGH__JAN_FRONTIER_NET2763_GL14310_EXECWIN56P39"
 }
