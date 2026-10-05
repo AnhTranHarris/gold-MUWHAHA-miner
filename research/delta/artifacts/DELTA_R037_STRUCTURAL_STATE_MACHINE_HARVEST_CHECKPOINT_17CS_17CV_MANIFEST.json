@@ -1,0 +1,182 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
+  "status": "VERIFIED_STAGE_A_FAIL_RETIRED_NO_RESCUE",
+  "date_utc": "2026-10-05",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
+  "hypothesis": "Two source-grounded structural state machines may provide nonnegative immediate 30-second persistence with adequate Stage-A supply.",
+  "falsification_condition": "Retire unchanged if a lane has <20 trades, <5 days, or negative direct net.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Stage-A structural harvest lanes",
+    "reference_count": 4,
+    "minimum_count": 4,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "All four preregistered lanes executed."
+  },
+  "primary_metrics": {
+    "entry_quality": "All four lanes negative direct net.",
+    "hold_persistence": "Frozen 30-second execution.",
+    "economics": "No survivor.",
+    "gross_loss_drawdown": "Not promoted.",
+    "activity": "608/120/942/177 trades."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_structural_state_machine_harvest_17cs_17cv.py",
+      "commit": "074eaca06b5dcebeb1d9b7c2b9ca570fc2e551e8",
+      "blob_sha": "7f8c5bafb9d4e23844764d4c5787fe7b0e1c90d6",
+      "file_sha256": "d9827814b9bbabad867a01cdcc71451e1c48d6aa93f04d7b03c6e0cd8144596b"
+    }
+  ],
+  "helpers": [],
+  "models": [],
+  "config": {
+    "parameters": {
+      "pivot_width_123nb": 3,
+      "msnr_scan_length_bars": 120,
+      "max_spread_raw": 250,
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30,
+      "fixed_lot": 0.01,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "closed-bar structural state",
+      "first executable P75 tick",
+      "frozen 30-second execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "fast Stage-A prescreen"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": true,
+      "exact_git_blob_preexecution_verification": true,
+      "compact_stdout": true,
+      "pycache_redirected_to_writable_temp": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    },
+    {
+      "name": "prereg",
+      "path": "research/delta/reference/DELTA_R037_STRUCTURAL_STATE_MACHINE_HARVEST_PREREG_17CS_17CV.json",
+      "commit": "0f5e4299eab2e76ead38ad63a5a1376a62de8dc1"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "M1/M5 bars derived causally from Stage-A ticks"
+    ],
+    "diagnostics": [
+      "123NB M1 608 trades -104.96",
+      "123NB M5 120 trades -22.26",
+      "MSnR DBO M1 942 trades -187.95",
+      "MSnR DBO M5 177 trades -34.02"
+    ]
+  },
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV.json",
+      "commit": "cbd58f7673a9d747b412b7c6f7b6dec9f6218657",
+      "blob_sha": "6734fe162050ebca2c83e0d3dfbb16528cfad63d",
+      "result_sha256": "cb2deae8dc8ef84d7bb0bd56a8be4fbd0ba85be1ed0236edf2f97cae3a59c600"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV.md",
+      "commit": "f8851ea3ab55c1ce189e29a451adbcfb1e7ee3de",
+      "blob_sha": "3d31c4e45e0e07f8112511b61532de21b81b45a2"
+    }
+  ],
+  "qa": [
+    "Prereg durable before producer.",
+    "Producer committed and exact local Git blob verified before compute.",
+    "Canonical January SHA and Stage-A chronology verified.",
+    "Bounded replay completed in 6.863 seconds.",
+    "All four lanes passed supply gates and failed direct economics.",
+    "No rescue tuning; August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_structural_state_machine_harvest_17cs_17cv.py",
+    "command": "PYTHONPYCACHEPREFIX=<tmp> timeout --signal=TERM --kill-after=5s 120s python <producer> --source <canonical_january_gzip> --output <result_json>",
+    "timing_semantics": "Closed-bar causal structure; first executable P75 tick at/after signal bar edge.",
+    "expected_fingerprints": {
+      "17CS": {
+        "trades": 608,
+        "net": -104.96
+      },
+      "17CT": {
+        "trades": 120,
+        "net": -22.26
+      },
+      "17CU": {
+        "trades": 942,
+        "net": -187.95
+      },
+      "17CV": {
+        "trades": 177,
+        "net": -34.02
+      }
+    },
+    "selected_interpretation": "NO_STAGE_A_SURVIVOR"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — families retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "None.",
+    "execution_quote_side_spec": "Frozen P75.",
+    "ownership_scheduler_spec": "No integration.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01 research semantics.",
+    "trade_count_parity_spec": "Not applicable.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "github_commits": [
+    "0f5e4299eab2e76ead38ad63a5a1376a62de8dc1",
+    "7adcb0743bd57e392b41aae0c6fd7e9527dbc60b",
+    "074eaca06b5dcebeb1d9b7c2b9ca570fc2e551e8",
+    "f6d366962e3717a5cd0ebb079e42d5e5d0abf8b2",
+    "c85a9cdcdf1d93ae852903c55c3a54f68c334a44",
+    "cbd58f7673a9d747b412b7c6f7b6dec9f6218657",
+    "f8851ea3ab55c1ce189e29a451adbcfb1e7ee3de"
+  ],
+  "drive_artifacts": [],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": false,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+}
