@@ -292,3 +292,20 @@ Frozen white-paper snapshot:
 https://docs.google.com/document/d/1S9ZXXfhUmHRSzn0M4CPOSfzid9rDtX_LeMWVTjNfrkg/edit
 
 The Drive handoff folder and GitHub handoff are complementary. GitHub is authoritative for executable/reconstructible state, helper source, manifests, hashes and branch history. The Google Drive handoff is the human-readable bootstrap and frozen white-paper snapshot.
+
+
+## 13. Owner amendment — $100->$1,000 survival bridge — 2026-10-05
+
+This section supersedes the prior $500 handoff boundary for **new experimental research only**. It does not alter or erase the frozen $500 fallback milestone.
+
+- New minimum real handoff boundary: **$1,000**.
+- $500 is an intermediate capital state/fallback reference.
+- Design target below $1,000: **100% rolling-start survival**, reported honestly as measured rather than assumed.
+- Strategic survivability concern extends to accounts below **$50,000** because live/demo start date and market regime are unknown.
+- Fixed lot remains **0.01**.
+- Preserve high trade velocity; survival by starving the strategy is not acceptable.
+- Bounded/finite Martingale-inspired recovery structures may now be researched, but unbounded/exponential loss-driven sizing is not promotable.
+- January raw-tick regime audit found ~28.34x variation between minimum and maximum daily true range, reinforcing the need for causal multi-horizon volatility/session/event adaptation.
+- Active successor work unit: `SA100_JAN_SPEEDRUN_RESTART_02_1000_BRIDGE`.
+- Durable research note: `DELTA_A_SA100_TO_1000_SURVIVAL_RESEARCH02.md`.
+- August remains SEALED; production MQL5 remains unauthorized.
