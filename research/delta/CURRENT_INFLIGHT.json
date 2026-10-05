@@ -1,17 +1,17 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "IN_PROGRESS",
+  "status": "COMPLETE",
   "branch": "delta",
   "unit": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
   "family": "R037-SRBRT-v1",
   "parent_durable_unit": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
-  "phase": "RESULT_COMMITTED",
-  "phase_rank": 3,
+  "phase": "COMPLETE",
+  "phase_rank": 7,
   "progress": {
-    "status": "RESULT_DURABLE",
-    "last_completed": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
-    "current_candidate": "R037-SRBRT-v1",
-    "next": "WRITE_REPORT_WORKBOOK_MANIFEST"
+    "status": "COMPLETE_NO_SURVIVOR",
+    "last_completed": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
+    "current_candidate": null,
+    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
@@ -45,5 +45,18 @@
     "sha256": "caf430d9dce0ff28584f67d0568ec24b9921fd95f25c5227bc6f1aff8fd86939",
     "status": "COMPLETE_NO_SURVIVOR"
   },
-  "manifest": null
+  "manifest": {
+    "path": "research/delta/artifacts/DELTA_R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_CHECKPOINT_17CM_17CN_MANIFEST.json",
+    "commit": "b4f823ae2e6700b251a6c75be164ea20c6dc607d"
+  },
+  "report": {
+    "path": "research/delta/research/DELTA_R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_CHECKPOINT_17CM_17CN.md",
+    "commit": "234a3aef099237086c68ee60e6bd4df41211fda6"
+  },
+  "last_completed": {
+    "unit": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
+    "checkpoint": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
+    "current_state_next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+    "manifest": "research/delta/artifacts/DELTA_R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_CHECKPOINT_17CM_17CN_MANIFEST.json"
+  }
 }
