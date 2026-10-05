@@ -1,16 +1,16 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "INFLIGHT",
+  "status": "COMPLETE",
   "branch": "delta",
   "unit": "R037_VCE_QIM_CONFIRMATION_STAGE_A_SCREEN_CHECKPOINT_17CE_17CH",
   "parent_durable_unit": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
-  "phase": "RESULT_COMMITTED",
-  "phase_rank": 3,
+  "phase": "COMPLETE",
+  "phase_rank": 7,
   "progress": {
-    "status": "RESULT_DURABLE_REPORT_NEXT",
-    "last_completed": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
+    "status": "COMPLETE_NO_PROMOTABLE_SURVIVOR",
+    "last_completed": "R037_VCE_QIM_CONFIRMATION_STAGE_A_SCREEN_CHECKPOINT_17CE_17CH",
     "current_candidate": "R037-VQCF-v1 / M5 VCE release + causal QI confirmation",
-    "next": "Persist report, workbook readback and rebuild manifest; do not rerun compute."
+    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
@@ -50,5 +50,13 @@
     "path": "research/delta/reference/DELTA_R037_VCE_QIM_CONFIRMATION_STAGE_A_CHECKPOINT_17CE_17CH.json",
     "commit": "1d5b75479f517d9177717db913cec42396a0ec75",
     "result_sha256": "1775b2c2787563311f2d8c050e0ea1615f698f05f09b09e5d62ac8160e335855"
+  },
+  "report": {
+    "path": "research/delta/research/DELTA_R037_VCE_QIM_CONFIRMATION_STAGE_A_CHECKPOINT_17CE_17CH.md",
+    "commit": "41de4c6145590eb4c28945078d51b800aef9c87c"
+  },
+  "manifest": {
+    "path": "research/delta/artifacts/DELTA_R037_VCE_QIM_CONFIRMATION_STAGE_A_CHECKPOINT_17CE_17CH_MANIFEST.json",
+    "commit": "8affb98cbe2b1c5488396041ff4b6733bbedc435"
   }
 }
