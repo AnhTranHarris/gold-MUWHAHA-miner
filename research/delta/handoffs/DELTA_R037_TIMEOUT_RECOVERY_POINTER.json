@@ -18,8 +18,8 @@
   "in_flight_unit": {
     "unit": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
     "status": "IN_PROGRESS",
-    "phase": "PREREG_COMMITTED",
-    "phase_rank": 1,
+    "phase": "PRODUCER_COMMITTED",
+    "phase_rank": 2,
     "parent_durable_unit": "R037_QUASIMODO_SOURCE_DEFAULT_STAGE_A_SCREEN_CHECKPOINT_17CA_17CB",
     "committed_artifacts": [
       {
@@ -27,9 +27,16 @@
         "path": "research/delta/reference/DELTA_R037_BREAKER_BLOCK_RETEST_PREREG_17CC_17CD.json",
         "commit": "cfcb44d1065a30f23aebee1b8193d749346a99d4",
         "blob_sha": "efd3b24efea9f39c97a77c8d3fa752c2b2029c27"
+      },
+      {
+        "role": "producer",
+        "path": "research/delta/experiments/delta_r037_breaker_block_retest_17cc_17cd.py",
+        "commit": "38f6d90538f24d6fc728e5ce7f9e9ef00b3b7002",
+        "blob_sha": "6f0c706b9921df0cd0624cc327ee150d59b3f16d",
+        "file_sha256": "b6e29e1a7d2bbd542e74d5dbe1834c88ffc9ca030dac35e01652fc33c6d648d8"
       }
     ],
-    "next_action": "Build and commit fixed breaker-block producer; then run bounded Stage-A screen.",
+    "next_action": "Run exact committed producer under bounded runner on canonical Stage-A ticks; persist result before any interpretation.",
     "completed_months": [],
     "next_month": null
   },
