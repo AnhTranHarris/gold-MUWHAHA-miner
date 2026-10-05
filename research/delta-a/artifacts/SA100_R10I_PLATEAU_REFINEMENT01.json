@@ -1,0 +1,71 @@
+{
+  "id":"SA100_R10I_PLATEAU_REFINEMENT01",
+  "status":"COMPLETE_ROBUSTNESS_AND_MULTI_OBJECTIVE_SCREEN__NOT_PROMOTED",
+  "parent":"SA100_R10I_TRANSPARENT_MICRO_LOSS_CONVERSION_JAN_SCREEN",
+  "local_neighborhood_variants_tested":38,
+  "local_neighborhood_variants_passing_both_discovery_and_holdout":38,
+  "pass_definition":"positive incremental net + positive gross-loss reduction + modified-episode win rate >50% in discovery and late-January holdout",
+  "cost_stress_usd_round_trip_per_modified_0p01_leg":{
+    "0.225":{"incremental_net_usd":580.605,"gl_reduction_usd":1239.0655,"overall_win_rate":0.5266857589,"modified_win_rate":0.7931937173},
+    "0.30":{"incremental_net_usd":538.53,"gl_reduction_usd":1226.701,"overall_win_rate":0.5243426191,"modified_win_rate":0.7696335079},
+    "0.40":{"incremental_net_usd":482.43,"gl_reduction_usd":1208.2575,"overall_win_rate":0.5219994793,"modified_win_rate":0.7460732984},
+    "0.50":{"incremental_net_usd":426.33,"gl_reduction_usd":1188.312,"overall_win_rate":0.5201770372,"modified_win_rate":0.7277486911}
+  },
+  "profiles":{
+    "BALANCED":{
+      "r1":"pre30 range 2.5-<5.0; e5_disp >1.25 => EXIT5",
+      "r2":"UTC 18-21; e5_disp -0.75-<0 => REV120",
+      "r3":"LONDON_ONLY; e5_disp 0.35-1.0 => EXIT5",
+      "r4":"gap <=2.375; e5_disp 0-<0.5; e5_eff 0.30-<0.50 => REV90",
+      "discovery_incremental_net_usd":224.1575,
+      "holdout_incremental_net_usd":515.3475,
+      "all_incremental_net_usd":739.505,
+      "all_gl_reduction_usd":1610.9045,
+      "candidate_total_net_usd":1981.595,
+      "candidate_total_gl_usd":-15114.6155,
+      "overall_win_rate":0.5378807602,
+      "modified_win_rate":0.7968127490,
+      "modified_episodes":502,
+      "converted_losses":228
+    },
+    "MAX_NET_PARETO":{
+      "r1":"pre30 range 2.5-<4.0; e5_disp >1.0 => EXIT5",
+      "r2":"UTC 18-21; e5_disp -0.75-<0 => REV120",
+      "r3":"LONDON_ONLY; e5_disp 0.35-1.0 => EXIT5",
+      "r4":"gap <=2.375; e5_disp 0-<0.5; e5_eff 0.30-<0.50 => REV90",
+      "all_incremental_net_usd":801.40,
+      "all_gl_reduction_usd":1478.3545,
+      "candidate_total_net_usd":2043.49,
+      "candidate_total_gl_usd":-15247.1655,
+      "overall_win_rate":0.533455,
+      "modified_win_rate":0.776805,
+      "modified_episodes":457,
+      "converted_losses":211
+    },
+    "LOSS_DEFENSE_PARETO":{
+      "r1":"pre30 range 2.5-<5.0; e5_disp >0.75 => EXIT5",
+      "r2":"UTC 18-21; e5_disp -0.75-<0 => REV120",
+      "r3":"LONDON_ONLY; e5_disp 0.35-1.0 => EXIT5",
+      "r4":"gap <=2.375; e5_disp 0-<0.5; e5_eff 0.30-<0.50 => REV90",
+      "all_incremental_net_usd":508.6645,
+      "all_gl_reduction_usd":1835.2645,
+      "candidate_total_net_usd":1750.7545,
+      "candidate_total_gl_usd":-14890.2555,
+      "overall_win_rate":0.544389,
+      "modified_win_rate":0.826531,
+      "modified_episodes":588,
+      "converted_losses":253
+    }
+  },
+  "r9_synth_january_reference":{"trades":27980,"net_usd":41520.82,"gross_loss_usd":-1827.87},
+  "interpretation":"A broad causal plateau exists. Use R10I as a specialist family with balanced vs loss-defense profiles; do not promote until chronological capital/tick replay verifies slot/admission and $100-$1,000 survival effects.",
+  "august_accessed":false,
+  "production_mql5_authorized":false,
+  "local_hashes":{
+    "neighborhood_csv":"fed2618aeff8a3ca8dfcd8ff676f2e032eb435a73ec260c4fb064c1b326d4bcd",
+    "robustness_json":"3adbac21a4e20be507bd1c4328a677d7320ecc3912dcf6acac7a92291622e407",
+    "plateau_combos_csv":"3a8ec80fd503c0b27f9c47681d058cfee0ec630ee6880e7ef45b7d0acc64b864",
+    "pareto_csv":"47da6f1acb15cb21e17703110e06ba6e071d8b374e23b85b1fbf4f5b198dc09e",
+    "plateau_result_json":"cf0487211bca2aee6e7c42e104098ef578694a289d268e4b11a2c0bca432dc55"
+  }
+}
