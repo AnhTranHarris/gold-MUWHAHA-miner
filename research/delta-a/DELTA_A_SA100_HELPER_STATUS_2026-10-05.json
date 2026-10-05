@@ -50,7 +50,7 @@
     "cross_month_decision_completed": false,
     "required_action": "Rerun the helper work unit from scratch starting with January."
   },
-  "next_unit": "SA100_R10P_BOUNDED_FREED_CAPACITY_VELOCITY01",
+  "next_unit": "SA100_R10Q_SHADOW_SLOT_R10IJ_EXACT01",
   "hard_rules": {
     "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
@@ -506,6 +506,18 @@
         "converted_losses": 136
       },
       "conclusion": "Architectural breakthrough: decouple loss conversion from slot reuse. $500 activation gives best GL/DD improvement while clearing >50% soft success; $700 gives slightly higher net. Use $500 shadow loss converter as base, then add bounded high-quality velocity credits separately."
+    },
+    {
+      "id": "SA100_R10P_BOUNDED_FREED_CAPACITY_VELOCITY01",
+      "status": "COMPLETE_NEGATIVE_NO_ROBUST_CREDIT_SPECIALIST",
+      "output_sha256": "5aad4defbeb629f97457f187fd119aa48e75985343b4b24fc9235e7a39f73f40",
+      "finding": "190 bounded credits produced +$183.89 and 53.68% all-sample win, but discovery had only 2 credits; robustness failed. Do not promote."
+    },
+    {
+      "id": "SA100_R10P2_VIRTUAL_PRETRAIN_FREED_HOLDOUT01",
+      "status": "COMPLETE_NEGATIVE_CHRONOLOGICAL_VALIDATION",
+      "output_sha256": "1dc5155f6c2ac3ab88dde1dacae5e7a8a664596d1dcea7df38fe20f9c3a0e2d0",
+      "finding": "Virtual-pretrained freed-capacity models were positive in training but negative/sub-50% in validation; robust_hyperparams=0. Freed-capacity velocity family retired."
     }
   ],
   "current_leading_experimental_lane": {
@@ -571,7 +583,7 @@
     "august_accessed": false
   },
   "research10_january_parity_speedrun": {
-    "status": "ACTIVE_R10P_BOUNDED_VELOCITY",
+    "status": "ACTIVE_R10Q_SHADOW_R10IJ",
     "objective": "Converge toward R9 SYNTH economic shape while preserving frozen $100-$1,000 survival guardrails.",
     "control": {
       "candidate": "SA100_TO_1000_JAN_CANDIDATE_01",
@@ -754,8 +766,12 @@
       },
       "design": "Keep frozen virtual slot until original episode end; early physical EXIT does not recursively open the admission floodgate.",
       "next": "Use at most one non-recursive velocity credit per freed physical interval; require causal specialist >50% soft success and positive discovery/holdout."
+    },
+    "r10p": {
+      "status": "COMPLETE_NEGATIVE",
+      "conclusion": "Do not reopen freed physical capacity recursively. Continue loss conversion on frozen shadow admission."
     }
   },
-  "last_completed_helper": "SA100_R10O_SHADOW_SLOT_TREE_SCREEN01",
-  "last_completed_helper_result": "COMPLETE_BREAKTHROUGH__SHADOW_ADMISSION_DECOUPLES_LOSS_CONVERSION_FROM_VELOCITY"
+  "last_completed_helper": "SA100_R10P2_VIRTUAL_PRETRAIN_FREED_HOLDOUT01",
+  "last_completed_helper_result": "COMPLETE_NEGATIVE__FREED_CAPACITY_VELOCITY_FAMILY_RETIRED"
 }
