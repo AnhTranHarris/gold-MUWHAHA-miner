@@ -388,6 +388,18 @@
       "finding": "Recovered historical S1 actions do not transfer literally to Delta-A primaries. S1_CONTINUE cohort is negative; S1_FADE is positive on the existing side. CONT|S1_CONTINUE pocket loses -$148.44 episode net but 191/195 events occur in ISO week 5, so it fails robustness gate and does not justify exact capital replay.",
       "primary_rows": 3841,
       "august_accessed": false
+    },
+    {
+      "id": "SA100_R10I_TRANSPARENT_MICRO_LOSS_CONVERSION_JAN_SCREEN",
+      "status": "COMPLETE_PROMISING_LEDGER_SCREEN_EXACT_CAPITAL_REPLAY_REQUIRED",
+      "result_sha256": "8c0eb9bb31cb198a428696acdf50a7e3379ab3633264958210aae9fc45f087fc",
+      "finding": "Four transparent +5s EXIT/REV specialists raise January episode win rate above 50%, add +$580.61 and reduce GL by $1,239.07; late-Jan holdout stronger than discovery."
+    },
+    {
+      "id": "SA100_R10I_PLATEAU_REFINEMENT01",
+      "status": "COMPLETE_ROBUST_PLATEAU_BREAKTHROUGH_NOT_PROMOTED",
+      "finding": "38/38 local one-parameter neighborhoods passed discovery+holdout. Balanced profile adds +$739.50 and removes $1,610.90 GL; loss-defense adds +$508.66 and removes $1,835.26 GL. Both exceed 50% overall and activated success targets.",
+      "august_accessed": false
     }
   ],
   "current_leading_experimental_lane": {
@@ -453,7 +465,7 @@
     "august_accessed": false
   },
   "research10_january_parity_speedrun": {
-    "status": "ACTIVE_AFTER_R10H_S1_TRANSFER_FALSIFICATION",
+    "status": "ACTIVE_R10I_BREAKTHROUGH_PENDING_CAPITAL_REPLAY",
     "objective": "Converge toward R9 SYNTH economic shape while preserving frozen $100-$1,000 survival guardrails.",
     "control": {
       "candidate": "SA100_TO_1000_JAN_CANDIDATE_01",
@@ -577,8 +589,26 @@
         "conditional_pocket": "CONT|S1_CONTINUE = 195 episodes, -$148.44 episode net, but 191 occur in ISO week 5; insufficient robustness.",
         "next_rule": "Retire literal S1 action mapping. Preserve only completed-second geometry as generic features for future orthogonal specialists."
       }
+    },
+    "r10i": {
+      "status": "PROMISING_SPECIALIST_FAMILY",
+      "balanced": {
+        "candidate_net_usd": 1981.595,
+        "candidate_gl_usd": -15114.6155,
+        "overall_win_rate": 0.5378807602,
+        "modified_win_rate": 0.796812749,
+        "converted_losses": 228
+      },
+      "loss_defense": {
+        "candidate_net_usd": 1750.7545,
+        "candidate_gl_usd": -14890.2555,
+        "overall_win_rate": 0.544389,
+        "modified_win_rate": 0.826531,
+        "converted_losses": 253
+      },
+      "exact_capital_replay_required": true
     }
   },
-  "last_completed_helper": "SA100_R10H_S1_OWNERSHIP_PRIMARY_SCREEN",
-  "last_completed_helper_result": "COMPLETE_NEGATIVE__LITERAL_S1_ACTION_TRANSFER_REJECTED"
+  "last_completed_helper": "SA100_R10I_PLATEAU_REFINEMENT01",
+  "last_completed_helper_result": "COMPLETE_ROBUST_PLATEAU_BREAKTHROUGH__EXACT_CAPITAL_REPLAY_REQUIRED"
 }
