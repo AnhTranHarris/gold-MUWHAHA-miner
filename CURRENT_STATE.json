@@ -3,12 +3,12 @@
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "branch": "delta",
   "research_scope": "DELTA_ONLY_CLEAN_ROOM",
-  "last_verified_durable_unit": "R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CI_17CJ",
-  "first_incomplete_unit": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
-  "current_phase": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL_OFFICIAL_COMPUTE_NEXT",
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_CHECKPOINT_17CI_17CJ_MANIFEST.json",
+  "last_verified_durable_unit": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
+  "first_incomplete_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+  "current_phase": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST_NEXT",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_CHECKPOINT_17CK_17CL_MANIFEST.json",
   "active_candidate": null,
-  "last_candidate_disposition": "Source-default breaker-block retired: M5/M15 produced zero consolidations/signals/trades because the frozen 7-bar / 50-point adjacent H/L tolerance never formed (M5 longest qualifying run 3 vs 6 required; M15 1 vs 6). No rescue tuning.",
+  "last_candidate_disposition": "R037-XIBC-v1 retired unchanged: M15 produced 2 trades across 2 days (+$0.16) and H1 produced zero qualified signals; both fail preregistered supply gates. No threshold rescue.",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -31,10 +31,10 @@
     "prior_full_state_preserved_in_git_history": true
   },
   "recovery_pointer_sync": {
-    "status": "DURABLE_17CC_17CD_BREAKER_BLOCK_RETIRED",
-    "last_completed": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
+    "status": "DURABLE_17CK_17CL_XIBC_RETIRED",
+    "last_completed": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
     "current_candidate": null,
-    "next": "Select next high-supply, causally reconstructible entry family from completed R037 meta-harvest; prioritize prior OOS/holdout evidence."
+    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
   },
   "clean_room_maintenance": {
     "status": "RECENT_DELTA_DIFF_PREFLIGHT_CLEAN",
@@ -44,11 +44,11 @@
     "scientific_results_changed": false
   },
   "concurrency_recovery": {
-    "status": "NO_ACTIVE_CONCURRENCY_CONFLICT",
-    "authoritative_checkpoint": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
+    "status": "RECOVERED_PARTIAL_TIMEOUT_CHAIN_NO_RESULT_LOSS",
+    "authoritative_checkpoint": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
     "current_candidate": null,
-    "note": "Breaker-block source-default family retired at event-supply layer; resume high-value harvest."
+    "note": "Official result survived browser delivery timeout; closure resumed from durable result."
   },
   "search_bias": "Use completed-R037 meta-harvest before admitting more candidate families; prioritize high-information structures with adequate native XAUUSD supply and near-neutral/positive independent evidence. Reject sparse source-default grammars quickly; no rescue tuning.",
-  "timeout_recovery_cursor_semantics": "The final CURRENT_STATE commit closes a unit only after CURRENT_INFLIGHT and recovery pointer already match it; use Git history for the cursor commit SHA."
+  "timeout_recovery_cursor_semantics": "Final closure uses one multi-file Git tree commit followed by non-force fast-forward ref update; chat delivery timeout cannot leave report/manifest/cursors split across separate commits."
 }

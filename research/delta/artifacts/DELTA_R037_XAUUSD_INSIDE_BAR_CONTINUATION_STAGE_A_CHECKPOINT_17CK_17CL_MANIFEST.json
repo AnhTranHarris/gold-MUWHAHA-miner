@@ -1,0 +1,191 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
+  "status": "VERIFIED_NO_STAGE_A_SURVIVOR_SUPPLY_FAILURE",
+  "date_utc": "2026-10-05",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CI_17CJ",
+  "hypothesis": "XAUUSD-informed Main-Bar direction plus compact Inside-Bar breakout can produce positive frozen 30-second executable persistence with usable Stage-A supply.",
+  "falsification_condition": "Neither preregistered M15/H1 lane satisfies >=10 trades, >=5 distinct days and positive direct net unchanged.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Two preregistered XIBC lanes",
+    "reference_count": 2,
+    "minimum_count": 2,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "M15 failed supply despite +$0.16 on 2 trades; H1 produced zero qualified events."
+  },
+  "primary_metrics": {
+    "17CK_XIBC_M15_BODY80_INSIDE50": "2 trades / 2 days / 2 wins / +$0.16",
+    "17CL_XIBC_H1_BODY80_INSIDE50": "0 trades / 0 days / 0 wins / $0.00"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_xauusd_inside_bar_continuation_17ck_17cl.py",
+      "commit": "a2fe05cf918b0d57e0a74b29f7fd57105e7d80be",
+      "blob_sha": "a402aa9f98cce954da087e616363b36264115b51",
+      "file_sha256": "0032a54fce6ca0d32f369c216436660b7f0f696cbfdc9180e4dd8bc3af06f003"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "0067707d2a45755fd4fa69fa164bbdd379aea5fe",
+      "file_sha256": "a0816a19445537f8a9c199c46212bbadb006a2773a9e03715afa49d489b8c281"
+    }
+  ],
+  "models": [],
+  "config": {
+    "parameters": {
+      "timeframe_lanes": [
+        "M15",
+        "H1"
+      ],
+      "main_bar_body_min_fraction": 0.8,
+      "signal_bar_range_max_fraction_of_main": 0.5,
+      "atr_filter": false,
+      "breakout_offset_raw": 10,
+      "pending_lifetime": "one signal timeframe bar",
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "completed Main Bar",
+      "fully contained Signal Bar",
+      "quality filter",
+      "causal breakout",
+      "frozen 30-second execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "fixed Stage-A prescreen"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": true,
+      "exact_git_blob_preexecution_verification": true,
+      "parent_death_signal": true,
+      "compact_stdout": true,
+      "final_cursor_commit": "single Git tree commit followed by non-force fast-forward ref update"
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "prereg",
+      "path": "research/delta/reference/DELTA_R037_XAUUSD_INSIDE_BAR_CONTINUATION_PREREG_17CK_17CL.json",
+      "commit": "db42a2c1f3ca3508be429b1040013705ec635dea"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "M15/H1 causal bars derived from canonical ticks"
+    ],
+    "diagnostics": [
+      "M15: 132 patterns / 3 quality / 2 triggers",
+      "H1: 41 patterns / 0 quality"
+    ]
+  },
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_CHECKPOINT_17CK_17CL.json",
+      "blob_sha": "fb081402033bd0073b19f8eb74de299ede87b0fc",
+      "result_sha256": "2875381fe02aa41a4399783b9c86d9ca053163df65f29fd2e77aa745ca7cb2af"
+    }
+  ],
+  "qa": [
+    "Preregistration committed before producer.",
+    "Producer committed before official compute.",
+    "Exact producer and bounded-runner Git blobs verified locally.",
+    "Canonical January SHA and Stage-A chronology verified.",
+    "Official result durable before message-delivery interruption.",
+    "Recovery replay reproduced result fingerprint.",
+    "Workbook 69 R037 Research Harvest A267:I273 written and read back.",
+    "No post-result rescue tuning.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_xauusd_inside_bar_continuation_17ck_17cl.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_xauusd_inside_bar_continuation_17ck_17cl.py --source <canonical_january_gzip> --output <checkpoint_json>",
+    "timing_semantics": "Tick-derived completed bars; first executable P75 breakout within one signal timeframe bar.",
+    "expected_fingerprints": {
+      "17CK_XIBC_M15_BODY80_INSIDE50": {
+        "patterns": 132,
+        "quality_pass": 3,
+        "trades": 2,
+        "days": 2,
+        "wins": 2,
+        "net_usd": 0.16
+      },
+      "17CL_XIBC_H1_BODY80_INSIDE50": {
+        "patterns": 41,
+        "quality_pass": 0,
+        "trades": 0,
+        "days": 0,
+        "wins": 0,
+        "net_usd": 0
+      }
+    },
+    "selected_interpretation": "SOURCE_DEFAULT_XIBC_TOO_SPARSE_FOR_PROMOTION"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — family retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "None.",
+    "execution_quote_side_spec": "Frozen P75.",
+    "ownership_scheduler_spec": "No integration.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01 research semantics.",
+    "trade_count_parity_spec": "Not applicable.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "github_commits": [
+    "db42a2c1f3ca3508be429b1040013705ec635dea",
+    "a2fe05cf918b0d57e0a74b29f7fd57105e7d80be",
+    "a14ade28bae9204c99ab528124f77b442f75932a",
+    "2b4e973897d55e6e932d82209215132fa066b742",
+    "817564f1493b311b7e306e63ef4fd1350e658f5f",
+    "b6d984e97479dbf008701055bb7ea9435b7f444f"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A267:I273"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": true
+  },
+  "next_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+}

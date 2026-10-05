@@ -10,16 +10,16 @@
     "active rebuild manifest"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CI_17CJ",
-    "current_phase": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL_OFFICIAL_COMPUTE_NEXT",
-    "first_incomplete_unit": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_CHECKPOINT_17CI_17CJ_MANIFEST.json"
+    "last_verified_durable_unit": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
+    "current_phase": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST_NEXT",
+    "first_incomplete_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_CHECKPOINT_17CK_17CL_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
-    "status": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
-    "parent_durable_unit": "R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CI_17CJ",
+    "unit": null,
+    "status": "CLOSED",
+    "phase_rank": 6,
+    "parent_durable_unit": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
     "committed_artifacts": [
       {
         "role": "prereg",
@@ -31,9 +31,15 @@
         "path": "research/delta/experiments/delta_r037_xauusd_inside_bar_continuation_17ck_17cl.py",
         "commit": "a2fe05cf918b0d57e0a74b29f7fd57105e7d80be",
         "blob_sha": "a402aa9f98cce954da087e616363b36264115b51"
+      },
+      {
+        "role": "result",
+        "path": "research/delta/reference/DELTA_R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_CHECKPOINT_17CK_17CL.json",
+        "commit": "b6d984e97479dbf008701055bb7ea9435b7f444f",
+        "blob_sha": "fb081402033bd0073b19f8eb74de299ede87b0fc"
       }
     ],
-    "next_action": "Run exact committed 17CK-17CL producer under bounded runner on canonical Stage-A ticks.",
+    "next_action": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
     "completed_months": [],
     "next_month": null
   },
@@ -50,8 +56,8 @@
     "exact_git_blob_preexecution_verification": true,
     "large_stdout_policy": "Persist detailed diagnostics to JSON; keep transport output compact.",
     "phase_checkpoint_policy": "Advance CURRENT_INFLIGHT and recovery pointer immediately after each durable phase.",
-    "atomic_multi_file_cursor_commit": false,
-    "cursor_close_sequence": "CURRENT_INFLIGHT -> recovery pointer -> CURRENT_STATE last, executed in one server-side orchestration call; only CURRENT_STATE triggers CI."
+    "atomic_multi_file_cursor_commit": true,
+    "cursor_close_sequence": "Report + rebuild manifest + CURRENT_INFLIGHT + recovery pointer + CURRENT_STATE are committed in one Git tree; branch moves only by non-force fast-forward."
   },
   "constraints": {
     "august_2026": "SEALED",
