@@ -1,16 +1,16 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "IDLE",
+  "status": "IN_PROGRESS",
   "branch": "delta",
-  "unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+  "unit": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
   "parent_durable_unit": "R037_QUASIMODO_SOURCE_DEFAULT_STAGE_A_SCREEN_CHECKPOINT_17CA_17CB",
-  "phase": "IDLE",
-  "phase_rank": 0,
+  "phase": "PREREG_COMMITTED",
+  "phase_rank": 1,
   "progress": {
-    "status": "IDLE_DURABLE_PREVIOUS_UNIT_COMPLETE",
+    "status": "PREREG_DURABLE_PRODUCER_NOT_YET_COMMITTED",
     "last_completed": "R037_QUASIMODO_SOURCE_DEFAULT_STAGE_A_SCREEN_CHECKPOINT_17CA_17CB",
-    "current_candidate": null,
-    "next": "Select a materially distinct higher-supply structural entry mechanism; preserve QM as a quality clue only, do not rescue it by tuning."
+    "current_candidate": "R037-BBR-v1 / source-default breaker-block retest M5+M15",
+    "next": "Build and commit fixed 17CC/17CD producer; then official bounded Stage-A compute."
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
@@ -33,6 +33,11 @@
     "current_state_next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
     "manifest": "research/delta/artifacts/DELTA_R037_QUASIMODO_STAGE_A_CHECKPOINT_17CA_17CB_MANIFEST.json"
   },
-  "prereg": null,
+  "prereg": {
+    "path": "research/delta/reference/DELTA_R037_BREAKER_BLOCK_RETEST_PREREG_17CC_17CD.json",
+    "commit": "cfcb44d1065a30f23aebee1b8193d749346a99d4",
+    "blob_sha": "efd3b24efea9f39c97a77c8d3fa752c2b2029c27",
+    "status": "PREREGISTERED_BEFORE_PRODUCER"
+  },
   "producer": null
 }
