@@ -11,48 +11,29 @@
   ],
   "durable_cursor": {
     "last_verified_durable_unit": "R037_VCE_QIM_CONFIRMATION_STAGE_A_SCREEN_CHECKPOINT_17CE_17CH",
-    "current_phase": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST_NEXT",
-    "first_incomplete_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+    "current_phase": "R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CI_17CJ_OFFICIAL_COMPUTE_NEXT",
+    "first_incomplete_unit": "R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CI_17CJ",
     "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_VCE_QIM_CONFIRMATION_STAGE_A_CHECKPOINT_17CE_17CH_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_VCE_QIM_CONFIRMATION_STAGE_A_SCREEN_CHECKPOINT_17CE_17CH",
-    "status": "COMPLETE",
-    "phase": "PRODUCER_COMMITTED",
-    "phase_rank": 7,
-    "parent_durable_unit": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
+    "unit": "R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CI_17CJ",
+    "status": "PRODUCER_COMMITTED",
+    "phase_rank": 2,
+    "parent_durable_unit": "R037_VCE_QIM_CONFIRMATION_STAGE_A_SCREEN_CHECKPOINT_17CE_17CH",
     "committed_artifacts": [
       {
         "role": "prereg",
-        "path": "research/delta/reference/DELTA_R037_VCE_QIM_CONFIRMATION_PREREG_17CE_17CH.json",
-        "commit": "26d6e97a7ea5c2a6fadc7b903a6dde193b85cf9d",
-        "blob_sha": "3643ed57e58fc80020fa60f96d1e755f145bd6a0"
+        "path": "research/delta/reference/DELTA_R037_CONTROLLED_PAUSE_CONTINUATION_PREREG_17CI_17CJ.json",
+        "commit": "0c779b1cf94a9d4b29b3e5c0ea5a0b7f94b17409"
       },
       {
         "role": "producer",
-        "path": "research/delta/experiments/delta_r037_vce_qim_confirmation_17ce_17ch.py",
-        "commit": "97d0aa6b6784e5ddc1464ba6f2d1dddaed8d9fea",
-        "blob_sha": "204a6587d0c941d18db098f8dab011b845bb5258",
-        "file_sha256": "844dc08593e641294ac46d7d0839ad99b123488a90574409add867926c47d453"
-      },
-      {
-        "role": "result",
-        "path": "research/delta/reference/DELTA_R037_VCE_QIM_CONFIRMATION_STAGE_A_CHECKPOINT_17CE_17CH.json",
-        "commit": "1d5b75479f517d9177717db913cec42396a0ec75",
-        "result_sha256": "1775b2c2787563311f2d8c050e0ea1615f698f05f09b09e5d62ac8160e335855"
-      },
-      {
-        "role": "report",
-        "path": "research/delta/research/DELTA_R037_VCE_QIM_CONFIRMATION_STAGE_A_CHECKPOINT_17CE_17CH.md",
-        "commit": "41de4c6145590eb4c28945078d51b800aef9c87c"
-      },
-      {
-        "role": "manifest",
-        "path": "research/delta/artifacts/DELTA_R037_VCE_QIM_CONFIRMATION_STAGE_A_CHECKPOINT_17CE_17CH_MANIFEST.json",
-        "commit": "8affb98cbe2b1c5488396041ff4b6733bbedc435"
+        "path": "research/delta/experiments/delta_r037_controlled_pause_continuation_17ci_17cj.py",
+        "commit": "79ef49f6936d22b0ab3b0166934247f0f4dd99cc",
+        "blob_sha": "55e1b29b76ed3cd039e3e7d96c482a6291c2d6e9"
       }
     ],
-    "next_action": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+    "next_action": "Run exact committed 17CI-17CJ producer under bounded runner on canonical Stage-A ticks.",
     "completed_months": [],
     "next_month": null
   },
