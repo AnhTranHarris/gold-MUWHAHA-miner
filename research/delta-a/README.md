@@ -85,3 +85,16 @@ The research account can reach 250 simultaneous 0.01-lot positions. That is not 
 - main Delta promotion: **NONE**
 - production MQL5 authorization: **NO**
 - P75 synthesis inside live EA: **FORBIDDEN**
+
+## Small-capital fallback milestone
+
+The first preserved micro-capital fallback is **R9 Grid Small-Capital $500 Adapter V1**:
+
+- fixed 0.01 lot,
+- virtual full event engine,
+- CORE_H4_M1800 physical bootstrap specialist,
+- 1-to-5 balance-gated physical concurrency,
+- scheduled-market-gap guard,
+- Feb-Jul tick-level survival from $500.
+
+See `DELTA_A_R9_GRID_SMALL500_FALLBACK_MILESTONE.md`. This fallback does not replace R9 Grid Milestone 01.
