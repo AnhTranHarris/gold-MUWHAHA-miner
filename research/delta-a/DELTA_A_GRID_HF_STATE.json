@@ -73,7 +73,7 @@
     "Coinexx broker-native Every tick based on real ticks parity not yet completed",
     "Live-demo forward validation required before funded deployment"
   ],
-  "next_unit": "SA100_JAN_SPEEDRUN_RESTART_02_1000_BRIDGE",
+  "next_unit": "SA100_JAN_OVERLAY_TAIL_FLOOR_RESEARCH03",
   "fallback_milestones": [
     {
       "id": "R9_GRID_SMALL500_V1",
@@ -118,7 +118,23 @@
       "daily_range_max_min_ratio": 28.3438,
       "rolling_60m_proxy_p10_usd": 1.2945,
       "rolling_60m_proxy_p99_usd": 16.0507
-    }
+    },
+    "current_helper_state": "HANDOFF_READY_AFTER_TIMEOUT_RERUN",
+    "leading_lane": "OVERLAY7P5_H30_SAFE_OVERLAP200",
+    "target_balance_usd": 1000,
+    "january_tick_equity_result": {
+      "starts": 26,
+      "equity_positive_pct": 100,
+      "reached1000_pct_all_starts": 92.3077,
+      "worst_min_equity_usd": 12.49,
+      "worst_min_free_margin_usd": 1.48947,
+      "worst_margin_level_pct_1_to_500_full_margin": 109.3007,
+      "below60_equity_pct": 26.9231,
+      "below30_equity_pct": 15.3846,
+      "max_physical_positions": 8,
+      "median_days_to_1000_successes": 15.5697
+    },
+    "current_research_note": "research/delta-a/DELTA_A_SA100_TO_1000_TIMEOUT_RERUN_2026-10-05.md"
   },
   "helper_forensics": {
     "completed_failed": "research/delta-a/artifacts/SA100_DTOPP_FAILURE_SUMMARY.json",
