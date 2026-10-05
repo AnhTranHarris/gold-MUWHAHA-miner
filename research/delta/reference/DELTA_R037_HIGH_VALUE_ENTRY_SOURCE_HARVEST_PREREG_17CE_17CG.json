@@ -1,0 +1,89 @@
+{
+  "schema": "delta-r037-high-value-entry-source-harvest-prereg-17ce-17cg-v1",
+  "unit": "R037_HIGH_VALUE_ENTRY_SOURCE_HARVEST_17CE_17CG",
+  "parent_checkpoint": "R037_BREAKER_BLOCK_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CC_17CD",
+  "status": "PREREGISTERED_BEFORE_PRODUCER_AND_COMPUTE",
+  "date_utc": "2026-10-04",
+  "purpose": "Fast bounded screen of three previously untested, reconstructible continuation families selected for native XAUUSD event supply and causal completed-bar timing. No post-result rescue tuning.",
+  "execution": {
+    "signal_surface": "native Dukascopy bars/tick volume as specified per lane",
+    "execution_surface": "DUKAS_COINEXX_LIKE_P75",
+    "max_spread_raw": 250,
+    "stop_raw": 300,
+    "trail_activation_raw": 100,
+    "trail_distance_raw": 30,
+    "max_hold_seconds": 30,
+    "commission_per_side_usd": 0.01,
+    "one_position_at_a_time": true
+  },
+  "lanes": {
+    "17CE_KUMO_AO_M5": {
+      "source": "MetaQuotes MQL5 article 16657",
+      "source_url": "https://www.mql5.com/en/articles/16657",
+      "timeframe": "M5",
+      "rules": {
+        "ichimoku": {
+          "tenkan": 8,
+          "kijun": 29,
+          "senkou_b": 34
+        },
+        "awesome_oscillator": "SMA5(median)-SMA34(median)",
+        "long": "completed AO crosses below->above zero; completed close above both Senkou spans; SpanA < SpanB per source code",
+        "short": "completed AO crosses above->below zero; completed close below both Senkou spans; SpanA > SpanB per source code",
+        "entry": "first executable tick at/after signal-bar right edge"
+      }
+    },
+    "17CF_EMA_OBV_RECLAIM_M1_NY": {
+      "source": "Reddit May 2026 EMA+OBV continuation write-up",
+      "source_url": "https://www.reddit.com/r/Daytrading/comments/1t9a2uq/ema_obv_strategy_trading_strategy_help/",
+      "timeframe": "M1",
+      "rules": {
+        "trend": "EMA13 above EMA50 for long, below for short",
+        "pullback": "long: completed bar closes below EMA13 but low and close stay above EMA50; short mirror",
+        "reclaim": "next or later completed bar closes back across EMA13 while trend stack still valid",
+        "volume": "OBV above its EMA20 for long; below EMA20 for short",
+        "session": "09:30-11:00 America/New_York, weekdays; source avoids Mondays, so Monday excluded",
+        "entry": "first executable tick at/after reclaim-bar right edge"
+      }
+    },
+    "17CG_DARVAS_M5": {
+      "source": "MetaQuotes MQL5 article 24111",
+      "source_url": "https://www.mql5.com/en/articles/24111",
+      "timeframe": "M5 project-target screen",
+      "rules": {
+        "lookback_bars": 50,
+        "confirm_bars": 3,
+        "atr_period": 14,
+        "min_box_atr": 0.5,
+        "breakout_volume_multiple": 1.3,
+        "direction": "both bull and bear source mirror",
+        "signal": "completed close beyond confirmed box boundary with breakout tick volume >= 1.3x running box-period average",
+        "entry": "first executable tick at/after breakout-bar right edge",
+        "note": "Screen source state-machine entry grammar only; source staircase exits/risk are not imported."
+      }
+    }
+  },
+  "gate": {
+    "minimum_trades": 20,
+    "minimum_distinct_days": 5,
+    "minimum_direct_net_usd": -1,
+    "strong_pass_direct_net_usd": 0,
+    "survivor_action": "advance only source-default survivors to independent later-January validation"
+  },
+  "prohibited": [
+    "post-result threshold tuning",
+    "timeframe rescue",
+    "side/session rescue except source-specified session in 17CF",
+    "exit tuning",
+    "August access",
+    "MQL5 build"
+  ],
+  "crash_safety": {
+    "bounded_runner": "research/delta/qa/delta_bounded_python_runner.py",
+    "hard_timeout_seconds": 120,
+    "exact_git_blob_preexecution_verification": true,
+    "atomic_output_required": true
+  },
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
