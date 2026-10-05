@@ -1,0 +1,196 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
+  "status": "VERIFIED_STAGE_A_FAIL_RETIRED_NO_RESCUE",
+  "date_utc": "2026-10-05",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_XAUUSD_SESSION_LIQUIDITY_SWEEP_RECLAIM_HARVEST_CHECKPOINT_17CW_17CZ",
+  "hypothesis": "Source-default displacement filters may isolate session sweeps with positive immediate reversal persistence.",
+  "falsification_condition": "Retire unchanged if lane has <10 trades, <5 days, or negative direct net.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "qualified sweep lanes",
+    "reference_count": 4,
+    "minimum_count": 4,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "All preregistered lanes executed."
+  },
+  "primary_metrics": {
+    "entry_quality": "All four negative.",
+    "hold_persistence": "Frozen 30-second execution.",
+    "economics": "No survivor.",
+    "gross_loss_drawdown": "Not promoted.",
+    "activity": "26/18/20/12 trades."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_ssrp_qualified_sweep_17da_17dd.py",
+      "commit": "5bce4e0708079bc85dbe9fcfcef2188abb8125a5",
+      "blob_sha": "438647c27b651d2468bf45bfbfb34e44d6ba78b0",
+      "file_sha256": "c6317405c6a08872aaeb6f1e1f8007b6002e6b3d9668d8f1da3e8bdb655dead0"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/experiments/delta_r037_session_liquidity_sweep_reclaim_17cw_17cz.py",
+      "role": "mechanical P75/bar/evaluation/atomic-output utilities only"
+    }
+  ],
+  "models": [],
+  "config": {
+    "parameters": {
+      "session_timezone": "America/New_York",
+      "asia": "18:00-03:00",
+      "london": "03:00-07:59",
+      "new_york": "08:00-16:00",
+      "atr_length": 14,
+      "min_range_atr": 1.5,
+      "min_body_range": 0.5,
+      "max_hold_seconds": 30,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "locked prior-session range",
+      "qualified wick/failed-close sweep",
+      "first executable P75 tick",
+      "frozen 30-second execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "fast Stage-A prescreen"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": true,
+      "exact_git_blob_preexecution_verification": true,
+      "compact_stdout": true,
+      "pycache_redirected_to_writable_temp": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    },
+    {
+      "name": "prereg",
+      "path": "research/delta/reference/DELTA_R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_PREREG_17DA_17DD.json",
+      "commit": "354bb0bf176d615b6495fc282d203e10c7385144"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "M1/M5 bars and ATR14"
+    ],
+    "diagnostics": [
+      "wick M1 26/-7.87",
+      "wick M5 18/-4.68",
+      "failed-close M1 20/-3.21",
+      "failed-close M5 12/-2.42"
+    ]
+  },
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_SSRP_QUALIFIED_SWEEP_CHECKPOINT_17DA_17DD.json",
+      "commit": "60f2d378d9e800967e59b36329c4b66ff096a56e",
+      "blob_sha": "19c40064dc8eb50c6903b88345642b381f128547",
+      "result_sha256": "cf5361f8bf489cb322c27b8e51b9d06a75ad97c84d52be620c324728a8c56361"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_SSRP_QUALIFIED_SWEEP_CHECKPOINT_17DA_17DD.md",
+      "commit": "8a3a23ddbb959e5bc5a67b14a14839a7cb0c6283",
+      "blob_sha": "f6faaecc95d5e8029827c35b93b149c84e8ba0a1"
+    }
+  ],
+  "qa": [
+    "Prereg before producer.",
+    "Exact producer Git blob verified before compute.",
+    "Canonical Jan and chronology verified.",
+    "Replay 8.708 seconds.",
+    "All lanes negative; no rescue.",
+    "Workbook A322:I330 read back.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_ssrp_qualified_sweep_17da_17dd.py",
+    "command": "PYTHONPATH=<experiments> PYTHONPYCACHEPREFIX=<tmp> timeout --signal=TERM --kill-after=5s 120s python <producer> --source <canonical_jan> --output <result>",
+    "timing_semantics": "Source-default session range lock + qualified closed-bar sweep; first executable P75 tick.",
+    "expected_fingerprints": {
+      "17DA": {
+        "trades": 26,
+        "net": -7.87
+      },
+      "17DB": {
+        "trades": 18,
+        "net": -4.68
+      },
+      "17DC": {
+        "trades": 20,
+        "net": -3.21
+      },
+      "17DD": {
+        "trades": 12,
+        "net": -2.42
+      }
+    },
+    "selected_interpretation": "NO_STAGE_A_SURVIVOR"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — retired",
+    "feature_timing_spec": "Not ready.",
+    "state_machine_spec": "Not ready.",
+    "model_inference_spec": "None.",
+    "execution_quote_side_spec": "Frozen P75.",
+    "ownership_scheduler_spec": "No integration.",
+    "session_dst_spec": "Source session timezone preserved for January.",
+    "risk_spec": "Fixed 0.01.",
+    "trade_count_parity_spec": "N/A",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "github_commits": [
+    "354bb0bf176d615b6495fc282d203e10c7385144",
+    "5bce4e0708079bc85dbe9fcfcef2188abb8125a5",
+    "38a75bb7a68ab4dccc279e9e2a94a8f00ec66e1d",
+    "88f73cc0a373bed08de41b9d81cfc535dc78325c",
+    "59b9e304a2a4e669567d266264d9abcfcf9abe64",
+    "60f2d378d9e800967e59b36329c4b66ff096a56e",
+    "8a3a23ddbb959e5bc5a67b14a14839a7cb0c6283"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A322:I330"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+}
