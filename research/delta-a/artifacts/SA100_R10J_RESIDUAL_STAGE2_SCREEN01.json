@@ -1,0 +1,22 @@
+{
+  "id":"SA100_R10J_RESIDUAL_STAGE2_SCREEN01",
+  "status":"COMPLETE_PROMISING_RESIDUAL_SPECIALIST",
+  "parent":"R10I_BALANCED",
+  "fixed_rule":{
+    "condition":"R10I leaves episode untouched AND OFF_SESSION AND +10s aligned displacement >0 and <=+$0.50",
+    "action":"EXIT primary at +10s",
+    "episodes":223,
+    "action_win_rate":0.556054,
+    "incremental_net_usd":166.9715,
+    "gross_loss_reduction_usd":832.781,
+    "converted_losses":59
+  },
+  "split":{
+    "discovery":{"episodes":124,"incremental_net_usd":26.3775,"gross_loss_reduction_usd":356.785,"action_win_rate":0.572581,"converted_losses":33},
+    "late_january_holdout":{"episodes":99,"incremental_net_usd":140.594,"gross_loss_reduction_usd":475.996,"action_win_rate":0.535354,"converted_losses":26}
+  },
+  "decision":"Carry as a second-stage stall/giveback specialist after R10I; exact capital replay still required.",
+  "helper_sha256":"51fec99271510f0a07c6c78806fd3f29939b61f993d555f7c4de66b954998484",
+  "result_sha256":"17b4881edacc9ecdd7ac48377574aa5001d70489440f786dc0f1b8c91abb6920",
+  "august_accessed":false
+}
