@@ -3,17 +3,12 @@
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "branch": "delta",
   "research_scope": "DELTA_ONLY_CLEAN_ROOM",
-  "last_verified_durable_unit": "R037_XAUUSD_EMA_CROSS_TOUCH_SWING_BREAK_STAGE_A_SCREEN_CHECKPOINT_17CP_17CQ",
-  "first_incomplete_unit": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
-  "current_phase": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_NEXT",
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_XECTSB_STAGE_A_CHECKPOINT_17CP_17CQ_MANIFEST.json",
-  "active_candidate": {
-    "family": "R037-XECTSB-v1",
-    "lane": "17CQ_M15_EMA9_21_TOUCH_SWING10",
-    "status": "STAGE_A_SURVIVOR_PENDING_INDEPENDENT_LATER_JAN",
-    "stage_a": "20 trades / 10 days / 11 wins / +$0.68"
-  },
-  "last_candidate_disposition": "R037-XECTSB-v1 Stage-A: M5 retired at 76 trades / 37 wins / -$14.88; M15 survived unchanged at 20 trades / 11 wins / +$0.68 and advances to independent later-January validation.",
+  "last_verified_durable_unit": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
+  "first_incomplete_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+  "current_phase": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST_NEXT",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_XECTSB_LATER_JAN_CHECKPOINT_17CR_MANIFEST.json",
+  "active_candidate": null,
+  "last_candidate_disposition": "R037-XECTSB-v1 retired unchanged after exact-control holdout: Stage-A M15 20 trades / 10 days / 11 wins / +$0.68 reproduced exactly; independent later-Jan 20 trades / 10 days / 7 wins / -$3.79. Supply passed, economics failed. No parameter/session/side/timeframe/exit rescue.",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
@@ -23,7 +18,7 @@
     "inflight_path": "research/delta/CURRENT_INFLIGHT.json",
     "pointer_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_RECOVERY_POINTER.json",
     "rule": "On message-delivery interruption, trust committed prereg/source/result/report/manifest and resume the first missing phase; chat delivery timeout is not itself compute failure.",
-    "guard_alignment": "COMPLETE_PHASE_SCHEMA_ALIGNED_AFTER_XECTSB_17CP_17CQ"
+    "guard_alignment": "COMPLETE_PHASE_SCHEMA_ALIGNED_AFTER_XECTSB_17CR"
   },
   "canonical_data": {
     "january_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
@@ -37,12 +32,12 @@
     "prior_full_state_preserved_in_git_history": true
   },
   "recovery_pointer_sync": {
-    "status": "DURABLE_XECTSB_STAGE_A_SURVIVOR",
-    "last_completed": "R037_XAUUSD_EMA_CROSS_TOUCH_SWING_BREAK_STAGE_A_SCREEN_CHECKPOINT_17CP_17CQ",
-    "current_candidate": "17CQ_M15_EMA9_21_TOUCH_SWING10",
-    "next": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION",
-    "inflight_close_commit": "2a7094e887cd922229d184eb3e2b920e87260fb4",
-    "pointer_sync_commit": "65e04f212d31fd6bf37a62c6f756030d2a86db3e"
+    "status": "DURABLE_XECTSB_RETIRED_AFTER_LATER_JAN",
+    "last_completed": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
+    "current_candidate": null,
+    "next": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST",
+    "inflight_close_commit": "0b926908c482a740530103c229c79405c4100395",
+    "pointer_sync_commit": "76285a762ce9949d0b9cea7d2ef70bc9e42ed9a7"
   },
   "clean_room_maintenance": {
     "status": "RECENT_DELTA_DIFF_PREFLIGHT_CLEAN",
@@ -53,10 +48,10 @@
   },
   "concurrency_recovery": {
     "status": "CURRENT_CHAIN_DURABLE_NO_RESULT_LOSS",
-    "authoritative_checkpoint": "R037_VCE_RAW_RELEASE_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CO",
+    "authoritative_checkpoint": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
     "current_candidate": null,
     "note": "Exact Stage-A control reproduced; later-Jan failed. Browser transport errors do not alter committed result."
   },
-  "search_bias": "VCE/compression branch is now retired by adjacent OOS failure. Do not rescue QI025 or retune VCE. Harvest a genuinely independent, source-grounded XAUUSD entry class with expected >=10 Stage-A trades and causal rules; prefer event lifecycle plus first-resumption confirmation over generic oscillators or rare patterns.",
+  "search_bias": "XECTSB and VCE branches are retired by adjacent OOS failure. Do not rescue or retune them. Harvest genuinely independent, source-grounded XAUUSD entry classes with causal event lifecycles, expected >=10 Stage-A trades, and native short-horizon persistence. Prefer structural price-action/session/liquidity anchors over another generic oscillator or EMA derivative.",
   "timeout_recovery_cursor_semantics": "Connector-safe serial closure used when low-level multi-file tree commit is blocked; verify each cursor write and require final DELTA rebuild artifact gate before trusting advancement."
 }
