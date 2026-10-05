@@ -50,7 +50,7 @@
     "cross_month_decision_completed": false,
     "required_action": "Rerun the helper work unit from scratch starting with January."
   },
-  "next_unit": "SA100_JAN_BOUNDED_RESCUE_LADDER_RESEARCH08",
+  "next_unit": "SA100_TO_1000_FEB_VALIDATION_01",
   "hard_rules": {
     "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
@@ -300,22 +300,85 @@
         "prior_reach1000_all_pct": 96.153846
       },
       "conclusion": "BREAKTHROUGH: selective third rescue raises the remaining long-REVERT floor with no loss of $1k completion velocity."
+    },
+    {
+      "id": "SA100_BOUNDED_RESCUE_LADDER_RESEARCH08",
+      "status": "COMPLETE_FAST_NEGATIVE",
+      "output_sha256": "e4dd26f4be51dd567e4ed15b207b319976a179da3a5ede08ff5876dc388a5251",
+      "conclusion": "No fourth-pulse opportunities existed after the selective third rescue on the fragile paths; additional rescue depth retired."
+    },
+    {
+      "id": "SA100_LONG_CONT_FAILED_RESCUE_RESEARCH09",
+      "status": "COMPLETE_FAST_NEGATIVE",
+      "output_sha256": "f1bf06bc811eb5638ce31f287e1fde1a622fc685b35e5650f5fd8afdd12a177e",
+      "conclusion": "Long-horizon CONT second 30s pulse did not improve the global floor; family pulse version retired."
+    },
+    {
+      "id": "SA100_LONG_CONT_PERSISTENT_LOCK_RESEARCH09B_STAGE2",
+      "status": "COMPLETE_FULL_26_START_BREAKTHROUGH_WITH_VELOCITY_COST",
+      "stage1_sha256": "93e56f204f8d7342dee4119440a631c4286412142143f462f89041c73adcef89",
+      "stage2_tick_sha256": "838d86efe62cd5e74a79a41a24c87afe8c5459c00b70b138c367aaa821a165d4",
+      "stage2_summary_sha256": "35c9e81bab22f07824e4a4d83cde41d23b26119e0ed9b418066949ac6fb98db6",
+      "mechanism": "For long-horizon CONT with first rescue P&L <= -$1, balance < $125, and causal reclaim/re-break of -$7.50, open an equal counter and hold until primary close.",
+      "result": {
+        "worst_min_equity_usd": 37.07,
+        "worst_min_free_margin_usd": 26.64038,
+        "below30_equity_pct": 0,
+        "reach1000_all_pct": 88.461538,
+        "reach1000_15d_pct": 100,
+        "median_days1000_15d": 21.882455
+      },
+      "conclusion": "Strong survival breakthrough but short-runway $1k velocity cost motivated Research09C release logic."
+    },
+    {
+      "id": "SA100_LONG_CONT_LOCK_RELEASE_RESEARCH09C_STAGE2",
+      "status": "COMPLETE_FULL_26_START_BREAKTHROUGH_LEADING_JAN_CANDIDATE",
+      "stage1_sha256": "fca40239dcdd2eb14ad60e1e7c8ee88110b738f96203d4caef8e50d99f3a29ad",
+      "stage2_tick_sha256": "1c327daa62879da6068518576841a718db29641d0f8a08a37c9cd1e87c9d991b",
+      "stage2_summary_sha256": "d0f4ca02105416cef4f6e4256bc6fbbb564e9604559f59a9a5c6061a86beb200",
+      "mechanism": "Same strict long-CONT lock as Research09B, but release the counter when the primary causally recovers to -$1.00; otherwise primary close remains the terminal release.",
+      "result": {
+        "equity_positive_pct": 100,
+        "margin_above100_pct": 100,
+        "below60_equity_pct": 26.923077,
+        "below30_equity_pct": 0,
+        "worst_min_equity_usd": 35.32,
+        "worst_min_free_margin_usd": 24.72317,
+        "worst_margin_level_pct": 216.597099,
+        "max_physical_positions": 8,
+        "reach1000_all_pct": 96.153846,
+        "reach1000_15d_pct": 100,
+        "median_days1000_15d": 21.882455,
+        "p90_days1000_15d": 27.499006,
+        "total_long_cont_locks": 10
+      },
+      "conclusion": "BREAKTHROUGH: zero sub-$30 January starts while restoring the Research07B $1k velocity. Freeze January mechanic neighborhood before Feb-Jul validation."
     }
   ],
   "current_leading_experimental_lane": {
-    "id": "OVERLAY7P5_H30_SAFE_OVERLAP200_PLUS_05C_REVERT2_PLUS_R06_CONT_LOCK_PLUS_R07B_SELECTIVE_REVERT3",
-    "status": "PROMISING_MULTI_BREAKTHROUGH_NOT_PROMOTED",
+    "id": "SA100_TO_1000_JAN_CANDIDATE_01",
+    "status": "FROZEN_JANUARY_CANDIDATE_NOT_MILESTONE_NOT_MT5",
     "start_balance_usd": 100,
     "target_balance_usd": 1000,
     "lot": 0.01,
-    "current_worst_min_equity_usd": 24.65,
-    "current_worst_min_free_margin_usd": 14.05317,
-    "reach1000_all_pct": 96.153846,
-    "reach1000_15d_pct": 100,
-    "base_recovery": "-$7.50 adverse => equal 0.01 opposite counter for 30s",
-    "failed_cont_lock": "Research06 seed failed-CONT second counter held until primary closes",
-    "long_revert_rescue2": "Research05C seed-limited second 30s counter pulse after causal reclaim/re-break",
-    "long_revert_rescue3": "Research07B one third 30s pulse only when rescue2 lost <= -$0.50 and balance < $125",
-    "blocker": "Three fragile late-January starts still dip below $30 (floor $24.65). Test one bounded fourth pulse only after rescue3 failure."
+    "low_capital_gate": "London/NY overlap only while realized balance < $200",
+    "slots": "1 below $250; 2 below $500; 3 below $750; 4 below $1,000",
+    "base_counter": "At -$7.50 adverse primary P&L, equal 0.01 opposite counter for 30s",
+    "short_cont_lock": "If short-horizon CONT remains <= -$7.50 after first counter and balance < $175, second equal counter held to primary close",
+    "long_revert_rescue2": "If long REVERT first counter <= -$0.50, balance < $175, causal reclaim/re-break => second 30s counter",
+    "long_revert_rescue3": "If rescue2 <= -$0.50, balance < $125, another causal reclaim/re-break => one third 30s counter",
+    "long_cont_lock_release": "If long CONT first counter <= -$1.00, balance < $125, causal reclaim/re-break => persistent counter; release when primary P&L >= -$1.00 or primary closes",
+    "january_result": {
+      "starts": 26,
+      "equity_positive_pct": 100,
+      "margin_above100_pct": 100,
+      "below30_equity_pct": 0,
+      "worst_min_equity_usd": 35.32,
+      "worst_min_free_margin_usd": 24.72317,
+      "reach1000_all_pct": 96.153846,
+      "reach1000_15d_pct": 100,
+      "median_days1000_15d": 21.882455
+    },
+    "handoff_before_1000": false
   }
 }
