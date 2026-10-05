@@ -5,13 +5,13 @@
   "unit": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
   "family": "R037-123NB-v1 + R037-MSnR-DBO-v1",
   "parent_durable_unit": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
-  "phase": "PREREGISTERED",
-  "phase_rank": 1,
+  "phase": "PRODUCER_COMMITTED",
+  "phase_rank": 2,
   "progress": {
-    "status": "PREREG_DURABLE",
-    "last_completed": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
+    "status": "PRODUCER_DURABLE_EXACT_BLOB_VERIFIED",
+    "last_completed": "PREREGISTERED",
     "current_candidate": "17CS-17CV structural harvest",
-    "next": "COMMIT_PRODUCER"
+    "next": "RUN_BOUNDED_COMPUTE"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
@@ -26,7 +26,13 @@
     "commit": "0f5e4299eab2e76ead38ad63a5a1376a62de8dc1",
     "status": "PREREGISTERED_BEFORE_PRODUCER_AND_COMPUTE"
   },
-  "producer": null,
+  "producer": {
+    "path": "research/delta/experiments/delta_r037_structural_state_machine_harvest_17cs_17cv.py",
+    "commit": "074eaca06b5dcebeb1d9b7c2b9ca570fc2e551e8",
+    "blob_sha": "7f8c5bafb9d4e23844764d4c5787fe7b0e1c90d6",
+    "file_sha256": "d9827814b9bbabad867a01cdcc71451e1c48d6aa93f04d7b03c6e0cd8144596b",
+    "local_git_blob_verified": true
+  },
   "result": null,
   "report": null,
   "manifest": null
