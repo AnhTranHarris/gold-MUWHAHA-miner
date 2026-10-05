@@ -50,7 +50,7 @@
     "cross_month_decision_completed": false,
     "required_action": "Rerun the helper work unit from scratch starting with January."
   },
-  "next_unit": "SA100_R10N_TREE_POLICY_EXACT_CAPITAL_REPLAY01",
+  "next_unit": "SA100_R10P_BOUNDED_FREED_CAPACITY_VELOCITY01",
   "hard_rules": {
     "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
@@ -445,6 +445,67 @@
       "id": "SA100_R10M_CAUSAL_ACTION_TREE_SCREEN01",
       "status": "COMPLETE_CAUSAL_CHRONOLOGICAL_TREE_SCREEN",
       "finding": "10 robust shallow-tree candidates. High-value depth3 cp=1s leaf=120 policy: all delta +$364.67, GL reduction $3,533.93, all episode win 52.28%, holdout win 53.94%, changed holdout win 73.60%. Candidate for exact capital replay at $700 activation."
+    },
+    {
+      "id": "SA100_R10N_TREE_POLICY_EXACT_CAPITAL_REPLAY01",
+      "status": "COMPLETE_EXACT_CAPITAL_REPLAY__ADMISSION_FLOOD_NOT_PROMOTED",
+      "output_sha256": "e52167e8a05151199f25b12f3e8129fa04241963be6f14bffdf39f8de0b46af5",
+      "control_parity": {
+        "episodes": true,
+        "legs": true,
+        "admission": true,
+        "net_diff": 6.139089236967266e-11
+      },
+      "candidate": {
+        "net_usd": 2187.44,
+        "legs": 7032,
+        "gross_loss_usd": -23033.23,
+        "episode_n": 5248,
+        "episode_win": 0.5447789634,
+        "max_balance_dd_usd": 412.17,
+        "min_balance_usd": 96.88,
+        "changed": 936
+      },
+      "delta": {
+        "net_usd": 945.35,
+        "gross_loss_reduction_usd": -2676.67,
+        "dd_reduction_usd": 138.1,
+        "legs": 1618,
+        "episodes": 1407
+      },
+      "conclusion": "Tree improves net/win/DD but faster exits free slots and admit 1,407 extra episodes, worsening absolute gross loss. Do not promote dynamic slot reuse."
+    },
+    {
+      "id": "SA100_R10O_SHADOW_SLOT_TREE_SCREEN01",
+      "status": "COMPLETE_EXACT_SHADOW_ADMISSION_BREAKTHROUGH",
+      "output_sha256": "86717ead65eda43b4124f1fa31a480c429aea078991a5cd44ed1b19829a3ee67",
+      "concept": "Physical early exits are allowed, but the virtual slot remains reserved until the frozen control episode's original terminal time; admission population/timing stays frozen. Velocity is separated into a future specialist.",
+      "leading_loss_efficiency_lane": {
+        "activate_shadow_balance": 500,
+        "net_usd": 1617.1,
+        "leg_n": 5169,
+        "gross_loss_usd": -17036.76,
+        "leg_pf": 1.0949182826,
+        "leg_win": 0.5219578255,
+        "episode_n": 3841,
+        "episode_gross_loss_usd": -13922.07,
+        "episode_pf": 1.1161537042,
+        "episode_win": 0.5251236657,
+        "max_balance_dd_usd": 434.63,
+        "min_balance_usd": 96.88,
+        "converted_losses": 195,
+        "exit_actions": 568
+      },
+      "leading_net_lane": {
+        "activate_shadow_balance": 700,
+        "net_usd": 1629.72,
+        "leg_n": 5252,
+        "gross_loss_usd": -18065.42,
+        "episode_win": 0.5227805259,
+        "max_balance_dd_usd": 511.18,
+        "converted_losses": 136
+      },
+      "conclusion": "Architectural breakthrough: decouple loss conversion from slot reuse. $500 activation gives best GL/DD improvement while clearing >50% soft success; $700 gives slightly higher net. Use $500 shadow loss converter as base, then add bounded high-quality velocity credits separately."
     }
   ],
   "current_leading_experimental_lane": {
@@ -510,7 +571,7 @@
     "august_accessed": false
   },
   "research10_january_parity_speedrun": {
-    "status": "ACTIVE_R10N_TREE_EXACT_REPLAY",
+    "status": "ACTIVE_R10P_BOUNDED_VELOCITY",
     "objective": "Converge toward R9 SYNTH economic shape while preserving frozen $100-$1,000 survival guardrails.",
     "control": {
       "candidate": "SA100_TO_1000_JAN_CANDIDATE_01",
@@ -680,8 +741,21 @@
       },
       "activation_balance_usd": 700,
       "rationale": "Preserves >50% all/holdout episode success while materially reducing gross loss with a reconstructible shallow tree."
+    },
+    "r10o": {
+      "status": "COMPLETE_BREAKTHROUGH",
+      "selected_base": {
+        "activate_shadow_balance": 500,
+        "net_usd": 1617.1,
+        "gross_loss_usd": -17036.76,
+        "dd_usd": 434.63,
+        "episode_win": 0.5251236657,
+        "converted_losses": 195
+      },
+      "design": "Keep frozen virtual slot until original episode end; early physical EXIT does not recursively open the admission floodgate.",
+      "next": "Use at most one non-recursive velocity credit per freed physical interval; require causal specialist >50% soft success and positive discovery/holdout."
     }
   },
-  "last_completed_helper": "SA100_R10M_CAUSAL_ACTION_TREE_SCREEN01",
-  "last_completed_helper_result": "COMPLETE_PROMISING_SHALLOW_TREE__EXACT_CAPITAL_REPLAY_REQUIRED"
+  "last_completed_helper": "SA100_R10O_SHADOW_SLOT_TREE_SCREEN01",
+  "last_completed_helper_result": "COMPLETE_BREAKTHROUGH__SHADOW_ADMISSION_DECOUPLES_LOSS_CONVERSION_FROM_VELOCITY"
 }
