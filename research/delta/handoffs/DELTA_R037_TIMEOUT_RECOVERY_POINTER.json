@@ -18,8 +18,8 @@
   "in_flight_unit": {
     "unit": "R037_XAUUSD_EMA_CROSS_TOUCH_SWING_BREAK_STAGE_A_SCREEN_CHECKPOINT_17CP_17CQ",
     "family": "R037-XECTSB-v1",
-    "status": "RESULT_COMMITTED",
-    "phase_rank": 3,
+    "status": "CHECKPOINT_PACKET_DURABLE_PENDING_STATE_ADVANCE",
+    "phase_rank": 5,
     "parent_durable_unit": "R037_VCE_RAW_RELEASE_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CO",
     "current_candidate": "17CQ_M15_EMA9_21_TOUCH_SWING10",
     "committed_artifacts": [
@@ -40,9 +40,21 @@
         "commit": "28d260b1a5e294a038cfe13b841a5fe20d516467",
         "blob_sha": "8222ec1a2ed3a280e3c9261dfff9f6369e77128d",
         "result_sha256": "7d941b248db91d42f7c56f1cf79b06efe5e037aedca85719d9b39333ac71c75b"
+      },
+      {
+        "role": "report",
+        "path": "research/delta/research/DELTA_R037_XECTSB_STAGE_A_CHECKPOINT_17CP_17CQ.md",
+        "commit": "618f358731d56fc0e0d03e32923c347774167bf0",
+        "blob_sha": "d9b2889b78299de29df2a2582b682b3c03ee246f"
+      },
+      {
+        "role": "manifest",
+        "path": "research/delta/artifacts/DELTA_R037_XECTSB_STAGE_A_CHECKPOINT_17CP_17CQ_MANIFEST.json",
+        "commit": "7c86c796de412ce7e860eab2882ac8b5c2832a0b",
+        "blob_sha": "ba7cc8e6c5b6551bb234aacec9104522ef2d567c"
       }
     ],
-    "next_action": "WRITE_REPORT_WORKBOOK_MANIFEST",
+    "next_action": "ADVANCE_CURRENT_STATE_AND_VERIFY_CI",
     "completed_months": [],
     "next_month": null
   },
