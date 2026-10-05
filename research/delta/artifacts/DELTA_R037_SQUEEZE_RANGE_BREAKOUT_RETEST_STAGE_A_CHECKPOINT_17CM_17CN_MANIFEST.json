@@ -1,0 +1,213 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_SCREEN_CHECKPOINT_17CM_17CN",
+  "status": "VERIFIED_NO_STAGE_A_SURVIVOR_ECONOMICS_FAILURE",
+  "date_utc": "2026-10-05",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_XAUUSD_INSIDE_BAR_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CK_17CL",
+  "hypothesis": "A source-grounded BB/Keltner compression release followed by the first causal retest-and-hold of the locked squeeze range can preserve the prior VCE quality clue while retaining usable XAUUSD event supply.",
+  "falsification_condition": "Neither preregistered M5/M1 retest lane satisfies >=10 trades, >=5 distinct days and strictly positive direct net under frozen Stage-A execution.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Two preregistered SRBRT lanes",
+    "reference_count": 2,
+    "minimum_count": 2,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Both lanes passed supply gates but failed direct-net gate; no rescue tuning."
+  },
+  "primary_metrics": {
+    "17CM_M5_SQUEEZE_RANGE_RETEST": "38 trades / 11 days / 18 wins / -$6.11",
+    "17CN_M1_SQUEEZE_RANGE_RETEST": "43 trades / 11 days / 22 wins / -$6.36",
+    "breakout_supply": "69 squeeze segments / 69 locked ranges / 56 breakouts",
+    "reference_clue": "Prior raw BB/KC release: 27 trades / 20 wins / +$0.71"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_squeeze_range_breakout_retest_17cm_17cn.py",
+      "commit": "17958c71ddb2133d993fa9a3a8a08177bb2d3248",
+      "blob_sha": "599cac3a5fdfa302695f3af13e88a25c25932a2b",
+      "file_sha256": "b462fb6e12248d5740f3bff332f4ec8358ef44bde97ea059c08e51581ed033fe"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "0067707d2a45755fd4fa69fa164bbdd379aea5fe",
+      "file_sha256": "a0816a19445537f8a9c199c46212bbadb006a2773a9e03715afa49d489b8c281"
+    }
+  ],
+  "models": [],
+  "config": {
+    "parameters": {
+      "source_timeframe": "M5",
+      "bb_length": 20,
+      "bb_stddev": 2,
+      "kc_length": 20,
+      "kc_atr_multiplier": 1.5,
+      "confirmation_lanes": [
+        "M5",
+        "M1"
+      ],
+      "max_spread_raw": 250,
+      "stop_raw": 300,
+      "trail_activation_raw": 100,
+      "trail_distance_raw": 30,
+      "max_hold_seconds": 30,
+      "fixed_lot": 0.01,
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "completed M5 squeeze",
+      "lock contiguous squeeze range",
+      "completed M5 breakout",
+      "first causal retest/hold",
+      "first executable P75 tick",
+      "frozen 30-second execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "fixed Stage-A prescreen"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": true,
+      "exact_git_blob_preexecution_verification": true,
+      "parent_death_signal": true,
+      "compact_stdout": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "preregistration",
+      "path": "research/delta/reference/DELTA_R037_SQUEEZE_RANGE_BREAKOUT_RETEST_PREREG_17CM_17CN.json",
+      "commit": "038d1750aaf510cd2929f7301f46af2a994d9d90"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "M5/M1 causal bars and squeeze state reconstructed from canonical Stage-A ticks"
+    ],
+    "diagnostics": [
+      "69 squeeze segments / 69 locked ranges / 56 breakouts",
+      "17CM: 38 retests, 6 opposite invalidations, 11 new-squeeze invalidations",
+      "17CN: 43 retests, 6 opposite invalidations, 7 new-squeeze invalidations"
+    ]
+  },
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_CHECKPOINT_17CM_17CN.json",
+      "commit": "279873a1959fa90aa77bb106c5e5b2909cc88d82",
+      "blob_sha": "e90ca0ef2309bb35b6ee2e7074f18094dc227961",
+      "result_sha256": "caf430d9dce0ff28584f67d0568ec24b9921fd95f25c5227bc6f1aff8fd86939"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_SQUEEZE_RANGE_BREAKOUT_RETEST_STAGE_A_CHECKPOINT_17CM_17CN.md",
+      "commit": "234a3aef099237086c68ee60e6bd4df41211fda6",
+      "blob_sha": "13a4e7d7eb7e954bb82bcc277240d18577b10872"
+    }
+  ],
+  "qa": [
+    "Preregistration committed before producer.",
+    "Producer committed before official compute.",
+    "Exact producer and bounded-runner Git blobs verified before compute.",
+    "Canonical January SHA and Stage-A chronology verified.",
+    "Official bounded runner exited 0 within the 120-second limit.",
+    "Result committed before report/closure.",
+    "Workbook 69 R037 Research Harvest A274:I281 written and read back.",
+    "Both lanes passed supply floors but failed direct-net gate.",
+    "No post-result threshold, timeframe, side, session or exit rescue.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_squeeze_range_breakout_retest_17cm_17cn.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_squeeze_range_breakout_retest_17cm_17cn.py --source <canonical_january_gzip> --output <checkpoint_json>",
+    "timing_semantics": "Tick-derived completed M5/M1 bars; lock contiguous completed squeeze range; breakout on completed M5 close; first later completed retest/hold; entry at first executable P75 tick.",
+    "expected_fingerprints": {
+      "breakout_diagnostics": {
+        "squeeze_segments": 69,
+        "locked_ranges": 69,
+        "breakouts": 56,
+        "bull_breakouts": 32,
+        "bear_breakouts": 24,
+        "locks_replaced_by_new_squeeze": 13
+      },
+      "17CM_M5_SQUEEZE_RANGE_RETEST": {
+        "trades": 38,
+        "days": 11,
+        "wins": 18,
+        "direct_net_usd": -6.11
+      },
+      "17CN_M1_SQUEEZE_RANGE_RETEST": {
+        "trades": 43,
+        "days": 11,
+        "wins": 22,
+        "direct_net_usd": -6.36
+      }
+    },
+    "selected_interpretation": "SOURCE_GROUNDED_RETEST_HAS_SUPPLY_BUT_DEGRADES_30S_PERSISTENCE_VS_RAW_RELEASE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — family retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "None.",
+    "execution_quote_side_spec": "Frozen P75.",
+    "ownership_scheduler_spec": "No promotion/integration.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01 research semantics.",
+    "trade_count_parity_spec": "Not applicable.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "github_commits": [
+    "038d1750aaf510cd2929f7301f46af2a994d9d90",
+    "17958c71ddb2133d993fa9a3a8a08177bb2d3248",
+    "d3b5e26163b588ce5506b09fc5ab2cb94434db49",
+    "a403643467fc3144f13fe63249243719653ec436",
+    "279873a1959fa90aa77bb106c5e5b2909cc88d82",
+    "9f485f34e67345ee6c040b15d0402e5b27853dfb",
+    "11be0f0116ef4bc572701a9eeed25e991221fcbb",
+    "234a3aef099237086c68ee60e6bd4df41211fda6"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A274:I281"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+}
