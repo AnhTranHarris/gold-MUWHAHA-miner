@@ -1,0 +1,205 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_SCREEN_CHECKPOINT_17CI_17CJ",
+  "status": "VERIFIED_NO_STAGE_A_SURVIVOR_ECONOMIC_FAILURE",
+  "date_utc": "2026-10-05",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_VCE_QIM_CONFIRMATION_STAGE_A_SCREEN_CHECKPOINT_17CE_17CH",
+  "hypothesis": "Source-grounded controlled-pause continuation via SuperTrend pullback/rebound or M30 NR7 session breakout can produce positive frozen 30-second XAUUSD persistence with usable supply.",
+  "falsification_condition": "Neither fixed lane satisfies >=10 trades, >=5 distinct days and positive direct net.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "Two preregistered continuation lanes",
+    "reference_count": 2,
+    "minimum_count": 2,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Both lanes executed unchanged and both had adequate supply."
+  },
+  "primary_metrics": {
+    "17CI_SUPERTREND_PULLBACK_M5": "39 trades / 10 days / 19 wins / -$5.72",
+    "17CJ_NR7_M30_SESSION_BREAKOUT": "34 trades / 11 days / 14 wins / -$4.37"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/experiments/delta_r037_controlled_pause_continuation_17ci_17cj.py",
+      "commit": "79ef49f6936d22b0ab3b0166934247f0f4dd99cc",
+      "blob_sha": "55e1b29b76ed3cd039e3e7d96c482a6291c2d6e9",
+      "file_sha256": "da6fae9a5b165a0ee5f4c4b542db0e8f8ec89f00dba0e1643be19b0a4e82cdaa"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "0067707d2a45755fd4fa69fa164bbdd379aea5fe",
+      "file_sha256": "a0816a19445537f8a9c199c46212bbadb006a2773a9e03715afa49d489b8c281"
+    }
+  ],
+  "models": [],
+  "config": {
+    "parameters": {
+      "supertrend": {
+        "timeframe": "M5",
+        "atr_period": 10,
+        "factor": 3
+      },
+      "nr7": {
+        "timeframe": "M30",
+        "session": "UTC day",
+        "window_bars": 7,
+        "breakout_offset_raw": 10
+      },
+      "execution": {
+        "max_spread_raw": 250,
+        "stop_raw": 300,
+        "trail_activation_raw": 100,
+        "trail_distance_raw": 30,
+        "max_hold_seconds": 30
+      },
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "source-default controlled pause",
+      "completed confirmation/arm",
+      "first executable P75 entry",
+      "frozen 30-second execution"
+    ],
+    "horizons_checkpoints": {
+      "stage_a": "[2026-01-01T00:00:00Z,2026-01-18T12:00:00Z)"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "fixed Stage-A prescreen"
+    },
+    "runtime_dependencies": [
+      "Python 3.11",
+      "numpy",
+      "pandas",
+      "numba"
+    ],
+    "crash_safety": {
+      "hard_timeout_seconds": 120,
+      "atomic_output": true,
+      "exact_git_blob_preexecution_verification": true,
+      "parent_death_signal": true,
+      "compact_stdout": true
+    }
+  },
+  "inputs": [
+    {
+      "name": "canonical January XAUUSD",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "stage_a_ticks": 4205709
+    },
+    {
+      "name": "prereg",
+      "path": "research/delta/reference/DELTA_R037_CONTROLLED_PAUSE_CONTINUATION_PREREG_17CI_17CJ.json",
+      "commit": "0c779b1cf94a9d4b29b3e5c0ea5a0b7f94b17409"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [
+      "M5 SuperTrend state",
+      "M30 current-session NR7 compression zones"
+    ],
+    "diagnostics": [
+      "78 SuperTrend pullbacks / 39 confirmations",
+      "82 NR7 / 44 armed / 34 triggered / 10 expired"
+    ]
+  },
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_CHECKPOINT_17CI_17CJ.json",
+      "blob_sha": "debca8c53c0b38ee51fdd5379b7448b5e2f73cb7",
+      "result_sha256": "45db038715b6d239930e86f3a5b138324db0460552576dc8a1e3ec58cbcc56ad"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_CONTROLLED_PAUSE_CONTINUATION_STAGE_A_CHECKPOINT_17CI_17CJ.md",
+      "blob_sha": "3f519bf6b8fa465bbaaba3e36e23fcf490011f0c"
+    }
+  ],
+  "qa": [
+    "Preregistration committed before producer.",
+    "Producer committed before official compute.",
+    "Timeout ledger reserved unit/lane IDs before official compute.",
+    "Local git hash-object exactly matched committed producer blob.",
+    "Bounded runner SHA-256 matched committed helper.",
+    "Canonical January SHA and exact Stage-A chronology verified.",
+    "Official compute completed in approximately 6.240 seconds.",
+    "Both lanes passed supply/day gates and failed direct economics.",
+    "No parameter/timeframe/side/session/exit rescue tuning.",
+    "Workbook 69 R037 Research Harvest A260:I266 written and read back.",
+    "August sealed; MQL5 unauthorized."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/experiments/delta_r037_controlled_pause_continuation_17ci_17cj.py",
+    "command": "python research/delta/qa/delta_bounded_python_runner.py --timeout 120 -- python research/delta/experiments/delta_r037_controlled_pause_continuation_17ci_17cj.py --source <canonical_january_gzip> --output <checkpoint_json>",
+    "timing_semantics": "SuperTrend uses completed M5 bars and next-bar confirmation. NR7 arms only after completed M30 NR7 bar and triggers causally on first quote crossing frozen zone boundary before UTC-day expiry.",
+    "expected_fingerprints": {
+      "17CI_SUPERTREND_PULLBACK_M5": {
+        "trades": 39,
+        "days": 10,
+        "wins": 19,
+        "net_usd": -5.72,
+        "pullbacks": 78,
+        "confirmed": 39
+      },
+      "17CJ_NR7_M30_SESSION_BREAKOUT": {
+        "trades": 34,
+        "days": 11,
+        "wins": 14,
+        "net_usd": -4.37,
+        "nr7": 82,
+        "armed": 44,
+        "triggered": 34,
+        "expired": 10
+      }
+    },
+    "selected_interpretation": "ADEQUATE_NATIVE_SUPPLY_BUT_NEGATIVE_30S_PERSISTENCE"
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — family retired",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Not translation-ready.",
+    "model_inference_spec": "None.",
+    "execution_quote_side_spec": "Frozen P75.",
+    "ownership_scheduler_spec": "No integration.",
+    "session_dst_spec": "Frozen.",
+    "risk_spec": "Fixed 0.01 research semantics.",
+    "trade_count_parity_spec": "Not applicable.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "github_commits": [
+    "0c779b1cf94a9d4b29b3e5c0ea5a0b7f94b17409",
+    "79ef49f6936d22b0ab3b0166934247f0f4dd99cc",
+    "5529cf71ed77500f015d05610197c6ddcdf97de4",
+    "37f8acefef89b428efa5515ab5dfa74ead04e1e6"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "69 R037 Research Harvest",
+      "range": "A260:I266"
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "next_unit": "R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"
+}
