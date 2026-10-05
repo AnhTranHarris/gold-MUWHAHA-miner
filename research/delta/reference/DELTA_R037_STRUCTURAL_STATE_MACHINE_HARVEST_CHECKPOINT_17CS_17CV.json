@@ -1,0 +1,22 @@
+{
+  "schema": "delta-r037-structural-state-machine-harvest-17cs-17cv-v1",
+  "status": "COMPLETE_FAST_CAUSAL_STAGE_A_SCREEN",
+  "unit": "R037_HIGH_VALUE_STRUCTURAL_STATE_MACHINE_HARVEST_CHECKPOINT_17CS_17CV",
+  "parent_checkpoint": "R037_XECTSB_LEADER_INDEPENDENT_LATER_JAN_VALIDATION_CHECKPOINT_17CR",
+  "prereg_commit": "0f5e4299eab2e76ead38ad63a5a1376a62de8dc1",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "stage_a_ticks": 4205709,
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "configs": {
+    "17CS_123NB_M1": {"family":"R037-123NB-v1","bar_ms":60000,"metrics":{"signals":608,"trades":608,"busy_skips":0,"spread_rejects":0,"distinct_days":14,"long":338,"short":270,"official_wins":288,"gross_profit":70.9,"gross_loss":-169.78,"direct_net_usd":-104.96,"exit_reasons":{"STOP":587,"MAX_HOLD":21,"END":0}},"gate":{"minimum_trades_20":true,"minimum_distinct_days_5":true,"direct_net_nonnegative":false,"screen_pass":false},"diagnostics":{"pivots":2852,"structures":1254,"invalidations":137,"neckline_breaks":608,"spread_rejects":0}},
+    "17CT_123NB_M5": {"family":"R037-123NB-v1","bar_ms":300000,"metrics":{"signals":120,"trades":120,"busy_skips":0,"spread_rejects":0,"distinct_days":13,"long":73,"short":47,"official_wins":58,"gross_profit":15.37,"gross_loss":-36.43,"direct_net_usd":-22.26,"exit_reasons":{"STOP":120,"MAX_HOLD":0,"END":0}},"gate":{"minimum_trades_20":true,"minimum_distinct_days_5":true,"direct_net_nonnegative":false,"screen_pass":false},"diagnostics":{"pivots":577,"structures":255,"invalidations":22,"neckline_breaks":120,"spread_rejects":0}},
+    "17CU_MSNR_DBO_M1": {"family":"R037-MSnR-DBO-v1","bar_ms":60000,"metrics":{"signals":942,"trades":942,"busy_skips":0,"spread_rejects":0,"distinct_days":14,"long":484,"short":458,"official_wins":422,"gross_profit":100.43,"gross_loss":-278.96,"direct_net_usd":-187.95,"exit_reasons":{"STOP":903,"MAX_HOLD":39,"END":0}},"gate":{"minimum_trades_20":true,"minimum_distinct_days_5":true,"direct_net_nonnegative":false,"screen_pass":false},"diagnostics":{"a_levels":3892,"v_levels":3894,"a_pair_slides":908,"v_pair_slides":1031,"a_restarts":1510,"v_restarts":1424,"a_expiries":0,"v_expiries":0,"double_a_breakouts":484,"double_v_breakouts":458,"spread_rejects":0}},
+    "17CV_MSNR_DBO_M5": {"family":"R037-MSnR-DBO-v1","bar_ms":300000,"metrics":{"signals":177,"trades":177,"busy_skips":0,"spread_rejects":0,"distinct_days":12,"long":87,"short":90,"official_wins":81,"gross_profit":19.56,"gross_loss":-51.81,"direct_net_usd":-34.02,"exit_reasons":{"STOP":169,"MAX_HOLD":8,"END":0}},"gate":{"minimum_trades_20":true,"minimum_distinct_days_5":true,"direct_net_nonnegative":false,"screen_pass":false},"diagnostics":{"a_levels":756,"v_levels":756,"a_pair_slides":177,"v_pair_slides":196,"a_restarts":304,"v_restarts":273,"a_expiries":0,"v_expiries":0,"double_a_breakouts":87,"double_v_breakouts":90,"spread_rejects":0}}
+  },
+  "finding": {"survivors":[],"leader":null,"decision":"RETIRE_BOTH_STRUCTURAL_FAMILIES_NO_STAGE_A_SURVIVOR","next":"R037_NEXT_HIGH_VALUE_ENTRY_SOURCE_HARVEST"},
+  "numeric_retuning": false,
+  "post_result_rescue": false,
+  "august_accessed": false,
+  "mql5_authorized": false,
+  "runtime_seconds": 6.863
+}
