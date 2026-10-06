@@ -1,0 +1,74 @@
+{
+  "schema": "delta-a-alpha-r9-real-jan-gross-loss-concentration-v1-compact",
+  "unit": "DAA_GRID_001_R9_REAL_JAN_GROSS_LOSS_CONCENTRATION_001",
+  "status": "COMPLETE_NO_CLEAN_20PCT_STATIC_FAMILY",
+  "canonical": {
+    "trades": 31915,
+    "net": -6651.62,
+    "gross_profit": 3785.28,
+    "gross_loss": -10436.9,
+    "target_20pct_gross_loss": 2087.38,
+    "target_20pct_net_loss": 1330.324
+  },
+  "large_families": [
+    {
+      "family": "VOL_RATIO_<1.00",
+      "trades": 17306,
+      "trade_share_pct": 54.23,
+      "net": -3663.34,
+      "gross_loss_share_pct": 53.11,
+      "gross_profit_share_pct": 49.67,
+      "discovery_net": -3002.93,
+      "validation_net": -660.41
+    },
+    {
+      "family": "LATTICE_CONSENSUS_MIXED",
+      "trades": 17021,
+      "trade_share_pct": 53.33,
+      "net": -3587.66,
+      "gross_loss_share_pct": 52.59,
+      "gross_profit_share_pct": 50.22,
+      "discovery_net": -3041.08,
+      "validation_net": -546.58
+    },
+    {
+      "family": "OWNER_NEUTRAL",
+      "trades": 13327,
+      "trade_share_pct": 41.76,
+      "net": -2846.75,
+      "gross_loss_share_pct": 41.59,
+      "gross_profit_share_pct": 39.47,
+      "discovery_net": -2305.57,
+      "validation_net": -541.18
+    },
+    {
+      "family": "LATEST_A15_OPPOSED",
+      "trades": 13912,
+      "trade_share_pct": 43.59,
+      "net": -2938.29,
+      "gross_loss_share_pct": 43.6,
+      "gross_profit_share_pct": 42.58,
+      "discovery_net": -2386.84,
+      "validation_net": -551.45
+    },
+    {
+      "family": "A15_OPPOSED_EVENT_AGE_GE120S",
+      "trades": 8599,
+      "trade_share_pct": 26.94,
+      "net": -1858.18,
+      "gross_loss_share_pct": 26.84,
+      "gross_profit_share_pct": 24.93,
+      "discovery_net": -1570.78,
+      "validation_net": -287.4
+    }
+  ],
+  "interpretation": [
+    "Static grid/nested states contain >20% gross-loss families, but the largest families also contain comparable gross profit and trade share.",
+    "Perfect veto ceilings are large but are not acceptable evidence of a useful intervention.",
+    "The result suggests R9 REAL January weakness is broad overtrading/nonselective execution rather than one narrow static state.",
+    "NEXT add event-time specialist signal-flow state to the same nested routing category instead of micro-tuning static filters."
+  ],
+  "next_hypothesis": "R9 BUY/SELL signal stream as synthetic event-flow imbalance: run pressure, alternation/chop, decay, and nested-state interaction.",
+  "promotion_eligible": false,
+  "august": "SEALED"
+}
