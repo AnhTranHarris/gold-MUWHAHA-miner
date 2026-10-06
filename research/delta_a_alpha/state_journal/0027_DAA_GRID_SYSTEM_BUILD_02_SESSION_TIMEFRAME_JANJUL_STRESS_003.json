@@ -1,0 +1,48 @@
+{
+  "sequence": 27,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_003",
+  "status": "COMPLETE_RESEARCH_CANDIDATE_NOT_PROMOTED",
+  "predecessor": {
+    "sequence": 26,
+    "path": "research/delta_a_alpha/state_journal/0026_DAA_STMR_JANJUL_STRESS_001_RECOVERY_START.json"
+  },
+  "accepted_floor_unchanged": true,
+  "accepted_floor": {
+    "candidate": "STMR_SLEEVE_PHASE_001",
+    "january_net": 877.78,
+    "trades": 1518,
+    "profit_factor": 1.602933
+  },
+  "research_candidate": {
+    "candidate": "STMR_XMONTH_SUBPHASE_001",
+    "cleanroom_janjul_net": 829.71,
+    "profit_factor": 1.2967425592,
+    "trades": 2675,
+    "worst_month_net": -34.51,
+    "rules": [
+      "fund only cross-month admissible semantic sleeves",
+      "OVERLAP_LOWER_TAKEOVER 15:00-16:00 UTC only",
+      "LATE_LOWER_TAKEOVER 21:00-22:00 UTC only"
+    ]
+  },
+  "exact_replay_parity": {
+    "status": "NOT_RECOVERED",
+    "accepted_helper_sha256": "943b62c4be0e84185ad9c61577d4d3dd14ce51b2cafcfb7829c47a2910ff0216",
+    "search": "No executable file matching helper hash/name found in GitHub, Project/Library, or either connected Google Drive account."
+  },
+  "durability": {
+    "library_root": "/xauusd-trading-bot/delta-A-alpha/stmr-janjul-stress-2026-10-06/",
+    "helper_sha256": "0df41a4ece3083129022443daab14687b5a170bb888e879d7352301568f7def5",
+    "result_sha256": "32f2c80fad10950a51e22d14c37bcc8ad333bae2581078a4f0205ed37b443515",
+    "report_sha256": "2a4ccb9ea8604c7a1bfb07e018432cd040f73d11697b5c5e8fde55d157af2b5a"
+  },
+  "decision": [
+    "retain STMR_XMONTH_SUBPHASE_001 as strongest clean-room Jan-Jul session/timeframe child",
+    "do not replace journal 0024 accepted floor",
+    "do not calendar-fit April/May/July",
+    "August remains sealed",
+    "no MQL5"
+  ],
+  "next_unit": "OWNER_DECIDE_CLEANROOM_CROSSMONTH_AUTHORITY_OR_NEXT_SYSTEM_DIMENSION"
+}
