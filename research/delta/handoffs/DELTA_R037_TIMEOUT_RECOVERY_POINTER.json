@@ -10,54 +10,66 @@
     "active rebuild manifest"
   ],
   "durable_cursor": {
-    "last_verified_durable_unit": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
-    "current_phase": "R037_XAUUSD_ASIA_RANGE_DIRECTIONALITY_HARVEST_CHECKPOINT_17DE_17DG_IN_PROGRESS",
-    "first_incomplete_unit": "R037_XAUUSD_ASIA_RANGE_DIRECTIONALITY_HARVEST_CHECKPOINT_17DE_17DG",
-    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_SSRP_QUALIFIED_SWEEP_CHECKPOINT_17DA_17DD_MANIFEST.json"
+    "last_verified_durable_unit": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
+    "current_phase": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_READY",
+    "first_incomplete_unit": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_PLAN",
+    "active_rebuild_manifest": "research/delta/artifacts/DELTA_R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A_MANIFEST.json"
   },
   "in_flight_unit": {
-    "unit": "R037_XAUUSD_ASIA_RANGE_DIRECTIONALITY_HARVEST_CHECKPOINT_17DE_17DG",
-    "family": "R037-XBREAK-v1 + R037-SUNALGO-FAKEOUT-ENGULF-v1",
-    "status": "PRODUCER_COMMITTED",
-    "phase_rank": 2,
-    "parent_durable_unit": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
-    "current_candidate": "17DE-17DG Asia-range directionality bake-off",
-    "committed_artifacts": [
-      {
-        "role": "prereg",
-        "path": "research/delta/reference/DELTA_R037_ASIA_RANGE_DIRECTIONALITY_PREREG_17DE_17DG.json",
-        "commit": "b788e7aa4c3d83b7bea43beb453b705b34b340b1"
-      },
-      {
-        "role": "producer",
-        "path": "research/delta/experiments/delta_r037_asia_range_directionality_17de_17dg.py",
-        "commit": "a6a9c048b791533b690072a2aeef6132e88f1d28",
-        "blob_sha": "562d3abc0bc52e715eab7e6423290e6f7592c9a3"
-      }
-    ],
-    "next_action": "RUN_BOUNDED_COMPUTE",
+    "status": "NONE",
+    "unit": null,
+    "family": null,
+    "phase_rank": 0,
+    "parent_durable_unit": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
+    "current_candidate": null,
+    "committed_artifacts": [],
+    "next_action": "BEGIN_R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_PLAN",
     "completed_months": [],
     "next_month": null
   },
+  "frozen_specialist_roster": {
+    "execution_streams": [
+      "DH03-S06",
+      "DH05-S06",
+      "DH02-S11",
+      "DH02-S08"
+    ],
+    "shared_components": [
+      "DH01",
+      "DH06",
+      "DH07"
+    ],
+    "reserve": [
+      "DH04"
+    ],
+    "new_specialist_harvest": "PAUSED_BY_OWNER"
+  },
+  "reconciled_timeout_incident": {
+    "stale_unit": "R037_XAUUSD_ASIA_RANGE_DIRECTIONALITY_HARVEST_CHECKPOINT_17DE_17DG",
+    "stale_pointer_state": "PRODUCER_COMMITTED",
+    "durable_state_found": "COMPLETE_FAST_CAUSAL_STAGE_A_SCREEN",
+    "disposition": "RETIRE_ASIA_RANGE_DIRECTIONALITY_NO_STAGE_A_SURVIVOR",
+    "rule": "Never infer compute failure from message-delivery timeout when durable result/report/manifest already exist."
+  },
   "timeout_recovery_algorithm": [
     "Read CURRENT_STATE, then CURRENT_INFLIGHT, then this pointer.",
-    "Resume from first missing committed phase; do not rerun durable compute solely because message delivery failed.",
-    "Official compute requires committed producer bytes and exact local Git-blob verification.",
-    "Persist result, report, workbook readback and manifest before advancing CURRENT_STATE.",
+    "Resume from the first missing durable phase; do not rerun completed work solely because message delivery failed.",
+    "Official compute requires committed producer bytes and exact Git-blob verification.",
+    "Persist result, report, workbook/Drive readback and manifest before advancing CURRENT_STATE.",
     "Require DELTA rebuild artifact gate success."
   ],
   "execution_hardening": {
     "bounded_timeout_seconds": 120,
-    "producer_atomic_output": "NamedTemporaryFile + flush + fsync + os.replace",
+    "producer_atomic_output": "NamedTemporaryFile + flush + fsync + os.replace where the producer writes a file",
     "exact_git_blob_preexecution_verification": true,
-    "large_stdout_policy": "Persist detailed diagnostics to JSON; keep transport output compact.",
+    "large_stdout_policy": "Persist detailed diagnostics to durable JSON; keep transport output compact.",
     "phase_checkpoint_policy": "Advance CURRENT_INFLIGHT and recovery pointer immediately after each durable phase.",
-    "atomic_multi_file_cursor_commit": true,
-    "cursor_close_sequence": "Report + rebuild manifest + CURRENT_INFLIGHT + recovery pointer + CURRENT_STATE should close together; if connector blocks multi-file tree commit, serialize writes and verify final CI."
+    "cursor_close_sequence": "Result/report + rebuild manifest + CURRENT_INFLIGHT + recovery pointer + CURRENT_STATE; require final CI."
   },
   "constraints": {
     "august_2026": "SEALED",
     "mql5_authorized": false,
-    "numeric_threshold_retuning": false
+    "numeric_threshold_retuning": false,
+    "new_specialist_harvest": false
   }
 }
