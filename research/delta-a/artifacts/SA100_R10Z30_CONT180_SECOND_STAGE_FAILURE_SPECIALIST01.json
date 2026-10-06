@@ -1,87 +1,67 @@
 {
   "id": "SA100_R10Z30_CONT180_SECOND_STAGE_FAILURE_SPECIALIST01",
-  "status": "COMPLETE_EXACT_TICK_LOSS_CONTROL_CHAMPION",
-  "rule": "After R10Y abstains, residual HOLD/CONT/180s at +3s: if MFE>$0.30 and <=$3.50 and MAE<=-$1.70, close current basket/cancel future legs and reverse one 0.01 for 30s. Shadow admission stays frozen to original episode interval.",
+  "status": "COMPLETE_EXACT_TICK_SECOND_STAGE_CONVERSION",
+  "rule": "after R10Y abstains, residual HOLD/CONT/180s at +3s: if MFE>$0.30 and <=$3.50 and MAE<=-$1.70, close current basket/cancel future legs and reverse one 0.01 for 30s",
   "target_episodes": 1239,
   "selected_episodes": 95,
-  "specialist_changed_win": 0.5157894737,
+  "specialist_changed_win": 0.5157894736842106,
   "converted_losses": 27,
   "jan29": {
     "n": 26,
-    "changed_win": 0.5384615385,
-    "delta_usd": 251,
+    "changed_win": 0.5384615384615384,
+    "delta_usd": 250.99999999999997,
     "converted_losses": 8
   },
   "jan30": {
     "n": 65,
-    "changed_win": 0.5230769231,
-    "delta_usd": 103.98,
+    "changed_win": 0.5230769230769231,
+    "delta_usd": 103.97999999999374,
     "converted_losses": 19
   },
-  "comparison_to_r10y": {
-    "net_usd": {
-      "before": 3719.7345,
-      "after": 4077.5945,
-      "delta": 357.86
-    },
-    "physical_gl_usd": {
-      "before": -13004.0115,
-      "after": -12206.1815,
-      "reduction": 797.83
-    },
-    "episode_gl_usd": {
-      "before": -10469.721,
-      "after": -9901.641,
-      "reduction": 568.08
-    },
-    "balance_dd_usd": {
-      "before": 265.38,
-      "after": 239.457,
-      "reduction": 25.923
-    },
-    "tick_dd_usd": {
-      "before": 198.2385,
-      "after": 210.9585,
-      "regression": 12.72
-    },
-    "executed_episode_win": {
-      "before": 0.5695679797,
-      "after": 0.5708386277
-    }
+  "physical_legs": {
+    "n": 4510,
+    "net": 4077.594499999972,
+    "gp": 16283.776000000003,
+    "gl": -12206.18150000003,
+    "pf": 1.334059795850157,
+    "win": 0.5339246119733925
   },
-  "alternatives": {
-    "rev60": {
-      "net_usd": 4072.6445,
-      "physical_gl_usd": -12387.9115,
-      "tick_dd_usd": 208.23,
-      "specialist_win": 0.5263157895
-    },
-    "rev90": {
-      "net_usd": 4293.4045,
-      "physical_gl_usd": -12461.1215,
-      "tick_dd_usd": 221.98,
-      "specialist_win": 0.5263157895
-    }
+  "episodes": {
+    "n": 3841,
+    "net": 4077.594499999973,
+    "gp": 13979.23550000001,
+    "gl": -9901.641000000036,
+    "pf": 1.4118099717006463,
+    "win": 0.46784691486592034
   },
-  "rationale": "30s chosen as loss-control champion because it has the lowest physical/episode gross loss and best balance DD of the tested 30/60/90s variants, while clearing the >50% soft specialist-success target. 90s retained as higher-net research alternative.",
-  "residual_loss_order": [
-    {
-      "state": "HOLD/CONT/180s",
-      "gross_loss_usd": -4971.89
-    },
-    {
-      "state": "HOLD/REVERT/900s",
-      "gross_loss_usd": -2171.42
-    }
-  ],
-  "hashes": {
-    "helper90": "feb15f1ac35d3c165da1afe26ac29a565ec0d4dee993fddc989bb449ee0e810b",
-    "result30": "716eefa6a133d124486aa6f2f7a0a7013aa88bda880863d53540d9ca0385df82",
-    "result60": "b2384a01abd7a0f685e5cf14078a7ada500d4641eb5bf3799743ea47f7e07261",
-    "result90": "9c33b8a4bb7415bff0c558b9f5a3d1f607f6a804df1fc04f48b74dd0aa7f2e0c",
-    "episodes30": "31db474e172b725c78e5a66e847a27995637fd78644ea240fd974fc3a8fe7989",
-    "legs30": "9ef7c66a3c280b8b3b65e691b59d98c89fb6e5d2f5b310a6513dbb905b9e261e"
+  "discovery": {
+    "n": 1301,
+    "net": 780.8939999999877,
+    "gp": 2672.6694999999995,
+    "gl": -1891.7755000000122,
+    "pf": 1.412783652182821,
+    "win": 0.43735588009223675
   },
+  "holdout": {
+    "n": 2540,
+    "net": 3296.7004999999854,
+    "gp": 11306.56600000001,
+    "gl": -8009.865500000025,
+    "pf": 1.4115800071798925,
+    "win": 0.48346456692913387
+  },
+  "delta_net_usd": 357.8599999999951,
+  "episode_gl_reduction_usd": -568.0799999999908,
+  "realized_balance_dd_usd": 239.45700000000124,
+  "realized_min_balance_usd": 96.88000000000218,
+  "tick_min_equity_usd": 88.5100000000023,
+  "tick_max_equity_dd_usd": 210.95849999999746,
+  "min_free_margin_usd": 75.779940000002,
+  "min_margin_level_pct": 535.0153788218984,
+  "max_positions": 8,
+  "executed_episode_win": 0.570838627700127,
+  "disc_exec_win": 0.5600393700787402,
+  "hold_exec_win": 0.575984990619137,
   "august_accessed": false,
-  "production_mql5_authorized": false
+  "elapsed_s": 7.971634387969971
 }

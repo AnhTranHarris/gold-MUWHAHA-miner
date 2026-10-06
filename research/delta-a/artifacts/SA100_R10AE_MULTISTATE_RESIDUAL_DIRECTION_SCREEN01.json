@@ -1,0 +1,1736 @@
+{
+  "id": "SA100_R10AE_MULTISTATE_RESIDUAL_DIRECTION_SCREEN01",
+  "status": "COMPLETE_FAST_MULTISTATE_SCREEN",
+  "states": [
+    {
+      "owner": "CONT",
+      "horizon_s": 180,
+      "n": 1060,
+      "net": 2136.929999999995,
+      "gl": -4644.310000000005,
+      "win": 0.5330188679245284,
+      "qualifying": 0,
+      "top": []
+    },
+    {
+      "owner": "CONT",
+      "horizon_s": 600,
+      "n": 50,
+      "net": 336.589999999999,
+      "gl": -343.66000000000025,
+      "win": 0.6,
+      "qualifying": 0,
+      "top": []
+    },
+    {
+      "owner": "CONT",
+      "horizon_s": 1200,
+      "n": 106,
+      "net": 211.78000000000185,
+      "gl": -263.19000000000153,
+      "win": 0.6226415094339622,
+      "qualifying": 46,
+      "top": [
+        {
+          "owner": "CONT",
+          "horizon_s": 1200,
+          "cp": 600,
+          "action": "rev300",
+          "depth": 2,
+          "leaf": 12,
+          "disc": {
+            "n": 16,
+            "delta": 19.74999999999782,
+            "win": 0.9375,
+            "converted": 5,
+            "gl_reduction": 21.839999999997854
+          },
+          "hold": {
+            "n": 16,
+            "delta": 95.46000000000444,
+            "win": 0.9375,
+            "converted": 5,
+            "gl_reduction": 11.760000000000872
+          },
+          "all": {
+            "n": 32,
+            "delta": 115.21000000000227,
+            "win": 0.9375,
+            "converted": 10,
+            "gl_reduction": 33.59999999999873
+          },
+          "tree": "|--- pnl_cp <= 0.230\n|   |--- pre30_range <= 1.945\n|   |   |--- class: 0\n|   |--- pre30_range >  1.945\n|   |   |--- class: 0\n|--- pnl_cp >  0.230\n|   |--- shadow_balance <= 431.850\n|   |   |--- class: 1\n|   |--- shadow_balance >  431.850\n|   |   |--- class: 0\n"
+        },
+        {
+          "owner": "CONT",
+          "horizon_s": 1200,
+          "cp": 600,
+          "action": "rev300",
+          "depth": 3,
+          "leaf": 12,
+          "disc": {
+            "n": 16,
+            "delta": 19.74999999999782,
+            "win": 0.9375,
+            "converted": 5,
+            "gl_reduction": 21.839999999997854
+          },
+          "hold": {
+            "n": 16,
+            "delta": 95.46000000000444,
+            "win": 0.9375,
+            "converted": 5,
+            "gl_reduction": 11.760000000000872
+          },
+          "all": {
+            "n": 32,
+            "delta": 115.21000000000227,
+            "win": 0.9375,
+            "converted": 10,
+            "gl_reduction": 33.59999999999873
+          },
+          "tree": "|--- pnl_cp <= 0.230\n|   |--- pre30_range <= 1.945\n|   |   |--- class: 0\n|   |--- pre30_range >  1.945\n|   |   |--- class: 0\n|--- pnl_cp >  0.230\n|   |--- shadow_balance <= 431.850\n|   |   |--- class: 1\n|   |--- shadow_balance >  431.850\n|   |   |--- class: 0\n"
+        },
+        {
+          "owner": "CONT",
+          "horizon_s": 1200,
+          "cp": 60,
+          "action": "rev180",
+          "depth": 1,
+          "leaf": 15,
+          "disc": {
+            "n": 16,
+            "delta": 5.450000000001463,
+            "win": 0.5625,
+            "converted": 6,
+            "gl_reduction": 13.7400000000016
+          },
+          "hold": {
+            "n": 17,
+            "delta": 78.04000000000433,
+            "win": 0.5882352941176471,
+            "converted": 7,
+            "gl_reduction": 77.29000000000487
+          },
+          "all": {
+            "n": 33,
+            "delta": 83.4900000000058,
+            "win": 0.5757575757575758,
+            "converted": 13,
+            "gl_reduction": 91.03000000000648
+          },
+          "tree": "|--- turns <= 200.000\n|   |--- class: 0\n|--- turns >  200.000\n|   |--- class: 1\n"
+        },
+        {
+          "owner": "CONT",
+          "horizon_s": 1200,
+          "cp": 60,
+          "action": "rev180",
+          "depth": 2,
+          "leaf": 15,
+          "disc": {
+            "n": 16,
+            "delta": 5.450000000001463,
+            "win": 0.5625,
+            "converted": 6,
+            "gl_reduction": 13.7400000000016
+          },
+          "hold": {
+            "n": 17,
+            "delta": 78.04000000000433,
+            "win": 0.5882352941176471,
+            "converted": 7,
+            "gl_reduction": 77.29000000000487
+          },
+          "all": {
+            "n": 33,
+            "delta": 83.4900000000058,
+            "win": 0.5757575757575758,
+            "converted": 13,
+            "gl_reduction": 91.03000000000648
+          },
+          "tree": "|--- turns <= 200.000\n|   |--- pre30_range <= 1.975\n|   |   |--- class: 0\n|   |--- pre30_range >  1.975\n|   |   |--- class: 0\n|--- turns >  200.000\n|   |--- class: 1\n"
+        },
+        {
+          "owner": "CONT",
+          "horizon_s": 1200,
+          "cp": 60,
+          "action": "rev180",
+          "depth": 3,
+          "leaf": 15,
+          "disc": {
+            "n": 16,
+            "delta": 5.450000000001463,
+            "win": 0.5625,
+            "converted": 6,
+            "gl_reduction": 13.7400000000016
+          },
+          "hold": {
+            "n": 17,
+            "delta": 78.04000000000433,
+            "win": 0.5882352941176471,
+            "converted": 7,
+            "gl_reduction": 77.29000000000487
+          },
+          "all": {
+            "n": 33,
+            "delta": 83.4900000000058,
+            "win": 0.5757575757575758,
+            "converted": 13,
+            "gl_reduction": 91.03000000000648
+          },
+          "tree": "|--- turns <= 200.000\n|   |--- pre30_range <= 1.975\n|   |   |--- class: 0\n|   |--- pre30_range >  1.975\n|   |   |--- class: 0\n|--- turns >  200.000\n|   |--- class: 1\n"
+        }
+      ]
+    },
+    {
+      "owner": "CONT",
+      "horizon_s": 1800,
+      "n": 94,
+      "net": 589.8099999999948,
+      "gl": -322.5600000000038,
+      "win": 0.5638297872340425,
+      "qualifying": 9,
+      "top": [
+        {
+          "owner": "CONT",
+          "horizon_s": 1800,
+          "cp": 600,
+          "action": "rev300",
+          "depth": 2,
+          "leaf": 6,
+          "disc": {
+            "n": 12,
+            "delta": 32.78999999999644,
+            "win": 0.9166666666666666,
+            "converted": 5,
+            "gl_reduction": 12.480000000000214
+          },
+          "hold": {
+            "n": 20,
+            "delta": 30.52000000000455,
+            "win": 0.75,
+            "converted": 7,
+            "gl_reduction": 56.880000000002916
+          },
+          "all": {
+            "n": 32,
+            "delta": 63.310000000001,
+            "win": 0.8125,
+            "converted": 12,
+            "gl_reduction": 69.36000000000311
+          },
+          "tree": "|--- pnl_cp <= -1.485\n|   |--- class: 0\n|--- pnl_cp >  -1.485\n|   |--- shadow_balance <= 508.420\n|   |   |--- class: 1\n|   |--- shadow_balance >  508.420\n|   |   |--- class: 0\n"
+        },
+        {
+          "owner": "CONT",
+          "horizon_s": 1800,
+          "cp": 600,
+          "action": "rev300",
+          "depth": 2,
+          "leaf": 8,
+          "disc": {
+            "n": 12,
+            "delta": 32.78999999999644,
+            "win": 0.9166666666666666,
+            "converted": 5,
+            "gl_reduction": 12.480000000000214
+          },
+          "hold": {
+            "n": 20,
+            "delta": 30.52000000000455,
+            "win": 0.75,
+            "converted": 7,
+            "gl_reduction": 56.880000000002916
+          },
+          "all": {
+            "n": 32,
+            "delta": 63.310000000001,
+            "win": 0.8125,
+            "converted": 12,
+            "gl_reduction": 69.36000000000311
+          },
+          "tree": "|--- pnl_cp <= -1.485\n|   |--- class: 0\n|--- pnl_cp >  -1.485\n|   |--- shadow_balance <= 508.420\n|   |   |--- class: 1\n|   |--- shadow_balance >  508.420\n|   |   |--- class: 0\n"
+        },
+        {
+          "owner": "CONT",
+          "horizon_s": 1800,
+          "cp": 600,
+          "action": "rev300",
+          "depth": 2,
+          "leaf": 10,
+          "disc": {
+            "n": 12,
+            "delta": 32.78999999999644,
+            "win": 0.9166666666666666,
+            "converted": 5,
+            "gl_reduction": 12.480000000000214
+          },
+          "hold": {
+            "n": 20,
+            "delta": 30.52000000000455,
+            "win": 0.75,
+            "converted": 7,
+            "gl_reduction": 56.880000000002916
+          },
+          "all": {
+            "n": 32,
+            "delta": 63.310000000001,
+            "win": 0.8125,
+            "converted": 12,
+            "gl_reduction": 69.36000000000311
+          },
+          "tree": "|--- pnl_cp <= -1.485\n|   |--- class: 0\n|--- pnl_cp >  -1.485\n|   |--- shadow_balance <= 508.420\n|   |   |--- class: 1\n|   |--- shadow_balance >  508.420\n|   |   |--- class: 0\n"
+        },
+        {
+          "owner": "CONT",
+          "horizon_s": 1800,
+          "cp": 600,
+          "action": "rev300",
+          "depth": 3,
+          "leaf": 8,
+          "disc": {
+            "n": 12,
+            "delta": 32.78999999999644,
+            "win": 0.9166666666666666,
+            "converted": 5,
+            "gl_reduction": 12.480000000000214
+          },
+          "hold": {
+            "n": 20,
+            "delta": 30.52000000000455,
+            "win": 0.75,
+            "converted": 7,
+            "gl_reduction": 56.880000000002916
+          },
+          "all": {
+            "n": 32,
+            "delta": 63.310000000001,
+            "win": 0.8125,
+            "converted": 12,
+            "gl_reduction": 69.36000000000311
+          },
+          "tree": "|--- pnl_cp <= -1.485\n|   |--- class: 0\n|--- pnl_cp >  -1.485\n|   |--- shadow_balance <= 508.420\n|   |   |--- class: 1\n|   |--- shadow_balance >  508.420\n|   |   |--- class: 0\n"
+        },
+        {
+          "owner": "CONT",
+          "horizon_s": 1800,
+          "cp": 600,
+          "action": "rev300",
+          "depth": 3,
+          "leaf": 10,
+          "disc": {
+            "n": 12,
+            "delta": 32.78999999999644,
+            "win": 0.9166666666666666,
+            "converted": 5,
+            "gl_reduction": 12.480000000000214
+          },
+          "hold": {
+            "n": 20,
+            "delta": 30.52000000000455,
+            "win": 0.75,
+            "converted": 7,
+            "gl_reduction": 56.880000000002916
+          },
+          "all": {
+            "n": 32,
+            "delta": 63.310000000001,
+            "win": 0.8125,
+            "converted": 12,
+            "gl_reduction": 69.36000000000311
+          },
+          "tree": "|--- pnl_cp <= -1.485\n|   |--- class: 0\n|--- pnl_cp >  -1.485\n|   |--- shadow_balance <= 508.420\n|   |   |--- class: 1\n|   |--- shadow_balance >  508.420\n|   |   |--- class: 0\n"
+        }
+      ]
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 600,
+      "n": 64,
+      "net": -68.14000000000053,
+      "gl": -205.09000000000202,
+      "win": 0.453125,
+      "qualifying": 118,
+      "top": [
+        {
+          "owner": "REVERT",
+          "horizon_s": 600,
+          "cp": 15,
+          "action": "rev120",
+          "depth": 3,
+          "leaf": 6,
+          "disc": {
+            "n": 23,
+            "delta": 87.14000000000388,
+            "win": 0.6521739130434783,
+            "converted": 13,
+            "gl_reduction": 74.8500000000025
+          },
+          "hold": {
+            "n": 15,
+            "delta": 38.01000000000368,
+            "win": 0.5333333333333333,
+            "converted": 5,
+            "gl_reduction": 55.66000000000345
+          },
+          "all": {
+            "n": 38,
+            "delta": 125.15000000000752,
+            "win": 0.6052631578947368,
+            "converted": 18,
+            "gl_reduction": 130.510000000006
+          },
+          "tree": "|--- pre30_range <= 1.025\n|   |--- class: 0\n|--- pre30_range >  1.025\n|   |--- eff <= 0.125\n|   |   |--- pre30_range <= 1.970\n|   |   |   |--- class: 1\n|   |   |--- pre30_range >  1.970\n|   |   |   |--- class: 0\n|   |--- eff >  0.125\n|   |   |--- shadow_balance <= 208.610\n|   |   |   |--- class: 1\n|   |   |--- shadow_balance >  208.610\n|   |   |   |--- class: 1\n"
+        },
+        {
+          "owner": "REVERT",
+          "horizon_s": 600,
+          "cp": 30,
+          "action": "rev180",
+          "depth": 1,
+          "leaf": 6,
+          "disc": {
+            "n": 33,
+            "delta": 78.77000000000201,
+            "win": 0.6363636363636364,
+            "converted": 15,
+            "gl_reduction": 72.8100000000002
+          },
+          "hold": {
+            "n": 22,
+            "delta": 45.420000000002474,
+            "win": 0.6363636363636364,
+            "converted": 10,
+            "gl_reduction": 46.5600000000035
+          },
+          "all": {
+            "n": 55,
+            "delta": 124.19000000000449,
+            "win": 0.6363636363636364,
+            "converted": 25,
+            "gl_reduction": 119.37000000000371
+          },
+          "tree": "|--- ticks_per_s <= 4.200\n|   |--- class: 0\n|--- ticks_per_s >  4.200\n|   |--- class: 1\n"
+        },
+        {
+          "owner": "REVERT",
+          "horizon_s": 600,
+          "cp": 30,
+          "action": "rev180",
+          "depth": 1,
+          "leaf": 8,
+          "disc": {
+            "n": 33,
+            "delta": 78.77000000000201,
+            "win": 0.6363636363636364,
+            "converted": 15,
+            "gl_reduction": 72.8100000000002
+          },
+          "hold": {
+            "n": 22,
+            "delta": 45.420000000002474,
+            "win": 0.6363636363636364,
+            "converted": 10,
+            "gl_reduction": 46.5600000000035
+          },
+          "all": {
+            "n": 55,
+            "delta": 124.19000000000449,
+            "win": 0.6363636363636364,
+            "converted": 25,
+            "gl_reduction": 119.37000000000371
+          },
+          "tree": "|--- ticks_per_s <= 4.200\n|   |--- class: 0\n|--- ticks_per_s >  4.200\n|   |--- class: 1\n"
+        },
+        {
+          "owner": "REVERT",
+          "horizon_s": 600,
+          "cp": 30,
+          "action": "rev180",
+          "depth": 2,
+          "leaf": 6,
+          "disc": {
+            "n": 33,
+            "delta": 78.77000000000201,
+            "win": 0.6363636363636364,
+            "converted": 15,
+            "gl_reduction": 72.8100000000002
+          },
+          "hold": {
+            "n": 22,
+            "delta": 45.420000000002474,
+            "win": 0.6363636363636364,
+            "converted": 10,
+            "gl_reduction": 46.5600000000035
+          },
+          "all": {
+            "n": 55,
+            "delta": 124.19000000000449,
+            "win": 0.6363636363636364,
+            "converted": 25,
+            "gl_reduction": 119.37000000000371
+          },
+          "tree": "|--- ticks_per_s <= 4.200\n|   |--- class: 0\n|--- ticks_per_s >  4.200\n|   |--- ticks_per_s <= 5.450\n|   |   |--- class: 1\n|   |--- ticks_per_s >  5.450\n|   |   |--- class: 1\n"
+        },
+        {
+          "owner": "REVERT",
+          "horizon_s": 600,
+          "cp": 15,
+          "action": "rev120",
+          "depth": 1,
+          "leaf": 6,
+          "disc": {
+            "n": 30,
+            "delta": 60.26000000000589,
+            "win": 0.5666666666666667,
+            "converted": 13,
+            "gl_reduction": 65.92000000000571
+          },
+          "hold": {
+            "n": 23,
+            "delta": 48.730000000002406,
+            "win": 0.5652173913043478,
+            "converted": 8,
+            "gl_reduction": 66.5500000000032
+          },
+          "all": {
+            "n": 53,
+            "delta": 108.99000000000831,
+            "win": 0.5660377358490566,
+            "converted": 21,
+            "gl_reduction": 132.47000000000892
+          },
+          "tree": "|--- pre30_range <= 1.025\n|   |--- class: 0\n|--- pre30_range >  1.025\n|   |--- class: 1\n"
+        }
+      ]
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "n": 563,
+      "net": 167.8499999999964,
+      "gl": -1854.2399999999964,
+      "win": 0.5044404973357016,
+      "qualifying": 95,
+      "top": [
+        {
+          "owner": "REVERT",
+          "horizon_s": 900,
+          "cp": 15,
+          "action": "rev45",
+          "depth": 3,
+          "leaf": 12,
+          "disc": {
+            "n": 139,
+            "delta": 108.95000000002992,
+            "win": 0.5611510791366906,
+            "converted": 47,
+            "gl_reduction": 305.2500000000162
+          },
+          "hold": {
+            "n": 71,
+            "delta": 206.62000000002348,
+            "win": 0.5211267605633803,
+            "converted": 20,
+            "gl_reduction": 408.740000000009
+          },
+          "all": {
+            "n": 210,
+            "delta": 315.5700000000535,
+            "win": 0.5476190476190477,
+            "converted": 67,
+            "gl_reduction": 713.9900000000251
+          },
+          "tree": "|--- pnl_cp <= -0.445\n|   |--- shadow_balance <= 229.165\n|   |   |--- class: 0\n|   |--- shadow_balance >  229.165\n|   |   |--- pre30_range <= 2.914\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  2.914\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.445\n|   |--- mae <= -0.865\n|   |   |--- ticks_per_s <= 8.100\n|   |   |   |--- class: 1\n|   |   |--- ticks_per_s >  8.100\n|   |   |   |--- class: 1\n|   |--- mae >  -0.865\n|   |   |--- turns <= 41.500\n|   |   |   |--- class: 1\n|   |   |--- turns >  41.500\n|   |   |   |--- class: 0\n"
+        },
+        {
+          "owner": "REVERT",
+          "horizon_s": 900,
+          "cp": 15,
+          "action": "rev45",
+          "depth": 3,
+          "leaf": 15,
+          "disc": {
+            "n": 139,
+            "delta": 108.95000000002992,
+            "win": 0.5611510791366906,
+            "converted": 47,
+            "gl_reduction": 305.2500000000162
+          },
+          "hold": {
+            "n": 71,
+            "delta": 206.62000000002348,
+            "win": 0.5211267605633803,
+            "converted": 20,
+            "gl_reduction": 408.740000000009
+          },
+          "all": {
+            "n": 210,
+            "delta": 315.5700000000535,
+            "win": 0.5476190476190477,
+            "converted": 67,
+            "gl_reduction": 713.9900000000251
+          },
+          "tree": "|--- pnl_cp <= -0.445\n|   |--- shadow_balance <= 229.165\n|   |   |--- class: 0\n|   |--- shadow_balance >  229.165\n|   |   |--- pre30_range <= 2.914\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  2.914\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.445\n|   |--- mae <= -0.865\n|   |   |--- class: 1\n|   |--- mae >  -0.865\n|   |   |--- turns <= 41.500\n|   |   |   |--- class: 1\n|   |   |--- turns >  41.500\n|   |   |   |--- class: 0\n"
+        },
+        {
+          "owner": "REVERT",
+          "horizon_s": 900,
+          "cp": 30,
+          "action": "rev60",
+          "depth": 3,
+          "leaf": 15,
+          "disc": {
+            "n": 228,
+            "delta": 103.54000000001149,
+            "win": 0.6359649122807017,
+            "converted": 80,
+            "gl_reduction": 528.1800000000021
+          },
+          "hold": {
+            "n": 67,
+            "delta": 132.0800000000075,
+            "win": 0.7014925373134329,
+            "converted": 24,
+            "gl_reduction": 252.3100000000004
+          },
+          "all": {
+            "n": 295,
+            "delta": 235.620000000019,
+            "win": 0.6508474576271186,
+            "converted": 104,
+            "gl_reduction": 780.4900000000027
+          },
+          "tree": "|--- pnl_cp <= -0.300\n|   |--- mae <= -1.820\n|   |   |--- pre30_range <= 2.412\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  2.412\n|   |   |   |--- class: 0\n|   |--- mae >  -1.820\n|   |   |--- pre30_range <= 1.705\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  1.705\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.300\n|   |--- mae <= -0.535\n|   |   |--- mfe <= 1.705\n|   |   |   |--- class: 1\n|   |   |--- mfe >  1.705\n|   |   |   |--- class: 1\n|   |--- mae >  -0.535\n|   |   |--- pre30_range <= 2.457\n|   |   |   |--- class: 1\n|   |   |--- pre30_range >  2.457\n|   |   |   |--- class: 0\n"
+        },
+        {
+          "owner": "REVERT",
+          "horizon_s": 900,
+          "cp": 30,
+          "action": "rev60",
+          "depth": 3,
+          "leaf": 20,
+          "disc": {
+            "n": 228,
+            "delta": 103.54000000001149,
+            "win": 0.6359649122807017,
+            "converted": 80,
+            "gl_reduction": 528.1800000000021
+          },
+          "hold": {
+            "n": 67,
+            "delta": 132.0800000000075,
+            "win": 0.7014925373134329,
+            "converted": 24,
+            "gl_reduction": 252.3100000000004
+          },
+          "all": {
+            "n": 295,
+            "delta": 235.620000000019,
+            "win": 0.6508474576271186,
+            "converted": 104,
+            "gl_reduction": 780.4900000000027
+          },
+          "tree": "|--- pnl_cp <= -0.300\n|   |--- mae <= -1.820\n|   |   |--- pre30_range <= 2.412\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  2.412\n|   |   |   |--- class: 0\n|   |--- mae >  -1.820\n|   |   |--- pre30_range <= 1.705\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  1.705\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.300\n|   |--- mae <= -0.535\n|   |   |--- pnl_cp <= 0.060\n|   |   |   |--- class: 1\n|   |   |--- pnl_cp >  0.060\n|   |   |   |--- class: 1\n|   |--- mae >  -0.535\n|   |   |--- pre30_range <= 2.457\n|   |   |   |--- class: 1\n|   |   |--- pre30_range >  2.457\n|   |   |   |--- class: 0\n"
+        },
+        {
+          "owner": "REVERT",
+          "horizon_s": 900,
+          "cp": 30,
+          "action": "rev60",
+          "depth": 3,
+          "leaf": 25,
+          "disc": {
+            "n": 228,
+            "delta": 103.54000000001149,
+            "win": 0.6359649122807017,
+            "converted": 80,
+            "gl_reduction": 528.1800000000021
+          },
+          "hold": {
+            "n": 67,
+            "delta": 132.0800000000075,
+            "win": 0.7014925373134329,
+            "converted": 24,
+            "gl_reduction": 252.3100000000004
+          },
+          "all": {
+            "n": 295,
+            "delta": 235.620000000019,
+            "win": 0.6508474576271186,
+            "converted": 104,
+            "gl_reduction": 780.4900000000027
+          },
+          "tree": "|--- pnl_cp <= -0.300\n|   |--- mae <= -1.820\n|   |   |--- pre30_range <= 2.148\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  2.148\n|   |   |   |--- class: 0\n|   |--- mae >  -1.820\n|   |   |--- pre30_range <= 1.705\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  1.705\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.300\n|   |--- mae <= -0.535\n|   |   |--- pnl_cp <= 0.060\n|   |   |   |--- class: 1\n|   |   |--- pnl_cp >  0.060\n|   |   |   |--- class: 1\n|   |--- mae >  -0.535\n|   |   |--- pre30_range <= 2.457\n|   |   |   |--- class: 1\n|   |   |--- pre30_range >  2.457\n|   |   |   |--- class: 0\n"
+        }
+      ]
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 1200,
+      "n": 79,
+      "net": 193.09000000000052,
+      "gl": -175.46000000000046,
+      "win": 0.5949367088607594,
+      "qualifying": 53,
+      "top": [
+        {
+          "owner": "REVERT",
+          "horizon_s": 1200,
+          "cp": 450,
+          "action": "rev180",
+          "depth": 1,
+          "leaf": 12,
+          "disc": {
+            "n": 28,
+            "delta": 53.190000000000865,
+            "win": 0.6785714285714286,
+            "converted": 12,
+            "gl_reduction": 49.81999999999873
+          },
+          "hold": {
+            "n": 22,
+            "delta": 8.440000000007927,
+            "win": 0.7272727272727273,
+            "converted": 4,
+            "gl_reduction": 9.200000000004325
+          },
+          "all": {
+            "n": 50,
+            "delta": 61.630000000008806,
+            "win": 0.7,
+            "converted": 16,
+            "gl_reduction": 59.02000000000305
+          },
+          "tree": "|--- mae <= -3.655\n|   |--- class: 0\n|--- mae >  -3.655\n|   |--- class: 1\n"
+        },
+        {
+          "owner": "REVERT",
+          "horizon_s": 1200,
+          "cp": 600,
+          "action": "rev180",
+          "depth": 2,
+          "leaf": 6,
+          "disc": {
+            "n": 17,
+            "delta": 29.659999999996547,
+            "win": 1.0,
+            "converted": 6,
+            "gl_reduction": 22.009999999998687
+          },
+          "hold": {
+            "n": 17,
+            "delta": 26.500000000000146,
+            "win": 1.0,
+            "converted": 2,
+            "gl_reduction": 7.03000000000069
+          },
+          "all": {
+            "n": 34,
+            "delta": 56.1599999999967,
+            "win": 1.0,
+            "converted": 8,
+            "gl_reduction": 29.03999999999938
+          },
+          "tree": "|--- mae <= -3.655\n|   |--- class: 0\n|--- mae >  -3.655\n|   |--- pnl_cp <= -0.190\n|   |   |--- class: 0\n|   |--- pnl_cp >  -0.190\n|   |   |--- class: 1\n"
+        },
+        {
+          "owner": "REVERT",
+          "horizon_s": 1200,
+          "cp": 600,
+          "action": "rev180",
+          "depth": 2,
+          "leaf": 8,
+          "disc": {
+            "n": 17,
+            "delta": 29.659999999996547,
+            "win": 1.0,
+            "converted": 6,
+            "gl_reduction": 22.009999999998687
+          },
+          "hold": {
+            "n": 17,
+            "delta": 26.500000000000146,
+            "win": 1.0,
+            "converted": 2,
+            "gl_reduction": 7.03000000000069
+          },
+          "all": {
+            "n": 34,
+            "delta": 56.1599999999967,
+            "win": 1.0,
+            "converted": 8,
+            "gl_reduction": 29.03999999999938
+          },
+          "tree": "|--- mae <= -3.655\n|   |--- class: 0\n|--- mae >  -3.655\n|   |--- pnl_cp <= -0.190\n|   |   |--- class: 0\n|   |--- pnl_cp >  -0.190\n|   |   |--- class: 1\n"
+        },
+        {
+          "owner": "REVERT",
+          "horizon_s": 1200,
+          "cp": 600,
+          "action": "rev180",
+          "depth": 3,
+          "leaf": 6,
+          "disc": {
+            "n": 17,
+            "delta": 29.659999999996547,
+            "win": 1.0,
+            "converted": 6,
+            "gl_reduction": 22.009999999998687
+          },
+          "hold": {
+            "n": 17,
+            "delta": 26.500000000000146,
+            "win": 1.0,
+            "converted": 2,
+            "gl_reduction": 7.03000000000069
+          },
+          "all": {
+            "n": 34,
+            "delta": 56.1599999999967,
+            "win": 1.0,
+            "converted": 8,
+            "gl_reduction": 29.03999999999938
+          },
+          "tree": "|--- mae <= -3.655\n|   |--- class: 0\n|--- mae >  -3.655\n|   |--- pnl_cp <= -0.190\n|   |   |--- class: 0\n|   |--- pnl_cp >  -0.190\n|   |   |--- source_gap <= 4.500\n|   |   |   |--- class: 1\n|   |   |--- source_gap >  4.500\n|   |   |   |--- class: 1\n"
+        },
+        {
+          "owner": "REVERT",
+          "horizon_s": 1200,
+          "cp": 600,
+          "action": "rev180",
+          "depth": 3,
+          "leaf": 8,
+          "disc": {
+            "n": 17,
+            "delta": 29.659999999996547,
+            "win": 1.0,
+            "converted": 6,
+            "gl_reduction": 22.009999999998687
+          },
+          "hold": {
+            "n": 17,
+            "delta": 26.500000000000146,
+            "win": 1.0,
+            "converted": 2,
+            "gl_reduction": 7.03000000000069
+          },
+          "all": {
+            "n": 34,
+            "delta": 56.1599999999967,
+            "win": 1.0,
+            "converted": 8,
+            "gl_reduction": 29.03999999999938
+          },
+          "tree": "|--- mae <= -3.655\n|   |--- class: 0\n|--- mae >  -3.655\n|   |--- pnl_cp <= -0.190\n|   |   |--- class: 0\n|   |--- pnl_cp >  -0.190\n|   |   |--- shadow_balance <= 427.030\n|   |   |   |--- class: 1\n|   |   |--- shadow_balance >  427.030\n|   |   |   |--- class: 1\n"
+        }
+      ]
+    }
+  ],
+  "qualifying_rules": 321,
+  "top": [
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev45",
+      "depth": 3,
+      "leaf": 12,
+      "disc": {
+        "n": 139,
+        "delta": 108.95000000002992,
+        "win": 0.5611510791366906,
+        "converted": 47,
+        "gl_reduction": 305.2500000000162
+      },
+      "hold": {
+        "n": 71,
+        "delta": 206.62000000002348,
+        "win": 0.5211267605633803,
+        "converted": 20,
+        "gl_reduction": 408.740000000009
+      },
+      "all": {
+        "n": 210,
+        "delta": 315.5700000000535,
+        "win": 0.5476190476190477,
+        "converted": 67,
+        "gl_reduction": 713.9900000000251
+      },
+      "tree": "|--- pnl_cp <= -0.445\n|   |--- shadow_balance <= 229.165\n|   |   |--- class: 0\n|   |--- shadow_balance >  229.165\n|   |   |--- pre30_range <= 2.914\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  2.914\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.445\n|   |--- mae <= -0.865\n|   |   |--- ticks_per_s <= 8.100\n|   |   |   |--- class: 1\n|   |   |--- ticks_per_s >  8.100\n|   |   |   |--- class: 1\n|   |--- mae >  -0.865\n|   |   |--- turns <= 41.500\n|   |   |   |--- class: 1\n|   |   |--- turns >  41.500\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev45",
+      "depth": 3,
+      "leaf": 15,
+      "disc": {
+        "n": 139,
+        "delta": 108.95000000002992,
+        "win": 0.5611510791366906,
+        "converted": 47,
+        "gl_reduction": 305.2500000000162
+      },
+      "hold": {
+        "n": 71,
+        "delta": 206.62000000002348,
+        "win": 0.5211267605633803,
+        "converted": 20,
+        "gl_reduction": 408.740000000009
+      },
+      "all": {
+        "n": 210,
+        "delta": 315.5700000000535,
+        "win": 0.5476190476190477,
+        "converted": 67,
+        "gl_reduction": 713.9900000000251
+      },
+      "tree": "|--- pnl_cp <= -0.445\n|   |--- shadow_balance <= 229.165\n|   |   |--- class: 0\n|   |--- shadow_balance >  229.165\n|   |   |--- pre30_range <= 2.914\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  2.914\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.445\n|   |--- mae <= -0.865\n|   |   |--- class: 1\n|   |--- mae >  -0.865\n|   |   |--- turns <= 41.500\n|   |   |   |--- class: 1\n|   |   |--- turns >  41.500\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 30,
+      "action": "rev60",
+      "depth": 3,
+      "leaf": 15,
+      "disc": {
+        "n": 228,
+        "delta": 103.54000000001149,
+        "win": 0.6359649122807017,
+        "converted": 80,
+        "gl_reduction": 528.1800000000021
+      },
+      "hold": {
+        "n": 67,
+        "delta": 132.0800000000075,
+        "win": 0.7014925373134329,
+        "converted": 24,
+        "gl_reduction": 252.3100000000004
+      },
+      "all": {
+        "n": 295,
+        "delta": 235.620000000019,
+        "win": 0.6508474576271186,
+        "converted": 104,
+        "gl_reduction": 780.4900000000027
+      },
+      "tree": "|--- pnl_cp <= -0.300\n|   |--- mae <= -1.820\n|   |   |--- pre30_range <= 2.412\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  2.412\n|   |   |   |--- class: 0\n|   |--- mae >  -1.820\n|   |   |--- pre30_range <= 1.705\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  1.705\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.300\n|   |--- mae <= -0.535\n|   |   |--- mfe <= 1.705\n|   |   |   |--- class: 1\n|   |   |--- mfe >  1.705\n|   |   |   |--- class: 1\n|   |--- mae >  -0.535\n|   |   |--- pre30_range <= 2.457\n|   |   |   |--- class: 1\n|   |   |--- pre30_range >  2.457\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 30,
+      "action": "rev60",
+      "depth": 3,
+      "leaf": 20,
+      "disc": {
+        "n": 228,
+        "delta": 103.54000000001149,
+        "win": 0.6359649122807017,
+        "converted": 80,
+        "gl_reduction": 528.1800000000021
+      },
+      "hold": {
+        "n": 67,
+        "delta": 132.0800000000075,
+        "win": 0.7014925373134329,
+        "converted": 24,
+        "gl_reduction": 252.3100000000004
+      },
+      "all": {
+        "n": 295,
+        "delta": 235.620000000019,
+        "win": 0.6508474576271186,
+        "converted": 104,
+        "gl_reduction": 780.4900000000027
+      },
+      "tree": "|--- pnl_cp <= -0.300\n|   |--- mae <= -1.820\n|   |   |--- pre30_range <= 2.412\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  2.412\n|   |   |   |--- class: 0\n|   |--- mae >  -1.820\n|   |   |--- pre30_range <= 1.705\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  1.705\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.300\n|   |--- mae <= -0.535\n|   |   |--- pnl_cp <= 0.060\n|   |   |   |--- class: 1\n|   |   |--- pnl_cp >  0.060\n|   |   |   |--- class: 1\n|   |--- mae >  -0.535\n|   |   |--- pre30_range <= 2.457\n|   |   |   |--- class: 1\n|   |   |--- pre30_range >  2.457\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 30,
+      "action": "rev60",
+      "depth": 3,
+      "leaf": 25,
+      "disc": {
+        "n": 228,
+        "delta": 103.54000000001149,
+        "win": 0.6359649122807017,
+        "converted": 80,
+        "gl_reduction": 528.1800000000021
+      },
+      "hold": {
+        "n": 67,
+        "delta": 132.0800000000075,
+        "win": 0.7014925373134329,
+        "converted": 24,
+        "gl_reduction": 252.3100000000004
+      },
+      "all": {
+        "n": 295,
+        "delta": 235.620000000019,
+        "win": 0.6508474576271186,
+        "converted": 104,
+        "gl_reduction": 780.4900000000027
+      },
+      "tree": "|--- pnl_cp <= -0.300\n|   |--- mae <= -1.820\n|   |   |--- pre30_range <= 2.148\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  2.148\n|   |   |   |--- class: 0\n|   |--- mae >  -1.820\n|   |   |--- pre30_range <= 1.705\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  1.705\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.300\n|   |--- mae <= -0.535\n|   |   |--- pnl_cp <= 0.060\n|   |   |   |--- class: 1\n|   |   |--- pnl_cp >  0.060\n|   |   |   |--- class: 1\n|   |--- mae >  -0.535\n|   |   |--- pre30_range <= 2.457\n|   |   |   |--- class: 1\n|   |   |--- pre30_range >  2.457\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 30,
+      "action": "rev90",
+      "depth": 3,
+      "leaf": 20,
+      "disc": {
+        "n": 204,
+        "delta": 123.61000000001258,
+        "win": 0.6911764705882353,
+        "converted": 79,
+        "gl_reduction": 490.17000000000616
+      },
+      "hold": {
+        "n": 69,
+        "delta": 105.50000000000439,
+        "win": 0.7971014492753623,        "converted": 28,
+        "gl_reduction": 249.84999999999997
+      },
+      "all": {
+        "n": 273,
+        "delta": 229.11000000001704,
+        "win": 0.717948717948718,
+        "converted": 107,
+        "gl_reduction": 740.0200000000063
+      },
+      "tree": "|--- pnl_cp <= -0.515\n|   |--- mae <= -1.820\n|   |   |--- pre30_range <= 2.412\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  2.412\n|   |   |   |--- class: 0\n|   |--- mae >  -1.820\n|   |   |--- path_range <= 1.835\n|   |   |   |--- class: 0\n|   |   |--- path_range >  1.835\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.515\n|   |--- eff <= 0.030\n|   |   |--- ticks_per_s <= 7.067\n|   |   |   |--- class: 0\n|   |   |--- ticks_per_s >  7.067\n|   |   |   |--- class: 1\n|   |--- eff >  0.030\n|   |   |--- pre30_range <= 1.313\n|   |   |   |--- class: 1\n|   |   |--- pre30_range >  1.313\n|   |   |   |--- class: 1\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 30,
+      "action": "rev90",
+      "depth": 3,
+      "leaf": 15,
+      "disc": {
+        "n": 202,
+        "delta": 119.59000000001092,
+        "win": 0.698019801980198,
+        "converted": 79,
+        "gl_reduction": 474.7800000000051
+      },
+      "hold": {
+        "n": 69,
+        "delta": 105.50000000000439,
+        "win": 0.7971014492753623,
+        "converted": 28,
+        "gl_reduction": 249.84999999999997
+      },
+      "all": {
+        "n": 271,
+        "delta": 225.09000000001535,
+        "win": 0.7232472324723247,
+        "converted": 107,
+        "gl_reduction": 724.6300000000053
+      },
+      "tree": "|--- pnl_cp <= -0.515\n|   |--- mae <= -1.820\n|   |   |--- pre30_range <= 2.412\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  2.412\n|   |   |   |--- class: 0\n|   |--- mae >  -1.820\n|   |   |--- path_range <= 1.850\n|   |   |   |--- class: 0\n|   |   |--- path_range >  1.850\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.515\n|   |--- eff <= 0.030\n|   |   |--- ticks_per_s <= 7.283\n|   |   |   |--- class: 0\n|   |   |--- ticks_per_s >  7.283\n|   |   |   |--- class: 1\n|   |--- eff >  0.030\n|   |   |--- pre30_range <= 1.313\n|   |   |   |--- class: 1\n|   |   |--- pre30_range >  1.313\n|   |   |   |--- class: 1\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 30,
+      "action": "rev90",
+      "depth": 3,
+      "leaf": 6,
+      "disc": {
+        "n": 236,
+        "delta": 90.7400000000238,
+        "win": 0.6271186440677966,
+        "converted": 86,
+        "gl_reduction": 517.6900000000109
+      },
+      "hold": {
+        "n": 92,
+        "delta": 72.52000000000731,
+        "win": 0.5978260869565217,
+        "converted": 31,
+        "gl_reduction": 366.68999999999767
+      },
+      "all": {
+        "n": 328,
+        "delta": 163.26000000003108,
+        "win": 0.6189024390243902,
+        "converted": 117,
+        "gl_reduction": 884.3800000000083
+      },
+      "tree": "|--- pnl_cp <= -0.515\n|   |--- mae <= -1.820\n|   |   |--- pre30_range <= 3.116\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  3.116\n|   |   |   |--- class: 1\n|   |--- mae >  -1.820\n|   |   |--- path_range <= 1.850\n|   |   |   |--- class: 0\n|   |   |--- path_range >  1.850\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.515\n|   |--- mfe <= 3.615\n|   |   |--- mfe <= 1.730\n|   |   |   |--- class: 1\n|   |   |--- mfe >  1.730\n|   |   |   |--- class: 1\n|   |--- mfe >  3.615\n|   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 30,
+      "action": "rev90",
+      "depth": 3,
+      "leaf": 8,
+      "disc": {
+        "n": 236,
+        "delta": 90.7400000000238,
+        "win": 0.6271186440677966,
+        "converted": 86,
+        "gl_reduction": 517.6900000000109
+      },
+      "hold": {
+        "n": 92,
+        "delta": 72.52000000000731,
+        "win": 0.5978260869565217,
+        "converted": 31,
+        "gl_reduction": 366.68999999999767
+      },
+      "all": {
+        "n": 328,
+        "delta": 163.26000000003108,
+        "win": 0.6189024390243902,
+        "converted": 117,
+        "gl_reduction": 884.3800000000083
+      },
+      "tree": "|--- pnl_cp <= -0.515\n|   |--- mae <= -1.820\n|   |   |--- pre30_range <= 3.116\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  3.116\n|   |   |   |--- class: 1\n|   |--- mae >  -1.820\n|   |   |--- path_range <= 1.850\n|   |   |   |--- class: 0\n|   |   |--- path_range >  1.850\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.515\n|   |--- mfe <= 3.615\n|   |   |--- mfe <= 1.730\n|   |   |   |--- class: 1\n|   |   |--- mfe >  1.730\n|   |   |   |--- class: 1\n|   |--- mfe >  3.615\n|   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev60",
+      "depth": 3,
+      "leaf": 25,
+      "disc": {
+        "n": 210,
+        "delta": 66.26000000002239,
+        "win": 0.5666666666666667,
+        "converted": 78,
+        "gl_reduction": 467.63000000001534
+      },
+      "hold": {
+        "n": 107,
+        "delta": 84.6700000000267,
+        "win": 0.514018691588785,
+        "converted": 30,
+        "gl_reduction": 420.45000000001005
+      },
+      "all": {
+        "n": 317,
+        "delta": 150.93000000004903,
+        "win": 0.5488958990536278,
+        "converted": 108,
+        "gl_reduction": 888.0800000000255
+      },
+      "tree": "|--- pnl_cp <= -0.445\n|   |--- pre30_range <= 2.477\n|   |   |--- shadow_balance <= 430.195\n|   |   |   |--- class: 0\n|   |   |--- shadow_balance >  430.195\n|   |   |   |--- class: 0\n|   |--- pre30_range >  2.477\n|   |   |--- class: 1\n|--- pnl_cp >  -0.445\n|   |--- ticks_per_s <= 9.733\n|   |   |--- turns <= 20.500\n|   |   |   |--- class: 0\n|   |   |--- turns >  20.500\n|   |   |   |--- class: 1\n|   |--- ticks_per_s >  9.733\n|   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 30,
+      "action": "rev90",
+      "depth": 3,
+      "leaf": 25,
+      "disc": {
+        "n": 215,
+        "delta": 71.3000000000121,
+        "win": 0.6883720930232559,
+        "converted": 81,
+        "gl_reduction": 493.32000000000465
+      },
+      "hold": {
+        "n": 76,
+        "delta": 117.05000000000342,
+        "win": 0.7763157894736842,
+        "converted": 30,
+        "gl_reduction": 283.5499999999978
+      },
+      "all": {
+        "n": 291,
+        "delta": 188.35000000001554,
+        "win": 0.711340206185567,
+        "converted": 111,
+        "gl_reduction": 776.8700000000023
+      },
+      "tree": "|--- pnl_cp <= -0.515\n|   |--- mae <= -1.820\n|   |   |--- pre30_range <= 2.148\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  2.148\n|   |   |   |--- class: 0\n|   |--- mae >  -1.820\n|   |   |--- path_range <= 1.695\n|   |   |   |--- class: 0\n|   |   |--- path_range >  1.695\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.515\n|   |--- eff <= 0.030\n|   |   |--- turns <= 93.000\n|   |   |   |--- class: 0\n|   |   |--- turns >  93.000\n|   |   |   |--- class: 1\n|   |--- eff >  0.030\n|   |   |--- pre30_range <= 1.313\n|   |   |   |--- class: 1\n|   |   |--- pre30_range >  1.313\n|   |   |   |--- class: 1\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev60",
+      "depth": 3,
+      "leaf": 20,
+      "disc": {
+        "n": 213,
+        "delta": 63.93000000002103,
+        "win": 0.5727699530516432,
+        "converted": 79,
+        "gl_reduction": 469.29000000001486
+      },
+      "hold": {
+        "n": 107,
+        "delta": 84.6700000000267,
+        "win": 0.514018691588785,
+        "converted": 30,
+        "gl_reduction": 420.45000000001005
+      },
+      "all": {
+        "n": 320,
+        "delta": 148.6000000000477,
+        "win": 0.553125,
+        "converted": 109,
+        "gl_reduction": 889.7400000000249
+      },
+      "tree": "|--- pnl_cp <= -0.445\n|   |--- pre30_range <= 2.477\n|   |   |--- shadow_balance <= 430.195\n|   |   |   |--- class: 0\n|   |   |--- shadow_balance >  430.195\n|   |   |   |--- class: 0\n|   |--- pre30_range >  2.477\n|   |   |--- class: 1\n|--- pnl_cp >  -0.445\n|   |--- ticks_per_s <= 9.900\n|   |   |--- turns <= 20.500\n|   |   |   |--- class: 0\n|   |   |--- turns >  20.500\n|   |   |   |--- class: 1\n|   |--- ticks_per_s >  9.900\n|   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev120",
+      "depth": 3,
+      "leaf": 6,
+      "disc": {
+        "n": 204,
+        "delta": 100.95000000003232,
+        "win": 0.6274509803921569,
+        "converted": 84,
+        "gl_reduction": 452.170000000021
+      },
+      "hold": {
+        "n": 90,
+        "delta": 74.21000000001655,
+        "win": 0.5777777777777777,
+        "converted": 31,
+        "gl_reduction": 329.47000000000503
+      },
+      "all": {
+        "n": 294,
+        "delta": 175.16000000004885,
+        "win": 0.6122448979591837,
+        "converted": 115,
+        "gl_reduction": 781.6400000000262
+      },
+      "tree": "|--- pnl_cp <= -0.295\n|   |--- hour <= 2.500\n|   |   |--- pre30_range <= 1.837\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  1.837\n|   |   |   |--- class: 1\n|   |--- hour >  2.500\n|   |   |--- pre30_range <= 3.670\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  3.670\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.295\n|   |--- turns <= 20.500\n|   |   |--- pnl_cp <= -0.060\n|   |   |   |--- class: 1\n|   |   |--- pnl_cp >  -0.060\n|   |   |   |--- class: 0\n|   |--- turns >  20.500\n|   |   |--- pre30_range <= 4.197\n|   |   |   |--- class: 1\n|   |   |--- pre30_range >  4.197\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev120",
+      "depth": 3,
+      "leaf": 8,
+      "disc": {
+        "n": 214,
+        "delta": 54.99000000003181,
+        "win": 0.616822429906542,
+        "converted": 85,
+        "gl_reduction": 454.3200000000202
+      },
+      "hold": {
+        "n": 107,
+        "delta": 63.13000000002077,
+        "win": 0.6074766355140186,
+        "converted": 36,
+        "gl_reduction": 400.10000000000406
+      },
+      "all": {
+        "n": 321,
+        "delta": 118.12000000005256,
+        "win": 0.6137071651090342,
+        "converted": 121,
+        "gl_reduction": 854.4200000000242
+      },
+      "tree": "|--- pnl_cp <= -0.295\n|   |--- hour <= 2.500\n|   |   |--- pre30_range <= 1.837\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  1.837\n|   |   |   |--- class: 1\n|   |--- hour >  2.500\n|   |   |--- pre30_range <= 3.462\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  3.462\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.295\n|   |--- turns <= 20.500\n|   |   |--- pnl_cp <= -0.060\n|   |   |   |--- class: 1\n|   |   |--- pnl_cp >  -0.060\n|   |   |   |--- class: 0\n|   |--- turns >  20.500\n|   |   |--- pre30_range <= 2.502\n|   |   |   |--- class: 1\n|   |   |--- pre30_range >  2.502\n|   |   |   |--- class: 1\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev120",
+      "depth": 3,
+      "leaf": 10,
+      "disc": {
+        "n": 214,
+        "delta": 54.99000000003181,
+        "win": 0.616822429906542,
+        "converted": 85,
+        "gl_reduction": 454.3200000000202
+      },
+      "hold": {
+        "n": 107,
+        "delta": 63.13000000002077,
+        "win": 0.6074766355140186,
+        "converted": 36,
+        "gl_reduction": 400.10000000000406
+      },
+      "all": {
+        "n": 321,
+        "delta": 118.12000000005256,
+        "win": 0.6137071651090342,
+        "converted": 121,
+        "gl_reduction": 854.4200000000242
+      },
+      "tree": "|--- pnl_cp <= -0.295\n|   |--- hour <= 2.500\n|   |   |--- pre30_range <= 1.837\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  1.837\n|   |   |   |--- class: 1\n|   |--- hour >  2.500\n|   |   |--- pre30_range <= 3.462\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  3.462\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.295\n|   |--- turns <= 20.500\n|   |   |--- pnl_cp <= -0.060\n|   |   |   |--- class: 1\n|   |   |--- pnl_cp >  -0.060\n|   |   |   |--- class: 0\n|   |--- turns >  20.500\n|   |   |--- pre30_range <= 2.502\n|   |   |   |--- class: 1\n|   |   |--- pre30_range >  2.502\n|   |   |   |--- class: 1\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev60",
+      "depth": 2,
+      "leaf": 25,
+      "disc": {
+        "n": 238,
+        "delta": 16.040000000033476,
+        "win": 0.5546218487394958,
+        "converted": 82,
+        "gl_reduction": 489.77000000001993
+      },
+      "hold": {
+        "n": 109,
+        "delta": 81.57000000002762,
+        "win": 0.5137614678899083,
+        "converted": 30,
+        "gl_reduction": 421.8500000000106
+      },
+      "all": {
+        "n": 347,
+        "delta": 97.61000000006109,
+        "win": 0.5417867435158501,
+        "converted": 112,
+        "gl_reduction": 911.6200000000306
+      },
+      "tree": "|--- pnl_cp <= -0.445\n|   |--- pre30_range <= 2.477\n|   |   |--- class: 0\n|   |--- pre30_range >  2.477\n|   |   |--- class: 1\n|--- pnl_cp >  -0.445\n|   |--- ticks_per_s <= 9.733\n|   |   |--- class: 1\n|   |--- ticks_per_s >  9.733\n|   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev60",
+      "depth": 2,
+      "leaf": 12,
+      "disc": {
+        "n": 241,
+        "delta": 13.71000000003211,
+        "win": 0.5601659751037344,
+        "converted": 83,
+        "gl_reduction": 491.4300000000192
+      },
+      "hold": {
+        "n": 109,
+        "delta": 81.57000000002762,
+        "win": 0.5137614678899083,
+        "converted": 30,
+        "gl_reduction": 421.8500000000106
+      },
+      "all": {
+        "n": 350,
+        "delta": 95.28000000005973,
+        "win": 0.5457142857142857,
+        "converted": 113,
+        "gl_reduction": 913.28000000003
+      },
+      "tree": "|--- pnl_cp <= -0.445\n|   |--- pre30_range <= 2.477\n|   |   |--- class: 0\n|   |--- pre30_range >  2.477\n|   |   |--- class: 1\n|--- pnl_cp >  -0.445\n|   |--- ticks_per_s <= 9.900\n|   |   |--- class: 1\n|   |--- ticks_per_s >  9.900\n|   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev60",
+      "depth": 2,
+      "leaf": 15,
+      "disc": {
+        "n": 241,
+        "delta": 13.71000000003211,
+        "win": 0.5601659751037344,
+        "converted": 83,
+        "gl_reduction": 491.4300000000192
+      },
+      "hold": {
+        "n": 109,
+        "delta": 81.57000000002762,
+        "win": 0.5137614678899083,
+        "converted": 30,
+        "gl_reduction": 421.8500000000106
+      },
+      "all": {
+        "n": 350,
+        "delta": 95.28000000005973,
+        "win": 0.5457142857142857,
+        "converted": 113,
+        "gl_reduction": 913.28000000003
+      },
+      "tree": "|--- pnl_cp <= -0.445\n|   |--- pre30_range <= 2.477\n|   |   |--- class: 0\n|   |--- pre30_range >  2.477\n|   |   |--- class: 1\n|--- pnl_cp >  -0.445\n|   |--- ticks_per_s <= 9.900\n|   |   |--- class: 1\n|   |--- ticks_per_s >  9.900\n|   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev60",
+      "depth": 2,
+      "leaf": 20,
+      "disc": {
+        "n": 241,
+        "delta": 13.71000000003211,
+        "win": 0.5601659751037344,
+        "converted": 83,
+        "gl_reduction": 491.4300000000192
+      },
+      "hold": {
+        "n": 109,
+        "delta": 81.57000000002762,
+        "win": 0.5137614678899083,
+        "converted": 30,
+        "gl_reduction": 421.8500000000106
+      },
+      "all": {
+        "n": 350,
+        "delta": 95.28000000005973,
+        "win": 0.5457142857142857,
+        "converted": 113,
+        "gl_reduction": 913.28000000003
+      },
+      "tree": "|--- pnl_cp <= -0.445\n|   |--- pre30_range <= 2.477\n|   |   |--- class: 0\n|   |--- pre30_range >  2.477\n|   |   |--- class: 1\n|--- pnl_cp >  -0.445\n|   |--- ticks_per_s <= 9.900\n|   |   |--- class: 1\n|   |--- ticks_per_s >  9.900\n|   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev120",
+      "depth": 3,
+      "leaf": 12,
+      "disc": {
+        "n": 216,
+        "delta": 50.92000000003114,
+        "win": 0.6111111111111112,
+        "converted": 85,
+        "gl_reduction": 455.2400000000196
+      },
+      "hold": {
+        "n": 107,
+        "delta": 63.13000000002077,
+        "win": 0.6074766355140186,
+        "converted": 36,
+        "gl_reduction": 400.10000000000406
+      },
+      "all": {
+        "n": 323,
+        "delta": 114.05000000005192,
+        "win": 0.6099071207430341,
+        "converted": 121,
+        "gl_reduction": 855.3400000000237
+      },
+      "tree": "|--- pnl_cp <= -0.295\n|   |--- hour <= 2.500\n|   |   |--- pre30_range <= 1.837\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  1.837\n|   |   |   |--- class: 1\n|   |--- hour >  2.500\n|   |   |--- pre30_range <= 3.370\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  3.370\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.295\n|   |--- turns <= 20.500\n|   |   |--- pnl_cp <= -0.060\n|   |   |   |--- class: 1\n|   |   |--- pnl_cp >  -0.060\n|   |   |   |--- class: 0\n|   |--- turns >  20.500\n|   |   |--- pre30_range <= 2.502\n|   |   |   |--- class: 1\n|   |   |--- pre30_range >  2.502\n|   |   |   |--- class: 1\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev60",
+      "depth": 3,
+      "leaf": 40,
+      "disc": {
+        "n": 223,
+        "delta": 55.300000000025896,
+        "win": 0.6233183856502242,
+        "converted": 78,
+        "gl_reduction": 498.1200000000198
+      },
+      "hold": {
+        "n": 120,
+        "delta": 14.280000000025304,
+        "win": 0.5333333333333333,
+        "converted": 32,
+        "gl_reduction": 462.74000000000615
+      },
+      "all": {
+        "n": 343,
+        "delta": 69.58000000005123,
+        "win": 0.5918367346938775,
+        "converted": 110,
+        "gl_reduction": 960.860000000026
+      },
+      "tree": "|--- pnl_cp <= -0.445\n|   |--- pre30_range <= 2.454\n|   |   |--- shadow_balance <= 430.195\n|   |   |   |--- class: 0\n|   |   |--- shadow_balance >  430.195\n|   |   |   |--- class: 0\n|   |--- pre30_range >  2.454\n|   |   |--- class: 1\n|--- pnl_cp >  -0.445\n|   |--- mae <= -0.535\n|   |   |--- class: 1\n|   |--- mae >  -0.535\n|   |   |--- pnl_cp <= -0.015\n|   |   |   |--- class: 0\n|   |   |--- pnl_cp >  -0.015\n|   |   |   |--- class: 1\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev90",
+      "depth": 2,
+      "leaf": 6,
+      "disc": {
+        "n": 248,
+        "delta": 18.4500000000243,
+        "win": 0.5967741935483871,
+        "converted": 88,
+        "gl_reduction": 481.5500000000207
+      },
+      "hold": {
+        "n": 111,
+        "delta": 74.93000000002327,
+        "win": 0.5225225225225225,
+        "converted": 33,
+        "gl_reduction": 389.8300000000082
+      },
+      "all": {
+        "n": 359,
+        "delta": 93.3800000000476,
+        "win": 0.5738161559888579,
+        "converted": 121,
+        "gl_reduction": 871.3800000000288
+      },
+      "tree": "|--- pnl_cp <= -0.375\n|   |--- pre30_range <= 2.447\n|   |   |--- class: 0\n|   |--- pre30_range >  2.447\n|   |   |--- class: 1\n|--- pnl_cp >  -0.375\n|   |--- pre30_range <= 4.197\n|   |   |--- class: 1\n|   |--- pre30_range >  4.197\n|   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev60",
+      "depth": 2,
+      "leaf": 6,
+      "disc": {
+        "n": 253,
+        "delta": 16.54000000003038,
+        "win": 0.5691699604743083,
+        "converted": 86,
+        "gl_reduction": 530.5700000000205
+      },
+      "hold": {
+        "n": 119,
+        "delta": 36.63000000002586,
+        "win": 0.5126050420168067,
+        "converted": 31,
+        "gl_reduction": 448.1500000000074
+      },
+      "all": {
+        "n": 372,
+        "delta": 53.170000000056284,
+        "win": 0.5510752688172043,
+        "converted": 117,
+        "gl_reduction": 978.7200000000281
+      },
+      "tree": "|--- pnl_cp <= -0.445\n|   |--- pre30_range <= 2.477\n|   |   |--- class: 0\n|   |--- pre30_range >  2.477\n|   |   |--- class: 1\n|--- pnl_cp >  -0.445\n|   |--- ticks_per_s <= 11.567\n|   |   |--- class: 1\n|   |--- ticks_per_s >  11.567\n|   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev60",
+      "depth": 2,
+      "leaf": 8,
+      "disc": {
+        "n": 253,
+        "delta": 16.54000000003038,
+        "win": 0.5691699604743083,
+        "converted": 86,
+        "gl_reduction": 530.5700000000205
+      },
+      "hold": {
+        "n": 119,
+        "delta": 36.63000000002586,
+        "win": 0.5126050420168067,
+        "converted": 31,
+        "gl_reduction": 448.1500000000074
+      },
+      "all": {
+        "n": 372,
+        "delta": 53.170000000056284,
+        "win": 0.5510752688172043,
+        "converted": 117,
+        "gl_reduction": 978.7200000000281
+      },
+      "tree": "|--- pnl_cp <= -0.445\n|   |--- pre30_range <= 2.477\n|   |   |--- class: 0\n|   |--- pre30_range >  2.477\n|   |   |--- class: 1\n|--- pnl_cp >  -0.445\n|   |--- ticks_per_s <= 11.567\n|   |   |--- class: 1\n|   |--- ticks_per_s >  11.567\n|   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev60",
+      "depth": 2,
+      "leaf": 10,
+      "disc": {
+        "n": 253,
+        "delta": 16.54000000003038,
+        "win": 0.5691699604743083,
+        "converted": 86,
+        "gl_reduction": 530.5700000000205
+      },
+      "hold": {
+        "n": 119,
+        "delta": 36.63000000002586,
+        "win": 0.5126050420168067,
+        "converted": 31,
+        "gl_reduction": 448.1500000000074
+      },
+      "all": {
+        "n": 372,
+        "delta": 53.170000000056284,
+        "win": 0.5510752688172043,
+        "converted": 117,
+        "gl_reduction": 978.7200000000281
+      },
+      "tree": "|--- pnl_cp <= -0.445\n|   |--- pre30_range <= 2.477\n|   |   |--- class: 0\n|   |--- pre30_range >  2.477\n|   |   |--- class: 1\n|--- pnl_cp >  -0.445\n|   |--- ticks_per_s <= 11.567\n|   |   |--- class: 1\n|   |--- ticks_per_s >  11.567\n|   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev60",
+      "depth": 3,
+      "leaf": 6,
+      "disc": {
+        "n": 225,
+        "delta": 29.080000000027923,
+        "win": 0.6044444444444445,
+        "converted": 80,
+        "gl_reduction": 496.71000000001794
+      },
+      "hold": {
+        "n": 80,
+        "delta": 88.96000000001595,
+        "win": 0.6125,
+        "converted": 25,
+        "gl_reduction": 263.6000000000051
+      },
+      "all": {
+        "n": 305,
+        "delta": 118.04000000004386,
+        "win": 0.6065573770491803,
+        "converted": 105,
+        "gl_reduction": 760.3100000000233
+      },
+      "tree": "|--- pnl_cp <= -0.445\n|   |--- pre30_range <= 2.477\n|   |   |--- shadow_balance <= 430.195\n|   |   |   |--- class: 0\n|   |   |--- shadow_balance >  430.195\n|   |   |   |--- class: 0\n|   |--- pre30_range >  2.477\n|   |   |--- hour <= 3.500\n|   |   |   |--- class: 1\n|   |   |--- hour >  3.500\n|   |   |   |--- class: 0\n|--- pnl_cp >  -0.445\n|   |--- ticks_per_s <= 11.567\n|   |   |--- mae <= -0.535\n|   |   |   |--- class: 1\n|   |   |--- mae >  -0.535\n|   |   |   |--- class: 1\n|   |--- ticks_per_s >  11.567\n|   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev60",
+      "depth": 3,
+      "leaf": 8,
+      "disc": {
+        "n": 225,
+        "delta": 29.080000000027923,
+        "win": 0.6044444444444445,
+        "converted": 80,
+        "gl_reduction": 496.71000000001794
+      },
+      "hold": {
+        "n": 80,
+        "delta": 88.96000000001595,
+        "win": 0.6125,
+        "converted": 25,
+        "gl_reduction": 263.6000000000051
+      },
+      "all": {
+        "n": 305,
+        "delta": 118.04000000004386,
+        "win": 0.6065573770491803,
+        "converted": 105,
+        "gl_reduction": 760.3100000000233
+      },
+      "tree": "|--- pnl_cp <= -0.445\n|   |--- pre30_range <= 2.477\n|   |   |--- shadow_balance <= 430.195\n|   |   |   |--- class: 0\n|   |   |--- shadow_balance >  430.195\n|   |   |   |--- class: 0\n|   |--- pre30_range >  2.477\n|   |   |--- hour <= 3.500\n|   |   |   |--- class: 1\n|   |   |--- hour >  3.500\n|   |   |   |--- class: 0\n|--- pnl_cp >  -0.445\n|   |--- ticks_per_s <= 11.567\n|   |   |--- mae <= -0.535\n|   |   |   |--- class: 1\n|   |   |--- mae >  -0.535\n|   |   |   |--- class: 1\n|   |--- ticks_per_s >  11.567\n|   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev60",
+      "depth": 3,
+      "leaf": 10,
+      "disc": {
+        "n": 225,
+        "delta": 29.080000000027923,
+        "win": 0.6044444444444445,
+        "converted": 80,
+        "gl_reduction": 496.71000000001794
+      },
+      "hold": {
+        "n": 80,
+        "delta": 88.96000000001595,
+        "win": 0.6125,
+        "converted": 25,
+        "gl_reduction": 263.6000000000051
+      },
+      "all": {
+        "n": 305,
+        "delta": 118.04000000004386,
+        "win": 0.6065573770491803,
+        "converted": 105,
+        "gl_reduction": 760.3100000000233
+      },
+      "tree": "|--- pnl_cp <= -0.445\n|   |--- pre30_range <= 2.477\n|   |   |--- shadow_balance <= 430.195\n|   |   |   |--- class: 0\n|   |   |--- shadow_balance >  430.195\n|   |   |   |--- class: 0\n|   |--- pre30_range >  2.477\n|   |   |--- hour <= 3.500\n|   |   |   |--- class: 1\n|   |   |--- hour >  3.500\n|   |   |   |--- class: 0\n|--- pnl_cp >  -0.445\n|   |--- ticks_per_s <= 11.567\n|   |   |--- mae <= -0.535\n|   |   |   |--- class: 1\n|   |   |--- mae >  -0.535\n|   |   |   |--- class: 1\n|   |--- ticks_per_s >  11.567\n|   |   |--- class: 0\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev90",
+      "depth": 3,
+      "leaf": 20,
+      "disc": {
+        "n": 210,
+        "delta": 12.510000000007437,
+        "win": 0.6571428571428571,
+        "converted": 79,
+        "gl_reduction": 412.7500000000076
+      },
+      "hold": {
+        "n": 106,
+        "delta": 72.06000000001866,
+        "win": 0.6037735849056604,
+        "converted": 33,
+        "gl_reduction": 426.850000000001
+      },
+      "all": {
+        "n": 316,
+        "delta": 84.57000000002608,
+        "win": 0.6392405063291139,
+        "converted": 112,
+        "gl_reduction": 839.6000000000088
+      },
+      "tree": "|--- pnl_cp <= -0.375\n|   |--- pre30_range <= 2.447\n|   |   |--- eff <= 0.195\n|   |   |   |--- class: 0\n|   |   |--- eff >  0.195\n|   |   |   |--- class: 0\n|   |--- pre30_range >  2.447\n|   |   |--- pre30_range <= 3.017\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  3.017\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.375\n|   |--- shadow_balance <= 459.720\n|   |   |--- pre30_range <= 1.415\n|   |   |   |--- class: 1\n|   |   |--- pre30_range >  1.415\n|   |   |   |--- class: 1\n|   |--- shadow_balance >  459.720\n|   |   |--- path_range <= 0.895\n|   |   |   |--- class: 0\n|   |   |--- path_range >  0.895\n|   |   |   |--- class: 1\n"
+    },
+    {
+      "owner": "REVERT",
+      "horizon_s": 900,
+      "cp": 15,
+      "action": "rev60",
+      "depth": 3,
+      "leaf": 15,
+      "disc": {
+        "n": 190,
+        "delta": 60.510000000018096,
+        "win": 0.6157894736842106,
+        "converted": 74,
+        "gl_reduction": 432.6300000000097
+      },
+      "hold": {
+        "n": 77,
+        "delta": 70.0700000000175,
+        "win": 0.5584415584415584,
+        "converted": 20,
+        "gl_reduction": 274.7500000000053
+      },
+      "all": {
+        "n": 267,
+        "delta": 130.58000000003562,
+        "win": 0.599250936329588,
+        "converted": 94,
+        "gl_reduction": 707.3800000000151
+      },
+      "tree": "|--- pnl_cp <= -0.445\n|   |--- pre30_range <= 2.477\n|   |   |--- shadow_balance <= 430.195\n|   |   |   |--- class: 0\n|   |   |--- shadow_balance >  430.195\n|   |   |   |--- class: 0\n|   |--- pre30_range >  2.477\n|   |   |--- shadow_balance <= 543.510\n|   |   |   |--- class: 0\n|   |   |--- shadow_balance >  543.510\n|   |   |   |--- class: 1\n|--- pnl_cp >  -0.445\n|   |--- ticks_per_s <= 9.900\n|   |   |--- turns <= 20.500\n|   |   |   |--- class: 0\n|   |   |--- turns >  20.500\n|   |   |   |--- class: 1\n|   |--- ticks_per_s >  9.900\n|   |   |--- class: 0\n"
+    }
+  ],
+  "soft_success_target": 0.5,
+  "august_accessed": false,
+  "elapsed_s": 18.98853635787964
+}

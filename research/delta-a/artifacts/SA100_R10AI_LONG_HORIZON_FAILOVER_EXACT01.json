@@ -1,0 +1,56 @@
+{
+  "id": "SA100_R10AI_LONG_HORIZON_FAILOVER_EXACT01",
+  "status": "COMPLETE_EXACT_STACK_TEST",
+  "rules": {
+    "CONT1200": "at +60s turns>200 -> close basket + opposite 0.01 for 180s",
+    "REVERT1200": "at +450s MAE>-$3.655 -> close basket + opposite 0.01 for 180s"
+  },
+  "counts": {
+    "CONT1200": 33,
+    "REVERT1200": 50
+  },
+  "selected": 83,
+  "specialist_win": 0.6506024096385542,
+  "converted": 29,
+  "disc": {
+    "n": 44,
+    "win": 0.6363636363636364,
+    "delta": 58.64000000000234,
+    "converted": 18
+  },
+  "hold": {
+    "n": 39,
+    "win": 0.6666666666666666,
+    "delta": 86.48000000001227,
+    "converted": 11
+  },
+  "physical": {
+    "n": 4940,
+    "net": 4969.734500000076,
+    "gp": 15291.476000000068,
+    "gl": -10321.74149999999,
+    "pf": 1.4814821704263843,
+    "win": 0.5613360323886639
+  },
+  "episodes": {
+    "n": 3841,
+    "net": 4969.734500000077,
+    "gp": 12944.895500000071,
+    "gl": -7975.1609999999955,
+    "pf": 1.6231516203873602,
+    "win": 0.5037750585784951
+  },
+  "delta_net": 145.12000000001535,
+  "physical_gl_improvement": 61.89000000001215,
+  "episode_gl_improvement": 150.05000000000928,
+  "balance_dd": 239.4570000000167,
+  "min_balance": 85.53999999999853,
+  "tick_min_equity": 81.36999999999848,
+  "tick_dd": 203.28000000000338,
+  "min_free_margin": 64.21685999999852,
+  "min_margin_level": 460.3004857729812,
+  "max_positions": 8,
+  "executed_episode_win": 0.6146759847522236,
+  "august_accessed": false,
+  "elapsed_s": 6.532957553863525
+}

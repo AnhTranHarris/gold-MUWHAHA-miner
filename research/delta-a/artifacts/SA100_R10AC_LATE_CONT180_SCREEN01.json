@@ -1,0 +1,41 @@
+{
+  "id": "SA100_R10AC_LATE_CONT180_SCREEN01",
+  "status": "COMPLETE_FAST_CAUSAL_RULE_SCREEN",
+  "target_episodes": 1060,
+  "target_net": 2136.929999999995,
+  "target_gl": -4644.310000000005,
+  "target_win": 0.5330188679245284,
+  "qualifying_rules": 1,
+  "top": [
+    {
+      "cp": 120,
+      "action": "rev45",
+      "depth": 3,
+      "leaf": 8,
+      "disc": {
+        "n": 18,
+        "delta": 42.070000000006374,
+        "win": 0.8888888888888888,
+        "converted": 7,
+        "gl_reduction": 13.800000000002221
+      },
+      "hold": {
+        "n": 177,
+        "delta": 70.7100000000233,
+        "win": 0.9096045197740112,
+        "converted": 19,
+        "gl_reduction": 12.099999999999426
+      },
+      "all": {
+        "n": 195,
+        "delta": 112.78000000002972,
+        "win": 0.9076923076923077,
+        "converted": 26,
+        "gl_reduction": 25.900000000001654
+      },
+      "tree": "|--- pnl_cp <= -2.50\n|   |--- class: 0\n|--- pnl_cp >  -2.50\n|   |--- turns <= 374.00\n|   |   |--- turns <= 151.50\n|   |   |   |--- class: 1\n|   |   |--- turns >  151.50\n|   |   |   |--- class: 0\n|   |--- turns >  374.00\n|   |   |--- mae <= -1.77\n|   |   |   |--- class: 0\n|   |   |--- mae >  -1.77\n|   |   |   |--- class: 1\n"
+    }
+  ],
+  "august_accessed": false,
+  "elapsed_s": 6.92290735244751
+}

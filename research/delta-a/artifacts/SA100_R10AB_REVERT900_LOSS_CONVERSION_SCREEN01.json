@@ -1,0 +1,854 @@
+{
+  "id": "SA100_R10AB_REVERT900_LOSS_CONVERSION_SCREEN01",
+  "status": "COMPLETE_FAST_CAUSAL_RULE_SCREEN",
+  "target_episodes": 711,
+  "target_net": 391.84000000000015,
+  "target_gl": -2171.419999999998,
+  "target_win": 0.5260196905766527,
+  "soft_success_target": 0.5,
+  "qualifying_rules": 40,
+  "top": [
+    {
+      "cp": 120,
+      "action": "rev300",
+      "depth": 3,
+      "leaf": 40,
+      "disc": {
+        "n": 74,
+        "delta": 171.88000000001074,
+        "win": 0.8648648648648649,
+        "converted": 26,
+        "gl_reduction": -103.73000000000393
+      },
+      "hold": {
+        "n": 20,
+        "delta": 45.670000000006624,
+        "win": 0.7,
+        "converted": 4,
+        "gl_reduction": 7.899999999997995
+      },
+      "all": {
+        "n": 94,
+        "delta": 217.55000000001735,
+        "win": 0.8297872340425532,
+        "converted": 30,
+        "gl_reduction": -95.83000000000592
+      },
+      "tree": "|--- pnl_cp <= -1.02\n|   |--- pnl_cp <= -2.33\n|   |   |--- pnl_cp <= -4.12\n|   |   |   |--- class: 0\n|   |   |--- pnl_cp >  -4.12\n|   |   |   |--- class: 0\n|   |--- pnl_cp >  -2.33\n|   |   |--- class: 0\n|--- pnl_cp >  -1.02\n|   |--- hour <= 16.50\n|   |   |--- eff <= 0.05\n|   |   |   |--- class: 0\n|   |   |--- eff >  0.05\n|   |   |   |--- class: 1\n|   |--- hour >  16.50\n|   |   |--- pnl_cp <= 0.48\n|   |   |   |--- class: 0\n|   |   |--- pnl_cp >  0.48\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 120,
+      "action": "rev300",
+      "depth": 3,
+      "leaf": 50,
+      "disc": {
+        "n": 74,
+        "delta": 171.88000000001074,
+        "win": 0.8648648648648649,
+        "converted": 26,
+        "gl_reduction": -103.73000000000393
+      },
+      "hold": {
+        "n": 20,
+        "delta": 45.670000000006624,
+        "win": 0.7,
+        "converted": 4,
+        "gl_reduction": 7.899999999997995
+      },
+      "all": {
+        "n": 94,
+        "delta": 217.55000000001735,
+        "win": 0.8297872340425532,
+        "converted": 30,
+        "gl_reduction": -95.83000000000592
+      },
+      "tree": "|--- pnl_cp <= -1.02\n|   |--- pnl_cp <= -2.33\n|   |   |--- class: 0\n|   |--- pnl_cp >  -2.33\n|   |   |--- class: 0\n|--- pnl_cp >  -1.02\n|   |--- hour <= 16.50\n|   |   |--- eff <= 0.05\n|   |   |   |--- class: 0\n|   |   |--- eff >  0.05\n|   |   |   |--- class: 1\n|   |--- hour >  16.50\n|   |   |--- class: 0\n"
+    },
+    {
+      "cp": 120,
+      "action": "rev300",
+      "depth": 3,
+      "leaf": 60,
+      "disc": {
+        "n": 74,
+        "delta": 171.88000000001074,
+        "win": 0.8648648648648649,
+        "converted": 26,
+        "gl_reduction": -103.73000000000393
+      },
+      "hold": {
+        "n": 20,
+        "delta": 45.670000000006624,
+        "win": 0.7,
+        "converted": 4,
+        "gl_reduction": 7.899999999997995
+      },
+      "all": {
+        "n": 94,
+        "delta": 217.55000000001735,
+        "win": 0.8297872340425532,
+        "converted": 30,
+        "gl_reduction": -95.83000000000592
+      },
+      "tree": "|--- pnl_cp <= -1.02\n|   |--- pnl_cp <= -2.33\n|   |   |--- class: 0\n|   |--- pnl_cp >  -2.33\n|   |   |--- class: 0\n|--- pnl_cp >  -1.02\n|   |--- hour <= 16.50\n|   |   |--- eff <= 0.05\n|   |   |   |--- class: 0\n|   |   |--- eff >  0.05\n|   |   |   |--- class: 1\n|   |--- hour >  16.50\n|   |   |--- class: 0\n"
+    },
+    {
+      "cp": 60,
+      "action": "rev300",
+      "depth": 3,
+      "leaf": 30,
+      "disc": {
+        "n": 35,
+        "delta": 112.09999999999829,
+        "win": 0.8,
+        "converted": 14,
+        "gl_reduction": -80.37000000000074
+      },
+      "hold": {
+        "n": 32,
+        "delta": 93.43000000000794,
+        "win": 0.8125,
+        "converted": 11,
+        "gl_reduction": -69.09000000000168
+      },
+      "all": {
+        "n": 67,
+        "delta": 205.53000000000623,
+        "win": 0.8059701492537313,
+        "converted": 25,
+        "gl_reduction": -149.4600000000024
+      },
+      "tree": "|--- mfe <= 0.07\n|   |--- eff <= 0.14\n|   |   |--- shadow_balance <= 367.80\n|   |   |   |--- class: 0\n|   |   |--- shadow_balance >  367.80\n|   |   |   |--- class: 0\n|   |--- eff >  0.14\n|   |   |--- class: 0\n|--- mfe >  0.07\n|   |--- pnl_cp <= 1.83\n|   |   |--- turns <= 188.00\n|   |   |   |--- class: 0\n|   |   |--- turns >  188.00\n|   |   |   |--- class: 0\n|   |--- pnl_cp >  1.83\n|   |   |--- mae <= -0.51\n|   |   |   |--- class: 1\n|   |   |--- mae >  -0.51\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 90,
+      "action": "rev30",
+      "depth": 3,
+      "leaf": 20,
+      "disc": {
+        "n": 97,
+        "delta": 101.54000000000411,
+        "win": 0.9175257731958762,
+        "converted": 38,
+        "gl_reduction": -169.1400000000031
+      },
+      "hold": {
+        "n": 50,
+        "delta": 138.6500000000095,
+        "win": 0.94,
+        "converted": 18,
+        "gl_reduction": -136.94999999999985
+      },
+      "all": {
+        "n": 147,
+        "delta": 240.19000000001358,
+        "win": 0.9251700680272109,
+        "converted": 56,
+        "gl_reduction": -306.09000000000293
+      },
+      "tree": "|--- pnl_cp <= 0.24\n|   |--- eff <= 0.01\n|   |   |--- path_range <= 3.09\n|   |   |   |--- class: 0\n|   |   |--- path_range >  3.09\n|   |   |   |--- class: 0\n|   |--- eff >  0.01\n|   |   |--- shadow_balance <= 653.96\n|   |   |   |--- class: 0\n|   |   |--- shadow_balance >  653.96\n|   |   |   |--- class: 0\n|--- pnl_cp >  0.24\n|   |--- eff <= 0.03\n|   |   |--- eff <= 0.02\n|   |   |   |--- class: 0\n|   |   |--- eff >  0.02\n|   |   |   |--- class: 0\n|   |--- eff >  0.03\n|   |   |--- mae <= -0.48\n|   |   |   |--- class: 1\n|   |   |--- mae >  -0.48\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 90,
+      "action": "rev30",
+      "depth": 3,
+      "leaf": 30,
+      "disc": {
+        "n": 97,
+        "delta": 101.54000000000411,
+        "win": 0.9175257731958762,
+        "converted": 38,
+        "gl_reduction": -169.1400000000031
+      },
+      "hold": {
+        "n": 50,
+        "delta": 138.6500000000095,
+        "win": 0.94,
+        "converted": 18,
+        "gl_reduction": -136.94999999999985
+      },
+      "all": {
+        "n": 147,
+        "delta": 240.19000000001358,
+        "win": 0.9251700680272109,
+        "converted": 56,
+        "gl_reduction": -306.09000000000293
+      },
+      "tree": "|--- pnl_cp <= 0.24\n|   |--- eff <= 0.01\n|   |   |--- eff <= 0.01\n|   |   |   |--- class: 0\n|   |   |--- eff >  0.01\n|   |   |   |--- class: 0\n|   |--- eff >  0.01\n|   |   |--- shadow_balance <= 653.96\n|   |   |   |--- class: 0\n|   |   |--- shadow_balance >  653.96\n|   |   |   |--- class: 0\n|--- pnl_cp >  0.24\n|   |--- eff <= 0.03\n|   |   |--- class: 0\n|   |--- eff >  0.03\n|   |   |--- mae <= -0.48\n|   |   |   |--- class: 1\n|   |   |--- mae >  -0.48\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 90,
+      "action": "rev30",
+      "depth": 3,
+      "leaf": 40,
+      "disc": {
+        "n": 97,
+        "delta": 101.54000000000411,
+        "win": 0.9175257731958762,
+        "converted": 38,
+        "gl_reduction": -169.1400000000031
+      },
+      "hold": {
+        "n": 50,
+        "delta": 138.6500000000095,
+        "win": 0.94,
+        "converted": 18,
+        "gl_reduction": -136.94999999999985
+      },
+      "all": {
+        "n": 147,
+        "delta": 240.19000000001358,
+        "win": 0.9251700680272109,
+        "converted": 56,
+        "gl_reduction": -306.09000000000293
+      },
+      "tree": "|--- pnl_cp <= 0.24\n|   |--- eff <= 0.01\n|   |   |--- class: 0\n|   |--- eff >  0.01\n|   |   |--- shadow_balance <= 653.96\n|   |   |   |--- class: 0\n|   |   |--- shadow_balance >  653.96\n|   |   |   |--- class: 0\n|--- pnl_cp >  0.24\n|   |--- eff <= 0.03\n|   |   |--- class: 0\n|   |--- eff >  0.03\n|   |   |--- mae <= -0.48\n|   |   |   |--- class: 1\n|   |   |--- mae >  -0.48\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 90,
+      "action": "rev30",
+      "depth": 3,
+      "leaf": 50,
+      "disc": {
+        "n": 97,
+        "delta": 101.54000000000411,
+        "win": 0.9175257731958762,
+        "converted": 38,
+        "gl_reduction": -169.1400000000031
+      },
+      "hold": {
+        "n": 50,
+        "delta": 138.6500000000095,
+        "win": 0.94,
+        "converted": 18,
+        "gl_reduction": -136.94999999999985
+      },
+      "all": {
+        "n": 147,
+        "delta": 240.19000000001358,
+        "win": 0.9251700680272109,
+        "converted": 56,
+        "gl_reduction": -306.09000000000293
+      },
+      "tree": "|--- pnl_cp <= 0.24\n|   |--- eff <= 0.01\n|   |   |--- class: 0\n|   |--- eff >  0.01\n|   |   |--- hour <= 15.50\n|   |   |   |--- class: 0\n|   |   |--- hour >  15.50\n|   |   |   |--- class: 0\n|--- pnl_cp >  0.24\n|   |--- eff <= 0.03\n|   |   |--- class: 0\n|   |--- eff >  0.03\n|   |   |--- mae <= -0.48\n|   |   |   |--- class: 1\n|   |   |--- mae >  -0.48\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 60,
+      "action": "rev90",
+      "depth": 3,
+      "leaf": 20,
+      "disc": {
+        "n": 62,
+        "delta": 135.84000000000052,
+        "win": 0.9032258064516129,
+        "converted": 25,
+        "gl_reduction": -134.320000000001
+      },
+      "hold": {
+        "n": 38,
+        "delta": 88.21000000001395,
+        "win": 0.8157894736842105,
+        "converted": 16,
+        "gl_reduction": -112.75000000000296
+      },
+      "all": {
+        "n": 100,
+        "delta": 224.05000000001448,
+        "win": 0.87,
+        "converted": 41,
+        "gl_reduction": -247.07000000000392
+      },
+      "tree": "|--- pnl_cp <= -0.51\n|   |--- pnl_cp <= -1.35\n|   |   |--- pre30_range <= 2.59\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  2.59\n|   |   |   |--- class: 0\n|   |--- pnl_cp >  -1.35\n|   |   |--- pre30_range <= 1.48\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  1.48\n|   |   |   |--- class: 0\n|--- pnl_cp >  -0.51\n|   |--- pnl_cp <= 1.22\n|   |   |--- pnl_cp <= 0.91\n|   |   |   |--- class: 0\n|   |   |--- pnl_cp >  0.91\n|   |   |   |--- class: 0\n|   |--- pnl_cp >  1.22\n|   |   |--- hour <= 14.50\n|   |   |   |--- class: 1\n|   |   |--- hour >  14.50\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 60,
+      "action": "rev90",
+      "depth": 3,
+      "leaf": 30,
+      "disc": {
+        "n": 62,
+        "delta": 135.84000000000052,
+        "win": 0.9032258064516129,
+        "converted": 25,
+        "gl_reduction": -134.320000000001
+      },
+      "hold": {
+        "n": 38,
+        "delta": 88.21000000001395,
+        "win": 0.8157894736842105,
+        "converted": 16,
+        "gl_reduction": -112.75000000000296
+      },
+      "all": {
+        "n": 100,
+        "delta": 224.05000000001448,
+        "win": 0.87,
+        "converted": 41,
+        "gl_reduction": -247.07000000000392
+      },
+      "tree": "|--- pnl_cp <= -0.51\n|   |--- pnl_cp <= -1.35\n|   |   |--- pre30_range <= 2.51\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  2.51\n|   |   |   |--- class: 0\n|   |--- pnl_cp >  -1.35\n|   |   |--- pre30_range <= 1.48\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  1.48\n|   |   |   |--- class: 0\n|--- pnl_cp >  -0.51\n|   |--- pnl_cp <= 1.22\n|   |   |--- pnl_cp <= 0.91\n|   |   |   |--- class: 0\n|   |   |--- pnl_cp >  0.91\n|   |   |   |--- class: 0\n|   |--- pnl_cp >  1.22\n|   |   |--- hour <= 14.50\n|   |   |   |--- class: 1\n|   |   |--- hour >  14.50\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 5,
+      "action": "rev90",
+      "depth": 3,
+      "leaf": 20,
+      "disc": {
+        "n": 34,
+        "delta": 105.8299999999981,
+        "win": 0.6764705882352942,
+        "converted": 18,
+        "gl_reduction": -129.46999999999824
+      },
+      "hold": {
+        "n": 22,
+        "delta": 98.36000000000294,
+        "win": 0.7272727272727273,
+        "converted": 12,
+        "gl_reduction": -122.82000000000254
+      },
+      "all": {
+        "n": 56,
+        "delta": 204.19000000000105,
+        "win": 0.6964285714285714,
+        "converted": 30,
+        "gl_reduction": -252.29000000000076
+      },
+      "tree": "|--- eff <= 0.24\n|   |--- eff <= 0.18\n|   |   |--- mae <= -0.66\n|   |   |   |--- class: 0\n|   |   |--- mae >  -0.66\n|   |   |   |--- class: 0\n|   |--- eff >  0.18\n|   |   |--- path_range <= 0.52\n|   |   |   |--- class: 0\n|   |   |--- path_range >  0.52\n|   |   |   |--- class: 1\n|--- eff >  0.24\n|   |--- turns <= 20.50\n|   |   |--- shadow_balance <= 381.65\n|   |   |   |--- class: 0\n|   |   |--- shadow_balance >  381.65\n|   |   |   |--- class: 0\n|   |--- turns >  20.50\n|   |   |--- path_range <= 1.25\n|   |   |   |--- class: 0\n|   |   |--- path_range >  1.25\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 30,
+      "action": "rev90",
+      "depth": 3,
+      "leaf": 30,
+      "disc": {
+        "n": 31,
+        "delta": 88.43999999999815,
+        "win": 0.8709677419354839,
+        "converted": 16,
+        "gl_reduction": -68.71000000000016
+      },
+      "hold": {
+        "n": 28,
+        "delta": 75.48000000000366,
+        "win": 0.5714285714285714,
+        "converted": 10,
+        "gl_reduction": -93.52000000000308
+      },
+      "all": {
+        "n": 59,
+        "delta": 163.92000000000178,
+        "win": 0.7288135593220338,
+        "converted": 26,
+        "gl_reduction": -162.2300000000032
+      },
+      "tree": "|--- pnl_cp <= 0.18\n|   |--- mae <= -1.82\n|   |   |--- pre30_range <= 2.15\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  2.15\n|   |   |   |--- class: 0\n|   |--- mae >  -1.82\n|   |   |--- pre30_range <= 1.72\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  1.72\n|   |   |   |--- class: 0\n|--- pnl_cp >  0.18\n|   |--- mfe <= 1.71\n|   |   |--- path_range <= 2.01\n|   |   |   |--- class: 0\n|   |   |--- path_range >  2.01\n|   |   |   |--- class: 0\n|   |--- mfe >  1.71\n|   |   |--- mae <= -0.53\n|   |   |   |--- class: 1\n|   |   |--- mae >  -0.53\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 90,
+      "action": "rev90",
+      "depth": 3,
+      "leaf": 30,
+      "disc": {
+        "n": 65,
+        "delta": 143.15000000001146,
+        "win": 0.8307692307692308,
+        "converted": 34,
+        "gl_reduction": -138.46999999999807
+      },
+      "hold": {
+        "n": 20,
+        "delta": 14.470000000008145,
+        "win": 0.75,
+        "converted": 9,
+        "gl_reduction": -43.83000000000345
+      },
+      "all": {
+        "n": 85,
+        "delta": 157.62000000001962,
+        "win": 0.8117647058823529,
+        "converted": 43,
+        "gl_reduction": -182.3000000000016
+      },
+      "tree": "|--- pnl_cp <= 0.11\n|   |--- eff <= 0.03\n|   |   |--- path_range <= 2.81\n|   |   |   |--- class: 0\n|   |   |--- path_range >  2.81\n|   |   |   |--- class: 0\n|   |--- eff >  0.03\n|   |   |--- turns <= 157.00\n|   |   |   |--- class: 0\n|   |   |--- turns >  157.00\n|   |   |   |--- class: 0\n|--- pnl_cp >  0.11\n|   |--- pre30_range <= 1.24\n|   |   |--- class: 0\n|   |--- pre30_range >  1.24\n|   |   |--- turns <= 235.50\n|   |   |   |--- class: 1\n|   |   |--- turns >  235.50\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 90,
+      "action": "rev90",
+      "depth": 3,
+      "leaf": 40,
+      "disc": {
+        "n": 65,
+        "delta": 143.15000000001146,
+        "win": 0.8307692307692308,
+        "converted": 34,
+        "gl_reduction": -138.46999999999807
+      },
+      "hold": {
+        "n": 20,
+        "delta": 14.470000000008145,
+        "win": 0.75,
+        "converted": 9,
+        "gl_reduction": -43.83000000000345
+      },
+      "all": {
+        "n": 85,
+        "delta": 157.62000000001962,
+        "win": 0.8117647058823529,
+        "converted": 43,
+        "gl_reduction": -182.3000000000016
+      },
+      "tree": "|--- pnl_cp <= 0.11\n|   |--- eff <= 0.03\n|   |   |--- path_range <= 2.81\n|   |   |   |--- class: 0\n|   |   |--- path_range >  2.81\n|   |   |   |--- class: 0\n|   |--- eff >  0.03\n|   |   |--- turns <= 157.00\n|   |   |   |--- class: 0\n|   |   |--- turns >  157.00\n|   |   |   |--- class: 0\n|--- pnl_cp >  0.11\n|   |--- pre30_range <= 1.24\n|   |   |--- class: 0\n|   |--- pre30_range >  1.24\n|   |   |--- turns <= 235.50\n|   |   |   |--- class: 1\n|   |   |--- turns >  235.50\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 90,
+      "action": "rev90",
+      "depth": 3,
+      "leaf": 50,
+      "disc": {
+        "n": 65,
+        "delta": 143.15000000001146,
+        "win": 0.8307692307692308,
+        "converted": 34,
+        "gl_reduction": -138.46999999999807
+      },
+      "hold": {
+        "n": 20,
+        "delta": 14.470000000008145,
+        "win": 0.75,
+        "converted": 9,
+        "gl_reduction": -43.83000000000345
+      },
+      "all": {
+        "n": 85,
+        "delta": 157.62000000001962,
+        "win": 0.8117647058823529,
+        "converted": 43,
+        "gl_reduction": -182.3000000000016
+      },
+      "tree": "|--- pnl_cp <= 0.11\n|   |--- eff <= 0.03\n|   |   |--- class: 0\n|   |--- eff >  0.03\n|   |   |--- turns <= 166.00\n|   |   |   |--- class: 0\n|   |   |--- turns >  166.00\n|   |   |   |--- class: 0\n|--- pnl_cp >  0.11\n|   |--- pre30_range <= 1.24\n|   |   |--- class: 0\n|   |--- pre30_range >  1.24\n|   |   |--- turns <= 235.50\n|   |   |   |--- class: 1\n|   |   |--- turns >  235.50\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 30,
+      "action": "rev60",
+      "depth": 3,
+      "leaf": 20,
+      "disc": {
+        "n": 31,
+        "delta": 86.83999999999959,
+        "win": 0.8709677419354839,
+        "converted": 15,
+        "gl_reduction": -73.05000000000122
+      },
+      "hold": {
+        "n": 28,
+        "delta": 66.2100000000023,
+        "win": 0.6428571428571429,
+        "converted": 10,
+        "gl_reduction": -99.8200000000015
+      },
+      "all": {
+        "n": 59,
+        "delta": 153.0500000000019,
+        "win": 0.7627118644067796,
+        "converted": 25,
+        "gl_reduction": -172.8700000000027
+      },
+      "tree": "|--- pnl_cp <= 0.19\n|   |--- mae <= -1.82\n|   |   |--- hour <= 9.00\n|   |   |   |--- class: 0\n|   |   |--- hour >  9.00\n|   |   |   |--- class: 0\n|   |--- mae >  -1.82\n|   |   |--- pre30_range <= 1.96\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  1.96\n|   |   |   |--- class: 0\n|--- pnl_cp >  0.19\n|   |--- mfe <= 1.71\n|   |   |--- mae <= -1.00\n|   |   |   |--- class: 0\n|   |   |--- mae >  -1.00\n|   |   |   |--- class: 0\n|   |--- mfe >  1.71\n|   |   |--- mae <= -0.53\n|   |   |   |--- class: 1\n|   |   |--- mae >  -0.53\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 30,
+      "action": "rev60",
+      "depth": 3,
+      "leaf": 30,
+      "disc": {
+        "n": 31,
+        "delta": 86.83999999999959,
+        "win": 0.8709677419354839,
+        "converted": 15,
+        "gl_reduction": -73.05000000000122
+      },
+      "hold": {
+        "n": 28,
+        "delta": 66.2100000000023,
+        "win": 0.6428571428571429,
+        "converted": 10,
+        "gl_reduction": -99.8200000000015
+      },
+      "all": {
+        "n": 59,
+        "delta": 153.0500000000019,
+        "win": 0.7627118644067796,
+        "converted": 25,
+        "gl_reduction": -172.8700000000027
+      },
+      "tree": "|--- pnl_cp <= 0.19\n|   |--- mae <= -1.82\n|   |   |--- pre30_range <= 2.15\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  2.15\n|   |   |   |--- class: 0\n|   |--- mae >  -1.82\n|   |   |--- pre30_range <= 1.96\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  1.96\n|   |   |   |--- class: 0\n|--- pnl_cp >  0.19\n|   |--- mfe <= 1.71\n|   |   |--- pnl_cp <= 0.38\n|   |   |   |--- class: 0\n|   |   |--- pnl_cp >  0.38\n|   |   |   |--- class: 0\n|   |--- mfe >  1.71\n|   |   |--- mae <= -0.53\n|   |   |   |--- class: 1\n|   |   |--- mae >  -0.53\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 90,
+      "action": "rev60",
+      "depth": 3,
+      "leaf": 50,
+      "disc": {
+        "n": 88,
+        "delta": 78.90000000001714,
+        "win": 0.8977272727272727,
+        "converted": 30,
+        "gl_reduction": -108.98000000000441
+      },
+      "hold": {
+        "n": 43,
+        "delta": 83.30000000001733,
+        "win": 0.9302325581395349,
+        "converted": 15,
+        "gl_reduction": -109.1500000000019
+      },
+      "all": {
+        "n": 131,
+        "delta": 162.20000000003446,
+        "win": 0.9083969465648855,
+        "converted": 45,
+        "gl_reduction": -218.13000000000633
+      },
+      "tree": "|--- pnl_cp <= -0.28\n|   |--- pnl_cp <= -1.33\n|   |   |--- pnl_cp <= -2.59\n|   |   |   |--- class: 0\n|   |   |--- pnl_cp >  -2.59\n|   |   |   |--- class: 0\n|   |--- pnl_cp >  -1.33\n|   |   |--- class: 0\n|--- pnl_cp >  -0.28\n|   |--- eff <= 0.03\n|   |   |--- shadow_balance <= 371.71\n|   |   |   |--- class: 0\n|   |   |--- shadow_balance >  371.71\n|   |   |   |--- class: 0\n|   |--- eff >  0.03\n|   |   |--- hour <= 14.50\n|   |   |   |--- class: 1\n|   |   |--- hour >  14.50\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 90,
+      "action": "rev60",
+      "depth": 3,
+      "leaf": 60,
+      "disc": {
+        "n": 88,
+        "delta": 78.90000000001714,
+        "win": 0.8977272727272727,
+        "converted": 30,
+        "gl_reduction": -108.98000000000441
+      },
+      "hold": {
+        "n": 43,
+        "delta": 83.30000000001733,
+        "win": 0.9302325581395349,
+        "converted": 15,
+        "gl_reduction": -109.1500000000019
+      },
+      "all": {
+        "n": 131,
+        "delta": 162.20000000003446,
+        "win": 0.9083969465648855,
+        "converted": 45,
+        "gl_reduction": -218.13000000000633
+      },
+      "tree": "|--- pnl_cp <= -0.28\n|   |--- pnl_cp <= -1.33\n|   |   |--- pnl_cp <= -2.59\n|   |   |   |--- class: 0\n|   |   |--- pnl_cp >  -2.59\n|   |   |   |--- class: 0\n|   |--- pnl_cp >  -1.33\n|   |   |--- class: 0\n|--- pnl_cp >  -0.28\n|   |--- eff <= 0.03\n|   |   |--- class: 0\n|   |--- eff >  0.03\n|   |   |--- hour <= 14.50\n|   |   |   |--- class: 1\n|   |   |--- hour >  14.50\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 90,
+      "action": "close",
+      "depth": 3,
+      "leaf": 20,
+      "disc": {
+        "n": 70,
+        "delta": 139.69000000000693,
+        "win": 1.0,
+        "converted": 41,
+        "gl_reduction": -166.60999999999999
+      },
+      "hold": {
+        "n": 21,
+        "delta": 23.830000000004432,
+        "win": 1.0,
+        "converted": 11,
+        "gl_reduction": -64.37000000000032
+      },
+      "all": {
+        "n": 91,
+        "delta": 163.52000000001135,
+        "win": 1.0,
+        "converted": 52,
+        "gl_reduction": -230.98000000000036
+      },
+      "tree": "|--- pnl_cp <= 0.01\n|   |--- pnl_cp <= -0.18\n|   |   |--- class: 0\n|   |--- pnl_cp >  -0.18\n|   |   |--- class: 0\n|--- pnl_cp >  0.01\n|   |--- pre30_range <= 1.24\n|   |   |--- mae <= -0.50\n|   |   |   |--- class: 0\n|   |   |--- mae >  -0.50\n|   |   |   |--- class: 0\n|   |--- pre30_range >  1.24\n|   |   |--- turns <= 239.00\n|   |   |   |--- class: 1\n|   |   |--- turns >  239.00\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 90,
+      "action": "close",
+      "depth": 3,
+      "leaf": 30,
+      "disc": {
+        "n": 70,
+        "delta": 139.69000000000693,
+        "win": 1.0,
+        "converted": 41,
+        "gl_reduction": -166.60999999999999
+      },
+      "hold": {
+        "n": 21,
+        "delta": 23.830000000004432,
+        "win": 1.0,
+        "converted": 11,
+        "gl_reduction": -64.37000000000032
+      },
+      "all": {
+        "n": 91,
+        "delta": 163.52000000001135,
+        "win": 1.0,
+        "converted": 52,
+        "gl_reduction": -230.98000000000036
+      },
+      "tree": "|--- pnl_cp <= 0.01\n|   |--- mae <= -0.89\n|   |   |--- class: 0\n|   |--- mae >  -0.89\n|   |   |--- class: 0\n|--- pnl_cp >  0.01\n|   |--- pre30_range <= 1.24\n|   |   |--- class: 0\n|   |--- pre30_range >  1.24\n|   |   |--- turns <= 239.00\n|   |   |   |--- class: 1\n|   |   |--- turns >  239.00\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 90,
+      "action": "close",
+      "depth": 3,
+      "leaf": 40,
+      "disc": {
+        "n": 70,
+        "delta": 139.69000000000693,
+        "win": 1.0,
+        "converted": 41,
+        "gl_reduction": -166.60999999999999
+      },
+      "hold": {
+        "n": 21,
+        "delta": 23.830000000004432,
+        "win": 1.0,
+        "converted": 11,
+        "gl_reduction": -64.37000000000032
+      },
+      "all": {
+        "n": 91,
+        "delta": 163.52000000001135,
+        "win": 1.0,
+        "converted": 52,
+        "gl_reduction": -230.98000000000036
+      },
+      "tree": "|--- pnl_cp <= 0.01\n|   |--- pnl_cp <= -0.37\n|   |   |--- class: 0\n|   |--- pnl_cp >  -0.37\n|   |   |--- class: 0\n|--- pnl_cp >  0.01\n|   |--- pre30_range <= 1.24\n|   |   |--- class: 0\n|   |--- pre30_range >  1.24\n|   |   |--- turns <= 239.00\n|   |   |   |--- class: 1\n|   |   |--- turns >  239.00\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 90,
+      "action": "close",
+      "depth": 3,
+      "leaf": 50,
+      "disc": {
+        "n": 70,
+        "delta": 139.69000000000693,
+        "win": 1.0,
+        "converted": 41,
+        "gl_reduction": -166.60999999999999
+      },
+      "hold": {
+        "n": 21,
+        "delta": 23.830000000004432,
+        "win": 1.0,
+        "converted": 11,
+        "gl_reduction": -64.37000000000032
+      },
+      "all": {
+        "n": 91,
+        "delta": 163.52000000001135,
+        "win": 1.0,
+        "converted": 52,
+        "gl_reduction": -230.98000000000036
+      },
+      "tree": "|--- pnl_cp <= 0.01\n|   |--- mae <= -1.25\n|   |   |--- class: 0\n|   |--- mae >  -1.25\n|   |   |--- class: 0\n|--- pnl_cp >  0.01\n|   |--- pre30_range <= 1.24\n|   |   |--- class: 0\n|   |--- pre30_range >  1.24\n|   |   |--- turns <= 239.00\n|   |   |   |--- class: 1\n|   |   |--- turns >  239.00\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 60,
+      "action": "rev90",
+      "depth": 3,
+      "leaf": 40,
+      "disc": {
+        "n": 45,
+        "delta": 86.14000000000597,
+        "win": 0.8888888888888888,
+        "converted": 19,
+        "gl_reduction": -87.13000000000036
+      },
+      "hold": {
+        "n": 34,
+        "delta": 50.67000000001609,
+        "win": 0.8235294117647058,
+        "converted": 14,
+        "gl_reduction": -79.55000000000437
+      },
+      "all": {
+        "n": 79,
+        "delta": 136.81000000002203,
+        "win": 0.8607594936708861,
+        "converted": 33,
+        "gl_reduction": -166.6800000000047
+      },
+      "tree": "|--- pnl_cp <= -0.51\n|   |--- pnl_cp <= -1.35\n|   |   |--- mfe <= -0.11\n|   |   |   |--- class: 0\n|   |   |--- mfe >  -0.11\n|   |   |   |--- class: 0\n|   |--- pnl_cp >  -1.35\n|   |   |--- pre30_range <= 1.71\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  1.71\n|   |   |   |--- class: 0\n|--- pnl_cp >  -0.51\n|   |--- pnl_cp <= 1.22\n|   |   |--- hour <= 13.50\n|   |   |   |--- class: 0\n|   |   |--- hour >  13.50\n|   |   |   |--- class: 0\n|   |--- pnl_cp >  1.22\n|   |   |--- hour <= 13.50\n|   |   |   |--- class: 1\n|   |   |--- hour >  13.50\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 30,
+      "action": "rev30",
+      "depth": 3,
+      "leaf": 20,
+      "disc": {
+        "n": 26,
+        "delta": 100.73999999999866,
+        "win": 1.0,
+        "converted": 13,
+        "gl_reduction": -92.66000000000135
+      },
+      "hold": {
+        "n": 21,
+        "delta": 30.400000000002077,
+        "win": 0.7619047619047619,
+        "converted": 8,
+        "gl_reduction": -82.78999999999796
+      },
+      "all": {
+        "n": 47,
+        "delta": 131.1400000000007,
+        "win": 0.8936170212765957,
+        "converted": 21,
+        "gl_reduction": -175.4499999999993
+      },
+      "tree": "|--- pnl_cp <= 0.07\n|   |--- shadow_balance <= 437.10\n|   |   |--- pre30_range <= 2.73\n|   |   |   |--- class: 0\n|   |   |--- pre30_range >  2.73\n|   |   |   |--- class: 0\n|   |--- shadow_balance >  437.10\n|   |   |--- pnl_cp <= -0.63\n|   |   |   |--- class: 0\n|   |   |--- pnl_cp >  -0.63\n|   |   |   |--- class: 0\n|--- pnl_cp >  0.07\n|   |--- pnl_cp <= 1.56\n|   |   |--- hour <= 3.50\n|   |   |   |--- class: 0\n|   |   |--- hour >  3.50\n|   |   |   |--- class: 0\n|   |--- pnl_cp >  1.56\n|   |   |--- mae <= -0.45\n|   |   |   |--- class: 1\n|   |   |--- mae >  -0.45\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 90,
+      "action": "rev90",
+      "depth": 3,
+      "leaf": 20,
+      "disc": {
+        "n": 28,
+        "delta": 112.67000000000596,
+        "win": 1.0,
+        "converted": 10,
+        "gl_reduction": -71.8399999999994
+      },
+      "hold": {
+        "n": 24,
+        "delta": 4.860000000008689,
+        "win": 0.9166666666666666,
+        "converted": 8,
+        "gl_reduction": -49.58000000000025
+      },
+      "all": {
+        "n": 52,
+        "delta": 117.53000000001462,
+        "win": 0.9615384615384616,
+        "converted": 18,
+        "gl_reduction": -121.41999999999969
+      },
+      "tree": "|--- pnl_cp <= 0.11\n|   |--- eff <= 0.03\n|   |   |--- path_range <= 2.81\n|   |   |   |--- class: 0\n|   |   |--- path_range >  2.81\n|   |   |   |--- class: 0\n|   |--- eff >  0.03\n|   |   |--- turns <= 157.00\n|   |   |   |--- class: 0\n|   |   |--- turns >  157.00\n|   |   |   |--- class: 0\n|--- pnl_cp >  0.11\n|   |--- pre30_range <= 1.24\n|   |   |--- shadow_balance <= 365.18\n|   |   |   |--- class: 0\n|   |   |--- shadow_balance >  365.18\n|   |   |   |--- class: 0\n|   |--- pre30_range >  1.24\n|   |   |--- pnl_cp <= 3.76\n|   |   |   |--- class: 0\n|   |   |--- pnl_cp >  3.76\n|   |   |   |--- class: 1\n"
+    },
+    {
+      "cp": 30,
+      "action": "rev300",
+      "depth": 3,
+      "leaf": 50,
+      "disc": {
+        "n": 124,
+        "delta": 94.06000000002217,
+        "win": 0.5887096774193549,
+        "converted": 55,
+        "gl_reduction": -175.81000000000458
+      },
+      "hold": {
+        "n": 38,
+        "delta": 27.669999999995575,
+        "win": 0.5789473684210527,
+        "converted": 14,
+        "gl_reduction": -56.34000000000191
+      },
+      "all": {
+        "n": 162,
+        "delta": 121.7300000000177,
+        "win": 0.5864197530864198,
+        "converted": 69,
+        "gl_reduction": -232.15000000000646
+      },
+      "tree": "|--- pnl_cp <= -0.82\n|   |--- pre30_range <= 1.79\n|   |   |--- class: 0\n|   |--- pre30_range >  1.79\n|   |   |--- class: 0\n|--- pnl_cp >  -0.82\n|   |--- eff <= 0.03\n|   |   |--- class: 0\n|   |--- eff >  0.03\n|   |   |--- eff <= 0.07\n|   |   |   |--- class: 1\n|   |   |--- eff >  0.07\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 30,
+      "action": "rev300",
+      "depth": 3,
+      "leaf": 60,
+      "disc": {
+        "n": 124,
+        "delta": 94.06000000002217,
+        "win": 0.5887096774193549,
+        "converted": 55,
+        "gl_reduction": -175.81000000000458
+      },
+      "hold": {
+        "n": 38,
+        "delta": 27.669999999995575,
+        "win": 0.5789473684210527,
+        "converted": 14,
+        "gl_reduction": -56.34000000000191
+      },
+      "all": {
+        "n": 162,
+        "delta": 121.7300000000177,
+        "win": 0.5864197530864198,
+        "converted": 69,
+        "gl_reduction": -232.15000000000646
+      },
+      "tree": "|--- pnl_cp <= -0.82\n|   |--- pre30_range <= 1.83\n|   |   |--- class: 0\n|   |--- pre30_range >  1.83\n|   |   |--- class: 0\n|--- pnl_cp >  -0.82\n|   |--- eff <= 0.03\n|   |   |--- class: 0\n|   |--- eff >  0.03\n|   |   |--- eff <= 0.07\n|   |   |   |--- class: 1\n|   |   |--- eff >  0.07\n|   |   |   |--- class: 0\n"
+    },
+    {
+      "cp": 60,
+      "action": "rev300",
+      "depth": 2,
+      "leaf": 20,
+      "disc": {
+        "n": 67,
+        "delta": 82.97000000000025,
+        "win": 0.8059701492537313,
+        "converted": 25,
+        "gl_reduction": -134.32999999999973
+      },
+      "hold": {
+        "n": 42,
+        "delta": 26.3900000000127,
+        "win": 0.7857142857142857,
+        "converted": 15,
+        "gl_reduction": -51.60000000000406
+      },
+      "all": {
+        "n": 109,
+        "delta": 109.36000000001297,
+        "win": 0.7981651376146789,
+        "converted": 40,
+        "gl_reduction": -185.93000000000376
+      },
+      "tree": "|--- mfe <= 0.07\n|   |--- eff <= 0.14\n|   |   |--- class: 0\n|   |--- eff >  0.14\n|   |   |--- class: 0\n|--- mfe >  0.07\n|   |--- pnl_cp <= 1.83\n|   |   |--- class: 0\n|   |--- pnl_cp >  1.83\n|   |   |--- class: 1\n"
+    },
+    {
+      "cp": 60,
+      "action": "rev300",
+      "depth": 2,
+      "leaf": 30,
+      "disc": {
+        "n": 67,
+        "delta": 82.97000000000025,
+        "win": 0.8059701492537313,
+        "converted": 25,
+        "gl_reduction": -134.32999999999973
+      },
+      "hold": {
+        "n": 42,
+        "delta": 26.3900000000127,
+        "win": 0.7857142857142857,
+        "converted": 15,
+        "gl_reduction": -51.60000000000406
+      },
+      "all": {
+        "n": 109,
+        "delta": 109.36000000001297,
+        "win": 0.7981651376146789,
+        "converted": 40,
+        "gl_reduction": -185.93000000000376
+      },
+      "tree": "|--- mfe <= 0.07\n|   |--- eff <= 0.14\n|   |   |--- class: 0\n|   |--- eff >  0.14\n|   |   |--- class: 0\n|--- mfe >  0.07\n|   |--- pnl_cp <= 1.83\n|   |   |--- class: 0\n|   |--- pnl_cp >  1.83\n|   |   |--- class: 1\n"
+    }
+  ],
+  "august_accessed": false,
+  "elapsed_s": 7.384032964706421
+}

@@ -1,0 +1,182 @@
+{
+  "id": "SA100_R10AA_RESIDUAL_CONT180_SCREEN01",
+  "status": "COMPLETE_FAST_CAUSAL_RULE_SCREEN",
+  "target_episodes": 1144,
+  "target_net": 2009.649999999995,
+  "target_gl": -4971.890000000005,
+  "target_win": 0.5236013986013986,
+  "soft_success_target": 0.5,
+  "qualifying_rules": 6,
+  "top": [
+    {
+      "cp": 30,
+      "action": "close",
+      "depth": 2,
+      "leaf": 15,
+      "disc": {
+        "n": 16,
+        "delta": 6.080000000000837,
+        "win": 1.0,
+        "converted": 10,
+        "gl_reduction": -25.03999999999923
+      },
+      "hold": {
+        "n": 68,
+        "delta": 147.93000000001413,
+        "win": 0.9411764705882353,
+        "converted": 36,
+        "gl_reduction": -270.5000000000018
+      },
+      "all": {
+        "n": 84,
+        "delta": 154.0100000000149,
+        "win": 0.9523809523809523,
+        "converted": 46,
+        "gl_reduction": -295.5400000000011
+      },
+      "tree": "|--- pnl_cp <= 0.06\n|   |--- class: 0\n|--- pnl_cp >  0.06\n|   |--- mfe <= 2.07\n|   |   |--- class: 1\n|   |--- mfe >  2.07\n|   |   |--- class: 0\n"
+    },
+    {
+      "cp": 30,
+      "action": "close",
+      "depth": 3,
+      "leaf": 15,
+      "disc": {
+        "n": 16,
+        "delta": 6.080000000000837,
+        "win": 1.0,
+        "converted": 10,
+        "gl_reduction": -25.03999999999923
+      },
+      "hold": {
+        "n": 68,
+        "delta": 147.93000000001413,
+        "win": 0.9411764705882353,
+        "converted": 36,
+        "gl_reduction": -270.5000000000018
+      },
+      "all": {
+        "n": 84,
+        "delta": 154.0100000000149,
+        "win": 0.9523809523809523,
+        "converted": 46,
+        "gl_reduction": -295.5400000000011
+      },
+      "tree": "|--- pnl_cp <= 0.06\n|   |--- class: 0\n|--- pnl_cp >  0.06\n|   |--- mfe <= 2.07\n|   |   |--- class: 1\n|   |--- mfe >  2.07\n|   |   |--- class: 0\n"
+    },
+    {
+      "cp": 20,
+      "action": "close",
+      "depth": 2,
+      "leaf": 15,
+      "disc": {
+        "n": 21,
+        "delta": 10.239999999998474,
+        "win": 1.0,
+        "converted": 12,
+        "gl_reduction": -32.759999999998215
+      },
+      "hold": {
+        "n": 73,
+        "delta": 37.180000000010054,
+        "win": 0.9726027397260274,
+        "converted": 36,
+        "gl_reduction": -262.26000000000323
+      },
+      "all": {
+        "n": 94,
+        "delta": 47.42000000000854,
+        "win": 0.9787234042553191,
+        "converted": 48,
+        "gl_reduction": -295.0200000000014
+      },
+      "tree": "|--- pnl_cp <= -0.01\n|   |--- class: 0\n|--- pnl_cp >  -0.01\n|   |--- mfe <= 1.69\n|   |   |--- class: 1\n|   |--- mfe >  1.69\n|   |   |--- class: 0\n"
+    },
+    {
+      "cp": 20,
+      "action": "close",
+      "depth": 2,
+      "leaf": 20,
+      "disc": {
+        "n": 21,
+        "delta": 10.239999999998474,
+        "win": 1.0,
+        "converted": 12,
+        "gl_reduction": -32.759999999998215
+      },
+      "hold": {
+        "n": 73,
+        "delta": 37.180000000010054,
+        "win": 0.9726027397260274,
+        "converted": 36,
+        "gl_reduction": -262.26000000000323
+      },
+      "all": {
+        "n": 94,
+        "delta": 47.42000000000854,
+        "win": 0.9787234042553191,
+        "converted": 48,
+        "gl_reduction": -295.0200000000014
+      },
+      "tree": "|--- pnl_cp <= -0.01\n|   |--- class: 0\n|--- pnl_cp >  -0.01\n|   |--- mfe <= 1.69\n|   |   |--- class: 1\n|   |--- mfe >  1.69\n|   |   |--- class: 0\n"
+    },
+    {
+      "cp": 20,
+      "action": "close",
+      "depth": 3,
+      "leaf": 15,
+      "disc": {
+        "n": 21,
+        "delta": 10.239999999998474,
+        "win": 1.0,
+        "converted": 12,
+        "gl_reduction": -32.759999999998215
+      },
+      "hold": {
+        "n": 73,
+        "delta": 37.180000000010054,
+        "win": 0.9726027397260274,
+        "converted": 36,
+        "gl_reduction": -262.26000000000323
+      },
+      "all": {
+        "n": 94,
+        "delta": 47.42000000000854,
+        "win": 0.9787234042553191,
+        "converted": 48,
+        "gl_reduction": -295.0200000000014
+      },
+      "tree": "|--- pnl_cp <= -0.01\n|   |--- class: 0\n|--- pnl_cp >  -0.01\n|   |--- mfe <= 1.69\n|   |   |--- class: 1\n|   |--- mfe >  1.69\n|   |   |--- class: 0\n"
+    },
+    {
+      "cp": 20,
+      "action": "close",
+      "depth": 3,
+      "leaf": 20,
+      "disc": {
+        "n": 21,
+        "delta": 10.239999999998474,
+        "win": 1.0,
+        "converted": 12,
+        "gl_reduction": -32.759999999998215
+      },
+      "hold": {
+        "n": 73,
+        "delta": 37.180000000010054,
+        "win": 0.9726027397260274,
+        "converted": 36,
+        "gl_reduction": -262.26000000000323
+      },
+      "all": {
+        "n": 94,
+        "delta": 47.42000000000854,
+        "win": 0.9787234042553191,
+        "converted": 48,
+        "gl_reduction": -295.0200000000014
+      },
+      "tree": "|--- pnl_cp <= -0.01\n|   |--- class: 0\n|--- pnl_cp >  -0.01\n|   |--- mfe <= 1.69\n|   |   |--- class: 1\n|   |--- mfe >  1.69\n|   |   |--- class: 0\n"
+    }
+  ],
+  "august_accessed": false,
+  "elapsed_s": 8.219866275787354
+}

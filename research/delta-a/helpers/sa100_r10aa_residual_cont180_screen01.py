@@ -30,6 +30,7 @@ def main():
    if k<oi: continue
    ix=np.arange(oi,k+1); pal=((bid[ix]-pent) if pside==1 else (pent-ask[ix]))-COST
    disp=float(pal[-1]);mfe=float(pal.max());mae=float(pal.min());rng=float(pal.max()-pal.min());travel=float(np.abs(np.diff(pal)).sum());eff=abs(disp)/(travel+1e-12);sg=np.sign(np.diff(pal));sg=sg[sg!=0];turns=int(np.sum(sg[1:]!=sg[:-1])) if len(sg)>1 else 0
+   # Close current active basket/cancel future at checkpoint.
    close=0.
    for z in g.itertuples(index=False):
     zos=int(z.open_ms);zcs=int(z.close_ms);zsd=int(z.side)
@@ -42,16 +43,21 @@ def main():
     r[f'rev{rh}_pnl']=alt;r[f'rev{rh}_delta']=alt-base
    rows.append(r)
  C=pd.DataFrame(rows);C.to_csv(CSV,index=False)
+ # Transparent small-tree search. One action/checkpoint at a time, discovery-trained only.
  feat=['pnl_cp','mfe','mae','path_range','eff','turns','pre30_range','source_gap','shadow_balance','hour']
  candidates=[]
  for cp in cps:
-  S=C[C.checkpoint_s==cp].copy();disc=S.discovery.to_numpy(bool);hold=~disc;X=S[feat].to_numpy(float)
+  S=C[C.checkpoint_s==cp].copy();disc=S.discovery.to_numpy(bool);hold=~disc
+  X=S[feat].to_numpy(float)
   for act in ['close']+[f'rev{x}' for x in rhs]:
-   alt=S[f'{act}_pnl'].to_numpy(float);base=S.base_pnl.to_numpy(float);delta=alt-base;y=((delta>0)&(alt>0)).astype(int)
+   alt=S[f'{act}_pnl'].to_numpy(float);base=S.base_pnl.to_numpy(float);delta=alt-base
+   # label cases where intervention is economically better AND positive final pnl
+   y=((delta>0)&(alt>0)).astype(int)
    for depth in [1,2,3]:
     for leaf in [10,15,20,25]:
      if disc.sum()<2*leaf or y[disc].sum()<3: continue
-     clf=DecisionTreeClassifier(max_depth=depth,min_samples_leaf=leaf,random_state=0).fit(X[disc],y[disc]);pred=clf.predict(X).astype(bool)
+     clf=DecisionTreeClassifier(max_depth=depth,min_samples_leaf=leaf,random_state=0,class_weight=None).fit(X[disc],y[disc])
+     pred=clf.predict(X).astype(bool)
      if pred[disc].sum()<10 or pred[hold].sum()<30: continue
      def met(m):
       n=int(m.sum());a=alt[m];b=base[m];d=delta[m]

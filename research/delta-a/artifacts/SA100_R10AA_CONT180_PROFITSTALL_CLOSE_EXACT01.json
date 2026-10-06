@@ -1,0 +1,67 @@
+{
+  "id": "SA100_R10AA_CONT180_PROFITSTALL_CLOSE_EXACT01",
+  "status": "COMPLETE_EXACT_MINOR_BREAKTHROUGH",
+  "rule": "residual HOLD/CONT/180s at +30s: if current primary pnl > +$0.06 and MFE <= +$2.07, close current basket/cancel future legs; shadow slot remains frozen to original episode end",
+  "target_episodes": 1144,
+  "selected_episodes": 84,
+  "specialist_changed_win": 0.9523809523809523,
+  "converted_losses": 46,
+  "discovery_selected": {
+    "n": 16,
+    "win": 1.0,
+    "delta": 6.080000000000837,
+    "converted": 10
+  },
+  "holdout_selected": {
+    "n": 68,
+    "win": 0.9411764705882353,
+    "delta": 147.93000000001413,
+    "converted": 36
+  },
+  "physical_legs": {
+    "n": 4486,
+    "net": 4231.604499999988,
+    "gp": 16056.986000000017,
+    "gl": -11825.38150000003,
+    "pf": 1.3578408442890384,
+    "win": 0.5439144003566652
+  },
+  "episodes": {
+    "n": 3841,
+    "net": 4231.604499999988,
+    "gp": 13837.705500000024,
+    "gl": -9606.101000000035,
+    "pf": 1.440512180748461,
+    "win": 0.47982296277011194
+  },
+  "discovery": {
+    "n": 1301,
+    "net": 786.9739999999886,
+    "gp": 2653.7095000000013,
+    "gl": -1866.735500000013,
+    "pf": 1.4215776686091752,
+    "win": 0.44504227517294387
+  },
+  "holdout": {
+    "n": 2540,
+    "net": 3444.6304999999993,
+    "gp": 11183.996000000021,
+    "gl": -7739.365500000023,
+    "pf": 1.4450791864010026,
+    "win": 0.49763779527559054
+  },
+  "delta_net_usd": 154.01000000001477,
+  "episode_gl_reduction_usd": -295.5400000000009,
+  "realized_balance_dd_usd": 239.45700000000124,
+  "realized_min_balance_usd": 88.72000000000142,
+  "tick_min_equity_usd": 80.35000000000153,
+  "tick_max_equity_dd_usd": 203.9784999999872,
+  "min_free_margin_usd": 67.61994000000124,
+  "min_margin_level_pct": 488.1728306331966,
+  "max_positions": 8,
+  "executed_episode_win": 0.5854510800508259,
+  "disc_exec_win": 0.5698818897637795,
+  "hold_exec_win": 0.5928705440900562,
+  "august_accessed": false,
+  "elapsed_s": 6.659887313842773
+}

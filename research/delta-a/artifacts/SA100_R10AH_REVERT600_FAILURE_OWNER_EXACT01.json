@@ -1,0 +1,50 @@
+{
+  "id": "SA100_R10AH_REVERT600_FAILURE_OWNER_EXACT01",
+  "status": "COMPLETE_EXACT_STACK_TEST",
+  "rule": "residual HOLD/REVERT/600 at +30s: if observed tick intensity >4.2 ticks/s, close current basket/cancel future legs and reverse one 0.01 for 180s; shadow slot frozen",
+  "target_episodes": 64,
+  "selected": 55,
+  "specialist_win": 0.6363636363636364,
+  "converted": 25,
+  "disc": {
+    "n": 33,
+    "win": 0.6363636363636364,
+    "delta": 78.77000000000201,
+    "converted": 15
+  },
+  "hold": {
+    "n": 22,
+    "win": 0.6363636363636364,
+    "delta": 45.420000000002474,
+    "converted": 10
+  },
+  "physical": {
+    "n": 4876,
+    "net": 4824.6145000000615,
+    "gp": 15208.246000000063,
+    "gl": -10383.631500000001,
+    "pf": 1.464636529137235,
+    "win": 0.5596800656275636
+  },
+  "episodes": {
+    "n": 3841,
+    "net": 4824.6145000000615,
+    "gp": 12949.825500000068,
+    "gl": -8125.211000000005,
+    "pf": 1.5937832875970925,
+    "win": 0.501171569903671
+  },
+  "delta_net": 124.19000000000415,
+  "physical_gl_improvement": 99.26000000000204,
+  "episode_gl_improvement": 119.37000000000444,
+  "balance_dd": 239.4570000000167,
+  "min_balance": 100.0,
+  "tick_min_equity": 99.51000000000066,
+  "tick_dd": 203.28000000000338,
+  "min_free_margin": 90.71725000000066,
+  "min_margin_level": 624.8618369153692,
+  "max_positions": 8,
+  "executed_episode_win": 0.6114993646759848,
+  "august_accessed": false,
+  "elapsed_s": 6.327698469161987
+}

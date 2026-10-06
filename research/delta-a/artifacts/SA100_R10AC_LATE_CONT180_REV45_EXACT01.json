@@ -1,0 +1,69 @@
+{
+  "id": "SA100_R10AC_LATE_CONT180_REV45_EXACT01",
+  "status": "COMPLETE_EXACT_STACK_TEST",
+  "rule": "residual HOLD/CONT/180s at +120s: if primary pnl > -$2.50 and (turns<=151 OR turns>374 with MAE>-$1.77), close current basket/cancel future legs and reverse one 0.01 for 45s; shadow slot frozen to original end",
+  "target_episodes": 1060,
+  "selected_episodes": 195,
+  "specialist_changed_win": 0.9076923076923077,
+  "converted_losses": 26,
+  "discovery_selected": {
+    "n": 18,
+    "win": 0.8888888888888888,
+    "delta": 42.070000000006374,
+    "converted": 7,
+    "gl_reduction": -13.800000000002221
+  },
+  "holdout_selected": {
+    "n": 177,
+    "win": 0.9096045197740112,
+    "delta": 70.7100000000233,
+    "converted": 19,
+    "gl_reduction": -12.099999999999426
+  },
+  "physical_legs": {
+    "n": 4786,
+    "net": 4583.194500000031,
+    "gp": 16541.496000000046,
+    "gl": -11958.301500000016,
+    "pf": 1.3832646718265151,
+    "win": 0.5566234851650648
+  },
+  "episodes": {
+    "n": 3841,
+    "net": 4583.194500000031,
+    "gp": 13857.305500000062,
+    "gl": -9274.11100000003,
+    "pf": 1.4941923274371007,
+    "win": 0.4941421504816454
+  },
+  "discovery": {
+    "n": 1301,
+    "net": 929.2039999999994,
+    "gp": 2612.9995000000063,
+    "gl": -1683.7955000000077,
+    "pf": 1.5518508631244081,
+    "win": 0.4734819369715603
+  },
+  "holdout": {
+    "n": 2540,
+    "net": 3653.9905000000317,
+    "gp": 11244.306000000055,
+    "gl": -7590.315500000023,
+    "pf": 1.481401662421018,
+    "win": 0.5047244094488189
+  },
+  "delta_net_usd": 112.78000000002976,
+  "episode_gl_reduction_usd": -25.900000000001455,
+  "realized_balance_dd_usd": 267.1270000000145,
+  "realized_min_balance_usd": 93.22000000000024,
+  "tick_min_equity_usd": 87.1700000000005,
+  "tick_max_equity_dd_usd": 203.5770000000125,
+  "min_free_margin_usd": 74.89994000000141,
+  "min_margin_level_pct": 529.963731468212,
+  "max_positions": 8,
+  "executed_episode_win": 0.6029224904701398,
+  "disc_exec_win": 0.6062992125984252,
+  "hold_exec_win": 0.6013133208255159,
+  "august_accessed": false,
+  "elapsed_s": 6.592748403549194
+}

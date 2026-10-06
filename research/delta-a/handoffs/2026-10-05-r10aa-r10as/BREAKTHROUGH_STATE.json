@@ -1,0 +1,121 @@
+{
+  "schema": "delta-a-r10aa-r10as-breakthrough-handoff-v1",
+  "date": "2026-10-05",
+  "branch": "delta-A",
+  "snapshot_branch": "delta-A-r10aa-r10as-breakthrough-handoff-20261005",
+  "status": "HANDOFF_READY_EXPERIMENTAL_NOT_MT5_AUTHORIZED",
+  "august_accessed": false,
+  "production_mql5_authorized": false,
+  "start_balance_usd": 100,
+  "fixed_lot": 0.01,
+  "minimum_real_handoff_balance_usd": 1000,
+  "objective": "Preserve small-account survival while converging toward or beating R9 SYNTH January on trade count, net profit, gross loss and true max drawdown.",
+  "promoted_supermodel_core": {
+    "stack": ["R10AA", "R10AB", "R10AG_SEQ45_60", "R10AH"],
+    "net_usd": 4824.6145000000615,
+    "physical_gross_loss_usd": -10383.631500000001,
+    "episode_gross_loss_usd": -8125.211000000005,
+    "tick_min_equity_usd": 99.51000000000066,
+    "tick_max_equity_dd_usd": 203.28000000000338,
+    "executed_episode_success": 0.6114993646759848,
+    "max_positions": 8,
+    "reason": "Best combined net/gross-loss/survivability parent among completed exact stack tests; complementary residual failure ownership specialists."
+  },
+  "stack_progression": [
+    {"stack":"R10AB","net_usd":4470.4145,"physical_gl_usd":-11566.1815,"episode_gl_usd":-9300.011,"tick_min_equity_usd":87.17,"tick_dd_usd":203.28,"executed_success":0.6003811944},
+    {"stack":"R10AB+R10AG_SEQ45_60","net_usd":4700.4245,"physical_gl_usd":-10482.8915,"episode_gl_usd":-8244.581,"tick_min_equity_usd":99.51,"tick_dd_usd":203.28},
+    {"stack":"R10AB+R10AG_SEQ45_60+R10AH","net_usd":4824.6145,"physical_gl_usd":-10383.6315,"episode_gl_usd":-8125.211,"tick_min_equity_usd":99.51,"tick_dd_usd":203.28,"executed_success":0.6114993647},
+    {"stack":"R10AB+R10AG_SEQ45_60+R10AH+R10AI_UNGATED","net_usd":4969.7345,"physical_gl_usd":-10321.7415,"episode_gl_usd":-7975.161,"tick_min_equity_usd":81.37,"tick_dd_usd":203.28,"executed_success":0.6146759848}
+  ],
+  "breakthroughs": {
+    "R10AA": {
+      "status": "COMPLETE_EXACT_MINOR_BREAKTHROUGH",
+      "rule": "Residual HOLD/CONT/180s at +30s: if primary PnL > +$0.06 and MFE <= +$2.07, close current basket/cancel future legs; shadow slot remains frozen to original episode end.",
+      "selected": 84,
+      "specialist_success": 0.9523809524,
+      "net_usd": 4231.6045,
+      "physical_gl_usd": -11825.3815,
+      "tick_min_equity_usd": 80.35
+    },
+    "R10AB": {
+      "status": "COMPLETE_EXACT_BREAKTHROUGH",
+      "rule": "Residual HOLD/REVERT/900s at +90s: if primary PnL > +$0.24, path efficiency > 0.03, MAE <= -$0.48, close basket/cancel future legs and reverse one 0.01 for 30s; shadow slot frozen.",
+      "selected": 148,
+      "specialist_success": 0.9256756757,
+      "net_usd": 4470.4145,
+      "physical_gl_usd": -11566.1815,
+      "episode_gl_usd": -9300.011,
+      "tick_min_equity_usd": 87.17,
+      "executed_success": 0.6003811944
+    },
+    "R10AG_SEQ45_60": {
+      "status": "COMPLETE_EXACT_SEQUENTIAL_BREAKTHROUGH",
+      "description": "Sequential REVERT/900 failure-owner supermodel using two causal decision stages rather than a single rule.",
+      "selected": 372,
+      "specialist_success": 0.5672043011,
+      "converted_losses": 118,
+      "net_usd": 4700.4245,
+      "physical_gl_usd": -10482.8915,
+      "episode_gl_usd": -8244.581,
+      "tick_min_equity_usd": 99.51
+    },
+    "R10AH": {
+      "status": "COMPLETE_EXACT_STACK_BREAKTHROUGH",
+      "rule": "Residual HOLD/REVERT/600 at +30s: if observed tick intensity > 4.2 ticks/s, close basket/cancel future legs and reverse one 0.01 for 180s; shadow slot frozen.",
+      "selected": 55,
+      "specialist_success": 0.6363636364,
+      "net_usd": 4824.6145,
+      "physical_gl_usd": -10383.6315,
+      "episode_gl_usd": -8125.211,
+      "tick_min_equity_usd": 99.51,
+      "executed_success": 0.6114993647
+    },
+    "R10AI": {
+      "status": "COMPLETE_EXACT_STACK_TEST__CAPITAL_GATE_REQUIRED",
+      "rules": {"CONT1200":"+60s turns>200 -> close basket + opposite 0.01 for 180s","REVERT1200":"+450s MAE > -$3.655 -> close basket + opposite 0.01 for 180s"},
+      "selected": 83,
+      "specialist_success": 0.6506024096,
+      "net_usd": 4969.7345,
+      "physical_gl_usd": -10321.7415,
+      "episode_gl_usd": -7975.161,
+      "tick_min_equity_usd": 81.37,
+      "executed_success": 0.6146759848,
+      "decision": "Do not enable unconditionally from $100. Test physical activation at $150/$175/$200/$250/$300 while keeping virtual state warm."
+    },
+    "R10AP": {
+      "status": "COMPLETE_VELOCITY_SPECIALIST_CANDIDATE",
+      "selected_opportunities": 1043,
+      "success": 0.6088207095,
+      "net_usd": 445.019,
+      "gross_loss_usd": -458.314,
+      "decision": "Capital-gated velocity desk candidate after core loss/DD stabilization; do not attach physically at $100 yet."
+    },
+    "R10AR": {
+      "status": "COMPLETE_SECOND_WAVE_VELOCITY_SPECIALIST_CANDIDATE",
+      "selected_opportunities": 1704,
+      "success": 0.5762910798,
+      "net_usd": 360.1315,
+      "gross_loss_usd": -699.423,
+      "decision": "Second capital-gated velocity desk; subordinate to AP until core is stable."
+    }
+  },
+  "important_nonpromotions": {
+    "R10AC": "Higher net than R10AB but worsens physical gross loss and DD; do not stack for current objective.",
+    "R10AF": "Useful predecessor/alternative REVERT900 refinement, but R10AG is cleaner for the current supermodel.",
+    "additional_pulse_depth": "Do not add rescue depth simply to increase complexity; later rescue-depth research previously hit diminishing returns."
+  },
+  "immediate_next_units": [
+    "R10AI capital gate sweep: $150/$175/$200/$250/$300; preserve AG+AH near-$100 equity floor while recovering most AI economics.",
+    "Exact DD forensic on the ~+$203 tick-DD episode in AG+AH; build a specialist only against that causal path, not a global tightening rule.",
+    "After loss/DD stabilization, exact capital-gated integration of R10AP; then R10AR only if incremental net/velocity survives the same safety gates."
+  ],
+  "human_soft_target": "Prefer new specialists with >50% causal success where economically meaningful, but promotion is based on net + gross loss + DD + velocity + survival jointly, not hit rate alone.",
+  "archive": {
+    "file_count": 81,
+    "zip_sha256": "181667cda8e63d8f86cffdc17809761838317c218bb8c3d111aec7eebec153f1",
+    "drive_folder_id": "1_j8CaAwOvcD5S6OQkRf5bn-oXTgnayBB",
+    "drive_zip_id": "1esLKLdsc3VempopiUz1hBqkgxbfyAgCw",
+    "drive_readme_id": "1God58y8HGbeHEjom_0S1EripXw5yn95b",
+    "drive_manifest_csv_id": "1dexMGtGg_KFEF1kxTeKa6wbjGE__iyUc"
+  }
+}

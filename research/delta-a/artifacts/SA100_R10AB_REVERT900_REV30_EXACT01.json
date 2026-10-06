@@ -1,0 +1,67 @@
+{
+  "id": "SA100_R10AB_REVERT900_REV30_EXACT01",
+  "status": "COMPLETE_EXACT_BREAKTHROUGH",
+  "rule": "residual HOLD/REVERT/900s at +90s: if primary pnl > +$0.24, path efficiency > 0.03, MAE <= -$0.48, close current basket/cancel future legs and reverse one 0.01 for 30s; shadow slot frozen to original end",
+  "target_episodes": 711,
+  "selected_episodes": 148,
+  "specialist_changed_win": 0.9256756756756757,
+  "converted_losses": 56,
+  "discovery_selected": {
+    "n": 98,
+    "win": 0.9183673469387755,
+    "delta": 100.16000000000443,
+    "converted": 38
+  },
+  "holdout_selected": {
+    "n": 50,
+    "win": 0.94,
+    "delta": 138.6500000000095,
+    "converted": 18
+  },
+  "physical_legs": {
+    "n": 4601,
+    "net": 4470.414500000002,
+    "gp": 16036.596000000027,
+    "gl": -11566.181500000024,
+    "pf": 1.3865073792936755,
+    "win": 0.5564007824386002
+  },
+  "episodes": {
+    "n": 3841,
+    "net": 4470.414500000002,
+    "gp": 13770.425500000034,
+    "gl": -9300.011000000031,
+    "pf": 1.4806891626257204,
+    "win": 0.492059359541786
+  },
+  "discovery": {
+    "n": 1301,
+    "net": 887.133999999993,
+    "gp": 2584.7295000000026,
+    "gl": -1697.59550000001,
+    "pf": 1.5225826764974268,
+    "win": 0.46963873943120676
+  },
+  "holdout": {
+    "n": 2540,
+    "net": 3583.280500000009,
+    "gp": 11185.696000000033,
+    "gl": -7602.415500000023,
+    "pf": 1.4713344725765118,
+    "win": 0.5035433070866142
+  },
+  "delta_net_usd": 238.81000000001404,
+  "episode_gl_reduction_usd": -306.0900000000038,
+  "realized_balance_dd_usd": 239.45700000000625,
+  "realized_min_balance_usd": 93.22000000000024,
+  "tick_min_equity_usd": 87.1700000000005,
+  "tick_max_equity_dd_usd": 203.28000000000338,
+  "min_free_margin_usd": 74.89994000000141,
+  "min_margin_level_pct": 529.963731468212,
+  "max_positions": 8,
+  "executed_episode_win": 0.6003811944091486,
+  "disc_exec_win": 0.6013779527559056,
+  "hold_exec_win": 0.599906191369606,
+  "august_accessed": false,
+  "elapsed_s": 6.611921787261963
+}
