@@ -1,0 +1,141 @@
+{
+  "schema": "delta-a-alpha-grid001-january-vol-expansion-route-v1",
+  "unit": "DAA_GRID_001_JANUARY_VOL_EXPANSION_ROUTE_001",
+  "status": "COMPLETE_JANUARY_CANDIDATE_ROUTE",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "ticks": 9135062,
+  "contract": {
+    "lattice": "A05",
+    "expansion_ratio": "completed M1 ATR14 / ATR240",
+    "thresholds": [
+      1.75,
+      2
+    ],
+    "confirm_gaps": 1,
+    "confirm_max_ms": 3000,
+    "target_gaps": 1.5,
+    "stop": "original event midpoint",
+    "original_event_horizon_ms": 300000,
+    "horizon_reset": false,
+    "single_owner": true,
+    "lot": 0.01,
+    "commission_roundtrip": 0.02,
+    "martingale": false
+  },
+  "virtual_events_total": 39397,
+  "variants": {
+    "1.75": {
+      "eligible_expansion_events": 3377,
+      "proven_candidates_before_single_owner": 345,
+      "suppressed_while_owned": 130,
+      "trades": 215,
+      "trades_per_active_day": 14.333333,
+      "full": {
+        "net": 135.59,
+        "gross_profit": 792.66,
+        "gross_loss": -657.07,
+        "pf": 1.206355,
+        "expected": 0.630651,
+        "win_pct": 48.837209
+      },
+      "discovery": {
+        "n": 33,
+        "net": 7.27,
+        "pf": 1.168054,
+        "expected": 0.220303
+      },
+      "validation": {
+        "n": 182,
+        "net": 128.32,
+        "pf": 1.209055,
+        "expected": 0.705055
+      },
+      "max_balance_drawdown": 54.93,
+      "max_equity_drawdown": 58.37,
+      "min_equity_delta": -29.48,
+      "small_account": {
+        "100": {
+          "min_equity": 70.52,
+          "positive_equity": true
+        },
+        "200": {
+          "min_equity": 170.52,
+          "positive_equity": true
+        },
+        "300": {
+          "min_equity": 270.52,
+          "positive_equity": true
+        }
+      },
+      "exit_reasons": {
+        "target": 105,
+        "origin_stop": 110,
+        "timeout": 0
+      },
+      "median_gap_usd": 5,
+      "median_expansion_ratio": 2.77333
+    },
+    "2.0": {
+      "eligible_expansion_events": 1987,
+      "proven_candidates_before_single_owner": 269,
+      "suppressed_while_owned": 114,
+      "trades": 155,
+      "trades_per_active_day": 19.375,
+      "full": {
+        "net": 146.11,
+        "gross_profit": 626.82,
+        "gross_loss": -480.71,
+        "pf": 1.303946,
+        "expected": 0.942645,
+        "win_pct": 52.258065
+      },
+      "discovery": {
+        "n": 16,
+        "net": 16.07,
+        "pf": 1.867242,
+        "expected": 1.004375
+      },
+      "validation": {
+        "n": 139,
+        "net": 130.04,
+        "pf": 1.281362,
+        "expected": 0.93554
+      },
+      "max_balance_drawdown": 37.27,
+      "max_equity_drawdown": 40.13,
+      "min_equity_delta": -17.65,
+      "small_account": {
+        "100": {
+          "min_equity": 82.35,
+          "positive_equity": true
+        },
+        "200": {
+          "min_equity": 182.35,
+          "positive_equity": true
+        },
+        "300": {
+          "min_equity": 282.35,
+          "positive_equity": true
+        }
+      },
+      "exit_reasons": {
+        "target": 81,
+        "origin_stop": 74,
+        "timeout": 0
+      },
+      "median_gap_usd": 5,
+      "median_expansion_ratio": 4.229002
+    }
+  },
+  "scientific_decision": [
+    "PROMOTE as a January candidate route, not a completed system",
+    "KEEP volatility-expansion state, fast continuation proof, origin-defined stop, and single-owner execution as a mechanism family",
+    "DO NOT claim robust discovery confirmation because discovery samples are small",
+    "The route is too sparse to bridge the R9 gap alone; it should become a high-confidence channel inside the system-wide grid",
+    "NEXT find a complementary higher-throughput route while preserving this candidate for later Jan-Jul validation"
+  ],
+  "promotion_eligible_for_jan_jul_candidate_pool": true,
+  "system_role": "HIGH_CONFIDENCE_EXPANSION_CONTINUATION_ROUTE",
+  "august": "SEALED"
+}
