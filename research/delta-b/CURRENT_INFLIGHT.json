@@ -2,19 +2,19 @@
   "schema": "delta-b-timeout-recovery-inflight-v1",
   "status": "READY",
   "branch": "delta-b",
-  "unit": "DB001A_LOCATE_OR_BUILD_HASHED_MEDIUM_HIGH_EVENT_CACHE_AND_BROADER_SESSION_TRACE",
+  "unit": "DB001C_MINIMAL_EXECUTABLE_SCALP_LIFECYCLE",
   "family": "GRID_LAYER_1",
-  "parent_durable_unit": "DB001A_CANONICAL_100K_SMOKE_AND_RECLAIM_CORRECTION",
-  "phase": "CANONICAL_SMOKE_COMPLETE",
-  "phase_rank": 4,
+  "parent_durable_unit": "DB001B_SCHEDULED_EVENT_ELASTICITY",
+  "phase": "PREREGISTRATION_REQUIRED",
+  "phase_rank": 5,
   "progress": {
-    "last_completed": "DB001A_CANONICAL_100K_SMOKE_AND_RECLAIM_CORRECTION",
+    "last_completed": "DB001B_SCHEDULED_EVENT_ELASTICITY",
     "current_candidate": null,
-    "next": "LOCATE_OR_BUILD_HASHED_MEDIUM_HIGH_EVENT_CACHE_AND_RUN_BROADER_SESSION_TRACE"
+    "next": "PREREGISTER_MINIMAL_GRID_ONLY_EXECUTABLE_SCALP_LIFECYCLE"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read root CURRENT_STATE, this file, DB001 bootstrap manifest and 100K smoke report. Locate an existing historical medium/high event source before creating a new cache; then run broader session/event traces without opening August.",
+    "resume_first_action": "Read root CURRENT_STATE, DB001B manifest/report and DB001 plan. Preregister DB001C before attaching executable trading economics. Keep Volume Profile/RSI absent.",
     "idempotency_rule": "Do not rerun bootstrap QA or 100K smoke unless kernel/QA/source bytes change.",
     "parent_delta_rule": "Never advance or modify parent delta from delta-b."
   },
@@ -27,16 +27,15 @@
     "session_context_required": true
   },
   "qa": {
-    "tests": "9/9 PASS",
-    "kernel_git_blob_sha1": "479a60a01b996ab0e2850bb3871d325a857e021c",
-    "qa_git_blob_sha1": "abb04218ef0c8e51ed0865fc310dd93c4917cd37",
-    "exact_committed_byte_execution": true,
-    "canonical_100k_smoke": "COMPLETED_RECLAIM_SEMANTICS_CORRECTED",
-    "canonical_january_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    "tests": "13/13 PASS",
+    "github_actions_run_id": 37455926127,
+    "kernel_git_blob_sha1": "f8c200648de0a94571bd24952cfa5249878fd96b",
+    "qa_git_blob_sha1": "c24aef599c95a19227d85fb14a6c4affb0601a6a",
+    "exact_committed_byte_execution": true
   },
   "producer": "research/delta-b/helpers/delta_b_grid_kernel.py",
   "qa_file": "research/delta-b/qa/test_delta_b_grid_kernel.py",
-  "result": "research/delta-b/research/DELTA_B_DB001A_100K_REAL_TICK_SMOKE_REPORT.md",
-  "report": "research/delta-b/research/DELTA_B_DB001A_100K_REAL_TICK_SMOKE_REPORT.md",
-  "manifest": "research/delta-b/artifacts/DELTA_B_DB001_BOOTSTRAP_MANIFEST.json"
+  "result": null,
+  "report": null,
+  "manifest": "research/delta-b/artifacts/DELTA_B_DB001B_SCHEDULED_EVENT_ELASTICITY_MANIFEST.json"
 }
