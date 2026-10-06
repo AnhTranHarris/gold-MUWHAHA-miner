@@ -1,17 +1,31 @@
 {
   "schema": "delta-a-alpha-inflight-v2",
-  "state": "IDLE_READY",
-  "last_completed": "DAA_GRID_001_BOUNDED_STAGE_A_SCREEN_01",
-  "current_unit": null,
-  "next_unit": "DAA_GRID_001_EVENT_CLOCK_SINGLE_TRADE_STAGE_A_SCREEN_01",
-  "completed_outputs": [
-    "research/delta_a_alpha/grid/GRID_001_S_STAGE_A_SCREEN_01_PREREG.md",
-    "research/delta_a_alpha/experiments/grid001_bounded_screen01.py",
-    "research/delta_a_alpha/artifacts/GRID_001_S_STAGE_A_SCREEN_01_RESULT.json",
-    "research/delta_a_alpha/grid/GRID_001_S_STAGE_A_SCREEN_01_REPORT.md"
+  "state": "RUNNING",
+  "last_completed": "DAA_JANUARY_HYPERFAST_DISCOVERY_LATTICE_CHARTER_001",
+  "current_unit": "DAA_GRID_001_GROSS_LOSS_DRAWDOWN_MECHANISM_HUNT_001",
+  "next_unit": null,
+  "scope": {
+    "target_system": "R9_DELTA_A_ALPHA_GRID_SYSTEM",
+    "research_window": "JANUARY_DISCOVERY_BATTLEGROUND",
+    "priorities": [
+      "GROSS_LOSS",
+      "DRAWDOWN"
+    ],
+    "research_only": true,
+    "coding": false,
+    "martingale": false,
+    "fixed_lot": 0.01
+  },
+  "source_pool": [
+    "PUBLIC_GITHUB",
+    "METAQUOTES_MQL5",
+    "REDDIT",
+    "FOREXFACTORY",
+    "TRADINGVIEW_OPEN_SOURCE",
+    "ACADEMIC_QUANT_WHEN_USEFUL"
   ],
-  "decision": "RETIRE_PHYSICAL_GRID_INVENTORY_ADVANCE_EVENT_CLOCK_ONLY",
-  "next_hypothesis": "Use grid crossings as high-density event candidates with single-trade bounded ownership; classify mean-reversion vs continuation vs no-trade causally.",
-  "failure_recovery": "Verify completed outputs above. Do not rerun bounded physical-grid matrix. Resume only next_unit.",
-  "write_discipline": "Preregister event-clock screen before compute; persist one bounded result before any expansion."
+  "intended_outputs": [
+    "research/delta_a_alpha/research/DAA_GRID_001_GROSS_LOSS_DRAWDOWN_MECHANISM_HUNT_001.md"
+  ],
+  "failure_recovery": "If timeout occurs, inspect intended research note first. Resume source hunt only for missing source families; do not rebuild charter or prior GRID-001 tests."
 }
