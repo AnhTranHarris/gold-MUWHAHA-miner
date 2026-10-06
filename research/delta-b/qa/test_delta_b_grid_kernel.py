@@ -98,6 +98,36 @@ class GridKernelTests(unittest.TestCase):
         self.assertIsNotNone(event)
         self.assertEqual(event.direction, 1)
 
+    def test_reclaim_is_event_driven_not_persistent(self):
+        cfg = GridConfig(
+            q_floor=1.0,
+            q_ceiling=10.0,
+            cost_mult=0.1,
+            noise_mult=0.1,
+            shock_min_components=4,
+            noise_window=8,
+            path_window=8,
+            spread_window=8,
+            interval_window=8,
+        )
+        kernel = IntrinsicGridKernel(cfg)
+        t = datetime(2026, 1, 1, tzinfo=timezone.utc)
+        prices = [100.0, 101.1, 102.2, 100.9]
+        snap = None
+        for i, price in enumerate(prices):
+            snap = kernel.update(
+                ts_utc=t + timedelta(seconds=i),
+                bid=price,
+                ask=price,
+            )
+        self.assertEqual(snap.state, GridState.RECLAIM)
+        next_snap = kernel.update(
+            ts_utc=t + timedelta(seconds=4),
+            bid=100.8,
+            ask=100.8,
+        )
+        self.assertNotEqual(next_snap.state, GridState.RECLAIM)
+
     def test_shock_state(self):
         cfg = GridConfig(
             q_floor=0.01,
