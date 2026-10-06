@@ -2,10 +2,10 @@
   "schema": "delta-a-alpha-inflight-v4",
   "authority": "APPEND_ONLY_STATE_JOURNAL",
   "state": "IDLE_READY",
-  "last_completed": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001",
+  "last_completed": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002",
   "current_unit": null,
-  "next_unit": "OWNER_NEXT_SYSTEM_DIMENSION_SELECTION",
-  "journal_entry": "research/delta_a_alpha/state_journal/0025_DAA_HANDOFF_STMR_SLEEVE_PHASE_001_20261006.json",
+  "next_unit": "OWNER_SESSION_TIMEFRAME_STRESS_REVIEW",
+  "journal_entry": "research/delta_a_alpha/state_journal/0026_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002.json",
   "accepted_floor": {
     "candidate": "STMR_SLEEVE_PHASE_001",
     "january_net": 877.78,
@@ -14,6 +14,6 @@
     "parent_candidate": "STMR-001",
     "parent_january_net": 416.23
   },
-  "failure_recovery": "Read Google Drive handoff, then journal 0025 and journal 0024. Session/timeframe work is complete. Do not rebuild or revert to STMR-001. Scientific cursor remains OWNER_NEXT_SYSTEM_DIMENSION_SELECTION.",
-  "write_discipline": "Next system dimension must preregister against STMR_SLEEVE_PHASE_001 before economic replay."
+  "failure_recovery": "Read journal 0026 first. Jan-Jul session/timeframe stress is complete. Do not rerun the campaign. Accepted January floor remains STMR_SLEEVE_PHASE_001; cross-month candidate STMR_XMONTH_ADMISSIBILITY_001 is not yet promoted because exact historical replay parity is unavailable.",
+  "write_discipline": "No new whole-system dimension begins until owner reviews the Jan-Jul session/timeframe candidate and decides promotion/parity handling."
 }
