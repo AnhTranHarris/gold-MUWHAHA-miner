@@ -10,9 +10,9 @@
     "durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "mode": "READ_ONLY"
   },
-  "current_phase": "WHOLE_GRID_SYSTEM_BUILD_01_ACCEPTED_BUILD_02_NEXT",
-  "last_verified_durable_unit": "DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON",
-  "first_incomplete_unit": "DAA_GRID_SYSTEM_BUILD_02_ELASTIC_GEOMETRY_PREREG",
+  "current_phase": "WHOLE_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_ACCEPTED_BUILD_03_NEXT",
+  "last_verified_durable_unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS",
+  "first_incomplete_unit": "DAA_GRID_SYSTEM_BUILD_03_ELASTIC_GEOMETRY_PREREG",
   "active_candidate": null,
   "owner_constraints": {
     "symbol": "XAUUSD",
@@ -117,18 +117,31 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 22,
-    "latest_entry": "research/delta_a_alpha/state_journal/0022_DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON.json"
+    "latest_sequence": 23,
+    "latest_entry": "research/delta_a_alpha/state_journal/0023_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS.json"
   },
-  "restart_instruction": "Read state journal 0022, CURRENT_STATE.json, CURRENT_INFLIGHT.json, whole-system campaign and source registry. BUILD-01 is accepted; resume only BUILD-02 preregistration. Do not restore deleted January refinements.",
+  "restart_instruction": "Read state journal 0023, CURRENT_STATE.json and CURRENT_INFLIGHT.json first. STMR-001 is the accepted January session/timeframe floor. Resume only BUILD-03; do not restore deleted legacy January refinements.",
   "architecture_floor": {
-    "unit": "DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON",
-    "code": "research/delta_a_alpha/experiments/grid_system_state_skeleton.py",
-    "report": "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON_REPORT.md",
-    "qa": "research/delta_a_alpha/qa/build01_state_skeleton_qa.py",
-    "ci_workflow": ".github/workflows/delta-a-alpha-qa.yml",
-    "qa_run_id": 37529462435,
+    "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS",
+    "parent": "DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON",
+    "integration_code": "research/delta_a_alpha/experiments/grid_system_session_timeframe.py",
+    "prereg": "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS_PREREG.md",
+    "report": "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS_REPORT.md",
+    "source_hunt": "research/delta_a_alpha/research/DAA_GRID_SESSION_TIMEFRAME_SOURCE_HUNT_003.md",
+    "qa": "research/delta_a_alpha/qa/build02_session_timeframe_qa.py",
+    "ci_workflow": ".github/workflows/delta-a-alpha-build02-qa.yml",
+    "qa_run_id": 37536602903,
     "qa_conclusion": "SUCCESS",
+    "january_result": {
+      "trades": 867,
+      "net_profit": 416.23,
+      "profit_factor": 1.602,
+      "expected_payoff": 0.4801,
+      "trades_per_active_day": 43.35,
+      "max_equity_drawdown": 71.01,
+      "max_open_positions": 3
+    },
+    "cross_month_status": "JANUARY_ONLY_PENDING_LATER_JAN_JUL_VALIDATION",
     "alpha_claim": false
   }
 }
