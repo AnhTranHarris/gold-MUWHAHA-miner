@@ -120,6 +120,8 @@ class GridConfig:
     interval_window: int = 128
     shock_quantile: float = 0.95
     shock_min_components: int = 2
+    noise_refresh_ticks: int = 32
+    quantile_refresh_ticks: int = 64
     scales: tuple[float, ...] = (1.0, 2.0, 4.0, 8.0)
     medium_window: EventWindow = EventWindow(20, 5, 20, 45)
     high_window: EventWindow = EventWindow(45, 10, 30, 60)
@@ -139,6 +141,8 @@ class GridConfig:
             raise ValueError("rolling windows must be >= 8")
         if not 0.5 < self.shock_quantile < 1.0:
             raise ValueError("shock_quantile must be in (0.5, 1)")
+        if self.noise_refresh_ticks < 1 or self.quantile_refresh_ticks < 1:
+            raise ValueError("refresh intervals must be positive")
 
 
 def _quantile(values: Sequence[float], p: float) -> float:
@@ -240,14 +244,71 @@ class QSnapshot:
 
 
 class AdaptiveQEstimator:
+    """Causal adaptive-Q estimator with bounded hot-path cost."""
+
     def __init__(self, cfg: GridConfig) -> None:
         self.cfg = cfg
         self.last_mid: float | None = None
         self.last_ts: datetime | None = None
         self.abs_moves: Deque[float] = deque(maxlen=cfg.noise_window)
-        self.mids: Deque[float] = deque(maxlen=cfg.path_window)
+        self.mids: Deque[float] = deque()
+        self.path_moves: Deque[float] = deque()
+        self.path_gross = 0.0
         self.spreads: Deque[float] = deque(maxlen=cfg.spread_window)
         self.intervals: Deque[float] = deque(maxlen=cfg.interval_window)
+        self.tick_count = 0
+        self.noise_cached = 0.0
+        self.spread_cut = float("inf")
+        self.move_cut = float("inf")
+        self.fast_cut = 0.0
+        self.spread_levels: tuple[float, ...] = ()
+        self.quantile_refreshes = 0
+        self.noise_refreshes = 0
+
+    def _refresh_noise(self) -> None:
+        self.noise_cached = median(self.abs_moves) if self.abs_moves else 0.0
+        self.noise_refreshes += 1
+
+    def _refresh_quantiles(self) -> None:
+        spreads = list(self.spreads)
+        moves = list(self.abs_moves)
+        intervals = [x for x in self.intervals if x > 0]
+        if len(spreads) > 16:
+            self.spread_cut = _quantile(spreads, self.cfg.shock_quantile)
+            self.spread_levels = tuple(
+                _quantile(spreads, p) for p in (0.50, 0.75, 0.90, 0.95, 0.99)
+            )
+        if len(moves) > 16:
+            self.move_cut = _quantile(moves, self.cfg.shock_quantile)
+        if len(intervals) > 16:
+            self.fast_cut = _quantile(
+                intervals, 1.0 - self.cfg.shock_quantile
+            )
+        self.quantile_refreshes += 1
+
+    def _spread_percentile_approx(self, spread: float) -> float:
+        if not self.spread_levels:
+            prior = list(self.spreads)
+            if not prior:
+                return 0.5
+            less = sum(x < spread for x in prior)
+            equal = sum(x == spread for x in prior)
+            return (less + 0.5 * equal) / len(prior)
+
+        p50, p75, p90, p95, p99 = self.spread_levels
+        if spread < p50:
+            return 0.25
+        if spread == p50:
+            return 0.50
+        if spread < p75:
+            return 0.625
+        if spread < p90:
+            return 0.825
+        if spread < p95:
+            return 0.925
+        if spread < p99:
+            return 0.97
+        return 0.995
 
     def update(
         self,
@@ -262,77 +323,71 @@ class AdaptiveQEstimator:
     ) -> QSnapshot:
         if ts_utc.tzinfo is None:
             raise ValueError("timestamp must be timezone-aware")
-        if not all(isfinite(x) and x >= 0 for x in (bid, ask, commission_equiv, slippage_buffer)):
+        if not all(
+            isfinite(x) and x >= 0
+            for x in (bid, ask, commission_equiv, slippage_buffer)
+        ):
             raise ValueError("prices/costs must be finite and nonnegative")
         if ask < bid:
             raise ValueError("ask must be >= bid")
 
+        self.tick_count += 1
         mid = (bid + ask) / 2.0
         spread = ask - bid
-        self.spreads.append(spread)
-        self.mids.append(mid)
-        if self.last_mid is not None:
-            self.abs_moves.append(abs(mid - self.last_mid))
-        if self.last_ts is not None:
-            dt = (ts_utc.astimezone(timezone.utc) - self.last_ts).total_seconds()
-            if dt >= 0:
-                self.intervals.append(dt)
+        move = abs(mid - self.last_mid) if self.last_mid is not None else 0.0
+        interval = (
+            (ts_utc.astimezone(timezone.utc) - self.last_ts).total_seconds()
+            if self.last_ts is not None
+            else 0.0
+        )
 
-        noise = median(self.abs_moves) if self.abs_moves else 0.0
-        mids = list(self.mids)
-        if len(mids) > 1:
-            gross = sum(abs(b - a) for a, b in zip(mids, mids[1:]))
-            net = abs(mids[-1] - mids[0])
-            path_noise = gross / max(net, self.cfg.q_floor)
+        shock_score = 0
+        if spread > self.spread_cut:
+            shock_score += 1
+        if self.last_mid is not None and move > self.move_cut:
+            shock_score += 1
+        if self.fast_cut > 0 and 0 < interval < self.fast_cut:
+            shock_score += 1
+
+        if self.last_mid is not None:
+            self.abs_moves.append(move)
+            max_path_moves = max(1, self.cfg.path_window - 1)
+            if len(self.path_moves) >= max_path_moves:
+                self.path_gross -= self.path_moves.popleft()
+            self.path_moves.append(move)
+            self.path_gross += move
+
+        if len(self.mids) >= self.cfg.path_window:
+            self.mids.popleft()
+        self.mids.append(mid)
+        if len(self.mids) > 1:
+            net = abs(self.mids[-1] - self.mids[0])
+            path_noise = self.path_gross / max(net, self.cfg.q_floor)
         else:
             path_noise = 1.0
+        if path_noise >= 4.0:
+            shock_score += 1
+
+        shock_active = shock_score >= self.cfg.shock_min_components
+        spread_pct = self._spread_percentile_approx(spread)
 
         friction = spread + commission_equiv + slippage_buffer
         churn_amp = min(max(path_noise - 1.0, 0.0), 6.0)
-        q_noise = self.cfg.noise_mult * noise * (1.0 + 0.15 * churn_amp)
+        q_noise = (
+            self.cfg.noise_mult
+            * self.noise_cached
+            * (1.0 + 0.15 * churn_amp)
+        )
         q_base = min(
             self.cfg.q_ceiling,
             max(self.cfg.q_floor, self.cfg.cost_mult * friction, q_noise),
         )
 
-        spreads = list(self.spreads)
-        moves = list(self.abs_moves)
-        intervals = list(self.intervals)
-        spread_cut = _quantile(spreads[:-1], self.cfg.shock_quantile) if len(spreads) > 16 else float("inf")
-        move_cut = _quantile(moves[:-1], self.cfg.shock_quantile) if len(moves) > 16 else float("inf")
-        old_intervals = [x for x in intervals[:-1] if x > 0]
-        fast_cut = _quantile(old_intervals, 1.0 - self.cfg.shock_quantile) if len(old_intervals) > 16 else 0.0
-
-        shock_score = 0
-        if spread > spread_cut:
-            shock_score += 1
-        if moves and moves[-1] > move_cut:
-            shock_score += 1
-        if intervals and fast_cut > 0 and 0 < intervals[-1] < fast_cut:
-            shock_score += 1
-        if path_noise >= 4.0:
-            shock_score += 1
-        shock_active = shock_score >= self.cfg.shock_min_components
-        # Rank current spread against PRIOR observations only. Ties receive
-        # mid-rank so a stable/constant spread does not falsely appear to be a
-        # 100th-percentile stress event merely because every historical value is
-        # equal to the current one.
-        spread_history = spreads[:-1]
-        if spread_history:
-            less = sum(x < spread for x in spread_history)
-            equal = sum(x == spread for x in spread_history)
-            spread_pct = (less + 0.5 * equal) / len(spread_history)
-        else:
-            spread_pct = 0.5
-
-        # Scheduled events set the maximum defensive envelope. Observable market
-        # stress decides how much of that envelope is activated. This prevents
-        # calendar severity and quote-shock logic from double-stacking into an
-        # unnecessarily slow grid while still allowing full protection when the
-        # tape actually becomes hostile.
         spread_tail = max(0.0, min(1.0, (spread_pct - 0.80) / 0.20))
         shock_component = min(1.0, shock_score / 2.0)
-        path_component = max(0.0, min(1.0, (path_noise - 2.0) / 4.0))
+        path_component = max(
+            0.0, min(1.0, (path_noise - 2.0) / 4.0)
+        )
         observed_stress = (
             0.50 * spread_tail
             + 0.35 * shock_component
@@ -346,21 +401,48 @@ class AdaptiveQEstimator:
         if event_phase is EventPhase.NORMAL:
             adj = session_adj
             if shock_active:
-                adj = adj.combine(ContextAdjustment(1.35, 1.30, 1.15, 1.25, 0.50))
+                adj = adj.combine(
+                    ContextAdjustment(1.35, 1.30, 1.15, 1.25, 0.50)
+                )
         else:
             base_activation = EVENT_PHASE_BASE_ACTIVATION[event_phase]
-            event_activation = base_activation + (1.0 - base_activation) * observed_stress
+            event_activation = (
+                base_activation
+                + (1.0 - base_activation) * observed_stress
+            )
             cap = self.cfg.event_adjustments[event_phase]
             dynamic_event_adj = ContextAdjustment(
                 1.0 + (cap.q_mult - 1.0) * event_activation,
-                1.0 + (cap.hysteresis_mult - 1.0) * event_activation,
-                1.0 + (cap.confirmation_mult - 1.0) * event_activation,
-                1.0 + (cap.cost_buffer_mult - 1.0) * event_activation,
-                1.0 - (1.0 - cap.entry_authority) * event_activation,
+                1.0
+                + (cap.hysteresis_mult - 1.0) * event_activation,
+                1.0
+                + (cap.confirmation_mult - 1.0) * event_activation,
+                1.0
+                + (cap.cost_buffer_mult - 1.0) * event_activation,
+                1.0
+                - (1.0 - cap.entry_authority) * event_activation,
             )
             adj = session_adj.combine(dynamic_event_adj)
 
-        q_context = min(self.cfg.q_ceiling, max(self.cfg.q_floor, q_base * adj.q_mult))
+        q_context = min(
+            self.cfg.q_ceiling,
+            max(self.cfg.q_floor, q_base * adj.q_mult),
+        )
+
+        self.spreads.append(spread)
+        if self.last_ts is not None and interval >= 0:
+            self.intervals.append(interval)
+
+        if (
+            self.tick_count == 1
+            or self.tick_count % self.cfg.noise_refresh_ticks == 0
+        ):
+            self._refresh_noise()
+        if (
+            self.tick_count == 1
+            or self.tick_count % self.cfg.quantile_refresh_ticks == 0
+        ):
+            self._refresh_quantiles()
 
         self.last_mid = mid
         self.last_ts = ts_utc.astimezone(timezone.utc)
@@ -368,7 +450,7 @@ class AdaptiveQEstimator:
             q_base,
             q_context,
             friction,
-            noise,
+            self.noise_cached,
             path_noise,
             spread_pct,
             shock_score,
