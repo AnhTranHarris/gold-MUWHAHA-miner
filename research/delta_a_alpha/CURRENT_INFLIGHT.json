@@ -1,17 +1,23 @@
 {
   "schema": "delta-a-alpha-inflight-v2",
-  "state": "IDLE_READY",
-  "last_completed": "DAA_GRID_001_JANUARY_CAUSAL_OBSERVATION_GATE_001",
-  "current_unit": null,
-  "next_unit": "DAA_GRID_001_JANUARY_ELASTIC_SPACING_001",
-  "completed_outputs": [
-    "research/delta_a_alpha/grid/GRID_001_JANUARY_CAUSAL_OBSERVATION_GATE_001_PREREG.md",
-    "research/delta_a_alpha/experiments/grid001_january_observation_gate.py",
-    "research/delta_a_alpha/artifacts/GRID_001_JANUARY_CAUSAL_OBSERVATION_GATE_001.json",
-    "research/delta_a_alpha/grid/GRID_001_JANUARY_CAUSAL_OBSERVATION_GATE_001_REPORT.md"
+  "state": "RUNNING",
+  "last_completed": "DAA_GRID_001_JANUARY_ADAPTIVE_SPACING_SCREEN_001",
+  "current_unit": "DAA_GRID_001_JANUARY_PARENT_CHILD_LATTICE_001",
+  "next_unit": null,
+  "scope": {
+    "child": "A05 adaptive lattice",
+    "parents": [
+      "A10",
+      "A15"
+    ],
+    "authority": "current unresolved parent virtual-stack displacement",
+    "physical_grid": false
+  },
+  "intended_outputs": [
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_PARENT_CHILD_LATTICE_001_PREREG.md",
+    "research/delta_a_alpha/artifacts/GRID_001_JANUARY_PARENT_CHILD_LATTICE_001.json",
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_PARENT_CHILD_LATTICE_001_REPORT.md"
   ],
-  "decision": "REJECT_FIXED_SHORT_POST_CROSSING_PROBE_AS_DIRECTION_SOLUTION",
-  "next_hypothesis": "Normalize the event lattice with causal completed-M1 volatility so high-volatility January does not create a pathological event explosion; then remeasure MR/CONT/oracle opportunity quality.",
-  "failure_recovery": "Do not rerun event-label or observation-gate units. Verify elastic-spacing prereg/result paths and resume only the missing elastic unit.",
-  "write_discipline": "Three coarse geometry variants only; persist result before any router or recovery mutation."
+  "failure_recovery": "Verify adaptive-spacing outputs, then inspect parent-child outputs. Do not rerun earlier screens.",
+  "write_discipline": "Two parent scales only. If simple parent bias fails, stop and change mechanism rather than tune bias thresholds."
 }
