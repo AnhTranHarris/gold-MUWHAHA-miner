@@ -1,0 +1,272 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
+  "status": "VERIFIED_OWNER_CONSOLIDATION_SPECIALIST_HARVEST_PAUSED",
+  "date_utc": "2026-10-05",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_XAUUSD_ASIA_RANGE_DIRECTIONALITY_HARVEST_CHECKPOINT_17DE_17DG",
+  "hypothesis": "The useful current DELTA specialist set is sufficiently harvested to freeze discovery and move to refinement/integration; current helper code is complete and 17DE-17DG is already durably completed/retired despite stale timeout pointers.",
+  "falsification_condition": "Finalization fails if any frozen specialist closure manifest is not rebuild-ready, any required current helper is unfinished, any white-paper readback fails, or 17DE-17DG lacks durable completed/retired artifacts.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "frozen tested specialist execution streams",
+    "reference_count": 4,
+    "minimum_count": 4,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "Four tested execution streams are retained unchanged; this checkpoint is consolidation, not economic promotion."
+  },
+  "primary_metrics": {
+    "entry_quality": "No new entry-quality optimization performed; frozen roster only.",
+    "hold_persistence": "DH06/DH07 retained as shared initial-hold components; not recalibrated.",
+    "economics": "No new economics computed or promoted.",
+    "gross_loss_drawdown": "No new drawdown optimization performed.",
+    "activity": "Four tested execution streams retained; three shared components retained; DH04 reserve."
+  },
+  "source_code": [
+    {
+      "path": "research/delta/qa/delta_r037_specialist_roster_finalization_18a.py",
+      "commit": "1c2ea47c663fa3f76c925b0620676be13481a74f",
+      "blob_sha": "cc2b4c57aebdfd9bf2d973e28a59075ec702d348",
+      "role": "deterministic repository-only finalization QA producer"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "0067707d2a45755fd4fa69fa164bbdd379aea5fe",
+      "status": "COMPLETE_NO_UNFINISHED_MARKERS"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_runtime_primitives.py",
+      "blob_sha": "328b16a80cf5bff58734a556561625adf89100ae",
+      "status": "COMPLETE_NO_UNFINISHED_MARKERS"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_engine.py",
+      "blob_sha": "ac865a520441a2efc8eaf908e3c9390556893925",
+      "status": "COMPLETE_NO_UNFINISHED_MARKERS"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_structure.py",
+      "blob_sha": "edbe5ae9bcf2031fe06256467085889c4e108d52",
+      "status": "COMPLETE_NO_UNFINISHED_MARKERS"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_r032_full_specialist_parent_parity.py",
+      "blob_sha": "f100e5274466def8fc5aebf1a994c513d80ed3c3",
+      "status": "COMPLETE_NO_UNFINISHED_MARKERS"
+    }
+  ],
+  "config": {
+    "parameters": {
+      "new_specialist_harvest": "PAUSED_BY_OWNER",
+      "active_tested_streams": [
+        "DH03-S06",
+        "DH05-S06",
+        "DH02-S11",
+        "DH02-S08"
+      ],
+      "shared_components": [
+        "DH01",
+        "DH06",
+        "DH07"
+      ],
+      "reserve": [
+        "DH04"
+      ],
+      "integrated_scheduler": "BACKBONE_FIRST_FLAT_ONLY_CONFIG_ORDER",
+      "numeric_retuning": false
+    },
+    "feature_order": [
+      "specialist entry grammar",
+      "ownership/collision",
+      "DH06 post-entry evidence",
+      "DH07 initial-hold orchestration"
+    ],
+    "horizons_checkpoints": {
+      "research_history": "R003 through R037 checkpoint 17DE-17DG"
+    },
+    "train_cal_eval_boundaries": {
+      "role": "consolidation only; no new sample selection"
+    },
+    "timezone_session_definitions": {
+      "status": "unchanged from frozen DELTA contracts"
+    },
+    "execution_cost_assumptions": {
+      "status": "unchanged from frozen DELTA contracts"
+    },
+    "runtime_dependencies": [
+      "Python 3.11 standard library for finalization QA"
+    ]
+  },
+  "inputs": [
+    {
+      "name": "DH05-S06 closure",
+      "path": "research/delta/artifacts/DELTA_R037_DH05_PROBE_ATTEMPT_COUNTER_PROVENANCE_DECISION_CHECKPOINT_10F_MANIFEST.json",
+      "python_rebuild_ready": true
+    },
+    {
+      "name": "DH02-S11 closure",
+      "path": "research/delta/artifacts/DELTA_R037_DH02_S11_FAILURE_STATE_MEMORY_PROVENANCE_DECISION_CHECKPOINT_11G_MANIFEST.json",
+      "python_rebuild_ready": true
+    },
+    {
+      "name": "DH02-S08 closure",
+      "path": "research/delta/artifacts/DELTA_R037_DH02_S08_PARENT_DIRECTION_PROVENANCE_DECISION_CHECKPOINT_12C_MANIFEST.json",
+      "python_rebuild_ready": true
+    },
+    {
+      "name": "DH03-S06 closure",
+      "path": "research/delta/artifacts/DELTA_R037_DH03_S06_SIGNAL_GENERATOR_PROVENANCE_DECISION_CHECKPOINT_13H_MANIFEST.json",
+      "python_rebuild_ready": true
+    },
+    {
+      "name": "R032 integrated specialist parent",
+      "path": "research/delta/research/DELTA_R037_R032_FULL_SPECIALIST_PARENT_PARITY_CHECKPOINT_14A.md"
+    },
+    {
+      "name": "R032 provenance freeze",
+      "path": "research/delta/research/DELTA_R037_R032_SPECIALIST_PARENT_PROVENANCE_SORB_READINESS_CHECKPOINT_14B.md"
+    },
+    {
+      "name": "17DE-17DG completed result",
+      "path": "research/delta/reference/DELTA_R037_ASIA_RANGE_DIRECTIONALITY_CHECKPOINT_17DE_17DG.json",
+      "decision": "RETIRE_ASIA_RANGE_DIRECTIONALITY_NO_STAGE_A_SURVIVOR"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [],
+    "notes": [
+      "No market replay in 18A.",
+      "Stale timeout cursor reconciled against already-durable 17DE-17DG artifacts.",
+      "Late 17-series survivors that failed holdout/monthly validation remain retired or forensic reserve."
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A.json",
+      "commit": "dd13cec37db3b8222768dea0983cb26b14a9c2a1",
+      "blob_sha": "b2af95f00b9a9b8327b25a07d40c9756a47a1fce"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A.md",
+      "commit": "223a62a0a730233f199cdbb3950e3a59aef65724",
+      "blob_sha": "c718a3dff23de985a65102184b76f581df79aa00"
+    },
+    {
+      "path": "research/delta/research/DELTA_R003_DIRECTION_HOLD_CAUSAL_GRAMMAR_WHITEPAPERS.md",
+      "commit": "6840f4ff536f820975bfe9322799703068546521",
+      "blob_sha": "08346e2652a80f5d34a2d312dd3423acc8146bd6"
+    }
+  ],
+  "qa": [
+    "All seven native specialist white papers updated and read back successfully.",
+    "Four tested specialist closure manifests report python_rebuild_ready=true and missing_required_artifacts=[].",
+    "Current bounded runner, DH05 primitives, DH03 engine/structure and integrated R032 specialist-parent producer contain no TODO/FIXME/NotImplemented/stub markers.",
+    "Historical unrecovered producer/helper bytes remain provenance limitations and were not fabricated.",
+    "17DE-17DG durable result/report/manifest verified; no survivor; stale in-flight pointer identified.",
+    "No new market compute, threshold rescue, August access or MQL5 work performed."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/qa/delta_r037_specialist_roster_finalization_18a.py",
+    "command": "python research/delta/qa/delta_r037_specialist_roster_finalization_18a.py",
+    "required_artifact_order": [
+      "specialist closure manifests 10F/11G/12C/13H",
+      "17DE-17DG completed result",
+      "current helper sources",
+      "18A compact roster and report"
+    ],
+    "expected_fingerprints": {
+      "active_tested_stream_count": 4,
+      "shared_component_count": 3,
+      "reserve_count": 1,
+      "asia_range_survivors": 0,
+      "next_unit": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_PLAN"
+    },
+    "timing_semantics": "Repository-only governance/finalization QA. No tick chronology or market replay is executed by 18A.",
+    "notes": "The script validates rebuild readiness and stale-timeout reconciliation; white-paper readback is connector-verified and recorded separately."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — finalization checkpoint only",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Four frozen specialist streams plus DH01/DH06/DH07 support layers require refinement/integration first.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "Unchanged from frozen DELTA research contracts.",
+    "ownership_scheduler_spec": "BACKBONE_FIRST_FLAT_ONLY_CONFIG_ORDER remains leading provenance-limited scheduler hypothesis.",
+    "session_dst_spec": "Unchanged.",
+    "risk_spec": "Unchanged; no capital/lot escalation work in this checkpoint.",
+    "trade_count_parity_spec": "Exact historical R032-C03 parity remains unclaimed.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "supersedes": [
+    "open-ended R037 new-specialist harvest cursor",
+    "stale CURRENT_INFLIGHT claim that 17DE-17DG compute is pending"
+  ],
+  "rollback_target": "R037_XAUUSD_ASIA_RANGE_DIRECTIONALITY_HARVEST_CHECKPOINT_17DE_17DG",
+  "github_commits": [
+    "6840f4ff536f820975bfe9322799703068546521",
+    "dd13cec37db3b8222768dea0983cb26b14a9c2a1",
+    "223a62a0a730233f199cdbb3950e3a59aef65724",
+    "1c2ea47c663fa3f76c925b0620676be13481a74f",
+    "e4a4877ed77ebbacd24d8aee32bea9d32bee9c9f"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DH-01 White Paper",
+      "id": "1WrDPUavWb-bbv7gmxnnlEAFjT1NA9wYbPAwl-ayREAw",
+      "readback": true
+    },
+    {
+      "name": "DH-02 White Paper",
+      "id": "18KpLADXCt-MlIQgZ4j6papHdE7SUtrl8kVTbn0x1XNc",
+      "readback": true
+    },
+    {
+      "name": "DH-03 White Paper",
+      "id": "13pa0KSxVy93yajDEGAIkeY4V8Z3egMDIPxPV0nM3ia8",
+      "readback": true
+    },
+    {
+      "name": "DH-04 White Paper",
+      "id": "1S9VYfq3DrDqabMaHHqq6BB2ueB-CPBw9OLYnFOZlQDg",
+      "readback": true
+    },
+    {
+      "name": "DH-05 White Paper",
+      "id": "1mIcrUUeK0lGwfR6L_26O47DQxQV7xygbnFcnkvE4s6k",
+      "readback": true
+    },
+    {
+      "name": "DH-06 White Paper",
+      "id": "1MAkyDsu1TK7VC8Rlx4ahlIxznPFEJKy_uX4k31heIhc",
+      "readback": true
+    },
+    {
+      "name": "DH-07 White Paper",
+      "id": "1CyZ-WBMpBCfQfz_dnfbOAfCktDgbC7uPlW-72NGM7ww",
+      "readback": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": true
+  },
+  "next_unit": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_PLAN"
+}
