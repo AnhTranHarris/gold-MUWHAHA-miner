@@ -249,7 +249,7 @@ class AdaptiveQEstimator:
     def __init__(self, cfg: GridConfig) -> None:
         self.cfg = cfg
         self.last_mid: float | None = None
-        self.last_ts: datetime | None = None
+        self.last_ms: int | None = None
         self.abs_moves: Deque[float] = deque(maxlen=cfg.noise_window)
         self.mids: Deque[float] = deque()
         self.path_moves: Deque[float] = deque()
@@ -310,19 +310,19 @@ class AdaptiveQEstimator:
             return 0.97
         return 0.995
 
-    def update(
+    def update_ms(
         self,
         *,
-        ts_utc: datetime,
+        time_ms: int,
         bid: float,
         ask: float,
+        session: Session,
+        event_phase: EventPhase = EventPhase.NORMAL,
         commission_equiv: float = 0.0,
         slippage_buffer: float = 0.0,
-        session: Session | None = None,
-        event_phase: EventPhase = EventPhase.NORMAL,
     ) -> QSnapshot:
-        if ts_utc.tzinfo is None:
-            raise ValueError("timestamp must be timezone-aware")
+        if time_ms < 0:
+            raise ValueError("time_ms must be nonnegative")
         if not all(
             isfinite(x) and x >= 0
             for x in (bid, ask, commission_equiv, slippage_buffer)
@@ -330,14 +330,16 @@ class AdaptiveQEstimator:
             raise ValueError("prices/costs must be finite and nonnegative")
         if ask < bid:
             raise ValueError("ask must be >= bid")
+        if self.last_ms is not None and time_ms < self.last_ms:
+            raise ValueError("hot-path time_ms must be monotonic")
 
         self.tick_count += 1
         mid = (bid + ask) / 2.0
         spread = ask - bid
         move = abs(mid - self.last_mid) if self.last_mid is not None else 0.0
         interval = (
-            (ts_utc.astimezone(timezone.utc) - self.last_ts).total_seconds()
-            if self.last_ts is not None
+            (time_ms - self.last_ms) / 1000.0
+            if self.last_ms is not None
             else 0.0
         )
 
@@ -394,7 +396,6 @@ class AdaptiveQEstimator:
             + 0.15 * path_component
         )
 
-        session = session or classify_session(ts_utc)
         session_adj = self.cfg.session_adjustments[session]
         event_activation = 0.0
 
@@ -430,7 +431,7 @@ class AdaptiveQEstimator:
         )
 
         self.spreads.append(spread)
-        if self.last_ts is not None and interval >= 0:
+        if self.last_ms is not None and interval >= 0:
             self.intervals.append(interval)
 
         if (
@@ -445,7 +446,7 @@ class AdaptiveQEstimator:
             self._refresh_quantiles()
 
         self.last_mid = mid
-        self.last_ts = ts_utc.astimezone(timezone.utc)
+        self.last_ms = time_ms
         return QSnapshot(
             q_base,
             q_context,
@@ -460,6 +461,30 @@ class AdaptiveQEstimator:
             session,
             event_phase,
             adj,
+        )
+
+    def update(
+        self,
+        *,
+        ts_utc: datetime,
+        bid: float,
+        ask: float,
+        commission_equiv: float = 0.0,
+        slippage_buffer: float = 0.0,
+        session: Session | None = None,
+        event_phase: EventPhase = EventPhase.NORMAL,
+    ) -> QSnapshot:
+        if ts_utc.tzinfo is None:
+            raise ValueError("timestamp must be timezone-aware")
+        session = session or classify_session(ts_utc)
+        return self.update_ms(
+            time_ms=int(round(ts_utc.astimezone(timezone.utc).timestamp() * 1000.0)),
+            bid=bid,
+            ask=ask,
+            session=session,
+            event_phase=event_phase,
+            commission_equiv=commission_equiv,
+            slippage_buffer=slippage_buffer,
         )
 
 
