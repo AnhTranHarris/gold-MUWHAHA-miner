@@ -1,0 +1,26 @@
+{
+  "schema": "delta-a-alpha-helper-registry-v1",
+  "policy": "persist_on_value",
+  "parent_commit": "ac91fc43389a34f8ba380b58143f8e185589b106",
+  "helpers": [
+    {
+      "id": "H-STATE-BOOTSTRAP",
+      "status": "DURABLE",
+      "path": "CURRENT_STATE.json",
+      "purpose": "single restart cursor for side lineage"
+    },
+    {
+      "id": "H-ARTIFACT-LIFECYCLE",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/ARTIFACT_LIFECYCLE.md",
+      "purpose": "promotion and rebuild rules"
+    },
+    {
+      "id": "H-GRID-001-SPEC",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/grid/GRID_001_SPEC.json",
+      "purpose": "machine-readable source reconstruction and test lanes"
+    }
+  ],
+  "rule": "Add a helper here before any later experiment depends on it. Supersede by pointer; never silently rewrite historical semantics."
+}

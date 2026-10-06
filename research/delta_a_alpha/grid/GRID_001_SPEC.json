@@ -1,0 +1,69 @@
+{
+  "schema": "delta-a-alpha-grid-spec-v1",
+  "id": "GRID-001",
+  "status": "FROZEN_SOURCE_RECONSTRUCTION_READY_FOR_BASELINE",
+  "source": {
+    "video": "https://www.youtube.com/watch?v=4WQEoQxsJMc",
+    "timeframe": "H1",
+    "window_bars": 48,
+    "example_grid_gap_points": 100,
+    "initial_lot": 0.01,
+    "tp_grid_gaps": 1,
+    "source_stop_loss": null,
+    "source_martingale_multiplier": 2
+  },
+  "lanes": {
+    "forensic": {
+      "id": "GRID-001-F",
+      "promotion_eligible": false,
+      "sizing": "fixed_0.01",
+      "stop": "none_source_faithful",
+      "forced_end_liquidation": true,
+      "inventory_safety_cap": "fail_closed_resource_guard"
+    },
+    "specialist": {
+      "id": "GRID-001-S",
+      "promotion_eligible": "research_only_until_validated",
+      "sizing": "fixed_only",
+      "martingale": false,
+      "inventory": "hard_capped",
+      "basket_loss": "hard_bounded",
+      "execution": "ordered_ticks_bid_ask"
+    }
+  },
+  "causal_questions": [
+    "completed-bar anchor vs causal running-bar anchor",
+    "source Ask-universal trigger vs side-correct executable trigger",
+    "fixed gap vs volatility-normalized gap after baseline",
+    "single-basket vs simultaneous directional inventories"
+  ],
+  "mandatory_metrics": [
+    "trades",
+    "closed_win_rate",
+    "net_profit",
+    "gross_profit",
+    "gross_loss",
+    "profit_factor",
+    "max_balance_drawdown",
+    "max_equity_drawdown",
+    "max_open_inventory",
+    "max_total_lots",
+    "basket_MAE",
+    "basket_MFE",
+    "time_in_inventory",
+    "forced_liquidation_PnL",
+    "spread_cost",
+    "monthly_or_stage_partition_consistency"
+  ],
+  "forbidden_promotion_shortcuts": [
+    "headline win rate without equity path",
+    "martingale or loss-dependent lot escalation",
+    "uncapped averaging",
+    "optimistic OHLC ordering",
+    "unpriced residual inventory",
+    "future rolling high/low leakage"
+  ],
+  "first_unit": "DAA_GRID_001_CAUSAL_FORENSIC_BASELINE",
+  "august": "SEALED",
+  "mql5": "NOT_AUTHORIZED"
+}

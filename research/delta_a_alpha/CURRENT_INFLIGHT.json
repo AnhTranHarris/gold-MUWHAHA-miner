@@ -1,0 +1,13 @@
+{
+  "schema": "delta-a-alpha-inflight-v1",
+  "state": "IDLE_READY",
+  "last_completed": "DAA_BOOTSTRAP_001",
+  "current_unit": null,
+  "next_unit": "DAA_GRID_001_CAUSAL_FORENSIC_BASELINE",
+  "dependency_files": [
+    "CURRENT_STATE.json",
+    "research/delta_a_alpha/grid/GRID_001_SPEC.json",
+    "research/delta_a_alpha/HELPER_REGISTRY.json"
+  ],
+  "failure_recovery": "If delivery or compute fails, inspect committed result/manifest first; rerun only the smallest missing unit."
+}
