@@ -1,5 +1,5 @@
 {
-  "schema": "delta-a-alpha-research-status-v1",
+  "schema": "delta-a-alpha-research-status-v2",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "branch": "delta-A-alpha",
   "display_name": "Delta-A-alpha",
@@ -11,41 +11,58 @@
     "mode": "READ_ONLY"
   },
   "existing_delta_a_lineage": "HISTORICAL_EVIDENCE_ONLY_NOT_PARENT",
-  "current_phase": "GRID_001_SOURCE_RECONSTRUCTION_AND_CAUSAL_BASELINE",
-  "last_verified_durable_unit": "DAA_BOOTSTRAP_001",
+  "current_phase": "GRID_001_CAUSAL_FORENSIC_BASELINE_READY",
+  "last_verified_durable_unit": "DAA_TIMEOUT_RECOVERY_002",
   "first_incomplete_unit": "DAA_GRID_001_CAUSAL_FORENSIC_BASELINE",
   "active_candidate": null,
-  "august_2026": "SEALED",
-  "mql5_authorized": false,
-  "main_delta_write_authorized": false,
-  "drive": {
-    "folder_id": "1_jR3KjQYZ7BsTI82wd6T1PsvGrHEE32c",
-    "bootstrap_doc_id": "1DWH2H7CorTwkkl84d5MMSGM_MrcpUxm4tn7iSEiT5z0",
-    "transcript_doc_id": "1d0IQ7F5JAIJT5HC02YuYkjLGdt4LVR4QyBQgPd2qbew"
+  "owner_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": "PROHIBITED",
+    "loss_dependent_sizing": "PROHIBITED",
+    "small_account_survivability_usd": [100, 200, 300]
   },
-  "canonical_data": {
-    "january_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
-    "stage_a_ticks": 4205709,
-    "surface": "DUKAS_COINEXX_LIKE_P75"
+  "benchmark": {
+    "path": "research/delta_a_alpha/benchmarks/R9_REAL_SYNTH_JAN_JUL_2026.json",
+    "synth_net_profit": 309122.85,
+    "synth_trades": 219342,
+    "synth_profit_factor": 20.036229,
+    "synth_win_rate_pct": 87.14063,
+    "synth_trades_per_active_day": 1472.09396,
+    "real_net_profit": -50285.28,
+    "real_trades": 236647,
+    "real_profit_factor": 0.37507,
+    "real_win_rate_pct": 43.264863,
+    "real_trades_per_active_day": 1588.234899,
+    "real_to_synth_net_gap": 359408.13,
+    "role": "GUIDING_LIGHT_NOT_EXECUTION_INPUT"
   },
   "grid_001": {
     "source_video": "https://www.youtube.com/watch?v=4WQEoQxsJMc",
+    "creator_repo": "MegaJoctan/StrategyTester5",
+    "creator_repo_commit": "45e2a23d11716f204cf66f9695124980aceae1bc",
     "status": "SOURCE_RECONSTRUCTED_NOT_TESTED",
     "promotion_eligible": false,
     "prohibited_defaults": [
       "martingale sizing",
+      "loss-dependent lot escalation",
+      "lot size above 0.01",
       "uncapped averaging",
       "no-stop promotion candidate"
     ],
-    "first_test": "source-faithful forensic lane on ordered ticks, followed by capped fixed-size specialist lane"
+    "first_test": "source-faithful forensic lane on ordered ticks, then bounded 0.01 specialist lane if warranted"
   },
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "main_delta_write_authorized": false,
   "documentation": {
     "policy": "PERSIST_ON_VALUE_NOT_AT_CHAT_END",
     "machine_truth": "GitHub",
     "human_record": "Google Drive",
+    "timeout_protocol": "research/delta_a_alpha/TIMEOUT_SAFE_CONTINUITY.md",
     "helper_registry": "research/delta_a_alpha/HELPER_REGISTRY.json",
     "artifact_policy": "research/delta_a_alpha/ARTIFACT_LIFECYCLE.md",
     "source_registry": "research/delta_a_alpha/SOURCE_REGISTRY.md"
   },
-  "restart_instruction": "Read root CURRENT_STATE.json, research/delta_a_alpha/README.md, ARTIFACT_LIFECYCLE.md, HELPER_REGISTRY.json, SOURCE_REGISTRY.md, CURRENT_INFLIGHT.json, and the active GRID-001 spec. Never rebuild a durable helper from chat when a committed artifact or hash exists."
+  "restart_instruction": "Read CURRENT_STATE.json and CURRENT_INFLIGHT.json first. Verify committed artifacts before rerunning. Resume only first_incomplete_unit."
 }
