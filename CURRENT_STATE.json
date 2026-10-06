@@ -10,10 +10,10 @@
     "durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "mode": "READ_ONLY"
   },
-  "current_phase": "WHOLE_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_ACCEPTED_BUILD_03_NEXT",
-  "last_verified_durable_unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS",
-  "first_incomplete_unit": "DAA_GRID_SYSTEM_BUILD_03_ELASTIC_GEOMETRY_PREREG",
-  "active_candidate": null,
+  "current_phase": "WHOLE_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001_ACCEPTED",
+  "last_verified_durable_unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001",
+  "first_incomplete_unit": "OWNER_NEXT_SYSTEM_DIMENSION_SELECTION",
+  "active_candidate": "STMR_SLEEVE_PHASE_001",
   "owner_constraints": {
     "symbol": "XAUUSD",
     "lot_size": 0.01,
@@ -117,31 +117,48 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 23,
-    "latest_entry": "research/delta_a_alpha/state_journal/0023_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS.json"
+    "latest_sequence": 24,
+    "latest_entry": "research/delta_a_alpha/state_journal/0024_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001.json"
   },
-  "restart_instruction": "Read state journal 0023, CURRENT_STATE.json and CURRENT_INFLIGHT.json first. STMR-001 is the accepted January session/timeframe floor. Resume only BUILD-03; do not restore deleted legacy January refinements.",
+  "restart_instruction": "Read state journal 0024, CURRENT_STATE.json and CURRENT_INFLIGHT.json first. STMR_SLEEVE_PHASE_001 (+$877.78 January net) is the accepted session/timeframe floor. Do not revert to STMR-001 or rebuild source-hunt/replay research. Await owner selection of next system dimension.",
   "architecture_floor": {
-    "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS",
-    "parent": "DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON",
+    "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001",
+    "candidate": "STMR_SLEEVE_PHASE_001",
+    "parent": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS / STMR-001",
     "integration_code": "research/delta_a_alpha/experiments/grid_system_session_timeframe.py",
-    "prereg": "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS_PREREG.md",
-    "report": "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS_REPORT.md",
+    "result": "research/delta_a_alpha/artifacts/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001_JANUARY.json",
+    "report": "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001_REPORT.md",
     "source_hunt": "research/delta_a_alpha/research/DAA_GRID_SESSION_TIMEFRAME_SOURCE_HUNT_003.md",
     "qa": "research/delta_a_alpha/qa/build02_session_timeframe_qa.py",
-    "ci_workflow": ".github/workflows/delta-a-alpha-build02-qa.yml",
-    "qa_run_id": 37536602903,
+    "qa_run_id": 37539268967,
     "qa_conclusion": "SUCCESS",
     "january_result": {
-      "trades": 867,
-      "net_profit": 416.23,
-      "profit_factor": 1.602,
-      "expected_payoff": 0.4801,
-      "trades_per_active_day": 43.35,
-      "max_equity_drawdown": 71.01,
-      "max_open_positions": 3
+      "trades": 1518,
+      "net_profit": 877.78,
+      "gross_profit": 2333.63,
+      "gross_loss": -1455.85,
+      "profit_factor": 1.602933,
+      "expected_payoff": 0.578248,
+      "trades_per_active_day": 75.9,
+      "discovery_net": 110.87,
+      "validation_net": 766.91,
+      "max_balance_drawdown": 55.88,
+      "max_equity_drawdown": 61.22,
+      "minimum_equity_delta": -8.94,
+      "max_open_positions": 3,
+      "forced_liquidations": 0,
+      "small_account_min_equity": {
+        "100": 91.06,
+        "200": 191.06,
+        "300": 291.06
+      }
+    },
+    "january_r9_context": {
+      "synth_attainment_pct": 2.1141,
+      "real_to_synth_gap_closure_pct": 15.6301,
+      "note": "30% milestone intentionally not used as a hard gate for this dimension."
     },
     "cross_month_status": "JANUARY_ONLY_PENDING_LATER_JAN_JUL_VALIDATION",
-    "alpha_claim": false
+    "alpha_claim": "JANUARY_RESEARCH_EDGE_ONLY_NOT_CROSS_MONTH_PROMOTION"
   }
 }
