@@ -280,6 +280,59 @@ class GridKernelTests(unittest.TestCase):
         )
         self.assertNotEqual(snap.state, GridState.RECLAIM)
 
+    def test_millisecond_hot_path_matches_datetime_wrapper(self):
+        cfg = GridConfig(
+            q_floor=0.01,
+            cost_mult=1.0,
+            noise_mult=1.0,
+            shock_min_components=4,
+            noise_refresh_ticks=4,
+            quantile_refresh_ticks=8,
+        )
+        a = IntrinsicGridKernel(cfg)
+        b = IntrinsicGridKernel(cfg)
+        t = datetime(2026, 1, 5, 15, 0, tzinfo=timezone.utc)
+        prices = [100.0, 100.2, 100.4, 99.9, 100.3]
+        for i, price in enumerate(prices):
+            ts = t + timedelta(milliseconds=100 * i)
+            sa = a.update(
+                ts_utc=ts,
+                bid=price,
+                ask=price + 0.02,
+                session_override=Session.LONDON_NY_OVERLAP if hasattr(Session, "LONDON_NY_OVERLAP") else Session.OVERLAP,
+                event_phase_override=EventPhase.NORMAL,
+            )
+            sb = b.update_ms(
+                time_ms=int(ts.timestamp() * 1000),
+                bid=price,
+                ask=price + 0.02,
+                session=Session.OVERLAP,
+                event_phase=EventPhase.NORMAL,
+            )
+            self.assertEqual(sa.state, sb.state)
+            self.assertEqual(sa.directions, sb.directions)
+            self.assertAlmostEqual(sa.q.q_context, sb.q.q_context, places=12)
+
+    def test_robust_refreshes_are_periodic_not_per_tick(self):
+        cfg = GridConfig(
+            noise_refresh_ticks=4,
+            quantile_refresh_ticks=8,
+        )
+        q = AdaptiveQEstimator(cfg)
+        t = datetime(2026, 1, 5, 15, 0, tzinfo=timezone.utc)
+        for i in range(32):
+            q.update_ms(
+                time_ms=int(t.timestamp() * 1000) + i * 10,
+                bid=100.0 + i * 0.001,
+                ask=100.2 + i * 0.001,
+                session=Session.OVERLAP,
+                event_phase=EventPhase.NORMAL,
+            )
+        self.assertLess(q.quantile_refreshes, q.tick_count)
+        self.assertLess(q.noise_refreshes, q.tick_count)
+        self.assertEqual(q.quantile_refreshes, 5)
+        self.assertEqual(q.noise_refreshes, 9)
+
     def test_shock_state(self):
         cfg = GridConfig(
             q_floor=0.01,
