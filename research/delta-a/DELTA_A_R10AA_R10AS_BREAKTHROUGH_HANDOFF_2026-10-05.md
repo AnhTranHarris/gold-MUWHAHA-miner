@@ -13,9 +13,9 @@ Read, in order:
 3. `research/delta-a/DELTA_A_GRID_HF_STATE.json`.
 4. `research/delta-a/DELTA_A_SA100_HELPER_STATUS_2026-10-05.json`.
 5. This handoff.
-6. Drive handoff folder: https://drive.google.com/drive/folders/1_j8CaAwOvcD5S6OQkRf5bn-oXTgnayBB
-7. Drive archive: `DELTA_A_R10AA_R10AS_HANDOFF_2026-10-05.zip`, SHA-256 `181667cda8e63d8f86cffdc17809761838317c218bb8c3d111aec7eebec153f1`.
-8. Drive `MANIFEST.csv` contains SHA-256 for all **81** carried-forward helper/artifact files.
+6. Native Google Doc master handoff: https://docs.google.com/document/d/1EHXx6sVU3VnbcGSkkISM4M407JJdSJncOVKrKAARQXs/edit?usp=drivesdk\n7. Drive handoff folder: https://drive.google.com/drive/folders/1_j8CaAwOvcD5S6OQkRf5bn-oXTgnayBB
+8. Drive archive: `DELTA_A_R10AA_R10AS_HANDOFF_2026-10-05.zip`, SHA-256 `181667cda8e63d8f86cffdc17809761838317c218bb8c3d111aec7eebec153f1`.
+9. Drive `MANIFEST.csv` contains SHA-256 for all **81** carried-forward helper/artifact files.
 
 Do not reconstruct this stack from chat prose alone.
 
