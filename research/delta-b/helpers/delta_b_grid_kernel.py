@@ -95,6 +95,18 @@ DEFAULT_EVENT_ADJUSTMENTS: Mapping[EventPhase, ContextAdjustment] = {
     EventPhase.STABILIZATION_HIGH: ContextAdjustment(1.15, 1.10, 1.05, 1.10, 0.75),
 }
 
+EVENT_PHASE_BASE_ACTIVATION: Mapping[EventPhase, float] = {
+    EventPhase.NORMAL: 0.00,
+    EventPhase.PRE_MEDIUM: 0.10,
+    EventPhase.PRE_HIGH: 0.15,
+    EventPhase.RELEASE_MEDIUM: 0.30,
+    EventPhase.RELEASE_HIGH: 0.40,
+    EventPhase.DISCOVERY_MEDIUM: 0.20,
+    EventPhase.DISCOVERY_HIGH: 0.25,
+    EventPhase.STABILIZATION_MEDIUM: 0.08,
+    EventPhase.STABILIZATION_HIGH: 0.10,
+}
+
 
 @dataclass(frozen=True)
 class GridConfig:
@@ -220,6 +232,8 @@ class QSnapshot:
     spread_percentile: float
     shock_score: int
     shock_active: bool
+    observed_stress: float
+    event_activation: float
     session: Session
     event_phase: EventPhase
     adjustment: ContextAdjustment
@@ -299,14 +313,44 @@ class AdaptiveQEstimator:
         if path_noise >= 4.0:
             shock_score += 1
         shock_active = shock_score >= self.cfg.shock_min_components
+        spread_pct = sum(x <= spread for x in spreads) / len(spreads)
+
+        # Scheduled events set the maximum defensive envelope. Observable market
+        # stress decides how much of that envelope is activated. This prevents
+        # calendar severity and quote-shock logic from double-stacking into an
+        # unnecessarily slow grid while still allowing full protection when the
+        # tape actually becomes hostile.
+        spread_tail = max(0.0, min(1.0, (spread_pct - 0.80) / 0.20))
+        shock_component = min(1.0, shock_score / 2.0)
+        path_component = max(0.0, min(1.0, (path_noise - 2.0) / 4.0))
+        observed_stress = (
+            0.50 * spread_tail
+            + 0.35 * shock_component
+            + 0.15 * path_component
+        )
 
         session = session or classify_session(ts_utc)
-        adj = self.cfg.session_adjustments[session].combine(self.cfg.event_adjustments[event_phase])
-        if shock_active:
-            adj = adj.combine(ContextAdjustment(1.35, 1.30, 1.15, 1.25, 0.50))
+        session_adj = self.cfg.session_adjustments[session]
+        event_activation = 0.0
+
+        if event_phase is EventPhase.NORMAL:
+            adj = session_adj
+            if shock_active:
+                adj = adj.combine(ContextAdjustment(1.35, 1.30, 1.15, 1.25, 0.50))
+        else:
+            base_activation = EVENT_PHASE_BASE_ACTIVATION[event_phase]
+            event_activation = base_activation + (1.0 - base_activation) * observed_stress
+            cap = self.cfg.event_adjustments[event_phase]
+            dynamic_event_adj = ContextAdjustment(
+                1.0 + (cap.q_mult - 1.0) * event_activation,
+                1.0 + (cap.hysteresis_mult - 1.0) * event_activation,
+                1.0 + (cap.confirmation_mult - 1.0) * event_activation,
+                1.0 + (cap.cost_buffer_mult - 1.0) * event_activation,
+                1.0 - (1.0 - cap.entry_authority) * event_activation,
+            )
+            adj = session_adj.combine(dynamic_event_adj)
 
         q_context = min(self.cfg.q_ceiling, max(self.cfg.q_floor, q_base * adj.q_mult))
-        spread_pct = sum(x <= spread for x in spreads) / len(spreads)
 
         self.last_mid = mid
         self.last_ts = ts_utc.astimezone(timezone.utc)
@@ -319,6 +363,8 @@ class AdaptiveQEstimator:
             spread_pct,
             shock_score,
             shock_active,
+            observed_stress,
+            event_activation,
             session,
             event_phase,
             adj,
