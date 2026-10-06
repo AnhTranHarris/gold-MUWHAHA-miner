@@ -20,7 +20,7 @@ SI_RE = re.compile(r"<si><t(?: [^>]*)?>(.*?)</t></si>")
 CELL_RE = re.compile(r'<c r="([A-Z]+)\\d+"([^>]*)>(?:<v>(.*?)</v>)?</c>')
 TS_RE = re.compile(r"^2026\\.01\\.\\d{2} \\d{2}:\\d{2}:\\d{2}$")
 TIME_FMT = "%Y.%m.%d %H:%M:%S"
-REPORT_OFFSET_HOURS = 2
+OFFSET_CANDIDATES = tuple(range(-12, 15))
 
 
 def extract_trades(report: Path):
@@ -118,10 +118,47 @@ def extract_trades(report: Path):
     return trades
 
 
-def report_ms_utc(value: str) -> int:
+def report_ms_naive(value: str) -> int:
     dt = datetime.strptime(value, TIME_FMT).replace(tzinfo=timezone.utc)
-    dt -= timedelta(hours=REPORT_OFFSET_HOURS)
     return int(dt.timestamp() * 1000)
+
+
+def infer_report_offset(t, ask, bid, trades):
+    side = np.array([x["side"] for x in trades], np.int8)
+    report_price = np.array([x["entry_price"] for x in trades], float)
+    naive_ms = np.array([report_ms_naive(x["entry_report_time"]) for x in trades], np.int64)
+
+    rows = []
+    for offset_hours in OFFSET_CANDIDATES:
+        shifted = naive_ms - offset_hours * 3_600_000
+        idx = nearest_tick_indices(t, shifted)
+        mapped_quote = np.where(side > 0, ask[idx], bid[idx]) / PRICE_SCALE
+        price_error = np.abs(mapped_quote - report_price)
+        time_error = np.abs(t[idx] - shifted)
+        rows.append(
+            {
+                "offset_hours": int(offset_hours),
+                "median_abs_price_error": float(np.median(price_error)),
+                "p75_abs_price_error": float(np.quantile(price_error, 0.75)),
+                "p90_abs_price_error": float(np.quantile(price_error, 0.90)),
+                "mean_abs_price_error": float(price_error.mean()),
+                "within_0_25usd_pct": float(100 * np.mean(price_error <= 0.25)),
+                "within_0_50usd_pct": float(100 * np.mean(price_error <= 0.50)),
+                "within_1usd_pct": float(100 * np.mean(price_error <= 1.0)),
+                "median_tick_time_error_ms": float(np.median(time_error)),
+                "p90_tick_time_error_ms": float(np.quantile(time_error, 0.90)),
+            }
+        )
+
+    ranking = sorted(
+        rows,
+        key=lambda x: (
+            x["median_abs_price_error"],
+            x["p90_abs_price_error"],
+            x["mean_abs_price_error"],
+        ),
+    )
+    return naive_ms, rows, ranking
 
 
 def nearest_tick_indices(t, timestamps_ms):
@@ -202,6 +239,7 @@ def main():
     ap.add_argument("ticks", type=Path)
     ap.add_argument("--summary", type=Path, required=True)
     ap.add_argument("--rows", type=Path, required=True)
+    ap.add_argument("--offset-sweep", type=Path)
     args = ap.parse_args()
 
     trades = extract_trades(args.report)
@@ -212,11 +250,16 @@ def main():
     ask, bid, max_error2 = materialize(t, source_ask, source_bid)
     mid = (ask.astype(np.int64) + bid.astype(np.int64)) / 2.0
 
-    report_ms = np.array([report_ms_utc(x["entry_report_time"]) for x in trades], np.int64)
-    trade_idx = nearest_tick_indices(t, report_ms)
     side = np.array([x["side"] for x in trades], np.int8)
-
     report_price = np.array([x["entry_price"] for x in trades], float)
+
+    naive_ms, offset_rows, offset_ranking = infer_report_offset(t, ask, bid, trades)
+    winner = offset_ranking[0]
+    runner_up = offset_ranking[1]
+    report_offset_hours = int(winner["offset_hours"])
+    report_ms = naive_ms - report_offset_hours * 3_600_000
+    trade_idx = nearest_tick_indices(t, report_ms)
+
     mapped_quote = np.where(side > 0, ask[trade_idx], bid[trade_idx]) / PRICE_SCALE
     price_error = np.abs(mapped_quote - report_price)
     time_error = np.abs(t[trade_idx] - report_ms)
@@ -314,7 +357,11 @@ def main():
             "profit_factor": gp / abs(gl),
         },
         "alignment": {
-            "offset_hours": REPORT_OFFSET_HOURS,
+            "offset_hours": report_offset_hours,
+            "tested_offset_range_hours": [int(OFFSET_CANDIDATES[0]), int(OFFSET_CANDIDATES[-1])],
+            "runner_up_offset_hours": int(runner_up["offset_hours"]),
+            "runner_up_median_entry_price_abs_error": float(runner_up["median_abs_price_error"]),
+            "winner_median_error_advantage_vs_runner_up_usd": float(runner_up["median_abs_price_error"] - winner["median_abs_price_error"]),
             "median_entry_price_abs_error": float(np.median(price_error)),
             "p75_entry_price_abs_error": float(np.quantile(price_error, 0.75)),
             "p90_entry_price_abs_error": float(np.quantile(price_error, 0.90)),
@@ -338,6 +385,20 @@ def main():
             "vol_expansion_ge_2_00": int(np.sum(vol_ratio >= 2.0)),
         },
     }
+
+    if args.offset_sweep is not None:
+        offset_doc = {
+            "schema": "delta-a-alpha-r9-real-jan-clock-offset-sweep-v1",
+            "sample": len(trades),
+            "candidate_offsets": offset_rows,
+            "ranking": offset_ranking,
+            "winner": winner,
+            "runner_up": runner_up,
+            "winner_median_error_advantage_vs_runner_up_usd": float(
+                runner_up["median_abs_price_error"] - winner["median_abs_price_error"]
+            ),
+        }
+        args.offset_sweep.write_text(json.dumps(offset_doc, indent=2) + "\n", encoding="utf-8")
 
     args.summary.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(summary, indent=2))
