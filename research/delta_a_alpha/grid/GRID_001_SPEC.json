@@ -1,9 +1,11 @@
 {
-  "schema": "delta-a-alpha-grid-spec-v1",
+  "schema": "delta-a-alpha-grid-spec-v2",
   "id": "GRID-001",
   "status": "FROZEN_SOURCE_RECONSTRUCTION_READY_FOR_BASELINE",
   "source": {
     "video": "https://www.youtube.com/watch?v=4WQEoQxsJMc",
+    "creator_repo": "MegaJoctan/StrategyTester5",
+    "creator_repo_main_commit": "45e2a23d11716f204cf66f9695124980aceae1bc",
     "timeframe": "H1",
     "window_bars": 48,
     "example_grid_gap_points": 100,
@@ -11,6 +13,34 @@
     "tp_grid_gaps": 1,
     "source_stop_loss": null,
     "source_martingale_multiplier": 2
+  },
+  "owner_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "lot_size_policy": "FIXED_ONLY",
+    "martingale": "PROHIBITED",
+    "loss_dependent_sizing": "PROHIBITED",
+    "starting_balance_survivability_usd": [100, 200, 300],
+    "main_delta": "READ_ONLY",
+    "august_2026": "SEALED"
+  },
+  "benchmark": {
+    "path": "research/delta_a_alpha/benchmarks/R9_REAL_SYNTH_JAN_JUL_2026.json",
+    "role": "GUIDING_LIGHT_NOT_EXECUTION_INPUT",
+    "target": "close the R9 REAL to R9 SYNTH performance gap before later multi-specialist stacking",
+    "primary_metrics": [
+      "net_profit",
+      "gross_profit",
+      "gross_loss",
+      "profit_factor",
+      "expected_payoff",
+      "win_rate_pct"
+    ],
+    "additional_metrics": [
+      "trades_per_active_day",
+      "holding_time_survivability",
+      "small_account_survivability"
+    ]
   },
   "lanes": {
     "forensic": {
@@ -24,11 +54,13 @@
     "specialist": {
       "id": "GRID-001-S",
       "promotion_eligible": "research_only_until_validated",
-      "sizing": "fixed_only",
+      "sizing": "fixed_0.01",
       "martingale": false,
+      "loss_dependent_sizing": false,
       "inventory": "hard_capped",
       "basket_loss": "hard_bounded",
-      "execution": "ordered_ticks_bid_ask"
+      "execution": "ordered_ticks_bid_ask",
+      "small_account_gate": "must explicitly evaluate 100/200/300 USD starting balances"
     }
   },
   "causal_questions": [
@@ -44,6 +76,8 @@
     "gross_profit",
     "gross_loss",
     "profit_factor",
+    "expected_payoff",
+    "trades_per_active_day",
     "max_balance_drawdown",
     "max_equity_drawdown",
     "max_open_inventory",
@@ -51,6 +85,8 @@
     "basket_MAE",
     "basket_MFE",
     "time_in_inventory",
+    "holding_time_survivability",
+    "small_account_survivability_100_200_300",
     "forced_liquidation_PnL",
     "spread_cost",
     "monthly_or_stage_partition_consistency"
@@ -58,12 +94,12 @@
   "forbidden_promotion_shortcuts": [
     "headline win rate without equity path",
     "martingale or loss-dependent lot escalation",
+    "lot size above 0.01",
     "uncapped averaging",
     "optimistic OHLC ordering",
     "unpriced residual inventory",
     "future rolling high/low leakage"
   ],
   "first_unit": "DAA_GRID_001_CAUSAL_FORENSIC_BASELINE",
-  "august": "SEALED",
   "mql5": "NOT_AUTHORIZED"
 }
