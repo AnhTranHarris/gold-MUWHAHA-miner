@@ -1,0 +1,52 @@
+{
+  "id": "DELTA_A_SESSION_NEWS_PHASE0_STATUS_2026-10-06",
+  "status": "PHASE0_RECOVERED_SAFE_TO_CONTINUE",
+  "branch": "delta-A-session-news-janjul-restart-20261006",
+  "helper_forensics": {
+    "active_python_worker": false,
+    "active_session_news_helper_started": false,
+    "last_completed_named_helper": "SA100_R10AR_SECONDWAVE_METALABEL01",
+    "last_completed_named_helper_status": "COMPLETE_VELOCITY_SPECIALIST_CANDIDATE__NOT_YET_PHYSICALLY_INTEGRATED",
+    "historical_incomplete_helper": "research/delta-a/helpers/sa100_build_core_stop_variants.py",
+    "historical_incomplete_policy": "DO_NOT_RESUME"
+  },
+  "current_scientific_parent": [
+    "R10AA",
+    "R10AB",
+    "R10AG_SEQ45_60",
+    "R10AH",
+    "R10AI_G200",
+    "R10AT_DD90",
+    "R10AP_G300"
+  ],
+  "conditional": [
+    "R10AR_G1000"
+  ],
+  "full_grid_control": {
+    "id": "R9_GRID_MILESTONE_01_PREAUG",
+    "jan_jul_trades": 186569,
+    "jan_jul_net_usd": 194674.33,
+    "jan_jul_gross_loss_usd": -770911.86,
+    "profit_factor": 1.2525247568509321,
+    "expected_payoff_usd": 1.0434441413096494,
+    "all_months_positive": true,
+    "event_spec_rows": 186901,
+    "event_spec_sha256": "55f04e2b8c39e3b7693a6850cb540b7cc00705623f6dccd12b1736b379fd249a"
+  },
+  "r9_synth_reference": {
+    "trades": 219342,
+    "winners": 191136,
+    "net_usd": 309122.85,
+    "gross_loss_usd": -16238.66,
+    "profit_factor": 20.036229,
+    "expected_payoff_usd": 1.409319
+  },
+  "next_atomic_unit": "Recover/rebuild exact source-equivalent Jan-Jul event ledger before any outcome-conditioned session/news tuning; then freeze causal session and scheduled-event context definitions.",
+  "hard_rules": {
+    "august_sealed": true,
+    "fixed_seed_lot": 0.01,
+    "production_mql5_authorized": false,
+    "lookahead": false,
+    "martingale": false
+  }
+}
