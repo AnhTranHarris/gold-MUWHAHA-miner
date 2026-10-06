@@ -158,6 +158,30 @@
       "status": "DURABLE",
       "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_ADAPTIVE_SPACING_SCREEN_001_REPORT.md",
       "purpose": "decision to promote adaptive spacing and parent/child lattice hypothesis"
+    },
+    {
+      "id": "P-GRID-ELASTIC-001",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_ELASTIC_SPACING_001_PREREG.md",
+      "purpose": "frozen January elastic spacing contract"
+    },
+    {
+      "id": "H-GRID-ELASTIC-001",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/experiments/grid001_january_elastic_spacing.py",
+      "purpose": "causal completed-M1 ATR elastic event-clock helper"
+    },
+    {
+      "id": "A-GRID-ELASTIC-001",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/artifacts/GRID_001_JANUARY_ELASTIC_SPACING_001.json",
+      "purpose": "January elastic geometry result"
+    },
+    {
+      "id": "R-GRID-ELASTIC-001",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_ELASTIC_SPACING_001_REPORT.md",
+      "purpose": "human decision selecting alpha 0.50 as research-clock knee"
     }
   ],
   "rule": "Add a helper here before any later experiment depends on it. Supersede by pointer; never silently rewrite historical semantics.",
