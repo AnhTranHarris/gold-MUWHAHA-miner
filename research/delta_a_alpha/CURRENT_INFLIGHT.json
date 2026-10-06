@@ -2,18 +2,18 @@
   "schema": "delta-a-alpha-inflight-v4",
   "authority": "APPEND_ONLY_STATE_JOURNAL",
   "state": "IDLE_READY",
-  "last_completed": "DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON",
+  "last_completed": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS",
   "current_unit": null,
-  "next_unit": "DAA_GRID_SYSTEM_BUILD_02_ELASTIC_GEOMETRY_PREREG",
-  "journal_entry": "research/delta_a_alpha/state_journal/0022_DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON.json",
+  "next_unit": "DAA_GRID_SYSTEM_BUILD_03_ELASTIC_GEOMETRY_PREREG",
+  "journal_entry": "research/delta_a_alpha/state_journal/0023_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS.json",
   "accepted_floor": {
-    "unit": "DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON",
-    "type": "ARCHITECTURE_ONLY",
-    "alpha_claim": false,
-    "qa_run_id": 37529462435,
-    "qa_conclusion": "SUCCESS"
+    "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS",
+    "candidate": "STMR-001",
+    "type": "JANUARY_SESSION_TIMEFRAME_SYSTEM_FLOOR",
+    "qa_run_id": 37536602903,
+    "qa_conclusion": "SUCCESS",
+    "cross_month_status": "PENDING"
   },
-  "legacy_january_refinement_status": "DELETED_FROM_ACTIVE_LINEAGE_BACKUP_BRANCH_ONLY",
-  "failure_recovery": "Read journal 0022 first. BUILD-01 is complete; do not rebuild it. Next work begins at BUILD-02 preregistration.",
-  "write_discipline": "Preregister one BUILD-02 geometry family before any economic replay; persist each accepted child as the new floor."
+  "failure_recovery": "Read journal 0023 first. BUILD-02 is complete; do not rerun exploratory session/timeframe screens. Resume only BUILD-03 preregistration.",
+  "write_discipline": "Each child must preserve accepted STMR behavior unless a measured improvement justifies replacement."
 }
