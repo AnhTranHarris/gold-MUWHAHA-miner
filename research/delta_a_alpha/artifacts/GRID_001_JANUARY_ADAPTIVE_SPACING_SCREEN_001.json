@@ -1,0 +1,167 @@
+{
+  "schema": "delta-a-alpha-grid001-january-adaptive-spacing-v1",
+  "unit": "DAA_GRID_001_JANUARY_ADAPTIVE_SPACING_SCREEN_001",
+  "status": "COMPLETE_STRUCTURAL_BREAKTHROUGH",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "spacing_contract": {
+    "volatility": "last completed M1 ATR(14) from modeled Bid bars",
+    "clamp_usd": [
+      0.75,
+      5
+    ],
+    "quantization_usd": 0.1,
+    "variants": [
+      0.5,
+      1,
+      1.5
+    ],
+    "existing_event_geometry": "frozen at event creation"
+  },
+  "fixed_1usd_reference": {
+    "events": 130133,
+    "events_per_day": 5915.136364,
+    "continuation": {
+      "net": -22453.82,
+      "pf": 0.761533,
+      "expected": -0.172545
+    },
+    "oracle": {
+      "net": 114890.26,
+      "pf": 6.050501,
+      "expected": 0.882868
+    },
+    "both_negative_pct": 16.178832
+  },
+  "variants": {
+    "A05": {
+      "events": 39397,
+      "events_per_day": 1790.772727,
+      "gap_q_usd": [
+        0.8,
+        0.8,
+        1.2,
+        2.1,
+        5
+      ],
+      "mean_reversion": {
+        "net": -10581.51,
+        "pf": 0.762985,
+        "expected": -0.268587
+      },
+      "continuation": {
+        "net": -6619.3,
+        "pf": 0.844658,
+        "expected": -0.168015
+      },
+      "oracle": {
+        "net": 62678.39,
+        "pf": 9.496461,
+        "expected": 1.590943
+      },
+      "both_negative_pct": 14.473183,
+      "discovery_cont": {
+        "net": -6113.93,
+        "pf": 0.69766
+      },
+      "validation_cont": {
+        "net": -505.37,
+        "pf": 0.977428
+      },
+      "validation_oracle": {
+        "net": 39430.13,
+        "pf": 18.720849,
+        "expected": 3.162506
+      }
+    },
+    "A10": {
+      "events": 16141,
+      "events_per_day": 733.681818,
+      "gap_q_usd": [
+        1.3,
+        1.7,
+        3.1,
+        5,
+        5
+      ],
+      "mean_reversion": {
+        "net": -5278.54,
+        "pf": 0.824973,
+        "expected": -0.327027
+      },
+      "continuation": {
+        "net": -1753.09,
+        "pf": 0.938282,
+        "expected": -0.108611
+      },
+      "oracle": {
+        "net": 49036.58,
+        "pf": 20.654097,
+        "expected": 3.038014
+      },
+      "both_negative_pct": 7.874357,
+      "discovery_cont": {
+        "net": -2350.07,
+        "pf": 0.770238
+      },
+      "validation_cont": {
+        "net": 596.98,
+        "pf": 1.032843
+      },
+      "validation_oracle": {
+        "net": 34176.31,
+        "pf": 28.89584,
+        "expected": 4.634076
+      }
+    },
+    "A15": {
+      "events": 11133,
+      "events_per_day": 506.045455,
+      "gap_q_usd": [
+        2.1,
+        3.3,
+        5,
+        5,
+        5
+      ],
+      "mean_reversion": {
+        "net": -4504.2,
+        "pf": 0.825511,
+        "expected": -0.404581
+      },
+      "continuation": {
+        "net": -514.19,
+        "pf": 0.978436,
+        "expected": -0.046186
+      },
+      "oracle": {
+        "net": 43093.82,
+        "pf": 28.878366,
+        "expected": 3.870818
+      },
+      "both_negative_pct": 5.613941,
+      "discovery_cont": {
+        "net": -1108.84,
+        "pf": 0.824666
+      },
+      "validation_cont": {
+        "net": 594.65,
+        "pf": 1.033941
+      },
+      "validation_oracle": {
+        "net": 32927.06,
+        "pf": 28.673519,
+        "expected": 4.875916
+      }
+    }
+  },
+  "scientific_decision": [
+    "PROMOTE causal ATR-normalized spacing as a core lattice mechanism",
+    "DO NOT promote always-continuation as final strategy; discovery segment remains negative",
+    "A05 is velocity-scale child-lattice candidate because ~1791 events/day exceeds R9 SYNTH average velocity",
+    "A10/A15 are higher-quality slower parent-lattice candidates",
+    "NEXT: test parent/child lattice authority and event-state semantics rather than further spacing multipliers"
+  ],
+  "promotion_eligible": false,
+  "august": "SEALED"
+}
