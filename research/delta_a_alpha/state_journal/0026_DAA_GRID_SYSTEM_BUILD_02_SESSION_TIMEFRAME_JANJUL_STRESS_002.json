@@ -1,0 +1,52 @@
+{
+  "sequence": 26,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002",
+  "status": "COMPLETE_STRONG_CROSS_MONTH_CANDIDATE_NOT_PROMOTED",
+  "predecessor": {
+    "sequence": 25,
+    "unit": "DAA_HANDOFF_STMR_SLEEVE_PHASE_001_20261006",
+    "path": "research/delta_a_alpha/state_journal/0025_DAA_HANDOFF_STMR_SLEEVE_PHASE_001_20261006.json"
+  },
+  "accepted_floor_unchanged": true,
+  "accepted_floor": {
+    "candidate": "STMR_SLEEVE_PHASE_001",
+    "january_net": 877.78,
+    "trades": 1518,
+    "profit_factor": 1.602933
+  },
+  "research_candidate": {
+    "candidate": "STMR_XMONTH_ADMISSIBILITY_001",
+    "cleanroom_jan_jul_net": 780.42,
+    "cleanroom_pf": 1.1815952234,
+    "trades": 3963,
+    "forward_may_jul_net": 161.65,
+    "gross_loss_reduction_pct": 49.32212604,
+    "trade_retention_pct": 47.16172795
+  },
+  "completed_outputs": [
+    "research/delta_a_alpha/artifacts/STMR_XMONTH_ADMISSIBILITY_001_CONFIG.json",
+    "research/delta_a_alpha/artifacts/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002.json",
+    "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002_REPORT.md"
+  ],
+  "provenance_blocker": "Exact historical January portable replay helper is not durably available. Clean-room January is +779.00 vs authoritative +877.78, so the candidate is not promoted over the accepted floor.",
+  "scientific_decision": [
+    "Current January-only session/timeframe sleeve set fails Jan-Jul as-is in clean-room stress",
+    "Six-sleeve admissibility selected on Jan-Apr converts untouched May-Jul aggregate from -232.84 to +161.65",
+    "Keep fixed UTC sessions, both targeted subphase gates, completed-bar EMA8/21 ownership speed, and sleeve-local genealogy",
+    "Keep six toxic sleeves OBSERVE_ONLY in research candidate; do not flip",
+    "Reject blanket DST remapping and global faster timeframe ownership",
+    "Do not tune on July; July remains negative forward diagnostic",
+    "Do not replace authoritative January floor until parity is recovered or owner explicitly authorizes clean-room promotion"
+  ],
+  "next_unit": "OWNER_SESSION_TIMEFRAME_STRESS_REVIEW",
+  "immutable_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "main_delta": "READ_ONLY",
+    "august_2026": "SEALED",
+    "mql5_authorized": false
+  }
+}
