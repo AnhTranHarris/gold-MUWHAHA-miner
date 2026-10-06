@@ -1,0 +1,52 @@
+{
+  "sequence": 13,
+  "schema": "delta-a-alpha-state-journal-v1",
+  "unit": "DAA_GRID_001_JANUARY_PHASE_SANDWICH_STACK_001",
+  "status": "COMPLETE_POSITIVE_STABLE_BUT_BELOW_BREAKTHROUGH_GATE",
+  "predecessor": {
+    "sequence": 12,
+    "unit": "DAA_GRID_001_JANUARY_NESTED_TREND_PHASE_001",
+    "path": "research/delta_a_alpha/state_journal/0012_DAA_GRID_001_JANUARY_NESTED_TREND_PHASE_001.json"
+  },
+  "completed_outputs": [
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_PHASE_SANDWICH_STACK_001_PREREG.md",
+    "research/delta_a_alpha/experiments/grid001_january_phase_sandwich_stack.py",
+    "research/delta_a_alpha/artifacts/GRID_001_JANUARY_PHASE_SANDWICH_STACK_001.json",
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_PHASE_SANDWICH_STACK_001_REPORT.md"
+  ],
+  "result_summary": {
+    "trades": 1228,
+    "trades_per_active_day": 64.631579,
+    "net": 315.39,
+    "gross_profit": 2865.84,
+    "gross_loss": -2550.45,
+    "pf": 1.123661,
+    "expected_payoff": 0.256832,
+    "win_pct": 51.058632,
+    "discovery_net": 57.62,
+    "discovery_pf": 1.123117,
+    "validation_net": 257.77,
+    "validation_pf": 1.123783,
+    "max_equity_drawdown": 135.63,
+    "min_equity_delta": -12.34,
+    "r9_real_january_net_loss_recovery_pct": 4.741552,
+    "progress_to_half_recovery_target_pct": 9.483103
+  },
+  "scientific_decision": [
+    "PROMOTE the phase sandwich as the current positive low-drawdown grid floor",
+    "DO NOT call the multi-timeframe/phase category a 50%-ish R9 breakthrough",
+    "FREEZE accepted phase routes and volatility-expansion threshold; no micro-tuning",
+    "NEXT high-leverage research should map the grid state engine onto actual R9 REAL January entries to intercept wrong-direction gross loss at scale"
+  ],
+  "next_unit": "DAA_GRID_001_R9_REAL_JAN_CONTEXT_MAPPING_001_PREREG",
+  "immutable_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "sandwich_rule": "STACK_ON_ACCEPTED_FLOOR",
+    "august_2026": "SEALED",
+    "main_delta": "READ_ONLY",
+    "mql5_authorized": false
+  }
+}
