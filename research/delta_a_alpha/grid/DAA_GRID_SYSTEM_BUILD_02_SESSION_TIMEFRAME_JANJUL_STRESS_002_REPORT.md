@@ -31,7 +31,7 @@ The January sleeve population therefore does **not** generalize as-is.
 
 ## Preregistered cross-month admissibility refinement
 
-Selection used **Jan-Apr only**. May-Jul were untouched forward evaluation.
+Selection used **Jan-Apr only**. May-Jul were not used by the final sleeve-selection rule. However, broad May-Jul baseline/timeframe sweeps had already been inspected before the final candidate was frozen, so May-Jul is a **frozen-rule forward re-test, not pristine untouched OOS**.
 
 Rule: **fund a semantic sleeve only when its frozen Jan-Apr aggregate net is positive; otherwise keep the state visible but OBSERVE_ONLY.**
 
@@ -53,7 +53,7 @@ Observe-only:
 
 Five toxic sleeves remained negative in all four leave-one-development-month-out tests; LONDON_M5_RECLAIM was negative in the full Jan-Apr block and 3/4 LOO tests. Directional FLIP was also tested and all six FLIP families remained negative over Jan-Apr.
 
-## Untouched May-Jul result
+## Frozen May-Jul forward re-test
 
 | Month | Frozen | Candidate | Improvement |
 |---|---:|---:|---:|
@@ -93,3 +93,26 @@ Net improves **+$918.65** and gross loss falls **49.3%**, while trade retention 
 Retain fixed UTC sessions, both accepted subphase gates, completed-bar H4/H1/M15/M5 EMA8/21 ownership, and sleeve-local genealogy. Carry `STMR_XMONTH_ADMISSIBILITY_001` as the strongest Jan-Jul session/timeframe **research candidate**, with six sleeves executable and six observe-only.
 
 Do **not** promote it over the authoritative January floor yet because exact historical replay parity is unavailable. April and July remain unresolved hostile months for later orthogonal system dimensions. Observe-only sleeves are not deleted; future volatility/structure layers may re-earn them with new causal information.
+
+
+## Timeout recovery reconciliation
+
+A message-delivery timeout interrupted a broader **Jan-Jul in-sample** per-sleeve timeframe-role diagnostic after months 1-3 had completed. Recovery resumed only months 4-7.
+
+Final role-map diagnostic:
+- net **+$519.02**;
+- gross profit **$9,298.99**;
+- gross loss **-$8,779.97**;
+- PF **1.0591**;
+- 7,879 trades;
+- expected payoff **+$0.06587/trade**.
+
+This is inferior to the simpler `STMR_XMONTH_ADMISSIBILITY_001` result (**+$780.42**, PF **1.1816**, much lower gross loss), so the interrupted role-map is **rejected**.
+
+Exact timeout-era helpers/results are preserved in the Library recovery bundle:
+`/xauusd-trading-bot/delta-A-alpha/recovery/2026-10-06/STMR_JANJUL_TIMEOUT_RECOVERY_20261006_v2.zip`
+
+Bundle SHA-256:
+`17dc185badc66b09140f02d11aaeacf44e94525da91b94569b66a9902a72ba31`
+
+See append-only journal 0027 for provenance reconciliation.
