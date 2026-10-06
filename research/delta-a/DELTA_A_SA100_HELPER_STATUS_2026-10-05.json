@@ -50,7 +50,7 @@
     "cross_month_decision_completed": false,
     "required_action": "Rerun the helper work unit from scratch starting with January."
   },
-  "next_unit": "SA100_R10Y_CONT180_FAILURE_STATE_SPECIALIST01",
+  "next_unit": "SA100_R10Z_CONT180_SECOND_STAGE_FAILURE_SPECIALIST01",
   "hard_rules": {
     "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
@@ -654,6 +654,18 @@
         "target_episodes": 105,
         "august_accessed": false
       }
+    },
+    {
+      "id": "SA100_R10Y_CONT180_FAILURE_STATE_SPECIALIST01_TIMEOUT_WRAPPER",
+      "status": "INCOMPLETE_TECHNICAL_FAILURE_DO_NOT_RESUME",
+      "action": "Discarded before economics; clean rerun followed."
+    },
+    {
+      "id": "SA100_R10Y_CONT180_FAILURE_STATE_SPECIALIST01_RERUN01",
+      "status": "COMPLETE_EXACT_TICK_BREAKTHROUGH",
+      "helper_sha256": "04fda3ccafa6f0c3a8e5a8284cac3c1d2fce232a38796356f3bc51ef6ad86cf8",
+      "output_sha256": "747055075c2ee60f75da3bbe89dee85ff286b1811b191894a1f7df394bd66387",
+      "finding": "10s churn-without-decisive-continuation state -> close basket and reverse 0.01 for 30s. 150 activations, 53.33% specialist wins, +$732.79 net, physical GL -$1,070.90, episode GL -$866.77, tick DD -$114.58 vs R10X3."
     }
   ],
   "current_leading_experimental_lane": {
@@ -1001,11 +1013,22 @@
     },
     "next_loss_target": {
       "state": "remaining executed HOLD owner=CONT horizon=180s",
-      "gross_loss_usd": -7420.859,
-      "share_of_remaining_episode_gl_pct": 65.46,
-      "rule": "No more broad abstention below 80% retention; seek actual loss-to-win/early-failure conversion."
+      "gross_loss_usd": -5897.59,
+      "share_of_remaining_episode_gl_pct": 56.33,
+      "rule": "Do not disturb R10Y activations; seek orthogonal second-stage causal loss-to-win conversion with >50% soft specialist success."
+    },
+    "r10y": {
+      "status": "COMPLETE_EXACT_BREAKTHROUGH",
+      "net_usd": 3719.7345,
+      "physical_gl_usd": -13004.0115,
+      "episode_gl_usd": -10469.721,
+      "balance_dd_usd": 265.38,
+      "tick_dd_usd": 198.2385,
+      "executed_episode_win": 0.5695679797,
+      "specialist_win": 0.5333333333,
+      "converted_losses": 53
     }
   },
-  "last_completed_helper": "SA100_R10X3_CONT1800_BASKETKILL_EXACT01_RERUN01",
-  "last_completed_helper_result": "COMPLETE_BREAKTHROUGH__JAN_FRONTIER_NET2987_GL14075_BALDD291"
+  "last_completed_helper": "SA100_R10Y_CONT180_FAILURE_STATE_SPECIALIST01_RERUN01",
+  "last_completed_helper_result": "COMPLETE_BREAKTHROUGH__JAN_NET3719_PHYSGL13004_TICKDD198_EXECWIN56P96"
 }
