@@ -1,0 +1,52 @@
+{
+  "schema": "delta-b-timeout-recovery-inflight-v1",
+  "status": "IDLE_READY",
+  "branch": "delta-b",
+  "unit": "DB001A_EXECUTABLE_MOVEMENT_QUANTUM_AND_SESSION_EVENT_STATE_SPEC",
+  "family": "GRID_LAYER_1",
+  "parent_durable_unit": "DELTA_B_BOOTSTRAP",
+  "phase": "SPEC_AND_HARNESS_READY",
+  "phase_rank": 1,
+  "progress": {
+    "last_completed": "DELTA_B_BRANCH_AND_GRID_CONSTITUTION_BOOTSTRAP",
+    "current_candidate": null,
+    "next": "IMPLEMENT_AND_QA_CAUSAL_Q_SESSION_EVENT_STATE_HELPER"
+  },
+  "timeout_recovery": {
+    "message_delivery_timeout_is_not_compute_failure": true,
+    "resume_first_action": "Read root CURRENT_STATE plus DELTA-B README, Grid constitution, DB001 plan and this file. Resume the first missing DB001 durable phase only.",
+    "idempotency_rule": "Do not rerun a completed DB001 phase solely because chat delivery failed.",
+    "parent_delta_rule": "Never advance or modify parent delta from the delta-b branch."
+  },
+  "constraints": {
+    "august_2026": "SEALED",
+    "mql5_authorized": false,
+    "martingale": false,
+    "adverse_position_scaling": false,
+    "medium_high_news_context_required": true,
+    "session_context_required": true
+  },
+  "prereg": {
+    "primary_question": "Can an adaptive executable movement quantum plus intrinsic-time nested lattice materially reduce toxic real-tick grid events before Volume Profile or RSI are added?",
+    "initial_outputs": [
+      "causal Q trace",
+      "session state trace",
+      "scheduled medium/high event phase trace",
+      "unscheduled shock trace",
+      "L0-L3 intrinsic event ledger",
+      "five-state grid classification ledger"
+    ],
+    "forbidden_inputs": [
+      "future MFE",
+      "future MAE",
+      "future trade result",
+      "future news outcome",
+      "August 2026",
+      "R9 SYNTH future path as inference"
+    ]
+  },
+  "producer": null,
+  "result": null,
+  "report": null,
+  "manifest": null
+}
