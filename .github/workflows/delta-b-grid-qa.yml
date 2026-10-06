@@ -26,9 +26,9 @@ jobs:
           python-version: "3.11"
       - name: Compile DELTA-B research code
         run: |
-          python -m py_compile             research/delta-b/helpers/delta_b_grid_kernel.py             research/delta-b/experiments/delta_b_db001b_event_grid_trace.py
+          python -m py_compile             research/delta-b/helpers/delta_b_grid_kernel.py             research/delta-b/helpers/delta_b_context_clock.py             research/delta-b/experiments/delta_b_db001b_event_grid_trace.py             research/delta-b/experiments/delta_b_db001_event_microstructure_probe.py
       - name: Run exact committed Grid Layer 1 unit tests
         env:
           PYTHONPATH: research/delta-b/helpers
         run: |
-          python -m unittest -v research/delta-b/qa/test_delta_b_grid_kernel.py
+          python -m unittest -v             research/delta-b/qa/test_delta_b_grid_kernel.py             research/delta-b/qa/test_delta_b_context_clock.py
