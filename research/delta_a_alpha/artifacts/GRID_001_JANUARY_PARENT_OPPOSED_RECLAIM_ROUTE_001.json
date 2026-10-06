@@ -1,0 +1,75 @@
+{
+  "schema": "delta-a-alpha-grid001-january-parent-opposed-reclaim-route-v1-compact",
+  "unit": "DAA_GRID_001_JANUARY_PARENT_OPPOSED_RECLAIM_ROUTE_001",
+  "status": "COMPLETE_INCREMENTAL_IMPROVEMENT_NOT_BREAKTHROUGH",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "variants": {
+    "A05": {
+      "eligible": 5173,
+      "reclaim_trades": 4762,
+      "reclaim_pct": 92.0549,
+      "child_baseline": {
+        "net": -844.4,
+        "pf": 0.873875,
+        "gross_loss": -6694.94
+      },
+      "parent_route": {
+        "net": -581.05,
+        "pf": 0.904263,
+        "gross_loss": -6069.25,
+        "discovery_net": -565.9,
+        "validation_net": -15.15
+      },
+      "net_recovered": 263.35,
+      "gross_loss_reduction_pct": 9.3457
+    },
+    "A10": {
+      "eligible": 2611,
+      "reclaim_trades": 2321,
+      "reclaim_pct": 88.8931,
+      "child_baseline": {
+        "net": -315.41,
+        "pf": 0.93854,
+        "gross_loss": -5131.98
+      },
+      "parent_route": {
+        "net": -260.02,
+        "pf": 0.94294,
+        "gross_loss": -4556.96,
+        "discovery_net": -164.41,
+        "validation_net": -95.61
+      },
+      "net_recovered": 55.39,
+      "gross_loss_reduction_pct": 11.2046
+    },
+    "A15": {
+      "eligible": 1957,
+      "reclaim_trades": 1721,
+      "reclaim_pct": 87.9407,
+      "child_baseline": {
+        "net": -151.63,
+        "pf": 0.966296,
+        "gross_loss": -4498.92
+      },
+      "parent_route": {
+        "net": 110.14,
+        "pf": 1.028663,
+        "gross_loss": -3842.63,
+        "discovery_net": -108.27,
+        "discovery_pf": 0.840536,
+        "validation_net": 218.41,
+        "validation_pf": 1.069037
+      },
+      "net_recovered": 261.77,
+      "gross_loss_reduction_pct": 14.5877
+    }
+  },
+  "scientific_decision": [
+    "KEEP parent-opposed rerouting as a useful trend-within-trend mechanism, especially A15",
+    "DO NOT promote as breakthrough because discovery remains negative",
+    "NEXT add trend/regime phase age to multi-timeframe state; avoid reclaim-distance tuning"
+  ],
+  "promotion_eligible": false,
+  "august": "SEALED"
+}
