@@ -1,39 +1,50 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "INFLIGHT",
+  "status": "CLOSED",
   "branch": "delta",
-  "unit": "R037_XAUUSD_ASIA_RANGE_DIRECTIONALITY_HARVEST_CHECKPOINT_17DE_17DG",
-  "family": "R037-XBREAK-v1 + R037-SUNALGO-FAKEOUT-ENGULF-v1",
-  "parent_durable_unit": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
-  "phase": "PRODUCER_COMMITTED",
-  "phase_rank": 2,
+  "unit": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
+  "family": "SPECIALIST_ROSTER_CONSOLIDATION",
+  "parent_durable_unit": "R037_XAUUSD_ASIA_RANGE_DIRECTIONALITY_HARVEST_CHECKPOINT_17DE_17DG",
+  "phase": "CLOSED_DURABLE",
+  "phase_rank": 99,
   "progress": {
-    "status": "PRODUCER_DURABLE_EXACT_BLOB_VERIFIED",
-    "last_completed": "PREREGISTERED",
-    "current_candidate": "17DE-17DG Asia-range directionality bake-off",
-    "next": "RUN_BOUNDED_COMPUTE"
+    "status": "SPECIALIST_ROSTER_FINALIZED_NEW_HARVEST_PAUSED",
+    "last_completed": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
+    "current_candidate": null,
+    "next": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_PLAN"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read durable state and resume first missing committed phase.",
-    "idempotency_rule": "Do not rerun completed phases.",
-    "compute_boundary_rule": "Commit and verify exact producer blob before bounded compute."
+    "resume_first_action": "Read CURRENT_STATE, CURRENT_INFLIGHT, recovery pointer and active rebuild manifest; resume refinement/integration, not specialist harvesting.",
+    "idempotency_rule": "Do not rerun completed research phases or retired 17-series families.",
+    "compute_boundary_rule": "Any future bounded compute must commit and verify exact producer bytes before execution."
   },
   "august_2026": "SEALED",
   "mql5_authorized": false,
-  "prereg": {
-    "path": "research/delta/reference/DELTA_R037_ASIA_RANGE_DIRECTIONALITY_PREREG_17DE_17DG.json",
-    "commit": "b788e7aa4c3d83b7bea43beb453b705b34b340b1",
-    "status": "PREREGISTERED_BEFORE_PRODUCER_AND_COMPUTE"
-  },
+  "prereg": null,
   "producer": {
-    "path": "research/delta/experiments/delta_r037_asia_range_directionality_17de_17dg.py",
-    "commit": "a6a9c048b791533b690072a2aeef6132e88f1d28",
-    "blob_sha": "562d3abc0bc52e715eab7e6423290e6f7592c9a3",
-    "file_sha256": "1a4d707752a85d81edb8a75b37a19c6c75d049ee7731d07a81c3a768598df196",
-    "local_git_blob_verified": true
+    "path": "research/delta/qa/delta_r037_specialist_roster_finalization_18a.py",
+    "commit": "1c2ea47c663fa3f76c925b0620676be13481a74f",
+    "blob_sha": "cc2b4c57aebdfd9bf2d973e28a59075ec702d348",
+    "role": "repository-only finalization QA"
   },
-  "result": null,
-  "report": null,
-  "manifest": null
+  "result": {
+    "path": "research/delta/reference/DELTA_R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A.json",
+    "commit": "dd13cec37db3b8222768dea0983cb26b14a9c2a1",
+    "blob_sha": "b2af95f00b9a9b8327b25a07d40c9756a47a1fce"
+  },
+  "report": {
+    "path": "research/delta/research/DELTA_R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A.md",
+    "commit": "223a62a0a730233f199cdbb3950e3a59aef65724",
+    "blob_sha": "c718a3dff23de985a65102184b76f581df79aa00"
+  },
+  "manifest": {
+    "path": "research/delta/artifacts/DELTA_R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A_MANIFEST.json",
+    "commit": "62b4e510d28e44c803b714f8dabe9baa071417f7"
+  },
+  "reconciled_prior_inflight": {
+    "unit": "R037_XAUUSD_ASIA_RANGE_DIRECTIONALITY_HARVEST_CHECKPOINT_17DE_17DG",
+    "status": "COMPLETE_RETIRED_NO_SURVIVOR",
+    "note": "Prior pointer was stale at PRODUCER_COMMITTED; durable result/report/manifest proved compute had completed before the delivery timeout."
+  }
 }
