@@ -1,23 +1,20 @@
 {
   "schema": "delta-a-alpha-inflight-v2",
-  "state": "IDLE_READY",
-  "last_completed": "DAA_GRID_001_GROSS_LOSS_DRAWDOWN_MECHANISM_HUNT_001",
-  "current_unit": null,
-  "next_unit": "DAA_GRID_001_JANUARY_MECHANISM_SCREEN_PREREG_001",
-  "completed_outputs": [
-    "research/delta_a_alpha/research/DAA_GRID_001_GROSS_LOSS_DRAWDOWN_MECHANISM_HUNT_001.md",
-    "research/delta_a_alpha/grid/R9_DAA_GRID_SYSTEM_INITIAL_REDESIGN_001.md",
-    "research/delta_a_alpha/SOURCE_REGISTRY.md"
+  "state": "RUNNING",
+  "last_completed": "DAA_GRID_001_JANUARY_MECHANISM_SCREEN_PREREG_001",
+  "current_unit": "DAA_GRID_001_JANUARY_EVENT_LABEL_LAB_001",
+  "next_unit": null,
+  "scope": {
+    "dataset": "FULL_JANUARY_2026_DUKASCOPY_XAUUSD",
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "physical_trades": false,
+    "purpose": "virtual grid event clock + dual counterfactual MR/CONT labels + coarse causal regime screen"
+  },
+  "intended_outputs": [
+    "research/delta_a_alpha/experiments/grid001_january_event_label_lab.py",
+    "research/delta_a_alpha/artifacts/GRID_001_JANUARY_EVENT_LABEL_LAB_001.json",
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_EVENT_LABEL_LAB_001_REPORT.md"
   ],
-  "next_scope": [
-    "virtual grid event clock",
-    "elastic spacing",
-    "range-vs-continuation semantics",
-    "early thesis failure",
-    "information-based re-arm",
-    "one-shot opportunity recovery",
-    "counterfactual shadow twin"
-  ],
-  "failure_recovery": "Verify completed outputs first. Do not repeat source hunt. Next action is preregistration only; no coding/testing until that preregistration is frozen.",
-  "write_discipline": "One January mechanism family at a time; persist result before mutation/combination."
+  "failure_recovery": "Check intended outputs first. If result exists, verify before rerun. Do not repeat source hunt or preregistration.",
+  "write_discipline": "Persist event-label result before any physical single-owner execution experiment."
 }
