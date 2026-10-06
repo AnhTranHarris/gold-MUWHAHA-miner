@@ -520,7 +520,13 @@ class IntrinsicGridKernel:
             and pre_dirs[0] != 0
             and l0_event.direction == -pre_dirs[0]
             and higher_sign != 0
+            and pre_dirs[0] == -higher_sign
+            and l0_event.direction == higher_sign
         ):
+            # True reclaim: the micro scale first diverged from the established
+            # higher-scale owner, then a new L0 directional-change event
+            # realigned with that owner. A flip AWAY from higher context is not
+            # a reclaim and remains rotation/disagreement.
             state = GridState.RECLAIM
         elif new_events and len(active) >= 3 and coherence >= 0.75:
             state = GridState.ESCAPE
