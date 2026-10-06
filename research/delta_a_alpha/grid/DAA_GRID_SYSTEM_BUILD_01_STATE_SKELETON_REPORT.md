@@ -1,7 +1,7 @@
 # Delta-A-alpha — BUILD-01 State/Lifecycle Skeleton Report
 
 **Unit:** `DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON`  
-**Status:** IMPLEMENTED — RUNTIME QA PENDING  
+**Status:** ACCEPTED ARCHITECTURE FLOOR — RUNTIME QA PASS  
 **Parent:** `DAA_GRID_SYSTEM_CLEAN_RESET_003`
 
 ## What is implemented
@@ -60,9 +60,24 @@ Before QA freeze, two lifecycle issues were identified and repaired:
 
 ## Runtime QA status
 
-A direct clone/run attempt from the assistant container was blocked because that container could not resolve `github.com`.
+A direct assistant-container clone was unavailable because that container could not resolve GitHub, so repository-native CI was added instead.
 
-This is an environment/network limitation, not a test pass.
+Workflow:
+`.github/workflows/delta-a-alpha-qa.yml`
+
+GitHub Actions run:
+`37529462435`
+
+Head:
+`8ae80b2deeeb7b1268f756ae1841e92ac2ec509b`
+
+Conclusion: **SUCCESS**
+
+Successful steps included:
+- Python 3.11 setup;
+- module compilation;
+- BUILD-01 state-skeleton QA;
+- JSON state-pointer validation.
 
 The committed QA harness tests:
 - import/runtime viability;
@@ -77,13 +92,15 @@ The committed QA harness tests:
 - category ledger behavior;
 - absence of order/signal authority.
 
-BUILD-02 is **not authorized** until this harness executes successfully.
+The runtime gate is satisfied. BUILD-02 may be preregistered, but no BUILD-02 mechanic may become the floor without its own causal economic evidence.
 
 ## Scientific decision
 
-BUILD-01 is the new architectural candidate floor, but not yet the accepted runtime floor.
+BUILD-01 is the accepted runtime architecture floor.
 
 No deleted legacy January refinement is required by this implementation.
 
-Next action:
-run `build01_state_skeleton_qa.py`; on PASS, freeze BUILD-01 and preregister BUILD-02 elastic geometry.
+Next unit:
+`DAA_GRID_SYSTEM_BUILD_02_ELASTIC_GEOMETRY_PREREG`
+
+BUILD-02 is the first post-reset system mechanic allowed to affect event geometry/economics.
