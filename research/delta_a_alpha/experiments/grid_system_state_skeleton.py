@@ -294,7 +294,14 @@ class GridSystemState:
         self.timeframe_states = _default_timeframe_states()
         self.cycle = _new_cycle(self.symbol, generation=0, start_ms=self.start_ms, reason="INITIAL")
 
+    def _validate_contract(self) -> None:
+        if self.symbol != SYMBOL:
+            raise ValueError(f"BUILD-01 is XAUUSD only, got {self.symbol}")
+        if abs(self.lot_size - FIXED_LOT) > 1e-12:
+            raise ValueError(f"lot_size must remain {FIXED_LOT}")
+
     def context(self, timestamp_ms: int) -> ContextSnapshot:
+        self._validate_contract()
         _require_monotonic(self.cycle.last_update_ms, timestamp_ms, "system")
         ordered = tuple(self.timeframe_states[k] for k in sorted(self.timeframe_states))
         return ContextSnapshot(
@@ -310,6 +317,7 @@ class GridSystemState:
     def update_timeframe_state(
         self, timeframe: str, state: str, now_ms: int
     ) -> None:
+        self._validate_contract()
         if timeframe not in self.timeframe_states:
             raise KeyError(f"unregistered timeframe role: {timeframe}")
         self.cycle.touch(now_ms)
@@ -329,6 +337,7 @@ class GridSystemState:
         crossing_direction: CrossingDirection = CrossingDirection.UNKNOWN,
         penetration_raw: int = 0,
     ) -> GridEvent:
+        self._validate_contract()
         self.cycle.touch(now_ms)
         self.cycle.event_sequence += 1
         seq = self.cycle.event_sequence
@@ -357,8 +366,14 @@ class GridSystemState:
         return event
 
     def expire_events(self, now_ms: int, max_age_ms: int) -> list[str]:
+        self._validate_contract()
         if max_age_ms < 0:
             raise ValueError("max_age_ms must be >= 0")
+        latest_event_ms = max(
+            (event.last_update_ms for event in self.events.values()),
+            default=self.cycle.last_update_ms,
+        )
+        _require_monotonic(latest_event_ms, now_ms, "event set")
         self.cycle.touch(now_ms)
         expired: list[str] = []
         for event_id, event in self.events.items():
@@ -368,8 +383,18 @@ class GridSystemState:
         return expired
 
     def restart_cycle(self, now_ms: int, reason: str) -> tuple[str, str]:
+        self._validate_contract()
         if not reason or reason == "INITIAL":
             raise ValueError("restart requires an explicit non-INITIAL reason")
+        latest_event_ms = max(
+            (
+                event.last_update_ms
+                for event in self.events.values()
+                if event.cycle_id == self.cycle.cycle_id
+            ),
+            default=self.cycle.last_update_ms,
+        )
+        _require_monotonic(latest_event_ms, now_ms, "cycle event set")
         self.cycle.touch(now_ms)
         old_id = self.cycle.cycle_id
         self.cycle.status = CycleStatus.RESTARTED
@@ -383,6 +408,7 @@ class GridSystemState:
         return old_id, self.cycle.cycle_id
 
     def routing_payload(self, event_id: str) -> dict[str, Any]:
+        self._validate_contract()
         event = self.events[event_id]
         if event.route is None or event.context_at_birth is None:
             raise RuntimeError("event route/context missing")
@@ -410,6 +436,7 @@ class GridSystemState:
         self, event_id: str, pnl: float, context: ContextSnapshot | None = None
     ) -> None:
         """Ledger hook only. Does not create/modify a trade."""
+        self._validate_contract()
         event = self.events[event_id]
         ctx = context or event.context_at_birth
         if ctx is None:
@@ -417,6 +444,7 @@ class GridSystemState:
         self.ledger.record_trade(ctx, pnl)
 
     def to_dict(self) -> dict[str, Any]:
+        self._validate_contract()
         return _jsonable(self)
 
     def to_json(self) -> str:
