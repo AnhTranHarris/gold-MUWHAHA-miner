@@ -1,0 +1,74 @@
+{
+  "schema": "delta-b-bootstrap-manifest-v1",
+  "unit_id": "DB001_BOOTSTRAP_GRID_LAYER_1",
+  "date_utc": "2026-10-06",
+  "lineage": "DELTA_B",
+  "branch": "delta-b",
+  "parent_branch": "delta",
+  "status": "BOOTSTRAPPED_HELPER_COMMITTED_EXACT_GITHUB_BYTE_QA_PENDING",
+  "purpose": "Isolate and preserve the adaptive intrinsic-time Grid Layer 1 research line without modifying active DELTA.",
+  "governance": {
+    "parent_delta_modified": false,
+    "august_2026": "SEALED",
+    "mql5_authorized": false,
+    "martingale": false,
+    "adverse_position_scaling": false,
+    "scheduled_event_minimum_importance": "MEDIUM"
+  },
+  "architecture": {
+    "grid": "intrinsic-time executable lattice",
+    "scales": ["Q", "2Q", "4Q", "8Q"],
+    "state_price": "midpoint",
+    "execution_price": "Bid/Ask",
+    "primary_states": [
+      "TRANSIT",
+      "ROTATION",
+      "ESCAPE",
+      "FAILED_ESCAPE_RECLAIM",
+      "CHURN_SHOCK"
+    ],
+    "sessions": "DST-aware first-class state",
+    "scheduled_events": "MEDIUM/HIGH first-class state",
+    "unscheduled_events": "observable quote-shock state only"
+  },
+  "files": [
+    {"path":"CURRENT_STATE.json","blob_sha":"d0887dc4631e217e78281819c72e2d1876422c7b"},
+    {"path":"research/delta-b/README.md","blob_sha":"8411bce9e6e1b1755ea6231d4853349a5aa39423"},
+    {"path":"research/delta-b/GRID_LAYER_1_CONSTITUTION.md","blob_sha":"dce420d5c3be628f03903d2737a2a331cfd1b7bb"},
+    {"path":"research/delta-b/DB001_RESEARCH_PLAN.md","blob_sha":"b31b7d97bdd604d5c3b2bb43a8107003c2998f36"},
+    {"path":"research/delta-b/CURRENT_INFLIGHT.json","blob_sha":"24dd96ff652397e286d6edb67720f62d0735919f"},
+    {"path":"research/delta-b/MT5_PORT_CONTRACT.md","blob_sha":"dd7257e49c8e65b8ad39b4fc5c8d7b4ebcb39cef"},
+    {"path":"research/delta-b/SOURCE_PROVENANCE.md","blob_sha":"f68d61ca55ecae2b0e63022bdd98011149900b5f"},
+    {"path":"research/delta-b/helpers/delta_b_grid_kernel.py","blob_sha":"d9c52d5e1c715a5febfc57d291cee5511304d74a"},
+    {"path":"research/delta-b/qa/test_delta_b_grid_kernel.py","blob_sha":"c7978c0065dd4c06a5755e1ef0a7cbd87b112896"}
+  ],
+  "commits": [
+    "5ec77ceb8e645e3b3270a2652bbd2a61e840ef1d",
+    "2707bc69decb26e8cc3fc21bbcd5d959700c62b9",
+    "f4c2730c32bccca53b2a799364c71754b6364423",
+    "c3695e0b11b4cf6ba951223dcf6220b5b5152d80",
+    "dc00a89045fc0592202c0648a1b29d46918715e3",
+    "6668388e74e89de4dc6cccc4736bd2f5038f8089",
+    "0d31b6849a2121ad424ef0991941c2de774f3521",
+    "549cf87afae44e3bd7a88229ee6057a462e3cd31",
+    "5646af10a62acc42f3e6df52e1f5cd29a9b5a95f"
+  ],
+  "qa": {
+    "local_equivalent_helper_tests": "8/8 PASS",
+    "covered": [
+      "London DST session mapping",
+      "HIGH event priority over MEDIUM overlap",
+      "non-USD event default exclusion",
+      "Q increases with friction",
+      "HIGH release expands contextual Q and reduces entry authority",
+      "active directional-change threshold cannot shrink mid-leg",
+      "directional-change event emission",
+      "shock escalation to CHURN_SHOCK"
+    ],
+    "github_readback": true,
+    "github_ci_statuses": [],
+    "exact_committed_byte_execution": false,
+    "claim_boundary": "Local equivalent code passed; exact committed GitHub blobs have been read back but not yet executed by repository CI. Do not call DB001 scientifically verified yet."
+  },
+  "next_unit": "DB001A_EXACT_BYTE_QA_AND_CAUSAL_Q_SESSION_EVENT_TRACE"
+}
