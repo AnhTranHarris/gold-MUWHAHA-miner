@@ -1,0 +1,116 @@
+{
+  "schema": "delta-a-alpha-stmr-janjul-stress-summary-v1",
+  "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002",
+  "candidate": "STMR_XMONTH_ADMISSIBILITY_001",
+  "status": "STRONG_CROSS_MONTH_RESEARCH_CANDIDATE_NOT_PROMOTED",
+  "parent": {
+    "candidate": "STMR_SLEEVE_PHASE_001",
+    "authoritative_january_net": 877.78,
+    "authoritative_january_trades": 1518,
+    "authoritative_pf": 1.602933,
+    "parity": "NOT_RECOVERED_EXACT_PORTABLE_HELPER_MISSING"
+  },
+  "cleanroom_baseline": {
+    "monthly_net": {
+      "2026-01": 779.00,
+      "2026-02": -254.58,
+      "2026-03": -198.17,
+      "2026-04": -231.64,
+      "2026-05": -78.78,
+      "2026-06": 31.61,
+      "2026-07": -185.67
+    },
+    "net": -138.23,
+    "gross_profit": 8341.96,
+    "gross_loss": -8480.19,
+    "profit_factor": 0.9837,
+    "trades": 8403,
+    "expected_payoff": -0.01645,
+    "worst_month_equity_dd": 282.50
+  },
+  "selection": {
+    "development_window": "2026-01 through 2026-04",
+    "rule": "fund semantic sleeve iff frozen Jan-Apr aggregate sleeve net > 0",
+    "executable": [
+      "ASIA_LOWER_TAKEOVER",
+      "LONDON_M5_TAKEOVER",
+      "OVERLAP_LOWER_TAKEOVER",
+      "LATE_ALIGNED_MOMENTUM",
+      "LATE_MACRO_SPLIT_TRANSFER",
+      "LATE_LOWER_TAKEOVER"
+    ],
+    "observe_only": [
+      "ASIA_M15_DIVERGE_M5_RECLAIM",
+      "LONDON_M5_RECLAIM",
+      "OVERLAP_ALIGNED_COUNTERCROSS",
+      "NY_LOWER_TRANSFER",
+      "NY_LOWER_COUNTERCROSS",
+      "LATE_M5_REJECTION"
+    ]
+  },
+  "candidate_result": {
+    "monthly_net": {
+      "2026-01": 648.06,
+      "2026-02": 43.08,
+      "2026-03": 9.31,
+      "2026-04": -81.68,
+      "2026-05": 47.41,
+      "2026-06": 184.81,
+      "2026-07": -70.57
+    },
+    "net": 780.42,
+    "gross_profit": 5078.00,
+    "gross_loss": -4297.58,
+    "profit_factor": 1.1816,
+    "trades": 3963,
+    "win_rate_pct": 32.05,
+    "expected_payoff": 0.19693,
+    "worst_month_equity_dd": 111.37,
+    "forced_final_liquidations": 0,
+    "positive_months": 5,
+    "net_improvement_vs_cleanroom": 918.65,
+    "gross_loss_reduction_pct": 49.3,
+    "trade_retention_pct": 47.2
+  },
+  "may_jul_retest": {
+    "status": "FROZEN_JAN_APR_RULE_FORWARD_RETEST_NOT_PRISTINE_OOS",
+    "baseline_net": -232.84,
+    "candidate_net": 161.65,
+    "improvement": 394.49,
+    "candidate_pf": 1.2123,
+    "candidate_trades": 770
+  },
+  "rejected_refinements": {
+    "blanket_dst_session_remap": true,
+    "remove_accepted_subphase_gates": true,
+    "global_faster_timeframe_ownership": true,
+    "per_sleeve_timeframe_map": true,
+    "toxic_sleeve_direction_flip": true,
+    "overlap_15_16utc_only": true,
+    "interrupted_crossmonth_rolemap": {
+      "status": "COMPLETED_AFTER_TIMEOUT_AND_REJECTED",
+      "net": 519.02,
+      "gross_profit": 9298.99,
+      "gross_loss": -8779.97,
+      "profit_factor": 1.0591,
+      "trades": 7879,
+      "expected_payoff": 0.06587
+    }
+  },
+  "recovery": {
+    "library_bundle": "/xauusd-trading-bot/delta-A-alpha/recovery/2026-10-06/STMR_JANJUL_TIMEOUT_RECOVERY_20261006_v2.zip",
+    "bundle_sha256": "17dc185badc66b09140f02d11aaeacf44e94525da91b94569b66a9902a72ba31",
+    "full_result_sha256": "386b2f24d1f133221848ab551c848fe9b4d846cc98149038db18bdee2797caef",
+    "full_report_sha256": "cee885d2002f433a7902f54cad8a68c5d5579ac15a4b8776d1fa3fb1e70e4fda"
+  },
+  "constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "max_grid_owned_positions": 3,
+    "august_2026": "SEALED",
+    "main_delta": "READ_ONLY",
+    "mql5_authorized": false
+  }
+}
