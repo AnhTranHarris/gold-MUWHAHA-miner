@@ -1,0 +1,228 @@
+{
+  "schema": "delta-research-unit-manifest-v1",
+  "unit_id": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
+  "status": "VERIFIED_DOCUMENTATION_FINALIZATION_REFINEMENT_INTEGRATION_READY",
+  "date_utc": "2026-10-05",
+  "lineage": "DELTA",
+  "parent_checkpoint": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
+  "hypothesis": "The frozen specialist roster is ready for refinement/integration once current helper completeness, native white-paper status banners, GitHub index state, and the operator spreadsheet index all agree on the same current R037 dispositions.",
+  "falsification_condition": "18B fails if any current required helper is unfinished, any of the seven native white papers lacks the R037 frozen status, the operator spreadsheet index is not readable/correct, or the frozen roster differs from 18A.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "sealed_data_status": {
+    "august_2026": "SEALED"
+  },
+  "trade_count_gate": {
+    "reference_name": "frozen tested specialist execution streams",
+    "reference_count": 4,
+    "minimum_count": 4,
+    "minimum_retention_fraction": 1,
+    "owner_numeric_floor_defined": true,
+    "note": "No trade-count or economic change in 18B; four execution streams preserved unchanged."
+  },
+  "primary_metrics": {
+    "entry_quality": "UNCHANGED — documentation/finalization only",
+    "hold_persistence": "UNCHANGED — DH06/DH07 retained",
+    "economics": "UNCHANGED — no new replay or promotion",
+    "gross_loss_drawdown": "UNCHANGED",
+    "activity": "Four frozen execution streams; three shared components; one reserve component"
+  },
+  "source_code": [
+    {
+      "path": "research/delta/qa/delta_r037_specialist_roster_finalization_18a.py",
+      "commit": "1c2ea47c663fa3f76c925b0620676be13481a74f",
+      "blob_sha": "cc2b4c57aebdfd9bf2d973e28a59075ec702d348",
+      "role": "Authoritative deterministic roster/helper completeness validator reused by documentation closure."
+    }
+  ],
+  "helpers": [
+    {
+      "path": "research/delta/qa/delta_bounded_python_runner.py",
+      "blob_sha": "0067707d2a45755fd4fa69fa164bbdd379aea5fe",
+      "status": "COMPLETE_NO_UNFINISHED_MARKERS"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh05_runtime_primitives.py",
+      "blob_sha": "328b16a80cf5bff58734a556561625adf89100ae",
+      "status": "COMPLETE_NO_UNFINISHED_MARKERS"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_engine.py",
+      "blob_sha": "ac865a520441a2efc8eaf908e3c9390556893925",
+      "status": "COMPLETE_NO_UNFINISHED_MARKERS"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_dh03_s06_structure.py",
+      "blob_sha": "edbe5ae9bcf2031fe06256467085889c4e108d52",
+      "status": "COMPLETE_NO_UNFINISHED_MARKERS"
+    },
+    {
+      "path": "research/delta/experiments/delta_r037_r032_full_specialist_parent_parity.py",
+      "blob_sha": "f100e5274466def8fc5aebf1a994c513d80ed3c3",
+      "status": "COMPLETE_NO_UNFINISHED_MARKERS"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "18A frozen roster manifest",
+      "path": "research/delta/artifacts/DELTA_R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A_MANIFEST.json"
+    },
+    {
+      "name": "18A finalization report",
+      "path": "research/delta/research/DELTA_R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A.md"
+    },
+    {
+      "name": "GitHub white-paper index",
+      "path": "research/delta/research/DELTA_R003_DIRECTION_HOLD_CAUSAL_GRAMMAR_WHITEPAPERS.md"
+    }
+  ],
+  "intermediate_surfaces": {
+    "pre_ownership_candidates": [],
+    "predictions": [],
+    "selected_owned_ledger": [],
+    "caches": [],
+    "notes": [
+      "No market replay executed.",
+      "No helper code changed.",
+      "Seven native Google Docs status banners normalized to current R037 frozen dispositions.",
+      "Workbook tab 11 rewritten as operator-facing frozen specialist roster index."
+    ]
+  },
+  "models": [],
+  "outputs": [
+    {
+      "path": "research/delta/reference/DELTA_R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B.json",
+      "commit": "c902ede72f669de8d56fe280288943cf1fb4b172",
+      "blob_sha": "4f8e383c8db9b63ce54c7f96a02feb28f1aa9030"
+    },
+    {
+      "path": "research/delta/research/DELTA_R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B.md",
+      "commit": "44d563038474fdee103ffea28f141c216da84d69",
+      "blob_sha": "d4ae1d6a95118ca49aa3118fbcb6904e8b996909"
+    },
+    {
+      "path": "research/delta/research/DELTA_R003_DIRECTION_HOLD_CAUSAL_GRAMMAR_WHITEPAPERS.md",
+      "commit": "2683337342a108399ab3e58132f0c39d2ec36e53",
+      "blob_sha": "5ed33a061daf644378f47f12c723a1ab6af6d250"
+    }
+  ],
+  "qa": [
+    "18A helper audit retained: current required helpers complete; no current unfinished helper remains.",
+    "Historical unrecovered producer/helper bytes remain provenance limitations and were not fabricated.",
+    "All seven native specialist white papers were read back with current R037 FROZEN top-line status banners.",
+    "Spreadsheet 1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0 tab 11 range A1:H10 was written and read back successfully.",
+    "Spreadsheet preserves existing header/body wrap formatting and exposes direct Google Docs URLs.",
+    "GitHub white-paper index header now identifies the R037 frozen/refinement-integration-ready state.",
+    "No scientific result, threshold, trade count, economics, August access, or MQL5 status changed."
+  ],
+  "reconstruction": {
+    "entry_point": "research/delta/qa/delta_r037_specialist_roster_finalization_18a.py",
+    "command": "python research/delta/qa/delta_r037_specialist_roster_finalization_18a.py",
+    "required_artifact_order": [
+      "18A frozen roster manifest",
+      "current helper sources",
+      "seven native Drive white papers",
+      "workbook tab 11 specialist index",
+      "18B compact result and report"
+    ],
+    "expected_fingerprints": {
+      "execution_streams": [
+        "DH03-S06",
+        "DH05-S06",
+        "DH02-S11",
+        "DH02-S08"
+      ],
+      "shared_components": [
+        "DH01",
+        "DH06",
+        "DH07"
+      ],
+      "reserve": [
+        "DH04"
+      ],
+      "current_required_helpers": "COMPLETE",
+      "next_unit": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_PLAN"
+    },
+    "timing_semantics": "Repository/Drive documentation finalization only; no tick chronology, market replay, or execution timing is altered.",
+    "notes": "Scientific state is inherited unchanged from 18A. 18B only removes stale operator-facing documentation labels and finalizes the white-paper index."
+  },
+  "mt5_translation_contract": {
+    "authoritative_python_parent": "NONE — documentation/finalization checkpoint",
+    "feature_timing_spec": "Not translation-ready.",
+    "state_machine_spec": "Frozen roster must be refined/integrated first.",
+    "model_inference_spec": "No model inference.",
+    "execution_quote_side_spec": "Unchanged from frozen DELTA contracts.",
+    "ownership_scheduler_spec": "BACKBONE_FIRST_FLAT_ONLY_CONFIG_ORDER remains provenance-limited scheduler hypothesis.",
+    "session_dst_spec": "Unchanged.",
+    "risk_spec": "Unchanged.",
+    "trade_count_parity_spec": "Exact historical R032-C03 parity remains unclaimed.",
+    "parity_fixtures": []
+  },
+  "human_qa": {
+    "ready": false,
+    "packet": [],
+    "status": "NOT_STARTED"
+  },
+  "github_commits": [
+    "2683337342a108399ab3e58132f0c39d2ec36e53",
+    "c902ede72f669de8d56fe280288943cf1fb4b172",
+    "44d563038474fdee103ffea28f141c216da84d69"
+  ],
+  "drive_artifacts": [
+    {
+      "name": "DH-01 White Paper",
+      "id": "1WrDPUavWb-bbv7gmxnnlEAFjT1NA9wYbPAwl-ayREAw",
+      "readback": true
+    },
+    {
+      "name": "DH-02 White Paper",
+      "id": "18KpLADXCt-MlIQgZ4j6papHdE7SUtrl8kVTbn0x1XNc",
+      "readback": true
+    },
+    {
+      "name": "DH-03 White Paper",
+      "id": "13pa0KSxVy93yajDEGAIkeY4V8Z3egMDIPxPV0nM3ia8",
+      "readback": true
+    },
+    {
+      "name": "DH-04 White Paper",
+      "id": "1S9VYfq3DrDqabMaHHqq6BB2ueB-CPBw9OLYnFOZlQDg",
+      "readback": true
+    },
+    {
+      "name": "DH-05 White Paper",
+      "id": "1mIcrUUeK0lGwfR6L_26O47DQxQV7xygbnFcnkvE4s6k",
+      "readback": true
+    },
+    {
+      "name": "DH-06 White Paper",
+      "id": "1MAkyDsu1TK7VC8Rlx4ahlIxznPFEJKy_uX4k31heIhc",
+      "readback": true
+    },
+    {
+      "name": "DH-07 White Paper",
+      "id": "1CyZ-WBMpBCfQfz_dnfbOAfCktDgbC7uPlW-72NGM7ww",
+      "readback": true
+    },
+    {
+      "name": "DELTA working research workbook",
+      "id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+      "tab": "11 White Papers",
+      "range": "A1:H10",
+      "readback": true
+    }
+  ],
+  "verification": {
+    "github_readback": true,
+    "drive_readback": true,
+    "hashes_verified": true,
+    "current_state_advanced": false
+  },
+  "supersedes": [
+    "stale pre-test status banners in DH-01 through DH-07 operator-facing white papers",
+    "stale specialist rows in workbook tab 11"
+  ],
+  "rollback_target": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
+  "next_unit": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_PLAN"
+}
