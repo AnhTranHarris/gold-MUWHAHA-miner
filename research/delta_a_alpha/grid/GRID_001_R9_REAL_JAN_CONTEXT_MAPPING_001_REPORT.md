@@ -23,10 +23,7 @@ At UTC+2 report offset:
 - 90th-percentile time error: **359 ms**
 - **99.55%** of entries are within $1.00 of the mapped P75 executable quote.
 
-Neighboring offsets are dramatically worse:
-- +1 hour median error: ~**$7.26**
-- +3 hours: ~**$7.51**
-- zero offset: ~**$9.77**
+A full whole-hour sweep from **-12 through +14 hours** was persisted. The next-best candidate is +1 hour at about **$7.11 median error**, versus **$0.09** at +2; the winner is better by roughly **$7.02** on median entry-price error.
 
 The clock mapping is therefore strong enough for causal context tagging.
 
@@ -66,6 +63,10 @@ Population:
 - phase extended: **1,787**
 - volatility expansion >=1.75: **2,309**
 - volatility expansion >=2.00: **1,167**
+
+## Durable mapped context
+
+A compact 31,915-row context table is also mirrored to the backup Drive under the MT5_EXPAND account as `R9_REAL_JAN_CONTEXT_CORE_001.csv` (Drive file ID `1J7wHY9xToJcvmP_dMO0vxNwyP60TbpkE`). The full 39-column table remains deterministically regenerable from the committed helper and canonical report/tick sources.
 
 ## What is not yet claimed
 
