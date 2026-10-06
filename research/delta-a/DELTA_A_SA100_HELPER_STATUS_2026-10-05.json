@@ -1,7 +1,7 @@
 {
   "schema": "delta-a-sa100-helper-status-v1",
   "lineage": "DELTA-A",
-  "status": "HANDOFF_READY_AFTER_TIMEOUT_RERUN",
+  "status": "HANDOFF_READY_R10AA_R10AS_BREAKTHROUGH",
   "august_accessed": false,
   "production_mql5_authorized": false,
   "last_complete_sa100_research": {
@@ -50,7 +50,7 @@
     "cross_month_decision_completed": false,
     "required_action": "Rerun the helper work unit from scratch starting with January."
   },
-  "next_unit": "SA100_R10AA_RESIDUAL_CONT180_LOSS_CONVERSION01",
+  "next_unit": "SA100_R10AI_CAPITAL_GATE_SUPERMODEL01",
   "hard_rules": {
     "martingale": "BOUNDED_RESEARCH_ONLY__UNBOUNDED_EXPONENTIAL_NOT_PROMOTABLE",
     "lookahead": false,
@@ -672,6 +672,86 @@
       "status": "COMPLETE_EXACT_TICK_LOSS_CONTROL_CHAMPION",
       "output_sha256": "716eefa6a133d124486aa6f2f7a0a7013aa88bda880863d53540d9ca0385df82",
       "finding": "Residual failed-ignition CONT180 state at +3s -> close + reverse30. 95 activations, 51.58% specialist wins, +$357.86 vs R10Y, physical GL -$797.83, episode GL -$568.08, balance DD -$25.92. Tick DD +$12.72 vs R10Y but remains far below R10X3."
+    },
+    {
+      "id": "SA100_R10AA_CONT180_PROFITSTALL_CLOSE_EXACT01",
+      "status": "COMPLETE_EXACT_MINOR_BREAKTHROUGH",
+      "net_usd": 4231.6045,
+      "physical_gl_usd": -11825.3815,
+      "specialist_win": 0.9523809524,
+      "tick_min_equity_usd": 80.35
+    },
+    {
+      "id": "SA100_R10AB_REVERT900_REV30_EXACT01",
+      "status": "COMPLETE_EXACT_BREAKTHROUGH",
+      "net_usd": 4470.4145,
+      "physical_gl_usd": -11566.1815,
+      "episode_gl_usd": -9300.011,
+      "specialist_win": 0.9256756757,
+      "executed_episode_win": 0.6003811944,
+      "tick_min_equity_usd": 87.17
+    },
+    {
+      "id": "SA100_R10AC_LATE_CONT180_REV45_EXACT01",
+      "status": "COMPLETE_EXACT_NOT_PROMOTED",
+      "net_usd": 4583.1945,
+      "physical_gl_usd": -11958.3015,
+      "decision": "Higher net but worse physical gross loss and balance DD than AB; do not stack for current objective."
+    },
+    {
+      "id": "SA100_R10AF_REVERT900_EARLY_DIRECTION_EXACT_COMPARE01",
+      "status": "COMPLETE_EXACT_COMPARE__SUPERSEDED_BY_AG",
+      "decision": "Useful REVERT900 provenance; R10AG selected as cleaner sequential parent."
+    },
+    {
+      "id": "SA100_R10AG_REVERT900_SEQUENTIAL_SUPERMODEL01",
+      "status": "COMPLETE_EXACT_SEQUENTIAL_BREAKTHROUGH",
+      "variant": "SEQ45_60",
+      "net_usd": 4700.4245,
+      "physical_gl_usd": -10482.8915,
+      "episode_gl_usd": -8244.581,
+      "specialist_win": 0.5672043011,
+      "converted_losses": 118,
+      "tick_min_equity_usd": 99.51
+    },
+    {
+      "id": "SA100_R10AH_REVERT600_FAILURE_OWNER_EXACT01",
+      "status": "COMPLETE_EXACT_STACK_BREAKTHROUGH__PROMOTED_PARENT",
+      "net_usd": 4824.6145,
+      "physical_gl_usd": -10383.6315,
+      "episode_gl_usd": -8125.211,
+      "specialist_win": 0.6363636364,
+      "executed_episode_win": 0.6114993647,
+      "tick_min_equity_usd": 99.51
+    },
+    {
+      "id": "SA100_R10AI_LONG_HORIZON_FAILOVER_EXACT01",
+      "status": "COMPLETE_EXACT_STACK_TEST__CAPITAL_GATE_REQUIRED",
+      "net_usd": 4969.7345,
+      "physical_gl_usd": -10321.7415,
+      "episode_gl_usd": -7975.161,
+      "specialist_win": 0.6506024096,
+      "executed_episode_win": 0.6146759848,
+      "tick_min_equity_usd": 81.37,
+      "decision": "Do not enable from $100; test capital gates."
+    },
+    {
+      "id": "SA100_R10AP_EXPANSION_METALABEL01",
+      "status": "COMPLETE_VELOCITY_SPECIALIST_CANDIDATE",
+      "selected": 1043,
+      "success": 0.6088207095,
+      "net_usd": 445.019,
+      "gl_usd": -458.314,
+      "decision": "Capital-gated only after core loss/DD stabilization."
+    },
+    {
+      "id": "SA100_R10AR_SECONDWAVE_METALABEL01",
+      "status": "COMPLETE_SECOND_WAVE_VELOCITY_SPECIALIST_CANDIDATE",
+      "selected": 1704,
+      "success": 0.5762910798,
+      "net_usd": 360.1315,
+      "gl_usd": -699.423,
+      "decision": "Second velocity desk after AP."
     }
   ],
   "current_leading_experimental_lane": {
@@ -1047,6 +1127,65 @@
       "converted_losses": 27
     }
   },
-  "last_completed_helper": "SA100_R10Z30_CONT180_SECOND_STAGE_FAILURE_SPECIALIST01",
-  "last_completed_helper_result": "COMPLETE_CHAMPION__JAN_NET4078_PHYSGL12206_BALDD239_EXECWIN57P08"
+  "last_completed_helper": "SA100_R10AR_SECONDWAVE_METALABEL01",
+  "last_completed_helper_result": "COMPLETE_VELOCITY_SPECIALIST_CANDIDATE__NOT_YET_PHYSICALLY_INTEGRATED",
+  "r10aa_r10as_breakthrough_handoff": {
+    "status": "FROZEN_HANDOFF_READY",
+    "github_handoff": "research/delta-a/DELTA_A_R10AA_R10AS_BREAKTHROUGH_HANDOFF_2026-10-05.md",
+    "github_state": "research/delta-a/artifacts/DELTA_A_R10AA_R10AS_BREAKTHROUGH_STATE.json",
+    "drive_folder": "https://drive.google.com/drive/folders/1_j8CaAwOvcD5S6OQkRf5bn-oXTgnayBB",
+    "drive_archive": "https://drive.google.com/file/d/1esLKLdsc3VempopiUz1hBqkgxbfyAgCw/view",
+    "drive_manifest": "https://drive.google.com/file/d/1dexMGtGg_KFEF1kxTeKa6wbjGE__iyUc/view",
+    "archive_sha256": "181667cda8e63d8f86cffdc17809761838317c218bb8c3d111aec7eebec153f1",
+    "archived_file_count": 81,
+    "promoted_parent": [
+      "R10AA",
+      "R10AB",
+      "R10AG_SEQ45_60",
+      "R10AH"
+    ],
+    "parent_result": {
+      "net_usd": 4824.6145000000615,
+      "physical_gl_usd": -10383.631500000001,
+      "episode_gl_usd": -8125.211000000005,
+      "tick_min_equity_usd": 99.51000000000066,
+      "tick_dd_usd": 203.28000000000338,
+      "executed_episode_win": 0.6114993646759848
+    },
+    "conditional_ai": {
+      "ungated_net_usd": 4969.734500000076,
+      "physical_gl_usd": -10321.74149999999,
+      "episode_gl_usd": -7975.1609999999955,
+      "tick_min_equity_usd": 81.36999999999848,
+      "executed_episode_win": 0.6146759847522236,
+      "required_capital_gates_usd": [
+        150,
+        175,
+        200,
+        250,
+        300
+      ]
+    },
+    "velocity_candidates": {
+      "R10AP": {
+        "selected": 1043,
+        "success": 0.6088207094918504,
+        "net_usd": 445.0189999994336,
+        "gl_usd": -458.31400000010854
+      },
+      "R10AR": {
+        "selected": 1704,
+        "success": 0.5762910798122066,
+        "net_usd": 360.1314999992592,
+        "gl_usd": -699.4230000000243
+      }
+    },
+    "immediate_next": [
+      "Capital-gate R10AI at $150/$175/$200/$250/$300; preserve AG+AH seed floor.",
+      "Forensic and specialize only the ~$203 AG+AH maximum tick-DD path.",
+      "After core stabilization, exact capital-gated R10AP; R10AR second."
+    ],
+    "august_accessed": false,
+    "production_mql5_authorized": false
+  }
 }
