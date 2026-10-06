@@ -1,0 +1,108 @@
+{
+  "schema": "delta-a-alpha-r9-real-jan-micro-market-state-v1-compact",
+  "unit": "DAA_GRID_001_R9_REAL_JAN_MICRO_MARKET_STATE_001",
+  "status": "COMPLETE_NO_SELECTIVE_20PCT_MICRO_STATE",
+  "canonical": {
+    "trades": 31915,
+    "net": -6651.62,
+    "gross_profit": 3785.28,
+    "gross_loss": -10436.9
+  },
+  "diagnostics": {
+    "median_efficiency_250ms": 0.42857142857142855,
+    "median_efficiency_1s": 0.5,
+    "median_efficiency_5s": 0.41968911917098445,
+    "median_aligned_imbalance_current": 0,
+    "median_aligned_imbalance_mean_1s": 0,
+    "median_microprice_bias_norm": 0,
+    "median_intensity_ratio_1s": 1.254355400696864,
+    "timestamp_caveat": "250ms state was preregistered and retained diagnostically, but MT5 report timestamp precision limits independent subsecond promotion."
+  },
+  "state_populations": {
+    "price": {
+      "MIXED_FLAT": 14141,
+      "ALL_SUPPORT": 10351,
+      "FAST_OPPOSE_SLOW_SUPPORT": 7156,
+      "ALL_OPPOSE": 150,
+      "FAST_SUPPORT_SLOW_OPPOSE": 117
+    },
+    "l1": {
+      "MIXED_OR_ZERO": 22456,
+      "BOTH_OPPOSE": 4917,
+      "BOTH_SUPPORT": 4183,
+      "FLIP_TO_OPPOSE": 184,
+      "FLIP_TO_SUPPORT": 175
+    },
+    "intensity": {
+      "NORMAL": 22274,
+      "BURST": 6151,
+      "THIN": 3490
+    }
+  },
+  "large_states": {
+    "MIXED_FLAT": {
+      "trades": 14141,
+      "trade_share_pct": 44.3083,
+      "net": -2970.55,
+      "pf": 0.350853,
+      "gross_loss_share_pct": 43.8452,
+      "gross_profit_share_pct": 42.4151,
+      "discovery_net": -2557.78,
+      "validation_net": -412.77
+    },
+    "MIXED_OR_ZERO_L1": {
+      "trades": 22456,
+      "trade_share_pct": 70.3619,
+      "net": -4748.53,
+      "pf": 0.348023,
+      "gross_loss_share_pct": 69.7839,
+      "gross_profit_share_pct": 66.9633,
+      "discovery_net": -4060.73,
+      "validation_net": -687.8
+    },
+    "MIXED_FLAT_x_MIXED_OR_ZERO": {
+      "trades": 10068,
+      "trade_share_pct": 31.5463,
+      "net": -2193.19,
+      "pf": 0.329572,
+      "gross_loss_share_pct": 31.3439,
+      "gross_profit_share_pct": 28.4824,
+      "discovery_net": -1941.41,
+      "validation_net": -251.78
+    },
+    "FAST_OPPOSE_SLOW_SUPPORT": {
+      "trades": 7156,
+      "trade_share_pct": 22.4221,
+      "net": -1513.07,
+      "pf": 0.364563,
+      "gross_loss_share_pct": 22.8147,
+      "gross_profit_share_pct": 22.933,
+      "discovery_net": -1163.09,
+      "validation_net": -349.98
+    },
+    "BURST": {
+      "trades": 6151,
+      "trade_share_pct": 19.2731,
+      "net": -1342.99,
+      "pf": 0.320019,
+      "gross_loss_share_pct": 18.9236,
+      "gross_profit_share_pct": 16.6976,
+      "discovery_net": -1202.04,
+      "validation_net": -140.95
+    }
+  },
+  "interpretation": [
+    "Micro-market state is real and chronologically stable, but the large negative states mostly track their trade share rather than concentrating gross loss enough for a clean static veto.",
+    "The 1s-vs-5s FAST_OPPOSE_SLOW_SUPPORT state is a genuine micro trend-within-trend descriptor, but its gross-loss share is approximately proportional to trade share.",
+    "L1 top-of-book volume state does not independently isolate a high-leverage toxic family.",
+    "Do not tune micro thresholds or exploit the 250ms component."
+  ],
+  "scientific_decision": [
+    "KEEP 1s/5s quote-path state, L1 imbalance, and quote intensity as contextual fields",
+    "REJECT static micro-state veto as the desired 20% breakthrough",
+    "NEXT stack the already-promoted proof-before-entry admission primitive onto the actual R9 signal stream and measure winner/loser retention before simulating delayed execution"
+  ],
+  "next_unit": "DAA_GRID_001_R9_REAL_JAN_PROOF_ADMISSION_RETENTION_001_PREREG",
+  "promotion_eligible": false,
+  "august": "SEALED"
+}
