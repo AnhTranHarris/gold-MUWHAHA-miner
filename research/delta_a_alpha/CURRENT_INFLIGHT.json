@@ -1,17 +1,19 @@
 {
   "schema": "delta-a-alpha-inflight-v4",
   "authority": "APPEND_ONLY_STATE_JOURNAL",
-  "state": "RUNNING",
-  "last_completed": "DAA_GRID_SYSTEM_SESSION_TIMEFRAME_SOURCE_HUNT_AND_PREREG_003",
-  "current_unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS_JANUARY_REPLAY",
-  "next_unit": null,
-  "journal_entry": "research/delta_a_alpha/state_journal/0023_DAA_GRID_SYSTEM_SESSION_TIMEFRAME_SOURCE_HUNT_AND_PREREG_003.json",
-  "intended_outputs": [
-    "research/delta_a_alpha/experiments/grid_session_timeframe_january.py",
-    "research/delta_a_alpha/artifacts/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS_JANUARY.json",
-    "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS_REPORT.md",
-    "research/delta_a_alpha/state_journal/0024_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS.json"
-  ],
-  "failure_recovery": "Verify intended outputs first. Source hunt/prereg are complete; never rebuild them. Rerun only missing January replay/result unit.",
-  "write_discipline": "Persist accepted January harness and result before starting any new system dimension."
+  "state": "IDLE_READY",
+  "last_completed": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001",
+  "current_unit": null,
+  "next_unit": "OWNER_NEXT_SYSTEM_DIMENSION_SELECTION",
+  "journal_entry": "research/delta_a_alpha/state_journal/0024_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001.json",
+  "accepted_floor": {
+    "candidate": "STMR_SLEEVE_PHASE_001",
+    "january_net": 877.78,
+    "profit_factor": 1.602933,
+    "trades": 1518,
+    "parent_candidate": "STMR-001",
+    "parent_january_net": 416.23
+  },
+  "failure_recovery": "Read journal 0024 first. Session/timeframe source hunt, January replay, mutation screen and accepted refinement are complete. Do not rebuild them or revert to STMR-001.",
+  "write_discipline": "Next system dimension must preregister against STMR_SLEEVE_PHASE_001 before economic replay."
 }
