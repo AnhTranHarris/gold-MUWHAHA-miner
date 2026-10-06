@@ -81,6 +81,126 @@ class GridKernelTests(unittest.TestCase):
             normal.adjustment.entry_authority,
         )
 
+    def test_flat_spread_midrank_does_not_fake_tail_stress(self):
+        cfg = GridConfig(
+            q_floor=0.01,
+            q_ceiling=100.0,
+            cost_mult=1.0,
+            noise_mult=1.0,
+            noise_window=16,
+            path_window=16,
+            spread_window=32,
+            interval_window=32,
+        )
+        q = AdaptiveQEstimator(cfg)
+        t = datetime(2026, 1, 1, 13, 0, tzinfo=timezone.utc)
+        snap = None
+        for i in range(24):
+            snap = q.update(
+                ts_utc=t + timedelta(milliseconds=100 * i),
+                bid=100.0 + 0.001 * i,
+                ask=100.1 + 0.001 * i,
+            )
+        self.assertAlmostEqual(snap.spread_percentile, 0.5, places=12)
+        self.assertLess(snap.observed_stress, 0.5)
+
+    def test_calm_high_release_uses_partial_not_max_envelope(self):
+        cfg = GridConfig(
+            q_floor=0.01,
+            q_ceiling=100.0,
+            cost_mult=1.0,
+            noise_mult=1.0,
+            shock_min_components=4,
+            noise_window=16,
+            path_window=16,
+            spread_window=32,
+            interval_window=32,
+        )
+        q = AdaptiveQEstimator(cfg)
+        t = datetime(2026, 1, 1, 13, 0, tzinfo=timezone.utc)
+        snap = None
+        for i in range(24):
+            snap = q.update(
+                ts_utc=t + timedelta(milliseconds=100 * i),
+                bid=100.0 + 0.001 * i,
+                ask=100.1 + 0.001 * i,
+                event_phase=EventPhase.RELEASE_HIGH,
+            )
+        ratio = snap.q_context / snap.q_base
+        self.assertGreaterEqual(snap.event_activation, 0.40)
+        self.assertLess(snap.event_activation, 1.0)
+        self.assertGreater(ratio, 1.0)
+        self.assertLess(ratio, 1.80)
+        self.assertGreater(snap.adjustment.entry_authority, 0.20)
+
+    def test_scheduled_shock_never_exceeds_high_release_cap(self):
+        cfg = GridConfig(
+            q_floor=0.01,
+            q_ceiling=100.0,
+            cost_mult=1.0,
+            noise_mult=1.0,
+            shock_min_components=1,
+            noise_window=16,
+            path_window=16,
+            spread_window=32,
+            interval_window=32,
+        )
+        q = AdaptiveQEstimator(cfg)
+        t = datetime(2026, 1, 1, 13, 0, tzinfo=timezone.utc)
+        for i in range(24):
+            q.update(
+                ts_utc=t + timedelta(milliseconds=100 * i),
+                bid=100.0 + 0.001 * i,
+                ask=100.1 + 0.001 * i,
+                event_phase=EventPhase.RELEASE_HIGH,
+            )
+        snap = q.update(
+            ts_utc=t + timedelta(milliseconds=2450),
+            bid=99.5,
+            ask=100.7,
+            event_phase=EventPhase.RELEASE_HIGH,
+        )
+        self.assertTrue(snap.shock_active)
+        ratio = snap.q_context / snap.q_base
+        self.assertLessEqual(ratio, 1.80 + 1e-12)
+        self.assertGreaterEqual(snap.adjustment.entry_authority, 0.20 - 1e-12)
+        self.assertGreaterEqual(snap.observed_stress, 0.0)
+        self.assertLessEqual(snap.observed_stress, 1.0)
+        self.assertGreaterEqual(snap.event_activation, 0.0)
+        self.assertLessEqual(snap.event_activation, 1.0)
+
+    def test_normal_unscheduled_shock_retains_defensive_multiplier(self):
+        cfg = GridConfig(
+            q_floor=0.01,
+            q_ceiling=100.0,
+            cost_mult=1.0,
+            noise_mult=1.0,
+            shock_min_components=1,
+            noise_window=16,
+            path_window=16,
+            spread_window=32,
+            interval_window=32,
+        )
+        q = AdaptiveQEstimator(cfg)
+        t = datetime(2026, 1, 1, 13, 0, tzinfo=timezone.utc)
+        for i in range(24):
+            q.update(
+                ts_utc=t + timedelta(milliseconds=100 * i),
+                bid=100.0 + 0.001 * i,
+                ask=100.1 + 0.001 * i,
+                event_phase=EventPhase.NORMAL,
+            )
+        snap = q.update(
+            ts_utc=t + timedelta(milliseconds=2450),
+            bid=99.5,
+            ask=100.7,
+            event_phase=EventPhase.NORMAL,
+        )
+        self.assertTrue(snap.shock_active)
+        self.assertAlmostEqual(snap.q_context / snap.q_base, 1.35, places=12)
+        self.assertAlmostEqual(snap.adjustment.entry_authority, 0.50, places=12)
+        self.assertEqual(snap.event_activation, 0.0)
+
     def test_threshold_does_not_shrink_mid_leg(self):
         tracker = DirectionalChangeTracker(1.0)
         t = datetime(2026, 1, 1, tzinfo=timezone.utc)
