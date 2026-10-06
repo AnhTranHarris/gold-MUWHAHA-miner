@@ -1,11 +1,11 @@
 {
   "schema": "delta-a-alpha-inflight-v4",
   "authority": "APPEND_ONLY_STATE_JOURNAL",
-  "state": "ACTIVE_BOUNDED_RESEARCH",
+  "state": "IDLE_READY",
   "last_completed": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001",
-  "current_unit": "DAA_STMR_JANUARY_PARITY_RECOVERY_001",
-  "next_unit": "DAA_STMR_JANJUL_FROZEN_PARENT_REPLAY_001",
-  "journal_entry": "research/delta_a_alpha/state_journal/0026_DAA_STMR_JANJUL_STRESS_001_RECOVERY_START.json",
+  "current_unit": null,
+  "next_unit": "OWNER_STMR_PARITY_OR_CLEANROOM_AUTHORITY_DECISION",
+  "journal_entry": "research/delta_a_alpha/state_journal/0027_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002.json",
   "accepted_floor": {
     "candidate": "STMR_SLEEVE_PHASE_001",
     "january_net": 877.78,
@@ -14,6 +14,6 @@
     "parent_candidate": "STMR-001",
     "parent_january_net": 416.23
   },
-  "failure_recovery": "Read journal 0026 then 0025/0024. Load the persisted Library recovery bundle for timeout-era stmr_* helpers. Exact January parity remains incomplete; rerun only the smallest parity recovery unit. Do not start Jan-Jul tuning on a substitute replay.",
-  "write_discipline": "Persist the parity-capable helper and parity result before Jan-Jul parent replay. Session/timeframe-only tuning is authorized; August remains sealed."
+  "failure_recovery": "Read journal 0027 -> 0026 -> 0025/0024. Jan-Jul session/timeframe stress 002 is complete. Runtime bundle v2 is durable in Library. Do not rerun completed Jan-Jul sweeps. Accepted floor remains STMR_SLEEVE_PHASE_001 until exact parity is recovered or owner explicitly authorizes the clean-room cross-month candidate.",
+  "write_discipline": "No new whole-system dimension until owner decides parity recovery versus clean-room cross-month authority. If parity recovery continues, rerun only a bounded new parity hypothesis; do not rerun completed stress sweeps."
 }
