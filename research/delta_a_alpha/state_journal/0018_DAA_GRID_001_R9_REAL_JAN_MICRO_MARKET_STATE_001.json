@@ -1,0 +1,70 @@
+{
+  "sequence": 18,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_GRID_001_R9_REAL_JAN_MICRO_MARKET_STATE_001",
+  "status": "COMPLETE_NO_SELECTIVE_20PCT_MICRO_STATE",
+  "predecessor": {
+    "sequence": 17,
+    "unit": "DAA_GRID_001_R9_REAL_JAN_SIGNAL_FLOW_STATE_001",
+    "path": "research/delta_a_alpha/state_journal/0017_DAA_GRID_001_R9_REAL_JAN_SIGNAL_FLOW_STATE_001.json"
+  },
+  "completed_outputs": [
+    "research/delta_a_alpha/grid/GRID_001_R9_REAL_JAN_MICRO_MARKET_STATE_001_PREREG.md",
+    "research/delta_a_alpha/experiments/grid001_r9_real_jan_micro_market_state.py",
+    "research/delta_a_alpha/artifacts/GRID_001_R9_REAL_JAN_MICRO_MARKET_STATE_001.json",
+    "research/delta_a_alpha/grid/GRID_001_R9_REAL_JAN_MICRO_MARKET_STATE_001_REPORT.md"
+  ],
+  "result_summary": {
+    "mixed_flat": {
+      "trades": 14141,
+      "net": -2970.55,
+      "pf": 0.350853,
+      "gross_loss_share_pct": 43.8452,
+      "trade_share_pct": 44.3083
+    },
+    "mixed_l1": {
+      "trades": 22456,
+      "net": -4748.53,
+      "pf": 0.348023,
+      "gross_loss_share_pct": 69.7839,
+      "trade_share_pct": 70.3619
+    },
+    "mixed_price_l1": {
+      "trades": 10068,
+      "net": -2193.19,
+      "pf": 0.329572,
+      "gross_loss_share_pct": 31.3439,
+      "trade_share_pct": 31.5463
+    },
+    "fast_oppose_slow_support": {
+      "trades": 7156,
+      "net": -1513.07,
+      "pf": 0.364563,
+      "gross_loss_share_pct": 22.8147,
+      "trade_share_pct": 22.4221
+    },
+    "burst": {
+      "trades": 6151,
+      "net": -1342.99,
+      "pf": 0.320019,
+      "gross_loss_share_pct": 18.9236,
+      "trade_share_pct": 19.2731
+    }
+  },
+  "scientific_decision": [
+    "KEEP 1s/5s quote-path, L1 imbalance, and quote intensity as contextual state",
+    "REJECT static micro-state veto; large loss states mostly scale with trade share",
+    "DO NOT tune thresholds or promote 250ms state independently",
+    "NEXT apply frozen proof-before-entry admission to actual R9 signals as a retention diagnostic before delayed-execution simulation"
+  ],
+  "next_unit": "DAA_GRID_001_R9_REAL_JAN_PROOF_ADMISSION_RETENTION_001_PREREG",
+  "immutable_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "august_2026": "SEALED",
+    "main_delta": "READ_ONLY",
+    "mql5_authorized": false
+  }
+}
