@@ -1,0 +1,59 @@
+{
+  "sequence": 15,
+  "schema": "delta-a-alpha-state-journal-v1",
+  "unit": "DAA_GRID_001_R9_REAL_JAN_GROSS_LOSS_CONCENTRATION_001",
+  "status": "COMPLETE_NO_CLEAN_20PCT_STATIC_FAMILY",
+  "predecessor": {
+    "sequence": 14,
+    "unit": "DAA_GRID_001_R9_REAL_JAN_CONTEXT_MAPPING_001",
+    "path": "research/delta_a_alpha/state_journal/0014_DAA_GRID_001_R9_REAL_JAN_CONTEXT_MAPPING_001.json"
+  },
+  "completed_outputs": [
+    "research/delta_a_alpha/grid/GRID_001_R9_REAL_JAN_GROSS_LOSS_CONCENTRATION_001_PREREG.md",
+    "research/delta_a_alpha/experiments/grid001_r9_real_jan_gross_loss_concentration.py",
+    "research/delta_a_alpha/artifacts/GRID_001_R9_REAL_JAN_GROSS_LOSS_CONCENTRATION_001.json",
+    "research/delta_a_alpha/grid/GRID_001_R9_REAL_JAN_GROSS_LOSS_CONCENTRATION_001_REPORT.md"
+  ],
+  "result_summary": {
+    "low_vol_lt_1": {
+      "trade_share_pct": 54.23,
+      "gross_loss_share_pct": 53.11,
+      "gross_profit_share_pct": 49.67,
+      "net": -3663.34
+    },
+    "lattice_mixed": {
+      "trade_share_pct": 53.33,
+      "gross_loss_share_pct": 52.59,
+      "gross_profit_share_pct": 50.22,
+      "net": -3587.66
+    },
+    "owner_neutral": {
+      "trade_share_pct": 41.76,
+      "gross_loss_share_pct": 41.59,
+      "gross_profit_share_pct": 39.47,
+      "net": -2846.75
+    },
+    "a15_latest_opposed": {
+      "trade_share_pct": 43.59,
+      "gross_loss_share_pct": 43.6,
+      "gross_profit_share_pct": 42.58,
+      "net": -2938.29
+    }
+  },
+  "scientific_decision": [
+    "DO NOT use broad static family vetoes as a breakthrough; they remove comparable gross profit and trade share",
+    "R9 REAL January weakness appears broadly overactive/nonselective rather than isolated to one narrow static state",
+    "NEXT add causal R9 signal-flow/event-time pressure state within the same nested routing category"
+  ],
+  "next_unit": "DAA_GRID_001_R9_REAL_JAN_SIGNAL_FLOW_STATE_001_PREREG",
+  "immutable_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "sandwich_rule": "STACK_ON_ACCEPTED_FLOOR",
+    "august_2026": "SEALED",
+    "main_delta": "READ_ONLY",
+    "mql5_authorized": false
+  }
+}
