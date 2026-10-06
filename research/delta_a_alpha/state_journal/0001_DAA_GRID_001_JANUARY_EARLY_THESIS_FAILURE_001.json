@@ -1,0 +1,50 @@
+{
+  "sequence": 1,
+  "schema": "delta-a-alpha-state-journal-v1",
+  "unit": "DAA_GRID_001_JANUARY_EARLY_THESIS_FAILURE_001",
+  "status": "COMPLETE_PARTIAL_STRUCTURAL_SUCCESS",
+  "predecessor": {
+    "unit": "DAA_GRID_001_JANUARY_SHADOW_REGRET_MEMORY_001",
+    "note": "Earlier immutable artifacts/reports verified in branch history."
+  },
+  "recovery_anchor_branch": "delta-A-alpha-recovery-early-failure-001",
+  "recovery_anchor_commit": "e5a8de435f2806a09af462356c8ad61830deb782",
+  "protocol_commit": "31363b790a367192b029cf435669677f484e63d7",
+  "completed_outputs": [
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_EARLY_THESIS_FAILURE_001_PREREG.md",
+    "research/delta_a_alpha/experiments/grid001_january_early_thesis_failure.py",
+    "research/delta_a_alpha/artifacts/GRID_001_JANUARY_EARLY_THESIS_FAILURE_001.json",
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_EARLY_THESIS_FAILURE_001_REPORT.md"
+  ],
+  "result_summary": {
+    "A10": {
+      "gross_loss_reduction_pct": 18.567412,
+      "net_improvement_usd": 307.98,
+      "full_pf": 0.937524,
+      "validation_net": 544.11,
+      "validation_pf": 1.036374
+    },
+    "A15": {
+      "gross_loss_reduction_pct": 16.682436,
+      "net_improvement_usd": -159.78,
+      "full_pf": 0.966075,
+      "validation_net": 356.89,
+      "validation_pf": 1.02455
+    }
+  },
+  "scientific_decision": [
+    "KEEP conditional-risk early thesis failure as a gross-loss-control primitive",
+    "DO NOT micro-tune +0.25/-0.50 thresholds",
+    "NEXT analyze early-failure events for retire vs re-arm vs one-shot opposite-direction recovery"
+  ],
+  "next_unit": "DAA_GRID_001_JANUARY_ONE_SHOT_RECOVERY_001_PREREG",
+  "immutable_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "august_2026": "SEALED",
+    "main_delta": "READ_ONLY",
+    "mql5_authorized": false
+  }
+}
