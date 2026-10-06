@@ -1,0 +1,84 @@
+{
+  "id": "DELTA_A_R10AI_R10AT_R10AP_R10AR_CONTINUATION_2026-10-05",
+  "status": "JANUARY_CONTINUATION_COMPLETE_NOT_MT5_AUTHORIZED",
+  "frozen_parent_commit": "ce19815fda0f4d1219f55363df22bc857fb344f4",
+  "drive_source_archive_sha256": "181667cda8e63d8f86cffdc17809761838317c218bb8c3d111aec7eebec153f1",
+  "drive_source_archive_verification": "81/81 size+sha256 matched",
+  "continuation_bundle": {
+    "url": "https://drive.google.com/file/d/1OwL8YxIV1SEuohuZ2D9RSfkYkBwc6wd9/view?usp=drivesdk",
+    "sha256": "50b4c115a246f246b9716cb16451b42769a7acc05f1b59a0fb395f6c5b9fafa9",
+    "file_count": 16
+  },
+  "hard_rules": {
+    "seed_balance_usd": 100,
+    "fixed_lot": 0.01,
+    "minimum_real_architecture_handoff_balance_usd": 1000,
+    "august_accessed": false,
+    "production_mql5_authorized": false
+  },
+  "parent": {
+    "stack": [
+      "R10AA",
+      "R10AB",
+      "R10AG_SEQ45_60",
+      "R10AH"
+    ],
+    "net_usd": 4824.6145,
+    "physical_gl_usd": -10383.6315,
+    "episode_gl_usd": -8125.211,
+    "tick_min_equity_usd": 99.51,
+    "tick_dd_usd": 203.28
+  },
+  "r10ai_g200": {
+    "physical_events": 79,
+    "net_usd": 5004.5645,
+    "delta_net_usd": 179.95,
+    "physical_gl_usd": -10304.5615,
+    "episode_gl_usd": -7959.371,
+    "tick_min_equity_usd": 99.51,
+    "tick_dd_usd": 203.28
+  },
+  "r10at_dd90": {
+    "rule": "deny R10Z 30s reverse transfer only when proposed direction already has >=1 live portfolio position and live peak-to-equity DD >= $90; preserve +3s close",
+    "blocked_transfers": 11,
+    "net_usd": 5039.8345,
+    "delta_net_usd": 35.27,
+    "physical_gl_usd": -10234.5515,
+    "episode_gl_usd": -7896.051,
+    "tick_min_equity_usd": 99.51,
+    "tick_dd_usd": 181.04,
+    "dd_reduction_pct": 10.94,
+    "parameter_plateau_usd": [
+      75,
+      90,
+      100
+    ]
+  },
+  "r10ap_g300": {
+    "physical_events": 1041,
+    "incremental_net_usd": 446.319,
+    "incremental_gl_usd": -456.814,
+    "success": 0.609,
+    "combined_net_usd": 5486.1535,
+    "tick_min_equity_usd": 99.51,
+    "tick_dd_usd": 181.3015,
+    "max_positions": 9
+  },
+  "r10ar": {
+    "research_best_gate_usd": 500,
+    "research_best_combined_net_usd": 5848.269,
+    "policy_candidate_gate_usd": 1000,
+    "policy_physical_events": 1587,
+    "policy_incremental_net_usd": 351.848,
+    "policy_incremental_gl_usd": -653.93,
+    "policy_success": 0.5753,
+    "policy_combined_net_usd": 5838.0015,
+    "policy_physical_gl_usd": -11345.2955,
+    "policy_pf": 1.5146,
+    "policy_tick_min_equity_usd": 99.51,
+    "policy_tick_dd_usd": 169.01,
+    "max_positions": 9,
+    "status": "CONDITIONAL_PENDING_NON_AUGUST_CROSS_MONTH_VALIDATION"
+  },
+  "next_scientific_gate": "Cross-month causal validation of R10AI-G200 + R10AT-DD90 + R10AP-G300; retain R10AR-G1000 only if incremental performance survives. August remains sealed."
+}
