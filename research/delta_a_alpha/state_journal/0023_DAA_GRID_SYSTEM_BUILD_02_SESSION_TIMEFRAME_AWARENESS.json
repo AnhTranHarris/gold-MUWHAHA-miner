@@ -1,0 +1,65 @@
+{
+  "sequence": 23,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS",
+  "status": "COMPLETE_ACCEPTED_JANUARY_SESSION_TIMEFRAME_FLOOR",
+  "predecessor": {
+    "sequence": 22,
+    "unit": "DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON",
+    "path": "research/delta_a_alpha/state_journal/0022_DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON.json"
+  },
+  "owner_direction": [
+    "Aggressively solve session awareness and timeframe awareness before other dimensions",
+    "Use HTF for structural/environment ownership and scalping timeframes for transition/timing",
+    "30 percent milestone is not a hard gate for this dimension",
+    "Original high-performance mutations may be tested but must survive causal January replay"
+  ],
+  "completed_outputs": [
+    "research/delta_a_alpha/research/DAA_GRID_SESSION_TIMEFRAME_SOURCE_HUNT_003.md",
+    "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS_PREREG.md",
+    "research/delta_a_alpha/experiments/grid_system_session_timeframe.py",
+    "research/delta_a_alpha/qa/build02_session_timeframe_qa.py",
+    ".github/workflows/delta-a-alpha-build02-qa.yml",
+    "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS_REPORT.md"
+  ],
+  "qa": {
+    "workflow": "DELTA-A-alpha BUILD-02 QA",
+    "run_id": 37536602903,
+    "conclusion": "SUCCESS"
+  },
+  "result_summary": {
+    "candidate": "STMR-001",
+    "january_trades": 867,
+    "january_net": 416.23,
+    "profit_factor": 1.602,
+    "expected_payoff": 0.4801,
+    "discovery_net": 56.21,
+    "validation_net": 360.02,
+    "max_equity_drawdown": 71.01,
+    "minimum_equity_delta": -0.29,
+    "max_open_positions": 3,
+    "trades_per_active_day": 43.35,
+    "forced_liquidations": 0
+  },
+  "scientific_decision": [
+    "ACCEPT STMR-001 as January session/timeframe floor",
+    "KEEP session-local first-touch spatial memory",
+    "KEEP role-separated H4/H1 -> M15 -> M5 -> tick relay",
+    "REJECT generic timeframe unanimity",
+    "REJECT timer-only rearm",
+    "REJECT raw same-cell recrossing",
+    "REJECT generic sweep/reclaim fade",
+    "M1 confirmation is not automatically additive",
+    "Jan-Jul validation remains required before cross-month promotion"
+  ],
+  "next_unit": "DAA_GRID_SYSTEM_BUILD_03_ELASTIC_GEOMETRY_PREREG",
+  "immutable_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "main_delta": "READ_ONLY",
+    "august_2026": "SEALED",
+    "mql5_authorized": false
+  }
+}
