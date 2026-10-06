@@ -1,11 +1,50 @@
 {
-  "schema": "delta-a-alpha-inflight-v3",
-  "authority": "APPEND_ONLY_STATE_JOURNAL",
+  "schema": "delta-a-alpha-inflight-v2",
   "state": "RUNNING",
-  "last_completed": "DAA_STATE_JOURNAL_COLLISION_RECONCILIATION_001",
-  "current_unit": "DAA_GRID_001_R9_REAL_JAN_SIGNAL_FLOW_STATE_001",
+  "last_completed": "DAA_GRID_001_BOUNDED_STAGE_A_SCREEN_01",
+  "current_unit": "DAA_GRID_SYSTEM_ARCHITECTURE_RESEARCH_01",
   "next_unit": null,
-  "journal_entry": "research/delta_a_alpha/state_journal/0016_DAA_STATE_JOURNAL_COLLISION_RECONCILIATION_001.json",
-  "preregistration": "research/delta_a_alpha/grid/GRID_001_R9_REAL_JAN_SIGNAL_FLOW_STATE_001_PREREG.md",
-  "failure_recovery": "Read reconciliation entry 0016 first; duplicate historical sequence 0015 is reconciled there."
+  "scope": {
+    "purpose": "upgrade the grid as a whole before specialist refinement",
+    "target": "high-throughput support layer that helps bridge R9 REAL to R9 SYNTH before 6-16 later specialists",
+    "community_sources": [
+      "GitHub",
+      "MetaQuotes",
+      "TradingView",
+      "Reddit",
+      "ForexFactory",
+      "public quant/trading sources"
+    ],
+    "required_system_dimensions": [
+      "multi_session",
+      "multi_regime",
+      "multi_timeframe",
+      "market_structure",
+      "multi_trend",
+      "news_event",
+      "volatility",
+      "inventory_risk",
+      "execution_cost",
+      "small_account_survivability"
+    ],
+    "owner_constraints": {
+      "symbol": "XAUUSD",
+      "lot_size": 0.01,
+      "martingale": false,
+      "loss_dependent_sizing": false,
+      "small_account_usd": [
+        100,
+        200,
+        300
+      ],
+      "main_delta": "READ_ONLY",
+      "august_2026": "SEALED"
+    }
+  },
+  "intended_outputs": [
+    "research/delta_a_alpha/grid/GRID_SYSTEM_ARCHITECTURE_RESEARCH_01.md",
+    "research/delta_a_alpha/artifacts/GRID_SYSTEM_ARCHITECTURE_SOURCE_MATRIX_01.json"
+  ],
+  "failure_recovery": "Inspect intended output paths first; rerun only missing source audits or synthesis sections.",
+  "write_discipline": "Persist source matrix and architecture before any new backtest or tuning."
 }
