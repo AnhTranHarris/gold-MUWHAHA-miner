@@ -1,0 +1,66 @@
+{
+  "sequence": 10,
+  "schema": "delta-a-alpha-state-journal-v1",
+  "unit": "DAA_GRID_001_JANUARY_NESTED_STATE_TRANSITION_001",
+  "status": "COMPLETE_NEGATIVE_TRANSITION_RECLAIM",
+  "predecessor": {
+    "sequence": 9,
+    "unit": "DAA_GRID_001_JANUARY_NESTED_TREND_STATE_001",
+    "path": "research/delta_a_alpha/state_journal/0009_DAA_GRID_001_JANUARY_NESTED_TREND_STATE_001.json"
+  },
+  "completed_outputs": [
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_NESTED_STATE_TRANSITION_001_PREREG.md",
+    "research/delta_a_alpha/experiments/grid001_january_nested_state_transition.py",
+    "research/delta_a_alpha/artifacts/GRID_001_JANUARY_NESTED_STATE_TRANSITION_001.json",
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_NESTED_STATE_TRANSITION_001_REPORT.md"
+  ],
+  "result_summary": {
+    "A15_transition_accept": {
+      "trades": 598,
+      "net": 61.62,
+      "pf": 1.064694,
+      "discovery_net": -111.2,
+      "validation_net": 172.82
+    },
+    "A15_child_reclaim_parent_trend": {
+      "trades": 258,
+      "net": 51.42,
+      "pf": 1.125875,
+      "discovery_net": -18.51,
+      "validation_net": 69.93
+    },
+    "parent_opposed_family": {
+      "A05": {
+        "trades": 5173,
+        "net": -844.4,
+        "pf": 0.873875
+      },
+      "A10": {
+        "trades": 2611,
+        "net": -315.41,
+        "pf": 0.93854
+      },
+      "A15": {
+        "trades": 1957,
+        "net": -151.63,
+        "pf": 0.966296
+      }
+    }
+  },
+  "scientific_decision": [
+    "REJECT generic child/middle reclaim transition as standalone ownership rule",
+    "KEEP parent-opposed continuation as a large repeatable wrong-direction family",
+    "NEXT reroute parent-opposed child continuation into parent direction after causal reclaim rather than merely vetoing it"
+  ],
+  "next_unit": "DAA_GRID_001_JANUARY_PARENT_OPPOSED_RECLAIM_ROUTE_001_PREREG",
+  "immutable_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "sandwich_rule": "STACK_ON_ACCEPTED_FLOOR",
+    "august_2026": "SEALED",
+    "main_delta": "READ_ONLY",
+    "mql5_authorized": false
+  }
+}
