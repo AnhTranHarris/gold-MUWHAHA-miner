@@ -1,22 +1,22 @@
 {
   "schema": "delta-b-timeout-recovery-inflight-v1",
-  "status": "IDLE_READY",
+  "status": "READY",
   "branch": "delta-b",
-  "unit": "DB001A_EXECUTABLE_MOVEMENT_QUANTUM_AND_SESSION_EVENT_STATE_SPEC",
+  "unit": "DB001A_EXACT_BYTE_QA_AND_CAUSAL_Q_SESSION_EVENT_TRACE",
   "family": "GRID_LAYER_1",
-  "parent_durable_unit": "DELTA_B_BOOTSTRAP",
-  "phase": "SPEC_AND_HARNESS_READY",
-  "phase_rank": 1,
+  "parent_durable_unit": "DB001_BOOTSTRAP_GRID_LAYER_1",
+  "phase": "HELPER_COMMITTED_QA_BOUNDARY_RECORDED",
+  "phase_rank": 2,
   "progress": {
-    "last_completed": "DELTA_B_BRANCH_AND_GRID_CONSTITUTION_BOOTSTRAP",
+    "last_completed": "DB001_BOOTSTRAP_GRID_LAYER_1",
     "current_candidate": null,
-    "next": "IMPLEMENT_AND_QA_CAUSAL_Q_SESSION_EVENT_STATE_HELPER"
+    "next": "EXECUTE_EXACT_COMMITTED_BYTES_THEN_PRODUCE_CAUSAL_Q_SESSION_EVENT_TRACE"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read root CURRENT_STATE plus DELTA-B README, Grid constitution, DB001 plan and this file. Resume the first missing DB001 durable phase only.",
-    "idempotency_rule": "Do not rerun a completed DB001 phase solely because chat delivery failed.",
-    "parent_delta_rule": "Never advance or modify parent delta from the delta-b branch."
+    "resume_first_action": "Read root CURRENT_STATE, this file and DELTA_B_DB001_BOOTSTRAP_MANIFEST. Execute exact committed helper/QA bytes before claiming scientific verification.",
+    "idempotency_rule": "Do not rerun completed bootstrap or parent DELTA research.",
+    "parent_delta_rule": "Never advance or modify parent delta from delta-b."
   },
   "constraints": {
     "august_2026": "SEALED",
@@ -26,27 +26,15 @@
     "medium_high_news_context_required": true,
     "session_context_required": true
   },
-  "prereg": {
-    "primary_question": "Can an adaptive executable movement quantum plus intrinsic-time nested lattice materially reduce toxic real-tick grid events before Volume Profile or RSI are added?",
-    "initial_outputs": [
-      "causal Q trace",
-      "session state trace",
-      "scheduled medium/high event phase trace",
-      "unscheduled shock trace",
-      "L0-L3 intrinsic event ledger",
-      "five-state grid classification ledger"
-    ],
-    "forbidden_inputs": [
-      "future MFE",
-      "future MAE",
-      "future trade result",
-      "future news outcome",
-      "August 2026",
-      "R9 SYNTH future path as inference"
-    ]
+  "qa": {
+    "local_equivalent_tests": "8/8 PASS",
+    "github_readback": true,
+    "exact_committed_byte_execution": false,
+    "next_gate": "EXACT_BYTE_EXECUTION"
   },
-  "producer": null,
+  "producer": "research/delta-b/helpers/delta_b_grid_kernel.py",
+  "qa_file": "research/delta-b/qa/test_delta_b_grid_kernel.py",
   "result": null,
   "report": null,
-  "manifest": null
+  "manifest": "research/delta-b/artifacts/DELTA_B_DB001_BOOTSTRAP_MANIFEST.json"
 }
