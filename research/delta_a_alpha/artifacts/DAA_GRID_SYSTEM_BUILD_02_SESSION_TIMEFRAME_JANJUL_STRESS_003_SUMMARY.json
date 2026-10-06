@@ -1,0 +1,56 @@
+{
+  "schema": "delta-a-alpha-stmr-janjul-stress-summary-v1",
+  "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_003",
+  "candidate": "STMR_XMONTH_SUBPHASE_001",
+  "status": "COMPLETE_STRONG_RESEARCH_CANDIDATE_NOT_PROMOTED",
+  "authoritative_floor_unchanged": {
+    "candidate": "STMR_SLEEVE_PHASE_001",
+    "january_net": 877.78,
+    "trades": 1518,
+    "profit_factor": 1.602933
+  },
+  "cleanroom_janjul": {
+    "net": 829.71,
+    "gross_profit": 3625.77,
+    "gross_loss": -2796.06,
+    "profit_factor": 1.2967425592,
+    "trades": 2675,
+    "wins": 877,
+    "win_rate": 0.3278504673,
+    "expected_payoff": 0.3101719626,
+    "positive_months": 4,
+    "worst_month_net": -34.51,
+    "worst_month_balance_dd": 78.63,
+    "worst_month_equity_dd": 79.33,
+    "minimum_month_equity_delta": -55.29,
+    "max_open_positions": 3,
+    "forced_final_liquidations": 0,
+    "monthly_net": {
+      "2026-01": 641.58,
+      "2026-02": 43.95,
+      "2026-03": 4.55,
+      "2026-04": -34.51,
+      "2026-05": -19.89,
+      "2026-06": 213.13,
+      "2026-07": -19.10
+    }
+  },
+  "rules": {
+    "overlap_lower_takeover": "15:00-16:00 UTC only",
+    "late_lower_takeover": "21:00-22:00 UTC only",
+    "fixed_utc_sessions": true,
+    "completed_bar_ema_8_21": true,
+    "sleeve_local_first_touch_genealogy": true,
+    "lot_size": 0.01,
+    "max_positions": 3
+  },
+  "exact_bytes": {
+    "library_root": "/xauusd-trading-bot/delta-A-alpha/stmr-janjul-stress-2026-10-06/",
+    "helper_sha256": "0df41a4ece3083129022443daab14687b5a170bb888e879d7352301568f7def5",
+    "result_sha256": "32f2c80fad10950a51e22d14c37bcc8ad333bae2581078a4f0205ed37b443515",
+    "report_sha256": "2a4ccb9ea8604c7a1bfb07e018432cd040f73d11697b5c5e8fde55d157af2b5a"
+  },
+  "parity_status": "EXACT_ACCEPTED_JANUARY_HELPER_BYTES_NOT_RECOVERED",
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
