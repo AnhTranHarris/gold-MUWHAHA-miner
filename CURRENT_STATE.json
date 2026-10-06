@@ -9,7 +9,7 @@
   "parent_last_verified_durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
   "last_verified_durable_unit": "DB001_BOOTSTRAP_GRID_LAYER_1",
   "active_rebuild_manifest_path": "research/delta-b/artifacts/DELTA_B_DB001_BOOTSTRAP_MANIFEST.json",
-  "current_phase": "DB001A_EXACT_BYTE_QA_AND_CAUSAL_Q_SESSION_EVENT_TRACE",
+  "current_phase": "DB001A_CAUSAL_REAL_TICK_Q_SESSION_EVENT_TRACE",
   "active_candidate": null,
   "approved_delta_b_ea": null,
   "approved_delta_b_mql5_builds": 0,
@@ -63,11 +63,11 @@
     "rule": "Context may adapt the grid and its trading authority but may not invent future event outcomes or average into losing positions."
   },
   "qa_status": {
-    "local_equivalent_tests": "8/8 PASS",
-    "github_readback": true,
-    "github_ci": "NO_STATUS_REPORTED",
-    "exact_committed_byte_execution": false,
-    "scientific_verification": "PENDING"
+    "exact_committed_byte_execution": true,
+    "tests": "8/8 PASS",
+    "kernel_git_blob_sha1": "d9c52d5e1c715a5febfc57d291cee5511304d74a",
+    "qa_git_blob_sha1": "c7978c0065dd4c06a5755e1ef0a7cbd87b112896",
+    "scientific_verification": "BOOTSTRAP_MECHANICS_VERIFIED"
   },
   "scientific_gate": {
     "canonical_execution": "ordered_real_ticks_with_bid_ask_costs",
@@ -77,5 +77,5 @@
   },
   "promotion_rule": "Nothing in delta-b modifies delta or becomes MQL5 production code without explicit owner review and authorization.",
   "restart_instruction": "Read CURRENT_STATE.json, research/delta-b/CURRENT_INFLIGHT.json, README, Grid constitution, DB001 plan, active bootstrap manifest, MT5 port contract and source provenance. Continue only the first incomplete delta-b unit. Do not resume parent delta R037 work from this branch.",
-  "next_unit": "DB001A_EXACT_BYTE_QA_AND_CAUSAL_Q_SESSION_EVENT_TRACE"
+  "next_unit": "DB001A_CAUSAL_REAL_TICK_Q_SESSION_EVENT_TRACE"
 }
