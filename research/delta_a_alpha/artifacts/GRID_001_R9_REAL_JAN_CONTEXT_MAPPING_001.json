@@ -1,0 +1,67 @@
+{
+  "schema": "delta-a-alpha-r9-real-jan-context-mapping-v1",
+  "unit": "DAA_GRID_001_R9_REAL_JAN_CONTEXT_MAPPING_001",
+  "status": "COMPLETE_MAPPING_VERIFIED",
+  "sources": {
+    "report": "ReportTester-871471_jan2026_jul2026_R9_ticklog_real(4).xlsx",
+    "report_sha256": "19d5ffd785beaae2a9d0baa5efb50efcd36a7db635c7ef82957be442429c1064",
+    "ticks": "XAUUSD_DUKAS_2026_01_ticks.csv(3).gz",
+    "ticks_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "report_clock": "UTC+2 inferred empirically; UTC = report time - 2h"
+  },
+  "trades": 31915,
+  "accounting": {
+    "net": -6651.62,
+    "gross_profit": 3785.28,
+    "gross_loss": -10436.9,
+    "profit_factor": 0.36268240569517773
+  },
+  "alignment": {
+    "offset_hours": 2,
+    "tested_offset_range_hours": [
+      -6,
+      6
+    ],
+    "correct_offset_side_quote_error": {
+      "median": 0.09,
+      "p75": 0.17,
+      "p90": 0.28,
+      "mean": 0.134706
+    },
+    "neighbor_offset_median_errors": {
+      "plus1": 7.26,
+      "plus3": 7.505,
+      "zero": 9.77
+    },
+    "median_tick_time_error_ms": 53,
+    "p90_tick_time_error_ms": 358.6,
+    "within_1usd_pct": 99.545668,
+    "max_midpoint_quantization_error_price": 0.005
+  },
+  "context_population": {
+    "owner_15m": 11277,
+    "owner_5m": 7020,
+    "owner_neutral": 13327,
+    "owner_aligned": 9043,
+    "owner_opposed": 9254,
+    "owner_conflict": 291,
+    "phase_early": 10502,
+    "phase_mature": 6008,
+    "phase_extended": 1787,
+    "vol_expansion_ge_1_75": 2309,
+    "vol_expansion_ge_2_00": 1167
+  },
+  "row_artifact": {
+    "local_name": "R9_REAL_JAN_CONTEXT_ROWS_001.csv.gz",
+    "sha256": "4fffc16968c61871000c895fe4eec9b69d09021fb60192964ffd275ba7c0a374",
+    "note": "Regenerable from portable helper + canonical report/tick sources; not authoritative without source hashes."
+  },
+  "scientific_decision": [
+    "MT5 report clock alignment to Dukascopy UTC is empirically verified at UTC+2 report offset",
+    "R9 REAL January trade count and MT5 deal-level economics reconcile exactly",
+    "Nested multi-timeframe and adaptive-grid context can be attached causally to each actual R9 entry",
+    "NEXT measure gross-loss concentration by frozen context families before authorizing veto/reroute logic"
+  ],
+  "promotion_eligible": false,
+  "august": "SEALED"
+}
