@@ -313,7 +313,17 @@ class AdaptiveQEstimator:
         if path_noise >= 4.0:
             shock_score += 1
         shock_active = shock_score >= self.cfg.shock_min_components
-        spread_pct = sum(x <= spread for x in spreads) / len(spreads)
+        # Rank current spread against PRIOR observations only. Ties receive
+        # mid-rank so a stable/constant spread does not falsely appear to be a
+        # 100th-percentile stress event merely because every historical value is
+        # equal to the current one.
+        spread_history = spreads[:-1]
+        if spread_history:
+            less = sum(x < spread for x in spread_history)
+            equal = sum(x == spread for x in spread_history)
+            spread_pct = (less + 0.5 * equal) / len(spread_history)
+        else:
+            spread_pct = 0.5
 
         # Scheduled events set the maximum defensive envelope. Observable market
         # stress decides how much of that envelope is activated. This prevents
