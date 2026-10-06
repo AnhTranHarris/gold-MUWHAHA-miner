@@ -117,10 +117,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 26,
-    "latest_entry": "research/delta_a_alpha/state_journal/0026_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002.json"
+    "latest_sequence": 27,
+    "latest_entry": "research/delta_a_alpha/state_journal/0027_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002_TIMEOUT_RECONCILIATION.json"
   },
-  "restart_instruction": "Read journal 0026 -> 0025 -> 0024. STMR_SLEEVE_PHASE_001 (+$877.78 January) remains the accepted floor. STMR_XMONTH_ADMISSIBILITY_001 is the strongest Jan-Jul clean-room research candidate but is not promoted because exact historical replay parity is unavailable. Next unit is OWNER_SESSION_TIMEFRAME_STRESS_REVIEW.",
+  "restart_instruction": "Read journal 0027 -> 0026 -> 0025 -> 0024. Jan-Jul session/timeframe stress is complete and timeout-reconciled. STMR_SLEEVE_PHASE_001 (+$877.78 January) remains accepted. STMR_XMONTH_ADMISSIBILITY_001 is strongest clean-room Jan-Jul candidate but not promoted. May-Jul is a frozen-rule re-test, not pristine OOS. No completed stress sweep should be rerun.",
   "architecture_floor": {
     "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001",
     "candidate": "STMR_SLEEVE_PHASE_001",
@@ -176,6 +176,9 @@
     "gross_loss_reduction_pct": 49.32212604,
     "trade_retention_pct": 47.16172795,
     "report": "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002_REPORT.md",
-    "artifact": "research/delta_a_alpha/artifacts/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002.json"
+    "artifact": "research/delta_a_alpha/artifacts/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002.json",
+    "timeout_reconciliation": "journal 0027",
+    "may_jul_evidence": "FROZEN_JAN_APR_RULE_FORWARD_RETEST_NOT_PRISTINE_OOS",
+    "recovery_bundle": "/xauusd-trading-bot/delta-A-alpha/recovery/2026-10-06/STMR_JANJUL_TIMEOUT_RECOVERY_20261006_v2.zip"
   }
 }
