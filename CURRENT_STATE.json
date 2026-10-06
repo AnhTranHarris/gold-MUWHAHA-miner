@@ -7,7 +7,9 @@
   "parent_delta_immutable": true,
   "parent_state_blob_sha_at_fork": "d2760c9f50d898015d69780b4fdbf53f6a58432d",
   "parent_last_verified_durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
-  "current_phase": "DB001_GRID_LAYER_1_BOOTSTRAP",
+  "last_verified_durable_unit": "DB001_BOOTSTRAP_GRID_LAYER_1",
+  "active_rebuild_manifest_path": "research/delta-b/artifacts/DELTA_B_DB001_BOOTSTRAP_MANIFEST.json",
+  "current_phase": "DB001A_EXACT_BYTE_QA_AND_CAUSAL_Q_SESSION_EVENT_TRACE",
   "active_candidate": null,
   "approved_delta_b_ea": null,
   "approved_delta_b_mql5_builds": 0,
@@ -26,6 +28,7 @@
     "state_detection_price": "MIDPOINT_BID_ASK",
     "execution_price": "BROKER_EXECUTABLE_BID_ASK",
     "movement_quantum": "adaptive_executable_movement_quantum",
+    "adaptive_threshold_rule": "MAY_WIDEN_MID_LEG_NEVER_SHRINK_MID_LEG",
     "primary_states": [
       "TRANSIT",
       "ROTATION",
@@ -46,6 +49,7 @@
     "sessions": "FIRST_CLASS_CAUSAL_STATE",
     "news_events": "MEDIUM_AND_HIGH_IMPORTANCE_ARE_FIRST_CLASS_CAUSAL_STATE",
     "news_event_minimum_importance": "MEDIUM",
+    "unscheduled_news": "OBSERVABLE_MARKET_SHOCK_STATE_ONLY",
     "allowed_adaptations": [
       "movement_quantum",
       "grid_hysteresis",
@@ -58,14 +62,20 @@
     ],
     "rule": "Context may adapt the grid and its trading authority but may not invent future event outcomes or average into losing positions."
   },
+  "qa_status": {
+    "local_equivalent_tests": "8/8 PASS",
+    "github_readback": true,
+    "github_ci": "NO_STATUS_REPORTED",
+    "exact_committed_byte_execution": false,
+    "scientific_verification": "PENDING"
+  },
   "scientific_gate": {
     "canonical_execution": "ordered_real_ticks_with_bid_ask_costs",
     "initial_horizon": "JANUARY_THROUGH_JULY_2026_RESEARCHED_HISTORY",
     "august_holdout": "SEALED",
-    "breakthrough_preference": "material_total_system_improvement_with_no_unacceptable_risk_regression",
     "grid_internal_hurdle": "target >=30% gross-loss and max-drawdown reduction versus exact R9 REAL reference while preserving meaningful scalp opportunity density; not an automatic promotion rule"
   },
   "promotion_rule": "Nothing in delta-b modifies delta or becomes MQL5 production code without explicit owner review and authorization.",
-  "restart_instruction": "Read CURRENT_STATE.json, research/delta-b/README.md, research/delta-b/GRID_LAYER_1_CONSTITUTION.md, research/delta-b/DB001_RESEARCH_PLAN.md, and research/delta-b/CURRENT_INFLIGHT.json. Continue only the first incomplete delta-b unit. Do not resume parent delta R037 work from this branch.",
-  "next_unit": "DB001A_EXECUTABLE_MOVEMENT_QUANTUM_AND_SESSION_EVENT_STATE_SPEC"
+  "restart_instruction": "Read CURRENT_STATE.json, research/delta-b/CURRENT_INFLIGHT.json, README, Grid constitution, DB001 plan, active bootstrap manifest, MT5 port contract and source provenance. Continue only the first incomplete delta-b unit. Do not resume parent delta R037 work from this branch.",
+  "next_unit": "DB001A_EXACT_BYTE_QA_AND_CAUSAL_Q_SESSION_EVENT_TRACE"
 }
