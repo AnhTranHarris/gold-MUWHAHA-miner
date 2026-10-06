@@ -35,18 +35,18 @@
   "files": {
     "kernel": {
       "path": "research/delta-b/helpers/delta_b_grid_kernel.py",
-      "git_blob_sha1": "d9c52d5e1c715a5febfc57d291cee5511304d74a",
-      "sha256": "df520a6a552711dce20b9598850e4a9384c1917e5a9fe74db85492118e775f5c"
+      "git_blob_sha1": "479a60a01b996ab0e2850bb3871d325a857e021c",
+      "sha256": "92f6561dadd02bdd305eedcb5aaf8c4c36d6b57744ad271de6eae5b0f837b749"
     },
     "qa": {
       "path": "research/delta-b/qa/test_delta_b_grid_kernel.py",
-      "git_blob_sha1": "c7978c0065dd4c06a5755e1ef0a7cbd87b112896",
-      "sha256": "e5e098cb3dbb40c4bb7f9bc4141a971982ed67533cde9594029c2c764d0efb3d"
+      "git_blob_sha1": "abb04218ef0c8e51ed0865fc310dd93c4917cd37",
+      "sha256": "a602c8649209a41548b3e2e37441e312a807d92bd38938aa10e488d11abc73c7"
     }
   },
   "qa": {
     "exact_committed_byte_execution": true,
-    "tests": "8/8 PASS",
+    "tests": "9/9 PASS",
     "covered": [
       "London DST session mapping",
       "HIGH event priority over MEDIUM overlap",
@@ -55,11 +55,21 @@
       "HIGH release expands contextual Q and reduces entry authority",
       "active directional-change threshold cannot shrink mid-leg",
       "directional-change event emission",
-      "shock escalation to CHURN_SHOCK"
+      "shock escalation to CHURN_SHOCK",
+      "RECLAIM is transition-scoped and cannot persist from static scale disagreement"
     ],
     "github_readback": true,
     "git_blob_match_verified": true,
-    "scientific_claim_boundary": "Bootstrap mechanics are verified. Event-window and context multipliers are research seeds only and are not yet economically validated on Jan-Jul real ticks."
+    "scientific_claim_boundary": "Bootstrap mechanics including event-driven reclaim semantics are verified. Event-window and context multipliers remain research seeds only and are not yet economically validated on Jan-Jul real ticks."
+  },
+  "canonical_smoke": {
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "quotes": 100000,
+    "report": "research/delta-b/research/DELTA_B_DB001A_100K_REAL_TICK_SMOKE_REPORT.md",
+    "reclaim_before": 48538,
+    "reclaim_after": 76,
+    "intrinsic_event_counts_unchanged": {"L0":133,"L1":31,"L2":1,"L3":0},
+    "profitability_claim": false
   },
   "next_unit": "DB001A_CAUSAL_REAL_TICK_Q_SESSION_EVENT_TRACE"
 }
