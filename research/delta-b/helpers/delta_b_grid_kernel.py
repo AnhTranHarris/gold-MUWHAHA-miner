@@ -273,14 +273,14 @@ class AdaptiveQEstimator:
         spreads = list(self.spreads)
         moves = list(self.abs_moves)
         intervals = [x for x in self.intervals if x > 0]
-        if len(spreads) > 16:
+        if len(spreads) >= 16:
             self.spread_cut = _quantile(spreads, self.cfg.shock_quantile)
             self.spread_levels = tuple(
                 _quantile(spreads, p) for p in (0.50, 0.75, 0.90, 0.95, 0.99)
             )
-        if len(moves) > 16:
+        if len(moves) >= 16:
             self.move_cut = _quantile(moves, self.cfg.shock_quantile)
-        if len(intervals) > 16:
+        if len(intervals) >= 16:
             self.fast_cut = _quantile(
                 intervals, 1.0 - self.cfg.shock_quantile
             )
