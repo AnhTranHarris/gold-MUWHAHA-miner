@@ -1,23 +1,25 @@
 {
   "schema": "delta-a-alpha-inflight-v2",
-  "state": "RUNNING",
-  "last_completed": "DAA_GRID_001_JANUARY_SHADOW_REGRET_MEMORY_001",
-  "current_unit": "DAA_GRID_001_JANUARY_EARLY_THESIS_FAILURE_001",
-  "next_unit": null,
-  "scope": {
-    "lattices": [
-      "A10",
-      "A15"
-    ],
-    "direction": "continuation",
-    "mutation": "unconfirmed continuation must reach +0.25 gap before full risk; -0.50 gap first = early failure exit",
-    "physical_overlap_model": false
-  },
-  "intended_outputs": [
-    "research/delta_a_alpha/grid/GRID_001_JANUARY_EARLY_THESIS_FAILURE_001_PREREG.md",
-    "research/delta_a_alpha/artifacts/GRID_001_JANUARY_EARLY_THESIS_FAILURE_001.json",
-    "research/delta_a_alpha/grid/GRID_001_JANUARY_EARLY_THESIS_FAILURE_001_REPORT.md"
+  "state": "IDLE_READY",
+  "last_completed": "DAA_GRID_001_JANUARY_ELASTIC_SPACING_001",
+  "current_unit": null,
+  "next_unit": "DAA_GRID_001_JANUARY_PATH_SHAPE_DISCOVERY_001",
+  "completed_outputs": [
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_ELASTIC_SPACING_001_PREREG.md",
+    "research/delta_a_alpha/experiments/grid001_january_elastic_spacing.py",
+    "research/delta_a_alpha/artifacts/GRID_001_JANUARY_ELASTIC_SPACING_001.json",
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_ELASTIC_SPACING_001_REPORT.md"
   ],
-  "failure_recovery": "Inspect shadow-regret result first, then early-failure outputs. Do not retune shadow-memory windows.",
-  "write_discipline": "One proof-of-life state rule across A10/A15 before any neighborhood test."
+  "decision": "KEEP_ELASTIC_ALPHA_0P50_AS_RESEARCH_CLOCK_KNEE_DIRECTION_EDGE_NOT_SOLVED",
+  "next_hypothesis": "Use bounded causal post-crossing path-shape features plus elastic-gap and virtual-lattice state as a discovery microscope. Determine whether nonlinear structure can classify MR vs CONT vs abstain; extract rules only if validation evidence exists.",
+  "rejected_since_last_checkpoint": [
+    "single virtual stack depth as standalone router",
+    "virtual stack imbalance as standalone router",
+    "simple parent-trend ownership router",
+    "blind one-shot stop-and-reverse recovery",
+    "tight-stop/asymmetric RR rescue",
+    "L1 quote imbalance as standalone router"
+  ],
+  "failure_recovery": "Verify elastic outputs first. Path-shape probe is next; do not repeat rejected standalone probes.",
+  "write_discipline": "Discovery model is a microscope only. No production ML promotion. Persist validation result before rule extraction."
 }
