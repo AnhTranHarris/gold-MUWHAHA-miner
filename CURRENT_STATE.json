@@ -1,88 +1,71 @@
 {
-  "schema": "delta-research-status-v1",
+  "schema": "delta-b-research-status-v1",
   "project": "Gold MUWHAHA Miner — XAUUSD",
-  "branch": "delta",
-  "research_scope": "DELTA_ONLY_CLEAN_ROOM",
-  "last_verified_durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
-  "first_incomplete_unit": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_PLAN",
-  "current_phase": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_READY",
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B_MANIFEST.json",
+  "branch": "delta-b",
+  "parent_branch": "delta",
+  "research_scope": "DELTA_B_SIDE_RESEARCH_CLEAN_ROOM",
+  "parent_delta_immutable": true,
+  "parent_state_blob_sha_at_fork": "d2760c9f50d898015d69780b4fdbf53f6a58432d",
+  "parent_last_verified_durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
+  "current_phase": "DB001_GRID_LAYER_1_BOOTSTRAP",
   "active_candidate": null,
-  "last_candidate_disposition": "17DE-17DG Asia-range directionality completed before the delivery timeout and is retired with no Stage-A survivor (5/-$0.16, 4/-$1.76, 2/-$1.42). New specialist harvesting is paused by owner.",
-  "august_2026": "SEALED",
-  "approved_delta_ea": null,
-  "approved_delta_mql5_builds": 0,
+  "approved_delta_b_ea": null,
+  "approved_delta_b_mql5_builds": 0,
   "mql5_authorized": false,
-  "sorb_status": "NO_PROMOTED_SORB; SURROGATE_SCREEN_LEADER_FAILED_INDEPENDENT_VALIDATION",
-  "specialist_roster": {
-    "status": "FROZEN_FOR_REFINEMENT_AND_INTEGRATION",
-    "execution_streams": [
-      "DH03-S06",
-      "DH05-S06",
-      "DH02-S11",
-      "DH02-S08"
+  "august_2026": "SEALED",
+  "vertical_stack": [
+    "L1_INTRINSIC_TIME_EXECUTABLE_GRID",
+    "L2_VOLUME_PROFILE",
+    "L3_MTF_RSI_TOPOLOGY",
+    "L4_SYSTEM_WIDE_SPECIALISTS",
+    "L5_ROUTER_PROFIT_PYRAMID_CAPITAL_GOVERNOR"
+  ],
+  "active_layer": "L1_INTRINSIC_TIME_EXECUTABLE_GRID",
+  "grid_core": {
+    "architecture": "four_scale_event_lattice_Q_2Q_4Q_8Q",
+    "state_detection_price": "MIDPOINT_BID_ASK",
+    "execution_price": "BROKER_EXECUTABLE_BID_ASK",
+    "movement_quantum": "adaptive_executable_movement_quantum",
+    "primary_states": [
+      "TRANSIT",
+      "ROTATION",
+      "ESCAPE",
+      "FAILED_ESCAPE_RECLAIM",
+      "CHURN_SHOCK"
     ],
-    "shared_components": [
-      "DH01",
-      "DH06",
-      "DH07"
+    "hard_prohibitions": [
+      "NO_MARTINGALE",
+      "NO_LOSS_CHASING",
+      "NO_ADVERSE_POSITION_SCALING",
+      "NO_LOT_INCREASE_AFTER_LOSS",
+      "NO_GRID_ADD_BECAUSE_PRICE_MOVED_AGAINST_POSITION",
+      "NO_FUTURE_DATA_OR_LOOKAHEAD"
+    ]
+  },
+  "adaptive_context": {
+    "sessions": "FIRST_CLASS_CAUSAL_STATE",
+    "news_events": "MEDIUM_AND_HIGH_IMPORTANCE_ARE_FIRST_CLASS_CAUSAL_STATE",
+    "news_event_minimum_importance": "MEDIUM",
+    "allowed_adaptations": [
+      "movement_quantum",
+      "grid_hysteresis",
+      "confirmation_distance",
+      "confirmation_time",
+      "entry_authority",
+      "cost_buffer",
+      "cooldown",
+      "favorable_only_pyramid_authority"
     ],
-    "reserve": [
-      "DH04"
-    ],
-    "exact_historical_r032_c03_parity": false,
-    "promotion_status": "NO_FINAL_DELTA_CANDIDATE_PROMOTED",
-    "new_specialist_harvest": "PAUSED_BY_OWNER"
+    "rule": "Context may adapt the grid and its trading authority but may not invent future event outcomes or average into losing positions."
   },
-  "helper_status": {
-    "current_required_helpers": "COMPLETE",
-    "missing_required_artifacts": [],
-    "historical_unrecovered_bytes": "PROVENANCE_LIMITATIONS_ONLY_DO_NOT_FABRICATE"
+  "scientific_gate": {
+    "canonical_execution": "ordered_real_ticks_with_bid_ask_costs",
+    "initial_horizon": "JANUARY_THROUGH_JULY_2026_RESEARCHED_HISTORY",
+    "august_holdout": "SEALED",
+    "breakthrough_preference": "material_total_system_improvement_with_no_unacceptable_risk_regression",
+    "grid_internal_hurdle": "target >=30% gross-loss and max-drawdown reduction versus exact R9 REAL reference while preserving meaningful scalp opportunity density; not an automatic promotion rule"
   },
-  "white_papers": {
-    "status": "FINALIZED_CURRENT_R037_STATUS_AND_INDEX_READBACK_VERIFIED",
-    "github_index": "research/delta/research/DELTA_R003_DIRECTION_HOLD_CAUSAL_GRAMMAR_WHITEPAPERS.md",
-    "checkpoint": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
-    "workbook_id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
-    "workbook_tab": "11 White Papers",
-    "workbook_range": "A1:H10"
-  },
-  "timeout_recovery": {
-    "inflight_path": "research/delta/CURRENT_INFLIGHT.json",
-    "pointer_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_RECOVERY_POINTER.json",
-    "rule": "On message-delivery interruption, trust committed result/report/manifest and resume the first missing durable phase; chat delivery timeout is not itself compute failure.",
-    "guard_alignment": "CLOSED_AT_SPECIALIST_ROSTER_FINALIZATION_18A"
-  },
-  "canonical_data": {
-    "january_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
-    "stage_a_ticks": 4205709,
-    "surface": "DUKAS_COINEXX_LIKE_P75"
-  },
-  "restart_instruction": "Read this file, CURRENT_INFLIGHT, recovery pointer, and active rebuild manifest. Resume R037 specialist refinement/integration only; white papers and specialist index are finalized at 18B. Do not restart retired harvest families or begin a new specialist harvest unless the owner explicitly reopens discovery.",
-  "state_compaction": {
-    "date_utc": "2026-10-05",
-    "reason": "Keep authoritative cursor small and timeout-safe; detailed research remains durable in Git commits, checkpoint results, reports, manifests, Drive white papers and workbook.",
-    "prior_full_state_preserved_in_git_history": true
-  },
-  "recovery_pointer_sync": {
-    "status": "IDLE_DURABLE_SPECIALIST_DOCUMENTATION_18B",
-    "last_completed": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
-    "current_candidate": null,
-    "next": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_PLAN",
-    "inflight_close_commit": "51e27c433befff40c0682f27ba3d5e70d69e5513",
-    "pointer_sync_commit": "10c9f9254278b7598d5952c1230dd0359a4d3225"
-  },
-  "clean_room_maintenance": {
-    "status": "DELTA_ONLY_ACTIVE",
-    "scientific_results_changed_by_finalization": false,
-    "note": "18B only normalizes operator-facing documentation and recovery pointers; it does not retune or manufacture historical specialist behavior."
-  },
-  "concurrency_recovery": {
-    "status": "IDLE_NO_ACTIVE_COMPUTE",
-    "authoritative_checkpoint": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
-    "current_candidate": null,
-    "note": "If delivery fails now, resume at specialist refinement/integration planning; helpers, white papers and operator spreadsheet index are already finalized."
-  },
-  "search_bias": "New specialist harvesting is paused by owner. Prioritize refinement of the four frozen execution streams, ownership/collision complementarity, DH06 post-entry evidence, DH07 initial-hold orchestration, and a clean composite candidate. Do not rescue retired 17-series families by retuning.",
-  "timeout_recovery_cursor_semantics": "Connector-safe serial closure is authoritative when multi-file atomic commit is unavailable; trust advancement only after the final DELTA rebuild artifact gate passes."
+  "promotion_rule": "Nothing in delta-b modifies delta or becomes MQL5 production code without explicit owner review and authorization.",
+  "restart_instruction": "Read CURRENT_STATE.json, research/delta-b/README.md, research/delta-b/GRID_LAYER_1_CONSTITUTION.md, research/delta-b/DB001_RESEARCH_PLAN.md, and research/delta-b/CURRENT_INFLIGHT.json. Continue only the first incomplete delta-b unit. Do not resume parent delta R037 work from this branch.",
+  "next_unit": "DB001A_EXECUTABLE_MOVEMENT_QUANTUM_AND_SESSION_EVENT_STATE_SPEC"
 }
