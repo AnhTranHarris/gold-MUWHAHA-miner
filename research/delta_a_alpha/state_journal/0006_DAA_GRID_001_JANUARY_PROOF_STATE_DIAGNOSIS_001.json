@@ -1,0 +1,56 @@
+{
+  "sequence": 6,
+  "schema": "delta-a-alpha-state-journal-v1",
+  "unit": "DAA_GRID_001_JANUARY_PROOF_STATE_DIAGNOSIS_001",
+  "status": "COMPLETE_NO_STANDALONE_STATE_PROMOTED",
+  "predecessor": {
+    "sequence": 5,
+    "unit": "DAA_GRID_001_JANUARY_PROOF_BEFORE_ENTRY_001",
+    "path": "research/delta_a_alpha/state_journal/0005_DAA_GRID_001_JANUARY_PROOF_BEFORE_ENTRY_001.json"
+  },
+  "completed_outputs": [
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_PROOF_STATE_DIAGNOSIS_001_PREREG.md",
+    "research/delta_a_alpha/experiments/grid001_january_proof_state_diagnosis.py",
+    "research/delta_a_alpha/artifacts/GRID_001_JANUARY_PROOF_STATE_DIAGNOSIS_001.json",
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_PROOF_STATE_DIAGNOSIS_001_REPORT.md"
+  ],
+  "result_summary": {
+    "discovery": {
+      "net": -697.43,
+      "pf": 0.800382
+    },
+    "validation": {
+      "net": 840.2,
+      "pf": 1.080055
+    },
+    "gap_cap_pct": {
+      "discovery": 19.9751,
+      "validation": 93.9066
+    },
+    "vol_ratio_median": {
+      "discovery": 0.929964,
+      "validation": 1.176236
+    },
+    "fast_pace_lt_1s": {
+      "discovery_n": 14,
+      "discovery_pf": 1.257637,
+      "validation_n": 117,
+      "validation_pf": 1.180357
+    }
+  },
+  "scientific_decision": [
+    "DO NOT promote volatility ratio, gap-cap state, efficiency, or event pace as standalone filters",
+    "KEEP only as contextual descriptors",
+    "NEXT test dual proof ownership so continuation and mean reversion compete causally before physical entry"
+  ],
+  "next_unit": "DAA_GRID_001_JANUARY_DUAL_PROOF_OWNERSHIP_001_PREREG",
+  "immutable_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "august_2026": "SEALED",
+    "main_delta": "READ_ONLY",
+    "mql5_authorized": false
+  }
+}
