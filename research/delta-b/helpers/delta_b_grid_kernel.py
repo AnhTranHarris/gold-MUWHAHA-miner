@@ -481,9 +481,15 @@ class IntrinsicGridKernel:
         events: Iterable[CalendarEvent] = (),
         commission_equiv: float = 0.0,
         slippage_buffer: float = 0.0,
+        session_override: Session | None = None,
+        event_phase_override: EventPhase | None = None,
     ) -> GridSnapshot:
-        session = classify_session(ts_utc)
-        phase = classify_event_phase(ts_utc, events, self.cfg)
+        session = session_override if session_override is not None else classify_session(ts_utc)
+        phase = (
+            event_phase_override
+            if event_phase_override is not None
+            else classify_event_phase(ts_utc, events, self.cfg)
+        )
         qs = self.q.update(
             ts_utc=ts_utc,
             bid=bid,
