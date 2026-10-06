@@ -2,10 +2,10 @@
   "schema": "delta-a-alpha-inflight-v4",
   "authority": "APPEND_ONLY_STATE_JOURNAL",
   "state": "IDLE_READY",
-  "last_completed": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001",
+  "last_completed": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_003",
   "current_unit": null,
-  "next_unit": "OWNER_STMR_PARITY_OR_CLEANROOM_AUTHORITY_DECISION",
-  "journal_entry": "research/delta_a_alpha/state_journal/0027_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002.json",
+  "next_unit": "OWNER_DECIDE_CLEANROOM_CROSSMONTH_AUTHORITY_OR_NEXT_SYSTEM_DIMENSION",
+  "journal_entry": "research/delta_a_alpha/state_journal/0028_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_003.json",
   "accepted_floor": {
     "candidate": "STMR_SLEEVE_PHASE_001",
     "january_net": 877.78,
@@ -14,6 +14,14 @@
     "parent_candidate": "STMR-001",
     "parent_january_net": 416.23
   },
-  "failure_recovery": "Read journal 0027 -> 0026 -> 0025/0024. Jan-Jul session/timeframe stress 002 is complete. Runtime bundle v2 is durable in Library. Do not rerun completed Jan-Jul sweeps. Accepted floor remains STMR_SLEEVE_PHASE_001 until exact parity is recovered or owner explicitly authorizes the clean-room cross-month candidate.",
-  "write_discipline": "No new whole-system dimension until owner decides parity recovery versus clean-room cross-month authority. If parity recovery continues, rerun only a bounded new parity hypothesis; do not rerun completed stress sweeps."
+  "research_candidate": {
+    "candidate": "STMR_XMONTH_SUBPHASE_001",
+    "cleanroom_jan_jul_net": 829.71,
+    "profit_factor": 1.2967425592,
+    "trades": 2675,
+    "worst_month_net": -34.51,
+    "promotion_status": "NOT_PROMOTED"
+  },
+  "failure_recovery": "Read journal 0028 -> authoritative 0027 STRESS_002 -> 0026 -> 0025/0024. Ignore the accidental same-sequence 0027 STRESS_003 collision; journal 0028 explicitly supersedes it. Exact bytes for STRESS_003 helper/result/report are durable in Library under /xauusd-trading-bot/delta-A-alpha/stmr-janjul-stress-2026-10-06/. Do not rerun completed Jan-Jul stress sweeps after a UI timeout.",
+  "write_discipline": "Accepted floor remains STMR_SLEEVE_PHASE_001. Do not promote the clean-room candidate without owner authority or exact parity recovery. August remains sealed; no MQL5."
 }
