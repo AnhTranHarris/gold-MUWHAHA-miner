@@ -11,16 +11,20 @@
     "mode": "READ_ONLY"
   },
   "existing_delta_a_lineage": "HISTORICAL_EVIDENCE_ONLY_NOT_PARENT",
-  "current_phase": "GRID_001_CAUSAL_FORENSIC_BASELINE_READY",
-  "last_verified_durable_unit": "DAA_TIMEOUT_RECOVERY_002",
-  "first_incomplete_unit": "DAA_GRID_001_CAUSAL_FORENSIC_BASELINE",
+  "current_phase": "GRID_001_BOUNDED_STAGE_A_SCREEN_READY",
+  "last_verified_durable_unit": "DAA_GRID_001_CAUSAL_FORENSIC_BASELINE",
+  "first_incomplete_unit": "DAA_GRID_001_BOUNDED_STAGE_A_SCREEN_01",
   "active_candidate": null,
   "owner_constraints": {
     "symbol": "XAUUSD",
     "lot_size": 0.01,
     "martingale": "PROHIBITED",
     "loss_dependent_sizing": "PROHIBITED",
-    "small_account_survivability_usd": [100, 200, 300]
+    "small_account_survivability_usd": [
+      100,
+      200,
+      300
+    ]
   },
   "benchmark": {
     "path": "research/delta_a_alpha/benchmarks/R9_REAL_SYNTH_JAN_JUL_2026.json",
@@ -41,7 +45,7 @@
     "source_video": "https://www.youtube.com/watch?v=4WQEoQxsJMc",
     "creator_repo": "MegaJoctan/StrategyTester5",
     "creator_repo_commit": "45e2a23d11716f204cf66f9695124980aceae1bc",
-    "status": "SOURCE_RECONSTRUCTED_NOT_TESTED",
+    "status": "FORENSIC_BASELINE_COMPLETE_PHYSICAL_SOURCE_GRID_REJECTED_EVENT_CLOCK_RETAINED",
     "promotion_eligible": false,
     "prohibited_defaults": [
       "martingale sizing",
@@ -50,7 +54,9 @@
       "uncapped averaging",
       "no-stop promotion candidate"
     ],
-    "first_test": "source-faithful forensic lane on ordered ticks, then bounded 0.01 specialist lane if warranted"
+    "first_test": "source-faithful forensic lane on ordered ticks, then bounded 0.01 specialist lane if warranted",
+    "forensic_result": "research/delta_a_alpha/artifacts/GRID_001_F_STAGE_A_RESULT.json",
+    "forensic_decision": "REJECT_PHYSICAL_SOURCE_GRID_AS_SPECIALIST_RETAIN_GRID_EVENT_CLOCK_FOR_BOUNDED_RESEARCH"
   },
   "august_2026": "SEALED",
   "mql5_authorized": false,
