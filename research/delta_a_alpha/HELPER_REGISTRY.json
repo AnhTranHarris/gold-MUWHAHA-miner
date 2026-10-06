@@ -50,6 +50,30 @@
       "status": "DURABLE",
       "path": "research/delta_a_alpha/grid/GRID_001_F_STAGE_A_REPORT.md",
       "purpose": "human-readable decision: reject physical source inventory, retain event clock"
+    },
+    {
+      "id": "P-GRID-001-S-SCREEN-01",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/grid/GRID_001_S_STAGE_A_SCREEN_01_PREREG.md",
+      "purpose": "frozen 12-variant bounded grid screen contract"
+    },
+    {
+      "id": "H-GRID-001-S-SCREEN-01",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/experiments/grid001_bounded_screen01.py",
+      "purpose": "replay helper for capped fixed-0.01 bounded grid matrix"
+    },
+    {
+      "id": "A-GRID-001-S-SCREEN-01",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/artifacts/GRID_001_S_STAGE_A_SCREEN_01_RESULT.json",
+      "purpose": "canonical negative bounded-screen matrix summary"
+    },
+    {
+      "id": "R-GRID-001-S-SCREEN-01",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/grid/GRID_001_S_STAGE_A_SCREEN_01_REPORT.md",
+      "purpose": "decision to retire physical grid inventory and retain event clock only"
     }
   ],
   "rule": "Add a helper here before any later experiment depends on it. Supersede by pointer; never silently rewrite historical semantics.",
