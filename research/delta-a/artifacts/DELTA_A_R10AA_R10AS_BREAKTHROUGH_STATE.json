@@ -1,0 +1,47 @@
+{
+  "schema": "delta-a-r10aa-r10as-breakthrough-handoff-v1",
+  "date": "2026-10-05",
+  "status": "HANDOFF_READY_EXPERIMENTAL_NOT_MT5_AUTHORIZED",
+  "branch": "delta-A",
+  "snapshot_branch": "delta-A-r10aa-r10as-breakthrough-handoff-20261005",
+  "august_accessed": false,
+  "production_mql5_authorized": false,
+  "start_balance_usd": 100,
+  "fixed_lot": 0.01,
+  "minimum_real_handoff_balance_usd": 1000,
+  "promoted_supermodel_core": {
+    "stack": ["R10AA","R10AB","R10AG_SEQ45_60","R10AH"],
+    "net_usd": 4824.6145000000615,
+    "physical_gross_loss_usd": -10383.631500000001,
+    "episode_gross_loss_usd": -8125.211000000005,
+    "tick_min_equity_usd": 99.51000000000066,
+    "tick_max_equity_dd_usd": 203.28000000000338,
+    "executed_episode_success": 0.6114993646759848,
+    "max_positions": 8
+  },
+  "conditional_next": {
+    "R10AI": {
+      "ungated_net_usd": 4969.734500000076,
+      "ungated_physical_gl_usd": -10321.74149999999,
+      "ungated_episode_gl_usd": -7975.1609999999955,
+      "ungated_tick_min_equity_usd": 81.36999999999848,
+      "executed_episode_success": 0.6146759847522236,
+      "required_gate_test_usd": [150,175,200,250,300]
+    },
+    "R10AP": {"selected":1043,"success":0.6088207094918504,"net_usd":445.0189999994336,"gross_loss_usd":-458.31400000010854},
+    "R10AR": {"selected":1704,"success":0.5762910798122066,"net_usd":360.1314999992592,"gross_loss_usd":-699.4230000000243}
+  },
+  "next_units": [
+    "R10AI capital-gate speedrun at $150/$175/$200/$250/$300",
+    "AG+AH exact forensic of the ~$203 maximum tick drawdown and targeted specialist",
+    "R10AP capital-gated velocity integration; R10AR after AP"
+  ],
+  "archive": {
+    "file_count": 81,
+    "zip_sha256": "181667cda8e63d8f86cffdc17809761838317c218bb8c3d111aec7eebec153f1",
+    "drive_folder_id": "1_j8CaAwOvcD5S6OQkRf5bn-oXTgnayBB",
+    "drive_zip_id": "1esLKLdsc3VempopiUz1hBqkgxbfyAgCw",
+    "drive_readme_id": "1God58y8HGbeHEjom_0S1EripXw5yn95b",
+    "drive_manifest_csv_id": "1dexMGtGg_KFEF1kxTeKa6wbjGE__iyUc"
+  }
+}
