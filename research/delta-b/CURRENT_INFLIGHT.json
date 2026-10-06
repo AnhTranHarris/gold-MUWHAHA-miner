@@ -2,20 +2,20 @@
   "schema": "delta-b-timeout-recovery-inflight-v1",
   "status": "READY",
   "branch": "delta-b",
-  "unit": "DB001A_EXACT_BYTE_QA_AND_CAUSAL_Q_SESSION_EVENT_TRACE",
+  "unit": "DB001A_CAUSAL_REAL_TICK_Q_SESSION_EVENT_TRACE",
   "family": "GRID_LAYER_1",
   "parent_durable_unit": "DB001_BOOTSTRAP_GRID_LAYER_1",
-  "phase": "HELPER_COMMITTED_QA_BOUNDARY_RECORDED",
-  "phase_rank": 2,
+  "phase": "EXACT_BYTE_QA_COMPLETE",
+  "phase_rank": 3,
   "progress": {
-    "last_completed": "DB001_BOOTSTRAP_GRID_LAYER_1",
+    "last_completed": "DB001_BOOTSTRAP_GRID_LAYER_1_EXACT_BYTE_QA",
     "current_candidate": null,
-    "next": "EXECUTE_EXACT_COMMITTED_BYTES_THEN_PRODUCE_CAUSAL_Q_SESSION_EVENT_TRACE"
+    "next": "TRACE_Q_SESSION_EVENT_AND_INTRINSIC_STATES_ON_CANONICAL_REAL_TICKS"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read root CURRENT_STATE, this file and DELTA_B_DB001_BOOTSTRAP_MANIFEST. Execute exact committed helper/QA bytes before claiming scientific verification.",
-    "idempotency_rule": "Do not rerun completed bootstrap or parent DELTA research.",
+    "resume_first_action": "Read root CURRENT_STATE, this file and DELTA_B_DB001_BOOTSTRAP_MANIFEST. Begin bounded real-tick trace without opening August.",
+    "idempotency_rule": "Do not rerun exact-byte bootstrap QA unless the helper or QA blob changes.",
     "parent_delta_rule": "Never advance or modify parent delta from delta-b."
   },
   "constraints": {
@@ -27,10 +27,10 @@
     "session_context_required": true
   },
   "qa": {
-    "local_equivalent_tests": "8/8 PASS",
-    "github_readback": true,
-    "exact_committed_byte_execution": false,
-    "next_gate": "EXACT_BYTE_EXECUTION"
+    "tests": "8/8 PASS",
+    "kernel_git_blob_sha1": "d9c52d5e1c715a5febfc57d291cee5511304d74a",
+    "qa_git_blob_sha1": "c7978c0065dd4c06a5755e1ef0a7cbd87b112896",
+    "exact_committed_byte_execution": true
   },
   "producer": "research/delta-b/helpers/delta_b_grid_kernel.py",
   "qa_file": "research/delta-b/qa/test_delta_b_grid_kernel.py",
