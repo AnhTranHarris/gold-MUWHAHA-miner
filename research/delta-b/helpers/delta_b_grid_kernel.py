@@ -438,6 +438,7 @@ class IntrinsicGridKernel:
             event_phase=phase,
         )
         mid = (bid + ask) / 2.0
+        pre_dirs = tuple(t.direction for t in self.trackers)
         new_events = []
         for tracker in self.trackers:
             ev = tracker.update(ts_utc, mid, qs.q_context)
@@ -448,16 +449,27 @@ class IntrinsicGridKernel:
         active = [d for d in dirs if d]
         coherence = abs(sum(active)) / len(active) if active else 0.0
 
+        # RECLAIM is a transition, not a persistent disagreement state.
+        l0_event = next((e for e in new_events if e.scale == self.cfg.scales[0]), None)
+        higher_pre = [d for d in pre_dirs[1:] if d]
+        higher_sign = 0
+        if higher_pre:
+            signed = sum(higher_pre)
+            higher_sign = 1 if signed > 0 else -1 if signed < 0 else 0
+
         if qs.shock_active:
             state = GridState.CHURN_SHOCK
-        elif len(active) >= 3 and coherence >= 0.75:
-            state = (
-                GridState.ESCAPE
-                if new_events and len({e.direction for e in new_events}) == 1
-                else GridState.TRANSIT
-            )
-        elif dirs[0] and any(d == -dirs[0] for d in dirs[1:] if d):
+        elif (
+            l0_event is not None
+            and pre_dirs[0] != 0
+            and l0_event.direction == -pre_dirs[0]
+            and higher_sign != 0
+        ):
             state = GridState.RECLAIM
+        elif new_events and len(active) >= 3 and coherence >= 0.75:
+            state = GridState.ESCAPE
+        elif len(active) >= 3 and coherence >= 0.75:
+            state = GridState.TRANSIT
         else:
             state = GridState.ROTATION
 
