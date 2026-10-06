@@ -148,6 +148,47 @@ def classify_crossing(
     )
 
 
+
+def trend_label(value: int) -> str:
+    if value > 0:
+        return "UP"
+    if value < 0:
+        return "DOWN"
+    return "FLAT"
+
+
+def apply_timeframe_snapshot(
+    state: GridSystemState,
+    snapshot: TimeframeSnapshot,
+    now_ms: int,
+) -> None:
+    """Populate BUILD-01 role fields from completed-bar right-edge states."""
+    state.update_timeframe_state("H4", trend_label(snapshot.h4), now_ms)
+    state.update_timeframe_state("H1", trend_label(snapshot.h1), now_ms)
+    state.update_timeframe_state("M15", trend_label(snapshot.m15), now_ms)
+    state.update_timeframe_state("M5", trend_label(snapshot.m5), now_ms)
+
+
+def update_session_phase(state: GridSystemState, now_ms: int) -> tuple[SessionState, bool]:
+    """Apply the UTC session phase and restart the finite grid cycle on handoff.
+
+    The first classification from UNKNOWN initializes the phase without a restart.
+    Later changes are explicit new-information boundaries and expire prior-cycle
+    event ownership through BUILD-01's restart contract.
+    """
+    new_session = session_from_utc_ms(now_ms)
+    old_session = state.session
+    if new_session == old_session:
+        return new_session, False
+
+    if old_session != SessionState.UNKNOWN:
+        state.restart_cycle(
+            now_ms,
+            f"SESSION_PHASE:{old_session.value}->{new_session.value}",
+        )
+    state.session = new_session
+    return new_session, True
+
 def apply_decision_to_event(
     state: GridSystemState,
     event: GridEvent,
@@ -180,11 +221,22 @@ def build02_self_check() -> dict[str, object]:
     tf2 = TimeframeSnapshot(1, 1, 1, -1, 0.40, 0.30)
     london = classify_crossing(SessionState.LONDON, -1, tf2)
     rollover = classify_crossing(SessionState.ROLLOVER, 1, tf2)
+    state = GridSystemState(start_ms=0)
+    _, changed0 = update_session_phase(state, 1_000)
+    first_cycle = state.cycle.cycle_id
+    _, changed1 = update_session_phase(state, 7 * 3_600_000)
+    second_cycle = state.cycle.cycle_id
+    apply_timeframe_snapshot(state, tf2, 7 * 3_600_000)
+
     return {
         "asia_route": asia.route_id,
         "london_route": london.route_id,
         "rollover_eligible": rollover.eligible,
         "route_count": len(ROUTES),
+        "session_initialized": changed0,
+        "session_handoff_restart": changed1 and first_cycle != second_cycle,
+        "h4_state": state.timeframe_states["H4"].state,
+        "m5_state": state.timeframe_states["M5"].state,
         "timer_rearm_present": False,
         "order_authority_present": False,
     }
