@@ -1,0 +1,34 @@
+name: delta-b-grid-qa
+
+on:
+  push:
+    branches:
+      - delta-b
+    paths:
+      - "research/delta-b/helpers/**"
+      - "research/delta-b/qa/**"
+      - "research/delta-b/experiments/**"
+      - ".github/workflows/delta-b-grid-qa.yml"
+  pull_request:
+    paths:
+      - "research/delta-b/helpers/**"
+      - "research/delta-b/qa/**"
+      - "research/delta-b/experiments/**"
+
+jobs:
+  grid-kernel-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile DELTA-B research code
+        run: |
+          python -m py_compile             research/delta-b/helpers/delta_b_grid_kernel.py             research/delta-b/experiments/delta_b_db001b_event_grid_trace.py
+      - name: Run exact committed Grid Layer 1 unit tests
+        env:
+          PYTHONPATH: research/delta-b/helpers
+        run: |
+          python -m unittest -v research/delta-b/qa/test_delta_b_grid_kernel.py
