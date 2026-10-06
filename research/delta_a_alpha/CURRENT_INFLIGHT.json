@@ -1,23 +1,31 @@
 {
   "schema": "delta-a-alpha-inflight-v2",
-  "state": "IDLE_READY",
+  "state": "RUNNING",
   "last_completed": "DAA_TIMEOUT_RECOVERY_002",
-  "current_unit": null,
-  "next_unit": "DAA_GRID_001_CAUSAL_FORENSIC_BASELINE",
+  "current_unit": "DAA_GRID_001_CAUSAL_FORENSIC_BASELINE",
+  "next_unit": null,
+  "scope": {
+    "window": "DELTA_STAGE_A_JANUARY_WINDOW",
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "source_mechanics": "GRID-001-F",
+    "lot": 0.01,
+    "martingale": false,
+    "august": "SEALED"
+  },
+  "intended_outputs": [
+    "research/delta_a_alpha/experiments/grid001_forensic_baseline.py",
+    "research/delta_a_alpha/artifacts/GRID_001_F_STAGE_A_RESULT.json",
+    "research/delta_a_alpha/grid/GRID_001_F_STAGE_A_REPORT.md"
+  ],
   "dependency_files": [
     "CURRENT_STATE.json",
     "research/delta_a_alpha/TIMEOUT_SAFE_CONTINUITY.md",
     "research/delta_a_alpha/grid/GRID_001_SPEC.json",
     "research/delta_a_alpha/benchmarks/R9_REAL_SYNTH_JAN_JUL_2026.json",
-    "research/delta_a_alpha/HELPER_REGISTRY.json",
-    "research/delta_a_alpha/SOURCE_REGISTRY.md"
+    "research/delta/lab/coinexx_like_surface.py",
+    "research/delta/lab/dukas_tick_lab.py",
+    "research/delta/reference/DELTA_STAGE_A_JANUARY_WINDOW.json"
   ],
-  "recovered_after_delivery_timeout": {
-    "helper_verified": "research/delta_a_alpha/helpers/mt5_report_benchmark_extract.py",
-    "benchmark_verified": "research/delta_a_alpha/benchmarks/R9_REAL_SYNTH_JAN_JUL_2026.json",
-    "source_report_hashes_verified": true,
-    "duplicate_report_copies_byte_identical": true
-  },
-  "failure_recovery": "Inspect committed helper/result/manifest first. Rerun only the smallest missing unit. Never rebuild durable bytes from chat.",
-  "write_discipline": "Persist one bounded meaningful unit and update this cursor before beginning the next."
+  "failure_recovery": "Inspect intended output paths first. If result exists, verify and continue. If helper exists but result does not, rerun only Stage-A baseline.",
+  "write_discipline": "Persist helper/result immediately before any parameter sweep or variant."
 }
