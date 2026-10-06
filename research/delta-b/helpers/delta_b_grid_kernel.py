@@ -618,38 +618,31 @@ class IntrinsicGridKernel:
         self.q = AdaptiveQEstimator(self.cfg)
         self.trackers = [DirectionalChangeTracker(s) for s in self.cfg.scales]
 
-    def update(
+    def update_ms(
         self,
         *,
-        ts_utc: datetime,
+        time_ms: int,
         bid: float,
         ask: float,
-        events: Iterable[CalendarEvent] = (),
+        session: Session,
+        event_phase: EventPhase = EventPhase.NORMAL,
         commission_equiv: float = 0.0,
         slippage_buffer: float = 0.0,
-        session_override: Session | None = None,
-        event_phase_override: EventPhase | None = None,
     ) -> GridSnapshot:
-        session = session_override if session_override is not None else classify_session(ts_utc)
-        phase = (
-            event_phase_override
-            if event_phase_override is not None
-            else classify_event_phase(ts_utc, events, self.cfg)
-        )
-        qs = self.q.update(
-            ts_utc=ts_utc,
+        qs = self.q.update_ms(
+            time_ms=time_ms,
             bid=bid,
             ask=ask,
+            session=session,
+            event_phase=event_phase,
             commission_equiv=commission_equiv,
             slippage_buffer=slippage_buffer,
-            session=session,
-            event_phase=phase,
         )
         mid = (bid + ask) / 2.0
         pre_dirs = tuple(t.direction for t in self.trackers)
         new_events = []
         for tracker in self.trackers:
-            ev = tracker.update(ts_utc, mid, qs.q_context)
+            ev = tracker.update_ms(time_ms, mid, qs.q_context)
             if ev is not None:
                 new_events.append(ev)
 
@@ -657,8 +650,10 @@ class IntrinsicGridKernel:
         active = [d for d in dirs if d]
         coherence = abs(sum(active)) / len(active) if active else 0.0
 
-        # RECLAIM is a transition, not a persistent disagreement state.
-        l0_event = next((e for e in new_events if e.scale == self.cfg.scales[0]), None)
+        l0_event = next(
+            (e for e in new_events if e.scale == self.cfg.scales[0]),
+            None,
+        )
         higher_pre = [d for d in pre_dirs[1:] if d]
         higher_sign = 0
         if higher_pre:
@@ -675,10 +670,6 @@ class IntrinsicGridKernel:
             and pre_dirs[0] == -higher_sign
             and l0_event.direction == higher_sign
         ):
-            # True reclaim: the micro scale first diverged from the established
-            # higher-scale owner, then a new L0 directional-change event
-            # realigned with that owner. A flip AWAY from higher context is not
-            # a reclaim and remains rotation/disagreement.
             state = GridState.RECLAIM
         elif new_events and len(active) >= 3 and coherence >= 0.75:
             state = GridState.ESCAPE
@@ -687,4 +678,50 @@ class IntrinsicGridKernel:
         else:
             state = GridState.ROTATION
 
-        return GridSnapshot(qs, dirs, coherence, state, tuple(new_events))
+        return GridSnapshot(
+            qs,
+            dirs,
+            coherence,
+            state,
+            tuple(new_events),
+        )
+
+    def update(
+        self,
+        *,
+        ts_utc: datetime,
+        bid: float,
+        ask: float,
+        events: Iterable[CalendarEvent] = (),
+        commission_equiv: float = 0.0,
+        slippage_buffer: float = 0.0,
+        session_override: Session | None = None,
+        event_phase_override: EventPhase | None = None,
+    ) -> GridSnapshot:
+        if ts_utc.tzinfo is None:
+            raise ValueError("timestamp must be timezone-aware")
+        session = (
+            session_override
+            if session_override is not None
+            else classify_session(ts_utc)
+        )
+        phase = (
+            event_phase_override
+            if event_phase_override is not None
+            else classify_event_phase(ts_utc, events, self.cfg)
+        )
+        return self.update_ms(
+            time_ms=int(
+                round(
+                    ts_utc.astimezone(timezone.utc).timestamp()
+                    * 1000.0
+                )
+            ),
+            bid=bid,
+            ask=ask,
+            session=session,
+            event_phase=phase,
+            commission_equiv=commission_equiv,
+            slippage_buffer=slippage_buffer,
+        )
+
