@@ -1,0 +1,305 @@
+{
+  "schema": "delta-a-alpha-r9-real-synth-benchmark-v1",
+  "status": "DURABLE_CANONICAL_ACCOUNT_LEVEL_BENCHMARK",
+  "period": "2026-01-01..2026-07-31",
+  "symbol": "XAUUSD",
+  "fixed_lot": 0.01,
+  "authority": "Original MT5 Strategy Tester reports; reconstructed from deal ledger including commission and swap.",
+  "extractor": {
+    "path": "research/delta_a_alpha/helpers/mt5_report_benchmark_extract.py",
+    "commit": "7846ba230c1b9f8b5ec7b32ad3eb2c8f9e0501b2"
+  },
+  "source_reports": {
+    "synth": {
+      "file": "ReportTester-871471_jan2026_jul2026_R9_ticklog_synth(4).xlsx",
+      "sha256": "e5fcf4d6879193fac88e7a8e101db1111d59e1a7f5abfb793c970b06cfce7cc7"
+    },
+    "real": {
+      "file": "ReportTester-871471_jan2026_jul2026_R9_ticklog_real(4).xlsx",
+      "sha256": "19d5ffd785beaae2a9d0baa5efb50efcd36a7db635c7ef82957be442429c1064"
+    }
+  },
+  "accounting": {
+    "net_and_gross": "commission + swap + profit from MT5 deal cashflows",
+    "winning_trade": "completed-position price profit + swap > 0; commission excluded to match tester winner label",
+    "balance_drawdown": "exact deal-balance sequence",
+    "holding_survivability": "share of completed positions held at least horizon"
+  },
+  "aggregate": {
+    "synth": {
+      "trades": 219342,
+      "winners": 191136,
+      "win_rate_pct": 87.14063,
+      "net_profit": 309122.85,
+      "gross_profit": 325361.51,
+      "gross_loss": -16238.66,
+      "profit_factor": 20.036229,
+      "expected_payoff": 1.409319,
+      "balance_max_drawdown": 3.41,
+      "active_trading_days": 149,
+      "trades_per_active_day": 1472.09396,
+      "average_hold_seconds": 17.315443,
+      "median_hold_seconds": 17,
+      "survival_pct": {
+        "1": 99.9594,
+        "5": 87.1785,
+        "10": 77.3728,
+        "15": 59.3352,
+        "20": 43.6957,
+        "30": 9.21939
+      }
+    },
+    "real": {
+      "trades": 236647,
+      "winners": 102385,
+      "win_rate_pct": 43.264863,
+      "net_profit": -50285.28,
+      "gross_profit": 30180.23,
+      "gross_loss": -80465.51,
+      "profit_factor": 0.37507,
+      "expected_payoff": -0.212491,
+      "balance_max_drawdown": 50285.3,
+      "active_trading_days": 149,
+      "trades_per_active_day": 1588.234899,
+      "average_hold_seconds": 7.33266,
+      "median_hold_seconds": 3,
+      "survival_pct": {
+        "1": 83.8257,
+        "5": 35.1524,
+        "10": 15.9212,
+        "15": 8.39943,
+        "20": 4.84604,
+        "30": 1.84621
+      }
+    },
+    "real_to_synth_net_gap": 359408.13,
+    "real_minus_synth_trades": 17305
+  },
+  "monthly": {
+    "2026-01": {
+      "synth": {
+        "trades": 27980,
+        "winners": 24379,
+        "win_rate_pct": 87.130093,
+        "net_profit": 41520.82,
+        "gross_profit": 43592.43,
+        "gross_loss": -2071.61,
+        "profit_factor": 21.042778,
+        "expected_payoff": 1.483946,
+        "balance_max_drawdown": 3.41,
+        "trades_per_active_day": 1332.380952,
+        "survival_20s_pct": 43.874196
+      },
+      "real": {
+        "trades": 31915,
+        "winners": 13947,
+        "win_rate_pct": 43.700454,
+        "net_profit": -6651.62,
+        "gross_profit": 3785.28,
+        "gross_loss": -10436.9,
+        "profit_factor": 0.362682,
+        "expected_payoff": -0.208417,
+        "balance_max_drawdown": 6659.15,
+        "trades_per_active_day": 1519.761905,
+        "survival_20s_pct": 5.586715
+      },
+      "net_gap": 48172.44
+    },
+    "2026-02": {
+      "synth": {
+        "trades": 33523,
+        "winners": 29630,
+        "win_rate_pct": 88.387078,
+        "net_profit": 66213.65,
+        "gross_profit": 68541.24,
+        "gross_loss": -2327.59,
+        "profit_factor": 29.4473,
+        "expected_payoff": 1.975171,
+        "balance_max_drawdown": 2.2,
+        "trades_per_active_day": 1676.15,
+        "survival_20s_pct": 43.200191
+      },
+      "real": {
+        "trades": 35394,
+        "winners": 15296,
+        "win_rate_pct": 43.216364,
+        "net_profit": -7331.21,
+        "gross_profit": 6273.89,
+        "gross_loss": -13605.1,
+        "profit_factor": 0.461143,
+        "expected_payoff": -0.207131,
+        "balance_max_drawdown": 7331.21,
+        "trades_per_active_day": 1769.7,
+        "survival_20s_pct": 4.232356
+      },
+      "net_gap": 73544.86
+    },
+    "2026-03": {
+      "synth": {
+        "trades": 40985,
+        "winners": 36912,
+        "win_rate_pct": 90.062218,
+        "net_profit": 75698.63,
+        "gross_profit": 78092.49,
+        "gross_loss": -2393.86,
+        "profit_factor": 32.621995,
+        "expected_payoff": 1.846984,
+        "balance_max_drawdown": 2.63,
+        "trades_per_active_day": 1862.954545,
+        "survival_20s_pct": 41.693302
+      },
+      "real": {
+        "trades": 40297,
+        "winners": 18054,
+        "win_rate_pct": 44.802343,
+        "net_profit": -7255.59,
+        "gross_profit": 6719.48,
+        "gross_loss": -13975.07,
+        "profit_factor": 0.480819,
+        "expected_payoff": -0.180053,
+        "balance_max_drawdown": 7259.81,
+        "trades_per_active_day": 1831.681818,
+        "survival_20s_pct": 2.211083
+      },
+      "net_gap": 82954.22
+    },
+    "2026-04": {
+      "synth": {
+        "trades": 31758,
+        "winners": 27553,
+        "win_rate_pct": 86.759242,
+        "net_profit": 38353.96,
+        "gross_profit": 40768.18,
+        "gross_loss": -2414.22,
+        "profit_factor": 16.886688,
+        "expected_payoff": 1.207694,
+        "balance_max_drawdown": 2.02,
+        "trades_per_active_day": 1512.285714,
+        "survival_20s_pct": 43.982619
+      },
+      "real": {
+        "trades": 33613,
+        "winners": 14644,
+        "win_rate_pct": 43.566477,
+        "net_profit": -7029.4,
+        "gross_profit": 4019.03,
+        "gross_loss": -11048.43,
+        "profit_factor": 0.363765,
+        "expected_payoff": -0.209127,
+        "balance_max_drawdown": 7030.75,
+        "trades_per_active_day": 1600.619048,
+        "survival_20s_pct": 4.254306
+      },
+      "net_gap": 45383.36
+    },
+    "2026-05": {
+      "synth": {
+        "trades": 28913,
+        "winners": 24724,
+        "win_rate_pct": 85.511708,
+        "net_profit": 29545.35,
+        "gross_profit": 31912.06,
+        "gross_loss": -2366.71,
+        "profit_factor": 13.483722,
+        "expected_payoff": 1.021871,
+        "balance_max_drawdown": 2.86,
+        "trades_per_active_day": 1376.809524,
+        "survival_20s_pct": 43.596306
+      },
+      "real": {
+        "trades": 31334,
+        "winners": 12655,
+        "win_rate_pct": 40.387439,
+        "net_profit": -7826.74,
+        "gross_profit": 2898.99,
+        "gross_loss": -10725.73,
+        "profit_factor": 0.270284,
+        "expected_payoff": -0.249784,
+        "balance_max_drawdown": 7826.74,
+        "trades_per_active_day": 1492.095238,
+        "survival_20s_pct": 5.559456
+      },
+      "net_gap": 37372.09
+    },
+    "2026-06": {
+      "synth": {
+        "trades": 31801,
+        "winners": 27439,
+        "win_rate_pct": 86.28345,
+        "net_profit": 35348.3,
+        "gross_profit": 37847.22,
+        "gross_loss": -2498.92,
+        "profit_factor": 15.145431,
+        "expected_payoff": 1.111547,
+        "balance_max_drawdown": 2.69,
+        "trades_per_active_day": 1445.5,
+        "survival_20s_pct": 44.017484
+      },
+      "real": {
+        "trades": 33603,
+        "winners": 14402,
+        "win_rate_pct": 42.859269,
+        "net_profit": -7651.52,
+        "gross_profit": 3577.32,
+        "gross_loss": -11228.84,
+        "profit_factor": 0.318583,
+        "expected_payoff": -0.227703,
+        "balance_max_drawdown": 7651.52,
+        "trades_per_active_day": 1527.409091,
+        "survival_20s_pct": 5.139422
+      },
+      "net_gap": 42999.82
+    },
+    "2026-07": {
+      "synth": {
+        "trades": 24382,
+        "winners": 20499,
+        "win_rate_pct": 84.074317,
+        "net_profit": 22442.14,
+        "gross_profit": 24607.89,
+        "gross_loss": -2165.75,
+        "profit_factor": 11.362295,
+        "expected_payoff": 0.920439,
+        "balance_max_drawdown": 3.08,
+        "trades_per_active_day": 1108.272727,
+        "survival_20s_pct": 46.86244
+      },
+      "real": {
+        "trades": 30491,
+        "winners": 13387,
+        "win_rate_pct": 43.904759,
+        "net_profit": -6539.2,
+        "gross_profit": 2906.24,
+        "gross_loss": -9445.44,
+        "profit_factor": 0.307687,
+        "expected_payoff": -0.214463,
+        "balance_max_drawdown": 6539.62,
+        "trades_per_active_day": 1385.954545,
+        "survival_20s_pct": 7.861336
+      },
+      "net_gap": 28981.34
+    }
+  },
+  "research_use": {
+    "role": "Guiding-light benchmark; not causal alpha evidence.",
+    "primary_targets": [
+      "net_profit",
+      "gross_profit",
+      "gross_loss",
+      "profit_factor",
+      "expected_payoff",
+      "win_rate_pct"
+    ],
+    "additional_targets": [
+      "trade_velocity",
+      "holding_time_survivability",
+      "small_account_survivability"
+    ],
+    "small_account_starting_balances_usd": [
+      100,
+      200,
+      300
+    ],
+    "august": "SEALED"
+  }
+}
