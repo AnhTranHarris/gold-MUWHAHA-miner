@@ -1,12 +1,10 @@
 from __future__ import annotations
 import argparse, json
 from pathlib import Path
-import sys
 import numpy as np
 from numba import njit
 
-sys.path.insert(0, '/mnt/data')
-from grid001_january_event_label_lab import load_month, materialize_p75, DAY_MS, H1_MS, PRICE_SCALE
+from grid001_january_event_label_lab import load, materialize, DAY_MS, H1_MS, PRICE_SCALE
 
 WINDOW=48
 MULTS=(1.0,1.5)
@@ -175,7 +173,7 @@ def one_variant(t,a,b,mult):
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('source',type=Path); ap.add_argument('--output',type=Path,required=True); z=ap.parse_args()
-    t,sa,sb=load_month(z.source); a,b,maxe=materialize_p75(t,sa,sb)
+    t,sa,sb=load(z.source); a,b,maxe=materialize(t,sa,sb)
     variants={}
     for m,name in [(1.0,'A10'),(1.5,'A15')]:
         variants[name]=one_variant(t,a,b,m)
