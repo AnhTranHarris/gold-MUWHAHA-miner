@@ -3,55 +3,83 @@
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "branch": "delta",
   "research_scope": "DELTA_ONLY_CLEAN_ROOM",
-  "last_verified_durable_unit": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
-  "first_incomplete_unit": "R037_XAUUSD_ASIA_RANGE_DIRECTIONALITY_HARVEST_CHECKPOINT_17DE_17DG",
-  "current_phase": "R037_XAUUSD_ASIA_RANGE_DIRECTIONALITY_HARVEST_CHECKPOINT_17DE_17DG_IN_PROGRESS",
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_SSRP_QUALIFIED_SWEEP_CHECKPOINT_17DA_17DD_MANIFEST.json",
-  "active_candidate": "17DE-17DG Asia-range directionality bake-off",
-  "last_candidate_disposition": "SSRP qualified-sweep family retired unchanged: 26/-$7.87, 18/-$4.68, 20/-$3.21, 12/-$2.42. No threshold/session/timeframe rescue.",
+  "last_verified_durable_unit": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
+  "first_incomplete_unit": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_PLAN",
+  "current_phase": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_READY",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A_MANIFEST.json",
+  "active_candidate": null,
+  "last_candidate_disposition": "17DE-17DG Asia-range directionality completed before the delivery timeout and is retired with no Stage-A survivor (5/-$0.16, 4/-$1.76, 2/-$1.42). New specialist harvesting is paused by owner.",
   "august_2026": "SEALED",
   "approved_delta_ea": null,
   "approved_delta_mql5_builds": 0,
   "mql5_authorized": false,
-  "sorb_status": "NO_NEW_PROMOTION_FROM_17AM",
+  "sorb_status": "NO_PROMOTED_SORB; SURROGATE_SCREEN_LEADER_FAILED_INDEPENDENT_VALIDATION",
+  "specialist_roster": {
+    "status": "FROZEN_FOR_REFINEMENT_AND_INTEGRATION",
+    "execution_streams": [
+      "DH03-S06",
+      "DH05-S06",
+      "DH02-S11",
+      "DH02-S08"
+    ],
+    "shared_components": [
+      "DH01",
+      "DH06",
+      "DH07"
+    ],
+    "reserve": [
+      "DH04"
+    ],
+    "exact_historical_r032_c03_parity": false,
+    "promotion_status": "NO_FINAL_DELTA_CANDIDATE_PROMOTED",
+    "new_specialist_harvest": "PAUSED_BY_OWNER"
+  },
+  "helper_status": {
+    "current_required_helpers": "COMPLETE",
+    "missing_required_artifacts": [],
+    "historical_unrecovered_bytes": "PROVENANCE_LIMITATIONS_ONLY_DO_NOT_FABRICATE"
+  },
+  "white_papers": {
+    "status": "UPDATED_AND_READBACK_VERIFIED",
+    "github_index": "research/delta/research/DELTA_R003_DIRECTION_HOLD_CAUSAL_GRAMMAR_WHITEPAPERS.md",
+    "checkpoint": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A"
+  },
   "timeout_recovery": {
     "inflight_path": "research/delta/CURRENT_INFLIGHT.json",
     "pointer_path": "research/delta/handoffs/DELTA_R037_TIMEOUT_RECOVERY_POINTER.json",
-    "rule": "On message-delivery interruption, trust committed prereg/source/result/report/manifest and resume the first missing phase; chat delivery timeout is not itself compute failure.",
-    "guard_alignment": "COMPLETE_PHASE_SCHEMA_ALIGNED_AFTER_STRUCTURAL_17CS_17CV"
+    "rule": "On message-delivery interruption, trust committed result/report/manifest and resume the first missing durable phase; chat delivery timeout is not itself compute failure.",
+    "guard_alignment": "CLOSED_AT_SPECIALIST_ROSTER_FINALIZATION_18A"
   },
   "canonical_data": {
     "january_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
     "stage_a_ticks": 4205709,
     "surface": "DUKAS_COINEXX_LIKE_P75"
   },
-  "restart_instruction": "Read this file, CURRENT_INFLIGHT, recovery pointer, and active rebuild manifest. Continue only the first incomplete bounded unit.",
+  "restart_instruction": "Read this file, CURRENT_INFLIGHT, recovery pointer, and active rebuild manifest. Resume R037 specialist refinement/integration only; do not restart retired harvest families or begin a new specialist harvest unless the owner explicitly reopens discovery.",
   "state_compaction": {
-    "date_utc": "2026-10-04",
-    "reason": "Keep authoritative cursor small and timeout-safe; historical research remains immutable in Git commits, checkpoint results, reports, manifests, and workbook.",
+    "date_utc": "2026-10-05",
+    "reason": "Keep authoritative cursor small and timeout-safe; detailed research remains durable in Git commits, checkpoint results, reports, manifests, Drive white papers and workbook.",
     "prior_full_state_preserved_in_git_history": true
   },
   "recovery_pointer_sync": {
-    "status": "INFLIGHT_PRODUCER_COMMITTED",
-    "last_completed": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
-    "current_candidate": "17DE-17DG Asia-range directionality bake-off",
-    "next": "RUN_BOUNDED_COMPUTE",
-    "inflight_close_commit": "559622b3fae8306b7db076e5c8a9641742858db4",
-    "pointer_sync_commit": "75f3cc98276b10a62b9587067f2ee6ce5dc19057"
+    "status": "CLOSED_DURABLE_SPECIALIST_ROSTER_18A",
+    "last_completed": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
+    "current_candidate": null,
+    "next": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_PLAN",
+    "inflight_close_commit": "ffc98e89d34213d774e6cf0ce8f52e80dbd06b54",
+    "pointer_sync_commit": "0f6a2c4d041b482e9711cee09a58a20591e9b8ee"
   },
   "clean_room_maintenance": {
-    "status": "RECENT_DELTA_DIFF_PREFLIGHT_CLEAN",
-    "baseline_passing_commit": "164d20b91718a6bb84746350ba2a26b5c9a92ccb",
-    "latest_cleanup_commit": "f43eef22eac0fec3cec8b91bf27faa553eb3296b",
-    "forbidden_new_literals": 0,
-    "scientific_results_changed": false
+    "status": "DELTA_ONLY_ACTIVE",
+    "scientific_results_changed_by_finalization": false,
+    "note": "18A consolidates and labels durable results; it does not retune or manufacture historical specialist behavior."
   },
   "concurrency_recovery": {
-    "status": "INFLIGHT_DURABLE_AT_PRODUCER",
-    "authoritative_checkpoint": "R037_DISPLACEMENT_QUALIFIED_SESSION_SWEEP_HARVEST_CHECKPOINT_17DA_17DD",
-    "current_candidate": "17DE-17DG Asia-range directionality bake-off",
-    "note": "If delivery fails now, resume at bounded compute; prereg and exact producer are durable."
+    "status": "IDLE_NO_ACTIVE_COMPUTE",
+    "authoritative_checkpoint": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
+    "current_candidate": null,
+    "note": "If delivery fails now, resume at refinement/integration planning; no research compute is in flight."
   },
-  "search_bias": "XECTSB and VCE branches are retired by adjacent OOS failure. Do not rescue or retune them. Harvest genuinely independent, source-grounded XAUUSD entry classes with causal event lifecycles, expected >=10 Stage-A trades, and native short-horizon persistence. Prefer structural price-action/session/liquidity anchors over another generic oscillator or EMA derivative.",
-  "timeout_recovery_cursor_semantics": "Connector-safe serial closure used when low-level multi-file tree commit is blocked; verify each cursor write and require final DELTA rebuild artifact gate before trusting advancement."
+  "search_bias": "New specialist harvesting is paused by owner. Prioritize refinement of the four frozen execution streams, ownership/collision complementarity, DH06 post-entry evidence, DH07 initial-hold orchestration, and a clean composite candidate. Do not rescue retired 17-series families by retuning.",
+  "timeout_recovery_cursor_semantics": "Connector-safe serial closure is authoritative when multi-file atomic commit is unavailable; trust advancement only after the final DELTA rebuild artifact gate passes."
 }
