@@ -1,0 +1,102 @@
+{
+  "schema": "delta-a-alpha-r9-real-jan-signal-flow-state-v1-compact",
+  "unit": "DAA_GRID_001_R9_REAL_JAN_SIGNAL_FLOW_STATE_001",
+  "status": "COMPLETE_NEGATIVE_WRONG_EVENT_CLOCK",
+  "source_context": "R9_REAL_JAN_CONTEXT_ROWS_001.csv.gz",
+  "source_context_sha256": "4fffc16968c61871000c895fe4eec9b69d09021fb60192964ffd275ba7c0a374",
+  "canonical": {
+    "trades": 31915,
+    "net": -6651.62,
+    "gross_profit": 3785.28,
+    "gross_loss": -10436.9
+  },
+  "prereg_contract": {
+    "signal_gap_bins": [
+      "<1s",
+      "1-3s",
+      "3-10s",
+      "10-30s",
+      ">=30s"
+    ],
+    "run_states": [
+      "NEW_FLIP",
+      "RUN_2",
+      "RUN_3_4",
+      "RUN_5_8",
+      "RUN_9_PLUS"
+    ],
+    "fast_pressure_tau_seconds": 2,
+    "slow_pressure_tau_seconds": 10,
+    "pressure_states": [
+      "OPPOSED_STRONG",
+      "OPPOSED",
+      "NEUTRAL",
+      "SUPPORT",
+      "SUPPORT_STRONG"
+    ],
+    "nested_flow_states": [
+      "BOTH_SUPPORT",
+      "BOTH_OPPOSE",
+      "FAST_SUPPORT_SLOW_OPPOSE",
+      "FAST_OPPOSE_SLOW_SUPPORT",
+      "FAST_ONLY_SUPPORT",
+      "FAST_ONLY_OPPOSE",
+      "SLOW_ONLY_SUPPORT",
+      "SLOW_ONLY_OPPOSE",
+      "NEUTRAL_MIXED"
+    ]
+  },
+  "dominant_findings": {
+    "fast_pressure_neutral": {
+      "trades": 31908,
+      "trade_share_pct": 99.9781
+    },
+    "slow_pressure_neutral": {
+      "trades": 31555,
+      "trade_share_pct": 98.872
+    },
+    "nested_neutral_mixed": {
+      "trades": 31554,
+      "trade_share_pct": 98.8689,
+      "net": -6588.65,
+      "pf": 0.361819
+    },
+    "signal_gap_ge30s": {
+      "trades": 22159,
+      "trade_share_pct": 69.4313,
+      "net": -4685.65,
+      "gross_loss_share_pct": 69.9103,
+      "gross_profit_share_pct": 68.973
+    },
+    "new_flip": {
+      "trades": 20616,
+      "trade_share_pct": 64.5966,
+      "net": -4251.02,
+      "gross_loss_share_pct": 64.1714,
+      "gross_profit_share_pct": 64.6314
+    },
+    "run_2": {
+      "trades": 7512,
+      "trade_share_pct": 23.5375,
+      "net": -1619.37,
+      "gross_loss_share_pct": 24.0405,
+      "gross_profit_share_pct": 23.5045
+    },
+    "neutral_flow_x_market_neutral": {
+      "trades": 13176,
+      "trade_share_pct": 41.2847,
+      "net": -2816.41,
+      "gross_loss_share_pct": 41.1338,
+      "gross_profit_share_pct": 39.0111
+    }
+  },
+  "scientific_decision": [
+    "REJECT 2s/10s R9-signal pressure as a useful state representation; the R9 signal stream is too sparse for those HFT-style decay clocks",
+    "DO NOT tune decay windows merely to rescue the feature",
+    "Signal run/gap families again behave mostly like broad trade-volume partitions rather than selective toxic states",
+    "KEEP the HFT separation principle but move the fast state source from R9 signal events to the actual Dukascopy quote feed",
+    "NEXT build nested micro-market state using subsecond/second quote path plus legitimate L1 bid/ask volume imbalance, stacked underneath frozen 5m/15m trend-phase state"
+  ],
+  "promotion_eligible": false,
+  "august": "SEALED"
+}
