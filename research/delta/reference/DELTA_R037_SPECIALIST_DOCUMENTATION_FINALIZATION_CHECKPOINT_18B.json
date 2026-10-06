@@ -1,0 +1,90 @@
+{
+  "schema": "delta-r037-specialist-documentation-finalization-18b-v1",
+  "status": "COMPLETE_DOCUMENTATION_FINALIZATION_REFINEMENT_INTEGRATION_READY",
+  "unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
+  "parent": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
+  "date_utc": "2026-10-05",
+  "lineage": "DELTA",
+  "new_specialist_harvest": "PAUSED_BY_OWNER",
+  "helper_status": {
+    "current_required_helpers": "COMPLETE",
+    "unfinished_current_helpers": [],
+    "historical_unrecovered_bytes": "PROVENANCE_LIMITATIONS_ONLY_DO_NOT_FABRICATE"
+  },
+  "frozen_roster": {
+    "execution_streams": [
+      "DH03-S06",
+      "DH05-S06",
+      "DH02-S11",
+      "DH02-S08"
+    ],
+    "shared_components": [
+      "DH01",
+      "DH06",
+      "DH07"
+    ],
+    "reserve": [
+      "DH04"
+    ]
+  },
+  "white_papers": [
+    {
+      "id": "DH-01",
+      "role": "shared context infrastructure",
+      "status": "R037 FROZEN / RETAIN FOR REFINEMENT-INTEGRATION",
+      "document_id": "1WrDPUavWb-bbv7gmxnnlEAFjT1NA9wYbPAwl-ayREAw"
+    },
+    {
+      "id": "DH-02",
+      "role": "entry specialist",
+      "status": "R037 FROZEN / RETAIN DH02-S11 + DH02-S08",
+      "document_id": "18KpLADXCt-MlIQgZ4j6papHdE7SUtrl8kVTbn0x1XNc"
+    },
+    {
+      "id": "DH-03",
+      "role": "entry specialist",
+      "status": "R037 FROZEN / RETAIN DH03-S06 NON-PROMOTING SURROGATE",
+      "document_id": "13pa0KSxVy93yajDEGAIkeY4V8Z3egMDIPxPV0nM3ia8"
+    },
+    {
+      "id": "DH-04",
+      "role": "research reserve",
+      "status": "R037 FROZEN / NO ACTIVE EXECUTION STREAM",
+      "document_id": "1S9VYfq3DrDqabMaHHqq6BB2ueB-CPBw9OLYnFOZlQDg"
+    },
+    {
+      "id": "DH-05",
+      "role": "reversal entry specialist",
+      "status": "R037 FROZEN / RETAIN DH05-S06 PROVENANCE-LIMITED SURROGATE",
+      "document_id": "1mIcrUUeK0lGwfR6L_26O47DQxQV7xygbnFcnkvE4s6k"
+    },
+    {
+      "id": "DH-06",
+      "role": "shared initial-hold evidence",
+      "status": "R037 FROZEN / RETAIN POST-ENTRY EVIDENCE ONLY",
+      "document_id": "1MAkyDsu1TK7VC8Rlx4ahlIxznPFEJKy_uX4k31heIhc"
+    },
+    {
+      "id": "DH-07",
+      "role": "shared initial-hold state machine",
+      "status": "R037 FROZEN / RETAIN COMMON ORCHESTRATION LAYER",
+      "document_id": "1CyZ-WBMpBCfQfz_dnfbOAfCktDgbC7uPlW-72NGM7ww"
+    }
+  ],
+  "spreadsheet_index": {
+    "spreadsheet_id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+    "sheet": "11 White Papers",
+    "range": "A1:H10",
+    "readback_verified": true
+  },
+  "github_whitepaper_index": {
+    "path": "research/delta/research/DELTA_R003_DIRECTION_HOLD_CAUSAL_GRAMMAR_WHITEPAPERS.md",
+    "commit": "2683337342a108399ab3e58132f0c39d2ec36e53"
+  },
+  "scientific_results_changed": false,
+  "exact_historical_r032_c03_parity": false,
+  "promoted_delta_candidate": null,
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "next_unit": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_PLAN"
+}
