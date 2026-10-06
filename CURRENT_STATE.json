@@ -7,9 +7,9 @@
   "parent_delta_immutable": true,
   "parent_state_blob_sha_at_fork": "d2760c9f50d898015d69780b4fdbf53f6a58432d",
   "parent_last_verified_durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
-  "last_verified_durable_unit": "DB001A_CANONICAL_100K_SMOKE_AND_RECLAIM_CORRECTION",
-  "active_rebuild_manifest_path": "research/delta-b/artifacts/DELTA_B_DB001_BOOTSTRAP_MANIFEST.json",
-  "current_phase": "DB001A_CAUSAL_REAL_TICK_Q_SESSION_EVENT_TRACE",
+  "last_verified_durable_unit": "DB001B_SCHEDULED_EVENT_ELASTICITY",
+  "active_rebuild_manifest_path": "research/delta-b/artifacts/DELTA_B_DB001B_SCHEDULED_EVENT_ELASTICITY_MANIFEST.json",
+  "current_phase": "DB001C_MINIMAL_EXECUTABLE_SCALP_LIFECYCLE",
   "active_candidate": null,
   "approved_delta_b_ea": null,
   "approved_delta_b_mql5_builds": 0,
@@ -43,7 +43,8 @@
       "NO_LOT_INCREASE_AFTER_LOSS",
       "NO_GRID_ADD_BECAUSE_PRICE_MOVED_AGAINST_POSITION",
       "NO_FUTURE_DATA_OR_LOOKAHEAD"
-    ]
+    ],
+    "scheduled_event_elasticity": "MAX_DEFENSE_FROM_CALENDAR_ACTIVATION_FROM_OBSERVED_TAPE_STRESS"
   },
   "adaptive_context": {
     "sessions": "FIRST_CLASS_CAUSAL_STATE",
@@ -64,12 +65,13 @@
   },
   "qa_status": {
     "exact_committed_byte_execution": true,
-    "tests": "9/9 PASS",
-    "kernel_git_blob_sha1": "479a60a01b996ab0e2850bb3871d325a857e021c",
-    "qa_git_blob_sha1": "abb04218ef0c8e51ed0865fc310dd93c4917cd37",
-    "scientific_verification": "BOOTSTRAP_MECHANICS_VERIFIED_AFTER_EVENT_DRIVEN_RECLAIM_CORRECTION",
-    "canonical_100k_smoke": "PASS_MECHANICS_DIAGNOSTIC_NO_PROFIT_CLAIM",
-    "canonical_january_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    "tests": "13/13 PASS",
+    "github_actions_run_id": 37455926127,
+    "kernel_git_blob_sha1": "f8c200648de0a94571bd24952cfa5249878fd96b",
+    "qa_git_blob_sha1": "c24aef599c95a19227d85fb14a6c4affb0601a6a",
+    "scientific_verification": "DB001B_MECHANICS_VERIFIED_NO_PROFIT_CLAIM",
+    "conditional_event_elasticity": "CARRY_FORWARD",
+    "spread_percentile_semantics": "PRIOR_HISTORY_TIE_MIDRANK"
   },
   "scientific_gate": {
     "canonical_execution": "ordered_real_ticks_with_bid_ask_costs",
@@ -78,6 +80,6 @@
     "grid_internal_hurdle": "target >=30% gross-loss and max-drawdown reduction versus exact R9 REAL reference while preserving meaningful scalp opportunity density; not an automatic promotion rule"
   },
   "promotion_rule": "Nothing in delta-b modifies delta or becomes MQL5 production code without explicit owner review and authorization.",
-  "restart_instruction": "Read CURRENT_STATE.json, research/delta-b/CURRENT_INFLIGHT.json, README, Grid constitution, DB001 plan, active bootstrap manifest, MT5 port contract, source provenance and 100K smoke report. Continue only the first incomplete delta-b unit. Do not resume parent delta R037 work from this branch.",
-  "next_unit": "DB001A_LOCATE_OR_BUILD_HASHED_MEDIUM_HIGH_EVENT_CACHE_AND_BROADER_SESSION_TRACE"
+  "restart_instruction": "Read CURRENT_STATE, CURRENT_INFLIGHT, README, Grid constitution, DB001 plan, DB001B manifest/report, MT5 port contract and source provenance. Resume DB001C minimal executable scalp lifecycle only. Do not add Volume Profile/RSI yet and do not modify parent delta.",
+  "next_unit": "DB001C_MINIMAL_EXECUTABLE_SCALP_LIFECYCLE"
 }
