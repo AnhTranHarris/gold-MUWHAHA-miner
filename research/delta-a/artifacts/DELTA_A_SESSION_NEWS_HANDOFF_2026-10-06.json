@@ -1,0 +1,81 @@
+{
+  "id": "DELTA_A_SESSION_NEWS_HANDOFF_2026-10-06",
+  "status": "HANDOFF_READY_NO_ACTIVE_HELPER",
+  "repository": "AnhTranHarris/gold-MUWHAHA-miner",
+  "phase0_branch": "delta-A-session-news-janjul-restart-20261006",
+  "phase0_commit": "af3f09b5fc66fd8647fdb81bc4d25d83998f188e",
+  "phase0_artifact": "research/delta-a/artifacts/DELTA_A_SESSION_NEWS_PHASE0_STATUS_2026-10-06.json",
+  "snapshot_branch": "delta-A-session-news-handoff-20261006",
+  "frozen_r10aa_r10as": {
+    "branch": "delta-A-r10aa-r10as-breakthrough-handoff-20261005",
+    "commit": "ce19815fda0f4d1219f55363df22bc857fb344f4"
+  },
+  "january_continuation_branch": "delta-A-r10ai-at-ap-ar-continuation-20261005",
+  "current_scientific_parent": [
+    "R10AA",
+    "R10AB",
+    "R10AG_SEQ45_60",
+    "R10AH",
+    "R10AI_G200",
+    "R10AT_DD90",
+    "R10AP_G300"
+  ],
+  "conditional": [
+    "R10AR_G1000"
+  ],
+  "full_grid_control": {
+    "id": "R9_GRID_MILESTONE_01_PREAUG",
+    "branch": "delta-A-r9-grid-milestone-01-preaug",
+    "commit": "0b9c88d51144b424d00803b43d6a8c43b35a0ac7",
+    "trades": 186569,
+    "wins": 113958,
+    "net_usd": 194674.33,
+    "gross_loss_usd": -770911.86,
+    "profit_factor": 1.2525247568509321,
+    "expected_payoff_usd": 1.0434441413096494,
+    "max_floating_equity_drawdown_usd": 27904.26,
+    "event_spec_rows": 186901,
+    "event_spec_sha256": "55f04e2b8c39e3b7693a6850cb540b7cc00705623f6dccd12b1736b379fd249a"
+  },
+  "r9_synth": {
+    "trades": 219342,
+    "wins": 191136,
+    "net_usd": 309122.85,
+    "gross_loss_usd": -16238.66,
+    "profit_factor": 20.036229,
+    "expected_payoff_usd": 1.409319
+  },
+  "helper_forensics": {
+    "active_python_worker": false,
+    "session_news_helper_started": false,
+    "historical_incomplete_helper": "research/delta-a/helpers/sa100_build_core_stop_variants.py",
+    "historical_incomplete_policy": "DO_NOT_RESUME",
+    "completed_failed_helper": "sa100_r2_port_month.py"
+  },
+  "campaign": [
+    "PHASE_A_EXACT_JAN_JUL_EVENT_LEDGER_RECOVERY_PARITY",
+    "PHASE_B_CAUSAL_SESSION_ADAPTATION",
+    "PHASE_C_SCHEDULED_NEWS_EVENT_ADAPTATION",
+    "PHASE_D_COMBINED_REPLAY"
+  ],
+  "custody": {
+    "drive_folder": "https://drive.google.com/drive/folders/1cY_ROSQm069KnmP3IXaQI3xDVegdEuJ_",
+    "master_doc": "https://docs.google.com/document/d/1ykSnFeJ7ztLw47qN0iXoOOsXguSFY_u33jKfRiZziPI/edit",
+    "prior_r10aa_r10as_zip": "https://drive.google.com/file/d/1esLKLdsc3VempopiUz1hBqkgxbfyAgCw/view",
+    "prior_r10aa_r10as_zip_sha256": "181667cda8e63d8f86cffdc17809761838317c218bb8c3d111aec7eebec153f1",
+    "january_continuation_zip": "https://drive.google.com/file/d/1OwL8YxIV1SEuohuZ2D9RSfkYkBwc6wd9/view",
+    "january_continuation_zip_sha256": "50b4c115a246f246b9716cb16451b42769a7acc05f1b59a0fb395f6c5b9fafa9",
+    "library_archive_path": "/xauusd trading bot/DELTA-A_SESSION_NEWS_HANDOFF_2026-10-06/DELTA_A_SESSION_NEWS_HANDOFF_2026-10-06.zip",
+    "library_archive_file_id": "file_0000000062d081f69381d77aafc824b3",
+    "library_archive_library_file_id": "libfile_bdcff66be8888191acd57d6ceb087135",
+    "library_archive_sha256": "826b87d7c3ea4ed72cd6d8637b740108251cdfd14397ddd8836b1e77cfae668e"
+  },
+  "hard_rules": {
+    "august_sealed": true,
+    "fixed_seed_lot": 0.01,
+    "minimum_real_architecture_handoff_balance_usd": 1000,
+    "lookahead": false,
+    "martingale": false,
+    "production_mql5_authorized": false
+  }
+}
