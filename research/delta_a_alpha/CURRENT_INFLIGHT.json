@@ -1,31 +1,23 @@
 {
   "schema": "delta-a-alpha-inflight-v2",
-  "state": "RUNNING",
-  "last_completed": "DAA_JANUARY_HYPERFAST_DISCOVERY_LATTICE_CHARTER_001",
-  "current_unit": "DAA_GRID_001_GROSS_LOSS_DRAWDOWN_MECHANISM_HUNT_001",
-  "next_unit": null,
-  "scope": {
-    "target_system": "R9_DELTA_A_ALPHA_GRID_SYSTEM",
-    "research_window": "JANUARY_DISCOVERY_BATTLEGROUND",
-    "priorities": [
-      "GROSS_LOSS",
-      "DRAWDOWN"
-    ],
-    "research_only": true,
-    "coding": false,
-    "martingale": false,
-    "fixed_lot": 0.01
-  },
-  "source_pool": [
-    "PUBLIC_GITHUB",
-    "METAQUOTES_MQL5",
-    "REDDIT",
-    "FOREXFACTORY",
-    "TRADINGVIEW_OPEN_SOURCE",
-    "ACADEMIC_QUANT_WHEN_USEFUL"
+  "state": "IDLE_READY",
+  "last_completed": "DAA_GRID_001_GROSS_LOSS_DRAWDOWN_MECHANISM_HUNT_001",
+  "current_unit": null,
+  "next_unit": "DAA_GRID_001_JANUARY_MECHANISM_SCREEN_PREREG_001",
+  "completed_outputs": [
+    "research/delta_a_alpha/research/DAA_GRID_001_GROSS_LOSS_DRAWDOWN_MECHANISM_HUNT_001.md",
+    "research/delta_a_alpha/grid/R9_DAA_GRID_SYSTEM_INITIAL_REDESIGN_001.md",
+    "research/delta_a_alpha/SOURCE_REGISTRY.md"
   ],
-  "intended_outputs": [
-    "research/delta_a_alpha/research/DAA_GRID_001_GROSS_LOSS_DRAWDOWN_MECHANISM_HUNT_001.md"
+  "next_scope": [
+    "virtual grid event clock",
+    "elastic spacing",
+    "range-vs-continuation semantics",
+    "early thesis failure",
+    "information-based re-arm",
+    "one-shot opportunity recovery",
+    "counterfactual shadow twin"
   ],
-  "failure_recovery": "If timeout occurs, inspect intended research note first. Resume source hunt only for missing source families; do not rebuild charter or prior GRID-001 tests."
+  "failure_recovery": "Verify completed outputs first. Do not repeat source hunt. Next action is preregistration only; no coding/testing until that preregistration is frozen.",
+  "write_discipline": "One January mechanism family at a time; persist result before mutation/combination."
 }
