@@ -1,0 +1,140 @@
+{
+  "schema": "delta-a-alpha-grid001-january-proof-state-diagnosis-v1-compact",
+  "unit": "DAA_GRID_001_JANUARY_PROOF_STATE_DIAGNOSIS_001",
+  "status": "COMPLETE_NO_SINGLE_STATE_EXPLAINS_DIVERGENCE",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "parent": "A15 proof-before-entry",
+  "opened_trades": 6560,
+  "full": {
+    "net": 142.77,
+    "pf": 1.010206
+  },
+  "discovery": {
+    "n": 2408,
+    "net": -697.43,
+    "pf": 0.800382
+  },
+  "validation": {
+    "n": 4152,
+    "net": 840.2,
+    "pf": 1.080055
+  },
+  "population_shift": {
+    "gap_cap_5usd_pct": {
+      "discovery": 19.9751,
+      "validation": 93.9066
+    },
+    "vol_ratio_median": {
+      "discovery": 0.929964,
+      "validation": 1.176236
+    },
+    "eff5m_median": {
+      "discovery": 0.06004,
+      "validation": 0.032419
+    },
+    "aligned5m_gap_median": {
+      "discovery": 1.407704,
+      "validation": 1.525
+    },
+    "event_pace_median_s": {
+      "discovery": 194.364,
+      "validation": 18.0275
+    }
+  },
+  "key_bins": {
+    "gap_lt_5": {
+      "full": {
+        "n": 2180,
+        "net": -491.09,
+        "pf": 0.823057
+      },
+      "discovery": {
+        "n": 1927,
+        "net": -475.25,
+        "pf": 0.798197
+      },
+      "validation": {
+        "n": 253,
+        "net": -15.84,
+        "pf": 0.962322
+      }
+    },
+    "gap_eq_5": {
+      "full": {
+        "n": 4380,
+        "net": 633.86,
+        "pf": 1.056526
+      },
+      "discovery": {
+        "n": 481,
+        "net": -222.18,
+        "pf": 0.8049
+      },
+      "validation": {
+        "n": 3899,
+        "net": 856.04,
+        "pf": 1.084968
+      }
+    },
+    "vol_ratio_ge_2": {
+      "full": {
+        "n": 836,
+        "net": 361,
+        "pf": 1.169954
+      },
+      "discovery": {
+        "n": 144,
+        "net": -89.81,
+        "pf": 0.761575
+      },
+      "validation": {
+        "n": 692,
+        "net": 450.81,
+        "pf": 1.257985
+      }
+    },
+    "event_pace_lt_1s": {
+      "full": {
+        "n": 131,
+        "net": 63.6,
+        "pf": 1.184241
+      },
+      "discovery": {
+        "n": 14,
+        "net": 4.47,
+        "pf": 1.257637
+      },
+      "validation": {
+        "n": 117,
+        "net": 59.13,
+        "pf": 1.180357
+      }
+    },
+    "event_pace_ge_120s": {
+      "full": {
+        "n": 2070,
+        "net": -398.47,
+        "pf": 0.869605
+      },
+      "discovery": {
+        "n": 1577,
+        "net": -433.29,
+        "pf": 0.790869
+      },
+      "validation": {
+        "n": 493,
+        "net": 34.82,
+        "pf": 1.035385
+      }
+    }
+  },
+  "scientific_decision": [
+    "DO NOT promote ATR-ratio, gap-cap, efficiency, or event-pace as standalone regime filters",
+    "KEEP fast event pace as a weak clue only; discovery sample for <1s is too small",
+    "The A15 discovery/validation divergence is broad nonstationarity not explained by one simple preregistered state",
+    "NEXT test dual proof ownership: continuation and mean-reversion compete causally after the crossing, with physical entry only after one side proves itself"
+  ],
+  "promotion_eligible": false,
+  "august": "SEALED"
+}
