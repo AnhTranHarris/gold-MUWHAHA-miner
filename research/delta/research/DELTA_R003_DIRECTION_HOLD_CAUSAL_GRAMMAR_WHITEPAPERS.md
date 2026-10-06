@@ -1,7 +1,8 @@
 # DELTA R003 — Direction + Hold Causal Grammar White Papers
 
 **Date:** 2026-10-02  
-**Status:** RESEARCH_ONLY / NO TESTING  
+**Status:** R037 SPECIALIST ROSTER FROZEN / REFINEMENT-INTEGRATION READY / NO FINAL EA PROMOTION
+**Historical note:** Earlier pre-backtest sections are preserved for provenance; current dispositions are authoritative in the R037 final specialist consolidation section.  
 **Active parent:** `DELTA_004_COINEXX_LIKE_DUKASCOPY_RESEARCH_SURFACE`  
 **Scope:** ENTRY + INITIAL-HOLD  
 **August 2026:** SEALED  
