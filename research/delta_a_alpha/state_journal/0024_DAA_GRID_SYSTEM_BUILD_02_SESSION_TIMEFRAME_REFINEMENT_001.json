@@ -1,0 +1,106 @@
+{
+  "sequence": 24,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001",
+  "status": "COMPLETE_ACCEPTED_STRONGER_JANUARY_SESSION_TIMEFRAME_FLOOR",
+  "predecessor": {
+    "sequence": 23,
+    "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS",
+    "path": "research/delta_a_alpha/state_journal/0023_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS.json"
+  },
+  "timeout_reconciliation": {
+    "duplicate_sequence_file": "research/delta_a_alpha/state_journal/0023_DAA_GRID_SYSTEM_SESSION_TIMEFRAME_SOURCE_HUNT_AND_PREREG_003.json",
+    "disposition": "RECOVERY_ONLY_NON_AUTHORITATIVE_SEQUENCE_COLLISION_PRESERVED_FOR_FORENSICS",
+    "rule": "Journal 0024 restores a single authoritative chain through 0023 BUILD-02 accepted floor."
+  },
+  "parent_floor": {
+    "candidate": "STMR-001",
+    "january_net": 416.23,
+    "trades": 867,
+    "profit_factor": 1.602,
+    "report": "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS_REPORT.md"
+  },
+  "accepted_child": {
+    "candidate": "STMR_SLEEVE_PHASE_001",
+    "january_net": 877.78,
+    "gross_profit": 2333.63,
+    "gross_loss": -1455.85,
+    "profit_factor": 1.602933,
+    "trades": 1518,
+    "expected_payoff": 0.578248,
+    "discovery_net": 110.87,
+    "discovery_pf": 1.346772,
+    "validation_net": 766.91,
+    "validation_pf": 1.67502,
+    "max_balance_drawdown": 55.88,
+    "max_equity_drawdown": 61.22,
+    "minimum_equity_delta": -8.94,
+    "max_open_positions": 3,
+    "forced_liquidations": 0,
+    "trades_per_active_day": 75.9,
+    "small_account_min_equity": {
+      "100": 91.06,
+      "200": 191.06,
+      "300": 291.06
+    }
+  },
+  "accepted_mechanisms": [
+    "role-separated H4 environment -> H1 structure -> M15 phase -> M5 transfer -> tick first-touch",
+    "session-local lattice reset",
+    "semantic sleeve-local first-touch genealogy",
+    "session-specific route semantics and payoff horizons",
+    "ASIA_LOWER_TAKEOVER 23:00-00:00 UTC targeted subphase prior",
+    "LONDON_M5_TAKEOVER 11:00-12:00 UTC targeted subphase prior",
+    "London Open and rollover observe-only"
+  ],
+  "rejected_or_not_promoted": [
+    "generic timeframe unanimity",
+    "global M1 confirmation",
+    "timer-only rearm",
+    "M15/M5 generic rearm",
+    "state-episode micro-lattice resets",
+    "generic session-age filtering",
+    "generic relay-freshness filtering"
+  ],
+  "concentration_warning": "Overlap sleeves are weak in discovery and strong in validation; do not tune them on January validation. Cross-month validation required.",
+  "completed_outputs": [
+    "research/delta_a_alpha/artifacts/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001_JANUARY.json",
+    "research/delta_a_alpha/experiments/grid_system_session_timeframe.py",
+    "research/delta_a_alpha/qa/build02_session_timeframe_qa.py",
+    "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001_REPORT.md"
+  ],
+  "qa": {
+    "build02_workflow": "DELTA-A-alpha BUILD-02 QA",
+    "run_id": 37539268967,
+    "conclusion": "SUCCESS",
+    "head_sha": "109a2f855fe452678eb59778e0eaf7cb7a7a1d83"
+  },
+  "reproducibility": {
+    "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "local_verified_harness_sha256": "943b62c4be0e84185ad9c61577d4d3dd14ce51b2cafcfb7829c47a2910ff0216",
+    "local_verified_result_sha256": "10994339fbe82d7dfa0907f06d643f07c09d4ad389dd4d64271431da93de5149"
+  },
+  "r9_january_context": {
+    "r9_real_net": -6651.62,
+    "r9_synth_net": 41520.82,
+    "synth_attainment_pct": 2.1141,
+    "real_to_synth_gap_closure_pct": 15.6301,
+    "note": "30 percent is not a hard gate for this system dimension."
+  },
+  "scientific_decision": [
+    "ACCEPT STMR_SLEEVE_PHASE_001 as stronger January session/timeframe floor",
+    "SUPERSEDE STMR-001 economically but preserve it as historical parent",
+    "SESSION/TIMEFRAME dimension remains January-only pending later Jan-Jul validation",
+    "NEXT system dimension must build on the +877.78 floor and may not silently revert"
+  ],
+  "next_unit": "OWNER_NEXT_SYSTEM_DIMENSION_SELECTION",
+  "immutable_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "main_delta": "READ_ONLY",
+    "august_2026": "SEALED",
+    "mql5_authorized": false
+  }
+}
