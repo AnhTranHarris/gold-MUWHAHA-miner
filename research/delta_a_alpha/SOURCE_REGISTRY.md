@@ -14,7 +14,7 @@
 
 Video: https://www.youtube.com/watch?v=4WQEoQxsJMc
 
-User-supplied transcript: `NoteGPT_Transcript_Coding A Grid Trading Bot In Python... 95%+ WINS(1).txt`
+User-supplied transcript: `NoteGPT_Transcript_Coding A Grid Trading Bot In Python... 95%+ WINS(1).txt`\n\nDurable Drive transcript document ID: `1d0IQ7F5JAIJT5HC02YuYkjLGdt4LVR4QyBQgPd2qbew`
 
 Reconstructed source logic:
 - tutorial timeframe: H1;
