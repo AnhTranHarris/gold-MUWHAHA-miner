@@ -11,8 +11,8 @@
     "mode": "READ_ONLY"
   },
   "current_phase": "WHOLE_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001_ACCEPTED",
-  "last_verified_durable_unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001",
-  "first_incomplete_unit": "OWNER_NEXT_SYSTEM_DIMENSION_SELECTION",
+  "last_verified_durable_unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002",
+  "first_incomplete_unit": "OWNER_SESSION_TIMEFRAME_STRESS_REVIEW",
   "active_candidate": "STMR_SLEEVE_PHASE_001",
   "owner_constraints": {
     "symbol": "XAUUSD",
@@ -117,10 +117,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 25,
-    "latest_entry": "research/delta_a_alpha/state_journal/0025_DAA_HANDOFF_STMR_SLEEVE_PHASE_001_20261006.json"
+    "latest_sequence": 26,
+    "latest_entry": "research/delta_a_alpha/state_journal/0026_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002.json"
   },
-  "restart_instruction": "Read Google Drive handoff folder, then journal 0025 -> 0024, then CURRENT_STATE.json and CURRENT_INFLIGHT.json. STMR_SLEEVE_PHASE_001 (+$877.78 January net) remains the accepted floor. Do not rebuild session/timeframe work. Perform reflection/next-dimension selection before new research.",
+  "restart_instruction": "Read journal 0026 -> 0025 -> 0024. STMR_SLEEVE_PHASE_001 (+$877.78 January) remains the accepted floor. STMR_XMONTH_ADMISSIBILITY_001 is the strongest Jan-Jul clean-room research candidate but is not promoted because exact historical replay parity is unavailable. Next unit is OWNER_SESSION_TIMEFRAME_STRESS_REVIEW.",
   "architecture_floor": {
     "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001",
     "candidate": "STMR_SLEEVE_PHASE_001",
@@ -166,5 +166,16 @@
     "folder_url": "https://drive.google.com/drive/folders/1i0ymYGo5FC4XM1OrdeYYgLF7NCPzNBsk",
     "journal": "research/delta_a_alpha/state_journal/0025_DAA_HANDOFF_STMR_SLEEVE_PHASE_001_20261006.json",
     "scientific_floor_unchanged": true
+  },
+  "cross_month_session_timeframe_stress": {
+    "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002",
+    "candidate": "STMR_XMONTH_ADMISSIBILITY_001",
+    "status": "STRONG_RESEARCH_CANDIDATE_NOT_PROMOTED",
+    "cleanroom_jan_jul_net": 780.42,
+    "forward_may_jul_net": 161.65,
+    "gross_loss_reduction_pct": 49.32212604,
+    "trade_retention_pct": 47.16172795,
+    "report": "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002_REPORT.md",
+    "artifact": "research/delta_a_alpha/artifacts/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002.json"
   }
 }
