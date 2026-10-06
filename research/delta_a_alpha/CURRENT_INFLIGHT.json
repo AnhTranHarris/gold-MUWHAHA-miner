@@ -1,17 +1,20 @@
 {
   "schema": "delta-a-alpha-inflight-v2",
-  "state": "IDLE_READY",
-  "last_completed": "DAA_GRID_001_JANUARY_EVENT_LABEL_LAB_001",
-  "current_unit": null,
-  "next_unit": "DAA_GRID_001_JANUARY_CAUSAL_OBSERVATION_GATE_001",
-  "completed_outputs": [
-    "research/delta_a_alpha/grid/DAA_GRID_001_JANUARY_MECHANISM_SCREEN_PREREG_001.md",
-    "research/delta_a_alpha/experiments/grid001_january_event_label_lab.py",
-    "research/delta_a_alpha/artifacts/GRID_001_JANUARY_EVENT_LABEL_LAB_001.json",
-    "research/delta_a_alpha/grid/GRID_001_JANUARY_EVENT_LABEL_LAB_001_REPORT.md"
+  "state": "RUNNING",
+  "last_completed": "DAA_GRID_001_JANUARY_CAUSAL_OBSERVATION_GATE_001",
+  "current_unit": "DAA_GRID_001_JANUARY_ADAPTIVE_SPACING_SCREEN_001",
+  "next_unit": null,
+  "scope": {
+    "dataset": "FULL_JANUARY_2026_DUKASCOPY_XAUUSD",
+    "surface": "DUKAS_COINEXX_LIKE_P75",
+    "research_question": "does causal volatility-normalized lattice geometry improve event quality versus fixed $1 spacing?"
+  },
+  "intended_outputs": [
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_ADAPTIVE_SPACING_SCREEN_001_PREREG.md",
+    "research/delta_a_alpha/experiments/grid001_january_adaptive_spacing.py",
+    "research/delta_a_alpha/artifacts/GRID_001_JANUARY_ADAPTIVE_SPACING_SCREEN_001.json",
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_ADAPTIVE_SPACING_SCREEN_001_REPORT.md"
   ],
-  "decision": "EVENT_SUPPLY_RICH_PRE_EVENT_SIMPLE_ROUTER_INSUFFICIENT",
-  "next_hypothesis": "Treat the grid crossing as a causal observation trigger. Wait a short bounded interval, classify continuation/reclaim/ambiguous from post-crossing path, then enter at the delayed executable quote or abstain.",
-  "failure_recovery": "Verify completed outputs. Do not rerun event-label lab. Resume only the causal observation gate.",
-  "write_discipline": "Preregister a small wait/confirmation matrix; persist result before adding early-failure or recovery logic."
+  "failure_recovery": "Inspect intended outputs first. Do not rerun prior labs. Resume only missing adaptive-spacing unit.",
+  "write_discipline": "Three structural ATR multipliers only; no optimizer."
 }
