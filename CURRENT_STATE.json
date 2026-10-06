@@ -117,10 +117,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 24,
-    "latest_entry": "research/delta_a_alpha/state_journal/0024_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001.json"
+    "latest_sequence": 25,
+    "latest_entry": "research/delta_a_alpha/state_journal/0025_DAA_HANDOFF_STMR_SLEEVE_PHASE_001_20261006.json"
   },
-  "restart_instruction": "Read state journal 0024, CURRENT_STATE.json and CURRENT_INFLIGHT.json first. STMR_SLEEVE_PHASE_001 (+$877.78 January net) is the accepted session/timeframe floor. Do not revert to STMR-001 or rebuild source-hunt/replay research. Await owner selection of next system dimension.",
+  "restart_instruction": "Read Google Drive handoff folder, then journal 0025 -> 0024, then CURRENT_STATE.json and CURRENT_INFLIGHT.json. STMR_SLEEVE_PHASE_001 (+$877.78 January net) remains the accepted floor. Do not rebuild session/timeframe work. Perform reflection/next-dimension selection before new research.",
   "architecture_floor": {
     "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001",
     "candidate": "STMR_SLEEVE_PHASE_001",
@@ -160,5 +160,11 @@
     },
     "cross_month_status": "JANUARY_ONLY_PENDING_LATER_JAN_JUL_VALIDATION",
     "alpha_claim": "JANUARY_RESEARCH_EDGE_ONLY_NOT_CROSS_MONTH_PROMOTION"
+  },
+  "handoff": {
+    "status": "COMPLETE",
+    "folder_url": "https://drive.google.com/drive/folders/1i0ymYGo5FC4XM1OrdeYYgLF7NCPzNBsk",
+    "journal": "research/delta_a_alpha/state_journal/0025_DAA_HANDOFF_STMR_SLEEVE_PHASE_001_20261006.json",
+    "scientific_floor_unchanged": true
   }
 }
