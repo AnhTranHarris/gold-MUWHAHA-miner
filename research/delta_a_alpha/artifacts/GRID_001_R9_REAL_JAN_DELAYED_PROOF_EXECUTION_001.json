@@ -1,0 +1,83 @@
+{
+  "schema": "delta-a-alpha-r9-real-jan-delayed-proof-execution-v1-compact",
+  "unit": "DAA_GRID_001_R9_REAL_JAN_DELAYED_PROOF_EXECUTION_001",
+  "status": "COMPLETE_DELAY_CONSUMES_EDGE",
+  "proof_signals": 652,
+  "executable_delayed_trades": 563,
+  "rejected_nonpositive_remaining_life": 89,
+  "original_r9_proxy": {
+    "net": 452.18,
+    "gross_profit": 470.07,
+    "gross_loss": -17.89,
+    "pf": 26.275573,
+    "expected": 0.803162,
+    "win_rate_pct": 93.072824
+  },
+  "p75_immediate_same_set": {
+    "net": 594.77,
+    "gross_profit": 595.44,
+    "gross_loss": -0.67,
+    "pf": 888.716418,
+    "expected": 1.05643,
+    "win_rate_pct": 99.46714
+  },
+  "p75_delayed": {
+    "net": -35.96,
+    "gross_profit": 63.77,
+    "gross_loss": -99.73,
+    "pf": 0.639426,
+    "expected": -0.063872,
+    "win_rate_pct": 25.044405
+  },
+  "discovery": {
+    "trades": 442,
+    "delayed_net": -50.53,
+    "delayed_pf": 0.36798,
+    "delayed_expected": -0.114321
+  },
+  "validation": {
+    "trades": 121,
+    "delayed_net": 14.57,
+    "delayed_pf": 1.736603,
+    "delayed_expected": 0.120413
+  },
+  "opportunity_consumed_usd": {
+    "median": 1,
+    "p75": 1.46,
+    "p90": 1.68
+  },
+  "remaining_lifetime_s": {
+    "median": 0.456,
+    "p25": 0.202,
+    "p75": 1.056
+  },
+  "risk": {
+    "max_balance_drawdown": 56.79,
+    "max_equity_drawdown": 57.17,
+    "min_equity_delta": -56.79,
+    "max_concurrent_positions": 1,
+    "max_total_lots": 0.01,
+    "small_account": {
+      "100": {
+        "min_equity": 43.21,
+        "positive_equity": true
+      },
+      "200": {
+        "min_equity": 143.21,
+        "positive_equity": true
+      },
+      "300": {
+        "min_equity": 243.21,
+        "positive_equity": true
+      }
+    }
+  },
+  "scientific_decision": [
+    "REJECT post-signal A15 proof as an executable R9 entry gate; proof consumes too much of the ultra-short specialist lifecycle",
+    "KEEP proof-admission selectivity as evidence that directional confirmation matters",
+    "MOVE confirmation earlier: maintain grid-event proof memory before the R9 signal so R9 can still enter immediately",
+    "NEXT test pre-signal proof memory across frozen A05/A10/A15 event clocks; no threshold tuning"
+  ],
+  "next_unit": "DAA_GRID_001_R9_REAL_JAN_PRE_SIGNAL_PROOF_MEMORY_001_PREREG",
+  "august": "SEALED"
+}
