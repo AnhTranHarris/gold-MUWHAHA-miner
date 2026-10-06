@@ -10,9 +10,9 @@
     "durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "mode": "READ_ONLY"
   },
-  "current_phase": "WHOLE_GRID_SYSTEM_BUILD_01_READY",
-  "last_verified_durable_unit": "DAA_GRID_SYSTEM_CLEAN_RESET_003",
-  "first_incomplete_unit": "DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON_PREREG",
+  "current_phase": "WHOLE_GRID_SYSTEM_BUILD_01_ACCEPTED_BUILD_02_NEXT",
+  "last_verified_durable_unit": "DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON",
+  "first_incomplete_unit": "DAA_GRID_SYSTEM_BUILD_02_ELASTIC_GEOMETRY_PREREG",
   "active_candidate": null,
   "owner_constraints": {
     "symbol": "XAUUSD",
@@ -117,8 +117,18 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 21,
-    "latest_entry": "research/delta_a_alpha/state_journal/0021_DAA_GRID_SYSTEM_CLEAN_RESET_003.json"
+    "latest_sequence": 22,
+    "latest_entry": "research/delta_a_alpha/state_journal/0022_DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON.json"
   },
-  "restart_instruction": "Read state journal 0021, CURRENT_STATE.json, CURRENT_INFLIGHT.json, then whole-system campaign and source hunt. Resume only first_incomplete_unit. Do not restore deleted January refinements into active research."
+  "restart_instruction": "Read state journal 0022, CURRENT_STATE.json, CURRENT_INFLIGHT.json, whole-system campaign and source registry. BUILD-01 is accepted; resume only BUILD-02 preregistration. Do not restore deleted January refinements.",
+  "architecture_floor": {
+    "unit": "DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON",
+    "code": "research/delta_a_alpha/experiments/grid_system_state_skeleton.py",
+    "report": "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON_REPORT.md",
+    "qa": "research/delta_a_alpha/qa/build01_state_skeleton_qa.py",
+    "ci_workflow": ".github/workflows/delta-a-alpha-qa.yml",
+    "qa_run_id": 37529462435,
+    "qa_conclusion": "SUCCESS",
+    "alpha_claim": false
+  }
 }
