@@ -1,0 +1,65 @@
+{
+  "sequence": 28,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_003",
+  "status": "COMPLETE_STRONGER_CROSS_MONTH_RESEARCH_CANDIDATE_NOT_PROMOTED",
+  "predecessor": {
+    "sequence": 27,
+    "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002",
+    "path": "research/delta_a_alpha/state_journal/0027_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002.json"
+  },
+  "forensic_note": "A same-sequence 0027 STRESS_003 file was accidentally created during timeout recovery. It is preserved as a non-authoritative sequence collision. This sequence-28 entry is the authoritative continuation.",
+  "accepted_floor_unchanged": true,
+  "accepted_floor": {
+    "candidate": "STMR_SLEEVE_PHASE_001",
+    "january_net": 877.78,
+    "trades": 1518,
+    "profit_factor": 1.602933
+  },
+  "research_candidate": {
+    "candidate": "STMR_XMONTH_SUBPHASE_001",
+    "authority": "CLEANROOM_CROSS_MONTH_RESEARCH_ONLY",
+    "jan_jul_net": 829.71,
+    "gross_profit": 3625.77,
+    "gross_loss": -2796.06,
+    "profit_factor": 1.2967425592,
+    "trades": 2675,
+    "expected_payoff": 0.3101719626,
+    "positive_months": 4,
+    "worst_month_net": -34.51,
+    "monthly_net": {
+      "2026-01": 641.58,
+      "2026-02": 43.95,
+      "2026-03": 4.55,
+      "2026-04": -34.51,
+      "2026-05": -19.89,
+      "2026-06": 213.13,
+      "2026-07": -19.10
+    },
+    "rules": [
+      "fund only cross-month admissible semantic sleeves",
+      "OVERLAP_LOWER_TAKEOVER 15:00-16:00 UTC only",
+      "LATE_LOWER_TAKEOVER 21:00-22:00 UTC only"
+    ]
+  },
+  "exact_replay_parity": {
+    "status": "NOT_RECOVERED",
+    "accepted_helper_sha256": "943b62c4be0e84185ad9c61577d4d3dd14ce51b2cafcfb7829c47a2910ff0216",
+    "search_result": "No executable helper matching the hash or filename exists in GitHub, Project/Library search, or either connected Google Drive account."
+  },
+  "durability": {
+    "library_root": "/xauusd-trading-bot/delta-A-alpha/stmr-janjul-stress-2026-10-06/",
+    "helper_sha256": "0df41a4ece3083129022443daab14687b5a170bb888e879d7352301568f7def5",
+    "full_result_sha256": "32f2c80fad10950a51e22d14c37bcc8ad333bae2581078a4f0205ed37b443515",
+    "report_sha256": "2a4ccb9ea8604c7a1bfb07e018432cd040f73d11697b5c5e8fde55d157af2b5a",
+    "timeout_recovery_v2_sha256": "17dc185badc66b09140f02d11aaeacf44e94525da91b94569b66a9902a72ba31"
+  },
+  "scientific_decision": [
+    "RETAIN STMR_XMONTH_SUBPHASE_001 as strongest clean-room Jan-Jul session/timeframe child",
+    "DO NOT replace authoritative journal 0024 floor",
+    "DO NOT calendar-fit April/May/July",
+    "August remains sealed",
+    "No MQL5"
+  ],
+  "next_unit": "OWNER_DECIDE_CLEANROOM_CROSSMONTH_AUTHORITY_OR_NEXT_SYSTEM_DIMENSION"
+}
