@@ -492,11 +492,15 @@ class AdaptiveQEstimator:
 class DirectionalChangeEvent:
     scale: float
     direction: int
-    time_utc: datetime
+    time_ms: int
     price: float
     threshold: float
     previous_extreme: float
     overshoot: float
+
+    @property
+    def time_utc(self) -> datetime:
+        return datetime.fromtimestamp(self.time_ms / 1000.0, tz=timezone.utc)
 
 
 class DirectionalChangeTracker:
@@ -513,14 +517,23 @@ class DirectionalChangeTracker:
         self.confirm_price: float | None = None
         self.active_threshold: float | None = None
 
-    def update(self, ts: datetime, mid: float, q: float) -> DirectionalChangeEvent | None:
+    def update_ms(
+        self,
+        time_ms: int,
+        mid: float,
+        q: float,
+    ) -> DirectionalChangeEvent | None:
         th_now = self.scale * q
         if self.anchor is None:
             self.anchor = self.high = self.low = mid
             self.active_threshold = th_now
             return None
 
-        assert self.high is not None and self.low is not None and self.active_threshold is not None
+        assert (
+            self.high is not None
+            and self.low is not None
+            and self.active_threshold is not None
+        )
         self.active_threshold = max(self.active_threshold, th_now)
 
         if self.direction == 0:
@@ -531,35 +544,61 @@ class DirectionalChangeTracker:
                 self.direction = 1
                 self.confirm_price = self.high = self.low = mid
                 self.active_threshold = th_now
-                return DirectionalChangeEvent(self.scale, 1, ts, mid, th_now, old, 0.0)
+                return DirectionalChangeEvent(
+                    self.scale, 1, time_ms, mid, th_now, old, 0.0
+                )
             if mid <= self.anchor - self.active_threshold:
                 old = self.anchor
                 self.direction = -1
                 self.confirm_price = self.high = self.low = mid
                 self.active_threshold = th_now
-                return DirectionalChangeEvent(self.scale, -1, ts, mid, th_now, old, 0.0)
+                return DirectionalChangeEvent(
+                    self.scale, -1, time_ms, mid, th_now, old, 0.0
+                )
             return None
 
         if self.direction > 0:
             self.high = max(self.high, mid)
             if mid <= self.high - self.active_threshold:
                 extreme = self.high
-                overshoot = max(0.0, extreme - (self.confirm_price or extreme))
+                overshoot = max(
+                    0.0, extreme - (self.confirm_price or extreme)
+                )
                 self.direction = -1
                 self.confirm_price = self.high = self.low = mid
                 self.active_threshold = th_now
-                return DirectionalChangeEvent(self.scale, -1, ts, mid, th_now, extreme, overshoot)
+                return DirectionalChangeEvent(
+                    self.scale, -1, time_ms, mid, th_now, extreme, overshoot
+                )
             return None
 
         self.low = min(self.low, mid)
         if mid >= self.low + self.active_threshold:
             extreme = self.low
-            overshoot = max(0.0, (self.confirm_price or extreme) - extreme)
+            overshoot = max(
+                0.0, (self.confirm_price or extreme) - extreme
+            )
             self.direction = 1
             self.confirm_price = self.high = self.low = mid
             self.active_threshold = th_now
-            return DirectionalChangeEvent(self.scale, 1, ts, mid, th_now, extreme, overshoot)
+            return DirectionalChangeEvent(
+                self.scale, 1, time_ms, mid, th_now, extreme, overshoot
+            )
         return None
+
+    def update(
+        self,
+        ts: datetime,
+        mid: float,
+        q: float,
+    ) -> DirectionalChangeEvent | None:
+        if ts.tzinfo is None:
+            raise ValueError("timestamp must be timezone-aware")
+        return self.update_ms(
+            int(round(ts.astimezone(timezone.utc).timestamp() * 1000.0)),
+            mid,
+            q,
+        )
 
 
 @dataclass(frozen=True)
