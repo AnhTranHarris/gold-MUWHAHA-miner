@@ -1,0 +1,51 @@
+{
+  "schema": "delta-a-alpha-grid001-path-shape-discovery-v1",
+  "unit": "DAA_GRID_001_JANUARY_PATH_SHAPE_DISCOVERY_001",
+  "status": "COMPLETE_NEGATIVE",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "elastic_alpha": 0.5,
+  "variants": [
+    {
+      "observation_ms": 3000,
+      "train_events": 23352,
+      "validation_events": 10570,
+      "validation_accuracy": 0.385809,
+      "validation_balanced_accuracy": 0.338296,
+      "validation_always_cont": {
+        "net": -2244.76,
+        "pf": 0.710584,
+        "expected": -0.212371
+      },
+      "validation_policy": {
+        "accepted": 9012,
+        "accept_pct": 85.26017,
+        "events_per_day": 1802.4,
+        "net": -1839.86,
+        "pf": 0.723687,
+        "expected": -0.204157
+      }
+    },
+    {
+      "observation_ms": 10000,
+      "train_events": 23352,
+      "validation_events": 10570,
+      "validation_accuracy": 0.375875,
+      "validation_balanced_accuracy": 0.336392,
+      "validation_always_cont": {
+        "net": -2142.3,
+        "pf": 0.721694,
+        "expected": -0.202677
+      },
+      "validation_policy": {
+        "accepted": 8736,
+        "accept_pct": 82.649007,
+        "events_per_day": 1747.2,
+        "net": -1853.13,
+        "pf": 0.714508,
+        "expected": -0.212126
+      }
+    }
+  ],
+  "conclusion": "Nonlinear post-crossing path-shape/context features did not materially solve direction on held-out January validation; do not tune/promote ML from this family.",
+  "promotion_eligible": false
+}
