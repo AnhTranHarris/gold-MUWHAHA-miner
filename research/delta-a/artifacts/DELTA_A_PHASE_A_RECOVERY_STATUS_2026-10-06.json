@@ -1,0 +1,31 @@
+{
+  "id": "DELTA_A_PHASE_A_RECOVERY_STATUS_2026-10-06",
+  "status": "BOOTSTRAP_COMPLETE_PHASE_A_ACTIVE",
+  "snapshot_branch": "delta-A-session-news-handoff-20261006",
+  "snapshot_head": "626675d52d9828259cb182aaf9de19c84fe35f6b",
+  "library_archive_sha256": "826b87d7c3ea4ed72cd6d8637b740108251cdfd14397ddd8836b1e77cfae668e",
+  "manifest_entries": 19,
+  "manifest_mismatches": 0,
+  "raw_jan_jul_hashes_verified": true,
+  "august_accessed": false,
+  "session_news_helper_started_before_restart": false,
+  "parity_target_rows": 186901,
+  "parity_target_sha256": "55f04e2b8c39e3b7693a6850cb540b7cc00705623f6dccd12b1736b379fd249a",
+  "frozen_pressure_capped_rows": 186569,
+  "frozen_pressure_capped_ledger_sha256": "a3934402b3cc2e521769d1c105d48937408c98f7b9b3497f7984b2a4bfded120",
+  "phase_a_findings": [
+    "Drive handoff folder contains only master Doc; no hidden event ledger",
+    "GitHub milestone preserves parity count/hash but not full 186901-row ledger producer",
+    "handoff archive contains exact January R2 rich events (39253 rows) but this is not the milestone parity surface",
+    "Library search recovered additional DELTA-A R3/R3.4 durable artifacts, including adaptive A1/recovery provenance and January regime/router artifacts"
+  ],
+  "next_atomic_unit": "recover exact mature/adaptive Feb-Jul teacher/event ledgers from Library by known R3/R3.4 provenance; compare their event identities against the frozen milestone monthly totals before any session/news tuning",
+  "hard_rules": {
+    "fixed_lot": 0.01,
+    "minimum_architecture_handoff_usd": 1000,
+    "martingale": false,
+    "lookahead": false,
+    "mql5": false,
+    "august_sealed": true
+  }
+}
