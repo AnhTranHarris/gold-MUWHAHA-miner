@@ -1,0 +1,57 @@
+{
+  "sequence": 8,
+  "schema": "delta-a-alpha-state-journal-v1",
+  "unit": "DAA_GRID_001_JANUARY_VOL_EXPANSION_ROUTE_001",
+  "status": "COMPLETE_JANUARY_CANDIDATE_ROUTE",
+  "predecessor": {
+    "sequence": 7,
+    "unit": "DAA_GRID_001_JANUARY_DUAL_PROOF_OWNERSHIP_001",
+    "path": "research/delta_a_alpha/state_journal/0007_DAA_GRID_001_JANUARY_DUAL_PROOF_OWNERSHIP_001.json"
+  },
+  "completed_outputs": [
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_VOL_EXPANSION_ROUTE_001_PREREG.md",
+    "research/delta_a_alpha/experiments/grid001_january_vol_expansion_route.py",
+    "research/delta_a_alpha/artifacts/GRID_001_JANUARY_VOL_EXPANSION_ROUTE_001.json",
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_VOL_EXPANSION_ROUTE_001_REPORT.md"
+  ],
+  "result_summary": {
+    "gate_1_75": {
+      "trades": 215,
+      "net": 135.59,
+      "pf": 1.206355,
+      "discovery_net": 7.27,
+      "discovery_pf": 1.168054,
+      "validation_net": 128.32,
+      "validation_pf": 1.209055,
+      "max_equity_dd": 58.37,
+      "min_equity_delta": -29.48
+    },
+    "gate_2_00": {
+      "trades": 155,
+      "net": 146.11,
+      "pf": 1.303946,
+      "discovery_net": 16.07,
+      "discovery_pf": 1.867242,
+      "validation_net": 130.04,
+      "validation_pf": 1.281362,
+      "max_equity_dd": 40.13,
+      "min_equity_delta": -17.65
+    }
+  },
+  "scientific_decision": [
+    "ADD volatility-expansion continuation route to January candidate pool",
+    "KEEP single-owner, origin-defined stop, and fast continuation proof",
+    "DO NOT tune thresholds further in January before broader validation",
+    "Candidate is sparse and cannot bridge R9 gap alone; next discovery target is a complementary higher-throughput route"
+  ],
+  "next_unit": "DAA_GRID_001_JANUARY_COMPLEMENTARY_ROUTE_HUNT_001",
+  "immutable_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "august_2026": "SEALED",
+    "main_delta": "READ_ONLY",
+    "mql5_authorized": false
+  }
+}
