@@ -1,0 +1,85 @@
+{
+  "schema": "delta-a-session-news-validation-v1",
+  "date": "2026-10-06",
+  "status": "COMPLETE_DIAGNOSTIC_NOT_FULL_GRID_REPLAY",
+  "branch": "delta-A-session-news-validation-20261006",
+  "base_commit": "6541665718ec6cbb80fe1bd5a0344f5317945aad",
+  "helper_forensic": {
+    "active_python_worker_after_timeout": false,
+    "last_completed_continuation_helper": "SA100_R10AR_CAPITAL_GATED_INTEGRATION01",
+    "last_completed_status": "COMPLETE_CONDITIONAL_SECOND_VELOCITY_INTEGRATION",
+    "known_incomplete_helper": "sa100_build_core_stop_variants.py",
+    "incomplete_policy": "DO_NOT_RESUME",
+    "session_news_helpers": [
+      [
+        "DELTA_A_SESSION_NEWS_VALIDATION01",
+        "COMPLETE_DIAGNOSTIC_NOT_FINAL_GRID_REPLAY"
+      ],
+      [
+        "DELTA_A_SESSION_NEWS_VALIDATION02",
+        "COMPLETE_FROZEN_SPLIT_DIAGNOSTIC_NOT_FULL_GRID_REPLAY"
+      ],
+      [
+        "DELTA_A_SESSION_NEWS_VALIDATION03",
+        "COMPLETE_CAUSAL_ADAPTIVE_DIAGNOSTIC_NOT_FULL_186569_GRID_REPLAY"
+      ]
+    ]
+  },
+  "drive_bundle": {
+    "url": "https://drive.google.com/file/d/1KJM9B_Saf_S4qj4rCLIn3KEZ9RvUKwKg/view?usp=drivesdk",
+    "sha256": "18fdf9f4b41828b1564c3081ab4877ab841c008e60453436d0c61b9d8e13454d",
+    "file_count": 16
+  },
+  "certified_full_grid": {
+    "trades": 186569,
+    "net_usd": 194674.33,
+    "pf": 1.2525247568509321,
+    "r9_synth_net_alignment_pct": 62.9764
+  },
+  "r9_synth": {
+    "trades": 219342,
+    "net_usd": 309122.85,
+    "pf": 20.036,
+    "expected_payoff_usd": 1.409319
+  },
+  "diagnostic_surface": {
+    "feb_jul_events": 73205,
+    "note": "sa100_rampH_candidate; not the certified full 186,569-trade milestone ledger"
+  },
+  "session_candidate": {
+    "rule": "session==1 (London-only) AND action==c5400 => virtual only / no physical admission",
+    "feb_jul_retention": 0.9960521822279899,
+    "feb_jul_net_before_usd": 49606.03,
+    "feb_jul_net_after_usd": 50225.77,
+    "feb_jul_gl_before_usd": 281373.85,
+    "feb_jul_gl_after_usd": 279461.61,
+    "feb_jul_pf_before": 1.1762993611524313,
+    "feb_jul_pf_after": 1.179723325862182,
+    "promotion": "CANDIDATE_FOR_FULL_GRID_REPLAY_ONLY"
+  },
+  "news_result": {
+    "promoted_policy": null,
+    "conclusion": "No scheduled-news policy passed the Feb-Mar calibration + April selection gate. May-Jul shows strong later-regime benefits for 5-15 minute quarantine variants, demonstrating nonstationarity rather than a stable blackout edge.",
+    "example_late_regime": {
+      "policy": "NEWS_ADAPT_GLOBAL_LAST1_Q15",
+      "may_jul_retention": 0.9886164198232189,
+      "may_jul_net_before_usd": 21650.22,
+      "may_jul_net_after_usd": 25552.64,
+      "may_jul_gl_before_usd": 157858.76,
+      "may_jul_gl_after_usd": 151403.82,
+      "may_jul_pf_before": 1.1371493099274312,
+      "may_jul_pf_after": 1.168771
+    }
+  },
+  "hashes": {
+    "validation03_helper": "bd74081e95f0af6aa6524d625e9dab4be668da78e1f70562dd0e422bbf964699",
+    "validation03_json": "7af4de93c691173435ce63dbad6230152d48082360beacbb59f9358c8faad07b",
+    "validation03_results_csv": "c1f8d679b1e1454f3daea3d66d4ee7302e3d8df36c15d7ffc11578d9d24d1c4b",
+    "validation03_monthly_csv": "0a108f56e4a056de9a7aae993e5ae3f0accae58a1be1512e9a0e9d2015763430"
+  },
+  "hard_rules": {
+    "august_accessed": false,
+    "mql5_built": false,
+    "fixed_seed_lot": 0.01
+  }
+}
