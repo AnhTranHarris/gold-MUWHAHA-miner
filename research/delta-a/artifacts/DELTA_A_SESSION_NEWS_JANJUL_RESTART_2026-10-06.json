@@ -1,0 +1,65 @@
+{
+  "id": "DELTA_A_SESSION_NEWS_JANJUL_RESTART_2026-10-06",
+  "status": "STARTED",
+  "started_from_branch": "delta-A-r10ai-at-ap-ar-continuation-20261005",
+  "started_from_commit": "6541665718ec6cbb80fe1bd5a0344f5317945aad",
+  "scientific_parent": [
+    "R10AA",
+    "R10AB",
+    "R10AG_SEQ45_60",
+    "R10AH",
+    "R10AI_G200",
+    "R10AT_DD90",
+    "R10AP_G300"
+  ],
+  "conditional": [
+    "R10AR_G1000"
+  ],
+  "objective": "Jan-Jul causal adaptive session-aware + scheduled-news/event-aware validation and comparison against R9 SYNTH.",
+  "runtime_reconciliation": {
+    "active_python_worker_found": false,
+    "timeout_interrupted_chat_delivery": true,
+    "durable_incomplete_helper": "research/delta-a/helpers/sa100_build_core_stop_variants.py",
+    "incomplete_helper_policy": "DO_NOT_RESUME; rerun its work unit from scratch only if required.",
+    "incomplete_helper_upstream_blocker": "Expected delta_a_r2_{month}_core_events.csv inputs are not present in frozen GitHub/Drive handoff; do not fabricate them from chat prose."
+  },
+  "recovered_durable_grid_state": {
+    "milestone": "R9_GRID_MILESTONE_01_PREAUG",
+    "event_spec_rows": 186901,
+    "event_spec_sha256": "55f04e2b8c39e3b7693a6850cb540b7cc00705623f6dccd12b1736b379fd249a",
+    "accepted_trades": 186569,
+    "net_usd": 194674.33,
+    "gross_loss_usd": -770911.86,
+    "profit_factor": 1.2525247568509321
+  },
+  "r9_synth_reference": {
+    "trades": 219342,
+    "winners": 191136,
+    "net_usd": 309122.85,
+    "gross_loss_usd": -16238.66,
+    "profit_factor": 20.036229,
+    "expected_payoff_usd": 1.409319
+  },
+  "recovered_r3a1_frontier": {
+    "trades": 186844,
+    "winners": 114469,
+    "net_usd": 210972.97,
+    "gross_loss_usd": -750357.04,
+    "profit_factor": 1.2811634445383495,
+    "status": "historical durable research frontier; not current event-level replay source"
+  },
+  "hard_rules": {
+    "august_accessed": false,
+    "fixed_seed_lot": 0.01,
+    "minimum_architecture_handoff_balance_usd": 1000,
+    "production_mql5_authorized": false,
+    "martingale": false,
+    "lookahead": false
+  },
+  "next_steps": [
+    "Recover or rebuild exact event-level Jan-Jul source-equivalent ledger before session/news optimization.",
+    "Predeclare session/event context features and event windows before inspecting outcome-conditioned cells.",
+    "Fit/adapt only on causal prior/current state; compare frozen Jan-Jul aggregate and monthly results to Milestone 01 and R9 SYNTH.",
+    "Keep August sealed."
+  ]
+}
