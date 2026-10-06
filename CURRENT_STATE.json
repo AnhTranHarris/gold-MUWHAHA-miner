@@ -3,10 +3,10 @@
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "branch": "delta",
   "research_scope": "DELTA_ONLY_CLEAN_ROOM",
-  "last_verified_durable_unit": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
+  "last_verified_durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
   "first_incomplete_unit": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_PLAN",
   "current_phase": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_READY",
-  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A_MANIFEST.json",
+  "active_rebuild_manifest_path": "research/delta/artifacts/DELTA_R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B_MANIFEST.json",
   "active_candidate": null,
   "last_candidate_disposition": "17DE-17DG Asia-range directionality completed before the delivery timeout and is retired with no Stage-A survivor (5/-$0.16, 4/-$1.76, 2/-$1.42). New specialist harvesting is paused by owner.",
   "august_2026": "SEALED",
@@ -40,9 +40,12 @@
     "historical_unrecovered_bytes": "PROVENANCE_LIMITATIONS_ONLY_DO_NOT_FABRICATE"
   },
   "white_papers": {
-    "status": "UPDATED_AND_READBACK_VERIFIED",
+    "status": "FINALIZED_CURRENT_R037_STATUS_AND_INDEX_READBACK_VERIFIED",
     "github_index": "research/delta/research/DELTA_R003_DIRECTION_HOLD_CAUSAL_GRAMMAR_WHITEPAPERS.md",
-    "checkpoint": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A"
+    "checkpoint": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
+    "workbook_id": "1C2EOJ2WDZgVMcGG8s1WPY46-Q4U8QQXUhZytqPJVsY0",
+    "workbook_tab": "11 White Papers",
+    "workbook_range": "A1:H10"
   },
   "timeout_recovery": {
     "inflight_path": "research/delta/CURRENT_INFLIGHT.json",
@@ -55,30 +58,30 @@
     "stage_a_ticks": 4205709,
     "surface": "DUKAS_COINEXX_LIKE_P75"
   },
-  "restart_instruction": "Read this file, CURRENT_INFLIGHT, recovery pointer, and active rebuild manifest. Resume R037 specialist refinement/integration only; do not restart retired harvest families or begin a new specialist harvest unless the owner explicitly reopens discovery.",
+  "restart_instruction": "Read this file, CURRENT_INFLIGHT, recovery pointer, and active rebuild manifest. Resume R037 specialist refinement/integration only; white papers and specialist index are finalized at 18B. Do not restart retired harvest families or begin a new specialist harvest unless the owner explicitly reopens discovery.",
   "state_compaction": {
     "date_utc": "2026-10-05",
     "reason": "Keep authoritative cursor small and timeout-safe; detailed research remains durable in Git commits, checkpoint results, reports, manifests, Drive white papers and workbook.",
     "prior_full_state_preserved_in_git_history": true
   },
   "recovery_pointer_sync": {
-    "status": "IDLE_DURABLE_SPECIALIST_ROSTER_18A",
-    "last_completed": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
+    "status": "IDLE_DURABLE_SPECIALIST_DOCUMENTATION_18B",
+    "last_completed": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "current_candidate": null,
     "next": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_PLAN",
-    "inflight_close_commit": "4c77013170d5c038ca02394ecb7acf82f28883e6",
-    "pointer_sync_commit": "949df49969650e9b50e24ff8479153692b080228"
+    "inflight_close_commit": "51e27c433befff40c0682f27ba3d5e70d69e5513",
+    "pointer_sync_commit": "10c9f9254278b7598d5952c1230dd0359a4d3225"
   },
   "clean_room_maintenance": {
     "status": "DELTA_ONLY_ACTIVE",
     "scientific_results_changed_by_finalization": false,
-    "note": "18A consolidates and labels durable results; it does not retune or manufacture historical specialist behavior."
+    "note": "18B only normalizes operator-facing documentation and recovery pointers; it does not retune or manufacture historical specialist behavior."
   },
   "concurrency_recovery": {
     "status": "IDLE_NO_ACTIVE_COMPUTE",
-    "authoritative_checkpoint": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
+    "authoritative_checkpoint": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "current_candidate": null,
-    "note": "If delivery fails now, resume at refinement/integration planning; no research compute is in flight."
+    "note": "If delivery fails now, resume at specialist refinement/integration planning; helpers, white papers and operator spreadsheet index are already finalized."
   },
   "search_bias": "New specialist harvesting is paused by owner. Prioritize refinement of the four frozen execution streams, ownership/collision complementarity, DH06 post-entry evidence, DH07 initial-hold orchestration, and a clean composite candidate. Do not rescue retired 17-series families by retuning.",
   "timeout_recovery_cursor_semantics": "Connector-safe serial closure is authoritative when multi-file atomic commit is unavailable; trust advancement only after the final DELTA rebuild artifact gate passes."
