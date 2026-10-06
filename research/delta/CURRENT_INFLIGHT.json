@@ -1,14 +1,14 @@
 {
   "schema": "delta-timeout-recovery-inflight-v1",
-  "status": "CLOSED",
+  "status": "IDLE",
   "branch": "delta",
-  "unit": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
-  "family": "SPECIALIST_ROSTER_CONSOLIDATION",
-  "parent_durable_unit": "R037_XAUUSD_ASIA_RANGE_DIRECTIONALITY_HARVEST_CHECKPOINT_17DE_17DG",
-  "phase": "CLOSED_DURABLE",
-  "phase_rank": 99,
+  "unit": null,
+  "family": null,
+  "parent_durable_unit": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
+  "phase": "IDLE",
+  "phase_rank": 0,
   "progress": {
-    "status": "SPECIALIST_ROSTER_FINALIZED_NEW_HARVEST_PAUSED",
+    "status": "IDLE_SPECIALIST_ROSTER_FINALIZED",
     "last_completed": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
     "current_candidate": null,
     "next": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_PLAN"
@@ -22,26 +22,10 @@
   "august_2026": "SEALED",
   "mql5_authorized": false,
   "prereg": null,
-  "producer": {
-    "path": "research/delta/qa/delta_r037_specialist_roster_finalization_18a.py",
-    "commit": "1c2ea47c663fa3f76c925b0620676be13481a74f",
-    "blob_sha": "cc2b4c57aebdfd9bf2d973e28a59075ec702d348",
-    "role": "repository-only finalization QA"
-  },
-  "result": {
-    "path": "research/delta/reference/DELTA_R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A.json",
-    "commit": "dd13cec37db3b8222768dea0983cb26b14a9c2a1",
-    "blob_sha": "b2af95f00b9a9b8327b25a07d40c9756a47a1fce"
-  },
-  "report": {
-    "path": "research/delta/research/DELTA_R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A.md",
-    "commit": "223a62a0a730233f199cdbb3950e3a59aef65724",
-    "blob_sha": "c718a3dff23de985a65102184b76f581df79aa00"
-  },
-  "manifest": {
-    "path": "research/delta/artifacts/DELTA_R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A_MANIFEST.json",
-    "commit": "62b4e510d28e44c803b714f8dabe9baa071417f7"
-  },
+  "producer": null,
+  "result": null,
+  "report": null,
+  "manifest": null,
   "reconciled_prior_inflight": {
     "unit": "R037_XAUUSD_ASIA_RANGE_DIRECTIONALITY_HARVEST_CHECKPOINT_17DE_17DG",
     "status": "COMPLETE_RETIRED_NO_SURVIVOR",
