@@ -32,6 +32,24 @@
       "status": "DURABLE",
       "path": "research/delta_a_alpha/benchmarks/R9_REAL_SYNTH_JAN_JUL_2026.json",
       "purpose": "canonical Jan-Jul R9 REAL versus SYNTH account-level target ledger"
+    },
+    {
+      "id": "H-GRID-001-F-REPLAY",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/experiments/grid001_forensic_baseline.py",
+      "purpose": "exact ordered-tick Stage-A forensic reconstruction of source-style physical grid"
+    },
+    {
+      "id": "A-GRID-001-F-STAGE-A-RESULT",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/artifacts/GRID_001_F_STAGE_A_RESULT.json",
+      "purpose": "canonical Stage-A forensic result and small-account failure evidence"
+    },
+    {
+      "id": "R-GRID-001-F-STAGE-A",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/grid/GRID_001_F_STAGE_A_REPORT.md",
+      "purpose": "human-readable decision: reject physical source inventory, retain event clock"
     }
   ],
   "rule": "Add a helper here before any later experiment depends on it. Supersede by pointer; never silently rewrite historical semantics.",
