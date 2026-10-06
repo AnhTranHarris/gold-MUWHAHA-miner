@@ -65,10 +65,44 @@ def main() -> dict:
     assert self_check["timer_rearm_present"] is False
     assert self_check["order_authority_present"] is False
 
+    # Refinement 001: semantic sleeve ownership and targeted subphase gates.
+    assert len(s.SLEEVE_SPECS) == 12
+    asia_takeover = s.TimeframeSnapshot(1, 1, -1, -1, 0.0, 0.0)
+    d = s.classify_sleeve_crossing(
+        g.SessionState.ASIA, -1, asia_takeover, 23 * 3_600_000
+    )
+    assert d.eligible and d.sleeve_id == "ASIA_LOWER_TAKEOVER"
+    d = s.classify_sleeve_crossing(
+        g.SessionState.ASIA, -1, asia_takeover, 1 * 3_600_000
+    )
+    assert d.eligible is False and d.reason == "TARGETED_SUBPHASE_GATE"
+
+    london_takeover = s.TimeframeSnapshot(1, 1, 1, -1, 0.0, 0.0)
+    d = s.classify_sleeve_crossing(
+        g.SessionState.LONDON, -1, london_takeover, 11 * 3_600_000
+    )
+    assert d.eligible and d.sleeve_id == "LONDON_M5_TAKEOVER"
+    d = s.classify_sleeve_crossing(
+        g.SessionState.LONDON, -1, london_takeover, 10 * 3_600_000
+    )
+    assert d.eligible is False and d.reason == "TARGETED_SUBPHASE_GATE"
+
+    overlap_takeover = s.TimeframeSnapshot(1, 1, -1, -1, 0.0, 0.0)
+    d = s.classify_sleeve_crossing(
+        g.SessionState.OVERLAP, -1, overlap_takeover, 14 * 3_600_000
+    )
+    assert d.eligible and d.sleeve_id == "OVERLAP_LOWER_TAKEOVER"
+
+    refine_check = s.build02_refinement_self_check()
+    assert refine_check["sleeve_count"] == 12
+    assert refine_check["timer_rearm_present"] is False
+    assert refine_check["order_authority_present"] is False
+
     return {
         "status": "PASS",
         "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS",
         "routes": len(s.ROUTES),
+        "refinement_sleeves": len(s.SLEEVE_SPECS),
         "session_handoff_restart": True,
         "timeframe_role_population": True,
         "timer_only_rearm": False,
