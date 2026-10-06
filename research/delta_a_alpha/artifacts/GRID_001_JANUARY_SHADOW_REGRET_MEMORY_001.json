@@ -1,0 +1,53 @@
+{
+  "schema": "delta-a-alpha-grid001-january-shadow-regret-memory-v1",
+  "unit": "DAA_GRID_001_JANUARY_SHADOW_REGRET_MEMORY_001",
+  "status": "COMPLETE_NEGATIVE",
+  "lattice": "A05",
+  "family_key": "cross_direction x gap_band(<1.5,1.5-3.0,>=3.0)",
+  "causality": "shadow outcomes mature only 5 minutes after event; only matured same-family outcomes may influence later events",
+  "baseline_A05_continuation": {
+    "net": -6619.3,
+    "pf": 0.844658,
+    "validation_net": -505.37,
+    "validation_pf": 0.977428
+  },
+  "variants": {
+    "M30": {
+      "accept_pct": 92.423281,
+      "events_per_day": 1655.090909,
+      "cont_share_pct": 49.346369,
+      "net": -7008.6,
+      "pf": 0.82437,
+      "expected": -0.192481,
+      "validation_net": -1332.57,
+      "validation_pf": 0.938734
+    },
+    "M120": {
+      "accept_pct": 97.146991,
+      "events_per_day": 1739.681818,
+      "cont_share_pct": 50.761634,
+      "net": -7430.68,
+      "pf": 0.822251,
+      "expected": -0.194149,
+      "validation_net": -1674.65,
+      "validation_pf": 0.925708
+    },
+    "M480": {
+      "accept_pct": 98.77148,
+      "events_per_day": 1768.772727,
+      "cont_share_pct": 54.650117,
+      "net": -7497.64,
+      "pf": 0.82386,
+      "expected": -0.192677,
+      "validation_net": -1492.15,
+      "validation_pf": 0.934537
+    }
+  },
+  "scientific_decision": [
+    "REJECT simple same-family rolling shadow-regret direction selector",
+    "DO NOT add more memory windows/deadbands in this family",
+    "retain counterfactual shadow infrastructure as diagnostic evidence",
+    "NEXT: combine adaptive A10/A15 geometry with explicit early thesis-failure / loss truncation"
+  ],
+  "promotion_eligible": false
+}
