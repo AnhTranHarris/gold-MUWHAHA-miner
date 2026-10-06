@@ -19,8 +19,8 @@
   "alignment": {
     "offset_hours": 2,
     "tested_offset_range_hours": [
-      -6,
-      6
+      -12,
+      14
     ],
     "correct_offset_side_quote_error": {
       "median": 0.09,
@@ -36,7 +36,10 @@
     "median_tick_time_error_ms": 53,
     "p90_tick_time_error_ms": 358.6,
     "within_1usd_pct": 99.545668,
-    "max_midpoint_quantization_error_price": 0.005
+    "max_midpoint_quantization_error_price": 0.005,
+    "runner_up_offset_hours": 1,
+    "runner_up_median_entry_price_abs_error": 7.11,
+    "winner_median_error_advantage_vs_runner_up_usd": 7.02
   },
   "context_population": {
     "owner_15m": 11277,
@@ -63,5 +66,13 @@
     "NEXT measure gross-loss concentration by frozen context families before authorizing veto/reroute logic"
   ],
   "promotion_eligible": false,
-  "august": "SEALED"
+  "august": "SEALED",
+  "offset_sweep_artifact": "research/delta_a_alpha/artifacts/R9_REAL_JAN_CLOCK_OFFSET_SWEEP_001.json",
+  "durable_context_core": {
+    "drive_account": "MT5_EXPAND / Forex Isekai",
+    "folder_id": "1du-Nu5GMu2jkwwXMbqBfLxgzijmpSo2Q",
+    "file_id": "1J7wHY9xToJcvmP_dMO0vxNwyP60TbpkE",
+    "file_name": "R9_REAL_JAN_CONTEXT_CORE_001.csv",
+    "role": "compact reusable 31,915-row entry-context table"
+  }
 }
