@@ -182,6 +182,30 @@
       "status": "DURABLE",
       "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_ELASTIC_SPACING_001_REPORT.md",
       "purpose": "human decision selecting alpha 0.50 as research-clock knee"
+    },
+    {
+      "id": "P-GRID-001-JAN-EARLY-FAIL-001",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_EARLY_THESIS_FAILURE_001_PREREG.md",
+      "purpose": "frozen A10/A15 proof-of-life early-failure contract"
+    },
+    {
+      "id": "H-GRID-001-JAN-EARLY-FAIL-001",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/experiments/grid001_january_early_thesis_failure.py",
+      "purpose": "ordered-tick replay helper for unconfirmed/confirmed continuation state"
+    },
+    {
+      "id": "A-GRID-001-JAN-EARLY-FAIL-001",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/artifacts/GRID_001_JANUARY_EARLY_THESIS_FAILURE_001.json",
+      "purpose": "canonical early-thesis-failure metrics for A10/A15"
+    },
+    {
+      "id": "R-GRID-001-JAN-EARLY-FAIL-001",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_EARLY_THESIS_FAILURE_001_REPORT.md",
+      "purpose": "decision: retain conditional risk primitive, do not micro-tune thresholds"
     }
   ],
   "rule": "Add a helper here before any later experiment depends on it. Supersede by pointer; never silently rewrite historical semantics.",
