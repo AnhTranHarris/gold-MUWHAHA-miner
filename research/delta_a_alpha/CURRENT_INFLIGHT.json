@@ -1,31 +1,15 @@
 {
   "schema": "delta-a-alpha-inflight-v2",
-  "state": "RUNNING",
-  "last_completed": "DAA_TIMEOUT_RECOVERY_002",
-  "current_unit": "DAA_GRID_001_CAUSAL_FORENSIC_BASELINE",
-  "next_unit": null,
-  "scope": {
-    "window": "DELTA_STAGE_A_JANUARY_WINDOW",
-    "surface": "DUKAS_COINEXX_LIKE_P75",
-    "source_mechanics": "GRID-001-F",
-    "lot": 0.01,
-    "martingale": false,
-    "august": "SEALED"
-  },
-  "intended_outputs": [
+  "state": "IDLE_READY",
+  "last_completed": "DAA_GRID_001_CAUSAL_FORENSIC_BASELINE",
+  "current_unit": null,
+  "next_unit": "DAA_GRID_001_BOUNDED_STAGE_A_SCREEN_01",
+  "completed_outputs": [
     "research/delta_a_alpha/experiments/grid001_forensic_baseline.py",
     "research/delta_a_alpha/artifacts/GRID_001_F_STAGE_A_RESULT.json",
     "research/delta_a_alpha/grid/GRID_001_F_STAGE_A_REPORT.md"
   ],
-  "dependency_files": [
-    "CURRENT_STATE.json",
-    "research/delta_a_alpha/TIMEOUT_SAFE_CONTINUITY.md",
-    "research/delta_a_alpha/grid/GRID_001_SPEC.json",
-    "research/delta_a_alpha/benchmarks/R9_REAL_SYNTH_JAN_JUL_2026.json",
-    "research/delta/lab/coinexx_like_surface.py",
-    "research/delta/lab/dukas_tick_lab.py",
-    "research/delta/reference/DELTA_STAGE_A_JANUARY_WINDOW.json"
-  ],
-  "failure_recovery": "Inspect intended output paths first. If result exists, verify and continue. If helper exists but result does not, rerun only Stage-A baseline.",
-  "write_discipline": "Persist helper/result immediately before any parameter sweep or variant."
+  "decision": "REJECT_PHYSICAL_SOURCE_GRID_AS_SPECIALIST_RETAIN_GRID_EVENT_CLOCK_FOR_BOUNDED_RESEARCH",
+  "failure_recovery": "Inspect committed output paths first. Never rerun the forensic baseline unless parity verification fails.",
+  "write_discipline": "Preregister bounded screen before compute; persist result before any second screen."
 }
