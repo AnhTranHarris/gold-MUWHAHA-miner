@@ -1,5 +1,5 @@
 {
-  "schema": "delta-a-alpha-research-status-v2",
+  "schema": "delta-a-alpha-research-status-v3",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "branch": "delta-A-alpha",
   "display_name": "Delta-A-alpha",
@@ -10,118 +10,115 @@
     "durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "mode": "READ_ONLY"
   },
-  "existing_delta_a_lineage": "HISTORICAL_EVIDENCE_ONLY_NOT_PARENT",
-  "current_phase": "WHOLE_GRID_SYSTEM_REBUILD_CAMPAIGN_002_FROZEN_BUILD_01_NEXT",
-  "last_verified_durable_unit": "DAA_GRID_SYSTEM_WHOLE_REBUILD_CAMPAIGN_002",
+  "current_phase": "WHOLE_GRID_SYSTEM_BUILD_01_READY",
+  "last_verified_durable_unit": "DAA_GRID_SYSTEM_CLEAN_RESET_003",
   "first_incomplete_unit": "DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON_PREREG",
   "active_candidate": null,
   "owner_constraints": {
     "symbol": "XAUUSD",
     "lot_size": 0.01,
+    "lot_size_policy": "FIXED_ONLY",
     "martingale": "PROHIBITED",
     "loss_dependent_sizing": "PROHIBITED",
     "small_account_survivability_usd": [
       100,
       200,
       300
-    ]
+    ],
+    "main_delta": "READ_ONLY",
+    "august_2026": "SEALED",
+    "mql5_authorized": false
+  },
+  "mission": {
+    "role": "SYSTEM_WIDE_GRID_OPPORTUNITY_INFRASTRUCTURE",
+    "downstream_specialists_target": "6_TO_16",
+    "objective": "reduce the R9 REAL-to-SYNTH burden before specialist stacking",
+    "build_rule": "each accepted whole-system improvement becomes the next floor"
   },
   "benchmark": {
     "path": "research/delta_a_alpha/benchmarks/R9_REAL_SYNTH_JAN_JUL_2026.json",
-    "synth_net_profit": 309122.85,
-    "synth_trades": 219342,
-    "synth_profit_factor": 20.036229,
-    "synth_win_rate_pct": 87.14063,
-    "synth_trades_per_active_day": 1472.09396,
-    "real_net_profit": -50285.28,
-    "real_trades": 236647,
-    "real_profit_factor": 0.37507,
-    "real_win_rate_pct": 43.264863,
-    "real_trades_per_active_day": 1588.234899,
-    "real_to_synth_net_gap": 359408.13,
-    "role": "GUIDING_LIGHT_NOT_EXECUTION_INPUT",
-    "soft_gap_closure_targets": {
-      "30_pct_net": 57537.16,
-      "60_pct_net": 165359.6,
-      "90_pct_net": 273182.04,
-      "100_pct_net": 309122.85
-    }
-  },
-  "grid_001": {
-    "source_video": "https://www.youtube.com/watch?v=4WQEoQxsJMc",
-    "creator_repo": "MegaJoctan/StrategyTester5",
-    "creator_repo_commit": "45e2a23d11716f204cf66f9695124980aceae1bc",
-    "status": "WHOLE_SYSTEM_REBUILD_ACTIVE_NARROW_PROOF_LANE_PAUSED",
-    "promotion_eligible": false,
-    "prohibited_defaults": [
-      "martingale sizing",
-      "loss-dependent lot escalation",
-      "lot size above 0.01",
-      "uncapped averaging",
-      "no-stop promotion candidate"
-    ],
-    "forensic_result": "research/delta_a_alpha/artifacts/GRID_001_F_STAGE_A_RESULT.json",
-    "forensic_decision": "REJECT_PHYSICAL_SOURCE_GRID_AS_SPECIALIST_RETAIN_GRID_EVENT_CLOCK_FOR_BOUNDED_RESEARCH",
-    "bounded_screen_result": "research/delta_a_alpha/artifacts/GRID_001_S_STAGE_A_SCREEN_01_RESULT.json",
-    "bounded_screen_decision": "RETIRE_PHYSICAL_GRID_INVENTORY_ADVANCE_EVENT_CLOCK_ONLY",
-    "system_role": "SYSTEM_WIDE_OPPORTUNITY_ENGINE_SUPPORTING_FUTURE_6_TO_16_SPECIALISTS",
-    "opportunity_recovery": "FIRST_CLASS_RESEARCH_OBJECTIVE",
-    "community_sources": [
-      "PUBLIC_GITHUB",
-      "METAQUOTES_MQL5",
-      "TRADINGVIEW_OPEN_SOURCE",
-      "REDDIT_ALGOTRADING_COMMUNITY"
-    ],
-    "creator_code_repo": "MegaJoctan/omegafx-youtube-shared-files",
-    "creator_code_commit": "fc232fb4ffa9ed854d8c398e6e7a6de28c5dc51f",
-    "initial_redesign": "research/delta_a_alpha/grid/R9_DAA_GRID_SYSTEM_INITIAL_REDESIGN_001.md",
-    "mechanism_hunt": "research/delta_a_alpha/research/DAA_GRID_001_GROSS_LOSS_DRAWDOWN_MECHANISM_HUNT_001.md",
-    "system_source_hunt": "research/delta_a_alpha/research/DAA_GRID_COMMUNITY_SOURCE_HUNT_002_SYSTEM_LAYERS.md",
-    "whole_rebuild_campaign": "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_WHOLE_REBUILD_CAMPAIGN_002.md",
-    "paused_lane": {
-      "unit": "DAA_GRID_001_R9_REAL_JAN_DELAYED_PROOF_EXECUTION_001_PREREG",
-      "reason": "OWNER_DIRECTED_WHOLE_SYSTEM_ARCHITECTURE_FIRST",
-      "preserved": true
+    "r9_real": {
+      "net_profit": -50285.28,
+      "trades": 236647,
+      "profit_factor": 0.37507,
+      "win_rate_pct": 43.264863,
+      "trades_per_active_day": 1588.234899
     },
-    "proof_admission_retention_result": "research/delta_a_alpha/artifacts/GRID_001_R9_REAL_JAN_PROOF_ADMISSION_RETENTION_001.json",
-    "next_test": "build neutral whole-system state/lifecycle skeleton before enabling category-specific alpha mechanics"
+    "r9_synth": {
+      "net_profit": 309122.85,
+      "trades": 219342,
+      "profit_factor": 20.036229,
+      "win_rate_pct": 87.14063,
+      "trades_per_active_day": 1472.09396
+    },
+    "real_to_synth_net_gap": 359408.13,
+    "primary_synth_attainment_net_targets": {
+      "30_pct": 92736.86,
+      "60_pct": 185473.71,
+      "90_pct": 278210.57,
+      "100_pct": 309122.85,
+      "120_pct": 370947.42
+    },
+    "secondary_real_to_synth_gap_closure_net_targets": {
+      "30_pct": 57537.16,
+      "60_pct": 165359.6,
+      "90_pct": 273182.04,
+      "100_pct": 309122.85
+    },
+    "note": "Headline human scoreboard is SYNTH attainment; gap closure remains the bridge diagnostic. Neither overrides survivability, velocity, monthly consistency or execution realism."
   },
-  "august_2026": "SEALED",
-  "mql5_authorized": false,
-  "main_delta_write_authorized": false,
+  "retained_grid_floor": {
+    "creator_source": {
+      "video": "https://www.youtube.com/watch?v=4WQEoQxsJMc",
+      "exact_code_repo": "MegaJoctan/omegafx-youtube-shared-files",
+      "exact_code_commit": "fc232fb4ffa9ed854d8c398e6e7a6de28c5dc51f",
+      "framework_repo": "MegaJoctan/StrategyTester5",
+      "framework_commit": "45e2a23d11716f204cf66f9695124980aceae1bc"
+    },
+    "forensic_result": "research/delta_a_alpha/artifacts/GRID_001_F_STAGE_A_RESULT.json",
+    "forensic_decision": "REJECT_SOURCE_STYLE_UNBOUNDED_PHYSICAL_INVENTORY",
+    "bounded_result": "research/delta_a_alpha/artifacts/GRID_001_S_STAGE_A_SCREEN_01_RESULT.json",
+    "bounded_decision": "REJECT_SIMPLE_CAPPED_PHYSICAL_GRID_MATRIX",
+    "source_hunt": "research/delta_a_alpha/research/DAA_GRID_COMMUNITY_SOURCE_HUNT_002_SYSTEM_LAYERS.md",
+    "system_campaign": "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_WHOLE_REBUILD_CAMPAIGN_002.md"
+  },
+  "whole_system_dimensions": [
+    "session",
+    "volatility_drift_regime",
+    "timeframe_role",
+    "market_structure",
+    "trend_phase",
+    "scheduled_news_event",
+    "geometry",
+    "event_genealogy",
+    "execution_friction",
+    "risk_admission",
+    "specialist_routing"
+  ],
+  "cleanup": {
+    "unit": "DAA_GRID_SYSTEM_CLEAN_RESET_003",
+    "active_cleanup_commit": "1aa16d0f906e78b2757293a1e49cb3c3c6caa7e4",
+    "deleted_out_of_order_files": 125,
+    "legacy_status": "DELETED_FROM_ACTIVE_LINEAGE",
+    "rollback_branches": [
+      "delta-A-alpha-pre-system-cleanup-20261006",
+      "delta-A-alpha-pre-system-cleanup-20261006-v2"
+    ],
+    "rule": "Rollback branches are forensic recovery only. Legacy January mechanisms must be re-earned in system order before active use."
+  },
   "documentation": {
     "policy": "PERSIST_ON_VALUE_NOT_AT_CHAT_END",
     "machine_truth": "GitHub",
     "human_record": "Google Drive",
     "timeout_protocol": "research/delta_a_alpha/TIMEOUT_SAFE_CONTINUITY.md",
     "helper_registry": "research/delta_a_alpha/HELPER_REGISTRY.json",
-    "artifact_policy": "research/delta_a_alpha/ARTIFACT_LIFECYCLE.md",
-    "source_registry": "research/delta_a_alpha/SOURCE_REGISTRY.md"
-  },
-  "restart_instruction": "Read highest state journal entry first, then CURRENT_STATE.json and CURRENT_INFLIGHT.json. Verify committed artifacts before rerunning. Resume only first_incomplete_unit.",
-  "rollback_checkpoint": {
-    "id": "DAA_ROLLBACK_PRE_OPPORTUNITY_RECOVERY_RESEARCH_001",
-    "manifest": "research/delta_a_alpha/checkpoints/DAA_ROLLBACK_PRE_OPPORTUNITY_RECOVERY_RESEARCH_001.md",
-    "snapshot_branch": "delta-A-alpha-rollback-opportunity-recovery-001",
-    "snapshot_commit": "3d72bc8dca5a2fd606507f0500f42d184ff6c824",
-    "rule": "REFERENCE_AND_ROLLBACK_ONLY_NO_NEW_RESEARCH"
-  },
-  "discovery_charter": {
-    "id": "DAA_JANUARY_HYPERFAST_DISCOVERY_LATTICE_CHARTER_001",
-    "path": "research/delta_a_alpha/governance/DAA_JANUARY_HYPERFAST_DISCOVERY_LATTICE_CHARTER_001.md",
-    "commit": "5c696b7b5fa3a1206a7f594bbe6f99deced4e288",
-    "january_role": "HYPERFAST_STRUCTURAL_DISCOVERY_BATTLEGROUND",
-    "jan_jul_role": "MONTH_BY_MONTH_VERTICAL_VALIDATION_AND_REFINEMENT",
-    "first_priority": [
-      "GROSS_LOSS",
-      "DRAWDOWN"
-    ],
-    "anti_micro_tuning": true
+    "source_registry": "research/delta_a_alpha/SOURCE_REGISTRY.md",
+    "state_journal_protocol": "research/delta_a_alpha/STATE_JOURNAL_PROTOCOL.md"
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "protocol": "research/delta_a_alpha/STATE_JOURNAL_PROTOCOL.md",
-    "latest_sequence": 20,
-    "latest_entry": "research/delta_a_alpha/state_journal/0020_DAA_GRID_SYSTEM_WHOLE_REBUILD_CAMPAIGN_002.json"
-  }
+    "latest_sequence": 21,
+    "latest_entry": "research/delta_a_alpha/state_journal/0021_DAA_GRID_SYSTEM_CLEAN_RESET_003.json"
+  },
+  "restart_instruction": "Read state journal 0021, CURRENT_STATE.json, CURRENT_INFLIGHT.json, then whole-system campaign and source hunt. Resume only first_incomplete_unit. Do not restore deleted January refinements into active research."
 }
