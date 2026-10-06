@@ -1,0 +1,242 @@
+{
+  "schema": "delta-r037-specialist-roster-finalization-18a-v1",
+  "status": "COMPLETE_OWNER_CONSOLIDATION_SPECIALIST_HARVEST_PAUSED",
+  "unit": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
+  "parent_checkpoint": "R037_XAUUSD_ASIA_RANGE_DIRECTIONALITY_HARVEST_CHECKPOINT_17DE_17DG",
+  "date_utc": "2026-10-05",
+  "lineage": "DELTA",
+  "purpose": "Freeze the currently harvested specialist architecture and tested specialist streams, close the stale timeout cursor, and route subsequent work to refinement/integration rather than additional open-ended specialist harvesting.",
+  "owner_directive": "HARVEST_ENOUGH_SPECIALISTS_FINALIZE_CURRENT_SET",
+  "august_2026": "SEALED",
+  "mql5_authorized": false,
+  "final_delta_ea_promoted": false,
+  "timeout_reconciliation": {
+    "stale_pointer_detected": true,
+    "stale_pointer_claim": "17DE-17DG producer committed / compute pending",
+    "durable_reality": "17DE-17DG result, report, workbook QA and rebuild manifest already existed",
+    "candidate_disposition": "RETIRE_ASIA_RANGE_DIRECTIONALITY_NO_STAGE_A_SURVIVOR",
+    "metrics": {
+      "17DE_XBREAK_M15_CONTINUATION": {
+        "trades": 5,
+        "days": 5,
+        "wins": 3,
+        "direct_net_usd": -0.16
+      },
+      "17DF_SUNALGO_M15_SAME_BAR": {
+        "trades": 4,
+        "days": 4,
+        "wins": 1,
+        "direct_net_usd": -1.76
+      },
+      "17DG_SUNALGO_M15_NEXT_BAR": {
+        "trades": 2,
+        "days": 2,
+        "wins": 0,
+        "direct_net_usd": -1.42
+      }
+    }
+  },
+  "specialist_roster": {
+    "shared_infrastructure": [
+      {
+        "id": "DH01",
+        "name": "Nested Direction State",
+        "role": "shared causal parent-direction/context infrastructure",
+        "disposition": "RETAIN_SHARED_INFRASTRUCTURE",
+        "standalone_entry_specialist": false
+      },
+      {
+        "id": "DH06",
+        "name": "Quote-Pressure Initial-Hold Persistence",
+        "role": "shared deterministic post-entry quote-pressure / initial-hold evidence component",
+        "disposition": "RETAIN_SHARED_INITIAL_HOLD_COMPONENT",
+        "standalone_entry_specialist": false
+      },
+      {
+        "id": "DH07",
+        "name": "Specialist-Aware Initial-Hold State Machine",
+        "role": "shared early post-entry lifecycle/orchestration layer",
+        "disposition": "RETAIN_SHARED_INITIAL_HOLD_ORCHESTRATOR",
+        "standalone_entry_specialist": false
+      }
+    ],
+    "active_tested_streams": [
+      {
+        "id": "DH03-S06",
+        "architecture": "DH03",
+        "role": "trend-aligned pullback continuation after adverse pullback exhaustion, reclaim and reacceleration",
+        "best_reconstruction": "POST_PULLBACK_REARM_FRESH_EXHAUSTION_STRICT_POST_ORIGINAL_PULLBACK_PIVOT",
+        "disposition": "PROVENANCE_LIMITED_NON_PROMOTING_RETAIN_FOR_REFINEMENT_INTEGRATION",
+        "historical_target": {
+          "trades": 1563,
+          "raw_positive": 690,
+          "net_usd": -338.93,
+          "dd_usd": 339.25
+        },
+        "best_surrogate": {
+          "trades": 1513,
+          "raw_positive": 674,
+          "net_usd": -339.14,
+          "dd_usd": 339.14
+        }
+      },
+      {
+        "id": "DH05-S06",
+        "architecture": "DH05",
+        "role": "failed-break reversal after failed original breakout, reentry, reclaim and reversal confirmation",
+        "best_reconstruction": "09Z_OWNERSHIP_ATTEMPT_RECONSTRUCTION",
+        "disposition": "PROVENANCE_LIMITED_NON_PROMOTING_RETAIN_FOR_REFINEMENT_INTEGRATION",
+        "residual_probe_abs_error": 449
+      },
+      {
+        "id": "DH02-S11",
+        "architecture": "DH02",
+        "role": "breakout-retest-rebreak continuation with causal persistent failure acceptance",
+        "best_reconstruction": "11D_CONFLICT_BREAK_CONSUME_UNTIL_NEW_BOUNDARY_SOURCE_COMPATIBLE_CHALLENGER",
+        "disposition": "PROVENANCE_LIMITED_NON_PROMOTING_RETAIN_FOR_REFINEMENT_INTEGRATION",
+        "historical_target": {
+          "trades": 75,
+          "raw_positive": 41,
+          "gp_usd": 9.39,
+          "gl_usd": -17.6,
+          "net_usd": -8.21
+        }
+      },
+      {
+        "id": "DH02-S08",
+        "architecture": "DH02",
+        "role": "breakout-retest-rebreak continuation requiring causally valid DH01 parent direction at rebreak/entry eligibility",
+        "best_reconstruction": "REBREAK_ONLY_RAW_PARENT_DIRECTION_CONTINUOUS_DWELL",
+        "disposition": "PROVENANCE_LIMITED_NON_PROMOTING_RETAIN_FOR_REFINEMENT_INTEGRATION",
+        "historical_incremental_owned_entries": 71
+      }
+    ],
+    "reserve": [
+      {
+        "id": "DH04",
+        "name": "Compression Expansion Continuation Specialist",
+        "role": "compression -> expansion -> continuation",
+        "disposition": "FORENSIC_RESEARCH_RESERVE_NO_ACTIVE_EXECUTION_STREAM"
+      }
+    ]
+  },
+  "integrated_parent": {
+    "scheduler": "BACKBONE_FIRST_FLAT_ONLY_CONFIG_ORDER",
+    "frozen_surrogate_signal_fingerprints": {
+      "DH03-S06": 1586,
+      "DH05-S06": 651,
+      "DH02-S11": 103,
+      "DH02-S08": 104
+    },
+    "exact_non_specialist_backbone": {
+      "trades": 12504,
+      "official_wins": 5723,
+      "net_usd": -2571.31
+    },
+    "exact_historical_r032_c03_parity": false,
+    "role": "NON_PROMOTING_SURROGATE_PARENT"
+  },
+  "helper_audit": {
+    "incomplete_current_helpers": [],
+    "historical_missing_bytes_are_provenance_limits": true,
+    "audited": [
+      {
+        "path": "research/delta/qa/delta_bounded_python_runner.py",
+        "blob_sha": "0067707d2a45755fd4fa69fa164bbdd379aea5fe",
+        "status": "COMPLETE_NO_STUBS"
+      },
+      {
+        "path": "research/delta/experiments/delta_r037_dh05_runtime_primitives.py",
+        "blob_sha": "328b16a80cf5bff58734a556561625adf89100ae",
+        "status": "COMPLETE_NO_STUBS"
+      },
+      {
+        "path": "research/delta/experiments/delta_r037_dh03_s06_engine.py",
+        "blob_sha": "ac865a520441a2efc8eaf908e3c9390556893925",
+        "status": "COMPLETE_NO_STUBS"
+      },
+      {
+        "path": "research/delta/experiments/delta_r037_dh03_s06_structure.py",
+        "blob_sha": "edbe5ae9bcf2031fe06256467085889c4e108d52",
+        "status": "COMPLETE_NO_STUBS"
+      },
+      {
+        "path": "research/delta/experiments/delta_r037_r032_full_specialist_parent_parity.py",
+        "blob_sha": "f100e5274466def8fc5aebf1a994c513d80ed3c3",
+        "status": "COMPLETE_NO_STUBS"
+      }
+    ],
+    "specialist_manifests": {
+      "DH05-S06": {
+        "checkpoint": "10F",
+        "python_rebuild_ready": true,
+        "missing_required_artifacts": []
+      },
+      "DH02-S11": {
+        "checkpoint": "11G",
+        "python_rebuild_ready": true,
+        "missing_required_artifacts": []
+      },
+      "DH02-S08": {
+        "checkpoint": "12C",
+        "python_rebuild_ready": true,
+        "missing_required_artifacts": []
+      },
+      "DH03-S06": {
+        "checkpoint": "13H",
+        "python_rebuild_ready": true,
+        "missing_required_artifacts": []
+      }
+    }
+  },
+  "white_papers": {
+    "index_path": "research/delta/research/DELTA_R003_DIRECTION_HOLD_CAUSAL_GRAMMAR_WHITEPAPERS.md",
+    "index_commit": "6840f4ff536f820975bfe9322799703068546521",
+    "drive_docs": [
+      {
+        "id": "DH01",
+        "document_id": "1WrDPUavWb-bbv7gmxnnlEAFjT1NA9wYbPAwl-ayREAw",
+        "revision_id": "ANLCKQmlEJ8FPYXMNaZYR4B0Jk2akRNh7a0pjoLdu-Xu2goNLO30GF9B3oaY7gre4GGH4beSsKFo_cSSxW1pAvvHBCLxrBhXFTSGyJ7tFoc",
+        "readback": "PASS"
+      },
+      {
+        "id": "DH02",
+        "document_id": "18KpLADXCt-MlIQgZ4j6papHdE7SUtrl8kVTbn0x1XNc",
+        "revision_id": "ANLCKQkWvlB8BvrhMAHHbqslGwmJKiRGNxbHmGoRdu3rC1Od-GSsL3W6fRQVoxUMdUHdg-oEvHDQhrt3QhM72jRe_Q5l1xAjeXg8BevZq0I",
+        "readback": "PASS"
+      },
+      {
+        "id": "DH03",
+        "document_id": "13pa0KSxVy93yajDEGAIkeY4V8Z3egMDIPxPV0nM3ia8",
+        "revision_id": "ANLCKQmyy2YjMlgVIPmYuETAylC0Ux2SBdOjc1S55r91xib7ZI1Mhxm0AtheTPah-GeKKvdzOj46lXvRid5VKjaDIZZr5xKALjwm1wAAayg",
+        "readback": "PASS"
+      },
+      {
+        "id": "DH04",
+        "document_id": "1S9VYfq3DrDqabMaHHqq6BB2ueB-CPBw9OLYnFOZlQDg",
+        "revision_id": "ANLCKQnAlxq6YS31i3bluFRH8PiP9I2wrKYaYkPuRs-Woe1qnybEOeSApm0XZp3i0xgg8I2v_pCSh4isx9A1QbwhnqPJ903ioBeWW7sZAKI",
+        "readback": "PASS"
+      },
+      {
+        "id": "DH05",
+        "document_id": "1mIcrUUeK0lGwfR6L_26O47DQxQV7xygbnFcnkvE4s6k",
+        "revision_id": "ANLCKQlq9KkVUB84XeGigTmHVOn5Ypj9XKSLd4Ux5LYsWdTtlVW7P9wes1MvZWXhTURy8mreT-sq6AqogL5NleGHMjjfdERatNMwuAPk5bY",
+        "readback": "PASS"
+      },
+      {
+        "id": "DH06",
+        "document_id": "1MAkyDsu1TK7VC8Rlx4ahlIxznPFEJKy_uX4k31heIhc",
+        "revision_id": "ANLCKQmcNQkao1lJEEVLPnfxnBCmGC488Gs4zd-RvCa5UpUsRtwOlt-USkxfSNpNzzt9dnqJQlZ9sW5OMqEEnS-Fj7U3eCaBfwtKSmRwEYQ",
+        "readback": "PASS"
+      },
+      {
+        "id": "DH07",
+        "document_id": "1CyZ-WBMpBCfQfz_dnfbOAfCktDgbC7uPlW-72NGM7ww",
+        "revision_id": "ANLCKQkvOfECa334hR5K2oMEiP1sfCA5bmKmh6ZdIflWrWfRkP-hfQ3kDWT1d9UWXMXHbe3nd7uh89XlM0IsfX4YgyxV9UJoK-iiCIyX1uQ",
+        "readback": "PASS"
+      }
+    ]
+  },
+  "late_harvest_conclusion": "No new 17-series family survived the required robustness path strongly enough to join the frozen specialist roster. Stop open-ended specialist harvesting.",
+  "next_unit": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_PLAN"
+}
