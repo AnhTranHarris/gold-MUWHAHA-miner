@@ -1,11 +1,11 @@
 {
   "schema": "delta-a-alpha-inflight-v4",
   "authority": "APPEND_ONLY_STATE_JOURNAL",
-  "state": "IDLE_READY",
+  "state": "ACTIVE_BOUNDED_RESEARCH",
   "last_completed": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001",
-  "current_unit": null,
-  "next_unit": "OWNER_NEXT_SYSTEM_DIMENSION_SELECTION",
-  "journal_entry": "research/delta_a_alpha/state_journal/0025_DAA_HANDOFF_STMR_SLEEVE_PHASE_001_20261006.json",
+  "current_unit": "DAA_STMR_JANUARY_PARITY_RECOVERY_001",
+  "next_unit": "DAA_STMR_JANJUL_FROZEN_PARENT_REPLAY_001",
+  "journal_entry": "research/delta_a_alpha/state_journal/0026_DAA_STMR_JANJUL_STRESS_001_RECOVERY_START.json",
   "accepted_floor": {
     "candidate": "STMR_SLEEVE_PHASE_001",
     "january_net": 877.78,
@@ -14,6 +14,6 @@
     "parent_candidate": "STMR-001",
     "parent_january_net": 416.23
   },
-  "failure_recovery": "Read Google Drive handoff, then journal 0025 and journal 0024. Session/timeframe work is complete. Do not rebuild or revert to STMR-001. Scientific cursor remains OWNER_NEXT_SYSTEM_DIMENSION_SELECTION.",
-  "write_discipline": "Next system dimension must preregister against STMR_SLEEVE_PHASE_001 before economic replay."
+  "failure_recovery": "Read journal 0026 then 0025/0024. Load the persisted Library recovery bundle for timeout-era stmr_* helpers. Exact January parity remains incomplete; rerun only the smallest parity recovery unit. Do not start Jan-Jul tuning on a substitute replay.",
+  "write_discipline": "Persist the parity-capable helper and parity result before Jan-Jul parent replay. Session/timeframe-only tuning is authorized; August remains sealed."
 }
