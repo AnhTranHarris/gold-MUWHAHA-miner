@@ -1,20 +1,23 @@
 {
   "schema": "delta-a-alpha-inflight-v2",
   "state": "RUNNING",
-  "last_completed": "DAA_GRID_001_JANUARY_PARENT_CHILD_LATTICE_001",
-  "current_unit": "DAA_GRID_001_JANUARY_SHADOW_REGRET_MEMORY_001",
+  "last_completed": "DAA_GRID_001_JANUARY_SHADOW_REGRET_MEMORY_001",
+  "current_unit": "DAA_GRID_001_JANUARY_EARLY_THESIS_FAILURE_001",
   "next_unit": null,
   "scope": {
-    "lattice": "A05 adaptive child",
-    "mechanism": "causal matured counterfactual MR-vs-CONT regret memory",
-    "families": "event direction x coarse gap band",
+    "lattices": [
+      "A10",
+      "A15"
+    ],
+    "direction": "continuation",
+    "mutation": "unconfirmed continuation must reach +0.25 gap before full risk; -0.50 gap first = early failure exit",
     "physical_overlap_model": false
   },
   "intended_outputs": [
-    "research/delta_a_alpha/grid/GRID_001_JANUARY_SHADOW_REGRET_MEMORY_001_PREREG.md",
-    "research/delta_a_alpha/artifacts/GRID_001_JANUARY_SHADOW_REGRET_MEMORY_001.json",
-    "research/delta_a_alpha/grid/GRID_001_JANUARY_SHADOW_REGRET_MEMORY_001_REPORT.md"
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_EARLY_THESIS_FAILURE_001_PREREG.md",
+    "research/delta_a_alpha/artifacts/GRID_001_JANUARY_EARLY_THESIS_FAILURE_001.json",
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_EARLY_THESIS_FAILURE_001_REPORT.md"
   ],
-  "failure_recovery": "Inspect parent-child artifact/report, then shadow-regret outputs. Do not re-open rejected parent-stack threshold tuning.",
-  "write_discipline": "Three time-memory horizons only; no model hyperparameter search."
+  "failure_recovery": "Inspect shadow-regret result first, then early-failure outputs. Do not retune shadow-memory windows.",
+  "write_discipline": "One proof-of-life state rule across A10/A15 before any neighborhood test."
 }
