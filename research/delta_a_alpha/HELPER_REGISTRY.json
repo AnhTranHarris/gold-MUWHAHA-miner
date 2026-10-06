@@ -118,6 +118,42 @@
       "status": "DURABLE",
       "path": "research/delta_a_alpha/state_journal/0020_DAA_GRID_SYSTEM_WHOLE_REBUILD_CAMPAIGN_002.json",
       "purpose": "owner-pivot state checkpoint"
+    },
+    {
+      "id": "P-GRID-BUILD01",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON_PREREG.md",
+      "purpose": "whole-system neutral architecture preregistration"
+    },
+    {
+      "id": "H-GRID-BUILD01",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/experiments/grid_system_state_skeleton.py",
+      "purpose": "neutral deterministic state/lifecycle sidecar"
+    },
+    {
+      "id": "Q-GRID-BUILD01",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/qa/build01_state_skeleton_qa.py",
+      "purpose": "BUILD-01 runtime QA harness"
+    },
+    {
+      "id": "R-GRID-BUILD01",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON_REPORT.md",
+      "purpose": "accepted BUILD-01 architecture report"
+    },
+    {
+      "id": "CI-DAA",
+      "status": "DURABLE",
+      "path": ".github/workflows/delta-a-alpha-qa.yml",
+      "purpose": "branch-scoped runtime QA"
+    },
+    {
+      "id": "J-GRID-BUILD01-0022",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/state_journal/0022_DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON.json",
+      "purpose": "accepted architecture floor checkpoint"
     }
   ],
   "rule": "Register durable helpers/results before dependent work. Deleted legacy January refinements may be consulted only from rollback branches and cannot become active floor without fresh system-order validation.",
