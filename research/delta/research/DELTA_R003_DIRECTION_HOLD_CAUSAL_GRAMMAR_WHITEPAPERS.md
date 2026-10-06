@@ -218,3 +218,39 @@ Active documented objects:
 No DH-Cxx package is active in this stage.
 
 The next legal research step is preregistration design / parameter-slot definition for a first testing queue. Dukascopy/Python testing still requires a separate owner transition.
+
+
+## R037 final specialist consolidation — 2026-10-05
+
+The earlier pre-backtest status in this historical R003 document is superseded by the current R037 consolidation below. The original causal grammars remain preserved; this section records their present empirical/reconstruction disposition.
+
+### Frozen specialist roster
+
+- **DH-01 — Nested Direction State:** retain as shared causal direction/context infrastructure. It is not a standalone entry specialist. Its active reconstructed use is the parent-context concept required by DH02-S08. Exact historical DH01 aggregation/veto placement remains provenance-limited.
+- **DH-02 — Breakout Retest Rebreak Specialist:** retain two frozen reconstructed streams for refinement/integration: **DH02-S11** and **DH02-S08**. S11 preserves causal persistent failure acceptance; S08 preserves causally valid DH01 parent direction at rebreak/entry eligibility. Both remain provenance-limited and non-promoting rather than fabricated exact historical reconstructions.
+- **DH-03 — Pullback Continuation Specialist:** retain **DH03-S06** using the best reconstructible frozen surrogate `POST_PULLBACK_REARM_FRESH_EXHAUSTION_STRICT_POST_ORIGINAL_PULLBACK_PIVOT`. Exact historical generator parity is not claimed.
+- **DH-04 — Compression Expansion Continuation Specialist:** keep as forensic/research reserve. No DH04-derived execution stream currently belongs to the frozen active specialist roster; adjacent compression/expansion screens did not produce a durable survivor.
+- **DH-05 — Failed-Break Reversal Specialist:** retain **DH05-S06** using the frozen 09Z best reconstruction. Its residual repeated-attempt counter/reset mismatch is explicitly provenance-limited; do not infer or retune the missing historical helper from sample fit.
+- **DH-06 — Quote-Pressure Initial-Hold Persistence:** retain only as a shared post-entry evidence component. It is not a standalone entry generator or promoted order-flow specialist.
+- **DH-07 — Specialist-Aware Initial-Hold State Machine:** retain as the common early post-entry orchestration layer for admitted specialist trades. Mature hold/exit and capital escalation remain deferred.
+
+### Current tested execution streams
+
+The frozen R032 provenance-limited specialist set is:
+
+1. `DH03-S06` — pullback continuation;
+2. `DH05-S06` — failed-break reversal;
+3. `DH02-S11` — breakout/retest/rebreak with persistent failure acceptance;
+4. `DH02-S08` — breakout/retest/rebreak with DH01 parent-direction context.
+
+All four are rebuild-ready from current DELTA artifacts. Their missing historical producer details are provenance limitations, **not unfinished current helper code**.
+
+The integrated scheduler hypothesis remains `BACKBONE_FIRST_FLAT_ONLY_CONFIG_ORDER` under the R032 provenance-limited surrogate parent. Exact historical R032-C03 parity is not claimed, and no final DELTA EA is promoted.
+
+### Late R037 harvest disposition
+
+The later 17-series source-class campaign produced several temporary Stage-A or later-January clues, but no new entry family survived the required robustness path strongly enough to join the frozen specialist roster. PLSR/PDHSR, HTAR, ASRB, SIFVG, VCE, XECTSB and neighboring structural/session/liquidity families were retired or retained only as forensic reserve after holdout/monthly failure. Checkpoint 17DE–17DG also completed and retired the Asia-range directionality branch with no Stage-A survivor.
+
+**Owner decision:** pause new specialist harvesting. The next DELTA workstream is specialist **refinement, interaction/ownership integration, and shared initial-hold integration**, not another open-ended source-class harvest.
+
+August 2026 remains **SEALED**. MQL5 translation remains **NOT AUTHORIZED** until the owner explicitly opens that stage.
