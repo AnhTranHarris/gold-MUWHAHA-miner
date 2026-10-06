@@ -1,0 +1,57 @@
+{
+  "sequence": 27,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002",
+  "status": "COMPLETE_STRONG_CROSS_MONTH_RESEARCH_CANDIDATE_NOT_PROMOTED",
+  "predecessor": {
+    "sequence": 26,
+    "unit": "DAA_STMR_JANJUL_STRESS_001_RECOVERY_START",
+    "path": "research/delta_a_alpha/state_journal/0026_DAA_STMR_JANJUL_STRESS_001_RECOVERY_START.json"
+  },
+  "accepted_floor_unchanged": true,
+  "accepted_floor": {
+    "candidate": "STMR_SLEEVE_PHASE_001",
+    "january_net": 877.78,
+    "trades": 1518,
+    "profit_factor": 1.602933
+  },
+  "research_candidate": {
+    "candidate": "STMR_XMONTH_ADMISSIBILITY_001",
+    "authority": "CLEANROOM_CROSS_MONTH_RESEARCH_ONLY",
+    "jan_jul_net": 780.42,
+    "gross_profit": 5078.00,
+    "gross_loss": -4297.58,
+    "profit_factor": 1.1816,
+    "trades": 3963,
+    "expected_payoff": 0.19693,
+    "positive_months": 5,
+    "may_jul_retest_net": 161.65,
+    "may_jul_retest_status": "FROZEN_JAN_APR_RULE_NOT_PRISTINE_OOS"
+  },
+  "scientific_decision": [
+    "KEEP fixed UTC session windows",
+    "KEEP accepted Asia and London targeted subphase gates",
+    "KEEP completed-bar H4/H1/M15/M5 EMA8/21 ownership speed",
+    "KEEP six Jan-Apr-positive sleeves executable in research candidate",
+    "SET six Jan-Apr-toxic sleeves OBSERVE_ONLY in research candidate",
+    "REJECT toxic-sleeve directional FLIP",
+    "REJECT blanket DST remap",
+    "REJECT global/per-sleeve faster timeframe mappings",
+    "REJECT interrupted in-sample crossmonth rolemap after completion",
+    "DO NOT PROMOTE over STMR_SLEEVE_PHASE_001 without parity recovery or explicit owner clean-room authority"
+  ],
+  "recovery": {
+    "library_bundle": "/xauusd-trading-bot/delta-A-alpha/recovery/2026-10-06/STMR_JANJUL_TIMEOUT_RECOVERY_20261006_v2.zip",
+    "bundle_sha256": "17dc185badc66b09140f02d11aaeacf44e94525da91b94569b66a9902a72ba31"
+  },
+  "next_unit": "OWNER_STMR_PARITY_OR_CLEANROOM_AUTHORITY_DECISION",
+  "immutable_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "main_delta": "READ_ONLY",
+    "august_2026": "SEALED",
+    "mql5_authorized": false
+  }
+}
