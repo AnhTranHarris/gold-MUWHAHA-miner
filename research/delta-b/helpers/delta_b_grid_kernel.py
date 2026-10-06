@@ -441,6 +441,7 @@ class AdaptiveQEstimator:
             self._refresh_noise()
         if (
             self.tick_count == 1
+            or self.tick_count == 16
             or self.tick_count % self.cfg.quantile_refresh_ticks == 0
         ):
             self._refresh_quantiles()
