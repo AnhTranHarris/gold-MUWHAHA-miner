@@ -1,11 +1,10 @@
 from __future__ import annotations
-import argparse, json, sys
+import argparse, json
 from pathlib import Path
 import numpy as np
 from numba import njit
 
-sys.path.insert(0, '/mnt/data')
-from grid001_january_event_label_lab import load_month, materialize_p75, DAY_MS, PRICE_SCALE
+from grid001_january_event_label_lab import load, materialize, DAY_MS, PRICE_SCALE
 from grid001_january_early_thesis_failure import m1_atr_gap, gen_events
 
 COMMISSION=0.02
@@ -143,7 +142,7 @@ def variant(t,a,b,mult):
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('source',type=Path); ap.add_argument('--output',type=Path,required=True); z=ap.parse_args()
-    t,sa,sb=load_month(z.source); a,b,maxe=materialize_p75(t,sa,sb)
+    t,sa,sb=load(z.source); a,b,maxe=materialize(t,sa,sb)
     out={
       'schema':'delta-a-alpha-grid001-january-one-shot-recovery-v1',
       'unit':'DAA_GRID_001_JANUARY_ONE_SHOT_RECOVERY_001',
