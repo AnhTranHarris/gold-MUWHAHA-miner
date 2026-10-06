@@ -2,20 +2,20 @@
   "schema": "delta-b-timeout-recovery-inflight-v1",
   "status": "READY",
   "branch": "delta-b",
-  "unit": "DB001A_CAUSAL_REAL_TICK_Q_SESSION_EVENT_TRACE",
+  "unit": "DB001A_LOCATE_OR_BUILD_HASHED_MEDIUM_HIGH_EVENT_CACHE_AND_BROADER_SESSION_TRACE",
   "family": "GRID_LAYER_1",
-  "parent_durable_unit": "DB001_BOOTSTRAP_GRID_LAYER_1",
-  "phase": "EXACT_BYTE_QA_COMPLETE",
-  "phase_rank": 3,
+  "parent_durable_unit": "DB001A_CANONICAL_100K_SMOKE_AND_RECLAIM_CORRECTION",
+  "phase": "CANONICAL_SMOKE_COMPLETE",
+  "phase_rank": 4,
   "progress": {
-    "last_completed": "DB001_BOOTSTRAP_GRID_LAYER_1_EXACT_BYTE_QA",
+    "last_completed": "DB001A_CANONICAL_100K_SMOKE_AND_RECLAIM_CORRECTION",
     "current_candidate": null,
-    "next": "TRACE_Q_SESSION_EVENT_AND_INTRINSIC_STATES_ON_CANONICAL_REAL_TICKS"
+    "next": "LOCATE_OR_BUILD_HASHED_MEDIUM_HIGH_EVENT_CACHE_AND_RUN_BROADER_SESSION_TRACE"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read root CURRENT_STATE, this file and DELTA_B_DB001_BOOTSTRAP_MANIFEST. Begin bounded real-tick trace without opening August.",
-    "idempotency_rule": "Do not rerun exact-byte bootstrap QA unless the helper or QA blob changes.",
+    "resume_first_action": "Read root CURRENT_STATE, this file, DB001 bootstrap manifest and 100K smoke report. Locate an existing historical medium/high event source before creating a new cache; then run broader session/event traces without opening August.",
+    "idempotency_rule": "Do not rerun bootstrap QA or 100K smoke unless kernel/QA/source bytes change.",
     "parent_delta_rule": "Never advance or modify parent delta from delta-b."
   },
   "constraints": {
@@ -27,14 +27,16 @@
     "session_context_required": true
   },
   "qa": {
-    "tests": "8/8 PASS",
-    "kernel_git_blob_sha1": "d9c52d5e1c715a5febfc57d291cee5511304d74a",
-    "qa_git_blob_sha1": "c7978c0065dd4c06a5755e1ef0a7cbd87b112896",
-    "exact_committed_byte_execution": true
+    "tests": "9/9 PASS",
+    "kernel_git_blob_sha1": "479a60a01b996ab0e2850bb3871d325a857e021c",
+    "qa_git_blob_sha1": "abb04218ef0c8e51ed0865fc310dd93c4917cd37",
+    "exact_committed_byte_execution": true,
+    "canonical_100k_smoke": "COMPLETED_RECLAIM_SEMANTICS_CORRECTED",
+    "canonical_january_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
   },
   "producer": "research/delta-b/helpers/delta_b_grid_kernel.py",
   "qa_file": "research/delta-b/qa/test_delta_b_grid_kernel.py",
-  "result": null,
-  "report": null,
+  "result": "research/delta-b/research/DELTA_B_DB001A_100K_REAL_TICK_SMOKE_REPORT.md",
+  "report": "research/delta-b/research/DELTA_B_DB001A_100K_REAL_TICK_SMOKE_REPORT.md",
   "manifest": "research/delta-b/artifacts/DELTA_B_DB001_BOOTSTRAP_MANIFEST.json"
 }
