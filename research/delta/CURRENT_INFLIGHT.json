@@ -4,18 +4,18 @@
   "branch": "delta",
   "unit": null,
   "family": null,
-  "parent_durable_unit": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
+  "parent_durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
   "phase": "IDLE",
   "phase_rank": 0,
   "progress": {
-    "status": "IDLE_SPECIALIST_ROSTER_FINALIZED",
-    "last_completed": "R037_SPECIALIST_ROSTER_FINALIZATION_CHECKPOINT_18A",
+    "status": "IDLE_SPECIALIST_DOCUMENTATION_FINALIZED",
+    "last_completed": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "current_candidate": null,
     "next": "R037_SPECIALIST_REFINEMENT_AND_INTEGRATION_PLAN"
   },
   "timeout_recovery": {
     "message_delivery_timeout_is_not_compute_failure": true,
-    "resume_first_action": "Read CURRENT_STATE, CURRENT_INFLIGHT, recovery pointer and active rebuild manifest; resume refinement/integration, not specialist harvesting.",
+    "resume_first_action": "Read CURRENT_STATE, CURRENT_INFLIGHT, recovery pointer and active rebuild manifest; resume refinement/integration from documentation-finalized checkpoint 18B.",
     "idempotency_rule": "Do not rerun completed research phases or retired 17-series families.",
     "compute_boundary_rule": "Any future bounded compute must commit and verify exact producer bytes before execution."
   },
