@@ -1,0 +1,36 @@
+{
+  "schema": "delta-a-alpha-stmr-xmonth-admissibility-v1",
+  "candidate": "STMR_XMONTH_ADMISSIBILITY_001",
+  "status": "RESEARCH_CANDIDATE_NOT_MT5_AUTHORIZED",
+  "parent": "STMR_SLEEVE_PHASE_001",
+  "selection_window": "2026-01..2026-04",
+  "forward_window": "2026-05..2026-07",
+  "selection_rule": "Fund only semantic sleeves whose frozen baseline aggregate net is > 0 over Jan-Apr. May-Jul not used for selection.",
+  "fixed_mechanics": {
+    "session_clock": "ORIGINAL_FIXED_UTC",
+    "timeframe_roles": "H4 environment -> H1 structure -> M15 phase -> M5 handoff -> ordered tick",
+    "timeframe_ema": "8/21 completed-bar only",
+    "asia_subphase": "ASIA_LOWER_TAKEOVER 23:00-00:00 UTC",
+    "london_subphase": "LONDON_M5_TAKEOVER 11:00-12:00 UTC",
+    "max_positions": 3,
+    "lot": 0.01
+  },
+  "funded_sleeves": [
+    "ASIA_LOWER_TAKEOVER",
+    "LONDON_M5_TAKEOVER",
+    "OVERLAP_LOWER_TAKEOVER",
+    "LATE_ALIGNED_MOMENTUM",
+    "LATE_MACRO_SPLIT_TRANSFER",
+    "LATE_LOWER_TAKEOVER"
+  ],
+  "observe_only_sleeves": [
+    "ASIA_M15_DIVERGE_M5_RECLAIM",
+    "LONDON_M5_RECLAIM",
+    "OVERLAP_ALIGNED_COUNTERCROSS",
+    "NY_LOWER_TRANSFER",
+    "NY_LOWER_COUNTERCROSS",
+    "LATE_M5_REJECTION"
+  ],
+  "august_2026": "SEALED",
+  "mql5_authorized": false
+}
