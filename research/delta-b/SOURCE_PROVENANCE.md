@@ -121,3 +121,26 @@ For every donor mechanism, DELTA-B must separate:
 5. what remains unverified.
 
 No community profit figure is project evidence.
+
+
+## Frozen Historical Event Cache Donor
+
+### janickfarrell/forfac
+URL: https://github.com/janickfarrell/forfac
+
+Useful disclosed mechanisms/data contract:
+- MIT-licensed ForexFactory calendar scraper
+- tracked `forexfactory_calendar.csv`
+- normalized GMT timestamps
+- explicit High / Medium / Low impact extraction from ForexFactory metadata
+- event, actual, forecast and previous fields
+
+DELTA-B use:
+- source snapshot blob SHA1: `10b81a5529341098eb5806155a902895f9eb652c`
+- filtered once to USD + Medium/High + Jan-Jul 2026
+- compact DELTA-B cache blob SHA1: `c3da523e511e4b89fe1f665740adb29bd3e37428`
+- retained hot-path fields: GMT date/time, currency, impact, event name
+- actual/forecast/previous values are intentionally excluded from Grid Layer 1
+- cache is frozen in DELTA-B; upstream daily refreshes do not mutate historical research silently
+- public calendar data is contextual evidence, not proof of trading profitability
+
