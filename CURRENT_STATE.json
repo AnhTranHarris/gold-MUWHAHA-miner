@@ -59,7 +59,12 @@
     "forensic_decision": "REJECT_PHYSICAL_SOURCE_GRID_AS_SPECIALIST_RETAIN_GRID_EVENT_CLOCK_FOR_BOUNDED_RESEARCH",
     "bounded_screen_result": "research/delta_a_alpha/artifacts/GRID_001_S_STAGE_A_SCREEN_01_RESULT.json",
     "bounded_screen_decision": "RETIRE_PHYSICAL_GRID_INVENTORY_ADVANCE_EVENT_CLOCK_ONLY",
-    "next_test": "single-trade bounded ownership using grid crossings as event candidates; causal mean-reversion/continuation/no-trade classification"
+    "next_test": "single-trade bounded ownership using grid crossings as event candidates; causal mean-reversion/continuation/no-trade classification",
+    "system_role": "SYSTEM_WIDE_OPPORTUNITY_ENGINE_SUPPORTING_FUTURE_6_TO_16_SPECIALISTS",
+    "opportunity_recovery": "FIRST_CLASS_RESEARCH_OBJECTIVE",
+    "community_sources": [
+      "PUBLIC_GITHUB"
+    ]
   },
   "august_2026": "SEALED",
   "mql5_authorized": false,
@@ -73,5 +78,12 @@
     "artifact_policy": "research/delta_a_alpha/ARTIFACT_LIFECYCLE.md",
     "source_registry": "research/delta_a_alpha/SOURCE_REGISTRY.md"
   },
-  "restart_instruction": "Read CURRENT_STATE.json and CURRENT_INFLIGHT.json first. Verify committed artifacts before rerunning. Resume only first_incomplete_unit."
+  "restart_instruction": "Read CURRENT_STATE.json and CURRENT_INFLIGHT.json first. Verify committed artifacts before rerunning. Resume only first_incomplete_unit.",
+  "rollback_checkpoint": {
+    "id": "DAA_ROLLBACK_PRE_OPPORTUNITY_RECOVERY_RESEARCH_001",
+    "manifest": "research/delta_a_alpha/checkpoints/DAA_ROLLBACK_PRE_OPPORTUNITY_RECOVERY_RESEARCH_001.md",
+    "snapshot_branch": "delta-A-alpha-rollback-opportunity-recovery-001",
+    "snapshot_commit": "3d72bc8dca5a2fd606507f0500f42d184ff6c824",
+    "rule": "REFERENCE_AND_ROLLBACK_ONLY_NO_NEW_RESEARCH"
+  }
 }
