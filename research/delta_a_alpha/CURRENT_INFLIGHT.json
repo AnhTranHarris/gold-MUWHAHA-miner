@@ -2,9 +2,15 @@
   "schema": "delta-a-alpha-inflight-v3",
   "authority": "APPEND_ONLY_STATE_JOURNAL",
   "state": "IDLE_READY",
-  "last_completed": "DAA_GRID_001_JANUARY_NESTED_TREND_PHASE_001",
+  "last_completed": "DAA_GRID_001_JANUARY_PHASE_SANDWICH_STACK_001",
   "current_unit": null,
-  "next_unit": "DAA_GRID_001_JANUARY_PHASE_SANDWICH_STACK_001_PREREG",
-  "journal_entry": "research/delta_a_alpha/state_journal/0012_DAA_GRID_001_JANUARY_NESTED_TREND_PHASE_001.json",
-  "failure_recovery": "Read highest state_journal sequence first. If mutable pointer disagrees, journal wins."
+  "next_unit": "DAA_GRID_001_R9_REAL_JAN_CONTEXT_MAPPING_001_PREREG",
+  "journal_entry": "research/delta_a_alpha/state_journal/0013_DAA_GRID_001_JANUARY_PHASE_SANDWICH_STACK_001.json",
+  "failure_recovery": "Read highest state_journal sequence first. If this mutable pointer disagrees, journal wins.",
+  "completed_outputs": [
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_PHASE_SANDWICH_STACK_001_PREREG.md",
+    "research/delta_a_alpha/experiments/grid001_january_phase_sandwich_stack.py",
+    "research/delta_a_alpha/artifacts/GRID_001_JANUARY_PHASE_SANDWICH_STACK_001.json",
+    "research/delta_a_alpha/grid/GRID_001_JANUARY_PHASE_SANDWICH_STACK_001_REPORT.md"
+  ]
 }
