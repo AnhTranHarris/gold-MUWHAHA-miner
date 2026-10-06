@@ -1,0 +1,100 @@
+{
+  "schema": "delta-a-alpha-grid001-january-nested-state-transition-v1-compact",
+  "unit": "DAA_GRID_001_JANUARY_NESTED_STATE_TRANSITION_001",
+  "status": "COMPLETE_NEGATIVE_TRANSITION_RECLAIM",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "variants": {
+    "A05": {
+      "base": {
+        "trades": 18522,
+        "net": -3019.49,
+        "pf": 0.86432
+      },
+      "transition_accept": {
+        "trades": 1055,
+        "net": -142.57,
+        "pf": 0.858372,
+        "discovery_net": -134.77,
+        "validation_net": -7.8
+      },
+      "child_reclaim_parent_trend": {
+        "trades": 435,
+        "net": -61.31,
+        "pf": 0.858151
+      },
+      "parent_opposed_at_proof": {
+        "trades": 5173,
+        "net": -844.4,
+        "pf": 0.873875
+      }
+    },
+    "A10": {
+      "base": {
+        "trades": 9022,
+        "net": -701.39,
+        "pf": 0.957298
+      },
+      "transition_accept": {
+        "trades": 790,
+        "net": -127.42,
+        "pf": 0.888105,
+        "discovery_net": -135.13,
+        "validation_net": 7.71
+      },
+      "child_reclaim_parent_trend": {
+        "trades": 330,
+        "net": -79.26,
+        "pf": 0.842997
+      },
+      "parent_opposed_at_proof": {
+        "trades": 2611,
+        "net": -315.41,
+        "pf": 0.93854
+      }
+    },
+    "A15": {
+      "base": {
+        "trades": 6560,
+        "net": 142.77,
+        "pf": 1.010206
+      },
+      "stable_align": {
+        "trades": 432,
+        "net": 45.42,
+        "pf": 1.051047,
+        "discovery_net": -119.9,
+        "validation_net": 165.32
+      },
+      "transition_accept": {
+        "trades": 598,
+        "net": 61.62,
+        "pf": 1.064694,
+        "discovery_net": -111.2,
+        "validation_net": 172.82
+      },
+      "child_reclaim_parent_trend": {
+        "trades": 258,
+        "net": 51.42,
+        "pf": 1.125875,
+        "discovery_net": -18.51,
+        "validation_net": 69.93
+      },
+      "parent_opposed_at_proof": {
+        "trades": 1957,
+        "net": -151.63,
+        "pf": 0.966296,
+        "discovery_net": -230.65,
+        "validation_net": 79.02
+      }
+    }
+  },
+  "scientific_decision": [
+    "REJECT generic child/middle reclaim transition as a standalone ownership rule",
+    "STATIC and transition alignment both remain nonstationary",
+    "PARENT_OPPOSED events are a large losing family and should be treated as rerouting opportunities rather than simple vetoes",
+    "NEXT test parent-direction reclaim route after child continuation proof when parent state opposes"
+  ],
+  "promotion_eligible": false,
+  "august": "SEALED"
+}
