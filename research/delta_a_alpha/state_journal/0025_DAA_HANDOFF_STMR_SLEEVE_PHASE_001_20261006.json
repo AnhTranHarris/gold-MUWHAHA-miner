@@ -1,0 +1,62 @@
+{
+  "sequence": 25,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_HANDOFF_STMR_SLEEVE_PHASE_001_20261006",
+  "status": "ADMINISTRATIVE_HANDOFF_COMPLETE_NO_SCIENTIFIC_ADVANCE",
+  "predecessor": {
+    "sequence": 24,
+    "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001",
+    "path": "research/delta_a_alpha/state_journal/0024_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001.json"
+  },
+  "scientific_floor_unchanged": true,
+  "accepted_floor": {
+    "candidate": "STMR_SLEEVE_PHASE_001",
+    "january_net": 877.78,
+    "trades": 1518,
+    "profit_factor": 1.602933,
+    "expected_payoff": 0.578248,
+    "max_equity_drawdown": 61.22,
+    "trades_per_active_day": 75.9
+  },
+  "google_drive_handoff": {
+    "folder_id": "1i0ymYGo5FC4XM1OrdeYYgLF7NCPzNBsk",
+    "folder_url": "https://drive.google.com/drive/folders/1i0ymYGo5FC4XM1OrdeYYgLF7NCPzNBsk",
+    "documents": [
+      {
+        "title": "00 READ FIRST — Delta-A-alpha Handoff — STMR_SLEEVE_PHASE_001",
+        "id": "1xvS-GkzuAS0yz36_BQ1tcq_6tuaXrrRmBYRE3ko-n7k"
+      },
+      {
+        "title": "01 NEW CHAT BOOTSTRAP PROMPT — Delta-A-alpha",
+        "id": "1Rbi0PEO6zfOiooSL3r25fPhc6p73eudT68gJ9h9CicY"
+      },
+      {
+        "title": "02 AUTHORITATIVE ARTIFACT MAP — Delta-A-alpha",
+        "id": "1llOPwlOdIm2jjpLehs2dM758wxwRkG6six-TgbY2q0I"
+      },
+      {
+        "title": "03 REFLECTION + NEXT PHASE DECISION SHEET — Delta-A-alpha",
+        "id": "1Irhls4RiSk-rTXR61tGBR4A3GYmJ6d9VEroo3yYbWOc"
+      }
+    ]
+  },
+  "branch_head_at_handoff": "cbadaaf050cc44634950847fdb19948f9908485e",
+  "next_unit": "OWNER_NEXT_SYSTEM_DIMENSION_SELECTION",
+  "required_bootstrap": [
+    "Read Google Drive 00 READ FIRST",
+    "Read journal 0025 then 0024",
+    "Read CURRENT_STATE.json and CURRENT_INFLIGHT.json",
+    "Verify accepted floor STMR_SLEEVE_PHASE_001 +877.78 January",
+    "Do not rebuild session/timeframe work",
+    "Perform reflection/next-dimension recommendation before new research"
+  ],
+  "immutable_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "main_delta": "READ_ONLY",
+    "august_2026": "SEALED",
+    "mql5_authorized": false
+  }
+}
