@@ -230,6 +230,30 @@
       "status": "DURABLE",
       "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_ONE_SHOT_RECOVERY_001_REPORT.md",
       "purpose": "decision: reject blind flip, retain recovery-admission research"
+    },
+    {
+      "id": "P-GRID-001-JAN-RECOVERY-ADMISSION-001",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_RECOVERY_ADMISSION_001_PREREG.md",
+      "purpose": "frozen causal flip-vs-retire admission contract"
+    },
+    {
+      "id": "H-GRID-001-JAN-RECOVERY-ADMISSION-001",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/experiments/grid001_january_recovery_admission.py",
+      "purpose": "repo-runnable causal feature/tree microscope"
+    },
+    {
+      "id": "A-GRID-001-JAN-RECOVERY-ADMISSION-001",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/artifacts/GRID_001_JANUARY_RECOVERY_ADMISSION_001.json",
+      "purpose": "compact canonical recovery-admission metrics"
+    },
+    {
+      "id": "R-GRID-001-JAN-RECOVERY-ADMISSION-001",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_RECOVERY_ADMISSION_001_REPORT.md",
+      "purpose": "decision: classifier not promotable; advance proof-before-entry"
     }
   ],
   "rule": "Add a helper here before any later experiment depends on it. Supersede by pointer; never silently rewrite historical semantics.",
