@@ -1,5 +1,5 @@
 {
-  "schema": "delta-a-alpha-helper-registry-v1",
+  "schema": "delta-a-alpha-helper-registry-v2",
   "policy": "persist_on_value",
   "parent_commit": "ac91fc43389a34f8ba380b58143f8e185589b106",
   "helpers": [
@@ -20,7 +20,20 @@
       "status": "DURABLE",
       "path": "research/delta_a_alpha/grid/GRID_001_SPEC.json",
       "purpose": "machine-readable source reconstruction and test lanes"
+    },
+    {
+      "id": "H-MT5-BENCHMARK-EXTRACTOR",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/helpers/mt5_report_benchmark_extract.py",
+      "purpose": "stream large MT5 tester XLSX reports into aggregate/monthly economic, velocity, drawdown and holding-survivability ledgers"
+    },
+    {
+      "id": "A-R9-REAL-SYNTH-BENCHMARK",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/benchmarks/R9_REAL_SYNTH_JAN_JUL_2026.json",
+      "purpose": "canonical Jan-Jul R9 REAL versus SYNTH account-level target ledger"
     }
   ],
-  "rule": "Add a helper here before any later experiment depends on it. Supersede by pointer; never silently rewrite historical semantics."
+  "rule": "Add a helper here before any later experiment depends on it. Supersede by pointer; never silently rewrite historical semantics.",
+  "timeout_rule": "After every scientifically meaningful unit, persist the helper/result and update CURRENT_INFLIGHT before beginning the next unit."
 }
