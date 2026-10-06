@@ -1,0 +1,167 @@
+{
+  "schema": "delta-a-alpha-grid001-january-proof-before-entry-v1",
+  "unit": "DAA_GRID_001_JANUARY_PROOF_BEFORE_ENTRY_001",
+  "status": "COMPLETE_STRUCTURAL_BREAKTHROUGH_NOT_PROMOTED",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "local_result_sha256": "827657c5ea3bda5a05d9e9729588e121be4d5c9bf9bd3074c58ed8d6dbde8622",
+  "local_helper_pre_portability_sha256": "685d8cee0a0aab223314173402fdccadca42733b4810d82f69fc6d4a1d674d0a",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "ticks": 9135062,
+  "contract": {
+    "proof_gap": 0.25,
+    "failure_gap": 0.5,
+    "post_proof_tp_sl_gap": 1,
+    "horizon_seconds": 300,
+    "horizon_reset": false,
+    "fixed_lot": 0.01,
+    "roundtrip_commission_usd": 0.02,
+    "martingale": false,
+    "physical_overlap_model": false
+  },
+  "variants": {
+    "A05": {
+      "events": 39397,
+      "events_per_active_day": 1790.772727,
+      "opened": 18522,
+      "opened_pct": 47.013732,
+      "opened_per_active_day": 841.909091,
+      "failed_before_proof": 20871,
+      "failed_before_proof_pct": 52.976115,
+      "no_decision_timeout": 4,
+      "physical_tp": 8080,
+      "physical_sl": 10383,
+      "physical_timeout": 59,
+      "baseline_full": {
+        "net": -6619.3,
+        "gross_profit": 35991.96,
+        "gross_loss": -42611.26,
+        "pf": 0.844658,
+        "expected": -0.168015,
+        "win_pct": 43.056578
+      },
+      "physical_full": {
+        "net": -3019.49,
+        "gross_profit": 19234.93,
+        "gross_loss": -22254.42,
+        "pf": 0.86432,
+        "expected": -0.163022,
+        "win_pct": 43.796566
+      },
+      "expected_per_lattice_event": -0.076643,
+      "gross_loss_reduction_pct": 47.773382,
+      "discovery": {
+        "events": 26929,
+        "opened": 11535,
+        "net": -2627.39,
+        "pf": 0.708675,
+        "expected_per_event": -0.097567
+      },
+      "validation": {
+        "events": 12468,
+        "opened": 6987,
+        "net": -392.1,
+        "pf": 0.970376,
+        "expected_per_event": -0.031449
+      }
+    },
+    "A10": {
+      "events": 16141,
+      "events_per_active_day": 733.681818,
+      "opened": 9022,
+      "opened_pct": 55.894926,
+      "opened_per_active_day": 410.090909,
+      "failed_before_proof": 7118,
+      "failed_before_proof_pct": 44.098879,
+      "no_decision_timeout": 1,
+      "physical_tp": 3947,
+      "physical_sl": 4445,
+      "physical_timeout": 630,
+      "baseline_full": {
+        "net": -1753.09,
+        "gross_profit": 26651.73,
+        "gross_loss": -28404.82,
+        "pf": 0.938282,
+        "expected": -0.108611,
+        "win_pct": 46.601821
+      },
+      "physical_full": {
+        "net": -701.39,
+        "gross_profit": 15723.75,
+        "gross_loss": -16425.14,
+        "pf": 0.957298,
+        "expected": -0.077742,
+        "win_pct": 47.206828
+      },
+      "expected_per_lattice_event": -0.043454,
+      "gross_loss_reduction_pct": 42.174814,
+      "discovery": {
+        "events": 8766,
+        "opened": 4522,
+        "net": -1249.29,
+        "pf": 0.768689,
+        "expected_per_event": -0.142515
+      },
+      "validation": {
+        "events": 7375,
+        "opened": 4500,
+        "net": 547.9,
+        "pf": 1.0497,
+        "expected_per_event": 0.074292
+      }
+    },
+    "A15": {
+      "events": 11133,
+      "events_per_active_day": 506.045455,
+      "opened": 6560,
+      "opened_pct": 58.92392,
+      "opened_per_active_day": 298.181818,
+      "failed_before_proof": 4553,
+      "failed_before_proof_pct": 40.896434,
+      "no_decision_timeout": 20,
+      "physical_tp": 2775,
+      "physical_sl": 2873,
+      "physical_timeout": 912,
+      "baseline_full": {
+        "net": -514.19,
+        "gross_profit": 23330.11,
+        "gross_loss": -23844.3,
+        "pf": 0.978436,
+        "expected": -0.046186,
+        "win_pct": 48.621216
+      },
+      "physical_full": {
+        "net": 142.77,
+        "gross_profit": 14131.85,
+        "gross_loss": -13989.08,
+        "pf": 1.010206,
+        "expected": 0.021764,
+        "win_pct": 49.115854
+      },
+      "expected_per_lattice_event": 0.012824,
+      "gross_loss_reduction_pct": 41.331555,
+      "discovery": {
+        "events": 4380,
+        "opened": 2408,
+        "net": -697.43,
+        "pf": 0.800382,
+        "expected_per_event": -0.159231
+      },
+      "validation": {
+        "events": 6753,
+        "opened": 4152,
+        "net": 840.2,
+        "pf": 1.080055,
+        "expected_per_event": 0.124419
+      }
+    }
+  },
+  "scientific_decision": [
+    "PROMOTE proof-before-entry as a core risk/admission architecture primitive",
+    "DO NOT promote any lattice as a final January candidate because discovery/validation are nonstationary",
+    "A15 is first adaptive-lattice configuration to become positive full-January under the frozen confirmation architecture",
+    "A05/A10 remain useful child/medium-scale opportunity clocks but need additional state/routing",
+    "NEXT identify why proof-before-entry A15 fails in discovery but succeeds in validation without threshold micro-tuning"
+  ],
+  "promotion_eligible": false,
+  "august": "SEALED"
+}
