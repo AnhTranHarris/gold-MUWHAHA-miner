@@ -1,0 +1,129 @@
+{
+  "schema": "delta-a-alpha-grid001-january-causal-observation-gate-v1",
+  "unit": "DAA_GRID_001_JANUARY_CAUSAL_OBSERVATION_GATE_001",
+  "status": "COMPLETE_NEGATIVE",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "matrix": {
+    "wait_ms": [
+      250,
+      1000,
+      3000
+    ],
+    "confirmation_gap": [
+      0,
+      0.1,
+      0.25
+    ],
+    "variants": 9
+  },
+  "variants": [
+    {
+      "wait_ms": 250,
+      "threshold_gap": 0,
+      "accept_pct": 97.797638,
+      "full_net": -26140.15,
+      "full_pf": 0.722659,
+      "validation_net": -18174.85,
+      "validation_pf": 0.73731,
+      "events_per_day": 5784.86
+    },
+    {
+      "wait_ms": 250,
+      "threshold_gap": 0.1,
+      "accept_pct": 68.106476,
+      "full_net": -17789.26,
+      "full_pf": 0.734666,
+      "validation_net": -13660.47,
+      "validation_pf": 0.74771,
+      "events_per_day": 4028.59
+    },
+    {
+      "wait_ms": 250,
+      "threshold_gap": 0.25,
+      "accept_pct": 44.067224,
+      "full_net": -11150.19,
+      "full_pf": 0.74873,
+      "validation_net": -9410.09,
+      "validation_pf": 0.757497,
+      "events_per_day": 2606.64
+    },
+    {
+      "wait_ms": 1000,
+      "threshold_gap": 0,
+      "accept_pct": 98.950305,
+      "full_net": -26945.35,
+      "full_pf": 0.718133,
+      "validation_net": -18696.76,
+      "validation_pf": 0.732841,
+      "events_per_day": 5853.05
+    },
+    {
+      "wait_ms": 1000,
+      "threshold_gap": 0.1,
+      "accept_pct": 81.887761,
+      "full_net": -21791.62,
+      "full_pf": 0.727373,
+      "validation_net": -16154.51,
+      "validation_pf": 0.740642,
+      "events_per_day": 4843.77
+    },
+    {
+      "wait_ms": 1000,
+      "threshold_gap": 0.25,
+      "accept_pct": 62.495293,
+      "full_net": -16335.27,
+      "full_pf": 0.736806,
+      "validation_net": -13145.08,
+      "validation_pf": 0.747056,
+      "events_per_day": 3696.68
+    },
+    {
+      "wait_ms": 3000,
+      "threshold_gap": 0,
+      "accept_pct": 99.412908,
+      "full_net": -26687.78,
+      "full_pf": 0.72178,
+      "validation_net": -18062.15,
+      "validation_pf": 0.741681,
+      "events_per_day": 5880.41
+    },
+    {
+      "wait_ms": 3000,
+      "threshold_gap": 0.1,
+      "accept_pct": 89.494594,
+      "full_net": -23965.34,
+      "full_pf": 0.724653,
+      "validation_net": -16991.7,
+      "validation_pf": 0.742152,
+      "events_per_day": 5293.73
+    },
+    {
+      "wait_ms": 3000,
+      "threshold_gap": 0.25,
+      "accept_pct": 75.494302,
+      "full_net": -19993.68,
+      "full_pf": 0.730888,
+      "validation_net": -15162.22,
+      "validation_pf": 0.745202,
+      "events_per_day": 4465.59
+    }
+  ],
+  "immediate_continuation_validation_baseline": {
+    "net": -14583.88,
+    "pf": 0.786553
+  },
+  "best_validation_variant": {
+    "wait_ms": 250,
+    "threshold_gap": 0.25,
+    "validation_net": -9410.09,
+    "validation_pf": 0.757497,
+    "full_net": -11150.19,
+    "full_pf": 0.74873,
+    "accept_pct": 44.067224,
+    "events_per_day": 2606.64
+  },
+  "scientific_decision": "REJECT_FIXED_SHORT_POST_CROSSING_PROBE_AS_DIRECTION_SOLUTION",
+  "interpretation": "waiting 0.25-3s and using signed post-crossing displacement did not create positive expectancy or beat immediate continuation PF on validation; next mutation changes lattice geometry rather than tuning waits",
+  "promotion_eligible": false
+}
