@@ -214,10 +214,38 @@
       "status": "DURABLE",
       "path": "research/delta_a_alpha/state_journal/0024_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001.json",
       "purpose": "authoritative accepted refinement and timeout-journal reconciliation"
+    },
+    {
+      "id": "H-GRID-BUILD02-STMR-XMONTH-003",
+      "status": "DURABLE_LIBRARY_EXACT_BYTES",
+      "path": "library:/xauusd-trading-bot/delta-A-alpha/stmr-janjul-stress-2026-10-06/stmr_subphase_refine.py",
+      "sha256": "0df41a4ece3083129022443daab14687b5a170bb888e879d7352301568f7def5",
+      "purpose": "exact clean-room Jan-Jul session/subphase replay helper for STMR_XMONTH_SUBPHASE_001"
+    },
+    {
+      "id": "A-GRID-BUILD02-STMR-XMONTH-003",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/artifacts/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_003_SUMMARY.json",
+      "exact_full_result": "library:/xauusd-trading-bot/delta-A-alpha/stmr-janjul-stress-2026-10-06/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_003_RESULT.json",
+      "full_result_sha256": "32f2c80fad10950a51e22d14c37bcc8ad333bae2581078a4f0205ed37b443515",
+      "purpose": "Jan-Jul clean-room session/timeframe stress 003 result"
+    },
+    {
+      "id": "R-GRID-BUILD02-STMR-XMONTH-003",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_003_REPORT.md",
+      "purpose": "decision report for strongest clean-room Jan-Jul session/timeframe child"
+    },
+    {
+      "id": "J-GRID-BUILD02-STMR-XMONTH-0028",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/state_journal/0028_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_003.json",
+      "purpose": "authoritative continuation after stress-002 and timeout recovery"
     }
   ],
   "rule": "Register durable helpers/results before dependent work. Deleted legacy January refinements may be consulted only from rollback branches and cannot become active floor without fresh system-order validation.",
   "timeout_rule": "Persist one bounded unit, verify it, then advance cursor.",
   "note_build02_replay": "Portable local January replay reproduced STMR-001 exactly; GitHub mutation safety rejected the large executable/result payload, so durable architecture/report/journal remain the accepted authority and the local helper hash is recorded in the report.",
-  "note_build02_refinement": "STMR_SLEEVE_PHASE_001 supersedes STMR-001 economically on January. Integration logic is durable in grid_system_session_timeframe.py; exact local ordered-tick replay helper SHA-256 943b62c4be0e84185ad9c61577d4d3dd14ce51b2cafcfb7829c47a2910ff0216."
+  "note_build02_refinement": "STMR_SLEEVE_PHASE_001 supersedes STMR-001 economically on January. Integration logic is durable in grid_system_session_timeframe.py; exact local ordered-tick replay helper SHA-256 943b62c4be0e84185ad9c61577d4d3dd14ce51b2cafcfb7829c47a2910ff0216.",
+  "note_stmr_janjul_stress_003": "Exact accepted January replay bytes remain unavailable. STMR_XMONTH_SUBPHASE_001 is durable clean-room cross-month research only and does not replace journal 0024."
 }
