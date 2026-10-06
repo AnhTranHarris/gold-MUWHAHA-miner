@@ -54,42 +54,36 @@ R9 SYNTH:
 Net performance gap:
 **$359,408.13**
 
-## Soft milestone ladder — gap closure
+## Human milestone ladders
 
-The primary progress statistic is:
+Two scoreboards are maintained so the project does not confuse "closing the REAL deficit" with "reaching the SYNTH frontier."
 
-`gap_closure = (candidate_system_net - R9_REAL_net) / (R9_SYNTH_net - R9_REAL_net)`
+### Primary — R9 SYNTH attainment
 
-This is evaluated on the same Jan-Jul account-level period once a build reaches full-period validation.
+`synth_attainment = candidate_JanJul_net / R9_SYNTH_JanJul_net`
 
-### 30% gap closure
+Net references:
+- **30%:** +$92,736.86
+- **60%:** +$185,473.71
+- **90%:** +$278,210.57
+- **100%:** +$309,122.85
+- **120%:** +$370,947.42
 
-Required combined-system net reference:
-**+$57,537.16**
+This is the owner's human-facing 30%-interval progress ladder.
 
-Interpretation:
-the rebuilt grid/system has removed roughly 30% of the REAL→SYNTH net deficit.
+### Secondary — REAL -> SYNTH gap closure
 
-### 60% gap closure
+`gap_closure = (candidate_net - R9_REAL_net) / (R9_SYNTH_net - R9_REAL_net)`
 
-Reference:
-**+$165,359.60**
+Net references:
+- **30%:** +$57,537.16
+- **60%:** +$165,359.60
+- **90%:** +$273,182.04
+- **100%:** +$309,122.85
 
-### 90% gap closure
+Gap closure answers how much of the original REAL deficit has been removed.
 
-Reference:
-**+$273,182.04**
-
-### 100% gap closure
-
-Reference:
-**+$309,122.85**
-
-This equals the canonical R9 SYNTH net result.
-
-### >100%
-
-Any durable result above the R9 SYNTH benchmark is explicitly tracked rather than capped.
+Neither score can promote a build by itself. Velocity, monthly consistency, executable economics, gross loss, equity drawdown, $100/$200/$300 survivability, and residual inventory remain mandatory.
 
 ## Milestones are soft, not single-metric promotion gates
 
@@ -266,11 +260,19 @@ This avoids repeated filters that simply destroy trade count.
 
 ## Whole-system rebuild sequence
 
-### BUILD-00 — Current floor
+### BUILD-00 — Clean evidence floor
 
-Preserve all completed GRID-001 and R9 REAL diagnostic work.
+Active floor contains only:
+- canonical R9 REAL/SYNTH Jan-Jul benchmark;
+- exact creator-code/source reconstruction;
+- source-style forensic grid result;
+- bounded physical-grid negative screen;
+- whole-system public-source mechanism hunt;
+- this system-first campaign.
 
-No deletion or reinterpretation.
+Owner-directed cleanup `DAA_GRID_SYSTEM_CLEAN_RESET_003` removed the out-of-order January-specific refinement stack from the active lineage. The deleted work remains recoverable on named rollback branches but is **not active evidence**.
+
+A legacy idea may return only after the whole-system parent layer it depends on exists and the mechanism is freshly preregistered/retested in the new order.
 
 ### BUILD-01 — Stable state skeleton + finite cycles
 
