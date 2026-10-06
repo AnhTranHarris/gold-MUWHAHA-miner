@@ -74,3 +74,25 @@ Extractor:
 ## Scientific separation
 
 The MT5 tester benchmark is the account-level guiding-light ledger including commission and swap. Older ticklogger teacher figures that exclude some account cashflows may remain useful for microstructure diagnostics, but must not silently replace the canonical account-level benchmark.
+
+
+## GRID-001 exact creator code authority
+
+The exact tutorial source files were later located in:
+
+Repository: `MegaJoctan/omegafx-youtube-shared-files`  
+Inspected commit: `fc232fb4ffa9ed854d8c398e6e7a6de28c5dc51f`
+
+Files:
+- `Python Grid Bot/grid_bot.py` — blob `1d5efa140b363941e7360bd0ae85ac7e04d0ecaa`
+- `Python Grid Bot/grid_bot_backtest.py` — blob `3d4f66a2e57397c15876df795a629488b6278a7c`
+- `Python Grid Bot/grid_bot_optimization.py` — blob `fd69caaa878643fcbe26070ae120e213d67b44ff`
+
+Authority split:
+- these shared-files source files govern the exact tutorial implementation;
+- `MegaJoctan/StrategyTester5` governs the framework/API context;
+- the supplied transcript remains useful for explanatory intent.
+
+No LICENSE file was found in the inspected shared-files repository, so Delta-A-alpha uses the code for inspection/reconstruction evidence and clean-room implementation rather than copying substantial source.
+
+The exact code confirms H1/48-bar default geometry, fixed gap, chained open-position anchors, Ask-universal signal comparison, one-gap TP, no intrinsic stop, optional maximum-order cap in backtest, and loss-dependent lot multiplication in the backtest/optimization variant. Delta-A-alpha explicitly rejects the loss-dependent sizing component.
