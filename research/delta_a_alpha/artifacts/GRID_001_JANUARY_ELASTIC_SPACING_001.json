@@ -1,0 +1,87 @@
+{
+  "schema": "delta-a-alpha-grid001-january-elastic-spacing-v1",
+  "unit": "DAA_GRID_001_JANUARY_ELASTIC_SPACING_001",
+  "status": "COMPLETE_STRUCTURAL_GEOMETRY_BREAKTHROUGH",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "surface": "DUKAS_COINEXX_LIKE_P75",
+  "contract": {
+    "completed_m1_atr14": true,
+    "gap_formula": "max($1, alpha * ATR14_M1), clamp $1-$8, quantize $0.25, 10% hysteresis, update once per completed M1",
+    "alphas": [
+      0.25,
+      0.5,
+      1
+    ],
+    "shadow_target_usd": 1,
+    "shadow_adverse_usd": 1,
+    "horizon_seconds": 300
+  },
+  "fixed_1_reference": {
+    "events": 130133,
+    "events_per_active_day": 5915.136364,
+    "continuation_validation_pf": 0.786553,
+    "oracle_pf": 6.050501,
+    "oracle_expected": 0.882868
+  },
+  "variants": [
+    {
+      "alpha": 0.25,
+      "events": 64196,
+      "events_per_active_day": 2918,
+      "daily_cv": 0.686439,
+      "max_daily_events": 7333,
+      "max_virtual_buy_stack": 289,
+      "max_virtual_sell_stack": 954,
+      "median_gap_usd": 1,
+      "p90_gap_usd": 2.75,
+      "full_cont_pf": 0.728084,
+      "validation_cont_pf": 0.773617,
+      "full_oracle_pf": 5.272675,
+      "validation_oracle_pf": 5.949097,
+      "validation_oracle_expected": 0.86282,
+      "both_negative_pct": 17.225372
+    },
+    {
+      "alpha": 0.5,
+      "events": 33922,
+      "events_per_active_day": 1541.909091,
+      "daily_cv": 0.443771,
+      "max_daily_events": 2560,
+      "max_virtual_buy_stack": 160,
+      "max_virtual_sell_stack": 627,
+      "median_gap_usd": 1.25,
+      "p90_gap_usd": 4,
+      "full_cont_pf": 0.704745,
+      "validation_cont_pf": 0.779042,
+      "full_oracle_pf": 5.033552,
+      "validation_oracle_pf": 5.971014,
+      "validation_oracle_expected": 0.873709,
+      "both_negative_pct": 17.773127
+    },
+    {
+      "alpha": 1,
+      "events": 12981,
+      "events_per_active_day": 590.045455,
+      "daily_cv": 0.550655,
+      "max_daily_events": 1628,
+      "max_virtual_buy_stack": 117,
+      "max_virtual_sell_stack": 348,
+      "median_gap_usd": 2.5,
+      "p90_gap_usd": 7.75,
+      "full_cont_pf": 0.718937,
+      "validation_cont_pf": 0.83486,
+      "full_oracle_pf": 5.2791,
+      "validation_oracle_pf": 6.51393,
+      "validation_oracle_expected": 0.970037,
+      "both_negative_pct": 17.741314
+    }
+  ],
+  "scientific_decision": [
+    "KEEP elastic spacing family",
+    "SELECT alpha=0.50 as January research-clock knee, not as optimized trading parameter",
+    "RATIONALE: event velocity ~1542/day is near R9 SYNTH Jan-Jul ~1472/day and daily event-count CV is lowest of screened variants",
+    "DO NOT claim directional edge: always-MR and always-CONT remain negative",
+    "NEXT: use alpha=0.50 virtual clock to test grid-derived pressure/stack-depth and event-state semantics"
+  ],
+  "promotion_eligible": false
+}
