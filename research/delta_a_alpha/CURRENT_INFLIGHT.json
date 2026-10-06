@@ -1,12 +1,18 @@
 {
-  "schema": "delta-a-alpha-inflight-v3",
+  "schema": "delta-a-alpha-inflight-v4",
   "authority": "APPEND_ONLY_STATE_JOURNAL",
   "state": "IDLE_READY",
-  "last_completed": "DAA_GRID_SYSTEM_WHOLE_REBUILD_CAMPAIGN_002",
+  "last_completed": "DAA_GRID_SYSTEM_CLEAN_RESET_003",
   "current_unit": null,
   "next_unit": "DAA_GRID_SYSTEM_BUILD_01_STATE_SKELETON_PREREG",
-  "journal_entry": "research/delta_a_alpha/state_journal/0020_DAA_GRID_SYSTEM_WHOLE_REBUILD_CAMPAIGN_002.json",
-  "paused_unit": "DAA_GRID_001_R9_REAL_JAN_DELAYED_PROOF_EXECUTION_001_PREREG",
-  "paused_reason": "OWNER_DIRECTED_WHOLE_SYSTEM_ARCHITECTURE_FIRST",
-  "failure_recovery": "Read highest journal entry first. Do not resume paused proof lane until whole-system campaign explicitly hands back to it."
+  "journal_entry": "research/delta_a_alpha/state_journal/0021_DAA_GRID_SYSTEM_CLEAN_RESET_003.json",
+  "legacy_january_refinement_status": "DELETED_FROM_ACTIVE_LINEAGE_BACKUP_BRANCH_ONLY",
+  "active_dependencies": [
+    "CURRENT_STATE.json",
+    "research/delta_a_alpha/research/DAA_GRID_COMMUNITY_SOURCE_HUNT_002_SYSTEM_LAYERS.md",
+    "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_WHOLE_REBUILD_CAMPAIGN_002.md",
+    "research/delta_a_alpha/benchmarks/R9_REAL_SYNTH_JAN_JUL_2026.json"
+  ],
+  "failure_recovery": "Read state journal 0021 first. Verify output paths before rerunning. Never resume legacy January refinement from rollback branches.",
+  "write_discipline": "Preregister BUILD-01 before implementation. BUILD-01 must be neutral architecture/parity only, not alpha optimization."
 }
