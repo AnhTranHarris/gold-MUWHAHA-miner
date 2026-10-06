@@ -1,19 +1,17 @@
 {
   "schema": "delta-a-alpha-inflight-v4",
   "authority": "APPEND_ONLY_STATE_JOURNAL",
-  "state": "IDLE_READY",
-  "last_completed": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS",
-  "current_unit": null,
-  "next_unit": "DAA_GRID_SYSTEM_BUILD_03_ELASTIC_GEOMETRY_PREREG",
-  "journal_entry": "research/delta_a_alpha/state_journal/0023_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS.json",
-  "accepted_floor": {
-    "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS",
-    "candidate": "STMR-001",
-    "type": "JANUARY_SESSION_TIMEFRAME_SYSTEM_FLOOR",
-    "qa_run_id": 37536602903,
-    "qa_conclusion": "SUCCESS",
-    "cross_month_status": "PENDING"
-  },
-  "failure_recovery": "Read journal 0023 first. BUILD-02 is complete; do not rerun exploratory session/timeframe screens. Resume only BUILD-03 preregistration.",
-  "write_discipline": "Each child must preserve accepted STMR behavior unless a measured improvement justifies replacement."
+  "state": "RUNNING",
+  "last_completed": "DAA_GRID_SYSTEM_SESSION_TIMEFRAME_SOURCE_HUNT_AND_PREREG_003",
+  "current_unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS_JANUARY_REPLAY",
+  "next_unit": null,
+  "journal_entry": "research/delta_a_alpha/state_journal/0023_DAA_GRID_SYSTEM_SESSION_TIMEFRAME_SOURCE_HUNT_AND_PREREG_003.json",
+  "intended_outputs": [
+    "research/delta_a_alpha/experiments/grid_session_timeframe_january.py",
+    "research/delta_a_alpha/artifacts/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS_JANUARY.json",
+    "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS_REPORT.md",
+    "research/delta_a_alpha/state_journal/0024_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS.json"
+  ],
+  "failure_recovery": "Verify intended outputs first. Source hunt/prereg are complete; never rebuild them. Rerun only missing January replay/result unit.",
+  "write_discipline": "Persist accepted January harness and result before starting any new system dimension."
 }
