@@ -1,0 +1,33 @@
+{
+  "sequence": 3,
+  "schema": "delta-a-alpha-state-journal-v1",
+  "unit": "DAA_HELPER_PORTABILITY_REMEDIATION_001",
+  "status": "COMPLETE",
+  "predecessor": {
+    "sequence": 2,
+    "unit": "DAA_GRID_001_JANUARY_ONE_SHOT_RECOVERY_001",
+    "path": "research/delta_a_alpha/state_journal/0002_DAA_GRID_001_JANUARY_ONE_SHOT_RECOVERY_001.json"
+  },
+  "problem": "Two replay helpers were committed with sandbox-only import names/path assumptions. Scientific results were produced correctly in the sandbox, but a clean GitHub clone would fail to import the committed event-label helper.",
+  "fixes": [
+    {
+      "path": "research/delta_a_alpha/experiments/grid001_january_early_thesis_failure.py",
+      "content_sha": "dd6956912ff2aba73c1e6756f9f13b37a8d09e67",
+      "fix": "remove /mnt/data sys.path dependency; use committed load/materialize API"
+    },
+    {
+      "path": "research/delta_a_alpha/experiments/grid001_january_one_shot_recovery.py",
+      "content_sha": "4ce46c396a5b01471318d9cc8329de0384adaed4",
+      "fix": "remove /mnt/data sys.path dependency; use committed load/materialize API"
+    }
+  ],
+  "scientific_results_changed": false,
+  "next_unit": "DAA_GRID_001_JANUARY_RECOVERY_ADMISSION_001",
+  "immutable_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": false,
+    "august_2026": "SEALED",
+    "main_delta": "READ_ONLY"
+  }
+}
