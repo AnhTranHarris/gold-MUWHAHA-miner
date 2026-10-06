@@ -1,357 +1,125 @@
 {
-  "schema": "delta-a-alpha-helper-registry-v2",
+  "schema": "delta-a-alpha-helper-registry-v3",
   "policy": "persist_on_value",
   "parent_commit": "ac91fc43389a34f8ba380b58143f8e185589b106",
+  "cleanup": {
+    "active_lineage_reset_commit": "1aa16d0f906e78b2757293a1e49cb3c3c6caa7e4",
+    "rollback_branches": [
+      "delta-A-alpha-pre-system-cleanup-20261006",
+      "delta-A-alpha-pre-system-cleanup-20261006-v2"
+    ],
+    "legacy_january_refinement": "DELETED_FROM_ACTIVE_LINEAGE_BACKUP_ONLY"
+  },
   "helpers": [
     {
-      "id": "H-STATE-BOOTSTRAP",
+      "id": "H-STATE",
       "status": "DURABLE",
       "path": "CURRENT_STATE.json",
-      "purpose": "single restart cursor for side lineage"
+      "purpose": "authoritative restart/state pointer"
+    },
+    {
+      "id": "H-INFLIGHT",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/CURRENT_INFLIGHT.json",
+      "purpose": "atomic current/next unit cursor"
     },
     {
       "id": "H-ARTIFACT-LIFECYCLE",
       "status": "DURABLE",
       "path": "research/delta_a_alpha/ARTIFACT_LIFECYCLE.md",
-      "purpose": "promotion and rebuild rules"
+      "purpose": "artifact promotion/rebuild rules"
     },
     {
-      "id": "H-GRID-001-SPEC",
+      "id": "H-STATE-JOURNAL-PROTOCOL",
       "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_SPEC.json",
-      "purpose": "machine-readable source reconstruction and test lanes"
+      "path": "research/delta_a_alpha/STATE_JOURNAL_PROTOCOL.md",
+      "purpose": "append-only recovery/state journal rules"
+    },
+    {
+      "id": "H-TIMEOUT",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/TIMEOUT_SAFE_CONTINUITY.md",
+      "purpose": "timeout-safe atomic work protocol"
+    },
+    {
+      "id": "H-SOURCE-REGISTRY",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/SOURCE_REGISTRY.md",
+      "purpose": "source/provenance authority"
     },
     {
       "id": "H-MT5-BENCHMARK-EXTRACTOR",
       "status": "DURABLE",
       "path": "research/delta_a_alpha/helpers/mt5_report_benchmark_extract.py",
-      "purpose": "stream large MT5 tester XLSX reports into aggregate/monthly economic, velocity, drawdown and holding-survivability ledgers"
+      "purpose": "canonical MT5 report ledger extractor"
     },
     {
       "id": "A-R9-REAL-SYNTH-BENCHMARK",
       "status": "DURABLE",
       "path": "research/delta_a_alpha/benchmarks/R9_REAL_SYNTH_JAN_JUL_2026.json",
-      "purpose": "canonical Jan-Jul R9 REAL versus SYNTH account-level target ledger"
+      "purpose": "canonical Jan-Jul R9 REAL/SYNTH benchmark"
     },
     {
       "id": "H-GRID-001-F-REPLAY",
       "status": "DURABLE",
       "path": "research/delta_a_alpha/experiments/grid001_forensic_baseline.py",
-      "purpose": "exact ordered-tick Stage-A forensic reconstruction of source-style physical grid"
+      "purpose": "source-style ordered-tick forensic baseline"
     },
     {
-      "id": "A-GRID-001-F-STAGE-A-RESULT",
+      "id": "A-GRID-001-F",
       "status": "DURABLE",
       "path": "research/delta_a_alpha/artifacts/GRID_001_F_STAGE_A_RESULT.json",
-      "purpose": "canonical Stage-A forensic result and small-account failure evidence"
+      "purpose": "source-grid forensic result"
     },
     {
-      "id": "R-GRID-001-F-STAGE-A",
+      "id": "R-GRID-001-F",
       "status": "DURABLE",
       "path": "research/delta_a_alpha/grid/GRID_001_F_STAGE_A_REPORT.md",
-      "purpose": "human-readable decision: reject physical source inventory, retain event clock"
+      "purpose": "source-grid forensic decision"
     },
     {
-      "id": "P-GRID-001-S-SCREEN-01",
+      "id": "P-GRID-001-S",
       "status": "DURABLE",
       "path": "research/delta_a_alpha/grid/GRID_001_S_STAGE_A_SCREEN_01_PREREG.md",
-      "purpose": "frozen 12-variant bounded grid screen contract"
+      "purpose": "bounded physical-grid screen contract"
     },
     {
-      "id": "H-GRID-001-S-SCREEN-01",
+      "id": "H-GRID-001-S",
       "status": "DURABLE",
       "path": "research/delta_a_alpha/experiments/grid001_bounded_screen01.py",
-      "purpose": "replay helper for capped fixed-0.01 bounded grid matrix"
+      "purpose": "bounded grid screen helper"
     },
     {
-      "id": "A-GRID-001-S-SCREEN-01",
+      "id": "A-GRID-001-S",
       "status": "DURABLE",
       "path": "research/delta_a_alpha/artifacts/GRID_001_S_STAGE_A_SCREEN_01_RESULT.json",
-      "purpose": "canonical negative bounded-screen matrix summary"
+      "purpose": "bounded grid negative matrix"
     },
     {
-      "id": "R-GRID-001-S-SCREEN-01",
+      "id": "R-GRID-001-S",
       "status": "DURABLE",
       "path": "research/delta_a_alpha/grid/GRID_001_S_STAGE_A_SCREEN_01_REPORT.md",
-      "purpose": "decision to retire physical grid inventory and retain event clock only"
+      "purpose": "retire physical grid inventory decision"
     },
     {
-      "id": "R-DAA-GRID-LOSS-HUNT-001",
+      "id": "R-GRID-SYSTEM-SOURCES-002",
       "status": "DURABLE",
-      "path": "research/delta_a_alpha/research/DAA_GRID_001_GROSS_LOSS_DRAWDOWN_MECHANISM_HUNT_001.md",
-      "purpose": "first narrow public-source + original-mutation hunt for gross-loss/drawdown mechanisms"
+      "path": "research/delta_a_alpha/research/DAA_GRID_COMMUNITY_SOURCE_HUNT_002_SYSTEM_LAYERS.md",
+      "purpose": "whole-system public-source mechanism map"
     },
     {
-      "id": "R9-DAA-GRID-REDESIGN-001",
+      "id": "P-GRID-WHOLE-REBUILD-002",
       "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/R9_DAA_GRID_SYSTEM_INITIAL_REDESIGN_001.md",
-      "purpose": "initial conceptual system-wide opportunity/recovery lattice architecture"
+      "path": "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_WHOLE_REBUILD_CAMPAIGN_002.md",
+      "purpose": "system-first vertical rebuild campaign"
     },
     {
-      "id": "P-JAN-EVENT-LABEL-001",
+      "id": "J-GRID-WHOLE-REBUILD-0020",
       "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/DAA_GRID_001_JANUARY_MECHANISM_SCREEN_PREREG_001.md",
-      "purpose": "frozen full-January event-label research contract"
-    },
-    {
-      "id": "H-JAN-EVENT-LABEL-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/experiments/grid001_january_event_label_lab.py",
-      "purpose": "reproducible virtual-event + dual-shadow January lab"
-    },
-    {
-      "id": "A-JAN-EVENT-LABEL-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/artifacts/GRID_001_JANUARY_EVENT_LABEL_LAB_001.json",
-      "purpose": "canonical full-January event/opportunity ceiling result"
-    },
-    {
-      "id": "R-JAN-EVENT-LABEL-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_EVENT_LABEL_LAB_001_REPORT.md",
-      "purpose": "human decision: event supply rich, simple pre-crossing classification insufficient"
-    },
-    {
-      "id": "P-JAN-OBS-GATE-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_CAUSAL_OBSERVATION_GATE_001_PREREG.md",
-      "purpose": "frozen 9-variant post-crossing observation contract"
-    },
-    {
-      "id": "H-JAN-OBS-GATE-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/experiments/grid001_january_observation_gate.py",
-      "purpose": "reproducible delayed causal observation screen"
-    },
-    {
-      "id": "A-JAN-OBS-GATE-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/artifacts/GRID_001_JANUARY_CAUSAL_OBSERVATION_GATE_001.json",
-      "purpose": "canonical negative observation-gate result"
-    },
-    {
-      "id": "R-JAN-OBS-GATE-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_CAUSAL_OBSERVATION_GATE_001_REPORT.md",
-      "purpose": "decision to stop tuning short post-crossing wait gates"
-    },
-    {
-      "id": "P-JAN-ADAPTIVE-SPACING-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_ADAPTIVE_SPACING_SCREEN_001_PREREG.md",
-      "purpose": "frozen three-family causal ATR spacing contract"
-    },
-    {
-      "id": "H-JAN-ADAPTIVE-SPACING-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/experiments/grid001_january_adaptive_spacing.py",
-      "purpose": "reproducible variable-gap event/shadow laboratory"
-    },
-    {
-      "id": "A-JAN-ADAPTIVE-SPACING-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/artifacts/GRID_001_JANUARY_ADAPTIVE_SPACING_SCREEN_001.json",
-      "purpose": "canonical adaptive-spacing breakthrough result"
-    },
-    {
-      "id": "R-JAN-ADAPTIVE-SPACING-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_ADAPTIVE_SPACING_SCREEN_001_REPORT.md",
-      "purpose": "decision to promote adaptive spacing and parent/child lattice hypothesis"
-    },
-    {
-      "id": "P-GRID-ELASTIC-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_ELASTIC_SPACING_001_PREREG.md",
-      "purpose": "frozen January elastic spacing contract"
-    },
-    {
-      "id": "H-GRID-ELASTIC-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/experiments/grid001_january_elastic_spacing.py",
-      "purpose": "causal completed-M1 ATR elastic event-clock helper"
-    },
-    {
-      "id": "A-GRID-ELASTIC-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/artifacts/GRID_001_JANUARY_ELASTIC_SPACING_001.json",
-      "purpose": "January elastic geometry result"
-    },
-    {
-      "id": "R-GRID-ELASTIC-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_ELASTIC_SPACING_001_REPORT.md",
-      "purpose": "human decision selecting alpha 0.50 as research-clock knee"
-    },
-    {
-      "id": "P-GRID-001-JAN-EARLY-FAIL-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_EARLY_THESIS_FAILURE_001_PREREG.md",
-      "purpose": "frozen A10/A15 proof-of-life early-failure contract"
-    },
-    {
-      "id": "H-GRID-001-JAN-EARLY-FAIL-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/experiments/grid001_january_early_thesis_failure.py",
-      "purpose": "ordered-tick replay helper for unconfirmed/confirmed continuation state"
-    },
-    {
-      "id": "A-GRID-001-JAN-EARLY-FAIL-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/artifacts/GRID_001_JANUARY_EARLY_THESIS_FAILURE_001.json",
-      "purpose": "canonical early-thesis-failure metrics for A10/A15"
-    },
-    {
-      "id": "R-GRID-001-JAN-EARLY-FAIL-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_EARLY_THESIS_FAILURE_001_REPORT.md",
-      "purpose": "decision: retain conditional risk primitive, do not micro-tune thresholds"
-    },
-    {
-      "id": "P-GRID-001-JAN-RECOVERY-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_ONE_SHOT_RECOVERY_001_PREREG.md",
-      "purpose": "frozen one-shot opposite-direction recovery contract"
-    },
-    {
-      "id": "H-GRID-001-JAN-RECOVERY-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/experiments/grid001_january_one_shot_recovery.py",
-      "purpose": "ordered-tick one-shot recovery replay helper"
-    },
-    {
-      "id": "A-GRID-001-JAN-RECOVERY-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/artifacts/GRID_001_JANUARY_ONE_SHOT_RECOVERY_001.json",
-      "purpose": "canonical blind-recovery and selective-oracle metrics"
-    },
-    {
-      "id": "R-GRID-001-JAN-RECOVERY-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_ONE_SHOT_RECOVERY_001_REPORT.md",
-      "purpose": "decision: reject blind flip, retain recovery-admission research"
-    },
-    {
-      "id": "P-GRID-001-JAN-RECOVERY-ADMISSION-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_RECOVERY_ADMISSION_001_PREREG.md",
-      "purpose": "frozen causal flip-vs-retire admission contract"
-    },
-    {
-      "id": "H-GRID-001-JAN-RECOVERY-ADMISSION-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/experiments/grid001_january_recovery_admission.py",
-      "purpose": "repo-runnable causal feature/tree microscope"
-    },
-    {
-      "id": "A-GRID-001-JAN-RECOVERY-ADMISSION-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/artifacts/GRID_001_JANUARY_RECOVERY_ADMISSION_001.json",
-      "purpose": "compact canonical recovery-admission metrics"
-    },
-    {
-      "id": "R-GRID-001-JAN-RECOVERY-ADMISSION-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_RECOVERY_ADMISSION_001_REPORT.md",
-      "purpose": "decision: classifier not promotable; advance proof-before-entry"
-    },
-    {
-      "id": "P-GRID-001-JAN-PROOF-BEFORE-ENTRY-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_PROOF_BEFORE_ENTRY_001_PREREG.md",
-      "purpose": "frozen shadow-unconfirmed proof-before-entry contract"
-    },
-    {
-      "id": "H-GRID-001-JAN-PROOF-BEFORE-ENTRY-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/experiments/grid001_january_proof_before_entry.py",
-      "purpose": "portable ordered-tick proof-before-entry replay helper"
-    },
-    {
-      "id": "A-GRID-001-JAN-PROOF-BEFORE-ENTRY-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/artifacts/GRID_001_JANUARY_PROOF_BEFORE_ENTRY_001.json",
-      "purpose": "canonical proof-before-entry structural-breakthrough result"
-    },
-    {
-      "id": "R-GRID-001-JAN-PROOF-BEFORE-ENTRY-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_PROOF_BEFORE_ENTRY_001_REPORT.md",
-      "purpose": "decision: promote proof-before-entry primitive; diagnose nonstationary state next"
-    },
-    {
-      "id": "P-GRID-001-JAN-DUAL-PROOF-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_DUAL_PROOF_OWNERSHIP_001_PREREG.md",
-      "purpose": "frozen direction-neutral proof-race contract"
-    },
-    {
-      "id": "H-GRID-001-JAN-DUAL-PROOF-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/experiments/grid001_january_dual_proof_ownership.py",
-      "purpose": "dual proof ownership replay helper"
-    },
-    {
-      "id": "A-GRID-001-JAN-DUAL-PROOF-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/artifacts/GRID_001_JANUARY_DUAL_PROOF_OWNERSHIP_001.json",
-      "purpose": "negative MR-ownership result"
-    },
-    {
-      "id": "R-GRID-001-JAN-DUAL-PROOF-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_DUAL_PROOF_OWNERSHIP_001_REPORT.md",
-      "purpose": "decision: reject first-proof MR ownership"
-    },
-    {
-      "id": "P-GRID-001-JAN-VOL-EXP-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_VOL_EXPANSION_ROUTE_001_PREREG.md",
-      "purpose": "frozen sparse volatility-expansion route contract"
-    },
-    {
-      "id": "H-GRID-001-JAN-VOL-EXP-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/experiments/grid001_january_vol_expansion_route.py",
-      "purpose": "portable volatility-expansion route replay helper"
-    },
-    {
-      "id": "A-GRID-001-JAN-VOL-EXP-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/artifacts/GRID_001_JANUARY_VOL_EXPANSION_ROUTE_001.json",
-      "purpose": "canonical January candidate-route metrics"
-    },
-    {
-      "id": "R-GRID-001-JAN-VOL-EXP-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_VOL_EXPANSION_ROUTE_001_REPORT.md",
-      "purpose": "candidate decision: high-confidence expansion continuation route"
-    },
-    {
-      "id": "P-GRID-001-JAN-PHASE-SANDWICH-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_PHASE_SANDWICH_STACK_001_PREREG.md",
-      "purpose": "frozen first vertical phase sandwich contract"
-    },
-    {
-      "id": "H-GRID-001-JAN-PHASE-SANDWICH-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/experiments/grid001_january_phase_sandwich_stack.py",
-      "purpose": "portable single-owner replay helper for expansion plus phase routes"
-    },
-    {
-      "id": "A-GRID-001-JAN-PHASE-SANDWICH-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/artifacts/GRID_001_JANUARY_PHASE_SANDWICH_STACK_001.json",
-      "purpose": "canonical positive but below-breakthrough January sandwich metrics"
-    },
-    {
-      "id": "R-GRID-001-JAN-PHASE-SANDWICH-001",
-      "status": "DURABLE",
-      "path": "research/delta_a_alpha/grid/GRID_001_JANUARY_PHASE_SANDWICH_STACK_001_REPORT.md",
-      "purpose": "category verdict and next high-leverage R9 REAL context-mapping direction"
+      "path": "research/delta_a_alpha/state_journal/0020_DAA_GRID_SYSTEM_WHOLE_REBUILD_CAMPAIGN_002.json",
+      "purpose": "owner-pivot state checkpoint"
     }
   ],
-  "rule": "Add a helper here before any later experiment depends on it. Supersede by pointer; never silently rewrite historical semantics.",
-  "timeout_rule": "After every scientifically meaningful unit, persist the helper/result and update CURRENT_INFLIGHT before beginning the next unit."
+  "rule": "Register durable helpers/results before dependent work. Deleted legacy January refinements may be consulted only from rollback branches and cannot become active floor without fresh system-order validation.",
+  "timeout_rule": "Persist one bounded unit, verify it, then advance cursor."
 }
