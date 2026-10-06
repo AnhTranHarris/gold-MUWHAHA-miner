@@ -1,0 +1,90 @@
+{
+  "schema": "delta-b-research-unit-manifest-v1",
+  "unit_id": "DB001B_SCHEDULED_EVENT_ELASTICITY",
+  "status": "VERIFIED_MECHANICS_NO_PROFIT_CLAIM",
+  "date_utc": "2026-10-06",
+  "lineage": "DELTA_B",
+  "parent_unit": "DB001A_CANONICAL_100K_SMOKE_AND_RECLAIM_CORRECTION",
+  "hypothesis": "Scheduled USD event context can adapt Grid Layer 1 without suppressing HFT opportunity if calendar severity defines only a defensive ceiling and observed quote stress controls actual activation.",
+  "falsification_condition": "Reject static/conditional event logic if it depends on future release outcomes, double-stacks shock defense, treats stable spread as tail stress, or collapses intrinsic event density without observable execution stress.",
+  "python_rebuild_ready": true,
+  "mt5_translation_ready": false,
+  "missing_required_artifacts": [],
+  "governance": {
+    "parent_delta_modified": false,
+    "august_2026": "SEALED",
+    "mql5_authorized": false,
+    "martingale": false,
+    "profitability_claim": false
+  },
+  "inputs": [
+    {
+      "path": "research/delta-b/reference/DELTA_B_USD_EVENT_TAXONOMY_V1.md",
+      "role": "Frozen DELTA-B event-severity taxonomy"
+    },
+    {
+      "path": "research/delta-b/reference/DELTA_B_USD_EVENTS_2026_JAN_JUL_V1.csv",
+      "git_blob_sha1": "158e253611337f9d8da3911ad307118e3c2d8cf5",
+      "rows": 132,
+      "role": "Frozen Jan-Jul scheduled USD event cache"
+    }
+  ],
+  "source_code": [
+    {
+      "path": "research/delta-b/helpers/delta_b_grid_kernel.py",
+      "git_blob_sha1": "f8c200648de0a94571bd24952cfa5249878fd96b",
+      "role": "Adaptive intrinsic-time grid kernel with conditional event elasticity and prior-history tie-midrank spread percentile"
+    },
+    {
+      "path": "research/delta-b/experiments/delta_b_db001b_event_grid_trace.py",
+      "git_blob_sha1": "248d56c4a73a4890a93a3efa069db4f4dfca3d53",
+      "role": "Bounded event-window mechanics trace producer"
+    },
+    {
+      "path": "research/delta-b/qa/test_delta_b_grid_kernel.py",
+      "git_blob_sha1": "c24aef599c95a19227d85fb14a6c4affb0601a6a",
+      "role": "Grid Layer 1 regression QA"
+    }
+  ],
+  "primary_mechanics_result": {
+    "static_release_high_q_ratio": 1.859,
+    "dynamic_release_high_q_ratio": 1.485,
+    "static_release_high_entry_authority": 0.200,
+    "dynamic_release_high_entry_authority": 0.521,
+    "static_release_high_l0_per_1000_ticks": 0.706,
+    "dynamic_release_high_l0_per_1000_ticks": 2.304,
+    "release_high_shock_fraction_materially_changed": false,
+    "decision": "CARRY_FORWARD_CONDITIONAL_EVENT_ELASTICITY"
+  },
+  "qa": {
+    "github_actions_workflow": ".github/workflows/delta-b-grid-qa.yml",
+    "workflow_run_id": 37455926127,
+    "checked_out_commit": "e17dac49911586ae8f12bbb6693f4132027a89e8",
+    "compile": "PASS",
+    "unit_tests": "13/13 PASS",
+    "exact_committed_bytes": true,
+    "important_regressions": [
+      "constant spread uses prior-history tie-midrank and does not fake tail stress",
+      "calm HIGH release activates partial rather than maximum defensive envelope",
+      "scheduled shock cannot exceed configured HIGH-release cap",
+      "NORMAL unscheduled shock retains standalone defense",
+      "RECLAIM remains transition-scoped",
+      "active threshold cannot shrink mid-leg"
+    ]
+  },
+  "outputs": [
+    {
+      "path": "research/delta-b/research/DELTA_B_DB001B_SCHEDULED_EVENT_ELASTICITY_REPORT.md",
+      "commit": "8c86ff100c65391f9f3dec9ac05a0fc308e95ecd"
+    }
+  ],
+  "reconstruction": {
+    "kernel": "research/delta-b/helpers/delta_b_grid_kernel.py",
+    "event_trace": "research/delta-b/experiments/delta_b_db001b_event_grid_trace.py",
+    "qa_command": "PYTHONPATH=research/delta-b/helpers python -m unittest -v research/delta-b/qa/test_delta_b_grid_kernel.py",
+    "timing_semantics": "Calendar state is scheduled and causal; actual/forecast surprise direction is not used. State detection uses midpoint; future trading economics must use executable Bid/Ask.",
+    "event_rule": "Calendar severity sets maximum defensive envelope; observed tape stress determines activation."
+  },
+  "rollback_target": "DB001A_CANONICAL_100K_SMOKE_AND_RECLAIM_CORRECTION",
+  "next_unit": "DB001C_MINIMAL_EXECUTABLE_SCALP_LIFECYCLE"
+}
