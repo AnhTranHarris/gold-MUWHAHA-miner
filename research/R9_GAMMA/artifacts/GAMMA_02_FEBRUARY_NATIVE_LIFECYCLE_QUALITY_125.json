@@ -1,0 +1,130 @@
+{
+  "unit": "GAMMA_02_FEBRUARY_NATIVE_LIFECYCLE_QUALITY_125",
+  "status": "COMPLETE_MAJOR_FEBRUARY_DISCOVERY",
+  "helper_sha256": {
+    "lifecycle_search": "bd54fa83575ebd0727f21cafbecbc784a533c4a67228b525149f98acc7ef8a00",
+    "portfolio": "d492df90dc87f1c8bc8237ebe86a278542dbefcc8623fc95dba9d8c7e22a6402"
+  },
+  "exact_full_result_sha256": {
+    "lifecycle_search": "7354d14ac5087df911747fa8a9bc00514cf4bdcc9f771a8658efc66f4bf82963",
+    "portfolio": "22ff23027b0e1a3392c251aef6b7c2bfd3623438c292482a48602beb5c8b56a8"
+  },
+  "parent_fixed_horizon": {
+    "net": 40163.27,
+    "trades": 12543,
+    "pf": 2.3006,
+    "expectancy": 3.202
+  },
+  "maxnet": {
+    "uncapped_effective": {
+      "net": 71149.91,
+      "trades": 12543,
+      "pf": 3.1434330581,
+      "win": 0.656940126,
+      "expectancy": 5.672479471,
+      "maxopen": 342,
+      "balance_dd": 5071.86
+    },
+    "cap128": {
+      "net": 46726.2,
+      "trades": 10654,
+      "pf": 2.584903894,
+      "win": 0.636286841,
+      "expectancy": 4.385789375,
+      "balance_dd": 4862.32
+    }
+  },
+  "quality": {
+    "uncapped_effective": {
+      "net": 67260.48,
+      "trades": 11421,
+      "pf": 3.371928919,
+      "win": 0.679625252,
+      "expectancy": 5.889193591,
+      "maxopen": 342,
+      "balance_dd": 5071.86
+    },
+    "cap128": {
+      "net": 46304.68,
+      "trades": 9880,
+      "pf": 2.75226068,
+      "win": 0.657489879,
+      "expectancy": 4.686708502,
+      "balance_dd": 4862.32
+    }
+  },
+  "quality_strict": {
+    "uncapped_effective": {
+      "net": 59294.35,
+      "trades": 9985,
+      "pf": 3.671798842,
+      "win": 0.696945418,
+      "expectancy": 5.938342514,
+      "maxopen": 342,
+      "balance_dd": 4047.04
+    },
+    "cap128": {
+      "net": 40071.12,
+      "trades": 8568,
+      "pf": 2.954479985,
+      "win": 0.675887021,
+      "expectancy": 4.676834734,
+      "balance_dd": 3945.86
+    }
+  },
+  "selected_major_cells": [
+    {
+      "hour": 15,
+      "state": "H4/H1 short; M15 long; M5 short",
+      "tp": 40,
+      "sl": null,
+      "hold_s": 600,
+      "net": 12639.84,
+      "pf": 12.8046,
+      "win": 0.8258
+    },
+    {
+      "hour": 13,
+      "state": "H4/H1 short; M15/M5 long",
+      "tp": 40,
+      "sl": 20,
+      "hold_s": 600,
+      "net": 13137.49,
+      "pf": 3.0798,
+      "win": 0.6328
+    },
+    {
+      "hour": 14,
+      "state": "H4/H1 short; M15/M5 long",
+      "quality_tp": 20,
+      "sl": null,
+      "hold_s": 600,
+      "net": 8827.56,
+      "pf": 2.5011,
+      "win": 0.6133
+    },
+    {
+      "hour": 17,
+      "state": "H4/H1 short; M15 short; M5 long",
+      "tp": 40,
+      "sl": null,
+      "hold_s": 600,
+      "net": 2900.13,
+      "pf": 6.3883,
+      "win": 0.6572
+    },
+    {
+      "hour": 17,
+      "state": "H4/H1 long; M15 short; M5 long",
+      "tp": 8,
+      "sl": null,
+      "hold_s": 600,
+      "net": 1440.77,
+      "pf": 64.949,
+      "win": 0.9299
+    }
+  ],
+  "august": "SEALED",
+  "mql5": "NOT_AUTHORIZED",
+  "next": "GAMMA_02_FEBRUARY_NATIVE_CONVICTION_ROUTING_126"
+}
