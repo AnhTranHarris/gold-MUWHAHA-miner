@@ -1,0 +1,224 @@
+{
+  "candidate": "GAMMA_02_JAN_WATCHDOG119_LAYER_DEPTH_HEAT_131B",
+  "status": "COMPLETE",
+  "parent": "GAMMA_02_JAN_WATCHDOG119_GRID_LAYER_REFINEMENT_131A",
+  "market_file": "/mnt/data/XAUUSD_DUKAS_2026_01_ticks.csv(3).gz",
+  "market_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "qmap_raw": [
+    1190,
+    1190,
+    1190,
+    1190,
+    1190,
+    1100
+  ],
+  "r9_synth_january": {
+    "net": 41520.82,
+    "trades": 27980,
+    "gross_loss": -1827.87,
+    "pf": 23.7154119275,
+    "win": 0.8709077913,
+    "expectancy": 1.4839463903,
+    "avg_hold_s": 16.462687634,
+    "balance_dd": 3.4
+  },
+  "execution_surface": "Dukascopy midpoint + frozen session-P75 normalized spread; Python research only; not Coinexx MT5 certification",
+  "causality": "max renewal-child ordinal and global cap are known at entry; no future outcome/hold/MFE/MAE used for admission",
+  "rows": [
+    {
+      "label": "SYNTH_VELOCITY_LOWEST_HEAT",
+      "max_layer": 35,
+      "cap": 224,
+      "net": 49505.68,
+      "trades": 28128,
+      "gross_profit": 49710.96,
+      "gross_loss": -205.28,
+      "pf": 242.16173031956353,
+      "win": 0.9948805460750854,
+      "expectancy": 1.760014220705347,
+      "avg_hold_s": 28.068999928896474,
+      "skips": 142662,
+      "maxopen_event": 224,
+      "balance_dd": 108.02999999999884,
+      "equity_dd": 19998.72,
+      "equity_dd_pct_peak": 13.376562014232837,
+      "minimum_total_equity": 99071.63,
+      "maxopen_exact": 224,
+      "weekly_realized": {
+        "2026-W03": {
+          "net": 12.2,
+          "gross_loss": -1.71,
+          "trades": 12
+        },
+        "2026-W04": {
+          "net": 21.65,
+          "gross_loss": -15.8,
+          "trades": 33
+        },
+        "2026-W05": {
+          "net": 49471.83,
+          "gross_loss": -187.77,
+          "trades": 28083
+        }
+      }
+    },
+    {
+      "label": "RISK_VELOCITY_CORE",
+      "max_layer": 30,
+      "cap": 240,
+      "net": 50899.97,
+      "trades": 28408,
+      "gross_profit": 50993.11,
+      "gross_loss": -93.13999999999999,
+      "pf": 547.4888340133134,
+      "win": 0.9978175161926218,
+      "expectancy": 1.7917477471134893,
+      "avg_hold_s": 29.318610813855248,
+      "skips": 126699,
+      "maxopen_event": 240,
+      "balance_dd": 40.63999999999942,
+      "equity_dd": 21427.199999999997,
+      "equity_dd_pct_peak": 14.199605208669084,
+      "minimum_total_equity": 99071.63,
+      "maxopen_exact": 240,
+      "weekly_realized": {
+        "2026-W03": {
+          "net": 12.2,
+          "gross_loss": -1.71,
+          "trades": 12
+        },
+        "2026-W04": {
+          "net": 21.65,
+          "gross_loss": -15.8,
+          "trades": 33
+        },
+        "2026-W05": {
+          "net": 50866.12,
+          "gross_loss": -75.63,
+          "trades": 28363
+        }
+      }
+    },
+    {
+      "label": "BALANCED_CORE",
+      "max_layer": 30,
+      "cap": 256,
+      "net": 54229.43,
+      "trades": 30216,
+      "gross_profit": 54322.57,
+      "gross_loss": -93.13999999999999,
+      "pf": 583.2356667382436,
+      "win": 0.9979481069631984,
+      "expectancy": 1.7947256420439501,
+      "avg_hold_s": 29.142363085782367,
+      "skips": 124891,
+      "maxopen_event": 256,
+      "balance_dd": 40.63999999999942,
+      "equity_dd": 22855.68,
+      "equity_dd_pct_peak": 14.819272819720686,
+      "minimum_total_equity": 99071.63,
+      "maxopen_exact": 256,
+      "weekly_realized": {
+        "2026-W03": {
+          "net": 12.2,
+          "gross_loss": -1.71,
+          "trades": 12
+        },
+        "2026-W04": {
+          "net": 21.65,
+          "gross_loss": -15.8,
+          "trades": 33
+        },
+        "2026-W05": {
+          "net": 54195.58,
+          "gross_loss": -75.63,
+          "trades": 30171
+        }
+      }
+    },
+    {
+      "label": "HIGH_CAPTURE_LAYER_PROTECTED",
+      "max_layer": 35,
+      "cap": 703,
+      "net": 134949.71000000002,
+      "trades": 75074,
+      "gross_profit": 135807.29,
+      "gross_loss": -857.5799999999999,
+      "pf": 158.36107418549875,
+      "win": 0.9971494791805419,
+      "expectancy": 1.7975558782001761,
+      "avg_hold_s": 28.354298651996697,
+      "skips": 95716,
+      "maxopen_event": 703,
+      "balance_dd": 650.6200000000063,
+      "equity_dd": 62763.840000000004,
+      "equity_dd_pct_peak": 26.71373376030106,
+      "minimum_total_equity": 96400.67999999956,
+      "maxopen_exact": 703,
+      "weekly_realized": {
+        "2026-W03": {
+          "net": 12.2,
+          "gross_loss": -1.71,
+          "trades": 12
+        },
+        "2026-W04": {
+          "net": 21.65,
+          "gross_loss": -15.8,
+          "trades": 33
+        },
+        "2026-W05": {
+          "net": 134915.86,
+          "gross_loss": -840.07,
+          "trades": 75029
+        }
+      }
+    },
+    {
+      "label": "OVER_200K_DIAGNOSTIC",
+      "max_layer": 40,
+      "cap": 1152,
+      "net": 201249.41999999998,
+      "trades": 113651,
+      "gross_profit": 207688.49,
+      "gross_loss": -6439.07,
+      "pf": 32.25442338722828,
+      "win": 0.9936384193715849,
+      "expectancy": 1.7707668212334249,
+      "avg_hold_s": 27.758037412781235,
+      "skips": 65331,
+      "maxopen_event": 1152,
+      "balance_dd": 5410.240000000151,
+      "equity_dd": 102850.55999999998,
+      "equity_dd_pct_peak": 34.14133046299439,
+      "minimum_total_equity": 89992.14000000012,
+      "maxopen_exact": 1152,
+      "weekly_realized": {
+        "2026-W03": {
+          "net": 12.2,
+          "gross_loss": -1.71,
+          "trades": 12
+        },
+        "2026-W04": {
+          "net": 21.65,
+          "gross_loss": -15.8,
+          "trades": 33
+        },
+        "2026-W05": {
+          "net": 201215.57,
+          "gross_loss": -6421.56,
+          "trades": 113606
+        }
+      }
+    }
+  ],
+  "august": "SEALED",
+  "mql5": "NOT_AUTHORIZED",
+  "selection": {
+    "working_watchdog_parent": "WD119_SUBPHASE_Q1190_Q1100_CAP703 from 131A",
+    "risk_velocity_core": "RISK_VELOCITY_CORE",
+    "lowest_heat_matching_synth_velocity": "SYNTH_VELOCITY_LOWEST_HEAT",
+    "high_capture_layer_protected": "HIGH_CAPTURE_LAYER_PROTECTED",
+    "over_200k_diagnostic": "OVER_200K_DIAGNOSTIC",
+    "finding": "Layer depth almost eliminates realized gross loss at moderate caps, but full-tick equity DD scales mainly with synchronized concurrency. >$200K remains heat-expensive."
+  }
+}
