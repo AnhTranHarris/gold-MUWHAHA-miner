@@ -1,58 +1,32 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v6",
+  "schema": "r9-gamma-02-research-cursor-v7",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_NY_SURGE_HEARTBEAT_QUALITY_039",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_TIMEOUT_RECOVERY_CHECKPOINT_006.md",
+  "latest_completed": "GAMMA_02_QUALITY_CORE_CAPACITY_CROSSOVER_047",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_QUALITY_CORE_CAPACITY_CROSSOVER_047.md",
   "current_scientific_base": {
-    "opportunity_counting_rule": "MAX_ONE_NEW_TICKET_PER_SOURCE_PER_MARKET_TICK",
+    "counting_rule": "MAX_ONE_NEW_TICKET_PER_SOURCE_PER_MARKET_TICK",
+    "sources": [
+      16,
+      17
+    ],
+    "heartbeat_ms": 120,
     "funded_base": {
       "start_cap": 64,
       "step_slots": 64,
       "profit_unit": 2500,
       "max_cap": 256
     },
-    "session_surge": {
-      "ny16_extra_slots": 256,
-      "ny17_extra_slots": 256,
-      "hard_research_cap": 512
+    "temporary_ny_campaign_hard_cap": 2304,
+    "january_closed_trade": {
+      "net": 774420.66,
+      "trades": 27982,
+      "pf": 34.846302377001216,
+      "win": 0.8845329140161532,
+      "expectancy": 27.67567221785433,
+      "balance_dd": 7771.33
     },
-    "quality_filters": {
-      "exclude_hours": [
-        14
-      ],
-      "hour9_min_displacement": 1,
-      "hour12_min_displacement": 0.5,
-      "ny18_bins_utc": [
-        "18:10-18:39"
-      ]
-    },
-    "heartbeat": {
-      "ny16_ms": 1000,
-      "ny17_ms": 1000
-    },
-    "max_net": {
-      "net": 250007.74,
-      "trades": 24083,
-      "pf": 7.83721077784539,
-      "expectancy": 10.381087904330858,
-      "win": 0.7531453722542872,
-      "balance_dd": 2846.54
-    },
-    "quality_frontier": {
-      "exclude_hours": [
-        8,
-        9,
-        12,
-        18
-      ],
-      "net": 209521,
-      "trades": 11726,
-      "pf": 14.141872206063974,
-      "expectancy": 17.868070953436806,
-      "win": 0.8283302063789869,
-      "balance_dd": 2846.54
-    }
+    "classification": "FIRST_ALL_CLOSED_TRADE_METRICS_SYNTH_CROSSOVER_NEAR_VOLUME_MATCH"
   },
   "exact_helpers": {
     "utilization": {
@@ -70,12 +44,12 @@
     "profit_funded_026_attribution_bug": "historical helper swapped source/reason labels only in attribution output; admission economics unaffected",
     "equity_dd": "all finalist DDs now marked on every ordered January Bid/Ask tick"
   },
-  "first_incomplete_unit": "GAMMA_02_SURGE_HEARTBEAT_EQUITY_DD_040",
+  "first_incomplete_unit": "GAMMA_02_QUALITY_CORE_CROSSOVER_EQUITY_048",
   "next_units": [
-    "full ordered-tick equity-DD for max-net and quality surge-heartbeat finalists",
-    "surge-cap utilization/saturation audit for 16/17",
-    "causal PF/win-rate improvement while preserving >=20k unique-tick January trades",
-    "freeze January architecture before chronological Jan-Jul validation"
+    "full ordered-tick equity-DD + hold distribution for 120ms/hard2304",
+    "profit-funded/surge-funded capacity variant to reduce initial heat",
+    "preserve all-metric crossover while reducing concurrency and hold time",
+    "freeze January architecture before Jan-Jul"
   ],
   "constraints": {
     "august": "SEALED",
@@ -84,7 +58,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read this cursor and GAMMA_02_TIMEOUT_RECOVERY_CHECKPOINT_006.md. Do not rerun completed 027-039 units. Resume only GAMMA_02_SURGE_HEARTBEAT_EQUITY_DD_040.",
+  "recovery_rule": "Read this cursor and GAMMA_02_QUALITY_CORE_CAPACITY_CROSSOVER_047.md. Do not rerun 042-047. Resume only GAMMA_02_QUALITY_CORE_CROSSOVER_EQUITY_048.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -103,5 +77,5 @@
     "expectancy": 1.4839463902787706,
     "avg_hold_s": 16.462687634024302
   },
-  "latest_branch_head": "048c3b9356c2d45c1bf0855f1577f55972845620"
+  "latest_branch_head": "65d30bb34c4d8930dd04fe0f0d158ee03a2d5396"
 }
