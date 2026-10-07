@@ -1,0 +1,44 @@
+{
+  "schema": "r9-stmr-xmonth-mt5-certification-v1",
+  "status": "READY_FOR_METAEDITOR_COMPILE_AND_COINEXX_TEST",
+  "branch": "r9-stmr-xmonth-subphase-001-mt5-r9base-20261006",
+  "r9_base": {
+    "branch": "carson/r9-tick-logger",
+    "commit": "23b85ca774efa43acbcb2006fc5e88ce5ac08bf0",
+    "control_path": "Experts/GoldMuwahahaMiner_R9_HybridGate.mq5",
+    "control_git_blob": "7eecb5f1947017a01ce85b2520725de54749e523",
+    "tick_logger_path": "Experts/GoldMuwahahaMiner_R9_TickLogger.mq5",
+    "tick_logger_git_blob": "5c7655cd3357f9126e8bffd97c34374dfb29f83e"
+  },
+  "candidate": {
+    "id": "STMR_XMONTH_SUBPHASE_001",
+    "path": "Experts/GoldMuwahahaMiner_R9_STMR_XMonth_001.mq5",
+    "version": "9.32",
+    "initial_git_blob": "daa754c8fcd035915660ccc00274a6003d135ea9",
+    "max_positions": 3,
+    "lot": 0.01,
+    "max_hold_seconds": 300,
+    "hedging_required": true
+  },
+  "python_provenance": {
+    "helper_sha256": "0df41a4ece3083129022443daab14687b5a170bb888e879d7352301568f7def5",
+    "result_sha256": "32f2c80fad10950a51e22d14c37bcc8ad333bae2581078a4f0205ed37b443515",
+    "report_sha256": "2a4ccb9ea8604c7a1bfb07e018432cd040f73d11697b5c5e8fde55d157af2b5a",
+    "jan_jul_net": 829.71,
+    "profit_factor": 1.2967425592,
+    "trades": 2675,
+    "monthly_net": [
+      641.58,
+      43.95,
+      4.55,
+      -34.51,
+      -19.89,
+      213.13,
+      -19.1
+    ]
+  },
+  "authority_note": "Authoritative January research floor remains STMR_SLEEVE_PHASE_001 +877.78. This branch certifies the durable clean-room Jan-Jul child on Coinexx.",
+  "compile_status": "PENDING_METAEDITOR_0_ERRORS_0_WARNINGS",
+  "coinexx_test_status": "PENDING",
+  "owner_mql5_authorization": "2026-10-06"
+}
