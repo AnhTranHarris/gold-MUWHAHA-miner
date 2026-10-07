@@ -2,8 +2,8 @@
   "schema": "r9-gamma-02-research-cursor-v17",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_LOW_ACTIVITY_MARCH_SPECIALIST_109",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_LOW_ACTIVITY_MARCH_SPECIALIST_109.md",
+  "latest_completed": "GAMMA_02_CROSSMONTH_PHASE_SPECIALIST_RECOVERY_114",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_CROSSMONTH_PHASE_SPECIALIST_RECOVERY_114.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_ROLLING_ACTIVITY_REGIME_103",
     "N": 64,
@@ -105,12 +105,12 @@
     "wave_multiplicity_085": "Desk-level same-tick renewal collapse with fixed multiplicity rejected: same-tick child groups share direction/entry price but retain heterogeneous parent-owned exits/PnL; 538 tested wave-size pairs produced zero all-six-metric crossovers.",
     "parent_phase_desync_086": "Causal parent entry-price phase rearm maps can preserve all six SYNTH metrics but do not reduce maxopen/max same-tick cluster; heat remains 1,443."
   },
-  "first_incomplete_unit": "GAMMA_02_APRIL_SPECIALIST_DISCOVERY_110",
+  "first_incomplete_unit": "GAMMA_02_JUNE_DISCOVERY_JULY_VALIDATION_115",
   "next_units": [
-    "discover April specialist without changing 103/104 or 109",
-    "freeze April specialist before opening May",
-    "May first validation for April specialist",
-    "continue sequentially through July",
+    "June-only discovery of July candidate from continuous 112 phase map",
+    "freeze selected June rules before July replay",
+    "if July survives, integrate with 103/104 + 109 + 114 architecture",
+    "exact equity-DD on cross-month finalist",
     "no August access"
   ],
   "constraints": {
@@ -120,7 +120,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read GAMMA_02_LOW_ACTIVITY_MARCH_SPECIALIST_109.md and GAMMA_02_FRESH_CHAT_BOOTSTRAP.md. Do not rerun <=109. Resume only April specialist discovery 110. High-activity 103/104 and March reverse specialist 109 are frozen.",
+  "recovery_rule": "Read GAMMA_02_CROSSMONTH_PHASE_SPECIALIST_RECOVERY_114.md and this cursor. Do not rerun <=114. Resume June discovery -> July frozen validation 115.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -139,7 +139,7 @@
     "expectancy": 1.4839463902787706,
     "avg_hold_s": 16.462687634024302
   },
-  "latest_branch_head": "5712aee3f2cd1d7e4d733bf3056541e969abb0b8",
+  "latest_branch_head": "9570ad05efdf5ab55a1b08c26bbb989d46f39454",
   "replay083_bundle": {
     "github_dir": "research/R9_GAMMA/replay083_deps/",
     "library_dir": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/post-crossover-recovery/replay083_deps/",
