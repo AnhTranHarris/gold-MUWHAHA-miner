@@ -1,0 +1,24 @@
+name: R9 STMR XMonth R9-base static QA
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - r9-stmr-xmonth-subphase-001-mt5-r9base-20261006
+    paths:
+      - 'Experts/GoldMuwahahaMiner_R9_HybridGate.mq5'
+      - 'Experts/GoldMuwahahaMiner_R9_TickLogger.mq5'
+      - 'Experts/GoldMuwahahaMiner_R9_STMR_XMonth_001.mq5'
+      - 'qa/r9_stmr_xmonth_mt5_r9base_qa.py'
+      - '.github/workflows/r9-stmr-xmonth-r9base-static-qa.yml'
+
+jobs:
+  static-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify frozen R9 lineage and STMR contract
+        run: python qa/r9_stmr_xmonth_mt5_r9base_qa.py
