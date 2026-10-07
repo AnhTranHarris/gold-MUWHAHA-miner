@@ -164,3 +164,15 @@ If UI times out:
 5. save helper + result + checkpoint before launching another long sweep.
 
 This file is intentionally compact enough to bootstrap a fresh chat without rebuilding the research history.
+
+
+## NEW FROZEN SPECIALIST C — APRIL-JUNE PERSISTENT SHORT 116
+- 17:40-17:59 UTC
+- H4=H1=M15=M5=short, direction short
+- q=$1.25, rearm=0, cap703
+- Apr +$9,716.65 / 12,484 / PF2.667
+- May +$10,092.80 / 18,305 / PF1.896
+- Jun +$4,671.62 / 16,076 / PF1.330
+- Jul -$300.98 / 3,771 / PF0.921 (first failure boundary)
+
+Resume only `GAMMA_02_JULY_SPECIALIST_DISCOVERY_117`. Do not modify 103/104, 109, or 116. Do not open August.
