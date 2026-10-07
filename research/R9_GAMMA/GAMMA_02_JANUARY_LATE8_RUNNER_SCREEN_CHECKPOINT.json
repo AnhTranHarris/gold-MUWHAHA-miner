@@ -1,0 +1,37 @@
+{
+  "unit": "GAMMA_02_JANUARY_LATE8_RUNNER_SCREEN",
+  "status": "COMPLETE_CHECKPOINTED",
+  "branch": "carson/r9-gamma-02-velocity-geometry-research",
+  "sleeve": 8,
+  "semantic_name": "LATE_ALIGNED_MOMENTUM",
+  "variants_completed": 648,
+  "rejected_micro_target": {
+    "tp_price": 0.5,
+    "evidence": "first 400 completed variants were all negative despite ~79% win rates; payout too small relative to failure tail"
+  },
+  "best_screen": {
+    "tp_price": 6.0,
+    "sl_price": 1.5,
+    "hold_seconds": 300,
+    "campaign_window_seconds": 120,
+    "max_harvests": 3,
+    "net": 74.04,
+    "profit_factor": 1.4758048969,
+    "expectancy": 0.5404379562,
+    "win_rate": 0.3284671533,
+    "trades": 137,
+    "roots": 576,
+    "drawdown": 15.43
+  },
+  "parent_sleeve8_control": {
+    "net": 97.74,
+    "trades": 356,
+    "source": "frozen STMR_XMONTH_SUBPHASE_001 January reconstruction"
+  },
+  "interpretation": "Sleeve 8 is a persistent HTF runner state, not a tiny scalp. Economics improve with larger targets and longer holds. The current TP-recycle harness is artificially throttled by one-position sequencing and underperforms the frozen parent in both net and trade count. Do not promote this screen. Next mutation must preserve multi-position/root participation while adding causal realized-profit recycling rather than replacing the parent with a single slot.",
+  "raw_result_sha256": "3fa5237bca14eb1f384ff9c1076e5f06e67ef606558b0c8e19e39f70acca8db9",
+  "summary_sha256": "736b573a9b655c2dee4188c6dce697b70ef9959e07a64be7e3032179cb998dcc",
+  "durable_library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/",
+  "next_unit": "GAMMA_02_MULTI_SLOT_ROOT_PLUS_RECYCLE",
+  "august_2026": "SEALED"
+}
