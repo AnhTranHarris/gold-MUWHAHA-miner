@@ -1,21 +1,22 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v10",
+  "schema": "r9-gamma-02-research-cursor-v11",
   "state": "IDLE_READY_MAJOR_CHECKPOINT",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_DUAL_PHASE_RENEWAL_QUANTUM_083",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_DUAL_PHASE_RENEWAL_QUANTUM_083.md",
+  "latest_completed": "GAMMA_02_083_HEAT_PARENT_OWNERSHIP_QA_084",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_083_HEAT_PARENT_OWNERSHIP_QA_084.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_DUAL_PHASE_RENEWAL_QUANTUM_083",
-    "net": 76586.24,
-    "trades": 49466,
-    "pf": 30758.526104417666,
-    "win": 0.9993530910120082,
-    "expectancy": 1.5482602191404196,
-    "avg_hold_s": 12.295035013948974,
-    "equity_dd": 19371.52,
-    "equity_dd_pct_peak": 10.970005363951456,
-    "minimum_total_equity": 99043.55,
-    "maxopen": 1443,
+    "qa_variant": "100ms_parent_spacing_low_heat_crossover",
+    "net": 74427.55,
+    "trades": 48197,
+    "pf": 30012.108870967753,
+    "win": 0.9993568064402348,
+    "expectancy": 1.5442361557773305,
+    "avg_hold_s": 12.261668278108594,
+    "equity_dd": 18900.48,
+    "equity_dd_pct_peak": 10.835719472067288,
+    "minimum_total_equity": 99019.63,
+    "maxopen": 1404,
     "all_metric_january_r9_synth_crossover": true
   },
   "exact_helpers": {
@@ -35,16 +36,20 @@
       "helper_sha256": "5ccf5581688fdb45b7f1dfd0441af9bdc89a478cc6f229dd8ec0f60eee8f5dac",
       "result_sha256": "0a8cf905a459a75e1c5da1db77f4be8ff54fab34d7c07f5059f532d840ac3d1c",
       "replay": "BYTE_IDENTICAL"
+    },
+    "heat_parent_ownership_084": {
+      "github_path": "research/R9_GAMMA/helpers/gamma02_083_heat_parent_ownership_084.py",
+      "result_path": "research/R9_GAMMA/artifacts/gamma02_083_heat_parent_ownership_084.json"
     }
   },
   "qa_notes": {
     "profit_funded_026_attribution_bug": "historical helper swapped source/reason labels only in attribution output; admission economics unaffected",
-    "equity_dd": "all finalist DDs now marked on every ordered January Bid/Ask tick"
+    "equity_dd": "all finalist DDs now marked on every ordered January Bid/Ask tick",
+    "child_multiplicity": "083 parents are unique, but ~97% of child tickets occur in same-market-tick clusters across overlapping parents; ticket velocity must be separated from unique opportunity velocity."
   },
-  "first_incomplete_unit": "GAMMA_02_083_HEAT_REDUCTION_AND_PARENT_OWNERSHIP_QA",
+  "first_incomplete_unit": "GAMMA_02_083_MULTIPLICITY_HEAT_REDUCTION_085",
   "next_units": [
-    "forensic QA of parent ownership and same-parent/same-tick child multiplicity",
-    "reduce maxopen/equity heat while preserving all six January SYNTH crossover metrics",
+    "reduce synchronized child multiplicity/heat while preserving all six January SYNTH crossover metrics",
     "exact margin model for $100K reference",
     "freeze January architecture",
     "chronological February validation with January parameters frozen"
@@ -56,7 +61,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read GAMMA_02_DUAL_PHASE_RENEWAL_QUANTUM_083.md and exact helper/result. Do not rerun <=083 after timeout. Resume only 083 heat/ownership QA.",
+  "recovery_rule": "Read GAMMA_02_083_HEAT_PARENT_OWNERSHIP_QA_084.md and exact helper/result. Do not rerun <=084 after timeout. Resume only multiplicity heat reduction 085.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
