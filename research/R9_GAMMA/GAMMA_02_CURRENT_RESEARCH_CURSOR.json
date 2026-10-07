@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v11",
+  "schema": "r9-gamma-02-research-cursor-v12",
   "state": "IDLE_READY_MAJOR_CHECKPOINT",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_083_HEAT_PARENT_OWNERSHIP_QA_084",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_083_HEAT_PARENT_OWNERSHIP_QA_084.md",
+  "latest_completed": "GAMMA_02_083_WAVE_MULTIPLICITY_QA_085",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_083_WAVE_MULTIPLICITY_QA_085.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_DUAL_PHASE_RENEWAL_QUANTUM_083",
     "qa_variant": "100ms_parent_spacing_low_heat_crossover",
@@ -40,17 +40,24 @@
     "heat_parent_ownership_084": {
       "github_path": "research/R9_GAMMA/helpers/gamma02_083_heat_parent_ownership_084.py",
       "result_path": "research/R9_GAMMA/artifacts/gamma02_083_heat_parent_ownership_084.json"
+    },
+    "wave_multiplicity_085": {
+      "github_path": "research/R9_GAMMA/helpers/gamma02_083_wave_multiplicity_085.py",
+      "result_path": "research/R9_GAMMA/artifacts/gamma02_083_wave_multiplicity_085.json",
+      "helper_sha256": "c7270ecf5a2ac28d92b12521b7b60688b5c3da914515cbef4f3a9c76932b1625",
+      "result_sha256": "94993bcebc0b16c86a2b4034c8309f2ac7a90e3ee64802769858622f4ad83204"
     }
   },
   "qa_notes": {
     "profit_funded_026_attribution_bug": "historical helper swapped source/reason labels only in attribution output; admission economics unaffected",
     "equity_dd": "all finalist DDs now marked on every ordered January Bid/Ask tick",
-    "child_multiplicity": "083 parents are unique, but ~97% of child tickets occur in same-market-tick clusters across overlapping parents; ticket velocity must be separated from unique opportunity velocity."
+    "child_multiplicity": "083 parents are unique, but ~97% of child tickets occur in same-market-tick clusters across overlapping parents; ticket velocity must be separated from unique opportunity velocity.",
+    "wave_multiplicity_085": "Desk-level same-tick renewal collapse with fixed multiplicity rejected: same-tick child groups share direction/entry price but retain heterogeneous parent-owned exits/PnL; 538 tested wave-size pairs produced zero all-six-metric crossovers."
   },
-  "first_incomplete_unit": "GAMMA_02_083_MULTIPLICITY_HEAT_REDUCTION_085",
+  "first_incomplete_unit": "GAMMA_02_083_PARENT_PHASE_DESYNC_086",
   "next_units": [
-    "reduce synchronized child multiplicity/heat while preserving all six January SYNTH crossover metrics",
-    "exact margin model for $100K reference",
+    "parent-phase desynchronization using only causal parent-entry metadata",
+    "exact margin model for $100K reference after heat frontier stabilizes",
     "freeze January architecture",
     "chronological February validation with January parameters frozen"
   ],
@@ -61,7 +68,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read GAMMA_02_083_HEAT_PARENT_OWNERSHIP_QA_084.md and exact helper/result. Do not rerun <=084 after timeout. Resume only multiplicity heat reduction 085.",
+  "recovery_rule": "Read GAMMA_02_083_WAVE_MULTIPLICITY_QA_085.md, then 084 and 083. Do not rerun <=085 after timeout. Resume only parent-phase desync 086.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -80,7 +87,7 @@
     "expectancy": 1.4839463902787706,
     "avg_hold_s": 16.462687634024302
   },
-  "latest_branch_head": "5d06a5b9b4341cb2375956a05c97d43479ca1026",
+  "latest_branch_head": "0065d54e41b3887d920368604ff322ed4bb2e5fc",
   "replay083_bundle": {
     "github_dir": "research/R9_GAMMA/replay083_deps/",
     "library_dir": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/post-crossover-recovery/replay083_deps/",
