@@ -62,3 +62,29 @@ Run months 4,5,6,7 with:
 Persist each month before moving to the next. Do not repair a failed month until all four are observed.
 
 R9 SYNTH remains the hard target.
+
+
+## Frozen April-July validation — completed after timeout recovery
+
+No parameters changed: n=4 consecutive fast profitable children, hold threshold 60s, global child cap 703.
+
+| Month | Net | Trades | PF | Win | Expectancy | Avg hold | Admitted/parents | Unlocks | Relocks |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Apr | **-$21.33** | 130 | 0.8614 | 77.69% | -$0.1641 | 349.56s | 33 / 11,265 | 0 | 0 |
+| May | **-$7,389.92** | 5,411 | 0.4162 | 68.80% | -$1.3657 | 341.99s | 2,610 / 32,970 | 30 | 26 |
+| Jun | **-$1,170.79** | 2,861 | 0.7463 | 85.98% | -$0.4092 | 243.39s | 618 / 22,206 | 1 | 0 |
+| Jul | **-$174.28** | 1,835 | 0.9168 | 75.69% | -$0.0950 | 456.21s | 452 / 10,570 | 6 | 4 |
+
+### Disposition
+
+119 is a genuine **Jan-Mar regime engine**, not a universal Jan-Jul router.
+
+The failure boundary is now explicit:
+- January: extraordinary high-activity renewal regime.
+- February: still profitable, lower quality.
+- March: still profitable after dynamic relock.
+- April: almost entirely stays locked; scout residue is slightly negative.
+- May: the proof condition repeatedly unlocks a toxic renewal state; this is the critical failure.
+- June/July: weaker continuation/persistence; frozen 119 remains negative.
+
+Do not retune 119 on Apr-Jul. Any repair must be a new causal regime/specialist layer and preserve Jan-Mar 119 unchanged.
