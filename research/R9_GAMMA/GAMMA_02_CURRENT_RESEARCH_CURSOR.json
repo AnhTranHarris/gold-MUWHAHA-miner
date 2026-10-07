@@ -1,9 +1,9 @@
 {
   "schema": "r9-gamma-02-research-cursor-v16",
-  "state": "IDLE_READY_MAJOR_CHECKPOINT",
+  "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_ROLLING_ACTIVITY_REGIME_103_104",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_ROLLING_ACTIVITY_REGIME_103_104.md",
+  "latest_completed": "GAMMA_02_EMERGENCY_CHAT_HANDOFF_108",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_EMERGENCY_CHAT_HANDOFF_108.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_ROLLING_ACTIVITY_REGIME_103",
     "N": 64,
@@ -93,12 +93,13 @@
     "wave_multiplicity_085": "Desk-level same-tick renewal collapse with fixed multiplicity rejected: same-tick child groups share direction/entry price but retain heterogeneous parent-owned exits/PnL; 538 tested wave-size pairs produced zero all-six-metric crossovers.",
     "parent_phase_desync_086": "Causal parent entry-price phase rearm maps can preserve all six SYNTH metrics but do not reduce maxopen/max same-tick cluster; heat remains 1,443."
   },
-  "first_incomplete_unit": "GAMMA_02_FROZEN_APRIL_VALIDATION_105",
+  "first_incomplete_unit": "GAMMA_02_ADAPTIVE_ACTIVITY_MULTI_SCOUT_ROUTER_109",
   "next_units": [
-    "frozen April validation using N64 / 12.90 / 64.93 / cap703",
-    "if April passes, frozen May then June then July sequentially",
-    "if a month fails, record failure before any recovery research",
-    "no August access"
+    "adaptive activity normalization / rolling percentile without month labels",
+    "multi-scout parent health proof using consecutive fast renewals",
+    "freeze Jan-Feb-Mar if stable",
+    "chronological April validation with no retuning",
+    "continue May-July only after April result is persisted"
   ],
   "constraints": {
     "august": "SEALED",
@@ -107,7 +108,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read GAMMA_02_ROLLING_ACTIVITY_REGIME_103_104.md. Do not rerun <=104. Resume only frozen April validation 105. Parameters N=64, early=12.90, late=64.93, cap=703 are frozen before April.",
+  "recovery_rule": "Read GAMMA_02_EMERGENCY_CHAT_HANDOFF_108.md and this cursor. Do not rerun <=108. Resume adaptive activity/multi-scout router 109 from persistent Library replay083_deps and rolling-activity-103 artifacts.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -126,7 +127,7 @@
     "expectancy": 1.4839463902787706,
     "avg_hold_s": 16.462687634024302
   },
-  "latest_branch_head": "0065d54e41b3887d920368604ff322ed4bb2e5fc",
+  "latest_branch_head": "5712aee3f2cd1d7e4d733bf3056541e969abb0b8",
   "replay083_bundle": {
     "github_dir": "research/R9_GAMMA/replay083_deps/",
     "library_dir": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/post-crossover-recovery/replay083_deps/",
