@@ -1,3 +1,8 @@
+#property copyright "AnhTranHarris / R9 GAMMA-01 clock-corrected STMR certification"
+#property version   "9.41"
+#property strict
+#property description "R9 GAMMA-01 STMR Grid ClockFix: preserves HybridGate core and normalizes Coinexx historical server time to UTC."
+
 /*
 ===============================================================================
  R9 GAMMA-01 STMR GRID — COINEXX HISTORICAL CLOCK FIX
