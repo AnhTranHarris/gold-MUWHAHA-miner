@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v6",
+  "schema": "r9-gamma-02-research-cursor-v7",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_FUNDED_CAP_UTILIZATION_027",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_FUNDED_CAP_UTILIZATION_027.md",
+  "latest_completed": "GAMMA_02_FUNDED_CAP_EQUITY_DD_028",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_FUNDED_CAP_EQUITY_DD_028.md",
   "current_scientific_base": {
     "opportunity_engine": {
       "counting_rule": "MAX_ONE_NEW_TICKET_PER_SOURCE_PER_MARKET_TICK",
@@ -21,56 +21,34 @@
       "trades": 24646,
       "pf": 4.091096910930705,
       "expectancy": 6.270322567556603,
-      "realized_balance_dd": 4179.75,
-      "classification": "MAJOR_EXPOSURE_EFFICIENCY_BREAKTHROUGH"
-    },
-    "funded_capacity_utilization": {
-      "unlocks": [
-        {
-          "to_cap": 128,
-          "time_utc": "2026-01-12T15:00:25.967Z",
-          "realized_profit": 2531.85
-        },
-        {
-          "to_cap": 192,
-          "time_utc": "2026-01-13T15:04:46.957Z",
-          "realized_profit": 6116.65
-        },
-        {
-          "to_cap": 256,
-          "time_utc": "2026-01-14T11:53:41.781Z",
-          "realized_profit": 7998.01
-        }
-      ],
-      "skip_rate_by_cap": {
-        "64": 0.9116004569,
-        "128": 0.7473881597,
-        "192": 0.5018703242,
-        "256": 0.6537743441
-      },
-      "interpretation": "capacity remains binding even after full 256-slot funding"
+      "balance_dd": 4179.75,
+      "equity_dd": 17547.11,
+      "equity_dd_pct_of_peak_total": 6.8641,
+      "minimum_total_equity_on_100k": 98366.51,
+      "classification": "MAJOR_EXPOSURE_EFFICIENCY_BREAKTHROUGH_EQUITY_QA_PASS"
     }
   },
   "exact_helpers": {
-    "funded_cap_utilization": {
+    "utilization": {
       "github_path": "research/R9_GAMMA/helpers/gamma02_funded_cap_utilization_027.py",
-      "result_path": "research/R9_GAMMA/artifacts/gamma02_funded_cap_utilization_027.json",
-      "helper_sha256": "4468b54e3adc02d3cb2814551b33566c3329f08214662fbc80aebe093163539a",
-      "result_sha256": "8a6ce26e4896f1fdf8507405c39d31f3b3168418389abf99b2684dd214e396dd"
+      "result_path": "research/R9_GAMMA/artifacts/gamma02_funded_cap_utilization_027.json"
+    },
+    "equity_dd": {
+      "github_path": "research/R9_GAMMA/helpers/gamma02_funded_cap_equity_dd_028.py",
+      "result_path": "research/R9_GAMMA/artifacts/gamma02_funded_cap_equity_dd_028.json",
+      "helper_sha256": "bb83dd19b610e7d77d9dfac658aef01ee8cf4f7524dbef1919b3a7b5efd0c308",
+      "result_sha256": "1b3dcb8555527bfda9ff978d9199a89565c2bbb739e556b8950f9ed3146f7c51"
     }
   },
   "qa_notes": {
-    "profit_funded_026_attribution_bug": "historical helper swapped source/reason labels only in attribution output; admission economics are unaffected; utilization helper corrects ordering"
+    "profit_funded_026_attribution_bug": "historical helper swapped source/reason labels only in attribution output; admission economics unaffected",
+    "equity_dd": "all finalist DDs now marked on every ordered January Bid/Ask tick"
   },
-  "invalidated": {
-    "stage2_stage3_hour_slice_london_overlap": "tail-minute entry artifact; see GAMMA_02_SLICE_CONTINUOUS_PARITY_001.md",
-    "same_tick_multi_level_as_opportunity_count": "reclassified as pyramiding/scaling; see GAMMA_02_ONE_EVENT_PER_TICK_AUDIT_014.md"
-  },
-  "first_incomplete_unit": "GAMMA_02_FUNDED_CAP_EQUITY_DD_028",
+  "first_incomplete_unit": "GAMMA_02_JAN_R9_SYNTH_BENCHMARK_029",
   "next_units": [
-    "full ordered-tick equity-DD replay for funded-cap lower-cap finalists",
     "extract exact January-only R9 SYNTH benchmark",
-    "test slot-turnover / profit-lock mechanisms only after equity-DD",
+    "compare January GAMMA-02 gap to exact R9 SYNTH January",
+    "test slot-turnover/profit-lock only after benchmark",
     "freeze January architecture before chronological Jan-Jul validation"
   ],
   "constraints": {
@@ -80,6 +58,5 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read this cursor, then GAMMA_02_FUNDED_CAP_UTILIZATION_027.md. Do not rerun completed units. Resume only GAMMA_02_FUNDED_CAP_EQUITY_DD_028.",
-  "latest_branch_head": "747af6d4b8e5b04ffeb6489d60a5ce1d7ab37acb"
+  "recovery_rule": "Read this cursor, then GAMMA_02_FUNDED_CAP_EQUITY_DD_028.md. Resume only GAMMA_02_JAN_R9_SYNTH_BENCHMARK_029."
 }
