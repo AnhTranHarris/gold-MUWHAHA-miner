@@ -1,45 +1,29 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v4",
+  "schema": "r9-gamma-02-research-cursor-v5",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_HOUR_SPECIFIC_HEARTBEAT_022",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_HOUR_SPECIFIC_HEARTBEAT_022.md",
+  "latest_completed": "GAMMA_02_PROFIT_FUNDED_CAPACITY_026",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_PROFIT_FUNDED_CAPACITY_026.md",
   "current_scientific_base": {
-    "counting_rule": "MAX_ONE_NEW_TICKET_PER_SOURCE_PER_MARKET_TICK",
-    "cap": 128,
-    "primary_rebreak_base": {
-      "london_overlap": {
-        "reset_raw": 50,
-        "reset_price": 0.05,
-        "min_latency_ms": 0
-      },
-      "ny17": {
-        "reset_raw": 500,
-        "reset_price": 0.5,
-        "min_latency_ms": 1000
-      }
+    "opportunity_engine": {
+      "counting_rule": "MAX_ONE_NEW_TICKET_PER_SOURCE_PER_MARKET_TICK",
+      "heartbeat": "GAMMA_02_HOUR_SPECIFIC_HEARTBEAT_022",
+      "cap128_net": 94897.31,
+      "cap128_trades": 16927,
+      "cap128_pf": 3.7428918356623044
     },
-    "heartbeat_router": {
-      "london_hour_cadence_ms": {
-        "7": 1000,
-        "8": 500,
-        "9": 250,
-        "11": 1000,
-        "12": 250,
-        "13": 250,
-        "14": 1000,
-        "15": 1000
-      },
-      "ny17": "OFF",
-      "ny16": "OFF",
-      "ny18_ms": 250
-    },
-    "net": 94897.31,
-    "trades": 16927,
-    "pf": 3.7428918356623044,
-    "expectancy": 5.606268683168902,
-    "realized_balance_dd": 3167.52,
-    "classification": "VELOCITY_FRONTIER"
+    "funded_capacity_frontier": {
+      "start_cap": 64,
+      "step_slots": 64,
+      "realized_profit_unit": 2500,
+      "max_cap": 256,
+      "net": 154538.37,
+      "trades": 24646,
+      "pf": 4.091096910930705,
+      "expectancy": 6.270322567556603,
+      "realized_balance_dd": 4179.75,
+      "classification": "MAJOR_EXPOSURE_EFFICIENCY_BREAKTHROUGH"
+    }
   },
   "conservative_parent": {
     "net": 77049.12,
@@ -62,6 +46,13 @@
       "result_path": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_hour_specific_heartbeat_022_cap128.json",
       "helper_sha256": "8bb8fd7c69e79f1232ec8257a64b2b30d4d32670ed92c43b5fa311e909acd7d1",
       "result_sha256": "3259cf745ddbee67558ec52e71d83f9aaf73730742f96f879fbeaf21f9caed04"
+    },
+    "profit_funded_capacity": {
+      "library_path": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_profit_funded_capacity_026.py",
+      "result_a": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_profit_funded_capacity_026.json",
+      "result_b": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_profit_funded_capacity_026b.json",
+      "helper_sha256": "b567b1c5cd3d1545c8c1757bd7545ca5fcbdeb70e25f0f648caa35741b2ae0bc",
+      "result_b_sha256": "5501afe8e0e7163b6d31dcb332182874c5e148efca6b4e68721031e46b805dc1"
     }
   },
   "historical_scaling_frontier_note": "Earlier multi-level extension results remain explicit pyramiding/scaling research only; they are not chronological opportunity-count authority.",
@@ -69,12 +60,12 @@
     "stage2_stage3_hour_slice_london_overlap": "tail-minute entry artifact; see GAMMA_02_SLICE_CONTINUOUS_PARITY_001.md",
     "same_tick_multi_level_as_opportunity_count": "reclassified as pyramiding/scaling; see GAMMA_02_ONE_EVENT_PER_TICK_AUDIT_014.md"
   },
-  "first_incomplete_unit": "GAMMA_02_HEARTBEAT_LIFECYCLE_SPECIALIST_023",
+  "first_incomplete_unit": "GAMMA_02_FUNDED_CAP_UTILIZATION_027",
   "next_units": [
-    "heartbeat-specific lifecycle by London/overlap phase while preserving primary/rebreak lifecycle",
-    "compare quality vs velocity frontier under same cap",
-    "full tick-level equity-DD for finalists",
-    "chronological Jan-Jul only after January architecture freezes"
+    "record funded-cap unlock chronology and utilization",
+    "full ordered-tick equity-DD replay for January finalists",
+    "extract exact January-only R9 SYNTH benchmark",
+    "freeze January architecture before chronological Jan-Jul validation"
   ],
   "constraints": {
     "august": "SEALED",
@@ -83,7 +74,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read this cursor, then GAMMA_02_HOUR_SPECIFIC_HEARTBEAT_022.md. Do not rerun completed experiments. Resume only GAMMA_02_HEARTBEAT_LIFECYCLE_SPECIALIST_023.",
+  "recovery_rule": "Read this cursor, then GAMMA_02_PROFIT_FUNDED_CAPACITY_026.md. Do not rerun completed experiments. Resume only GAMMA_02_FUNDED_CAP_UTILIZATION_027.",
   "quality_comparator": {
     "net": 92887.56,
     "trades": 16590,
