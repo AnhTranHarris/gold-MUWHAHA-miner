@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v8",
-  "state": "IDLE_READY_ATOMIC_BOUNDARY",
+  "schema": "r9-gamma-02-research-cursor-v9",
+  "state": "ACTIVE_BOUNDED_RESEARCH",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_QUALITY_CORE_CROSSOVER_EQUITY_048",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_QUALITY_CORE_CROSSOVER_EQUITY_048.md",
+  "latest_completed": "GAMMA_02_POST_CROSSOVER_TIMEOUT_RECOVERY_068",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_POST_CROSSOVER_TIMEOUT_RECOVERY_068.md",
   "current_scientific_base": {
     "sources": [
       16,
@@ -37,11 +37,13 @@
     "profit_funded_026_attribution_bug": "historical helper swapped source/reason labels only in attribution output; admission economics unaffected",
     "equity_dd": "all finalist DDs now marked on every ordered January Bid/Ask tick"
   },
-  "first_incomplete_unit": "GAMMA_02_PROFIT_FUNDED_SURGE_049",
+  "first_incomplete_unit": "GAMMA_02_SOURCE_SPECIFIC_FAST_EXIT_GRID_068",
   "next_units": [
-    "profit-funded temporary NY capacity",
-    "full tick equity-DD for funded-surge finalist",
-    "reduce lifecycle/heat without sacrificing SYNTH crossover",
+    "source16 TP/SL/hold grid with source17 parent exit frozen",
+    "persist source16 winner",
+    "source17 TP/SL/hold grid with source16 winner frozen",
+    "joint funded-cap replay",
+    "full-tick equity-DD for finalists",
     "freeze January then Jan-Jul"
   ],
   "constraints": {
@@ -51,7 +53,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read this cursor and GAMMA_02_QUALITY_CORE_CROSSOVER_EQUITY_048.md. Do not rerun <=048. Resume GAMMA_02_PROFIT_FUNDED_SURGE_049.",
+  "recovery_rule": "Read GAMMA_02_POST_CROSSOVER_TIMEOUT_RECOVERY_068.md. Do not rerun <=067. Resume only GAMMA_02_SOURCE_SPECIFIC_FAST_EXIT_GRID_068.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -70,5 +72,5 @@
     "expectancy": 1.4839463902787706,
     "avg_hold_s": 16.462687634024302
   },
-  "latest_branch_head": "71ce556a78fa466f1adb2539de335f6335ad212a"
+  "latest_branch_head": "11518de095357419795f6beee7f82b4bb62413b8"
 }
