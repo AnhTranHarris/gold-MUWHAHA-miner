@@ -1,0 +1,68 @@
+{
+  "schema": "r9-gamma-02-research-cursor-v1",
+  "state": "IDLE_READY_ATOMIC_BOUNDARY",
+  "branch": "carson/r9-gamma-02-velocity-geometry-research",
+  "latest_completed": "GAMMA_02_NY_CAMPAIGN_INVENTORY_PORTFOLIO_001",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_NY_CAMPAIGN_INVENTORY_PORTFOLIO_001.md",
+  "exact_helper": {
+    "library_path": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_ny_campaign_inventory_portfolio_001.py",
+    "sha256": "8cf55fe2365f25b9a8acc7996f0f2c72eba7c2c9bc6a90a8e6d97f528b5c7131",
+    "replay_check": {
+      "cap": 64,
+      "net": 20977.61,
+      "trades": 8664,
+      "pf": 2.146385768332649,
+      "expectancy": 2.421238457987073,
+      "balance_dd": 2784.31
+    }
+  },
+  "major_frontiers": {
+    "ny_campaign_cap64": {
+      "net": 20977.61,
+      "trades": 8664,
+      "pf": 2.1464,
+      "expectancy": 2.4212
+    },
+    "ny_campaign_cap128": {
+      "net": 36375.97,
+      "trades": 12617,
+      "pf": 2.2568,
+      "expectancy": 2.8831
+    },
+    "ny_campaign_cap192": {
+      "net": 49012.41,
+      "trades": 14430,
+      "pf": 2.2462,
+      "expectancy": 3.3966
+    },
+    "ny_campaign_cap256": {
+      "net": 60041.44,
+      "trades": 15962,
+      "pf": 2.2331,
+      "expectancy": 3.7615
+    },
+    "prior_stmr_fast_frontier": {
+      "net": 1425.3,
+      "trades": 1400,
+      "pf": 1.9875
+    }
+  },
+  "invalidated": {
+    "stage2_stage3_hour_slice_london_overlap": "tail-minute entry artifact; see GAMMA_02_SLICE_CONTINUOUS_PARITY_001.md"
+  },
+  "next_units": [
+    "exact tick-level equity-DD replay for cap32/64/96/128 finalists",
+    "integrate NY campaign engine with prior STMR runner-shadow foundation",
+    "extract actual January-only R9 SYNTH benchmark",
+    "test unified-stop/profit-lock pyramiding to improve exposure efficiency",
+    "chronological Jan-Jul only after January architecture stabilizes"
+  ],
+  "constraints": {
+    "august": "SEALED",
+    "mql5_build": "NOT_AUTHORIZED_YET",
+    "lot_per_ticket": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false
+  },
+  "recovery_rule": "Do not rerun completed GAMMA-02 experiments. Load the exact helper from Library and read the latest GitHub checkpoints in predecessor order."
+}
