@@ -40,5 +40,20 @@
   "authority_note": "Authoritative January research floor remains STMR_SLEEVE_PHASE_001 +877.78. This branch certifies the durable clean-room Jan-Jul child on Coinexx.",
   "compile_status": "PENDING_METAEDITOR_0_ERRORS_0_WARNINGS",
   "coinexx_test_status": "PENDING",
-  "owner_mql5_authorization": "2026-10-06"
+  "owner_mql5_authorization": "2026-10-06",
+  "static_qa": {
+    "status": "PASS",
+    "workflow": "R9 STMR XMonth R9-base static QA",
+    "run_id": 37553501581,
+    "job_id": 112574254962,
+    "verified": [
+      "R9 HybridGate blob unchanged",
+      "R9 TickLogger blob unchanged",
+      "STMR candidate blob frozen",
+      "STMR constants/subphase contract present",
+      "exact ResultDeal->DEAL_POSITION_ID->POSITION_IDENTIFIER binding present",
+      "legacy R9 entry/trailing/rearm mechanisms absent from certification candidate"
+    ]
+  },
+  "next_gate": "Compile Experts/GoldMuwahahaMiner_R9_STMR_XMonth_001.mq5 in Coinexx MetaEditor and require 0 errors, 0 warnings; then run Every tick based on real ticks."
 }
