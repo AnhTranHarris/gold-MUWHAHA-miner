@@ -87,8 +87,14 @@ for name in grid_functions:
     body = fn(text, name)
     if re.search(r"(?<!grid)\btrade\.", body):
         raise SystemExit(f"GRID FUNCTION READS CORE CTRADE: {name}")
-    if re.search(r"\bInpMagic\b", body):
-        raise SystemExit(f"GRID FUNCTION READS CORE MAGIC: {name}")
+
+# Position/trade lifecycle must never use the core magic. GridInit is allowed to
+# read InpMagic only for the explicit collision guard.
+for name in ["OurPositionCount","FindNewestOurPosition","ManageAgeExits","OpenSleeveTrade","GridDeinit","GridReconcile"]:
+    if re.search(r"\bInpMagic\b", fn(text, name)):
+        raise SystemExit(f"GRID LIFECYCLE READS CORE MAGIC: {name}")
+if "InpGridMagic==InpMagic" not in fn(text, "GridInit"):
+    raise SystemExit("MISSING CORE/GRID MAGIC COLLISION GUARD")
 
 # Core behavior functions must not depend on gridTrade.
 for name in core_functions:
