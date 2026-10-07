@@ -1,0 +1,83 @@
+{
+  "candidate": "GAMMA_02_JAN_WATCHDOG119_GRID_LAYER_REFINEMENT_131A",
+  "status": "JANUARY_DISCOVERY_COMPLETE_PYTHON_RESEARCH_ONLY",
+  "market_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "parent_watchdog_helper_sha256": "799b830f03b2d88acf9bf424c3501406d8c908854a0d40a7235d6721e4e0546f",
+  "helper_sha256": "c1f80f99376f2fec47dc2897ff2312c310799bde8392cd28976a44849ef1b660",
+  "full_result_sha256": "863bd4551027effa72e5e63ba3b5e016be4ac45840ecbef11f2cc6e7e89c1687",
+  "execution_surface": "Dukascopy midpoint + frozen session-P75 normalized spread from stmr_base.materialize; not raw-Dukascopy fill parity and not Coinexx MT5 certification",
+  "r9_synth_january": {
+    "net": 41520.82,
+    "trades": 27980,
+    "gross_loss": -1827.87,
+    "pf": 23.7154119275,
+    "win": 0.8709077913,
+    "expectancy": 1.4839463903,
+    "avg_hold_s": 16.4626876340,
+    "balance_dd": 3.40
+  },
+  "working_base": {
+    "name": "WD119_SUBPHASE_Q1190_Q1100_CAP703",
+    "qmap_raw": [1190,1190,1190,1190,1190,1100],
+    "cap": 703,
+    "net": 139070.41,
+    "trades": 77942,
+    "gross_profit": 140709.61,
+    "gross_loss": -1639.20,
+    "pf": 85.8404160566,
+    "win": 0.9951887301,
+    "expectancy": 1.7842807472,
+    "avg_hold_s": 27.4128711606,
+    "balance_dd": 713.96,
+    "equity_dd": 62763.84,
+    "minimum_total_equity_100k": 96400.68,
+    "maxopen": 703,
+    "unique_child_entry_ticks": 3380,
+    "same_tick_cluster_fraction": 0.9641528316,
+    "weekly_realized": {
+      "2026-W03": {"net": 12.20, "trades": 12, "gross_loss": -1.71},
+      "2026-W04": {"net": 21.65, "trades": 33, "gross_loss": -15.80},
+      "2026-W05": {"net": 139036.56, "trades": 77897, "gross_loss": -1621.69}
+    }
+  },
+  "profit_frontier": {
+    "name": "WD119_SUBPHASE_Q1190_Q1100_CAP1152_PROFIT_FRONTIER",
+    "cap": 1152,
+    "net": 204057.16,
+    "trades": 115746,
+    "gross_loss": -6799.93,
+    "pf": 31.0087147956,
+    "win": 0.9927513694,
+    "expectancy": 1.7629737529,
+    "avg_hold_s": 27.2707210012,
+    "balance_dd": 5410.24,
+    "equity_dd": 102850.56,
+    "maxopen": 1152
+  },
+  "aggressive_frontier": {
+    "name": "WD119_SUBPHASE_Q1190_Q1100_CAP1408_AGGRESSIVE_FRONTIER",
+    "cap": 1408,
+    "net": 236591.60,
+    "trades": 133836,
+    "gross_loss": -8089.11,
+    "pf": 30.2481620351,
+    "win": 0.9929167040,
+    "expectancy": 1.7677724977,
+    "avg_hold_s": 27.9845103111,
+    "balance_dd": 6470.69,
+    "equity_dd": 125706.24,
+    "maxopen": 1408
+  },
+  "critical_finding": "Watchdog-119 is a highly profitable late-January high-renewal regime specialist, not yet a complete arbitrary-start January system. Nearly all working-base economics occur in 2026-W05.",
+  "rejected": [
+    "local-NY hour11/source16 expansion",
+    "naive hard child stops",
+    "forced 30/60/90/120-second child timeouts",
+    "simple aggregate-floating-loss gates",
+    "same-tick multiplicity caps at tested bounds"
+  ],
+  "library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/january-reexamination-131a/",
+  "next": "GAMMA_02_JAN_WATCHDOG119_WEEKLY_COVERAGE_AND_HEAT_131B",
+  "august": "SEALED",
+  "mql5": "NOT_AUTHORIZED"
+}
