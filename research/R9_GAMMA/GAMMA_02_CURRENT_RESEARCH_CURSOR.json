@@ -1,22 +1,22 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v14",
+  "schema": "r9-gamma-02-research-cursor-v15",
   "state": "IDLE_READY_MAJOR_CHECKPOINT",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_083_GLOBAL_CHILD_CAP_087",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_083_GLOBAL_CHILD_CAP_087.md",
+  "latest_completed": "GAMMA_02_083_CHILD_CAP_BOUNDARY_087C",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_083_CHILD_CAP_BOUNDARY_087C.md",
   "current_scientific_base": {
-    "candidate": "GAMMA02_083_GLOBAL_CHILD_CAP_087",
-    "child_cap": 704,
-    "net": 48817.85,
-    "trades": 32889,
-    "pf": 19606.562248995982,
-    "win": 0.9990270303140868,
-    "expectancy": 1.484321505670589,
-    "avg_hold_s": 14.600895618595883,
-    "equity_dd": 10362.88,
-    "equity_dd_pct_peak": 6.9634657401645015,
+    "candidate": "GAMMA02_083_CHILD_CAP_703",
+    "child_cap": 703,
+    "net": 48766.62,
+    "trades": 32862,
+    "pf": 19585.987951807223,
+    "win": 0.9990262309049966,
+    "expectancy": 1.4839821069928791,
+    "avg_hold_s": 14.602091138701233,
+    "equity_dd": 10348.16,
+    "equity_dd_pct_peak": 6.955969020469377,
     "minimum_total_equity": 99043.55,
-    "maxopen": 704,
+    "maxopen": 703,
     "all_metric_january_r9_synth_crossover": true
   },
   "exact_helpers": {
@@ -67,12 +67,12 @@
     "wave_multiplicity_085": "Desk-level same-tick renewal collapse with fixed multiplicity rejected: same-tick child groups share direction/entry price but retain heterogeneous parent-owned exits/PnL; 538 tested wave-size pairs produced zero all-six-metric crossovers.",
     "parent_phase_desync_086": "Causal parent entry-price phase rearm maps can preserve all six SYNTH metrics but do not reduce maxopen/max same-tick cluster; heat remains 1,443."
   },
-  "first_incomplete_unit": "GAMMA_02_083_CHILD_CAP_BOUNDARY_087B",
+  "first_incomplete_unit": "GAMMA_02_083_EXACT_MARGIN_MODEL_088",
   "next_units": [
-    "refine minimum all-metric child cap between 640 and 704",
-    "exact $100K margin model",
-    "freeze January architecture",
-    "chronological February validation with January parameters frozen"
+    "exact $100K 1:500 XAUUSD margin utilization model for cap703",
+    "freeze January architecture if operationally feasible",
+    "chronological February validation with January parameters frozen",
+    "no January retuning after February is opened"
   ],
   "constraints": {
     "august": "SEALED",
@@ -81,7 +81,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read GAMMA_02_083_GLOBAL_CHILD_CAP_087.md then 086/085/084/083. Do not rerun <=087. Resume only child-cap boundary 087B.",
+  "recovery_rule": "Read GAMMA_02_083_CHILD_CAP_BOUNDARY_087C.md then 087/086/085/084/083. Do not rerun <=087C. Resume only exact margin model 088.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
