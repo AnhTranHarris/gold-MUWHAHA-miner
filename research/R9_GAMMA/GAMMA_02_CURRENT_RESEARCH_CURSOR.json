@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v5",
+  "schema": "r9-gamma-02-research-cursor-v6",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_PROFIT_FUNDED_CAPACITY_026",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_PROFIT_FUNDED_CAPACITY_026.md",
+  "latest_completed": "GAMMA_02_FUNDED_CAP_UTILIZATION_027",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_FUNDED_CAP_UTILIZATION_027.md",
   "current_scientific_base": {
     "opportunity_engine": {
       "counting_rule": "MAX_ONE_NEW_TICKET_PER_SOURCE_PER_MARKET_TICK",
@@ -23,48 +23,54 @@
       "expectancy": 6.270322567556603,
       "realized_balance_dd": 4179.75,
       "classification": "MAJOR_EXPOSURE_EFFICIENCY_BREAKTHROUGH"
+    },
+    "funded_capacity_utilization": {
+      "unlocks": [
+        {
+          "to_cap": 128,
+          "time_utc": "2026-01-12T15:00:25.967Z",
+          "realized_profit": 2531.85
+        },
+        {
+          "to_cap": 192,
+          "time_utc": "2026-01-13T15:04:46.957Z",
+          "realized_profit": 6116.65
+        },
+        {
+          "to_cap": 256,
+          "time_utc": "2026-01-14T11:53:41.781Z",
+          "realized_profit": 7998.01
+        }
+      ],
+      "skip_rate_by_cap": {
+        "64": 0.9116004569,
+        "128": 0.7473881597,
+        "192": 0.5018703242,
+        "256": 0.6537743441
+      },
+      "interpretation": "capacity remains binding even after full 256-slot funding"
     }
-  },
-  "conservative_parent": {
-    "net": 77049.12,
-    "trades": 10351,
-    "pf": 5.371526710021208,
-    "expectancy": 7.443640227997294,
-    "checkpoint": "research/R9_GAMMA/GAMMA_02_ONE_EVENT_PER_TICK_AUDIT_014.md"
   },
   "exact_helpers": {
-    "desk_specific_rebreak": {
-      "github_path": "research/R9_GAMMA/helpers/gamma02_rebreak_desk_specific_018.py",
-      "github_commit": "3093eb9a4cbdcd15caafb7217bd3f8d11fb0726c",
-      "library_path": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_rebreak_desk_specific_018.py",
-      "helper_sha256": "f025f12fdce1e70a8662342cf4b6a2fe1633fc4c2575f86c00e2c2bb6df6a083",
-      "london_result_path": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_rebreak_desk_specific_018_london.json",
-      "ny17_result_path": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_rebreak_desk_specific_018_ny17.json"
-    },
-    "hour_specific_heartbeat": {
-      "library_path": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_hour_specific_heartbeat_022.py",
-      "result_path": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_hour_specific_heartbeat_022_cap128.json",
-      "helper_sha256": "8bb8fd7c69e79f1232ec8257a64b2b30d4d32670ed92c43b5fa311e909acd7d1",
-      "result_sha256": "3259cf745ddbee67558ec52e71d83f9aaf73730742f96f879fbeaf21f9caed04"
-    },
-    "profit_funded_capacity": {
-      "library_path": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_profit_funded_capacity_026.py",
-      "result_a": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_profit_funded_capacity_026.json",
-      "result_b": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_profit_funded_capacity_026b.json",
-      "helper_sha256": "b567b1c5cd3d1545c8c1757bd7545ca5fcbdeb70e25f0f648caa35741b2ae0bc",
-      "result_b_sha256": "5501afe8e0e7163b6d31dcb332182874c5e148efca6b4e68721031e46b805dc1"
+    "funded_cap_utilization": {
+      "github_path": "research/R9_GAMMA/helpers/gamma02_funded_cap_utilization_027.py",
+      "result_path": "research/R9_GAMMA/artifacts/gamma02_funded_cap_utilization_027.json",
+      "helper_sha256": "4468b54e3adc02d3cb2814551b33566c3329f08214662fbc80aebe093163539a",
+      "result_sha256": "8a6ce26e4896f1fdf8507405c39d31f3b3168418389abf99b2684dd214e396dd"
     }
   },
-  "historical_scaling_frontier_note": "Earlier multi-level extension results remain explicit pyramiding/scaling research only; they are not chronological opportunity-count authority.",
+  "qa_notes": {
+    "profit_funded_026_attribution_bug": "historical helper swapped source/reason labels only in attribution output; admission economics are unaffected; utilization helper corrects ordering"
+  },
   "invalidated": {
     "stage2_stage3_hour_slice_london_overlap": "tail-minute entry artifact; see GAMMA_02_SLICE_CONTINUOUS_PARITY_001.md",
     "same_tick_multi_level_as_opportunity_count": "reclassified as pyramiding/scaling; see GAMMA_02_ONE_EVENT_PER_TICK_AUDIT_014.md"
   },
-  "first_incomplete_unit": "GAMMA_02_FUNDED_CAP_UTILIZATION_027",
+  "first_incomplete_unit": "GAMMA_02_FUNDED_CAP_EQUITY_DD_028",
   "next_units": [
-    "record funded-cap unlock chronology and utilization",
-    "full ordered-tick equity-DD replay for January finalists",
+    "full ordered-tick equity-DD replay for funded-cap lower-cap finalists",
     "extract exact January-only R9 SYNTH benchmark",
+    "test slot-turnover / profit-lock mechanisms only after equity-DD",
     "freeze January architecture before chronological Jan-Jul validation"
   ],
   "constraints": {
@@ -74,15 +80,6 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read this cursor, then GAMMA_02_TIMEOUT_RECOVERY_CHECKPOINT_005.md and GAMMA_02_PROFIT_FUNDED_CAPACITY_026.md. Do not rerun completed units. Resume only GAMMA_02_FUNDED_CAP_UTILIZATION_027.",
-  "quality_comparator": {
-    "net": 92887.56,
-    "trades": 16590,
-    "pf": 3.8211152156225063,
-    "expectancy": 5.599009041591321,
-    "realized_balance_dd": 2302.79,
-    "description": "uniform London/overlap 1s + NY18 250ms, NY16/17 heartbeat off"
-  },
-  "latest_recovery_checkpoint": "research/R9_GAMMA/GAMMA_02_TIMEOUT_RECOVERY_CHECKPOINT_005.md",
-  "latest_branch_head": "68c2744f4b8b3b252bb7e45dc7a28b0649f1596a"
+  "recovery_rule": "Read this cursor, then GAMMA_02_FUNDED_CAP_UTILIZATION_027.md. Do not rerun completed units. Resume only GAMMA_02_FUNDED_CAP_EQUITY_DD_028.",
+  "latest_branch_head": "747af6d4b8e5b04ffeb6489d60a5ce1d7ab37acb"
 }
