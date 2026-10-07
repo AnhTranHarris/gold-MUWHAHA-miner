@@ -1,31 +1,57 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v8",
+  "schema": "r9-gamma-02-research-cursor-v6",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_JAN_R9_SYNTH_BENCHMARK_029",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_JAN_R9_SYNTH_BENCHMARK_029.md",
+  "latest_completed": "GAMMA_02_NY_SURGE_HEARTBEAT_QUALITY_039",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_TIMEOUT_RECOVERY_CHECKPOINT_006.md",
   "current_scientific_base": {
-    "opportunity_engine": {
-      "counting_rule": "MAX_ONE_NEW_TICKET_PER_SOURCE_PER_MARKET_TICK",
-      "heartbeat": "GAMMA_02_HOUR_SPECIFIC_HEARTBEAT_022",
-      "cap128_net": 94897.31,
-      "cap128_trades": 16927,
-      "cap128_pf": 3.7428918356623044
-    },
-    "funded_capacity_frontier": {
+    "opportunity_counting_rule": "MAX_ONE_NEW_TICKET_PER_SOURCE_PER_MARKET_TICK",
+    "funded_base": {
       "start_cap": 64,
       "step_slots": 64,
-      "realized_profit_unit": 2500,
-      "max_cap": 256,
-      "net": 154538.37,
-      "trades": 24646,
-      "pf": 4.091096910930705,
-      "expectancy": 6.270322567556603,
-      "balance_dd": 4179.75,
-      "equity_dd": 17547.11,
-      "equity_dd_pct_of_peak_total": 6.8641,
-      "minimum_total_equity_on_100k": 98366.51,
-      "classification": "MAJOR_EXPOSURE_EFFICIENCY_BREAKTHROUGH_EQUITY_QA_PASS"
+      "profit_unit": 2500,
+      "max_cap": 256
+    },
+    "session_surge": {
+      "ny16_extra_slots": 256,
+      "ny17_extra_slots": 256,
+      "hard_research_cap": 512
+    },
+    "quality_filters": {
+      "exclude_hours": [
+        14
+      ],
+      "hour9_min_displacement": 1,
+      "hour12_min_displacement": 0.5,
+      "ny18_bins_utc": [
+        "18:10-18:39"
+      ]
+    },
+    "heartbeat": {
+      "ny16_ms": 1000,
+      "ny17_ms": 1000
+    },
+    "max_net": {
+      "net": 250007.74,
+      "trades": 24083,
+      "pf": 7.83721077784539,
+      "expectancy": 10.381087904330858,
+      "win": 0.7531453722542872,
+      "balance_dd": 2846.54
+    },
+    "quality_frontier": {
+      "exclude_hours": [
+        8,
+        9,
+        12,
+        18
+      ],
+      "net": 209521,
+      "trades": 11726,
+      "pf": 14.141872206063974,
+      "expectancy": 17.868070953436806,
+      "win": 0.8283302063789869,
+      "balance_dd": 2846.54
     }
   },
   "exact_helpers": {
@@ -44,12 +70,12 @@
     "profit_funded_026_attribution_bug": "historical helper swapped source/reason labels only in attribution output; admission economics unaffected",
     "equity_dd": "all finalist DDs now marked on every ordered January Bid/Ask tick"
   },
-  "first_incomplete_unit": "GAMMA_02_SLOT_EFFICIENCY_QUALITY_030",
+  "first_incomplete_unit": "GAMMA_02_SURGE_HEARTBEAT_EQUITY_DD_040",
   "next_units": [
-    "source/hour slot-efficiency deletion and routing under exact funded-cap replay",
-    "campaign profit-lock / unified-stop tests using tick-marked equity",
-    "freeze January architecture only after quality/velocity frontier is stable",
-    "chronological Jan-Jul validation after January freeze"
+    "full ordered-tick equity-DD for max-net and quality surge-heartbeat finalists",
+    "surge-cap utilization/saturation audit for 16/17",
+    "causal PF/win-rate improvement while preserving >=20k unique-tick January trades",
+    "freeze January architecture before chronological Jan-Jul validation"
   ],
   "constraints": {
     "august": "SEALED",
@@ -58,7 +84,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read this cursor, then GAMMA_02_JAN_R9_SYNTH_BENCHMARK_029.md and GAMMA_02_FUNDED_CAP_EQUITY_DD_028.md. Resume only GAMMA_02_SLOT_EFFICIENCY_QUALITY_030.",
+  "recovery_rule": "Read this cursor and GAMMA_02_TIMEOUT_RECOVERY_CHECKPOINT_006.md. Do not rerun completed 027-039 units. Resume only GAMMA_02_SURGE_HEARTBEAT_EQUITY_DD_040.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -67,5 +93,15 @@
     "expectancy": 1.4839463902787706,
     "avg_hold_s": 16.462687634024302,
     "source_sha256": "e5fcf4d6879193fac88e7a8e101db1111d59e1a7f5abfb793c970b06cfce7cc7"
-  }
+  },
+  "latest_recovery_checkpoint": "research/R9_GAMMA/GAMMA_02_TIMEOUT_RECOVERY_CHECKPOINT_006.md",
+  "january_r9_synth": {
+    "net": 41520.82,
+    "trades": 27980,
+    "pf": 23.715411927544082,
+    "win": 0.8709077912794854,
+    "expectancy": 1.4839463902787706,
+    "avg_hold_s": 16.462687634024302
+  },
+  "latest_branch_head": "048c3b9356c2d45c1bf0855f1577f55972845620"
 }
