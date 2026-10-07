@@ -1,0 +1,78 @@
+{
+  "id": "R9_GAMMA_01_STMR_CLOCKFIX_001",
+  "status": "CLOCKFIX_IMPLEMENTED_STATIC_QA_PASS_AWAITING_METAEDITOR_AND_GRID_ONLY_REAL_TICK_RETEST",
+  "date": "2026-10-06",
+  "base": {
+    "branch": "carson/r9-gamma-00-baseline",
+    "commit": "5883b014f93ddf4c6ec2d2f6f28916fb9f175fbb",
+    "base_ea": "Experts/GoldMuwahahaMiner_R9_HybridGate.mq5",
+    "base_ea_blob": "7eecb5f1947017a01ce85b2520725de54749e523"
+  },
+  "failed_candidate": {
+    "branch": "carson/r9-gamma-01-stmr-xmonth-grid",
+    "ea": "Experts/GoldMuwahahaMiner_R9_GAMMA_01_STMRGrid.mq5",
+    "head": "40c1640f9816ac6d2b5a82d03b070579a1484295",
+    "pr": 12,
+    "pr_status": "CLOSED_SUPERSEDED_CLOCK_BUG",
+    "failure": "grid used Coinexx Strategy Tester server/quote timestamps as UTC because shared InpQuoteUtcOffsetMinutes defaulted to 0"
+  },
+  "failed_report": {
+    "source": "ReportTester-871471_grid_v1.xlsx",
+    "combined_trades": 239702,
+    "combined_net": -50946.17,
+    "combined_profit_factor": 0.393458,
+    "isolated_grid_trades": 3055,
+    "isolated_grid_net": -660.89,
+    "isolated_grid_incremental_profit_factor": 0.812721,
+    "interpretation": "grid was integrated and traded; failed run is invalid as scientific STMR certification because UTC session/timeframe state was shifted"
+  },
+  "root_cause_proof": {
+    "method": "Python fault injection: transform UTC event timestamps to simulated Coinexx server time UTC+2 standard / UTC+3 US-DST, then incorrectly consume those timestamps as UTC",
+    "correct_python_monthly_trade_counts": [885,583,559,247,114,187,100],
+    "bad_clock_python_monthly_trade_counts": [636,412,642,312,263,385,443],
+    "failed_mt5_monthly_grid_trade_counts": [624,405,639,307,265,378,437],
+    "conclusion": "bad-clock replay nearly reproduces failed MT5 trade-count shape; primary defect is time-domain normalization"
+  },
+  "repair": {
+    "branch": "carson/r9-gamma-01-stmr-clockfix",
+    "ea": "Experts/GoldMuwahahaMiner_R9_GAMMA_01_STMRGrid_ClockFix.mq5",
+    "clock_default": "STMR_GRID_CLOCK_COINEXX_AUTO",
+    "coinexx_standard_offset_minutes": 120,
+    "coinexx_us_dst_offset_minutes": 180,
+    "core_time_behavior": "UNCHANGED",
+    "grid_scientific_geometry": "UNCHANGED",
+    "implementation": "wrapper textually includes exact failed GAMMA-01 source and overrides only grid historical server-time to UTC normalization and tick orchestration",
+    "runtime_clock_guard": "Journal prints CLOCKMAP server timestamp, offset minutes, computed UTC timestamp at first tick and every offset transition"
+  },
+  "qa": {
+    "clockfix_static_qa": "PASS",
+    "original_gamma_integration_qa": "PASS",
+    "github_actions_run": 37557877603,
+    "qa_head": "7f12fbbdf4076531ceebb66a337911fafaa3b539",
+    "metaeditor_compile": "PENDING",
+    "coinexx_grid_only_real_tick": "PENDING"
+  },
+  "pull_request": 13,
+  "required_next_test": {
+    "symbol": "XAUUSD",
+    "host_timeframe": "M1",
+    "date_from": "2026-01-01",
+    "date_to": "2026-07-31",
+    "model": "Every tick based on real ticks",
+    "deposit": 100000,
+    "leverage": "1:500",
+    "InpCoreEnabled": false,
+    "InpGridEnabled": true,
+    "InpGridClockMode": "STMR_GRID_CLOCK_COINEXX_AUTO",
+    "first_journal_check": "CLOCKMAP should show Jan server->UTC with offsetMin=120; after US DST it should switch to offsetMin=180",
+    "rule": "do not retune session/timeframe/TP/SL parameters until corrected broker certification is reconciled"
+  },
+  "research_authority": {
+    "cleanroom_candidate": "STMR_XMONTH_SUBPHASE_001",
+    "cleanroom_jan_jul_net": 829.71,
+    "cleanroom_jan_jul_pf": 1.2967425592,
+    "cleanroom_jan_jul_trades": 2675,
+    "authoritative_january_floor": "STMR_SLEEVE_PHASE_001 +877.78 / 1518 trades / PF 1.602933",
+    "august": "SEALED"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "id": "R9_GAMMA_01_STMR_MT5_VALIDATED_SAVEPOINT_20261006",
+  "status": "MAJOR_CERTIFIED_SAVEPOINT_FREEZE_BEFORE_NEXT_GRID_LAYER",
+  "date": "2026-10-06",
+  "source_branch": "carson/r9-gamma-01-stmr-clockfix",
+  "source_head": "1771df800bc8e067c1ed24cc6a80d308eec732f1",
+  "validated_ea": "Experts/GoldMuwahahaMiner_R9_GAMMA_01_STMRGrid_ClockFix.mq5",
+  "validated_mode": {
+    "InpCoreEnabled": false,
+    "InpGridEnabled": true,
+    "InpGridClockMode": "STMR_GRID_CLOCK_COINEXX_AUTO",
+    "coinexx_standard_utc_offset_minutes": 120,
+    "coinexx_us_dst_utc_offset_minutes": 180,
+    "symbol": "XAUUSD",
+    "host_timeframe": "M1",
+    "model": "Every tick based on real ticks",
+    "fixed_lot": 0.01,
+    "max_grid_positions": 3,
+    "hedging_required": true
+  },
+  "coinexx_mt5_grid_only_certification": {
+    "report": "ReportTester-871471_grid_clock_2.xlsx",
+    "report_sha256": "01a8cea2a19e15203447ea2ab68107ea1902f7760331d480e661521fdd82e229",
+    "period": "2026-01-01..2026-07-31",
+    "deposit": 100000,
+    "leverage": "1:500",
+    "net_profit": 579.60,
+    "gross_profit": 3406.99,
+    "gross_loss": -2827.39,
+    "profit_factor_approx": 1.2050,
+    "trades": 2582,
+    "expected_payoff_approx": 0.2245,
+    "win_rate_pct_approx": 31.25,
+    "monthly_sign_sequence": ["+","+","+","-","-","+","-"]
+  },
+  "dukascopy_python_comparator": {
+    "candidate": "STMR_XMONTH_SUBPHASE_001",
+    "net_profit": 829.71,
+    "gross_profit": 3625.77,
+    "gross_loss": -2796.06,
+    "profit_factor": 1.2967425592,
+    "trades": 2675,
+    "expected_payoff": 0.3101719626,
+    "win_rate_pct": 32.79,
+    "monthly_sign_sequence": ["+","+","+","-","-","+","-"]
+  },
+  "r9_synth_hard_goal": {
+    "status": "HARD_NORTH_STAR_NOT_SOFT_REFERENCE",
+    "net_profit": 309122.85,
+    "gross_profit": 325361.51,
+    "gross_loss": -16238.66,
+    "profit_factor": 20.036229,
+    "expected_payoff": 1.409319,
+    "trades": 219342,
+    "win_rate_pct": 87.14063,
+    "active_trading_days": 149,
+    "trades_per_active_day": 1472.09396,
+    "average_hold_seconds": 17.315443,
+    "median_hold_seconds": 17
+  },
+  "hard_rules_next_phase": [
+    "Preserve validated session/timeframe foundation unless a preregistered causal experiment proves a replacement superior.",
+    "Every accepted layer must materially close the cumulative gap toward the R9 SYNTH metric vector.",
+    "Sub-1-percent cosmetic gains are not an acceptable end-state optimization loop.",
+    "Judge improvements system-wide across net, PF, expectancy, win rate, velocity, loss exposure, hostile-month persistence, and holding behavior.",
+    "Use prior successful layers cumulatively; do not throw away working mechanics when adding a new layer.",
+    "Rejected ideas remain negative evidence and must not be silently recycled.",
+    "Do not destroy Coinexx/Dukascopy cross-environment alignment without extraordinary evidence.",
+    "April, May, and July are legitimate shared weaknesses to solve causally, not with month labels.",
+    "August remains sealed until explicit authorization."
+  ],
+  "drive_checkpoint": {
+    "folder_id": "1MNC2zPSL34AvdMYXp9XZLDOk_iVmx-Yj",
+    "read_first_doc_id": "15v5c_lg6t860oIY_VrbADmWdPM8HxMf5MAaV_rWRzZA",
+    "raw_report_drive_file_id": "1D-Fcn9M_2B09UWEAy4kulMVS_N8l0VoR"
+  },
+  "rollback_rule": "If later research fails, return to this checkpoint. Do not reconstruct this milestone from memory."
+}

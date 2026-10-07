@@ -1,0 +1,37 @@
+{
+  "id": "R9_GAMMA_01_STMR_XMONTH_GRID",
+  "created": "2026-10-06",
+  "base": {
+    "branch": "carson/r9-gamma-00-baseline",
+    "commit": "5883b014f93ddf4c6ec2d2f6f28916fb9f175fbb",
+    "ea_blob": "7eecb5f1947017a01ce85b2520725de54749e523"
+  },
+  "candidate_ea": "Experts/GoldMuwahahaMiner_R9_GAMMA_01_STMRGrid.mq5",
+  "candidate_branch": "carson/r9-gamma-01-stmr-xmonth-grid",
+  "research_candidate": "STMR_XMONTH_SUBPHASE_001",
+  "research_status": "clean-room Jan-Jul research candidate, not replacement for accepted January floor",
+  "python_comparator": {
+    "net": 829.71,
+    "pf": 1.2967425592,
+    "trades": 2675
+  },
+  "implementation_guards": [
+    "exact R9 core behavior functions compared byte-for-byte in CI",
+    "independent CTrade objects and magic numbers",
+    "grid requires hedging for three-position parity",
+    "compiled STMR constants are not user-optimizable",
+    "decision logger records crossing/state/admission path",
+    "core-first, grid-second deterministic tick call order"
+  ],
+  "mt5_status": "not yet compiled in MetaEditor",
+  "coinexx_status": "not yet backtested",
+  "promotion": false,
+  "static_qa": {
+    "status": "PASS",
+    "run_id": 37553761105
+  },
+  "pull_request": {
+    "number": 12,
+    "draft": true
+  }
+}

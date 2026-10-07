@@ -1,0 +1,25 @@
+name: R9 GAMMA-01 STMR clock-fix static QA
+
+on:
+  push:
+    branches:
+      - carson/r9-gamma-01-stmr-clockfix
+    paths:
+      - 'Experts/GoldMuwahahaMiner_R9_GAMMA_01_STMRGrid.mq5'
+      - 'Experts/GoldMuwahahaMiner_R9_GAMMA_01_STMRGrid_ClockFix.mq5'
+      - 'research/R9_GAMMA/qa/gamma01_stmr_clockfix_static_qa.py'
+      - '.github/workflows/r9-gamma01-stmr-clockfix-static-qa.yml'
+  workflow_dispatch:
+
+jobs:
+  static-clock-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify Coinexx historical clock normalization wrapper
+        run: python research/R9_GAMMA/qa/gamma01_stmr_clockfix_static_qa.py
+      - name: Verify existing GAMMA-01 core/grid integration guard
+        run: python research/R9_GAMMA/qa/gamma01_stmr_grid_static_qa.py

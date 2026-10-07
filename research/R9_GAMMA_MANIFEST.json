@@ -1,11 +1,108 @@
 {
   "series": "R9 GAMMA",
-  "checkpoint": 0,
-  "status": "BASELINE",
-  "parent_branch": "carson/mt5-r9-hybrid-gate-certification",
+  "checkpoint": 1,
+  "candidate": "GAMMA-01 STMR XMonth Grid",
+  "status": "STATIC_QA_PASS_METAEDITOR_AND_COINEXX_CERTIFICATION_PENDING",
+  "parent_branch": "carson/r9-gamma-00-baseline",
+  "parent_commit": "5883b014f93ddf4c6ec2d2f6f28916fb9f175fbb",
   "parent_ea": "Experts/GoldMuwahahaMiner_R9_HybridGate.mq5",
-  "branch": "carson/r9-gamma-00-baseline",
-  "strategy_change": false,
+  "parent_ea_blob_sha": "7eecb5f1947017a01ce85b2520725de54749e523",
+  "branch": "carson/r9-gamma-01-stmr-xmonth-grid",
+  "ea": "Experts/GoldMuwahahaMiner_R9_GAMMA_01_STMRGrid.mq5",
+  "strategy_change": true,
+  "architecture": "exact R9 HybridGate core plus independently-magic-numbered STMR_XMONTH_SUBPHASE_001 sidecar",
+  "research_source": {
+    "candidate": "STMR_XMONTH_SUBPHASE_001",
+    "branch": "delta-A-alpha-stmr-janjul-stress-20261006",
+    "journal": "research/delta_a_alpha/state_journal/0028_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_003.json",
+    "python_helper_sha256": "0df41a4ece3083129022443daab14687b5a170bb888e879d7352301568f7def5",
+    "python_result_sha256": "32f2c80fad10950a51e22d14c37bcc8ad333bae2581078a4f0205ed37b443515",
+    "python_report_sha256": "2a4ccb9ea8604c7a1bfb07e018432cd040f73d11697b5c5e8fde55d157af2b5a",
+    "cleanroom_jan_jul": {
+      "net": 829.71,
+      "gross_profit": 3625.77,
+      "gross_loss": -2796.06,
+      "profit_factor": 1.2967425592,
+      "trades": 2675,
+      "expected_payoff": 0.3101719626,
+      "monthly_net": [
+        641.58,
+        43.95,
+        4.55,
+        -34.51,
+        -19.89,
+        213.13,
+        -19.1
+      ]
+    }
+  },
+  "authoritative_january_floor_unchanged": {
+    "candidate": "STMR_SLEEVE_PHASE_001",
+    "net": 877.78,
+    "trades": 1518,
+    "profit_factor": 1.602933,
+    "note": "exact portable January helper bytes were not recovered; this Gamma build ports the durable Jan-Jul clean-room child"
+  },
+  "integration_controls": {
+    "core_only": "InpCoreEnabled=true; InpGridEnabled=false",
+    "grid_only": "InpCoreEnabled=false; InpGridEnabled=true",
+    "combined_default": "InpCoreEnabled=true; InpGridEnabled=true",
+    "core_magic": 5559,
+    "grid_magic": 5593001
+  },
+  "grid_contract": {
+    "symbol": "XAUUSD",
+    "fixed_lot": 0.01,
+    "max_grid_positions": 3,
+    "hedging_required_for_parity": true,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "sessions": "fixed UTC",
+    "timeframes": "completed custom H4/H1/M15/M5 EMA(8/21)",
+    "genealogy": "session-local sleeve-local first-touch",
+    "timer_rearm": false,
+    "max_hold_seconds": 300,
+    "trailing_stop": false,
+    "funded_sleeves": [
+      0,
+      2,
+      4,
+      8,
+      9,
+      11
+    ],
+    "subphase_rules": {
+      "ASIA_LOWER_TAKEOVER": "23:00-00:00 UTC",
+      "LONDON_M5_TAKEOVER": "11:00-12:00 UTC",
+      "OVERLAP_LOWER_TAKEOVER": "15:00-16:00 UTC",
+      "LATE_LOWER_TAKEOVER": "21:00-22:00 UTC"
+    }
+  },
+  "certification_order": [
+    "MetaEditor compile with zero errors; review every warning",
+    "Core-only Jan-Jul Every tick based on real ticks regression versus historical R9",
+    "Grid-only month-by-month parity runs using ten-day pre-roll and month-start entry gate",
+    "Grid-only continuous Jan-Jul real-tick run",
+    "Combined core+grid continuous Jan-Jul real-tick run",
+    "Repeat combined with Every tick for SYNTH orientation",
+    "Only then consider promotion"
+  ],
   "august_2026": "SEALED",
-  "rule": "Each promoted breakthrough must branch from the immediately preceding successful GAMMA checkpoint and receive a dedicated Markdown research note."
+  "invalid_for_lineage": {
+    "branch": "r9-stmr-xmonth-subphase-001-mt5-cert-20261006",
+    "reason": "no common ancestor with carson/r9-gamma-00-baseline; standalone Delta-A-alpha port, not the requested Gamma R9 base"
+  },
+  "rule": "Do not merge to the Gamma baseline or create GAMMA-02 from this candidate until MetaEditor and Coinexx certification pass.",
+  "static_qa": {
+    "status": "PASS",
+    "workflow": "R9 GAMMA-01 STMR Grid static QA",
+    "run_id": 37553761105,
+    "head_sha": "88466303d54a73bcf1f3e413b2ce83f37f9a32f7"
+  },
+  "pull_request": {
+    "number": 12,
+    "status": "DRAFT_DO_NOT_MERGE_BEFORE_MT5_CERT",
+    "base": "carson/r9-gamma-00-baseline",
+    "head": "carson/r9-gamma-01-stmr-xmonth-grid"
+  }
 }
