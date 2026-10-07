@@ -1,0 +1,62 @@
+{
+  "unit": "GAMMA_02_PARENT_RUNNER_PLUS_MICRO_HARVEST_SHADOW_STAGE1",
+  "status": "COMPLETE_MAJOR_JANUARY_CANDIDATE_REFINEMENT_REQUIRED",
+  "branch": "carson/r9-gamma-02-velocity-geometry-research",
+  "foundation": {
+    "mechanism": "Frozen STMR parent plus earned 5-second TP recycle on sleeves 0,2,4,9,11; sleeve8 remains runner.",
+    "net": 691.72,
+    "trades": 922,
+    "profit_factor": 1.7081128116,
+    "expectancy": 0.7502386117,
+    "drawdown": 46.17,
+    "max_positions": 3
+  },
+  "winner": {
+    "shadow_sleeves": [0,2,4,11],
+    "shadow_tp_price": 3.0,
+    "shadow_sl_price": 3.0,
+    "shadow_max_hold_seconds": 10,
+    "shadow_max_positions": 2,
+    "shadow_fixed_lot": 0.01,
+    "net": 1141.19,
+    "gross_profit": 2485.28,
+    "gross_loss": -1344.09,
+    "profit_factor": 1.8490428468,
+    "expectancy": 0.8619259819,
+    "win_rate": 0.4561933535,
+    "trades": 1324,
+    "shadow_net": 449.47,
+    "shadow_trades": 402,
+    "shadow_entries": 402,
+    "shadow_skips_due_cap": 170,
+    "drawdown": 53.11,
+    "equity_drawdown": 53.99,
+    "max_parent_positions": 3,
+    "max_shadow_positions": 2,
+    "max_combined_positions": 5
+  },
+  "delta_vs_compounded_foundation": {
+    "net": 449.47,
+    "net_pct": 64.9786,
+    "trades": 402,
+    "trades_pct": 43.6009,
+    "profit_factor": 0.14093,
+    "drawdown": 6.94
+  },
+  "delta_vs_original_frozen_stmr_parent": {
+    "net": 499.61,
+    "net_pct": 77.8718,
+    "trades": 439,
+    "trades_pct": 49.6045
+  },
+  "interpretation": "Major January discovery: preserving the parent runner while adding a separate fixed-lot short-horizon specialist materially increases both net and qualified trade count. It does so transparently by increasing explicit max concurrency from 3 to 5. This is not hidden leverage and must be survivability/capital-tested later. The optimum sits at the upper TP/SL boundary of Stage 1, so no promotion until neighborhood refinement and then Jan-Jul validation.",
+  "sha256": {
+    "helper": "30e7a2ad0054149d34e6f44d51dfdb346c9e59068a34d2110f0adab7f9112f4f",
+    "mask_runner": "20a3983f2a832c65d97640fd3c29ff8e413477db9d3985a704d314bf62a11871",
+    "full_stage1": "920e36b853787dd346a9e23f0e547a017ffcf4e194860b34a64df3bb218c91e3",
+    "summary": "04afd632af3c2d4a3a8fbe160b8898add0b064fb67a55dfa1aed3200e66fd724"
+  },
+  "durable_library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/",
+  "next_unit": "GAMMA_02_RUNNER_SHADOW_BOUNDARY_REFINEMENT",
+  "august_2026": "SEALED"
+}
