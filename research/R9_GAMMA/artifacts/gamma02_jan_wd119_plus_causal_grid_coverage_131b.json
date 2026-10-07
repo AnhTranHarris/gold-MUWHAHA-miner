@@ -1,0 +1,88 @@
+{
+  "candidate": "GAMMA_02_JAN_WD119_PLUS_CAUSAL_GRID_COVERAGE_131B",
+  "status": "JANUARY_COVERAGE_BREAKTHROUGH_PYTHON_RESEARCH_ONLY",
+  "market_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "helper_sha256": "55b2e2906b9551c22b4b3940c604388a7da43cbc06e51163aeceedb1649397be",
+  "full_result_sha256": "e685ebd2a9a5d23615439b57a0daaa8fcd4549e7dd5018f4bd85455d3851e3ad",
+  "source16_neighborhood_sha256": "21a28f561454dacc1819cf7cc2f8b0fb89cca22ea1b9f186993d1b78af5b80b4",
+  "execution_surface": "Dukascopy midpoint + frozen session-P75 normalized spread from stmr_base.materialize; not raw-Dukascopy fill parity and not Coinexx MT5 certification",
+  "watchdog_parent": {
+    "name": "WD119_SUBPHASE_Q1190_Q1100_CAP703",
+    "net": 139070.41,
+    "trades": 77942,
+    "gross_loss": -1639.20,
+    "pf": 85.8404160566,
+    "win": 0.9951887301,
+    "expectancy": 1.7842807472,
+    "balance_dd": 713.96,
+    "equity_dd": 62763.84,
+    "maxopen": 703
+  },
+  "coverage_v3_cap512": {
+    "net": 63918.96,
+    "trades": 8480,
+    "gross_profit": 64847.85,
+    "gross_loss": -928.89,
+    "pf": 69.8121952007,
+    "win": 0.9408018868,
+    "expectancy": 7.5376132075,
+    "balance_dd": 388.45,
+    "equity_dd": 6787.63,
+    "maxopen": 512,
+    "weeks": {
+      "2026-W01": {"net": 396.83, "trades": 31, "gross_loss": 0.0},
+      "2026-W02": {"net": 7292.32, "trades": 1711, "gross_loss": -223.40},
+      "2026-W03": {"net": 16658.07, "trades": 1613, "gross_loss": -57.52},
+      "2026-W04": {"net": 15830.76, "trades": 2254, "gross_loss": -128.77},
+      "2026-W05": {"net": 23740.98, "trades": 2871, "gross_loss": -519.20}
+    }
+  },
+  "combined": {
+    "net": 202989.37,
+    "trades": 86422,
+    "gross_profit": 205557.46,
+    "gross_loss": -2568.09,
+    "pf": 80.0429346323,
+    "win": 0.9898521210,
+    "expectancy": 2.3488159265,
+    "balance_dd": 713.96,
+    "equity_dd": 62763.84,
+    "minimum_total_equity_100k": 99961.07,
+    "maxopen": 703,
+    "cross_sleeve_overlap_maxopen": 0,
+    "weeks": {
+      "2026-W01": {"net": 396.83, "trades": 31, "gross_loss": 0.0},
+      "2026-W02": {"net": 7292.32, "trades": 1711, "gross_loss": -223.40},
+      "2026-W03": {"net": 16670.27, "trades": 1625, "gross_loss": -59.23},
+      "2026-W04": {"net": 15852.41, "trades": 2287, "gross_loss": -144.57},
+      "2026-W05": {"net": 162777.54, "trades": 80768, "gross_loss": -2140.89}
+    }
+  },
+  "r9_synth_january": {
+    "net": 41520.82,
+    "trades": 27980,
+    "gross_loss": -1827.87,
+    "pf": 23.7154119275,
+    "win": 0.8709077913,
+    "expectancy": 1.4839463903,
+    "avg_hold_s": 16.4626876340,
+    "balance_dd": 3.40
+  },
+  "rules": {
+    "month_or_week_feature": false,
+    "watchdog_logic_changed": false,
+    "coverage_interval_ms": 250,
+    "coverage_cap": 512,
+    "source16_neighborhood_ms_tested": [250,500,1000,2000]
+  },
+  "critical_blockers": [
+    "full-tick equity DD remains 62763.84 and is dominated by Watchdog synchronized inventory",
+    "W01 net 396.83 remains below R9 SYNTH W01 net 1027.95",
+    "coverage sleeve average hold is materially slower than R9 SYNTH and should be refined without destroying expectancy",
+    "same-tick Watchdog child multiplicity remains scaling/pyramiding and must not be mislabeled independent opportunity velocity"
+  ],
+  "library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/january-reexamination-131b/",
+  "next": "GAMMA_02_JAN_WD119_EQUITY_HEAT_AND_W01_COLDSTART_131C",
+  "august": "SEALED",
+  "mql5": "NOT_AUTHORIZED"
+}
