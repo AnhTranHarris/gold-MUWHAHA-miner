@@ -1,0 +1,17 @@
+{
+  "unit": "GAMMA_02_RUNNER_SHADOW_BOUNDARY_REFINEMENT_001",
+  "status": "COMPLETE_FRONTIER_TP_UPPER_BOUNDARY_STILL_OPEN",
+  "branch": "carson/r9-gamma-02-velocity-geometry-research",
+  "foundation": {"net":691.72,"trades":922,"profit_factor":1.7081128116,"drawdown":46.17,"max_positions":3},
+  "best_by_shadow_cap": {
+    "1": {"net":970.57,"trades":1149,"profit_factor":1.7909074611,"expectancy":0.8447084421,"drawdown":49.23,"max_positions":4,"tp":3.0,"sl":3.0,"hold_seconds":30},
+    "2": {"net":1156.63,"trades":1295,"profit_factor":1.8410570022,"expectancy":0.8931505792,"drawdown":70.64,"max_positions":5,"tp":3.0,"sl":3.0,"hold_seconds":30},
+    "3": {"net":1296.55,"trades":1325,"profit_factor":1.9003819444,"expectancy":0.9785283019,"drawdown":95.46,"max_positions":6,"tp":6.0,"sl":2.0,"hold_seconds":30},
+    "4": {"net":1407.03,"trades":1401,"profit_factor":1.9108405189,"expectancy":1.0043040685,"drawdown":127.70,"max_positions":7,"tp":6.0,"sl":3.0,"hold_seconds":15}
+  },
+  "interpretation": "The runner+shadow architecture forms a real exposure/return frontier. Increasing shadow concurrency recovers otherwise skipped qualified roots and raises PF/expectancy as well as net, so the gain is not simply proportional bad leverage. However DD rises sharply. Cap4 is the diagnostic profit frontier, while cap2/3 are lower-exposure candidates. The cap4 winner's 15-second hold is notably close to the R9 SYNTH ~16-second average holding time. TP=6 sits on the upper search boundary, so one final wider TP neighborhood is required before choosing the January discovery frontier.",
+  "sha256": {"helper":"c7a7458120dc74227806aa57f64ebb87a12fb53fad0b5df409dd1d3f646d8801","full_result":"01974366d8ff35cba610552b3a79223ca375a5e9377ef66aa9e8a6e2fee77499","summary":"ce43bc1397e75bd85e29da0a022c3cb9f3bfcdabae818f5f6374daa08f37e64d"},
+  "durable_library_root":"/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/",
+  "next_unit":"GAMMA_02_RUNNER_SHADOW_TP_UPPER_NEIGHBORHOOD",
+  "august_2026":"SEALED"
+}
