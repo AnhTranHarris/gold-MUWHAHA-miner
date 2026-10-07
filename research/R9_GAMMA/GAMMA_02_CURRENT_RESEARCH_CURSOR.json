@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v24",
+  "schema": "r9-gamma-02-research-cursor-v25",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_FEBRUARY_ROUTER_TRANSFER_QA_127",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_FEBRUARY_ROUTER_TRANSFER_QA_127.md",
+  "latest_completed": "GAMMA_02_MARCH_NATIVE_BREAKTHROUGH_130",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_MARCH_NATIVE_BREAKTHROUGH_130.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_DYNAMIC_RENEWAL_WATCHDOG_119",
     "frozen_params": {
@@ -131,13 +131,14 @@
     "warmup_leakage_103_104": "CRITICAL: 103/104 February authority suspended. Nominal February stream had 36,355 entries but only 102 entries actually in February after absolute-time filtering; prior +$43.9K result was warmup leakage.",
     "target_gate_083": "083 target-gated audit: Jan cap703 +$48,766.62 / 32,862; Feb +$4,193.52 / 7,020; Mar -$9,480.91 / 6,727. Prior frozen February +$52.96K was warmup-contaminated."
   },
-  "first_incomplete_unit": "GAMMA_02_MARCH_NATIVE_STATE_DISCOVERY_128",
+  "first_incomplete_unit": "GAMMA_02_APRIL_NATIVE_STATE_DISCOVERY_131",
   "next_units": [
-    "March-native state markout and lifecycle discovery",
-    "March conviction routing",
-    "persist March immediately",
-    "then April native breakthrough",
-    "August remains sealed"
+    "April native discovery/lifecycle/conviction",
+    "persist April immediately",
+    "then May",
+    "then June",
+    "then July",
+    "August sealed"
   ],
   "constraints": {
     "august": "SEALED",
@@ -146,7 +147,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read GAMMA_02_FEBRUARY_ROUTER_TRANSFER_QA_127.md and this cursor. Resume only March-native state discovery 128. Do not rerun <=127. August remains sealed.",
+  "recovery_rule": "Read GAMMA_02_MARCH_NATIVE_BREAKTHROUGH_130.md and this cursor. Resume only April native discovery 131. Do not rerun <=130. August remains sealed.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
