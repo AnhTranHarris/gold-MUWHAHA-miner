@@ -1,0 +1,65 @@
+{
+  "sequence": 29,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_R9_STMR_XMONTH_MT5_CERT_BUILD_001",
+  "status": "IMPLEMENTED_AWAITING_METAEDITOR_COMPILE_AND_COINEXX_BACKTEST",
+  "predecessor": {
+    "sequence": 28,
+    "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_003",
+    "path": "research/delta_a_alpha/state_journal/0028_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_003.json"
+  },
+  "accepted_floor_unchanged": true,
+  "accepted_floor": {
+    "candidate": "STMR_SLEEVE_PHASE_001",
+    "january_net": 877.78,
+    "trades": 1518,
+    "profit_factor": 1.602933
+  },
+  "mt5_certification_candidate": {
+    "candidate": "STMR_XMONTH_SUBPHASE_001",
+    "ea": "Experts/GoldMuwahahaMiner_R9_STMR_XMonth_001.mq5",
+    "branch": "r9-stmr-xmonth-subphase-001-mt5-cert-20261006",
+    "version": "9.31",
+    "python_cleanroom_janjul_net": 829.71,
+    "python_cleanroom_profit_factor": 1.2967425592,
+    "python_cleanroom_trades": 2675,
+    "status": "CODED_NOT_YET_MT5_COMPILED"
+  },
+  "implementation_contract": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "hedging_required": true,
+    "max_positions": 3,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "timeframe_engine": "custom UTC-aligned completed tick bars with EMA8/21",
+    "sessions": "fixed UTC",
+    "genealogy": "session-local sleeve-local first-touch",
+    "timer_rearm": false,
+    "max_hold_seconds": 300,
+    "trailing_stop": false,
+    "decision_logger": true,
+    "august_2026": "NO_ENTRIES_ENTRY_END_2026_08_01"
+  },
+  "files": {
+    "ea": "Experts/GoldMuwahahaMiner_R9_STMR_XMonth_001.mq5",
+    "certification_protocol": "research/delta_a_alpha/mt5/R9_STMR_XMONTH_SUBPHASE_001_MT5_CERTIFICATION.md",
+    "static_qa": "research/delta_a_alpha/qa/r9_stmr_xmonth_mt5_static_qa.py",
+    "workflow": ".github/workflows/r9-stmr-xmonth-mt5-static-qa.yml"
+  },
+  "local_precommit_checks": {
+    "static_contract_checks": 19,
+    "static_contract_status": "PASS",
+    "brace_balance": "PASS",
+    "paren_balance": "PASS",
+    "metaeditor_compile": "NOT_AVAILABLE_IN_CURRENT_RUNTIME"
+  },
+  "scientific_boundary": [
+    "Do not mix R9 HybridGate minute-bracket/S1/ATR/trailing/rearm logic into this EA.",
+    "Do not treat MT5 result as valid until MetaEditor compiles with zero errors; warnings must be reviewed.",
+    "Coinexx native Bid/Ask/fills/fees/stops/slippage are expected to differ from Dukascopy synthetic surface.",
+    "If results diverge materially, inspect the decision log in clock -> TF state -> lattice -> sleeve -> broker execution order before retuning.",
+    "Authoritative January floor remains journal 0024 until explicit promotion decision."
+  ],
+  "next_unit": "OWNER_METAEDITOR_COMPILE_THEN_COINEXX_REAL_TICK_BACKTEST"
+}
