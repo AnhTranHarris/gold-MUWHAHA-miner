@@ -2,8 +2,8 @@
   "schema": "r9-gamma-02-research-cursor-v18",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_JUNE_DISCOVERY_JULY_VALIDATION_115",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_JUNE_DISCOVERY_JULY_VALIDATION_115.md",
+  "latest_completed": "GAMMA_02_APRIL_PERSISTENT_NY17_SHORT_116",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_APRIL_PERSISTENT_NY17_SHORT_116.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_CHRONOLOGICAL_SPECIALIST_CHAIN_115",
     "jan": {
@@ -106,6 +106,10 @@
       "march_result_sha256": "89382c8be8532faab89f1097447eda97024b7c2590d9511db96ec65b82e274b3",
       "april_result_sha256": "754c7c0e5c28b359a0cd7c5bdb51b6c9035e8053f69109a8d0bc67a69d401fa3",
       "library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/post-crossover-recovery/low-activity-specialists/"
+    },
+    "april_persistent_116": {
+      "github_path": "research/R9_GAMMA/helpers/gamma02_april_persistent_ny17_short_116.py",
+      "result_path": "research/R9_GAMMA/artifacts/gamma02_april_persistent_ny17_short_116.json"
     }
   },
   "qa_notes": {
@@ -115,12 +119,13 @@
     "wave_multiplicity_085": "Desk-level same-tick renewal collapse with fixed multiplicity rejected: same-tick child groups share direction/entry price but retain heterogeneous parent-owned exits/PnL; 538 tested wave-size pairs produced zero all-six-metric crossovers.",
     "parent_phase_desync_086": "Causal parent entry-price phase rearm maps can preserve all six SYNTH metrics but do not reduce maxopen/max same-tick cluster; heat remains 1,443."
   },
-  "first_incomplete_unit": "GAMMA_02_UNIFIED_CAUSAL_SPECIALIST_ROUTER_116",
+  "first_incomplete_unit": "GAMMA_02_JULY_SPECIALIST_DISCOVERY_117",
   "next_units": [
-    "build causal router that selects 103/104 vs 109 vs 114 vs 115 without month labels",
-    "replay Jan-Jul chronologically with frozen specialist rules",
-    "exact tick-level equity-DD on unified router",
-    "only after parity consider MT5 implementation"
+    "discover July specialist without modifying 103/104,109,116",
+    "do not open August",
+    "checkpoint every bounded July experiment",
+    "after July specialist freezes, assemble Jan-Jul routed portfolio and certify aggregate equity/DD",
+    "then consider MQL5 build only after full architecture audit"
   ],
   "constraints": {
     "august": "SEALED",
@@ -129,7 +134,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read GAMMA_02_EMERGENCY_CROSSMONTH_HANDOFF_116.md and this cursor. Do not rerun <=115. Resume unified causal specialist router 116. August remains sealed.",
+  "recovery_rule": "Read GAMMA_02_FRESH_CHAT_BOOTSTRAP.md, then GAMMA_02_APRIL_PERSISTENT_NY17_SHORT_116.md. Do not rerun <=116. Resume only July specialist discovery 117. August remains sealed.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -214,6 +219,30 @@
       "april": {
         "net": 0,
         "trades": 0
+      }
+    },
+    "april_persistent_116": {
+      "status": "FROZEN_AFTER_APR_DISCOVERY_AND_MAY_JUNE_VALIDATION",
+      "rule": "17:40-17:59 UTC, H4/H1/M15/M5 all short, direction short, q=$1.25, rearm=0, cap703",
+      "april": {
+        "net": 9716.65,
+        "trades": 12484,
+        "pf": 2.6668725243
+      },
+      "may": {
+        "net": 10092.8,
+        "trades": 18305,
+        "pf": 1.8958930837
+      },
+      "june": {
+        "net": 4671.62,
+        "trades": 16076,
+        "pf": 1.3303326152
+      },
+      "july": {
+        "net": -300.98,
+        "trades": 3771,
+        "pf": 0.9214290935
       }
     }
   },
