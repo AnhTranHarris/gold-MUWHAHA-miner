@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v22",
+  "schema": "r9-gamma-02-research-cursor-v23",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_FEBRUARY_NATIVE_LIFECYCLE_QUALITY_125",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_FEBRUARY_NATIVE_LIFECYCLE_QUALITY_125.md",
+  "latest_completed": "GAMMA_02_FEBRUARY_NATIVE_CONVICTION_ROUTING_126",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_FEBRUARY_NATIVE_CONVICTION_ROUTING_126.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_DYNAMIC_RENEWAL_WATCHDOG_119",
     "frozen_params": {
@@ -131,13 +131,13 @@
     "warmup_leakage_103_104": "CRITICAL: 103/104 February authority suspended. Nominal February stream had 36,355 entries but only 102 entries actually in February after absolute-time filtering; prior +$43.9K result was warmup leakage.",
     "target_gate_083": "083 target-gated audit: Jan cap703 +$48,766.62 / 32,862; Feb +$4,193.52 / 7,020; Mar -$9,480.91 / 6,727. Prior frozen February +$52.96K was warmup-contaminated."
   },
-  "first_incomplete_unit": "GAMMA_02_FEBRUARY_NATIVE_CONVICTION_ROUTING_126",
+  "first_incomplete_unit": "GAMMA_02_FEBRUARY_ROUTER_TRANSFER_QA_127",
   "next_units": [
-    "raise February PF/win rate using causal displacement/subphase/state-age routing while preserving lifecycle portfolio economics",
-    "backcast frozen February state/lifecycle rules to January without month label",
-    "forward-test unchanged February rules on March",
-    "combine only cross-month-valid specialists into repaired meta-router",
-    "persist each month immediately; full equity-DD after router freezes",
+    "replay frozen February PF10 rule unchanged on January and March",
+    "if transfer survives, add unique-tick density specialist around quality core",
+    "if transfer fails, discover causal regime classifier rather than using month labels",
+    "persist January/March immediately",
+    "then continue native month breakthroughs April-July",
     "August remains sealed"
   ],
   "constraints": {
@@ -147,7 +147,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read GAMMA_02_FEBRUARY_NATIVE_LIFECYCLE_QUALITY_125.md and this cursor. Do not rerun <=125. Resume only February conviction routing 126. All prior warmup-contaminated February 103/104 authority remains invalid. August remains sealed.",
+  "recovery_rule": "Read GAMMA_02_FEBRUARY_NATIVE_CONVICTION_ROUTING_126.md and this cursor. Do not rerun <=126. Resume only February-router transfer QA 127 on January/March with frozen rules. August remains sealed.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -309,5 +309,14 @@
       "lifecycle_search": "research/R9_GAMMA/helpers/gamma02_feb_lifecycle_quality_125.py",
       "lifecycle_portfolio": "research/R9_GAMMA/helpers/gamma02_feb_lifecycle_portfolio_125.py"
     }
+  },
+  "february_pf10_126": {
+    "cap": 320,
+    "net": 55807.6,
+    "trades": 4319,
+    "pf": 19.5335883845,
+    "win": 0.8858532068,
+    "expectancy": 12.9214169947,
+    "balance_dd": 957.84
   }
 }
