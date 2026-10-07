@@ -1,23 +1,40 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v15",
+  "schema": "r9-gamma-02-research-cursor-v16",
   "state": "IDLE_READY_MAJOR_CHECKPOINT",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_083_CHILD_CAP_BOUNDARY_087C",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_083_CHILD_CAP_BOUNDARY_087C.md",
+  "latest_completed": "GAMMA_02_ROLLING_ACTIVITY_REGIME_103_104",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_ROLLING_ACTIVITY_REGIME_103_104.md",
   "current_scientific_base": {
-    "candidate": "GAMMA02_083_CHILD_CAP_703",
+    "candidate": "GAMMA02_ROLLING_ACTIVITY_REGIME_103",
+    "N": 64,
+    "early_roll_threshold": 12.9,
+    "late_roll_threshold": 64.93,
     "child_cap": 703,
-    "net": 48766.62,
-    "trades": 32862,
-    "pf": 19585.987951807223,
-    "win": 0.9990262309049966,
-    "expectancy": 1.4839821069928791,
-    "avg_hold_s": 14.602091138701233,
-    "equity_dd": 10348.16,
-    "equity_dd_pct_peak": 6.955969020469377,
-    "minimum_total_equity": 99043.55,
-    "maxopen": 703,
-    "all_metric_january_r9_synth_crossover": true
+    "january": {
+      "net": 43959.75,
+      "trades": 28119,
+      "pf": 19625.88839285715,
+      "win": 0.9990042320139407,
+      "expectancy": 1.56334684732743,
+      "avg_hold_s": 14.930153348269851,
+      "equity_dd": 10348.16,
+      "all_metric_crossover": true
+    },
+    "february": {
+      "net": 43937.72,
+      "trades": 28221,
+      "pf": 328.42916759818166,
+      "win": 0.9986180503880089,
+      "expectancy": 1.5569157719428794,
+      "avg_hold_s": 15.55275287906169,
+      "equity_dd": 10348.16,
+      "all_metric_crossover": true
+    },
+    "march": {
+      "net": 0,
+      "trades": 0,
+      "stand_aside": true
+    }
   },
   "exact_helpers": {
     "utilization": {
@@ -58,6 +75,15 @@
       "result_path": "research/R9_GAMMA/artifacts/gamma02_083_global_child_cap_087.json",
       "helper_sha256": "380752c77b445213da4e1295e2ae6d1f146a6e70d0603fae7959644db3b9565d",
       "result_sha256": "668190e51bed1ae1417385a3a25634fcac31138fc3ffbd1a418406841246f6aa"
+    },
+    "rolling_activity_103": {
+      "github_path": "research/R9_GAMMA/helpers/gamma02_083_rolling_activity_regime_103.py",
+      "library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/post-crossover-recovery/rolling-activity-103/",
+      "helper_sha256": "ca2da103b987e15b89f95124c59b9e7f113eb4ed8e1cba32c08d6eff179d7ca8"
+    },
+    "rolling_activity_equity_104": {
+      "github_path": "research/R9_GAMMA/helpers/gamma02_083_rolling_activity_equity_104.py",
+      "helper_sha256": "ab30adca112bf423ccd8fcfeefa6c2bd704a4dd8a4a56cbb6ceafb88837e4f1d"
     }
   },
   "qa_notes": {
@@ -67,12 +93,12 @@
     "wave_multiplicity_085": "Desk-level same-tick renewal collapse with fixed multiplicity rejected: same-tick child groups share direction/entry price but retain heterogeneous parent-owned exits/PnL; 538 tested wave-size pairs produced zero all-six-metric crossovers.",
     "parent_phase_desync_086": "Causal parent entry-price phase rearm maps can preserve all six SYNTH metrics but do not reduce maxopen/max same-tick cluster; heat remains 1,443."
   },
-  "first_incomplete_unit": "GAMMA_02_083_EXACT_MARGIN_MODEL_088",
+  "first_incomplete_unit": "GAMMA_02_FROZEN_APRIL_VALIDATION_105",
   "next_units": [
-    "exact $100K 1:500 XAUUSD margin utilization model for cap703",
-    "freeze January architecture if operationally feasible",
-    "chronological February validation with January parameters frozen",
-    "no January retuning after February is opened"
+    "frozen April validation using N64 / 12.90 / 64.93 / cap703",
+    "if April passes, frozen May then June then July sequentially",
+    "if a month fails, record failure before any recovery research",
+    "no August access"
   ],
   "constraints": {
     "august": "SEALED",
@@ -81,7 +107,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read GAMMA_02_083_CHILD_CAP_BOUNDARY_087C.md then 087/086/085/084/083. Do not rerun <=087C. Resume only exact margin model 088.",
+  "recovery_rule": "Read GAMMA_02_ROLLING_ACTIVITY_REGIME_103_104.md. Do not rerun <=104. Resume only frozen April validation 105. Parameters N=64, early=12.90, late=64.93, cap=703 are frozen before April.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
