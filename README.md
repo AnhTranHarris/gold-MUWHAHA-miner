@@ -1,30 +1,30 @@
-# gold-MUWHAHA-miner
+# Gold MUWHAHA Miner — R9 STMR XMonth MT5 Certification
 
-Clean-room MT5 research project to reproduce the **observable trading behavior** of Gold Hunter V8 from Strategy Tester evidence and public performance records.
+This branch is the **R9-rooted Coinexx certification build** for the Delta-A-alpha session/timeframe grid candidate.
 
-## Current baseline
+## R9 control retained unchanged
 
-Development branch: `carson/v8-cleanroom-baseline`
+- `Experts/GoldMuwahahaMiner_R9_HybridGate.mq5`
+- `Experts/GoldMuwahahaMiner_R9_TickLogger.mq5`
 
-EA source:
+Branch parent: `carson/r9-tick-logger@23b85ca774efa43acbcb2006fc5e88ce5ac08bf0`.
 
-- `Experts/GoldMuwahahaMiner_V8_Baseline.mq5`
+## Candidate
 
-Research notes:
+`Experts/GoldMuwahahaMiner_R9_STMR_XMonth_001.mq5`
 
-- `docs/V8_RECONSTRUCTION.md`
+Candidate research identity: `STMR_XMONTH_SUBPHASE_001`.
 
-The current baseline implements the report-derived M1 state machine:
+The file contains explicit `[EDIT-00]` through `[EDIT-07]` maintenance markers so future repairs can be localized.
 
-- fixed 0.01 lot default
-- two stop orders separated by a 50-Hunter-pip band
-- 50-Hunter-pip initial stop
-- 20-Hunter-pip trailing stop
-- opposite pending order canceled after a fill
-- after a position closes inside the same minute, only the **opposite original boundary** is re-armed
-- each new M1 bar resets the old boundary and creates a fresh two-sided bracket
-- broker tick-size, volume-step, stop-level, filling-mode and trade-retcode handling
+## First gate
 
-## Status
+Compile the candidate in MetaEditor and require **0 errors, 0 warnings**. A Windows helper is provided:
 
-This is **v0.20, behavioral baseline**, not yet claimed as an exact clone. The next gate is MetaEditor compilation followed by an MT5 Strategy Tester order-sequence comparison against the supplied Gold Hunter V8 report. We should compare order fingerprints before optimizing profitability.
+`tools/compile_r9_stmr.cmd`
+
+Then run Coinexx Strategy Tester using **Every tick based on real ticks**.
+
+Full instructions: `docs/R9_STMR_XMONTH_SUBPHASE_001_MT5_CERTIFICATION.md`.
+
+Do not load an old R9 `.set` file into the STMR candidate. The scientific grid geometry is compiled into the EA; only clock/execution/diagnostic plumbing is exposed as inputs.
