@@ -907,7 +907,7 @@ void OpenDecisionLog()
       "sleeve","sleeve_name","direction","expected","cell","key","anchor_raw","mid_raw",
       "bid","ask","seen_before","phase_ok","open_positions","action");
    FileFlush(g_logFile);
-   PrintFormat("%s: decision log -> Common\Files\%s",GRID_TAG,name);
+   PrintFormat("%s: decision log -> Common\\Files\\%s",GRID_TAG,name);
 }
 
 void DecisionLog(const MqlTick &tick,const long utc_ms,const int s,const int sleeve,
