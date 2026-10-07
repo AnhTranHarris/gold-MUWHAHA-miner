@@ -1,0 +1,22 @@
+name: R9 STMR XMonth MT5 static QA
+
+on:
+  push:
+    branches:
+      - r9-stmr-xmonth-subphase-001-mt5-cert-20261006
+    paths:
+      - 'Experts/GoldMuwahahaMiner_R9_STMR_XMonth_001.mq5'
+      - 'research/delta_a_alpha/qa/r9_stmr_xmonth_mt5_static_qa.py'
+      - '.github/workflows/r9-stmr-xmonth-mt5-static-qa.yml'
+  workflow_dispatch:
+
+jobs:
+  static-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify frozen STMR MT5 contract
+        run: python research/delta_a_alpha/qa/r9_stmr_xmonth_mt5_static_qa.py
