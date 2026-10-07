@@ -1,0 +1,54 @@
+{
+  "unit": "GAMMA_02_MULTI_SLOT_TP_RECYCLE_001",
+  "status": "COMPLETE_EARNED_MECHANISM_NOT_MAJOR_BREAKTHROUGH",
+  "branch": "carson/r9-gamma-02-velocity-geometry-research",
+  "parity_control": {
+    "net": 641.58,
+    "trades": 885,
+    "profit_factor": 1.6919169587,
+    "tp_exits": 324,
+    "sl_exits": 524,
+    "age_exits": 37,
+    "max_open": 3,
+    "note": "Recycle disabled reproduces frozen January STMR parent exactly, including per-sleeve nets/trades."
+  },
+  "winner": {
+    "mechanism": "Immediate same-slot re-entry only after realized TP; campaign <=5 seconds; live sleeve and direction must remain valid; max 3 recycle entries; sleeves 0,2,4,9,11 recycle; sleeve 8 remains parent runner.",
+    "net": 691.72,
+    "trades": 922,
+    "profit_factor": 1.7081128116,
+    "expectancy": 0.7502386117,
+    "drawdown": 46.17,
+    "recycles": 120,
+    "max_open": 3,
+    "age_exits": 37
+  },
+  "delta_vs_parent": {
+    "net": 50.14,
+    "net_pct": 7.8151,
+    "trades": 37,
+    "trades_pct": 4.1808,
+    "profit_factor": 0.01619585,
+    "expectancy": 0.02528946,
+    "drawdown": -3.41
+  },
+  "sleeve_attribution": {
+    "overlap_sleeve4": "main contributor: +388.44 vs +342.66 parent; 332 vs 296 trades; 104 recycle entries",
+    "sleeve8": "intentionally not recycled; exact parent +97.74 / 356 trades retained",
+    "london_sleeve2": "+45.49 vs +40.47 parent; 4 recycles",
+    "asia_sleeve0": "+74.30 vs +72.81 parent; 2 recycles",
+    "late9_sleeve9": "+70.94 unchanged despite 3 recycle attempts in lifecycle",
+    "late11_sleeve11": "+14.81 vs +16.96 parent; 7 recycles; slight regression"
+  },
+  "decision": "Retain as a composable frequency primitive because it improves net, trades, PF, expectancy, and drawdown simultaneously. Do NOT call it the required GAMMA-02 breakthrough: +7.81% January net remains too small relative to the hard R9-SYNTH gap. Next research must unlock materially higher qualified opportunity density without degrading direction quality.",
+  "corrected_bookkeeping": "Age exits and max-open were separated into distinct result slots and rerun. Economic result did not change.",
+  "sha256": {
+    "helper": "388a25b9f9b003e87762cf99dd41c1fb87fb6dac3627471573f4a11bd342ffaf",
+    "full_result": "5f2c4a7d7c030f1974034c709d77916aca3416d8ee725473e2f7f370299f1580",
+    "summary": "68b0e9e09492271e964719d5700afe1a8e677d883790f0d3057af7dd3261a227",
+    "run_output": "873b7f027732da63cd8602de5d450649c5537517d3e72fc0ce547c97b872ddf4"
+  },
+  "durable_library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/",
+  "next_unit": "GAMMA_02_PARENT_RUNNER_PLUS_MICRO_HARVEST_SHADOW",
+  "august_2026": "SEALED"
+}
