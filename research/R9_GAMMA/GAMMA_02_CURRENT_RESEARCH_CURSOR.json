@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v26",
+  "schema": "r9-gamma-02-research-cursor-v27",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_JAN_WATCHDOG119_GRID_LAYER_REFINEMENT_131A",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_JAN_WATCHDOG119_GRID_LAYER_REFINEMENT_131A.md",
+  "latest_completed": "GAMMA_02_JAN_WATCHDOG119_LAYER_DEPTH_HEAT_131B",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_JAN_WATCHDOG119_LAYER_DEPTH_HEAT_131B.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_DYNAMIC_RENEWAL_WATCHDOG_119",
     "frozen_params": {
@@ -131,9 +131,10 @@
     "warmup_leakage_103_104": "CRITICAL: 103/104 February authority suspended. Nominal February stream had 36,355 entries but only 102 entries actually in February after absolute-time filtering; prior +$43.9K result was warmup leakage.",
     "target_gate_083": "083 target-gated audit: Jan cap703 +$48,766.62 / 32,862; Feb +$4,193.52 / 7,020; Mar -$9,480.91 / 6,727. Prior frozen February +$52.96K was warmup-contaminated."
   },
-  "first_incomplete_unit": "GAMMA_02_JAN_WATCHDOG119_WEEKLY_COVERAGE_AND_HEAT_131B",
+  "first_incomplete_unit": "GAMMA_02_JAN_WATCHDOG119_WEEKLY_COVERAGE_AND_PROFIT_PER_HEAT_131C",
   "next_units": [
-    "January Watchdog-119 weekly coverage and synchronized heat 131B",
+    "January W01-W04 complementary causal coverage and W05 profit-per-heat 131C",
+    "arbitrary-start and capital overlays on frozen January architecture",
     "freeze robust January adaptive architecture",
     "then February unchanged replay and causal adaptation",
     "then later months sequentially",
@@ -146,7 +147,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Owner re-opened January before February/later-month work. Read GAMMA_02_JAN_WATCHDOG119_GRID_LAYER_REFINEMENT_131A.md plus this cursor. Preserve the Watchdog-119 working specialist and resume only January weekly coverage/heat 131B. Do not resume the older April-131 instruction. August remains sealed.",
+  "recovery_rule": "Owner re-opened January before February/later-month work. Read GAMMA_02_JAN_WATCHDOG119_GRID_LAYER_REFINEMENT_131A.md, GAMMA_02_JAN_WATCHDOG119_LAYER_DEPTH_HEAT_131B.md, and this cursor. Preserve Watchdog-119 and resume only January weekly coverage/profit-per-heat 131C. Do not resume the older April-131 instruction. August remains sealed.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -369,5 +370,72 @@
       "maxopen": 1152
     },
     "critical_blocker": "Working-base monthly economics are overwhelmingly concentrated in 2026-W05/Jan30. Preserve 119 as a high-renewal specialist and find complementary causal coverage for weak/inactive weeks; do not call it an arbitrary-start January deployment architecture yet."
+  },
+  "january_reexamination_131b": {
+    "status": "DURABLE_COMPLETE",
+    "parent": "GAMMA_02_JAN_WATCHDOG119_GRID_LAYER_REFINEMENT_131A",
+    "helper": "research/R9_GAMMA/helpers/gamma02_jan_watchdog119_layer_depth_heat_131b.py",
+    "helper_sha256": "aade099a0efdb504bd6f16b4d3cbcacce7f37572d76c7ff931aed07449f36057",
+    "result": "research/R9_GAMMA/artifacts/gamma02_jan_watchdog119_layer_depth_heat_131b.json",
+    "result_sha256": "63438e6cb8edba62630868b918faea9085369856908f8e49a5a4e323bf49f7b5",
+    "checkpoint": "research/R9_GAMMA/GAMMA_02_JAN_WATCHDOG119_LAYER_DEPTH_HEAT_131B.md",
+    "checkpoint_sha256": "e541509c2e7d2f9805bcf9c76d7fe5dc250cc75c3336052bd0152c52a072c144",
+    "library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/january-reexamination-131b/",
+    "market_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "checkpoint_commit_before_cursor_update": "b2f95ef1b36131cc087ee78d85d8afd1bad4953d",
+    "execution_surface": "Dukascopy midpoint + frozen session-P75 normalized spread; not raw-Dukascopy fill parity or Coinexx MT5 certification",
+    "risk_velocity_core": {
+      "max_layer": 30,
+      "cap": 240,
+      "net": 50899.97,
+      "trades": 28408,
+      "gross_loss": -93.14,
+      "pf": 547.4888340133,
+      "win": 0.9978175162,
+      "expectancy": 1.7917477471,
+      "balance_dd": 40.64,
+      "equity_dd": 21427.2,
+      "maxopen": 240
+    },
+    "balanced_core": {
+      "max_layer": 30,
+      "cap": 256,
+      "net": 54229.43,
+      "trades": 30216,
+      "gross_loss": -93.14,
+      "pf": 583.2356667382,
+      "win": 0.997948107,
+      "expectancy": 1.794725642,
+      "balance_dd": 40.64,
+      "equity_dd": 22855.68,
+      "maxopen": 256
+    },
+    "high_capture_layer_protected": {
+      "max_layer": 35,
+      "cap": 703,
+      "net": 134949.71,
+      "trades": 75074,
+      "gross_loss": -857.58,
+      "pf": 158.3610741855,
+      "win": 0.9971494792,
+      "expectancy": 1.7975558782,
+      "balance_dd": 650.62,
+      "equity_dd": 62763.84,
+      "maxopen": 703
+    },
+    "over_200k_diagnostic": {
+      "max_layer": 40,
+      "cap": 1152,
+      "net": 201249.42,
+      "trades": 113651,
+      "gross_loss": -6439.07,
+      "pf": 32.2544233872,
+      "win": 0.9936384194,
+      "expectancy": 1.7707668212,
+      "balance_dd": 5410.24,
+      "equity_dd": 102850.56,
+      "maxopen": 1152
+    },
+    "critical_finding": "Max renewal-layer depth is a causal realized-loss control; synchronized concurrency remains the dominant full-tick equity-DD mechanism. January Watchdog remains W05 concentrated and is not yet an arbitrary-start complete January architecture."
   }
 }
