@@ -1,0 +1,43 @@
+{
+  "unit": "GAMMA_02_RUNNER_SHADOW_TP_UPPER_NEIGHBORHOOD",
+  "status": "COMPLETE_TWO_FRONTIERS",
+  "branch": "carson/r9-gamma-02-velocity-geometry-research",
+  "diagnostic_profit_frontier": {
+    "net": 1457.16,
+    "profit_factor": 1.8975921055,
+    "expectancy": 1.1089497717,
+    "trades": 1314,
+    "shadow_net": 765.44,
+    "shadow_trades": 392,
+    "drawdown": 130.82,
+    "max_positions": 7,
+    "tp": 12.0,
+    "sl": 3.0,
+    "max_hold_seconds": 45,
+    "shadow_cap": 4
+  },
+  "fast_risk_efficient_frontier": {
+    "net": 1425.30,
+    "profit_factor": 1.9874806876,
+    "expectancy": 1.0180714286,
+    "trades": 1400,
+    "shadow_net": 733.58,
+    "shadow_trades": 478,
+    "drawdown": 90.08,
+    "max_positions": 7,
+    "tp": 8.0,
+    "sl": 2.0,
+    "max_hold_seconds": 10,
+    "shadow_cap": 4
+  },
+  "comparison": "The fast frontier gives up only $31.86 of January net versus the raw maximum while taking more trades, raising PF to ~1.99, retaining +$1.02 expectancy/trade, using a genuinely fast 10-second lifecycle, and cutting DD by ~31% versus the absolute-profit frontier.",
+  "decision": "Carry the 10-second TP8/SL2 fast risk-efficient frontier into the next density architecture. Keep TP12/SL3/45s as a diagnostic ceiling only. Neither is a Jan-Jul promotion yet. Current ~1.4k January trades remain far below the R9-SYNTH turnover target, so the next research problem is qualified event density, not further TP tuning.",
+  "sha256": {
+    "helper": "084879028643bd3fdcc4e758e14aebac155b1ac6a0217e03d4c5265fa4a934f6",
+    "full_result": "e610e9902ea1fc876751cead1430b34307e08466e370ad630a904e07fd9912ea",
+    "summary": "8b277ca4abb04a552f794ff974d6c2601a0a547bb87090afca98f02fbe010561"
+  },
+  "durable_library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/",
+  "next_unit": "GAMMA_02_HTF_DIRECTED_M1_BOUNDARY_DENSITY",
+  "august_2026": "SEALED"
+}
