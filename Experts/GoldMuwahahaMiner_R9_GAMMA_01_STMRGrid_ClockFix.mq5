@@ -61,6 +61,8 @@ input group "STMR grid clock normalization — CLOCKFIX"
 input ENUM_STMR_GRID_CLOCK_MODE InpGridClockMode = STMR_GRID_CLOCK_COINEXX_AUTO;
 input int InpGridFixedQuoteUtcOffsetMinutes = 120;
 
+int g_gridLastClockOffsetMinutes=99999;
+
 // Coinexx historical convention used for this 2026 certification campaign:
 // standard UTC+2; US/New-York DST UTC+3.  The switch is represented in SERVER
 // calendar time.  The market is closed during the Sunday transition interval,
@@ -90,7 +92,22 @@ long GridToUtcMs(const long server_ms)
    else
       offset_min=0;
 
-   return server_ms-(long)offset_min*60000L;
+   const long utc_ms=server_ms-(long)offset_min*60000L;
+
+   // High-value forensic guard: print once at first tick and again only when
+   // the offset changes.  This makes a silent server/UTC mismatch visible in
+   // Strategy Tester Journal before economics are interpreted.
+   if(offset_min!=g_gridLastClockOffsetMinutes)
+   {
+      PrintFormat("GM_R9_GAMMA_STMR CLOCKMAP server=%s offsetMin=%d -> utc=%s mode=%s",
+                  TimeToString((datetime)(server_ms/1000L),TIME_DATE|TIME_SECONDS),
+                  offset_min,
+                  TimeToString((datetime)(utc_ms/1000L),TIME_DATE|TIME_SECONDS),
+                  GridClockModeName());
+      g_gridLastClockOffsetMinutes=offset_min;
+   }
+
+   return utc_ms;
 }
 
 string GridClockModeName()
