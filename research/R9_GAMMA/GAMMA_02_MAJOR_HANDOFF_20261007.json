@@ -1,0 +1,71 @@
+{
+  "schema": "gamma02-major-handoff-v1",
+  "date": "2026-10-07",
+  "repository": "AnhTranHarris/gold-MUWHAHA-miner",
+  "branch": "carson/r9-gamma-02-velocity-geometry-research",
+  "scientific_checkpoint_sha": "820c5c215e25b55600fc7c3dc273dbdfebc9fa34",
+  "drive_folder": "https://drive.google.com/drive/folders/1EOfZ7E3E4nkzgRJgw-RRONq6yo_xs-EI",
+  "latest_completed": "GAMMA_02_MARCH_NATIVE_BREAKTHROUGH_130",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_MARCH_NATIVE_BREAKTHROUGH_130.md",
+  "first_incomplete": "GAMMA_02_APRIL_NATIVE_STATE_DISCOVERY_131",
+  "state": "IDLE_READY_ATOMIC_BOUNDARY",
+  "august": "SEALED",
+  "mql5": "NOT_AUTHORIZED_FOR_GAMMA02",
+  "hard_target": {
+    "jan": {
+      "net": 41520.82,
+      "trades": 27980,
+      "pf": 23.715411927544082,
+      "win": 0.8709077912794854,
+      "expectancy": 1.4839463902787706,
+      "avg_hold_s": 16.462687634024302
+    },
+    "jan_jul": {
+      "net": 309122.85,
+      "trades": 219342
+    }
+  },
+  "latest_monthly_breakthroughs": {
+    "february_pf10": {
+      "net": 55807.6,
+      "trades": 4319,
+      "pf": 19.5335883845,
+      "win": 0.8858532068,
+      "expectancy": 12.9214169947
+    },
+    "march_maxnet": {
+      "net": 113062.92,
+      "trades": 24908,
+      "pf": 2.57722
+    },
+    "march_pf10": {
+      "net": 67574.54,
+      "trades": 6746,
+      "pf": 16.35827,
+      "win": 0.85932,
+      "expectancy": 10.01698
+    }
+  },
+  "invalidations": [
+    "103/104 February cross-month authority suspended due warmup-entry leakage",
+    "old 225741.25 / 199547 oracle invalidated pending clean recompute",
+    "hour-slice tail-entry artifacts invalid",
+    "same-tick multi-level fills are scaling, not unique opportunity count",
+    "pre-ClockFix MT5 UTC/session mapping invalid"
+  ],
+  "library_roots": [
+    "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/",
+    "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/watchdog-119/",
+    "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/post-crossover-recovery/",
+    "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/meta-router-122/",
+    "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/february-repair-123/"
+  ],
+  "next_sequence": [
+    "April native discovery/lifecycle/conviction; persist immediately",
+    "May native",
+    "June native",
+    "July native",
+    "cross-month causal regime synthesis",
+    "August remains sealed"
+  ]
+}
