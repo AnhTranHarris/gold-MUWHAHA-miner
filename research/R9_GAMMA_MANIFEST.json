@@ -2,7 +2,7 @@
   "series": "R9 GAMMA",
   "checkpoint": 1,
   "candidate": "GAMMA-01 STMR XMonth Grid",
-  "status": "IMPLEMENTED_STATIC_QA_PENDING_METAEDITOR_AND_COINEXX_CERTIFICATION",
+  "status": "STATIC_QA_PASS_METAEDITOR_AND_COINEXX_CERTIFICATION_PENDING",
   "parent_branch": "carson/r9-gamma-00-baseline",
   "parent_commit": "5883b014f93ddf4c6ec2d2f6f28916fb9f175fbb",
   "parent_ea": "Experts/GoldMuwahahaMiner_R9_HybridGate.mq5",
@@ -25,7 +25,15 @@
       "profit_factor": 1.2967425592,
       "trades": 2675,
       "expected_payoff": 0.3101719626,
-      "monthly_net": [641.58,43.95,4.55,-34.51,-19.89,213.13,-19.10]
+      "monthly_net": [
+        641.58,
+        43.95,
+        4.55,
+        -34.51,
+        -19.89,
+        213.13,
+        -19.1
+      ]
     }
   },
   "authoritative_january_floor_unchanged": {
@@ -55,7 +63,14 @@
     "timer_rearm": false,
     "max_hold_seconds": 300,
     "trailing_stop": false,
-    "funded_sleeves": [0,2,4,8,9,11],
+    "funded_sleeves": [
+      0,
+      2,
+      4,
+      8,
+      9,
+      11
+    ],
     "subphase_rules": {
       "ASIA_LOWER_TAKEOVER": "23:00-00:00 UTC",
       "LONDON_M5_TAKEOVER": "11:00-12:00 UTC",
@@ -77,5 +92,17 @@
     "branch": "r9-stmr-xmonth-subphase-001-mt5-cert-20261006",
     "reason": "no common ancestor with carson/r9-gamma-00-baseline; standalone Delta-A-alpha port, not the requested Gamma R9 base"
   },
-  "rule": "Do not merge to the Gamma baseline or create GAMMA-02 from this candidate until MetaEditor and Coinexx certification pass."
+  "rule": "Do not merge to the Gamma baseline or create GAMMA-02 from this candidate until MetaEditor and Coinexx certification pass.",
+  "static_qa": {
+    "status": "PASS",
+    "workflow": "R9 GAMMA-01 STMR Grid static QA",
+    "run_id": 37553761105,
+    "head_sha": "88466303d54a73bcf1f3e413b2ce83f37f9a32f7"
+  },
+  "pull_request": {
+    "number": 12,
+    "status": "DRAFT_DO_NOT_MERGE_BEFORE_MT5_CERT",
+    "base": "carson/r9-gamma-00-baseline",
+    "head": "carson/r9-gamma-01-stmr-xmonth-grid"
+  }
 }
