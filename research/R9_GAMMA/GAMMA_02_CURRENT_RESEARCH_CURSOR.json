@@ -1,63 +1,51 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v1",
+  "schema": "r9-gamma-02-research-cursor-v2",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_NY_CAMPAIGN_INVENTORY_PORTFOLIO_001",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_NY_CAMPAIGN_INVENTORY_PORTFOLIO_001.md",
-  "exact_helper": {
-    "library_path": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_ny_campaign_inventory_portfolio_001.py",
-    "sha256": "8cf55fe2365f25b9a8acc7996f0f2c72eba7c2c9bc6a90a8e6d97f528b5c7131",
-    "replay_check": {
-      "cap": 64,
-      "net": 20977.61,
-      "trades": 8664,
-      "pf": 2.146385768332649,
-      "expectancy": 2.421238457987073,
-      "balance_dd": 2784.31
-    },
-    "github_path": "research/R9_GAMMA/helpers/gamma02_ny_campaign_inventory_portfolio_001.py",
-    "github_commit": "6a2707a3f34099e4764da2c4529cc8f833478ec3"
+  "latest_completed": "GAMMA_02_SELECTIVE_UNIQUE_TICK_REBREAK_016",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_SELECTIVE_UNIQUE_TICK_REBREAK_016.md",
+  "current_scientific_base": {
+    "counting_rule": "MAX_ONE_NEW_TICKET_PER_SOURCE_PER_MARKET_TICK",
+    "cap": 128,
+    "selective_rebreak_reset_raw": 100,
+    "selective_rebreak_reset_price": 0.1,
+    "enabled_rebreak_sources": "London/overlap + NY17 only",
+    "net": 80358.08,
+    "trades": 10749,
+    "pf": 5.369003690036902,
+    "expectancy": 7.47586566192204,
+    "realized_balance_dd": 2916.35
   },
-  "major_frontiers": {
-    "ny_campaign_cap64": {
-      "net": 20977.61,
-      "trades": 8664,
-      "pf": 2.1464,
-      "expectancy": 2.4212
+  "conservative_parent": {
+    "net": 77049.12,
+    "trades": 10351,
+    "pf": 5.371526710021208,
+    "expectancy": 7.443640227997294,
+    "checkpoint": "research/R9_GAMMA/GAMMA_02_ONE_EVENT_PER_TICK_AUDIT_014.md"
+  },
+  "exact_helpers": {
+    "one_event_per_tick": {
+      "library_path": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_one_event_per_tick_audit_014.py",
+      "sha256": "6f566cd0dc7544ba2d2829b175515a76d2de8c08ba40627831f94ad3b4043b61"
     },
-    "ny_campaign_cap128": {
-      "net": 36375.97,
-      "trades": 12617,
-      "pf": 2.2568,
-      "expectancy": 2.8831
-    },
-    "ny_campaign_cap192": {
-      "net": 49012.41,
-      "trades": 14430,
-      "pf": 2.2462,
-      "expectancy": 3.3966
-    },
-    "ny_campaign_cap256": {
-      "net": 60041.44,
-      "trades": 15962,
-      "pf": 2.2331,
-      "expectancy": 3.7615
-    },
-    "prior_stmr_fast_frontier": {
-      "net": 1425.3,
-      "trades": 1400,
-      "pf": 1.9875
+    "selective_rebreak": {
+      "library_path": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_rebreak_selective_016.py",
+      "result_path": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_rebreak_selective_016_cap128.json",
+      "helper_sha256": "f025f12fdce1e70a8662342cf4b6a2fe1633fc4c2575f86c00e2c2bb6df6a083",
+      "result_sha256": "0d4790d7e54a25e7643bed49e0b87e921797ad0e9d7e478657f390ca70c21fb6"
     }
   },
+  "historical_scaling_frontier_note": "Earlier multi-level extension results remain valid as explicit pyramiding/scaling research but are NOT chronological opportunity-count authority because multiple ladder levels can fire on one market tick.",
   "invalidated": {
-    "stage2_stage3_hour_slice_london_overlap": "tail-minute entry artifact; see GAMMA_02_SLICE_CONTINUOUS_PARITY_001.md"
+    "stage2_stage3_hour_slice_london_overlap": "tail-minute entry artifact; see GAMMA_02_SLICE_CONTINUOUS_PARITY_001.md",
+    "same_tick_multi_level_as_opportunity_count": "reclassified as pyramiding/scaling; see GAMMA_02_ONE_EVENT_PER_TICK_AUDIT_014.md"
   },
   "next_units": [
-    "exact tick-level equity-DD replay for cap32/64/96/128 finalists",
-    "integrate NY campaign engine with prior STMR runner-shadow foundation",
-    "extract actual January-only R9 SYNTH benchmark",
-    "test unified-stop/profit-lock pyramiding to improve exposure efficiency",
-    "chronological Jan-Jul only after January architecture stabilizes"
+    "selective rebreak with minimum elapsed pullback-to-reclaim time 0.5/1/2/5s",
+    "source-specific rebreak reset distances",
+    "state-transition-age / campaign-heartbeat unique-tick opportunity factory",
+    "full tick-level equity-DD for January finalists",
+    "chronological Jan-Jul only after January architecture freezes"
   ],
   "constraints": {
     "august": "SEALED",
@@ -66,6 +54,5 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read this cursor, then the latest completed checkpoint. Use the GitHub helper or byte-identical Library helper; do not rerun completed GAMMA-02 experiments.",
-  "latest_branch_head": "6a2707a3f34099e4764da2c4529cc8f833478ec3"
+  "recovery_rule": "Read this cursor, then GAMMA_02_SELECTIVE_UNIQUE_TICK_REBREAK_016.md. Do not rerun completed experiments. Current opportunity-count authority is one-event-per-source-per-market-tick plus selective causal rebreaks."
 }
