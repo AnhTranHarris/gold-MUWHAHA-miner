@@ -1,32 +1,25 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v7",
+  "schema": "r9-gamma-02-research-cursor-v8",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_QUALITY_CORE_CAPACITY_CROSSOVER_047",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_QUALITY_CORE_CAPACITY_CROSSOVER_047.md",
+  "latest_completed": "GAMMA_02_QUALITY_CORE_CROSSOVER_EQUITY_048",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_QUALITY_CORE_CROSSOVER_EQUITY_048.md",
   "current_scientific_base": {
-    "counting_rule": "MAX_ONE_NEW_TICKET_PER_SOURCE_PER_MARKET_TICK",
     "sources": [
       16,
       17
     ],
     "heartbeat_ms": 120,
-    "funded_base": {
-      "start_cap": 64,
-      "step_slots": 64,
-      "profit_unit": 2500,
-      "max_cap": 256
-    },
-    "temporary_ny_campaign_hard_cap": 2304,
-    "january_closed_trade": {
-      "net": 774420.66,
-      "trades": 27982,
-      "pf": 34.846302377001216,
-      "win": 0.8845329140161532,
-      "expectancy": 27.67567221785433,
-      "balance_dd": 7771.33
-    },
-    "classification": "FIRST_ALL_CLOSED_TRADE_METRICS_SYNTH_CROSSOVER_NEAR_VOLUME_MATCH"
+    "hard_cap": 2304,
+    "net": 774420.66,
+    "trades": 27982,
+    "pf": 34.84630237700121,
+    "win": 0.8845329140161532,
+    "expectancy": 27.67567221785434,
+    "equity_dd": 194431.75,
+    "avg_hold_s": 1296.8113,
+    "maxopen": 2304,
+    "classification": "ALL_CLOSED_TRADE_METRICS_SYNTH_CROSSOVER_BUT_EXCESSIVE_EQUITY_HEAT_AND_LIFECYCLE"
   },
   "exact_helpers": {
     "utilization": {
@@ -44,12 +37,12 @@
     "profit_funded_026_attribution_bug": "historical helper swapped source/reason labels only in attribution output; admission economics unaffected",
     "equity_dd": "all finalist DDs now marked on every ordered January Bid/Ask tick"
   },
-  "first_incomplete_unit": "GAMMA_02_QUALITY_CORE_CROSSOVER_EQUITY_048",
+  "first_incomplete_unit": "GAMMA_02_PROFIT_FUNDED_SURGE_049",
   "next_units": [
-    "full ordered-tick equity-DD + hold distribution for 120ms/hard2304",
-    "profit-funded/surge-funded capacity variant to reduce initial heat",
-    "preserve all-metric crossover while reducing concurrency and hold time",
-    "freeze January architecture before Jan-Jul"
+    "profit-funded temporary NY capacity",
+    "full tick equity-DD for funded-surge finalist",
+    "reduce lifecycle/heat without sacrificing SYNTH crossover",
+    "freeze January then Jan-Jul"
   ],
   "constraints": {
     "august": "SEALED",
@@ -58,7 +51,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read this cursor and GAMMA_02_QUALITY_CORE_CAPACITY_CROSSOVER_047.md. Do not rerun 042-047. Resume only GAMMA_02_QUALITY_CORE_CROSSOVER_EQUITY_048.",
+  "recovery_rule": "Read this cursor and GAMMA_02_QUALITY_CORE_CROSSOVER_EQUITY_048.md. Do not rerun <=048. Resume GAMMA_02_PROFIT_FUNDED_SURGE_049.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -77,5 +70,5 @@
     "expectancy": 1.4839463902787706,
     "avg_hold_s": 16.462687634024302
   },
-  "latest_branch_head": "65d30bb34c4d8930dd04fe0f0d158ee03a2d5396"
+  "latest_branch_head": "71ce556a78fa466f1adb2539de335f6335ad212a"
 }
