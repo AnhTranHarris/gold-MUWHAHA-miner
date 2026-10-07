@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v16",
+  "schema": "r9-gamma-02-research-cursor-v17",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_EMERGENCY_CHAT_HANDOFF_108",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_EMERGENCY_CHAT_HANDOFF_108.md",
+  "latest_completed": "GAMMA_02_LOW_ACTIVITY_MARCH_SPECIALIST_109",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_LOW_ACTIVITY_MARCH_SPECIALIST_109.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_ROLLING_ACTIVITY_REGIME_103",
     "N": 64,
@@ -84,6 +84,18 @@
     "rolling_activity_equity_104": {
       "github_path": "research/R9_GAMMA/helpers/gamma02_083_rolling_activity_equity_104.py",
       "helper_sha256": "ab30adca112bf423ccd8fcfeefa6c2bd704a4dd8a4a56cbb6ceafb88837e4f1d"
+    },
+    "failed_ignition_108": {
+      "github_path": "research/R9_GAMMA/helpers/gamma02_low_activity_failed_ignition_markout_108.py",
+      "helper_sha256": "4473680ab846e72c2a62ba25e7d855a09da229b75a37c448460f73522e636ea1",
+      "result_sha256": "137f3777937e5e508e1075732cb918b21d7fd0e089805500ca0699d55f35d17d"
+    },
+    "reverse_renewal_109": {
+      "github_path": "research/R9_GAMMA/helpers/gamma02_low_activity_reverse_renewal_109.py",
+      "helper_sha256": "a19aee022dec3870231a21608f9e9ac8b00112ec658fe45613d526919de1c04e",
+      "march_result_sha256": "89382c8be8532faab89f1097447eda97024b7c2590d9511db96ec65b82e274b3",
+      "april_result_sha256": "754c7c0e5c28b359a0cd7c5bdb51b6c9035e8053f69109a8d0bc67a69d401fa3",
+      "library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/post-crossover-recovery/low-activity-specialists/"
     }
   },
   "qa_notes": {
@@ -93,13 +105,13 @@
     "wave_multiplicity_085": "Desk-level same-tick renewal collapse with fixed multiplicity rejected: same-tick child groups share direction/entry price but retain heterogeneous parent-owned exits/PnL; 538 tested wave-size pairs produced zero all-six-metric crossovers.",
     "parent_phase_desync_086": "Causal parent entry-price phase rearm maps can preserve all six SYNTH metrics but do not reduce maxopen/max same-tick cluster; heat remains 1,443."
   },
-  "first_incomplete_unit": "GAMMA_02_ADAPTIVE_ACTIVITY_MULTI_SCOUT_ROUTER_109",
+  "first_incomplete_unit": "GAMMA_02_APRIL_SPECIALIST_DISCOVERY_110",
   "next_units": [
-    "adaptive activity normalization / rolling percentile without month labels",
-    "multi-scout parent health proof using consecutive fast renewals",
-    "freeze Jan-Feb-Mar if stable",
-    "chronological April validation with no retuning",
-    "continue May-July only after April result is persisted"
+    "discover April specialist without changing 103/104 or 109",
+    "freeze April specialist before opening May",
+    "May first validation for April specialist",
+    "continue sequentially through July",
+    "no August access"
   ],
   "constraints": {
     "august": "SEALED",
@@ -108,7 +120,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read GAMMA_02_EMERGENCY_CHAT_HANDOFF_108.md and this cursor. Do not rerun <=108. Resume adaptive activity/multi-scout router 109 from persistent Library replay083_deps and rolling-activity-103 artifacts.",
+  "recovery_rule": "Read GAMMA_02_LOW_ACTIVITY_MARCH_SPECIALIST_109.md and GAMMA_02_FRESH_CHAT_BOOTSTRAP.md. Do not rerun <=109. Resume only April specialist discovery 110. High-activity 103/104 and March reverse specialist 109 are frozen.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -136,5 +148,64 @@
     "drive_083_hash_authority": "https://docs.google.com/document/d/10C1sRrpyr8L6njta-WxNEKHp8jBmIbpgU0dN-uKtQDw/edit",
     "drive_084_qa": "https://docs.google.com/document/d/1ZCM1Kxw1-RLXG2DK2sdxil8VJFgb3XsXJJk1R8emIU8/edit",
     "drive_manifest": "https://docs.google.com/document/d/1DzDcNV7mALOkb9juJrb4wz-Op6dkhre-s7ZB7pwpvWI/edit"
+  },
+  "architecture": {
+    "high_activity_103_104": {
+      "status": "FROZEN",
+      "N": 64,
+      "early_roll_threshold": 12.9,
+      "late_roll_threshold": 64.93,
+      "child_cap": 703,
+      "jan": {
+        "net": 43959.75,
+        "trades": 28119,
+        "all_six_crossover": true
+      },
+      "feb": {
+        "net": 43937.72,
+        "trades": 28221,
+        "all_six_crossover": true
+      },
+      "mar": {
+        "net": 0,
+        "trades": 0
+      },
+      "apr": {
+        "net": 0,
+        "trades": 0
+      },
+      "may": {
+        "net": 0,
+        "trades": 0
+      },
+      "jun": {
+        "net": 0,
+        "trades": 0
+      },
+      "jul": {
+        "net": 16.19,
+        "trades": 28
+      }
+    },
+    "march_reverse_109": {
+      "status": "FROZEN_MARCH_SPECIALIST",
+      "trigger": "late NY17 parent fails +$1.25 continuation within 2s; reverse direction",
+      "qraw": 4000,
+      "rearm": 0,
+      "campaign_ms": 120000,
+      "child_cap": 703,
+      "march": {
+        "net": 2067.33,
+        "trades": 807,
+        "pf": 24.4603949160236,
+        "win": 0.885997521685254,
+        "expectancy": 2.5617472118959106,
+        "avg_hold_s": 50.80780049566295
+      },
+      "april": {
+        "net": 0,
+        "trades": 0
+      }
+    }
   }
 }
