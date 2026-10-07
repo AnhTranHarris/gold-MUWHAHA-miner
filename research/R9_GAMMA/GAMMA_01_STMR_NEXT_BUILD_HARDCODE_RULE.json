@@ -1,0 +1,12 @@
+{
+  "status": "MANDATORY_FOR_NEXT_MT5_GRID_BUILD",
+  "source_checkpoint": "carson/r9-gamma-01-stmr-clockfix",
+  "hard_code": {
+    "InpCoreEnabled": false,
+    "InpGridEnabled": true,
+    "InpGridClockMode": "STMR_GRID_CLOCK_COINEXX_AUTO",
+    "InpGridFixedQuoteUtcOffsetMinutes": 120
+  },
+  "reason": "These are the settings used to obtain the validated Coinexx grid-only real-tick result. The next MT5 research descendant must compile them into the program rather than expose them as normal tester choices, unless a later preregistered clock/core experiment explicitly reopens them.",
+  "do_not_modify_current_certified_ea": true
+}
