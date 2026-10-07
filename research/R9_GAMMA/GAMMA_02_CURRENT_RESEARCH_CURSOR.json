@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v25",
+  "schema": "r9-gamma-02-research-cursor-v26",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_MARCH_NATIVE_BREAKTHROUGH_130",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_MARCH_NATIVE_BREAKTHROUGH_130.md",
+  "latest_completed": "GAMMA_02_JAN_WATCHDOG119_GRID_LAYER_REFINEMENT_131A",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_JAN_WATCHDOG119_GRID_LAYER_REFINEMENT_131A.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_DYNAMIC_RENEWAL_WATCHDOG_119",
     "frozen_params": {
@@ -131,13 +131,12 @@
     "warmup_leakage_103_104": "CRITICAL: 103/104 February authority suspended. Nominal February stream had 36,355 entries but only 102 entries actually in February after absolute-time filtering; prior +$43.9K result was warmup leakage.",
     "target_gate_083": "083 target-gated audit: Jan cap703 +$48,766.62 / 32,862; Feb +$4,193.52 / 7,020; Mar -$9,480.91 / 6,727. Prior frozen February +$52.96K was warmup-contaminated."
   },
-  "first_incomplete_unit": "GAMMA_02_APRIL_NATIVE_STATE_DISCOVERY_131",
+  "first_incomplete_unit": "GAMMA_02_JAN_WATCHDOG119_WEEKLY_COVERAGE_AND_HEAT_131B",
   "next_units": [
-    "April native discovery/lifecycle/conviction",
-    "persist April immediately",
-    "then May",
-    "then June",
-    "then July",
+    "January Watchdog-119 weekly coverage and synchronized heat 131B",
+    "freeze robust January adaptive architecture",
+    "then February unchanged replay and causal adaptation",
+    "then later months sequentially",
     "August sealed"
   ],
   "constraints": {
@@ -147,7 +146,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read GAMMA_02_MARCH_NATIVE_BREAKTHROUGH_130.md and this cursor. Resume only April native discovery 131. Do not rerun <=130. August remains sealed.",
+  "recovery_rule": "Owner re-opened January before February/later-month work. Read GAMMA_02_JAN_WATCHDOG119_GRID_LAYER_REFINEMENT_131A.md plus this cursor. Preserve the Watchdog-119 working specialist and resume only January weekly coverage/heat 131B. Do not resume the older April-131 instruction. August remains sealed.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -326,5 +325,49 @@
     "github_manifest": "research/R9_GAMMA/GAMMA_02_MAJOR_HANDOFF_20261007.json",
     "scientific_checkpoint_sha": "820c5c215e25b55600fc7c3dc273dbdfebc9fa34",
     "packaging_head_before_cursor_update": "e330e3b0afcc63ac471ee203f5ae627991cdabdb"
+  },
+  "owner_rebase_20261007": {
+    "status": "ACTIVE_OWNER_OVERRIDE",
+    "reason": "Re-examine and strengthen January first; then proceed month-by-month from February. Final architecture must support unknown deployment date/state and multiple starting-capital regimes.",
+    "parent": "GAMMA02_DYNAMIC_RENEWAL_WATCHDOG_119",
+    "comparison_policy": "R9 REAL floor; R9 SYNTH principal time-matched benchmark; best clean causal result moving frontier. Evaluate day/week/month/cumulative net, velocity, expectancy, PF, win, gross loss, balance/equity DD, heat and capital survival.",
+    "month_feature_forbidden": true,
+    "august": "SEALED"
+  },
+  "january_reexamination_131a": {
+    "status": "DURABLE_COMPLETE",
+    "helper": "research/R9_GAMMA/helpers/gamma02_jan_watchdog119_grid_layer_refinement_131a.py",
+    "helper_sha256": "c1f80f99376f2fec47dc2897ff2312c310799bde8392cd28976a44849ef1b660",
+    "compact_artifact": "research/R9_GAMMA/artifacts/gamma02_jan_watchdog119_grid_layer_refinement_131a.json",
+    "full_result_library": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/january-reexamination-131a/gamma02_jan_watchdog119_grid_layer_refinement_131a.json",
+    "full_result_sha256": "863bd4551027effa72e5e63ba3b5e016be4ac45840ecbef11f2cc6e7e89c1687",
+    "market_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "execution_surface": "Dukascopy midpoint + frozen session-P75 normalized spread; not raw-Dukascopy fill parity or Coinexx MT5 certification",
+    "working_base": {
+      "name": "WD119_SUBPHASE_Q1190_Q1100_CAP703",
+      "net": 139070.41,
+      "trades": 77942,
+      "gross_loss": -1639.2,
+      "pf": 85.8404160566,
+      "win": 0.9951887301,
+      "expectancy": 1.7842807472,
+      "avg_hold_s": 27.4128711606,
+      "balance_dd": 713.96,
+      "equity_dd": 62763.84,
+      "maxopen": 703
+    },
+    "profit_frontier": {
+      "name": "WD119_SUBPHASE_Q1190_Q1100_CAP1152_PROFIT_FRONTIER",
+      "net": 204057.16,
+      "trades": 115746,
+      "gross_loss": -6799.93,
+      "pf": 31.0087147956,
+      "win": 0.9927513694,
+      "expectancy": 1.7629737529,
+      "balance_dd": 5410.24,
+      "equity_dd": 102850.56,
+      "maxopen": 1152
+    },
+    "critical_blocker": "Working-base monthly economics are overwhelmingly concentrated in 2026-W05/Jan30. Preserve 119 as a high-renewal specialist and find complementary causal coverage for weak/inactive weeks; do not call it an arbitrary-start January deployment architecture yet."
   }
 }
