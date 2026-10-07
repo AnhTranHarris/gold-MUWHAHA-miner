@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v21",
+  "schema": "r9-gamma-02-research-cursor-v22",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_ROUTER_122_WARMUP_LEAKAGE_QA_001",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_ROUTER_122_WARMUP_LEAKAGE_QA_001.md",
+  "latest_completed": "GAMMA_02_FEBRUARY_NATIVE_LIFECYCLE_QUALITY_125",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_FEBRUARY_NATIVE_LIFECYCLE_QUALITY_125.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_DYNAMIC_RENEWAL_WATCHDOG_119",
     "frozen_params": {
@@ -131,13 +131,13 @@
     "warmup_leakage_103_104": "CRITICAL: 103/104 February authority suspended. Nominal February stream had 36,355 entries but only 102 entries actually in February after absolute-time filtering; prior +$43.9K result was warmup leakage.",
     "target_gate_083": "083 target-gated audit: Jan cap703 +$48,766.62 / 32,862; Feb +$4,193.52 / 7,020; Mar -$9,480.91 / 6,727. Prior frozen February +$52.96K was warmup-contaminated."
   },
-  "first_incomplete_unit": "GAMMA_02_FEBRUARY_TARGET_GATED_SPECIALIST_REPAIR_123",
+  "first_incomplete_unit": "GAMMA_02_FEBRUARY_NATIVE_CONVICTION_ROUTING_126",
   "next_units": [
-    "repair February using already-earned January specialist families with explicit target-entry gating",
-    "audit every transferred specialist for start<=entry<end before cross-month authority",
-    "recompute legal Jan-Jul specialist oracle without contaminated 103/104",
-    "resume no-month-label causal meta-router only from valid target-gated experts",
-    "persist each month immediately and full equity-DD only after router freezes",
+    "raise February PF/win rate using causal displacement/subphase/state-age routing while preserving lifecycle portfolio economics",
+    "backcast frozen February state/lifecycle rules to January without month label",
+    "forward-test unchanged February rules on March",
+    "combine only cross-month-valid specialists into repaired meta-router",
+    "persist each month immediately; full equity-DD after router freezes",
     "August remains sealed"
   ],
   "constraints": {
@@ -147,7 +147,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read GAMMA_02_ROUTER_122_WARMUP_LEAKAGE_QA_001.md and this cursor. Do not rerun <=122 stream generation. All seven raw and absolute-time router caches are durable in Library. Resume only February target-gated specialist repair 123. August remains sealed.",
+  "recovery_rule": "Read GAMMA_02_FEBRUARY_NATIVE_LIFECYCLE_QUALITY_125.md and this cursor. Do not rerun <=125. Resume only February conviction routing 126. All prior warmup-contaminated February 103/104 authority remains invalid. August remains sealed.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -277,6 +277,37 @@
       "5": "10ae6cdc5c942c04dc1591cc5f67bcc84823bbad0fc1314f4e16946247363a16",
       "6": "4a4705abd6d925a00aced8427d280a86b06aa8e37bd51fc76764027fc77ec2e5",
       "7": "7d1a92511839e12c76d99d540e316ac346246a32e8cdf40039cc1df7bf1e48c5"
+    }
+  },
+  "february_native_125": {
+    "status": "MAJOR_DISCOVERY_DURABLE",
+    "maxnet": {
+      "net": 71149.91,
+      "trades": 12543,
+      "pf": 3.1434330581,
+      "win": 0.656940126,
+      "expectancy": 5.672479471,
+      "maxopen": 342
+    },
+    "quality": {
+      "net": 67260.48,
+      "trades": 11421,
+      "pf": 3.371928919,
+      "win": 0.679625252,
+      "expectancy": 5.889193591,
+      "maxopen": 342
+    },
+    "strict_quality": {
+      "net": 59294.35,
+      "trades": 9985,
+      "pf": 3.671798842,
+      "win": 0.696945418,
+      "expectancy": 5.938342514,
+      "maxopen": 342
+    },
+    "helpers": {
+      "lifecycle_search": "research/R9_GAMMA/helpers/gamma02_feb_lifecycle_quality_125.py",
+      "lifecycle_portfolio": "research/R9_GAMMA/helpers/gamma02_feb_lifecycle_portfolio_125.py"
     }
   }
 }
