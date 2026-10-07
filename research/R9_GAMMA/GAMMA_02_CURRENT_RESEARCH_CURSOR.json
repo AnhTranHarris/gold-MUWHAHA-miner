@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v7",
+  "schema": "r9-gamma-02-research-cursor-v8",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_FUNDED_CAP_EQUITY_DD_028",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_FUNDED_CAP_EQUITY_DD_028.md",
+  "latest_completed": "GAMMA_02_JAN_R9_SYNTH_BENCHMARK_029",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_JAN_R9_SYNTH_BENCHMARK_029.md",
   "current_scientific_base": {
     "opportunity_engine": {
       "counting_rule": "MAX_ONE_NEW_TICKET_PER_SOURCE_PER_MARKET_TICK",
@@ -44,12 +44,12 @@
     "profit_funded_026_attribution_bug": "historical helper swapped source/reason labels only in attribution output; admission economics unaffected",
     "equity_dd": "all finalist DDs now marked on every ordered January Bid/Ask tick"
   },
-  "first_incomplete_unit": "GAMMA_02_JAN_R9_SYNTH_BENCHMARK_029",
+  "first_incomplete_unit": "GAMMA_02_SLOT_EFFICIENCY_QUALITY_030",
   "next_units": [
-    "extract exact January-only R9 SYNTH benchmark",
-    "compare January GAMMA-02 gap to exact R9 SYNTH January",
-    "test slot-turnover/profit-lock only after benchmark",
-    "freeze January architecture before chronological Jan-Jul validation"
+    "source/hour slot-efficiency deletion and routing under exact funded-cap replay",
+    "campaign profit-lock / unified-stop tests using tick-marked equity",
+    "freeze January architecture only after quality/velocity frontier is stable",
+    "chronological Jan-Jul validation after January freeze"
   ],
   "constraints": {
     "august": "SEALED",
@@ -58,5 +58,14 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read this cursor, then GAMMA_02_FUNDED_CAP_EQUITY_DD_028.md. Resume only GAMMA_02_JAN_R9_SYNTH_BENCHMARK_029."
+  "recovery_rule": "Read this cursor, then GAMMA_02_JAN_R9_SYNTH_BENCHMARK_029.md and GAMMA_02_FUNDED_CAP_EQUITY_DD_028.md. Resume only GAMMA_02_SLOT_EFFICIENCY_QUALITY_030.",
+  "exact_january_r9_synth": {
+    "net": 41520.82,
+    "trades": 27980,
+    "pf": 23.715411927544082,
+    "win_rate": 0.8709077912794854,
+    "expectancy": 1.4839463902787706,
+    "avg_hold_s": 16.462687634024302,
+    "source_sha256": "e5fcf4d6879193fac88e7a8e101db1111d59e1a7f5abfb793c970b06cfce7cc7"
+  }
 }
