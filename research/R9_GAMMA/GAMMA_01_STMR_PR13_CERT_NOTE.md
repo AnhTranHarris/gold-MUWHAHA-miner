@@ -1,0 +1,1 @@
+PR #13 is the broker-certification lineage for this checkpoint. Coinexx grid-only REAL result: +$579.60 / 2,582 trades / PF ~1.2050. Preserve as validated evidence; next research must branch from the checkpoint rather than mutate this EA in place.
