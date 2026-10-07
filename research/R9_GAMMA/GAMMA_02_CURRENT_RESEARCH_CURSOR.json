@@ -1,20 +1,28 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v2",
+  "schema": "r9-gamma-02-research-cursor-v3",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_SELECTIVE_UNIQUE_TICK_REBREAK_016",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_SELECTIVE_UNIQUE_TICK_REBREAK_016.md",
+  "latest_completed": "GAMMA_02_DESK_SPECIFIC_UNIQUE_TICK_REBREAK_018",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_DESK_SPECIFIC_UNIQUE_TICK_REBREAK_018.md",
   "current_scientific_base": {
     "counting_rule": "MAX_ONE_NEW_TICKET_PER_SOURCE_PER_MARKET_TICK",
     "cap": 128,
-    "selective_rebreak_reset_raw": 100,
-    "selective_rebreak_reset_price": 0.1,
+    "london_overlap": {
+      "reset_raw": 50,
+      "reset_price": 0.05,
+      "min_latency_ms": 0
+    },
+    "ny17": {
+      "reset_raw": 500,
+      "reset_price": 0.5,
+      "min_latency_ms": 1000
+    },
     "enabled_rebreak_sources": "London/overlap + NY17 only",
-    "net": 80358.08,
-    "trades": 10749,
-    "pf": 5.369003690036902,
-    "expectancy": 7.47586566192204,
-    "realized_balance_dd": 2916.35
+    "net": 82329.33,
+    "trades": 10907,
+    "pf": 5.5105066129616365,
+    "expectancy": 7.5483020078848435,
+    "realized_balance_dd": 2804.18
   },
   "conservative_parent": {
     "net": 77049.12,
@@ -24,26 +32,24 @@
     "checkpoint": "research/R9_GAMMA/GAMMA_02_ONE_EVENT_PER_TICK_AUDIT_014.md"
   },
   "exact_helpers": {
-    "one_event_per_tick": {
-      "library_path": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_one_event_per_tick_audit_014.py",
-      "sha256": "6f566cd0dc7544ba2d2829b175515a76d2de8c08ba40627831f94ad3b4043b61"
-    },
-    "selective_rebreak": {
-      "library_path": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_rebreak_selective_016.py",
-      "result_path": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_rebreak_selective_016_cap128.json",
+    "desk_specific_rebreak": {
+      "github_path": "research/R9_GAMMA/helpers/gamma02_rebreak_desk_specific_018.py",
+      "github_commit": "3093eb9a4cbdcd15caafb7217bd3f8d11fb0726c",
+      "library_path": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_rebreak_desk_specific_018.py",
       "helper_sha256": "f025f12fdce1e70a8662342cf4b6a2fe1633fc4c2575f86c00e2c2bb6df6a083",
-      "result_sha256": "0d4790d7e54a25e7643bed49e0b87e921797ad0e9d7e478657f390ca70c21fb6"
+      "london_result_path": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_rebreak_desk_specific_018_london.json",
+      "ny17_result_path": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/m1-density/gamma02_rebreak_desk_specific_018_ny17.json"
     }
   },
-  "historical_scaling_frontier_note": "Earlier multi-level extension results remain valid as explicit pyramiding/scaling research but are NOT chronological opportunity-count authority because multiple ladder levels can fire on one market tick.",
+  "historical_scaling_frontier_note": "Earlier multi-level extension results remain explicit pyramiding/scaling research only; they are not chronological opportunity-count authority.",
   "invalidated": {
     "stage2_stage3_hour_slice_london_overlap": "tail-minute entry artifact; see GAMMA_02_SLICE_CONTINUOUS_PARITY_001.md",
     "same_tick_multi_level_as_opportunity_count": "reclassified as pyramiding/scaling; see GAMMA_02_ONE_EVENT_PER_TICK_AUDIT_014.md"
   },
+  "first_incomplete_unit": "GAMMA_02_CAMPAIGN_HEARTBEAT_UNIQUE_TICK_019",
   "next_units": [
-    "selective rebreak with minimum elapsed pullback-to-reclaim time 0.5/1/2/5s",
-    "source-specific rebreak reset distances",
-    "state-transition-age / campaign-heartbeat unique-tick opportunity factory",
+    "campaign-heartbeat unique-tick opportunity factory",
+    "state-transition-age opportunity factory",
     "full tick-level equity-DD for January finalists",
     "chronological Jan-Jul only after January architecture freezes"
   ],
@@ -54,5 +60,5 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read this cursor, then GAMMA_02_SELECTIVE_UNIQUE_TICK_REBREAK_016.md. Do not rerun completed experiments. Current opportunity-count authority is one-event-per-source-per-market-tick plus selective causal rebreaks."
+  "recovery_rule": "Read this cursor, then GAMMA_02_DESK_SPECIFIC_UNIQUE_TICK_REBREAK_018.md. Do not rerun completed experiments. Resume only GAMMA_02_CAMPAIGN_HEARTBEAT_UNIQUE_TICK_019."
 }
