@@ -1,25 +1,22 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v9",
-  "state": "ACTIVE_BOUNDED_RESEARCH",
+  "schema": "r9-gamma-02-research-cursor-v10",
+  "state": "IDLE_READY_MAJOR_CHECKPOINT",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_POST_CROSSOVER_TIMEOUT_RECOVERY_068",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_POST_CROSSOVER_TIMEOUT_RECOVERY_068.md",
+  "latest_completed": "GAMMA_02_DUAL_PHASE_RENEWAL_QUANTUM_083",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_DUAL_PHASE_RENEWAL_QUANTUM_083.md",
   "current_scientific_base": {
-    "sources": [
-      16,
-      17
-    ],
-    "heartbeat_ms": 120,
-    "hard_cap": 2304,
-    "net": 774420.66,
-    "trades": 27982,
-    "pf": 34.84630237700121,
-    "win": 0.8845329140161532,
-    "expectancy": 27.67567221785434,
-    "equity_dd": 194431.75,
-    "avg_hold_s": 1296.8113,
-    "maxopen": 2304,
-    "classification": "ALL_CLOSED_TRADE_METRICS_SYNTH_CROSSOVER_BUT_EXCESSIVE_EQUITY_HEAT_AND_LIFECYCLE"
+    "candidate": "GAMMA02_DUAL_PHASE_RENEWAL_QUANTUM_083",
+    "net": 76586.24,
+    "trades": 49466,
+    "pf": 30758.526104417666,
+    "win": 0.9993530910120082,
+    "expectancy": 1.5482602191404196,
+    "avg_hold_s": 12.295035013948974,
+    "equity_dd": 19371.52,
+    "equity_dd_pct_peak": 10.970005363951456,
+    "minimum_total_equity": 99043.55,
+    "maxopen": 1443,
+    "all_metric_january_r9_synth_crossover": true
   },
   "exact_helpers": {
     "utilization": {
@@ -31,20 +28,26 @@
       "result_path": "research/R9_GAMMA/artifacts/gamma02_funded_cap_equity_dd_028.json",
       "helper_sha256": "bb83dd19b610e7d77d9dfac658aef01ee8cf4f7524dbef1919b3a7b5efd0c308",
       "result_sha256": "1b3dcb8555527bfda9ff978d9199a89565c2bbb739e556b8950f9ed3146f7c51"
+    },
+    "dual_phase_renewal_083": {
+      "github_path": "research/R9_GAMMA/helpers/gamma02_dual_phase_renewal_quantum_083.py",
+      "result_path": "research/R9_GAMMA/artifacts/gamma02_dual_phase_renewal_quantum_083.json",
+      "helper_sha256": "5ccf5581688fdb45b7f1dfd0441af9bdc89a478cc6f229dd8ec0f60eee8f5dac",
+      "result_sha256": "0a8cf905a459a75e1c5da1db77f4be8ff54fab34d7c07f5059f532d840ac3d1c",
+      "replay": "BYTE_IDENTICAL"
     }
   },
   "qa_notes": {
     "profit_funded_026_attribution_bug": "historical helper swapped source/reason labels only in attribution output; admission economics unaffected",
     "equity_dd": "all finalist DDs now marked on every ordered January Bid/Ask tick"
   },
-  "first_incomplete_unit": "GAMMA_02_SOURCE_SPECIFIC_FAST_EXIT_GRID_068",
+  "first_incomplete_unit": "GAMMA_02_083_HEAT_REDUCTION_AND_PARENT_OWNERSHIP_QA",
   "next_units": [
-    "source16 TP/SL/hold grid with source17 parent exit frozen",
-    "persist source16 winner",
-    "source17 TP/SL/hold grid with source16 winner frozen",
-    "joint funded-cap replay",
-    "full-tick equity-DD for finalists",
-    "freeze January then Jan-Jul"
+    "forensic QA of parent ownership and same-parent/same-tick child multiplicity",
+    "reduce maxopen/equity heat while preserving all six January SYNTH crossover metrics",
+    "exact margin model for $100K reference",
+    "freeze January architecture",
+    "chronological February validation with January parameters frozen"
   ],
   "constraints": {
     "august": "SEALED",
@@ -53,7 +56,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read GAMMA_02_POST_CROSSOVER_TIMEOUT_RECOVERY_068.md. Do not rerun <=067. Resume only GAMMA_02_SOURCE_SPECIFIC_FAST_EXIT_GRID_068.",
+  "recovery_rule": "Read GAMMA_02_DUAL_PHASE_RENEWAL_QUANTUM_083.md and exact helper/result. Do not rerun <=083 after timeout. Resume only 083 heat/ownership QA.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -72,5 +75,5 @@
     "expectancy": 1.4839463902787706,
     "avg_hold_s": 16.462687634024302
   },
-  "latest_branch_head": "11518de095357419795f6beee7f82b4bb62413b8"
+  "latest_branch_head": "5303c4cd3e5d3dbc7c4dfadb206db314fc1817ea"
 }
