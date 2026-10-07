@@ -1,0 +1,45 @@
+{
+  "candidate": "GAMMA02_FUNDED_CAP_UTILIZATION_027",
+  "config": {"base_cap": 64, "step_slots": 64, "profit_unit": 2500.0, "max_cap": 256, "mode": "cumulative"},
+  "economics": {
+    "net": 154538.37000000002,
+    "gp": 204533.04,
+    "gl": -49994.67,
+    "trades": 24646,
+    "wins": 16742,
+    "skips": 58579,
+    "maxopen": 256,
+    "balance_dd": 4179.749999999891,
+    "pf": 4.091096910930705,
+    "exp": 6.270322567556603,
+    "win": 0.6792988720279153,
+    "sources": {
+      "7": {"net": 821.9599999999999, "trades": 256, "pf": 4.092749369755804, "exp": 3.2107812499999997},
+      "8": {"net": 3809.0100000000007, "trades": 752, "pf": 3.8406157012774904, "exp": 5.065172872340426},
+      "9": {"net": 8081.360000000001, "trades": 3507, "pf": 2.59137023850783, "exp": 2.30435129740519},
+      "11": {"net": 13527.090000000002, "trades": 1780, "pf": 7.804371227364185, "exp": 7.599488764044945},
+      "12": {"net": 18448.16, "trades": 5185, "pf": 4.378177543224844, "exp": 3.55798649951784},
+      "13": {"net": 7789.240000000001, "trades": 908, "pf": 4.500357260017886, "exp": 8.578458149779737},
+      "14": {"net": -700.2499999999999, "trades": 1060, "pf": 0.8942006387999988, "exp": -0.6606132075471697},
+      "15": {"net": 19018.27, "trades": 2603, "pf": 4.49809536947625, "exp": 7.306288897426047},
+      "16": {"net": 30583.88, "trades": 1861, "pf": 14.731493121655113, "exp": 16.43411069317571},
+      "17": {"net": 45507.509999999995, "trades": 955, "pf": 564.0723830734968, "exp": 47.65184293193717},
+      "18": {"net": 7652.140000000002, "trades": 5779, "pf": 1.3970601894251709, "exp": 1.3241287419968857}
+    }
+  },
+  "candidate_events": 83225,
+  "transitions": [
+    {"candidate_index":0,"time_ms":1767357900044,"time_utc":"2026-01-02T12:45:00.044000+00:00","from_cap":null,"to_cap":64,"realized_profit":0.0,"funding_value":0.0,"open_positions":0},
+    {"candidate_index":15758,"time_ms":1768230025967,"time_utc":"2026-01-12T15:00:25.967000+00:00","from_cap":64,"to_cap":128,"realized_profit":2531.85,"funding_value":2531.85,"open_positions":0},
+    {"candidate_index":19491,"time_ms":1768316686957,"time_utc":"2026-01-13T15:04:46.957000+00:00","from_cap":128,"to_cap":192,"realized_profit":6116.65,"funding_value":6116.65,"open_positions":0},
+    {"candidate_index":21095,"time_ms":1768391621781,"time_utc":"2026-01-14T11:53:41.781000+00:00","from_cap":192,"to_cap":256,"realized_profit":7998.01,"funding_value":7998.01,"open_positions":0}
+  ],
+  "cap_stats": {
+    "64":{"candidate_events":15758,"candidate_share":0.1893421447882247,"accepted":1393,"skipped":14365,"skip_rate":0.9116004569107755,"calendar_ms":872125923,"calendar_hours":242.25720083333334,"calendar_share":0.35718472527122264,"mean_open_before_entry":61.47645640309684,"mean_utilization":0.9605696312983881,"p50_utilization":1.0,"p90_utilization":1.0,"p99_utilization":1.0,"max_open_before_entry":64,"first_utc":"2026-01-02T12:45:00.044000+00:00","last_utc":"2026-01-12T12:59:59.916000+00:00"},
+    "128":{"candidate_events":3733,"candidate_share":0.04485431060378492,"accepted":943,"skipped":2790,"skip_rate":0.7473881596571122,"calendar_ms":86660990,"calendar_hours":24.07249722222222,"calendar_share":0.035492560292674814,"mean_open_before_entry":116.24645057594428,"mean_utilization":0.9081753951245647,"p50_utilization":1.0,"p90_utilization":1.0,"p99_utilization":1.0,"max_open_before_entry":128,"first_utc":"2026-01-12T15:00:25.967000+00:00","last_utc":"2026-01-13T12:59:59.546000+00:00"},
+    "192":{"candidate_events":1604,"candidate_share":0.0192730549714629,"accepted":799,"skipped":805,"skip_rate":0.5018703241895262,"calendar_ms":74934824,"calendar_hours":20.81522888888889,"calendar_share":0.030690034337721914,"mean_open_before_entry":152.67394014962593,"mean_utilization":0.7951767716126351,"p50_utilization":1.0,"p90_utilization":1.0,"p99_utilization":1.0,"max_open_before_entry":192,"first_utc":"2026-01-13T15:04:46.957000+00:00","last_utc":"2026-01-14T09:59:59.930000+00:00"},
+    "256":{"candidate_events":62130,"candidate_share":0.7465304896365275,"accepted":21511,"skipped":40619,"skip_rate":0.6537743441171737,"calendar_ms":1407944609,"calendar_hours":391.0957247222222,"calendar_share":0.5766326800983806,"mean_open_before_entry":216.4774022211492,"mean_utilization":0.845614852426364,"p50_utilization":1.0,"p90_utilization":1.0,"p99_utilization":1.0,"max_open_before_entry":256,"first_utc":"2026-01-14T11:53:41.781000+00:00","last_utc":"2026-01-30T18:59:26.390000+00:00"}
+  },
+  "total_transitions":4,
+  "cap_levels_seen":[64,128,192,256]
+}
