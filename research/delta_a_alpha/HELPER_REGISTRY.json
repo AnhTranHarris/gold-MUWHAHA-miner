@@ -241,11 +241,43 @@
       "status": "DURABLE",
       "path": "research/delta_a_alpha/state_journal/0028_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_003.json",
       "purpose": "authoritative continuation after stress-002 and timeout recovery"
+    },
+    {
+      "id": "EA-R9-STMR-XMONTH-001",
+      "status": "DURABLE_AWAITING_METAEDITOR_CERT",
+      "path": "Experts/GoldMuwahahaMiner_R9_STMR_XMonth_001.mq5",
+      "purpose": "Coinexx MT5 broker-certification port of STMR_XMONTH_SUBPHASE_001"
+    },
+    {
+      "id": "R-R9-STMR-XMONTH-001-MT5",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/mt5/R9_STMR_XMONTH_SUBPHASE_001_MT5_CERTIFICATION.md",
+      "purpose": "compile/backtest and discrepancy-reconciliation protocol"
+    },
+    {
+      "id": "Q-R9-STMR-XMONTH-001-MT5",
+      "status": "DURABLE_QA_PASS",
+      "path": "research/delta_a_alpha/qa/r9_stmr_xmonth_mt5_static_qa.py",
+      "purpose": "static frozen-mechanics contamination guard"
+    },
+    {
+      "id": "CI-R9-STMR-XMONTH-001-MT5",
+      "status": "DURABLE_QA_SUCCESS",
+      "path": ".github/workflows/r9-stmr-xmonth-mt5-static-qa.yml",
+      "run_id": 37550344074,
+      "purpose": "branch-scoped static QA workflow"
+    },
+    {
+      "id": "J-R9-STMR-XMONTH-001-MT5-0029",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/state_journal/0029_DAA_R9_STMR_XMONTH_MT5_CERT_BUILD_001.json",
+      "purpose": "MT5 certification implementation checkpoint"
     }
   ],
   "rule": "Register durable helpers/results before dependent work. Deleted legacy January refinements may be consulted only from rollback branches and cannot become active floor without fresh system-order validation.",
   "timeout_rule": "Persist one bounded unit, verify it, then advance cursor.",
   "note_build02_replay": "Portable local January replay reproduced STMR-001 exactly; GitHub mutation safety rejected the large executable/result payload, so durable architecture/report/journal remain the accepted authority and the local helper hash is recorded in the report.",
   "note_build02_refinement": "STMR_SLEEVE_PHASE_001 supersedes STMR-001 economically on January. Integration logic is durable in grid_system_session_timeframe.py; exact local ordered-tick replay helper SHA-256 943b62c4be0e84185ad9c61577d4d3dd14ce51b2cafcfb7829c47a2910ff0216.",
-  "note_stmr_janjul_stress_003": "Exact accepted January replay bytes remain unavailable. STMR_XMONTH_SUBPHASE_001 is durable clean-room cross-month research only and does not replace journal 0024."
+  "note_stmr_janjul_stress_003": "Exact accepted January replay bytes remain unavailable. STMR_XMONTH_SUBPHASE_001 is durable clean-room cross-month research only and does not replace journal 0024.",
+  "note_r9_stmr_xmonth_mt5": "MT5 source is implemented from the clean-room Jan-Jul session/timeframe child. Static QA passed; MetaEditor compile and Coinexx real-tick certification remain external pending steps. Authoritative January floor is unchanged."
 }
