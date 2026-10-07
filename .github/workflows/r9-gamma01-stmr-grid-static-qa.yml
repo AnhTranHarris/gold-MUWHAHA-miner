@@ -1,0 +1,23 @@
+name: R9 GAMMA-01 STMR Grid static QA
+
+on:
+  push:
+    branches:
+      - carson/r9-gamma-01-stmr-xmonth-grid
+    paths:
+      - 'Experts/GoldMuwahahaMiner_R9_GAMMA_01_STMRGrid.mq5'
+      - 'Experts/GoldMuwahahaMiner_R9_HybridGate.mq5'
+      - 'research/R9_GAMMA/qa/gamma01_stmr_grid_static_qa.py'
+      - '.github/workflows/r9-gamma01-stmr-grid-static-qa.yml'
+  workflow_dispatch:
+
+jobs:
+  static-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact R9 core preservation and frozen STMR contract
+        run: python research/R9_GAMMA/qa/gamma01_stmr_grid_static_qa.py
