@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v19",
+  "schema": "r9-gamma-02-research-cursor-v20",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_DYNAMIC_RENEWAL_WATCHDOG_119_JANJUL",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_DYNAMIC_RENEWAL_WATCHDOG_119_JANJUL.md",
+  "latest_completed": "GAMMA_02_RENEWAL_CREDIT_ROUTER_120_DIAGNOSTIC_REJECTED",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_EMERGENCY_CONTINUITY_HANDOFF_20261007.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_DYNAMIC_RENEWAL_WATCHDOG_119",
     "frozen_params": {
@@ -129,13 +129,13 @@
     "wave_multiplicity_085": "Desk-level same-tick renewal collapse with fixed multiplicity rejected: same-tick child groups share direction/entry price but retain heterogeneous parent-owned exits/PnL; 538 tested wave-size pairs produced zero all-six-metric crossovers.",
     "parent_phase_desync_086": "Causal parent entry-price phase rearm maps can preserve all six SYNTH metrics but do not reduce maxopen/max same-tick cluster; heat remains 1,443."
   },
-  "first_incomplete_unit": "GAMMA_02_RENEWAL_CREDIT_ROUTER_120",
+  "first_incomplete_unit": "GAMMA_02_CAUSAL_META_ROUTER_122",
   "next_units": [
-    "May discovery: renewal-credit admission to stop watchdog feedback-latency swarm",
-    "freeze 120 before June replay",
-    "June/July forward validation with no retune",
-    "compare 120 with 119 Jan-Mar and existing 116/115 specialists",
-    "build causal combined router only after transfer is demonstrated",
+    "build no-month-label causal meta-router to approximate frozen specialist oracle",
+    "prioritize preservation of 119 Jan/Mar, 103/104 Feb, 114 Apr-Jun, 115 July",
+    "one chronological global ledger and explicit heat accounting",
+    "persist each month immediately",
+    "full equity-DD only after router freezes",
     "August remains sealed"
   ],
   "constraints": {
@@ -145,7 +145,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read GAMMA_02_DYNAMIC_RENEWAL_WATCHDOG_119_JANJUL.md, then resume only GAMMA_02_RENEWAL_CREDIT_ROUTER_120. Do not rerun <=119. April-July 119 failures are frozen evidence. August remains sealed.",
+  "recovery_rule": "Read GAMMA_02_EMERGENCY_CONTINUITY_HANDOFF_20261007.md and this cursor. Do not rerun <=121. Resume only GAMMA_02_CAUSAL_META_ROUTER_122. August remains sealed.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -257,5 +257,12 @@
       }
     }
   },
-  "emergency_handoff": "research/R9_GAMMA/GAMMA_02_EMERGENCY_CROSSMONTH_HANDOFF_116.md"
+  "emergency_handoff": "research/R9_GAMMA/GAMMA_02_EMERGENCY_CROSSMONTH_HANDOFF_116.md",
+  "oracle_upper_bound": {
+    "net": 225741.25,
+    "trades": 199547,
+    "r9_synth_net_fraction": 0.7302638740552503,
+    "r9_synth_trade_fraction": 0.9097528061201229,
+    "warning": "non-deployable month/regime oracle used only as causal-router target"
+  }
 }
