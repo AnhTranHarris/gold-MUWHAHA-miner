@@ -894,7 +894,7 @@ void OpenDecisionLog()
 {
    if(!InpGridDecisionLoggerEnabled) return;
    const string mode=(MQLInfoInteger(MQL_TESTER)?"TESTER":"LIVE");
-   const string name="GoldMuwahaha_R9_STMR_XM01_"+mode+"_"+SafeStamp(TimeCurrent())+".csv";
+   const string name="GoldMuwahaha_R9_GAMMA01_STMR_"+mode+"_"+SafeStamp(TimeCurrent())+".csv";
    ResetLastError();
    g_logFile=FileOpen(name,FILE_WRITE|FILE_CSV|FILE_COMMON|FILE_ANSI,',');
    if(g_logFile==INVALID_HANDLE)
