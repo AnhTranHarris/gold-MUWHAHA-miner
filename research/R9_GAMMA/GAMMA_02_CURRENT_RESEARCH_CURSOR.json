@@ -14,7 +14,9 @@
       "pf": 2.146385768332649,
       "expectancy": 2.421238457987073,
       "balance_dd": 2784.31
-    }
+    },
+    "github_path": "research/R9_GAMMA/helpers/gamma02_ny_campaign_inventory_portfolio_001.py",
+    "github_commit": "6a2707a3f34099e4764da2c4529cc8f833478ec3"
   },
   "major_frontiers": {
     "ny_campaign_cap64": {
@@ -64,5 +66,6 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Do not rerun completed GAMMA-02 experiments. Load the exact helper from Library and read the latest GitHub checkpoints in predecessor order."
+  "recovery_rule": "Read this cursor, then the latest completed checkpoint. Use the GitHub helper or byte-identical Library helper; do not rerun completed GAMMA-02 experiments.",
+  "latest_branch_head": "6a2707a3f34099e4764da2c4529cc8f833478ec3"
 }
