@@ -41,12 +41,14 @@
     "coinexx_us_dst_offset_minutes": 180,
     "core_time_behavior": "UNCHANGED",
     "grid_scientific_geometry": "UNCHANGED",
-    "implementation": "wrapper textually includes exact failed GAMMA-01 source and overrides only grid historical server-time to UTC normalization and tick orchestration"
+    "implementation": "wrapper textually includes exact failed GAMMA-01 source and overrides only grid historical server-time to UTC normalization and tick orchestration",
+    "runtime_clock_guard": "Journal prints CLOCKMAP server timestamp, offset minutes, computed UTC timestamp at first tick and every offset transition"
   },
   "qa": {
     "clockfix_static_qa": "PASS",
     "original_gamma_integration_qa": "PASS",
-    "github_actions_run": 37557614370,
+    "github_actions_run": 37557877603,
+    "qa_head": "7f12fbbdf4076531ceebb66a337911fafaa3b539",
     "metaeditor_compile": "PENDING",
     "coinexx_grid_only_real_tick": "PENDING"
   },
@@ -62,6 +64,7 @@
     "InpCoreEnabled": false,
     "InpGridEnabled": true,
     "InpGridClockMode": "STMR_GRID_CLOCK_COINEXX_AUTO",
+    "first_journal_check": "CLOCKMAP should show Jan server->UTC with offsetMin=120; after US DST it should switch to offsetMin=180",
     "rule": "do not retune session/timeframe/TP/SL parameters until corrected broker certification is reconciled"
   },
   "research_authority": {
