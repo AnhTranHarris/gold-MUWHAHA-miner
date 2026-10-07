@@ -1,40 +1,50 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v17",
+  "schema": "r9-gamma-02-research-cursor-v18",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_CROSSMONTH_PHASE_SPECIALIST_RECOVERY_114",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_CROSSMONTH_PHASE_SPECIALIST_RECOVERY_114.md",
+  "latest_completed": "GAMMA_02_JUNE_DISCOVERY_JULY_VALIDATION_115",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_JUNE_DISCOVERY_JULY_VALIDATION_115.md",
   "current_scientific_base": {
-    "candidate": "GAMMA02_ROLLING_ACTIVITY_REGIME_103",
-    "N": 64,
-    "early_roll_threshold": 12.9,
-    "late_roll_threshold": 64.93,
-    "child_cap": 703,
-    "january": {
+    "candidate": "GAMMA02_CHRONOLOGICAL_SPECIALIST_CHAIN_115",
+    "jan": {
       "net": 43959.75,
       "trades": 28119,
-      "pf": 19625.88839285715,
-      "win": 0.9990042320139407,
-      "expectancy": 1.56334684732743,
-      "avg_hold_s": 14.930153348269851,
-      "equity_dd": 10348.16,
-      "all_metric_crossover": true
+      "specialist": "103/104 rolling activity"
     },
-    "february": {
+    "feb": {
       "net": 43937.72,
       "trades": 28221,
-      "pf": 328.42916759818166,
-      "win": 0.9986180503880089,
-      "expectancy": 1.5569157719428794,
-      "avg_hold_s": 15.55275287906169,
-      "equity_dd": 10348.16,
-      "all_metric_crossover": true
+      "specialist": "103/104 rolling activity"
     },
-    "march": {
-      "net": 0,
-      "trades": 0,
-      "stand_aside": true
-    }
+    "mar": {
+      "net": 2067.33,
+      "trades": 807,
+      "specialist": "109 failed ignition reverse"
+    },
+    "apr": {
+      "net": 11880.59,
+      "trades": 22848,
+      "specialist": "114 April-discovered 17UTC"
+    },
+    "may": {
+      "net": 16977.84,
+      "trades": 30378,
+      "specialist": "114 frozen 17UTC"
+    },
+    "jun": {
+      "net": 5597.73,
+      "trades": 18428,
+      "specialist": "114 frozen 17UTC"
+    },
+    "jul": {
+      "net": 4059.01,
+      "trades": 11028,
+      "specialist": "115 June-discovered 16UTC"
+    },
+    "jan_jul_total_net": 128479.97,
+    "jan_jul_total_trades": 139829,
+    "r9_synth_net_fraction": 0.4156,
+    "r9_synth_trade_fraction": 0.6375
   },
   "exact_helpers": {
     "utilization": {
@@ -105,13 +115,12 @@
     "wave_multiplicity_085": "Desk-level same-tick renewal collapse with fixed multiplicity rejected: same-tick child groups share direction/entry price but retain heterogeneous parent-owned exits/PnL; 538 tested wave-size pairs produced zero all-six-metric crossovers.",
     "parent_phase_desync_086": "Causal parent entry-price phase rearm maps can preserve all six SYNTH metrics but do not reduce maxopen/max same-tick cluster; heat remains 1,443."
   },
-  "first_incomplete_unit": "GAMMA_02_JUNE_DISCOVERY_JULY_VALIDATION_115",
+  "first_incomplete_unit": "GAMMA_02_UNIFIED_CAUSAL_SPECIALIST_ROUTER_116",
   "next_units": [
-    "June-only discovery of July candidate from continuous 112 phase map",
-    "freeze selected June rules before July replay",
-    "if July survives, integrate with 103/104 + 109 + 114 architecture",
-    "exact equity-DD on cross-month finalist",
-    "no August access"
+    "build causal router that selects 103/104 vs 109 vs 114 vs 115 without month labels",
+    "replay Jan-Jul chronologically with frozen specialist rules",
+    "exact tick-level equity-DD on unified router",
+    "only after parity consider MT5 implementation"
   ],
   "constraints": {
     "august": "SEALED",
@@ -120,7 +129,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read GAMMA_02_CROSSMONTH_PHASE_SPECIALIST_RECOVERY_114.md and this cursor. Do not rerun <=114. Resume June discovery -> July frozen validation 115.",
+  "recovery_rule": "Read GAMMA_02_JUNE_DISCOVERY_JULY_VALIDATION_115.md and this cursor. Do not rerun <=115. Resume unified causal specialist router 116. August remains sealed.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -139,7 +148,7 @@
     "expectancy": 1.4839463902787706,
     "avg_hold_s": 16.462687634024302
   },
-  "latest_branch_head": "9570ad05efdf5ab55a1b08c26bbb989d46f39454",
+  "latest_branch_head": "2d46489cfb262aa63985324f19515f7162d33d15",
   "replay083_bundle": {
     "github_dir": "research/R9_GAMMA/replay083_deps/",
     "library_dir": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/post-crossover-recovery/replay083_deps/",
