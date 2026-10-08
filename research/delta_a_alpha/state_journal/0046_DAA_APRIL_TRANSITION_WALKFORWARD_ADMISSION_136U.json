@@ -1,0 +1,19 @@
+{
+  "sequence": 46,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_APRIL_TRANSITION_WALKFORWARD_ADMISSION_136U",
+  "status": "COMPLETE_NEGATIVE_EXACT_CELL_ONLINE_QUALIFICATION",
+  "predecessor": {
+    "sequence": 45,
+    "unit": "DAA_APRIL_CAUSAL_TRANSITION_BREAKTHROUGH_136T2",
+    "path": "research/delta_a_alpha/state_journal/0045_DAA_APRIL_CAUSAL_TRANSITION_BREAKTHROUGH_136T2.json"
+  },
+  "decision": "Exact RL_PH rolling admission is too sparse/slow for April cold-start. Preserve causal features; reject exact-cell deployment learner.",
+  "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136u/",
+  "next_unit": "DAA_APRIL_RULE_FAMILY_PARAMETRIC_GOVERNOR_136V2",
+  "constraints": {
+    "calendar_feature": false,
+    "future_outcome": false,
+    "august_2026": "SEALED"
+  }
+}
