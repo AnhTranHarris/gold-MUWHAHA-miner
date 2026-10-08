@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 39,
-    "latest_entry": "research/delta_a_alpha/state_journal/0039_DAA_MARCH_VERTICAL_GRID_DISCOVERY_135.json"
+    "latest_sequence": 40,
+    "latest_entry": "research/delta_a_alpha/state_journal/0040_DAA_MARCH_VERTICAL_GRID_DISCOVERY_135_FREEZE_001.json"
   },
-  "restart_instruction": "Read journal 0039 and research/delta_a_alpha/monthly/DAA_MONTHLY_VERTICAL_GRID_CAMPAIGN_STATE.json. March 135 is COMPLETE and backed up in GitHub, Library and Drive. Never rebuild March from chat if durable bytes exist. Exact March replay uses Library STREAMS_135.npz + replay helper; selected cells are in CELLS_135.json. Next incomplete unit is DAA_APRIL_VERTICAL_GRID_DISCOVERY_136 using the same frozen whitepaper spine and cumulative Jan->Feb->Mar mechanics. MT5 V1 skeleton remains frozen reference; compile/parity is deferred during monthly behavior mapping. August sealed.",
+  "restart_instruction": "Read journal 0040 -> 0039 and the monthly campaign state. March 135 is frozen on delta-A-alpha-march-135-complete @ 06328b13f35f5fc5dd869713ab67fc49f926afdb and backed up in Library + Drive. Never rebuild March from chat. Resume only DAA_APRIL_VERTICAL_GRID_DISCOVERY_136 carrying Jan->Feb->Mar mechanics forward. MT5 final economic build remains deferred during monthly behavior mapping. August sealed.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -264,6 +264,9 @@
     "march_stream_sha256": "9b16fe06de5b3f85d2f8ea03eaff661de65d15485fd7cbc6563ba029335b795e",
     "next_month": "2026-04",
     "next_unit": "DAA_APRIL_VERTICAL_GRID_DISCOVERY_136",
-    "rule": "Carry January->February->March mechanics forward. Do not rebuild completed months. Adapt only causal layer geometry/participation/recovery/capacity; month/date remains evaluation-only."
+    "rule": "Carry January->February->March mechanics forward. Do not rebuild completed months. Adapt only causal layer geometry/participation/recovery/capacity; month/date remains evaluation-only.",
+    "march_rollback_branch": "delta-A-alpha-march-135-complete",
+    "march_rollback_commit": "06328b13f35f5fc5dd869713ab67fc49f926afdb",
+    "march_drive_artifact_map": "https://docs.google.com/document/d/1lrn3UmNA42zJMdrxLgxzn29E8pjupiVo-NsZjzDTcUU/edit?usp=drivesdk"
   }
 }
