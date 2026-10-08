@@ -1,0 +1,51 @@
+{
+  "sequence": 45,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_APRIL_CAUSAL_TRANSITION_BREAKTHROUGH_136T2",
+  "status": "COMPLETE_MAJOR_CAUSAL_FEATURE_BREAKTHROUGH",
+  "predecessor": {
+    "sequence": 44,
+    "unit": "DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q",
+    "path": "research/delta_a_alpha/state_journal/0044_DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q.json"
+  },
+  "causal_transition_state": [
+    "renewal_rule",
+    "current_depth",
+    "previous_child_realized_pnl_bucket",
+    "previous_child_realized_hold_bucket"
+  ],
+  "max_frontier": {
+    "net": 71267.89,
+    "trades": 35111,
+    "gross_loss": -2220.94,
+    "pf": 33.08906589101912,
+    "win": 0.9658511577568284,
+    "expectancy": 2.029788100595255,
+    "balance_dd": 156.07,
+    "equity_dd": 8160.12,
+    "maxopen_exact": 819,
+    "beat_synth_days": "12/21",
+    "beat_synth_weeks": "5/5"
+  },
+  "cap512_frontier": {
+    "net": 67531.19,
+    "trades": 31974,
+    "gross_loss": -2211.36,
+    "pf": 31.538306743361552,
+    "win": 0.9630950146994433,
+    "expectancy": 2.112065740914493,
+    "balance_dd": 156.07,
+    "equity_dd": 7431.12,
+    "maxopen_exact": 633,
+    "beat_synth_days": "12/21",
+    "beat_synth_weeks": "5/5"
+  },
+  "scientific_boundary": "Features are causal and known before current child entry. RL_PH cell whitelist/thresholds remain April outcome-discovered research authority, not deployable authority.",
+  "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136t2/",
+  "next_unit": "DAA_APRIL_TRANSITION_WALKFORWARD_ADMISSION_136U",
+  "constraints": {
+    "calendar_feature": false,
+    "future_outcome": false,
+    "august_2026": "SEALED"
+  }
+}
