@@ -1,0 +1,33 @@
+{
+  "sequence": 47,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_APRIL_RULE_FAMILY_PARAMETRIC_GOVERNOR_136V2",
+  "status": "COMPLETE_RECOVERED_PARAMETRIC_FRONTIER",
+  "predecessor": {
+    "sequence": 46,
+    "unit": "DAA_APRIL_TRANSITION_WALKFORWARD_ADMISSION_136U",
+    "path": "research/delta_a_alpha/state_journal/0046_DAA_APRIL_TRANSITION_WALKFORWARD_ADMISSION_136U.json"
+  },
+  "result": {
+    "max_trade_frontier": {
+      "net": 63432.62,
+      "trades": 26324,
+      "gross_loss": -2321.38,
+      "pf": 28.32539265436938,
+      "win": 0.9520969457529251,
+      "expectancy": 2.4096877374259233,
+      "cap": 819
+    },
+    "all_plus_trade_count": 0,
+    "trade_deficit_vs_synth": 5434
+  },
+  "conclusion": "Lower-dimensional per-rule parametric control preserves all April non-volume SYNTH gates but under-harvests available velocity. T2 proves enough causal opportunity exists. Next test must transfer prior Jan-Mar knowledge rather than relearn April from zero.",
+  "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136v2/",
+  "result_sha256": "534a6b701fbf525c96243cb024bdea6914c5887a41ea9f6fd517445936d324a5",
+  "next_unit": "DAA_APRIL_CROSSMONTH_PRIOR_CAMPAIGN_GOVERNOR_136W",
+  "constraints": {
+    "calendar_feature": false,
+    "future_outcome": false,
+    "august_2026": "SEALED"
+  }
+}
