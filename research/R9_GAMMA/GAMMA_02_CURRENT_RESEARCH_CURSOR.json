@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v31",
+  "schema": "r9-gamma-02-research-cursor-v32",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_FEB_UNCHANGED_JAN_MILESTONE_REPLAY_132A",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_FEB_UNCHANGED_JAN_MILESTONE_REPLAY_132A.md",
+  "latest_completed": "GAMMA_02_MAR_UNCHANGED_JAN_MILESTONE_REPLAY_133A",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_MAR_UNCHANGED_JAN_MILESTONE_REPLAY_133A.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_DYNAMIC_RENEWAL_WATCHDOG_119",
     "frozen_params": {
@@ -131,11 +131,12 @@
     "warmup_leakage_103_104": "CRITICAL: 103/104 February authority suspended. Nominal February stream had 36,355 entries but only 102 entries actually in February after absolute-time filtering; prior +$43.9K result was warmup leakage.",
     "target_gate_083": "083 target-gated audit: Jan cap703 +$48,766.62 / 32,862; Feb +$4,193.52 / 7,020; Mar -$9,480.91 / 6,727. Prior frozen February +$52.96K was warmup-contaminated."
   },
-  "first_incomplete_unit": "GAMMA_02_FEB_BASELINE_OWNER_DECISION_132B",
+  "first_incomplete_unit": "GAMMA_02_ONLINE_SPECIALIST_LEARNER_FEB_TO_MAR_133B",
   "next_units": [
-    "Owner decision: accept February unchanged-transfer baseline and proceed to March, or open February adaptation research",
-    "If adapting February: diagnose no-trade/negative states without calendar-date features and preserve January milestone regression",
-    "If proceeding: replay frozen January milestone unchanged on March with exact March R9 SYNTH daily/weekly benchmark",
+    "Design bounded causal online specialist learner/meta-router using January milestone as prior, February as first unseen learning month, and March as out-of-sample validation",
+    "Shadow-score Watchdog/coverage/session specialists using only realized exits; promote/demote with minimum evidence and hysteresis",
+    "Test funded-vs-paper behavior and bounded exploration without month/day labels or future P/L",
+    "Regression gate against frozen January milestone before any promotion",
     "August sealed"
   ],
   "constraints": {
@@ -145,7 +146,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read CURRENT_RESEARCH_CURSOR plus January major fallback and GAMMA_02_FEB_UNCHANGED_JAN_MILESTONE_REPLAY_132A.md. January fallback branch remains carson/r9-gamma-02-jan-grid-milestone and must not be modified. February 132A is an unchanged-transfer baseline only; no February tuning has occurred. Do not rerun 132A unless durable artifacts fail hash/QA. Wait for owner decision: adapt February or proceed to March unchanged replay. August remains sealed.",
+  "recovery_rule": "Read January major fallback, February unchanged replay 132A, March unchanged replay 133A, and this cursor. Do not modify the frozen January fallback branch. Do not rerun 132A/133A unless durable hashes fail. Resume only the bounded online specialist learner/meta-router 133B, using February as first unseen learning month and March as out-of-sample validation. Month/day labels are forbidden as execution features. August remains sealed.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -511,7 +512,7 @@
     "execution_surface": "Dukascopy midpoint + frozen session-P75 normalized spread; Python research only; not raw-Dukascopy fill parity or Coinexx MT5 certification",
     "critical_remaining_issue": "Full-tick equity DD remains ~62763.84, dominated by synchronized Watchdog W05 inventory. Next work must improve profit per unit of heat rather than broaden session inventory."
   },
-  "cursor_parent_head": "e231f47a2ae386d930eb2d626db9e05b8fefc96e",
+  "cursor_parent_head": "d309332a6e217e05a87f8e4807625ecaeb8050f1",
   "january_reexamination_131e": {
     "status": "DURABLE_COMPLETE",
     "parent": "GAMMA_02_JAN_SESSION_FIRM_DAILY_WEEKLY_131D",
@@ -717,5 +718,125 @@
     "checkpoint_sha256": "43ef01369b8df5deecc0790c05eab6c5ff80856232a73233d3164fd62d86274a",
     "library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-08/february-unchanged-jan-replay-132a/",
     "crossmonth_qa": "Exact January parameters/rules preserved. Only explicit target gating added to supplemental heartbeat/cold-start entries to prevent January warmup leakage into February."
+  },
+  "march_unchanged_jan_replay_133a": {
+    "status": "DURABLE_COMPLETE_NO_MARCH_TUNING",
+    "parent_fallback_branch": "carson/r9-gamma-02-jan-grid-milestone",
+    "market_sha256": "814ba35e72f219a58badd806ed5c0f30ef0fb4ffe56a48205d873706513bd177",
+    "r9_synth_source_sha256": "e5fcf4d6879193fac88e7a8e101db1111d59e1a7f5abfb793c970b06cfce7cc7",
+    "r9_synth_march": {
+      "net": 75698.63,
+      "trades": 40985,
+      "gross_loss": -2024.86,
+      "pf": 38.3846241222,
+      "win": 0.9001097963,
+      "expectancy": 1.8469837746,
+      "avg_hold_s": 15.8617543004,
+      "balance_dd": 2.62
+    },
+    "primary_aggressive_l35_c703": {
+      "net": 13470.65,
+      "trades": 17501,
+      "gross_loss": -21417.16,
+      "pf": 1.6289652783,
+      "win": 0.8662362151,
+      "expectancy": 0.7697074453,
+      "balance_dd": 5192.83,
+      "equity_dd": 10483.5,
+      "maxopen": 512,
+      "positive_days": 6,
+      "beat_days": 3,
+      "positive_weeks": 3,
+      "beat_weeks": 0,
+      "net_capture_vs_synth": 0.1779510409,
+      "trade_capture_vs_synth": 0.4270098817,
+      "expectancy_capture_vs_synth": 0.4167375241,
+      "gross_loss_ratio_vs_synth": 10.5771065654
+    },
+    "weekly_primary": {
+      "2026-W10": -4466.67,
+      "2026-W11": 9761.34,
+      "2026-W12": -2450.99,
+      "2026-W13": 8011.79,
+      "2026-W14": 2615.18
+    },
+    "r9_synth_weekly": {
+      "2026-W10": 18489.39,
+      "2026-W11": 11485.84,
+      "2026-W12": 14990.78,
+      "2026-W13": 24526.28,
+      "2026-W14": 6206.34
+    },
+    "component_attribution": {
+      "WATCHDOG": {
+        "net": 3517.95,
+        "trades": 15096,
+        "gross_loss": -17204.64,
+        "pf": 1.2044768156,
+        "win": 0.904345522
+      },
+      "COVERAGE": {
+        "net": 9558.58,
+        "trades": 1988,
+        "gross_loss": -3028.19,
+        "pf": 4.1565324501,
+        "win": 0.6579476861
+      },
+      "COLD64": {
+        "net": 808.05,
+        "trades": 64,
+        "gross_loss": 0,
+        "pf": 999,
+        "win": 1
+      },
+      "ASIA02_CONT": {
+        "net": 0,
+        "trades": 0
+      },
+      "LONDON10_ROTATE_LONG": {
+        "net": -401.46,
+        "trades": 354,
+        "gross_loss": -1184.33,
+        "pf": 0.6610235323
+      },
+      "OVERLAP13_SHORT": {
+        "net": 0,
+        "trades": 0
+      },
+      "LATE21_LONG": {
+        "net": 0,
+        "trades": 0
+      }
+    },
+    "helper": "research/R9_GAMMA/helpers/mar_replay_jan_milestone_133a.py",
+    "helper_sha256": "88eaca734bc59f2b2be427d2b1ae8bc81d823bbb349f4eee9546d592bca4dc18",
+    "full_result": "research/R9_GAMMA/artifacts/mar_replay_jan_milestone_133a.json",
+    "full_result_sha256": "8d1048c464ee5d4053e2b53ef4dc7759c3264e3f6c49add4fabae8e196a5b86b",
+    "compact_result": "research/R9_GAMMA/artifacts/gamma02_mar_unchanged_jan_milestone_replay_133a.json",
+    "compact_result_sha256": "93561527a55ac8ee939ee1876ece6113d7ab7d4489d1defdbe508e12284b011a",
+    "benchmark_helper": "research/R9_GAMMA/helpers/r9_synth_mar_daily_weekly.py",
+    "benchmark_helper_sha256": "9b11c018e67b26c901c89f6a742a7691abcb313122d4a8ebc0a902aa38382cb8",
+    "benchmark_result": "research/R9_GAMMA/artifacts/r9_synth_mar_daily_weekly.json",
+    "benchmark_result_sha256": "2ddf7c17ac93eaf75d9ac78fe650ef12fa2451ebac34e3b1fba1c12c4d4776d9",
+    "component_result": "research/R9_GAMMA/artifacts/mar_component_attribution_133a.json",
+    "component_result_sha256": "7098d2d816c19477b2b99638f42683148bd1444efdcc3258c42b5d1556fb2853",
+    "checkpoint": "research/R9_GAMMA/GAMMA_02_MAR_UNCHANGED_JAN_MILESTONE_REPLAY_133A.md",
+    "checkpoint_sha256": "08f18f827209b05e5e6699244db2658a8314f3030890230d341b82b592fc0e11",
+    "library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-08/march-unchanged-jan-replay-133a/",
+    "crossmonth_qa": "Exact January parameters/rules preserved. Only explicit START<=entry<END gating used to prevent February warmup from leaking into March."
+  },
+  "crossmonth_learning_question": {
+    "status": "OPEN_NEXT",
+    "observation": "February retains ~72.8% of R9 SYNTH net, but March falls to ~17.8%. Coverage transfers better than Watchdog; several January session specialists go dormant and London10 turns negative.",
+    "design_goal": "A blind-deployment system must learn state/specialist fitness causally from shadow outcomes and realized exits, rather than know the calendar month.",
+    "proposed_mechanisms": [
+      "paper/shadow scoring of every specialist even when not physically funded",
+      "rolling/Bayesian or confidence-bound expectancy/PF evidence per specialist/state",
+      "promotion/demotion hysteresis after minimum sample",
+      "bounded exploration budget for unseen states",
+      "separate signal intelligence from funded capital governor",
+      "hard caps/no martingale/no loss-dependent sizing",
+      "January regression gate before any crossmonth promotion"
+    ]
   }
 }
