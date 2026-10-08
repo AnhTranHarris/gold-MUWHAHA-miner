@@ -1,0 +1,47 @@
+{
+  "schema": "delta-a-alpha-v1-mt5-skeleton-certification-v1",
+  "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SKELETON_CERTIFICATION_007",
+  "status": "COMPLETE_FULL_CI_PASS",
+  "ea_path": "Experts/GoldMuwahahaMiner_DeltaAAlpha_V1.mq5",
+  "ea_blob_sha": "8dcbcb54d30b8939e0fe4d2c85c9c71a82f47c73",
+  "certification_qa_blob_sha": "03d3476832a5f8dbdedcfcbb7752591b391b617c",
+  "github_actions": {
+    "run_id": 37743036431,
+    "conclusion": "success"
+  },
+  "individual_runs": {
+    "unit002": 37740686516,
+    "unit003": 37741203005,
+    "unit004": 37741689017,
+    "unit005": 37742212874,
+    "unit006": 37742683056
+  },
+  "layers": [
+    "ordered_tick_clock",
+    "session_geometry",
+    "finite_session_lattice",
+    "event_genealogy",
+    "completed_H4_H1_M15_M5",
+    "hourly_high_volume_plus_asia",
+    "watchdog_regime_renewal",
+    "trend_within_trend_native",
+    "wrong_direction_recovery_shadow",
+    "proposal_arbiter",
+    "global_session_layer_heat_governor",
+    "diagnostics"
+  ],
+  "safety": {
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "order_send_path": false,
+    "execution_default": false
+  },
+  "compile": {
+    "metaeditor": "PENDING"
+  },
+  "parity": {
+    "python_to_mt5": "PENDING"
+  },
+  "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_METAEDITOR_COMPILE_AND_PARITY_008"
+}
