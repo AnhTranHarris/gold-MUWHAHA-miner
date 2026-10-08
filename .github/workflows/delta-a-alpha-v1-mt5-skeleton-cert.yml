@@ -1,0 +1,42 @@
+name: DELTA-A-alpha V1 MT5 Skeleton Certification 007
+
+on:
+  push:
+    branches: [delta-A-alpha]
+    paths:
+      - "Experts/GoldMuwahahaMiner_DeltaAAlpha_V1.mq5"
+      - "CURRENT_STATE.json"
+      - "research/delta_a_alpha/qa/v1_mt5_*"
+      - "research/delta_a_alpha/mt5/**"
+      - ".github/workflows/delta-a-alpha-v1-mt5-skeleton-cert.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full-skeleton:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile all V1 QA
+        run: |
+          python -m py_compile             research/delta_a_alpha/qa/v1_mt5_architecture_static_qa.py             research/delta_a_alpha/qa/v1_mt5_session_genealogy_qa.py             research/delta_a_alpha/qa/v1_mt5_hourly_asia_route_qa.py             research/delta_a_alpha/qa/v1_mt5_watchdog_qa.py             research/delta_a_alpha/qa/v1_mt5_native_recovery_qa.py             research/delta_a_alpha/qa/v1_mt5_arbiter_heat_qa.py             research/delta_a_alpha/qa/v1_mt5_skeleton_certification_qa.py
+      - name: Run unit 001
+        run: python research/delta_a_alpha/qa/v1_mt5_architecture_static_qa.py
+      - name: Run unit 002
+        run: python research/delta_a_alpha/qa/v1_mt5_session_genealogy_qa.py
+      - name: Run unit 003
+        run: python research/delta_a_alpha/qa/v1_mt5_hourly_asia_route_qa.py
+      - name: Run unit 004
+        run: python research/delta_a_alpha/qa/v1_mt5_watchdog_qa.py
+      - name: Run unit 005
+        run: python research/delta_a_alpha/qa/v1_mt5_native_recovery_qa.py
+      - name: Run unit 006
+        run: python research/delta_a_alpha/qa/v1_mt5_arbiter_heat_qa.py
+      - name: Run aggregate certification
+        run: python research/delta_a_alpha/qa/v1_mt5_skeleton_certification_qa.py
