@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v36",
+  "schema": "r9-gamma-02-research-cursor-v37",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_FEB_VERTICAL_GRID_SYSTEM_MAJOR_BREAKTHROUGH_134J",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_FEB_VERTICAL_GRID_SYSTEM_MAJOR_BREAKTHROUGH_134J.md",
+  "latest_completed": "GAMMA_02_FEB_VERTICAL_GRID_RISK_AND_DAILY_REFINEMENT_134K",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_FEB_VERTICAL_GRID_RISK_AND_DAILY_REFINEMENT_134K.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_DYNAMIC_RENEWAL_WATCHDOG_119",
     "frozen_params": {
@@ -131,13 +131,11 @@
     "warmup_leakage_103_104": "CRITICAL: 103/104 February authority suspended. Nominal February stream had 36,355 entries but only 102 entries actually in February after absolute-time filtering; prior +$43.9K result was warmup leakage.",
     "target_gate_083": "083 target-gated audit: Jan cap703 +$48,766.62 / 32,862; Feb +$4,193.52 / 7,020; Mar -$9,480.91 / 6,727. Prior frozen February +$52.96K was warmup-contaminated."
   },
-  "first_incomplete_unit": "GAMMA_02_FEB_VERTICAL_GRID_RISK_AND_DAILY_REFINEMENT_134K",
+  "first_incomplete_unit": "GAMMA_02_FEB_VERTICAL_GRID_FINAL_RISK_POLISH_134L",
   "next_units": [
-    "February-only 134K: reduce gross loss/equity heat while preserving the vertical session/MTF/grid architecture and >$170K balanced net",
-    "Test causal per-session/per-state profit-per-heat allocation and recovery throttles in small atomic blocks",
-    "Preserve 20/20 positive February days and 4/4 weeks beating R9 SYNTH as regression gates",
-    "Do not return to compressed 133C expert-stream architecture as February base",
-    "After February freezes, owner decides whether to replay unchanged on March",
+    "Optional February-only 134L: attempt further gross-loss/equity-heat reduction without losing the 134K daily/weekly gates",
+    "Preserve the 134K Pareto frontiers; do not weaken the vertical architecture",
+    "If no material risk improvement appears quickly, freeze February and wait for owner direction before any March replay",
     "August sealed"
   ],
   "constraints": {
@@ -147,7 +145,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "MAJOR FEBRUARY VERTICAL GRID BREAKTHROUGH 134J EXISTS. Read GAMMA_02_FEB_VERTICAL_GRID_SYSTEM_MAJOR_BREAKTHROUGH_134J.md + JSON, then 134E. Use Library root /xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-08/february-vertical-grid-major-134j/ for NPZ/full diagnostic bytes. Do not reconstruct from chat. February base is the vertically integrated tick->session geometry->completed HTF/MTF->hourly high-volume grid->Watchdog/regime->trend-within-trend->wrong-direction recovery->heat governor stack. Resume only 134K February risk/daily refinement. January fallback branch remains untouched. August sealed.",
+  "recovery_rule": "MAJOR FEBRUARY 134K PARETO BREAKTHROUGH EXISTS. Read 134J then 134K plus this cursor. Use exact Library artifacts; do not reconstruct from chat. The February system must remain vertically integrated: ordered tick lattice -> session-specific geometry -> completed H4/H1/M15/M5 -> hourly high-volume grid -> Watchdog/regime -> trend-within-trend native specialist -> state-conditioned wrong-direction recovery -> capital/heat governor. 134K selected frontiers all preserve 20/20 positive February days and 4/4 weeks beating R9 SYNTH. Resume only optional 134L February risk polish unless owner explicitly moves on. January fallback remains untouched. August sealed.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -1211,5 +1209,75 @@
     "library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-08/february-vertical-grid-major-134j/",
     "checkpoint_sha256": "d524ada4e40d6a98a1359cfcb4948036f43961c6000ceea98a97977c45297e9b",
     "manifest_sha256": "8a78cc53f5808fba100183b6b0e92153d00f2173625038da2ed4d6f55d51bbc3"
+  },
+  "february_vertical_grid_134k": {
+    "status": "DURABLE_MAJOR_PARETO_BREAKTHROUGH",
+    "benchmark": {
+      "net": 66213.65,
+      "trades": 33523,
+      "gross_loss": -2031.42,
+      "pf": 33.5947613,
+      "win": 0.8829758673,
+      "expectancy": 1.9751707783,
+      "balance_dd": 2.19
+    },
+    "risk_balanced_cap384_pf10_asia_pf8": {
+      "net": 164157.41999143318,
+      "trades": 28398,
+      "gross_loss": -13051.53999987036,
+      "pf": 13.577628386616732,
+      "win": 0.8848510458482992,
+      "expectancy": 5.78059792912998,
+      "balance_dd": 1440.7799999999988,
+      "equity_dd": 10629.880000000005,
+      "maxopen": 384,
+      "positive_days": 20,
+      "beat_days": 15,
+      "positive_weeks": 4,
+      "beat_weeks": 4
+    },
+    "high_quality_cap600_pf10_asia_pf8": {
+      "net": 189956.6799845618,
+      "trades": 32054,
+      "gross_loss": -13862.150000559985,
+      "pf": 14.703262479261022,
+      "win": 0.8890622075248019,
+      "expectancy": 5.926145878347844,
+      "balance_dd": 1623.5,
+      "equity_dd": 10629.880000000005,
+      "maxopen": 600,
+      "positive_days": 20,
+      "beat_days": 15,
+      "positive_weeks": 4,
+      "beat_weeks": 4
+    },
+    "near_all_metrics_cap620_win80_asia_pf8": {
+      "net": 200162.82998479187,
+      "trades": 33850,
+      "gross_loss": -17933.950000559984,
+      "pf": 12.161112302562561,
+      "win": 0.882245199409158,
+      "expectancy": 5.913229837069184,
+      "balance_dd": 1710.9399999999732,
+      "equity_dd": 10629.880000000005,
+      "maxopen": 620,
+      "positive_days": 20,
+      "beat_days": 14,
+      "positive_weeks": 4,
+      "beat_weeks": 4
+    },
+    "main_findings": [
+      "Asia was the dominant remaining gross-loss source after 134J.",
+      "Asia PF8 geometry reduces standalone Asia gross loss from about -11677.91 to about -1052.30 while retaining +23445.61 net.",
+      "Watchdog layer30/cap384 is the best tested vertical interaction point versus deeper Watchdog layers in February.",
+      "PF10-native is the cleanest risk-quality mode; Win80-native cap620 is the first frontier exceeding both R9 SYNTH net and trade count while nearly matching its win rate.",
+      "20/20 positive days and 4/4 weeks beating R9 SYNTH are now regression gates for February."
+    ],
+    "checkpoint": "research/R9_GAMMA/GAMMA_02_FEB_VERTICAL_GRID_RISK_AND_DAILY_REFINEMENT_134K.md",
+    "manifest": "research/R9_GAMMA/GAMMA_02_FEB_VERTICAL_GRID_RISK_AND_DAILY_REFINEMENT_134K.json",
+    "library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-08/february-vertical-grid-risk-134k/",
+    "checkpoint_sha256": "2c67045559bffbc7d242b97a1a61d49ee509f46aced7f1ef3087840cc55f684f",
+    "manifest_sha256": "5f5a09d134fbee491708063e63d30af22a6b26d706bd7df2ada6afeac094ccef",
+    "caveat": "February-discovered causal rules; not deployable cross-month authority until frozen unchanged and validated outside February."
   }
 }
