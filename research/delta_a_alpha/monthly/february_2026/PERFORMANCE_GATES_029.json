@@ -1,0 +1,44 @@
+{
+  "status": "FAIL_R9_SYNTH_TARGET",
+  "baseline_feb1_asof_simulated_not_pristine_blind": true,
+  "operational_source_integration_QA": "PASS_RECONSTRUCTED_ONLY",
+  "objective_ref_R9_SYNTH": {
+    "net": 66213.65,
+    "trades": 33523,
+    "gross_loss": -2327.59,
+    "pf": 29.4473,
+    "win_rate": 0.88387
+  },
+  "adaptive": {
+    "net": 8573.589,
+    "trades": 3667,
+    "gross_loss": -4000.969,
+    "profit_factor": 3.1428781377711252,
+    "win_rate": 0.47013907826561224,
+    "positive_days": 7,
+    "active_days": 20,
+    "floating_equity_drawdown": 3058.3800000000047
+  },
+  "static": {
+    "net": 7755.607000000001,
+    "trades": 4332,
+    "gross_loss": -5205.554,
+    "profit_factor": 2.4898715871547967,
+    "win_rate": 0.4249769159741459,
+    "positive_days": 7,
+    "active_days": 20,
+    "floating_equity_drawdown": 3116.752999999997
+  },
+  "performance_gates": {
+    "net_gt_r9": false,
+    "trades_gt_r9": false,
+    "pf_gt_r9": false,
+    "win_gt_r9": false,
+    "gross_loss_absolute_below_r9": false,
+    "at_least_18_positive_days": false,
+    "exact_source_parity": false,
+    "MT5_broker_execution_certified": false
+  },
+  "permanent_whitepaper_L0_L8": true,
+  "source_exact": false
+}
