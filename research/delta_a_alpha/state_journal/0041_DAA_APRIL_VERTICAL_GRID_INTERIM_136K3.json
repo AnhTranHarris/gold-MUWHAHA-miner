@@ -1,0 +1,35 @@
+{
+  "sequence": 41,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_APRIL_VERTICAL_GRID_INTERIM_136K3",
+  "status": "APRIL_IN_PROGRESS_DURABLE_FALLBACK",
+  "predecessor": {
+    "sequence": 40,
+    "unit": "DAA_MARCH_VERTICAL_GRID_DISCOVERY_135_FREEZE_001",
+    "path": "research/delta_a_alpha/state_journal/0040_DAA_MARCH_VERTICAL_GRID_DISCOVERY_135_FREEZE_001.json"
+  },
+  "result": {
+    "net": 40895.82,
+    "trades": 7240,
+    "gross_loss": -2160.71,
+    "pf": 19.9270286,
+    "win": 0.8679558,
+    "expectancy": 5.64859,
+    "balance_dd": 206.56,
+    "equity_dd": 1792.16,
+    "maxopen": 176,
+    "positive_days": "23/23",
+    "positive_weeks": "5/5"
+  },
+  "recovery": {
+    "library_i": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136i/",
+    "library_k3": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136k3/"
+  },
+  "decision": [
+    "April quality floor now exceeds R9 SYNTH monthly net/PF/win/gross-loss benchmarks.",
+    "Velocity remains unresolved; protected expansion overlays are the next research family.",
+    "Do not rerun completed 136A-K3 blocks after timeout."
+  ],
+  "next_unit": "DAA_APRIL_PROTECTED_SOURCE_OVERLAY_136K4",
+  "august_2026": "SEALED"
+}
