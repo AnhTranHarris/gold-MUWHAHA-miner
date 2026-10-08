@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v27",
+  "schema": "r9-gamma-02-research-cursor-v28",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_JAN_WATCHDOG119_LAYER_DEPTH_HEAT_131B",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_JAN_WATCHDOG119_LAYER_DEPTH_HEAT_131B.md",
+  "latest_completed": "GAMMA_02_JAN_SESSION_FIRM_DAILY_WEEKLY_131D",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_JAN_SESSION_FIRM_DAILY_WEEKLY_131D.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_DYNAMIC_RENEWAL_WATCHDOG_119",
     "frozen_params": {
@@ -131,10 +131,10 @@
     "warmup_leakage_103_104": "CRITICAL: 103/104 February authority suspended. Nominal February stream had 36,355 entries but only 102 entries actually in February after absolute-time filtering; prior +$43.9K result was warmup leakage.",
     "target_gate_083": "083 target-gated audit: Jan cap703 +$48,766.62 / 32,862; Feb +$4,193.52 / 7,020; Mar -$9,480.91 / 6,727. Prior frozen February +$52.96K was warmup-contaminated."
   },
-  "first_incomplete_unit": "GAMMA_02_JAN_WATCHDOG119_WEEKLY_COVERAGE_AND_PROFIT_PER_HEAT_131C",
+  "first_incomplete_unit": "GAMMA_02_JAN_WD119_PROFIT_PER_HEAT_AND_VIRTUAL_RENEWAL_131E",
   "next_units": [
-    "January W01-W04 complementary causal coverage and W05 profit-per-heat 131C",
-    "arbitrary-start and capital overlays on frozen January architecture",
+    "January Watchdog profit-per-heat / virtual-renewal research 131E",
+    "arbitrary-start and starting-capital overlays on frozen January architecture",
     "freeze robust January adaptive architecture",
     "then February unchanged replay and causal adaptation",
     "then later months sequentially",
@@ -147,7 +147,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Owner re-opened January before February/later-month work. Read GAMMA_02_JAN_WATCHDOG119_GRID_LAYER_REFINEMENT_131A.md, GAMMA_02_JAN_WATCHDOG119_LAYER_DEPTH_HEAT_131B.md, and this cursor. Preserve Watchdog-119 and resume only January weekly coverage/profit-per-heat 131C. Do not resume the older April-131 instruction. August remains sealed.",
+  "recovery_rule": "Owner reopened January and requires firm-style daily/weekly comparison. Read GAMMA_02_JAN_WATCHDOG119_GRID_LAYER_REFINEMENT_131A.md, GAMMA_02_JAN_WATCHDOG119_LAYER_DEPTH_HEAT_131B.md, GAMMA_02_JAN_SESSION_FIRM_DAILY_WEEKLY_131D.md, and this cursor. Preserve Watchdog-119 plus the selected 131D session portfolio and resume only Watchdog profit-per-heat / virtual-renewal 131E. Do not resume older April work. August remains sealed.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -437,5 +437,81 @@
       "maxopen": 1152
     },
     "critical_finding": "Max renewal-layer depth is a causal realized-loss control; synchronized concurrency remains the dominant full-tick equity-DD mechanism. January Watchdog remains W05 concentrated and is not yet an arbitrary-start complete January architecture."
-  }
+  },
+  "january_reexamination_131d": {
+    "status": "DURABLE_COMPLETE",
+    "parent": "GAMMA02_DYNAMIC_RENEWAL_WATCHDOG_119",
+    "selected_frontier": "WD119_COVERAGE_LEAN4_COLD64",
+    "selected": {
+      "net": 207653.32,
+      "trades": 88958,
+      "gross_profit": 212728.42,
+      "gross_loss": -5075.1,
+      "pf": 41.9161041162,
+      "win": 0.9796083545,
+      "expectancy": 2.3342849435,
+      "balance_dd": 818.71,
+      "equity_dd": 62763.84,
+      "maxopen": 703,
+      "positive_days": 21,
+      "beat_r9_synth_days": 13,
+      "positive_weeks": 5,
+      "beat_r9_synth_weeks": 5
+    },
+    "weekly_net": {
+      "2026-W01": 1217.78,
+      "2026-W02": 8091.31,
+      "2026-W03": 18316.62,
+      "2026-W04": 16718.6,
+      "2026-W05": 163309.01
+    },
+    "r9_synth_weekly_net": {
+      "2026-W01": 1027.95,
+      "2026-W02": 5332.33,
+      "2026-W03": 5817.38,
+      "2026-W04": 7692.42,
+      "2026-W05": 21650.74
+    },
+    "ex_jan30": {
+      "candidate_net": 67633.55,
+      "r9_synth_net": 34628.8
+    },
+    "recovered_coverage": {
+      "net": 202989.37,
+      "trades": 86422,
+      "gross_loss": -2568.09,
+      "pf": 80.0429346323,
+      "result_sha256": "e685ebd2a9a5d23615439b57a0daaa8fcd4549e7dd5018f4bd85455d3851e3ad",
+      "rerun": "BYTE_IDENTICAL"
+    },
+    "session_desks": [
+      "ASIA02_CONT",
+      "LONDON10_ROTATE_LONG",
+      "OVERLAP13_SHORT",
+      "LATE21_LONG",
+      "source12 cold-start microgrid cap64"
+    ],
+    "helper": "research/R9_GAMMA/helpers/jan_session_portfolio_lean_131d.py",
+    "helper_sha256": "9f290909b172ce97924caf028a66c733a71cd7d6bc519e08d72389911c2f4456",
+    "framework_helper": "research/R9_GAMMA/helpers/jan_session_portfolio_131d.py",
+    "framework_sha256": "c612e0b71b777206b93447af17a4bdc3863a28a69334d416dc108bb1dd2e966f",
+    "state_discovery_helper": "research/R9_GAMMA/helpers/general_session_state_discovery_131c.py",
+    "state_discovery_sha256": "3a96a63ea547942ae06a800ebe0a0cd25fed69b618b92f913a6844235b3206a4",
+    "benchmark_helper": "research/R9_GAMMA/helpers/r9_synth_jan_daily_weekly.py",
+    "benchmark_helper_sha256": "06de0b9c39ee499da1ae24dd94f2d36c07e3c552f328147676a98d9d41e2368c",
+    "benchmark_artifact": "research/R9_GAMMA/artifacts/r9_synth_jan_daily_weekly.json",
+    "benchmark_artifact_sha256": "a69dabf3462331486d27de3a82e11a4bb3311d453b9e39fe73e2c155a94569a7",
+    "compact_artifact": "research/R9_GAMMA/artifacts/gamma02_jan_session_firm_daily_weekly_131d.json",
+    "compact_artifact_sha256": "fc5d1ea59eeefa5720100e36352e3e7445e7c99aebdc5083bc4ba1dce6d4d42f",
+    "full_result_library": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/january-session-firm-131d/jan_session_portfolio_lean_131d.json",
+    "full_result_sha256": "1d9813c92ad6aae1eef7e1f40de0d324f1696de2081fa960ebd92fd5b97c4aa7",
+    "checkpoint": "research/R9_GAMMA/GAMMA_02_JAN_SESSION_FIRM_DAILY_WEEKLY_131D.md",
+    "checkpoint_sha256": "9df66a4810ba480eafb6fdab7c70378a20d19bb61b0504714d9f02bc7a5c8eac",
+    "checkpoint_commit_before_cursor_update": "2ce68cb06b526b8585a51d7b289208254c69170b",
+    "market_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "calendar_feature_forbidden": true,
+    "execution_surface": "Dukascopy midpoint + frozen session-P75 normalized spread; Python research only; not raw-Dukascopy fill parity or Coinexx MT5 certification",
+    "critical_remaining_issue": "Full-tick equity DD remains ~62763.84, dominated by synchronized Watchdog W05 inventory. Next work must improve profit per unit of heat rather than broaden session inventory."
+  },
+  "cursor_parent_head": "2ce68cb06b526b8585a51d7b289208254c69170b"
 }
