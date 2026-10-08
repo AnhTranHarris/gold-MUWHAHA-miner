@@ -568,6 +568,30 @@
       "status": "DURABLE",
       "path": "research/delta_a_alpha/state_journal/0047_DAA_APRIL_RULE_FAMILY_PARAMETRIC_GOVERNOR_136V2.json",
       "purpose": "April 136V2 checkpoint"
+    },
+    {
+      "id": "H-MAXCHAT-20261008",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/handoffs/DAA_MAX_CHAT_HANDOFF_20261008.json",
+      "purpose": "Jan-Apr max-chat Drive/bootstrap/recovery manifest"
+    },
+    {
+      "id": "J-MAXCHAT-0051",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/state_journal/0051_DAA_MAX_CHAT_HANDOFF_20261008.json",
+      "purpose": "authoritative max-chat handoff checkpoint"
+    },
+    {
+      "id": "L-APR136-RECOVERY-HELPERS",
+      "status": "DURABLE",
+      "path": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/recovery-archive/DAA_APRIL_136_HELPERS_ARTIFACTS_RECOVERY_20261008.tar.gz",
+      "purpose": "216 exact surviving April helper/artifact/document bytes"
+    },
+    {
+      "id": "L-APR136-RECOVERY-CACHE",
+      "status": "DURABLE",
+      "path": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/recovery-archive/DAA_APRIL_136_NUMERIC_CACHE_RECOVERY_20261008.tar.gz",
+      "purpose": "April numeric cache recovery to avoid rebuild"
     }
   ],
   "rule": "Register durable helpers/results before dependent work. Vertical Grid System V1 is now the permanent architecture floor. Older Delta-A-alpha STMR artifacts remain forensic/pre-V1 evidence. V2+ may refine V1 layers but may not silently flatten the spine.",
