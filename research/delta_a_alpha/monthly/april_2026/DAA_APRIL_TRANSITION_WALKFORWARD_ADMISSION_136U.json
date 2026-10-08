@@ -1,0 +1,16 @@
+{
+  "schema": "delta-a-alpha-april-transition-walkforward-136u-v1",
+  "unit": "DAA_APRIL_TRANSITION_WALKFORWARD_ADMISSION_136U",
+  "status": "COMPLETE_NEGATIVE_EXACT_CELL_ONLINE_QUALIFICATION",
+  "parent": "DAA_APRIL_CAUSAL_TRANSITION_BREAKTHROUGH_136T2",
+  "causal_state": ["renewal_rule","current_depth","previous_child_realized_pnl_bucket","previous_child_realized_hold_bucket"],
+  "result": "No tested rolling-memory exact RL_PH qualification produced a non-zero renewal overlay that preserved all April R9 SYNTH gates after physical-cap replay.",
+  "interpretation": "T2 is economically powerful, but exact-cell online learning is too sparse/slow for April cold-start. Reject exact-cell rolling admission as the deployment learner; preserve RL_PH features and test lower-dimensional parametric/hierarchical campaign governors.",
+  "t2_reference": {
+    "cap512": {"net":67531.19,"trades":31974,"gross_loss":-2211.36,"pf":31.538306743361552,"win":0.9630950146994433,"expectancy":2.112065740914493,"equity_dd":7431.12,"maxopen_exact":633},
+    "research_max": {"net":71267.89,"trades":35111,"gross_loss":-2220.94,"pf":33.08906589101912,"win":0.9658511577568284,"expectancy":2.029788100595255}
+  },
+  "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136u/",
+  "next_unit": "DAA_APRIL_RULE_FAMILY_PARAMETRIC_GOVERNOR_136V2",
+  "causality": "All decisions used only shadow outcomes with exit_ms < current child entry_ms; no month/date/current/future outcome."
+}
