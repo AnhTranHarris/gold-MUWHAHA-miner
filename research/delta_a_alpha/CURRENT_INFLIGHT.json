@@ -1,19 +1,17 @@
 {
-  "schema": "delta-a-alpha-inflight-v4",
+  "schema": "delta-a-alpha-inflight-v5",
   "authority": "APPEND_ONLY_STATE_JOURNAL",
   "state": "IDLE_READY",
-  "last_completed": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002",
+  "last_completed": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
   "current_unit": null,
-  "next_unit": "OWNER_SESSION_TIMEFRAME_STRESS_REVIEW",
-  "journal_entry": "research/delta_a_alpha/state_journal/0027_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002_TIMEOUT_RECONCILIATION.json",
+  "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001",
+  "journal_entry": "research/delta_a_alpha/state_journal/0028_DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001.json",
   "accepted_floor": {
-    "candidate": "STMR_SLEEVE_PHASE_001",
-    "january_net": 877.78,
-    "profit_factor": 1.602933,
-    "trades": 1518,
-    "parent_candidate": "STMR-001",
-    "parent_january_net": 416.23
+    "candidate": "VERTICAL_GRID_SYSTEM_V1",
+    "version": "V1",
+    "spec": "research/delta_a_alpha/architecture/DAA_VERTICAL_GRID_SYSTEM_V1_SPEC.md",
+    "manifest": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MANIFEST.json"
   },
-  "failure_recovery": "Read journal 0027 first, then 0026. Jan-Jul stress and the interrupted role-map diagnostic are complete; do not rerun them. Accepted January floor remains STMR_SLEEVE_PHASE_001. STMR_XMONTH_ADMISSIBILITY_001 remains a non-promoted clean-room research candidate. May-Jul was not used by the final selection rule but is not pristine untouched OOS.",
-  "write_discipline": "No new whole-system dimension begins until owner reviews the Jan-Jul session/timeframe candidate and decides parity handling / candidate authority."
+  "failure_recovery": "Read journal 0028 and V1 spec/manifest first. The permanent spine is ordered ticks -> session geometry -> completed H4/H1/M15/M5 -> London/overlap/NY hourly harvesting + Asia geometry -> Watchdog/regime renewal -> trend-within-trend routing -> wrong-direction recovery -> heat/capital governor. Do not reconstruct from chat. Next unit is the faithful MT5 V1 implementation.",
+  "write_discipline": "Build MT5 V1 layer-by-layer with deterministic diagnostics. Persist each module/QA unit before the next dependent module. Do not redesign strategy logic during the engineering port."
 }
