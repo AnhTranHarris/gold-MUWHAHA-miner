@@ -10,9 +10,9 @@
     "durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "mode": "READ_ONLY"
   },
-  "current_phase": "VERTICAL_GRID_SYSTEM_V1_MT5_UNIT004_COMPLETE",
-  "last_verified_durable_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_WATCHDOG_REGIME_RENEWAL_004",
-  "first_incomplete_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_NATIVE_ROUTING_AND_RECOVERY_005",
+  "current_phase": "VERTICAL_GRID_SYSTEM_V1_MT5_UNIT005_COMPLETE",
+  "last_verified_durable_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_NATIVE_ROUTING_AND_RECOVERY_005",
+  "first_incomplete_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_PROPOSAL_ARBITER_AND_HEAT_GOVERNOR_006",
   "active_candidate": "STMR_SLEEVE_PHASE_001",
   "owner_constraints": {
     "symbol": "XAUUSD",
@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 33,
-    "latest_entry": "research/delta_a_alpha/state_journal/0033_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_WATCHDOG_REGIME_RENEWAL_004.json"
+    "latest_sequence": 34,
+    "latest_entry": "research/delta_a_alpha/state_journal/0034_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_NATIVE_ROUTING_AND_RECOVERY_005.json"
   },
-  "restart_instruction": "Read journal 0033 -> 0032 -> 0031 -> 0030. Unit 004 Watchdog is complete and CI-passed: scout/unlock/relock campaign state and 1.19/1.10 renewal geometry are durable, no order-send path exists. Resume only unit 005 native routing + bounded wrong-direction recovery. MetaEditor compile remains pending.",
+  "restart_instruction": "Read journal 0034 -> 0033 -> 0032 -> 0031. Unit 005 is complete and CI-passed: trend-within-trend classification and bounded shadow failed-ignition recovery are durable; no order-send path exists. Resume only unit 006 proposal arbiter + heat governor. MetaEditor compile remains pending.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -224,11 +224,12 @@
     "execution_mode": "OBSERVE_ONLY_NO_ORDER_SEND_PATH",
     "metaeditor_compile": "PENDING",
     "parity": "PENDING",
-    "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_NATIVE_ROUTING_AND_RECOVERY_005",
+    "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_PROPOSAL_ARBITER_AND_HEAT_GOVERNOR_006",
     "report": "research/delta_a_alpha/mt5/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001_REPORT.md",
     "manifest": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001_MANIFEST.json",
     "implementation_002": "COMPLETE_CI_PASS_OBSERVE_ONLY",
     "implementation_003": "COMPLETE_CI_PASS_OBSERVE_ONLY",
-    "implementation_004": "COMPLETE_CI_PASS_OBSERVE_ONLY"
+    "implementation_004": "COMPLETE_CI_PASS_OBSERVE_ONLY",
+    "implementation_005": "COMPLETE_CI_PASS_OBSERVE_ONLY"
   }
 }
