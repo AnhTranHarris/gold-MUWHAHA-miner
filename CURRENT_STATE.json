@@ -10,9 +10,9 @@
     "durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "mode": "READ_ONLY"
   },
-  "current_phase": "VERTICAL_GRID_SYSTEM_V1_MT5_SKELETON_CERTIFIED",
-  "last_verified_durable_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SKELETON_CERTIFICATION_007",
-  "first_incomplete_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_METAEDITOR_COMPILE_AND_PARITY_008",
+  "current_phase": "MONTHLY_VERTICAL_GRID_CAMPAIGN_MARCH_COMPLETE",
+  "last_verified_durable_unit": "DAA_MARCH_VERTICAL_GRID_DISCOVERY_135",
+  "first_incomplete_unit": "DAA_APRIL_VERTICAL_GRID_DISCOVERY_136",
   "active_candidate": "STMR_SLEEVE_PHASE_001",
   "owner_constraints": {
     "symbol": "XAUUSD",
@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 38,
-    "latest_entry": "research/delta_a_alpha/state_journal/0038_DAA_VERTICAL_GRID_SYSTEM_V1_DUKAS_JAN_JUL_BASELINE_008A.json"
+    "latest_sequence": 39,
+    "latest_entry": "research/delta_a_alpha/state_journal/0039_DAA_MARCH_VERTICAL_GRID_DISCOVERY_135.json"
   },
-  "restart_instruction": "Read journal 0038 then 0037 and 0036. The Jan-Jul Dukascopy precompile baseline is complete. Current V1.05 has no order-send path; exact MT5 tester should produce zero physical trades. Use event/proposal counts in artifact 008A as diagnostic parity targets. Resume only unit 008 MetaEditor compile + Python↔MT5 diagnostic parity. Do not tune Jan-Jul economics before parity.",
+  "restart_instruction": "Read journal 0039 and research/delta_a_alpha/monthly/DAA_MONTHLY_VERTICAL_GRID_CAMPAIGN_STATE.json. March 135 is COMPLETE and backed up in GitHub, Library and Drive. Never rebuild March from chat if durable bytes exist. Exact March replay uses Library STREAMS_135.npz + replay helper; selected cells are in CELLS_135.json. Next incomplete unit is DAA_APRIL_VERTICAL_GRID_DISCOVERY_136 using the same frozen whitepaper spine and cumulative Jan->Feb->Mar mechanics. MT5 V1 skeleton remains frozen reference; compile/parity is deferred during monthly behavior mapping. August sealed.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -224,7 +224,7 @@
     "execution_mode": "OBSERVE_ONLY_NO_ORDER_SEND_PATH",
     "metaeditor_compile": "PENDING",
     "parity": "PENDING",
-    "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_METAEDITOR_COMPILE_AND_PARITY_008",
+    "next_unit": "DEFERRED_UNTIL_MONTHLY_BEHAVIOR_MAP",
     "report": "research/delta_a_alpha/mt5/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001_REPORT.md",
     "manifest": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001_MANIFEST.json",
     "implementation_002": "COMPLETE_CI_PASS_OBSERVE_ONLY",
@@ -250,6 +250,20 @@
       "recovery_failed_ignition": 13703,
       "shadow_session_net": -13331.555,
       "interpretation": "DECISION_SKELETON_BASELINE_ONLY_NOT_FULL_ECONOMIC_V1"
-    }
+    },
+    "compile_parity": "DEFERRED_BY_OWNER_DURING_MONTHLY_BEHAVIOR_MAPPING"
+  },
+  "monthly_vertical_campaign": {
+    "status": "JAN_FEB_MAR_COMPLETE_APRIL_NEXT",
+    "campaign_state": "research/delta_a_alpha/monthly/DAA_MONTHLY_VERTICAL_GRID_CAMPAIGN_STATE.json",
+    "march_unit": "DAA_MARCH_VERTICAL_GRID_DISCOVERY_135",
+    "march_github_dir": "research/delta_a_alpha/monthly/march_2026/",
+    "march_library_dir": "/xauusd-trading-bot/delta-A-alpha/monthly/march_2026/vertical-grid-135/",
+    "march_drive_folder": "https://drive.google.com/drive/folders/1dO6CsGjvWfdkY3JutMoyVzzRCpAJRXSi",
+    "march_drive_read_first": "https://docs.google.com/document/d/1zLe8e8EgND8Lg96uHX8UkeECtH9tZOcv15Vl90gEsEc/edit?usp=drivesdk",
+    "march_stream_sha256": "9b16fe06de5b3f85d2f8ea03eaff661de65d15485fd7cbc6563ba029335b795e",
+    "next_month": "2026-04",
+    "next_unit": "DAA_APRIL_VERTICAL_GRID_DISCOVERY_136",
+    "rule": "Carry January->February->March mechanics forward. Do not rebuild completed months. Adapt only causal layer geometry/participation/recovery/capacity; month/date remains evaluation-only."
   }
 }
