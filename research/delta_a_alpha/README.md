@@ -27,3 +27,28 @@ Do not put huge raw ticks in GitHub. Do commit their hashes, partitions, schemas
 A useful helper is promoted immediately, not left trapped in chat. If logic is reused, non-trivial, required to reproduce a result, expensive to reconstruct, or scientifically useful even when a test fails, it becomes a durable artifact before the next dependent experiment.
 
 Start every new session from `CURRENT_STATE.json`; do not reconstruct the project from conversation memory.
+
+
+## Vertical Grid System V1 — permanent spine (owner-promoted 2026-10-08)
+
+The owner has explicitly promoted the vertically integrated grid architecture into Delta-A-alpha as V1. This is a narrow owner-authorized exception to the earlier isolation rule; it imports the V1 architecture contract and supporting January/February evidence, not unrelated external lineage work.
+
+Permanent order:
+
+```text
+ordered ticks
+→ session-specific grid geometry
+→ completed H4/H1/M15/M5 structure
+→ London/overlap/NY hourly high-volume harvesting + separate Asia geometry
+→ Watchdog/regime renewal
+→ trend-within-trend native routing
+→ wrong-direction recovery
+→ portfolio heat/capital governor
+```
+
+Machine spec: `research/delta_a_alpha/architecture/DAA_VERTICAL_GRID_SYSTEM_V1_SPEC.md`  
+Manifest: `research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MANIFEST.json`  
+GitHub whitepaper: `research/delta_a_alpha/whitepapers/DAA_VERTICAL_GRID_SYSTEM_V1_WHITEPAPER.md`  
+Google whitepaper: https://docs.google.com/document/d/1-PiyhfhulLl1garjwtSYOysPGOgBTgV_apnQmCKoCTc/edit?usp=drivesdk
+
+V2, V3 and later refine the V1 layers month-by-month and later add small-capital survivability. They do not silently replace the spine. The owner has authorized the next unit: a faithful MT5 V1 engineering port with layer-by-layer parity diagnostics.
