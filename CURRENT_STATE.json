@@ -1,5 +1,5 @@
 {
-  "schema": "delta-a-alpha-research-status-v3",
+  "schema": "delta-a-alpha-research-status-v4",
   "project": "Gold MUWHAHA Miner — XAUUSD",
   "branch": "delta-A-alpha",
   "display_name": "Delta-A-alpha",
@@ -10,9 +10,9 @@
     "durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "mode": "READ_ONLY"
   },
-  "current_phase": "WHOLE_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001_ACCEPTED",
-  "last_verified_durable_unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002",
-  "first_incomplete_unit": "OWNER_SESSION_TIMEFRAME_STRESS_REVIEW",
+  "current_phase": "VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FROZEN_MT5_IMPLEMENTATION_AUTHORIZED",
+  "last_verified_durable_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
+  "first_incomplete_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001",
   "active_candidate": "STMR_SLEEVE_PHASE_001",
   "owner_constraints": {
     "symbol": "XAUUSD",
@@ -27,7 +27,8 @@
     ],
     "main_delta": "READ_ONLY",
     "august_2026": "SEALED",
-    "mql5_authorized": false
+    "mql5_authorized": true,
+    "mql5_authorization_scope": "FAITHFUL_VERTICAL_GRID_V1_ENGINEERING_PORT"
   },
   "mission": {
     "role": "SYSTEM_WIDE_GRID_OPPORTUNITY_INFRASTRUCTURE",
@@ -117,11 +118,59 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 27,
-    "latest_entry": "research/delta_a_alpha/state_journal/0027_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002_TIMEOUT_RECONCILIATION.json"
+    "latest_sequence": 28,
+    "latest_entry": "research/delta_a_alpha/state_journal/0028_DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001.json"
   },
-  "restart_instruction": "Read journal 0027 -> 0026 -> 0025 -> 0024. Jan-Jul session/timeframe stress is complete and timeout-reconciled. STMR_SLEEVE_PHASE_001 (+$877.78 January) remains accepted. STMR_XMONTH_ADMISSIBILITY_001 is strongest clean-room Jan-Jul candidate but not promoted. May-Jul is a frozen-rule re-test, not pristine OOS. No completed stress sweep should be rerun.",
+  "restart_instruction": "Read journal 0028 first, then the V1 spec/manifest/whitepaper. Vertical Grid System V1 is the permanent spine. Do not reconstruct it from chat and do not fall back to the older STMR floor except for forensic comparison. Next incomplete unit is DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001. Main delta remains read-only. August remains sealed.",
   "architecture_floor": {
+    "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
+    "candidate": "VERTICAL_GRID_SYSTEM_V1",
+    "status": "OWNER_FROZEN_PERMANENT_SPINE",
+    "source_scope": "OWNER_AUTHORIZED_ARCHITECTURE_PROMOTION_WITH_JAN_FEB_EVIDENCE",
+    "next": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001"
+  },
+  "handoff": {
+    "status": "COMPLETE",
+    "folder_url": "https://drive.google.com/drive/folders/1i0ymYGo5FC4XM1OrdeYYgLF7NCPzNBsk",
+    "journal": "research/delta_a_alpha/state_journal/0025_DAA_HANDOFF_STMR_SLEEVE_PHASE_001_20261006.json",
+    "scientific_floor_unchanged": true
+  },
+  "cross_month_session_timeframe_stress": {
+    "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002",
+    "candidate": "STMR_XMONTH_ADMISSIBILITY_001",
+    "status": "STRONG_RESEARCH_CANDIDATE_NOT_PROMOTED",
+    "cleanroom_jan_jul_net": 780.42,
+    "forward_may_jul_net": 161.65,
+    "gross_loss_reduction_pct": 49.32212604,
+    "trade_retention_pct": 47.16172795,
+    "report": "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002_REPORT.md",
+    "artifact": "research/delta_a_alpha/artifacts/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002.json",
+    "timeout_reconciliation": "journal 0027",
+    "may_jul_evidence": "FROZEN_JAN_APR_RULE_FORWARD_RETEST_NOT_PRISTINE_OOS",
+    "recovery_bundle": "/xauusd-trading-bot/delta-A-alpha/recovery/2026-10-06/STMR_JANJUL_TIMEOUT_RECOVERY_20261006_v2.zip"
+  },
+  "permanent_spine_v1": {
+    "status": "OWNER_FROZEN_PERMANENT_ARCHITECTURE",
+    "version": "V1",
+    "order": [
+      "ordered ticks",
+      "session-specific grid geometry",
+      "completed H4/H1/M15/M5 structure",
+      "London/overlap/NY hourly high-volume harvesting + separate Asia geometry",
+      "Watchdog/regime renewal",
+      "trend-within-trend native routing",
+      "wrong-direction recovery",
+      "portfolio heat/capital governor"
+    ],
+    "spec": "research/delta_a_alpha/architecture/DAA_VERTICAL_GRID_SYSTEM_V1_SPEC.md",
+    "manifest": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MANIFEST.json",
+    "github_whitepaper": "research/delta_a_alpha/whitepapers/DAA_VERTICAL_GRID_SYSTEM_V1_WHITEPAPER.md",
+    "drive_whitepaper": "https://docs.google.com/document/d/1-PiyhfhulLl1garjwtSYOysPGOgBTgV_apnQmCKoCTc/edit?usp=drivesdk",
+    "owner_override": "research/delta_a_alpha/DAA_OWNER_OVERRIDE_VERTICAL_GRID_V1_20261008.md",
+    "journal": "research/delta_a_alpha/state_journal/0028_DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001.json",
+    "version_rule": "V2+ refine the V1 layers month-by-month; architecture changes require explicit owner promotion; small-capital survivability is later-version work above the V1 capital governor."
+  },
+  "previous_architecture_floor": {
     "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001",
     "candidate": "STMR_SLEEVE_PHASE_001",
     "parent": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_AWARENESS / STMR-001",
@@ -161,24 +210,9 @@
     "cross_month_status": "JANUARY_ONLY_PENDING_LATER_JAN_JUL_VALIDATION",
     "alpha_claim": "JANUARY_RESEARCH_EDGE_ONLY_NOT_CROSS_MONTH_PROMOTION"
   },
-  "handoff": {
-    "status": "COMPLETE",
-    "folder_url": "https://drive.google.com/drive/folders/1i0ymYGo5FC4XM1OrdeYYgLF7NCPzNBsk",
-    "journal": "research/delta_a_alpha/state_journal/0025_DAA_HANDOFF_STMR_SLEEVE_PHASE_001_20261006.json",
-    "scientific_floor_unchanged": true
-  },
-  "cross_month_session_timeframe_stress": {
-    "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002",
-    "candidate": "STMR_XMONTH_ADMISSIBILITY_001",
-    "status": "STRONG_RESEARCH_CANDIDATE_NOT_PROMOTED",
-    "cleanroom_jan_jul_net": 780.42,
-    "forward_may_jul_net": 161.65,
-    "gross_loss_reduction_pct": 49.32212604,
-    "trade_retention_pct": 47.16172795,
-    "report": "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002_REPORT.md",
-    "artifact": "research/delta_a_alpha/artifacts/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002.json",
-    "timeout_reconciliation": "journal 0027",
-    "may_jul_evidence": "FROZEN_JAN_APR_RULE_FORWARD_RETEST_NOT_PRISTINE_OOS",
-    "recovery_bundle": "/xauusd-trading-bot/delta-A-alpha/recovery/2026-10-06/STMR_JANJUL_TIMEOUT_RECOVERY_20261006_v2.zip"
+  "handoff_v1": {
+    "status": "DURABLE",
+    "google_whitepaper": "https://docs.google.com/document/d/1-PiyhfhulLl1garjwtSYOysPGOgBTgV_apnQmCKoCTc/edit?usp=drivesdk",
+    "folder_url": "https://drive.google.com/drive/folders/1i0ymYGo5FC4XM1OrdeYYgLF7NCPzNBsk"
   }
 }
