@@ -1,5 +1,5 @@
 #property copyright "AnhTranHarris / Delta-A-alpha Vertical Grid System V1"
-#property version   "1.01"
+#property version   "1.02"
 #property strict
 #property description "Delta-A-alpha V1: tick-rooted vertical grid spine with session lattice and first-touch event genealogy."
 
@@ -111,6 +111,14 @@ struct DAAV1Context
    int grid_landing_cell;
    int crossing_direction;
    double grid_boundary;
+   bool route_valid;
+   string route_id;
+   int route_direction;
+   double route_tp;
+   double route_sl;
+   int route_horizon_seconds;
+   int route_hour_utc;
+   int route_subphase_10m;
    int h4;
    int h1;
    int m15;
@@ -159,6 +167,13 @@ struct DAAV1GridEventRecord
    int h1;
    int m15;
    int m5;
+   string route_id;
+   int route_direction;
+   double route_tp;
+   double route_sl;
+   int route_horizon_seconds;
+   int route_hour_utc;
+   int route_subphase_10m;
 };
 
 DAAV1GridCycle g_grid_cycle={};
@@ -323,6 +338,14 @@ void ResetEventContext(DAAV1Context &c)
    c.grid_landing_cell=0;
    c.crossing_direction=0;
    c.grid_boundary=0.0;
+   c.route_valid=false;
+   c.route_id="NONE";
+   c.route_direction=0;
+   c.route_tp=0.0;
+   c.route_sl=0.0;
+   c.route_horizon_seconds=0;
+   c.route_hour_utc=-1;
+   c.route_subphase_10m=-1;
 }
 
 void RestartGridCycle(DAAV1Context &c,const DAA_V1_CYCLE_REASON reason)
@@ -446,6 +469,13 @@ bool RecordGenealogyEvent(const DAAV1Context &c)
    g_event_records[n].h1=c.h1;
    g_event_records[n].m15=c.m15;
    g_event_records[n].m5=c.m5;
+   g_event_records[n].route_id="NONE";
+   g_event_records[n].route_direction=0;
+   g_event_records[n].route_tp=0.0;
+   g_event_records[n].route_sl=0.0;
+   g_event_records[n].route_horizon_seconds=0;
+   g_event_records[n].route_hour_utc=-1;
+   g_event_records[n].route_subphase_10m=-1;
    return true;
 }
 
@@ -526,19 +556,105 @@ void RefreshCompletedMTF(DAAV1Context &c)
    c.h4=h4; c.h1=h1; c.m15=m15; c.m5=m5; c.mtf_ready=ok;
 }
 
-// [V1-30] Interface boundary for hourly high-volume harvesting.
-// Profit-bearing cadence/grid genealogy is ported in the next implementation units.
+int UtcHour(const long utc_ms)
+{
+   const int m=UtcMinuteOfDay(utc_ms);
+   return (m<0)?-1:(m/60);
+}
+
+int UtcSubphase10m(const long utc_ms)
+{
+   const int m=UtcMinuteOfDay(utc_ms);
+   return (m<0)?-1:((m%60)/10);
+}
+
+void SetRoute(DAAV1Context &c,const string route_id,const int direction,
+              const double tp,const double sl,const int horizon_seconds)
+{
+   c.route_valid=true;
+   c.route_id=route_id;
+   c.route_direction=direction;
+   c.route_tp=tp;
+   c.route_sl=sl;
+   c.route_horizon_seconds=horizon_seconds;
+   c.route_hour_utc=UtcHour(c.utc_ms);
+   c.route_subphase_10m=UtcSubphase10m(c.utc_ms);
+}
+
+void AttachRouteToLatestEvent(const DAAV1Context &c)
+{
+   if(!c.event_created || !c.route_valid) return;
+   const int n=ArraySize(g_event_records);
+   if(n<=0) return;
+   DAAV1GridEventRecord &e=g_event_records[n-1];
+   if(e.event_id!=c.event_id) return;
+   e.route_id=c.route_id;
+   e.route_direction=c.route_direction;
+   e.route_tp=c.route_tp;
+   e.route_sl=c.route_sl;
+   e.route_horizon_seconds=c.route_horizon_seconds;
+   e.route_hour_utc=c.route_hour_utc;
+   e.route_subphase_10m=c.route_subphase_10m;
+}
+
+// [V1-30] Session/MTF route proposal layer.
+// This consumes ONLY the event birth tick and completed H4/H1/M15/M5 state.
+// It creates an observe-only proposal; no physical order authority exists yet.
 void ApplyHourlyHarvest(DAAV1Context &c)
 {
-   if(!c.mtf_ready) return;
-   if(c.high_volume_session)
+   if(!c.event_created || !c.mtf_ready) return;
+   if(c.session==DAA_SESSION_LONDON_OPEN || c.session==DAA_SESSION_ROLLOVER) return;
+
+   const int d=c.crossing_direction;
+   if(d==0) return;
+   const bool macro=(c.h4!=0 && c.h4==c.h1);
+   const int hour=UtcHour(c.utc_ms);
+
+   if(c.session==DAA_SESSION_ASIA)
    {
-      // Observe-only shell: session/hour/subphase and completed MTF state are now available.
+      // Separate Asia geometry family. Historical BUILD-02 evidence retained a
+      // targeted 23:00-00:00 gate for the lower-takeover sleeve.
+      if(macro && c.m15==c.m5 && c.m15==-c.h1 && d==c.m5 && hour==23)
+         SetRoute(c,"ASIA_LOWER_TAKEOVER",d,4.00,1.00,300);
+      else if(macro && c.m15==-c.h1 && c.m5==c.h1 && d==c.m5)
+         SetRoute(c,"ASIA_M15_DIVERGE_M5_RECLAIM",d,4.00,1.50,300);
    }
-   if(c.asia_geometry)
+   else if(c.session==DAA_SESSION_LONDON)
    {
-      // Asia remains a separate geometry family by contract.
+      // London high-volume harvesting remains hourly-aware. The 11 UTC gate
+      // is the durable BUILD-02 takeover specialization; reclaim remains broad.
+      if(macro && c.m15==c.h1 && c.m5==-c.h1 && d==c.m5 && hour==11)
+         SetRoute(c,"LONDON_M5_TAKEOVER",d,4.00,0.75,300);
+      else if(macro && c.m15==-c.h1 && c.m5==c.h1 && d==c.m5)
+         SetRoute(c,"LONDON_M5_RECLAIM",d,3.00,0.75,300);
    }
+   else if(c.session==DAA_SESSION_OVERLAP)
+   {
+      if(macro && c.m15==c.m5 && c.m15==-c.h1 && d==c.m5)
+         SetRoute(c,"OVERLAP_LOWER_TAKEOVER",d,4.00,1.50,300);
+      else if(macro && c.m15==c.m5 && c.m15==c.h1 && d==-c.m5)
+         SetRoute(c,"OVERLAP_ALIGNED_COUNTERCROSS",d,3.00,0.75,300);
+   }
+   else if(c.session==DAA_SESSION_NEW_YORK)
+   {
+      if(c.h4!=0 && c.h1!=0 && c.h4!=c.h1 && c.m15!=0 && c.m5==-c.m15 && d==c.m5)
+         SetRoute(c,"NY_LOWER_TRANSFER",d,4.00,1.50,300);
+      else if(c.h4!=0 && c.h1!=0 && c.h4!=c.h1 && c.m15==c.m5 && c.m15!=0 && d==-c.m5)
+         SetRoute(c,"NY_LOWER_COUNTERCROSS",d,2.50,1.50,300);
+   }
+   else if(c.session==DAA_SESSION_LATE_NY)
+   {
+      if(c.h4==c.h1 && c.h1==c.m15 && c.m15==c.m5 && c.h4!=0 && d==c.m5)
+         SetRoute(c,"LATE_ALIGNED_MOMENTUM",d,4.00,1.50,300);
+      else if(c.h4!=0 && c.h1!=0 && c.h4!=c.h1 && c.m15!=0 && c.m5==-c.m15 && d==c.m5)
+         SetRoute(c,"LATE_MACRO_SPLIT_TRANSFER",d,4.00,1.50,300);
+      else if(macro && c.m15==c.h1 && c.m5==-c.h1 && d==-c.m5)
+         SetRoute(c,"LATE_M5_REJECTION",d,4.00,1.50,300);
+      else if(macro && c.m15==c.m5 && c.m15==-c.h1 && d==c.m5)
+         SetRoute(c,"LATE_LOWER_TAKEOVER",d,2.50,1.25,300);
+   }
+
+   AttachRouteToLatestEvent(c);
 }
 
 // [V1-40] Watchdog/regime renewal interface.
@@ -608,6 +724,14 @@ void WriteDiagnostic(const DAAV1Context &c)
       c.grid_landing_cell,
       c.crossing_direction,
       DoubleToString(c.grid_boundary,_Digits),
+      c.route_valid?1:0,
+      c.route_id,
+      c.route_direction,
+      DoubleToString(c.route_tp,2),
+      DoubleToString(c.route_sl,2),
+      c.route_horizon_seconds,
+      c.route_hour_utc,
+      c.route_subphase_10m,
       c.h4,c.h1,c.m15,c.m5,
       c.mtf_ready?1:0,
       c.high_volume_session?1:0,
@@ -697,6 +821,8 @@ int OnInit()
                    "cycle_restarted","cycle_restart_reason","cycle_generation","active_cycle_events",
                    "event_created","event_duplicate","event_id",
                    "grid_from_cell","grid_to_cell","grid_landing_cell","crossing_direction","grid_boundary",
+                   "route_valid","route_id","route_direction","route_tp","route_sl","route_horizon_seconds",
+                   "route_hour_utc","route_subphase_10m",
                    "h4","h1","m15","m5","mtf_ready","high_volume","asia_geometry","watchdog_ready","native_ready",
                    "recovery_ready","risk_state","open_positions");
       }
@@ -708,7 +834,7 @@ int OnInit()
    g_grid_cycle.generation=0;
    g_event_sequence=0;
 
-   V1Log("MT5 IMPLEMENTATION 002 initialized: session lattice + first-touch genealogy / observe-only");
+   V1Log("MT5 IMPLEMENTATION 003 initialized: session/MTF route proposals + hourly/Asia geometry / observe-only");
    return INIT_SUCCEEDED;
 }
 
