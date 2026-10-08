@@ -1,0 +1,181 @@
+{
+  "unit": "DAA_V1_029_COOPERATIVE_VERTICAL_GRID_REBUILD",
+  "status": "INTEGRATED_RESEARCH_ENGINE_NOT_SOURCE_EXACT_134K_OR_BROKER_CERTIFIED",
+  "scope": "February 2026 historical development; Jan bars pre-T0 only",
+  "capital": 100000.0,
+  "position_cap": 128,
+  "net": 8573.589,
+  "trades": 3667,
+  "gross_profit": 12574.558,
+  "gross_loss": -4000.969,
+  "profit_factor": 3.1428781377711252,
+  "win_rate": 0.47013907826561224,
+  "expectancy": 2.3380389964548676,
+  "positive_days": 7,
+  "active_days": 20,
+  "positive_weeks": 4,
+  "active_weeks": 4,
+  "max_open": 107,
+  "balance_drawdown": 644.4380000000092,
+  "floating_equity_drawdown": 3058.3800000000047,
+  "min_equity": 98474.525,
+  "min_modeled_free_margin": 93372.50928,
+  "stopout_events": 0,
+  "first_quote_utc": "2026-02-01 23:06:26.655000+00:00",
+  "first_state_ready_utc": "2026-02-01 23:06:26.655000+00:00",
+  "first_funded_trade_utc": "2026-02-02 09:00:00.113000+00:00",
+  "by_source": [
+    {
+      "layer": "L3_HOURLY",
+      "trades": 1560,
+      "net": 10424.076,
+      "gross_loss": -605.069
+    },
+    {
+      "layer": "L4_ASIA",
+      "trades": 320,
+      "net": -440.39,
+      "gross_loss": -525.3879999999999
+    },
+    {
+      "layer": "L5_WATCHDOG",
+      "trades": 36,
+      "net": -38.64,
+      "gross_loss": -85.255
+    },
+    {
+      "layer": "L6_TREND_WITHIN_TREND",
+      "trades": 1749,
+      "net": -1378.1770000000001,
+      "gross_loss": -2785.257
+    },
+    {
+      "layer": "L7_RECOVERY",
+      "trades": 2,
+      "net": 6.720000000000001,
+      "gross_loss": 0.0
+    }
+  ],
+  "source_proposals": [
+    0,
+    0,
+    0,
+    2811,
+    409,
+    36,
+    1875,
+    2,
+    0
+  ],
+  "source_fills": [
+    0,
+    0,
+    0,
+    1560,
+    320,
+    36,
+    1749,
+    2,
+    0
+  ],
+  "denials": [
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      10195,
+      0,
+      0,
+      1251
+    ],
+    [
+      0,
+      88,
+      727,
+      0,
+      0,
+      0,
+      89
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      185,
+      1608,
+      0,
+      0,
+      0,
+      126
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "proposal_queue_dropped": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "limitations": [
+    "Original 049/051/075/084/119 parent-generation and Feb134K native/Asia outcome-selected cells not yet source-equivalent",
+    "MT5 broker margin, slippage, swap, commission, stopout unknown; approximate research model only",
+    "no February pristine blindness: earlier February data has been studied",
+    "No guaranteed 5-minute first fill; order-eligibility timing can precede first valid market signal"
+  ]
+}
