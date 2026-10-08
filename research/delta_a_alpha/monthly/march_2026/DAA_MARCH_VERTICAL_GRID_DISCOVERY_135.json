@@ -1,0 +1,1000 @@
+{
+  "schema": "delta-a-alpha-march-vertical-grid-discovery-v1",
+  "unit": "DAA_MARCH_VERTICAL_GRID_DISCOVERY_135",
+  "status": "COMPLETE_MAJOR_MARCH_VERTICAL_GRID_DISCOVERY",
+  "date_researched": "2026-10-08",
+  "whitepaper_spine": [
+    "ordered ticks",
+    "session-specific grid geometry",
+    "completed H4/H1/M15/M5 structure",
+    "London/overlap/NY hourly high-volume harvesting + separate Asia geometry",
+    "Watchdog/regime renewal",
+    "trend-within-trend native routing",
+    "wrong-direction recovery",
+    "portfolio heat/capital governor"
+  ],
+  "market": {
+    "month": "2026-03",
+    "raw_sha256": "814ba35e72f219a58badd806ed5c0f30ef0fb4ffe56a48205d873706513bd177",
+    "march_ticks": 9433179,
+    "warmup_ticks": 1968158,
+    "cached_ordered_ticks": 11401337,
+    "warmup_start_utc_ms": 1771459200000,
+    "month_start_utc_ms": 1772323200000,
+    "month_end_utc_ms": 1775001600000,
+    "execution_surface": "Dukascopy ordered ticks; research fills use normalized executable Bid/Ask built from frozen session-P75 spread model where inherited Gamma components require it. Not Coinexx MT5 certification."
+  },
+  "timeout_recovery": {
+    "prior_block": "INCOMPLETE_NO_FINAL_RESULT",
+    "survived_helpers": [
+      "cache_mar_month_135.py",
+      "mar_watchdog_refine_135a.py"
+    ],
+    "fix": "single reusable tick cache + reusable completed-state cache; all subsequent layer tests operate on cached arrays",
+    "cache_files": [
+      "mar_t_10d.npy",
+      "mar_ask_raw_10d.npy",
+      "mar_bid_raw_10d.npy",
+      "mar_a_norm_135.npy",
+      "mar_b_norm_135.npy",
+      "mar_mid_norm_135.npy",
+      "mar_h4_state_135.npy",
+      "mar_h1_state_135.npy",
+      "mar_m15_state_135.npy",
+      "mar_m5_state_135.npy"
+    ]
+  },
+  "r9_synth_march": {
+    "net": 75698.63,
+    "trades": 40985,
+    "gross_loss": -2024.86,
+    "pf": 38.3846241222,
+    "win": 0.900109796267,
+    "expectancy": 1.84698377455,
+    "avg_hold_s": 15.8617543,
+    "balance_dd": 2.62,
+    "daily": {
+      "2026-03-02": 3969.61,
+      "2026-03-03": 5535.6,
+      "2026-03-04": 3336.62,
+      "2026-03-05": 2943.72,
+      "2026-03-06": 2703.84,
+      "2026-03-09": 3703.33,
+      "2026-03-10": 2285.67,
+      "2026-03-11": 1549.34,
+      "2026-03-12": 1922.11,
+      "2026-03-13": 2025.39,
+      "2026-03-16": 2356.52,
+      "2026-03-17": 1282.16,
+      "2026-03-18": 2162.82,
+      "2026-03-19": 5036.06,
+      "2026-03-20": 4153.22,
+      "2026-03-23": 8729.1,
+      "2026-03-24": 5420.61,
+      "2026-03-25": 3294.31,
+      "2026-03-26": 4149.12,
+      "2026-03-27": 2933.14,
+      "2026-03-30": 3095.24,
+      "2026-03-31": 3111.1
+    },
+    "weekly": {
+      "2026-W10": 18489.39,
+      "2026-W11": 11485.84,
+      "2026-W12": 14990.78,
+      "2026-W13": 24526.28,
+      "2026-W14": 6206.34
+    }
+  },
+  "historical_controls": {
+    "unchanged_january_milestone_133A": {
+      "net": 13470.65,
+      "trades": 17501,
+      "gross_loss": -21417.16,
+      "pf": 1.62897,
+      "win": 0.86624,
+      "expectancy": 0.7697,
+      "balance_dd": 5192.83,
+      "equity_dd": 10483.5,
+      "maxopen": 512,
+      "positive_days": 6,
+      "beat_days": 3,
+      "positive_weeks": 3,
+      "beat_weeks": 0
+    },
+    "direct_watchdog119_march": {
+      "net": 10241.62,
+      "trades": 13643,
+      "pf": 1.9886038951,
+      "win": 0.9214249,
+      "expectancy": 0.7506868,
+      "avg_hold_s": 111.33598,
+      "admitted_parents": 1724,
+      "total_parents": 21062,
+      "unlocks": 22,
+      "relocks": 15,
+      "maxopen_event": 463,
+      "skips": 0
+    },
+    "march_native_breakthrough_130": {
+      "fixed": {
+        "net": 64393.12,
+        "trades": 26043,
+        "pf": 1.96255,
+        "expectancy": 2.47257,
+        "maxopen": 252
+      },
+      "lifecycle_maxnet": {
+        "net": 113062.92,
+        "trades": 24908,
+        "pf": 2.57722,
+        "win": 0.60141,
+        "expectancy": 4.53922
+      },
+      "conviction_pf10": {
+        "net": 67574.54,
+        "trades": 6746,
+        "pf": 16.35827,
+        "win": 0.85932,
+        "expectancy": 10.01698,
+        "balance_dd": 800.06
+      }
+    }
+  },
+  "layer_mechanics": {
+    "ordered_ticks": {
+      "rule": "All entry, first-touch, recovery trigger, lifecycle and heat chronology derive from ordered tick time. No same-tick retroactive manufacture."
+    },
+    "session_specific_grid_geometry": {
+      "asia": {
+        "utc_window": "23:00-07:00",
+        "anchor": "fresh session-local anchor",
+        "gaps_price": [
+          0.25,
+          0.5,
+          0.75,
+          1.0,
+          1.5,
+          2.0
+        ],
+        "event": "first touch per cell+direction within Asia session",
+        "direction_modes": [
+          "MOM",
+          "REV"
+        ],
+        "holds_seconds": [
+          30,
+          60,
+          120,
+          300,
+          600
+        ],
+        "causal_key": [
+          "utc_hour",
+          "10m_subphase",
+          "H4",
+          "H1",
+          "M15",
+          "M5",
+          "direction"
+        ],
+        "discovery_min_n": 20,
+        "broad_selection": "net>0 PF>=2 exp>=0.25 days>=3 weeks>=2 positive_day>=0.67 positive_week>=0.67 median_day>0; best config per causal cell",
+        "quality_thresholds": [
+          8,
+          20
+        ]
+      },
+      "high_volume": {
+        "utc_hours": "07:00-20:59",
+        "anchor": "fresh anchor each UTC hour",
+        "gaps_price": [
+          0.25,
+          0.5,
+          0.75,
+          1.0,
+          1.5,
+          2.0
+        ],
+        "event": "one first touch per cell+direction within each hour",
+        "direction_modes": [
+          "MOM",
+          "REV"
+        ],
+        "holds_seconds": [
+          15,
+          30,
+          60,
+          120,
+          300,
+          600
+        ],
+        "causal_key": [
+          "utc_hour",
+          "10m_subphase",
+          "H4",
+          "H1",
+          "M15",
+          "M5",
+          "direction"
+        ],
+        "discovery_min_n": 20,
+        "prequal": "net>0 PF>=2 exp>=0.25",
+        "robust_selection": "PF>=4, days>=3, weeks>=2, positive_day>=0.67, positive_week>=0.67, median_day>0; best score per causal state",
+        "quality_thresholds": [
+          8,
+          20
+        ]
+      }
+    },
+    "completed_mtf": {
+      "timeframes": [
+        "H4",
+        "H1",
+        "M15",
+        "M5"
+      ],
+      "state": "EMA8 vs EMA21 on completed bars only",
+      "rule": "no unfinished-bar state; continuous pre-month warmup/EMA state"
+    },
+    "watchdog_regime_renewal": {
+      "base_control": "Watchdog-119",
+      "direct_march_control": "see historical_controls.direct_watchdog119_march",
+      "quality_key": [
+        "utc_hour",
+        "10m_subphase",
+        "H4",
+        "H1",
+        "M15",
+        "M5",
+        "direction"
+      ],
+      "quality_selection": "net>0 PF>=5 days>=3 weeks>=2 positive_day>=2/3 positive_week>=2/3 median_day>0",
+      "selected_state_count": 3,
+      "role": "renewal/regime sleeve; explicit scaling retained outside supplemental one-ticket-per-tick dedup"
+    },
+    "trend_within_trend_native": {
+      "base": "March native PF10 causal stream from breakthrough 130",
+      "cell_key": [
+        "utc_hour",
+        "10m_subphase",
+        "H4",
+        "H1",
+        "M15",
+        "M5",
+        "direction"
+      ],
+      "quality_cell_thresholds": [
+        15,
+        30
+      ],
+      "role": "March continuation/trend-within-trend specialist"
+    },
+    "adaptive_heartbeat_grid": {
+      "causal_key": [
+        "utc_hour",
+        "10m_subphase",
+        "H4",
+        "H1",
+        "M15",
+        "M5",
+        "direction",
+        "60s_tick_activity_bucket"
+      ],
+      "selection": "net>0 PF>=8 trades>=20",
+      "selected_state_count": 4
+    },
+    "coverage": {
+      "causal_key": [
+        "utc_hour",
+        "10m_subphase",
+        "H4",
+        "H1",
+        "M15",
+        "M5",
+        "direction"
+      ],
+      "selection": "net>0 PF>=5 expectancy>0",
+      "selected_state_count": 5
+    },
+    "wrong_direction_recovery": {
+      "source": "original routed/learner event",
+      "delays_seconds": [
+        2,
+        5,
+        10,
+        15,
+        30,
+        60
+      ],
+      "adverse_thresholds_price": [
+        -0.1,
+        -0.25,
+        -0.5,
+        -1.0,
+        -2.0,
+        -4.0
+      ],
+      "direction": "opposite original direction only after observed adverse mark",
+      "holds_seconds": [
+        5,
+        10,
+        15,
+        30,
+        60,
+        120,
+        300
+      ],
+      "causal_key": [
+        "utc_hour",
+        "10m_subphase",
+        "H4",
+        "H1",
+        "M15",
+        "M5",
+        "original_direction",
+        "60s_tick_activity_bucket"
+      ],
+      "min_n": 25,
+      "selection": "net>0 PF>=2 exp>=0.25 days>=2 weeks>=2 positive_day>=0.5 positive_week>=0.5 median_day>0; best per state",
+      "selected_state_count": 7,
+      "one_recovery_per_source_event": true
+    },
+    "portfolio_heat_capital_governor": {
+      "supplemental_priority": [
+        "NATIVE",
+        "COVERAGE",
+        "HIGH_VOLUME",
+        "ADAPTIVE_GRID",
+        "COLD",
+        "ASIA",
+        "RECOVERY"
+      ],
+      "supplemental_dedup": "one supplemental ticket per entry tick",
+      "watchdog_priority": "Watchdog explicit scaling retained; Watchdog has priority on equal entry tick",
+      "global_cap": "single chronological cap after Watchdog+supplemental merge",
+      "tested_frontier_caps": [
+        92,
+        448,
+        600
+      ]
+    }
+  },
+  "layer_stream_metrics": {
+    "NAT": {
+      "net": 67574.54000000001,
+      "trades": 6746,
+      "gross_profit": 71974.42000000001,
+      "gross_loss": -4399.879999999999,
+      "pf": 16.358268861878056,
+      "win": 0.8593240438778535,
+      "expectancy": 10.01697895048918,
+      "avg_hold_s": 474.285570412096
+    },
+    "NAT15": {
+      "net": 43407.34,
+      "trades": 4032,
+      "gross_profit": 44677.450000000004,
+      "gross_loss": -1270.1099999999997,
+      "pf": 35.17604774389621,
+      "win": 0.8839285714285714,
+      "expectancy": 10.765709325396825,
+      "avg_hold_s": 523.977634920635
+    },
+    "NAT30": {
+      "net": 22615.82,
+      "trades": 2029,
+      "gross_profit": 22780.66,
+      "gross_loss": -164.84,
+      "pf": 138.19861684057267,
+      "win": 0.9418432725480532,
+      "expectancy": 11.14628881222277,
+      "avg_hold_s": 484.7770285855101
+    },
+    "COVQ": {
+      "net": 11960.4,
+      "trades": 1211,
+      "gross_profit": 12299.16,
+      "gross_loss": -338.76000000000005,
+      "pf": 36.306411618845196,
+      "win": 0.8951279933938894,
+      "expectancy": 9.87646573080099,
+      "avg_hold_s": 1800.307902559868
+    },
+    "GQSEL": {
+      "net": 18069.930007044226,
+      "trades": 1388,
+      "gross_profit": 18141.82000743784,
+      "gross_loss": -71.89000039361417,
+      "pf": 252.35526370993506,
+      "win": 0.9488472622478387,
+      "expectancy": 13.018681561271055,
+      "avg_hold_s": 1397.2695482708932
+    },
+    "COLD": {
+      "net": 808.0500000000001,
+      "trades": 64,
+      "gross_profit": 808.0500000000001,
+      "gross_loss": 0.0,
+      "pf": 999.0,
+      "win": 1.0,
+      "expectancy": 12.625781250000001,
+      "avg_hold_s": 1800.159984375
+    },
+    "WDQ": {
+      "net": 8983.9,
+      "trades": 5545,
+      "gross_profit": 9034.14,
+      "gross_loss": -50.24,
+      "pf": 179.81966560509554,
+      "win": 0.9987376014427413,
+      "expectancy": 1.6201803426510368,
+      "avg_hold_s": 80.63072443642923
+    },
+    "REC1": {
+      "net": 3154.7200000000003,
+      "trades": 839,
+      "gross_profit": 3686.8,
+      "gross_loss": -532.0799999999999,
+      "pf": 6.929033228086003,
+      "win": 0.8522050059594756,
+      "expectancy": 3.7600953516090585,
+      "avg_hold_s": 171.83251847437427
+    },
+    "ASIA": {
+      "net": 17839.870000000003,
+      "trades": 3076,
+      "gross_profit": 20295.96,
+      "gross_loss": -2456.09,
+      "pf": 8.263524545110316,
+      "win": 0.735370611183355,
+      "expectancy": 5.79969765929779,
+      "avg_hold_s": 322.00381957087126
+    },
+    "ASIA8": {
+      "net": 12155.43,
+      "trades": 893,
+      "gross_profit": 12420.039999999999,
+      "gross_loss": -264.61000000000007,
+      "pf": 46.9371527908998,
+      "win": 0.9316909294512878,
+      "expectancy": 13.611903695408735,
+      "avg_hold_s": 414.4830963045913
+    },
+    "ASIA20": {
+      "net": 9544.57,
+      "trades": 597,
+      "gross_profit": 9563.0,
+      "gross_loss": -18.43,
+      "pf": 518.8822571893652,
+      "win": 0.966499162479062,
+      "expectancy": 15.987554438860972,
+      "avg_hold_s": 535.0017068676716
+    },
+    "HV2": {
+      "net": 77965.73000000001,
+      "trades": 11573,
+      "gross_profit": 84825.1,
+      "gross_loss": -6859.369999999999,
+      "pf": 12.36631060870022,
+      "win": 0.8143955759094444,
+      "expectancy": 6.73686425300268,
+      "avg_hold_s": 394.0242676920418
+    },
+    "HV8": {
+      "net": 58469.200000000004,
+      "trades": 6687,
+      "gross_profit": 60885.380000000005,
+      "gross_loss": -2416.1800000000003,
+      "pf": 25.199024907084738,
+      "win": 0.8727381486466278,
+      "expectancy": 8.743711679377897,
+      "avg_hold_s": 446.15584537161664
+    },
+    "HV20": {
+      "net": 37621.47,
+      "trades": 3450,
+      "gross_profit": 38073.32000000001,
+      "gross_loss": -451.85,
+      "pf": 84.26097156135887,
+      "win": 0.9347826086956522,
+      "expectancy": 10.904773913043478,
+      "avg_hold_s": 521.3959646376811
+    }
+  },
+  "frontiers": {
+    "profit": {
+      "net": 203212.8800074515,
+      "trades": 29969,
+      "gross_loss": -14491.240000386908,
+      "pf": 15.023153298270252,
+      "win": 0.8604891721445493,
+      "exp": 6.78076946202581,
+      "balance_dd": 800.060000000085,
+      "daily": {
+        "2026-03-02": 2554.5799999999995,
+        "2026-03-03": 11433.810000000005,
+        "2026-03-04": 3260.9700000000053,
+        "2026-03-05": 13453.100021369446,
+        "2026-03-06": 6963.799999999993,
+        "2026-03-08": 2519.02,
+        "2026-03-09": 5817.739999999997,
+        "2026-03-10": 9926.069986648556,
+        "2026-03-11": -13.010000000000002,
+        "2026-03-12": 7616.149998991634,
+        "2026-03-13": 3348.499999999998,
+        "2026-03-15": 535.1200000000001,
+        "2026-03-16": 2974.040000000005,
+        "2026-03-17": 1269.9599999999975,
+        "2026-03-18": 6059.279999999995,
+        "2026-03-19": 20483.01999999999,
+        "2026-03-20": 11244.910000441814,
+        "2026-03-22": 3.6000000000000005,
+        "2026-03-23": 56706.97999999812,
+        "2026-03-24": 5449.599999999996,
+        "2026-03-25": 1024.9400000000003,
+        "2026-03-26": 16037.53000000041,
+        "2026-03-27": 4858.619999999989,
+        "2026-03-29": 58.95000000000002,
+        "2026-03-30": 1626.8200000000004,
+        "2026-03-31": 7998.779999999994
+      },
+      "weekly": {
+        "2026-W10": 40185.280021369465,
+        "2026-W11": 27230.569985640148,
+        "2026-W12": 42034.8100004418,
+        "2026-W13": 84136.61999999493,
+        "2026-W14": 9625.6
+      },
+      "positive_days": 21,
+      "beat_days": 16,
+      "active_days": 22,
+      "positive_weeks": 5,
+      "beat_weeks": 5,
+      "peak_total_equity": 305287.2100074616,
+      "equity_dd": 8280.959999999992,
+      "equity_dd_pct_peak": 2.712514553032731,
+      "minimum_total_equity": 99479.52,
+      "min_equity_delta": -520.4799999999982,
+      "maxopen_exact": 600,
+      "attribution": {
+        "ASIA_BROAD": {
+          "net": 17839.870000000003,
+          "trades": 3076,
+          "gross_loss": -2456.09,
+          "pf": 8.263524545110316,
+          "win": 0.735370611183355,
+          "expectancy": 5.79969765929779
+        },
+        "COLD": {
+          "net": 795.58,
+          "trades": 63,
+          "gross_loss": 0.0,
+          "pf": 999.0,
+          "win": 1.0,
+          "expectancy": 12.628253968253969
+        },
+        "COVERAGE_Q": {
+          "net": 9432.79,
+          "trades": 925,
+          "gross_loss": -131.14999999999998,
+          "pf": 72.92367518109037,
+          "win": 0.9124324324324324,
+          "expectancy": 10.197610810810811
+        },
+        "HIGHVOL_BROAD": {
+          "net": 77946.64,
+          "trades": 11567,
+          "gross_loss": -6859.369999999999,
+          "pf": 12.36352755427977,
+          "win": 0.8142992997319962,
+          "expectancy": 6.738708394570762
+        },
+        "LEARNER_Q": {
+          "net": 18009.210007451475,
+          "trades": 1369,
+          "gross_loss": -67.19000038690865,
+          "pf": 269.034081020193,
+          "win": 0.9510591672753835,
+          "expectancy": 13.155010962345854
+        },
+        "NATIVE_PF10": {
+          "net": 67162.27,
+          "trades": 6615,
+          "gross_loss": -4395.929999999999,
+          "pf": 16.278284686061884,
+          "win": 0.8577475434618291,
+          "expectancy": 10.153026455026456
+        },
+        "RECOVERY": {
+          "net": 3042.62,
+          "trades": 809,
+          "gross_loss": -531.27,
+          "pf": 6.727069098575114,
+          "win": 0.8479604449938195,
+          "expectancy": 3.760964153275649
+        },
+        "WATCHDOG": {
+          "net": 8983.9,
+          "trades": 5545,
+          "gross_loss": -50.24,
+          "pf": 179.81966560509554,
+          "win": 0.9987376014427413,
+          "expectancy": 1.6201803426510368
+        }
+      },
+      "global_cap": 600,
+      "supp_maxopen": 600,
+      "supp_skips": 387,
+      "final_maxopen_event": 600,
+      "final_skips": 17,
+      "vs_synth": {
+        "net_multiple": 2.6844987816483794,
+        "trade_capture": 0.7312187385628889,
+        "gross_loss_ratio_abs": 7.156662683043227,
+        "pf_multiple": 0.3913846661737013,
+        "win_delta_pp": -3.962062412245071,
+        "expectancy_multiple": 3.671266394139212,
+        "balance_dd_multiple": 305.3664122137729
+      }
+    },
+    "balanced": {
+      "net": 173381.19000613544,
+      "trades": 22224,
+      "gross_loss": -7332.8500003773715,
+      "pf": 24.644447929142515,
+      "win": 0.908252339812815,
+      "exp": 7.801529427921861,
+      "balance_dd": 800.059999999954,
+      "daily": {
+        "2026-03-02": 2167.5599999999968,
+        "2026-03-03": 11261.01,
+        "2026-03-04": 1955.850000000001,
+        "2026-03-05": 11185.090020072446,
+        "2026-03-06": 4648.529999999996,
+        "2026-03-08": 2409.4500000000003,
+        "2026-03-09": 5369.489999999998,
+        "2026-03-10": 6426.709986648562,
+        "2026-03-11": -161.5200000000001,
+        "2026-03-12": 6550.179998991635,
+        "2026-03-13": 2962.519999999999,
+        "2026-03-16": 2677.950000000005,
+        "2026-03-17": 999.9399999999997,
+        "2026-03-18": 5371.079999999995,
+        "2026-03-19": 19517.600000000006,
+        "2026-03-20": 7190.840000422747,
+        "2026-03-23": 51438.759999998096,
+        "2026-03-24": 5449.599999999996,
+        "2026-03-25": 985.2100000000002,
+        "2026-03-26": 13741.540000000401,
+        "2026-03-27": 3262.5699999999993,
+        "2026-03-29": 14.719999999999999,
+        "2026-03-30": 1010.8199999999998,
+        "2026-03-31": 6945.689999999996
+      },
+      "weekly": {
+        "2026-W10": 33627.49002007242,
+        "2026-W11": 21147.37998564018,
+        "2026-W12": 35757.41000042273,
+        "2026-W13": 74892.3999999933,
+        "2026-W14": 7956.5099999999975
+      },
+      "positive_days": 21,
+      "beat_days": 16,
+      "active_days": 22,
+      "positive_weeks": 5,
+      "beat_weeks": 5,
+      "peak_total_equity": 276387.82000614575,
+      "equity_dd": 8171.5199999999895,
+      "equity_dd_pct_peak": 2.9565412831210462,
+      "minimum_total_equity": 98987.67,
+      "min_equity_delta": -1012.3300000000022,
+      "maxopen_exact": 448,
+      "attribution": {
+        "ASIA_PF8": {
+          "net": 12155.43,
+          "trades": 893,
+          "gross_loss": -264.61000000000007,
+          "pf": 46.9371527908998,
+          "win": 0.9316909294512878,
+          "expectancy": 13.611903695408735
+        },
+        "COLD": {
+          "net": 686.34,
+          "trades": 55,
+          "gross_loss": 0.0,
+          "pf": 999.0,
+          "win": 1.0,
+          "expectancy": 12.478909090909092
+        },
+        "COVERAGE_Q": {
+          "net": 6428.1900000000005,
+          "trades": 650,
+          "gross_loss": -86.58999999999999,
+          "pf": 75.23709435269662,
+          "win": 0.9092307692307692,
+          "expectancy": 9.889523076923078
+        },
+        "HIGHVOL_PF8": {
+          "net": 58469.200000000004,
+          "trades": 6687,
+          "gross_loss": -2416.1800000000003,
+          "pf": 25.199024907084738,
+          "win": 0.8727381486466278,
+          "expectancy": 8.743711679377897
+        },
+        "LEARNER_Q": {
+          "net": 16570.340006135404,
+          "trades": 1227,
+          "gross_loss": -71.20000037737191,
+          "pf": 233.72949323468865,
+          "win": 0.9437652811735942,
+          "expectancy": 13.504759581202448
+        },
+        "NATIVE_PF10": {
+          "net": 66994.79000000001,
+          "trades": 6573,
+          "gross_loss": -4386.12,
+          "pf": 16.27427202174131,
+          "win": 0.8588163699984787,
+          "expectancy": 10.192422029514683
+        },
+        "RECOVERY": {
+          "net": 3116.1600000000003,
+          "trades": 612,
+          "gross_loss": -57.91,
+          "pf": 54.81039544120188,
+          "win": 0.8954248366013072,
+          "expectancy": 5.091764705882354
+        },
+        "WATCHDOG": {
+          "net": 8960.74,
+          "trades": 5527,
+          "gross_loss": -50.24,
+          "pf": 179.35867834394904,
+          "win": 0.9987334901393161,
+          "expectancy": 1.6212665098606838
+        }
+      },
+      "global_cap": 448,
+      "supp_maxopen": 448,
+      "supp_skips": 862,
+      "final_maxopen_event": 448,
+      "final_skips": 236,
+      "vs_synth": {
+        "net_multiple": 2.2904138424451728,
+        "trade_capture": 0.5422471635964378,
+        "gross_loss_ratio_abs": 3.621410863159612,
+        "pf_multiple": 0.6420395794598711,
+        "win_delta_pp": 0.8142543545814895,
+        "expectancy_multiple": 4.223929595603854,
+        "balance_dd_multiple": 305.36641221372287
+      }
+    },
+    "quality": {
+      "net": 125792.74000574724,
+      "trades": 15988,
+      "gross_loss": -1994.070000393614,
+      "pf": 64.08341230795145,
+      "win": 0.9440830622967226,
+      "exp": 7.867947210767278,
+      "balance_dd": 240.93000000002212,
+      "daily": {
+        "2026-03-02": 1002.9999999999993,
+        "2026-03-03": 11127.499999999998,
+        "2026-03-04": 1686.3500000000026,
+        "2026-03-05": 10608.21002007246,
+        "2026-03-06": 3960.200000000003,
+        "2026-03-09": 4213.170000000003,
+        "2026-03-10": 6298.099986648561,
+        "2026-03-11": 128.16000000000003,
+        "2026-03-12": 6406.029998991633,
+        "2026-03-13": 2349.6000000000004,
+        "2026-03-16": 1838.6400000000037,
+        "2026-03-17": 722.4,
+        "2026-03-18": 2496.5799999999967,
+        "2026-03-19": 14872.129999999977,
+        "2026-03-20": 3976.4600000345736,
+        "2026-03-23": 36779.429999999506,
+        "2026-03-24": 288.50999999999993,
+        "2026-03-25": 945.6500000000001,
+        "2026-03-26": 9738.020000000435,
+        "2026-03-27": 2881.9299999999994,
+        "2026-03-30": 871.0999999999999,
+        "2026-03-31": 2601.5699999999993
+      },
+      "weekly": {
+        "2026-W10": 28385.26002007243,
+        "2026-W11": 19395.059985640175,
+        "2026-W12": 23906.210000034607,
+        "2026-W13": 50633.5399999999,
+        "2026-W14": 3472.670000000001
+      },
+      "positive_days": 22,
+      "beat_days": 11,
+      "active_days": 22,
+      "positive_weeks": 5,
+      "beat_weeks": 4,
+      "peak_total_equity": 228777.380005744,
+      "equity_dd": 8171.5199999999895,
+      "equity_dd_pct_peak": 3.5718216546560786,
+      "minimum_total_equity": 97823.11,
+      "min_equity_delta": -2176.890000000001,
+      "maxopen_exact": 448,
+      "attribution": {
+        "ASIA_PF20": {
+          "net": 9544.57,
+          "trades": 597,
+          "gross_loss": -18.43,
+          "pf": 518.8822571893652,
+          "win": 0.966499162479062,
+          "expectancy": 15.987554438860972
+        },
+        "COLD": {
+          "net": 686.34,
+          "trades": 55,
+          "gross_loss": 0.0,
+          "pf": 999.0,
+          "win": 1.0,
+          "expectancy": 12.478909090909092
+        },
+        "COVERAGE_Q": {
+          "net": 6428.1900000000005,
+          "trades": 650,
+          "gross_loss": -86.58999999999999,
+          "pf": 75.23709435269662,
+          "win": 0.9092307692307692,
+          "expectancy": 9.889523076923078
+        },
+        "HIGHVOL_PF20": {
+          "net": 37621.47,
+          "trades": 3450,
+          "gross_loss": -451.85,
+          "pf": 84.26097156135887,
+          "win": 0.9347826086956522,
+          "expectancy": 10.904773913043478
+        },
+        "LEARNER_Q": {
+          "net": 16598.29000574723,
+          "trades": 1236,
+          "gross_loss": -71.89000039361417,
+          "pf": 231.88454464971207,
+          "win": 0.9425566343042071,
+          "expectancy": 13.42903722147834
+        },
+        "NATIVE_CELL_PF15": {
+          "net": 42827.590000000004,
+          "trades": 3859,
+          "gross_loss": -1256.3499999999997,
+          "pf": 35.08890038603893,
+          "win": 0.8841668826120757,
+          "expectancy": 11.098105726872248
+        },
+        "RECOVERY": {
+          "net": 3125.55,
+          "trades": 614,
+          "gross_loss": -58.720000000000006,
+          "pf": 54.228031335149865,
+          "win": 0.8941368078175895,
+          "expectancy": 5.090472312703583
+        },
+        "WATCHDOG": {
+          "net": 8960.74,
+          "trades": 5527,
+          "gross_loss": -50.24,
+          "pf": 179.35867834394904,
+          "win": 0.9987334901393161,
+          "expectancy": 1.6212665098606838
+        }
+      },
+      "global_cap": 448,
+      "supp_maxopen": 448,
+      "supp_skips": 862,
+      "final_maxopen_event": 448,
+      "final_skips": 236,
+      "vs_synth": {
+        "net_multiple": 1.6617571547298442,
+        "trade_capture": 0.39009393680614857,
+        "gross_loss_ratio_abs": 0.984794010644496,
+        "pf_multiple": 1.6695073554436184,
+        "win_delta_pp": 4.397326602972251,
+        "expectancy_multiple": 4.259889728963228,
+        "balance_dd_multiple": 91.95801526718401
+      }
+    },
+    "ultra": {
+      "net": 105083.99000574724,
+      "trades": 14040,
+      "gross_loss": -897.070000393614,
+      "pf": 118.1413490136096,
+      "win": 0.9601851851851851,
+      "exp": 7.48461467277402,
+      "balance_dd": 121.56999999999971,
+      "daily": {
+        "2026-03-02": 1002.9999999999993,
+        "2026-03-03": 9223.539999999999,
+        "2026-03-04": 1697.1200000000024,
+        "2026-03-05": 10608.21002007246,
+        "2026-03-06": 3960.200000000003,
+        "2026-03-09": 4139.119999999997,
+        "2026-03-10": 6202.38998664856,
+        "2026-03-11": 128.16000000000003,
+        "2026-03-12": 6406.029998991633,
+        "2026-03-13": 2428.8199999999997,
+        "2026-03-16": 1206.9500000000016,
+        "2026-03-17": 751.0700000000002,
+        "2026-03-18": 2552.8599999999965,
+        "2026-03-19": 11444.669999999986,
+        "2026-03-20": 3552.9600000345717,
+        "2026-03-23": 25223.589999999644,
+        "2026-03-24": 288.50999999999993,
+        "2026-03-25": 945.6500000000001,
+        "2026-03-26": 9292.32000000015,
+        "2026-03-27": 556.1500000000002,
+        "2026-03-30": 871.0999999999999,
+        "2026-03-31": 2601.5699999999993
+      },
+      "weekly": {
+        "2026-W10": 26492.07002007243,
+        "2026-W11": 19304.519985640163,
+        "2026-W12": 19508.51000003458,
+        "2026-W13": 36306.21999999853,
+        "2026-W14": 3472.670000000001
+      },
+      "positive_days": 22,
+      "beat_days": 11,
+      "active_days": 22,
+      "positive_weeks": 5,
+      "beat_weeks": 4,
+      "peak_total_equity": 208068.630005744,
+      "equity_dd": 8171.5199999999895,
+      "equity_dd_pct_peak": 3.92731955786627,
+      "minimum_total_equity": 97823.11,
+      "min_equity_delta": -2176.890000000001,
+      "maxopen_exact": 448,
+      "attribution": {
+        "ASIA_PF20": {
+          "net": 9544.57,
+          "trades": 597,
+          "gross_loss": -18.43,
+          "pf": 518.8822571893652,
+          "win": 0.966499162479062,
+          "expectancy": 15.987554438860972
+        },
+        "COLD": {
+          "net": 686.34,
+          "trades": 55,
+          "gross_loss": 0.0,
+          "pf": 999.0,
+          "win": 1.0,
+          "expectancy": 12.478909090909092
+        },
+        "COVERAGE_Q": {
+          "net": 6428.1900000000005,
+          "trades": 650,
+          "gross_loss": -86.58999999999999,
+          "pf": 75.23709435269662,
+          "win": 0.9092307692307692,
+          "expectancy": 9.889523076923078
+        },
+        "HIGHVOL_PF20": {
+          "net": 37621.47,
+          "trades": 3450,
+          "gross_loss": -451.85,
+          "pf": 84.26097156135887,
+          "win": 0.9347826086956522,
+          "expectancy": 10.904773913043478
+        },
+        "LEARNER_Q": {
+          "net": 16598.29000574723,
+          "trades": 1236,
+          "gross_loss": -71.89000039361417,
+          "pf": 231.88454464971207,
+          "win": 0.9425566343042071,
+          "expectancy": 13.42903722147834
+        },
+        "NATIVE_CELL_PF30": {
+          "net": 22118.84,
+          "trades": 1911,
+          "gross_loss": -159.35,
+          "pf": 139.8066520238469,
+          "win": 0.9413919413919414,
