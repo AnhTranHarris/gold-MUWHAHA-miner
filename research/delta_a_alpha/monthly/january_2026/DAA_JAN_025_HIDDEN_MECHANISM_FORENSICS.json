@@ -1,0 +1,91 @@
+{
+  "study": "DAA_JAN_025_HIDDEN_MECHANISM_FORENSICS",
+  "status": "historical decomposition and raw quote 024 sensitivity, plus synthetic causality counterexample",
+  "input_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "history": {
+    "archive_label": "ORIGINAL_131E_HISTORICAL_NORMALIZED_SPREAD_NOT_RAW_EXECUTION",
+    "net": 194425.91999999998,
+    "trades": 80929,
+    "watchdog_net": 125843.01000000001,
+    "watchdog_trades": 69913,
+    "watchdog_share_profit": 0.6472542858483068,
+    "watchdog_share_trades": 0.8638806855391763,
+    "supplementary_net": 68582.90999999997,
+    "supplementary_trades": 11016,
+    "max_open": 640,
+    "floating_equity_dd": 57139.20000000001,
+    "cap512_jan30_net_share": 0.6112250223894582,
+    "cap512_jan30_trade_share": 0.8459921344297462,
+    "cap512_net_excluding_jan30": 67633.54999999999,
+    "cap512_trades_excluding_jan30": 10769
+  },
+  "quote_tp_sensitivity": [
+    {
+      "cap": 16,
+      "source5_watchdog_trades": 97,
+      "tp_exits": 91,
+      "actual_quote_watchdog_net": 85.71900000000001,
+      "requested_target_stress_net": 47.36000000000001,
+      "favorable_quote_tp_overshoot_usd": 38.359,
+      "positive_tp_profit": 142.39899999999997,
+      "overshoot_fraction_of_tp_profit": 0.2693768916916552,
+      "overshoot_median_usd": 0.19599999999999995,
+      "overshoot_p90_usd": 1.2360000000000002,
+      "overshoot_max_usd": 2.73,
+      "positive_profit_stress_semantics": "clip favorable TP first quote to fixed requested TP, preserve all other entries/exit times and results; sensitivity only"
+    },
+    {
+      "cap": 64,
+      "source5_watchdog_trades": 97,
+      "tp_exits": 91,
+      "actual_quote_watchdog_net": 85.71900000000001,
+      "requested_target_stress_net": 47.36000000000001,
+      "favorable_quote_tp_overshoot_usd": 38.359,
+      "positive_tp_profit": 142.39899999999997,
+      "overshoot_fraction_of_tp_profit": 0.2693768916916552,
+      "overshoot_median_usd": 0.19599999999999995,
+      "overshoot_p90_usd": 1.2360000000000002,
+      "overshoot_max_usd": 2.73,
+      "positive_profit_stress_semantics": "clip favorable TP first quote to fixed requested TP, preserve all other entries/exit times and results; sensitivity only"
+    },
+    {
+      "cap": 128,
+      "source5_watchdog_trades": 97,
+      "tp_exits": 91,
+      "actual_quote_watchdog_net": 85.71900000000001,
+      "requested_target_stress_net": 47.36000000000001,
+      "favorable_quote_tp_overshoot_usd": 38.359,
+      "positive_tp_profit": 142.39899999999997,
+      "overshoot_fraction_of_tp_profit": 0.2693768916916552,
+      "overshoot_median_usd": 0.19599999999999995,
+      "overshoot_p90_usd": 1.2360000000000002,
+      "overshoot_max_usd": 2.73,
+      "positive_profit_stress_semantics": "clip favorable TP first quote to fixed requested TP, preserve all other entries/exit times and results; sensitivity only"
+    },
+    {
+      "cap": 256,
+      "source5_watchdog_trades": 97,
+      "tp_exits": 91,
+      "actual_quote_watchdog_net": 85.71900000000001,
+      "requested_target_stress_net": 47.36000000000001,
+      "favorable_quote_tp_overshoot_usd": 38.359,
+      "positive_tp_profit": 142.39899999999997,
+      "overshoot_fraction_of_tp_profit": 0.2693768916916552,
+      "overshoot_median_usd": 0.19599999999999995,
+      "overshoot_p90_usd": 1.2360000000000002,
+      "overshoot_max_usd": 2.73,
+      "positive_profit_stress_semantics": "clip favorable TP first quote to fixed requested TP, preserve all other entries/exit times and results; sensitivity only"
+    }
+  ],
+  "funding_order_counterexample": {
+    "model": "toy example of static ordering bug, NOT measured Jan incidence",
+    "parent_gate_uses_pre_cap_child_outcomes": true,
+    "funded_portfolio_child_wins": 0,
+    "parent_gate_if_only_funded_credit": false,
+    "reason": "131E build_raw() evaluates prior child wins before capsel()/merge; a child rejected later by cap can still have its win counted for admission. Need single physical event scheduler to determine actual Jan incidence."
+  },
+  "source_notes": [
+    "131E original father 049/051 selector yields parent eligibility, but final 131E 131D portfolio merges children and supplementary tickets, not parent tickets. Parent credit/funding must be reconciled to final physical positions before parity can be claimed.",
+    "Requested-TP fill stress is not MT5 broker actual fill assumption; do not promote to actual result."
+  ]
+}
