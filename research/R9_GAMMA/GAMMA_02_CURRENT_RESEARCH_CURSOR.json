@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v34",
+  "schema": "r9-gamma-02-research-cursor-v35",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_CROSSMONTH_EXPERT_ENSEMBLE_BREAKTHROUGH_133C_G1",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_CROSSMONTH_EXPERT_ENSEMBLE_BREAKTHROUGH_133C.md",
+  "latest_completed": "GAMMA_02_CROSSMONTH_RISK_FRONTIER_133C6",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_CROSSMONTH_RISK_FRONTIER_133C6.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_DYNAMIC_RENEWAL_WATCHDOG_119",
     "frozen_params": {
@@ -131,13 +131,12 @@
     "warmup_leakage_103_104": "CRITICAL: 103/104 February authority suspended. Nominal February stream had 36,355 entries but only 102 entries actually in February after absolute-time filtering; prior +$43.9K result was warmup leakage.",
     "target_gate_083": "083 target-gated audit: Jan cap703 +$48,766.62 / 32,862; Feb +$4,193.52 / 7,020; Mar -$9,480.91 / 6,727. Prior frozen February +$52.96K was warmup-contaminated."
   },
-  "first_incomplete_unit": "GAMMA_02_CROSSMONTH_EXPERT_ENSEMBLE_RISK_REFINEMENT_133C2",
+  "first_incomplete_unit": "GAMMA_02_CROSSMONTH_JANUARY_REGRESSION_CERTIFICATION_133D",
   "next_units": [
-    "Run tighter expert-level session-aware fast/slow gate variants in single atomic blocks",
-    "Recompute full-tick equity DD on Pareto finalists",
-    "Add trend-within-trend/HTF state-aware capacity allocation only if it improves risk without losing February/March SYNTH-beating net",
-    "Regression-gate January frozen milestone",
-    "Then freeze cross-month milestone before April",
+    "Replay the frozen crossmonth G1/cap600 architecture on January without changing the frozen January fallback branch",
+    "Require January economics to remain acceptably close to or above the January milestone before crossmonth promotion",
+    "If January regression is acceptable, freeze a new Jan-Feb-Mar adaptive milestone",
+    "Then proceed to April unchanged/adaptive research",
     "August sealed"
   ],
   "constraints": {
@@ -147,7 +146,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "MAJOR 133C G1 CROSSMONTH BREAKTHROUGH EXISTS. Read GAMMA_02_CROSSMONTH_EXPERT_ENSEMBLE_BREAKTHROUGH_133C.md and this cursor. Do not reconstruct from chat. February +71884.88 and March +86864.48 both exceed time-matched R9 SYNTH monthly net. Resume only 133C2 risk/Pareto refinement in single atomic Python blocks; avoid parallel ensemble processes because memory kills were observed. January fallback remains untouched. August sealed.",
+  "recovery_rule": "Read 133C breakthrough and 133C6 risk frontier plus this cursor. Current risk-adjusted crossmonth frontier is G1 with final global cap600: Feb +66521.06 (> Feb R9 SYNTH +66213.65) and Mar +86318.27 (> Mar R9 SYNTH +75698.63). Use exact durable helper/results and Library caches; do not rebuild from chat. Resume only January regression certification 133D unless owner explicitly requests more February/March risk refinement. January fallback branch remains untouched. August sealed.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -513,7 +512,7 @@
     "execution_surface": "Dukascopy midpoint + frozen session-P75 normalized spread; Python research only; not raw-Dukascopy fill parity or Coinexx MT5 certification",
     "critical_remaining_issue": "Full-tick equity DD remains ~62763.84, dominated by synchronized Watchdog W05 inventory. Next work must improve profit per unit of heat rather than broaden session inventory."
   },
-  "cursor_parent_head": "eaf154d5c51a7f95af2c4f60cf86bbe26bcc7349",
+  "cursor_parent_head": "f355789f2616855e36453c39a93ca4cdf91167ee",
   "january_reexamination_131e": {
     "status": "DURABLE_COMPLETE",
     "parent": "GAMMA_02_JAN_SESSION_FIRM_DAILY_WEEKLY_131D",
@@ -987,5 +986,83 @@
     },
     "caveat": "Economic breakthrough only. Gross loss/DD still materially worse than SYNTH; full-tick equity DD pending. Do not promote to deployable winner yet.",
     "timeout_policy": "single atomic configs only; persist after each completed frontier; no parallel ensemble processes"
+  },
+  "crossmonth_risk_frontier_133c6": {
+    "status": "DURABLE_COMPLETE",
+    "parent": "GAMMA_02_CROSSMONTH_EXPERT_ENSEMBLE_BREAKTHROUGH_133C_G1",
+    "selected_global_cap": 600,
+    "feb": {
+      "net": 66521.0600002654,
+      "trades": 26816,
+      "gross_loss": -20234.189997685702,
+      "pf": 4.287557347631597,
+      "win": 0.8786172434367542,
+      "expectancy": 2.4806481205349566,
+      "balance_dd": 2633.730000000076,
+      "equity_dd": 16611.84,
+      "maxopen": 600,
+      "positive_days": 14,
+      "beat_days": 7,
+      "positive_weeks": 4,
+      "beat_weeks": 2,
+      "r9_synth_net": 66213.65,
+      "net_capture": 1.004642699
+    },
+    "mar": {
+      "net": 86318.27000401728,
+      "trades": 25358,
+      "gross_loss": -32993.270017303075,
+      "pf": 3.616238704400876,
+      "win": 0.8432447353892263,
+      "expectancy": 3.403985724584639,
+      "balance_dd": 7855.200010299683,
+      "equity_dd": 11647.550002498627,
+      "maxopen": 600,
+      "positive_days": 14,
+      "beat_days": 8,
+      "positive_weeks": 5,
+      "beat_weeks": 3,
+      "r9_synth_net": 75698.63,
+      "net_capture": 1.140288298
+    },
+    "uncapped_g1_exact_risk": {
+      "feb": {
+        "net": 71884.88000236634,
+        "equity_dd": 19449.550000000003,
+        "maxopen": 957,
+        "balance_dd": 2633.730000000076
+      },
+      "mar": {
+        "net": 86864.48000382287,
+        "equity_dd": 11647.550002498627,
+        "maxopen": 667,
+        "balance_dd": 7855.200010299683
+      }
+    },
+    "minimum_tested_cap_that_beats_feb_synth": 600,
+    "cap592_feb_net": 66113.87000030353,
+    "cap600_feb_net": 66521.0600002654,
+    "artifacts": {
+      "global_cap": "research/R9_GAMMA/artifacts/g1_global_cap_frontier_133c6.json",
+      "feb_min_cap": "research/R9_GAMMA/artifacts/g1_feb_min_cap_frontier_133c6.json",
+      "mar_cap600": "research/R9_GAMMA/artifacts/g1_cap600_mar_133c6.json",
+      "exact_equity": "research/R9_GAMMA/artifacts/expert_gate_133c_G1_equity.json",
+      "checkpoint": "research/R9_GAMMA/GAMMA_02_CROSSMONTH_RISK_FRONTIER_133C6.md",
+      "library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-08/crossmonth-risk-frontier-133c6/"
+    },
+    "hashes": {
+      "global_cap": "7af11990152fc0f442215f77883a926ab0d4d721cce801e090777ef84faa9eed",
+      "feb_min_cap": "209bb92292d2547ce0cada745c7b38d6e845adb026b63ac0a54fd8609573c5d0",
+      "mar_cap600": "9b8d3dba8a7b6681722781ff0ec589771540a86e939f7ca657afc9f270ba3cc1",
+      "exact_equity": "6a0fcf82f211825d5d201cd4b408d415c9efdb94e8f102b6715797668f9d4519",
+      "checkpoint": "c0d115fb7e0df127aa301797defd98e365cc4419f700181035821523c1c3bbaa"
+    },
+    "rejected_this_cycle": [
+      "blunt Watchdog/native mutual suppression",
+      "source-only learner certification",
+      "macro/HTF-key learner gating",
+      "parallel ensemble processes due memory kills"
+    ],
+    "caveat": "Still materially worse than R9 SYNTH gross loss/PF/DD. This is the current risk-adjusted economic frontier, not deployable certification."
   }
 }
