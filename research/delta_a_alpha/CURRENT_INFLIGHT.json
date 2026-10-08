@@ -2,16 +2,16 @@
   "schema": "delta-a-alpha-inflight-v5",
   "authority": "APPEND_ONLY_STATE_JOURNAL",
   "state": "IDLE_READY",
-  "last_completed": "DAA_APRIL_VERTICAL_GRID_INTERIM_136P3",
+  "last_completed": "DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q",
   "current_unit": null,
-  "next_unit": "DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q",
-  "journal_entry": "research/delta_a_alpha/state_journal/0043_DAA_APRIL_VERTICAL_GRID_INTERIM_136P3.json",
+  "next_unit": "DAA_APRIL_HIERARCHICAL_RENEWAL_ADMISSION_136R",
+  "journal_entry": "research/delta_a_alpha/state_journal/0044_DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q.json",
   "accepted_floor": {
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
     "version": "V1",
     "spec": "research/delta_a_alpha/architecture/DAA_VERTICAL_GRID_SYSTEM_V1_SPEC.md",
     "manifest": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MANIFEST.json"
   },
-  "failure_recovery": "Read journal 0043. Do not rerun 136A-P3. Use Library interim-136p3 exact artifacts. Resume only causal online rule-depth admission 136Q.",
+  "failure_recovery": "Read journal 0044 then 0043. Do not rerun 136Q. Atomic block outputs live in Library interim-136q. Resume only 136R hierarchical/backoff causal renewal admission.",
   "write_discipline": "Build MT5 V1 layer-by-layer with deterministic diagnostics. Persist each module/QA unit before the next dependent module. Do not redesign strategy logic during the engineering port."
 }
