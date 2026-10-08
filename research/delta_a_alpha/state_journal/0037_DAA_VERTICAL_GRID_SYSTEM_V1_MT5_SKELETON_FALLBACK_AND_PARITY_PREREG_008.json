@@ -1,0 +1,31 @@
+{
+  "sequence": 37,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SKELETON_FALLBACK_AND_PARITY_PREREG_008",
+  "status": "COMPLETE_ADMINISTRATIVE_FREEZE_READY_FOR_COMPILE_PARITY",
+  "predecessor": {
+    "sequence": 36,
+    "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SKELETON_CERTIFICATION_007",
+    "path": "research/delta_a_alpha/state_journal/0036_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SKELETON_CERTIFICATION_007.json"
+  },
+  "skeleton_fallback": {
+    "branch": "delta-A-alpha-v1-mt5-skeleton-certified",
+    "commit": "c81539633a0becc0dfe053f84ef80e6462848cd5",
+    "verified": "IDENTICAL_AT_CREATION"
+  },
+  "next_contract": "research/delta_a_alpha/mt5/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_METAEDITOR_COMPILE_AND_PARITY_008_PREREG.md",
+  "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_METAEDITOR_COMPILE_AND_PARITY_008",
+  "decision": [
+    "V1 decision skeleton is frozen before compiler/parity work",
+    "unit 008 may repair build syntax only; no alpha changes",
+    "Jan-Jul tuning is blocked until compile and diagnostic parity pass"
+  ],
+  "immutable_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "main_delta": "READ_ONLY",
+    "august_2026": "SEALED"
+  }
+}
