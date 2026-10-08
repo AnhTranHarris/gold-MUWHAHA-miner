@@ -2,16 +2,16 @@
   "schema": "delta-a-alpha-inflight-v5",
   "authority": "APPEND_ONLY_STATE_JOURNAL",
   "state": "IDLE_READY",
-  "last_completed": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
+  "last_completed": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001",
   "current_unit": null,
-  "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001",
-  "journal_entry": "research/delta_a_alpha/state_journal/0029_DAA_VERTICAL_GRID_SYSTEM_V1_FALLBACK_FREEZE_002.json",
+  "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SESSION_GEOMETRY_AND_EVENT_GENEALOGY_002",
+  "journal_entry": "research/delta_a_alpha/state_journal/0030_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001.json",
   "accepted_floor": {
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
     "version": "V1",
     "spec": "research/delta_a_alpha/architecture/DAA_VERTICAL_GRID_SYSTEM_V1_SPEC.md",
     "manifest": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MANIFEST.json"
   },
-  "failure_recovery": "Read journal 0029 then 0028 and the V1 spec/manifest. If needed restore architecture from delta-A-alpha-v1-vertical-grid-spine commit 29a17553a436a9b6959ccf57c2ea10c4c183951a. Do not reconstruct from chat. Next unit is DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001.",
+  "failure_recovery": "Read journal 0030 and the MT5 implementation 001 report/manifest. Do not recreate the EA shell from chat. Unit 001 is observe-only, static-verified, not MetaEditor-compiled. Resume only session geometry/event genealogy 002.",
   "write_discipline": "Build MT5 V1 layer-by-layer with deterministic diagnostics. Persist each module/QA unit before the next dependent module. Do not redesign strategy logic during the engineering port."
 }
