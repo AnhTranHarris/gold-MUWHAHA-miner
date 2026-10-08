@@ -1,0 +1,63 @@
+{
+  "sequence": 48,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_APRIL_CROSSMONTH_PORTABILITY_STUDY_136W3",
+  "status": "COMPLETE_TIMEOUT_RECOVERED_ATOMIC",
+  "predecessor": {
+    "sequence": 47,
+    "unit": "DAA_APRIL_RULE_FAMILY_PARAMETRIC_GOVERNOR_136V2",
+    "path": "research/delta_a_alpha/state_journal/0047_DAA_APRIL_RULE_FAMILY_PARAMETRIC_GOVERNOR_136V2.json"
+  },
+  "recovered_subunits": {
+    "W0": {
+      "status": "COMPLETE",
+      "best_net": 45691.38,
+      "best_trades": 14364,
+      "all_metrics": 0,
+      "lesson": "portable Jan-Mar n=4/60 campaign proof is too low velocity"
+    },
+    "W1": {
+      "status": "COMPLETE",
+      "best_net": 53970.38,
+      "best_trades": 28860,
+      "gross_loss": -9751.68,
+      "pf": 6.53447,
+      "lesson": "credit routing recovers velocity but destroys quality gates"
+    },
+    "W2": {
+      "status": "COMPLETE",
+      "best_net": 40761.83,
+      "best_trades": 6937,
+      "gross_loss": -1923.33,
+      "pf": 22.19336,
+      "all_metric_count": 15,
+      "lesson": "parent-credit ownership preserves quality but collapses velocity"
+    },
+    "W3": {
+      "status": "COMPLETE_ATOMIC_9_BLOCKS",
+      "rows": 486,
+      "all_metric_count": 144,
+      "all_plus_trade_count": 0,
+      "best_all_metric_trades": 7650,
+      "lesson": "more scout quota/credit does not solve velocity"
+    }
+  },
+  "t2_reference": {
+    "cap512": {
+      "net": 67531.19,
+      "trades": 31974,
+      "gross_loss": -2211.36,
+      "pf": 31.538306743361552,
+      "win": 0.9630950146994433,
+      "expectancy": 2.112065740914493
+    }
+  },
+  "durable": {
+    "github_json": "research/delta_a_alpha/monthly/april_2026/DAA_APRIL_CROSSMONTH_PORTABILITY_STUDY_136W3.json",
+    "github_md": "research/delta_a_alpha/monthly/april_2026/DAA_APRIL_CROSSMONTH_PORTABILITY_STUDY_136W3.md",
+    "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136w3/"
+  },
+  "conclusion": "The missing April deployment learner is state discrimination, not raw opportunity or campaign credit amount. Exact RL_PH cells are too sparse online; whole rule-family campaign proof is too coarse. Next test is a hierarchical contextual transition governor that backs off between these levels using prior-closed evidence only.",
+  "next_unit": "DAA_APRIL_HIERARCHICAL_CONTEXTUAL_TRANSITION_GOVERNOR_136X",
+  "august_2026": "SEALED"
+}
