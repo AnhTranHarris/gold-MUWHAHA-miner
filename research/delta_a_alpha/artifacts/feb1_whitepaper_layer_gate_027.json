@@ -1,0 +1,82 @@
+{
+  "unit": "DAA_027_WHITEPAPER_COMPLETE_SYSTEM_DEPLOYMENT_GATE",
+  "deployment_policy": {
+    "asof_start_utc": "2026-02-01T00:00:00Z",
+    "first_available_quote_utc": "2026-02-01T23:06:26.655000+00:00",
+    "allowed_prestart_history": "2026-01 only",
+    "february_was_inspected_in_prior_research": true,
+    "february_is_pristine_unseen_holdout": false,
+    "august_sealed": true,
+    "september_reserved": true
+  },
+  "source_audited": "/mnt/data/daa_january_full_execution_024/jan024_reconstructed_full_portfolio.py",
+  "source_sha256": "06ca47b5d87a52c0b3b2c037c0ed5c02837ce6cc7879aafe6fa1307f4ea32d17",
+  "source_checks": {
+    "four_funded_child_wins_gates_renewal": false,
+    "funded_recovery_entry_code": false,
+    "broker_margin_governor_implemented": false,
+    "per_layer_budget_implemented": false
+  },
+  "layers": [
+    {
+      "layer": "L0",
+      "mandatory_contract": "Tick fill / first-touch / full tick floating equity",
+      "full_contract_met": true,
+      "finding": "Implemented for reconstructed source subset, not exact 131E order lineage"
+    },
+    {
+      "layer": "L1",
+      "mandatory_contract": "Complete stateful independent session grid geometries",
+      "full_contract_met": false,
+      "finding": "One-minute price anchor / local session cell; no complete owned V1 session lattice"
+    },
+    {
+      "layer": "L2",
+      "mandatory_contract": "Completed H4/H1/M15/M5, role-distinct market context",
+      "full_contract_met": false,
+      "finding": "Completed EMA states exist; role-specific environments/phase/location not complete"
+    },
+    {
+      "layer": "L3",
+      "mandatory_contract": "Entire accepted London/overlap/NY hourly harvesting portfolio",
+      "full_contract_met": false,
+      "finding": "Selected 131D-like cells, not full original supplement and ownership"
+    },
+    {
+      "layer": "L4",
+      "mandatory_contract": "Complete independent Asia geometry",
+      "full_contract_met": false,
+      "finding": "One Asia02 specialist, not the independent multi-state Asia geometry"
+    },
+    {
+      "layer": "L5",
+      "mandatory_contract": "Original funded 049/051/075/084/119/131E Watchdog parent and depth",
+      "full_contract_met": false,
+      "finding": "Missing 4-win authorization, exact multi-parent stream, owned unlocks and depth"
+    },
+    {
+      "layer": "L6",
+      "mandatory_contract": "Full native trend-within-trend state routing",
+      "full_contract_met": false,
+      "finding": "Four handcrafted specialist cells, not original native full router"
+    },
+    {
+      "layer": "L7",
+      "mandatory_contract": "Physically coded, bounded state-conditional wrong-direction recovery",
+      "full_contract_met": false,
+      "finding": "Recovery described but not implemented as a funded source; no recovered trade stream"
+    },
+    {
+      "layer": "L8",
+      "mandatory_contract": "Single global physical equity + layer caps + broker margin/stopout",
+      "full_contract_met": false,
+      "finding": "Global cap+floating marks present; no margin model or per-layer budgets"
+    }
+  ],
+  "full_whitepaper_system_certified": false,
+  "actual_quote_source_qa_pass": true,
+  "all_structural_timeframes_preseedable_from_january": true,
+  "live_five_minute_order_ready_certified": false,
+  "full_portfolio_february_1_to_28_pnl_certified": false,
+  "must_not_substitute": "131E historical normalized-spread, 132A transfer or 134K in-month discovered frontiers as a newly executed raw-quote full whitepaper result"
+}
