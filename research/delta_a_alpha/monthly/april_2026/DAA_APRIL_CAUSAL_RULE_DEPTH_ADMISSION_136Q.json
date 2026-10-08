@@ -1,0 +1,85 @@
+{
+  "unit": "DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q",
+  "status": "COMPLETE_NEGATIVE_DEPLOYMENT_EXPERIMENT",
+  "parent": "DAA_APRIL_SPARSE_LAYER_RENEWAL_PORTFOLIO_136P3",
+  "core": {
+    "net": 40736.14,
+    "trades": 6855,
+    "gross_loss": -1873.9799999999998,
+    "pf": 22.737766678406388,
+    "win": 0.8679795769511306,
+    "expectancy": 5.94254412837345
+  },
+  "lookbacks": [
+    4,
+    8,
+    16,
+    32,
+    64,
+    128,
+    256,
+    4096
+  ],
+  "blocks": [
+    {
+      "lookback": 4,
+      "screened": 98,
+      "screen_all_metric": 0,
+      "capped_all_metric": 0,
+      "runtime_s": 0.047864437103271484
+    },
+    {
+      "lookback": 8,
+      "screened": 147,
+      "screen_all_metric": 0,
+      "capped_all_metric": 0,
+      "runtime_s": 0.06851553916931152
+    },
+    {
+      "lookback": 16,
+      "screened": 196,
+      "screen_all_metric": 0,
+      "capped_all_metric": 0,
+      "runtime_s": 0.060510873794555664
+    },
+    {
+      "lookback": 32,
+      "screened": 196,
+      "screen_all_metric": 0,
+      "capped_all_metric": 0,
+      "runtime_s": 0.05631279945373535
+    },
+    {
+      "lookback": 64,
+      "screened": 196,
+      "screen_all_metric": 0,
+      "capped_all_metric": 0,
+      "runtime_s": 0.04301643371582031
+    },
+    {
+      "lookback": 128,
+      "screened": 196,
+      "screen_all_metric": 0,
+      "capped_all_metric": 0,
+      "runtime_s": 0.040409088134765625
+    },
+    {
+      "lookback": 256,
+      "screened": 196,
+      "screen_all_metric": 0,
+      "capped_all_metric": 0,
+      "runtime_s": 0.04226064682006836
+    },
+    {
+      "lookback": 4096,
+      "screened": 196,
+      "screen_all_metric": 0,
+      "capped_all_metric": 0,
+      "runtime_s": 0.045744895935058594
+    }
+  ],
+  "result": "No tested exact rule+depth rolling-lookback gate admitted renewal inventory while preserving all April R9 SYNTH quality gates.",
+  "interpretation": "Exact rule+depth online qualification is too sparse/slow. Preserve P2/P3 as April research upper bounds; next causal test should pool already-closed shadow outcomes hierarchically across broader causal state families and back off to specific rule/depth only when evidence is sufficient.",
+  "causality": "Every candidate used only exact rule+depth shadow outcomes with exit_ms < current child entry_ms. No current/future outcome, month, or date.",
+  "next_unit": "DAA_APRIL_HIERARCHICAL_RENEWAL_ADMISSION_136R"
+}
