@@ -1,5 +1,5 @@
 {
-  "schema": "delta-a-alpha-helper-registry-v12",
+  "schema": "delta-a-alpha-helper-registry-v13",
   "policy": "persist_on_value",
   "parent_commit": "ac91fc43389a34f8ba380b58143f8e185589b106",
   "cleanup": {
@@ -472,6 +472,24 @@
       "status": "DURABLE",
       "path": "research/delta_a_alpha/state_journal/0037_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SKELETON_FALLBACK_AND_PARITY_PREREG_008.json",
       "purpose": "certified skeleton fallback + unit008 restart checkpoint"
+    },
+    {
+      "id": "A-VGRID-V1-DUKAS-008A",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_DUKAS_JAN_JUL_BASELINE_008A.json",
+      "purpose": "canonical Jan-Jul precompile decision/economic-shadow baseline"
+    },
+    {
+      "id": "R-VGRID-V1-DUKAS-008A",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/mt5/DAA_VERTICAL_GRID_SYSTEM_V1_DUKAS_JAN_JUL_BASELINE_008A_REPORT.md",
+      "purpose": "human-readable Jan-Jul precompile baseline"
+    },
+    {
+      "id": "J-VGRID-V1-DUKAS-0038",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/state_journal/0038_DAA_VERTICAL_GRID_SYSTEM_V1_DUKAS_JAN_JUL_BASELINE_008A.json",
+      "purpose": "baseline checkpoint"
     }
   ],
   "rule": "Register durable helpers/results before dependent work. Vertical Grid System V1 is now the permanent architecture floor. Older Delta-A-alpha STMR artifacts remain forensic/pre-V1 evidence. V2+ may refine V1 layers but may not silently flatten the spine.",
