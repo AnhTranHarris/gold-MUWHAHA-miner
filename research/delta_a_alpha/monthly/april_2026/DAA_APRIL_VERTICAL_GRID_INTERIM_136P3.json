@@ -1,0 +1,153 @@
+{
+  "schema": "delta-a-alpha-april-vertical-grid-interim-v3",
+  "unit": "DAA_APRIL_VERTICAL_GRID_INTERIM_136P3",
+  "status": "APRIL_IN_PROGRESS_MAJOR_RENEWAL_DEPTH_BREAKTHROUGH_DURABLE",
+  "lineage": "JANUARY -> FEBRUARY -> MARCH -> APRIL",
+  "permanent_spine": [
+    "ordered ticks",
+    "session-specific grid geometry",
+    "completed H4/H1/M15/M5 structure",
+    "London/overlap/NY hourly high-volume harvesting + separate Asia geometry",
+    "Watchdog/regime renewal",
+    "trend-within-trend native routing",
+    "wrong-direction recovery",
+    "portfolio heat/capital governor"
+  ],
+  "r9_synth_april": {
+    "net": 38353.96,
+    "trades": 31758,
+    "gross_loss": -2414.22,
+    "pf": 16.886688,
+    "win": 0.86759242,
+    "expectancy": 1.207694,
+    "balance_dd": 2.02
+  },
+  "timeout_recovery": {
+    "monolithic_timeout": "136K adaptive governor timed out; not authoritative",
+    "completed_after_timeout": [
+      "136N residual opportunity map",
+      "136O1 residual quality overlay",
+      "136P1 all-rule renewal-depth map",
+      "136P2 multi-rule renewal portfolio",
+      "136P3 sparse-layer renewal portfolio"
+    ],
+    "rule": "Do not rerun 136A-P3 after timeout unless explicit audit. Full result bytes live in Library."
+  },
+  "residual_map_136n": {
+    "accepted_base": {
+      "net": 48612.93,
+      "trades": 13368,
+      "gross_loss": -2103.63,
+      "pf": 24.10906861,
+      "win": 0.90866248,
+      "expectancy": 3.63651481
+    },
+    "unused_positive_surfaces": {
+      "native_pf5": {
+        "net": 23171.67,
+        "trades": 5529,
+        "gross_loss": -4020.11,
+        "pf": 6.76394,
+        "expectancy": 4.19093
+      },
+      "highvol_broad": {
+        "net": 7792.03,
+        "trades": 4134,
+        "gross_loss": -3089.84,
+        "pf": 3.52182
+      },
+      "asia_broad": {
+        "net": 2705.81,
+        "trades": 831,
+        "gross_loss": -1130.49,
+        "pf": 3.39348
+      }
+    },
+    "robust_hour10_cells": 66,
+    "interpretation": "April still contained unused positive daily/hourly/subphase opportunity after 136M2; therefore 136M2 was not an opportunity ceiling."
+  },
+  "residual_overlay_136o1": {
+    "status": "RESEARCH_UPPER_BOUND_IN_SAMPLE_CELL_SELECTION",
+    "top_all_metric": {
+      "net": 50414.26,
+      "trades": 13928,
+      "gross_loss": -2384.14,
+      "pf": 22.14568,
+      "win": 0.90328834,
+      "expectancy": 3.61963,
+      "overlay_cap": 16,
+      "overlay_trades": 560
+    },
+    "interpretation": "Protected residual hour/subphase overlays can add velocity without displacing core, but April-selected cells are discovery evidence only."
+  },
+  "renewal_depth_136p1": {
+    "status": "MAJOR_MECHANIC_DISCOVERY",
+    "rule_count": 7,
+    "principle": "Renewal rule identity and child depth are causal at child entry. Whole-rule averages hide clean child-depth bands. Shadow campaign genealogy may continue while physical funding is sparse/depth-selective.",
+    "notable_bands": [
+      "R0 layers1-3: +2201.96 / 1715 / gross loss -38.16 / PF58.7 / win99.24%",
+      "R2 layers4-7: +3175.07 / 2304 / gross loss -3.51 / PF905.6 / win99.96%",
+      "R3 layers1-9: +7876.79 / 6513 / gross loss -229.65 / PF35.3",
+      "R4 layers1-2: +1658.54 / 1280 / gross loss -4.33 / PF384 / win99.45%",
+      "R5 layers1-9: +5923.11 / 4203 / zero gross loss / 100% wins",
+      "R6 layers1-3: +1777.31 / 3105 / zero gross loss / 100% wins"
+    ]
+  },
+  "multi_rule_frontier_136p2": {
+    "net": 64084.3,
+    "trades": 26553,
+    "gross_loss": -2153.42,
+    "pf": 30.75931309,
+    "win": 0.95311264,
+    "expectancy": 2.41344857,
+    "balance_dd": 156.07,
+    "renewal_cap": 900,
+    "renewal_maxopen": 819,
+    "positive_days": "23/23 active",
+    "positive_weeks": "5/5",
+    "versus_r9": {
+      "net_ratio": 1.6708653,
+      "trade_ratio": 0.8361043,
+      "pf_ratio": 1.8215125,
+      "win_pp": 8.552,
+      "expectancy_ratio": 1.9983941,
+      "gross_loss_better_by": 260.8
+    },
+    "caveat": "Quality layer bands were discovered on April outcomes; this is scientific upper-bound evidence until converted to causal online admission."
+  },
+  "sparse_layer_frontier_136p3": {
+    "mode": "PF3_WIN90",
+    "selected_rule_depths": 32,
+    "net": 63929.47,
+    "trades": 27915,
+    "gross_loss": -2369.56,
+    "pf": 27.97946876,
+    "win": 0.96102454,
+    "expectancy": 2.29014759,
+    "balance_dd": 379.91,
+    "renewal_cap": 900,
+    "renewal_maxopen": 819,
+    "positive_days": "23/23 active",
+    "positive_weeks": "5/5",
+    "versus_r9": {
+      "net_ratio": 1.6668284,
+      "trade_ratio": 0.8789911,
+      "pf_ratio": 1.656895,
+      "win_pp": 9.3432,
+      "expectancy_ratio": 1.8962979,
+      "gross_loss_better_by": 44.66
+    },
+    "caveat": "Individual rule-depth acceptance uses April realized PF/win and is not deployable as-is. Treat as target frontier for causal online shadow admission."
+  },
+  "scientific_reading": [
+    "No, April cannot honestly be claimed to have exhausted every possible market opportunity; exhaustive opportunity capture is not provable.",
+    "Yes, residual mapping shows the spine now exploits substantially more daily/hourly/subphase opportunity than 136M2.",
+    "The dominant April breakthrough is sparse physical funding by causal renewal rule + child depth while maintaining the full shadow campaign.",
+    "This raises April velocity to ~87.9% of R9 SYNTH while still exceeding R9 SYNTH net, gross-loss quality, PF, win rate and expectancy.",
+    "The remaining scientific task is to replace April hindsight rule-depth selection with an online admission rule using only already-closed shadow outcomes."
+  ],
+  "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136p3/",
+  "next_unit": "DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q",
+  "april_complete": false,
+  "august_2026": "SEALED"
+}
