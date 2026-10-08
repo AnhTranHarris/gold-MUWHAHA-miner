@@ -10,9 +10,9 @@
     "durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "mode": "READ_ONLY"
   },
-  "current_phase": "MONTHLY_VERTICAL_GRID_CAMPAIGN_APRIL_IN_PROGRESS",
-  "last_verified_durable_unit": "DAA_APRIL_VERTICAL_GRID_INTERIM_136K3",
-  "first_incomplete_unit": "DAA_APRIL_PROTECTED_SOURCE_OVERLAY_136K4",
+  "current_phase": "MONTHLY_VERTICAL_GRID_CAMPAIGN_APRIL_RENEWAL_DEPTH_BREAKTHROUGH",
+  "last_verified_durable_unit": "DAA_APRIL_RENEWAL_DEPTH_BREAKTHROUGH_136M2",
+  "first_incomplete_unit": "DAA_APRIL_TIERED_RENEWAL_HEAT_GOVERNOR_136N",
   "active_candidate": "STMR_SLEEVE_PHASE_001",
   "owner_constraints": {
     "symbol": "XAUUSD",
@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 41,
-    "latest_entry": "research/delta_a_alpha/state_journal/0041_DAA_APRIL_VERTICAL_GRID_INTERIM_136K3.json"
+    "latest_sequence": 42,
+    "latest_entry": "research/delta_a_alpha/state_journal/0042_DAA_APRIL_RENEWAL_DEPTH_BREAKTHROUGH_136M2.json"
   },
-  "restart_instruction": "Read journal 0041 then 0040/0039. April is IN PROGRESS through 136K3; do not rerun 136A-K3. Current April quality floor: +$40,895.82 / 7,240 trades / -$2,160.71 gross loss / PF 19.93 / 86.80% win / 23 positive active days / 5 positive weeks / exact equity DD ~$1,792 / max-open 176. Recover helpers/results from April Library interim-136i and interim-136k3. Resume only DAA_APRIL_PROTECTED_SOURCE_OVERLAY_136K4. Final MT5 economic build remains deferred. August sealed.",
+  "restart_instruction": "Read journal 0042 -> 0041. April completed through corrected 136M2. NEVER use first 136M capped portfolio numbers; they are invalid due non-chronological capacity admission. 136L layer diagnostics remain valid. Recover exact K4/L/M2 bytes from Library /xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136m2/. Resume only DAA_APRIL_TIERED_RENEWAL_HEAT_GOVERNOR_136N. Do not rerun A-M2. August sealed.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -269,21 +269,29 @@
     "march_rollback_commit": "06328b13f35f5fc5dd869713ab67fc49f926afdb",
     "march_drive_artifact_map": "https://docs.google.com/document/d/1lrn3UmNA42zJMdrxLgxzn29E8pjupiVo-NsZjzDTcUU/edit?usp=drivesdk",
     "april_interim": {
-      "unit": "DAA_APRIL_VERTICAL_GRID_INTERIM_136K3",
+      "unit": "DAA_APRIL_RENEWAL_DEPTH_BREAKTHROUGH_136M2",
       "github": "research/delta_a_alpha/monthly/april_2026/",
-      "library_i": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136i/",
-      "library_k3": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136k3/",
-      "current_floor": {
-        "net": 40895.82,
-        "trades": 7240,
-        "gross_loss": -2160.71,
-        "pf": 19.9270286,
-        "win": 0.8679558,
-        "expectancy": 5.64859,
+      "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136m2/",
+      "high_velocity": {
+        "net": 48612.93,
+        "trades": 13368,
+        "gross_loss": -2103.63,
+        "pf": 24.1091,
+        "win": 0.908662,
+        "equity_dd": 6156.54,
+        "maxopen": 703
+      },
+      "lower_heat": {
+        "net": 41863.64,
+        "trades": 7901,
+        "gross_loss": -1982.87,
+        "pf": 22.11,
+        "win": 0.868751,
         "equity_dd": 1792.16,
         "maxopen": 176
       },
-      "next_unit": "DAA_APRIL_PROTECTED_SOURCE_OVERLAY_136K4"
+      "invalidated": "first 136M capped portfolio; chronological cap bug",
+      "next_unit": "DAA_APRIL_TIERED_RENEWAL_HEAT_GOVERNOR_136N"
     }
   }
 }
