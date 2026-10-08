@@ -10,9 +10,9 @@
     "durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "mode": "READ_ONLY"
   },
-  "current_phase": "MONTHLY_VERTICAL_GRID_CAMPAIGN_MARCH_COMPLETE",
-  "last_verified_durable_unit": "DAA_MARCH_VERTICAL_GRID_DISCOVERY_135",
-  "first_incomplete_unit": "DAA_APRIL_VERTICAL_GRID_DISCOVERY_136",
+  "current_phase": "MONTHLY_VERTICAL_GRID_CAMPAIGN_APRIL_IN_PROGRESS",
+  "last_verified_durable_unit": "DAA_APRIL_VERTICAL_GRID_INTERIM_136K3",
+  "first_incomplete_unit": "DAA_APRIL_PROTECTED_SOURCE_OVERLAY_136K4",
   "active_candidate": "STMR_SLEEVE_PHASE_001",
   "owner_constraints": {
     "symbol": "XAUUSD",
@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 40,
-    "latest_entry": "research/delta_a_alpha/state_journal/0040_DAA_MARCH_VERTICAL_GRID_DISCOVERY_135_FREEZE_001.json"
+    "latest_sequence": 41,
+    "latest_entry": "research/delta_a_alpha/state_journal/0041_DAA_APRIL_VERTICAL_GRID_INTERIM_136K3.json"
   },
-  "restart_instruction": "Read journal 0040 -> 0039 and the monthly campaign state. March 135 is frozen on delta-A-alpha-march-135-complete @ 06328b13f35f5fc5dd869713ab67fc49f926afdb and backed up in Library + Drive. Never rebuild March from chat. Resume only DAA_APRIL_VERTICAL_GRID_DISCOVERY_136 carrying Jan->Feb->Mar mechanics forward. MT5 final economic build remains deferred during monthly behavior mapping. August sealed.",
+  "restart_instruction": "Read journal 0041 then 0040/0039. April is IN PROGRESS through 136K3; do not rerun 136A-K3. Current April quality floor: +$40,895.82 / 7,240 trades / -$2,160.71 gross loss / PF 19.93 / 86.80% win / 23 positive active days / 5 positive weeks / exact equity DD ~$1,792 / max-open 176. Recover helpers/results from April Library interim-136i and interim-136k3. Resume only DAA_APRIL_PROTECTED_SOURCE_OVERLAY_136K4. Final MT5 economic build remains deferred. August sealed.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -254,7 +254,7 @@
     "compile_parity": "DEFERRED_BY_OWNER_DURING_MONTHLY_BEHAVIOR_MAPPING"
   },
   "monthly_vertical_campaign": {
-    "status": "JAN_FEB_MAR_COMPLETE_APRIL_NEXT",
+    "status": "JAN_FEB_MAR_COMPLETE_APRIL_IN_PROGRESS",
     "campaign_state": "research/delta_a_alpha/monthly/DAA_MONTHLY_VERTICAL_GRID_CAMPAIGN_STATE.json",
     "march_unit": "DAA_MARCH_VERTICAL_GRID_DISCOVERY_135",
     "march_github_dir": "research/delta_a_alpha/monthly/march_2026/",
@@ -267,6 +267,23 @@
     "rule": "Carry January->February->March mechanics forward. Do not rebuild completed months. Adapt only causal layer geometry/participation/recovery/capacity; month/date remains evaluation-only.",
     "march_rollback_branch": "delta-A-alpha-march-135-complete",
     "march_rollback_commit": "06328b13f35f5fc5dd869713ab67fc49f926afdb",
-    "march_drive_artifact_map": "https://docs.google.com/document/d/1lrn3UmNA42zJMdrxLgxzn29E8pjupiVo-NsZjzDTcUU/edit?usp=drivesdk"
+    "march_drive_artifact_map": "https://docs.google.com/document/d/1lrn3UmNA42zJMdrxLgxzn29E8pjupiVo-NsZjzDTcUU/edit?usp=drivesdk",
+    "april_interim": {
+      "unit": "DAA_APRIL_VERTICAL_GRID_INTERIM_136K3",
+      "github": "research/delta_a_alpha/monthly/april_2026/",
+      "library_i": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136i/",
+      "library_k3": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136k3/",
+      "current_floor": {
+        "net": 40895.82,
+        "trades": 7240,
+        "gross_loss": -2160.71,
+        "pf": 19.9270286,
+        "win": 0.8679558,
+        "expectancy": 5.64859,
+        "equity_dd": 1792.16,
+        "maxopen": 176
+      },
+      "next_unit": "DAA_APRIL_PROTECTED_SOURCE_OVERLAY_136K4"
+    }
   }
 }
