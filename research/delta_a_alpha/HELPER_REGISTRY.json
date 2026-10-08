@@ -1,5 +1,5 @@
 {
-  "schema": "delta-a-alpha-helper-registry-v5",
+  "schema": "delta-a-alpha-helper-registry-v6",
   "policy": "persist_on_value",
   "parent_commit": "ac91fc43389a34f8ba380b58143f8e185589b106",
   "cleanup": {
@@ -280,6 +280,36 @@
       "status": "DURABLE",
       "path": "research/delta_a_alpha/state_journal/0030_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001.json",
       "purpose": "MT5 implementation 001 checkpoint"
+    },
+    {
+      "id": "P-VGRID-V1-MT5-002",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/mt5/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SESSION_GEOMETRY_AND_EVENT_GENEALOGY_002_PREREG.md",
+      "purpose": "unit 002 contract"
+    },
+    {
+      "id": "Q-VGRID-V1-MT5-002",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/qa/v1_mt5_session_genealogy_qa.py",
+      "purpose": "unit 002 deterministic session/genealogy QA"
+    },
+    {
+      "id": "R-VGRID-V1-MT5-002",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/mt5/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SESSION_GEOMETRY_AND_EVENT_GENEALOGY_002_REPORT.md",
+      "purpose": "unit 002 report"
+    },
+    {
+      "id": "A-VGRID-V1-MT5-002",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SESSION_GEOMETRY_AND_EVENT_GENEALOGY_002_MANIFEST.json",
+      "purpose": "unit 002 machine manifest"
+    },
+    {
+      "id": "J-VGRID-V1-MT5-0031",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/state_journal/0031_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SESSION_GEOMETRY_AND_EVENT_GENEALOGY_002.json",
+      "purpose": "unit 002 checkpoint"
     }
   ],
   "rule": "Register durable helpers/results before dependent work. Vertical Grid System V1 is now the permanent architecture floor. Older Delta-A-alpha STMR artifacts remain forensic/pre-V1 evidence. V2+ may refine V1 layers but may not silently flatten the spine.",
