@@ -1,0 +1,42 @@
+{
+  "sequence": 38,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_DUKAS_JAN_JUL_BASELINE_008A",
+  "status": "COMPLETE_PRE_MT5_COMPILE_BASELINE",
+  "predecessor": {
+    "sequence": 37,
+    "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SKELETON_FALLBACK_AND_PARITY_PREREG_008",
+    "path": "research/delta_a_alpha/state_journal/0037_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SKELETON_FALLBACK_AND_PARITY_PREREG_008.json"
+  },
+  "frozen_skeleton": {
+    "branch": "delta-A-alpha-v1-mt5-skeleton-certified",
+    "commit": "c81539633a0becc0dfe053f84ef80e6462848cd5"
+  },
+  "result": {
+    "ticks": 57527562,
+    "events": 90418,
+    "session_routes": 14701,
+    "native_states": 29384,
+    "watchdog_candidates": 1778,
+    "watchdog_scouts": 486,
+    "recovery_failed_ignition": 13703,
+    "shadow_session_net": -13331.555,
+    "shadow_session_pf": 0.32146725,
+    "shadow_session_win_pct": 12.965104
+  },
+  "decision": [
+    "current V1.05 is an observe-only decision skeleton and exact MT5 tester should produce zero physical trades",
+    "raw session-route shadow is negative in every Jan-Jul month",
+    "do not judge V1.05 against R9 SYNTH PnL before renewal/native/recovery execution is economically wired",
+    "use the Jan-Jul event/proposal counts as precompile diagnostic parity targets"
+  ],
+  "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_METAEDITOR_COMPILE_AND_PARITY_008",
+  "immutable_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "main_delta": "READ_ONLY",
+    "august_2026": "SEALED"
+  }
+}
