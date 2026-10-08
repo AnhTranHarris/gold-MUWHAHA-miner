@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v35",
+  "schema": "r9-gamma-02-research-cursor-v36",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_CROSSMONTH_RISK_FRONTIER_133C6",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_CROSSMONTH_RISK_FRONTIER_133C6.md",
+  "latest_completed": "GAMMA_02_FEB_VERTICAL_STACK_REBUILD_134E",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_FEB_VERTICAL_STACK_REBUILD_134E.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_DYNAMIC_RENEWAL_WATCHDOG_119",
     "frozen_params": {
@@ -131,12 +131,12 @@
     "warmup_leakage_103_104": "CRITICAL: 103/104 February authority suspended. Nominal February stream had 36,355 entries but only 102 entries actually in February after absolute-time filtering; prior +$43.9K result was warmup leakage.",
     "target_gate_083": "083 target-gated audit: Jan cap703 +$48,766.62 / 32,862; Feb +$4,193.52 / 7,020; Mar -$9,480.91 / 6,727. Prior frozen February +$52.96K was warmup-contaminated."
   },
-  "first_incomplete_unit": "GAMMA_02_CROSSMONTH_JANUARY_REGRESSION_CERTIFICATION_133D",
+  "first_incomplete_unit": "GAMMA_02_FEB_ASIA_AND_STATE_CONDITIONED_RECOVERY_134F",
   "next_units": [
-    "Replay the frozen crossmonth G1/cap600 architecture on January without changing the frozen January fallback branch",
-    "Require January economics to remain acceptably close to or above the January milestone before crossmonth promotion",
-    "If January regression is acceptable, freeze a new Jan-Feb-Mar adaptive milestone",
-    "Then proceed to April unchanged/adaptive research",
+    "Discover stronger February Asia-specific grid geometry on tick/session/MTF spine",
+    "Discover causal state-conditioned wrong-direction recovery; generic 109-style reverse is rejected for February",
+    "Integrate only Pareto-positive Asia/recovery layers into frozen 134E stack and rerun full daily/weekly/monthly scorecard",
+    "Freeze improved February vertical milestone before returning to March",
     "August sealed"
   ],
   "constraints": {
@@ -146,7 +146,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read 133C breakthrough and 133C6 risk frontier plus this cursor. Current risk-adjusted crossmonth frontier is G1 with final global cap600: Feb +66521.06 (> Feb R9 SYNTH +66213.65) and Mar +86318.27 (> Mar R9 SYNTH +75698.63). Use exact durable helper/results and Library caches; do not rebuild from chat. Resume only January regression certification 133D unless owner explicitly requests more February/March risk refinement. January fallback branch remains untouched. August sealed.",
+  "recovery_rule": "Owner corrected architecture drift. Read January major milestone + GAMMA_02_FEB_VERTICAL_STACK_REBUILD_134E.md + this cursor. Treat tick/session/MTF grid as the vertical spine; hourly high-volume/session mechanics, Watchdog regime renewal, trend-within-trend state specialist, recovery, and capital governor are layers above it. Do not resume 133D or crossmonth compression. Resume only February 134F Asia/recovery refinement. January fallback untouched. August sealed.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -512,7 +512,7 @@
     "execution_surface": "Dukascopy midpoint + frozen session-P75 normalized spread; Python research only; not raw-Dukascopy fill parity or Coinexx MT5 certification",
     "critical_remaining_issue": "Full-tick equity DD remains ~62763.84, dominated by synchronized Watchdog W05 inventory. Next work must improve profit per unit of heat rather than broaden session inventory."
   },
-  "cursor_parent_head": "f355789f2616855e36453c39a93ca4cdf91167ee",
+  "cursor_parent_head": "f8ad8e0306e44afd497dcc0d4a44fe51ed9d39df",
   "january_reexamination_131e": {
     "status": "DURABLE_COMPLETE",
     "parent": "GAMMA_02_JAN_SESSION_FIRM_DAILY_WEEKLY_131D",
@@ -1064,5 +1064,60 @@
       "parallel ensemble processes due memory kills"
     ],
     "caveat": "Still materially worse than R9 SYNTH gross loss/PF/DD. This is the current risk-adjusted economic frontier, not deployable certification."
+  },
+  "february_vertical_stack_rebuild_134e": {
+    "status": "DURABLE_MAJOR_FEBRUARY_REBUILD",
+    "selected": "GLOBAL_CAP640_WD_L30_C384",
+    "architecture": [
+      "ordered tick + session-local grid spine",
+      "completed H4/H1/M15/M5 state permission",
+      "session-specific Asia/London/overlap/NY/late geometry",
+      "causally governed high-volume London/NY heartbeat harvesting",
+      "Watchdog max renewal layer30 / cap384",
+      "earlier-session causal coverage",
+      "February-native PF10 HTF/subphase/displacement trend-within-trend specialist",
+      "cold-start + Asia02 + late-session sleeves",
+      "supplemental one-ticket-per-tick dedup",
+      "global chronological cap640"
+    ],
+    "feb": {
+      "net": 117022.06998789302,
+      "trades": 25073,
+      "gross_loss": -13205.419999492391,
+      "pf": 9.861669677480254,
+      "win": 0.8731304590595461,
+      "expectancy": 4.667254416619192,
+      "balance_dd": 2173.330000112168,
+      "equity_dd": 10629.880000000005,
+      "maxopen": 640,
+      "positive_days": 14,
+      "beat_days": 11,
+      "positive_weeks": 4,
+      "beat_weeks": 4
+    },
+    "r9_synth_feb": {
+      "net": 66213.65,
+      "trades": 33523,
+      "gross_loss": -2031.42,
+      "pf": 33.5947613,
+      "win": 0.8829758673,
+      "expectancy": 1.9751707783
+    },
+    "watchdog_refinement": {
+      "max_layer": 30,
+      "cap": 384,
+      "net": 12669.86,
+      "gross_loss": -1820.82,
+      "pf": 7.958
+    },
+    "generic_wrong_direction_recovery": "REJECTED_FOR_FEBRUARY: generic 109-style failed-ignition reverse negative across tested q. Recovery remains shadow-only until state-conditioned 134F.",
+    "artifact": "research/R9_GAMMA/artifacts/feb_vertical_wd30_atomic_134e.json",
+    "manifest": "research/R9_GAMMA/GAMMA_02_FEB_VERTICAL_STACK_REBUILD_134E.json",
+    "checkpoint": "research/R9_GAMMA/GAMMA_02_FEB_VERTICAL_STACK_REBUILD_134E.md",
+    "checkpoint_sha256": "eaea5b955b7861f636afd2c7513a25caa40483588bb7cabfa8913f731f103ba2",
+    "manifest_sha256": "b3ccb8332a1f0100b3ff259bf3b3e5858173eb7d849aac8878ac036bf7a179ad",
+    "library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-08/february-vertical-rebuild-134e/",
+    "market_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+    "caveat": "Gross loss/PF/DD still worse than R9 SYNTH. Asia geometry and funded wrong-direction recovery remain unfinished."
   }
 }
