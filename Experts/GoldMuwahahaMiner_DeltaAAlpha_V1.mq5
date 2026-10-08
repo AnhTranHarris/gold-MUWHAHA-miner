@@ -1,5 +1,5 @@
 #property copyright "AnhTranHarris / Delta-A-alpha Vertical Grid System V1"
-#property version   "1.04"
+#property version   "1.05"
 #property strict
 #property description "Delta-A-alpha V1: tick-rooted vertical grid spine with session lattice and first-touch event genealogy."
 
@@ -102,6 +102,17 @@ input double InpRecoveryRequiredFavorable=1.25;
 input int    InpRecoveryCampaignSeconds=120;
 input int    InpRecoveryMaxWatches=4096;
 
+input group "V1 portfolio heat / capacity"
+input int InpCapAsia=620;
+input int InpCapLondon=620;
+input int InpCapOverlap=620;
+input int InpCapNewYork=620;
+input int InpCapLateNy=620;
+input int InpCapWatchdog=620;
+input int InpCapNative=620;
+input int InpCapRecovery=620;
+input int InpCapSessionRoute=620;
+
 input group "V1 diagnostics"
 input bool InpDiagnostics=true;
 input bool InpVerbose=true;
@@ -148,6 +159,17 @@ struct DAAV1Context
    ulong recovery_source_event_id;
    int recovery_direction;
    string recovery_state;
+   bool arbiter_has_proposal;
+   bool arbiter_conflict;
+   string arbiter_source;
+   string arbiter_owners;
+   int arbiter_direction;
+   bool physical_admitted;
+   int effective_layer_cap;
+   int effective_session_cap;
+   int layer_open_positions;
+   int session_open_positions;
+   string governor_reason;
    int h4;
    int h1;
    int m15;
@@ -440,6 +462,17 @@ void ResetEventContext(DAAV1Context &c)
    c.recovery_source_event_id=0;
    c.recovery_direction=0;
    c.recovery_state="NONE";
+   c.arbiter_has_proposal=false;
+   c.arbiter_conflict=false;
+   c.arbiter_source="NONE";
+   c.arbiter_owners="";
+   c.arbiter_direction=0;
+   c.physical_admitted=false;
+   c.effective_layer_cap=0;
+   c.effective_session_cap=0;
+   c.layer_open_positions=0;
+   c.session_open_positions=0;
+   c.governor_reason="UNSET";
 }
 
 void RestartGridCycle(DAAV1Context &c,const DAA_V1_CYCLE_REASON reason)
@@ -1052,13 +1085,170 @@ int CountV1Positions()
    return n;
 }
 
+int CountSourcePositions(const string source)
+{
+   int n=0;
+   const string prefix="DAA_V1|"+source+"|";
+   for(int i=PositionsTotal()-1;i>=0;--i)
+   {
+      const ulong ticket=PositionGetTicket(i);
+      if(ticket==0) continue;
+      if(PositionGetString(POSITION_SYMBOL)!=_Symbol) continue;
+      if((ulong)PositionGetInteger(POSITION_MAGIC)!=InpMagic) continue;
+      const string comment=PositionGetString(POSITION_COMMENT);
+      if(StringFind(comment,prefix)==0) n++;
+   }
+   return n;
+}
+
+int CountSessionPositions(const DAA_V1_SESSION session)
+{
+   int n=0;
+   const string needle="|"+SessionName(session)+"|";
+   for(int i=PositionsTotal()-1;i>=0;--i)
+   {
+      const ulong ticket=PositionGetTicket(i);
+      if(ticket==0) continue;
+      if(PositionGetString(POSITION_SYMBOL)!=_Symbol) continue;
+      if((ulong)PositionGetInteger(POSITION_MAGIC)!=InpMagic) continue;
+      const string comment=PositionGetString(POSITION_COMMENT);
+      if(StringFind(comment,needle)>=0) n++;
+   }
+   return n;
+}
+
+int SessionCapacity(const DAA_V1_SESSION s)
+{
+   if(s==DAA_SESSION_ASIA) return InpCapAsia;
+   if(s==DAA_SESSION_LONDON) return InpCapLondon;
+   if(s==DAA_SESSION_OVERLAP) return InpCapOverlap;
+   if(s==DAA_SESSION_NEW_YORK) return InpCapNewYork;
+   if(s==DAA_SESSION_LATE_NY) return InpCapLateNy;
+   return 0;
+}
+
+int LayerCapacity(const string source)
+{
+   if(source=="WATCHDOG") return InpCapWatchdog;
+   if(source=="NATIVE") return InpCapNative;
+   if(source=="RECOVERY") return InpCapRecovery;
+   if(source=="SESSION") return InpCapSessionRoute;
+   return 0;
+}
+
+void ConsiderArbiterCandidate(const bool active,const int direction,const string source,
+                              int &consensus,bool &conflict,bool &has,string &owners)
+{
+   if(!active || direction==0) return;
+   if(!has)
+   {
+      has=true;
+      consensus=direction;
+      owners=source;
+      return;
+   }
+
+   if(direction!=consensus)
+   {
+      conflict=true;
+      if(StringFind(owners,source)<0) owners=owners+"+"+source;
+      return;
+   }
+
+   if(StringFind(owners,source)<0) owners=owners+"+"+source;
+}
+
+void BuildProposalArbiter(DAAV1Context &c)
+{
+   int consensus=0;
+   bool conflict=false;
+   bool has=false;
+   string owners="";
+
+   ConsiderArbiterCandidate(c.route_valid,c.route_direction,"SESSION",consensus,conflict,has,owners);
+   ConsiderArbiterCandidate(c.watchdog_candidate && c.watchdog_parent_admitted,
+                            c.crossing_direction,"WATCHDOG",consensus,conflict,has,owners);
+   ConsiderArbiterCandidate(c.native_route_ready,c.native_direction,"NATIVE",consensus,conflict,has,owners);
+   ConsiderArbiterCandidate(c.recovery_ready,c.recovery_direction,"RECOVERY",consensus,conflict,has,owners);
+
+   c.arbiter_conflict=conflict;
+   c.arbiter_owners=owners;
+   c.arbiter_has_proposal=(has && !conflict);
+   c.arbiter_direction=c.arbiter_has_proposal?consensus:0;
+
+   if(!c.arbiter_has_proposal)
+   {
+      c.arbiter_source="NONE";
+      return;
+   }
+
+   // Attribution priority does not override direction. It only names the most
+   // specialized aligned owner for position comments/cap accounting.
+   if(c.recovery_ready) c.arbiter_source="RECOVERY";
+   else if(c.watchdog_candidate && c.watchdog_parent_admitted) c.arbiter_source="WATCHDOG";
+   else if(c.native_route_ready) c.arbiter_source="NATIVE";
+   else c.arbiter_source="SESSION";
+}
+
 // [V1-70] Account-level physical risk authority.
+// The governor can approve a proposal, but unit 006 still has no order-send path.
 void ApplyCapitalGovernor(DAAV1Context &c)
 {
+   BuildProposalArbiter(c);
+
    c.open_positions=CountV1Positions();
-   if(!InpExecutionEnabled) c.risk_state=DAA_RISK_OBSERVE_ONLY;
-   else if(c.open_positions>=InpGlobalMaxPositions) c.risk_state=DAA_RISK_REDUCE_ONLY;
-   else c.risk_state=DAA_RISK_OPEN_NEW;
+   c.layer_open_positions=(c.arbiter_has_proposal)?CountSourcePositions(c.arbiter_source):0;
+   c.session_open_positions=CountSessionPositions(c.session);
+   c.effective_layer_cap=(c.arbiter_has_proposal)?LayerCapacity(c.arbiter_source):0;
+   c.effective_session_cap=SessionCapacity(c.session);
+   c.physical_admitted=false;
+
+   if(!InpExecutionEnabled)
+   {
+      c.risk_state=DAA_RISK_OBSERVE_ONLY;
+      c.governor_reason="EXECUTION_DISABLED";
+      return;
+   }
+   if(c.arbiter_conflict)
+   {
+      c.risk_state=DAA_RISK_OBSERVE_ONLY;
+      c.governor_reason="DIRECTION_CONFLICT";
+      return;
+   }
+   if(!c.arbiter_has_proposal)
+   {
+      c.risk_state=DAA_RISK_OBSERVE_ONLY;
+      c.governor_reason="NO_PROPOSAL";
+      return;
+   }
+   if(c.effective_session_cap<=0)
+   {
+      c.risk_state=DAA_RISK_OBSERVE_ONLY;
+      c.governor_reason="OBSERVE_ONLY_SESSION";
+      return;
+   }
+   if(c.open_positions>=InpGlobalMaxPositions)
+   {
+      c.risk_state=DAA_RISK_REDUCE_ONLY;
+      c.governor_reason="GLOBAL_CAP";
+      return;
+   }
+   if(c.layer_open_positions>=c.effective_layer_cap)
+   {
+      c.risk_state=DAA_RISK_REDUCE_ONLY;
+      c.governor_reason="LAYER_CAP";
+      return;
+   }
+   if(c.session_open_positions>=c.effective_session_cap)
+   {
+      c.risk_state=DAA_RISK_REDUCE_ONLY;
+      c.governor_reason="SESSION_CAP";
+      return;
+   }
+
+   c.risk_state=DAA_RISK_OPEN_NEW;
+   c.physical_admitted=true;
+   c.governor_reason="ADMITTED";
 }
 
 void WriteDiagnostic(const DAAV1Context &c)
@@ -1105,6 +1295,17 @@ void WriteDiagnostic(const DAAV1Context &c)
       c.recovery_source_event_id,
       c.recovery_direction,
       c.recovery_state,
+      c.arbiter_has_proposal?1:0,
+      c.arbiter_conflict?1:0,
+      c.arbiter_source,
+      c.arbiter_owners,
+      c.arbiter_direction,
+      c.physical_admitted?1:0,
+      c.effective_layer_cap,
+      c.effective_session_cap,
+      c.layer_open_positions,
+      c.session_open_positions,
+      c.governor_reason,
       c.h4,c.h1,c.m15,c.m5,
       c.mtf_ready?1:0,
       c.high_volume_session?1:0,
@@ -1173,7 +1374,9 @@ int OnInit()
       InpWatchdogGoodStreak<1 || InpWatchdogGoodHoldSeconds<1 || InpWatchdogMaxCells<16 ||
       InpWatchdogRenewalGap<=0.0 || InpWatchdogLastSubphaseGap<=0.0 || InpWatchdogMaxRenewalLayer<1 ||
       InpRecoveryIgnitionWindowSeconds<1 || InpRecoveryRequiredFavorable<=0.0 ||
-      InpRecoveryCampaignSeconds<=InpRecoveryIgnitionWindowSeconds || InpRecoveryMaxWatches<16)
+      InpRecoveryCampaignSeconds<=InpRecoveryIgnitionWindowSeconds || InpRecoveryMaxWatches<16 ||
+      InpCapAsia<1 || InpCapLondon<1 || InpCapOverlap<1 || InpCapNewYork<1 || InpCapLateNy<1 ||
+      InpCapWatchdog<1 || InpCapNative<1 || InpCapRecovery<1 || InpCapSessionRoute<1)
       return INIT_PARAMETERS_INCORRECT;
    if(InpClockMode==DAA_CLOCK_FIXED_OFFSET &&
       (InpFixedQuoteUtcOffsetMinutes<-840 || InpFixedQuoteUtcOffsetMinutes>840))
@@ -1205,6 +1408,9 @@ int OnInit()
                    "native_mode","native_direction",
                    "recovery_watch_started","recovery_failed_ignition","recovery_source_event_id",
                    "recovery_direction","recovery_state",
+                   "arbiter_has_proposal","arbiter_conflict","arbiter_source","arbiter_owners","arbiter_direction",
+                   "physical_admitted","effective_layer_cap","effective_session_cap","layer_open_positions",
+                   "session_open_positions","governor_reason",
                    "h4","h1","m15","m5","mtf_ready","high_volume","asia_geometry","watchdog_ready","native_ready",
                    "recovery_ready","risk_state","open_positions");
       }
@@ -1220,7 +1426,7 @@ int OnInit()
    ArrayResize(g_recovery_watches,0);
    g_recovery_day_key=-1;
 
-   V1Log("MT5 IMPLEMENTATION 005 initialized: trend-within-trend + shadow wrong-direction recovery / observe-only");
+   V1Log("MT5 IMPLEMENTATION 006 initialized: proposal arbiter + global/session/layer heat governor / no order-send path");
    return INIT_SUCCEEDED;
 }
 
