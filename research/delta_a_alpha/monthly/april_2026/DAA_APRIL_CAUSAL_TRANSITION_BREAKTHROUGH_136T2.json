@@ -1,0 +1,83 @@
+{
+  "unit": "DAA_APRIL_CAUSAL_TRANSITION_BREAKTHROUGH_136T2",
+  "status": "COMPLETE_MAJOR_CAUSAL_FEATURE_BREAKTHROUGH",
+  "parent": "DAA_APRIL_VERTICAL_GRID_INTERIM_136P3",
+  "r9_synth": {
+    "net": 38353.96,
+    "trades": 31758,
+    "gross_loss": -2414.22,
+    "pf": 16.886688,
+    "win": 0.86759242,
+    "expectancy": 1.207694
+  },
+  "transition_state": [
+    "renewal_rule",
+    "current_depth",
+    "previous_child_realized_pnl_bucket",
+    "previous_child_realized_hold_bucket"
+  ],
+  "causal_fact": "136S0 verified zero next-child entries occur before the previous child exit across all seven April renewal rules; previous-child P/L and hold time are therefore known at next-child admission.",
+  "research_upper_bound": {
+    "net": 71267.89,
+    "trades": 35111,
+    "gross_loss": -2220.94,
+    "pf": 33.08906589101912,
+    "win": 0.9658511577568284,
+    "expectancy": 2.029788100595255,
+    "balance_dd": 156.07,
+    "positive_days": 23,
+    "active_days": 23,
+    "positive_weeks": 5,
+    "active_weeks": 5,
+    "beat_synth_days": 12,
+    "beat_synth_weeks": 5,
+    "renewal_maxopen": 819,
+    "renewal_skips": 0,
+    "exact_equity": {
+      "pnl_reconstruction": 71267.88999999643,
+      "balance_dd_exact": 156.07,
+      "peak_equity_delta": 71389.08999999647,
+      "equity_dd": 8160.120000000003,
+      "equity_dd_pct_peak": 4.761166536329804,
+      "minimum_total_equity": 99793.37,
+      "maxopen_exact": 819
+    }
+  },
+  "balanced_cap512": {
+    "cap": 512,
+    "net": 67531.19,
+    "trades": 31974,
+    "gross_loss": -2211.36,
+    "pf": 31.538306743361552,
+    "win": 0.9630950146994433,
+    "expectancy": 2.112065740914493,
+    "balance_dd": 156.07,
+    "positive_days": 23,
+    "active_days": 23,
+    "positive_weeks": 5,
+    "active_weeks": 5,
+    "beat_synth_days": 12,
+    "beat_synth_weeks": 5,
+    "renewal_maxopen": 512,
+    "renewal_skips": 3137,
+    "exact_equity": {
+      "pnl_reconstruction": 67531.19000000323,
+      "balance_dd_exact": 156.07,
+      "peak_equity_delta": 67652.39000000327,
+      "equity_dd": 7431.120000000003,
+      "equity_dd_pct_peak": 4.432456942605982,
+      "minimum_total_equity": 99793.37,
+      "maxopen_exact": 633
+    }
+  },
+  "comparison": {
+    "cap512_net_multiple_vs_synth": 1.7607357884296695,
+    "cap512_trade_multiple_vs_synth": 1.0068014358586812,
+    "cap512_pf_multiple_vs_synth": 1.8676431247715095,
+    "cap512_win_pp_vs_synth": 9.550259469944322,
+    "cap512_expectancy_multiple_vs_synth": 1.7488417934629907,
+    "cap512_gross_loss_improvement_abs": 202.85999999999967
+  },
+  "scientific_boundary": "The transition features are causal and entry-known, but the profitable RL_PH cells and thresholds were selected using April realized outcomes. This is a major mechanics discovery/research upper bound, not deployment authority. Next step: walk-forward/online qualification of the same causal transition state, then cross-month validation in May.",
+  "next_unit": "DAA_APRIL_TRANSITION_WALKFORWARD_ADMISSION_136U"
+}
