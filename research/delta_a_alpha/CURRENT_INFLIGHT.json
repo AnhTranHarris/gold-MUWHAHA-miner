@@ -5,13 +5,13 @@
   "last_completed": "DAA_MARCH_VERTICAL_GRID_DISCOVERY_135",
   "current_unit": null,
   "next_unit": "DAA_APRIL_VERTICAL_GRID_DISCOVERY_136",
-  "journal_entry": "research/delta_a_alpha/state_journal/0039_DAA_MARCH_VERTICAL_GRID_DISCOVERY_135.json",
+  "journal_entry": "research/delta_a_alpha/state_journal/0040_DAA_MARCH_VERTICAL_GRID_DISCOVERY_135_FREEZE_001.json",
   "accepted_floor": {
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
     "version": "V1",
     "spec": "research/delta_a_alpha/architecture/DAA_VERTICAL_GRID_SYSTEM_V1_SPEC.md",
     "manifest": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MANIFEST.json"
   },
-  "failure_recovery": "Read journal 0039 + monthly campaign state. March is complete; do not rerun. Recover exact March from /xauusd-trading-bot/delta-A-alpha/monthly/march_2026/vertical-grid-135/ and GitHub march_2026 directory. Resume only April 136 with cumulative Jan->Feb->Mar spine.",
+  "failure_recovery": "Read journal 0040 then 0039. March rollback branch delta-A-alpha-march-135-complete @ 06328b13f35f5fc5dd869713ab67fc49f926afdb. Use durable Library streams/helpers and Drive bootstrap; do not rerun March. Resume only April 136.",
   "write_discipline": "Build MT5 V1 layer-by-layer with deterministic diagnostics. Persist each module/QA unit before the next dependent module. Do not redesign strategy logic during the engineering port."
 }
