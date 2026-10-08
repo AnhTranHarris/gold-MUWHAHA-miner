@@ -10,9 +10,9 @@
     "durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "mode": "READ_ONLY"
   },
-  "current_phase": "MONTHLY_VERTICAL_GRID_CAMPAIGN_APRIL_HIERARCHICAL_CONTEXT",
-  "last_verified_durable_unit": "DAA_APRIL_CROSSMONTH_PORTABILITY_STUDY_136W3",
-  "first_incomplete_unit": "DAA_APRIL_HIERARCHICAL_CONTEXTUAL_TRANSITION_GOVERNOR_136X",
+  "current_phase": "MONTHLY_VERTICAL_GRID_CAMPAIGN_APRIL_COMPLETE_MAY_NEXT",
+  "last_verified_durable_unit": "DAA_APRIL_VERTICAL_GRID_DISCOVERY_136_FINAL",
+  "first_incomplete_unit": "DAA_MAY_VERTICAL_GRID_DISCOVERY_137",
   "active_candidate": "STMR_SLEEVE_PHASE_001",
   "owner_constraints": {
     "symbol": "XAUUSD",
@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 48,
-    "latest_entry": "research/delta_a_alpha/state_journal/0048_DAA_APRIL_CROSSMONTH_PORTABILITY_STUDY_136W3.json"
+    "latest_sequence": 49,
+    "latest_entry": "research/delta_a_alpha/state_journal/0049_DAA_APRIL_VERTICAL_GRID_DISCOVERY_136_FINAL.json"
   },
-  "restart_instruction": "Read journal 0048 -> 0047 -> 0046. W0-W3 are complete and durable in Library interim-136w3; do not rerun them. T2 remains the causal April opportunity upper bound (+$67.53K / 31,974 at cap512 all quality gates). Exact-cell walk-forward is too sparse; campaign-level credit is too coarse. Resume only DAA_APRIL_HIERARCHICAL_CONTEXTUAL_TRANSITION_GOVERNOR_136X using prior-closed evidence and timeout-safe atomic blocks. August sealed.",
+  "restart_instruction": "Read journal 0049 -> 0048 -> 0047 and April final JSON/MD. April 136 is COMPLETE. Do not rerun April T2/V2/W/X work. Next incomplete unit is DAA_MAY_VERTICAL_GRID_DISCOVERY_137. Carry Jan->Feb->Mar->Apr mechanics forward unchanged first, measure transfer, then adapt only within the frozen whitepaper spine. August sealed.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -254,7 +254,7 @@
     "compile_parity": "DEFERRED_BY_OWNER_DURING_MONTHLY_BEHAVIOR_MAPPING"
   },
   "monthly_vertical_campaign": {
-    "status": "JAN_FEB_MAR_COMPLETE_APRIL_IN_PROGRESS",
+    "status": "JAN_FEB_MAR_APR_COMPLETE_MAY_NEXT",
     "campaign_state": "research/delta_a_alpha/monthly/DAA_MONTHLY_VERTICAL_GRID_CAMPAIGN_STATE.json",
     "march_unit": "DAA_MARCH_VERTICAL_GRID_DISCOVERY_135",
     "march_github_dir": "research/delta_a_alpha/monthly/march_2026/",
@@ -262,8 +262,8 @@
     "march_drive_folder": "https://drive.google.com/drive/folders/1dO6CsGjvWfdkY3JutMoyVzzRCpAJRXSi",
     "march_drive_read_first": "https://docs.google.com/document/d/1zLe8e8EgND8Lg96uHX8UkeECtH9tZOcv15Vl90gEsEc/edit?usp=drivesdk",
     "march_stream_sha256": "9b16fe06de5b3f85d2f8ea03eaff661de65d15485fd7cbc6563ba029335b795e",
-    "next_month": "2026-04",
-    "next_unit": "DAA_APRIL_VERTICAL_GRID_DISCOVERY_136",
+    "next_month": "2026-05",
+    "next_unit": "DAA_MAY_VERTICAL_GRID_DISCOVERY_137",
     "rule": "Carry January->February->March mechanics forward. Do not rebuild completed months. Adapt only causal layer geometry/participation/recovery/capacity; month/date remains evaluation-only.",
     "march_rollback_branch": "delta-A-alpha-march-135-complete",
     "march_rollback_commit": "06328b13f35f5fc5dd869713ab67fc49f926afdb",
@@ -341,6 +341,22 @@
         "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136w3/",
         "next": "DAA_APRIL_HIERARCHICAL_CONTEXTUAL_TRANSITION_GOVERNOR_136X"
       }
+    },
+    "april_final": {
+      "status": "COMPLETE",
+      "github": "research/delta_a_alpha/monthly/april_2026/DAA_APRIL_VERTICAL_GRID_DISCOVERY_136_FINAL.json",
+      "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/final-136x/",
+      "drive_folder": "https://drive.google.com/drive/folders/1kR_O7KQYM11BFLaLNme3IsD4JQ1dG2Er",
+      "drive_read_first": "https://docs.google.com/document/d/1OqJvh53KOSZU_GXVgQBzrndiUIb8IlZtL9BCq7KdDas/edit?usp=drivesdk",
+      "t2_cap512": {
+        "net": 67531.19,
+        "trades": 31974,
+        "gross_loss": -2211.36,
+        "pf": 31.538306743361552,
+        "win": 0.9630950146994433,
+        "expectancy": 2.112065740914493
+      },
+      "next": "DAA_MAY_VERTICAL_GRID_DISCOVERY_137"
     }
   }
 }
