@@ -1,5 +1,5 @@
 {
-  "schema": "delta-a-alpha-helper-registry-v4",
+  "schema": "delta-a-alpha-helper-registry-v5",
   "policy": "persist_on_value",
   "parent_commit": "ac91fc43389a34f8ba380b58143f8e185589b106",
   "cleanup": {
@@ -244,6 +244,42 @@
       "status": "DURABLE",
       "path": "research/delta_a_alpha/state_journal/0028_DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001.json",
       "purpose": "authoritative V1 architecture-freeze state checkpoint"
+    },
+    {
+      "id": "EA-VGRID-V1",
+      "status": "DURABLE",
+      "path": "Experts/GoldMuwahahaMiner_DeltaAAlpha_V1.mq5",
+      "purpose": "V1 MT5 architecture shell and future cumulative EA"
+    },
+    {
+      "id": "P-VGRID-V1-MT5-001",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/mt5/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001_PREREG.md",
+      "purpose": "MT5 implementation unit 001 contract"
+    },
+    {
+      "id": "Q-VGRID-V1-MT5-001",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/qa/v1_mt5_architecture_static_qa.py",
+      "purpose": "static V1 layer-order/safety QA"
+    },
+    {
+      "id": "R-VGRID-V1-MT5-001",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/mt5/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001_REPORT.md",
+      "purpose": "MT5 implementation 001 report"
+    },
+    {
+      "id": "A-VGRID-V1-MT5-001",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001_MANIFEST.json",
+      "purpose": "MT5 implementation 001 machine manifest"
+    },
+    {
+      "id": "J-VGRID-V1-MT5-0030",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/state_journal/0030_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001.json",
+      "purpose": "MT5 implementation 001 checkpoint"
     }
   ],
   "rule": "Register durable helpers/results before dependent work. Vertical Grid System V1 is now the permanent architecture floor. Older Delta-A-alpha STMR artifacts remain forensic/pre-V1 evidence. V2+ may refine V1 layers but may not silently flatten the spine.",
