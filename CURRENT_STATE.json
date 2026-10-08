@@ -10,9 +10,9 @@
     "durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "mode": "READ_ONLY"
   },
-  "current_phase": "VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001_COMPLETE",
-  "last_verified_durable_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001",
-  "first_incomplete_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SESSION_GEOMETRY_AND_EVENT_GENEALOGY_002",
+  "current_phase": "VERTICAL_GRID_SYSTEM_V1_MT5_UNIT002_COMPLETE",
+  "last_verified_durable_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SESSION_GEOMETRY_AND_EVENT_GENEALOGY_002",
+  "first_incomplete_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_HOURLY_HARVEST_AND_ASIA_GEOMETRY_003",
   "active_candidate": "STMR_SLEEVE_PHASE_001",
   "owner_constraints": {
     "symbol": "XAUUSD",
@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 30,
-    "latest_entry": "research/delta_a_alpha/state_journal/0030_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001.json"
+    "latest_sequence": 31,
+    "latest_entry": "research/delta_a_alpha/state_journal/0031_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SESSION_GEOMETRY_AND_EVENT_GENEALOGY_002.json"
   },
-  "restart_instruction": "Read journal 0030 -> 0029 -> 0028, then the V1 spec/manifest. V1 MT5 implementation 001 is complete as an observe-only architecture shell with static contract verification; it has NOT been MetaEditor-compiled and has no order-send path. Resume only DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SESSION_GEOMETRY_AND_EVENT_GENEALOGY_002. V1 architecture fallback is delta-A-alpha-v1-vertical-grid-spine. Main delta remains read-only; August sealed.",
+  "restart_instruction": "Read journal 0031 -> 0030 -> 0029 -> 0028. MT5 V1 unit 002 is complete and CI-passed: session-local lattice, finite cycle ownership, first-touch genealogy, duplicate suppression, one-event-per-tick, and completed H4/H1/M15/M5 birth snapshots are durable. MetaEditor compile remains pending. Resume only unit 003 hourly harvest + Asia geometry. V1 fallback remains delta-A-alpha-v1-vertical-grid-spine. Main delta read-only; August sealed.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -224,8 +224,9 @@
     "execution_mode": "OBSERVE_ONLY_NO_ORDER_SEND_PATH",
     "metaeditor_compile": "PENDING",
     "parity": "PENDING",
-    "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SESSION_GEOMETRY_AND_EVENT_GENEALOGY_002",
+    "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_HOURLY_HARVEST_AND_ASIA_GEOMETRY_003",
     "report": "research/delta_a_alpha/mt5/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001_REPORT.md",
-    "manifest": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001_MANIFEST.json"
+    "manifest": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001_MANIFEST.json",
+    "implementation_002": "COMPLETE_CI_PASS_OBSERVE_ONLY"
   }
 }
