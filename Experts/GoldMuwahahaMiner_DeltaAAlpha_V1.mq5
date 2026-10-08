@@ -790,7 +790,7 @@ double WatchdogRenewalGapForBin(const int ny_bin10)
 bool RecordWatchdogRealizedOutcome(const int cell_index,const double pnl,const int hold_seconds)
 {
    if(cell_index<0 || cell_index>=ArraySize(g_watchdog_cells)) return false;
-   DAAV1WatchdogCell old=g_watchdog_cells[cell_index];
+   const bool old_gate=g_watchdog_cells[cell_index].gate;
 
    const bool good=(pnl>0.0 && hold_seconds<=InpWatchdogGoodHoldSeconds);
    if(good) g_watchdog_cells[cell_index].realized_good_streak++;
@@ -799,9 +799,9 @@ bool RecordWatchdogRealizedOutcome(const int cell_index,const double pnl,const i
    g_watchdog_cells[cell_index].gate=
       (g_watchdog_cells[cell_index].realized_good_streak>=InpWatchdogGoodStreak);
 
-   if(g_watchdog_cells[cell_index].gate && !old.gate)
+   if(g_watchdog_cells[cell_index].gate && !old_gate)
       g_watchdog_cells[cell_index].unlocks++;
-   if(old.gate && !g_watchdog_cells[cell_index].gate)
+   if(old_gate && !g_watchdog_cells[cell_index].gate)
       g_watchdog_cells[cell_index].relocks++;
    return true;
 }
