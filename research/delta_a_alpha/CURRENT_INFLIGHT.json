@@ -2,16 +2,16 @@
   "schema": "delta-a-alpha-inflight-v5",
   "authority": "APPEND_ONLY_STATE_JOURNAL",
   "state": "IDLE_READY",
-  "last_completed": "DAA_APRIL_RENEWAL_DEPTH_BREAKTHROUGH_136M2",
+  "last_completed": "DAA_APRIL_VERTICAL_GRID_INTERIM_136M2",
   "current_unit": null,
-  "next_unit": "DAA_APRIL_TIERED_RENEWAL_HEAT_GOVERNOR_136N",
-  "journal_entry": "research/delta_a_alpha/state_journal/0042_DAA_APRIL_RENEWAL_DEPTH_BREAKTHROUGH_136M2.json",
+  "next_unit": "DAA_APRIL_RESIDUAL_OPPORTUNITY_MAP_136N",
+  "journal_entry": "research/delta_a_alpha/state_journal/0042_DAA_APRIL_VERTICAL_GRID_INTERIM_136M2.json",
   "accepted_floor": {
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
     "version": "V1",
     "spec": "research/delta_a_alpha/architecture/DAA_VERTICAL_GRID_SYSTEM_V1_SPEC.md",
     "manifest": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MANIFEST.json"
   },
-  "failure_recovery": "Read journal 0042. First 136M is INVALID; corrected 136M2 is authority. Recover from interim-136m2 Library. Resume only tiered renewal heat governor 136N.",
+  "failure_recovery": "Read journal 0042. Do not rerun 136A-M2. Use Library interim-136m2. Resume only residual opportunity map 136N with protected core.",
   "write_discipline": "Build MT5 V1 layer-by-layer with deterministic diagnostics. Persist each module/QA unit before the next dependent module. Do not redesign strategy logic during the engineering port."
 }
