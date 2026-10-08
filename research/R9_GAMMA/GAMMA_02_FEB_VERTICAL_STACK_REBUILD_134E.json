@@ -1,0 +1,87 @@
+{
+  "unit": "GAMMA_02_FEB_VERTICAL_STACK_REBUILD_134E",
+  "status": "DURABLE_MAJOR_FEBRUARY_VERTICAL_REBUILD",
+  "parent_january_fallback": "carson/r9-gamma-02-jan-grid-milestone",
+  "market_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+  "r9_synth_feb": {
+    "net": 66213.65,
+    "trades": 33523,
+    "gross_loss": -2031.42,
+    "pf": 33.5947613,
+    "win": 0.8829758673,
+    "expectancy": 1.9751707783
+  },
+  "architecture_layers": [
+    "tick/session/MTF STMR geometry spine",
+    "session-specific Asia/London/overlap/NY/late geometry",
+    "Watchdog renewal regime layer refined to max layer30/cap384",
+    "earlier-session causal coverage",
+    "causally governed high-volume hourly heartbeat harvesting",
+    "February-native completed-HTF + 10-minute-subphase + realized-displacement PF10 trend-within-trend specialist",
+    "cold-start microgrid + Asia02 + late-session sleeves",
+    "one-ticket-per-tick dedup for supplemental sleeves",
+    "global chronological heat governor cap640"
+  ],
+  "wrong_direction_recovery": "NOT_YET_FUNDED: generic failed-ignition reverse 109-style was negative in February; state-conditioned recovery is next unit",
+  "selected": {
+    "net": 117022.06998789302,
+    "trades": 25073,
+    "gross_profit": 130227.48998738543,
+    "gross_loss": -13205.419999492391,
+    "pf": 9.861669677480254,
+    "win": 0.8731304590595461,
+    "expectancy": 4.667254416619192,
+    "balance_dd": 2173.330000112168,
+    "avg_hold_s": 655.2979422885176,
+    "daily": {
+      "2026-02-02": 47082.21998816163,
+      "2026-02-04": 13237.39000000001,
+      "2026-02-05": 3567.459999999999,
+      "2026-02-09": 9507.149999570851,
+      "2026-02-10": 1404.6199998474144,
+      "2026-02-11": 5949.320001521032,
+      "2026-02-12": -11.240000009536708,
+      "2026-02-13": 3478.2300000000023,
+      "2026-02-16": -62.86999999999999,
+      "2026-02-17": 7557.800000185955,
+      "2026-02-19": 1874.3299995803802,
+      "2026-02-20": 2116.7399990081785,
+      "2026-02-23": 8036.519992639865,
+      "2026-02-24": -70.54999999999957,
+      "2026-02-25": 8528.160004291532,
+      "2026-02-26": 1617.9000030976533,
+      "2026-02-27": 3208.8899999999976
+    },
+    "weekly": {
+      "2026-W06": 63887.06998816152,
+      "2026-W07": 20328.08000092978,
+      "2026-W08": 11485.99999877451,
+      "2026-W09": 21320.920000029037
+    },
+    "positive_days": 14,
+    "beat_days": 11,
+    "positive_weeks": 4,
+    "beat_weeks": 4,
+    "global_cap": 640,
+    "global_maxopen_event": 640
+  },
+  "comparisons": {
+    "net_multiple_vs_synth": 1.767340570832344,
+    "net_delta_vs_synth": 50808.41998789302,
+    "trade_capture_vs_synth": 0.747934254094204,
+    "gross_loss_ratio_vs_synth": 6.500585796877254,
+    "expectancy_multiple_vs_synth": 2.362962467800495
+  },
+  "files": {
+    "feb_vertical_wd30_atomic_134e.py": "8278adb7843548e2f08b051b8ec0170ad0d73e28fa333ad59b4f53437b3a4ccd",
+    "feb_vertical_wd30_atomic_134e.json": "bc7a5bf4912cc1c8111598b01a8a11349751f2b76b4ba7d2d1148d92cc6c427a",
+    "cache_feb_watchdog_variants_134e.py": "e38604d26f1e48b1125218c7d13e716bd13613df9f3c01172dd50d9b9da9b190",
+    "feb_wd_L30_C384_134e.npz": "61d0f8f985d65b5478333f833ec44ab9380d16f7f07e1b5e4d90c48f32d4b5aa",
+    "feb_learner_D_stream_133c.npz": "34e81cc8b3e78177038df0f4d37f19834379125fc59b3deb93e7298fa5bcf856",
+    "feb_native_pf10_stream_134c.npz": "1b22498cf9b21ab92b00a2403042df7bb0a2a2a385bbeb9012c405fd5529fac5",
+    "feb_baseline_components_133b.npz": "b434924f13761d7c5b857b0f7d0d0fce15fd5a1cd9e758e8b9d3644ec77dbcda"
+  },
+  "next": "GAMMA_02_FEB_ASIA_AND_STATE_CONDITIONED_RECOVERY_134F",
+  "august": "SEALED",
+  "mql5": "NOT_AUTHORIZED"
+}
