@@ -1,0 +1,38 @@
+{
+  "sequence": 31,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SESSION_GEOMETRY_AND_EVENT_GENEALOGY_002",
+  "status": "COMPLETE_CI_PASS_OBSERVE_ONLY",
+  "predecessor": {
+    "sequence": 30,
+    "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001",
+    "path": "research/delta_a_alpha/state_journal/0030_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001.json"
+  },
+  "outputs": [
+    "Experts/GoldMuwahahaMiner_DeltaAAlpha_V1.mq5",
+    "research/delta_a_alpha/mt5/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SESSION_GEOMETRY_AND_EVENT_GENEALOGY_002_PREREG.md",
+    "research/delta_a_alpha/qa/v1_mt5_session_genealogy_qa.py",
+    ".github/workflows/delta-a-alpha-v1-mt5-unit002-qa.yml",
+    "research/delta_a_alpha/mt5/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SESSION_GEOMETRY_AND_EVENT_GENEALOGY_002_REPORT.md",
+    "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SESSION_GEOMETRY_AND_EVENT_GENEALOGY_002_MANIFEST.json"
+  ],
+  "verification": {
+    "github_actions_run": 37740686516,
+    "conclusion": "SUCCESS",
+    "metaeditor_compile": "PENDING"
+  },
+  "decision": [
+    "session-local lattice and active-cycle genealogy are now implemented in MQL5",
+    "unit remains observe-only and cannot place trades",
+    "later layers must consume event birth context rather than reconstruct historical state"
+  ],
+  "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_HOURLY_HARVEST_AND_ASIA_GEOMETRY_003",
+  "immutable_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "main_delta": "READ_ONLY",
+    "august_2026": "SEALED"
+  }
+}
