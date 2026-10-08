@@ -1,0 +1,64 @@
+{
+  "schema": "DAA_L2_POS_FROZEN_V1",
+  "mode": "OBSERVE_ONLY_NO_ORDER_EFFECT",
+  "feature_names": [
+    "prior12_range10_rate",
+    "prior48_range10_rate",
+    "prior144_range10_rate",
+    "prior48_range20_rate",
+    "prior12_range_median",
+    "prior48_range_p90",
+    "prior144_mean_range",
+    "prior12_mean_abs_change"
+  ],
+  "feature_units": [
+    "fraction",
+    "fraction",
+    "fraction",
+    "fraction",
+    "USD",
+    "USD",
+    "USD",
+    "USD"
+  ],
+  "range_thresholds_usd": [
+    10,
+    20
+  ],
+  "forecast_horizon": "next 12 completed M5 bars",
+  "target": "at least 2 of next 12 M5 bars have high_low_range >= $10",
+  "training_sample_count": 756,
+  "earliest_authorized_activation_utc": "2026-03-01T00:00:00Z",
+  "scaler_mean": [
+    0.24801587301587338,
+    0.2457010582010583,
+    0.2391424162257495,
+    0.0708498677248678,
+    7.883846560846563,
+    13.50004960317463,
+    8.315696024397406,
+    4.317270833333341
+  ],
+  "scaler_scale": [
+    0.3290003239389414,
+    0.2976712182375323,
+    0.28223974955028613,
+    0.1637888805212506,
+    6.639832732970523,
+    10.641420673280779,
+    5.785305927915597,
+    4.029441386202912
+  ],
+  "logistic_coef": [
+    0.7585340465231416,
+    0.2221530086745225,
+    0.30237115524519476,
+    0.09254988479025117,
+    0.5778230864501931,
+    0.1187986159057213,
+    0.2910753505407298,
+    0.5680120137827867
+  ],
+  "logistic_intercept": 0.2295355823351964,
+  "notes": "Frozen Jan-Feb-trained forecast model available only after March 1 UTC, observe-only no trading effect; distinguish chronological out-of-fit from untouched prospective validation."
+}
