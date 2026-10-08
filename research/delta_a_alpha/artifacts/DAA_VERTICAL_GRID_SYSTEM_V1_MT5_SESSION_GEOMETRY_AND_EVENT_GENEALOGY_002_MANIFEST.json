@@ -1,0 +1,43 @@
+{
+  "schema": "delta-a-alpha-v1-mt5-unit002-manifest-v1",
+  "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SESSION_GEOMETRY_AND_EVENT_GENEALOGY_002",
+  "status": "COMPLETE_CI_PASS_OBSERVE_ONLY",
+  "ea_path": "Experts/GoldMuwahahaMiner_DeltaAAlpha_V1.mq5",
+  "ea_blob_sha": "0fd70bdc8edb0d33e8d7a5c70d001a88faea1e92",
+  "qa_path": "research/delta_a_alpha/qa/v1_mt5_session_genealogy_qa.py",
+  "qa_blob_sha": "70b6172fa57235935fcaaa13fae9b0cc3a3ae0ad",
+  "github_actions": {
+    "run_id": 37740686516,
+    "conclusion": "success"
+  },
+  "mechanics": [
+    "session_local_lattice",
+    "finite_cycle_ownership",
+    "session_handoff_restart",
+    "geometry_change_restart",
+    "max_age_restart",
+    "first_touch_memory",
+    "duplicate_suppression",
+    "one_event_per_tick",
+    "first_boundary_on_multicell_jump",
+    "event_birth_genealogy",
+    "completed_H4_H1_M15_M5_birth_snapshot"
+  ],
+  "geometry": {
+    "asia": 0.75,
+    "london": 1,
+    "overlap": 0.75,
+    "new_york": 1.5,
+    "late_ny": 0.5,
+    "london_open": "OBSERVE_ONLY",
+    "rollover": "OBSERVE_ONLY"
+  },
+  "execution": {
+    "order_send_path": false,
+    "default_mode": "OBSERVE_ONLY"
+  },
+  "compile": {
+    "metaeditor": "PENDING"
+  },
+  "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_HOURLY_HARVEST_AND_ASIA_GEOMETRY_003"
+}
