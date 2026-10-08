@@ -1,5 +1,5 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v29",
+  "schema": "r9-gamma-02-research-cursor-v30",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
   "latest_completed": "GAMMA_02_JAN_WD119_PROFIT_PER_HEAT_131E",
@@ -147,7 +147,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read January checkpoints 131A, 131B, 131D, 131E plus this cursor. Preserve the 131D session architecture and 131E profit-per-heat frontier. Resume only 131F virtual-renewal / physical-runner research. Do not resume old April work. August remains sealed.",
+  "recovery_rule": "MAJOR JANUARY FALLBACK NOW EXISTS. First inspect branch carson/r9-gamma-02-jan-grid-milestone and read GAMMA_02_JAN_GRID_MAJOR_MILESTONE_20261007.md + JSON manifest + CURRENT_RESEARCH_CURSOR. Use exact durable bytes and hashes; never rebuild January from chat memory. On the active branch, preserve the 131D session architecture and 131E profit-per-heat frontier. Resume only 131F virtual-renewal / physical-runner research unless the owner explicitly moves to February. August remains sealed.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -614,5 +614,21 @@
     "market_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
     "calendar_feature_forbidden": true,
     "critical_finding": "Layer35 plus smooth Watchdog cap control preserves 21/21 positive days and 5/5 R9-SYNTH-beating weeks while materially reducing realized loss and/or floating heat. Physical capacity alone cannot recover >$200K with substantially lower equity DD; next mechanism must improve dollars per physical position."
+  },
+  "major_january_fallback": {
+    "status": "FROZEN_MAJOR_FALLBACK",
+    "milestone_name": "GAMMA_02_JAN_GRID_MAJOR_MILESTONE_20261007",
+    "fallback_branch": "carson/r9-gamma-02-jan-grid-milestone",
+    "markdown": "research/R9_GAMMA/GAMMA_02_JAN_GRID_MAJOR_MILESTONE_20261007.md",
+    "markdown_sha256": "4fc386b972a388ca1cd47c408c6861c4f697f82ae2d5444b10d55abc9ef393f7",
+    "manifest": "research/R9_GAMMA/GAMMA_02_JAN_GRID_MAJOR_MILESTONE_20261007.json",
+    "manifest_sha256": "03be9e9100ce70bad6e5818e50b3f5f5bc6623b71bc9dffa5f73b5665fbc87cd",
+    "library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-07/january-major-milestone/",
+    "packaging_head_before_cursor_update": "f1de90929bed0cd98a0bfd7514118b2c3d58e55a",
+    "scientific_latest_completed": "GAMMA_02_JAN_WD119_PROFIT_PER_HEAT_131E",
+    "preferred_balanced_fallback": "L35_C640",
+    "aggressive_profit_fallback": "L35_C703",
+    "session_milestone": "WD119_COVERAGE_LEAN4_COLD64",
+    "policy": "Do not overwrite or reconstruct this milestone from chat memory. Later February/month work may extend the architecture, but this branch remains the January restore point until a demonstrably superior adaptive multi-month system is frozen."
   }
 }
