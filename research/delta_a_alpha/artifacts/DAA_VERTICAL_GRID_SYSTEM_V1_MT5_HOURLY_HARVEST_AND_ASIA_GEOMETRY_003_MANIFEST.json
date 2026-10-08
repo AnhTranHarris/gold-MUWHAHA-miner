@@ -1,0 +1,36 @@
+{
+  "schema": "delta-a-alpha-v1-mt5-unit003-manifest-v1",
+  "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_HOURLY_HARVEST_AND_ASIA_GEOMETRY_003",
+  "status": "COMPLETE_CI_PASS_OBSERVE_ONLY",
+  "ea_blob_sha": "b54ef67b4a61b45fd6fc952e38e957ffe7bfefc1",
+  "qa_blob_sha": "e56126a1c58c9f771bc1e91380e74e2fede335d1",
+  "github_actions": {
+    "run_id": 37741203005,
+    "conclusion": "success"
+  },
+  "route_families": [
+    "ASIA_LOWER_TAKEOVER",
+    "ASIA_M15_DIVERGE_M5_RECLAIM",
+    "LONDON_M5_TAKEOVER",
+    "LONDON_M5_RECLAIM",
+    "OVERLAP_LOWER_TAKEOVER",
+    "OVERLAP_ALIGNED_COUNTERCROSS",
+    "NY_LOWER_TRANSFER",
+    "NY_LOWER_COUNTERCROSS",
+    "LATE_ALIGNED_MOMENTUM",
+    "LATE_MACRO_SPLIT_TRANSFER",
+    "LATE_M5_REJECTION",
+    "LATE_LOWER_TAKEOVER"
+  ],
+  "targeted_gates": {
+    "asia_lower_takeover_utc_hour": 23,
+    "london_m5_takeover_utc_hour": 11
+  },
+  "execution": {
+    "order_send_path": false
+  },
+  "compile": {
+    "metaeditor": "PENDING"
+  },
+  "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_WATCHDOG_REGIME_RENEWAL_004"
+}
