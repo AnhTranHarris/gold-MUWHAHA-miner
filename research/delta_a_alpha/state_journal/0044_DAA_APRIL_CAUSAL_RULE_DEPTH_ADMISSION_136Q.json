@@ -1,0 +1,30 @@
+{
+  "sequence": 44,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q",
+  "status": "COMPLETE_NEGATIVE_DEPLOYMENT_EXPERIMENT",
+  "predecessor": {
+    "sequence": 43,
+    "unit": "DAA_APRIL_VERTICAL_GRID_INTERIM_136P3",
+    "path": "research/delta_a_alpha/state_journal/0043_DAA_APRIL_VERTICAL_GRID_INTERIM_136P3.json"
+  },
+  "atomic_blocks": [
+    4,
+    8,
+    16,
+    32,
+    64,
+    128,
+    256,
+    4096
+  ],
+  "result": "No tested exact rule+depth rolling-lookback gate admitted renewal inventory while preserving all April R9 SYNTH quality gates.",
+  "decision": "Do not rerun 136Q. Advance to hierarchical/backoff admission using already-closed shadow outcomes pooled across broader causal state families, specializing only when evidence is sufficient.",
+  "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136q/",
+  "next_unit": "DAA_APRIL_HIERARCHICAL_RENEWAL_ADMISSION_136R",
+  "constraints": {
+    "calendar_feature": false,
+    "future_outcome": false,
+    "august_2026": "SEALED"
+  }
+}
