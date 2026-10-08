@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v32",
+  "schema": "r9-gamma-02-research-cursor-v33",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_MAR_UNCHANGED_JAN_MILESTONE_REPLAY_133A",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_MAR_UNCHANGED_JAN_MILESTONE_REPLAY_133A.md",
+  "latest_completed": "GAMMA_02_FEB_ADAPTIVE_META_ROUTER_BREAKTHROUGH_133B",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_FEB_ADAPTIVE_META_ROUTER_BREAKTHROUGH_133B.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_DYNAMIC_RENEWAL_WATCHDOG_119",
     "frozen_params": {
@@ -131,12 +131,12 @@
     "warmup_leakage_103_104": "CRITICAL: 103/104 February authority suspended. Nominal February stream had 36,355 entries but only 102 entries actually in February after absolute-time filtering; prior +$43.9K result was warmup leakage.",
     "target_gate_083": "083 target-gated audit: Jan cap703 +$48,766.62 / 32,862; Feb +$4,193.52 / 7,020; Mar -$9,480.91 / 6,727. Prior frozen February +$52.96K was warmup-contaminated."
   },
-  "first_incomplete_unit": "GAMMA_02_ONLINE_SPECIALIST_LEARNER_FEB_TO_MAR_133B",
+  "first_incomplete_unit": "GAMMA_02_CROSSMONTH_EXPERT_ENSEMBLE_ARBITER_133C",
   "next_units": [
-    "Design bounded causal online specialist learner/meta-router using January milestone as prior, February as first unseen learning month, and March as out-of-sample validation",
-    "Shadow-score Watchdog/coverage/session specialists using only realized exits; promote/demote with minimum evidence and hysteresis",
-    "Test funded-vs-paper behavior and bounded exploration without month/day labels or future P/L",
-    "Regression gate against frozen January milestone before any promotion",
+    "Build deterministic crossmonth expert ensemble: January Watchdog/session core + February-native specialist + March-native specialist if exact durable bytes are available",
+    "Run all experts continuously in shadow; use fast/slow realized evidence, guarded fresh-session capacity, and drift demotion/promotion hysteresis",
+    "Optimize design on February without month labels; March remains OOS validation gate",
+    "Regression-test frozen January milestone before any promotion",
     "August sealed"
   ],
   "constraints": {
@@ -146,7 +146,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Read January major fallback, February unchanged replay 132A, March unchanged replay 133A, and this cursor. Do not modify the frozen January fallback branch. Do not rerun 132A/133A unless durable hashes fail. Resume only the bounded online specialist learner/meta-router 133B, using February as first unseen learning month and March as out-of-sample validation. Month/day labels are forbidden as execution features. August remains sealed.",
+  "recovery_rule": "Crash-recovery checkpoint 133B is durable. Read GAMMA_02_FEB_ADAPTIVE_META_ROUTER_BREAKTHROUGH_133B.md + JSON, exact saved helpers/results, February 132A, March 133A, and January fallback. Do not reconstruct 133B from chat memory. February best +77.29K is real but its frozen rules fail March; never promote it as universal. Resume only crossmonth expert-ensemble arbiter 133C. Preserve January fallback branch. August remains sealed.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -512,7 +512,7 @@
     "execution_surface": "Dukascopy midpoint + frozen session-P75 normalized spread; Python research only; not raw-Dukascopy fill parity or Coinexx MT5 certification",
     "critical_remaining_issue": "Full-tick equity DD remains ~62763.84, dominated by synchronized Watchdog W05 inventory. Next work must improve profit per unit of heat rather than broaden session inventory."
   },
-  "cursor_parent_head": "d309332a6e217e05a87f8e4807625ecaeb8050f1",
+  "cursor_parent_head": "ff9bdf2591aa15a8d779504968b8b86ea84b4364",
   "january_reexamination_131e": {
     "status": "DURABLE_COMPLETE",
     "parent": "GAMMA_02_JAN_SESSION_FIRM_DAILY_WEEKLY_131D",
@@ -838,5 +838,78 @@
       "hard caps/no martingale/no loss-dependent sizing",
       "January regression gate before any crossmonth promotion"
     ]
+  },
+  "february_adaptive_meta_router_133b": {
+    "status": "DURABLE_COMPLETE_BREAKTHROUGH_WITH_OOS_INVALIDATION",
+    "library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-08/feb-adaptive-meta-router-133b/",
+    "checkpoint": "research/R9_GAMMA/GAMMA_02_FEB_ADAPTIVE_META_ROUTER_BREAKTHROUGH_133B.md",
+    "checkpoint_sha256": "8b4788ed08f74bdc71505cf748a0a7bfa60b7760838307d7cbd4373d90bd5279",
+    "manifest": "research/R9_GAMMA/GAMMA_02_FEB_ADAPTIVE_META_ROUTER_BREAKTHROUGH_133B.json",
+    "manifest_sha256": "24e5109bebdef59c8415a1c62c633e97606155940a81cf0b1889eb0cd5ef91b7",
+    "feb_best": {
+      "name": "ROUTED_WD_Q703+BAND16_EXCL4_6+CORE",
+      "net": 77290.47000194981,
+      "trades": 28031,
+      "gross_loss": -9740.619996707514,
+      "pf": 8.934861438807308,
+      "win": 0.9134886375798223,
+      "expectancy": 2.757321180191567,
+      "balance_dd": 1549.2600001789906,
+      "equity_dd": 19449.55,
+      "maxopen": 1024,
+      "positive_days": 12,
+      "beat_days": 9,
+      "positive_weeks": 4,
+      "beat_weeks": 2
+    },
+    "feb_r9_synth": {
+      "net": 66213.65,
+      "trades": 33523,
+      "gross_loss": -2031.42,
+      "pf": 33.5947613,
+      "win": 0.8829758673,
+      "expectancy": 1.9751707783
+    },
+    "march_frozen_failure": {
+      "net": 4727.229998179822,
+      "trades": 23014,
+      "gross_loss": -56588.6400230065,
+      "pf": 1.0835367309809518,
+      "win": 0.7457634483357956,
+      "expectancy": 0.2054067088806736,
+      "balance_dd": 20225.770003828547,
+      "equity_dd": 36096.860005760216,
+      "maxopen": 1478
+    },
+    "replay_qa": {
+      "feb_meta_router_qsweep_133j2": "BYTE_IDENTICAL",
+      "mar_frozen_feb_meta_router_133j": "BYTE_IDENTICAL"
+    },
+    "key_helpers": {
+      "heartbeat_shadow": "research/R9_GAMMA/helpers/hb_online_cache_133b.py",
+      "score_band": "research/R9_GAMMA/helpers/cell2_band_exact_133h.py",
+      "watchdog_shadow": "research/R9_GAMMA/helpers/wd_shadow_router_screen_133i.py",
+      "feb_meta": "research/R9_GAMMA/helpers/feb_meta_router_qsweep_133j2.py",
+      "cap_sweep": "research/R9_GAMMA/helpers/feb_final_cap_sweep_133j3.py",
+      "march_oos": "research/R9_GAMMA/helpers/mar_frozen_feb_meta_router_133j.py"
+    },
+    "key_hashes": {
+      "feb_meta_helper": "aa6fc926154f06772a7b3abd89b42c1826b89e9b8252b141ff6686ed1ca208c6",
+      "feb_meta_result": "86818019b4928136d89bb54bb261e92d06dd86e964bbdccc5779a42bc4d8b35c",
+      "mar_oos_helper": "007e73f7b5205047e8c0d738fc3912337542be75ba8fa22cd48a2cc3456211d1",
+      "mar_oos_result": "3430bc92296feb727a867f9823105524f255c714e13b3a31f81c43b290c5fba3"
+    },
+    "protection_evidence": {
+      "session_memory_representative": {
+        "feb_net": 55886.139992242825,
+        "mar_net": 11962.099991616755
+      },
+      "session_certification_best_mar": {
+        "feb_net": 54750.72000191004,
+        "mar_net": 14187.939999842047
+      },
+      "universal_native_lifecycle": "REJECTED_DEEPLY_NEGATIVE"
+    },
+    "critical_finding": "February adaptive shadow learner can exceed February R9 SYNTH monthly net, but static frozen score-band logic catastrophically degrades in March due to newly appearing toxic source/session states. Use expert ensemble + guarded shadow certification, not one universal learner."
   }
 }
