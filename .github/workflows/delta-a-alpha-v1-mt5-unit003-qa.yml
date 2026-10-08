@@ -1,0 +1,28 @@
+name: DELTA-A-alpha V1 MT5 Unit 003 QA
+
+on:
+  push:
+    branches: [delta-A-alpha]
+    paths:
+      - "Experts/GoldMuwahahaMiner_DeltaAAlpha_V1.mq5"
+      - "research/delta_a_alpha/mt5/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_HOURLY_HARVEST_AND_ASIA_GEOMETRY_003_*"
+      - "research/delta_a_alpha/qa/v1_mt5_hourly_asia_route_qa.py"
+      - ".github/workflows/delta-a-alpha-v1-mt5-unit003-qa.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  route-proposals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile QA
+        run: python -m py_compile research/delta_a_alpha/qa/v1_mt5_hourly_asia_route_qa.py
+      - name: Run deterministic route QA
+        run: python research/delta_a_alpha/qa/v1_mt5_hourly_asia_route_qa.py
