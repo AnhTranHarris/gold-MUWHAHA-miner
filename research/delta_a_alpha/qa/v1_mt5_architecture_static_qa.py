@@ -44,7 +44,8 @@ assert pos==sorted(pos), pos
 for forbidden in ("g_trade.Buy(", "g_trade.Sell(", "g_trade.PositionOpen(", "trade.Buy(", "trade.Sell("):
     assert forbidden not in src, forbidden
 
-assert state["first_incomplete_unit"]=="DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001"
+assert state["permanent_spine_v1"]["status"]=="OWNER_FROZEN_PERMANENT_ARCHITECTURE"
+assert state["mt5_v1"]["status"]=="IMPLEMENTATION_STARTED"
 assert manifest["mt5"]["authorized"] is True
 assert manifest["permanent_spine"][0]=="ordered_ticks"
 assert manifest["permanent_spine"][-1]=="portfolio_heat_capital_governor"
