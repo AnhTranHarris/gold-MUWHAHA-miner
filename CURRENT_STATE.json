@@ -11,8 +11,8 @@
     "mode": "READ_ONLY"
   },
   "current_phase": "MONTHLY_VERTICAL_GRID_CAMPAIGN_APRIL_RENEWAL_DEPTH_BREAKTHROUGH",
-  "last_verified_durable_unit": "DAA_APRIL_RENEWAL_DEPTH_BREAKTHROUGH_136M2",
-  "first_incomplete_unit": "DAA_APRIL_TIERED_RENEWAL_HEAT_GOVERNOR_136N",
+  "last_verified_durable_unit": "DAA_APRIL_VERTICAL_GRID_INTERIM_136M2",
+  "first_incomplete_unit": "DAA_APRIL_RESIDUAL_OPPORTUNITY_MAP_136N",
   "active_candidate": "STMR_SLEEVE_PHASE_001",
   "owner_constraints": {
     "symbol": "XAUUSD",
@@ -119,9 +119,9 @@
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
     "latest_sequence": 42,
-    "latest_entry": "research/delta_a_alpha/state_journal/0042_DAA_APRIL_RENEWAL_DEPTH_BREAKTHROUGH_136M2.json"
+    "latest_entry": "research/delta_a_alpha/state_journal/0042_DAA_APRIL_VERTICAL_GRID_INTERIM_136M2.json"
   },
-  "restart_instruction": "Read journal 0042 -> 0041. April completed through corrected 136M2. NEVER use first 136M capped portfolio numbers; they are invalid due non-chronological capacity admission. 136L layer diagnostics remain valid. Recover exact K4/L/M2 bytes from Library /xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136m2/. Resume only DAA_APRIL_TIERED_RENEWAL_HEAT_GOVERNOR_136N. Do not rerun A-M2. August sealed.",
+  "restart_instruction": "Read journal 0042 then 0041/0040. April 136A-M2 is durable; do not rerun. Current frontier +$48,612.93 / 13,368 / -$2,103.63 / PF24.11 / 90.87% win. Recover exact helpers/results from Library interim-136m2. Resume only DAA_APRIL_RESIDUAL_OPPORTUNITY_MAP_136N: map unused opportunity by day/hour/10-minute subphase/source/layer while protecting core. August sealed.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -269,29 +269,27 @@
     "march_rollback_commit": "06328b13f35f5fc5dd869713ab67fc49f926afdb",
     "march_drive_artifact_map": "https://docs.google.com/document/d/1lrn3UmNA42zJMdrxLgxzn29E8pjupiVo-NsZjzDTcUU/edit?usp=drivesdk",
     "april_interim": {
-      "unit": "DAA_APRIL_RENEWAL_DEPTH_BREAKTHROUGH_136M2",
+      "unit": "DAA_APRIL_VERTICAL_GRID_INTERIM_136M2",
       "github": "research/delta_a_alpha/monthly/april_2026/",
       "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136m2/",
-      "high_velocity": {
+      "current_floor": {
         "net": 48612.93,
         "trades": 13368,
         "gross_loss": -2103.63,
-        "pf": 24.1091,
-        "win": 0.908662,
-        "equity_dd": 6156.54,
-        "maxopen": 703
+        "pf": 24.10906861,
+        "win": 0.90866248,
+        "expectancy": 3.63651481,
+        "balance_dd": 156.07
       },
-      "lower_heat": {
-        "net": 41863.64,
-        "trades": 7901,
-        "gross_loss": -1982.87,
-        "pf": 22.11,
-        "win": 0.868751,
-        "equity_dd": 1792.16,
-        "maxopen": 176
+      "safer_depth8": {
+        "net": 48177.53,
+        "trades": 12888,
+        "gross_loss": -2027.18,
+        "pf": 24.76578794,
+        "win": 0.91239913,
+        "expectancy": 3.73816962
       },
-      "invalidated": "first 136M capped portfolio; chronological cap bug",
-      "next_unit": "DAA_APRIL_TIERED_RENEWAL_HEAT_GOVERNOR_136N"
+      "next_unit": "DAA_APRIL_RESIDUAL_OPPORTUNITY_MAP_136N"
     }
   }
 }
