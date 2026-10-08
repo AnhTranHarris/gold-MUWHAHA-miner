@@ -2,16 +2,16 @@
   "schema": "delta-a-alpha-inflight-v5",
   "authority": "APPEND_ONLY_STATE_JOURNAL",
   "state": "IDLE_READY",
-  "last_completed": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_NATIVE_ROUTING_AND_RECOVERY_005",
+  "last_completed": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_PROPOSAL_ARBITER_AND_HEAT_GOVERNOR_006",
   "current_unit": null,
-  "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_PROPOSAL_ARBITER_AND_HEAT_GOVERNOR_006",
-  "journal_entry": "research/delta_a_alpha/state_journal/0034_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_NATIVE_ROUTING_AND_RECOVERY_005.json",
+  "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SKELETON_CERTIFICATION_007",
+  "journal_entry": "research/delta_a_alpha/state_journal/0035_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_PROPOSAL_ARBITER_AND_HEAT_GOVERNOR_006.json",
   "accepted_floor": {
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
     "version": "V1",
     "spec": "research/delta_a_alpha/architecture/DAA_VERTICAL_GRID_SYSTEM_V1_SPEC.md",
     "manifest": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MANIFEST.json"
   },
-  "failure_recovery": "Read journal 0034 and unit-005 report/manifest. Do not rebuild native/recovery from chat. Resume only proposal arbiter + heat governor unit 006.",
+  "failure_recovery": "Read journal 0035 and unit-006 report/manifest. The full V1 decision spine exists; do not rebuild from chat. Resume only aggregate skeleton certification 007.",
   "write_discipline": "Build MT5 V1 layer-by-layer with deterministic diagnostics. Persist each module/QA unit before the next dependent module. Do not redesign strategy logic during the engineering port."
 }
