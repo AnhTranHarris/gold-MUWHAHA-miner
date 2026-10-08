@@ -10,9 +10,9 @@
     "durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "mode": "READ_ONLY"
   },
-  "current_phase": "MONTHLY_VERTICAL_GRID_CAMPAIGN_APRIL_CROSSMONTH_PRIOR",
-  "last_verified_durable_unit": "DAA_APRIL_RULE_FAMILY_PARAMETRIC_GOVERNOR_136V2",
-  "first_incomplete_unit": "DAA_APRIL_CROSSMONTH_PRIOR_CAMPAIGN_GOVERNOR_136W",
+  "current_phase": "MONTHLY_VERTICAL_GRID_CAMPAIGN_APRIL_HIERARCHICAL_CONTEXT",
+  "last_verified_durable_unit": "DAA_APRIL_CROSSMONTH_PORTABILITY_STUDY_136W3",
+  "first_incomplete_unit": "DAA_APRIL_HIERARCHICAL_CONTEXTUAL_TRANSITION_GOVERNOR_136X",
   "active_candidate": "STMR_SLEEVE_PHASE_001",
   "owner_constraints": {
     "symbol": "XAUUSD",
@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 47,
-    "latest_entry": "research/delta_a_alpha/state_journal/0047_DAA_APRIL_RULE_FAMILY_PARAMETRIC_GOVERNOR_136V2.json"
+    "latest_sequence": 48,
+    "latest_entry": "research/delta_a_alpha/state_journal/0048_DAA_APRIL_CROSSMONTH_PORTABILITY_STUDY_136W3.json"
   },
-  "restart_instruction": "Read journal 0047 -> 0046 -> 0045. April 136V2 is complete and recovered with atomic R0-R6 blocks in Library interim-136v2. Do not rerun the monolithic V2 helper. Best high-velocity all-quality V2 frontier is +$63,432.62 / 26,324 trades, still 5,434 trades below April R9 SYNTH. T2 proves sufficient opportunity exists at +$71,267.89 / 35,111 trades. Resume only DAA_APRIL_CROSSMONTH_PRIOR_CAMPAIGN_GOVERNOR_136W: seed lower-dimensional renewal governance from Jan-Feb-Mar prior evidence and allow only prior-closed-outcome April adaptation. August sealed.",
+  "restart_instruction": "Read journal 0048 -> 0047 -> 0046. W0-W3 are complete and durable in Library interim-136w3; do not rerun them. T2 remains the causal April opportunity upper bound (+$67.53K / 31,974 at cap512 all quality gates). Exact-cell walk-forward is too sparse; campaign-level credit is too coarse. Resume only DAA_APRIL_HIERARCHICAL_CONTEXTUAL_TRANSITION_GOVERNOR_136X using prior-closed evidence and timeout-safe atomic blocks. August sealed.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -335,6 +335,11 @@
         },
         "trade_deficit_vs_synth": 5434,
         "next": "DAA_APRIL_CROSSMONTH_PRIOR_CAMPAIGN_GOVERNOR_136W"
+      },
+      "w136": {
+        "status": "COMPLETE_TIMEOUT_RECOVERED_ATOMIC",
+        "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136w3/",
+        "next": "DAA_APRIL_HIERARCHICAL_CONTEXTUAL_TRANSITION_GOVERNOR_136X"
       }
     }
   }
