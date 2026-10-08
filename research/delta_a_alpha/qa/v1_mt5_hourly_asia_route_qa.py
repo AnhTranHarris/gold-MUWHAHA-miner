@@ -130,7 +130,7 @@ cases = [
     (C("OVERLAP", -1, 1, 1, -1, -1, 14), "OVERLAP_LOWER_TAKEOVER"),
     (C("OVERLAP", -1, 1, 1, 1, 1, 14), "OVERLAP_ALIGNED_COUNTERCROSS"),
     (C("NEW_YORK", -1, 1, -1, 1, -1, 17), "NY_LOWER_TRANSFER"),
-    (C("NEW_YORK", -1, 1, -1, -1, -1, 17), "NY_LOWER_COUNTERCROSS"),
+    (C("NEW_YORK", 1, 1, -1, -1, -1, 17), "NY_LOWER_COUNTERCROSS"),
     (C("LATE_NY", 1, 1, 1, 1, 1, 21), "LATE_ALIGNED_MOMENTUM"),
     (C("LATE_NY", -1, 1, -1, 1, -1, 21), "LATE_MACRO_SPLIT_TRANSFER"),
     (C("LATE_NY", 1, 1, 1, 1, -1, 21), "LATE_M5_REJECTION"),
