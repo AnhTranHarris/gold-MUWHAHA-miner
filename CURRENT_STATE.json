@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 36,
-    "latest_entry": "research/delta_a_alpha/state_journal/0036_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SKELETON_CERTIFICATION_007.json"
+    "latest_sequence": 37,
+    "latest_entry": "research/delta_a_alpha/state_journal/0037_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SKELETON_FALLBACK_AND_PARITY_PREREG_008.json"
   },
-  "restart_instruction": "Read journal 0036 -> 0035 -> 0034 -> 0033. The complete V1 MT5 decision skeleton is CI-certified and contains no order-send path. Do not rebuild units 001-006 from chat. Resume only MetaEditor compile + Python↔MT5 diagnostic parity unit 008. V1 architecture fallback remains delta-A-alpha-v1-vertical-grid-spine. Main delta read-only; August sealed.",
+  "restart_instruction": "Read journal 0037 then 0036. Recover the exact certified decision skeleton from delta-A-alpha-v1-mt5-skeleton-certified at c81539633a0becc0dfe053f84ef80e6462848cd5 if needed. Do not rebuild units 001-006 from chat. Resume only unit 008 MetaEditor compile + Python↔MT5 diagnostic parity. No Jan-Jul tuning until parity passes. Main delta read-only; August sealed.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -233,6 +233,9 @@
     "implementation_005": "COMPLETE_CI_PASS_OBSERVE_ONLY",
     "implementation_006": "COMPLETE_CI_PASS_NO_ORDER_SEND",
     "implementation_007": "COMPLETE_FULL_CI_PASS",
-    "aggregate_ci_run": 37743036431
+    "aggregate_ci_run": 37743036431,
+    "skeleton_fallback_branch": "delta-A-alpha-v1-mt5-skeleton-certified",
+    "skeleton_fallback_commit": "c81539633a0becc0dfe053f84ef80e6462848cd5",
+    "compile_parity_prereg": "research/delta_a_alpha/mt5/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_METAEDITOR_COMPILE_AND_PARITY_008_PREREG.md"
   }
 }
