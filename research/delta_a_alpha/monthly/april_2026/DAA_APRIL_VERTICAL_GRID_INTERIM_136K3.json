@@ -1,0 +1,139 @@
+{
+  "schema": "delta-a-alpha-april-vertical-grid-interim-v1",
+  "unit": "DAA_APRIL_VERTICAL_GRID_INTERIM_136K3",
+  "status": "IN_PROGRESS_DURABLE_FALLBACK",
+  "architecture": "VERTICAL_GRID_SYSTEM_V1",
+  "lineage": "JANUARY -> FEBRUARY -> MARCH -> APRIL",
+  "r9_synth_april": {
+    "net": 38353.96,
+    "trades": 31758,
+    "gross_loss": -2414.22,
+    "pf": 16.886688,
+    "win": 0.86759242,
+    "expectancy": 1.207694,
+    "balance_dd": 2.02
+  },
+  "recovered_blocks": {
+    "tick_cache": "136",
+    "native_markout": "136",
+    "native_lifecycle": "136A",
+    "session_grid": "136B",
+    "watchdog119_control": "136C",
+    "native_conviction": "136D",
+    "phase_renewal": "136E",
+    "wrong_direction_recovery": "136F",
+    "vertical_portfolio": "136G",
+    "native_conviction_refine": "136H",
+    "heat_governor": "136I",
+    "velocity_mode_search": "136J",
+    "online_source_gate": "136K1_REJECT_TOO_BLUNT",
+    "online_source_hour_gate": "136K2_REJECT_SLOT_COMPETITION",
+    "protected_renewal_overlay": "136K3_ACCEPT_INTERIM"
+  },
+  "key_controls": {
+    "watchdog119": {
+      "net": -21.33,
+      "trades": 130,
+      "pf": 0.86144,
+      "win": 0.77692,
+      "unlocks": 0
+    },
+    "native_maxnet": {
+      "net": 55774.16,
+      "trades": 23999,
+      "gross_loss": -38542.01,
+      "pf": 2.4471,
+      "win": 0.61594
+    },
+    "phase_renewal_pf5": {
+      "net": 6965.36,
+      "trades": 6844,
+      "gross_loss": -1357.35,
+      "pf": 6.1316,
+      "win": 0.92987
+    },
+    "recovery": {
+      "net": 264.42,
+      "trades": 188,
+      "gross_loss": -47.75,
+      "pf": 6.5376,
+      "win": 0.71277
+    }
+  },
+  "important_frontiers": {
+    "raw_profit_with_renewal": {
+      "net": 103740.17,
+      "trades": 63862,
+      "gross_loss": -54328.09,
+      "pf": 2.9095,
+      "win": 0.80362,
+      "balance_dd": 5375.86,
+      "maxopen": 600
+    },
+    "profit_no_renew": {
+      "net": 90540.22,
+      "trades": 27841,
+      "gross_loss": -33170.49,
+      "pf": 3.7295,
+      "win": 0.68902,
+      "balance_dd": 3218.39,
+      "maxopen": 256
+    },
+    "heat_governor_quality": {
+      "net": 38999.34,
+      "trades": 6370,
+      "gross_loss": -1565.14,
+      "pf": 25.9175,
+      "win": 0.868603,
+      "expectancy": 6.12235,
+      "balance_dd": 154.18,
+      "equity_dd": 1792.16,
+      "maxopen": 184
+    },
+    "velocity_mode_136j": {
+      "net": 40736.14,
+      "trades": 6855,
+      "gross_loss": -1873.98,
+      "pf": 22.7378,
+      "win": 0.86798,
+      "expectancy": 5.94254,
+      "balance_dd": 156.07,
+      "maxopen": 176,
+      "positive_days": "23/23",
+      "positive_weeks": "5/5"
+    },
+    "protected_renewal_136k3": {
+      "net": 40895.82,
+      "trades": 7240,
+      "gross_loss": -2160.71,
+      "pf": 19.927,
+      "win": 0.867956,
+      "expectancy": 5.64859,
+      "balance_dd": 206.56,
+      "equity_dd": 1792.16,
+      "maxopen": 176,
+      "positive_days": "23/23",
+      "positive_weeks": "5/5",
+      "r9_daily_beats": "9/21",
+      "r9_weekly_beats": "4/5",
+      "net_vs_r9": 1.06627373,
+      "trade_ratio_vs_r9": 0.22797405,
+      "rule": "quality core protected at cap176; renewal overlay cap16; gate uses only already-closed same 10-minute UTC subphase renewal shadow outcomes"
+    }
+  },
+  "scientific_reading": [
+    "April is not a Watchdog-119 regime.",
+    "April contains strong native and high-volume opportunity but broad funding destroys gross-loss quality.",
+    "Static source-wide and source-hour adaptive gates fail because expansions can crowd the quality core.",
+    "Protected overlay architecture is superior: intelligence can expand without displacing the core.",
+    "Renewal can add causal velocity when shadow-gated, but overlay capacity must stay small.",
+    "Trade velocity remains the main unresolved April deficit after quality is protected."
+  ],
+  "durable_library": {
+    "base": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136i/",
+    "adaptive": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136k3/"
+  },
+  "next_unit": "DAA_APRIL_PROTECTED_SOURCE_OVERLAY_136K4",
+  "deployment_rule": "No month/date feature. Adapt only by causal session/hour/subphase, completed H4/H1/M15/M5, activity, already-realized shadow outcomes, renewal/recovery state and heat.",
+  "april_complete": false
+}
