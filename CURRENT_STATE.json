@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 28,
-    "latest_entry": "research/delta_a_alpha/state_journal/0028_DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001.json"
+    "latest_sequence": 29,
+    "latest_entry": "research/delta_a_alpha/state_journal/0029_DAA_VERTICAL_GRID_SYSTEM_V1_FALLBACK_FREEZE_002.json"
   },
-  "restart_instruction": "Read journal 0028 first, then the V1 spec/manifest/whitepaper. Vertical Grid System V1 is the permanent spine. Do not reconstruct it from chat and do not fall back to the older STMR floor except for forensic comparison. Next incomplete unit is DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001. Main delta remains read-only. August remains sealed.",
+  "restart_instruction": "Read journal 0029 -> 0028 -> V1 spec/manifest/whitepaper. If active work is damaged, recover architecture from delta-A-alpha-v1-vertical-grid-spine at 29a17553a436a9b6959ccf57c2ea10c4c183951a. Next incomplete unit is DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001. Main delta remains read-only. August remains sealed.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -168,7 +168,9 @@
     "drive_whitepaper": "https://docs.google.com/document/d/1-PiyhfhulLl1garjwtSYOysPGOgBTgV_apnQmCKoCTc/edit?usp=drivesdk",
     "owner_override": "research/delta_a_alpha/DAA_OWNER_OVERRIDE_VERTICAL_GRID_V1_20261008.md",
     "journal": "research/delta_a_alpha/state_journal/0028_DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001.json",
-    "version_rule": "V2+ refine the V1 layers month-by-month; architecture changes require explicit owner promotion; small-capital survivability is later-version work above the V1 capital governor."
+    "version_rule": "V2+ refine the V1 layers month-by-month; architecture changes require explicit owner promotion; small-capital survivability is later-version work above the V1 capital governor.",
+    "fallback_branch": "delta-A-alpha-v1-vertical-grid-spine",
+    "fallback_commit": "29a17553a436a9b6959ccf57c2ea10c4c183951a"
   },
   "previous_architecture_floor": {
     "unit": "DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001",
