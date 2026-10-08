@@ -1,0 +1,1000 @@
+{
+  "schema": "delta-a-alpha-april-vertical-grid-final-136x-v1",
+  "unit": "DAA_APRIL_VERTICAL_GRID_DISCOVERY_136_FINAL",
+  "status": "COMPLETE_APRIL_BEHAVIOR_MAP_READY_FOR_MAY",
+  "r9_synth": {
+    "net": 38353.96,
+    "trades": 31758,
+    "gross_loss": -2414.22,
+    "pf": 16.886688,
+    "win": 0.86759242,
+    "expectancy": 1.207694
+  },
+  "permanent_spine": [
+    "ordered ticks",
+    "session-specific grid geometry",
+    "completed H4/H1/M15/M5 structure",
+    "London/overlap/NY hourly high-volume harvesting + separate Asia geometry",
+    "Watchdog/regime renewal",
+    "trend-within-trend native routing",
+    "wrong-direction recovery",
+    "portfolio heat/capital governor"
+  ],
+  "research_upper_bound": {
+    "net": 71267.89,
+    "trades": 35111,
+    "gross_loss": -2220.94,
+    "pf": 33.08906589101912,
+    "win": 0.9658511577568284,
+    "expectancy": 2.029788100595255,
+    "balance_dd": 156.07,
+    "positive_days": 23,
+    "active_days": 23,
+    "positive_weeks": 5,
+    "active_weeks": 5,
+    "beat_synth_days": 12,
+    "beat_synth_weeks": 5,
+    "renewal_maxopen": 819,
+    "renewal_skips": 0,
+    "exact_equity": {
+      "pnl_reconstruction": 71267.88999999643,
+      "balance_dd_exact": 156.07,
+      "peak_equity_delta": 71389.08999999647,
+      "equity_dd": 8160.120000000003,
+      "equity_dd_pct_peak": 4.761166536329804,
+      "minimum_total_equity": 99793.37,
+      "maxopen_exact": 819
+    }
+  },
+  "balanced_transition_cap512": {
+    "cap": 512,
+    "net": 67531.19,
+    "trades": 31974,
+    "gross_loss": -2211.36,
+    "pf": 31.538306743361552,
+    "win": 0.9630950146994433,
+    "expectancy": 2.112065740914493,
+    "balance_dd": 156.07,
+    "positive_days": 23,
+    "active_days": 23,
+    "positive_weeks": 5,
+    "active_weeks": 5,
+    "beat_synth_days": 12,
+    "beat_synth_weeks": 5,
+    "renewal_maxopen": 512,
+    "renewal_skips": 3137,
+    "exact_equity": {
+      "pnl_reconstruction": 67531.19000000323,
+      "balance_dd_exact": 156.07,
+      "peak_equity_delta": 67652.39000000327,
+      "equity_dd": 7431.120000000003,
+      "equity_dd_pct_peak": 4.432456942605982,
+      "minimum_total_equity": 99793.37,
+      "maxopen_exact": 633
+    }
+  },
+  "lower_dimensional_parametric": {
+    "schema": "delta-a-alpha-april-rule-family-parametric-governor-136v2-v1",
+    "unit": "DAA_APRIL_RULE_FAMILY_PARAMETRIC_GOVERNOR_136V2",
+    "status": "COMPLETE_RECOVERED_PARAMETRIC_FRONTIER",
+    "parent": "DAA_APRIL_TRANSITION_WALKFORWARD_ADMISSION_136U",
+    "r9_synth": {
+      "net": 38353.96,
+      "trades": 31758,
+      "gross_loss": -2414.22,
+      "pf": 16.886688,
+      "win": 0.86759242,
+      "expectancy": 1.207694
+    },
+    "max_trade_frontier": {
+      "cap": 819,
+      "net": 63432.62,
+      "trades": 26324,
+      "gross_loss": -2321.38,
+      "pf": 28.32539265436938,
+      "win": 0.9520969457529251,
+      "expectancy": 2.4096877374259233,
+      "balance_dd": 156.07,
+      "positive_days": 23,
+      "beat_synth_days": 10,
+      "beat_synth_weeks": 5,
+      "renewal_maxopen": 819,
+      "renewal_skips": 0
+    },
+    "max_net_frontier": {
+      "cap": 819,
+      "net": 63526.15,
+      "trades": 26267,
+      "gross_loss": -2227.79,
+      "pf": 29.515322359827454,
+      "win": 0.9541249476529485,
+      "expectancy": 2.418477557391404,
+      "balance_dd": 156.07,
+      "positive_days": 23,
+      "beat_synth_days": 10,
+      "beat_synth_weeks": 5
+    },
+    "lowest_cap_frontier": {
+      "cap": 92,
+      "net": 43998.45,
+      "trades": 9782,
+      "gross_loss": -1926.42,
+      "pf": 23.839489830878,
+      "win": 0.8997137599672869,
+      "expectancy": 4.4978992026170515,
+      "balance_dd": 156.07,
+      "positive_days": 23,
+      "beat_synth_days": 10,
+      "beat_synth_weeks": 4
+    },
+    "lowest_gross_loss_frontier": {
+      "cap": 600,
+      "net": 53831.7,
+      "trades": 18268,
+      "gross_loss": -1873.98,
+      "pf": 29.725866871578145,
+      "win": 0.9504598204510619,
+      "expectancy": 2.9467757827895777,
+      "balance_dd": 156.07,
+      "positive_days": 23,
+      "beat_synth_days": 10,
+      "beat_synth_weeks": 5
+    },
+    "all_metric_count_excluding_trade_gate": 392,
+    "all_plus_trade_count": 0,
+    "missing_trade_velocity_vs_synth": 5434,
+    "causality": "Per-rule scout depth, max depth, prior realized P/L, prior realized hold time, prior realized win streak; no month/date/current/future outcome.",
+    "scientific_boundary": "Per-rule parameter values were selected using April realized outcomes and are research authority only. Next test must seed/learn them from Jan-Mar prior closed evidence and April prior-closed outcomes.",
+    "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136v2/",
+    "result_sha256": "534a6b701fbf525c96243cb024bdea6914c5887a41ea9f6fd517445936d324a5",
+    "next_unit": "DAA_APRIL_CROSSMONTH_PRIOR_CAMPAIGN_GOVERNOR_136W"
+  },
+  "crossmonth_portability": {
+    "schema": "delta-a-alpha-april-crossmonth-portability-136w-v1",
+    "unit": "DAA_APRIL_CROSSMONTH_PORTABILITY_STUDY_136W3",
+    "status": "COMPLETE_TIMEOUT_RECOVERED_ATOMIC",
+    "r9_synth": {
+      "net": 38353.96,
+      "trades": 31758,
+      "gross_loss": -2414.22,
+      "pf": 16.886688,
+      "win": 0.86759242,
+      "expectancy": 1.207694
+    },
+    "subunits": [
+      {
+        "unit": "DAA_APRIL_CROSSMONTH_PRIOR_CAMPAIGN_GOVERNOR_136W0",
+        "status": "COMPLETE_FROZEN_PRIOR_REPLAY",
+        "all_metric_count": 0,
+        "all_plus_trade_count": 0,
+        "best_net": {
+          "net": 45691.380000000005,
+          "trades": 14364,
+          "gross_loss": -3988.0199999999995,
+          "pf": 12.45715919177938,
+          "win": 0.9044138123085491,
+          "expectancy": 3.180964912280702,
+          "balance_dd": 1292.9099999999526,
+          "positive_days": 23,
+          "beat_synth_days": 10,
+          "beat_synth_weeks": 4
+        },
+        "best_trades": {
+          "net": 45691.380000000005,
+          "trades": 14364,
+          "gross_loss": -3988.0199999999995,
+          "pf": 12.45715919177938,
+          "win": 0.9044138123085491,
+          "expectancy": 3.180964912280702,
+          "balance_dd": 1292.9099999999526,
+          "positive_days": 23,
+          "beat_synth_days": 10,
+          "beat_synth_weeks": 4
+        },
+        "frontiers": null
+      },
+      {
+        "unit": "DAA_APRIL_CROSSMONTH_CREDIT_ROUTER_136W1",
+        "status": "COMPLETE_FROZEN_PRIOR_MECHANIC_TEST",
+        "all_metric_count": 0,
+        "all_plus_trade_count": 0,
+        "best_net": {
+          "net": 53970.38,
+          "trades": 28860,
+          "gross_loss": -9751.68,
+          "pf": 6.534469957996981,
+          "win": 0.9105336105336105,
+          "expectancy": 1.870075537075537,
+          "balance_dd": 3876.80000000001,
+          "positive_days": 21,
+          "beat_synth_days": 11,
+          "beat_synth_weeks": 5
+        },
+        "best_trades": {
+          "net": 53970.38,
+          "trades": 28860,
+          "gross_loss": -9751.68,
+          "pf": 6.534469957996981,
+          "win": 0.9105336105336105,
+          "expectancy": 1.870075537075537,
+          "balance_dd": 3876.80000000001,
+          "positive_days": 21,
+          "beat_synth_days": 11,
+          "beat_synth_weeks": 5
+        },
+        "frontiers": null
+      },
+      {
+        "unit": "DAA_APRIL_RULE_FAMILY_PARENT_CREDIT_ROUTER_136W2",
+        "status": "COMPLETE_FROZEN_PRIOR_PARENT_ADMISSION_TEST",
+        "all_metric_count": 15,
+        "all_plus_trade_count": 0,
+        "best_net": {
+          "net": 40761.83,
+          "trades": 6937,
+          "gross_loss": -1923.3300000000002,
+          "pf": 22.19336255348796,
+          "win": 0.8679544471673634,
+          "expectancy": 5.876002594781606,
+          "balance_dd": 156.07,
+          "positive_days": 23,
+          "beat_synth_days": 9,
+          "beat_synth_weeks": 4
+        },
+        "best_trades": {
+          "net": 40761.83,
+          "trades": 6937,
+          "gross_loss": -1923.3300000000002,
+          "pf": 22.19336255348796,
+          "win": 0.8679544471673634,
+          "expectancy": 5.876002594781606,
+          "balance_dd": 156.07,
+          "positive_days": 23,
+          "beat_synth_days": 9,
+          "beat_synth_weeks": 4
+        },
+        "frontiers": null
+      },
+      {
+        "unit": "DAA_APRIL_ADAPTIVE_CREDIT_GOVERNOR_136W3",
+        "status": "COMPLETE_ATOMIC_COMBINED",
+        "all_metric_count": 144,
+        "all_plus_trade_count": 0,
+        "best_net": {},
+        "best_trades": {},
+        "frontiers": {
+          "MAX_TRADES_ALL_METRICS": {
+            "net": 40768.90000000001,
+            "trades": 7650,
+            "gross_profit": 43164.42,
+            "gross_loss": -2395.52,
+            "pf": 18.018810112209458,
+            "win": 0.870718954248366,
+            "expectancy": 5.3292679738562105,
+            "balance_dd": 268.8400000000038,
+            "positive_days": 23,
+            "active_days": 23,
+            "positive_weeks": 5,
+            "active_weeks": 5,
+            "daily": {
+              "2026-04-01": 6450.559999999992,
+              "2026-04-02": 2027.7499999999993,
+              "2026-04-05": 793.7699999999996,
+              "2026-04-06": 1354.1299999999956,
+              "2026-04-07": 1960.9500000000014,
+              "2026-04-08": 471.0699999999984,
+              "2026-04-09": 2296.44,
+              "2026-04-10": 2070.229999999999,
+              "2026-04-12": 14.780000000000005,
+              "2026-04-13": 2142.369999999999,
+              "2026-04-14": 866.2400000000004,
+              "2026-04-15": 1056.0199999999998,
+              "2026-04-16": 168.97999999999996,
+              "2026-04-17": 3298.919999999997,
+              "2026-04-19": 604.64,
+              "2026-04-20": 211.14000000000001,
+              "2026-04-21": 3982.340000000002,
+              "2026-04-22": 185.41000000000022,
+              "2026-04-23": 2795.9100000000017,
+              "2026-04-24": 2658.9200000000014,
+              "2026-04-27": 182.57000000000016,
+              "2026-04-28": 3882.2799999999993,
+              "2026-04-29": 1293.4799999999993
+            },
+            "weekly": {
+              "2026-W14": 9272.079999999985,
+              "2026-W15": 8167.599999999987,
+              "2026-W16": 8137.17,
+              "2026-W17": 9833.720000000008,
+              "2026-W18": 5358.329999999987
+            },
+            "attribution": {
+              "ASIA": {
+                "net": 3910.42,
+                "trades": 622,
+                "gross_loss": -263.61,
+                "pf": 15.83411099730663,
+                "win": 0.8585209003215434,
+                "expectancy": 6.286848874598071
+              },
+              "HIGHVOL": {
+                "net": 14712.81,
+                "trades": 2589,
+                "gross_loss": -698.01,
+                "pf": 22.07822237503761,
+                "win": 0.8501351873310158,
+                "expectancy": 5.6828157589803014
+              },
+              "NATIVE": {
+                "net": 21878.640000000003,
+                "trades": 3469,
+                "gross_loss": -865.5699999999999,
+                "pf": 26.27656919717643,
+                "win": 0.8916114153934852,
+                "expectancy": 6.306901124243299
+              },
+              "RECOVERY": {
+                "net": 234.27000000000004,
+                "trades": 175,
+                "gross_loss": -46.78999999999999,
+                "pf": 6.006839068176963,
+                "win": 0.6971428571428572,
+                "expectancy": 1.3386857142857145
+              },
+              "RENEW_R4_L1": {
+                "net": 16.099999999999998,
+                "trades": 12,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.3416666666666666
+              },
+              "RENEW_R6_L1": {
+                "net": 31.549999999999994,
+                "trades": 50,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 0.6309999999999999
+              },
+              "RENEW_R6_L2": {
+                "net": 30.58,
+                "trades": 50,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 0.6115999999999999
+              },
+              "RENEW_R6_L3": {
+                "net": 29.01,
+                "trades": 50,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 0.5802
+              },
+              "RENEW_R6_L4": {
+                "net": -120.22999999999999,
+                "trades": 43,
+                "gross_loss": -139.19000000000003,
+                "pf": 0.136216682232919,
+                "win": 0.7906976744186046,
+                "expectancy": -2.7960465116279067
+              },
+              "RENEW_R6_L5": {
+                "net": -51.50000000000001,
+                "trades": 27,
+                "gross_loss": -66.52000000000001,
+                "pf": 0.2257967528562838,
+                "win": 0.8518518518518519,
+                "expectancy": -1.9074074074074077
+              },
+              "RENEW_R4_L2": {
+                "net": 15.240000000000002,
+                "trades": 12,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.2700000000000002
+              },
+              "RENEW_R6_L6": {
+                "net": -50.05,
+                "trades": 23,
+                "gross_loss": -63.129999999999995,
+                "pf": 0.20719150958339935,
+                "win": 0.8260869565217391,
+                "expectancy": -2.176086956521739
+              },
+              "RENEW_R4_L3": {
+                "net": 17.71,
+                "trades": 12,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.4758333333333333
+              },
+              "RENEW_R6_L7": {
+                "net": 13.85,
+                "trades": 19,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 0.7289473684210526
+              },
+              "RENEW_R6_L8": {
+                "net": 13.23,
+                "trades": 19,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 0.6963157894736842
+              },
+              "RENEW_R4_L4": {
+                "net": -1.8600000000000003,
+                "trades": 12,
+                "gross_loss": -8.46,
+                "pf": 0.7801418439716311,
+                "win": 0.6666666666666666,
+                "expectancy": -0.15500000000000003
+              },
+              "RENEW_R6_L9": {
+                "net": 7.970000000000001,
+                "trades": 13,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 0.6130769230769231
+              },
+              "RENEW_R6_L10": {
+                "net": 5.039999999999999,
+                "trades": 8,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 0.6299999999999999
+              },
+              "RENEW_R4_L5": {
+                "net": -12.399999999999999,
+                "trades": 4,
+                "gross_loss": -14.979999999999999,
+                "pf": 0.17222963951935916,
+                "win": 0.5,
+                "expectancy": -3.0999999999999996
+              },
+              "RENEW_R6_L11": {
+                "net": 2.28,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 0.57
+              },
+              "RENEW_R4_L6": {
+                "net": -16.96,
+                "trades": 2,
+                "gross_loss": -16.96,
+                "pf": 0.0,
+                "win": 0.0,
+                "expectancy": -8.48
+              },
+              "RENEW_R0_L1": {
+                "net": 5.01,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.2525
+              },
+              "RENEW_R0_L2": {
+                "net": -11.400000000000002,
+                "trades": 4,
+                "gross_loss": -11.400000000000002,
+                "pf": 0.0,
+                "win": 0.0,
+                "expectancy": -2.8500000000000005
+              },
+              "RENEW_R2_L1": {
+                "net": 16.12,
+                "trades": 12,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.3433333333333335
+              },
+              "RENEW_R2_L2": {
+                "net": -2.289999999999999,
+                "trades": 12,
+                "gross_loss": -12.68,
+                "pf": 0.8194006309148265,
+                "win": 0.6666666666666666,
+                "expectancy": -0.19083333333333327
+              },
+              "RENEW_R2_L3": {
+                "net": -2.01,
+                "trades": 8,
+                "gross_loss": -7.25,
+                "pf": 0.7227586206896552,
+                "win": 0.5,
+                "expectancy": -0.25125
+              },
+              "RENEW_R2_L4": {
+                "net": 6.029999999999999,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.5074999999999998
+              },
+              "RENEW_R2_L5": {
+                "net": 6.01,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.5025
+              },
+              "RENEW_R2_L6": {
+                "net": 5.33,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.3325
+              },
+              "RENEW_R2_L7": {
+                "net": 5.13,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.2825
+              },
+              "RENEW_R2_L8": {
+                "net": 5.73,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.4325
+              },
+              "RENEW_R2_L9": {
+                "net": -5.77,
+                "trades": 3,
+                "gross_loss": -7.01,
+                "pf": 0.1768901569186876,
+                "win": 0.3333333333333333,
+                "expectancy": -1.9233333333333331
+              },
+              "RENEW_R3_L1": {
+                "net": 10.29,
+                "trades": 8,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.28625
+              },
+              "RENEW_R3_L2": {
+                "net": -1.9799999999999986,
+                "trades": 8,
+                "gross_loss": -8.399999999999999,
+                "pf": 0.7642857142857143,
+                "win": 0.5,
+                "expectancy": -0.24749999999999983
+              },
+              "RENEW_R1_L1": {
+                "net": 24.47,
+                "trades": 72,
+                "gross_loss": -16.679999999999996,
+                "pf": 2.467026378896883,
+                "win": 0.9444444444444444,
+                "expectancy": 0.3398611111111111
+              },
+              "RENEW_R1_L2": {
+                "net": -14.21,
+                "trades": 66,
+                "gross_loss": -47.86,
+                "pf": 0.7030923526953614,
+                "win": 0.8939393939393939,
+                "expectancy": -0.21530303030303033
+              },
+              "RENEW_R1_L3": {
+                "net": -31.779999999999994,
+                "trades": 42,
+                "gross_loss": -48.75,
+                "pf": 0.34810256410256407,
+                "win": 0.8095238095238095,
+                "expectancy": -0.7566666666666665
+              },
+              "RENEW_R1_L4": {
+                "net": 15.000000000000002,
+                "trades": 27,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 0.5555555555555556
+              },
+              "RENEW_R1_L5": {
+                "net": 15.82,
+                "trades": 27,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 0.585925925925926
+              },
+              "RENEW_R1_L6": {
+                "net": 0.8699999999999974,
+                "trades": 23,
+                "gross_loss": -8.98,
+                "pf": 1.0968819599109128,
+                "win": 0.782608695652174,
+                "expectancy": 0.03782608695652163
+              },
+              "RENEW_R1_L7": {
+                "net": 7.459999999999999,
+                "trades": 15,
+                "gross_loss": -0.8200000000000001,
+                "pf": 10.097560975609754,
+                "win": 0.9333333333333333,
+                "expectancy": 0.4973333333333333
+              },
+              "RENEW_R1_L8": {
+                "net": 1.6699999999999997,
+                "trades": 8,
+                "gross_loss": -1.6500000000000004,
+                "pf": 2.0121212121212118,
+                "win": 0.5,
+                "expectancy": 0.20874999999999996
+              },
+              "RENEW_R1_L9": {
+                "net": -7.68,
+                "trades": 4,
+                "gross_loss": -7.68,
+                "pf": 0.0,
+                "win": 0.0,
+                "expectancy": -1.92
+              },
+              "RENEW_R5_L1": {
+                "net": 6.380000000000001,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.5950000000000002
+              },
+              "RENEW_R5_L2": {
+                "net": 5.43,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.3575
+              },
+              "RENEW_R3_L3": {
+                "net": 4.92,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.23
+              },
+              "RENEW_R5_L3": {
+                "net": 5.469999999999999,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.3674999999999997
+              },
+              "RENEW_R3_L4": {
+                "net": 5.4399999999999995,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.3599999999999999
+              },
+              "RENEW_R3_L5": {
+                "net": 5.16,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.29
+              },
+              "RENEW_R5_L4": {
+                "net": 5.16,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.29
+              },
+              "RENEW_R3_L6": {
+                "net": 6.32,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.58
+              },
+              "RENEW_R5_L5": {
+                "net": 6.32,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.58
+              },
+              "RENEW_R3_L7": {
+                "net": 4.92,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.23
+              },
+              "RENEW_R5_L6": {
+                "net": 4.92,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.23
+              },
+              "RENEW_R3_L8": {
+                "net": 5.4399999999999995,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.3599999999999999
+              },
+              "RENEW_R5_L7": {
+                "net": 5.4399999999999995,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.3599999999999999
+              },
+              "RENEW_R3_L9": {
+                "net": -5.72,
+                "trades": 4,
+                "gross_loss": -5.72,
+                "pf": 0.0,
+                "win": 0.0,
+                "expectancy": -1.43
+              },
+              "RENEW_R5_L8": {
+                "net": 6.96,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.74
+              },
+              "RENEW_R5_L9": {
+                "net": 5.16,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.29
+              },
+              "RENEW_R5_L10": {
+                "net": 5.08,
+                "trades": 4,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.27
+              },
+              "RENEW_R5_L11": {
+                "net": -27.42,
+                "trades": 4,
+                "gross_loss": -27.42,
+                "pf": 0.0,
+                "win": 0.0,
+                "expectancy": -6.855
+              }
+            },
+            "max_depth": 30,
+            "scout_parents": 4,
+            "credit_gain": 4,
+            "max_credit": 4,
+            "cap": 256,
+            "renewal_candidates": 795,
+            "renewal_trades": 795,
+            "renewal_maxopen": 57,
+            "renewal_skips": 0,
+            "diag": {
+              "0": {
+                "parents": 576,
+                "admitted": 4,
+                "skipped": 572,
+                "unlocks": 0,
+                "relocks": 0,
+                "fastwins": 0,
+                "max_credit": 0
+              },
+              "1": {
+                "parents": 1133,
+                "admitted": 72,
+                "skipped": 1061,
+                "unlocks": 2,
+                "relocks": 2,
+                "fastwins": 150,
+                "max_credit": 4
+              },
+              "2": {
+                "parents": 1382,
+                "admitted": 12,
+                "skipped": 1370,
+                "unlocks": 2,
+                "relocks": 2,
+                "fastwins": 17,
+                "max_credit": 4
+              },
+              "3": {
+                "parents": 928,
+                "admitted": 8,
+                "skipped": 920,
+                "unlocks": 3,
+                "relocks": 3,
+                "fastwins": 16,
+                "max_credit": 4
+              },
+              "4": {
+                "parents": 640,
+                "admitted": 12,
+                "skipped": 628,
+                "unlocks": 1,
+                "relocks": 1,
+                "fastwins": 10,
+                "max_credit": 4
+              },
+              "5": {
+                "parents": 467,
+                "admitted": 4,
+                "skipped": 463,
+                "unlocks": 4,
+                "relocks": 4,
+                "fastwins": 24,
+                "max_credit": 4
+              },
+              "6": {
+                "parents": 1035,
+                "admitted": 50,
+                "skipped": 985,
+                "unlocks": 8,
+                "relocks": 6,
+                "fastwins": 199,
+                "max_credit": 4
+              }
+            },
+            "all_metrics": true,
+            "all_plus_trades": false,
+            "beat_synth_days": 9,
+            "beat_synth_weeks": 4
+          },
+          "MAX_NET_ALL_METRICS": {
+            "net": 40812.39,
+            "trades": 7435,
+            "gross_profit": 43043.22,
+            "gross_loss": -2230.83,
+            "pf": 19.294710937184817,
+            "win": 0.8689979825151312,
+            "expectancy": 5.489225285810356,
+            "balance_dd": 156.07,
+            "positive_days": 23,
+            "active_days": 23,
+            "positive_weeks": 5,
+            "active_weeks": 5,
+            "daily": {
+              "2026-04-01": 6450.559999999992,
+              "2026-04-02": 2027.7499999999993,
+              "2026-04-05": 793.7699999999996,
+              "2026-04-06": 1291.9099999999974,
+              "2026-04-07": 1960.9500000000014,
+              "2026-04-08": 599.2399999999993,
+              "2026-04-09": 2296.44,
+              "2026-04-10": 2064.9099999999994,
+              "2026-04-12": 14.780000000000005,
+              "2026-04-13": 2142.369999999999,
+              "2026-04-14": 866.2400000000004,
+              "2026-04-15": 1056.0199999999998,
+              "2026-04-16": 168.97999999999996,
+              "2026-04-17": 3298.919999999997,
+              "2026-04-19": 604.64,
+              "2026-04-20": 211.14000000000001,
+              "2026-04-21": 3982.340000000002,
+              "2026-04-22": 168.27000000000032,
+              "2026-04-23": 2795.9100000000017,
+              "2026-04-24": 2658.9200000000014,
+              "2026-04-27": 182.57000000000016,
+              "2026-04-28": 3882.2799999999993,
+              "2026-04-29": 1293.4799999999993
+            },
+            "weekly": {
+              "2026-W14": 9272.079999999985,
+              "2026-W15": 8228.229999999985,
+              "2026-W16": 8137.17,
+              "2026-W17": 9816.580000000013,
+              "2026-W18": 5358.329999999987
+            },
+            "attribution": {
+              "ASIA": {
+                "net": 3910.42,
+                "trades": 622,
+                "gross_loss": -263.61,
+                "pf": 15.83411099730663,
+                "win": 0.8585209003215434,
+                "expectancy": 6.286848874598071
+              },
+              "HIGHVOL": {
+                "net": 14712.81,
+                "trades": 2589,
+                "gross_loss": -698.01,
+                "pf": 22.07822237503761,
+                "win": 0.8501351873310158,
+                "expectancy": 5.6828157589803014
+              },
+              "NATIVE": {
+                "net": 21878.640000000003,
+                "trades": 3469,
+                "gross_loss": -865.5699999999999,
+                "pf": 26.27656919717643,
+                "win": 0.8916114153934852,
+                "expectancy": 6.306901124243299
+              },
+              "RECOVERY": {
+                "net": 234.27000000000004,
+                "trades": 175,
+                "gross_loss": -46.78999999999999,
+                "pf": 6.006839068176963,
+                "win": 0.6971428571428572,
+                "expectancy": 1.3386857142857145
+              },
+              "RENEW_R4_L1": {
+                "net": 16.099999999999998,
+                "trades": 12,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 1.3416666666666666
+              },
+              "RENEW_R6_L1": {
+                "net": 18.509999999999994,
+                "trades": 27,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 0.6855555555555554
+              },
+              "RENEW_R6_L2": {
+                "net": 17.11,
+                "trades": 27,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 0.6337037037037037
+              },
+              "RENEW_R6_L3": {
+                "net": 16.23,
+                "trades": 27,
+                "gross_loss": 0.0,
+                "pf": 999.0,
+                "win": 1.0,
+                "expectancy": 0.6011111111111112
+              },
+              "RENEW_R6_L4": {
+                "net": -32.39,
+                "trades": 23,
+                "gross_loss": -43.55,
+                "pf": 0.2562571756601608,
+                "win": 0.8695652173913043,
+                "expectancy": -1.4082608695652175
+              },
+              "RENEW_R6_L5": {
+                "net": -9.66,
+                "trades": 13,
