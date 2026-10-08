@@ -544,6 +544,30 @@
       "status": "DURABLE",
       "path": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136p3/",
       "purpose": "exact 136N/O1/P1/P2/P3 helpers/results and renewal stream bytes"
+    },
+    {
+      "id": "M-APR136U",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/monthly/april_2026/DAA_APRIL_TRANSITION_WALKFORWARD_ADMISSION_136U.json",
+      "purpose": "negative exact-cell online learner result"
+    },
+    {
+      "id": "M-APR136V2",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/monthly/april_2026/DAA_APRIL_RULE_FAMILY_PARAMETRIC_GOVERNOR_136V2.json",
+      "purpose": "recovered lower-dimensional parametric frontier"
+    },
+    {
+      "id": "J-APR136U-0046",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/state_journal/0046_DAA_APRIL_TRANSITION_WALKFORWARD_ADMISSION_136U.json",
+      "purpose": "April 136U checkpoint"
+    },
+    {
+      "id": "J-APR136V2-0047",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/state_journal/0047_DAA_APRIL_RULE_FAMILY_PARAMETRIC_GOVERNOR_136V2.json",
+      "purpose": "April 136V2 checkpoint"
     }
   ],
   "rule": "Register durable helpers/results before dependent work. Vertical Grid System V1 is now the permanent architecture floor. Older Delta-A-alpha STMR artifacts remain forensic/pre-V1 evidence. V2+ may refine V1 layers but may not silently flatten the spine.",
