@@ -1,0 +1,153 @@
+{
+  "candidate": "GAMMA_02_MAR_UNCHANGED_JAN_MILESTONE_REPLAY_133A",
+  "status": "BASELINE_REPLAY_ONLY_NO_MARCH_TUNING",
+  "market_sha256": "814ba35e72f219a58badd806ed5c0f30ef0fb4ffe56a48205d873706513bd177",
+  "r9_synth_source_sha256": "e5fcf4d6879193fac88e7a8e101db1111d59e1a7f5abfb793c970b06cfce7cc7",
+  "r9_synth_march": {
+    "net": 75698.63,
+    "trades": 40985,
+    "gross_profit": 77723.49,
+    "gross_loss": -2024.8600000000001,
+    "pf": 38.38462412216153,
+    "wins": 36891,
+    "losses": 4085,
+    "breakeven": 9,
+    "win": 0.9001097962669269,
+    "expectancy": 1.8469837745516653,
+    "avg_hold_s": 15.861754300353788,
+    "balance_dd": 2.6199999999953434
+  },
+  "primary_aggressive_l35_c703": {
+    "net": 13470.65,
+    "trades": 17501,
+    "gross_profit": 34887.81,
+    "gross_loss": -21417.16,
+    "pf": 1.6289652783095423,
+    "win": 0.8662362150734244,
+    "expectancy": 0.7697074452888406,
+    "balance_dd": 5192.829999999994,
+    "equity_dd": 10483.500000000131,
+    "min_total_equity": 93484.65000000001,
+    "maxopen": 512,
+    "avg_hold_s": 316.81474710016573,
+    "positive_days": 6,
+    "beat_days": 3,
+    "positive_weeks": 3,
+    "beat_weeks": 0
+  },
+  "net_capture_vs_synth": 0.17795104085767469,
+  "trade_capture_vs_synth": 0.4270098816640234,
+  "expectancy_capture_vs_synth": 0.4167375241158675,
+  "gross_loss_ratio_vs_synth": 10.577106565392175,
+  "weekly": {
+    "2026-W10": {
+      "r9_synth_net": 18489.390000000003,
+      "candidate_net": -4466.67
+    },
+    "2026-W11": {
+      "r9_synth_net": 11485.84,
+      "candidate_net": 9761.34
+    },
+    "2026-W12": {
+      "r9_synth_net": 14990.78,
+      "candidate_net": -2450.9900000000002
+    },
+    "2026-W13": {
+      "r9_synth_net": 24526.280000000002,
+      "candidate_net": 8011.789999999999
+    },
+    "2026-W14": {
+      "r9_synth_net": 6206.34,
+      "candidate_net": 2615.1800000000003
+    }
+  },
+  "component_attribution": [
+    {
+      "name": "WATCHDOG",
+      "net": 3517.9500000000007,
+      "trades": 15096,
+      "gross_loss": -17204.64,
+      "pf": 1.2044768155567336,
+      "win": 0.9043455219925808,
+      "expectancy": 0.23303855325914155,
+      "positive_days": 4,
+      "positive_weeks": 1
+    },
+    {
+      "name": "COVERAGE",
+      "net": 9558.58,
+      "trades": 1988,
+      "gross_loss": -3028.19,
+      "pf": 4.156532450077439,
+      "win": 0.6579476861167002,
+      "expectancy": 4.8081388329979875,
+      "positive_days": 3,
+      "positive_weeks": 2
+    },
+    {
+      "name": "COLD64",
+      "net": 808.0500000000001,
+      "trades": 64,
+      "gross_loss": 0.0,
+      "pf": 999.0,
+      "win": 1.0,
+      "expectancy": 12.625781250000001,
+      "positive_days": 1,
+      "positive_weeks": 1
+    },
+    {
+      "name": "ASIA02_CONT",
+      "net": 0.0,
+      "trades": 0,
+      "gross_loss": 0.0,
+      "pf": 999.0,
+      "win": 0.0,
+      "expectancy": 0.0,
+      "positive_days": 0,
+      "positive_weeks": 0
+    },
+    {
+      "name": "LONDON10_ROTATE_LONG",
+      "net": -401.45999999999987,
+      "trades": 354,
+      "gross_loss": -1184.33,
+      "pf": 0.6610235322925199,
+      "win": 0.3870056497175141,
+      "expectancy": -1.134067796610169,
+      "positive_days": 0,
+      "positive_weeks": 0
+    },
+    {
+      "name": "OVERLAP13_SHORT",
+      "net": 0.0,
+      "trades": 0,
+      "gross_loss": 0.0,
+      "pf": 999.0,
+      "win": 0.0,
+      "expectancy": 0.0,
+      "positive_days": 0,
+      "positive_weeks": 0
+    },
+    {
+      "name": "LATE21_LONG",
+      "net": 0.0,
+      "trades": 0,
+      "gross_loss": 0.0,
+      "pf": 999.0,
+      "win": 0.0,
+      "expectancy": 0.0,
+      "positive_days": 0,
+      "positive_weeks": 0
+    }
+  ],
+  "interpretation": [
+    "March is a material transfer failure relative to R9 SYNTH: ~17.8% net capture and ~42.7% trade capture.",
+    "The frozen January architecture remains net positive overall, but only 6/22 R9-SYNTH trading days are positive and only 3/5 weeks are positive.",
+    "Watchdog remains positive but weak (PF ~1.20) and contributes only ~3.5K; causal coverage remains the strongest transferred sleeve (~9.6K, PF ~4.16).",
+    "London10 turns negative; Asia02, overlap13 and late21 are dormant under their frozen January state definitions.",
+    "February + March jointly imply the missing mechanism is online state/specialist learning and promotion/demotion, not a calendar-month switch."
+  ],
+  "next": "OWNER_DECISION: open causal online learner/meta-router research using February as first unseen learning month and March as out-of-sample validation, while preserving January fallback.",
+  "august": "SEALED",
+  "mql5": "NOT_AUTHORIZED"
+}
