@@ -11,8 +11,8 @@
     "mode": "READ_ONLY"
   },
   "current_phase": "MONTHLY_VERTICAL_GRID_CAMPAIGN_APRIL_RENEWAL_DEPTH_BREAKTHROUGH",
-  "last_verified_durable_unit": "DAA_APRIL_VERTICAL_GRID_INTERIM_136M2",
-  "first_incomplete_unit": "DAA_APRIL_RESIDUAL_OPPORTUNITY_MAP_136N",
+  "last_verified_durable_unit": "DAA_APRIL_VERTICAL_GRID_INTERIM_136P3",
+  "first_incomplete_unit": "DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q",
   "active_candidate": "STMR_SLEEVE_PHASE_001",
   "owner_constraints": {
     "symbol": "XAUUSD",
@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 42,
-    "latest_entry": "research/delta_a_alpha/state_journal/0042_DAA_APRIL_VERTICAL_GRID_INTERIM_136M2.json"
+    "latest_sequence": 43,
+    "latest_entry": "research/delta_a_alpha/state_journal/0043_DAA_APRIL_VERTICAL_GRID_INTERIM_136P3.json"
   },
-  "restart_instruction": "Read journal 0042 then 0041/0040. April 136A-M2 is durable; do not rerun. Current frontier +$48,612.93 / 13,368 / -$2,103.63 / PF24.11 / 90.87% win. Recover exact helpers/results from Library interim-136m2. Resume only DAA_APRIL_RESIDUAL_OPPORTUNITY_MAP_136N: map unused opportunity by day/hour/10-minute subphase/source/layer while protecting core. August sealed.",
+  "restart_instruction": "Read journal 0043 -> 0042. April 136A-P3 is durable; do not rerun after timeout. Exact 136N/O1/P1/P2/P3 bytes are in Library interim-136p3. P2: +$64,084.30 / 26,553 / GL -$2,153.42 / PF30.76 / 95.31%; P3 research upper-bound: +$63,929.47 / 27,915 / GL -$2,369.56 / PF27.98 / 96.10%. Resume only DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q using already-closed shadow outcomes; no month/date. August sealed.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -269,27 +269,26 @@
     "march_rollback_commit": "06328b13f35f5fc5dd869713ab67fc49f926afdb",
     "march_drive_artifact_map": "https://docs.google.com/document/d/1lrn3UmNA42zJMdrxLgxzn29E8pjupiVo-NsZjzDTcUU/edit?usp=drivesdk",
     "april_interim": {
-      "unit": "DAA_APRIL_VERTICAL_GRID_INTERIM_136M2",
+      "unit": "DAA_APRIL_VERTICAL_GRID_INTERIM_136P3",
       "github": "research/delta_a_alpha/monthly/april_2026/",
-      "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136m2/",
-      "current_floor": {
-        "net": 48612.93,
-        "trades": 13368,
-        "gross_loss": -2103.63,
-        "pf": 24.10906861,
-        "win": 0.90866248,
-        "expectancy": 3.63651481,
-        "balance_dd": 156.07
+      "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136p3/",
+      "p2": {
+        "net": 64084.3,
+        "trades": 26553,
+        "gross_loss": -2153.42,
+        "pf": 30.75931309,
+        "win": 0.95311264,
+        "expectancy": 2.41344857
       },
-      "safer_depth8": {
-        "net": 48177.53,
-        "trades": 12888,
-        "gross_loss": -2027.18,
-        "pf": 24.76578794,
-        "win": 0.91239913,
-        "expectancy": 3.73816962
+      "p3": {
+        "net": 63929.47,
+        "trades": 27915,
+        "gross_loss": -2369.56,
+        "pf": 27.97946876,
+        "win": 0.96102454,
+        "expectancy": 2.29014759
       },
-      "next_unit": "DAA_APRIL_RESIDUAL_OPPORTUNITY_MAP_136N"
+      "next_unit": "DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q"
     }
   }
 }
