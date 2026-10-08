@@ -1,0 +1,29 @@
+{
+  "sequence": 40,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_MARCH_VERTICAL_GRID_DISCOVERY_135_FREEZE_001",
+  "status": "COMPLETE_MARCH_ROLLBACK_AND_DRIVE_BOOTSTRAP_PINNED",
+  "predecessor": {
+    "sequence": 39,
+    "unit": "DAA_MARCH_VERTICAL_GRID_DISCOVERY_135",
+    "path": "research/delta_a_alpha/state_journal/0039_DAA_MARCH_VERTICAL_GRID_DISCOVERY_135.json"
+  },
+  "rollback": {
+    "branch": "delta-A-alpha-march-135-complete",
+    "commit": "06328b13f35f5fc5dd869713ab67fc49f926afdb",
+    "verified": "IDENTICAL_AT_CREATION"
+  },
+  "drive": {
+    "folder": "https://drive.google.com/drive/folders/1dO6CsGjvWfdkY3JutMoyVzzRCpAJRXSi",
+    "read_first": "https://docs.google.com/document/d/1zLe8e8EgND8Lg96uHX8UkeECtH9tZOcv15Vl90gEsEc/edit?usp=drivesdk",
+    "artifact_map": "https://docs.google.com/document/d/1lrn3UmNA42zJMdrxLgxzn29E8pjupiVo-NsZjzDTcUU/edit?usp=drivesdk"
+  },
+  "library": {
+    "dir": "/xauusd-trading-bot/delta-A-alpha/monthly/march_2026/vertical-grid-135/",
+    "stream": "DAA_MARCH_VERTICAL_GRID_STREAMS_135.npz",
+    "stream_sha256": "9b16fe06de5b3f85d2f8ea03eaff661de65d15485fd7cbc6563ba029335b795e"
+  },
+  "recovery_rule": "If a future chat times out, never rebuild March. Read journal 0040 -> 0039, monthly campaign state, Drive READ FIRST/artifact map, then use Library stream NPZ + replay helper. Resume only April 136.",
+  "next_unit": "DAA_APRIL_VERTICAL_GRID_DISCOVERY_136",
+  "august_2026": "SEALED"
+}
