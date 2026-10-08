@@ -68,3 +68,21 @@ Raw inputs expected at the paths in the source code. Jan SHA256 `d2ebb9a8c19caad
 ## Owner-approved constraints
 
 Whitepaper: `research/delta_a_alpha/whitepapers/DAA_VERTICAL_GRID_SYSTEM_V1_WHITEPAPER.md`. No month/date selector, no incomplete bar, fixed 0.01 lot, no Martingale, no buying larger after losses; cold-start tradable without online training if a qualifying opportunity is present; preserve all nine layer responsibilities and day/week/month scorecards; sealed August, reserved September. Research isolated; production and protected owner May cursor remain untouched.
+
+## Unit 029 paired geometry ablation (same unified multi-source execution)
+
+One additional unchanged-full-engine February run with **adaptive grid spacing OFF** (static per-session gaps) provides a causal paired architecture check:
+
+| Cap128, February | Static geometry | Adaptive completed-M5 geometry |
+|---|---:|---:|
+| Net | +$7,755.61 | **+$8,573.59** |
+| Trades | **4,332** | 3,667 |
+| Gross loss | -$5,205.55 | **-$4,000.97** |
+| PF | 2.49 | **3.14** |
+| Win rate | 42.50% | **47.01%** |
+| Floating equity DD | $3,116.75 | **$3,058.38** |
+| Positive days | 7/20 | 7/20 |
+
+**Interpretation:** preliminary January-preseeded adaptive gap helps multiple portfolio economics but sacrifices funded velocity; it does not satisfy targets. No February-specific parameter tuning is permitted to convert this into a claimed held-out result. Complete all 131E/134K original source parity first.
+
+**Performance certification remains FAILED**, despite cooperative source integration QA PASS.
