@@ -1,5 +1,5 @@
 {
-  "schema": "delta-a-alpha-helper-registry-v14",
+  "schema": "delta-a-alpha-helper-registry-v15",
   "policy": "persist_on_value",
   "parent_commit": "ac91fc43389a34f8ba380b58143f8e185589b106",
   "cleanup": {
@@ -526,6 +526,24 @@
       "status": "DURABLE",
       "path": "research/delta_a_alpha/state_journal/0039_DAA_MARCH_VERTICAL_GRID_DISCOVERY_135.json",
       "purpose": "March complete checkpoint"
+    },
+    {
+      "id": "M-APR136P3-SUMMARY",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/monthly/april_2026/DAA_APRIL_VERTICAL_GRID_INTERIM_136P3.json",
+      "purpose": "April residual/renewal-depth breakthrough summary"
+    },
+    {
+      "id": "J-APR136P3-0043",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/state_journal/0043_DAA_APRIL_VERTICAL_GRID_INTERIM_136P3.json",
+      "purpose": "April 136P3 authoritative checkpoint"
+    },
+    {
+      "id": "L-APR136P3",
+      "status": "DURABLE",
+      "path": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136p3/",
+      "purpose": "exact 136N/O1/P1/P2/P3 helpers/results and renewal stream bytes"
     }
   ],
   "rule": "Register durable helpers/results before dependent work. Vertical Grid System V1 is now the permanent architecture floor. Older Delta-A-alpha STMR artifacts remain forensic/pre-V1 evidence. V2+ may refine V1 layers but may not silently flatten the spine.",
