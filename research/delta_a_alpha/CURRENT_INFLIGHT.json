@@ -5,13 +5,13 @@
   "last_completed": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SKELETON_CERTIFICATION_007",
   "current_unit": null,
   "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_METAEDITOR_COMPILE_AND_PARITY_008",
-  "journal_entry": "research/delta_a_alpha/state_journal/0037_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SKELETON_FALLBACK_AND_PARITY_PREREG_008.json",
+  "journal_entry": "research/delta_a_alpha/state_journal/0038_DAA_VERTICAL_GRID_SYSTEM_V1_DUKAS_JAN_JUL_BASELINE_008A.json",
   "accepted_floor": {
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
     "version": "V1",
     "spec": "research/delta_a_alpha/architecture/DAA_VERTICAL_GRID_SYSTEM_V1_SPEC.md",
     "manifest": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MANIFEST.json"
   },
-  "failure_recovery": "Read journal 0037 then 0036. Certified skeleton fallback: delta-A-alpha-v1-mt5-skeleton-certified @ c81539633a0becc0dfe053f84ef80e6462848cd5. Resume only unit 008 compile/parity; do not tune Jan-Jul first.",
+  "failure_recovery": "Read journal 0038 and baseline artifact/report 008A. Do not reconstruct baseline from chat. Exact V1.05 is observe-only with zero physical trades; use 008A counts for parity. Resume only compile/parity 008.",
   "write_discipline": "Build MT5 V1 layer-by-layer with deterministic diagnostics. Persist each module/QA unit before the next dependent module. Do not redesign strategy logic during the engineering port."
 }
