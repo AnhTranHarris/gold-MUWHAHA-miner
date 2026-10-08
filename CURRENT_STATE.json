@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 49,
-    "latest_entry": "research/delta_a_alpha/state_journal/0049_DAA_APRIL_VERTICAL_GRID_DISCOVERY_136_FINAL.json"
+    "latest_sequence": 50,
+    "latest_entry": "research/delta_a_alpha/state_journal/0050_DAA_APRIL_VERTICAL_GRID_DISCOVERY_136_FINAL_FREEZE_CLEANUP.json"
   },
-  "restart_instruction": "Read journal 0049 -> 0048 -> 0047 and April final JSON/MD. April 136 is COMPLETE. Do not rerun April T2/V2/W/X work. Next incomplete unit is DAA_MAY_VERTICAL_GRID_DISCOVERY_137. Carry Jan->Feb->Mar->Apr mechanics forward unchanged first, measure transfer, then adapt only within the frozen whitepaper spine. August sealed.",
+  "restart_instruction": "Read journal 0050 -> 0049 -> 0048. April 136 is complete and frozen on delta-A-alpha-april-136-complete. Do not rebuild April from chat or rerun W0-W4/X unless explicitly auditing. Final April evidence exists in GitHub, Library final-136x/final-136, and Drive. Resume only DAA_MAY_VERTICAL_GRID_DISCOVERY_137 carrying Jan->Feb->Mar->Apr mechanics forward. August sealed.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -357,6 +357,9 @@
         "expectancy": 2.112065740914493
       },
       "next": "DAA_MAY_VERTICAL_GRID_DISCOVERY_137"
-    }
+    },
+    "april_rollback_branch": "delta-A-alpha-april-136-complete",
+    "april_rollback_commit": "1a5c7851b9c65961f6ab2ca504b0126840a540cb",
+    "april_supplemental_library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/final-136/"
   }
 }
