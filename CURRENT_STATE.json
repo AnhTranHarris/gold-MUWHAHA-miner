@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 50,
-    "latest_entry": "research/delta_a_alpha/state_journal/0050_DAA_APRIL_VERTICAL_GRID_DISCOVERY_136_FINAL_FREEZE_CLEANUP.json"
+    "latest_sequence": 51,
+    "latest_entry": "research/delta_a_alpha/state_journal/0051_DAA_MAX_CHAT_HANDOFF_20261008.json"
   },
-  "restart_instruction": "Read journal 0050 -> 0049 -> 0048. April 136 is complete and frozen on delta-A-alpha-april-136-complete. Do not rebuild April from chat or rerun W0-W4/X unless explicitly auditing. Final April evidence exists in GitHub, Library final-136x/final-136, and Drive. Resume only DAA_MAY_VERTICAL_GRID_DISCOVERY_137 carrying Jan->Feb->Mar->Apr mechanics forward. August sealed.",
+  "restart_instruction": "Read journal 0051 -> 0050 -> 0049 and the max-chat Drive 00-09. April 136 is complete/closed; do not rerun April or its W0-W4/136X blocks. Use persistent Library recovery archives if local /mnt/data is gone. Resume only DAA_MAY_VERTICAL_GRID_DISCOVERY_137 carrying Jan->Feb->Mar->Apr mechanics forward. MT5 economic build remains deferred. August sealed.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -361,5 +361,13 @@
     "april_rollback_branch": "delta-A-alpha-april-136-complete",
     "april_rollback_commit": "1a5c7851b9c65961f6ab2ca504b0126840a540cb",
     "april_supplemental_library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/final-136/"
+  },
+  "max_chat_handoff": {
+    "status": "COMPLETE",
+    "folder": "https://drive.google.com/drive/folders/1QJsGxJYPI9tgpxh3FdRk8KHf-6mF1C8N",
+    "read_first": "https://docs.google.com/document/d/1EXFgW92BCwkCofJtvwjqG_-XD4zYCQmk3m7fBp4TF_o/edit?usp=drivesdk",
+    "bootstrap": "https://docs.google.com/document/d/17ugcL1HQTXERaky7RTcKFK3hO3bIGdXAY80fMa1mpUw/edit?usp=drivesdk",
+    "manifest": "research/delta_a_alpha/handoffs/DAA_MAX_CHAT_HANDOFF_20261008.json",
+    "april_recovery_library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/recovery-archive/"
   }
 }
