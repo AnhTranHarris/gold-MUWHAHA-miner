@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 37,
-    "latest_entry": "research/delta_a_alpha/state_journal/0037_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SKELETON_FALLBACK_AND_PARITY_PREREG_008.json"
+    "latest_sequence": 38,
+    "latest_entry": "research/delta_a_alpha/state_journal/0038_DAA_VERTICAL_GRID_SYSTEM_V1_DUKAS_JAN_JUL_BASELINE_008A.json"
   },
-  "restart_instruction": "Read journal 0037 then 0036. Recover the exact certified decision skeleton from delta-A-alpha-v1-mt5-skeleton-certified at c81539633a0becc0dfe053f84ef80e6462848cd5 if needed. Do not rebuild units 001-006 from chat. Resume only unit 008 MetaEditor compile + Python↔MT5 diagnostic parity. No Jan-Jul tuning until parity passes. Main delta read-only; August sealed.",
+  "restart_instruction": "Read journal 0038 then 0037 and 0036. The Jan-Jul Dukascopy precompile baseline is complete. Current V1.05 has no order-send path; exact MT5 tester should produce zero physical trades. Use event/proposal counts in artifact 008A as diagnostic parity targets. Resume only unit 008 MetaEditor compile + Python↔MT5 diagnostic parity. Do not tune Jan-Jul economics before parity.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -236,6 +236,20 @@
     "aggregate_ci_run": 37743036431,
     "skeleton_fallback_branch": "delta-A-alpha-v1-mt5-skeleton-certified",
     "skeleton_fallback_commit": "c81539633a0becc0dfe053f84ef80e6462848cd5",
-    "compile_parity_prereg": "research/delta_a_alpha/mt5/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_METAEDITOR_COMPILE_AND_PARITY_008_PREREG.md"
+    "compile_parity_prereg": "research/delta_a_alpha/mt5/DAA_VERTICAL_GRID_SYSTEM_V1_MT5_METAEDITOR_COMPILE_AND_PARITY_008_PREREG.md",
+    "precompile_dukas_baseline": {
+      "status": "COMPLETE",
+      "artifact": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_DUKAS_JAN_JUL_BASELINE_008A.json",
+      "report": "research/delta_a_alpha/mt5/DAA_VERTICAL_GRID_SYSTEM_V1_DUKAS_JAN_JUL_BASELINE_008A_REPORT.md",
+      "ticks": 57527562,
+      "events": 90418,
+      "session_routes": 14701,
+      "native_states": 29384,
+      "watchdog_candidates": 1778,
+      "watchdog_scouts": 486,
+      "recovery_failed_ignition": 13703,
+      "shadow_session_net": -13331.555,
+      "interpretation": "DECISION_SKELETON_BASELINE_ONLY_NOT_FULL_ECONOMIC_V1"
+    }
   }
 }
