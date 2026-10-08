@@ -1,5 +1,5 @@
 {
-  "schema": "delta-a-alpha-helper-registry-v13",
+  "schema": "delta-a-alpha-helper-registry-v14",
   "policy": "persist_on_value",
   "parent_commit": "ac91fc43389a34f8ba380b58143f8e185589b106",
   "cleanup": {
@@ -490,6 +490,42 @@
       "status": "DURABLE",
       "path": "research/delta_a_alpha/state_journal/0038_DAA_VERTICAL_GRID_SYSTEM_V1_DUKAS_JAN_JUL_BASELINE_008A.json",
       "purpose": "baseline checkpoint"
+    },
+    {
+      "id": "M-VGRID-CAMPAIGN",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/monthly/DAA_MONTHLY_VERTICAL_GRID_CAMPAIGN_STATE.json",
+      "purpose": "authoritative Jan-Mar monthly campaign map and April cursor"
+    },
+    {
+      "id": "M-MAR135-MANIFEST",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/monthly/march_2026/DAA_MARCH_VERTICAL_GRID_LIBRARY_MANIFEST_135.json",
+      "purpose": "March 135 GitHub/Library/Drive recovery manifest"
+    },
+    {
+      "id": "M-MAR135-DISCOVERY",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/monthly/march_2026/DAA_MARCH_VERTICAL_GRID_DISCOVERY_135.json",
+      "purpose": "March full machine result and mechanics"
+    },
+    {
+      "id": "M-MAR135-CELLS",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/monthly/march_2026/DAA_MARCH_VERTICAL_GRID_CELLS_135.json",
+      "purpose": "March exact selected causal cell evidence"
+    },
+    {
+      "id": "M-MAR135-REPLAY",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/monthly/march_2026/daa_march_vertical_grid_replay_135.py",
+      "purpose": "March portfolio replay from durable streams"
+    },
+    {
+      "id": "J-MAR135-0039",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/state_journal/0039_DAA_MARCH_VERTICAL_GRID_DISCOVERY_135.json",
+      "purpose": "March complete checkpoint"
     }
   ],
   "rule": "Register durable helpers/results before dependent work. Vertical Grid System V1 is now the permanent architecture floor. Older Delta-A-alpha STMR artifacts remain forensic/pre-V1 evidence. V2+ may refine V1 layers but may not silently flatten the spine.",
