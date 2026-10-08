@@ -1,0 +1,73 @@
+{
+  "schema": "delta-a-alpha-vertical-grid-v1-manifest-v1",
+  "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
+  "status": "OWNER_FROZEN_PERMANENT_SPINE",
+  "date": "2026-10-08",
+  "branch": "delta-A-alpha",
+  "symbol": "XAUUSD",
+  "permanent_spine": [
+    "ordered_ticks",
+    "session_specific_grid_geometry",
+    "completed_H4_H1_M15_M5_structure",
+    "london_overlap_ny_hourly_high_volume_harvesting_plus_separate_asia_geometry",
+    "watchdog_regime_renewal",
+    "trend_within_trend_native_routing",
+    "wrong_direction_recovery",
+    "portfolio_heat_capital_governor"
+  ],
+  "invariants": {
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "unbounded_averaging": false,
+    "calendar_feature_forbidden": true,
+    "ordered_tick_authority": true,
+    "august_2026": "SEALED"
+  },
+  "owner_override": {
+    "prior_isolation_exception": true,
+    "scope": "VERTICAL_GRID_V1_ARCHITECTURE_AND_SUPPORTING_EVIDENCE_ONLY",
+    "source_provenance": [
+      {
+        "branch": "carson/r9-gamma-02-jan-grid-milestone",
+        "commit": "e9189398fcf4fc47d7e2940adec54731ae047c31"
+      },
+      {
+        "branch": "carson/r9-gamma-02-feb-vertical-grid-risk-134k",
+        "commit": "bf5ce6a2b9b54fb0221bf0b9e7b00369b0ed80df"
+      }
+    ],
+    "main_delta": "READ_ONLY"
+  },
+  "evidence": {
+    "january": {
+      "balanced_net": 194425.92,
+      "aggressive_net": 203532.62,
+      "positive_days": "21/21",
+      "weeks_beating_r9_synth": "5/5"
+    },
+    "february": {
+      "high_quality_net": 189956.68,
+      "near_all_metrics_net": 200162.83,
+      "near_all_metrics_trades": 33850,
+      "positive_days": "20/20",
+      "weeks_beating_r9_synth": "4/4"
+    }
+  },
+  "mt5": {
+    "authorized": true,
+    "authorization_scope": "FAITHFUL_V1_ENGINEERING_PORT_AFTER_DOCUMENT_FREEZE",
+    "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001"
+  },
+  "versioning": {
+    "v1": "PERMANENT_SPINE",
+    "v2_plus": "MONTH_BY_MONTH_LAYER_REFINEMENT_AND_LATER_SMALL_CAPITAL_SURVIVAL",
+    "architecture_change_requires_owner_promotion": true
+  },
+  "docs": {
+    "spec": "research/delta_a_alpha/architecture/DAA_VERTICAL_GRID_SYSTEM_V1_SPEC.md",
+    "github_whitepaper": "research/delta_a_alpha/whitepapers/DAA_VERTICAL_GRID_SYSTEM_V1_WHITEPAPER.md",
+    "owner_override": "research/delta_a_alpha/DAA_OWNER_OVERRIDE_VERTICAL_GRID_V1_20261008.md",
+    "google_whitepaper": "https://docs.google.com/document/d/1-PiyhfhulLl1garjwtSYOysPGOgBTgV_apnQmCKoCTc/edit?usp=drivesdk"
+  }
+}
