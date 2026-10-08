@@ -252,3 +252,10 @@ Certification:
 
 Whitepaper:
 https://docs.google.com/document/d/1-PiyhfhulLl1garjwtSYOysPGOgBTgV_apnQmCKoCTc/edit?usp=drivesdk
+
+
+## 8. Owner-mandated anytime-start acceptance (governance, architecture unchanged)
+
+The full system shall not depend on days, hours or even completion of a new H4/H1/M15/M5 bar **after deployment** before it can take a qualified initial 0.01-lot trade. Bootstrap from data completed and available before T0; activate all mandatory layer contracts within 300 seconds when quotes, market, broker and history are valid. Subsequent online learning may refine but cannot gate initial scout eligibility. An absent valid trading opportunity does **not** mandate a forced fill.
+
+Jan–Jul 2026 are causal month-by-month development and reconciliation partitions. **August remains sealed** as the first true blind holdout; **September is reserved and awaits owner-supplied/authorized data** as the second blind holdout. The complete binding contract, time-to-first-eligible-signal tests, fail conditions, account-size ladder and embargo rules are in [DAA_ANYTIME_START_FIVE_MINUTE_READINESS_AND_BLIND_HOLDOUT_RULE.md](../governance/DAA_ANYTIME_START_FIVE_MINUTE_READINESS_AND_BLIND_HOLDOUT_RULE.md). This appendix adds no new spine layer and authorizes no strategy or EA code change.
