@@ -2,8 +2,8 @@
   "schema": "r9-gamma-02-research-cursor-v36",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_FEB_VERTICAL_STACK_REBUILD_134E",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_FEB_VERTICAL_STACK_REBUILD_134E.md",
+  "latest_completed": "GAMMA_02_FEB_VERTICAL_GRID_SYSTEM_MAJOR_BREAKTHROUGH_134J",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_FEB_VERTICAL_GRID_SYSTEM_MAJOR_BREAKTHROUGH_134J.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_DYNAMIC_RENEWAL_WATCHDOG_119",
     "frozen_params": {
@@ -131,12 +131,13 @@
     "warmup_leakage_103_104": "CRITICAL: 103/104 February authority suspended. Nominal February stream had 36,355 entries but only 102 entries actually in February after absolute-time filtering; prior +$43.9K result was warmup leakage.",
     "target_gate_083": "083 target-gated audit: Jan cap703 +$48,766.62 / 32,862; Feb +$4,193.52 / 7,020; Mar -$9,480.91 / 6,727. Prior frozen February +$52.96K was warmup-contaminated."
   },
-  "first_incomplete_unit": "GAMMA_02_FEB_ASIA_AND_STATE_CONDITIONED_RECOVERY_134F",
+  "first_incomplete_unit": "GAMMA_02_FEB_VERTICAL_GRID_RISK_AND_DAILY_REFINEMENT_134K",
   "next_units": [
-    "Discover stronger February Asia-specific grid geometry on tick/session/MTF spine",
-    "Discover causal state-conditioned wrong-direction recovery; generic 109-style reverse is rejected for February",
-    "Integrate only Pareto-positive Asia/recovery layers into frozen 134E stack and rerun full daily/weekly/monthly scorecard",
-    "Freeze improved February vertical milestone before returning to March",
+    "February-only 134K: reduce gross loss/equity heat while preserving the vertical session/MTF/grid architecture and >$170K balanced net",
+    "Test causal per-session/per-state profit-per-heat allocation and recovery throttles in small atomic blocks",
+    "Preserve 20/20 positive February days and 4/4 weeks beating R9 SYNTH as regression gates",
+    "Do not return to compressed 133C expert-stream architecture as February base",
+    "After February freezes, owner decides whether to replay unchanged on March",
     "August sealed"
   ],
   "constraints": {
@@ -146,7 +147,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Owner corrected architecture drift. Read January major milestone + GAMMA_02_FEB_VERTICAL_STACK_REBUILD_134E.md + this cursor. Treat tick/session/MTF grid as the vertical spine; hourly high-volume/session mechanics, Watchdog regime renewal, trend-within-trend state specialist, recovery, and capital governor are layers above it. Do not resume 133D or crossmonth compression. Resume only February 134F Asia/recovery refinement. January fallback untouched. August sealed.",
+  "recovery_rule": "MAJOR FEBRUARY VERTICAL GRID BREAKTHROUGH 134J EXISTS. Read GAMMA_02_FEB_VERTICAL_GRID_SYSTEM_MAJOR_BREAKTHROUGH_134J.md + JSON, then 134E. Use Library root /xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-08/february-vertical-grid-major-134j/ for NPZ/full diagnostic bytes. Do not reconstruct from chat. February base is the vertically integrated tick->session geometry->completed HTF/MTF->hourly high-volume grid->Watchdog/regime->trend-within-trend->wrong-direction recovery->heat governor stack. Resume only 134K February risk/daily refinement. January fallback branch remains untouched. August sealed.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -1119,5 +1120,96 @@
     "library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-08/february-vertical-rebuild-134e/",
     "market_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
     "caveat": "Gross loss/PF/DD still worse than R9 SYNTH. Asia geometry and funded wrong-direction recovery remain unfinished."
+  },
+  "february_vertical_grid_134j": {
+    "status": "DURABLE_MAJOR_BREAKTHROUGH",
+    "parent_january_fallback": "carson/r9-gamma-02-jan-grid-milestone",
+    "market_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+    "benchmark": {
+      "net": 66213.65,
+      "trades": 33523,
+      "gross_loss": -2031.42,
+      "pf": 33.5947613,
+      "win": 0.8829758673,
+      "expectancy": 1.9751707783
+    },
+    "architecture": [
+      "ordered tick lattice/execution",
+      "session-specific grid geometry; Asia distinct from London/overlap/NY/late",
+      "completed H4/H1/M15/M5 structural permission",
+      "hourly London/overlap/NY high-volume heartbeat/grid harvesting",
+      "Watchdog renewal regime layer with layer-depth control",
+      "February-native trend-within-trend PF10 specialist",
+      "earlier-session coverage + cold-start microgrid",
+      "state-conditioned wrong-direction recovery",
+      "Asia activity/subphase regime filter",
+      "residual hourly high-volume cells keyed by completed MTF state + direction + UTC hour + 10-minute subphase",
+      "supplemental one-ticket-per-tick dedup + chronological global heat cap"
+    ],
+    "restored_134e": {
+      "net": 117022.06998789302,
+      "trades": 25073,
+      "gross_loss": -13205.419999492391,
+      "pf": 9.861669677480254,
+      "win": 0.8731304590595461,
+      "expectancy": 4.667254416619192,
+      "balance_dd": 2173.330000112168,
+      "positive_days": 14,
+      "beat_days": 11,
+      "positive_weeks": 4,
+      "beat_weeks": 4,
+      "global_cap": 640
+    },
+    "balanced_pf4_cap384": {
+      "net": 177009.17999124242,
+      "trades": 34527,
+      "gross_loss": -24391.139999870356,
+      "pf": 8.257109753467173,
+      "win": 0.8299301995539723,
+      "expectancy": 5.126688678171935,
+      "balance_dd": 2232.4200000000856,
+      "equity_dd": 10629.880000000005,
+      "maxopen": 384,
+      "positive_days": 20,
+      "beat_days": 15,
+      "positive_weeks": 4,
+      "beat_weeks": 4
+    },
+    "aggressive_pf4_cap600": {
+      "net": 203370.70998480497,
+      "trades": 38167,
+      "gross_loss": -25165.080000559985,
+      "pf": 9.081464870379092,
+      "win": 0.838708832237273,
+      "expectancy": 5.32844368131645,
+      "balance_dd": 2232.4200000000856,
+      "equity_dd": 10629.880000000005,
+      "maxopen": 600,
+      "positive_days": 20,
+      "beat_days": 15,
+      "positive_weeks": 4,
+      "beat_weeks": 4
+    },
+    "aggressive_pf4_cap640": {
+      "net": 205576.18998503865,
+      "trades": 38591,
+      "gross_loss": -25293.560000559988,
+      "pf": 9.127609952117743,
+      "win": 0.839081651162188,
+      "expectancy": 5.327050089011393,
+      "balance_dd": 2232.4200000000856,
+      "equity_dd": 10629.880000000005,
+      "maxopen": 640,
+      "positive_days": 20,
+      "beat_days": 15,
+      "positive_weeks": 4,
+      "beat_weeks": 4
+    },
+    "discovery_caveat": "Residual PF4 hourly cells are February-discovered. Their execution keys are causal and contain no month/date label, but the selected set is not cross-month authority until unchanged validation.",
+    "checkpoint": "research/R9_GAMMA/GAMMA_02_FEB_VERTICAL_GRID_SYSTEM_MAJOR_BREAKTHROUGH_134J.md",
+    "manifest": "research/R9_GAMMA/GAMMA_02_FEB_VERTICAL_GRID_SYSTEM_MAJOR_BREAKTHROUGH_134J.json",
+    "library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-08/february-vertical-grid-major-134j/",
+    "checkpoint_sha256": "d524ada4e40d6a98a1359cfcb4948036f43961c6000ceea98a97977c45297e9b",
+    "manifest_sha256": "8a78cc53f5808fba100183b6b0e92153d00f2173625038da2ed4d6f55d51bbc3"
   }
 }
