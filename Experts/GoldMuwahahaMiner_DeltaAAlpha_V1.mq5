@@ -1,7 +1,7 @@
 #property copyright "AnhTranHarris / Delta-A-alpha Vertical Grid System V1"
-#property version   "1.00"
+#property version   "1.01"
 #property strict
-#property description "Delta-A-alpha V1 architecture shell: tick-rooted vertical grid spine with deterministic layer diagnostics."
+#property description "Delta-A-alpha V1: tick-rooted vertical grid spine with session lattice and first-touch event genealogy."
 
 #include <Trade/Trade.mqh>
 CTrade g_trade;
@@ -75,6 +75,10 @@ input group "V1 completed MTF"
 input int InpFastEmaPeriod=8;
 input int InpSlowEmaPeriod=21;
 
+input group "V1 session grid / genealogy"
+input int InpMaxCycleAgeMinutes=720;
+input int InpMaxTouchKeys=8192;
+
 input group "V1 diagnostics"
 input bool InpDiagnostics=true;
 input bool InpVerbose=true;
@@ -87,6 +91,16 @@ struct DAAV1Context
    double ask;
    DAA_V1_SESSION session;
    double session_gap;
+   bool cycle_restarted;
+   long cycle_generation;
+   bool event_created;
+   bool event_duplicate;
+   ulong event_id;
+   int grid_from_cell;
+   int grid_to_cell;
+   int grid_landing_cell;
+   int crossing_direction;
+   double grid_boundary;
    int h4;
    int h1;
    int m15;
@@ -100,6 +114,29 @@ struct DAAV1Context
    DAA_V1_RISK_STATE risk_state;
    int open_positions;
 };
+
+struct DAAV1GridCycle
+{
+   bool initialized;
+   bool active;
+   long generation;
+   long start_utc_ms;
+   long last_utc_ms;
+   DAA_V1_SESSION session;
+   double anchor_mid;
+   double gap;
+   int last_cell;
+};
+
+struct DAAV1TouchKey
+{
+   int cell;
+   int direction;
+};
+
+DAAV1GridCycle g_grid_cycle={};
+DAAV1TouchKey g_touch_keys[];
+ulong g_event_sequence=0;
 
 int g_h4_fast=INVALID_HANDLE, g_h4_slow=INVALID_HANDLE;
 int g_h1_fast=INVALID_HANDLE, g_h1_slow=INVALID_HANDLE;
@@ -234,6 +271,143 @@ void ApplySessionGeometry(DAAV1Context &c)
       c.session_gap=0.0; // London-open and rollover observe-only in the base geometry.
 }
 
+
+void ResetTouchMemory()
+{
+   ArrayResize(g_touch_keys,0);
+}
+
+void ResetEventContext(DAAV1Context &c)
+{
+   c.cycle_restarted=false;
+   c.cycle_generation=g_grid_cycle.generation;
+   c.event_created=false;
+   c.event_duplicate=false;
+   c.event_id=0;
+   c.grid_from_cell=0;
+   c.grid_to_cell=0;
+   c.grid_landing_cell=0;
+   c.crossing_direction=0;
+   c.grid_boundary=0.0;
+}
+
+void RestartGridCycle(DAAV1Context &c)
+{
+   g_grid_cycle.initialized=true;
+   g_grid_cycle.active=(c.session_gap>0.0);
+   g_grid_cycle.generation++;
+   g_grid_cycle.start_utc_ms=c.utc_ms;
+   g_grid_cycle.last_utc_ms=c.utc_ms;
+   g_grid_cycle.session=c.session;
+   g_grid_cycle.anchor_mid=(c.bid+c.ask)*0.5;
+   g_grid_cycle.gap=c.session_gap;
+   g_grid_cycle.last_cell=0;
+   ResetTouchMemory();
+
+   c.cycle_restarted=true;
+   c.cycle_generation=g_grid_cycle.generation;
+
+   if(InpVerbose)
+      PrintFormat("DAA_V1: cycle restart gen=%I64d session=%s anchor=%.5f gap=%.5f active=%d",
+                  g_grid_cycle.generation,SessionName(c.session),
+                  g_grid_cycle.anchor_mid,g_grid_cycle.gap,(int)g_grid_cycle.active);
+}
+
+// [V1-11] Finite session-local ownership.
+// A session handoff, geometry change, or maximum cycle age creates a new cycle
+// and clears first-touch ownership. London-open/rollover remain observe-only.
+void UpdateSessionGridCycle(DAAV1Context &c)
+{
+   ResetEventContext(c);
+
+   bool restart=!g_grid_cycle.initialized;
+   if(!restart && g_grid_cycle.session!=c.session) restart=true;
+   if(!restart && MathAbs(g_grid_cycle.gap-c.session_gap)>1e-12) restart=true;
+   if(!restart && InpMaxCycleAgeMinutes>0)
+   {
+      const long max_age=(long)InpMaxCycleAgeMinutes*60000L;
+      if(c.utc_ms-g_grid_cycle.start_utc_ms>=max_age) restart=true;
+   }
+
+   if(restart) RestartGridCycle(c);
+   else
+   {
+      g_grid_cycle.last_utc_ms=c.utc_ms;
+      c.cycle_generation=g_grid_cycle.generation;
+   }
+}
+
+int GridCellIndex(const double mid)
+{
+   if(!g_grid_cycle.active || g_grid_cycle.gap<=0.0) return 0;
+   const double rel=(mid-g_grid_cycle.anchor_mid)/g_grid_cycle.gap;
+   return (int)MathFloor(rel);
+}
+
+bool TouchAlreadyOwned(const int cell,const int direction)
+{
+   const int n=ArraySize(g_touch_keys);
+   for(int i=0;i<n;i++)
+      if(g_touch_keys[i].cell==cell && g_touch_keys[i].direction==direction)
+         return true;
+   return false;
+}
+
+bool RegisterTouchOwnership(const int cell,const int direction)
+{
+   if(TouchAlreadyOwned(cell,direction)) return false;
+   const int n=ArraySize(g_touch_keys);
+   if(n>=InpMaxTouchKeys)
+   {
+      V1Log("touch-memory capacity reached; new event ownership suppressed until cycle restart");
+      return false;
+   }
+   if(ArrayResize(g_touch_keys,n+1)!=n+1) return false;
+   g_touch_keys[n].cell=cell;
+   g_touch_keys[n].direction=direction;
+   return true;
+}
+
+// [V1-12] One session-grid event maximum per market tick.
+// If a tick jumps several cells, the event represents the FIRST crossed boundary;
+// deeper skipped cells are not manufactured retroactively.
+void ManufactureFirstTouchEvent(DAAV1Context &c)
+{
+   if(!g_grid_cycle.initialized || !g_grid_cycle.active || g_grid_cycle.gap<=0.0) return;
+
+   const double mid=(c.bid+c.ask)*0.5;
+   const int landing=GridCellIndex(mid);
+   const int prior=g_grid_cycle.last_cell;
+   if(landing==prior) return;
+
+   const int direction=(landing>prior)?1:-1;
+   const int target=prior+direction;
+   const double boundary=(direction>0)
+      ? g_grid_cycle.anchor_mid+(double)target*g_grid_cycle.gap
+      : g_grid_cycle.anchor_mid+(double)prior*g_grid_cycle.gap;
+
+   // The observed market state advances to the landing cell even if the first
+   // boundary was already owned. This prevents replaying skipped boundaries.
+   g_grid_cycle.last_cell=landing;
+
+   c.grid_from_cell=prior;
+   c.grid_to_cell=target;
+   c.grid_landing_cell=landing;
+   c.crossing_direction=direction;
+   c.grid_boundary=boundary;
+
+   if(TouchAlreadyOwned(target,direction))
+   {
+      c.event_duplicate=true;
+      return;
+   }
+   if(!RegisterTouchOwnership(target,direction)) return;
+
+   g_event_sequence++;
+   c.event_created=true;
+   c.event_id=g_event_sequence;
+}
+
 bool ReadCompletedEmaTrend(const int fast_handle,const int slow_handle,int &trend)
 {
    trend=DAA_TREND_FLAT;
@@ -332,6 +506,16 @@ void WriteDiagnostic(const DAAV1Context &c)
       DoubleToString(c.ask,_Digits),
       SessionName(c.session),
       DoubleToString(c.session_gap,2),
+      c.cycle_restarted?1:0,
+      c.cycle_generation,
+      c.event_created?1:0,
+      c.event_duplicate?1:0,
+      c.event_id,
+      c.grid_from_cell,
+      c.grid_to_cell,
+      c.grid_landing_cell,
+      c.crossing_direction,
+      DoubleToString(c.grid_boundary,_Digits),
       c.h4,c.h1,c.m15,c.m5,
       c.mtf_ready?1:0,
       c.high_volume_session?1:0,
@@ -352,7 +536,9 @@ void OrchestrateV1(const MqlTick &tick)
    c.bid=tick.bid; c.ask=tick.ask;
    c.session=SessionFromUtc(c.utc_ms);
    ApplySessionGeometry(c);                     // V1-10
+   UpdateSessionGridCycle(c);                   // V1-11
    RefreshCompletedMTF(c);                      // V1-20
+   ManufactureFirstTouchEvent(c);               // V1-12 birth snapshot has completed MTF state
    ApplyHourlyHarvest(c);                       // V1-30
    ApplyWatchdogRegime(c);                      // V1-40
    ApplyTrendWithinTrend(c);                    // V1-50
@@ -393,7 +579,8 @@ int OnInit()
       Print("DAA_V1: V1 requires fixed 0.01 lot");
       return INIT_PARAMETERS_INCORRECT;
    }
-   if(InpGlobalMaxPositions<1 || InpFastEmaPeriod<1 || InpSlowEmaPeriod<=InpFastEmaPeriod)
+   if(InpGlobalMaxPositions<1 || InpFastEmaPeriod<1 || InpSlowEmaPeriod<=InpFastEmaPeriod ||
+      InpMaxCycleAgeMinutes<1 || InpMaxTouchKeys<16)
       return INIT_PARAMETERS_INCORRECT;
    if(InpClockMode==DAA_CLOCK_FIXED_OFFSET &&
       (InpFixedQuoteUtcOffsetMinutes<-840 || InpFixedQuoteUtcOffsetMinutes>840))
@@ -414,13 +601,20 @@ int OnInit()
       g_diag=FileOpen(fn,FILE_WRITE|FILE_CSV|FILE_ANSI|FILE_COMMON,',');
       if(g_diag!=INVALID_HANDLE)
       {
-         FileWrite(g_diag,"utc_ms","bid","ask","session","session_gap","h4","h1","m15","m5",
-                   "mtf_ready","high_volume","asia_geometry","watchdog_ready","native_ready",
+         FileWrite(g_diag,"utc_ms","bid","ask","session","session_gap",
+                   "cycle_restarted","cycle_generation","event_created","event_duplicate","event_id",
+                   "grid_from_cell","grid_to_cell","grid_landing_cell","crossing_direction","grid_boundary",
+                   "h4","h1","m15","m5","mtf_ready","high_volume","asia_geometry","watchdog_ready","native_ready",
                    "recovery_ready","risk_state","open_positions");
       }
    }
 
-   V1Log("MT5 IMPLEMENTATION 001 initialized: architecture shell / observe-only");
+   ResetTouchMemory();
+   g_grid_cycle.initialized=false;
+   g_grid_cycle.generation=0;
+   g_event_sequence=0;
+
+   V1Log("MT5 IMPLEMENTATION 002 initialized: session lattice + first-touch genealogy / observe-only");
    return INIT_SUCCEEDED;
 }
 
@@ -431,6 +625,7 @@ void OnDeinit(const int reason)
    ReleaseOne(g_m15_fast); ReleaseOne(g_m15_slow);
    ReleaseOne(g_m5_fast); ReleaseOne(g_m5_slow);
    if(g_diag!=INVALID_HANDLE){ FileClose(g_diag); g_diag=INVALID_HANDLE; }
+   ResetTouchMemory();
    V1Log(StringFormat("deinit reason=%d",reason));
 }
 
