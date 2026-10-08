@@ -1,0 +1,32 @@
+{
+  "sequence": 36,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SKELETON_CERTIFICATION_007",
+  "status": "COMPLETE_FULL_CI_PASS",
+  "predecessor": {
+    "sequence": 35,
+    "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_PROPOSAL_ARBITER_AND_HEAT_GOVERNOR_006",
+    "path": "research/delta_a_alpha/state_journal/0035_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_PROPOSAL_ARBITER_AND_HEAT_GOVERNOR_006.json"
+  },
+  "verification": {
+    "aggregate_github_actions_run": 37743036431,
+    "conclusion": "SUCCESS",
+    "metaeditor_compile": "PENDING",
+    "python_mt5_parity": "PENDING"
+  },
+  "decision": [
+    "V1 MT5 decision skeleton is internally coherent across units 001-006",
+    "architecture is frozen before month-by-month tuning",
+    "no order-send path is present",
+    "next engineering gate is MetaEditor compile plus diagnostic parity"
+  ],
+  "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_METAEDITOR_COMPILE_AND_PARITY_008",
+  "immutable_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "main_delta": "READ_ONLY",
+    "august_2026": "SEALED"
+  }
+}
