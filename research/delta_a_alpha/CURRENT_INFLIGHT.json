@@ -2,16 +2,16 @@
   "schema": "delta-a-alpha-inflight-v5",
   "authority": "APPEND_ONLY_STATE_JOURNAL",
   "state": "IDLE_READY",
-  "last_completed": "DAA_MARCH_VERTICAL_GRID_DISCOVERY_135",
+  "last_completed": "DAA_APRIL_VERTICAL_GRID_INTERIM_136K3",
   "current_unit": null,
-  "next_unit": "DAA_APRIL_VERTICAL_GRID_DISCOVERY_136",
-  "journal_entry": "research/delta_a_alpha/state_journal/0040_DAA_MARCH_VERTICAL_GRID_DISCOVERY_135_FREEZE_001.json",
+  "next_unit": "DAA_APRIL_PROTECTED_SOURCE_OVERLAY_136K4",
+  "journal_entry": "research/delta_a_alpha/state_journal/0041_DAA_APRIL_VERTICAL_GRID_INTERIM_136K3.json",
   "accepted_floor": {
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
     "version": "V1",
     "spec": "research/delta_a_alpha/architecture/DAA_VERTICAL_GRID_SYSTEM_V1_SPEC.md",
     "manifest": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MANIFEST.json"
   },
-  "failure_recovery": "Read journal 0040 then 0039. March rollback branch delta-A-alpha-march-135-complete @ 06328b13f35f5fc5dd869713ab67fc49f926afdb. Use durable Library streams/helpers and Drive bootstrap; do not rerun March. Resume only April 136.",
+  "failure_recovery": "Do not rebuild April 136A-K3. Read journal 0041 and use Library /xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136i/ plus interim-136k3/. Resume only protected native/high-volume/Asia overlay 136K4.",
   "write_discipline": "Build MT5 V1 layer-by-layer with deterministic diagnostics. Persist each module/QA unit before the next dependent module. Do not redesign strategy logic during the engineering port."
 }
