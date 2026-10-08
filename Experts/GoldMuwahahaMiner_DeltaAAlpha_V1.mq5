@@ -1,5 +1,5 @@
 #property copyright "AnhTranHarris / Delta-A-alpha Vertical Grid System V1"
-#property version   "1.03"
+#property version   "1.04"
 #property strict
 #property description "Delta-A-alpha V1: tick-rooted vertical grid spine with session lattice and first-touch event genealogy."
 
@@ -96,6 +96,12 @@ input double InpWatchdogRenewalGap=1.19;
 input double InpWatchdogLastSubphaseGap=1.10;
 input int    InpWatchdogMaxRenewalLayer=30;
 
+input group "V1 wrong-direction recovery shadow"
+input int    InpRecoveryIgnitionWindowSeconds=2;
+input double InpRecoveryRequiredFavorable=1.25;
+input int    InpRecoveryCampaignSeconds=120;
+input int    InpRecoveryMaxWatches=4096;
+
 input group "V1 diagnostics"
 input bool InpDiagnostics=true;
 input bool InpVerbose=true;
@@ -135,6 +141,13 @@ struct DAAV1Context
    int watchdog_streak;
    double watchdog_renewal_gap;
    int watchdog_max_layer;
+   string native_mode;
+   int native_direction;
+   bool recovery_watch_started;
+   bool recovery_failed_ignition;
+   ulong recovery_source_event_id;
+   int recovery_direction;
+   string recovery_state;
    int h4;
    int h1;
    int m15;
@@ -198,6 +211,9 @@ struct DAAV1GridEventRecord
    int watchdog_streak;
    double watchdog_renewal_gap;
    int watchdog_max_layer;
+   string native_mode;
+   int native_direction;
+   bool recovery_watch_started;
 };
 
 struct DAAV1WatchdogCell
@@ -218,12 +234,28 @@ struct DAAV1WatchdogCell
    int parents_admitted;
 };
 
+struct DAAV1RecoveryWatch
+{
+   bool active;
+   bool failed_ignition;
+   bool reported;
+   ulong event_id;
+   long start_utc_ms;
+   long expire_utc_ms;
+   int original_direction;
+   double entry_price;
+   double max_favorable;
+   string route_id;
+};
+
 DAAV1GridCycle g_grid_cycle={};
 DAAV1TouchKey g_touch_keys[];
 DAAV1GridEventRecord g_event_records[];
 DAAV1WatchdogCell g_watchdog_cells[];
+DAAV1RecoveryWatch g_recovery_watches[];
 ulong g_event_sequence=0;
 long g_watchdog_day_key=-1;
+long g_recovery_day_key=-1;
 
 int g_h4_fast=INVALID_HANDLE, g_h4_slow=INVALID_HANDLE;
 int g_h1_fast=INVALID_HANDLE, g_h1_slow=INVALID_HANDLE;
@@ -399,6 +431,15 @@ void ResetEventContext(DAAV1Context &c)
    c.watchdog_streak=0;
    c.watchdog_renewal_gap=0.0;
    c.watchdog_max_layer=InpWatchdogMaxRenewalLayer;
+   c.native_route_ready=false;
+   c.native_mode="NONE";
+   c.native_direction=0;
+   c.recovery_ready=false;
+   c.recovery_watch_started=false;
+   c.recovery_failed_ignition=false;
+   c.recovery_source_event_id=0;
+   c.recovery_direction=0;
+   c.recovery_state="NONE";
 }
 
 void RestartGridCycle(DAAV1Context &c,const DAA_V1_CYCLE_REASON reason)
@@ -537,6 +578,9 @@ bool RecordGenealogyEvent(const DAAV1Context &c)
    g_event_records[n].watchdog_streak=0;
    g_event_records[n].watchdog_renewal_gap=0.0;
    g_event_records[n].watchdog_max_layer=InpWatchdogMaxRenewalLayer;
+   g_event_records[n].native_mode="NONE";
+   g_event_records[n].native_direction=0;
+   g_event_records[n].recovery_watch_started=false;
    return true;
 }
 
@@ -859,21 +903,139 @@ void ApplyWatchdogRegime(DAAV1Context &c)
    AttachWatchdogToLatestEvent(c);
 }
 
-// [V1-50] Trend-within-trend routing interface.
-void ApplyTrendWithinTrend(DAAV1Context &c)
+void AttachNativeToLatestEvent(const DAAV1Context &c)
 {
-   c.native_route_ready=false;
-   if(!c.mtf_ready) return;
-   const bool macro=(c.h4!=0 && c.h4==c.h1);
-   const bool lower=(c.m15!=0 && c.m5!=0);
-   c.native_route_ready=(macro && lower);
+   if(!c.event_created || !c.native_route_ready) return;
+   const int n=ArraySize(g_event_records);
+   if(n<=0 || g_event_records[n-1].event_id!=c.event_id) return;
+   g_event_records[n-1].native_mode=c.native_mode;
+   g_event_records[n-1].native_direction=c.native_direction;
 }
 
-// [V1-60] Wrong-direction recovery interface.
-// It remains disabled until failed-ignition/reclaim parity logic is ported.
+// [V1-50] Trend-within-trend state ownership.
+// This is structural classification, not a fitted monthly selector.
+void ApplyTrendWithinTrend(DAAV1Context &c)
+{
+   if(!c.event_created || !c.mtf_ready) return;
+   const int d=c.crossing_direction;
+   const bool macro=(c.h4!=0 && c.h4==c.h1);
+
+   if(c.h4==c.h1 && c.h1==c.m15 && c.m15==c.m5 && c.h4!=0 && d==c.h4)
+   {
+      c.native_mode="NATIVE_MACRO_CONTINUATION";
+      c.native_direction=d;
+      c.native_route_ready=true;
+   }
+   else if(macro && c.m15==c.m5 && c.m15==-c.h1 && d==c.m5)
+   {
+      c.native_mode="NATIVE_LOWER_TAKEOVER";
+      c.native_direction=d;
+      c.native_route_ready=true;
+   }
+   else if(macro && c.m15==-c.h1 && c.m5==c.h1 && d==c.m5)
+   {
+      c.native_mode="NATIVE_PULLBACK_RECLAIM";
+      c.native_direction=d;
+      c.native_route_ready=true;
+   }
+   else if(c.h4!=0 && c.h1!=0 && c.h4!=c.h1 &&
+           c.m15!=0 && c.m5==-c.m15 && d==c.m5)
+   {
+      c.native_mode="NATIVE_MACRO_SPLIT_TRANSFER";
+      c.native_direction=d;
+      c.native_route_ready=true;
+   }
+
+   AttachNativeToLatestEvent(c);
+}
+
+void ResetRecoveryDaily(const long day_key)
+{
+   ArrayResize(g_recovery_watches,0);
+   g_recovery_day_key=day_key;
+}
+
+bool StartShadowRecoveryWatch(DAAV1Context &c)
+{
+   if(!c.event_created || !c.route_valid || c.route_direction==0) return false;
+
+   const long day_key=c.utc_ms/86400000L;
+   if(g_recovery_day_key!=day_key) ResetRecoveryDaily(day_key);
+
+   const int n=ArraySize(g_recovery_watches);
+   if(n>=InpRecoveryMaxWatches) return false;
+   if(ArrayResize(g_recovery_watches,n+1)!=n+1) return false;
+
+   g_recovery_watches[n].active=true;
+   g_recovery_watches[n].failed_ignition=false;
+   g_recovery_watches[n].reported=false;
+   g_recovery_watches[n].event_id=c.event_id;
+   g_recovery_watches[n].start_utc_ms=c.utc_ms;
+   g_recovery_watches[n].expire_utc_ms=c.utc_ms+(long)InpRecoveryCampaignSeconds*1000L;
+   g_recovery_watches[n].original_direction=c.route_direction;
+   g_recovery_watches[n].entry_price=(c.route_direction>0)?c.ask:c.bid;
+   g_recovery_watches[n].max_favorable=0.0;
+   g_recovery_watches[n].route_id=c.route_id;
+
+   c.recovery_watch_started=true;
+   const int e=ArraySize(g_event_records);
+   if(e>0 && g_event_records[e-1].event_id==c.event_id)
+      g_event_records[e-1].recovery_watch_started=true;
+   return true;
+}
+
+void EvaluateRecoveryWatches(DAAV1Context &c)
+{
+   const int n=ArraySize(g_recovery_watches);
+   const long ignition_ms=(long)InpRecoveryIgnitionWindowSeconds*1000L;
+
+   for(int i=0;i<n;i++)
+   {
+      if(!g_recovery_watches[i].active) continue;
+      if(c.utc_ms>g_recovery_watches[i].expire_utc_ms)
+      {
+         g_recovery_watches[i].active=false;
+         continue;
+      }
+
+      const int d=g_recovery_watches[i].original_direction;
+      const double mark=(d>0)?c.bid:c.ask;
+      const double favorable=(mark-g_recovery_watches[i].entry_price)*(double)d;
+      if(favorable>g_recovery_watches[i].max_favorable)
+         g_recovery_watches[i].max_favorable=favorable;
+
+      const long elapsed=c.utc_ms-g_recovery_watches[i].start_utc_ms;
+      if(!g_recovery_watches[i].failed_ignition && elapsed>=ignition_ms)
+      {
+         if(g_recovery_watches[i].max_favorable+1e-12<InpRecoveryRequiredFavorable)
+            g_recovery_watches[i].failed_ignition=true;
+         else
+         {
+            g_recovery_watches[i].active=false;
+            continue;
+         }
+      }
+
+      if(g_recovery_watches[i].failed_ignition && !g_recovery_watches[i].reported)
+      {
+         g_recovery_watches[i].reported=true;
+         c.recovery_ready=true;
+         c.recovery_failed_ignition=true;
+         c.recovery_source_event_id=g_recovery_watches[i].event_id;
+         c.recovery_direction=-d;
+         c.recovery_state="FAILED_IGNITION_SHADOW";
+         return; // one recovery proposal maximum per market tick
+      }
+   }
+}
+
+// [V1-60] Bounded wrong-direction recovery observation.
+// Unit 005 starts a shadow watch from fresh owned route events. A failed ignition
+// can emit one opposite-direction recovery proposal, but cannot send an order.
 void ApplyWrongDirectionRecovery(DAAV1Context &c)
 {
-   c.recovery_ready=false;
+   StartShadowRecoveryWatch(c);
+   EvaluateRecoveryWatches(c);
 }
 
 int CountV1Positions()
@@ -936,6 +1098,13 @@ void WriteDiagnostic(const DAAV1Context &c)
       c.watchdog_streak,
       DoubleToString(c.watchdog_renewal_gap,2),
       c.watchdog_max_layer,
+      c.native_mode,
+      c.native_direction,
+      c.recovery_watch_started?1:0,
+      c.recovery_failed_ignition?1:0,
+      c.recovery_source_event_id,
+      c.recovery_direction,
+      c.recovery_state,
       c.h4,c.h1,c.m15,c.m5,
       c.mtf_ready?1:0,
       c.high_volume_session?1:0,
@@ -1002,7 +1171,9 @@ int OnInit()
    if(InpGlobalMaxPositions<1 || InpFastEmaPeriod<1 || InpSlowEmaPeriod<=InpFastEmaPeriod ||
       InpMaxCycleAgeMinutes<1 || InpMaxTouchKeys<16 || InpMaxEventRecords<16 ||
       InpWatchdogGoodStreak<1 || InpWatchdogGoodHoldSeconds<1 || InpWatchdogMaxCells<16 ||
-      InpWatchdogRenewalGap<=0.0 || InpWatchdogLastSubphaseGap<=0.0 || InpWatchdogMaxRenewalLayer<1)
+      InpWatchdogRenewalGap<=0.0 || InpWatchdogLastSubphaseGap<=0.0 || InpWatchdogMaxRenewalLayer<1 ||
+      InpRecoveryIgnitionWindowSeconds<1 || InpRecoveryRequiredFavorable<=0.0 ||
+      InpRecoveryCampaignSeconds<=InpRecoveryIgnitionWindowSeconds || InpRecoveryMaxWatches<16)
       return INIT_PARAMETERS_INCORRECT;
    if(InpClockMode==DAA_CLOCK_FIXED_OFFSET &&
       (InpFixedQuoteUtcOffsetMinutes<-840 || InpFixedQuoteUtcOffsetMinutes>840))
@@ -1031,6 +1202,9 @@ int OnInit()
                    "route_hour_utc","route_subphase_10m",
                    "watchdog_candidate","watchdog_cell_index","watchdog_scout","watchdog_parent_admitted",
                    "watchdog_gate","watchdog_streak","watchdog_renewal_gap","watchdog_max_layer",
+                   "native_mode","native_direction",
+                   "recovery_watch_started","recovery_failed_ignition","recovery_source_event_id",
+                   "recovery_direction","recovery_state",
                    "h4","h1","m15","m5","mtf_ready","high_volume","asia_geometry","watchdog_ready","native_ready",
                    "recovery_ready","risk_state","open_positions");
       }
@@ -1043,8 +1217,10 @@ int OnInit()
    g_event_sequence=0;
    ArrayResize(g_watchdog_cells,0);
    g_watchdog_day_key=-1;
+   ArrayResize(g_recovery_watches,0);
+   g_recovery_day_key=-1;
 
-   V1Log("MT5 IMPLEMENTATION 004 initialized: Watchdog campaign admission + renewal geometry / observe-only");
+   V1Log("MT5 IMPLEMENTATION 005 initialized: trend-within-trend + shadow wrong-direction recovery / observe-only");
    return INIT_SUCCEEDED;
 }
 
@@ -1058,6 +1234,7 @@ void OnDeinit(const int reason)
    ResetTouchMemory();
    ResetGenealogyMemory();
    ArrayResize(g_watchdog_cells,0);
+   ArrayResize(g_recovery_watches,0);
    V1Log(StringFormat("deinit reason=%d",reason));
 }
 
