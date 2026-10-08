@@ -10,9 +10,9 @@
     "durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "mode": "READ_ONLY"
   },
-  "current_phase": "MONTHLY_VERTICAL_GRID_CAMPAIGN_APRIL_HIERARCHICAL_ADMISSION",
-  "last_verified_durable_unit": "DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q",
-  "first_incomplete_unit": "DAA_APRIL_HIERARCHICAL_RENEWAL_ADMISSION_136R",
+  "current_phase": "MONTHLY_VERTICAL_GRID_CAMPAIGN_APRIL_TRANSITION_WALKFORWARD",
+  "last_verified_durable_unit": "DAA_APRIL_CAUSAL_TRANSITION_BREAKTHROUGH_136T2",
+  "first_incomplete_unit": "DAA_APRIL_TRANSITION_WALKFORWARD_ADMISSION_136U",
   "active_candidate": "STMR_SLEEVE_PHASE_001",
   "owner_constraints": {
     "symbol": "XAUUSD",
@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 44,
-    "latest_entry": "research/delta_a_alpha/state_journal/0044_DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q.json"
+    "latest_sequence": 45,
+    "latest_entry": "research/delta_a_alpha/state_journal/0045_DAA_APRIL_CAUSAL_TRANSITION_BREAKTHROUGH_136T2.json"
   },
-  "restart_instruction": "Read journal 0044 -> 0043. 136Q exact rule+depth online admission is complete NEGATIVE and must not be rerun. All eight atomic lookbacks are durable in Library interim-136q. Resume only DAA_APRIL_HIERARCHICAL_RENEWAL_ADMISSION_136R using already-closed shadow outcomes with causal hierarchical pooling/backoff; no month/date or future outcomes. Preserve P2/P3 as April research upper bounds. August sealed.",
+  "restart_instruction": "Read journal 0045 -> 0044 -> 0043. April 136T2 is a durable major causal-feature breakthrough. Do not rebuild T0/T1/T2 from chat. Exact bytes are in Library interim-136t2. Key state: renewal rule + current depth + previous child realized P/L bucket + previous child realized hold bucket. Cap512 beats April R9 SYNTH on net/trades/gross loss/PF/win/expectancy. Resume only DAA_APRIL_TRANSITION_WALKFORWARD_ADMISSION_136U to learn/qualify the same transition cells from prior closed shadow outcomes; no month/date/current/future outcome. August sealed.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -269,7 +269,7 @@
     "march_rollback_commit": "06328b13f35f5fc5dd869713ab67fc49f926afdb",
     "march_drive_artifact_map": "https://docs.google.com/document/d/1lrn3UmNA42zJMdrxLgxzn29E8pjupiVo-NsZjzDTcUU/edit?usp=drivesdk",
     "april_interim": {
-      "unit": "DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q",
+      "unit": "DAA_APRIL_CAUSAL_TRANSITION_BREAKTHROUGH_136T2",
       "github": "research/delta_a_alpha/monthly/april_2026/",
       "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136p3/",
       "p2": {
@@ -288,7 +288,7 @@
         "win": 0.96102454,
         "expectancy": 2.29014759
       },
-      "next_unit": "DAA_APRIL_HIERARCHICAL_RENEWAL_ADMISSION_136R",
+      "next_unit": "DAA_APRIL_TRANSITION_WALKFORWARD_ADMISSION_136U",
       "q136": {
         "status": "COMPLETE_NEGATIVE_DEPLOYMENT_EXPERIMENT",
         "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136q/",
@@ -303,6 +303,23 @@
           4096
         ],
         "next": "DAA_APRIL_HIERARCHICAL_RENEWAL_ADMISSION_136R"
+      },
+      "t136": {
+        "status": "COMPLETE_MAJOR_CAUSAL_FEATURE_BREAKTHROUGH",
+        "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136t2/",
+        "max_net": 71267.89,
+        "max_trades": 35111,
+        "cap512": {
+          "net": 67531.19,
+          "trades": 31974,
+          "gross_loss": -2211.36,
+          "pf": 31.538306743361552,
+          "win": 0.9630950146994433,
+          "expectancy": 2.112065740914493,
+          "equity_dd": 7431.12,
+          "maxopen_exact": 633
+        },
+        "next": "DAA_APRIL_TRANSITION_WALKFORWARD_ADMISSION_136U"
       }
     }
   }
