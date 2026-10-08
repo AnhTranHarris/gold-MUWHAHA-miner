@@ -1,0 +1,213 @@
+{
+  "schema": "delta-a-alpha-v1-frozen-skeleton-dukas-baseline-v1",
+  "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_DUKAS_JAN_JUL_BASELINE_008A",
+  "status": "COMPLETE_PRE_MT5_COMPILE_BASELINE",
+  "frozen_skeleton": {
+    "branch": "delta-A-alpha-v1-mt5-skeleton-certified",
+    "commit": "c81539633a0becc0dfe053f84ef80e6462848cd5",
+    "ea_version": "1.05"
+  },
+  "data": {
+    "2026-01": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "2026-02": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+    "2026-03": "814ba35e72f219a58badd806ed5c0f30ef0fb4ffe56a48205d873706513bd177",
+    "2026-04": "30375098f62aed6cabc32ec6b67c57c20baec9b6d9be1ce0a204e09806c1ec0f",
+    "2026-05": "3a50e0f1eba3076154238290ec02842cf3744ab192e5c9a2acc1cc07367c6a0d",
+    "2026-06": "34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2",
+    "2026-07": "e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7"
+  },
+  "methodology": {
+    "execution_root": "ordered Dukascopy Bid/Ask ticks",
+    "mtf": "continuous Jan-Jul Bid-close EMA8/EMA21 on completed M5/M15/H1/H4 bars",
+    "session_geometry": "exact V1.05 session gaps and session handoffs",
+    "genealogy": "finite session cycle, first-touch, duplicate suppression, one event per tick",
+    "route_economics": "ONLY session-route proposals have encoded TP/SL/300s lifecycle in V1.05; exact Bid/Ask first passage plus $0.02 research round-trip cost",
+    "watchdog": "candidate/scout state only; no renewal child execution exists in V1.05, therefore zero unlocks",
+    "native": "classification counted only; no independent lifecycle in V1.05",
+    "recovery": "shadow failed-ignition counted only; not funded",
+    "january_warmup": "no December Dukascopy file in baseline; continuous EMA state begins from January data"
+  },
+  "monthly": {
+    "2026-01": {
+      "ticks": 9135062,
+      "events": 15252,
+      "routes": 3021,
+      "native": 4816,
+      "watchdog_candidates": 287,
+      "watchdog_scouts": 57,
+      "recovery_failed": 2646,
+      "shadow": {
+        "trades": 3021,
+        "net": -3406.919,
+        "gross_profit": 1523.296,
+        "gross_loss": -4930.215,
+        "pf": 0.3089715,
+        "win_pct": 13.83648,
+        "expectancy": -1.127745,
+        "avg_hold_s": 21.99764,
+        "balance_dd": 3465.32,
+        "positive_days": 2,
+        "active_days": 18
+      }
+    },
+    "2026-02": {
+      "ticks": 7538339,
+      "events": 17118,
+      "routes": 2687,
+      "native": 5570,
+      "watchdog_candidates": 78,
+      "watchdog_scouts": 26,
+      "recovery_failed": 2472,
+      "shadow": {
+        "trades": 2687,
+        "net": -2882.273,
+        "gross_profit": 1197.54,
+        "gross_loss": -4079.813,
+        "pf": 0.2935282,
+        "win_pct": 12.13249,
+        "expectancy": -1.072673,
+        "avg_hold_s": 23.03833,
+        "balance_dd": 2885.578,
+        "positive_days": 0,
+        "active_days": 20
+      }
+    },
+    "2026-03": {
+      "ticks": 9433179,
+      "events": 19026,
+      "routes": 3004,
+      "native": 6325,
+      "watchdog_candidates": 429,
+      "watchdog_scouts": 89,
+      "recovery_failed": 2775,
+      "shadow": {
+        "trades": 3004,
+        "net": -2578.81,
+        "gross_profit": 1422.789,
+        "gross_loss": -4001.599,
+        "pf": 0.3555551,
+        "win_pct": 12.3502,
+        "expectancy": -0.858459,
+        "avg_hold_s": 20.99972,
+        "balance_dd": 2586.52,
+        "positive_days": 1,
+        "active_days": 22
+      }
+    },
+    "2026-04": {
+      "ticks": 7470570,
+      "events": 10384,
+      "routes": 1743,
+      "native": 3351,
+      "watchdog_candidates": 252,
+      "watchdog_scouts": 80,
+      "recovery_failed": 1682,
+      "shadow": {
+        "trades": 1743,
+        "net": -1376.006,
+        "gross_profit": 673.346,
+        "gross_loss": -2049.352,
+        "pf": 0.3285653,
+        "win_pct": 12.62192,
+        "expectancy": -0.789447,
+        "avg_hold_s": 35.36166,
+        "balance_dd": 1378.349,
+        "positive_days": 0,
+        "active_days": 22
+      }
+    },
+    "2026-05": {
+      "ticks": 8333165,
+      "events": 9416,
+      "routes": 1505,
+      "native": 3109,
+      "watchdog_candidates": 239,
+      "watchdog_scouts": 77,
+      "recovery_failed": 1464,
+      "shadow": {
+        "trades": 1505,
+        "net": -931.286,
+        "gross_profit": 634.904,
+        "gross_loss": -1566.19,
+        "pf": 0.4053812,
+        "win_pct": 15.21595,
+        "expectancy": -0.618795,
+        "avg_hold_s": 51.64245,
+        "balance_dd": 950.574,
+        "positive_days": 0,
+        "active_days": 22
+      }
+    },
+    "2026-06": {
+      "ticks": 8201406,
+      "events": 10402,
+      "routes": 1473,
+      "native": 3546,
+      "watchdog_candidates": 294,
+      "watchdog_scouts": 85,
+      "recovery_failed": 1430,
+      "shadow": {
+        "trades": 1473,
+        "net": -1075.394,
+        "gross_profit": 543.085,
+        "gross_loss": -1618.479,
+        "pf": 0.3355527,
+        "win_pct": 13.30618,
+        "expectancy": -0.730071,
+        "avg_hold_s": 54.22008,
+        "balance_dd": 1079.733,
+        "positive_days": 0,
+        "active_days": 23
+      }
+    },
+    "2026-07": {
+      "ticks": 7415841,
+      "events": 8820,
+      "routes": 1268,
+      "native": 2667,
+      "watchdog_candidates": 199,
+      "watchdog_scouts": 72,
+      "recovery_failed": 1234,
+      "shadow": {
+        "trades": 1268,
+        "net": -1080.867,
+        "gross_profit": 321.107,
+        "gross_loss": -1401.974,
+        "pf": 0.2290392,
+        "win_pct": 11.5142,
+        "expectancy": -0.852419,
+        "avg_hold_s": 57.6134,
+        "balance_dd": 1080.867,
+        "positive_days": 1,
+        "active_days": 23
+      }
+    }
+  },
+  "aggregate": {
+    "ticks": 57527562,
+    "events": 90418,
+    "routes": 14701,
+    "native": 29384,
+    "watchdog_candidates": 1778,
+    "watchdog_scouts": 486,
+    "recovery_failed": 13703,
+    "shadow_session_routes": {
+      "trades": 14701,
+      "net": -13331.555,
+      "gross_profit": 6316.067,
+      "gross_loss": -19647.622,
+      "pf": 0.32146725,
+      "win_pct": 12.965104,
+      "expectancy": -0.906847,
+      "positive_days": 4,
+      "active_days": 150
+    }
+  },
+  "interpretation": [
+    "This is a decision-skeleton baseline, not a full V1 economic backtest.",
+    "The exact current MT5 EA has no order-send path, so an MT5 Strategy Tester run of V1.05 should produce zero physical trades.",
+    "The shadow session-route lifecycle is materially negative in every month and must not be mistaken for the January/February research frontiers.",
+    "High-performance January/February research depended on renewal children, Watchdog unlocking/layer depth, specialist/native lifecycles, recovery funding and capacity allocation that are not yet economically wired into V1.05.",
+    "Recovery failed-ignition is extremely frequent, confirming that the current raw session route should not be funded standalone."
+  ]
+}
