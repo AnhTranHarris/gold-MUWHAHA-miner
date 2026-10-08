@@ -1,0 +1,67 @@
+{
+  "schema": "DAA_L2_POS_FROZEN_V1",
+  "mode": "OBSERVE_ONLY_NO_ORDER_EFFECT",
+  "model_label": "JANUARY_ONLY_FROZEN_FOR_FEB_APR",
+  "earliest_authorized_activation_utc": "2026-02-01T00:00:00Z",
+  "training_cutoff_utc": "2026-02-01T00:00:00Z",
+  "training_sample_count": 383,
+  "jan_training_positive_rate": 0.3368146214099217,
+  "feature_names": [
+    "prior12_range10_rate",
+    "prior48_range10_rate",
+    "prior144_range10_rate",
+    "prior48_range20_rate",
+    "prior12_range_median",
+    "prior48_range_p90",
+    "prior144_mean_range",
+    "prior12_mean_abs_change"
+  ],
+  "feature_units": [
+    "fraction",
+    "fraction",
+    "fraction",
+    "fraction",
+    "USD",
+    "USD",
+    "USD",
+    "USD"
+  ],
+  "forecast_horizon": "next 12 completed M5 bars",
+  "logistic_coef": [
+    0.5281703612759543,
+    0.3337301802428827,
+    0.22459879555536583,
+    0.08765926751874598,
+    0.38594172660925113,
+    0.20025618193882466,
+    0.22326671576768306,
+    0.3457187890515024
+  ],
+  "logistic_intercept": -0.4769902785834911,
+  "range_thresholds_usd": [
+    10,
+    20
+  ],
+  "scaler_mean": [
+    0.1836379460400348,
+    0.18042863359442987,
+    0.17067377429648964,
+    0.060324194952132294,
+    7.201707571801566,
+    12.45008903394256,
+    7.253807640702055,
+    4.041166666666661
+  ],
+  "scaler_scale": [
+    0.2996503039513797,
+    0.2724205238545601,
+    0.25287882636677733,
+    0.17217764830771246,
+    7.4998946102687665,
+    12.454378293725544,
+    5.8807114484793015,
+    4.685385159806544
+  ],
+  "target": "at least 2 of next 12 M5 bars have high_low_range >= $10",
+  "notes": "Market-movement availability only. Not expected profit, trade direction, order authorization or original V1 executable backtest. Complete M5 data only; no month/hour input feature. At Jan1 this particular trained model cannot exist."
+}
