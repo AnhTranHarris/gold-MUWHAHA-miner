@@ -586,15 +586,14 @@ void AttachRouteToLatestEvent(const DAAV1Context &c)
    if(!c.event_created || !c.route_valid) return;
    const int n=ArraySize(g_event_records);
    if(n<=0) return;
-   DAAV1GridEventRecord &e=g_event_records[n-1];
-   if(e.event_id!=c.event_id) return;
-   e.route_id=c.route_id;
-   e.route_direction=c.route_direction;
-   e.route_tp=c.route_tp;
-   e.route_sl=c.route_sl;
-   e.route_horizon_seconds=c.route_horizon_seconds;
-   e.route_hour_utc=c.route_hour_utc;
-   e.route_subphase_10m=c.route_subphase_10m;
+   if(g_event_records[n-1].event_id!=c.event_id) return;
+   g_event_records[n-1].route_id=c.route_id;
+   g_event_records[n-1].route_direction=c.route_direction;
+   g_event_records[n-1].route_tp=c.route_tp;
+   g_event_records[n-1].route_sl=c.route_sl;
+   g_event_records[n-1].route_horizon_seconds=c.route_horizon_seconds;
+   g_event_records[n-1].route_hour_utc=c.route_hour_utc;
+   g_event_records[n-1].route_subphase_10m=c.route_subphase_10m;
 }
 
 // [V1-30] Session/MTF route proposal layer.
