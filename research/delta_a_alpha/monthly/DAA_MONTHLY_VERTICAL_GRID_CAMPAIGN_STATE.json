@@ -1,0 +1,138 @@
+{
+  "schema": "delta-a-alpha-monthly-vertical-grid-campaign-v1",
+  "status": "ACTIVE_OWNER_DIRECTED_MONTH_BY_MONTH_CAMPAIGN",
+  "architecture": "VERTICAL_GRID_SYSTEM_V1",
+  "permanent_order": [
+    "ordered ticks",
+    "session-specific grid geometry",
+    "completed H4/H1/M15/M5 structure",
+    "London/overlap/NY hourly high-volume harvesting + separate Asia geometry",
+    "Watchdog/regime renewal",
+    "trend-within-trend native routing",
+    "wrong-direction recovery",
+    "portfolio heat/capital governor"
+  ],
+  "lineage_rule": "Carry accepted mechanics forward cumulatively: January -> February -> March -> April -> May -> June -> July. Do not rebuild prior-month mechanics from scratch. Each new month may adapt geometry, participation intensity, recovery behavior and physical capacity using causal market-state variables only.",
+  "deployment_rule": "Calendar month/date is evaluation/discovery partition only and must never be a deployable strategy feature. Final system must handle unknown deployment date by observing causal market state.",
+  "evaluation_rule": "For each month compare daily, weekly and monthly performance against that month's R9 SYNTH while also tracking gross loss, balance/equity drawdown, velocity, expectancy, win rate, PF and capacity/heat.",
+  "mt5_rule": "Existing V1.05 MT5 skeleton is preserved as architecture/fallback reference. Final economically complete MT5 implementation is deferred until Jan-Jul monthly behavior map is sufficiently complete.",
+  "completed_months": {
+    "january": {
+      "status": "DURABLE_FOUNDATION_EXISTS",
+      "canonical_branch": "carson/r9-gamma-02-jan-grid-milestone",
+      "role": "Foundation that established session/MTF spine, Watchdog renewal/layer mechanics, high-volume hourly opportunity, Asia distinction, and heat/capacity concerns.",
+      "instruction": "Do not reconstruct January from chat; use durable branch/artifacts."
+    },
+    "february": {
+      "status": "DURABLE_MAJOR_VERTICAL_GRID_BREAKTHROUGH",
+      "key_artifact": "GAMMA_02_FEB_VERTICAL_GRID_SYSTEM_MAJOR_BREAKTHROUGH_134J",
+      "durable_library": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-08/february-vertical-grid-major-134j/",
+      "risk_refinement_library": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-08/february-vertical-grid-risk-134k/",
+      "cap600_frontier": {
+        "net": 203370.70998480497,
+        "trades": 38167,
+        "gross_loss": -25165.080000559985,
+        "pf": 9.081464870379092,
+        "win": 0.838708832237273,
+        "expectancy": 5.32844368131645
+      },
+      "role": "Proved same vertical spine can adapt through February-specific causal geometry, hourly cells, Asia filtering, state-conditioned recovery and capacity substitution."
+    },
+    "march": {
+      "status": "COMPLETE_MAJOR_MARCH_VERTICAL_GRID_DISCOVERY",
+      "unit": "DAA_MARCH_VERTICAL_GRID_DISCOVERY_135",
+      "github_dir": "research/delta_a_alpha/monthly/march_2026/",
+      "library_dir": "/xauusd-trading-bot/delta-A-alpha/monthly/march_2026/vertical-grid-135/",
+      "drive_folder": "https://drive.google.com/drive/folders/1dO6CsGjvWfdkY3JutMoyVzzRCpAJRXSi",
+      "drive_read_first": "https://docs.google.com/document/d/1zLe8e8EgND8Lg96uHX8UkeECtH9tZOcv15Vl90gEsEc/edit?usp=drivesdk",
+      "stream_sha256": "9b16fe06de5b3f85d2f8ea03eaff661de65d15485fd7cbc6563ba029335b795e",
+      "r9_synth": {
+        "net": 75698.63,
+        "trades": 40985,
+        "gross_loss": -2024.86,
+        "pf": 38.3846241222,
+        "win": 0.900109796267,
+        "expectancy": 1.84698377455,
+        "balance_dd": 2.62
+      },
+      "frontiers": {
+        "profit": {
+          "cap": 600,
+          "net": 203212.8800074515,
+          "trades": 29969,
+          "gross_loss": -14491.240000386908,
+          "pf": 15.023153298270252,
+          "win": 0.8604891721445493,
+          "expectancy": 6.78076946202581,
+          "balance_dd": 800.060000000085,
+          "equity_dd": 8280.959999999992,
+          "positive_days": "21/22",
+          "weeks_beating_synth": "5/5"
+        },
+        "balanced": {
+          "cap": 448,
+          "net": 173381.19000613544,
+          "trades": 22224,
+          "gross_loss": -7332.8500003773715,
+          "pf": 24.644447929142515,
+          "win": 0.908252339812815,
+          "expectancy": 7.801529427921861,
+          "balance_dd": 800.059999999954,
+          "equity_dd": 8171.5199999999895,
+          "positive_days": "21/22",
+          "weeks_beating_synth": "5/5"
+        },
+        "quality": {
+          "cap": 448,
+          "net": 125792.74000574724,
+          "trades": 15988,
+          "gross_loss": -1994.070000393614,
+          "pf": 64.08341230795145,
+          "win": 0.9440830622967226,
+          "expectancy": 7.867947210767278,
+          "balance_dd": 240.93000000002212,
+          "equity_dd": 8171.5199999999895,
+          "positive_days": "22/22",
+          "weeks_beating_synth": "4/5"
+        },
+        "ultra": {
+          "cap": 448,
+          "net": 105083.99000574724,
+          "trades": 14040,
+          "gross_loss": -897.070000393614,
+          "pf": 118.1413490136096,
+          "win": 0.9601851851851851,
+          "expectancy": 7.48461467277402,
+          "balance_dd": 121.56999999999971,
+          "positive_days": "22/22",
+          "weeks_beating_synth": "4/5"
+        },
+        "cap92": {
+          "cap": 92,
+          "net": 76996.6,
+          "trades": 9543,
+          "gross_loss": -1387.01,
+          "pf": 56.51,
+          "win": 0.929,
+          "expectancy": 8.07,
+          "balance_dd": 121.57,
+          "equity_dd": 3088.37,
+          "positive_days": "22/22",
+          "weeks_beating_synth": "2/5"
+        }
+      },
+      "learned": [
+        "March native continuation is large and real.",
+        "Fresh hourly ownership is a major London/overlap/NY engine.",
+        "Asia requires separate geometry/state participation.",
+        "Watchdog is strongest as a renewal layer rather than the whole strategy.",
+        "Wrong-direction recovery must stay state-conditioned.",
+        "Heat/concurrency is the principal remaining engineering problem."
+      ],
+      "instruction": "March is complete. Do not rediscover or rerun unless explicitly auditing."
+    }
+  },
+  "first_incomplete_month": "2026-04",
+  "next_unit": "DAA_APRIL_VERTICAL_GRID_DISCOVERY_136",
+  "august_2026": "SEALED"
+}
