@@ -1,0 +1,33 @@
+{
+  "schema": "delta-a-alpha-v1-mt5-implementation-001-manifest-v1",
+  "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_IMPLEMENTATION_001",
+  "status": "COMPLETE_ARCHITECTURE_SHELL_STATIC_VERIFIED",
+  "ea_path": "Experts/GoldMuwahahaMiner_DeltaAAlpha_V1.mq5",
+  "ea_git_blob_sha": "acd80fe6918caa6f0b9b64ff0744b1b7857970c1",
+  "qa_path": "research/delta_a_alpha/qa/v1_mt5_architecture_static_qa.py",
+  "qa_git_blob_sha": "fd3a26d5aee7a12c01ee11c39efba5d78d926233",
+  "orchestration": [
+    "ordered_tick_clock",
+    "session_geometry",
+    "completed_H4_H1_M15_M5",
+    "hourly_high_volume_plus_asia_geometry",
+    "watchdog_regime",
+    "trend_within_trend",
+    "wrong_direction_recovery",
+    "capital_heat_governor",
+    "diagnostics"
+  ],
+  "safety": {
+    "fixed_lot": 0.01,
+    "order_send_path": false,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "default_execution_enabled": false
+  },
+  "verification": {
+    "static_contract": "PASS",
+    "metaeditor_compile": "PENDING",
+    "python_to_mt5_parity": "PENDING"
+  },
+  "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SESSION_GEOMETRY_AND_EVENT_GENEALOGY_002"
+}
