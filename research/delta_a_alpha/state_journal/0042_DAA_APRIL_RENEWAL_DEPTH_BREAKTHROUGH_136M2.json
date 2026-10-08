@@ -1,0 +1,50 @@
+{
+  "sequence": 42,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_APRIL_RENEWAL_DEPTH_BREAKTHROUGH_136M2",
+  "status": "COMPLETE_DURABLE_INTERIM_BREAKTHROUGH",
+  "predecessor": {
+    "sequence": 41,
+    "unit": "DAA_APRIL_VERTICAL_GRID_INTERIM_136K3",
+    "path": "research/delta_a_alpha/state_journal/0041_DAA_APRIL_VERTICAL_GRID_INTERIM_136K3.json"
+  },
+  "invalidated": [
+    "DAA_APRIL_RENEWAL_DEPTH_PORTFOLIO_136M_INITIAL"
+  ],
+  "accepted": {
+    "mechanic": "depth-sensitive chronological renewal funding",
+    "high_velocity": {
+      "max_layer": 9,
+      "overlay_cap": 703,
+      "net": 48612.93,
+      "trades": 13368,
+      "gross_loss": -2103.63,
+      "pf": 24.1091,
+      "win": 0.908662,
+      "equity_dd": 6156.54,
+      "maxopen": 703
+    },
+    "lower_heat": {
+      "max_layer": 7,
+      "overlay_cap": 92,
+      "net": 41863.64,
+      "trades": 7901,
+      "gross_loss": -1982.87,
+      "pf": 22.11,
+      "win": 0.868751,
+      "equity_dd": 1792.16,
+      "maxopen": 176
+    }
+  },
+  "recovery": {
+    "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136m2/"
+  },
+  "decision": [
+    "Renewal layer depth is a causal economic state.",
+    "Layers 10+ are not fundable under current April evidence; 11-12 are strongly toxic.",
+    "Corrected 136M2 replaces invalid first 136M cap results.",
+    "Next: tiered renewal heat governor to improve speed/heat frontier without rebuilding prior blocks."
+  ],
+  "next_unit": "DAA_APRIL_TIERED_RENEWAL_HEAT_GOVERNOR_136N",
+  "august_2026": "SEALED"
+}
