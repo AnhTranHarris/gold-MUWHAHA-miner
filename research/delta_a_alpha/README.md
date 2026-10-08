@@ -52,3 +52,10 @@ GitHub whitepaper: `research/delta_a_alpha/whitepapers/DAA_VERTICAL_GRID_SYSTEM_
 Google whitepaper: https://docs.google.com/document/d/1-PiyhfhulLl1garjwtSYOysPGOgBTgV_apnQmCKoCTc/edit?usp=drivesdk
 
 V2, V3 and later refine the V1 layers month-by-month and later add small-capital survivability. They do not silently replace the spine. The owner has authorized the next unit: a faithful MT5 V1 engineering port with layer-by-layer parity diagnostics.
+
+
+## Mandatory owner governance — any-time startup and blind holdouts (2026-10-08)
+
+**AUTHORITATIVE GOVERNING RULE:** [Anytime-start / five-minute order-readiness / Jan–Jul development / August–September sealed holdouts](governance/DAA_ANYTIME_START_FIVE_MINUTE_READINESS_AND_BLIND_HOLDOUT_RULE.md).
+
+The complete L0–L8 trading EA must be trade-capable by **T0 + 300 seconds** at any valid active-market deployment with pre-T0 historical context; it may emit qualified opportunities on its first actionable live ticks. Rolling online learning can improve performance but cannot block initial trading. Never force a trade against risk controls or promise profitability within five minutes. January–July are design months, **August is sealed** and **September reserved as a second owner-released blind holdout**. Historical as-of tests cannot train on information after their simulated start. The strategy remains self-adjusting inside the permanent V1 spine; small-capital qualification tiers are $100,000, $1,000, $500, $300, $100.
