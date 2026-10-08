@@ -133,10 +133,47 @@
       "rollback_branch": "delta-A-alpha-march-135-complete",
       "rollback_commit": "06328b13f35f5fc5dd869713ab67fc49f926afdb",
       "drive_artifact_map": "https://docs.google.com/document/d/1lrn3UmNA42zJMdrxLgxzn29E8pjupiVo-NsZjzDTcUU/edit?usp=drivesdk"
+    },
+    "april_interim": {
+      "unit": "DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q",
+      "github": "research/delta_a_alpha/monthly/april_2026/",
+      "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136p3/",
+      "p2": {
+        "net": 64084.3,
+        "trades": 26553,
+        "gross_loss": -2153.42,
+        "pf": 30.75931309,
+        "win": 0.95311264,
+        "expectancy": 2.41344857
+      },
+      "p3": {
+        "net": 63929.47,
+        "trades": 27915,
+        "gross_loss": -2369.56,
+        "pf": 27.97946876,
+        "win": 0.96102454,
+        "expectancy": 2.29014759
+      },
+      "next_unit": "DAA_APRIL_HIERARCHICAL_RENEWAL_ADMISSION_136R",
+      "q136": {
+        "status": "COMPLETE_NEGATIVE_DEPLOYMENT_EXPERIMENT",
+        "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136q/",
+        "lookbacks": [
+          4,
+          8,
+          16,
+          32,
+          64,
+          128,
+          256,
+          4096
+        ],
+        "next": "DAA_APRIL_HIERARCHICAL_RENEWAL_ADMISSION_136R"
+      }
     }
   },
   "first_incomplete_month": "2026-04",
-  "next_unit": "DAA_APRIL_TIERED_RENEWAL_HEAT_GOVERNOR_136N",
+  "next_unit": "DAA_APRIL_HIERARCHICAL_RENEWAL_ADMISSION_136R",
   "august_2026": "SEALED",
   "in_progress_month": {
     "month": "2026-04",
