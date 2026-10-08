@@ -10,9 +10,9 @@
     "durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "mode": "READ_ONLY"
   },
-  "current_phase": "MONTHLY_VERTICAL_GRID_CAMPAIGN_APRIL_RENEWAL_DEPTH_BREAKTHROUGH",
-  "last_verified_durable_unit": "DAA_APRIL_VERTICAL_GRID_INTERIM_136P3",
-  "first_incomplete_unit": "DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q",
+  "current_phase": "MONTHLY_VERTICAL_GRID_CAMPAIGN_APRIL_HIERARCHICAL_ADMISSION",
+  "last_verified_durable_unit": "DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q",
+  "first_incomplete_unit": "DAA_APRIL_HIERARCHICAL_RENEWAL_ADMISSION_136R",
   "active_candidate": "STMR_SLEEVE_PHASE_001",
   "owner_constraints": {
     "symbol": "XAUUSD",
@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 43,
-    "latest_entry": "research/delta_a_alpha/state_journal/0043_DAA_APRIL_VERTICAL_GRID_INTERIM_136P3.json"
+    "latest_sequence": 44,
+    "latest_entry": "research/delta_a_alpha/state_journal/0044_DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q.json"
   },
-  "restart_instruction": "Read journal 0043 -> 0042. April 136A-P3 is durable; do not rerun after timeout. Exact 136N/O1/P1/P2/P3 bytes are in Library interim-136p3. P2: +$64,084.30 / 26,553 / GL -$2,153.42 / PF30.76 / 95.31%; P3 research upper-bound: +$63,929.47 / 27,915 / GL -$2,369.56 / PF27.98 / 96.10%. Resume only DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q using already-closed shadow outcomes; no month/date. August sealed.",
+  "restart_instruction": "Read journal 0044 -> 0043. 136Q exact rule+depth online admission is complete NEGATIVE and must not be rerun. All eight atomic lookbacks are durable in Library interim-136q. Resume only DAA_APRIL_HIERARCHICAL_RENEWAL_ADMISSION_136R using already-closed shadow outcomes with causal hierarchical pooling/backoff; no month/date or future outcomes. Preserve P2/P3 as April research upper bounds. August sealed.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -269,7 +269,7 @@
     "march_rollback_commit": "06328b13f35f5fc5dd869713ab67fc49f926afdb",
     "march_drive_artifact_map": "https://docs.google.com/document/d/1lrn3UmNA42zJMdrxLgxzn29E8pjupiVo-NsZjzDTcUU/edit?usp=drivesdk",
     "april_interim": {
-      "unit": "DAA_APRIL_VERTICAL_GRID_INTERIM_136P3",
+      "unit": "DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q",
       "github": "research/delta_a_alpha/monthly/april_2026/",
       "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136p3/",
       "p2": {
@@ -288,7 +288,22 @@
         "win": 0.96102454,
         "expectancy": 2.29014759
       },
-      "next_unit": "DAA_APRIL_CAUSAL_RULE_DEPTH_ADMISSION_136Q"
+      "next_unit": "DAA_APRIL_HIERARCHICAL_RENEWAL_ADMISSION_136R",
+      "q136": {
+        "status": "COMPLETE_NEGATIVE_DEPLOYMENT_EXPERIMENT",
+        "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136q/",
+        "lookbacks": [
+          4,
+          8,
+          16,
+          32,
+          64,
+          128,
+          256,
+          4096
+        ],
+        "next": "DAA_APRIL_HIERARCHICAL_RENEWAL_ADMISSION_136R"
+      }
     }
   }
 }
