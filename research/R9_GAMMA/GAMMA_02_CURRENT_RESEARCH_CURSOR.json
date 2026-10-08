@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v30",
+  "schema": "r9-gamma-02-research-cursor-v31",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_JAN_WD119_PROFIT_PER_HEAT_131E",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_JAN_WD119_PROFIT_PER_HEAT_131E.md",
+  "latest_completed": "GAMMA_02_FEB_UNCHANGED_JAN_MILESTONE_REPLAY_132A",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_FEB_UNCHANGED_JAN_MILESTONE_REPLAY_132A.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_DYNAMIC_RENEWAL_WATCHDOG_119",
     "frozen_params": {
@@ -131,13 +131,11 @@
     "warmup_leakage_103_104": "CRITICAL: 103/104 February authority suspended. Nominal February stream had 36,355 entries but only 102 entries actually in February after absolute-time filtering; prior +$43.9K result was warmup leakage.",
     "target_gate_083": "083 target-gated audit: Jan cap703 +$48,766.62 / 32,862; Feb +$4,193.52 / 7,020; Mar -$9,480.91 / 6,727. Prior frozen February +$52.96K was warmup-contaminated."
   },
-  "first_incomplete_unit": "GAMMA_02_JAN_WD119_VIRTUAL_RENEWAL_RUNNER_131F",
+  "first_incomplete_unit": "GAMMA_02_FEB_BASELINE_OWNER_DECISION_132B",
   "next_units": [
-    "January Watchdog virtual-renewal / physical-runner research 131F",
-    "arbitrary-start and starting-capital overlays on frozen January architecture",
-    "freeze robust January adaptive architecture",
-    "then February unchanged replay and causal adaptation",
-    "then later months sequentially",
+    "Owner decision: accept February unchanged-transfer baseline and proceed to March, or open February adaptation research",
+    "If adapting February: diagnose no-trade/negative states without calendar-date features and preserve January milestone regression",
+    "If proceeding: replay frozen January milestone unchanged on March with exact March R9 SYNTH daily/weekly benchmark",
     "August sealed"
   ],
   "constraints": {
@@ -147,7 +145,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "MAJOR JANUARY FALLBACK NOW EXISTS. First inspect branch carson/r9-gamma-02-jan-grid-milestone and read GAMMA_02_JAN_GRID_MAJOR_MILESTONE_20261007.md + JSON manifest + CURRENT_RESEARCH_CURSOR. Use exact durable bytes and hashes; never rebuild January from chat memory. On the active branch, preserve the 131D session architecture and 131E profit-per-heat frontier. Resume only 131F virtual-renewal / physical-runner research unless the owner explicitly moves to February. August remains sealed.",
+  "recovery_rule": "Read CURRENT_RESEARCH_CURSOR plus January major fallback and GAMMA_02_FEB_UNCHANGED_JAN_MILESTONE_REPLAY_132A.md. January fallback branch remains carson/r9-gamma-02-jan-grid-milestone and must not be modified. February 132A is an unchanged-transfer baseline only; no February tuning has occurred. Do not rerun 132A unless durable artifacts fail hash/QA. Wait for owner decision: adapt February or proceed to March unchanged replay. August remains sealed.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -513,7 +511,7 @@
     "execution_surface": "Dukascopy midpoint + frozen session-P75 normalized spread; Python research only; not raw-Dukascopy fill parity or Coinexx MT5 certification",
     "critical_remaining_issue": "Full-tick equity DD remains ~62763.84, dominated by synchronized Watchdog W05 inventory. Next work must improve profit per unit of heat rather than broaden session inventory."
   },
-  "cursor_parent_head": "9810a49b81aa7f66f6a9c7310a22667f22d53ca7",
+  "cursor_parent_head": "e231f47a2ae386d930eb2d626db9e05b8fefc96e",
   "january_reexamination_131e": {
     "status": "DURABLE_COMPLETE",
     "parent": "GAMMA_02_JAN_SESSION_FIRM_DAILY_WEEKLY_131D",
@@ -630,5 +628,94 @@
     "aggressive_profit_fallback": "L35_C703",
     "session_milestone": "WD119_COVERAGE_LEAN4_COLD64",
     "policy": "Do not overwrite or reconstruct this milestone from chat memory. Later February/month work may extend the architecture, but this branch remains the January restore point until a demonstrably superior adaptive multi-month system is frozen."
+  },
+  "february_unchanged_jan_replay_132a": {
+    "status": "DURABLE_COMPLETE_NO_FEB_TUNING",
+    "parent_fallback_branch": "carson/r9-gamma-02-jan-grid-milestone",
+    "market_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+    "r9_synth_source_sha256": "e5fcf4d6879193fac88e7a8e101db1111d59e1a7f5abfb793c970b06cfce7cc7",
+    "r9_synth_february": {
+      "net": 66213.65,
+      "trades": 33523,
+      "gross_loss": -2031.42,
+      "pf": 33.5947613,
+      "win": 0.8829758673,
+      "expectancy": 1.9751707783,
+      "avg_hold_s": 16.1759389076,
+      "balance_dd": 2.19
+    },
+    "primary_aggressive_l35_c703": {
+      "net": 48224.26,
+      "trades": 27484,
+      "gross_loss": -17728.59,
+      "pf": 3.7201407444,
+      "win": 0.8975403871,
+      "expectancy": 1.7546303304,
+      "balance_dd": 9028.52,
+      "equity_dd": 19449.55,
+      "maxopen": 703,
+      "positive_days": 10,
+      "beat_days": 6,
+      "positive_weeks": 4,
+      "beat_weeks": 0,
+      "net_capture_vs_synth": 0.7283129687,
+      "trade_capture_vs_synth": 0.8198550249
+    },
+    "balanced_l35_c640": {
+      "net": 46343.38,
+      "trades": 26025,
+      "gross_loss": -17728.59,
+      "pf": 3.6140477049,
+      "win": 0.8917963497,
+      "expectancy": 1.7807254563,
+      "balance_dd": 9028.52,
+      "equity_dd": 17725.04,
+      "maxopen": 640,
+      "positive_days": 10,
+      "beat_days": 6,
+      "positive_weeks": 4,
+      "beat_weeks": 0
+    },
+    "full_131d": {
+      "net": 44097.94,
+      "trades": 27819,
+      "gross_loss": -22043.31,
+      "pf": 3.0005135345,
+      "win": 0.8923757144,
+      "expectancy": 1.5851734426,
+      "balance_dd": 13343.24,
+      "equity_dd": 19449.55,
+      "maxopen": 703,
+      "positive_days": 10,
+      "beat_days": 5,
+      "positive_weeks": 4,
+      "beat_weeks": 0
+    },
+    "weekly_primary": {
+      "2026-W06": 26132.2,
+      "2026-W07": 11321.93,
+      "2026-W08": 2718.6,
+      "2026-W09": 8051.53
+    },
+    "r9_synth_weekly": {
+      "2026-W06": 34837.88,
+      "2026-W07": 13876.89,
+      "2026-W08": 8320.42,
+      "2026-W09": 9178.46
+    },
+    "helper": "research/R9_GAMMA/helpers/feb_replay_jan_milestone_132a.py",
+    "helper_sha256": "317641f8b1bed8a6431e4e1f0fbe7e4ec0acc9d51bd11fbc787e0da119ff4e7d",
+    "full_result": "research/R9_GAMMA/artifacts/feb_replay_jan_milestone_132a.json",
+    "full_result_sha256": "6ca7e79898bf3d6c909033dc3b6afcd4b5aa721e5d6cc7e4eb9b2c54f58ee2ea",
+    "compact_result": "research/R9_GAMMA/artifacts/gamma02_feb_unchanged_jan_milestone_replay_132a.json",
+    "compact_result_sha256": "4747966f3bad92a21a02c89bb1d6659cf55328caac68fa0cdb8cef34d0b0a58a",
+    "benchmark_helper": "research/R9_GAMMA/helpers/r9_synth_feb_daily_weekly.py",
+    "benchmark_result": "research/R9_GAMMA/artifacts/r9_synth_feb_daily_weekly.json",
+    "benchmark_helper_sha256": "f3e2c0b439cf7572dd3fe86d15484baa5986c41be7b18410263903c48d7ba8ce",
+    "benchmark_result_sha256": "e27958269e454c3e15cb2663a18b4e9c6a705c5486101c5088bdd555dbba0bf4",
+    "checkpoint": "research/R9_GAMMA/GAMMA_02_FEB_UNCHANGED_JAN_MILESTONE_REPLAY_132A.md",
+    "checkpoint_sha256": "43ef01369b8df5deecc0790c05eab6c5ff80856232a73233d3164fd62d86274a",
+    "library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-08/february-unchanged-jan-replay-132a/",
+    "crossmonth_qa": "Exact January parameters/rules preserved. Only explicit target gating added to supplemental heartbeat/cold-start entries to prevent January warmup leakage into February."
   }
 }
