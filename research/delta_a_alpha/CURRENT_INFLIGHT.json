@@ -2,16 +2,16 @@
   "schema": "delta-a-alpha-inflight-v5",
   "authority": "APPEND_ONLY_STATE_JOURNAL",
   "state": "IDLE_READY",
-  "last_completed": "DAA_APRIL_CAUSAL_TRANSITION_BREAKTHROUGH_136T2",
+  "last_completed": "DAA_APRIL_RULE_FAMILY_PARAMETRIC_GOVERNOR_136V2",
   "current_unit": null,
-  "next_unit": "DAA_APRIL_TRANSITION_WALKFORWARD_ADMISSION_136U",
-  "journal_entry": "research/delta_a_alpha/state_journal/0045_DAA_APRIL_CAUSAL_TRANSITION_BREAKTHROUGH_136T2.json",
+  "next_unit": "DAA_APRIL_CROSSMONTH_PRIOR_CAMPAIGN_GOVERNOR_136W",
+  "journal_entry": "research/delta_a_alpha/state_journal/0047_DAA_APRIL_RULE_FAMILY_PARAMETRIC_GOVERNOR_136V2.json",
   "accepted_floor": {
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
     "version": "V1",
     "spec": "research/delta_a_alpha/architecture/DAA_VERTICAL_GRID_SYSTEM_V1_SPEC.md",
     "manifest": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MANIFEST.json"
   },
-  "failure_recovery": "Read journal 0045. Do not rebuild 136T2. Use Library interim-136t2 helpers/results. Resume only walk-forward/online RL_PH admission 136U.",
+  "failure_recovery": "Read journal 0047 and Library interim-136v2. Do not rerun monolithic 136V2. Atomic R0-R6 + combine result are durable. Resume only cross-month-prior governor 136W.",
   "write_discipline": "Build MT5 V1 layer-by-layer with deterministic diagnostics. Persist each module/QA unit before the next dependent module. Do not redesign strategy logic during the engineering port."
 }
