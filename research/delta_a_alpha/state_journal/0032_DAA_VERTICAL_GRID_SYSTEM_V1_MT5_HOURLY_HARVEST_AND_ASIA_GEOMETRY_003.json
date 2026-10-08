@@ -1,0 +1,31 @@
+{
+  "sequence": 32,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_HOURLY_HARVEST_AND_ASIA_GEOMETRY_003",
+  "status": "COMPLETE_CI_PASS_OBSERVE_ONLY",
+  "predecessor": {
+    "sequence": 31,
+    "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SESSION_GEOMETRY_AND_EVENT_GENEALOGY_002",
+    "path": "research/delta_a_alpha/state_journal/0031_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SESSION_GEOMETRY_AND_EVENT_GENEALOGY_002.json"
+  },
+  "verification": {
+    "github_actions_run": 37741203005,
+    "conclusion": "SUCCESS",
+    "metaeditor_compile": "PENDING"
+  },
+  "decision": [
+    "session/MTF route proposals now attach to owned unit-002 events",
+    "Asia remains a separate geometry family",
+    "high-volume session events retain explicit UTC hour and 10-minute subphase",
+    "unit remains observe-only"
+  ],
+  "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_WATCHDOG_REGIME_RENEWAL_004",
+  "immutable_constraints": {
+    "symbol": "XAUUSD",
+    "lot_size": 0.01,
+    "martingale": false,
+    "loss_dependent_sizing": false,
+    "main_delta": "READ_ONLY",
+    "august_2026": "SEALED"
+  }
+}
