@@ -1,0 +1,48 @@
+{
+  "schema": "delta-a-alpha-max-chat-handoff-v1",
+  "created": "2026-10-08",
+  "reason": "MESSAGE_DELIVERY_TIMEOUTS_AND_MAX_CHAT_LENGTH",
+  "repository": "AnhTranHarris/gold-MUWHAHA-miner",
+  "branch": "delta-A-alpha",
+  "branch_head_at_handoff": "e0f5d4c9e22b1ebad87de2ae2e7a0e8e31e51702",
+  "last_complete": "DAA_APRIL_VERTICAL_GRID_DISCOVERY_136_FINAL",
+  "next_unit": "DAA_MAY_VERTICAL_GRID_DISCOVERY_137",
+  "august_2026": "SEALED",
+  "drive": {
+    "folder": "https://drive.google.com/drive/folders/1QJsGxJYPI9tgpxh3FdRk8KHf-6mF1C8N",
+    "documents": {
+      "read_first": "https://docs.google.com/document/d/1EXFgW92BCwkCofJtvwjqG_-XD4zYCQmk3m7fBp4TF_o/edit?usp=drivesdk",
+      "mission": "https://docs.google.com/document/d/1EfKH__TO8rK93_wiKEEqOMmYKt0-pUa0x_Rra4IyDfE/edit?usp=drivesdk",
+      "spine": "https://docs.google.com/document/d/1iTpVBsVBl8OcWshH0-OKAPVbF5rEFZjlPXVIGczfy-M/edit?usp=drivesdk",
+      "scoreboard": "https://docs.google.com/document/d/1jFCrfbac8F9AwxwTl8jOwhUtjOFU6j0Awk8EIE0Ht5o/edit?usp=drivesdk",
+      "april": "https://docs.google.com/document/d/1uWZhTwEHgX1zKUKGf--_VFuDeUG3zULDb2SuQvo6BUU/edit?usp=drivesdk",
+      "artifacts": "https://docs.google.com/document/d/1DzKhd5v3NqOWEYoCnU4SPUQu1s2FL08-OcDMAssWOFk/edit?usp=drivesdk",
+      "mt5": "https://docs.google.com/document/d/1Yj2yNa7hhdLhkUV4yLxA2p_RYRiTzOvk53Lx4fp-Cf8/edit?usp=drivesdk",
+      "data": "https://docs.google.com/document/d/1hB-MZOhWtYKinqOkoOY_j4rURH63qib6mOnTfGRBxWc/edit?usp=drivesdk",
+      "timeout": "https://docs.google.com/document/d/11tmTdWE2AHaD0dwCzJBHuvBH8P_qAo5qZ0YRxbhn88k/edit?usp=drivesdk",
+      "bootstrap": "https://docs.google.com/document/d/17ugcL1HQTXERaky7RTcKFK3hO3bIGdXAY80fMa1mpUw/edit?usp=drivesdk"
+    }
+  },
+  "durable_recovery": {
+    "april_rollback": {
+      "branch": "delta-A-alpha-april-136-complete",
+      "commit": "1a5c7851b9c65961f6ab2ca504b0126840a540cb"
+    },
+    "march_rollback": {
+      "branch": "delta-A-alpha-march-135-complete",
+      "commit": "06328b13f35f5fc5dd869713ab67fc49f926afdb"
+    },
+    "v1_architecture": {
+      "branch": "delta-A-alpha-v1-vertical-grid-spine",
+      "commit": "29a17553a436a9b6959ccf57c2ea10c4c183951a"
+    },
+    "mt5_skeleton": {
+      "branch": "delta-A-alpha-v1-mt5-skeleton-certified",
+      "commit": "c81539633a0becc0dfe053f84ef80e6462848cd5"
+    },
+    "april_library_recovery": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/recovery-archive/",
+    "april_helper_archive_sha256": "1f3ea46dca4889dfc0b5efea6ae10b37672573ab4c8d2f40041d8258851037fc",
+    "april_numeric_cache_archive_sha256": "641e33fe546ad78a2c6c6efdfe81c5b01f5b980b434d2de8f5a355cc171d3851"
+  },
+  "recovery_rule": "Read GitHub CURRENT_STATE + journal 0051/0050, then Drive 00-09. Never reconstruct completed Jan-Apr months from chat. Resume only May 137."
+}
