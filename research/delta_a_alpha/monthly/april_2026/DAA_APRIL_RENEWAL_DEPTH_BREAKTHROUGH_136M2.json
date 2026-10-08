@@ -1,0 +1,175 @@
+{
+  "schema": "delta-a-alpha-april-renewal-depth-breakthrough-v1",
+  "unit": "DAA_APRIL_RENEWAL_DEPTH_BREAKTHROUGH_136M2",
+  "status": "COMPLETE_DURABLE_INTERIM_BREAKTHROUGH",
+  "parent": "DAA_APRIL_VERTICAL_GRID_INTERIM_136K3",
+  "r9_synth": {
+    "net": 38353.96,
+    "trades": 31758,
+    "gross_loss": -2414.22,
+    "pf": 16.886688,
+    "win": 0.86759242,
+    "expectancy": 1.207694
+  },
+  "mechanic": "Renewal child depth is causal at entry. Preserve the protected quality core; fund productive renewal depths with independent chronological overlay capacity.",
+  "layer_findings": {
+    "1": {
+      "net": 1249.08,
+      "trades": 928,
+      "gross_loss": -6.58,
+      "pf": 190.83,
+      "win": 0.986
+    },
+    "2": {
+      "net": 941.85,
+      "trades": 914,
+      "gross_loss": -103.15,
+      "pf": 10.13,
+      "win": 0.8928
+    },
+    "3": {
+      "net": 1042.03,
+      "trades": 814,
+      "gross_loss": -2.13,
+      "pf": 490.2,
+      "win": 0.9963
+    },
+    "4": {
+      "net": 1050.8,
+      "trades": 811,
+      "gross_loss": 0,
+      "pf": "NO_REALIZED_LOSS",
+      "win": 1
+    },
+    "5": {
+      "net": 1075.18,
+      "trades": 811,
+      "gross_loss": 0,
+      "pf": "NO_REALIZED_LOSS",
+      "win": 1
+    },
+    "6": {
+      "net": 1087.77,
+      "trades": 811,
+      "gross_loss": 0,
+      "pf": "NO_REALIZED_LOSS",
+      "win": 1
+    },
+    "7": {
+      "net": 978.49,
+      "trades": 811,
+      "gross_loss": -2.78,
+      "pf": 352.97,
+      "win": 0.9716
+    },
+    "8": {
+      "net": 745.07,
+      "trades": 706,
+      "gross_loss": -42.35,
+      "pf": 18.59,
+      "win": 0.8725
+    },
+    "9": {
+      "net": 441.9,
+      "trades": 485,
+      "gross_loss": -76.45,
+      "pf": 6.78,
+      "win": 0.8103
+    },
+    "10": {
+      "net": -17.55,
+      "trades": 168,
+      "pf": 0.914
+    },
+    "11": {
+      "net": -809.4,
+      "trades": 140,
+      "pf": 0.04
+    },
+    "12": {
+      "net": -80.22,
+      "trades": 26,
+      "pf": 0
+    }
+  },
+  "corrected_frontiers": {
+    "max9_cap703": {
+      "net": 48612.93,
+      "trades": 13368,
+      "gross_loss": -2103.63,
+      "pf": 24.1091,
+      "win": 0.908662,
+      "expectancy": 3.6365,
+      "balance_dd": 156.07,
+      "equity_dd": 6156.54,
+      "maxopen": 703,
+      "positive_days": "23/23",
+      "positive_weeks": "5/5"
+    },
+    "max8_cap703": {
+      "net": 48177.53,
+      "trades": 12888,
+      "gross_loss": -2027.18,
+      "pf": 24.7658,
+      "win": 0.912399,
+      "expectancy": 3.7382,
+      "equity_dd": 6156.54,
+      "maxopen": 703
+    },
+    "max6_cap703": {
+      "net": 46741.08,
+      "trades": 11603,
+      "gross_loss": -1985.84,
+      "pf": 24.537,
+      "win": 0.9122,
+      "expectancy": 4.028,
+      "equity_dd": 3648.32,
+      "maxopen": 703
+    },
+    "max9_cap448": {
+      "net": 46313.14,
+      "trades": 11567,
+      "gross_loss": -2101.43,
+      "pf": 23.039,
+      "win": 0.895,
+      "equity_dd": 3920.19,
+      "maxopen": 448
+    },
+    "max8_cap128": {
+      "net": 42419.01,
+      "trades": 8391,
+      "gross_loss": -2021.93,
+      "pf": 21.98,
+      "win": 0.86843,
+      "expectancy": 5.055,
+      "equity_dd": 1795.91,
+      "maxopen": 176
+    },
+    "max7_cap92": {
+      "net": 41863.64,
+      "trades": 7901,
+      "gross_loss": -1982.87,
+      "pf": 22.11,
+      "win": 0.868751,
+      "expectancy": 5.299,
+      "equity_dd": 1792.16,
+      "maxopen": 176
+    }
+  },
+  "invalidation": {
+    "unit": "DAA_APRIL_RENEWAL_DEPTH_PORTFOLIO_136M_INITIAL",
+    "status": "INVALID_CAPPED_PORTFOLIO_NUMBERS",
+    "reason": "Overlay cap was applied in parent-generation order instead of chronological entry order. Layer diagnostics from 136L remain valid. 136M2 chronological replay supersedes every first-136M capped portfolio result."
+  },
+  "durable_library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/interim-136m2/",
+  "hashes": {
+    "layer_helper": "af9bb9e1c1f99cd860a7c46253aecc4f4e00c2938c548c0b3b57dca9bf6bdc77",
+    "layer_json": "62b9975abf3572e750dadda83a763d5f49f286f87e59a0d440b07fdfc2f81cb7",
+    "layer_stream": "649161d541b109836ef67970675d08d2959c5b01853f767ae76d50037f041d1a",
+    "invalid_136m_helper": "c2eea581e162df6e3782eccd1bb1efef26e358c5a228ae140d55917a37e211af",
+    "invalid_136m_json": "29737bcf2b886c2233171a05056aa7d56ecaa44eecc456004a1c7c9982370ed1",
+    "corrected_136m2_helper": "40095c4755da356b86c0e9b6efed31967ea7ffcab82f80e97361ad24549dff6c",
+    "corrected_136m2_json": "3b5c47b222a877a05ef9e2ac830cfdce7fead63010ab7a1ea37db80032dbfe22"
+  },
+  "next_unit": "DAA_APRIL_TIERED_RENEWAL_HEAT_GOVERNOR_136N"
+}
