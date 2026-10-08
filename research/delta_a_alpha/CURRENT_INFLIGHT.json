@@ -2,16 +2,16 @@
   "schema": "delta-a-alpha-inflight-v5",
   "authority": "APPEND_ONLY_STATE_JOURNAL",
   "state": "IDLE_READY",
-  "last_completed": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_WATCHDOG_REGIME_RENEWAL_004",
+  "last_completed": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_NATIVE_ROUTING_AND_RECOVERY_005",
   "current_unit": null,
-  "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_NATIVE_ROUTING_AND_RECOVERY_005",
-  "journal_entry": "research/delta_a_alpha/state_journal/0033_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_WATCHDOG_REGIME_RENEWAL_004.json",
+  "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_PROPOSAL_ARBITER_AND_HEAT_GOVERNOR_006",
+  "journal_entry": "research/delta_a_alpha/state_journal/0034_DAA_VERTICAL_GRID_SYSTEM_V1_MT5_NATIVE_ROUTING_AND_RECOVERY_005.json",
   "accepted_floor": {
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
     "version": "V1",
     "spec": "research/delta_a_alpha/architecture/DAA_VERTICAL_GRID_SYSTEM_V1_SPEC.md",
     "manifest": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MANIFEST.json"
   },
-  "failure_recovery": "Read journal 0033 and unit-004 report/manifest. Do not rebuild Watchdog from chat. Resume only unit 005 native routing + wrong-direction recovery.",
+  "failure_recovery": "Read journal 0034 and unit-005 report/manifest. Do not rebuild native/recovery from chat. Resume only proposal arbiter + heat governor unit 006.",
   "write_discipline": "Build MT5 V1 layer-by-layer with deterministic diagnostics. Persist each module/QA unit before the next dependent module. Do not redesign strategy logic during the engineering port."
 }
