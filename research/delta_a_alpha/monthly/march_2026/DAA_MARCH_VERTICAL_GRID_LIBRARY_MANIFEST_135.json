@@ -1,0 +1,37 @@
+{
+  "schema": "delta-a-alpha-march-vertical-grid-library-manifest-v1",
+  "unit": "DAA_MARCH_VERTICAL_GRID_DISCOVERY_135",
+  "status": "DURABLE_RECOVERY_COMPLETE",
+  "github": {
+    "discovery_json": "research/delta_a_alpha/monthly/march_2026/DAA_MARCH_VERTICAL_GRID_DISCOVERY_135.json",
+    "discovery_md": "research/delta_a_alpha/monthly/march_2026/DAA_MARCH_VERTICAL_GRID_DISCOVERY_135.md",
+    "cells_json": "research/delta_a_alpha/monthly/march_2026/DAA_MARCH_VERTICAL_GRID_CELLS_135.json",
+    "replay_py": "research/delta_a_alpha/monthly/march_2026/daa_march_vertical_grid_replay_135.py"
+  },
+  "library": {
+    "dir": "/xauusd-trading-bot/delta-A-alpha/monthly/march_2026/vertical-grid-135/",
+    "required": [
+      "DAA_MARCH_VERTICAL_GRID_DISCOVERY_135.json",
+      "DAA_MARCH_VERTICAL_GRID_DISCOVERY_135.md",
+      "DAA_MARCH_VERTICAL_GRID_CELLS_135.json",
+      "DAA_MARCH_VERTICAL_GRID_STREAMS_135.npz",
+      "DAA_MARCH_VERTICAL_GRID_REPLAY_135.json",
+      "daa_march_vertical_grid_replay_135.py",
+      "build_mar_state_cache_135.py",
+      "build_mar_tick_cache_135.py",
+      "cache_mar_month_135.py",
+      "cache_mar_month_135_fast.py",
+      "cache_mar_watchdog_parents_135a.py",
+      "mar_watchdog_refine_135a.py",
+      "mar_tick_cache_135.json",
+      "mar_state_cache_135.json"
+    ],
+    "stream_sha256": "9b16fe06de5b3f85d2f8ea03eaff661de65d15485fd7cbc6563ba029335b795e"
+  },
+  "drive": {
+    "folder": "https://drive.google.com/drive/folders/1dO6CsGjvWfdkY3JutMoyVzzRCpAJRXSi",
+    "read_first": "https://docs.google.com/document/d/1zLe8e8EgND8Lg96uHX8UkeECtH9tZOcv15Vl90gEsEc/edit?usp=drivesdk"
+  },
+  "recovery_rule": "Never reconstruct March from chat if these durable bytes exist. Replay portfolio accounting from STREAMS_135.npz + replay helper. Use CELLS_135.json for exact March selection evidence. Reparse raw March ticks only for explicit audit or new research.",
+  "next": "DAA_APRIL_VERTICAL_GRID_DISCOVERY_136"
+}
