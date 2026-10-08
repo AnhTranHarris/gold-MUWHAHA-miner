@@ -1,0 +1,30 @@
+{
+  "schema": "delta-a-alpha-v1-mt5-unit005-manifest-v1",
+  "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_NATIVE_ROUTING_AND_RECOVERY_005",
+  "status": "COMPLETE_CI_PASS_OBSERVE_ONLY",
+  "ea_blob_sha": "8e5f77091f729e8eb8361b8a18af6bc47916d851",
+  "qa_blob_sha": "27a2c21d95674582957a28132556cb777d5ceeb8",
+  "github_actions": {
+    "run_id": 37742212874,
+    "conclusion": "success"
+  },
+  "native_modes": [
+    "NATIVE_MACRO_CONTINUATION",
+    "NATIVE_LOWER_TAKEOVER",
+    "NATIVE_PULLBACK_RECLAIM",
+    "NATIVE_MACRO_SPLIT_TRANSFER"
+  ],
+  "recovery": {
+    "ignition_seconds": 2,
+    "required_favorable": 1.25,
+    "campaign_seconds": 120,
+    "mode": "SHADOW_ONLY"
+  },
+  "execution": {
+    "order_send_path": false
+  },
+  "compile": {
+    "metaeditor": "PENDING"
+  },
+  "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_PROPOSAL_ARBITER_AND_HEAT_GOVERNOR_006"
+}
