@@ -61,6 +61,14 @@ enum DAA_V1_CLOCK_MODE
    DAA_CLOCK_RAW_TESTER=2
 };
 
+enum DAA_V1_CYCLE_REASON
+{
+   DAA_CYCLE_INIT=0,
+   DAA_CYCLE_SESSION_HANDOFF=1,
+   DAA_CYCLE_GEOMETRY_CHANGE=2,
+   DAA_CYCLE_MAX_AGE=3
+};
+
 input group "V1 identity / safety"
 input double InpLots=0.01;
 input ulong  InpMagic=761001;
@@ -78,6 +86,7 @@ input int InpSlowEmaPeriod=21;
 input group "V1 session grid / genealogy"
 input int InpMaxCycleAgeMinutes=720;
 input int InpMaxTouchKeys=8192;
+input int InpMaxEventRecords=8192;
 
 input group "V1 diagnostics"
 input bool InpDiagnostics=true;
@@ -92,6 +101,7 @@ struct DAAV1Context
    DAA_V1_SESSION session;
    double session_gap;
    bool cycle_restarted;
+   int cycle_restart_reason;
    long cycle_generation;
    bool event_created;
    bool event_duplicate;
@@ -134,8 +144,26 @@ struct DAAV1TouchKey
    int direction;
 };
 
+struct DAAV1GridEventRecord
+{
+   ulong event_id;
+   long cycle_generation;
+   long birth_utc_ms;
+   DAA_V1_SESSION session;
+   int from_cell;
+   int to_cell;
+   int landing_cell;
+   int direction;
+   double boundary;
+   int h4;
+   int h1;
+   int m15;
+   int m5;
+};
+
 DAAV1GridCycle g_grid_cycle={};
 DAAV1TouchKey g_touch_keys[];
+DAAV1GridEventRecord g_event_records[];
 ulong g_event_sequence=0;
 
 int g_h4_fast=INVALID_HANDLE, g_h4_slow=INVALID_HANDLE;
@@ -277,9 +305,15 @@ void ResetTouchMemory()
    ArrayResize(g_touch_keys,0);
 }
 
+void ResetGenealogyMemory()
+{
+   ArrayResize(g_event_records,0);
+}
+
 void ResetEventContext(DAAV1Context &c)
 {
    c.cycle_restarted=false;
+   c.cycle_restart_reason=-1;
    c.cycle_generation=g_grid_cycle.generation;
    c.event_created=false;
    c.event_duplicate=false;
@@ -291,7 +325,7 @@ void ResetEventContext(DAAV1Context &c)
    c.grid_boundary=0.0;
 }
 
-void RestartGridCycle(DAAV1Context &c)
+void RestartGridCycle(DAAV1Context &c,const DAA_V1_CYCLE_REASON reason)
 {
    g_grid_cycle.initialized=true;
    g_grid_cycle.active=(c.session_gap>0.0);
@@ -303,13 +337,15 @@ void RestartGridCycle(DAAV1Context &c)
    g_grid_cycle.gap=c.session_gap;
    g_grid_cycle.last_cell=0;
    ResetTouchMemory();
+   ResetGenealogyMemory();
 
    c.cycle_restarted=true;
+   c.cycle_restart_reason=(int)reason;
    c.cycle_generation=g_grid_cycle.generation;
 
    if(InpVerbose)
-      PrintFormat("DAA_V1: cycle restart gen=%I64d session=%s anchor=%.5f gap=%.5f active=%d",
-                  g_grid_cycle.generation,SessionName(c.session),
+      PrintFormat("DAA_V1: cycle restart gen=%I64d reason=%d session=%s anchor=%.5f gap=%.5f active=%d",
+                  g_grid_cycle.generation,(int)reason,SessionName(c.session),
                   g_grid_cycle.anchor_mid,g_grid_cycle.gap,(int)g_grid_cycle.active);
 }
 
@@ -320,16 +356,35 @@ void UpdateSessionGridCycle(DAAV1Context &c)
 {
    ResetEventContext(c);
 
-   bool restart=!g_grid_cycle.initialized;
-   if(!restart && g_grid_cycle.session!=c.session) restart=true;
-   if(!restart && MathAbs(g_grid_cycle.gap-c.session_gap)>1e-12) restart=true;
-   if(!restart && InpMaxCycleAgeMinutes>0)
+   bool restart=false;
+   DAA_V1_CYCLE_REASON reason=DAA_CYCLE_INIT;
+
+   if(!g_grid_cycle.initialized)
+   {
+      restart=true;
+      reason=DAA_CYCLE_INIT;
+   }
+   else if(g_grid_cycle.session!=c.session)
+   {
+      restart=true;
+      reason=DAA_CYCLE_SESSION_HANDOFF;
+   }
+   else if(MathAbs(g_grid_cycle.gap-c.session_gap)>1e-12)
+   {
+      restart=true;
+      reason=DAA_CYCLE_GEOMETRY_CHANGE;
+   }
+   else if(InpMaxCycleAgeMinutes>0)
    {
       const long max_age=(long)InpMaxCycleAgeMinutes*60000L;
-      if(c.utc_ms-g_grid_cycle.start_utc_ms>=max_age) restart=true;
+      if(c.utc_ms-g_grid_cycle.start_utc_ms>=max_age)
+      {
+         restart=true;
+         reason=DAA_CYCLE_MAX_AGE;
+      }
    }
 
-   if(restart) RestartGridCycle(c);
+   if(restart) RestartGridCycle(c,reason);
    else
    {
       g_grid_cycle.last_utc_ms=c.utc_ms;
@@ -366,6 +421,37 @@ bool RegisterTouchOwnership(const int cell,const int direction)
    g_touch_keys[n].cell=cell;
    g_touch_keys[n].direction=direction;
    return true;
+}
+
+bool RecordGenealogyEvent(const DAAV1Context &c)
+{
+   const int n=ArraySize(g_event_records);
+   if(n>=InpMaxEventRecords)
+   {
+      V1Log("event-genealogy capacity reached; event remains diagnostic-only until cycle restart");
+      return false;
+   }
+   if(ArrayResize(g_event_records,n+1)!=n+1) return false;
+
+   g_event_records[n].event_id=c.event_id;
+   g_event_records[n].cycle_generation=c.cycle_generation;
+   g_event_records[n].birth_utc_ms=c.utc_ms;
+   g_event_records[n].session=c.session;
+   g_event_records[n].from_cell=c.grid_from_cell;
+   g_event_records[n].to_cell=c.grid_to_cell;
+   g_event_records[n].landing_cell=c.grid_landing_cell;
+   g_event_records[n].direction=c.crossing_direction;
+   g_event_records[n].boundary=c.grid_boundary;
+   g_event_records[n].h4=c.h4;
+   g_event_records[n].h1=c.h1;
+   g_event_records[n].m15=c.m15;
+   g_event_records[n].m5=c.m5;
+   return true;
+}
+
+int ActiveCycleEventCount()
+{
+   return ArraySize(g_event_records);
 }
 
 // [V1-12] One session-grid event maximum per market tick.
@@ -406,6 +492,10 @@ void ManufactureFirstTouchEvent(DAAV1Context &c)
    g_event_sequence++;
    c.event_created=true;
    c.event_id=g_event_sequence;
+
+   // Snapshot the original completed MTF/session context at birth. Higher layers
+   // consume this record rather than recomputing historical ownership later.
+   RecordGenealogyEvent(c);
 }
 
 bool ReadCompletedEmaTrend(const int fast_handle,const int slow_handle,int &trend)
@@ -507,7 +597,9 @@ void WriteDiagnostic(const DAAV1Context &c)
       SessionName(c.session),
       DoubleToString(c.session_gap,2),
       c.cycle_restarted?1:0,
+      c.cycle_restart_reason,
       c.cycle_generation,
+      ActiveCycleEventCount(),
       c.event_created?1:0,
       c.event_duplicate?1:0,
       c.event_id,
@@ -580,7 +672,7 @@ int OnInit()
       return INIT_PARAMETERS_INCORRECT;
    }
    if(InpGlobalMaxPositions<1 || InpFastEmaPeriod<1 || InpSlowEmaPeriod<=InpFastEmaPeriod ||
-      InpMaxCycleAgeMinutes<1 || InpMaxTouchKeys<16)
+      InpMaxCycleAgeMinutes<1 || InpMaxTouchKeys<16 || InpMaxEventRecords<16)
       return INIT_PARAMETERS_INCORRECT;
    if(InpClockMode==DAA_CLOCK_FIXED_OFFSET &&
       (InpFixedQuoteUtcOffsetMinutes<-840 || InpFixedQuoteUtcOffsetMinutes>840))
@@ -602,7 +694,8 @@ int OnInit()
       if(g_diag!=INVALID_HANDLE)
       {
          FileWrite(g_diag,"utc_ms","bid","ask","session","session_gap",
-                   "cycle_restarted","cycle_generation","event_created","event_duplicate","event_id",
+                   "cycle_restarted","cycle_restart_reason","cycle_generation","active_cycle_events",
+                   "event_created","event_duplicate","event_id",
                    "grid_from_cell","grid_to_cell","grid_landing_cell","crossing_direction","grid_boundary",
                    "h4","h1","m15","m5","mtf_ready","high_volume","asia_geometry","watchdog_ready","native_ready",
                    "recovery_ready","risk_state","open_positions");
@@ -610,6 +703,7 @@ int OnInit()
    }
 
    ResetTouchMemory();
+   ResetGenealogyMemory();
    g_grid_cycle.initialized=false;
    g_grid_cycle.generation=0;
    g_event_sequence=0;
@@ -626,6 +720,7 @@ void OnDeinit(const int reason)
    ReleaseOne(g_m5_fast); ReleaseOne(g_m5_slow);
    if(g_diag!=INVALID_HANDLE){ FileClose(g_diag); g_diag=INVALID_HANDLE; }
    ResetTouchMemory();
+   ResetGenealogyMemory();
    V1Log(StringFormat("deinit reason=%d",reason));
 }
 
