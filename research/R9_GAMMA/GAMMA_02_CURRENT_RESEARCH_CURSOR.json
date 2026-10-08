@@ -1,9 +1,9 @@
 {
-  "schema": "r9-gamma-02-research-cursor-v33",
+  "schema": "r9-gamma-02-research-cursor-v34",
   "state": "IDLE_READY_ATOMIC_BOUNDARY",
   "branch": "carson/r9-gamma-02-velocity-geometry-research",
-  "latest_completed": "GAMMA_02_FEB_ADAPTIVE_META_ROUTER_BREAKTHROUGH_133B",
-  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_FEB_ADAPTIVE_META_ROUTER_BREAKTHROUGH_133B.md",
+  "latest_completed": "GAMMA_02_CROSSMONTH_EXPERT_ENSEMBLE_BREAKTHROUGH_133C_G1",
+  "latest_checkpoint": "research/R9_GAMMA/GAMMA_02_CROSSMONTH_EXPERT_ENSEMBLE_BREAKTHROUGH_133C.md",
   "current_scientific_base": {
     "candidate": "GAMMA02_DYNAMIC_RENEWAL_WATCHDOG_119",
     "frozen_params": {
@@ -131,12 +131,13 @@
     "warmup_leakage_103_104": "CRITICAL: 103/104 February authority suspended. Nominal February stream had 36,355 entries but only 102 entries actually in February after absolute-time filtering; prior +$43.9K result was warmup leakage.",
     "target_gate_083": "083 target-gated audit: Jan cap703 +$48,766.62 / 32,862; Feb +$4,193.52 / 7,020; Mar -$9,480.91 / 6,727. Prior frozen February +$52.96K was warmup-contaminated."
   },
-  "first_incomplete_unit": "GAMMA_02_CROSSMONTH_EXPERT_ENSEMBLE_ARBITER_133C",
+  "first_incomplete_unit": "GAMMA_02_CROSSMONTH_EXPERT_ENSEMBLE_RISK_REFINEMENT_133C2",
   "next_units": [
-    "Build deterministic crossmonth expert ensemble: January Watchdog/session core + February-native specialist + March-native specialist if exact durable bytes are available",
-    "Run all experts continuously in shadow; use fast/slow realized evidence, guarded fresh-session capacity, and drift demotion/promotion hysteresis",
-    "Optimize design on February without month labels; March remains OOS validation gate",
-    "Regression-test frozen January milestone before any promotion",
+    "Run tighter expert-level session-aware fast/slow gate variants in single atomic blocks",
+    "Recompute full-tick equity DD on Pareto finalists",
+    "Add trend-within-trend/HTF state-aware capacity allocation only if it improves risk without losing February/March SYNTH-beating net",
+    "Regression-gate January frozen milestone",
+    "Then freeze cross-month milestone before April",
     "August sealed"
   ],
   "constraints": {
@@ -146,7 +147,7 @@
     "martingale": false,
     "loss_dependent_sizing": false
   },
-  "recovery_rule": "Crash-recovery checkpoint 133B is durable. Read GAMMA_02_FEB_ADAPTIVE_META_ROUTER_BREAKTHROUGH_133B.md + JSON, exact saved helpers/results, February 132A, March 133A, and January fallback. Do not reconstruct 133B from chat memory. February best +77.29K is real but its frozen rules fail March; never promote it as universal. Resume only crossmonth expert-ensemble arbiter 133C. Preserve January fallback branch. August remains sealed.",
+  "recovery_rule": "MAJOR 133C G1 CROSSMONTH BREAKTHROUGH EXISTS. Read GAMMA_02_CROSSMONTH_EXPERT_ENSEMBLE_BREAKTHROUGH_133C.md and this cursor. Do not reconstruct from chat. February +71884.88 and March +86864.48 both exceed time-matched R9 SYNTH monthly net. Resume only 133C2 risk/Pareto refinement in single atomic Python blocks; avoid parallel ensemble processes because memory kills were observed. January fallback remains untouched. August sealed.",
   "exact_january_r9_synth": {
     "net": 41520.82,
     "trades": 27980,
@@ -512,7 +513,7 @@
     "execution_surface": "Dukascopy midpoint + frozen session-P75 normalized spread; Python research only; not raw-Dukascopy fill parity or Coinexx MT5 certification",
     "critical_remaining_issue": "Full-tick equity DD remains ~62763.84, dominated by synchronized Watchdog W05 inventory. Next work must improve profit per unit of heat rather than broaden session inventory."
   },
-  "cursor_parent_head": "ff9bdf2591aa15a8d779504968b8b86ea84b4364",
+  "cursor_parent_head": "eaf154d5c51a7f95af2c4f60cf86bbe26bcc7349",
   "january_reexamination_131e": {
     "status": "DURABLE_COMPLETE",
     "parent": "GAMMA_02_JAN_SESSION_FIRM_DAILY_WEEKLY_131D",
@@ -911,5 +912,80 @@
       "universal_native_lifecycle": "REJECTED_DEEPLY_NEGATIVE"
     },
     "critical_finding": "February adaptive shadow learner can exceed February R9 SYNTH monthly net, but static frozen score-band logic catastrophically degrades in March due to newly appearing toxic source/session states. Use expert ensemble + guarded shadow certification, not one universal learner."
+  },
+  "crossmonth_expert_ensemble_133c": {
+    "status": "DURABLE_MAJOR_BREAKTHROUGH_RISK_REFINEMENT_OPEN",
+    "architecture": "session/HTF state -> shadow expert ensemble -> fast/slow realized evidence -> earned physical capacity -> global heat cap",
+    "no_learner_control": {
+      "feb": {
+        "net": 61591.37,
+        "trades": 28273,
+        "pf": 4.1576865065,
+        "gross_loss": -19505.22,
+        "positive_weeks": 4
+      },
+      "mar": {
+        "net": 81350.01,
+        "trades": 23228,
+        "pf": 4.4554195711,
+        "gross_loss": -23542.73,
+        "positive_weeks": 5
+      }
+    },
+    "g1": {
+      "params": {
+        "fw": 4,
+        "sw": 32,
+        "min_session": 8,
+        "off_mean": 0,
+        "off_pf": 0.9,
+        "off_loss": -20,
+        "slow_off": -0.25,
+        "on_mean": 0.5,
+        "on_pf": 1.1,
+        "slow_on": 0
+      },
+      "feb": {
+        "net": 71884.88000236772,
+        "trades": 30059,
+        "gross_loss": -20509.47999858819,
+        "pf": 4.504958682878164,
+        "win": 0.8866895106290961,
+        "expectancy": 2.3914594631347588,
+        "balance_dd": 2633.730000000076,
+        "positive_days": 14,
+        "beat_days": 7,
+        "positive_weeks": 4,
+        "beat_weeks": 2
+      },
+      "mar": {
+        "net": 86864.48000382655,
+        "trades": 25440,
+        "gross_loss": -32993.270017303075,
+        "pf": 3.632793898824552,
+        "win": 0.84375,
+        "expectancy": 3.4144842768799744,
+        "balance_dd": 7855.200010299683,
+        "positive_days": 14,
+        "beat_days": 8,
+        "positive_weeks": 5,
+        "beat_weeks": 4
+      },
+      "feb_synth_net": 66213.65,
+      "mar_synth_net": 75698.63,
+      "feb_capture": 1.0856472878,
+      "mar_capture": 1.1475045296,
+      "helper": "research/R9_GAMMA/helpers/expert_gate_133c.py",
+      "helper_sha256": "e1072d3a314a445973c1d49b62233820c84c96b9dd9e23e0a7312fe1dd81081b",
+      "result": "research/R9_GAMMA/artifacts/expert_gate_133c_G1.json",
+      "result_sha256": "fa9ba09864c66e6c6618ac6c9ddcce1702ec5d3e9200016064f23068e0357f0b",
+      "framework_helper": "research/R9_GAMMA/helpers/crossmonth_micro_ensemble_133c.py",
+      "framework_sha256": "1a6443a5aadbc00be1aa8b53a91281088c0d8172d8199e049885b549331421d3",
+      "checkpoint": "research/R9_GAMMA/GAMMA_02_CROSSMONTH_EXPERT_ENSEMBLE_BREAKTHROUGH_133C.md",
+      "checkpoint_sha256": "4f2107395c83bbb6c75ef7ab6a20aff45644688953004595ef8137c1991e962a",
+      "library_root": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-08/crossmonth-expert-ensemble-133c/"
+    },
+    "caveat": "Economic breakthrough only. Gross loss/DD still materially worse than SYNTH; full-tick equity DD pending. Do not promote to deployable winner yet.",
+    "timeout_policy": "single atomic configs only; persist after each completed frontier; no parallel ensemble processes"
   }
 }
