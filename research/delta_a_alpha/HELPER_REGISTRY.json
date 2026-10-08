@@ -1,5 +1,5 @@
 {
-  "schema": "delta-a-alpha-helper-registry-v3",
+  "schema": "delta-a-alpha-helper-registry-v4",
   "policy": "persist_on_value",
   "parent_commit": "ac91fc43389a34f8ba380b58143f8e185589b106",
   "cleanup": {
@@ -214,9 +214,39 @@
       "status": "DURABLE",
       "path": "research/delta_a_alpha/state_journal/0024_DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_REFINEMENT_001.json",
       "purpose": "authoritative accepted refinement and timeout-journal reconciliation"
+    },
+    {
+      "id": "P-VGRID-V1-OVERRIDE",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/DAA_OWNER_OVERRIDE_VERTICAL_GRID_V1_20261008.md",
+      "purpose": "owner authorization and narrow provenance exception for V1"
+    },
+    {
+      "id": "S-VGRID-V1",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/architecture/DAA_VERTICAL_GRID_SYSTEM_V1_SPEC.md",
+      "purpose": "permanent V1 architecture specification"
+    },
+    {
+      "id": "W-VGRID-V1",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/whitepapers/DAA_VERTICAL_GRID_SYSTEM_V1_WHITEPAPER.md",
+      "purpose": "GitHub human-readable V1 whitepaper mirror"
+    },
+    {
+      "id": "A-VGRID-V1",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MANIFEST.json",
+      "purpose": "machine-readable permanent spine manifest"
+    },
+    {
+      "id": "J-VGRID-V1-0028",
+      "status": "DURABLE",
+      "path": "research/delta_a_alpha/state_journal/0028_DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001.json",
+      "purpose": "authoritative V1 architecture-freeze state checkpoint"
     }
   ],
-  "rule": "Register durable helpers/results before dependent work. Deleted legacy January refinements may be consulted only from rollback branches and cannot become active floor without fresh system-order validation.",
+  "rule": "Register durable helpers/results before dependent work. Vertical Grid System V1 is now the permanent architecture floor. Older Delta-A-alpha STMR artifacts remain forensic/pre-V1 evidence. V2+ may refine V1 layers but may not silently flatten the spine.",
   "timeout_rule": "Persist one bounded unit, verify it, then advance cursor.",
   "note_build02_replay": "Portable local January replay reproduced STMR-001 exactly; GitHub mutation safety rejected the large executable/result payload, so durable architecture/report/journal remain the accepted authority and the local helper hash is recorded in the report.",
   "note_build02_refinement": "STMR_SLEEVE_PHASE_001 supersedes STMR-001 economically on January. Integration logic is durable in grid_system_session_timeframe.py; exact local ordered-tick replay helper SHA-256 943b62c4be0e84185ad9c61577d4d3dd14ce51b2cafcfb7829c47a2910ff0216."
