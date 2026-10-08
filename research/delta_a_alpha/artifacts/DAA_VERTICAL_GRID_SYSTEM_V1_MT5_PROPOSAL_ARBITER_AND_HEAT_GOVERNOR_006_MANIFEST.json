@@ -1,0 +1,33 @@
+{
+  "schema": "delta-a-alpha-v1-mt5-unit006-manifest-v1",
+  "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_PROPOSAL_ARBITER_AND_HEAT_GOVERNOR_006",
+  "status": "COMPLETE_CI_PASS_NO_ORDER_SEND",
+  "ea_blob_sha": "8dcbcb54d30b8939e0fe4d2c85c9c71a82f47c73",
+  "qa_blob_sha": "f66830e98535443c43c91f333e1535b542191afe",
+  "github_actions": {
+    "run_id": 37742683056,
+    "conclusion": "success"
+  },
+  "arbiter": {
+    "sources": [
+      "SESSION",
+      "WATCHDOG",
+      "NATIVE",
+      "RECOVERY"
+    ],
+    "conflict_policy": "FAIL_CLOSED",
+    "same_direction": "MERGE"
+  },
+  "caps": {
+    "global": 620,
+    "session_defaults": 620,
+    "layer_defaults": 620
+  },
+  "execution": {
+    "order_send_path": false
+  },
+  "compile": {
+    "metaeditor": "PENDING"
+  },
+  "next_unit": "DAA_VERTICAL_GRID_SYSTEM_V1_MT5_SKELETON_CERTIFICATION_007"
+}
