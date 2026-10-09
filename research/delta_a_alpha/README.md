@@ -1,5 +1,9 @@
 # Delta-A-alpha
 
+## **NEW FIRST ACTION — 2026-10-08 FULL SOURCE-LOCKED HANDOFF 037**
+
+**Open [Google Drive complete handoff](https://drive.google.com/drive/folders/1MSHKZyFMb0petqXFYBhGgFTvnzDS9V8Q) and [state journal 0057](state_journal/0057_DAA_FULL_HOFF_037_JAN036_RECOVERED.json) FIRST.** Next read [full 00 READ FIRST](handoff/037/00_READ_FIRST_DO_NOT_REBUILD.md), the unchanged owner V1 whitepaper, source map and the 11-volume backup manifest. All 1,584 accessible source files/links/temp files are preserved in Drive volumes; 2 August-bearing inputs excluded under SEALED rule. Latest recovered January research unit 036 (159 screens, eight selected detailed replays) is **not** original funded parent/child V1 parity. Next mandatory engineering unit remains `DAA_JAN1_FULL_V1_PHYSICAL_FUNDED_GENEALOGY_REPAIR_AND_PARITY_033`. Do not repeat fixed-tape 034–036 sweeps or replace original L0–L7 logic. CI whitepaper/startup hardlock remains mandatory.
+
 ## OWNER CURRENT AUTHORITY — V1 original source hard lock / JANUARY 1 startup (2026-10-08)
 
 **Read [journal 0052](state_journal/0052_DAA_V1_HARDLOCK_JAN1_RESTART_031.json) first.** It supersedes prior **February 1** deployment timing and pauses May 137 by explicit owner instruction. Current next unit: `DAA_JAN1_FULL_V1_SOURCE_PARITY_AND_5MIN_DEPLOYMENT_REPLAY_032`.
