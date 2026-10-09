@@ -10,9 +10,9 @@
     "durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "mode": "READ_ONLY"
   },
-  "current_phase": "JAN032_ORIGINAL_SOURCE_BIDASK_REPLAY_COMPLETE_FULL_V1_PARITY_033_NEXT",
+  "current_phase": "ORIGINAL_V1_JAN32_SOURCE_REPLAY_COMPLETE_PHYSICAL_PARITY_NEXT",
   "last_verified_durable_unit": "DAA_JANUARY_ORIGINAL_SOURCE_BIDASK_REPLAY_AND_JANJUL_CORRELATION_BASELINE_032",
-  "first_incomplete_unit": "DAA_JAN_V1_FUNDED_GENEALOGY_FULL_SPINE_PARITY_033",
+  "first_incomplete_unit": "DAA_JAN1_FULL_V1_PHYSICAL_FUNDED_GENEALOGY_REPAIR_AND_PARITY_033",
   "active_candidate": "STMR_SLEEVE_PHASE_001",
   "owner_constraints": {
     "symbol": "XAUUSD",
@@ -119,9 +119,9 @@
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
     "latest_sequence": 53,
-    "latest_entry": "research/delta_a_alpha/state_journal/0053_DAA_JAN_032_ORIGINAL_SOURCE_REAL_QUOTE_REPLAY.json"
+    "latest_entry": "research/delta_a_alpha/state_journal/0053_DAA_JAN032_ORIGINAL_SOURCE_TICK_REPLAY_RECOVERED.json"
   },
-  "restart_instruction": "OWNER JOURNAL 0053 supersedes older 0052 next pointer, original whitepaper 030 and Jan032 source-and-quote QA. Next Jan033 build original whole L0-L7 physically funded tick ledger + L5/L6 and broker margin and Dec2025 H4/H1 warmup; no promotion of 131E P75/raw source partial as full V1. August SEALED, September RESERVED.",
+  "restart_instruction": "IMPORTANT: Start state journal 0053 -> 0052 -> read FULL owner 14232-char V1 whitepaper and Jan032 source report on delta-A-alpha-jan032-original-source-quote-replay; full tar package in Project Library full-original-source-quote-replay-032. Do not rerun Jan032 original unless implementing causally different funded ledger. Next 033 physical funding / 640 same-tick child multiplicity / full native/recovery/margin; Jan1 five-minute pre-T0 history still blocked. Preserve original architecture, April science, production delta read-only, August SEALED.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -385,7 +385,9 @@
     "scientific_blind_status": "JANUARY_ALREADY_EXPOSED_HISTORICAL_ASOF_DEVELOPMENT_NOT_UNTOUCHED_HOLDOUT",
     "prior_incomplete_month": "DAA_MAY_VERTICAL_GRID_DISCOVERY_137_PAUSED_BY_OWNER_FOR_JAN_RESTART",
     "august_holdout": "SEALED",
-    "september_holdout": "RESERVED"
+    "september_holdout": "RESERVED",
+    "next_source_parity_unit": "DAA_JAN1_FULL_V1_PHYSICAL_FUNDED_GENEALOGY_REPAIR_AND_PARITY_033",
+    "current_research_result": "Original January 131E source + actual Dukascopy quotes + R9 comparison reproduced; portfolio funded genealogy, full original L0-L7 and Coinexx execution NOT certified"
   },
   "owner_current_jan032": {
     "full_report": "research/delta_a_alpha/monthly/january_2026/DAA_JANUARY_032_FULL_SOURCE_REPLAY_AND_R9_COMPARISON.md",
