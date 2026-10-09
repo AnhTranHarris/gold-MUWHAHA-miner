@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 60,
-    "latest_entry": "research/delta_a_alpha/state_journal/0060_DAA_FEB042_ITERATIVE_REGIME_RESEARCH.json"
+    "latest_sequence": 61,
+    "latest_entry": "research/delta_a_alpha/state_journal/0061_DAA_FEB043_CAPITAL_EFFICIENCY_RESEARCH.json"
   },
-  "restart_instruction": "Read journal 0060, FEB042 read-first AND complete literal V1 owner whitepaper. FEB042 February in-sample 305 screens. 512-position modeled research +76032 net/14535/PF3.488/GL-30561/DD14715 (6 orders/sec); high-inventory source-model +204908/36261/DD88030/3794 maxopen is NOT DEPLOYABLE. Full owner V1 economic baseline still BLOCKED until endogenous funded Watchdog + L5/L6/L7 broker parity 033. No February automatic regime promotion, no August/Sep use; original V1 and Delta unchanged.",
+  "restart_instruction": "Read journal 0061, FEB043 handoff and full unabridged owner V1 L0-L7 whitepaper. February fitted research using original-source proposal tape: balanced1536 net +209415.695/trades39270/gross-loss-56733.545/PF4.691/DD25651.986; lower-loss1792 net206234.332/gross-loss-42068.043/DD25651.986; velocity1536 net224695.205/trades49619/DD29831.936; 7 independent exact full tick QA PASS, 344 screens. These are NOT actual broker/full owner V1/endogenous funded Watchdog; 8-10 modeled fills/sec or 1536+ simultaneous positions are NOT small-account ready; next 033. Original V1, Delta and EA unchanged. August SEALED September RESERVED.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -499,5 +499,78 @@
     },
     "source_historical_fixed_tape": true,
     "automatic_february_activation": false
+  },
+  "feb043_capital_efficiency_research": {
+    "status": "FROZEN_FEBRUARY_IN_SAMPLE_SOURCE_REPLAY_ONLY_NOT_PROMOTED",
+    "read_first": "research/delta_a_alpha/monthly/february_2026/feb043_efficiency/FEB043_HANDOFF_READ_FIRST.md",
+    "report": "research/delta_a_alpha/monthly/february_2026/feb043_efficiency/FEB043_RESEARCH_REPORT.md",
+    "qa": "research/delta_a_alpha/monthly/february_2026/feb043_efficiency/FEB043_FINAL_QA.json",
+    "runner": "research/delta_a_alpha/monthly/february_2026/feb043_efficiency/feb043_replay.py",
+    "library_zip": "/xauusd-trading-bot/delta-A-alpha/monthly/february_2026/feb043-source-capital-regime-efficiency/FEB043_XAUUSD_FEBRUARY_RISK_REFINEMENT_BUNDLE.zip",
+    "retained_research_frontiers": {
+      "balanced1536": {
+        "net": 209415.695,
+        "gross_loss": -56733.545,
+        "gross_profit": 266149.24,
+        "pf": 4.691215,
+        "trades": 39270,
+        "maxopen": 1536,
+        "max_one_tick": 1,
+        "max_one_second": 10,
+        "exact_eq_dd": 25651.986,
+        "independent_equity_vs_archived_error": 0,
+        "quote_side_recon_maxerr": 0,
+        "active_days": 14,
+        "positive_days": 12,
+        "active_weeks": 4,
+        "positive_weeks": 4,
+        "net_extra_fee_20c": 201561.695,
+        "net_extra_fee_50c": 189780.695,
+        "net_extra_fee_1usd": 170145.695
+      },
+      "risk1792": {
+        "net": 206234.332,
+        "gross_loss": -42068.043,
+        "gross_profit": 248302.375,
+        "pf": 5.902399,
+        "trades": 31701,
+        "maxopen": 1792,
+        "max_one_tick": 1,
+        "max_one_second": 10,
+        "exact_eq_dd": 25651.986,
+        "independent_equity_vs_archived_error": 0,
+        "quote_side_recon_maxerr": 0,
+        "active_days": 14,
+        "positive_days": 12,
+        "active_weeks": 4,
+        "positive_weeks": 4,
+        "net_extra_fee_20c": 199894.132,
+        "net_extra_fee_50c": 190383.832,
+        "net_extra_fee_1usd": 174533.332
+      },
+      "velocity1536": {
+        "net": 224695.205,
+        "gross_loss": -78373.742,
+        "gross_profit": 303068.947,
+        "pf": 3.86697,
+        "trades": 49619,
+        "maxopen": 1536,
+        "max_one_tick": 1,
+        "max_one_second": 10,
+        "exact_eq_dd": 29831.936,
+        "independent_equity_vs_archived_error": 0,
+        "quote_side_recon_maxerr": 0,
+        "active_days": 14,
+        "positive_days": 12,
+        "active_weeks": 4,
+        "positive_weeks": 4,
+        "net_extra_fee_20c": 214771.405,
+        "net_extra_fee_50c": 199885.705,
+        "net_extra_fee_1usd": 175076.205
+      }
+    },
+    "full_v1_physical_parity": "PENDING_033",
+    "august_sealed": true,
+    "mt5_ea_modified": false
   }
 }
