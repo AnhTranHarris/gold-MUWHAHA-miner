@@ -1,0 +1,76 @@
+{
+  "schema": "daa_033_phase_b_risk_continuity",
+  "status": "PARTIAL_V1_FUNDED_IMPLEMENTATION_NOT_ECONOMIC_FULL_V1",
+  "research_quote_source": "DUKAS_REAL_BIDASK_JAN_CONTEXT_FEB",
+  "prior_git_journal": 66,
+  "full_owner_whitepaper_git_blob": "1b92b3c89159681a7181508de158af685cf5780c",
+  "tests": {
+    "phase_a": 23,
+    "new_tests": 8,
+    "total_passed": 31,
+    "result": "PASS"
+  },
+  "original_019_source_entry_parity": {
+    "status": "ENTRY_PARITY_ONLY_NOT_V1_ECONOMIC",
+    "ticks": 1136212,
+    "genuine_jan_prehistory_quotes": 3900880,
+    "original_019_proposals": 43105,
+    "ported_019_proposals": 43105,
+    "exact_source_records_match": true,
+    "first_mismatch": null,
+    "original_source_bundle_sha256": "9dc8f35d527ff89ef0fd5ece3084166392640d528ea70ed03db64b62840a30ef",
+    "feb_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+    "source_state": "ORIGINAL_131E_COMPLETED_EMA_SIGN_ONLY_NOT_FULL_V1_L2"
+  },
+  "original_019_replay_smoke": {
+    "input_quotes": 1136212,
+    "score_reproduced_unchanged": true,
+    "original_score": {
+      "net": -583.745,
+      "gross_profit": 1536.055,
+      "gross_loss": -2119.8,
+      "profit_factor": 0.72462261,
+      "trades": 836,
+      "max_open": 16,
+      "max_equity_dd": 1158.88,
+      "max_balance_dd": 628.813,
+      "combined_max_orders_sec": 3
+    },
+    "new_score": {
+      "net": -583.745,
+      "gross_profit": 1536.055,
+      "gross_loss": -2119.8,
+      "profit_factor": 0.72462261,
+      "trades": 836,
+      "max_open": 16,
+      "max_equity_dd": 1158.88,
+      "max_balance_dd": 628.813,
+      "combined_max_orders_sec": 3
+    }
+  },
+  "changes": [
+    "EXITS_WHEN_COMPLETED_HISTORY_UNAVAILABLE",
+    "FULL_TICK_FLOATING_EQUITY_MARK_WHEN_CONTEXT_UNAVAILABLE",
+    "PREVENT_DIRECT_FUTURE_QUOTE_ORDER_INJECTION",
+    "SOURCE_FAIL_CLOSED_WITHOUT_HTF"
+  ],
+  "unresolved": [
+    "Original L1 session geometry/Asia first-touch/source equivalence",
+    "Full original H4/H1/M15/M5 role parity, real T0 completed prehistory",
+    "Full L3 source breadth",
+    "Original L4 049\u2192051\u2192075\u2192084\u2192119\u2192131D/E dynamic online Watchdog generation",
+    "Native L5 and original-source L6 generated signals with coherent L7",
+    "True Coinexx order/margin/slippage/stopout acceptance",
+    "All JAN/FEB full V1 funded-source economic regression",
+    "Actual MetaEditor MT5 build & real-tick broker validation"
+  ],
+  "immutable_history": [
+    "JAN039",
+    "FEB045",
+    "FEB047"
+  ],
+  "month_blind": true,
+  "march": "HOLD",
+  "august": "SEALED",
+  "september": "RESERVED"
+}
