@@ -1,0 +1,25 @@
+name: DAA 033 C2D2 funded 084 L7 acceptance regression
+on:
+  pull_request:
+    paths:
+      - 'research/delta_a_alpha/implementation/v1_033_phase_c2d2/**'
+      - '.github/workflows/daa-033-c2d2-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  funded-084-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: research/delta_a_alpha/implementation/v1_033_phase_c2d2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile bridge and contract tests
+        run: python -m py_compile v1_funded_core_033c.py original_119_multi_parent_033c2c.py funded_084_l7_bridge_033c2d2.py test_funded_084_l7_bridge_033c2d2.py
+      - name: Test inherited 119 and new L7 bridge contracts
+        run: python -m unittest -v test_original_119_multi_parent_033c2c test_funded_084_l7_bridge_033c2d2
