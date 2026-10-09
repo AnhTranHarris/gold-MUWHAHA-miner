@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 68,
-    "latest_entry": "research/delta_a_alpha/state_journal/0068_DAA_033_PHASE_C1_SOURCE_PARITY.json"
+    "latest_sequence": 69,
+    "latest_entry": "research/delta_a_alpha/state_journal/0069_DAA_033_PHASE_C2A_FUNDED_SURGE_PARENT_CONTRACT.json"
   },
-  "restart_instruction": "Journal 0068 is latest. MUST READ FULL original owner 14,232-character V1 whitepaper then implementation/v1_033_phase_c1/README_033_PHASE_C1.md. Phase C1: 40 passing tests; exact original 131C L1 first touch 40,784/40,784 step250 and 64,896/64,896 step75 on 1,136,212 contiguous Feb raw ticks; online mock funded 119 contract produced 4 actual accepted parent windows/19 child fills, DIAGNOSTIC net -1007.844/1468/quote DD2343.763, NOT full Watchdog 075 source or complete V1. Phase C2 next original 049/051/075/084/119/131E parent source reconstruction. 033 OPEN; no full V1 economic certification; Jan039, Feb045/FEB047 untouched; March held, Aug SEALED Sep RESERVED; EA unchanged.",
+  "restart_instruction": "Journal 0069 C2A partial pass, read full verbatim owner V1 L0–L7 whitepaper then implementation/v1_033_phase_c2a README. Phase C1 40 tests source 131C L1 parity, C2A 46 tests 9 original helpers SHA matched, 049/051 selector index parity on deterministic fixtures, original 119 first-funded-parent credit. Real 1,136,212 Feb quotes + 3,900,880 Jan history: default 049 cap4 funded 119 windows/14 L4 children net -903.658; tight source cap2 funded 2/10 net -1287.472; both MOCK subset negative, not complete V1 or monthly economics. Next C2B original 017/019/024 049 union + 119 earned multi parent and 084 physical child parity. Gate033 stays OPEN; March held; Jan039 Feb045/047 untouched, Aug sealed Sep reserved, EA unchanged.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -745,5 +745,18 @@
     "online_mock_watchdog_child_fills": 19,
     "complete_075_parent_source_parity": "PENDING",
     "next": "DAA_033_PHASE_C2_ORIGINAL_049_051_075_084_119_131E_PARENT_SOURCE_GENEALOGY_RECONSTRUCTION"
+  },
+  "v1_033_phase_c2a": {
+    "status": "PARTIAL_C2A_TESTED_NOT_COMPLETE_033",
+    "read_first": "research/delta_a_alpha/implementation/v1_033_phase_c2a/README_033_PHASE_C2A.md",
+    "python": "research/delta_a_alpha/implementation/v1_033_phase_c2a/original_funded_lineage_033c2.py",
+    "qa": "research/delta_a_alpha/implementation/v1_033_phase_c2a/PHASE_C2A_QA_033.json",
+    "library_zip": "/xauusd-trading-bot/delta-A-alpha/engineering/v1-033-phase-c2a/DAA_033_V1_FUNDED_ENGINE_PHASE_C2A.zip",
+    "test_total": 46,
+    "original051_synthetic_parity": "PASS",
+    "real_feb_049_parent_funding_feedback": "PASS_CAUSAL_DIAGNOSTIC",
+    "original_full_source_parent_union": "PENDING_C2B",
+    "watchdog_119_multiple_earned_parents": "PENDING_C2B",
+    "EA_modified": false
   }
 }
