@@ -1,0 +1,104 @@
+{
+  "research_status": "FEB047_FROZEN_SOURCE_LEDGER_COUNTERFACTUAL_NOT_FULL_V1_OR_BROKER_CERTIFIED",
+  "data_quote_count": 11439219,
+  "sha256_january": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "sha256_february": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+  "screens": {
+    "profit_protection": 24,
+    "gentle_equity": 96,
+    "causal_quote_reversal": 192,
+    "focused_quote_reversal": 216,
+    "rate_queued_reversal": 144,
+    "lower_dd_transfer": 24,
+    "independent_order_rate_audits": 40
+  },
+  "tested_evaluations_including_repeats_and_rate_QA": 736,
+  "target": {
+    "net_min": 200000,
+    "trades_min": 12000,
+    "trades_max_exclusive": 30000,
+    "pf_min_exclusive": 15,
+    "gross_loss_magnitude_max_exclusive": 10000,
+    "exact_equity_drawdown_max_exclusive": 10000
+  },
+  "status": "NET_TRADES_PF_GROSSLOSS_PASS; EXACT_DD_FAIL",
+  "selected": {
+    "profit_cushion": {
+      "name": "queued_profit_cushion",
+      "reconciled": true,
+      "strict_combined_order_rate_pass": true,
+      "original_completed_trades": 25443,
+      "net": 206303.048,
+      "gross_loss": -7615.393,
+      "profit_factor": 28.09027,
+      "exact_full_tick_dd": 17183.829,
+      "drawdown_peak_quote": "2026-02-20T15:18:54.972000+00:00",
+      "drawdown_trough_quote": "2026-02-20T15:28:00.350000+00:00",
+      "maxopen": 1536,
+      "max_entry_and_repair_orders_in_one_second": 10,
+      "early_reductions": 361,
+      "max_quote_pnl_error": 0.0,
+      "positive_active_days": 13,
+      "active_days": 14
+    },
+    "balanced_quality": {
+      "name": "queued_focused_scan_best",
+      "reconciled": true,
+      "strict_combined_order_rate_pass": true,
+      "original_completed_trades": 25443,
+      "net": 201230.309,
+      "gross_loss": -7615.393,
+      "profit_factor": 27.42415,
+      "exact_full_tick_dd": 16215.592,
+      "drawdown_peak_quote": "2026-02-20T15:18:54.972000+00:00",
+      "drawdown_trough_quote": "2026-02-20T15:28:00.350000+00:00",
+      "maxopen": 1536,
+      "max_entry_and_repair_orders_in_one_second": 10,
+      "early_reductions": 1586,
+      "max_quote_pnl_error": 0.0,
+      "positive_active_days": 13,
+      "active_days": 14
+    },
+    "lower_dd": {
+      "name": "queued_lower_dd_transfer",
+      "reconciled": true,
+      "strict_combined_order_rate_pass": true,
+      "original_completed_trades": 25313,
+      "net": 200329.84,
+      "gross_loss": -8721.152,
+      "profit_factor": 23.97057,
+      "exact_full_tick_dd": 15741.936,
+      "drawdown_peak_quote": "2026-02-20T15:48:16.394000+00:00",
+      "drawdown_trough_quote": "2026-02-20T15:53:12.242000+00:00",
+      "maxopen": 1536,
+      "max_entry_and_repair_orders_in_one_second": 10,
+      "early_reductions": 224,
+      "max_quote_pnl_error": 0.0,
+      "positive_active_days": 13,
+      "active_days": 14
+    }
+  },
+  "excluded_strict_execution": {
+    "queued_original_focused": {
+      "combined_order_rate_actual": 14,
+      "max_allowed": 10,
+      "classification": "REJECTED"
+    },
+    "rate_audits_top40": {
+      "pass": 25,
+      "tested": 40
+    }
+  },
+  "scientific_limitations": [
+    "precomputed downstream source signal tape: not regenerated after changes to funded realized closes",
+    "reconstructed complete original Watchdog genealogy and L5/L6/L7 broker state absent",
+    "in-sample February parameter selection",
+    "execution assumes original accepted tape; Coinexx slippage/margin/order acceptance untested",
+    "1536 maximum model positions and $100k research account not $100-$300 survivability",
+    "late original source exits and broker server processing may differ from modeled quote-first close",
+    "one per tick and 10/sec combine only accepted frozen entries + supplemental exits; no actual broker execution"
+  ],
+  "source_project": "AnhTranHarris/gold-MUWHAHA-miner delta-A-alpha",
+  "permanent_owner_spine": "research/delta_a_alpha/whitepapers/DAA_V1_OWNER_GOOGLE_WHITEPAPER_FULL_VERBATIM_030.txt",
+  "next_engineering_gate": "DAA_JAN1_FULL_V1_PHYSICAL_FUNDED_GENEALOGY_REPAIR_AND_PARITY_033"
+}

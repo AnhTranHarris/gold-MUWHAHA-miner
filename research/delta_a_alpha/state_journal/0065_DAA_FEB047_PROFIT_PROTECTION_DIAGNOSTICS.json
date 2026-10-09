@@ -1,0 +1,88 @@
+{
+  "sequence": 65,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_FEB047_FIXED_LOT_PROFITABLE_CAMPAIGN_REPAIR_RESEARCH",
+  "status": "COMPLETED_FEBRUARY_EXPOSED_SOURCE_TAPE_RESEARCH__NOT_ORIGINAL_V1_FULLY_FUNDED__NOT_PROMOTED",
+  "predecessor": {
+    "sequence": 64,
+    "path": "research/delta_a_alpha/state_journal/0064_DAA_FEB046_COMBINED_REPAIR_DIAGNOSTICS.json"
+  },
+  "owner_whitepaper": "research/delta_a_alpha/whitepapers/DAA_V1_OWNER_GOOGLE_WHITEPAPER_FULL_VERBATIM_030.txt",
+  "baseline_source": "FEB045 (unchanged accepted original-source tape)",
+  "jan_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "feb_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+  "quotes_total": 11439219,
+  "screen_counts": {
+    "base_prevent_profit": 24,
+    "gentle": 96,
+    "reversal": 192,
+    "focused": 216,
+    "queued": 144,
+    "transfer": 24,
+    "strict_audits": 40,
+    "total_evaluations_including_repeats_and_audits": 736
+  },
+  "library_bundle": "/xauusd-trading-bot/delta-A-alpha/monthly/february_2026/feb047-profit-protect/FEB047_PORTFOLIO_REPAIR_RESEARCH_BUNDLE.zip",
+  "bundle_sha256": "e45987edf986fa7b5827c503afbf824d90d47593c59dc2f2955f2a0d41aa5f42",
+  "source_code_path": "research/delta_a_alpha/monthly/february_2026/feb047_profit_protect/queued_reduce_only_047.py",
+  "report_path": "research/delta_a_alpha/monthly/february_2026/feb047_profit_protect/FEB047_RESEARCH_REPORT.md",
+  "handoff": "research/delta_a_alpha/monthly/february_2026/feb047_profit_protect/FEB047_HANDOFF_READ_FIRST.md",
+  "independent_qa": "research/delta_a_alpha/monthly/february_2026/feb047_profit_protect/FEB047_INDEPENDENT_QA.json",
+  "results": {
+    "feb045_profit_frozen": {
+      "net": 206528.578,
+      "pf": 28.1164,
+      "gross_loss": -7616.383,
+      "trades": 25443,
+      "equity_dd": 19308.087
+    },
+    "feb045_prevention_frozen": {
+      "net": 200982.522,
+      "pf": 24.0454,
+      "gross_loss": -8721.152,
+      "trades": 25313,
+      "equity_dd": 16458.447
+    },
+    "feb047_profit_cushion": {
+      "net": 206303.048,
+      "pf": 28.09027,
+      "gross_loss": -7615.393,
+      "trades": 25443,
+      "exact_equity_dd": 17183.829,
+      "maxopen": 1536,
+      "strict_total_orders_per_sec": 10
+    },
+    "feb047_balanced_quality": {
+      "net": 201230.309,
+      "pf": 27.42415,
+      "gross_loss": -7615.393,
+      "trades": 25443,
+      "exact_equity_dd": 16215.592,
+      "maxopen": 1536,
+      "strict_total_orders_per_sec": 10
+    },
+    "feb047_lower_dd": {
+      "net": 200329.84,
+      "pf": 23.97057,
+      "gross_loss": -8721.152,
+      "trades": 25313,
+      "exact_equity_dd": 15741.936,
+      "maxopen": 1536,
+      "strict_total_orders_per_sec": 10
+    }
+  },
+  "decision": "KEEP_RESEARCH_PARETO_NOT_PROMOTE: all pass profit/PF/GL/trades; all fail exact equity DD<10000; February in-sample fitted and physically unvalidated",
+  "rate_audit": "40 leading queued scenarios independently checked; 25<=10 combined accepted entries+additional exits per UTC sec, 15 rejected; supplementary closes one observed tick each",
+  "integrity_note": "Corrected int32 intermediate equity math error; selected cases independently recomputed using float64 all-quote equity and first executable Bid/Ask.",
+  "restrictions": [
+    "Source proposal tape stays static despite altered realized funded child exits",
+    "Native complete L5/L6/L7 and broker order acceptance/margin stopout not certified",
+    "Feb regime thresholds retrospective",
+    "Model maxopen 1536, modeled 10/sec not small-account deployable",
+    "No trading month or date feature used; August SEALED, September RESERVED"
+  ],
+  "original_v1": "UNMODIFIED",
+  "production_delta": "READ_ONLY",
+  "mt5_ea": "UNCHANGED",
+  "next_engineering_unit": "DAA_JAN1_FULL_V1_PHYSICAL_FUNDED_GENEALOGY_REPAIR_AND_PARITY_033"
+}
