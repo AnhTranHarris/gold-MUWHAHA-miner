@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 67,
-    "latest_entry": "research/delta_a_alpha/state_journal/0067_DAA_033_PHASE_B_TICK_PROTECTION_PARITY.json"
+    "latest_sequence": 68,
+    "latest_entry": "research/delta_a_alpha/state_journal/0068_DAA_033_PHASE_C1_SOURCE_PARITY.json"
   },
-  "restart_instruction": "Read journal 0067, Phase B README and entire original owner whitepaper L0–L7. V1 funded kernel Phase A passed 23 tests; Phase B 31 passed, quote-protective closes continue during absent HTF, new entries fail closed. Original 019 February 1,136,212 real ticks parity 43,105 original candidate records == 43,105 ported; L3-only diagnostic net −$583.745/836 and DD$1,158.88 unchanged. NOT complete V1 full funded source, broker or MT5 parity. Gate 033 still OPEN, Phase C full source session grid, L4 paid campaign, L5/L6 source reconstruction. Preserve Jan039 and Feb045/047, original V1 and EA; March ON HOLD, August SEALED, September RESERVED.",
+  "restart_instruction": "Journal 0068 is latest. MUST READ FULL original owner 14,232-character V1 whitepaper then implementation/v1_033_phase_c1/README_033_PHASE_C1.md. Phase C1: 40 passing tests; exact original 131C L1 first touch 40,784/40,784 step250 and 64,896/64,896 step75 on 1,136,212 contiguous Feb raw ticks; online mock funded 119 contract produced 4 actual accepted parent windows/19 child fills, DIAGNOSTIC net -1007.844/1468/quote DD2343.763, NOT full Watchdog 075 source or complete V1. Phase C2 next original 049/051/075/084/119/131E parent source reconstruction. 033 OPEN; no full V1 economic certification; Jan039, Feb045/FEB047 untouched; March held, Aug SEALED Sep RESERVED; EA unchanged.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -733,5 +733,17 @@
     "all_original_v1_parity": "NOT_YET",
     "frozen_research_immutable": true,
     "next": "DAA_033_PHASE_C_ORIGINAL_SESSION_GRID_WATCHDOG_SOURCE_ONLINE_INTEGRATION"
+  },
+  "v1_033_phase_c1": {
+    "status": "PARTIAL_SOURCE_PARITY_NOT_COMPLETE_V1",
+    "read_first": "research/delta_a_alpha/implementation/v1_033_phase_c1/README_033_PHASE_C1.md",
+    "qa": "research/delta_a_alpha/implementation/v1_033_phase_c1/PHASE_C1_QA_033.json",
+    "library_zip": "/xauusd-trading-bot/delta-A-alpha/engineering/v1-033-phase-c1/DAA_033_V1_FUNDED_ENGINE_PHASE_C1.zip",
+    "tests_passed": 40,
+    "step250_event_parity": "40784/40784",
+    "step75_event_parity": "64896/64896",
+    "online_mock_watchdog_child_fills": 19,
+    "complete_075_parent_source_parity": "PENDING",
+    "next": "DAA_033_PHASE_C2_ORIGINAL_049_051_075_084_119_131E_PARENT_SOURCE_GENEALOGY_RECONSTRUCTION"
   }
 }
