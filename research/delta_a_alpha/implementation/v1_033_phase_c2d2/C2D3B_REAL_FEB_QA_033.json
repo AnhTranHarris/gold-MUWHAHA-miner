@@ -159,5 +159,104 @@
     "AUGUST_SEALED",
     "SEPTEMBER_RESERVED"
   ],
-  "next": "FULL_OWNER_L0_TO_L7_EXECUTABLE_JANUARY_FEBRUARY_PARITY_AND_COINEXX_BROKER_CERTIFICATION"
+  "next": "FULL_OWNER_L0_TO_L7_EXECUTABLE_JANUARY_FEBRUARY_PARITY_AND_COINEXX_BROKER_CERTIFICATION",
+  "continuation_20261009": {
+    "reopened_same_PR": 32,
+    "no_new_c2d3b_branch": true,
+    "original_kernel_unchanged_sha": "931fb6f9e6a73af8036572292e53f550a6873f07",
+    "local_fixture_unittests": 25,
+    "python": "3.13.5",
+    "original_049_full_index_direction_utc_hour_parity": 13063,
+    "complete_1136212_quote_AB_runs": 3,
+    "full_quote_oracle_mismatch_count_all_runs": 0,
+    "original_1136212_baseline_reproduced_identically": true,
+    "causal_direct_parent_L7_denial_and_paid_child_delay_verified": true,
+    "reported_metrics_experiment_only_not_refined_JAN039_FEB045_FEB047": true,
+    "variants": [
+      {
+        "variant": "IDENTICAL_BASELINE",
+        "artifact": "C2D3B_FEB_REVALIDATED_BASELINE.json",
+        "sha256": "6b9d999cd940acad48be17bd62284b40bd1867f6e675fa7117af7b7167bbf440",
+        "input_january_quote_count": 3900880,
+        "february_actual_bidask_quote_count": 1136212,
+        "original_049_pre_funding_candidates": 13063,
+        "funded_119_windows": 5,
+        "funded_084_fills": 18,
+        "funded_084_exits": 18,
+        "all_funded_trade_exits": 208,
+        "net_usd": 12.263,
+        "max_quote_equity_dd_usd": 2339.194,
+        "cash_equity_oracle_mismatches": 0,
+        "daily_pnl": {
+          "2026-02-02": 12.263
+        },
+        "weekly_pnl": {
+          "2026-W06": 12.263
+        },
+        "denial_reasons": {
+          "ORDER_RATE": 144,
+          "CELL_CAP": 3124,
+          "SPREAD": 9,
+          "GLOBAL_CAP": 11073,
+          "SOURCE_PER_TICK_SINGLE_OWNER": 9
+        }
+      },
+      {
+        "variant": "DIRECT_PARENT_FUNDING_DENY",
+        "artifact": "C2D3B_FEB_AB_DENY_FUNDED_049_PARENT.json",
+        "sha256": "6a7699c279e71516cb9af8eba64deff3fd923f910d76ac3c1408d8f0db9a63fd",
+        "input_january_quote_count": 3900880,
+        "february_actual_bidask_quote_count": 1136212,
+        "original_049_pre_funding_candidates": 13063,
+        "funded_119_windows": 0,
+        "funded_084_fills": 0,
+        "funded_084_exits": 0,
+        "all_funded_trade_exits": 0,
+        "net_usd": 0.0,
+        "max_quote_equity_dd_usd": 0.0,
+        "cash_equity_oracle_mismatches": 0,
+        "daily_pnl": {},
+        "weekly_pnl": {},
+        "denial_reasons": {
+          "AB_DENY_FUNDED_049_PARENT": 13063
+        }
+      },
+      {
+        "variant": "ACTUAL_CHILD_DELAY_120_SECONDS",
+        "artifact": "C2D3B_FEB_AB_DELAY_FUNDED_084_120S.json",
+        "sha256": "ed09e4ea1f8db0ae76e6a525074df16226e6cffcbd9ad2472fb035bd82f3fe03",
+        "input_january_quote_count": 3900880,
+        "february_actual_bidask_quote_count": 1136212,
+        "original_049_pre_funding_candidates": 13063,
+        "funded_119_windows": 4,
+        "funded_084_fills": 21,
+        "funded_084_exits": 21,
+        "all_funded_trade_exits": 213,
+        "net_usd": 85.586,
+        "max_quote_equity_dd_usd": 2339.194,
+        "cash_equity_oracle_mismatches": 0,
+        "daily_pnl": {
+          "2026-02-02": 85.586
+        },
+        "weekly_pnl": {
+          "2026-W06": 85.586
+        },
+        "denial_reasons": {
+          "ORDER_RATE": 136,
+          "CELL_CAP": 3125,
+          "SPREAD": 9,
+          "GLOBAL_CAP": 31920,
+          "AB_DELAY_FUNDED_084_CHILD": 2313
+        }
+      }
+    ],
+    "caveats": [
+      "COMPLETED_EMA_SIGN_PROXY_NOT_OWNER_TRUE_L2",
+      "ORIGINAL_075_PARENT_GENERATOR_NOT_FULLY_REPRODUCED",
+      "FULL_L1_L3_L5_L6_NOT_REBUILT",
+      "NO_ACTUAL_COINEXX_HEDGING_SLIPPAGE_STOP_OUT",
+      "NOT_$100_$500_DEPLOYABLE",
+      "ENTIRE_MONTH_JAN_FEB_V1_NOT_ECONOMICALLY_CERTIFIED"
+    ]
+  }
 }
