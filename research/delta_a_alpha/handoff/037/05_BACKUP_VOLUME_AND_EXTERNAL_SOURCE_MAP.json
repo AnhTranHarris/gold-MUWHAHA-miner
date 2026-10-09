@@ -1,0 +1,134 @@
+{
+  "schema": "v1-jan032-036-full-byte-recovery-v1",
+  "handoff_folder": "https://drive.google.com/drive/folders/1MSHKZyFMb0petqXFYBhGgFTvnzDS9V8Q",
+  "original_owner_whitepaper_copy": "https://docs.google.com/document/d/1HgD7JNISnOldrFsVv8peEzuFMkyoqN9GfIrFT9amQlc/edit",
+  "original_jan_apr_handoff_folder": "https://drive.google.com/drive/folders/1QJsGxJYPI9tgpxh3FdRk8KHf-6mF1C8N",
+  "existing_jan_jul_dukascopy_folder_external_read_only": "https://drive.google.com/drive/folders/1lSCfO_awUKkbR4I6xDTy9orjIl0SrgIV",
+  "gdrive_original_market_tick_ids_by_month": {
+    "01": "1DyKXj-DDhsP3eMXm0j7QQimXRLoHSHKo",
+    "02": "1aeJW9gZH-8J3X9-9k6VSirr4Wl_XsZzK",
+    "03": "11jk7KQKD6eCfHpQanqN2cmMcGxOjID3a",
+    "04": "12I6Ijw8fnFDMu_lPsaakf2tzIgXtS-5W",
+    "05": "1vS6TcpwGFmTq_5402Oz5-nIy1D0ApA6i",
+    "06": "1o86I8fwzAm2c0B1e3Oyx_e0xaFO0z9xl",
+    "07": "1BLwq73Gw6yfRs0DyxqNeQefTLolgQWHA"
+  },
+  "previous_project_library_april": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/recovery-archive/",
+  "previous_project_library_march": "/xauusd-trading-bot/delta-A-alpha/monthly/march_2026/vertical-grid-135/",
+  "previous_project_library_january_source": "/xauusd-trading-bot/delta-A-alpha/monthly/january_2026/full-original-source-quote-replay-032/",
+  "previous_project_library_january_034_035": [
+    "/xauusd-trading-bot/delta-A-alpha/monthly/january_2026/causal-risk-recovery-034/",
+    "/xauusd-trading-bot/delta-A-alpha/monthly/january_2026/combined-mechanism-035/"
+  ],
+  "github_main": "https://github.com/AnhTranHarris/gold-MUWHAHA-miner/tree/delta-A-alpha",
+  "github_hardlocked_whitepaper": "https://github.com/AnhTranHarris/gold-MUWHAHA-miner/blob/delta-A-alpha/research/delta_a_alpha/whitepapers/DAA_V1_OWNER_GOOGLE_WHITEPAPER_FULL_VERBATIM_030.txt",
+  "safety": "August 2026 sealed and Jan-Aug R8 report omitted by design, metadata-only listed below, September reserved",
+  "sealed_excluded_metadata": [
+    {
+      "path": "ReportTester-871471_jan2026_aug2026_R8_1(1).xlsx",
+      "size_bytes": 132055365,
+      "status": "AUGUST_SEALED_NOT_READ_OR_BACKED_UP"
+    },
+    {
+      "path": "XAUUSD_DUKAS_2026_08_ticks.csv(1).gz",
+      "size_bytes": 43389638,
+      "status": "AUGUST_SEALED_NOT_READ_OR_BACKED_UP"
+    }
+  ],
+  "snapshot_source_files_and_symlinks": 1584,
+  "snapshot_source_total_bytes": 1469665123,
+  "archive_format": "one concatenated zstd -1 compressed POSIX/GNU tar stream; binary ordered chunks 96MiB max",
+  "compressed_archive_total_bytes": 1070897086,
+  "compressed_archive_sha256": "61c76575c579a13b6ace81c2bb855bf4093c6968df3a31314e6fc037abd0f739",
+  "archive_tar_members": 1584,
+  "restore_recipe": "Download ALL BACKUP_CHUNK_000 through BACKUP_CHUNK_010 to same local directory; verify 05 file SHA; concatenate in lexical order into COMPLETE_WORKSPACE.tar.zst (Windows: Python bytes concatenation); run zstd -t COMPLETE_WORKSPACE.tar.zst; extract with tar --use-compress-program=zstd -xf COMPLETE_WORKSPACE.tar.zst; check file hashes against 03_ALL_LOCAL_FILES_MANIFEST.csv; sealed August absent intentionally.",
+  "remote_validation": "Google Drive uploads confirmed accepted and all eleven size fields matched local; full raw byte-for-byte Drive download/check not performed yet",
+  "volumes": [
+    {
+      "name": "BACKUP_CHUNK_000",
+      "size_bytes": 100663296,
+      "sha256": "c458b6fd23ab32f57c68a7ed730d3491eb748e5363b9474a53056580177dab50",
+      "google_drive_id": "1UASqoSwUgIhajJFNKLC9QmlKZkMTsiaQ",
+      "url": "https://drive.google.com/file/d/1UASqoSwUgIhajJFNKLC9QmlKZkMTsiaQ/view"
+    },
+    {
+      "name": "BACKUP_CHUNK_001",
+      "size_bytes": 100663296,
+      "sha256": "de76b6c954d0dda20276979aaa66eaf4e9e65780dca0e390a6a6147ba55ef65a",
+      "google_drive_id": "1FPUDINxSqnSeGMalhpTZ4SZHI2vkdkfa",
+      "url": "https://drive.google.com/file/d/1FPUDINxSqnSeGMalhpTZ4SZHI2vkdkfa/view"
+    },
+    {
+      "name": "BACKUP_CHUNK_002",
+      "size_bytes": 100663296,
+      "sha256": "aeb139308550e276937ee4984ed7f13689c02ddb7cf8db19c59d3e2a908852d8",
+      "google_drive_id": "1pf8r6p1mNVc9Q-qryUu4J27BMdxKIFGj",
+      "url": "https://drive.google.com/file/d/1pf8r6p1mNVc9Q-qryUu4J27BMdxKIFGj/view"
+    },
+    {
+      "name": "BACKUP_CHUNK_003",
+      "size_bytes": 100663296,
+      "sha256": "74dd5474bb1d01e4d74ad51d03def98a3e21dc15928d4cd80a533efd62b42be5",
+      "google_drive_id": "1hrJBSc7dKDHb6FwGkz0RVF0-2TKF4qgR",
+      "url": "https://drive.google.com/file/d/1hrJBSc7dKDHb6FwGkz0RVF0-2TKF4qgR/view"
+    },
+    {
+      "name": "BACKUP_CHUNK_004",
+      "size_bytes": 100663296,
+      "sha256": "60d10851548a4aad3d4dfea1777685c09860c58a2013e9798921e0b9b5fa428d",
+      "google_drive_id": "1NLRhgzlRVoqhKJoAqLDJy3SlDshjO6Jh",
+      "url": "https://drive.google.com/file/d/1NLRhgzlRVoqhKJoAqLDJy3SlDshjO6Jh/view"
+    },
+    {
+      "name": "BACKUP_CHUNK_005",
+      "size_bytes": 100663296,
+      "sha256": "dd2e522ff2a9bdec7e6a7a9e818ebfdddfc9bebe7b88c9cdf6e389d62dc61b88",
+      "google_drive_id": "1_yf5EwZxrBzm4kHZxGqewJJpzypKzgLf",
+      "url": "https://drive.google.com/file/d/1_yf5EwZxrBzm4kHZxGqewJJpzypKzgLf/view"
+    },
+    {
+      "name": "BACKUP_CHUNK_006",
+      "size_bytes": 100663296,
+      "sha256": "ed7ad8e1c4a809728bc3ff3f9051ddd2adf5380edebadc80116abd5c82473763",
+      "google_drive_id": "1wpMQGaJwlvCDlNncy78NOZOnLudRuKOW",
+      "url": "https://drive.google.com/file/d/1wpMQGaJwlvCDlNncy78NOZOnLudRuKOW/view"
+    },
+    {
+      "name": "BACKUP_CHUNK_007",
+      "size_bytes": 100663296,
+      "sha256": "e518a1a4957e0b1ca2148b53542d0365c85ffe80d5ecf2fb9d3895c53bd05215",
+      "google_drive_id": "1J3fD2nWfvgcDU8TE6dTqsxx7Miscv1tY",
+      "url": "https://drive.google.com/file/d/1J3fD2nWfvgcDU8TE6dTqsxx7Miscv1tY/view"
+    },
+    {
+      "name": "BACKUP_CHUNK_008",
+      "size_bytes": 100663296,
+      "sha256": "7236e96c9bd9e072e225cd84f3c9963a1d9de74f2d8aae90542616e61a5779eb",
+      "google_drive_id": "1XWtdSD9rJX3VajvxqRMQ6A6zILFHO_rM",
+      "url": "https://drive.google.com/file/d/1XWtdSD9rJX3VajvxqRMQ6A6zILFHO_rM/view"
+    },
+    {
+      "name": "BACKUP_CHUNK_009",
+      "size_bytes": 100663296,
+      "sha256": "f907376de2f4464064a84dc91b2690edb18c606d454f1f0ef47ea9a391aa0a88",
+      "google_drive_id": "1P_M2WM_CLGs8XRFB8Ir-QmE1Yyf9HLy_",
+      "url": "https://drive.google.com/file/d/1P_M2WM_CLGs8XRFB8Ir-QmE1Yyf9HLy_/view"
+    },
+    {
+      "name": "BACKUP_CHUNK_010",
+      "size_bytes": 64264126,
+      "sha256": "e5a6abbc60d48bcd3b5a344328a81ba6f82b51e167444e64fa865aeb6e2b6ef5",
+      "google_drive_id": "1kYL1wJfr7GgUErgwsR1_SODAXtaZeP0K",
+      "url": "https://drive.google.com/file/d/1kYL1wJfr7GgUErgwsR1_SODAXtaZeP0K/view"
+    }
+  ],
+  "standalone_jan036_archive": {
+    "id": "1BuPcoV5_l5jvIuiL4GINTQUAYziUedlc",
+    "sha256": "87fd3ebbf84e638c6d0deeb88c4b211d4c393d687e96e7c4454e68b372673d31",
+    "members": 23,
+    "per_file_checksum_verified": 22,
+    "source_python_ast_parsed": 7
+  },
+  "live_next_engineering_unit": "DAA_JAN1_FULL_V1_PHYSICAL_FUNDED_GENEALOGY_REPAIR_AND_PARITY_033",
+  "latest_research_unit_036": "159 Jan Dukascopy candidate screens/8 detailed replays QA PASS, physical WD funded parity NOT CERTIFIED"
+}
