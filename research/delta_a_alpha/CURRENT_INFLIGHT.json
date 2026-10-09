@@ -1,17 +1,19 @@
 {
   "schema": "delta-a-alpha-inflight-v5",
   "authority": "APPEND_ONLY_STATE_JOURNAL",
-  "state": "IDLE_READY",
+  "state": "IDLE_READY_FOR_RESTORED_V1_JAN1_SOURCE_PARITY",
   "last_completed": "DAA_APRIL_VERTICAL_GRID_DISCOVERY_136_FINAL",
   "current_unit": null,
-  "next_unit": "DAA_MAY_VERTICAL_GRID_DISCOVERY_137",
-  "journal_entry": "research/delta_a_alpha/state_journal/0051_DAA_MAX_CHAT_HANDOFF_20261008.json",
+  "next_unit": "DAA_JAN1_FULL_V1_SOURCE_PARITY_AND_5MIN_DEPLOYMENT_REPLAY_032",
+  "journal_entry": "research/delta_a_alpha/state_journal/0052_DAA_V1_HARDLOCK_JAN1_RESTART_031.json",
   "accepted_floor": {
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
     "version": "V1",
     "spec": "research/delta_a_alpha/architecture/DAA_VERTICAL_GRID_SYSTEM_V1_SPEC.md",
     "manifest": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MANIFEST.json"
   },
-  "failure_recovery": "Read journal 0051 then 0050 and handoff Drive folder 1QJsGxJYPI9tgpxh3FdRk8KHf-6mF1C8N. April is closed. Use Library April recovery archives; do not reconstruct from chat. Resume only May 137.",
-  "write_discipline": "Build MT5 V1 layer-by-layer with deterministic diagnostics. Persist each module/QA unit before the next dependent module. Do not redesign strategy logic during the engineering port."
+  "failure_recovery": "START WITH JOURNAL 0052 + COMPLETE OWNER V1 WHITEPAPER 030 (not short mirror), exact source restoration 030, startup lock 031, original Jan-Feb-March-Apr source helpers. Jan1 as-of chronological replay, not pristine blind. Do not use 024-029 prototypes for V1. August sealed.",
+  "write_discipline": "ONLY ORIGINAL V1 source-equivalent changes; 300 second qualified readiness when valid prehistory is available; CI source lock+startup QA required; no unverified profit claims.",
+  "owner_031_hardlock": "research/delta_a_alpha/governance/DAA_V1_WHITEPAPER_HARDLOCK_STARTUP_JAN1_031.md",
+  "paused_prior_research": "DAA_MAY_VERTICAL_GRID_DISCOVERY_137"
 }
