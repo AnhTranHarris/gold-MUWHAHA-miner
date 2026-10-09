@@ -1,0 +1,79 @@
+{
+  "schema": "delta-a-alpha-state-journal-v2",
+  "sequence": 82,
+  "unit": "DAA033_C2D3G_FEB045_EXACT_SOURCE_NATIVE_MONTH_BLIND_QUALITY_AND_10M_CONTEXT",
+  "status": "ORIGINAL_FEB045_PRE_FUNDED_SOURCE_MASK_234698_EXACT_AND_FEB041_TICK_CONTEXT_7538339_EXACT__FULL_V1_FUNDED_ECONOMICS_OPEN",
+  "predecessor": {
+    "sequence": 81,
+    "path": "research/delta_a_alpha/state_journal/0081_DAA_033_C2D3F_MONTH_BLIND_SOURCE_NATIVE_S26_S27.json"
+  },
+  "authority": {
+    "unabridged_owner_whitepaper_git_blob": "1b92b3c89159681a7181508de158af685cf5780c",
+    "unchanged_funded_core_git_blob": "931fb6f9e6a73af8036572292e53f550a6873f07",
+    "source_bundles_SHA256": {
+      "feb042": "708e81a8f8ed103b6e552ff597ef9048e3191d6f00cce59374df9e1607f56500",
+      "feb045": "9248646bf099b954b5661c765ce50316a61c015b595ad61128a0c02b115a33df",
+      "feb047": "e45987edf986fa7b5827c503afbf824d90d47593c59dc2f2955f2a0d41aa5f42"
+    },
+    "raw_february_quote_SHA256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d"
+  },
+  "implementation": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/feb045_source_native_context_033.py",
+  "exact_original_sources": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/verified_original_sources/FEB042,FEB044,FEB045,FEB047; see SHA manifest",
+  "source_stage_audit": {
+    "original_proposals": 234698,
+    "verbatim_FEB044_FEB045_reference_permitted": 34063,
+    "online_permitted": 34063,
+    "mismatches": 0,
+    "mask_SHA256": "4d8a1dd6a5d97812edd9fe97eaa2c876871a84e1097c2e96c42e33e8fd87936f"
+  },
+  "completed_10m_quote_audit": {
+    "full_real_february_quotes": 7538339,
+    "original_FEB041_buckets": 2745,
+    "new_stream_ranges_and_counts_exact": 2745,
+    "mismatches": 0
+  },
+  "behavior": {
+    "original_source_pocket9_selection": "verbatim original FEB044 baseline + FEB045 rejection and overrides + first nine source exclusions, no calendar month selector",
+    "original_numeric_source_provenance": "ORIGINAL_F045_Sxx L3 source ID only; original January C2D3F source path untouched",
+    "filled_capacity": "Uses only physically funded engine.positions with existing global L7 final veto, no cloned broker account",
+    "as_of_quote_features": "completed prior 10m midrange and actual observed 20s impulse; incomplete initial bucket withheld, no future quotes",
+    "full_native_exit_or_first_passage_source_generation": "NOT_YET_SUPPORTED; no source profitability claim"
+  },
+  "source_research_reference_NOT_PORT_PERFORMANCE": {
+    "feb045_profit_cushion": {
+      "source_ledger_net_usd": 206528.578,
+      "trades": 25443,
+      "gross_loss_usd": -7616.383,
+      "exact_quote_drawdown_usd": 19308.087
+    },
+    "feb045_lowerDD": {
+      "source_ledger_net_usd": 200982.522,
+      "trades": 25313,
+      "gross_loss_usd": -8721.152,
+      "exact_quote_drawdown_usd": 16458.447
+    },
+    "feb047_queued_profit": {
+      "source_ledger_net_usd": 206303.048,
+      "trades": 25443,
+      "exact_quote_drawdown_usd": 17183.829
+    },
+    "classification": "FROZEN_FEBRUARY_FITTED_SOURCE_TAPE_RESEARCH__NOT_THIS_ENGINE"
+  },
+  "QA": {
+    "local_regressions_passed": 56,
+    "new_source_context_unit_tests": 8,
+    "new_manifest_original_Sha_tests": 1,
+    "github_CI": "PENDING_PR_CHECKS",
+    "full_orig_binary_oracle": "offline original FEB042 arrays; not included in CI repo; separate raw-source audit"
+  },
+  "hard_locks": {
+    "march": "HELD",
+    "august": "SEALED",
+    "september": "RESERVED",
+    "production_delta": "READ_ONLY",
+    "lot": 0.01,
+    "martingale": "PROHIBITED",
+    "months_as_execution_features": "FORBIDDEN"
+  },
+  "next": "Original FEB045 complete source-aware heat/broker account budget, preserve January native policies, original Feb native source manufacture and JAN039+FEB045 full quote physical account parity; only then original FEB047 profitable reduce-only queue with combined order-budget and endogenously funded exits. Jan1 pre-T0 Dec2025 readiness remains unavailable in January-only source."
+}
