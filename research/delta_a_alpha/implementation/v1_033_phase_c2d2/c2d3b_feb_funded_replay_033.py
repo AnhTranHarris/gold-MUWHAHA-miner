@@ -9,6 +9,7 @@ import argparse, hashlib, json, time, sys
 from collections import Counter
 from pathlib import Path
 from dataclasses import dataclass, replace
+from datetime import datetime, timezone
 import numpy as np
 import pandas as pd
 from real_dukas_event_smoke_033 import orig_completed_state_fn, load_window, EXPECTED
@@ -68,6 +69,41 @@ class ExitAblation049(Original049NYSourceL3):
      tp_usd=p.tp_usd*self.tp_scale)
 
 
+class C2D3BL7FundingAblation(FundedEngine):
+ """Controlled real L7 denials; never alters original 049 entry manufacture.
+
+ Experiments only. An original 049 proposal is still made and considered by
+ L7, but an explicitly banned funded parent receives an actual recorded L7
+ denial. A delayed 084 child must resubmit and fill at a later observed quote.
+ Never synthesize a past fill or treat a rejected parent as a paid sponsor.
+ """
+ def __init__(self, limits, adapters, *, deny_049_parents=False,
+              child_after_parent_ms=0, **kwargs):
+  super().__init__(limits, adapters, **kwargs)
+  assert child_after_parent_ms>=0
+  self.deny_049_parents=deny_049_parents
+  self.child_after_parent_ms=child_after_parent_ms
+
+ def _admission_reason(self,q,s,p):
+  if (self.deny_049_parents and p.layer=='L3'
+      and p.source.startswith('ORIGINAL_049_UNION_')):
+   return 'AB_DENY_FUNDED_049_PARENT'
+  if (self.child_after_parent_ms and p.layer=='L4'
+      and p.source=='ORIGINAL_119_C2C_CHILD'):
+   # child proposal owner is the 049 parent whose actually-funded window
+   # generated it (the parent_id sponsor may instead be a paid prior child).
+   parts=(p.source_event_key or '').split(':')
+   if len(parts)<2 or parts[0]!='C2CWINDOW':
+    raise AssertionError('C2D3-B child lost original paid-window identity')
+   parent=int(parts[1])
+   owner=self.positions.get(parent)
+   if owner is None:
+    return 'AB_PARENT_NOT_PHYSICALLY_OPEN'
+   if q.time_ms-owner.entry_ms < self.child_after_parent_ms:
+    return 'AB_DELAY_FUNDED_084_CHILD'
+  return super()._admission_reason(q,s,p)
+
+
 class IndependentPhysicalOracle:
  """Second account book: derives FILL/CLOSE cash and mark independently of engine.positions."""
  def __init__(self,limits:Limits):
@@ -76,6 +112,7 @@ class IndependentPhysicalOracle:
   self.close_count=0;self.mismatch_count=0;self.first_mismatches=[];self.max_positions=0
   self.fee=limits.commission_roundtrip_usd;self.size=limits.fixed_lot*limits.contract_oz_per_lot
   self.total_net=0.;self.by_layer=Counter();self.max_equity_delta=0.;self.last_post=limits.balance_usd;self.exec_trace=[]
+  self.daily=Counter();self.weekly=Counter();self.daily_trades=Counter();self.weekly_trades=Counter()
  def mark(self,q):
   return self.balance + sum(( (q.bid_raw if p[1]>0 else q.ask_raw)-p[0])*p[1]*self.size/1000 for p in self.open.values())-len(self.open)*self.fee/2
  def ingest(self,q,events,engine):
@@ -103,6 +140,9 @@ class IndependentPhysicalOracle:
     pnl=gross-self.fee
     if abs(pnl-e['pnl'])>1e-7:self.mismatch_count+=1;self.first_mismatches.append({'id':e['id'],'reported':e['pnl'],'oracle':pnl}) if len(self.first_mismatches)<5 else None
     self.balance+=gross-self.fee/2;self.total_net+=pnl;self.by_layer[layer]+=1;self.close_count+=1;self.this_second+=1
+    now=datetime.fromtimestamp(q.time_ms/1000,timezone.utc)
+    day=now.strftime('%Y-%m-%d'); iso=now.isocalendar();week=f'{iso.year}-W{iso.week:02d}'
+    self.daily[day]+=pnl;self.weekly[week]+=pnl;self.daily_trades[day]+=1;self.weekly_trades[week]+=1
     self.exec_trace.append({'t':q.time_ms,'event':'CLOSE','id':e['id'],'layer':layer,'sponsor_id':parent,
       'side':side,'entry_raw':raw,'exit_raw':price,'reason':e.get('reason'),'net_usd':round(pnl,8),
       'ask_raw':q.ask_raw,'bid_raw':q.bid_raw,'balance_after':round(self.balance,8)})
@@ -118,7 +158,7 @@ class IndependentPhysicalOracle:
   self.last_post=post
 
 
-def replay(cache:Path, out:Path, *, cap=32, spread=3., orders=4, low_surge=False, limit=None,parent_ttl_scale=1.,parent_tp_scale=1.):
+def replay(cache:Path, out:Path, *, cap=32, spread=3., orders=4, low_surge=False, limit=None,parent_ttl_scale=1.,parent_tp_scale=1., deny_049_parents=False, child_after_parent_ms=0):
  with np.load(cache,allow_pickle=False) as data:
   j=int(data['january_context_ticks']);t=data['t'];a=data['a'];b=data['b'];
   if limit is not None:t=t[:limit];a=a[:limit];b=b[:limit]
@@ -129,7 +169,8 @@ def replay(cache:Path, out:Path, *, cap=32, spread=3., orders=4, low_surge=False
  limits=Limits(max_open=cap,max_layer_open=cap,max_same_direction=cap,max_per_source_open=cap,
     max_per_cell_side=min(cap,16),max_orders_per_second=orders,max_orders_per_tick=1,
     max_underwater_open_usd=8000,max_spread_usd=spread)
- eng=FundedEngine(limits,[hb,grid,wd],broker_contract_verified=True)
+ eng=C2D3BL7FundingAblation(limits,[hb,grid,wd],broker_contract_verified=True,
+    deny_049_parents=deny_049_parents,child_after_parent_ms=child_after_parent_ms)
  oracle=IndependentPhysicalOracle(limits)
  t0=time.monotonic();ev_cursor=0;N=len(t)
  for i in range(N):
@@ -163,15 +204,28 @@ def replay(cache:Path, out:Path, *, cap=32, spread=3., orders=4, low_surge=False
    'engine_max_dd_pre_and_post':eng.dd_max,
    'independent_net_closed':round(oracle.total_net,6),'engine_net_closed':round(eng.gross_profit+eng.gross_loss,6),
    'independent_closed_count':oracle.close_count,'oracle_closes_by_layer':dict(oracle.by_layer),
+   'independent_daily_net_usd':{k:round(v,6) for k,v in sorted(oracle.daily.items())},
+   'independent_weekly_net_usd':{k:round(v,6) for k,v in sorted(oracle.weekly.items())},
+   'independent_daily_trades':dict(sorted(oracle.daily_trades.items())),
+   'independent_weekly_trades':dict(sorted(oracle.weekly_trades.items())),
    'final_open_positions':len(eng.positions),'final_marked_equity':round(oracle.last_post,6),
    'funded_score':eng.score(),'ledger_execution_event_count':len(oracle.exec_trace),
    'model_limits':limits.__dict__,'low_source_surge_ablation':low_surge,'counterfactual_parent_ttl_scale':parent_ttl_scale,'counterfactual_parent_tp_scale':parent_tp_scale,
+   'ab_forced_physical_049_parent_denial':deny_049_parents,
+   'ab_minimum_084_funded_child_delay_from_paid_parent_ms':child_after_parent_ms,
    'completed_HTF_model':SOURCE_MODEL,
    'source_049_entry_index_parity':'COUNTS_ONLY_NEED_INDEPENDENT_001_017_019_INDEX_COMPARISON',
    'remaining':['TRUE_COMPLETED_H4_H1_M15_M5_ROLE_SEMANTICS','FULL_L1_L3_L5_L6_SOURCE_STACK','075_PARENT_SELECTION_PARITY','COINEXX_MARGIN_HEDGING_SLIPPAGE','ENTIRE_FEB_MONTH_AND_JAN_V1_PARITY','METAEDITOR_MT5'],
    'governance':{'original_whitepaper':'UNMODIFIED','JAN039':'FROZEN','FEB045_047':'FROZEN','production_delta':'READ_ONLY','march':'HELD','august':'SEALED','september':'RESERVED'},
    'elapsed_seconds':round(time.monotonic()-t0,3)}
  assert oracle.mismatch_count==0 and oracle.max_equity_delta<1e-6,('independent equity mismatch',oracle.first_mismatches)
+ assert sum(oracle.daily_trades.values())==oracle.close_count
+ assert sum(oracle.weekly_trades.values())==oracle.close_count
+ assert abs(sum(oracle.daily.values())-oracle.total_net)<1e-5
+ assert abs(sum(oracle.weekly.values())-oracle.total_net)<1e-5
+ if deny_049_parents:
+  assert wd.admitted_parent_windows==0 and not wd.funded_entry_events and not wd.funded_close_events
+  assert eng.reject_counts['AB_DENY_FUNDED_049_PARENT']>0, 'AB test failed to actually deny candidate parents'
  assert abs(oracle.total_net-(eng.gross_profit+eng.gross_loss))<1e-6
  assert oracle.max_orders_sec<=orders
  out.parent.mkdir(parents=True,exist_ok=True)
@@ -185,7 +239,8 @@ def replay(cache:Path, out:Path, *, cap=32, spread=3., orders=4, low_surge=False
  return report
 
 if __name__=='__main__':
- pa=argparse.ArgumentParser();pa.add_argument('--root',type=Path,default=Path('/mnt/data'));pa.add_argument('--cache',type=Path,default=Path('/mnt/data/c2d3b_work/feb_source_arrays.npz'));pa.add_argument('--out',type=Path,default=Path('/mnt/data/c2d3b_work/C2D3B_FEB_REPLAY_RESULT.json'));pa.add_argument('--count',type=int,default=1136212);pa.add_argument('--prepare',action='store_true');pa.add_argument('--low-surge',action='store_true');pa.add_argument('--cap',type=int,default=32);pa.add_argument('--orders',type=int,default=4);pa.add_argument('--spread',type=float,default=3.0);pa.add_argument('--limit',type=int,default=None);pa.add_argument('--parent-ttl-scale',type=float,default=1.);pa.add_argument('--parent-tp-scale',type=float,default=1.)
+ pa=argparse.ArgumentParser();pa.add_argument('--root',type=Path,default=Path('/mnt/data'));pa.add_argument('--cache',type=Path,default=Path('/mnt/data/c2d3b_work/feb_source_arrays.npz'));pa.add_argument('--out',type=Path,default=Path('/mnt/data/c2d3b_work/C2D3B_FEB_REPLAY_RESULT.json'));pa.add_argument('--count',type=int,default=1136212);pa.add_argument('--prepare',action='store_true');pa.add_argument('--low-surge',action='store_true');pa.add_argument('--cap',type=int,default=32);pa.add_argument('--orders',type=int,default=4);pa.add_argument('--spread',type=float,default=3.0);pa.add_argument('--limit',type=int,default=None);pa.add_argument('--parent-ttl-scale',type=float,default=1.);pa.add_argument('--parent-tp-scale',type=float,default=1.);pa.add_argument('--deny-049-parents',action='store_true');pa.add_argument('--child-after-parent-ms',type=int,default=0)
  args=pa.parse_args()
  if args.prepare or not args.cache.exists():prepare(args.root,args.count,args.cache)
- replay(args.cache,args.out,cap=args.cap,spread=args.spread,orders=args.orders,low_surge=args.low_surge,limit=args.limit,parent_ttl_scale=args.parent_ttl_scale,parent_tp_scale=args.parent_tp_scale)
+ replay(args.cache,args.out,cap=args.cap,spread=args.spread,orders=args.orders,low_surge=args.low_surge,limit=args.limit,parent_ttl_scale=args.parent_ttl_scale,parent_tp_scale=args.parent_tp_scale,
+  deny_049_parents=args.deny_049_parents,child_after_parent_ms=args.child_after_parent_ms)
