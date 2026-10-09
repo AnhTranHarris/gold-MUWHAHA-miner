@@ -1,0 +1,100 @@
+{
+  "unit": "DAA_FEB045_UNIFIED_HEAT_QUALITY_GRID_RESEARCH",
+  "date": "2026-10-09",
+  "status": "FEBRUARY_IN_SAMPLE_SOURCE_TAPE_RESEARCH_NOT_V1_OR_BROKER_CERTIFIED",
+  "raw_data_sha256": {
+    "feb": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+    "jan_context": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+  },
+  "quotes": 11439219,
+  "original_v1": "OWNER_FROZEN_UNCHANGED",
+  "parameters_selected_using_feb_outcomes": true,
+  "screen_evaluations_count_including_repeats": 798,
+  "screen_counts": {
+    "screen_heat.json": 57,
+    "screen_pause.json": 43,
+    "exit_screens.json": 158,
+    "trailing_screens.json": 45,
+    "joint_screens.json": 76,
+    "quality_combos.jsonl": 96,
+    "quality_combos_2.jsonl": 36,
+    "pocket_screens.jsonl": 75,
+    "s22_screen.json": 32,
+    "dual_screens.json": 48,
+    "expanded_screens.json": 60,
+    "statecaps_screens.json": 72
+  },
+  "full_quote_independent_finalists": [
+    {
+      "name": "pocket_09_no_heat",
+      "qa_pass": true,
+      "trades": 25443,
+      "net": 206528.578,
+      "gross_loss": -7616.383,
+      "profit_factor": 28.116359,
+      "exact_full_tick_equity_dd": 19308.087,
+      "max_positions": 1536,
+      "quote_count": 11439219,
+      "max_first_passage_pnl_error": 0.0,
+      "max_entries_per_utc_second": 10,
+      "peak_time_utc": "2026-02-11T09:47:30.607000+00:00",
+      "trough_time_utc": "2026-02-11T13:18:51.637000+00:00",
+      "positive_active_days": 13,
+      "active_days": 14
+    },
+    {
+      "name": "state_cut8_c22512_c25512",
+      "qa_pass": true,
+      "trades": 25313,
+      "net": 200982.522,
+      "gross_loss": -8721.152,
+      "profit_factor": 24.04541,
+      "exact_full_tick_equity_dd": 16458.447,
+      "max_positions": 1536,
+      "quote_count": 11439219,
+      "max_first_passage_pnl_error": 0.0,
+      "max_entries_per_utc_second": 10,
+      "peak_time_utc": "2026-02-20T15:48:16.394000+00:00",
+      "trough_time_utc": "2026-02-20T15:53:12.242000+00:00",
+      "positive_active_days": 13,
+      "active_days": 14
+    },
+    {
+      "name": "state_cut9_c22512_c25512",
+      "qa_pass": true,
+      "trades": 24619,
+      "net": 200053.013,
+      "gross_loss": -7616.383,
+      "profit_factor": 27.266144,
+      "exact_full_tick_equity_dd": 16458.447,
+      "max_positions": 1536,
+      "quote_count": 11439219,
+      "max_first_passage_pnl_error": 0.0,
+      "max_entries_per_utc_second": 10,
+      "peak_time_utc": "2026-02-20T15:48:16.394000+00:00",
+      "trough_time_utc": "2026-02-20T15:53:12.242000+00:00",
+      "positive_active_days": 13,
+      "active_days": 14
+    }
+  ],
+  "goals": {
+    "min_month_net": 200000,
+    "min_trades": 12000,
+    "max_trades_exclusive": 30000,
+    "max_gross_loss_abs_exclusive": 10000,
+    "max_exact_quote_equity_dd_exclusive": 10000,
+    "min_pf_exclusive": 15
+  },
+  "outcome": "NET_VOLUME_GROSS_LOSS_PF_PASS; EXACT_EQUITY_DD_FAIL",
+  "broker_certified": false,
+  "endogenous_funded_parent_children": false,
+  "source_codes": "FEB044 original proposal tape, FEB045 state-owned financed cap and denial layers",
+  "martingale": false,
+  "fixed_lot": 0.01,
+  "seal": {
+    "august": "SEALED",
+    "september": "RESERVED"
+  },
+  "preceding_journal": 62,
+  "next_required_engineering_gate": "DAA_JAN1_FULL_V1_PHYSICAL_FUNDED_GENEALOGY_REPAIR_AND_PARITY_033"
+}
