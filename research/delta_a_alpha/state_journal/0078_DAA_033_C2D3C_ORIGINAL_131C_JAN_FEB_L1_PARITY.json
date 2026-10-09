@@ -1,0 +1,39 @@
+{
+  "schema": "delta-a-alpha-state-journal-v2",
+  "sequence": 78,
+  "unit": "DAA_033_PHASE_C2D3C_NATIVE_ORIGINAL_L1_FIRST_TOUCH_JAN_FEB_FULL_QUOTE_PARITY",
+  "status": "SOURCE_FUNCTIONAL_L1_131C_JAN_FEB_75_250_PASS__ENTIRE_ORIGINAL_V1_L0_L7_AND_ECONOMICS_OPEN",
+  "predecessor": {
+    "sequence": 77,
+    "path": "research/delta_a_alpha/state_journal/0077_DAA_033_PHASE_C2D3B_DIRECT_L7_PARENT_DENIAL_CHILD_DELAY.json"
+  },
+  "source_authority": "JAN032 exact original general_session_state_discovery_131c.py SHA256 3a96a63ea547942ae06a800ebe0a0cd25fed69b618b92f913a6844235b3206a4",
+  "full_owner_v1_blob": "1b92b3c89159681a7181508de158af685cf5780c",
+  "reproducibility": {
+    "test": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/test_original_131c_source_parity_033.py",
+    "original_source_mirror": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/verified_original_sources/general_session_state_discovery_131c.py",
+    "full_real_tick_runner": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/audit_original_131c_full_month_033.py",
+    "artifact": "research/delta_a_alpha/artifacts/C2D3C_ORIGINAL_L1_JAN_FEB_PARITY.json",
+    "source_functional_sample": "FULL January 9,135,062 and full February 7,538,339 genuine original Bid/Ask quotes; offline frozen source vs online engine; step_raw=75 and 250."
+  },
+  "evidence": {
+    "jan250": 251951,
+    "jan75": 515516,
+    "feb250": 275097,
+    "feb75": 491816,
+    "all_four_exact_index_and_direction": true,
+    "input_sha256_jan": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "input_sha256_feb": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+    "local_unit_tests_pass": 30
+  },
+  "scope": "SOURCE_FIRST_TOUCH_EVENT_MANUFACTURE_PARITY_ONLY; NO JAN039/FEB045/FEB047 FULL_FUNDED_ECONOMIC CLAIMS",
+  "owner_guard": {
+    "march": "HELD",
+    "august": "SEALED",
+    "september": "RESERVED",
+    "prod_delta": "READ_ONLY",
+    "lot": 0.01,
+    "martingale": "PROHIBITED"
+  },
+  "next_required": "Finish original V1 L1 full session ownership plus role-distinct completed HTF L2 and complete L3/L4/L5/L6, true integrated L7 funded endogenous account and complete January+February original reference economic parity. Then seek owner approval for March optimized discovery."
+}
