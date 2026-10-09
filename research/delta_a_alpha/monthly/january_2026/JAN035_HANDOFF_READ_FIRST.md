@@ -1,0 +1,7 @@
+# Jan035 — atomic timeout-safe handoff
+
+**Last completed science:** 291 source-tape causal admission/execution-cap screen configurations, 8 selected replayed and daily/weekly fully reconciled; original 131E raw Bid/Ask engine baseline +93,425.311 / 47,511 / -31,946.454 gross / 3.9244 PF / 56,921.60 tick equity DD. 384 max WD per identical quote: +93,656.482 / 39,292 / -18,361.182 / PF 6.1008 / DD 43,224.84. All extra profit from Jan30. 512 + $3 spread ceiling +93,864.167 / 37,509 / -15,656.386 / PF 6.9953 / DD 54,609.16. None is full V1 funded-parent parity. 1-per-quote proxy collapses to 13,087 tickets.
+
+**Read first:** Original 14,232-char owner whitepaper, hardlock031, journal0055→0054→0053→0052. Jan035 report, monthly/daily/weekly selected CSVs, QA_RESULTS_035. Jan033 original labeled source-position tape and Jan raw ticks required as external inputs. All risk checks are quote-side; broker fills/margin/rate not certified. Source L5/L6 original integrations NOT rebuilt here.
+
+**Next actionable engineering:** Source-exact parent-child Watchdog eligibility after actual physical acceptance. The seven-scale recovery/regime proposals in report are UNTESTED and must be rebuilt from original helpers, not reverse engineered from chat. Retain London/NY hourly + Asia, native and conditional recovery as V1 whole system. Don't re-run this entire screen unless code itself changes; use independent tiny atomic tests. Keep Jan1 5-min qualified readiness, Aug sealed, Sep reserved, delta read-only.
