@@ -1,4 +1,4 @@
-name: DAA 033 C2D3-B paid bridge + C2D3C native L1 Jan-Feb source parity
+name: DAA 033 C2D3-B funded + C2D3C L1 + C2D3D completed H4/H1/M15/M5
 on:
   pull_request:
     paths:
@@ -22,6 +22,6 @@ jobs:
       - name: Install deterministic dependencies for isolated oracle fixtures
         run: python -m pip install 'numpy>=1.24,<3' 'pandas>=2,<3'
       - name: Compile bridge, replay, offline source parity and all unit contracts
-        run: python -m py_compile v1_funded_core_033c.py original_119_multi_parent_033c2c.py funded_084_l7_bridge_033c2d2.py c2d3b_feb_funded_replay_033.py c2d3b_source_index_parity_033.py test_c2d3b_real_quote_oracle_033.py test_c2d3b_funded_causal_ab_033.py audit_original_131c_full_month_033.py test_original_131c_source_parity_033.py verified_original_sources/general_session_state_discovery_131c.py
-      - name: Run inherited C2D3-B source-oracle+causal AB and C2D3C original 131C L1 source parity (30 tests)
-        run: python -m unittest -v test_original_119_multi_parent_033c2c test_funded_084_l7_bridge_033c2d2 test_c2d3_queue_stress_033 test_c2d3b_real_quote_oracle_033 test_c2d3b_funded_causal_ab_033 test_original_131c_source_parity_033
+        run: python -m py_compile v1_funded_core_033c.py original_119_multi_parent_033c2c.py funded_084_l7_bridge_033c2d2.py c2d3b_feb_funded_replay_033.py c2d3b_source_index_parity_033.py test_c2d3b_real_quote_oracle_033.py test_c2d3b_funded_causal_ab_033.py audit_original_131c_full_month_033.py test_original_131c_source_parity_033.py verified_original_sources/general_session_state_discovery_131c.py completed_htf_roles_033.py test_completed_htf_roles_033.py
+      - name: Run inherited C2D3-B source-oracle+causal AB and C2D3C original 131C L1 source parity (36 tests)
+        run: python -m unittest -v test_original_119_multi_parent_033c2c test_funded_084_l7_bridge_033c2d2 test_c2d3_queue_stress_033 test_c2d3b_real_quote_oracle_033 test_c2d3b_funded_causal_ab_033 test_original_131c_source_parity_033 test_completed_htf_roles_033
