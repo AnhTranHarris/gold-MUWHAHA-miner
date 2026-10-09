@@ -1,0 +1,66 @@
+{
+  "classification": "RETROSPECTIVE_DESCRIPTIVE_ONLY_NO_JAN_MONTH_SIGNAL",
+  "complete_10m_buckets": 2883,
+  "feature_contract": {
+    "H4_H1_M15_M5": "must be independently completed pre-decision",
+    "cross_month_adaptation": "requires independently validated mapping from completed HTF/session/quote and funded state",
+    "date": "never a live feature",
+    "usable_at_ms": "bucket_end_ms, never before"
+  },
+  "january_30_descriptive_only": {
+    "mean_spread_usd": {
+      "max": 3.442064,
+      "median": 1.79798,
+      "p90": 2.506413
+    },
+    "n": {
+      "max": 8698.0,
+      "median": 6229.0,
+      "p90": 8281.0
+    },
+    "range_usd": {
+      "max": 140.0015,
+      "median": 38.6545,
+      "p90": 75.342
+    },
+    "spread_high": {
+      "max": 5.997,
+      "median": 3.712,
+      "p90": 5.848
+    },
+    "tick_rate_per_second": {
+      "max": 14.496667,
+      "median": 10.381667,
+      "p90": 13.801667
+    }
+  },
+  "other_january_dates_descriptive_only": {
+    "mean_spread_usd": {
+      "max": 2.979001,
+      "median": 0.672588,
+      "p90": 0.851074
+    },
+    "n": {
+      "max": 8787.0,
+      "median": 2725.0,
+      "p90": 5166.0
+    },
+    "range_usd": {
+      "max": 269.416,
+      "median": 6.86,
+      "p90": 16.5885
+    },
+    "spread_high": {
+      "max": 6.0,
+      "median": 1.083,
+      "p90": 1.61
+    },
+    "tick_rate_per_second": {
+      "max": 14.645,
+      "median": 4.541667,
+      "p90": 8.61
+    }
+  },
+  "raw_ticks": 9135062,
+  "source": "January raw Dukascopy XAUUSD ordered Bid/Ask"
+}
