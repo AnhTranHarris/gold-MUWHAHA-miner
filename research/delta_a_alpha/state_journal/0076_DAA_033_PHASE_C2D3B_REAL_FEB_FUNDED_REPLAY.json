@@ -1,0 +1,75 @@
+{
+  "schema": "delta-a-alpha-state-journal-v2",
+  "sequence": 76,
+  "unit": "DAA_033_PHASE_C2D3B_REAL_FEB_FUNDED_PARENT_CHILD_QUEUE_AND_EQUITY_REPLAY",
+  "status": "BOUNDED_REAL_TICK_FUNDED_049_119_084_REPLAY_COMPLETE__GITHUB_CI_21_PASS__FULL_V1_NOT_CERTIFIED",
+  "predecessor": {
+    "sequence": 75,
+    "path": "research/delta_a_alpha/state_journal/0075_DAA_20261009_HANDOFF_AND_TIMEOUT_RECOVERY.json"
+  },
+  "read_first": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/README_033_C2D3_B.md",
+  "qa": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/C2D3B_REAL_FEB_QA_033.json",
+  "scripts": [
+    "research/delta_a_alpha/implementation/v1_033_phase_c2d2/c2d3b_feb_funded_replay_033.py",
+    "research/delta_a_alpha/implementation/v1_033_phase_c2d2/c2d3b_source_index_parity_033.py",
+    "research/delta_a_alpha/implementation/v1_033_phase_c2d2/test_c2d3b_real_quote_oracle_033.py"
+  ],
+  "evidence": {
+    "feb_quote_ticks": 1136212,
+    "genuine_january_context_quote_ticks": 3900880,
+    "jan_archive_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "feb_archive_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d5",
+    "source_049_original_exact_index_direction_utc_count": 13063,
+    "source_049_original_vs_ported_indices_exact": true,
+    "funded_119_windows": 5,
+    "funded_084_fills": 18,
+    "funded_084_exits": 18,
+    "closed_trades": 208,
+    "net_usd": 12.263,
+    "pf": 1.00646376,
+    "max_quote_equity_dd_usd": 2339.194,
+    "oracle_cash_equity_discrepancies": 0,
+    "combined_order_max_sec": 4,
+    "physical_ledger": "research/delta_a_alpha/artifacts/C2D3B_FEB_FULL_BASELINE_PHYSICAL_LEDGER.jsonl",
+    "ablations": [
+      "CAP_1",
+      "SPREAD_0_1",
+      "ORDERS_PER_SECOND_1",
+      "SOURCE_CAP_2",
+      "PARENT_TTL_SCALE_0_25"
+    ],
+    "prior_17_tests_passed": true,
+    "new_4_oracle_tests_passed": true
+  },
+  "ci": {
+    "status": "GITHUB_ACTIONS_21_OF_21_PASS",
+    "workflow_run": 37981752215,
+    "workflow_url": "https://github.com/AnhTranHarris/gold-MUWHAHA-miner/actions/runs/37981752215",
+    "python": "3.11",
+    "additional_gate_whitepaper": "PASS",
+    "additional_gate_delta_qa": "PASS"
+  },
+  "scientific_decision": "ACCEPT_BOUNDED_CAUSAL_L7_ENGINEERING_VERIFICATION_ONLY__REJECT_FULL_V1_PROFITABILITY_OR_BROKER_CERTIFICATION",
+  "explicit_unproven": [
+    "TRUE_OWNER_L2_DIFFERENTIATED_H4_H1_M15_M5",
+    "ENTIRE_OWNER_NATIVE_L1_L3_L5_L6",
+    "ORIGINAL_075_PARENT_PORTFOLIO_IDENTITY",
+    "FULL_JAN_FEB_PERIOD_ECONOMICS",
+    "COINEXX_BROKER_EXECUTION_MARGIN_HEDGING_STOP_OUT",
+    "SMALL_ACCOUNT_SURVIVABILITY",
+    "MT5_METAEDITOR_AND_TICK_PARITY"
+  ],
+  "owner_frozen": {
+    "whitepaper": "UNCHANGED",
+    "JAN039": "UNCHANGED",
+    "FEB045_FEB047": "UNCHANGED",
+    "mt5_ea": "UNCHANGED",
+    "production_delta": "READ_ONLY",
+    "march": "HELD",
+    "august": "SEALED",
+    "september": "RESERVED"
+  },
+  "next_unit": "DAA_033_FULL_OWNER_L1_L6_SOURCE_PARITY_AND_REAL_JAN_FEB_GOVERNOR_CONTINUATION",
+  "promotion": "ISOLATED_DRAFT_PR_32_NOT_MERGED_NO_PRODUCTION_CHANGE",
+  "pull_request": "https://github.com/AnhTranHarris/gold-MUWHAHA-miner/pull/32"
+}
