@@ -1,0 +1,11 @@
+--- original_131e
++++ original_131e_adaptive_quote_floor
+@@ -8,7 +8,7 @@
+  for key in cells:
+   day,hh,b10,sc=[int(x) for x in key];jj=np.nonzero(base&(keys[:,0]==day)&(keys[:,1]==hh)&(keys[:,2]==b10)&(keys[:,3]==sc))[0]
+   if not len(jj):continue
+-  q=int(QMAP[b10]);A=renewal_owned(t,a,b,pei[jj],pxi[jj],pd[jj],q,0,0,2);E,X,R,Dd,P,H,O=A[:7]
++  q=int(max(QMAP[b10], int(kmult * (a[int(pei[jj[0]])]-b[int(pei[jj[0]])]))));A=renewal_owned(t,a,b,pei[jj],pxi[jj],pd[jj],q,0,0,2);E,X,R,Dd,P,H,O=A[:7]
+   if not len(E):continue
+   by=[[] for _ in range(len(jj))]
+   for ci,oo in enumerate(O):by[int(oo)].append(ci)
