@@ -1,0 +1,131 @@
+{
+  "status": "ORIGINAL_JANUARY_131E_SOURCE_RAW_BID_ASK_REPLAY_VERIFIED_NOT_FULL_PHYSICAL_V1_CERTIFICATION",
+  "source_data": "XAUUSD_DUKAS_2026_01_ticks.csv(3).gz",
+  "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "quote_count": 9135062,
+  "archived_P75_source_replay": {
+    "net": 194425.91999999998,
+    "trades": 80929,
+    "gross_loss": -3642.8599999999997,
+    "pf": 54.37177931625152,
+    "win": 0.9802666534863893,
+    "equity_dd": 57139.20000000001,
+    "maxopen": 640,
+    "wd_net": 125843.01000000001,
+    "wd_trades": 69913
+  },
+  "raw_BidAsk_same_source_mechanics": {
+    "net": 93425.31099999999,
+    "trades": 47511,
+    "gross_profit": 125371.765,
+    "gross_loss": -31946.453999999998,
+    "pf": 3.924434461489842,
+    "win": 0.9048851844835932,
+    "expectancy": 1.9663932773462984,
+    "balance_dd": 13171.861000000266,
+    "equity_dd": 56921.6,
+    "maxopen": 640,
+    "wd_net": 30267.350999999995,
+    "wd_trades": 36505,
+    "positive_days": 20,
+    "beat_days": 13,
+    "positive_weeks": 5,
+    "beat_weeks": 5
+  },
+  "r9_benchmark_sources": {
+    "R9_SYNTH_CANONICAL_MT5": {
+      "net": 41520.82,
+      "trades": 27980,
+      "gross_profit": 43592.43,
+      "gross_loss": -2071.61,
+      "pf": 21.042778,
+      "win_pct": 87.130093
+    },
+    "R9_SYNTH_ARCHIVED_131D": {
+      "net": 41520.82,
+      "trades": 27980,
+      "gross_profit": 43348.69,
+      "gross_loss": -1827.8700000000001,
+      "pf": 23.715411927544082,
+      "wins": 24368,
+      "losses": 3606,
+      "breakeven": 6,
+      "win": 0.8709077912794854,
+      "expectancy": 1.4839463902787706,
+      "avg_hold_s": 16.462687634024302,
+      "balance_dd": 3.400000000001455
+    }
+  },
+  "raw_vs_r9_month": {
+    "net_difference": 51904.49099999999,
+    "trade_count_delta": 19531,
+    "pf_delta": -17.118343538510157,
+    "win_pct_delta": 3.358425448359327
+  },
+  "raw_vs_r9_daily": {
+    "beat_net_days": 13,
+    "positive_days": 20,
+    "total": 21,
+    "pearson_net_all_days": 0.6733565943044157,
+    "pearson_net_excluding_jan30": 0.2348240932208773,
+    "pearson_trades_all_days": -0.04910134294490169
+  },
+  "raw_vs_r9_weekly": {
+    "beat_net_weeks": 5,
+    "positive_weeks": 5,
+    "total": 5
+  },
+  "jan30_raw": {
+    "net": 26901.669,
+    "trades": 32301,
+    "gross_loss": -27693.959,
+    "share_of_month_net": 0.2879484019057748,
+    "share_of_month_trades": 0.6798636105322978
+  },
+  "qa": {
+    "archived_p75_exact_net": true,
+    "archived_p75_exact_trade_count": true,
+    "archived_p75_exact_equity_dd": true,
+    "raw_quote_pnl_reconciles": true,
+    "raw_exit_after_entry": true,
+    "r9_131d_day_sums": true,
+    "raw_day_sums": true,
+    "raw_week_sums": true
+  },
+  "ledger_check": {
+    "mode": "RAW",
+    "trades": 47511,
+    "unique_entry_ticks": 13087,
+    "duplicate_entry_tick_events": 34424,
+    "max_pnl_reconciliation_error_usd": 7.105427357601002e-15,
+    "nonfuture_exit_errors": 0,
+    "ledger_net_usd": 93425.311,
+    "first_entry_utc": "2026-01-02T12:45:00.044000+00:00",
+    "last_exit_utc": "2026-01-30T18:25:39.857000+00:00"
+  },
+  "p75_ledger_check": {
+    "mode": "P75",
+    "trades": 80929,
+    "unique_entry_ticks": 14209,
+    "duplicate_entry_tick_events": 66720,
+    "max_pnl_reconciliation_error_usd": 3.552713678800501e-15,
+    "nonfuture_exit_errors": 0,
+    "ledger_net_usd": 194425.92,
+    "first_entry_utc": "2026-01-02T12:45:00.044000+00:00",
+    "last_exit_utc": "2026-01-30T18:21:39.119000+00:00"
+  },
+  "fidelity_warnings": [
+    "Original source uses normalized P75 spread for historical benchmark; raw override uses Dukascopy as provided and may change entries, states, parent campaigns, not only reprice identical trades.",
+    "Original 131E parent scout and successive child funding decisions partly depend on potential realized children before downstream capacity enforcement; physical funded-chain parity not proven.",
+    "Original Jan1 file lacks Dec2025 HTF completed history; five-minute arbitrary deployment readiness not certified.",
+    "Research lot 0.01=1 ounce with $0.02 fee, hypothetical $100k equity and no broker-specific leverage/swap/slippage/stopout certification.",
+    "January already researched; no claim of an untouched statistical blind test.",
+    "R9 131D daily/weekly gross metrics differ from newer canonical MT5 cashflow-gross metrics despite same net and trades; canonical governs monthly gross PF."
+  ],
+  "multiplicity": {
+    "max_entries_on_one_recorded_tick": 640,
+    "ticks_with_multiple_entries": 274,
+    "trade_count_minus_unique_ticks": 34424,
+    "requires_explicit_source_scaling": "Watchdog 131E intentionally permits multiple children per market tick but broker funding/margin and after-cap parental credit remain uncertified"
+  }
+}
