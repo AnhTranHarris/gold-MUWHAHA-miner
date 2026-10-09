@@ -1,0 +1,101 @@
+{
+  "sequence": 56,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_JAN035_COMBINED_MECHANISM_REAL_BIDASK_RESEARCH",
+  "status": "291_SCREENED_8_DETAILED_REPLAYS_QA_PASS_NO_FULL_V1_PROMOTION",
+  "predecessor": {
+    "sequence": 55,
+    "path": "research/delta_a_alpha/state_journal/0055_DAA_JAN034_RISK_RECOVERY_54_VARIANT_RESEARCH.json"
+  },
+  "owner_full_whitepaper": "research/delta_a_alpha/whitepapers/DAA_V1_OWNER_GOOGLE_WHITEPAPER_FULL_VERBATIM_030.txt",
+  "owner_hardlock": "research/delta_a_alpha/governance/DAA_V1_WHITEPAPER_HARDLOCK_STARTUP_JAN1_031.md",
+  "research_branch": "delta-A-alpha-jan035-combined-mechanism-screen",
+  "report": "research/delta_a_alpha/monthly/january_2026/DAA_JAN035_COMBINED_MECHANISM_RESEARCH.md",
+  "read_first": "research/delta_a_alpha/monthly/january_2026/JAN035_HANDOFF_READ_FIRST.md",
+  "library": "/xauusd-trading-bot/delta-A-alpha/monthly/january_2026/combined-mechanism-035/",
+  "archive": "JAN035_291_CAUSAL_SCREEN_CHECKPOINT.tar.gz",
+  "archive_sha256": "d8901662f5ad4dcadb5db9b38bc3707d82a3ae6bb2b3404e2c211a504e9d044b",
+  "archive_members": 36,
+  "checksum_failures": 0,
+  "screen": {
+    "total_runs": 291,
+    "atomic_batch_counts": [
+      198,
+      55,
+      38
+    ],
+    "detailed_replays": 8,
+    "original_full_tick_baseline": {
+      "net": 93425.311,
+      "trades": 47511,
+      "gross_loss": -31946.454,
+      "PF": 3.9244,
+      "equity_dd": 56921.6
+    },
+    "counterfactual_screen_best_all_four": {
+      "max_same_quote_watchdog_candidates": 384,
+      "net": 93656.482,
+      "trades": 39292,
+      "gross_loss": -18361.182,
+      "PF": 6.1008,
+      "equity_dd": 43224.84,
+      "net_delta_from_original": 231.171,
+      "net_delta_only_date": "2026-01-30"
+    },
+    "counterfactual_highest_net": {
+      "max_same_quote_watchdog_candidates": 512,
+      "ask_bid_spread_max_usd": 3,
+      "net": 93864.167,
+      "trades": 37509,
+      "gross_loss": -15656.386,
+      "PF": 6.9953,
+      "equity_dd": 54609.16
+    },
+    "counterfactual_lowrisk": {
+      "same_quote_cap": 256,
+      "entry_spread_ceiling_usd": 2,
+      "net": 76451.482,
+      "trades": 20905,
+      "gross_loss": -5225.006,
+      "PF": 15.6318,
+      "equity_dd": 9043.71
+    },
+    "broker_proxy_1_order_quote": {
+      "net": 66159.819,
+      "trades": 13087,
+      "gross_loss": -4386.371,
+      "PF": 16.083,
+      "equity_dd": 6863.37
+    },
+    "r9_synth_canonical": {
+      "net": 41520.82,
+      "trades": 27980,
+      "gross_loss": -2071.61,
+      "PF": 21.042778
+    }
+  },
+  "community_reproducible_sources": [
+    "https://github.com/QuantConnect/Lean/blob/master/Algorithm.Framework/Risk/MaximumDrawdownPercentPortfolio.py",
+    "https://github.com/QuantConnect/Lean/blob/master/Algorithm.Framework/Risk/MaximumSectorExposureRiskManagementModel.py",
+    "https://github.com/online-ml/river/blob/main/river/drift/adwin.py",
+    "https://www.mql5.com/en/articles/21833",
+    "https://www.mql5.com/en/docs/standardlibrary/tradeclasses/ctrade/ctradepositioncloseby"
+  ],
+  "limitations": [
+    "Only original Jan131E entry-candidate tape causal quote-side admission intervention; rejected child's later parent stream remains un-recomputed. NOT complete funded original whitepaper V1 L0–L7 strategy.",
+    "All source selected benchmark Jan discovered with full Jan outcome knowledge. Jan1 historically as-of, not true blind.",
+    "Original L5 trend and L6 native recovery physically funded interaction not simulated as complete system here.",
+    "5-minute startup needs valid pre-T0 history; Dec 2025 not present.",
+    "Broker accepts 384 same-tick entry orders unknown, no Coinexx slippage/margin/commission verified.",
+    "Gross loss and PF still miss R9 SYNTH. No full-system alpha breakthrough promoted.",
+    "High uplift concentrated January 30; non-calendar causal transfer unverified.",
+    "Interrupted 1807 sweep stopped after 120 cases; re-scoped 55 complete. ONLY completed data included in 291.",
+    "August SEALED; September RESERVED; production delta READ_ONLY"
+  ],
+  "unchanged_original_hourly_coverage_net": 60197.326,
+  "next_unit": "DAA_JAN1_FULL_V1_PHYSICAL_FUNDED_GENEALOGY_REPAIR_AND_PARITY_033",
+  "next_step": "Use original 049/051/075/084/119→131E bytes and original whitepaper L0-L7, fund child-before-credit in one physical bid/ask/margin/governor event system, then transfer 384 quote-density bounded group stress control into fully genealogically recomputed engine and re-run. Do not repeat 291 fixed source-tape screens. Preserve strict no Martingale, 0.01 lots, five minute qualified readiness, and daily/weekly/month Jan→July accumulation.",
+  "production_delta": "READ_ONLY",
+  "august": "SEALED",
+  "september": "RESERVED"
+}
