@@ -19,4 +19,4 @@ jobs:
       - name: Exact original Drive whitepaper and eight-stage manifest guard
         run: python research/delta_a_alpha/qa/v1_integrity_guard_031.py
       - name: Five-minute startup and causal observation tests
-        run: python -m unittest -v discover -s research/delta_a_alpha/qa -p 'test_v1_startup_contract_031.py'
+        run: python -m unittest discover -v -s research/delta_a_alpha/qa -p 'test_v1_startup_contract_031.py'
