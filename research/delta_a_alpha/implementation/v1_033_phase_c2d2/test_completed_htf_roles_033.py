@@ -82,4 +82,25 @@ class CompletedHTFRolesTests(unittest.TestCase):
         with self.assertRaises(ValueError):feed(x,999_999)
         with self.assertRaises(ValueError):x.snapshot(1_000_001)
 
+    def test_l2_context_controls_physical_l7_entry_after_missing_history(self):
+        from v1_funded_core_033c import FundedEngine, Limits, Proposal
+        roles=CompletedHTFRoles()
+        engine=FundedEngine(Limits(max_orders_per_second=20), broker_contract_verified=True)
+        classify={tf:(lambda bar:1) for tf in ('H4','H1','M15','M5')}
+        valid_entries=0
+        for i,t in enumerate((0,14_400_000,17_000_000,20_000_000,28_800_000,28_800_001)):
+            q=Quote(t,100050,100000)
+            roles.on_quote(q)
+            context=roles.as_structure(session='TEST',grid_key='SOURCED_GRID',classify=classify)
+            offered=(Proposal('L3','TEST_SOURCE','SOURCED_GRID',1,0.5,0.5,60000,
+                      source_event_key=f'C2D3D_FIXTURE:{i}'),)
+            engine.process_quote(q,context,proposals=offered)
+            if context is None:self.assertEqual(len(engine.positions),0)
+            else:valid_entries+=1
+        self.assertEqual(valid_entries,1)
+        self.assertEqual(len(engine.positions),1)
+        self.assertTrue(engine.readiness_deadline_missed)
+        self.assertTrue(engine.had_ready_context)
+        self.assertGreater(engine.history_missing,0)
+
 if __name__ == '__main__':unittest.main()
