@@ -1,0 +1,207 @@
+{
+  "peak_trough_watchdog": {
+    "peak": {
+      "timestamp": "2026-01-30T17:55:54.300000+00:00",
+      "ask": 4801.995,
+      "bid": 4799.598,
+      "spread": 2.397,
+      "watchdog_open": 640,
+      "long": 0,
+      "short": 640,
+      "watchdog_unrealized": 500.0399999999999,
+      "watchdog_mean_unrealized": 0.7813124999999999,
+      "unique_entry_ticks": 7,
+      "largest_same_entry_tick": 538,
+      "median_entry_spread": 2.304,
+      "median_age_s": 57.586,
+      "p90_age_s": 57.586,
+      "min_age_s": 0.152,
+      "max_age_s": 57.586,
+      "median_entry_raw": 4803.148,
+      "five_largest_entry_multiplicities": [
+        {
+          "tick_index": 8981321,
+          "n": 538
+        },
+        {
+          "tick_index": 8981736,
+          "n": 63
+        },
+        {
+          "tick_index": 8981325,
+          "n": 21
+        },
+        {
+          "tick_index": 8982071,
+          "n": 7
+        },
+        {
+          "tick_index": 8981324,
+          "n": 5
+        }
+      ]
+    },
+    "trough": {
+      "timestamp": "2026-01-30T18:05:07.727000+00:00",
+      "ask": 4890.935,
+      "bid": 4889.098,
+      "spread": 1.837,
+      "watchdog_open": 640,
+      "long": 0,
+      "short": 640,
+      "watchdog_unrealized": -56421.56,
+      "watchdog_mean_unrealized": -88.1586875,
+      "unique_entry_ticks": 7,
+      "largest_same_entry_tick": 538,
+      "median_entry_spread": 2.304,
+      "median_age_s": 611.013,
+      "p90_age_s": 611.013,
+      "min_age_s": 553.579,
+      "max_age_s": 611.013,
+      "median_entry_raw": 4803.148,
+      "five_largest_entry_multiplicities": [
+        {
+          "tick_index": 8981321,
+          "n": 538
+        },
+        {
+          "tick_index": 8981736,
+          "n": 63
+        },
+        {
+          "tick_index": 8981325,
+          "n": 21
+        },
+        {
+          "tick_index": 8982071,
+          "n": 7
+        },
+        {
+          "tick_index": 8981324,
+          "n": 5
+        }
+      ]
+    }
+  },
+  "watchdog_same_open_ticket_overlap": 640,
+  "watchdog_open_turnover_during_dd": {
+    "closed_before_trough": 0,
+    "newly_opened_at_trough": 0
+  },
+  "quotes_movement": {
+    "bid_change_dollars": 89.5,
+    "ask_change_dollars": 88.94,
+    "spread_change_dollars": -0.56
+  },
+  "watchdog_losing_ticket_quantiles": {
+    "0.0": -48.387,
+    "0.01": -38.247,
+    "0.1": -24.877,
+    "0.25": -16.037,
+    "0.5": -7.497,
+    "0.75": -1.2670000000000001,
+    "0.9": -0.46,
+    "0.95": -0.24,
+    "0.99": -0.03,
+    "1.0": -0.0010000000000000009
+  },
+  "worst_realized_loss_hours": [
+    {
+      "date": "2026-01-30",
+      "hour_utc": 18,
+      "losses": 1113,
+      "gross_loss": -19873.319
+    },
+    {
+      "date": "2026-01-30",
+      "hour_utc": 17,
+      "losses": 1062,
+      "gross_loss": -6977.152
+    },
+    {
+      "date": "2026-01-21",
+      "hour_utc": 18,
+      "losses": 575,
+      "gross_loss": -738.886
+    },
+    {
+      "date": "2026-01-14",
+      "hour_utc": 18,
+      "losses": 1,
+      "gross_loss": -3.354
+    }
+  ],
+  "ticket_quality_by_original_source": [
+    {
+      "name": "L4_WATCHDOG",
+      "trade_count": 36505,
+      "loss_count": 2751,
+      "gross_loss": -27592.711,
+      "median_loser": -7.497,
+      "p90_loss_magnitude": 24.877,
+      "worst_trade": -48.387,
+      "median_winner": 1.45
+    },
+    {
+      "name": "L3_HOURLY_COVERAGE",
+      "trade_count": 8470,
+      "loss_count": 629,
+      "gross_loss": -1177.0729999999999,
+      "median_loser": -1.06,
+      "p90_loss_magnitude": 5.394,
+      "worst_trade": -7.239999999999999,
+      "median_winner": 7.12
+    },
+    {
+      "name": "L3_HOURLY_COLDSTART",
+      "trade_count": 380,
+      "loss_count": 128,
+      "gross_loss": -733.834,
+      "median_loser": -5.859999999999999,
+      "p90_loss_magnitude": 7.938,
+      "worst_trade": -8.389999999999999,
+      "median_winner": 7.6450000000000005
+    },
+    {
+      "name": "L3_ASIA02_CONT",
+      "trade_count": 992,
+      "loss_count": 464,
+      "gross_loss": -1001.1999999999999,
+      "median_loser": -1.98,
+      "p90_loss_magnitude": 4.0891,
+      "worst_trade": -4.3999999999999995,
+      "median_winner": 2.1414999999999997
+    },
+    {
+      "name": "L3_LONDON10_ROTATE_LONG",
+      "trade_count": 592,
+      "loss_count": 276,
+      "gross_loss": -1003.1409999999998,
+      "median_loser": -1.542,
+      "p90_loss_magnitude": 10.546999999999999,
+      "worst_trade": -33.317,
+      "median_winner": 2.38
+    },
+    {
+      "name": "L3_OVERLAP13_SHORT",
+      "trade_count": 230,
+      "loss_count": 75,
+      "gross_loss": -258.587,
+      "median_loser": -4.05,
+      "p90_loss_magnitude": 4.216,
+      "worst_trade": -4.5,
+      "median_winner": 3.95
+    },
+    {
+      "name": "L3_LATE21_LONG",
+      "trade_count": 342,
+      "loss_count": 196,
+      "gross_loss": -179.90800000000002,
+      "median_loser": -0.777,
+      "p90_loss_magnitude": 1.835,
+      "worst_trade": -2.7,
+      "median_winner": 0.8879999999999999
+    }
+  ],
+  "exposure_warning": "Historical simultaneous fills and funded parent credit NOT validated. Risk attribution is exact for recorded research ticket stream, not guaranteed broker execution."
+}
