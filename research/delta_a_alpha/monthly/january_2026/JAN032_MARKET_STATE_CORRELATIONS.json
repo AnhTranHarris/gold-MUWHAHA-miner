@@ -1,0 +1,43 @@
+{
+  "label": "DESCRIPTIVE_RESEARCH_ONLY_NO_CAUSAL_PREDICTIVE_CLAIMS",
+  "note": "M5 range and observed next-hour opportunity rate may contain same-day future observations; for DESCRIPTIVE correlations only, never feed into live orders. Only completed prior context may be live features.",
+  "rows": 21,
+  "correlations": {
+    "actual_tick_count": {
+      "raw_net_all_days": 0.59679,
+      "raw_trades_all_days": 0.62592,
+      "raw_net_ex_jan30": 0.16037,
+      "raw_trades_ex_jan30": 0.04548
+    },
+    "median_m5_range_usd": {
+      "raw_net_all_days": 0.7794,
+      "raw_trades_all_days": 0.85923,
+      "raw_net_ex_jan30": 0.19738,
+      "raw_trades_ex_jan30": 0.133
+    },
+    "m5_range_ge10_share": {
+      "raw_net_all_days": 0.6809,
+      "raw_trades_all_days": 0.71815,
+      "raw_net_ex_jan30": 0.2166,
+      "raw_trades_ex_jan30": 0.16267
+    },
+    "m5_range_ge20_share": {
+      "raw_net_all_days": 0.76087,
+      "raw_trades_all_days": 0.8807,
+      "raw_net_ex_jan30": 0.03674,
+      "raw_trades_ex_jan30": -0.00364
+    },
+    "realized_next_hour_opportunity_rate": {
+      "raw_net_all_days": 0.59702,
+      "raw_trades_all_days": 0.52304,
+      "raw_net_ex_jan30": 0.37755,
+      "raw_trades_ex_jan30": 0.23431
+    },
+    "r9_synth_net_usd": {
+      "raw_net_all_days": 0.67336,
+      "raw_trades_all_days": 0.69894,
+      "raw_net_ex_jan30": 0.23482,
+      "raw_trades_ex_jan30": 0.16376
+    }
+  }
+}
