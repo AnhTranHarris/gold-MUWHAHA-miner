@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 59,
-    "latest_entry": "research/delta_a_alpha/state_journal/0059_DAA_FEB041_FROZEN_TRANSFER_FULL_V1_GAP.json"
+    "latest_sequence": 60,
+    "latest_entry": "research/delta_a_alpha/state_journal/0060_DAA_FEB042_ITERATIVE_REGIME_RESEARCH.json"
   },
-  "restart_instruction": "Read journal 0059 and FEB041 report, then full unabridged literal owner V1 whitepaper; Feb JAN039 frozen transfer completed on 7,538,339 quotes, +$14,442.382 net/9,611/GL -$49,812.754/PF 1.2899/$30,907 exact equity DD, NOT full V1. Full original owner V1 economic baseline remains BLOCKED; original Jan 131E proxy +$21,771.459 is NOT owner full V1. No February tuning or version promotion. Next original V1 full funded repair 033; August sealed, September reserved.",
+  "restart_instruction": "Read journal 0060, FEB042 read-first AND complete literal V1 owner whitepaper. FEB042 February in-sample 305 screens. 512-position modeled research +76032 net/14535/PF3.488/GL-30561/DD14715 (6 orders/sec); high-inventory source-model +204908/36261/DD88030/3794 maxopen is NOT DEPLOYABLE. Full owner V1 economic baseline still BLOCKED until endogenous funded Watchdog + L5/L6/L7 broker parity 033. No February automatic regime promotion, no August/Sep use; original V1 and Delta unchanged.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -457,5 +457,47 @@
     "feb_quote_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
     "library_bundle": "/xauusd-trading-bot/delta-A-alpha/monthly/february_2026/feb041-frozen-jan039-transfer/FEB041_FEBRUARY_ORIGINAL_AND_JAN039_TRANSFER.zip",
     "next": "DAA_JAN1_FULL_V1_PHYSICAL_FUNDED_GENEALOGY_REPAIR_AND_PARITY_033"
+  },
+  "feb042_iterative_regime_research": {
+    "status": "FROZEN_PROVISIONAL_RESEARCH_ONLY_NOT_V1_PROMOTED",
+    "report": "research/delta_a_alpha/monthly/february_2026/feb042_discovery/FEB042_RESEARCH_REPORT.md",
+    "read_first": "research/delta_a_alpha/monthly/february_2026/feb042_discovery/FEB042_HANDOFF_READ_FIRST.md",
+    "qa": "research/delta_a_alpha/monthly/february_2026/feb042_discovery/FEB042_FINAL_QA.json",
+    "library_bundle": "/xauusd-trading-bot/delta-A-alpha/monthly/february_2026/feb042-iterative-regime-research/FEB042_ITERATIVE_FEBRUARY_RESEARCH_BUNDLE.zip",
+    "results": {
+      "jan039_feb_baseline": {
+        "net": 14442.382,
+        "trades": 9611,
+        "gross_loss": -49812.754,
+        "pf": 1.2899,
+        "exact_eq_dd": 30907.085
+      },
+      "feb042_bounded_rate6": {
+        "net": 76032.11,
+        "trades": 14535,
+        "gross_loss": -30561.456,
+        "pf": 3.4878,
+        "exact_eq_dd": 14715.013,
+        "maxopen": 512,
+        "per_utc_second": 6
+      },
+      "feb042_risk_heavy_ceiling": {
+        "net": 204908.032,
+        "trades": 36261,
+        "gross_loss": -81940.726,
+        "pf": 3.5007,
+        "exact_eq_dd": 88029.669,
+        "maxopen": 3794,
+        "per_utc_second": 10
+      },
+      "r9_synth_feb_reference": {
+        "net": 66213.65,
+        "trades": 33523,
+        "gross_loss": -2327.59,
+        "pf": 29.4473
+      }
+    },
+    "source_historical_fixed_tape": true,
+    "automatic_february_activation": false
   }
 }
