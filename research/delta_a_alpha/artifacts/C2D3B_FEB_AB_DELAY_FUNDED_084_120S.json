@@ -1,0 +1,137 @@
+{
+  "unit": "DAA_033_PHASE_C2D3B_REAL_FEB_FUNDED_PARENT_CHILD_QUEUE_AND_EQUITY_REPLAY",
+  "scope": "BROKER_IDEALIZED_PARTIAL_V1_049_119_084_CHAIN_NOT_COMPLETE_OWNER_V1",
+  "verified_input_sha256": {
+    "jan": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "feb": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d"
+  },
+  "february_contiguous_quotes": 1136212,
+  "genuine_january_context_quotes": 3900880,
+  "feb_first_ms": 1770013800011,
+  "feb_last_ms": 1770145199978,
+  "utc_window": "Feb 02 06:30 to Feb 03 19:00 UTC (first specified 1,136,212 quotes)",
+  "source_049_candidates_before_l7_denial": 13063,
+  "source_049_families": {
+    "001_NY_EXTENSION": 1305,
+    "017_NY_REBREAK": 14,
+    "019_NY_HEARTBEAT120": 11744
+  },
+  "source_049_expectation_13063": 13063,
+  "source_049_candidate_count_parity": "PASS_COUNT",
+  "source_049_capacity_eligible": 13063,
+  "source_049_capacity_denials": 0,
+  "funded_119_parent_windows": 4,
+  "funded_119_new_parent_earned_admissions": 0,
+  "funded_084_actual_child_fills": 21,
+  "funded_084_actual_child_exits": 21,
+  "funded_084_parent_windows_with_children": 4,
+  "funded_084_realized_good_child_closes": 19,
+  "funded_084_bad_or_slow_child_closes": 2,
+  "relocks": 2,
+  "combined_sec_max_engine": 4,
+  "combined_sec_max_independent": 4,
+  "independent_equity_max_abs_difference": 0.0,
+  "independent_account_mismatches": 0,
+  "independent_account_first_mismatches": [],
+  "independent_all_quote_max_dd_pre_and_post": 2339.194,
+  "engine_max_dd_pre_and_post": 2339.1939999996393,
+  "independent_net_closed": 85.586,
+  "engine_net_closed": 85.586,
+  "independent_closed_count": 213,
+  "oracle_closes_by_layer": {
+    "L3": 192,
+    "L4": 21
+  },
+  "independent_daily_net_usd": {
+    "2026-02-02": 85.586
+  },
+  "independent_weekly_net_usd": {
+    "2026-W06": 85.586
+  },
+  "independent_daily_trades": {
+    "2026-02-02": 213
+  },
+  "independent_weekly_trades": {
+    "2026-W06": 213
+  },
+  "final_open_positions": 0,
+  "final_marked_equity": 100085.586,
+  "funded_score": {
+    "net": 85.586,
+    "gross_profit": 1970.993,
+    "gross_loss": -1885.407,
+    "profit_factor": 1.04539391,
+    "trades": 213,
+    "open_positions": 0,
+    "max_open": 32,
+    "max_equity_dd": 2339.194,
+    "max_balance_dd": 993.093,
+    "combined_max_orders_sec": 4,
+    "rejected": {
+      "ORDER_RATE": 136,
+      "CELL_CAP": 3125,
+      "SPREAD": 9,
+      "GLOBAL_CAP": 31920,
+      "AB_DELAY_FUNDED_084_CHILD": 2313
+    },
+    "month_blind": true,
+    "funded_recovery_count": 0,
+    "history_missing_quotes": 0,
+    "idle_funding_source_returns_prevented": true,
+    "model": "DETERMINISTIC_BIDASK_IDEALIZED_RESEARCH_KERNEL_NOT_V1_SOURCE_PARITY"
+  },
+  "ledger_execution_event_count": 426,
+  "model_limits": {
+    "balance_usd": 100000.0,
+    "fixed_lot": 0.01,
+    "contract_oz_per_lot": 100.0,
+    "leverage": 500.0,
+    "commission_roundtrip_usd": 0.02,
+    "max_open": 32,
+    "max_layer_open": 32,
+    "max_per_source_open": 32,
+    "max_same_direction": 32,
+    "max_per_cell_side": 16,
+    "max_orders_per_second": 4,
+    "max_orders_per_tick": 1,
+    "max_spread_usd": 3.0,
+    "max_equity_drawdown_usd": 25000.0,
+    "max_margin_fraction_of_equity": 0.3,
+    "max_underwater_open_usd": 8000,
+    "min_scout_funded_wins": 4,
+    "good_hold_ms": 60000,
+    "max_watchdog_depth": 30,
+    "scout_family_budget": 4,
+    "max_recoveries_per_predecessor": 1,
+    "recovery_permission_window_ms": 120000,
+    "reserve_stopout_fraction": 0.5,
+    "fail_closed_broker": true
+  },
+  "low_source_surge_ablation": false,
+  "counterfactual_parent_ttl_scale": 1.0,
+  "counterfactual_parent_tp_scale": 1.0,
+  "ab_forced_physical_049_parent_denial": false,
+  "ab_minimum_084_funded_child_delay_from_paid_parent_ms": 120000,
+  "completed_HTF_model": "ORIGINAL_COMPLETED_EMA_SIGN_PROXY_NOT_OWNER_ROLE_SEPARATED_L2",
+  "source_049_entry_index_parity": "COUNTS_ONLY_NEED_INDEPENDENT_001_017_019_INDEX_COMPARISON",
+  "remaining": [
+    "TRUE_COMPLETED_H4_H1_M15_M5_ROLE_SEMANTICS",
+    "FULL_L1_L3_L5_L6_SOURCE_STACK",
+    "075_PARENT_SELECTION_PARITY",
+    "COINEXX_MARGIN_HEDGING_SLIPPAGE",
+    "ENTIRE_FEB_MONTH_AND_JAN_V1_PARITY",
+    "METAEDITOR_MT5"
+  ],
+  "governance": {
+    "original_whitepaper": "UNMODIFIED",
+    "JAN039": "FROZEN",
+    "FEB045_047": "FROZEN",
+    "production_delta": "READ_ONLY",
+    "march": "HELD",
+    "august": "SEALED",
+    "september": "RESERVED"
+  },
+  "elapsed_seconds": 19.226,
+  "physical_execution_ledger_filename": "C2D3B_FEB_AB_DELAY_FUNDED_084_120S_PHYSICAL_LEDGER.jsonl",
+  "physical_execution_ledger_sha256": "4f48a1050c05c656c018d9b9d313747beaa1d2d699effbda6412803d0e36f9e9"
+}
