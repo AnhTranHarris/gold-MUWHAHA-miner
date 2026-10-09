@@ -1,0 +1,68 @@
+{
+  "schema": "delta-a-alpha-state-journal-v2",
+  "sequence": 81,
+  "unit": "DAA033_C2D3F_SOURCE_NATIVE_MONTH_BLIND_JAN039_S26_S27_POLICY",
+  "status": "ORIGINAL_JAN039_S26_S27_PARAMETER_PORT_AND_EXECUTABLE_CAUSAL_L7_FIXTURE_PASS__FULL_ORIGINAL_V1_FUNDED_JAN_FEB_ECONOMICS_OPEN",
+  "predecessor": {
+    "sequence": 80,
+    "path": "research/delta_a_alpha/state_journal/0080_DAA_033_C2D3E_ORIGINAL_131D_QUOTE_ORDINAL_GATE.json"
+  },
+  "original_owner_whitepaper_git_sha": "1b92b3c89159681a7181508de158af685cf5780c",
+  "preserved_funded_engine_blob": "931fb6f9e6a73af8036572292e53f550a6873f07",
+  "source_basis": {
+    "archive": "JAN039_XAUUSD_RISK_RESEARCH_HANDOFF.zip",
+    "member": "JAN039_SELECTED_VERIFIED.json",
+    "original_member_sha256": "119ca28bd20a61f56771e2b3ab3577f47a362f30e447af71f0c89d38a99704ae",
+    "original_implementation": "jan039_finalcombo.py / jan039_engine_source26.py / jan039_engine_source27.py",
+    "source_side_tape": "JAN037 original-source proposal pipeline; NOT reconstructed fully in current funded engine"
+  },
+  "implemented": {
+    "file": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/source_native_s26_s27_033.py",
+    "frozen_s26": {
+      "cap": 432,
+      "first_executable_net_profit_usd": 35
+    },
+    "frozen_s27": {
+      "ten_minute_phase_first_executable_net_profit_usd": {
+        "p0": 60,
+        "p2": 50,
+        "p3": 50,
+        "p4": 35
+      },
+      "phase0_cap": 224,
+      "phase5_cap": 128
+    },
+    "causality": "Same session and source event behavior across calendar months; caps reflect only currently physically funded inventory; net profit first passage uses live executable Bid/Ask and commission; original upstream source proposals remain externally required.",
+    "execution": "Single existing shared FundedEngine L7; no new independent portfolio; new source policy wraps genuine upstream original event producer when eventually reconstructed."
+  },
+  "tests": {
+    "new": 7,
+    "prior_engine_checks": 38,
+    "total_expected": 45,
+    "verified_github_workflows": 5,
+    "month_blind_fixture_dates": [
+      "2026-01-09",
+      "2026-02-09",
+      "2026-06-09"
+    ],
+    "github_workflow": "daa-033-c2d3f-source-native-qa.yml",
+    "counterfactual_profit_claim": "NONE"
+  },
+  "hard_limits": {
+    "native_H4_H1_M15_M5_source_classifiers": "OPEN",
+    "original_JAN039_full_source_genealogy": "OPEN",
+    "original_FEB045_FEB047_native_source_exit_and_heat": "OPEN",
+    "full_Jan_Feb_funded_profitability": "OPEN",
+    "real_broker": "OPEN",
+    "dec_2025_prehistory": "NOT_PRESENT_IN_JAN_ONLY_RAW"
+  },
+  "locks": {
+    "march": "HELD",
+    "august": "SEALED",
+    "september": "RESERVED",
+    "production_delta": "READ_ONLY",
+    "max_lot": 0.01,
+    "martingale": false
+  },
+  "next": "Recover, reproduce and integrate original L2 role-specific classifiers and original L1-L6 source event generators; register FEB045/FEB047 source-native mechanisms under same month-blind market-state ownership; only then compare fully funded Jan/Feb economics with frozen independent oracles. No March work until owner approval."
+}
