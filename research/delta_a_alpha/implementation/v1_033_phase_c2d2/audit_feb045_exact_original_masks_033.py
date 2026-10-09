@@ -5,10 +5,10 @@ This is source-stage policy parity only, not physical L7 funded economics.
 """
 from __future__ import annotations
 from pathlib import Path
-import sys,zipfile,io,json,hashlib,numpy as np
+import sys,zipfile,io,json,hashlib,os,numpy as np
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from feb045_source_native_context_033 import original_quality_allows
-ROOT=Path(__file__).resolve().parents[1] / 'feb_source_phase'
+ROOT=Path(os.environ.get('DAA_FEB_ARCHIVE_DIR', '/mnt/data/feb_source_phase'))
 ARCHIVE=ROOT/'FEB042_ITERATIVE_FEBRUARY_RESEARCH_BUNDLE.zip'
 
 def run():
