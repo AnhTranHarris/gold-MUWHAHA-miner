@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 69,
-    "latest_entry": "research/delta_a_alpha/state_journal/0069_DAA_033_PHASE_C2A_FUNDED_SURGE_PARENT_CONTRACT.json"
+    "latest_sequence": 70,
+    "latest_entry": "research/delta_a_alpha/state_journal/0070_DAA_033_PHASE_C2B_ORIGINAL_049_UNION_PARITY.json"
   },
-  "restart_instruction": "Journal 0069 C2A partial pass, read full verbatim owner V1 L0–L7 whitepaper then implementation/v1_033_phase_c2a README. Phase C1 40 tests source 131C L1 parity, C2A 46 tests 9 original helpers SHA matched, 049/051 selector index parity on deterministic fixtures, original 119 first-funded-parent credit. Real 1,136,212 Feb quotes + 3,900,880 Jan history: default 049 cap4 funded 119 windows/14 L4 children net -903.658; tight source cap2 funded 2/10 net -1287.472; both MOCK subset negative, not complete V1 or monthly economics. Next C2B original 017/019/024 049 union + 119 earned multi parent and 084 physical child parity. Gate033 stays OPEN; March held; Jan039 Feb045/047 untouched, Aug sealed Sep reserved, EA unchanged.",
+  "restart_instruction": "Read journal0070, entire original owner literal 14,232-char whitepaper L0-L7, C2B README. Phase C2B 47 tests; original 049 NY16/17 001/017/019 entry union 13,063/13,063 EXACT tick/direction/hour on 1,136,212 real Feb quotes, 3,900,880 Jan genuine warmup. Diagnostic funded 049 default 5 paid 119 parent windows and 20 children (+$23.849/210), cap2 2 windows and 10 children (-$57.074/26); mock account ONLY. C2C must implement historical 119 subsequent earned parent admission and 084 child; Phase033 full 8-layer funded and broker parity still pending. Protect Jan039 Feb045/47, owner whitepaper and MT5 EA, March held August SEALED Sept RESERVED.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -758,5 +758,16 @@
     "original_full_source_parent_union": "PENDING_C2B",
     "watchdog_119_multiple_earned_parents": "PENDING_C2B",
     "EA_modified": false
+  },
+  "v1_033_phase_c2b": {
+    "status": "EXACT_SOURCE_ENTRY_PARITY_NOT_FULL_V1",
+    "read_first": "research/delta_a_alpha/implementation/v1_033_phase_c2b/README_033_PHASE_C2B.md",
+    "source": "research/delta_a_alpha/implementation/v1_033_phase_c2b/original_ny049_union_033c2b.py",
+    "qa": "research/delta_a_alpha/implementation/v1_033_phase_c2b/PHASE_C2B_QA_033.json",
+    "original_entry_source_parity": "13063_OF_13063_EXACT_0_MISMATCH",
+    "regression_tests": "47_PASS",
+    "source_followon": "MULTI_PARENT_119_PENDING_C2C",
+    "library_zip": "/xauusd-trading-bot/delta-A-alpha/engineering/v1-033-phase-c2b/DAA_033_V1_FUNDED_ENGINE_PHASE_C2B.zip",
+    "full_month_economic_certification": false
   }
 }
