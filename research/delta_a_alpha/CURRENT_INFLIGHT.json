@@ -1,19 +1,21 @@
 {
   "schema": "delta-a-alpha-inflight-v5",
   "authority": "APPEND_ONLY_STATE_JOURNAL",
-  "state": "IDLE_READY_JAN032_SOURCE_REPLAY_COMPLETE_FULL_V1_PARITY_NEXT",
+  "state": "IDLE_READY_FOR_JAN1_ORIGINAL_SOURCE_FULL_PHYSICAL_PARITY",
   "last_completed": "DAA_JANUARY_ORIGINAL_SOURCE_BIDASK_REPLAY_AND_JANJUL_CORRELATION_BASELINE_032",
   "current_unit": null,
-  "next_unit": "DAA_JAN_V1_FUNDED_GENEALOGY_FULL_SPINE_PARITY_033",
-  "journal_entry": "research/delta_a_alpha/state_journal/0053_DAA_JAN_032_ORIGINAL_SOURCE_REAL_QUOTE_REPLAY.json",
+  "next_unit": "DAA_JAN1_FULL_V1_PHYSICAL_FUNDED_GENEALOGY_REPAIR_AND_PARITY_033",
+  "journal_entry": "research/delta_a_alpha/state_journal/0053_DAA_JAN032_ORIGINAL_SOURCE_TICK_REPLAY_RECOVERED.json",
   "accepted_floor": {
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
     "version": "V1",
     "spec": "research/delta_a_alpha/architecture/DAA_VERTICAL_GRID_SYSTEM_V1_SPEC.md",
     "manifest": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MANIFEST.json"
   },
-  "failure_recovery": "FIRST read state journal 0053 then 0052, exact owner whitepaper 030, Jan032 full report/source archive from Library, and 033 funded genealogy gate. No 024-029 source-as-original substitutes. Do not claim complete V1 Jan results until full funded L0-L7 and pre-2026 HTF cold-start certified. May137 paused; August sealed.",
-  "write_discipline": "ONLY ORIGINAL V1 source-equivalent changes; 300 second qualified readiness when valid prehistory is available; CI source lock+startup QA required; no unverified profit claims.",
+  "failure_recovery": "START journal 0053 then 0052 then owner full verbatim Google V1 whitepaper 030. Jan 032 full report and archive via research branch delta-A-alpha-jan032-original-source-quote-replay / Project Library full-original-source-quote-replay-032. Original full Jan→Apr layers, NOT guessed 024–029. Unit 033 must correct source parent/child physical portfolio fundability and broker margin. Don't rerun the archived original P75/raw run; rerun only changed source QA. August sealed.",
+  "write_discipline": "Owner V1 L0–L7 original full whitepaper, preserve exact source and six-month Jan→July state register, five-minute startup quote readiness only with pre-T0 context. No forced trades, no retroactive funded shadow credit, no monolithic uncheckpointed sweeps, no false V1 certified profit claims.",
   "owner_031_hardlock": "research/delta_a_alpha/governance/DAA_V1_WHITEPAPER_HARDLOCK_STARTUP_JAN1_031.md",
-  "paused_prior_research": "DAA_MAY_VERTICAL_GRID_DISCOVERY_137"
+  "paused_prior_research": "DAA_MAY_VERTICAL_GRID_DISCOVERY_137",
+  "last_source_replay_completed": "DAA_JANUARY_2026_ORIGINAL_SOURCE_RAW_BIDASK_REPLAY_032_TIMEOUT_RECOVERED",
+  "last_source_replay_status": "P75 original source and raw Bid/Ask source reproducible, source QA PASS; NOT whole-owner-whitepaper V1 funding/MT5 certified"
 }
