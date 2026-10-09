@@ -1,0 +1,104 @@
+{
+  "sequence": 53,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_JANUARY_2026_ORIGINAL_SOURCE_RAW_BIDASK_REPLAY_032_TIMEOUT_RECOVERED",
+  "status": "SOURCE_REPLAY_VERIFIED_FULL_OWNER_V1_PHYSICAL_EXECUTION_PARITY_STILL_BLOCKED",
+  "predecessor": {
+    "sequence": 52,
+    "path": "research/delta_a_alpha/state_journal/0052_DAA_V1_HARDLOCK_JAN1_RESTART_031.json"
+  },
+  "owner_original_whitepaper": "research/delta_a_alpha/whitepapers/DAA_V1_OWNER_GOOGLE_WHITEPAPER_FULL_VERBATIM_030.txt",
+  "owner_hardlock": "research/delta_a_alpha/governance/DAA_V1_WHITEPAPER_HARDLOCK_STARTUP_JAN1_031.md",
+  "research_branch": "delta-A-alpha-jan032-original-source-quote-replay",
+  "read_first": "research/delta_a_alpha/monthly/january_2026/DAA_JAN_032_HANDOFF_READ_FIRST.md",
+  "report": "research/delta_a_alpha/monthly/january_2026/DAA_JANUARY_032_FULL_SOURCE_REPLAY_AND_R9_COMPARISON.md",
+  "project_library_folder": "/xauusd-trading-bot/delta-A-alpha/monthly/january_2026/full-original-source-quote-replay-032/",
+  "archive_name": "DAA_JAN032_ORIGINAL_SOURCE_REAL_BIDASK_COMPLETE.tar.gz",
+  "archive_sha256": "bd4769a17597c92eff2aa6f14f3c23c1c550966eda2fab84ae569eb3ade10a95",
+  "archive_members": 79,
+  "archive_member_sha256_mismatches": 0,
+  "raw_source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "raw_quotes": 9135062,
+  "immutable_original_jan_source_commit": "e9189398fcf4fc47d7e2940adec54731ae047c31",
+  "archived_normalized_original": {
+    "net": 194425.92,
+    "trades": 80929,
+    "gross_loss": -3642.86,
+    "pf": 54.3718,
+    "equity_dd": 57139.2
+  },
+  "same_source_actual_bidask": {
+    "net": 93425.311,
+    "trades": 47511,
+    "gross_loss": -31946.454,
+    "pf": 3.924,
+    "win_pct": 90.49,
+    "equity_dd": 56921.6,
+    "positive_days": 20,
+    "total_days": 21,
+    "weeks_beat_r9": 5,
+    "weeks_total": 5
+  },
+  "canonical_r9_synth_jan": {
+    "net": 41520.82,
+    "trades": 27980,
+    "gross_loss": -2071.61,
+    "pf": 21.042778,
+    "win_pct": 87.130093
+  },
+  "original_source_component_attribution": {
+    "hourly_coverage": {
+      "net": 60197.326,
+      "trades": 8470
+    },
+    "watchdog": {
+      "net": 30267.351,
+      "trades": 36505
+    },
+    "cold_start": {
+      "net": 1472.885,
+      "trades": 380
+    },
+    "session_cells": {
+      "net": 1487.749,
+      "trades": 2156
+    }
+  },
+  "timeout_recovery": {
+    "interrupted_bulk_sweep": "monolithic q sweep ended after 4th log line; NOT needed to rerun complete original source",
+    "atomic_cases_verified": [
+      1250,
+      1500,
+      1800,
+      2200,
+      2800
+    ],
+    "new_file": "JAN032_TIMEOUT_RECOVERED_Q_SWEEP.json",
+    "packager_self_inclusion_bug_fixed": true
+  },
+  "source_qa": {
+    "p75_source_reproduced_exact": true,
+    "quote_pnl_reconciliation": true,
+    "chronology": true,
+    "daily_weekly_totals": true,
+    "spread_sensitivity_qa": true,
+    "workbook_formula_error_scan": "0 matched",
+    "archive_sha_verified": true
+  },
+  "major_blockers": [
+    "Original first scout/child Watchdog credit can use hypothetical realized children before downstream physical-capacity enforcement; full accepted funded-genealogy not proven",
+    "Historical sources allow as many as 640 research entries at the exact same recorded tick; Coinexx broker rate limit/margin/fill acceptance unverified",
+    "January 131E predates complete later V1 native trend-within-trend, conditional funded wrong-direction recovery, and global broker-capital arbitration",
+    "December 2025 pre-T0 H4/H1/M15/M5 history missing; five-minute startup readiness not certified",
+    "Jan 2026 previously outcome-exposed; chronological historical as-of not pristine blind",
+    "January spread-aware renewal improvements concentrated Jan30; not promoted",
+    "R9 daily archived 131D gross/PF differ from canonical full MT5 deal cashflow accounting; net/trades identical"
+  ],
+  "next_unit": "DAA_JAN1_FULL_V1_PHYSICAL_FUNDED_GENEALOGY_REPAIR_AND_PARITY_033",
+  "next_unit_instruction": "Read 0053 then 0052, original 14232-char Drive whitepaper, January 032 report/QA, original immutable Jan→Feb→Mar→Apr helper bytes. Restore physical L0–L7 source truth without 024–029 substitutes. FIRST isolate same-tick child multiplicity, funded prior-child events and broker margin. Compare against Jan R9 SYNTH daily/weekly/monthly and accumulate causal market-state feature register for Jan–Jul. No further bulk monolithic uncheckpointed loop.",
+  "production_delta": "READ_ONLY",
+  "august": "SEALED",
+  "september": "RESERVED",
+  "last_accepted_system_science": "DAA_APRIL_VERTICAL_GRID_DISCOVERY_136_FINAL",
+  "note": "032 verifies January source mechanics under actual quotes, not fully funded owner-whitepaper V1 or production EA. Partial work must not be described as complete V1."
+}
