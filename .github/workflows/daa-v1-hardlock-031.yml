@@ -1,0 +1,22 @@
+name: V1 Owner Whitepaper Hard Lock + Five-Minute Startup
+on:
+  push:
+    branches:
+      - delta-A-alpha
+      - delta-A-alpha-v1-hardlock-startup-031
+  pull_request:
+    paths:
+      - 'research/delta_a_alpha/**'
+      - '.github/workflows/daa-v1-hardlock-031.yml'
+jobs:
+  original-source-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact original Drive whitepaper and eight-stage manifest guard
+        run: python research/delta_a_alpha/qa/v1_integrity_guard_031.py
+      - name: Five-minute startup and causal observation tests
+        run: python -m unittest -v discover -s research/delta_a_alpha/qa -p 'test_v1_startup_contract_031.py'
