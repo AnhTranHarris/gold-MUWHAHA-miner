@@ -1,0 +1,137 @@
+{
+  "schema": "DAA_JAN_JUL_CAUSAL_REGIME_AND_SYSTEM_CORRELATION_v1",
+  "purpose": "Carry source-exact original V1 campaigns, Jan\u2013Jul chronological economics and adaptive state into eventual MQL5 unknown deployment time. This is January 032 initialization, not simulated future months.",
+  "original_owner_architecture": "L0 ordered quote events \u2192 L1 session grid geometry \u2192 L2 completed H4/H1/M15/M5 \u2192 L3 London/overlap/NY hourly+separate Asia \u2192 L4 Watchdog/regime renewal \u2192 L5 native trend-within-trend \u2192 L6 bounded failure-conditioned recovery \u2192 L7 global account heat and margin governor",
+  "months": [
+    {
+      "month": "2026-01",
+      "state": "JANUARY_SOURCE_MECHANICS_RAW_REPLAY_DONE_NOT_FULL_FUNDING_PARITY",
+      "blind_status": "historically_inspected_not_pristine"
+    },
+    {
+      "month": "2026-02",
+      "state": "NOT_EXECUTED_THIS_032_UNIT",
+      "blind_status": "historically_inspected_not_pristine"
+    },
+    {
+      "month": "2026-03",
+      "state": "NOT_EXECUTED_THIS_032_UNIT",
+      "blind_status": "historically_inspected_not_pristine"
+    },
+    {
+      "month": "2026-04",
+      "state": "NOT_EXECUTED_THIS_032_UNIT",
+      "blind_status": "historically_inspected_not_pristine"
+    },
+    {
+      "month": "2026-05",
+      "state": "NOT_EXECUTED_THIS_032_UNIT",
+      "blind_status": "historically_inspected_not_pristine"
+    },
+    {
+      "month": "2026-06",
+      "state": "NOT_EXECUTED_THIS_032_UNIT",
+      "blind_status": "historically_inspected_not_pristine"
+    },
+    {
+      "month": "2026-07",
+      "state": "NOT_EXECUTED_THIS_032_UNIT",
+      "blind_status": "historically_inspected_not_pristine"
+    }
+  ],
+  "indexed_by": [
+    "source_git_commit",
+    "input_sha256",
+    "UTC_event_time",
+    "UTC_trade_exit_time",
+    "session",
+    "UTC_hour",
+    "10_minute_subphase",
+    "campaign_id",
+    "parent_ticket_id",
+    "child_ticket_id",
+    "campaign_depth",
+    "source_layer",
+    "grid_cycle_id",
+    "first_touch_boundary",
+    "HTF_H4_env",
+    "HTF_H1_location",
+    "HTF_M15_phase",
+    "HTF_M5_transfer",
+    "tick_price_bid",
+    "tick_price_ask",
+    "entry_side",
+    "exit_side",
+    "past_quote_spread",
+    "past_12_48_144_completed_M5_opportunity_supply",
+    "preT0_history_ready",
+    "time_to_ready_ms",
+    "filled_or_shadow",
+    "verified_closed_predecessor_PnL",
+    "previous_child_hold_ms",
+    "relock_reason",
+    "governor_reject_reason",
+    "current_equity",
+    "global_float_heat",
+    "per_session_alloc",
+    "per_layer_alloc",
+    "modeled_margin_and_free_equity"
+  ],
+  "daily_weekly_monthly_measures": [
+    "net_profit",
+    "gross_profit",
+    "gross_loss",
+    "PF",
+    "win_rate",
+    "expectancy",
+    "trades",
+    "trades_per_active_session_hour",
+    "R9_SYNTH_time_aligned_net_and_trades",
+    "balance_peak_trough_DD",
+    "full_tick_floating_equity_DD",
+    "max_concurrency",
+    "gross_open_lots",
+    "95th_percentile_spread",
+    "source_contribution",
+    "positive_day_week",
+    "drawdown_duration",
+    "first_trade_latency",
+    "survivability_tier"
+  ],
+  "methodology": [
+    "Load original historical source bytes, hash and pin release branch.",
+    "Run unchanged original as-of prior-month carry first, no future month parameter fitting.",
+    "Separate reconstructed exact strategy signals from physically funded admission and quote execution.",
+    "Verify child funding with parent tickets from actually funded and closed positions only.",
+    "Separate descriptive same-day correlation from entry-time causal features.",
+    "Use walk-forward cross-month and day/week balanced scorecards, never choose rule on future outcomes.",
+    "Only promote if Jan baseline regressions and subsequent already-known months pass; August sealed; September reserved."
+  ],
+  "hypotheses_not_promoted": [
+    {
+      "name": "cost_aware_first_parent_renewal_quantum",
+      "source": "131E q-map one-line quote-aware patch",
+      "jan_raw_test_status": "JAN_FITTED_PROMISING_NET_AND_PF_NOT_FULL_V1_PARITY"
+    },
+    {
+      "name": "funded_genealogy_safe_relock",
+      "source": "historical original 049\u2192051\u2192075\u2192084\u2192119\u2192131E",
+      "status": "REQUIRED_SOURCE_PARITY_FIX_NO_CERTIFIED_PROFIT_RESULT"
+    },
+    {
+      "name": "activity_scheduled_session_geometry",
+      "source": "historical 131D/134J/135 high-volume hourly reset",
+      "status": "DO_NOT_SUBSTITUTE_GENERIC_MICRO_ENTRIES"
+    },
+    {
+      "name": "two_stage_recovery",
+      "source": "actual funded failed ignition, observed reclaim, bounded heat",
+      "status": "REQUIRES_ORIGINAL_L6_PARITY"
+    },
+    {
+      "name": "portfolio_capacity_auction",
+      "source": "original funded entire portfolio heat",
+      "status": "PENDING_BROKER_MARGINS_AND_GLOBAL_PHYSICAL_SLOT_TEST"
+    }
+  ]
+}
