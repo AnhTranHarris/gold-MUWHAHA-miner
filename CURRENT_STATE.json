@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 64,
-    "latest_entry": "research/delta_a_alpha/state_journal/0064_DAA_FEB046_COMBINED_REPAIR_DIAGNOSTICS.json"
+    "latest_sequence": 65,
+    "latest_entry": "research/delta_a_alpha/state_journal/0065_DAA_FEB047_PROFIT_PROTECTION_DIAGNOSTICS.json"
   },
-  "restart_instruction": "Read journal 0064, FEB046 read-first and FULL original V1 whitepaper, not abbreviated summary. FEB046 tested 70 screens: 18 after realized-loss overlays, 18 structurally confirmed pre-close M5/H1, 10 combined ablations, 6 early-structural-exit, 6 funded-loss relocks, 12 global equity peak new-entry guards. No qualified $10k exact DD result. FEB045 original profit+206528.578/25443/PF28.116/GL-7616.383/DD19308.087; prevention +200982.522/25313/PF24.045/GL-8721.152/DD16458.447. Big S22/S25 profitable baskets remain floating-risk sources; postloss recovery too late. Complete endogenous V1 repair 033 next; August SEALED September RESERVED; production code unchanged.",
+  "restart_instruction": "Start journal 0065 FEB047 handoff and full literal owner V1 L0-L7 whitepaper. FEB046 completed journal0064 and negative native-recovery overlay diagnostic. FEB047 736 eval incl repeats: verified profit +206303.048/25443/PF28.090/DD17183.829/GL-7615.393; lowerDD +200329.84/25313/PF23.971/DD15741.936/GL-8721.152; fails DD<10000. Strict 10 combined orders/sec audited; no broker-certified full-V1 or endogenous Watchdog after new exits. Full V1 funded-genealogy engine 033 next. Original V1, EA, production Delta unchanged, Aug sealed, Sep reserved.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -642,5 +642,55 @@
     "library_bundle": "/xauusd-trading-bot/delta-A-alpha/monthly/february_2026/feb046-combined-portfolio-repair/FEB046_COMBINED_PORTFOLIO_RECOVERY_RESEARCH.zip",
     "screen_evaluations": 70,
     "full_tick_dd_target_met": false
+  },
+  "feb047_profit_protection": {
+    "status": "IN_SAMPLE_FROZEN_SOURCE_RESEARCH_ONLY_NO_V1_PROMOTION",
+    "read_first": "research/delta_a_alpha/monthly/february_2026/feb047_profit_protect/FEB047_HANDOFF_READ_FIRST.md",
+    "report": "research/delta_a_alpha/monthly/february_2026/feb047_profit_protect/FEB047_RESEARCH_REPORT.md",
+    "independent_qa": "research/delta_a_alpha/monthly/february_2026/feb047_profit_protect/FEB047_INDEPENDENT_QA.json",
+    "library_bundle": "/xauusd-trading-bot/delta-A-alpha/monthly/february_2026/feb047-profit-protect/FEB047_PORTFOLIO_REPAIR_RESEARCH_BUNDLE.zip",
+    "selected": {
+      "feb045_profit_frozen": {
+        "net": 206528.578,
+        "pf": 28.1164,
+        "gross_loss": -7616.383,
+        "trades": 25443,
+        "equity_dd": 19308.087
+      },
+      "feb045_prevention_frozen": {
+        "net": 200982.522,
+        "pf": 24.0454,
+        "gross_loss": -8721.152,
+        "trades": 25313,
+        "equity_dd": 16458.447
+      },
+      "feb047_profit_cushion": {
+        "net": 206303.048,
+        "pf": 28.09027,
+        "gross_loss": -7615.393,
+        "trades": 25443,
+        "exact_equity_dd": 17183.829,
+        "maxopen": 1536,
+        "strict_total_orders_per_sec": 10
+      },
+      "feb047_balanced_quality": {
+        "net": 201230.309,
+        "pf": 27.42415,
+        "gross_loss": -7615.393,
+        "trades": 25443,
+        "exact_equity_dd": 16215.592,
+        "maxopen": 1536,
+        "strict_total_orders_per_sec": 10
+      },
+      "feb047_lower_dd": {
+        "net": 200329.84,
+        "pf": 23.97057,
+        "gross_loss": -8721.152,
+        "trades": 25313,
+        "exact_equity_dd": 15741.936,
+        "maxopen": 1536,
+        "strict_total_orders_per_sec": 10
+      }
+    }
   }
 }
