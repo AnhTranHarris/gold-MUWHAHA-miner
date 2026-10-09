@@ -4,9 +4,9 @@ Original source archived FEB041_COMPLETED_10M_CONTEXT.csv; compares actual
 quote-by-quote midpoint high-low, no artificial bar smoothing, no market labels.
 """
 from pathlib import Path
-import pandas as pd, numpy as np, hashlib, json
-RAW=Path('/mnt/data/XAUUSD_DUKAS_2026_02_ticks.csv(3).gz')
-ORIG=Path('/mnt/data/feb_source_phase/FEB041/FEB041_COMPLETED_10M_CONTEXT.csv')
+import pandas as pd, numpy as np, hashlib, json, os
+RAW=Path(os.environ.get('DAA_FEB_RAW_GZ', '/mnt/data/XAUUSD_DUKAS_2026_02_ticks.csv(3).gz'))
+ORIG=Path(os.environ.get('DAA_FEB041_COMPLETED_CSV', '/mnt/data/feb_source_phase/FEB041/FEB041_COMPLETED_10M_CONTEXT.csv'))
 OUT=Path(__file__).parent/'FEB041_COMPLETED_10M_RANGE_FULL_QUOTE_PARITY.json'
 EXPECTED_RAW='ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d'
 
