@@ -1,5 +1,14 @@
 # Delta-A-alpha
 
+## OWNER CURRENT AUTHORITY — V1 original source hard lock / JANUARY 1 startup (2026-10-08)
+
+**Read [journal 0052](state_journal/0052_DAA_V1_HARDLOCK_JAN1_RESTART_031.json) first.** It supersedes prior **February 1** deployment timing and pauses May 137 by explicit owner instruction. Current next unit: `DAA_JAN1_FULL_V1_SOURCE_PARITY_AND_5MIN_DEPLOYMENT_REPLAY_032`.
+
+**Read the [complete, unchanged Google Drive original V1 whitepaper](whitepapers/DAA_V1_OWNER_GOOGLE_WHITEPAPER_FULL_VERBATIM_030.txt) word-for-word** (its original L0–L7 naming), [full source-restoration provenance](architecture/DAA_V1_EXACT_SOURCE_RESTORATION_030.json) and [hard-locked 300-second startup requirement](governance/DAA_V1_WHITEPAPER_HARDLOCK_STARTUP_JAN1_031.md). Do not implement a summary of the whitepaper or substitute reconstructed partial 024–029 economic portfolios. Original January–April GitHub/Library source bytes are mandatory. Whole-portfolio funded parity has **not** passed, nor has an MT5 economic EA been certified.
+
+The [startup state controller](runtime/v1_startup_contract_031.py) and [source lock](qa/v1_integrity_guard_031.py) are covered by [CI](../../.github/workflows/daa-v1-hardlock-031.yml). Five minutes means order-ready if the market/history/broker/opportunity qualify, **not guaranteed profits or a forced trade**. January 1, 2026 is a **chronological as-of research replay, not an untouched statistical holdout**; August sealed, September reserved.
+
+
 Delta-A-alpha is an isolated side-research lineage forked from the live `delta` head at `ac91fc43389a34f8ba380b58143f8e185589b106`.
 
 ## Isolation contract
