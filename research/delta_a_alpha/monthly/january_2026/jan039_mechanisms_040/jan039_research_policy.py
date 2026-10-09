@@ -21,6 +21,7 @@ PHASE_EXCLUSIONS: frozenset[tuple[int, int]] = frozenset({
 class Params:
     lot: float = 0.01
     spread_max_usd: float = 3.0
+    l3_excluded_source_bitmask: int = 291712
     max_open: int = 512
     per_tick_max: int = 1
     per_utc_second_max: int = 3
@@ -122,6 +123,8 @@ def admission(s: AdmissionSnapshot, p: Params = Params()) -> tuple[bool, str]:
         return False, 'BROKER_MARGIN_EXECUTION_GATE'
     if s.direction not in (-1, 1):
         return False, 'INVALID_SIDE'
+    if s.source_id >= 17 and ((p.l3_excluded_source_bitmask >> (s.source_id - 10)) & 1):
+        return False, 'JAN037_SOURCE_EXCLUSION'
     if (s.source_id, phase_of_utc_hour(s.timestamp_ms)) in PHASE_EXCLUSIONS:
         return False, 'JAN039_EXPERIMENTAL_PHASE_MASK'
     if s.source_id >= 17 and s.direction * s.signed_impulse_20s < 0.0:

@@ -47,6 +47,10 @@ class TestJan039ResearchPolicy(unittest.TestCase):
         self.assertEqual(admission(replace(s, timestamp_ms=5*600000,
                                            s27_open_in_entry_phase=128))[1], 'S27_PHASE_5_CAP')
 
+    def test_frozen_upstream_source_mask(self):
+        self.assertEqual(admission(replace(self.s, source_id=17))[1],
+                         'JAN037_SOURCE_EXCLUSION')
+
     def test_watchdog_and_exclusion(self):
         self.assertEqual(admission(replace(self.s, source_id=0, watchdog_open=8))[1],
                          'WATCHDOG_CAP')
