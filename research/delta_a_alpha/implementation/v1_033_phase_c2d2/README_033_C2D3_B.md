@@ -48,3 +48,25 @@ The 57-MB `.npz` source-state cache is **derived ephemeral data, not part of Git
 ## Unfinished acceptance
 
 The frozen V1 architecture retains native L0–L7 order: session/Asia/London/hourly grid geometry, true differentiated completed H4/H1/M15/M5, L3 hourly harvest, L4 paid renewal genealogy, L5 trend-within-trend, L6 failure-bounded recovery, L7 physically unified portfolio heat/capital. This **partial bridge** still lacks complete L1–L6 owned source reproduction, original 075 physical parent selection, full January+February economics, actual Coinexx slippage/rejections/margin/hedging/stopout, MetaEditor compile and MT5 real-tick broker parity. The owner whitepaper, JAN039, FEB045/FEB047, MT5 observe-only EA and production `delta` are not modified; March held; August sealed; September reserved.
+
+
+## Same-PR C2D3-B continuation: actual-funded ablations, 2026-10-09
+
+This is the SAME existing C2D3-B PR #32. The permanent original V1 is the full literal source, not this README, and the actual `v1_funded_core_033c.py` was **not modified**.
+
+A purely experimental L7 subclass (`C2D3BL7FundingAblation`) adds controlled, physically rejected original 049 parent orders (`AB_DENY_FUNDED_049_PARENT`) and genuinely deferred original 084 child funding (`AB_DELAY_FUNDED_084_CHILD`). It **does not modify** the original 001/017/019 source 049 candidates, original 119/084 adapters or the core funding/exit order path. A delayed child must submit again and fill only on a newly observed executable Bid/Ask quote. A physically denied parent earns **no** paid Watchdog descendants.
+
+All three variants replayed the **same entire consecutive 1,136,212 February quotes**, preserving **13,063 original 049 source candidates**, zero independent per-quote cash/equity discrepancies, and causal entry/exit L7 order queue. Original baseline exactly replicated 5 funded 119 windows / 18 084 funded children / 208 physical exits / **+$12.263 net / $2,339.194 equity DD**. Forced 049 funded-parent denial produced **0** paid 119 windows, 0 paid 084 children, 0 physical exits and **$0** net. A **120,000ms actual-funded child admission delay** produced 4 paid 119 windows / 21 L4 children / 21 L4 exits / **+$85.586 net / $2,339.194 equity DD**. This is a *sensitivity counterfactual*, not an optimized deployment strategy; 84% change on a small $12 baseline is not robust evidence of edge.
+
+New independent daily and ISO-week net/trade tallies reconcile exactly to final model cash P&L; three complete ledgers and JSON manifests are under `research/delta_a_alpha/artifacts/` (empty physical denied-parent ledger SHA explicitly recorded). Existing 21 tests plus 4 added direct-funding regression tests = **25 deterministic local PASS**; Python 3.11 GitHub CI must be confirmed on the latest PR HEAD separately. Tests include disabled-A/B byte-equivalent baseline event/score identity, denied 049 parent → no paid 084 lineage, delayed 084 fill at its genuinely new current Ask, and no retroactively credited child wins after delay.
+
+Execute the new causal ablations:
+
+```bash
+python -m unittest -v test_original_119_multi_parent_033c2c test_funded_084_l7_bridge_033c2d2 test_c2d3_queue_stress_033 test_c2d3b_real_quote_oracle_033 test_c2d3b_funded_causal_ab_033
+python c2d3b_feb_funded_replay_033.py --out /mnt/data/c2d3b_work/C2D3B_FEB_REVALIDATED_BASELINE.json
+python c2d3b_feb_funded_replay_033.py --deny-049-parents --out /mnt/data/c2d3b_work/C2D3B_FEB_AB_DENY_FUNDED_049_PARENT.json
+python c2d3b_feb_funded_replay_033.py --child-after-parent-ms 120000 --out /mnt/data/c2d3b_work/C2D3B_FEB_AB_DELAY_FUNDED_084_120S.json
+```
+
+**Acceptance boundary:** this fulfills the bounded 049→paid119→funded084 test and controlled dependency gates requested in Drive Doc05. It is still NOT entire owner-original L0–L7, not fully refined JAN039/FEB045/FEB047, not source 075 exact portfolio identity, and not Coinexx/MT5 economic certification. These deferred scopes must be implemented source-first using the full literal whitepaper, original source code and observed funded lineage, without claiming the February diagnostic test predicts original complete V1 performance.
