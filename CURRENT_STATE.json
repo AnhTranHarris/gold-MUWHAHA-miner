@@ -10,9 +10,9 @@
     "durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "mode": "READ_ONLY"
   },
-  "current_phase": "V1_WHITEPAPER_HARDLOCK_031_JAN1_ASOF_REPLAY_NEXT",
-  "last_verified_durable_unit": "DAA_APRIL_VERTICAL_GRID_DISCOVERY_136_FINAL",
-  "first_incomplete_unit": "DAA_JAN1_FULL_V1_SOURCE_PARITY_AND_5MIN_DEPLOYMENT_REPLAY_032",
+  "current_phase": "JAN032_ORIGINAL_SOURCE_BIDASK_REPLAY_COMPLETE_FULL_V1_PARITY_033_NEXT",
+  "last_verified_durable_unit": "DAA_JANUARY_ORIGINAL_SOURCE_BIDASK_REPLAY_AND_JANJUL_CORRELATION_BASELINE_032",
+  "first_incomplete_unit": "DAA_JAN_V1_FUNDED_GENEALOGY_FULL_SPINE_PARITY_033",
   "active_candidate": "STMR_SLEEVE_PHASE_001",
   "owner_constraints": {
     "symbol": "XAUUSD",
@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 52,
-    "latest_entry": "research/delta_a_alpha/state_journal/0052_DAA_V1_HARDLOCK_JAN1_RESTART_031.json"
+    "latest_sequence": 53,
+    "latest_entry": "research/delta_a_alpha/state_journal/0053_DAA_JAN_032_ORIGINAL_SOURCE_REAL_QUOTE_REPLAY.json"
   },
-  "restart_instruction": "OWNER HARDLOCK 031 OVERRIDES OLDER FEB1 DIRECTIVE: Start journal 0052, read full 14232-character Google V1 whitepaper exact mirror, March/April preserved original helpers, source restoration manifest, startup 031 and CI; next Jan1 032 original fully funded V1 parity and causal replay. Never treat guessed 024-029 as V1; no promises of 5-min profit, no lookahead. Preserve May137 paused, delta read-only, August sealed.",
+  "restart_instruction": "OWNER JOURNAL 0053 supersedes older 0052 next pointer, original whitepaper 030 and Jan032 source-and-quote QA. Next Jan033 build original whole L0-L7 physically funded tick ledger + L5/L6 and broker margin and Dec2025 H4/H1 warmup; no promotion of 131E P75/raw source partial as full V1. August SEALED, September RESERVED.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -386,5 +386,19 @@
     "prior_incomplete_month": "DAA_MAY_VERTICAL_GRID_DISCOVERY_137_PAUSED_BY_OWNER_FOR_JAN_RESTART",
     "august_holdout": "SEALED",
     "september_holdout": "RESERVED"
+  },
+  "owner_current_jan032": {
+    "full_report": "research/delta_a_alpha/monthly/january_2026/DAA_JANUARY_032_FULL_SOURCE_REPLAY_AND_R9_COMPARISON.md",
+    "qa": "research/delta_a_alpha/monthly/january_2026/JAN032_RAW_SOURCE_QA_AND_CORRELATION.json",
+    "jan_jul_register": "research/delta_a_alpha/monthly/january_2026/JANJUL_REGIME_CORRELATION_AND_V1_IMPLEMENTATION_SCHEMA_032.json",
+    "status": "SOURCE_MECHANICS_131E_REAL_BIDASK_REPLAY_ONLY_NOT_OWNER_L0_L7_FUNDED_BROKER_PARITY",
+    "source_branch": "delta-A-alpha-jan032-original-quote-replay",
+    "full_archive_library": "/xauusd-trading-bot/delta-A-alpha/monthly/january_2026/original-source-raw-bidask-032/",
+    "raw_quote_net": 93425.311,
+    "raw_quote_trades": 47511,
+    "r9_synth_net": 41520.82,
+    "january_asof_not_true_blind": true,
+    "pre_t0_startup_unverified": true,
+    "may137_paused_by_owner": true
   }
 }
