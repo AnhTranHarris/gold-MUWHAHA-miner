@@ -1,0 +1,460 @@
+﻿DELTA-A-ALPHA — VERTICAL GRID SYSTEM V1
+Permanent Spine Whitepaper and MT5 Build Contract
+Status: OWNER-FROZEN ARCHITECTURE / V1
+Date: 2026-10-08
+Symbol: XAUUSD
+Execution root: ordered executable ticks
+Default research lot: fixed 0.01
+Martingale: prohibited
+Loss-dependent sizing: prohibited
+August 2026: sealed unless the owner explicitly unseals it
+
+
+1. EXECUTIVE DECISION
+
+
+Vertical Grid System V1 is the permanent architectural spine for Delta-A-alpha.
+
+
+The system must preserve this order:
+
+
+ordered ticks
+→ session-specific grid geometry
+→ completed H4/H1/M15/M5 structure
+→ London/overlap/New York hourly high-volume harvesting + separate Asia geometry
+→ Watchdog/regime renewal
+→ trend-within-trend native routing
+→ wrong-direction recovery
+→ portfolio heat/capital governor
+
+
+This sequence is not a temporary January or February experiment. It is the V1 system contract.
+
+
+Future versions V2, V3, and later may refine geometry, participation intensity, state definitions, lifecycle rules, recovery rules, specialist selection, heat allocation, and small-capital survivability. They may not casually bypass, flatten, or replace the spine. A future version that changes the architecture must be explicitly promoted by the owner as a new spine version after regression testing.
+
+
+2. WHY V1 EXISTS
+
+
+The high-performing January and February research showed that XAUUSD cannot be treated as one homogeneous grid process.
+
+
+The strongest results came from preserving a layered machine:
+
+
+• the ordered tick path defines what actually happened;
+• session state determines the market prior and the appropriate grid geometry;
+• completed higher-timeframe structure determines structural permission;
+• high-volume London/overlap/New York periods require dense hourly harvesting mechanics;
+• Asia requires a different geometry and participation model;
+• renewal/Watchdog logic captures persistent high-quality campaigns;
+• trend-within-trend routing chooses the appropriate continuation or pullback specialist;
+• wrong-direction recovery is conditional and state-owned rather than generic reversal;
+• a global capital/heat governor controls physical exposure across all layers.
+
+
+The research failure mode to avoid is compressing these layers into a bag of independent specialist streams. The layers form one vertical system.
+
+
+3. V1 HARD DESIGN ORDER
+
+
+LAYER 0 — ORDERED TICK EXECUTION ROOT
+
+
+Exact ordered Bid/Ask ticks are authoritative for:
+• event identity;
+• first touch/crossing;
+• fills;
+• stops;
+• trailing behavior;
+• reclaim/retest timing;
+• renewal timing;
+• wrong-direction failure timing;
+• position lifecycle;
+• equity/heat replay.
+
+
+Derived bars may provide context but may not replace the tick execution path.
+
+
+No future tick, unfinished bar, retrospective event label, future MFE/MAE, or future P/L may influence a live decision.
+
+
+LAYER 1 — SESSION-SPECIFIC GRID GEOMETRY
+
+
+Session state is a first-class system variable, not a reporting label.
+
+
+The system must support distinct market geometry for at least:
+• Asia;
+• London;
+• London/New York overlap;
+• New York;
+• late New York / transition where evidence supports it.
+
+
+The system must not assume one universal gap, cadence, TP/SL, holding horizon, or participation rate across all sessions.
+
+
+Asia and London/NY are explicitly different families.
+
+
+Asia:
+• quieter/rotational and state-selective geometry;
+• lower opportunity density in many regimes;
+• activity/subphase filters when justified;
+• separate continuation/reversion semantics;
+• no forced London/NY cadence.
+
+
+London/overlap/New York:
+• high-volume opportunity harvesting;
+• hour/subphase-specific cadence;
+• denser causal event manufacture only after structural permission;
+• explicit capacity allocation because low-value dense sources can consume slots needed by higher-value sources.
+
+
+Calendar month is never a deployable execution feature.
+
+
+LAYER 2 — COMPLETED MULTI-TIMEFRAME STRUCTURE
+
+
+The canonical structural stack is completed:
+H4 → H1 → M15 → M5
+
+
+The system does not use naive timeframe voting.
+
+
+Role separation:
+
+
+H4:
+environment and long-horizon directional/volatility context.
+
+
+H1:
+structural location and parent directional structure.
+
+
+M15:
+phase, pullback, continuation, transition, or local structural state.
+
+
+M5:
+transfer/opportunity state immediately above the tick layer.
+
+
+Ticks:
+event identity, execution, micro-timing, and path ownership.
+
+
+Future versions may add D1, M1, subsecond bars, or additional derived context, but they must preserve role separation and tick-rooted execution.
+
+
+LAYER 3 — HOURLY HIGH-VOLUME HARVESTING
+
+
+London, overlap, and New York contain distinct hourly auction phases.
+
+
+V1 therefore permits different:
+• event cadence;
+• grid spacing;
+• displacement requirement;
+• lifecycle;
+• cap;
+• source-slot priority
+
+
+by causal hour/subphase and completed structural state.
+
+
+The January work demonstrated that broad session averages hide hour-specific opportunity. The February rebuild confirmed that the high-volume hourly layer must remain part of the primary spine rather than be demoted to an optional specialist.
+
+
+One physical ticket per market tick is the default supplemental opportunity rule unless an explicitly declared grid-scaling mechanism owns the multiplicity.
+
+
+LAYER 4 — WATCHDOG / REGIME RENEWAL
+
+
+Watchdog is a causal renewal/campaign layer.
+
+
+Core semantics:
+• first-parent or scout behavior;
+• earned admission from already-realized outcomes;
+• renewal child geometry;
+• relock after poor/slow realized renewal;
+• maximum renewal-depth control;
+• explicit campaign ownership;
+• global concurrency interaction.
+
+
+Watchdog capacity is state dependent. January may justify deeper renewal inventory; February showed that once other layers become stronger, shallower Watchdog inventory can free physical capacity for higher-value opportunities.
+
+
+The system must optimize total portfolio economics, not maximize Watchdog ticket count in isolation.
+
+
+LAYER 5 — TREND-WITHIN-TREND NATIVE ROUTING
+
+
+The system may operate multiple continuation/pullback/phase specialists, but routing must be based on entry-known state.
+
+
+The router may use:
+• completed H4/H1/M15/M5 state;
+• direction;
+• realized favorable displacement;
+• session/hour/subphase;
+• activity regime;
+• state age;
+• causal renewal behavior;
+• already-realized specialist outcomes where an online confidence layer is explicitly used.
+
+
+The router may not use:
+• month name;
+• date identity;
+• future outcome;
+• hindsight regime classification.
+
+
+The purpose is to allow a lower-timeframe scalping process to trade inside a higher-timeframe structural context without collapsing all timeframes into one vote.
+
+
+LAYER 6 — WRONG-DIRECTION RECOVERY
+
+
+Recovery is part of the permanent spine, but generic reversal is forbidden.
+
+
+A wrong-direction recovery may activate only after a causally defined failure state is observed.
+
+
+Examples of admissible evidence:
+• failed ignition within a fixed already-elapsed window;
+• failure to reach an expected continuation quantum;
+• structural reclaim after failed break;
+• state-conditioned reversal evidence;
+• already-observed loss of continuation quality.
+
+
+Recovery must:
+• remain fixed 0.01 lot under the current research policy;
+• never increase size because the first trade lost;
+• never become Martingale;
+• never become DCA rescue;
+• have its own lifecycle, cap, and invalidation;
+• be independently measurable.
+
+
+February proved that a generic March-style reversal is not portable. Recovery must be owned by session/state geometry.
+
+
+LAYER 7 — PORTFOLIO HEAT / CAPITAL GOVERNOR
+
+
+All physical sleeves share one account-level governor.
+
+
+The governor owns:
+• maximum simultaneous exposure;
+• per-layer/per-session capacity;
+• physical slot allocation;
+• reduce-only behavior;
+• collision/de-duplication;
+• account-level drawdown/heat controls;
+• future small-account survivability mechanics.
+
+
+The governor may reduce physical exposure without deleting the shadow/intelligence layer.
+
+
+The system must distinguish:
+• signal intelligence;
+• physical execution;
+• capital capacity.
+
+
+A strategy may remain active in shadow while receiving zero funded slots.
+
+
+4. PERMANENT SYSTEM RULES
+
+
+The following are V1 invariants:
+
+
+1. XAUUSD only unless the owner explicitly changes scope.
+2. Ordered tick chronology is authoritative.
+3. Fixed 0.01 lot is the research/build default.
+4. Martingale is prohibited.
+5. Loss-dependent sizing is prohibited.
+6. Unbounded averaging is prohibited.
+7. Month/date/week labels are evaluation partitions only, never execution features.
+8. Session awareness is mandatory.
+9. Multi-timeframe role separation is mandatory.
+10. Asia geometry is separate from London/overlap/New York geometry.
+11. High-volume sessions may use faster hourly/subphase harvesting when causally supported.
+12. Watchdog/renewal remains a system layer, not the whole system.
+13. Trend-within-trend routing must remain causal.
+14. Wrong-direction recovery must be failure-conditioned and bounded.
+15. A global heat/capital governor has final authority over new physical risk.
+16. Improvements are judged by daily, weekly, monthly, and cumulative economics.
+17. Net profit alone is insufficient; trade velocity, expectancy, win rate, gross loss, balance DD, equity DD, max-open, and survivability remain part of the scorecard.
+18. R9 SYNTH is a principal performance benchmark, not an execution oracle.
+19. R9 REAL remains a lower historical execution reference where applicable.
+20. Completed durable artifacts outrank chat memory.
+
+
+5. V1 EVIDENCE THAT MOTIVATED THE FREEZE
+
+
+January architecture research:
+• approximately +$194.4K balanced frontier;
+• approximately +$203.5K aggressive frontier;
+• 21/21 positive January trading days;
+• 5/5 January ISO weeks beating time-matched R9 SYNTH;
+• January showed the importance of Watchdog renewal plus asymmetric session ownership.
+
+
+February vertical rebuild:
+• restored vertical stack 134E: approximately +$117.0K;
+• balanced/high-quality 134K frontier: approximately +$189.96K;
+• near-all-metrics 134K frontier: approximately +$200.16K;
+• 20/20 positive February trading days;
+• 4/4 February weeks beating time-matched R9 SYNTH;
+• February near-all-metrics frontier exceeded R9 SYNTH net and trade count while roughly matching its win rate and substantially exceeding its expectancy.
+
+
+These results are research evidence for the architecture. They are not yet MT5 broker certification and are not permission to claim live performance.
+
+
+6. VERSION CONTRACT
+
+
+V1 — PERMANENT SPINE
+
+
+V1 freezes the architecture and interfaces described in this paper.
+
+
+V1 does not claim that every January or February parameter is permanently optimal.
+
+
+V2, V3, and later are expected to improve:
+• monthly adaptation;
+• session geometry;
+• regime identification;
+• hourly participation;
+• MTF routing;
+• recovery quality;
+• profit per unit of heat;
+• gross-loss containment;
+• equity drawdown;
+• small-capital survivability;
+• broker-execution parity.
+
+
+A later version must:
+• inherit the V1 spine unless the owner explicitly authorizes an architecture revision;
+• preserve a reproducible V1 fallback;
+• replay prior accepted months as regression tests;
+• document any layer whose mechanics change;
+• prove that gains are not created by calendar labels or future information.
+
+
+7. SMALL-CAPITAL POLICY
+
+
+Small-account survivability is not frozen into V1.
+
+
+It is a later versioned layer built above the V1 capital governor.
+
+
+Research stages may include:
+$100, $200, $300, $500, $1,000 and larger diagnostic capital.
+
+
+Small-capital mechanics may throttle physical participation, but they must not silently change the underlying market-state interpretation.
+
+
+8. MT5 IMPLEMENTATION CONTRACT
+
+
+The owner has authorized movement from architecture freeze into an MT5 EA build after this V1 documentation milestone.
+
+
+The first MT5 implementation must be a faithful V1 engineering port, not a new research redesign.
+
+
+Required implementation boundaries:
+
+
+• tick event ingestion/execution;
+• session clock and DST mapping;
+• completed H4/H1/M15/M5 state engine;
+• session geometry engine;
+• London/overlap/New York hourly harvesting engine;
+• Asia geometry engine;
+• Watchdog/renewal engine;
+• trend-within-trend router;
+• bounded wrong-direction recovery engine;
+• global heat/capital governor;
+• diagnostics/logger sufficient for Python↔MT5 parity.
+
+
+The EA must expose layer ownership in its diagnostics so divergences can be traced to:
+session, HTF state, geometry, renewal, recovery, routing, or risk governor.
+
+
+The first certification sequence is:
+1. compile with zero errors and reviewed warnings;
+2. deterministic static QA;
+3. layer-by-layer Python parity;
+4. month-scoped MT5 Every tick based on real ticks;
+5. cumulative MT5 real-tick evaluation;
+6. only then small-capital versions.
+
+
+9. GOVERNANCE AND RECOVERY
+
+
+GitHub is machine truth.
+Google Drive whitepaper is the human-readable record.
+The active Delta-A-alpha state journal is the restart cursor.
+
+
+V1 must have:
+• a GitHub architecture specification;
+• a GitHub machine-readable manifest;
+• a state-journal freeze entry;
+• an immutable-by-policy V1 fallback branch;
+• this Drive whitepaper.
+
+
+If a chat crashes or a retry occurs, recover from those durable artifacts. Do not reconstruct V1 from conversation memory.
+
+
+10. FINAL V1 STATEMENT
+
+
+Delta-A-alpha is no longer defined as a generic grid experiment.
+
+
+V1 is a vertically integrated, tick-rooted, session-aware, multi-timeframe-aware, regime-aware, trend-within-trend, recovery-capable grid trading system with explicit high-volume harvesting and account-level heat governance.
+
+
+That architecture is the permanent spine.
+
+
+Future work improves the spine layer by layer; it does not discard it.
