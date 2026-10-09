@@ -1,0 +1,373 @@
+{
+  "qa_passed": true,
+  "overlay_scenarios": 37,
+  "ticket_stop_scenarios": 17,
+  "total": 54,
+  "frozen_raw_quotes": 9135062,
+  "frozen_original_candidates": 47511,
+  "original_pnl_price_coverage": "full",
+  "coverability": "No verified recalculation of future funded Watchdog parent/child admissions",
+  "checked": {
+    "base": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 47511,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone128": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 25673,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone128_spread1p5": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 29117,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone128_spread2": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 32044,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone128_wd256": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 23519,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone16": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 15796,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone192": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 29801,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone192_spread1p5": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 32328,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone192_spread2": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 34679,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone192_spread2p5": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 37889,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone192_wd256": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 25622,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone192_wd384": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 28264,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone256": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 33510,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone256_spread1p5": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 35305,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone256_spread2": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 37099,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone256_wd384": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 30715,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone384": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 39292,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone512": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 44031,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone64": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 20857,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone64_loss2000": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 20288,
+      "recovery_trades": 0,
+      "early_cohort_closures": 1069,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone64_loss2000_impulse5": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 18322,
+      "recovery_trades": 0,
+      "early_cohort_closures": 1458,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone64_loss2000_impulse5_recovery": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 18322,
+      "recovery_trades": 0,
+      "early_cohort_closures": 1458,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone64_spread1": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 23153,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone64_spread1p5": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 25545,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone64_spread2": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 29098,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone64_spread2p5": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 34008,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone64_spread3": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 40778,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone64_wd256": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 19828,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "clone96": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 23399,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "impulse5": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 34901,
+      "recovery_trades": 0,
+      "early_cohort_closures": 6933,
+      "risk_ledger_net_reconciles": true
+    },
+    "loss1000": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 25120,
+      "recovery_trades": 0,
+      "early_cohort_closures": 11103,
+      "risk_ledger_net_reconciles": true
+    },
+    "loss2000": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 33476,
+      "recovery_trades": 0,
+      "early_cohort_closures": 10428,
+      "risk_ledger_net_reconciles": true
+    },
+    "loss2000_cool300": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 21731,
+      "recovery_trades": 0,
+      "early_cohort_closures": 5235,
+      "risk_ledger_net_reconciles": true
+    },
+    "loss2000_recovery": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 33476,
+      "recovery_trades": 2,
+      "early_cohort_closures": 10428,
+      "risk_ledger_net_reconciles": true
+    },
+    "loss5000": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 36688,
+      "recovery_trades": 0,
+      "early_cohort_closures": 7464,
+      "risk_ledger_net_reconciles": true
+    },
+    "stop12": {
+      "test": "quote_first_touch_no_future_exit",
+      "actual_executable_quote_price_parity": true,
+      "original_non_watchdog_exact": true,
+      "watchdog_earlier_exits": 9445
+    },
+    "stop12_age15_m5": {
+      "test": "quote_first_touch_no_future_exit",
+      "actual_executable_quote_price_parity": true,
+      "original_non_watchdog_exact": true,
+      "watchdog_earlier_exits": 224
+    },
+    "stop12_age15s": {
+      "test": "quote_first_touch_no_future_exit",
+      "actual_executable_quote_price_parity": true,
+      "original_non_watchdog_exact": true,
+      "watchdog_earlier_exits": 8455
+    },
+    "stop12_age60s": {
+      "test": "quote_first_touch_no_future_exit",
+      "actual_executable_quote_price_parity": true,
+      "original_non_watchdog_exact": true,
+      "watchdog_earlier_exits": 5779
+    },
+    "stop12_m5_or_m15": {
+      "test": "quote_first_touch_no_future_exit",
+      "actual_executable_quote_price_parity": true,
+      "original_non_watchdog_exact": true,
+      "watchdog_earlier_exits": 224
+    },
+    "stop12_m5_reversal": {
+      "test": "quote_first_touch_no_future_exit",
+      "actual_executable_quote_price_parity": true,
+      "original_non_watchdog_exact": true,
+      "watchdog_earlier_exits": 224
+    },
+    "stop16": {
+      "test": "quote_first_touch_no_future_exit",
+      "actual_executable_quote_price_parity": true,
+      "original_non_watchdog_exact": true,
+      "watchdog_earlier_exits": 6832
+    },
+    "stop16_age15_m5": {
+      "test": "quote_first_touch_no_future_exit",
+      "actual_executable_quote_price_parity": true,
+      "original_non_watchdog_exact": true,
+      "watchdog_earlier_exits": 0
+    },
+    "stop25": {
+      "test": "quote_first_touch_no_future_exit",
+      "actual_executable_quote_price_parity": true,
+      "original_non_watchdog_exact": true,
+      "watchdog_earlier_exits": 4419
+    },
+    "stop3": {
+      "test": "quote_first_touch_no_future_exit",
+      "actual_executable_quote_price_parity": true,
+      "original_non_watchdog_exact": true,
+      "watchdog_earlier_exits": 23358
+    },
+    "stop5": {
+      "test": "quote_first_touch_no_future_exit",
+      "actual_executable_quote_price_parity": true,
+      "original_non_watchdog_exact": true,
+      "watchdog_earlier_exits": 15968
+    },
+    "stop8": {
+      "test": "quote_first_touch_no_future_exit",
+      "actual_executable_quote_price_parity": true,
+      "original_non_watchdog_exact": true,
+      "watchdog_earlier_exits": 11513
+    },
+    "stop8_age15s": {
+      "test": "quote_first_touch_no_future_exit",
+      "actual_executable_quote_price_parity": true,
+      "original_non_watchdog_exact": true,
+      "watchdog_earlier_exits": 10171
+    },
+    "stop8_age60s": {
+      "test": "quote_first_touch_no_future_exit",
+      "actual_executable_quote_price_parity": true,
+      "original_non_watchdog_exact": true,
+      "watchdog_earlier_exits": 5948
+    },
+    "stop8_m5_or_m15": {
+      "test": "quote_first_touch_no_future_exit",
+      "actual_executable_quote_price_parity": true,
+      "original_non_watchdog_exact": true,
+      "watchdog_earlier_exits": 354
+    },
+    "stop8_m5_reversal": {
+      "test": "quote_first_touch_no_future_exit",
+      "actual_executable_quote_price_parity": true,
+      "original_non_watchdog_exact": true,
+      "watchdog_earlier_exits": 354
+    },
+    "unmodified": {
+      "test": "quote_first_touch_no_future_exit",
+      "actual_executable_quote_price_parity": true,
+      "original_non_watchdog_exact": true,
+      "watchdog_earlier_exits": 0
+    },
+    "wd128": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 19255,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    },
+    "wd64": {
+      "test": "all_normal_exits_original_subset; early_cohort_exits independently generated",
+      "accepted_original_events_preserved": 15225,
+      "recovery_trades": 0,
+      "early_cohort_closures": 0,
+      "risk_ledger_net_reconciles": true
+    }
+  }
+}
