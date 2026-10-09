@@ -1,0 +1,89 @@
+{
+  "schema": "DAA_033_CORRECTIVE_QUARANTINE_AND_SOURCE_RECOVERY",
+  "branch": "delta-A-alpha-033-original-source-fidelity-repair",
+  "status": "SOURCE_BYTES_RECOVERED__C2D3B_UNMERGED_CLOSED__FULL_ORIGINAL_V1_IMPLEMENTATION_AND_ECONOMIC_PARITY_NOT_DONE",
+  "source_authority": {
+    "full_owner_whitepaper": "research/delta_a_alpha/whitepapers/DAA_V1_OWNER_GOOGLE_WHITEPAPER_FULL_VERBATIM_030.txt",
+    "owner_whitepaper_git_blob": "1b92b3c89159681a7181508de158af685cf5780c",
+    "owner_hardlock": "research/delta_a_alpha/governance/DAA_V1_WHITEPAPER_HARDLOCK_STARTUP_JAN1_031.md",
+    "live_canonical_journal": 75,
+    "base_python_core": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/v1_funded_core_033c.py",
+    "base_python_core_git_blob": "931fb6f9e6a73af8036572292e53f550a6873f07"
+  },
+  "quarantine": {
+    "url": "https://github.com/AnhTranHarris/gold-MUWHAHA-miner/pull/32",
+    "state": "CLOSED",
+    "merged": false,
+    "critical_warning": "PROXY_DIAGNOSTIC_ONLY__DO_NOT_MERGE__DO_NOT_USE_AS_FUTURE_BASELINE",
+    "original_core_in_pr_identical_to_base": true,
+    "errors_if_treated_as_full_v1": [
+      "FEB2-Feb3 rather than Jan1 baseline",
+      "EMA-sign proxy is not role-separated L2",
+      "Only selected 049/119/084 plus 131D mechanism partial",
+      "JAN039 and FEB045/FEB047 complete original research not physically implemented",
+      "Not original L1/L3/L5/L6",
+      "Not broker or small account certified"
+    ]
+  },
+  "recovered_raw_source_archives": [
+    {
+      "authority": "JAN032",
+      "file": "DAA_JAN032_ORIGINAL_SOURCE_REAL_BIDASK_COMPLETE.tar.gz",
+      "library_file_id": "file_000000002eb481fd9d53f843ff8551a0",
+      "sha256": "bd4769a17597c92eff2aa6f14f3c23c1c550966eda2fab84ae569eb3ade10a95",
+      "members": 79,
+      "checks": "HASH_AND_MEMBER_AND_PYTHON_SYNTAX_PASS"
+    },
+    {
+      "authority": "JAN039",
+      "file": "JAN039_XAUUSD_RISK_RESEARCH_HANDOFF.zip",
+      "library_file_id": "file_00000000490c81f6a2e82c631610d10b",
+      "sha256": "22a7f52828a97c3b2b43e0da9e6a6245acfdf606b7a77c1af87f3f8941da7f29",
+      "members": 42,
+      "checks": "HASH_ZIP_CRC_MEMBER_PYTHON_SYNTAX_PASS"
+    },
+    {
+      "authority": "FEB045",
+      "file": "FEB045_UNIFIED_HEAT_GRID_RESEARCH_BUNDLE.zip",
+      "library_file_id": "file_0000000067a081f6815c8daf1b569df6",
+      "sha256": "9248646bf099b954b5661c765ce50316a61c015b595ad61128a0c02b115a33df",
+      "members": 50,
+      "checks": "HASH_ZIP_CRC_MEMBER_PYTHON_SYNTAX_PASS"
+    },
+    {
+      "authority": "FEB047",
+      "file": "FEB047_PORTFOLIO_REPAIR_RESEARCH_BUNDLE.zip",
+      "library_file_id": "file_00000000f36881f6876923d29f7dd830",
+      "sha256": "e45987edf986fa7b5827c503afbf824d90d47593c59dc2f2955f2a0d41aa5f42",
+      "members": 31,
+      "checks": "HASH_ZIP_CRC_MEMBER_PYTHON_SYNTAX_PASS"
+    }
+  ],
+  "local_file_checks": {
+    "four_original_archives_sha256_and_contents": "PASS",
+    "whole_owner_whitepaper_literal_blob": "PASS",
+    "original_engine_blob_unchanged": "PASS",
+    "separate_local_source_recovery_guard_tests": "5_OF_5_PASS"
+  },
+  "implementation_gates": {
+    "entire_unabridged_original_owner_whitepaper": "READ_LITERAL_NO_SUMMARIES_AS_BUILD_SPEC",
+    "jan1_asof_completed_pre_T0_history_five_minute_readiness": "NOT_CERTIFIED_FAIL_CLOSED",
+    "original_L0_to_L7_source_event_and_interlayer_parity": "NOT_CERTIFIED_FAIL_CLOSED",
+    "original_JAN039_refined_source_mechanisms": "SOURCE_RECOVERED_NOT_YET_ONLINE_FUNDED_ENGINE",
+    "original_FEB045_FEB047_refined_mechanisms": "SOURCE_RECOVERED_NOT_YET_ONLINE_FUNDED_ENGINE",
+    "monthblind_online_funded_parent_child_genealogy": "NOT_CERTIFIED_FAIL_CLOSED",
+    "broker_equity_margin_hedging_protective_queues": "NOT_CERTIFIED_FAIL_CLOSED",
+    "january_full_9135062_quotes_and_february_full_7538339_quotes": "NOT_REPLAYED_ON_FULL_V1",
+    "original_MQL5_v1_port": "NOT_CERTIFIED"
+  },
+  "research_integrity": "Source byte recovery is only an input gate and is never a V1 implementation parity pass. Original source code/arrays, not this manifest, are the engineering inputs. No source-only fitted research P&L is physically-funded or deployable.",
+  "owner_constraints": {
+    "march": "HELD",
+    "august": "SEALED",
+    "september": "RESERVED",
+    "production_delta": "READ_ONLY",
+    "fixed_lot": 0.01,
+    "martingale": false
+  },
+  "next": "Read and trace entire exact original source and its upstream dependency arrays; build L0-L7 source-functional acceptance tests before modifying the true Python core. Never promote C2D3-B proxy."
+}
