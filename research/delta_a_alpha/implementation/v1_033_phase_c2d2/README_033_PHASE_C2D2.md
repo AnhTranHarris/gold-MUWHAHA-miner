@@ -31,7 +31,7 @@ python -m py_compile funded_084_l7_bridge_033c2d2.py test_funded_084_l7_bridge_0
 python -m unittest -v test_original_119_multi_parent_033c2c test_funded_084_l7_bridge_033c2d2
 ```
 
-**Verification status:** The pure Python implementation was authored for execution via GitHub Actions because the chat's Python/container execution service returned errors during this step. Do **not** claim the new regression suite passes until an actual CI job log confirms it. All previous verified C2D1 evidence remains frozen and unmodified.
+**Verified GitHub CI:** [workflow run 37969868686](https://github.com/AnhTranHarris/gold-MUWHAHA-miner/actions/runs/37969868686) on Python 3.11 compiled the sources successfully and passed **13/13 tests** (5 inherited paid-119 and 8 C2D2 L7 bridge tests). The first CI attempt failed due to an archived import alias; it was repaired by a shared-type compatibility shim, not a forked ledger. Repository whitepaper hardlock and Delta QA workflows also passed on commit 573094bbcba8ab0a8dc98df68a4de24e86346fe6. **No real-tick integrated C2D2 replay or Coinexx execution test has yet run.**
 
 **Unresolved:** Full original 075/084/119 real-market funded sequence parity; end-to-end original Asia/London/NY L1 geometry; completed H4/H1/M15/M5 semantics; all native L3/L5/L6 proposals and L7 Coinexx margin/hedging/rejections; 9.1m January and 7.5m February full funded economic replay; MetaEditor compile/MT5 broker demo. This is partial gate 033, not closing it.
 

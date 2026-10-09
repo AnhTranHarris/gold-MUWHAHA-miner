@@ -1,0 +1,72 @@
+{
+  "sequence": 73,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_033_PHASE_C2D2_FUNDED_084_L7_FILL_CLOSE_CALLBACK_REARM_INTEGRATION",
+  "status": "CONTRACT_CI_PASS_13__FULL_SOURCE_PARITY_AND_BROKER_COINEXX_OPEN",
+  "predecessor": {
+    "sequence": 72,
+    "path": "research/delta_a_alpha/state_journal/0072_DAA_033_PHASE_C2D1_ORIGINAL_084_RENEWAL_PARITY.json"
+  },
+  "whitepaper": "research/delta_a_alpha/whitepapers/DAA_V1_OWNER_GOOGLE_WHITEPAPER_FULL_VERBATIM_030.txt",
+  "whitepaper_blob": "1b92b3c89159681a7181508de158af685cf5780c",
+  "read_first": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/README_033_PHASE_C2D2.md",
+  "code": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/funded_084_l7_bridge_033c2d2.py",
+  "tests": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/test_funded_084_l7_bridge_033c2d2.py",
+  "qa": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/C2D2_CI_QA_033.json",
+  "verification": {
+    "schema": "daa-033-c2d2-ci-qa-v1",
+    "unit": "DAA_033_PHASE_C2D2_PHYSICAL_ACCEPTANCE_BRIDGE",
+    "status": "CI_CONTRACT_PASS_RESEARCH_KERNEL_NOT_REAL_MARKET_CERTIFIED",
+    "source_commit": "573094bbcba8ab0a8dc98df68a4de24e86346fe6",
+    "workflow_url": "https://github.com/AnhTranHarris/gold-MUWHAHA-miner/actions/runs/37969868686",
+    "workflow_run_id": 37969868686,
+    "job_id": 113953445885,
+    "python": "3.11.17",
+    "compile": "PASS",
+    "tests_run": 13,
+    "tests_passed": 13,
+    "tests_failed": 0,
+    "test_split": {
+      "inherited_C2C_paid119": 5,
+      "new_C2D2_funded084": 8
+    },
+    "hardlock_workflow_run": 37969868643,
+    "hardlock_status": "PASS",
+    "delta_qa_workflow_run": 37969868579,
+    "delta_qa_status": "PASS",
+    "proven": [
+      "No child filled on same parent acceptance event under single entry quote",
+      "Spread-denied child does not consume actual scout/rearm or credit",
+      "Actual favorable TP close versus not-yet-closed child diverges in future admissions",
+      "Positive actual executable exit quote sets new favorable rearm gate",
+      "Forced adverse child reduction relocks and prevents phantom renewal",
+      "L7 parent exit leaves child exposed until its own queued executable exit",
+      "Rejected second source parent creates no Watchdog window",
+      "Protective child close proceeds through missing new-entry HTF history"
+    ],
+    "explicitly_unproven": [
+      "Original 084 entire source event sequence on physically generated Feb 119 campaigns",
+      "Actual Coinexx order acceptance/hedging/slippage and stopout",
+      "Full original 075/084/119 parent/child replay on 1.136m Feb ticks",
+      "Full original L0-L7 funded Jan+Feb economics and approved reference profit reproduction"
+    ],
+    "initial_ci_failure": "Import of C1 source helper needed v1_funded_core_033; compatibility reexport maps it to the *same* funded v1_funded_core_033c classes; no duplicate account/Position types",
+    "owner_locks": {
+      "whitepaper": "UNCHANGED",
+      "JAN039": "UNCHANGED",
+      "FEB045_FEB047": "UNCHANGED",
+      "MT5_Expert": "UNCHANGED",
+      "production_delta": "READ_ONLY",
+      "march": "HOLD",
+      "august": "SEALED",
+      "september": "RESERVED"
+    }
+  },
+  "design": "C2C paid actual L4 outcomes retained; native 084 rearm state anchored only by L7 funded entry/close, proposals denied do not alter genealogy; after physical parent closes children L7 reduce-only queue remains rate-limited",
+  "offline_test_status": "13_PASS_ALL_CI",
+  "original_084_29_source_event_parity": "PREVIOUS_C2D1_DIAGNOSTIC_ONLY__NOT_C2D2_FUNDED_PARITY",
+  "financial_claims": "NONE",
+  "next_subunit": "DAA_033_PHASE_C2D3_REAL_FEB_FUNDED_084_119_PARENT_CHILD_TRACE_PARITY_AND_QUEUE_STRESS",
+  "first_incomplete": "DAA_JAN1_FULL_V1_PHYSICAL_FUNDED_GENEALOGY_REPAIR_AND_PARITY_033",
+  "march": "HOLD"
+}
