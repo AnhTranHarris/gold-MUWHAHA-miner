@@ -1,0 +1,21 @@
+# 01 — LITERAL WHITEPAPER-REFERENCED SYSTEM CONTRACT / FAIL-CLOSED IMPLEMENTATION REVIEW
+**IMPORTANT:** The full owner whitepaper included in the Drive folder is source authority. This checklist is a regression gate, not replacement prose. Any missing layer = FAIL.
+
+- **L0 — tick execution root:** ordered true Ask/Bid, quote age, spread, first-touch entry/exit, exact per-position lifecycle, verified fees/contract, slippage sensitivity. Pre-T0 HTF broker history. No future candle/tick.
+- **L1 — session-specific grid geometry:** separate Asia, London, overlap, NY, late/session transition; event identity + unique grid cell; re-arm/reset as original; no one-gap-fits-all.
+- **L2 — market state:** H4 broad regime, H1 parent location, M15 phase, M5 transfer, tick microstate; completed bars only; no simple vote replacement.
+- **L3 — hourly high-volume harvest AND independent Asia:** original hourly L3 is primary validated engine in Jan032, +$60,197.326 net/8,470 trades. Include high-volume *hour-by-hour* profit harvesting, all preserved source filters, separate Asia geometry and correctly connected state/capital ownership. Protect L3 from Watchdog choking capacity without silently dropping valid proposals.
+- **L4 — Watchdog:** restore ORIGINAL 049 (funded surge)→051 (equity)→075 (NY17)→084 (parent-owned child renewal)→119 (regime router)→131D/131E (qualified bounded depth). Four consecutive already-funded fast wins before renewal unlock; relock after bad/slow outcome; actual physical cap admission precedes outcome credit. Reject shadow win as payment. Multiple real tickets same quote require broker-correct queue/latency, not post-hoc accepted copies.
+- **L5 — trend within trend:** original native continuation signal and lifespan from February 134K/March135/April136 preserved sources. Consume L1/L2/L3/L4 state (including observed failed directional ignition), route opportunistically, don't replace with simplistic EMA-based placeholder.
+- **L6 — conditional wrong-direction recovery:** source-owned failed ignition, break, reclaim evidence from actual profitable/losing funded campaign and completed M5/M15 transfer; 0.01 independent risk approved by L7; do NOT open hedge automatically on loss, increase lot, DCA, or pretend hedge neutralizes risk. Negative recovered Jan036 inverse scouts **rejected**.
+- **L7 — global physical risk governor:** one account-wide position/equity/margin/heat/stopout engine, per-owner and same-side price-cell concentration, broker order-rate, all specialists' accepted vs rejected logs; preserve funded causality under capital caps and incomplete HTF/broker data.
+- **Start-up:** 0–300 seconds from first **valid tradable quote**, initialize original state from real prestart bars/ticks, eligible as soon as valid setup exists (no artificial 5 minute delay); report BLOCKED with exact reason if history/margin invalid; no guaranteed profits or trading in closed market; use only causal online learning from already-closed outcomes. Unknown deployment date.
+- **Statistics:** Compare each UTC day, ISO week, month January–July vs ORIGINAL canonical R9 SYNTH deal-based report (Jan +$41,520.82 / 27,980 / gross loss -$2,071.61 / PF21.042778). Include positive active days, fees, slippage, spread, inventory, max per-side lots, equity DD vs balance DD, PF/gross loss and funded true volume.
+
+## MUST BE AUTOMATED BEFORE ANY 'FULL-V1 BACKTEST' CLAIM
+1. Pin the literal 14,232-character owner whitepaper and exact code helper provenance for every layer; require unchanged hashes.
+2. Event-level logs: quote -> all independent proposals -> original session grid keys/HTF -> accepted/denied by global governor -> resulting trades -> realized close -> ONLY THEN next funded credit, Watchdog unlock or recovery permission.
+3. Portfolio finite event quote replay and broker-correct order/contract/margin settings; detect same-tick unfillable burst, order queue and future-peek.
+4. Daily/week/month reconciliation to actual funded trade ledger, plus source-layer contribution to exact tick equity DD.
+5. 5-minute qualified startup requirement; December 2025 prestart history for Jan1 must not be faked.
+6. Keep Jan36 candidate screening results for controlled acceptance tests only, *not* inherited policy; August 2026 sealed.
