@@ -70,3 +70,7 @@ python c2d3b_feb_funded_replay_033.py --child-after-parent-ms 120000 --out /mnt/
 ```
 
 **Acceptance boundary:** this fulfills the bounded 049→paid119→funded084 test and controlled dependency gates requested in Drive Doc05. It is still NOT entire owner-original L0–L7, not fully refined JAN039/FEB045/FEB047, not source 075 exact portfolio identity, and not Coinexx/MT5 economic certification. These deferred scopes must be implemented source-first using the full literal whitepaper, original source code and observed funded lineage, without claiming the February diagnostic test predicts original complete V1 performance.
+
+### Source checks on each simulation (post-continuation guard)
+
+`replay` now hashes BOTH immutable original January and February `.csv.gz` archives **before each A/B simulation**, even when using the cached 57-MB causal derived `.npz`; it checks cache time ordering and Bid/Ask geometry, and includes the observed derived cache SHA256 in every scored report. All three 1,136,212-quote scenarios were rerun after this change and retain exact original baseline/AB metrics and zero independent ledger discrepancies. The recorded derived cache hash is `52a7b2c88709195a46c8b43b94bdf809dc96c49afbb1b12e1465f737aeb6d143`. This cache is still not authoritative market source and is not bundled into Git.
