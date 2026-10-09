@@ -1,0 +1,49 @@
+{
+  "schema": "daa-033-c2d2-ci-qa-v1",
+  "unit": "DAA_033_PHASE_C2D2_PHYSICAL_ACCEPTANCE_BRIDGE",
+  "status": "CI_CONTRACT_PASS_RESEARCH_KERNEL_NOT_REAL_MARKET_CERTIFIED",
+  "source_commit": "573094bbcba8ab0a8dc98df68a4de24e86346fe6",
+  "workflow_url": "https://github.com/AnhTranHarris/gold-MUWHAHA-miner/actions/runs/37969868686",
+  "workflow_run_id": 37969868686,
+  "job_id": 113953445885,
+  "python": "3.11.17",
+  "compile": "PASS",
+  "tests_run": 13,
+  "tests_passed": 13,
+  "tests_failed": 0,
+  "test_split": {
+    "inherited_C2C_paid119": 5,
+    "new_C2D2_funded084": 8
+  },
+  "hardlock_workflow_run": 37969868643,
+  "hardlock_status": "PASS",
+  "delta_qa_workflow_run": 37969868579,
+  "delta_qa_status": "PASS",
+  "proven": [
+    "No child filled on same parent acceptance event under single entry quote",
+    "Spread-denied child does not consume actual scout/rearm or credit",
+    "Actual favorable TP close versus not-yet-closed child diverges in future admissions",
+    "Positive actual executable exit quote sets new favorable rearm gate",
+    "Forced adverse child reduction relocks and prevents phantom renewal",
+    "L7 parent exit leaves child exposed until its own queued executable exit",
+    "Rejected second source parent creates no Watchdog window",
+    "Protective child close proceeds through missing new-entry HTF history"
+  ],
+  "explicitly_unproven": [
+    "Original 084 entire source event sequence on physically generated Feb 119 campaigns",
+    "Actual Coinexx order acceptance/hedging/slippage and stopout",
+    "Full original 075/084/119 parent/child replay on 1.136m Feb ticks",
+    "Full original L0-L7 funded Jan+Feb economics and approved reference profit reproduction"
+  ],
+  "initial_ci_failure": "Import of C1 source helper needed v1_funded_core_033; compatibility reexport maps it to the *same* funded v1_funded_core_033c classes; no duplicate account/Position types",
+  "owner_locks": {
+    "whitepaper": "UNCHANGED",
+    "JAN039": "UNCHANGED",
+    "FEB045_FEB047": "UNCHANGED",
+    "MT5_Expert": "UNCHANGED",
+    "production_delta": "READ_ONLY",
+    "march": "HOLD",
+    "august": "SEALED",
+    "september": "RESERVED"
+  }
+}
