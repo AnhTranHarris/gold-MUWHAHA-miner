@@ -158,12 +158,22 @@ class IndependentPhysicalOracle:
   self.last_post=post
 
 
-def replay(cache:Path, out:Path, *, cap=32, spread=3., orders=4, low_surge=False, limit=None,parent_ttl_scale=1.,parent_tp_scale=1., deny_049_parents=False, child_after_parent_ms=0):
+def replay(cache:Path, out:Path, *, source_root:Path=Path('/mnt/data'), cap=32, spread=3., orders=4, low_surge=False, limit=None,parent_ttl_scale=1.,parent_tp_scale=1., deny_049_parents=False, child_after_parent_ms=0):
+ # Original handoff: source SHA is rechecked BEFORE every simulation, not
+ # merely when the ephemeral derived-state cache is initially generated.
+ # A cache is an acceleration layer, never a replacement for source authority.
+ jan=source_root/'XAUUSD_DUKAS_2026_01_ticks.csv(3).gz'
+ feb=source_root/'XAUUSD_DUKAS_2026_02_ticks.csv(3).gz'
+ actual_inputs={'jan':sha256(jan),'feb':sha256(feb)}
+ assert actual_inputs==EXPECTED,('C2D3-B original raw input bytes changed',actual_inputs)
+ derived_cache_sha256=sha256(cache)
  with np.load(cache,allow_pickle=False) as data:
   j=int(data['january_context_ticks']);t=data['t'];a=data['a'];b=data['b'];
   if limit is not None:t=t[:limit];a=a[:limit];b=b[:limit]
   states={n:data[n] for n in ('h4','h1','m15','m5')}
   ends={n:data[n+'_end'] for n in ('h4','h1','m15','m5')}
+ assert len(t)>0 and np.all(t[1:]>=t[:-1]) and np.all(a>=b), 'derived quote cache chronology corrupted'
+ assert j==3900880, ('Unexpected Jan warmup context',j)
  quota=Original049FundedCapacity(Original049Settings(base_cap=2,base_step=1,base_unit=2500.,base_max=2,initial_surge=0,surge_step=0,surge_unit=2500.,max_surge=0,hard_max=2)) if low_surge else Original049FundedCapacity()
  wd=Funded084L7Bridge();hb=ExitAblation049(quota,parent_ttl_scale,parent_tp_scale);grid=Original131DSessionL3()
  limits=Limits(max_open=cap,max_layer_open=cap,max_same_direction=cap,max_per_source_open=cap,
@@ -184,7 +194,8 @@ def replay(cache:Path, out:Path, *, cap=32, spread=3., orders=4, low_surge=False
  report={
    'unit':'DAA_033_PHASE_C2D3B_REAL_FEB_FUNDED_PARENT_CHILD_QUEUE_AND_EQUITY_REPLAY',
    'scope':'BROKER_IDEALIZED_PARTIAL_V1_049_119_084_CHAIN_NOT_COMPLETE_OWNER_V1',
-   'verified_input_sha256':{'jan':EXPECTED['jan'],'feb':EXPECTED['feb']},
+   'verified_input_sha256':actual_inputs,'derived_cached_source_array_sha256':derived_cache_sha256,
+   'per_simulation_fresh_raw_sha256_validation':True,
    'february_contiguous_quotes':N,'genuine_january_context_quotes':j,
    'feb_first_ms':int(t[0]),'feb_last_ms':int(t[-1]),'utc_window':'Feb 02 06:30 to Feb 03 19:00 UTC (first specified 1,136,212 quotes)',
    'source_049_candidates_before_l7_denial':hb.total_source_events,'source_049_families':hb.by_family,
@@ -242,5 +253,5 @@ if __name__=='__main__':
  pa=argparse.ArgumentParser();pa.add_argument('--root',type=Path,default=Path('/mnt/data'));pa.add_argument('--cache',type=Path,default=Path('/mnt/data/c2d3b_work/feb_source_arrays.npz'));pa.add_argument('--out',type=Path,default=Path('/mnt/data/c2d3b_work/C2D3B_FEB_REPLAY_RESULT.json'));pa.add_argument('--count',type=int,default=1136212);pa.add_argument('--prepare',action='store_true');pa.add_argument('--low-surge',action='store_true');pa.add_argument('--cap',type=int,default=32);pa.add_argument('--orders',type=int,default=4);pa.add_argument('--spread',type=float,default=3.0);pa.add_argument('--limit',type=int,default=None);pa.add_argument('--parent-ttl-scale',type=float,default=1.);pa.add_argument('--parent-tp-scale',type=float,default=1.);pa.add_argument('--deny-049-parents',action='store_true');pa.add_argument('--child-after-parent-ms',type=int,default=0)
  args=pa.parse_args()
  if args.prepare or not args.cache.exists():prepare(args.root,args.count,args.cache)
- replay(args.cache,args.out,cap=args.cap,spread=args.spread,orders=args.orders,low_surge=args.low_surge,limit=args.limit,parent_ttl_scale=args.parent_ttl_scale,parent_tp_scale=args.parent_tp_scale,
+ replay(args.cache,args.out,source_root=args.root,cap=args.cap,spread=args.spread,orders=args.orders,low_surge=args.low_surge,limit=args.limit,parent_ttl_scale=args.parent_ttl_scale,parent_tp_scale=args.parent_tp_scale,
   deny_049_parents=args.deny_049_parents,child_after_parent_ms=args.child_after_parent_ms)
