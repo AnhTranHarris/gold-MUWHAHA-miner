@@ -10,7 +10,7 @@
     "durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "mode": "READ_ONLY"
   },
-  "current_phase": "FULL_OWNER_V1_HANDOFF_037_VERIFIED__JAN036_CLOSED__ORIGINAL_033_PHYSICAL_FUNDED_REPAIR_NEXT",
+  "current_phase": "OWNER_V1_GATE_033_PHASE_A_FUNDED_EXECUTION_KERNEL_TESTED__FULL_SOURCE_PARITY_INCOMPLETE_MARCH_ON_HOLD",
   "last_verified_durable_unit": "DAA_JANUARY_ORIGINAL_SOURCE_BIDASK_REPLAY_AND_JANJUL_CORRELATION_BASELINE_032",
   "first_incomplete_unit": "DAA_JAN1_FULL_V1_PHYSICAL_FUNDED_GENEALOGY_REPAIR_AND_PARITY_033",
   "active_candidate": "STMR_SLEEVE_PHASE_001",
@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 65,
-    "latest_entry": "research/delta_a_alpha/state_journal/0065_DAA_FEB047_PROFIT_PROTECTION_DIAGNOSTICS.json"
+    "latest_sequence": 66,
+    "latest_entry": "research/delta_a_alpha/state_journal/0066_DAA_V1_FUNDED_ENGINE_033_PHASE_A.json"
   },
-  "restart_instruction": "Start journal 0065 FEB047 handoff and full literal owner V1 L0-L7 whitepaper. FEB046 completed journal0064 and negative native-recovery overlay diagnostic. FEB047 736 eval incl repeats: verified profit +206303.048/25443/PF28.090/DD17183.829/GL-7615.393; lowerDD +200329.84/25313/PF23.971/DD15741.936/GL-8721.152; fails DD<10000. Strict 10 combined orders/sec audited; no broker-certified full-V1 or endogenous Watchdog after new exits. Full V1 funded-genealogy engine 033 next. Original V1, EA, production Delta unchanged, Aug sealed, Sep reserved.",
+  "restart_instruction": "FIRST: read full literal V1 owner whitepaper, journal 0066, implementation/v1_033_phase_a/README_033_PHASE_A.md. Engine 033 Phase A shipped: 23 passing contract tests, original 019 entry parity, 1,136,212 consecutive Feb Dukascopy quotes L3-only diagnostic net -583.745 with original Jan completed EMA warmup. DO NOT call full V1 or claim broker profitability. Existing Jan039 & FEB045/047 historic research results frozen unchanged (manifest). NEXT 033 Phase B original source L1/Asia/Watchdog 049→131E dynamic funded genealogy, plus L5/L6 and L7 broker. March owner explicitly ON HOLD; August SEALED, Sep RESERVED. Production Delta, MT5 EA, original owner L0-L7 architecture unchanged.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -692,5 +692,36 @@
         "strict_total_orders_per_sec": 10
       }
     }
+  },
+  "phase033_funded_engine_repair": {
+    "status": "PARTIAL_FUNDED_KERNEL_IMPLEMENTED_AND_TESTED__FULL_SOURCE_PARITY_INCOMPLETE__MARCH_HELD",
+    "read_first": "research/delta_a_alpha/implementation/v1_033_phase_a/README_033_PHASE_A.md",
+    "python_core": "research/delta_a_alpha/implementation/v1_033_phase_a/v1_funded_core_033.py",
+    "test_results": {
+      "unittest_count": 23,
+      "passed": 23,
+      "original_019_entry_parity": "PASS_SYNTHETIC_INPUT_FIXTURE",
+      "real_feb_continuous_ticks": 1136212,
+      "real_feb_diagnostic_net": -583.745,
+      "real_feb_diagnostic_trades": 836,
+      "real_feb_diagnostic_exact_dd": 1158.88,
+      "real_jan_feb_sha256_verified": true,
+      "archive_zip_integrity": "PASS"
+    },
+    "frozen_research_manifest": "research/delta_a_alpha/implementation/v1_033_phase_a/FROZEN_JAN_FEB_RESEARCH_033.json",
+    "unfinished": [
+      "L1_ORIGINAL_GRID_SOURCES_ASIA_LONDON_NY_FUNDING_PARITY",
+      "L2_SOURCE_COMPLETE_ROLE_AUTHORITY_AND_PRET0_HISTORY",
+      "L3_ALL_ORIGINAL_FROZEN_HOURLY_COVERAGE_SOURCES",
+      "L4_ORIGINAL_049_051_075_084_119_131E_FULL_ONLINE_PARENT_SCOUT_CHILD",
+      "L5_ORIGINAL_134K_NATIVE_SPECIALISTS",
+      "L6_ORIGINAL_FAILURE_OWNED_RECOVERY_SOURCE",
+      "L7_REAL_COINEXX_SYMBOL_ORDER_ACCEPTANCE_MARGIN_STOPOUT",
+      "ALL_JAN_FEB_TRUE_FUNDED_ECONOMIC_PARITY",
+      "MQL5_COMPILE_REAL_TICK_BROKER_TESTING"
+    ],
+    "next": "DAA_033_PHASE_B_ORIGINAL_GRID_WATCHDOG_SOURCE_GENERATION",
+    "march_on_hold": true,
+    "broker_parity_certified": false
   }
 }
