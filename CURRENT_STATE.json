@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 66,
-    "latest_entry": "research/delta_a_alpha/state_journal/0066_DAA_V1_FUNDED_ENGINE_033_PHASE_A.json"
+    "latest_sequence": 67,
+    "latest_entry": "research/delta_a_alpha/state_journal/0067_DAA_033_PHASE_B_TICK_PROTECTION_PARITY.json"
   },
-  "restart_instruction": "FIRST: read full literal V1 owner whitepaper, journal 0066, implementation/v1_033_phase_a/README_033_PHASE_A.md. Engine 033 Phase A shipped: 23 passing contract tests, original 019 entry parity, 1,136,212 consecutive Feb Dukascopy quotes L3-only diagnostic net -583.745 with original Jan completed EMA warmup. DO NOT call full V1 or claim broker profitability. Existing Jan039 & FEB045/047 historic research results frozen unchanged (manifest). NEXT 033 Phase B original source L1/Asia/Watchdog 049→131E dynamic funded genealogy, plus L5/L6 and L7 broker. March owner explicitly ON HOLD; August SEALED, Sep RESERVED. Production Delta, MT5 EA, original owner L0-L7 architecture unchanged.",
+  "restart_instruction": "Read journal 0067, Phase B README and entire original owner whitepaper L0–L7. V1 funded kernel Phase A passed 23 tests; Phase B 31 passed, quote-protective closes continue during absent HTF, new entries fail closed. Original 019 February 1,136,212 real ticks parity 43,105 original candidate records == 43,105 ported; L3-only diagnostic net −$583.745/836 and DD$1,158.88 unchanged. NOT complete V1 full funded source, broker or MT5 parity. Gate 033 still OPEN, Phase C full source session grid, L4 paid campaign, L5/L6 source reconstruction. Preserve Jan039 and Feb045/047, original V1 and EA; March ON HOLD, August SEALED, September RESERVED.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -723,5 +723,15 @@
     "next": "DAA_033_PHASE_B_ORIGINAL_GRID_WATCHDOG_SOURCE_GENERATION",
     "march_on_hold": true,
     "broker_parity_certified": false
+  },
+  "v1_033_phase_b": {
+    "status": "PARTIAL_SOURCE_PARITY_NOT_FUNDED_V1_CERTIFIED",
+    "read_first": "research/delta_a_alpha/implementation/v1_033_phase_b/README_033_PHASE_B.md",
+    "qa": "research/delta_a_alpha/implementation/v1_033_phase_b/PHASE_B_QA_033.json",
+    "strict_tests": "31_PASS",
+    "original_019_feb_entry_parity": "43105/43105_MATCH",
+    "all_original_v1_parity": "NOT_YET",
+    "frozen_research_immutable": true,
+    "next": "DAA_033_PHASE_C_ORIGINAL_SESSION_GRID_WATCHDOG_SOURCE_ONLINE_INTEGRATION"
   }
 }
