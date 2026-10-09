@@ -1,0 +1,88 @@
+{
+  "sequence": 59,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_FEBRUARY_2026_FROZEN_JAN039_TRANSFER_AND_FULL_V1_BASELINE_GAP_AUDIT_041",
+  "status": "FEB_JAN039_FROZEN_BIDASK_TRANSFER_REPLAY_COMPLETE__FULL_OWNER_V1_ECONOMIC_BASELINE_BLOCKED",
+  "predecessor": {
+    "sequence": 58,
+    "path": "research/delta_a_alpha/state_journal/0058_DAA_JAN039_MECHANISM_FREEZE_040.json"
+  },
+  "sources": {
+    "literal_whitepaper": "research/delta_a_alpha/whitepapers/DAA_V1_OWNER_GOOGLE_WHITEPAPER_FULL_VERBATIM_030.txt",
+    "feb_dukas_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+    "jan_warmup_quotes": 3900880,
+    "feb_quotes": 7538339,
+    "original_source_verified_sha256_count": 40
+  },
+  "reports": {
+    "read_first": "research/delta_a_alpha/monthly/february_2026/feb041_transfer/FEB041_RESEARCH_REPORT.md",
+    "machine_state": "research/delta_a_alpha/monthly/february_2026/feb041_transfer/FEB041_MACHINE_STATE.json",
+    "qa": "research/delta_a_alpha/monthly/february_2026/feb041_transfer/FEB041_EXECUTION_QA.json",
+    "binary_source_bundle_in_library": "/xauusd-trading-bot/delta-A-alpha/monthly/february_2026/feb041-frozen-jan039-transfer/FEB041_FEBRUARY_ORIGINAL_AND_JAN039_TRANSFER.zip",
+    "bundle_sha256": "65e733cdcfcf6eacdcb15c5ae43ca5a212f622c90e2871758a77d9bd8ac9684e"
+  },
+  "results": {
+    "source_131e_proxy": {
+      "net": 21771.459,
+      "gross_profit": 28559.35,
+      "gross_loss": -6787.891,
+      "profit_factor": 4.2074,
+      "trades": 5816,
+      "win_pct": 68.05,
+      "full_tick_equity_dd": 7130.107000000004,
+      "balance_dd": 1853.65,
+      "max_open": 446,
+      "active_days": 14,
+      "active_weeks": 4
+    },
+    "expanded_jan037_control": {
+      "net": -1978.209,
+      "gross_profit": 71353.207,
+      "gross_loss": -73331.416,
+      "profit_factor": 0.973,
+      "trades": 12746,
+      "win_pct": 51.47,
+      "full_tick_equity_dd": 37673.80200000001,
+      "balance_dd": 25252.39,
+      "max_open": 512,
+      "active_days": 16,
+      "active_weeks": 4
+    },
+    "jan039_frozen_transfer": {
+      "net": 14442.382,
+      "gross_profit": 64255.136,
+      "gross_loss": -49812.754,
+      "profit_factor": 1.2899,
+      "trades": 9611,
+      "win_pct": 51.13,
+      "full_tick_equity_dd": 30907.084999999977,
+      "balance_dd": 20362.11,
+      "max_open": 512,
+      "active_days": 15,
+      "active_weeks": 4
+    }
+  },
+  "owner_v1_baseline_status": "NOT_CALCULABLE_AS_FULL_FUNDED_ECONOMICS__V1_05_OBSERVE_ONLY_AND_131E_MISSING_ENDOGENOUS_L5_L6_L7",
+  "skeleton_previous_feb_reference": {
+    "quote_count": 7538339,
+    "events": 17118,
+    "routes": 2687,
+    "watchdog_candidates": 78,
+    "watchdog_scouts": 26,
+    "native_states": 5570,
+    "recovery_failed_ignition": 2472,
+    "shadow_session_net": -2882.273,
+    "physical_trades": 0,
+    "classification": "previous archived 008A decision-skeleton/shadow NOT full V1 economic"
+  },
+  "frozen_transfer_monthblind_status": "EXPLORATORY_FROZEN_JANUARY_POLICY_TRANSFER_ONLY_NOT_BLIND_MONTH_SELECTED",
+  "no_code_promotion": true,
+  "untouched": {
+    "production_delta": true,
+    "original_whitepaper": true,
+    "mt5_ea": true,
+    "august_sealed": true,
+    "september_reserved": true
+  },
+  "next_engineering_unit": "DAA_JAN1_FULL_V1_PHYSICAL_FUNDED_GENEALOGY_REPAIR_AND_PARITY_033"
+}

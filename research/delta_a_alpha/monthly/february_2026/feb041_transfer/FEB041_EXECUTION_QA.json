@@ -1,0 +1,49 @@
+{
+  "source_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+  "quote_count": 7538339,
+  "warmup_quote_count": 3900880,
+  "combined_quote_count": 11439219,
+  "first_quote_utc": "2026-02-01T23:06:26.655000+00:00",
+  "last_quote_utc": "2026-02-27T21:59:59.799000+00:00",
+  "ask_ge_bid": true,
+  "chronology_monotonic": true,
+  "completed_10m_buckets": 2745,
+  "median_range_10m_usd": 9.885,
+  "median_quote_spread_usd": 0.887,
+  "reference_tests": [
+    {
+      "label": "FEB041_ORIGINAL_SOURCE_131E_PROXY",
+      "trade_rows": 5816,
+      "max_same_tick": 1,
+      "max_same_utc_second": 2,
+      "quote_side_pnl_recon_max_abs": 0.0,
+      "positive_active_days": 8,
+      "active_days": 14,
+      "positive_active_weeks": 4,
+      "active_weeks": 4
+    },
+    {
+      "label": "FEB041_FROZEN_JAN037_EXPANDED_CONTROL",
+      "trade_rows": 12746,
+      "max_same_tick": 1,
+      "max_same_utc_second": 2,
+      "quote_side_pnl_recon_max_abs": 0.0,
+      "positive_active_days": 9,
+      "active_days": 16,
+      "positive_active_weeks": 3,
+      "active_weeks": 4
+    },
+    {
+      "label": "FEB041_FROZEN_JAN039_TRANSFER",
+      "trade_rows": 9611,
+      "max_same_tick": 1,
+      "max_same_utc_second": 3,
+      "quote_side_pnl_recon_max_abs": 0.0,
+      "positive_active_days": 6,
+      "active_days": 15,
+      "positive_active_weeks": 3,
+      "active_weeks": 4
+    }
+  ],
+  "sci_status": "source-proposal counterfactual; V1 full-funded execution not implemented; no broker margin/slippage/stops/MT5 certification"
+}
