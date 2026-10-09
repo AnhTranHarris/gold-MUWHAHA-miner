@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 61,
-    "latest_entry": "research/delta_a_alpha/state_journal/0061_DAA_FEB043_CAPITAL_EFFICIENCY_RESEARCH.json"
+    "latest_sequence": 62,
+    "latest_entry": "research/delta_a_alpha/state_journal/0062_DAA_FEB044_RISK_RESEARCH.json"
   },
-  "restart_instruction": "Read journal 0061, FEB043 handoff and full unabridged owner V1 L0-L7 whitepaper. February fitted research using original-source proposal tape: balanced1536 net +209415.695/trades39270/gross-loss-56733.545/PF4.691/DD25651.986; lower-loss1792 net206234.332/gross-loss-42068.043/DD25651.986; velocity1536 net224695.205/trades49619/DD29831.936; 7 independent exact full tick QA PASS, 344 screens. These are NOT actual broker/full owner V1/endogenous funded Watchdog; 8-10 modeled fills/sec or 1536+ simultaneous positions are NOT small-account ready; next 033. Original V1, Delta and EA unchanged. August SEALED September RESERVED.",
+  "restart_instruction": "Read journal 0062 and FEB044_HANDOFF_READ_FIRST.md, then entire original literal owner V1 whitepaper L0-L7. 459 Feb screens. Best Feb fitted source model +$212710.922, GL−$23464.931, DD$23272.669, 30923 trades, 1536 maxopen, PF10.065. FAIL owner GL<$10k & DD<$10k targets. All JAN/FEB source data hashes QA, 11.4m quote ticks. Future funded genealogy repair 033 mandatory before V1 attribution; no EA promotion. August sealed, September reserved.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -572,5 +572,21 @@
     "full_v1_physical_parity": "PENDING_033",
     "august_sealed": true,
     "mt5_ea_modified": false
+  },
+  "feb044_risk_research": {
+    "status": "REPRODUCED_IN_SAMPLE_NOT_PROMOTED",
+    "root": "research/delta_a_alpha/monthly/february_2026/feb044_risk/",
+    "reported": {
+      "net": 212710.922,
+      "gross_loss": -23464.931,
+      "pf": 10.0651,
+      "trades": 30923,
+      "exact_quote_equity_dd": 23272.669,
+      "maxopen": 1536,
+      "quote_entry_limit_per_second": 10
+    },
+    "hard_target_status": "PASS_NET_AND_TRADES__FAIL_GROSS_LOSS_AND_EQUITY_DD",
+    "repro_source_library": "/xauusd-trading-bot/delta-A-alpha/monthly/february_2026/feb044-risk-concentration-refinement/FEB044_FEBRUARY_GRID_RISK_RESEARCH_BUNDLE.zip",
+    "production_changed": false
   }
 }
