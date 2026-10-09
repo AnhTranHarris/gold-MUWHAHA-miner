@@ -1,0 +1,139 @@
+{
+  "schema": "daa-v1-exact-source-restoration-030",
+  "status": "ORIGINAL_SOURCE_VERIFIED_IMPLEMENTATION_PARITY_NOT_YET_RESTORED",
+  "governing_human_whitepaper": {
+    "source": "https://docs.google.com/document/d/1-PiyhfhulLl1garjwtSYOysPGOgBTgV_apnQmCKoCTc/edit?usp=drivesdk",
+    "complete_verbatim_git": "research/delta_a_alpha/whitepapers/DAA_V1_OWNER_GOOGLE_WHITEPAPER_FULL_VERBATIM_030.txt",
+    "confirmed_characters": 14232,
+    "canonical_layer_numbers": "L0-L7",
+    "noncanonical_alias_warning": "Earlier derivative specifications numbered L0-L8 by separating Asia into a layer. Do not treat that derivative numbering as an amendment of the owner Drive whitepaper."
+  },
+  "frozen_machine_manifest": "research/delta_a_alpha/artifacts/DAA_VERTICAL_GRID_SYSTEM_V1_MANIFEST.json",
+  "original_layer_order": [
+    {
+      "layer": "L0",
+      "name": "ordered tick execution",
+      "source": [
+        "Experts/GoldMuwahahaMiner_DeltaAAlpha_V1.mq5",
+        "research/R9_GAMMA/replay083_deps/stmr_janjul.py"
+      ]
+    },
+    {
+      "layer": "L1",
+      "name": "session-specific grid geometry",
+      "source": [
+        "Experts/GoldMuwahahaMiner_DeltaAAlpha_V1.mq5",
+        "research/delta_a_alpha/experiments/grid_system_session_timeframe.py",
+        "apr_session_grid_discovery_136b.py"
+      ]
+    },
+    {
+      "layer": "L2",
+      "name": "completed H4/H1/M15/M5 structure",
+      "source": [
+        "Experts/GoldMuwahahaMiner_DeltaAAlpha_V1.mq5",
+        "research/delta_a_alpha/experiments/grid_system_session_timeframe.py",
+        "research/R9_GAMMA/replay083_deps/stmr_janjul.py"
+      ]
+    },
+    {
+      "layer": "L3",
+      "name": "London overlap NY hourly high-volume harvesting PLUS separate Asia geometry",
+      "source": [
+        "research/R9_GAMMA/helpers/gamma02_campaign_heartbeat_019.py",
+        "research/R9_GAMMA/helpers/jan_session_portfolio_131d.py",
+        "feb_residual_hourly_PF4_134h.npz",
+        "feb_asia_quality_PF8_134k.npz",
+        "DAA_MARCH_VERTICAL_GRID_STREAMS_135.npz",
+        "apr_session_grid_discovery_136b.py"
+      ]
+    },
+    {
+      "layer": "L4",
+      "name": "Watchdog/regime renewal",
+      "source": [
+        "research/R9_GAMMA/replay083_deps/gamma02_profit_funded_surge_049.py",
+        "research/R9_GAMMA/replay083_deps/gamma02_profit_funded_surge_equity_051.py",
+        "research/R9_GAMMA/replay083_deps/gamma02_ny17_fast_quantum_exact_053.py",
+        "research/R9_GAMMA/helpers/gamma02_dynamic_watchdog_router_119.py",
+        "research/R9_GAMMA/helpers/jan_profit_per_heat_highrange_131e.py",
+        "apr_renewal_owner_stream_136s0.py",
+        "apr_campaign_transition_map_136t0_fast.py"
+      ]
+    },
+    {
+      "layer": "L5",
+      "name": "trend-within-trend native routing",
+      "source": [
+        "Experts/GoldMuwahahaMiner_DeltaAAlpha_V1.mq5",
+        "feb_native_mode_vertical_134k.py",
+        "DAA_MARCH_VERTICAL_GRID_STREAMS_135.npz",
+        "apr_native_lifecycle_136a.py",
+        "apr_native_conviction_136d.py"
+      ]
+    },
+    {
+      "layer": "L6",
+      "name": "conditional wrong-direction recovery",
+      "source": [
+        "Experts/GoldMuwahahaMiner_DeltaAAlpha_V1.mq5",
+        "feb_hourly_wrongdir_recovery_134f.py",
+        "feb_recovery_PF4_stream_134f.npz",
+        "DAA_MARCH_VERTICAL_GRID_STREAMS_135.npz",
+        "apr_vertical_portfolio_136g.py"
+      ]
+    },
+    {
+      "layer": "L7",
+      "name": "physical portfolio heat/capital governor",
+      "source": [
+        "Experts/GoldMuwahahaMiner_DeltaAAlpha_V1.mq5",
+        "research/R9_GAMMA/helpers/jan_session_portfolio_131d.py",
+        "daa_march_vertical_grid_replay_135.py",
+        "apr_vertical_portfolio_136g.py",
+        "apr_rule_family_parametric_combine_136v2.py"
+      ]
+    }
+  ],
+  "exact_immutable_source_bundles": {
+    "january": {
+      "github_commit": "e9189398fcf4fc47d7e2940adec54731ae047c31",
+      "branch": "carson/r9-gamma-02-jan-grid-milestone",
+      "status": "HISTORICAL_SOURCE_PROVENANCE_ONLY"
+    },
+    "february": {
+      "github_commit": "bf5ce6a2b9b54fb0221bf0b9e7b00369b0ed80df",
+      "branch": "carson/r9-gamma-02-feb-vertical-grid-risk-134k",
+      "library": "/xauusd-trading-bot/r9-gamma-02-velocity-geometry/2026-10-08/february-vertical-grid-risk-134k/",
+      "status": "FEBRUARY_OUTCOME_SELECTED_HISTORICAL_EVIDENCE"
+    },
+    "march": {
+      "library": "/xauusd-trading-bot/delta-A-alpha/monthly/march_2026/vertical-grid-135/",
+      "source": "DAA_MARCH_VERTICAL_GRID_STREAMS_135.npz",
+      "sha256": "9b16fe06de5b3f85d2f8ea03eaff661de65d15485fd7cbc6563ba029335b795e",
+      "arrays": 114,
+      "replay": "daa_march_vertical_grid_replay_135.py",
+      "status": "EXACT_SAVED_STREAM_REPLAY_AUDITED"
+    },
+    "april": {
+      "library": "/xauusd-trading-bot/delta-A-alpha/monthly/april_2026/vertical-grid-136/recovery-archive/",
+      "archive": "DAA_APRIL_136_HELPERS_ARTIFACTS_RECOVERY_20261008.tar.gz",
+      "sha256": "1f3ea46dca4889dfc0b5efea6ae10b37672573ab4c8d2f40041d8258851037fc",
+      "file_count": 216,
+      "python_helpers": 72,
+      "status": "EXACT_SAVED_BYTES_VERIFIED"
+    }
+  },
+  "protective_readme": {
+    "current_production": "delta must remain READ_ONLY",
+    "original_v1_fallback": "delta-A-alpha-v1-vertical-grid-spine",
+    "original_mt5_shell": "delta-A-alpha-v1-mt5-skeleton-certified",
+    "old_partial_024_to_029": "DO_NOT_PROMOTE_AS_FULL_WHITEPAPER_PARITY",
+    "full_funded_system": "NOT_YET_CERTIFIED",
+    "real_broker_execution": "NOT_YET_CERTIFIED",
+    "august": "SEALED",
+    "september": "RESERVED",
+    "owner_modified_first_asof_deployment": "2026-02-01",
+    "owner_pause": "DAA_MAY_VERTICAL_GRID_DISCOVERY_137"
+  }
+}
