@@ -2,7 +2,7 @@
   "schema": "delta-a-alpha-state-journal-v2",
   "sequence": 77,
   "unit": "DAA_033_PHASE_C2D3B_SAME_PR_DIRECT_L7_PARENT_DENIAL_AND_DELAYED_084_CHILD_CAUSAL_AB",
-  "status": "BOUNDED_REAL_TICK_C2D3B_CROSS_AB_COMPLETE__LOCAL_25_OF_25_PASS__GITHUB_CI_PENDING__FULL_V1_NOT_CERTIFIED",
+  "status": "BOUNDED_REAL_TICK_C2D3B_CROSS_AB_COMPLETE__LOCAL_25_PASS__GITHUB_CI_25_PASS_PREVIOUS_HEAD__LATEST_HASH_CI_PENDING__FULL_V1_NOT_CERTIFIED",
   "predecessor": {
     "sequence": 76,
     "path": "research/delta_a_alpha/state_journal/0076_DAA_033_PHASE_C2D3B_REAL_FEB_FUNDED_REPLAY.json"
@@ -20,7 +20,7 @@
     {
       "variant": "IDENTICAL_BASELINE",
       "artifact": "C2D3B_FEB_REVALIDATED_BASELINE.json",
-      "sha256": "6b9d999cd940acad48be17bd62284b40bd1867f6e675fa7117af7b7167bbf440",
+      "sha256": "1f5f269b4387692ad53cb750c3d4b1b85adfe8d3a4e6c6c02d1c52d70a872f19",
       "input_january_quote_count": 3900880,
       "february_actual_bidask_quote_count": 1136212,
       "original_049_pre_funding_candidates": 13063,
@@ -43,12 +43,14 @@
         "SPREAD": 9,
         "GLOBAL_CAP": 11073,
         "SOURCE_PER_TICK_SINGLE_OWNER": 9
-      }
+      },
+      "verified_cache_sha256": "52a7b2c88709195a46c8b43b94bdf809dc96c49afbb1b12e1465f737aeb6d143",
+      "original_archives_SHA256_checked_fresh_before_run": true
     },
     {
       "variant": "DIRECT_PARENT_FUNDING_DENY",
       "artifact": "C2D3B_FEB_AB_DENY_FUNDED_049_PARENT.json",
-      "sha256": "6a7699c279e71516cb9af8eba64deff3fd923f910d76ac3c1408d8f0db9a63fd",
+      "sha256": "5ebe3b83d5f5656edb80db50e9bc76c52f18909f3e591e0e4125d5f032b2bd6b",
       "input_january_quote_count": 3900880,
       "february_actual_bidask_quote_count": 1136212,
       "original_049_pre_funding_candidates": 13063,
@@ -63,12 +65,14 @@
       "weekly_pnl": {},
       "denial_reasons": {
         "AB_DENY_FUNDED_049_PARENT": 13063
-      }
+      },
+      "verified_cache_sha256": "52a7b2c88709195a46c8b43b94bdf809dc96c49afbb1b12e1465f737aeb6d143",
+      "original_archives_SHA256_checked_fresh_before_run": true
     },
     {
       "variant": "ACTUAL_CHILD_DELAY_120_SECONDS",
       "artifact": "C2D3B_FEB_AB_DELAY_FUNDED_084_120S.json",
-      "sha256": "ed09e4ea1f8db0ae76e6a525074df16226e6cffcbd9ad2472fb035bd82f3fe03",
+      "sha256": "343dc03293cb33ee216282ad6b7449643d4f1491bf5137cef02a22c13b483e5f",
       "input_january_quote_count": 3900880,
       "february_actual_bidask_quote_count": 1136212,
       "original_049_pre_funding_candidates": 13063,
@@ -91,7 +95,9 @@
         "SPREAD": 9,
         "GLOBAL_CAP": 31920,
         "AB_DELAY_FUNDED_084_CHILD": 2313
-      }
+      },
+      "verified_cache_sha256": "52a7b2c88709195a46c8b43b94bdf809dc96c49afbb1b12e1465f737aeb6d143",
+      "original_archives_SHA256_checked_fresh_before_run": true
     }
   ],
   "allowed_next": "REVIEW_AND_CI_THEN_SOURCE_GROUNDED_FULL_ORIGINAL_V1_L1_L6_JAN1_IMPLEMENTATION",
@@ -109,5 +115,7 @@
     "MARCH_HELD",
     "AUGUST_SEALED",
     "SEPTEMBER_RESERVED"
-  ]
+  ],
+  "input_sources_SHA256_rechecked_before_each_of_three_full_replays": true,
+  "verified_npz_sha256": "52a7b2c88709195a46c8b43b94bdf809dc96c49afbb1b12e1465f737aeb6d143"
 }
