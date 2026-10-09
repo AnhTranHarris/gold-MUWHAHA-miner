@@ -1,0 +1,44 @@
+{
+  "sequence": 74,
+  "schema": "delta-a-alpha-state-journal-v2",
+  "unit": "DAA_033_PHASE_C2D3A_COMBINED_ORDER_RATE_AND_DENIED_CHILD_STRESS",
+  "status": "DETERMINISTIC_GITHUB_CI_17_PASS__REAL_FEB_TRACE_PENDING",
+  "predecessor": {
+    "sequence": 73,
+    "path": "research/delta_a_alpha/state_journal/0073_DAA_033_PHASE_C2D2_FUNDED_084_L7_INTEGRATION.json"
+  },
+  "source": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/test_c2d3_queue_stress_033.py",
+  "read_first": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/README_033_C2D3_A.md",
+  "qa": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/C2D3_QUEUE_CI_QA_033.json",
+  "test_workflow": "https://github.com/AnhTranHarris/gold-MUWHAHA-miner/actions/runs/37971162942",
+  "pass_counts": {
+    "c2c_prior": 5,
+    "c2d2_prior": 8,
+    "c2d3_new": 4,
+    "total": 17,
+    "failed": 0
+  },
+  "verified": [
+    "Delayed child L7 liquidation remains exposed and marked",
+    "Global capacity denial creates no actual child/Watchdog credit",
+    "Spread denial does not backfill hypothetical past TP",
+    "TP after entry honors shared per-second order cap"
+  ],
+  "not_certified": [
+    "Real Feb 1.136m quote C2D2 or C2D3 run",
+    "Full owner original L0-L7 funded January+February economics",
+    "Broker Coinexx actual constraints or live MT5 EA"
+  ],
+  "owner_frozen": {
+    "whitepaper": "UNCHANGED",
+    "jan039": "UNCHANGED",
+    "feb045_feb047": "UNCHANGED",
+    "mt5_ea": "UNCHANGED",
+    "production_delta": "READ_ONLY",
+    "march": "HOLD",
+    "august": "SEALED",
+    "september": "RESERVED"
+  },
+  "next_subunit": "DAA_033_PHASE_C2D3B_REAL_FEB_FUNDED_PARENT_CHILD_QUEUE_AND_EQUITY_REPLAY",
+  "first_incomplete_unit": "DAA_JAN1_FULL_V1_PHYSICAL_FUNDED_GENEALOGY_REPAIR_AND_PARITY_033"
+}

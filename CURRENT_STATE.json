@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 73,
-    "latest_entry": "research/delta_a_alpha/state_journal/0073_DAA_033_PHASE_C2D2_FUNDED_084_L7_INTEGRATION.json"
+    "latest_sequence": 74,
+    "latest_entry": "research/delta_a_alpha/state_journal/0074_DAA_033_PHASE_C2D3A_ORDER_QUEUE_REGRESSION.json"
   },
-  "restart_instruction": "LATEST JOURNAL 0073. Read FULL verbatim 14,232-char owner V1 L0-L7 whitepaper first, then C2D2 README and C2D2_CI_QA_033.json. Phase C2D2 on isolated draft PR29 implements L7-funded 084 child bridge on C2C original 119 multi-parent; 13/13 GitHub Actions Python 3.11 contract tests PASS including actual accepted/denied fills, altered realized close changes later funded child timing, HTF outage exit, parent-close rate-limited child liquidation. PREVIOUS C2D1 29/29 pure 084 source events over 20k FEB with 6 FIXTURE parents remains separate. C2D2 real Feb 1.136m quote physical-funded source parity NOT TESTED. No Coinexx broker or full V1 Jan/Feb economic certification. Next C2D3 real funded Feb trace & broker scheduling; original V1, EA and Jan039 Feb045/047 untouched, March HOLD Aug SEALED Sep RESERVED.",
+  "restart_instruction": "Journal 0074 latest. Read entire literal owner V1 eight-layer whitepaper then C2D2 README and C2D3-A README. C2D2 13/13 CI tests pass; C2D3-A 4 NEW deterministic combined-rate and child funding tests, 17/17 total Python 3.11 on GitHub Actions workflow run 37971162942 PASS. Local container currently unavailable, therefore C2D3 real 1,136,212 Feb tick funded parent-child trace NOT EXECUTED. Next C2D3-B continuous real Feb source-funded 049->119->084, valid Jan warmup, reject/queue attribution, exact all-tick equity. Gate 033 remains OPEN. March HOLD, approved Jan039 Feb045/FEB047 research frozen, owner whitepaper/EA/prod untouched, August SEALED Sep RESERVED.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -811,5 +811,12 @@
     "source": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/funded_084_l7_bridge_033c2d2.py",
     "workflow": "https://github.com/AnhTranHarris/gold-MUWHAHA-miner/actions/runs/37969868686",
     "next": "DAA_033_PHASE_C2D3_REAL_FEB_FUNDED_084_119_PARENT_CHILD_TRACE_PARITY_AND_QUEUE_STRESS"
+  },
+  "v1_033_phase_c2d3a": {
+    "status": "17_PASS_DETERMINISTIC_CI_RESEARCH_ENGINE_NOT_REAL_TICK_V1",
+    "read_first": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/README_033_C2D3_A.md",
+    "qa": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/C2D3_QUEUE_CI_QA_033.json",
+    "test_run": "https://github.com/AnhTranHarris/gold-MUWHAHA-miner/actions/runs/37971162942",
+    "next": "DAA_033_PHASE_C2D3B_REAL_FEB_FUNDED_PARENT_CHILD_QUEUE_AND_EQUITY_REPLAY"
   }
 }

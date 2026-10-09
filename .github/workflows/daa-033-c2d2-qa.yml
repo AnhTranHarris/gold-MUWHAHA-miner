@@ -20,6 +20,6 @@ jobs:
         with:
           python-version: '3.11'
       - name: Compile bridge and contract tests
-        run: python -m py_compile v1_funded_core_033c.py original_119_multi_parent_033c2c.py funded_084_l7_bridge_033c2d2.py test_funded_084_l7_bridge_033c2d2.py
+        run: python -m py_compile v1_funded_core_033c.py original_119_multi_parent_033c2c.py funded_084_l7_bridge_033c2d2.py test_funded_084_l7_bridge_033c2d2.py test_c2d3_queue_stress_033.py
       - name: Test inherited 119 and new L7 bridge contracts
-        run: python -m unittest -v test_original_119_multi_parent_033c2c test_funded_084_l7_bridge_033c2d2
+        run: python -m unittest -v test_original_119_multi_parent_033c2c test_funded_084_l7_bridge_033c2d2 test_c2d3_queue_stress_033
