@@ -1,0 +1,113 @@
+{
+  "schema": "delta-a-alpha-state-journal-v2",
+  "sequence": 77,
+  "unit": "DAA_033_PHASE_C2D3B_SAME_PR_DIRECT_L7_PARENT_DENIAL_AND_DELAYED_084_CHILD_CAUSAL_AB",
+  "status": "BOUNDED_REAL_TICK_C2D3B_CROSS_AB_COMPLETE__LOCAL_25_OF_25_PASS__GITHUB_CI_PENDING__FULL_V1_NOT_CERTIFIED",
+  "predecessor": {
+    "sequence": 76,
+    "path": "research/delta_a_alpha/state_journal/0076_DAA_033_PHASE_C2D3B_REAL_FEB_FUNDED_REPLAY.json"
+  },
+  "source": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/c2d3b_feb_funded_replay_033.py",
+  "qa": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/C2D3B_REAL_FEB_QA_033.json",
+  "pr": 32,
+  "original_source_C2D2_core_blob": "931fb6f9e6a73af8036572292e53f550a6873f07",
+  "jan_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "feb_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d5",
+  "all_three_1136212_quote_049_candidates_identical": 13063,
+  "oracle_mismatch_each": 0,
+  "original_baseline_exact_regression": true,
+  "variants": [
+    {
+      "variant": "IDENTICAL_BASELINE",
+      "artifact": "C2D3B_FEB_REVALIDATED_BASELINE.json",
+      "sha256": "6b9d999cd940acad48be17bd62284b40bd1867f6e675fa7117af7b7167bbf440",
+      "input_january_quote_count": 3900880,
+      "february_actual_bidask_quote_count": 1136212,
+      "original_049_pre_funding_candidates": 13063,
+      "funded_119_windows": 5,
+      "funded_084_fills": 18,
+      "funded_084_exits": 18,
+      "all_funded_trade_exits": 208,
+      "net_usd": 12.263,
+      "max_quote_equity_dd_usd": 2339.194,
+      "cash_equity_oracle_mismatches": 0,
+      "daily_pnl": {
+        "2026-02-02": 12.263
+      },
+      "weekly_pnl": {
+        "2026-W06": 12.263
+      },
+      "denial_reasons": {
+        "ORDER_RATE": 144,
+        "CELL_CAP": 3124,
+        "SPREAD": 9,
+        "GLOBAL_CAP": 11073,
+        "SOURCE_PER_TICK_SINGLE_OWNER": 9
+      }
+    },
+    {
+      "variant": "DIRECT_PARENT_FUNDING_DENY",
+      "artifact": "C2D3B_FEB_AB_DENY_FUNDED_049_PARENT.json",
+      "sha256": "6a7699c279e71516cb9af8eba64deff3fd923f910d76ac3c1408d8f0db9a63fd",
+      "input_january_quote_count": 3900880,
+      "february_actual_bidask_quote_count": 1136212,
+      "original_049_pre_funding_candidates": 13063,
+      "funded_119_windows": 0,
+      "funded_084_fills": 0,
+      "funded_084_exits": 0,
+      "all_funded_trade_exits": 0,
+      "net_usd": 0.0,
+      "max_quote_equity_dd_usd": 0.0,
+      "cash_equity_oracle_mismatches": 0,
+      "daily_pnl": {},
+      "weekly_pnl": {},
+      "denial_reasons": {
+        "AB_DENY_FUNDED_049_PARENT": 13063
+      }
+    },
+    {
+      "variant": "ACTUAL_CHILD_DELAY_120_SECONDS",
+      "artifact": "C2D3B_FEB_AB_DELAY_FUNDED_084_120S.json",
+      "sha256": "ed09e4ea1f8db0ae76e6a525074df16226e6cffcbd9ad2472fb035bd82f3fe03",
+      "input_january_quote_count": 3900880,
+      "february_actual_bidask_quote_count": 1136212,
+      "original_049_pre_funding_candidates": 13063,
+      "funded_119_windows": 4,
+      "funded_084_fills": 21,
+      "funded_084_exits": 21,
+      "all_funded_trade_exits": 213,
+      "net_usd": 85.586,
+      "max_quote_equity_dd_usd": 2339.194,
+      "cash_equity_oracle_mismatches": 0,
+      "daily_pnl": {
+        "2026-02-02": 85.586
+      },
+      "weekly_pnl": {
+        "2026-W06": 85.586
+      },
+      "denial_reasons": {
+        "ORDER_RATE": 136,
+        "CELL_CAP": 3125,
+        "SPREAD": 9,
+        "GLOBAL_CAP": 31920,
+        "AB_DELAY_FUNDED_084_CHILD": 2313
+      }
+    }
+  ],
+  "allowed_next": "REVIEW_AND_CI_THEN_SOURCE_GROUNDED_FULL_ORIGINAL_V1_L1_L6_JAN1_IMPLEMENTATION",
+  "scientific_limits": [
+    "NOT_OWNER_FULL_8_LAYERS",
+    "NOT_REFINED_SOURCE_JAN039_FEB045_FEB047",
+    "NO_BROKER_OR_MT5_CERTIFICATION"
+  ],
+  "owner_frozen": [
+    "LITERAL_OWNER_WHITEPAPER",
+    "JAN039",
+    "FEB045",
+    "FEB047",
+    "PRODUCTION_DELTA",
+    "MARCH_HELD",
+    "AUGUST_SEALED",
+    "SEPTEMBER_RESERVED"
+  ]
+}
