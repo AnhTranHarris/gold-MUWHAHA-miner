@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 62,
-    "latest_entry": "research/delta_a_alpha/state_journal/0062_DAA_FEB044_RISK_RESEARCH.json"
+    "latest_sequence": 63,
+    "latest_entry": "research/delta_a_alpha/state_journal/0063_DAA_FEB045_UNIFIED_HEAT_GRID_RESEARCH.json"
   },
-  "restart_instruction": "Read journal 0062 and FEB044_HANDOFF_READ_FIRST.md, then entire original literal owner V1 whitepaper L0-L7. 459 Feb screens. Best Feb fitted source model +$212710.922, GL−$23464.931, DD$23272.669, 30923 trades, 1536 maxopen, PF10.065. FAIL owner GL<$10k & DD<$10k targets. All JAN/FEB source data hashes QA, 11.4m quote ticks. Future funded genealogy repair 033 mandatory before V1 attribution; no EA promotion. August sealed, September reserved.",
+  "restart_instruction": "Read journal 0063, FEB045 handoff and the FULL unabridged owner original V1 whitepaper (L0-L7). February 798 research screen evaluations. Profit cushion nine-pocket +$206528.578/25443/PF28.116/GL−$7616.383/EXACT-DD$19308.087. Source-state risk cap +$200982.522/25313/PF24.045/GL−$8721.152/EXACT-DD$16458.447. Both satisfy >=$200k, 12k–<30k trades, PF>15, GL<$10k; both FAIL exact DD<$10k. Fixed original proposal tape, not fully endogenous funded original V1; no deployment, Martingale or EA promotion. Original V1, production Delta, EA unchanged; August SEALED, Sep RESERVED; 033 next.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -588,5 +588,51 @@
     "hard_target_status": "PASS_NET_AND_TRADES__FAIL_GROSS_LOSS_AND_EQUITY_DD",
     "repro_source_library": "/xauusd-trading-bot/delta-A-alpha/monthly/february_2026/feb044-risk-concentration-refinement/FEB044_FEBRUARY_GRID_RISK_RESEARCH_BUNDLE.zip",
     "production_changed": false
+  },
+  "feb045_heat_grid_research": {
+    "status": "RESEARCH_ONLY_FEB_FITTED_NOT_PROMOTED",
+    "report": "research/delta_a_alpha/monthly/february_2026/feb045_heat_grid/FEB045_RESEARCH_REPORT.md",
+    "handoff": "research/delta_a_alpha/monthly/february_2026/feb045_heat_grid/FEB045_HANDOFF_READ_FIRST.md",
+    "qa": "research/delta_a_alpha/monthly/february_2026/feb045_heat_grid/FEB045_INDEPENDENT_EQUITY_AUDIT.json",
+    "library_bundle": "/xauusd-trading-bot/delta-A-alpha/monthly/february_2026/feb045-unified-campaign-heat-grid/FEB045_UNIFIED_HEAT_GRID_RESEARCH_BUNDLE.zip",
+    "reference_metrics": {
+      "prior_feb044": {
+        "net": 212710.922,
+        "gl": -23464.931,
+        "pf": 10.0651,
+        "trades": 30923,
+        "exact_dd": 23272.669,
+        "maxopen": 1536
+      },
+      "profit_cushion_nine_pockets": {
+        "net": 206528.578,
+        "gl": -7616.383,
+        "pf": 28.116359,
+        "trades": 25443,
+        "exact_dd": 19308.087,
+        "maxopen": 1536
+      },
+      "state_heat_cut8": {
+        "net": 200982.522,
+        "gl": -8721.152,
+        "pf": 24.04541,
+        "trades": 25313,
+        "exact_dd": 16458.447,
+        "maxopen": 1536
+      },
+      "state_heat_cut9": {
+        "net": 200053.013,
+        "gl": -7616.383,
+        "pf": 27.266144,
+        "trades": 24619,
+        "exact_dd": 16458.447,
+        "maxopen": 1536
+      }
+    },
+    "goal_status": "FOUR_PASS_ONE_FAIL__EXACT_EQUITY_DD_FAIL",
+    "source_model": true,
+    "original_owner_V1_unchanged": true,
+    "mt5_ea_unchanged": true,
+    "broker_execution_certified": false
   }
 }
