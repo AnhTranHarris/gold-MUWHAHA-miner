@@ -1,0 +1,42 @@
+{
+  "schema": "daa-033-c2d3-queue-ci-qa-v1",
+  "phase": "C2D3_A_ORDER_QUEUE_CONTRACT",
+  "status": "DETERMINISTIC_GITHUB_CI_PASS__REAL_FEB_FUNDED_PARITY_NOT_RUN",
+  "authoritative_prev_journal": 73,
+  "workflow_url": "https://github.com/AnhTranHarris/gold-MUWHAHA-miner/actions/runs/37971162942",
+  "workflow_run_id": 37971162942,
+  "job_id": 113957838554,
+  "python": "3.11.17",
+  "tests_run": 17,
+  "tests_passed": 17,
+  "tests_failed": 0,
+  "inherited_tests": 13,
+  "new_tests": 4,
+  "source_commit": "09982c9bf7427ca9dcd5d7b0a6d3c09904b3f72f",
+  "source_files": [
+    "research/delta_a_alpha/implementation/v1_033_phase_c2d2/test_c2d3_queue_stress_033.py",
+    ".github/workflows/daa-033-c2d2-qa.yml"
+  ],
+  "proven": [
+    "Parent and child reduce orders share one modeled per-second budget, and delayed child remains live while equity is marked",
+    "L7 global-cap child denial cannot create a child or renewal credit",
+    "Spread-denied child is not retrospectively filled or credited for market movement before acceptance",
+    "Take-profit close waits for a free combined order second after child entry, keeping position marked meanwhile"
+  ],
+  "still_unproven": [
+    "Full continuous real-February funded 075/084/119 trace",
+    "Original end-to-end L0-L7 January and February funded economics",
+    "Broker rejection, slippage, partial fills, hedging, margin, stopout and actual Coinexx MT5 tester parity",
+    "March adaptation and any blind month selector"
+  ],
+  "guards": {
+    "original_whitepaper": "UNMODIFIED",
+    "jan039": "FROZEN_RESEARCH_ONLY",
+    "feb045_feb047": "FROZEN_RESEARCH_ONLY",
+    "mt5_ea": "UNMODIFIED",
+    "production_delta": "READ_ONLY",
+    "march": "HOLD",
+    "august": "SEALED",
+    "september": "RESERVED"
+  }
+}
