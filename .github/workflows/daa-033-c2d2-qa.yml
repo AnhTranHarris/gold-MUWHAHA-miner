@@ -21,7 +21,7 @@ jobs:
           python-version: '3.11'
       - name: Install deterministic dependencies for isolated oracle fixtures
         run: python -m pip install 'numpy>=1.24,<3' 'pandas>=2,<3'
-      - name: Compile bridge, replay and unit contracts (no private raw tick data in CI)
-        run: python -m py_compile v1_funded_core_033c.py original_119_multi_parent_033c2c.py funded_084_l7_bridge_033c2d2.py c2d3b_feb_funded_replay_033.py c2d3b_source_index_parity_033.py test_c2d3b_real_quote_oracle_033.py
-      - name: Run inherited paid source/queue plus independent oracle fixture tests
-        run: python -m unittest -v test_original_119_multi_parent_033c2c test_funded_084_l7_bridge_033c2d2 test_c2d3_queue_stress_033 test_c2d3b_real_quote_oracle_033
+      - name: Compile bridge, replay, offline source parity and all unit contracts
+        run: python -m py_compile v1_funded_core_033c.py original_119_multi_parent_033c2c.py funded_084_l7_bridge_033c2d2.py c2d3b_feb_funded_replay_033.py c2d3b_source_index_parity_033.py test_c2d3b_real_quote_oracle_033.py test_c2d3b_funded_causal_ab_033.py
+      - name: Run all original C2C/C2D2/C2D3-A plus C2D3-B original-oracle and causal AB contracts (25 tests)
+        run: python -m unittest -v test_original_119_multi_parent_033c2c test_funded_084_l7_bridge_033c2d2 test_c2d3_queue_stress_033 test_c2d3b_real_quote_oracle_033 test_c2d3b_funded_causal_ab_033
