@@ -1,0 +1,7 @@
+# Restart — January 034
+
+Read original owner 14,232-character V1 whitepaper **verbatim**, main governance journal 0054→0053→0052, and `DAA_JAN034_COHORT_RISK_RECOVERY_GITHUB_COMMUNITY_RESEARCH.md`. Original source and January data have **not** changed. 54 real Bid/Ask candidate-tape counterfactuals finished and QA passed. **No altered Watchdog future parent funding** and **no full L0–L7 broker parity**. Source universe frozen 47,511 recorded Jan 032 candidates and original 9,135,062 Dukascopy quotes.
+
+Most interesting admissible research: 192 Watchdog entries per quote cap with unchanged L3 hourly = +$86,667.923 / 29,801 entries / gross loss -$10,044.872 / PF9.6281 / full-tick DD $26,148.36. Reproduces Jan 5/5 weeks net beating R9. **Not promoted** because original child admissions are not regenerated when candidates rejected, February transfer missing, and the original complete native + recovery streams not physically funded. Defensive 16-per-quote cut 88% drawdown but lost much velocity. Whole-cohort liquidation and per-ticket stop failed; first independent recovery sample lost $2.06 on two 0.01-lot trades.
+
+Next: `DAA_JAN1_FULL_V1_PHYSICAL_FUNDED_GENEALOGY_REPAIR_AND_PARITY_033` plus testing 034 family on recomputed funded candidate genealogy. Do not rerun completed 54 configurations. Execute as checkpointed atomic tests. Never touch August or September. No unverified MT5 code promotion, no Martingale, no lot scaling, no normalized-spread profits.
