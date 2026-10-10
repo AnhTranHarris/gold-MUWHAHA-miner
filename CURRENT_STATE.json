@@ -1,11 +1,11 @@
 {
   "schema": "delta-a-alpha-v1-clean-research-state-v5",
   "branch": "delta-A-alpha",
-  "current_phase": "GRID0104_PRE_VERTICAL_SPREAD_AWARE_EVENT_GEOMETRY_CROSS_MONTH_PROVISIONAL_RESEARCH",
+  "current_phase": "GRID0105_PRE_VERTICAL_CREATOR_GRID_ASOF_MOTION_COST_CAPACITY_RESEARCH_PROVISIONAL",
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 104,
-    "latest_entry": "research/delta_a_alpha/state_journal/0104_PRE_VERTICAL_SPREAD_NORMALIZED_GRID_CROSS_MONTH_RESEARCH.json"
+    "latest_sequence": 105,
+    "latest_entry": "research/delta_a_alpha/state_journal/0105_GRID_ONLY_INTRINSIC_MOTION_COST_CAPACITY_RESEARCH.json"
   },
   "owner_source_of_truth": {
     "whitepaper": "research/delta_a_alpha/whitepapers/DAA_V1_OWNER_GOOGLE_WHITEPAPER_FULL_VERBATIM_030.txt",
@@ -74,9 +74,9 @@
       "hourly_daily_opportunities"
     ]
   },
-  "first_incomplete_unit": "GRID_ONLY_EXECUTABLE_DIRECTION_QUALITY_AND_PER_DAY_BROKER_FEASIBILITY_BEFORE_SESSION_ACTIVATION",
-  "next_unit": "GRID_ONLY_EXECUTABLE_DIRECTION_QUALITY_AND_PER_DAY_BROKER_FEASIBILITY_BEFORE_SESSION_ACTIVATION",
-  "restart_instruction": "J0104 source report in research/delta_a_alpha/grid/GRID_0104_COST_NORMALIZED_VIRTUAL_GRID_JAN_FEB_BREAKTHROUGH.md is new clean PRE-VERTICAL event geometry discovery, not a funded trading edge. Jan 9.135m + Feb 7.538m original native quotes. Grid price step=max($0.75,1.5* causal source EWMA spread), 7s virtual cooldown: 55,732 Jan raw events and 53,958 February raw events; source spread>gap fraction 1.68% and 2.38% vs fixed original 37.32% and 75%. This reduction partly automatic by construction. No stable positive after-spread directional evidence, no L1 session awareness yet, no funded 75%-daily quality success, no portfolio profits or lot scaling. $100k default hypothetical funded research account only when later fully integrated, never stage0. Source artifact GRID0104_CAUSAL_RESEARCH_PACKAGE.zip in conversation. Keep original owner whitepaper and R9/DUKAS immutable, no deleted former Jan-Feb modules.",
+  "first_incomplete_unit": "GRID_ONLY_DIRECTION_EXPECTANCY_ON_RAW_BIDASK_AND_NEW_LOCKBOX_MONTH_BEFORE_SESSION",
+  "next_unit": "GRID_ONLY_DIRECTION_EXPECTANCY_ON_RAW_BIDASK_AND_NEW_LOCKBOX_MONTH_BEFORE_SESSION",
+  "restart_instruction": "J0105: Read `research/delta_a_alpha/grid/GRID_0105_PRESESSION_MOVEMENT_CAPACITY_CROSSMONTH_RESEARCH.md` and full original owner whitepaper. GRID0104 adaptive unique quote crossing K5 test stage=historical January-February original raw Dukascopy. K5 based strictly on price 300s ago and CURRENT spread, threshold >=2 retains Jan 42,771 and Feb 41,230 raw events, improves future abs 120s motion >2spreads in January early/late and Feb (Feb 61.803->63.686%). Provisional UTC+2 Jan R9 report count >=75% on 21/21 days RAW not qualifying funded acceptance; no unchanged blind month. One $100k future research account when funded, not used now; $100–$300 later preferred target. All early/late directional and 16 two-stage continuation/retracement hypotheses failed to show positive after source Bid/Ask expectancy. NO profitable entry direction, no portfolio sim, NO session layer permitted yet, no no-stop grid/martingale. 7 deterministic tests pass after corrected confirmation direction sign. Reproducible complete scripts JSON in Drive ZIP https://drive.google.com/file/d/1aFkGaZ3tZwK9aDmKFBtQCbResnYqw0uW/view. Raw R9, Dukascopy, owner whitepaper untouched. Next: preregister independent month, improve grid-only directional expectancy before L1.",
   "previous_engine_reset_commit": "1420d0085716ed5eea26f60baf992de74695ccf6",
   "latency_tolerant_htf_scalping_owner_directive": {
     "status": "OWNER_RATIFIED_DESIGN_CONSTRAINT_NOT_ENGINE_PROFIT_CERTIFICATION",
@@ -254,5 +254,28 @@
     "risk_capital_usd_future_discovery": 100000,
     "hold_exit_research_not_activated": true,
     "no_old_contaminated_mechanisms_imported": true
+  },
+  "grid0105": {
+    "status": "CROSSMONTH_RAW_OPPORTUNITY_CAPACITY_FEATURE_VERIFIED__NO_DIRECTIONAL_TRADE_EDGE_NO_L1",
+    "source_research": "research/delta_a_alpha/grid/GRID_0105_PRESESSION_MOVEMENT_CAPACITY_CROSSMONTH_RESEARCH.md",
+    "scripts_and_json_zip": "https://drive.google.com/file/d/1aFkGaZ3tZwK9aDmKFBtQCbResnYqw0uW/view",
+    "gate": "K5=abs(mid_now-mid_asof_300sec)/max(source_spread_now,0.10); candidate shadow K5>=2",
+    "jan_raw_events": 42771,
+    "feb_raw_events": 41230,
+    "jan_provisional_same_day_raw_count_75pct_gate": "21/21",
+    "feb_120s_abs_mid_move_gt_2x_event_spread_baseline_pct": 61.803,
+    "feb_120s_abs_mid_move_gt_2x_event_spread_selected_pct": 63.686,
+    "feb_dayblock_95_ci_pct_points": [
+      0.886,
+      2.141
+    ],
+    "real_bidask_direction_win_rate_not_proven": true,
+    "original_r9_comparator_not_direction_oracle": true,
+    "session_activation": false,
+    "legacy_jan_feb_contaminated_data_not_imported": true,
+    "funded_execution": false,
+    "economic_edge_certified": false,
+    "risk_research_starting_capital_usd": 100000,
+    "code_source_in_drive_archive": true
   }
 }
