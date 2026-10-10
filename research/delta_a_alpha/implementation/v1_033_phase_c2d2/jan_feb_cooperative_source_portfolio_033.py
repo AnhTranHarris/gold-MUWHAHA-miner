@@ -14,6 +14,7 @@ from original_50ms_funded_bridge_033 import OriginalJAN037L3QuoteBridge, Origina
 from source_stmr_completed_ema_033 import SourceSTMRCompletedStack
 from original_jan039_source_owner_adapter_033 import exact_jan039_l3_chain
 from feb045_source_native_context_033 import FEB045NativeQualityL3
+from source_native_s26_s27_033 import S26, S27
 from feb045_physical_heat_feb047_queue_033 import (
     FEB045PhysicalHeatL3, PhysicalHeatConfig045, FEB047QueuedProfitReduceL7,
 )
@@ -51,6 +52,9 @@ class JanFebCausalPortfolioL3:
     opportunity can enter only once on an observed quote. No calendar branch.
     """
     FEB_QUALITY_SOURCE_IDS = frozenset((17, 19, 21, 22, 23, 24, 25))
+    # Frozen JAN039_SELECTED_VERIFIED.json physical source-research limits.
+    JAN_MAX_FUNDED_SOURCE_POSITIONS = 512
+    JAN_MAX_FILLED_ENTRIES_PER_UTC_SECOND = 3
 
     def __init__(self, source: OriginalJAN037L3QuoteBridge,
                  *, heat: PhysicalHeatConfig045 | None = None,
@@ -68,6 +72,10 @@ class JanFebCausalPortfolioL3:
         self.unfunded_offers = 0
         self.funded_entries = 0
         self.funded_closes = 0
+        self.jan_source_cap_denials = 0
+        self.jan_source_rate_denials = 0
+        self._jan_filled_second = -1
+        self._jan_fills_this_second = 0
         self._seen_source_keys: set[str] = set()
 
     def on_market_quote(self, q: Quote, engine: FundedEngine) -> None:
@@ -111,6 +119,17 @@ class JanFebCausalPortfolioL3:
             self.routed_feb += 1
             return f
         if j:
+            jan_live = sum(p.source in (S26,S27) or
+                           p.source.startswith("ORIGINAL_J037_S")
+                           for p in engine.positions.values())
+            if jan_live >= self.JAN_MAX_FUNDED_SOURCE_POSITIONS:
+                self.jan_source_cap_denials += 1
+                return ()
+            sec = q.time_ms // 1000
+            if sec == self._jan_filled_second and (self._jan_fills_this_second >=
+                    self.JAN_MAX_FILLED_ENTRIES_PER_UTC_SECOND):
+                self.jan_source_rate_denials += 1
+                return ()
             self.routed_jan += 1
             return j
         return ()
@@ -118,6 +137,12 @@ class JanFebCausalPortfolioL3:
     def on_funded_entry(self, p: Position, q: Quote, s: Structure,
                         engine: FundedEngine) -> None:
         self.funded_entries += 1
+        if p.source in (S26,S27) or p.source.startswith("ORIGINAL_J037_S"):
+            sec = q.time_ms // 1000
+            if sec != self._jan_filled_second:
+                self._jan_filled_second = sec
+                self._jan_fills_this_second = 0
+            self._jan_fills_this_second += 1
         self.source.on_funded_entry(p, q, s, engine)
         # Both original policies observe physical positions in a single
         # engine; no source-generator callback is repeated.
@@ -143,9 +168,12 @@ def create_jan_feb_combined_engine(jan038_rules_path, *,
     source = OriginalJAN037L3QuoteBridge(jan038_rules_path, apply_jan038=True,
                                          label_family="JAN037")
     owner = JanFebCausalPortfolioL3(source)
-    restrictions = limits or Limits(balance_usd=100000.,
-                                    max_orders_per_second=10,
-                                    max_orders_per_tick=1)
+    # Preserve FEB045's physical 1536-slot research ceiling separately from
+    # JAN039's source-owned 512/3s settings; shared L7 retains margin/heat.
+    restrictions = limits or Limits(balance_usd=100000.,max_open=1536,
+                                    max_layer_open=1536,max_per_source_open=1536,
+                                    max_same_direction=1536,max_per_cell_side=1536,
+                                    max_orders_per_second=10,max_orders_per_tick=1)
     engine = FundedEngine(restrictions, [owner],
                           broker_contract_verified=simulated_broker)
     feed = OriginalSourceFeed033(source, SourceSTMRCompletedStack())
