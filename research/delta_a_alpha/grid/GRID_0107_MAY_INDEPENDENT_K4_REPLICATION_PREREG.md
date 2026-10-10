@@ -1,0 +1,9 @@
+# GRID-0107 — May independent raw-tick verification frozen before May quote access (2026-10-10)
+
+In May use the SAME already accepted GRID0104 creator-derived shadow grid genesis and GRID0106 high-motion tier, entirely without session / MTF / Vertical Grid trade logic. Source April and March already examined; May is a **new independent verification sample** for this unchanged preselected rule.
+
+**Fixed definitions:** virtual price grid step=max(0.75 USD,1.5×causal observed source Bid/Ask spread EWMA, alpha=.001), 7 seconds event cooldown, one event per tick, prospective virtual anchor advancing independent of physical inventory. `K5=abs(mid_now-mid_asof_prior300seconds)/max(source_ask-minus-bid_now,0.10)`; broad tier K5≥2, higher-motion tier K5≥4, both shadow-only.
+
+Offline future evaluation at FIRST executable source quote at or after t+120s (require ≤10sec lateness): indicator `abs(mid_future-mid_event)>2*spread_event`. Separate secondary oracle upper bound `max(future_bid-now_ask,now_bid-future_ask)>0.02` is a **retrospective best-direction bound only**, NOT a tradable direction signal. Report Jan/Feb/Mar/Apr/May observed-day comparisons under prior common criterion source UTC date with ≥100 valid baseline events and nonempty strict subset, all gains/ties/losses; no post-hoc exclusions. May original R9 SYNTH entry count 28,913 only aggregate volume reference; RAW candidates do not certify daily 75% QUALIFIED/EXECUTABLE acceptance.
+
+Confirm source SHA256/count; no threshold, scan, outcome, or treatment change after May source opened. No live or hypothetical fills, no account P&L or trading, no Martingale, no broker-time session layer; continuing $100k later research default unaffected. Archive fixed code and all five months' evidence. For any new hypothesis after May, keep a genuinely untouched later holdout.
