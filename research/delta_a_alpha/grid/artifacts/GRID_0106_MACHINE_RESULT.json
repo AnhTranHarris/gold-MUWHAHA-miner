@@ -1,0 +1,72 @@
+{
+  "schema": "GRID0106_PRE_VERTICAL_COST_GRID_FOUR_MONTH_VERIFIED",
+  "stage": "research only, no physical orders, no L1-L7, no profitable entry-direction claim",
+  "root": "https://drive.google.com/file/d/1QLMkIC5iCdjvrvDK3f2RQvlLBMbXIj2E/view",
+  "root_sha256": "37141aa4e9d36b0fdbd93801c7670470171d65e2269344e2cc405754ac77322f",
+  "tested_months": [
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04"
+  ],
+  "source_raw_ticks": {
+    "2026-01": 9135062,
+    "2026-02": 7538339,
+    "2026-03": 9433179,
+    "2026-04": 7470570
+  },
+  "source_raw_sha256": {
+    "2026-01": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "2026-02": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5",
+    "2026-03": "814ba35e72f219a58badd806ed5c0f30ef0fb4ffe56a48205d873706513bd177",
+    "2026-04": "30375098f62aed6cabc32ec6b67c57c20baec9b6d9be1ce0a204e09806c1ec0f"
+  },
+  "r9_synth_trades": [
+    27980,
+    33523,
+    40985,
+    31758
+  ],
+  "crossing_raw_events": [
+    58821,
+    59386,
+    81551,
+    55895
+  ],
+  "bounce_confirmed_raw_events": [
+    57500,
+    57415,
+    79351,
+    54583
+  ],
+  "continuation_confirmed_raw_events": [
+    51183,
+    51379,
+    72136,
+    48173
+  ],
+  "bounce_confirmed_250ms_half_gap_move_pct": [
+    5.07,
+    6.791,
+    7.74,
+    4.739
+  ],
+  "cost_grid_unconfirmed_250ms_half_gap_move_pct": [
+    8.324,
+    12.042,
+    12.031,
+    7.539
+  ],
+  "bounce_spread_exceeds_1p25_gap_cases": 0,
+  "jan_21_r9_synth_active_days_raw_candidate_75pct_pass": 21,
+  "r9_server_clock_utc_plus2_mapping_certified": false,
+  "initial_capital_future_research_usd": 100000,
+  "lots_changed": false,
+  "real_trade_volume_proven": false,
+  "independent_funded_profitability_proven": false,
+  "causal_quote_tests": {
+    "passed": 11,
+    "total": 11
+  },
+  "existing_active_branch_state_j105_unmodified": true
+}
