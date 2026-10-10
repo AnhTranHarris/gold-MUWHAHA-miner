@@ -130,6 +130,26 @@ class IntegratedAccountContracts(unittest.TestCase):
         self.assertEqual(owner.routed_jan,1)
         self.assertLessEqual(e.score()["combined_max_orders_sec"],10)
 
+    def test_jan039_source_owned_three_admissions_per_second_preserved(self):
+        t=_ms(1,16,5)
+        origin,owner,e=self._engine({t+i:26 for i in range(5)})
+        for i in range(5):
+            _process(e,t+i)
+        self.assertEqual(len(e.positions),3)
+        self.assertEqual(owner.jan_source_rate_denials,2)
+        self.assertEqual(len(origin.entrants),3)
+        # Physical L7 is shared and allows up to 10 orders/s for original
+        # FEB045, without letting JAN039 exceed its original 3/s owner.
+        self.assertEqual(e.limits.max_orders_per_second,10)
+
+    def test_feb_ceiling_is_not_forced_to_jan_global_512(self):
+        from pathlib import Path
+        rule=Path(__file__).parent/"verified_original_sources/JAN038/JAN038_SELECTED_EXACT.json"
+        feed,e,owner=create_jan_feb_combined_engine(rule)
+        self.assertEqual(e.limits.max_open,1536)
+        self.assertEqual(owner.JAN_MAX_FUNDED_SOURCE_POSITIONS,512)
+        self.assertEqual(e.limits.max_orders_per_second,10)
+
     def test_existing_original_source_feed_can_be_constructed_without_rewrite(self):
         from pathlib import Path
         rule=Path(__file__).parent/"verified_original_sources/JAN038/JAN038_SELECTED_EXACT.json"
