@@ -1,0 +1,16 @@
+# Owner directive — grid independent research BEFORE all Vertical Grid layers — 2026-10-10
+
+## Owner instruction, VERBATIM
+
+Okay now that we have a basline for comparison against r9 syth we want to ask what is the grid as a whole is missing to make it more effective and effecient before any of the layers of the vertical grid system is considered. This will be our next reseach phase to see how far we can push effective and efficient, carson use your research hallucination cycle heavily on repeat during this cycle to discover additional  mechanisms/logic, formulas,  etc, etc etc that we have not considered to push the grid trading stragety for better performance per our perfomance obejectives. Once youbhave reliability reach a quant level of satisfaction we will refine the grid by allowing session awareness layer so that the grid research objectives change to discovery mechanisms to self adjustment per the 4 trading sessions.
+
+## Enforced ordering and acceptance
+
+- **PRE-L1 ONLY**: research the content creator's independently reconstructed virtual XAUUSD grid price event mechanism with many mathematically explicit, independently falsifiable hypotheses. Do not use Sydney/Tokyo/London/New York session clocks as signals or optimization keys, and do not use H4/H1/M15/M5/Watchdog/trend/recovery/portfolio quality layers before base grid is proven useful. UTC chronological original ticks are allowed as execution-science data, not trading-session labels.
+- **Repeat creative hypothesis ↔ reproducible tests** while research continues. Hallucinate new possible mechanisms but never fabricate economics or skip independent holdouts.
+- **Promotion threshold**: credible out-of-sample positive conditional directional information after actual source Bid/Ask friction, reliable enough to justify quality-layer handoff, adequate nonredundant grid-event density, explicit latency/cost robustness and no inherited Martingale losses. Positive backtest economics cannot be certified without subsequently implementing full physical trades, so initial generator promotion is a separate signal-fidelity gate.
+- **AFTER genuine independent-grid research success**, progressively let L1 four-clock session intelligence optimize the grid's native self-adjusting parameters separately for Sydney, Tokyo, London, New York and overlaps, as cooperating modes of one Vertical Grid V1—not four separate EA accounts.
+- **Current GRID-0104 result**: 28 January and 26 February standalone grid-hypothesis variants, 12/12 deterministic tests, observed high candidate velocity but all tested common directional means negative and an apparent Jan-only positive ML subgroup failed February. Therefore **no quantitative research satisfaction has been established and L1 remains locked**. Do not pretend otherwise or implement/activate session tuning now.
+- $100,000 is hypothetical later discovery funded account; preferred $100-$300 later commercialization only. Fixed 0.01 lot and ban on traditional Martingale, loss-dependent sizing and endless physical averaging remain in effect.
+
+Full numerical record: `research/delta_a_alpha/grid/GRID_0104_PRESSESSION_INDEPENDENT_GRID_QUANT_RESEARCH_REPORT.md`; state `research/delta_a_alpha/state_journal/0104_PRESESSION_CREATOR_GRID_MULTIPASS_JAN_FEB_QUANT_FALSIFICATION.json`.
