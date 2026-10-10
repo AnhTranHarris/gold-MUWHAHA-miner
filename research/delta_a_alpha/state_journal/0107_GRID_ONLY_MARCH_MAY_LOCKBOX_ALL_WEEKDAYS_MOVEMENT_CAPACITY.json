@@ -1,0 +1,137 @@
+{
+  "schema": "DAA_GRID0107_PRESESSION_FIVE_MONTH_CAUSAL_SOURCE_LOCKBOX",
+  "sequence": 107,
+  "date": "2026-10-10",
+  "predecessor": 106,
+  "owner_objective": "Repeated higher-performance creative grid-genesis research with R9 SYNTH daily opportunity target, before sessions or L0-L7 trade quality; strive most days -> all days.",
+  "scientific_classification": "ACCEPT_SHADOW_PRICE_MOVEMENT_CAPACITY_FEATURE__REJECT_TRADE_DIRECTION_CLAIM",
+  "locked_protocols": [
+    "research/delta_a_alpha/grid/GRID_0107_PREREG_MARCH_NATIVE_LOCKBOX_NO_RETUNING.md",
+    "research/delta_a_alpha/grid/GRID_0107_MAY_INDEPENDENT_K4_REPLICATION_PREREG.md"
+  ],
+  "source_read_only": true,
+  "months_source_original": [
+    {
+      "month": "2026-01",
+      "ticks": 9135062,
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "original_r9_synth_entries": 27980,
+      "grid_raw": 55732,
+      "K2_raw": 42782,
+      "K4_raw": 31674,
+      "baseline_h120_magnitude_pct": 62.1701,
+      "strict_h120_magnitude_pct": 67.6651,
+      "regular_utc_weekday_gain_days": "21/21",
+      "full_utc_quoteactive_gain_days": "22/23 with 1 tie"
+    },
+    {
+      "month": "2026-02",
+      "ticks": 7538339,
+      "sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d5",
+      "original_r9_synth_entries": 33523,
+      "grid_raw": 53958,
+      "K2_raw": 41233,
+      "K4_raw": 30190,
+      "baseline_h120_magnitude_pct": 61.7976,
+      "strict_h120_magnitude_pct": 66.3716,
+      "regular_utc_weekday_gain_days": "20/20",
+      "full_utc_quoteactive_gain_days": "22/22"
+    },
+    {
+      "month": "2026-03",
+      "ticks": 9433179,
+      "sha256": "814ba35e72f219a58badd806ed5c0f30ef0fb4ffe56a48205d873706513bd177",
+      "original_r9_synth_entries": 40985,
+      "grid_raw": 79343,
+      "K2_raw": 63870,
+      "K4_raw": 49826,
+      "baseline_h120_magnitude_pct": 67.989,
+      "strict_h120_magnitude_pct": 71.2963,
+      "regular_utc_weekday_gain_days": "22/22",
+      "full_utc_quoteactive_gain_days": "27/27"
+    },
+    {
+      "month": "2026-04",
+      "ticks": 7470570,
+      "sha256": "30375098f62aed6cabc32ec6b67c57c20baec9b6d9be1ce0a204e09806c1ec0f",
+      "original_r9_synth_entries": 31758,
+      "grid_raw": 51781,
+      "K2_raw": 38774,
+      "K4_raw": 27536,
+      "baseline_h120_magnitude_pct": 58.9922,
+      "strict_h120_magnitude_pct": 64.322,
+      "regular_utc_weekday_gain_days": "21/21",
+      "full_utc_quoteactive_gain_days": "25/25"
+    },
+    {
+      "month": "2026-05",
+      "ticks": 8333165,
+      "sha256": "3a50e0f1eba3076154238290ec02842cf3744ab192e5c9a2acc1cc07367c6a0d",
+      "original_r9_synth_entries": 28913,
+      "grid_raw": 51402,
+      "K2_raw": 39185,
+      "K4_raw": 28345,
+      "baseline_h120_magnitude_pct": 59.2929,
+      "strict_h120_magnitude_pct": 63.9489,
+      "regular_utc_weekday_gain_days": "21/21",
+      "full_utc_quoteactive_gain_days": "24/26 with 2 negative partial Sundays"
+    }
+  ],
+  "total_quotes": 41910315,
+  "total_raw_events": 292216,
+  "total_K2_raw_events": 225844,
+  "total_K4_raw_events": 167571,
+  "total_original_R9_SYNTH_monthly_trades": 163159,
+  "mechanism": {
+    "formula": "one grid shadow anchor, event if mid moves at least max($0.75, 1.5*causal_EWMA(source_ask_minus_bid)), one event per source observed tick with >=7 seconds between accepted events; K5=abs(mid_current-mid_last_observed_at_or_before_current_minus_300s)/max(source_spread_current,$0.10)",
+    "broad": "K5>=2",
+    "high_motion": "K5>=4",
+    "nested": true,
+    "price_history_not_future": true,
+    "offline_label": "at first source quote >=t+120s and <=10 sec late, indicator abs(mid_future-mid_event)>2*observed_spread_event",
+    "none_of": "L1/HTF/L3-L7/session/physical inventory/lot escalation"
+  },
+  "finding": {
+    "weekday_exact": "105/105 MON-FRI original UTC quote-active days improved strict tier versus same-day baseline",
+    "complete_quoteactive": "120/123 improved, 1 tied, 2 Sunday declines",
+    "sample_inclusion": "UTC day >=100 future-valid raw virtual grid events and at least one high tier event",
+    "day_bootstrap_is_descriptive": true,
+    "oracle_two_sided_future_profit_not_predictable": true,
+    "all_day_profit_claim_prohibited": true
+  },
+  "directional_fail_certainty": {
+    "frozen_grid_only_jan_feb_lightgbm_l2_april_development_quote_markout_600s": 0.801677,
+    "march_lockbox_n": 15892,
+    "march_quote_side_mean": -1.312999,
+    "march_minus_0p02_fee": -1.332999,
+    "march_positive_mean_days": "11/27",
+    "decision": "REJECT MODEL; negative result is preserved, do not promote April-only gain"
+  },
+  "source_review": "research/delta_a_alpha/grid/GRID_0107_FIVE_MONTH_PRESESSION_ALL_WEEKDAYS_MOTION_CAPACITY_RESEARCH.md",
+  "source_zip_drive": "https://drive.google.com/file/d/1wEVq6YWJ3ZZl_eGW4xCXBZEIJo_UizWL/view",
+  "report_drive": "https://drive.google.com/file/d/1bLi1jyn0F9s4oBFk2TFkdS-gkTZyAd9o/view",
+  "source_zip_sha256": "f4c14798bc1b25cd4c9e90d7d13f45e428f01f8d8eb77957a39a6ed7e7209076",
+  "test_count": 11,
+  "test_passed": 11,
+  "hard_boundaries": {
+    "original_R9_reports_unchanged": true,
+    "original_Dukascopy_unchanged": true,
+    "legacy_contaminated_JanFeb_mechanisms_not_imported": true,
+    "actual_funded_trades": 0,
+    "actual_positions": 0,
+    "revenue_or_pf_not_calculated": true,
+    "jan_to_may_label_serial_dependence": true,
+    "sessions_inactive": true,
+    "month_or_day_does_not_drive_strategy": true,
+    "raw_75pct_daily_qualified_rule_not_proven": true,
+    "early_research_future_account_default_usd": 100000,
+    "small_account_later_usd": [
+      100,
+      200,
+      300
+    ],
+    "martingale": false,
+    "august_sealed": true
+  },
+  "next": "Improve provable SIGNED direction/abstention using reconstructed grid-level first-passage or as-of market-pressure on DEVELOPMENT data, then prereg June/July true independent source, never claim all-day profitability from future absolute move. Only after actual positive after-bidask executable markout at sufficient daily velocity may owner consider session adaptation; preserve no trade authorization."
+}
