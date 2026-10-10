@@ -1,0 +1,169 @@
+{
+  "unit": "C2D3I_JAN032_STMR_SOURCE_EMA_FOUR_ROLE_ORIGINAL_FULL_QUOTE_PARITY",
+  "original_sources": {
+    "stmr_base_sha256": "5c0a2802d8c883d0612ba7549ac7c146836d93907d6b3182fc7857d2f2bc08f1",
+    "stmr_janjul_sha256": "f89e85ade7aaeb7ccffec19215795876f5d811af2ba8a7a6c1f646aef030ec08"
+  },
+  "scope": "ORIGINAL_STMR_RESEARCH_BID_COMPLETED_8_21_EMA_PARITY_ONLY_NOT_JAN039_FEB045_FEB047_FULL_V1_OR_BROKER_PARITY",
+  "months": {
+    "jan": {
+      "source_file": "XAUUSD_DUKAS_2026_01_ticks.csv(3).gz",
+      "source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "source_quotes": 9135062,
+      "first_time_ms": 1767308400596,
+      "last_time_ms": 1769810391954,
+      "source_price": "original STMR research c.materialize(t, actual_ask, actual_bid) -> bid",
+      "role_states": {
+        "H4": {
+          "timeframe_ms": 14400000,
+          "completed_observed_source_buckets": 130,
+          "observed_buckets": 131,
+          "quote_count_compared": 9135062,
+          "mismatch_count": 0,
+          "state_counts": {
+            "-1": 286599,
+            "0": 60633,
+            "1": 8787830
+          },
+          "first_eligible_bucket_starts_with_full_prehistory": 129,
+          "missing_wall_clock_buckets_unfilled": 44,
+          "original_reference": "verbatim JAN032 stmr_janjul.py::bar_states_span"
+        },
+        "H1": {
+          "timeframe_ms": 3600000,
+          "completed_observed_source_buckets": 480,
+          "observed_buckets": 481,
+          "quote_count_compared": 9135062,
+          "mismatch_count": 0,
+          "state_counts": {
+            "-1": 2687911,
+            "0": 17029,
+            "1": 6430122
+          },
+          "first_eligible_bucket_starts_with_full_prehistory": 478,
+          "missing_wall_clock_buckets_unfilled": 214,
+          "original_reference": "verbatim JAN032 stmr_janjul.py::bar_states_span"
+        },
+        "M15": {
+          "timeframe_ms": 900000,
+          "completed_observed_source_buckets": 1921,
+          "observed_buckets": 1922,
+          "quote_count_compared": 9135062,
+          "mismatch_count": 0,
+          "state_counts": {
+            "-1": 3592166,
+            "0": 3659,
+            "1": 5539237
+          },
+          "first_eligible_bucket_starts_with_full_prehistory": 1913,
+          "missing_wall_clock_buckets_unfilled": 858,
+          "original_reference": "verbatim JAN032 stmr_janjul.py::bar_states_span"
+        },
+        "M5": {
+          "timeframe_ms": 300000,
+          "completed_observed_source_buckets": 5765,
+          "observed_buckets": 5766,
+          "quote_count_compared": 9135062,
+          "mismatch_count": 0,
+          "state_counts": {
+            "-1": 3980987,
+            "0": 1154,
+            "1": 5152921
+          },
+          "first_eligible_bucket_starts_with_full_prehistory": 5740,
+          "missing_wall_clock_buckets_unfilled": 2574,
+          "original_reference": "verbatim JAN032 stmr_janjul.py::bar_states_span"
+        }
+      }
+    },
+    "feb": {
+      "source_file": "XAUUSD_DUKAS_2026_02_ticks.csv(3).gz",
+      "source_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+      "source_quotes": 7538339,
+      "first_time_ms": 1769987186655,
+      "last_time_ms": 1772229599799,
+      "source_price": "original STMR research c.materialize(t, actual_ask, actual_bid) -> bid",
+      "role_states": {
+        "H4": {
+          "timeframe_ms": 14400000,
+          "completed_observed_source_buckets": 123,
+          "observed_buckets": 124,
+          "quote_count_compared": 7538339,
+          "mismatch_count": 0,
+          "state_counts": {
+            "-1": 2250828,
+            "0": 174895,
+            "1": 5112616
+          },
+          "first_eligible_bucket_starts_with_full_prehistory": 120,
+          "missing_wall_clock_buckets_unfilled": 33,
+          "original_reference": "verbatim JAN032 stmr_janjul.py::bar_states_span"
+        },
+        "H1": {
+          "timeframe_ms": 3600000,
+          "completed_observed_source_buckets": 457,
+          "observed_buckets": 458,
+          "quote_count_compared": 7538339,
+          "mismatch_count": 0,
+          "state_counts": {
+            "-1": 3080454,
+            "0": 54530,
+            "1": 4403355
+          },
+          "first_eligible_bucket_starts_with_full_prehistory": 453,
+          "missing_wall_clock_buckets_unfilled": 165,
+          "original_reference": "verbatim JAN032 stmr_janjul.py::bar_states_span"
+        },
+        "M15": {
+          "timeframe_ms": 900000,
+          "completed_observed_source_buckets": 1829,
+          "observed_buckets": 1830,
+          "quote_count_compared": 7538339,
+          "mismatch_count": 0,
+          "state_counts": {
+            "-1": 3428379,
+            "0": 1118,
+            "1": 4108842
+          },
+          "first_eligible_bucket_starts_with_full_prehistory": 1819,
+          "missing_wall_clock_buckets_unfilled": 662,
+          "original_reference": "verbatim JAN032 stmr_janjul.py::bar_states_span"
+        },
+        "M5": {
+          "timeframe_ms": 300000,
+          "completed_observed_source_buckets": 5488,
+          "observed_buckets": 5489,
+          "quote_count_compared": 7538339,
+          "mismatch_count": 0,
+          "state_counts": {
+            "-1": 3555741,
+            "0": 450,
+            "1": 3982148
+          },
+          "first_eligible_bucket_starts_with_full_prehistory": 5458,
+          "missing_wall_clock_buckets_unfilled": 1986,
+          "original_reference": "verbatim JAN032 stmr_janjul.py::bar_states_span"
+        }
+      }
+    }
+  },
+  "scientific_limits": [
+    "Original source materializes session-dependent research Bid from real midpoint; this cannot substitute for broker executable Bid/Ask L7 fills.",
+    "No owner-approved source-derived daily, weekly or rolling monthly routing classifier identified in these STMR functions; do not create one.",
+    "No full Jan-Feb endogenous funded profit is reproduced by this signal audit."
+  ],
+  "jan032_original_archive_sha256": "bd4769a17597c92eff2aa6f14f3c23c1c550966eda2fab84ae569eb3ade10a95",
+  "jan039_archive_sha256": "22a7f52828a97c3b2b43e0da9e6a6245acfdf606b7a77c1af87f3f8941da7f29",
+  "feb045_archive_sha256": "9248646bf099b954b5661c765ce50316a61c015b595ad61128a0c02b115a33df",
+  "feb047_archive_sha256": "e45987edf986fa7b5827c503afbf824d90d47593c59dc2f2955f2a0d41aa5f42",
+  "frozen_authority": "JAN032 source/stmr_base.py and source/stmr_janjul.py exact original bytes; no summaries used in algorithm or source tests",
+  "lab_method": "Raw Jan and Feb Dukascopy true ask_raw/bid_raw -> original stmr_base.materialize real midpoint/session-adjusted source Bid -> AST-executed exact original stmr_janjul.bar_states_span(8,21) per H4/H1/M15/M5 -> Python online boundary-fed port, compared for EVERY real quote in each month. Actual executable Bid/Ask were NOT replaced for any physical execution.",
+  "comparisons": 66693604,
+  "full_month_Jan_Feb_STMR_state_mismatches": 0,
+  "month_as_execution_feature": false,
+  "daily_weekly_monthly_source_regime_certified": false,
+  "full_portfolio_economics_certified": false,
+  "March": "HELD",
+  "August": "SEALED",
+  "September": "RESERVED"
+}
