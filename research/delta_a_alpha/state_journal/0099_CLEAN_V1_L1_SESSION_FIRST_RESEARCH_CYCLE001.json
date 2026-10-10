@@ -1,0 +1,72 @@
+{
+  "schema": "DAA_V1_OWNER_CLEAN_RESEARCH_CYCLE_V1",
+  "sequence": 99,
+  "unit": "CLEAN_V1_CYCLE001_L0_L1_L2_ASOF_MARKET_CONTEXT_AND_L7_FAIL_CLOSED",
+  "status": "PARTIAL_VERTICAL_FRAME_CLEAN_SOURCE_RESEARCH_COMPLETE_NOT_A_PROFITABLE_TRADING_ENGINE",
+  "architecture_authority": "research/delta_a_alpha/whitepapers/DAA_V1_OWNER_GOOGLE_WHITEPAPER_FULL_VERBATIM_030.txt",
+  "owner_amendment": "research/delta_a_alpha/governance/OWNER_V1_SESSION_CLOCKS_RECOVERY_RISK_AND_JAN_FEB_PURGE_2026_10_10.md",
+  "no_old_impl_or_derived_jan_feb_reused": true,
+  "priority": "L1 session-aware opportunity context, enabled by L0 and bounded by L7",
+  "github_core": "research/delta_a_alpha/implementation/v1_vertical_grid.py",
+  "github_tests": "research/delta_a_alpha/implementation/test_v1_vertical_grid.py",
+  "full_source_research_evidence": "https://drive.google.com/file/d/16Lb-eus4mPvMJwxngEHds71wU1ufQJax/view",
+  "exact_source_bundle_sha256": "0967ec66259f671de49e923475dc96fcdae50784ecc65cf35a39fe178d3be50a",
+  "original_input_ticks": {
+    "Jan": 9135062,
+    "Feb": 7538339,
+    "sum": 16673401
+  },
+  "tests": {
+    "deterministic": 7,
+    "passed_locally": 7,
+    "jan_raw_core_smoke": 20000,
+    "feb_raw_core_smoke": 20000,
+    "funded_orders": 0
+  },
+  "research_hypotheses": [
+    "BASE session-geometry 5m window observable quote activity and spread",
+    "ACTIVITY prior 12 observed same-session-family completed 5m count median; evaluate next-window range",
+    "ACTIVITY_SPREAD additional prior 12 family median spread filter; evaluate opportunity/cost/participation tradeoffs"
+  ],
+  "activity_gate_next_5m_range_lift_vs_base_pct": {
+    "SydneyTokyo": {
+      "jan": 14.64,
+      "feb": 16.66
+    },
+    "AsiaPacific": {
+      "jan": 18.37,
+      "feb": 11.64
+    },
+    "London": {
+      "jan": 13.39,
+      "feb": 5.83
+    },
+    "LondonNYOverlap": {
+      "jan": 18.08,
+      "feb": 16.89
+    },
+    "NewYork": {
+      "jan": 3.46,
+      "feb": 5.54
+    }
+  },
+  "caveats": [
+    "The future 5m range is only evaluation, NOT a strategy/entry input",
+    "Quote update count is NOT market-wide traded volume or guaranteed liquidity",
+    "Spread and participation can worsen as volatility increases",
+    "No P&L/accuracy/PF/DD/tradable 0.01 funded simulation yet",
+    "Session desk hours are research approximations, not verified Coinexx XAUUSD broker sessions",
+    "Past 12 same-geometry five-minute windows may cross session/day gaps, not necessarily consecutive 60 minutes"
+  ],
+  "implementation_safety": "Single vertical frame, completed H4/H1/M15/M5 states; L3/L4/L5/L6 strategy routes and L7 physical trading remain FAIL CLOSED; zero orders.",
+  "community_sources": [
+    "https://www.mql5.com/en/docs/marketinformation/symbolinfosessiontrade",
+    "https://www.mql5.com/en/docs/calendar",
+    "https://www.mql5.com/zh/articles/18821",
+    "https://www.tradingview.com/script/sOirTSFt-Svopex-Sessions/",
+    "https://jp.tradingview.com/script/Lv3YaWKf-ORBs-EMAs-AVWAP/",
+    "https://www.forexfactory.com/thread/post/15612222"
+  ],
+  "next": "Iterate L1/L2/L3/L7 market-aware microgrid with causal structural role constraints, session-specific geometry, spread and verified broker margin/contract, then begin Watchdog L4 and native L5/L6 in same engine; do not promote profitability before physically funded real-tick whole-portfolio economics.",
+  "unchanged": "R9 SYNTH and original Dukascopy raw bytes; original whitepaper; historical deleted contaminated lineage stays inactive"
+}
