@@ -1,0 +1,96 @@
+{
+  "schema": "DAA_GRID0106_APRIL_NATIVE_BIDASK_PRESESSION_RESEARCH_V1",
+  "sequence": 106,
+  "date": "2026-10-10",
+  "parent": 105,
+  "owner_directive": "Continue high-ambition iterative causal creator-grid research, using original April XAUUSD Dukascopy ticks as additional solution refinement sample, before any session/Vertical Grid layer.",
+  "original_source_quotes": {
+    "jan": {
+      "count": 9135062,
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    },
+    "feb": {
+      "count": 7538339,
+      "sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d5"
+    },
+    "apr": {
+      "count": 7470570,
+      "sha256": "30375098f62aed6cabc32ec6b67c57c20baec9b6d9be1ce0a204e09806c1ec0f"
+    }
+  },
+  "tick_rows": 24143971,
+  "immutable_r9_synth_monthly_entries": {
+    "jan": 27980,
+    "feb": 33523,
+    "apr": 31758
+  },
+  "cause_only_source": "GRID0104 virtual step=max(0.75 USD,1.5 x observed quote-spread EWMA) on ordered Bid/Ask with 7-second event cooldown",
+  "phase": "STRICT_PRESESSION_CREATOR_GRID_EVENT_PHYSICS_ONLY; NO L1 THROUGH L7, NO FILLS",
+  "tested_hypotheses": {
+    "gate_and_conditional_direction_policies": "12 gate variants x 14 sign policies across 4 fixed future horizons + 7 prior-hour event-density thresholds plus 3 continuous threshold alternatives",
+    "unit_tests_passed": 9,
+    "unit_tests_total": 9
+  },
+  "retained_two_tier_hypothesis": {
+    "k5_formula": "abs(asof_mid_now-asof_mid_300seconds_ago)/max(observed_current_ask_bid_spread,0.10)",
+    "broad_tier": "K5>=2",
+    "higher_motion_tier": "K5>=4",
+    "higher_motion_subset_of_broad_tier": true,
+    "both_nontrading": true,
+    "january_k4_count_future_quote_valid": 31648,
+    "february_k4_count_future_quote_valid": 30159,
+    "april_k4_count_future_quote_valid": 27527,
+    "baseline_120s_two_spread_abs_movement_pct": {
+      "jan": 62.165,
+      "feb": 61.79,
+      "apr": 59.004
+    },
+    "k4_120s_two_spread_abs_movement_pct": {
+      "jan": 67.682,
+      "feb": 66.382,
+      "apr": 64.322
+    },
+    "days_quoteactive_with_day_metric_improvement": {
+      "jan": "22/23",
+      "feb": "22/22",
+      "apr": "25/25"
+    },
+    "descriptive_dayblock_mean_uplift_percentage_points": {
+      "jan": 4.435,
+      "feb": 4.246,
+      "apr": 5.146
+    },
+    "april_day_bootstrap95_pp": [
+      4.381,
+      5.925
+    ],
+    "jan_21_original_r9_trade_days_raw_75pct_gate_provisional_utcplus2": {
+      "broad_tier": "21/21",
+      "k4_high_tier": "11/21"
+    }
+  },
+  "experimental_boundary": {
+    "actual_funded_trades": 0,
+    "capital_exposed_usd": 0,
+    "starting_capital_future_funded_research_usd": 100000,
+    "small_capital_later_goal_usd": [
+      100,
+      200,
+      300
+    ],
+    "quote_side_trade_direction_positive_on_all_three_months": false,
+    "source_original_r9_and_dukascopy_changed": false,
+    "session_awareness_active": false,
+    "independent_month_lockbox_available": false,
+    "tier4_as_standalone_velocity_satisfier": false,
+    "reported_potential_move_metric_is_not_profitable_trade_accuracy": true,
+    "initial_gap_spread_EWMA_and_300s_K_computed_causally": true,
+    "future_quote_horizon_120seconds_used_only_for_offline_label": true,
+    "feb_and_apr_used_as_repeated_discovery_samples_not_unseen_holdouts": true
+  },
+  "report": "research/delta_a_alpha/grid/GRID_0106_APRIL_THREE_MONTH_PRESESSION_GRID_REPORT.md",
+  "complete_source": "https://drive.google.com/file/d/1CIXkJaBmGC9JQ7oTEM8Y1s6SvIzA_VF-/view",
+  "detailed_readable_report": "https://drive.google.com/file/d/1KBQSJu-2rJ3DX4QGNIM07cy98ncM8QAU/view",
+  "complete_zip_sha256": "55789caeb2d4759632d17c608ae1b0e915234f0196eee896c868f78f5bb9f722",
+  "next_unit": "GRID_ONLY_CROSSMONTH_POSITIVE_BIDASK_DIRECTION_EXPECTANCY_BEFORE_L1_SESSION_OR_FULL_FUNDED_ACCOUNT"
+}
