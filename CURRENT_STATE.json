@@ -1,11 +1,11 @@
 {
   "schema": "delta-a-alpha-v1-clean-research-state-v5",
   "branch": "delta-A-alpha",
-  "current_phase": "OWNER_CLEAN_V1_RESET_JAN_FEB_DERIVED_OUTPUTS_REMOVED",
+  "current_phase": "CLEAN_V1_L0_L1_L2_CAUSAL_CONTEXT_TESTED_L3_L7_TRADING_DISABLED",
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 98,
-    "latest_entry": "research/delta_a_alpha/state_journal/0098_OWNER_JAN_FEB_DERIVED_RESEARCH_PURGE_AND_V1_SESSION_ARCHITECTURE_AMENDMENT.json"
+    "latest_sequence": 99,
+    "latest_entry": "research/delta_a_alpha/state_journal/0099_CLEAN_V1_L1_SESSION_FIRST_RESEARCH_CYCLE001.json"
   },
   "owner_source_of_truth": {
     "whitepaper": "research/delta_a_alpha/whitepapers/DAA_V1_OWNER_GOOGLE_WHITEPAPER_FULL_VERBATIM_030.txt",
@@ -18,13 +18,17 @@
     "r9_real": "DO_NOT_MODIFY_OR_DELETE__ORIGINAL_REPORTS_AND_BENCHMARKS"
   },
   "engine": {
-    "status": "EMPTY",
+    "status": "CLEAN_VERTICAL_CONTEXT_ONLY_NO_TRADING",
     "dir": "research/delta_a_alpha/implementation/",
-    "implementation_files": 0,
+    "implementation_files": 2,
     "performance_baseline": "NONE",
     "calendar_optimizer_allowed": false,
     "previous_Jan_Feb_mechanisms": "DELETED_FROM_ACTIVE_BRANCH_INVALID",
-    "revive_from_git_history": false
+    "revive_from_git_history": false,
+    "core": "research/delta_a_alpha/implementation/v1_vertical_grid.py",
+    "tests": "research/delta_a_alpha/implementation/test_v1_vertical_grid.py",
+    "source_package": "https://drive.google.com/file/d/16Lb-eus4mPvMJwxngEHds71wU1ufQJax/view",
+    "trading_enabled": false
   },
   "research_status": {
     "january": "INVALIDATED_DERIVED_ARTIFACTS_DELETED",
@@ -66,8 +70,8 @@
       "hourly_daily_opportunities"
     ]
   },
-  "first_incomplete_unit": "CLEAN_V1_L0_TICK_ROOT_AND_SESSION_CLOCKS_IMPLEMENTATION_NOT_STARTED",
-  "next_unit": "CLEAN_V1_L0_TICK_ROOT_AND_SESSION_CLOCKS_IMPLEMENTATION_NOT_STARTED",
-  "restart_instruction": "Read full ChatGPT governing transcript, original unchanged V1 owner whitepaper, and new verbatim owner addendum. Do NOT use any Jan/Feb derived research or old Git engine; raw Dukascopy XAUUSD Jan/Feb remains PROTECTED for new independent research, and all R9 SYNTH untouched. March/April derived frontiers are not validated inputs to fresh engine. Start clean one V1 L0→L7 architecture under one implementation. Do not resurrect historical engine from Git.",
+  "first_incomplete_unit": "CLEAN_L1_L2_L3_L7_SESSION_CONDITIONED_ACTIVITY_SPREAD_AND_FUNDED_MARGIN_RESEARCH",
+  "next_unit": "CLEAN_L1_L2_L3_L7_SESSION_CONDITIONED_ACTIVITY_SPREAD_AND_FUNDED_MARGIN_RESEARCH",
+  "restart_instruction": "Read owner full governing conversation, original whitepaper, October10 amendment and J0099. Initial single-spine L0/L1/L2 context code has 7 locally passed tests, L3-L7 trade execution fail closed. Three original-raw Jan/Feb activity/spread hypothesis passes are diagnostic ONLY, no PnL. Do not import dead implementation or deleted Jan/Feb derived research; use source package and current code for next refinements.",
   "previous_engine_reset_commit": "1420d0085716ed5eea26f60baf992de74695ccf6"
 }
