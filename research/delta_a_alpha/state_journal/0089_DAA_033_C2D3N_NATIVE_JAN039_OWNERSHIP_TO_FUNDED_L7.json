@@ -1,0 +1,72 @@
+{
+  "schema": "delta-a-alpha-state-journal-v2",
+  "sequence": 89,
+  "unit": "DAA033_C2D3N_ORIGINAL_JAN037_L3_TO_PREEXISTING_JAN039_S26_S27_SOURCE_PROFIT_POLICY",
+  "status": "SOURCE_NAMESPACED_JAN039_NATIVE_35_AND_60_NET_FIRST_PASSAGE_L7_TESTED__FULL_OPTIMIZED_FUNDED_PARITY_OPEN",
+  "predecessor": {
+    "sequence": 88,
+    "path": "research/delta_a_alpha/state_journal/0088_DAA_033_C2D3M_CAUSAL_SOURCE_TO_FUNDED_L7_JAN_FEB_QUOTE_WINDOWS.json"
+  },
+  "authoritative_source": {
+    "original_JAN037_events": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/verified_original_sources/JAN037/gamma02_campaign_heartbeat_019.py",
+    "original_JAN039_verified_mechanism": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/JAN039_SELECTED_VERIFIED.json",
+    "preexisting_l3_rule_port": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/source_native_s26_s27_033.py",
+    "original_JAN038_phase_pregate": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/verified_original_sources/JAN038/JAN038_SELECTED_EXACT.json",
+    "owner_whitepaper_blob": "1b92b3c89159681a7181508de158af685cf5780c",
+    "original_FEB045_quality": "unchanged and NOT reclassified as JAN039 by source suffix"
+  },
+  "fix": "Previously C2D3M emits source 'ORIGINAL_J037_S26/S27' while accepted JAN039 C2D3F policy gates only 'ORIG_SOURCE_26/27'. An explicit original-source identity relay in original_jan039_source_owner_adapter_033.py maps ONLY the JAN037 origin S26/S27 to the accepted JAN039 policy namespace before shared L7. It does NOT rename FEB045 native Sxx or invent trade conditions.",
+  "mechanics": {
+    "S26": "Source26 on genuine 50ms JAN037 observed source event, original JAN038 phase gate, then frozen JAN039 432 physical-source cap and +$35.02 gross quote TP for $35 net after $0.02 actual cost. Original JAN037 SL and hold unchanged. All actual L7 vetoes survive.",
+    "S27": "Original JAN037 genuine S27 event into JAN039 phase0 +$60.02 gross TP with original 224 source-phase physical cap, phases2/3 +$50.02, phase4 +$35.02, phase5 original cap128. Original JAN037 SL and hold preserved.",
+    "outcomes": "Nothing from JAN037 or JAN039 source X/P/H future outcome tape used; original event ID and real broker-modeled funded genealogy preserved; no month check."
+  },
+  "actual_quote_counterfactual": {
+    "January_26_16_17_UTC": {
+      "original_native_S26": 7406,
+      "actual_idealized_L7_fills": 64,
+      "closed_within_window": 0,
+      "realized_net_usd": 0,
+      "open_mark_equity_dd_from_prior_0088_usd": 558.08
+    },
+    "February_17_16_17_UTC": {
+      "original_native_S26": 4727,
+      "actual_idealized_L7_fills": 64,
+      "closed_within_window": 64,
+      "realized_net_usd": -464.511,
+      "max_quote_equity_dd_usd": 1102.08
+    },
+    "same_policy_applied_both_months": true,
+    "original_full_month_optimizer_profit_not_reproduced": true,
+    "honest_interpretation": "JAN039 frozen profit-first-hit policy changes source TP but need full original multi-owner L3/L4/L5/L6 portfolio genealogy before any historical profitability claim. Source-native S26 in these windows stays loss-making Feb even after profit-first-hit overlay; negative preserved."
+  },
+  "qa": {
+    "local_new_tests": 6,
+    "old_inherited_tests": 118,
+    "expected_total_git_actions_tests": 124,
+    "github": "PENDING",
+    "files": [
+      "original_jan039_source_owner_adapter_033.py",
+      "test_original_jan039_source_owner_adapter_033.py",
+      "audit_jan039_owner_l7_real_windows_033.py",
+      "JAN_FEB_NATIVE_JAN039_L3_TO_FUNDED_L7_WINDOW_COUNTERFACTUAL_033.json"
+    ]
+  },
+  "limitations": [
+    "Jan/Feb whole native optimized source profit/GL/DD/velocity and fully funded all-specialist 8-layer V1 not reproduced",
+    "January sourced 4 original HTF source states distinct from full owner four-role optimized classifier lineage",
+    "Real Coinexx MT5 unknown; broker-verified flag in diagnostics is an idealized test fixture only",
+    "Jan1 Dec2025 prior bar history missing",
+    "Dynamic adaptive daily/weekly/monthly live regime gates not derived from original economic sources",
+    "No March feed/evaluation or capital100/200 survivability certification"
+  ],
+  "locks": {
+    "march": "HELD",
+    "august": "SEALED",
+    "september": "RESERVED",
+    "production_delta": "READ_ONLY",
+    "lot": 0.01,
+    "martingale": false
+  },
+  "next": "Extend original native L3→JAN038→JAN039 and FEB045 true quote-funded account replay with source-specific higher velocity all qualified specialist sources; retain exact Feb045 quality and FEB047 profitable L7 and owner original L4/L5/L6. Run original source parity, full Jan Feb funded net/DD PF and daily/weekly monthly diagnostic scorecards before March."
+}
