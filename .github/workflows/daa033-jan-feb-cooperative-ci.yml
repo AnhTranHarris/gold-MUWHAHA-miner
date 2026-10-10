@@ -1,0 +1,24 @@
+name: DAA033 Jan-Feb Cooperative Source Portfolio
+on:
+  push:
+    branches:
+      - delta-A-alpha
+    paths:
+      - "research/delta_a_alpha/implementation/v1_033_phase_c2d2/jan_feb_cooperative_source_portfolio_033.py"
+      - "research/delta_a_alpha/implementation/v1_033_phase_c2d2/test_jan_feb_cooperative_source_portfolio_033.py"
+      - ".github/workflows/daa033-jan-feb-cooperative-ci.yml"
+  workflow_dispatch:
+jobs:
+  cooperative-jan-feb-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile original-source cooperative integration
+        working-directory: research/delta_a_alpha/implementation/v1_033_phase_c2d2
+        run: python -m py_compile jan_feb_cooperative_source_portfolio_033.py test_jan_feb_cooperative_source_portfolio_033.py
+      - name: Execute one-account Jan-Feb causal ownership regressions
+        working-directory: research/delta_a_alpha/implementation/v1_033_phase_c2d2
+        run: python -m unittest -v test_jan_feb_cooperative_source_portfolio_033
