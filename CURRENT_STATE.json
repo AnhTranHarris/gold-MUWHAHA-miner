@@ -10,10 +10,10 @@
     "durable_unit": "R037_SPECIALIST_DOCUMENTATION_FINALIZATION_CHECKPOINT_18B",
     "mode": "READ_ONLY"
   },
-  "current_phase": "OWNER_V1_GATE_033_COOPERATIVE_ORIGINAL_JAN_FEB_L3_SOURCE_CI_PASS__FULL_L0_L7_FUNDED_PARITY_INCOMPLETE",
-  "last_verified_durable_unit": "DAA033_JAN_FEB_COOPERATIVE_SOURCE_POLICY_SINGLE_FUNDED_L7_ADAPTER_J0094",
-  "first_incomplete_unit": "DAA033_FULL_ORIGINAL_L1_L4_L5_L6_INTEGRATION_AND_JAN_FEB_REAL_TICK_COMBINED_FUNDED_ECONOMICS",
-  "active_candidate": "STMR_SLEEVE_PHASE_001",
+  "current_phase": "OWNER_DIRECTED_PYTHON_V1_CLEAN_SLATE_NO_EXECUTABLE_TRADING_ENGINE",
+  "last_verified_durable_unit": "J0097_OWNER_V1_PYTHON_IMPLEMENTATION_REMOVED_CLEAN_SLATE",
+  "first_incomplete_unit": "OWNER_V1_L0_L7_CLEAN_BASE_IMPLEMENTATION_NOT_STARTED",
+  "active_candidate": null,
   "owner_constraints": {
     "symbol": "XAUUSD",
     "lot_size": 0.01,
@@ -118,10 +118,10 @@
   },
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 96,
-    "latest_entry": "research/delta_a_alpha/state_journal/0096_DAA_MARCH_PHASE1_OWNER_V1_ARCHITECTURE_FITNESS_AUDIT.json"
+    "latest_sequence": 97,
+    "latest_entry": "research/delta_a_alpha/state_journal/0097_OWNER_AUTHORIZED_PYTHON_V1_ENGINE_CLEAN_SLATE.json"
   },
-  "restart_instruction": "Journal0093. DO NOT code from summary or this text. Read entire unmodified original owner whitepaper and JAN037+JAN038+JAN039+FEB042+FEB045+FEB047 executable source and original real tick archives. Entire JAN+FEB 16673401 original quote tape was completed for two fixed A/B source-native L3-only idealized $100k FundedEngine variants (JAN039 Jan15818.647 Feb-3419.899 full12398.748 net; FEB045 Jan6082.373 Feb8957.547 full15039.92 net), independent actual funded close-ledger re-audit exact result SHA71fc6a164b6d3d0c194f925a5afd5a7cc8bf812968f823999083176ffc325730. Source policy month-blind, post-trade monthly diagnostics only, full V1 optimized source parity NOT REPRODUCED. C2D3R adds portable timeout-safe bounded CHILD Python driver with automatic local trusted snapshot progress reconciliation, cross-platform single worker lock, full result+checkpoint SHA pins verified prior any RESTORED snapshot pickle, 25k quotes/12sec child, idempotent complete NO REPLAY; can run autonomous loop externally independent of UI message delivery. Tested fail-injections and 16.67m full original source audit. Persist exact two private completed checkpoints separately in Library /xauusd-trading-bot/delta-A-alpha/engineering/v1-033-c2d3r-crash-safe-bounded-resume/final-verified-paid-ledgers/. NEVER deserialize an arbitrary downloaded/user pickle; check pinned SHA first. Original L1/optimized distinct H4/H1/M15/M5 roles/L4 L5 L6 all owners, MT5, Jan1 Dec25 readiness, real $100-$500 and Jan/Feb excellence benchmarks remain OPEN. March HELD Aug SEALED Sep RESERVED Delta production read-only.",
+  "restart_instruction": "OWNER RESET J0097: Python V1 trading engine is EMPTY. Do not import, reconstruct, recommission, merge, quarantine or revive historical v1_033 phase files from Git history, historical CI, old handoffs, journals or monthly research as an active engine without human owner authorization. Read FULL current governing chat, original owner-frozen V1 whitepaper and original accepted research; new implementation must follow exact L0→L7 spine in whitepaper. The monthly January–April research sources are preserved as historical evidence, NOT deployed. March J0095 remains invalid as a full-V1 baseline. No current Python simulation engine, no valid Python V1 profit or March Phase1 readiness.",
   "architecture_floor": {
     "unit": "DAA_VERTICAL_GRID_SYSTEM_V1_ARCHITECTURE_FREEZE_001",
     "candidate": "VERTICAL_GRID_SYSTEM_V1",
@@ -403,7 +403,7 @@
     "pre_t0_startup_unverified": true,
     "may137_paused_by_owner": true
   },
-  "next_unit": "DAA033_FULL_ORIGINAL_L1_L4_L5_L6_INTEGRATION_AND_JAN_FEB_REAL_TICK_COMBINED_FUNDED_ECONOMICS",
+  "next_unit": "OWNER_V1_L0_L7_CLEAN_BASE_IMPLEMENTATION_NOT_STARTED",
   "handoff_037": {
     "folder": "https://drive.google.com/drive/folders/1MSHKZyFMb0petqXFYBhGgFTvnzDS9V8Q",
     "github_read_first": "research/delta_a_alpha/handoff/037/00_READ_FIRST_DO_NOT_REBUILD.md",
@@ -693,200 +693,22 @@
       }
     }
   },
-  "phase033_funded_engine_repair": {
-    "status": "PARTIAL_FUNDED_KERNEL_IMPLEMENTED_AND_TESTED__FULL_SOURCE_PARITY_INCOMPLETE__MARCH_HELD",
-    "read_first": "research/delta_a_alpha/implementation/v1_033_phase_a/README_033_PHASE_A.md",
-    "python_core": "research/delta_a_alpha/implementation/v1_033_phase_a/v1_funded_core_033.py",
-    "test_results": {
-      "unittest_count": 23,
-      "passed": 23,
-      "original_019_entry_parity": "PASS_SYNTHETIC_INPUT_FIXTURE",
-      "real_feb_continuous_ticks": 1136212,
-      "real_feb_diagnostic_net": -583.745,
-      "real_feb_diagnostic_trades": 836,
-      "real_feb_diagnostic_exact_dd": 1158.88,
-      "real_jan_feb_sha256_verified": true,
-      "archive_zip_integrity": "PASS"
-    },
-    "frozen_research_manifest": "research/delta_a_alpha/implementation/v1_033_phase_a/FROZEN_JAN_FEB_RESEARCH_033.json",
-    "unfinished": [
-      "L1_ORIGINAL_GRID_SOURCES_ASIA_LONDON_NY_FUNDING_PARITY",
-      "L2_SOURCE_COMPLETE_ROLE_AUTHORITY_AND_PRET0_HISTORY",
-      "L3_ALL_ORIGINAL_FROZEN_HOURLY_COVERAGE_SOURCES",
-      "L4_ORIGINAL_049_051_075_084_119_131E_FULL_ONLINE_PARENT_SCOUT_CHILD",
-      "L5_ORIGINAL_134K_NATIVE_SPECIALISTS",
-      "L6_ORIGINAL_FAILURE_OWNED_RECOVERY_SOURCE",
-      "L7_REAL_COINEXX_SYMBOL_ORDER_ACCEPTANCE_MARGIN_STOPOUT",
-      "ALL_JAN_FEB_TRUE_FUNDED_ECONOMIC_PARITY",
-      "MQL5_COMPILE_REAL_TICK_BROKER_TESTING"
-    ],
-    "next": "DAA_033_PHASE_B_ORIGINAL_GRID_WATCHDOG_SOURCE_GENERATION",
-    "march_on_hold": true,
-    "broker_parity_certified": false
-  },
-  "v1_033_phase_b": {
-    "status": "PARTIAL_SOURCE_PARITY_NOT_FUNDED_V1_CERTIFIED",
-    "read_first": "research/delta_a_alpha/implementation/v1_033_phase_b/README_033_PHASE_B.md",
-    "qa": "research/delta_a_alpha/implementation/v1_033_phase_b/PHASE_B_QA_033.json",
-    "strict_tests": "31_PASS",
-    "original_019_feb_entry_parity": "43105/43105_MATCH",
-    "all_original_v1_parity": "NOT_YET",
-    "frozen_research_immutable": true,
-    "next": "DAA_033_PHASE_C_ORIGINAL_SESSION_GRID_WATCHDOG_SOURCE_ONLINE_INTEGRATION"
-  },
-  "v1_033_phase_c1": {
-    "status": "PARTIAL_SOURCE_PARITY_NOT_COMPLETE_V1",
-    "read_first": "research/delta_a_alpha/implementation/v1_033_phase_c1/README_033_PHASE_C1.md",
-    "qa": "research/delta_a_alpha/implementation/v1_033_phase_c1/PHASE_C1_QA_033.json",
-    "library_zip": "/xauusd-trading-bot/delta-A-alpha/engineering/v1-033-phase-c1/DAA_033_V1_FUNDED_ENGINE_PHASE_C1.zip",
-    "tests_passed": 40,
-    "step250_event_parity": "40784/40784",
-    "step75_event_parity": "64896/64896",
-    "online_mock_watchdog_child_fills": 19,
-    "complete_075_parent_source_parity": "PENDING",
-    "next": "DAA_033_PHASE_C2_ORIGINAL_049_051_075_084_119_131E_PARENT_SOURCE_GENEALOGY_RECONSTRUCTION"
-  },
-  "v1_033_phase_c2a": {
-    "status": "PARTIAL_C2A_TESTED_NOT_COMPLETE_033",
-    "read_first": "research/delta_a_alpha/implementation/v1_033_phase_c2a/README_033_PHASE_C2A.md",
-    "python": "research/delta_a_alpha/implementation/v1_033_phase_c2a/original_funded_lineage_033c2.py",
-    "qa": "research/delta_a_alpha/implementation/v1_033_phase_c2a/PHASE_C2A_QA_033.json",
-    "library_zip": "/xauusd-trading-bot/delta-A-alpha/engineering/v1-033-phase-c2a/DAA_033_V1_FUNDED_ENGINE_PHASE_C2A.zip",
-    "test_total": 46,
-    "original051_synthetic_parity": "PASS",
-    "real_feb_049_parent_funding_feedback": "PASS_CAUSAL_DIAGNOSTIC",
-    "original_full_source_parent_union": "PENDING_C2B",
-    "watchdog_119_multiple_earned_parents": "PENDING_C2B",
-    "EA_modified": false
-  },
-  "v1_033_phase_c2b": {
-    "status": "EXACT_SOURCE_ENTRY_PARITY_NOT_FULL_V1",
-    "read_first": "research/delta_a_alpha/implementation/v1_033_phase_c2b/README_033_PHASE_C2B.md",
-    "source": "research/delta_a_alpha/implementation/v1_033_phase_c2b/original_ny049_union_033c2b.py",
-    "qa": "research/delta_a_alpha/implementation/v1_033_phase_c2b/PHASE_C2B_QA_033.json",
-    "original_entry_source_parity": "13063_OF_13063_EXACT_0_MISMATCH",
-    "regression_tests": "47_PASS",
-    "source_followon": "MULTI_PARENT_119_PENDING_C2C",
-    "library_zip": "/xauusd-trading-bot/delta-A-alpha/engineering/v1-033-phase-c2b/DAA_033_V1_FUNDED_ENGINE_PHASE_C2B.zip",
-    "full_month_economic_certification": false
-  },
-  "v1_033_phase_c2c": {
-    "status": "PARTIAL_CAUSAL_CONTRACT_CONFIRMED_FULL_SOURCE_PARITY_OPEN",
-    "read_first": "research/delta_a_alpha/implementation/v1_033_phase_c2c/README_033_PHASE_C2C.md",
-    "core": "research/delta_a_alpha/implementation/v1_033_phase_c2c/v1_funded_core_033c.py",
-    "adapter": "research/delta_a_alpha/implementation/v1_033_phase_c2c/original_119_multi_parent_033c2c.py",
-    "tests": "52_PASS",
-    "earned_second_parent": "5_UNIT_TESTS_PASS__0_REAL_SECOND_PARENT_IN_1.136M_QUOTE_SEGMENT",
-    "research_only_diagnostic": {
-      "net": 54.602,
-      "gross_loss": -1899.091,
-      "pf": 1.02875165,
-      "trades": 209,
-      "exact_full_tick_dd": 2339.194,
-      "max_open": 32,
-      "model_order_rate_max": 4,
-      "funded_first_parent_windows": 4,
-      "funded_children": 19,
-      "earned_later_parent_windows": 0,
-      "eligible_funded_L3_parents": 62,
-      "denied_unearned_later_windows": 58
-    },
-    "next": "DAA_033_PHASE_C2D_ORIGINAL_075_084_119_FULL_FUNDED_PARENT_CHILD_EVENT_PARITY",
-    "library_archive": "/xauusd-trading-bot/delta-A-alpha/engineering/v1-033-phase-c2c/DAA_033_V1_FUNDED_ENGINE_PHASE_C2C.zip"
-  },
-  "v1_033_phase_c2d1": {
-    "status": "PARTIAL_PARITY_VALIDATED_NOT_FULL_V1",
-    "read_first": "research/delta_a_alpha/implementation/v1_033_phase_c2d1/README_033_PHASE_C2D1.md",
-    "qa": "research/delta_a_alpha/implementation/v1_033_phase_c2d1/PHASE_C2D1_QA_033.json",
-    "test_count": 57,
-    "real_sample": "20K_FEB_QUOTES_6_FIXTURE_PARENTS_29_EXACT_CHILD_EVENTS",
-    "archive": "/xauusd-trading-bot/delta-A-alpha/engineering/v1-033-phase-c2d1/DAA_033_V1_FUNDED_ENGINE_PHASE_C2D1.zip",
-    "next": "DAA_033_PHASE_C2D2_ATTACH_084_ONLINE_CHILD_EVENT_TO_ACTUAL_L7_FUNDED_119_PARENT_AND_FUTURE_GENEALOGY"
-  },
-  "v1_033_phase_c2d2": {
-    "status": "CI_TESTED_PARTIAL_FUNDED_BRIDGE_NOT_FULL_SOURCE_PARITY",
-    "read_first": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/README_033_PHASE_C2D2.md",
-    "qa": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/C2D2_CI_QA_033.json",
-    "tests": "13/13_PASSED_PYTHON_3_11",
-    "source": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/funded_084_l7_bridge_033c2d2.py",
-    "workflow": "https://github.com/AnhTranHarris/gold-MUWHAHA-miner/actions/runs/37969868686",
-    "next": "DAA_033_PHASE_C2D3_REAL_FEB_FUNDED_084_119_PARENT_CHILD_TRACE_PARITY_AND_QUEUE_STRESS"
-  },
-  "v1_033_phase_c2d3a": {
-    "status": "17_PASS_DETERMINISTIC_CI_RESEARCH_ENGINE_NOT_REAL_TICK_V1",
-    "read_first": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/README_033_C2D3_A.md",
-    "qa": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/C2D3_QUEUE_CI_QA_033.json",
-    "test_run": "https://github.com/AnhTranHarris/gold-MUWHAHA-miner/actions/runs/37971162942",
-    "next": "DAA_033_PHASE_C2D3B_REAL_FEB_FUNDED_PARENT_CHILD_QUEUE_AND_EQUITY_REPLAY"
-  },
-  "handoff_2026_10_09": {
-    "status": "DRIVE_DOCS_SAVED_AND_READBACK_VERIFIED__BINARY_LIBRARY_REMAINS_EXTERNAL",
-    "read_first": "research/delta_a_alpha/handoff/2026-10-09/DAA_JOURNAL_0075_GOOGLE_DRIVE_TIMEOUT_RECOVERY_READ_FIRST.md",
-    "google_drive_folder": "https://drive.google.com/drive/folders/1R1gQVCCSRw78ICZuftx6xzE46v7Sk51T",
-    "latest_verified_engineering": "C2D3_A_17_OF_17_GITHUB_ACTIONS_PASS",
-    "next": "DAA_033_PHASE_C2D3B_REAL_FEB_FUNDED_PARENT_CHILD_QUEUE_AND_EQUITY_REPLAY",
-    "python_container_availability": "DOWN_ON_HANDOFF_TURN"
-  },
-  "c2d3b_real_feb_partial_bridge": {
-    "status": "BOUNDED_REAL_TICK_FUNDED_L7_VERIFIED_FULL_OWNER_V1_OPEN",
-    "real_feb_quotes": 1136212,
-    "jan_context_quotes": 3900880,
-    "original_049_index_parity": "13063/13063",
-    "funded_119_windows": 5,
-    "funded_084_children": 18,
-    "net_usd": 12.263,
-    "max_equity_dd_usd": 2339.194,
-    "independent_cash_equity_mismatches": 0,
-    "ci_run": "https://github.com/AnhTranHarris/gold-MUWHAHA-miner/actions/runs/37981752215",
-    "ci_tests_passed": "21/21",
-    "report": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/README_033_C2D3_B.md",
-    "pr": "https://github.com/AnhTranHarris/gold-MUWHAHA-miner/pull/32",
-    "full_original_v1": "NOT_CERTIFIED",
-    "coinexx": "NOT_CERTIFIED",
-    "small_account": "NOT_CERTIFIED"
-  },
-  "python_implementation_j0094": {
-    "status": "JAN_FEB_NATIVE_COOPERATIVE_SOURCE_ADAPTER_9_OF_9_CI_PASS_NOT_FULL_REAL_TICK_PORTFOLIO",
-    "journal": "research/delta_a_alpha/state_journal/0094_DAA_033_JAN_FEB_COOPERATIVE_SOURCE_PORTFOLIO_INTEGRATION_CI.json",
-    "python": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/jan_feb_cooperative_source_portfolio_033.py",
-    "tests": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/test_jan_feb_cooperative_source_portfolio_033.py",
-    "ci": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/COOPERATIVE_JAN_FEB_SOURCE_CI_RECEIPT_033.json",
-    "original_source_reuse": true,
-    "source_only_l3": true,
-    "original_l4_l5_l6_complete": false,
-    "full_jan_feb_physical_tick_parity": false,
-    "feb_march_research_reference": "March Excellence Discovery135 is complete; separate historical engineering March-HELD note reflects contamination. Owner clarification supersedes any inferred mandate to rediscover March.",
-    "owner_governing_document": "https://docs.google.com/document/d/1J9d_P4ooCnNmcxPwG1F178aE4ktpkLrFclcyQPaQJ8k/edit"
-  },
-  "restart_instruction_j0094": "Read FULL owner governing chat and FULL unabridged V1 owner white paper and original JAN037/JAN039/FEB045/FEB047 source/configuration, then J0094 and existing original L4/L5/L6 executable sources. J0094 added one cooperative L3 source owner + full-account L7 CI9/9 only. Do NOT infer full Jan/Feb funded portfolio parity from synthetic fixtures; do NOT rebuild original quote data, completed paid ledgers, or source helpers. March Discovery135 and April Discovery136 completed; monthly research progress separate from Python integration. Next integrate original missing L1/L4/L5/L6 and run genuine month-blind combined Jan+Feb full funded real-tick economics, then stop for owner decision on March engine integration.",
-  "march_phase1_blind": {
-    "status": "COMPLETE_SOURCE_ONLY_J0094_FROZEN_BLIND_9_433_179_MARCH_BIDASK_QUOTES__OWNER_DECISION_PENDING",
-    "journal": "research/delta_a_alpha/state_journal/0095_DAA_MARCH_PHASE1_J0094_FROZEN_BLIND_DUKAS_R9_SYNTH_BASELINE.json",
-    "archived_full_evidence": "https://drive.google.com/file/d/18TFudcbL9uvL9MKH4t68gmubLZQ37UYh/view?usp=drivesdk",
-    "original_march_excellence_discovery": "COMPLETED_135_UNMODIFIED",
-    "original_april_excellence_discovery": "COMPLETED_136_UNMODIFIED",
-    "comparison_reference": "MT5 R9 SYNTH 40,985 March close deals matched original benchmark",
-    "model_monthly_net": -17057.11,
-    "benchmark_monthly_net": 75698.63,
-    "classification": "PARTIAL_PRE_MARCH_J0094_L3_AND_FUNDED_L7_NOT_COMPLETE_OWNER_V1",
-    "real_march_ticks_replayed": 9433179,
-    "february_warmup_quotes": 1968158,
-    "next_phase": "STOP_AND_OWNER_DECISION_MARCH_PHASE2",
-    "no_parameters_promoted": true,
-    "no_march_original_discovery_rerun": true
-  },
-  "owner_decision_requested_before_further_March_work": "March Phase 1 blind baseline complete; do not launch March Phase 2 Excellence optimization or MT5 port without explicit owner authorization. Preserve whole original Python integration deficit in first_incomplete_unit and all accepted January-April research.",
-  "march_phase1_architecture_audit_0096": {
-    "status": "J0095_SOURCE_ONLY_DIAGNOSTIC_VALID__UNFIT_AS_COMPLETE_OWNER_L0_L7_MARCH_BASELINE",
-    "audit_report": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/MARCH_PHASE1_OWNER_V1_ARCHITECTURE_FITNESS_AUDIT_2026-10-10.md",
-    "last_unchanged_input_run": "research/delta_a_alpha/state_journal/0095_DAA_MARCH_PHASE1_J0094_FROZEN_BLIND_DUKAS_R9_SYNTH_BASELINE.json",
-    "original_whitepaper_unchanged": true,
-    "original_JAN_FEB_MAR_research_unchanged": true,
-    "feb_physical_heat_default_neutral": true,
-    "active_layers": "L0/L2 partial L3 and L7 idealized only; no real L1/active L4 L5 L6",
-    "owner_review_required_before_march_phase2": true,
-    "test_scope_gate": "Do not conclude original V1 market awareness or March profitability from the incomplete 2-day source-only model; repair original source integration first",
-    "no_byte_audits_or_historical_ledger_regeneration": true
-  },
-  "restart_instruction_j0096": "First read the full owner governing conversation, V1 original whitepaper, original JAN/FEB code, and targeted architecture-fitness audit. J0095 March full-quote source-only replay is correct AS A PARTIAL DIAGNOSTIC but NOT full-V1 Phase1. All funded trades stopped Mar3 due equity DD; no actual market-state routing L1/Watchdog L4/native L5/recovery L6 was running. Do not rediscover March135 or rewrite original code; reconnect originals before future authorized V1 comparison."
+  "python_v1_engine": {
+    "status": "EMPTY_OWNER_AUTHORIZED_WIPE_2026_10_10",
+    "active_engine_path": "research/delta_a_alpha/implementation/",
+    "runnable_python_engine_files": 0,
+    "approved_reactivation": false,
+    "selected_implementation_branch": null,
+    "active_market_strategy": null,
+    "engine_performance_baseline": null,
+    "current_python_parity_certification": "NONE",
+    "original_v1_whitepaper": "research/delta_a_alpha/whitepapers/DAA_V1_OWNER_GOOGLE_WHITEPAPER_FULL_VERBATIM_030.txt",
+    "governing_conversation": "https://docs.google.com/document/d/1J9d_P4ooCnNmcxPwG1F178aE4ktpkLrFclcyQPaQJ8k/edit",
+    "preserved_research_reference": "research/delta_a_alpha/monthly/",
+    "pre_reset_engine_commit": "20706fba42cb60a7f8c98810dd9555d98c397cae",
+    "no_old_engine_fallback": true,
+    "no_imports_from_historical_implementation": true,
+    "no_historical_engine_reuse_without_new_owner_approval": true,
+    "historical_results_are_archived_evidence_not_new_baseline": true
+  }
 }
