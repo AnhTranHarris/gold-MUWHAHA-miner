@@ -1,0 +1,14 @@
+{
+  "schema": "DAA033-cooperative-JanFeb-source-funding-contract-ci-v1",
+  "classification": "SYNTHETIC_FIXTURE_INTEGRATION_ONLY_NOT_FULL_JAN_FEB_REAL_TICK_ECONOMIC_PARITY",
+  "source": "GitHub Actions tests in original v1_033_phase_c2d2 module",
+  "ci_success": false,
+  "exit_code": 1,
+  "tests_discovered": 7,
+  "original_source_L3_plus_JAN039_plus_FEB045_FEB047": true,
+  "shared_funded_L7": true,
+  "no_trading_calendar_selector": true,
+  "full_original_L0_L7_parity": false,
+  "broker_verified": false,
+  "test_log": "test_broker_fail_closed_preserves_no_shadow_funded_callbacks (test_jan_feb_cooperative_source_portfolio_033.IntegratedAccountContracts.test_broker_fail_closed_preserves_no_shadow_funded_callbacks) ... ok\ntest_combined_jan_and_feb_source_owners_share_one_funded_ledger (test_jan_feb_cooperative_source_portfolio_033.IntegratedAccountContracts.test_combined_jan_and_feb_source_owners_share_one_funded_ledger) ... ERROR\ntest_existing_original_source_feed_can_be_constructed_without_rewrite (test_jan_feb_cooperative_source_portfolio_033.IntegratedAccountContracts.test_existing_original_source_feed_can_be_constructed_without_rewrite) ... ok\ntest_feb045_causal_quality_uses_identical_upstream_proposal (test_jan_feb_cooperative_source_portfolio_033.IntegratedAccountContracts.test_feb045_causal_quality_uses_identical_upstream_proposal) ... ok\ntest_jan039_s26_uses_original_frozen_native_tp_in_one_account (test_jan_feb_cooperative_source_portfolio_033.IntegratedAccountContracts.test_jan039_s26_uses_original_frozen_native_tp_in_one_account) ... ok\ntest_jan_mechanism_is_not_removed_when_feb_context_unavailable (test_jan_feb_cooperative_source_portfolio_033.IntegratedAccountContracts.test_jan_mechanism_is_not_removed_when_feb_context_unavailable) ... ok\ntest_january_and_february_both_use_same_condition_without_month_lookup (test_jan_feb_cooperative_source_portfolio_033.IntegratedAccountContracts.test_january_and_february_both_use_same_condition_without_month_lookup) ... ok\n\n======================================================================\nERROR: test_combined_jan_and_feb_source_owners_share_one_funded_ledger (test_jan_feb_cooperative_source_portfolio_033.IntegratedAccountContracts.test_combined_jan_and_feb_source_owners_share_one_funded_ledger)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/runner/work/gold-MUWHAHA-miner/gold-MUWHAHA-miner/research/delta_a_alpha/implementation/v1_033_phase_c2d2/test_jan_feb_cooperative_source_portfolio_033.py\", line 118, in test_combined_jan_and_feb_source_owners_share_one_funded_ledger\n    self.assertEqual(next(iter(e.positions.values())).source,S26)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nStopIteration\n\n----------------------------------------------------------------------\nRan 7 tests in 0.003s\n\nFAILED (errors=1)\n"
+}
