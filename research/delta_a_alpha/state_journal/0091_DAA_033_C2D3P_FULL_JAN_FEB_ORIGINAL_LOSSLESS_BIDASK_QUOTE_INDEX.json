@@ -1,0 +1,71 @@
+{
+  "schema": "delta-a-alpha-state-journal-v2",
+  "sequence": 91,
+  "unit": "DAA033_C2D3P_ORIGINAL_JAN_FEB_VERIFIED_LOSSLESS_REAL_BIDASK_INDEX",
+  "status": "ORIGINAL_FULL_JAN_FEB_QUOTE_INDEX_RECONSTRUCTIBLE_AND_CAUSAL_FUNDED_READ_PARITY__FULL_MONTH_FUNDED_ECONOMICS_OPEN",
+  "predecessor": {
+    "sequence": 90,
+    "path": "research/delta_a_alpha/state_journal/0090_DAA_033_C2D3O_TRUSTED_RESUMABLE_TRUE_BIDASK_JAN_FEB_REPLAY.json"
+  },
+  "source_authority": {
+    "owner_original_blob": "1b92b3c89159681a7181508de158af685cf5780c",
+    "funded_original_approved_blob": "917d3be410e6917e6ae5ff2cb6a945efeeb70e9b",
+    "jan_full_original_raw_gz_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "feb_full_original_raw_gz_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d"
+  },
+  "implementation": {
+    "module": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/original_verified_quote_tape_index_033.py",
+    "full_source_manifest": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/JAN_FEB_ORIGINAL_LOSSLESS_QUOTE_BINARY_INDEX_SHA_MANIFEST_033.json",
+    "fully_reproducible_quote_index": "Strict typed raw quote triples 16-byte time_ms_utc/ask_raw/bid_raw, no byte-level new source time interpolation, no calendar strategy label. One raw CSV.GZ source SHA rehash on production of index then frozen full binary digest pinned at each resumed short batch.",
+    "binary_data_not_committed": "Two full quote indexes are 266774416 bytes local binary sidecars. Exact build source and full digest manifests committed, not binary files.",
+    "index_security": "Reject modified frozen original gzip, corrupt binary, invalid price spread or nonmonotonic time; index reader code SHA pinned into trusted L7 resume state; never load outside pickle."
+  },
+  "original_data": {
+    "jan_quotes": 9135062,
+    "feb_quotes": 7538339,
+    "combined_true_quotes": 16673401,
+    "jan_binary_sha256": "e45f40c120fa235c4a25b56f87714318015579c3afb2b671e3f66f487796337c",
+    "feb_binary_sha256": "25cdc90b9ef72fa4cb7fc5022e36d8c3c0d58e2bc955de1319768106080007e9",
+    "jan_bytes": 146160992,
+    "feb_bytes": 120613424
+  },
+  "actual_funded_replay_comparisons": {
+    "jan_first_original_quotes": 50000,
+    "feb_first_original_quotes": 50000,
+    "each_fixed_mode": [
+      "JAN039_SOURCE_NATIVE",
+      "FEB045_SOURCE_NATIVE"
+    ],
+    "each_half_checkpoint": 25000,
+    "exact_direct_gzip_vs_lossless_index_states": 4,
+    "mismatches": 0,
+    "source_events_in_early_windows": 0,
+    "paid_trades_in_early_windows": 0,
+    "honest_scope": "Every selected early source quote and account state matched exactly, but those early windows have zero proposals and cannot be used to claim original optimized funded source/exit parity; other earlier C2D3M/N physical tests involve genuine active one-hour source windows."
+  },
+  "qa": {
+    "local_new_tests": 6,
+    "inherited_prior_tests": 133,
+    "expected_GitHub_python_tests": 139,
+    "github_status": "PENDING",
+    "replay_script": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/audit_actual_jan_feb_quote_index_crosschecks_033.py",
+    "qa_result": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/ORIGINAL_JAN_FEB_FULL_LOSSLESS_INDEX_AND_50K_NATIVE_L7_PARITY.json"
+  },
+  "outstanding": [
+    "Full all-quote Jan and Feb physically funded economic account outcomes have not been executed/reconciled",
+    "Original owner V1 complete native L4 renewals/L5 trend-within-trend/L6 actual funded failure-based recovery and distinct native H4 H1 M15 M5 source role classifiers are incomplete",
+    "No source-certified daily weekly rolling month live gating",
+    "Broker cost/slippage order-model MT5 Coinexx not certified",
+    "Jan1 2026 preceding completed Dec2025 bars unavailable from Jan-only source",
+    "March unchanged and not analyzed"
+  ],
+  "locks": {
+    "march": "HELD",
+    "august": "SEALED",
+    "september": "RESERVED",
+    "production_delta": "READ_ONLY",
+    "lot": 0.01,
+    "martingale": false
+  },
+  "next": "Use cryptographically pinned original Jan-Feb lossless indexed real quotes to incrementally finish BOTH complete original-month native funded campaign runs from original source native JAN039 and FEB045 candidate logic (read original source, never summary), explicitly record realized net/gross loss/equity drawdown and performance failures, then original full-L0–L7 roles and broker replay until January/February gates pass. No March before gates and owner permission."
+}
