@@ -13,6 +13,7 @@ from collections import defaultdict, deque
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
+from math import isfinite
 from typing import Callable, Iterable, Protocol
 
 
@@ -199,6 +200,9 @@ class FundedEngine:
         self._recovery_counts: dict[int, int] = defaultdict(int)
         self._last_quote: Quote | None = None
         self._reduction_queue: deque[int] = deque()
+        # Conditional FEB047 requests are re-priced at the *actual* close tick.
+        # Existing unconditional L7 safety reductions retain their old semantics.
+        self._profit_reduce_guards: dict[int, float] = {}
         self.max_open = 0
         self.reject_counts: dict[str, int] = defaultdict(int)
         self.invalid_recoveries = 0
@@ -361,6 +365,7 @@ class FundedEngine:
 
     def _finish(self, q: Quote, pid: int, reason: str) -> Close:
         p = self.positions.pop(pid)
+        self._profit_reduce_guards.pop(pid, None)
         p.closed = True
         price = q.bid_raw if p.side == 1 else q.ask_raw
         gross = (price - p.entry_raw) * p.side / 1000 * self.one_oz_size
@@ -413,8 +418,33 @@ class FundedEngine:
         return True
 
     def request_reduce(self, pid: int) -> None:
-        if pid in self.positions and pid not in self._reduction_queue:
-            self._reduction_queue.append(pid)
+        if pid in self.positions:
+            # An unconditional safety/stop-out reduction takes precedence over
+            # any optional FEB047 profit floor on this physical position.
+            self._profit_reduce_guards.pop(pid, None)
+            if pid not in self._reduction_queue:
+                self._reduction_queue.append(pid)
+
+    def request_profit_reduce(self, pid: int, *, minimum_net_usd: float) -> None:
+        """FEB047 conditional physical order, never a shadow or guaranteed-profit close.
+
+        The original FEB047 strict queue checks profit at each observed executable
+        Bid/Ask quote.  Funding/order rate may delay an actual close; the original
+        request must therefore RECHECK its floor immediately before settlement.
+        Stale, no-longer-profitable queued reductions are cancelled, not filled.
+        The pre-existing unconditional request_reduce remains a safety action.
+        """
+        if minimum_net_usd < 0 or not isfinite(minimum_net_usd):
+            raise ValueError('FEB047 profit floor must be finite and nonnegative')
+        if pid in self.positions:
+            # An existing UNCONDITIONAL safety order owns this position.
+            # Optional profit protection may never downgrade it to conditional.
+            if (pid in self._reduction_queue and
+                pid not in self._profit_reduce_guards):
+                return
+            if pid not in self._reduction_queue:
+                self._reduction_queue.append(pid)
+            self._profit_reduce_guards[pid] = float(minimum_net_usd)
 
     def process_quote(self, q: Quote, s: Structure | None, *, proposals: Iterable[Proposal] = (),
                       max_new_per_tick: int = 1) -> None:
@@ -462,11 +492,25 @@ class FundedEngine:
         for _ in range(reductions_at_quote):
             pid = self._reduction_queue.popleft()
             if pid in self.positions and pid not in to_exit_ids:
-                to_exit.append((pid, 'L7_REDUCE'))
+                guarded = pid in self._profit_reduce_guards
+                if guarded:
+                    floor = self._profit_reduce_guards[pid]
+                    executable_net = (self._mark(self.positions[pid], q)
+                                      - self.limits.commission_roundtrip_usd)
+                    if executable_net + 1e-9 < floor:
+                        self._profit_reduce_guards.pop(pid, None)
+                        self.events.append(dict(t=q.time_ms, event='CANCEL', id=pid,
+                            reason='FEB047_PROFIT_FLOOR_NOT_EXECUTABLE'))
+                        continue
+                to_exit.append((pid, 'FEB047_PROFIT_REDUCE' if guarded else 'L7_REDUCE'))
                 to_exit_ids.add(pid)
         for pid, reason in to_exit:
             if not self._order_room():
-                self.request_reduce(pid)
+                if reason == 'FEB047_PROFIT_REDUCE':
+                    self.request_profit_reduce(pid,
+                        minimum_net_usd=self._profit_reduce_guards[pid])
+                else:
+                    self.request_reduce(pid)
                 continue
             self._finish(q, pid, reason)
         self._mark_account(q)
