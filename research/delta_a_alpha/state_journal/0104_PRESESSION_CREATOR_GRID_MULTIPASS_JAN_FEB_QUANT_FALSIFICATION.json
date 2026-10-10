@@ -8,15 +8,15 @@
   "permanent_report": "research/delta_a_alpha/grid/GRID_0104_PRESSESSION_INDEPENDENT_GRID_QUANT_RESEARCH_REPORT.md",
   "full_current_turn_report": {
     "name": "GRID0104_PRESESSION_DEEP_RESEARCH_REPORT.md",
-    "bytes": 16781,
-    "sha256": "7621701b13558df1e0c6029c0bbfe7f99d2fe77d2960c9b6bba22d9a90f64b24",
+    "bytes": 18089,
+    "sha256": "48aeddd89b7d432d7f62a05c45c6ed05f4a2bfbfc0fe49eb56d3b861cadb4964",
     "storage": "current ChatGPT conversation sandbox attachment, NOT asserted GitHub"
   },
   "full_current_turn_reproducible_archive": {
     "name": "GRID0104_REPRODUCIBLE_PRESESSION_GRID_RESEARCH.zip",
-    "bytes": 3981006,
-    "sha256": "9a4c698134def80afd2e362c4e42d71a07054d2aec5dbb7700fead46d89f58fc",
-    "files": 17,
+    "bytes": 3984841,
+    "sha256": "0002706a77d45a58f2a7d756ca31216fcfd7ec4fda130288e6dde7824d328af1",
+    "files": 19,
     "storage": "current ChatGPT conversation sandbox attachment, NOT asserted Drive or GitHub"
   },
   "original_untouched_inputs": {
@@ -42,7 +42,22 @@
     "feature_direction_generator_combinations_per_horizon": 320,
     "latency_hypothesis_ms": 250,
     "deterministic_tests_passed": 12,
-    "deterministic_tests_total": 12
+    "deterministic_tests_total": 12,
+    "first_passage_price_barrier_raw": 750,
+    "first_passage_horizons_completed_seconds": [
+      30,
+      120
+    ],
+    "first_passage_trained_on": "JAN 1-15 historical price features",
+    "first_passage_feb_frozen_accuracy_pct": {
+      "30s": 51.226,
+      "120s": 51.0093
+    },
+    "first_passage_feb_naive_continuation_accuracy_pct": {
+      "30s": 52.0458,
+      "120s": 51.6035
+    },
+    "first_passage_unfinished_sweeps": "Other barrier sizes not completed; explicitly no result"
   },
   "baselines": {
     "jan_r9_synth_entries": 27980,
@@ -56,7 +71,8 @@
     "Strong retest 0.65-1.5x reduces count and did not improve positive price-side outcomes",
     "Additional price-travel breakout 0.2-1.0x reduces count and did not fix sign",
     "frozen January-trained model late January 300s 381 high-conviction cases +$0.7012 but independent February 438 cases -$0.2421; NOT validated",
-    "future knowledge oracle 120s has 81.3% late-Jan positive if selecting right hindsight side; NOT deployable and does not satisfy 75% qualified rule"
+    "future knowledge oracle 120s has 81.3% late-Jan positive if selecting right hindsight side; NOT deployable and does not satisfy 75% qualified rule",
+    "First-passage constrained causal direction model failed to beat February simple continuation reference; 30s 51.23% vs 52.05%, 120s 51.01% vs 51.60%"
   ],
   "no_new_probabilistic_edge_certified": true,
   "session_layer_allowed": false,
@@ -65,7 +81,7 @@
   "default_future_discovery_balance_usd": 100000,
   "lot_size_when_funded": 0.01,
   "actual_100k_simulated_profit_claimed": false,
-  "research_decision": "KEEP virtual grid as causal event scheduler, reject current blind directional mechanism and January-only model subgroup, discover truly source-native predictive signal before session personalization",
+  "research_decision": "KEEP virtual grid as causal event scheduler; reject reversal/continuation and Jan-only and first-passage predictors as accepted alpha; defer L1 sessions, remain in pre-grid mechanism research",
   "next": "independently preregister first-passage hazard/renewal, intrinsic-time directional-change, quote-response and order-time survival mechanisms; positive genuine OOS information needed before promoting base master grid",
   "protected": [
     "R9 Gamma SYNTH and REAL original tests",
