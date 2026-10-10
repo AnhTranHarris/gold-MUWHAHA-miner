@@ -1,0 +1,209 @@
+{
+  "actual_coinexx_mt5_broker_verified": false,
+  "full_original_bidask_quotes": 16673401,
+  "january_pre_T0_december2025_history_present": false,
+  "march_data_opened": false,
+  "native_50ms_generated_source_offers_expected": 446816,
+  "original_source_whole_8_layer_v1_completed": false,
+  "raw_quote_index_source_manifest": {
+    "FEB": {
+      "binary_quote_source_sha256": "25cdc90b9ef72fa4cb7fc5022e36d8c3c0d58e2bc955de1319768106080007e9",
+      "bytes": 120613424,
+      "original_raw_source_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+      "records": 7538339
+    },
+    "JAN": {
+      "binary_quote_source_sha256": "e45f40c120fa235c4a25b56f87714318015579c3afb2b671e3f66f487796337c",
+      "bytes": 146160992,
+      "original_raw_source_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "records": 9135062
+    }
+  },
+  "run_modes": {
+    "FEB045_SOURCE_NATIVE": {
+      "actual_physically_funded_entries": 2512,
+      "by_actual_funded_original_source": {
+        "ORIGINAL_F045_S17": {
+          "closed": 256,
+          "net": 1031.167
+        },
+        "ORIGINAL_F045_S19": {
+          "closed": 256,
+          "net": 158.258
+        },
+        "ORIGINAL_F045_S21": {
+          "closed": 380,
+          "net": 1153.336
+        },
+        "ORIGINAL_F045_S22": {
+          "closed": 288,
+          "net": 1680.88
+        },
+        "ORIGINAL_F045_S23": {
+          "closed": 425,
+          "net": 2587.071
+        },
+        "ORIGINAL_F045_S24": {
+          "closed": 280,
+          "net": 2924.357
+        },
+        "ORIGINAL_F045_S25": {
+          "closed": 563,
+          "net": 4995.692
+        },
+        "ORIGINAL_F045_S26": {
+          "closed": 64,
+          "net": 509.159
+        }
+      },
+      "checkpoint_file_sha256": "4e84faa44cef1b46c3e7e3785ec830ff55d20622513ddd6c9a35a47b697b2d97",
+      "exact_original_quote_count": 16673401,
+      "full_original_V1_Jan039_Feb045_Feb047_parity": false,
+      "is_this_only_source_family": true,
+      "no_open_positions": true,
+      "physically_closed_deals": 2512,
+      "realized_account_score": {
+        "combined_max_orders_sec": 10,
+        "funded_recovery_count": 0,
+        "gross_loss": -4494.699,
+        "gross_profit": 19534.619,
+        "history_missing_quotes": 60685,
+        "idle_funding_source_returns_prevented": true,
+        "max_balance_dd": 1466.113,
+        "max_equity_dd": 1735.496,
+        "max_open": 64,
+        "model": "DETERMINISTIC_BIDASK_IDEALIZED_RESEARCH_KERNEL_NOT_V1_SOURCE_PARITY",
+        "month_blind": true,
+        "net": 15039.92,
+        "open_positions": 0,
+        "profit_factor": 4.3461462,
+        "rejected": {
+          "CELL_CAP": 54636,
+          "ORDER_RATE": 135,
+          "SPREAD": 47
+        },
+        "trades": 2512
+      },
+      "source_generated_event_count": 446816,
+      "utc_realized_close_day_count": 27,
+      "utc_realized_close_months": {
+        "2026-01": {
+          "gross_loss": -4037.587,
+          "gross_profit": 10119.96,
+          "net": 6082.373,
+          "profit_factor": 2.506437632,
+          "trades": 1534
+        },
+        "2026-02": {
+          "gross_loss": -457.112,
+          "gross_profit": 9414.659,
+          "net": 8957.547,
+          "profit_factor": 20.59595679,
+          "trades": 978
+        }
+      },
+      "utc_realized_close_week_count": 9
+    },
+    "JAN039_SOURCE_NATIVE": {
+      "actual_physically_funded_entries": 13466,
+      "by_actual_funded_original_source": {
+        "ORIGINAL_J037_S17": {
+          "closed": 352,
+          "net": 186.198
+        },
+        "ORIGINAL_J037_S18": {
+          "closed": 730,
+          "net": 373.923
+        },
+        "ORIGINAL_J037_S19": {
+          "closed": 960,
+          "net": 949.458
+        },
+        "ORIGINAL_J037_S21": {
+          "closed": 652,
+          "net": 971.698
+        },
+        "ORIGINAL_J037_S22": {
+          "closed": 1440,
+          "net": 3007.957
+        },
+        "ORIGINAL_J037_S23": {
+          "closed": 552,
+          "net": 967.955
+        },
+        "ORIGINAL_J037_S24": {
+          "closed": 600,
+          "net": 426.146
+        },
+        "ORIGINAL_J037_S25": {
+          "closed": 788,
+          "net": 4978.658
+        },
+        "ORIGINAL_J037_S28": {
+          "closed": 6432,
+          "net": -9145.704
+        },
+        "ORIG_SOURCE_26": {
+          "closed": 640,
+          "net": 803.538
+        },
+        "ORIG_SOURCE_27": {
+          "closed": 320,
+          "net": 8878.921
+        }
+      },
+      "checkpoint_file_sha256": "49e8bbd2002de3accc8a0afc9c09a249e52a0e3f67e961ccef9ce9870c121ad6",
+      "exact_original_quote_count": 16673401,
+      "full_original_V1_Jan039_Feb045_Feb047_parity": false,
+      "is_this_only_source_family": true,
+      "no_open_positions": true,
+      "physically_closed_deals": 13466,
+      "realized_account_score": {
+        "combined_max_orders_sec": 10,
+        "funded_recovery_count": 0,
+        "gross_loss": -44078.645,
+        "gross_profit": 56477.393,
+        "history_missing_quotes": 60685,
+        "idle_funding_source_returns_prevented": true,
+        "max_balance_dd": 10277.29299996,
+        "max_equity_dd": 12199.53199996,
+        "max_open": 64,
+        "model": "DETERMINISTIC_BIDASK_IDEALIZED_RESEARCH_KERNEL_NOT_V1_SOURCE_PARITY",
+        "month_blind": true,
+        "net": 12398.748,
+        "open_positions": 0,
+        "profit_factor": 1.28128696,
+        "rejected": {
+          "CELL_CAP": 350729,
+          "ORDER_RATE": 6954,
+          "SPREAD": 10837
+        },
+        "trades": 13466
+      },
+      "source_generated_event_count": 446816,
+      "utc_realized_close_day_count": 33,
+      "utc_realized_close_months": {
+        "2026-01": {
+          "gross_loss": -23212.219,
+          "gross_profit": 39030.866,
+          "net": 15818.647,
+          "profit_factor": 1.681479311,
+          "trades": 6830
+        },
+        "2026-02": {
+          "gross_loss": -20866.426,
+          "gross_profit": 17446.527,
+          "net": -3419.899,
+          "profit_factor": 0.836105186,
+          "trades": 6636
+        }
+      },
+      "utc_realized_close_week_count": 9
+    }
+  },
+  "schema": "DAA033-C2D3Q-full-original-native-JAN-FEB-funded-ab-ledger-v1",
+  "source_code_runtime_sha256": "bfa37fb731b76025eff7d2ccc34cafd40aced5d5fd81d2c1d86f4162c8d62dee",
+  "source_program": "audit_full_jan_feb_native_source_funded_033.py",
+  "starting_idealized_usd_balance": 100000.0,
+  "time_control": "No execution strategy mode depends on month. Close-date grouping AFTER settlement only."
+}
