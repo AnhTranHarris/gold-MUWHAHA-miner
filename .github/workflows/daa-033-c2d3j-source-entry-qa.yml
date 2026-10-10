@@ -1,0 +1,27 @@
+name: DAA033 C2D3J JAN038-FEB042 full-original entry feature parity
+on:
+  pull_request:
+    paths:
+      - 'research/delta_a_alpha/implementation/v1_033_phase_c2d2/**'
+      - '.github/workflows/daa-033-c2d3j-source-entry-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-source-entry-bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: research/delta_a_alpha/implementation/v1_033_phase_c2d2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install existing original dependencies
+        run: python -m pip install 'numpy>=1.24,<3' 'pandas>=2,<3'
+      - name: Compile all new streaming original entry feature ports
+        run: python -m py_compile source_jan038_feb042_online_033.py audit_source_entry_features.py audit_online_jan038_feb042_all_proposals_033.py test_source_jan038_feb042_online_033.py test_original_jan038_feb042_source_sha_033.py
+      - name: Inherited V1 funded and source regressions plus JAN038 FEB042 source parity
+        run: python -m unittest -v test_original_119_multi_parent_033c2c test_funded_084_l7_bridge_033c2d2 test_c2d3_queue_stress_033 test_c2d3b_real_quote_oracle_033 test_c2d3b_funded_causal_ab_033 test_original_131c_source_parity_033 test_completed_htf_roles_033 test_original_131d_identity_smoke_033 test_source_native_s26_s27_033 test_frozen_jan039_reference_033 test_feb045_source_native_context_033 test_feb045_original_source_manifest_033 test_feb045_heat_feb047_queue_033 test_feb045_feb047_original_source_integrity_033 test_source_stmr_completed_ema_033 test_source_jan038_feb042_online_033 test_original_jan038_feb042_source_sha_033

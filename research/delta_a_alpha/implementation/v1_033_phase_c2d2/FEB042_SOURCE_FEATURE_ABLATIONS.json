@@ -1,0 +1,38 @@
+{
+  "authority": "Actual original FEB042/prepare.py 20-second first-quote>=threshold semantics",
+  "total": 234698,
+  "variants": {
+    "window_5000_left": {
+      "mismatches": 234496,
+      "rate": 0.99914
+    },
+    "window_10000_left": {
+      "mismatches": 234369,
+      "rate": 0.9986
+    },
+    "window_15000_left": {
+      "mismatches": 233451,
+      "rate": 0.99469
+    },
+    "window_20000_left": {
+      "mismatches": 0,
+      "rate": 0.0
+    },
+    "window_30000_left": {
+      "mismatches": 234365,
+      "rate": 0.99858
+    },
+    "window_60000_left": {
+      "mismatches": 234543,
+      "rate": 0.99934
+    },
+    "right_prior": {
+      "mismatches": 231539
+    },
+    "last_quote": {
+      "mismatches": 234539
+    }
+  },
+  "prediction_profits": null,
+  "conclusion": "Only source-defined 20000ms earliest-observed-left matches; none may replace original code without new owner-approved strategy research"
+}
