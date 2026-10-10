@@ -1,14 +1,20 @@
-# Delta-A-alpha CLEAN V1 — cycle 001
+# Delta-A-alpha V1 — CLEAN four-session research prototype, cycle003
 
-**One clean vertical program, not the deleted Jan/Feb engine.**
+Single vertical research route under `v1_four_session_architecture.py`; imports ONLY the cleaned original `v1_vertical_grid.py` and `v1_session_broker_clock.py` (new). Four desk-specific L1–L7 quality/participation profiles; actual overlapping desks share one physical capital governor. No session or timeframe alone can authorize a position.
 
-- [Python context core](v1_vertical_grid.py): L0 ordered Bid/Ask ticks, L1 UTC + Sydney/Tokyo/London/NY civil session clocks with separate overlaps, and completed H4/H1/M15/M5 bars.
-- [Seven deterministic contracts](test_v1_vertical_grid.py): passed in local Python 3.11.
-- [Machine research checkpoint](../state_journal/0099_CLEAN_V1_L1_SESSION_FIRST_RESEARCH_CYCLE001.json).
-- [Exact zipped source, tests, raw-tick experimental code and complete results](https://drive.google.com/file/d/16Lb-eus4mPvMJwxngEHds71wU1ufQJax/view).
+UTC-authoritative tick path, independently calibrated broker-server wall offset, and IANA Sydney/Tokyo/London/New York local clocks. Broker mapping requires at least 3 paired trusted UTC observations and fails closed on stale/discontinuous offsets; offline MT5 tester UTC cannot independently identify historical broker DST. Tested code is illustrative; live brokerage clock/lot/margin/latency not available.
 
-**L3/L4/L5/L6 trading behavior and L7 execution remain UNIMPLEMENTED/FAIL-CLOSED; this is NOT a profitable or deployable engine.** The source's proposed desk clocks are research approximations, not verified Coinexx trading-session hours. All 16,673,401 raw Jan/Feb Dukascopy quotes were used strictly as *new market inputs* for the three new context-screen hypotheses (no older derived mechanism or result reused). January/February derived research removed under Journal 0098 stays invalid. Raw Dukascopy and R9 SYNTH protected.
+## Files
 
-Highest first **research priority: L1** session intelligence with integrated L0 time root, L2 completed structure, L3 opportunity measurement, and L7 cost/risk envelope in the same machine. No single-EMA universal trading filter.
+- `v1_vertical_grid.py`: prior clean UTC tick/root/completed HTF context
+- `v1_session_broker_clock.py`: paired UTC↔broker server offset, DST, stale rejection
+- `v1_four_session_architecture.py`: one owner L0–L7 whole-funnel prototype (not production ready)
+- `test_v1_four_session.py`: 18 locally passed tests
+- `research_cycle003_sessions.py`: full original JAN/FEB 16,673,401 quote window research
+- `run_cycle003_integrated_replay.py`: six representative partial-quote, hypothetical-margin delayed Bid/Ask research runs
 
-Owner original V1 whitepaper and full conversation remain higher authority; every five human prompts re-read entire governing conversation.
+## Honest status
+
+**Not profitable, not MT5-certified, not ready for deployment.** Early $300 research slices lost heavily in January; February generated very few fills. The 75% original R9 Gamma HybridGate SYNTH daily qualified-opportunity floor is not demonstrated; actual broker contract and latency unknown. No system/profile is proven best. Raw Dukascopy data and original R9 SYNTH/REAL are untouched, prior contaminated source variants excluded.
+
+[Complete detailed report](../research_cycles/cycle003/CYCLE003_FOUR_SESSION_WHITEPAPER_RESEARCH_REPORT.md) · [Journal 0101](../state_journal/0101_CLEAN_V1_FOUR_SESSION_BROKER_CLOCK_FULL_SPINE_RESEARCH_CYCLE003.json) · [Full ZIP source and results](https://drive.google.com/file/d/1B7Z4nXr5rQzyURIMMtbzhUpXLOzbbBi1/view?usp=drivesdk)

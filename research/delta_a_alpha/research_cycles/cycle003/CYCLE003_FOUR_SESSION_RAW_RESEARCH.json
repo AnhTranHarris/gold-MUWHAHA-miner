@@ -1,0 +1,457 @@
+{
+  "scope": "ORIGINAL_DUKAS_RAW_ONLY_CLEAN_CYCLE003",
+  "claims": "MARKET_CONTEXT_DIAGNOSTICS_NOT_EXECUTABLE_EDGE",
+  "variants": [
+    "ALL",
+    "ACTIVITY",
+    "ACTIVITY_SPREAD",
+    "EXPANSION",
+    "COMPRESSION"
+  ],
+  "time": "Four DST-aware desk clocks and broker clock intentionally kept separate",
+  "important": "Quote count is not market traded volume; future 5m used only as out-of-sample response",
+  "01": {
+    "ticks": 9135062,
+    "windows": 5766,
+    "evaluation": {
+      "sessions": {
+        "SYDNEY": {
+          "ALL": {
+            "observed_windows": 1917,
+            "next_5m_range_mean": 6.96,
+            "next_5m_range_median": 4.817,
+            "next_5m_quote_spread_mean": 0.7896,
+            "prior_spread_mean": 0.8021,
+            "next_5m_abs_openclose_move_mean": 3.6768,
+            "next_range_lift_vs_all_pct": 0.0,
+            "participation_pct": 100.0
+          },
+          "COMPRESSION": {
+            "observed_windows": 641,
+            "next_5m_range_mean": 6.2016,
+            "next_5m_range_median": 4.067,
+            "next_5m_quote_spread_mean": 0.7573,
+            "prior_spread_mean": 0.7587,
+            "next_5m_abs_openclose_move_mean": 3.3108,
+            "next_range_lift_vs_all_pct": -10.9,
+            "participation_pct": 33.44
+          },
+          "ACTIVITY": {
+            "observed_windows": 910,
+            "next_5m_range_mean": 7.8899,
+            "next_5m_range_median": 5.565,
+            "next_5m_quote_spread_mean": 0.8074,
+            "prior_spread_mean": 0.8163,
+            "next_5m_abs_openclose_move_mean": 4.1746,
+            "next_range_lift_vs_all_pct": 13.36,
+            "participation_pct": 47.47
+          },
+          "ACTIVITY_SPREAD": {
+            "observed_windows": 411,
+            "next_5m_range_mean": 6.2838,
+            "next_5m_range_median": 5.01,
+            "next_5m_quote_spread_mean": 0.7276,
+            "prior_spread_mean": 0.7183,
+            "next_5m_abs_openclose_move_mean": 3.2175,
+            "next_range_lift_vs_all_pct": -9.72,
+            "participation_pct": 21.44
+          },
+          "EXPANSION": {
+            "observed_windows": 528,
+            "next_5m_range_mean": 6.8505,
+            "next_5m_range_median": 5.1385,
+            "next_5m_quote_spread_mean": 0.7537,
+            "prior_spread_mean": 0.747,
+            "next_5m_abs_openclose_move_mean": 3.5216,
+            "next_range_lift_vs_all_pct": -1.57,
+            "participation_pct": 27.54
+          }
+        },
+        "TOKYO": {
+          "ALL": {
+            "observed_windows": 2256,
+            "next_5m_range_mean": 6.6896,
+            "next_5m_range_median": 4.735,
+            "next_5m_quote_spread_mean": 0.7504,
+            "prior_spread_mean": 0.7518,
+            "next_5m_abs_openclose_move_mean": 3.42,
+            "next_range_lift_vs_all_pct": 0.0,
+            "participation_pct": 100.0
+          },
+          "ACTIVITY": {
+            "observed_windows": 1067,
+            "next_5m_range_mean": 7.6589,
+            "next_5m_range_median": 5.51,
+            "next_5m_quote_spread_mean": 0.7709,
+            "prior_spread_mean": 0.7713,
+            "next_5m_abs_openclose_move_mean": 3.9297,
+            "next_range_lift_vs_all_pct": 14.49,
+            "participation_pct": 47.3
+          },
+          "ACTIVITY_SPREAD": {
+            "observed_windows": 478,
+            "next_5m_range_mean": 6.7879,
+            "next_5m_range_median": 5.155,
+            "next_5m_quote_spread_mean": 0.7219,
+            "prior_spread_mean": 0.7061,
+            "next_5m_abs_openclose_move_mean": 3.4096,
+            "next_range_lift_vs_all_pct": 1.47,
+            "participation_pct": 21.19
+          },
+          "EXPANSION": {
+            "observed_windows": 693,
+            "next_5m_range_mean": 6.9636,
+            "next_5m_range_median": 5.19,
+            "next_5m_quote_spread_mean": 0.7445,
+            "prior_spread_mean": 0.7379,
+            "next_5m_abs_openclose_move_mean": 3.4365,
+            "next_range_lift_vs_all_pct": 4.1,
+            "participation_pct": 30.72
+          },
+          "COMPRESSION": {
+            "observed_windows": 696,
+            "next_5m_range_mean": 6.0105,
+            "next_5m_range_median": 4.1785,
+            "next_5m_quote_spread_mean": 0.736,
+            "prior_spread_mean": 0.7368,
+            "next_5m_abs_openclose_move_mean": 3.1052,
+            "next_range_lift_vs_all_pct": -10.15,
+            "participation_pct": 30.85
+          }
+        },
+        "LONDON": {
+          "ALL": {
+            "observed_windows": 2256,
+            "next_5m_range_mean": 7.8396,
+            "next_5m_range_median": 5.2,
+            "next_5m_quote_spread_mean": 0.726,
+            "prior_spread_mean": 0.7257,
+            "next_5m_abs_openclose_move_mean": 3.9662,
+            "next_range_lift_vs_all_pct": 0.0,
+            "participation_pct": 100.0
+          },
+          "ACTIVITY": {
+            "observed_windows": 1075,
+            "next_5m_range_mean": 9.0326,
+            "next_5m_range_median": 5.97,
+            "next_5m_quote_spread_mean": 0.7475,
+            "prior_spread_mean": 0.744,
+            "next_5m_abs_openclose_move_mean": 4.6484,
+            "next_range_lift_vs_all_pct": 15.22,
+            "participation_pct": 47.65
+          },
+          "ACTIVITY_SPREAD": {
+            "observed_windows": 420,
+            "next_5m_range_mean": 7.4728,
+            "next_5m_range_median": 5.2115,
+            "next_5m_quote_spread_mean": 0.7093,
+            "prior_spread_mean": 0.6927,
+            "next_5m_abs_openclose_move_mean": 3.8988,
+            "next_range_lift_vs_all_pct": -4.68,
+            "participation_pct": 18.62
+          },
+          "EXPANSION": {
+            "observed_windows": 695,
+            "next_5m_range_mean": 7.6185,
+            "next_5m_range_median": 5.87,
+            "next_5m_quote_spread_mean": 0.7014,
+            "prior_spread_mean": 0.6951,
+            "next_5m_abs_openclose_move_mean": 3.8226,
+            "next_range_lift_vs_all_pct": -2.82,
+            "participation_pct": 30.81
+          },
+          "COMPRESSION": {
+            "observed_windows": 710,
+            "next_5m_range_mean": 6.9928,
+            "next_5m_range_median": 4.8,
+            "next_5m_quote_spread_mean": 0.7106,
+            "prior_spread_mean": 0.7133,
+            "next_5m_abs_openclose_move_mean": 3.5243,
+            "next_range_lift_vs_all_pct": -10.8,
+            "participation_pct": 31.47
+          }
+        },
+        "NEW_YORK": {
+          "ALL": {
+            "observed_windows": 2205,
+            "next_5m_range_mean": 9.059,
+            "next_5m_range_median": 5.84,
+            "next_5m_quote_spread_mean": 0.766,
+            "prior_spread_mean": 0.7632,
+            "next_5m_abs_openclose_move_mean": 4.5464,
+            "next_range_lift_vs_all_pct": 0.0,
+            "participation_pct": 100.0
+          },
+          "ACTIVITY": {
+            "observed_windows": 974,
+            "next_5m_range_mean": 10.4682,
+            "next_5m_range_median": 7.035,
+            "next_5m_quote_spread_mean": 0.7746,
+            "prior_spread_mean": 0.7692,
+            "next_5m_abs_openclose_move_mean": 5.2707,
+            "next_range_lift_vs_all_pct": 15.56,
+            "participation_pct": 44.17
+          },
+          "ACTIVITY_SPREAD": {
+            "observed_windows": 428,
+            "next_5m_range_mean": 8.7563,
+            "next_5m_range_median": 6.0285,
+            "next_5m_quote_spread_mean": 0.7271,
+            "prior_spread_mean": 0.7089,
+            "next_5m_abs_openclose_move_mean": 4.587,
+            "next_range_lift_vs_all_pct": -3.34,
+            "participation_pct": 19.41
+          },
+          "COMPRESSION": {
+            "observed_windows": 754,
+            "next_5m_range_mean": 8.0594,
+            "next_5m_range_median": 5.1,
+            "next_5m_quote_spread_mean": 0.752,
+            "prior_spread_mean": 0.752,
+            "next_5m_abs_openclose_move_mean": 4.1555,
+            "next_range_lift_vs_all_pct": -11.03,
+            "participation_pct": 34.2
+          },
+          "EXPANSION": {
+            "observed_windows": 648,
+            "next_5m_range_mean": 8.9755,
+            "next_5m_range_median": 6.705,
+            "next_5m_quote_spread_mean": 0.7402,
+            "prior_spread_mean": 0.7305,
+            "next_5m_abs_openclose_move_mean": 4.31,
+            "next_range_lift_vs_all_pct": -0.92,
+            "participation_pct": 29.39
+          }
+        }
+      },
+      "desk_windows": {
+        "SYDNEY": 1929,
+        "TOKYO": 2268,
+        "LONDON": 2268,
+        "NEW_YORK": 2217
+      }
+    }
+  },
+  "02": {
+    "ticks": 7538339,
+    "windows": 5489,
+    "evaluation": {
+      "sessions": {
+        "SYDNEY": {
+          "ALL": {
+            "observed_windows": 1832,
+            "next_5m_range_mean": 10.0067,
+            "next_5m_range_median": 6.965,
+            "next_5m_quote_spread_mean": 1.1227,
+            "prior_spread_mean": 1.1446,
+            "next_5m_abs_openclose_move_mean": 4.8043,
+            "next_range_lift_vs_all_pct": 0.0,
+            "participation_pct": 100.0
+          },
+          "ACTIVITY": {
+            "observed_windows": 847,
+            "next_5m_range_mean": 11.8215,
+            "next_5m_range_median": 8.33,
+            "next_5m_quote_spread_mean": 1.2,
+            "prior_spread_mean": 1.224,
+            "next_5m_abs_openclose_move_mean": 5.5969,
+            "next_range_lift_vs_all_pct": 18.14,
+            "participation_pct": 46.23
+          },
+          "ACTIVITY_SPREAD": {
+            "observed_windows": 372,
+            "next_5m_range_mean": 9.9737,
+            "next_5m_range_median": 7.6985,
+            "next_5m_quote_spread_mean": 1.0606,
+            "prior_spread_mean": 1.0382,
+            "next_5m_abs_openclose_move_mean": 4.8301,
+            "next_range_lift_vs_all_pct": -0.33,
+            "participation_pct": 20.31
+          },
+          "EXPANSION": {
+            "observed_windows": 491,
+            "next_5m_range_mean": 10.6707,
+            "next_5m_range_median": 7.65,
+            "next_5m_quote_spread_mean": 1.0895,
+            "prior_spread_mean": 1.0632,
+            "next_5m_abs_openclose_move_mean": 5.1104,
+            "next_range_lift_vs_all_pct": 6.64,
+            "participation_pct": 26.8
+          },
+          "COMPRESSION": {
+            "observed_windows": 619,
+            "next_5m_range_mean": 8.1918,
+            "next_5m_range_median": 6.04,
+            "next_5m_quote_spread_mean": 1.0162,
+            "prior_spread_mean": 1.0222,
+            "next_5m_abs_openclose_move_mean": 3.975,
+            "next_range_lift_vs_all_pct": -18.14,
+            "participation_pct": 33.79
+          }
+        },
+        "TOKYO": {
+          "ALL": {
+            "observed_windows": 2148,
+            "next_5m_range_mean": 9.6338,
+            "next_5m_range_median": 6.6185,
+            "next_5m_quote_spread_mean": 1.0447,
+            "prior_spread_mean": 1.0478,
+            "next_5m_abs_openclose_move_mean": 4.7235,
+            "next_range_lift_vs_all_pct": 0.0,
+            "participation_pct": 100.0
+          },
+          "ACTIVITY": {
+            "observed_windows": 985,
+            "next_5m_range_mean": 10.7891,
+            "next_5m_range_median": 7.32,
+            "next_5m_quote_spread_mean": 1.0856,
+            "prior_spread_mean": 1.0842,
+            "next_5m_abs_openclose_move_mean": 5.2817,
+            "next_range_lift_vs_all_pct": 11.99,
+            "participation_pct": 45.86
+          },
+          "EXPANSION": {
+            "observed_windows": 632,
+            "next_5m_range_mean": 9.984,
+            "next_5m_range_median": 7.235,
+            "next_5m_quote_spread_mean": 1.02,
+            "prior_spread_mean": 1.0032,
+            "next_5m_abs_openclose_move_mean": 4.9397,
+            "next_range_lift_vs_all_pct": 3.64,
+            "participation_pct": 29.42
+          },
+          "COMPRESSION": {
+            "observed_windows": 685,
+            "next_5m_range_mean": 8.3812,
+            "next_5m_range_median": 6.007,
+            "next_5m_quote_spread_mean": 0.9932,
+            "prior_spread_mean": 0.9994,
+            "next_5m_abs_openclose_move_mean": 3.9742,
+            "next_range_lift_vs_all_pct": -13.0,
+            "participation_pct": 31.89
+          },
+          "ACTIVITY_SPREAD": {
+            "observed_windows": 425,
+            "next_5m_range_mean": 9.2619,
+            "next_5m_range_median": 6.58,
+            "next_5m_quote_spread_mean": 0.9772,
+            "prior_spread_mean": 0.9583,
+            "next_5m_abs_openclose_move_mean": 4.6197,
+            "next_range_lift_vs_all_pct": -3.86,
+            "participation_pct": 19.79
+          }
+        },
+        "LONDON": {
+          "ALL": {
+            "observed_windows": 2148,
+            "next_5m_range_mean": 9.9219,
+            "next_5m_range_median": 7.4215,
+            "next_5m_quote_spread_mean": 0.8859,
+            "prior_spread_mean": 0.8863,
+            "next_5m_abs_openclose_move_mean": 4.8652,
+            "next_range_lift_vs_all_pct": 0.0,
+            "participation_pct": 100.0
+          },
+          "ACTIVITY": {
+            "observed_windows": 972,
+            "next_5m_range_mean": 11.1607,
+            "next_5m_range_median": 8.1915,
+            "next_5m_quote_spread_mean": 0.9187,
+            "prior_spread_mean": 0.9169,
+            "next_5m_abs_openclose_move_mean": 5.541,
+            "next_range_lift_vs_all_pct": 12.49,
+            "participation_pct": 45.25
+          },
+          "ACTIVITY_SPREAD": {
+            "observed_windows": 376,
+            "next_5m_range_mean": 9.3571,
+            "next_5m_range_median": 6.575,
+            "next_5m_quote_spread_mean": 0.8489,
+            "prior_spread_mean": 0.831,
+            "next_5m_abs_openclose_move_mean": 4.7065,
+            "next_range_lift_vs_all_pct": -5.69,
+            "participation_pct": 17.5
+          },
+          "EXPANSION": {
+            "observed_windows": 654,
+            "next_5m_range_mean": 10.1174,
+            "next_5m_range_median": 7.7965,
+            "next_5m_quote_spread_mean": 0.8607,
+            "prior_spread_mean": 0.8572,
+            "next_5m_abs_openclose_move_mean": 5.0994,
+            "next_range_lift_vs_all_pct": 1.97,
+            "participation_pct": 30.45
+          },
+          "COMPRESSION": {
+            "observed_windows": 669,
+            "next_5m_range_mean": 8.6991,
+            "next_5m_range_median": 6.567,
+            "next_5m_quote_spread_mean": 0.8507,
+            "prior_spread_mean": 0.8533,
+            "next_5m_abs_openclose_move_mean": 4.1317,
+            "next_range_lift_vs_all_pct": -12.32,
+            "participation_pct": 31.15
+          }
+        },
+        "NEW_YORK": {
+          "ALL": {
+            "observed_windows": 2098,
+            "next_5m_range_mean": 10.0216,
+            "next_5m_range_median": 7.54,
+            "next_5m_quote_spread_mean": 0.8569,
+            "prior_spread_mean": 0.8541,
+            "next_5m_abs_openclose_move_mean": 4.8674,
+            "next_range_lift_vs_all_pct": 0.0,
+            "participation_pct": 100.0
+          },
+          "ACTIVITY": {
+            "observed_windows": 955,
+            "next_5m_range_mean": 11.0918,
+            "next_5m_range_median": 8.2,
+            "next_5m_quote_spread_mean": 0.8799,
+            "prior_spread_mean": 0.8729,
+            "next_5m_abs_openclose_move_mean": 5.546,
+            "next_range_lift_vs_all_pct": 10.68,
+            "participation_pct": 45.52
+          },
+          "ACTIVITY_SPREAD": {
+            "observed_windows": 432,
+            "next_5m_range_mean": 9.71,
+            "next_5m_range_median": 7.18,
+            "next_5m_quote_spread_mean": 0.8101,
+            "prior_spread_mean": 0.7941,
+            "next_5m_abs_openclose_move_mean": 4.9404,
+            "next_range_lift_vs_all_pct": -3.11,
+            "participation_pct": 20.59
+          },
+          "EXPANSION": {
+            "observed_windows": 660,
+            "next_5m_range_mean": 10.1881,
+            "next_5m_range_median": 7.9735,
+            "next_5m_quote_spread_mean": 0.8399,
+            "prior_spread_mean": 0.8325,
+            "next_5m_abs_openclose_move_mean": 5.0832,
+            "next_range_lift_vs_all_pct": 1.66,
+            "participation_pct": 31.46
+          },
+          "COMPRESSION": {
+            "observed_windows": 694,
+            "next_5m_range_mean": 8.7866,
+            "next_5m_range_median": 6.49,
+            "next_5m_quote_spread_mean": 0.8211,
+            "prior_spread_mean": 0.8215,
+            "next_5m_abs_openclose_move_mean": 4.0903,
+            "next_range_lift_vs_all_pct": -12.32,
+            "participation_pct": 33.08
+          }
+        }
+      },
+      "desk_windows": {
+        "SYDNEY": 1844,
+        "TOKYO": 2160,
+        "LONDON": 2160,
+        "NEW_YORK": 2110
+      }
+    }
+  }
+}

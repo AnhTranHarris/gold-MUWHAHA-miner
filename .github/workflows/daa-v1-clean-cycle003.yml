@@ -1,0 +1,19 @@
+name: DAA clean V1 four-session integrated tests
+on:
+  push:
+    branches: [delta-A-alpha]
+    paths:
+      - "research/delta_a_alpha/implementation/*.py"
+      - ".github/workflows/daa-v1-clean-cycle003.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contract-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: cd research/delta_a_alpha/implementation && python -m unittest -v test_v1_vertical_grid test_v1_four_session

@@ -1,11 +1,11 @@
 {
   "schema": "delta-a-alpha-v1-clean-research-state-v5",
   "branch": "delta-A-alpha",
-  "current_phase": "OWNER_PAUSED_RESEARCH__ONLY_COMPLETE_VERTICAL_GRID_MAY_AUTHORIZE_TRADING",
+  "current_phase": "CLEAN_V1_FOUR_DESK_L0_L7_RESEARCH_FUNNEL_BUILT__ECONOMICALLY_REJECTED_UNCERTIFIED",
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 100,
-    "latest_entry": "research/delta_a_alpha/state_journal/0100_OWNER_PAUSE_OPPORTUNITY_VS_QUALITY_ARCHITECTURE_CORRECTION.json"
+    "latest_sequence": 101,
+    "latest_entry": "research/delta_a_alpha/state_journal/0101_CLEAN_V1_FOUR_SESSION_BROKER_CLOCK_FULL_SPINE_RESEARCH_CYCLE003.json"
   },
   "owner_source_of_truth": {
     "whitepaper": "research/delta_a_alpha/whitepapers/DAA_V1_OWNER_GOOGLE_WHITEPAPER_FULL_VERBATIM_030.txt",
@@ -18,17 +18,21 @@
     "r9_real": "DO_NOT_MODIFY_OR_DELETE__ORIGINAL_REPORTS_AND_BENCHMARKS"
   },
   "engine": {
-    "status": "PARTIAL_L0_L1_L2_CAUSAL_CONTEXT_ONLY__ALL_TRADING_FAIL_CLOSED__OWNER_RESEARCH_PAUSE",
+    "status": "FOUR_DESK_FULL_SPINE_RESEARCH_PROTOTYPE__NOT_PROFITABLE_OR_DEPLOYABLE",
     "dir": "research/delta_a_alpha/implementation/",
-    "implementation_files": 2,
-    "performance_baseline": "NONE",
+    "implementation_files": 7,
+    "performance_baseline": "NONE_PROMOTED; 6 partial historical test variants mostly losses",
     "calendar_optimizer_allowed": false,
     "previous_Jan_Feb_mechanisms": "DELETED_FROM_ACTIVE_BRANCH_INVALID",
     "revive_from_git_history": false,
     "core": "research/delta_a_alpha/implementation/v1_vertical_grid.py",
-    "tests": "research/delta_a_alpha/implementation/test_v1_vertical_grid.py",
+    "tests": "research/delta_a_alpha/implementation/test_v1_four_session.py",
     "source_package": "https://drive.google.com/file/d/16Lb-eus4mPvMJwxngEHds71wU1ufQJax/view",
-    "trading_enabled": false
+    "trading_enabled": false,
+    "integrated_engine": "research/delta_a_alpha/implementation/v1_four_session_architecture.py",
+    "clock_calibration": "research/delta_a_alpha/implementation/v1_session_broker_clock.py",
+    "demo_simulation_only": true,
+    "research_package_url": "https://drive.google.com/file/d/1B7Z4nXr5rQzyURIMMtbzhUpXLOzbbBi1/view?usp=drivesdk"
   },
   "research_status": {
     "january": "INVALIDATED_DERIVED_ARTIFACTS_DELETED",
@@ -70,9 +74,9 @@
       "hourly_daily_opportunities"
     ]
   },
-  "first_incomplete_unit": "OWNER_ARCHITECTURAL_ALIGNMENT_REQUIRED_BEFORE_FURTHER_DEVELOPMENT",
-  "next_unit": "PAUSED_PENDING_EXPLICIT_OWNER_DIRECTION",
-  "restart_instruction": "HARD OWNER PAUSE J0100: STOP research and trade trials. Read full governing owner chat, original V1 whitepaper, and owner correction governance. L1 SESSION=OPPORTUNITY; L2 COMPLETED HTF/MTF=OPPORTUNITY+VOLUME; L3-L6=QUALITY refinement and lifecycle; L7=ONE physical capital/latency/execution gate. NEVER trade on L1 or L2 alone. The only active GitHub kernel is L0/L1/L2 context fail-closed. The chat-mentioned January/February $300 experiments are not evidence for full V1; do not restore old contaminated engines or turn these research prototypes into funded strategies. Retain protected R9 and Dukascopy. No further research until owner directs.",
+  "first_incomplete_unit": "CLEAN_V1_FOUR_DESK_RESEARCH_QUALITY_AND_COST_BREAKTHROUGH_NOT_YET_FOUND",
+  "next_unit": "CLEAN_V1_FOUR_DESK_RESEARCH_QUALITY_AND_COST_BREAKTHROUGH_NOT_YET_FOUND",
+  "restart_instruction": "Owner explicitly resumed research with four session-specific profiles across whole L0-L7. J0101 code is one clean prototype under implementation, no separate old branches. Original JAN/FEB Dukascopy raw used fresh as-is. 18 local deterministic tests passed, 6 PARTIAL history hypothetically funded tests were loss-making/insufficient volume. DO NOT PROMOTE/PORT; read whole original whitepaper, owner law, J0101 report and data; no real Coinexx broker spec or ping. Research must improve whole-system net, 75% R9 daily qualified opportunities AND <=175% R9 mean monthly actual trades without unsafe fills.",
   "previous_engine_reset_commit": "1420d0085716ed5eea26f60baf992de74695ccf6",
   "latency_tolerant_htf_scalping_owner_directive": {
     "status": "OWNER_RATIFIED_DESIGN_CONSTRAINT_NOT_ENGINE_PROFIT_CERTIFICATION",
@@ -123,5 +127,16 @@
     "chat_disclosed_300_account_trade_trials": "EXPLORATORY_PREMATURE_NOT_VALID_AS_COMPLETE_V1_RESULT",
     "owner_stopped_research": true,
     "no_code_change": true
+  },
+  "owner_four_session_program_0101": {
+    "status": "RESEARCH_BUT_NOT_PROFITABLE",
+    "four_desks_journal": "research/delta_a_alpha/state_journal/0101_CLEAN_V1_FOUR_SESSION_BROKER_CLOCK_FULL_SPINE_RESEARCH_CYCLE003.json",
+    "original_UTC_master_clock": true,
+    "broker_server_auto_calibration_requires_live_trusted_UTC": true,
+    "every_layer_session_configured": true,
+    "overlap_combines_desk_candidates_in_ONE_physical_governor": true,
+    "qualified_daily_75pct_floor": "FAIL_NOT_CERTIFIED",
+    "monthly_175pct_ceiling": "UNTESTED",
+    "not_mt5_certified": true
   }
 }
