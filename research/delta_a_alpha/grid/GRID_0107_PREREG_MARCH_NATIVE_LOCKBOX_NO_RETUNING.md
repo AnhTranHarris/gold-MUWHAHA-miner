@@ -1,0 +1,18 @@
+# GRID-0107 — March lockbox pre-registration; FROZEN BEFORE OPENING MARCH RAW QUOTES
+**Timestamp:** 2026-10-10. **Status:** preregistered, no March run yet.
+
+Scope: independent new three-month development search January+February train, April researched for selection; the candidate is now frozen for an untouched March raw Dukascopy tick validation. Creative pre-session grid mechanisms only; no L1/Vertical sessions, no physical funded trades, no Martingale, no original R9 entry direction imitation. R9 SYNTH March monthly reference = 40,985 completed entries, NOT a correct-direction answer key.
+
+**Candidate fixed in advance**:
+- Original as-of virtual grid genesis: gap=max($0.75,1.5×EWMA(0.001) source Bid/Ask spread), 7-second event cooldown, single event per source tick, K5=|mid(t)-mid_asof_300s|/max(spread(t),0.10) >= 2.
+- Train a small LightGBM *regression* model using Jan and Feb K5 events, valid 600-second forward labels only (labels NEVER available at inference). Training label=(hypothetical future-Bid minus current-Ask BUY markout minus current-Bid plus future-Ask SELL markout)/2 = future midpoint minus current midpoint, clipped to [-40,+40] in USD.
+- Training parameters frozen: `objective=regression`, `learning_rate=0.025`, `num_leaves=8`, `min_data_in_leaf=450`, `feature_fraction=0.9`, `num_threads=4`, `seed=42`, `num_boost_round=80`. Features strictly recent quote midpoint displacements at 5/15/30/60/120/300/600/900/1800s, virtual crossing/event flow over 30/60/300/600s, current spread/gap, event interval, normalized momentum/acceleration and as-of crossing genealogy. **NO session clock, calendar month, bidirectional future label, or quote side hidden at inference.**
+- Decision fixed: if |forecast(mid return at 600s)| >= current source spread, choose predicted BUY/SELL sign; otherwise abstain. Independently report stronger 2×spread confidence cut, not reselect it if original 1× gate fails.
+- March outcome: first original source quote at or after event+600s (valid if within 10 seconds), with correct Buy Ask→Bid and Sell Bid→Ask. Explicit sensitivity subtract $0.02 round-trip fee per 0.01 lot (1oz) from each MARKOUT; this is **not actual funded P&L**.
+- Delayed entry diagnostic: replace event-time entry Ask/Bid by first source quote at or after event+250ms or +1000ms, require quote within 5s; evaluate against the same 600s future. No broker-fills guarantee, margin or drawdown accounting.
+
+**Mandatory no-cherry-pick March report**: complete source tick and source file SHA, raw event count, broad K5 event count, count/40,985 R9 monthly ratio, candidate confidence-tier counts, mean/median quote-side markout, positive fraction, positive/worst UTC quote-active days, fee sensitivity, delayed-price sensitivity, day-bootstrap descriptive interval, and sample dependence. Report all failures. Do not make any changes after March evaluation to promote that holdout. April was used for model selection, so its positive results are only development validation and not blind evidence.
+
+Current owner objective remains ≥75% of corresponding R9 SYNTH daily **qualified executable** opportunities (raw events do NOT satisfy), actual monthly fills ≤175% R9 SYNTH mean, positive economic expectancy after execution, safety, future $100k discovery account once fully integrated, $100–$300 eventual commercial target. This pre-L1 stage cannot certify funded requirements.
+
+The exact local source snapshots `prepare_events.py`, `train_causal_direction.py` and this protocol will accompany the complete evidence package. Keep original raw files, retired contaminated Jan/Feb artifacts, R9 benchmark and whitepaper untouched.
