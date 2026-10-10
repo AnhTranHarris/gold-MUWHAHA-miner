@@ -1,7 +1,0 @@
-# FEB047 restart — READ FIRST
-1. Read literal unabridged V1 owner whitepaper L0–L7 and current GitHub `delta-A-alpha/CURRENT_STATE.json` and state journal 0064+.
-2. FEB046 from timeout was complete, GitHub journal 0064, archive verified. All 70 FEB046 recovery/prevention/heat screens failed exact <$10k DD.
-3. FEB047 newly tests causally observed price retreat and *profitable only* S22/S25 reduction. Independent quote PnL and *all-quote* equity reconstructed; 736 evaluations incl repeat and strict rate audits.
-4. Frozen FEB045+FEB047 counterfactual selected: profit +206303.048 GL-7615.393 PF28.090 DD17183.829 25443 trades; balanced +201230.309 GL-7615.393 PF27.424 DD16215.592 25443; lowerDD +200329.84 GL-8721.152 PF23.971 DD15741.936 25313. ALL miss DD<10000. 1536 peak positions still.
-5. Source replay only; rate audit rejects any case with >10 combined baseline entries + supplemental exits / UTC second. Native Watchdog/recovery full V1 remains unfinished. February-fitted and not promoted. No date/month features used in execution rules. Three preserved ledgers in FEB047 ZIP; `FEB047_INDEPENDENT_QA.json`.
-6. Next engineering gate remains `DAA_JAN1_FULL_V1_PHYSICAL_FUNDED_GENEALOGY_REPAIR_AND_PARITY_033`: fully funded source regeneration, original L5/L6, L7 margin and broker parity. Protect V1 owner whitepaper, original EA, production delta; August sealed, Sep reserved.
