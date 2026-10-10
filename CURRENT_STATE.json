@@ -1,11 +1,11 @@
 {
   "schema": "delta-a-alpha-v1-clean-research-state-v5",
   "branch": "delta-A-alpha",
-  "current_phase": "GRID0105_PRE_VERTICAL_CREATOR_GRID_ASOF_MOTION_COST_CAPACITY_RESEARCH_PROVISIONAL",
+  "current_phase": "GRID0106_APRIL_THREE_MONTH_NESTED_CREATOR_GRID_MOTION_TIERS_PRESESSION_NO_TRADING",
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 105,
-    "latest_entry": "research/delta_a_alpha/state_journal/0105_GRID_ONLY_INTRINSIC_MOTION_COST_CAPACITY_RESEARCH.json"
+    "latest_sequence": 106,
+    "latest_entry": "research/delta_a_alpha/state_journal/0106_GRID_ONLY_APRIL_NESTED_COST_MOTION_TWO_TIER_SHADOW_RESEARCH.json"
   },
   "owner_source_of_truth": {
     "whitepaper": "research/delta_a_alpha/whitepapers/DAA_V1_OWNER_GOOGLE_WHITEPAPER_FULL_VERBATIM_030.txt",
@@ -74,9 +74,9 @@
       "hourly_daily_opportunities"
     ]
   },
-  "first_incomplete_unit": "GRID_ONLY_DIRECTION_EXPECTANCY_ON_RAW_BIDASK_AND_NEW_LOCKBOX_MONTH_BEFORE_SESSION",
-  "next_unit": "GRID_ONLY_DIRECTION_EXPECTANCY_ON_RAW_BIDASK_AND_NEW_LOCKBOX_MONTH_BEFORE_SESSION",
-  "restart_instruction": "J0105: Read `research/delta_a_alpha/grid/GRID_0105_PRESESSION_MOVEMENT_CAPACITY_CROSSMONTH_RESEARCH.md` and full original owner whitepaper. GRID0104 adaptive unique quote crossing K5 test stage=historical January-February original raw Dukascopy. K5 based strictly on price 300s ago and CURRENT spread, threshold >=2 retains Jan 42,771 and Feb 41,230 raw events, improves future abs 120s motion >2spreads in January early/late and Feb (Feb 61.803->63.686%). Provisional UTC+2 Jan R9 report count >=75% on 21/21 days RAW not qualifying funded acceptance; no unchanged blind month. One $100k future research account when funded, not used now; $100–$300 later preferred target. All early/late directional and 16 two-stage continuation/retracement hypotheses failed to show positive after source Bid/Ask expectancy. NO profitable entry direction, no portfolio sim, NO session layer permitted yet, no no-stop grid/martingale. 7 deterministic tests pass after corrected confirmation direction sign. Reproducible complete scripts JSON in Drive ZIP https://drive.google.com/file/d/1aFkGaZ3tZwK9aDmKFBtQCbResnYqw0uW/view. Raw R9, Dukascopy, owner whitepaper untouched. Next: preregister independent month, improve grid-only directional expectancy before L1.",
+  "first_incomplete_unit": "GRID_ONLY_POSITIVE_AFTER_BIDASK_DIRECTION_WITH_NEW_MONTH_LOCKBOX_AND_HARD_DAILY_FUNDED_VELOCITY_VALIDATION",
+  "next_unit": "GRID_ONLY_POSITIVE_AFTER_BIDASK_DIRECTION_WITH_NEW_MONTH_LOCKBOX_AND_HARD_DAILY_FUNDED_VELOCITY_VALIDATION",
+  "restart_instruction": "J0106 confirmed APR 2026 raw Dukascopy XAUUSD 7,470,570 original ordered bid/ask ticks, original SHA30375098f62aed6cabc32ec6b67c57c20baec9bbe1ce0a204e09806c1ec0f. Three months JAN9.135m FEB7.538m APR7.471m =24.144m source quotes. Still creator-derived pure stage-zero virtual grid gap max(.75,1.5*EWMA asof spread), 7second cooldown. No L1 session/HTF/L3-L7, no martingale or physical orders. New nested K5>=2 broad-event tier (April 38,740 horizon-valid raw events), K5>=4 higher-movement tier (April 27,527) improves 120s abs midpoint future move >2spread from 59.0% unfiltered to 64.32% Apr; Jan67.68 Feb66.38. K4 strict fails JAN RAW same-day 75pct R9 on 10/21 days; broad K2 passes 21/21 under UNCERTIFIED UTC+2 report mapping. These raw counts are NOT executable/qualified trade count. Direction markouts remain negative after native spread even before execution fees, so NEVER promote to profitable system. 9 deterministic tests pass; full report in research/delta_a_alpha/grid/GRID_0106_APRIL_THREE_MONTH_PRESESSION_GRID_REPORT.md ; full source ZIP https://drive.google.com/file/d/1CIXkJaBmGC9JQ7oTEM8Y1s6SvIzA_VF-/view. April now research-inspected, NOT blind holdout. $100k later hypothetical funded research setting; $100-300 eventual preference, not early hard. No source raw/R9 changes. Next stage must obtain positive cross-month after-bidask direction and independent lockbox before session activation.",
   "previous_engine_reset_commit": "1420d0085716ed5eea26f60baf992de74695ccf6",
   "latency_tolerant_htf_scalping_owner_directive": {
     "status": "OWNER_RATIFIED_DESIGN_CONSTRAINT_NOT_ENGINE_PROFIT_CERTIFICATION",
@@ -277,5 +277,37 @@
     "economic_edge_certified": false,
     "risk_research_starting_capital_usd": 100000,
     "code_source_in_drive_archive": true
+  },
+  "grid0106": {
+    "status": "RETAIN_TWO_NESTED_SHADOW_TIERS_ONLY_NO_PROVEN_DIRECTIONAL_EDGE",
+    "report": "research/delta_a_alpha/grid/GRID_0106_APRIL_THREE_MONTH_PRESESSION_GRID_REPORT.md",
+    "complete_source_drive": "https://drive.google.com/file/d/1CIXkJaBmGC9JQ7oTEM8Y1s6SvIzA_VF-/view",
+    "jan_feb_apr_source_quotes_total": 24143971,
+    "april_original_bidask_quotes": 7470570,
+    "original_april_gz_sha256": "30375098f62aed6cabc32ec6b67c57c20baec9b6d9be1ce0a204e09806c1ec0f",
+    "april_raw_grid_events": 51781,
+    "april_k5_breadth_events": 38740,
+    "april_k5_strict_high_motion_future_valid_events": 27527,
+    "april_r9_synth_comparison_monthly_entries": 31758,
+    "april_strict_tier_future_motion_gt_2x_spread_pct": 64.322,
+    "april_unfiltered_grid_future_motion_gt_2x_spread_pct": 59.004,
+    "april_daily_motion_capacity_improvement_positive_days": "25/25",
+    "threshold_formula": "K5=abs(mid now-mid asof 300s)/max(observed source spread,0.10 USD); broad>=2 strict>=4",
+    "jan_provisional_r9_same_day_75pct_RAW_count_result": {
+      "broad": "21/21",
+      "strict": "11/21"
+    },
+    "actual_funded_trades": 0,
+    "no_validated_profitable_direction": true,
+    "no_session_layer": true,
+    "small_account_eventual_goal_usd": [
+      100,
+      200,
+      300
+    ],
+    "future_default_hypothetical_funded_research_balance_usd": 100000,
+    "local_deterministic_tests_passed": 9,
+    "full_original_raw_and_r9_unchanged": true,
+    "april_now_inspected_discovery_not_blind": true
   }
 }
