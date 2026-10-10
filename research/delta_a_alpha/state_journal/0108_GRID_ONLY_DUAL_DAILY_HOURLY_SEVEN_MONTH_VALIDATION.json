@@ -1,0 +1,123 @@
+{
+  "schema": "DAA_GRID0108_PRESESSION_ORIGINAL_JAN_JUL_HOURLY_DAILY_AUDIT",
+  "sequence": 108,
+  "date": "2026-10-10",
+  "predecessor": 107,
+  "owner": "Raise performance toward hourly and daily consistency, leverage creative reconstructible mechanism combinations, keep master OmegaFX-derived grid before session and Vertical L1–L7",
+  "locked_before_first_source_read": [
+    {
+      "month": "2026-06",
+      "path": "research/delta_a_alpha/grid/GRID_0108_JUNE_LOCKBOX_PREREG_HOURLY_VS_DAILY_GRID_ONLY_20261010.md",
+      "commit": "7aa1b17757b1552653e39ad2bde28d188363f0c7"
+    },
+    {
+      "month": "2026-07",
+      "path": "research/delta_a_alpha/grid/GRID_0108_JULY_PREREG_INTRINSIC_PRECISION_TIER_20261010.md",
+      "commit": "50e20a3c9bad6001492acf2d5b2e0af001e235ec"
+    }
+  ],
+  "original_quote_evidence": {
+    "months": "January to July 2026",
+    "total_original_bidask_ticks": 57527562,
+    "june": {
+      "compressed_filename": "XAUUSD_DUKAS_2026_06_ticks.csv(3).gz",
+      "original_quotes": 8201406,
+      "source_sha256": "34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2",
+      "original_grid_events": 57277
+    },
+    "july": {
+      "compressed_filename": "XAUUSD_DUKAS_2026_07_ticks.csv(2).gz",
+      "original_quotes": 7415841,
+      "source_sha256": "e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7",
+      "original_grid_events": 40952
+    },
+    "raw_unchanged": true,
+    "jan_may_original_source_sha": "See journal0107",
+    "august_sealed": true
+  },
+  "frozen_raw_grid_formula": "Virtual 7s output-cooldown grid step max($0.75,1.5*EWMA_spread alpha=.001); K5=abs(current mid - last known asof t-300s mid)/max(current spread,$0.10). No orders.",
+  "tiers": {
+    "broad": "K5>=2, 297947 raw Jan-Jul events",
+    "high_motion": "K5>=4, 218132 raw events",
+    "precision_exploratory": "K5>=4 and current spread/current grid step<=0.65, 80565 raw events; NOT promoted as superior true price movement, strict false-hour support losses"
+  },
+  "performance_comparator": {
+    "original_R9_SYNTH_completed_entries_janjul": 219342,
+    "per_day_75pct_qualified_executable_coverage_status": "NOT_TESTED_NO_POSITION_BROKER_CAPITAL_SIM",
+    "max_175pct_month_filled_gate_status": "NOT_TESTED_ZERO_TRADES"
+  },
+  "metrics": {
+    "validity": "Only offline future unsigned 120s abs midpoint move >2*entry_spread",
+    "high_tier_daily_positive_regular_UTC_days": 150,
+    "high_tier_daily_eligible_regular_UTC_days": 150,
+    "high_tier_hourly_positive_supported": 1943,
+    "high_tier_hourly_supported": 3214,
+    "total_baseline_hourly_eligible": 3332,
+    "precision_hourly_positive_supported": 2044,
+    "precision_hourly_supported": 2780,
+    "precision_unsupported_baseline_hours": 552,
+    "precision_percent_supported_hourly_improvement": 73.53,
+    "precision_percent_all_baseline_hourly_improvement": 61.34,
+    "june_high_tier": {
+      "daily_positive": "22/22",
+      "hourly_positive": "294/474",
+      "source_baseline_abs120_over_2spreads_pct": 60.9109,
+      "high_tier_pct": 65.4122
+    },
+    "june_mature_feedback_test": {
+      "label": "prior 60m success with 130s outcome-maturity lag",
+      "high_tier_hourly": "294/474",
+      "adaptive_hourly": "275/460",
+      "decision": "REJECT as hourly improvement"
+    },
+    "july_high_tier": {
+      "daily_positive": "23/23",
+      "hourly_positive": "257/453",
+      "baseline_relative_spread_move_pct": 50.8067,
+      "high_relative_spread_move_pct": 57.5016,
+      "baseline_fixed2_usd_move_pct": 32.9463,
+      "high_fixed2_usd_move_pct": 39.2872
+    },
+    "july_precision_holdout": {
+      "daily_relative_spread_move_positive": "23/23",
+      "relative_spread_move_pct": 60.9189,
+      "positive_supported_hours": 239,
+      "supported_hours": 361,
+      "original_baseline_eligible_hours": 492,
+      "unsupported_hours": 131,
+      "positive_all_eligible_pct": 48.5772,
+      "fixed2_usd_move_pct": 38.885,
+      "high_tier_fixed2_move_pct": 39.2872,
+      "shadow_reversal_mean_quote_side_120s_usd": -0.5037,
+      "raw_events": 7140,
+      "original_r9_synth_july_monthly_entries": 24382
+    }
+  },
+  "research_decision": {
+    "promote": "ONLY current K5>=4 motion-capacity annotation as pre-session research feature; keep K5>=2 broad source",
+    "not_promote": "0.65 precision overlay as distinct high-throughput profitable strategy; no proven hourly all-hour or actual profitability, note definition mathematically easier under smaller spread",
+    "directional_result": "No stable after-native-bidask BUY/SELL expectancy. July 120s quote-side reversion net negative before fees",
+    "reality": "All reported hour/day wins are unsigned MOVEMENT CAPACITY UPLIFT, not profitable hours/days",
+    "broker_sessions_activated": false,
+    "capital_account_funded": false,
+    "traditional_martingale": false
+  },
+  "tests": {
+    "deterministic_passed": 10,
+    "replay_source_exact_match": "Portable exact July all-source event fields against prior 0107 scanner, 40952 events",
+    "invariants": [
+      "No future label in pre-event K/price-cell feature",
+      "130s embargo on prior mature event label feedback",
+      "Unsupported hours count against all-eligible hourly denominator",
+      "Absolute $1.5 and $2 controls not spread-dependent"
+    ]
+  },
+  "source_code_proof": {
+    "drive_zip": "https://drive.google.com/file/d/1TeMWzdLV3KQTeMSNOJCBMh-HrlmwyyCW/view",
+    "sha256_zip": "dc03dac3995e7db9a2c1a29a05f068dc8e1be7b554ca3d6337cdeb305b050c88",
+    "markdown_github": "research/delta_a_alpha/grid/GRID_0108_SEVEN_MONTH_HOURLY_AND_DAILY_RESEARCH_REPORT.md",
+    "drive_report": "https://drive.google.com/file/d/1G7dcdAF1lmluOPENKfXlQdHcoHZDkmOb/view",
+    "file_count": 26
+  },
+  "next": "Do not conflate movement-capacity lift with profitable trading. Investigate truly correct after-native Bid/Ask direction and hourly risk-free opportunity availability via causal grid microstructure, then independent holdout (August remains sealed until owner unseals); only later four-session clock-aware Vertical L1–L7 funded implementation. R9 daily trade-count ledger still needed."
+}
