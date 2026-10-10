@@ -43,6 +43,18 @@ User requires independent optimization of the original OmegaFX/MegaJoctan Python
 ## Reproducibility
 
 The following source and exact outputs were created and locally tested during the current turn:
-`pre_session_cycle0104.py`, `directional_oracle_audit.py`, `frozen_february_validation.py`, `swing_hysteresis_falsification.py`, `breakout_confirmation.py`, `breakout_scanner.py`, `test_grid0104_invariants.py`, scenario summary JSON, original 320-row per-feature CSV and event tape excerpts. 12/12 deterministic tests passed. They were packaged as `GRID0104_REPRODUCIBLE_PRESESSION_GRID_RESEARCH.zip`, SHA256 `9a4c698134def80afd2e362c4e42d71a07054d2aec5dbb7700fead46d89f58fc` in the current conversation; NO protected market inputs embedded. This GitHub report is self-contained but is not a claim that the ZIP is stored in GitHub.
+`pre_session_cycle0104.py`, `directional_oracle_audit.py`, `frozen_february_validation.py`, `swing_hysteresis_falsification.py`, `breakout_confirmation.py`, `breakout_scanner.py`, `test_grid0104_invariants.py`, scenario summary JSON, original 320-row per-feature CSV, first-passage prediction and event tape excerpts. 12/12 deterministic tests passed. They were packaged as `GRID0104_REPRODUCIBLE_PRESESSION_GRID_RESEARCH.zip`, SHA256 `0002706a77d45a58f2a7d756ca31216fcfd7ec4fda130288e6dde7824d328af1` in the current conversation; NO protected market inputs embedded. This GitHub report is self-contained but is not a claim that the ZIP is stored in GitHub.
 
 External sources to reproduce hypotheses (not evidence of strategy profits): https://github.com/MegaJoctan/omegafx-youtube-shared-files/tree/main/Python%20Grid%20Bot , https://www.mql5.com/ja/articles/8390 , https://www.mql5.com/ja/articles/7013 , https://www.mql5.com/en/articles/13845 , https://www.reddit.com/r/algotrading/comments/1gkv4th/grid_bot/ , https://www.reddit.com/r/algotrading/comments/1mpxpq6 .
+
+
+## Additional hypothesis 8 — first-passage price direction, independently falsified
+
+A standalone $0.75 virtual-grid **first-passage prediction** was implemented and evaluated on original tick-level Jan/Feb Mid paths: label which *future* symmetric ±$0.75 barrier is crossed first within predeclared 30s/120s. Predictor receives only prior 1/2/5/15/60/180s bid/ask displacements, source spread change, prior quote-update intensity, virtual rung and initial grid direction. No future barrier label enters a predictor. January 1–15 trained, January 16–31 held out, February independent frozen application. No sessions, no funded order, no profit ledger.
+
+| Time to first ±$0.75 source-mid barrier | Jan later model | Feb frozen model | Feb naive continuation | Feb majority direction |
+|---|---:|---:|---:|---:|
+| 30 seconds | 51.31% | 51.23% | **52.05%** | 50.57% |
+| 120 seconds | 51.56% | 51.01% | **51.60%** | 50.52% |
+
+February 30s has 54,037 resolved labels, median passage time 4,104ms; 120s 60,242 labels, median 5,044.5ms. **The more complex causal predictor performs WORSE than simple grid continuation in independent February**, so it does not justify promotion. First passage on future midpoint is not an executable entry profit, and may not cover ~$0.70 native event spread. Only $0.75 barriers were completed; wider-barrier jobs were not completed and have no certified result. Exact Python `grid0104_first_passage.py` and JSON `GRID0104_FIRST_PASSAGE_JAN_FEB.json` are in the revised 19-file conversation ZIP, SHA256 `0002706a77d45a58f2a7d756ca31216fcfd7ec4fda130288e6dde7824d328af1`. Full revised conversation report SHA256 `48aeddd89b7d432d7f62a05c45c6ed05f4a2bfbfc0fe49eb56d3b861cadb4964`.
