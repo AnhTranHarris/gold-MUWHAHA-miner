@@ -1,0 +1,27 @@
+name: DAA033 C2D3R timeout-safe Jan Feb original source paid L7 replay supervisor
+on:
+  pull_request:
+    paths:
+      - 'research/delta_a_alpha/implementation/v1_033_phase_c2d2/**'
+      - '.github/workflows/daa-033-c2d3r-autorecover-original-paid-ledger-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-native-jan037-heartbeat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: research/delta_a_alpha/implementation/v1_033_phase_c2d2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact original numpy pandas dependencies
+        run: python -m pip install 'numpy>=1.24,<3' 'pandas>=2,<3'
+      - name: Compile original native JAN037 L3 to funded L7 bridge
+        run: python -m py_compile original_jan037_heartbeat50_online_033.py original_50ms_funded_bridge_033.py original_jan039_source_owner_adapter_033.py original_monthblind_segmented_l7_replay_033.py original_verified_quote_tape_index_033.py run_original_jan_feb_indexed_funded_economics_033.py audit_full_jan_feb_native_source_funded_033.py recover_original_jan_feb_funded_replay_033.py test_full_jan_feb_native_funded_economics_033.py test_recover_original_jan_feb_funded_replay_033.py
+      - name: Inherited source-native funded engine contracts and 13 new crash-timeout tamper ledger tests
+        run: python -m unittest -v test_original_119_multi_parent_033c2c test_funded_084_l7_bridge_033c2d2 test_c2d3_queue_stress_033 test_c2d3b_real_quote_oracle_033 test_c2d3b_funded_causal_ab_033 test_original_131c_source_parity_033 test_completed_htf_roles_033 test_original_131d_identity_smoke_033 test_source_native_s26_s27_033 test_frozen_jan039_reference_033 test_feb045_source_native_context_033 test_feb045_original_source_manifest_033 test_feb045_heat_feb047_queue_033 test_feb045_feb047_original_source_integrity_033 test_source_stmr_completed_ema_033 test_source_jan038_feb042_online_033 test_original_jan038_feb042_source_sha_033 test_original_jan037_feb041_entry_tape_oracle_033 test_original_jan037_heartbeat50_online_033 test_original_50ms_funded_bridge_033 test_original_jan039_source_owner_adapter_033 test_original_monthblind_segmented_l7_replay_033 test_original_verified_quote_tape_index_033 test_full_jan_feb_native_funded_economics_033 test_recover_original_jan_feb_funded_replay_033
