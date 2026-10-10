@@ -1,0 +1,12 @@
+name: Delta Alpha Clean Vertical CI
+on: [push, workflow_dispatch]
+jobs:
+  clean-core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test clean V1
+        run: cd research/delta_a_alpha/implementation && python -m unittest -v test_v1_vertical_grid
