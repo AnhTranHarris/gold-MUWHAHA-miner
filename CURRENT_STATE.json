@@ -1,11 +1,11 @@
 {
   "schema": "delta-a-alpha-v1-clean-research-state-v5",
   "branch": "delta-A-alpha",
-  "current_phase": "GRID0107_PRE_VERTICAL_FIVE_MONTH_GRID_105_OF_105_WEEKDAY_UNSIGNED_MOVEMENT_CAPACITY__DIRECTION_NOT_CERTIFIED",
+  "current_phase": "GRID0108_PRESESSION_JAN_JUL_SEVEN_MONTH_HOURLY_DAILY_NATIVE_ORIGINAL_TICK_RESEARCH__NO_FUNDED_EDGE",
   "state_journal": {
     "authority": "AUTHORITATIVE_RESTART_CURSOR",
-    "latest_sequence": 107,
-    "latest_entry": "research/delta_a_alpha/state_journal/0107_GRID_ONLY_MARCH_MAY_LOCKBOX_ALL_WEEKDAYS_MOVEMENT_CAPACITY.json"
+    "latest_sequence": 108,
+    "latest_entry": "research/delta_a_alpha/state_journal/0108_GRID_ONLY_DUAL_DAILY_HOURLY_SEVEN_MONTH_VALIDATION.json"
   },
   "owner_source_of_truth": {
     "whitepaper": "research/delta_a_alpha/whitepapers/DAA_V1_OWNER_GOOGLE_WHITEPAPER_FULL_VERBATIM_030.txt",
@@ -74,9 +74,9 @@
       "hourly_daily_opportunities"
     ]
   },
-  "first_incomplete_unit": "GRID_ONLY_SIGNED_DIRECTION_AFTER_REAL_BIDASK_AND_INDEPENDENT_JUN_JUL_CROSSMONTH_VALIDATION",
-  "next_unit": "GRID_ONLY_SIGNED_DIRECTION_AFTER_REAL_BIDASK_AND_INDEPENDENT_JUN_JUL_CROSSMONTH_VALIDATION",
-  "restart_instruction": "J0107 is authoritative current checkpoint. Read GRID0107 report research/delta_a_alpha/grid/GRID_0107_FIVE_MONTH_PRESESSION_ALL_WEEKDAYS_MOTION_CAPACITY_RESEARCH.md, prereg March+May, and Journal107; original Jan-May 41,910,315 Dukascopy native quotes, K5>=4 high-motion tier improved 120-second >2-source-spread absolute movement likelihood on 105/105 Monday-Friday UTC days; FULL inclusion shows 120/123 eligible quote-active UTC dates positive, 1 Sunday tie, 2 negative May Sunday partial sessions. Neither is 105/105 profitable trades: no positive after-bidask directional signal passed. Frozen Jan-Feb LGB that looked favorable on April LOST in March (-1.313 hypothetical 600s average, 11/27 positive UTC days) and MUST NOT be reused as accepted. Broad K5>=2 raw events Jan42,782 Feb41,233 Mar63,870 Apr38,774 May39,185; raw != qualified executable daily 75% success. No sessions, no MT5 or funded portfolio; $100k later discovery capital only, fixed .01 lot future, no martingale. Reproduction ZIP with all scripts, 11 tests and daily JSON https://drive.google.com/file/d/1wEVq6YWJ3ZZl_eGW4xCXBZEIJo_UizWL/view. Original source quote files and R9 benchmarks unchanged, August still sealed; June/July reserved for later fully preregistered direction lockbox. Next: target positive reliable SIGNED grid-only quote-side markout at R9-like volume WITHOUT inventing all-day profit, then sessions may adapt separate four clocks.",
+  "first_incomplete_unit": "GRID_ONLY_POSITIVE_AFTER_BIDASK_DIRECTIONAL_EXPECTANCY_AND_HOURLY_END_TO_END_PROFIT_FEASIBILITY_NOT_REACHED",
+  "next_unit": "GRID_ONLY_POSITIVE_AFTER_BIDASK_DIRECTIONAL_EXPECTANCY_AND_HOURLY_END_TO_END_PROFIT_FEASIBILITY_NOT_REACHED",
+  "restart_instruction": "J0108 CURRENT STATE LOCK: Original 57,527,562 JAN-JUL Dukascopy native Bid/Ask quotes, June and July GitHub lockbox PREREGS committed before opening these raw sources. Frozen source creator-derived virtual 7sec grid gap max(0.75,1.5*source spread EWMA), K5>=2 broad=297,947 Jan-Jul RAW events, K5>=4 strict=218,132, as-of cost/spread gap<=0.65 narrow=80,565. K4 unsigned 120sec abs future midpoint >2x current spread uplift 150/150 MON-FRI eligible dates; NOT 150 profitable days. Hourly K4 1943/3214 SUPPORTED hours positive, 1943/3332 all baseline eligible. Narrow experimental spread/gap 0.65 = 2044/2780 SUPPORTED hours positive, but 552 baseline hours unsupported, 2044/3332 total; first independently preregistered July only 239/361 supported hours improved and 239/492 all baseline eligible, 7,140 July raw events vs R9 SYNTH July 24,382. Anti-tautology fixed $2 July future absolute move K4 39.2872% vs precision 38.885%; narrow not a verified stronger underlying price motion detector. JUL precision mean creator-style 120sec hypothetical after Bid/Ask markout -$0.5037 BEFORE fees; NO validated positive direction or funded trading. Complete source/tests/ALL 3436 hourly UTC dates/181 daily UTC dates ZIP https://drive.google.com/file/d/1TeMWzdLV3KQTeMSNOJCBMh-HrlmwyyCW/view, GitHub report research/delta_a_alpha/grid/GRID_0108_SEVEN_MONTH_HOURLY_AND_DAILY_RESEARCH_REPORT.md; 10 deterministic tests passed, exact original July full-source event array field match. Raw Dukascopy + R9 benchmark protected, NO L1 session, HTF, L3-L7 capital, no martingale; $100k later hypothetical research; August SEALED. NEXT: correct SIGNED direction after native Bid/Ask, economically viable hourly trading, volume/risk, then owner approval for four-session research.",
   "previous_engine_reset_commit": "1420d0085716ed5eea26f60baf992de74695ccf6",
   "latency_tolerant_htf_scalping_owner_directive": {
     "status": "OWNER_RATIFIED_DESIGN_CONSTRAINT_NOT_ENGINE_PROFIT_CERTIFICATION",
@@ -363,5 +363,49 @@
     "tests_passed": 11,
     "R9_performance_and_trading_profitability_claim": false,
     "original_data_protected": true
+  },
+  "grid0108": {
+    "status": "RETAIN_BROAD_GRID_PLUS_HIGH_MOTION_RAW_FEATURE_ONLY; ULTRA_PRECISION_0p65_EXPERIMENTAL_NOT_FUNDED",
+    "original_native_jan_jul_ticks": 57527562,
+    "months_jan_jul": 7,
+    "june_source_sha256": "34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2",
+    "july_source_sha256": "e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7",
+    "june_and_july_preregistered_before_source_open": true,
+    "daily_relative_spread_movement_capacity_weekdays_better": "150/150 eligible",
+    "baseline_eligible_weekday_utc_hours": 3332,
+    "K4_high_motion_hourly_success_supported": "1943/3214",
+    "K4_high_motion_hourly_supported": 3214,
+    "precision_spread_over_grid_le_0p65_hourly_supported": "2044/2780",
+    "precision_all_baseline_hourly_success": "2044/3332",
+    "precision_unsupported_baseline_hours": 552,
+    "july_precision_first_holdout": "239/361 supported hours positive; 239/492 all eligible; not universal",
+    "july_original_bidask_raw_events": 40952,
+    "july_K2_broad_events": 28593,
+    "july_K4_events": 18723,
+    "july_precision_events": 7140,
+    "july_R9_synth_monthly_entries": 24382,
+    "unsupervised_total_raw_event_counts": {
+      "K2_janjul": 297947,
+      "K4_janjul": 218132,
+      "precision_janjul": 80565
+    },
+    "realistic_bidask_signed_direction_edge": false,
+    "performance_established_for_unsigned_move_only": true,
+    "july_absolute_2usd_future_move_pct": {
+      "baseline": 32.9463,
+      "K4": 39.2872,
+      "precision": 38.885
+    },
+    "shrinkable_spread_normalized_outcome_may_be_mechanical": true,
+    "actual_funded_trades": 0,
+    "broker_sessions_or_v1_layers_enabled": false,
+    "original_Dukascopy_and_R9_untouched": true,
+    "August_sealed": true,
+    "research_capital_usd_future_hypothetical": 100000,
+    "research_report": "research/delta_a_alpha/grid/GRID_0108_SEVEN_MONTH_HOURLY_AND_DAILY_RESEARCH_REPORT.md",
+    "pre_register_june": "research/delta_a_alpha/grid/GRID_0108_JUNE_LOCKBOX_PREREG_HOURLY_VS_DAILY_GRID_ONLY_20261010.md",
+    "pre_register_july": "research/delta_a_alpha/grid/GRID_0108_JULY_PREREG_INTRINSIC_PRECISION_TIER_20261010.md",
+    "source_scripts_tests_daily_hour_csv_zip": "https://drive.google.com/file/d/1TeMWzdLV3KQTeMSNOJCBMh-HrlmwyyCW/view",
+    "test_count_passed": 10
   }
 }
