@@ -90,5 +90,26 @@
       "R9_SYNTH",
       "R9_REAL"
     ]
+  },
+  "trade_constraints": {
+    "daily_r9_qualified_opportunity_floor_pct": 75,
+    "daily_r9_source": "ORIGINAL_R9_GAMMA_HYBRIDGATE_SYNTH_CLOSED_TRADES_SAME_UTC_DAY",
+    "daily_gate_governance": "research/delta_a_alpha/governance/OWNER_DAILY_R9_SYNTH_OPPORTUNITY_COVERAGE_FLOOR_2026_10_10.md",
+    "measure_distinctly": [
+      "candidate_count",
+      "qualified_executable_opportunity_count",
+      "funded_completed_trade_count",
+      "rejections_by_reason"
+    ]
+  },
+  "owner_daily_opportunity_floor_2026_10_10": {
+    "status": "RATIFIED_NOT_YET_IMPLEMENTED_OR_MEASURED",
+    "verbatim": "and the opposite is true the system is worthless if it only identiifys less than r9 syth daily trade oppotunites by more then 25%",
+    "minimum_fraction": 0.75,
+    "governance": "research/delta_a_alpha/governance/OWNER_DAILY_R9_SYNTH_OPPORTUNITY_COVERAGE_FLOOR_2026_10_10.md",
+    "current_runtime": "J0099_CAUSAL_MARKET_CONTEXT_ONLY",
+    "do_not_force_unsafe_orders": true,
+    "monthly_average_trade_ceiling_fraction": 1.75,
+    "protected_reference_and_raw_ticks_unchanged": true
   }
 }
