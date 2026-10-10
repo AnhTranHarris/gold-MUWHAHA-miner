@@ -1,0 +1,51 @@
+{
+  "schema": "delta-a-alpha-state-journal-v2",
+  "sequence": 92,
+  "unit": "DAA033_C2D3Q_COMPLETE_16M_JAN_FEB_SOURCE_NATIVE_FUNDED_AB_ECONOMIC_AUDIT",
+  "predecessor": {
+    "sequence": 91,
+    "path": "research/delta_a_alpha/state_journal/0091_DAA_033_C2D3P_FULL_JAN_FEB_ORIGINAL_LOSSLESS_BIDASK_QUOTE_INDEX.json"
+  },
+  "status": "TWO_MONTHS_FULLIGINAL_SOURCE_FUNDED_AB_VERIFIED__FULL_V1_OPTIMIZER_AND_MARCH_BLOCKED",
+  "authority": {
+    "owner_original_whitepaper_blob": "1b92b3c89159681a7181508de158af685cf5780c",
+    "current_funded_core_blob": "917d3be410e6917e6ae5ff2cb6a945efeeb70e9b"
+  },
+  "validation": {
+    "all_original_JanFeb_BidAsk_quotes": 16673401,
+    "Jan_quotes": 9135062,
+    "Feb_quotes": 7538339,
+    "both_modes_original_50ms_source_events": 446816,
+    "source_policy_fixed_before_quotes": true,
+    "march_opened": false,
+    "diagnostic_data": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/JAN_FEB_16673401_FULL_FUNDED_NATIVE_AB_SOURCE_ECONOMICS_033.json",
+    "runner": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/run_original_jan_feb_indexed_funded_economics_033.py",
+    "independent_audit": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/audit_full_jan_feb_native_source_funded_033.py"
+  },
+  "JAN039_policy": {
+    "Jan_net": 15818.647,
+    "Feb_net": -3419.899,
+    "combined_net": 12398.748,
+    "trades": 13466,
+    "gross_loss": -44078.645,
+    "PF": 1.28128696,
+    "max_DD": 12199.532
+  },
+  "FEB045_policy": {
+    "Jan_net": 6082.373,
+    "Feb_net": 8957.547,
+    "combined_net": 15039.92,
+    "trades": 2512,
+    "gross_loss": -4494.699,
+    "PF": 4.3461462,
+    "max_DD": 1735.496
+  },
+  "limits": "Only original implemented JAN037 L3 source family; research idealized 100k funded model. Not full JAN039/FEB045/047 frozen source optimization or true Coinexx MT5 broker. Higher-level L1/L4/L5/L6 incomplete. Jan1 Dec2025 prehistory missing and $100-$500 survivability not verified.",
+  "locks": {
+    "march": "HELD",
+    "august": "SEALED",
+    "september": "RESERVED",
+    "prod_delta": "READ_ONLY"
+  },
+  "next": "Resume exact-original multi-owner L1/L4/L5/L6 state and positive-source-to-actual-funded genealogy, test full Jan-Feb economics using true source code only."
+}
