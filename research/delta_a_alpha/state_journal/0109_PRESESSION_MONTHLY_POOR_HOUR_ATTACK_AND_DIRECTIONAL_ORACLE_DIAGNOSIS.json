@@ -1,0 +1,206 @@
+{
+  "schema": "DAA_GRID0109_PRESESSION_POOR_HOUR_FORENSIC_AND_MATURED_FEEDBACK",
+  "sequence": 109,
+  "date": "2026-10-10",
+  "predecessor": 108,
+  "owner_directive": "Aggressively study each month's weak UTC hours and invent/test grid-native better mechanisms with higher hourly performance while preserving daily consistency.",
+  "scope": "GRIG-GENESIS_PRE-L1_ONLY_VIRTUAL-QUOTE-TICK_FORENSICS_NO_SESSIONS_OR_FUNDED_ORDERS",
+  "source": "research/delta_a_alpha/grid/GRID_0109_POOR_HOUR_ROOT_CAUSE_AND_MATURED_FEEDBACK_RESEARCH.md",
+  "reproducible_source_zip_drive": "https://drive.google.com/file/d/1f-5c6_tUOQelmJga2Yg6R1Tg-0llATeW/view",
+  "reproducible_source_zip_sha256": "5c00ef0f7a49864a9d92355a1a740e99982447b0b4a693b37f6cfcc3978723da",
+  "readable_report_drive": "https://drive.google.com/file/d/1xNO4Ku881BTVbRyQBacpy8MmmBFJxhjM/view",
+  "inherited_prevalidated_source_ticks_janjul": 57527562,
+  "audit_inputs": "GRID0107/GRID0108 event NPZ arrays precomputed from original bidask ticks and complete all 3436 UTC hour records; this phase did not newly replay entire raw 57m tick archive",
+  "original_source_and_R9_unchanged": true,
+  "august_sealed": true,
+  "frozen_baseline": {
+    "virtual_grid_gap": "max(0.75 USD,1.5*causal asof spread EWMA alpha=.001)",
+    "virtual_event_cooldown_seconds": 7,
+    "K5": "abs(mid(t)-asof mid(t-300s))/max(current source spread,0.10)",
+    "broad_tier": 2,
+    "strict_tier": 4,
+    "actual_orders": 0
+  },
+  "clock_rule": "UTC groupings are offline diagnostic ONLY; no hour-of-day routing or session L1",
+  "hourly_denominators": {
+    "weekday_UTC_baseline_eligible_hours": 3332,
+    "K4_supported": 3214,
+    "K4_positive": 1943,
+    "K4_negative": 1259,
+    "K4_tied": 12,
+    "K4_unsupported": 118,
+    "eligible_min_baseline_events": 20,
+    "eligible_min_tier_events": 5
+  },
+  "monthly": {
+    "2026-01": {
+      "eligible": 467,
+      "positive": 260,
+      "negative": 185,
+      "unsupported": 21,
+      "worst_utc_hour_of_day": [
+        4,
+        13,
+        10,
+        16
+      ]
+    },
+    "2026-02": {
+      "eligible": 452,
+      "positive": 292,
+      "negative": 151,
+      "unsupported": 9,
+      "worst_utc_hour_of_day": [
+        8,
+        10,
+        4,
+        14
+      ]
+    },
+    "2026-03": {
+      "eligible": 496,
+      "positive": 293,
+      "negative": 202,
+      "unsupported": 0,
+      "worst_utc_hour_of_day": [
+        12,
+        15,
+        17,
+        1
+      ]
+    },
+    "2026-04": {
+      "eligible": 470,
+      "positive": 291,
+      "negative": 162,
+      "unsupported": 15,
+      "worst_utc_hour_of_day": [
+        4,
+        23,
+        22,
+        14
+      ]
+    },
+    "2026-05": {
+      "eligible": 466,
+      "positive": 256,
+      "negative": 187,
+      "unsupported": 19,
+      "worst_utc_hour_of_day": [
+        22,
+        6,
+        19,
+        11
+      ]
+    },
+    "2026-06": {
+      "eligible": 489,
+      "positive": 294,
+      "negative": 179,
+      "unsupported": 15,
+      "worst_utc_hour_of_day": [
+        2,
+        5,
+        3,
+        11
+      ]
+    },
+    "2026-07": {
+      "eligible": 492,
+      "positive": 257,
+      "negative": 193,
+      "unsupported": 39,
+      "worst_utc_hour_of_day": [
+        23,
+        22,
+        4,
+        7
+      ]
+    }
+  },
+  "recurrent_weak_UTC_hour_groups": [
+    {
+      "hour": 4,
+      "nonimproved": 75,
+      "eligible": 145
+    },
+    {
+      "hour": 22,
+      "nonimproved": 38,
+      "eligible": 75
+    },
+    {
+      "hour": 14,
+      "nonimproved": 70,
+      "eligible": 150
+    },
+    {
+      "hour": 10,
+      "nonimproved": 68,
+      "eligible": 150
+    },
+    {
+      "hour": 8,
+      "nonimproved": 67,
+      "eligible": 149
+    }
+  ],
+  "future_oracle_DIAGNOSTIC_ONLY": {
+    "method": "Retrospective max(BUY ask now->future bid,SELL bid now->future ask) after 0.02 USD hypothetical roundtrip commission at 120s; future quote choice cannot be traded",
+    "weak_hour_positive_pct_by_month": {
+      "jan": 79.1,
+      "feb": 79.7,
+      "mar": 83.8,
+      "apr": 77,
+      "may": 76.8,
+      "jun": 78.4,
+      "jul": 71.7
+    },
+    "fixed_creator_reversal_weak_hour_quote_markout_average_negative_all_months": true,
+    "fixed_continuation_weak_hour_quote_markout_average_negative_all_months": true,
+    "executable_broker_fill_backtest": false,
+    "interpretation": "Untradeable direction opportunity ceiling: source movement exists but selecting causal sign at after-spread profitable accuracy remains UNSOLVED"
+  },
+  "completed_new_mechanism_screens": [
+    {
+      "id": "GRID_INTRINSIC_MATURED_FEEDBACK_ADAPTIVE_K",
+      "candidate_count": 144,
+      "dev_months": "JAN-APR",
+      "later_months": "MAY-JUL_already_inspected_not_blind",
+      "frozen_params": {
+        "past_window_minutes": 30,
+        "beta_prior_pseudocount": 10,
+        "threshold_penalty_per_k_step": 0.006,
+        "past_history_min_n": 30,
+        "no_threshold_below_k4": true
+      },
+      "future_label_maturity_embargo_seconds": 130,
+      "development_improved_hour_delta": 15,
+      "later_months_hour_delta": 3,
+      "overall_K4_positive_hours": 1943,
+      "overall_selected_positive_hours": 1961,
+      "overall_eligible_hours": 3332,
+      "development_day_uplift_preserved": "84/84",
+      "later_days_uplift_preserved": "66/66",
+      "global_candidate_event_n": 206569,
+      "reference_K4_candidate_n": 218011,
+      "decision": "RETAIN_DIAGNOSTIC_NOT_ACCEPT_SMALL_POST_SELECTION_GAIN"
+    },
+    {
+      "id": "GRID_INTRINSIC_NONLINEAR_ABS_MOVE_CAPACITY_LGB",
+      "candidates": "Three small LightGBM model families five probability cuts (15 total), JAN-MAR train APR develop MAY-JUL chronological inspection",
+      "decision": "DO_NOT_PROMOTE: improved surviving absolute movement but April hourly coverage worse than frozen K4"
+    }
+  ],
+  "working_promotion": "NO NEW FUNDED OR PROFITABLE MECHANISM; preserve existing K4 virtual grid and new weak-hour diagnostic/research apparatus",
+  "evidence_7_local_deterministic_tests": "PASS",
+  "price_future_dependency": "only offline forensic, never current decision; mature feedback valid if event label already at least 130 sec old",
+  "risk_policy": "NO MARTINGALE/LOSS SIZING. $100k hypothetical account only for later fully integrated research. Small $100-300 ultimate preferred, not current hard hurdle.",
+  "new_research_questions": [
+    "after-grid-event two-stage causally observed bidask selection, not future oracle",
+    "exact side-specific first passage order vs spread and adverse wrongway boundary",
+    "virtual rung pressure, failed recovery, quote freshness as known-by-now sign hazards",
+    "quote-volume imbalance limitations: no central XAUUSD orderbook depth"
+  ],
+  "next_unit": "GRID0109_CONTINUATION_PRESCREEN_GRID_ONLY_CAUSAL_SIDED_FIRST_PASSAGE_AND_REENTRY_SIGN_ACCURACY_WITH_RESPECT_TO_REAL_BIDASK_COST; AUGUST_SEALED; REQUIRES_UNTOUCHED_NEW_DATA_FOR_DEPLOYMENT_CLAIM"
+}
