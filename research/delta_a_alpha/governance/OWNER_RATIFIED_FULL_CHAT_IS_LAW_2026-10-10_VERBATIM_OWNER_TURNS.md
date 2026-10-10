@@ -64,3 +64,29 @@ everything so far in this chat must be made into law moving forward with this re
 The authoritative text of all assistant replies and the original owner turns remains the original conversation, not this file. This document records the owner's adoption-by-reference and preserves the owner's text in full; it does not grant the model permission to synthesize missing assistant replies or manufacture a chat transcript from summaries.
 
 Existing owner V1 source white paper remains intact. Older materials may be followed only according to their original scope; disagreements with owner-ratified governance must be raised, not quietly resolved by an assistant.
+
+## OWNER-AUTHORIZED ADDITION — FIVE-PROMPT RE-READ + MANDATORY NEW-CHAT/HANDOFF SOURCE LAW (2026-10-10)
+
+### Verbatim new owner instruction
+
+good to esure you dont drift after 5 human prompts read the converation doc and remind your self of the law we establish, before working on a task, and every maxchat length error hand off request must cite these docs as your truth and must be followed as the governing truth in evey newchat session
+
+### Binding implementation of this owner instruction (supplements, does not abbreviate original law)
+
+- In each active Delta-A-alpha conversation, after five human prompts have been received since the last complete reading of the governing conversation document, BEFORE starting the next substantive task, retrieve and read the COMPLETE conversation document again. Reset the five-human-prompt counter only after that read. If a read is incomplete or unavailable, disclose the limitation; do not operate from a short summary as if it were the original.
+- At the beginning of every new chat, and immediately on every max-chat-length, message-delivery-timeout, or forced handoff request, cite/link these governing documents and require source-first reading as the first phase of the next session. Handoff documentation MUST include the exact URLs below. The original full owner white paper and original code/accepted research are separately required technical source materials.
+- When writing a handoff, preserve these links and the instruction to READ THE FULL TEXT. Handoff summaries may guide navigation but MUST NOT become the basis for new trading logic, challenge settled profitable discoveries absent specific evidence, or trigger repeat forensic audits of already preserved assets.
+- An assistant may surface a proposed change when new evidence warrants one, but no owner-established Delta-A-alpha governance law may be changed without express human owner approval. Do not silently amend.
+- This is a chat-execution governance rule, not a promise of an independently running background reminder or a platform-wide automatic counter. For new sessions, the count restarts after a complete initial read.
+
+Authoritative full visible conversation:
+Google Drive: https://docs.google.com/document/d/1J9d_P4ooCnNmcxPwG1F178aE4ktpkLrFclcyQPaQJ8k/edit
+GitHub: https://github.com/AnhTranHarris/gold-MUWHAHA-miner/blob/delta-A-alpha/research/delta_a_alpha/governance/OWNER_RATIFIED_CHAT_VISIBLE_MESSAGES_VERBATIM_2026-10-10.md
+
+Original owner ratification and unabridged owner messages:
+Google Drive: https://docs.google.com/document/d/1eVsmYKQFzlf_f4jajoqilTMHiXdgK3q-KMjcboy-LHc/edit
+GitHub: https://github.com/AnhTranHarris/gold-MUWHAHA-miner/blob/delta-A-alpha/research/delta_a_alpha/governance/OWNER_RATIFIED_FULL_CHAT_IS_LAW_2026-10-10_VERBATIM_OWNER_TURNS.md
+
+Handoff 00_START_HERE:
+Google Drive: https://docs.google.com/document/d/1hx00GrnPhsUlz1N94Pd2A50Yi99euOKpTf04rnerzH4/edit
+
