@@ -1,13 +1,14 @@
 name: DAA033 Jan-Feb Cooperative Source Portfolio
 on:
   push:
-    branches:
-      - delta-A-alpha
+    branches: [delta-A-alpha]
     paths:
       - "research/delta_a_alpha/implementation/v1_033_phase_c2d2/jan_feb_cooperative_source_portfolio_033.py"
       - "research/delta_a_alpha/implementation/v1_033_phase_c2d2/test_jan_feb_cooperative_source_portfolio_033.py"
       - ".github/workflows/daa033-jan-feb-cooperative-ci.yml"
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   cooperative-jan-feb-source:
     runs-on: ubuntu-latest
@@ -16,9 +17,52 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Compile original-source cooperative integration
-        working-directory: research/delta_a_alpha/implementation/v1_033_phase_c2d2
-        run: python -m py_compile jan_feb_cooperative_source_portfolio_033.py test_jan_feb_cooperative_source_portfolio_033.py
-      - name: Execute one-account Jan-Feb causal ownership regressions
-        working-directory: research/delta_a_alpha/implementation/v1_033_phase_c2d2
-        run: python -m unittest -v test_jan_feb_cooperative_source_portfolio_033
+      - name: Run source-native integrated tests
+        id: validate
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          cd research/delta_a_alpha/implementation/v1_033_phase_c2d2
+          python -m py_compile jan_feb_cooperative_source_portfolio_033.py test_jan_feb_cooperative_source_portfolio_033.py > /tmp/janfeb_cooperative.log 2>&1
+          rc=$?
+          if [ "$rc" -eq 0 ]; then
+            python -m unittest -v test_jan_feb_cooperative_source_portfolio_033 >> /tmp/janfeb_cooperative.log 2>&1
+            rc=$?
+          fi
+          cat /tmp/janfeb_cooperative.log
+          echo "exit_code=$rc" >> "$GITHUB_OUTPUT"
+          export EXIT_CODE="$rc"
+          python - <<'PY'
+          import json,os,pathlib,re
+          log=pathlib.Path('/tmp/janfeb_cooperative.log').read_text()
+          count=re.search(r'Ran (\d+) tests?',log)
+          result={
+            'schema':'DAA033-cooperative-JanFeb-source-funding-contract-ci-v1',
+            'classification':'SYNTHETIC_FIXTURE_INTEGRATION_ONLY_NOT_FULL_JAN_FEB_REAL_TICK_ECONOMIC_PARITY',
+            'source':'GitHub Actions tests in original v1_033_phase_c2d2 module',
+            'ci_success':int(os.environ['EXIT_CODE'])==0,
+            'exit_code':int(os.environ['EXIT_CODE']),
+            'tests_discovered':int(count.group(1)) if count else 0,
+            'original_source_L3_plus_JAN039_plus_FEB045_FEB047':True,
+            'shared_funded_L7':True,
+            'no_trading_calendar_selector':True,
+            'full_original_L0_L7_parity':False,
+            'broker_verified':False,
+            'test_log':log[-9000:]
+          }
+          pathlib.Path('COOPERATIVE_JAN_FEB_SOURCE_CI_RECEIPT_033.json').write_text(json.dumps(result,indent=2)+'\n')
+          PY
+      - name: Persist bounded CI evidence without repeating historical research
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/delta_a_alpha/implementation/v1_033_phase_c2d2/COOPERATIVE_JAN_FEB_SOURCE_CI_RECEIPT_033.json
+          if ! git diff --staged --quiet; then
+            git commit -m "Record Jan-Feb cooperative adapter regression CI result"
+            git push origin HEAD:delta-A-alpha
+          fi
+      - name: Require test success
+        if: steps.validate.outputs.exit_code != '0'
+        run: exit 1
