@@ -114,6 +114,9 @@ class IntegratedAccountContracts(unittest.TestCase):
         self._warm_completed_10m(e,1)
         _process(e,tf)
         self.assertEqual(next(iter(e.positions.values())).source,"ORIGINAL_F045_S25")
+        # Close a timed-out FEB position on a separate observed quote.
+        # Combined protective exits share the original one-order-per-quote L7.
+        _process(e,tj-1)
         _process(e,tj)
         self.assertEqual(next(iter(e.positions.values())).source,S26)
         _process(e,tj+1_900_000)
