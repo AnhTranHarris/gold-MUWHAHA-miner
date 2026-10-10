@@ -1,0 +1,90 @@
+{
+  "schema": "delta-a-alpha-state-journal-v2",
+  "sequence": 93,
+  "unit": "DAA033_C2D3R_CRASH_SAFE_SOURCE_NATIVE_FUNDED_REPLAY_RECOVERY_AND_PINNED_LEDGER",
+  "status": "VERIFIED_BOTH_FULL_REAL_JAN_FEB_IDEALIZED_FUNDED_L7_RUNS__TIMEOUT_SAFE_SUPERVISOR_READY__ORIGINAL_OWNER_V1_OPTIMIZED_PARITY_NOT_COMPLETE",
+  "predecessor": {
+    "sequence": 92,
+    "path": "research/delta_a_alpha/state_journal/0092_DAA_033_C2D3Q_FULL_JAN_FEB_NATIVE_FUNDED_AB_ECONOMICS.json"
+  },
+  "source_code_only_authorities": {
+    "owner_whitepaper_gitblob": "1b92b3c89159681a7181508de158af685cf5780c",
+    "trusted_original_L7_core_gitblob": "917d3be410e6917e6ae5ff2cb6a945efeeb70e9b",
+    "replay_driver": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/run_original_jan_feb_indexed_funded_economics_033.py",
+    "independent_closes_audit": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/audit_full_jan_feb_native_source_funded_033.py",
+    "source_JAN037_JAN038_JAN039": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/verified_original_sources/JAN037/ and JAN038/; actual JA039 frozen exact source JSON",
+    "source_FEB042_FEB045_FEB047": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/verified_original_sources/FEB042/,FEB045/,FEB047/"
+  },
+  "new_live_code": {
+    "path": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/recover_original_jan_feb_funded_replay_033.py",
+    "commands": [
+      "status",
+      "step",
+      "loop",
+      "verify"
+    ],
+    "child_hard_timeout_seconds_default": 12,
+    "child_max_real_quote_rows_default": 25000,
+    "per_worker_kernel_advisory_lock": "fcntl.flock POSIX or msvcrt.locking Windows releases after process crash",
+    "resume": "Existing atomic quote-funded pickle snapshot authenticated using original source signature and rules sha; source cursor reconstruction from checkpoint if child dies between checkpoint save and progress file save",
+    "safety": "No blindly loaded downloaded checkpoints. Full completed original research artifacts in Project Library are SHA pinned by PRE-READ expected digests, then audited with actual funded close-object net GL PF DD, no new fills from source profit tape",
+    "integrity": "Atomic completion receipt and last-child status plus PINNED immutable SHA of both complete original ledgers and full audited result; disallow calendar-based strategy switches, exceeded source ordinal, missing checkpoints, forged ledger, parallel workers.",
+    "failure_modes": "Subprocess forced timeout kills child while last safe committed ledger remains; next bounded child resumes only missing source quotes; code refuses infinite no-progress loop; finished source quote tape re-run is no-op.",
+    "outside_chat": "loop command can be run as a normal host Python process entirely independent of chat/browser message delivery; this tool response does not schedule or run background jobs."
+  },
+  "fully_authenticated_actual_completed_source_runs": {
+    "real_bidask_source_quotes_Jan": 9135062,
+    "real_bidask_source_quotes_Feb": 7538339,
+    "combined_full_source_quotes": 16673401,
+    "original_JAN039_variant": {
+      "paid_deals": 13466,
+      "jan_net": 15818.647,
+      "feb_net": -3419.899,
+      "full_net": 12398.748,
+      "full_idealized_quote_equity_dd": 12199.53199996,
+      "PF": 1.28128696,
+      "checkpoint_sha256": "49e8bbd2002de3accc8a0afc9c09a249e52a0e3f67e961ccef9ce9870c121ad6"
+    },
+    "original_FEB045_variant": {
+      "paid_deals": 2512,
+      "jan_net": 6082.373,
+      "feb_net": 8957.547,
+      "full_net": 15039.92,
+      "full_idealized_quote_equity_dd": 1735.496,
+      "PF": 4.3461462,
+      "checkpoint_sha256": "4e84faa44cef1b46c3e7e3785ec830ff55d20622513ddd6c9a35a47b697b2d97"
+    },
+    "full_approved_L7_original_audit_sha256": "71fc6a164b6d3d0c194f925a5afd5a7cc8bf812968f823999083176ffc325730",
+    "Library_durable_local_privileged_backups": "/xauusd-trading-bot/delta-A-alpha/engineering/v1-033-c2d3r-crash-safe-bounded-resume/final-verified-paid-ledgers/ , NEVER use downloaded pickle before SHA pin and trusted origin checks",
+    "local_reaudit_test": "Independent audit rerun 2026-10-10 after interrupted UI both original A/B paid ledgers match pinned JSON exactly; repeat original JAN039 mode step detects completion and performs ZERO quote replay"
+  },
+  "testing": {
+    "new_fault_injection_tests": 14,
+    "prior_tests_inherited": 149,
+    "Github_expected_total": 163,
+    "fault_cases": [
+      "mid-child subprocess interruption",
+      "atomic checkpoint ahead of stale progress reconstructed",
+      "missing or tampered checkpoint blocked",
+      "fraudulent progress quote ordinal blocked",
+      "untrusted completed export hash blocked BEFORE pickle",
+      "parallel workers lock blocked",
+      "no live month switching",
+      "no duplicate completed replays",
+      "preserved original audited PnL differs then fail closed"
+    ]
+  },
+  "limits": [
+    "This is full Jan+Feb comparison for the original 50ms source family only, idealized $100,000 research model, not full original owner Vertical Grid V1 8-layer native JAN039/FEB045/FEB047 source profit frontier.",
+    "Research benchmark original JAN039~$201k/FEB045~$206k remains UNREPRODUCED under this subset and neither real Coinexx broker nor $100-$500 survivability validated.",
+    "Week/day/month grouping is AFTER-close evaluation only, not original live source-confirmed rolling regime classifier.",
+    "December 2025 genuine pre-Jan1 completed history unavailable, March locked."
+  ],
+  "locks": {
+    "March": "HELD_UNREAD",
+    "August": "SEALED",
+    "September": "RESERVED",
+    "production_Delta": "READ_ONLY"
+  },
+  "next": "Continue from directly inspected original full L1+L4+L5+L6 specialist source and original protected optimized JAN039/FEB045/FEB047 causal port, with bounded trusted source state and quote-funded full economic tests. Do not tune to profit benchmark without genuine out-of-sample causal data; NO MONTH execution selector."
+}
