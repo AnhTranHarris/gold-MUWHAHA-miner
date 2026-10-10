@@ -32,11 +32,31 @@ DEFAULT_WORK=Path('/mnt/data/c2d3q_work/full')
 DEFAULT_INDEX=Path('/mnt/data/c2d3p_work/data')
 DEFAULT_RULES=Path('/mnt/data/c2d3p_work/repo/verified_original_sources/JAN038/JAN038_SELECTED_EXACT.json')
 DEFAULT_RESULT=Path('/mnt/data/c2d3q_work/JAN_FEB_16673401_FULL_FUNDED_NATIVE_AB_SOURCE_ECONOMICS_033.json')
+# Original complete research-account checkpoints and independently reconciled
+# ledger, pinned BEFORE ever loading an exported/restored pickle into Python.
+# This does NOT authenticate arbitrary partial / externally supplied snapshots.
+PINNED_COMPLETE_CHECKPOINTS={
+ 'JAN039_SOURCE_NATIVE':'49e8bbd2002de3accc8a0afc9c09a249e52a0e3f67e961ccef9ce9870c121ad6',
+ 'FEB045_SOURCE_NATIVE':'4e84faa44cef1b46c3e7e3785ec830ff55d20622513ddd6c9a35a47b697b2d97'}
+PINNED_COMPLETE_RESULT='71fc6a164b6d3d0c194f925a5afd5a7cc8bf812968f823999083176ffc325730'
 
 
 def sha(path):
     with Path(path).open('rb') as f:
         return hashlib.file_digest(f,'sha256').hexdigest()
+
+
+def verify_pinned_final_export_files(workdir):
+    """Prove restored Library FINAL checkpoints have exact original local bytes.
+
+    Must be called before deserializing previously exported complete snapshots.
+    This is a safe SHA check, not a license to unpickle any other Library file.
+    """
+    for mode,digest in PINNED_COMPLETE_CHECKPOINTS.items():
+        p=Path(workdir)/(mode+'.trusted-private-checkpoint.json')
+        if not p.is_file() or sha(p)!=digest:
+            raise ValueError('Completed research ledger checkpoint differs from pinned accepted source: '+mode)
+    return True
 
 
 def status_mode(workdir,mode):
@@ -160,6 +180,12 @@ def one_step(mode,*,workdir,source_dir,rules,quote_budget=25000,time_budget=12.0
     if not 1<=quote_budget<=50000:raise ValueError('Use 1..50000 genuine quotes per bounded child')
     if not 2<=time_budget<=20:raise ValueError('Use a two-to-twenty-second hard child timeout')
     with exclusive_mode(workdir,mode):
+        claimed=status_mode(workdir,mode)
+        if claimed['complete']:
+            expected=PINNED_COMPLETE_CHECKPOINTS[mode]
+            p=Path(workdir)/(mode+'.trusted-private-checkpoint.json')
+            if sha(p)!=expected:
+                raise ValueError('Completed source-funded checkpoint changed: refuse untrusted pickle')
         before=reconcile_progress_from_trusted_local_checkpoint(workdir,mode,source_dir,rules)
         if before['complete']:
             return {'mode':mode,'outcome':'ALREADY_COMPLETE_NO_REPLAY','before':before,'after':before}
@@ -190,6 +216,7 @@ def verify_completed(*,workdir,source_dir,rules,result_path):
     status={m:status_mode(workdir,m) for m in MODES}
     if not all(v['complete'] for v in status.values()):
         raise ValueError('Both original-source policies must consume all 16,673,401 quotes first')
+    verify_pinned_final_export_files(workdir)
     result=audit(workdir,source_dir,rules)
     expected=Path(result_path)
     if expected.exists():
@@ -197,6 +224,8 @@ def verify_completed(*,workdir,source_dir,rules,result_path):
         if preserved!=result:raise ValueError('Completed economic ledger differs from saved source-native truth: DO NOT OVERWRITE')
     else:
         atomic_json(expected,result)
+    if sha(expected)!=PINNED_COMPLETE_RESULT:
+        raise ValueError('Funded audit result JSON digest differs from pinned source-grade complete ledger')
     receipt={'schema':'DAA033-C2D3R-verified-complete-source-native-paid-ledgers',
              'truth_artifact_sha256':sha(expected),'full_true_bidask_quotes':TOTAL,
              'modes':{k:{'trades':v['physically_closed_deals'],'realized_net':v['realized_account_score']['net'],
