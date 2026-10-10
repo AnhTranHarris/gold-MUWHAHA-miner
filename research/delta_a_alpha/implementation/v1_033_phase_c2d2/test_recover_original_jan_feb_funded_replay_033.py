@@ -69,10 +69,15 @@ class FaultRecoveryContracts(unittest.TestCase):
 
     def test_completed_run_cannot_process_same_16673401_quotes_twice(self):
         progress(self.dir,self.mode,jan=FILES['JAN']['quotes'],feb=FILES['FEB']['quotes'])
-        with patch('recover_original_jan_feb_funded_replay_033.subprocess.run',side_effect=AssertionError('Must not run')):
+        with patch('recover_original_jan_feb_funded_replay_033.sha',return_value=__import__('recover_original_jan_feb_funded_replay_033').PINNED_COMPLETE_CHECKPOINTS[self.mode]), patch('recover_original_jan_feb_funded_replay_033.subprocess.run',side_effect=AssertionError('Must not run')):
             receipt=one_step(self.mode,workdir=self.dir,source_dir=self.dir,rules=self.dir/'dummy',quote_budget=10,time_budget=2)
         self.assertEqual(receipt['outcome'],'ALREADY_COMPLETE_NO_REPLAY')
         self.assertEqual(receipt['after']['reported_quotes'],TOTAL)
+
+    def test_completed_checkpoint_hash_tamper_refused_before_unpickle(self):
+        progress(self.dir,self.mode,jan=FILES['JAN']['quotes'],feb=FILES['FEB']['quotes'])
+        with self.assertRaisesRegex(ValueError,'checkpoint changed'):
+            one_step(self.mode,workdir=self.dir,source_dir=self.dir,rules=self.dir/'dummy',quote_budget=10,time_budget=2)
 
     def test_bounded_child_saves_only_committed_progress(self):
         progress(self.dir,self.mode,jan=13)
@@ -130,7 +135,7 @@ class FaultRecoveryContracts(unittest.TestCase):
         for mode in MODES:progress(self.dir,mode,jan=FILES['JAN']['quotes'],feb=FILES['FEB']['quotes'])
         path=self.dir/'result.json'
         atomic_json(path,{'fixed_original_results':'ORIGINAL'})
-        with patch('recover_original_jan_feb_funded_replay_033.audit',return_value={'different':'ATTEMPT'}):
+        with patch('recover_original_jan_feb_funded_replay_033.verify_pinned_final_export_files',return_value=True), patch('recover_original_jan_feb_funded_replay_033.audit',return_value={'different':'ATTEMPT'}):
             with self.assertRaisesRegex(ValueError,'DO NOT OVERWRITE'):
                 verify_completed(workdir=self.dir,source_dir=self.dir,rules=self.dir/'dummy',result_path=path)
         self.assertEqual(json.loads(path.read_text()),{'fixed_original_results':'ORIGINAL'})
