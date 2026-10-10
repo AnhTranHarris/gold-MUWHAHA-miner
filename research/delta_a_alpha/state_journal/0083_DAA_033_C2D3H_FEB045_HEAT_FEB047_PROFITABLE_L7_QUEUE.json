@@ -1,0 +1,52 @@
+{
+  "schema": "delta-a-alpha-state-journal-v2",
+  "sequence": 83,
+  "unit": "DAA_033_C2D3H_ORIGINAL_FEB045_PHYSICAL_HEAT_FEB047_PROFITABLE_REDUCE_L7",
+  "status": "BOUNDED_SOURCE_NATIVE_L7_HEAT_AND_PROFIT_QUEUE_QA__FULL_JAN_FEB_OPTIMIZED_V1_ECONOMICS_OPEN",
+  "predecessor": {
+    "sequence": 82,
+    "path": "research/delta_a_alpha/state_journal/0082_DAA_033_C2D3G_FEB045_ORIGINAL_SOURCE_MASK_AND_COMPLETED_QUOTE_CONTEXT.json"
+  },
+  "source_authorities": {
+    "owner_whitepaper_git_blob": "1b92b3c89159681a7181508de158af685cf5780c",
+    "archive_feb045_sha256": "9248646bf099b954b5661c765ce50316a61c015b595ad61128a0c02b115a33df",
+    "archive_feb047_sha256": "e45987edf986fa7b5827c503afbf824d90d47593c59dc2f2955f2a0d41aa5f42",
+    "original_feb045_heat_py_sha256": "01ec67f0ce914001097174bb80d8b97cc337e56cea946b8e9a6dc7692d569203",
+    "original_feb047_queue_py_sha256": "1e3fff9546bb5d5dde0c19ce1340b0b3def284ebaf47e5b570023e275c06f315",
+    "strict_original_json_sha256": "8ce5eee2fccd269b91ce392b52033f6199e27ee55b37bb6e59f89c61f275bee3"
+  },
+  "implementation": {
+    "module": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/feb045_physical_heat_feb047_queue_033.py",
+    "funded_core_additive": "research/delta_a_alpha/implementation/v1_033_phase_c2d2/v1_funded_core_033c.py",
+    "original_core_parent_blob": "931fb6f9e6a73af8036572292e53f550a6873f07",
+    "physical_heat": "FEB045 uses only actual L7 positions, quote-side long/down versus short/up stressed max global loss, source-owned bidask stress, physical last entry gap/cooldown, optional heat and source limits; existing FEB045 quality selection + January mechanisms retained.",
+    "profit_queue": "FEB047 selected strict 2USD retreat / 36 first-observed 5s buckets / min7USD net / 32 batch / cooldown60s / side400 / S22-S25 physically funded source scope / no month identity. Same L7 physical queue checks floor again at executable quote. 1 max combined order/tick, at most10/sec; emergency unconditional reduce TP SL TTL always superior to optional profit-only queue.",
+    "native_specialization": "Five-second observation plus original prior-completed 10m bucket and source-specific original L3 permissions. No month ID, weekday ID, week label or hindsight economics used as runtime switch."
+  },
+  "qa": {
+    "targeted_local_tests_pass": 21,
+    "original_executable_ast_fn_parity": "On deterministic accepted 15-tick fixture unchanged original FEB047 function agrees with live funded engine exact first actual reduce quote, ticket, net PnL.",
+    "new_safety_contracts": "Stale delayed profitable order cancelled; explicit stop/TP/emergency override; 1 per tick and <=10 UTC sec; shadow zero credit; Jan-Feb-Jun same state month blind; Buy Bid/Sell Ask closings",
+    "full_inherited_github_CI": "MUST_CONFIRM_ON_PR_HEAD",
+    "no_month_economic_profit_claim": true
+  },
+  "science_limits": {
+    "frozen_FEB045_plus_FEB047_research_only": "Source-ledger +$201230.309 net / DD $16215.592 / 25443 trades for FEB047_STRICT_BEST, NOT complete funded V1 engine result.",
+    "complete_original_JAN039_FEB045_FEB047_source_to_physical_portfolio_genealogy": "OPEN",
+    "original_completed_H4_H1_M15_M5_structural_classifier_parity": "OPEN",
+    "original_L5_and_L6_source_signals": "OPEN",
+    "all_quote_Jan_Feb_complete_production_like_PnL": "OPEN",
+    "true_Coinexx_MT5": "OPEN",
+    "December_2025_prehistory_for_Jan1_start": "OPEN",
+    "daily_weekly_rolling_regime_route": "NOT_SOURCE_CERTIFIED; observational periods cannot be used as invented execution features"
+  },
+  "locked": {
+    "march": "HELD",
+    "august": "SEALED",
+    "september": "RESERVED",
+    "production_delta": "READ_ONLY",
+    "fixed_lot": 0.01,
+    "martingale": "PROHIBITED"
+  },
+  "next": "Recover all ORIGINAL source generators and actual full JAN039+FEB045+FEB047 endogenous multi-month funded execution, including original four role classifiers and broker costs. Validate complete Jan/Feb daily weekly monthly execution and PnL before any March optimization. Original whitepaper and original research untouched."
+}
