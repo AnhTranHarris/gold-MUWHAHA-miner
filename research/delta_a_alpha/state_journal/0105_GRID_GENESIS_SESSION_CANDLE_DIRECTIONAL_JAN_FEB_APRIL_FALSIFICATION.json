@@ -1,0 +1,99 @@
+{
+  "schema": "DAA_GRID0105_PRE_V1_OWNER_SESSION_CANDLE_GRID_RESEARCH",
+  "sequence": 105,
+  "date": "2026-10-10",
+  "predecessor": "research/delta_a_alpha/state_journal/0104_PRESESSION_CREATOR_GRID_MULTIPASS_JAN_FEB_QUANT_FALSIFICATION.json",
+  "owner_directive": "April independent quick OOS, grid-native creative high-accuracy initial direction with session-aware and causal tick/second/minute/hour/daily candle inputs. L3-L7 OFF until grid generator earns admission.",
+  "owner_governance": "research/delta_a_alpha/governance/OWNER_20261010_APRIL_OOS_AND_PREVERTICAL_SESSION_CANDLE_GRID_DIRECTION_RESEARCH.md",
+  "report": "research/delta_a_alpha/grid/GRID_0105_SESSION_MULTISCALE_DIRECTIONAL_RESEARCH_REPORT.md",
+  "source_zip": "https://drive.google.com/file/d/1PE7xmkvLLMJmmslzxBk7vkT6xBg-88K7/view",
+  "source_zip_sha256": "b528dbe629e0cad8a5285e75fe780222687eae0c94a7b54b857b4848b0f866d3",
+  "exact_input_raw": {
+    "jan": {
+      "ticks": 9135062,
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    },
+    "feb": {
+      "ticks": 7538339,
+      "sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5"
+    },
+    "april": {
+      "ticks": 7470570,
+      "sha256": "30375098f62aed6cabc32ec6b67c57c20baec9b6d9be1ce0a204e09806c1ec0f"
+    }
+  },
+  "event_generator": "Original clean GRID0104 $0.75 step 15-second de-duplicated virtual crossing, source-only shadow",
+  "events": {
+    "jan": 54210,
+    "feb": 60603,
+    "april": 53569,
+    "total": 168382
+  },
+  "causal_inputs": [
+    "Grid virtual rung",
+    "Previous 1/3/5/15/30/60/180/300/900-sec quote changes",
+    "Quote revision rate, spread change, net-to-traveled tick path ratio",
+    "Three DC phase estimates (0.75/1.5/3 USD)",
+    "Previous COMPLETED bars 1s, 5s, 15s, M1, M5, M15, H1, D1",
+    "Sydney, Tokyo, London, NY IANA session clocks; overlap features"
+  ],
+  "directional_change_feature_correction": "dc_last_tick_move is prior-tick change divided by threshold; NOT a true completed DC overshoot. Original fit used identical numerical value under misleading prior name; source label corrected without affecting model outputs.",
+  "experiment_hypotheses": {
+    "features": 105,
+    "model_horizon_values_seconds": [
+      60,
+      120,
+      300,
+      600
+    ],
+    "fitted_models_and_thresholds": 32,
+    "manual_rule_and_spread_horizon_combos": 192,
+    "naive_controls": 24,
+    "local_tests_passed": 9,
+    "local_tests_run": 9,
+    "Jan_training": "1-15 UTC",
+    "Jan_validation": "16-31 UTC",
+    "Feb_validation": "whole February",
+    "April_check": "two frozen Jan-Feb selected candidate models, then secondary non-pristine ablation check"
+  },
+  "results": {
+    "nonlinear_h120": {
+      "jan_val_mean": -0.9882,
+      "feb_mean": -0.9676,
+      "apr_mean": -0.7462,
+      "apr_positive_pct": 38.349,
+      "apr_days_positive": 0
+    },
+    "ridge_h300": {
+      "jan_val_mean": -1.0185,
+      "feb_mean": -0.9644,
+      "apr_mean": -0.7001,
+      "apr_positive_pct": 42.909,
+      "apr_days_positive": 0
+    },
+    "static_rules": "192 scenarios, none with meaningful trade opportunity volume positive on Jan validation and Feb and April confirmation.",
+    "hindsight_only_h300_positive_pct": {
+      "jan": 84.494,
+      "feb": 85.146,
+      "apr": 83.719
+    }
+  },
+  "risk": {
+    "physical_orders": 0,
+    "portfolio_simulation": false,
+    "latency": "hypothetical fixed 250ms next bid/ask",
+    "commission_usd_per_0p01_lot_roundtrip": 0.02,
+    "reality": "nonfunded fixed-horizon quote-side diagnostic only"
+  },
+  "compliance": {
+    "profitability_met": false,
+    "directional_accuracy_edge_confirmed": false,
+    "R9_daily_75pct_qualified_gate_met": false,
+    "session_only_trade_orders": false,
+    "funding_100k_used": false,
+    "raw_input_immutable": true,
+    "original_owner_whitepaper_unchanged": true
+  },
+  "disposition": "REJECT exact 0105 model/configs for active trading. RETAIN event generator, multi-timescale feature and cross-feed scientific tests. Need new causal barrier/competing-risks and event-state machine experiments, independent unseen months and real Coinexx spread calibration; do not promote oracle or fit April posthoc.",
+  "next": "GRID0106 directional-change TRUE completed overshoot + competing-risks price barrier and virtual rung lifecycle as research; no funded V1 trading until pre-grid direction quality evidence. April now seen; future untouched holdout should use a different withheld month."
+}
