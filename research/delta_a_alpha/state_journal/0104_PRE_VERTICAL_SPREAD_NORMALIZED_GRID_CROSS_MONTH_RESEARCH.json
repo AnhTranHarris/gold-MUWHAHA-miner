@@ -1,0 +1,59 @@
+{
+  "sequence": 104,
+  "date": "2026-10-10",
+  "status": "PRE_VERTICAL_SHADOW_EVENT_GEOMETRY_CROSS_MONTH_ADVANCE_NO_FUNDED_EDGE",
+  "prior": 103,
+  "mode": "ONE_CREATOR_GRID_GENESIS_BEFORE_SESSIONS_AND_L1_L7",
+  "original_data_read_only": true,
+  "source_ticks": {
+    "jan": 9135062,
+    "feb": 7538339
+  },
+  "original_r9_synth": {
+    "jan_entries": 27980,
+    "feb_entries": 33523
+  },
+  "tests": {
+    "regression_passed": 5,
+    "jan_geometry_variants": 9,
+    "feb_locked_variants": 6,
+    "jan_direction_hypotheses": 15
+  },
+  "hypothesis": {
+    "mode": "adaptive virtual price crossing events",
+    "gap": "max(0.75 USD,1.5*EWMA_source_bidask_spread)",
+    "EWMA_alpha": 0.001,
+    "min_cooldown_seconds": 7,
+    "source_only_uses_asof_observed_quotes": true,
+    "virtual_not_funded": true,
+    "lot_scaling": false,
+    "session_selection": false
+  },
+  "baseline": {
+    "jan_events": 54210,
+    "feb_events": 60603,
+    "jan_spread_gt_step_pct": 37.32,
+    "feb_spread_gt_step_pct": 75
+  },
+  "candidate": {
+    "jan_events": 55732,
+    "feb_events": 53958,
+    "jan_spread_gt_step_pct": 1.68,
+    "feb_spread_gt_step_pct": 2.38,
+    "jan_events_to_r9_total_ratio": 1.99,
+    "feb_events_to_r9_total_ratio": 1.61,
+    "jan_raw_days_cover_75pct_with_uncertified_plus2_report_clock": 21,
+    "feb_daily_cover": "NOT_MEASURED_DAILY_SOURCE_ABSENT"
+  },
+  "scientific_qualification": [
+    "Reduced spread-to-grid mismatch partly mechanical and by construction; candidate changes both gap rule and cooldown; no marginal-profit inference",
+    "RAW events are NOT qualified executable funded trade opportunities",
+    "Early/late January trade sign search did not support positive after-spread directional expectancy; no directional mechanism promoted",
+    "No simulated hold/exit/account return",
+    "February backcheck kept identical grid parameter values",
+    "Do not enable L1 sessions yet"
+  ],
+  "report": "research/delta_a_alpha/grid/GRID_0104_COST_NORMALIZED_VIRTUAL_GRID_JAN_FEB_BREAKTHROUGH.md",
+  "source": "GRID0104_CAUSAL_RESEARCH_PACKAGE.zip linked in current conversation; exact scripts and JSON results",
+  "next": "Improve grid-only directional and broker-executable opportunity quality while preserving high daily event count; thereafter apply four-session self-adjustment only when qualified reliability is demonstrated."
+}
