@@ -1,0 +1,27 @@
+{
+  "schema": "DAA-clean-v1-owner-architecture-correction-v1",
+  "sequence": 100,
+  "owner_action": "STOP_RESEARCH_CYCLE_IMMEDIATELY",
+  "status": "PAUSED_OWNER_ARCHITECTURAL_RECONCILIATION_NO_TRADING_EXPERIMENTS",
+  "owner_verbatim": "i am gonna have to stop your research cycle becuase i think we have a miscommunication.  session aware is a opportunity layer, multi-timeframe is a oppotuniey and volume layer, the other layers are quality layers, the whole system is a trading bot. so when i see you execute trades using only session, i know from a human perpesctive that session is too board, and needs other layers for refinement before trading can take place.",
+  "governance": "research/delta_a_alpha/governance/OWNER_CORRECTION_OPPORTUNITY_LAYERS_NOT_STANDALONE_TRADING_2026_10_10.md",
+  "scope": "L0_data_root__L1_session_opportunity__L2_HTF_structural_opportunity_AND_volume__L3_L6_opportunity_quality_lifecycle__L7_single_capital_execution_governor",
+  "rules": {
+    "session_alone_may_emit_orders": false,
+    "mtf_alone_may_emit_orders": false,
+    "other_standalone_layer_may_emit_orders": false,
+    "full_vertical_quality_gate_required": true,
+    "all_relevant_layers_must_act_or_explicitly_abstain": true,
+    "one_shared_L7": true,
+    "continue_research": false,
+    "invalid_premature_simulation_as_full_V1_proof": true
+  },
+  "observed_active_branch": "J0099 committed causal L0-L2 research kernel with DENY_ALL_NEW_RISK; no verified full V1 engine committed; exploratory $300 tests mentioned in chat not full V1",
+  "preserve": [
+    "R9 Gamma HybridGate SYNTH/REAL report benchmarks",
+    "Raw Dukascopy market data",
+    "Original frozen owner whitepaper",
+    "Original Jan-Feb contaminated-engine cleanup and current clean kernel"
+  ],
+  "next": "Await owner permission and architecture alignment; DO NOT resume research, code development or funded simulation just to meet velocity gate."
+}
