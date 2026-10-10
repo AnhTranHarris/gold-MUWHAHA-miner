@@ -3,7 +3,7 @@
   "sequence": 98,
   "owner_action": "DELETE_CONTAMINATED_JAN_FEB_DERIVED_RESEARCH_AND_LOGIC",
   "owner_scope": "All untrusted derived research settings mechanisms results not raw market data or R9 benchmarks",
-  "git_removed_file_count": 134,
+  "git_removed_file_count": 137,
   "jan_files": 13,
   "feb_files": 55,
   "other_derived_files": 66,
@@ -20,5 +20,11 @@
   "risk": "0.01 lot, trailing stop breathing and recovery warning, global heat governor, broker-feasibility first",
   "new_volume_cap": "175% of R9 SYNTH monthly mean trades",
   "remaining_limit": "Git history still contains past commits; active branch deletion is not Git history erasure. Drive workspace may have additional derived artifacts beyond identified Jan/Feb research-bundle folder.",
-  "no_claim_live_broker_performance": true
+  "no_claim_live_broker_performance": true,
+  "additional_path_only_cleanup": [
+    "research/delta_a_alpha/artifacts/C2D3B_049_ORIGINAL_INDEX_PARITY.json",
+    "research/delta_a_alpha/artifacts/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002.json",
+    "research/delta_a_alpha/grid/DAA_GRID_SYSTEM_BUILD_02_SESSION_TIMEFRAME_JANJUL_STRESS_002_REPORT.md"
+  ],
+  "cleanup_git_commit_stage": "137 total Jan/Feb-derived and contaminated predecessor artifacts removed from active branch; raw Dukascopy and R9 SYNTH exempt"
 }
