@@ -1,0 +1,49 @@
+{
+  "sequence": 167,
+  "predecessor": 166,
+  "branch": "delta-A-alpha",
+  "preregistration": "research/delta_a_alpha/grid/GRID_0167_NATIVE_QUOTE_CAUSAL_CUSUM_WATCHDOG_RELOCK_PREREG.md",
+  "report": "research/delta_a_alpha/grid/GRID_0167_CAUSAL_CUSUM_REGIME_RELOCK_AND_WATCHDOG_RESEARCH_REPORT.md",
+  "full_source_tests_hour_day_week_evidence": "https://drive.google.com/file/d/1IQ-dyEc1F3aD7YHheTtHqY5uR6pR0e0u/view",
+  "source_archive_sha256": "e45f7c9368ae76670aa9d2441d4d3e6d5f80a906dea604963bf39b8e106998d8",
+  "original_source_JanJul_ticks": 57527562,
+  "source_T1": 279486,
+  "source_genuine_T2": 264266,
+  "reference_UTC_eligible_hours": 3332,
+  "old_K4_weak_UTC_hours": 1389,
+  "method_month_screens": 504,
+  "deterministic_QA": "4/4 PASS",
+  "factual_findings": {
+    "source_CUSUM_monitored_spaced_quotes": 191623,
+    "detected_change_events_threshold3": 19122,
+    "detected_change_events_threshold6": 4788,
+    "source_watchdog_control_quote_marks": 4905,
+    "source_watchdog_control_weak_support": 102,
+    "source_watchdog_control_gross_loss": 25023.884,
+    "change_aligned_owner_quote_marks": 5523,
+    "change_aligned_owner_weak_support": 107,
+    "change_aligned_owner_gross_loss": 27828.527,
+    "change_aligned_owner_after050_positive_months": 7,
+    "source_relock_owner_quote_marks": 4118,
+    "source_relock_owner_weak_support": 91,
+    "source_relock_owner_gross_loss": 21971.362,
+    "source_relock_owner_after050_positive_months": 7,
+    "source_quote_worst": -124.82
+  },
+  "limitations": {
+    "MayJul_used_before": true,
+    "broker_execution": false,
+    "funded_account_PnL": false,
+    "no_R9_qualified_trade_density": true,
+    "source_quote_stress_not_actual_coinexx_fill": true
+  },
+  "governance": {
+    "original_V1_whitepaper_unchanged": true,
+    "original_EA_unchanged": true,
+    "no_martingale": true,
+    "trading_enabled": false,
+    "August_2026_sealed": true,
+    "no_strategy_promoted": true
+  },
+  "next_stage": "GRID0168_PREL1_CHANGPOINT_REGIME_PERSISTENCE_AND_SOURCE_QUOTE_L7_HEAT_GOVERNOR"
+}
