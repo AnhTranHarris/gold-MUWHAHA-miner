@@ -1,0 +1,39 @@
+{
+  "schema": "DELTA_A_ALPHA_ORIGINAL_GRID_SESSION_RESEARCH_CHECKPOINT",
+  "branch": "delta-A-alpha",
+  "sequence": 135,
+  "predecessor": 134,
+  "stage": "GRID135",
+  "description": "Causal original grid-event prior auction range breakout/fade, complements",
+  "source_XAUUSD_original_DUKASCOPY_quotes_JanJul": 57527562,
+  "original_grid_T1_quote_events": 279486,
+  "original_3332_reference_hours": 3332,
+  "original_1389_weak_hours": 1389,
+  "method_month_evaluations": 448,
+  "full_report": "research/delta_a_alpha/grid/GRID_0134_TO_0139_SESSION_STATE_SOURCE_RESEARCH_REPORT.md",
+  "full_source_code_hourly_daily_monthly_evidence": "https://drive.google.com/file/d/1CsHW-P2YSGS9J1TrFKAAEONSunfZ4DRA/view",
+  "evidence_zip_sha256": "e94be4253b9930c0b5046fcbfde76d875c47ae573eebf35c2b3aa54e38b7806d",
+  "tests": "GRID0134-0139 integrated causal/regression 8/8 passed",
+  "evidence_status": "Jan-Jul all previously researched; May-Jul chronological secondary evaluation, not pristine untouched holdout",
+  "scientific_facts": {
+    "session_router_600_cap4_mean": -0.779592,
+    "state_router_600_cap4_mean": -0.743134,
+    "source_consensus_gate1_600_cap4_mean": 3.345541,
+    "consensus_weak_hours_supported": 40,
+    "decision": "Straight breakout/fade state and shadow session router all-month after-cost negative. Narrow high-confidence forecast lead insufficient coverage."
+  },
+  "owner_goal": "monthly robustness, daily/weekly and hourly repaired, R9 SYNTH 75% same-UTC-day qualified executable opportunities, not proven by source virtual quote counts",
+  "protections": {
+    "unchanged_K2_K4_original": true,
+    "original_whitepaper_unchanged": true,
+    "original_R9_and_DUKAS_unchanged": true,
+    "only_existing_delta_A_alpha_branch": true,
+    "TradingEnabled": false,
+    "MT5_changed": false,
+    "August2026_SEALED": true,
+    "no_martingale": true,
+    "L1_sessions_implemented": false,
+    "no_broker_trade_result_claims": true
+  },
+  "result": "RESEARCH_ONLY__NO_TRADING_STRATEGY_PROMOTED"
+}
