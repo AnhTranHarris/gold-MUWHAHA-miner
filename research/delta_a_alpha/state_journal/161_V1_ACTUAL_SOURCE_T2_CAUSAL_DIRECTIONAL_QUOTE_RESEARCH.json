@@ -1,0 +1,57 @@
+{
+  "schema": "DAA_V1_CAUSAL_LATER_QUOTE_SOURCE_RESEARCH",
+  "sequence": 161,
+  "predecessor": 160,
+  "branch": "delta-A-alpha",
+  "scope": "Jan-Jul 2026 original Dukascopy quote source, V1 pre-L1 SHADOW ONLY",
+  "original_source_quote_rows": 57527562,
+  "original_K2_T1_quote_events": 279486,
+  "observed_real_T2_qualifying_source_quotes": 264266,
+  "original_GRID0109_eligible_hours": 3332,
+  "original_weak_reference_hours": 1389,
+  "preregistration": "research/delta_a_alpha/grid/GRID_0161_REAL_T2_ASOF_NEW_DIRECTION_AND_SHORT_LONG_V1_FORECAST_PREREG.md",
+  "full_scientific_report": "research/delta_a_alpha/grid/GRID_0161_CAUSAL_OBSERVED_T2_SOURCE_DIRECTIONAL_RESEARCH_REPORT.md",
+  "full_exact_executable_script_month_day_week_hour_and_QA_archive_Library": "/GoldMUWHAHA_Original_Research/J0161/GRID0161_ACTUAL_QUOTE_T2_CAUSAL_V1_DIRECTION_RESEARCH_FULL_SOURCE_EVIDENCE.zip",
+  "library_file_id": "libfile_f87a3a0c6a84819198ad217668c8d1e2",
+  "zip_sha256": "55aa28b76049a012fa979970db55deac22485f3bb93ef52ca71ee2f429f66213",
+  "archive_bytes": 8775308,
+  "methods": 11,
+  "gates": 3,
+  "virtual_caps": 2,
+  "original_months": 7,
+  "method_month_results": 462,
+  "tests_passed": "9/9 deterministic, in addition to J155-160 10/10",
+  "model_training": "Jan-Apr only; later May-Jul chronological but previously inspected and NOT a blind holdout",
+  "source_reality": "actual original real Ask/Bid at first later qualifying source quote >=T1+1000ms, source spread <=T1 spread before 10s expiration; source exits 120/600s after actual quote, $0.02 fee once, +$0.25/$0.50 cost stress",
+  "model_roles": "Fresh T2 120s/600s direction forecasts with and without as-of IANA DST session and frozen earlier completed role data; five-state high-motion horizon router; original T1-frozen role owner as matched control",
+  "examples": {
+    "T1_original_CONTROL_G1_CAP8": {
+      "quoted": 3282,
+      "weak_hours": 83,
+      "positive_months_after_extra050": 7,
+      "mean_source_USD_per_oz": 3.836688
+    },
+    "T2_NEW_SESSION_AGREEMENT_LONG_G05_CAP8": {
+      "quoted": 5963,
+      "weak_hours": 121,
+      "positive_months_after_extra050": 6,
+      "mean_source_USD_per_oz": 4.160357
+    },
+    "T2_NEW_SESSION_REGIME_G1_CAP8": {
+      "quoted": 8148,
+      "weak_hours": 159,
+      "positive_months_after_extra050": 5,
+      "mean_source_USD_per_oz": 2.214786
+    }
+  },
+  "day_clustered_95pct_MayJul_includes_zero": true,
+  "whole_system_R9_funded_75pct_qualified_same_day_met": false,
+  "account_risk_certified": false,
+  "small_capital_suitable_certified": false,
+  "scientific_decision": "J161 expands causal candidate supply under shared pending-slot governor but does NOT surpass original matched control 7-month source extra-cost consistency; no new strategy promotion, no EA changes or real orders.",
+  "august_2026_sealed": true,
+  "original_owner_whitepaper_verbatim_retained": true,
+  "original_DUKASCOPY_and_R9_untouched": true,
+  "trading_enabled": false,
+  "next": "GRID0162_RESIDUAL_ECONOMIC_DIRECTION_RELIABILITY_CROSS_FIT_CAUSAL_COST_CAPACITY_AND_UNSUPPORTED_HOURS"
+}
