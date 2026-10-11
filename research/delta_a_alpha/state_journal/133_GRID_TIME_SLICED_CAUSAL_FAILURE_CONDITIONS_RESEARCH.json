@@ -1,0 +1,49 @@
+{
+  "schema": "DAA_GRID0133_CAUSAL_TIME_SLICED_NATIVE_QUOTE_EXIT_RESEARCH",
+  "sequence": 133,
+  "predecessor": 132,
+  "branch": "delta-A-alpha",
+  "original_source_quotes": 57527562,
+  "source_months": "January through July 2026 originally and repeatedly researched",
+  "preregistration": "research/delta_a_alpha/grid/GRID_0133_TIME_SLICED_IGNITION_FAILURE_CAUSAL_EXIT_PREREG.md",
+  "report": "research/delta_a_alpha/grid/GRID_0133_TIME_SLICED_CAUSAL_RISK_RESULT.md",
+  "source_and_evidence": "https://drive.google.com/file/d/1qAVJUUnFGsULr4lIbKQ06dCZrPP9vgmU/view",
+  "sha256": "098ea26947d5f158415d0771166af1767e418d3d70bdfdf262a2306c96722cf8",
+  "original_earlier_evidence": "https://drive.google.com/file/d/1QyTTsoegvvLmypAVGO-SQTgXHTAxmfG3/view",
+  "source_month_method_panels": 189,
+  "methods_per_month": 27,
+  "months": 7,
+  "tests": "6/6 new PASS plus 12/12 preceding recovery PASS",
+  "original_quote_candidate_count": 894,
+  "original_reference_eligible_hours": 3332,
+  "original_K4_weak_hours": 1389,
+  "weak_hours_supported": 19,
+  "method_summary": {
+    "control": "240s original frozen no early exit",
+    "original_weighted_mean_usd_oz": 2.33,
+    "original_gross_loss_magnitude_usd_oz": 5490,
+    "original_worst_usd_oz": -96.737,
+    "early_180s_bad_mark_no_ignition": {
+      "mean_usd_oz": 2.084,
+      "gross_loss_magnitude_usd_oz": 5687.74,
+      "worst_usd_oz": -79.17,
+      "positive_months_after_plus025": 7
+    },
+    "early_120s_prior_profit_retrace": {
+      "mean_usd_oz": 1.637,
+      "gross_loss_magnitude_usd_oz": 4895.79,
+      "positive_months": 6
+    },
+    "all_month_positive_methods": 9,
+    "all_month_positive_methods_after_extra_025": 4
+  },
+  "decision": "No robust protective tail/gross-loss plus positive expectancy improvement. Time-sliced exit did not solve weak-hour density or qualified daily R9 target. DO NOT PROMOTE. Recover all J0124-J0133 science as continuing chain.",
+  "owner_original_grid_preserved": true,
+  "original_K2_K4_preserved": true,
+  "august_sealed": true,
+  "no_martingale": true,
+  "no_live_order": true,
+  "no_broker_profit_certification": true,
+  "trading_enabled": false,
+  "next": "GRID0134_ENTRY_TIME_QUOTE_NATURAL_RISK_STATE_COHORT_AND_COVERAGE_BALANCE_PRE_REGISTRATION"
+}
