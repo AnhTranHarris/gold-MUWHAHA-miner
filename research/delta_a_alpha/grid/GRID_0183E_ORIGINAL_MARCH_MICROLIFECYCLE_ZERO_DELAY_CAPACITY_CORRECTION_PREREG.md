@@ -1,0 +1,11 @@
+# GRID0183E prereg — source original March135 tiny lifetime Watchdog and zero-delay-capacity source reality
+
+2026-10-11. Parent J0183C/D, same original owner-governed delta-A-alpha. Archived J183C original March quality 15988 accepted historical source positions; original modeled March net +125792.74, actual independent BidAsk source markout +107602.173 after per-ticket 0.52 research fee; archival in-month cell selection is hindsight, not portable live alpha.
+
+FALSIFICATION J183D initial delayed-entry cap test incorrectly let positions whose ORIGINAL archived exit preceded a +1sec later entry permanently occupy slots as unresolved. This source exit path cannot represent physical one-second-delayed trades; results of J183D invalid for portfolio capacity and retained only for audit.
+
+Specifically original March WATCHDOG role has 5527 accepted tickets; 917 had original lifecycle <1000ms and 1535 <=2000ms. The prior +1s quote sensitivity analysis was conditional on surviving original source lifecycle; never turn future exit availability into admission information.
+
+Pre-register corrected idealized 0ms original first actual quote at E and original first actual opposite quote at X, separate source-normalized P, on real ordered 9,433,179 March Dukascopy ticks. Re-simulate ONLY from original 15988 cap448 selected source cohort with shared cap8,16,32,64,92,448 chronologically at actual source E (zero simulated latency upper bound) and release at genuine original source X. No source quote P, X target outcome, or month selection may permit an entry. Report original March 496 eligible original hour panel and 203 K4 UNSIGNED weak including zeros, genuine quote-side profit and gross loss, realized-only DD, daily gross risk, all classes incl original Watchdog, negative/profitable/empty hours. Multi-family original PF-winning source selected from March outcomes, so no real broker profitability assertion.
+
++1second source quote tests remain posthoc matched-quote price sensitivity only and are not valid whole-campaign capacity replays until exit policy is specified by source-known information. All source files immutable, August sealed, EA disabled, no Martingale or 75pct funded losing-hour claim.
