@@ -1,0 +1,47 @@
+{
+  "schema": "DAA_V1_ORIGINAL_LIBRARY_SOURCE_ZERO_OPPORTUNITY_MANUFACTURE_CAUSAL_FORENSIC",
+  "sequence": 176,
+  "predecessor": 175,
+  "branch": "delta-A-alpha",
+  "source_stages": [
+    "GRID0176A",
+    "GRID0176B"
+  ],
+  "preregs": [
+    "research/delta_a_alpha/grid/GRID_0176A_APRIL_ORIGINAL_LAYER_SOURCE_HOURLY_OPPORTUNITY_SUPPLY_CEILING_PREREG.md",
+    "research/delta_a_alpha/grid/GRID_0176B_ZERO_ORIGINAL_SOURCE_HOURLY_GRID_SUPPLY_VS_REAL_APRIL_QUOTES_PREREG.md"
+  ],
+  "report": "research/delta_a_alpha/grid/GRID_0176_ORIGINAL_APRIL_L1_L3_NO_MANUFACTURED_EVENTS_DESPITE_REAL_SOURCE_QUOTES.md",
+  "full_scripts_tests_all_original_hours_evidence": "https://drive.google.com/file/d/1kfbBZZ6gB5h_-ale3E1Ra4r3x0EebKCj/view",
+  "zip_sha256": "94ee048ac494f942a8f6e9969eb41d3d48a198527108b4477be42be6db2b2df6",
+  "original_April_raw_compressed_sha256": "30375098f62aed6cabc32ec6b67c57c20baec9b6d9be1ce0a204e09806c1ec0f",
+  "original_April_exact_observed_BidAsk_quotes": 7470570,
+  "original_eligible_UTC_hours": 470,
+  "original_K4_UNSIGNED_weak_hours": 179,
+  "original_archived_source_alternative_families": 26,
+  "original_raw_candidates_before_timestamp_dedup": 162025,
+  "distinct_source_entry_quote_timestamps": 34601,
+  "old_K4_weak_hours_zero_all_recovered_source_entry_proposals": 100,
+  "old_K4_weak_hours_5plus_distinct_available_source_entry_proposals": 74,
+  "old_K4_weak_hours_zero_proposals_with_1000plus_real_source_quotes": 100,
+  "original_zero_source_weak_with_1000_quotes_by_reporting_session": {
+    "TOKYO": 49,
+    "LONDON": 14,
+    "LONDON_NY_OVERLAP": 11,
+    "NEW_YORK": 13,
+    "SYDNEY": 13
+  },
+  "original_zero_source_hours_total_actual_source_quote_events": 1307851,
+  "minimum_additional_5plus_research_opportunity_supply_hours_to_reach_75pct_of_original_K4_cohort": 61,
+  "qa": "7/7 source accounting deterministic PASS",
+  "scientific_constraint": "A source quote proves market activity, not directional profit; original K4 weak is not actual funded losing hour. Archived alt streams cannot all be executed concurrently; this is source manufacturing coverage only.",
+  "account_profitability_proven": false,
+  "after_Coinexx_quote_contract_execution_proven": false,
+  "full_8layer_original_V1_portfolio_complete": false,
+  "JanJul_total_75pct_true_funded_loss_reduction_met": false,
+  "August_sealed": true,
+  "September_reserved": true,
+  "trading_enabled": false,
+  "no_Martingale": true,
+  "next": "GRID0177_NATIVE_SESSION_AWARE_HOURLY_L1_L3_OPPORTUNITY_MANUFACTURE_WITH_COMPLETED_MTF_AND_PAID_WATCHDOG_SHARED_GOVERNOR"
+}
