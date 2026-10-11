@@ -1,0 +1,20 @@
+# GRID0112 PRE-REGISTRATION — source-native quote cost/recovery and virtual-rung sign state
+Date 2026-10-10. Same gold-MUWHAHA-miner branch delta-A-alpha. Scientific parent J0111, full original source/evidence https://drive.google.com/file/d/1hvw_Dr5x3hO5sOzTHPPbxbFJDhKBnv5B/view. This is a NEW independently identifiable exploratory family, not mutation or retroactive promotion of J0111. August SEALED, no sessions, L1-L7 funded activation, EA, R9/Gamma imports, or Martingale.
+
+## Fixed scientific basis
+Use exact preserved GRID0108 tick event scanner and original as-of floating K2/K4 lane definitions, source JAN-JUL chronology; select original GRID0111 first-response T1 at f=.40 observed gap (within 15s) as reference decision timestamp and candidate identity. No change to event geometry, trading_enabled=false. The full 7 prior months are already repeatedly inspected; Jan-Apr development, May-Jul later chronology only and NEVER pristine unseen.
+
+## Distinct as-of mechanisms at T1 — fixed primary values before labels
+A. NATIVE QUOTE-FRICTION: quote spread(T1)/original G <=0.65 and <=0.85, separately; also spread(T1)/spread(T0)<=0.80 and <=1.00. Alternative quality tags; not inventing executable fills at mid or double-counting spread.
+B. COST-RECOVERY TRAJECTORY: hypothetically compare past source ask/bid at T0 to *currently observed* opposite quote side at T1 in the elected T1 sign, subtract 0.02 fee. Value >=0 or >= -0.25 after one full hypothetical round-trip; this is a lagged causal state FEATURE, NOT a T0 live trade, not prior valid profit or hindsight.
+C. VIRTUAL RUNG PRESSURE (prior crossings): signed last 60s and 300s K2 virtual crossing imbalance, computed only from observed earlier T0 event_signs. When signed recent upstream crossing flow agrees with T1 elected quote direction and abs(flow)>=2, can retain sign; disagreement is separately tagged. No physical grid inventory or averaging.
+D. LOCAL GRID NATIVE QUOTE MOMENTUM (no session/HTF bars): sign of as-of T1 vs quote at/before T1-15s and T1-60s; sign alignment with T1 elected BUY/SELL, each separately. Current source known quote history only.
+E. COMPLEMENTS (strictly predeclared): original T1 first-response race + native quote-friction A0.85 AND same-direction 60s virtual-rung flow, and race + <=0.85 AND as-of 15s quote momentum. Preserve primary raw opportunity cohort to quantify cost of retained activity.
+
+Each filter is measured at T1 and must not read forward outcomes. Except for stage T1 first response the signal side is the original race winner, not an ex-post future oracle. No adaptive thresholds fitted to month labels or UTC-hour bins. This phase tests state/participation enrichment, not a new funded lifecycle.
+
+## Predefined outcomes
+For every mask and each month report unique valid quote T1 entry count; Ask for BUY/Bid for SELL; liquidation Bid for BUY/Ask for SELL at first source quote at or after T1+30/120/600s (<=10s late), $0.02 roundtrip fee once; mean/positive fraction/worst tail. Report hourly original 3332 baseline eligible weekday hours with no-T1-support counted, and all 181 historical UTC-day records; per-month, per-day, per-hour coverage and ratio to original R9 SYNTH target (raw counts never equal qualified funded trades). K2 reference f.40 is held identical to completed J0111. Primary quote-side sensitivity additional 0.10 and 0.25 per completed hypothetical trade plus lagged +250ms / +1000ms quote entry. Source spreads are already embedded; no additional full-spread subtraction. First-passage future barrier for diagnostic only.
+
+## Acceptance and failure discipline
+Do not promote a filter or combination for lowering losses merely by removing most events; require multiple-month positive after-cost expectancy and useful daily/hourly supply, preserved K2/K4, parameter neighborhood and genuinely uninspected independent data before unlock. Every exploratory failure and all candidates saved. Original January/February profitable derived mechanisms from earlier contaminated lineage cannot be imported. Fixed lot future hypothetical 0.01, account $100k later only, no current physical PnL.
