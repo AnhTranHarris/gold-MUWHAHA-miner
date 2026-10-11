@@ -1,0 +1,76 @@
+{
+  "schema": "DAA_GRID0111_CAUSAL_GRID_ONLY_TWO_STAGE_BIDASK_SIGN_RESEARCH",
+  "sequence": 111,
+  "date": "2026-10-10",
+  "predecessor": 110,
+  "parent_scientific_sequence": 109,
+  "branch": "delta-A-alpha",
+  "parent_commit_at_prereg": "3073fd6682595e1262141fc52a8672d38faa594f",
+  "prereg_commit": "05f0d9f564d948417c3bc9123f593ebeaee69c4d",
+  "scientific_report": "research/delta_a_alpha/grid/GRID_0111_TWO_STAGE_NATIVE_BIDASK_DIRECTION_RESEARCH_REPORT.md",
+  "report_commit": "15bb3ad0f13f08b7605f6e93258c91e91e906ac0",
+  "reproducible_zip_drive": "https://drive.google.com/file/d/1hvw_Dr5x3hO5sOzTHPPbxbFJDhKBnv5B/view",
+  "reproducible_zip_sha256": "3b17d810c88f6853e922feb9028beb2aa8b161d933f6152b8a541bc7f1f324b3",
+  "report_drive": "https://drive.google.com/file/d/1fdEjryegXSighJRtxiAOOuzMIXOo7gRD/view",
+  "source_lineage": "Original unchanged GRID0108 clean_grid_0104_ancestor/grid_event_economic_geometry.py event_scan + original XAUUSD DUKAS JAN-JUL",
+  "original_quotes": 57527562,
+  "base_grid_events": 390445,
+  "preserved_broad_K2_events": 297947,
+  "preserved_high_K4_events": 218132,
+  "no_original_data_changes": true,
+  "august_sealed": true,
+  "trading_enabled": false,
+  "no_funded_orders": true,
+  "modes": [
+    "grid continuation T1",
+    "grid reclaim T1",
+    "first-response race T1",
+    "failed-escape reclaim T1",
+    "delayed T1 drift 250ms/1000ms"
+  ],
+  "variants_per_month": 23,
+  "month_count": 7,
+  "variant_month_evaluations": 161,
+  "tested_horizons_sec": [
+    30,
+    120,
+    600
+  ],
+  "economics": "Source Bid/Ask on T1 and liquidation quote at horizon, subtract $0.02 hypothetical 1oz roundtrip once; not broker fills or trade PnL",
+  "predeclared_k2_race_f400": {
+    "raw_t1_events": 279486,
+    "valid_120": 279311,
+    "weighted_mean_120_quote_usd": -0.7817421,
+    "source_eligible_weekday_hours": 3332,
+    "atleast_5_quote_supported_hours": 3300,
+    "positive_signed_mean_hours": 60,
+    "unsupported_hours": 32
+  },
+  "best_posthoc_120s": {
+    "method": "K4_RECLAIM_F200",
+    "valid_events": 166761,
+    "mean_120_quote_usd": -0.75655,
+    "positive_mean_months": 0,
+    "do_not_promote": true
+  },
+  "best_posthoc_30s": {
+    "method": "K2_CONT_F200",
+    "valid_events": 221358,
+    "mean_30_quote_usd": -0.77564,
+    "positive_mean_months": 0
+  },
+  "best_posthoc_600s": {
+    "method": "K2_RECLAIM_F200",
+    "valid_events": 223442,
+    "mean_600_quote_usd": -0.73054,
+    "positive_mean_months": 0
+  },
+  "all_23_pooled_after_cost_negative_each_horizon": true,
+  "daily_hourly_evidence": "ZIP has exact per-original-baseline UTC-hour rows with unsupported entries and UTC-day ledgers, monthly results for 30/120/600s and cost/latency/first-passage sensitivity",
+  "regression_unit_tests": "9/9 PASS; original monthly K2/K4 event counts re-reproduced",
+  "science_decision": "NEGATIVE_FOR_DIRECTION; preserve K2/K4 as verified unsigned movement-capacity features, no new signed edge, no EA promotion",
+  "holdout": "All JAN-JUL already repeatedly inspected; May-July chronological diagnostic only, NOT blind; August sealed",
+  "next_unit": "GRID0112_PRE_L1_COST_RECOVERY_GRID_NATIVE_QUOTE_RESPONSE_AND_VIRTUAL_RUNG_PERSISTENCE_HYPOTHESIS",
+  "new_hypotheses": "As-of cost-recovery frontier at T1 + virtual rung history + quote freshness, test distinct information gain and density without hour/session routing; prereg before test; do not retrofit results or revive failed methods",
+  "current_valid_profit_strategy": false
+}
