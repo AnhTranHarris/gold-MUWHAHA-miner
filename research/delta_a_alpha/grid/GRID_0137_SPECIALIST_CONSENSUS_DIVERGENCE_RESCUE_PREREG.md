@@ -1,0 +1,11 @@
+# GRID0137 PRE-REG: causal ownership of disagreements between session, source-state and global grid specialists
+October 10 2026 Chicago. Parent J0136, same branch delta-A-alpha, research not L1 or EA activation. Preserve original K2/K4 and GRID0109 3332-hour /1389 original weak-UTC-hour evidence and frozen J0124 global source 600s HGB7 forecast. Reconstruct Jan-Apr-trained J0136 specialist models once with unchanged original features and independent as-of source labels, then evaluate Jan-Apr separately from already seen May–Jul (not pristine). Original August remains sealed. No date/hour/UTC label input to global or state model; city-clock only in SHADOW session-expert comparator.
+
+NEW FALSIFIABLE SOURCE-NATIVE MULTI-OWNER hypothesis: different specialists may agree only when source quote regime supports a trustworthy directional move. Predeclared 6 direction owners from frozen at-T1 HGB7 600sec global G, separate DST session S and prior-price/spread market-state M predictions:
+(A) equal-forecast median vote, trade sign(median(G,S,M)); strength abs(median);
+(B) weighted causal prior (0.50G +0.25S+0.25M) sign/magnitude;
+(C) two-out-of-three agreement, trade sign agreed, strength MIN abs of the two agreeing predictions, if no 2 agreement abstain;
+(D) full triple signed agreement, strength MIN abs(G,S,M);
+(E) market-state rescue: if M disagrees with G AND abs(M)>=1.5*(source T1 spread+0.02) and abs(G)<1.0*(spread+fee), use M; otherwise use G, strength abs selected;
+(F) session rescue same as E but S vs G; diagnostic checks whether session labels alone help;
+No retrospective selection by timestamp or by earlier model outcomes. Gate strength>= 0.5,1.0,1.5 times source entry known spread+0.02, cap first-come 4 and 8 with 600s+10s conservative virtual hold. 6x3x2x7=252 quote-setting-months. Actual first source future quote at +600s <=10sec late, opposite Bid/Ask costs included once with fee 0.02 and +0.25 stress, no physical order claims. Original 3332 complete source UTC hours, 1389 originally K4 weak, all weekdays and weekly/monthly source counts including unsupported, and R9 qualified daily 75% objective not yet met. Keep original grid source, never substitute these model scans for frozen creator geometry. No strategy promoted until independent untouched data and MT5 broker quote execution.
