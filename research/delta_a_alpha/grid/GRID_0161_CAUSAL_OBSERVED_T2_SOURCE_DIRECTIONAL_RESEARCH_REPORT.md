@@ -1,0 +1,43 @@
+# GRID0161: At-actual-quote V1 direction and 120/600-second horizon reelection — ORIGINAL XAUUSD source research
+
+**Date:** October 11, 2026. **Parent:** verified J0160, existing `delta-A-alpha` only. **Research stage:** pre-L1, source-quote SHADOW with trading disabled, no EA modification, no Martingale, August 2026 source SEALED. Original owner-frozen entire Vertical Grid whitepaper, governing full transcript and new owner amendments remain binding; this report is derivative evidence, not a replacement.
+
+## Precise original source lineage and causal event design
+
+- Reuses original GRID0108 K2/K4 source scanner / J0111 observed T1 source grid event tape (279,486 original T1). Source original Dukascopy Jan–Jul 2026 57,527,562 genuine ordered Bid/Ask quotes; original GRID0109 3,332 eligible reference UTC hours /1,389 original poor hours, with unsupported reference hours retained as zeros; original J0142 fully CLOSED H4/H1/M15/M5 structural feature roles and frozen Jan-Apr-trained R120/R600/G600 forecasts.
+- GRID0161 newly constructs first source **T2** quote at or after original T1 +1,000ms (never before), with actually observed spread at T2 <= original T1 observed spread, before a 10sec real-quote pending request expires. Genuine T2 qualified quote source records: **264,266/279,486 original T1 events**, verified across all seven original months, without fabricating limit/passive fills.
+- At T2, model input is all previously observed original T1 source features + 7 fully completed H4/H1/M15/M5 structural-role fields + current actually known T2 spread, T2−T1 quote mid displacement, observed quote age, old frozen forecasts and original as-of five-state market condition. Compare exact same model without versus with **IANA session one-hot** (session identity known causally from source timestamp). **No future source label, target, month, day, or hour performance label was supplied as a model input**.
+- Separate HistGradientBoostingRegressor models target real future source midpoint shift from T2 to T2+120sec or T2+600sec (single fixed model params leaves7, 100 iters, minleaf100, L2 20, LR .05, seed161). **Four** models were fitted on Jan–Apr data only (167,205 T2+120 and 166,782 T2+600 valid training quotes), then frozen across Jan–Jul. **May–July had already been researched repeatedly; comparison is chronological but NOT an untouched scientific holdout.** Predictions were saved as source-aligned `.npz`; the source train code and full feature contract are archived. Frozen Jan–Apr earlier forecasts used as stacked input are fitted to earlier months, so Jan–Apr training/in-sample results are NOT independent cross-fitted proof.
+- Preregistered rule families: short-only T2 elect BUY/SELL h120; long-only h600; agreement short or long (where short and long learned signs agree); causal five-state high-motion chooses h600 otherwise h120; plus the frozen original T1 role120/600 specialist evaluated from the same quote T2 as a matched control. For each new estimator without/with session one-hot, confidence gate 0.5/1.0/1.5 × **current observed T2 source spread+0.02**, global FIFO virtual CAP4/8. Eleven distinct method families ×3 thresholds ×2 caps ×7 original source months = **462 method-month evaluations**.
+- One global pending slot is held from original T1 to genuinely observed T2; at T2 later model chooses a signed entry/horizon or rejects and releases the pending slot. Qualifying source entries use **observed T2 Ask BUY / Bid SELL** and the real opposite-side first subsequent quote at the frozen +120/+600s horizon, source fee $0.02 once; +$0.25 and +$0.50 modeled extra slippage are EX-POST stress, not actual Coinexx broker fill measurements. Source T2 decision assumes computation can act at the same tick with zero extra compute/order latency; this is an optimistic limitation and any unexpectedly positive candidate would require +250/+1,000ms additional quote lag validation before consideration.
+
+## Quantitative results — NO seven-month robust new-model breakthrough
+
+| Original method on same T2 quote, shared cap8 | Actual quote outcomes | Old weak hours supported (>=5) | Months with mean positive after +$0.50 extra cost | Pooled mean, original source fee included | Gross loss magnitude on virtual 1oz marks |
+|---|---:|---:|---:|---:|---:|
+| Frozen T1 five-state role owner, confidence1.0 (matched control) | **3,282** | **83/1389** | **7/7** | **+$3.837/oz** | **$19,348** |
+| New session-aware T2 120/600 forecast agreement, long600, confidence0.5 | 5,963 | 121/1389 | 6/7 | +$4.160/oz | $31,233 |
+| New non-session T2 120/600 agreement, long600, confidence0.5 | 5,960 | 120/1389 | 6/7 | +$4.114/oz | $31,209 |
+| New session-aware five-state T2 horizon router, confidence1.0 | **8,148** | **159/1389** | **5/7** | **+$2.215/oz** | **$35,840** |
+
+All marks are hypothetical quote-side returns at real source Bid/Ask, *not physical executed account orders*. Competing methods share same source tape but choose different admissions, so summed virtual quote returns are not a funded portfolio PnL or independent trials.
+
+The session-aware T2 agreement has broader weak-hour coverage than frozen T1 but fails strong-cost month consistency; the broader session-aware T2 regime router improves to **159 old weak hours**, but **May +$0.101 and June +$0.257 source net** turn negative after extra $0.50. The source model does not provide meaningful evidence that session identity itself improves substantially: without-session long-consensus 5,960 quote marks /120 old weak hours versus session-aware 5,963/121 under the same gate/cap. No date-specific hindsight router was permitted.
+
+May–July UTC-day cluster bootstrap (2,500 resamples on 66 reference weekday source UTC days, including zeros) for **additional +$0.50 per-quote execution stress**:
+
+- Frozen T1 matched control: **+$0.992/oz** on 615 qualifying reference-day source marks, 95% interval **[−$2.173,+$3.566]**.
+- New session-aware T2 agreement h600 gate0.5: **+$0.622/oz** on 1,110, interval **[−$1.220,+$2.443]**.
+- New session-aware T2 high-motion dynamic h120/h600 gate1.0: **+$0.014/oz** on 1,880 reference-day quotes, interval **[−$1.182,+$1.195]**.
+
+Each interval crosses zero. These are exploratory day-cluster uncertainty intervals for previously seen historical dates, not an independent proof. Original T1 full source tape includes quote events outside GRID0109's 3,332 reference hours (particularly weekend source reopen), which are separately counted in the comprehensive all-source quote means and explicitly *not* reclassified as historical weak-hour successes. For example, the new session-aware T2 regime h120/h600 method had 8,148 all-source quote marks, 7,490 within original 3,332-hour reference, and 658 outside the original hour cohort. Nothing was deleted or altered.
+
+## Scientific decision and new question
+
+**Reject as a promoted whole-system strategy.** Two-stage forecast ownership creates *additional* quoted candidate supply but fails stronger month robustness, high gross adverse outcomes and 1,389-hour coverage constraints. This is a scientifically supported **opportunity-generation research method**, not a proven trading edge. The strongest sources of failed hours remain conditional directional drift versus source costs and capacity, even with session/MTF/Watchdog awareness. A next test should use **regime-specific causal economic reliability** of specialized strategies and physically credible exposure limits, instead of adding layers indiscriminately. Crucially, any successful subset must later be measured on genuinely independent unused quote months/broker/demo data; August remains sealed unless owner explicitly authorizes.
+
+## Exact QA and replay scope
+
+- J0161 newly extracted real quotes in monthly original `source_t2_quoted_01..07.npz`; includes actual T2 and actual exit bid/ask for 120/600; model result source-aligned `j161_t2_frozen_predictions.npz`; full readable model contract, source implementations, complete original 3,332 eligible-hour/month/day/week panels and extreme losses in the accompanying archive.
+- **9/9 deterministic regression tests PASS**: real quote >=+1000ms, pending expiry, first actual source quote/timeout, no source-side fill imagination, one global cap, same-T1 dedup, training months fixed Jan-Apr, original monthly counts and original 1,389-hour reference invariant.
+- Original owner V1 whitepaper, entire ratified transcript and original GRID0108–J0160 source/risk evidence remain unmodified. No new branch, MT5 order, broker-certified return, Martingale, or August data opened.
