@@ -1,0 +1,56 @@
+{
+  "schema": "DELTA_A_ALPHA_ORIGINAL_GRID_SESSION_RESEARCH_CHECKPOINT",
+  "branch": "delta-A-alpha",
+  "sequence": 139,
+  "predecessor": 138,
+  "stage": "GRID139",
+  "description": "True source quote BidAsk 0/250/1000ms lag at 120/240/600s independent quote execution stress",
+  "source_XAUUSD_original_DUKASCOPY_quotes_JanJul": 57527562,
+  "original_grid_T1_quote_events": 279486,
+  "original_3332_reference_hours": 3332,
+  "original_1389_weak_hours": 1389,
+  "method_month_evaluations": 126,
+  "full_report": "research/delta_a_alpha/grid/GRID_0134_TO_0139_SESSION_STATE_SOURCE_RESEARCH_REPORT.md",
+  "full_source_code_hourly_daily_monthly_evidence": "https://drive.google.com/file/d/1CsHW-P2YSGS9J1TrFKAAEONSunfZ4DRA/view",
+  "evidence_zip_sha256": "e94be4253b9930c0b5046fcbfde76d875c47ae573eebf35c2b3aa54e38b7806d",
+  "tests": "GRID0134-0139 integrated causal/regression 8/8 passed",
+  "evidence_status": "Jan-Jul all previously researched; May-Jul chronological secondary evaluation, not pristine untouched holdout",
+  "scientific_facts": {
+    "session_vote_G1p25_CAP8_600_LAG1000_means": [
+      11.0885,
+      7.8418,
+      5.9051,
+      1.8489,
+      0.6975,
+      0.0747,
+      0.2609
+    ],
+    "session_vote_G1p25_CAP8_240_LAG1000_means": [
+      5.2061,
+      3.4957,
+      1.081,
+      1.0634,
+      1.0042,
+      0.7338,
+      -0.4409
+    ],
+    "June_after_extra_slippage_0p25_mean": -0.1753,
+    "weak_hours_supported": 56,
+    "quote_parity_abs_less_than": 0.002,
+    "decision": "No 4min 7/7 profitability; 10min June fails +0.25 stress, quote-side tail enormous; do not promote."
+  },
+  "owner_goal": "monthly robustness, daily/weekly and hourly repaired, R9 SYNTH 75% same-UTC-day qualified executable opportunities, not proven by source virtual quote counts",
+  "protections": {
+    "unchanged_K2_K4_original": true,
+    "original_whitepaper_unchanged": true,
+    "original_R9_and_DUKAS_unchanged": true,
+    "only_existing_delta_A_alpha_branch": true,
+    "TradingEnabled": false,
+    "MT5_changed": false,
+    "August2026_SEALED": true,
+    "no_martingale": true,
+    "L1_sessions_implemented": false,
+    "no_broker_trade_result_claims": true
+  },
+  "result": "RESEARCH_ONLY__NO_TRADING_STRATEGY_PROMOTED"
+}
