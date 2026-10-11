@@ -1,0 +1,16 @@
+# GRID0179B prereg — first observed source quote profit-lock, trailing, and time-decay L6 under L7 after J179A
+2026-10-11 delta-A-alpha only, original owner V1 full whitepaper and full governor superior; active scientific J178 frozen. GRID0179A true T1 pending->genuine T2 source admitted chronological original 57,527,562 quote replay: old offer-level prior J178M q were not full entry-decision parity due future quote at-T2 permit looked at T1, and a March cap collision changes exact accepted ticket identity; NEVER suppress this finding. Jan-Jul previously tested, no pristine holdout. August SEALED, EA disabled, no Martingale.
+Earlier new source quote risk engine found H1/H4 aligned baseline 703 original accepted SOURCE quotes ~+1231.82 quote-unit net after original actual $0.52 research cost, six of seven months positive. Hard HOURDD20 / DAYDD60/stop8 often reduce daily DD but also destroy net. None reaches original owner 75% funded losing-hour goal or sufficiently restores opportunity density.
+NEW distinct causal mechanism: Rather than stop a pullback merely for being down, L6 can only trail or lock once a trade has FIRST genuinely printed a positive source-quote-side mark-to-market, then if the market gives back a fixed amount close at the *current observed opposite BID/ASK*, not a hypothetical barrier price. One global CAP8 and same T1→T2 source known H4 or H1/H4 owner (both as fixed comparators). On every real ordered source quote, track each trade's previously observed best liquidating quote-net (once .52 research fee), no future MFE or outcome label. Fixed predeclared per-ticket scenarios:
+ A unchanged 1800sec source closing.
+ B source net peak>=+4 and current net<=peak-8 (giveback);
+ C peak>=+6 and pullback>=12;
+ D peak>=+8 and pullback>=16;
+ E take profit at genuine observed quote first source net>=+5;
+ F take profit at >=+10;
+ G take profit at >=+15;
+ H if trade age>=600sec AND current source mark net<-5, close reduce-only on actual quote;
+ I age>=1200sec mark net<-5;
+ J once current genuine NY FX-day quote-equity PROFIT relative day first observed quote>=25, trailing DAY equity from observed peak by15 triggers reduce-only close all until next structurally observed 15minute phase or 30min, no retrospective select day winners.
+ K if day source equity profit>=40, floating giveback>=20, close same observed market quote and wait30min.
+Every scenario applies Jan-Jul unchanged to ORIGINAL Asia session-kind1 source cohort with completed structural H4/H1/M15/M5 and same underlying source frozen offers; report original 3332 eligible UTC hours and 1389 original UNSIGNED K4 research cohort separately from real signed losing hours. Show UTC+17NewYork day/hour CLOSED outcomes/gross gains/gross losses, intrahour floating equity drawdown, NY FX-day peak-trough DD, positive served hours and 5+ qualified positive hours, source ticket lifetime, net DD recovery, max slots and denied due cap. Source unit USD/oz normalized and cannot be treated Coinexx funded account; original Jan–Jul previously studied, no true holdout, original cross-family April win selection prohibited. Next changes contingent on source market features, no month/date ex-post selection, no EA activation, August SEALED.
