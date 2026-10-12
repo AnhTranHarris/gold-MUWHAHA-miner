@@ -1,0 +1,52 @@
+{
+  "results": [
+    {
+      "mt5_log_day": "07",
+      "mt5_file_sha256": "5497cbc9fcfec4b023603097f67ccfdf1879f04e961fc6ed8701937949409d89",
+      "mt5_ticks": 375829,
+      "best_utc_to_mt5_server_offset_minutes": 180,
+      "best_minute_return_corr": 0.997508,
+      "minute_return_corr_at_zero": -0.08737,
+      "matched_500ms_after_alignment": 361568,
+      "matched_fraction": 0.96205,
+      "median_mt5_spread_usd": 0.2,
+      "median_dukas_spread_usd_matched": 0.967,
+      "median_abs_bid_basis_usd_matched": 0.395,
+      "median_abs_ask_basis_usd_matched": 0.345
+    },
+    {
+      "mt5_log_day": "08",
+      "mt5_file_sha256": "49ed19aaf0e3922e43f82a7bb64a4d0df277294b7b903fbad905261c2c38ac30",
+      "mt5_ticks": 382597,
+      "best_utc_to_mt5_server_offset_minutes": 180,
+      "best_minute_return_corr": 0.997017,
+      "minute_return_corr_at_zero": -0.077844,
+      "matched_500ms_after_alignment": 367824,
+      "matched_fraction": 0.96139,
+      "median_mt5_spread_usd": 0.2,
+      "median_dukas_spread_usd_matched": 0.79,
+      "median_abs_bid_basis_usd_matched": 0.315,
+      "median_abs_ask_basis_usd_matched": 0.295
+    },
+    {
+      "mt5_log_day": "09",
+      "mt5_file_sha256": "933168b698765860a525015c931476e13589a5bd03e215317a1ed1dc17204115",
+      "mt5_ticks": 342454,
+      "best_utc_to_mt5_server_offset_minutes": 180,
+      "best_minute_return_corr": 0.996389,
+      "minute_return_corr_at_zero": -0.052089,
+      "matched_500ms_after_alignment": 318043,
+      "matched_fraction": 0.92872,
+      "median_mt5_spread_usd": 0.2,
+      "median_dukas_spread_usd_matched": 0.79,
+      "median_abs_bid_basis_usd_matched": 0.325,
+      "median_abs_ask_basis_usd_matched": 0.265
+    }
+  ],
+  "caveats": [
+    "Best lag is a retrospective clock DIAGNOSTIC, not a trading signal or permission to use future prices.",
+    "Must calibrate MT5 broker server offset from independent simultaneous observations as of each live tick.",
+    "R9_REAL is an MT5 REAL-tick tester journal, NOT broker live fill confirmation.",
+    "Price basis/spread are broker-specific; Dukascopy quote proxy is not Coinexx cash."
+  ]
+}
