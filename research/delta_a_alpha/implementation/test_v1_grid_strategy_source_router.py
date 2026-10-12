@@ -51,7 +51,7 @@ class TestGridRouter(unittest.TestCase):
                   ticket_id=7,time_ms=3,side=1,actual_price_raw=3098700,actual_lot=.01)
         self.r.funded.acknowledge_close(ticket_id=7,close_ms=5,realized_net_cash=4.)
         self.tick(6,3099500)
-        new=self.tick(7,3098700)[0]
+        new=next(x for x in self.tick(7,3098700) if x.source=='OMEGAFX_ACKNOWLEDGED_FILL_ANCHOR')
         self.assertEqual(new.paid_prior_close_id,7)
         self.assertEqual(new.paid_prior_hold_bucket,0)
         self.assertEqual(new.paid_prior_broker_cash_usd,4.)
