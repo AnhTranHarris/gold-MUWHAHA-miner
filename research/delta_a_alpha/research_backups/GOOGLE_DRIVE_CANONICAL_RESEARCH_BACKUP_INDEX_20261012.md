@@ -27,3 +27,8 @@ The GRID0234 [Google Doc recovery report](https://docs.google.com/document/d/1RU
 7. J0183 remains authoritative scientific cursor until independently validated and owner-promoted; NEVER enable live EA/physical trades by archiving source.
 
 **Status:** GRID0232 and GRID0234 were confirmed uploaded in response to the Library-full warning; GRID0235–0237 already existed on Drive before the warning and were re-verified by metadata. Stored source archives do NOT certify production success.
+
+
+## New GRID0238 source checkpoint (2026-10-12)
+
+- [Complete GRID0238 repaired 48 ACTIVE H1 creator-grid + cooperative source replay ZIP](https://drive.google.com/file/d/1YnVfqZi62xCcaK1kEZl5SX7q1VK98O8P/view), **49 ZIP entries**, **3,979,239 bytes**, local SHA256 `9a1d1807861415419e5598f4ab3bedf35115d4f4e0748d6f4ed79481bd349fab`, local ZIP testzip PASS, remote uploaded exact filename/size and target folder `1ePRnhM4glrDXgt_G2BHY5M4v0SG6jcMn` verified; remote re-download SHA not performed. Includes 12 passing unit tests, causal code, historical 136G original source preserved, original 4-month quote ledgers and all tick floating equity, and primary research report. [GitHub full source-research note](../grid/GRID_0238_ACTIVE_COMPLETED_H1_GRID_BUG_FIX_AND_COOPERATIVE_SOURCE_NOT_PROMOTED.md). No financial promotion; J0183 unchanged, August sealed, EA disabled.
