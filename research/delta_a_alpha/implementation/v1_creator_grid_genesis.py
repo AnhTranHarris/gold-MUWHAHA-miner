@@ -33,6 +33,7 @@ class GenesisSettings:
     max_gap_usd: float = 12.0
     max_virtual_rungs_per_direction: int = 32
     max_campaign_hours: int = 8
+    max_quote_gap_ms: int = 60_000  # no phantom crossing after an observed-quote hiatus
     # Independent lower-lattice research GENESIS. It is not a standalone EA.
     enable_m5_child_lattice: bool = True
     m5_liquid_gap_floor_usd: float = 0.75
@@ -43,12 +44,15 @@ class GenesisSettings:
     # Profit-taking itself is NOT performed by this genesis layer.
 
     def __post_init__(self):
-        if self.h1_window < 2 or self.max_virtual_rungs_per_direction < 1:
+        if self.h1_window < 2 or self.max_virtual_rungs_per_direction < 1 or self.max_campaign_hours < 1 or self.max_quote_gap_ms < 1:
             raise ValueError('invalid grid windows or rung limit')
         if min(self.liquid_gap_floor_usd,self.asia_gap_floor_usd,
                self.transition_gap_floor_usd,self.spread_multiple,
                self.h1_range_fraction_liquid,self.h1_range_fraction_asia,
-               self.h1_range_fraction_other,self.max_gap_usd) <= 0:
+               self.h1_range_fraction_other,self.max_gap_usd,
+               self.m5_liquid_gap_floor_usd,self.m5_asia_gap_floor_usd,
+               self.m5_other_gap_floor_usd,self.m5_spread_multiple,
+               self.m5_completed_range_fraction) <= 0:
             raise ValueError('nonpositive grid geometry')
 
 @dataclass(frozen=True)
@@ -94,6 +98,11 @@ class CreatorGridGenesis:
         self.buy = _VirtualCampaign()
         self.sell = _VirtualCampaign()
         self.last_event_ms: Optional[int] = None
+        self.parent_bar_start: Optional[int] = None
+        self.parent_geometry: Optional[str] = None
+        self.parent_gap_usd: Optional[float] = None
+        self.parent_previous_ask: Optional[float] = None
+        self.resume_after_halt: bool = False
         self.last_m5_start: Optional[int] = None
         self.child_reference_usd: Optional[float] = None
         self.child_gap_usd: Optional[float] = None
@@ -167,16 +176,43 @@ class CreatorGridGenesis:
         ask=tick.ask_raw / SCALE
         bid=tick.bid_raw / SCALE
         spread=ask-bid
-        prior=self.previous_ask
-        self.previous_ask=ask
+        prior_ms=self.last_timestamp_ms
         self.last_timestamp_ms=now
-        if not self.ready or prior is None:
+        self.previous_ask=ask
+        # No crossing may be manufactured by a market closure, a stale quote
+        # gap, or a transition in geometry. A new executable quote is required.
+        hiatus=(prior_ms is not None and now-prior_ms>self.settings.max_quote_gap_ms)
+        if not broker_tradable:
+            self.resume_after_halt=True
+            self.parent_previous_ask=None
+            self.child_previous_ask=None
+            self.rejected_nontradable+=1
+            return ()
+        if not self.ready:
             return ()
         high=self.cached_high
         low=self.cached_low
         last_range=self.cached_last_range
-        gap=self._geometry(session_geometry,spread,last_range)
-        if not broker_tradable or gap > self.settings.max_gap_usd:
+        # Freeze the parent's level spacing for the lifetime of each completed
+        # H1 auction state and session geometry. Otherwise a spread change alone
+        # can move a threshold through a stationary price and fabricate an event.
+        latest_bar=self.h1[-1]
+        reset=(self.parent_bar_start!=latest_bar.start_ms or
+               self.parent_geometry!=session_geometry or
+               self.parent_gap_usd is None or hiatus or self.resume_after_halt)
+        if reset:
+            self.parent_bar_start=latest_bar.start_ms
+            self.parent_geometry=session_geometry
+            self.parent_gap_usd=self._geometry(session_geometry,spread,last_range)
+            self.parent_previous_ask=None
+            self.child_previous_ask=None
+            self.resume_after_halt=False
+        gap=self.parent_gap_usd
+        prior=self.parent_previous_ask
+        self.parent_previous_ask=ask
+        # Current executable spread may veto an otherwise stable rung.
+        # Never shift the rung in response to the spread on this tick.
+        if gap>self.settings.max_gap_usd or spread>=gap or spread*self.settings.spread_multiple>self.settings.max_gap_usd:
             self.rejected_nontradable+=1
             return ()
         # Recompute thresholds using PREVIOUS observed tick and completed
@@ -187,9 +223,9 @@ class CreatorGridGenesis:
             anchor=origin if camp.anchor_usd is None else camp.anchor_usd
             level=anchor-side*gap
             if side==1:
-                crossed=(prior>level and ask<=level)
+                crossed=(prior is not None and prior>level and ask<=level)
             else:
-                crossed=(prior<level and ask>=level)
+                crossed=(prior is not None and prior<level and ask>=level)
             if not crossed:continue
             if camp.anchor_usd is None:
                 camp.birth_ms=now
@@ -213,7 +249,7 @@ class CreatorGridGenesis:
                 raise AssertionError('future/unfinished M5 bar to child lattice')
             if self.last_m5_start is not None and m5.start_ms < self.last_m5_start:
                 raise ValueError('stale child-lattice M5 bar')
-            if self.last_m5_start is None or m5.start_ms > self.last_m5_start or session_geometry!=self.child_geometry:
+            if self.last_m5_start is None or m5.start_ms > self.last_m5_start or session_geometry!=self.child_geometry or reset:
                 self.last_m5_start=m5.start_ms
                 self.child_geometry=session_geometry
                 self.child_reference_usd=m5.close_raw / SCALE
@@ -231,7 +267,8 @@ class CreatorGridGenesis:
             elif self.child_reference_usd is not None and self.child_gap_usd is not None:
                 previous=self.child_previous_ask
                 self.child_previous_ask=ask
-                if previous is not None and self.child_gap_usd<=self.settings.max_gap_usd:
+                if (previous is not None and self.child_gap_usd<=self.settings.max_gap_usd
+                        and spread<self.child_gap_usd and spread*self.settings.m5_spread_multiple<=self.settings.max_gap_usd):
                     # a positive index crossing is a creator-style SELL / fade
                     # opportunity; negative is a BUY / fade opportunity.
                     # The native Vertical route may instead select breakout
