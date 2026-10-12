@@ -97,6 +97,7 @@ class CreatorGridGenesis:
         self.last_m5_start: Optional[int] = None
         self.child_reference_usd: Optional[float] = None
         self.child_gap_usd: Optional[float] = None
+        self.child_geometry: Optional[str] = None
         self.child_previous_ask: Optional[float] = None
         self.child_bars_reset = 0
         self.child_seen_crossings = set()
@@ -212,8 +213,9 @@ class CreatorGridGenesis:
                 raise AssertionError('future/unfinished M5 bar to child lattice')
             if self.last_m5_start is not None and m5.start_ms < self.last_m5_start:
                 raise ValueError('stale child-lattice M5 bar')
-            if self.last_m5_start is None or m5.start_ms > self.last_m5_start:
+            if self.last_m5_start is None or m5.start_ms > self.last_m5_start or session_geometry!=self.child_geometry:
                 self.last_m5_start=m5.start_ms
+                self.child_geometry=session_geometry
                 self.child_reference_usd=m5.close_raw / SCALE
                 liquid=session_geometry in ('LONDON','NEW_YORK','LONDON_NEW_YORK_OVERLAP')
                 asia=session_geometry in ('ASIA_PACIFIC','SYDNEY_TOKYO_OVERLAP')
@@ -238,7 +240,7 @@ class CreatorGridGenesis:
                     new_index=math.floor((ask-self.child_reference_usd)/self.child_gap_usd)
                     if old_index!=new_index:
                         side=1 if new_index<old_index else -1
-                        crossed_index=new_index if side==1 else old_index+1
+                        crossed_index=new_index+1 if side==1 else old_index+1
                         crossed_level=self.child_reference_usd+crossed_index*self.child_gap_usd
                         key=(side,crossed_index)
                         # One rung hypothesis per direction per completed-M5
