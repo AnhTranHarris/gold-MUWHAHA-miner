@@ -89,9 +89,9 @@ class TestFullFunnel(unittest.TestCase):
   e=FourSessionV1(leverage=500,broker_session_confirmed=True,latency_ms=1000)
   t=ms('2026-06-02T13:00:00Z');o=Opportunity(t,'LONDON',1,4400,4400.2,'TEST',t+5000,'LONDON',4400)
   e.pending.append(Pending(o,t+1000,t+5000))
-  e.on_tick(q(t,4400),simulate_broker=False,broker_tradable=True)
+  e.on_tick(q(t,4400),simulate_broker=True,broker_tradable=True)
   self.assertEqual(e.events['filled'],0)
-  e.on_tick(q(t+1200,4400.7),simulate_broker=False,broker_tradable=True)
+  e.on_tick(q(t+1200,4400.7),simulate_broker=True,broker_tradable=True)
   # 0.7 slippage within London's gap 1.25
   self.assertEqual(e.events['filled'],1)
   self.assertAlmostEqual(e.positions[0].entry_price,4400.9,places=5)
@@ -99,7 +99,7 @@ class TestFullFunnel(unittest.TestCase):
   e=FourSessionV1(leverage=500,broker_session_confirmed=True)
   t=ms('2026-06-02T13:00:00Z');o=Opportunity(t,'LONDON',1,4400,4400.2,'TEST',t+1000,'LONDON',4400)
   e.pending.append(Pending(o,t+2000,t+1000))
-  e.on_tick(q(t+5000,4405),simulate_broker=False,broker_tradable=True)
+  e.on_tick(q(t+5000,4405),simulate_broker=True,broker_tradable=True)
   self.assertEqual(e.events['filled'],0)
   self.assertEqual(e.events['expired_latency'],1)
  def test_pending_margin_fail_close(self):
@@ -115,14 +115,14 @@ class TestFullFunnel(unittest.TestCase):
   for d in ('LONDON','NEW_YORK'):
    o=Opportunity(t,d,1,4400,4400.2,'TEST',t+3000,d,4400)
    e.pending.append(Pending(o,t,t+3000))
-  e.on_tick(q(t,4400),simulate_broker=False,broker_tradable=True)
+  e.on_tick(q(t,4400),simulate_broker=True,broker_tradable=True)
   self.assertEqual(e.events['filled'],1)
   self.assertEqual(e.events['one_order_per_tick'],1)
  def test_L6_warning_only_after_funded_bad_move(self):
   e=FourSessionV1(leverage=500,broker_session_confirmed=True)
   t=ms('2026-06-02T13:00:00Z')
   e.positions.append(Position(1,'SYDNEY',4400,t,4396.6,4402.8))
-  e.on_tick(q(t+2000,4398),simulate_broker=False)
+  e.on_tick(q(t+2000,4398),simulate_broker=True,broker_tradable=True)
   self.assertEqual(e.events['l6_warning'],1)
   self.assertTrue(e.positions[0].warning)
  def test_out_of_order_rejected(self):

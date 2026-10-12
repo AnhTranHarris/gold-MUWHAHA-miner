@@ -12,7 +12,9 @@ from datetime import datetime,timezone
 from typing import Optional
 import math
 from v1_vertical_grid import Quote,CleanV1Engine,ClosedBar
-from v1_grid_multiscale_stack import MultiSpeedGridGenesis
+from v1_grid_136b_cooperative_adapter import CooperativeGridGenesis
+from v1_grid_admission_arbiter import GridQuoteArbiter
+from v1_paid_close_watchdog import PaidCloseWatchdog
 from v1_session_broker_clock import local_clocks
 
 PRICE_SCALE=1000
@@ -79,7 +81,7 @@ class FourSessionV1:
                  require_all_htf=True):
         self.root=CleanV1Engine()
         # Pre-L1 creator-grid crossing SOURCE ONLY; no direct physical orders.
-        self.creator_genesis=MultiSpeedGridGenesis()
+        self.creator_genesis=CooperativeGridGenesis()
         self.cash=float(starting_cash);self.equity=self.cash;self.initial=self.cash
         self.lot=lot;self.contract_oz=contract_oz
         self.leverage=leverage
@@ -91,24 +93,28 @@ class FourSessionV1:
         self.require_all_htf=require_all_htf
         self.positions=[];self.pending=[]
         self.events=Counter();self.desk_events=Counter();self.realized=[]
-        self.last_mid_by_desk={};self.last_proposal_ms={};self.last_order_tick=None
+        self.last_mid_by_desk={};self.grid_arbiter=GridQuoteArbiter();self.last_order_tick=None
         self.last_tick=None;self.tick_rate=deque();self.peak_equity=self.cash
         self.drawdown_max=0.0;self.max_open=0;self.hard_fail=False
-        self.candidate_keys=set() # dedupe within one UTC millisecond+desk
+        # G0 source and L7 request arbitration are distinct chronological stages
         self.daily=Counter()
         self.watchdog_closed={k:deque(maxlen=8) for k in DESKS}
+        self.paid_watchdog=PaidCloseWatchdog(expected_lot=lot)
         self.watchdog_relock_until={k:0 for k in DESKS}
         self.recovery_intent=None # a bounded, L2-confirmation-dependent correction proposal
     def _mark(self,q):
         eq=self.cash
         for p in self.positions:
             px=q.bid_raw/PRICE_SCALE if p.side==1 else q.ask_raw/PRICE_SCALE
-            eq+=(px-p.entry_price)*p.side*self.contract_oz*self.lot
+            eq+=(px-p.entry_price)*p.side*self.contract_oz*self.lot-self.commission
         self.equity=eq
         self.peak_equity=max(self.peak_equity,eq)
         self.drawdown_max=max(self.drawdown_max,self.peak_equity-eq)
         if eq<self.initial*.65:self.hard_fail=True
     def _complete_close(self,p,q,reason):
+        if self.last_order_tick==q.time_ms_utc:
+            raise RuntimeError('more than one simulated execution at same UTC millisecond')
+        self.last_order_tick=q.time_ms_utc
         px=q.bid_raw/PRICE_SCALE if p.side==1 else q.ask_raw/PRICE_SCALE
         pnl=(px-p.entry_price)*p.side*self.contract_oz*self.lot-self.commission
         self.cash+=pnl
@@ -132,6 +138,9 @@ class FourSessionV1:
             # L6: independent management quality, warning is not automatic reverse order.
             if favorable<-sp.stop_usd*.45 and not p.warning:
                 p.warning=True;self.events['l6_warning']+=1
+            if self.last_order_tick==q.time_ms_utc:
+                self.events['l7_exit_deferred_quote_budget']+=1
+                continue
             if p.warning and favorable<-sp.stop_usd*.65:
                 # Same-side position closes; no loss-dependent rescue positions.
                 self._complete_close(p,q,'L6_INVALIDATION')
@@ -147,12 +156,14 @@ class FourSessionV1:
     def _execute_pending(self,q):
         for p in list(self.pending):
             if q.time_ms_utc<p.arrival_ms:continue
-            self.pending.remove(p)
             if q.time_ms_utc>p.expiry_ms:
+                self.pending.remove(p)
                 self.events['expired_latency']+=1;continue
             if self.last_order_tick==q.time_ms_utc:
-                self.events['one_order_per_tick']+=1;continue
-            self.last_order_tick=q.time_ms_utc
+                self.events['one_order_per_tick']+=1
+                self.events['l7_pending_deferred_next_quote']+=1
+                continue
+            self.pending.remove(p)
             self._mark(q)
             if self.hard_fail: self.events['capital_halt']+=1;continue
             if len(self.positions)>=self.global_max_open:
@@ -173,6 +184,7 @@ class FourSessionV1:
             if required+locked>self.equity*(1-self.reserve):
                 self.events['margin_denied']+=1;continue
             sp=DESKS[p.opportunity.desk]
+            self.last_order_tick=q.time_ms_utc
             self.positions.append(Position(p.opportunity.side,p.opportunity.desk,actual,q.time_ms_utc,
                                            actual-p.opportunity.side*sp.stop_usd,
                                            actual+p.opportunity.side*sp.target_usd))
@@ -250,15 +262,22 @@ class FourSessionV1:
             q,frame.l2_completed_bars.get('H1'),
             frame.l1_session.suggested_geometry,
             last_completed_m5=frame.l2_completed_bars.get('M5'),
+            last_completed_h4=frame.l2_completed_bars.get('H4'),
             broker_tradable=True)  # observed source tick, NOT broker fill authority
         self.events['prel1_creator_grid_raw']+=len(genesis_opportunities)
-        self._life(q,frame)
-        self._execute_pending(q)
+        if not simulate_broker or not broker_tradable:
+            self.events['l7_pending_cancelled_permission_loss']+=len(self.pending)
+            self.pending.clear()
+        if simulate_broker and broker_tradable:
+            self._life(q,frame)
+            self._execute_pending(q)
+        elif self.positions:
+            self.events['l7_position_lifecycle_deferred_permission_loss']+=len(self.positions)
         self._mark(q)
         now=q.time_ms_utc
         self.tick_rate.append(now)
         while self.tick_rate and self.tick_rate[0]<now-5000:self.tick_rate.popleft()
-        self.candidate_keys.clear()
+        self.grid_arbiter.start_quote(now)
         for desk in frame.l1_session.open_desks:
             sp=DESKS[desk];self.events['l1_windows']+=1
             mid=(q.bid_raw+q.ask_raw)/(2*PRICE_SCALE)
@@ -271,13 +290,15 @@ class FourSessionV1:
             self.events['l2_opportunity_windows']+=1
             # Structural permission CANNOT manufacture a trade without
             # an actual chronological creator-grid price-level CROSSING.
-            eligible_grid=[z for z in genesis_opportunities if z.side==direction]
+            eligible_grid=[z for z in genesis_opportunities if z.side==direction or z.source.startswith('APR136B_')]
             if not eligible_grid:
                 self.events['l3_no_creator_grid_crossing']+=1
                 continue
             candidate_grid=eligible_grid[0]
-            if self.last_proposal_ms.get(desk,-10**15)+6000>now:continue
-            self.last_proposal_ms[desk]=now
+            if candidate_grid.source.startswith('APR136B_'):
+                self.events['l3_136b_mom' if candidate_grid.side==direction else 'l3_136b_rev']+=1
+            if not self.grid_arbiter.can_request(desk,now):
+                self.events['l3_arbiter_not_available']+=1;continue
             self.events['l3_proposals']+=1
             day=datetime.fromtimestamp(now/1000,tz=timezone.utc).date().isoformat()
             self.daily[(day,'l3_proposals')]+=1
@@ -286,10 +307,11 @@ class FourSessionV1:
             spread=(q.ask_raw-q.bid_raw)/PRICE_SCALE
             if len(self.tick_rate)<sp.min_activity_5s:self.events['l4_regime_weak']+=1;continue
             if now<self.watchdog_relock_until[desk]:self.events['l4_relocked']+=1;continue
-            if self.watchdog_closed[desk] and self.watchdog_closed[desk][-1]>0:
-                self.events['l4_earned_renewal_eligible']+=1
-            else:
-                self.events['l4_scout_eligible']+=1
+            if self.paid_watchdog.permit_ready(desk,now,broker_tradable=broker_tradable):
+                self.events['l4_broker_paid_parent_context']+=1
+            elif self.watchdog_closed[desk] and self.watchdog_closed[desk][-1]>0:
+                self.events['l4_simulated_positive_close_NOT_PAID']+=1
+            else:self.events['l4_scout_eligible']+=1
             if regional_holidays:self.events['calendar_caution']+=1;continue
             # L5 native trend/range route is already evidence-selected by L2;
             # L5 independently vetoes stale or too broad excursion near M5 boundary.
@@ -327,12 +349,43 @@ class FourSessionV1:
                 self.events['l7_execution_disabled']+=1;continue
             if spread>sp.spread_max_usd:self.events['l7_spread_denied']+=1;continue
             if self.hard_fail:self.events['l7_capital_halt']+=1;continue
-            if self.leverage is None:self.events['l7_no_margin_config']+=1;continue
+            if self.leverage is None or self.leverage<=0:
+                self.events['l7_no_margin_config']+=1;continue
+            if len(self.positions)+len(self.pending)>=self.global_max_open:
+                self.events['l7_prequeue_global_capacity_denied']+=1;continue
+            desk_occupied=sum(z.desk==desk for z in self.positions)
+            desk_occupied+=sum(z.opportunity.desk==desk for z in self.pending)
+            if desk_occupied>=sp.cap:
+                self.events['l7_prequeue_desk_capacity_denied']+=1;continue
+            # Research-only margin reservation, not verified Coinexx margin.
+            unit=self.contract_oz*self.lot/self.leverage
+            entry=q.ask_raw/PRICE_SCALE if direction==1 else q.bid_raw/PRICE_SCALE
+            locked=sum(z.entry_price*unit for z in self.positions)
+            reserved=sum((z.opportunity.current_ask if z.opportunity.side==1
+                          else z.opportunity.current_bid)*unit for z in self.pending)
+            if (entry*unit+locked+reserved)>self.equity*(1-self.reserve):
+                self.events['l7_prequeue_margin_denied']+=1;continue
+            if not self.grid_arbiter.claim_eligible_request(desk,now):
+                self.events['l7_quote_claimed']+=1;continue
             self.pending.append(Pending(opp,now+self.latency_ms,now+min(2000,sp.max_horizon_ms)))
             self.events['l7_risk_eligible_requests']+=1
             self.daily[(day,'risk_requested')]+=1
         self.last_tick=q
         return frame
+    # These methods must be called only from actual observed MT5 DEAL_ADD
+    # and verified broker history, never from this simulator's _complete_close.
+    def on_broker_parent_intent(self,position_id,desk,observed_ms):
+        return self.paid_watchdog.register_parent(position_id,desk,self.lot,observed_ms)
+
+    def on_broker_deal_add(self,**transaction):
+        return self.paid_watchdog.on_deal_add(**transaction)
+
+    def on_broker_settlement(self,position_id,*,observed_ms,
+                             verified_broker_history,confirmed_net_cash):
+        return self.paid_watchdog.confirm_settlement(position_id,
+            observed_ms=observed_ms,verified_broker_history=verified_broker_history,
+            confirmed_net_cash=confirmed_net_cash)
+
     def result(self):
         gross_plus=sum(max(x[2],0) for x in self.realized)
         gross_minus=sum(min(x[2],0) for x in self.realized)
@@ -349,4 +402,5 @@ class FourSessionV1:
                     desk_realized_pnl=desk_pnl,desk_closed_trades=desk_closes,
                     day_counters={f'{k[0]}:{k[1]}':v for k,v in self.daily.items()},
                     grid_genesis_stats=self.creator_genesis.stats(),
+                    broker_paid_watchdog_stats=self.paid_watchdog.stats(),
                     status='SIMULATION_ONLY_NOT_MT5_BROKER_CERTIFIED')

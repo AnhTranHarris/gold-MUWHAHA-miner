@@ -97,7 +97,7 @@ class GridReadyTests(unittest.TestCase):
         with self.assertRaises(ValueError):MicroGridSettings(min_gap_usd=20,maximum_gap_usd=1)
     def test_real_engine_uses_new_source_and_stays_disabled(self):
         engine=FourSessionV1()
-        self.assertIsInstance(engine.creator_genesis,GridReadyPrototype)
+        self.assertIsInstance(engine.creator_genesis.original_stack.parent,GridReadyPrototype)
         self.assertEqual(engine.root.funded_orders,0)
         result=engine.result()
         self.assertIn('grid_genesis_stats',result)
