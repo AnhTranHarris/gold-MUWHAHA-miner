@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from typing import Optional
 from v1_grid_multiscale_stack import MultiSpeedGridGenesis
 from v1_grid_funded_campaign import FundedGridCampaign
+from v1_grid_renewal_signature import broker_cash_context
 
 SCALE=1000
 
@@ -26,6 +27,8 @@ class SourceCandidate:
     ask_raw:int
     paid_proposal_id:Optional[int]=None
     paid_prior_close_id:Optional[int]=None
+    paid_prior_hold_bucket:Optional[int]=None
+    paid_prior_broker_cash_usd:Optional[float]=None
     # Both future signs remain research hypotheses, not asserted profitable.
 
 class GridStrategySourceRouter:
@@ -95,10 +98,13 @@ class GridStrategySourceRouter:
         if paid:
             p=paid[0]
             if p.id not in self.funded.proposals:return ()
+            context=broker_cash_context(p,self.funded)
             self.last_emitted_ms=ms
             self.counts['funded_anchor_selected']+=1
             return (SourceCandidate(ms,p.side,'OMEGAFX_ACKNOWLEDGED_FILL_ANCHOR',p.rung,
-                  p.threshold_raw,q.bid_raw,q.ask_raw,p.id,p.prior_paid_close_id),)
+                  p.threshold_raw,q.bid_raw,q.ask_raw,p.id,p.prior_paid_close_id,
+                  context['prior_hold_bucket'] if context['verified_parent_available'] else None,
+                  context.get('broker_cash_recorded_usd')),)
         return ()
     @staticmethod
     def _base_candidate(q,base):
