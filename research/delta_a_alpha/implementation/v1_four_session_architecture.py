@@ -12,6 +12,7 @@ from datetime import datetime,timezone
 from typing import Optional
 import math
 from v1_vertical_grid import Quote,CleanV1Engine,ClosedBar
+from v1_creator_grid_genesis import CreatorGridGenesis
 from v1_session_broker_clock import local_clocks
 
 PRICE_SCALE=1000
@@ -77,6 +78,8 @@ class FourSessionV1:
                  margin_reserve_fraction=.35,global_max_open=2,
                  require_all_htf=True):
         self.root=CleanV1Engine()
+        # Pre-L1 creator-grid crossing SOURCE ONLY; no direct physical orders.
+        self.creator_genesis=CreatorGridGenesis()
         self.cash=float(starting_cash);self.equity=self.cash;self.initial=self.cash
         self.lot=lot;self.contract_oz=contract_oz
         self.leverage=leverage
@@ -240,6 +243,15 @@ class FourSessionV1:
         if broker_tradable is None:broker_tradable=self.broker_session_confirmed
         frame=self.root.on_tick(q,broker_trading_confirmed=broker_tradable,known_holidays=regional_holidays)
         self.events['ticks']+=1
+        # True creator-derived 48 completed-H1 parent grid + completed-M5
+        # single-rung-per-direction child lattice. These are virtual
+        # opportunity hypotheses, never direct entry authorizations.
+        genesis_opportunities=self.creator_genesis.on_tick(
+            q,frame.l2_completed_bars.get('H1'),
+            frame.l1_session.suggested_geometry,
+            last_completed_m5=frame.l2_completed_bars.get('M5'),
+            broker_tradable=True)  # observed source tick, NOT broker fill authority
+        self.events['prel1_creator_grid_raw']+=len(genesis_opportunities)
         self._life(q,frame)
         self._execute_pending(q)
         self._mark(q)
@@ -257,7 +269,13 @@ class FourSessionV1:
             direction,tag=self._structure(frame.l2_completed_bars,mid,sp)
             if direction is None:self.events[tag]+=1;continue
             self.events['l2_opportunity_windows']+=1
-            if abs(mid-prev)<sp.gap_usd*.25:continue
+            # Structural permission CANNOT manufacture a trade without
+            # an actual chronological creator-grid price-level CROSSING.
+            eligible_grid=[z for z in genesis_opportunities if z.side==direction]
+            if not eligible_grid:
+                self.events['l3_no_creator_grid_crossing']+=1
+                continue
+            candidate_grid=eligible_grid[0]
             if self.last_proposal_ms.get(desk,-10**15)+6000>now:continue
             self.last_proposal_ms[desk]=now
             self.events['l3_proposals']+=1
@@ -301,7 +319,9 @@ class FourSessionV1:
             self.events['qualified_quality_chain']+=1
             self.daily[(day,'quality_chain')]+=1
             opp=Opportunity(now,desk,direction,q.bid_raw/PRICE_SCALE,q.ask_raw/PRICE_SCALE,
-                            tag,now+sp.max_horizon_ms,frame.l1_session.suggested_geometry,mid)
+                            f'{tag}|{candidate_grid.source}|r{candidate_grid.rung}',
+                            now+sp.max_horizon_ms,frame.l1_session.suggested_geometry,
+                            candidate_grid.crossing_level_usd)
             # L7: IMPORTANT no order unless explicitly enabled and broker-tradable
             if not simulate_broker or not broker_tradable:
                 self.events['l7_execution_disabled']+=1;continue
