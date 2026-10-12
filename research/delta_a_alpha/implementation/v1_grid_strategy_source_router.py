@@ -35,6 +35,7 @@ class SourceCandidate:
     paid_prior_broker_cash_usd:Optional[float]=None
     raw_cross_sign:Optional[int]=None
     research_horizon_ms:Optional[int]=None
+    available_ms:Optional[int]=None  # emitted on observed quote, never retroactively fill
     # Both future signs remain research hypotheses, not asserted profitable.
 
 class GridStrategySourceRouter:
@@ -134,11 +135,11 @@ class GridStrategySourceRouter:
             self._cancel_same_ms_lower(ms)
             self.last_emitted_ms=ms
             self.counts['preserved_multiscale_selected']+=1
-            return (SourceCandidate(ms,event.side,event.source,event.rung,
-                   int(round(event.crossing_level_usd*SCALE)),q.bid_raw,q.ask_raw),)
+            return self._deliver((SourceCandidate(ms,event.side,event.source,event.rung,
+                   int(round(event.crossing_level_usd*SCALE)),q.bid_raw,q.ask_raw),))
         if paid:
             p=paid[0]
-            if p.id not in self.funded.proposals:return ()
+            if p.id not in self.funded.proposals:return self._deliver(())
             context=broker_cash_context(p,self.funded)
             self._cancel_same_ms_lower(ms)
             self.last_emitted_ms=ms
@@ -155,7 +156,11 @@ class GridStrategySourceRouter:
         current=tuple(replace(x,research_horizon_ms=self._exit_hint.horizon_ms)
                       if self._exit_hint is not None and x.time_ms==self.last_ms
                       else x for x in current)
-        out=current+self._ready_release
+        # Provisional prior-ms source is released ONLY on this observed quote.
+        # Do not backdate order availability to its original trigger quote.
+        past=tuple(replace(x,available_ms=self.last_ms) for x in self._ready_release)
+        current=tuple(replace(x,available_ms=self.last_ms) for x in current)
+        out=past+current
         self._ready_release=()
         return out
     def _supplemental(self,q,base,native,auction):
