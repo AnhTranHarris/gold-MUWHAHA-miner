@@ -1,0 +1,33 @@
+{
+  "r9_synth_source_sha256": "acdae71cf081b27d724038e1e2753a7d016cfc77ec617a89f63165d77b248dca",
+  "dukas_original_sha256": "6a3f354cf551509474afb9b8910c3dadecf7e094c0d33887eb6667f8c7ff564e",
+  "r9_synth_ticks": 340503,
+  "r9_synth_median_spread": 0.19,
+  "offset_comparisons": [
+    {
+      "offset_minutes_utc_to_server": 0,
+      "matched_minutes": 1320,
+      "minute_return_corr": -0.052089,
+      "median_abs_price_basis": 12.66
+    },
+    {
+      "offset_minutes_utc_to_server": 120,
+      "matched_minutes": 1260,
+      "minute_return_corr": 0.007495,
+      "median_abs_price_basis": 7.5885
+    },
+    {
+      "offset_minutes_utc_to_server": 180,
+      "matched_minutes": 1260,
+      "minute_return_corr": 0.996398,
+      "median_abs_price_basis": 0.325
+    },
+    {
+      "offset_minutes_utc_to_server": 240,
+      "matched_minutes": 1200,
+      "minute_return_corr": 0.009681,
+      "median_abs_price_basis": 7.88
+    }
+  ],
+  "conclusion": "April 9 R9 SYNTH tester timestamps also encode server time UTC+3; this is a historical data alignment finding, not an instruction to hardcode live offset. Reconcile original R9 monthly/daily benchmarks to NY17/UTC before velocity comparisons."
+}
