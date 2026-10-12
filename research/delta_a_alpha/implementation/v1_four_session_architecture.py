@@ -12,7 +12,7 @@ from datetime import datetime,timezone
 from typing import Optional
 import math
 from v1_vertical_grid import Quote,CleanV1Engine,ClosedBar
-from v1_grid_ready_prototype import GridReadyPrototype
+from v1_grid_multiscale_stack import MultiSpeedGridGenesis
 from v1_session_broker_clock import local_clocks
 
 PRICE_SCALE=1000
@@ -79,7 +79,7 @@ class FourSessionV1:
                  require_all_htf=True):
         self.root=CleanV1Engine()
         # Pre-L1 creator-grid crossing SOURCE ONLY; no direct physical orders.
-        self.creator_genesis=GridReadyPrototype()
+        self.creator_genesis=MultiSpeedGridGenesis()
         self.cash=float(starting_cash);self.equity=self.cash;self.initial=self.cash
         self.lot=lot;self.contract_oz=contract_oz
         self.leverage=leverage
