@@ -47,13 +47,13 @@ class FundedGridCampaign:
         self.next_id=0
         self.counts={k:0 for k in ('quotes','crossings','proposals','ack_fills',
             'ack_closes','stale','missed_fill','multiple_crossings','expired',
-            'earned_child_credit')}
+            'earned_child_credit','spread_denied')}
     def observe(self,*,time_ms,bid_raw,ask_raw,completed_h1_window_id,
                 completed_h1_high_raw,completed_h1_low_raw,gap_raw,
                 broker_tradable=True):
         if self.last_quote_ms is not None and time_ms<self.last_quote_ms:
             raise ValueError('unordered source quotes')
-        if (bid_raw<=0 or ask_raw<bid_raw or gap_raw<=ask_raw-bid_raw
+        if (bid_raw<=0 or ask_raw<bid_raw or gap_raw<=0
                 or completed_h1_low_raw>completed_h1_high_raw):
             raise ValueError('bad Bid/Ask or completed H1 range / non-executable gap')
         for pid,p in list(self.proposals.items()):
@@ -72,6 +72,10 @@ class FundedGridCampaign:
             self.frozen_refs=refs
             self.previous_ask_raw=ask_raw if broker_tradable else None
             self.counts['stale']+=int(gap_reset)
+            return ()
+        if ask_raw-bid_raw>=gap_raw:
+            self.previous_ask_raw=None  # no false crossing through wide-spread quote
+            self.counts['spread_denied']+=1
             return ()
         prior=self.previous_ask_raw
         self.previous_ask_raw=ask_raw
