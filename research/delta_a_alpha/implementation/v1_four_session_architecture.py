@@ -12,7 +12,7 @@ from datetime import datetime,timezone
 from typing import Optional
 import math
 from v1_vertical_grid import Quote,CleanV1Engine,ClosedBar
-from v1_creator_grid_genesis import CreatorGridGenesis
+from v1_grid_ready_prototype import GridReadyPrototype
 from v1_session_broker_clock import local_clocks
 
 PRICE_SCALE=1000
@@ -79,7 +79,7 @@ class FourSessionV1:
                  require_all_htf=True):
         self.root=CleanV1Engine()
         # Pre-L1 creator-grid crossing SOURCE ONLY; no direct physical orders.
-        self.creator_genesis=CreatorGridGenesis()
+        self.creator_genesis=GridReadyPrototype()
         self.cash=float(starting_cash);self.equity=self.cash;self.initial=self.cash
         self.lot=lot;self.contract_oz=contract_oz
         self.leverage=leverage
@@ -348,4 +348,5 @@ class FourSessionV1:
                     desk_counters={str(k):v for k,v in self.desk_events.items()},
                     desk_realized_pnl=desk_pnl,desk_closed_trades=desk_closes,
                     day_counters={f'{k[0]}:{k[1]}':v for k,v in self.daily.items()},
+                    grid_genesis_stats=self.creator_genesis.stats(),
                     status='SIMULATION_ONLY_NOT_MT5_BROKER_CERTIFIED')
