@@ -53,6 +53,8 @@ class TestGridRouter(unittest.TestCase):
         self.tick(6,3099500)
         new=self.tick(7,3098700)[0]
         self.assertEqual(new.paid_prior_close_id,7)
+        self.assertEqual(new.paid_prior_hold_bucket,0)
+        self.assertEqual(new.paid_prior_broker_cash_usd,4.)
     def test_h1_owner_freezes_gap(self):
         self.tick(1,3099500)
         self.b.parent.parent.parent_gap_usd=3.0
