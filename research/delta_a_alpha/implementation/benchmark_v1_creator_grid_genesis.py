@@ -35,11 +35,16 @@ def geometry(ms):
     if 'SYDNEY' in opens or 'TOKYO' in opens:return 'ASIA_PACIFIC'
     return 'TRANSITION_OR_CLOSED'
 
-def bench(path,settings,limit_ticks=0):
+def bench(path,settings,limit_ticks=0,carry=None):
     t0=time.monotonic()
-    g=CreatorGridGenesis(settings)
-    hour=None;current=None;last_closed=None;geo=None
-    m5key=None;m5current=None;m5closed=None
+    if carry is None:
+        g=CreatorGridGenesis(settings)
+        hour=None;current=None;last_closed=None;geo=None
+        m5key=None;m5current=None;m5closed=None
+    else:
+        g,hour,current,last_closed,geo,m5key,m5current,m5closed=carry
+    start_parent=g.parent_events
+    start_child=g.m5_child_events
     days=collections.Counter();sides=collections.Counter();sessions=collections.Counter();hours=collections.Counter();rungs=collections.Counter();spread=[]
     accepted=0;raw=0
     with gzip.open(path,'rt',newline='') as f:
@@ -74,11 +79,11 @@ def bench(path,settings,limit_ticks=0):
                 days[d]+=1;hours[h]+=1;sides['BUY' if x.side==1 else 'SELL']+=1
                 sessions[geo]+=1;rungs[x.rung]+=1
                 accepted+=1
-    return {'month':path.name,'source_ticks':raw,'virtual_creator_events':accepted,'parent_events':g.parent_events,'child_events':g.m5_child_events,
+    return {'month':path.name,'source_ticks':raw,'virtual_creator_events':accepted,'parent_events':g.parent_events-start_parent,'child_events':g.m5_child_events-start_child,
             'daily_counts_UTC':dict(days),'hourly_counts_UTC':dict(hours),'sides':dict(sides),
             'sessions':dict(sessions),'rungs':dict(rungs),'spread_median_diagnostic':statistics.median(spread),
             'max_daily_events':max(days.values(),default=0),'elapsed_s':round(time.monotonic()-t0,2),
-            'settings':vars(settings)}
+            'settings':vars(settings)},(g,hour,current,last_closed,geo,m5key,m5current,m5closed)
 
 if __name__=='__main__':
     month=sys.argv[1] if len(sys.argv)>1 else '01'
@@ -86,7 +91,7 @@ if __name__=='__main__':
     p=Path(f'/mnt/data/XAUUSD_DUKAS_2026_{month}_ticks.csv(3).gz')
     if month=='07':p=Path('/mnt/data/XAUUSD_DUKAS_2026_07_ticks.csv(2).gz')
     print('replaying '+p.name+'...',file=sys.stderr,flush=True)
-    z=bench(p,settings,limit_ticks=int(sys.argv[2]) if len(sys.argv)>2 else 0)
+    z,_=bench(p,settings,limit_ticks=int(sys.argv[2]) if len(sys.argv)>2 else 0)
     out=Path(__file__).parent/f'GRID0221_{month}_GENESIS_VS_R9_UTC_DIAGNOSTIC.json'
     r9={}
     with open('/mnt/data/grid0186_work/R9_SYNTH_REPORT_CLOCK_DAILY.csv') as f:
