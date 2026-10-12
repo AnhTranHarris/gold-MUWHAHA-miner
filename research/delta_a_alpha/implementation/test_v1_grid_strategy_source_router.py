@@ -66,6 +66,16 @@ class TestGridRouter(unittest.TestCase):
         self.tick(1,3099500)
         self.assertEqual(self.tick(2,3098700,broker_tradable=False),())
         self.assertEqual(self.r.counts['funded_anchor_selected'],0)
+    def test_completed_h1_roll_does_not_reset_funded_inventory(self):
+        self.tick(1,3099500)
+        p=self.tick(2,3098700)[0]
+        self.r.funded.acknowledge_fill(proposal_id=p.paid_proposal_id,
+                  ticket_id=51,time_ms=3,side=1,actual_price_raw=3098700,actual_lot=.01)
+        self.h=SimpleNamespace(start_ms=4,end_ms=4)
+        self.tick(4,3099500)
+        self.assertEqual(self.r.funded.last_filled_price_raw[1],3098700)
+        self.assertIn(51,self.r.funded.open_tickets)
+        self.assertEqual(self.r.funded.depth[1],1)
     def test_counter_source_no_margin_or_vertical(self):
         self.tick(1,3099500)
         self.tick(2,3098700)
