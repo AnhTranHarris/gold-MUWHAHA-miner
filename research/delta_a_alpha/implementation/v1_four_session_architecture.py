@@ -17,6 +17,7 @@ from v1_grid_broker_evidence_port_0265 import V1BrokerEvidencePort
 from v1_grid_admission_arbiter import GridQuoteArbiter
 from v1_paid_close_watchdog import PaidCloseWatchdog
 from v1_session_broker_clock import local_clocks
+from v1_grid_r9_benchmark_utc_0268 import R9_SYNTH_IDEAL_PERIODS, R9_OVERFIT_PER_TRADE_TEACHER
 
 PRICE_SCALE=1000
 
@@ -81,8 +82,8 @@ class FourSessionV1:
                  leverage=None,commission_per_roundtrip_usd=0.20,
                  latency_ms=250,broker_session_confirmed=False,
                  margin_reserve_fraction=.35,global_max_open=2,
-                 require_all_htf=True,broker_event_contract=None):
-        self.root=CleanV1Engine()
+                 require_all_htf=True,broker_event_contract=None,candle_clock=None):
+        self.root=CleanV1Engine(candle_clock=candle_clock)
         # Pre-L1 creator-grid crossing SOURCE ONLY; no direct physical orders.
         self.creator_genesis=CumulativeCreatorAdapter()
         # External observed broker events and current cumulative G0 share source identity.
@@ -448,4 +449,11 @@ class FourSessionV1:
                     quote_only_source_lineage_rows=len(self.realized_source_lineage),
                     research_feed_provenance=(self._source_replay.provenance()
                                      if self._source_replay is not None else None),
+                    research_benchmark_roles=dict(
+                        r9_synth_ideal_periods=R9_SYNTH_IDEAL_PERIODS,
+                        r9_overfit_per_trade_teacher=R9_OVERFIT_PER_TRADE_TEACHER,
+                        python_tick_execution_source='DUKASCOPY_ORIGINAL',
+                        mt5_test_comparator='COINEXX_R9_REAL_TESTER',
+                        overfit_as_live_execution_feature=False),
+                    candle_clock_mode=self.root.bars.candle_clock.mode,
                     status='SIMULATION_ONLY_NOT_MT5_BROKER_CERTIFIED')
