@@ -134,4 +134,24 @@ class TestFullFunnel(unittest.TestCase):
   e.root.bars.completed['H1']=ClosedBar('H1',t,t+3600000,4400000,4400000,4400000,4400000,1)
   with self.assertRaises(AssertionError):e.on_tick(q(t))
 
+ def test_GRID0265_current_router_is_actually_wired(self):
+  e=FourSessionV1()
+  self.assertIs(e.broker_evidence.paid.router,e.creator_genesis.router)
+  self.assertFalse(e.broker_evidence.contract.verified_symbol)
+  self.assertEqual(e.result()['broker_event_evidence']['confirmed_deals'],0)
+
+ def test_GRID0265_source_id_survives_actual_shadow_funnel_but_cannot_fake_DEAL_ADD(self):
+  e=FourSessionV1(leverage=500,broker_session_confirmed=True,latency_ms=250)
+  t=ms('2026-06-02T13:00:00Z')
+  opp=Opportunity(t,'LONDON',1,4400,4400.2,'KNOWN_GRID_SOURCE',
+                  t+5000,'LONDON',4400,paid_proposal_id=77)
+  e.pending.append(Pending(opp,t,t+5000))
+  e.on_tick(q(t,4400),simulate_broker=True,broker_tradable=True)
+  self.assertEqual(len(e.positions),1)
+  self.assertEqual(e.positions[0].source_proposal_id,77)
+  e.on_tick(q(t+1500,4410),simulate_broker=True,broker_tradable=True)
+  self.assertGreaterEqual(len(e.realized_source_lineage),1)
+  self.assertEqual(e.realized_source_lineage[0][1],77)
+  self.assertEqual(e.result()['broker_event_evidence']['confirmed_deals'],0)
+
 if __name__=='__main__': unittest.main()
