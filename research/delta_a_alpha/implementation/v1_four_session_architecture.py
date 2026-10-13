@@ -60,12 +60,14 @@ class Opportunity:
     proposed_expiry_ms:int
     geometry:str
     level:float
+    paid_proposal_id:Optional[int]=None  # immutable current-router lineage, never broker credit
 
 @dataclass
 class Position:
     side:int; desk:str; entry_price:float; entry_ms:int; stop:float; target:float
     peak_favorable:float=0.0
     warning:bool=False
+    source_proposal_id:Optional[int]=None  # quote-shadow position provenance
 
 @dataclass
 class Pending:
@@ -98,6 +100,7 @@ class FourSessionV1:
         self.require_all_htf=require_all_htf
         self.positions=[];self.pending=[]
         self.events=Counter();self.desk_events=Counter();self.realized=[]
+        self.realized_source_lineage=[]  # never used as DEAL_ADD
         self.last_mid_by_desk={};self.grid_arbiter=GridQuoteArbiter();self.last_order_tick=None
         self.last_tick=None;self.tick_rate=deque();self.peak_equity=self.cash
         self.drawdown_max=0.0;self.max_open=0;self.hard_fail=False
@@ -124,6 +127,7 @@ class FourSessionV1:
         pnl=(px-p.entry_price)*p.side*self.contract_oz*self.lot-self.commission
         self.cash+=pnl
         self.realized.append((q.time_ms_utc,p.desk,pnl,reason))
+        self.realized_source_lineage.append((q.time_ms_utc,p.source_proposal_id,p.desk,pnl,reason))
         self.watchdog_closed[p.desk].append(pnl)
         if len(self.watchdog_closed[p.desk])>=2 and all(x<0 for x in list(self.watchdog_closed[p.desk])[-2:]):
             self.watchdog_relock_until[p.desk]=q.time_ms_utc+60_000
@@ -192,7 +196,8 @@ class FourSessionV1:
             self.last_order_tick=q.time_ms_utc
             self.positions.append(Position(p.opportunity.side,p.opportunity.desk,actual,q.time_ms_utc,
                                            actual-p.opportunity.side*sp.stop_usd,
-                                           actual+p.opportunity.side*sp.target_usd))
+                                           actual+p.opportunity.side*sp.target_usd,
+                                            source_proposal_id=p.opportunity.paid_proposal_id))
             self.events['filled']+=1;self.desk_events[(sp.name,'fills')]+=1
             day=datetime.fromtimestamp(q.time_ms_utc/1000,tz=timezone.utc).date().isoformat()
             self.daily[(day,'funded_entries')]+=1
@@ -361,7 +366,8 @@ class FourSessionV1:
             opp=Opportunity(now,desk,direction,q.bid_raw/PRICE_SCALE,q.ask_raw/PRICE_SCALE,
                             f'{tag}|{candidate_grid.source}|r{candidate_grid.rung}',
                             now+sp.max_horizon_ms,frame.l1_session.suggested_geometry,
-                            candidate_grid.crossing_level_usd)
+                            candidate_grid.crossing_level_usd,
+                             candidate_grid.paid_proposal_id)
             # L7: IMPORTANT no order unless explicitly enabled and broker-tradable
             if not simulate_broker or not broker_tradable:
                 self.events['l7_execution_disabled']+=1;continue
@@ -422,4 +428,5 @@ class FourSessionV1:
                     grid_genesis_stats=self.creator_genesis.stats(),
                     broker_paid_watchdog_stats=self.paid_watchdog.stats(),
                     broker_event_evidence=self.broker_evidence.summary(),
+                    quote_only_source_lineage_rows=len(self.realized_source_lineage),
                     status='SIMULATION_ONLY_NOT_MT5_BROKER_CERTIFIED')
