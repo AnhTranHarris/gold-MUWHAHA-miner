@@ -1,0 +1,13 @@
+# GRID0257 — PRIVATE/INTERNAL RESEARCH JOURNAL (NOT PROMOTION)
+
+Do not treat any experimental screen as trading profit, a shared funded portfolio, broker USD, or uninspected out-of-sample evidence.
+
+**Research basis:** R9 SYNTH is performance target; R9 OVERFIT is retrospective optimal trade teacher; monthly market conditions differ. Historical January–July already inspected, August sealed.
+
+Four groups of parallel causal hypotheses actually run:
+1. Multi-HTF LightGBM continue/fade/abstain trained ONLY on previous months, held trade up to 2,5,10 completed minutes at original quote first tick. Compared five fixed predicted-net admission cutoffs. The short-term learner did not produce a persistent profitable/high-volume seven-month source. Retain original script `grid0257_walkforward_action_research.py` and score file `GRID0257_WALK_FORWARD_ML_CAUSAL_ACTION_SCREEN.json` in verified ZIP.
+2. Six original ticket as-of structural admission gates (spread, prior M1 directional persistence, prior M1 volatility, prior actually settled same-family results and conjunctions). A number of variants improved headline after-friction net by selecting fewer tickets but did not increase R9-like trading velocity or solve all weekly loss periods. Keep `grid0257_causal_structural_gates.py`, `GRID0257_PREDECLARED_STRUCTURAL_GATE_SCREEN.json`.
+3. Five predeclared extra fixed H4 position permissions on the historical original 16 extra 4-slot source offers: previous one/three/five truly CLOSED base ticket net positive; previous completed 4h settled net positive; previous three close sum and causal completed M1 direction. **The five-close cohort is the only accepted additive candidate;** acceptance is retrospectively selected among five designs, not genuine unseen OOS. Preserve source variants and decision audit `GRID0257_EARNED_H4_MULTISLOT_SOURCE_PRELIM.json`.
+4. Same winning previous-five rule verified AGAIN with real source-event chronology and exact 57,527,562 Jan-Jul immutable source tick sequence; source permission 7 of 16 offers, 16-slot shared portfolio cash reconciliation 1,163/1,163 exact observed quotes, 0 missing/denied. That is successful original **quote-model** research, not a funded backtest or independent validation.
+
+Net research acceptance remains incomplete: all 31 ISO weeks, all 7 months at genuine MT5 broker-net, and materially R9-comparable completed-deal throughput have not been demonstrated. Do not silently change R9 weights, declare unlocked category locked, introduce month-aware thresholds, open August, activate live trading or start a recurring task. Science J0183 preserved.
