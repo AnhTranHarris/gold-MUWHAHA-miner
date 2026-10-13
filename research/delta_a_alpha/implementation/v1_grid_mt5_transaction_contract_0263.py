@@ -69,6 +69,9 @@ class MT5EventContractResearchOnly:
         self.verified_symbol=verified_symbol
         self.orders:dict[str,OrderRecord]={}
         self.deal_owner:dict[str,str]={}
+        # Actual externally observed deal prices/timestamps are retained for
+        # future verified source-router ACK; an OrderSend response is insufficient.
+        self.deal_evidence:dict[str,BrokerDeal]={}
         self.confirmed_net_cash=Decimal('0')
         self.confirmed_fee_cash=Decimal('0')
     def submit(self,q:BrokerOrder):
@@ -102,6 +105,7 @@ class MT5EventContractResearchOnly:
         p.last_deal_ms=d.time_ms
         p.deal_ids.add(d.deal_id)
         self.deal_owner[d.deal_id]=d.order_id
+        self.deal_evidence[d.deal_id]=d
     def modify_stop(self,order_id:str,*,modify_id:str,at_ms:int,proposed_stop_raw:int,
                     broker_accepted:bool,freeze_clear:bool):
         p=self.orders[order_id]
@@ -128,6 +132,7 @@ class MT5EventContractResearchOnly:
         self.confirmed_fee_cash+=money(d.fee_cash)
         self.confirmed_net_cash+=money(d.realized_cash)+money(d.fee_cash)
         self.deal_owner[d.deal_id]=d.order_id
+        self.deal_evidence[d.deal_id]=d
     def summary(self):
         open_lots=sum((p.entry_lots-p.close_lots for p in self.orders.values()),Decimal(0))
         return dict(research_event_contract_only=True,real_mt5_connected=False,
