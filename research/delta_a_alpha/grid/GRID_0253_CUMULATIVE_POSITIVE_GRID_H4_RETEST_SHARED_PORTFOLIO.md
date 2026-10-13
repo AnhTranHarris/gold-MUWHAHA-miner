@@ -33,3 +33,8 @@ All 7 source-UTC monthly closes positive. The new scorecard represents 31 ISO we
 **Artifact reuse:** This bundle contains ONLY incremental GRID0253 code, test, monthly/weekly matched scorecards, source attribution, negative candidate-screen research journal, and hash manifest. Reuse existing `GRID0252_R9_MONTHLY_POSITIVE_SHARED_TICK_PORTFOLIO_RESEARCH_20261012.zip` and archived `GRID0185_PROFIT_FIRST...zip` without copying them again. The complete 7 original Dukascopy ticks are separate user-owned Project sources; never require reupload before verifying.
 
 **Status:** 7/7 months positive in research quote proxy; **23/31 weeks**; research only; J0183 preserved, trading OFF, August sealed; no scheduled job.
+
+
+## Subsequent proven research checkpoint: GRID0254
+
+Preserve GRID0253's original 928 historical source-quote positions. The subsequent strictly completed H4+two-M1 second-acceptance GRID G0 source improves the unaltered 7-month shared quote portfolio to **1,032 source-quote trades / +$5,052.041 source USD/oz / 7 of 7 positive historical months / 23 of 31 positive represented ISO weeks**. It is not MT5-account-net certification and does not lock the weekly goal. Gross loss/drawdown are not locked. Research stage only, August sealed, J0183 unchanged. Primary source/code/causality and invalidated comparisons: [GRID0254 scientific record](./GRID_0254_HTF_SNIPER_SECOND_ACCEPTANCE_CUMULATIVE_SOURCE_ECONOMICS.md). Verified reproducibility ZIP: https://drive.google.com/file/d/19vvQFkhaMLzvq5Z9FKp4G4NWmDFQ3zCi/view?usp=drivesdk . No new branch, no schedule, no live trading.
