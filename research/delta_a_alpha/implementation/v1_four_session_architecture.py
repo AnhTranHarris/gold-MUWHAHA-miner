@@ -198,6 +198,15 @@ class FourSessionV1:
         if any(bars[k] is None for k in ('H4','H1','M15','M5')):
             return None,'L2_WARMUP'
         h4,h1,m15,m5=(bars[x] for x in ('H4','H1','M15','M5'))
+        # A completed bar is causal only if still within its actual market
+        # observation window; after a weekend/data outage reject stale HTF
+        # permission rather than pretending a prior-session M5 is current.
+        now=self.root.latest_ms
+        if now is not None and any(
+                b.end_ms>now or now-b.end_ms>(2*width)
+                for b,width in ((h4,14_400_000),(h1,3_600_000),
+                                (m15,900_000),(m5,300_000))):
+            return None,'L2_STALE_COMPLETED_STRUCTURE'
         m5_span=(m5.high_raw-m5.low_raw)/PRICE_SCALE
         if m5_span<sp.min_m5_range_usd:return None,'L2_NO_MICRO_TRANSFER'
         h4_span=max(.01,(h4.high_raw-h4.low_raw)/PRICE_SCALE)
@@ -263,7 +272,11 @@ class FourSessionV1:
             frame.l1_session.suggested_geometry,
             last_completed_m5=frame.l2_completed_bars.get('M5'),
             last_completed_h4=frame.l2_completed_bars.get('H4'),
-            broker_tradable=bool(broker_tradable))  # observed source permission; never invented
+            broker_tradable=bool(broker_tradable),
+            completed_grid_signs=tuple(
+                (1 if b.close_raw>b.open_raw else -1 if b.close_raw<b.open_raw else 0)
+                if b is not None else None
+                for b in (frame.l2_completed_bars.get(tf) for tf in ('H4','H1','M15','M5'))))  # observed source permission; never invented
         self.events['prel1_creator_grid_raw']+=len(genesis_opportunities)
         if not simulate_broker or not broker_tradable:
             self.events['l7_pending_cancelled_permission_loss']+=len(self.pending)
