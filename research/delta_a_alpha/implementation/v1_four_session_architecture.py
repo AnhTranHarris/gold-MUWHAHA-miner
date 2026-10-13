@@ -13,6 +13,7 @@ from typing import Optional
 import math
 from v1_vertical_grid import Quote,CleanV1Engine,ClosedBar
 from v1_grid_cumulative_source_adapter_0264 import CumulativeCreatorAdapter
+from v1_grid_broker_evidence_port_0265 import V1BrokerEvidencePort
 from v1_grid_admission_arbiter import GridQuoteArbiter
 from v1_paid_close_watchdog import PaidCloseWatchdog
 from v1_session_broker_clock import local_clocks
@@ -78,10 +79,14 @@ class FourSessionV1:
                  leverage=None,commission_per_roundtrip_usd=0.20,
                  latency_ms=250,broker_session_confirmed=False,
                  margin_reserve_fraction=.35,global_max_open=2,
-                 require_all_htf=True):
+                 require_all_htf=True,broker_event_contract=None):
         self.root=CleanV1Engine()
         # Pre-L1 creator-grid crossing SOURCE ONLY; no direct physical orders.
         self.creator_genesis=CumulativeCreatorAdapter()
+        # External observed broker events and current cumulative G0 share source identity.
+        # Research quote settlements cannot manufacture actual broker DEAL_ADD.
+        self.broker_evidence=V1BrokerEvidencePort(self.creator_genesis,
+                                   broker_contract=broker_event_contract)
         self.cash=float(starting_cash);self.equity=self.cash;self.initial=self.cash
         self.lot=lot;self.contract_oz=contract_oz
         self.leverage=leverage
@@ -416,4 +421,5 @@ class FourSessionV1:
                     day_counters={f'{k[0]}:{k[1]}':v for k,v in self.daily.items()},
                     grid_genesis_stats=self.creator_genesis.stats(),
                     broker_paid_watchdog_stats=self.paid_watchdog.stats(),
+                    broker_event_evidence=self.broker_evidence.summary(),
                     status='SIMULATION_ONLY_NOT_MT5_BROKER_CERTIFIED')
