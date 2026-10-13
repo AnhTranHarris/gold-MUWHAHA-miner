@@ -17,6 +17,7 @@ from v1_grid_auction_genesis_136b import NativeAuctionGrid136B
 from v1_grid_native_136a import NativeMinuteRungs136A
 from v1_grid_earned_harvest_runner import AsOfM5EnergyHarvestRunner
 from v1_r9_cycle_fingerprint import R9CycleFingerprintResearch,GridCycleFingerprint
+from v1_grid_h4_retest_0253 import CompletedH4RetestGrid,FinishedH4Rung
 from dataclasses import replace
 
 SCALE=1000
@@ -49,7 +50,7 @@ class GridStrategySourceRouter:
     It never follows current-tick spread within the same auction window.
     """
     def __init__(self,*,multiscale=None,funded=None,auction=None,native=None,
-                 harvest_runner=None,cycle_research=None,paid_gap_floor_raw=1200):
+                 harvest_runner=None,cycle_research=None,h4_retest=None,paid_gap_floor_raw=1200):
         if paid_gap_floor_raw<=0:raise ValueError('positive grid gap floor')
         self.multiscale=multiscale if multiscale is not None else MultiSpeedGridGenesis()
         self.funded=funded if funded is not None else FundedGridCampaign()
@@ -58,6 +59,10 @@ class GridStrategySourceRouter:
         self.native=native if native is not None else NativeMinuteRungs136A()
         self.harvest_runner=harvest_runner if harvest_runner is not None else AsOfM5EnergyHarvestRunner()
         self.cycle_research=cycle_research if cycle_research is not None else R9CycleFingerprintResearch()
+        self.h4_retest=h4_retest if h4_retest is not None else CompletedH4RetestGrid()
+        self._h4_retest_pending=None
+        self._h4_quote=None
+        self._h4_broker_tradable=False
         self._exit_hint=None
         self.h1_owner=None
         self.frozen_gap_raw=None
@@ -66,6 +71,19 @@ class GridStrategySourceRouter:
         self._low_priority_pending=None
         self._ready_release=()
         self.counts=Counter()
+    def on_completed_m1(self,*,end_ms:int,prev_close_raw:int,close_raw:int,h4:FinishedH4Rung):
+        """Add a completed-H4 retest invitation; never infer a broker fill.
+
+        May be called only after M1 completion and only with prior completed
+        H4 context. Active engine must supply this upstream observation; no
+        historical month labels or OVERFIT outcomes are supplied.
+        """
+        result=self.h4_retest.on_completed_m1(end_ms=end_ms,
+            prev_close_raw=prev_close_raw,close_raw=close_raw,h4=h4)
+        if result is not None:
+            self._h4_retest_pending=result
+            self.counts['h4_retest_asof_invites']+=1
+        return result
     def on_tick(self,q,h1,geometry,*,m5=None,broker_tradable=True,
                 completed_grid_signs=None,completed_m5_tr_raw=None,m5_tr_asof_ms=None):
         ms=q.time_ms_utc
@@ -79,6 +97,8 @@ class GridStrategySourceRouter:
         if q.bid_raw<=0 or q.ask_raw<q.bid_raw:
             raise ValueError('bad executable quote')
         self.last_ms=ms
+        self._h4_quote=q
+        self._h4_broker_tradable=broker_tradable
         self.cycle_research.push_quote(time_ms=ms,bid_raw=q.bid_raw,ask_raw=q.ask_raw)
         self._exit_hint=self.harvest_runner.select(quote_ms=ms,bid_raw=q.bid_raw,
                   ask_raw=q.ask_raw,completed_m5_tr_raw=completed_m5_tr_raw,
@@ -159,7 +179,29 @@ class GridStrategySourceRouter:
         # horizon hint: retain no hint unless source time == current timestamp.
         current=tuple(replace(x,research_horizon_ms=self._exit_hint.horizon_ms)
                       if self._exit_hint is not None and x.time_ms==self.last_ms
+                      and x.source!='GRID0253_COMPLETED_H4_BREAK_PULLBACK_RECROSS'
                       else x for x in current)
+        # The HTF source has lower priority than already emitted creator,
+        # filled-parent or native events. No backdated admission or pending
+        # simulated fill is permitted when a source quote is stale.
+        invitation=self._h4_retest_pending
+        if invitation is not None and self.last_ms is not None:
+            if self.last_ms>invitation.signal_known_at_ms+1000:
+                self._h4_retest_pending=None
+                self.counts['h4_retest_stale_expired']+=1
+            elif (self.last_ms>=invitation.signal_known_at_ms
+                  and self._h4_broker_tradable and self._h4_quote is not None
+                  and not current and not self._ready_release
+                  and self.last_emitted_ms!=self.last_ms
+                  and (self._low_priority_pending is None or
+                       self._low_priority_pending.time_ms!=self.last_ms)):
+                q=self._h4_quote
+                current=(SourceCandidate(self.last_ms,invitation.side,
+                         invitation.source,1,invitation.prior_breakout_level_raw,
+                         q.bid_raw,q.ask_raw),)
+                self.last_emitted_ms=self.last_ms
+                self._h4_retest_pending=None
+                self.counts['h4_retest_source_released']+=1
         # Provisional prior-ms source is released ONLY on this observed quote.
         # Do not backdate order availability to its original trigger quote.
         past=tuple(replace(x,available_ms=self.last_ms) for x in self._ready_release)
@@ -217,4 +259,6 @@ class GridStrategySourceRouter:
                 'base':self.multiscale.stats(),
                 'paid':dict(self.funded.counts),
                 'native_136a':dict(self.native.counts),
-                'auction_136b':dict(self.auction.counts)}
+                'auction_136b':dict(self.auction.counts),
+                'h4_retest':{'state':self.h4_retest.state,
+                             'pending':self._h4_retest_pending is not None}}
