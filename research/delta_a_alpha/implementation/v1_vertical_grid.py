@@ -9,6 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from datetime import datetime, timezone, time
 from zoneinfo import ZoneInfo
+from v1_grid_r9_benchmark_utc_0268 import CandleClock
 from typing import Optional
 
 UTC = timezone.utc
@@ -96,12 +97,13 @@ class _AccumBar:
 
 class CompletedBars:
     """Only completed bars are ever exposed to the strategy frame."""
-    def __init__(self):
+    def __init__(self, *, candle_clock: CandleClock | None=None):
+        self.candle_clock = candle_clock or CandleClock()
         self.live:dict[str,_AccumBar]={}
         self.completed:dict[str,ClosedBar]={}
     def on_quote(self,q:Quote):
         for name,width in TF_MS.items():
-            start=(q.time_ms_utc//width)*width
+            start=self.candle_clock.start_ms(q.time_ms_utc,name)
             old=self.live.get(name)
             if old is None:
                 self.live[name]=_AccumBar(start,q.bid_raw,q.bid_raw,q.bid_raw,q.bid_raw,1)
@@ -139,9 +141,9 @@ class CleanV1Engine:
     Stages L3-L7 are explicit fail-closed interfaces, not fake strategies.
     Market event input is still processed across the same vertical frame.
     """
-    def __init__(self):
+    def __init__(self, *, candle_clock: CandleClock | None=None):
         self.latest_ms:int|None=None
-        self.bars=CompletedBars()
+        self.bars=CompletedBars(candle_clock=candle_clock)
         self.num_quotes=0
         self.funded_orders=0
     def on_tick(self,q:Quote, *, broker_trading_confirmed:bool=False,
