@@ -63,8 +63,9 @@ class CompletedH4GridSource:
                 and completed_m1_end_ms <= self.last_completed_m1_ms):
             raise ValueError("completed M1 source must advance, never rewind")
         self.last_completed_m1_ms = completed_m1_end_ms
-        if h4.reference_asof_ms > completed_m1_end_ms:
-            raise ValueError("future or unfinished H4 reference")
+        owner = (completed_m1_end_ms - 1)//H4_MS
+        if h4.reference_asof_ms > owner*H4_MS:
+            raise ValueError("unfinished or future H4 reference")
         if (h4.rolling_six_low_raw <= 0
                 or h4.rolling_six_high_raw <= h4.rolling_six_low_raw
                 or h4.completed_atr14_raw <= 0
@@ -74,7 +75,6 @@ class CompletedH4GridSource:
             return None
         # The completed M1 ended precisely at the next tradable bar boundary,
         # hence (end-1) determines the H4 group it belonged to.
-        owner = (completed_m1_end_ms - 1)//H4_MS
         if owner == self.last_source_owner:
             return None
         up = (prior_m1_close_raw <= h4.rolling_six_high_raw
