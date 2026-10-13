@@ -21,6 +21,7 @@ from v1_grid_h4_retest_0253 import CompletedH4RetestGrid,FinishedH4Rung
 from v1_grid_h4_second_acceptance_0254 import H4SecondAcceptanceSource,H4AsOfBoundary
 from v1_grid0185_multiscale_permission_0256 import OriginalJ179FStrictPermission0256,StrictJ179FObservedT2
 from v1_grid_earned_h4_extension_0257 import H4EarnedExtensionPermission0257,ConfirmedBaseClose
+from v1_grid_parent_close_continuation_0258 import EarnedMultigeometryRenewal0258,SettledSourceParent
 from dataclasses import replace
 
 SCALE=1000
@@ -70,6 +71,7 @@ class GridStrategySourceRouter:
         # Permission only: neither invent a T1 invitation nor issue a fill.
         self.j179f_source_permission=OriginalJ179FStrictPermission0256()
         self.earned_h4_credit=H4EarnedExtensionPermission0257()
+        self.paid_close_micro_renewal=EarnedMultigeometryRenewal0258()
         self._h4_quote=None
         self._h4_broker_tradable=False
         self._exit_hint=None
@@ -130,6 +132,20 @@ class GridStrategySourceRouter:
     def assess_h4_earned_extension(self,**kwargs):
         """Optional original H4 sniper extra G0 permission, NEVER a fill."""
         return self.earned_h4_credit.request(**kwargs)
+
+    def observe_paid_close_for_micro_research(self,parent:SettledSourceParent):
+        """Optional historical settled ORIGINAL quote-source parent, NOT live cash.
+
+        This supplements existing GRID0257. No execution / G0 activation.
+        """
+        self.paid_close_micro_renewal.observe_parent_close(parent)
+
+    def evaluate_micro_renewal_observed_quote(self,*,time_ms,bid_raw,ask_raw,
+            tradable,global_active_positions):
+        """Source-only quote observation. No side-car teacher or live order."""
+        return self.paid_close_micro_renewal.on_observed_quote(
+            time_ms=time_ms,bid_raw=bid_raw,ask_raw=ask_raw,
+            tradable=tradable,global_active_positions=global_active_positions)
 
     def on_tick(self,q,h1,geometry,*,m5=None,broker_tradable=True,
                 completed_grid_signs=None,completed_m5_tr_raw=None,m5_tr_asof_ms=None):
@@ -333,4 +349,5 @@ class GridStrategySourceRouter:
                              'pending':self._h4_second_pending is not None},
                 'j179f_t2_permission':{'granted':self.j179f_source_permission.accepted,
                                       'denied':self.j179f_source_permission.denied},
-                'h4_earned_extra':self.earned_h4_credit.stats()}
+                'h4_earned_extra':self.earned_h4_credit.stats(),
+                'parent_closed_micro_renewal':self.paid_close_micro_renewal.stats()}
