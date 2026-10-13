@@ -18,6 +18,7 @@ from v1_grid_native_136a import NativeMinuteRungs136A
 from v1_grid_earned_harvest_runner import AsOfM5EnergyHarvestRunner
 from v1_r9_cycle_fingerprint import R9CycleFingerprintResearch,GridCycleFingerprint
 from v1_grid_h4_retest_0253 import CompletedH4RetestGrid,FinishedH4Rung
+from v1_grid_h4_second_acceptance_0254 import H4SecondAcceptanceSource,H4AsOfBoundary
 from dataclasses import replace
 
 SCALE=1000
@@ -50,7 +51,7 @@ class GridStrategySourceRouter:
     It never follows current-tick spread within the same auction window.
     """
     def __init__(self,*,multiscale=None,funded=None,auction=None,native=None,
-                 harvest_runner=None,cycle_research=None,h4_retest=None,paid_gap_floor_raw=1200):
+                 harvest_runner=None,cycle_research=None,h4_retest=None,h4_second=None,paid_gap_floor_raw=1200):
         if paid_gap_floor_raw<=0:raise ValueError('positive grid gap floor')
         self.multiscale=multiscale if multiscale is not None else MultiSpeedGridGenesis()
         self.funded=funded if funded is not None else FundedGridCampaign()
@@ -61,6 +62,8 @@ class GridStrategySourceRouter:
         self.cycle_research=cycle_research if cycle_research is not None else R9CycleFingerprintResearch()
         self.h4_retest=h4_retest if h4_retest is not None else CompletedH4RetestGrid()
         self._h4_retest_pending=None
+        self.h4_second=h4_second if h4_second is not None else H4SecondAcceptanceSource()
+        self._h4_second_pending=None
         self._h4_quote=None
         self._h4_broker_tradable=False
         self._exit_hint=None
@@ -84,6 +87,18 @@ class GridStrategySourceRouter:
             self._h4_retest_pending=result
             self.counts['h4_retest_asof_invites']+=1
         return result
+    def on_completed_m1_second(self,*,end_ms:int,close_raw:int,h4:H4AsOfBoundary):
+        """Completed M1 + six COMPLETED H4 source, no future values or orders.
+
+        Must receive every completed M1 once and in true UTC order; the
+        broker may issue an order only on a later observed tradable quote.
+        Does not touch the existing GRID0253 retest source state machine.
+        """
+        s=self.h4_second.on_completed_m1(end_ms=end_ms,close_raw=close_raw,h4=h4)
+        if s is not None:
+            self._h4_second_pending=s
+            self.counts['h4_second_asof_invites']+=1
+        return s
     def on_tick(self,q,h1,geometry,*,m5=None,broker_tradable=True,
                 completed_grid_signs=None,completed_m5_tr_raw=None,m5_tr_asof_ms=None):
         ms=q.time_ms_utc
@@ -202,6 +217,25 @@ class GridStrategySourceRouter:
                 self.last_emitted_ms=self.last_ms
                 self._h4_retest_pending=None
                 self.counts['h4_retest_source_released']+=1
+        # GRID0254 near-sniper is a separately staged lower-priority
+        # finished-H4+M1 source; previous G0 and GRID0253 still win.
+        second=self._h4_second_pending
+        if second is not None and self.last_ms is not None:
+            if self.last_ms>second.signal_known_at_ms+1000:
+                self._h4_second_pending=None
+                self.counts['h4_second_expired']+=1
+            elif (self.last_ms>=second.signal_known_at_ms
+                  and self._h4_broker_tradable and self._h4_quote is not None
+                  and not current and not self._ready_release
+                  and self.last_emitted_ms!=self.last_ms
+                  and (self._low_priority_pending is None or
+                       self._low_priority_pending.time_ms!=self.last_ms)):
+                q=self._h4_quote
+                current=(SourceCandidate(self.last_ms,second.side,second.source,
+                         1,second.structural_boundary_raw,q.bid_raw,q.ask_raw),)
+                self.last_emitted_ms=self.last_ms
+                self._h4_second_pending=None
+                self.counts['h4_second_source_released']+=1
         # Provisional prior-ms source is released ONLY on this observed quote.
         # Do not backdate order availability to its original trigger quote.
         past=tuple(replace(x,available_ms=self.last_ms) for x in self._ready_release)
@@ -261,4 +295,7 @@ class GridStrategySourceRouter:
                 'native_136a':dict(self.native.counts),
                 'auction_136b':dict(self.auction.counts),
                 'h4_retest':{'state':self.h4_retest.state,
-                             'pending':self._h4_retest_pending is not None}}
+                             'pending':self._h4_retest_pending is not None},
+                'h4_second':{'raw_seen':self.h4_second.n_seen,
+                             'invited':self.h4_second.n_invites,
+                             'pending':self._h4_second_pending is not None}}
