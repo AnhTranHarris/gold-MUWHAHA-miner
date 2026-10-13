@@ -76,3 +76,7 @@ Continue **GRID0261 causal opportunity monetization / pre-Vertical funding integ
 - Google Drive full 821-artifact ZIP: https://drive.google.com/file/d/1OGoWbgxrA9rUntJtbl5XAIAKSjyBME-v/view?usp=drivesdk
 - Full ZIP size: **29,664,928 bytes**. SHA256: `08070958acd97b0927b770ceac63c10b17d2d57d614a6e93eff91cc388c5a147`. CRC of 830 ZIP members and SHA256 of all 821 research input artifacts verified locally.
 - Primary working ZIP is in handoff folder; includes 25 earlier checkpoint ZIPs, real source and helper Python, original research result CSV/JSON/NPZ and logs. Separate original massive immutable user tick/tester sources are referenced by SHA256, not duplicated. August sealed and excluded.
+
+## Directly recovered executable GRID0261 helpers — verified exact source
+
+The seven original experimental helpers/tests and evidence builder are individually committed to the **SAME** branch under [`research/delta_a_alpha/experiments/grid0261_recovered_original/`](https://github.com/AnhTranHarris/gold-MUWHAHA-miner/tree/delta-A-alpha/research/delta_a_alpha/experiments/grid0261_recovered_original). These are the unpromoted intrinsic-time, fixed-exit, spread/quality, oracle reachability, capacity, hindsight-quarantine and evidence-packager Python sources. Their files are also redundantly available in the full Drive ZIP, which includes exact output JSON/CSV/NPZ/logs and all earlier checkpoint ZIPs. Preserve experiment names and do NOT import oracle source directly into an execution strategy.
