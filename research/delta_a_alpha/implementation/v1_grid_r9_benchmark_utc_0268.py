@@ -110,3 +110,30 @@ def utc_partition_labels(utc_ms:int)->dict:
     return {'UTC_DAY':d.date().isoformat(),
             'UTC_ISO_WEEK':f'{iso.year}-W{iso.week:02d}',
             'UTC_MONTH':d.strftime('%Y-%m')}
+
+
+def observed_settlement_scoreboards(realized):
+    """Chronological UTC closing-deal cash, independent of R9 hindsight.
+
+    Rows are the current engine's (close_utc_ms, desk, net_pnl, reason).
+    Intraperiod floating-equity drawdown is NOT implied by close-only data.
+    These rows are shadow backtest settlements unless broker-confirmed elsewhere.
+    """
+    boards={period:{} for period in R9_SYNTH_IDEAL_PERIODS}
+    for row in realized:
+        when,_,cash,*_=row
+        if not isinstance(cash,(float,int)):
+            raise TypeError('settlement net cash must be numeric')
+        for period,key in utc_partition_labels(when).items():
+            x=boards[period].setdefault(key,dict(completed_trades=0,
+                     net_realized_cash=0.,gross_profit_cash=0.,gross_loss_cash=0.,winning_trades=0))
+            x['completed_trades']+=1
+            x['net_realized_cash']+=cash
+            x['gross_profit_cash']+=max(0.,cash)
+            x['gross_loss_cash']+=min(0.,cash)
+            x['winning_trades']+=int(cash>0)
+    for rows in boards.values():
+        for x in rows.values():
+            for name in ('net_realized_cash','gross_profit_cash','gross_loss_cash'):
+                x[name]=round(x[name],6)
+    return boards
