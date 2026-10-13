@@ -83,4 +83,19 @@ class CanonicalUTCAlignmentTest(unittest.TestCase):
   self.assertEqual(d['UTC_DAY'],'2026-03-01')
   self.assertEqual(d['UTC_MONTH'],'2026-03')
   self.assertTrue(d['UTC_ISO_WEEK'].startswith('2026-W'))
+
+# Included in unittest discovery as a separate class; no future labels enter runtime.
+class CashPartitionScoreboardTest(unittest.TestCase):
+ def test_utc_day_week_month_cash_ledgers(self):
+  from v1_grid_r9_benchmark_utc_0268 import observed_settlement_scoreboards
+  x=observed_settlement_scoreboards([
+    (MS(2026,1,31,23,59), 'LONDON', 2.5,'TARGET'),
+    (MS(2026,2,1,0), 'LONDON', -1.0,'STOP'),
+    (MS(2026,2,1,0,2), 'NEW_YORK', .5,'TIME')])
+  self.assertEqual(x['UTC_MONTH']['2026-01']['net_realized_cash'],2.5)
+  self.assertEqual(x['UTC_MONTH']['2026-02']['completed_trades'],2)
+  self.assertEqual(x['UTC_MONTH']['2026-02']['gross_loss_cash'],-1.0)
+  self.assertEqual(x['UTC_MONTH']['2026-02']['net_realized_cash'],-.5)
+  self.assertEqual(x['UTC_DAY']['2026-02-01']['winning_trades'],1)
+
 if __name__=='__main__':unittest.main()
