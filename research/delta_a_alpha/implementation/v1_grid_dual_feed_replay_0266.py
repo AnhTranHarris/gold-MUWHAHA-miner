@@ -11,6 +11,7 @@ from decimal import Decimal, InvalidOperation
 from enum import Enum
 from pathlib import Path
 from typing import Callable, Iterator
+from v1_grid_r9_benchmark_utc_0268 import verify_coinexx_utc_text
 
 PRICE_SCALE=1000
 START_MS=1767225600000  # Jan 1, 2026 UTC
@@ -105,8 +106,9 @@ def stream_coinexx_r9_original(path:str|Path,*,kind:FeedKind,maximum:int|None=No
             spread=Decimal(row['spread'])
             if not spread.is_finite() or spread<0 or spread*point!=Decimal(a-b)/PRICE_SCALE:
                 raise ValueError(f'R9 logged spread inconsistent with actual quote at row {n+2}')
-            utc=datetime.fromtimestamp(tm/1000,timezone.utc).strftime('%Y.%m.%d %H:%M:%S')
-            if row['time']!=utc:raise ValueError(f'R9 UTC/text mismatch at row {n+2}')
+            # Independently verify MT5 integer UTC epoch, minute, second and
+            # elapsed minute-second; never guess a Coinexx offset.
+            verify_coinexx_utc_text(tm,row['time'],row['minute_start'],row['minute_second'])
             if row['gate_open'] not in ('0','1'):raise ValueError('historical gate flag unknown')
             yield StampedMarketTick(kind,n,tm,b,a,row['event'],row['gate_open']=='1',path.name)
             prev=tm
@@ -143,4 +145,6 @@ class SourceLockedV1ResearchReplay:
         return dict(feed=self.kind.value,quotes=self.quotes,
                     shadow_mode=self.simulate_shadow,
                     live_mt5_deals_confirmed_by_feed=0,
-                    external_broker_contract_verified_by_feed=False)
+                    external_broker_contract_verified_by_feed=False,
+                    raw_timestamp_authority='UTC_EPOCH_MS_UNSHIFTED',
+                    coinexx_chart_candle_phase_inferred=False)
