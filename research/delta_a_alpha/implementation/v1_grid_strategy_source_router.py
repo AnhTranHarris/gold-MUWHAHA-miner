@@ -19,6 +19,7 @@ from v1_grid_earned_harvest_runner import AsOfM5EnergyHarvestRunner
 from v1_r9_cycle_fingerprint import R9CycleFingerprintResearch,GridCycleFingerprint
 from v1_grid_h4_retest_0253 import CompletedH4RetestGrid,FinishedH4Rung
 from v1_grid_h4_second_acceptance_0254 import H4SecondAcceptanceSource,H4AsOfBoundary
+from v1_grid0185_multiscale_permission_0256 import OriginalJ179FStrictPermission0256,StrictJ179FObservedT2
 from dataclasses import replace
 
 SCALE=1000
@@ -64,6 +65,9 @@ class GridStrategySourceRouter:
         self._h4_retest_pending=None
         self.h4_second=h4_second if h4_second is not None else H4SecondAcceptanceSource()
         self._h4_second_pending=None
+        # The original J179F T1 event generator remains upstream/unrecovered.
+        # Permission only: neither invent a T1 invitation nor issue a fill.
+        self.j179f_source_permission=OriginalJ179FStrictPermission0256()
         self._h4_quote=None
         self._h4_broker_tradable=False
         self._exit_hint=None
@@ -99,6 +103,20 @@ class GridStrategySourceRouter:
             self._h4_second_pending=s
             self.counts['h4_second_asof_invites']+=1
         return s
+    def assess_original_j179f_t2(self,t2:StrictJ179FObservedT2,*,
+            source_reserved:int,global_reserved:int,
+            prior_completed_hourly_pnl_raw,prior_completed_hourly_close_count):
+        """Research-only authenticated original T1/T2 role permission.
+
+        The missing original upstream J179F T1 creator MUST independently
+        prove source_t1_verified; a permission is NOT a funded trade and
+        does not itself enter G0, L1-L7 or a broker order.
+        """
+        return self.j179f_source_permission.evaluate(t2,
+            current_j179f_reserved=source_reserved,
+            current_global_reserved=global_reserved,
+            prior_completed_hourly_pnl_raw=prior_completed_hourly_pnl_raw,
+            prior_completed_hourly_close_count=prior_completed_hourly_close_count)
     def on_tick(self,q,h1,geometry,*,m5=None,broker_tradable=True,
                 completed_grid_signs=None,completed_m5_tr_raw=None,m5_tr_asof_ms=None):
         ms=q.time_ms_utc
@@ -298,4 +316,6 @@ class GridStrategySourceRouter:
                              'pending':self._h4_retest_pending is not None},
                 'h4_second':{'raw_seen':self.h4_second.n_seen,
                              'invited':self.h4_second.n_invites,
-                             'pending':self._h4_second_pending is not None}}
+                             'pending':self._h4_second_pending is not None},
+                'j179f_t2_permission':{'granted':self.j179f_source_permission.accepted,
+                                      'denied':self.j179f_source_permission.denied}}
