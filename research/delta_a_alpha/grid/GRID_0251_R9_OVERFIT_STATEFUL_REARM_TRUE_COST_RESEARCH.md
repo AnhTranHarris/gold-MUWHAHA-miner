@@ -53,3 +53,29 @@ The identity reconciles to reported P&L exactly to two decimal places. Signed mi
 - Official MQL5: https://www.mql5.com/en/book/automation/symbols/symbols_spreads_levels; buy-stop conditions use Ask, sell-stop Bid, minimum stops/freeze constraints and dynamic spread must be honored. External sources supply mechanics, NEVER validated XAUUSD performance numbers.
 - Potential R9 SYNTH 100% performance: Jan–Jul +$309,122.85, 219,342 trades, seven positive months and 31 positive MT5-server reporting weeks. Actual latest GRID0251 gate FAIL. Gross loss and drawdown safety always recorded even when net category prioritized.
 - Program paths in this ZIP: grid0251_paid_grid_cycles_profiles.py, grid0251_seven_month_holdout_diagnostic.py, grid0251_original_cycle_overfit_oracle.py, grid0251_causal_teacher_state_probe.py, grid0251_second_cycle.py and regression tests. Research-only modules, NOT a certified original EA port.
+
+## Subsequent direct original Coinexx REAL April cross-feed cycle — critical follow-up
+
+Recovered all three original native April R9 REAL ticklogger `.csv.gz.part01/02/03` from owner's *personal connected Drive*; transport concatenated in part order without modifying originals. Original 31-column native CSV: `run_label,time_msc,time,bid,ask,...,event`. Exact 7,831,685 original quote rows, native `time_msc` monotonically ordered. Native median observed Bid/Ask spread **$0.20/oz**, versus ≈$0.63 on the independent Dukascopy study; original native broker time mapped from logging clock and not independently certified UTC. This is not identical-feed/clock order matching and NOT the original R9 EA execution replay.
+
+Ran THE SAME no-lookahead 250ms delayed quote, one funded-like slot, max three genuine within-minute post-close rearm, price-true 0.01lot/one-ounce hypothetical $0.20 fee grid logic on original Coinexx REAL tester quotes:
+
+| Prespecified grid-cycle family | April quote closes | April net USD/oz | Gross losing USD/oz | Signed MIDPOINT capture USD/oz | Two-sided spread drag USD/oz | Positive grouped source weeks |
+|---|---:|---:|---:|---:|---:|---:|
+| Crossing-follow | 37,567 | −15,823.09 | −26,570.86 | −713.39 | 7,596.30 | 0 |
+| Observed failed breakout fade | 14,712 | −5,833.56 | −11,078.92 | +76.68 | 2,967.84 | 0 |
+| 2-second observed acceptance | 15,597 | −6,990.45 | −12,324.93 | −682.24 | 3,188.82 | 0 |
+| Completed-M1 plus path efficiency | 23,008 | −9,803.37 | −16,557.81 | −540.49 | 4,661.28 | 0 |
+
+**Key correction to any earlier oversimplified 'only spread mismatch' story:** lower Coinexx spread improves economics, but all reproduced grid-cycles still lose money because the causally captured price movement is flat/negative, insufficient to cover even narrower broker-style spread+fee. The faded family captured only +$76.68 midpoint for 14,712 positions, far below execution drag. The BIGGER problem is entry-side/persistence/harvesting information, not merely quote-cost calibration.
+
+Original R9 OVERFIT role is retained by separately evaluating perfect-future 30/90s exit/direction upper bounds on these exact 37,567 Coinexx-real crossing-follow entries. In APRIL, hypothetical best buy/sell and best exit **with future prices known** yields +$57,724.78 after modeled fee by 30s or +$111,607.10 by 90s *if all losers may be declined*. Same-side only ceilings +$32,370.65 / +$64,963.87. More than half the 30s hypothetical optimal outcomes would choose the opposite direction of observed grid cross (~51.38%). These are NOT actual R9 OVERFIT score outputs, not reproducible paid trading, exclude competing positions/rearmer constraints, and must never be used as signal or claimed attainable. Original April R9 SYNTH +$38,353.96 broker model is a different feed/account cash; numerical ceiling comparisons are educational only.
+
+Original personal Drive source file IDs / stable browser URLs:
+- part01 https://drive.google.com/file/d/11eMoQmGr04k0EnuAjnSkZiypXNKdPxO-/view
+- part02 https://drive.google.com/file/d/1_b1k7HC3dtwG0UDjNAN8M8DfIXCCHqS_/view
+- part03 https://drive.google.com/file/d/1UHih8KHe4c9C770DPYGb_6qQ1uuRW1sx/view
+
+New code and outputs: `grid0251_coinexx_original_real_april.py`, `GRID0251_COINEXX_REAL_APRIL_GRID_CYCLE_CROSSFEED.json`, `GRID0251_COINEXX_APRIL_RETROSPECTIVE_OPTIMAL_TRADE_BOUNDS.json`. Native source bytes are **not copied into the small handoff ZIP**; they remain in immutable original Drive. Source observations were not retuned by month for profitable settings. A genuine causal discriminator of favorable post-entry path still has NOT been found.
+
+**Scientific outcome of current cycles:** Performance gates NOT MET. 7/7 profitable months, all R9 benchmark MT5-server weeks and each-month R9 SYNTH net/gross loss/maxDD not achieved. The promising original GRID0185 and March135/April136 sources remain separately preserved for integration. Stay on `delta-A-alpha`, J0183, trading OFF, August sealed.
