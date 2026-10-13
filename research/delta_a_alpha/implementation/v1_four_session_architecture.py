@@ -12,7 +12,7 @@ from datetime import datetime,timezone
 from typing import Optional
 import math
 from v1_vertical_grid import Quote,CleanV1Engine,ClosedBar
-from v1_grid_136b_cooperative_adapter import CooperativeGridGenesis
+from v1_grid_cumulative_source_adapter_0264 import CumulativeCreatorAdapter
 from v1_grid_admission_arbiter import GridQuoteArbiter
 from v1_paid_close_watchdog import PaidCloseWatchdog
 from v1_session_broker_clock import local_clocks
@@ -81,7 +81,7 @@ class FourSessionV1:
                  require_all_htf=True):
         self.root=CleanV1Engine()
         # Pre-L1 creator-grid crossing SOURCE ONLY; no direct physical orders.
-        self.creator_genesis=CooperativeGridGenesis()
+        self.creator_genesis=CumulativeCreatorAdapter()
         self.cash=float(starting_cash);self.equity=self.cash;self.initial=self.cash
         self.lot=lot;self.contract_oz=contract_oz
         self.leverage=leverage
@@ -255,15 +255,15 @@ class FourSessionV1:
         if broker_tradable is None:broker_tradable=self.broker_session_confirmed
         frame=self.root.on_tick(q,broker_trading_confirmed=broker_tradable,known_holidays=regional_holidays)
         self.events['ticks']+=1
-        # True creator-derived 48 completed-H1 parent grid + completed-M5
-        # single-rung-per-direction child lattice. These are virtual
+        # Cumulative original G0 router: 48 completed-H1 parent grid + M1/M5
+        # source families plus causal completed-H4/M1 context. These are virtual
         # opportunity hypotheses, never direct entry authorizations.
         genesis_opportunities=self.creator_genesis.on_tick(
             q,frame.l2_completed_bars.get('H1'),
             frame.l1_session.suggested_geometry,
             last_completed_m5=frame.l2_completed_bars.get('M5'),
             last_completed_h4=frame.l2_completed_bars.get('H4'),
-            broker_tradable=True)  # observed source tick, NOT broker fill authority
+            broker_tradable=bool(broker_tradable))  # observed source permission; never invented
         self.events['prel1_creator_grid_raw']+=len(genesis_opportunities)
         if not simulate_broker or not broker_tradable:
             self.events['l7_pending_cancelled_permission_loss']+=len(self.pending)
@@ -290,7 +290,7 @@ class FourSessionV1:
             self.events['l2_opportunity_windows']+=1
             # Structural permission CANNOT manufacture a trade without
             # an actual chronological creator-grid price-level CROSSING.
-            eligible_grid=[z for z in genesis_opportunities if z.side==direction or z.source.startswith('APR136B_')]
+            eligible_grid=[z for z in genesis_opportunities if z.side==direction]
             if not eligible_grid:
                 self.events['l3_no_creator_grid_crossing']+=1
                 continue
