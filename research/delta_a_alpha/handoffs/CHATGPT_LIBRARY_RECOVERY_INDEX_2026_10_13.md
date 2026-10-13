@@ -26,3 +26,11 @@ Verified **four directly copied file bytes/size/name/parent by Drive metadata**:
 - **Do not delete** distinct original data, 2026-08 SEALED items, unknown archive branches or unverified Library-only assets. Some Library-only uploads cannot be fetched via raw-file permissions; `files.materialize` and direct Google Drive reference upload failed for these. Flag them as *NOT BACKED UP* until content-access can be authenticated.
 - No R9 SYNTH strategy benchmark changes. Original J0183 scientific cursor, trading disabled, August seal and original GRID0258 control remain protected.
 - Treat any Library space reclamation as an independently verified operation; only remove an item after independent recoverable backup, preferably exact SHA-256, with original provenance recorded.
+
+## October 13 verified retention / cleanup boundary
+
+- Re-downloaded the 20,024,094-byte GRID0261 continuation ZIP **from Google Drive**, rehashed to `9d9d716d19befbe06ce84b960d5f868927bc0de09023c9a59923577b6c926c22`, exactly matching the local original.
+- Re-downloaded the 29,664,928-byte GRID0261 complete handoff **from Google Drive**, rehashed to `08070958acd97b0927b770ceac63c10b17d2d57d614a6e93eff91cc388c5a147`, exactly matching the local original.
+- The four newly uploaded small backups were confirmed by Drive metadata name/size/parent and accepted file references; **their destination hashes have not all been independently recomputed**.
+- **Zero Project/Library attachments were deleted:** six attempted cleanup operations all returned `project_library_mutation_unsupported`. The tool explicitly says Project attachment/knowledge mutations are unavailable; no Library space was reclaimed. Project-owner UI cleanup is required when appropriate, using the recovery evidence above. Do not treat the failed deletions as successful.
+- This index does NOT claim a complete 3,000+ Library migration or full Library byte parity. It records known protected high-priority XAUUSD evidence, persistent GitHub source and exact backups. Older massive Library-only files remain and need an independent authorized export / byte-backed rescue path before cleanup.
