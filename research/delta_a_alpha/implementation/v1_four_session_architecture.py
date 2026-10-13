@@ -110,6 +110,21 @@ class FourSessionV1:
         self.paid_watchdog=PaidCloseWatchdog(expected_lot=lot)
         self.watchdog_relock_until={k:0 for k in DESKS}
         self.recovery_intent=None # a bounded, L2-confirmation-dependent correction proposal
+        self._source_replay=None  # bound ONCE to original Dukascopy or Coinexx replay
+        self._feed_replay_authorized=False  # direct raw on_tick bypass prohibited once bound
+    def bind_research_feed(self,*,kind,permission,simulate_shadow=False):
+        """Attach strict original source replay to THIS authoritative Python V1.
+
+        Must bind before first quote. Real broker DEAL_ADD remains separate;
+        Coinexx logger ENTRY_/EXIT events are not execution receipts.
+        """
+        from v1_grid_dual_feed_replay_0266 import SourceLockedV1ResearchReplay
+        if self._source_replay is not None or self.events['ticks']:
+            raise RuntimeError('source must be bound once before first quote')
+        self._source_replay=SourceLockedV1ResearchReplay(self,kind=kind,
+                    permission=permission,simulate_shadow=simulate_shadow)
+        return self._source_replay
+
     def _mark(self,q):
         eq=self.cash
         for p in self.positions:
@@ -270,6 +285,8 @@ class FourSessionV1:
             return parent,'L2_NY_TREND_WITHIN_TREND'
         return None,'L2_NY_PHASE_UNRESOLVED'
     def on_tick(self,q:Quote,*,broker_tradable=None,regional_holidays=(),simulate_broker=False):
+        if self._source_replay is not None and not self._feed_replay_authorized:
+            raise RuntimeError('bound research engine requires feed-stamped original observation')
         # No silent conversion of raw UTC ticks to Coinexx chart clock.
         if broker_tradable is None:broker_tradable=self.broker_session_confirmed
         frame=self.root.on_tick(q,broker_trading_confirmed=broker_tradable,known_holidays=regional_holidays)
@@ -429,4 +446,6 @@ class FourSessionV1:
                     broker_paid_watchdog_stats=self.paid_watchdog.stats(),
                     broker_event_evidence=self.broker_evidence.summary(),
                     quote_only_source_lineage_rows=len(self.realized_source_lineage),
+                    research_feed_provenance=(self._source_replay.provenance()
+                                     if self._source_replay is not None else None),
                     status='SIMULATION_ONLY_NOT_MT5_BROKER_CERTIFIED')
