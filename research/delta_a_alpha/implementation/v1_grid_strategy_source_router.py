@@ -20,6 +20,7 @@ from v1_r9_cycle_fingerprint import R9CycleFingerprintResearch,GridCycleFingerpr
 from v1_grid_h4_retest_0253 import CompletedH4RetestGrid,FinishedH4Rung
 from v1_grid_h4_second_acceptance_0254 import H4SecondAcceptanceSource,H4AsOfBoundary
 from v1_grid0185_multiscale_permission_0256 import OriginalJ179FStrictPermission0256,StrictJ179FObservedT2
+from v1_grid_earned_h4_extension_0257 import H4EarnedExtensionPermission0257,ConfirmedBaseClose
 from dataclasses import replace
 
 SCALE=1000
@@ -68,6 +69,7 @@ class GridStrategySourceRouter:
         # The original J179F T1 event generator remains upstream/unrecovered.
         # Permission only: neither invent a T1 invitation nor issue a fill.
         self.j179f_source_permission=OriginalJ179FStrictPermission0256()
+        self.earned_h4_credit=H4EarnedExtensionPermission0257()
         self._h4_quote=None
         self._h4_broker_tradable=False
         self._exit_hint=None
@@ -117,6 +119,18 @@ class GridStrategySourceRouter:
             current_global_reserved=global_reserved,
             prior_completed_hourly_pnl_raw=prior_completed_hourly_pnl_raw,
             prior_completed_hourly_close_count=prior_completed_hourly_close_count)
+    def acknowledge_h4_paid_base_close(self,c:ConfirmedBaseClose):
+        """Feed only actually closed, quote-reconciled GRID0254 base tickets.
+
+        Source-state-only, no synthetic funds or order creation. The broker
+        executor must separately confirm paid cash before any live use.
+        """
+        self.earned_h4_credit.record_base_close(c)
+
+    def assess_h4_earned_extension(self,**kwargs):
+        """Optional original H4 sniper extra G0 permission, NEVER a fill."""
+        return self.earned_h4_credit.request(**kwargs)
+
     def on_tick(self,q,h1,geometry,*,m5=None,broker_tradable=True,
                 completed_grid_signs=None,completed_m5_tr_raw=None,m5_tr_asof_ms=None):
         ms=q.time_ms_utc
@@ -318,4 +332,5 @@ class GridStrategySourceRouter:
                              'invited':self.h4_second.n_invites,
                              'pending':self._h4_second_pending is not None},
                 'j179f_t2_permission':{'granted':self.j179f_source_permission.accepted,
-                                      'denied':self.j179f_source_permission.denied}}
+                                      'denied':self.j179f_source_permission.denied},
+                'h4_earned_extra':self.earned_h4_credit.stats()}
