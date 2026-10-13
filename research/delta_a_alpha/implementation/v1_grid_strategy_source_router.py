@@ -16,6 +16,7 @@ from v1_grid_renewal_signature import broker_cash_context
 from v1_grid_auction_genesis_136b import NativeAuctionGrid136B
 from v1_grid_native_136a import NativeMinuteRungs136A
 from v1_grid_earned_harvest_runner import AsOfM5EnergyHarvestRunner
+from v1_r9_cycle_fingerprint import R9CycleFingerprintResearch,GridCycleFingerprint
 from dataclasses import replace
 
 SCALE=1000
@@ -36,6 +37,7 @@ class SourceCandidate:
     raw_cross_sign:Optional[int]=None
     research_horizon_ms:Optional[int]=None
     available_ms:Optional[int]=None  # emitted on observed quote, never retroactively fill
+    cycle_fingerprint:Optional[GridCycleFingerprint]=None  # strictly available-quote as-of
     # Both future signs remain research hypotheses, not asserted profitable.
 
 class GridStrategySourceRouter:
@@ -47,7 +49,7 @@ class GridStrategySourceRouter:
     It never follows current-tick spread within the same auction window.
     """
     def __init__(self,*,multiscale=None,funded=None,auction=None,native=None,
-                 harvest_runner=None,paid_gap_floor_raw=1200):
+                 harvest_runner=None,cycle_research=None,paid_gap_floor_raw=1200):
         if paid_gap_floor_raw<=0:raise ValueError('positive grid gap floor')
         self.multiscale=multiscale if multiscale is not None else MultiSpeedGridGenesis()
         self.funded=funded if funded is not None else FundedGridCampaign()
@@ -55,6 +57,7 @@ class GridStrategySourceRouter:
         self.auction=auction if auction is not None else NativeAuctionGrid136B()
         self.native=native if native is not None else NativeMinuteRungs136A()
         self.harvest_runner=harvest_runner if harvest_runner is not None else AsOfM5EnergyHarvestRunner()
+        self.cycle_research=cycle_research if cycle_research is not None else R9CycleFingerprintResearch()
         self._exit_hint=None
         self.h1_owner=None
         self.frozen_gap_raw=None
@@ -76,6 +79,7 @@ class GridStrategySourceRouter:
         if q.bid_raw<=0 or q.ask_raw<q.bid_raw:
             raise ValueError('bad executable quote')
         self.last_ms=ms
+        self.cycle_research.push_quote(time_ms=ms,bid_raw=q.bid_raw,ask_raw=q.ask_raw)
         self._exit_hint=self.harvest_runner.select(quote_ms=ms,bid_raw=q.bid_raw,
                   ask_raw=q.ask_raw,completed_m5_tr_raw=completed_m5_tr_raw,
                   asof_ms=m5_tr_asof_ms)
@@ -161,6 +165,10 @@ class GridStrategySourceRouter:
         past=tuple(replace(x,available_ms=self.last_ms) for x in self._ready_release)
         current=tuple(replace(x,available_ms=self.last_ms) for x in current)
         out=past+current
+        if out:
+            # No teacher score and no lookahead; delayed G0 stamped at now.
+            causal=self.cycle_research.snapshot()
+            out=tuple(replace(x,cycle_fingerprint=causal) for x in out)
         self._ready_release=()
         return out
     def _supplemental(self,q,base,native,auction):
