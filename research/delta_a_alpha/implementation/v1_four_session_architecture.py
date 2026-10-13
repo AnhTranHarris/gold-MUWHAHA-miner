@@ -17,7 +17,7 @@ from v1_grid_broker_evidence_port_0265 import V1BrokerEvidencePort
 from v1_grid_admission_arbiter import GridQuoteArbiter
 from v1_paid_close_watchdog import PaidCloseWatchdog
 from v1_session_broker_clock import local_clocks
-from v1_grid_r9_benchmark_utc_0268 import R9_SYNTH_IDEAL_PERIODS, R9_OVERFIT_PER_TRADE_TEACHER
+from v1_grid_r9_benchmark_utc_0268 import R9_SYNTH_IDEAL_PERIODS, R9_OVERFIT_PER_TRADE_TEACHER, observed_settlement_scoreboards
 
 PRICE_SCALE=1000
 
@@ -455,5 +455,6 @@ class FourSessionV1:
                         python_tick_execution_source='DUKASCOPY_ORIGINAL',
                         mt5_test_comparator='COINEXX_R9_REAL_TESTER',
                         overfit_as_live_execution_feature=False),
+                    observed_utc_settlement_scoreboards=observed_settlement_scoreboards(self.realized),
                     candle_clock_mode=self.root.bars.candle_clock.mode,
                     status='SIMULATION_ONLY_NOT_MT5_BROKER_CERTIFIED')
