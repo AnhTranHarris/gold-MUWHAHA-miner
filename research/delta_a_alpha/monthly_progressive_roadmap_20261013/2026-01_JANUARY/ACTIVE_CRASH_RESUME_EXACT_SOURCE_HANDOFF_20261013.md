@@ -108,3 +108,8 @@ Each blob checked directly on GitHub in THIS handoff; paths/SHAs are concrete, n
 
 ## E. End-of-chat durable QA state
 Handoff is a management recovery step only. **Scientific J0183 unchanged; trading disabled; January not QC-passed; the last crashed research tasks may have unpersisted intermediate work.** Newly copied archived original files are read-only forensic source assets, not current active strategy code. All source implementation must be advanced only on `delta-A-alpha` from the actual original accepted code and exact successful test evidence.
+
+## F. Original universal master governing protocol (COMPLETE, NOT EXCERPTED)
+The project also refers to the full owner Master EA Research & Handoff Protocol:
+https://docs.google.com/document/d/1ycB5bQ3P24w7BZz54RwgJbc5CX5aRcqgr0KiI0Iidkw/edit?usp=drive_link
+This URL is an original cross-account governing document, not the Google handoff folder. Read its full relevant DELTA project scope and scientific procedure. If connector access is unavailable in a future session, explicitly note this rather than inventing contents. Specific current DELTA owner governance and original source-code evidence still control; archived Gamma/Alpha-only instructions are NOT an active research branch mandate for delta-A-alpha.
