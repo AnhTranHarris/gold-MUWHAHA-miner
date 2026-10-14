@@ -1,0 +1,32 @@
+# OWNER ADDENDUM — R8 MICRO BASELINE AND HOURLY INVESTOR GATES
+Date: 2026-10-14
+Scope: Post-GRID0272 forward research on existing delta-A-alpha ONLY.
+Status: INVESTOR REQUIREMENT; no candidate passed, no MQL5/live authorization.
+
+## Owner instruction, preserved verbatim
+> Investor have pointed out that the r8 should be our starting baseline for micro accounts while r9 syth is still the perffered  general net profit,  gross loss, maxdrawdown, trade volume, and pf, with even more restrictions of monthly net postive, weekly net positive, and daily net positive, and hourly net positive. Investor states that we are find solutions that are account growth oriented using a variety of various HTF, scalping and sniper, trend within trends across various mt5 timeframes to accelerate  growth, and trade accuracy abive 75% an hour.
+
+## Binding interpretation with preceding owner mandate
+1. Use original R8 GoldMuwahahaMiner_R8_Microstructure.mq5 as the STARTING MICRO-ACCOUNT BASELINE for new $100 and $200 funded-account research, not R9 SYNTH and not a $100k trading account. Source: carson/mt5-r8-s1-wave-confirm-certification/Experts/GoldMuwahahaMiner_R8_Microstructure.mq5, Git blob 6b2460074ed35d04cb9b4f7620194a483df17c2a. Preserve its original source and compare improvements against an unchanged baseline.
+2. R8's single-position 0.01-lot execution, 1-second completed microstructure, break/reclaim and continuation/sweep states, M5 completed ATR, spread and lifecycle are the starting reference, not proof of Dukascopy profitability. Historical Jan 2026 Coinexx MT5 R8 tester: $100 start, +$26,578.23 net, 34,763 trades, 74.35% monthly win rate; the separate causal original-Dukascopy port did NOT reproduce this profit. Its hourly win-rate parity is unmeasured.
+3. R9 SYNTH continues as the preferred aspirational whole-system net profit, gross loss, maximum balance/equity drawdown, completed trade volume and PF comparator. Historical January reference: net +$41,520.82, trades 27,980, gross loss -$1,827.87, PF 23.7154. Do not call these $100/$200 funded Dukascopy cash results. The NEW PF >=30 investor goal from the immediately preceding governance addendum remains stricter than the January R9 PF.
+4. NEW independent requirements for each $100 and $200 funded account: positive booked monthly net, every evaluable ISO-week net, every evaluable trading-day net, and every actually traded UTC-hour net. Keep hours with zero trades, zero net and negative net explicit; do not invent a pass by ignoring them. Report physical opening/ending hour equity, floating DD, costs and cross-hour positions.
+5. NEW trade accuracy >75% FOR EACH EVALUABLE TRADING HOUR. Use net-after-cost closed winning trades / total distinct funded closed trades as an explicit test proxy; log numerator, denominator, breakevens, absent trades and low-N uncertainty. Independently track entry-direction prediction accuracy where definable. A 1/1 win is not strong evidence. Hourly accuracy is NOT the same as the separate R9 OVERFIT 75% six-dimensional per-trade teacher score.
+6. Grow micro accounts through genuinely high-expectancy, causally as-of, fundable opportunities and adaptive management. Investigate reconstructible HTF regime/structure with completed H4/H1/M15/M5, M1/S1 microstructure and tick-level execution; scalping, selective sniper, pullback/retest, continuation/sweep, trend-within-trend and bounded failure handling in a COOPERATIVE L0-L7 vertical system. Avoid single rigid thresholds or date/month strategy switches. Keep market-opportunity intelligence and funded positions separate.
+7. Enforce $100/$200 actual initial funding, declared 0.01-lot broker contract, spread, Bid/Ask, slippage, margin, stopout and actual fundability. No Martingale, loss-dependent sizing, invented funds, future information, or promotion of historically selected profitable trades. Gross profit, gross loss, PF, trades, risk and capital growth must be scored together. Larger historical research balances remain read-only comparators, not discovery capital.
+8. Report each active hour, day, week, month, and starting account: completed funded trades, closed winners/accuracy, booked net, gross win/loss, PF, expectancy, full tick-equity and balance DD, margin headroom, stopouts, hour coverage and R9 comparisons. Preserve all zero/negative cells. Do not declare scientific acceptance on an attractive monthly aggregate hiding failing hours.
+9. Maintain independent gates: R9 SYNTH 100% aspiration over matched day/week/month; separate R9 OVERFIT 75% per-trade entry/hold/exit/profit/DD/gross-loss objective; new monthly/weekly/daily/hourly positivity and hourly accuracy >75%; micro-funded PF >=30, meaningful trade velocity, acceptable gross loss/equity risk and investor survival.
+10. Research from exact original January Dukascopy ordered UTC Bid/Ask source, reusing existing GRID0271/0272 and subsequent source evidence, not repeating completed trials. Month-blind regression through February–July remains required before owner approval. August SEALED, trading OFF, official J0183 unchanged, no new branch or MQL5 release from this governance entry.
+
+## Authority and source custody
+- Prior $100-$200 / PF30 binding governance: research/delta_a_alpha/governance/OWNER_20261014_POST_GRID0272_MICRO_ACCOUNT_PF30_INVESTOR_REQUIREMENTS.md
+- Original owner V1 whitepaper: research/delta_a_alpha/whitepapers/DAA_V1_OWNER_GOOGLE_WHITEPAPER_FULL_VERBATIM_030.txt
+- Full owner ratified conversation: https://docs.google.com/document/d/1J9d_P4ooCnNmcxPwG1F178aE4ktpkLrFclcyQPaJ8k/edit
+- Full January-July roadmap: https://docs.google.com/document/d/1PcaksxuiayFXVW3QtKfzitARvQj6NyL4IIbGhG8K9z4/edit
+- R8 original: https://github.com/AnhTranHarris/gold-MUWHAHA-miner/blob/carson/mt5-r8-s1-wave-confirm-certification/Experts/GoldMuwahahaMiner_R8_Microstructure.mq5
+- R8 researched mapping and limits: https://drive.google.com/file/d/1MvJcOQ6M8fwGp3giJa38-L-W1SNPQfTT/view
+- GRID0272 original code and ledger: https://drive.google.com/file/d/1A-k1uK7sUWLNuIAuyR86CeqCVZV0QIc0/view
+- Original R9 January SYNTH comparator: research/R9_GAMMA/artifacts/r9_synth_jan_daily_weekly.json at historical blob 669df6953222340b926fe60ef4ff92a3b69d24a2
+- Active source: research/delta_a_alpha/implementation/ ; CURRENT_STATE.json J0183.
+
+Disposition: REQUIREMENT_ADDED; R8 ORIGINAL_DUKASCAUSAL_MICRO_PROFITABILITY NOT VERIFIED; PF30 NOT PROVEN; HOURLY NET POSITIVE NOT PROVEN; HOURLY >75% ACCURACY NOT PROVEN; OWNER_QC PENDING.
