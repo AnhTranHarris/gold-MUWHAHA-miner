@@ -1,0 +1,54 @@
+{
+  "research": "2026-01 original Dukascopy quote-path internal-only event clock / quote flow / live M1 geometry",
+  "jan_source_original_gz_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "original_ticks_bid_ask": 9135062,
+  "trials": 1024,
+  "unique_ids": 1024,
+  "internal_source_mechanisms": [
+    "EFFICIENCY_TREND",
+    "EVENT_ACCELERATION",
+    "FLOW_DIVERGENCE",
+    "M1_ORIGIN_ROTATION",
+    "M5_OPPOSED_REIGNITE",
+    "SHOCK_REVERSAL",
+    "SWING_REJECTION",
+    "TICK_FLOW_BREAK"
+  ],
+  "funded_strategy_class": "single physical 0.01 XAUUSD, 1oz assumed, 1:500 assumed, fee $0.20, 250ms first original quote, spread cap, phase 3-57 seconds, conditional chronological fills, 60%-initial equity entry halt",
+  "r9_source_mode": "Coinexx 2026-01 original $100 MT5 Every tick generated synthetic, M1/M5/H1 same deal ledger",
+  "r9_month_net": 41520.82,
+  "r9_trade_count": 27980,
+  "r9_month_booked_gross_loss": -1827.87,
+  "owner_60pct_month_net_floor": 24912.492,
+  "cases_meeting_60pct_month_net": 0,
+  "positive_cases": 5,
+  "capital_halt_count": 803,
+  "best_nonhalt_case": {
+    "id": 699,
+    "net": 33.85,
+    "trades": 74,
+    "gross_loss": -119.516,
+    "max_tick_marked_dd": 34.008,
+    "pct_of_R9_month_net": 0.08152536486514476
+  },
+  "disposition": "BELOW_OWNER_VISIBILITY_GATE_ALL_INTERNAL_DO_NOT_PROMOTE",
+  "j0183": "UNCHANGED",
+  "august": "SEALED",
+  "python": "3.13.5",
+  "methods": [
+    "real quote-change imbalance, not actual exchange order flow",
+    "interarrival activity burst",
+    "event clock acceleration",
+    "quote flow divergence",
+    "M1 as-of open geometry",
+    "efficiency over 20 completed seconds",
+    "M5 prior complete trend",
+    "sweep reversal"
+  ],
+  "source_links": [
+    "https://www.mql5.com/en/articles/2612",
+    "https://www.mql5.com/en/articles/75",
+    "https://www.fmz.com/strategy/530403",
+    "https://docs.google.com/document/d/15psoEliXaPEXJr22cKlJb4OGmWo26j3Eu8GlTtH26Kw/edit"
+  ]
+}
