@@ -1,0 +1,25 @@
+# January R9 H1 NET/hour and gross-loss/hour optimization — source registry
+**Date 2026-10-14; owner January in-sample research, no accepted live candidate.** This is subordinate to complete owner governance, original source, and the ten-page institutional report. Branch `delta-A-alpha`. J0183 unchanged; trading disabled; August sealed.
+
+## Complete runnable source and original record
+- **Source-complete 81-member January executable + trials + QA archive, uploaded and verified in the protected January folder:** https://drive.google.com/file/d/1NZxvTC0M2h4Q2NMHa498iodd1Pw81dW8/view ; **archive SHA256 `0a3607960f588b7d4138cc1da0ccc2bb545a4d0c9f61d44562457db28660b209`**, 973184 bytes. Includes original 627 S15 source .npz, generator/feature code, all 273 Jan test configurations (including equivalent settings), independent January Bid/Ask QA, 31-day/744-hour weekly/individual trade ledgers for $100/$200, control and selected case, full internal negative forensic trials. Original massive January Dukascopy gzip intentionally NOT duplicated; pinned SHA256 `d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5`.
+- **Full quant evidence report:** https://drive.google.com/file/d/1szUmEr8YVdXC4xb2QAyFQPitB0qKJIj_/view , **exact Markdown source also in GitHub:** https://github.com/AnhTranHarris/gold-MUWHAHA-miner/blob/delta-A-alpha/research/delta_a_alpha/monthly_progressive_roadmap_20261013/2026-01_JANUARY/JAN_R9_H1_HOURLY_GROSS_LOSS_NET_FRONTIER_RESEARCH_20261014.md ; original local/git blob `41473cad722943a9326ccc5c7c2e1d46e2e5fb06`.
+- **Parent institutional R9 source-of-truth:** https://github.com/AnhTranHarris/gold-MUWHAHA-miner/blob/delta-A-alpha/research/delta_a_alpha/monthly_progressive_roadmap_20261013/2026-01_JANUARY/R9_JAN2026_INSTITUTIONAL_QUANT_REVERSE_ENGINEERING_SOURCE_OF_TRUTH_10P.md (Git blob `4cc4433a6cc8320f92c20e68d074a1b206db8743`).
+- **Owner's original January QC law:** https://docs.google.com/document/d/15psoEliXaPEXJr22cKlJb4OGmWo26j3Eu8GlTtH26Kw/edit .
+- **Original Coinexx R9 $100 generated "Every tick" M1/M5/H1 and M1 TickLogger source:** https://drive.google.com/drive/folders/1S0erLKfFpqQUVHHIHDql72PgsH6vQrMF .
+
+## Newly committed full original Python child, exact verified Git blobs
+Each file is under `research/delta_a_alpha/implementation/experimental/jan_20261014_m1_phase_grossloss/` on `delta-A-alpha`. The original full text of **each** was read back and compared to the original local blob:
+- `jan_r9_teacher_m1_phase_risk_v1.py` — `c264069334574c9169a9d55c3803433bae8c4536` ; observed-tick finite one-slot phase replay.
+- `jan_phase_plus_atr_harvest_neighborhood_v1.py` — `0834ffe809aef31c5dfb9225e1f807daefa7e5a0` ; 60 Jan ATR/microstructure neighborhoods.
+- `jan_r9_m1_phase_independent_quote_qc_v1.py` — `81bbb7a2251ce204090515338183cacaf1d4039c` ; source/quote/latency/cash/marked-equity audit.
+- `jan_r9_m1_phase_atr_loss_governor_v1.py` — `6bce5d1558539262da7b0d8279bc179b9e9f6774` ; optional research integration adapter, NOT wired to production V1.
+- `test_jan_r9_m1_phase_atr_loss_governor_v1.py` — `fb01501286bbdd2b303aecf0dad2a452dba578fb` ; five passed adapter unit tests.
+Additional exact Python negative-study, 2×2 factorial and parameter-loop files are in source-complete ZIP. No V1 protected python kernel has been replaced.
+
+## January strictly simulated after-cost results (original Dukascopy 9,135,062 quotes)
+- Prior original positive ATR runner: 244 funded closes, net **+$171.868**, gross loss **−$643.656**, PF1.267018, full tick DD $45.569.
+- **New preferred** completed S15 squeeze source + as-of M1 source-phase shield excluding second00 + prior-completed M5 ATR14 >=7.77 conditional profit exit with high-ATR 1500s maxhold: 194 closes, net **+$243.779**, gross losses **−$438.611**, PF1.555798, max original-tick marked DD $47.389, 134 active hours (84 net positive, 50 net negative), Jan1-15 +$20.709, Jan16-31 +$223.070; identical dollar results under separately funded $100 and $200.
+- +**$71.911** net vs original ATR positive child and **$205.045 less gross loss**; 2×2 factorial interaction **+$8.220**. Independent quote QA passes 194/194 original source signals, entry/exit quotes, spread, timing, one funded position, cash, same-source paired event attribution, marked drawdown for both capitals.
+- R9 ideal H1 **generated tick** January +$41,520.82 net, -$1827.87 gross loss, 480 trade-active hours, ~+$86.50/active hour, 58.29 closes/active hour, worst hourly gross loss -$9.18. Preferred original Dukascopy student +$1.82 net/active hour, ~1.45 closes/active hour, gross loss -$3.27/active hour **but worst hourly gross loss -$23.18**. Targets not yet met, and not same feed.
+- Source status **experimental candidate only;** no MT5 live optimization, no Jan-only hardcoded date switch, no CUSUM/TGT basket exposure integrated; additive child awaiting owner QC.
