@@ -43,6 +43,7 @@ class Position:
     stop: float | None
     target: float | None
     paid_entry_fee: float
+    entry_reason: str = 'strategy'
 
 @dataclass(slots=True)
 class Pending:
@@ -142,7 +143,7 @@ class Replay:
         self.trades.append({'entry_ms':p.entry_ms,'exit_ms':q.ms,'side':p.side,'lots':p.lots,
                             'entry_price':p.entry,'exit_price':price,'gross_pnl':round(gross,8),
                             'net_pnl':round(pnl,8),'reason':reason,'entry_fee':p.paid_entry_fee,
-                            'exit_fee':fee,'broker':self.cfg.name})
+                            'exit_fee':fee,'broker':self.cfg.name,'entry_reason':p.entry_reason})
         self.position=None;self._mark(q);self.events['closed_trades']+=1
         self.pending=[r for r in self.pending if r.kind!='close']
     def _validate_lots(self,lots):
@@ -192,7 +193,7 @@ class Replay:
             self.balance-=fee
             self.position=Position(r.side,r.lots,price,q.ms,
                     price-r.side*r.stop_distance if r.stop_distance is not None else None,
-                    price+r.side*r.target_distance if r.target_distance is not None else None,fee)
+                    price+r.side*r.target_distance if r.target_distance is not None else None,fee,r.reason)
             self.events['filled_entries']+=1
             self.max_margin_used=max(self.max_margin_used,self._margin(price,r.lots))
     def _process_stops(self,q:Quote):
