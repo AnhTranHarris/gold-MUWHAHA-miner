@@ -44,6 +44,7 @@ class Position:
     target: float | None
     paid_entry_fee: float
     entry_reason: str = 'strategy'
+    entry_sequence: int = 0
 
 @dataclass(slots=True)
 class Pending:
@@ -55,6 +56,7 @@ class Pending:
     due_ms: int
     sent_sequence: int
     reason: str
+    position_sequence: int = -1
 
 class Strategy(Protocol):
     def on_tick(self, q: Quote, engine: 'Replay') -> None: ...
@@ -104,7 +106,8 @@ class Replay:
         return True
     def request_close(self, reason='strategy'):
         if self.position and self.quote and not any(o.kind=='close' for o in self.pending):
-            self.pending.append(Pending('close',0,0,None,None,self.quote.ms+self.cfg.order_latency_ms,self.seq,reason))
+            self.pending.append(Pending('close',0,0,None,None,self.quote.ms+self.cfg.order_latency_ms,self.seq,reason,
+                                        self.position.entry_sequence))
     def request_modify_stop(self, new_stop: float, reason: str = 'strategy') -> bool:
         """Queue a broker-constrained protective-stop improvement, never a relaxation.
 
@@ -128,7 +131,8 @@ class Replay:
             return False
         self.pending.append(Pending(
             'modify_stop', 0, 0, new_stop, None,
-            self.quote.ms + self.cfg.order_latency_ms, self.seq, reason))
+            self.quote.ms + self.cfg.order_latency_ms, self.seq, reason,
+            p.entry_sequence))
         self.events['stop_modification_requests'] += 1
         return True
 
@@ -145,7 +149,7 @@ class Replay:
                             'net_pnl':round(pnl,8),'reason':reason,'entry_fee':p.paid_entry_fee,
                             'exit_fee':fee,'broker':self.cfg.name,'entry_reason':p.entry_reason})
         self.position=None;self._mark(q);self.events['closed_trades']+=1
-        self.pending=[r for r in self.pending if r.kind!='close']
+        self.pending=[r for r in self.pending if r.kind not in ('close','modify_stop')]
     def _validate_lots(self,lots):
         n=round((lots-self.cfg.min_lot)/self.cfg.lot_step)
         return self.cfg.min_lot<=lots<=self.cfg.max_lot and abs(self.cfg.min_lot+n*self.cfg.lot_step-lots)<1e-8
@@ -154,14 +158,16 @@ class Replay:
         self.pending=[r for r in self.pending if r not in ready]
         for r in ready:
             if r.kind=='close':
-                if self.position:
+                if self.position and self.position.entry_sequence==r.position_sequence:
                     p=self.position; raw=q.bid if p.side==1 else q.ask
                     self._exit(q,raw-p.side*self.cfg.adverse_slippage_price,r.reason)
+                else:
+                    self.rejections['stale_close_action']+=1
                 continue
             if r.kind=='modify_stop':
                 p=self.position
-                if p is None:
-                    self.rejections['stop_modify_position_gone']+=1
+                if p is None or p.entry_sequence!=r.position_sequence:
+                    self.rejections['stale_stop_modification']+=1
                     continue
                 proposed=r.stop_distance  # absolute stop price in this pending action
                 quote_side=q.bid if p.side==1 else q.ask
@@ -193,7 +199,7 @@ class Replay:
             self.balance-=fee
             self.position=Position(r.side,r.lots,price,q.ms,
                     price-r.side*r.stop_distance if r.stop_distance is not None else None,
-                    price+r.side*r.target_distance if r.target_distance is not None else None,fee,r.reason)
+                    price+r.side*r.target_distance if r.target_distance is not None else None,fee,r.reason,self.seq)
             self.events['filled_entries']+=1
             self.max_margin_used=max(self.max_margin_used,self._margin(price,r.lots))
     def _process_stops(self,q:Quote):
