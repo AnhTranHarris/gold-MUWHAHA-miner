@@ -81,14 +81,26 @@ class Replay:
         self.bankrupt |= self.equity<=0
     def _margin(self, price: float, lots: float) -> float:
         return abs(price*lots*self.cfg.contract_size/self.cfg.leverage)
-    def request_entry(self,side:int,lots:float,*,stop_distance:float|None=None,target_distance:float|None=None,reason:str='strategy'):
+    def request_entry(self,side:int,lots:float,*,stop_distance:float|None=None,target_distance:float|None=None,reason:str='strategy')->bool:
         if not self.quote: raise RuntimeError('cannot send before first quote')
         if side not in (-1,1): raise ValueError('side must be -1/+1')
         if (stop_distance is not None and stop_distance<=0) or (target_distance is not None and target_distance<=0):
             raise ValueError('protective distances must be positive')
+        # This is a strictly single-position research engine. Never let a strategy
+        # enqueue a burst of stale entry requests that fill after its signal expires.
+        if self.position is not None:
+            self.rejections['entry_while_position_open']+=1
+            return False
+        if any(o.kind=='entry' for o in self.pending):
+            self.rejections['duplicate_pending_entry']+=1
+            return False
+        if self.bankrupt:
+            self.rejections['account_ruin']+=1
+            return False
         self.pending.append(Pending('entry',side,lots,stop_distance,target_distance,
                                     self.quote.ms+self.cfg.order_latency_ms,self.seq,reason))
         self.events['entry_requests']+=1
+        return True
     def request_close(self, reason='strategy'):
         if self.position and self.quote and not any(o.kind=='close' for o in self.pending):
             self.pending.append(Pending('close',0,0,None,None,self.quote.ms+self.cfg.order_latency_ms,self.seq,reason))

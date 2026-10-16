@@ -23,6 +23,37 @@ python -m htf_ticklab.cli --broker dukascopy \
 
 `--strategy none` is the safe default. `--strategy impulse-demo` merely exercises signal/fill plumbing using **completed S15** bars and is neither optimized nor a recommendation. Use `python -m htf_ticklab.cli --help` for configuration. `python -m pytest -q` runs tests (install `requirements-dev.txt`).
 
+## Recovery update v0.2 (isolated repair branch)
+
+The original v0.1 commit remains immutable. This recovery build adds a continuous
+multi-month mode and bounded entry-intent handling. An interrupted replay must
+be restarted from the first source file; incremental JSON checkpoints are
+**audit receipts, not state-restoration binaries**. They never authorize a
+skip directly to the next month without reconstructing the engine state.
+
+```sh
+python -m htf_ticklab.cli --broker coinexx \
+  --input /authorized/XAUUSD_MT5_BROKER_2026_01_ticks_ALL.csv.gz \
+          /authorized/XAUUSD_MT5_BROKER_2026_02_ticks_ALL.csv.gz \
+  --output ./results/coinexx/jan_feb_continuous.json \
+  --checkpoint-each-input --strategy none
+```
+
+All requested files are hash-verified before replay, and registered monthly
+files must be passed in chronological order. Positions, equity, completed
+bars, pending requests, and strategy state are carried across file boundaries
+without account resets or artificial market gaps. The CLI continues to accept
+one monthly file as before. The optional `--checkpoint-each-input` writes
+atomic cumulative summaries after each input but does **not** yet support
+instant restore of Python execution state. Each source is read as a streaming
+`.csv.gz`; the system does not use filenames from neighboring projects.
+
+Entry requests cannot stack up while a position or entry request is pending:
+rejected intents are counted under `entry_while_position_open` and
+`duplicate_pending_entry`. This prevents a stale burst of orders from later
+executing after the original signal disappears. It is a research safety
+constraint; no claim is made that it reproduces arbitrary MT5 broker queues.
+
 ## Execution and causality
 
 - Quote-time monotonicity, crossed/invalid quotes, timestamp consistency and source-column verification are enforced; equal millisecond timestamps remain ordered. No sorting, candle interpolation, tick fabrication or use of full-minute future OHLC.
@@ -35,7 +66,7 @@ python -m htf_ticklab.cli --broker dukascopy \
 
 1. **Contract size (100 oz/lot), leverage (500), stop-out margin fraction, fees, latency, fill deviation and spread ceiling are editable illustrative assumptions**, not asserted historical Coinexx/Dukascopy broker settings. Tick CSV alone does not document historic trade specifications. The Dukascopy tick feed is **not an MT5 execution venue** or proof of tradable account access.
 2. Data contains only top-of-book quotes, not market depth, fill confirmations, actual order timestamps, rejects, partial fills, broker freeze levels, funding and historical commissions. The simulator cannot claim exact live-broker fidelity. Order book / network delay modeling can be added after separate permitted evidence.
-3. The baseline supports **one position at a time**, simple entry/close orders, and server-side protective exits. No pending-order queue priority or hedged multi-position accounting is claimed. Position carried beyond one monthly file stays open; avoid treating an open trade as a settled monthly return. When researching multi-month state, a future continuous replay must link files chronologically without resetting the account.
+3. The baseline supports **one position at a time**, simple entry/close orders, and server-side protective exits. No pending-order queue priority or hedged multi-position accounting is claimed. A multi-input continuous run preserves open positions across monthly files. Do not call a single-month result with an open position a settled return.
 4. Replay treats every serialized broker quote as available to a local process; real MT5 `OnTick()` event coalescing under handler load is not simulated yet.
 5. Bid/ask mismatches between the two brokers are **environment differences**, not automatic strategy failures. Compare matching UTC coverage and identical research policy, with broker-specific execution settings.
 

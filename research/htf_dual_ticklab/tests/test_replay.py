@@ -164,3 +164,75 @@ def test_period_metrics_and_trade_ledger(tmp_path):
     assert data['trade_ledger_sha256']
     assert out.with_name('out_trades.csv').exists()
     assert data['periods']['hour']==[]
+
+
+def test_duplicate_pending_entry_is_rejected_and_does_not_create_late_fill():
+    cfg = BrokerConfig(name='coinexx', order_latency_ms=100)
+    sim = Replay(cfg, NoTrades(), (5, 15))
+    q = lambda t: Quote(t, 100.0, 100.2, 'coinexx')
+    sim.on_quote(q(1767315600000))
+    assert sim.request_entry(1, 0.01, reason='first')
+    assert not sim.request_entry(-1, 0.01, reason='duplicate')
+    assert sim.rejections['duplicate_pending_entry'] == 1
+    assert len(sim.pending) == 1
+    sim.on_quote(q(1767315600100))
+    assert sim.position is not None and sim.position.side == 1
+    assert not sim.request_entry(-1, 0.01, reason='occupied')
+    assert sim.rejections['entry_while_position_open'] == 1
+    assert not sim.pending
+
+
+def test_multifile_input_has_continuous_timeline_and_monthly_checkpoints(tmp_path):
+    header='time,time_msc,bid,ask,last,volume,volume_real,flags\n'
+    def row(ms, bid):
+        return f'{ms//1000},{ms},{bid},{bid+0.2},0,0,0,134\n'
+    jan=gz(tmp_path,'jan.csv.gz',header+row(1769903999000,100.0))
+    feb=gz(tmp_path,'feb.csv.gz',header+row(1769904000000,100.1))
+    out=tmp_path/'state.json'
+    main(['--broker','coinexx','--input',str(jan),str(feb),'--output',str(out),
+          '--allow-unregistered-input','--checkpoint-each-input'])
+    report=json.loads(out.read_text())
+    assert report['events']['ticks']==2
+    assert report['continuous_state_across_inputs']
+    assert len(report['sources'])==2
+    assert report['net_realized']==0
+    assert report['source'] is None
+    mid=json.loads((tmp_path/'state.part-01.checkpoint.json').read_text())
+    assert mid['partial_checkpoint'] and mid['events']['ticks']==1
+    assert mid['resume_supported'] is False
+    assert report['events']['ticks']==json.loads((tmp_path/'state.part-02.checkpoint.json').read_text())['events']['ticks']
+
+
+def test_multifile_reversed_timestamps_fail_closed(tmp_path):
+    header='time,time_msc,bid,ask,last,volume,volume_real,flags\n'
+    def row(ms):return f'{ms//1000},{ms},100,100.2,0,0,0,134\n'
+    a=gz(tmp_path,'a.csv.gz',header+row(1769904000000))
+    b=gz(tmp_path,'b.csv.gz',header+row(1769903999000))
+    output=tmp_path/'bad.json'
+    with pytest.raises(ValueError, match='noncausal quote order'):
+        main(['--broker','coinexx','--input',str(a),str(b),'--output',str(output),
+              '--allow-unregistered-input'])
+    assert not output.exists()
+
+
+def test_preflight_rejects_unapproved_later_file_before_writing_checkpoint(tmp_path):
+    header='time,time_msc,bid,ask,last,volume,volume_real,flags\n'
+    a=gz(tmp_path,'a.csv.gz',header+'1769903999,1769903999000,100,100.2,0,0,0,134\n')
+    b=gz(tmp_path,'b.csv.gz',header+'1769904000,1769904000000,100,100.2,0,0,0,134\n')
+    out=tmp_path/'report.json'
+    with pytest.raises(SystemExit,match='source absent'):
+        main(['--broker','coinexx','--input',str(a),str(b),'--output',str(out),
+              '--checkpoint-each-input'])
+    assert not out.exists() and not list(tmp_path.glob('report.part-*.checkpoint.json'))
+
+
+def test_continuous_engine_carries_open_positions_between_months():
+    sim=Replay(BrokerConfig(name='coinexx',order_latency_ms=0), Once(), (5, 15))
+    sim.on_quote(Quote(1769903999000,100,100.2,'coinexx'))
+    sim.on_quote(Quote(1769903999500,100,100.2,'coinexx'))
+    assert sim.position is not None
+    # A new monthly source begins; the engine and strategy must not reset.
+    sim.on_quote(Quote(1769904000000,101,101.2,'coinexx'))
+    assert sim.position is not None
+    sim.on_quote(Quote(1769904000500,98,98.2,'coinexx'))
+    assert len(sim.trades)==1 and sim.trades[0]['reason']=='stop'
