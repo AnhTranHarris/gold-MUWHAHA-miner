@@ -3,6 +3,7 @@
 This is an additive engineering prototype. It preserves the existing Replay's
 single-position execution, mark-to-market, margin, protective stops and fees.
 No independent strategy is profitable/certified merely by producing an intent.
+This phase does not support order time-in-force expiry or multiple positions.
 """
 from __future__ import annotations
 
@@ -36,7 +37,6 @@ class SignalIntent:
     priority: int = 0
     kind: str = "entry"  # entry or close
     reason: str = "signal"
-    expires_ms: int | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -113,9 +113,6 @@ class SharedSignalArbiter:
                 raise ValueError("intent source_id differs from registered source")
             if candidate.observed_ms != q.ms:
                 raise ValueError("noncausal/stale signal observed_ms")
-            if candidate.expires_ms is not None and candidate.expires_ms < q.ms:
-                self._reject("expired_signal", q)
-                continue
             if candidate.kind not in ("entry", "close"):
                 raise ValueError("unrecognized order intent kind")
             if (not isinstance(candidate.priority, int) or
