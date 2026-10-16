@@ -237,7 +237,6 @@ def test_continuous_engine_carries_open_positions_between_months():
     sim.on_quote(Quote(1769904000500,98,98.2,'coinexx'))
     assert len(sim.trades)==1 and sim.trades[0]['reason']=='stop'
 
-
 # User-authorized Coinexx/Dukascopy clock-reconciliation regression checks.
 def test_coinexx_2026_clock_winter_and_summer_samples():
     from htf_ticklab.clock import coinexx_export_2026_to_utc
@@ -253,6 +252,7 @@ def test_coinexx_2026_dst_transition_march():
     epoch=lambda y,m,d,h:int(datetime(y,m,d,h,tzinfo=timezone.utc).timestamp()*1000)
     assert coinexx_export_2026_to_utc(epoch(2026,3,6,12)) == (epoch(2026,3,6,10),120)
     assert coinexx_export_2026_to_utc(epoch(2026,3,9,12)) == (epoch(2026,3,9,9),180)
+    # Wall-time labels absent in forward spring shift must not be manufactured.
     with pytest.raises(ValueError,match='ambiguous'):
         coinexx_export_2026_to_utc(epoch(2026,3,8,9))
 

@@ -83,28 +83,41 @@ Acceptance gates are governed by `XAU-HTF-INV-001 v1.0` in the user-designated T
 Each run produces both an atomic JSON summary (`--output`) and a SHA-256-pinned **per-trade CSV ledger** unless `--no-trade-ledger` is specified. Period summaries (UTC hour/day/ISO week/month) include net and gross loss/profit, PF, win accuracy, win/loss count ratio, and **closed-trade-path drawdown**. The top-level `max_equity_drawdown_*` is the distinct tick-marked floating-equity drawdown across the full replay. `positive_hour_coverage_trade_active_only` uses **hours that contain exits** as denominator; a market-hour denominator requires an explicitly agreed market calendar and must not be silently conflated with this diagnostic.
 
 
-## UTC alignment — mandatory for v0.3
+## IMPORTANT: verified UTC alignment (v0.3)
 
-The user-approved Coinexx 2026 XAUUSD export timestamp labels are shifted
-relative to Dukascopy UTC by +120 minutes in January-February and +180
-minutes during March 9-July. The DST transition occurs during the March 8
-weekend. This was proven by comparing aligned minute bid/ask midpoint returns,
-not by assuming a broker clock. March needs BOTH corrections.
-Use the default --clock-profile auto so registered Coinexx sources are corrected.
-Dukascopy raw timestamps remain unchanged. Raw Coinexx replay is diagnostic
-only and requires explicit --diagnostic-allow-raw-clock.
+The approved Coinexx 2026 `time_msc` values are **not UTC-equivalent** to
+Dukascopy `timestamp_ms_utc` despite their Unix epoch-like format.
+January-February Coinexx quote labels lead Dukascopy by **120 minutes**;
+from the March 8, 2026 US DST boundary they lead by **180 minutes**.
+This was demonstrated by matching the signed one-minute XAUUSD mid-price
+returns of the *authorized* Coinexx and Dukascopy raw sources (2026 Jan-Jul).
+Monthly correlation after UTC normalization: Jan 0.995034, Feb 0.991308,
+Mar 0.996955 (two seasonal profiles), Apr 0.996760, May 0.995713,
+Jun 0.997425, Jul 0.995790. The two feeds must **never** be compared on
+original Coinexx `time_msc` labels without normalization.
 
-The original Coinexx source epoch label is preserved as Quote.source_ms;
-Quote.ms is corrected UTC. Quality and checkpoint reports record offset counts,
-profile and raw timestamps. Direct Coinexx reads require explicit clock_profile.
-2026 Jan-Sep is the allowed profile date range; Jan-Jul has independent cross-
-broker empirical validation, while Aug-Sep is provisional extrapolation.
+- `--clock-profile auto` (default): signed registered Coinexx inputs use
+  `coinexx_2026_nyclose`; Dukascopy and explicitly unregistered fixtures
+  keep raw timestamps. Data outside approved 2026 Jan-Sep is rejected by
+  the source registry; the offset profile additionally rejects dates
+  outside Jan-Sep 2026.
+- `Quote.ms` is corrected UTC; `Quote.source_ms` retains original timestamps;
+  `Quote.clock_offset_minutes` is recorded for every quote, while checkpoints
+  record per-profile tick counts and first/last original source timestamps.
+- Direct `read_ticks(..., broker='coinexx')` requires an **explicit**
+  `clock_profile`, preventing accidental unaligned research.
+- `--clock-profile raw` is prohibited on registered Coinexx files unless
+  `--diagnostic-allow-raw-clock` is specified for forensic use.
+- US/New York DST boundaries are used as a *calibrated 2026 source profile*;
+  they are not assumed to be universal broker rules. Fall 2026 and future
+  years need separate empirical verification. DST ambiguity fails closed.
+- File-by-file month naming is source export month, **not necessarily UTC
+  economic month**. A corrected first quote can belong to the prior UTC month.
+  Reports/strategies must bucket by corrected UTC event timestamps.
+- Prior v0.1/v0.2 time-of-day, session, and cross-broker comparisons must
+  be recomputed; old records are historical diagnostics, not UTC-certified.
 
-After correction, a July 1 broker-export quote can become June 30 UTC.
-Derive sessions, daily boundaries and strategy features from corrected
-timestamps, NEVER filename month or the original Coinexx clock.
-Existing v0.1/v0.2 time-based strategy outputs require re-evaluation.
-
-Monthly aligned minute-return correlation (approved original data):
-Jan .995034, Feb .991308, Mar .996955 (dynamic two/three hours),
-Apr .996760, May .995713, Jun .997425, Jul .995790.
+The clock correction does not alter source files, price quotes, trade side,
+or monetary arithmetic. It changes timestamp assignment and therefore
+causal timing, session labels, candle boundaries and time-dependent signals.
+Always reference v0.3+ for synchronized cross-broker experiments.
