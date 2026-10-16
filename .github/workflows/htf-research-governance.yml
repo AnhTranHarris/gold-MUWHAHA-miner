@@ -32,3 +32,6 @@ jobs:
       - name: Check paired whole-system example plan
         working-directory: research/htf_dual_ticklab
         run: python -m htf_ticklab.system_guard check-system-plan governance/EXPERIMENT_PLAN_EXAMPLE.json governance/SYSTEM_PLAN_EXAMPLE.json governance/SYSTEM_LINEAGE_EXAMPLE.json
+      - name: Check research-continuity v1.2 controls
+        working-directory: research/htf_dual_ticklab
+        run: python -m pytest -q tests/test_continuity_guard.py
