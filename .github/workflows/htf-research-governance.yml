@@ -1,9 +1,9 @@
 name: HTF ticklab research and system governance
 on:
+  workflow_dispatch:
   push:
     branches:
-      - 'carson/htf-governance-anti-drift-v0.1'
-      - 'carson/htf-governance-system-lineage-v1.1'
+      - 'carson/htf-*'
   pull_request:
     paths:
       - 'research/htf_dual_ticklab/**'
