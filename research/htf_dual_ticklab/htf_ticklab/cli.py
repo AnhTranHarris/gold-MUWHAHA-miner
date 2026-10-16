@@ -31,7 +31,7 @@ def atomic_trades_csv(path:Path,trades:list[dict]):
     path.parent.mkdir(parents=True,exist_ok=True)
     temp=path.with_suffix(path.suffix+'.partial')
     fields=['entry_ms','exit_ms','side','lots','entry_price','exit_price','gross_pnl',
-            'net_pnl','reason','entry_fee','exit_fee','broker']
+            'net_pnl','reason','entry_fee','exit_fee','broker','entry_reason']
     with temp.open('w',newline='',encoding='utf-8') as handle:
         writer=csv.DictWriter(handle,fieldnames=fields)
         writer.writeheader();writer.writerows(trades)
@@ -44,7 +44,7 @@ def parse_args(argv=None):
     parser.add_argument('--input',type=Path,nargs='+',required=True,help='ONE OR MORE chronological authorized monthly .csv.gz files; continuous account state')
     parser.add_argument('--output',type=Path,required=True,help='JSON checkpoint (written atomically)')
     parser.add_argument('--no-trade-ledger',action='store_true',help='omit per-trade CSV output')
-    parser.add_argument('--strategy',choices=['none','impulse-demo'],default='none')
+    parser.add_argument('--strategy',choices=['none','impulse-demo','six-specialist-r04'],default='none')
     parser.add_argument('--initial-balance',type=float,default=100.0)
     parser.add_argument('--contract-size',type=float,default=100.0)
     parser.add_argument('--leverage',type=float,default=500.0)
@@ -113,7 +113,26 @@ def main(argv=None):
                      adverse_slippage_price=a.slippage_price,
                      commission_per_lot_side=a.commission_per_lot_side,
                      max_spread_price=a.max_spread_price,min_stop_distance_price=a.min_stop_price)
-    strategy=NoTrades() if a.strategy=='none' else ClosedBarImpulseDemo()
+    if a.strategy=='none':
+        strategy=NoTrades()
+    elif a.strategy=='impulse-demo':
+        strategy=ClosedBarImpulseDemo()
+    else:
+        # Research-only, explicitly costed; the standard no-trade CLI remains
+        # the default. Risk caps here are illustrative, NOT owner-approved.
+        if a.commission_per_lot_side<=0 or a.slippage_price<=0:
+            raise SystemExit('R04 requires explicit positive commission and slippage assumptions')
+        from .six_specialists import SixSpecialists, SixExpertParameters
+        from .signal_bus import SharedSignalArbiter, ArbitrationPolicy
+        from .economic_exit import CostAwareLifecycle, ExitProfile
+        expert=SixSpecialists(SixExpertParameters(max_spread=a.max_spread_price))
+        router=SharedSignalArbiter({'r03_six_specialists':expert},
+            ArbitrationPolicy(max_stop_risk_fraction=0.05))
+        strategy=CostAwareLifecycle(router,ExitProfile(
+            max_hold_ms=30000, min_locked_net_usd=0.10,
+            activate_net_usd=0.35, trail_floor_price=0.30,
+            atr_trail_fraction=0.05))
+
     sim=Replay(cfg,strategy)
     sources=[]
     for idx,(path,fingerprint,pin) in enumerate(prepared):
