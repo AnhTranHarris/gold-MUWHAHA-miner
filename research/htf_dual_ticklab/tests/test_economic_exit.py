@@ -104,3 +104,21 @@ def test_max_hold_only_requests_delayed_close():
     assert len([r for r in sim.pending if r.kind=='close'])==1
     sim.on_quote(q(T+350,100))
     assert sim.position is None and sim.trades[0]['reason']=='specialist_max_hold:pulse_continuation'
+
+def test_pending_stop_amendment_dies_with_original_position():
+    sim,_=construct()
+    sim.on_quote(q(T,100))
+    sim.on_quote(q(T+100,100))
+    oldseq=sim.position.entry_sequence
+    assert sim.request_modify_stop(100.)
+    assert any(x.kind=='modify_stop' for x in sim.pending)
+    # Protective stop triggers *before* modification ACK. Old action must die.
+    sim.on_quote(q(T+150,99.))
+    assert sim.position is None
+    assert not any(x.kind=='modify_stop' for x in sim.pending)
+    sim.on_quote(q(T+160,99.))
+    assert sim.request_entry(1,.01,stop_distance=1.)
+    sim.on_quote(q(T+260,99.))
+    assert sim.position is not None
+    assert sim.position.entry_sequence != oldseq
+    assert sim.position.stop == pytest.approx(sim.position.entry-1.)
