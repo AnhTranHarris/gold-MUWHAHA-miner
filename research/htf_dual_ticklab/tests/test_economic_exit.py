@@ -64,8 +64,10 @@ def test_short_cost_floor():
     p=sim.position; original=p.stop
     sim.on_quote(q(T+200,98.5))
     assert p.stop==original
-    sim.on_quote(q(T+300,98.45))
+    sim.on_quote(q(T+299,98.48))
     assert p.stop==original
+    sim.on_quote(q(T+300,98.45))
+    assert p.stop<p.entry
     sim.on_quote(q(T+400,98.4))
     assert p.stop<p.entry
     sim.on_quote(q(T+500,p.stop-.1,ask=p.stop+.05))
