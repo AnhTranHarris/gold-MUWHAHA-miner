@@ -18,7 +18,7 @@ def gz(tmp_path,name,text):
 def test_two_broker_feed_normalization(tmp_path):
     coin=gz(tmp_path,'c.csv.gz','time,time_msc,bid,ask,last,volume,volume_real,flags\n1767315600,1767315600480,4324.37,4327.44,0,0,0,134\n')
     duk=gz(tmp_path,'d.csv.gz','timestamp_ms_utc,ask_raw,bid_raw,ask_volume,bid_volume\n1767308400596,4327902,4323698,0.00012,0.00012\n')
-    a=list(read_ticks(coin,'coinexx',FeedQuality()))[0]
+    a=list(read_ticks(coin,'coinexx',FeedQuality(),clock_profile='raw'))[0]
     b=list(read_ticks(duk,'dukascopy',FeedQuality()))[0]
     assert (a.bid,a.ask,a.ms)==(4324.37,4327.44,1767315600480)
     assert (b.bid,b.ask,b.ms)==(4323.698,4327.902,1767308400596)
@@ -236,3 +236,78 @@ def test_continuous_engine_carries_open_positions_between_months():
     assert sim.position is not None
     sim.on_quote(Quote(1769904000500,98,98.2,'coinexx'))
     assert len(sim.trades)==1 and sim.trades[0]['reason']=='stop'
+
+
+# User-authorized Coinexx/Dukascopy clock-reconciliation regression checks.
+def test_coinexx_2026_clock_winter_and_summer_samples():
+    from htf_ticklab.clock import coinexx_export_2026_to_utc
+    jan_raw=1767315600480
+    jul_raw=1782867600658
+    assert coinexx_export_2026_to_utc(jan_raw)==(1767308400480,120)
+    assert coinexx_export_2026_to_utc(jul_raw)==(1782856800658,180)
+
+
+def test_coinexx_2026_dst_transition_march():
+    from datetime import datetime, timezone
+    from htf_ticklab.clock import coinexx_export_2026_to_utc
+    epoch=lambda y,m,d,h:int(datetime(y,m,d,h,tzinfo=timezone.utc).timestamp()*1000)
+    assert coinexx_export_2026_to_utc(epoch(2026,3,6,12)) == (epoch(2026,3,6,10),120)
+    assert coinexx_export_2026_to_utc(epoch(2026,3,9,12)) == (epoch(2026,3,9,9),180)
+    with pytest.raises(ValueError,match='ambiguous'):
+        coinexx_export_2026_to_utc(epoch(2026,3,8,9))
+
+
+def test_clock_profile_rejects_unverified_time_period_and_other_broker():
+    from datetime import datetime,timezone
+    from htf_ticklab.clock import coinexx_export_2026_to_utc
+    dec=int(datetime(2026,12,1,tzinfo=timezone.utc).timestamp()*1000)
+    with pytest.raises(ValueError,match='only verified'):
+        coinexx_export_2026_to_utc(dec)
+    with pytest.raises(ValueError,match='cannot be applied'):
+        list(read_ticks('does-not-exist','dukascopy',FeedQuality(),clock_profile='coinexx_2026_nyclose'))
+
+
+def test_clock_corrected_feed_preserves_original_source_ms(tmp_path):
+    raw=1767315600480
+    header='time,time_msc,bid,ask,last,volume,volume_real,flags\n'
+    src=gz(tmp_path,'coine_fixture.csv.gz',header+f'{raw//1000},{raw},4324.37,4327.44,0,0,0,134\n')
+    quality=FeedQuality()
+    q=list(read_ticks(src,'coinexx',quality,clock_profile='coinexx_2026_nyclose'))[0]
+    assert q.ms==1767308400480 and q.source_ms==raw and q.clock_offset_minutes==120
+    assert quality.first_source_ms==raw and quality.first_ms==q.ms
+    assert quality.offset_tick_counts=={'120':1}
+    assert quality.clock_profile=='coinexx_2026_nyclose'
+
+
+def test_cli_clock_profile_explicit_fixture_and_raw_writes(tmp_path):
+    raw=1767315600480
+    header='time,time_msc,bid,ask,last,volume,volume_real,flags\n'
+    src=gz(tmp_path,'coin_sample.csv.gz',header+f'{raw//1000},{raw},4324.37,4327.44,0,0,0,134\n')
+    out=tmp_path/'normalized.json'
+    main(['--broker','coinexx','--input',str(src),'--output',str(out),'--allow-unregistered-input',
+          '--clock-profile','coinexx_2026_nyclose'])
+    j=json.loads(out.read_text())
+    assert j['sources'][0]['quality']['first_ms']==1767308400480
+    assert j['clock_alignment_profile']=='coinexx_2026_nyclose'
+    assert j['sources'][0]['clock_alignment_applied'] is True
+    out2=tmp_path/'raw.json'
+    main(['--broker','coinexx','--input',str(src),'--output',str(out2),'--allow-unregistered-input'])
+    q=json.loads(out2.read_text())
+    assert q['sources'][0]['quality']['first_ms']==raw
+    assert q['clock_alignment_profile']=='raw'
+
+
+def test_dukascopy_source_epoch_preserved(tmp_path):
+    h='timestamp_ms_utc,ask_raw,bid_raw,ask_volume,bid_volume\n'
+    raw=1767308400596
+    src=gz(tmp_path,'duk.csv.gz',h+f'{raw},4327902,4323698,0.1,0.2\n')
+    q=list(read_ticks(src,'dukascopy',FeedQuality()))[0]
+    assert q.ms==raw and q.source_ms==raw and q.clock_offset_minutes==0
+
+
+def test_direct_coinexx_reader_requires_explicit_clock_profile(tmp_path):
+    raw=1767315600480
+    hdr='time,time_msc,bid,ask,last,volume,volume_real,flags\n'
+    src=gz(tmp_path,'src.csv.gz',hdr+f'{raw//1000},{raw},4324.37,4327.44,0,0,0,134\n')
+    with pytest.raises(ValueError,match='clock profile must be explicit'):
+        list(read_ticks(src,'coinexx',FeedQuality()))

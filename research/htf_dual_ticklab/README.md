@@ -81,3 +81,30 @@ Acceptance gates are governed by `XAU-HTF-INV-001 v1.0` in the user-designated T
 ### Reporting detail
 
 Each run produces both an atomic JSON summary (`--output`) and a SHA-256-pinned **per-trade CSV ledger** unless `--no-trade-ledger` is specified. Period summaries (UTC hour/day/ISO week/month) include net and gross loss/profit, PF, win accuracy, win/loss count ratio, and **closed-trade-path drawdown**. The top-level `max_equity_drawdown_*` is the distinct tick-marked floating-equity drawdown across the full replay. `positive_hour_coverage_trade_active_only` uses **hours that contain exits** as denominator; a market-hour denominator requires an explicitly agreed market calendar and must not be silently conflated with this diagnostic.
+
+
+## UTC alignment — mandatory for v0.3
+
+The user-approved Coinexx 2026 XAUUSD export timestamp labels are shifted
+relative to Dukascopy UTC by +120 minutes in January-February and +180
+minutes during March 9-July. The DST transition occurs during the March 8
+weekend. This was proven by comparing aligned minute bid/ask midpoint returns,
+not by assuming a broker clock. March needs BOTH corrections.
+Use the default --clock-profile auto so registered Coinexx sources are corrected.
+Dukascopy raw timestamps remain unchanged. Raw Coinexx replay is diagnostic
+only and requires explicit --diagnostic-allow-raw-clock.
+
+The original Coinexx source epoch label is preserved as Quote.source_ms;
+Quote.ms is corrected UTC. Quality and checkpoint reports record offset counts,
+profile and raw timestamps. Direct Coinexx reads require explicit clock_profile.
+2026 Jan-Sep is the allowed profile date range; Jan-Jul has independent cross-
+broker empirical validation, while Aug-Sep is provisional extrapolation.
+
+After correction, a July 1 broker-export quote can become June 30 UTC.
+Derive sessions, daily boundaries and strategy features from corrected
+timestamps, NEVER filename month or the original Coinexx clock.
+Existing v0.1/v0.2 time-based strategy outputs require re-evaluation.
+
+Monthly aligned minute-return correlation (approved original data):
+Jan .995034, Feb .991308, Mar .996955 (dynamic two/three hours),
+Apr .996760, May .995713, Jun .997425, Jul .995790.

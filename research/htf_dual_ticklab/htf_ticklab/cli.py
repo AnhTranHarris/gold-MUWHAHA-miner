@@ -54,6 +54,10 @@ def parse_args(argv=None):
     parser.add_argument('--max-spread-price',type=float,default=2.0)
     parser.add_argument('--min-stop-price',type=float,default=0.0)
     parser.add_argument('--dukas-scale',type=float,default=1000.0)
+    parser.add_argument('--clock-profile',choices=['auto','raw','coinexx_2026_nyclose'],default='auto',
+                        help='auto: normalize approved Coinexx 2026 to cross-broker UTC; Dukascopy remains UTC; fixtures remain raw')
+    parser.add_argument('--diagnostic-allow-raw-clock',action='store_true',
+                        help='Forensics ONLY: allow raw unaligned timestamps on registered Coinexx files')
     parser.add_argument('--allow-unregistered-input',action='store_true',
                         help='TEST FIXTURES ONLY: bypass approved-source allowlist')
     parser.add_argument('--force',action='store_true',help='overwrite an existing checkpoint')
@@ -95,6 +99,15 @@ def main(argv=None):
             months.append(int(match.group(1)))
         if months!=sorted(set(months)):
             raise SystemExit('authorized sources must be unique, chronological months')
+    registered = all(pin is not None for _, _, pin in prepared)
+    if a.clock_profile == 'auto':
+        selected_clock = 'coinexx_2026_nyclose' if a.broker == 'coinexx' and registered else 'raw'
+    else:
+        selected_clock = a.clock_profile
+    if a.broker == 'dukascopy' and selected_clock != 'raw':
+        raise SystemExit('Dukascopy must retain its source UTC timestamps')
+    if a.broker == 'coinexx' and registered and selected_clock == 'raw' and not a.diagnostic_allow_raw_clock:
+        raise SystemExit('Coinexx approved exports need UTC normalization; raw clock requires diagnostic override')
     cfg=BrokerConfig(name=a.broker,initial_balance=a.initial_balance,contract_size=a.contract_size,
                      leverage=a.leverage,order_latency_ms=a.latency_ms,
                      adverse_slippage_price=a.slippage_price,
@@ -105,11 +118,12 @@ def main(argv=None):
     sources=[]
     for idx,(path,fingerprint,pin) in enumerate(prepared):
         quality=FeedQuality()
-        for quote in read_ticks(path,a.broker,quality,dukas_scale=a.dukas_scale):
+        for quote in read_ticks(path,a.broker,quality,dukas_scale=a.dukas_scale,clock_profile=selected_clock):
             sim.on_quote(quote)
         details={'filename':path.name,'sha256':fingerprint,
                  'allowlist_match':pin is not None,'source_verified':pin is not None,
                  'dukas_price_divisor':a.dukas_scale if a.broker=='dukascopy' else None,
+                 'clock_profile':selected_clock,'clock_alignment_applied':selected_clock != 'raw',
                  'quality':asdict(quality),'month_end_open_positions_not_force_closed':True}
         sources.append(details)
         if paths:
@@ -122,7 +136,9 @@ def main(argv=None):
     report=sim.snapshot()
     report.update({'source':sources[0] if len(sources)==1 else None,
                    'sources':sources,'strategy_id':a.strategy,'partial_checkpoint':False,
-                   'continuous_state_across_inputs':len(sources)>1})
+                   'continuous_state_across_inputs':len(sources)>1,
+                   'clock_alignment_profile':selected_clock,
+                   'clock_alignment_validated_window':'2026-01 to 2026-09 (empirical Jan-Jul)' if selected_clock!='raw' else None})
     if not a.no_trade_ledger:
         atomic_trades_csv(ledger,sim.trades)
         report['trade_ledger_file']=ledger.name
