@@ -1,0 +1,76 @@
+{
+  "nodes": [
+    {
+      "broker": "coinexx",
+      "filename": "XAUUSD_MT5_BROKER_2026_01_ticks_ALL.csv.gz",
+      "id": "coinexx",
+      "kind": "source",
+      "parents": [],
+      "sha256": "1307a75df5d635678de7691908600090a552f38543e0512187dcd7b37fbc66b8"
+    },
+    {
+      "broker": "dukascopy",
+      "filename": "XAUUSD_DUKAS_2026_01_ticks.csv.gz",
+      "id": "dukascopy",
+      "kind": "source",
+      "parents": [],
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    },
+    {
+      "artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "code_commit": "ca4b58aec597174b6f6d18ab2f36cba6836e4f4c",
+      "id": "utc",
+      "kind": "transform",
+      "parents": [
+        "coinexx",
+        "dukascopy"
+      ]
+    },
+    {
+      "artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "code_commit": "ca4b58aec597174b6f6d18ab2f36cba6836e4f4c",
+      "id": "mechanism",
+      "kind": "hypothesis",
+      "parents": [
+        "utc"
+      ]
+    },
+    {
+      "artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "code_commit": "ca4b58aec597174b6f6d18ab2f36cba6836e4f4c",
+      "id": "test",
+      "kind": "experiment",
+      "parents": [
+        "mechanism"
+      ]
+    },
+    {
+      "artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "code_commit": "ca4b58aec597174b6f6d18ab2f36cba6836e4f4c",
+      "id": "res",
+      "kind": "result",
+      "parents": [
+        "test"
+      ]
+    },
+    {
+      "artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "code_commit": "ca4b58aec597174b6f6d18ab2f36cba6836e4f4c",
+      "id": "gate",
+      "kind": "decision",
+      "parents": [
+        "res"
+      ]
+    },
+    {
+      "artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "code_commit": "ca4b58aec597174b6f6d18ab2f36cba6836e4f4c",
+      "id": "ea",
+      "kind": "build",
+      "parents": [
+        "gate"
+      ]
+    }
+  ],
+  "schema": "XAU-HTF-SYSTEM/1.1"
+}

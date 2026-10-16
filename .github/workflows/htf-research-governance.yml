@@ -1,8 +1,9 @@
-name: HTF ticklab research governance
+name: HTF ticklab research and system governance
 on:
   push:
     branches:
       - 'carson/htf-governance-anti-drift-v0.1'
+      - 'carson/htf-governance-system-lineage-v1.1'
   pull_request:
     paths:
       - 'research/htf_dual_ticklab/**'
@@ -19,9 +20,15 @@ jobs:
           python-version: '3.11'
       - name: Install test-only dependency
         run: python -m pip install 'pytest>=8,<10'
-      - name: Run approved-package regression suite
+      - name: Run source, causal and whole-EA governance regression suite
         working-directory: research/htf_dual_ticklab
         run: python -m pytest -q
-      - name: Check example plan (does not execute trades)
+      - name: Check research example plan (not a trading result)
         working-directory: research/htf_dual_ticklab
         run: python -m htf_ticklab.research_guard check-plan governance/EXPERIMENT_PLAN_EXAMPLE.json
+      - name: Check research provenance lineage example
+        working-directory: research/htf_dual_ticklab
+        run: python -m htf_ticklab.system_guard check-lineage governance/SYSTEM_LINEAGE_EXAMPLE.json
+      - name: Check paired whole-system example plan
+        working-directory: research/htf_dual_ticklab
+        run: python -m htf_ticklab.system_guard check-system-plan governance/EXPERIMENT_PLAN_EXAMPLE.json governance/SYSTEM_PLAN_EXAMPLE.json governance/SYSTEM_LINEAGE_EXAMPLE.json

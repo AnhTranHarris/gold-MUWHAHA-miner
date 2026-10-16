@@ -1,0 +1,44 @@
+{
+  "baseline_candidate_same_cost_model": true,
+  "baseline_candidate_same_source_windows": true,
+  "baseline_components": [
+    "SESSION_ROUTER_V1",
+    "SHARED_RISK_V1"
+  ],
+  "baseline_system_commit": "ca4b58aec597174b6f6d18ab2f36cba6836e4f4c",
+  "candidate_components": [
+    "SESSION_ROUTER_V2",
+    "SHARED_RISK_V1"
+  ],
+  "candidate_system_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "comparison_unit": "complete_account_portfolio",
+  "component_ablation": "Compare full EA versions with/without the router, not profits added.",
+  "execution_accounting": "shared_margin_shared_cash_chronological",
+  "experiment_id": "TEMPLATE-DO-NOT-EXECUTE",
+  "interaction_risk": "An active trade may block a second entry via shared margin constraints.",
+  "investor_mandate": "XAU-HTF-INV-001 v1.0",
+  "investor_weights": null,
+  "lineage_sha256": "76d76dbb59ae333eb60bd3a6bb3840c964b65a8db126a123cc05d5c451d2b9e5",
+  "negative_path": "Try different session-exposure allocation with unchanged costs.",
+  "next_build_milestone": "Integrate conditional routing into independently built HTF EA.",
+  "reason_for_integration": "Reduced adverse session exposure and better account survivability.",
+  "required_scenarios": [
+    "coinexx|100|0",
+    "coinexx|100|1000",
+    "coinexx|100|250",
+    "coinexx|200|0",
+    "coinexx|200|1000",
+    "coinexx|200|250",
+    "dukascopy|100|0",
+    "dukascopy|100|1000",
+    "dukascopy|100|250",
+    "dukascopy|200|0",
+    "dukascopy|200|1000",
+    "dukascopy|200|250"
+  ],
+  "research_stage": "integrated_research_only",
+  "schema": "XAU-HTF-SYSTEM/1.1",
+  "success_measure": "Greater full account survival and stable after-cost performance.",
+  "system_mechanism": "Session router selects signals from two groups using completed bars.",
+  "v1_plan_sha256": "eea883b17b103057308557b7b31fa403c44a22920309a9e9ac03a8b1e4dbd4a2"
+}
