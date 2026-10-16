@@ -104,6 +104,33 @@ class Replay:
     def request_close(self, reason='strategy'):
         if self.position and self.quote and not any(o.kind=='close' for o in self.pending):
             self.pending.append(Pending('close',0,0,None,None,self.quote.ms+self.cfg.order_latency_ms,self.seq,reason))
+    def request_modify_stop(self, new_stop: float, reason: str = 'strategy') -> bool:
+        """Queue a broker-constrained protective-stop improvement, never a relaxation.
+
+        Stop changes are acknowledged only on a *later* observed quote (and
+        after order_latency_ms). The old protective stop remains active while
+        the modification is pending. This models quote-price level legality,
+        not actual MT5 order-server responses or freeze levels.
+        """
+        if self.position is None or self.quote is None:
+            self.rejections['modify_no_position'] += 1
+            return False
+        if not isfinite(new_stop) or new_stop <= 0:
+            raise ValueError('new_stop must be a positive finite price')
+        p = self.position
+        if (p.side == 1 and p.stop is not None and new_stop <= p.stop or
+            p.side == -1 and p.stop is not None and new_stop >= p.stop):
+            self.rejections['stop_relaxation_or_no_change'] += 1
+            return False
+        if any(x.kind == 'modify_stop' for x in self.pending):
+            self.rejections['duplicate_stop_modification'] += 1
+            return False
+        self.pending.append(Pending(
+            'modify_stop', 0, 0, new_stop, None,
+            self.quote.ms + self.cfg.order_latency_ms, self.seq, reason))
+        self.events['stop_modification_requests'] += 1
+        return True
+
     def _exit(self,q:Quote,price:float,reason:str):
         p=self.position
         if not p:return
@@ -129,6 +156,26 @@ class Replay:
                 if self.position:
                     p=self.position; raw=q.bid if p.side==1 else q.ask
                     self._exit(q,raw-p.side*self.cfg.adverse_slippage_price,r.reason)
+                continue
+            if r.kind=='modify_stop':
+                p=self.position
+                if p is None:
+                    self.rejections['stop_modify_position_gone']+=1
+                    continue
+                proposed=r.stop_distance  # absolute stop price in this pending action
+                quote_side=q.bid if p.side==1 else q.ask
+                allowed=((p.side==1 and proposed < quote_side-self.cfg.min_stop_distance_price) or
+                         (p.side==-1 and proposed > quote_side+self.cfg.min_stop_distance_price))
+                improving=(p.stop is None or
+                           (p.side==1 and proposed>p.stop) or
+                           (p.side==-1 and proposed<p.stop))
+                if not allowed:
+                    self.rejections['stop_modify_broker_level']+=1
+                elif not improving:
+                    self.rejections['stop_modify_no_improvement']+=1
+                else:
+                    p.stop=proposed
+                    self.events['stop_modifications_filled']+=1
                 continue
             reason=None
             price=(q.ask if r.side==1 else q.bid)+r.side*self.cfg.adverse_slippage_price
