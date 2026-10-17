@@ -71,11 +71,13 @@ class SharedSignalArbiter:
     """
 
     def __init__(self, sources: dict[str, SignalSource],
-                 policy: ArbitrationPolicy | None = None) -> None:
+                 policy: ArbitrationPolicy | None = None,
+                 funded_circuit: object | None = None) -> None:
         if not sources or any(not k or not isinstance(k, str) for k in sources):
             raise ValueError("sources must have nonempty unique identifiers")
         self.sources = dict(sorted(sources.items()))
         self.policy = policy if policy is not None else ArbitrationPolicy()
+        self.funded_circuit = funded_circuit
         self._pending: list[SignalIntent] = []
         self._pending_quote: tuple[int, float, float] | None = None
         self.decisions: list[dict[str, object]] = []
@@ -152,6 +154,8 @@ class SharedSignalArbiter:
         if self._pending_quote is not None and self._pending_quote != key:
             raise ValueError("bar/tick source chronology mismatch")
         view = self._view(q, engine)
+        if self.funded_circuit is not None:
+            self.funded_circuit.observe(q.ms, view.equity)
         for identity, source in self.sources.items():
             method = getattr(source, "on_tick", None)
             if method is not None:
@@ -212,6 +216,12 @@ class SharedSignalArbiter:
                 * self.policy.max_stop_risk_fraction):
             self._reject("shared_stop_risk_budget", q, len(candidates))
             return
+        if self.funded_circuit is not None:
+            allowed, reason = self.funded_circuit.approve(
+                q.ms, view.equity, estimated_stop_loss, margin)
+            if not allowed:
+                self._reject("funded_circuit:" + reason, q, len(candidates))
+                return
         queued = engine.request_entry(
             chosen.side, chosen.lots,
             stop_distance=chosen.stop_distance,
