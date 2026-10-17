@@ -44,7 +44,7 @@ def parse_args(argv=None):
     parser.add_argument('--input',type=Path,nargs='+',required=True,help='ONE OR MORE chronological authorized monthly .csv.gz files; continuous account state')
     parser.add_argument('--output',type=Path,required=True,help='JSON checkpoint (written atomically)')
     parser.add_argument('--no-trade-ledger',action='store_true',help='omit per-trade CSV output')
-    parser.add_argument('--strategy',choices=['none','impulse-demo','six-specialist-r04'],default='none')
+    parser.add_argument('--strategy',choices=['none','impulse-demo','six-specialist-r04','reaccel-r05'],default='none')
     parser.add_argument('--initial-balance',type=float,default=100.0)
     parser.add_argument('--contract-size',type=float,default=100.0)
     parser.add_argument('--leverage',type=float,default=500.0)
@@ -121,12 +121,18 @@ def main(argv=None):
         # Research-only, explicitly costed; the standard no-trade CLI remains
         # the default. Risk caps here are illustrative, NOT owner-approved.
         if a.commission_per_lot_side<=0 or a.slippage_price<=0:
-            raise SystemExit('R04 requires explicit positive commission and slippage assumptions')
-        from .six_specialists import SixSpecialists, SixExpertParameters
+            raise SystemExit('experimental trading strategies require explicit positive commission and slippage assumptions')
         from .signal_bus import SharedSignalArbiter, ArbitrationPolicy
         from .economic_exit import CostAwareLifecycle, ExitProfile
-        expert=SixSpecialists(SixExpertParameters(max_spread=a.max_spread_price))
-        router=SharedSignalArbiter({'r03_six_specialists':expert},
+        if a.strategy=='six-specialist-r04':
+            from .six_specialists import SixSpecialists, SixExpertParameters
+            expert=SixSpecialists(SixExpertParameters(max_spread=a.max_spread_price))
+            identity='r03_six_specialists'
+        else:
+            from .impulse_reaccel import ImpulseRetracementExpert, ReaccelConfig
+            expert=ImpulseRetracementExpert(ReaccelConfig(spread_max=a.max_spread_price))
+            identity='r05_reaccel'
+        router=SharedSignalArbiter({identity:expert},
             ArbitrationPolicy(max_stop_risk_fraction=0.05))
         strategy=CostAwareLifecycle(router,ExitProfile(
             max_hold_ms=30000, min_locked_net_usd=0.10,
