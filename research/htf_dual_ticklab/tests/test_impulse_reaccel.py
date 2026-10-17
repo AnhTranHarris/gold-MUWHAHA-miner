@@ -70,3 +70,9 @@ def test_wrongway_or_invalid_settings_fail_closed():
     e.on_tick(quote(BASE,100),view(BASE))
     with pytest.raises(ValueError,match="reversal"):
         e.on_tick(quote(BASE-1,100),view(BASE-1))
+
+def test_r05_can_be_explicitly_selected_but_never_defaulted():
+    from htf_ticklab.cli import parse_args
+    basic=['--broker','coinexx','--input','fixture.csv.gz','--output','out.json']
+    assert parse_args(basic).strategy=='none'
+    assert parse_args(basic+['--strategy','reaccel-r05']).strategy=='reaccel-r05'
