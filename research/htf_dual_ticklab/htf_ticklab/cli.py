@@ -44,7 +44,7 @@ def parse_args(argv=None):
     parser.add_argument('--input',type=Path,nargs='+',required=True,help='ONE OR MORE chronological authorized monthly .csv.gz files; continuous account state')
     parser.add_argument('--output',type=Path,required=True,help='JSON checkpoint (written atomically)')
     parser.add_argument('--no-trade-ledger',action='store_true',help='omit per-trade CSV output')
-    parser.add_argument('--strategy',choices=['none','impulse-demo','six-specialist-r04','reaccel-r05','campaign-portfolio-r10'],default='none')
+    parser.add_argument('--strategy',choices=['none','impulse-demo','six-specialist-r04','reaccel-r05','campaign-portfolio-r10','campaign-portfolio-r12'],default='none')
     parser.add_argument('--initial-balance',type=float,default=100.0)
     parser.add_argument('--contract-size',type=float,default=100.0)
     parser.add_argument('--leverage',type=float,default=500.0)
@@ -159,16 +159,24 @@ def main(argv=None):
                 'r03_six_specialists':FlowPrioritySource(SixSpecialists(
                     SixExpertParameters(max_spread=a.max_spread_price)))
             }
+            if a.strategy=='campaign-portfolio-r12':
+                from .portfolio_r12 import R12RunnerGeometry
+                sources={name:R12RunnerGeometry(src) for name,src in sources.items()}
             router=SharedSignalArbiter(sources,
                 ArbitrationPolicy(
                     max_stop_risk_fraction=a.research_risk_cap,
                     max_margin_fraction=a.research_margin_cap),
                 funded_circuit=FundedCircuit(CircuitCaps(
                     a.research_daily_loss_cap,a.research_peak_loss_cap)))
-        strategy=CostAwareLifecycle(router,ExitProfile(
-            max_hold_ms=30000, min_locked_net_usd=0.10,
-            activate_net_usd=0.35, trail_floor_price=0.30,
-            atr_trail_fraction=0.05))
+        if a.strategy=='campaign-portfolio-r12':
+            from .portfolio_r12 import deferred_runner_profile
+            exit_profile=deferred_runner_profile()
+        else:
+            exit_profile=ExitProfile(
+                max_hold_ms=30000, min_locked_net_usd=0.10,
+                activate_net_usd=0.35, trail_floor_price=0.30,
+                atr_trail_fraction=0.05)
+        strategy=CostAwareLifecycle(router,exit_profile)
 
     sim=Replay(cfg,strategy)
     sources=[]
