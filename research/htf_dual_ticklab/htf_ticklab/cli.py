@@ -44,7 +44,7 @@ def parse_args(argv=None):
     parser.add_argument('--input',type=Path,nargs='+',required=True,help='ONE OR MORE chronological authorized monthly .csv.gz files; continuous account state')
     parser.add_argument('--output',type=Path,required=True,help='JSON checkpoint (written atomically)')
     parser.add_argument('--no-trade-ledger',action='store_true',help='omit per-trade CSV output')
-    parser.add_argument('--strategy',choices=['none','impulse-demo','six-specialist-r04','reaccel-r05','campaign-portfolio-r10','campaign-portfolio-r12','tick-rearm-r15','tick-triad-r15'],default='none')
+    parser.add_argument('--strategy',choices=['none','impulse-demo','six-specialist-r04','reaccel-r05','campaign-portfolio-r10','campaign-portfolio-r12','tick-rearm-r15','tick-triad-r15','tick-event-r16'],default='none')
     parser.add_argument('--initial-balance',type=float,default=100.0)
     parser.add_argument('--contract-size',type=float,default=100.0)
     parser.add_argument('--leverage',type=float,default=500.0)
@@ -159,14 +159,22 @@ def main(argv=None):
                 'r03_six_specialists':FlowPrioritySource(SixSpecialists(
                     SixExpertParameters(max_spread=a.max_spread_price)))
             }
-            if a.strategy in ('campaign-portfolio-r12','tick-rearm-r15','tick-triad-r15'):
+            if a.strategy in ('campaign-portfolio-r12','tick-rearm-r15','tick-triad-r15','tick-event-r16'):
                 from .portfolio_r12 import R12RunnerGeometry
                 sources={name:R12RunnerGeometry(src) for name,src in sources.items()}
-            if a.strategy in ('tick-rearm-r15','tick-triad-r15'):
+            if a.strategy in ('tick-rearm-r15','tick-triad-r15','tick-event-r16'):
                 from .tick_rearm_r15 import TickRearmSource, TickRearmParameters
                 source=TickRearmSource(TickRearmParameters(max_spread=a.max_spread_price))
                 if a.strategy=='tick-rearm-r15':
                     sources={'r15_tick_rearm':source}
+                elif a.strategy=='tick-event-r16':
+                    from .event_option_r16 import EventOptionSource,Options
+                    sources={
+                       'r15_tick_rearm':EventOptionSource(source,
+                           Options(max_spread=a.max_spread_price)),
+                       'campaign_r09':sources['campaign_r09'],
+                       'r03_six_specialists':sources['r03_six_specialists']
+                    }
                 else:
                     from .price_acquisition_r14 import (
                         CausalPriceAcquisition, PriceAcquisitionConfig)
