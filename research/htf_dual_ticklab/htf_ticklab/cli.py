@@ -44,7 +44,7 @@ def parse_args(argv=None):
     parser.add_argument('--input',type=Path,nargs='+',required=True,help='ONE OR MORE chronological authorized monthly .csv.gz files; continuous account state')
     parser.add_argument('--output',type=Path,required=True,help='JSON checkpoint (written atomically)')
     parser.add_argument('--no-trade-ledger',action='store_true',help='omit per-trade CSV output')
-    parser.add_argument('--strategy',choices=['none','impulse-demo','six-specialist-r04','reaccel-r05'],default='none')
+    parser.add_argument('--strategy',choices=['none','impulse-demo','six-specialist-r04','reaccel-r05','campaign-portfolio-r10'],default='none')
     parser.add_argument('--initial-balance',type=float,default=100.0)
     parser.add_argument('--contract-size',type=float,default=100.0)
     parser.add_argument('--leverage',type=float,default=500.0)
@@ -53,6 +53,14 @@ def parse_args(argv=None):
     parser.add_argument('--commission-per-lot-side',type=float,default=0.0)
     parser.add_argument('--max-spread-price',type=float,default=2.0)
     parser.add_argument('--min-stop-price',type=float,default=0.0)
+    parser.add_argument('--research-risk-cap',type=float,default=None,
+                        help='R10 explicit hypothetical per-position risk cap, fraction of equity')
+    parser.add_argument('--research-margin-cap',type=float,default=None,
+                        help='R10 explicit hypothetical margin cap, fraction of equity')
+    parser.add_argument('--research-daily-loss-cap',type=float,default=None,
+                        help='R10 explicit hypothetical daily equity-loss brake')
+    parser.add_argument('--research-peak-loss-cap',type=float,default=None,
+                        help='R10 explicit hypothetical permanent peak equity drawdown brake')
     parser.add_argument('--dukas-scale',type=float,default=1000.0)
     parser.add_argument('--clock-profile',choices=['auto','raw','coinexx_2026_nyclose'],default='auto',
                         help='auto: normalize approved Coinexx 2026 to cross-broker UTC; Dukascopy remains UTC; fixtures remain raw')
@@ -127,13 +135,36 @@ def main(argv=None):
         if a.strategy=='six-specialist-r04':
             from .six_specialists import SixSpecialists, SixExpertParameters
             expert=SixSpecialists(SixExpertParameters(max_spread=a.max_spread_price))
-            identity='r03_six_specialists'
-        else:
+            router=SharedSignalArbiter({'r03_six_specialists':expert},
+                ArbitrationPolicy(max_stop_risk_fraction=0.05))
+        elif a.strategy=='reaccel-r05':
             from .impulse_reaccel import ImpulseRetracementExpert, ReaccelConfig
             expert=ImpulseRetracementExpert(ReaccelConfig(spread_max=a.max_spread_price))
-            identity='r05_reaccel'
-        router=SharedSignalArbiter({identity:expert},
-            ArbitrationPolicy(max_stop_risk_fraction=0.05))
+            router=SharedSignalArbiter({'r05_reaccel':expert},
+                ArbitrationPolicy(max_stop_risk_fraction=0.05))
+        else:
+            # Source mixing happens only at the causal signal/decision layer:
+            # each scored run still uses ONE original broker tick tape.
+            # All risk numbers must be explicit research assumptions, NOT
+            # researcher-invented investor hard limits.
+            if any(v is None for v in (a.research_risk_cap,a.research_margin_cap,
+                                      a.research_daily_loss_cap,a.research_peak_loss_cap)):
+                raise SystemExit('R10 requires all four explicit --research-*-cap parameters')
+            from .six_specialists import SixSpecialists, SixExpertParameters
+            from .event_campaign_r09 import EventCampaignSource, CampaignParameters
+            from .portfolio_r10 import FlowPrioritySource, FundedCircuit, CircuitCaps
+            sources={
+                'campaign_r09':FlowPrioritySource(EventCampaignSource(
+                    CampaignParameters(maximum_spread_price=a.max_spread_price))),
+                'r03_six_specialists':FlowPrioritySource(SixSpecialists(
+                    SixExpertParameters(max_spread=a.max_spread_price)))
+            }
+            router=SharedSignalArbiter(sources,
+                ArbitrationPolicy(
+                    max_stop_risk_fraction=a.research_risk_cap,
+                    max_margin_fraction=a.research_margin_cap),
+                funded_circuit=FundedCircuit(CircuitCaps(
+                    a.research_daily_loss_cap,a.research_peak_loss_cap)))
         strategy=CostAwareLifecycle(router,ExitProfile(
             max_hold_ms=30000, min_locked_net_usd=0.10,
             activate_net_usd=0.35, trail_floor_price=0.30,
