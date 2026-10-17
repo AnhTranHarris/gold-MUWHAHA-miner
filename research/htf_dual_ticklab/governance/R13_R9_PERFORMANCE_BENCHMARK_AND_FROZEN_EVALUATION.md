@@ -1,0 +1,24 @@
+# R13 — Original R9 ledger and whole-EA performance benchmark (read first)
+Date: 2026-10-17. **Research only.** Do not call R9 synthetic tester performance broker-executable.
+
+Original source: MT5_100__M1_GoldMuwahahaMiner_R9_HybridGate.xlsx
+https://docs.google.com/spreadsheets/d/1jASxs5gn3e1rzwGxlE-178aN07_5ksHE/edit
+Exact original workbook: 123681909 bytes, SHA256 `f9315c35bde962135785a0fb8fd268251086e9bebe27f5789757c69cfb38819d`.
+
+**Fresh exact forensic reconstruction:** 544704 economic entry/exit deals paired into 272352 completed 0.01-lot trades. Entry+exit commissions and swaps included. Gross terminal source net reconciles to **+$360693.05** and $360793.05 final reported balance on $100 initial. 9 monthly, 40 ISO-week, 192 active entry-day, 4361 active entry-hour rows reconstructed directly, with all dates in **unverified R9 server-local clock**.
+
+**Historical reference:** 192/192 days profitable; 40/40 ISO weeks profitable; 4350/4361 entry-hour blocks profitable; 187/192 active days had 710–2127 roundtrips. Jan 27980 trades +$41520.82; Feb 33523 trades +$66213.65. Baseline research report source: https://drive.google.com/file/d/1JJitSmvENPubAKD_f_HBxVKezgma8oDx/view .
+
+**Matched-calendar diagnostic, NOT exact cross-broker time join:** Jan5–8 R9 4840 synthetic trades / 4 days (1210/day). Feb3–6 R9 8415 synthetic trades / 4 days (2103.75/day). R12 original recorded quote tapes on corresponding calendar labels completed 11.25–84.25 trades/day depending on broker/capital. The R9 SERVER timezone has **not been independently resolved**, so do not claim same exact UTC hours. R12 four-day sample is NOT a monthly return.
+
+**Survival-first objective:** investor rule XAU-HTF-INV-001 — independently funded $100/$200 accounts; zero modeled margin calls, stopouts and bankruptcies in designated release tests; after-cost positive net, gross loss, marked equity DD, PF, win accuracy, positive UTC hours/day/week/month and throughput toward 710–2127/day. Numeric investor risk caps still TBD. Do not invent approved limits, select no-trade winners, or count hindsight-path winners as executable fills.
+
+**Discovery freeze BEFORE any March source content is accessed in R13:** source grid `R12_complete_portfolio_search.csv`, SHA256 `4ea1514603cd46728065cdd8bb6331a378ddad64eba78430c788bf10f1e055d0`. 360 unique complete-system configuration tuples explored during earlier Jan/Feb four-day historical study; require >=32 trades in each of the 8 broker/month/capital scenarios, zero modeled stopout, positive minimum marked equity. Maximize worst-account after-cost net of remaining 258 tuples; selected research-only tuple `aggression=2, specialist=6 (price_acceptance), exit_lifecycle=2`, worst training-case net **−$151.46**, minimum 43 trades. **Not an acceptable investor configuration.** This is a frozen comparative control/chronological evaluation, not a success claim, and it must not be reoptimized on the held-out time window.
+
+**Date-lock for chronological R13 follow-up**: March 3–6 2026 UTC; Coinexx UTC corrected -120min in that period (March DST change after this window), Dukascopy native UTC. This March slice was historically available to the project, so do NOT describe it as a globally untouched or prospective blind test. Full original monthly Jan–Jul progressive study still required. Original source files MUST be SHA pinned to approved source registry. A genuinely blind prospective date is a future time not used in project research.
+
+**Latest trusted experimental improvement:** R12 24/24 paired original-tick sampled account profiles show delayed-profit runner vs fixed exit net/DD improvement; nevertheless net remains negative and throughput far below synthetic benchmark. Preserve it as an experimental exit improvement; official GitHub CLI P&L parity not proven.
+
+**New implementation:** `htf_ticklab/whole_system_kpi_r13.py` and tests; automatic system-scorecards per UTC month/week/day/hour, exact 12-slot broker/balance/latency survival gate, no broker merge, no time-zone laundering or fake accepted profits. Detailed evidence, trade ledgers, all R9 full month/week/day/hour sources, and Python reproducibility scripts belong in pinned Drive ZIP, not chat.
+
+Next new mechanisms for test (unpromoted): event-campaign **continuation ↔ exhaustion** arbitration using observed bid/ask revision asymmetry; transaction-cost-priced **marketable vs conservative limit trade-through** entry selection with max order lifetime and no midpoint assumption; **conditional decay-hazard vs runner** specialist exit with latency-delayed trailing amendments; a **stateful funded account reserve controller** that rejects impossible min-lot risk but cannot disguise zero trades as alpha. Each must be tested as same-tape S/S' joint-account variants with simultaneous performance on both real quote feeds and reports by hour/day/week/month.
