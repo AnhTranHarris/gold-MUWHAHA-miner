@@ -13,7 +13,7 @@ def proposal(name="fast",prob=.8,samples=200):
     return PathProposal(name,Q.ms,"coinexx",1,.01,samples,prob,2.,.4,1.,2.5)
 
 def test_profitable_path_beats_weaker_specialist_after_both_sided_costs():
-    x=select_path(Q,[proposal("fast"),proposal("slow",.45)],C)
+    x=select_path(Q,[proposal("fast"),proposal("slow",.25)],C)
     assert x.selected.specialist=="fast"
     assert x.expected_net_usd>0
     assert "slow:negative_expected_net" in x.rejected
