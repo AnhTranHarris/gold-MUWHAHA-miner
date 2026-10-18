@@ -1,0 +1,19 @@
+# R00-063–065 independently verified two-account archival deployment
+
+This is an **append-only post-deployment supersession** of the `Cloud sync NOT VERIFIED / PENDING` line in the previously committed GitHub `R00_063_065_NATIVE_QUOTE_RESEARCH_RECEIPT_20261018.md`. The original record and complete experimental sources are unchanged. All three original ZIPs include source, plans, Python, causal backtest events and models, negative/positive trial results, original event/interval ledgers, logs and SHA manifest. All original raw broker quote tapes remain in their originally approved Google Drive folders.
+
+### Verified complete originals / 2 independent cloud accounts
+
+| Archive | SHA-256 of complete uploaded original ZIP | Raw size | PRIMARY verified cloud file | MT5_EXPAND verified cloud file |
+|---|---|---:|---|---|
+| R00_063_COMPLETE_NATIVE_QUOTE_RESEARCH_20261018.zip | `c36bd88c018c8fa10f47b9f344a8e551abf7059961436b4b71051b61c436c880` | 64,098,882 | https://drive.google.com/file/d/1QiR_JomuTH4odW-oZV3mCKJMjm4xz72H/view | https://drive.google.com/file/d/1DDdIIVxwJVcJjawBwnVXpkkh1D6EoakW/view |
+| R00_064_COMPLETE_NATIVE_QUOTE_RESEARCH_20261018.zip | `502a40ccee95aaa50d520f3c2c73a09f471c448f94ba4afebd515c5f58e57c29` | 88,956,847 | https://drive.google.com/file/d/17PKkr3Ca-ruZr578WFvaivqub423n38s/view | https://drive.google.com/file/d/1eg84FKieTxqpa7KJdOMvlS9PThqnGF8-/view |
+| R00_065_COMPLETE_NATIVE_QUOTE_RESEARCH_20261018.zip | `5519db1486895fa16d4b148dadae596677c1376febfbc931efdc432d5ee8db66` | 96,340,806 | https://drive.google.com/file/d/1Pi10nNuK9dE0kzZSUk425c0q7xZJkCjI/view | https://drive.google.com/file/d/1Sedo5sSjGVKMueqYQ4s8VLtMjoXw2bdF/view |
+
+**PRIMARY expected folder:** `1v1bhQx_6LvM9-Xv5oJtYP8fImFR_Bzkp` (correct user account); **MT5_EXPAND expected recovery folder:** `1duJq0j5P5y9EtUyC0LvIaAubFJ9Gt3AY` (separate secondary account). Each of 6 independent Google Drive metadata reads returned the exact expected filename, ZIP byte size and parent folder ID. Each original ZIP cloud file was downloaded via the corresponding connected account, hashed independently to its expected complete-file SHA-256, then scanned with `zipfile.testzip()`: all **SIX PASS**. Original per-member hash manifest was separately verified for the locally created original bytes. PRIMARY and MT5_EXPAND receipts and the exact master package manifest were uploaded as separate files too.
+
+**GitHub continuation branch:** `carson/htf-r00-063-065-native-20261018`, descended from the verified prior research branch at `4f5b612244defb39bc64fb34aa64e2bf23105ca4`. The original version-controlled research index is at `research/htf_dual_ticklab/r00_continuation/R00_063_065_NATIVE_QUOTE_RESEARCH_RECEIPT_20261018.md`. This deployment receipt replaces ONLY its earlier cloud-sync-pending status. Do not claim that full runnable model/joblib event matrices were individually committed to GitHub; those binaries and full original Python sources are preserved in both verified Drive packages.
+
+**Research facts are unchanged:** R00-063 177,178 / 389,558, R00-064 234,944 / 563,858, R00-065 236,026 / 567,117. R00-054 548,099 / 1,231,388 remains the best previously February-frozen high-volume correct-supply control. Historical transfer has **NOT** achieved 80% precision, 100% per-hour/day 90%-of-R9 count coverage, an untouched future-month holdout, any EA fills or investor live approval. R00-066 remains DESIGN ONLY; no score and no invented future edge.
+
+**Missing for full-history certification:** complete authenticated prior ChatGPT transcript, independent raw R9 hourly ledger recreation in this cycle, and externally pinned historical hash-chain head/count. Original R00 research predecessors remain in their previous separately backed-up Drive locations. No source bytes, original research tests, or R9 read-only branch were overwritten.
