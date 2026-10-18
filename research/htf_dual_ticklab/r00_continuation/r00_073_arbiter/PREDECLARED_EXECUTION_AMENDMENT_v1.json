@@ -1,0 +1,9 @@
+{
+ "experiment_id":"R00-073-v1-CPU-BOUNDED",
+ "declared_before_new_execution":true,
+ "reason":"Initial full-January 4-head fit stopped due to run timeout before model checkpoint; no model/score promoted.",
+ "training":"Deterministic uniformly random seed=20261018 maximum 35000 Jan examples per model per broker; all original events retained in scoring, no transfer tuning",
+ "model_budget":"32 LightGBM trees per head, leaf depths 15/23, fixed original Jan/Feb/Jun-Jul split, stepwise checkpoint after each fit",
+ "hypothesis_unchanged":true,
+ "must_disclose":"Reduction in training sample may hurt efficacy; it changes the initial plan, so this is a new execution version."
+}
