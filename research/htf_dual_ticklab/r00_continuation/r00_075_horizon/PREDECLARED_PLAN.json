@@ -1,0 +1,13 @@
+{
+ "id":"R00-075-ORIGINAL-TICK-RESPONSE-HORIZON-DIAGNOSTIC-20261018",
+ "predeclared":true,
+ "source":"Eight exact authorized Jan Feb June July original Coinexx/Dukascopy native bid/ask tapes through unchanged SHA-verified R00-067 Python load_raw reader and corrected UTC clocks; R00-068 Feb-frozen protected reference BUY/SELL side.",
+ "purpose":"Distinguish 30s direction-control failure from shorter-horizon quote-response reversal/no-response or timing mismatch. Preserve 30s reference unchanged. This is label geometry diagnostic, NOT exits/P&L/EA release.",
+ "time_horizons_seconds":[1,2,3,5,10,15,20,30,45,60],
+ "future_matching":"first actual observed quote at or after event+horizon and strictly before event+horizon+2s, first quote index provenance; neutral or missing wrong",
+ "movement_usd":"strict >0.10 signed midquote movement from event bid/ask midpoint, unchanged reference; separate alternative 0.00 markout sign for diagnostic only",
+ "splits":"January understanding, February check, JuneJuly historically exposed transfer interpretation. No future month tuning and no profit/exit/scaled fill claims.",
+ "baseline":"Current R00-068 source-native frozen BUY/SELL side at original event timestamps, all events emitted, separate brokers, preserve month/day/hour all results",
+ "next_research":"Use horizon response fingerprints to construct a causal time-to-response specialist hazard and synchronized forecast-vs-event stage router; freeze on February before transfer.",
+ "caution":"Different outcome horizon changes a diagnostic, not acceptance metric; 30s target remains controlling."
+}
