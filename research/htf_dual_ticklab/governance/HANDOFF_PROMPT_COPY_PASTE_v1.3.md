@@ -1,3 +1,6 @@
+[CURRENT GOVERNANCE ADDENDUM v1.4 — RESEARCH FIRST]
+The established Coinexx and Dukascopy native tick Python backtest environments MUST be reused; do not rebuild or deeply re-audit them at every new chat. Recover the actual newer research branch and existing results. Run only a bounded continuity/import smoke check unless a concrete reproducible defect, critical core change or explicit user instruction triggers scoped repair. See RESEARCH_FIRST_ANTI_ENGINE_REBUILD_LAW_v1.4.md on the current research-governance branch. Do not ignore the old underlying research artifacts or the cumulative investor/source requirements.
+
 # XAUUSD HTF EA — COPY-PASTE NEW-CHAT HANDOFF PROMPT v1.3
 Policy: XAU-HTF-HANDOFF/1.3. This text is an instruction to VERIFY and continue—not a summary of the research.
 
