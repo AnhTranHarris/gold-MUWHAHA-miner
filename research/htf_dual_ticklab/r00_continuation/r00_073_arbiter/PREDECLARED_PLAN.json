@@ -1,0 +1,17 @@
+{
+  "experiment_id":"R00-073-JAN-TRAIN-FEB-FREEZE-ENTRY-SIDE-ARBITER-20261018",
+  "state":"PREDECLARED_BEFORE_EXECUTION",
+  "hypothesis":"A causal event-specific direction arbiter with specialist lifecycle state, native bid/ask chronology, completed HTF structure and original event diagnostics can rescue misdirected R00-068 base directions without suppressing R9-required hourly or daily event volume.",
+  "source":"Only eight exact SHA256 registered Coinexx and Dukascopy native 2026-Jan/Feb/Jun/Jul quote tapes; existing R00-067 event/label replay, R00-068 protected forecast, R00-069 quote path, R00-070 completed HTF, R00-072 event-sampled lifecycle; all original research engines unchanged",
+  "train":"January 2026 only, one separately trained model per broker",
+  "freeze":"Choose one policy maximizing full-event February correct directional count for both brokers combined; deterministic tie order, no June/July inspection for policy choice",
+  "transfer":"June/July 2026, historically exposed diagnostic, report whole events, BUY and SELL, neutral/missing wrong, matched benchmark UTC hour/day/week/month",
+  "features":"Only as-of event tick quote-index, original 95 event features, R00-069 native 50 quote chronology, R00-070 46 completed M15/H1 and native trailing 60s, R00-072 expert stage/emitted/current observed, broker UTC session cyclic clock, prior-event cadence; no future y or future timestamps as features",
+  "models":"Direct binary BUY/SELL conditioned on nonneutral labels, tri UP/DOWN/NEUTRAL model, and residual protection or flip meta-model; compare frozen protected baseline, multi-score blends, HTF/reclaim gates, individual four experts and skeptical pure baseline. Fit Jan only.",
+  "evaluation":"original first quote [t+30s,t+32s), correct if signed midpoint markout strictly >$0.10; neutral/missing wrong; no exits, P&L, ROI or investor approval",
+  "volume_gate":"Do not reject any of the existing candidate event streams, 90% R9 SYNTH event count floor for EACH matched UTC hour and day measured and negative intervals disclosed; no retrospective within-hour event selection",
+  "success":">=80% correct across all emitted events, >=90% R9 SYNTH per hour/day and preserve both directional distributions; progress <80% is not promotion unless major reproducible mechanism breakthrough",
+  "kill_and_rescue":"If direct gate/fusions fail, retain original evidence and attempt orthogonal causal quote-response phase model, native tick-interstitial specialist lifecycle and more informative inverse/episode-switch target; do not rebuild reader",
+  "controls":"R00-068 protected Feb-frozen benchmark on same event population, skeptical expert unconditional vote, ablate structural and episode families, full hour/day/week/month and cross-broker results",
+  "prohibition":"Do not use June/July to fit or select, do not assert unseen holdout, no other data feeds, no EA execution claims"
+}
