@@ -1,0 +1,35 @@
+{
+  "id": "R00_NATIVE_TICK_FORECAST_RECOVERY_20261018",
+  "type": "additive-preservation-receipt",
+  "status": "R00-001_source_recovered_R00-053_source_recovered_R00-040_046_predecessors_blocked",
+  "github_base_parent": "1d1114fdbf0b3e0bf11ee734eefa425676fdd009",
+  "original_r00_001_zip": {
+    "name": "R00_XAUUSD_TICK_ENTRY_RESEARCH_2026-10-17.zip",
+    "sha256": "c8c6fa3131c2393b09f5f488d4c59a6a8c69a3a7fd2e73821f5937cdd5ce8819",
+    "bytes": 226652,
+    "members": 24,
+    "crc": "PASS",
+    "member_sha256": "23_OF_23_PASS",
+    "drive_id": "1ThT6jZ4SmzHdqhWsZP0VZS4p8rli3OLQ"
+  },
+  "original_r00_053_source_zip": {
+    "name": "R00_053_RESEARCH_SOURCE_MODELS_LEDGER_20261018.zip",
+    "sha256": "4a116604acb684b395a9ae0dac100d58949455848e88254eb1ff96b0a41d6577",
+    "bytes": 82961206,
+    "members": 51,
+    "crc": "PASS",
+    "drive_id": "1DVwXGADDHIIm8HxUY2FZ9RhYWlZV7Syg"
+  },
+  "full_053_original_chunked": {
+    "zip_sha256": "283909651335eeebeeb04aa2e56957d6c780690f93582ea88d1bf47947ecc012",
+    "bytes": 572358288,
+    "cloud_manifest": "1F9IYoq1MgwN0IqxW8c3Eq3mqNYkcpjQ1"
+  },
+  "recovery_folder": "18fZPRE0ahzsYdE9ziurc4HNfUT2s9XN4",
+  "blocked": [
+    "R00-040 original source/model/manifest",
+    "R00-046 original source/model/manifest",
+    "R00-001 intermediate pkl caches not included in original ZIP (regenerable but not original)"
+  ],
+  "actions": "Preservation only, no research or trading"
+}
