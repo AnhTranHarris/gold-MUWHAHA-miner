@@ -1,0 +1,41 @@
+{
+  "experiment_id": "R00-076D3-OFFOLD-COUNTERFACTUAL-DIRECTION-RESCUE-20261018",
+  "status": "PREDECLARED_DESIGN_ONLY_NOT_RUN",
+  "parent_completed": [
+    "R00-076D1",
+    "R00-076D2"
+  ],
+  "invariant": "Exactly one BUY or SELL for every original existing event at its unchanged UTC timestamp and native source-quote index; no silence, no event filtration, no waiting for post-signal quote, no event-generator modification",
+  "authorized_sources": "Existing eight SHA-registered original Coinexx and Dukascopy native bid/ask gzip quotes for 2026-Jan/Feb/Jun/Jul; original broker reader, independent source clock corrections and time provenance unchanged",
+  "protected_controls": [
+    "R00-068 February-frozen original protected 814244 original-event control",
+    "R00-076D1 full stage Feb-frozen",
+    "R00-076D2 four specialists Feb-frozen",
+    "R00-054 distinct larger absolute correct-count frontier"
+  ],
+  "new_hypothesis": "A temporally OOF counterfactual side-flip model based on causal forecast disagreement, bilateral quote-response timing and truly published HTF stages discriminates beneficial flips from harmful flips better than direct pooled side forecasts",
+  "labels": "For each existing event original source midpoint + first original quote at/after t+30s and <t+32s: strict >$0.10 directional label, or neutral/missing (wrong both sides); track rescue, damage and neutral separately. Outcomes never decision-time inputs.",
+  "train": "JANUARY only, expanding chronological 5-fold purged OOF by broker; purge overlapping 32s label windows, embargo adjacent folds; past matured outcome only when decision source time strictly >= prior outcome 32s availability. No in-sample fitted posterior as rescue model training input.",
+  "heads": [
+    "Broker-conditional direct UP/DOWN/NEUTRAL hazard posterior",
+    "Temporally OOF baseline correctness/rescue/damage/neutral meta-classifier",
+    "Bilateral bid/ask quote response failure, duration, persistence phase",
+    "Independent four specialist state/age since own reset and original confirmation",
+    "Public completed M15/H1 structural sweep/reclaim/retest and HH-HL/LL-LH regime changes"
+  ],
+  "predeclared_controls": [
+    "Unchanged protected side",
+    "OOF disagreement without new features",
+    "Native quote response alone",
+    "Completed HTF and specialist episodes alone",
+    "OOF full conditional rescue mechanism",
+    "Deterministic matched-throughput skeptical control"
+  ],
+  "decision": "Every original event outputs original side unless February-frozen calibrated P(opposite correct)-P(original correct)>specified positive margin, in which case output opposite side. Never skip or delay.",
+  "freeze": "February only choose one policy/margin on total correct count across both brokers (tie keep baseline), preserve original R9 full interval quota as hard constraint.",
+  "transfer": "June/July 2026 historically exposed only, no reoptimization; evaluate exactly all original paired event IDs, source indices, times and BUY/SELL, per broker/month/UTC hour/day/week/month against R9 thresholds and negative intervals.",
+  "success": ">=80% +30s initial directional correctness with >=90% R9 SYNTH hourly and daily event count and correct-direction count, both sides, neutral/missing failures",
+  "disconfirmation": "If February-frozen D3 does not lift correct direction on exposed transfer, preserve failed/positive arrays, code, model and proceed to a truly orthogonal causal information channel; do not select hindsight policy.",
+  "next_build_action": "Implement purged chronological Jan OOF models with source index/time and fold SHA manifest using existing original model/caches; train D3 four-head counterfactual correction using only original as-of-event features; freeze Feb; exposed transfer scored once.",
+  "truthful_status": "D3 has not been trained, benchmarked or validated, and no P&L or executable fills are authorized."
+}
