@@ -1,0 +1,47 @@
+{
+  "experiment": "R00-080-ORTHOGONAL-QUOTE-PATH-HAZARD-AND-ERROR-CAUSALITY",
+  "stage": "DESIGN_ONLY \u2014 NOT EXECUTED \u2014 NO PERFORMANCE CLAIM",
+  "lineage": "R00-077 -> R00-078A/B -> R00-079, recover missing exact D3 parent if available, no infrastructure rebuild",
+  "scientific_observation": "After 3 frozen cycles, new predictors correct about as many original outcomes as they damage; existing 30sec target has 11.17% neutral, so 80% on ALL emitted requires >90% correct of nonneutral 30sec labels",
+  "problem": "Initial BUY/SELL side does not condition well enough on market movement from exactly t to t+30s. Need different causal information, not more static features or February-threshold sweeps.",
+  "novel_information_mechanisms": [
+    {
+      "id": "P1",
+      "name": "quote-burst event grammar",
+      "state_machine": "IDLE -> INNOVATION -> COUNTER_QUOTE -> PERSISTENCE -> FAILED_PROPAGATION -> EXPIRED/RESET",
+      "information": "native bid-only/ask-only order, elapsed response lags, collision of opposite quote shocks, spread hysteresis; source dealer quotes NOT executed order volume",
+      "no_delays": "Update at each observed source tick; sample current state only at old event timestamp"
+    },
+    {
+      "id": "P2",
+      "name": "published structural transition contests",
+      "state_machine": "CONFIRMED_PIVOT_PUBLISHED -> SWEEP -> RECLAIM -> RETEST -> INVALIDATION/RESET",
+      "information": "M15/H1 completed confirmed pivot, nested competing upper/lower levels, net asymmetry, event order and failed attempts; no future pivot publication"
+    },
+    {
+      "id": "P3",
+      "name": "independent first-passage hazard ensemble",
+      "state_machine": "ARMED -> DIRECTIONAL_HAZARD_ACTIVE -> OPPOSING_HAZARD -> DECISION -> EXPIRED/RESET",
+      "information": "Jan-native pre-event state model conditional UP/DOWN/NEUTRAL race at 5/10/15/30s; no true future label used as decision feature"
+    },
+    {
+      "id": "P4",
+      "name": "causal baseline-error attribution and cooperative broker-regime arbiter",
+      "state_machine": "BASE_SIDE -> PREDICTION_CONFLICT -> WEIGHTED_POSTERIOR -> KEEP/FLIP -> RESET",
+      "information": "Jan purged OOF original baseline side required; repair D3 parent archive or version a clean OOF successor rather than use in-sample baseline; broker-specific calibration and sessions"
+    }
+  ],
+  "provenance": "Use already approved source native Jan, Feb, June, July independently, 16 SHA pins, matching UTC only; no third-party quote data",
+  "frozen_intent": "Prevent future tuning on June/July; preserve original event timestamp/quote index and exact emitted count, never skip/retime",
+  "controls": [
+    "R00-077 AGREE_005 frozen incumbent",
+    "R00-054 high correct-count distinct-event reference",
+    "skeptical no-feature matched throughput",
+    "each P1/P2/P3/P4 ablation",
+    "fully cooperative P1+P2+P3+P4"
+  ],
+  "test": "Train Jan strictly purged OOF for meta, freeze Feb, June/July historically exposed research only; require independent unexposed future-source authorization before any honest blind-month generalization claim",
+  "scoring": "80% correct out of all original 30-second source-native labels with neutral wrong; >=90% R9 SYNTH per UTC hour/day both emitted and correct, all weeks/months including missing source windows; no exit/profit/fill simulation",
+  "stop": "Do not run a further series of threshold-only variants if February and June/July transfer show essentially unchanged ~45%; recover missing provenance for full-error conditional learner or shift to genuinely new information mechanisms",
+  "status": "PLANNED_NOT_STARTED"
+}

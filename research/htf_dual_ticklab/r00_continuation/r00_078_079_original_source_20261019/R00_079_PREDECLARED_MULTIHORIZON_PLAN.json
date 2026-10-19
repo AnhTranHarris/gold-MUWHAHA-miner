@@ -1,0 +1,43 @@
+{
+  "experiment": "R00-079-INFORMATION_MULTIHORIZON_DIRECTION_ORACLE",
+  "lineage": "Continuation of frozen R00-077 winner, tested R00-078A structural phases and R00-078B incumbent fusion, not new event stream or engine",
+  "status": "FROZEN BEFORE TRAINING, FEB-SELECTION AND EXPOSED JUN-JUL SCORING",
+  "hypothesis": "Independent 5s and 15s outcome classifiers learn near-future impulse and reversal hazard; agreement/asymmetry adds initial 30-second directional information beyond existing R00-077 baseline",
+  "authorized_source": "Exact eight Jan/Feb/Jun/Jul registered Coinexx / Dukascopy Jan fit Feb freeze Jun-Jul historically exposed; Coinexx clock Jan-Feb -120m, JunJul -180m; Dukascopy unchanged",
+  "input": "original R00-065 indices and R00-078 as-of feature arrays; unmodified native 067 reader; R00-077 AGREE_005 base; no future in decisions",
+  "future_train_labels": "January alone: first original quote in [event+5000,event+7000) and [event+15000,event+17000), tri OUTCOMES with \u00b10.10 price, neutral/missing separate. No 5/15 labels used during inference.",
+  "output_score_label": "Original protected R00-077 fixed 30-second first original quote in [t+30s,t+32s), neutral/missing wrong, no retiming",
+  "allowed_candidates": [
+    "INCUMBENT_077",
+    "PREVIOUS_FUSION_SELECTED",
+    "5S_DIRECT",
+    "15S_DIRECT",
+    "HORIZON_AVG_DIRECT",
+    "HORIZON_GEOMETRIC_DIRECT",
+    "ALL_3_ORACLE_DIRECT",
+    "SHORT_LONG_AGREE_FLIP",
+    "TRIPLE_AGREE_FLIP",
+    "5_15_CONVEXITY_FLIP",
+    "077_PLUS_NEW_HORIZON",
+    "077_VETO_HORIZON",
+    "077_PLUS_FAST_SPECIALIST"
+  ],
+  "fixed_design": "Seven original R00-078 oracle models retained; new 5s/15s models fit January, no February fitting or June/July adaptation. Fixed candidate menu; choose Feb highest correct; ties 077 incumbent then fewest flips.",
+  "benchmarks": "entire protected event universe, original R9 SYNTH 90% hourly/daily emitted and correct floors each reference interval, weekly/monthly as-is, 80% initial-direction aim; preserve all negatives",
+  "scope": "Initial direction only. Do not calculate exits/profit/survival or claim live-ready.",
+  "failure_response": "If transfer below 80 or material R9 goals, preserve models and original forensic diagnostics; no hindsight winner/threshold tuning; next research asks whether price-side labels are identifiable from dealer quote observables",
+  "required_artifacts": [
+    "full frozen plan",
+    "all executable scripts",
+    "original eight source hashes",
+    "models",
+    "Jan feature/label provenance",
+    "Feb chosen policy",
+    "all nonchosen policies",
+    "JunJul original per-event decisions",
+    "R9 interval floors",
+    "manifest",
+    "raw helper sources",
+    "tested code hashes"
+  ]
+}

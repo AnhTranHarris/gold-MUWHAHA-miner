@@ -1,0 +1,50 @@
+{
+  "experiment": "R00-078-ABC-CONTINUATION",
+  "stage": "FROZEN_BEFORE_ANY_NEW_FEATURE_DERIVATION_OR_MODEL_TRAINING",
+  "frozen_parent_design_sha256": "40e701d9581334d3ab91b441f083f6326e7f52b6b1a21a7b3db2b7781dc805d0",
+  "github_verified_head": "a87dbdb8079263978a36c24db30596516c380667",
+  "reference_exp": "R00-077",
+  "source_clock": "Coinexx wall-clock -120m Jan/Feb, -180m June/July; Dukascopy native UTC; separate feeds",
+  "source_months": [
+    "coinexx:01",
+    "coinexx:02",
+    "coinexx:06",
+    "coinexx:07",
+    "dukascopy:01",
+    "dukascopy:02",
+    "dukascopy:06",
+    "dukascopy:07"
+  ],
+  "event_universe": "R00-065 source-native event quote indices verified same as R00-077 on Feb/June/July",
+  "label": "first native observed quote in [t+30000ms,t+32000ms), midpoint >+0.10 UP,< -0.10 DOWN; all other NEUTRAL/MISSING counted WRONG",
+  "fit": "January only, source-separate, full January models trained without future leakage in features; note no historical true-Jan 077 baseline OOF available",
+  "freeze": "February only, maximize aggregate correct count among unchanged-event policies, ties original BASE, then fewer flips",
+  "historical_transfer": "June and July 2026 already exposed; neither tunes selection nor retrains; no genuine blind",
+  "families": {
+    "A": "fully-published M15/H1 pivots + source-native phase-stage transitions and age",
+    "B": "independent original expert active/reset states plus bid/ask quote response chronology",
+    "C": "frozen four-oracle cooperation, direction correction and direct forecast variants"
+  },
+  "candidates": [
+    "BASE",
+    "MICRO_DIRECT",
+    "STRUCTURE_DIRECT",
+    "COOP_DIRECT",
+    "ORACLE_CONSENSUS",
+    "ORACLE_GEOMEAN",
+    "FLIP_010",
+    "FLIP_020",
+    "FLIP_STRUCT_010",
+    "FLIP_DISAGREE_010",
+    "FLIP_EPISODE_010",
+    "ORTHOGONAL_EXPERT",
+    "NOFEATURE_FLIP_CONTROL"
+  ],
+  "mechanism": "same original events, KEEP or FLIP, no skips/delays; independent episode states reset at source timing and published pivot date",
+  "gate": "80% directional and >=90% R9 SYNTH emitted & correct counts each matched UTC hour and day, ISO week and month additionally reported",
+  "report_failures": true,
+  "no_profit_exits_trading": true,
+  "predeclared_stop": "If materially below 80% and no substantial February gain, archive outcome and design orthogonal next R00; do not retune on June/July",
+  "rollback": "R00-077 HEAD a87dbdb8079263978a36c24db30596516c380667; pinned R00-065 archive unchanged",
+  "no_production_promotion_without_blind": true
+}

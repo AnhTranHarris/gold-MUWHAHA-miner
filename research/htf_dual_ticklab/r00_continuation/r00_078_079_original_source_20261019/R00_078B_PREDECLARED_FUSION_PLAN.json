@@ -1,0 +1,27 @@
+{
+  "experiment": "R00-078B-INCUMBENT_COOPERATIVE_FUSION",
+  "status": "FROZEN_BEFORE_FEB_POLICY_COMPARISON_AND_JUN_JUL_TRANSFER_SCORING",
+  "parent": "R00-077 AGREE_005 protected incumbent and R00-078A trained 7 specialist oracles, fixed Feb FLIP_010",
+  "goal": "Cooperate by preserving original incumbent positive flips and adding only complementary corrective information; unchanged event population and no elimination",
+  "periods": {
+    "fit": "Jan existing models",
+    "freeze": "Feb only",
+    "transfer": "Jun/Jul historically exposed, never future blind"
+  },
+  "policies": [
+    "INCUMBENT_077",
+    "R00_078_FROZEN",
+    "INTERSECTION",
+    "UNION",
+    "077_VETO_STRUCT",
+    "077_PLUS_STRUCT",
+    "077_PLUS_078_EPISODE",
+    "077_PLUS_078_IF_STRONG",
+    "078_PRIO_STRONG",
+    "077_PLUS_COMPOSITE_AGREE",
+    "077_PLUS_078_IF_NEW_NOT_DAMAGE"
+  ],
+  "note": "Last policy is a causally observable proxy based on model disagreement, not actual future damage; never condition on y",
+  "success": "material correctly labeled event gain, ideally >=80%, R9 90% emitted+correct hourly/day and all weeks/months reported",
+  "restrictions": "No future quote values in policy, no dropped events, no June/July thresholds chosen, no PNL/exits or new replay engine"
+}
