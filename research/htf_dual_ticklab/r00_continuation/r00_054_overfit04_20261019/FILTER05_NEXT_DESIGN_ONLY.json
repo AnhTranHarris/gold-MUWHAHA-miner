@@ -1,0 +1,93 @@
+{
+  "identity": "R00_054_FILTER05_MULTIFACET",
+  "status": "DESIGN_ONLY_NOT_SCORED",
+  "parent": "R00_054_OVERFIT04",
+  "base": "Frozen R00_054 January-trained lgb_oracle_weighted, original 5-second event t and BUY/SELL side",
+  "sources": [
+    "coinexx_2026_01",
+    "dukascopy_2026_01",
+    "coinexx_2026_02",
+    "dukascopy_2026_02",
+    "coinexx_2026_06",
+    "dukascopy_2026_06",
+    "coinexx_2026_07",
+    "dukascopy_2026_07"
+  ],
+  "label": "First observed original native quote at event t +30..32sec; signed midpoint movement strictly >0.10",
+  "training": "January chronological/purged crossfit meta-model including shadow R00_054 base OOF, Feb-only final freeze, June/July historical exposed scoring; no blind label claim",
+  "specialists": [
+    {
+      "name": "Q_RAW_QUOTE_SEQUENCE",
+      "features": [
+        "actual last 16 32 64 128 256 bid/ask quote updates",
+        "bid-only ask-only joint price changes",
+        "stale side duration",
+        "spread reaction",
+        "signed run lengths"
+      ]
+    },
+    {
+      "name": "S_PUBLISHED_STRUCTURE",
+      "features": [
+        "completed M1 M5 M15 H1 bars",
+        "timestamp-published confirmed pivots",
+        "BOS sweep reclaim retest CHOCH",
+        "phase expiry"
+      ]
+    },
+    {
+      "name": "N_NEUTRAL_HAZARD",
+      "features": [
+        "quote drought",
+        "session boundary",
+        "spread gap",
+        "no ±0.10 opportunity risk"
+      ]
+    },
+    {
+      "name": "O_OPPOSITE_HAZARD",
+      "features": [
+        "micro impulse reversal vs continuation",
+        "structural response",
+        "side disagreement conditioned on phase"
+      ]
+    },
+    {
+      "name": "R_SESSION_REGIME_MATURED_FEEDBACK",
+      "features": [
+        "broker-corrected UTC",
+        "volatility regime",
+        "only >=32sec old known shadow-event outcomes",
+        "reset after outages"
+      ]
+    }
+  ],
+  "state_cycle": [
+    "ARM",
+    "CONFIRM",
+    "VETO_OR_RELEASE",
+    "EXPIRE",
+    "COOLDOWN",
+    "REARM"
+  ],
+  "evaluation": {
+    "correct_signal_retention_per_broker_month_min": 0.95,
+    "R9_hourly_correct_supply_min": 0.9,
+    "R9_daily_correct_supply_min": 0.9,
+    "desired_precision": 0.9,
+    "desired_relative_precision_gain": 0.25,
+    "report_all_rejected_good": true,
+    "shadow_all_original_signals": true,
+    "preserve_two_brokers_independent": true
+  },
+  "guardrails": [
+    "No held trades, exits or P&L",
+    "No hindsight data as decision input",
+    "No lookahead or unfinished HTF candle",
+    "No quote-intensity interpreted as traded volume",
+    "No new data without source authorization and SHA",
+    "No historical JuneJuly promotion based on tuning",
+    "No rebuilding working source-native engines",
+    "Truly blind future requires user-approved new month"
+  ]
+}
