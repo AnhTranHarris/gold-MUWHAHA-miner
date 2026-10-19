@@ -1,0 +1,9 @@
+# R00-076B source-native four-specialist residual correction — frozen ahead of training
+
+Plan SHA256 **aacbef6923396409d96b2d4c16e80f248ce1cdab9f37e0a2e707fde7b9bb9a53**. Original 070–072 portable ZIP SHA256 `a27be6347b3cada464727cc57038d8fcc7450fc0d2da893fd556dd714f458a83`, original 073–075 ZIP SHA256 `fb46e4f7b1b9b1c8cd50a98b4e3bace202d9317ae5861f47e0a0f14da7cb86db`. Both readback local ZIP CRC PASS. Original signed Coinexx/Dukascopy source restrictions unchanged.
+
+**Scientific question:** At each existing R00-068 event timestamp, can true *completed* M15/H1 pivot structure plus the original R00-072 independently computed event-sampled specialist stage and source-native new R00-076A quote response improve P(BUY/SELL opposite) enough to flip only a beneficial subset, while never dropping a high-frequency opportunity?
+
+**Jan fit** separately by broker, label = baseline-side*future 30sec UP/DOWN/NEUTRAL, neutral/missing wrong. Freeze using February combined all-event correct counts, then June/July historically exposed transfer. Train three genuine additive heads: H completed 070 published HTF structure; L original event-sampled expert states + native quote paths; F combined structural and quote-phase expert. Fixed LightGBM 120 trees, 19 leaves, 100 minimum children, LR .05, ridge10 and 4 threads. Frozen candidates: original baseline, H/L/F flip margins 0/0.05/0.10; H/L agree flip, H/F/L agree flip; F when structural or lifecycle agreement, 14 policies total. All output one original-event BUY or SELL only.
+
+**Caveat:** original R00-072 episode states are sampled at existing events; this cycle does not falsely assert completion of the truly tick-interstitial independent four-stage state machine. Full investor, governance, original 4 report and source restrictions remain mandatory. No exits, P&L, blind months or extraordinary accuracy claims.
