@@ -1,0 +1,19 @@
+{
+  "id":"R00-054 FILTER13 adaptive matured outcome regime memory and teacher-free N/O specialists",
+  "lineage":"R00-054 -> FILTER08 (diagnostic same-month labels only) -> FILTER09 -> FILTER11 -> FILTER12 -> FILTER13",
+  "status":"DESIGN FROZEN BEFORE SCORES",
+  "original_r00_054_untouched":true,
+  "sources":"Same eight SHA-pinned Jan/Feb/Jun/Jul Coinexx/Dukascopy source-derived original tick caches; no new replay engine",
+  "fourmonth_overfit_teacher_used_as_predictor":false,
+  "hypothesis":"Causal, session/structure/quote-state conditioned matured earlier signal performance provides environment-specific failure transition information not captured by global matured history alone",
+  "novel_feature_clock":"Event i may only use label j when timestamp_i >= timestamp_j + 33000ms (outcome original +30..32s); clear/reset statistics at source gaps and boundaries by sliding windows",
+  "contexts":"Jan-only bin boundaries for completed-volatility, side-relative HTF price response and quote turns; hour-to-session bucket; categorical context does not observe evaluated month outcomes",
+  "train":"Feb first 60pct chronological events only, every-second-row subsample; 60s embargo",
+  "select":"Feb final 40pct, no Jun/Jul influence; R9 UTC eligible-hour/day supply >=90pct benchmark; rank correct density/precision and correct retention; do not use in-sample teacher probabilities",
+  "later_evaluation":"JunJul historically exposed only; NEVER blind",
+  "search_grid":{"score_families":10,"cutoffs":[0.30,0.35,0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80],"independent_veto_guards":["none","NO","SR","M","any2","regime_context","quote_churn","anti_stale","rollover_only","session_overlap"]},
+  "success_metrics":"Correct BUY/SELL initial entry sign retained, opposite+neutral rejected; per-broker June/July and R9 UTC hour/day 90pct count; no PnL/exits/fills",
+  "future_validation":"Separate genuinely unexposed user-authorized month, after freezing all features thresholds and models",
+  "preserve":"Exact Python source, Jan thresholds, frozen FEB plan, full scoring matrices and original event identities, model joblibs, SHA manifest",
+  "date":"2026-10-19 user local"
+}
