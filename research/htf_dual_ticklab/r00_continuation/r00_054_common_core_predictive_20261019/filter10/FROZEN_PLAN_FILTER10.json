@@ -1,0 +1,35 @@
+{
+  "experiment": "FILTER10 month-independent teacher-consensus mechanism transfer diagnostic",
+  "sources": "January/February/June/July original R00-054 source quote events, unchanged 93 past-only feature inputs, independent Coinexx/Dukascopy",
+  "goal": "identify common mechanism beyond 8 month-specific 70pct apparent fits",
+  "orig_model_paths": "FILTER08_FOUR_MONTH_DISCOVERY / per-broker-month .joblib",
+  "tested_versions": [
+    "original_base",
+    "own_fit_teacher",
+    "other_month_mean",
+    "other_month_median",
+    "other_month_min",
+    "all4_mean",
+    "all4_median",
+    "all4_min",
+    "self80_other20",
+    "self50_other50",
+    "self20_other80",
+    "all4_unanimous"
+  ],
+  "cutoffs": [
+    0.45,
+    0.5,
+    0.55,
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.8
+  ],
+  "in_sample_warning": "all4 and self-weighted policies incorporate a same-month label-fitted teacher; only Jan-trained model at Feb/Jun/Jul is chronological as-of-model fit",
+  "quota": ">=90pct independent source matched original R9 SYNTH correct-count per UTC hour/day, reject no baseline-passing windows",
+  "not_an_EA": true,
+  "not_blind": true,
+  "no_holds_exits_pnl": true
+}
