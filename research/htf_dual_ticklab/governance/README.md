@@ -2,6 +2,16 @@
 
 **Version:** `XAU-HTF-GOV-001/1.0` · **Status:** Governance control, not a trading strategy. The runtime backtest engine is unchanged.
 
+## SESSION BOOTSTRAP HARD GATE 1.5-A3 — REQUIRED FIRST ACTION IN EVERY NEW/RESUMED CHAT
+
+**Owner governance requirement 2026-10-21; binding workflow, not a guarantee of automatic chat access.** Before any new XAUUSD HTF / FILTER08 experiment, model replacement, accepted code write or approval, bootstrap directly from the actual canonical Google Drive documents and latest GitHub/research receipts, not memory or summaries. Read the FULL primary [governor v1.4 including appended 1.5-A1/A2/A3](https://docs.google.com/document/d/12lnZDGOGynu9APzK6nh0nuYeEOpB1hbgaeOszMuMFms/edit), [whole-system law](https://docs.google.com/document/d/1f65dWnWa9AGGTKYoqQ_7rr28lQbx4EppQEGUUAMWW9U/edit), [original full forensic audit](https://docs.google.com/document/d/1cYkw43LC5Ot-V686onwQS5cDZRKPyw1T1T6MvbFVSCA/edit), [original owner-approved checklist](https://docs.google.com/document/d/1i2GyLfwVFvyjxB-sNaOwkS6kzZLSWTsijGXaA9qJou0/edit), and [active owner handoff](https://docs.google.com/document/d/1tf3ulDIvEhbblZyFUmFQx79WGiavHEoAIrkQAJmU9yk/edit); plus source supersession, anti-drift charter, investor mandate and newer actual dated experiment receipts. Verify current relevant GitHub branch HEAD and existing dual-broker source-exact replay artifacts, frozen accepted parent masks, successful mechanisms and failed trial frontier. Do not rebuild proven engines.
+
+A verified bootstrap receipt must identify latest binding law, authorized source clocks/causal contract, EXACT original checklist statuses and owner decisions, most recent completed evidence and NEXT unfinished function, current actual GitHub ancestry, working positive candidate inventory, parked prior negatives, blocked prerequisites and experiment acceptance boundary. If essential records unavailable, mark PARTIAL/BLOCKED, do not pretend access or promote evidence. In a single ongoing chat, reuse verified unchanged bootstrap instead of rereading all originals per message.
+
+**Required system reasoning:** solve the coupled multi-timeframe, multi-regime, broker quote-state, direction, specialist cooperation, execution and shared-capital survival problem as a COMPLEX ADAPTIVE SYSTEM. Local rules can be simple when empirically effective, but no universal single-model straw-man experiments or repeated negative-only audits. Exploit approved successes; scout documented public GitHub/community mechanisms before costly bespoke search; test high-information nonlinear/regime-conditional parallel specialists, veto selectivity and causal correct-signal rescue; veto more original incorrect signals while retaining originally correct signals; compare full-system outcomes rather than equating source correctness with profitable trades. Preserve negative evidence, pivot rapidly, observe source lock/UTC and owner promotion authority.
+
+**Status locked absent newer human authorization:** F03–F16 historical research-only accepted 14/39; F17 X62 OPEN, F252–F268 unapproved; original F234 control unchanged. No new MT5 live authority. The complete controlling workflow text is primary Google Drive governor Appendix 1.5-A3.
+
 ## OWNER WORKFLOW OVERRIDE (2026-10-21): HFT CAPACITY FIRST, WRONG-VETO ASYMMETRY
 
 **Read this before any new FILTER08 function/model work:**
