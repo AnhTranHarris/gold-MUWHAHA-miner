@@ -11,6 +11,12 @@ Owner-directed additive workflow amendment `XAU-HTF-RESEARCH-FIRST/1.5-A1` gover
 
 No changes to approved primary sources, clocks, original event labels, historical owner checkboxes, engine code, current F16 parent, or G01–G09 requirements. The original 14/39 completed research-only checklist status remains unchanged. Current original open function F17 X62. Preserve failures in PRIMARY Drive; promote only with owner-approved original evidence.
 
+## OWNER WORKFLOW ADDENDUM 1.5-A2 (2026-10-21): SUCCESS-FIRST, COMMUNITY-FIRST, MECHANISM EXPLOITATION
+
+**Required immediately after 1.5-A1, before further F17 / FILTER08 research:** [OWNER_AMENDMENT_SUCCESS_FIRST_COMMUNITY_FIRST_20261021.md](OWNER_AMENDMENT_SUCCESS_FIRST_COMMUNITY_FIRST_20261021.md).
+
+This owner/investor amendment requires a targeted external public-mechanism / GitHub scout **before expensive new model builds**, and a source-verified working-mechanism inventory that explicitly compounds already successful, complementary causal specialists. One complete mechanism-level diagnosis of a failed configuration is the normal limit unless materially new causal evidence appears; avoid repeated negative audits and wasteful brute-force grids. Start from verified positive research, adapt/compare promising public logic without importing unauthorized external market data/code, and optimize additional wrong/neutral vetoes while strictly protecting correct-event retention in all eight broker-months. Provenance, full negative archives, permitted sources, v1.5-A1 high-capacity-first and whole-system approval gates remain in force. Do not promote F17 or alter 14/39 historical approvals solely because this workflow was updated.
+
 ## Read this before working
 
 1. `SOURCE_AUTHORIZATION_SUPERSESSION_v1.0.md`: current approved sources and the specific supersession of the obsolete Dukascopy exclusion.
