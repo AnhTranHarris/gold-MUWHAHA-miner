@@ -2,6 +2,15 @@
 
 **Version:** `XAU-HTF-GOV-001/1.0` · **Status:** Governance control, not a trading strategy. The runtime backtest engine is unchanged.
 
+## OWNER WORKFLOW OVERRIDE (2026-10-21): HFT CAPACITY FIRST, WRONG-VETO ASYMMETRY
+
+**Read this before any new FILTER08 function/model work:**
+[OWNER_AMENDMENT_HFT_HIGH_CAPACITY_FIRST_ASYMMETRIC_VETO_20261021.md](OWNER_AMENDMENT_HFT_HIGH_CAPACITY_FIRST_ASYMMETRIC_VETO_20261021.md).
+
+Owner-directed additive workflow amendment `XAU-HTF-RESEARCH-FIRST/1.5-A1` governs research **order and selection criteria**: audit original FILTER08 source mechanisms and fitted teacher feature interactions; test highest-information, feasible causal tick-native/high-capacity specialists first; prefer strong incorrect/neutral rejection under per-broker-month correct retention constraints; do not accept near-1:1 marginal veto ratios as achievement toward whole-system goals; preserve fast as-of-tick deployment semantics; and test parallel cooperative arbitration/rescue against existing stacked-AND cascade instead of assuming irreversible veto stacking is the only architecture.
+
+No changes to approved primary sources, clocks, original event labels, historical owner checkboxes, engine code, current F16 parent, or G01–G09 requirements. The original 14/39 completed research-only checklist status remains unchanged. Current original open function F17 X62. Preserve failures in PRIMARY Drive; promote only with owner-approved original evidence.
+
 ## Read this before working
 
 1. `SOURCE_AUTHORIZATION_SUPERSESSION_v1.0.md`: current approved sources and the specific supersession of the obsolete Dukascopy exclusion.
