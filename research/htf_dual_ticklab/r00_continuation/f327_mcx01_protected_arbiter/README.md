@@ -1,0 +1,14 @@
+# F327 M-CX-01 — Frozen parallel specialist and correct-guardian feasibility
+
+**Research-only, owner UNAPPROVED.** Original FILTER08 owner checklist remains 17/39 accepted historical F01–F17; M-CX-01 OPEN, G01–G09 OPEN, no MT5 demo/live.
+
+## Exact frozen lineage
+Parent experiment F326 `257124578a0f106a40ee723a759db86451efe95b`. Archived F327 ZIP 11,732 bytes SHA256 `5b734a385095e137a0c352b160bb962008794c1f9a3a7f402630a345f257cbe4`, nine files (predeclared plan, Python test/execution code, four synthetic tests, 4-month original event tables, exact input SHA receipts, complete positive/negative scientific receipt and public community-mechanism register). CRC and all internal member SHA PASS. PRIMARY Drive https://drive.google.com/file/d/104h2uK7LqUBe6uJpKwFHMZl2Y9HAcqHk/view ; MT5_EXPAND https://drive.google.com/file/d/12I3BznRyd72Th4X0ocG7N_I1EqK-Z3dB/view . Both file sizes verified 11,732 bytes, original ZIP full SHA verified at creation.
+
+## New, separate scientific result — fixed cooperative arbiter
+Four ORIGINAL Coinexx Jan/Feb/June/July cells, source masks F324 marked quote transition and F326 32.001-second matured event excitation aligned exactly (t, side, original 0/1/2 truth, F234 parent) with F323 causal quote feature cache. F323 frozen correct guardian input 40 source-native original features, cutoff p(correct) < .37 predeclared with no re-fit. Frozen arms: F234 only; F324; F326; union; intersection; guardian-protected union; conditional consensus. 4 software invariant tests PASS, all 12 source input SHA independently logged.
+
+Feb FINAL40 calibration comparison: F324 345 bad/220 good, F326 172/111, union 502/325, agreement 15/6, protected union 0/1. Exposed June and July agreement +109 bad/+45 good vs original F234, ratio 2.42:1 but very low volume; exposed union +2,093 bad/+1,409 good, ratio 1.49:1. Full-month January and February contain fitted/calibration contamination; apparent very high ratios are NOT transfer/generalization. Static frozen F323 guardian does not protect across June/July robustly. No per-month 71/90 acceptance, no final source R9 quota for recombined arms, no F17 exact P05 combination, no trading P&L or live execution. **Do not promote**.
+
+## Next distinct hypothesis, NOT EXECUTED
+F328 scalable broker×side×session×completed M15/H1 specialized correct-risk/opp-risk/neutral-risk router with accepted F03 quote response and F16 lifecycle, source-native causal features, guarded F234 correct-signal recovery, event-level survival/supply constraints instead of small hardcoded 48/hour caps. Four-month fitted capacity upper-bound must be labeled IN-SAMPLE, preserved separately from genuinely frozen chronological tests. April historically exposed under investor source-global chronology; no new prospective authority inferred. Keep scientific negatives in research log, positive developments concise in chat. No engine rebuild without evidenced defect.
