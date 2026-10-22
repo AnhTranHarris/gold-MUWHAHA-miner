@@ -1,0 +1,14 @@
+# F325 — M-CX-01 conditional correct rescue and teacher/F234 exact crossover
+
+**Research only; NOT OWNER APPROVED.** Frozen owner original 39 checklist unchanged at 17 historical research accepted; 22 open; M-CX-01 open. F234 control unchanged; no MT5/demo/live/whole-system G gate.
+
+## Exact source and novelty
+Original eight approved Coinexx and Dukascopy Jan/Feb/June/July tick.gz source files freshly SHA256 checked against unchanged registered source hashes PASS. The original eight FILTER08 monthly fitted-teacher score/keep arrays were independently aligned to exact F293 original F234 parent by t, immutable event side and truth. Eight broker-month exact crossover rows verified. Coinexx Jan teacher-only rejects 74,132 incorrect/2 correct that F234 had kept; F234-only rejects 6,382 incorrect/15,136 correct that FITTED teacher had kept. These are same-period hindsight teacher events, **not a replicable forecast or an independent trading improvement**. A veto-only F234 cascade cannot recover parent-discarded correct signals. Source table saved PRIMARY.
+
+## Scored new F325 experiment
+First distinct high-capacity model trained ONLY on original F234-rejected events, Jan first70 + Feb first60 fit, Feb final40 calibration with purge40s; independent broker-specific three-class 255-leaf/145-round LightGBM and correct guardian 255-leaf/105-round; original source-native 124 feature quote/HTF/mature history and verified Coinexx prior F324 marked transition. Five declared levels for three architectures with chronological 48/hr rescue cap. Both brokers fail predeclared >=1.5 correct-rescue/bad-readmission Feb qualification. No policy selected; no June/July retune; no four-month fitted refit of this failed configuration. Results preserved in full research source. No live model, win rate or new approved filter claimed.
+
+## Full reproducible source archive
+ZIP 13,758,987 bytes SHA256 **dffb5c562a9dcfa8b3bcf96a36c48df4f30b96fc49484b2b3d16ade71664de16**, 17 members ZIP CRC and member manifest SHA PASS; independent MT5_EXPAND cloud readback PASS. Stored only at [MT5_EXPAND ZIP](https://drive.google.com/file/d/1zh30OVKSrWQNiZ6LbWvsgPqo213uiD3K/view). PRIMARY 13.8MB upload returned 403; no claim PRIMARY full binary. PRIMARY [research receipt](https://drive.google.com/file/d/1VfxZz8KaGXFZcfqD9CAuXDqdIfZtw3FI/view) and [eight-cell original overlap CSV](https://drive.google.com/file/d/1VdbKUtqH4_6V7neGrcxjs5_btIHGgDY0/view).
+
+Next distinct mechanism F326: legally 32.001s-matured past source event error-class self-excitation × previously verified quote-mark transition × completed M15/H1 regime. No engine rebuild, original account survivability/owner release approval pending. April reserved as one potential Mar/Apr/May evaluation; never represent previously exposed 2026 as genuinely prospective.
