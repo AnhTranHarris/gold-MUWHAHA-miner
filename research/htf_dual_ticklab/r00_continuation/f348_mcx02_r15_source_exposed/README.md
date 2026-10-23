@@ -1,0 +1,22 @@
+# F348-R15 — four-month nonlinear quote-risk × event-pressure meta bridge (RESEARCH ONLY)
+
+**2026-10-23 | original M-CX-02 remains OPEN, full original checklist 18/39 owner research accepted; all G01–G09 OPEN.**
+
+## Pin/lineage
+- This branch is an additive research-only descendant of F348-R12/R13 commit `83d0892ddd75e93a1b0d99bddc0ebeadb5ac3a43`.
+- Prior F348-R14-ES01 source-event-only negative is separately preserved in canonical Drive/log. It is NOT overwritten or treated as approval.
+- Existing broker native UTC replay engine remains unchanged `ca4b58aec597174b6f6d18ab2f36cba6836e4f4c`; ENGINE_DEFECT_TICKET NONE.
+- Original FILTER08 source ZIP SHA256 `7edaddf30f3a19cafd364a270333c6f87962960233f9d10ccbfb6e2a3b23b2ad`.
+- Original native F348-R11 ZIP SHA256 `acee50911f4d2d9736749680b8cadfc58e9972eef42001295dc17399bb57c472`.
+- Original event-density F348-R09P ZIP SHA256 `c5a93759efeb3ef870300e2875abd3fc22851eed8f499ecb7979d218e1c47158`.
+- Exact original event timestamp, source row index, original side and three-class label assertions PASS eight independent Coinexx/Dukascopy Jan/Feb/June/July cells.
+
+## Reproducible artifact and exact metrics
+- **Full 25-member archive:** [MT5_EXPAND](https://drive.google.com/file/d/1u8kPfhR-M1uDu4a_qZoJlPxR5Idf2KDg/view) — SHA256 `6acc9af0029ec47833ae0f0fdd415422f7b8c1d57d52534bdec84d6dd709853c`, 28,151,926 bytes, ZIP CRC PASS and 24 source-file manifest hashes PASS. Contains original-index eight NPZ masks, 4 trained 511leaf×100 models, full Python scripts, all three policy quotas, test report, deep teacher audit, and complete negative/positive arms.
+- **PRIMARY source-research receipt:** [full source-exact February teacher forensic and R15 scientific report](https://drive.google.com/file/d/1UwaKGQuHMSyBs8Ofw7FblNCRtOTxuo_F/view). PRIMARY binary upload returned HTTP 403; do not claim copied there. No approved FILTER_COMPONENTS copy.
+
+F348-R15 is conditional on **frozen F348-R11B q0.10 original parent** and its exact originally kept residual events, excluding already-vetoed event IDs. Separate two class heads per broker, frozen early80 Jan+Feb+Jun+Jul, 40s embargo and model calibration at earlier-good q.997. Original all-8-cell marginal **+39,824 bad veto/+3,653 correct lost =10.9017:1**, 4178/4178 matched R9 UTC source interval quota pass; minimum per-cell original good retention **71.0716%**. Whole historical R11B+R15 source-original: **775,091/1,366,180 bad rejected; 1,014,527/1,208,071 correct retained**. Coinexx Feb original bad rejected **89,687/173,341**, right retained **140,780/155,538**, less than desired 90%-teacher volume minimum 96,193 bad.
+
+**Inference & scientific limits:** Native R11 quote feature outputs and R09 source event outputs may be as-of t+15 on still-unfilled F330 PENDING candidates ONLY; R15 merely trains a new deterministic score-space interaction on the *already saved* source matched score arrays. This run did not reread raw monthly gzip tick streams, rerun native tick backtester, or simulate executed MT5 orders. All four months previously historically exposed; parent models and R15 early80 trained on parts of same months. Late20 veto **2,639 bad/1,287 right ~2.05:1** vs full fitted 10.90:1; no robust prospective validation, no owner M-CX-02 signoff, no net fill/profit, no MQL5 parity, no $100/$200 portfolio proof. q.995 fails Dukascopy July >=71% correct retention despite quota pass, archived. q.999 retains more original correct but produces lower additional bad volume. R13 source original mask ZIP unavailable locally; **do not** combine or claim R15 overlap relative to R13 without exact mask.
+
+**Next material mechanism:** new *actual streaming* capped Bayesian marked-quote revision changepoint-state lifetime/uncertainty + completed HTF and strictly matured feedback, with distinct correct protection; not a repeat of R11 fixed GLR or R14 event rate. Need source SHA-verified native quote files, R13 exact bitmasks, model/head/per-event causality traces, true after-cost fill control. March/April/May: historical MAY was previously randomly locked and exposed; don't draw a second or call May truly blind. Original owner-approved F340 frozen. All release G01–G09 remain OPEN.
