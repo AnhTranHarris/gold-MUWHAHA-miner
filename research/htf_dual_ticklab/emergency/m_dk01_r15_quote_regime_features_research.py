@@ -20,6 +20,7 @@ class Quote:
 class CompletedBar:
     period_sec: int
     published_msc: int
+    bar_end_msc: int
     open: float
     high: float
     low: float
@@ -27,6 +28,7 @@ class CompletedBar:
 
 @dataclass(frozen=True)
 class MaturedEvent:
+    signal_msc: int
     label_available_msc: int
     side: int
     label: int  # 0=correct; 1=opposite; 2=neutral/missing
@@ -99,7 +101,7 @@ def source_native_dk01_features(
         features[f'{k}_efficiency']=abs(signed)/max(1.e-6,sum(abs((x+y)/2) for x,y in changes))
     for period_sec in (60,300,900,3600):
         # Only the last bar *published at or before* event time is eligible.
-        bs=[b for b in completed_bars if b.period_sec==period_sec and b.published_msc<=event_msc]
+        bs=[b for b in completed_bars if b.period_sec==period_sec and b.bar_end_msc<=event_msc and b.published_msc>=b.bar_end_msc and b.published_msc<=event_msc]
         name=f'completed_{period_sec}s'
         if bs:
             b=max(bs,key=lambda a:a.published_msc)
@@ -117,8 +119,9 @@ def source_native_dk01_features(
             features[name+'_available']=0.
     for span_ms in (120000,600000,3600000):
         # Event label_available_msc must represent full +30..32s window and +33.001s guard.
-        ss=[e for e in matured_events if e.label_available_msc<=event_msc
-            and e.label_available_msc>event_msc-span_ms and e.side==side]
+        ss=[e for e in matured_events if e.label_available_msc>=e.signal_msc+33001
+            and e.label_available_msc<=event_msc and e.signal_msc<event_msc
+            and e.label_available_msc>event_msc-span_ms and e.side==side and e.label in (0,1,2)]
         n=len(ss)
         for cls, nm in ((0,'right'),(1,'opposite'),(2,'neutral')):
             features[f'matured_{span_ms}ms_{nm}_smoothed']=(sum(e.label==cls for e in ss)+1)/(n+3)
