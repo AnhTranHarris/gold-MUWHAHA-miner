@@ -1,0 +1,88 @@
+{
+  "report": "F401_PREORDER_STAGE0_SOURCE_RECOVERY",
+  "research_scored": false,
+  "time_utc": "2026-10-25",
+  "authority": "source-exact F400 handoff, original F395/F398 executable source archives, frozen pre-existing engine",
+  "source_approved": false,
+  "whole_ea_qualified": false,
+  "archived_f400_sha_expected": "38b10284978394df9b290acd2e414703fd2f080bc76abbd351be31f4d8d2c6a5",
+  "archived_f400_cloud_verified": false,
+  "original_quote_eight_tapes_local": false,
+  "parent_archives": {
+    "f395": {
+      "sha256": "a3367cba013912749cc31a6c7fde034dfb6546c4fd6a182d40d774414748e41d",
+      "members": 32,
+      "crc": true
+    },
+    "f398": {
+      "sha256": "caac13c1670d9e53b9c784b8e15f3ee507dafdcf24faf03ddd26ccbbdb88eb7b",
+      "members": 18,
+      "crc": true
+    }
+  },
+  "events": {
+    "coinexx_01": {
+      "events": 345365,
+      "right": 181869,
+      "bad": 163496,
+      "parent_veto_bad": 44151,
+      "parent_veto_right": 1129
+    },
+    "coinexx_02": {
+      "events": 328879,
+      "right": 155538,
+      "bad": 173341,
+      "parent_veto_bad": 52692,
+      "parent_veto_right": 1303
+    },
+    "coinexx_06": {
+      "events": 312004,
+      "right": 142224,
+      "bad": 169780,
+      "parent_veto_bad": 55510,
+      "parent_veto_right": 1153
+    },
+    "coinexx_07": {
+      "events": 321069,
+      "right": 143362,
+      "bad": 177707,
+      "parent_veto_bad": 55394,
+      "parent_veto_right": 1083
+    },
+    "dukascopy_01": {
+      "events": 344037,
+      "right": 178642,
+      "bad": 165395,
+      "parent_veto_bad": 42902,
+      "parent_veto_right": 1620
+    },
+    "dukascopy_02": {
+      "events": 324582,
+      "right": 143923,
+      "bad": 180659,
+      "parent_veto_bad": 52310,
+      "parent_veto_right": 1301
+    },
+    "dukascopy_06": {
+      "events": 297035,
+      "right": 132105,
+      "bad": 164930,
+      "parent_veto_bad": 51752,
+      "parent_veto_right": 1077
+    },
+    "dukascopy_07": {
+      "events": 301280,
+      "right": 130408,
+      "bad": 170872,
+      "parent_veto_bad": 48469,
+      "parent_veto_right": 1131
+    }
+  },
+  "tests": "4 unittest causal fixtures passed; syntax compiled; no original quote-market result",
+  "pinned_python_engine": "ca4b58aec597174b6f6d18ab2f36cba6836e4f4c",
+  "status": "F401_STAGE0_IMPLEMENTED_NOT_SCORED",
+  "frozen_f398_wrong_heads": {
+    "coinexx": 74,
+    "dukascopy": 74
+  }
+}
