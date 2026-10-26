@@ -16,11 +16,11 @@ def test_same_millisecond_future_ordinal_ignored():
 def test_original_tick_identity_required():
  with pytest.raises(MissingAsOfQuote):run(original_quote_ordinal=3)
 def test_unpublished_htf_cannot_leak():
- pub=CompletedBar(900,E-1,1800,1801,1799,1800.8)
- future=CompletedBar(900,E+1,1790,1820,1780,1820)
+ pub=CompletedBar(900,E-1,E-900000,1800,1801,1799,1800.8)
+ future=CompletedBar(900,E+1,E+1,1790,1820,1780,1820)
  assert run(completed_bars=[pub,future])==run(completed_bars=[pub])
 def test_only_matured_previous_outcomes():
- good=MaturedEvent(E-35000,1,0);future=MaturedEvent(E+1,1,1)
+ good=MaturedEvent(E-68001,E-35000,1,0);future=MaturedEvent(E-32000,E+1001,1,1)
  assert run(matured_events=[good,future])==run(matured_events=[good])
 def test_side_sign_relations():
  a=run();b=run(original_side=-1)
@@ -31,3 +31,10 @@ def test_corrupt_original_quote_rejected():
  with pytest.raises(ValueError):run(quotes=[Quote(E,2,1801,1800)])
 def test_order_must_be_preserved():
  with pytest.raises(ValueError):run(quotes=[Q[1],Q[0],Q[2]])
+
+def test_early_published_label_cannot_bypass_maturity():
+ fake=MaturedEvent(E-10000,E-1,1,1)
+ assert run(matured_events=[fake])==run(matured_events=[])
+def test_unfinished_bar_cannot_fake_publication():
+ impossible=CompletedBar(900,E-1,E+1,1800,1801,1799,1800.8)
+ assert run(completed_bars=[impossible])==run(completed_bars=[])
