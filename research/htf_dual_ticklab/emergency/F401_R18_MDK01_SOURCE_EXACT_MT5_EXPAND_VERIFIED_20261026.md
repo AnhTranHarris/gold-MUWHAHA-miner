@@ -1,0 +1,28 @@
+# F401-R18 M-DK-01 source-exact cloud receipt, 2026-10-26
+
+**Scope: UNAPPROVED research engineering.** Full original v1.4 + 1.5-A1/A2/A3, complete 435,167-character FILTER08 forensic, complete 195,674-character original checklist and current MT5_EXPAND owner ledger reread and retained. Owner R10 signed approval of M-CX-07 supersedes stale count to **21/39 historical research-only accepted, 18 open**, M-DK-01 next, G01–G09 all open. No PRIMARY or /02 writes, no engine rebuild, no replay score, no fit, no model acceptance, no trading evidence.
+
+Original references:
+- Governor https://docs.google.com/document/d/12lnZDGOGynu9APzK6nh0nuYeEOpB1hbgaeOszMuMFms/edit
+- Full forensic https://docs.google.com/document/d/1cYkw43LC5Ot-V686onwQS5cDZRKPyw1T1T6MvbFVSCA/edit
+- Checklist https://docs.google.com/document/d/1i2GyLfwVFvyjxB-sNaOwkS6kzZLSWTsijGXaA9qJou0/edit
+- Active owner ledger https://docs.google.com/document/d/1SOiAbTGROPPgSlj_bQfZMTKg-2DQ22PQqmP03fRS0GE/edit
+- Signed R10 https://docs.google.com/document/d/14Paaz2ygxxOyzMm8hHe_QQqwbUlwOOjqzWwIll-SDdA/edit
+- Separate DK01 chronological R16/R17 negatives https://docs.google.com/document/d/1fiZ2hdOPEua6VSI0X9SLck_t31MaJ0dB75bJ7JUNteI/edit
+
+Original M-DK-01 January overfit teacher: 344,037 fixed events, 178,642 right, 122,151 opposite, 43,244 neutral; fitted own-month 450-tree/255-leaf/93D binary q=.275, 70,106 opposite +24,497 neutral = **94,603 bad veto /7 right lost**. Individual 90% aspiration 85,143 bad, NOT automatic owner approval nor whole G06. Adjacent DK February M-DK-02 different fitted q=.375 and **121,691 bad/27 right**, split 92,775 opposite/28,916 neutral. January teacher opposite/neutral rejection 57.393%/56.648%, February 67.612%/66.561%; BOTH classes contribute rather than simple neutral-drought. Original DK fitted-gain group 74.628% primary price/HTF, 14.457% native bid/ask, 9.271% matured prior outcomes is descriptive and not proof of independent causal contribution. DK January chronological R16/R17 late VAL 53 bad/92 right and 33 bad/32 right are parked; do not retune.
+
+New original Python R18 source is an **86D strict-as-of native L1 marked quote renewal family**, five exponential event horizons 0.5/2/10/30/120 seconds, bid/ask mark polarity/spread/renewal cross-horizon, native Dukascopy integer quote /1000 exact, original (ms,ordinal) guard, session-gap reset, 64-quote/2min warmup, source-score last-observed timestamp watermark and protected correct guardian. It generates NO new fitted veto scores, original masks, realized P&L or training results. No source labels used at runtime. Exact current GitHub source and tests files are present on this isolated branch.
+
+**Tests: 21/21 deterministic causal fixtures passed** locally; compiled Python syntax passed. Local synthetic 50,000 quote updates + 500 source as-of snapshots ~131,495 updates/s on container only, NOT user's MT5 terminal and not a live trading figure. Source local SHA256 1c764f84395e2d4273a0baacbf0bf3a1f724aa7e9c73986ec9dd007d96e9f2ff, Git blob independently read back 6ddea0de7404290e1f14892d1c3488e1417e22dd. Test local SHA256 3226f4d813ff07f36c712f46b562b35fd7d61881b7b54b1ca5188cbbcb5d60b9, Git blob independently readback 6cd1873a36d4cc59b5f2368f5b5a8b805076bab1.
+
+**COMPLETE ORIGINAL UNAPPROVED ZIP MT5_EXPAND/01 VERIFIED:** F401_R18_MDK01_ONLINE_MARKED_RENEWAL_UNAPPROVED_SOURCE_20261026.zip; EXACT 11,360 bytes; SHA256 **88c0e3c49657a7d5461a5d405a59f26d96ca4068f24848b3529bb59d70f475bb**. Google Drive upload accepted in parent **1NFUQ0imt6xlcm96WHnj72gSRPA8qtmR_**; file ID **1wLsjLuYcGABzJUh3V2P__ivNvBR7g0sO**; metadata size and parent verified; authenticated raw download SHA256 independently identical, ZIP 4 members CRC PASS, 3 internal manifest hashes PASS. **https://drive.google.com/file/d/1wLsjLuYcGABzJUh3V2P__ivNvBR7g0sO/view** . It contains actual source, tests, SHA256_MANIFEST and complete original F401-R18 scientific README. No file copied to approved folder /02.
+
+External hypothesis scout, **not third-party market data or proven gold alpha**:
+- https://arxiv.org/abs/2011.14650 competing-risks Hawkes mechanism
+- https://proceedings.mlr.press/v97/geifman19a.html and https://github.com/geifmany/selectivenet selective classification + protected right
+- https://github.com/online-ml/river/blob/main/river/drift/adwin.py online past-observed change window
+- https://academic.oup.com/jfec/article-abstract/12/1/47/816163 true L2 OFI is unavailable in retail quote-only feed
+- https://www.mql5.com/en/docs/series/copyticks native ms/flags and OnTick batching.
+
+**NEXT SCORE — NOT RUN:** physically retrieve eight permitted source SHA-matched native tapes/event masks, freeze exact original quote ordinal, JAN early/FEB early FIT, FEB disjoint CAL/VAL with 40s embargo, exact-hour/side matched >=199 permutation placebo; compare NEW renewal features against older 195D quote/87D completed HTF, class-specific opposite/neutral/right guardian and veto overlap. Material early screen >=250 NEW bad and >=20:1 incremental wrong/right BOTH CAL+VAL without overfitting VAL. If real conditional gain exists, bound high-capacity 1023-leaf 90–180-tree multi-class heads with source-aware clock, then owner-authorized all-four Jan/Feb/June/July IN-SAMPLE training/optimization explicitly FITTED, freeze 8 original masks and 4,178 R9 quota rows; never market/deployment claims from own-month selection. Original time t0 veto vs +15s NEW unfilled-order optional admission and lost-fill costs must remain separate. Full joint filter G06 71%/90% each broker-month and eventual 12 paired shared-capital scenarios still OPEN. User-owner-only checklist tick, /02 copy and MQL5 release.
