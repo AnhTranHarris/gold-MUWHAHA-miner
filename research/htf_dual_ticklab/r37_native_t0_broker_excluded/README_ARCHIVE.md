@@ -1,0 +1,13 @@
+# R37 original eight-cell registered native t0 broker-excluded research bundle
+
+**UNAPPROVED / SHADOW-ONLY / NOT LIVE OR DEMO FILTERING AUTHORIZED.**
+
+1. Exact raw source tapes remain in their owner-authorized PRIMARY Drive folders. None are repackaged into this archive. Original R17 event sources are at the authenticated two-part MT5_EXPAND `/01` archive (SHA c993a258...).
+2. `r37_native_pre_t0_features.py` is the *NEW* independent t0-before event feature adapter, not a rebuilt tick backtester. `r37_build_eight_features.py` can derive eight new 70D event arrays from those verified original raw tapes. These larger derived feature arrays are deliberately not in this portable ZIP; their individual SHA digests and count receipts are registered in `R37_EIGHTCELL_PREFIX_MANIFEST.json` and they can be rebuilt from the exact authorized raw sources.
+3. `model_fit_coinexx/`, `model_fit_dukascopy/` hold eight actually trained LightGBM text weights and each source-broker CAL-frozen policy. `F401_R37_TWO_WAY_HISTORICALLY_EXPOSED_BROKER_EXCLUSION_SUMMARY.json` and excluded broker mask `.npz` are measured artifacts. A FIT source broker never trained or calibrated on the other broker's population for this new R37 study, **but both four-month samples have historically been viewed by researchers**.
+4. Fitted own broker and excluded broker all fail the >400k wrong / <10k right aspiration as a robust mechanism. Keep R24 positive fitted shadow separately and PARK this R37 architecture. Do not infer the strong R24 R17 t0+15 score was reproduced by raw t0-only model.
+5. `R38_DemoShadowTickTap.mqh`, `R38_DemoQuoteTap_ShadowOnly.mq5`: optional **UNCOMPILED** MQL5 demo quote/intent JSONL tap. Both are NO TRADE; standalone script has no R00 intent producer. A future integration must be source ordinals/clock audited, binary parity-tested and connected to the existing EA before actual demo filtering is considered. Confirm true demo mode and MetaEditor compilation locally. No trading permissions are implemented.
+6. Test new feature contract locally with `python -m pytest -q test_r37_causality.py`. Other scripts require numpy/pandas/lightgbm and original source files, and were developed as research-only, not verified MetaTrader5 live architecture.
+7. FULL governance and research pointers are in the unabridged primary governor, full FILTER08 forensic audit, original 39-checklist, current MT5_EXPAND ledger, and F401-R36 /00 receipt. This ZIP is an append-only negative scientific derivative.
+
+No original baseline engine, R17/R24/R35/R36 source, EA, main branch, PRIMARY or /02 folder altered.
