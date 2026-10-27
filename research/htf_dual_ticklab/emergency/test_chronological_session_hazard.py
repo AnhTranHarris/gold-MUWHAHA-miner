@@ -1,5 +1,5 @@
 import numpy as np
-from chronological_session_hazard import features,split,HEADS,_past_mean,_matured_rates
+from r00_054_a01_chronological_session_hazard import features,split,HEADS,_past_mean,_matured_rates
 
 def fixture():
     t=np.array([1600000000000,1600000001000,1600000030000,1600000033000,1600000033000,1600000065000],dtype='int64')
