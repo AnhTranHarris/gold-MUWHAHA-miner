@@ -1,0 +1,16 @@
+# F401-R94: original R9 intent publisher provenance versus original FILTER08 research events
+
+UNAPPROVED source-exact research only. M-DK-01 OPEN; 21/39 owner historical research acceptances; G01–G09 OPEN. No MT5, Python-demo order veto or trading authority. Parent original R93 a9f940716f179086c095e75ed5bf21909e70ae79; engine ca4b58aec597174b6f6d18ab2f36cba6836e4f4c unchanged. PRIMARY and /02 untouched.
+
+## NEW exact byte-locked sample audit
+- Original FILTER08 52-member ZIP SHA256 7edaddf30f3a19cafd364a270333c6f87962960233f9d10ccbfb6e2a3b23b2ad; original 345,365 Coinexx Jan 5s research event timestamps and sides.
+- Original FILTER07 ZIP SHA256 37bad631740128b0aafe0a7044331939aaea4d2106067b2203e788a265b2965d; `run_filter07.py` confirms ORIGINAL EXTERNAL `R00_054_FILTER05_ORDERED_QUOTE_DISCOVERY/QUOTE_ORDER_{broker}_{month}.npz` 15D marked quote source, NOT included in original F07/F08 ZIP. Original 93D as-of publisher parity G01 not proven.
+- Original R9 real-tick tester Jan part01 94,307,288 bytes SHA256 ae07db47b48b49695c6de47927171d7cf8c7bc28a85370d87d48957e2a20506e; exactly first 650,000 source-ordered `run_label=REAL` rows scanned.
+- R9 counts: quality-reject BUY 262,479, SELL 241,007; ENTRY_BUY 209 ENTRY_SELL 207; ENTRY_BUY_FAIL 32,942 ENTRY_SELL_FAIL 28,776. Failed event *name* is not verified MT5 OrderSend reject, must audit EA publisher source.
+- All `ENTRY_*` and `ENTRY_*_FAIL` timestamp attempts 62,134; ONLY 65 EXACT millisecond coincidences with original Coinexx Jan FILTER08 event timestamps; 23,985 within +-1,000ms, expected proximity under ~5s source event cadence and **not an immutable event identity join**. Median age of preceding F08 event 2,581ms. No shared intent_id. **Never join R9 fields `pending_mode,s1_eff,atr,session` to all original F08 signals via nearest timestamps.**
+- 5/5 new synthetic timestamp/ordinal identity diagnostic unit tests PASS. Actual archive package `F401_R94_SOURCE_EXACT_R9_INTENT_PROVENANCE_NO_FALSE_JOIN_UNAPPROVED_20261028.zip` created locally, 9,862 bytes SHA256 56129f11fba6e4b2bb5443023b5403913f3f2aad0d25168c3bc4b078cf51e44a; ZIP CRC and 4/4 included payload SHA PASS. This signed GitHub receipt is not a full binary archive or proof of Drive ZIP upload.
+
+## Exact next nonduplicated research
+Original fitted M-DK-01 teacher DK January 94,603 wrong/7 correct lost; historical fitted R24 all 8 814,995/9,999; truly nested donor broker-month R89 all 8 122,383/5,518, DK January 6,847/239. No causal model reaches 400k/<10k. R83–R93 negative CAL experiments stay parked. Source R93 residual teacher eligible 682,578 wrong not a live label.
+
+Before R95 new trained execution utility, obtain genuine PRE ORDER published `intent_id`, source-native BID/ASK quote ordinal, completed HTF 15/30/60m state, side, regime, filled/submitted/never-submitted state, broker contract economics, source R9 original ID provenance. If missing, define explicit *hypothetical* pending order for separate quote-touch/adverse-first/no-touch label; cannot call quote-touch an actual fill. Freeze donor FIT/CAL, entire target broker/month excluded from every trained layer, true new month prospective; audit M-DK-01 individually and whole filter shared account separately. R89 +15 only can act on never-submitted orders, never retro-cancel R9 original t0 entry. Original engine healthy, no rebuild.
