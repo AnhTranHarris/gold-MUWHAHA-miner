@@ -1,0 +1,7 @@
+# R110 original-label numerical boundary receipt
+
+June preparation stopped before scoring because 184 rederived labels differed from the immutable original archive. A bounded diagnostic found all differences at exactly +/-$0.10 within floating arithmetic error, with no duplicate source-event timestamps. An alternative algebraically equivalent midpoint expression produces 481 June /630 July differences, all within 5.46e-13 dollars of that boundary. This identifies numerical representation sensitivity, not a replay-engine failure or permission to rewrite labels.
+
+The preparation guard is amended before June/July scoring to require every discrepancy to be within 1e-9 dollars of the original boundary. Any other discrepancy still blocks the month. The original archived labels remain authoritative for every row, with every discrepancy index recorded. No row is excluded, no feature/policy reads a discrepancy flag, and no original label is changed. Continuous price-trajectory targets remain from the native quotes. Model weights, January CAL specification, features and thresholds are unchanged.
+
+This is original-event research with archived matured labels, not exact native-runtime label parity. In particular the online calibration arm inherits the archived boundary convention; live reproduction requires its original numeric contract. The distribution-only arm has no matured label input. Native execution and G01–G09 remain unverified. ENGINE_DEFECT_TICKET: NONE; this is a component source-contract disclosure.
