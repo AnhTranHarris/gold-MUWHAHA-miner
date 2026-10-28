@@ -1,0 +1,22 @@
+# F401-R84/R84b | Marked renewal / privileged future quote-hazard causal student (2026-10-28)
+
+RESEARCH ONLY: OWNER historical 21/39 accepted; M-DK-01 OPEN, S01–S05 OPEN, G01–G09 OPEN. No MQL5 MetaEditor or demo/live order blocker.
+
+Original governor v1.4 + A1/A2/A3 https://docs.google.com/document/d/12lnZDGOGynu9APzK6nh0nuYeEOpB1hbgaeOszMuMFms/edit
+Original complete 4-month FILTER08 93-feature 8-model forensic https://docs.google.com/document/d/1cYkw43LC5Ot-V686onwQS5cDZRKPyw1T1T6MvbFVSCA/edit
+Canonical original 39-item checklist https://docs.google.com/document/d/1i2GyLfwVFvyjxB-sNaOwkS6kzZLSWTsijGXaA9qJou0/edit
+Healthy source Python engine pin ca4b58aec597174b6f6d18ab2f36cba6836e4f4c, prior R83 HEAD 22cf698eb7edbd94ed91d2d7654d9ad452450b54. No core change and NO ENGINE DEFECT TICKET.
+
+EIGHT REAL SOURCE FILES: original registered Coinexx/Dukascopy JanFebJuneJuly 2026 tick .csv.gz bytes rehashed 8/8 PASS; 2,574,251 original event IDs unchanged =1,208,071 correct +1,366,180 wrong. CX original JanFeb wallclock -120min and JunJul -180min to UTC; Dukascopy UTC.
+
+R84 NEW t0 prequote native 82-feature marked renewal/Hawkes-like update burst / completed HTF: 10 separate LightGBM target students (wrong, neutral, quote-censor, adversarial future 8s path and correct guardian) across two independent origin brokers, each earliest 60% of all 4 authorized months FIT and next20 CAL. Other broker completely excluded from fit/cal. FUTURE first quote and first8s adverse price used as FIT TRAINING LABELS ONLY; no current event truth/future quote in runtime input. Eight policy topologies x5 predeclared CAL q levels x2 brokers =80 original R84 CAL tests. Admission requirement CAL >=350 wrong and >=15 bad per good and <=.75% correct lost. 0 qualified. Best CX 92 wrong /42 good=2.190:1; DK129/39=3.308:1. Both orders ABSTAIN.
+
+R84b SCOPED LABEL DEFECT FIX: first quote with time >=t0 produced zero gap since source original events share exact millisecond with ticks; this is a NEW FUTURE LABEL ONLY issue, not engine/clock defect. Corrected strict first quote AFTER t0 via searchsorted side=right. Existing 82 pre-t0 features plus other 8 frozen weights and all original event labels unchanged. Recomputed eight small target arrays, hashed them, retrained ONLY two quote-censor students. 80 original frozen cutpoint arms rescore independently without target-month tuning. CX 6093 positive fit quote gaps >1000ms, DK 12684. 0/40 CAL qualified in each, best 2.190:1 and 3.308:1; ABSTAIN. Fastfail prevents wasteful other-broker recipient reruns of known CAL failures. No 400k score, zero veto-ready models.
+
+Original individual M-DK-01 benchmark is Dukascopy January fitted hindsight 94,603 original wrong rejected /7 good lost among 344,037 events; each function/model judged against its OWN historical original functional benchmark, not full cooperative G06 >=71% good kept /90% bad removed in all 8 cells, and not complete EA account PnL.
+
+EXACT PORTABLE RESEARCH ZIP locally available for current turn: F401_R84_R84b_EIGHTCELL_T0_RENEWAL_SURVIVAL_STUDENT_SOURCEEXACT_NEGATIVE_20261028.zip, 31,841,017 bytes SHA256 51440e754a03aee93c3e06d9ddd4e811d5f4e337f9beac022f2c74dfc97684d0; 55 ZIP members and embedded SHA256/CRC PASS. Includes 12 frozen model text files, complete Python source/regression guards, source hash registry receipts, 8 corrected future label files, frozen CAL+scores and full negative audit. Original source raw files and 8 huge saved derived matrices intentionally not duplicated; exact dependency pins and local generated derivative SHA in archive manifest. This GitHub receipt is NOT model binary; do not claim model ZIP cloud-upload success without authenticated receipt.
+
+COMMUNITY RECONSTRUCTION: GitHub River PageHinkley inspected blob c14c82121e19afc9d251fdb5339a00a89f3f48f8 (online quote drift); lifelines KaplanMeier inspected blob 8d3f2b17dab44bda18653b0b5cb953c7714f2473 (time-to-first-next quote); MetaQuotes CopyTicks/CopyTicksRange for timestamp/flags. Concepts only, no unauthorized public strategy source or outside price data.
+
+NEXT DISTINCT MECHANISM: recover authentic as-of FILTER05 15 native ordered quote fields and original expert lifecycle X58–61/X77–80 with source-time publisher integrity, then specialize expert disagreement/HTF-side-regime + guard correct. Novel information not merely retrain R83/R84b feature variants. Owner controlled G01 and native MQL5/forward G07/G08 and shared-capital G09 still open. PRIMARY READ ONLY, MT5_EXPAND /02 unchanged, NO ORDER VETO.
