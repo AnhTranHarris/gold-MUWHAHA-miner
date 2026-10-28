@@ -23,3 +23,11 @@ R86 16497161 B SHA256 c7d3533abb0e214d7724e7dbb53c01004096d380729325761648eca1eb
 Mechanistically distinct R87 NEXT (NOT EXECUTED): learn causal side-specific competing time-to-next-bid/ask quote renewal/neutral-opportunity survival with published quote-only marks, broker/session renewal change-point, completed multiHTF, neutral vs correct guardians, true t0 trade-option fill cost and separately still unsubmitted delayed admission. First fast-fail tiny strictly as-of source classwise probe; if promising freeze origin-only CAL and test independent broker and truly future unused months. Maintain exact original event IDs, side, source clock, teachers only as fit targets, no fabricated L2/traded volume. References MetaQuotes CopyTicks https://www.mql5.com/en/docs/series/copyticks and River https://github.com/online-ml/river and finlab-ml https://github.com/landtml/finlab-ml used as public inspiration ONLY, no outside strategy or quote ingestion.
 
 STATUS M-DK-01 OPEN, G01–G09 OPEN, no demo filter activation.
+
+
+## APPEND ONLY: Cloud source binary archive now independently VERIFIED (2026-10-28)
+The preceding not-yet-uploaded caveat is superseded by authenticated MT5_EXPAND /01 full binary upload, provider folder/size readback, raw download and exact SHA256/CRC matching local frozen outputs; PRIMARY and /02 untouched.
+- R84 17,339,267 B SHA256 4c988f7360fa14caa6ba4b33740e0c0471fe8b2d54c30877e90f0eae789702e2 https://drive.google.com/file/d/1g8RvLrmScfYwKX5oFi0BQt5Tk-iSCh_E/view
+- R85 17,054,745 B SHA256 4e4829348092623bb890231011354c1cc55255a841b4af7f5b46bbf2ff16433f https://drive.google.com/file/d/1A7AiwjmlgTrKi5W7oYPT3kx22DzIxD0B/view
+- R86 16,497,161 B SHA256 c7d3533abb0e214d7724e7dbb53c01004096d380729325761648eca1ebfbe142 https://drive.google.com/file/d/1_n_2ciH8L8I9AqjWZ-5UWoyjySeHv3g-/view ; original 35/35 payload hash and ZIP CRC PASS.
+Native executable-source archives are preserved, but calibrated source policies ABSTAIN, no genuine virgin 2026 future month, no MT5 demo order suppression. Owner M-DK-01 and G01–G09 remain OPEN.
