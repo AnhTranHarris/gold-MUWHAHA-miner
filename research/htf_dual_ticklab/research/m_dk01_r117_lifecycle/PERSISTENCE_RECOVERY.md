@@ -1,0 +1,1 @@
+Initial January events NPZ was truncated despite prepare completing; no model had fitted. Rebuilt the NPZ from the byte-pinned original event archive and SHA-verified unchanged state cache; every original event field verified for all four months. No scientific parameter, feature, target or split changed.

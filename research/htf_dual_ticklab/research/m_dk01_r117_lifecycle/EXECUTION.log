@@ -1,0 +1,78 @@
+RUN prepare 01
+prepared 01 (344037, 140) [150682 185675  88026]
+RUN prepare 02
+prepared 02 (324582, 140) [151020 181546  58568]
+RUN prepare 06
+prepared 06 (297035, 140) [135815 186118  53737]
+RUN prepare 07
+prepared 07 (301280, 140) [130604 184407  52409]
+RUN fit None
+Traceback (most recent call last):
+  File "/workspace/scratch/17c53bc8b90d/research_r117/run.py", line 184, in <module>
+    if a.stage in ('fit','calibrate'):globals()[a.stage]()
+                                      ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/17c53bc8b90d/research_r117/run.py", line 108, in fit
+    a=np.load(R/'cache/events_01.npz');x=features('01');base=splits(a['t'])['FIT'];y=a['truth_class']
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py", line 471, in load
+    ret = NpzFile(fid, own_fid=own_fid, allow_pickle=allow_pickle,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py", line 197, in __init__
+    _zip = zipfile_factory(fid)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py", line 112, in zipfile_factory
+    return zipfile.ZipFile(file, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/zipfile/__init__.py", line 1371, in __init__
+    self._RealGetContents()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/zipfile/__init__.py", line 1438, in _RealGetContents
+    raise BadZipFile("File is not a zip file")
+zipfile.BadZipFile: File is not a zip file
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python', 'research_r117/run.py', 'fit']' returned non-zero exit status 1.
+RESUME fit None
+fit 0 16 88627
+fit 0 32 88627
+fit 0 48 88627
+fit 0 64 88627
+fit 0 80 88627
+fit 0 96 88627
+fit 0 112 88627
+fit 0 128 88627
+fit 1 16 110646
+fit 1 32 110646
+fit 1 48 110646
+fit 1 64 110646
+fit 1 80 110646
+fit 1 96 110646
+fit 1 112 110646
+fit 1 128 110646
+fit 2 16 46163
+fit 2 32 46163
+fit 2 48 46163
+fit 2 64 46163
+fit 2 80 46163
+fit 2 96 46163
+fit 2 112 46163
+fit 2 128 46163
+RESUME predict 01
+predicted 01
+RESUME calibrate None
+frozen 2.828857898712158
+RESUME score 01
+score 01 {'FIT': {'n': 206414, 'correct': 102711, 'incorrect': 103703, 'incorrect_veto': 7384, 'correct_lost': 19, 'opposite_veto': 4921, 'neutral_veto': 2463, 'teacher_wrong_overlap': 7330, 'wrong_not_vetoed_by_teacher': 54, 'unique_30s_time_buckets': 3074}, 'CAL': {'n': 68799, 'correct': 36028, 'incorrect': 32771, 'incorrect_veto': 165, 'correct_lost': 120, 'opposite_veto': 82, 'neutral_veto': 83, 'teacher_wrong_overlap': 158, 'wrong_not_vetoed_by_teacher': 7, 'unique_30s_time_buckets': 135}, 'VAL': {'n': 34397, 'correct': 18964, 'incorrect': 15433, 'incorrect_veto': 21, 'correct_lost': 16, 'opposite_veto': 18, 'neutral_veto': 3, 'teacher_wrong_overlap': 17, 'wrong_not_vetoed_by_teacher': 4, 'unique_30s_time_buckets': 20}, 'SHADOW': {'n': 34404, 'correct': 20925, 'incorrect': 13479, 'incorrect_veto': 42, 'correct_lost': 66, 'opposite_veto': 39, 'neutral_veto': 3, 'teacher_wrong_overlap': 41, 'wrong_not_vetoed_by_teacher': 1, 'unique_30s_time_buckets': 41}, 'FULL_MIXED': {'n': 344037, 'correct': 178642, 'incorrect': 165395, 'incorrect_veto': 7612, 'correct_lost': 221, 'opposite_veto': 5060, 'neutral_veto': 2552, 'teacher_wrong_overlap': 7546, 'wrong_not_vetoed_by_teacher': 66, 'unique_30s_time_buckets': 3270}}
+RESUME predict 02
+predicted 02
+RESUME score 02
+score 02 {'FULL_EXPOSED': {'n': 324582, 'correct': 143923, 'incorrect': 180659, 'incorrect_veto': 448, 'correct_lost': 272, 'opposite_veto': 226, 'neutral_veto': 222, 'teacher_wrong_overlap': 423, 'wrong_not_vetoed_by_teacher': 25, 'unique_30s_time_buckets': 422}}
+RESUME predict 06
+predicted 06
+RESUME score 06
+score 06 {'FULL_EXPOSED': {'n': 297035, 'correct': 132105, 'incorrect': 164930, 'incorrect_veto': 307, 'correct_lost': 137, 'opposite_veto': 179, 'neutral_veto': 128, 'teacher_wrong_overlap': 293, 'wrong_not_vetoed_by_teacher': 14, 'unique_30s_time_buckets': 316}}
+RESUME predict 07
+predicted 07
+RESUME score 07
+score 07 {'FULL_EXPOSED': {'n': 301280, 'correct': 130408, 'incorrect': 170872, 'incorrect_veto': 289, 'correct_lost': 96, 'opposite_veto': 116, 'neutral_veto': 173, 'teacher_wrong_overlap': 282, 'wrong_not_vetoed_by_teacher': 7, 'unique_30s_time_buckets': 305}}
