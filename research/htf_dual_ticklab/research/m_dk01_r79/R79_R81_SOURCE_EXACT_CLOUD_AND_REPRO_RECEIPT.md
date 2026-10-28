@@ -1,0 +1,7 @@
+# R79–R81 M-DK-01 — Original causal source research
+
+Historical RESEARCH ONLY. Source branch descends from R68 a73dec6087bb353df3106d7273ec97c190f75d95. PRIMARY Drive remains READ ONLY; active MT5_EXPAND /01 receipt: https://docs.google.com/document/d/1KR1sfJ_5nG1HBORI7gE32xZXVhgccxT5BRwI2MmTF9U/edit .
+
+The original Python source, 1023-leaf episode rankers, 511-leaf correct guardians, January-only calibration pins, all sixteen frozen source-event veto masks, R80 eleven-arm cooperative study and R81 independent TEACHER-FREE Python replay are packaged together as `F401_R79_R81_WORKING_PYTHON_FORESIGHT_FILTER_RESEARCH_ONLY_20261027.zip`; SHA256 `183f4519ba9f7a0d83be2a4913c865b34c8f121547ecc394fefdb3ff7b40eb06`; 37,808,697 bytes, 34/34 payload SHA + ZIP CRC PASS. The ZIP exists as the downloadable conversation artifact, not a verified cloud ZIP.
+
+R81 reused original R49 source-native reader without loading R24 fitted teacher: 16 source-broker/model-origin pairs, 0 score-mask mismatches. Seven standalone fail-closed tests PASS. R80 best predeclared eligible ratio >50 result on Jan **last20 only**, Feb/Jun/Jul full eight original broker cells: 344,595 wrong / 6,340 correct = 54.35252:1. This is not >400k, not 90% monthly, not an original full-Jan blind test, not a compiled MQL5/demo/live order filter. Original M-DK-01 and G01–G09 remain OPEN. No original source/engine changes or additional owner approvals. Teacher is privileged only in FIT, never inference. Model CAL chose guardian-only, not ranking teacher; no positive distillation claim.
