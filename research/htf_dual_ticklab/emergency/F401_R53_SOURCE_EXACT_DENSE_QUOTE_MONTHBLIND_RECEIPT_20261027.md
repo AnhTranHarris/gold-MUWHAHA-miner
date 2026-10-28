@@ -1,0 +1,15 @@
+# F401-R53 15-second source-native dense quote path high-capacity research (UNAPPROVED)
+
+**Existing FILTER08 / XAUUSD HTF.** Active original checkbox **M-DK-01 OPEN**; owner research approvals **21/39**, G01–G09 all OPEN. PRIMARY read-only; MT5_EXPAND /01 unapproved.
+
+Governor v1.4 and 1.5-A1/A2/A3: https://docs.google.com/document/d/12lnZDGOGynu9APzK6nh0nuYeEOpB1hbgaeOszMuMFms/edit . Original 4-month forensic: https://docs.google.com/document/d/1cYkw43LC5Ot-V686onwQS5cDZRKPyw1T1T6MvbFVSCA/edit . Original checklist: https://docs.google.com/document/d/1i2GyLfwVFvyjxB-sNaOwkS6kzZLSWTsijGXaA9qJou0/edit .
+Parent GitHub R51/R52 exact head `73a00c772676c715c74413cb5f696628863e7bbc`; original tested UTC engine parent `ca4b58aec597174b6f6d18ab2f36cba6836e4f4c` (unchanged).
+
+**Novel R53 feature contract:** 15 true native source BID/ASK one-second marked quote episodes 6 channels per step + seven episode summary controls, combined with 368 previously verified as-of causal context features (465 total). Source broker and quote ordinal preserved; no future quote beyond `t0+15s` at inference. **Only a still UNSENT intent may be suppressed; no undo of a filled t0 order.** Registered original eight Jan/Feb/June/July 2026 Coinexx/Dukascopy source ticks/clock SHA verified; original population **2,574,251** = 1,208,071 correct and 1,366,180 bad. 3/3 targeted causal tests passed.
+
+**Frozen high-capacity pilot:** Coinexx January first60% FIT 115,000 samples, next20% CAL 40s purged, final20% independently evaluated; 1023-leaf 160-round wrong LightGBM + 511-leaf 135-round multiclass head. CAL protected policy: 694 wrong/13 correct (53.38:1). Original January last20 Coinexx: **578 wrong / 17 correct (34.00:1)**; original January last20 excluded Dukascopy: **179 wrong / 1 correct (179:1)**, exceptionally narrow capacity. These are original labels, not executable PnL; source 2026 months historically exposed and NOT virgin OOS. Four-month >400,000 per broker target NOT MET; no live MT5 demo authority or promotion.
+
+Portable exact source/models/test + Jan masked receipts local ZIP: **18,887,905 bytes** SHA-256 `54bd69e95513bb865decee6fb887b35530ee88b4d0937ba066de2d7661935ef0`; 12 embedded member hashes / ZIP CRC PASS. Original eight derivative source hashes in frozen manifest (large derived source arrays not in small portable archive). Research README and source-preservation working receipt in MT5_EXPAND /01: https://docs.google.com/document/d/1D3ONjDl--ZGuqI3Kzc6SFe2CpdMRPUT8ZNatoGIKGhA/edit .
+R53 Dukascopy-origin job ended without a frozen scientific result; no claim it finished or failed. Do not waste another similar threshold scan. Distinct R54 is original-source 15-second **executable residual quote-marked opportunity** supervision for a >1.9m-parameter causal-temporal episode model, label-only future and no live inference. Owner CAL >50:1 and <=0.8% CAL good loss, original month-blind chronology remain binding.
+
+**State:** SCIENTIFIC RESEARCH ONLY. No production EA modification, no authorized live/demo OrderSend veto, no G01–G09 graduation.
