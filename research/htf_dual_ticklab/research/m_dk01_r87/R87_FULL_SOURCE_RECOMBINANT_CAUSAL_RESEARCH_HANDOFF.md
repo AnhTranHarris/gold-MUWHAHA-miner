@@ -1,0 +1,31 @@
+# F401 R84–R87 — new source-native causal mechanisms; frozen negative research; active M-DK-01 (2026-10-27)
+
+**Scientific status: UNAPPROVED, NO LIVE/DEMO ORDER VETO.** Historical owner acceptance 21/39, M-DK-01 remains OPEN; S01–S05 and all G01–G09 OPEN. Authoritative full governor v1.4/A1/A2/A3, original complete 435KB FILTER08 forensic and 39-objective ledger unchanged. PRIMARY read only; MT5_EXPAND /00 readbacks, /01 unapproved research, /02 only explicit owner accepted evidence.
+
+## Full original executable source/weights/negative panels and authenticated scientific audit
+
+- **VERIFIED ZIP in MT5_EXPAND /01:** https://drive.google.com/file/d/1h9Tj_vhduyCKhyqH1gfVvIyFEWjZkqGk/view
+- ZIP **48,563,137 bytes**, SHA256 **1459ea563327f65405848fe64e6e691c4cd3dfc1b4938bf57c7762ceceb8acdf**, 75 entries, full ZIP CRC **PASS**, all **74/74 payload SHA+bytes PASS**. Uploaded and read back exact size/SHA.
+- Full original source-exact audit and community research register: https://drive.google.com/file/d/1J3axEVvEY-htE26JcT18cHTew5uTrz7w/view
+- R83 original model and source parent: https://drive.google.com/file/d/1E6UgV8_e7MkIu-3p4ZC4vZ6bbwP_Th-B/view
+- R82 original crossbroker 8-cell model: https://drive.google.com/file/d/1ep8qpoVHua2Wl5uiRzYx4ESZiiBnBJwt/view
+- Original healthy Coinexx/DK Python causal tick adapter frozen engine commit ca4b58aec597174b6f6d18ab2f36cba6836e4f4c; branch parent R83 22cf698eb7edbd94ed91d2d7654d9ad452450b54. **No engine rebuild, no source retime, no altered original labels.**
+- Original governor: https://docs.google.com/document/d/12lnZDGOGynu9APzK6nh0nuYeEOpB1hbgaeOszMuMFms/edit
+- Full historical forensic: https://docs.google.com/document/d/1cYkw43LC5Ot-V686onwQS5cDZRKPyw1T1T6MvbFVSCA/edit
+- Original checklist: https://docs.google.com/document/d/1i2GyLfwVFvyjxB-sNaOwkS6kzZLSWTsijGXaA9qJou0/edit
+
+## M-DK-01 strictly own-model comparator, distinct from G06
+Dukascopy January original model: **344,037** original events; **178,642 right +165,395 wrong**; historic fitted same-month teacher **94,603 wrong veto / 7 right veto**. This fitted hindsight teacher is not a viable production model. An individual F/S/M function is graded against its own original functionality and event masks, NOT the combined G06 >=71% good preserved / >=90% wrong rejected across every eight cells. System G01-G09 includes MT5 compiler parity, new virgin OOS, and aftercost whole-EA 12 common capital × broker × latency scenarios.
+
+## Actually EXECUTED new distinct source experiments
+- **R84** 8 origin-only LightGBM models (2 brokers × 4: quote mark renewal neutral/opposite/risk/correct guardian) with 48 novel strictly pre-t0 source-native bid/ask mark, age and renewal features, chronological FIT/CAL/VAL per all Jan/Feb/Jun/Jul. Five predeclared arbiter arms. Best CAL CX **2,004 bad/1,264 good (1.59:1)**, DK **2,134/1,033 (2.07:1)**. VAL CX **1,189/666 (1.79:1)**; DK **1,503/643 (2.34:1)**. No CAL pass, both actions **ABSTAIN**.
+- **R85** 8 original-source event-index paired quote-marked hypothetical t0 BID/ASK entry to first +30..32s BID/ASK exit rewards (not actual broker fills, no fees/slippage). New separate economic meta-label saved as training/evaluation only; NEVER runtime input. Most mean gross source quoted price units negative on both brokers; causal signal executable reward MUST be evaluated separately from original 30s label.
+- **R86** 383-leaf/113tree first attempt exceeded compute budget with no completed model, preserved interruption; **R86B** 4 completed 159-leaf/70tree origin-only models for adverse quote gross and favorable quote gross and five predeclared cooperative arms. CAL CX best **178 bad/144 good (1.24:1)**; DK best **120/77 (1.56:1)**; VAL CX **52/48 (1.08:1)**, DK **108/63 (1.71:1)** (not same CAL-best arm). No CAL pass; both frozen operational vetoes **ABSTAIN**.
+- **R87** 8 broker-month original source SHA-verified tick tapes, all 2,574,251 original event counts, 9 predeclared first-real-quote windows [t0+delay, t0+delay+1000ms). This is an observability UPPER BOUND, not successful prediction. DK wrong eligibility at +250ms /+1sec/+15sec: Jan **89.53% /87.80% /86.88%**, Feb **84.20%/82.29%/81.19%**, June **90.47%/89.25%/88.68%**, July **88.51%/86.35%/85.41%**. No +1sec/+15sec DK cell physically permits 90% wrong veto if filter REQUIRES that 1s quote gate; t0 tick ordering also unresolved, do NOT claim retro t0 market order cancellation.
+- **5/5 new deterministic artifact/scientific source parity regression tests PASS**, independently compared 8 original F395 frozen event masks, 8 R84/R85/R87 original source counts/sha pins, all 12 trained R84/R86B frozen weights, fail-closed decisions. NOT MQL5 parity/live terminal/fill proof.
+
+**Current STOP:** Both new training families did not pass calibration. Do not repeat R83/R84/R86B near-identical thresholds, retrain same period seeking only better historical fit, fake true unseen months, or overwrite original approved FILTER_COMPONENTS. All historical fit/transfer claims remain honestly labeled, no newly owner accepted objective, no active veto.
+
+**NEW DISTINCT NEXT HYPOTHESIS (UNRUN):** source-measured t0 pre-OrderSend side-specific quote censor-aware admission plus completed HTF phase, protected correct and uncertainty-normalized adverse-selection continuation; separate optional deliberate still-unsubmitted delayed intent after native tick availability. Fit origin broker while excluding entire recipient broker from upstream & calibrations, use purged month-excluded folds and later genuine untouched forward source. Compare with each original own-model teacher on identical original events and protected correct loss; price actual bid/ask at admission/exit/fees/latency and lost opportunities; preserve volume. Avoid claiming that official Github LOB-size OFI can be computed from retail price-only bid/ask quote data. River ADWIN/BOCD online changepoint ideas usable only from as-of marks and label maturity.
+
+**Source lineage check:** GitHub isolated R87 continuation HEAD should be compared against R83 22cf698..., healthy baseline ca4b58...; never reset to old engine or reinterpret the fitted oracle as production.
