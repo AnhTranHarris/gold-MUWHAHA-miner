@@ -70,13 +70,15 @@ def phase_transition_features(t, side, micro, product):
         result[f"{name}_changed"] = changed
         result[f"prev_{name}"] = np.where(prev >= 0, state[old], -1)
         cum = np.cumsum(changed.astype(np.int32))
-        for seconds in windows:
+        churn_windows = (300,) if name == "htf" else (30, 300)
+        for seconds in sorted(set(windows) | set(churn_windows)):
             j = np.searchsorted(t, t - seconds * 1000, side="left")
-            lag = j - 1
-            result[f"{name}_lag_{seconds}s"] = np.where(
-                lag >= 0, state[np.maximum(lag, 0)], -1
-            )
-            if seconds in ((30, 300) if name != "htf" else (300,)):
+            if seconds in windows:
+                lag = j - 1
+                result[f"{name}_lag_{seconds}s"] = np.where(
+                    lag >= 0, state[np.maximum(lag, 0)], -1
+                )
+            if seconds in churn_windows:
                 before = np.where(j > 0, cum[np.maximum(j - 1, 0)], 0)
                 prior = np.where(prev >= 0, cum[old], 0)
                 result[f"{name}_churn_{seconds}s"] = prior - before
