@@ -1,0 +1,35 @@
+{
+  "experiment": "F401-R148B",
+  "status": "UNAPPROVED_RESEARCH_FORWARD_SHADOW_CANDIDATE",
+  "current_checklist": "M-DK-01_OPEN",
+  "owner_state": "21/39_historical_research_stage_accepted_G01_G09_open",
+  "active_parent": "F401-R24_FROZEN_TWO_BROKER_SHADOW",
+  "decision_clock": "first genuine native source quote in t0+[15s,16s) for NEW still-unfilled intent only",
+  "inference_truth_input": false,
+  "hindsight_teacher_runtime_input": false,
+  "broker_policy": {
+    "coinexx": {"rescue_threshold": 0.8021619915962219, "hunter_threshold": 0.9432624578475952, "domain_q999_fallback": true},
+    "dukascopy": {"rescue_threshold": 0.7198813557624817, "hunter_threshold": 0.928738534450531, "domain_q999_fallback": true},
+    "unrecognized_broker": "R24_ONLY_FAIL_CLOSED_UNTIL_SEPARATE_SHADOW_CALIBRATION"
+  },
+  "historical_maxcap_fitted": {
+    "coinexx_four_month": {"bad_veto": 454376, "correct_lost": 9998},
+    "dukascopy_four_month": {"bad_veto": 505659, "correct_lost": 9998}
+  },
+  "historical_forward_wrapper_with_q999_ood": {
+    "coinexx_four_month": {"bad_veto": 453383, "correct_lost": 9970},
+    "dukascopy_four_month": {"bad_veto": 500139, "correct_lost": 9930}
+  },
+  "blind_broker_diagnostics": {
+    "coinexx_trained_to_dukascopy": {"bad_veto": 447175, "correct_lost": 9703, "passes_owner_400k_10k_development_target": true},
+    "dukascopy_trained_to_coinexx": {"bad_veto": 430718, "correct_lost": 10953, "passes_owner_400k_10k_development_target": false}
+  },
+  "formal_status": {
+    "G07_native_compile_numeric_parity": "OPEN",
+    "G08_true_untouched_future": "OPEN",
+    "G09_shared_capital_realistic_execution": "OPEN",
+    "MT5_OrderSend": false,
+    "owner_approval": false,
+    "promotion_to_02": false
+  }
+}
