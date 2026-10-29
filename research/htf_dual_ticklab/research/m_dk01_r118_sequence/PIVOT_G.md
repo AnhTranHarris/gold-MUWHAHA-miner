@@ -1,0 +1,9 @@
+# F401-R118-G — cross-architecture cooperative disagreement council — PREDECLARED
+
+R118 A/C/D/E/F produced four materially different causal views but none alone has hindsight-like capacity/protection. The next mechanism uses their *disagreement geometry* rather than retuning any component.
+
+Frozen component outputs available at every signal: R118 static quote/L1/matured/HTF specialists and guardian; R118-D online matured posterior scores at 10/30/120m; R118-E continuous 2s/8s/30s path and 30s quantile forecasts; R118-F raw 64-quote sequence direct class probabilities and teacher-phenotype auxiliary probability. These are all generated without current/future labels at inference.
+
+Chronology changes to preserve a fresh meta stage. Component models remain Jan FIT (0-60%) trained. Train two meta heads only on Jan CAL (60-80%): direct wrong-vs-correct council and teacher-veto phenotype council. Inputs are frozen component outputs plus the causal 401D regime/context bank; no component is refit. Freeze meta architecture. Use Jan VAL (80-90%) only to select the 0.10/0.25/0.50/1/2/5% correct-loss cut and direct-vs-teacher-vs-geometric council score. Jan SHADOW (90-100%) is the first within-January post-selection evaluation; Feb/Jun/Jul remain historically exposed transfer. Do not report earlier Jan rows as if the council could have existed before training.
+
+The council is a replacement portfolio for the M-DK function/model, not a whole-filter G-gate. Primary evaluation remains absolute incorrect veto and correct lost, classwise, with teacher overlap/teacher-missed wrong. A high-capacity transfer result must arise from specialist complementarity; a failure retires this council and moves to explicit L1 microprice/depletion/replenishment state rather than another meta threshold sweep.
