@@ -1,0 +1,1 @@
+F401-R149 research-only Bayesian NP foresight. Full source and exact evidence are in the MT5_EXPAND archive. R149 overrides disabled. R148B remains active. No self approval.
