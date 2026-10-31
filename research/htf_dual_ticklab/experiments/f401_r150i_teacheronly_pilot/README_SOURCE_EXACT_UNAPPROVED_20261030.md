@@ -1,0 +1,20 @@
+# F401-R150I — source-exact four-month OFFLINE-TEACHER T1 research (UNAPPROVED)
+Owner-authorized F401-R150 continuation, October 30, 2026. This isolated documentation branch descends from R150H HEAD `96802ea6479cab5a59ae5e05ed1ee896873f3911`; do not merge into `main` or promote to /02.
+
+**Source and executable artifacts:** MT5_EXPAND /01 independently remote-readback verified compact 28-entry ZIP:
+https://drive.google.com/file/d/1RoA0A53rhaiY7an0GXcKEXWZTWDyeM1M/view
+SHA-256 `b1ae3deab354b3c1131b9ef87520a512a1ec45dd07f472a8956dce92fc708bda` (8,383,688 bytes), ZIP CRC and 27/27 internal member SHA checks PASS. Contains original Python implementation/replay scripts, two research-trained 252D 3-class models, eight original source-event decision masks with precise t/side/validity, full eight source receipt manifest and negative scientific report. Full FLOAT32 risk arrays were not embedded in compact archive; rebuild from preserved 252D market-only source tensors and frozen model weights.
+
+**Full local evidence source ZIP:** https://drive.google.com/file/d/1TBNYuV-f91WjWldHZ1nKuoKAajHiMVRp/view size 17,475,223 bytes; uploaded to /01, remote raw fetch has an observed 16MiB runtime materialization truncation, so DO NOT claim independent cloud SHA validation for the large ZIP. Local originally generated SHA `e253e2aa9b2be58166e2e427e6d4896cfeb78986c3214b545a880e54fe6f6b17`. Use compact ZIP as confirmed portable readback.
+
+**Science and authoritative live ledger:** /00 scientific report https://drive.google.com/file/d/1wJqh_3Xd3JwaugzL6X7s4fhnUYB9Dcfr/view ; append-only working ledger https://docs.google.com/document/d/1SOiAbTGROPPgSlj_bQfZMTKg-2DQ22PQqmP03fRS0GE/edit.
+
+**Source lock:** Coinexx and Dukascopy native Jan/Feb/June/July bytes freshly SHA-256 matched 8/8 original F395 pins, original FILTER08/F395 event counts and three-class labels intact. 2,574,251 immutable original events; 1,208,071 CORRECT /1,366,180 BAD.
+
+**Zero-label-input architecture at NEW T1 decision only:** R120 six native 250ms/500ms/1s/5s/15s/30s 92D + completed M1/M5/M15/H1 36D + original T1 path history 57D + source-only R150E cross-scale 20D + R150F2 real quote-prefix 23D + F3U Bayesian reliability 24D =252 source-market features. The model runtime function accepts only 252D market input. Original class/teacher score/masks exist ONLY in offline training/evaluation metadata; no matured original-class feature or R24/R148B/R150G inference parent. No t0 R00 order is canceled retroactively.
+
+**Executed pilot rather than final optimized model:** 2 x broker-specific 3-class LightGBM, 4 months/broker, 60k sampled FIT rows each, 30 rounds/63 leaves, CAL original good-veto budget 0.5%, 40s chronology embargo. Across all 8 original source-event masks: 135,216 BAD rejected (131,771 OPPOSITE + 3,445 NEUTRAL); 6,464 CORRECT lost; 1,201,607 CORRECT retained (99.465%), 239,437 T1 quote-eligibility ABSTAINS; 9.897% wrong rejection. Baseline same-month hindsight oracle 870,998 BAD/60 GOOD. The new result is substantially weaker than hindsight and does **NOT** meet the model-replacement or whole-filter goals. Do not claim a breakthrough, profit, real fills or prospective OOS.
+
+**Mandatory open research control:** complete full original source R00 event-side root and transitive normalization/producer graph, adversarial label-producer removal and both broker model-score parity before claiming genuinely fully zero-outcome runtime certification. R150H 14/14 scoped tests do not prove entire source-to-score closure. Current historical checklist 21/39; M-DK-01, S01–S05 and G01–G09 remain OPEN. PRIMARY read-only, /02 untouched. Use a bounded materially different specialist mechanism, not repeated small threshold grids. Individual function-model replacement is compared against the specific teacher/function it replaces; the cooperative filter collection is assessed at 71%/90% in each broker-month; eventual whole EA assessed with 12 shared-capital scenarios.
+
+Research status: RESEARCH_ONLY / UNAPPROVED / EXPOSED / INFERENCE_ROOT_GATE_BLOCKED. No live/demo trading, no MQL5 compile or authorization implied.
