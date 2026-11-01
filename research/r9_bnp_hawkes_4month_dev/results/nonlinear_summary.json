@@ -1,0 +1,78 @@
+{
+  "n": 158986,
+  "fit": 81466,
+  "np_cal": 37763,
+  "dev": 39757,
+  "input_features": [
+    "impulse",
+    "efficiency",
+    "hawkes_direction",
+    "hawkes_pressure",
+    "atr_acceleration",
+    "rsi",
+    "bollinger",
+    "qwap_dislocation",
+    "fib_location",
+    "clock_agreement",
+    "spread_score",
+    "raw_spread"
+  ],
+  "includes_synth_teacher_at_inference": false,
+  "unseen_months_touched": false,
+  "status": "RESEARCH_ONLY",
+  "trials": 120,
+  "passing": 0,
+  "chosen_development_candidate": null,
+  "best_combined_diagnostic": {
+    "leaves": 7,
+    "teacher_weight": 0.0,
+    "np_alpha": 0.05,
+    "spread_cap": 0.35,
+    "threshold": -0.20779829690525045,
+    "negative_cal": 15914,
+    "trades": 1117,
+    "net": -212.67,
+    "by_source": {
+      "coinexx": {
+        "n": 1116,
+        "net": -212.84,
+        "mean": -0.1907,
+        "win": 0.4435
+      },
+      "dukascopy": {
+        "n": 1,
+        "net": 0.17,
+        "mean": 0.17,
+        "win": 1.0
+      }
+    },
+    "by_month": {
+      "01": {
+        "n": 239,
+        "net": -30.76,
+        "mean": -0.1287,
+        "win": 0.4895
+      },
+      "02": {
+        "n": 228,
+        "net": -44.75,
+        "mean": -0.1963,
+        "win": 0.4561
+      },
+      "06": {
+        "n": 372,
+        "net": -76.68,
+        "mean": -0.2061,
+        "win": 0.4301
+      },
+      "07": {
+        "n": 278,
+        "net": -60.48,
+        "mean": -0.2176,
+        "win": 0.4137
+      }
+    }
+  },
+  "label_model": "unchanged R9 stop/trail/30s with raw bid/ask; no slippage/margin/stop level; commission=0.02",
+  "qualifications": "Scores uncalibrated; NP risk bound not guaranteed under dependent quotes; 4 development days per month only."
+}
