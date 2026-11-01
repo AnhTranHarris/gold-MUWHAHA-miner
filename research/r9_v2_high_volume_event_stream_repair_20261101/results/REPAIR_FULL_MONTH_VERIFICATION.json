@@ -1,0 +1,199 @@
+{
+  "title": "R9 v2 High Volume Repair / Full 4-month Dual-Source Chronology",
+  "claim": "execution throughput repair only; not fitted Bayesian NP production model",
+  "volume_contract": {
+    "monthly_trade_floor_fraction": 0.85,
+    "all_sources_months_pass_volume": true,
+    "independent_profitability_required": true,
+    "entries_never_read_teacher": true,
+    "months": {
+      "coinexx_01": {
+        "status": "VOLUME_PASS",
+        "reference_trades": 27980,
+        "minimum_required": 23783,
+        "actual_trades": 414938,
+        "ratio": 14.829807,
+        "net": -110247.14,
+        "profit_factor": 0.3551,
+        "research_approval": "NOT_APPROVED"
+      },
+      "coinexx_02": {
+        "status": "VOLUME_PASS",
+        "reference_trades": 33523,
+        "minimum_required": 28495,
+        "actual_trades": 477916,
+        "ratio": 14.256361,
+        "net": -111247.03,
+        "profit_factor": 0.4502,
+        "research_approval": "NOT_APPROVED"
+      },
+      "coinexx_06": {
+        "status": "VOLUME_PASS",
+        "reference_trades": 31801,
+        "minimum_required": 27031,
+        "actual_trades": 387283,
+        "ratio": 12.178328,
+        "net": -85277.59,
+        "profit_factor": 0.3323,
+        "research_approval": "NOT_APPROVED"
+      },
+      "coinexx_07": {
+        "status": "VOLUME_PASS",
+        "reference_trades": 24382,
+        "minimum_required": 20725,
+        "actual_trades": 312856,
+        "ratio": 12.831433,
+        "net": -67539.02,
+        "profit_factor": 0.2962,
+        "research_approval": "NOT_APPROVED"
+      },
+      "dukascopy_01": {
+        "status": "VOLUME_PASS",
+        "reference_trades": 27980,
+        "minimum_required": 23783,
+        "actual_trades": 238644,
+        "ratio": 8.529092,
+        "net": -190697.44,
+        "profit_factor": 0.0857,
+        "research_approval": "NOT_APPROVED"
+      },
+      "dukascopy_02": {
+        "status": "VOLUME_PASS",
+        "reference_trades": 33523,
+        "minimum_required": 28495,
+        "actual_trades": 236293,
+        "ratio": 7.048683,
+        "net": -232923.6,
+        "profit_factor": 0.0903,
+        "research_approval": "NOT_APPROVED"
+      },
+      "dukascopy_06": {
+        "status": "VOLUME_PASS",
+        "reference_trades": 31801,
+        "minimum_required": 27031,
+        "actual_trades": 235139,
+        "ratio": 7.394076,
+        "net": -154297.77,
+        "profit_factor": 0.0934,
+        "research_approval": "NOT_APPROVED"
+      },
+      "dukascopy_07": {
+        "status": "VOLUME_PASS",
+        "reference_trades": 24382,
+        "minimum_required": 20725,
+        "actual_trades": 177943,
+        "ratio": 7.29813,
+        "net": -126083.79,
+        "profit_factor": 0.0628,
+        "research_approval": "NOT_APPROVED"
+      }
+    }
+  },
+  "checks": {
+    "coinexx_01_full": {
+      "input": "XAUUSD_MT5_BROKER_2026_01_ticks_ALL.csv.gz",
+      "ticks": 7699274,
+      "trades": 414938,
+      "net": -110247.14,
+      "profit_factor": 0.3551,
+      "integrity_pass": true,
+      "research_status": "HIGH_VOLUME_CAPACITY_EXPERIMENT_NOT_APPROVED",
+      "latency_elapsed_s": 346.98
+    },
+    "coinexx_02_full": {
+      "input": "XAUUSD_MT5_BROKER_2026_02_ticks_ALL.csv.gz",
+      "ticks": 7102818,
+      "trades": 477916,
+      "net": -111247.03,
+      "profit_factor": 0.4502,
+      "integrity_pass": true,
+      "research_status": "HIGH_VOLUME_CAPACITY_EXPERIMENT_NOT_APPROVED",
+      "latency_elapsed_s": 339.29
+    },
+    "coinexx_06_full": {
+      "input": "XAUUSD_MT5_BROKER_2026_06_ticks_ALL.csv.gz",
+      "ticks": 9347508,
+      "trades": 387283,
+      "net": -85277.59,
+      "profit_factor": 0.3323,
+      "integrity_pass": true,
+      "research_status": "HIGH_VOLUME_CAPACITY_EXPERIMENT_NOT_APPROVED",
+      "latency_elapsed_s": 346.22
+    },
+    "coinexx_07_full": {
+      "input": "XAUUSD_MT5_BROKER_2026_07_ticks_ALL.csv.gz",
+      "ticks": 8075197,
+      "trades": 312856,
+      "net": -67539.02,
+      "profit_factor": 0.2962,
+      "integrity_pass": true,
+      "research_status": "HIGH_VOLUME_CAPACITY_EXPERIMENT_NOT_APPROVED",
+      "latency_elapsed_s": 376.02
+    },
+    "dukascopy_01_full": {
+      "input": "XAUUSD_DUKAS_2026_01_ticks.csv.gz",
+      "ticks": 9135062,
+      "trades": 238644,
+      "net": -190697.44,
+      "profit_factor": 0.0857,
+      "integrity_pass": true,
+      "research_status": "HIGH_VOLUME_CAPACITY_EXPERIMENT_NOT_APPROVED",
+      "latency_elapsed_s": 182.63
+    },
+    "dukascopy_02_full": {
+      "input": "XAUUSD_DUKAS_2026_02_ticks.csv.gz",
+      "ticks": 7538339,
+      "trades": 236293,
+      "net": -232923.6,
+      "profit_factor": 0.0903,
+      "integrity_pass": true,
+      "research_status": "HIGH_VOLUME_CAPACITY_EXPERIMENT_NOT_APPROVED",
+      "latency_elapsed_s": 299.54
+    },
+    "dukascopy_06_full": {
+      "input": "XAUUSD_DUKAS_2026_06_ticks.csv.gz",
+      "ticks": 8201406,
+      "trades": 235139,
+      "net": -154297.77,
+      "profit_factor": 0.0934,
+      "integrity_pass": true,
+      "research_status": "HIGH_VOLUME_CAPACITY_EXPERIMENT_NOT_APPROVED",
+      "latency_elapsed_s": 259.18
+    },
+    "dukascopy_07_full": {
+      "input": "XAUUSD_DUKAS_2026_07_ticks.csv.gz",
+      "ticks": 7415841,
+      "trades": 177943,
+      "net": -126083.79,
+      "profit_factor": 0.0628,
+      "integrity_pass": true,
+      "research_status": "HIGH_VOLUME_CAPACITY_EXPERIMENT_NOT_APPROVED",
+      "latency_elapsed_s": 179.15
+    }
+  },
+  "totals_by_source": {
+    "coinexx": {
+      "trades": 1592993,
+      "net": -374310.78
+    },
+    "dukascopy": {
+      "trades": 888019,
+      "net": -704002.6
+    }
+  },
+  "all_eight_tick_path_integrity_checks_pass": true,
+  "accepted_v2_model": false,
+  "profitability_failed": true,
+  "original_v2_source_modified": false,
+  "teacher_runtime_input": false,
+  "source_branch": "carson/r9-v2-frozen-four-month-baseline-20261101",
+  "repair_branch": "carson/r9-v2-high-volume-event-stream-repair-20261101",
+  "execution_assumptions": {
+    "lot": 0.01,
+    "roundtrip_fee": 0.02,
+    "max_hold_sec": 30,
+    "spread_ceiling": 1.5,
+    "broker_stops": "not_reconstructed",
+    "slippage": "not_reconstructed"
+  }
+}
