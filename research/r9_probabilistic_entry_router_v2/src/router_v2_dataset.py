@@ -53,7 +53,12 @@ def read_teacher(path:str)->Dict[Tuple[str,int],int]:
 
 def teacher_mark(q:Quote,source:str,side:int,teacher:dict)->int:
     # teacher timestamps are Coinexx server-native. Convert Dukascopy UTC to observed Coinexx clock.
-    native=q.native_ms if source=='coinexx' else q.utc_ms+coinexx_offset_minutes(q.utc_ms+120*60_000)*60_000
+    if source=='coinexx':
+        native=q.native_ms
+    else:
+        ymd=int(dt.datetime.fromtimestamp(q.utc_ms/1000,dt.timezone.utc).strftime('%Y%m%d'))
+        offset=180 if 20260309<=ymd<20261102 else 120
+        native=q.utc_ms+offset*60_000
     key=dt.datetime.fromtimestamp(native/1000,dt.timezone.utc).strftime('%Y.%m.%d %H:%M')
     return int(teacher.get((key,side),0)>0)
 
