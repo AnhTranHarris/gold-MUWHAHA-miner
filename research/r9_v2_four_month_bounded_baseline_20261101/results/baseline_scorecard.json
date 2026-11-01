@@ -1,0 +1,391 @@
+{
+  "status": "BOUNDED_DIAGNOSTIC_NOT_FULL_MONTH_BASELINE",
+  "policy": "FROZEN_ROUTER_V2_DEFAULTS_NO_HYPERPARAMETER_SEARCH",
+  "original_v2_branch": "carson/r9-probabilistic-entry-router-v2-20261101",
+  "v2_base_commit": "35056fa38c11a7b2e9b9d6bab984af3368e905be",
+  "design": "four UTC windows (00,06,12,18) per development role day, 9min each, 5min warmup, <=100 500ms snapshots per window",
+  "nonrepresentative_sampling": true,
+  "modified_entry_model": false,
+  "fit_default_teacher_weight": 0.1,
+  "np_alpha": 0.1,
+  "min_utility": 0,
+  "scan_ms": 500,
+  "round_trip_fee_usd": 0.02,
+  "source_archives": [
+    {
+      "source": "coinexx",
+      "month": "01",
+      "name": "XAUUSD_MT5_BROKER_2026_01_ticks_ALL.csv.gz",
+      "sha256": "1307a75df5d635678de7691908600090a552f38543e0512187dcd7b37fbc66b8"
+    },
+    {
+      "source": "coinexx",
+      "month": "02",
+      "name": "XAUUSD_MT5_BROKER_2026_02_ticks_ALL.csv.gz",
+      "sha256": "5de772aab4d15ebf18aa48850e847c98e2bcb639064790bbed9d87a598c3bf05"
+    },
+    {
+      "source": "coinexx",
+      "month": "06",
+      "name": "XAUUSD_MT5_BROKER_2026_06_ticks_ALL.csv.gz",
+      "sha256": "3033ccb257d067aecc123f3791d9dddc5c95841b9bba167ff1ca0cf1589dc2b4"
+    },
+    {
+      "source": "coinexx",
+      "month": "07",
+      "name": "XAUUSD_MT5_BROKER_2026_07_ticks_ALL.csv.gz",
+      "sha256": "d9d47d40abb33935414edfb5c11f0c518d8c9cc27221da182dab0bc49b0b708d"
+    },
+    {
+      "source": "dukascopy",
+      "month": "01",
+      "name": "XAUUSD_DUKAS_2026_01_ticks.csv.gz",
+      "sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5"
+    },
+    {
+      "source": "dukascopy",
+      "month": "02",
+      "name": "XAUUSD_DUKAS_2026_02_ticks.csv.gz",
+      "sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d"
+    },
+    {
+      "source": "dukascopy",
+      "month": "06",
+      "name": "XAUUSD_DUKAS_2026_06_ticks.csv.gz",
+      "sha256": "34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2"
+    },
+    {
+      "source": "dukascopy",
+      "month": "07",
+      "name": "XAUUSD_DUKAS_2026_07_ticks.csv.gz",
+      "sha256": "e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7"
+    }
+  ],
+  "hashes": {
+    "router_v2_features.py": "fa5d1de6daf83b3515a52acf92af732997a9c8c4011e3471ea5e27a529cf928f",
+    "router_v2_labels.py": "96c791b5ba00798108b055743233ab5908c0328c66d1caed813c55147db680ec",
+    "router_v2_model.py": "3d6e0920f11ae4ab11e232a2c8ef06047b59715cf1036d784626cb08b0e99e68",
+    "router_v2_train.py": "a321d152fd2084d93384c8aa155308e374d523be46bc970b2155558606cb8c9b",
+    "router_v2_dataset.py": "a449e8856866c5876098d51c33bf102d77fcc80737e50922c2c1c60ba49158dd",
+    "bounded_trace_v2.py": "8db8b6f3714bef41cedb0862f57a097352dc6662de9aa937db8caca0b54b2510"
+  },
+  "folds": [
+    {
+      "month": "01",
+      "status": "ok",
+      "train": 3200,
+      "cal": 1600,
+      "dev": {
+        "date": "2026-01-27",
+        "trades": 18,
+        "net": -2.18,
+        "counts": {
+          "BUY": 13,
+          "WAIT": 675,
+          "SELL": 5
+        },
+        "by_source": {
+          "coinexx": {
+            "n": 18,
+            "net": -2.18,
+            "mean": -0.121111,
+            "win": 0.55556
+          },
+          "dukascopy": {
+            "n": 0,
+            "net": 0,
+            "mean": 0.0,
+            "win": 0.0
+          }
+        }
+      }
+    },
+    {
+      "month": "02",
+      "status": "ok",
+      "train": 9536,
+      "cal": 1600,
+      "dev": {
+        "date": "2026-02-26",
+        "trades": 13,
+        "net": -3.23,
+        "counts": {
+          "WAIT": 680,
+          "SELL": 8,
+          "BUY": 5
+        },
+        "by_source": {
+          "coinexx": {
+            "n": 13,
+            "net": -3.23,
+            "mean": -0.248462,
+            "win": 0.38462
+          },
+          "dukascopy": {
+            "n": 0,
+            "net": 0,
+            "mean": 0.0,
+            "win": 0.0
+          }
+        }
+      }
+    },
+    {
+      "month": "06",
+      "status": "ok",
+      "train": 15936,
+      "cal": 1600,
+      "dev": {
+        "date": "2026-06-25",
+        "trades": 0,
+        "net": 0,
+        "counts": {
+          "WAIT": 800
+        },
+        "by_source": {
+          "coinexx": {
+            "n": 0,
+            "net": 0,
+            "mean": 0.0,
+            "win": 0.0
+          },
+          "dukascopy": {
+            "n": 0,
+            "net": 0,
+            "mean": 0.0,
+            "win": 0.0
+          }
+        }
+      }
+    },
+    {
+      "month": "07",
+      "status": "ok",
+      "train": 22336,
+      "cal": 1600,
+      "dev": {
+        "date": "2026-07-28",
+        "trades": 4,
+        "net": -1.0,
+        "counts": {
+          "WAIT": 725,
+          "BUY": 2,
+          "SELL": 2
+        },
+        "by_source": {
+          "coinexx": {
+            "n": 4,
+            "net": -1.0,
+            "mean": -0.25,
+            "win": 0.5
+          },
+          "dukascopy": {
+            "n": 0,
+            "net": 0,
+            "mean": 0.0,
+            "win": 0.0
+          }
+        }
+      }
+    }
+  ],
+  "monthly_broker": [
+    {
+      "month": "01",
+      "source": "coinexx",
+      "ticks_scanned": 7699274,
+      "paired_candidate_paths": 3200,
+      "snapshot_candidates": 1600,
+      "trades": 18,
+      "net": -2.18,
+      "avg_net": -0.1211,
+      "wins": 10,
+      "win_rate": 0.5556,
+      "gross_profit": 1.78,
+      "gross_loss": -3.96,
+      "profit_factor": 0.4495,
+      "max_realized_peak_to_trough_loss": 2.74,
+      "net_if_fee_020": -5.42,
+      "mean_spread": 0.19
+    },
+    {
+      "month": "01",
+      "source": "dukascopy",
+      "ticks_scanned": 9135062,
+      "paired_candidate_paths": 3200,
+      "snapshot_candidates": 1600,
+      "trades": 0,
+      "net": 0,
+      "avg_net": null,
+      "wins": 0,
+      "win_rate": null,
+      "gross_profit": 0,
+      "gross_loss": 0,
+      "profit_factor": null,
+      "max_realized_peak_to_trough_loss": 0,
+      "net_if_fee_020": 0.0,
+      "mean_spread": null
+    },
+    {
+      "month": "02",
+      "source": "coinexx",
+      "ticks_scanned": 7102818,
+      "paired_candidate_paths": 3200,
+      "snapshot_candidates": 1600,
+      "trades": 13,
+      "net": -3.23,
+      "avg_net": -0.2485,
+      "wins": 5,
+      "win_rate": 0.3846,
+      "gross_profit": 1.13,
+      "gross_loss": -4.36,
+      "profit_factor": 0.2592,
+      "max_realized_peak_to_trough_loss": 3.74,
+      "net_if_fee_020": -5.57,
+      "mean_spread": 0.1946
+    },
+    {
+      "month": "02",
+      "source": "dukascopy",
+      "ticks_scanned": 7538339,
+      "paired_candidate_paths": 3136,
+      "snapshot_candidates": 1568,
+      "trades": 0,
+      "net": 0,
+      "avg_net": null,
+      "wins": 0,
+      "win_rate": null,
+      "gross_profit": 0,
+      "gross_loss": 0,
+      "profit_factor": null,
+      "max_realized_peak_to_trough_loss": 0,
+      "net_if_fee_020": 0.0,
+      "mean_spread": null
+    },
+    {
+      "month": "06",
+      "source": "coinexx",
+      "ticks_scanned": 9347508,
+      "paired_candidate_paths": 3200,
+      "snapshot_candidates": 1600,
+      "trades": 0,
+      "net": 0,
+      "avg_net": null,
+      "wins": 0,
+      "win_rate": null,
+      "gross_profit": 0,
+      "gross_loss": 0,
+      "profit_factor": null,
+      "max_realized_peak_to_trough_loss": 0,
+      "net_if_fee_020": 0.0,
+      "mean_spread": null
+    },
+    {
+      "month": "06",
+      "source": "dukascopy",
+      "ticks_scanned": 8201406,
+      "paired_candidate_paths": 3200,
+      "snapshot_candidates": 1600,
+      "trades": 0,
+      "net": 0,
+      "avg_net": null,
+      "wins": 0,
+      "win_rate": null,
+      "gross_profit": 0,
+      "gross_loss": 0,
+      "profit_factor": null,
+      "max_realized_peak_to_trough_loss": 0,
+      "net_if_fee_020": 0.0,
+      "mean_spread": null
+    },
+    {
+      "month": "07",
+      "source": "coinexx",
+      "ticks_scanned": 8075197,
+      "paired_candidate_paths": 3200,
+      "snapshot_candidates": 1600,
+      "trades": 4,
+      "net": -1.0,
+      "avg_net": -0.25,
+      "wins": 2,
+      "win_rate": 0.5,
+      "gross_profit": 0.1,
+      "gross_loss": -1.1,
+      "profit_factor": 0.0909,
+      "max_realized_peak_to_trough_loss": 1.0,
+      "net_if_fee_020": -1.72,
+      "mean_spread": 0.2
+    },
+    {
+      "month": "07",
+      "source": "dukascopy",
+      "ticks_scanned": 7415841,
+      "paired_candidate_paths": 3200,
+      "snapshot_candidates": 1600,
+      "trades": 0,
+      "net": 0,
+      "avg_net": null,
+      "wins": 0,
+      "win_rate": null,
+      "gross_profit": 0,
+      "gross_loss": 0,
+      "profit_factor": null,
+      "max_realized_peak_to_trough_loss": 0,
+      "net_if_fee_020": 0.0,
+      "mean_spread": null
+    }
+  ],
+  "aggregate": {
+    "trades": 35,
+    "net": -6.41,
+    "avg_net": -0.1831,
+    "wins": 17,
+    "win_rate": 0.4857,
+    "gross_profit": 3.01,
+    "gross_loss": -9.42,
+    "profit_factor": 0.3195,
+    "max_realized_peak_to_trough_loss": 6.97,
+    "net_if_fee_020": -12.71,
+    "mean_spread": 0.1929
+  },
+  "source_totals": {
+    "coinexx": {
+      "trades": 35,
+      "net": -6.41,
+      "avg_net": -0.1831,
+      "wins": 17,
+      "win_rate": 0.4857,
+      "gross_profit": 3.01,
+      "gross_loss": -9.42,
+      "profit_factor": 0.3195,
+      "max_realized_peak_to_trough_loss": 6.97,
+      "net_if_fee_020": -12.71,
+      "mean_spread": 0.1929
+    },
+    "dukascopy": {
+      "trades": 0,
+      "net": 0,
+      "avg_net": null,
+      "wins": 0,
+      "win_rate": null,
+      "gross_profit": 0,
+      "gross_loss": 0,
+      "profit_factor": null,
+      "max_realized_peak_to_trough_loss": 0,
+      "net_if_fee_020": 0.0,
+      "mean_spread": null
+    }
+  },
+  "ticks_scanned": 64515445,
+  "paired_paths": 25536,
+  "limitations": [
+    "not full development days or full-month entry PnL",
+    "fixed 4 UTC windows/day; sampling affects selected trade distribution",
+    "local 5m state warmed afresh each window; minute-bar context retained",
+    "quote replay idealized fills, no slippage or broker stop-level/margin model",
+    "fee fixed 0.02 USD/trade, additional 0.18 USD/trade stress is diagnostic only",
+    "repeated partial overlapping 500ms hypothetical candidates are training data, NOT trades",
+    "development checks are previously sampled dates; not clean untouched OOS",
+    "no futures in runtime feature vector, synthetic teacher weak training-only"
+  ]
+}
