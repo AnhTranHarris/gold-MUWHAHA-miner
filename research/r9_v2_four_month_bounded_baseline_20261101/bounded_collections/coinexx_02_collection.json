@@ -1,0 +1,29 @@
+{
+  "source": "coinexx",
+  "month": "02",
+  "scope": "BOUNDED_DEV_WINDOWS_NOT_FULL_MONTH",
+  "window_hours_utc": [
+    0,
+    6,
+    12,
+    18
+  ],
+  "window_minutes": 9,
+  "warmup_minutes": 5,
+  "max_decisions_per_window": 100,
+  "scan_ms": 500,
+  "source_name": "XAUUSD_MT5_BROKER_2026_02_ticks_ALL.csv.gz",
+  "source_sha256": "5de772aab4d15ebf18aa48850e847c98e2bcb639064790bbed9d87a598c3bf05",
+  "feature_engine": "r9_probabilistic_entry_router_v2_20261101",
+  "counts": {
+    "ticks": 7102818,
+    "windows_entered": 16,
+    "scan_slots": 1612,
+    "started": 3200,
+    "decisions": 1600,
+    "labeled": 3200,
+    "censored": 0
+  },
+  "records": 3200,
+  "elapsed_s": 56.71
+}
