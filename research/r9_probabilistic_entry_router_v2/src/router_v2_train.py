@@ -60,9 +60,9 @@ def walkforward(rows,out_dir,teacher_weight=.10,np_alpha=.10,min_utility=0.0):
     for month in ('01','02','06','07'):
         cal_date=DAYS[month][2];dev_date=DAYS[month][3];cal_start=day_ms(cal_date);dev_start=day_ms(dev_date)
         train=[training_example(r) for r in rows if r['exit_utc_ms'] and int(r['exit_utc_ms'])<cal_start]
-        cal=[training_example(r) for r in rows if r['date']==cal_date and r['role']=='np_calibration']
-        # A calibration example's outcome must resolve before dev starts.
-        cal=[e for e,r in zip(cal,[r for r in rows if r['date']==cal_date and r['role']=='np_calibration']) if True]
+        cal_rows=[r for r in rows if r['date']==cal_date and r['role']=='np_calibration' and int(r['exit_utc_ms'])<dev_start]
+        # Purge calibration labels whose forward outcome would overlap the development window.
+        cal=[training_example(r) for r in cal_rows]
         if not train or not cal:
             folds.append({'month':month,'status':'insufficient_data','train':len(train),'cal':len(cal)});continue
         model=BayesianCompetingRiskModel(np_alpha=np_alpha)
