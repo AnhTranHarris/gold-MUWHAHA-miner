@@ -51,3 +51,16 @@ def test_two_sides_are_prospective_not_future():
     side,score,lane,activity,spread=specialist_evidence(f)
     assert side in (-1,1) and score>=0 and lane in ('continuation','reversal')
     assert 'geo' in f and 240 in f['geo']
+
+def test_completed_stream_fee_and_nonoverlap():
+    import gzip,json
+    from verify_trade_stream import validate
+    with tempfile.TemporaryDirectory() as d:
+        d=Path(d);f=d/'trades.csv.gz';r=d/'result.json'
+        with gzip.open(f,'wt',newline='') as o:
+            w=csv.DictWriter(o,fieldnames=['entry_ms','exit_ms','side','entry_price','exit_price','net'])
+            w.writeheader();w.writerow({'entry_ms':1000,'exit_ms':1200,'side':1,'entry_price':100.2,'exit_price':100.5,'net':.28})
+            w.writerow({'entry_ms':1300,'exit_ms':1600,'side':-1,'entry_price':100.4,'exit_price':100.1,'net':.28})
+        r.write_text(json.dumps({'source':'coinexx','input':'unit.csv.gz','trades':2,'net':.56}))
+        out=validate(f,r)
+        assert out['integrity_pass'] and out['trades_verified']==2
