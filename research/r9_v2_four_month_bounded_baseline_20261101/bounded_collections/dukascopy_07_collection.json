@@ -1,0 +1,29 @@
+{
+  "source": "dukascopy",
+  "month": "07",
+  "scope": "BOUNDED_DEV_WINDOWS_NOT_FULL_MONTH",
+  "window_hours_utc": [
+    0,
+    6,
+    12,
+    18
+  ],
+  "window_minutes": 9,
+  "warmup_minutes": 5,
+  "max_decisions_per_window": 100,
+  "scan_ms": 500,
+  "source_name": "XAUUSD_DUKAS_2026_07_ticks.csv.gz",
+  "source_sha256": "e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7",
+  "feature_engine": "r9_probabilistic_entry_router_v2_20261101",
+  "counts": {
+    "ticks": 7415841,
+    "windows_entered": 16,
+    "scan_slots": 1697,
+    "started": 3200,
+    "decisions": 1600,
+    "labeled": 3200,
+    "censored": 0
+  },
+  "records": 3200,
+  "elapsed_s": 35.85
+}
