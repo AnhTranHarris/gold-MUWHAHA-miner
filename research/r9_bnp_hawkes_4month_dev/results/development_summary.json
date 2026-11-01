@@ -1,0 +1,31 @@
+{
+  "status": "DEVELOPMENT_ONLY_NEVER_LIVE",
+  "base": {
+    "examples": 158986,
+    "by_role": {
+      "fit": 81466,
+      "np_calibration": 37763,
+      "development_check": 39757
+    },
+    "by_source": {
+      "coinexx": 93042,
+      "dukascopy": 65944
+    },
+    "by_month": {
+      "01": 41746,
+      "02": 37763,
+      "06": 41726,
+      "07": 37751
+    },
+    "positive_label_rate": 0.23013347087164907,
+    "teacher_marker_rate": 0.5457524561911111
+  },
+  "fit": "teacher-weak-only-on-positive-real-outcomes, 20%-max deterministic oversampling",
+  "n_trials": 70,
+  "n_valid": 70,
+  "n_passing": 0,
+  "chosen": null,
+  "NO_UNTOUCHED_MONTHS_EVALUATED": true,
+  "label": "future path R9 SL/trailing/30-second real-tick price result; fees $0.02 RT; no slippage/margin or broker stop constraint",
+  "note": "NP sample-level alpha is NOT live false-positive guarantee on dependent timeseries."
+}
