@@ -1,0 +1,88 @@
+{
+  "status": "REJECTED_FOR_DEPLOYMENT",
+  "four_month_development_only": true,
+  "model_config": {
+    "num_leaves": 7,
+    "n_estimators": 100,
+    "max_depth": -1,
+    "learning_rate": 0.035,
+    "min_child_samples": 170,
+    "colsample_bytree": 0.9,
+    "subsample": 0.9,
+    "subsample_freq": 1,
+    "reg_lambda": 8.0,
+    "random_state": 731,
+    "n_jobs": 2,
+    "verbosity": -1
+  },
+  "feature_names": [
+    "impulse",
+    "efficiency",
+    "hawkes_direction",
+    "hawkes_pressure",
+    "atr_acceleration",
+    "rsi",
+    "bollinger",
+    "qwap_dislocation",
+    "fib_location",
+    "clock_agreement",
+    "spread_score",
+    "raw_spread"
+  ],
+  "input_at_inference": "12 causal features from observed tick and completed multiscale buckets; no synthetic teacher",
+  "score_formula": "0.6 * regressor(net) + 0.4 * (classifier(survival) - 0.5)",
+  "selected_diagnostic_not_passed": {
+    "leaves": 7,
+    "teacher_weight": 0.2,
+    "np_alpha": 0.05,
+    "spread_cap": 0.35,
+    "threshold": -0.1875832950654363,
+    "negative_cal": 31859,
+    "trades": 1470,
+    "net": -298.4,
+    "by_source": {
+      "coinexx": {
+        "n": 1465,
+        "net": -295.72,
+        "mean": -0.2019,
+        "win": 0.4601
+      },
+      "dukascopy": {
+        "n": 5,
+        "net": -2.68,
+        "mean": -0.5354,
+        "win": 0.2
+      }
+    },
+    "by_month": {
+      "01": {
+        "n": 156,
+        "net": -24.18,
+        "mean": -0.155,
+        "win": 0.4872
+      },
+      "02": {
+        "n": 118,
+        "net": -18.65,
+        "mean": -0.158,
+        "win": 0.4661
+      },
+      "06": {
+        "n": 951,
+        "net": -199.57,
+        "mean": -0.2099,
+        "win": 0.4606
+      },
+      "07": {
+        "n": 245,
+        "net": -56.0,
+        "mean": -0.2286,
+        "win": 0.4327
+      }
+    }
+  },
+  "file_sha256": {
+    "REJECTED_dev_survival_classifier.txt": "2bf8fb92453f58a68dc72d71a33a8dfe681c6e1f30cab1a578cdf21d25b53a7f",
+    "REJECTED_dev_net_regressor.txt": "4e9e0a6442ec542094d54d9d595a9dbfe7e664cf6aaa8b60bf5a9d88d02e73da"
+  }
+}
