@@ -77,3 +77,10 @@ python src/r9_replay.py --ticks /path/to/XAUUSD_DUKAS_2026_01_ticks.csv.gz --sou
 ## Next decision
 
 **Do not advance to February yet.** To reach strict full-stream parity, investigate the 170 unmatched reference entries and 635 excess Python entries, especially broker trade rejections, position-state reconciliation, nonzero stop/freeze level, and MT5 `OnTick` coalescing. Do not change the strategy's entry/hold/exit logic to force historical matches; resolve only demonstrated simulator differences, version them, and retest January before using the engine for strategy optimization.
+
+## Verified preservation links (2026-11-01)
+
+- Full read-back-verified recovery archive (25 files, 3,935,814 bytes, SHA-256 `7bc8e7c589ce0aa9b196d72111f157c9f4726834e494b62f6ea44251ae1b0d46`): https://drive.google.com/file/d/1noItW0nXXlmil404O9iBW4ugGTL9KzKu/view
+- Human-readable January parity and Dukascopy report (main Drive): https://docs.google.com/document/d/1uhpuzEiN78mEZdE5ov9pfpsQu1FxRzmQfKkZYfS0a1A/edit
+- Primary Drive folder: https://drive.google.com/drive/folders/1S0erLKfFpqQUVHHIHDql72PgsH6vQrMF
+- The complete CSV entry/exit ledgers and temporary diagnostic files are in the recovery ZIP; GitHub holds reproducible source, tests, manifests, and compact JSON receipts.
