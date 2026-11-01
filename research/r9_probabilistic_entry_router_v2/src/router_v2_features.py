@@ -38,13 +38,6 @@ def clamp(x: float, lo: float = -1.0, hi: float = 1.0) -> float:
     return min(hi, max(lo, x))
 
 
-def sigmoid(x: float) -> float:
-    if x >= 0:
-        z = math.exp(-min(60.0, x))
-        return 1.0 / (1.0 + z)
-    z = math.exp(min(60.0, x))
-    return z / (1.0 + z)
-
 
 def softmax(d: Dict[str, float]) -> Dict[str, float]:
     if not d:
@@ -206,14 +199,12 @@ class MarkedHawkesBank:
         self.last_ms: Optional[int] = None
         self.last_event: Optional[str] = None
         self.last_event_ms: Optional[int] = None
-        self.cross_follow = collections.Counter()
 
     def reset(self) -> None:
         for d in self.values.values():
             for e in EVENT_NAMES: d[e] = 0.0
         for d in self.cross_values.values(): d.clear()
         self.last_q = None; self.last_ms = None; self.last_event = None; self.last_event_ms = None
-        self.cross_follow.clear()
 
     @staticmethod
     def classify(prev: Quote, q: Quote, eps: float = 1e-12) -> List[str]:
@@ -244,7 +235,6 @@ class MarkedHawkesBank:
             # causal cross-follow diagnostic within one second
             if self.last_event and events and self.last_event_ms is not None and q.utc_ms-self.last_event_ms <= 1000:
                 for e in events:
-                    self.cross_follow[(self.last_event,e)] += 1
                     for tau in self.taus_ms:self.cross_values[tau][(self.last_event,e)] += 1.0
             if events:
                 self.last_event=events[-1];self.last_event_ms=q.utc_ms
@@ -497,7 +487,6 @@ class RouterV2FeatureEngine:
         }
         probs=softmax(logits)
         for k,v in probs.items():f[f'state_{k}']=v
-        f['session_code']=float(SESSIONS.index(sess))
         return f
 
     def oriented(self, features:Dict[str,float], side:int)->Dict[str,float]:
