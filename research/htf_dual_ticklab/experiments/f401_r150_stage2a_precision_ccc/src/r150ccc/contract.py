@@ -19,7 +19,10 @@ class ActionClock:
     pending:bool
     has_native_t1:bool
     original_q_veto:bool
+    q_veto_decision_ms:int
     source_root_attested:bool
+    market_asof_ms:int
+    family_asof_ms:Mapping[str,int]
     family_hashes:Mapping[str,str]
 
 @dataclass(frozen=True)
@@ -65,6 +68,11 @@ class Stage2ACCC:
         if not(clock.pending and clock.has_native_t1 and clock.original_q_veto and clock.source_root_attested):
             return abstain('no certified unsubmitted original-Q-veto T1')
         if not(clock.t0_ms+15000<=clock.t1_ms<clock.t0_ms+16000):return abstain('T1 violation')
+        if clock.q_veto_decision_ms!=clock.t1_ms:return abstain('Q veto belongs to later/unknown action clock')
+        if clock.market_asof_ms>=clock.t1_ms:return abstain('future/decision quote market state')
+        if set(clock.family_asof_ms)!=set(FAMILY_KEYS) or any(
+                clock.family_asof_ms[k]>=clock.t1_ms for k in FAMILY_KEYS):
+            return abstain('future or unproven J/L/M expert state')
         if set(clock.family_hashes)!=set(FAMILY_KEYS):return abstain('family score root missing')
         if any(clock.family_hashes[k]!=c['family_archive_sha256'][k] for k in FAMILY_KEYS):
             return abstain('frozen family source mismatch')
