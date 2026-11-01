@@ -177,7 +177,7 @@ This corrects the previous retrospective pooled-fit defect where June/July could
 - NP fail-closed behavior;
 - WAIT action support.
 
-All current tests pass.
+All current tests pass (**13/13** at the frozen build checkpoint).
 
 ### Real-tick feature probes
 
@@ -190,11 +190,11 @@ The different spread environment is preserved rather than normalized away.
 
 ### End-to-end build smoke
 
-A bounded 25,000-tick prefix from each January source was used only to prove the plumbing:
+A bounded **10,000-tick final-consistency prefix from each January source** was used only to prove the plumbing (an earlier 25,000-tick smoke is retained as historical build evidence):
 
 `real ticks → causal features → future-path labels → Bayesian fit → NP calibration → BUY/SELL/WAIT replay`.
 
-The smoke completed successfully with 11,944 labeled action paths. It is intentionally **not** a performance experiment and no result from it is approved or optimized.
+The final-consistency smoke completed successfully with **4,717 labeled action paths**, 212 runtime features and all six first-passage horizons (1/3/5/10/15/30s). It is intentionally **not** a performance experiment and no result from it is approved or optimized.
 
 ## Files
 
