@@ -70,6 +70,20 @@ class RouterV2Tests(unittest.TestCase):
         f=e.snapshot(self.q(ms,bid,bid+.2));self.assertEqual(f['geo_15m_ready'],1.0)
         self.assertEqual(f['geo_1h_ready'],0.0);self.assertEqual(f['geo_4h_ready'],0.0)
 
+
+    def test_multi_horizon_barrier_bank_learns_favourable_vs_adverse(self):
+        ex=[]
+        for j in range(120):
+            fav={'x':1.0+j*1e-5,'side':1.0,'session_london':1.0,'state_continuation':1.0}
+            adv={'x':-1.0-j*1e-5,'side':1.0,'session_london':1.0,'state_continuation':1.0}
+            ex.append({'features':fav,'class':'FAVORABLE','net':.2,'teacher':0,'entry_ms':0,'target_010_ms':3000,'target_030_ms':12000,'target_050_ms':None,'adverse_stop_ms':None})
+            ex.append({'features':adv,'class':'ADVERSE','net':-.4,'teacher':0,'entry_ms':0,'target_010_ms':None,'target_030_ms':None,'target_050_ms':None,'adverse_stop_ms':2000})
+            ex.append({'features':{'x':0.0,'side':1.0,'session_london':1.0,'state_continuation':1.0},'class':'TIMEOUT','net':-.01,'teacher':0,'entry_ms':0,'target_010_ms':None,'target_030_ms':None,'target_050_ms':None,'adverse_stop_ms':None})
+        m=BayesianCompetingRiskModel(min_context=20).fit(ex)
+        pf=m.barrier_bank.predict(ex[0]['features']);pa=m.barrier_bank.predict(ex[1]['features'])
+        self.assertGreater(pf['p_fav_0.10_5000'],pa['p_fav_0.10_5000'])
+        self.assertLess(pf['p_adverse_5000'],pa['p_adverse_5000'])
+
     def test_np_fails_closed_when_insufficient_bad_calibration(self):
         self.assertIsNone(np_order_threshold([0.1]*20,.1))
 
