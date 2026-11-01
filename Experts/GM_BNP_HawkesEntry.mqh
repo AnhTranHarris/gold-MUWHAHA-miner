@@ -220,7 +220,7 @@ public:
       string head=FileReadString(h),version=FileReadString(h);
       if(head!="version" || version!="r9_bnp_hawkes_entry_v1_20261101")
       {FileClose(h);return false;}
-      int nseen=0;bool p=false,th=false;
+      int nseen=0;bool p=false,th=false,real_validated=false;
       bool seen[BNP_FEATURES][5];
       for(int i=0;i<BNP_FEATURES;i++)for(int b=0;b<5;b++)seen[i][b]=false;
       while(!FileIsEnding(h))
@@ -228,7 +228,8 @@ public:
          string key=FileReadString(h);
          if(FileIsEnding(h) && key=="")break;
          string value=FileReadString(h);
-         if(key=="prior"){m_prior=StringToDouble(value);p=true;}
+         if(key=="real_validated"){real_validated=(value=="1");}
+         else if(key=="prior"){m_prior=StringToDouble(value);p=true;}
          else if(key=="threshold"){m_threshold=StringToDouble(value);th=true;}
          else if(StringLen(key)==5 && StringSubstr(key,0,1)=="w")
          {
@@ -242,7 +243,7 @@ public:
          }
       }
       FileClose(h);
-      m_model_ready=(p && th && nseen==BNP_FEATURES*5 && MathIsValidNumber(m_prior) && MathIsValidNumber(m_threshold));
+      m_model_ready=(p && th && real_validated && nseen==BNP_FEATURES*5 && MathIsValidNumber(m_prior) && MathIsValidNumber(m_threshold));
       return m_model_ready;
    }
    bool Approve(const int &bins[],double &score)
