@@ -30,11 +30,17 @@ def build_prefix(t_ms:np.ndarray,bid:np.ndarray,ask:np.ndarray,
     """
     if side not in (-1,1) or not t0_ms+15000<=t1_ms<t0_ms+16000:
         raise ValueError('T1/side invalid')
-    t=np.asarray(t_ms,dtype=np.int64);b=np.asarray(bid,dtype=np.int64);a=np.asarray(ask,dtype=np.int64)
+    rt=np.asarray(t_ms);rb=np.asarray(bid);ra=np.asarray(ask)
+    if not all(np.issubdtype(x.dtype,np.integer) for x in (rt,rb,ra)):
+        raise ValueError('native raw times/bid/ask must be exact integers')
+    t=rt.astype(np.int64);b=rb.astype(np.int64);a=ra.astype(np.int64)
     if not(t.ndim==b.ndim==a.ndim==1 and 2<=len(t)==len(b)==len(a)):
         raise ValueError('native quote vectors invalid')
     if np.any(np.diff(t)<0) or np.any(b<=0) or np.any(a<=b):
         raise ValueError('unsorted or invalid quote values')
+    real_first=int(np.searchsorted(t,t0_ms+15000,side='left'))
+    if real_first==len(t) or int(t[real_first])!=int(t1_ms):
+        raise ValueError('supplied T1 is not the FIRST genuine native quote in the 15-16s window')
     lo=np.searchsorted(t,t0_ms,side='left');hi=np.searchsorted(t,t1_ms,side='left')
     if hi-lo<3:raise ValueError('insufficient predecision genuine quotes')
     # recent prefix [t0,t1), quote at t1 deliberately unobservable to scorer.
