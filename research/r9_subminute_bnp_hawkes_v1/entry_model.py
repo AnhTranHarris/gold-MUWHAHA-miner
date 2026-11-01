@@ -296,6 +296,18 @@ class BNPModel:
         s=self.score(candidate['bins'])
         return ("ENTER" if s>self.threshold else "ABSTAIN_NP"),s
 
+    def write_mt5_policy(self, path, *, real_validated=False):
+        """Promote only an independently verified real-tick policy; no auto-promotion."""
+        if not self.ready or not real_validated:
+            raise ValueError("frozen NP and explicit independent real-tick validation required")
+        with open(path, 'w', newline='') as stream:
+            wr=csv.writer(stream)
+            wr.writerow(["version",VERSION]);wr.writerow(["prior",format(self.prior,'.17g')])
+            wr.writerow(["threshold",format(self.threshold,'.17g')])
+            wr.writerow(["real_validated",1])
+            for i,row in enumerate(self.weights):
+                for b,w in enumerate(row):wr.writerow([f"w{i:02d}{b:02d}",format(w,'.17g')])
+
     def export(self):
         return {"version":VERSION,"features":FEATURES,"clock_ms":CLOCK_MS,
                 "alpha":self.alpha,"delta":self.delta,"fit_counts":self.count,
