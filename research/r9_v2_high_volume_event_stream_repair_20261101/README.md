@@ -31,3 +31,9 @@ python src/volume_contract.py --results results --teacher /mnt/data/r9_four_mont
 ```
 
 The last step must return `all_sources_months_pass_volume` **true** and each month status `VOLUME_PASS` to meet the user's volume criterion, but *still* requires independently profitable, calibrated evidence. Never claim the experimental lane proves this is achievable profitably at the same time.
+
+## Frozen eight-source run and acceptance outcome
+
+`results/REPAIR_FULL_MONTH_VERIFICATION.json` and `results/volume_contract.json` carry all eight native-month full-stream numbers. Every source-month exceeds the user’s 85% R9 SYNTH trade-count floor. The new experimental entry policy **fails** the independent profitability criterion on every source-month and **MUST NOT BE PROMOTED** as a trading EA. The per-trade `results/{source}_{month}_full/trades.csv.gz` ledgers have been independently checked for count, true executable-side net calculation, chronological ordering and zero concurrent positions. Their exact compressed bytes, every module, and the original v2 sources are stored in the companion Drive recovery ZIP.
+
+The experimental policy is deliberately not misrepresented as a fitted Bayesian/NP system. It repairs the executable real-tick evaluation capacity, which may be used for new trained risk-aware entry decisions without rebuilding the causal engine. No volume target was fed to runtime entries.
