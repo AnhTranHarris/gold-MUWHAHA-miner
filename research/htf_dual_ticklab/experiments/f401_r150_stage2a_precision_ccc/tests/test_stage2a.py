@@ -19,7 +19,7 @@ def raw():
 
 def test_real_quote_prefix_excludes_decision_and_future():
     t0,t,b,a=raw();p=build_prefix(t,b,a,t0_ms=t0,t1_ms=t0+15100,side=1)
-    q=build_prefix(t[:-3],b[:-3],a[:-3],t0_ms=t0,t1_ms=t0+15100,side=1)
+    q=build_prefix(t[:9],b[:9],a[:9],t0_ms=t0,t1_ms=t0+15100,side=1)
     assert p.quote_count==q.quote_count==8
     np.testing.assert_array_equal(p.features,q.features)
     b2=b.copy();b2[-3:]+=100000;a2=a.copy();a2[-3:]+=100000
@@ -102,14 +102,16 @@ def fake_runtime(monkeypatch,tmp_path):
 
 def good_clock(**kwargs):
     d=dict(broker='coinexx',t0_ms=100000,t1_ms=115250,side=1,ordinal=4,pending=True,
-      has_native_t1=True,original_q_veto=True,source_root_attested=True,
+      has_native_t1=True,original_q_veto=True,q_veto_decision_ms=115250,source_root_attested=True,
+      market_asof_ms=114999,family_asof_ms={k:114000 for k in ['J2','L2','M2']},
       family_hashes={k:'a'*64 for k in ['J2','L2','M2']});d.update(kwargs);return ActionClock(**d)
 
 def test_runtime_requires_true_pending_source_exact_q(monkeypatch,tmp_path):
     r=fake_runtime(monkeypatch,tmp_path);x=np.ones(3,dtype='float32')
     assert r.score(clock=good_clock(),features=x).action=='RESCUE_RESEARCH_ONLY'
     for key,val in [('pending',False),('has_native_t1',False),('original_q_veto',False),
-                    ('source_root_attested',False),('t1_ms',116000),('broker','dukascopy')]:
+                    ('source_root_attested',False),('t1_ms',116000),('broker','dukascopy'),
+                    ('q_veto_decision_ms',115500),('market_asof_ms',115250)]:
         assert r.score(clock=good_clock(**{key:val}),features=x).action=='ABSTAIN'
 
 def test_frozen_model_integrity(monkeypatch,tmp_path):
@@ -135,3 +137,17 @@ def test_cannot_self_certify_missing_q_producer(tmp_path):
     p=tmp_path/'external.json';p.write_text(json.dumps({'cells':{k:{} for k in CELLS}}))
     with pytest.raises(ValueError,match='root gate'):
         external_evidence_gate(p)
+
+
+def test_first_real_quote_and_exact_integer_proof():
+    t0,t,b,a=raw()
+    with pytest.raises(ValueError,match='FIRST genuine'):
+        build_prefix(t,b,a,t0_ms=t0,t1_ms=t0+15300,side=1)
+    with pytest.raises(ValueError,match='exact integers'):
+        build_prefix(t.astype(float),b,a,t0_ms=t0,t1_ms=t0+15100,side=1)
+
+def test_future_family_state_fails_closed(monkeypatch,tmp_path):
+    r=fake_runtime(monkeypatch,tmp_path)
+    x=np.ones(3,dtype='float32')
+    a=good_clock(family_asof_ms={'J2':115250,'L2':114000,'M2':114000})
+    assert r.score(clock=a,features=x).action=='ABSTAIN'
