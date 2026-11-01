@@ -25,6 +25,6 @@
 - [Complete scientific report](https://drive.google.com/file/d/1CwDHKKkLQLNUlWJyE-eROQUEhB2X_VnP/view).
 - [Append-only active ledger](https://docs.google.com/document/d/1SOiAbTGROPPgSlj_bQfZMTKg-2DQ22PQqmP03fRS0GE/edit).
 
-The portable source archive includes all executable R151 modules, full original R120 geometry source, all trained model weights, 8x frozen policy scores and masks, all passive-limit outcomes, negative results, tests and SHA receipts. Large derived 100D feature caches are reproducible from registered source tapes and are not duplicated in the ZIP.
+The portable **source/models archive** contains executable R151 and original R120 modules, trained model weights, full negative-result tables, tests and SHA receipts. The separate **event/action masks archive** contains all eight frozen-policy score/mask arrays, all eight source-native MARKET outcomes and all 16 passive LIMIT outcome arrays. Together they preserve the complete tested evidence. Large derived 100D feature caches are reproducible from registered source tapes and are not duplicated in either ZIP.
 
 **Next gate:** authentic pre-OrderSend intent identity, MT5 numerical parity, and shared-capital/latency/margin scenario replay. Preserve all original owner approvals; /02 owner-only remains untouched.
