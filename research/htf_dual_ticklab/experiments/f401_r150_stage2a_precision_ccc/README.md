@@ -1,6 +1,6 @@
 # F401-R150 Stage 2A: source-native precision CCC (UNAPPROVED)
 
-**Outcome status:** 14/14 scoped unit tests PASS, 3 distinct source-view models + disjoint isotonic calibrators run on SYNTHETIC input ONLY. **No original-R150Q model trained or scored; owner >400k BAD / <10k CORRECT goal remains unmet.**
+**Outcome status:** 16/16 scoped unit tests PASS, 3 distinct source-view models + disjoint isotonic calibrators run on SYNTHETIC input ONLY. **No original-R150Q model trained or scored; owner >400k BAD / <10k CORRECT goal remains unmet.**
 
 The complete research code in `src/r150ccc/` is a new Python source-only first-quote T1 classifier for *independently never-submitted* original R150Q vetoed intents. It joins R120 128D, J/L/M 9D market-only posteriors, native 32D event/path features and R150T 24D quote-clock Bayesian state; three independent 161D/170D/193D source-only experts, train-only hard negative case weighting, disjoint isotonic probability calibration, class-risk and hourly-support selective abstention. Teacher/matured original-class state and R24/R148B/R150G **never enter T0 inference**. Teacher is a historical forensic feature-design microscope only.
 
@@ -12,7 +12,7 @@ Stage2A is scoped to **genuine T1 Q vetoes only**. Original Q T2 decisions must 
 
 **Authoritative science:** https://docs.google.com/document/d/1qYJ71GrFEKRffwmUSGPR4OYLte6tkUfx2SZNdJznMq0/edit
 
-**Complete source, QA and SHA artifact:** https://drive.google.com/file/d/1968--Q7kc9tBNjvqz4BhDdM7UuY4LY9w/view — SHA256 `f2dd1bfc05a726443146990945d9bd2e0093ea73f3b4d29b22c499087934af5b` (20,852 bytes; 18 ZIP entries).
+**Complete source, QA and SHA artifact:** https://drive.google.com/file/d/1968--Q7kc9tBNjvqz4BhDdM7UuY4LY9w/view — SHA256 `f324c6e0067f2da07dde73e1ec0cd81c10b71a042c9ba76139424f277f78fc7e` (20,481 bytes; 15 ZIP entries).
 
 **Original F401-R150 mechanism bootstrap:** https://docs.google.com/document/d/1a-JdCbKeY69bmR900g2h1bBW7b97h2vMsN24-1z9Jy0/edit
 
