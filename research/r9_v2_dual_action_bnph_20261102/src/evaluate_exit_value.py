@@ -15,8 +15,8 @@ def segment(mm,qm,X,d,mask,j,norm):
  return out
 
 def main(a):
- root=Path(a.root);mod=Path(a.models);Xc=np.load(root/f'coinexx_01_{a.cal_day}_250ms_v4_X.npy',mmap_mode='r');dc=np.load(root/f'coinexx_01_{a.cal_day}_250ms_universe.npz');ts=dc['ts'];mid=int(ts[len(ts)//2]);ca=(ts>=ts[0]+a.embargo_ms)&(ts<mid-a.embargo_ms);cb=(ts>=mid+a.embargo_ms)&(ts<ts[-1]-a.embargo_ms)
- Xh=np.load(root/f'coinexx_01_{a.holdout_day}_250ms_v4_X.npy',mmap_mode='r');dh=np.load(root/f'coinexx_01_{a.holdout_day}_250ms_universe.npz');hold=dh['ts']>=dh['ts'][0]+a.embargo_ms
+ root=Path(a.root);mod=Path(a.models);Xc=np.load(root/f'coinexx_01_{a.cal_day}_250ms_v5_X.npy',mmap_mode='r');dc=np.load(root/f'coinexx_01_{a.cal_day}_250ms_universe.npz');ts=dc['ts'];mid=int(ts[len(ts)//2]);ca=(ts>=ts[0]+a.embargo_ms)&(ts<mid-a.embargo_ms);cb=(ts>=mid+a.embargo_ms)&(ts<ts[-1]-a.embargo_ms)
+ Xh=np.load(root/f'coinexx_01_{a.holdout_day}_250ms_v5_X.npy',mmap_mode='r');dh=np.load(root/f'coinexx_01_{a.holdout_day}_250ms_universe.npz');hold=dh['ts']>=dh['ts'][0]+a.embargo_ms
  sides={};qualified=False
  for j,side in enumerate(('buy','sell')):
   mm=lgb.Booster(model_file=str(mod/f'coinexx_01_exit_value_{side}_mean.txt'));qm=lgb.Booster(model_file=str(mod/f'coinexx_01_exit_value_{side}_q20.txt'))
