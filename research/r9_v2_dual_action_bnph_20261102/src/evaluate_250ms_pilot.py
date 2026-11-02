@@ -11,7 +11,7 @@ import numpy as np
 from sklearn.metrics import roc_auc_score
 from repaired_features import FEATURE_VERSION,REPAIRED_FEATURE_COUNT,REPAIRED_FEATURE_NAMES
 from repaired_training_common import (action_labels,fit_iso,apply_iso,choose_prior_weight,calibrate_action_probs,
-    apply_action_calibration,raw_action_predict,payoff_lcb_bins,expected_from_bins)
+    apply_action_calibration,raw_action_predict,payoff_lcb_bins,expected_from_bins,runtime_entry_mask)
 from decision import Limits,calibrate_np,calibrate_binary_np,select_dual
 
 def sha256(p:Path):
@@ -44,7 +44,7 @@ def apply_wait(wait_model,iso,X):return apply_iso(iso,wait_model.predict(X,num_t
 def evaluate_segment(name,X,d,mask,opp,opp_iso,models,priors,w,isos,opp_cut,side_cut,paybins,wait_model,wait_iso,wait_cut,limits,max_wait_ms):
     rows=np.where(mask)[0];xx=np.asarray(X[rows],np.float32);good=d['good'][rows].astype(np.uint8);net=d['net'][rows].astype(np.float32)
     yopp=good.any(axis=1);pop=apply_iso(opp_iso,opp.predict(xx,num_threads=2));q=apply_action_calibration(raw_action_predict(models,xx),priors,w,isos)
-    est=expected_from_bins(q,paybins);side=select_dual(q,est,side_cut,limits);opp_ok=(pop>=limits.min_opportunity)&(pop>opp_cut);act=np.where(opp_ok,side,0).astype(np.int8)
+    est=expected_from_bins(q,paybins);side=select_dual(q,est,side_cut,limits);opp_ok=runtime_entry_mask(pop,opp_cut,xx,limits);act=np.where(opp_ok,side,0).astype(np.int8)
     chosen=act!=0;rr=np.arange(len(rows));sidecol=np.where(act==1,0,1);one=good.sum(axis=1)==1;truth=np.where(good[:,0]==1,1,-1);ranked=np.where(q[:,0,2]>=q[:,1,2],1,-1)
     n=int(chosen.sum());strict=int(good[rr[chosen],sidecol[chosen]].sum()) if n else 0;teacher_net=float(np.nansum(net[rr[chosen],sidecol[chosen]])) if n else 0.
     wm=(~yopp)&(d['next_dt_ms'][rows]>0)&(d['next_dt_ms'][rows]<=max_wait_ms);wr=np.where(wm)[0]
