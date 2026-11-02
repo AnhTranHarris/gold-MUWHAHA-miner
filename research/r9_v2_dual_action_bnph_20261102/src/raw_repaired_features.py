@@ -28,8 +28,12 @@ for i in range(6):A[i,i]=.035
 for x,y in ((0,2),(2,0),(1,3),(3,1),(4,5),(5,4)):A[x,y]=.025
 BASELINE=.02
 
-def candidate_indices_250ms(t,bid,ask,warmup_ms=300000,max_spread=1.50):
+def candidate_indices_250ms(t,bid,ask,warmup_ms=300000,max_spread=1.50,gap_reset_ms=15000):
     """First raw quote of each observed 250 ms slot after direction-neutral warmup.
+
+    Warmup is restarted after every quote drought longer than gap_reset_ms.
+    This mirrors the live FastClock validity contract: the offline teacher must
+    never admit an entry timestamp that the runtime would still consider stale.
 
     These are teacher/research candidates, not filled trades. Candidate timestamps
     can overlap in their future labels. On-policy execution must be replayed later
@@ -39,9 +43,13 @@ def candidate_indices_250ms(t,bid,ask,warmup_ms=300000,max_spread=1.50):
     if not (len(t)==len(bid)==len(ask)):raise ValueError('raw length mismatch')
     if len(t)==0:return np.empty(0,np.int64)
     if np.any(t[1:]<t[:-1]):raise ValueError('nonchronological')
+    if warmup_ms<0 or gap_reset_ms<=0:raise ValueError('warmup/gap reset')
     slot=t//250
     first=np.empty(len(t),bool);first[0]=True;first[1:]=slot[1:]!=slot[:-1]
-    valid=first&(t>=t[0]+int(warmup_ms))&((ask-bid)<=float(max_spread))&(bid>0)&(ask>=bid)
+    reset=np.empty(len(t),bool);reset[0]=True;reset[1:]=(t[1:]-t[:-1])>int(gap_reset_ms)
+    segment_start=np.maximum.accumulate(np.where(reset,t,t[0]))
+    history_ready=(t-segment_start)>=int(warmup_ms)
+    valid=first&history_ready&((ask-bid)<=float(max_spread))&(bid>0)&(ask>=bid)
     return np.flatnonzero(valid).astype(np.int64)
 
 def _prefixes(bid,ask):
