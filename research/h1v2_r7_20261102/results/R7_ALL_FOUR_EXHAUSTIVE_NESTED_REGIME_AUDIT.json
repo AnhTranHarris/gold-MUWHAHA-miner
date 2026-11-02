@@ -1,0 +1,3216 @@
+{
+  "scope": "FULL 15,401,392 first observed 250ms events, all original raw quote months",
+  "bin_axes": [
+    "1s / 15s / 5min / 1h standardized signed trend",
+    "spread",
+    "quote_arrival_rate_1s",
+    "UTC_session",
+    "15s_path_efficiency"
+  ],
+  "bins": 19440,
+  "runs": [
+    {
+      "name": "ALL_4_RESUBSTITUTION",
+      "train": [
+        "01",
+        "02",
+        "06",
+        "07"
+      ],
+      "validation": [
+        "01",
+        "02",
+        "06",
+        "07"
+      ],
+      "opportunity_base_per_side": [
+        0.13112029094513014,
+        0.13079804734533088
+      ],
+      "hypothesis": "multivariate past-only signed nested 1s / 15s / 5min / 1h trends, spread, quote burst, UTC sessions, 15s path efficiency",
+      "observations_by_month": {
+        "01": 4025968,
+        "02": 3112593,
+        "06": 4190620,
+        "07": 4072211
+      },
+      "grid": {
+        "prob>=0.50_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.60_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.70_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.80_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.90_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.50_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.60_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.70_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.80_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.90_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.50_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.60_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.70_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.80_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.90_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "LEAVE_01_UNSEEN",
+      "train": [
+        "02",
+        "06",
+        "07"
+      ],
+      "validation": [
+        "01"
+      ],
+      "opportunity_base_per_side": [
+        0.12974021891403784,
+        0.13060603279490945
+      ],
+      "hypothesis": "multivariate past-only signed nested 1s / 15s / 5min / 1h trends, spread, quote burst, UTC sessions, 15s path efficiency",
+      "observations_by_month": {
+        "01": 4025968,
+        "02": 3112593,
+        "06": 4190620,
+        "07": 4072211
+      },
+      "grid": {
+        "prob>=0.50_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.60_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.70_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.80_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.90_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.50_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.60_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.70_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.80_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.90_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.50_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.60_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.70_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.80_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.90_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "LEAVE_02_UNSEEN",
+      "train": [
+        "01",
+        "06",
+        "07"
+      ],
+      "validation": [
+        "02"
+      ],
+      "opportunity_base_per_side": [
+        0.12762565324731895,
+        0.1278459351479343
+      ],
+      "hypothesis": "multivariate past-only signed nested 1s / 15s / 5min / 1h trends, spread, quote burst, UTC sessions, 15s path efficiency",
+      "observations_by_month": {
+        "01": 4025968,
+        "02": 3112593,
+        "06": 4190620,
+        "07": 4072211
+      },
+      "grid": {
+        "prob>=0.50_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.60_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.70_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.80_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.90_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.50_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.60_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.70_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.80_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.90_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.50_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.60_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.70_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.80_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.90_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "LEAVE_06_UNSEEN",
+      "train": [
+        "01",
+        "02",
+        "07"
+      ],
+      "validation": [
+        "06"
+      ],
+      "opportunity_base_per_side": [
+        0.12782304376540707,
+        0.1264320601649913
+      ],
+      "hypothesis": "multivariate past-only signed nested 1s / 15s / 5min / 1h trends, spread, quote burst, UTC sessions, 15s path efficiency",
+      "observations_by_month": {
+        "01": 4025968,
+        "02": 3112593,
+        "06": 4190620,
+        "07": 4072211
+      },
+      "grid": {
+        "prob>=0.50_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.60_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.70_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.80_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.90_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.50_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.60_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.70_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.80_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.90_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.50_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.60_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.70_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.80_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        },
+        "prob>=0.90_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "LEAVE_07_UNSEEN",
+      "train": [
+        "01",
+        "02",
+        "06"
+      ],
+      "validation": [
+        "07"
+      ],
+      "opportunity_base_per_side": [
+        0.13955942622860382,
+        0.13851336650019097
+      ],
+      "hypothesis": "multivariate past-only signed nested 1s / 15s / 5min / 1h trends, spread, quote burst, UTC sessions, 15s path efficiency",
+      "observations_by_month": {
+        "01": 4025968,
+        "02": 3112593,
+        "06": 4190620,
+        "07": 4072211
+      },
+      "grid": {
+        "prob>=0.50_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            }
+          }
+        },
+        "prob>=0.60_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            }
+          }
+        },
+        "prob>=0.70_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            }
+          }
+        },
+        "prob>=0.80_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            }
+          }
+        },
+        "prob>=0.90_min_training_per_cell_30": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            }
+          }
+        },
+        "prob>=0.50_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            }
+          }
+        },
+        "prob>=0.60_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            }
+          }
+        },
+        "prob>=0.70_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            }
+          }
+        },
+        "prob>=0.80_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            }
+          }
+        },
+        "prob>=0.90_min_training_per_cell_100": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            }
+          }
+        },
+        "prob>=0.50_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            }
+          }
+        },
+        "prob>=0.60_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            }
+          }
+        },
+        "prob>=0.70_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            }
+          }
+        },
+        "prob>=0.80_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            }
+          }
+        },
+        "prob>=0.90_min_training_per_cell_300": {
+          "admissible_regimes": 0,
+          "months": {
+            "01": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "02": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "06": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "IN_SAMPLE_RESUBSTITUTION"
+            },
+            "07": {
+              "eligible_candidates": 0,
+              "strict_good": 0,
+              "neutral": 0,
+              "wrong": 0,
+              "strict_precision": null,
+              "wilson_naive_lower": null,
+              "status": "OUTSIDE_TRAIN_MONTH"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "causal_note": "Each regime computed from past Bid/Ask quotes, never future, equal-ms later ordinals excluded",
+  "statistical_note": "Wilsons on overlapping 250ms candidates are NAIVE and NOT independent confidence intervals",
+  "evaluation_note": "Scores trained on all four are deliberately contaminated. LOMO flags month heldout. Scored values use historic future labels only for validation, not model inputs; still no policy on-policy trade stream.",
+  "recovery_note": "Raw original source and giant original H1V2 NPZ arrays retained immutably; stored R7 regime record + per month stats + hashes."
+}

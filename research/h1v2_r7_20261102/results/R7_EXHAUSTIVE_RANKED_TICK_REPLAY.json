@@ -1,0 +1,1108 @@
+{
+  "science": "FULL 15.4m asof candidates; trained categorical model side+WAIT; one-position original R9 exact exit replays, NOT real trade performance",
+  "fractions": [
+    0.0001,
+    0.0005,
+    0.001,
+    0.005,
+    0.01,
+    0.05
+  ],
+  "experiments": [
+    {
+      "name": "FOUR_MONTH_FIT_CONTAMINATED",
+      "train_months": [
+        "01",
+        "02",
+        "06",
+        "07"
+      ],
+      "evaluation_months": [
+        "01",
+        "02",
+        "06",
+        "07"
+      ],
+      "fractions": {
+        "0.0001": {
+          "trained_regimes": 15,
+          "frozen_threshold_approx": 0.2279981810135609,
+          "train_population_estimate": 1547,
+          "months": {
+            "01": {
+              "signal_candidates": 370,
+              "signals_strict_good": 103,
+              "signals_neutral": 24,
+              "signals_wrong": 243,
+              "signals_strict_precision": 0.27837837837837837,
+              "replayed_trades": 240,
+              "correct": 57,
+              "incorrect": 169,
+              "neutral": 14,
+              "precision": 0.2375,
+              "model_net": -178.998,
+              "max_closed_equity_drawdown": 179.535,
+              "r9_synth_count": 27980,
+              "r9_synth_volume_fraction": 0.008577555396711936,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            },
+            "02": {
+              "signal_candidates": 673,
+              "signals_strict_good": 216,
+              "signals_neutral": 8,
+              "signals_wrong": 449,
+              "signals_strict_precision": 0.3209509658246657,
+              "replayed_trades": 373,
+              "correct": 106,
+              "incorrect": 261,
+              "neutral": 6,
+              "precision": 0.28418230563002683,
+              "model_net": -331.847,
+              "max_closed_equity_drawdown": 331.847,
+              "r9_synth_count": 33523,
+              "r9_synth_volume_fraction": 0.011126689138800227,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            },
+            "06": {
+              "signal_candidates": 400,
+              "signals_strict_good": 125,
+              "signals_neutral": 10,
+              "signals_wrong": 265,
+              "signals_strict_precision": 0.3125,
+              "replayed_trades": 304,
+              "correct": 91,
+              "incorrect": 205,
+              "neutral": 8,
+              "precision": 0.2993421052631579,
+              "model_net": -99.773,
+              "max_closed_equity_drawdown": 100.003,
+              "r9_synth_count": 31801,
+              "r9_synth_volume_fraction": 0.009559447816106412,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            },
+            "07": {
+              "signal_candidates": 104,
+              "signals_strict_good": 24,
+              "signals_neutral": 2,
+              "signals_wrong": 78,
+              "signals_strict_precision": 0.23076923076923078,
+              "replayed_trades": 96,
+              "correct": 24,
+              "incorrect": 70,
+              "neutral": 2,
+              "precision": 0.25,
+              "model_net": -40.918,
+              "max_closed_equity_drawdown": 41.018,
+              "r9_synth_count": 24382,
+              "r9_synth_volume_fraction": 0.0039373308178164215,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.0005": {
+          "trained_regimes": 45,
+          "frozen_threshold_approx": 0.2122944548532345,
+          "train_population_estimate": 7706,
+          "months": {
+            "01": {
+              "signal_candidates": 1351,
+              "signals_strict_good": 318,
+              "signals_neutral": 57,
+              "signals_wrong": 976,
+              "signals_strict_precision": 0.23538119911176905,
+              "replayed_trades": 814,
+              "correct": 175,
+              "incorrect": 608,
+              "neutral": 31,
+              "precision": 0.214987714987715,
+              "model_net": -518.528,
+              "max_closed_equity_drawdown": 518.531,
+              "r9_synth_count": 27980,
+              "r9_synth_volume_fraction": 0.029092208720514653,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            },
+            "02": {
+              "signal_candidates": 1954,
+              "signals_strict_good": 570,
+              "signals_neutral": 40,
+              "signals_wrong": 1344,
+              "signals_strict_precision": 0.2917093142272262,
+              "replayed_trades": 1066,
+              "correct": 283,
+              "incorrect": 761,
+              "neutral": 22,
+              "precision": 0.2654784240150094,
+              "model_net": -831.425,
+              "max_closed_equity_drawdown": 831.425,
+              "r9_synth_count": 33523,
+              "r9_synth_volume_fraction": 0.031799063329654265,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            },
+            "06": {
+              "signal_candidates": 3400,
+              "signals_strict_good": 907,
+              "signals_neutral": 79,
+              "signals_wrong": 2414,
+              "signals_strict_precision": 0.26676470588235296,
+              "replayed_trades": 2028,
+              "correct": 491,
+              "incorrect": 1494,
+              "neutral": 43,
+              "precision": 0.24211045364891517,
+              "model_net": -815.03,
+              "max_closed_equity_drawdown": 816.133,
+              "r9_synth_count": 31801,
+              "r9_synth_volume_fraction": 0.0637715795100783,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            },
+            "07": {
+              "signal_candidates": 1001,
+              "signals_strict_good": 186,
+              "signals_neutral": 29,
+              "signals_wrong": 786,
+              "signals_strict_precision": 0.18581418581418582,
+              "replayed_trades": 716,
+              "correct": 137,
+              "incorrect": 562,
+              "neutral": 17,
+              "precision": 0.19134078212290503,
+              "model_net": -350.472,
+              "max_closed_equity_drawdown": 350.902,
+              "r9_synth_count": 24382,
+              "r9_synth_volume_fraction": 0.029365925682880812,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.001": {
+          "trained_regimes": 89,
+          "frozen_threshold_approx": 0.20605087689662605,
+          "train_population_estimate": 15534,
+          "months": {
+            "01": {
+              "signal_candidates": 2728,
+              "signals_strict_good": 642,
+              "signals_neutral": 99,
+              "signals_wrong": 1987,
+              "signals_strict_precision": 0.23533724340175954,
+              "replayed_trades": 1683,
+              "correct": 361,
+              "incorrect": 1266,
+              "neutral": 56,
+              "precision": 0.21449792038027332,
+              "model_net": -1006.552,
+              "max_closed_equity_drawdown": 1006.552,
+              "r9_synth_count": 27980,
+              "r9_synth_volume_fraction": 0.06015010721944246,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            },
+            "02": {
+              "signal_candidates": 3389,
+              "signals_strict_good": 969,
+              "signals_neutral": 84,
+              "signals_wrong": 2336,
+              "signals_strict_precision": 0.28592505163765125,
+              "replayed_trades": 1891,
+              "correct": 489,
+              "incorrect": 1359,
+              "neutral": 43,
+              "precision": 0.25859333685880487,
+              "model_net": -1423.455,
+              "max_closed_equity_drawdown": 1423.455,
+              "r9_synth_count": 33523,
+              "r9_synth_volume_fraction": 0.056409032604480505,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            },
+            "06": {
+              "signal_candidates": 7099,
+              "signals_strict_good": 1860,
+              "signals_neutral": 188,
+              "signals_wrong": 5051,
+              "signals_strict_precision": 0.26200873362445415,
+              "replayed_trades": 4034,
+              "correct": 978,
+              "incorrect": 2956,
+              "neutral": 100,
+              "precision": 0.2424392662369856,
+              "model_net": -1598.771,
+              "max_closed_equity_drawdown": 1599.939,
+              "r9_synth_count": 31801,
+              "r9_synth_volume_fraction": 0.12685135687556995,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            },
+            "07": {
+              "signal_candidates": 2318,
+              "signals_strict_good": 368,
+              "signals_neutral": 69,
+              "signals_wrong": 1881,
+              "signals_strict_precision": 0.15875754961173424,
+              "replayed_trades": 1524,
+              "correct": 243,
+              "incorrect": 1239,
+              "neutral": 42,
+              "precision": 0.1594488188976378,
+              "model_net": -768.211,
+              "max_closed_equity_drawdown": 768.211,
+              "r9_synth_count": 24382,
+              "r9_synth_volume_fraction": 0.0625051267328357,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.005": {
+          "trained_regimes": 348,
+          "frozen_threshold_approx": 0.18783530654552377,
+          "train_population_estimate": 77280,
+          "months": {
+            "01": {
+              "signal_candidates": 14531,
+              "signals_strict_good": 3120,
+              "signals_neutral": 466,
+              "signals_wrong": 10945,
+              "signals_strict_precision": 0.21471337141284152,
+              "replayed_trades": 8072,
+              "correct": 1644,
+              "incorrect": 6196,
+              "neutral": 232,
+              "precision": 0.20366699702675917,
+              "model_net": -5507.63,
+              "max_closed_equity_drawdown": 5507.67,
+              "r9_synth_count": 27980,
+              "r9_synth_volume_fraction": 0.2884917798427448,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            },
+            "02": {
+              "signal_candidates": 20161,
+              "signals_strict_good": 4826,
+              "signals_neutral": 427,
+              "signals_wrong": 14908,
+              "signals_strict_precision": 0.2393730469718764,
+              "replayed_trades": 10050,
+              "correct": 2206,
+              "incorrect": 7620,
+              "neutral": 224,
+              "precision": 0.21950248756218904,
+              "model_net": -8473.663,
+              "max_closed_equity_drawdown": 8473.663,
+              "r9_synth_count": 33523,
+              "r9_synth_volume_fraction": 0.2997941711660651,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            },
+            "06": {
+              "signal_candidates": 30143,
+              "signals_strict_good": 6946,
+              "signals_neutral": 754,
+              "signals_wrong": 22443,
+              "signals_strict_precision": 0.2304349268486879,
+              "replayed_trades": 15649,
+              "correct": 3359,
+              "incorrect": 11933,
+              "neutral": 357,
+              "precision": 0.21464630327816475,
+              "model_net": -6877.554,
+              "max_closed_equity_drawdown": 6877.864,
+              "r9_synth_count": 31801,
+              "r9_synth_volume_fraction": 0.49209144366529356,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            },
+            "07": {
+              "signal_candidates": 12445,
+              "signals_strict_good": 2013,
+              "signals_neutral": 331,
+              "signals_wrong": 10101,
+              "signals_strict_precision": 0.16175170751305745,
+              "replayed_trades": 7428,
+              "correct": 1188,
+              "incorrect": 6066,
+              "neutral": 174,
+              "precision": 0.15993537964458804,
+              "model_net": -3862.793,
+              "max_closed_equity_drawdown": 3862.793,
+              "r9_synth_count": 24382,
+              "r9_synth_volume_fraction": 0.30465097202854563,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.01": {
+          "trained_regimes": 630,
+          "frozen_threshold_approx": 0.17886583801728884,
+          "train_population_estimate": 154046,
+          "months": {
+            "01": {
+              "signal_candidates": 30686,
+              "signals_strict_good": 6240,
+              "signals_neutral": 944,
+              "signals_wrong": 23502,
+              "signals_strict_precision": 0.2033500619174868,
+              "replayed_trades": 15794,
+              "correct": 3015,
+              "incorrect": 12327,
+              "neutral": 452,
+              "precision": 0.19089527668734962,
+              "model_net": -10941.341,
+              "max_closed_equity_drawdown": 10941.341,
+              "r9_synth_count": 27980,
+              "r9_synth_volume_fraction": 0.5644746247319514,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            },
+            "02": {
+              "signal_candidates": 39232,
+              "signals_strict_good": 8908,
+              "signals_neutral": 777,
+              "signals_wrong": 29547,
+              "signals_strict_precision": 0.22705954323001631,
+              "replayed_trades": 18654,
+              "correct": 3865,
+              "incorrect": 14421,
+              "neutral": 368,
+              "precision": 0.20719416747078376,
+              "model_net": -16515.014,
+              "max_closed_equity_drawdown": 16515.014,
+              "r9_synth_count": 33523,
+              "r9_synth_volume_fraction": 0.556453778003162,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            },
+            "06": {
+              "signal_candidates": 58363,
+              "signals_strict_good": 12563,
+              "signals_neutral": 1496,
+              "signals_wrong": 44304,
+              "signals_strict_precision": 0.21525624111166322,
+              "replayed_trades": 26710,
+              "correct": 5427,
+              "incorrect": 20687,
+              "neutral": 596,
+              "precision": 0.20318232871583677,
+              "model_net": -12442.219,
+              "max_closed_equity_drawdown": 12442.369,
+              "r9_synth_count": 31801,
+              "r9_synth_volume_fraction": 0.8399106946322442,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            },
+            "07": {
+              "signal_candidates": 25765,
+              "signals_strict_good": 4149,
+              "signals_neutral": 791,
+              "signals_wrong": 20825,
+              "signals_strict_precision": 0.16103240830584126,
+              "replayed_trades": 13554,
+              "correct": 2151,
+              "incorrect": 11035,
+              "neutral": 368,
+              "precision": 0.15869853917662682,
+              "model_net": -7153.318,
+              "max_closed_equity_drawdown": 7153.318,
+              "r9_synth_count": 24382,
+              "r9_synth_volume_fraction": 0.555901894840456,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.05": {
+          "trained_regimes": 1421,
+          "frozen_threshold_approx": 0.1662739094187086,
+          "train_population_estimate": 782444,
+          "months": {
+            "01": {
+              "signal_candidates": 187626,
+              "signals_strict_good": 33758,
+              "signals_neutral": 5217,
+              "signals_wrong": 148651,
+              "signals_strict_precision": 0.1799217592444544,
+              "replayed_trades": 60717,
+              "correct": 10386,
+              "incorrect": 48823,
+              "neutral": 1508,
+              "precision": 0.17105588220761894,
+              "model_net": -42386.096,
+              "max_closed_equity_drawdown": 42386.096,
+              "r9_synth_count": 27980,
+              "r9_synth_volume_fraction": 2.170014295925661,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            },
+            "02": {
+              "signal_candidates": 135030,
+              "signals_strict_good": 27372,
+              "signals_neutral": 2762,
+              "signals_wrong": 104896,
+              "signals_strict_precision": 0.20271050877582758,
+              "replayed_trades": 52058,
+              "correct": 9924,
+              "incorrect": 41048,
+              "neutral": 1086,
+              "precision": 0.19063352414614468,
+              "model_net": -46623.8,
+              "max_closed_equity_drawdown": 46623.8,
+              "r9_synth_count": 33523,
+              "r9_synth_volume_fraction": 1.5529039763744295,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            },
+            "06": {
+              "signal_candidates": 291736,
+              "signals_strict_good": 54691,
+              "signals_neutral": 6699,
+              "signals_wrong": 230346,
+              "signals_strict_precision": 0.18746743631228233,
+              "replayed_trades": 77400,
+              "correct": 14167,
+              "incorrect": 61631,
+              "neutral": 1602,
+              "precision": 0.18303617571059433,
+              "model_net": -42361.827,
+              "max_closed_equity_drawdown": 42362.783,
+              "r9_synth_count": 31801,
+              "r9_synth_volume_fraction": 2.433885726863935,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            },
+            "07": {
+              "signal_candidates": 168052,
+              "signals_strict_good": 25215,
+              "signals_neutral": 5404,
+              "signals_wrong": 137433,
+              "signals_strict_precision": 0.15004284388165567,
+              "replayed_trades": 45106,
+              "correct": 6466,
+              "incorrect": 37413,
+              "neutral": 1227,
+              "precision": 0.14335121713297566,
+              "model_net": -26495.917,
+              "max_closed_equity_drawdown": 26496.827,
+              "r9_synth_count": 24382,
+              "r9_synth_volume_fraction": 1.84997129029612,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "LOMO_01",
+      "train_months": [
+        "02",
+        "06",
+        "07"
+      ],
+      "evaluation_months": [
+        "01"
+      ],
+      "fractions": {
+        "0.0001": {
+          "trained_regimes": 7,
+          "frozen_threshold_approx": 0.24059099629559944,
+          "train_population_estimate": 1150,
+          "months": {
+            "01": {
+              "signal_candidates": 671,
+              "signals_strict_good": 91,
+              "signals_neutral": 17,
+              "signals_wrong": 563,
+              "signals_strict_precision": 0.13561847988077497,
+              "replayed_trades": 412,
+              "correct": 55,
+              "incorrect": 344,
+              "neutral": 13,
+              "precision": 0.13349514563106796,
+              "model_net": -390.871,
+              "max_closed_equity_drawdown": 391.408,
+              "r9_synth_count": 27980,
+              "r9_synth_volume_fraction": 0.014724803431022159,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.0005": {
+          "trained_regimes": 43,
+          "frozen_threshold_approx": 0.2163481202262236,
+          "train_population_estimate": 5849,
+          "months": {
+            "01": {
+              "signal_candidates": 2129,
+              "signals_strict_good": 324,
+              "signals_neutral": 68,
+              "signals_wrong": 1737,
+              "signals_strict_precision": 0.1521841240018788,
+              "replayed_trades": 1234,
+              "correct": 183,
+              "incorrect": 1007,
+              "neutral": 44,
+              "precision": 0.14829821717990274,
+              "model_net": -1015.964,
+              "max_closed_equity_drawdown": 1016.01,
+              "r9_synth_count": 27980,
+              "r9_synth_volume_fraction": 0.044102930664760544,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.001": {
+          "trained_regimes": 72,
+          "frozen_threshold_approx": 0.21208364539081775,
+          "train_population_estimate": 11427,
+          "months": {
+            "01": {
+              "signal_candidates": 3577,
+              "signals_strict_good": 538,
+              "signals_neutral": 103,
+              "signals_wrong": 2936,
+              "signals_strict_precision": 0.15040536762650267,
+              "replayed_trades": 2003,
+              "correct": 298,
+              "incorrect": 1646,
+              "neutral": 59,
+              "precision": 0.14877683474787817,
+              "model_net": -1713.475,
+              "max_closed_equity_drawdown": 1713.521,
+              "r9_synth_count": 27980,
+              "r9_synth_volume_fraction": 0.0715868477483917,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.005": {
+          "trained_regimes": 293,
+          "frozen_threshold_approx": 0.19246417710513392,
+          "train_population_estimate": 56971,
+          "months": {
+            "01": {
+              "signal_candidates": 17002,
+              "signals_strict_good": 2327,
+              "signals_neutral": 564,
+              "signals_wrong": 14111,
+              "signals_strict_precision": 0.13686625102929068,
+              "replayed_trades": 8764,
+              "correct": 1262,
+              "incorrect": 7255,
+              "neutral": 247,
+              "precision": 0.14399817434961204,
+              "model_net": -7686.493,
+              "max_closed_equity_drawdown": 7686.493,
+              "r9_synth_count": 27980,
+              "r9_synth_volume_fraction": 0.3132237312365976,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.01": {
+          "trained_regimes": 530,
+          "frozen_threshold_approx": 0.18385368090160098,
+          "train_population_estimate": 114233,
+          "months": {
+            "01": {
+              "signal_candidates": 36016,
+              "signals_strict_good": 4916,
+              "signals_neutral": 1184,
+              "signals_wrong": 29916,
+              "signals_strict_precision": 0.13649489115948468,
+              "replayed_trades": 17753,
+              "correct": 2533,
+              "incorrect": 14712,
+              "neutral": 508,
+              "precision": 0.1426801104038754,
+              "model_net": -15184.612,
+              "max_closed_equity_drawdown": 15185.382,
+              "r9_synth_count": 27980,
+              "r9_synth_volume_fraction": 0.6344889206576125,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.05": {
+          "trained_regimes": 1508,
+          "frozen_threshold_approx": 0.16701102815310362,
+          "train_population_estimate": 568795,
+          "months": {
+            "01": {
+              "signal_candidates": 201450,
+              "signals_strict_good": 28768,
+              "signals_neutral": 6123,
+              "signals_wrong": 166559,
+              "signals_strict_precision": 0.14280466617026558,
+              "replayed_trades": 67051,
+              "correct": 9622,
+              "incorrect": 55683,
+              "neutral": 1746,
+              "precision": 0.14350270689475175,
+              "model_net": -53007.845,
+              "max_closed_equity_drawdown": 53007.845,
+              "r9_synth_count": 27980,
+              "r9_synth_volume_fraction": 2.3963902787705504,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "LOMO_02",
+      "train_months": [
+        "01",
+        "06",
+        "07"
+      ],
+      "evaluation_months": [
+        "02"
+      ],
+      "fractions": {
+        "0.0001": {
+          "trained_regimes": 11,
+          "frozen_threshold_approx": 0.2228004562724443,
+          "train_population_estimate": 1288,
+          "months": {
+            "02": {
+              "signal_candidates": 110,
+              "signals_strict_good": 17,
+              "signals_neutral": 0,
+              "signals_wrong": 93,
+              "signals_strict_precision": 0.15454545454545454,
+              "replayed_trades": 76,
+              "correct": 14,
+              "incorrect": 62,
+              "neutral": 0,
+              "precision": 0.18421052631578946,
+              "model_net": -52.161,
+              "max_closed_equity_drawdown": 54.937,
+              "r9_synth_count": 33523,
+              "r9_synth_volume_fraction": 0.0022671001998627806,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.0005": {
+          "trained_regimes": 40,
+          "frozen_threshold_approx": 0.20999294471651633,
+          "train_population_estimate": 6274,
+          "months": {
+            "02": {
+              "signal_candidates": 1789,
+              "signals_strict_good": 324,
+              "signals_neutral": 26,
+              "signals_wrong": 1439,
+              "signals_strict_precision": 0.1811067635550587,
+              "replayed_trades": 1030,
+              "correct": 198,
+              "incorrect": 814,
+              "neutral": 18,
+              "precision": 0.19223300970873786,
+              "model_net": -1009.453,
+              "max_closed_equity_drawdown": 1009.453,
+              "r9_synth_count": 33523,
+              "r9_synth_volume_fraction": 0.030725173761298213,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.001": {
+          "trained_regimes": 67,
+          "frozen_threshold_approx": 0.2044889019120551,
+          "train_population_estimate": 12302,
+          "months": {
+            "02": {
+              "signal_candidates": 3169,
+              "signals_strict_good": 511,
+              "signals_neutral": 69,
+              "signals_wrong": 2589,
+              "signals_strict_precision": 0.16124960555380247,
+              "replayed_trades": 1796,
+              "correct": 318,
+              "incorrect": 1431,
+              "neutral": 47,
+              "precision": 0.17706013363028952,
+              "model_net": -1676.781,
+              "max_closed_equity_drawdown": 1676.781,
+              "r9_synth_count": 33523,
+              "r9_synth_volume_fraction": 0.05357515735465203,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.005": {
+          "trained_regimes": 284,
+          "frozen_threshold_approx": 0.18445446761871778,
+          "train_population_estimate": 61751,
+          "months": {
+            "02": {
+              "signal_candidates": 18997,
+              "signals_strict_good": 3030,
+              "signals_neutral": 305,
+              "signals_wrong": 15662,
+              "signals_strict_precision": 0.15949886824235407,
+              "replayed_trades": 9750,
+              "correct": 1598,
+              "incorrect": 8000,
+              "neutral": 152,
+              "precision": 0.16389743589743588,
+              "model_net": -9895.821,
+              "max_closed_equity_drawdown": 9895.821,
+              "r9_synth_count": 33523,
+              "r9_synth_volume_fraction": 0.2908450914297646,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.01": {
+          "trained_regimes": 485,
+          "frozen_threshold_approx": 0.1762619025806716,
+          "train_population_estimate": 122983,
+          "months": {
+            "02": {
+              "signal_candidates": 39224,
+              "signals_strict_good": 6099,
+              "signals_neutral": 573,
+              "signals_wrong": 32552,
+              "signals_strict_precision": 0.15549153579441158,
+              "replayed_trades": 18664,
+              "correct": 2953,
+              "incorrect": 15433,
+              "neutral": 278,
+              "precision": 0.1582190312901843,
+              "model_net": -19685.042,
+              "max_closed_equity_drawdown": 19685.042,
+              "r9_synth_count": 33523,
+              "r9_synth_volume_fraction": 0.5567520806610387,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.05": {
+          "trained_regimes": 1009,
+          "frozen_threshold_approx": 0.16593406019359722,
+          "train_population_estimate": 614691,
+          "months": {
+            "02": {
+              "signal_candidates": 105799,
+              "signals_strict_good": 16376,
+              "signals_neutral": 1433,
+              "signals_wrong": 87990,
+              "signals_strict_precision": 0.15478407168309719,
+              "replayed_trades": 45676,
+              "correct": 7122,
+              "incorrect": 37894,
+              "neutral": 660,
+              "precision": 0.15592433663192923,
+              "model_net": -45986.667,
+              "max_closed_equity_drawdown": 45986.667,
+              "r9_synth_count": 33523,
+              "r9_synth_volume_fraction": 1.3625272201175314,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "LOMO_06",
+      "train_months": [
+        "01",
+        "02",
+        "07"
+      ],
+      "evaluation_months": [
+        "06"
+      ],
+      "fractions": {
+        "0.0001": {
+          "trained_regimes": 9,
+          "frozen_threshold_approx": 0.23124410173466003,
+          "train_population_estimate": 1265,
+          "months": {
+            "06": {
+              "signal_candidates": 318,
+              "signals_strict_good": 42,
+              "signals_neutral": 15,
+              "signals_wrong": 261,
+              "signals_strict_precision": 0.1320754716981132,
+              "replayed_trades": 182,
+              "correct": 26,
+              "incorrect": 151,
+              "neutral": 5,
+              "precision": 0.14285714285714285,
+              "model_net": -112.68,
+              "max_closed_equity_drawdown": 112.743,
+              "r9_synth_count": 31801,
+              "r9_synth_volume_fraction": 0.00572309046885318,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.0005": {
+          "trained_regimes": 40,
+          "frozen_threshold_approx": 0.2094325286403457,
+          "train_population_estimate": 5791,
+          "months": {
+            "06": {
+              "signal_candidates": 1995,
+              "signals_strict_good": 302,
+              "signals_neutral": 66,
+              "signals_wrong": 1627,
+              "signals_strict_precision": 0.15137844611528822,
+              "replayed_trades": 1252,
+              "correct": 195,
+              "incorrect": 1019,
+              "neutral": 38,
+              "precision": 0.15575079872204473,
+              "model_net": -705.435,
+              "max_closed_equity_drawdown": 705.954,
+              "r9_synth_count": 31801,
+              "r9_synth_volume_fraction": 0.03936983113738562,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.001": {
+          "trained_regimes": 72,
+          "frozen_threshold_approx": 0.20343911475924775,
+          "train_population_estimate": 11224,
+          "months": {
+            "06": {
+              "signal_candidates": 3844,
+              "signals_strict_good": 532,
+              "signals_neutral": 153,
+              "signals_wrong": 3159,
+              "signals_strict_precision": 0.1383975026014568,
+              "replayed_trades": 2209,
+              "correct": 326,
+              "incorrect": 1814,
+              "neutral": 69,
+              "precision": 0.14757808963331825,
+              "model_net": -1340.006,
+              "max_closed_equity_drawdown": 1340.525,
+              "r9_synth_count": 31801,
+              "r9_synth_volume_fraction": 0.06946322442690482,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.005": {
+          "trained_regimes": 279,
+          "frozen_threshold_approx": 0.18473081974017883,
+          "train_population_estimate": 56323,
+          "months": {
+            "06": {
+              "signal_candidates": 20620,
+              "signals_strict_good": 3241,
+              "signals_neutral": 639,
+              "signals_wrong": 16740,
+              "signals_strict_precision": 0.15717749757516974,
+              "replayed_trades": 11539,
+              "correct": 1854,
+              "incorrect": 9394,
+              "neutral": 291,
+              "precision": 0.160672501949909,
+              "model_net": -6596.445,
+              "max_closed_equity_drawdown": 6596.445,
+              "r9_synth_count": 31801,
+              "r9_synth_volume_fraction": 0.362850224835697,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.01": {
+          "trained_regimes": 464,
+          "frozen_threshold_approx": 0.17778838288322044,
+          "train_population_estimate": 112430,
+          "months": {
+            "06": {
+              "signal_candidates": 40718,
+              "signals_strict_good": 6290,
+              "signals_neutral": 1222,
+              "signals_wrong": 33206,
+              "signals_strict_precision": 0.15447713541922492,
+              "replayed_trades": 20892,
+              "correct": 3285,
+              "incorrect": 17074,
+              "neutral": 533,
+              "precision": 0.15723721998851234,
+              "model_net": -12086.386,
+              "max_closed_equity_drawdown": 12086.709,
+              "r9_synth_count": 31801,
+              "r9_synth_volume_fraction": 0.6569604729411025,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.05": {
+          "trained_regimes": 1282,
+          "frozen_threshold_approx": 0.16340895430543304,
+          "train_population_estimate": 561169,
+          "months": {
+            "06": {
+              "signal_candidates": 249817,
+              "signals_strict_good": 38729,
+              "signals_neutral": 6185,
+              "signals_wrong": 204903,
+              "signals_strict_precision": 0.15502948158051694,
+              "replayed_trades": 71850,
+              "correct": 11251,
+              "incorrect": 58909,
+              "neutral": 1690,
+              "precision": 0.1565901183020181,
+              "model_net": -43519.783,
+              "max_closed_equity_drawdown": 43519.783,
+              "r9_synth_count": 31801,
+              "r9_synth_volume_fraction": 2.2593629131159396,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "LOMO_07",
+      "train_months": [
+        "01",
+        "02",
+        "06"
+      ],
+      "evaluation_months": [
+        "07"
+      ],
+      "fractions": {
+        "0.0001": {
+          "trained_regimes": 12,
+          "frozen_threshold_approx": 0.24238038931202432,
+          "train_population_estimate": 1182,
+          "months": {
+            "07": {
+              "signal_candidates": 336,
+              "signals_strict_good": 24,
+              "signals_neutral": 5,
+              "signals_wrong": 307,
+              "signals_strict_precision": 0.07142857142857142,
+              "replayed_trades": 258,
+              "correct": 21,
+              "incorrect": 232,
+              "neutral": 5,
+              "precision": 0.08139534883720931,
+              "model_net": -140.384,
+              "max_closed_equity_drawdown": 140.384,
+              "r9_synth_count": 24382,
+              "r9_synth_volume_fraction": 0.010581576572881633,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.0005": {
+          "trained_regimes": 38,
+          "frozen_threshold_approx": 0.22818609126288664,
+          "train_population_estimate": 5939,
+          "months": {
+            "07": {
+              "signal_candidates": 1662,
+              "signals_strict_good": 196,
+              "signals_neutral": 39,
+              "signals_wrong": 1427,
+              "signals_strict_precision": 0.11793020457280386,
+              "replayed_trades": 1089,
+              "correct": 127,
+              "incorrect": 936,
+              "neutral": 26,
+              "precision": 0.11662075298438934,
+              "model_net": -546.361,
+              "max_closed_equity_drawdown": 546.361,
+              "r9_synth_count": 24382,
+              "r9_synth_volume_fraction": 0.044664096464605035,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.001": {
+          "trained_regimes": 75,
+          "frozen_threshold_approx": 0.22020376672279043,
+          "train_population_estimate": 11370,
+          "months": {
+            "07": {
+              "signal_candidates": 2940,
+              "signals_strict_good": 348,
+              "signals_neutral": 70,
+              "signals_wrong": 2522,
+              "signals_strict_precision": 0.11836734693877551,
+              "replayed_trades": 1966,
+              "correct": 231,
+              "incorrect": 1692,
+              "neutral": 43,
+              "precision": 0.11749745676500509,
+              "model_net": -998.359,
+              "max_closed_equity_drawdown": 998.359,
+              "r9_synth_count": 24382,
+              "r9_synth_volume_fraction": 0.08063325403986547,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.005": {
+          "trained_regimes": 296,
+          "frozen_threshold_approx": 0.19892237794270234,
+          "train_population_estimate": 56740,
+          "months": {
+            "07": {
+              "signal_candidates": 17140,
+              "signals_strict_good": 2118,
+              "signals_neutral": 450,
+              "signals_wrong": 14572,
+              "signals_strict_precision": 0.1235705950991832,
+              "replayed_trades": 9774,
+              "correct": 1215,
+              "incorrect": 8322,
+              "neutral": 237,
+              "precision": 0.12430939226519337,
+              "model_net": -5225.91,
+              "max_closed_equity_drawdown": 5225.91,
+              "r9_synth_count": 24382,
+              "r9_synth_volume_fraction": 0.40086949388893445,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.01": {
+          "trained_regimes": 509,
+          "frozen_threshold_approx": 0.19025167019678188,
+          "train_population_estimate": 113697,
+          "months": {
+            "07": {
+              "signal_candidates": 34893,
+              "signals_strict_good": 4353,
+              "signals_neutral": 1036,
+              "signals_wrong": 29504,
+              "signals_strict_precision": 0.12475281575101023,
+              "replayed_trades": 17282,
+              "correct": 2183,
+              "incorrect": 14627,
+              "neutral": 472,
+              "precision": 0.1263163985649809,
+              "model_net": -9517.543,
+              "max_closed_equity_drawdown": 9517.543,
+              "r9_synth_count": 24382,
+              "r9_synth_volume_fraction": 0.7088015749323271,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        },
+        "0.05": {
+          "trained_regimes": 1262,
+          "frozen_threshold_approx": 0.17534865724772297,
+          "train_population_estimate": 571575,
+          "months": {
+            "07": {
+              "signal_candidates": 197487,
+              "signals_strict_good": 26132,
+              "signals_neutral": 6956,
+              "signals_wrong": 164399,
+              "signals_strict_precision": 0.1323226338948893,
+              "replayed_trades": 48644,
+              "correct": 6125,
+              "incorrect": 41031,
+              "neutral": 1488,
+              "precision": 0.12591480963736534,
+              "model_net": -28918.537,
+              "max_closed_equity_drawdown": 28919.177,
+              "r9_synth_count": 24382,
+              "r9_synth_volume_fraction": 1.9950783364777294,
+              "scope": "DELIBERATE IN-SAMPLE RESEARCH or LOMO CAUSAL GRID; hypothetical original Dukascopy executions NO LATENCY/SLIPPAGE"
+            }
+          }
+        }
+      }
+    }
+  ]
+}
