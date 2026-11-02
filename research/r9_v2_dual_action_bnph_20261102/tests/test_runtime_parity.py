@@ -33,3 +33,14 @@ def test_causal_quote_feature_prefix_equals_original_offline_source():
             np.testing.assert_allclose(actual,d['X'][j],atol=2.e-3,rtol=4.e-4)
             hit+=1
     assert hit==30
+
+def test_frozen_real_model_scores_both_but_remains_fail_closed():
+    from live_dual_router import FrozenDualPolicy
+    root=Path(__file__).resolve().parents[1]
+    p=FrozenDualPolicy(root/'models/coinexx_01_triple_action.txt',
+                       root/'models/coinexx_01_policy_data.npz')
+    x=load('coinexx','01')['X'][10]
+    bb,ss=p.evaluate(x)
+    assert bb.side==1 and ss.side==-1
+    assert 0<=bb.p_correct<=1 and 0<=ss.p_correct<=1
+    assert p.action(x,0.2)==(0,'FAIL_CLOSED_RESEARCH_ONLY')
