@@ -13,7 +13,7 @@ from numba import njit
 from repaired_features import (
     FEATURE_VERSION, LEGACY_FEATURE_COUNT, GRID_LAGS_MS, SEGMENTS_MS,
     GEOMETRY_WINDOWS_MS, EXCITATION_TAUS_MS, GRID_NAMES, EXCITATION_NAMES,
-    REPAIRED_FEATURE_NAMES, REPAIRED_FEATURE_COUNT, CONTEXT_INDICES, CONTEXT_FEATURE_COUNT,
+    REPAIRED_FEATURE_NAMES, REPAIRED_FEATURE_COUNT, CONTEXT_INDICES, CONTEXT_FEATURE_COUNT, GAP_RESET_MS,
 )
 
 GRID_LAGS=np.asarray(GRID_LAGS_MS,np.int64)
@@ -111,9 +111,11 @@ def _geometry_from_samples(sm,sage,current):
 def build_grid_features(t,b,a,idx):
     m=len(idx);L=len(GRID_LAGS)
     now=t[idx];cb=b[idx];ca=a[idx];cm=.5*(cb+ca);cs=ca-cb
+    reset=np.empty(len(t),bool);reset[0]=True;reset[1:]=(t[1:]-t[:-1])>GAP_RESET_MS
+    starts=np.maximum.accumulate(np.where(reset,np.arange(len(t),dtype=np.int64),0));floor=starts[idx]
     sb=np.empty((m,L),np.float64);sa=np.empty((m,L),np.float64);sage=np.empty((m,L),np.int64)
     for q,lag in enumerate(GRID_LAGS):
-        j=np.searchsorted(t,now-lag,side='right')-1;j=np.maximum(j,0)
+        j=np.searchsorted(t,now-lag,side='right')-1;j=np.maximum(j,floor)
         sb[:,q]=b[j];sa[:,q]=a[j];sage[:,q]=now-t[j]
     sm=.5*(sb+sa);ss=sa-sb
     out=np.empty((m,GRID_COUNT),np.float32);col=0
@@ -139,14 +141,18 @@ def build_excitation_features(t,b,a,idx,decays):
     for k in range(len(t)):
         if k>0:
             dt=t[k]-t[k-1]
-            for z in range(len(TAUS)):
-                decay=decays[z,dt] if 0<=dt<=maxdt else math.exp(-dt/TAUS[z])
-                for e in range(6):state[z,e]*=decay
-            db=b[k]-b[k-1];da=a[k]-a[k-1];ds=(a[k]-b[k])-(a[k-1]-b[k-1])
-            vals=(db,-db,da,-da,ds,-ds)
-            for e in range(6):
-                if vals[e]>1e-10:
-                    for z in range(len(TAUS)):state[z,e]+=1.
+            if dt>GAP_RESET_MS:
+                for z in range(len(TAUS)):
+                    for e in range(6):state[z,e]=0.
+            else:
+                for z in range(len(TAUS)):
+                    decay=decays[z,dt] if 0<=dt<=maxdt else math.exp(-dt/TAUS[z])
+                    for e in range(6):state[z,e]*=decay
+                db=b[k]-b[k-1];da=a[k]-a[k-1];ds=(a[k]-b[k])-(a[k-1]-b[k-1])
+                vals=(db,-db,da,-da,ds,-ds)
+                for e in range(6):
+                    if vals[e]>1e-10:
+                        for z in range(len(TAUS)):state[z,e]+=1.
         while row<m and idx[row]==k:
             col=0
             for z in range(len(TAUS)):
