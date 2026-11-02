@@ -1,7 +1,7 @@
 """Source/month/day-agnostic corrected R9 v2 research shard builder.
 
 One invocation creates the direction-neutral observed-250ms teacher universe, the
-228-column v4 causal feature matrix and the 213-column direct WAIT transition view
+228-column v5 causal feature matrix and the 213-column direct WAIT transition view
 from the same source-exact raw feed. It supports Coinexx and Dukascopy without
 renaming code or binding to a machine-specific path.
 """
@@ -32,9 +32,9 @@ def build(raw,source,month,day,out,warmup_ms=300000,max_spread=1.50,chunk_rows=2
  net,good,neutral,cause,exit_ms,duration,mfe,mae,fg,fb=replay_candidate_pairs(t,bid,ask,idx,FEE,HOLD_MS);timing=timing_labels(t[idx],good,net)
  teacher=out/f'{stem}_250ms_universe.npz';np.savez_compressed(teacher,idx=idx,ts=t[idx],bid=bid[idx],ask=ask[idx],net=net,good=good,neutral=neutral,cause=cause,exit_ms=exit_ms,duration=duration,mfe=mfe,mae=mae,first_good_ms=fg,first_bad_ms=fb,**timing)
  valid=np.isfinite(net).all(axis=1);anygood=good.any(axis=1)
- X=build_repaired_raw_features(t,bid,ask,idx,chunk_rows);v4=out/f'{stem}_250ms_v4_X.npy';np.save(v4,X,allow_pickle=False)
+ X=build_repaired_raw_features(t,bid,ask,idx,chunk_rows);entry=out/f'{stem}_250ms_v5_X.npy';np.save(entry,X,allow_pickle=False)
  T=build_timing_features(X,t[idx]);wait=out/f'{stem}_wait_transition_X.npy';np.save(wait,T,allow_pickle=False);wy,wvalid=wait_improves_target({'good':good,'next_dt_ms':timing['next_dt_ms'],'next_any_good':timing['next_any_good']},1000)
- receipt=dict(source=source,month=month,day=day,raw_tick_sha256=sha256(raw),candidates=len(idx),valid_pair_outcomes=int(valid.sum()),buy_strict_good=int(good[:,0].sum()),sell_strict_good=int(good[:,1].sum()),any_strict_good=int(anygood.sum()),any_strict_good_rate=float(anygood.mean()),both_strict_good=int((good.sum(axis=1)==2).sum()),teacher_sha256=sha256(teacher),v4_feature_version=FEATURE_VERSION,v4_features=REPAIRED_FEATURE_COUNT,v4_sha256=sha256(v4),timing_feature_version=TIMING_FEATURE_VERSION,timing_features=TIMING_FEATURE_COUNT,timing_sha256=sha256(wait),direct_wait_improves_positive=int(wy.sum()),direct_wait_improves_rate=float(wy.mean()),next_within_1000ms=int(wvalid.sum()),historical_250ms_sell_bug_teacher_used=False,same_millisecond_later_source_records_used=True,old_specialist_direction_nomination_used=False,runtime_uses_future=False,overlapping_teacher_candidates_are_not_filled_trades=True,elapsed_sec=round(time.monotonic()-start,2))
+ receipt=dict(source=source,month=month,day=day,raw_tick_sha256=sha256(raw),candidates=len(idx),valid_pair_outcomes=int(valid.sum()),buy_strict_good=int(good[:,0].sum()),sell_strict_good=int(good[:,1].sum()),any_strict_good=int(anygood.sum()),any_strict_good_rate=float(anygood.mean()),both_strict_good=int((good.sum(axis=1)==2).sum()),teacher_sha256=sha256(teacher),entry_feature_version=FEATURE_VERSION,entry_features=REPAIRED_FEATURE_COUNT,entry_sha256=sha256(entry),timing_feature_version=TIMING_FEATURE_VERSION,timing_features=TIMING_FEATURE_COUNT,timing_sha256=sha256(wait),direct_wait_improves_positive=int(wy.sum()),direct_wait_improves_rate=float(wy.mean()),next_within_1000ms=int(wvalid.sum()),historical_250ms_sell_bug_teacher_used=False,same_millisecond_later_source_records_used=True,old_specialist_direction_nomination_used=False,runtime_uses_future=False,overlapping_teacher_candidates_are_not_filled_trades=True,elapsed_sec=round(time.monotonic()-start,2))
  rp=out/f'{stem}_domain_shard_receipt.json';rp.write_text(json.dumps(receipt,indent=2));return receipt
 
 def main(a):print(json.dumps(build(a.raw,a.source,a.month,a.day,a.out,a.warmup_ms,a.max_spread,a.chunk_rows),indent=2))
