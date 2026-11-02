@@ -8,6 +8,7 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 import numpy as np
 import pytest
+from types import SimpleNamespace
 from decision import Prediction,OpportunityPrediction,DualActionPolicy,AsymmetricEntryPolicy,Limits,select_dual
 from repaired_features import CONTEXT_NAMES,REPAIRED_FEATURE_NAMES,LaggedQuoteGeometry,QuotePoint,compose_repaired_features
 from build_repaired_matrix import load_checkpoint
@@ -61,3 +62,25 @@ def test_audit_corrupted_250ms_sell_teacher_is_rejected(tmp_path):
     bad.write_bytes(b'not-a-valid-source')
     with pytest.raises(ValueError,match='paired-action FULL_CHECKPOINT'):
         load_checkpoint(bad,'coinexx','01')
+
+
+def test_audit_repaired_runtime_cannot_reach_legacy_specialist(monkeypatch):
+    import live_dual_router as lr
+    from repaired_features import FEATURE_VERSION,REPAIRED_FEATURE_COUNT
+    class FakeClock:
+        def add(self,q):return True
+        def ready(self):return True
+        def features(self,q):return object()
+    def forbidden(*args,**kwargs):
+        raise AssertionError('legacy specialist reached repaired policy path')
+    class FakePath:pass
+    monkeypatch.setattr(lr,'legacy_components',lambda root=None:(FakeClock,forbidden,FakePath))
+    class Policy:
+        feature_version=FEATURE_VERSION
+        def action(self,x,spread):
+            assert np.asarray(x).shape==(REPAIRED_FEATURE_COUNT,)
+            return 0,'WAIT_TEST'
+    rr=lr.DualObservedRouter(Policy())
+    q=SimpleNamespace(utc_ms=1_000_000,bid=100.,ask=100.2,spread=.2)
+    assert rr.on_quote(q)==0
+    assert rr.count['WAIT_TEST']==1
