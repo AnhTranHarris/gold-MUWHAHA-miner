@@ -11,7 +11,7 @@ import bisect, math
 from dataclasses import dataclass
 import numpy as np
 
-FEATURE_VERSION='r9_v2_ordered_quote_grid_v4'
+FEATURE_VERSION='r9_v2_ordered_quote_grid_v5'
 LEGACY_FEATURE_COUNT=102
 LEGACY_HORIZONS_MS=(250,500,1000,5000,15000,45000,300000,900000,3600000,14400000)
 LEGACY_WIN=('mid_disp','spread_avg','bid_disp','ask_disp','event_pressure','spread_change_events','rv','quote_rate','price_path_eff')
