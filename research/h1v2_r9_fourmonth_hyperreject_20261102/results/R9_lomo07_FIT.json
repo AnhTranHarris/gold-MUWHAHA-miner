@@ -1,0 +1,113 @@
+{
+  "mode": "lomo07",
+  "training_months": [
+    "01",
+    "02",
+    "06"
+  ],
+  "frozen_thresholds": {
+    "0.0001": 0.1275358498096466,
+    "0.0005": 0.0990537628531456,
+    "0.001": 0.08356565982103348,
+    "0.005": 0.04890686273574829,
+    "0.01": 0.03833237662911415,
+    "0.03": 0.02719130553305149,
+    "0.05": 0.02325667440891266,
+    "0.1": 0.018646059557795525,
+    "0.25": 0.0131466593593359
+  },
+  "model_sha256": {
+    "0": "9b397933892897ce022b34cbd7fab7b3548f52c35cae24f3d85e7d00276646c2",
+    "1": "de491ef3c1d2dc9cc2c0a20aa86ac6252098c2016737eaeb60540bc2b200c6db"
+  },
+  "training_selected_correctness": {
+    "0.0001": {
+      "n": 7,
+      "good": 4,
+      "strict_precision": 0.5714285714285714
+    },
+    "0.0005": {
+      "n": 31,
+      "good": 8,
+      "strict_precision": 0.25806451612903225
+    },
+    "0.001": {
+      "n": 61,
+      "good": 19,
+      "strict_precision": 0.3114754098360656
+    },
+    "0.005": {
+      "n": 300,
+      "good": 82,
+      "strict_precision": 0.2733333333333333
+    },
+    "0.01": {
+      "n": 600,
+      "good": 151,
+      "strict_precision": 0.25166666666666665
+    },
+    "0.03": {
+      "n": 1800,
+      "good": 397,
+      "strict_precision": 0.22055555555555556
+    },
+    "0.05": {
+      "n": 3000,
+      "good": 642,
+      "strict_precision": 0.214
+    },
+    "0.1": {
+      "n": 6000,
+      "good": 1211,
+      "strict_precision": 0.20183333333333334
+    },
+    "0.25": {
+      "n": 15000,
+      "good": 2826,
+      "strict_precision": 0.1884
+    }
+  },
+  "model_fit_part_receipts": [
+    {
+      "side": 0,
+      "fit_months": [
+        "01",
+        "02",
+        "06"
+      ],
+      "n": 255000,
+      "class_distribution": [
+        209589,
+        9808,
+        35603
+      ],
+      "model_sha256": "9b397933892897ce022b34cbd7fab7b3548f52c35cae24f3d85e7d00276646c2",
+      "trees": 85,
+      "leaves": 55,
+      "selection": "in_sample if evaluating fit month; NOT prospective",
+      "fit_seconds": 9.78
+    },
+    {
+      "side": 1,
+      "fit_months": [
+        "01",
+        "02",
+        "06"
+      ],
+      "n": 255000,
+      "class_distribution": [
+        209966,
+        9662,
+        35372
+      ],
+      "model_sha256": "de491ef3c1d2dc9cc2c0a20aa86ac6252098c2016737eaeb60540bc2b200c6db",
+      "trees": 85,
+      "leaves": 55,
+      "selection": "in_sample if evaluating fit month; NOT prospective",
+      "fit_seconds": 9.28
+    }
+  ],
+  "threshold_sample_monthly": 20000,
+  "fit_features": "R8 41 as-of + R7 12 nested causal axes",
+  "disclaimer": "training label resubstitution, not OOS or deployable performance"
+}
