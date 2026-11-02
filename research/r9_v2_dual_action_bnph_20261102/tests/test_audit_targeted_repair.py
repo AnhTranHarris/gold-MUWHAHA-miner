@@ -3,7 +3,7 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 import numpy as np
 import pytest
-from decision import select_dual,Limits
+from decision import select_dual,Limits,DualActionPolicy,Prediction
 from ordered_quote_geometry import OrderedQuoteGeometry,GEOMETRY_NAMES
 from live_dual_router import ExactQuoteState
 from router_v2_features import Quote
@@ -67,3 +67,29 @@ def test_shadow_uses_frozen_model_contract_and_causal_tape():
     assert len(rr.last_ordered_geometry)==len(GEOMETRY_NAMES)
     assert rr.count['selected_research_actions']==0
     assert len(rr.quotes.vector())==102
+
+def test_online_offline_arbitration_exact_parity():
+    limits=Limits()
+    samples=[
+        ([(.95,.02,.03,-.10),(.84,.05,.11,.20)],-1),
+        ([(.95,.02,.03,.10),(.84,.05,.11,.20)],-1),
+        ([(.90,.05,.05,.20),(.88,.03,.09,.20)],0),
+        ([(.90,.05,.05,-.20),(.84,.05,.11,-.10)],0),
+        ([(.96,.02,.02,.20),(.20,.75,.05,-.10)],1),
+    ]
+    rule=DualActionPolicy(.8,.8,limits)
+    for (bp,sp),expected in samples:
+        buy=Prediction(1,bp[0],bp[1],bp[2],bp[3])
+        sell=Prediction(-1,sp[0],sp[1],sp[2],sp[3])
+        probs=np.array([[[bp[1],bp[2],bp[0]],[sp[1],sp[2],sp[0]]]])
+        net=np.array([[bp[3],sp[3]]])
+        online=rule.decide(buy,sell,.20)[0]
+        offline=int(select_dual(probs,net,[.8,.8],limits)[0])
+        assert online==offline==expected, (bp,sp,online,offline)
+
+def test_invalid_probabilities_and_crossed_spread_fail_closed():
+    p=Prediction(1,.99,.01,-1,.20)
+    s=Prediction(-1,.10,.70,.20,-.10)
+    r=DualActionPolicy(.70,.70,Limits())
+    assert r.decide(p,s,.20)[0]==0
+    assert r.decide(Prediction(1,.95,.02,.03,.20),s,-.1)[0]==0
