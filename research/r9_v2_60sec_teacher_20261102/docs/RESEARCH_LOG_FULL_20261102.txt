@@ -1,0 +1,36 @@
+R9 v2 – FULL-SOURCE 60 SECOND HINDSIGHT TEACHER / CAUSAL FORECAST STUDENT RESEARCH
+Research date: 2026-11-02 UTC, continuation of 2026-11-01 CT owner request.
+STATUS: ACTIVE RESEARCH; NO APPROVED POLICY. DO NOT ALTER EXISTING GITHUB BRANCHES OR SOURCE ARCHIVES.
+
+ORIGINAL PRIMARY SOURCE DOCS (READ THE ENTIRE ORIGINALS, NEVER USE THIS LOG AS SUBSTITUTE FOR THEIR CODE/DATA)
+Original architecture: https://docs.google.com/document/d/1vJPgj_nWadWVALQC0UWB68evqSkKuKwz7KIF_LhXqkA/edit
+Frozen eight-source baseline: https://docs.google.com/document/d/1YZZ8imbGfYUXdtKICasFFw3QPxpcUB2QLiBQANuR44Q/edit
+Earlier chronological student: https://docs.google.com/document/d/10W8PTGCXAi1wRPoIP44_1OwEozH97h0ouL2ejsXxrv8/edit
+Original ordered first passage: https://docs.google.com/document/d/1moZNDhkf-oBjYBzh6dEHQiGMbq-FAh52jke7TcmJmoM/edit
+Paired-action research: https://docs.google.com/document/d/1qeI5ZTk5La3lj1Ncf_6dhDHTFDqLUi1LnilH3oV0Tr0/edit
+Eight-source 250ms timing original: https://docs.google.com/document/d/1yurW_yYdCnPQdhxqexL9TgUqyFkj4muMUPuUmUriufw/edit
+Observed WAIT 19-feature source: https://docs.google.com/document/d/12g3WIZCo9N4ZKTBjs20zjeqABPbTQhZXA-zhntZdDKg/edit
+GitHub observed-WAIT branch: carson/r9-v2-sequential-observed-wait-20261102
+ORIGINAL SOURCE BYTES included separately in previous complete ZIP https://drive.google.com/file/d/1lTFbExRE1YQSVbLElp2M9pBXExgubQRu/view
+Previous 250ms all-action source branch: carson/r9-v2-250ms-action-timing-wait-student-20261102
+The canonical 8 source-month raw datasets are Coinexx and Dukascopy for Jan, Feb, Jun, Jul 2026. This is 4 calendar months * 2 sources, not 8 months on one feed. Raw input files are pinned by SHA256. Other months untouched by training.
+
+SCOPE / OWNER-SIGNED ACCEPTANCE CONSTRAINTS
+A new entry must observe exclusively chronological quote data and actual WAIT re-evaluation. The future one-minute quote path is an OFFLINE TEACHER providing labels, causal parameter fitting and error attribution. Future labels and hindsight-best delay/side may never enter runtime as-of feature arrays, threshold adjustment during heldout runs, or direct order decisions. Observed entry-side ASK/BUY, BID/SELL; observed liquidation-side BID/BUY, ASK/SELL. Preserve individual same-ms tick order. Keep R9 initial 0.30 stop, trailing activation +0.10 and trailing gap 0.03, full 30s exit. A 60s TEACHER does not extend the live trade's 30s exit. Trade survival tests are correctly defined independently at 15s and 30s; strict good = favorable +0.10 executable NET first before liquidation-side adverse -0.10, followed by positive actual close no later than 30s. Neutral/censored is not wrong, nor good. Trade volume must be >=85% of R9 SYNTH 27980/33523/31801/24382 per month, with exact floors 23783/28495/27031/20725; EVERY active day/week/month needs >=80% strict correct and positive actual economical expectation; no zero-trade pass; no synthetic quota-fill.
+
+BUG DISCOVERED IN PREVIOUS PRIMARY SOURCE / ACTION TIMING TEACHER – DO NOT ERASE
+GitHub exact source file research/r9_v2_250ms_action_timing_20261102/src_action_timing.py contains at 2026-11-02 checkpoint:
+    net=(bid[last]-e)*side-.02 if side>0 else (ask[last]-e)*side*(-1)-.02
+For SELL side=-1 the else branch reduces to (ask_exit-bid_entry)-fee instead of the CORRECT (bid_entry-ask_exit)-fee. Future SELL quote-path net in that specific 250ms teacher is SIGN-INVERTED, invalidating its SELL training labels and reported combined ALL-EIGHT action label statistics. Preserve original erroneous data for forensics; DO NOT reuse its short-return target, future-best side counts, or calibrated SELL policies. Earlier independent R9 exit engine does NOT share this sign defect: ActivePath.finish uses (liq-exec_entry)*side-fee. This new offline teacher independently tests profitable and losing SELL with quote-side fills and reconciles all NOW labels and returns against original full-source StrictPath, requiring 0 mismatches before ACCEPTING the teacher dataset. Class disagreement or true net discrepancy aborts publication. 60s gaps are censored, never transformed into positive 30s outcomes.
+
+NEW ADDITIVE MODULES
+src/sequential_base_exact.py — literal derivative of observed-WAIT source with only additive recording of entry source tick ordinal, complete 19 causal feature-bin vector, frozen-policy decision hook and audit counts. The original actual FastClock, SlotHawkes, RollingWindow, 15m/1h/4h MinuteStore, specialist_evidence and TickExactActivePath remain imported from ORIGINAL frozen code. No internal tick engine, historical windows, stop or trail were rebuilt. Offline unfiltered runs do NOT attach policy; old entry conditions are unchanged. The shadow model updates AFTER each completed position.
+src/teacher_60s.py — independently corrected exact-quote BUY/SELL R9 30-second path labeler; 60s maximum research decision horizon. Deferred same-side observations at +250ms, +1s, +3s, +5s, +15s and +30s (and NOW). Candidate future action quote is earliest in source at or after delay with <=5s quote-lag. A future action counts only when closed inside t_decision+60s; all other cases censored neutral. Label arrays and exact feature arrays are stored per source/month with SHA256 source and output manifests.
+src/train_60s.py — chronological 19-feature student: multiclass CORRECT/INCORRECT/NEUTRAL LightGBM and separate WAIT rescue binary model. Fit strictly prior source months and first half of active days in target month. Next ~22% calibration, later dates check. 60s embargo around temporal boundaries, no future month into prior month. Three predeclared model capacity configs, seven calibration thresholds; held-out suffix not optimized against. Expected action score uses p(correct)-1.2*p(incorrect)-0.45*p(neutral)-0.2*p(wait rescue), not a claimed calibrated posterior guarantee. All three classes retained. A calibration failure means no approved policy, not a data deletion.
+src/on_policy_eval.py — model is evaluated only on later, chronologically heldout check suffix, with prior ticks used for original v2 rolling/HTF state warmup. BUY/SELL/WAIT decision depends on observed features at timestamp and frozen earlier calibration. One position maximum, actual source tick quotes, no ex-post quota selection. Monthly full 85% acceptance cannot be asserted from a late-suffix-only check; need a second independently frozen full-period OOS or past-only rolling walk-forward with each month graded.
+
+RESEARCH EXECUTION
+Use original complete source files, NEVER sample to substitute a complete monthly research. Full unfiltered observed-WAIT collection for each of 8 source/months executed as independent processes with distinct checkpoint directories. Every closed trade writes exactly one row, including as-of x19, original trade index and 15/30 strict outcome. Source tick is processed only once per run. 60s oracle labeling applied AFTER original complete month is committed, and cannot enter features because it is in a separate offline phase. Training uses exact files only after their SHA and count reconcile. No MT5 compile or live orders.
+
+EXPLICIT NUMERICAL RESEARCH RECEIPTS / MODEL OUTCOMES
+[Append only after complete source artifact was actually generated, read back and verified. Never fill fields from expectation.]
