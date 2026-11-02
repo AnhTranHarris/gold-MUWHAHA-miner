@@ -22,6 +22,18 @@ class ResearchIntegrity(unittest.TestCase):
    for m in ('01','02','06','07'):
     df=truth[f'{src}_{m}'];v=json.loads((ROOT/'checkpoints'/f'{src}_{m}_feature_receipt.json').read_text())
     self.assertEqual(df['trades'],v['rows'])
+ def test_all_eight_ordered_labels_refine_close_only(self):
+  for src in ('coinexx','dukascopy'):
+   for m in ('01','02','06','07'):
+    r=json.loads((ROOT/'checkpoints'/f'{src}_{m}_ordered_barrier_receipt.json').read_text())
+    orig=json.loads((ROOT/'checkpoints'/f'{src}_{m}_feature_receipt.json').read_text())
+    self.assertEqual(r['rows'],orig['rows'])
+    self.assertLessEqual(r['ordered_good'],orig['labeled_win'])
+ def test_all_ordered_chronological_calibrations_fail_contract(self):
+  for src in ('coinexx','dukascopy'):
+   for m in ('01','02','06','07'):
+    r=json.loads((ROOT/'results'/f'{src}_{m}_ordered_firstpass_chronological.json').read_text())
+    self.assertFalse(any(c['meets80'] and c['positive_expectancy'] for c in r['NP_variants']))
  def test_gate_does_not_pass_empty_periods(self):
   x={'selected':23783,'30s_win_count':23783,'daily_passes':3,'daily_total':4,'weekly_passes':4,'weekly_total':4,'profit_net':123.}
   self.assertFalse(acceptance('coinexx','01',x)['APPROVED'])
