@@ -111,7 +111,7 @@ def _geometry_from_samples(sm,sage,current):
 def build_grid_features(t,b,a,idx):
     m=len(idx);L=len(GRID_LAGS)
     now=t[idx];cb=b[idx];ca=a[idx];cm=.5*(cb+ca);cs=ca-cb
-    sb=np.empty((m,L),np.float32);sa=np.empty((m,L),np.float32);sage=np.empty((m,L),np.int64)
+    sb=np.empty((m,L),np.float64);sa=np.empty((m,L),np.float64);sage=np.empty((m,L),np.int64)
     for q,lag in enumerate(GRID_LAGS):
         j=np.searchsorted(t,now-lag,side='right')-1;j=np.maximum(j,0)
         sb[:,q]=b[j];sa[:,q]=a[j];sage[:,q]=now-t[j]
