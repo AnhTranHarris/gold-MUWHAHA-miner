@@ -80,7 +80,9 @@ class LaggedQuoteGeometry:
             out.extend((sb-lb,sa-la,ss-ls))
         current=(0,mid)
         for horizon in GEOMETRY_WINDOWS_MS:
-            pts=[current]+[(lag,sampled[lag][0]) for lag in GRID_LAGS_MS if lag<=horizon]
+            # Geometry chronology uses the actual observed quote age, not the
+            # nominal requested lag. Sparse ticks and gap-clamped samples can differ.
+            pts=[current]+[(sampled[lag][4],sampled[lag][0]) for lag in GRID_LAGS_MS if lag<=horizon]
             pts.sort(reverse=True);vals=[x[1] for x in pts];ages=[x[0] for x in pts]
             hi=max(vals);lo=min(vals);rng=hi-lo;ih=vals.index(hi);il=vals.index(lo)
             diffs=[vals[k]-vals[k-1] for k in range(1,len(vals))]
