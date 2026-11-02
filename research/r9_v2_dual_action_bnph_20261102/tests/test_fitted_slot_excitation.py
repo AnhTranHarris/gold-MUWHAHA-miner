@@ -2,7 +2,7 @@ import sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 import numpy as np
-from fitted_slot_excitation import _states,design_matrix,fit_nonnegative_ridge,stabilize,TAUS_MS
+from fitted_slot_excitation import _states,design_matrix,fit_nonnegative_ridge,stabilize,TAUS_MS,session_index_utc
 
 def test_state_is_strictly_prior_slot():
  t=np.array([0,250,500],np.int64);c=np.zeros((3,6),np.float32);c[0,0]=2;c[1,1]=1;X=_states(t,c,TAUS_MS)
@@ -11,3 +11,16 @@ def test_state_is_strictly_prior_slot():
 def test_fit_nonnegative_and_stabilize_subcritical():
  rng=np.random.default_rng(3);s=np.abs(rng.normal(size=(200,30)));sess=np.arange(200)%7;X,scale=design_matrix(s,sess);Y=np.abs(rng.normal(size=(200,6)));C=fit_nonnegative_ridge(X,Y,ridge=10.,iterations=2000)
  assert np.all(C>=0);Cs,r0,r1,k,B=stabilize(C,scale,.95);assert np.all(Cs>=0) and r1<=.9500001
+
+
+def _utc_ms(s):
+ import datetime as dt
+ return int(dt.datetime.fromisoformat(s).replace(tzinfo=dt.timezone.utc).timestamp()*1000)
+
+def test_session_mapping_is_dst_aware_not_january_fixed():
+ # London is UTC+1 and New York UTC-4 in July 2026.
+ t=np.array([_utc_ms('2026-07-06T07:30:00'),_utc_ms('2026-07-06T12:30:00'),_utc_ms('2026-07-06T21:05:00')],np.int64)
+ assert session_index_utc(t).tolist()==[2,1,0]  # London, overlap, NY rollover
+ # January remains compatible with the historical UTC mapping.
+ j=np.array([_utc_ms('2026-01-06T08:30:00'),_utc_ms('2026-01-06T13:30:00'),_utc_ms('2026-01-06T22:05:00')],np.int64)
+ assert session_index_utc(j).tolist()==[2,1,0]
