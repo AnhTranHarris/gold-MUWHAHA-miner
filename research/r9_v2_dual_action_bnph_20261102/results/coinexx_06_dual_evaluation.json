@@ -1,0 +1,72 @@
+{
+  "source": "coinexx",
+  "month": "06",
+  "scope": "COMPLETE_SOURCE_PAIR_EVENT_OFF_POLICY",
+  "version": "dual_action_3class_BNP_research_v1",
+  "source_archive": "/mnt/data/v2_direction_audit/R9_V2_PAIRED_ACTION_COINEXX_2026_06_FULL_CHECKPOINT.zip",
+  "source_sha256": "c2a49923792e5335c645ee6a162ea8eb0d9b6e5d5105db03711f86a616a931ef",
+  "original_events": 387283,
+  "excluded_censored": 1,
+  "historical_previous_months": [],
+  "chronological_split": {
+    "days": 27,
+    "fit_end": 1781481600000,
+    "cal_end": 1782086400000,
+    "embargo_ms": 60000
+  },
+  "train_action_rows": 385908,
+  "calibration_event_count": 70817,
+  "check_event_count": 123431,
+  "class_prob_side_auc": [
+    0.5228053163418873,
+    0.5212212056724479
+  ],
+  "baseline_unique_direction": {
+    "n": 64984,
+    "matched": 32834,
+    "accuracy": 0.5052628339283516
+  },
+  "learned_rank_unique_direction": {
+    "n": 64984,
+    "matched": 33598,
+    "accuracy": 0.5170195740489967
+  },
+  "selected_unique_direction": {
+    "n": 0,
+    "matched": 0,
+    "accuracy": null
+  },
+  "side_np_cutoffs": [
+    0.281249353912217,
+    0.2819214390287832
+  ],
+  "side_np_info": [
+    {
+      "status": "CALIBRATED_RESEARCH_ONLY",
+      "bad_n": 52260,
+      "alpha": 0.1,
+      "observed_exceedance": 0.09998086490623805
+    },
+    {
+      "status": "CALIBRATED_RESEARCH_ONLY",
+      "bad_n": 52237,
+      "alpha": 0.1,
+      "observed_exceedance": 0.09996745601776519
+    }
+  ],
+  "calibration_selected": 0,
+  "calibration_selected_strict_correct": 0,
+  "calibration_selected_rate": null,
+  "check_selected": 0,
+  "check_strict_correct": 0,
+  "check_strict_correct_rate": null,
+  "check_selected_net": 0.0,
+  "check_total_unique": 64984,
+  "check_volume_pass": "NOT_EVALUATED: requires full on-policy full-month single-position replay",
+  "qualified_policy": false,
+  "model_status": "RESEARCH_ONLY_NO_PROMOTION",
+  "original_feature_count": 102,
+  "models_use_future_in_inputs": false,
+  "time_s": 14.54,
+  "model_sha256": "5cd1b35db6399e61ba3616e905f01ea018b64c623b59c240c6b9c1cd31145f25"
+}
