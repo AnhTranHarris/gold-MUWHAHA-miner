@@ -94,7 +94,7 @@ def day_bounds(day:str):
 
 def main(a):
     start=time.monotonic();raw=Path(a.raw);out=Path(a.out);out.mkdir(parents=True,exist_ok=True)
-    t,bid,ask=load_raw(raw,a.source,a.month);idx=candidate_indices_250ms(t,bid,ask,a.warmup_ms,a.max_spread)
+    t,bid,ask=load_raw(raw,a.source,a.month);idx=candidate_indices_250ms(t,bid,ask,a.warmup_ms,a.max_spread,a.gap_reset_ms)
     if a.day:
         lo,hi=day_bounds(a.day);m=(t[idx]>=lo)&(t[idx]<hi);idx=idx[m]
     if a.max_candidates and len(idx)>a.max_candidates:idx=idx[:a.max_candidates]
@@ -113,7 +113,7 @@ def main(a):
         buy_strict_good=int(good[:,0].sum()),sell_strict_good=int(good[:,1].sum()),any_strict_good=int(anygood.sum()),
         any_strict_good_rate=float(anygood.mean()),neither_strict_good=int((~anygood).sum()),both_strict_good=int(both.sum()),
         wait_improves_next_observed=int(timing['wait_improves_strict'].sum()),
-        raw_tick_sha256=sha256(raw),dataset_sha256=sha256(path),fee=FEE,hold_ms=HOLD_MS,max_spread=a.max_spread,warmup_ms=a.warmup_ms,
+        raw_tick_sha256=sha256(raw),dataset_sha256=sha256(path),fee=FEE,hold_ms=HOLD_MS,max_spread=a.max_spread,warmup_ms=a.warmup_ms,gap_reset_ms=a.gap_reset_ms,
         historical_250ms_sell_bug_teacher_used=False,same_millisecond_later_source_records_used=True,
         overlapping_teacher_candidates_are_not_filled_trades=True,
         status='TEACHER_UNIVERSE_ONLY_REQUIRES_CAUSAL_FEATURES_AND_ONE_POSITION_ON_POLICY_REPLAY',elapsed_sec=round(time.monotonic()-start,2))
@@ -122,4 +122,4 @@ def main(a):
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--source',choices=('coinexx','dukascopy'),required=True);p.add_argument('--month',required=True)
     p.add_argument('--raw',required=True);p.add_argument('--out',required=True);p.add_argument('--day');p.add_argument('--max-candidates',type=int)
-    p.add_argument('--warmup-ms',type=int,default=300000);p.add_argument('--max-spread',type=float,default=1.50);main(p.parse_args())
+    p.add_argument('--warmup-ms',type=int,default=300000);p.add_argument('--gap-reset-ms',type=int,default=15000);p.add_argument('--max-spread',type=float,default=1.50);main(p.parse_args())
