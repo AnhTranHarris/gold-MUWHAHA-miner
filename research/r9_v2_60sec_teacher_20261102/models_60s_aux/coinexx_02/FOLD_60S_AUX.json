@@ -1,0 +1,594 @@
+{
+  "source": "coinexx",
+  "month": "02",
+  "training_rows": 448880,
+  "future_60s_label": "nonactionable_5_15_30sec_same_side_rescue_teacher_only",
+  "entry_features": "19 causal observed quote/HTF/Hawkes bins; no future labels",
+  "calibration_trials": [
+    {
+      "capacity_idx": 0,
+      "late_penalty": 0.0,
+      "cal_late_auc": 0.5286165628375186,
+      "cal_late_rate": 0.32871250528094637,
+      "thresholds": [
+        {
+          "quantile": 0.5,
+          "threshold": -0.5815197832458477,
+          "selected": 18936,
+          "precision": 0.2906632868610055,
+          "net": -4199.7099609375,
+          "passes": false
+        },
+        {
+          "quantile": 0.75,
+          "threshold": -0.559425368939032,
+          "selected": 9468,
+          "precision": 0.2956273764258555,
+          "net": -2113.510009765625,
+          "passes": false
+        },
+        {
+          "quantile": 0.85,
+          "threshold": -0.5455258265829485,
+          "selected": 5681,
+          "precision": 0.2997711670480549,
+          "net": -1250.93994140625,
+          "passes": false
+        },
+        {
+          "quantile": 0.9,
+          "threshold": -0.5347091081972682,
+          "selected": 3788,
+          "precision": 0.2932946145723337,
+          "net": -870.469970703125,
+          "passes": false
+        },
+        {
+          "quantile": 0.95,
+          "threshold": -0.5192980952517308,
+          "selected": 1894,
+          "precision": 0.3020063357972545,
+          "net": -420.3900146484375,
+          "passes": false
+        },
+        {
+          "quantile": 0.98,
+          "threshold": -0.5010812943373787,
+          "selected": 758,
+          "precision": 0.28232189973614774,
+          "net": -172.69000244140625,
+          "passes": false
+        },
+        {
+          "quantile": 0.99,
+          "threshold": -0.4896731638564847,
+          "selected": 379,
+          "precision": 0.2928759894459103,
+          "net": -83.44999694824219,
+          "passes": false
+        }
+      ]
+    },
+    {
+      "capacity_idx": 0,
+      "late_penalty": 0.15,
+      "cal_late_auc": 0.5286165628375186,
+      "cal_late_rate": 0.32871250528094637,
+      "thresholds": [
+        {
+          "quantile": 0.5,
+          "threshold": -0.6311900861971127,
+          "selected": 18936,
+          "precision": 0.2899767638360794,
+          "net": -4210.14013671875,
+          "passes": false
+        },
+        {
+          "quantile": 0.75,
+          "threshold": -0.6079633306599324,
+          "selected": 9468,
+          "precision": 0.29626108998732575,
+          "net": -2105.719970703125,
+          "passes": false
+        },
+        {
+          "quantile": 0.85,
+          "threshold": -0.5934194845570738,
+          "selected": 5681,
+          "precision": 0.3010033444816054,
+          "net": -1235.0499267578125,
+          "passes": false
+        },
+        {
+          "quantile": 0.9,
+          "threshold": -0.5817428300854249,
+          "selected": 3788,
+          "precision": 0.2946145723336853,
+          "net": -859.219970703125,
+          "passes": false
+        },
+        {
+          "quantile": 0.95,
+          "threshold": -0.5654790731659237,
+          "selected": 1894,
+          "precision": 0.2972544878563886,
+          "net": -424.8299865722656,
+          "passes": false
+        },
+        {
+          "quantile": 0.98,
+          "threshold": -0.5462891550652247,
+          "selected": 758,
+          "precision": 0.2783641160949868,
+          "net": -178.30999755859375,
+          "passes": false
+        },
+        {
+          "quantile": 0.99,
+          "threshold": -0.5334861530382762,
+          "selected": 379,
+          "precision": 0.28232189973614774,
+          "net": -80.23999786376953,
+          "passes": false
+        }
+      ]
+    },
+    {
+      "capacity_idx": 0,
+      "late_penalty": 0.3,
+      "cal_late_auc": 0.5286165628375186,
+      "cal_late_rate": 0.32871250528094637,
+      "thresholds": [
+        {
+          "quantile": 0.5,
+          "threshold": -0.6808139161471033,
+          "selected": 18936,
+          "precision": 0.2892374313476975,
+          "net": -4225.14990234375,
+          "passes": false
+        },
+        {
+          "quantile": 0.75,
+          "threshold": -0.6567327177627447,
+          "selected": 9468,
+          "precision": 0.29647232784114913,
+          "net": -2080.719970703125,
+          "passes": false
+        },
+        {
+          "quantile": 0.85,
+          "threshold": -0.6411473736580393,
+          "selected": 5681,
+          "precision": 0.2987150149621545,
+          "net": -1246.1300048828125,
+          "passes": false
+        },
+        {
+          "quantile": 0.9,
+          "threshold": -0.6288280928344891,
+          "selected": 3788,
+          "precision": 0.2967265047518479,
+          "net": -856.5599975585938,
+          "passes": false
+        },
+        {
+          "quantile": 0.95,
+          "threshold": -0.6114462525727947,
+          "selected": 1894,
+          "precision": 0.2946145723336853,
+          "net": -422.8399963378906,
+          "passes": false
+        },
+        {
+          "quantile": 0.98,
+          "threshold": -0.5914475211155958,
+          "selected": 758,
+          "precision": 0.27440633245382584,
+          "net": -177.3599853515625,
+          "passes": false
+        },
+        {
+          "quantile": 0.99,
+          "threshold": -0.5769109793047859,
+          "selected": 379,
+          "precision": 0.2717678100263852,
+          "net": -78.44000244140625,
+          "passes": false
+        }
+      ]
+    },
+    {
+      "capacity_idx": 1,
+      "late_penalty": 0.0,
+      "cal_late_auc": 0.5286994261923976,
+      "cal_late_rate": 0.32871250528094637,
+      "thresholds": [
+        {
+          "quantile": 0.5,
+          "threshold": -0.5809548894779577,
+          "selected": 18936,
+          "precision": 0.2934621884241656,
+          "net": -4178.56005859375,
+          "passes": false
+        },
+        {
+          "quantile": 0.75,
+          "threshold": -0.5568781861432902,
+          "selected": 9468,
+          "precision": 0.29668356569497256,
+          "net": -2104.98974609375,
+          "passes": false
+        },
+        {
+          "quantile": 0.85,
+          "threshold": -0.5407978854576506,
+          "selected": 5681,
+          "precision": 0.2992430910051047,
+          "net": -1251.14990234375,
+          "passes": false
+        },
+        {
+          "quantile": 0.9,
+          "threshold": -0.5281437552853762,
+          "selected": 3788,
+          "precision": 0.2948785638859556,
+          "net": -860.1700439453125,
+          "passes": false
+        },
+        {
+          "quantile": 0.95,
+          "threshold": -0.5095070134511184,
+          "selected": 1894,
+          "precision": 0.2988384371700106,
+          "net": -432.0999755859375,
+          "passes": false
+        },
+        {
+          "quantile": 0.98,
+          "threshold": -0.4890680637924626,
+          "selected": 758,
+          "precision": 0.2717678100263852,
+          "net": -187.6400146484375,
+          "passes": false
+        },
+        {
+          "quantile": 0.99,
+          "threshold": -0.4714403336336256,
+          "selected": 379,
+          "precision": 0.2849604221635884,
+          "net": -90.90000915527344,
+          "passes": false
+        }
+      ]
+    },
+    {
+      "capacity_idx": 1,
+      "late_penalty": 0.15,
+      "cal_late_auc": 0.5286994261923976,
+      "cal_late_rate": 0.32871250528094637,
+      "thresholds": [
+        {
+          "quantile": 0.5,
+          "threshold": -0.6306076936957272,
+          "selected": 18936,
+          "precision": 0.2920891423743135,
+          "net": -4198.7705078125,
+          "passes": false
+        },
+        {
+          "quantile": 0.75,
+          "threshold": -0.6056540792020653,
+          "selected": 9468,
+          "precision": 0.29647232784114913,
+          "net": -2102.150146484375,
+          "passes": false
+        },
+        {
+          "quantile": 0.85,
+          "threshold": -0.5884820789183316,
+          "selected": 5681,
+          "precision": 0.2992430910051047,
+          "net": -1243.5899658203125,
+          "passes": false
+        },
+        {
+          "quantile": 0.9,
+          "threshold": -0.5747883715467293,
+          "selected": 3788,
+          "precision": 0.2983104540654699,
+          "net": -854.0899658203125,
+          "passes": false
+        },
+        {
+          "quantile": 0.95,
+          "threshold": -0.5552609367597688,
+          "selected": 1894,
+          "precision": 0.29197465681098206,
+          "net": -437.4200134277344,
+          "passes": false
+        },
+        {
+          "quantile": 0.98,
+          "threshold": -0.5336135829221816,
+          "selected": 758,
+          "precision": 0.26517150395778366,
+          "net": -189.85000610351562,
+          "passes": false
+        },
+        {
+          "quantile": 0.99,
+          "threshold": -0.5151580233559891,
+          "selected": 379,
+          "precision": 0.27440633245382584,
+          "net": -91.62999725341797,
+          "passes": false
+        }
+      ]
+    },
+    {
+      "capacity_idx": 1,
+      "late_penalty": 0.3,
+      "cal_late_auc": 0.5286994261923976,
+      "cal_late_rate": 0.32871250528094637,
+      "thresholds": [
+        {
+          "quantile": 0.5,
+          "threshold": -0.6801941131197793,
+          "selected": 18936,
+          "precision": 0.2906632868610055,
+          "net": -4231.14990234375,
+          "passes": false
+        },
+        {
+          "quantile": 0.75,
+          "threshold": -0.6542760326345735,
+          "selected": 9468,
+          "precision": 0.296155471060414,
+          "net": -2101.5400390625,
+          "passes": false
+        },
+        {
+          "quantile": 0.85,
+          "threshold": -0.6358937964317951,
+          "selected": 5681,
+          "precision": 0.2976588628762542,
+          "net": -1244.760009765625,
+          "passes": false
+        },
+        {
+          "quantile": 0.9,
+          "threshold": -0.6215847442275076,
+          "selected": 3788,
+          "precision": 0.2988384371700106,
+          "net": -861.8600463867188,
+          "passes": false
+        },
+        {
+          "quantile": 0.95,
+          "threshold": -0.6007500964827484,
+          "selected": 1894,
+          "precision": 0.2898627243928194,
+          "net": -434.6500244140625,
+          "passes": false
+        },
+        {
+          "quantile": 0.98,
+          "threshold": -0.5780174371810674,
+          "selected": 758,
+          "precision": 0.2638522427440633,
+          "net": -187.47999572753906,
+          "passes": false
+        },
+        {
+          "quantile": 0.99,
+          "threshold": -0.5589901221682773,
+          "selected": 379,
+          "precision": 0.2796833773087071,
+          "net": -86.41000366210938,
+          "passes": false
+        }
+      ]
+    },
+    {
+      "capacity_idx": 2,
+      "late_penalty": 0.0,
+      "cal_late_auc": 0.5286164696278955,
+      "cal_late_rate": 0.32871250528094637,
+      "thresholds": [
+        {
+          "quantile": 0.5,
+          "threshold": -0.5806226370585732,
+          "selected": 18936,
+          "precision": 0.29230038022813687,
+          "net": -4142.10986328125,
+          "passes": false
+        },
+        {
+          "quantile": 0.75,
+          "threshold": -0.5534821730632846,
+          "selected": 9468,
+          "precision": 0.2953105196451204,
+          "net": -2079.75,
+          "passes": false
+        },
+        {
+          "quantile": 0.85,
+          "threshold": -0.5358031150970594,
+          "selected": 5681,
+          "precision": 0.29537053335680336,
+          "net": -1280.3900146484375,
+          "passes": false
+        },
+        {
+          "quantile": 0.9,
+          "threshold": -0.5229609928770519,
+          "selected": 3788,
+          "precision": 0.294350580781415,
+          "net": -871.239990234375,
+          "passes": false
+        },
+        {
+          "quantile": 0.95,
+          "threshold": -0.5014978251623882,
+          "selected": 1894,
+          "precision": 0.2983104540654699,
+          "net": -440.04998779296875,
+          "passes": false
+        },
+        {
+          "quantile": 0.98,
+          "threshold": -0.47610810868586007,
+          "selected": 758,
+          "precision": 0.28100263852242746,
+          "net": -186.5,
+          "passes": false
+        },
+        {
+          "quantile": 0.99,
+          "threshold": -0.4582572204062455,
+          "selected": 379,
+          "precision": 0.27440633245382584,
+          "net": -86.7699966430664,
+          "passes": false
+        }
+      ]
+    },
+    {
+      "capacity_idx": 2,
+      "late_penalty": 0.15,
+      "cal_late_auc": 0.5286164696278955,
+      "cal_late_rate": 0.32871250528094637,
+      "thresholds": [
+        {
+          "quantile": 0.5,
+          "threshold": -0.630071947764749,
+          "selected": 18936,
+          "precision": 0.29103295310519645,
+          "net": -4174.8701171875,
+          "passes": false
+        },
+        {
+          "quantile": 0.75,
+          "threshold": -0.6020723814048696,
+          "selected": 9468,
+          "precision": 0.29710604140261937,
+          "net": -2060.869873046875,
+          "passes": false
+        },
+        {
+          "quantile": 0.85,
+          "threshold": -0.5836512351417196,
+          "selected": 5681,
+          "precision": 0.29501848266150327,
+          "net": -1278.679931640625,
+          "passes": false
+        },
+        {
+          "quantile": 0.9,
+          "threshold": -0.5695000063323533,
+          "selected": 3788,
+          "precision": 0.2954065469904963,
+          "net": -863.530029296875,
+          "passes": false
+        },
+        {
+          "quantile": 0.95,
+          "threshold": -0.5469799832982419,
+          "selected": 1894,
+          "precision": 0.3004223864836325,
+          "net": -421.1199951171875,
+          "passes": false
+        },
+        {
+          "quantile": 0.98,
+          "threshold": -0.5209604665411065,
+          "selected": 758,
+          "precision": 0.2783641160949868,
+          "net": -190.30999755859375,
+          "passes": false
+        },
+        {
+          "quantile": 0.99,
+          "threshold": -0.5024519197843421,
+          "selected": 379,
+          "precision": 0.2638522427440633,
+          "net": -89.87000274658203,
+          "passes": false
+        }
+      ]
+    },
+    {
+      "capacity_idx": 2,
+      "late_penalty": 0.3,
+      "cal_late_auc": 0.5286164696278955,
+      "cal_late_rate": 0.32871250528094637,
+      "thresholds": [
+        {
+          "quantile": 0.5,
+          "threshold": -0.6796884855331082,
+          "selected": 18936,
+          "precision": 0.29061047739754964,
+          "net": -4190.25,
+          "passes": false
+        },
+        {
+          "quantile": 0.75,
+          "threshold": -0.6506908361401423,
+          "selected": 9468,
+          "precision": 0.29678918462188425,
+          "net": -2071.330078125,
+          "passes": false
+        },
+        {
+          "quantile": 0.85,
+          "threshold": -0.6310755537403011,
+          "selected": 5681,
+          "precision": 0.29730681218095406,
+          "net": -1270.679931640625,
+          "passes": false
+        },
+        {
+          "quantile": 0.9,
+          "threshold": -0.6160264372922126,
+          "selected": 3788,
+          "precision": 0.2925026399155227,
+          "net": -863.2799682617188,
+          "passes": false
+        },
+        {
+          "quantile": 0.95,
+          "threshold": -0.5926358064501294,
+          "selected": 1894,
+          "precision": 0.30147835269271384,
+          "net": -426.22998046875,
+          "passes": false
+        },
+        {
+          "quantile": 0.98,
+          "threshold": -0.5655344977018258,
+          "selected": 758,
+          "precision": 0.28100263852242746,
+          "net": -186.77999877929688,
+          "passes": false
+        },
+        {
+          "quantile": 0.99,
+          "threshold": -0.5464490777156671,
+          "selected": 379,
+          "precision": 0.26649076517150394,
+          "net": -91.43000030517578,
+          "passes": false
+        }
+      ]
+    }
+  ],
+  "selected_earlier_calibration": null,
+  "heldout_if_approved_calibration": null,
+  "policy_promoted": false,
+  "model_weights_sha256": {
+    "future_60s_0.txt": "b126cb9bcde451633230e40d382c606f092bc899fdeceb077378d250bd0de1a9",
+    "future_60s_1.txt": "3122a4ff84168f2e21ddf4d4409f99ac6e32ac06c8cf8723efc0c67d5b63a4d7",
+    "future_60s_2.txt": "129d9d44c0ceaa586ca6ee4aabb1cb78687111b50375d007c93c4877507696c9"
+  },
+  "status": "NO_APPROVAL_UNLESS_CAL_VALID_AND_COMPLETE_ON_POLICY_VOLUME_80_SURVIVAL_POSITIVE_NET"
+}
