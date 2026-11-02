@@ -7,6 +7,7 @@ and scaled to branching spectral radius <= 0.95.
 """
 from __future__ import annotations
 import datetime as dt, math
+from zoneinfo import ZoneInfo
 import numpy as np
 from numba import njit
 MODEL_VERSION='r9_v2_fitted_slot_excitation_v1'
@@ -29,12 +30,30 @@ def _states(slot_start,counts,taus):
    for m in range(6):X[r,c]=state[z,m];c+=1
  return X
 
-def session_index_january_utc(slot_start):
- mins=((np.asarray(slot_start,np.int64)//60000)%(24*60)).astype(np.int32);out=np.full(len(mins),6,np.int8)
- sydney=(mins>=21*60)|(mins<6*60);tokyo=(mins>=23*60)|(mins<8*60);london=(mins>=8*60)&(mins<16*60+30);ny=(mins>=13*60)&(mins<22*60)
- overlap=london&ny;rollover=(mins>=21*60+55)&(mins<22*60+15)
+def _local_minute(slot_start,zone):
+ """Vectorized UTC->local minute mapping with DST-aware IANA time zones."""
+ minute_id=np.asarray(slot_start,np.int64)//60000
+ uniq,inv=np.unique(minute_id,return_inverse=True)
+ z=ZoneInfo(zone);mapped=np.empty(len(uniq),np.int16)
+ for i,m in enumerate(uniq):
+  utc=dt.datetime.fromtimestamp(int(m)*60,dt.timezone.utc)
+  local=utc.astimezone(z);mapped[i]=local.hour*60+local.minute
+ return mapped[inv]
+
+def session_index_utc(slot_start):
+ """Map quote slots to the original local-session contract for any month."""
+ sm=_local_minute(slot_start,'Australia/Sydney');tm=_local_minute(slot_start,'Asia/Tokyo')
+ lm=_local_minute(slot_start,'Europe/London');nm=_local_minute(slot_start,'America/New_York')
+ out=np.full(len(sm),6,np.int8)
+ sydney=(sm>=8*60)&(sm<17*60);tokyo=(tm>=8*60)&(tm<17*60)
+ london=(lm>=8*60)&(lm<16*60+30);ny=(nm>=8*60)&(nm<17*60)
+ overlap=london&ny;rollover=(nm>=16*60+55)&(nm<17*60+15)
  out[sydney]=5;out[tokyo]=4;out[ny]=3;out[london]=2;out[overlap]=1;out[rollover]=0
  return out
+
+# Compatibility alias for older January-only research scripts. The implementation
+# is now DST-aware and portable; no January-specific UTC offsets remain.
+session_index_january_utc=session_index_utc
 
 def slot_dataset(t,bid,ask,day):
  d=dt.datetime.strptime(day,'%Y-%m-%d').replace(tzinfo=dt.timezone.utc);lo=int(d.timestamp()*1000);hi=lo+86400000
@@ -43,7 +62,7 @@ def slot_dataset(t,bid,ask,day):
  tt=t[a:b];bb=bid[a:b];aa=ask[a:b];slot=(tt//SLOT_MS)*SLOT_MS;uniq,inv=np.unique(slot,return_inverse=True);n=len(uniq);counts=np.zeros((n,6),np.float32)
  db=np.zeros(len(tt));da=np.zeros(len(tt));ds=np.zeros(len(tt));db[1:]=bb[1:]-bb[:-1];da[1:]=aa[1:]-aa[:-1];spr=aa-bb;ds[1:]=spr[1:]-spr[:-1]
  for m,v in enumerate((db,-db,da,-da,ds,-ds)):counts[:,m]=np.bincount(inv,weights=(v>1e-10).astype(np.float32),minlength=n)
- Xstate=_states(uniq,counts,TAUS_MS);sess=session_index_january_utc(uniq);return uniq,counts,Xstate,sess
+ Xstate=_states(uniq,counts,TAUS_MS);sess=session_index_utc(uniq);return uniq,counts,Xstate,sess
 
 def design_matrix(Xstate,sess,scales=None):
  Xstate=np.asarray(Xstate,np.float64);sess=np.asarray(sess,np.int64)
