@@ -11,7 +11,7 @@ import numpy as np
 from numba import njit
 from repaired_features import (
     GRID_LAGS_MS, SEGMENTS_MS, GEOMETRY_WINDOWS_MS, EXCITATION_TAUS_MS,
-    GRID_NAMES, EXCITATION_NAMES, CONTEXT_NAMES, REPAIRED_FEATURE_COUNT,
+    GRID_NAMES, EXCITATION_NAMES, CONTEXT_NAMES, REPAIRED_FEATURE_COUNT, GAP_RESET_MS,
 )
 
 GRID_LAGS=np.asarray(GRID_LAGS_MS,np.int64)
@@ -28,7 +28,7 @@ for i in range(6):A[i,i]=.035
 for x,y in ((0,2),(2,0),(1,3),(3,1),(4,5),(5,4)):A[x,y]=.025
 BASELINE=.02
 
-def candidate_indices_250ms(t,bid,ask,warmup_ms=300000,max_spread=1.50,gap_reset_ms=15000):
+def candidate_indices_250ms(t,bid,ask,warmup_ms=300000,max_spread=1.50,gap_reset_ms=GAP_RESET_MS):
     """First raw quote of each observed 250 ms slot after direction-neutral warmup.
 
     Warmup is restarted after every quote drought longer than gap_reset_ms.
@@ -63,7 +63,7 @@ def _prefixes(bid,ask):
     return bu,bd,au,ad,sw,sn,ss,path,rv
 
 def build_context_features(t,bid,ask,idx):
-    """Exact 28-column v4 non-specialist context from raw quotes."""
+    """Exact 28-column v5 non-specialist context from raw quotes."""
     t=np.asarray(t,np.int64);bid=np.asarray(bid,np.float64);ask=np.asarray(ask,np.float64);idx=np.asarray(idx,np.int64)
     if np.any(idx<0) or np.any(idx>=len(t)):raise ValueError('candidate index out of range')
     out=np.zeros((len(idx),CONTEXT_COUNT),np.float32)
@@ -112,9 +112,12 @@ def _geometry_from_samples(sm,sage,current,win_counts,windows):
 
 def build_grid_features(t,bid,ask,idx):
     idx=np.asarray(idx,np.int64);m=len(idx);L=len(GRID_LAGS);now=t[idx];cb=bid[idx];ca=ask[idx];cm=.5*(cb+ca);cs=ca-cb
+    # Ordered subminute geometry must not bridge missing quote paths.
+    reset=np.empty(len(t),bool);reset[0]=True;reset[1:]=(t[1:]-t[:-1])>GAP_RESET_MS
+    starts=np.maximum.accumulate(np.where(reset,np.arange(len(t),dtype=np.int64),0));floor=starts[idx]
     sb=np.empty((m,L),np.float64);sa=np.empty((m,L),np.float64);sage=np.empty((m,L),np.int64)
     for q,lag in enumerate(GRID_LAGS):
-        j=np.searchsorted(t,now-lag,side='right')-1;j=np.maximum(j,0);sb[:,q]=bid[j];sa[:,q]=ask[j];sage[:,q]=now-t[j]
+        j=np.searchsorted(t,now-lag,side='right')-1;j=np.maximum(j,floor);sb[:,q]=bid[j];sa[:,q]=ask[j];sage[:,q]=now-t[j]
     sm=.5*(sb+sa);ss=sa-sb;out=np.empty((m,GRID_COUNT),np.float32);col=0
     for q,lag in enumerate(GRID_LAGS):
         out[:,col]=cb-sb[:,q];out[:,col+1]=ca-sa[:,q];out[:,col+2]=cs-ss[:,q];out[:,col+3]=np.minimum(1.5,sage[:,q]/float(lag));col+=4
@@ -133,13 +136,17 @@ def build_excitation_features(t,bid,ask,idx,decays,taus,A_,baseline):
     for k in range(len(t)):
         if k>0:
             dt=t[k]-t[k-1]
-            for z in range(len(taus)):
-                decay=decays[z,dt] if 0<=dt<=maxdt else math.exp(-dt/taus[z])
-                for e in range(6):state[z,e]*=decay
-            db=bid[k]-bid[k-1];da=ask[k]-ask[k-1];ds=(ask[k]-bid[k])-(ask[k-1]-bid[k-1]);vals=(db,-db,da,-da,ds,-ds)
-            for e in range(6):
-                if vals[e]>1e-10:
-                    for z in range(len(taus)):state[z,e]+=1.
+            if dt>GAP_RESET_MS:
+                for z in range(len(taus)):
+                    for e in range(6):state[z,e]=0.
+            else:
+                for z in range(len(taus)):
+                    decay=decays[z,dt] if 0<=dt<=maxdt else math.exp(-dt/taus[z])
+                    for e in range(6):state[z,e]*=decay
+                db=bid[k]-bid[k-1];da=ask[k]-ask[k-1];ds=(ask[k]-bid[k])-(ask[k-1]-bid[k-1]);vals=(db,-db,da,-da,ds,-ds)
+                for e in range(6):
+                    if vals[e]>1e-10:
+                        for z in range(len(taus)):state[z,e]+=1.
         while row<m and idx[row]==k:
             col=0
             for z in range(len(taus)):
