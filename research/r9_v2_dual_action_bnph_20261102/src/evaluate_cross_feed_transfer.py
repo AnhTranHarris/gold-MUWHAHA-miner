@@ -100,7 +100,7 @@ def load_target(root,source,month,day,max_wait_ms,verify_hash=True):
 def load_models(root,month,expected_fit_days):
     models={};receipts={}
     for source in FEEDS:
-        base=f'{source}_{month}_wait_transition_domain_v1';path=Path(root)/f'{base}.txt';rp=Path(root)/f'{base}_fit.json'
+        base=f'{source}_{month}_wait_transition_domain_v2';path=Path(root)/f'{base}.txt';rp=Path(root)/f'{base}_fit.json'
         if not path.is_file() or not rp.is_file():raise FileNotFoundError(f'missing fitted domain model {base}')
         receipt=json.loads(rp.read_text())
         if (receipt['source']!=source or receipt['month']!=month or
@@ -143,7 +143,7 @@ def evaluate_target(target,models,root,month,cal_day,holdout_day,embargo_ms,max_
 def run(root,model_root,month,fit_days,cal_day,holdout_day,out,embargo_ms=60000,max_wait_ms=1000,bootstrap_reps=100,targets=FEEDS):
     month=str(month).zfill(2);models,receipts=load_models(model_root,month,fit_days)
     results={s:evaluate_target(s,models,root,month,cal_day,holdout_day,embargo_ms,max_wait_ms,bootstrap_reps) for s in targets}
-    report=dict(identity='R9_V2_PAIRED_CROSS_FEED_WAIT_TRANSFER_20261102',model_source_sha={s:receipts[s]['model_sha256'] for s in FEEDS},
+    report=dict(identity='R9_V2_PAIRED_CROSS_FEED_WAIT_TRANSFER_V2_20261102',model_source_sha={s:receipts[s]['model_sha256'] for s in FEEDS},
         fit_days=fit_days,calibration_day=cal_day,untouched_holdout_day=holdout_day,months=[month],
         embargo_ms=embargo_ms,wait_horizon_ms=max_wait_ms,feature_version=TIMING_FEATURE_VERSION,
         feed_local_isotonic_on_calibration_A=True,feed_local_np_on_calibration_B=True,
