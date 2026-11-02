@@ -19,11 +19,11 @@ def main(a):
     else:
         y=action_labels(good,neutral)[:,0 if a.target=='buy' else 1];params=dict(objective='multiclass',num_class=3,metric='multi_logloss',**common)
     mdl=lgb.train(params,lgb.Dataset(X[tr],label=y[tr],free_raw_data=True),num_boost_round=a.rounds)
-    out=Path(a.out);out.mkdir(parents=True,exist_ok=True);path=out/f'{a.source}_{a.month}_repaired_{a.target}.txt';mdl.save_model(str(path))
+    out=Path(a.out);out.mkdir(parents=True,exist_ok=True);path=out/f'{a.source}_{a.month}_repaired_v5_{a.target}.txt';mdl.save_model(str(path))
     receipt=dict(source=a.source,month=a.month,target=a.target,feature_version=FEATURE_VERSION,feature_count=REPAIRED_FEATURE_COUNT,
                  rounds=a.rounds,fit_events=int(tr.sum()),split=split,model_sha256=sha256(path),elapsed_sec=round(time.monotonic()-start,2),
                  status='FROZEN_COMPONENT_NOT_POLICY')
-    (out/f'{a.source}_{a.month}_repaired_{a.target}_fit.json').write_text(json.dumps(receipt,indent=2));print(json.dumps(receipt,indent=2))
+    (out/f'{a.source}_{a.month}_repaired_v5_{a.target}_fit.json').write_text(json.dumps(receipt,indent=2));print(json.dumps(receipt,indent=2))
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--target',choices=('opportunity','buy','sell'),required=True);p.add_argument('--source',required=True);p.add_argument('--month',required=True)
     p.add_argument('--features',required=True);p.add_argument('--labels',required=True);p.add_argument('--out',required=True);p.add_argument('--rounds',type=int,default=32);main(p.parse_args())
