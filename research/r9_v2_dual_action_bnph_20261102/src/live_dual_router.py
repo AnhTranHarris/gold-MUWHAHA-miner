@@ -3,8 +3,9 @@
 At every eligible 250ms quote event, it generates [BUY, SELL] views from the
 SAME causal state, predicts both, optionally WAITs, then repeats both after
 later quotes. The old specialist side is recorded only as a continuous context
-feature; it never nominates or locks the action. Uses original source-exact
-103-feature model contract; tests for source feature parity required.
+feature; it never nominates or locks the action. Preserves the original source-exact 102-feature diagnostic contract and, for
+version-aware repaired policies, composes the new 228-feature ordered quote-state
+contract from the same causal tick stream. Source feature parity is tested.
 
 Not deployment code: training is baseline-timestamp off-policy and neither
 model calibration nor profitability criteria passed. FAIL CLOSED by default.
@@ -16,6 +17,7 @@ import numpy as np
 from source_exact import two_views
 from decision import DualActionPolicy,Prediction,Limits
 from competing_hawkes import CompetingQuoteHawkes
+from repaired_features import LaggedQuoteGeometry,compose_repaired_features,FEATURE_VERSION
 
 # Reuse exact frozen v2 & high-volume feature clock, never reconstruct.
 RESTORE=Path('/mnt/data/v2_new_research/restore')
@@ -85,6 +87,7 @@ class FrozenDualPolicy:
         with np.load(policy_file) as d:
             self.cutoffs=d['cutoffs'].copy();self.payoff=d['payoff_bins'].copy()
         if self.model.num_feature()!=103:raise ValueError('feature mismatch')
+        self.feature_version='legacy_r9_v2_102_sideview_v1'
         self.accept_for_research=bool(accept_for_research)
     def evaluate(self,x):
         # Side order is absolutely [BUY,SELL], independent of baseline.
@@ -107,11 +110,12 @@ class DualObservedRouter:
     """Reevaluation after every observed tick-slot, no fixed pending.side.
 
     Does not execute orders: research shadow decisions use complete original
-    FastClock and independent exact 102-feature quote state. If policy absent,
-    all eligible decisions WAIT; this is the only safe default.
+    FastClock, independent exact 102-feature quote state and repaired ordered quote
+    geometry. If policy is absent, all eligible decisions WAIT; this is the only
+    safe default.
     """
     def __init__(self,policy=None):
-        self.clock=FastClock();self.quotes=ExactQuoteState();self.policy=policy
+        self.clock=FastClock();self.quotes=ExactQuoteState();self.geometry=LaggedQuoteGeometry();self.policy=policy
         self.hawkes=CompetingQuoteHawkes();self.last_hawkes=None
         self.count=collections.Counter();self.history=[]
         self.last_action=0
@@ -127,6 +131,7 @@ class DualObservedRouter:
                 self.count['completed_positions']+=1
                 self.active=None;closed=True
         self.quotes.append(q)
+        self.geometry.append(q)
         self.hawkes.observe(q.utc_ms,q.bid,q.ask)
         flushed=self.clock.add(q)
         self.count['ticks']+=1
@@ -137,12 +142,14 @@ class DualObservedRouter:
         old_side,evidence,lane,pressure,cost=specialist_evidence(f)
         # Old specialist is causal contextual observation, NOT direction choice.
         x=self.quotes.vector(evidence=float(evidence),lane_reversal=float(lane=='reversal'))
-        # Marked 6-channel Hawkes state is recorded as a causal companion to
-        # both actions, NOT an untrained probability boost in the 103-feature
-        # frozen diagnostic. A future retraining may admit these features only
-        # after strict online/offline feature parity and chronological fit.
+        # Six-channel quote excitation remains excluded from the frozen legacy
+        # diagnostic. The repaired v4 contract admits its causal state as model
+        # input only; it is never added post-hoc as a probability boost.
         self.last_hawkes=self.hawkes.features()
-        side,reason=self.policy.action(x,q.spread) if self.policy else (0,'NO_CALIBRATED_DUAL_POLICY')
+        policy_x=x
+        if self.policy is not None and getattr(self.policy,'feature_version',None)==FEATURE_VERSION:
+            policy_x=compose_repaired_features(x,self.geometry,self.last_hawkes)
+        side,reason=self.policy.action(policy_x,q.spread) if self.policy else (0,'NO_CALIBRATED_DUAL_POLICY')
         self.count['decision_events']+=1;self.count[reason]+=1
         if side:
             self.count['selected_research_actions']+=1
