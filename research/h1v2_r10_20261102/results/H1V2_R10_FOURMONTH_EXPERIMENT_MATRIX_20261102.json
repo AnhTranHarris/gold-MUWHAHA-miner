@@ -1,0 +1,338 @@
+{
+  "release": "H1V2 R10",
+  "date": "2026-11-02",
+  "status": "RESEARCH_NEGATIVE_NOT_VALIDATED",
+  "months": [
+    "01",
+    "02",
+    "06",
+    "07"
+  ],
+  "source_25ms": "no, first-observed raw-quote in 250ms slot",
+  "baseline_r9_sha": "f559f9768331bfa520f090bde02dcd108d22b661",
+  "full_month_rows": {
+    "01": 4025968,
+    "02": 3112593,
+    "06": 4190620,
+    "07": 4072211
+  },
+  "head_to_head": {
+    "01": {
+      "r10": {
+        "score_fraction": "0.03",
+        "trades": 49098,
+        "strict_correct": 9171,
+        "strict_precision": 0.18678968593425394,
+        "net": -30776.47
+      },
+      "r9": {
+        "score_fraction": "0.03",
+        "trades": 47854,
+        "strict_correct": 9711,
+        "strict_precision": 0.2029297446399465,
+        "net": -28920.73
+      }
+    },
+    "02": {
+      "r10": {
+        "score_fraction": "0.01",
+        "trades": 29152,
+        "strict_correct": 6597,
+        "strict_precision": 0.22629665203073546,
+        "net": -20220.95
+      },
+      "r9": {
+        "score_fraction": "0.01",
+        "trades": 28036,
+        "strict_correct": 7094,
+        "strict_precision": 0.25303181623626764,
+        "net": -17765.1
+      }
+    },
+    "06": {
+      "r10": {
+        "score_fraction": "0.01",
+        "trades": 32247,
+        "strict_correct": 6877,
+        "strict_precision": 0.2132601482308432,
+        "net": -15239.87
+      },
+      "r9": {
+        "score_fraction": "0.01",
+        "trades": 34211,
+        "strict_correct": 7665,
+        "strict_precision": 0.2240507439127766,
+        "net": -14642.59
+      }
+    },
+    "07": {
+      "r10": {
+        "score_fraction": "0.03",
+        "trades": 26881,
+        "strict_correct": 4332,
+        "strict_precision": 0.16115471894646777,
+        "net": -15255.23
+      },
+      "r9": {
+        "score_fraction": "0.03",
+        "trades": 34498,
+        "strict_correct": 5735,
+        "strict_precision": 0.16624152124760855,
+        "net": -18965.34
+      }
+    }
+  },
+  "cohort_sweep": {
+    "01": [
+      {
+        "grid": "slow_legacy_nested",
+        "observed_groups": 6402,
+        "max_wilson_lower_n16": 0.33716069428251627,
+        "positive_mean_net_groups_n16": 4,
+        "max_one_position_trades": 1763,
+        "any_joint_pass": false
+      },
+      {
+        "grid": "micro_swing",
+        "observed_groups": 2228,
+        "max_wilson_lower_n16": 0.26164801196088106,
+        "positive_mean_net_groups_n16": 0,
+        "max_one_position_trades": 112,
+        "any_joint_pass": false
+      },
+      {
+        "grid": "quote_liquidity",
+        "observed_groups": 58126,
+        "max_wilson_lower_n16": 0.3072180469247956,
+        "positive_mean_net_groups_n16": 2,
+        "max_one_position_trades": 1449,
+        "any_joint_pass": false
+      },
+      {
+        "grid": "trend_within_trend",
+        "observed_groups": 64257,
+        "max_wilson_lower_n16": 0.46705959494080457,
+        "positive_mean_net_groups_n16": 3,
+        "max_one_position_trades": 4341,
+        "any_joint_pass": false
+      },
+      {
+        "grid": "full_motif",
+        "observed_groups": 334711,
+        "max_wilson_lower_n16": 0.41299966721211817,
+        "positive_mean_net_groups_n16": 6,
+        "max_one_position_trades": 12694,
+        "any_joint_pass": false
+      }
+    ],
+    "02": [
+      {
+        "grid": "slow_legacy_nested",
+        "observed_groups": 6315,
+        "max_wilson_lower_n16": 0.36124029356039444,
+        "positive_mean_net_groups_n16": 5,
+        "max_one_position_trades": 4918,
+        "any_joint_pass": false
+      },
+      {
+        "grid": "micro_swing",
+        "observed_groups": 2392,
+        "max_wilson_lower_n16": 0.38640647097934805,
+        "positive_mean_net_groups_n16": 0,
+        "max_one_position_trades": 5816,
+        "any_joint_pass": false
+      },
+      {
+        "grid": "quote_liquidity",
+        "observed_groups": 52694,
+        "max_wilson_lower_n16": 0.40785179603745997,
+        "positive_mean_net_groups_n16": 1,
+        "max_one_position_trades": 3474,
+        "any_joint_pass": false
+      },
+      {
+        "grid": "trend_within_trend",
+        "observed_groups": 72003,
+        "max_wilson_lower_n16": 0.33716069428251627,
+        "positive_mean_net_groups_n16": 4,
+        "max_one_position_trades": 10124,
+        "any_joint_pass": false
+      },
+      {
+        "grid": "full_motif",
+        "observed_groups": 322302,
+        "max_wilson_lower_n16": 0.38640647097934805,
+        "positive_mean_net_groups_n16": 18,
+        "max_one_position_trades": 15083,
+        "any_joint_pass": false
+      }
+    ],
+    "06": [
+      {
+        "grid": "slow_legacy_nested",
+        "observed_groups": 5834,
+        "max_wilson_lower_n16": 0.30031003928960015,
+        "positive_mean_net_groups_n16": 1,
+        "max_one_position_trades": 4210,
+        "any_joint_pass": false
+      },
+      {
+        "grid": "micro_swing",
+        "observed_groups": 2205,
+        "max_wilson_lower_n16": 0.22680806269918058,
+        "positive_mean_net_groups_n16": 0,
+        "max_one_position_trades": 364,
+        "any_joint_pass": false
+      },
+      {
+        "grid": "quote_liquidity",
+        "observed_groups": 50174,
+        "max_wilson_lower_n16": 0.3317819560677652,
+        "positive_mean_net_groups_n16": 2,
+        "max_one_position_trades": 2433,
+        "any_joint_pass": false
+      },
+      {
+        "grid": "trend_within_trend",
+        "observed_groups": 63508,
+        "max_wilson_lower_n16": 0.41299966721211817,
+        "positive_mean_net_groups_n16": 1,
+        "max_one_position_trades": 6841,
+        "any_joint_pass": false
+      },
+      {
+        "grid": "full_motif",
+        "observed_groups": 301386,
+        "max_wilson_lower_n16": 0.3600507438551554,
+        "positive_mean_net_groups_n16": 3,
+        "max_one_position_trades": 15453,
+        "any_joint_pass": false
+      }
+    ],
+    "07": [
+      {
+        "grid": "slow_legacy_nested",
+        "observed_groups": 5916,
+        "max_wilson_lower_n16": 0.3861866858065617,
+        "positive_mean_net_groups_n16": 2,
+        "max_one_position_trades": 199,
+        "any_joint_pass": false
+      },
+      {
+        "grid": "micro_swing",
+        "observed_groups": 1832,
+        "max_wilson_lower_n16": 0.33716069428251627,
+        "positive_mean_net_groups_n16": 0,
+        "max_one_position_trades": 76,
+        "any_joint_pass": false
+      },
+      {
+        "grid": "quote_liquidity",
+        "observed_groups": 42773,
+        "max_wilson_lower_n16": 0.5273775411082839,
+        "positive_mean_net_groups_n16": 1,
+        "max_one_position_trades": 441,
+        "any_joint_pass": false
+      },
+      {
+        "grid": "trend_within_trend",
+        "observed_groups": 56107,
+        "max_wilson_lower_n16": 0.2799923761135083,
+        "positive_mean_net_groups_n16": 2,
+        "max_one_position_trades": 1012,
+        "any_joint_pass": false
+      },
+      {
+        "grid": "full_motif",
+        "observed_groups": 258927,
+        "max_wilson_lower_n16": 0.3072180469247956,
+        "positive_mean_net_groups_n16": 1,
+        "max_one_position_trades": 2694,
+        "any_joint_pass": false
+      }
+    ]
+  },
+  "lomo_july": {
+    "in_fit": false,
+    "training_months": [
+      "01",
+      "02",
+      "06"
+    ],
+    "first_volume_cutoff": [
+      "0.03",
+      {
+        "candidate_signals": 66890,
+        "candidate_strict_good": 10452,
+        "candidate_precision": 0.15625654058902677,
+        "replay_count": 34725,
+        "replay_good": 5302,
+        "replay_bad": 28613,
+        "replay_neutral": 810,
+        "replay_precision": 0.15268538516918648,
+        "modeled_net": -18680.92,
+        "nonoverlap_80pct_synth_floor": 19506,
+        "joint_80pct": false
+      }
+    ],
+    "best_any_threshold": [
+      "0.0001",
+      {
+        "candidate_signals": 50,
+        "candidate_strict_good": 18,
+        "candidate_precision": 0.36,
+        "replay_count": 50,
+        "replay_good": 18,
+        "replay_bad": 30,
+        "replay_neutral": 2,
+        "replay_precision": 0.36,
+        "modeled_net": -13.63,
+        "nonoverlap_80pct_synth_floor": 19506,
+        "joint_80pct": false
+      }
+    ]
+  },
+  "integrity": {
+    "01": {
+      "raw_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "original_h1v2_teacher_sha256": "1ab88d87409f81bf0966fcb21eabff17b47663962be66de29bf98b8d33eb3b49",
+      "r10_order_grammar_sha256": "faf4285cd9a5a427f5a78f0e0906be2f2f15fba512c8a00dac662eacfb2791c8"
+    },
+    "02": {
+      "raw_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+      "original_h1v2_teacher_sha256": "521e9244fa42360d429317df22049208d1538f985e5823551116a2fe7a8069eb",
+      "r10_order_grammar_sha256": "6ddedaff4e05d4941230a1854266e25ee56f5726c099e7a7331caaff773bb32f"
+    },
+    "06": {
+      "raw_sha256": "34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2",
+      "original_h1v2_teacher_sha256": "54b1a4300b0b9a3aabb28bb016041c947eb29908cad4d6b6083c0bafcffef138",
+      "r10_order_grammar_sha256": "3a0c6805266fad51e74ea30a672fbf0367cf207b50157add968ddbf310718c09"
+    },
+    "07": {
+      "raw_sha256": "e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7",
+      "original_h1v2_teacher_sha256": "1e941322b0198110b62289f0baf6228aa17f80de7b391121ce43a74e1d397644",
+      "r10_order_grammar_sha256": "6b7a4b32d28b814334c5ad4dd49493fbcd2b9a9654957fa774568138640d04b9"
+    }
+  },
+  "experiment_count": {
+    "cohort_grid_months": 20,
+    "cohort_gate_combinations": 600,
+    "direct_class_250ms_frozen_threshold_month_trials": 36,
+    "july_left_out_trials": 9,
+    "overall": 645
+  },
+  "training_budget": {
+    "full_in_sample_cohort_fit": "all 15401392 quote slots in each months in-sample cohort tally",
+    "direct_lightgbm_all4": "40000 rows/month; 160000 rows, 30 trees,31 leaves,3-way multiclass 101 asof features",
+    "direct_lightgbm_lomo07": "40000 rows x 3 months;120000 training rows",
+    "failed_unsaved_fits": "two attempts 180000 rows/month with 180-tree/127-leaf and 72-tree/47-leaf timed out without model or result; never count as trained"
+  },
+  "warnings": [
+    "All four months previously exposed; no independent blind OOS",
+    "R10 direct LightGBM uses 160k fitted rows, not all 15.4m; however scores and 30s-replays all 15.4m in original quote ordinal",
+    "All same-month motif cohort stats use future training labels and are not prospective/predictive",
+    "Research fee $0.02 and Dukascopy original spread used, no MT5 fill/speed/slippage/margin or Coinexx equivalent",
+    "Do not use banned inverted SELL teacher; no modification original R9 exit code",
+    "Original H1V2 strict success = first +$0.10 net before -$0.10 adverse, final positive R9 net and <=30s"
+  ]
+}

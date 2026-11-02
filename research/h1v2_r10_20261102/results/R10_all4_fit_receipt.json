@@ -1,0 +1,61 @@
+{
+  "mode": "all4",
+  "training_months": [
+    "01",
+    "02",
+    "06",
+    "07"
+  ],
+  "fitted_training_rows": 160000,
+  "sample_per_month": 40000,
+  "all_four_months_scored_in_full": false,
+  "label_class_counts": [
+    117602,
+    21327,
+    21071
+  ],
+  "feature_set": "R8 41 asof + R7 12 asof + R10 48 raw-order asof",
+  "trees": 30,
+  "leaves": 31,
+  "class_weight": {
+    "neutral": 1,
+    "buy_good": 2.5,
+    "sell_good": 2.5
+  },
+  "frozen_training_only_thresholds": {
+    "0.0001": 0.07337635010480881,
+    "0.0005": 0.06363348662853241,
+    "0.001": 0.05874301493167877,
+    "0.005": 0.05047577992081642,
+    "0.01": 0.04714908078312874,
+    "0.03": 0.042106661945581436,
+    "0.05": 0.039821792393922806,
+    "0.1": 0.03658720850944519,
+    "0.25": 0.03185460716485977
+  },
+  "model_sha256": "9536cb058f60e88eb2570600dd44b5bd2faa38e07238c9773e7e45042d46eb12",
+  "training_sources": [
+    {
+      "month": "01",
+      "rows": 40000,
+      "asof_feature_sha256": "faf4285cd9a5a427f5a78f0e0906be2f2f15fba512c8a00dac662eacfb2791c8"
+    },
+    {
+      "month": "02",
+      "rows": 40000,
+      "asof_feature_sha256": "6ddedaff4e05d4941230a1854266e25ee56f5726c099e7a7331caaff773bb32f"
+    },
+    {
+      "month": "06",
+      "rows": 40000,
+      "asof_feature_sha256": "3a0c6805266fad51e74ea30a672fbf0367cf207b50157add968ddbf310718c09"
+    },
+    {
+      "month": "07",
+      "rows": 40000,
+      "asof_feature_sha256": "6b7a4b32d28b814334c5ad4dd49493fbcd2b9a9654957fa774568138640d04b9"
+    }
+  ],
+  "fit_seconds": 6.08,
+  "status": "HEAVILY_IN_SAMPLE_FUTURE_TARGETS_TRAINING_NOT_FORESIGHT"
+}
