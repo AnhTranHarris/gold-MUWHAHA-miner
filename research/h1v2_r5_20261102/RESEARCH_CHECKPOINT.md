@@ -1,0 +1,7 @@
+# H1V2 R5 independent continuation — 2026-11-02
+
+Branch `carson/h1v2-r5-fitted-excitation-asymmetric-20261102` from verified R4 HEAD `469f5bff1ee9158c7048c80bccf289cce90feb82`. Original R9 engine unchanged. Existing R2-R4 negative results accepted without replay/reuse as proof. Source raw 2026-01,02,06,07 Dukascopy SHA pinned by original H1V2. This work uses same existing 60,000 250ms candidate rows with R2 independent BUY/SELL labels. This cannot certify full market throughput, live profitability or 80% foresight.
+
+New distinct R5 hypothesis: future *quote revision mark arrival rate* can be modeled with a FITTED six-mark, nonnegative cross-excitation 1s ahead intensity GLM using past-only 250ms/1s/5s decays. This is Hawkes-inspired discrete observational model, **not** continuous-time Hawkes likelihood or order book Hawkes. Compare constant-rate, self-exciting only and all-six-cross-exciting models on July. Then use trained intensities as additional as-of features to test if they improve strict BUY/SELL/WAIT mark-independent 30s source-exact label ranking over the frozen R4 baseline. Four-month deliberately contaminated resubstitution reported separately. Use July withheld in diagnostic.
+
+Safety: No label or future quote may enter feature matrix, original source hashes validated, equal millisecond row-ordinal preserved, all models research-only. Interim frozen checkpoint uploaded before long computations.
