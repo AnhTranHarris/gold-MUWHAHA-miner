@@ -5,6 +5,9 @@ import numpy as np
 from sklearn.isotonic import IsotonicRegression
 from sklearn.metrics import roc_auc_score,log_loss
 from decision import select_dual
+from repaired_features import REPAIRED_FEATURE_NAMES
+
+SPREAD_INDEX=REPAIRED_FEATURE_NAMES.index('spread')
 
 def sha256(path):
     h=hashlib.sha256()
@@ -80,11 +83,19 @@ def raw_action_predict(models,X):
     buy,sell=models
     return np.stack((buy.predict(X,num_threads=2),sell.predict(X,num_threads=2)),axis=1)
 
+def runtime_entry_mask(pop,opp_cut,X,limits):
+    """Offline mirror of live opportunity + hard spread admission gates."""
+    X=np.asarray(X);pop=np.asarray(pop,float)
+    if X.ndim!=2 or len(X)!=len(pop):raise ValueError('runtime gate matrix contract')
+    spread=np.asarray(X[:,SPREAD_INDEX],float)
+    return (pop>=limits.min_opportunity)&(pop>opp_cut)&np.isfinite(spread)&(spread<=limits.max_spread)
+
+
 def eval_policy(name,mask,X,good,net,opp_model,opp_iso,action_models,priors,w,isos,opp_cut,side_cut,paybins,limits,baseline_side):
     rows=np.where(mask)[0];xx=X[rows];pop=apply_iso(opp_iso,opp_model.predict(xx,num_threads=2))
     q=apply_action_calibration(raw_action_predict(action_models,xx),priors,w,isos)
     side=select_dual(q,expected_from_bins(q,paybins),side_cut,limits)
-    opp_ok=(pop>=limits.min_opportunity)&(pop>opp_cut);act=np.where(opp_ok,side,0).astype(np.int8)
+    opp_ok=runtime_entry_mask(pop,opp_cut,xx,limits);act=np.where(opp_ok,side,0).astype(np.int8)
     chosen=act!=0;sidecol=np.where(act==1,0,1);rr=np.arange(len(act));g=np.asarray(good)[rows];nnet=np.asarray(net)[rows]
     any_good=g.any(axis=1);one_good=g.sum(axis=1)==1;neither=~any_good;truth=np.where(g[:,0]==1,1,-1);ranked=np.where(q[:,0,2]>=q[:,1,2],1,-1)
     n=int(chosen.sum());correct=int(g[rr[chosen],sidecol[chosen]].sum()) if n else 0;actual=float(np.nansum(nnet[rr[chosen],sidecol[chosen]])) if n else 0.
