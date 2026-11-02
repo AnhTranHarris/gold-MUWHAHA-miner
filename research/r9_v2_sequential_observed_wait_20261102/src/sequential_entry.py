@@ -27,17 +27,40 @@ class OnlineThreeClass:
     CLASSES=('CORRECT','INCORRECT','NEUTRAL')
     def __init__(self,bins=12):
         self.bins=bins;self.n=0;self.nclass=[0]*3
-        self.data=[[[0]*bins for _ in range(3)] for _ in range(7)]
+        self.k=19
+        self.data=[[[0]*bins for _ in range(3)] for _ in range(self.k)]
     def encode(self,side,pending,q,clock):
+        """19 fully causal features across quote response, subsecond Hawkes,
+        5m realized geometry, completed 15m/1h/4h priors and UTC session.
+        No absent HTF value is silently replaced with a fabricated trend.
+        """
         d=q.utc_ms-pending.t
         db=side*(q.bid-pending.bid);da=side*(q.ask-pending.ask)
-        mid=(db+da)*.5
-        spr=q.spread-pending.spread
+        mid=(db+da)*.5;spr=q.spread-pending.spread
+        f=clock.features(q)
+        w=f['w'];h=f['h'];geo=f['geo']
         def bucket(v,scale):return max(0,min(self.bins-1,int(v/scale+self.bins*.5)))
-        return (bucket(db,.02),bucket(da,.02),bucket(min(db,da),.02),
-                bucket(spr,.02),bucket(mid,.02),
-                min(self.bins-1,d//250),
-                min(self.bins-1,int(q.spread/.15)))
+        def signed_geo(n):
+            v=geo.get(n)
+            return 0 if v is None else max(1,bucket(side*v,.20))
+        session=f['session']
+        # Session is one non-ordinal category (hash-free fixed lookup).
+        code={'sydney':1,'tokyo':2,'london':3,'overlap':4,
+              'new_york':5,'rollover':6,'off':7}.get(session,8)
+        x=(bucket(db,.02),bucket(da,.02),bucket(min(db,da),.02),
+           bucket(spr,.02),bucket(mid,.02),min(self.bins-1,d//250),
+           min(self.bins-1,int(q.spread/.15)),
+           bucket(side*w[5000]['disp'],.05),
+           bucket(side*w[45000]['disp'],.10),
+           bucket(side*(w[300000]['pos']-.5),.10),
+           min(self.bins-1,int(w[300000]['eff']*self.bins)),
+           min(self.bins-1,int(w[300000]['vol']/.10)),
+           bucket(side*h[1000]['dir'],.17),
+           bucket(side*h[5000]['dir'],.17),
+           bucket(h[1000]['sp'],.17),
+           signed_geo(15),signed_geo(60),signed_geo(240),min(self.bins-1,code))
+        assert len(x)==self.k and all(0<=v<self.bins for v in x)
+        return x
     def predict(self,x):
         if self.n<200:return None
         z=[]
