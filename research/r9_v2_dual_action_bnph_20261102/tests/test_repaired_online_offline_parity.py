@@ -41,3 +41,20 @@ def test_later_same_millisecond_quote_cannot_change_current_repaired_features():
     bid2=bid.copy();ask2=ask.copy();bid2[idx[0]+1]-=20.;ask2[idx[0]+1]-=20.
     b=build_repaired_raw_features(t,bid2,ask2,idx)
     np.testing.assert_allclose(a,b,atol=0.,rtol=0.)
+
+
+def test_quote_gap_resets_online_and_offline_subminute_state_identically():
+    pre=np.arange(0,5000,250,dtype=np.int64)
+    post=np.arange(25000,30000,250,dtype=np.int64)
+    t=np.concatenate((pre,post))
+    k=np.arange(len(t),dtype=np.float64);mid=100.+.01*k;bid=mid-.1;ask=mid+.1
+    geom=LaggedQuoteGeometry();hawk=CompetingQuoteHawkes()
+    for ti,bi,ai in zip(t,bid,ask):
+        geom.append(QuotePoint(int(ti),float(bi),float(ai)));hawk.observe(int(ti),float(bi),float(ai))
+    idx=np.array([len(t)-1],np.int64)
+    grid=build_grid_features(t,bid,ask,idx)[0]
+    exc,hit=build_excitation_features(t,bid,ask,idx,decay_table(),TAUS,A,BASELINE)
+    assert hit==1
+    assert geom.coverage_ms()==int(post[-1]-post[0])
+    np.testing.assert_allclose(geom.snapshot(),grid,atol=2e-6,rtol=2e-6)
+    np.testing.assert_allclose(excitation_vector(hawk.features()),exc[0],atol=2e-6,rtol=2e-6)
