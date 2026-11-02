@@ -16,6 +16,7 @@ import numpy as np
 from source_exact import two_views
 from decision import DualActionPolicy,Prediction,Limits
 from competing_hawkes import CompetingQuoteHawkes
+from ordered_quote_geometry import OrderedQuoteGeometry
 
 # Reuse exact frozen v2 & high-volume feature clock, never reconstruct.
 RESTORE=Path('/mnt/data/v2_new_research/restore')
@@ -110,8 +111,11 @@ class DualObservedRouter:
     FastClock and independent exact 102-feature quote state. If policy absent,
     all eligible decisions WAIT; this is the only safe default.
     """
-    def __init__(self,policy=None):
+    def __init__(self,policy=None,track_ordered_geometry=False):
         self.clock=FastClock();self.quotes=ExactQuoteState();self.policy=policy
+        # Shadow-only: never append 99 new fields to the frozen 103-feature model.
+        self.geometry=OrderedQuoteGeometry() if track_ordered_geometry else None
+        self.last_ordered_geometry=None
         self.hawkes=CompetingQuoteHawkes();self.last_hawkes=None
         self.count=collections.Counter();self.history=[]
         self.last_action=0
@@ -127,6 +131,7 @@ class DualObservedRouter:
                 self.count['completed_positions']+=1
                 self.active=None;closed=True
         self.quotes.append(q)
+        if self.geometry is not None:self.geometry.append(q.utc_ms,q.bid,q.ask)
         self.hawkes.observe(q.utc_ms,q.bid,q.ask)
         flushed=self.clock.add(q)
         self.count['ticks']+=1
@@ -142,6 +147,7 @@ class DualObservedRouter:
         # frozen diagnostic. A future retraining may admit these features only
         # after strict online/offline feature parity and chronological fit.
         self.last_hawkes=self.hawkes.features()
+        if self.geometry is not None:self.last_ordered_geometry=self.geometry.snapshot()
         side,reason=self.policy.action(x,q.spread) if self.policy else (0,'NO_CALIBRATED_DUAL_POLICY')
         self.count['decision_events']+=1;self.count[reason]+=1
         if side:

@@ -7,11 +7,11 @@ full initial-side lifecycle reconciliation, and a new executable-side sign test 
 mandatory prior to any live-grade use.
 """
 from __future__ import annotations
-import hashlib, io, json, zipfile
+import hashlib, io, json, os, zipfile
 from pathlib import Path
 import numpy as np
 
-BASE = Path('/mnt/data/v2_direction_audit')
+BASE = Path(os.environ.get('R9_V2_PAIRED_ACTION_ROOT', str(Path(__file__).resolve().parents[1]/'source_archives'))).expanduser()
 MONTHS=('01','02','06','07')
 ORIENTED = np.array([i for i,n in enumerate((
     ['spread','last_bid_move','last_ask_move','last_spread_change','last_mid_move',
@@ -27,7 +27,7 @@ def sha(b): return hashlib.sha256(b).hexdigest()
 def path_for(source, month):
     if source not in ('coinexx','dukascopy') or month not in MONTHS:raise ValueError('source/month')
     candidates=list(BASE.glob(f'R9_V2_PAIRED_ACTION_{source.upper()}_2026_{month}_FULL_CHECKPOINT.zip'))
-    if len(candidates)!=1:raise FileNotFoundError((source,month))
+    if len(candidates)!=1:raise FileNotFoundError(f'Expected exactly one source-exact paired archive for {source}/{month} under {BASE}; set R9_V2_PAIRED_ACTION_ROOT')
     return candidates[0]
 
 def load(source,month):
