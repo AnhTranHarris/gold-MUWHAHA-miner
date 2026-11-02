@@ -1,0 +1,180 @@
+{
+  "format": "H1V2_R4_SOURCE_EXACT_MANIFEST",
+  "source_months": {
+    "01": {
+      "ticks": 9135062,
+      "rows": 15000,
+      "features": 92,
+      "raw_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "atlas_sha256": "72a2e5bf640623a701750b171ebbd0d8cedabd6fb01e0b064d102805c1d59fb5",
+      "classes": [
+        24715,
+        1342,
+        3102,
+        841
+      ]
+    },
+    "02": {
+      "ticks": 7538339,
+      "rows": 15000,
+      "features": 92,
+      "raw_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+      "atlas_sha256": "4114710c1ed2f68090b821c780e0ddbc0f43e0f921a2f103ab72066a3cc3295e",
+      "classes": [
+        24765,
+        977,
+        3324,
+        934
+      ]
+    },
+    "06": {
+      "ticks": 8201406,
+      "rows": 15000,
+      "features": 92,
+      "raw_sha256": "34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2",
+      "atlas_sha256": "062ab2e51e1303e56574ed8368e87f65658823c31666a006060d687b2cbdc251",
+      "classes": [
+        24619,
+        1097,
+        3291,
+        993
+      ]
+    },
+    "07": {
+      "ticks": 7415841,
+      "rows": 15000,
+      "features": 92,
+      "raw_sha256": "e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7",
+      "atlas_sha256": "56830f7e675e44d90cbe99d73ceb4d3cf5ec5cc3af6855f6d996d97171584bb4",
+      "classes": [
+        25242,
+        1482,
+        2800,
+        476
+      ]
+    }
+  },
+  "recovery_sources": {
+    "h1v2_base": "https://drive.google.com/file/d/14Zqs-PyZ70qr0NTvpJRxpT0XcVc8msUu/view",
+    "r2": "https://drive.google.com/file/d/11vsLhtdkDUfdEF34Q7zPYqpIJibu-aPV/view",
+    "r3": "https://drive.google.com/file/d/17oxTABUOMNq7Zc8nFpsbVpYJZ8xx75B4/view"
+  },
+  "files": {
+    "H1V2_R4_RESEARCH_VERIFICATION_20261102.md": {
+      "size": 8321,
+      "sha256": "ccf7e9e7d3e144356596443ee5f71793a09dce6b5162b2d0a1bcb7bfd0ff9c6a"
+    },
+    "RESEARCH_CHECKPOINT.md": {
+      "size": 1215,
+      "sha256": "95df0d7f74b158c2430e2b4d840b660bcfcdf4d51d26745871f774d0f1c07080"
+    },
+    "src/finish_competing_risks.py": {
+      "size": 2086,
+      "sha256": "0314791c1212b8571d7b8e9f1de98e599ea7e459e73fc467dd4cbb16bf876d1a"
+    },
+    "src/four_month_competing_risks.py": {
+      "size": 7833,
+      "sha256": "a871be9c15a93291fbcbde58d753d0887e431969e4e60052f8eebdb40e5d7ab3"
+    },
+    "src/extract_marked_atlas.py": {
+      "size": 1641,
+      "sha256": "4486e5375f024f343d41132357311dd94b322fe3e6ad9dba5ded235d43673633"
+    },
+    "src/bayesian_quote_abstention.py": {
+      "size": 3540,
+      "sha256": "c7278943c5ec1441367136f241e4dcd013bd6200a30b607fd97de0b843836efb"
+    },
+    "src/marked_quote_sequences.py": {
+      "size": 3554,
+      "sha256": "ff7c27ecd8ada2f11af0d92440f092d27f51b7578092090a69f1f2f1b0eb1a90"
+    },
+    "src/freeze_r4.py": {
+      "size": 11303,
+      "sha256": "b09c7e3a83a07e22608f8db5fa10e57344135fb71192832e6ec7467ba6eb22f7"
+    },
+    "tests/test_marked_quote_sequences.py": {
+      "size": 1183,
+      "sha256": "86cdec7759f8281b78df0fbabedadb38f94ec64cdcbfeaf2fe4663061e43bbb7"
+    },
+    "tests/test_bayesian_quote_abstention.py": {
+      "size": 1122,
+      "sha256": "64c5f4e30337531a6e771c85e7cb955b02a1cf595c48e364344a5b0a555df94c"
+    },
+    "results/R4_counts_JULY_UNSEEN_model.txt": {
+      "size": 1666846,
+      "sha256": "7ada9e61997eed3907b1ee0b7c22fac3c1e82a259d8d58c1053d2b383c734a25"
+    },
+    "results/R4_ordered_JANFEB_JUNE_CAL_model.txt": {
+      "size": 1324285,
+      "sha256": "a264d30c17ebe996a6c04ecc8c9b559cff8cff86dedc905c659db25e49f1ff89"
+    },
+    "results/R4_BAYES_STDOUT.txt": {
+      "size": 833,
+      "sha256": "1939cb62843e2db73763db27c51090febe915384c1122bac95454c0be685e3f7"
+    },
+    "results/R4_HOLDOUT_COMPARISON.json": {
+      "size": 49670,
+      "sha256": "aa946186d6b26321c2194b72ad9a929b6242a30ef7dc0e9b86fa2c47387815da"
+    },
+    "results/H1V2_R4_MARKED_ATLAS_02.npz": {
+      "size": 1838072,
+      "sha256": "4114710c1ed2f68090b821c780e0ddbc0f43e0f921a2f103ab72066a3cc3295e"
+    },
+    "results/R4_baseline_JULY_UNSEEN_model.txt": {
+      "size": 1665761,
+      "sha256": "240c75aae2b4974fc4b59ba6000364fc41f0824f7276dce961cbfa939124eb30"
+    },
+    "results/R4_ordered_JULY_UNSEEN_model.txt": {
+      "size": 1670034,
+      "sha256": "29f6dd3e152ba602c72a6ad121704286a40b848ea24b39c541bbe5492dac2fe1"
+    },
+    "results/R4_ordered_ALL4_CONTAMINATED_MODEL.txt": {
+      "size": 4385752,
+      "sha256": "fe44f424ef76b413261b1dc64d21407473ae2b5c73f1e4868a6c8313045a98be"
+    },
+    "results/R4_FEATURE_EXTRACTION_STDOUT.txt": {
+      "size": 1059,
+      "sha256": "69476f92df05ec8c4fa95cac76f7e40caa39a785288c32e3dc1d106197667942"
+    },
+    "results/R4_FINISH_STDOUT.txt": {
+      "size": 181,
+      "sha256": "239446bcb31bb66b5ffc3f7a0c27494c2b8d624be47c92809b16f6e7b11818a0"
+    },
+    "results/R4_MODEL_TRAINING_STDOUT.txt": {
+      "size": 238,
+      "sha256": "97c0cfb4478d1babc665d30ff3bdf6d04f3b816298b07c494f5de467cb1a4821"
+    },
+    "results/H1V2_R4_MARKED_ATLAS_06.npz": {
+      "size": 1939033,
+      "sha256": "062ab2e51e1303e56574ed8368e87f65658823c31666a006060d687b2cbdc251"
+    },
+    "results/H1V2_R4_MARKED_ATLAS_07.npz": {
+      "size": 1841127,
+      "sha256": "56830f7e675e44d90cbe99d73ceb4d3cf5ec5cc3af6855f6d996d97171584bb4"
+    },
+    "results/R4_HIERARCHICAL_BAYESIAN_ABSTENTION.json": {
+      "size": 34156,
+      "sha256": "456d403a2f218680036a0b40926ca63599148d9d135446025504f8fe6be86ff7"
+    },
+    "results/H1V2_R4_MARKED_ATLAS_01.npz": {
+      "size": 1879212,
+      "sha256": "72a2e5bf640623a701750b171ebbd0d8cedabd6fb01e0b064d102805c1d59fb5"
+    },
+    "results/R4_MARKED_SOURCE_RECEIPTS.json": {
+      "size": 3988,
+      "sha256": "28f9edbbcf76e8b47d61a8f6ef9a76a2b11ae0969bcadf910056e6cb1392f3d7"
+    },
+    "parent_audit/R9_V2_ENTRY_ASYMMETRY_SOURCE_AUDIT_20261102.md": {
+      "size": 14640,
+      "sha256": "8f33fe16721376f46ad99f93dc595da862d0d8567a7b89d66c4a4ca82ab783f9"
+    },
+    "parent_audit/H1V2_R2_RESEARCH_VERIFICATION_20261102.md": {
+      "size": 8921,
+      "sha256": "e668efa25e22468b6ff75f8b01fa53bb7fb36bb0af0d713299cfb169bbc9eedf"
+    },
+    "parent_audit/H1V2_R3_RESEARCH_VERIFICATION_20261102.md": {
+      "size": 10681,
+      "sha256": "480eb7f87e761b24e18898c5536cedd0a00a2d024d5afee7726b1fda9e186bc9"
+    }
+  }
+}
