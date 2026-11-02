@@ -21,8 +21,8 @@ def main(a):
  XX=np.concatenate(Xs);yy=np.concatenate(ys);ww=np.concatenate(ws).astype(np.float32)
  params=dict(objective='binary',metric='binary_logloss',learning_rate=.04,seed=604,feature_fraction=.85,num_threads=2,verbosity=-1,force_col_wise=True,num_leaves=31,min_data_in_leaf=1000,lambda_l2=40.,max_depth=6)
  mdl=lgb.train(params,lgb.Dataset(XX,label=yy,weight=ww,free_raw_data=True),num_boost_round=a.rounds)
- out=Path(a.out);out.mkdir(parents=True,exist_ok=True);p=out/'coinexx_01_pairwise_direction_v1.txt';mdl.save_model(str(p))
- r=dict(identity='R9_V2_PAIRWISE_DIRECTION_V1',feature_version=FEATURE_VERSION,feature_count=REPAIRED_FEATURE_COUNT,fit_days=a.fit_days,fit_rows=len(yy),buy_better_rate=float(yy.mean()),excluded_ties=ties,weight='1+min(4,abs(net_buy-net_sell)/0.30)',rounds=a.rounds,model_sha256=sha256(p),status='DIRECTION_RESEARCH_NOT_POLICY',elapsed_sec=round(time.monotonic()-start,2))
- (out/'coinexx_01_pairwise_direction_v1_fit.json').write_text(json.dumps(r,indent=2));print(json.dumps(r,indent=2))
+ out=Path(a.out);out.mkdir(parents=True,exist_ok=True);p=out/'coinexx_01_pairwise_direction_v2.txt';mdl.save_model(str(p))
+ r=dict(identity='R9_V2_PAIRWISE_DIRECTION_V2',feature_version=FEATURE_VERSION,feature_count=REPAIRED_FEATURE_COUNT,fit_days=a.fit_days,fit_rows=len(yy),buy_better_rate=float(yy.mean()),excluded_ties=ties,weight='1+min(4,abs(net_buy-net_sell)/0.30)',rounds=a.rounds,model_sha256=sha256(p),status='DIRECTION_RESEARCH_NOT_POLICY',elapsed_sec=round(time.monotonic()-start,2))
+ (out/'coinexx_01_pairwise_direction_v2_fit.json').write_text(json.dumps(r,indent=2));print(json.dumps(r,indent=2))
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--root',required=True);p.add_argument('--fit-days',nargs='+',required=True);p.add_argument('--out',required=True);p.add_argument('--rounds',type=int,default=64);p.add_argument('--embargo-ms',type=int,default=60000);main(p.parse_args())
