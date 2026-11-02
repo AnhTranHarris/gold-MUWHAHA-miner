@@ -1,0 +1,39 @@
+{
+  "identity": "R9_V2_WAIT_TRANSITION_V1",
+  "version": "r9_v2_wait_transition_v1",
+  "feature_count": 213,
+  "fit_days": [
+    "2026-01-06",
+    "2026-01-07"
+  ],
+  "calibration_day": "2026-01-08",
+  "check_day": "2026-01-09",
+  "target": "WAIT_IMPROVES = no strict-good side now AND next observed candidate within 1000ms is strict-good",
+  "all_candidates_used_for_training": true,
+  "runtime_uses_future": false,
+  "model_sha256": "5d58c829a5b9b6d6e3ec5d96f26d08fdf765b7317a5a504261fd2151df8d10ee",
+  "fit_rows": 458010,
+  "fit_positive": 50079,
+  "fit_positive_rate": 0.10934040741468527,
+  "np_cutoff": 0.13343454790823212,
+  "calibration_B": {
+    "events": 115896,
+    "positive": 13580,
+    "positive_rate": 0.11717401808517981,
+    "auc": 0.5565794818656759,
+    "strict_gate_selected": 0
+  },
+  "check": {
+    "events": 195789,
+    "positive": 21653,
+    "positive_rate": 0.11059354713492586,
+    "auc": 0.5718881523130407,
+    "brier": 0.09783271578674994,
+    "logloss": 0.3493184403473537,
+    "strict_gate_selected": 0
+  },
+  "baseline_old_conditional_wait_direct_target_check_auc": 0.5707709766430428,
+  "check_auc_delta": 0.0011171756699979,
+  "qualified_timing_policy": false,
+  "status": "RESEARCH_ONLY_NO_80PCT_WAIT_GATE"
+}
