@@ -10,7 +10,7 @@ Not deployment code: training is baseline-timestamp off-policy and neither
 model calibration nor profitability criteria passed. FAIL CLOSED by default.
 """
 from __future__ import annotations
-import bisect,collections,math,sys
+import bisect,collections,math,os,sys
 from pathlib import Path
 import numpy as np
 from source_exact import two_views
@@ -19,7 +19,9 @@ from competing_hawkes import CompetingQuoteHawkes
 from ordered_quote_geometry import OrderedQuoteGeometry
 
 # Reuse exact frozen v2 & high-volume feature clock, never reconstruct.
-RESTORE=Path('/mnt/data/v2_new_research/restore')
+RESTORE=Path(os.environ.get('R9_V2_RESTORE_ROOT', str(Path(__file__).resolve().parents[1]/'restore'))).expanduser()
+if not (RESTORE/'repair'/'src'/'high_volume_stream.py').is_file() or not (RESTORE/'original_v2'/'src'/'router_v2_features.py').is_file():
+    raise FileNotFoundError(f'Original R9 v2 dependency sources not restored at {RESTORE}; set R9_V2_RESTORE_ROOT. Never substitute newer engine implementations.')
 sys.path.insert(0,str(RESTORE/'repair'/'src'))
 sys.path.insert(0,str(RESTORE/'original_v2'/'src'))
 from high_volume_stream import FastClock,specialist_evidence,TickExactActivePath
