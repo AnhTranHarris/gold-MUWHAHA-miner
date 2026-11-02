@@ -20,6 +20,7 @@ class HawkesConfig:
     cross_excitation:float=.025
     self_excitation:float=.035
     spread_switch:float=.01
+    gap_reset_ms:int=15000
 
 class CompetingQuoteHawkes:
     def __init__(self,config=HawkesConfig()):
@@ -36,12 +37,18 @@ class CompetingQuoteHawkes:
     def observe(self,t_ms,bid,ask):
         if ask<bid:raise ValueError('crossed quotes')
         if self.t is not None and t_ms<self.t:raise ValueError('future ordering violation')
+        marks=np.zeros(6)
+        gap_reset=False
         if self.t is not None:
             delta=t_ms-self.t
-            decay=np.exp(-delta/np.asarray(self.config.taus_ms,dtype=np.float64))
-            self.state*=decay[:,None]
-        marks=np.zeros(6)
-        if self.last_bid is not None:
+            if delta>self.config.gap_reset_ms:
+                # A quote drought is not an observed price path. Do not create a
+                # synthetic cross-gap mark or carry subminute excitation through it.
+                self.state.fill(0.);gap_reset=True
+            else:
+                decay=np.exp(-delta/np.asarray(self.config.taus_ms,dtype=np.float64))
+                self.state*=decay[:,None]
+        if self.last_bid is not None and not gap_reset:
             db=bid-self.last_bid;da=ask-self.last_ask
             ds=(ask-bid)-(self.last_ask-self.last_bid)
             for i,v in enumerate((db,-db,da,-da,ds,-ds)):
