@@ -1,0 +1,74 @@
+{
+  "source": "dukascopy",
+  "input": "XAUUSD_DUKAS_2026_01_ticks.csv.gz",
+  "counts": {
+    "ticks": 250000,
+    "warmup": 7536,
+    "eligible_slots": 32191,
+    "pending_started": 9067,
+    "observed_later_quote": 15750,
+    "delayed_spread_reject": 14,
+    "spread_reject": 640,
+    "candidate_reject": 2972,
+    "expired": 1229,
+    "confirmed_entries": 3968,
+    "closed": 3967,
+    "NEUTRAL": 621,
+    "CORRECT15": 377,
+    "CORRECT30": 433,
+    "reverse_reject": 3856,
+    "INCORRECT": 2913,
+    "CORRECT": 433
+  },
+  "month": {
+    "closed": 3967,
+    "NEUTRAL": 621,
+    "CORRECT15": 377,
+    "CORRECT30": 433,
+    "net_microdollar": -3265612000,
+    "INCORRECT": 2913,
+    "CORRECT": 433
+  },
+  "byday": {
+    "2026-01-01": {
+      "closed": 113,
+      "NEUTRAL": 21,
+      "net_microdollar": -118198000,
+      "CORRECT15": 7,
+      "CORRECT30": 9,
+      "INCORRECT": 83,
+      "CORRECT": 9
+    },
+    "2026-01-02": {
+      "closed": 3854,
+      "NEUTRAL": 600,
+      "net_microdollar": -3147414000,
+      "CORRECT15": 370,
+      "CORRECT30": 424,
+      "INCORRECT": 2830,
+      "CORRECT": 424
+    }
+  },
+  "byweek": {
+    "2026-W01": {
+      "closed": 3967,
+      "NEUTRAL": 621,
+      "net_microdollar": -3265612000,
+      "CORRECT15": 377,
+      "CORRECT30": 433,
+      "INCORRECT": 2913,
+      "CORRECT": 433
+    }
+  },
+  "status": "RESEARCH_ONLY_NOT_TRAINED_OR_APPROVED",
+  "future_at_entry_used": false,
+  "teacher_runtime_used": false,
+  "strict_success_target": ".10 executable net favorable-first, positive closed net <=30s",
+  "idle_days_and_weeks_pass": false,
+  "bayesian_shadow_seen": 3967,
+  "bayesian_shadow_counts": {
+    "CORRECT": 433,
+    "INCORRECT": 2913,
+    "NEUTRAL": 621
+  }
+}
