@@ -1,8 +1,16 @@
 """Fail-closed runtime policy for the repaired R9 v2 entry architecture."""
 from __future__ import annotations
+import hashlib
+from pathlib import Path
 import numpy as np
 from decision import Limits,Prediction,OpportunityPrediction,AsymmetricEntryPolicy
 from repaired_features import FEATURE_VERSION,REPAIRED_FEATURE_COUNT
+
+def _sha256(path):
+    h=hashlib.sha256()
+    with Path(path).open('rb') as f:
+        for chunk in iter(lambda:f.read(1<<20),b''):h.update(chunk)
+    return h.hexdigest()
 
 class RepairedDualPolicy:
     """Independent opportunity/BUY/SELL models plus frozen chronological gates.
@@ -13,14 +21,22 @@ class RepairedDualPolicy:
     feature_version=FEATURE_VERSION
     def __init__(self,opportunity_model,buy_model,sell_model,policy_file,accept_for_research=False):
         import lightgbm as lgb
-        self.opportunity=lgb.Booster(model_file=str(opportunity_model))
-        self.buy=lgb.Booster(model_file=str(buy_model));self.sell=lgb.Booster(model_file=str(sell_model))
+        model_paths=(Path(opportunity_model),Path(buy_model),Path(sell_model))
+        self.opportunity=lgb.Booster(model_file=str(model_paths[0]))
+        self.buy=lgb.Booster(model_file=str(model_paths[1]));self.sell=lgb.Booster(model_file=str(model_paths[2]))
         with np.load(policy_file) as d:
             version=str(d['feature_version'][0]);count=int(d['feature_count'][0])
             if version!=FEATURE_VERSION or count!=REPAIRED_FEATURE_COUNT:raise ValueError('repaired feature-version mismatch')
             self.prior_counts=d['prior_counts'].astype(np.float64);self.prior_weight=float(d['prior_weight'][0])
             self.opportunity_cutoff=float(d['opportunity_cutoff'][0]);self.side_cutoffs=d['side_cutoffs'].astype(np.float64)
             self.payoff=d['payoff_lcb_bins'].astype(np.float64)
+            if 'component_model_sha256' not in d.files or 'component_model_role' not in d.files:
+                raise ValueError('policy missing v5 component model identity')
+            roles=[str(x) for x in d['component_model_role']]
+            if roles!=['opportunity','buy','sell']:raise ValueError('policy component role mismatch')
+            expected=[str(x) for x in d['component_model_sha256']]
+            actual=[_sha256(p) for p in model_paths]
+            if expected!=actual:raise ValueError('policy/component model SHA256 mismatch')
             self.iso={'opp':(d['opp_iso_x'].copy(),d['opp_iso_y'].copy())}
             for j in (0,1):
                 for kind in ('correct','wrong'):
