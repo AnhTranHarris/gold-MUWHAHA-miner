@@ -1,0 +1,84 @@
+{
+  "source": "coinexx",
+  "month": "02",
+  "status": "FROZEN_CALIBRATION_THRESHOLD_OFF_POLICY_DIAGNOSTIC_ONLY",
+  "threshold_source": "ONLY earlier calibration q=.85 (not selected on heldout)",
+  "n_check_legacy_positions": 68964,
+  "selected": 8734,
+  "correct": 2632,
+  "strict_rate": 0.30135104190519807,
+  "net": -1750.36,
+  "active_days": 7,
+  "days_passing_80": 0,
+  "weeks_passing_80": 0,
+  "total_weeks": 2,
+  "daily": [
+    {
+      "utc_date": "2026-02-20",
+      "trades": 1268,
+      "strict_good": 384,
+      "rate": 0.3028391167192429,
+      "passes": false
+    },
+    {
+      "utc_date": "2026-02-22",
+      "trades": 95,
+      "strict_good": 31,
+      "rate": 0.3263157894736842,
+      "passes": false
+    },
+    {
+      "utc_date": "2026-02-23",
+      "trades": 1529,
+      "strict_good": 443,
+      "rate": 0.28973185088293,
+      "passes": false
+    },
+    {
+      "utc_date": "2026-02-24",
+      "trades": 1637,
+      "strict_good": 535,
+      "rate": 0.3268173488087966,
+      "passes": false
+    },
+    {
+      "utc_date": "2026-02-25",
+      "trades": 1642,
+      "strict_good": 482,
+      "rate": 0.2935444579780755,
+      "passes": false
+    },
+    {
+      "utc_date": "2026-02-26",
+      "trades": 1440,
+      "strict_good": 426,
+      "rate": 0.29583333333333334,
+      "passes": false
+    },
+    {
+      "utc_date": "2026-02-27",
+      "trades": 1123,
+      "strict_good": 331,
+      "rate": 0.2947462154942119,
+      "passes": false
+    }
+  ],
+  "weekly": {
+    "2026-W08": {
+      "trades": 1363,
+      "strict_good": 415,
+      "rate": 0.3044754218635363,
+      "passes": false
+    },
+    "2026-W09": {
+      "trades": 7371,
+      "strict_good": 2217,
+      "rate": 0.3007733007733008,
+      "passes": false
+    }
+  },
+  "monthly_floor_entire_source_month": 28495,
+  "percentage_of_source_month_available_in_check_days": 0.2916666666666667,
+  "cannot_claim_new_trade_count_or_month_floor": true,
+  "price_cost_model": "same original R9 idealized executable quote-side .02 fee"
+}
