@@ -1,0 +1,93 @@
+{
+  "source": "coinexx",
+  "month": "02",
+  "mode": "SOURCE_CHRONOLOGICAL_OFF_POLICY_PAIRED_ACTION_CHECK",
+  "full_month_original_events": 477916,
+  "train_events_actions": 1465320,
+  "train_strict_good_actions": 406496,
+  "calibration_events": 56551,
+  "check_events": 103641,
+  "calibration_variants": [
+    {
+      "bad_quantile": 0.5,
+      "threshold": 0.29374410452962485,
+      "cal_selected": 28522,
+      "cal_win30": 0.30344996844541056,
+      "cal_net": -5908.679974537345,
+      "meets_80pct": false,
+      "positive_net": false
+    },
+    {
+      "bad_quantile": 0.75,
+      "threshold": 0.3039159243185703,
+      "cal_selected": 14352,
+      "cal_win30": 0.3078316610925307,
+      "cal_net": -2881.5999899413473,
+      "meets_80pct": false,
+      "positive_net": false
+    },
+    {
+      "bad_quantile": 0.9,
+      "threshold": 0.31207891293888634,
+      "cal_selected": 5726,
+      "cal_win30": 0.3059727558505065,
+      "cal_net": -1118.349996425212,
+      "meets_80pct": false,
+      "positive_net": false
+    },
+    {
+      "bad_quantile": 0.95,
+      "threshold": 0.31658935943166117,
+      "cal_selected": 2880,
+      "cal_win30": 0.31006944444444445,
+      "cal_net": -565.5999984983363,
+      "meets_80pct": false,
+      "positive_net": false
+    },
+    {
+      "bad_quantile": 0.975,
+      "threshold": 0.3201149276457936,
+      "cal_selected": 1488,
+      "cal_win30": 0.33198924731182794,
+      "cal_net": -261.0099996868514,
+      "meets_80pct": false,
+      "positive_net": false
+    },
+    {
+      "bad_quantile": 0.99,
+      "threshold": 0.3240314258943895,
+      "cal_selected": 617,
+      "cal_win30": 0.3549432739059968,
+      "cal_net": -97.22000026330315,
+      "meets_80pct": false,
+      "positive_net": false
+    }
+  ],
+  "valid_calibration_policy": false,
+  "chosen": {
+    "bad_quantile": 0.9,
+    "threshold": 0.31207891293888634,
+    "cal_selected": 5726,
+    "cal_win30": 0.3059727558505065,
+    "cal_net": -1118.349996425212,
+    "meets_80pct": false,
+    "positive_net": false
+  },
+  "diagnostic_only": true,
+  "check_selected_nonoverlapping": 10420,
+  "check_win30": 3287,
+  "check_survival": 0.3154510556621881,
+  "check_net": -2007.03,
+  "all_days": 7,
+  "daily_80pct_passes": 0,
+  "all_weeks": 2,
+  "weekly_80pct_passes": 0,
+  "check_auc_oracle_label": 0.5169449737519884,
+  "check_brier_on_best_action": 0.2059157221452204,
+  "monthly_volume_floor": 28495,
+  "full_month_approval": "NOT_EVALUATED: no full-month on-policy rerun",
+  "source_no_future_training": true,
+  "teacher_used_only_as_label": true,
+  "model_sha256": "f7c443d7bd2693d58e92ac449d0e70e2fa025c0c4581bcd49cdb140efd406156",
+  "elapsed_sec": 21.58
+}
