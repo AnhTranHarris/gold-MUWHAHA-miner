@@ -15,7 +15,7 @@ def sha256(p):
 def main(a):
  start=time.monotonic();Xs=[];ys=[]
  for di,day in enumerate(a.fit_days):
-  base=f'coinexx_01_{day}';X=np.load(Path(a.root)/f'{base}_250ms_v4_X.npy',mmap_mode='r');d=np.load(Path(a.root)/f'{base}_250ms_universe.npz')
+  base=f'coinexx_01_{day}';X=np.load(Path(a.root)/f'{base}_250ms_v5_X.npy',mmap_mode='r');d=np.load(Path(a.root)/f'{base}_250ms_universe.npz')
   j=0 if a.side=='buy' else 1;y=d['net'][:,j].astype(np.float32);mask=np.isfinite(y)
   if di==len(a.fit_days)-1:mask &= d['ts']<d['ts'][-1]-a.embargo_ms
   Xs.append(np.asarray(X[mask],np.float32));ys.append(y[mask])
