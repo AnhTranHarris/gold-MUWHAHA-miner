@@ -23,8 +23,8 @@ def main(a):
  common=dict(learning_rate=.04,seed=603+(0 if a.side=='buy' else 10)+(0 if a.target=='mean' else 1),feature_fraction=.85,num_threads=2,verbosity=-1,force_col_wise=True,num_leaves=31,min_data_in_leaf=1000,lambda_l2=40.,max_depth=6)
  params=dict(objective='huber',metric='l1',alpha=.9,**common) if a.target=='mean' else dict(objective='quantile',metric='quantile',alpha=.20,**common)
  mdl=lgb.train(params,lgb.Dataset(XX,label=yy,free_raw_data=True),num_boost_round=a.rounds)
- out=Path(a.out);out.mkdir(parents=True,exist_ok=True);p=out/f'coinexx_01_exit_value_{a.side}_{a.target}.txt';mdl.save_model(str(p))
+ out=Path(a.out);out.mkdir(parents=True,exist_ok=True);p=out/f'coinexx_01_exit_value_v2_{a.side}_{a.target}.txt';mdl.save_model(str(p))
  r=dict(side=a.side,target=a.target,feature_version=FEATURE_VERSION,feature_count=REPAIRED_FEATURE_COUNT,fit_days=a.fit_days,fit_rows=len(yy),target_mean=float(np.mean(yy)),target_positive_rate=float(np.mean(yy>0)),rounds=a.rounds,model_sha256=sha256(p),status='EXIT_VALUE_COMPONENT_NOT_POLICY',elapsed_sec=round(time.monotonic()-start,2))
- (out/f'coinexx_01_exit_value_{a.side}_{a.target}_fit.json').write_text(json.dumps(r,indent=2));print(json.dumps(r,indent=2))
+ (out/f'coinexx_01_exit_value_v2_{a.side}_{a.target}_fit.json').write_text(json.dumps(r,indent=2));print(json.dumps(r,indent=2))
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--root',required=True);p.add_argument('--fit-days',nargs='+',required=True);p.add_argument('--side',choices=('buy','sell'),required=True);p.add_argument('--target',choices=('mean','q20'),required=True);p.add_argument('--out',required=True);p.add_argument('--rounds',type=int,default=64);p.add_argument('--embargo-ms',type=int,default=60000);main(p.parse_args())
