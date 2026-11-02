@@ -150,15 +150,22 @@ class DualObservedRouter:
         if closed or self.active is not None:return 0
         if not self.clock.ready():self.count['warmup']+=1;return 0
         f=self.clock.features(q)
-        old_side,evidence,lane,pressure,cost=self._specialist_evidence(f)
-        # Old specialist is causal contextual observation, NOT direction choice.
-        x=self.quotes.vector(evidence=float(evidence),lane_reversal=float(lane=='reversal'))
+        is_repaired=self.policy is not None and getattr(self.policy,'feature_version',None)==FEATURE_VERSION
+        # The repaired policy is direction-neutral all the way to its own BUY/SELL
+        # models. Do not even evaluate the old hand-weighted specialist on this path.
+        # Zero placeholders preserve the frozen legacy 102-vector layout; repaired
+        # feature composition excludes evidence/lane_reversal by contract.
+        if is_repaired:
+            x=self.quotes.vector(evidence=0.,lane_reversal=0.)
+        else:
+            old_side,evidence,lane,pressure,cost=self._specialist_evidence(f)
+            x=self.quotes.vector(evidence=float(evidence),lane_reversal=float(lane=='reversal'))
         # Six-channel quote excitation remains excluded from the frozen legacy
         # diagnostic. The repaired v4 contract admits its causal state as model
         # input only; it is never added post-hoc as a probability boost.
         self.last_hawkes=self.hawkes.features()
         policy_x=x
-        if self.policy is not None and getattr(self.policy,'feature_version',None)==FEATURE_VERSION:
+        if is_repaired:
             policy_x=compose_repaired_features(x,self.geometry,self.last_hawkes)
         side,reason=self.policy.action(policy_x,q.spread) if self.policy else (0,'NO_CALIBRATED_DUAL_POLICY')
         self.count['decision_events']+=1;self.count[reason]+=1
