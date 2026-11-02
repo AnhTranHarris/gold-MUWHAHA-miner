@@ -12,6 +12,7 @@ import numpy as np
 
 FEATURE_VERSION = 'r9_v2_ordered_quote_grid_v2'
 LEGACY_FEATURE_COUNT = 102
+LEGACY_ORIENTED_INDICES = (1,2,4,12,14,15,16,21,23,24,25,30,32,33,34,39,41,42,43,48,50,51,52,57,59,60,61,66,68,69,70,75,77,78,79,84,86,87,88,93,95,96,97)
 GRID_LAGS_MS = tuple(range(250, 5001, 250)) + (7500, 10000, 15000, 30000, 45000, 60000, 120000, 300000)
 GEOMETRY_WINDOWS_MS = (5000, 15000, 30000, 45000, 60000, 300000)
 SEGMENTS_MS = ((250,500),(500,1000),(1000,2000),(2000,5000),(5000,15000),
@@ -184,6 +185,7 @@ def repaired_action_views(X):
         raise ValueError('repaired feature count mismatch')
     z=np.repeat(X,2,axis=0)
     sides=np.tile(np.asarray([1.,-1.],np.float32),len(X))
-    oriented=np.asarray([i for i,n in enumerate(REPAIRED_FEATURE_NAMES) if n in ORIENTED_NAMES],dtype=np.int64)
+    new_oriented=[i for i,n in enumerate(REPAIRED_FEATURE_NAMES) if i>=LEGACY_FEATURE_COUNT and n in ORIENTED_NAMES]
+    oriented=np.asarray(tuple(LEGACY_ORIENTED_INDICES)+tuple(new_oriented),dtype=np.int64)
     z[:,oriented]*=sides[:,None]
     return np.column_stack((z,sides)).astype(np.float32,copy=False)
