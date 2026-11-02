@@ -1,0 +1,72 @@
+{
+  "source": "coinexx",
+  "input": "XAUUSD_MT5_BROKER_2026_01_ticks_ALL.csv.gz",
+  "counts": {
+    "ticks": 250000,
+    "warmup": 4682,
+    "eligible_slots": 44431,
+    "pending_started": 13953,
+    "observed_later_quote": 21738,
+    "reverse_reject": 6624,
+    "confirmed_entries": 6877,
+    "closed": 6877,
+    "INCORRECT": 4500,
+    "CORRECT15": 1896,
+    "CORRECT30": 1958,
+    "candidate_reject": 3499,
+    "CORRECT": 1958,
+    "expired": 452,
+    "NEUTRAL": 419
+  },
+  "month": {
+    "closed": 6877,
+    "INCORRECT": 4500,
+    "CORRECT15": 1896,
+    "CORRECT30": 1958,
+    "net_microdollar": -1319780000,
+    "CORRECT": 1958,
+    "NEUTRAL": 419
+  },
+  "byday": {
+    "2026-01-01": {
+      "closed": 186,
+      "INCORRECT": 133,
+      "net_microdollar": -54400000,
+      "CORRECT15": 43,
+      "CORRECT30": 43,
+      "CORRECT": 43,
+      "NEUTRAL": 10
+    },
+    "2026-01-02": {
+      "closed": 6691,
+      "CORRECT": 1915,
+      "net_microdollar": -1265380000,
+      "CORRECT15": 1853,
+      "CORRECT30": 1915,
+      "INCORRECT": 4367,
+      "NEUTRAL": 409
+    }
+  },
+  "byweek": {
+    "2026-W01": {
+      "closed": 6877,
+      "INCORRECT": 4500,
+      "net_microdollar": -1319780000,
+      "CORRECT15": 1896,
+      "CORRECT30": 1958,
+      "CORRECT": 1958,
+      "NEUTRAL": 419
+    }
+  },
+  "status": "RESEARCH_ONLY_NOT_TRAINED_OR_APPROVED",
+  "future_at_entry_used": false,
+  "teacher_runtime_used": false,
+  "strict_success_target": ".10 executable net favorable-first, positive closed net <=30s",
+  "idle_days_and_weeks_pass": false,
+  "bayesian_shadow_seen": 6877,
+  "bayesian_shadow_counts": {
+    "CORRECT": 1958,
+    "INCORRECT": 4500,
+    "NEUTRAL": 419
+  }
+}
