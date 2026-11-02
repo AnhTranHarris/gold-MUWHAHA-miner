@@ -1,0 +1,127 @@
+{
+  "identity": "R9_V2_PAIRED_CROSS_FEED_WAIT_TRANSFER_20261102",
+  "model_source_sha": {
+    "coinexx": "5d58c829a5b9b6d6e3ec5d96f26d08fdf765b7317a5a504261fd2151df8d10ee",
+    "dukascopy": "a145c6ef913601a8034126c9826d11a9b294a1c6c14dc69c21877ea1db60cdc4"
+  },
+  "fit_days": [
+    "2026-01-06",
+    "2026-01-07"
+  ],
+  "calibration_day": "2026-01-08",
+  "untouched_holdout_day": "2026-01-21",
+  "months": [
+    "01"
+  ],
+  "embargo_ms": 60000,
+  "wait_horizon_ms": 1000,
+  "feature_version": "r9_v2_wait_transition_v1",
+  "feed_local_isotonic_on_calibration_A": true,
+  "feed_local_np_on_calibration_B": true,
+  "holdout_used_for_selection": false,
+  "teacher_opportunities_are_overlapping_not_fills": true,
+  "results": {
+    "dukascopy": {
+      "target": "dukascopy",
+      "calibration_receipt_sha": "7a05a936af6df58749214a2564f3ddb08c0c717bd81d6bf60fac1fd240e33fd5",
+      "holdout_receipt_sha": "d599032580603405df156d3cb7c0b6035fe526d1b485bda0a72c4ca68dd37197",
+      "cal_A_rows": 98706,
+      "cal_B_rows": 98792,
+      "holdout_rows": 206970,
+      "same_feed": {
+        "origin_feed": "dukascopy",
+        "target_feed": "dukascopy",
+        "calibration_B": {
+          "rows": 98792,
+          "prevalence": 0.06901368531864928,
+          "auc": 0.6084241276739714,
+          "brier": 0.06367648768861955,
+          "logloss": 0.24870981541722792,
+          "calibrated_pmax": 0.38461538461538464,
+          "strict_p80_selected": 0,
+          "strict_p80_precision": null
+        },
+        "holdout": {
+          "rows": 206970,
+          "prevalence": 0.09684012175677635,
+          "auc": 0.5751028069986239,
+          "brier": 0.08730977747295705,
+          "logloss": 0.3181202519126762,
+          "calibrated_pmax": 0.38461538461538464,
+          "strict_p80_selected": 0,
+          "strict_p80_precision": null
+        },
+        "calibration_admission": {
+          "approved": false,
+          "calibration_selected": 0,
+          "calibration_precision": null,
+          "required_n": 150,
+          "required_precision": 0.8,
+          "reason": "FAIL_CLOSED_CALIBRATION"
+        },
+        "holdout_admissible_p80_selected": 0,
+        "calibration_np_cutoff": 0.10041346721795628,
+        "calibration_np_info": {
+          "status": "CALIBRATED_RESEARCH_ONLY",
+          "bad_n": 91974,
+          "alpha": 0.1,
+          "observed_exceedance": 0.02844282079718181
+        }
+      },
+      "cross_feed": {
+        "origin_feed": "coinexx",
+        "target_feed": "dukascopy",
+        "calibration_B": {
+          "rows": 98792,
+          "prevalence": 0.06901368531864928,
+          "auc": 0.596874614621757,
+          "brier": 0.06394689177073137,
+          "logloss": 0.2494366336520529,
+          "calibrated_pmax": 1.0,
+          "strict_p80_selected": 3,
+          "strict_p80_precision": 0.0
+        },
+        "holdout": {
+          "rows": 206970,
+          "prevalence": 0.09684012175677635,
+          "auc": 0.5722902191141731,
+          "brier": 0.0881095544951734,
+          "logloss": 0.32479908728081747,
+          "calibrated_pmax": 1.0,
+          "strict_p80_selected": 13,
+          "strict_p80_precision": 0.15384615384615385
+        },
+        "calibration_admission": {
+          "approved": false,
+          "calibration_selected": 3,
+          "calibration_precision": 0.0,
+          "required_n": 150,
+          "required_precision": 0.8,
+          "reason": "FAIL_CLOSED_CALIBRATION"
+        },
+        "holdout_admissible_p80_selected": 0,
+        "calibration_np_cutoff": 0.08088235294117647,
+        "calibration_np_info": {
+          "status": "CALIBRATED_RESEARCH_ONLY",
+          "bad_n": 91974,
+          "alpha": 0.1,
+          "observed_exceedance": 0.09168895557440146
+        }
+      },
+      "bootstrap": {
+        "block_ms": 300000,
+        "blocks": 276,
+        "replicates": 100,
+        "delta_same_minus_cross_mean": 0.0026805768348404525,
+        "ci95_same_minus_cross": [
+          -0.001539246913056913,
+          0.005779627222185213
+        ],
+        "fraction_same_better": 0.9
+      },
+      "qualified_policy": false
+    }
+  },
+  "policy_promoted": false,
+  "status": "SOURCE_EXACT_CROSS_FEED_RESEARCH_ONLY"
+}
