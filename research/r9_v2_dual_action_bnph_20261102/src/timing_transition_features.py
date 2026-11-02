@@ -10,7 +10,7 @@ from __future__ import annotations
 import numpy as np
 from repaired_features import REPAIRED_FEATURE_NAMES, REPAIRED_FEATURE_COUNT
 
-TIMING_FEATURE_VERSION='r9_v2_wait_transition_v1'
+TIMING_FEATURE_VERSION='r9_v2_wait_transition_v2'
 LAGS_MS=(250,500,1000)
 CURRENT_NAMES=(
     'spread','last_bid_move','last_ask_move','last_spread_change','last_mid_move','micro_bid_ask_imbalance',
@@ -39,7 +39,7 @@ TRANSITION_NAMES=(
 )
 INDEX={n:i for i,n in enumerate(REPAIRED_FEATURE_NAMES)}
 for n in CURRENT_NAMES+TRANSITION_NAMES:
-    if n not in INDEX:raise RuntimeError('missing v4 feature '+n)
+    if n not in INDEX:raise RuntimeError('missing repaired feature '+n)
 CURRENT_IDX=np.asarray([INDEX[n] for n in CURRENT_NAMES],np.int64)
 TRANSITION_IDX=np.asarray([INDEX[n] for n in TRANSITION_NAMES],np.int64)
 AGG_NAMES=(
