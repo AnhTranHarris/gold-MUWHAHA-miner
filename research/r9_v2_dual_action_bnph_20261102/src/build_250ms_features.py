@@ -1,4 +1,4 @@
-"""Attach source-exact v4 causal features to a corrected 250 ms teacher shard."""
+"""Attach source-exact v5 causal features to a corrected 250 ms teacher shard."""
 from __future__ import annotations
 import argparse,hashlib,json,time
 from pathlib import Path
@@ -19,7 +19,7 @@ def main(a):
     t,bid,ask=load_raw(raw,a.source,a.month)
     if not np.array_equal(t[idx],ts):raise ValueError('teacher/raw index mismatch')
     X=build_repaired_raw_features(t,bid,ask,idx,a.chunk_rows)
-    dest=out/(teacher.stem.replace('_250ms_universe','_250ms_v4_X')+'.npy');np.save(dest,X,allow_pickle=False)
+    dest=out/(teacher.stem.replace('_250ms_universe','_250ms_v5_X')+'.npy');np.save(dest,X,allow_pickle=False)
     receipt=dict(source=a.source,month=a.month,teacher=teacher.name,feature_version=FEATURE_VERSION,rows=len(X),features=REPAIRED_FEATURE_COUNT,
         raw_tick_sha256=sha256(raw),teacher_sha256=sha256(teacher),feature_matrix_sha256=sha256(dest),feature_names=list(REPAIRED_FEATURE_NAMES),
         all_feature_names_unique=len(REPAIRED_FEATURE_NAMES)==len(set(REPAIRED_FEATURE_NAMES)),runtime_uses_future=False,
