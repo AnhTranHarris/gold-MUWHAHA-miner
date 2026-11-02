@@ -1,0 +1,374 @@
+{
+  "title": "F401-R152 original-source Dukascopy four-month T1/T2/LIMIT action replay, research-only",
+  "date": "2026-11-02",
+  "source": "Original immutable F401-R32 event population and R151 approved Dukascopy raw SHA registry; exact original GitHub R120 publisher source",
+  "source_sha256": {
+    "01": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+    "02": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+    "06": "34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2",
+    "07": "e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7"
+  },
+  "R120_GitHub_blob_SHA": {
+    "r120_multiclock_geometry.py": "e44fbc375bae8865ff9e5376ca15ca7d96d05c7f",
+    "r120_htf_bridge.py": "6af69001ee1f71f20c552f76d378e36874c2efc4"
+  },
+  "config": {
+    "T1_offset_ms": 15000,
+    "T1_window_ms": 1000,
+    "T2_wait_ms": 5000,
+    "T2_window_ms": 1000,
+    "limit_improvement_raw": 500,
+    "limit_TTL_ms": 2000,
+    "target_raw": 2000,
+    "stop_raw": 1500,
+    "horizon_ms": 30000,
+    "assumed_cost_usd_per_ounce": 0.2
+  },
+  "training": "Jan first 80% chronological with 70s embargo; T1/T2/LIMIT 95-tree 275216-row Jan models; uplift/fill/correct-guardian 55-tree deterministic half-stride of Jan FIT; February first60% bias/isotonic calibration with 70s embargo; February last35% pretransfer selection across 3 predeclared policies each; June/July no retuning",
+  "families": [
+    "A_PAIRED_OPTIMAL_STOP",
+    "B_PASSIVE_LIMIT_HAZARD",
+    "C_INDEPENDENT_CORRECT_RESCUE"
+  ],
+  "rows": [
+    {
+      "month": "01",
+      "broker": "dukascopy",
+      "n_original": 344037,
+      "original_classes": {
+        "0": 178642,
+        "1": 122151,
+        "2": 43244
+      },
+      "baseline_T1_net_per_original_intent": -0.7717117071151733,
+      "baseline_T2_net_per_original_intent": -0.7114061713218689,
+      "baseline_LIMIT_net_per_original_intent": -0.11920272558927536,
+      "families": {
+        "A_PAIRED_OPTIMAL_STOP": {
+          "frozen_threshold": 0.0,
+          "n_new_hypothetical_actions": 0,
+          "action_counts": {
+            "0": 344037,
+            "1": 0,
+            "2": 0,
+            "3": 0
+          },
+          "hypothetical_net_per_original_intent_USD": 0.0,
+          "hypothetical_net_sum_USD_if_independent": 0.0,
+          "mean_USD_per_action": null,
+          "original_correct_proposed": 0,
+          "original_opposite_proposed": 0,
+          "original_neutral_proposed": 0,
+          "original_correct_proposal_rate": 0.0,
+          "original_incorrect_nonproposal_rate": 1.0,
+          "no_t0_veto_claim": true
+        },
+        "B_PASSIVE_LIMIT_HAZARD": {
+          "frozen_threshold": 0.0,
+          "n_new_hypothetical_actions": 0,
+          "action_counts": {
+            "0": 344037,
+            "1": 0,
+            "2": 0,
+            "3": 0
+          },
+          "hypothetical_net_per_original_intent_USD": 0.0,
+          "hypothetical_net_sum_USD_if_independent": 0.0,
+          "mean_USD_per_action": null,
+          "original_correct_proposed": 0,
+          "original_opposite_proposed": 0,
+          "original_neutral_proposed": 0,
+          "original_correct_proposal_rate": 0.0,
+          "original_incorrect_nonproposal_rate": 1.0,
+          "no_t0_veto_claim": true
+        },
+        "C_INDEPENDENT_CORRECT_RESCUE": {
+          "frozen_threshold": 0.55,
+          "n_new_hypothetical_actions": 1446,
+          "action_counts": {
+            "0": 342591,
+            "1": 0,
+            "2": 0,
+            "3": 1446
+          },
+          "hypothetical_net_per_original_intent_USD": 4.482074018596904e-06,
+          "hypothetical_net_sum_USD_if_independent": 1.541999340057373,
+          "mean_USD_per_action": 0.0010663892608135939,
+          "original_correct_proposed": 1003,
+          "original_opposite_proposed": 131,
+          "original_neutral_proposed": 312,
+          "original_correct_proposal_rate": 0.005614581117542347,
+          "original_incorrect_nonproposal_rate": 0.9973215635297319,
+          "no_t0_veto_claim": true
+        }
+      },
+      "no_original_t0_veto": true,
+      "L1_optimistic_only": true,
+      "policy_mask_sha256": "8beab77eefd3e64caf53267f39fc6b79e28a903a646cae7a7dcf70c832a624d9"
+    },
+    {
+      "month": "02",
+      "broker": "dukascopy",
+      "n_original": 324582,
+      "original_classes": {
+        "0": 143923,
+        "1": 137216,
+        "2": 43443
+      },
+      "baseline_T1_net_per_original_intent": -0.9852386116981506,
+      "baseline_T2_net_per_original_intent": -0.869778573513031,
+      "baseline_LIMIT_net_per_original_intent": -0.2170150727033615,
+      "families": {
+        "A_PAIRED_OPTIMAL_STOP": {
+          "frozen_threshold": 0.0,
+          "n_new_hypothetical_actions": 0,
+          "action_counts": {
+            "0": 324582,
+            "1": 0,
+            "2": 0,
+            "3": 0
+          },
+          "hypothetical_net_per_original_intent_USD": 0.0,
+          "hypothetical_net_sum_USD_if_independent": 0.0,
+          "mean_USD_per_action": null,
+          "original_correct_proposed": 0,
+          "original_opposite_proposed": 0,
+          "original_neutral_proposed": 0,
+          "original_correct_proposal_rate": 0.0,
+          "original_incorrect_nonproposal_rate": 1.0,
+          "no_t0_veto_claim": true
+        },
+        "B_PASSIVE_LIMIT_HAZARD": {
+          "frozen_threshold": 0.0,
+          "n_new_hypothetical_actions": 0,
+          "action_counts": {
+            "0": 324582,
+            "1": 0,
+            "2": 0,
+            "3": 0
+          },
+          "hypothetical_net_per_original_intent_USD": 0.0,
+          "hypothetical_net_sum_USD_if_independent": 0.0,
+          "mean_USD_per_action": null,
+          "original_correct_proposed": 0,
+          "original_opposite_proposed": 0,
+          "original_neutral_proposed": 0,
+          "original_correct_proposal_rate": 0.0,
+          "original_incorrect_nonproposal_rate": 1.0,
+          "no_t0_veto_claim": true
+        },
+        "C_INDEPENDENT_CORRECT_RESCUE": {
+          "frozen_threshold": 0.55,
+          "n_new_hypothetical_actions": 66,
+          "action_counts": {
+            "0": 324516,
+            "1": 0,
+            "2": 0,
+            "3": 66
+          },
+          "hypothetical_net_per_original_intent_USD": 0.0,
+          "hypothetical_net_sum_USD_if_independent": 0.0,
+          "mean_USD_per_action": 0.0,
+          "original_correct_proposed": 33,
+          "original_opposite_proposed": 6,
+          "original_neutral_proposed": 27,
+          "original_correct_proposal_rate": 0.00022928927273611584,
+          "original_incorrect_nonproposal_rate": 0.9998173354219828,
+          "no_t0_veto_claim": true
+        }
+      },
+      "no_original_t0_veto": true,
+      "L1_optimistic_only": true,
+      "policy_mask_sha256": "bab9a52645230f9e21d780e5612992ac1bd9760e2ddca090b77871f5c78d29a3"
+    },
+    {
+      "month": "06",
+      "broker": "dukascopy",
+      "n_original": 297035,
+      "original_classes": {
+        "0": 132105,
+        "1": 129510,
+        "2": 35420
+      },
+      "baseline_T1_net_per_original_intent": -0.7422199845314026,
+      "baseline_T2_net_per_original_intent": -0.6746065020561218,
+      "baseline_LIMIT_net_per_original_intent": -0.0657944455742836,
+      "families": {
+        "A_PAIRED_OPTIMAL_STOP": {
+          "frozen_threshold": 0.0,
+          "n_new_hypothetical_actions": 0,
+          "action_counts": {
+            "0": 297035,
+            "1": 0,
+            "2": 0,
+            "3": 0
+          },
+          "hypothetical_net_per_original_intent_USD": 0.0,
+          "hypothetical_net_sum_USD_if_independent": 0.0,
+          "mean_USD_per_action": null,
+          "original_correct_proposed": 0,
+          "original_opposite_proposed": 0,
+          "original_neutral_proposed": 0,
+          "original_correct_proposal_rate": 0.0,
+          "original_incorrect_nonproposal_rate": 1.0,
+          "no_t0_veto_claim": true
+        },
+        "B_PASSIVE_LIMIT_HAZARD": {
+          "frozen_threshold": 0.0,
+          "n_new_hypothetical_actions": 0,
+          "action_counts": {
+            "0": 297035,
+            "1": 0,
+            "2": 0,
+            "3": 0
+          },
+          "hypothetical_net_per_original_intent_USD": 0.0,
+          "hypothetical_net_sum_USD_if_independent": 0.0,
+          "mean_USD_per_action": null,
+          "original_correct_proposed": 0,
+          "original_opposite_proposed": 0,
+          "original_neutral_proposed": 0,
+          "original_correct_proposal_rate": 0.0,
+          "original_incorrect_nonproposal_rate": 1.0,
+          "no_t0_veto_claim": true
+        },
+        "C_INDEPENDENT_CORRECT_RESCUE": {
+          "frozen_threshold": 0.55,
+          "n_new_hypothetical_actions": 611,
+          "action_counts": {
+            "0": 296424,
+            "1": 0,
+            "2": 0,
+            "3": 611
+          },
+          "hypothetical_net_per_original_intent_USD": -2.3000658984528854e-05,
+          "hypothetical_net_sum_USD_if_independent": -6.832000732421875,
+          "mean_USD_per_action": -0.011181670241057873,
+          "original_correct_proposed": 430,
+          "original_opposite_proposed": 66,
+          "original_neutral_proposed": 115,
+          "original_correct_proposal_rate": 0.0032549865637182544,
+          "original_incorrect_nonproposal_rate": 0.9989025647244285,
+          "no_t0_veto_claim": true
+        }
+      },
+      "no_original_t0_veto": true,
+      "L1_optimistic_only": true,
+      "policy_mask_sha256": "0816e0d00b5188036f4a930ad41c5b8e3dc83be5d75838432999b6712452f5ed"
+    },
+    {
+      "month": "07",
+      "broker": "dukascopy",
+      "n_original": 301280,
+      "original_classes": {
+        "0": 130408,
+        "1": 124823,
+        "2": 46049
+      },
+      "baseline_T1_net_per_original_intent": -0.7563666105270386,
+      "baseline_T2_net_per_original_intent": -0.6719163656234741,
+      "baseline_LIMIT_net_per_original_intent": -0.04297028109431267,
+      "families": {
+        "A_PAIRED_OPTIMAL_STOP": {
+          "frozen_threshold": 0.0,
+          "n_new_hypothetical_actions": 0,
+          "action_counts": {
+            "0": 301280,
+            "1": 0,
+            "2": 0,
+            "3": 0
+          },
+          "hypothetical_net_per_original_intent_USD": 0.0,
+          "hypothetical_net_sum_USD_if_independent": 0.0,
+          "mean_USD_per_action": null,
+          "original_correct_proposed": 0,
+          "original_opposite_proposed": 0,
+          "original_neutral_proposed": 0,
+          "original_correct_proposal_rate": 0.0,
+          "original_incorrect_nonproposal_rate": 1.0,
+          "no_t0_veto_claim": true
+        },
+        "B_PASSIVE_LIMIT_HAZARD": {
+          "frozen_threshold": 0.0,
+          "n_new_hypothetical_actions": 0,
+          "action_counts": {
+            "0": 301280,
+            "1": 0,
+            "2": 0,
+            "3": 0
+          },
+          "hypothetical_net_per_original_intent_USD": 0.0,
+          "hypothetical_net_sum_USD_if_independent": 0.0,
+          "mean_USD_per_action": null,
+          "original_correct_proposed": 0,
+          "original_opposite_proposed": 0,
+          "original_neutral_proposed": 0,
+          "original_correct_proposal_rate": 0.0,
+          "original_incorrect_nonproposal_rate": 1.0,
+          "no_t0_veto_claim": true
+        },
+        "C_INDEPENDENT_CORRECT_RESCUE": {
+          "frozen_threshold": 0.55,
+          "n_new_hypothetical_actions": 1191,
+          "action_counts": {
+            "0": 300089,
+            "1": 0,
+            "2": 0,
+            "3": 1191
+          },
+          "hypothetical_net_per_original_intent_USD": -5.622675962513313e-05,
+          "hypothetical_net_sum_USD_if_independent": -16.939998626708984,
+          "mean_USD_per_action": -0.014223341830074787,
+          "original_correct_proposed": 857,
+          "original_opposite_proposed": 122,
+          "original_neutral_proposed": 212,
+          "original_correct_proposal_rate": 0.006571682718851604,
+          "original_incorrect_nonproposal_rate": 0.998045320473805,
+          "no_t0_veto_claim": true
+        }
+      },
+      "no_original_t0_veto": true,
+      "L1_optimistic_only": true,
+      "policy_mask_sha256": "04716e67fbd3ea23808a019021f73307be42064d24309d60e0f95cfd5b2bb0eb"
+    }
+  ],
+  "aggregate_original_events": 1266934,
+  "aggregate_correct": 585078,
+  "aggregate_opposite": 513700,
+  "aggregate_neutral": 168156,
+  "full_eight_cell_filter_gate_passed": false,
+  "status": "UNAPPROVED, NO FILTER REPLACEMENT, NO MT5 EXECUTION, NO REAL ORDER INTENT",
+  "limitations": [
+    "Only original Dukascopy four source-month cells were available in this run; original Coinexx raw tapes not located in connected Drive",
+    "Original signed governor, forensic, 39-checklist and active ledger links returned 404; owner default and GitHub owner directive read",
+    "The original t0 R9 market orders remain immutable; hypothetical t0+15s T1/T2/LIMIT never-submitted actions cannot count as original wrong vetoes",
+    "Optimistic L1 touch is not a queue-aware or broker-confirmed fill",
+    "Costs are assumed 0.20 USD/ounce, not verified Coinexx fees/latency; independent event utility cannot be summed as shared capital P&L",
+    "June and July are historically exposed, not untouched blind validation",
+    "R120 original six-clock and completed M1/M5/M15/H1 states reused with exact GitHub blob SHA; no teacher, original truth, or matured outcome is used at runtime"
+  ],
+  "source_and_model_sha256": {
+    "r152_paired_action_replay.py": "f6e899085eaadc320e814402e104e660020fdc8c27c3064ee3d84f228dc87955",
+    "r152_fit_freeze_action_portfolio.py": "c70128d9c3c9af5bece19637f1e40542251f8c1541dbfa9548557b0c19f39ce3",
+    "r152_frozen_transfer_resume.py": "027ba0439c50e72a6e873dfd345c66094fdf91e5e8c74e078a449fefd3386898",
+    "r152_build_evidence.py": "6d38a0181b207860cd6257eaea07b30489f1c99b643107fe765270854bb92fad",
+    "test_r152_action.py": "dc71ae33bcf12fce4fe37baa62c6159943ea003a7a28ebe1a49cc197fa01e60c",
+    "r120_multiclock_geometry.py": "94a79316da439370c17aabbc74d976a2a1f4f5d7efca88ebbdcf7e4c636c1baa",
+    "r120_htf_bridge.py": "e7c2890da7e853b5717b2c5f83cccb95d9e954fd1a40a3c78c6dd5e256541bdf",
+    "r151_t1_core.py": "ab2c7ae3e1e07f1b54630838a3846716d66e4205422ae51da787ecff9c4592e2",
+    "r150x_marked_renewal_action.py": "f1a234618d77b4b4ef4702ce34fee80015a35db07facdfe172b57dfef0a09faf",
+    "R152_CORRECT_GUARD_JAN_FROZEN.joblib": "c09f8a150bfc34d5cf4efa0ad8905bf0ece6c1d9b3dbd9b785c12803e0e39661",
+    "R152_LIMIT_FILL_JAN_FROZEN.joblib": "88ac5dc5fad464496e1d926d356c1df60ec57175d379309fad2b0525d79cd0ef",
+    "R152_LIMIT_JAN_FROZEN.joblib": "a468bcff9d7f165035338cbdc8d88d08dae398f59705b544ec9ba99b70effbac",
+    "R152_T1_JAN_FROZEN.joblib": "9e8e7b8565c1f4203ceaf70bfc3bd20bd203a20391e52e3a83f4e4aa3e71e89c",
+    "R152_T2_JAN_FROZEN.joblib": "71030f83fbe0dd4a305788fbafd63ba7aa7d7ecc44d0346a18fff500f7fd5f7a",
+    "R152_UPLIFT_JAN_FROZEN.joblib": "f0ff0f6a62f3a0b09a9aad02b7e68ee65e855b322bd1a78e8437514f18135f34",
+    "R152_CORRECT_GUARD_FEB_CAL_FROZEN.joblib": "bcd520213a76ffa6c16894e3699f2a268c7dbb8752ebf6fef53a67cb6bcf4f97",
+    "R152_LIMIT_FEB_CAL_FROZEN.joblib": "d53a6c96652053f5ffbfda23c9839f4e89b12141fc0cc469c0ccd914e52c8168",
+    "R152_LIMIT_FILL_FEB_CAL_FROZEN.joblib": "5dc3fcb66453902315d0a6069fd0da542c8595b82e1a5ea35feb9041add79c04",
+    "R152_T1_FEB_CAL_FROZEN.joblib": "bcdbe9984710d846da0a4ecf978dc718439928468c8b48bb0206724e2ff30353",
+    "R152_T2_FEB_CAL_FROZEN.joblib": "cc6777ee924d1adf8107bcd6ef9dce7b943a10e9f6b545c828dfc18ccf2ef5b0",
+    "R152_UPLIFT_FEB_CAL_FROZEN.joblib": "ebe3f5923f3cf9eb6b3b221306b73762bb1817522556945d4fc2c9b93756c7bd"
+  },
+  "mask_archive_sha256": "3e34cd4619a51ba72e5629cd7ce0907ef9ea3a5bc3655cd968c11df4e1fedca8"
+}
