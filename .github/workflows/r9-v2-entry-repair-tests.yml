@@ -16,7 +16,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install targeted test dependencies
-        run: python -m pip install --upgrade pip numpy numba pandas scikit-learn pytest
+        run: python -m pip install --upgrade pip numpy numba pandas scikit-learn lightgbm pytest
       - name: Compile complete repaired Python source tree
         run: python -m compileall -q research/r9_v2_dual_action_bnph_20261102/src
       - name: Run source-level R9 v2 repair contract
@@ -24,8 +24,17 @@ jobs:
           PYTHONPATH: research/r9_v2_dual_action_bnph_20261102/src
         run: |
           pytest -q \
-            research/r9_v2_dual_action_bnph_20261102/tests/test_entry_repair.py \
             research/r9_v2_dual_action_bnph_20261102/tests/test_250ms_universe.py \
+            research/r9_v2_dual_action_bnph_20261102/tests/test_audit_repair_contract.py \
+            research/r9_v2_dual_action_bnph_20261102/tests/test_bayes.py \
+            research/r9_v2_dual_action_bnph_20261102/tests/test_competing_hawkes.py \
+            research/r9_v2_dual_action_bnph_20261102/tests/test_cross_feed_transfer.py \
+            research/r9_v2_dual_action_bnph_20261102/tests/test_domain_builder.py \
+            research/r9_v2_dual_action_bnph_20261102/tests/test_dual.py \
+            research/r9_v2_dual_action_bnph_20261102/tests/test_entry_repair.py \
+            research/r9_v2_dual_action_bnph_20261102/tests/test_fitted_intensity_features.py \
             research/r9_v2_dual_action_bnph_20261102/tests/test_fitted_slot_excitation.py \
+            research/r9_v2_dual_action_bnph_20261102/tests/test_path_config.py \
             research/r9_v2_dual_action_bnph_20261102/tests/test_repaired_online_offline_parity.py \
-            research/r9_v2_dual_action_bnph_20261102/tests/test_audit_repair_contract.py
+            research/r9_v2_dual_action_bnph_20261102/tests/test_structural_5m.py \
+            research/r9_v2_dual_action_bnph_20261102/tests/test_timing_transition.py
