@@ -1,0 +1,72 @@
+{
+  "source": "coinexx",
+  "month": "07",
+  "scope": "COMPLETE_SOURCE_PAIR_EVENT_OFF_POLICY",
+  "version": "dual_action_3class_BNP_research_v1",
+  "source_archive": "/mnt/data/v2_direction_audit/R9_V2_PAIRED_ACTION_COINEXX_2026_07_FULL_CHECKPOINT.zip",
+  "source_sha256": "0f677442c042dc28b1053cb794eced4d3061d5fea9a2b4668b93732a1d5a5e26",
+  "original_events": 312856,
+  "excluded_censored": 2,
+  "historical_previous_months": [],
+  "chronological_split": {
+    "days": 28,
+    "fit_end": 1784160000000,
+    "cal_end": 1784764800000,
+    "embargo_ms": 60000
+  },
+  "train_action_rows": 316216,
+  "calibration_event_count": 64161,
+  "check_event_count": 90517,
+  "class_prob_side_auc": [
+    0.5420661917357599,
+    0.5355466732254414
+  ],
+  "baseline_unique_direction": {
+    "n": 43856,
+    "matched": 22275,
+    "accuracy": 0.5079122582998905
+  },
+  "learned_rank_unique_direction": {
+    "n": 43856,
+    "matched": 23474,
+    "accuracy": 0.5352517329441809
+  },
+  "selected_unique_direction": {
+    "n": 0,
+    "matched": 0,
+    "accuracy": null
+  },
+  "side_np_cutoffs": [
+    0.26733118683733714,
+    0.2698598498587589
+  ],
+  "side_np_info": [
+    {
+      "status": "CALIBRATED_RESEARCH_ONLY",
+      "bad_n": 48338,
+      "alpha": 0.1,
+      "observed_exceedance": 0.0999627622160619
+    },
+    {
+      "status": "CALIBRATED_RESEARCH_ONLY",
+      "bad_n": 48360,
+      "alpha": 0.1,
+      "observed_exceedance": 0.0999793217535153
+    }
+  ],
+  "calibration_selected": 0,
+  "calibration_selected_strict_correct": 0,
+  "calibration_selected_rate": null,
+  "check_selected": 0,
+  "check_strict_correct": 0,
+  "check_strict_correct_rate": null,
+  "check_selected_net": 0.0,
+  "check_total_unique": 43856,
+  "check_volume_pass": "NOT_EVALUATED: requires full on-policy full-month single-position replay",
+  "qualified_policy": false,
+  "model_status": "RESEARCH_ONLY_NO_PROMOTION",
+  "original_feature_count": 102,
+  "models_use_future_in_inputs": false,
+  "time_s": 10.52,
+  "model_sha256": "bf9a30e845fec6b90d3ceb6a36fd5abd7370be8a2fac128b26358f50a26f088a"
+}
