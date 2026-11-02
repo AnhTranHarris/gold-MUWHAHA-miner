@@ -8,7 +8,7 @@ from sklearn.metrics import roc_auc_score
 from repaired_training_common import action_labels,raw_action_predict,choose_prior_weight,calibrate_action_probs,apply_action_calibration,fit_iso,apply_iso
 
 def load(root,day):
- root=Path(root);base=f'coinexx_01_{day}';return np.load(root/f'{base}_250ms_v4_X.npy',mmap_mode='r'),np.load(root/f'{base}_250ms_universe.npz')
+ root=Path(root);base=f'coinexx_01_{day}';return np.load(root/f'{base}_250ms_v5_X.npy',mmap_mode='r'),np.load(root/f'{base}_250ms_universe.npz')
 
 def main(a):
  root=Path(a.root);mdl=lgb.Booster(model_file=str(Path(a.models)/'coinexx_01_pairwise_direction_v1.txt'));buy=lgb.Booster(model_file=str(Path(a.baseline_models)/'coinexx_01_250ms_pilot_buy.txt'));sell=lgb.Booster(model_file=str(Path(a.baseline_models)/'coinexx_01_250ms_pilot_sell.txt'));models=(buy,sell)
