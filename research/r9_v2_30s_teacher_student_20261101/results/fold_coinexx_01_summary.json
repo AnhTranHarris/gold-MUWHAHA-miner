@@ -1,0 +1,52 @@
+{
+  "source": "coinexx",
+  "month": "01",
+  "fold": "partial_january",
+  "model_version": "LGBM_40trees_resource_safe_NP90_teacher0or10",
+  "evaluated_candidates": 181048,
+  "selected_trades": 0,
+  "min_trades_85pct_synth": 5489,
+  "volume_pass": false,
+  "quality_rate": 0,
+  "win_rate": 0,
+  "net": 0.0,
+  "mean_net": null,
+  "daily_passes": 0,
+  "daily_active": 0,
+  "daily_evaluated": 6,
+  "daily_80pct_pass": false,
+  "weekly_passes": 0,
+  "weekly_active": 0,
+  "weekly_80pct_pass": false,
+  "monthly_80pct_pass": false,
+  "net_positive": false,
+  "np_threshold": 0.3290058184343861,
+  "all_constraints_pass": false,
+  "calibration_candidates": 80572,
+  "training_candidates": 153318,
+  "calibration_options": [
+    {
+      "teacher_weight": 0.0,
+      "threshold": 0.3290058184343861,
+      "np_bad_cal": 0.10001072309397005,
+      "cal_eligible": 0,
+      "cal_quality": 0.0,
+      "cal_net": 0.0,
+      "cal_net_per_trade": 0.0
+    },
+    {
+      "teacher_weight": 0.1,
+      "threshold": 0.3579384940926464,
+      "np_bad_cal": 0.10001072309397005,
+      "cal_eligible": 0,
+      "cal_quality": 0.0,
+      "cal_net": 0.0,
+      "cal_net_per_trade": 0.0
+    }
+  ],
+  "calibration_teacher_weight": 0.0,
+  "test_auc_quality": 0.490019,
+  "test_average_precision": 0.290937,
+  "test_base_quality": 0.29907,
+  "elapsed_s": 4.25
+}
