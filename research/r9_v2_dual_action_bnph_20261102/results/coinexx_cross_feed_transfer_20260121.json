@@ -1,0 +1,127 @@
+{
+  "identity": "R9_V2_PAIRED_CROSS_FEED_WAIT_TRANSFER_20261102",
+  "model_source_sha": {
+    "coinexx": "5d58c829a5b9b6d6e3ec5d96f26d08fdf765b7317a5a504261fd2151df8d10ee",
+    "dukascopy": "a145c6ef913601a8034126c9826d11a9b294a1c6c14dc69c21877ea1db60cdc4"
+  },
+  "fit_days": [
+    "2026-01-06",
+    "2026-01-07"
+  ],
+  "calibration_day": "2026-01-08",
+  "untouched_holdout_day": "2026-01-21",
+  "months": [
+    "01"
+  ],
+  "embargo_ms": 60000,
+  "wait_horizon_ms": 1000,
+  "feature_version": "r9_v2_wait_transition_v1",
+  "feed_local_isotonic_on_calibration_A": true,
+  "feed_local_np_on_calibration_B": true,
+  "holdout_used_for_selection": false,
+  "teacher_opportunities_are_overlapping_not_fills": true,
+  "results": {
+    "coinexx": {
+      "target": "coinexx",
+      "calibration_receipt_sha": "89c535cf6a7251c4103f38f44ebf814b8ef76e6ab47f7ce53ff68580ca786264",
+      "holdout_receipt_sha": "9c5cfde57e5f426c939c52240cc900f81cd760913d429c15de3fdf96b3cee0c0",
+      "cal_A_rows": 115822,
+      "cal_B_rows": 115896,
+      "holdout_rows": 256371,
+      "same_feed": {
+        "origin_feed": "coinexx",
+        "target_feed": "coinexx",
+        "calibration_B": {
+          "rows": 115896,
+          "prevalence": 0.11717401808517981,
+          "auc": 0.5565794818656759,
+          "brier": 0.10311450771120652,
+          "logloss": 0.3613518058323959,
+          "calibrated_pmax": 0.2857142857142857,
+          "strict_p80_selected": 0,
+          "strict_p80_precision": null
+        },
+        "holdout": {
+          "rows": 256371,
+          "prevalence": 0.11780583607350285,
+          "auc": 0.5710678297823314,
+          "brier": 0.10327503720322487,
+          "logloss": 0.3594183577044638,
+          "calibrated_pmax": 0.2857142857142857,
+          "strict_p80_selected": 0,
+          "strict_p80_precision": null
+        },
+        "calibration_admission": {
+          "approved": false,
+          "calibration_selected": 0,
+          "calibration_precision": null,
+          "required_n": 150,
+          "required_precision": 0.8,
+          "reason": "FAIL_CLOSED_CALIBRATION"
+        },
+        "holdout_admissible_p80_selected": 0,
+        "calibration_np_cutoff": 0.13343454790823212,
+        "calibration_np_info": {
+          "status": "CALIBRATED_RESEARCH_ONLY",
+          "bad_n": 102316,
+          "alpha": 0.1,
+          "observed_exceedance": 0.07351733844169045
+        }
+      },
+      "cross_feed": {
+        "origin_feed": "dukascopy",
+        "target_feed": "coinexx",
+        "calibration_B": {
+          "rows": 115896,
+          "prevalence": 0.11717401808517981,
+          "auc": 0.5447593495325723,
+          "brier": 0.10334539833160858,
+          "logloss": 0.3609392278939904,
+          "calibrated_pmax": 0.25,
+          "strict_p80_selected": 0,
+          "strict_p80_precision": null
+        },
+        "holdout": {
+          "rows": 256371,
+          "prevalence": 0.11780583607350285,
+          "auc": 0.560011184079545,
+          "brier": 0.10353232802670669,
+          "logloss": 0.36064300004668753,
+          "calibrated_pmax": 0.25,
+          "strict_p80_selected": 0,
+          "strict_p80_precision": null
+        },
+        "calibration_admission": {
+          "approved": false,
+          "calibration_selected": 0,
+          "calibration_precision": null,
+          "required_n": 150,
+          "required_precision": 0.8,
+          "reason": "FAIL_CLOSED_CALIBRATION"
+        },
+        "holdout_admissible_p80_selected": 0,
+        "calibration_np_cutoff": 0.1435098650051921,
+        "calibration_np_info": {
+          "status": "CALIBRATED_RESEARCH_ONLY",
+          "bad_n": 102316,
+          "alpha": 0.1,
+          "observed_exceedance": 0.034706204308221585
+        }
+      },
+      "bootstrap": {
+        "block_ms": 300000,
+        "blocks": 276,
+        "replicates": 100,
+        "delta_same_minus_cross_mean": 0.011014012968634983,
+        "ci95_same_minus_cross": [
+          0.009428851495176704,
+          0.013216125356892204
+        ],
+        "fraction_same_better": 1.0
+      },
+      "qualified_policy": false
+    }
+  },
+  "policy_promoted": false,
+  "status": "SOURCE_EXACT_CROSS_FEED_RESEARCH_ONLY"
+}
