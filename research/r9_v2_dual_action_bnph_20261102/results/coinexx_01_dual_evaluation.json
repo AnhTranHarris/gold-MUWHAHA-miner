@@ -1,0 +1,71 @@
+{
+  "source": "coinexx",
+  "month": "01",
+  "scope": "COMPLETE_SOURCE_PAIR_EVENT_OFF_POLICY",
+  "version": "dual_action_3class_BNP_research_v1",
+  "source_archive": "/mnt/data/v2_direction_audit/R9_V2_PAIRED_ACTION_COINEXX_2026_01_FULL_CHECKPOINT.zip",
+  "source_sha256": "bcb83d2ef6f129e4a5d6d13a3d38d93bb6026f51c53c51ce9145edfb4d91589d",
+  "original_events": 414938,
+  "historical_previous_months": [],
+  "chronological_split": {
+    "days": 26,
+    "fit_end": 1768521600000,
+    "cal_end": 1769040000000,
+    "embargo_ms": 60000
+  },
+  "train_action_rows": 279150,
+  "calibration_event_count": 61360,
+  "check_event_count": 213934,
+  "class_prob_side_auc": [
+    0.5149875150744553,
+    0.5102212150195863
+  ],
+  "baseline_unique_direction": {
+    "n": 114371,
+    "matched": 57777,
+    "accuracy": 0.5051717655699435
+  },
+  "learned_rank_unique_direction": {
+    "n": 114371,
+    "matched": 59031,
+    "accuracy": 0.5161360834477271
+  },
+  "selected_unique_direction": {
+    "n": 0,
+    "matched": 0,
+    "accuracy": null
+  },
+  "side_np_cutoffs": [
+    0.2933897452888138,
+    0.2924631580803061
+  ],
+  "side_np_info": [
+    {
+      "status": "CALIBRATED_RESEARCH_ONLY",
+      "bad_n": 44192,
+      "alpha": 0.1,
+      "observed_exceedance": 0.09997284576393918
+    },
+    {
+      "status": "CALIBRATED_RESEARCH_ONLY",
+      "bad_n": 44691,
+      "alpha": 0.1,
+      "observed_exceedance": 0.09997538654315187
+    }
+  ],
+  "calibration_selected": 0,
+  "calibration_selected_strict_correct": 0,
+  "calibration_selected_rate": null,
+  "check_selected": 0,
+  "check_strict_correct": 0,
+  "check_strict_correct_rate": null,
+  "check_selected_net": 0.0,
+  "check_total_unique": 114371,
+  "check_volume_pass": "NOT_EVALUATED: requires full on-policy full-month single-position replay",
+  "qualified_policy": false,
+  "model_status": "RESEARCH_ONLY_NO_PROMOTION",
+  "original_feature_count": 102,
+  "models_use_future_in_inputs": false,
+  "time_s": 13.1,
+  "model_sha256": "246da7003722216e1e5361bbc6747f4ed479ba82b1f786535d6bc2be5eae2c61"
+}
