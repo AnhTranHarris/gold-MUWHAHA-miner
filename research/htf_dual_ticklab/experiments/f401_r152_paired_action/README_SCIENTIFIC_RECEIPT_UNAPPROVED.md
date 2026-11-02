@@ -29,14 +29,14 @@ All proposed actions are hypothetical NEW T1/T2 never-submitted intents; they do
 
 Original full governor, forensic, checklist and active ledger IDs returned 404 in both connected Drive accounts on 2026-11-02; preserved original owner directive and exact GitHub source instead. Do not mark any original checklist objective approved.
 
-11 deterministic tests passed, including all four raw tape SHA checks, original immutable event arrays and original R120 prefix causality. Full failed results and model weights preserved.
+13 deterministic tests passed, including all four raw tape SHA checks, original immutable event arrays and original R120 prefix causality. Full failed results and model weights preserved.
 
 ## Reproducibility
 
 Original source hashes: {"01": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5", "02": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d", "06": "34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2", "07": "e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7"}
 Original R120 GitHub blobs e44fbc375bae8865ff9e5376ca15ca7d96d05c7f and 6af69001ee1f71f20c552f76d378e36874c2efc4, byte-for-byte verified after authenticated source transport.
 
-Event/action masks archive SHA256 3e34cd4619a51ba72e5629cd7ce0907ef9ea3a5bc3655cd968c11df4e1fedca8
+Event/action masks archive SHA256 4b6615d296491bf9e2fedb7eaae5c74d600ee4e911f4bf66726b1bee0c6e3c28
 Original event counts: 1266934, correct 585078, opposite 513700, neutral 168156.
 
 Next genuinely different family: a pre-OrderSend genuine intent capture (intent ID, quote-as-of, broker order state) with latency/queue-aware limit execution and capital-coupled 12-scenario replay; do not repeat flat static classifier threshold grids.
