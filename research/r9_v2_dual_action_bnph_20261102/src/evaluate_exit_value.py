@@ -1,9 +1,26 @@
 """Calibrate and verify side-specific R9 realized exit-value models."""
 from __future__ import annotations
-import argparse,json,math
+import argparse,json,math,hashlib
 from pathlib import Path
 import lightgbm as lgb
 import numpy as np
+from repaired_features import FEATURE_VERSION,REPAIRED_FEATURE_COUNT
+
+def sha256(p):
+ h=hashlib.sha256()
+ with open(p,'rb') as f:
+  for z in iter(lambda:f.read(1<<20),b''):h.update(z)
+ return h.hexdigest()
+
+def load_verified(models,side,target):
+ models=Path(models);mp=models/f'coinexx_01_exit_value_v2_{side}_{target}.txt';rp=models/f'coinexx_01_exit_value_v2_{side}_{target}_fit.json'
+ if not rp.exists():raise FileNotFoundError(f'missing v5 fit receipt: {rp}')
+ receipt=json.loads(rp.read_text())
+ if receipt.get('feature_version')!=FEATURE_VERSION or int(receipt.get('feature_count',-1))!=REPAIRED_FEATURE_COUNT:raise ValueError(f'stale/incompatible fit receipt: {rp}')
+ if receipt.get('model_sha256')!=sha256(mp):raise ValueError(f'model hash mismatch: {mp}')
+ mdl=lgb.Booster(model_file=str(mp))
+ if mdl.num_feature()!=REPAIRED_FEATURE_COUNT:raise ValueError(f'model feature mismatch: {mp}')
+ return mdl
 
 def segment(mm,qm,X,d,mask,j,norm):
  pm=mm.predict(np.asarray(X[mask],np.float32),num_threads=2);pq=qm.predict(np.asarray(X[mask],np.float32),num_threads=2)
@@ -19,14 +36,14 @@ def main(a):
  Xh=np.load(root/f'coinexx_01_{a.holdout_day}_250ms_v5_X.npy',mmap_mode='r');dh=np.load(root/f'coinexx_01_{a.holdout_day}_250ms_universe.npz');hold=dh['ts']>=dh['ts'][0]+a.embargo_ms
  sides={};qualified=False
  for j,side in enumerate(('buy','sell')):
-  mm=lgb.Booster(model_file=str(mod/f'coinexx_01_exit_value_{side}_mean.txt'));qm=lgb.Booster(model_file=str(mod/f'coinexx_01_exit_value_{side}_q20.txt'))
+  mm=load_verified(mod,side,'mean');qm=load_verified(mod,side,'q20')
   pma=mm.predict(np.asarray(Xc[ca],np.float32),num_threads=2);pqa=qm.predict(np.asarray(Xc[ca],np.float32),num_threads=2);norm=(float(pma.mean()),float(pma.std()+1e-12),float(pqa.mean()),float(pqa.std()+1e-12))
   score=.7*(pma-norm[0])/norm[1]+.3*(pqa-norm[2])/norm[3];net=dc['net'][ca,j].astype(float);order=np.argsort(score)[::-1];best=None
   for n in np.unique(np.clip(np.geomspace(150,len(order),220).astype(int),150,len(order))):
    v=net[order[:n]];pos=float((v>0).mean());mean=float(v.mean());lcb=mean-1.64*float(v.std(ddof=1))/math.sqrt(n);q20=float(np.quantile(v,.2))
    if pos>=.80 and lcb>0 and q20>0:best=dict(n=int(n),positive_rate=pos,mean_net=mean,mean_lcb=lcb,q20=q20,score_threshold=float(score[order[n-1]]));qualified=True
   sides[side]=dict(calibration_A_qualifying_region=best,calibration_B=segment(mm,qm,Xc,dc,cb,j,norm),holdout=segment(mm,qm,Xh,dh,hold,j,norm))
- r=dict(identity='R9_V2_EXIT_VALUE_V1',fit_days=a.fit_days,calibration_day=a.cal_day,holdout_day=a.holdout_day,calibration_qualifying_region=qualified,sides=sides,qualified_value_policy=False,status='NO_POSITIVE_CONSERVATIVE_EXIT_VALUE_REGION')
- p=Path(a.out)/'coinexx_01_exit_value_evaluation.json';p.write_text(json.dumps(r,indent=2));print(json.dumps(r,indent=2))
+ r=dict(identity='R9_V2_EXIT_VALUE_V2',fit_days=a.fit_days,calibration_day=a.cal_day,holdout_day=a.holdout_day,calibration_qualifying_region=qualified,sides=sides,qualified_value_policy=False,status='NO_POSITIVE_CONSERVATIVE_EXIT_VALUE_REGION')
+ p=Path(a.out)/'coinexx_01_exit_value_v2_evaluation.json';p.write_text(json.dumps(r,indent=2));print(json.dumps(r,indent=2))
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--root',required=True);p.add_argument('--models',required=True);p.add_argument('--out',required=True);p.add_argument('--fit-days',nargs='+',default=['2026-01-06','2026-01-07']);p.add_argument('--cal-day',default='2026-01-08');p.add_argument('--holdout-day',default='2026-01-12');p.add_argument('--embargo-ms',type=int,default=60000);main(p.parse_args())
