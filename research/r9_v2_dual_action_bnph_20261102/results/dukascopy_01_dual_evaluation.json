@@ -1,0 +1,72 @@
+{
+  "source": "dukascopy",
+  "month": "01",
+  "scope": "COMPLETE_SOURCE_PAIR_EVENT_OFF_POLICY",
+  "version": "dual_action_3class_BNP_research_v1",
+  "source_archive": "/mnt/data/v2_direction_audit/R9_V2_PAIRED_ACTION_DUKASCOPY_2026_01_FULL_CHECKPOINT.zip",
+  "source_sha256": "4d32cbde437c9ff44a2d1f98ce4567b4b81c8c3cf60ad6575abea048cd42de2d",
+  "original_events": 238644,
+  "excluded_censored": 0,
+  "historical_previous_months": [],
+  "chronological_split": {
+    "days": 26,
+    "fit_end": 1768521600000,
+    "cal_end": 1769040000000,
+    "embargo_ms": 60000
+  },
+  "train_action_rows": 157330,
+  "calibration_event_count": 37229,
+  "check_event_count": 122712,
+  "class_prob_side_auc": [
+    0.5594910167704441,
+    0.545029848210954
+  ],
+  "baseline_unique_direction": {
+    "n": 36962,
+    "matched": 18238,
+    "accuracy": 0.49342568042854823
+  },
+  "learned_rank_unique_direction": {
+    "n": 36962,
+    "matched": 19140,
+    "accuracy": 0.5178291218007683
+  },
+  "selected_unique_direction": {
+    "n": 0,
+    "matched": 0,
+    "accuracy": null
+  },
+  "side_np_cutoffs": [
+    0.14773115761374508,
+    0.14524852346528755
+  ],
+  "side_np_info": [
+    {
+      "status": "CALIBRATED_RESEARCH_ONLY",
+      "bad_n": 31808,
+      "alpha": 0.1,
+      "observed_exceedance": 0.09994341046277666
+    },
+    {
+      "status": "CALIBRATED_RESEARCH_ONLY",
+      "bad_n": 32114,
+      "alpha": 0.1,
+      "observed_exceedance": 0.09995640530609703
+    }
+  ],
+  "calibration_selected": 0,
+  "calibration_selected_strict_correct": 0,
+  "calibration_selected_rate": null,
+  "check_selected": 0,
+  "check_strict_correct": 0,
+  "check_strict_correct_rate": null,
+  "check_selected_net": 0.0,
+  "check_total_unique": 36962,
+  "check_volume_pass": "NOT_EVALUATED: requires full on-policy full-month single-position replay",
+  "qualified_policy": false,
+  "model_status": "RESEARCH_ONLY_NO_PROMOTION",
+  "original_feature_count": 102,
+  "models_use_future_in_inputs": false,
+  "time_s": 6.41,
+  "model_sha256": "65a1ec444b32411feeff61b70de911e819da315290e911fac9a06889167b73d2"
+}
