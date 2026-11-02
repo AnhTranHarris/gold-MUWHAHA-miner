@@ -1,0 +1,354 @@
+{
+  "status": "ALL_FOUR_RESUBSTITUTION_EXPLICIT_TRAIN_LABEL_CONTAMINATION",
+  "train_and_score_same_months": [
+    "01",
+    "02",
+    "06",
+    "07"
+  ],
+  "training_count": 60000,
+  "model": "R6 as-of past geometry+80 quote ordinal survival+6-mark fitted asof intensity",
+  "rounds_opportunity": 65,
+  "rounds_direction": 48,
+  "leaves_opportunity": 43,
+  "leaves_direction": 31,
+  "classes": "WRONG NEUTRAL WEAK_GOOD STRONG_GOOD",
+  "months": {
+    "01": {
+      "top": [
+        {
+          "top_frac": 0.005,
+          "count": 75,
+          "strong": 73,
+          "wrong": 2,
+          "neutral": 0,
+          "weak": 0,
+          "strict_selected_precision": 0.9733333333333334,
+          "oracle_any_side_strong": 73,
+          "opportunity_oracle_ceiling": 0.9733333333333334,
+          "wilson_lower": 0.9078833515671513
+        },
+        {
+          "top_frac": 0.01,
+          "count": 150,
+          "strong": 140,
+          "wrong": 9,
+          "neutral": 0,
+          "weak": 1,
+          "strict_selected_precision": 0.9333333333333333,
+          "oracle_any_side_strong": 144,
+          "opportunity_oracle_ceiling": 0.96,
+          "wilson_lower": 0.8816364734751868
+        },
+        {
+          "top_frac": 0.025,
+          "count": 375,
+          "strong": 297,
+          "wrong": 73,
+          "neutral": 0,
+          "weak": 5,
+          "strict_selected_precision": 0.792,
+          "oracle_any_side_strong": 310,
+          "opportunity_oracle_ceiling": 0.8266666666666667,
+          "wilson_lower": 0.7480603045588843
+        },
+        {
+          "top_frac": 0.05,
+          "count": 750,
+          "strong": 418,
+          "wrong": 308,
+          "neutral": 0,
+          "weak": 24,
+          "strict_selected_precision": 0.5573333333333333,
+          "oracle_any_side_strong": 443,
+          "opportunity_oracle_ceiling": 0.5906666666666667,
+          "wilson_lower": 0.5215821445396722
+        },
+        {
+          "top_frac": 0.1,
+          "count": 1500,
+          "strong": 541,
+          "wrong": 879,
+          "neutral": 4,
+          "weak": 76,
+          "strict_selected_precision": 0.3606666666666667,
+          "oracle_any_side_strong": 575,
+          "opportunity_oracle_ceiling": 0.38333333333333336,
+          "wilson_lower": 0.3367498797000494
+        },
+        {
+          "top_frac": 0.25,
+          "count": 3750,
+          "strong": 687,
+          "wrong": 2698,
+          "neutral": 34,
+          "weak": 331,
+          "strict_selected_precision": 0.1832,
+          "oracle_any_side_strong": 734,
+          "opportunity_oracle_ceiling": 0.19573333333333334,
+          "wilson_lower": 0.17114514550533166
+        }
+      ],
+      "max_prob": 0.31825071614266975,
+      "scores_mean": 0.03405580742243781,
+      "side_buy_rate": 0.4584666666666667
+    },
+    "02": {
+      "top": [
+        {
+          "top_frac": 0.005,
+          "count": 75,
+          "strong": 71,
+          "wrong": 4,
+          "neutral": 0,
+          "weak": 0,
+          "strict_selected_precision": 0.9466666666666667,
+          "oracle_any_side_strong": 73,
+          "opportunity_oracle_ceiling": 0.9733333333333334,
+          "wilson_lower": 0.8707382679518444
+        },
+        {
+          "top_frac": 0.01,
+          "count": 150,
+          "strong": 138,
+          "wrong": 12,
+          "neutral": 0,
+          "weak": 0,
+          "strict_selected_precision": 0.92,
+          "oracle_any_side_strong": 144,
+          "opportunity_oracle_ceiling": 0.96,
+          "wilson_lower": 0.8653774250568133
+        },
+        {
+          "top_frac": 0.025,
+          "count": 375,
+          "strong": 313,
+          "wrong": 57,
+          "neutral": 0,
+          "weak": 5,
+          "strict_selected_precision": 0.8346666666666667,
+          "oracle_any_side_strong": 322,
+          "opportunity_oracle_ceiling": 0.8586666666666667,
+          "wilson_lower": 0.7937114404339402
+        },
+        {
+          "top_frac": 0.05,
+          "count": 750,
+          "strong": 476,
+          "wrong": 255,
+          "neutral": 1,
+          "weak": 18,
+          "strict_selected_precision": 0.6346666666666667,
+          "oracle_any_side_strong": 491,
+          "opportunity_oracle_ceiling": 0.6546666666666666,
+          "wilson_lower": 0.599599278869556
+        },
+        {
+          "top_frac": 0.1,
+          "count": 1500,
+          "strong": 627,
+          "wrong": 798,
+          "neutral": 7,
+          "weak": 68,
+          "strict_selected_precision": 0.418,
+          "oracle_any_side_strong": 650,
+          "opportunity_oracle_ceiling": 0.43333333333333335,
+          "wilson_lower": 0.39327960244235377
+        },
+        {
+          "top_frac": 0.25,
+          "count": 3750,
+          "strong": 789,
+          "wrong": 2649,
+          "neutral": 28,
+          "weak": 284,
+          "strict_selected_precision": 0.2104,
+          "oracle_any_side_strong": 820,
+          "opportunity_oracle_ceiling": 0.21866666666666668,
+          "wilson_lower": 0.19765399503906744
+        }
+      ],
+      "max_prob": 0.4283955784142345,
+      "scores_mean": 0.03377043992883267,
+      "side_buy_rate": 0.47073333333333334
+    },
+    "06": {
+      "top": [
+        {
+          "top_frac": 0.005,
+          "count": 75,
+          "strong": 73,
+          "wrong": 2,
+          "neutral": 0,
+          "weak": 0,
+          "strict_selected_precision": 0.9733333333333334,
+          "oracle_any_side_strong": 73,
+          "opportunity_oracle_ceiling": 0.9733333333333334,
+          "wilson_lower": 0.9078833515671513
+        },
+        {
+          "top_frac": 0.01,
+          "count": 150,
+          "strong": 142,
+          "wrong": 6,
+          "neutral": 1,
+          "weak": 1,
+          "strict_selected_precision": 0.9466666666666667,
+          "oracle_any_side_strong": 142,
+          "opportunity_oracle_ceiling": 0.9466666666666667,
+          "wilson_lower": 0.8982949952532904
+        },
+        {
+          "top_frac": 0.025,
+          "count": 375,
+          "strong": 315,
+          "wrong": 55,
+          "neutral": 1,
+          "weak": 4,
+          "strict_selected_precision": 0.84,
+          "oracle_any_side_strong": 319,
+          "opportunity_oracle_ceiling": 0.8506666666666667,
+          "wilson_lower": 0.7994745840319014
+        },
+        {
+          "top_frac": 0.05,
+          "count": 750,
+          "strong": 494,
+          "wrong": 225,
+          "neutral": 2,
+          "weak": 29,
+          "strict_selected_precision": 0.6586666666666666,
+          "oracle_any_side_strong": 499,
+          "opportunity_oracle_ceiling": 0.6653333333333333,
+          "wilson_lower": 0.6240000347703959
+        },
+        {
+          "top_frac": 0.1,
+          "count": 1500,
+          "strong": 668,
+          "wrong": 743,
+          "neutral": 3,
+          "weak": 86,
+          "strict_selected_precision": 0.44533333333333336,
+          "oracle_any_side_strong": 685,
+          "opportunity_oracle_ceiling": 0.45666666666666667,
+          "wilson_lower": 0.4203529381268631
+        },
+        {
+          "top_frac": 0.25,
+          "count": 3750,
+          "strong": 834,
+          "wrong": 2572,
+          "neutral": 27,
+          "weak": 317,
+          "strict_selected_precision": 0.2224,
+          "oracle_any_side_strong": 857,
+          "opportunity_oracle_ceiling": 0.22853333333333334,
+          "wilson_lower": 0.2093776271933033
+        }
+      ],
+      "max_prob": 0.39070075283573913,
+      "scores_mean": 0.03735896710382474,
+      "side_buy_rate": 0.4265333333333333
+    },
+    "07": {
+      "top": [
+        {
+          "top_frac": 0.005,
+          "count": 75,
+          "strong": 68,
+          "wrong": 7,
+          "neutral": 0,
+          "weak": 0,
+          "strict_selected_precision": 0.9066666666666666,
+          "oracle_any_side_strong": 69,
+          "opportunity_oracle_ceiling": 0.92,
+          "wilson_lower": 0.819651161993122
+        },
+        {
+          "top_frac": 0.01,
+          "count": 150,
+          "strong": 119,
+          "wrong": 31,
+          "neutral": 0,
+          "weak": 0,
+          "strict_selected_precision": 0.7933333333333333,
+          "oracle_any_side_strong": 124,
+          "opportunity_oracle_ceiling": 0.8266666666666667,
+          "wilson_lower": 0.7216049669151186
+        },
+        {
+          "top_frac": 0.025,
+          "count": 375,
+          "strong": 201,
+          "wrong": 163,
+          "neutral": 3,
+          "weak": 8,
+          "strict_selected_precision": 0.536,
+          "oracle_any_side_strong": 214,
+          "opportunity_oracle_ceiling": 0.5706666666666667,
+          "wilson_lower": 0.4854145539687511
+        },
+        {
+          "top_frac": 0.05,
+          "count": 750,
+          "strong": 255,
+          "wrong": 441,
+          "neutral": 4,
+          "weak": 50,
+          "strict_selected_precision": 0.34,
+          "oracle_any_side_strong": 271,
+          "opportunity_oracle_ceiling": 0.36133333333333334,
+          "wilson_lower": 0.3069891306104738
+        },
+        {
+          "top_frac": 0.1,
+          "count": 1500,
+          "strong": 312,
+          "wrong": 1051,
+          "neutral": 14,
+          "weak": 123,
+          "strict_selected_precision": 0.208,
+          "oracle_any_side_strong": 338,
+          "opportunity_oracle_ceiling": 0.22533333333333333,
+          "wilson_lower": 0.18821841461095645
+        },
+        {
+          "top_frac": 0.25,
+          "count": 3750,
+          "strong": 391,
+          "wrong": 2954,
+          "neutral": 46,
+          "weak": 359,
+          "strict_selected_precision": 0.10426666666666666,
+          "oracle_any_side_strong": 420,
+          "opportunity_oracle_ceiling": 0.112,
+          "wilson_lower": 0.09488683884053771
+        }
+      ],
+      "max_prob": 0.34967315013558214,
+      "scores_mean": 0.02332404689319351,
+      "side_buy_rate": 0.4745333333333333
+    }
+  },
+  "provenance": {
+    "01": {
+      "rows": 15000,
+      "strict_possible": 841
+    },
+    "02": {
+      "rows": 15000,
+      "strict_possible": 934
+    },
+    "06": {
+      "rows": 15000,
+      "strict_possible": 993
+    },
+    "07": {
+      "rows": 15000,
+      "strict_possible": 476
+    }
+  },
+  "warning": "IN-SAMPLE MEMORIZATION; exact same 60k source candidate rows labels trained and evaluated; not independent predictions, not volume, not profit, no deployed model.",
+  "elapsed_seconds": 3.92
+}

@@ -51,3 +51,23 @@ Next candidate innovation is explicitly source-ordinal **competing-risk survival
 3. Extract this R6 recovery ZIP to `/mnt/data/h1v2_r6`; it carries source, tests, `results/R6_SURVIVAL_ASOF_{01|02|06|07}.npz`, three frozen pairs of July-withheld and June-calibration models, full machine receipt and manifests. The code uses existing local R2/R3/R4/R5 prepared source/arrays; no old 250ms inverted SELL teacher.
 4. `PYTHONPATH=/mnt/data/h1v2/src:/mnt/data/h1v2_r2/src:/mnt/data/h1v2_r3/src:/mnt/data/h1v2_r4/src:/mnt/data/h1v2_r5/src:/mnt/data/h1v2_r6/src pytest -q /mnt/data/h1v2/tests /mnt/data/h1v2_r2/tests /mnt/data/h1v2_r3/tests /mnt/data/h1v2_r4/tests /mnt/data/h1v2_r5/tests /mnt/data/h1v2_r6/tests`.
 5. Run `python /mnt/data/h1v2_r6/src/fit_survival_rejection.py` under above `PYTHONPATH`. Files with known fitted model names are reused only if their original hashes match the ZIP manifest. If retraining from scratch, delete only the R6 derived model files; never delete parent results or original source.
+
+## Addendum: authorized four-month deliberately contaminated high-capacity training
+
+This addendum was completed **after** and **independently from** the July-withheld negative tests above. User explicitly requested extreme overfit across Jan/Feb/June/July as an offline teacher. The model was trained on **all 60,000 sampled quote timestamps and their future outcomes across all four months**, then ranked the very same rows — therefore **every reported rate below is an in-sample resubstitution (label-exposed) result, not a forecast**. The original R9 quote-execution, R2 hard-labels, as-of 80-column R6 quote survival inputs, R5 as-of fitted mark intensities, and raw source SHA pins were not modified.
+
+Two distinct runs with the **same original labels and as-of source features** were completed, with their frozen model pairs and full output bytes preserved:
+
+- `R6_FOURMONTH_EXPLICIT_TRAIN_LEAKAGE`: opportunity/conditional-side 65/48 LightGBM rounds, 43/31 leaves. Training top 1% per month: Jan 140/150 correct, Feb 138/150, June 142/150, July **119/150** (only 79.33%). Its failure in the most difficult source month led to a higher-capacity **training-memorization** experiment; no model was assessed prospectively.
+- `R6_FOURMONTH_SUPERCAP_EXPLICIT_TRAIN_LEAKAGE`: opportunity/conditional-side **120/90 rounds, 63/47 leaves**, still trained on all four months' hindsight classes. **Same-row top 1%: 150/150 correct and 0 wrong, 0 neutral, 0 weak per month**; four-month total **600/600 = 100.0% TRAINING precision**. This is *by construction a memorized resubstitution* and provides no forward performance claim. Nominal Wilson lower about 97.50% per month assumes independent observations, which quote rows are not; do **not** use it as deployment calibration.
+
+| Four-month **TRAINING same-row** month | Top 1% STRONG/Wrong | Top 2.5% STRONG | Top 5% STRONG | Top 5% strict precision |
+|---|---:|---:|---:|---:|
+| Jan | **150/0** | 375/375 | 704/750 | 93.87% |
+| Feb | **150/0** | 375/375 | 731/750 | 97.47% |
+| June | **150/0** | 375/375 | 733/750 | 97.73% |
+| July | **150/0** | 349/375 | 430/750 | **57.33%** |
+
+June/July top-ranking training rows are label-exposed, not an untrained-month test. Strong classes are sparse and the contamination is profound: **this does not establish that 600 retrospective sampled selections could produce 94,150 causal nonoverlapping R9-comparable trades**. At top 5% July accuracy falls substantially. The actual R6 JanFebJune fit → genuinely July-withheld top 150 remains **10 STRONG, 131 WRONG, 9 WEAK**, with zero strict Wilson-qualified admissions after JanFeb→June calibration. The difference measures **failure of transfer**, not economic signal discovery.
+
+All four-month resubstitution model files, 2 output JSON machine receipts, stdout logs and source script `src/overfit_survival_fourmonth.py` are in the **UPDATED complete R6 recovery ZIP**, separately from previous earlier R6 ZIP. The base R6 35/35 tests still pass. Science status: `R6_ALL4_SUPERCAP_RESUB_600_OF_600 / R6_JULY_WITHHELD_TOP150_10_OF_150 / NO_APPROVED_CAUSAL_POLICY`.
