@@ -7,6 +7,12 @@ source=Path('/mnt/data')
 # Exact immutable original event arrays are contained in each full-source event mask.
 # Feature caches are reproducible and intentionally excluded from archive to avoid
 # duplicating >680MB of source-derived 128D floats.
+def stable_write(z,p,name):
+ info=zipfile.ZipInfo(name,date_time=(1980,1,1,0,0,0))
+ info.compress_type=zipfile.ZIP_DEFLATED
+ info.external_attr=0o644<<16
+ z.writestr(info,Path(p).read_bytes(),compress_type=zipfile.ZIP_DEFLATED,compresslevel=4)
+
 with zipfile.ZipFile(ROOT/'R152_FULL_ORIGINAL_EVENT_AND_ACTION_MASKS.zip','w',compression=zipfile.ZIP_DEFLATED,compresslevel=4) as z:
  for m in ['01','02','06','07']:
   a=np.load(ROOT/f'R152_DK_{m}_FEATURES_AND_ACTIONS.npz')
@@ -14,8 +20,8 @@ with zipfile.ZipFile(ROOT/'R152_FULL_ORIGINAL_EVENT_AND_ACTION_MASKS.zip','w',co
   compact=ROOT/f'R152_DK_{m}_ORIGINAL_EVENT_AND_ACTION_OUTCOMES.npz'
   np.savez_compressed(compact,**{k:a[k] for k in keys})
   a.close()
-  z.write(compact,compact.name)
-  z.write(ROOT/f'R152_DK_{m}_FROZEN_POLICY_ACTION_MASKS.npz',f'R152_DK_{m}_FROZEN_POLICY_ACTION_MASKS.npz')
+  stable_write(z,compact,compact.name)
+  stable_write(z,ROOT/f'R152_DK_{m}_FROZEN_POLICY_ACTION_MASKS.npz',f'R152_DK_{m}_FROZEN_POLICY_ACTION_MASKS.npz')
 assert zipfile.ZipFile(ROOT/'R152_FULL_ORIGINAL_EVENT_AND_ACTION_MASKS.zip').testzip() is None
 
 files=['r152_paired_action_replay.py','r152_fit_freeze_action_portfolio.py','r152_frozen_transfer_resume.py','r152_build_evidence.py','test_r152_action.py','r120_multiclock_geometry.py','r120_htf_bridge.py','r151_t1_core.py','r150x_marked_renewal_action.py']
@@ -58,7 +64,7 @@ lines+=['','## Frozen policy details','', 'February-frozen thresholds: '+json.du
 '## Scientific boundaries','',
 'All proposed actions are hypothetical NEW T1/T2 never-submitted intents; they do not retroactively cancel t0 orders. R9 original 4,178 quota bins are unchanged by construction, but were not re-audited for any new EA deployment. No 71%/90% eight-cell result is established. No funded fills, margin or shared-capital economics. June/July previously exposed.','',
 'Original full governor, forensic, checklist and active ledger IDs returned 404 in both connected Drive accounts on 2026-11-02; preserved original owner directive and exact GitHub source instead. Do not mark any original checklist objective approved.','',
-'11 deterministic tests passed, including all four raw tape SHA checks, original immutable event arrays and original R120 prefix causality. Full failed results and model weights preserved.','',
+'13 deterministic tests passed, including all four raw tape SHA checks, original immutable event arrays and original R120 prefix causality. Full failed results and model weights preserved.','',
 '## Reproducibility','',
 'Original source hashes: '+json.dumps(PINS),
 'Original R120 GitHub blobs e44fbc375bae8865ff9e5376ca15ca7d96d05c7f and 6af69001ee1f71f20c552f76d378e36874c2efc4, byte-for-byte verified after authenticated source transport.','',
@@ -67,13 +73,13 @@ lines+=['','## Frozen policy details','', 'February-frozen thresholds: '+json.du
 'Next genuinely different family: a pre-OrderSend genuine intent capture (intent ID, quote-as-of, broker order state) with latency/queue-aware limit execution and capital-coupled 12-scenario replay; do not repeat flat static classifier threshold grids.']
 (ROOT/'R152_FULL_SCIENTIFIC_RECEIPT_UNAPPROVED.md').write_text('\n'.join(lines)+'\n')
 with zipfile.ZipFile(ROOT/'R152_EXECUTABLE_SOURCE_MODELS_RECEIPTS.zip','w',compression=zipfile.ZIP_DEFLATED,compresslevel=6) as z:
- for name,p in copy.items():z.write(p,name)
- for p in model_files:z.write(p,p.name)
- for p in ROOT.glob('*.json'):z.write(p,p.name)
- for p in ROOT.glob('*.md'):z.write(p,p.name)
+ for name,p in copy.items():stable_write(z,p,name)
+ for p in model_files:stable_write(z,p,p.name)
+ for p in sorted(ROOT.glob('*.json')):stable_write(z,p,p.name)
+ for p in sorted(ROOT.glob('*.md')):stable_write(z,p,p.name)
  for name in ['r152_jan.log','r152_02.log','r152_06.log','r152_07.log','r152_training.log','r152_training_resume.log','r152_transfer.log','r152_tests.log']:
   p=source/name
-  if p.exists():z.write(p,name)
+  if p.exists():stable_write(z,p,name)
 assert zipfile.ZipFile(ROOT/'R152_EXECUTABLE_SOURCE_MODELS_RECEIPTS.zip').testzip() is None
 print(json.dumps({'original':scientific['aggregate_original_events'],'correct':scientific['aggregate_correct'],
  'opposite':scientific['aggregate_opposite'],'neutral':scientific['aggregate_neutral'],
