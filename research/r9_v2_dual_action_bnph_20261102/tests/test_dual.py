@@ -1,7 +1,8 @@
-import sys
+import sys,os
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 import numpy as np
+import pytest
 from source_exact import two_views,labels,canonical,chronological_masks,load
 from decision import Prediction,DualActionPolicy,Limits,select_dual,calibrate_np
 
@@ -29,6 +30,8 @@ def test_np_fail_closed_and_independent_sides():
     assert select_dual(p,net,[.7,.7]).tolist()==[1,-1]
 
 def test_real_full_source_pairs_no_hindsight_in_views():
+    if not os.environ.get('R9_V2_PAIRED_ACTION_ROOT'):
+        pytest.skip('external source-exact paired-action root is not configured')
     d=load('coinexx','01')
     assert d['X'].shape[0]==414938
     assert np.array_equal(d['side'],np.where(d['side']>0,1,-1))
