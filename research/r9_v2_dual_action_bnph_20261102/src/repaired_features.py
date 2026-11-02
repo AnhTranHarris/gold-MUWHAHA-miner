@@ -13,6 +13,8 @@ import numpy as np
 
 FEATURE_VERSION='r9_v2_ordered_quote_grid_v5'
 LEGACY_FEATURE_COUNT=102
+GAP_RESET_MS=15000
+FRESH_WARMUP_MS=300000
 LEGACY_HORIZONS_MS=(250,500,1000,5000,15000,45000,300000,900000,3600000,14400000)
 LEGACY_WIN=('mid_disp','spread_avg','bid_disp','ask_disp','event_pressure','spread_change_events','rv','quote_rate','price_path_eff')
 LEGACY_NAMES=tuple(['spread','last_bid_move','last_ask_move','last_spread_change','last_mid_move',
@@ -45,16 +47,22 @@ class QuotePoint:
 
 class LaggedQuoteGeometry:
     """Raw quote history sampled strictly at-or-before each causal lag point."""
-    def __init__(self,keep_ms=305_000):
-        self.keep_ms=int(keep_ms);self.t=[];self.b=[];self.a=[]
+    def __init__(self,keep_ms=305_000,gap_reset_ms=GAP_RESET_MS):
+        self.keep_ms=int(keep_ms);self.gap_reset_ms=int(gap_reset_ms);self.t=[];self.b=[];self.a=[]
     def append(self,q):
         t=int(q.utc_ms);bid=float(q.bid);ask=float(q.ask)
         if ask<bid or bid<=0:raise ValueError('invalid quote')
         if self.t and t<self.t[-1]:raise ValueError('nonchronological')
+        if self.t and t-self.t[-1]>self.gap_reset_ms:
+            # Subminute geometry is continuous-path evidence. A quote drought is
+            # missing path, not a long price move, so start a fresh geometry epoch.
+            self.t.clear();self.b.clear();self.a.clear()
         self.t.append(t);self.b.append(bid);self.a.append(ask)
         if len(self.t)>10000 and self.t[0]<t-self.keep_ms-5000:
             cut=bisect.bisect_left(self.t,t-self.keep_ms)
             if cut>2500:self.t=self.t[cut:];self.b=self.b[cut:];self.a=self.a[cut:]
+    def coverage_ms(self):
+        return 0 if len(self.t)<2 else int(self.t[-1]-self.t[0])
     def _sample(self,lag):
         if not self.t:raise ValueError('uninitialized')
         j=bisect.bisect_right(self.t,self.t[-1]-lag)-1
