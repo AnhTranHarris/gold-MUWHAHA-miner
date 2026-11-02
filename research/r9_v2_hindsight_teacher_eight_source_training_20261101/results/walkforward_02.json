@@ -1,0 +1,268 @@
+{
+  "fit_days": [
+    "2026-01-08",
+    "2026-01-09",
+    "2026-01-11",
+    "2026-01-12",
+    "2026-01-13",
+    "2026-01-14",
+    "2026-01-15",
+    "2026-01-16",
+    "2026-01-18",
+    "2026-01-19",
+    "2026-01-20",
+    "2026-01-21",
+    "2026-01-22",
+    "2026-01-23",
+    "2026-01-25",
+    "2026-01-26",
+    "2026-01-27",
+    "2026-01-28",
+    "2026-01-29",
+    "2026-01-30",
+    "2026-02-01",
+    "2026-02-02",
+    "2026-02-03",
+    "2026-02-04",
+    "2026-02-05",
+    "2026-02-06",
+    "2026-02-08",
+    "2026-02-09",
+    "2026-02-10",
+    "2026-02-11"
+  ],
+  "calibration_dates": [
+    "2026-02-11",
+    "2026-02-18"
+  ],
+  "eval_min_date": "2026-02-19",
+  "fit_count": 1052916,
+  "calibration_count": 134654,
+  "test_count": 180221,
+  "np_selection": {
+    "bad_rejection_quantile": 0.995,
+    "threshold": 0.46740195570701104,
+    "count": 799,
+    "winrate": 0.45431789737171463,
+    "net": -153.79,
+    "meets_80pct": false
+  },
+  "np_calibration_variants": [
+    {
+      "bad_rejection_quantile": 0.7,
+      "threshold": 0.43260811901928065,
+      "count": 46839,
+      "winrate": 0.4426866500138773,
+      "net": -9488.67,
+      "meets_80pct": false
+    },
+    {
+      "bad_rejection_quantile": 0.8,
+      "threshold": 0.4405083714818024,
+      "count": 31623,
+      "winrate": 0.4496727065743288,
+      "net": -6253.07,
+      "meets_80pct": false
+    },
+    {
+      "bad_rejection_quantile": 0.9,
+      "threshold": 0.44895666925797684,
+      "count": 15980,
+      "winrate": 0.45544430538172714,
+      "net": -3088.29,
+      "meets_80pct": false
+    },
+    {
+      "bad_rejection_quantile": 0.95,
+      "threshold": 0.454925767252649,
+      "count": 8012,
+      "winrate": 0.4569395906140789,
+      "net": -1580.79,
+      "meets_80pct": false
+    },
+    {
+      "bad_rejection_quantile": 0.98,
+      "threshold": 0.46093040368746246,
+      "count": 3266,
+      "winrate": 0.4669320269442743,
+      "net": -645.23,
+      "meets_80pct": false
+    },
+    {
+      "bad_rejection_quantile": 0.995,
+      "threshold": 0.46740195570701104,
+      "count": 799,
+      "winrate": 0.45431789737171463,
+      "net": -153.79,
+      "meets_80pct": false
+    }
+  ],
+  "per_source": {
+    "coinexx": {
+      "scope": "coinexx_02_CHRONOLOGICAL_CHECK",
+      "full_candidate_count": 116556,
+      "selected_count": 2339,
+      "selected_rate": 0.02007,
+      "30s_win_count": 1101,
+      "30s_win_rate": 0.47071,
+      "profit_net": -420.39,
+      "profit_factor": 0.412,
+      "late_close_selected": 8,
+      "neutral_selected": 92,
+      "80pct_month_pass": false,
+      "daily_passes": 0,
+      "daily_total": 8,
+      "weekly_passes": 0,
+      "weekly_total": 2,
+      "periods": {
+        "day": {
+          "2026-02-19": {
+            "trades": 231,
+            "30s_win_rate": 0.49784,
+            "net": -33.45,
+            "80pct_pass": false
+          },
+          "2026-02-20": {
+            "trades": 241,
+            "30s_win_rate": 0.46888,
+            "net": -48.64,
+            "80pct_pass": false
+          },
+          "2026-02-22": {
+            "trades": 11,
+            "30s_win_rate": 0.45455,
+            "net": 0.05,
+            "80pct_pass": false
+          },
+          "2026-02-23": {
+            "trades": 320,
+            "30s_win_rate": 0.45625,
+            "net": -64.37,
+            "80pct_pass": false
+          },
+          "2026-02-24": {
+            "trades": 349,
+            "30s_win_rate": 0.46705,
+            "net": -56.18,
+            "80pct_pass": false
+          },
+          "2026-02-25": {
+            "trades": 373,
+            "30s_win_rate": 0.49598,
+            "net": -49.75,
+            "80pct_pass": false
+          },
+          "2026-02-26": {
+            "trades": 370,
+            "30s_win_rate": 0.44324,
+            "net": -82.16,
+            "80pct_pass": false
+          },
+          "2026-02-27": {
+            "trades": 444,
+            "30s_win_rate": 0.47297,
+            "net": -85.89,
+            "80pct_pass": false
+          }
+        },
+        "week": {
+          "2026-W08": {
+            "trades": 483,
+            "30s_win_rate": 0.4824,
+            "net": -82.04,
+            "80pct_pass": false
+          },
+          "2026-W09": {
+            "trades": 1856,
+            "30s_win_rate": 0.46767,
+            "net": -338.35,
+            "80pct_pass": false
+          }
+        }
+      }
+    },
+    "dukascopy": {
+      "scope": "dukascopy_02_CHRONOLOGICAL_CHECK",
+      "full_candidate_count": 63665,
+      "selected_count": 0,
+      "selected_rate": 0.0,
+      "30s_win_count": 0,
+      "30s_win_rate": null,
+      "profit_net": 0.0,
+      "profit_factor": null,
+      "late_close_selected": 0,
+      "neutral_selected": 0,
+      "80pct_month_pass": false,
+      "daily_passes": 0,
+      "daily_total": 8,
+      "weekly_passes": 0,
+      "weekly_total": 2,
+      "periods": {
+        "day": {
+          "2026-02-19": {
+            "trades": 0,
+            "30s_win_rate": null,
+            "net": 0.0,
+            "80pct_pass": false
+          },
+          "2026-02-20": {
+            "trades": 0,
+            "30s_win_rate": null,
+            "net": 0.0,
+            "80pct_pass": false
+          },
+          "2026-02-22": {
+            "trades": 0,
+            "30s_win_rate": null,
+            "net": 0.0,
+            "80pct_pass": false
+          },
+          "2026-02-23": {
+            "trades": 0,
+            "30s_win_rate": null,
+            "net": 0.0,
+            "80pct_pass": false
+          },
+          "2026-02-24": {
+            "trades": 0,
+            "30s_win_rate": null,
+            "net": 0.0,
+            "80pct_pass": false
+          },
+          "2026-02-25": {
+            "trades": 0,
+            "30s_win_rate": null,
+            "net": 0.0,
+            "80pct_pass": false
+          },
+          "2026-02-26": {
+            "trades": 0,
+            "30s_win_rate": null,
+            "net": 0.0,
+            "80pct_pass": false
+          },
+          "2026-02-27": {
+            "trades": 0,
+            "30s_win_rate": null,
+            "net": 0.0,
+            "80pct_pass": false
+          }
+        },
+        "week": {
+          "2026-W08": {
+            "trades": 0,
+            "30s_win_rate": null,
+            "net": 0.0,
+            "80pct_pass": false
+          },
+          "2026-W09": {
+            "trades": 0,
+            "30s_win_rate": null,
+            "net": 0.0,
+            "80pct_pass": false
+          }
+        }
+      }
+    }
+  }
+}
