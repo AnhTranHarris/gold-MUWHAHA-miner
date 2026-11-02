@@ -33,19 +33,23 @@ class DualActionPolicy:
 
     def decide(self,buy:Prediction,sell:Prediction,spread:float):
         if buy.side!=1 or sell.side!=-1:raise ValueError('independent BUY+SELL required')
-        if not np.isfinite(spread) or spread>self.limits.max_spread:return 0,'SPREAD'
-        # Hawkes supports the side's posterior estimate only if it is calibrated;
-        # do not add an arbitrary boost to a learned probability.
-        margin=buy.p_correct-sell.p_correct
+        if not np.isfinite(spread) or spread<0 or spread>self.limits.max_spread:return 0,'SPREAD'
         acceptable=[]
         for p in (buy,sell):
+            vals=(p.p_correct,p.p_incorrect,p.p_neutral,p.expected_net,self.thresholds[p.side])
+            if not np.isfinite(vals).all():continue
+            if any(v<-1e-6 or v>1+1e-6 for v in vals[:3]):continue
+            if abs(sum(vals[:3])-1)>1e-4:continue
             if p.p_correct<self.limits.min_correct:continue
             if p.p_correct<=self.thresholds[p.side]:continue
             if p.p_incorrect>self.limits.max_wrong:continue
             if p.expected_net<=self.limits.min_expected_net:continue
-            if p.side*margin<self.limits.min_margin:continue
             acceptable.append(p)
-        if not acceptable:return 0,'INSUFFICIENT_DIRECTIONAL_EVIDENCE'
+        if not acceptable:return 0,'NO_ELIGIBLE_SIDE'
+        if len(acceptable)==2 and abs(buy.p_correct-sell.p_correct)<self.limits.min_margin:
+            return 0,'AMBIGUOUS_DUAL_SIGNAL'
+        if len(acceptable)==2 and buy.p_correct==sell.p_correct and buy.expected_net==sell.expected_net:
+            return 0,'AMBIGUOUS_DUAL_SIGNAL'
         winner=max(acceptable,key=lambda p:(p.expected_net,p.p_correct))
         return winner.side,'BUY' if winner.side==1 else 'SELL'
 
@@ -77,6 +81,8 @@ def select_dual(p,net,alpha_cutoff,limits=Limits()):
         raise ValueError('expected n x 2 x 3 probabilities, n x 2 net, two cutoffs')
     pc=p[:,:,2];wrong=p[:,:,0]
     eligible=(np.isfinite(p).all(axis=2)&np.isfinite(net)&np.isfinite(cut)[None,:]
+              &np.all((p>=-1e-6)&(p<=1+1e-6),axis=2)
+              &(np.abs(p.sum(axis=2)-1)<1e-4)
               &(pc>=limits.min_correct)&(wrong<=limits.max_wrong)
               &(net>limits.min_expected_net)&(pc>cut[None,:]))
     act=np.zeros(len(pc),dtype=np.int8)
