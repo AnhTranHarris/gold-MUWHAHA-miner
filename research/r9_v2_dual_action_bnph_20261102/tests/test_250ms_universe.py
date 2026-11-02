@@ -40,3 +40,16 @@ def test_wait_teacher_targets_only_next_observed_candidate():
     assert z['next_dt_ms'].tolist()==[250,750,-1]
     assert z['next_any_good'].tolist()==[1,1,0]
     assert z['wait_improves_strict'].tolist()==[1,0,0]
+
+
+def test_candidate_universe_restarts_warmup_after_quote_gap():
+    # Live FastClock invalidates after a >15s drought. Offline teacher must do the same.
+    pre=np.arange(0,301000,1000,dtype=np.int64)
+    post=np.arange(321000,623000,1000,dtype=np.int64)  # 20s gap then >5m fresh history
+    t=np.concatenate((pre,post))
+    b=np.full(len(t),100.,float);a=b+.2
+    idx=candidate_indices_250ms(t,b,a,warmup_ms=300000,max_spread=1.5,gap_reset_ms=15000)
+    chosen=t[idx]
+    assert 300000 in chosen
+    assert not np.any((chosen>=321000)&(chosen<621000))
+    assert 621000 in chosen
