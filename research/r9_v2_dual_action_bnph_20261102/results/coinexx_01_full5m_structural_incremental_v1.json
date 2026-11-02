@@ -1,0 +1,53 @@
+{
+  "identity": "R9_V2_FULL5M_STRUCTURAL_INCREMENTAL_V1",
+  "structural_feature_version": "r9_v2_full_5m_structural_state_v1",
+  "structural_features": 177,
+  "total_features": 401,
+  "fit_days": [
+    "2026-01-06",
+    "2026-01-07"
+  ],
+  "calibration_day": "2026-01-08",
+  "holdout_day": "2026-01-16",
+  "model_sha256": "3bdf68720fd1a8331518623141912021cce5ed66001a86926663571d24c1cebc",
+  "jan16": {
+    "teacher_sha256": "4dd9c431fdaf58fe9181d0fde5a2d9f99d195c1718498da42d2cb76376b75bb0",
+    "v4_feature_sha256": "d232c37dd5f5f897deffce514efd1056dcff4ae1c2898bd9191939ebc6f63512",
+    "base_wait_hawkes_sha256": "fd0f37c5b8af19bfbc4c8b9d8fcd9bc5c73bfe44c5fa93e6c039c7e6842b1580",
+    "structural_sha256": "a1dfb4e4f6e1f187dca0bcba0ae502fc4d454ff477f19b0617dbdb38bc6f3c5d",
+    "combined_sha256": "f7f7f39ae768d84a8ed184b7e7e69dd409850dcc9507ad03d09b11ba23b61dd3",
+    "events": 215391,
+    "positives": 24192
+  },
+  "calibration_B": {
+    "base_auc": 0.5583824428878139,
+    "structural_auc": 0.5577458732486108,
+    "delta": -0.0006365696392031106,
+    "base_pmax": 0.19230769230769232,
+    "structural_pmax": 0.21875
+  },
+  "holdout": {
+    "base_auc": 0.5728270744635198,
+    "structural_auc": 0.5726543018156157,
+    "delta": -0.00017277264790405145,
+    "base_selected_p80": 0,
+    "structural_selected_p80": 0,
+    "structural_pmax": 0.3333333333333333
+  },
+  "paired_block_bootstrap": {
+    "block_ms": 300000,
+    "blocks": 264,
+    "replicates": 200,
+    "mean_delta": -0.00014925534403911867,
+    "median_delta": -0.00015455719746521046,
+    "ci95": [
+      -0.0010253158246557315,
+      0.0006881142441536732
+    ],
+    "positive_fraction": 0.385
+  },
+  "tests": "36/36 PASS",
+  "admit_full5m_structural_feature": false,
+  "qualified_timing_policy": false,
+  "status": "REJECT_FULL5M_STRUCTURAL_V1"
+}
