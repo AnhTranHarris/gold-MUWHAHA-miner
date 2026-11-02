@@ -1,0 +1,77 @@
+{
+  "teacher": "H1V2",
+  "status": "SOURCE_EXACT_FUTURE_PRIVILEGED_HINDSIGHT_ONLY",
+  "months": [
+    "01",
+    "02",
+    "06",
+    "07"
+  ],
+  "raw_ticks": 32290648,
+  "eligible_250ms_decisions": 15401392,
+  "synth_trade_reference": 117686,
+  "monthly_80pct_floors_sum": 94150,
+  "oracle_nonoverlapping_correct": 513262,
+  "oracle_count_vs_synth_ratio": 4.361283415189572,
+  "all_months_exceed_floor": true,
+  "fees_included": "USD $0.02 research fee plus actual Dukascopy quote spread; no slippage",
+  "science": "Oracle knows future quote path, cannot act prospectively. No as-of model qualifies at 80%; not a trading strategy.",
+  "items": [
+    {
+      "month": "01",
+      "tick_count": 9135062,
+      "unique_250ms_candidates": 4025968,
+      "at_least_one_side_strict_good": 1072358,
+      "oracle_nonoverlapping": {
+        "trades": 137402,
+        "sum_net": 45835.181
+      },
+      "synth_reference": 27980,
+      "monthly_80pct_floor": 22384,
+      "raw_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+      "selected_trace_sha256": "d4a6b63b7e4929b8bf070eccd9a82dae9169402070a2e926bd321d2a8b3f277e"
+    },
+    {
+      "month": "02",
+      "tick_count": 7538339,
+      "unique_250ms_candidates": 3112593,
+      "at_least_one_side_strict_good": 894468,
+      "oracle_nonoverlapping": {
+        "trades": 125472,
+        "sum_net": 57229.791
+      },
+      "synth_reference": 33523,
+      "monthly_80pct_floor": 26819,
+      "raw_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+      "selected_trace_sha256": "52b6e18a268915fbda012e9b1a043013c5c00a361c50f851dc63950161ce8225"
+    },
+    {
+      "month": "06",
+      "tick_count": 8201406,
+      "unique_250ms_candidates": 4190620,
+      "at_least_one_side_strict_good": 1183511,
+      "oracle_nonoverlapping": {
+        "trades": 149273,
+        "sum_net": 42223.037
+      },
+      "synth_reference": 31801,
+      "monthly_80pct_floor": 25441,
+      "raw_sha256": "34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2",
+      "selected_trace_sha256": "ae7e5d092fa744c9a9b7e03ec63d267a2c32628b0892e48b939fa0e4ef362347"
+    },
+    {
+      "month": "07",
+      "tick_count": 7415841,
+      "unique_250ms_candidates": 4072211,
+      "at_least_one_side_strict_good": 883570,
+      "oracle_nonoverlapping": {
+        "trades": 101115,
+        "sum_net": 24842.289
+      },
+      "synth_reference": 24382,
+      "monthly_80pct_floor": 19506,
+      "raw_sha256": "e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7",
+      "selected_trace_sha256": "734b4272d63b0798a53d03c81886ed573ea6630b4f65cb3d340578dd7ade33a4"
+    }
+  ]
+}

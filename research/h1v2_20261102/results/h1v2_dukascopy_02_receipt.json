@@ -1,0 +1,33 @@
+{
+  "model": "H1V2",
+  "scientific_status": "OFFLINE_HINDSIGHT_ORACLE_NOT_FORESIGHT",
+  "feed": "dukascopy",
+  "month": "02",
+  "raw_file": "/mnt/data/XAUUSD_DUKAS_2026_02_ticks.csv.gz",
+  "raw_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+  "tick_count": 7538339,
+  "max_spread": 1.5,
+  "unique_250ms_candidates": 3112593,
+  "at_least_one_side_strict_good": 894468,
+  "at_least_one_side_good_rate": 0.2873706906106902,
+  "both_sides_good": 0,
+  "positive_buy": 451069,
+  "positive_sell": 443399,
+  "oracle_nonoverlapping": {
+    "trades": 125472,
+    "sum_net": 57229.791
+  },
+  "synth_reference": 33523,
+  "monthly_80pct_floor": 26819,
+  "oracle_count_pass_80pct": true,
+  "oracle_count_vs_synth": 3.7428631089103006,
+  "selected_first_favorable_ms_p50": 3228.5,
+  "selected_first_favorable_ms_p90": 14484.900000000009,
+  "selected_net_p50": 0.30300000309944153,
+  "fee_per_trade": 0.02,
+  "hold_ms": 30000,
+  "scientific_boundary": "future labels used to CHOOSE times and sides; upper bound not learnable policy; 30s exact quote exits; no slippage or live latency; no claim on Coinexx",
+  "teacher_labels_sha256": "521e9244fa42360d429317df22049208d1538f985e5823551116a2fe7a8069eb",
+  "elapsed_seconds": 11.24,
+  "selected_trace_sha256": "52b6e18a268915fbda012e9b1a043013c5c00a361c50f851dc63950161ce8225"
+}

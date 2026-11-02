@@ -1,0 +1,89 @@
+{
+  "setup": {
+    "train_months": [
+      "01",
+      "02"
+    ],
+    "calibration_month": "06",
+    "untouched_test_month": "07",
+    "target": "strict 30s BUY or SELL vs NONE, executable R9 positive net",
+    "confidence": "95pct Wilson lower >=80pct on 150+ calibration sample actions",
+    "sample_size_per_month": 15000,
+    "exhaustive_labels_precomputed_on_all_250ms_candidates": true,
+    "no_fitted_policy_approval": true
+  },
+  "models": {
+    "slow_5m_geometry_control": {
+      "n_features": 12,
+      "calibration_threshold": null,
+      "calibration_qualified_n": 0,
+      "june": {
+        "samples": 15000,
+        "population_any_strict_good_rate": 0.2856,
+        "precision_top_1pct": 0.15333333333333332,
+        "correct_top_1pct": 23,
+        "precision_top_5pct": 0.16533333333333333,
+        "correct_top_5pct": 124,
+        "precision_top_10pct": 0.156,
+        "correct_top_10pct": 234,
+        "precision_top_25pct": 0.15253333333333333,
+        "correct_top_25pct": 572,
+        "calibrated_gate": "NO_80PCT_WILSON_ELIGIBLE_THRESHOLD",
+        "qualified_count": 0
+      },
+      "july": {
+        "samples": 15000,
+        "population_any_strict_good_rate": 0.2184,
+        "precision_top_1pct": 0.17333333333333334,
+        "correct_top_1pct": 26,
+        "precision_top_5pct": 0.13066666666666665,
+        "correct_top_5pct": 98,
+        "precision_top_10pct": 0.12866666666666668,
+        "correct_top_10pct": 193,
+        "precision_top_25pct": 0.12613333333333332,
+        "correct_top_25pct": 473,
+        "calibrated_gate": "NO_80PCT_WILSON_ELIGIBLE_THRESHOLD",
+        "qualified_count": 0
+      },
+      "july_log_loss": 0.6769243961245697,
+      "elapsed_seconds": 0.27,
+      "status": "RESEARCH_DIAGNOSTIC_ONLY_NOT_AN_EXECUTABLE_POLICY"
+    },
+    "all_subminute_geometry": {
+      "n_features": 100,
+      "calibration_threshold": null,
+      "calibration_qualified_n": 0,
+      "june": {
+        "samples": 15000,
+        "population_any_strict_good_rate": 0.2856,
+        "precision_top_1pct": 0.17333333333333334,
+        "correct_top_1pct": 26,
+        "precision_top_5pct": 0.19733333333333333,
+        "correct_top_5pct": 148,
+        "precision_top_10pct": 0.17466666666666666,
+        "correct_top_10pct": 262,
+        "precision_top_25pct": 0.15973333333333334,
+        "correct_top_25pct": 599,
+        "calibrated_gate": "NO_80PCT_WILSON_ELIGIBLE_THRESHOLD",
+        "qualified_count": 0
+      },
+      "july": {
+        "samples": 15000,
+        "population_any_strict_good_rate": 0.2184,
+        "precision_top_1pct": 0.11333333333333333,
+        "correct_top_1pct": 17,
+        "precision_top_5pct": 0.13733333333333334,
+        "correct_top_5pct": 103,
+        "precision_top_10pct": 0.132,
+        "correct_top_10pct": 198,
+        "precision_top_25pct": 0.13093333333333335,
+        "correct_top_25pct": 491,
+        "calibrated_gate": "NO_80PCT_WILSON_ELIGIBLE_THRESHOLD",
+        "qualified_count": 0
+      },
+      "july_log_loss": 0.6760429751734257,
+      "elapsed_seconds": 0.94,
+      "status": "RESEARCH_DIAGNOSTIC_ONLY_NOT_AN_EXECUTABLE_POLICY"
+    }
+  }
+}
