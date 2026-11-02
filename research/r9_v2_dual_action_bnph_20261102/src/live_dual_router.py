@@ -12,18 +12,27 @@ model calibration nor profitability criteria passed. FAIL CLOSED by default.
 """
 from __future__ import annotations
 import bisect,collections,math,sys
+from functools import lru_cache
 from pathlib import Path
 import numpy as np
 from source_exact import two_views
 from decision import DualActionPolicy,Prediction,Limits
 from competing_hawkes import CompetingQuoteHawkes
 from repaired_features import LaggedQuoteGeometry,compose_repaired_features,FEATURE_VERSION
+from path_config import restore_root
 
-# Reuse exact frozen v2 & high-volume feature clock, never reconstruct.
-RESTORE=Path('/mnt/data/v2_new_research/restore')
-sys.path.insert(0,str(RESTORE/'repair'/'src'))
-sys.path.insert(0,str(RESTORE/'original_v2'/'src'))
-from high_volume_stream import FastClock,specialist_evidence,TickExactActivePath
+@lru_cache(maxsize=4)
+def _legacy_components(root_text):
+    # Reuse exact frozen v2/high-volume implementation without a machine-specific path.
+    root=Path(root_text)
+    for p in (root/'repair'/'src',root/'original_v2'/'src'):
+        sp=str(p)
+        if sp not in sys.path:sys.path.insert(0,sp)
+    from high_volume_stream import FastClock,specialist_evidence,TickExactActivePath
+    return FastClock,specialist_evidence,TickExactActivePath
+
+def legacy_components(root=None):
+    return _legacy_components(str(restore_root(root)))
 
 HORIZONS=(250,500,1000,5000,15000,45000,300000,900000,3600000,14400000)
 PREFIX=('bu','bd','au','ad','sw','sn','ss','path','rv')
@@ -114,7 +123,9 @@ class DualObservedRouter:
     geometry. If policy is absent, all eligible decisions WAIT; this is the only
     safe default.
     """
-    def __init__(self,policy=None):
+    def __init__(self,policy=None,legacy_root=None):
+        FastClock,specialist_evidence,TickExactActivePath=legacy_components(legacy_root)
+        self._specialist_evidence=specialist_evidence;self._active_path_cls=TickExactActivePath
         self.clock=FastClock();self.quotes=ExactQuoteState();self.geometry=LaggedQuoteGeometry();self.policy=policy
         self.hawkes=CompetingQuoteHawkes();self.last_hawkes=None
         self.count=collections.Counter();self.history=[]
@@ -139,7 +150,7 @@ class DualObservedRouter:
         if closed or self.active is not None:return 0
         if not self.clock.ready():self.count['warmup']+=1;return 0
         f=self.clock.features(q)
-        old_side,evidence,lane,pressure,cost=specialist_evidence(f)
+        old_side,evidence,lane,pressure,cost=self._specialist_evidence(f)
         # Old specialist is causal contextual observation, NOT direction choice.
         x=self.quotes.vector(evidence=float(evidence),lane_reversal=float(lane=='reversal'))
         # Six-channel quote excitation remains excluded from the frozen legacy
@@ -153,6 +164,6 @@ class DualObservedRouter:
         self.count['decision_events']+=1;self.count[reason]+=1
         if side:
             self.count['selected_research_actions']+=1
-            self.active=TickExactActivePath(q,side,fee=self.fee)
+            self.active=self._active_path_cls(q,side,fee=self.fee)
         self.last_action=side
         return side
