@@ -15,7 +15,7 @@ def sha256(p):
 def main(a):
  start=time.monotonic();Xs=[];ys=[];ws=[];ties=0
  for di,day in enumerate(a.fit_days):
-  base=f'coinexx_01_{day}';X=np.load(Path(a.root)/f'{base}_250ms_v4_X.npy',mmap_mode='r');d=np.load(Path(a.root)/f'{base}_250ms_universe.npz');diff=d['net'][:,0]-d['net'][:,1];mask=np.isfinite(diff)&(~np.isclose(diff,0,atol=1e-7))
+  base=f'coinexx_01_{day}';X=np.load(Path(a.root)/f'{base}_250ms_v5_X.npy',mmap_mode='r');d=np.load(Path(a.root)/f'{base}_250ms_universe.npz');diff=d['net'][:,0]-d['net'][:,1];mask=np.isfinite(diff)&(~np.isclose(diff,0,atol=1e-7))
   if di==len(a.fit_days)-1:mask &= d['ts']<d['ts'][-1]-a.embargo_ms
   ties+=int((np.isfinite(diff)&np.isclose(diff,0,atol=1e-7)).sum());v=diff[mask];Xs.append(np.asarray(X[mask],np.float32));ys.append((v>0).astype(np.uint8));ws.append(1.+np.minimum(4.,np.abs(v)/.30))
  XX=np.concatenate(Xs);yy=np.concatenate(ys);ww=np.concatenate(ws).astype(np.float32)
