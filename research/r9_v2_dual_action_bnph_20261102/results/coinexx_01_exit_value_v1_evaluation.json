@@ -1,0 +1,71 @@
+{
+  "identity": "R9_V2_EXIT_VALUE_V1",
+  "feature_version": "r9_v2_ordered_quote_grid_v4",
+  "fit_days": [
+    "2026-01-06",
+    "2026-01-07"
+  ],
+  "calibration_day": "2026-01-08",
+  "holdout_day": "2026-01-12",
+  "models": {
+    "buy_mean": "e79515aef96ddbbb39dc39bda0e007d93ca623b517e1e01f30eed62e197d6eca",
+    "buy_q20": "f7a5f7221531c080b280399dc0e60625b888e57e951ea18eec779fda00b3e51f",
+    "sell_mean": "3141c172202f8de75cf5d0b40243a0602ecf983bf8532255d939206b9f042467",
+    "sell_q20": "7b8388511d4c44ceb87bfdebfbd60b8f45a4885d8e503efc7dac4618e5b07409"
+  },
+  "calibration_A_qualifying_region": false,
+  "calibration_B": {
+    "buy": {
+      "pred_mean_max": -0.05964334696414922,
+      "pred_q20_max": -0.5347212842991772,
+      "top_0_001": {
+        "positive_rate": 0.44,
+        "mean_net": -0.23439999752988125,
+        "mean_lcb": -0.2860249367175341,
+        "q20": -0.6000000238418579
+      }
+    },
+    "sell": {
+      "pred_mean_max": -0.04240931763325587,
+      "pred_q20_max": -0.5343164478375243,
+      "top_0_001": {
+        "positive_rate": 0.38666666666666666,
+        "mean_net": -0.23513333207617204,
+        "mean_lcb": -0.29338015519674165,
+        "q20": -0.5919999837875366
+      }
+    }
+  },
+  "jan12_holdout": {
+    "teacher_sha256": "098b51bccbade4d99945f8c74fe5368b4b7632a09f94c96623c4f6daf898f34b",
+    "feature_matrix_sha256": "7c9be9cdc9836fed2de3eae48fc2240d99fd8666de28206146d06944e8c81ed2",
+    "buy": {
+      "pred_mean_max": -0.07308272118702919,
+      "pred_q20_max": -0.5341167096264112,
+      "overall_mean": -0.20767672532374362,
+      "positive_rate": 0.44282142445494604,
+      "top_0_001": {
+        "n": 225,
+        "positive_rate": 0.5822222222222222,
+        "mean_net": -0.0947555533134275,
+        "mean_lcb": -0.14242237184935116,
+        "q20": -0.550000011920929
+      }
+    },
+    "sell": {
+      "pred_mean_max": -0.05861027521250051,
+      "pred_q20_max": -0.53229232714792,
+      "overall_mean": -0.20579969146696175,
+      "positive_rate": 0.43993545355404434,
+      "top_0_001": {
+        "n": 225,
+        "positive_rate": 0.4488888888888889,
+        "mean_net": -0.17933333159320688,
+        "mean_lcb": -0.2313342349309204,
+        "q20": -0.5899999737739563
+      }
+    }
+  },
+  "qualified_value_policy": false,
+  "status": "NO_POSITIVE_CONSERVATIVE_EXIT_VALUE_REGION"
+}
