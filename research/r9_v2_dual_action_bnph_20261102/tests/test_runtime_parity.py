@@ -64,3 +64,22 @@ def test_repaired_router_uses_ordered_feature_contract():
     assert p.seen
     assert rr.count['SPY_WAIT']>0
     assert rr.count['selected_research_actions']==0
+
+
+def test_repaired_router_never_calls_legacy_specialist():
+    from repaired_features import FEATURE_VERSION,REPAIRED_FEATURE_COUNT
+    class RepairedSpy:
+        feature_version=FEATURE_VERSION
+        def __init__(self):self.n=0
+        def action(self,x,spread):
+            assert np.asarray(x).shape==(REPAIRED_FEATURE_COUNT,)
+            self.n+=1
+            return 0,'REPAIRED_WAIT'
+    p=RepairedSpy();rr=DualObservedRouter(p)
+    def forbidden(*args,**kwargs):
+        raise AssertionError('legacy specialist reached repaired policy path')
+    rr._specialist_evidence=forbidden
+    for i in range(1800):
+        mid=100+.03*np.sin(i*.13)+.007*np.sin(i*.41)
+        rr.on_quote(Quote(i*250,mid-.1,mid+.1))
+    assert p.n>0 and rr.count['REPAIRED_WAIT']>0
