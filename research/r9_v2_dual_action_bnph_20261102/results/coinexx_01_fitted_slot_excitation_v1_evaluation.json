@@ -1,0 +1,32 @@
+{
+  "identity": "R9_V2_FITTED_SLOT_EXCITATION_V1",
+  "model_sha256": "43816ab9cb8a3adac591f66c2175b0132edcd7d097a9a8ba732d71aa4a0276ee",
+  "fit_days": [
+    "2026-01-06",
+    "2026-01-07"
+  ],
+  "fit_slots": 458118,
+  "pre_stability_radius": 1.528948727574793,
+  "post_stability_radius": 0.95,
+  "excitation_scale": 0.6213419605684769,
+  "continuous_time_mle": false,
+  "model_class": "nonnegative discrete-time 250ms six-mark Hawkes approximation with session baselines",
+  "calibration": {
+    "day": "2026-01-08",
+    "slots": 232220,
+    "mse_improvement": 0.033052777797696,
+    "poisson_deviance_improvement": 0.0707626754016779,
+    "directional_auc": 0.5315902824264783,
+    "spread_narrow_auc": 0.9436943310631505
+  },
+  "jan14_holdout": {
+    "day": "2026-01-14",
+    "slots": 232222,
+    "mse_improvement": 0.05126092152781006,
+    "poisson_deviance_improvement": 0.0850878477650431,
+    "directional_auc": 0.5295286005361923,
+    "spread_narrow_auc": 0.9209903192827871
+  },
+  "admit_as_model_feature": false,
+  "status": "FITTED_COMPONENT_PASSES_INTENSITY_BASELINE_BUT_REQUIRES_INCREMENTAL_TRADING_MODEL_TEST"
+}
