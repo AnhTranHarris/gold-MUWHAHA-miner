@@ -27,6 +27,7 @@ No code change in this repair is permission to promote a trading policy.
 | Offline evaluator relied implicitly on candidate spread filtering | Explicit runtime-equivalent hard spread gate in offline evaluation | .20 admitted / 1.80 rejected at max 1.50 regression |
 | Old v4 artifacts could silently load after feature-value repair | Hard feature-contract break to `r9_v2_ordered_quote_grid_v5`; WAIT transition contract to v2; downstream filenames/receipts propagated | Version-contract regression + source scan |
 | Same-shape stale model could still pass a 228-column count check | v5-specific component filenames; evaluator verifies fit receipt/version/SHA-256; runtime policy bundle stores and verifies exact opportunity/BUY/SELL model hashes | Full-source compile + version/hash fail-closed code path |
+| Downstream pairwise/exit-value experiments could reuse stale generic pilot/value artifacts | Pairwise v2 and exit-value v2 artifact names; baseline pilot references changed to v5; fit receipt/version/SHA verification added | Static stale-name scan + full-source compile |
 | New source edits might not be imported by targeted tests | CI compiles the complete repaired Python source tree before tests | GitHub Actions compileall step |
 
 ## Preserved causal architecture
