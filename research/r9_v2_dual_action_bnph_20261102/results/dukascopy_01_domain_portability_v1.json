@@ -1,0 +1,71 @@
+{
+  "identity": "R9_V2_DUKASCOPY_DOMAIN_PORTABILITY_V1",
+  "source": "dukascopy",
+  "month": "01",
+  "raw_tick_sha256": "d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5",
+  "lifecycle_parity": {
+    "sampled_actions": 48,
+    "matched_final_net_and_exit_ms": 48
+  },
+  "shards": {
+    "2026-01-06": {
+      "candidates": 195721,
+      "any_strict_good_rate": 0.18840594519750054,
+      "direct_wait_improves_rate": 0.050045728358224205,
+      "teacher_sha256": "7378e825be5d56aeff21974e6604fa3155d8cd2ede50b56dd1e7f91c9645c6cd",
+      "v4_sha256": "d7ccb3a36b0f7a19ea45bd583e311801f6fbb524eb1ff67c78bc7e24ca01ab66",
+      "timing_sha256": "e902334b8c5cfba4de0a812942afd97293e631a8e4aecf359060f7a7bc1060c5"
+    },
+    "2026-01-07": {
+      "candidates": 196165,
+      "any_strict_good_rate": 0.24235210154716694,
+      "direct_wait_improves_rate": 0.06523589835087809,
+      "teacher_sha256": "120484f3e0b24730e047195c379ddaf027a05618c20a2e089f46d3bd2419b11f",
+      "v4_sha256": "ceaa685a4eea6e8623bc24be4d5bc7c96ea55ac68ff7abfe9f8e5d76fd439207",
+      "timing_sha256": "74066e0029c5dc009e7ae7d9db96832348d28714c10ad4f1f7f013c8ac37a2fa"
+    },
+    "2026-01-08": {
+      "candidates": 197973,
+      "any_strict_good_rate": 0.2297636546397741,
+      "direct_wait_improves_rate": 0.06158920660898203,
+      "teacher_sha256": "432b8345052d7cb2dd35d2d36eb351b21466f055ac0907573776e4c7e17d0ecf",
+      "v4_sha256": "297c1f5e38703fa7f3126b7dfa267f81c527208e59b1ded2848a231732fe82a4",
+      "timing_sha256": "7a05a936af6df58749214a2564f3ddb08c0c717bd81d6bf60fac1fd240e33fd5"
+    },
+    "2026-01-16": {
+      "candidates": 179381,
+      "any_strict_good_rate": 0.2359001232014539,
+      "direct_wait_improves_rate": 0.06720332699672764,
+      "teacher_sha256": "f248fa02b29b521d1f2d350bef2bd63df423f83ff99a3836c2edb2f5190f96d3",
+      "v4_sha256": "0af47a2b4dd14304e9d77c08b284134d51f562807259acca195e9d621ba24ba6",
+      "timing_sha256": "e7abf5a12e087f2da6695399584a277b7a2ca12a0698dfd19bdc5ebee546e238"
+    }
+  },
+  "direct_wait_model": {
+    "fit_days": [
+      "2026-01-06",
+      "2026-01-07"
+    ],
+    "fit_rows": 391831,
+    "positive_rate": 0.05765751050835692,
+    "model_sha256": "a145c6ef913601a8034126c9826d11a9b294a1c6c14dc69c21877ea1db60cdc4",
+    "same_hyperparameters_as_coinexx": true,
+    "jan8_calibration_B": {
+      "auc": 0.6084241276739714,
+      "pmax": 0.38461538461538464,
+      "selected_p80": 0
+    },
+    "jan16_holdout": {
+      "events": 179273,
+      "positive_rate": 0.06722150017013159,
+      "auc": 0.6287537115775095,
+      "brier": 0.06193748098788759,
+      "logloss": 0.2406613527893499,
+      "pmax": 0.38461538461538464,
+      "selected_p80": 0
+    }
+  },
+  "tests": "41/41 PASS",
+  "qualified_timing_policy": false,
+  "status": "FEED_PORTABILITY_VERIFIED_STRONGER_DUKASCOPY_RANKING_NO_80PCT_GATE_NO_POLICY"
+}
