@@ -1,0 +1,738 @@
+{
+  "source": "60k actual as-of sampled quotes, Dukascopy JanFebJunJul",
+  "features": 209,
+  "hypothesis": "Ordered multi-scale impulse/reversal and bid/ask lead-lag interactions reject neutral and wrong-sided outcomes better than raw geometry",
+  "results": {
+    "G4_same_small_capacity_motifs": {
+      "num_trees": 70,
+      "num_leaves": 15,
+      "train_rows": 60000,
+      "eval_rows": 0,
+      "sha256": "bddd61072b8fbc607f7cfc9fa0b5da7e555c50afe9194037ca8c1ff8baaa2d95",
+      "artifact": "G4_same_small_capacity_motifs.txt",
+      "seconds": 3.15,
+      "metrics": {
+        "all_sample": {
+          "0.5": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.7": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.8": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.9": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.95": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.98": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.99": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.995": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.999": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    "G5_july_never_trained_motifs": {
+      "num_trees": 170,
+      "num_leaves": 31,
+      "train_rows": 45000,
+      "eval_rows": 15000,
+      "sha256": "69fef51e8c2d6dcaf9cd6feeeb16643782b11dd59a959d254deb564ecb05d757",
+      "artifact": "G5_july_never_trained_motifs.txt",
+      "seconds": 7.02,
+      "metrics": {
+        "train_only": {
+          "0.5": {
+            "selected": 168,
+            "correct": 168,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": 1.0,
+            "wilson_lower": 0.9776445284494558,
+            "month": {
+              "01": {
+                "selected": 46,
+                "correct": 46
+              },
+              "02": {
+                "selected": 86,
+                "correct": 86
+              },
+              "06": {
+                "selected": 36,
+                "correct": 36
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.7": {
+            "selected": 1,
+            "correct": 1,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": 1.0,
+            "wilson_lower": 0.20654329147389294,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 1,
+                "correct": 1
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.8": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.9": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.95": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.98": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.99": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.995": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.999": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          }
+        },
+        "july_untouched": {
+          "0.5": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.7": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.8": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.9": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.95": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.98": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.99": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.995": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          },
+          "0.999": {
+            "selected": 0,
+            "correct": 0,
+            "neutral": 0,
+            "wrong_direction": 0,
+            "precision": null,
+            "wilson_lower": 0.0,
+            "month": {
+              "01": {
+                "selected": 0,
+                "correct": 0
+              },
+              "02": {
+                "selected": 0,
+                "correct": 0
+              },
+              "06": {
+                "selected": 0,
+                "correct": 0
+              },
+              "07": {
+                "selected": 0,
+                "correct": 0
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "status": "RESEARCH_FALSIFICATION_ONLY"
+}

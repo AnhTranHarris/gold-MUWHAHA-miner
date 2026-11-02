@@ -1,0 +1,2898 @@
+{
+  "type": "EXPERIMENTAL_FOUR_CLASS_ACTION_SELECTIVE_TEACHER_STUDENT",
+  "dataset_n_market_states": 60000,
+  "side_action_rows": 120000,
+  "strong_label_n": 3244,
+  "side_class_count_WRONG_NEUTRAL_WEAK_STRONG": [
+    99341,
+    4898,
+    12517,
+    3244
+  ],
+  "features": 137,
+  "models": {
+    "S1_overfit_all_4": {
+      "params": {
+        "trees": 320,
+        "leaves": 63
+      },
+      "seconds": 8.0,
+      "sha256": "51da8a7afe02e2a329464df0dec48e6a5211f3c24f9a43f62b80b06745e70464",
+      "file": "H1V2_R2_S1_overfit_all_4.txt",
+      "training": {
+        "0.03": {
+          "n": 3418,
+          "strong_correct": 3243,
+          "weak_good": 36,
+          "wrong": 138,
+          "neutral": 1,
+          "precision_strong": 0.9488004681100058,
+          "wilson_lower": 0.9408945117174706,
+          "monthly": {
+            "01": {
+              "n": 898,
+              "strong_correct": 841
+            },
+            "02": {
+              "n": 983,
+              "strong_correct": 934
+            },
+            "06": {
+              "n": 1031,
+              "strong_correct": 992
+            },
+            "07": {
+              "n": 506,
+              "strong_correct": 476
+            }
+          }
+        },
+        "0.05": {
+          "n": 3418,
+          "strong_correct": 3243,
+          "weak_good": 36,
+          "wrong": 138,
+          "neutral": 1,
+          "precision_strong": 0.9488004681100058,
+          "wilson_lower": 0.9408945117174706,
+          "monthly": {
+            "01": {
+              "n": 898,
+              "strong_correct": 841
+            },
+            "02": {
+              "n": 983,
+              "strong_correct": 934
+            },
+            "06": {
+              "n": 1031,
+              "strong_correct": 992
+            },
+            "07": {
+              "n": 506,
+              "strong_correct": 476
+            }
+          }
+        },
+        "0.1": {
+          "n": 3418,
+          "strong_correct": 3243,
+          "weak_good": 36,
+          "wrong": 138,
+          "neutral": 1,
+          "precision_strong": 0.9488004681100058,
+          "wilson_lower": 0.9408945117174706,
+          "monthly": {
+            "01": {
+              "n": 898,
+              "strong_correct": 841
+            },
+            "02": {
+              "n": 983,
+              "strong_correct": 934
+            },
+            "06": {
+              "n": 1031,
+              "strong_correct": 992
+            },
+            "07": {
+              "n": 506,
+              "strong_correct": 476
+            }
+          }
+        },
+        "0.15": {
+          "n": 3384,
+          "strong_correct": 3243,
+          "weak_good": 31,
+          "wrong": 110,
+          "neutral": 0,
+          "precision_strong": 0.9583333333333334,
+          "wilson_lower": 0.9510646227287216,
+          "monthly": {
+            "01": {
+              "n": 885,
+              "strong_correct": 841
+            },
+            "02": {
+              "n": 975,
+              "strong_correct": 934
+            },
+            "06": {
+              "n": 1025,
+              "strong_correct": 992
+            },
+            "07": {
+              "n": 499,
+              "strong_correct": 476
+            }
+          }
+        },
+        "0.2": {
+          "n": 3297,
+          "strong_correct": 3242,
+          "weak_good": 17,
+          "wrong": 38,
+          "neutral": 0,
+          "precision_strong": 0.9833181680315438,
+          "wilson_lower": 0.9783503041249669,
+          "monthly": {
+            "01": {
+              "n": 860,
+              "strong_correct": 840
+            },
+            "02": {
+              "n": 946,
+              "strong_correct": 934
+            },
+            "06": {
+              "n": 1007,
+              "strong_correct": 992
+            },
+            "07": {
+              "n": 484,
+              "strong_correct": 476
+            }
+          }
+        },
+        "0.3": {
+          "n": 3219,
+          "strong_correct": 3219,
+          "weak_good": 0,
+          "wrong": 0,
+          "neutral": 0,
+          "precision_strong": 1.0,
+          "wilson_lower": 0.9988080084357854,
+          "monthly": {
+            "01": {
+              "n": 837,
+              "strong_correct": 837
+            },
+            "02": {
+              "n": 929,
+              "strong_correct": 929
+            },
+            "06": {
+              "n": 982,
+              "strong_correct": 982
+            },
+            "07": {
+              "n": 471,
+              "strong_correct": 471
+            }
+          }
+        },
+        "0.4": {
+          "n": 3066,
+          "strong_correct": 3066,
+          "weak_good": 0,
+          "wrong": 0,
+          "neutral": 0,
+          "precision_strong": 1.0,
+          "wilson_lower": 0.9987485999277618,
+          "monthly": {
+            "01": {
+              "n": 796,
+              "strong_correct": 796
+            },
+            "02": {
+              "n": 897,
+              "strong_correct": 897
+            },
+            "06": {
+              "n": 932,
+              "strong_correct": 932
+            },
+            "07": {
+              "n": 441,
+              "strong_correct": 441
+            }
+          }
+        },
+        "0.5": {
+          "n": 2694,
+          "strong_correct": 2694,
+          "weak_good": 0,
+          "wrong": 0,
+          "neutral": 0,
+          "precision_strong": 1.0,
+          "wilson_lower": 0.9985760468665025,
+          "monthly": {
+            "01": {
+              "n": 688,
+              "strong_correct": 688
+            },
+            "02": {
+              "n": 811,
+              "strong_correct": 811
+            },
+            "06": {
+              "n": 820,
+              "strong_correct": 820
+            },
+            "07": {
+              "n": 375,
+              "strong_correct": 375
+            }
+          }
+        },
+        "0.7": {
+          "n": 1029,
+          "strong_correct": 1029,
+          "weak_good": 0,
+          "wrong": 0,
+          "neutral": 0,
+          "precision_strong": 1.0,
+          "wilson_lower": 0.9962805526036131,
+          "monthly": {
+            "01": {
+              "n": 252,
+              "strong_correct": 252
+            },
+            "02": {
+              "n": 353,
+              "strong_correct": 353
+            },
+            "06": {
+              "n": 298,
+              "strong_correct": 298
+            },
+            "07": {
+              "n": 126,
+              "strong_correct": 126
+            }
+          }
+        },
+        "0.8": {
+          "n": 254,
+          "strong_correct": 254,
+          "weak_good": 0,
+          "wrong": 0,
+          "neutral": 0,
+          "precision_strong": 1.0,
+          "wilson_lower": 0.9851009301834924,
+          "monthly": {
+            "01": {
+              "n": 59,
+              "strong_correct": 59
+            },
+            "02": {
+              "n": 99,
+              "strong_correct": 99
+            },
+            "06": {
+              "n": 64,
+              "strong_correct": 64
+            },
+            "07": {
+              "n": 32,
+              "strong_correct": 32
+            }
+          }
+        },
+        "top1pct": {
+          "n": 600,
+          "strong_correct": 600,
+          "wrong": 0,
+          "neutral": 0,
+          "weak_good": 0
+        },
+        "top5pct": {
+          "n": 3000,
+          "strong_correct": 3000,
+          "wrong": 0,
+          "neutral": 0,
+          "weak_good": 0
+        }
+      },
+      "by_month": {
+        "01": {
+          "0.03": {
+            "n": 898,
+            "strong_correct": 841,
+            "weak_good": 9,
+            "wrong": 48,
+            "neutral": 0,
+            "precision_strong": 0.9365256124721604,
+            "wilson_lower": 0.9186449316087454,
+            "monthly": {
+              "01": {
+                "n": 898,
+                "strong_correct": 841
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.05": {
+            "n": 898,
+            "strong_correct": 841,
+            "weak_good": 9,
+            "wrong": 48,
+            "neutral": 0,
+            "precision_strong": 0.9365256124721604,
+            "wilson_lower": 0.9186449316087454,
+            "monthly": {
+              "01": {
+                "n": 898,
+                "strong_correct": 841
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.1": {
+            "n": 898,
+            "strong_correct": 841,
+            "weak_good": 9,
+            "wrong": 48,
+            "neutral": 0,
+            "precision_strong": 0.9365256124721604,
+            "wilson_lower": 0.9186449316087454,
+            "monthly": {
+              "01": {
+                "n": 898,
+                "strong_correct": 841
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.15": {
+            "n": 885,
+            "strong_correct": 841,
+            "weak_good": 7,
+            "wrong": 37,
+            "neutral": 0,
+            "precision_strong": 0.9502824858757062,
+            "wilson_lower": 0.9339146770161549,
+            "monthly": {
+              "01": {
+                "n": 885,
+                "strong_correct": 841
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.2": {
+            "n": 860,
+            "strong_correct": 840,
+            "weak_good": 4,
+            "wrong": 16,
+            "neutral": 0,
+            "precision_strong": 0.9767441860465116,
+            "wilson_lower": 0.9643521954049208,
+            "monthly": {
+              "01": {
+                "n": 860,
+                "strong_correct": 840
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.3": {
+            "n": 837,
+            "strong_correct": 837,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9954312441249339,
+            "monthly": {
+              "01": {
+                "n": 837,
+                "strong_correct": 837
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.4": {
+            "n": 796,
+            "strong_correct": 796,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.995197049015705,
+            "monthly": {
+              "01": {
+                "n": 796,
+                "strong_correct": 796
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.5": {
+            "n": 688,
+            "strong_correct": 688,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9944472838869476,
+            "monthly": {
+              "01": {
+                "n": 688,
+                "strong_correct": 688
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.7": {
+            "n": 252,
+            "strong_correct": 252,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9849844591340893,
+            "monthly": {
+              "01": {
+                "n": 252,
+                "strong_correct": 252
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.8": {
+            "n": 59,
+            "strong_correct": 59,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9388685202159079,
+            "monthly": {
+              "01": {
+                "n": 59,
+                "strong_correct": 59
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "top1pct": {
+            "n": 150,
+            "strong_correct": 150,
+            "wrong": 0,
+            "neutral": 0,
+            "weak_good": 0
+          },
+          "top5pct": {
+            "n": 750,
+            "strong_correct": 750,
+            "wrong": 0,
+            "neutral": 0,
+            "weak_good": 0
+          }
+        },
+        "02": {
+          "0.03": {
+            "n": 983,
+            "strong_correct": 934,
+            "weak_good": 13,
+            "wrong": 35,
+            "neutral": 1,
+            "precision_strong": 0.9501525940996948,
+            "wilson_lower": 0.9347091675663937,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 983,
+                "strong_correct": 934
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.05": {
+            "n": 983,
+            "strong_correct": 934,
+            "weak_good": 13,
+            "wrong": 35,
+            "neutral": 1,
+            "precision_strong": 0.9501525940996948,
+            "wilson_lower": 0.9347091675663937,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 983,
+                "strong_correct": 934
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.1": {
+            "n": 983,
+            "strong_correct": 934,
+            "weak_good": 13,
+            "wrong": 35,
+            "neutral": 1,
+            "precision_strong": 0.9501525940996948,
+            "wilson_lower": 0.9347091675663937,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 983,
+                "strong_correct": 934
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.15": {
+            "n": 975,
+            "strong_correct": 934,
+            "weak_good": 12,
+            "wrong": 29,
+            "neutral": 0,
+            "precision_strong": 0.9579487179487179,
+            "wilson_lower": 0.9434500033720199,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 975,
+                "strong_correct": 934
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.2": {
+            "n": 946,
+            "strong_correct": 934,
+            "weak_good": 5,
+            "wrong": 7,
+            "neutral": 0,
+            "precision_strong": 0.9873150105708245,
+            "wilson_lower": 0.9779591149658776,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 946,
+                "strong_correct": 934
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.3": {
+            "n": 929,
+            "strong_correct": 929,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9958818303128849,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 929,
+                "strong_correct": 929
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.4": {
+            "n": 897,
+            "strong_correct": 897,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9957355432964019,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 897,
+                "strong_correct": 897
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.5": {
+            "n": 811,
+            "strong_correct": 811,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9952854640705627,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 811,
+                "strong_correct": 811
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.7": {
+            "n": 353,
+            "strong_correct": 353,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.989234439034014,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 353,
+                "strong_correct": 353
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.8": {
+            "n": 99,
+            "strong_correct": 99,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9626454664260378,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 99,
+                "strong_correct": 99
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "top1pct": {
+            "n": 150,
+            "strong_correct": 150,
+            "wrong": 0,
+            "neutral": 0,
+            "weak_good": 0
+          },
+          "top5pct": {
+            "n": 750,
+            "strong_correct": 750,
+            "wrong": 0,
+            "neutral": 0,
+            "weak_good": 0
+          }
+        },
+        "06": {
+          "0.03": {
+            "n": 1031,
+            "strong_correct": 992,
+            "weak_good": 8,
+            "wrong": 31,
+            "neutral": 0,
+            "precision_strong": 0.962172647914646,
+            "wilson_lower": 0.9487071916364165,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 1031,
+                "strong_correct": 992
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.05": {
+            "n": 1031,
+            "strong_correct": 992,
+            "weak_good": 8,
+            "wrong": 31,
+            "neutral": 0,
+            "precision_strong": 0.962172647914646,
+            "wilson_lower": 0.9487071916364165,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 1031,
+                "strong_correct": 992
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.1": {
+            "n": 1031,
+            "strong_correct": 992,
+            "weak_good": 8,
+            "wrong": 31,
+            "neutral": 0,
+            "precision_strong": 0.962172647914646,
+            "wilson_lower": 0.9487071916364165,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 1031,
+                "strong_correct": 992
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.15": {
+            "n": 1025,
+            "strong_correct": 992,
+            "weak_good": 7,
+            "wrong": 26,
+            "neutral": 0,
+            "precision_strong": 0.9678048780487805,
+            "wilson_lower": 0.9551313614747824,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 1025,
+                "strong_correct": 992
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.2": {
+            "n": 1007,
+            "strong_correct": 992,
+            "weak_good": 5,
+            "wrong": 10,
+            "neutral": 0,
+            "precision_strong": 0.9851042701092354,
+            "wilson_lower": 0.9755687843348184,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 1007,
+                "strong_correct": 992
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.3": {
+            "n": 982,
+            "strong_correct": 982,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.996103227942501,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 982,
+                "strong_correct": 982
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.4": {
+            "n": 932,
+            "strong_correct": 932,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9958950318088019,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 932,
+                "strong_correct": 932
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.5": {
+            "n": 820,
+            "strong_correct": 820,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9953369676889344,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 820,
+                "strong_correct": 820
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.7": {
+            "n": 298,
+            "strong_correct": 298,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9872727947373722,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 298,
+                "strong_correct": 298
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.8": {
+            "n": 64,
+            "strong_correct": 64,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9433739770288436,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 64,
+                "strong_correct": 64
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "top1pct": {
+            "n": 150,
+            "strong_correct": 150,
+            "wrong": 0,
+            "neutral": 0,
+            "weak_good": 0
+          },
+          "top5pct": {
+            "n": 750,
+            "strong_correct": 750,
+            "wrong": 0,
+            "neutral": 0,
+            "weak_good": 0
+          }
+        },
+        "07": {
+          "0.03": {
+            "n": 506,
+            "strong_correct": 476,
+            "weak_good": 6,
+            "wrong": 24,
+            "neutral": 0,
+            "precision_strong": 0.9407114624505929,
+            "wilson_lower": 0.9166236231507499,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 506,
+                "strong_correct": 476
+              }
+            }
+          },
+          "0.05": {
+            "n": 506,
+            "strong_correct": 476,
+            "weak_good": 6,
+            "wrong": 24,
+            "neutral": 0,
+            "precision_strong": 0.9407114624505929,
+            "wilson_lower": 0.9166236231507499,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 506,
+                "strong_correct": 476
+              }
+            }
+          },
+          "0.1": {
+            "n": 506,
+            "strong_correct": 476,
+            "weak_good": 6,
+            "wrong": 24,
+            "neutral": 0,
+            "precision_strong": 0.9407114624505929,
+            "wilson_lower": 0.9166236231507499,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 506,
+                "strong_correct": 476
+              }
+            }
+          },
+          "0.15": {
+            "n": 499,
+            "strong_correct": 476,
+            "weak_good": 5,
+            "wrong": 18,
+            "neutral": 0,
+            "precision_strong": 0.9539078156312625,
+            "wilson_lower": 0.9317872061398601,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 499,
+                "strong_correct": 476
+              }
+            }
+          },
+          "0.2": {
+            "n": 484,
+            "strong_correct": 476,
+            "weak_good": 3,
+            "wrong": 5,
+            "neutral": 0,
+            "precision_strong": 0.9834710743801653,
+            "wilson_lower": 0.9677264138651711,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 484,
+                "strong_correct": 476
+              }
+            }
+          },
+          "0.3": {
+            "n": 471,
+            "strong_correct": 471,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9919097231582069,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 471,
+                "strong_correct": 471
+              }
+            }
+          },
+          "0.4": {
+            "n": 441,
+            "strong_correct": 441,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9913641170250264,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 441,
+                "strong_correct": 441
+              }
+            }
+          },
+          "0.5": {
+            "n": 375,
+            "strong_correct": 375,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9898596141500827,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 375,
+                "strong_correct": 375
+              }
+            }
+          },
+          "0.7": {
+            "n": 126,
+            "strong_correct": 126,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9704131803674633,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 126,
+                "strong_correct": 126
+              }
+            }
+          },
+          "0.8": {
+            "n": 32,
+            "strong_correct": 32,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.8928172849426365,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 32,
+                "strong_correct": 32
+              }
+            }
+          },
+          "top1pct": {
+            "n": 150,
+            "strong_correct": 150,
+            "wrong": 0,
+            "neutral": 0,
+            "weak_good": 0
+          },
+          "top5pct": {
+            "n": 750,
+            "strong_correct": 476,
+            "wrong": 240,
+            "neutral": 1,
+            "weak_good": 33
+          }
+        }
+      }
+    },
+    "S2_leave_july_out": {
+      "params": {
+        "trees": 180,
+        "leaves": 31
+      },
+      "seconds": 2.91,
+      "sha256": "981c61fa8dca620b92837a4bbb5fc73a8368aeeeb6067cf7daa94ca66347cbc9",
+      "file": "H1V2_R2_S2_leave_july_out.txt",
+      "training": {
+        "0.03": {
+          "n": 2596,
+          "strong_correct": 2207,
+          "weak_good": 50,
+          "wrong": 338,
+          "neutral": 1,
+          "precision_strong": 0.8501540832049307,
+          "wilson_lower": 0.8359069396594588,
+          "monthly": {
+            "01": {
+              "n": 784,
+              "strong_correct": 661
+            },
+            "02": {
+              "n": 900,
+              "strong_correct": 773
+            },
+            "06": {
+              "n": 912,
+              "strong_correct": 773
+            },
+            "07": {
+              "n": 0,
+              "strong_correct": 0
+            }
+          }
+        },
+        "0.05": {
+          "n": 2596,
+          "strong_correct": 2207,
+          "weak_good": 50,
+          "wrong": 338,
+          "neutral": 1,
+          "precision_strong": 0.8501540832049307,
+          "wilson_lower": 0.8359069396594588,
+          "monthly": {
+            "01": {
+              "n": 784,
+              "strong_correct": 661
+            },
+            "02": {
+              "n": 900,
+              "strong_correct": 773
+            },
+            "06": {
+              "n": 912,
+              "strong_correct": 773
+            },
+            "07": {
+              "n": 0,
+              "strong_correct": 0
+            }
+          }
+        },
+        "0.1": {
+          "n": 2596,
+          "strong_correct": 2207,
+          "weak_good": 50,
+          "wrong": 338,
+          "neutral": 1,
+          "precision_strong": 0.8501540832049307,
+          "wilson_lower": 0.8359069396594588,
+          "monthly": {
+            "01": {
+              "n": 784,
+              "strong_correct": 661
+            },
+            "02": {
+              "n": 900,
+              "strong_correct": 773
+            },
+            "06": {
+              "n": 912,
+              "strong_correct": 773
+            },
+            "07": {
+              "n": 0,
+              "strong_correct": 0
+            }
+          }
+        },
+        "0.15": {
+          "n": 2567,
+          "strong_correct": 2195,
+          "weak_good": 50,
+          "wrong": 321,
+          "neutral": 1,
+          "precision_strong": 0.8550837553564472,
+          "wilson_lower": 0.8409352220901642,
+          "monthly": {
+            "01": {
+              "n": 778,
+              "strong_correct": 659
+            },
+            "02": {
+              "n": 893,
+              "strong_correct": 770
+            },
+            "06": {
+              "n": 896,
+              "strong_correct": 766
+            },
+            "07": {
+              "n": 0,
+              "strong_correct": 0
+            }
+          }
+        },
+        "0.2": {
+          "n": 2323,
+          "strong_correct": 2079,
+          "weak_good": 29,
+          "wrong": 215,
+          "neutral": 0,
+          "precision_strong": 0.8949634093844167,
+          "wilson_lower": 0.881836351151121,
+          "monthly": {
+            "01": {
+              "n": 697,
+              "strong_correct": 622
+            },
+            "02": {
+              "n": 820,
+              "strong_correct": 733
+            },
+            "06": {
+              "n": 806,
+              "strong_correct": 724
+            },
+            "07": {
+              "n": 0,
+              "strong_correct": 0
+            }
+          }
+        },
+        "0.3": {
+          "n": 1515,
+          "strong_correct": 1488,
+          "weak_good": 2,
+          "wrong": 25,
+          "neutral": 0,
+          "precision_strong": 0.9821782178217822,
+          "wilson_lower": 0.9741939902609493,
+          "monthly": {
+            "01": {
+              "n": 449,
+              "strong_correct": 437
+            },
+            "02": {
+              "n": 549,
+              "strong_correct": 544
+            },
+            "06": {
+              "n": 517,
+              "strong_correct": 507
+            },
+            "07": {
+              "n": 0,
+              "strong_correct": 0
+            }
+          }
+        },
+        "0.4": {
+          "n": 748,
+          "strong_correct": 747,
+          "weak_good": 0,
+          "wrong": 1,
+          "neutral": 0,
+          "precision_strong": 0.9986631016042781,
+          "wilson_lower": 0.992466306609356,
+          "monthly": {
+            "01": {
+              "n": 204,
+              "strong_correct": 204
+            },
+            "02": {
+              "n": 295,
+              "strong_correct": 295
+            },
+            "06": {
+              "n": 249,
+              "strong_correct": 248
+            },
+            "07": {
+              "n": 0,
+              "strong_correct": 0
+            }
+          }
+        },
+        "0.5": {
+          "n": 279,
+          "strong_correct": 279,
+          "weak_good": 0,
+          "wrong": 0,
+          "neutral": 0,
+          "precision_strong": 1.0,
+          "wilson_lower": 0.9864178395257274,
+          "monthly": {
+            "01": {
+              "n": 79,
+              "strong_correct": 79
+            },
+            "02": {
+              "n": 120,
+              "strong_correct": 120
+            },
+            "06": {
+              "n": 80,
+              "strong_correct": 80
+            },
+            "07": {
+              "n": 0,
+              "strong_correct": 0
+            }
+          }
+        },
+        "0.7": {
+          "n": 11,
+          "strong_correct": 11,
+          "weak_good": 0,
+          "wrong": 0,
+          "neutral": 0,
+          "precision_strong": 1.0,
+          "wilson_lower": 0.7411599827511859,
+          "monthly": {
+            "01": {
+              "n": 4,
+              "strong_correct": 4
+            },
+            "02": {
+              "n": 5,
+              "strong_correct": 5
+            },
+            "06": {
+              "n": 2,
+              "strong_correct": 2
+            },
+            "07": {
+              "n": 0,
+              "strong_correct": 0
+            }
+          }
+        },
+        "0.8": {
+          "n": 0,
+          "strong_correct": 0,
+          "weak_good": 0,
+          "wrong": 0,
+          "neutral": 0,
+          "precision_strong": null,
+          "wilson_lower": 0.0,
+          "monthly": {
+            "01": {
+              "n": 0,
+              "strong_correct": 0
+            },
+            "02": {
+              "n": 0,
+              "strong_correct": 0
+            },
+            "06": {
+              "n": 0,
+              "strong_correct": 0
+            },
+            "07": {
+              "n": 0,
+              "strong_correct": 0
+            }
+          }
+        },
+        "top1pct": {
+          "n": 450,
+          "strong_correct": 448,
+          "wrong": 2,
+          "neutral": 0,
+          "weak_good": 0
+        },
+        "top5pct": {
+          "n": 2250,
+          "strong_correct": 1982,
+          "wrong": 245,
+          "neutral": 0,
+          "weak_good": 23
+        }
+      },
+      "by_month": {
+        "01": {
+          "0.03": {
+            "n": 784,
+            "strong_correct": 661,
+            "weak_good": 9,
+            "wrong": 113,
+            "neutral": 1,
+            "precision_strong": 0.8431122448979592,
+            "wilson_lower": 0.8159876461613961,
+            "monthly": {
+              "01": {
+                "n": 784,
+                "strong_correct": 661
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.05": {
+            "n": 784,
+            "strong_correct": 661,
+            "weak_good": 9,
+            "wrong": 113,
+            "neutral": 1,
+            "precision_strong": 0.8431122448979592,
+            "wilson_lower": 0.8159876461613961,
+            "monthly": {
+              "01": {
+                "n": 784,
+                "strong_correct": 661
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.1": {
+            "n": 784,
+            "strong_correct": 661,
+            "weak_good": 9,
+            "wrong": 113,
+            "neutral": 1,
+            "precision_strong": 0.8431122448979592,
+            "wilson_lower": 0.8159876461613961,
+            "monthly": {
+              "01": {
+                "n": 784,
+                "strong_correct": 661
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.15": {
+            "n": 778,
+            "strong_correct": 659,
+            "weak_good": 9,
+            "wrong": 109,
+            "neutral": 1,
+            "precision_strong": 0.8470437017994858,
+            "wilson_lower": 0.8200500053527597,
+            "monthly": {
+              "01": {
+                "n": 778,
+                "strong_correct": 659
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.2": {
+            "n": 697,
+            "strong_correct": 622,
+            "weak_good": 4,
+            "wrong": 71,
+            "neutral": 0,
+            "precision_strong": 0.8923959827833573,
+            "wilson_lower": 0.867202078427571,
+            "monthly": {
+              "01": {
+                "n": 697,
+                "strong_correct": 622
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.3": {
+            "n": 449,
+            "strong_correct": 437,
+            "weak_good": 0,
+            "wrong": 12,
+            "neutral": 0,
+            "precision_strong": 0.9732739420935412,
+            "wilson_lower": 0.9538711588569102,
+            "monthly": {
+              "01": {
+                "n": 449,
+                "strong_correct": 437
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.4": {
+            "n": 204,
+            "strong_correct": 204,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9815166934819592,
+            "monthly": {
+              "01": {
+                "n": 204,
+                "strong_correct": 204
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.5": {
+            "n": 79,
+            "strong_correct": 79,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9536271631644004,
+            "monthly": {
+              "01": {
+                "n": 79,
+                "strong_correct": 79
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.7": {
+            "n": 4,
+            "strong_correct": 4,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.5100999795960008,
+            "monthly": {
+              "01": {
+                "n": 4,
+                "strong_correct": 4
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.8": {
+            "n": 0,
+            "strong_correct": 0,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": null,
+            "wilson_lower": 0.0,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "top1pct": {
+            "n": 150,
+            "strong_correct": 149,
+            "wrong": 1,
+            "neutral": 0,
+            "weak_good": 0
+          },
+          "top5pct": {
+            "n": 750,
+            "strong_correct": 617,
+            "wrong": 123,
+            "neutral": 0,
+            "weak_good": 10
+          }
+        },
+        "02": {
+          "0.03": {
+            "n": 900,
+            "strong_correct": 773,
+            "weak_good": 20,
+            "wrong": 107,
+            "neutral": 0,
+            "precision_strong": 0.8588888888888889,
+            "wilson_lower": 0.8346157952632528,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 900,
+                "strong_correct": 773
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.05": {
+            "n": 900,
+            "strong_correct": 773,
+            "weak_good": 20,
+            "wrong": 107,
+            "neutral": 0,
+            "precision_strong": 0.8588888888888889,
+            "wilson_lower": 0.8346157952632528,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 900,
+                "strong_correct": 773
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.1": {
+            "n": 900,
+            "strong_correct": 773,
+            "weak_good": 20,
+            "wrong": 107,
+            "neutral": 0,
+            "precision_strong": 0.8588888888888889,
+            "wilson_lower": 0.8346157952632528,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 900,
+                "strong_correct": 773
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.15": {
+            "n": 893,
+            "strong_correct": 770,
+            "weak_good": 20,
+            "wrong": 103,
+            "neutral": 0,
+            "precision_strong": 0.8622620380739082,
+            "wilson_lower": 0.83810188706051,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 893,
+                "strong_correct": 770
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.2": {
+            "n": 820,
+            "strong_correct": 733,
+            "weak_good": 14,
+            "wrong": 73,
+            "neutral": 0,
+            "precision_strong": 0.8939024390243903,
+            "wilson_lower": 0.8709559506894978,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 820,
+                "strong_correct": 733
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.3": {
+            "n": 549,
+            "strong_correct": 544,
+            "weak_good": 0,
+            "wrong": 5,
+            "neutral": 0,
+            "precision_strong": 0.9908925318761385,
+            "wilson_lower": 0.9788590146448105,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 549,
+                "strong_correct": 544
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.4": {
+            "n": 295,
+            "strong_correct": 295,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9871450293399581,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 295,
+                "strong_correct": 295
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.5": {
+            "n": 120,
+            "strong_correct": 120,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.9689797289440706,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 120,
+                "strong_correct": 120
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.7": {
+            "n": 5,
+            "strong_correct": 5,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.565508505247919,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 5,
+                "strong_correct": 5
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.8": {
+            "n": 0,
+            "strong_correct": 0,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": null,
+            "wilson_lower": 0.0,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "top1pct": {
+            "n": 150,
+            "strong_correct": 150,
+            "wrong": 0,
+            "neutral": 0,
+            "weak_good": 0
+          },
+          "top5pct": {
+            "n": 750,
+            "strong_correct": 680,
+            "wrong": 62,
+            "neutral": 0,
+            "weak_good": 8
+          }
+        },
+        "06": {
+          "0.03": {
+            "n": 912,
+            "strong_correct": 773,
+            "weak_good": 21,
+            "wrong": 118,
+            "neutral": 0,
+            "precision_strong": 0.8475877192982456,
+            "wilson_lower": 0.8228059728447102,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 912,
+                "strong_correct": 773
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.05": {
+            "n": 912,
+            "strong_correct": 773,
+            "weak_good": 21,
+            "wrong": 118,
+            "neutral": 0,
+            "precision_strong": 0.8475877192982456,
+            "wilson_lower": 0.8228059728447102,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 912,
+                "strong_correct": 773
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.1": {
+            "n": 912,
+            "strong_correct": 773,
+            "weak_good": 21,
+            "wrong": 118,
+            "neutral": 0,
+            "precision_strong": 0.8475877192982456,
+            "wilson_lower": 0.8228059728447102,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 912,
+                "strong_correct": 773
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.15": {
+            "n": 896,
+            "strong_correct": 766,
+            "weak_good": 21,
+            "wrong": 109,
+            "neutral": 0,
+            "precision_strong": 0.8549107142857143,
+            "wilson_lower": 0.8303338758634407,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 896,
+                "strong_correct": 766
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.2": {
+            "n": 806,
+            "strong_correct": 724,
+            "weak_good": 11,
+            "wrong": 71,
+            "neutral": 0,
+            "precision_strong": 0.8982630272952854,
+            "wilson_lower": 0.8754674843105453,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 806,
+                "strong_correct": 724
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.3": {
+            "n": 517,
+            "strong_correct": 507,
+            "weak_good": 2,
+            "wrong": 8,
+            "neutral": 0,
+            "precision_strong": 0.9806576402321083,
+            "wilson_lower": 0.9647644083130351,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 517,
+                "strong_correct": 507
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.4": {
+            "n": 249,
+            "strong_correct": 248,
+            "weak_good": 0,
+            "wrong": 1,
+            "neutral": 0,
+            "precision_strong": 0.9959839357429718,
+            "wilson_lower": 0.977605474785601,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 249,
+                "strong_correct": 248
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.5": {
+            "n": 80,
+            "strong_correct": 80,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.954180263735425,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 80,
+                "strong_correct": 80
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.7": {
+            "n": 2,
+            "strong_correct": 2,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 1.0,
+            "wilson_lower": 0.3423719528896193,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 2,
+                "strong_correct": 2
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.8": {
+            "n": 0,
+            "strong_correct": 0,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": null,
+            "wilson_lower": 0.0,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "top1pct": {
+            "n": 150,
+            "strong_correct": 149,
+            "wrong": 1,
+            "neutral": 0,
+            "weak_good": 0
+          },
+          "top5pct": {
+            "n": 750,
+            "strong_correct": 680,
+            "wrong": 63,
+            "neutral": 0,
+            "weak_good": 7
+          }
+        },
+        "07": {
+          "0.03": {
+            "n": 252,
+            "strong_correct": 9,
+            "weak_good": 26,
+            "wrong": 216,
+            "neutral": 1,
+            "precision_strong": 0.03571428571428571,
+            "wilson_lower": 0.018900945673675708,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 252,
+                "strong_correct": 9
+              }
+            }
+          },
+          "0.05": {
+            "n": 252,
+            "strong_correct": 9,
+            "weak_good": 26,
+            "wrong": 216,
+            "neutral": 1,
+            "precision_strong": 0.03571428571428571,
+            "wilson_lower": 0.018900945673675708,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 252,
+                "strong_correct": 9
+              }
+            }
+          },
+          "0.1": {
+            "n": 252,
+            "strong_correct": 9,
+            "weak_good": 26,
+            "wrong": 216,
+            "neutral": 1,
+            "precision_strong": 0.03571428571428571,
+            "wilson_lower": 0.018900945673675708,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 252,
+                "strong_correct": 9
+              }
+            }
+          },
+          "0.15": {
+            "n": 232,
+            "strong_correct": 8,
+            "weak_good": 22,
+            "wrong": 201,
+            "neutral": 1,
+            "precision_strong": 0.034482758620689655,
+            "wilson_lower": 0.017574381035415844,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 232,
+                "strong_correct": 8
+              }
+            }
+          },
+          "0.2": {
+            "n": 153,
+            "strong_correct": 8,
+            "weak_good": 11,
+            "wrong": 133,
+            "neutral": 1,
+            "precision_strong": 0.05228758169934641,
+            "wilson_lower": 0.026729729003208132,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 153,
+                "strong_correct": 8
+              }
+            }
+          },
+          "0.3": {
+            "n": 32,
+            "strong_correct": 2,
+            "weak_good": 4,
+            "wrong": 25,
+            "neutral": 1,
+            "precision_strong": 0.0625,
+            "wilson_lower": 0.01731020319515724,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 32,
+                "strong_correct": 2
+              }
+            }
+          },
+          "0.4": {
+            "n": 6,
+            "strong_correct": 0,
+            "weak_good": 3,
+            "wrong": 3,
+            "neutral": 0,
+            "precision_strong": 0.0,
+            "wilson_lower": 0.0,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 6,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.5": {
+            "n": 3,
+            "strong_correct": 0,
+            "weak_good": 3,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": 0.0,
+            "wilson_lower": 0.0,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 3,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.7": {
+            "n": 0,
+            "strong_correct": 0,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": null,
+            "wilson_lower": 0.0,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "0.8": {
+            "n": 0,
+            "strong_correct": 0,
+            "weak_good": 0,
+            "wrong": 0,
+            "neutral": 0,
+            "precision_strong": null,
+            "wilson_lower": 0.0,
+            "monthly": {
+              "01": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "02": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "06": {
+                "n": 0,
+                "strong_correct": 0
+              },
+              "07": {
+                "n": 0,
+                "strong_correct": 0
+              }
+            }
+          },
+          "top1pct": {
+            "n": 150,
+            "strong_correct": 7,
+            "wrong": 131,
+            "neutral": 2,
+            "weak_good": 10
+          },
+          "top5pct": {
+            "n": 750,
+            "strong_correct": 36,
+            "wrong": 655,
+            "neutral": 2,
+            "weak_good": 57
+          }
+        }
+      }
+    }
+  },
+  "warning": "Student uses only as-of features but resubstitution scores are pure training diagnostics; July held-out is no qualified policy."
+}

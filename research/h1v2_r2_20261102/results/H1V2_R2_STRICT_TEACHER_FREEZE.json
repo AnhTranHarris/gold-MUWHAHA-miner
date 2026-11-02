@@ -1,0 +1,108 @@
+{
+  "scope": "FILTERED_FUTURE_PRIVILEGED_H1V2_ORACLE_UNCHANGED_ENGINE",
+  "configurations": {
+    "FAST3S_NET10_SPR100": {
+      "params": {
+        "first_max_ms": 3000,
+        "net_min": 0.1,
+        "spread_max": 1.0
+      },
+      "months": {
+        "01": {
+          "count": 44638,
+          "floor": 22384,
+          "floor_pass": true,
+          "sha256": "5103d41d25cb4e144ff4d88d5864b12545060ccc31dae5f151c8a4b17f41437c",
+          "output": "H1V2_R2_FAST3S_NET10_SPR100_01_EXACT_SELECTED_TRACE.npz",
+          "original_count": 137402,
+          "modeled_net_sum": 18473.027,
+          "median_first_hit_ms": 1332.5
+        },
+        "02": {
+          "count": 34909,
+          "floor": 26819,
+          "floor_pass": true,
+          "sha256": "1cc9c36f754a510029ca037ca0dda09f36c09e233a37c899f3e4f9b0e562cc73",
+          "output": "H1V2_R2_FAST3S_NET10_SPR100_02_EXACT_SELECTED_TRACE.npz",
+          "original_count": 125472,
+          "modeled_net_sum": 18240.426,
+          "median_first_hit_ms": 1259.0
+        },
+        "06": {
+          "count": 51620,
+          "floor": 25441,
+          "floor_pass": true,
+          "sha256": "6dcecf1005edac6a3d800bf0273802d3717f428ac67c2563497413b6df28758c",
+          "output": "H1V2_R2_FAST3S_NET10_SPR100_06_EXACT_SELECTED_TRACE.npz",
+          "original_count": 149273,
+          "modeled_net_sum": 19215.279,
+          "median_first_hit_ms": 1363.0
+        },
+        "07": {
+          "count": 23393,
+          "floor": 19506,
+          "floor_pass": true,
+          "sha256": "10b6a2f36f1eb427cdf20526dd5e3511c813c90bc11872ba7906d727a5213cbb",
+          "output": "H1V2_R2_FAST3S_NET10_SPR100_07_EXACT_SELECTED_TRACE.npz",
+          "original_count": 101115,
+          "modeled_net_sum": 8307.561,
+          "median_first_hit_ms": 1510.0
+        }
+      },
+      "total": 154560,
+      "all_months_pass": true
+    },
+    "FAST5S_NET20_SPR100": {
+      "params": {
+        "first_max_ms": 5000,
+        "net_min": 0.2,
+        "spread_max": 1.0
+      },
+      "months": {
+        "01": {
+          "count": 42984,
+          "floor": 22384,
+          "floor_pass": true,
+          "sha256": "a0e19d5fbcbf7ab10b8085a25aaf47a1cbb934a8d3071b1f172f6d4b15da275e",
+          "output": "H1V2_R2_FAST5S_NET20_SPR100_01_EXACT_SELECTED_TRACE.npz",
+          "original_count": 137402,
+          "modeled_net_sum": 21659.566,
+          "median_first_hit_ms": 1819.0
+        },
+        "02": {
+          "count": 36529,
+          "floor": 26819,
+          "floor_pass": true,
+          "sha256": "302e9c56a67a4fc9c09046c72b05d254a274358eca7d1c7e12d3792861344827",
+          "output": "H1V2_R2_FAST5S_NET20_SPR100_02_EXACT_SELECTED_TRACE.npz",
+          "original_count": 125472,
+          "modeled_net_sum": 22437.633,
+          "median_first_hit_ms": 1764.0
+        },
+        "06": {
+          "count": 48842,
+          "floor": 25441,
+          "floor_pass": true,
+          "sha256": "56542ef89b2770103654da6e92d7ee41d4467b0ced9ab09252167636ddff697b",
+          "output": "H1V2_R2_FAST5S_NET20_SPR100_06_EXACT_SELECTED_TRACE.npz",
+          "original_count": 149273,
+          "modeled_net_sum": 22568.711,
+          "median_first_hit_ms": 1868.0
+        },
+        "07": {
+          "count": 23112,
+          "floor": 19506,
+          "floor_pass": true,
+          "sha256": "a3ed3c5b6eeb734b20488d40dc8943622f074e8f10dacc342d9dc30b297d8f8b",
+          "output": "H1V2_R2_FAST5S_NET20_SPR100_07_EXACT_SELECTED_TRACE.npz",
+          "original_count": 101115,
+          "modeled_net_sum": 10190.415,
+          "median_first_hit_ms": 2142.0
+        }
+      },
+      "total": 151467,
+      "all_months_pass": true
+    }
+  },
+  "warning": "These gates know future label and realized net; never feed those to a live model. Retained set is NOT a re-optimized maximal schedule."
+}

@@ -1,0 +1,78 @@
+{
+  "scope": "ACTION_SPECIFIC_HINDSIGHT_TEACHER_CLASSES_NOT_PREDICTIVE",
+  "classes": {
+    "WRONG": 0,
+    "NEUTRAL": 1,
+    "WEAK_GOOD": 2,
+    "STRONG_GOOD": 3
+  },
+  "exact_teacher": "original H1V2 bid/ask tick-ordinal first favorable before adverse + positive R9 close <=30s",
+  "strong_extra": "favorable first hit <=3000ms AND R9 net>=0.10 AND entry_spread<=1.0",
+  "months": [
+    {
+      "month": "01",
+      "rows": 15000,
+      "class_count_2side": {
+        "WRONG": 24715,
+        "NEUTRAL": 1342,
+        "WEAK_GOOD": 3102,
+        "STRONG_GOOD": 841
+      },
+      "strong_buy": 435,
+      "strong_sell": 406,
+      "strong_per_15000": 841,
+      "strong_rate": 0.05606666666666667,
+      "sha256": "0679e79aa38cbcdbeea1faa5c7b0f98626e86e0c7d236f50b3b9227820cd127f",
+      "artifact": "H1V2_R2_01_SIDE_INDEPENDENT_HARD_NEGATIVES.npz"
+    },
+    {
+      "month": "02",
+      "rows": 15000,
+      "class_count_2side": {
+        "WRONG": 24765,
+        "NEUTRAL": 977,
+        "WEAK_GOOD": 3324,
+        "STRONG_GOOD": 934
+      },
+      "strong_buy": 447,
+      "strong_sell": 487,
+      "strong_per_15000": 934,
+      "strong_rate": 0.062266666666666665,
+      "sha256": "27ef2f5138b6c0e6b74071d7bde0e5a4d70e5671f0af7aa2046c495c7bf9cf82",
+      "artifact": "H1V2_R2_02_SIDE_INDEPENDENT_HARD_NEGATIVES.npz"
+    },
+    {
+      "month": "06",
+      "rows": 15000,
+      "class_count_2side": {
+        "WRONG": 24619,
+        "NEUTRAL": 1097,
+        "WEAK_GOOD": 3291,
+        "STRONG_GOOD": 993
+      },
+      "strong_buy": 480,
+      "strong_sell": 513,
+      "strong_per_15000": 993,
+      "strong_rate": 0.0662,
+      "sha256": "509ecddbad929a1b55c5752c34f8f2bc0560d45fe7c5753ad5abfdfd24023f0f",
+      "artifact": "H1V2_R2_06_SIDE_INDEPENDENT_HARD_NEGATIVES.npz"
+    },
+    {
+      "month": "07",
+      "rows": 15000,
+      "class_count_2side": {
+        "WRONG": 25242,
+        "NEUTRAL": 1482,
+        "WEAK_GOOD": 2800,
+        "STRONG_GOOD": 476
+      },
+      "strong_buy": 240,
+      "strong_sell": 236,
+      "strong_per_15000": 476,
+      "strong_rate": 0.031733333333333336,
+      "sha256": "25e09ef1c589a3220a390102c49cf8e3b5dcedf9e76be1d05f960c7295defe4a",
+      "artifact": "H1V2_R2_07_SIDE_INDEPENDENT_HARD_NEGATIVES.npz"
+    }
+  ],
+  "safety": "NEVER include code/net/first_ms/side_class in features. y is teacher future only. No full-month strong oracle schedule computed here."
+}
