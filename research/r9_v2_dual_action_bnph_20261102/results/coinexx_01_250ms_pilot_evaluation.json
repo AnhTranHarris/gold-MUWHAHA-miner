@@ -1,0 +1,75 @@
+{
+  "identity": "R9_V2_250MS_DIRECTION_NEUTRAL_CHRONOLOGICAL_PILOT",
+  "feature_version": "r9_v2_ordered_quote_grid_v4",
+  "feature_count": 228,
+  "fit_days": [
+    "2026-01-06",
+    "2026-01-07"
+  ],
+  "calibration_day": "2026-01-08",
+  "check_day": "2026-01-09",
+  "embargo_ms": 60000,
+  "max_wait_ms": 1000,
+  "fit_prior_counts": [
+    [
+      160207,
+      9043,
+      62196
+    ],
+    [
+      158175,
+      9112,
+      64159
+    ]
+  ],
+  "selected_prior_weight": 0,
+  "prior_selection_multiclass_logloss": 0.7377346204,
+  "calibration_A_rows": 115822,
+  "calibration_B_rows": 115896,
+  "opportunity_np_cutoff": 0.5619201290843086,
+  "side_np_cutoffs": [
+    0.2954110898661569,
+    0.308361909786336
+  ],
+  "wait_np_cutoff": 0.3079456566488268,
+  "payoff_positive_bin_count": [
+    0,
+    0
+  ],
+  "payoff_nonempty_bin_count": [
+    10,
+    7
+  ],
+  "calibration_B": {
+    "events": 115896,
+    "opportunity_auc": 0.5107264520247078,
+    "learned_rank_unique_accuracy": 0.5153607066906593,
+    "selected_teacher_actions": 0,
+    "any_good_events": 61130,
+    "neither_good_events": 54766,
+    "wait_evaluable_events": 53254,
+    "wait_auc": 0.5604331450066198,
+    "wait_selected": 0
+  },
+  "check": {
+    "events": 195789,
+    "opportunity_auc": 0.5152768741588051,
+    "learned_rank_unique_accuracy": 0.5193888069982755,
+    "selected_teacher_actions": 0,
+    "any_good_events": 103797,
+    "neither_good_events": 91992,
+    "wait_evaluable_events": 87511,
+    "wait_auc": 0.5772243342782918,
+    "wait_selected": 0
+  },
+  "component_model_sha256": {
+    "opportunity": "3fb3d1262ffd75ae3ecac506973823e2fcc571231dc09b14e287e1639545ad20",
+    "buy": "199ee19a3894415928ca6ee0c296c0889244ab6be63e9e820476d479d718210f",
+    "sell": "7730cc8dc25275a7f688e37831e69b1d3fbe3e7fb6893cd7fd845ab9f1cd0baf",
+    "wait": "b37e66e95292e81eaf33a7e9b2599692654ea5838218daa0515e37f5caa3e9be"
+  },
+  "teacher_candidate_semantics": "OVERLAPPING_OFFLINE_OBSERVATIONS_NOT_FILLED_TRADES",
+  "historical_250ms_sell_bug_teacher_used": false,
+  "qualified_policy": false,
+  "model_status": "PILOT_ONLY_REQUIRES_ONE_POSITION_ON_POLICY_REPLAY_AND_BROADER_CHRONOLOGY"
+}
