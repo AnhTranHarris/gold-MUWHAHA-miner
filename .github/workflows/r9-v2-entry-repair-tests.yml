@@ -17,6 +17,8 @@ jobs:
           python-version: "3.11"
       - name: Install targeted test dependencies
         run: python -m pip install --upgrade pip numpy numba pandas scikit-learn pytest
+      - name: Compile complete repaired Python source tree
+        run: python -m compileall -q research/r9_v2_dual_action_bnph_20261102/src
       - name: Run source-level R9 v2 repair contract
         env:
           PYTHONPATH: research/r9_v2_dual_action_bnph_20261102/src
