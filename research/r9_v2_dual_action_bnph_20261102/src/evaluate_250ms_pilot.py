@@ -22,7 +22,7 @@ def sha256(p:Path):
 
 def load_day(root,day):
     root=Path(root);base=f'coinexx_01_{day}'
-    X=np.load(root/f'{base}_250ms_v4_X.npy',mmap_mode='r');d=np.load(root/f'{base}_250ms_universe.npz')
+    X=np.load(root/f'{base}_250ms_v5_X.npy',mmap_mode='r');d=np.load(root/f'{base}_250ms_universe.npz')
     if X.shape[1]!=REPAIRED_FEATURE_COUNT or len(X)!=len(d['ts']):raise ValueError('shard contract')
     return X,d
 
