@@ -10,8 +10,7 @@ from __future__ import annotations
 import hashlib, io, json, zipfile
 from pathlib import Path
 import numpy as np
-
-BASE = Path('/mnt/data/v2_direction_audit')
+from path_config import paired_action_root
 MONTHS=('01','02','06','07')
 ORIENTED = np.array([i for i,n in enumerate((
     ['spread','last_bid_move','last_ask_move','last_spread_change','last_mid_move',
@@ -24,14 +23,15 @@ ORIENTED = np.array([i for i,n in enumerate((
 
 def sha(b): return hashlib.sha256(b).hexdigest()
 
-def path_for(source, month):
+def path_for(source, month, root=None):
     if source not in ('coinexx','dukascopy') or month not in MONTHS:raise ValueError('source/month')
-    candidates=list(BASE.glob(f'R9_V2_PAIRED_ACTION_{source.upper()}_2026_{month}_FULL_CHECKPOINT.zip'))
+    base=paired_action_root(root)
+    candidates=list(base.glob(f'R9_V2_PAIRED_ACTION_{source.upper()}_2026_{month}_FULL_CHECKPOINT.zip'))
     if len(candidates)!=1:raise FileNotFoundError((source,month))
     return candidates[0]
 
-def load(source,month):
-    arc=path_for(source,month); key=f'{source}_{month}'
+def load(source,month,root=None):
+    arc=path_for(source,month,root); key=f'{source}_{month}'
     with zipfile.ZipFile(arc) as z:
         if z.testzip() is not None:raise ValueError('ZIP CRC failure')
         manifest=json.loads(z.read('SOURCE_EXACT_MANIFEST.json'))
