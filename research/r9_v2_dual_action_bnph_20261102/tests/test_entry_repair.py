@@ -57,4 +57,8 @@ def test_repaired_action_views_score_buy_and_sell_from_same_market_state():
     z=repaired_action_views(x)
     assert z.shape==(2,REPAIRED_FEATURE_COUNT+1)
     assert z[0,-1]==1 and z[1,-1]==-1
+    assert z[0,0]==z[1,0]
+    x2=x.copy();x2[1]=2.0
+    z2=repaired_action_views(x2)
+    assert z2[0,1]==2.0 and z2[1,1]==-2.0  # preserve legacy directional semantics
     assert np.isfinite(z).all()
