@@ -20,6 +20,18 @@ def sha256(p:Path):
         for c in iter(lambda:f.read(1<<20),b''):h.update(c)
     return h.hexdigest()
 
+def load_component(models_dir,target):
+    model_path=Path(models_dir)/f'coinexx_01_250ms_v5_pilot_{target}.txt'
+    receipt_path=Path(models_dir)/f'coinexx_01_250ms_v5_pilot_{target}_fit.json'
+    if not receipt_path.exists():raise FileNotFoundError(f'missing v5 pilot fit receipt: {receipt_path}')
+    receipt=json.loads(receipt_path.read_text())
+    if receipt.get('feature_version')!=FEATURE_VERSION or int(receipt.get('feature_count',-1))!=REPAIRED_FEATURE_COUNT:
+        raise ValueError(f'stale/incompatible {target} pilot receipt')
+    if receipt.get('model_sha256')!=sha256(model_path):raise ValueError(f'{target} pilot model hash mismatch')
+    model=lgb.Booster(model_file=str(model_path))
+    if model.num_feature()!=REPAIRED_FEATURE_COUNT:raise ValueError(f'{target} pilot feature contract')
+    return model,model_path
+
 def load_day(root,day):
     root=Path(root);base=f'coinexx_01_{day}'
     X=np.load(root/f'{base}_250ms_v5_X.npy',mmap_mode='r');d=np.load(root/f'{base}_250ms_universe.npz')
@@ -63,9 +75,7 @@ def evaluate_segment(name,X,d,mask,opp,opp_iso,models,priors,w,isos,opp_cut,side
 
 def main(a):
     start=time.monotonic();root=Path(a.root);models_dir=Path(a.models);out=Path(a.out);out.mkdir(parents=True,exist_ok=True)
-    opp=lgb.Booster(model_file=str(models_dir/'coinexx_01_250ms_pilot_opportunity.txt'));buy=lgb.Booster(model_file=str(models_dir/'coinexx_01_250ms_pilot_buy.txt'));sell=lgb.Booster(model_file=str(models_dir/'coinexx_01_250ms_pilot_sell.txt'));wait=lgb.Booster(model_file=str(models_dir/'coinexx_01_250ms_pilot_wait.txt'))
-    for m in (opp,buy,sell,wait):
-        if m.num_feature()!=REPAIRED_FEATURE_COUNT:raise ValueError('model feature contract')
+    opp,opp_path=load_component(models_dir,'opportunity');buy,buy_path=load_component(models_dir,'buy');sell,sell_path=load_component(models_dir,'sell');wait,wait_path=load_component(models_dir,'wait')
     priors,prior_counts=side_priors(root,a.fit_days,a.embargo_ms);models=(buy,sell)
     Xc,dc=load_day(root,a.cal_day);ts=dc['ts'];mid=int(ts[len(ts)//2]);cala=(ts>=ts[0]+a.embargo_ms)&(ts<mid-a.embargo_ms);calb=(ts>=mid+a.embargo_ms)&(ts<ts[-1]-a.embargo_ms)
     if not(cala.any() and calb.any()):raise ValueError('calibration split')
@@ -95,9 +105,9 @@ def main(a):
         side_np_cutoffs=[float(x) for x in cut],side_np_info=side_info,wait_np_cutoff=float(wait_cut),wait_np_info=wait_info,
         payoff_positive_bin_count=[int(np.sum(paybins[j]>0)) for j in (0,1)],payoff_nonempty_bin_count=[int(np.sum(paycounts[j]>=150)) for j in (0,1)],
         calibration_B=cal_eval,check=check_eval,top_features=top,
-        component_model_sha256={k:sha256(models_dir/f'coinexx_01_250ms_pilot_{k}.txt') for k in ('opportunity','buy','sell','wait')},
+        component_model_sha256={'opportunity':sha256(opp_path),'buy':sha256(buy_path),'sell':sha256(sell_path),'wait':sha256(wait_path)},
         teacher_candidate_semantics='OVERLAPPING_OFFLINE_OBSERVATIONS_NOT_FILLED_TRADES',historical_250ms_sell_bug_teacher_used=False,
         qualified_policy=False,model_status='PILOT_ONLY_REQUIRES_ONE_POSITION_ON_POLICY_REPLAY_AND_BROADER_CHRONOLOGY',elapsed_sec=round(time.monotonic()-start,2))
-    p=out/'coinexx_01_250ms_pilot_evaluation.json';p.write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2))
+    p=out/'coinexx_01_250ms_v5_pilot_evaluation.json';p.write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2))
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--root',required=True);p.add_argument('--models',required=True);p.add_argument('--out',required=True);p.add_argument('--fit-days',nargs='+',required=True);p.add_argument('--cal-day',required=True);p.add_argument('--check-day',required=True);p.add_argument('--alpha',type=float,default=.10);p.add_argument('--payoff-bins',type=int,default=30);p.add_argument('--embargo-ms',type=int,default=60000);p.add_argument('--max-wait-ms',type=int,default=1000);main(p.parse_args())
