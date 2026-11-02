@@ -5,7 +5,7 @@ SAME causal state, predicts both, optionally WAITs, then repeats both after
 later quotes. The old specialist side is recorded only as a continuous context
 feature; it never nominates or locks the action. Preserves the original source-exact 102-feature diagnostic contract and, for
 version-aware repaired policies, composes the new 228-feature ordered quote-state
-contract from the same causal tick stream. Source feature parity is tested.
+v5 contract from the same causal tick stream. Source feature parity is tested.
 
 Not deployment code: training is baseline-timestamp off-policy and neither
 model calibration nor profitability criteria passed. FAIL CLOSED by default.
@@ -18,7 +18,7 @@ import numpy as np
 from source_exact import two_views
 from decision import DualActionPolicy,Prediction,Limits
 from competing_hawkes import CompetingQuoteHawkes
-from repaired_features import LaggedQuoteGeometry,compose_repaired_features,FEATURE_VERSION
+from repaired_features import LaggedQuoteGeometry,compose_repaired_features,FEATURE_VERSION,FRESH_WARMUP_MS
 from path_config import restore_root
 
 @lru_cache(maxsize=4)
@@ -149,8 +149,13 @@ class DualObservedRouter:
         if not flushed:return 0
         if closed or self.active is not None:return 0
         if not self.clock.ready():self.count['warmup']+=1;return 0
-        f=self.clock.features(q)
         is_repaired=self.policy is not None and getattr(self.policy,'feature_version',None)==FEATURE_VERSION
+        # The frozen FastClock records a >15s gap but its ready() does not use
+        # valid_since. Repaired v5 therefore enforces its own continuous 5-minute
+        # subminute geometry epoch after every quote drought.
+        if is_repaired and self.geometry.coverage_ms()<FRESH_WARMUP_MS:
+            self.count['repaired_fresh_warmup']+=1;return 0
+        f=self.clock.features(q)
         # The repaired policy is direction-neutral all the way to its own BUY/SELL
         # models. Do not even evaluate the old hand-weighted specialist on this path.
         # Zero placeholders preserve the frozen legacy 102-vector layout; repaired
@@ -161,7 +166,7 @@ class DualObservedRouter:
             old_side,evidence,lane,pressure,cost=self._specialist_evidence(f)
             x=self.quotes.vector(evidence=float(evidence),lane_reversal=float(lane=='reversal'))
         # Six-channel quote excitation remains excluded from the frozen legacy
-        # diagnostic. The repaired v4 contract admits its causal state as model
+        # diagnostic. The repaired v5 contract admits its causal state as model
         # input only; it is never added post-hoc as a probability boost.
         self.last_hawkes=self.hawkes.features()
         policy_x=x
