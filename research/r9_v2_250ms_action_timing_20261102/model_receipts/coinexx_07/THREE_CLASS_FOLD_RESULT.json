@@ -1,0 +1,115 @@
+{
+  "source": "coinexx",
+  "month": "07",
+  "algorithm": "MULTINOMIAL_BAYES_ASOF_NOW_SEPARATE_NEUTRAL",
+  "historical_events_trained": 24466474,
+  "prior_correct_actions": 3503133,
+  "calibration_decisions": 732878,
+  "calibration_variants": [
+    {
+      "q": 0.5,
+      "threshold": -0.3351884246419073,
+      "n_cal": 367395,
+      "correct_cal": 0.2401420814110154,
+      "net_cal": -80155.44,
+      "valid": false
+    },
+    {
+      "q": 0.75,
+      "threshold": -0.32833440674328,
+      "n_cal": 184604,
+      "correct_cal": 0.24387337219128513,
+      "net_cal": -39489.29,
+      "valid": false
+    },
+    {
+      "q": 0.9,
+      "threshold": -0.3227310866478202,
+      "n_cal": 74315,
+      "correct_cal": 0.24868465316557894,
+      "net_cal": -15348.52,
+      "valid": false
+    },
+    {
+      "q": 0.95,
+      "threshold": -0.31952131234955544,
+      "n_cal": 37237,
+      "correct_cal": 0.25028869135537235,
+      "net_cal": -7466.85,
+      "valid": false
+    },
+    {
+      "q": 0.975,
+      "threshold": -0.3167304163972035,
+      "n_cal": 18642,
+      "correct_cal": 0.25120695204377214,
+      "net_cal": -3567.24,
+      "valid": false
+    },
+    {
+      "q": 0.99,
+      "threshold": -0.31325553810332796,
+      "n_cal": 7448,
+      "correct_cal": 0.2502685284640172,
+      "net_cal": -1352.87,
+      "valid": false
+    },
+    {
+      "q": 0.9975,
+      "threshold": -0.307862558445089,
+      "n_cal": 1818,
+      "correct_cal": 0.23212321232123212,
+      "net_cal": -345.83,
+      "valid": false
+    }
+  ],
+  "approved_calibration": false,
+  "frozen_threshold": -0.3227310866478202,
+  "check_diagnostic_OFF_POLICY": {
+    "n": 94630,
+    "correct": 22572,
+    "incorrect": 60580,
+    "neutral": 11478,
+    "net": -20740.86,
+    "days": {
+      "20657": {
+        "n": 5659,
+        "correct": 1164
+      },
+      "20658": {
+        "n": 6948,
+        "correct": 1589
+      },
+      "20660": {
+        "n": 3649,
+        "correct": 898
+      },
+      "20661": {
+        "n": 4178,
+        "correct": 771
+      },
+      "20662": {
+        "n": 7278,
+        "correct": 1731
+      },
+      "20663": {
+        "n": 6536,
+        "correct": 1781
+      },
+      "20664": {
+        "n": 7207,
+        "correct": 1634
+      },
+      "20665": {
+        "n": 4429,
+        "correct": 1048
+      }
+    },
+    "survival_correct_rate": 0.23852900771425553,
+    "passes_daily_80": 0,
+    "active_days": 8
+  },
+  "true_on_policy_85pct_volume": "NOT_EVALUATED_UNLESS_APPROVED_POLICY_AND_REPLAY",
+  "release": "REJECTED",
+  "scientific_boundary": "decision events overlap; do not count as executed trades. full-month source used; check is last chronological suffix."
+}
