@@ -61,6 +61,25 @@ class R152Contracts(unittest.TestCase):
   p=json.loads((ROOT/'R152_FEB_FROZEN_POLICIES.json').read_text())
   self.assertEqual(set(p),set(FAMILIES))
   for name,record in p.items():self.assertIn(record['threshold'],FAMILIES[name])
+ def test_adversarial_original_truth_mutation_no_runtime_change(self):
+  # The signed owner zero-hindsight runtime law: original class truth may
+  # teach the guardian OFFLINE, but never enters a model inference feature.
+  import joblib
+  from r152_fit_freeze_action_portfolio import HEADS,infer,actions
+  with np.load(ROOT/'R152_DK_02_FEATURES_AND_ACTIONS.npz') as src:
+   x=src['X'][:64].copy();truth=src['truth'][:64].copy()
+  models={h:joblib.load(ROOT/f'R152_{h}_JAN_FROZEN.joblib') for h in HEADS}
+  cal={h:joblib.load(ROOT/f'R152_{h}_FEB_CAL_FROZEN.joblib') for h in HEADS}
+  a={'X':x,'truth':truth};b={'X':x.copy(),'truth':np.where(truth==0,2,0).astype(np.int8)}
+  p=infer(models,cal,a);q=infer(models,cal,b)
+  for h in HEADS:np.testing.assert_array_equal(p[h],q[h])
+  for f,thresholds in FAMILIES.items():
+   np.testing.assert_array_equal(actions(p,f,thresholds[0]),actions(q,f,thresholds[0]))
+ def test_no_original_t0_veto_in_frozen_outputs(self):
+  for m in ('01','02','06','07'):
+   report=json.loads((ROOT/f'R152_DK_{m}_FROZEN_POLICY_EVAL.json').read_text())
+   self.assertTrue(report['no_original_t0_veto'])
+   for family in FAMILIES:self.assertTrue(report['families'][family]['no_t0_veto_claim'])
  def test_raw_source_pins(self):
   for m,pin in PINS.items():self.assertEqual(sha(Path(f'/mnt/data/XAUUSD_DUKAS_2026_{m}_ticks.csv.gz')),pin)
 
