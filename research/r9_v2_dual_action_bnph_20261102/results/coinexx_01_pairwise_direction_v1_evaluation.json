@@ -1,0 +1,33 @@
+{
+  "identity": "R9_V2_PAIRWISE_DIRECTION_V1",
+  "feature_version": "r9_v2_ordered_quote_grid_v4",
+  "model_sha256": "6851da84336fa45a06c21a84cb15617f8efb2aa6d0977656fc115a26b0ca5222",
+  "fit_rows": 457525,
+  "excluded_ties": 485,
+  "calibration_B": {
+    "events": 115795,
+    "pairwise_net_auc": 0.5141433079182265,
+    "pairwise_net_accuracy": 0.5045295565438922,
+    "exactly_one_good": 61130,
+    "pairwise_strict_good_direction_accuracy": 0.5040405692785866,
+    "independent_side_strict_good_direction_accuracy": 0.5153607066906593,
+    "high_confidence_n": 114,
+    "high_confidence_strict_good_n": 57,
+    "high_confidence_strict_good_accuracy": 0.45614035087719296
+  },
+  "jan13_holdout": {
+    "teacher_sha256": "6d6f728f6e52c8632611740446335d6de034373a4b2eb1b6cd743960f835f10a",
+    "feature_matrix_sha256": "71826ce0e83cc7911a24309a6bd0f7ef58d6a34d3ec275bf3d7f28c247dd1005",
+    "events": 210852,
+    "pairwise_net_auc": 0.5104807048888527,
+    "pairwise_net_accuracy": 0.5054777758807125,
+    "exactly_one_good": 112834,
+    "pairwise_strict_good_direction_accuracy": 0.5066469326621409,
+    "independent_side_strict_good_direction_accuracy": 0.5116986014853678,
+    "high_confidence_n": 97,
+    "high_confidence_strict_good_n": 57,
+    "high_confidence_strict_good_accuracy": 0.6666666666666666
+  },
+  "qualified_direction_policy": false,
+  "status": "PAIRWISE_DIRECTION_DID_NOT_BEAT_INDEPENDENT_SIDE_BASELINE"
+}
