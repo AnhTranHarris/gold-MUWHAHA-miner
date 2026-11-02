@@ -12,6 +12,7 @@ from types import SimpleNamespace
 from decision import Prediction,OpportunityPrediction,DualActionPolicy,AsymmetricEntryPolicy,Limits,select_dual
 from repaired_features import CONTEXT_NAMES,REPAIRED_FEATURE_NAMES,LaggedQuoteGeometry,QuotePoint,compose_repaired_features
 from build_repaired_matrix import load_checkpoint
+from repaired_training_common import runtime_entry_mask
 
 def _p(side,pc,pw,net):
     return Prediction(side,pc,pw,max(0.,1.-pc-pw),net)
@@ -84,3 +85,11 @@ def test_audit_repaired_runtime_cannot_reach_legacy_specialist(monkeypatch):
     q=SimpleNamespace(utc_ms=1_000_000,bid=100.,ask=100.2,spread=.2)
     assert rr.on_quote(q)==0
     assert rr.count['WAIT_TEST']==1
+
+
+def test_audit_offline_admission_mirrors_live_spread_gate():
+    limits=Limits(min_opportunity=.80,max_spread=1.50)
+    X=np.zeros((2,len(REPAIRED_FEATURE_NAMES)),np.float32)
+    X[:,REPAIRED_FEATURE_NAMES.index('spread')]=[.20,1.80]
+    m=runtime_entry_mask(np.array([.90,.90]),.70,X,limits)
+    assert m.tolist()==[True,False]
