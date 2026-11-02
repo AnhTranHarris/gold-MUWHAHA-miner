@@ -44,3 +44,23 @@ def test_frozen_real_model_scores_both_but_remains_fail_closed():
     assert bb.side==1 and ss.side==-1
     assert 0<=bb.p_correct<=1 and 0<=ss.p_correct<=1
     assert p.action(x,0.2)==(0,'FAIL_CLOSED_RESEARCH_ONLY')
+
+
+def test_repaired_router_uses_ordered_feature_contract():
+    from repaired_features import FEATURE_VERSION,REPAIRED_FEATURE_COUNT
+    class SpyPolicy:
+        feature_version=FEATURE_VERSION
+        def __init__(self):self.seen=[]
+        def action(self,x,spread):
+            x=np.asarray(x)
+            assert x.shape==(REPAIRED_FEATURE_COUNT,)
+            assert np.isfinite(x).all()
+            self.seen.append(x.copy())
+            return 0,'SPY_WAIT'
+    p=SpyPolicy();rr=DualObservedRouter(p)
+    for i in range(12000):
+        mid=100+.02*np.sin(i*.1)+.005*np.sin(i*.37)
+        rr.on_quote(Quote(i*250,mid-.1,mid+.1))
+    assert p.seen
+    assert rr.count['SPY_WAIT']>0
+    assert rr.count['selected_research_actions']==0
