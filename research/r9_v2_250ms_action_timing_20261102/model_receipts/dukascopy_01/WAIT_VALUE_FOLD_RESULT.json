@@ -1,0 +1,91 @@
+{
+  "source": "dukascopy",
+  "month": "01",
+  "target": "wait_side_specific_same_quote_no_now_good_and_delayed_good_teacher_only",
+  "train_action_count": 2880268,
+  "train_class_counts": {
+    "wait_rescues": 193997,
+    "no_rescue": 2686271
+  },
+  "calibration_action_count": 1099710,
+  "check_action_count": 2722822,
+  "heldout_wait_rescue_base_rate": 0.11493810465759421,
+  "heldout_auc": 0.7081859715601646,
+  "calibration_thresholds": [
+    {
+      "bad_rejection_quantile": 0.5,
+      "threshold": 0.05400981109630536,
+      "calibration_precision": 0.13252384696151429,
+      "count": 583827,
+      "meets80": false
+    },
+    {
+      "bad_rejection_quantile": 0.75,
+      "threshold": 0.07484986670015885,
+      "calibration_precision": 0.17161017642228815,
+      "count": 305687,
+      "meets80": false
+    },
+    {
+      "bad_rejection_quantile": 0.9,
+      "threshold": 0.09292636524645545,
+      "calibration_precision": 0.20401716252534302,
+      "count": 127254,
+      "meets80": false
+    },
+    {
+      "bad_rejection_quantile": 0.95,
+      "threshold": 0.10460284961607798,
+      "calibration_precision": 0.22006283109523223,
+      "count": 64936,
+      "meets80": false
+    },
+    {
+      "bad_rejection_quantile": 0.99,
+      "threshold": 0.12550155572178176,
+      "calibration_precision": 0.2449314251639833,
+      "count": 13416,
+      "meets80": false
+    }
+  ],
+  "valid_threshold": false,
+  "heldout_diagnostic_selected": 544765,
+  "heldout_diagnostic_precision": 0.21849788440887355,
+  "heldout_selected_days": {
+    "20475": {
+      "selected": 28368,
+      "correct_wait_rescue": 6289
+    },
+    "20476": {
+      "selected": 29072,
+      "correct_wait_rescue": 6137
+    },
+    "20478": {
+      "selected": 410,
+      "correct_wait_rescue": 68
+    },
+    "20479": {
+      "selected": 86888,
+      "correct_wait_rescue": 20097
+    },
+    "20480": {
+      "selected": 74514,
+      "correct_wait_rescue": 16155
+    },
+    "20481": {
+      "selected": 101976,
+      "correct_wait_rescue": 23986
+    },
+    "20482": {
+      "selected": 110784,
+      "correct_wait_rescue": 24524
+    },
+    "20483": {
+      "selected": 112753,
+      "correct_wait_rescue": 21774
+    }
+  },
+  "heldout_80pct_daily_passes": 0,
+  "model_release": "REJECTED",
+  "scientific_boundaries": "Selected actions overlap and future delay action availability is oracle known; not actual on-policy trading. AUC measures ranking only."
+}
