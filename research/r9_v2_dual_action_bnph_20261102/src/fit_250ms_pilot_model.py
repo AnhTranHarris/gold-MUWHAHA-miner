@@ -15,7 +15,7 @@ def sha256(p:Path):
 
 def paths(root,day):
     root=Path(root);base=f'coinexx_01_{day}'
-    return root/f'{base}_250ms_v4_X.npy',root/f'{base}_250ms_universe.npz'
+    return root/f'{base}_250ms_v5_X.npy',root/f'{base}_250ms_universe.npz'
 
 def load_day(root,day):
     xp,tp=paths(root,day);X=np.load(xp,mmap_mode='r');d=np.load(tp)
