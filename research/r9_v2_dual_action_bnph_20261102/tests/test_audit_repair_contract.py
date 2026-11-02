@@ -10,7 +10,7 @@ import numpy as np
 import pytest
 from types import SimpleNamespace
 from decision import Prediction,OpportunityPrediction,DualActionPolicy,AsymmetricEntryPolicy,Limits,select_dual
-from repaired_features import CONTEXT_NAMES,REPAIRED_FEATURE_NAMES,LaggedQuoteGeometry,QuotePoint,compose_repaired_features
+from repaired_features import CONTEXT_NAMES,REPAIRED_FEATURE_NAMES,LaggedQuoteGeometry,QuotePoint,compose_repaired_features,FEATURE_VERSION,FRESH_WARMUP_MS
 from build_repaired_matrix import load_checkpoint
 from repaired_training_common import runtime_entry_mask
 
@@ -82,9 +82,10 @@ def test_audit_repaired_runtime_cannot_reach_legacy_specialist(monkeypatch):
             assert np.asarray(x).shape==(REPAIRED_FEATURE_COUNT,)
             return 0,'WAIT_TEST'
     rr=lr.DualObservedRouter(Policy())
-    q=SimpleNamespace(utc_ms=1_000_000,bid=100.,ask=100.2,spread=.2)
-    assert rr.on_quote(q)==0
-    assert rr.count['WAIT_TEST']==1
+    for ms in range(1_000_000,1_000_000+FRESH_WARMUP_MS+250,250):
+        q=SimpleNamespace(utc_ms=ms,bid=100.,ask=100.2,spread=.2)
+        assert rr.on_quote(q)==0
+    assert rr.count['WAIT_TEST']>=1
 
 
 def test_audit_offline_admission_mirrors_live_spread_gate():
@@ -93,3 +94,37 @@ def test_audit_offline_admission_mirrors_live_spread_gate():
     X[:,REPAIRED_FEATURE_NAMES.index('spread')]=[.20,1.80]
     m=runtime_entry_mask(np.array([.90,.90]),.70,X,limits)
     assert m.tolist()==[True,False]
+
+
+def test_audit_repaired_contract_has_hard_version_break_from_stale_v4():
+    from timing_transition_features import TIMING_FEATURE_VERSION
+    assert FEATURE_VERSION=='r9_v2_ordered_quote_grid_v5'
+    assert TIMING_FEATURE_VERSION=='r9_v2_wait_transition_v2'
+
+def test_audit_repaired_runtime_requires_fresh_5m_after_quote_gap(monkeypatch):
+    import live_dual_router as lr
+    class FakeClock:
+        def add(self,q):return True
+        def ready(self):return True
+        def features(self,q):return object()
+    def forbidden(*args,**kwargs):raise AssertionError('legacy specialist reached')
+    class FakePath:pass
+    monkeypatch.setattr(lr,'legacy_components',lambda root=None:(FakeClock,forbidden,FakePath))
+    class Policy:
+        feature_version=FEATURE_VERSION
+        def __init__(self):self.calls=0
+        def action(self,x,spread):self.calls+=1;return 0,'WAIT_GAP_TEST'
+    p=Policy();rr=lr.DualObservedRouter(p)
+    base=2_000_000
+    for ms in range(base,base+FRESH_WARMUP_MS+250,250):
+        rr.on_quote(SimpleNamespace(utc_ms=ms,bid=100.,ask=100.2,spread=.2))
+    before=p.calls
+    assert before>=1
+    gap_start=base+FRESH_WARMUP_MS+20_000
+    rr.on_quote(SimpleNamespace(utc_ms=gap_start,bid=100.1,ask=100.3,spread=.2))
+    assert p.calls==before
+    for ms in range(gap_start+250,gap_start+FRESH_WARMUP_MS,250):
+        rr.on_quote(SimpleNamespace(utc_ms=ms,bid=100.1,ask=100.3,spread=.2))
+    assert p.calls==before
+    rr.on_quote(SimpleNamespace(utc_ms=gap_start+FRESH_WARMUP_MS,bid=100.1,ask=100.3,spread=.2))
+    assert p.calls==before+1
