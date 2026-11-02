@@ -9,7 +9,7 @@ def test_delayed_quote_is_observed_before_enter():
     r=SequentialRouter()
     # Synthetic controlled ready clock: no trading can occur at future event
     r.clock.ready=lambda:True
-    r.clock.features=lambda x:{'w':{1000:{'disp':.1},5000:{'disp':.2,'range':.2,'boll':.1},45000:{'disp':.2},300000:{'vol':.2}},'h':{500:{'dir':.6},1000:{'dir':.6,'sp':.3},5000:{'dir':.6}},'geo':{},'spread':x.spread,'events':()}
+    r.clock.features=lambda x:{'w':{1000:{'disp':.1},5000:{'disp':.2,'range':.2,'boll':.1},45000:{'disp':.2},300000:{'vol':.2,'pos':.5,'eff':.5}},'h':{500:{'dir':.6},1000:{'dir':.6,'sp':.3},5000:{'dir':.6}},'geo':{},'spread':x.spread,'session':'off','events':()}
     r.on_quote(q(0,100,100.1))
     r.on_quote(q(250,100.01,100.11))
     assert r.count['pending_started']>=1 and r.active is None
@@ -39,11 +39,11 @@ def test_no_oracle_features_and_no_simultaneous_positions():
 def test_teacher_only_postexit_updates():
     from sequential_entry import OnlineThreeClass
     b=OnlineThreeClass()
-    assert b.predict((0,)*7) is None
-    b.observe((0,)*7,'NEUTRAL')
+    assert b.predict((0,)*b.k) is None
+    b.observe((0,)*b.k,'NEUTRAL')
     assert b.nclass==[0,0,1]
-    for _ in range(201):b.observe((2,)*7,'CORRECT')
-    p=b.predict((2,)*7)
+    for _ in range(201):b.observe((2,)*b.k,'CORRECT')
+    p=b.predict((2,)*b.k)
     assert p is not None and p[0]>p[1] and abs(sum(p)-1)<1e-9
 
 def test_monthly_floor_and_zero_day_does_not_pass():
@@ -55,3 +55,20 @@ def test_monthly_floor_and_zero_day_does_not_pass():
     assert q['passes']['volume'] and q['passes']['monthly30']
     assert not q['passes']['daily30']
     assert q['accept'] is False
+
+def test_higher_timeframe_missing_is_distinct_from_present():
+    from sequential_entry import OnlineThreeClass,Pending
+    from types import SimpleNamespace
+    class MockClock:
+        def __init__(self,geo,session='overlap'):self.geo=geo;self.session=session
+        def features(self,quote):
+            return {'w':{5000:{'disp':.1},45000:{'disp':.2},300000:{'pos':.5,'eff':.7,'vol':.15}},
+                    'h':{1000:{'dir':.2,'sp':.3},5000:{'dir':.2}},'geo':self.geo,'session':self.session}
+    p=Pending(t=0,side=1,evidence=.2,spread=.1,bid=100.,ask=100.1,lane='continuation')
+    observed=q(250,100.04,100.14)
+    b=OnlineThreeClass()
+    x=b.encode(1,p,observed,MockClock({15:None,60:None,240:None}))
+    y=b.encode(1,p,observed,MockClock({15:0.,60:0.,240:0.}))
+    assert x[15:18]==(0,0,0) and all(v!=0 for v in y[15:18])
+    assert x[18]==4 # original v2's true London–NY overlap code
+    assert len(x)==19
