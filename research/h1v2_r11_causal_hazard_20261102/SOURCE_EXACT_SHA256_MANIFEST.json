@@ -1,0 +1,95 @@
+{
+  "status": "R11_ADD_ONLY_SOURCE_LOCAL_UNIT_VALIDATED_NOT_FULLMONTH_QUALIFIED",
+  "date": "2026-11-02",
+  "source_branch": "carson/h1v2-r11-causal-hazard-entry-contract-20261102",
+  "exact_parent_sha": "a22218b14ed387ecc0dea9ba8d867cd33c4b4ee7",
+  "parent_branch": "carson/h1v2-r10-order-path-hazard-20261102",
+  "original_h1v2_sha": "edce573d9c53b743dc5de1b0d741c81370af52c1",
+  "original_r9v2_v5_sha": "ded3d0dff9d9112be52d9ddb29fbc7c6b9e2a1c0",
+  "drive_audit": "https://docs.google.com/document/d/1KhPl9eZqUJZM8vh7W8n93tUQWwbLXhMhcPZDXEN909E/edit",
+  "drive_recovery_log": "https://docs.google.com/document/d/1eGC-vxRDzu7FxQOY-3PPUfWzoVRrOZU5jaDozuuv0xI/edit",
+  "drive_hypothesis_register": "https://docs.google.com/document/d/1tv0t1bBDsnuwpGq79AzbL17kTU0xE2lmlJBiaFF7zdo/edit",
+  "drive_raw_transport": "https://drive.google.com/file/d/1bMkfL-K0s9rcNn1jnLSykS_SiWWwjzax/view",
+  "drive_additional_transport": "https://drive.google.com/file/d/1SWq7s_6aKtlzD17OVQHlPBAIbImh9rOz/view",
+  "raw_transport_sha256": "857a9fd408a2865e268eb0713f229022a23e3a463c76f9103478ceed14a85b25",
+  "verification": {
+    "local_command": "PYTHONPATH=src pytest -q tests",
+    "unit_tests_passed": 21,
+    "unit_tests_failed_final": 0,
+    "local_compileall": "PASS",
+    "event_graph_adversarial_range_tests": "15 randomized quote streams x 20 candidate quotes x 7 time windows, PASS",
+    "github_readback": "all twelve transported UTF-8 source/test files compared exact to Drive raw transport and identical",
+    "unexecuted": [
+      "four original Dukascopy full months",
+      "original raw tick/teacher independent rehash",
+      "archived R8 recovery",
+      "cross-feed Coinexx OOS",
+      "portfolio on-policy stress",
+      "MQL5 compile",
+      "calibration/deploy"
+    ]
+  },
+  "member_count": 12,
+  "members": {
+    "src/action_router.py": {
+      "sha256": "a9bbbab8b25d9ac89ef324cdcbdb813bbec829a65bcd84ae84333e704a0584db",
+      "bytes": 3320,
+      "transport_url": "https://drive.google.com/file/d/1bMkfL-K0s9rcNn1jnLSykS_SiWWwjzax/view"
+    },
+    "src/cache_contract.py": {
+      "sha256": "c6d8ab0dc768b67680c9c9ed5b3fd954d26c3de6ec43be8ef9b5e3e26c4642ad",
+      "bytes": 1917,
+      "transport_url": "https://drive.google.com/file/d/1bMkfL-K0s9rcNn1jnLSykS_SiWWwjzax/view"
+    },
+    "src/entry_contract.py": {
+      "sha256": "b720a609eb13bc025a706b8fe1601e4fa8d1df9fa9908eb808222f5ac96d34cb",
+      "bytes": 7884,
+      "transport_url": "https://drive.google.com/file/d/1bMkfL-K0s9rcNn1jnLSykS_SiWWwjzax/view"
+    },
+    "src/event_graph.py": {
+      "sha256": "85e5b69dd66e0e13388ca9d26f93525520f0761103961b08178f29b59c108bc6",
+      "bytes": 5457,
+      "transport_url": "https://drive.google.com/file/d/1bMkfL-K0s9rcNn1jnLSykS_SiWWwjzax/view"
+    },
+    "src/hazard_contract.py": {
+      "sha256": "3ad773f0a26796c9e5c71472d1548c9430358a52fbb4b901e66ccb4a25645761",
+      "bytes": 4821,
+      "transport_url": "https://drive.google.com/file/d/1bMkfL-K0s9rcNn1jnLSykS_SiWWwjzax/view"
+    },
+    "tests/test_action_router.py": {
+      "sha256": "532ba3157885a06a849a66bfb643fd769f1cff3ea7157822cfa8637cb35c9e26",
+      "bytes": 1350,
+      "transport_url": "https://drive.google.com/file/d/1bMkfL-K0s9rcNn1jnLSykS_SiWWwjzax/view"
+    },
+    "tests/test_cache_contract.py": {
+      "sha256": "43b0f4c05d1c9e09e2dc8b33d8dac7b30dea67d4f9bddb45586f8bca0b626c7e",
+      "bytes": 902,
+      "transport_url": "https://drive.google.com/file/d/1bMkfL-K0s9rcNn1jnLSykS_SiWWwjzax/view"
+    },
+    "tests/test_entry_contract.py": {
+      "sha256": "dee6ed37ddd1a2710816aef408cb30c5b4797bd96686b571249fc2c8b2d4692b",
+      "bytes": 1770,
+      "transport_url": "https://drive.google.com/file/d/1bMkfL-K0s9rcNn1jnLSykS_SiWWwjzax/view"
+    },
+    "tests/test_event_graph.py": {
+      "sha256": "bf0b205d5de5671b029088255e4f6f2ba0d56fea40ce755d7783f204bad1ebf6",
+      "bytes": 1258,
+      "transport_url": "https://drive.google.com/file/d/1bMkfL-K0s9rcNn1jnLSykS_SiWWwjzax/view"
+    },
+    "tests/test_hazard_contract.py": {
+      "sha256": "0239b3bb5fbe7d980f47bd5b3b04206934babe2cbd81ff2361b433b64d03f841",
+      "bytes": 1868,
+      "transport_url": "https://drive.google.com/file/d/1bMkfL-K0s9rcNn1jnLSykS_SiWWwjzax/view"
+    },
+    "src/competing_hazard_model.py": {
+      "sha256": "7baae09858c77025095dcd85dccc8a36aa3df8756988a32f6ad567cd9a0bc88f",
+      "bytes": 4362,
+      "transport_url": "https://drive.google.com/file/d/1SWq7s_6aKtlzD17OVQHlPBAIbImh9rOz/view"
+    },
+    "tests/test_competing_hazard_model.py": {
+      "sha256": "6a7a83ad3c67b4ab0049f3ecb70c732795b962f6ba089eee60cb4df432765dd8",
+      "bytes": 1682,
+      "transport_url": "https://drive.google.com/file/d/1SWq7s_6aKtlzD17OVQHlPBAIbImh9rOz/view"
+    }
+  }
+}
