@@ -15,10 +15,10 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install isolated research test requirements
-        run: python -m pip install --disable-pip-version-check numpy pytest
+        run: python -m pip install --disable-pip-version-check numpy pytest numba pandas
       - name: Compile R11 research source
         run: python -m compileall -q research/h1v2_r11_causal_entry_forensic_20261102/src
       - name: Run independent adversarial source contract tests
         env:
-          PYTHONPATH: research/h1v2_r11_causal_entry_forensic_20261102/src
-        run: python -m pytest -v research/h1v2_r11_causal_entry_forensic_20261102/tests
+          PYTHONPATH: research/h1v2_20261102/src:research/h1v2_r11_causal_entry_forensic_20261102/src
+        run: python -m pytest -v research/h1v2_20261102/tests/test_h1v2_teacher.py research/h1v2_r11_causal_entry_forensic_20261102/tests
