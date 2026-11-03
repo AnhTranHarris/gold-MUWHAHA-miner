@@ -1,0 +1,43 @@
+{
+  "research_class": "R12C_FROZEN_HINDSIGHT_SIGNAL_CROSS_SOURCE_EXECUTION_STRESS_NONDEPLOYABLE",
+  "baseline_script": "R12BN / R12D-Q original strict full30 future-label / observed first250 future-TP one-position teacher",
+  "raw_source_sha_verified": [
+    {
+      "source": "R9_REAL_MT5_TESTER",
+      "source_file": "R9_REAL_2026-02-02_ticks.csv.gz",
+      "source_sha256": "24e4b31935ead7b0eb039fe84dc8972c59500b362cac21721739f1b0c050b3d7",
+      "source_quote_rows_halo": 33268,
+      "qualified_first250_future_known": 1520,
+      "baseline_frozen_firstTP_signals": 705,
+      "source_median_spread_usd": 0.66
+    },
+    {
+      "source": "R9_SYNTH_MT5_TESTER",
+      "source_file": "R9_SYNTH_2026-02-02_ticks.csv.gz",
+      "source_sha256": "dcedb28f7453c80d2dec5ffe5d386dad1661134ba61765337155fbbaeb6213a2",
+      "source_quote_rows_halo": 32245,
+      "qualified_first250_future_known": 6247,
+      "baseline_frozen_firstTP_signals": 1853,
+      "source_median_spread_usd": 0.2
+    },
+    {
+      "source": "DUKASCOPY_RAW",
+      "source_file": "XAUUSD_DUKAS_2026_02_ticks.csv.gz",
+      "source_sha256": "ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d",
+      "source_quote_rows_halo": 49030,
+      "qualified_first250_future_known": 6,
+      "baseline_frozen_firstTP_signals": 6,
+      "source_median_spread_usd": 3.157
+    }
+  ],
+  "stress_grid_count": 54,
+  "source_hour": "2026-02-02T06:00:00Z",
+  "original_reference": 104,
+  "scenario_rows_sha256": "c71abd516e0ac14dd592b57d44d4db42b808e42efc8cf15b4ab162732e9dd924",
+  "no_in_sample_classification_accuracy_claim": true,
+  "no_prospective_entry_policy": true,
+  "no_broker_fill_execution_guarantee": true,
+  "cannot_claim_account_economic_pnl_on_failed_trade": true,
+  "original_research_source_readonly": true,
+  "lossless_signal_traces": "individually source SHA manifest in followup"
+}
