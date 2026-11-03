@@ -1,0 +1,4 @@
+R12C local science execution, 2026-11-03 UTC
+F01 - source exact tests first run: 9 PASSED / 1 FAILED because test fixture final signal at +31s lacked full +30s source horizon. Expected output 0, actual -3 CENSORED, which is correct fail-closed source behavior. FIX: increase synthetic fixture to 80s for only that test. Rerun 10 PASSED.
+F02 - human code review found original initial draft of horizon complete check compared first quote beyond 30s to entry rather than last quote inside 30s; potential false censor. FIX in new R12C source only: retain last_in_window, check gap crossing original S1 exact <=15s requirement, and allow quote at exactly 30s as complete. Rerun exact zero-lag 3-source parity 705,1853,6 successful and 54 stress rows.
+Historic sources/labels/R9 EA and all earlier R12 unchanged. Not a prospective live model. Keep this failure record.
