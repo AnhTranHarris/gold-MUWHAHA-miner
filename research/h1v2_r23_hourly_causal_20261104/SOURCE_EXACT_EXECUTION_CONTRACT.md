@@ -1,0 +1,44 @@
+# R23H24: immutable-source monthly BUY/SELL/WAIT initial survivability R&D
+
+Classification: IN-SAMPLE / FUTURE-PRIVILEGED ORACLE ALSO REPORTED / NOT A BROKER EXECUTION REPLAY / NO EA MODIFICATION.
+Generated November 4, 2026 (America/Chicago). Do not delete or alter the original H1V2 R0-R10, R11-R23, R24-S7 code or failed experiments.
+
+## Raw source hierarchy and immutable identities
+
+Original eight source gzip quote files are the upstream inputs; they must be downloaded from the owner's two existing Google Drive source folders and verified before any regeneration. January/February/June/July 2026 Dukascopy SHA-256: `d2ebb9a8c19caad02c5d95d7c6504868722c286e1187d1dbad18098d8c5ec5c5`, `ed3b3545c990c88d78519594c17c8915b0f679adcb0a94920ba7524f1f6d5c5d`, `34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2`, `e171e8c2fb59f3f4147a6f845eb68e664fa9c0f4815caa33acdbb42cc2f768b7`. Original matching Coinexx-linked exported MT5 quote source SHA-256: `1307a75df5d635678de7691908600090a552f38543e0512187dcd7b37fbc66b8`, `5de772aab4d15ebf18aa48850e847c98e2bcb639064790bbed9d87a598c3bf05`, `3033ccb257d067aecc123f3791d9dddc5c95841b9bba167ff1ca0cf1589dc2b4`, `d9d47d40abb33935414edfb5c11f0c518d8c9cc27221da182dab0bc49b0b708d`. All eight hashes have been rechecked against the actual mounted gzip bytes during this run.
+
+The original R9 SYNTH exact UTC month counts are 27,980 / 33,523 / 31,758 / 24,324. They are **evaluation reference only**, never predictor features. The complete 120 days, 2,880 original UTC hours and 11,520 quarter-hour bins (7,521 original R9 active quarters; 1,917 active hours per independent quote feed) must be present, including zero-reference and zero-decision bins. The same R9 SYNTH counts must not be multiplied by two when studying two quote feeds.
+
+## Reproduction prerequisites and entry/exit semantics
+
+Requires Python 3.11+ or compatible, numpy, numba, lightgbm, pandas, pytest, adequate disk and 5+ GB RAM (one month at a time); original preserved `r24_firstpass_engine.py` and related R24 preparation code and the original prepared 1-second signal/label arrays per source month; original actual raw quotes and R9 UTC calendar; a separate full-15/30/60s HELD source label constructed by `r23h24_hold_labels.py`; `R23H24_WORKSPACE` set to the directory containing `r24_source_archive`, `prepared`, `held`, `models`, `score_days`, `evaluated`, and `oracle_held`. Scripts do not automatically download Drive files and do not create synthetic quote rows.
+
+Run in strict independent source-month stages, never monolithic eight-month RAM loading:
+
+1. Reuse the original SHA-verified frozen R24 `r24_prepare_month.py` 1-second as-of signal/fill/label preparation (source original; not reauthored). Verify each atomic receipt and exact original source tick/quoted ordinal identity.
+2. Reuse full-H min adverse hold labels using `python -m r23h24_hold_labels --source DUKASCOPY_RAW --month 01` only when source held arrays absent or failed integrity; never overwrite a verified receipt.
+3. Fit separate month-specific two-feed pooled in-sample three-head LightGBM models with `python -m r23h24_competing_hazard --month 01 --mode fit --limit 25000` only if absent; verify frozen model SHA. Model heads are four-cause competing hazards by interval, held-H binary probability and WAIT10. The month learner uses BOTH sources but DOES NOT yet include an explicit broker ID/interaction feature or independently calibrated per-broker heads; a broker-conditional learner is next gate, not a completed property of this fit.
+4. Score one UTC day at a time: `python -m r23h24_score_days --source DUKASCOPY_RAW --month 01 --day-from 1 --day-to 1`; continue each day and both sources. This produces per-day full sampled model predictions and exact NPZ SHA receipts. Do not rescore already frozen days unless a declared new model SHA changes.
+5. Replay one complete month with actual previously observed +100ms first quote fills and no position overlap: `python -m r23h24_full_replay --source DUKASCOPY_RAW --month 01`; repeat each feed/month and retain all STOP/TARGET/HELD/CENSORED/UNFILLED outcomes and all day/hour/quarter calendars per policy. This simulator is *not* an account-dollar backtest or real broker flat-on-gap proof. Source gap/censor handling contains an explicitly optimistic 300s re-acquisition and unknown broker position; a stricter fail-closed negative control must be retained separately.
+6. Run pure future-informed **additional** survivability ceiling `python -m r23h24_held_hindsight_oracle --source DUKASCOPY_RAW --month 01` (repeat for each source/month). It is separated from causal modeling: BUY/SELL side, favorable-first and full-H no-adverse labels are selected with future knowledge, eligible quote intervals are scheduled earliest observed exit, one-position global nonoverlap, and a mathematically independent per-quarter/hour/day upper count is recorded. This is a **capacity ceiling under exact changed contract**, not a trained profitable strategy. The future-first favorable/stop/timeout 15/30/60 horizon is a distinct contract from original R23 first favorable TP-triggered exit and original R9 30s trailing exit.
+7. Run the immutable source and bucket verifiers in `scripts/` (available in accompanying Drive ZIP). Compare every original reference and output SHA and register any failure, do not accept empty or partial months as successes.
+
+Example environment: `export R23H24_WORKSPACE=/mnt/data/r23h24_workspace; export PYTHONPATH=/path/to/this/repo/research/h1v2_r23_hourly_causal_20261104/src; pytest -q /path/to/this/repo/research/h1v2_r23_hourly_causal_20261104/tests`.
+
+## Prior experimental result and negative boundaries
+
+Source exact 240 daily score shards and 64 month-source-policy cases were locally verified: 560 input/model/daily-shard controls plus 1,216 output-calendar controls, 0 failed. Original SHA fingerprints, all 64 per-month numeric records, all source quote ordinals, independent H15/H30/H60 + mixed future-held oracle outcomes, and full per-day/hour/quarter series are contained in the **four separate month-specific Drive ZIPs** delivered in the connected MT5_EXPAND research folder. Each archive contains a complete per-file SHA manifest and CRC-verified content. Each native Google Doc or written narrative is supplementary, not a substitution for those lossless CSV/NPY/JSON members.
+
+The initial 64 causal experiments DO NOT attain 80% correct-and-full-R9-volume in any active hour under the frozen tests; zero-trade policies fail. Later explicitly broker-conditioned action modeling and novel multiscale quote-ordinal hazard representation are research tasks, NOT already solved. Training all four months makes none of these results untouched OOS. A human may use hindsight future teacher labels to optimize this highly in-sample laboratory, but MUST NOT present teacher selected winners as current-as-of predictions. Likewise month/day/hour/quarter winner selection after seeing future is a second future privilege, not a coherent live schedule.
+
+## Clock/news operational evidence firebreak
+
+UTC `datetime` and original IANA-local session labels can be computed from decision timestamp without future price. They describe calendar time, **not verified broker symbol trading permission**, and they are not proof of prop-firm authorizations or holidays. R24 preserved nontrading MQL5 exporter at `r24_source_archive/calendar/R24_ExportMT5_HistoricalEconomicsAndBrokerSessions.mq5` uses `CalendarValueHistory` and `SymbolInfoSessionTrade` and needs an owner-run authenticated online MT5 terminal. The calendar uses the trade server timezone, not automatically UTC (MetaQuotes MQL5 docs). Historical UTC offset map, actual market openings, medium/high event scheduled time as known before announcement, and forex factory historical timezone+revision vintage are UNKNOWN until exporter/provider evidence, with late-released actual/forecast/previous prohibited as pre-release predictor features. A current-time export of January/February/June/July retrospectively is not proof of as-of event publication history. Missing calendar events mean `UNKNOWN`, not no news, no permission or 0 events.
+
+## Recovery checkpoints
+
+Canonical all-run append-only R23H Drive log (not replaced by this document): https://docs.google.com/document/d/1Ii_OxSpgQm4aWwcL1fSPpwbH-gdvtl0Ly18bxUM2Cqc/edit
+Original complete R23 experimental report https://docs.google.com/document/d/1TBfwf2faJlb9YT1HXUxhQImcIU0ddLF1g266ohXmCt8/edit
+Original frozen R24 source/model ZIP https://drive.google.com/file/d/1noemVZHdmQYNxBnW7N2patrkb5HO760C/view
+Original R23 four-month results remain preserved separately under https://drive.google.com/drive/folders/179ImG0v_5Klp9aEr-pl-7gNFXkEOPebQ
+Only after immutable code/test/replay and provider clock/permissions validation could a research result move toward demo testing; this source package does not do so.
