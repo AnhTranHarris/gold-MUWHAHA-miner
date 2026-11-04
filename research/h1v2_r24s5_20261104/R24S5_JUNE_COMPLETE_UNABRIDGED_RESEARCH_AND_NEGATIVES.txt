@@ -1,0 +1,2249 @@
+# GOLD MUWHAHAHA MINER / H1V2 R24S5 SOURCE-EXACT JUNE REPLAY — COMPLETE ORIGINAL RESEARCH RECORD
+
+Date 2026-11-04 America/Chicago. Strict RESEARCH ONLY. Not a live, profitable, or blind out-of-sample strategy.
+
+## Source identities, archive continuation, no-overwrite guarantees
+January/February source R24S4 results and all historic R11–R24/R23 research remain independently authoritative. New June research is an additive run on the R24S5 isolated branch, from unchanged R24S4 five-cause/WAIT classifier architecture. Raw DUKASCOPY_RAW June SHA 34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2; 8201406 actual quote observations; 1577372 causal-prefix decision rows; 1480274 +100ms first observed quote eligible fill candidates; 2880 complete original UTC quarters, 720 UTC hours, 30 UTC days, 1954 active quarters, 497 active hours, R9 SYNTH exact June source volume 31758. No R9 volume/after-the-fact label enters prediction features. 15/30/60sec independent STOP,TARGET,TIMEOUT,CENSORED,UNFILLED; prefix-only 47+17 features, source-specific and initial WAIT10 models. History exposed deliberately in-sample.
+
+All six intact machine-evidence ZIPs and the exhaustive SHA256 member manifest are in https://drive.google.com/drive/folders/1VnduMD4eM4SBUU7VQrGHXm_zphm-OY1p . The four 15-case ZIP bundles collectively contain EACH of the 60 case-specific .npz lossless selected quote ordinals (with correct/wrong/timeout/censored), all 2880 quarter/720 hour/30 day original periods per policy, plus each original atomic receipt. Full calendar aggregate ZIP includes 172800 quarter rows, 43200 hour rows, 1800 day rows, 60 original month-case rows; no missing quarter/day/hour or only-positive sample. The source/models ZIP retains trained five-cause and WAIT10 weights, 120k original sampled training indices, all 49 inference block receipts and 4 original R24S5 add-only scripts. The full ~189MB float32 probability .npy is not in those core ZIPs and must be recomputed from exact hashes/models/source or separately rehydrated; do not treat source model reproducibility as verified remote probability byte identity until full recompute SHA checks pass.
+
+## Empirical classification and stopping rule
+Best source-policy in the pre-registered 60 policy sweep, chosen by maximum JOINT 80%-accuracy+R9 capacity then source volume: P0.06_STOP0.99_WAIT0.00_H0.00, 341684 model-selected fills, 67252 TARGET-first, 273087 STOP-first, 1292 TIMEOUT and 53 CENSORED. TARGET-first completed fraction=0.1968556717628084, initial no-STOP fraction=0.20063752996654285. 1864 /1954 active quarters and 485/497 active hours exceed original R9 SYNTH count if considering TARGET successes only, but ZERO UTC quarters, hours or days qualify at JOINT >=80% conditional correct target rate. These results do not meet user's correctness objective, despite historical R23 100%-correct hindsight oracle over different future-informed labels. Negative result preserved rather than silently changing accuracy threshold. Comparison from a heavily optimized in-sample dataset cannot be called generalization.
+
+## Original failure and source guard register
+F01 one monolithic fit+full-model-score job exceeded execution window; trained weights and indices had been written, but incomplete probability arrays not promoted. New model+source+feature-SHA-bound 49×32768-or-remainder atomic blocks completed and independently byte-checked; full probability SHA ad2036fd9f21e00cfde24636e8fc6703acf6fdaaa18003810985184782523d87 and WAIT score SHA 53cc06a30c6c9a5779a4ed73ea604b27bef227741b8f020bb54828bb9447f9fd. F02 verifier initially matched the 60 individual quote-calendar CSV plus the combined calendar, counting 61. Fixed a new isolated source-file glob selecting exact 60 per-policy files; full re-run passed 1680 checks / zero failures. No source research rows erased.
+
+## Clock/session and medium/high news source authenticity
+UTC quarter/hour/day original references are full SOURCE EXACT and original R9 SYNTH UTC, not divided-by-four estimates. Session tagging uses IANA historical clock rules; eligibility to trade during prop-firm operating hours is UNKNOWN without owner/broker rule export. Native MetaQuotes CalendarValueHistory runs on trade-server time in a connected terminal, not in MT5 Strategy Tester; original R24 nontrading calendar exporter is written but NOT compiled/executed. Verified historical 2026 medium/high economic release schedule including publication vintage has NOT been supplied. ForexFactory historical page data are not accepted as complete actual point-in-time without independently verified timezone, release timestamp and archive provenance. Therefore news states are explicitly UNKNOWN and no news-conditioned profitability / entry advantage is claimed.
+
+## Machine-readable full case rows (NOT A SUMMARY)
+case,source,month,model_probability_threshold,stop_probability_cap,WAIT_penalty,horizon_penalty,r9_SYNTH_original_month_count,source_month_fills,TARGET_first_correct,STOP_first_wrong,TIMEOUT,CENSORED_unknown,TARGET_first_fraction,initial_noSTOP_first_fraction,R9_active_hours,R9_active_15min,quarters_target_count_met,quarters_joint80_target_and_quota,hours_target_count_met,hours_joint80_target_and_quota,days_joint80_target_and_quota,in_sample_not_blind_OOS,not_deployable
+P0.06_STOP0.65_WAIT0.00_H0.00,DUKASCOPY_RAW,06,0.06,0.65,0.0,0.0,31758,58161,7730,42203,8175,53,0.13302815447098507,0.27371446272458183,497,1954,307,0,56,0,0,True,True
+P0.06_STOP0.65_WAIT0.00_H0.07,DUKASCOPY_RAW,06,0.06,0.65,0.0,0.07,31758,55460,6455,38649,10351,5,0.11640068524028492,0.30305653232350555,497,1954,192,0,31,0,0,True,True
+P0.06_STOP0.65_WAIT0.15_H0.00,DUKASCOPY_RAW,06,0.06,0.65,0.15,0.0,31758,37416,6251,27800,3329,36,0.16722846441947564,0.256286784376672,497,1954,230,0,45,0,0,True,True
+P0.06_STOP0.65_WAIT0.15_H0.07,DUKASCOPY_RAW,06,0.06,0.65,0.15,0.07,31758,22821,3555,15974,3292,0,0.15577757328776126,0.3000306735024758,497,1954,68,0,8,0,0,True,True
+P0.06_STOP0.85_WAIT0.00_H0.00,DUKASCOPY_RAW,06,0.06,0.85,0.0,0.0,31758,341592,67182,272919,1438,53,0.19670374393553883,0.20091409765795415,497,1954,1863,0,485,0,0,True,True
+P0.06_STOP0.85_WAIT0.00_H0.07,DUKASCOPY_RAW,06,0.06,0.85,0.0,0.07,31758,361211,60445,277291,23467,8,0.1673435713435381,0.23231257769176888,497,1954,1610,0,426,0,0,True,True
+P0.06_STOP0.85_WAIT0.15_H0.00,DUKASCOPY_RAW,06,0.06,0.85,0.15,0.0,31758,338252,66782,270143,1286,41,0.19745661731877437,0.2012589773839408,497,1954,1852,0,486,0,0,True,True
+P0.06_STOP0.85_WAIT0.15_H0.07,DUKASCOPY_RAW,06,0.06,0.85,0.15,0.07,31758,295809,54126,228818,12864,1,0.1829767957594115,0.2264644634357421,497,1954,1236,0,315,0,0,True,True
+P0.06_STOP0.99_WAIT0.00_H0.00,DUKASCOPY_RAW,06,0.06,0.99,0.0,0.0,31758,341684,67252,273087,1292,53,0.1968556717628084,0.20063752996654285,497,1954,1864,0,485,0,0,True,True
+P0.06_STOP0.99_WAIT0.00_H0.07,DUKASCOPY_RAW,06,0.06,0.99,0.0,0.07,31758,361606,60483,277630,23485,8,0.16726585877134276,0.23221367374819551,497,1954,1611,0,426,0,0,True,True
+P0.06_STOP0.99_WAIT0.15_H0.00,DUKASCOPY_RAW,06,0.06,0.99,0.15,0.0,31758,338441,66819,270351,1232,39,0.19745450677005455,0.20109514719180147,497,1954,1854,0,486,0,0,True,True
+P0.06_STOP0.99_WAIT0.15_H0.07,DUKASCOPY_RAW,06,0.06,0.99,0.15,0.07,31758,295809,54126,228818,12864,1,0.1829767957594115,0.2264644634357421,497,1954,1236,0,315,0,0,True,True
+P0.12_STOP0.65_WAIT0.00_H0.00,DUKASCOPY_RAW,06,0.12,0.65,0.0,0.0,31758,30062,5506,22448,2093,15,0.18324624754551203,0.2529037840716211,497,1954,177,0,33,0,0,True,True
+P0.12_STOP0.65_WAIT0.00_H0.07,DUKASCOPY_RAW,06,0.12,0.65,0.0,0.07,31758,22405,3916,16104,2384,1,0.17479021603285128,0.2811997857525442,497,1954,84,0,10,0,0,True,True
+P0.12_STOP0.65_WAIT0.15_H0.00,DUKASCOPY_RAW,06,0.12,0.65,0.15,0.0,31758,29711,5450,22191,2055,15,0.18352640086206898,0.2527276400862069,497,1954,172,0,33,0,0,True,True
+P0.12_STOP0.65_WAIT0.15_H0.07,DUKASCOPY_RAW,06,0.12,0.65,0.15,0.07,31758,16585,2866,11691,2028,0,0.1728067530901417,0.29508592101296355,497,1954,47,0,7,0,0,True,True
+P0.12_STOP0.85_WAIT0.00_H0.00,DUKASCOPY_RAW,06,0.12,0.85,0.0,0.0,31758,335846,66617,268225,987,17,0.19836583499340438,0.2013048307323072,497,1954,1823,0,476,0,0,True,True
+P0.12_STOP0.85_WAIT0.00_H0.07,DUKASCOPY_RAW,06,0.12,0.85,0.0,0.07,31758,326855,59900,254871,12082,2,0.1832628123345969,0.22022744169397251,497,1954,1529,0,405,0,0,True,True
+P0.12_STOP0.85_WAIT0.15_H0.00,DUKASCOPY_RAW,06,0.12,0.85,0.15,0.0,31758,334030,66356,266689,968,17,0.198662926293288,0.2015610170861613,497,1954,1822,0,477,0,0,True,True
+P0.12_STOP0.85_WAIT0.15_H0.07,DUKASCOPY_RAW,06,0.12,0.85,0.15,0.07,31758,285804,53132,221768,10903,1,0.1859042767220778,0.22405293156474915,497,1954,1186,0,302,0,0,True,True
+P0.12_STOP0.99_WAIT0.00_H0.00,DUKASCOPY_RAW,06,0.12,0.99,0.0,0.0,31758,336513,66702,268845,950,16,0.19822464984828989,0.20104785480999832,497,1954,1826,0,476,0,0,True,True
+P0.12_STOP0.99_WAIT0.00_H0.07,DUKASCOPY_RAW,06,0.12,0.99,0.0,0.07,31758,327082,59921,255072,12087,2,0.1831998287880641,0.22015409074232603,497,1954,1529,0,405,0,0,True,True
+P0.12_STOP0.99_WAIT0.15_H0.00,DUKASCOPY_RAW,06,0.12,0.99,0.15,0.0,31758,334382,66380,267039,947,16,0.19852496964404276,0.2013571954086241,497,1954,1823,0,477,0,0,True,True
+P0.12_STOP0.99_WAIT0.15_H0.07,DUKASCOPY_RAW,06,0.12,0.99,0.15,0.07,31758,285804,53132,221768,10903,1,0.1859042767220778,0.22405293156474915,497,1954,1186,0,302,0,0,True,True
+P0.20_STOP0.65_WAIT0.00_H0.00,DUKASCOPY_RAW,06,0.2,0.65,0.0,0.0,31758,3300,883,2371,46,0,0.2675757575757576,0.2815151515151515,497,1954,16,0,3,0,0,True,True
+P0.20_STOP0.65_WAIT0.00_H0.07,DUKASCOPY_RAW,06,0.2,0.65,0.0,0.07,31758,3044,805,2153,86,0,0.2644546649145861,0.29270696452036793,497,1954,12,0,3,0,0,True,True
+P0.20_STOP0.65_WAIT0.15_H0.00,DUKASCOPY_RAW,06,0.2,0.65,0.15,0.0,31758,3300,883,2371,46,0,0.2675757575757576,0.2815151515151515,497,1954,16,0,3,0,0,True,True
+P0.20_STOP0.65_WAIT0.15_H0.07,DUKASCOPY_RAW,06,0.2,0.65,0.15,0.07,31758,2583,670,1828,85,0,0.259388308168796,0.29229578010065815,497,1954,10,0,2,0,0,True,True
+P0.20_STOP0.85_WAIT0.00_H0.00,DUKASCOPY_RAW,06,0.2,0.85,0.0,0.0,31758,130778,29641,100996,141,0,0.22665127162060897,0.2277294346143847,497,1954,621,0,152,0,0,True,True
+P0.20_STOP0.85_WAIT0.00_H0.07,DUKASCOPY_RAW,06,0.2,0.85,0.0,0.07,31758,125452,28209,96333,910,0,0.22485891018078627,0.23211268054714154,497,1954,570,0,140,0,0,True,True
+P0.20_STOP0.85_WAIT0.15_H0.00,DUKASCOPY_RAW,06,0.2,0.85,0.15,0.0,31758,130778,29641,100996,141,0,0.22665127162060897,0.2277294346143847,497,1954,621,0,152,0,0,True,True
+P0.20_STOP0.85_WAIT0.15_H0.07,DUKASCOPY_RAW,06,0.2,0.85,0.15,0.07,31758,105216,24035,80253,928,0,0.2284348388077859,0.2372547901459854,497,1954,458,0,113,0,0,True,True
+P0.20_STOP0.99_WAIT0.00_H0.00,DUKASCOPY_RAW,06,0.2,0.99,0.0,0.0,31758,130778,29641,100996,141,0,0.22665127162060897,0.2277294346143847,497,1954,621,0,152,0,0,True,True
+P0.20_STOP0.99_WAIT0.00_H0.07,DUKASCOPY_RAW,06,0.2,0.99,0.0,0.07,31758,125452,28209,96333,910,0,0.22485891018078627,0.23211268054714154,497,1954,570,0,140,0,0,True,True
+P0.20_STOP0.99_WAIT0.15_H0.00,DUKASCOPY_RAW,06,0.2,0.99,0.15,0.0,31758,130778,29641,100996,141,0,0.22665127162060897,0.2277294346143847,497,1954,621,0,152,0,0,True,True
+P0.20_STOP0.99_WAIT0.15_H0.07,DUKASCOPY_RAW,06,0.2,0.99,0.15,0.07,31758,105216,24035,80253,928,0,0.2284348388077859,0.2372547901459854,497,1954,458,0,113,0,0,True,True
+P0.35_STOP0.65_WAIT0.00_H0.00,DUKASCOPY_RAW,06,0.35,0.65,0.0,0.0,31758,8,2,6,0,0,0.25,0.25,497,1954,0,0,0,0,0,True,True
+P0.35_STOP0.65_WAIT0.00_H0.07,DUKASCOPY_RAW,06,0.35,0.65,0.0,0.07,31758,8,2,6,0,0,0.25,0.25,497,1954,0,0,0,0,0,True,True
+P0.35_STOP0.65_WAIT0.15_H0.00,DUKASCOPY_RAW,06,0.35,0.65,0.15,0.0,31758,8,2,6,0,0,0.25,0.25,497,1954,0,0,0,0,0,True,True
+P0.35_STOP0.65_WAIT0.15_H0.07,DUKASCOPY_RAW,06,0.35,0.65,0.15,0.07,31758,8,2,6,0,0,0.25,0.25,497,1954,0,0,0,0,0,True,True
+P0.35_STOP0.85_WAIT0.00_H0.00,DUKASCOPY_RAW,06,0.35,0.85,0.0,0.0,31758,8,2,6,0,0,0.25,0.25,497,1954,0,0,0,0,0,True,True
+P0.35_STOP0.85_WAIT0.00_H0.07,DUKASCOPY_RAW,06,0.35,0.85,0.0,0.07,31758,8,2,6,0,0,0.25,0.25,497,1954,0,0,0,0,0,True,True
+P0.35_STOP0.85_WAIT0.15_H0.00,DUKASCOPY_RAW,06,0.35,0.85,0.15,0.0,31758,8,2,6,0,0,0.25,0.25,497,1954,0,0,0,0,0,True,True
+P0.35_STOP0.85_WAIT0.15_H0.07,DUKASCOPY_RAW,06,0.35,0.85,0.15,0.07,31758,8,2,6,0,0,0.25,0.25,497,1954,0,0,0,0,0,True,True
+P0.35_STOP0.99_WAIT0.00_H0.00,DUKASCOPY_RAW,06,0.35,0.99,0.0,0.0,31758,8,2,6,0,0,0.25,0.25,497,1954,0,0,0,0,0,True,True
+P0.35_STOP0.99_WAIT0.00_H0.07,DUKASCOPY_RAW,06,0.35,0.99,0.0,0.07,31758,8,2,6,0,0,0.25,0.25,497,1954,0,0,0,0,0,True,True
+P0.35_STOP0.99_WAIT0.15_H0.00,DUKASCOPY_RAW,06,0.35,0.99,0.15,0.0,31758,8,2,6,0,0,0.25,0.25,497,1954,0,0,0,0,0,True,True
+P0.35_STOP0.99_WAIT0.15_H0.07,DUKASCOPY_RAW,06,0.35,0.99,0.15,0.07,31758,8,2,6,0,0,0.25,0.25,497,1954,0,0,0,0,0,True,True
+P0.50_STOP0.65_WAIT0.00_H0.00,DUKASCOPY_RAW,06,0.5,0.65,0.0,0.0,31758,0,0,0,0,0,,,497,1954,0,0,0,0,0,True,True
+P0.50_STOP0.65_WAIT0.00_H0.07,DUKASCOPY_RAW,06,0.5,0.65,0.0,0.07,31758,0,0,0,0,0,,,497,1954,0,0,0,0,0,True,True
+P0.50_STOP0.65_WAIT0.15_H0.00,DUKASCOPY_RAW,06,0.5,0.65,0.15,0.0,31758,0,0,0,0,0,,,497,1954,0,0,0,0,0,True,True
+P0.50_STOP0.65_WAIT0.15_H0.07,DUKASCOPY_RAW,06,0.5,0.65,0.15,0.07,31758,0,0,0,0,0,,,497,1954,0,0,0,0,0,True,True
+P0.50_STOP0.85_WAIT0.00_H0.00,DUKASCOPY_RAW,06,0.5,0.85,0.0,0.0,31758,0,0,0,0,0,,,497,1954,0,0,0,0,0,True,True
+P0.50_STOP0.85_WAIT0.00_H0.07,DUKASCOPY_RAW,06,0.5,0.85,0.0,0.07,31758,0,0,0,0,0,,,497,1954,0,0,0,0,0,True,True
+P0.50_STOP0.85_WAIT0.15_H0.00,DUKASCOPY_RAW,06,0.5,0.85,0.15,0.0,31758,0,0,0,0,0,,,497,1954,0,0,0,0,0,True,True
+P0.50_STOP0.85_WAIT0.15_H0.07,DUKASCOPY_RAW,06,0.5,0.85,0.15,0.07,31758,0,0,0,0,0,,,497,1954,0,0,0,0,0,True,True
+P0.50_STOP0.99_WAIT0.00_H0.00,DUKASCOPY_RAW,06,0.5,0.99,0.0,0.0,31758,0,0,0,0,0,,,497,1954,0,0,0,0,0,True,True
+P0.50_STOP0.99_WAIT0.00_H0.07,DUKASCOPY_RAW,06,0.5,0.99,0.0,0.07,31758,0,0,0,0,0,,,497,1954,0,0,0,0,0,True,True
+P0.50_STOP0.99_WAIT0.15_H0.00,DUKASCOPY_RAW,06,0.5,0.99,0.15,0.0,31758,0,0,0,0,0,,,497,1954,0,0,0,0,0,True,True
+P0.50_STOP0.99_WAIT0.15_H0.07,DUKASCOPY_RAW,06,0.5,0.99,0.15,0.07,31758,0,0,0,0,0,,,497,1954,0,0,0,0,0,True,True
+
+
+## Complete independently verified replay reconciliation receipt
+{
+  "status": "PASS",
+  "independently_reaggregated_original_source_and_model_selected_60_cases": 60,
+  "source_raw_pin": "34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2",
+  "source_month_ref": 31758,
+  "checks": 1680,
+  "failed": 0,
+  "failures": [],
+  "full_day_hour_quarter_rows": {
+    "days": 1800,
+    "hours": 43200,
+    "quarters": 172800
+  },
+  "best_lexicographic_case": {
+    "case": "P0.06_STOP0.99_WAIT0.00_H0.00",
+    "source": "DUKASCOPY_RAW",
+    "month": "06",
+    "model_probability_threshold": 0.06,
+    "stop_probability_cap": 0.99,
+    "WAIT_penalty": 0.0,
+    "horizon_penalty": 0.0,
+    "r9_SYNTH_original_month_count": 31758,
+    "source_month_fills": 341684,
+    "TARGET_first_correct": 67252,
+    "STOP_first_wrong": 273087,
+    "TIMEOUT": 1292,
+    "CENSORED_unknown": 53,
+    "TARGET_first_fraction": 0.1968556717628084,
+    "initial_noSTOP_first_fraction": 0.20063752996654285,
+    "R9_active_hours": 497,
+    "R9_active_15min": 1954,
+    "quarters_target_count_met": 1864,
+    "quarters_joint80_target_and_quota": 0,
+    "hours_target_count_met": 485,
+    "hours_joint80_target_and_quota": 0,
+    "days_joint80_target_and_quota": 0,
+    "in_sample_not_blind_OOS": true,
+    "not_deployable": true
+  },
+  "all_cases": [
+    {
+      "case": "P0.06_STOP0.65_WAIT0.00_H0.00",
+      "selected_positions": 58161,
+      "STOP_first": 42203,
+      "TARGET_first": 7730,
+      "TIMEOUT": 8175,
+      "CENSORED": 53,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.06_STOP0.65_WAIT0.00_H0.07",
+      "selected_positions": 55460,
+      "STOP_first": 38649,
+      "TARGET_first": 6455,
+      "TIMEOUT": 10351,
+      "CENSORED": 5,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.06_STOP0.65_WAIT0.15_H0.00",
+      "selected_positions": 37416,
+      "STOP_first": 27800,
+      "TARGET_first": 6251,
+      "TIMEOUT": 3329,
+      "CENSORED": 36,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.06_STOP0.65_WAIT0.15_H0.07",
+      "selected_positions": 22821,
+      "STOP_first": 15974,
+      "TARGET_first": 3555,
+      "TIMEOUT": 3292,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.06_STOP0.85_WAIT0.00_H0.00",
+      "selected_positions": 341592,
+      "STOP_first": 272919,
+      "TARGET_first": 67182,
+      "TIMEOUT": 1438,
+      "CENSORED": 53,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.06_STOP0.85_WAIT0.00_H0.07",
+      "selected_positions": 361211,
+      "STOP_first": 277291,
+      "TARGET_first": 60445,
+      "TIMEOUT": 23467,
+      "CENSORED": 8,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.06_STOP0.85_WAIT0.15_H0.00",
+      "selected_positions": 338252,
+      "STOP_first": 270143,
+      "TARGET_first": 66782,
+      "TIMEOUT": 1286,
+      "CENSORED": 41,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.06_STOP0.85_WAIT0.15_H0.07",
+      "selected_positions": 295809,
+      "STOP_first": 228818,
+      "TARGET_first": 54126,
+      "TIMEOUT": 12864,
+      "CENSORED": 1,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.06_STOP0.99_WAIT0.00_H0.00",
+      "selected_positions": 341684,
+      "STOP_first": 273087,
+      "TARGET_first": 67252,
+      "TIMEOUT": 1292,
+      "CENSORED": 53,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.06_STOP0.99_WAIT0.00_H0.07",
+      "selected_positions": 361606,
+      "STOP_first": 277630,
+      "TARGET_first": 60483,
+      "TIMEOUT": 23485,
+      "CENSORED": 8,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.06_STOP0.99_WAIT0.15_H0.00",
+      "selected_positions": 338441,
+      "STOP_first": 270351,
+      "TARGET_first": 66819,
+      "TIMEOUT": 1232,
+      "CENSORED": 39,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.06_STOP0.99_WAIT0.15_H0.07",
+      "selected_positions": 295809,
+      "STOP_first": 228818,
+      "TARGET_first": 54126,
+      "TIMEOUT": 12864,
+      "CENSORED": 1,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.12_STOP0.65_WAIT0.00_H0.00",
+      "selected_positions": 30062,
+      "STOP_first": 22448,
+      "TARGET_first": 5506,
+      "TIMEOUT": 2093,
+      "CENSORED": 15,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.12_STOP0.65_WAIT0.00_H0.07",
+      "selected_positions": 22405,
+      "STOP_first": 16104,
+      "TARGET_first": 3916,
+      "TIMEOUT": 2384,
+      "CENSORED": 1,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.12_STOP0.65_WAIT0.15_H0.00",
+      "selected_positions": 29711,
+      "STOP_first": 22191,
+      "TARGET_first": 5450,
+      "TIMEOUT": 2055,
+      "CENSORED": 15,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.12_STOP0.65_WAIT0.15_H0.07",
+      "selected_positions": 16585,
+      "STOP_first": 11691,
+      "TARGET_first": 2866,
+      "TIMEOUT": 2028,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.12_STOP0.85_WAIT0.00_H0.00",
+      "selected_positions": 335846,
+      "STOP_first": 268225,
+      "TARGET_first": 66617,
+      "TIMEOUT": 987,
+      "CENSORED": 17,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.12_STOP0.85_WAIT0.00_H0.07",
+      "selected_positions": 326855,
+      "STOP_first": 254871,
+      "TARGET_first": 59900,
+      "TIMEOUT": 12082,
+      "CENSORED": 2,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.12_STOP0.85_WAIT0.15_H0.00",
+      "selected_positions": 334030,
+      "STOP_first": 266689,
+      "TARGET_first": 66356,
+      "TIMEOUT": 968,
+      "CENSORED": 17,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.12_STOP0.85_WAIT0.15_H0.07",
+      "selected_positions": 285804,
+      "STOP_first": 221768,
+      "TARGET_first": 53132,
+      "TIMEOUT": 10903,
+      "CENSORED": 1,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.12_STOP0.99_WAIT0.00_H0.00",
+      "selected_positions": 336513,
+      "STOP_first": 268845,
+      "TARGET_first": 66702,
+      "TIMEOUT": 950,
+      "CENSORED": 16,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.12_STOP0.99_WAIT0.00_H0.07",
+      "selected_positions": 327082,
+      "STOP_first": 255072,
+      "TARGET_first": 59921,
+      "TIMEOUT": 12087,
+      "CENSORED": 2,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.12_STOP0.99_WAIT0.15_H0.00",
+      "selected_positions": 334382,
+      "STOP_first": 267039,
+      "TARGET_first": 66380,
+      "TIMEOUT": 947,
+      "CENSORED": 16,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.12_STOP0.99_WAIT0.15_H0.07",
+      "selected_positions": 285804,
+      "STOP_first": 221768,
+      "TARGET_first": 53132,
+      "TIMEOUT": 10903,
+      "CENSORED": 1,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.20_STOP0.65_WAIT0.00_H0.00",
+      "selected_positions": 3300,
+      "STOP_first": 2371,
+      "TARGET_first": 883,
+      "TIMEOUT": 46,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.20_STOP0.65_WAIT0.00_H0.07",
+      "selected_positions": 3044,
+      "STOP_first": 2153,
+      "TARGET_first": 805,
+      "TIMEOUT": 86,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.20_STOP0.65_WAIT0.15_H0.00",
+      "selected_positions": 3300,
+      "STOP_first": 2371,
+      "TARGET_first": 883,
+      "TIMEOUT": 46,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.20_STOP0.65_WAIT0.15_H0.07",
+      "selected_positions": 2583,
+      "STOP_first": 1828,
+      "TARGET_first": 670,
+      "TIMEOUT": 85,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.20_STOP0.85_WAIT0.00_H0.00",
+      "selected_positions": 130778,
+      "STOP_first": 100996,
+      "TARGET_first": 29641,
+      "TIMEOUT": 141,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.20_STOP0.85_WAIT0.00_H0.07",
+      "selected_positions": 125452,
+      "STOP_first": 96333,
+      "TARGET_first": 28209,
+      "TIMEOUT": 910,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.20_STOP0.85_WAIT0.15_H0.00",
+      "selected_positions": 130778,
+      "STOP_first": 100996,
+      "TARGET_first": 29641,
+      "TIMEOUT": 141,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.20_STOP0.85_WAIT0.15_H0.07",
+      "selected_positions": 105216,
+      "STOP_first": 80253,
+      "TARGET_first": 24035,
+      "TIMEOUT": 928,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.20_STOP0.99_WAIT0.00_H0.00",
+      "selected_positions": 130778,
+      "STOP_first": 100996,
+      "TARGET_first": 29641,
+      "TIMEOUT": 141,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.20_STOP0.99_WAIT0.00_H0.07",
+      "selected_positions": 125452,
+      "STOP_first": 96333,
+      "TARGET_first": 28209,
+      "TIMEOUT": 910,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.20_STOP0.99_WAIT0.15_H0.00",
+      "selected_positions": 130778,
+      "STOP_first": 100996,
+      "TARGET_first": 29641,
+      "TIMEOUT": 141,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.20_STOP0.99_WAIT0.15_H0.07",
+      "selected_positions": 105216,
+      "STOP_first": 80253,
+      "TARGET_first": 24035,
+      "TIMEOUT": 928,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.35_STOP0.65_WAIT0.00_H0.00",
+      "selected_positions": 8,
+      "STOP_first": 6,
+      "TARGET_first": 2,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.35_STOP0.65_WAIT0.00_H0.07",
+      "selected_positions": 8,
+      "STOP_first": 6,
+      "TARGET_first": 2,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.35_STOP0.65_WAIT0.15_H0.00",
+      "selected_positions": 8,
+      "STOP_first": 6,
+      "TARGET_first": 2,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.35_STOP0.65_WAIT0.15_H0.07",
+      "selected_positions": 8,
+      "STOP_first": 6,
+      "TARGET_first": 2,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.35_STOP0.85_WAIT0.00_H0.00",
+      "selected_positions": 8,
+      "STOP_first": 6,
+      "TARGET_first": 2,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.35_STOP0.85_WAIT0.00_H0.07",
+      "selected_positions": 8,
+      "STOP_first": 6,
+      "TARGET_first": 2,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.35_STOP0.85_WAIT0.15_H0.00",
+      "selected_positions": 8,
+      "STOP_first": 6,
+      "TARGET_first": 2,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.35_STOP0.85_WAIT0.15_H0.07",
+      "selected_positions": 8,
+      "STOP_first": 6,
+      "TARGET_first": 2,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.35_STOP0.99_WAIT0.00_H0.00",
+      "selected_positions": 8,
+      "STOP_first": 6,
+      "TARGET_first": 2,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.35_STOP0.99_WAIT0.00_H0.07",
+      "selected_positions": 8,
+      "STOP_first": 6,
+      "TARGET_first": 2,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.35_STOP0.99_WAIT0.15_H0.00",
+      "selected_positions": 8,
+      "STOP_first": 6,
+      "TARGET_first": 2,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.35_STOP0.99_WAIT0.15_H0.07",
+      "selected_positions": 8,
+      "STOP_first": 6,
+      "TARGET_first": 2,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.50_STOP0.65_WAIT0.00_H0.00",
+      "selected_positions": 0,
+      "STOP_first": 0,
+      "TARGET_first": 0,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.50_STOP0.65_WAIT0.00_H0.07",
+      "selected_positions": 0,
+      "STOP_first": 0,
+      "TARGET_first": 0,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.50_STOP0.65_WAIT0.15_H0.00",
+      "selected_positions": 0,
+      "STOP_first": 0,
+      "TARGET_first": 0,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.50_STOP0.65_WAIT0.15_H0.07",
+      "selected_positions": 0,
+      "STOP_first": 0,
+      "TARGET_first": 0,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.50_STOP0.85_WAIT0.00_H0.00",
+      "selected_positions": 0,
+      "STOP_first": 0,
+      "TARGET_first": 0,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.50_STOP0.85_WAIT0.00_H0.07",
+      "selected_positions": 0,
+      "STOP_first": 0,
+      "TARGET_first": 0,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.50_STOP0.85_WAIT0.15_H0.00",
+      "selected_positions": 0,
+      "STOP_first": 0,
+      "TARGET_first": 0,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.50_STOP0.85_WAIT0.15_H0.07",
+      "selected_positions": 0,
+      "STOP_first": 0,
+      "TARGET_first": 0,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.50_STOP0.99_WAIT0.00_H0.00",
+      "selected_positions": 0,
+      "STOP_first": 0,
+      "TARGET_first": 0,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.50_STOP0.99_WAIT0.00_H0.07",
+      "selected_positions": 0,
+      "STOP_first": 0,
+      "TARGET_first": 0,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.50_STOP0.99_WAIT0.15_H0.00",
+      "selected_positions": 0,
+      "STOP_first": 0,
+      "TARGET_first": 0,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    },
+    {
+      "case": "P0.50_STOP0.99_WAIT0.15_H0.07",
+      "selected_positions": 0,
+      "STOP_first": 0,
+      "TARGET_first": 0,
+      "TIMEOUT": 0,
+      "CENSORED": 0,
+      "active_hour_correct_and80": 0,
+      "active_quarter_correct_and80": 0
+    }
+  ],
+  "proof_type": "REPLAY_TRACES_VS_ORIGINAL_INDEPENDENT_SOURCE_LABELS_AND_SOURCE_CLOCKS; does not independently recompute all raw ticks first-passage labels",
+  "not_blind_OOS": true,
+  "not_live_broker_fill_or_R9_actual_exit_PnL": true
+}
+
+
+## Complete month case and output SHA receipt
+{
+  "status": "ALL_60_SOURCE_EXACT_IN_SAMPLE_HAZARD_SPECIALIST_REPLAYS_COMPLETE",
+  "source": "DUKASCOPY_RAW",
+  "month": "06",
+  "inputs": {
+    "source": "DUKASCOPY_RAW",
+    "month": "06",
+    "raw_sha": "34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2",
+    "model_score_sha": "ad2036fd9f21e00cfde24636e8fc6703acf6fdaaa18003810985184782523d87",
+    "wait_score_sha": "53cc06a30c6c9a5779a4ed73ea604b27bef227741b8f020bb54828bb9447f9fd",
+    "source_arrays_sha": {
+      "labels": "ccf4681b8496159bb63333cee83a5df37ff540171841a0a55a53acfde9bcd31f",
+      "signal": "3df2c790baf7b7899b8253887c7274117fa7a4f064bdcda0f1c2d45dc3e757b6",
+      "ordinal": "a238eadf3d2c418bc2e04554c5eb0b28bfe01e6b3afc00aedceb9fc24034fb86",
+      "fill": "4de4ab457de2ced808087c254d98c94084e0789662bf41330113be35a4809bea",
+      "event": "7b218fa3f23b9722eb328d131d67362e73eab19ace92721dfd671aca437297b7",
+      "timeout": "b72ce7cca47436b35f1a8cc4fac9bdcec5f54556be43ee452c8ccea6d2a0e92b"
+    },
+    "accepted_policy_contract": "R24S4_5CAUSE_WAIT10_FIRST_OBSERVED_100MS_ONE_POSITION"
+  },
+  "cases": 60,
+  "quarter_rows": 172800,
+  "hour_rows": 43200,
+  "day_rows": 1800,
+  "best_policy_lexicographic_only": {
+    "case": "P0.06_STOP0.99_WAIT0.00_H0.00",
+    "source": "DUKASCOPY_RAW",
+    "month": "06",
+    "model_probability_threshold": 0.06,
+    "stop_probability_cap": 0.99,
+    "WAIT_penalty": 0.0,
+    "horizon_penalty": 0.0,
+    "r9_SYNTH_original_month_count": 31758,
+    "source_month_fills": 341684,
+    "TARGET_first_correct": 67252,
+    "STOP_first_wrong": 273087,
+    "TIMEOUT": 1292,
+    "CENSORED_unknown": 53,
+    "TARGET_first_fraction": 0.1968556717628084,
+    "initial_noSTOP_first_fraction": 0.20063752996654285,
+    "R9_active_hours": 497,
+    "R9_active_15min": 1954,
+    "quarters_target_count_met": 1864,
+    "quarters_joint80_target_and_quota": 0,
+    "hours_target_count_met": 485,
+    "hours_joint80_target_and_quota": 0,
+    "days_joint80_target_and_quota": 0,
+    "in_sample_not_blind_OOS": true,
+    "not_deployable": true
+  },
+  "case_receipt_count": 60,
+  "all_selected_wrong_and_correct_ordinals_retained": true,
+  "no_verified_historical_news_or_prop_eligibility": true,
+  "in_sample_only_no_OOS_or_real_fill": true,
+  "outputs": {
+    "R24S5_DUKASCOPY_RAW_06_ALL_60_CASES_COMPLETE_MONTH_CASES.csv": {
+      "bytes": 9414,
+      "sha256": "78f745f2cfce7b72dcdc79490582bcf1bd1ef193359cbb9d6702a1bd755a499a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_ALL_60_CASES_COMPLETE_QUARTERS.csv": {
+      "bytes": 21674588,
+      "sha256": "8f4eebb0029695050939c128e4a6c4d48d711cd51763dccb9a754d46119dfd8e"
+    },
+    "R24S5_DUKASCOPY_RAW_06_ALL_60_CASES_COMPLETE_HOURS.csv": {
+      "bytes": 5541373,
+      "sha256": "e7641f2062ad7e83612ac99a152de345b70657262cd067bdd0dba588a1f8674b"
+    },
+    "R24S5_DUKASCOPY_RAW_06_ALL_60_CASES_COMPLETE_DAYS.csv": {
+      "bytes": 253776,
+      "sha256": "e78beedf2dd7ed8606b304c03f6ef7d8e41a01735d4303cbb6e1db01092dfe95"
+    }
+  }
+}
+
+
+## Complete preservation archive and source member SHA256 manifest
+{
+  "purpose": "R24S5_JUNE_DUKASCOPY_60_ALL_IN_SAMPLE_CAUSAL_SURVIVABILITY_RESEARCH_FULL_SOURCE",
+  "source": "DUKASCOPY_RAW",
+  "month": "2026-06",
+  "created_utc": "2026-11-04T16:51:46.180790+00:00",
+  "source_raw_sha256": "34686ce53ba992dfb83ea35d555b6a4947a9216635853857c8bf11ce70c00ae2",
+  "files": {
+    "R24S5_DUKASCOPY_RAW_06_ALL_60_CASES_COMPLETE_MONTH_CASES.csv": {
+      "bytes": 9414,
+      "sha256": "78f745f2cfce7b72dcdc79490582bcf1bd1ef193359cbb9d6702a1bd755a499a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.15_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 99513,
+      "sha256": "94f010833ba75f2fd3b8af01703500c85670cb9b2d0a77648832638c1a1e151b"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.00_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2754,
+      "sha256": "5882ae120d82f8f19cbef21a23dada6c6bc42f4b3b86ec728682c3dc97d34ef7"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.00_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1739549,
+      "sha256": "9b28071c44ca681f59e761bccfcaad14c0b6781ca8ece1793dcb8c2b8d1fb087"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.15_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2755,
+      "sha256": "1bf1dc17845fd381a6195a1be26a15621e161f43b47bf89d1f33f8ace6ff7a9b"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.00_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2806,
+      "sha256": "809ed041af0fb4e9f8e2cb08e6d66b683d1cf6c50e267f1993493ac06bdea9d0"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.00_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 5186,
+      "sha256": "73abdba51e757a432825966c1c37df24303fd954c6425e47b5e5fd8b42c629fd"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.15_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 329518,
+      "sha256": "8939f413288fff91a4d1bbbe6445332b45dbb328f370caa557d1716106a6dc57"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.00_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 4640662,
+      "sha256": "5cae208a93a68194efe8b08f107940d85db5489a776f2078dc3794fdba160297"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.00_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 5091,
+      "sha256": "4af9a51ac39c98fab8085de17850123e7a3a9d7cf708495201b51d1d9d55cb11"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.00_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 372519,
+      "sha256": "79934636844994eceb53a0c8cc4c03d2999866a61177a0ec4e15e0351ffe82f5"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.00_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 56018,
+      "sha256": "79892f7b7c56c08aef14cc860c9af461dd1ef2ec04aa75f03e0e8c5e93bb27d1"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.00_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2807,
+      "sha256": "8657265a91ead0858b0f2bb759337eac6df895b2f6cb7408c838708e7d7dd598"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.15_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2756,
+      "sha256": "da13f0a5c4220dd6a40a190b26e19c5209ab9fac682076f9071119b71cc3cd19"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.15_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 82824,
+      "sha256": "8be19f8e18ff362b505825377718999909ebaf9551e695e6236bf2b2df92d95e"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.00_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1947,
+      "sha256": "dbcf73252c25dc6b2df80649dbaa4df40cb23c0c06437c59f0950694ea14cfe0"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.00_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 104433,
+      "sha256": "86fbea191d710d82bc80e3ab711e5905235045db02b8985f0a720e66c0d936c4"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.00_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 329518,
+      "sha256": "d19e63dcde33054c9d6e14a2d570eaae40760c0d6f4369fb6a3d276d02aabd8f"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.00_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 355810,
+      "sha256": "f483027136324234d961afe1dd0f3da17bf61a3fb51bc7bcec647e21ebb2edca"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.00_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 329518,
+      "sha256": "827500a85fea8f10a9fe88ace1fff9da1d6297a368ec445882876000f17c7fc9"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.15_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2803,
+      "sha256": "93a61f537c32a44387156f8b63863b0586e6e33684c815b693d36f73291ace9d"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.00_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 5094,
+      "sha256": "6d911440c47e42ddd0ff892204fa0e81b7d9e629abfb2157f2abe5109524a349"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.15_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 82824,
+      "sha256": "b07aa415f3b9df844918842ad447bda2c0e66bd4b8a3bab8157d0b48a65facd1"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.00_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2804,
+      "sha256": "d1fd6657cca21f422660f16d29d2cbb020e81e009ab83703165ddcf448288bc5"
+    },
+    "R24S5_DUKASCOPY_RAW_06_ALL60_FINAL_SOURCE_AND_CALENDAR_RECEIPT.json": {
+      "bytes": 2985,
+      "sha256": "c420a8dbdc540dcf36ba1772e515b5e1c5acb1742d133be139b654ae397bb558"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.00_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 329584,
+      "sha256": "08f5ee44cc48d7866d4dd5f2684a62f341407cc762e4c341f018c861985a333a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.00_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 3944,
+      "sha256": "5a4dd958a54f893a513534a768694db35472b465be4eb3d466d7ccf8324f4c7c"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.15_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2813,
+      "sha256": "71e2cbeb5ecac27670c0ff27b77386c74257c0b17e6ce09dce0d176a2c10396f"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.00_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2808,
+      "sha256": "31e9e268a743d944818290edc1a9f1b13f084cec717a1f42905ade3fe2564d3f"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.15_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 3920,
+      "sha256": "de31f2915e1120018340b5abbcfe8f002b4d8849f3719da7d5353dd9525140bb"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.00_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 100289,
+      "sha256": "9d85db4c45a64bacabf53d5b9376417a2a405c7dc9fd91aba013b9a15d40624c"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.00_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2812,
+      "sha256": "b2b847a0c208f06a6d3a175dc3f2761b7999dedbb720165ca492b98b50bd8b1a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.15_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 103221,
+      "sha256": "66928644cbee10eb4366e2ce6e77e54be1c22f526ee95c69049d9a0a24ecfe24"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.15_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2755,
+      "sha256": "704df25ea2b3fc805c51076a5e9dd09485ae855cc23b66c42460a9f071d91cee"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.00_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 384480,
+      "sha256": "46eb9d1e6c72fb074c684c309f09ea8ff42418715db5f650a232307c0b474550"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.00_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 4428180,
+      "sha256": "dcf86663a6c88f533055ec2ef31f4078b50f95fedb4561f47740a1e6ff0cdae9"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.15_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 5190,
+      "sha256": "1e4d827d3b309cf0b902ce9a414c99942dd0959e2b071fea5c838e3fa0469736"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.00_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2756,
+      "sha256": "70574c8b8096af342b7032f80648b898720f93d78c5b9e4d5248120bba58397a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.00_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2756,
+      "sha256": "1c7fbf3d84a40c06085e4ba89795f076d80c5b7461d6ab05e34e736ff6339a43"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.15_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1947,
+      "sha256": "85e5022823dd113c12d5d269d801533a7e1ab4660070600ff1e02dfbd9b2ddaf"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.15_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 4536821,
+      "sha256": "56d9e8da6b67a98278dca54b4bd1c900b7cd199da065fa8433ecc89761345d10"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.00_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 82890,
+      "sha256": "18f57287fb0e425643d7fe14868c6146bf8c48fcd539289fd64ac8ccc780e750"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.00_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2755,
+      "sha256": "52485532e96b43a38da3a8a8301f35a1f90067677cf433c6708e4194c3fbdb4a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.15_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 4532553,
+      "sha256": "fb63dec216fafb6a3ed470f842c82309d2ab0603d761c36dbb7e1bcf5e946a80"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.00_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 408783,
+      "sha256": "234b8e2de504267ddc48db6723b4398ad98ac70efa5229a7696d8d9597ce8c36"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.00_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 93823,
+      "sha256": "16f6898c8ef1988940273a66613e1d1f446089520cdb5d864a2f02e32464a3dd"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.00_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 329518,
+      "sha256": "9057a8c83c2be52ef6d6b00d80e95c013bd28412ed54ea4faabae5e956335979"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.15_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1724,
+      "sha256": "b86e1a5736673f755d3530d37c8daac88443c7a4b83abb77403e98773ec80070"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.00_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 5174,
+      "sha256": "5f86708779c53a0ab053252b16b9919a3e49ca647a01ab70774145695e967ee4"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.00_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 82824,
+      "sha256": "cb0b1daa881080a734d0cd8df21982a51009708d15c4cc42a848d6deaf426acd"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.00_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 100363,
+      "sha256": "a24c44a09e6f11e32773e87d842ab92fc080ecde9d1ec7f1114a693bdd4f1487"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.00_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 329584,
+      "sha256": "82b1e13196a3eaa9f30d2cfe71fd9a88b1d99839de5695adfb5a515d92d54f76"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.15_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 5162,
+      "sha256": "51e820e2d5b637c7cc7656d01b6cfe0ecb61a3f6f87dcbef22ead7a2adb753c9"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.00_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 3920,
+      "sha256": "79113fc6ea9235b7d47ad7282256c3df94491976550429781c70724372feb2f6"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.15_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 94184,
+      "sha256": "8329c03d6f21469a1d6f240667bbed02a4fe2b01711b45bf70e1b54020662152"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.15_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 104234,
+      "sha256": "fb52e19246cb9637461fd95ecebd9995e1b06a81265851bcc8787755b8234e60"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.00_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1724,
+      "sha256": "b86e1a5736673f755d3530d37c8daac88443c7a4b83abb77403e98773ec80070"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.00_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 82824,
+      "sha256": "38607bc2ac76f48df5d0e88e671e59939c46f867e054010a4c8164df467b7a27"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.00_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2755,
+      "sha256": "5c1e3dd8cec0b59a042cd5c09fc7673d67f0b1b11179e27250ddff05a58fbc8e"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.00_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 82890,
+      "sha256": "f739cb00a6e921b2d8e219fbc513cea10c5efc8ec1b6119c75cfabacc05b2482"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.00_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2754,
+      "sha256": "4309266e12686bc19391639a7f989655a5bcf93a403e48aa6216ce6605093257"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.15_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 329584,
+      "sha256": "dee8e739a51c41028727a4381db927282a861b90fc3f6494023450b61d05e84f"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.00_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 4905310,
+      "sha256": "c2fb2f865c3040288d2c3c59b84a0e50b7d1d8c904b8b0686f8a961080d16b9f"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.00_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 4557248,
+      "sha256": "3fb41d6b3bc9b844471293429e338c5c52e26972c3b02625fc08f7f4ea515aa6"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.00_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2812,
+      "sha256": "ca980c379e33a58e45e03f367ece9184c497c53f4f3647ef272402def3c53e3b"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.00_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1947,
+      "sha256": "85e5022823dd113c12d5d269d801533a7e1ab4660070600ff1e02dfbd9b2ddaf"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.15_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 408580,
+      "sha256": "69c98fd42bc0c1cb4b5f2ed559681d6e8461af76cbefd2775b0a503e3a07a803"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.15_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 4010105,
+      "sha256": "50fb0651775447ffa282c6ecb73cc3d606dd0eae7030f7dd45a01cfff30ae8aa"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.15_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 3944,
+      "sha256": "26dc5f7d5266ab8a0cbba334561d306d430cc8f1a39644275354c82aeec7ef34"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.15_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 357241,
+      "sha256": "fb4a92885e464c971efddde2d4c4ffc48f273cc4b600d088ccda2cb426f0b1b0"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.00_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2812,
+      "sha256": "a7dc76997b20066e7923b7b8c2e93029099ec3776e08915e840a9a3f05e7367f"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.15_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 360672,
+      "sha256": "1a65bc90f4c3603759ae3d5ab6837220d318d585435201c15bc7b832a39d5598"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.00_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 82824,
+      "sha256": "21ec84260f97b6ce1c35ebc5508357c235491d64afdb4c532c8695578f171571"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.15_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 100363,
+      "sha256": "ff1c6606b01c8553eb511e1027ec97ec04cbaf7e4134582816954b0f6749ae79"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.00_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1947,
+      "sha256": "85e5022823dd113c12d5d269d801533a7e1ab4660070600ff1e02dfbd9b2ddaf"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.15_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 450126,
+      "sha256": "27ad886abb234c0424a91d98e77a4449e6e1a7a5706dc62f5cfc6bda9b1a0b42"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.15_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 82890,
+      "sha256": "d0b15108a6bbe76d267f1c899907a0e2f377d379ed06cdcdf09233d0da161c48"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.15_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 337186,
+      "sha256": "ff99d49e7e2083f54daa45dc774c6e1f0d8e1805214a0af531e56e20fa8afb0a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.15_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1724,
+      "sha256": "b86e1a5736673f755d3530d37c8daac88443c7a4b83abb77403e98773ec80070"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.00_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 4827,
+      "sha256": "e4040f4d354376dbf0a46d06c3a9a1167a89baf4ea79dc64ad5070d526d76ccb"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.00_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1947,
+      "sha256": "dbcf73252c25dc6b2df80649dbaa4df40cb23c0c06437c59f0950694ea14cfe0"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.00_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 3944,
+      "sha256": "9999b1135428f2d6a781dfedbf7a444450b1d0968d5cf999395819e0e118c61d"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.15_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1724,
+      "sha256": "b86e1a5736673f755d3530d37c8daac88443c7a4b83abb77403e98773ec80070"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.00_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 336335,
+      "sha256": "8f61ec741be077ab3fc56df58ca523a735cc1bd16245ffa6ecfc4d454e27f17d"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.00_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 4899956,
+      "sha256": "283f9af23b01e3b2190ca41b100d7123f2da98ac0e7c088652b4743460f56de0"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.00_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2812,
+      "sha256": "9bb361419378716fc7b0c09f46b4fb4bcc8a7d46e18ead927e54a8b96e243bf5"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.00_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 5217,
+      "sha256": "2b4e1a3cc065fa3b6338b914f2049770bc309c08e1f59daa01eae8246eca9336"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.00_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1724,
+      "sha256": "b86e1a5736673f755d3530d37c8daac88443c7a4b83abb77403e98773ec80070"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.15_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 384480,
+      "sha256": "1b7cea1431e3429d51d6f09237354f886a7197ca503bbf09d49ff320963b6e5d"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.00_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 5175,
+      "sha256": "d735220298dffe6d0566117c0bc7a20274a6f3d8319576ce2b67ace51a552a2d"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.15_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 104109,
+      "sha256": "70efd136fb7b0d3c4e8fedabaa286d550c848a4953180113c24e27a8b4641f18"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.15_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 5105,
+      "sha256": "d3b4d5f4269b820f6d48fc78daeede6c0550c9762c9fdff4e6dedb25f32146fd"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.00_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2803,
+      "sha256": "30d7227bdf3fc85b81bf38ad835cdc3bc5d7bcac0e2f6c611a372767cf3dc8dc"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.15_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 329584,
+      "sha256": "c1cbf63c9d527ccb8e62b79277280dfc6cac09910eaed9c2cc0c1498c44ebffb"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.15_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 408582,
+      "sha256": "d7fa2e958103ac31731c3e18c79bff3123c13cc6c97ec7a25185d659a1860c29"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.00_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 408419,
+      "sha256": "3d0be9ede56558de11d3ecbf791dc919b167c629a8472997e13f7a9deabd0bf2"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.00_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2755,
+      "sha256": "93191c56a513639d432088d3457f8383643193d4161026405795a05d90a9008a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.00_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 408420,
+      "sha256": "b8b4b8b322cc07c1ecbc6fbc7a40148b81027e9f61bef1107a9007143f001469"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.15_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2756,
+      "sha256": "b3a892facc76104b50be3cdb59814a23b3d5cb66609a8cccdf017057d67adcbe"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.00_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 98156,
+      "sha256": "efe496ac09531272b6e1b0410a22517fd4369263b4ec223282576ce03645cff4"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.15_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1724,
+      "sha256": "b86e1a5736673f755d3530d37c8daac88443c7a4b83abb77403e98773ec80070"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.00_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2755,
+      "sha256": "25b09e99688df9239c346493784d6ce0170d5423cd22a2b6ebc66c4faae34ed5"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.15_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2812,
+      "sha256": "5f36ff7b32c09d26be401efa60be298be801724513d5a80209328469659f13b8"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.00_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2793,
+      "sha256": "bead50121cddf1e5626eebe84540543c574a9766d1abd96189c56e3fed3889e5"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.15_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 3944,
+      "sha256": "486b3972473f0d7b3c15f5b26aeb54e0c95ce8100559a117b8ba462fd674fb03"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.15_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 82890,
+      "sha256": "9ee37111c9e4c4f99e7e2f812ca80b448d6d898831ce8a3528162cdccabf720a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.00_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 407615,
+      "sha256": "17530642932ea89ff5cae1c8a8d0848412ab025c4913469816284ca8b0bd0a69"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.15_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1724,
+      "sha256": "b86e1a5736673f755d3530d37c8daac88443c7a4b83abb77403e98773ec80070"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.00_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2808,
+      "sha256": "2b8e44b21a1d0f8c6fe25d2f5f71adfba3caf44cfc553ba7af1a4675509db949"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.15_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 348820,
+      "sha256": "194375bec59be2049cb5c1822da761c8d2c586d0b215bfbee1e4294158783a6a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.15_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 329518,
+      "sha256": "ebca13f78f4d0d8d9fc1c3c005ce420d63feea172dc10e38e20a376ecb846a4a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.00_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2813,
+      "sha256": "a3436e543041ea7af052571a1f825a1270ee3b5c58e719f38119711386438d91"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.00_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1814573,
+      "sha256": "d9b1f06a6e040cd7071b3f22874ab8c677818c1d3242e3c34c1fae9f5c280944"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.00_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 382854,
+      "sha256": "c8200b87b8fb14108549d97a83cf4769bd30a4e0be258e2ce17b5de371d4b7ec"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.00_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 100363,
+      "sha256": "2117b8714244c8be675ee13cd4be50adb972c5edd3c3701e7526956bb173db17"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.15_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 3920,
+      "sha256": "dfcb48bec65fa3d6f226273a43799c7775b0c5fe0c837e0e1c48ab08d2468786"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.00_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2805,
+      "sha256": "778eab722d903e74ddd73b0396f9430b134f56d6bca547f303377a4cc1df33e7"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.15_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2809,
+      "sha256": "ac3b67898e931574da7dcc1e2b34445cd99d4baee136fef89e49284362e85ff0"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.00_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 5179,
+      "sha256": "712b0ae406823b3c59beecc9956aa4b7f400f5e7efe5c8b668fd69e3c7e78aa5"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.00_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 404139,
+      "sha256": "d59f956014bd609e3605c1f941b8237e17f45b5b57d645b4fdac1dec26474c81"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.00_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 104131,
+      "sha256": "7e0cf55b92f09b00882aaa7ac8e789c037ad56a951252b64f27f29f9c7e6df12"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.15_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 87315,
+      "sha256": "02c6a97cefa6a07da3171562af0dbbb0403eda05741bcb3cfd818e0018b493e5"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.00_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1724,
+      "sha256": "b86e1a5736673f755d3530d37c8daac88443c7a4b83abb77403e98773ec80070"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.15_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 351369,
+      "sha256": "3b2b20d8222ed4f11cbbe03edd09789c677ca638cdfc4fe2c2e4199757b7dac0"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.00_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 82890,
+      "sha256": "dc23c9c54c1567715bb40463c390d50d8e267e2901e6f2ae7259c61b2d2ffac6"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.15_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 407725,
+      "sha256": "5604be359900d0d7bb70b24c8b74fab8dfce231cbc19e92392eb4a7eb8e07209"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.00_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 329518,
+      "sha256": "b7bfc689096f6c4c7c459b2c0db492ad1a1c137f6ca5acf546e099b4d0e96e09"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.00_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1724,
+      "sha256": "b86e1a5736673f755d3530d37c8daac88443c7a4b83abb77403e98773ec80070"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.15_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1947,
+      "sha256": "dbcf73252c25dc6b2df80649dbaa4df40cb23c0c06437c59f0950694ea14cfe0"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.00_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 408812,
+      "sha256": "cfc3aa0f72446271786845d82d0c939c4e28c35248a03f3110a343ac91ac7a3b"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.15_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 104269,
+      "sha256": "c561a418e613ebaab10805fcaff6ef4f8b9512373577aa3cb3f8cc5a0d78db4b"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.15_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2757,
+      "sha256": "49ac02544ba2b9fd21fe6d2e1b679fed684783f077af79ed62c668dbce808fe9"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.15_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 95116,
+      "sha256": "bb28b7e455d4b1d8c8c54e2e783a8fe1a25bb8ef3083374e0e5bff39c00fa788"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.00_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2756,
+      "sha256": "b35cfb9ed45321aea3b5b7a18caeb28f48d5c771613c60457831670b28d8f65d"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.00_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 384480,
+      "sha256": "3d7b8ebcdb96c58e989e0aa1be7369d8b5b5c8c71e191bc48d872c9c2650e432"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.00_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 3920,
+      "sha256": "52b2286ed60829feab738599567d125e9f1a18fb56e779978cd03112c9779e09"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.15_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 96556,
+      "sha256": "34a568d098ae92d008e95fde6475fec80cfc48a1a34afb19a38e6a4aea40f1ba"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.00_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 3944,
+      "sha256": "c18cdb587489fc2830c59bf20467fcfd61b1c1d9cdafae3d5cee80d7f6ed1928"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.00_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 329518,
+      "sha256": "f53b78386038641d82318be3fa12009ef44117b51ba9111a0e12fd5e32507da0"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.15_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2756,
+      "sha256": "bbb34a1d0c35e972f4709820afdf68da76b88651c075071a085c760f4049074d"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.15_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1459713,
+      "sha256": "b9d852c2f9855e18a35a132cd06cd73f03862cd2b066846d09f005b092ca0d2d"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.15_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 3920,
+      "sha256": "2f0828292c016ceb5d0f5aa1821eec9eb61303aed24afd12ba6f3a3f67358ccb"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.00_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 82890,
+      "sha256": "92f4c03a7b10b3a32d6ea4d09ca9d9b1dad789cbfbd58ec310ba7237e7bdb196"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.15_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 4768,
+      "sha256": "3d7e88d6196873b48dd1064086c3f03695fbca41904d6de42b25edf935ab30da"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.15_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 5179,
+      "sha256": "9d9a4f37b4608ba841f83af450dacbd90f3e9ac7550e33acf31f485e20faf776"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.15_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 255153,
+      "sha256": "24826734c6b8f13773d06d729d521617b38804c448064f4fef2b3bea66bc5d29"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.00_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 370007,
+      "sha256": "83c29819b55ad69d60caa5ad42b327e6bdfeeefc5afcc87d380efa9cc2f9664c"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.00_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 5216,
+      "sha256": "f56c432f02ddf1b71174d925abaae104dce14c59ca1c2ef3eb0fe28e602dcf41"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.15_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 103221,
+      "sha256": "0855c490474422aaaa199ceeaa8da5b4a5816033e48283f1df929cdb2b47ead6"
+    },
+    "R24S5_DUKASCOPY_RAW_06_ALL_60_CASES_COMPLETE_DAYS.csv": {
+      "bytes": 253776,
+      "sha256": "e78beedf2dd7ed8606b304c03f6ef7d8e41a01735d4303cbb6e1db01092dfe95"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.15_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 407895,
+      "sha256": "89c2c9582ca8eaee8ba8cd7dc4d9b1b5e10fb1ae98a32246d016c87c8d857919"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.00_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 3920,
+      "sha256": "d4687ab52b4b7c4384071d7fb542ca18a53419238479261c867f75dbabb34786"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.00_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 329518,
+      "sha256": "74ced68b964b00f8bba30a4370f81384e6ea8915c9bb6685ed0ba96c591cc897"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.00_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 51901,
+      "sha256": "1911a6695dc9321061b80e4d3293891aef0904ecfbbedce77197b1475b70e5dd"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.15_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 5090,
+      "sha256": "ae5dd22e2b105cc3fdf7ba921f98f0cb5de9d0a055c01dd4f3ebeb6644fb808f"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.15_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 398320,
+      "sha256": "7d9ffe9d47d7d6d77d2931b5cb4562eaeae8c2870c1488e10aa25679c5e4dc02"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.00_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 329584,
+      "sha256": "90b8fe199eb478eaac0f08bc90a0cc9a5d67ebb0e089daf6a5c8e97145b42d40"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.15_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2794,
+      "sha256": "a81b74ed7bfb49f777b80690bfd005037bd254289a22c37e11e0470cd5c1d4c9"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.15_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 3864035,
+      "sha256": "0aba3e1557c55a2fe217aeb7eb32ab917dab030dc6640e780ed508283b491189"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.00_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 4639901,
+      "sha256": "7cce3ff507cb3dcdd82512b000ffeed82349e515597a7dd6e2c20cb8564cf71a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.00_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2811,
+      "sha256": "386c388174b090c88d461885276c990f218ce99922fd82f0e3ac79d34eb37830"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.15_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 5105,
+      "sha256": "3e355d92d0b9d242588bff320a993a43739c0939a15b96434a3c6f0a8d8e04e7"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.15_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1947,
+      "sha256": "dbcf73252c25dc6b2df80649dbaa4df40cb23c0c06437c59f0950694ea14cfe0"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.00_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 337186,
+      "sha256": "80181575bf339bf209186278f38a932b406ce8e5fbecf85fbb66cd4bfc98c76a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.15_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 104100,
+      "sha256": "db8a010b46818559f0ed3cf005bb70255a37753a5e4eb561084386c694f1a8a0"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.00_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2754,
+      "sha256": "6cba0ac2f6fa995d1dd8e3a5e0dce13b1266ed8dd2567b9cb9b24b9e9097214b"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.15_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 44280,
+      "sha256": "8d7ba4787992ff79390cfefd30885937a96bce58b8f35bc83a33c4ca34c37a51"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.00_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 802216,
+      "sha256": "3d38072a26571f6cda6bb8398c358f3d4e6eedfb629517d67547a422323f445a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.15_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 100363,
+      "sha256": "6c46e6a633b908bba0d544d1dc00d436333ee7d936de65824a8eadc4e4167ab5"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.15_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 3920,
+      "sha256": "2ca9be921233f77a6f13c2cef07265a10f260d2cd12188ae05661749cc1852bf"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.15_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 3944,
+      "sha256": "a06b9e21929581051dae255a0d5facf0432be4f6dde1d5750a57622cbd4c2f84"
+    },
+    "R24S5_DUKASCOPY_RAW_06_ALL_60_CASES_COMPLETE_QUARTERS.csv": {
+      "bytes": 21674588,
+      "sha256": "8f4eebb0029695050939c128e4a6c4d48d711cd51763dccb9a754d46119dfd8e"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.15_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2756,
+      "sha256": "f986a1d0056eb80365fafea554b5a6fd76ef82952200588f36ffdac171881462"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.15_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 329518,
+      "sha256": "6ce8452cf316aafed112b54876711a9d3d34505af304cb5de99aa9ffaa4f182f"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.15_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 56018,
+      "sha256": "79892f7b7c56c08aef14cc860c9af461dd1ef2ec04aa75f03e0e8c5e93bb27d1"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.15_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 335832,
+      "sha256": "5a9434cab1f0bf3a8ddbb4aa58b5fee2d4fdb26ef994c92459504125582916a4"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.15_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2813,
+      "sha256": "6e26c655ea5c20dd9c4f995046b20e4c091f672b7b26d9aa196e994e4d315bb4"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.15_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 5022,
+      "sha256": "882d4196449e37bac6a9115b2eb95581c4cbd52174976de0dfa0927da64403c4"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.00_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 104101,
+      "sha256": "34aaa94d21634d3542f5257df9b79843a82a6b81b916bb2f87c8acde4e0561cc"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.15_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 103762,
+      "sha256": "14937d30e609fc944197eaa399b58257c6a7e2792e3443b974a0326a58a7d47f"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.00_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2810,
+      "sha256": "f4ea6b396820b987135ca2cf33870d2e2dde3d59d7c22913846e94dcc556b91e"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.15_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 4595958,
+      "sha256": "103073acbeef047fe1f16cf5db60bd5ff98f6e268004ea9aab50cd26e5b7e179"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.00_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 341371,
+      "sha256": "4a6dc8ce5350481130cf39124f65f89eabf821079c66ce98cd366604f4c7d91b"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.15_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 329584,
+      "sha256": "2a8e1fb314d021e527578acaed4cf79b891ed7305388ebdc046d2728ee76116b"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.00_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 97836,
+      "sha256": "64d74426e8c3fa99f009392e9ba316af62d27093e1cb54c2d04d9f933c007ff4"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.00_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 87171,
+      "sha256": "701a658cb5d60504e141993f120d6c9ee33b4805d26108c66d73b05e79379b5a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.15_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2757,
+      "sha256": "8d82d0432b11ae40f1d0e27d8c4fdb4f41664c59437e3101d21c847bc8a1e335"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.15_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 401959,
+      "sha256": "17f5884b129a75ac04b3c73c0f35cb84ac367fb15d72d19189ba700dab202900"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.15_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 564516,
+      "sha256": "865aef67645ed94724f0220b4dda810fdd03e796b71f92513b3a17655bb19626"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.00_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 104466,
+      "sha256": "85d864714a95ec6fd9bcc0b3fcb827b2beda2dd698fbbd903f2646f0f71b9523"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.15_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 4913,
+      "sha256": "43185abe571acb8d7aad60b481a8a625de605249212320902c61987e9e72dbef"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.15_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 3864035,
+      "sha256": "0aba3e1557c55a2fe217aeb7eb32ab917dab030dc6640e780ed508283b491189"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.00_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 4565137,
+      "sha256": "b3c1d59105391c40820074c1335fa404a5add59354a3f9ed3d6f16b97b6bc328"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.15_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 3944,
+      "sha256": "9317c47b0582cc2da34d83c514d0abf2d124a2c61340459676b33baf4ac9da9a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.15_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 86821,
+      "sha256": "457929aa756101dc55912cc33d63a500f046c0411fb4c2f5a9e2c265b7bf30a1"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.15_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 82890,
+      "sha256": "4b9da94611f42207c434d098c1a232952f51f1133df13908c50eb9b6cca2cfc5"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.00_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 404080,
+      "sha256": "b90fec20e962b038f69018819797b11d838961283b5dbc96c54395b7025a3485"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.00_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 94988,
+      "sha256": "1efaa01a8a328a0d9e89110f35009bab79f0e12f8178ad7d58fd1d047a6a49f1"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.15_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1459713,
+      "sha256": "b9d852c2f9855e18a35a132cd06cd73f03862cd2b066846d09f005b092ca0d2d"
+    },
+    "R24S5_DUKASCOPY_RAW_06_ALL_60_CASES_COMPLETE_HOURS.csv": {
+      "bytes": 5541373,
+      "sha256": "e7641f2062ad7e83612ac99a152de345b70657262cd067bdd0dba588a1f8674b"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.00_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1724,
+      "sha256": "b86e1a5736673f755d3530d37c8daac88443c7a4b83abb77403e98773ec80070"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.00_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 87315,
+      "sha256": "11fe875328e50cf63401f4204cdae8fcba49f98a053c2209dd4e760781d3b79d"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.15_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 5190,
+      "sha256": "9abb528590ce0c1364d84ef636039218f0f8ddd663e2c4e4ae2aa4ad66e1696d"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.15_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 384480,
+      "sha256": "ed9ea72eba687876ddc3ddfaa70a34d0bd81d398cba09e2998de7697f5221537"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.15_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2806,
+      "sha256": "c50bf228d8041dcb2f8203f3ba3571f485c2249986a952be609407e19e349ffa"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.00_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 82824,
+      "sha256": "f3e613c893ee9a2318d9291adb2214962abf91f8f7bf320e76c7e4793bd5c60c"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.15_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2808,
+      "sha256": "e808eb0cbf5ad50a9adaa1161d232bc1d47bfa234b4905e475c65e63820be429"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.00_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 104183,
+      "sha256": "12efefc0164439d6726c0d26ece2771239ff9c7bdd36d0dbb9ceb17111b14c12"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.15_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2795,
+      "sha256": "c9d0c33f83e65ffafdfa6995be567e5e6f60a11515d20920b0f6fddd76e8ad43"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.00_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 329584,
+      "sha256": "0d16602de0a6e66e6aa4f864059cd1eb68daca3f00e54a984c2444a0453cde7d"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.15_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2755,
+      "sha256": "1b724a4ffde674516dc7269cc083d543fc8b529731dcf1daf578c24480aead20"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.15_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 4010105,
+      "sha256": "50fb0651775447ffa282c6ecb73cc3d606dd0eae7030f7dd45a01cfff30ae8aa"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.15_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 401959,
+      "sha256": "ff731f75213ef21c55730ac60e869760e9e348cf481d526cf3bc3a161f69e369"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.15_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 5082,
+      "sha256": "0dbbab1438875f8a94d05bc1a36a3734076d6eccb3a4da2fdeb5010698809893"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.00_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2811,
+      "sha256": "81c463af1d67a509af5726cecc492ee54be9b6373e24a73cf505ca57e5c04572"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.15_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2805,
+      "sha256": "7c9604bdb0589d2f69a140341d54a9f703dab5606515eb3347987b01b551458c"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.15_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 82890,
+      "sha256": "d4eca5eedc9b41dfedb4df138ff8087fae456444281594f4b597b16fe97d46b3"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.15_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 329584,
+      "sha256": "663058cd6f08af896fdfe0f63f06b981a1ee5958eb4b0e8d6f708481890b070b"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.15_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 329584,
+      "sha256": "6c0e4e0807bac4385970683f781a1d2354ba3519b344ef5c1fd9f40dc59154ea"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.00_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2755,
+      "sha256": "328400bc37b2b26032c2415a956260fd14970f3e96adb71f086f3a9ba5d67d18"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.00_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 3944,
+      "sha256": "bd3beb085b4356d34d554e32ff53ab573d7c610c7f210c2d4e9ab80593347d9a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.00_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 382854,
+      "sha256": "b19edd66d137d20dca77765ed23b603aaa54a01b672c08070afe52943d08cc0c"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.00_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 4425196,
+      "sha256": "e7c954fe3866d9c21209485ec478194d863998ae6190623849145668dbc4c87d"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.00_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2807,
+      "sha256": "c106978553b5790be8bb896d2bff4aae618a7771101e253d41c156dffd02a57d"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.00_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 82824,
+      "sha256": "4e370f89988def047c30cc8422046140b377684fb04fccd0b8a6a2b40e2ba494"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.15_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 5080,
+      "sha256": "e4556518c3468e125b55b210d79a3d31dd86d577596fd20a1ad544f86ff8b341"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.15_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1947,
+      "sha256": "85e5022823dd113c12d5d269d801533a7e1ab4660070600ff1e02dfbd9b2ddaf"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.00_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 82824,
+      "sha256": "f00c11f66910c776865dc4b1cf640b7e041a08d86dc95330859bf9345587f60c"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.00_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 4913,
+      "sha256": "9864299bbfc72b9e498852b10f7083b97db26516679ad4db046069f71c4007da"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.00_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 361012,
+      "sha256": "7c17a5f0b131d7b6c8f0b76e493149e93305103e3729b0eb242adffa61b1d3eb"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.00_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1947,
+      "sha256": "dbcf73252c25dc6b2df80649dbaa4df40cb23c0c06437c59f0950694ea14cfe0"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.00_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 3920,
+      "sha256": "8818103061271ae85529b33ee6b2137852df962ab7b3f8a95508e7fac652be13"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.15_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 82890,
+      "sha256": "423f8c4d3a222361973f51ffd065878d96935074de4704d94f2f1e64c247e451"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.00_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 82890,
+      "sha256": "5737788a428080449aa6956851dff6e11528ab9fd0b9c2589b938a65d11642d3"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.00_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1739549,
+      "sha256": "9b28071c44ca681f59e761bccfcaad14c0b6781ca8ece1793dcb8c2b8d1fb087"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.00_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1947,
+      "sha256": "85e5022823dd113c12d5d269d801533a7e1ab4660070600ff1e02dfbd9b2ddaf"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.00_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 103950,
+      "sha256": "4c849c6ba3a75e017fd3b6e59e7c68f7b2317aeb885d2361709c2a36060c29d5"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.65_WAIT0.00_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2795,
+      "sha256": "d9b04845538363de0aafc23ad9b314888e0ce28270cf3f50c62628b11ca25816"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.15_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 329584,
+      "sha256": "95203babb84d873a75c74e5acf07df5e8f53cfd79388cfd56eefb2c7daf9379e"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.00_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 5090,
+      "sha256": "e675a17759528f3166b88676b318d1b5d599efafb369037c8475a162f199ae6e"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.00_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 104167,
+      "sha256": "2b0428ad0d520b402168b052c564d2dee4870bf35fef3827d73b468f19d4478d"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.15_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2804,
+      "sha256": "63e5f8a7f177604b6caab4ded227009909f76cd62bcb343b331867d7c66e156c"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.00_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 5123,
+      "sha256": "409daab8cdc8d44a554a6cd2c4400596b2f3222c694f305eb8079ef517bd4797"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.00_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 103983,
+      "sha256": "53c0f712ae5f18a5f9eece0b40e59755af3325eb891c4bc8031ac19077b88f5e"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.15_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 82824,
+      "sha256": "432949694318b0c429f48e4933c712e51621a253685a4d2b0706960876a8b458"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.15_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2812,
+      "sha256": "2e7ae00257491017483e7e2f4fc4fe9b27c34f9cf4f8e51b66c87f228f50984f"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.15_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 376950,
+      "sha256": "9a81c294bb24d27918c188b4f1ef1eddc413d2c6917721ce182155226772ec58"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.00_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 329584,
+      "sha256": "f1e83ab0d792f3bee836f13645403a76661cc1b95bcb5e90b4ea45f1e178b602"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.00_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1724,
+      "sha256": "b86e1a5736673f755d3530d37c8daac88443c7a4b83abb77403e98773ec80070"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.15_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 329518,
+      "sha256": "3382d712e1f70991e7fe34234a14f0c65fddff496c5c8260e87fcdc6924d0989"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.00_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 329584,
+      "sha256": "d8740646a5c8aebd88547e2714bc78d2d3dae3d107be68c29e348cbf6f5cacee"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.85_WAIT0.15_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 4594335,
+      "sha256": "a54a5e77ed5ef8cde1a09a6eb9e74c2da4880d9e6b3b3c91c117aa828084e2bb"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.15_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 5183,
+      "sha256": "9e0b2cb17a12d1fbdd00c858cd663517904623f8567fc5b4b589e7b4468fef7b"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.15_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2806,
+      "sha256": "edf2fbfe07cd707dec133ed3ab425c10a1e3437d17b9c31394cf9a9f47a9c99a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.00_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2755,
+      "sha256": "26d24aea4cf66a746b3161977cd39c8d81e1990b9781f47f7729b39847950743"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.15_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 365925,
+      "sha256": "b55078390245645156edad8ef18b15b7b0fbae049467336fed17492a9acfcb8b"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.15_H0.07_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1947,
+      "sha256": "85e5022823dd113c12d5d269d801533a7e1ab4660070600ff1e02dfbd9b2ddaf"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.15_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 329518,
+      "sha256": "38c1e31f20b3033a5d8688cd0eef47f7086f52bcfafdedc2828e154b603a7ae0"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.15_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 99513,
+      "sha256": "6bcbe795e0a473ca6040b957415df78e5d36d435f4aba086858d2d411809a148"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.15_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 5090,
+      "sha256": "9c4207ce1fb6559603911592da27986e0d5f7c6f7afed213df66ce9f5de3c599"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.15_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2808,
+      "sha256": "885654adb03cfacc816de28f07c029a0f7cc6c937de9bc049d5079d7290e7012"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.00_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 5094,
+      "sha256": "a80b11ff64270648bcb5e887560dcc00522cb041947c1454f0406c60369d93f1"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.00_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 3920,
+      "sha256": "1724f94aee236330cfb968e23e5389cf5aa7934fd6d3d8de8fd199abb7f96db7"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.15_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2812,
+      "sha256": "6f894b382244c38aa2ac78fdba2e170a5bd1143ac220bdb29ef756e60014398d"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.15_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1947,
+      "sha256": "dbcf73252c25dc6b2df80649dbaa4df40cb23c0c06437c59f0950694ea14cfe0"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.15_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 376950,
+      "sha256": "984f08b2c7cacc005810a9167a6fe1135dcd92a3bc5e4701913487bcdc177cf6"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.15_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2757,
+      "sha256": "fed08cd0a3b48838a9644c676cba4f1be184cea981455d45614d6b108dbf3960"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.00_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 5110,
+      "sha256": "8371f7d7fd7b5b4298e9ee4afc8911703f33158cbb612d74f92ef87eef70ef80"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.15_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2803,
+      "sha256": "aaf21c332503f8f2fca7bfdf92a09aa9568d5973ac373d56c38b5ac095fe8190"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.00_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 5195,
+      "sha256": "63eba499296295cfacc4638c5c2e81be02deee155337829941735fa56287c979"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.00_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1814573,
+      "sha256": "d9b1f06a6e040cd7071b3f22874ab8c677818c1d3242e3c34c1fae9f5c280944"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.15_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 82824,
+      "sha256": "9dbfd6d587cb5f7e3e7a56fd20687aac4b31b8b8ad9dd3e8f3a70de288858b0a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.00_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 852904,
+      "sha256": "d9c97837055755e4b4c318d6a417af8d57ca751ea496581e4fd5d6829044206e"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.15_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 103762,
+      "sha256": "ff90fc12e21a35d6ae3d86524c5251029285c25fb94a70427904292e17619e33"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.00_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 82890,
+      "sha256": "d472fdd948e0f7e37476e7cdcd304e1e75d14b549d56e1807943998d4deb621f"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.15_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 92743,
+      "sha256": "529f4632f20d3101c6715d77f92bcbfd7123eeddc0330b9b0829a9aa84dac263"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.15_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1814573,
+      "sha256": "d9b1f06a6e040cd7071b3f22874ab8c677818c1d3242e3c34c1fae9f5c280944"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.65_WAIT0.15_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 5066,
+      "sha256": "b5069217c2c1178a624755d8b5d7829c08b57e92b61fb3877c7242cc6d8dc0c9"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.00_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 100289,
+      "sha256": "7aed993630b4781d17ab49f97ef228fe0cb84d96bd5ac1fca2a1ea445582fd0f"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.15_H0.00_COMPLETE_HOURS.csv": {
+      "bytes": 82890,
+      "sha256": "ff844fb4883ebf268947449d51e44e88b41e731fb839c070c6ecd41dd3d56439"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.65_WAIT0.00_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 3944,
+      "sha256": "a2583775878b07f54e8501a6526197beeb71a824ea04102d62268428928e3e6f"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.99_WAIT0.15_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 82824,
+      "sha256": "a16c4e52643c83a7dbb01be9cba5c898db541c5e9620e7991228068b14381f55"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.15_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 5171,
+      "sha256": "708c6850ab0f1711ea3e35b8a4efd1ee309a3a0d48170d27c24fdc135ebcedce"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.00_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 5058,
+      "sha256": "f2b4a51b53e1b229e3ecb684c4c2b96d7905b2a05e9ebac95d3d9a1286175d5a"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.15_H0.07_COMPLETE_HOURS.csv": {
+      "bytes": 82824,
+      "sha256": "10f6518c01721e7006e092e63dfb66c35fbb4d7cb3eaf328da160dc819febd97"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.65_WAIT0.00_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 455301,
+      "sha256": "504fe4860dccc7bb871d5e601c701e5049a14dadc088fcd97c36c68c06c4fcbb"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.85_WAIT0.00_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 5090,
+      "sha256": "484df0c044cecacff439f06955c03c0943823c128396f63ae6a4113e8989801c"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.00_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 407501,
+      "sha256": "062042f3a080cdc5563b9baff9457e36c93aacfaed1b59f7a64a20c29b76c7b4"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.99_WAIT0.15_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 3944,
+      "sha256": "9c53cc272120dfa5d30d4e7cbc75408d8690275030cef5726a74000837912875"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.20_STOP0.99_WAIT0.15_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1814573,
+      "sha256": "d9b1f06a6e040cd7071b3f22874ab8c677818c1d3242e3c34c1fae9f5c280944"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.85_WAIT0.15_H0.00_ALL_SELECTED_SOURCE_ORDINALS_GOOD_BAD_TIMEOUT_CENSORED.npz": {
+      "bytes": 1724,
+      "sha256": "b86e1a5736673f755d3530d37c8daac88443c7a4b83abb77403e98773ec80070"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.15_H0.00_COMPLETE_QUARTERS.csv": {
+      "bytes": 329518,
+      "sha256": "e689cc36f780a40467959e8ccfa94d93e14adf7c6eee6fe60a9fdb91716d4501"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.15_H0.07_ATOMIC_RECEIPT.json": {
+      "bytes": 2756,
+      "sha256": "5a757da96493527b5fecd2d9afbb422cc105756535fbbdc360bff859cd56b14c"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.06_STOP0.99_WAIT0.15_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2813,
+      "sha256": "9fcc1215faf20250936ff6dee8a67c0f33c5a3f2f723ea1dae911aafa9be7680"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.15_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 3920,
+      "sha256": "cddd5757d40631a4f5e7e8ae658811a65b5123937db502f4394aae49eb1576a6"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.15_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 3944,
+      "sha256": "dcc3ea253ae8bb375631503b2654acd36b86d68171979afa8df6c4ba5e50e6d1"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.15_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 5164,
+      "sha256": "ddd400c9886a97552b562c873410a03ba0bb093f33938650fbf52a6e96b46bc6"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.00_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 3920,
+      "sha256": "e1f5ae99a9cd9ffd03861862e43642c5c80eaeb5a95a257263b15495fee6b1f5"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.15_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2756,
+      "sha256": "ee3c2bea3c9588d6cb01117815d58694d35ee58e6edcc8c20e135d5e3e2b07b8"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.50_STOP0.65_WAIT0.15_H0.00_COMPLETE_DAYS.csv": {
+      "bytes": 3920,
+      "sha256": "fc171462db57ab557ee919fd47f5068eaf5969732ee9f3312d74bda7d750a3f0"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.15_H0.07_COMPLETE_QUARTERS.csv": {
+      "bytes": 398320,
+      "sha256": "6a423e8ba6e2f9a39f7f860ef327c0d2712dfe41ba4101eb9b87ff753cd826a8"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.15_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 5183,
+      "sha256": "a282dc0c444ee5b4a6ff7c268e5a8e06644cec9433479d7ce3028d4a3f3b0688"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.99_WAIT0.15_H0.00_ATOMIC_RECEIPT.json": {
+      "bytes": 2811,
+      "sha256": "3aaf86bd06d90684217cfa254f5faa9e972f1f90326ff16581132f88dad3cd71"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.12_STOP0.85_WAIT0.00_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 5200,
+      "sha256": "572b13747862ff81619673f6e988b5b3aced4c60e3358f44e0324d01ebf3bdb0"
+    },
+    "R24S5_DUKASCOPY_RAW_06_P0.35_STOP0.85_WAIT0.00_H0.07_COMPLETE_DAYS.csv": {
+      "bytes": 3944,
+      "sha256": "e122fb1da02150b6d4c156e1e72bf05389927c94870ec037e0bcc294e6f5ed87"
+    },
+    "R24S5_JUNE_60CASE_INDEPENDENT_FULL_SOURCE_VERIFICATION.json": {
+      "bytes": 17550,
+      "sha256": "f513b64e92170d048a882021e7a2457e34d034ba473638cd86a28fa6bba89e75"
+    },
+    "R24S5_APPEND_ONLY_CHECKPOINTS_20261104.txt": {
+      "bytes": 10309,
+      "sha256": "f0df4d6dc95f5f42c747cc3dc35440d3bcf0ca14133764fce93752f1b0ba2efc"
+    },
+    "R24S4_DUKASCOPY_RAW_06_BROKER_ONLY_MULTISCALE_CROSS_PRODUCT_5_CAUSE_LGBM.txt": {
+      "bytes": 2435409,
+      "sha256": "4626f65718076e117ed04db23898f320c5946e31fd79f470ec77a82c2a9589a0"
+    },
+    "R24S4_DUKASCOPY_RAW_06_BROKER_ONLY_WAIT10_HAZARD.txt": {
+      "bytes": 226451,
+      "sha256": "44507ad8a05799f4050bc3a70cbc50f3615418233bd79466e5a09441471aec44"
+    },
+    "R24S4_DUKASCOPY_RAW_06_TRAINING_ROW_INDICES.npy": {
+      "bytes": 960128,
+      "sha256": "4a3f92d72878387ab9c95f8910a8d0eae1772567683ae436958eb1e3c8ebf526"
+    },
+    "R24S5_DUKASCOPY_RAW_06_RESUMABLE_INFERENCE_ATOMIC_FINAL_RECEIPT.json": {
+      "bytes": 2712,
+      "sha256": "68b149b985352063bc17e7f6b266f68bb53f8136cff5b0d4d535c6de0a908269"
+    },
+    "R24S5_DUKASCOPY_RAW_06_ATOMIC_CHUNK_INFERENCE_PROGRESS.json": {
+      "bytes": 13815,
+      "sha256": "7ac5629c49b3a1928bf698c5487d3dec63ce6094898c9b21b9fad348ba442095"
+    },
+    "r24s5_recover_trained_s4_atomic_inference.py": {
+      "bytes": 5868,
+      "sha256": "e6d5bd49e38db7df3f5cc4ea0499c26e37a836f6db87390e8e80c2839d6d0cce"
+    },
+    "r24s5_replay_per_policy_atomic.py": {
+      "bytes": 10739,
+      "sha256": "651a36723cb8da4bd2e44e398bbd8153139cb327ba74ee1856a7c74a537a1f30"
+    },
+    "verify_r24s5_full_june_exact.py": {
+      "bytes": 6486,
+      "sha256": "7cb7125434a9765ad604883b169697a4bccea79dd673297245e72f7bfcfd6a6b"
+    },
+    "build_r24s5_june_full_archives.py": {
+      "bytes": 5198,
+      "sha256": "702e55b9575448e6c7506c9145fb81d8979256c25732c581970c962a95329a34"
+    }
+  },
+  "archives": {
+    "R24S5_DUKASCOPY_2026_06_LOSSLESS_SELECTED_TRADES_UTC_QUARTERS_HOURS_DAYS_CASES_00_14.zip": {
+      "bytes": 40865292,
+      "sha256": "8aba04e83afb574eee0984fad83c83afaede4b13cd92b9ede4db2262c768a34a",
+      "case_count": 15,
+      "file_count": 75,
+      "case_ids": [
+        "P0.06_STOP0.65_WAIT0.00_H0.00",
+        "P0.06_STOP0.65_WAIT0.00_H0.07",
+        "P0.06_STOP0.65_WAIT0.15_H0.00",
+        "P0.06_STOP0.65_WAIT0.15_H0.07",
+        "P0.06_STOP0.85_WAIT0.00_H0.00",
+        "P0.06_STOP0.85_WAIT0.00_H0.07",
+        "P0.06_STOP0.85_WAIT0.15_H0.00",
+        "P0.06_STOP0.85_WAIT0.15_H0.07",
+        "P0.06_STOP0.99_WAIT0.00_H0.00",
+        "P0.06_STOP0.99_WAIT0.00_H0.07",
+        "P0.06_STOP0.99_WAIT0.15_H0.00",
+        "P0.06_STOP0.99_WAIT0.15_H0.07",
+        "P0.12_STOP0.65_WAIT0.00_H0.00",
+        "P0.12_STOP0.65_WAIT0.00_H0.07",
+        "P0.12_STOP0.65_WAIT0.15_H0.00"
+      ]
+    },
+    "R24S5_DUKASCOPY_2026_06_LOSSLESS_SELECTED_TRADES_UTC_QUARTERS_HOURS_DAYS_CASES_15_29.zip": {
+      "bytes": 39477048,
+      "sha256": "3b62527e9c8eb669b41cda14b2acfb73a37b5dd73a3193b1899b7fc425e49243",
+      "case_count": 15,
+      "file_count": 75,
+      "case_ids": [
+        "P0.12_STOP0.65_WAIT0.15_H0.07",
+        "P0.12_STOP0.85_WAIT0.00_H0.00",
+        "P0.12_STOP0.85_WAIT0.00_H0.07",
+        "P0.12_STOP0.85_WAIT0.15_H0.00",
+        "P0.12_STOP0.85_WAIT0.15_H0.07",
+        "P0.12_STOP0.99_WAIT0.00_H0.00",
+        "P0.12_STOP0.99_WAIT0.00_H0.07",
+        "P0.12_STOP0.99_WAIT0.15_H0.00",
+        "P0.12_STOP0.99_WAIT0.15_H0.07",
+        "P0.20_STOP0.65_WAIT0.00_H0.00",
+        "P0.20_STOP0.65_WAIT0.00_H0.07",
+        "P0.20_STOP0.65_WAIT0.15_H0.00",
+        "P0.20_STOP0.65_WAIT0.15_H0.07",
+        "P0.20_STOP0.85_WAIT0.00_H0.00",
+        "P0.20_STOP0.85_WAIT0.00_H0.07"
+      ]
+    },
+    "R24S5_DUKASCOPY_2026_06_LOSSLESS_SELECTED_TRADES_UTC_QUARTERS_HOURS_DAYS_CASES_30_44.zip": {
+      "bytes": 10567077,
+      "sha256": "3d96511a823cdec60f812ab72c1d750992aaa9213daf7d4b96f13b17f9544598",
+      "case_count": 15,
+      "file_count": 75,
+      "case_ids": [
+        "P0.20_STOP0.85_WAIT0.15_H0.00",
+        "P0.20_STOP0.85_WAIT0.15_H0.07",
+        "P0.20_STOP0.99_WAIT0.00_H0.00",
+        "P0.20_STOP0.99_WAIT0.00_H0.07",
+        "P0.20_STOP0.99_WAIT0.15_H0.00",
+        "P0.20_STOP0.99_WAIT0.15_H0.07",
+        "P0.35_STOP0.65_WAIT0.00_H0.00",
+        "P0.35_STOP0.65_WAIT0.00_H0.07",
+        "P0.35_STOP0.65_WAIT0.15_H0.00",
+        "P0.35_STOP0.65_WAIT0.15_H0.07",
+        "P0.35_STOP0.85_WAIT0.00_H0.00",
+        "P0.35_STOP0.85_WAIT0.00_H0.07",
+        "P0.35_STOP0.85_WAIT0.15_H0.00",
+        "P0.35_STOP0.85_WAIT0.15_H0.07",
+        "P0.35_STOP0.99_WAIT0.00_H0.00"
+      ]
+    },
+    "R24S5_DUKASCOPY_2026_06_LOSSLESS_SELECTED_TRADES_UTC_QUARTERS_HOURS_DAYS_CASES_45_59.zip": {
+      "bytes": 287196,
+      "sha256": "919138c49394fc486e3e0a7752ece8af60df14e7fc540dea3b73cc17c4ebaf03",
+      "case_count": 15,
+      "file_count": 75,
+      "case_ids": [
+        "P0.35_STOP0.99_WAIT0.00_H0.07",
+        "P0.35_STOP0.99_WAIT0.15_H0.00",
+        "P0.35_STOP0.99_WAIT0.15_H0.07",
+        "P0.50_STOP0.65_WAIT0.00_H0.00",
+        "P0.50_STOP0.65_WAIT0.00_H0.07",
+        "P0.50_STOP0.65_WAIT0.15_H0.00",
+        "P0.50_STOP0.65_WAIT0.15_H0.07",
+        "P0.50_STOP0.85_WAIT0.00_H0.00",
+        "P0.50_STOP0.85_WAIT0.00_H0.07",
+        "P0.50_STOP0.85_WAIT0.15_H0.00",
+        "P0.50_STOP0.85_WAIT0.15_H0.07",
+        "P0.50_STOP0.99_WAIT0.00_H0.00",
+        "P0.50_STOP0.99_WAIT0.00_H0.07",
+        "P0.50_STOP0.99_WAIT0.15_H0.00",
+        "P0.50_STOP0.99_WAIT0.15_H0.07"
+      ]
+    },
+    "R24S5_DUKASCOPY_2026_06_ALL60_COMPLETE_MONTH_DAY_HOUR_15MIN_AND_INDEPENDENT_1680_CHECKS.zip": {
+      "bytes": 2139969,
+      "sha256": "d57336b437af21fbf62786fc1d40620c40ca542e6932bc3414fcfaccd48a78fe",
+      "file_count": 7
+    },
+    "R24S5_DUKASCOPY_2026_06_FROZEN_5CAUSE_WAIT10_MODELS_49_BLOCKS_AND_REPRODUCIBLE_SOURCE.zip": {
+      "bytes": 1375142,
+      "sha256": "b26f52435f9edb8216db6cae5a05737d8b515935f1dba5d56d81e7cafc8e4234",
+      "file_count": 9
+    }
+  },
+  "casenames": [
+    "P0.06_STOP0.65_WAIT0.00_H0.00",
+    "P0.06_STOP0.65_WAIT0.00_H0.07",
+    "P0.06_STOP0.65_WAIT0.15_H0.00",
+    "P0.06_STOP0.65_WAIT0.15_H0.07",
+    "P0.06_STOP0.85_WAIT0.00_H0.00",
+    "P0.06_STOP0.85_WAIT0.00_H0.07",
+    "P0.06_STOP0.85_WAIT0.15_H0.00",
+    "P0.06_STOP0.85_WAIT0.15_H0.07",
+    "P0.06_STOP0.99_WAIT0.00_H0.00",
+    "P0.06_STOP0.99_WAIT0.00_H0.07",
+    "P0.06_STOP0.99_WAIT0.15_H0.00",
+    "P0.06_STOP0.99_WAIT0.15_H0.07",
+    "P0.12_STOP0.65_WAIT0.00_H0.00",
+    "P0.12_STOP0.65_WAIT0.00_H0.07",
+    "P0.12_STOP0.65_WAIT0.15_H0.00",
+    "P0.12_STOP0.65_WAIT0.15_H0.07",
+    "P0.12_STOP0.85_WAIT0.00_H0.00",
+    "P0.12_STOP0.85_WAIT0.00_H0.07",
+    "P0.12_STOP0.85_WAIT0.15_H0.00",
+    "P0.12_STOP0.85_WAIT0.15_H0.07",
+    "P0.12_STOP0.99_WAIT0.00_H0.00",
+    "P0.12_STOP0.99_WAIT0.00_H0.07",
+    "P0.12_STOP0.99_WAIT0.15_H0.00",
+    "P0.12_STOP0.99_WAIT0.15_H0.07",
+    "P0.20_STOP0.65_WAIT0.00_H0.00",
+    "P0.20_STOP0.65_WAIT0.00_H0.07",
+    "P0.20_STOP0.65_WAIT0.15_H0.00",
+    "P0.20_STOP0.65_WAIT0.15_H0.07",
+    "P0.20_STOP0.85_WAIT0.00_H0.00",
+    "P0.20_STOP0.85_WAIT0.00_H0.07",
+    "P0.20_STOP0.85_WAIT0.15_H0.00",
+    "P0.20_STOP0.85_WAIT0.15_H0.07",
+    "P0.20_STOP0.99_WAIT0.00_H0.00",
+    "P0.20_STOP0.99_WAIT0.00_H0.07",
+    "P0.20_STOP0.99_WAIT0.15_H0.00",
+    "P0.20_STOP0.99_WAIT0.15_H0.07",
+    "P0.35_STOP0.65_WAIT0.00_H0.00",
+    "P0.35_STOP0.65_WAIT0.00_H0.07",
+    "P0.35_STOP0.65_WAIT0.15_H0.00",
+    "P0.35_STOP0.65_WAIT0.15_H0.07",
+    "P0.35_STOP0.85_WAIT0.00_H0.00",
+    "P0.35_STOP0.85_WAIT0.00_H0.07",
+    "P0.35_STOP0.85_WAIT0.15_H0.00",
+    "P0.35_STOP0.85_WAIT0.15_H0.07",
+    "P0.35_STOP0.99_WAIT0.00_H0.00",
+    "P0.35_STOP0.99_WAIT0.00_H0.07",
+    "P0.35_STOP0.99_WAIT0.15_H0.00",
+    "P0.35_STOP0.99_WAIT0.15_H0.07",
+    "P0.50_STOP0.65_WAIT0.00_H0.00",
+    "P0.50_STOP0.65_WAIT0.00_H0.07",
+    "P0.50_STOP0.65_WAIT0.15_H0.00",
+    "P0.50_STOP0.65_WAIT0.15_H0.07",
+    "P0.50_STOP0.85_WAIT0.00_H0.00",
+    "P0.50_STOP0.85_WAIT0.00_H0.07",
+    "P0.50_STOP0.85_WAIT0.15_H0.00",
+    "P0.50_STOP0.85_WAIT0.15_H0.07",
+    "P0.50_STOP0.99_WAIT0.00_H0.00",
+    "P0.50_STOP0.99_WAIT0.00_H0.07",
+    "P0.50_STOP0.99_WAIT0.15_H0.00",
+    "P0.50_STOP0.99_WAIT0.15_H0.07"
+  ],
+  "no_profitability_claim": true,
+  "not_blind_out_of_sample": true,
+  "no_hist_mt5_ff_news_claim": true
+}
