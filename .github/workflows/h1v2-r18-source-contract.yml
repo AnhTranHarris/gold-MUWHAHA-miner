@@ -1,0 +1,22 @@
+name: H1V2 R18 source contracts (nondeployable)
+on:
+  push:
+    paths:
+      - 'research/h1v2_r18_dualbroker_multihorizon_20261103/**'
+      - '.github/workflows/h1v2-r18-source-contract.yml'
+  pull_request:
+    paths:
+      - 'research/h1v2_r18_dualbroker_multihorizon_20261103/**'
+      - '.github/workflows/h1v2-r18-source-contract.yml'
+  workflow_dispatch:
+jobs:
+  source-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install numpy pandas numba pytest
+      - run: python -m pytest -q research/h1v2_r18_dualbroker_multihorizon_20261103/tests/test_r18_source_contracts.py
