@@ -1,7 +1,7 @@
 #property copyright "Clean-room behavioral reconstruction for AnhTranHarris"
-#property version   "1.91"
+#property version   "1.92"
 #property strict
-#property description "Gold MUWHAHA R9: unchanged R9 trading plus optional default-OFF QRB/QAF telemetry."
+#property description "Gold MUWHAHA R9: original trade logic with default-ON QRB/QAF observation; no signal gating."
 
 #include <Trade/Trade.mqh>
 #include "GoldMuwahahaM60QuoteFlows.mqh"
@@ -58,7 +58,7 @@ input int    InpDeviationPoints      = 20;
 input bool   InpVerbose              = true;
 
 input group "R9 M60 quote-flow shadow telemetry (NO trade gating)"
-input bool   InpM60QuoteFlowShadowEnabled = false;
+input bool   InpM60QuoteFlowShadowEnabled = true;
 input int    InpM60QuoteFlowCapacity      = 32768;
 
 string EA_TAG = "GM_R9_HYBRID";
@@ -406,8 +406,8 @@ void ProcessEntries(const MqlTick &tick)
    double disp,eff,rng;int turns;
    if(!S1QualityForSide(side,disp,eff,rng,turns)) return;
    if(InpVerbose) PrintFormat("%s: qualified side=%d disp=%.3f eff=%.3f range=%.3f turns=%d",EA_TAG,side,disp,eff,rng,turns);
-   if(InpM60QuoteFlowShadowEnabled) g_m60QuoteShadow.LogCandidate(tick,side); // read-only
    OpenTrade(side,tick);
+   if(InpM60QuoteFlowShadowEnabled) g_m60QuoteShadow.LogCandidate(tick,side); // read-only, file I/O AFTER order request
 }
 
 void Reconcile(const MqlTick &tick)
