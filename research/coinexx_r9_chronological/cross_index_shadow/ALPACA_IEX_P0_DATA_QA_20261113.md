@@ -56,3 +56,11 @@ The connected Alpaca plugin is confirmed for historical query samples, but its e
 
 - Frozen Coinexx R9 nine-month candidate source, `source_receipt.json` in `carson/coinexx-r9-path-signature-shadow-p1-20261113` branch, 303,934 candidates, hashes for all nine raw XAUUSD months; existing derived cache in primary data Drive.
 - Alpaca historical quotes API: https://docs.alpaca.markets/us/reference/stockquotes-1 (symbol-major paging and next_page_token), https://docs.alpaca.markets/us/v1.4.2/docs/historical-stock-data-1 (IEX is one venue, not consolidated), https://docs.alpaca.markets/us/reference/stockquotesingle-1 (quote schemas and nanosecond time).
+
+## 2026-11-13 executable ingestion-worker extension
+
+`ingest_alpaca.py` is now added to this GitHub research branch, with accompanying `tests/test_ingest_alpaca.py`. It implements provider-authorized, **complete page-token pagination**; one-symbol partitions; private gzip CSV archives; complete-source SHA-256 receipts; checkpoint/resume validation; date-scope conflict rejection; exact nanosecond timestamp-order guards; and exclusive partition boundaries over Alpaca's inclusive API end. It supports cheaper full-month `1Min` bar ingestion for high-level regime screening, and UTC-hour full quote ingestion for later microsecond/horizon-specific research. Bars are never to be interpreted as 1–30-second quotes. No credentials are stored in source or pushed to GitHub.
+
+**Execution status: the ingestion worker's network path has NOT been executed**; local tests substitute deterministic API fixtures because Alpaca OAuth access through ChatGPT plugins does not supply API-key secrets to the Python runtime. A private authorized Alpaca environment is needed for unattended bulk pagination. The worker is ready for such an environment but the user's credentials are neither known nor requested in chat. At the current checkpoint there are only nine-month provider spot checks and three true quote-to-gold matching examples, **not** a full historical index dataset, AUC estimate or fitted trading policy.
+
+Twenty-seven combined Python unit tests now pass locally, covering original cross-index invariants, new quote-quality and latency invariants, and ingestion pagination / checkpoint failures. CI source is unchanged because existing cross-index test discovery already covers these new tests.
