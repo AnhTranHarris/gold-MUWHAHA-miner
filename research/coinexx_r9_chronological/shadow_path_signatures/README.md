@@ -57,8 +57,8 @@ This is NOT certified net account P&L. Model validation has a hard minimum
 
 ## Five explicit training passes
 
-- P1: frozen R9 contextual controls only; Jan–Apr train, May evaluation.
-- P2: plus ordered quote geometric signature; Jan–May train, June evaluation.
+- P1: R9 contextual controls + ordered depth-2 path-area signature; Jan–Apr train, May evaluation.
+- P2: full ordered-path geometry, normalization and churn; Jan–May train, June evaluation.
 - P3: plus quote-side event response; Jan–Jun train, July evaluation.
 - P4: nonlinear model plus full causal signature/event features; Jan–July train, August evaluation.
 - P5: independently fitted nonlinear shadow, Jan–August train and **September final one-shot evaluation**.
