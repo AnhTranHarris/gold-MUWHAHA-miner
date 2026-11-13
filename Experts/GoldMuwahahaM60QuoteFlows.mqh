@@ -227,7 +227,11 @@ public:
       GM_M60_FlowWindow w[GM_M60_NWINDOWS];
       for(int j=0;j<GM_M60_NWINDOWS;j++) ComputeWindow(tick.time_msc,m_windows[j],w[j]);
       double qaf[GM_M60_NQAF];bool ready[GM_M60_NQAF];
-      for(int j=0;j<GM_M60_NQAF;j++) ready[j]=ComputeQAF(tick.time_msc/1000,m_qaf_windows[j],qaf[j]);
+      for(int j=0;j<GM_M60_NQAF;j++)
+      {
+         qaf[j]=0.0;
+         ready[j]=ComputeQAF(tick.time_msc/1000,m_qaf_windows[j],qaf[j]);
+      }
       FileWrite(m_file,tick.time_msc,side,DoubleToString(tick.bid,_Digits),DoubleToString(tick.ask,_Digits),"ON_TICK_UNVERIFIED_PARITY",
          F(w[0].ready,w[0].qrb),F(w[0].ready,w[0].signed_fraction),F(w[0].ready,w[0].spread_pressure),F(w[0].ready,w[0].quote_activity_log),
          F(w[1].ready,w[1].qrb),F(w[1].ready,w[1].signed_fraction),F(w[1].ready,w[1].spread_pressure),F(w[1].ready,w[1].quote_activity_log),
