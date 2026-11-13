@@ -1,5 +1,5 @@
 #property copyright "Clean-room behavioral reconstruction for AnhTranHarris"
-#property version   "1.90"
+#property version   "1.93"
 #property strict
 #property description "Gold MUWHAHA R9: R5-style minute bracket plus causal S1 momentum/efficiency quality gate."
 
@@ -56,6 +56,27 @@ input group "Execution"
 input int    InpDeviationPoints      = 20;
 input bool   InpVerbose              = true;
 
+input group "R9 account-wide gross loss governor (experimental defaults)"
+input bool   InpR9GovEnabled                  = true;
+input double InpR9GovBasePct                  = 4.0;
+input double InpR9GovMaxPct                   = 12.0;
+input double InpR9GovProfitRecycle            = 0.25;
+input double InpR9GovPeakDrawdownPct          = 10.0;
+input double InpR9GovMinMarginPct             = 150.0;
+input double InpR9GovCashReservePerTrade      = 0.25;
+input int    InpR9GovRefreshSeconds           = 5;
+input bool   InpR9GovFlattenOwnOnHalt         = true;
+
+input group "R9 Coinexx quote-only native M1 indicators"
+input bool   InpR9M1ShadowEnabled             = true;
+input bool   InpR9M1RescueEnabled             = false; // OFF: requires source-exact replay
+input int    InpR9M1ADXPeriod                 = 14;
+input int    InpR9M1EMAPeriod                 = 20;
+input int    InpR9M1ATRPeriod                 = 14;
+input double InpR9M1MinADX                    = 18.0;
+input double InpR9M1MinDIGap                  = 6.0;
+input double InpR9M1RescueScore               = 0.82;
+
 string EA_TAG = "GM_R9_HYBRID";
 
 #define MICRO_CAPACITY 128
@@ -86,6 +107,9 @@ datetime g_positionOpenedAt=0;
 
 int g_atrHandle=INVALID_HANDLE;
 datetime g_lastGateLogBar=0;
+datetime g_r9LastTimeoutCloseSecond=0;
+#include "GoldMuwahahaR9PortfolioGovernor.mqh"
+#include "GoldMuwahahaR9M1IndicatorContext.mqh"
 
 void Log(const string text)
 {
@@ -332,6 +356,9 @@ bool OpenTrade(const int side,const MqlTick &tick)
    const double brokerMin=InpRespectBrokerStops?BrokerStopsDistance()+TickSize():0.0;
    const double sd=MathMax(HunterDistance(InpStopLossPips),brokerMin);
    double sl=0.0;bool sent=false;
+   if(side>0) sl=NormalizePrice(tick.bid-sd);
+   else sl=NormalizePrice(tick.ask+sd);
+   if(!R9GovAllowsOrder(side,volume,side>0?tick.ask:tick.bid,sl)) return false;
    ResetLastError();
    if(side>0){ sl=NormalizePrice(tick.bid-sd);sent=trade.Buy(volume,_Symbol,0.0,sl,0.0,EA_TAG+" BUY"); }
    else{ sl=NormalizePrice(tick.ask+sd);sent=trade.Sell(volume,_Symbol,0.0,sl,0.0,EA_TAG+" SELL"); }
@@ -343,8 +370,12 @@ bool OpenTrade(const int side,const MqlTick &tick)
 
 void ManagePosition(const MqlTick &tick,const ulong ticket,const ENUM_POSITION_TYPE type,const double openPrice,const double currentSL)
 {
-   if(g_positionOpenedAt>0 && (tick.time-g_positionOpenedAt)>=InpMaxHoldSeconds)
+   const datetime ageNow=TimeTradeServer();
+   const datetime actualOpened=(datetime)PositionGetInteger(POSITION_TIME);
+   if(actualOpened>0 && ageNow>0 && ageNow-actualOpened>=InpMaxHoldSeconds)
    {
+      if(g_r9LastTimeoutCloseSecond>=ageNow) return;
+      g_r9LastTimeoutCloseSecond=ageNow;
       ResetLastError();if(!trade.PositionClose(ticket) || !ResultAccepted()) LogTradeFailure("max-hold close");return;
    }
    if(!InpTrailingEnabled || InpTrailPips<=0) return;
@@ -389,6 +420,8 @@ void ArmOppositeAfterExit()
 void ProcessEntries(const MqlTick &tick)
 {
    if(g_pendingMode==0) return;
+   if(InpR9GovEnabled && !R9GovRefresh(false)) return;
+   if(InpR9GovEnabled && g_r9GovLocked) return;
    if(!GateAllowsEntry(tick)) return;
 
    int side=0;
@@ -397,8 +430,25 @@ void ProcessEntries(const MqlTick &tick)
    if(side==0) return;
 
    double disp,eff,rng;int turns;
-   if(!S1QualityForSide(side,disp,eff,rng,turns)) return;
-   if(InpVerbose) PrintFormat("%s: qualified side=%d disp=%.3f eff=%.3f range=%.3f turns=%d",EA_TAG,side,disp,eff,rng,turns);
+   const bool originalQualified=S1QualityForSide(side,disp,eff,rng,turns);
+   double indicatorScore=0.0;
+   if(InpR9M1ShadowEnabled && g_r9IndicatorLogMinute!=g_cycleMinute)
+   {
+      if(R9IndicatorConfluence(side,tick.time,indicatorScore) && InpVerbose)
+         PrintFormat("%s: INDICATOR SHADOW minute=%s side=%d adx=%.2f pDI=%.2f mDI=%.2f emaATR=%.3f score=%.3f",
+                     EA_TAG,TimeToString(g_cycleMinute,TIME_DATE|TIME_MINUTES),
+                     side,g_r9Adx,g_r9PlusDi,g_r9MinusDi,
+                     (g_r9Ema1-g_r9Ema2)/MathMax(g_r9AtrM1,1e-8),indicatorScore);
+      g_r9IndicatorLogMinute=g_cycleMinute;
+   }
+   if(!originalQualified)
+   {
+      if(!R9IndicatorRescue(side,tick.time,indicatorScore)) return;
+      if(InpVerbose) PrintFormat("%s: EXPERIMENTAL INDICATOR RESCUE side=%d score=%.3f",EA_TAG,side,indicatorScore);
+   }
+   else if(InpVerbose)
+      PrintFormat("%s: qualified side=%d disp=%.3f eff=%.3f range=%.3f turns=%d",
+                  EA_TAG,side,disp,eff,rng,turns);
    OpenTrade(side,tick);
 }
 
@@ -432,7 +482,14 @@ int OnInit()
       InpMaxHoldSeconds<=0 || InpMaxSameMinuteRearms<0 || InpVelocityLookbackSec<2 || InpRangeLookbackSec<2 ||
       InpVelocityLookbackSec>=MICRO_CAPACITY || InpRangeLookbackSec>=MICRO_CAPACITY || InpMinVelocityPips<0 ||
       InpMinDirectionalEff<0.0 || InpMinDirectionalEff>1.0 || InpMinRangePips<0 || InpMaxTurns<0 ||
-      InpHunterPipPrice<=0.0 || InpAtrPeriod<=0 || InpMaxSpreadPoints<0)
+      InpHunterPipPrice<=0.0 || InpAtrPeriod<=0 || InpMaxSpreadPoints<0 ||
+       InpR9GovBasePct<=0.0 || InpR9GovMaxPct<InpR9GovBasePct ||
+       InpR9GovProfitRecycle<0.0 || InpR9GovProfitRecycle>1.0 ||
+       InpR9GovPeakDrawdownPct<=0.0 || InpR9GovMinMarginPct<=0.0 ||
+       InpR9GovCashReservePerTrade<0.0 || InpR9GovRefreshSeconds<1 ||
+       InpR9M1ADXPeriod<2 || InpR9M1EMAPeriod<2 || InpR9M1ATRPeriod<2 ||
+       InpR9M1RescueScore<0.0 || InpR9M1RescueScore>1.0 ||
+       InpR9M1MinDIGap<0.0 || InpR9M1MinADX<0.0)
    {
       Print(EA_TAG,": invalid inputs");return INIT_PARAMETERS_INCORRECT;
    }
@@ -443,6 +500,18 @@ int OnInit()
       g_atrHandle=iATR(_Symbol,InpAtrTimeframe,InpAtrPeriod);
       if(g_atrHandle==INVALID_HANDLE){ PrintFormat("%s: ATR handle failed lastError=%d",EA_TAG,GetLastError());return INIT_FAILED; }
    }
+   if(!R9IndicatorInitialize()) return INIT_FAILED;
+   if(!EventSetTimer(1))
+   {
+      Print(EA_TAG,": 1s timer unavailable; fail closed");
+      return INIT_FAILED;
+   }
+   if(InpR9GovEnabled && !R9GovRefresh(true))
+   {
+      Print(EA_TAG,": portfolio risk history/anchor unavailable; fail closed");
+      EventKillTimer();
+      return INIT_FAILED;
+   }
    PrintFormat("%s initialized gap=%d stop=%d trail=%d act=%d velLB=%d minVel=%d eff=%.2f range=%d maxHold=%d rearms=%d",
                EA_TAG,InpGapPips,InpStopLossPips,InpTrailPips,InpTrailActivationPips,InpVelocityLookbackSec,InpMinVelocityPips,InpMinDirectionalEff,InpMinRangePips,InpMaxHoldSeconds,InpMaxSameMinuteRearms);
    return INIT_SUCCEEDED;
@@ -451,10 +520,60 @@ int OnInit()
 void OnDeinit(const int reason)
 {
    if(g_atrHandle!=INVALID_HANDLE){ IndicatorRelease(g_atrHandle);g_atrHandle=INVALID_HANDLE; }
+   EventKillTimer();
+   R9IndicatorRelease();
+   GlobalVariablesFlush();
    Log(StringFormat("deinit reason=%d",reason));
 }
 
 void OnTick()
 {
-   MqlTick tick;if(!SymbolInfoTick(_Symbol,tick) || tick.bid<=0.0 || tick.ask<=0.0) return;Reconcile(tick);
+   MqlTick tick;
+   if(!SymbolInfoTick(_Symbol,tick) || tick.bid<=0.0 || tick.ask<=0.0) return;
+   // Loss-accounting history refresh is amortized; market risk is independently
+   // inspected by the 1-second timer. No quote tick data is persisted here.
+   if(InpR9GovEnabled && g_r9GovLocked) R9GovCloseOurPositions();
+   Reconcile(tick);
+}
+void OnTimer()
+{
+   if(InpR9GovEnabled)
+   {
+      R9GovRefresh(false);
+      R9GovCloseOurPositions();
+   }
+   const datetime now=TimeTradeServer();
+   if(now<=0 || g_r9LastTimeoutCloseSecond>=now) return;
+   for(int i=PositionsTotal()-1;i>=0;--i)
+   {
+      const ulong ticket=PositionGetTicket(i);
+      if(ticket==0 || PositionGetString(POSITION_SYMBOL)!=_Symbol ||
+         (ulong)PositionGetInteger(POSITION_MAGIC)!=InpMagic) continue;
+      const datetime opened=(datetime)PositionGetInteger(POSITION_TIME);
+      if(opened<=0 || now-opened<InpMaxHoldSeconds) continue;
+      g_r9LastTimeoutCloseSecond=now;
+      if(!trade.PositionClose(ticket) ||
+         (trade.ResultRetcode()!=TRADE_RETCODE_DONE &&
+          trade.ResultRetcode()!=TRADE_RETCODE_DONE_PARTIAL))
+         LogTradeFailure("timer close");
+      break; // 1 close request per second, never a request storm
+   }
+}
+void OnTradeTransaction(const MqlTradeTransaction &trans,
+                        const MqlTradeRequest &request,
+                        const MqlTradeResult &result)
+{
+   if(trans.type!=TRADE_TRANSACTION_DEAL_ADD) return;
+   g_r9GovDirty=true; // cheap notification; expensive history scan outside callback
+   if(trans.deal==0 || !HistoryDealSelect(trans.deal)) return;
+   if(HistoryDealGetString(trans.deal,DEAL_SYMBOL)!=_Symbol ||
+      (ulong)HistoryDealGetInteger(trans.deal,DEAL_MAGIC)!=InpMagic) return;
+   const ENUM_DEAL_ENTRY state=(ENUM_DEAL_ENTRY)HistoryDealGetInteger(trans.deal,DEAL_ENTRY);
+   if(state==DEAL_ENTRY_IN || state==DEAL_ENTRY_INOUT)
+   {
+      g_hadPosition=true;
+      g_positionOpenedAt=(datetime)HistoryDealGetInteger(trans.deal,DEAL_TIME);
+      g_lastPositionType=(HistoryDealGetInteger(trans.deal,DEAL_TYPE)==DEAL_TYPE_BUY)?
+                         POSITION_TYPE_BUY:POSITION_TYPE_SELL;
+   }
 }
