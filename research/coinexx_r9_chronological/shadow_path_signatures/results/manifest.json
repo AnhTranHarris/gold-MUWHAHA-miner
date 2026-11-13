@@ -1,0 +1,100 @@
+{
+  "research": "Priority 1 causal Bid/Ask path signatures",
+  "classification": "FULL_R9_QUOTE_REPLAY_SHADOW_ONLY_ALL_FIVE_EVALUATIONS_FAILED",
+  "raw_coinexx_gzip_by_month": {
+    "01": "1307a75df5d635678de7691908600090a552f38543e0512187dcd7b37fbc66b8",
+    "02": "5de772aab4d15ebf18aa48850e847c98e2bcb639064790bbed9d87a598c3bf05",
+    "03": "3e9a03d97c6403036c4f5731e2e9eff43b8c4c9b25ac61adc6cc2147e3e79112",
+    "04": "f04660a094aa2d9738300c409f7f1c85868d5415c3bb8be11f0026740e7dc3be",
+    "05": "3e39c2810a40858f17245f4e07b6e15a0b52bbb48320a94fbe123a77c6343e29",
+    "06": "3033ccb257d067aecc123f3791d9dddc5c95841b9bba167ff1ca0cf1589dc2b4",
+    "07": "d9d47d40abb33935414edfb5c11f0c518d8c9cc27221da182dab0bc49b0b708d",
+    "08": "8e337d18377c318de17ceb72d46bbfc976a29cef4571dfa3457d3ac7fc0e1c17",
+    "09": "deaf191f65506178d501256f084a0ff4615fd21946f27ec1d9ee8f5e8c64b8ff"
+  },
+  "raw_total_rows": 72129347,
+  "candidate_rows": 303934,
+  "files": {
+    "README.md": {
+      "bytes": 6531,
+      "sha256": "b8a69b216eb087079be5f8834ebe9108297aa17d42802726059c928720300d0f"
+    },
+    "signatures.py": {
+      "bytes": 4527,
+      "sha256": "1e8634fcca9ea49180bc5a757f6de62c648fdf0d6dddb1859c91c5e18c283934"
+    },
+    "extract.py": {
+      "bytes": 7138,
+      "sha256": "adba9f25dcdeba298805c8f4fb5df507af8a425ebf9a22f6bedda137cff7ce50"
+    },
+    "train.py": {
+      "bytes": 10848,
+      "sha256": "0b8bd0c4c321690a35448d46d1b31fa16a44648493a4a6ed3678f68c1e53938f"
+    },
+    "full_fit.py": {
+      "bytes": 3554,
+      "sha256": "da8eec48ce296c3a9b57bbb9a5787625083a75a1c97237fb09990f44de3cfa6b"
+    },
+    "tests/test_signatures.py": {
+      "bytes": 1399,
+      "sha256": "65c354c23ca41730d5da431670d5611536049050482c4fd830837217f56ffa2c"
+    },
+    "outputs/source_receipt.json": {
+      "bytes": 3877,
+      "sha256": "de60ada52a8413bd7d93217c285278f9abdfa1e9509d733e4e35618c1808b8f7"
+    },
+    "models/five_pass_results.json": {
+      "bytes": 13304,
+      "sha256": "57a10e72b8167242ea51c1456dbf1157978526694da62d311f6f5f04b1a5b54b"
+    },
+    "models/FULL_NINE_REFIT_SHADOW_RECEIPT.json": {
+      "bytes": 2243,
+      "sha256": "7ca0970da2c8873faba2b3caa81e20a2ac1164216862e493c49aa3145e40dba0"
+    },
+    "models/P1_receipt.json": {
+      "bytes": 6324,
+      "sha256": "4f79746abda30a2d09ba9040a9dd6e9a963e4b52a576533ee00e004db564a71e"
+    },
+    "models/P2_receipt.json": {
+      "bytes": 6565,
+      "sha256": "9772bd3ac3720054b2c06d0fca5bc976911d1c2bdf42c4ebc2d73e1d04df603d"
+    },
+    "models/P3_receipt.json": {
+      "bytes": 6736,
+      "sha256": "d07ce285fc204acb88b03e0b3e378682f0b2affd72bca0ee6d47c47b07f79a42"
+    },
+    "models/P4_receipt.json": {
+      "bytes": 6402,
+      "sha256": "f410a367c778929313192a433ea1b3c1222ace94d6f4893ec50fcf073217279e"
+    },
+    "models/P5_receipt.json": {
+      "bytes": 6626,
+      "sha256": "d9137e4c79db934f8c9151eea7d615415248a9adeb39e59891118f7405e1bf0f"
+    },
+    "models/P1_shadow_05.joblib": {
+      "bytes": 1522,
+      "sha256": "b9a32fb615c37d345900d2b270ac2487f08de52005890fb39d2e9c5215601ef6"
+    },
+    "models/P2_shadow_06.joblib": {
+      "bytes": 40942,
+      "sha256": "cdc342a6fa06561d01f93ad1a75f34a30294479b632fb3ea0c420dd04d743c6f"
+    },
+    "models/P3_shadow_07.joblib": {
+      "bytes": 48067,
+      "sha256": "13f299a1102f2fb29878ec7a9d132e795be8bbf6c7810ae30f91db9a70a790a6"
+    },
+    "models/P4_shadow_08.joblib": {
+      "bytes": 72124,
+      "sha256": "7053b0b6e3784d5eaf33ecc2d0519b5f55907f84b9a119644686ab0bb0298dcc"
+    },
+    "models/P5_shadow_09.joblib": {
+      "bytes": 94400,
+      "sha256": "ab02c2ee7fda13a97389373542fb2cb4c86ab572a31b8ca7e6e614cdd182c068"
+    },
+    "models/FROZEN_ALL9_SHADOW_ONLY_UNAPPROVED.joblib": {
+      "bytes": 94650,
+      "sha256": "beee83d875e2f78fd324a2d676d1ac9ba6e57164750317b5da58233e0be5f62c"
+    }
+  },
+  "derived_cache": "Sourced only from all original ticks; NO raw ticks in output ZIP. Never a replacement for original market data."
+}
