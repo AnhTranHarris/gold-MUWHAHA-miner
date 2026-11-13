@@ -1,0 +1,126 @@
+{
+  "source_months": {
+    "01": {
+      "rows": 7699274,
+      "first_time_msc": 1767315600480,
+      "last_time_msc": 1769817598953,
+      "source_sha256": "1307a75df5d635678de7691908600090a552f38543e0512187dcd7b37fbc66b8",
+      "equal_adjacent_millisecond_rows": 413,
+      "entries": 32179,
+      "closed_positions": 32179,
+      "open_at_month_end": 0
+    },
+    "02": {
+      "rows": 7102818,
+      "first_time_msc": 1769994025564,
+      "last_time_msc": 1772236798561,
+      "source_sha256": "5de772aab4d15ebf18aa48850e847c98e2bcb639064790bbed9d87a598c3bf05",
+      "equal_adjacent_millisecond_rows": 33,
+      "entries": 35382,
+      "closed_positions": 35382,
+      "open_at_month_end": 0
+    },
+    "03": {
+      "rows": 8859103,
+      "first_time_msc": 1772413212172,
+      "last_time_msc": 1775001598223,
+      "source_sha256": "3e9a03d97c6403036c4f5731e2e9eff43b8c4c9b25ac61adc6cc2147e3e79112",
+      "equal_adjacent_millisecond_rows": 87,
+      "entries": 40301,
+      "closed_positions": 40301,
+      "open_at_month_end": 0
+    },
+    "04": {
+      "rows": 7831685,
+      "first_time_msc": 1775005200583,
+      "last_time_msc": 1777593598773,
+      "source_sha256": "f04660a094aa2d9738300c409f7f1c85868d5415c3bb8be11f0026740e7dc3be",
+      "equal_adjacent_millisecond_rows": 4068,
+      "entries": 33760,
+      "closed_positions": 33760,
+      "open_at_month_end": 0
+    },
+    "05": {
+      "rows": 8011360,
+      "first_time_msc": 1777597201511,
+      "last_time_msc": 1780099179280,
+      "source_sha256": "3e39c2810a40858f17245f4e07b6e15a0b52bbb48320a94fbe123a77c6343e29",
+      "equal_adjacent_millisecond_rows": 8852,
+      "entries": 31615,
+      "closed_positions": 31615,
+      "open_at_month_end": 0
+    },
+    "06": {
+      "rows": 9347508,
+      "first_time_msc": 1780275601067,
+      "last_time_msc": 1782863998384,
+      "source_sha256": "3033ccb257d067aecc123f3791d9dddc5c95841b9bba167ff1ca0cf1589dc2b4",
+      "equal_adjacent_millisecond_rows": 11286,
+      "entries": 33946,
+      "closed_positions": 33946,
+      "open_at_month_end": 0
+    },
+    "07": {
+      "rows": 8075197,
+      "first_time_msc": 1782867600658,
+      "last_time_msc": 1785542398339,
+      "source_sha256": "d9d47d40abb33935414edfb5c11f0c518d8c9cc27221da182dab0bc49b0b708d",
+      "equal_adjacent_millisecond_rows": 8774,
+      "entries": 32536,
+      "closed_positions": 32536,
+      "open_at_month_end": 0
+    },
+    "08": {
+      "rows": 7468061,
+      "first_time_msc": 1785718801451,
+      "last_time_msc": 1788220798943,
+      "source_sha256": "8e337d18377c318de17ceb72d46bbfc976a29cef4571dfa3457d3ac7fc0e1c17",
+      "equal_adjacent_millisecond_rows": 7828,
+      "entries": 31214,
+      "closed_positions": 31214,
+      "open_at_month_end": 0
+    },
+    "09": {
+      "rows": 7734341,
+      "first_time_msc": 1788224400849,
+      "last_time_msc": 1790812795627,
+      "source_sha256": "deaf191f65506178d501256f084a0ff4615fd21946f27ec1d9ee8f5e8c64b8ff",
+      "equal_adjacent_millisecond_rows": 7728,
+      "entries": 33001,
+      "closed_positions": 33001,
+      "open_at_month_end": 0
+    }
+  },
+  "total_rows": 72129347,
+  "completed_months": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09"
+  ],
+  "r9_stats": {
+    "gate_spread": 2188339,
+    "gate_no_atr": 9945,
+    "gate_s1": 25983571,
+    "entries": 303934,
+    "closed_stop": 297763,
+    "rearms": 296449,
+    "trail_updates": 363659,
+    "closed_timeout": 6171,
+    "gate_low_atr": 317987
+  },
+  "path_signature_windows_ms": [
+    500,
+    2000,
+    10000
+  ],
+  "candidate_rows": 303934,
+  "cost_basis": "raw quote-side price PnL in integer 0.01 XAUUSD units; no assumed server fill/commission",
+  "baseline": "carson/coinexx-r9-chronological-backtest-v1-20261112 SHA de3e617",
+  "deployment": "research shadow only; no EA modification or live authorization"
+}
