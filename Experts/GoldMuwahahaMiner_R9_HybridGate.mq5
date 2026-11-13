@@ -63,6 +63,7 @@ input double InpR9GovMaxPct                   = 12.0;
 input double InpR9GovProfitRecycle            = 0.25;
 input double InpR9GovPeakDrawdownPct          = 10.0;
 input double InpR9GovMinMarginPct             = 150.0;
+input double InpR9GovMinFreeEquityPct         = 10.0;
 input double InpR9GovCashReservePerTrade      = 0.25;
 input int    InpR9GovRefreshSeconds           = 5;
 input bool   InpR9GovFlattenOwnOnHalt         = true;
@@ -500,6 +501,7 @@ int OnInit()
        InpR9GovBasePct<=0.0 || InpR9GovMaxPct<InpR9GovBasePct ||
        InpR9GovProfitRecycle<0.0 || InpR9GovProfitRecycle>1.0 ||
        InpR9GovPeakDrawdownPct<=0.0 || InpR9GovMinMarginPct<=0.0 ||
+       InpR9GovMinFreeEquityPct<0.0 || InpR9GovMinFreeEquityPct>=100.0 ||
        InpR9GovCashReservePerTrade<0.0 || InpR9GovRefreshSeconds<1 ||
        InpR9M1ADXPeriod<2 || InpR9M1EMAPeriod<2 || InpR9M1ATRPeriod<2 ||
        InpR9M1RescueScore<0.0 || InpR9M1RescueScore>1.0 ||
