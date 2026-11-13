@@ -1,0 +1,47 @@
+{
+  "training_scope": "2026_JANUARY_THROUGH_SEPTEMBER_SOURCE_PINNED",
+  "raw_tick_rows": 72129347,
+  "entry_opportunities": 303934,
+  "counterfactual_actions": 607868,
+  "features_in_full_model": 155,
+  "retrospective_eval_months": [
+    "05",
+    "06",
+    "07",
+    "08",
+    "09"
+  ],
+  "retrospective_original_decisions": 162312,
+  "strict_utility_positive_hazard_entries": 0,
+  "month_equal_weight_means": {
+    "frozen_baseline": {
+      "pooled_auc5": 0.7272895264076965,
+      "r9_direction_auc5": 0.7129442215335844,
+      "test_months_at_or_above_075_pooled": 0
+    },
+    "expanded_hazard": {
+      "pooled_auc5": 0.7335187382821964,
+      "r9_direction_auc5": 0.7181814118477347,
+      "test_months_at_or_above_075_pooled": 0
+    },
+    "direct_5sec": {
+      "pooled_auc5": 0.7385126712129463,
+      "r9_direction_auc5": 0.7231749783921705,
+      "test_months_at_or_above_075_pooled": 2
+    },
+    "fixed_half_ensemble": {
+      "pooled_auc5": 0.7375076433973715,
+      "r9_direction_auc5": 0.7221478057345527,
+      "test_months_at_or_above_075_pooled": 1
+    }
+  },
+  "ablation_mean_added_34_gain": 0.0006899111563051675,
+  "model_gate": "FAIL_OVERALL_ORIGINAL_DIRECTION_AND_ECONOMICS",
+  "full_trained_models": "JAN_SEP_IN_SAMPLE_ONLY_NEVER_PROSPECTIVE_OOS",
+  "mutable_EA_changes": false,
+  "source_sha256_pass_9_of_9": true,
+  "saved_model_replay_10_of_10": true,
+  "existing_formula_tests_pass": 26,
+  "source_references": "Pinned prior competing-hazard & priority screen source receipt",
+  "trading_policy_trade_volume": "NOT_ESTABLISHED; 100 percent candidate denominator retained only for scoring"
+}
