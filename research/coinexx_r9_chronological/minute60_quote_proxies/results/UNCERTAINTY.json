@@ -1,0 +1,78 @@
+{
+  "status": "DESCRIPTIVE_BOOTSTRAP_RETROSPECTIVE_EXPOSED_MONTHS",
+  "resamples": 160,
+  "unit": "calendar day within each heldout month; original R9 direction",
+  "months": [
+    {
+      "month": "05",
+      "n_days": 21,
+      "n_valid_original_actions": 31609,
+      "auc": [
+        0.7050847089981862,
+        0.7044956997990247,
+        0.7053657050005863
+      ],
+      "delta_marked": -0.0005890091991614943,
+      "delta_all": 0.00028099600240005795
+    },
+    {
+      "month": "06",
+      "n_days": 22,
+      "n_valid_original_actions": 33939,
+      "auc": [
+        0.714114287461168,
+        0.7144372693907717,
+        0.7136558125054788
+      ],
+      "delta_marked": 0.0003229819296036718,
+      "delta_all": -0.00045847495568918095
+    },
+    {
+      "month": "07",
+      "n_days": 23,
+      "n_valid_original_actions": 32531,
+      "auc": [
+        0.7389344517819407,
+        0.7389480216266651,
+        0.7386642407207324
+      ],
+      "delta_marked": 1.3569844724337088e-05,
+      "delta_all": -0.00027021106120828087
+    },
+    {
+      "month": "08",
+      "n_days": 21,
+      "n_valid_original_actions": 31211,
+      "auc": [
+        0.7345313119445542,
+        0.7350251504970008,
+        0.7348039527091097
+      ],
+      "delta_marked": 0.0004938385524465572,
+      "delta_all": 0.00027264076455546515
+    },
+    {
+      "month": "09",
+      "n_days": 22,
+      "n_valid_original_actions": 32995,
+      "auc": [
+        0.7232101317750035,
+        0.7226464794498481,
+        0.7228129967049496
+      ],
+      "delta_marked": -0.0005636523251554282,
+      "delta_all": -0.00039713507005390003
+    }
+  ],
+  "mean_observed_delta_marked": -6.445423950847129e-05,
+  "mean_observed_delta_all": -0.00011443686399916774,
+  "marked_95pct": [
+    -0.0004639725225892588,
+    0.00039570063771393664
+  ],
+  "all_95pct": [
+    -0.0005961396364701088,
+    0.00035892169264799457
+  ],
+  "warning": "A descriptive within-exposed-data CI, not a new independent confirmation or proof of a causal information gain."
+}
