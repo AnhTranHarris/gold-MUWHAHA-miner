@@ -1,0 +1,95 @@
+{
+  "status": "RETROSPECTIVE_DIAGNOSTICS_ONLY",
+  "verified_models": 25,
+  "verified_auc_values": 100,
+  "folds": [
+    {
+      "month": "05",
+      "models_verified": 5,
+      "original_entry_count": 31615
+    },
+    {
+      "month": "06",
+      "models_verified": 5,
+      "original_entry_count": 33946
+    },
+    {
+      "month": "07",
+      "models_verified": 5,
+      "original_entry_count": 32536
+    },
+    {
+      "month": "08",
+      "models_verified": 5,
+      "original_entry_count": 31214
+    },
+    {
+      "month": "09",
+      "models_verified": 5,
+      "original_entry_count": 33001
+    }
+  ],
+  "r9_original_side_utc_day_block_bootstrap": [
+    {
+      "month": "05",
+      "utc_days": 21,
+      "boot_reps": 180,
+      "delta_all_mean": 0.0005957147190784618,
+      "delta_all_p025": -0.0006590470165779211,
+      "delta_all_p975": 0.0016717001016626682,
+      "delta_geometry_mean": 0.0010122048234317547,
+      "delta_geometry_p025": -0.00016160377262839637,
+      "delta_geometry_p975": 0.00216791990395859
+    },
+    {
+      "month": "06",
+      "utc_days": 22,
+      "boot_reps": 180,
+      "delta_all_mean": 0.0041304621547280295,
+      "delta_all_p025": 0.0030020982112448414,
+      "delta_all_p975": 0.005181759258290883,
+      "delta_geometry_mean": 0.0028293292142034417,
+      "delta_geometry_p025": 0.001644805235777011,
+      "delta_geometry_p975": 0.003977133759898724
+    },
+    {
+      "month": "07",
+      "utc_days": 23,
+      "boot_reps": 180,
+      "delta_all_mean": 0.00356296987510345,
+      "delta_all_p025": 0.001885581048538837,
+      "delta_all_p975": 0.005405858588548144,
+      "delta_geometry_mean": 0.002544877461342337,
+      "delta_geometry_p025": 0.0005726351625616439,
+      "delta_geometry_p975": 0.004467283313868847
+    },
+    {
+      "month": "08",
+      "utc_days": 21,
+      "boot_reps": 180,
+      "delta_all_mean": 0.004252714525621446,
+      "delta_all_p025": 0.002816743157458959,
+      "delta_all_p975": 0.005642816414512581,
+      "delta_geometry_mean": 0.0036063260573461586,
+      "delta_geometry_p025": 0.001841371674252637,
+      "delta_geometry_p975": 0.005396199928233978
+    },
+    {
+      "month": "09",
+      "utc_days": 22,
+      "boot_reps": 180,
+      "delta_all_mean": 0.0011168048261884105,
+      "delta_all_p025": -9.184410469698089e-05,
+      "delta_all_p975": 0.0023325594519648255,
+      "delta_geometry_mean": 0.0007128310283659444,
+      "delta_geometry_p025": -0.0009626752421715289,
+      "delta_geometry_p975": 0.002377086898680786
+    }
+  ],
+  "mean_monthly_delta_paired_day_bootstrap": {
+    "mean": 0.00273173322014396,
+    "p025": 0.002137788678354549,
+    "p975": 0.0033890358938258214
+  },
+  "method_note": "Within-month paired UTC-day block bootstrap; mean-monthly CI uses synchronized replicate-level bootstrap draws, not pristine OOS inference."
+}
