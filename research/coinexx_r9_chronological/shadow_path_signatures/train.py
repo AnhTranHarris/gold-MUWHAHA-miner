@@ -24,9 +24,10 @@ from extract import BASE_FIELDS,FEATURE_FIELDS
 BASE=list(BASE_FIELDS)+['side']
 PATH=[k for k in FEATURE_FIELDS if any(u in k for u in ('sig_area','bid_disp','ask_disp','spread_disp','signed_mid','eff','churn'))]
 EVENT=[k for k in FEATURE_FIELDS if any(u in k for u in ('_events','_bid_only','_ask_only','_both','_up','_down','intensity','quote_gap_ms','signed_bid_ask_agreement'))]
+SIGNATURE_L2 = BASE+[f'w{w}_{z}' for w in (500,2000,10000) for z in ('bid_disp','ask_disp','sig_area2','signed_mid_disp')]
 ALL=BASE+FEATURE_FIELDS
 RUNS=[
- {'id':'P1','months':['01','02','03','04'],'check':'05','feature':'baseline','family':'linear','c':0.5},
+ {'id':'P1','months':['01','02','03','04'],'check':'05','feature':'signature_l2','family':'linear','c':0.5},
  {'id':'P2','months':['01','02','03','04','05'],'check':'06','feature':'path','family':'linear','c':0.3},
  {'id':'P3','months':['01','02','03','04','05','06'],'check':'07','feature':'path_events','family':'linear','c':0.2},
  {'id':'P4','months':['01','02','03','04','05','06','07'],'check':'08','feature':'path_events','family':'boosted','max_iter':80},
@@ -35,6 +36,7 @@ RUNS=[
 
 def colnames(version):
  if version=='baseline':return BASE
+ if version=='signature_l2':return SIGNATURE_L2
  if version=='path':return BASE+PATH
  if version=='path_events':return BASE+PATH+EVENT
  raise ValueError(version)
@@ -95,6 +97,16 @@ def chronological_evaluation(train:pd.DataFrame,test:pd.DataFrame,probs:np.ndarr
    'baseline_quote_price_net_u':float(net[inds].sum()),
    'selected_quote_price_net_u':float(net[inds][keep].sum())})
  out['daily']=daily
+ for q in (0.20,0.50,0.80,0.95):
+  cut=float(np.quantile(train_probs,q))
+  keep=probs>=cut
+  k=f'train_score_quantile_{int(q*100)}'
+  out[k]={'threshold':cut,'selected_count':int(keep.sum()),
+   'selected_fraction':float(keep.mean()),
+   'selected_positive_fraction':float(y[keep].mean()) if keep.any() else None,
+   'selected_quote_price_expectancy_u':float(net[keep].mean()) if keep.any() else None,
+   'selected_quote_price_sum_u':float(net[keep].sum())}
+ out['all_quote_price_worst_one_percent_u']=float(np.quantile(net,0.01))
  # Train labels and check labels are for a frozen R9 baseline path; filtering
  # trades would alter later minute rearm and occupancy. Shadow only.
  return out
