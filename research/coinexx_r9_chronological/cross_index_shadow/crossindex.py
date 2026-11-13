@@ -12,6 +12,10 @@ from math import isfinite, log
 from typing import Literal
 
 SYMBOLS = ('US100', 'US500', 'US30', 'JP225', 'EU50', 'DE40', 'FR40', 'UK100')
+# Do not mistake three correlated U.S. equity indexes for three independent venues.
+REGION = {**{k: 'US' for k in ('US100', 'US500', 'US30')},
+          'JP225': 'JAPAN',
+          **{k: 'EUROPE' for k in ('EU50', 'DE40', 'FR40', 'UK100')}}
 HORIZONS_MS = (1000, 5000, 15000, 30000, 60000, 300000)
 
 
@@ -131,6 +135,7 @@ def ex_ante_factor(snapshot: dict[str, float | int | None], *,
         raise ValueError('unsupported horizon')
     numerator = denominator = 0.0
     active = 0
+    covered_regions: set[str] = set()
     for symbol in SYMBOLS:
         k = f'{symbol.lower()}_logret_{horizon_ms}ms'
         r = snapshot.get(k)
@@ -143,6 +148,9 @@ def ex_ante_factor(snapshot: dict[str, float | int | None], *,
         numerator += weight * max(-6., min(6., r / vol))
         denominator += abs(weight)
         active += 1
-    # Fail-closed when there is not a diversified observed basket.
-    return {'factor': numerator / denominator if active >= 2 and denominator else None,
-            'observed_count': active, 'has_diversified_factor': int(active >= 2 and denominator > 0)}
+        covered_regions.add(REGION[symbol])
+    # Presence from two correlated U.S. symbols is NOT regional diversification.
+    diversified = len(covered_regions) >= 2 and denominator > 0
+    return {'factor': numerator / denominator if diversified else None,
+            'observed_count': active, 'observed_regions': len(covered_regions),
+            'has_diversified_factor': int(diversified)}
