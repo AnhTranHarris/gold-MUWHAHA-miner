@@ -91,3 +91,28 @@ uses only the frozen R9 engine and standard library. Monthly row evidence,
 model pickles and full per-day experiment receipts are local derived artifacts,
 not substitutes for the nine original monthly gzip sources. Checkpoint and
 progress files are local and not deployed.
+
+## Completed study evidence, 2026-11-13 UTC
+
+The original nine source months were traversed in original tick order: **72,129,347
+raw ticks**, **303,934** baseline completed positions, **49,069** adjacent
+same-millisecond events. All nine raw gzip SHA-256 values, original ordinal
+range, source row counts, and all model outputs are pinned by machine-readable
+receipts; January source SHA equals the prior durable source pin.
+
+All five prespecified chronologically later evaluation months **failed** the
+quote-side economic test: P1 May AUC 0.52665, P2 June 0.53858, P3 July 0.53634,
+P4 August 0.53786, P5 September 0.52983. All after modeled-cost retained
+candidate groups had negative mean quoted-price movement. The P1 model hit its
+linear solver iteration limit; P2 and P3 switched to as-of training-only
+quantile normalization. No positive-EV R9 path-signature model was certified.
+
+An optional **post-holdout all-nine-month shadow-only refit** is implemented in
+`full_fit.py`; it was completed after P5. Its 303,934 labeled R9 candidates
+include September in training, so this final frozen candidate has NO unseen
+month evaluation and cannot be promoted based on the historical P1–P5 metrics.
+
+Historical rejection is not proof every possible future signature design fails.
+However, no EA code was altered, and the correct next stage is not to paper-trade
+this model: examine adverse-selection, broker stop geometry and executable
+quote-path economics, then preregister any substantively different mechanism.
