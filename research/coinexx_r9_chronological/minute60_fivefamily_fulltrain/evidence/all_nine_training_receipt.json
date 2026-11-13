@@ -1,0 +1,31 @@
+{
+  "train_months": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09"
+  ],
+  "n_entries": 303934,
+  "n_actions": 607868,
+  "n_features": 155,
+  "positive_rate": 0.06259666835596332,
+  "n_censored": 120,
+  "models": {
+    "hazard_all_JanSep_IS_ONLY": {
+      "path": "hazard_all_JanSep_IS_ONLY.joblib",
+      "sha256": "717829da94b15af27f244b51ea22458319470052471b9f3ca65dd51501daa1a3",
+      "bytes": 173150
+    },
+    "direct_all_JanSep_IS_ONLY": {
+      "path": "direct_all_JanSep_IS_ONLY.joblib",
+      "sha256": "09e1f1b9514dd18bbf6966055e2c277da3695d43cd4c861f997f5ad2c5d75b2f",
+      "bytes": 98661
+    }
+  },
+  "notice": "NO OOS METRIC FROM ALL_NINE_MONTH_TRAINING - future data required for certification"
+}
