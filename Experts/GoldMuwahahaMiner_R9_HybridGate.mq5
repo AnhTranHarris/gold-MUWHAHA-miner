@@ -1,9 +1,10 @@
 #property copyright "Clean-room behavioral reconstruction for AnhTranHarris"
-#property version   "1.90"
+#property version   "1.91"
 #property strict
-#property description "Gold MUWHAHA R9: R5-style minute bracket plus causal S1 momentum/efficiency quality gate."
+#property description "Gold MUWHAHA R9: unchanged R9 trading plus optional default-OFF QRB/QAF telemetry."
 
 #include <Trade/Trade.mqh>
+#include "GoldMuwahahaM60QuoteFlows.mqh"
 CTrade trade;
 
 enum ENUM_GMM_SESSION
@@ -56,6 +57,10 @@ input group "Execution"
 input int    InpDeviationPoints      = 20;
 input bool   InpVerbose              = true;
 
+input group "R9 M60 quote-flow shadow telemetry (NO trade gating)"
+input bool   InpM60QuoteFlowShadowEnabled = false;
+input int    InpM60QuoteFlowCapacity      = 32768;
+
 string EA_TAG = "GM_R9_HYBRID";
 
 #define MICRO_CAPACITY 128
@@ -83,6 +88,8 @@ int g_rearms=0;
 bool g_hadPosition=false;
 ENUM_POSITION_TYPE g_lastPositionType=POSITION_TYPE_BUY;
 datetime g_positionOpenedAt=0;
+
+CGM_M60_QuoteFlowShadow g_m60QuoteShadow;
 
 int g_atrHandle=INVALID_HANDLE;
 datetime g_lastGateLogBar=0;
@@ -399,6 +406,7 @@ void ProcessEntries(const MqlTick &tick)
    double disp,eff,rng;int turns;
    if(!S1QualityForSide(side,disp,eff,rng,turns)) return;
    if(InpVerbose) PrintFormat("%s: qualified side=%d disp=%.3f eff=%.3f range=%.3f turns=%d",EA_TAG,side,disp,eff,rng,turns);
+   if(InpM60QuoteFlowShadowEnabled) g_m60QuoteShadow.LogCandidate(tick,side); // read-only
    OpenTrade(side,tick);
 }
 
@@ -443,6 +451,17 @@ int OnInit()
       g_atrHandle=iATR(_Symbol,InpAtrTimeframe,InpAtrPeriod);
       if(g_atrHandle==INVALID_HANDLE){ PrintFormat("%s: ATR handle failed lastError=%d",EA_TAG,GetLastError());return INIT_FAILED; }
    }
+   if(InpM60QuoteFlowShadowEnabled)
+   {
+      const string filename=StringFormat("GM_R9_M60_QRB_QAF_%s_%I64d_%I64d_%I64d.csv",
+          _Symbol,(long)AccountInfoInteger(ACCOUNT_LOGIN),(long)InpMagic,ChartID());
+      if(!g_m60QuoteShadow.Init(InpM60QuoteFlowCapacity,filename))
+      {
+         PrintFormat("%s: M60 shadow initialization failed; no trading until fixed; lastError=%d",EA_TAG,GetLastError());
+         return INIT_FAILED;
+      }
+      Log("M60 QRB/QAF shadow telemetry enabled: does not gate trades");
+   }
    PrintFormat("%s initialized gap=%d stop=%d trail=%d act=%d velLB=%d minVel=%d eff=%.2f range=%d maxHold=%d rearms=%d",
                EA_TAG,InpGapPips,InpStopLossPips,InpTrailPips,InpTrailActivationPips,InpVelocityLookbackSec,InpMinVelocityPips,InpMinDirectionalEff,InpMinRangePips,InpMaxHoldSeconds,InpMaxSameMinuteRearms);
    return INIT_SUCCEEDED;
@@ -451,10 +470,13 @@ int OnInit()
 void OnDeinit(const int reason)
 {
    if(g_atrHandle!=INVALID_HANDLE){ IndicatorRelease(g_atrHandle);g_atrHandle=INVALID_HANDLE; }
+   if(InpM60QuoteFlowShadowEnabled) g_m60QuoteShadow.Close();
    Log(StringFormat("deinit reason=%d",reason));
 }
 
 void OnTick()
 {
-   MqlTick tick;if(!SymbolInfoTick(_Symbol,tick) || tick.bid<=0.0 || tick.ask<=0.0) return;Reconcile(tick);
+   MqlTick tick;if(!SymbolInfoTick(_Symbol,tick) || tick.bid<=0.0 || tick.ask<=0.0) return;
+   if(InpM60QuoteFlowShadowEnabled) g_m60QuoteShadow.Observe(tick); // quote-only, never adjusts orders
+   Reconcile(tick);
 }
