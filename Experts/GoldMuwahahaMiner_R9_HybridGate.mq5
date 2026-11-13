@@ -74,6 +74,7 @@ input double InpR9TargetNetAccountCash        = 1.75;
 input double InpR9AssumedRoundTripCostAccountCash = 0.20;
 input group "M60 archived 155-feature LightGBM bridge"
 input int    InpR9M60Mode                     = 1; // 0 off, 1 observational, 2 experimental filter
+input bool   InpR9M60ExperimentalFilterUnlock = false; // deliberate owner-facing, NOT a performance certification
 input string InpR9M60ExpectedModelSha         = "09e1f1b9514dd18bbf6966055e2c277da3695d43cd4c861f997f5ad2c5d75b2f";
 input double InpR9M60MinProbability          = 0.0; // filter-only, not calibrated for trading
 input bool   InpR9M1ShadowEnabled             = true;
@@ -522,6 +523,25 @@ int OnInit()
    {
       Print(EA_TAG,": invalid inputs");return INIT_PARAMETERS_INCORRECT;
    }
+   // Safe checkpoint cannot silently turn a shadow research model into a
+   // money-risking entry gate.  These are necessary, NOT sufficient, conditions.
+   if(InpR9M60Mode==2)
+   {
+      if(!InpR9M60ExperimentalFilterUnlock ||
+         InpR9M60MinProbability<=0.0 ||
+         InpR9M1RescueEnabled ||
+         _Symbol!="XAUUSD" ||
+         MathAbs(InpHunterPipPrice-0.01)>0.0000001)
+      {
+         Print(EA_TAG,": MODEL155 FILTER REFUSED: requires explicit unlock, nonzero prevalidated threshold, unmodified original-side universe and exact XAUUSD 0.01 quote scale");
+         return INIT_PARAMETERS_INCORRECT;
+      }
+      Print(EA_TAG,": WARNING: experimental model filter enabled; same-tick 155-feature live producer, OOS profitability, and MQL5 parity are NOT certified");
+   }
+   else if(InpR9M60Mode==1)
+   {
+      Print(EA_TAG,": CHECKPOINT v1.94 MODEL155 SHADOW: original R9 entries unaffected; no valid packet means model UNOBSERVED");
+   }
    trade.SetExpertMagicNumber(InpMagic);trade.SetDeviationInPoints(InpDeviationPoints);trade.SetAsyncMode(false);
    if(!trade.SetTypeFillingBySymbol(_Symbol)) Log("warning: unable to derive filling mode");
    if(InpUseRegimeGate)
@@ -541,6 +561,7 @@ int OnInit()
       EventKillTimer();
       return INIT_FAILED;
    }
+   PrintFormat("%s CHECKPOINT v1.94 mode=%d governor=%d rescue=%d expected_model_sha=%s",EA_TAG,InpR9M60Mode,(int)InpR9GovEnabled,(int)InpR9M1RescueEnabled,InpR9M60ExpectedModelSha);
    PrintFormat("%s initialized gap=%d stop=%d trail=%d act=%d velLB=%d minVel=%d eff=%.2f range=%d maxHold=%d rearms=%d",
                EA_TAG,InpGapPips,InpStopLossPips,InpTrailPips,InpTrailActivationPips,InpVelocityLookbackSec,InpMinVelocityPips,InpMinDirectionalEff,InpMinRangePips,InpMaxHoldSeconds,InpMaxSameMinuteRearms);
    return INIT_SUCCEEDED;
