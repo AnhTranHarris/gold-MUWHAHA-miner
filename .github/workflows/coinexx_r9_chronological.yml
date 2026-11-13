@@ -33,3 +33,9 @@ jobs:
         run: python -m unittest discover -s research/coinexx_r9_chronological/shadow_path_signatures/tests -v
       - name: Compile shadow Python source
         run: python -m compileall -q research/coinexx_r9_chronological/shadow_path_signatures
+      - name: Verify causal cross-index publication-time guards
+        env:
+          PYTHONPATH: research/coinexx_r9_chronological/cross_index_shadow
+        run: python -m unittest discover -s research/coinexx_r9_chronological/cross_index_shadow/tests -v
+      - name: Compile cross-index research source
+        run: python -m compileall -q research/coinexx_r9_chronological/cross_index_shadow
