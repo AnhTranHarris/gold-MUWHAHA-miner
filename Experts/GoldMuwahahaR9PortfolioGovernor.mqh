@@ -143,9 +143,20 @@ bool R9GovAllowsOrder(const int side,const double volume,
 {
    if(!InpR9GovEnabled) return true;
    if(!R9GovRefresh(false) || !g_r9GovHealthy || g_r9GovLocked) return false;
+   const ENUM_ORDER_TYPE action=side>0?ORDER_TYPE_BUY:ORDER_TYPE_SELL;
+   // Existing portfolio exposure is reflected in ACCOUNT_MARGIN_FREE.
+   // New incremental margin is an intentionally conservative estimate;
+   // on netting/hedged accounts OrderCheck can give a more exact projection.
+   double requiredMargin=0.0;
+   if(!OrderCalcMargin(action,_Symbol,volume,entry,requiredMargin)) return false;
+   const double freeMargin=AccountInfoDouble(ACCOUNT_MARGIN_FREE);
+   const double equity=AccountInfoDouble(ACCOUNT_EQUITY);
+   if(!MathIsValidNumber(requiredMargin) || requiredMargin<0.0 ||
+      !MathIsValidNumber(freeMargin) || !MathIsValidNumber(equity) ||
+      equity<=0.0 || freeMargin-requiredMargin<
+      equity*InpR9GovMinFreeEquityPct*0.01) return false;
    double pnl=0.0;
-   if(!OrderCalcProfit(side>0?ORDER_TYPE_BUY:ORDER_TYPE_SELL,
-                       _Symbol,volume,entry,stopLoss,pnl)) return false;
+   if(!OrderCalcProfit(action,_Symbol,volume,entry,stopLoss,pnl)) return false;
    const double risk=MathMax(0.0,-pnl)+InpR9GovCashReservePerTrade;
    return (g_r9GovGrossLoss+g_r9GovCashCharges+
            g_r9GovFloatingLoss+risk<=g_r9GovBudget+1e-8);
