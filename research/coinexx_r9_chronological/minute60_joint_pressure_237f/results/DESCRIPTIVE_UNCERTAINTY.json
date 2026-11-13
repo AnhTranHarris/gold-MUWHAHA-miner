@@ -1,0 +1,46 @@
+{
+  "status": "RETROSPECTIVE_PRIOR_EXPOSED_DAY_CLUSTER_DESCRIPTIVE_NOT_PROSPECTIVE",
+  "method": "paired calendar-day block bootstrap; exact weighted AUC with tie groups; five-month mean AUC deltas",
+  "pairs": {
+    "joint_vs_frozen_155": {
+      "mean_delta": 0.0005848909494964406,
+      "descriptive_95_interval": [
+        -0.00013376995038049953,
+        0.0012621298995346714
+      ],
+      "resamples": 220
+    },
+    "joint_vs_capacity_182": {
+      "mean_delta": -0.00022442410334539892,
+      "descriptive_95_interval": [
+        -0.0007602515997932463,
+        0.00028450427206390313
+      ],
+      "resamples": 220
+    },
+    "specialist_vs_frozen_155": {
+      "mean_delta": -0.0005901451601038947,
+      "descriptive_95_interval": [
+        -0.0015283421572627237,
+        0.00046258039618937875
+      ],
+      "resamples": 220
+    },
+    "fixed_joint_specialist_vs_frozen_155": {
+      "mean_delta": 0.000667662670030539,
+      "descriptive_95_interval": [
+        -0.00012706028490438835,
+        0.0014255416102824938
+      ],
+      "resamples": 220
+    },
+    "fixed_frozen_joint_vs_frozen_155": {
+      "mean_delta": 0.0006963283792087925,
+      "descriptive_95_interval": [
+        0.0003268071732735306,
+        0.0010448851783252582
+      ],
+      "resamples": 220
+    }
+  }
+}
