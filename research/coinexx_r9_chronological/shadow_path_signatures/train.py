@@ -15,7 +15,7 @@ import numpy as np
 import pandas as pd
 from sklearn.pipeline import make_pipeline
 from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import RobustScaler
+from sklearn.preprocessing import RobustScaler,QuantileTransformer
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.metrics import roc_auc_score,brier_score_loss,log_loss
@@ -43,9 +43,17 @@ def colnames(version):
 
 def create_model(spec):
  if spec['family']=='linear':
+  # P1 numerical nonconvergence is retained in its immutable receipt/model.
+  # Later passes add train-only quantile normalization, with zero lookahead.
+  if spec['id']=='P1':
+   scaler=RobustScaler(quantile_range=(10.0,90.0))
+   iters=1000
+  else:
+   scaler=QuantileTransformer(n_quantiles=512,output_distribution='normal',
+      subsample=100000,random_state=20261113)
+   iters=3000
   return make_pipeline(SimpleImputer(strategy='median',keep_empty_features=True),
-    RobustScaler(quantile_range=(10.0,90.0)),
-    LogisticRegression(C=spec['c'],max_iter=1000,solver='lbfgs',tol=1e-4))
+    scaler,LogisticRegression(C=spec['c'],max_iter=iters,solver='lbfgs',tol=1e-4))
  return make_pipeline(SimpleImputer(strategy='median',keep_empty_features=True),
    HistGradientBoostingClassifier(max_iter=spec['max_iter'],learning_rate=.06,
      max_leaf_nodes=12,min_samples_leaf=300,l2_regularization=20.0,
@@ -116,11 +124,27 @@ def main():
  a.add_argument('--input-dir',type=Path,default=Path('/mnt/data/r9_shadow_path_signatures/outputs'))
  a.add_argument('--output-dir',type=Path,default=Path('/mnt/data/r9_shadow_path_signatures/models'))
  a.add_argument('--price-cost-u',type=int,default=20)
+ a.add_argument('--only-pass',choices=[r['id'] for r in RUNS],default=None)
+ a.add_argument('--finalize',action='store_true')
  args=a.parse_args()
  args.output_dir.mkdir(parents=True,exist_ok=True)
+ if args.finalize:
+  receipts=[]
+  for spec in RUNS:
+   p=args.output_dir/f"{spec['id']}_receipt.json"
+   if not p.is_file():raise FileNotFoundError(f'missing completed training pass: {p}')
+   receipts.append({k:v for k,v in json.loads(p.read_text()).items() if k!='daily'})
+  (args.output_dir/'five_pass_results.json').write_text(json.dumps({
+   'classification':'CAUSAL SHADOW RANKING, NOT ON-POLICY EXECUTION',
+   'quote_units':'0.01 USD/XAU price, not verified account USD',
+   'execution_qualification':'No dealer fill, margin, actual commission, stop-level or slippage parity',
+   'September_holdout':'One use only, fifth pass; no Sep tuning',
+   'five_passes':receipts},indent=2)+'\n')
+  print('FIVE COMPLETED PASSES AGGREGATED',flush=True)
+  return
  files={}
  results=[]
- for run in RUNS:
+ for run in (r for r in RUNS if args.only_pass is None or r['id']==args.only_pass):
   # Lazily open months. September files are not opened or evaluated until P5.
   for m in run['months']+[run['check']]:
    if m not in files:
@@ -168,6 +192,9 @@ def main():
     f"all_quoteEV={stats['all_quote_price_expectancy_u']:.2f} "
     f"shadow_keptEV={stats['selected_quote_price_expectancy_u']}",flush=True)
   results.append({k:v for k,v in stats.items() if k!='daily'})
+ if args.only_pass is not None:
+  print('SINGLE PASS COMPLETED',args.only_pass,flush=True)
+  return
  (args.output_dir/'five_pass_results.json').write_text(json.dumps({
   'classification':'CAUSAL SHADOW RANKING, NOT ON-POLICY EXECUTION',
   'quote_units':'0.01 USD/XAU price, not verified account USD',
