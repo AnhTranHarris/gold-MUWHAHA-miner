@@ -88,10 +88,11 @@ def _session_code_minute(source_native_minute: int, quote_utc_offset_minutes: in
 
 
 def session_code(source_native_s: int, quote_utc_offset_minutes: int = 0) -> int:
-    """Mirror CurrentSession() on source-native server time, cached per minute.
+    """Mirror CurrentSession() on source-native server time at minute resolution.
 
     R9 v1.90 compares only hour/minute session boundaries, so all seconds inside a
-    source minute have the same result. The cache changes no formula or timestamp.
+    source minute have the same result. The strategy caches the applicable ATR minimum
+    for the current minute; no timestamp is altered.
     """
     source_native_minute = source_native_s - source_native_s % 60
     return _session_code_minute(source_native_minute, quote_utc_offset_minutes)
