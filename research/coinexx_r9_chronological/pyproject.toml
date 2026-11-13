@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "coinexx-r9-chronological"
+version = "1.0.0"
+description = "Strict chronological Coinexx XAUUSD tick replay environment for Gold MUWHAHAHA Miner R9"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+coinexx-r9 = "coinexx_r9.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
