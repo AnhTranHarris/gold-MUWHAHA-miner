@@ -1,0 +1,29 @@
+name: R9 M60 Coinexx-only quote-pressure proxy tests
+
+on:
+  push:
+    paths:
+      - 'research/coinexx_r9_chronological/minute60_quote_proxies/**'
+      - '.github/workflows/r9_m60_quote_proxy_ci.yml'
+  pull_request:
+    paths:
+      - 'research/coinexx_r9_chronological/minute60_quote_proxies/**'
+      - '.github/workflows/r9_m60_quote_proxy_ci.yml'
+
+jobs:
+  causal-unit-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install minimal research dependencies
+        run: python -m pip install --disable-pip-version-check numpy numba pandas scipy scikit-learn lightgbm joblib
+      - name: Compile causal source
+        run: python -m compileall -q research/coinexx_r9_chronological/minute60_quote_proxies/src
+      - name: Verify quote-proxy causal unit tests
+        run: python -m unittest discover -s research/coinexx_r9_chronological/minute60_quote_proxies/tests -v
