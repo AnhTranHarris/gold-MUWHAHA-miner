@@ -30,8 +30,14 @@ These are **quote-count proxies**, not actual contracts traded, market buy/sell 
 
 1. Original MQL5 R9 source SHA-1 (git blob) before shadow addition is `7eecb5f1947017a01ce85b2520725de54749e523`. **Never replace or modify that parent branch or production EA.**
 2. Run the Python math/feature contract tests and original 15 research tests. Independent unit tests validate equal-millisecond event ordering, seven lookbacks, QAF completed-second semantics and no invented volume.
-3. This environment does **not** have MetaEditor; **MQL5 compile and MT5 broker Strategy Tester parity remain NOT verified**. A change cannot be called deployable or certified until it compiles and completes a non-regression Strategy Tester comparison: shadow OFF must match unmodified R9 trades exactly; shadow ON must match those trades and permit telemetry inspection. Under substantial tick rates, compare event loss versus `CopyTicks` historical replay and measure OnTick latency.
+3. The 24 Python research/feature tests passed in the local environment; the GitHub Actions CI check is not yet confirmed. This environment does **not** have MetaEditor; **MQL5 compile and MT5 broker Strategy Tester parity remain NOT verified**. A change cannot be called deployable or certified until it compiles and completes a non-regression Strategy Tester comparison: shadow OFF must match unmodified R9 trades exactly; shadow ON must match those trades and permit telemetry inspection. Under substantial tick rates, compare event loss versus `CopyTicks` historical replay and measure OnTick latency.
 4. MT5 `OnTick` coalesces updates while a prior event is processing. The extra computation/logging can amplify missing events. This implementation is intentionally off by default, with zero trading integration until parity and threshold checks succeed. A dedicated separate tick collector may be needed for lossless microstructure parity.
 5. No enhancement is accepted as profitable until *new* unseen time periods pass the owner's AUC>=0.75 gate, after-cost expectancy and high trade-frequency. Historical May–Sep months are development-exposed.
 
 Sources: MQL5 `MqlTick`, `OnTick`, `FileOpen`, `FileWrite` docs. This module is original research code, not copied from external projects.
+
+## Source-derived feature variability (not model validation)
+
+The frozen July 2026 Coinexx counterfactual feature cache contains 32,536 original R9 opportunities. `QRB` at 1s is nonzero at 80.57% of these entry timestamps; completed-second `QAF` at 5s is nonzero at 99.10%. Those features are therefore not merely constant placeholders. Their measured *incremental* five-second ROC-AUC effect over event-time trend is still slightly negative in every held-out May–September month. No additional training or profitable results are claimed by this integration.
+
+**Rollback:** Revert the isolated research branch's EA change and remove its `Experts/GoldMuwahahaM60QuoteFlows.mqh` include; the unchanged original v1.90 EA is still available in the parent branch with blob `7eecb5f1947017a01ce85b2520725de54749e523`. No production/parent branch was edited.
