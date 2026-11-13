@@ -1,0 +1,98 @@
+{
+  "research": "R9 60s causal full candidate, not on-policy",
+  "owner_auc_min": 0.75,
+  "owner_auc_target": 0.8,
+  "auc_passes": 0,
+  "folds": [
+    {
+      "month": "05",
+      "total": 31612,
+      "auc": {
+        "r9_context_14": 0.571185,
+        "r9_hft60_117": 0.57659,
+        "r9_hft60_state_145": 0.576247,
+        "r9_hft60_state_145_capacity": 0.575665
+      },
+      "train_auc": {
+        "r9_context_14": 0.615603,
+        "r9_hft60_117": 0.62815,
+        "r9_hft60_state_145": 0.629219,
+        "r9_hft60_state_145_capacity": 0.6797
+      },
+      "horizon_5s_auc": 0.664388,
+      "horizon_30s_auc": 0.54001
+    },
+    {
+      "month": "06",
+      "total": 33941,
+      "auc": {
+        "r9_context_14": 0.570477,
+        "r9_hft60_117": 0.575261,
+        "r9_hft60_state_145": 0.575279,
+        "r9_hft60_state_145_capacity": 0.574395
+      },
+      "train_auc": {
+        "r9_context_14": 0.62093,
+        "r9_hft60_117": 0.631685,
+        "r9_hft60_state_145": 0.633098,
+        "r9_hft60_state_145_capacity": 0.673484
+      },
+      "horizon_5s_auc": 0.662793,
+      "horizon_30s_auc": 0.539425
+    },
+    {
+      "month": "07",
+      "total": 32532,
+      "auc": {
+        "r9_context_14": 0.601073,
+        "r9_hft60_117": 0.608576,
+        "r9_hft60_state_145": 0.609976,
+        "r9_hft60_state_145_capacity": 0.606182
+      },
+      "train_auc": {
+        "r9_context_14": 0.617808,
+        "r9_hft60_117": 0.627399,
+        "r9_hft60_state_145": 0.628391,
+        "r9_hft60_state_145_capacity": 0.665569
+      },
+      "horizon_5s_auc": 0.704295,
+      "horizon_30s_auc": 0.564354
+    },
+    {
+      "month": "08",
+      "total": 31213,
+      "auc": {
+        "r9_context_14": 0.584912,
+        "r9_hft60_117": 0.592932,
+        "r9_hft60_state_145": 0.592385,
+        "r9_hft60_state_145_capacity": 0.590256
+      },
+      "train_auc": {
+        "r9_context_14": 0.619828,
+        "r9_hft60_117": 0.628759,
+        "r9_hft60_state_145": 0.629678,
+        "r9_hft60_state_145_capacity": 0.66205
+      },
+      "horizon_5s_auc": 0.699261,
+      "horizon_30s_auc": 0.552022
+    },
+    {
+      "month": "09",
+      "total": 32998,
+      "auc": {
+        "r9_context_14": 0.585541,
+        "r9_hft60_117": 0.5936,
+        "r9_hft60_state_145": 0.593725,
+        "r9_hft60_state_145_capacity": 0.593492
+      },
+      "train_auc": {
+        "r9_context_14": 0.618591,
+        "r9_hft60_117": 0.626956,
+        "r9_hft60_state_145": 0.627567,
+        "r9_hft60_state_145_capacity": 0.657667
+      },
+      "horizon_5s_auc": 0.688521,
+      "horizon_30s_auc": 0.546825
+    }
+  ]
+}
