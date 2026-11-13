@@ -4,10 +4,14 @@ on:
   push:
     paths:
       - 'research/coinexx_r9_chronological/minute60_competing_hazards/**'
+      - 'Experts/GoldMuwahahaM60QuoteFlows.mqh'
+      - 'Experts/GoldMuwahahaMiner_R9_HybridGate.mq5'
       - '.github/workflows/r9_m60_event_hazard_ci.yml'
   pull_request:
     paths:
       - 'research/coinexx_r9_chronological/minute60_competing_hazards/**'
+      - 'Experts/GoldMuwahahaM60QuoteFlows.mqh'
+      - 'Experts/GoldMuwahahaMiner_R9_HybridGate.mq5'
       - '.github/workflows/r9_m60_event_hazard_ci.yml'
 
 jobs:
