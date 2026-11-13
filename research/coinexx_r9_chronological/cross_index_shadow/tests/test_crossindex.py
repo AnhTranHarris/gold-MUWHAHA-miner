@@ -60,6 +60,18 @@ class TestCausalIndexPanel(unittest.TestCase):
         q=p.snapshot(5103)
         f=ex_ante_factor(q,horizon_ms=5000,train_vol={'US100':0.01,'US500':0.01},train_weights={'US100':1.0,'US500':-1.0})
         self.assertEqual(f['observed_count'],2)
+        self.assertEqual(f['has_diversified_factor'],0)  # two US indices are not independent regions
+        self.assertIsNone(f['factor'])
+
+    def test_factor_two_independent_regions(self):
+        p=CausalCrossIndexPanel()
+        p.observe(IndexObservation('US100',100,101,100,'quote'))
+        p.observe(IndexObservation('JP225',100,102,100,'quote'))
+        p.observe(IndexObservation('US100',5100,5101,102,'quote'))
+        p.observe(IndexObservation('JP225',5100,5102,101,'quote'))
+        f=ex_ante_factor(p.snapshot(5103),horizon_ms=5000,
+              train_vol={'US100':0.01,'JP225':0.01},train_weights={'US100':1,'JP225':-1})
+        self.assertEqual(f['observed_regions'],2)
         self.assertEqual(f['has_diversified_factor'],1)
         self.assertIsNotNone(f['factor'])
 
