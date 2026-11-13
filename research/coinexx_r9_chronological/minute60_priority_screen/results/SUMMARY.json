@@ -1,0 +1,58 @@
+{
+  "asof": "2026-11-13",
+  "raw_ticks": 72129347,
+  "total_R9_decisions": 303934,
+  "heldout_r9_decisions": 162312,
+  "feature_families": [
+    "frozen_baseline",
+    "cusum_only",
+    "signed_intensity_only",
+    "brownian_geometry_only",
+    "all_three"
+  ],
+  "means": {
+    "frozen_baseline": {
+      "auc5": 0.725094694528255,
+      "auc15": 0.6534952493743557,
+      "r9_5": 0.710255798142352,
+      "strict_entries": 0
+    },
+    "cusum_only": {
+      "auc5": 0.7256811401226152,
+      "auc15": 0.6536226532495538,
+      "r9_5": 0.7109652637992984,
+      "strict_entries": 0
+    },
+    "signed_intensity_only": {
+      "auc5": 0.7255006375917781,
+      "auc15": 0.6536135010382044,
+      "r9_5": 0.7109454692069094,
+      "strict_entries": 0
+    },
+    "brownian_geometry_only": {
+      "auc5": 0.7270279570303295,
+      "auc15": 0.654147839478872,
+      "r9_5": 0.7123570786572193,
+      "strict_entries": 0
+    },
+    "all_three": {
+      "auc5": 0.7272895264076965,
+      "auc15": 0.6542423029521549,
+      "r9_5": 0.7129442215335844,
+      "strict_entries": 0
+    }
+  },
+  "max_pooled_auc5": 0.7407110057824265,
+  "gate_0_75_passes": 0,
+  "model_month_checks": 25,
+  "positive_utility_entries": 0,
+  "saved_models_replayed": 25,
+  "saved_auc_values_replayed": 100,
+  "bootstrap_r9side_5s": {
+    "mean": 0.00273173322014396,
+    "p025": 0.002137788678354549,
+    "p975": 0.0033890358938258214
+  },
+  "not_pristine_oos": true,
+  "production_EA_modified": false
+}
