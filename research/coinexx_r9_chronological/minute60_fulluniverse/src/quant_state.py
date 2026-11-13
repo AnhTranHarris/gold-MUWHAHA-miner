@@ -6,6 +6,10 @@ Exploratory *feature hypotheses*, not validated alpha.
 """
 import numpy as np
 
+# Backwards-compatible column labels for the frozen 2026-11-13 derived
+# feature cache. The labels "max_drawdown_from_peak" and
+# "max_rebound_from_trough" denote *end-point excursion* from the prior
+# extrema, not a classical maximum pathwise drawdown/rebound.
 COLS = [
     'mid_ret_autocorr_1','mid_ret_autocorr_2','mid_ret_autocorr_5',
     'vol_burst_5s','vol_burst_15s','vol_burst_30s',
@@ -13,7 +17,7 @@ COLS = [
     'spread_burst_5s','spread_burst_15s','spread_burst_30s',
     'close_location_60s','close_location_30s','close_location_15s',
     'since_peak_seconds','since_trough_seconds',
-    'end_retracement_from_peak','end_rebound_from_trough',
+    'max_drawdown_from_peak','max_rebound_from_trough',
     'rv_concentration_5s','rv_concentration_15s',
     'tail_asymmetry','return_skewness','return_kurtosis',
     'signed_return_last_5','signed_return_last_15',
