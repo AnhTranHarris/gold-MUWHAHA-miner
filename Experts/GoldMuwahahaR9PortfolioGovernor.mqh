@@ -31,7 +31,7 @@ bool R9GovInitDay(const datetime now)
    t.hour=0;t.min=0;t.sec=0;
    const datetime start=StructToTime(t);
    if(start<=0) return false;
-   if(start==g_r9GovDayStart) return true;
+   if(start==g_r9GovDayStart) return (g_r9GovDayEquity>0.0 && g_r9GovPeakEquity>0.0 && g_r9GovKey!="");
 
    g_r9GovDayStart=start;
    g_r9GovKey=StringFormat("R9G.%I64d.%04d%02d%02d",
@@ -60,6 +60,8 @@ bool R9GovRefresh(const bool force=false)
 
    const double equity=AccountInfoDouble(ACCOUNT_EQUITY);
    if(!MathIsValidNumber(equity) || equity<=0.0) return false;
+   if(GlobalVariableCheck(g_r9GovKey+".halt") &&
+      GlobalVariableGet(g_r9GovKey+".halt")>0.5) g_r9GovLocked=true;
    // Peak is shared across EAs in the SAME TERMINAL and persists across restarts.
    const double sharedPeak=GlobalVariableGet(g_r9GovKey+".peak");
    if(sharedPeak>g_r9GovPeakEquity) g_r9GovPeakEquity=sharedPeak;
@@ -121,8 +123,8 @@ bool R9GovRefresh(const bool force=false)
                       InpR9GovPeakDrawdownPct*0.01*g_r9GovPeakEquity);
    const double margin=AccountInfoDouble(ACCOUNT_MARGIN);
    const double marginLevel=AccountInfoDouble(ACCOUNT_MARGIN_LEVEL);
-   const bool marginTrip=(margin>0.0 && marginLevel>0.0 &&
-                          marginLevel<InpR9GovMinMarginPct);
+   const bool marginTrip=(margin>0.0 &&
+                          (marginLevel<=0.0 || marginLevel<InpR9GovMinMarginPct));
    if((grossTrip || ddTrip || marginTrip) && !g_r9GovLocked)
    {
       if(!R9GovSet(g_r9GovKey+".halt",1.0)) return false;
