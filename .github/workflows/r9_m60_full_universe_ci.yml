@@ -1,0 +1,35 @@
+name: R9 M60 full-universe scientific shadow
+
+on:
+  push:
+    paths:
+      - 'research/coinexx_r9_chronological/minute60_fulluniverse/**'
+      - '.github/workflows/r9_m60_full_universe_ci.yml'
+  pull_request:
+    paths:
+      - 'research/coinexx_r9_chronological/minute60_fulluniverse/**'
+      - '.github/workflows/r9_m60_full_universe_ci.yml'
+
+jobs:
+  pure-source-unit-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install research dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas numba scipy scikit-learn lightgbm joblib
+      - name: Compile old frozen and new 60-second source
+        run: |
+          python -m compileall -q research/coinexx_r9_chronological/minute60_firstpassage/src
+          python -m compileall -q research/coinexx_r9_chronological/minute60_fulluniverse/src
+      - name: Verify as-of timestamp and feature invariants
+        env:
+          PYTHONPATH: research/coinexx_r9_chronological/minute60_fulluniverse/src:research/coinexx_r9_chronological/minute60_firstpassage/src
+        run: |
+          python -m unittest discover -s research/coinexx_r9_chronological/minute60_fulluniverse/tests -v
+          python -m unittest discover -s research/coinexx_r9_chronological/minute60_firstpassage/tests -v
