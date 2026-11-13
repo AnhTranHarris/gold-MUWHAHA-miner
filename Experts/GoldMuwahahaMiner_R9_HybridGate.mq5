@@ -1,5 +1,5 @@
 #property copyright "Clean-room behavioral reconstruction for AnhTranHarris"
-#property version   "1.93"
+#property version   "1.94"
 #property strict
 #property description "Gold MUWHAHA R9: R5-style minute bracket plus causal S1 momentum/efficiency quality gate."
 
@@ -72,6 +72,10 @@ input group "R9 Coinexx quote-only native M1 indicators"
 input bool   InpR9CashGeometryShadow          = false;
 input double InpR9TargetNetAccountCash        = 1.75;
 input double InpR9AssumedRoundTripCostAccountCash = 0.20;
+input group "M60 archived 155-feature LightGBM bridge"
+input int    InpR9M60Mode                     = 1; // 0 off, 1 observational, 2 experimental filter
+input string InpR9M60ExpectedModelSha         = "09e1f1b9514dd18bbf6966055e2c277da3695d43cd4c861f997f5ad2c5d75b2f";
+input double InpR9M60MinProbability          = 0.0; // filter-only, not calibrated for trading
 input bool   InpR9M1ShadowEnabled             = true;
 input bool   InpR9M1RescueEnabled             = false; // OFF: requires source-exact replay
 input int    InpR9M1ADXPeriod                 = 14;
@@ -115,6 +119,7 @@ datetime g_r9LastTimeoutCloseSecond=0;
 #include "GoldMuwahahaR9PortfolioGovernor.mqh"
 #include "GoldMuwahahaR9M1IndicatorContext.mqh"
 #include "GoldMuwahahaR9CashGeometry.mqh"
+#include "GoldMuwahahaR9M60ModelBridge.mqh"
 
 void Log(const string text)
 {
@@ -459,11 +464,15 @@ void ProcessEntries(const MqlTick &tick)
    if(!originalQualified)
    {
       if(!R9IndicatorRescue(side,tick.time,indicatorScore)) return;
+      // 155-feature model was only evaluated at ORIGINAL R9 entry moments:
+      // never score the untrained rescued universe as if it were equivalent.
+      if(InpR9M60Mode==2) return;
       if(InpVerbose) PrintFormat("%s: EXPERIMENTAL INDICATOR RESCUE side=%d score=%.3f",EA_TAG,side,indicatorScore);
    }
    else if(InpVerbose)
       PrintFormat("%s: qualified side=%d disp=%.3f eff=%.3f range=%.3f turns=%d",
                   EA_TAG,side,disp,eff,rng,turns);
+   if(originalQualified && !R9M60PermitOriginalEntry(tick,side)) return;
    OpenTrade(side,tick);
 }
 
@@ -506,7 +515,10 @@ int OnInit()
        InpR9M1ADXPeriod<2 || InpR9M1EMAPeriod<2 || InpR9M1ATRPeriod<2 ||
        InpR9M1RescueScore<0.0 || InpR9M1RescueScore>1.0 ||
        InpR9M1MinDIGap<0.0 || InpR9M1MinADX<0.0 ||
-       InpR9TargetNetAccountCash<=0.0 || InpR9AssumedRoundTripCostAccountCash<0.0)
+       InpR9TargetNetAccountCash<=0.0 || InpR9AssumedRoundTripCostAccountCash<0.0 ||
+       InpR9M60Mode<0 || InpR9M60Mode>2 ||
+       InpR9M60MinProbability<0.0 || InpR9M60MinProbability>1.0 ||
+       (InpR9M60Mode!=0 && StringLen(InpR9M60ExpectedModelSha)!=64))
    {
       Print(EA_TAG,": invalid inputs");return INIT_PARAMETERS_INCORRECT;
    }
@@ -540,6 +552,7 @@ void OnDeinit(const int reason)
    EventKillTimer();
    R9IndicatorRelease();
    GlobalVariablesFlush();
+   R9M60ReportStats();
    Log(StringFormat("deinit reason=%d",reason));
 }
 
