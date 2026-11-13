@@ -1,0 +1,713 @@
+{
+  "classification": "RESEARCH_SHADOW_NOT_ON_POLICY",
+  "barriers": {
+    "gross_target_cents": 50,
+    "gross_stop_cents": 30,
+    "cost_price_cents": 20,
+    "horizon_seconds": 15
+  },
+  "rocket_family": "custom_fixed_kernel_PPV_not_aeon_MiniRocket",
+  "validation": "five expanding chronological monthly checks; January-April bias fit only",
+  "passes": [
+    {
+      "pass": 1,
+      "train_months": [
+        "01",
+        "02",
+        "03",
+        "04"
+      ],
+      "check_month": "05",
+      "families": {
+        "base": {
+          "samples": 929,
+          "positive_rate": 0.11948331539289558,
+          "auc": 0.5393951408621335,
+          "average_precision": 0.1394352088000475,
+          "all_quote_ev_usd_price": -0.43938643702906355,
+          "train_quantile_50": {
+            "threshold": 0.19816132969979044,
+            "kept": 272,
+            "coverage": 0.29278794402583425,
+            "hit_rate": 0.15073529411764705,
+            "quote_ev_usd_price": -0.435110294117647
+          },
+          "train_quantile_80": {
+            "threshold": 0.26535456530600815,
+            "kept": 46,
+            "coverage": 0.04951560818083961,
+            "hit_rate": 0.15217391304347827,
+            "quote_ev_usd_price": -0.42173913043478256
+          },
+          "train_quantile_95": {
+            "threshold": 0.3414277776826963,
+            "kept": 3,
+            "coverage": 0.0032292787944025836,
+            "hit_rate": 0.0,
+            "quote_ev_usd_price": -0.66
+          },
+          "status": "FAIL",
+          "training_seconds": 0.08,
+          "train_auc": 0.7765907877944077
+        },
+        "hft": {
+          "samples": 929,
+          "positive_rate": 0.11948331539289558,
+          "auc": 0.5396594638648429,
+          "average_precision": 0.1357246557345661,
+          "all_quote_ev_usd_price": -0.43938643702906355,
+          "train_quantile_50": {
+            "threshold": 0.18868449569374443,
+            "kept": 274,
+            "coverage": 0.294940796555436,
+            "hit_rate": 0.12773722627737227,
+            "quote_ev_usd_price": -0.43653284671532844
+          },
+          "train_quantile_80": {
+            "threshold": 0.2756510594729712,
+            "kept": 42,
+            "coverage": 0.04520990312163617,
+            "hit_rate": 0.16666666666666666,
+            "quote_ev_usd_price": -0.40476190476190477
+          },
+          "train_quantile_95": {
+            "threshold": 0.3765587696412727,
+            "kept": 2,
+            "coverage": 0.002152852529601722,
+            "hit_rate": 0.0,
+            "quote_ev_usd_price": -0.645
+          },
+          "status": "FAIL",
+          "training_seconds": 0.25,
+          "train_auc": 0.8780118343195267
+        },
+        "rocket": {
+          "samples": 929,
+          "positive_rate": 0.11948331539289558,
+          "auc": 0.4878962091676028,
+          "average_precision": 0.1129149080451232,
+          "all_quote_ev_usd_price": -0.43938643702906355,
+          "train_quantile_50": {
+            "threshold": -0.7131359577178955,
+            "kept": 535,
+            "coverage": 0.5758880516684607,
+            "hit_rate": 0.11401869158878504,
+            "quote_ev_usd_price": -0.4411028037383178
+          },
+          "train_quantile_80": {
+            "threshold": -0.15758423507213593,
+            "kept": 193,
+            "coverage": 0.2077502691065662,
+            "hit_rate": 0.12435233160621761,
+            "quote_ev_usd_price": -0.4433160621761658
+          },
+          "train_quantile_95": {
+            "threshold": 0.4357287287712097,
+            "kept": 30,
+            "coverage": 0.03229278794402583,
+            "hit_rate": 0.03333333333333333,
+            "quote_ev_usd_price": -0.5376666666666666
+          },
+          "status": "FAIL",
+          "training_seconds": 0.81,
+          "train_auc": 0.9983445875391577
+        },
+        "fusion": {
+          "samples": 929,
+          "positive_rate": 0.11948331539289558,
+          "auc": 0.5489548227934535,
+          "average_precision": 0.1423339291364393,
+          "all_quote_ev_usd_price": -0.43938643702906355,
+          "train_quantile_50": {
+            "threshold": 0.188018889808087,
+            "kept": 320,
+            "coverage": 0.3444564047362756,
+            "hit_rate": 0.1375,
+            "quote_ev_usd_price": -0.44103125
+          },
+          "train_quantile_80": {
+            "threshold": 0.2739181698867718,
+            "kept": 52,
+            "coverage": 0.05597416576964478,
+            "hit_rate": 0.1346153846153846,
+            "quote_ev_usd_price": -0.41865384615384615
+          },
+          "train_quantile_95": {
+            "threshold": 0.37696847372784986,
+            "kept": 1,
+            "coverage": 0.001076426264800861,
+            "hit_rate": 0.0,
+            "quote_ev_usd_price": -0.53
+          },
+          "status": "FAIL",
+          "training_seconds": 0.5,
+          "train_auc": 0.9073595544726767
+        }
+      },
+      "sample_count_train": 3623,
+      "train_positive_rate": 0.20701076455975712
+    },
+    {
+      "pass": 2,
+      "train_months": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05"
+      ],
+      "check_month": "06",
+      "families": {
+        "base": {
+          "samples": 940,
+          "positive_rate": 0.15851063829787235,
+          "auc": 0.5732867239667739,
+          "average_precision": 0.20611139656112246,
+          "all_quote_ev_usd_price": -0.40045744680851064,
+          "train_quantile_50": {
+            "threshold": 0.1785923843920851,
+            "kept": 227,
+            "coverage": 0.24148936170212765,
+            "hit_rate": 0.19823788546255505,
+            "quote_ev_usd_price": -0.3826431718061674
+          },
+          "train_quantile_80": {
+            "threshold": 0.24400128379274225,
+            "kept": 38,
+            "coverage": 0.04042553191489362,
+            "hit_rate": 0.2894736842105263,
+            "quote_ev_usd_price": -0.23
+          },
+          "train_quantile_95": {
+            "threshold": 0.32374832391417796,
+            "kept": 4,
+            "coverage": 0.00425531914893617,
+            "hit_rate": 0.0,
+            "quote_ev_usd_price": -0.52
+          },
+          "status": "FAIL",
+          "training_seconds": 0.06,
+          "train_auc": 0.7617143876667702
+        },
+        "hft": {
+          "samples": 940,
+          "positive_rate": 0.15851063829787235,
+          "auc": 0.5746103394734385,
+          "average_precision": 0.1863810453769839,
+          "all_quote_ev_usd_price": -0.40045744680851064,
+          "train_quantile_50": {
+            "threshold": 0.17021499537935664,
+            "kept": 206,
+            "coverage": 0.21914893617021278,
+            "hit_rate": 0.19902912621359223,
+            "quote_ev_usd_price": -0.3863592233009709
+          },
+          "train_quantile_80": {
+            "threshold": 0.2526640215357818,
+            "kept": 25,
+            "coverage": 0.026595744680851064,
+            "hit_rate": 0.12,
+            "quote_ev_usd_price": -0.46520000000000006
+          },
+          "train_quantile_95": {
+            "threshold": 0.3485952904492729,
+            "kept": 2,
+            "coverage": 0.002127659574468085,
+            "hit_rate": 0.5,
+            "quote_ev_usd_price": -0.1
+          },
+          "status": "FAIL",
+          "training_seconds": 0.22,
+          "train_auc": 0.8555934311133181
+        },
+        "rocket": {
+          "samples": 940,
+          "positive_rate": 0.15851063829787235,
+          "auc": 0.5301589187079476,
+          "average_precision": 0.18732327179869013,
+          "all_quote_ev_usd_price": -0.40045744680851064,
+          "train_quantile_50": {
+            "threshold": -0.7209556102752686,
+            "kept": 518,
+            "coverage": 0.551063829787234,
+            "hit_rate": 0.1640926640926641,
+            "quote_ev_usd_price": -0.39407335907335905
+          },
+          "train_quantile_80": {
+            "threshold": -0.28467386960983276,
+            "kept": 222,
+            "coverage": 0.23617021276595745,
+            "hit_rate": 0.18468468468468469,
+            "quote_ev_usd_price": -0.37666666666666665
+          },
+          "train_quantile_95": {
+            "threshold": 0.3450658917427063,
+            "kept": 30,
+            "coverage": 0.031914893617021274,
+            "hit_rate": 0.26666666666666666,
+            "quote_ev_usd_price": -0.31366666666666665
+          },
+          "status": "FAIL",
+          "training_seconds": 0.97,
+          "train_auc": 0.9946723533496897
+        },
+        "fusion": {
+          "samples": 940,
+          "positive_rate": 0.15851063829787235,
+          "auc": 0.5807872118378741,
+          "average_precision": 0.1950175629453183,
+          "all_quote_ev_usd_price": -0.40045744680851064,
+          "train_quantile_50": {
+            "threshold": 0.16720370570028317,
+            "kept": 225,
+            "coverage": 0.2393617021276596,
+            "hit_rate": 0.19111111111111112,
+            "quote_ev_usd_price": -0.39382222222222224
+          },
+          "train_quantile_80": {
+            "threshold": 0.25114865983082624,
+            "kept": 18,
+            "coverage": 0.019148936170212766,
+            "hit_rate": 0.2777777777777778,
+            "quote_ev_usd_price": -0.3155555555555556
+          },
+          "train_quantile_95": {
+            "threshold": 0.35502466554681616,
+            "kept": 0,
+            "coverage": 0.0,
+            "hit_rate": null,
+            "quote_ev_usd_price": null
+          },
+          "status": "FAIL",
+          "training_seconds": 0.5,
+          "train_auc": 0.8793260185572402
+        }
+      },
+      "sample_count_train": 4552,
+      "train_positive_rate": 0.18914762741652022
+    },
+    {
+      "pass": 3,
+      "train_months": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "check_month": "07",
+      "families": {
+        "base": {
+          "samples": 913,
+          "positive_rate": 0.12705366922234393,
+          "auc": 0.5676350971314844,
+          "average_precision": 0.15928570968044253,
+          "all_quote_ev_usd_price": -0.4077437020810515,
+          "train_quantile_50": {
+            "threshold": 0.17373303566065032,
+            "kept": 164,
+            "coverage": 0.1796276013143483,
+            "hit_rate": 0.15853658536585366,
+            "quote_ev_usd_price": -0.40731707317073174
+          },
+          "train_quantile_80": {
+            "threshold": 0.23631208034172704,
+            "kept": 30,
+            "coverage": 0.03285870755750274,
+            "hit_rate": 0.23333333333333334,
+            "quote_ev_usd_price": -0.37266666666666665
+          },
+          "train_quantile_95": {
+            "threshold": 0.3120007615561605,
+            "kept": 3,
+            "coverage": 0.0032858707557502738,
+            "hit_rate": 0.3333333333333333,
+            "quote_ev_usd_price": -0.2833333333333333
+          },
+          "status": "FAIL",
+          "training_seconds": 0.09,
+          "train_auc": 0.746872639071136
+        },
+        "hft": {
+          "samples": 913,
+          "positive_rate": 0.12705366922234393,
+          "auc": 0.6056331934409207,
+          "average_precision": 0.19027203935085696,
+          "all_quote_ev_usd_price": -0.4077437020810515,
+          "train_quantile_50": {
+            "threshold": 0.16707781964986784,
+            "kept": 189,
+            "coverage": 0.20700985761226726,
+            "hit_rate": 0.1693121693121693,
+            "quote_ev_usd_price": -0.4005291005291005
+          },
+          "train_quantile_80": {
+            "threshold": 0.2433605365245528,
+            "kept": 33,
+            "coverage": 0.03614457831325301,
+            "hit_rate": 0.2727272727272727,
+            "quote_ev_usd_price": -0.33454545454545453
+          },
+          "train_quantile_95": {
+            "threshold": 0.32976805385135904,
+            "kept": 2,
+            "coverage": 0.002190580503833516,
+            "hit_rate": 1.0,
+            "quote_ev_usd_price": 0.365
+          },
+          "status": "FAIL",
+          "training_seconds": 0.25,
+          "train_auc": 0.8354058699042596
+        },
+        "rocket": {
+          "samples": 913,
+          "positive_rate": 0.12705366922234393,
+          "auc": 0.5179985289663825,
+          "average_precision": 0.13001182780020692,
+          "all_quote_ev_usd_price": -0.4077437020810515,
+          "train_quantile_50": {
+            "threshold": -0.7195466160774231,
+            "kept": 494,
+            "coverage": 0.5410733844468785,
+            "hit_rate": 0.12955465587044535,
+            "quote_ev_usd_price": -0.40522267206477736
+          },
+          "train_quantile_80": {
+            "threshold": -0.2964209020137787,
+            "kept": 200,
+            "coverage": 0.21905805038335158,
+            "hit_rate": 0.15,
+            "quote_ev_usd_price": -0.3985
+          },
+          "train_quantile_95": {
+            "threshold": 0.2681649327278137,
+            "kept": 26,
+            "coverage": 0.028477546549835708,
+            "hit_rate": 0.038461538461538464,
+            "quote_ev_usd_price": -0.5184615384615384
+          },
+          "status": "FAIL",
+          "training_seconds": 1.26,
+          "train_auc": 0.9875990209462713
+        },
+        "fusion": {
+          "samples": 913,
+          "positive_rate": 0.12705366922234393,
+          "auc": 0.5910093886557348,
+          "average_precision": 0.17256628606710728,
+          "all_quote_ev_usd_price": -0.4077437020810515,
+          "train_quantile_50": {
+            "threshold": 0.16799707947862194,
+            "kept": 199,
+            "coverage": 0.21796276013143484,
+            "hit_rate": 0.15577889447236182,
+            "quote_ev_usd_price": -0.40341708542713567
+          },
+          "train_quantile_80": {
+            "threshold": 0.24365273183418967,
+            "kept": 30,
+            "coverage": 0.03285870755750274,
+            "hit_rate": 0.2,
+            "quote_ev_usd_price": -0.3963333333333333
+          },
+          "train_quantile_95": {
+            "threshold": 0.3348564915605257,
+            "kept": 4,
+            "coverage": 0.004381161007667032,
+            "hit_rate": 0.25,
+            "quote_ev_usd_price": -0.37
+          },
+          "status": "FAIL",
+          "training_seconds": 0.59,
+          "train_auc": 0.861374651521377
+        }
+      },
+      "sample_count_train": 5492,
+      "train_positive_rate": 0.18390386016023308
+    },
+    {
+      "pass": 4,
+      "train_months": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07"
+      ],
+      "check_month": "08",
+      "families": {
+        "base": {
+          "samples": 879,
+          "positive_rate": 0.1422070534698521,
+          "auc": 0.5344933687002653,
+          "average_precision": 0.177592239175561,
+          "all_quote_ev_usd_price": -0.3994084186575654,
+          "train_quantile_50": {
+            "threshold": 0.16721767911756358,
+            "kept": 237,
+            "coverage": 0.2696245733788396,
+            "hit_rate": 0.16033755274261605,
+            "quote_ev_usd_price": -0.41350210970464135
+          },
+          "train_quantile_80": {
+            "threshold": 0.2255470525981661,
+            "kept": 50,
+            "coverage": 0.05688282138794084,
+            "hit_rate": 0.2,
+            "quote_ev_usd_price": -0.36
+          },
+          "train_quantile_95": {
+            "threshold": 0.2969410046969875,
+            "kept": 0,
+            "coverage": 0.0,
+            "hit_rate": null,
+            "quote_ev_usd_price": null
+          },
+          "status": "FAIL",
+          "training_seconds": 0.08,
+          "train_auc": 0.737295164290831
+        },
+        "hft": {
+          "samples": 879,
+          "positive_rate": 0.1422070534698521,
+          "auc": 0.5457188328912467,
+          "average_precision": 0.17864138308847255,
+          "all_quote_ev_usd_price": -0.3994084186575654,
+          "train_quantile_50": {
+            "threshold": 0.15997072254515024,
+            "kept": 308,
+            "coverage": 0.3503981797497156,
+            "hit_rate": 0.17207792207792208,
+            "quote_ev_usd_price": -0.38107142857142856
+          },
+          "train_quantile_80": {
+            "threshold": 0.23436709653877344,
+            "kept": 60,
+            "coverage": 0.06825938566552901,
+            "hit_rate": 0.16666666666666666,
+            "quote_ev_usd_price": -0.4058333333333334
+          },
+          "train_quantile_95": {
+            "threshold": 0.3196158591358961,
+            "kept": 3,
+            "coverage": 0.0034129692832764505,
+            "hit_rate": 0.6666666666666666,
+            "quote_ev_usd_price": -0.19333333333333333
+          },
+          "status": "FAIL",
+          "training_seconds": 0.36,
+          "train_auc": 0.8216111157281593
+        },
+        "rocket": {
+          "samples": 879,
+          "positive_rate": 0.1422070534698521,
+          "auc": 0.49467374005305037,
+          "average_precision": 0.1416015143626625,
+          "all_quote_ev_usd_price": -0.3994084186575654,
+          "train_quantile_50": {
+            "threshold": -0.7205995917320251,
+            "kept": 415,
+            "coverage": 0.472127417519909,
+            "hit_rate": 0.13493975903614458,
+            "quote_ev_usd_price": -0.4131084337349397
+          },
+          "train_quantile_80": {
+            "threshold": -0.32324427366256714,
+            "kept": 184,
+            "coverage": 0.20932878270762229,
+            "hit_rate": 0.14673913043478262,
+            "quote_ev_usd_price": -0.4071739130434783
+          },
+          "train_quantile_95": {
+            "threshold": 0.2009993940591812,
+            "kept": 21,
+            "coverage": 0.023890784982935155,
+            "hit_rate": 0.047619047619047616,
+            "quote_ev_usd_price": -0.4838095238095238
+          },
+          "status": "FAIL",
+          "training_seconds": 1.46,
+          "train_auc": 0.9809247876148566
+        },
+        "fusion": {
+          "samples": 879,
+          "positive_rate": 0.1422070534698521,
+          "auc": 0.5395331564986737,
+          "average_precision": 0.1819291635762425,
+          "all_quote_ev_usd_price": -0.3994084186575654,
+          "train_quantile_50": {
+            "threshold": 0.16028815100654967,
+            "kept": 258,
+            "coverage": 0.2935153583617747,
+            "hit_rate": 0.15503875968992248,
+            "quote_ev_usd_price": -0.40538759689922477
+          },
+          "train_quantile_80": {
+            "threshold": 0.23595580210239764,
+            "kept": 51,
+            "coverage": 0.05802047781569966,
+            "hit_rate": 0.17647058823529413,
+            "quote_ev_usd_price": -0.4125490196078432
+          },
+          "train_quantile_95": {
+            "threshold": 0.32149314468529455,
+            "kept": 3,
+            "coverage": 0.0034129692832764505,
+            "hit_rate": 0.6666666666666666,
+            "quote_ev_usd_price": 0.04333333333333333
+          },
+          "status": "FAIL",
+          "training_seconds": 0.58,
+          "train_auc": 0.8402606998405492
+        }
+      },
+      "sample_count_train": 6405,
+      "train_positive_rate": 0.175800156128025
+    },
+    {
+      "pass": 5,
+      "train_months": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08"
+      ],
+      "check_month": "09",
+      "families": {
+        "base": {
+          "samples": 904,
+          "positive_rate": 0.1504424778761062,
+          "auc": 0.6003370098039216,
+          "average_precision": 0.19769819175004255,
+          "all_quote_ev_usd_price": -0.40059734513274337,
+          "train_quantile_50": {
+            "threshold": 0.16130045316965327,
+            "kept": 249,
+            "coverage": 0.2754424778761062,
+            "hit_rate": 0.19678714859437751,
+            "quote_ev_usd_price": -0.35666666666666663
+          },
+          "train_quantile_80": {
+            "threshold": 0.21797255388802894,
+            "kept": 42,
+            "coverage": 0.046460176991150445,
+            "hit_rate": 0.23809523809523808,
+            "quote_ev_usd_price": -0.3392857142857143
+          },
+          "train_quantile_95": {
+            "threshold": 0.29197865438752707,
+            "kept": 3,
+            "coverage": 0.00331858407079646,
+            "hit_rate": 0.0,
+            "quote_ev_usd_price": -0.57
+          },
+          "status": "FAIL",
+          "training_seconds": 0.08,
+          "train_auc": 0.7297885874956591
+        },
+        "hft": {
+          "samples": 904,
+          "positive_rate": 0.1504424778761062,
+          "auc": 0.5967754289215687,
+          "average_precision": 0.19725620805268107,
+          "all_quote_ev_usd_price": -0.40059734513274337,
+          "train_quantile_50": {
+            "threshold": 0.15596786126495019,
+            "kept": 321,
+            "coverage": 0.35508849557522126,
+            "hit_rate": 0.17757009345794392,
+            "quote_ev_usd_price": -0.38470404984423673
+          },
+          "train_quantile_80": {
+            "threshold": 0.2260475637212471,
+            "kept": 44,
+            "coverage": 0.048672566371681415,
+            "hit_rate": 0.3181818181818182,
+            "quote_ev_usd_price": -0.24272727272727274
+          },
+          "train_quantile_95": {
+            "threshold": 0.3076282527289175,
+            "kept": 4,
+            "coverage": 0.004424778761061947,
+            "hit_rate": 0.25,
+            "quote_ev_usd_price": -0.405
+          },
+          "status": "FAIL",
+          "training_seconds": 0.3,
+          "train_auc": 0.8122311035640242
+        },
+        "rocket": {
+          "samples": 904,
+          "positive_rate": 0.1504424778761062,
+          "auc": 0.5508195465686274,
+          "average_precision": 0.16826450004954713,
+          "all_quote_ev_usd_price": -0.40059734513274337,
+          "train_quantile_50": {
+            "threshold": -0.7177367210388184,
+            "kept": 437,
+            "coverage": 0.4834070796460177,
+            "hit_rate": 0.16933638443935928,
+            "quote_ev_usd_price": -0.38537757437070935
+          },
+          "train_quantile_80": {
+            "threshold": -0.3314950466156006,
+            "kept": 187,
+            "coverage": 0.206858407079646,
+            "hit_rate": 0.17647058823529413,
+            "quote_ev_usd_price": -0.3919251336898396
+          },
+          "train_quantile_95": {
+            "threshold": 0.150591641664505,
+            "kept": 24,
+            "coverage": 0.02654867256637168,
+            "hit_rate": 0.08333333333333333,
+            "quote_ev_usd_price": -0.48666666666666664
+          },
+          "status": "FAIL",
+          "training_seconds": 1.83,
+          "train_auc": 0.9719073738191611
+        },
+        "fusion": {
+          "samples": 904,
+          "positive_rate": 0.1504424778761062,
+          "auc": 0.5870385263480392,
+          "average_precision": 0.19607746965620113,
+          "all_quote_ev_usd_price": -0.40059734513274337,
+          "train_quantile_50": {
+            "threshold": 0.15698315601811008,
+            "kept": 312,
+            "coverage": 0.34513274336283184,
+            "hit_rate": 0.19230769230769232,
+            "quote_ev_usd_price": -0.3792307692307692
+          },
+          "train_quantile_80": {
+            "threshold": 0.22654616695583,
+            "kept": 44,
+            "coverage": 0.048672566371681415,
+            "hit_rate": 0.22727272727272727,
+            "quote_ev_usd_price": -0.32659090909090904
+          },
+          "train_quantile_95": {
+            "threshold": 0.307262489718096,
+            "kept": 1,
+            "coverage": 0.0011061946902654867,
+            "hit_rate": 1.0,
+            "quote_ev_usd_price": 0.35
+          },
+          "status": "FAIL",
+          "training_seconds": 0.64,
+          "train_auc": 0.8314323180938094
+        }
+      },
+      "sample_count_train": 7284,
+      "train_positive_rate": 0.17174629324546953
+    }
+  ]
+}
