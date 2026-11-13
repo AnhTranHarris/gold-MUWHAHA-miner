@@ -1,0 +1,29 @@
+name: Coinexx R9 chronological engine
+
+on:
+  push:
+    paths:
+      - 'research/coinexx_r9_chronological/**'
+      - '.github/workflows/coinexx_r9_chronological.yml'
+  pull_request:
+    paths:
+      - 'research/coinexx_r9_chronological/**'
+      - '.github/workflows/coinexx_r9_chronological.yml'
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        run: python -m compileall -q research/coinexx_r9_chronological/src research/coinexx_r9_chronological/tests
+      - name: Unit tests
+        env:
+          PYTHONPATH: research/coinexx_r9_chronological/src
+        run: python -m unittest discover -s research/coinexx_r9_chronological/tests -v
