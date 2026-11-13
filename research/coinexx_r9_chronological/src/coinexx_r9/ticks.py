@@ -75,7 +75,8 @@ def verify_coinexx_tick_file(path: str | Path, *, strict: bool = True) -> TickFi
                 parse_price_units(row[pos["last"]] or "0")
                 volume_key = "volume" if schema == "broker_export" else "tick_volume"
                 int(float(row[pos[volume_key]] or "0"))
-                float(row[pos["volume_real"]] or "0")
+                volume_real_text = row[pos["volume_real"]] or "0"
+                float(volume_real_text)  # numeric validation only; exact source text is retained below.
                 int(row[pos["flags"]] or "0")
             except (TypeError, ValueError, IndexError) as exc:
                 raise DataIntegrityError(f"row {ordinal}: invalid numeric field: {exc}") from exc
@@ -136,7 +137,8 @@ def iter_coinexx_ticks(
                 ask_u = parse_price_units(row[pos["ask"]])
                 last_u = parse_price_units(row[pos["last"]] or "0")
                 volume = int(float(row[pos[volume_key]] or "0"))
-                volume_real = float(row[pos["volume_real"]] or "0")
+                volume_real = row[pos["volume_real"]] or "0"
+                float(volume_real)  # numeric validation without replacing the source representation.
                 flags = int(row[pos["flags"]] or "0")
             except (TypeError, ValueError, IndexError) as exc:
                 raise DataIntegrityError(f"row {ordinal}: invalid numeric field: {exc}") from exc
