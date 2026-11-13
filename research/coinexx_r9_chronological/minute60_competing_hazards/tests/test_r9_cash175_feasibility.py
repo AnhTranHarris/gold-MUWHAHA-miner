@@ -39,8 +39,10 @@ class Cash175ResearchAdapterTests(unittest.TestCase):
         self.assertEqual(v["median_target_hit_seconds"],0.0)
 
     def test_horizon_no_event(self):
-        t=np.array([0,30000],dtype=np.int64)
-        bid=np.array([200000,200002],dtype=np.int32)
+        # The established engine censors >10s quote gaps, so maintain
+        # continuous observed quotes through the full 30-second horizon.
+        t=np.arange(0,30001,5000,dtype=np.int64)
+        bid=np.full(len(t),200000,dtype=np.int32)
         v=evaluate(t,bid,bid+20,np.array([0]),np.array([-1]),30,195)
         self.assertEqual(v["no_event_count"],1)
 
