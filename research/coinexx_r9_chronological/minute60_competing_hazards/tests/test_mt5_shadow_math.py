@@ -16,7 +16,10 @@ from event_engine import build_features, TREND_N, WINDOWS_MS
 class TestProposedMqlShadow(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.source=(ROOT/'GoldMuwahahaM60QuoteFlows.mqh').read_text()
+        include=ROOT/'GoldMuwahahaM60QuoteFlows.mqh'
+        if not include.exists():
+            include=ROOT.parents[2]/'Experts'/'GoldMuwahahaM60QuoteFlows.mqh'
+        cls.source=include.read_text()
 
     def test_disabled_standalone_no_trading_api(self):
         for forbidden in ('trade.Buy(', 'trade.Sell(', 'OrderSend(', 'PositionModify(', 'PositionClose('):
