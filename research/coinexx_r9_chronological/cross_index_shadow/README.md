@@ -118,3 +118,12 @@ All external code/data ingestion requires separate source SHA, modification lice
 ```sh
 PYTHONPATH=research/coinexx_r9_chronological/cross_index_shadow python -m unittest discover -s research/coinexx_r9_chronological/cross_index_shadow/tests -v
 ```
+
+
+## 2026-11-13 Alpaca IEX source-retrieval update
+
+The connected Alpaca Paper Trading plugin **successfully returned historical native IEX bid/ask quote events for all six ETF proxies in point samples in every January–September 2026 month**, not full-month history. The original R9 gold candidate chronology remains frozen. Source-exact three-entry as-of matching and quote quality rejects (especially DIA) are documented in `ALPACA_IEX_P0_DATA_QA_20261113.md`; the companion `alpaca_iex.py` is a standalone shadow-only as-of causal adapter, NOT an installed live strategy or training result. All 21 combined local tests pass.
+
+**Important:** `EWJ` is a broad Japanese equity ETF, NOT Nikkei 225; `FEZ` tracks Euro Stoxx 50; `VGK` tracks broader Europe. IEX quote sizes are at the ETF exchange, NOT XAUUSD order-book measurements. Provider timestamps are exchange times; 500ms delay is an explicit research assumption. The connected tool's 10,000-per-response ceiling and missing `page_token` parameter prevent economical complete multi-month quote retrieval through chat. Do not misrepresent point-sample access as complete source data or calculate an AUC from the three diagnostic gold entries.
+
+Next eligible training requires a controlled paginated Alpaca data worker and private storage, preserving market-data license and credentials. No model below the owner's 0.75 chronological ROC-AUC gate may advance, and >0.80 remains only a predictive target, NOT deployment clearance.
