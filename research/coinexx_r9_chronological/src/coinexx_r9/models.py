@@ -15,6 +15,8 @@ def parse_price_units(text: str, scale: int = PRICE_SCALE) -> int:
         s = s[1:]
     whole, dot, frac = s.partition(".")
     decimals = len(str(scale)) - 1
+    if dot and any(ch != "0" for ch in frac[decimals:]):
+        raise ValueError(f"price {text!r} is not exactly representable at scale {scale}")
     frac = (frac + "0" * decimals)[:decimals]
     units = int(whole or "0") * scale + int(frac or "0")
     return -units if neg else units
@@ -37,7 +39,7 @@ class Tick:
     ask_u: int
     last_u: int = 0
     volume: int = 0
-    volume_real: float = 0.0
+    volume_real: str = "0"
     flags: int = 0
     source_extras: Mapping[str, str] = field(default_factory=dict, compare=False)
 
