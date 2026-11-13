@@ -68,6 +68,9 @@ input int    InpR9GovRefreshSeconds           = 5;
 input bool   InpR9GovFlattenOwnOnHalt         = true;
 
 input group "R9 Coinexx quote-only native M1 indicators"
+input bool   InpR9CashGeometryShadow          = false;
+input double InpR9TargetNetAccountCash        = 1.75;
+input double InpR9AssumedRoundTripCostAccountCash = 0.20;
 input bool   InpR9M1ShadowEnabled             = true;
 input bool   InpR9M1RescueEnabled             = false; // OFF: requires source-exact replay
 input int    InpR9M1ADXPeriod                 = 14;
@@ -110,6 +113,7 @@ datetime g_lastGateLogBar=0;
 datetime g_r9LastTimeoutCloseSecond=0;
 #include "GoldMuwahahaR9PortfolioGovernor.mqh"
 #include "GoldMuwahahaR9M1IndicatorContext.mqh"
+#include "GoldMuwahahaR9CashGeometry.mqh"
 
 void Log(const string text)
 {
@@ -359,6 +363,16 @@ bool OpenTrade(const int side,const MqlTick &tick)
    if(side>0) sl=NormalizePrice(tick.bid-sd);
    else sl=NormalizePrice(tick.ask+sd);
    if(!R9GovAllowsOrder(side,volume,side>0?tick.ask:tick.bid,sl)) return false;
+   if(InpR9CashGeometryShadow && g_r9CashLastLogMinute!=g_cycleMinute)
+   {
+      double goalQuote=0.0,move=0.0,loss=0.0;
+      if(R9CashScenario(side,tick,volume,sl,goalQuote,move,loss))
+         PrintFormat("%s: CASH SCENARIO account=%s netGoal=%.2f assumedCost=%.2f side=%d requiredQuoteMove=%.3f liquidationQuote=%.3f estimatedCashStopLoss=%.2f",
+                     EA_TAG,AccountInfoString(ACCOUNT_CURRENCY),
+                     InpR9TargetNetAccountCash,InpR9AssumedRoundTripCostAccountCash,
+                     side,move,goalQuote,loss);
+      g_r9CashLastLogMinute=g_cycleMinute;
+   }
    ResetLastError();
    if(side>0){ sl=NormalizePrice(tick.bid-sd);sent=trade.Buy(volume,_Symbol,0.0,sl,0.0,EA_TAG+" BUY"); }
    else{ sl=NormalizePrice(tick.ask+sd);sent=trade.Sell(volume,_Symbol,0.0,sl,0.0,EA_TAG+" SELL"); }
@@ -489,7 +503,8 @@ int OnInit()
        InpR9GovCashReservePerTrade<0.0 || InpR9GovRefreshSeconds<1 ||
        InpR9M1ADXPeriod<2 || InpR9M1EMAPeriod<2 || InpR9M1ATRPeriod<2 ||
        InpR9M1RescueScore<0.0 || InpR9M1RescueScore>1.0 ||
-       InpR9M1MinDIGap<0.0 || InpR9M1MinADX<0.0)
+       InpR9M1MinDIGap<0.0 || InpR9M1MinADX<0.0 ||
+       InpR9TargetNetAccountCash<=0.0 || InpR9AssumedRoundTripCostAccountCash<0.0)
    {
       Print(EA_TAG,": invalid inputs");return INIT_PARAMETERS_INCORRECT;
    }
