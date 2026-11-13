@@ -1,0 +1,324 @@
+{
+  "classification": "SOURCE_HASH_VERIFIED_RESEARCH_ONLY",
+  "raw_original_data_read_only": true,
+  "raw_source_total_ticks": 72129347,
+  "raw_candidate_count": 303934,
+  "raw_original_gzip_sha256": {
+    "01": "1307a75df5d635678de7691908600090a552f38543e0512187dcd7b37fbc66b8",
+    "02": "5de772aab4d15ebf18aa48850e847c98e2bcb639064790bbed9d87a598c3bf05",
+    "03": "3e9a03d97c6403036c4f5731e2e9eff43b8c4c9b25ac61adc6cc2147e3e79112",
+    "04": "f04660a094aa2d9738300c409f7f1c85868d5415c3bb8be11f0026740e7dc3be",
+    "05": "3e39c2810a40858f17245f4e07b6e15a0b52bbb48320a94fbe123a77c6343e29",
+    "06": "3033ccb257d067aecc123f3791d9dddc5c95841b9bba167ff1ca0cf1589dc2b4",
+    "07": "d9d47d40abb33935414edfb5c11f0c518d8c9cc27221da182dab0bc49b0b708d",
+    "08": "8e337d18377c318de17ceb72d46bbfc976a29cef4571dfa3457d3ac7fc0e1c17",
+    "09": "deaf191f65506178d501256f084a0ff4615fd21946f27ec1d9ee8f5e8c64b8ff"
+  },
+  "n_features_training": 8189,
+  "sampling": "1024 deterministic uniformly distributed entry positions per source month; no label-based selection",
+  "labels": "R9-side first observed executable quote target +0.50 vs adverse -0.30 within horizons 5/15/30s; 15s primary; modeled cost additional 0.20",
+  "tests": "Nine local causality and quote-path tests passed",
+  "versions": {
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "numba": "0.65.1",
+    "pandas": "2.2.3",
+    "sklearn": "1.8.0",
+    "lightgbm": "4.6.0"
+  },
+  "monthly": [
+    {
+      "month": "01",
+      "n_ticks": 7699274,
+      "total_candidate_opportunities": 32179,
+      "all_candidate_labels_by_horizon": {
+        "5000": {
+          "TARGET_FIRST": 3030,
+          "STOP_FIRST": 19954,
+          "NO_BARRIER": 9193,
+          "CENSORED": 2
+        },
+        "15000": {
+          "TARGET_FIRST": 5074,
+          "STOP_FIRST": 24198,
+          "NO_BARRIER": 2901,
+          "CENSORED": 6
+        },
+        "30000": {
+          "TARGET_FIRST": 5946,
+          "STOP_FIRST": 25345,
+          "NO_BARRIER": 882,
+          "CENSORED": 6
+        }
+      },
+      "selected_chronological_uniform": 1024,
+      "valid_history_sequences": 879,
+      "sequence_exclusions": {
+        "stale_60s": 145
+      },
+      "npz_sha256": "9f0f26796cc5c7701064199830521a6a7aff1f30275c575e598a0c66563a72af",
+      "raw_source_sha256": "1307a75df5d635678de7691908600090a552f38543e0512187dcd7b37fbc66b8"
+    },
+    {
+      "month": "02",
+      "n_ticks": 7102818,
+      "total_candidate_opportunities": 35382,
+      "all_candidate_labels_by_horizon": {
+        "5000": {
+          "TARGET_FIRST": 5115,
+          "STOP_FIRST": 22067,
+          "NO_BARRIER": 8200,
+          "CENSORED": 0
+        },
+        "15000": {
+          "TARGET_FIRST": 7271,
+          "STOP_FIRST": 25972,
+          "NO_BARRIER": 2138,
+          "CENSORED": 1
+        },
+        "30000": {
+          "TARGET_FIRST": 7971,
+          "STOP_FIRST": 26853,
+          "NO_BARRIER": 557,
+          "CENSORED": 1
+        }
+      },
+      "selected_chronological_uniform": 1024,
+      "valid_history_sequences": 870,
+      "sequence_exclusions": {
+        "stale_60s": 154
+      },
+      "npz_sha256": "d78ad1448069d5b2065afcac222c3568d4d548a7f19f3a27340176ec3a542705",
+      "raw_source_sha256": "5de772aab4d15ebf18aa48850e847c98e2bcb639064790bbed9d87a598c3bf05"
+    },
+    {
+      "month": "03",
+      "n_ticks": 8859103,
+      "total_candidate_opportunities": 40301,
+      "all_candidate_labels_by_horizon": {
+        "5000": {
+          "TARGET_FIRST": 6867,
+          "STOP_FIRST": 25041,
+          "NO_BARRIER": 8389,
+          "CENSORED": 4
+        },
+        "15000": {
+          "TARGET_FIRST": 9365,
+          "STOP_FIRST": 29033,
+          "NO_BARRIER": 1898,
+          "CENSORED": 5
+        },
+        "30000": {
+          "TARGET_FIRST": 9995,
+          "STOP_FIRST": 29860,
+          "NO_BARRIER": 439,
+          "CENSORED": 7
+        }
+      },
+      "selected_chronological_uniform": 1024,
+      "valid_history_sequences": 933,
+      "sequence_exclusions": {
+        "warmup": 1,
+        "stale_60s": 90
+      },
+      "npz_sha256": "24e571b1471309fd8cb170748345e03bc0f93024504aeb6ff5881b36fcab8562",
+      "raw_source_sha256": "3e9a03d97c6403036c4f5731e2e9eff43b8c4c9b25ac61adc6cc2147e3e79112"
+    },
+    {
+      "month": "04",
+      "n_ticks": 7831685,
+      "total_candidate_opportunities": 33760,
+      "all_candidate_labels_by_horizon": {
+        "5000": {
+          "TARGET_FIRST": 3481,
+          "STOP_FIRST": 21927,
+          "NO_BARRIER": 8351,
+          "CENSORED": 1
+        },
+        "15000": {
+          "TARGET_FIRST": 5626,
+          "STOP_FIRST": 25812,
+          "NO_BARRIER": 2320,
+          "CENSORED": 2
+        },
+        "30000": {
+          "TARGET_FIRST": 6361,
+          "STOP_FIRST": 26751,
+          "NO_BARRIER": 646,
+          "CENSORED": 2
+        }
+      },
+      "selected_chronological_uniform": 1024,
+      "valid_history_sequences": 942,
+      "sequence_exclusions": {
+        "warmup": 1,
+        "stale_60s": 81
+      },
+      "npz_sha256": "0fff429b4e28da9b72e550402c77df19e615c81b0d1b2f89d99ff426e44d2e15",
+      "raw_source_sha256": "f04660a094aa2d9738300c409f7f1c85868d5415c3bb8be11f0026740e7dc3be"
+    },
+    {
+      "month": "05",
+      "n_ticks": 8011360,
+      "total_candidate_opportunities": 31615,
+      "all_candidate_labels_by_horizon": {
+        "5000": {
+          "TARGET_FIRST": 2298,
+          "STOP_FIRST": 21705,
+          "NO_BARRIER": 7610,
+          "CENSORED": 2
+        },
+        "15000": {
+          "TARGET_FIRST": 3936,
+          "STOP_FIRST": 25383,
+          "NO_BARRIER": 2293,
+          "CENSORED": 3
+        },
+        "30000": {
+          "TARGET_FIRST": 4632,
+          "STOP_FIRST": 26285,
+          "NO_BARRIER": 694,
+          "CENSORED": 4
+        }
+      },
+      "selected_chronological_uniform": 1024,
+      "valid_history_sequences": 929,
+      "sequence_exclusions": {
+        "warmup": 1,
+        "stale_60s": 94
+      },
+      "npz_sha256": "e9606e681ab6474546b3c97815557291347c9a880b42f7b2c45b901b0764331b",
+      "raw_source_sha256": "3e39c2810a40858f17245f4e07b6e15a0b52bbb48320a94fbe123a77c6343e29"
+    },
+    {
+      "month": "06",
+      "n_ticks": 9347508,
+      "total_candidate_opportunities": 33946,
+      "all_candidate_labels_by_horizon": {
+        "5000": {
+          "TARGET_FIRST": 2783,
+          "STOP_FIRST": 22758,
+          "NO_BARRIER": 8400,
+          "CENSORED": 5
+        },
+        "15000": {
+          "TARGET_FIRST": 4941,
+          "STOP_FIRST": 26560,
+          "NO_BARRIER": 2440,
+          "CENSORED": 5
+        },
+        "30000": {
+          "TARGET_FIRST": 5697,
+          "STOP_FIRST": 27551,
+          "NO_BARRIER": 691,
+          "CENSORED": 7
+        }
+      },
+      "selected_chronological_uniform": 1024,
+      "valid_history_sequences": 940,
+      "sequence_exclusions": {
+        "stale_60s": 84
+      },
+      "npz_sha256": "d1aaab8257baea8c343bd2100636b80f7b4d45366d28ef57efe60e7f475507fe",
+      "raw_source_sha256": "3033ccb257d067aecc123f3791d9dddc5c95841b9bba167ff1ca0cf1589dc2b4"
+    },
+    {
+      "month": "07",
+      "n_ticks": 8075197,
+      "total_candidate_opportunities": 32536,
+      "all_candidate_labels_by_horizon": {
+        "5000": {
+          "TARGET_FIRST": 2066,
+          "STOP_FIRST": 20246,
+          "NO_BARRIER": 10223,
+          "CENSORED": 1
+        },
+        "15000": {
+          "TARGET_FIRST": 4283,
+          "STOP_FIRST": 24663,
+          "NO_BARRIER": 3586,
+          "CENSORED": 4
+        },
+        "30000": {
+          "TARGET_FIRST": 5273,
+          "STOP_FIRST": 26062,
+          "NO_BARRIER": 1197,
+          "CENSORED": 4
+        }
+      },
+      "selected_chronological_uniform": 1024,
+      "valid_history_sequences": 913,
+      "sequence_exclusions": {
+        "stale_60s": 111
+      },
+      "npz_sha256": "d948f9f4bdb08338588d82141308d8e1f07fa45cf9f94739abde2329b027328b",
+      "raw_source_sha256": "d9d47d40abb33935414edfb5c11f0c518d8c9cc27221da182dab0bc49b0b708d"
+    },
+    {
+      "month": "08",
+      "n_ticks": 7468061,
+      "total_candidate_opportunities": 31214,
+      "all_candidate_labels_by_horizon": {
+        "5000": {
+          "TARGET_FIRST": 2214,
+          "STOP_FIRST": 19812,
+          "NO_BARRIER": 9187,
+          "CENSORED": 1
+        },
+        "15000": {
+          "TARGET_FIRST": 4338,
+          "STOP_FIRST": 23921,
+          "NO_BARRIER": 2954,
+          "CENSORED": 1
+        },
+        "30000": {
+          "TARGET_FIRST": 5241,
+          "STOP_FIRST": 25038,
+          "NO_BARRIER": 933,
+          "CENSORED": 2
+        }
+      },
+      "selected_chronological_uniform": 1024,
+      "valid_history_sequences": 879,
+      "sequence_exclusions": {
+        "stale_60s": 145
+      },
+      "npz_sha256": "31acfc81c1219cc5e04d3942fcde80bb3c5efc2eb6f9efad7219eca379be79d4",
+      "raw_source_sha256": "8e337d18377c318de17ceb72d46bbfc976a29cef4571dfa3457d3ac7fc0e1c17"
+    },
+    {
+      "month": "09",
+      "n_ticks": 7734341,
+      "total_candidate_opportunities": 33001,
+      "all_candidate_labels_by_horizon": {
+        "5000": {
+          "TARGET_FIRST": 2251,
+          "STOP_FIRST": 21360,
+          "NO_BARRIER": 9389,
+          "CENSORED": 1
+        },
+        "15000": {
+          "TARGET_FIRST": 4460,
+          "STOP_FIRST": 25589,
+          "NO_BARRIER": 2949,
+          "CENSORED": 3
+        },
+        "30000": {
+          "TARGET_FIRST": 5358,
+          "STOP_FIRST": 26753,
+          "NO_BARRIER": 887,
+          "CENSORED": 3
+        }
+      },
+      "selected_chronological_uniform": 1024,
+      "valid_history_sequences": 904,
+      "sequence_exclusions": {
+        "stale_60s": 120
+      },
+      "npz_sha256": "43a1f835c232d9ab7e2c493e4f46864863438fe05c2c15d1e93adbab18f1c73b",
+      "raw_source_sha256": "deaf191f65506178d501256f084a0ff4615fd21946f27ec1d9ee8f5e8c64b8ff"
+    }
+  ],
+  "model_scores_file": "results.json",
+  "promotion": "FAIL ALL TWENTY FOLDS; do not deploy or merge into EA"
+}
