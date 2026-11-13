@@ -1,0 +1,26 @@
+name: R9 60s causal HFT and Rocket-style shadow tests
+on:
+  push:
+    paths:
+      - 'research/coinexx_r9_chronological/minute60_firstpassage/**'
+      - '.github/workflows/r9_minute60_shadow_ci.yml'
+  pull_request:
+    paths:
+      - 'research/coinexx_r9_chronological/minute60_firstpassage/**'
+      - '.github/workflows/r9_minute60_shadow_ci.yml'
+jobs:
+  unit-and-compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install minimal pure research test dependencies
+        run: python -m pip install 'numpy>=1.25,<3' 'pandas>=2,<3' 'numba>=0.59,<1'
+      - name: Compile research source
+        run: python -m compileall -q research/coinexx_r9_chronological/minute60_firstpassage/src
+      - name: Test causality, event order, exact execution-side labeling and PPV fit
+        env:
+          PYTHONPATH: research/coinexx_r9_chronological/minute60_firstpassage/src
+        run: python -m unittest discover -s research/coinexx_r9_chronological/minute60_firstpassage/tests -v
