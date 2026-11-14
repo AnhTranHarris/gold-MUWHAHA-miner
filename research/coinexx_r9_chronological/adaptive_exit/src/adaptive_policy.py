@@ -35,6 +35,8 @@ class ExitPolicy:
     minimum_harvest_cash: float = 0.10
     harvest_after_seconds: int = 4
     continuation_floor: float = -0.10
+    m1_std_regime_weight: float = 0.20
+    m1_ema_trend_weight: float = 0.10
     maximum_trail_cents: int = 75
     maximum_initial_stop_cents: int = 60
     max_quote_gap_ms: int = 2500
@@ -44,12 +46,15 @@ class ExitPolicy:
             raise ValueError(f"Unknown research mode: {self.mode}")
         vals=(self.alpha_spread,self.beta_noise,
               self.activation_cash_buffer,self.minimum_harvest_cash,
-              self.continuation_floor)
+              self.continuation_floor,self.m1_std_regime_weight,
+              self.m1_ema_trend_weight)
         if not all(isfinite(v) for v in vals):
             raise ValueError("Non-finite research parameters")
         if (self.alpha_spread<0 or self.beta_noise<0
             or self.activation_cash_buffer<0
             or self.minimum_harvest_cash<0
+            or self.m1_std_regime_weight<0 or self.m1_std_regime_weight>1
+            or self.m1_ema_trend_weight<0 or self.m1_ema_trend_weight>1
             or self.maximum_trail_cents<=0
             or self.maximum_initial_stop_cents<=0
             or self.harvest_after_seconds<0
@@ -176,6 +181,22 @@ class AdaptiveR9(R9HybridGateBaseline):
         return (self.atr.atr_u/sqrt(300.0) if self.atr.ready
                 and self.atr.atr_u is not None else None)
 
+    def _indicator_scaled_noise(self,t:Tick,noise:float) -> float:
+        """Native iStdDev(PERIOD_M1,10,0,MODE_SMA,PRICE_CLOSE) proxy.
+
+        Uses completed Bid M1 closes only; exact native broker history/chart
+        parity must be confirmed before translating this to MQL5.
+        The original iATR(PERIOD_M5,14) is the slower normalization anchor.
+        """
+        if (self.policy.m1_std_regime_weight<=0 or not self.atr.ready
+            or self.atr.atr_u is None or self.atr.atr_u<=0):
+            return noise
+        m1=self.quotes.diagnostics(t)["completed_m1_std_cents"]
+        if m1 is None:
+            return noise
+        ratio=min(2.0,m1/self.atr.atr_u)
+        return noise*(1.0+self.policy.m1_std_regime_weight*ratio)
+
     def _open_trade(self,t:Tick,side:int) -> None:
         super()._open_trade(t,side)
         if self.policy.mode!="experimental_wide_stop":
@@ -222,11 +243,18 @@ class AdaptiveR9(R9HybridGateBaseline):
             self.stats["adaptive_fallback_to_original"]+=1
             return
 
+        noise=self._indicator_scaled_noise(t,noise)
         elapsed=t.time_s-p.entry_time_s
         if (self.policy.mode in ("staged_harvest","experimental_wide_stop")
             and elapsed>=self.policy.harvest_after_seconds
             and net_cash>=self.policy.minimum_harvest_cash):
             score=self.quotes.continuation_index(p.side,t)
+            if score is not None:
+                ema_slope=self.quotes.diagnostics(t)["completed_m1_ema_slope_cents"]
+                if (ema_slope is not None and self.atr.atr_u is not None
+                    and self.atr.atr_u>0):
+                    score+=self.policy.m1_ema_trend_weight*tanh(
+                        p.side*ema_slope/max(1.0,self.atr.atr_u))
             if score is not None and score<self.policy.continuation_floor:
                 self._record_close(t,"adaptive_harvest",available)
                 return
@@ -307,9 +335,9 @@ def summarize_account_cash(
         win_fraction=(sum(v>0 for v in vals)/len(vals) if vals else None),
         worst_trade_cash=(min(vals) if vals else None),
         observed_trade_loss_cvar95_cash=(
-            -sum(sorted(vals)[:max(1,ceil(.05*len(vals)))])/
-              max(1,ceil(.05*len(vals))) if vals else None),
-        gross_daily_cash={str(k):v for k,v in sorted(per_day.items())},
+            max(0.0,-sum(sorted(vals)[:max(1,ceil(.05*len(vals)))])/
+              max(1,ceil(.05*len(vals)))) if vals else None),
+        source_entry_day_net_cash={str(k):v for k,v in sorted(per_day.items())},
         source_entry_hour_cash={str(k):v for k,v in sorted(per_hour.items())},
         positive_entry_hour_cells=sum(v>0 for v in per_hour.values()),
         negative_entry_hour_cells=sum(v<0 for v in per_hour.values()),
