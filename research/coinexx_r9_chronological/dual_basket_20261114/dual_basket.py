@@ -314,8 +314,10 @@ class DualBasketCash(DualBasketMixin, ManagedR9):
 
     def __init__(self, cfg: R9Config, cash: ResearchCash,
                  protected_stretch: bool = False,
-                 spec: DualBasketSpec = DualBasketSpec()) -> None:
-        super().__init__(cfg, cash, "cash_harvest", dual_spec=spec)
+                 spec: DualBasketSpec = DualBasketSpec(),
+                 regime=None) -> None:
+        super().__init__(cfg, cash, "cash_harvest",
+                         regime=regime, dual_spec=spec)
         self.protected_stretch = protected_stretch
         self.cash_spec = CashLadderSpec(min_net_profit=0.10,
                                         stretch_net_profit=1.75)
