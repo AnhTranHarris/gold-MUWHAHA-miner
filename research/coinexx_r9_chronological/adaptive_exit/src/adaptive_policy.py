@@ -168,8 +168,12 @@ class AdaptiveR9(R9HybridGateBaseline):
         self.policy=policy
         self.quotes=QuoteContext()
         self.last_tick:Tick|None=None
+        self.last_quote_gap_ms=0
 
     def on_tick(self,t:Tick) -> None:
+        self.last_quote_gap_ms=(
+            t.time_msc-self.last_tick.time_msc if self.last_tick is not None
+            else 0)
         self.quotes.update(t)
         self.last_tick=t
         super().on_tick(t)
@@ -216,13 +220,13 @@ class AdaptiveR9(R9HybridGateBaseline):
         broker=self.cfg.broker_stops_points+self.cfg.tick_size_points
         requested=max(requested,broker)
         stop=t.bid_u-requested if side>0 else t.ask_u+requested
-        # Explicit pessimistic stop-fill cash risk, including spread once and
-        # additional assumed brokerage costs. Never widen without cash cap.
-        potential_loss=self.cash.net_cash(side*(stop-p.entry_price_u))
-        if potential_loss < -self.policy.maximum_initial_risk_cash:
-            self.stats["experimental_initial_risk_cap_refusals"]+=1
-            return
         if (side>0 and stop<p.sl_u) or (side<0 and stop>p.sl_u):
+            # Explicit pessimistic stop-fill cash risk, spread included
+            # once. A wider initial stop requires a finite account-cash cap.
+            potential_loss=self.cash.net_cash(side*(stop-p.entry_price_u))
+            if potential_loss < -self.policy.maximum_initial_risk_cash:
+                self.stats["experimental_initial_risk_cap_refusals"]+=1
+                return
             p.sl_u=stop
             p.initial_sl_u=stop
             self.entries[-1]["sl_u"]=stop
@@ -245,8 +249,9 @@ class AdaptiveR9(R9HybridGateBaseline):
         pnl_cents=p.side*(available-p.entry_price_u)
         net_cash=self.cash.net_cash(pnl_cents)
         noise=self._noise(t)
-        if noise is None:
-            # Fail back to original management when no fresh proxy is known.
+        if noise is None or self.last_quote_gap_ms>self.policy.max_quote_gap_ms:
+            # Fail back to original protective management in stale markets.
+            # Never infer action utility or volatility from missing quotes.
             super()._manage_position(t)
             self.stats["adaptive_fallback_to_original"]+=1
             return
