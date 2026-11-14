@@ -104,7 +104,12 @@ def run(args):
     reg=QuoteRegime()
     harvest=ManagedR9(R9Config(),cash,'cash_harvest',reg)
     experiment=ManagedR9(R9Config(),cash,'regime_probe',reg)
-    reuse_only_identical_market_context(original,harvest,experiment)
+    governed_baseline=(ManagedR9(R9Config(),cash,'original',reg)
+                      if args.governor else None)
+    if governed_baseline is not None:
+        reuse_only_identical_market_context(original,harvest,experiment,governed_baseline)
+    else:
+        reuse_only_identical_market_context(original,harvest,experiment)
     # Real-MQL5 v1.94 account governor is not present in original v1.90 source.
     # This optional scenario never modifies the baseline parity control.
     original_count=0;ord_offset=0;receipts=[];by_month=[]
@@ -122,6 +127,8 @@ def run(args):
                 original.on_tick(tick)
                 harvest.on_tick(tick)
                 experiment.on_tick(tick)
+                if governed_baseline is not None:
+                    governed_baseline.on_tick(tick)
                 rows+=1
                 if args.max_rows and rows>=args.max_rows:break
             completed= (rows==frozen['source_months'][mm]['rows'])
@@ -146,11 +153,18 @@ def run(args):
                          'starting_capital':cash.initial_capital,'account_governor_scenario':cash.governor},
                baseline=summarize_original(original,cash),cash_harvest=harvest.report(),
                regime_probe=experiment.report())
-            base_n=data['baseline']['trades']
+            # A risk-governor experiment must compare all three arms under
+            # the SAME governor. The full source-exact baseline remains
+            # ungoverned and separate solely for frozen-ledger parity.
+            key_base='baseline'
+            if governed_baseline is not None:
+                data['governed_original']=governed_baseline.report()
+                key_base='governed_original'
+            base_n=data[key_base]['trades']
             for key in ('cash_harvest','regime_probe'):
-                if data[key]['trades']:
-                    data[key]['trade_retention_vs_baseline']=round(data[key]['trades']/base_n,6)
-                    data[key]['net_cash_delta_vs_baseline']=round(data[key]['net_cash']-data['baseline']['net_cash'],5)
+                if data[key]['trades'] and base_n:
+                    data[key]['trade_retention_vs_comparable_baseline']=round(data[key]['trades']/base_n,6)
+                    data[key]['net_cash_delta_vs_comparable_baseline']=round(data[key]['net_cash']-data[key_base]['net_cash'],5)
             args.output.parent.mkdir(parents=True,exist_ok=True)
             args.output.write_text(json.dumps(data,indent=2,sort_keys=True))
             if not completed:break
