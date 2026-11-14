@@ -1,0 +1,23 @@
+name: R9 v1.94 dual-basket research-only tests
+on:
+  push:
+    branches:
+      - carson/r9-v194-dual-5s15s-baskets-15s30s-breakouts-cash010-175-20261114
+    paths:
+      - 'research/coinexx_r9_chronological/dual_basket_20261114/**'
+      - '.github/workflows/r9_v194_dual_basket_ci.yml'
+  workflow_dispatch:
+jobs:
+  unit-invariants:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Syntax compile (no raw tick files)
+        run: python -m compileall -q research/coinexx_r9_chronological/dual_basket_20261114
+      - name: Causal lanes, cash targets, cap and rollback invariants
+        run: python -m unittest discover -v -s research/coinexx_r9_chronological/dual_basket_20261114 -p 'test_dual_basket.py'
