@@ -64,6 +64,8 @@ Source market data: the original compressed XAUUSD_MT5_BROKER_2026_MM_ticks_ALL.
 This by default emits only a compact JSON on standard output. NO gzip reconstruction, tick reexport, second-bar export, feature archive, new LightGBM training or large per-tick output is performed. Use --expected-source-sha256 with the original known SHA256 to refuse altered source; this performs one EXTRA compressed-file hash pass but never writes a copy.
 Optional --max-ticks 100000 is only a source smoke test, always marks truncation and EOF censor; do not infer full-month economics from it.
 
+When --episodes-out is specified, the CLI also writes a tiny PATH.csv.gz.receipt.json that pins account currency, the conversion rate K, all fees, original R9 config, truncated status and optional original SHA256s. Chronological fit-evaluate REFUSES missing receipts, truncated samples, mixed contract/lot/fee/currency scenarios or train/test timestamp overlap. Source hashes are reported as unverified unless the caller provides --expected-source-sha256; do not promote results from unverified raw sources.
+
 For actual historical model calibration you MAY explicitly request one compact original-trade-only ledger using --episodes-out path.csv.gz. This writes one row per ORIGINAL completed R9 position, not one row per tick. Keep it local; do not upload 10GB dataset replicas. Only this optional little ledger is used to build cause hazards and test continuation.
 
 4. Frozen chronological research fit/evaluate example (ONE comparison only, not broad retuning):
