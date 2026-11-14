@@ -1,0 +1,27 @@
+name: R9 v1.94 frozen AUC lifecycle shadow
+on:
+  push:
+    paths:
+      - 'research/coinexx_r9_chronological/m60_155_integration/**'
+      - '.github/workflows/r9_v194_frozen_auc_lifecycle_ci.yml'
+  pull_request:
+    paths:
+      - 'research/coinexx_r9_chronological/m60_155_integration/**'
+      - '.github/workflows/r9_v194_frozen_auc_lifecycle_ci.yml'
+permissions:
+  contents: read
+jobs:
+  shadow-lifecycle-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: 'research/coinexx_r9_chronological/m60_155_integration/requirements-lifecycle-ci.txt'
+      - run: pip install -r research/coinexx_r9_chronological/m60_155_integration/requirements-lifecycle-ci.txt
+      - name: Python source compile (not MQL5 compile)
+        run: python -m compileall -q research/coinexx_r9_chronological/m60_155_integration
+      - name: Contract and cash-geometry unit tests (no large historical data)
+        run: python -m unittest discover -s research/coinexx_r9_chronological/m60_155_integration/tests -p test_lifecycle_calibration.py -v
