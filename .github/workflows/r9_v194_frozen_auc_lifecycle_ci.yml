@@ -24,4 +24,4 @@ jobs:
       - name: Python source compile (not MQL5 compile)
         run: python -m compileall -q research/coinexx_r9_chronological/m60_155_integration
       - name: Contract and cash-geometry unit tests (no large historical data)
-        run: python -m unittest discover -s research/coinexx_r9_chronological/m60_155_integration/tests -p test_lifecycle_calibration.py -v
+        run: python -m unittest discover -s research/coinexx_r9_chronological/m60_155_integration/tests -p 'test_*lifecycle*.py' -v
