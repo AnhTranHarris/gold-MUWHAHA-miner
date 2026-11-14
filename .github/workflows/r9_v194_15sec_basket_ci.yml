@@ -1,0 +1,31 @@
+name: R9 15-second basket source-faithful research tests
+on:
+  push:
+    paths:
+      - 'research/coinexx_r9_chronological/quarter_basket_20261114/**'
+      - 'research/coinexx_r9_chronological/variable_cash_horizon_20261114/**'
+      - 'research/coinexx_r9_chronological/src/coinexx_r9/**'
+      - '.github/workflows/r9_v194_15sec_basket_ci.yml'
+  pull_request:
+    paths:
+      - 'research/coinexx_r9_chronological/quarter_basket_20261114/**'
+      - '.github/workflows/r9_v194_15sec_basket_ci.yml'
+permissions:
+  contents: read
+jobs:
+  quarter-basket-parity:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile bounded research modules
+        run: python -m compileall -q research/coinexx_r9_chronological/quarter_basket_20261114 research/coinexx_r9_chronological/variable_cash_horizon_20261114
+      - name: Original cash-policy tests
+        run: python -m unittest discover -s research/coinexx_r9_chronological/variable_cash_horizon_20261114/tests -v
+      - name: 15-second basket, 15s/30s breakout, half-dollar cash tests
+        run: python -m unittest discover -s research/coinexx_r9_chronological/quarter_basket_20261114 -p 'test_*.py' -v
