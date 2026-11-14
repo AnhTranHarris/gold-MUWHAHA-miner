@@ -186,7 +186,7 @@ def run(root:Path,out:Path):
       'n_censored_eval_positions':int(sum(x['n_gap_censored'] for x in results)),
       'mean_original_p5_auc_for_its_OWN_label':a(lambda x:x['p5_original_five_second_auc_same_label']),
       'mean_context_favorable_auc':a(lambda x:x['context']['favorable_first_auc']),
-      'mean_context_plus_p5_favorable_auc':a(lambda x:x['context_plus_frozen_p5_favorable_auc']) if False else a(lambda x:x['context_plus_frozen_p5']['favorable_first_auc']),
+      'mean_context_plus_p5_favorable_auc':a(lambda x:x['context_plus_frozen_p5']['favorable_first_auc']),
       'mean_context_adverse_auc':a(lambda x:x['context']['adverse_first_auc']),
       'mean_context_plus_p5_adverse_auc':a(lambda x:x['context_plus_frozen_p5']['adverse_first_auc']),
       'mean_favorable_auc_increment':a(lambda x:x['deltas_after_adding_p5']['favorable_auc']),
