@@ -3,10 +3,12 @@ on:
   push:
     paths:
       - 'research/coinexx_r9_chronological/variable_cash_horizon_20261114/**'
+      - 'research/coinexx_r9_chronological/src/coinexx_r9/**'
       - '.github/workflows/r9_v194_variable_cash_horizon_ci.yml'
   pull_request:
     paths:
       - 'research/coinexx_r9_chronological/variable_cash_horizon_20261114/**'
+      - 'research/coinexx_r9_chronological/src/coinexx_r9/**'
       - '.github/workflows/r9_v194_variable_cash_horizon_ci.yml'
 permissions:
   contents: read
@@ -20,5 +22,5 @@ jobs:
           python-version: '3.11'
       - name: Check pure Python research syntax
         run: python -m compileall -q research/coinexx_r9_chronological/variable_cash_horizon_20261114
-      - name: Verify 16 causal and risk budget contract tests
+      - name: Verify original 16 cash-ladder and 6 new source-state contract tests
         run: python -m unittest discover -s research/coinexx_r9_chronological/variable_cash_horizon_20261114/tests -v
