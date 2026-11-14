@@ -45,7 +45,19 @@ class DualBasketSpec:
             raise ValueError("Invalid causal basket/breakout contract")
 
 
-class ProtectedStretchCashPolicy(VariableCashHorizonPolicy):
+class MinimumCashHarvestPolicy(VariableCashHorizonPolicy):
+    """Keep the inherited risk semantics, but label the revised $0.10 target."""
+    def decide(self, position: CurrentPosition, account: AccountSnapshot,
+               evidence=None) -> ExitDecision:
+        decision = super().decide(position, account, evidence)
+        if decision.action == "CLOSE_NOW" and decision.reason.startswith("Take $"):
+            return ExitDecision(
+                "CLOSE_NOW", "Harvest available $0.10 net; no approved runner",
+                decision.observed_liquidation_net_cash)
+        return decision
+
+
+class ProtectedStretchCashPolicy(MinimumCashHarvestPolicy):
     """Experimental lock-$0.10, pursue-$1.75 branch; never bypass base safety.
 
     Base controller first evaluates gross-loss/account, stranded-quote, age and
@@ -264,7 +276,7 @@ class DualBasketCash(DualBasketMixin, ManagedR9):
         if self.position is not None and self.position is not before:
             policy = (ProtectedStretchCashPolicy(self.cash_spec)
                       if self.protected_stretch else
-                      VariableCashHorizonPolicy(self.cash_spec))
+                      MinimumCashHarvestPolicy(self.cash_spec))
             self.controllers[self.position.entry_ordinal] = policy
 
     def report(self) -> dict:
