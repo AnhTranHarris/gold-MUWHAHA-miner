@@ -109,14 +109,17 @@ def cash_cvar95(values:list[float]) -> float|None:
 def fit_context_tables(episodes: Iterable[Episode],
                        by: str="session_spread",
                        min_group_count: int=100,
-                       risk_lambda: float=0.0) -> dict:
+                       risk_lambda: float=0.0,
+                       max_censor_fraction: float=0.10) -> dict:
     """Freeze train-only cash incidence and net-payoff means per as-of context.
 
     Do not infer a realized strategy improvement: the early-goal overlay is
     not a full strategy replay; updated entry occupancy is still missing.
     """
-    if min_group_count<=0 or not isfinite(risk_lambda) or risk_lambda<0:
-        raise ValueError("Invalid minimum count or downside risk penalty")
+    if (min_group_count<=0 or not isfinite(risk_lambda) or risk_lambda<0
+            or not isfinite(max_censor_fraction)
+            or max_censor_fraction<0 or max_censor_fraction>=1):
+        raise ValueError("Invalid minimum count, downside risk penalty, or censor threshold")
     all_rows=list(episodes)
     groups:dict[str,list[Episode]]={}
     for e in all_rows:
@@ -141,11 +144,14 @@ def fit_context_tables(episodes: Iterable[Episode],
         all_observed=[float(e.overlay_net_cash) for e in rows
                       if e.cause in EVENT_CAUSES and e.overlay_net_cash is not None]
         cvar=cash_cvar95(all_observed)
+        eligible=(len(rows)>=min_group_count and
+                  censor_count/len(rows)<=max_censor_fraction and
+                  bool(all_observed))
         result[key]={
             "training_episodes":len(rows),
             "censored_count":censor_count,
             "censored_fraction":censor_count/max(1,len(rows)),
-            "train_eligible":len(rows)>=min_group_count,
+            "train_eligible":eligible,
             "incidence_by_horizon":[{
                 "horizon_ms":v.horizon_ms,
                 "survival":v.survival,
@@ -154,10 +160,10 @@ def fit_context_tables(episodes: Iterable[Episode],
             } for v in aalen_johansen(rows)],
             "mean_account_cash_by_cause":event_means,
             "observed_payoff_cvar95_cash":cvar,
-            "estimated_net_cash_per_entry":expected if len(rows)>=min_group_count else None,
+            "estimated_net_cash_per_entry":expected if eligible else None,
             "estimated_risk_adjusted_cash":(
                 expected-risk_lambda*(cvar or 0.0)
-                if len(rows)>=min_group_count else None
+                if eligible else None
             ),
         }
     return {
@@ -165,6 +171,7 @@ def fit_context_tables(episodes: Iterable[Episode],
         "context":by,
         "min_group_count":min_group_count,
         "risk_lambda":risk_lambda,
+        "max_censor_fraction":max_censor_fraction,
         "horizons_ms":list(HORIZONS_MS),
         "fixed_spread_bands_cents":list(SPREAD_BANDS),
         "total_training_episodes":len(all_rows),
