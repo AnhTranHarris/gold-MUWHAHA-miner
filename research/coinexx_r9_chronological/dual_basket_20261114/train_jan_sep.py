@@ -202,9 +202,15 @@ class FrozenAdmission:
 
 
 def metrics_by_month(sim, bounds: list[int], cash: ResearchCash) -> dict:
+    """Entry-month cash and realized tail metrics; not verified MT5 fills."""
     stats = {m: {"trades": 0, "net": 0., "gross_loss": 0.,
                  "trades_ge_010": 0, "trades_ge_175": 0}
              for m in MONTHS}
+    hours = {m: defaultdict(float) for m in MONTHS}
+    values = {m: [] for m in MONTHS}
+    cumulative = defaultdict(float)
+    peak = defaultdict(float)
+    peak_dd = defaultdict(float)
     for t in sim.trades:
         i = bisect.bisect_right(bounds, t.entry_ordinal)
         if i >= len(MONTHS):
@@ -217,11 +223,23 @@ def metrics_by_month(sim, bounds: list[int], cash: ResearchCash) -> dict:
         row["gross_loss"] += max(0., -net)
         row["trades_ge_010"] += net >= .10 - 1e-9
         row["trades_ge_175"] += net >= 1.75 - 1e-9
-    for v in stats.values():
+        hours[key][t.entry_time_msc // 3_600_000] += net
+        values[key].append(net)
+        cumulative[key] += net
+        peak[key] = max(peak[key], cumulative[key])
+        peak_dd[key] = max(peak_dd[key], peak[key] - cumulative[key])
+    for key, v in stats.items():
         v["net"] = round(v["net"], 4)
         v["gross_loss"] = round(v["gross_loss"], 4)
+        v["active_entry_hours"] = len(hours[key])
+        v["net_per_active_hour"] = round(
+            v["net"] / max(1, len(hours[key])), 5)
+        v["negative_entry_hours"] = sum(h < 0 for h in hours[key].values())
+        v["max_realized_cash_drawdown_within_entry_month"] = round(peak_dd[key], 4)
+        tail = sorted(values[key])[:max(1, int(len(values[key]) * .05))]
+        v["closed_trade_cvar95_loss"] = (
+            round(-sum(tail) / len(tail), 5) if values[key] else None)
     return stats
-
 
 def original_source_pass(args, receipt: dict, cash: ResearchCash):
     cfg = R9Config()
