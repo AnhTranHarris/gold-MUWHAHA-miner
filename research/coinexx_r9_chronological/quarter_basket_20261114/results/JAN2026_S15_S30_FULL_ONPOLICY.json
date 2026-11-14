@@ -1,0 +1,320 @@
+{
+  "arm_results": {
+    "15b_15break_cash050": {
+      "account_end_equity": 85752.43,
+      "active_entry_hours": 479,
+      "basket_cross_exits": 17021,
+      "basket_rearms": 18420,
+      "basket_starts": 115262,
+      "close_reasons": {
+        "closed_cash_120s_stranded-positi": 33,
+        "closed_cash_Stale_quote:_request": 2062,
+        "closed_cash_Stretch_$1.75_realiz": 41,
+        "closed_cash_Take_$0.50\u2013$1.75_net": 9419,
+        "closed_stop": 24435
+      },
+      "closed_trade_cvar95_loss": 1.242557,
+      "experimental_quote_state_runner_requests": 0,
+      "governor_halts": {},
+      "governor_rejections": {},
+      "gross_realized_losses": 20271.29,
+      "loss_le_minus_2": 55,
+      "max_account_peak_drawdown_cash": 14263.64,
+      "mean_hold_sec": 10.80441,
+      "mode": "cash_harvest",
+      "model_score_covered_on_original_ordinals": 0,
+      "model_score_missing_new_or_unscored_ordinals": 35990,
+      "monthly_gross_net_losses": {
+        "2026-01": 20271.29
+      },
+      "monthly_net": {
+        "2026-01": -14247.57
+      },
+      "monthly_trades": {
+        "2026-01": 35990
+      },
+      "net_cash": -14247.57,
+      "net_delta_vs_original": -1758.65,
+      "net_per_active_entry_hour": -29.74441,
+      "net_per_trade": -0.395876,
+      "note": "Quote-only modeled account cash, not MT5 fills. Source-native clock; no cross-EA governor.",
+      "p95_hold_sec": 38.614,
+      "p99_hold_sec": 69.13,
+      "rearms": 18420,
+      "share_trades_net_ge_050": 0.263045,
+      "share_trades_net_ge_175": 0.001167,
+      "source_day_cash_negative_count": 21,
+      "source_day_cash_positive_count": 0,
+      "source_hour_cash_negative_count": 474,
+      "source_hour_cash_positive_count": 5,
+      "target_ge_0_5": 9467,
+      "target_ge_1_75": 42,
+      "trades": 35990,
+      "validated_model_assisted_runner_trades": 0,
+      "volume_retention_vs_original": 1.11843,
+      "win_fraction": 0.271909
+    },
+    "15b_15break_original_exit": {
+      "active_entry_hours": 479,
+      "basket_cross_exits": 11776,
+      "basket_rearms": 26151,
+      "basket_starts": 115262,
+      "closed_trade_cvar95_loss": 1.154049,
+      "gross_realized_losses": 16795.84,
+      "loss_le_minus_2": 44,
+      "max_account_peak_drawdown_cash_no_governor": 14464.16,
+      "mean_hold_sec": 5.53161,
+      "mode": "original",
+      "monthly_net": {
+        "2026-01": -14460.7
+      },
+      "monthly_trades": {
+        "2026-01": 38493
+      },
+      "net_cash": -14460.7,
+      "net_delta_vs_original": -1971.78,
+      "net_per_active_entry_hour": -30.18935,
+      "net_per_trade": -0.375671,
+      "note": "Exact original v1.90 python core (not complete MT5 v1.94 broker/account simulation)",
+      "p95_hold_sec": 19.216,
+      "p99_hold_sec": 29.988,
+      "rearm_count": 26151,
+      "share_trades_net_ge_050": 0.033539,
+      "share_trades_net_ge_175": 0.002416,
+      "source_day_cash_negative_count": 21,
+      "source_day_cash_positive_count": 0,
+      "source_hour_cash_negative_count": 473,
+      "source_hour_cash_positive_count": 6,
+      "target_ge_0_5": 1291,
+      "target_ge_1_75": 93,
+      "trades": 38493,
+      "volume_retention_vs_original": 1.19621,
+      "win_fraction": 0.203569
+    },
+    "15b_30break_cash050": {
+      "account_end_equity": 87958.94,
+      "active_entry_hours": 478,
+      "basket_cross_exits": 14265,
+      "basket_rearms": 15742,
+      "basket_starts": 115262,
+      "close_reasons": {
+        "closed_cash_120s_stranded-positi": 26,
+        "closed_cash_Stale_quote:_request": 1791,
+        "closed_cash_Stretch_$1.75_realiz": 33,
+        "closed_cash_Take_$0.50\u2013$1.75_net": 7973,
+        "closed_stop": 20681
+      },
+      "closed_trade_cvar95_loss": 1.236754,
+      "experimental_quote_state_runner_requests": 0,
+      "governor_halts": {},
+      "governor_rejections": {},
+      "gross_realized_losses": 17134.22,
+      "loss_le_minus_2": 49,
+      "max_account_peak_drawdown_cash": 12052.86,
+      "mean_hold_sec": 10.80525,
+      "mode": "cash_harvest",
+      "model_score_covered_on_original_ordinals": 0,
+      "model_score_missing_new_or_unscored_ordinals": 30504,
+      "monthly_gross_net_losses": {
+        "2026-01": 17134.22
+      },
+      "monthly_net": {
+        "2026-01": -12041.06
+      },
+      "monthly_trades": {
+        "2026-01": 30504
+      },
+      "net_cash": -12041.06,
+      "net_delta_vs_original": 447.86,
+      "net_per_active_entry_hour": -25.1905,
+      "net_per_trade": -0.394737,
+      "note": "Quote-only modeled account cash, not MT5 fills. Source-native clock; no cross-EA governor.",
+      "p95_hold_sec": 38.8,
+      "p99_hold_sec": 68.795,
+      "rearms": 15742,
+      "share_trades_net_ge_050": 0.262621,
+      "share_trades_net_ge_175": 0.001115,
+      "source_day_cash_negative_count": 21,
+      "source_day_cash_positive_count": 0,
+      "source_hour_cash_negative_count": 473,
+      "source_hour_cash_positive_count": 5,
+      "target_ge_0_5": 8011,
+      "target_ge_1_75": 34,
+      "trades": 30504,
+      "validated_model_assisted_runner_trades": 0,
+      "volume_retention_vs_original": 0.94795,
+      "win_fraction": 0.271702
+    },
+    "15b_30break_nested_trend_probe": {
+      "account_end_equity": 88404.92,
+      "active_entry_hours": 478,
+      "basket_cross_exits": 14292,
+      "basket_rearms": 14980,
+      "basket_starts": 115262,
+      "close_reasons": {
+        "closed_cash_120s_stranded-positi": 27,
+        "closed_cash_Stale_quote:_request": 1777,
+        "closed_cash_Stretch_$1.75_realiz": 391,
+        "closed_cash_Take_$0.50\u2013$1.75_net": 3301,
+        "closed_stop": 24261,
+        "experimental_regime_hold": 37305,
+        "experimental_regime_lock": 13505
+      },
+      "closed_trade_cvar95_loss": 1.239375,
+      "experimental_quote_state_runner_requests": 50810,
+      "governor_halts": {},
+      "governor_rejections": {},
+      "gross_realized_losses": 16722.29,
+      "loss_le_minus_2": 49,
+      "max_account_peak_drawdown_cash": 11608.35,
+      "mean_hold_sec": 11.11922,
+      "mode": "regime_probe",
+      "model_score_covered_on_original_ordinals": 0,
+      "model_score_missing_new_or_unscored_ordinals": 29757,
+      "monthly_gross_net_losses": {
+        "2026-01": 16722.29
+      },
+      "monthly_net": {
+        "2026-01": -11595.08
+      },
+      "monthly_trades": {
+        "2026-01": 29757
+      },
+      "net_cash": -11595.08,
+      "net_delta_vs_original": 893.84,
+      "net_per_active_entry_hour": -24.25749,
+      "net_per_trade": -0.389659,
+      "note": "Quote-only modeled account cash, not MT5 fills. Source-native clock; no cross-EA governor.",
+      "p95_hold_sec": 39.298,
+      "p99_hold_sec": 69.904,
+      "rearms": 14980,
+      "share_trades_net_ge_050": 0.165406,
+      "share_trades_net_ge_175": 0.013173,
+      "source_day_cash_negative_count": 21,
+      "source_day_cash_positive_count": 0,
+      "source_hour_cash_negative_count": 472,
+      "source_hour_cash_positive_count": 6,
+      "target_ge_0_5": 4922,
+      "target_ge_1_75": 392,
+      "trades": 29757,
+      "validated_model_assisted_runner_trades": 0,
+      "volume_retention_vs_original": 0.92473,
+      "win_fraction": 0.269651
+    },
+    "15b_30break_original_exit": {
+      "active_entry_hours": 478,
+      "basket_cross_exits": 9749,
+      "basket_rearms": 22033,
+      "basket_starts": 115262,
+      "closed_trade_cvar95_loss": 1.153203,
+      "gross_realized_losses": 14123.71,
+      "loss_le_minus_2": 39,
+      "max_account_peak_drawdown_cash_no_governor": 12128.96,
+      "mean_hold_sec": 5.52131,
+      "mode": "original",
+      "monthly_net": {
+        "2026-01": -12122.08
+      },
+      "monthly_trades": {
+        "2026-01": 32295
+      },
+      "net_cash": -12122.08,
+      "net_delta_vs_original": 366.84,
+      "net_per_active_entry_hour": -25.36,
+      "net_per_trade": -0.375355,
+      "note": "Exact original v1.90 python core (not complete MT5 v1.94 broker/account simulation)",
+      "p95_hold_sec": 19.248,
+      "p99_hold_sec": 29.999,
+      "rearm_count": 22033,
+      "share_trades_net_ge_050": 0.034866,
+      "share_trades_net_ge_175": 0.002663,
+      "source_day_cash_negative_count": 21,
+      "source_day_cash_positive_count": 0,
+      "source_hour_cash_negative_count": 472,
+      "source_hour_cash_positive_count": 6,
+      "target_ge_0_5": 1126,
+      "target_ge_1_75": 86,
+      "trades": 32295,
+      "volume_retention_vs_original": 1.0036,
+      "win_fraction": 0.203282
+    }
+  },
+  "basket": {
+    "breakout_windows_seconds": [
+      15,
+      30
+    ],
+    "full_quote_stream_replayed": true,
+    "minimum_midquote_displacement_cents": 10,
+    "original_minute_control_seconds": 60,
+    "seconds": 15
+  },
+  "cash_scenario": {
+    "K_account_cash_per_1xau_move": 1.0,
+    "broker_cost_verified": false,
+    "extra_roundtrip_cash_C": 0.2,
+    "governor_scenario_enabled": false,
+    "initial_capital": 100000.0
+  },
+  "cautions": [
+    "No actual MT5 fills, order rejects, freeze/slippage; original governor approximated only",
+    "AUC trained at ORIGINAL R9 minute-entry ordinals, not the NEW 15s entries",
+    "15s and 30s completed-second quote close windows, not native MT5 timeframe bars",
+    "Previous Jan-Sep Coinexx months are development-exposed; not pristine OOS",
+    "No minimum $.10 profit exit. Cash ladder $0.50 floor and $1.75 stretch remain"
+  ],
+  "classification": "QUOTE_SIDE_ON_POLICY_RESEARCH_NOT_ACTUAL_MT5_FILLS",
+  "complete_original_month_parity": true,
+  "evaluation_complete": true,
+  "months": [
+    {
+      "arm_counts": {
+        "15b_15break_cash050": 35990,
+        "15b_15break_original_exit": 38493,
+        "15b_30break_cash050": 30504,
+        "15b_30break_nested_trend_probe": 29757,
+        "15b_30break_original_exit": 32295
+      },
+      "elapsed_s": 347.75,
+      "expected_rows": 7699274,
+      "month": "01",
+      "original_frozen_trade_parity": true,
+      "original_trades": 32179,
+      "rows": 7699274,
+      "source_sha256": "1307a75df5d635678de7691908600090a552f38543e0512187dcd7b37fbc66b8"
+    }
+  ],
+  "no_fabricated_155_features": true,
+  "original_control": {
+    "active_entry_hours": 479,
+    "closed_trade_cvar95_loss": 1.154017,
+    "gross_realized_losses": 14318.7,
+    "loss_le_minus_2": 36,
+    "max_account_peak_drawdown_cash_no_governor": 12494.28,
+    "mean_hold_sec": 5.82073,
+    "mode": "original",
+    "monthly_net": {
+      "2026-01": -12488.92
+    },
+    "monthly_trades": {
+      "2026-01": 32179
+    },
+    "net_cash": -12488.92,
+    "net_per_active_entry_hour": -26.0729,
+    "net_per_trade": -0.388108,
+    "note": "Exact original v1.90 python core (not complete MT5 v1.94 broker/account simulation)",
+    "p95_hold_sec": 21.188,
+    "p99_hold_sec": 30.165,
+    "rearm_count": 31487,
+    "source_day_cash_negative_count": 21,
+    "source_day_cash_positive_count": 0,
+    "source_hour_cash_negative_count": 475,
+    "source_hour_cash_positive_count": 4,
+    "target_ge_0_5": 1010,
+    "target_ge_1_75": 68,
+    "trades": 32179,
+    "win_fraction": 0.195718
+  },
+  "original_engine_source": "UNMODIFIED original coinexx_r9.r9_baseline baseline",
+  "original_five_second_model": "FROZEN_SHADOW_ONLY_NO_VALIDATED_NEW_BREAKOUT_ENTRY_SCORES"
+}
