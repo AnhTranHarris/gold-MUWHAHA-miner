@@ -1,0 +1,23 @@
+name: R9 dual-basket nine-month entry training invariants
+on:
+  push:
+    branches:
+      - carson/r9-v194-dual-entry-training-jan-sep-20261114
+    paths:
+      - 'research/coinexx_r9_chronological/dual_basket_20261114/**'
+      - '.github/workflows/r9_v194_dual_entry_training_ci.yml'
+  workflow_dispatch:
+jobs:
+  source-preservation-and-causality:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate Python syntax without raw input
+        run: python -m compileall -q research/coinexx_r9_chronological/dual_basket_20261114
+      - name: Original dual-basket and new training invariants
+        run: python -m unittest discover -v -s research/coinexx_r9_chronological/dual_basket_20261114 -p 'test_*.py'
