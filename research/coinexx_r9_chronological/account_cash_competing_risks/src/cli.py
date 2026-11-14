@@ -149,7 +149,8 @@ def train_evaluate(args) -> None:
         raise ValueError("Train must END strictly before test begins; no future training leakage")
     table=fit_context_tables(train,by=args.by,
                              min_group_count=args.min_group_count,
-                             risk_lambda=args.cvar_penalty)
+                             risk_lambda=args.cvar_penalty,
+                             max_censor_fraction=args.max_censor_fraction)
     out={
         "classification":"RETROSPECTIVE_DEVELOPMENT_EXPOSED_NOT_PRISTINE_OOS",
         "train_first_msc":min(x.entry_time_msc for x in train),
@@ -198,6 +199,8 @@ def main():
                    default="session_spread")
     f.add_argument("--min-group-count",type=int,default=100)
     f.add_argument("--cvar-penalty",type=float,default=0.25)
+    f.add_argument("--max-censor-fraction",type=float,default=0.10,
+                   help="abstain from training context if gap/EOF censoring exceeds this")
     f.add_argument("--out",type=Path,help="OPTIONAL small model receipt JSON")
     f.set_defaults(func=train_evaluate)
     args=ap.parse_args()
