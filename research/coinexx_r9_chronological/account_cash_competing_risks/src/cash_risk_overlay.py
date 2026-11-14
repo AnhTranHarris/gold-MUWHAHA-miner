@@ -270,7 +270,41 @@ def summarize(episodes: Iterable[Episode]) -> dict:
                  for e in matched]),
             "warning":"Hypothetical target overlay preserves original R9 occupancy. No on-policy profit inference.",
         }
-    return {"total":one(es),"by_source_entry_hour":{k:one(v) for k,v in sorted(by.items())}}
+    # Actual individual (source-native day, hour) cells, not merely pooling
+    # all Mondays or all 16:00 entries across nine months. Using the integer
+    # source hour index avoids claiming that the broker clock is UTC.
+    cells={}
+    for e in es:
+        key=str(e.entry_time_msc//3600000)
+        cells.setdefault(key,[]).append(e)
+    hourly=[]
+    for idx,rows in cells.items():
+        realized=[float(e.baseline_net_cash) for e in rows
+                  if e.baseline_net_cash is not None]
+        if realized:
+            hourly.append({
+                "source_hour_index":int(idx),
+                "completed_baseline_trades":len(realized),
+                "simulated_baseline_net_account_cash":sum(realized),
+                "gross_losing_cash":-sum(min(0.,x) for x in realized),
+                "mean_net_cash_per_trade":_mean(realized),
+            })
+    hourly.sort(key=lambda x:x["source_hour_index"])
+    by_pnl=sorted(hourly,key=lambda x:x["simulated_baseline_net_account_cash"])
+    return {
+        "total":one(es),
+        "by_source_entry_hour":{k:one(v) for k,v in sorted(by.items())},
+        "individual_active_source_hours":len(hourly),
+        "individual_positive_source_hours":sum(x["simulated_baseline_net_account_cash"]>0
+                                               for x in hourly),
+        "individual_negative_source_hours":sum(x["simulated_baseline_net_account_cash"]<0
+                                               for x in hourly),
+        "individual_flat_source_hours":sum(x["simulated_baseline_net_account_cash"]==0
+                                           for x in hourly),
+        "worst_five_source_hour_cells":by_pnl[:5],
+        "best_five_source_hour_cells":by_pnl[-5:][::-1],
+        "source_hour_warning":"Hour indices use Coinexx source timestamps, NOT independently verified UTC or local timezone.",
+    }
 
 
 def run_stream(ticks: Iterable[Tick], cash: CashAssumptions,
