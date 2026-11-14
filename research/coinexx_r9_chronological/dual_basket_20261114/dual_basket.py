@@ -67,7 +67,9 @@ class ProtectedStretchCashPolicy(MinimumCashHarvestPolicy):
     """
     def decide(self, position: CurrentPosition, account: AccountSnapshot,
                evidence=None) -> ExitDecision:
-        baseline = super().decide(position, account, evidence)
+        # Bypass label rewrite so only the genuine minimum-harvest decision
+        # can be upgraded to a protective, tighter stop.
+        baseline = VariableCashHorizonPolicy.decide(self, position, account, evidence)
         if (baseline.action != "CLOSE_NOW"
             or not baseline.reason.startswith("Take $")
             or baseline.observed_liquidation_net_cash >= self.spec.stretch_net_profit - 1e-9):
