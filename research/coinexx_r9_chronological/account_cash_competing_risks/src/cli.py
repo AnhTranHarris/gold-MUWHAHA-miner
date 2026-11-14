@@ -99,8 +99,21 @@ def replay(args) -> None:
             writer.writeheader()
             for episode in sim.completed:
                 writer.writerow(episode.as_row())
+        # Tiny sidecar pins monetary assumptions. Never mix USD/EUR, lots, fee
+        # scenarios or source hashes silently in a subsequent training fold.
+        receipt_path=Path(str(out)+".receipt.json")
+        receipt={
+            "schema":"R9_CASH_EPISODES_V1",
+            "cash_assumptions":asdict(cash),
+            "r9_config":asdict(cfg),
+            "source_receipts":source_receipts,
+            "simulation_truncated":truncated,
+            "source_rows_processed":source_rows,
+        }
+        receipt_path.write_text(json.dumps(receipt,indent=2)+"\n",encoding="utf-8")
         result["optional_episodes_out"]=str(out)
         result["optional_episode_rows"]=len(sim.completed)
+        result["optional_episode_receipt"]=str(receipt_path)
     if args.summary_out:
         args.summary_out.parent.mkdir(parents=True,exist_ok=True)
         args.summary_out.write_text(json.dumps(result,indent=2)+"\n",encoding="utf-8")
@@ -133,6 +146,21 @@ def load_episode_file(path:Path) -> list[Episode]:
 
 
 def train_evaluate(args) -> None:
+    def receipt(path:Path) -> dict:
+        p=Path(str(path)+".receipt.json")
+        if not p.exists():
+            raise ValueError(f"Missing original cash scenario receipt: {p}")
+        obj=json.loads(p.read_text(encoding="utf-8"))
+        if obj.get("schema")!="R9_CASH_EPISODES_V1" or obj.get("simulation_truncated"):
+            raise ValueError("Only nontruncated original R9 research episode ledgers accepted")
+        return obj
+    all_inputs=[*args.train_episodes,*args.test_episodes]
+    first=receipt(all_inputs[0])
+    for path in all_inputs[1:]:
+        other=receipt(path)
+        if (other["cash_assumptions"]!=first["cash_assumptions"] or
+            other["r9_config"]!=first["r9_config"]):
+            raise ValueError("Mixed lot/currency/fee/goal or baseline config in training fold")
     if set(args.train_episodes) & set(args.test_episodes):
         raise ValueError("Train and evaluation ledger files overlap")
     train=[]
@@ -159,6 +187,11 @@ def train_evaluate(args) -> None:
         "test_last_msc":max(x.entry_time_msc for x in evaluate),
         "trained_incidence_and_cash_utility":table,
         "chronological_test_summary":evaluate_frozen_table(table,evaluate),
+        "all_original_source_hashes_verified":all(
+            x.get("source_sha_verified") and bool(x.get("compressed_sha256"))
+            for p in all_inputs for x in receipt(p)["source_receipts"]),
+        "account_currency":first["cash_assumptions"]["account_currency"],
+        "per_trade_cash_scenario":first["cash_assumptions"],
         "policy":"NO EA MODIFICATION, NO NEW TRAINED LIGHTGBM, NO ON_POLICY PAYOFF CLAIM",
     }
     if args.out:
