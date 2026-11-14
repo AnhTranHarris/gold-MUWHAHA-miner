@@ -1,0 +1,27 @@
+name: R9 v1.94 Coinexx adaptive exit Python
+on:
+  push:
+    paths:
+      - 'research/coinexx_r9_chronological/adaptive_exit/**'
+      - '.github/workflows/r9_v194_adaptive_exit_python_ci.yml'
+  pull_request:
+    paths:
+      - 'research/coinexx_r9_chronological/adaptive_exit/**'
+      - '.github/workflows/r9_v194_adaptive_exit_python_ci.yml'
+permissions:
+  contents: read
+jobs:
+  replay-parity:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Syntax-compile only new bounded research module
+        run: python -m compileall -q research/coinexx_r9_chronological/adaptive_exit
+      - name: Original R9 baseline versus adaptive source-ordinal synthetic parity
+        run: python -m unittest discover -s research/coinexx_r9_chronological/adaptive_exit/tests -v
