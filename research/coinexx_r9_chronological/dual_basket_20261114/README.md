@@ -46,3 +46,33 @@ The runner checks each original gzip SHA256 and **every original completed trade
 Before any EA integration, require positive net after-cost cash per active hour, sufficient trade retention, no worse total gross loss/drawdown/CVaR, feasible stops and model/source parity. January–September 2026 are research-exposed and are not pristine out-of-sample validation.
 
 **Release rule:** test the entry-only arm first; do not re-engineer either Coinexx or Dukascopy datasets. No MQL5 trading changes before full same-baseline risk/performance certification.
+
+
+## 2026-11-14 owner request: Train the **NEW entry** on January–September
+
+**Training research source:** `train_jan_sep.py` (separate branch `carson/r9-v194-dual-entry-training-jan-sep-20261114`).
+
+**Original source RECEIPT HAS BEEN FOUND:** primary Drive `gold_mt5_tick_all/R9_Path_Signatures_Derived_Cache_2026_Jan_Sep/R9_P1_Coinexx_9Month_SourceOrdinal_ASOF_CANDIDATE_CACHE_20261113.zip`, file ID `1Kkdrh-IYrTmjNS2tpBgJDq9SKrfeFewa` (~41 MB), source receipts and original candidate closes. The original nine month Coinexx `XAUUSD_MT5_BROKER_2026_01..09_ticks_ALL.csv.gz` are present in the existing Drive parent. Neither needs to be reconstructed, published in GitHub, nor copied into a new Drive folder. Existing M60 first-passage/155/237-feature archives remain *original R9* features and DO NOT authorize new-dual-entry labels.
+
+**Exact chronological method:**
+
+1. **Pass 1 January–September:** Source SHA-256 + row counts + original R9 frozen entry/exit parity are verified for each month. On the **same original tick** the new dual-basket `$0.10` net cash-harvest arm executes independently. Only its **actual completed entry ordinals**, source-time snapshots and eventual actual modeled liquidation net become supervised examples. This is not a random sampling of windows, not old M60 labels, not a 5s faked-OHLC future.
+2. **Fit January–June:** exactly 14 features recorded **before opening each position**: side, directional basket displacement for 5s and 15s, completed breakout excess for 15s and 30s, spread, lane agreement, basket clock offsets, completed M5 ATR, recent completed-quote midpoint range and directional impulse, and source-native daily sine/cosine. Causal first-quote and one-second-close policies remain intact. Purge entries within 120 seconds of July boundary. Reconstructible, fixed modest hist-gradient-boosting regression is trained on *clipped* after-cost account-cash trade labels; **raw loss tails** are retained for evaluation. No 155-model scores are imputed.
+3. **July admission choice:** restrict to just four *predeclared training-score quantile* reject budgets: 0%, 1%, 3%, 5%. Require 95%+ offline retention and positive offline net before any model gate is selected. **Zero-rejection fallback** is preferred over a negative or unstable result. No broad parameter sweep.
+4. **August no-retune veto:** if the chosen gate fails 95% retention or positive net in August, disable it. August doesn't set new thresholds.
+5. **September frozen:** record the already-frozen January–June model's September diagnostics without changing weights or threshold. All nine months have been previously exposed to other project research, so *September is retrospective development evaluation*, **not pristine prospective OOS**.
+6. **Pass 2 full chronological on-policy replay:** the frozen selector starts only in July; before July it acts as the **ungated new-entry control**. Rejection is evaluated at the precise time of candidate entry. It leaves the existing basket active; any subsequent position, stop, exit, rearm, loss, cash/hour or trade count is recomputed from source quotes, **not posthoc deleted from a trade ledger**. The runner separately assesses $0.10 immediate harvest and stop-protected $1.75 stretch. July/Aug/September comparisons include original v1.90 R9, new ungated basket, and gated new basket.
+7. **Full January–September fit after the frozen September evaluation:** default writes a second small `*.jansep_INSAMPLE_ONLY.joblib`. This **is an in-sample model only**, not approved by the earlier September validation. The fixed Jan–June/frozen model is saved separately, with hashes, for audit. The all-month model needs genuinely unseen later dates before claiming future performance.
+
+**Required original inputs** must already be accessible on a computation host, e.g. a local Windows research PC with existing synced files. In this chat, Drive metadata and GitHub source are accessible, **but the 72,129,347 raw Coinexx quote rows are not mounted to the execution runtime**. Do not state that real nine-month model training ran merely because the pipeline and its synthetic CI tests pass.
+
+```bash
+python research/coinexx_r9_chronological/dual_basket_20261114/train_jan_sep.py \
+  --data /existing/path/to/original/coinexx/months \
+  --receipt /existing/path/to/R9_P1_Coinexx_9Month_SourceOrdinal_ASOF_CANDIDATE_CACHE_20261113.zip \
+  --output /small/reports/R9_DUAL_JANSEP_TRAIN_REPORT.json
+```
+
+**No source archive download, source duplication, feature archive, per-day optimization result, MQL5 file edit, or production EA modification** is made by this script. It writes only one compact JSON report and two small fitted model files; it reads the nine pre-existing gzip files sequentially in two passes. Dependencies for actual training are Python 3.11, numpy, scikit-learn and joblib (installed on the computation host); GitHub Actions runs synthetic zero-data invariants only.
+
+**Hard release gate:** exact nine-month parity plus positive after-cost cash/hour, 95%+ **actual on-policy** trade retention, gross realized loss, tail CVaR, simulated account peak/drawdown and post-September genuine forward validation under real Coinexx contract economics. Quote-only simulation lacks MT5 OnTick coalescing, slippage, server-side stop/freeze and deal-confirmation; see [MetaQuotes OnTick](https://www.mql5.com/en/docs/event_handlers/ontick). More model AUC alone cannot authorize live trading.
