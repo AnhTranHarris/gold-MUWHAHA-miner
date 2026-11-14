@@ -261,7 +261,12 @@ def original_source_pass(args, receipt: dict, cash: ResearchCash):
             raise AssertionError(f"Source checksum mismatch {mm}, stop")
         t0 = time.monotonic()
         count = 0
+        first_source_msc = None
+        last_source_msc = None
         for tick in iter_coinexx_ticks(src, strict=True, ordinal_offset=offset):
+            if first_source_msc is None:
+                first_source_msc = tick.time_msc
+            last_source_msc = tick.time_msc
             regime.update(tick)
             control.on_tick(tick)
             cash_arm.on_tick(tick)
@@ -273,6 +278,7 @@ def original_source_pass(args, receipt: dict, cash: ResearchCash):
         offset += count
         bounds.append(offset)
         row = dict(month=mm, rows=count, sha256=actual, exact_original_trade_parity=bool(verified),
+                   first_source_msc=first_source_msc, last_source_msc=last_source_msc,
                    original_trade_count=verified, dual_cash010_trade_count=len(cash_arm.trades),
                    runtime_s=round(time.monotonic()-t0, 2))
         receipt_log.append(row)
@@ -346,10 +352,12 @@ def main(args):
     finally:
         args.receipt_zip.close()
 
-    # This reference is literal source-native midnight 2026-07-01 UTC;
-    # comparison is only an embargo, not a data timestamp reinterpretation.
-    from datetime import datetime, timezone
-    cutover = int(datetime(2026, 7, 1, tzinfo=timezone.utc).timestamp() * 1000)
+    # Purge against the EXACT first observed July source-native timestamp,
+    # never an assumed UTC offset or a fabricated month-boundary quote.
+    cutover = next(r["first_source_msc"] for r in verified
+                   if r["month"] == PICK_MONTH)
+    if cutover is None:
+        raise AssertionError("Missing original July boundary timestamp")
     train_rows = embargoed_fit(rows, cutover)
     july = [r for r in rows if r.month == PICK_MONTH]
     august = [r for r in rows if r.month == CHECK_MONTH]
