@@ -1,0 +1,24 @@
+name: R9 v1.94 cash ladder research contract
+on:
+  push:
+    paths:
+      - 'research/coinexx_r9_chronological/variable_cash_horizon_20261114/**'
+      - '.github/workflows/r9_v194_variable_cash_horizon_ci.yml'
+  pull_request:
+    paths:
+      - 'research/coinexx_r9_chronological/variable_cash_horizon_20261114/**'
+      - '.github/workflows/r9_v194_variable_cash_horizon_ci.yml'
+permissions:
+  contents: read
+jobs:
+  cash-ladder-source-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check pure Python research syntax
+        run: python -m compileall -q research/coinexx_r9_chronological/variable_cash_horizon_20261114
+      - name: Verify 16 causal and risk budget contract tests
+        run: python -m unittest discover -s research/coinexx_r9_chronological/variable_cash_horizon_20261114/tests -v
