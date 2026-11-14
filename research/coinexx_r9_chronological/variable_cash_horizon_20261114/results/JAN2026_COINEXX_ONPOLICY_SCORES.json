@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-14",
+  "classification": "SOURCE_EXACT_ORIGINAL_COINEXX_JAN2026_QUOTE_MODEL_NO_LIVE_MT5_FILLS",
+  "source": {
+    "month": "2026-01",
+    "raw_source_rows": 7699274,
+    "gzip_sha256": "1307a75df5d635678de7691908600090a552f38543e0512187dcd7b37fbc66b8",
+    "frozen_baseline_all_entry_exit_fields_match": true,
+    "original_completed_positions": 32179
+  },
+  "assumptions": {
+    "cash_per_1_xau_price_move": 1,
+    "extra_roundtrip_cash": 0.2,
+    "account_governor_enabled": false,
+    "broker_contract_verified": false
+  },
+  "scores": {
+    "original": {
+      "trades": 32179,
+      "net_cash": -12488.92,
+      "net_per_trade": -0.388108,
+      "mean_hold_s": 5.82073,
+      "gross_realized_losses": 14318.7,
+      "cvar95_cash_loss": 1.154017,
+      "exit_cash_ge_0_5": 1010,
+      "exit_cash_ge_1_75": 68
+    },
+    "cash_harvest": {
+      "trades": 30820,
+      "volume_retention": 0.9578,
+      "net_cash": -12506.01,
+      "net_per_trade": -0.405776,
+      "mean_hold_s": 11.24778,
+      "gross_realized_losses": 17442.1,
+      "cvar95_cash_loss": 1.236269,
+      "exit_cash_ge_0_5": 7663,
+      "exit_cash_ge_1_75": 31
+    },
+    "quote_regime_experimental": {
+      "trades": 30749,
+      "volume_retention": 0.95556,
+      "net_cash": -12381.41,
+      "net_per_trade": -0.402661,
+      "mean_hold_s": 11.57885,
+      "gross_realized_losses": 17409.93,
+      "cvar95_cash_loss": 1.236701,
+      "exit_cash_ge_0_5": 4755,
+      "exit_cash_ge_1_75": 342,
+      "validated_155_model_runner_trades": 0
+    }
+  },
+  "result": "FAIL_ALL_THREE_NET_LOSING_REGIME_PROBE_BREACHES_GROSS_RISK_ACCEPTANCE",
+  "replay_coverage": "JANUARY_ONLY_FEBRUARY_SEPTEMBER_NOT_RUN_FOR_NEW_POLICY",
+  "governor_sensitivity_note": "10 percent peak equity realized-only crossing on 2026-01-26 with assumed 100000 initial, not a governor on-policy backtest",
+  "rules": "Original stop, existing 10 percent peak-account DD and daily governor preserved; 25 percent absolute is outer emergency"
+}
