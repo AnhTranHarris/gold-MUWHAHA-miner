@@ -36,6 +36,12 @@
 | 2026-08 | −$12,718.67 | −$16,866.95 | 41,666 | 10.40% |
 | 2026-09 | −$13,391.06 | −$17,375.44 | 43,102 | 10.86% |
 
+### Cash-exit objectives are NOT yet applied
+
+With the ORIGINAL R9 exit unchanged, about **14.21%** of completed dual-entry trades finish at or above **+$0.10 modeled NET**, approximately **3.74%** finish at or above **+$0.50**, and just **0.293%** at or above **+$1.75**. These are **observed final-exit outcomes**, NOT maximum favorable excursions or proof that a later cash harvest can realize these marks. They make no guarantee of the owner's requested 10-cent minimum.
+
+The new router adds **115,455** completed trades. At C=$0.20/trade, **$23,091.00** of the incremental **$42,443.59** deterioration arises from extra modeled per-trade charges. Another **$19,352.59** comes from worse aggregate Bid/Ask-side price P&L **even with C=0**; simple commission removal therefore does not rescue the new entry.
+
 ### Entry-lane evidence (IMPORTANT: lane counts OVERLAP)
 
 - 15s basket / 15s breakout: **417,806** accepted entries also passed this lane (**99.62%** of all 419,389 trades).
