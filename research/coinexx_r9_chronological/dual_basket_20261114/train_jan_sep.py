@@ -406,6 +406,8 @@ def main(args):
     joblib.dump({"model": model, "cutoff": cutoff,
                  "schema": FEATURE_NAMES, "train_months": FIT_MONTHS,
                  "status": "research_only"}, frozen_path)
+    with frozen_path.open("rb") as f:
+        report["frozen_presept_sha256"] = hashlib.file_digest(f, "sha256").hexdigest()
     if args.final_all_nine:
         full = train_fixed_model(rows)
         full_scores = scores(full, rows)
@@ -414,9 +416,11 @@ def main(args):
         joblib.dump({"model": full, "cutoff": full_cutoff,
                      "schema": FEATURE_NAMES, "train_months": MONTHS,
                      "status": "INSAMPLE_ONLY_UNSCORED_FUTURE_MONTH_REQUIRED"}, full_path)
+        with full_path.open("rb") as f:
+            model_sha = hashlib.file_digest(f, "sha256").hexdigest()
         report["optional_full_jansep_fit"] = {
             "trained_entries": len(rows), "status": "IN_SAMPLE_ONLY",
-            "model_file": str(full_path),
+            "model_file": str(full_path), "model_sha256": model_sha,
             "next_action": "freeze and assess truly unseen post-September quotes"}
     args.output.write_text(json.dumps(report, sort_keys=True, indent=2, default=list) + "\n")
     print("TRAINING_REPORT " + str(args.output), flush=True)
@@ -433,7 +437,8 @@ if __name__ == "__main__":
     p.add_argument("--k", type=float, default=1.0)
     p.add_argument("--c", type=float, default=.20)
     p.add_argument("--start-capital", type=float, default=100000.)
-    p.add_argument("--final-all-nine", action="store_true",
-                   help="Only AFTER frozen Sept evaluation; marked IN-SAMPLE ONLY")
+    p.add_argument("--no-final-all-nine", dest="final_all_nine",
+                   action="store_false", default=True,
+                   help="Opt out of full Jan-Sep IN-SAMPLE ONLY fit after frozen September evaluation")
     p.add_argument("--output", type=Path, default=Path("R9_DUAL_JANSEP_TRAIN_REPORT.json"))
     main(p.parse_args())
