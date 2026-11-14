@@ -200,7 +200,7 @@ class VariableCashHorizonPolicy:
         s=self.spec
         observed=position.net_cash()
         self.peak_observed_cash=max(self.peak_observed_cash,observed)
-        self.profit_zone_visited |= observed>=s.min_net_profit
+        self.profit_zone_visited |= observed>=s.min_net_profit-1e-9
         locked=account.lock_reason(s)
         if locked:
             return ExitDecision("CLOSE_NOW",locked,observed)
@@ -212,11 +212,11 @@ class VariableCashHorizonPolicy:
                 "Per-position $2 peak-to-current cash drawdown ceiling",observed)
         if position.since_last_quote_ms>s.max_quote_age_ms:
             return ExitDecision("CLOSE_NOW","Stale quote: request close, do not trust price guarantee",observed)
-        if observed>=s.stretch_net_profit:
+        if observed>=s.stretch_net_profit-1e-9:
             return ExitDecision("CLOSE_NOW","Stretch $1.75 realized cash goal reached",observed)
         if position.age_seconds>=s.emergency_max_hold_s:
             return ExitDecision("CLOSE_NOW","120s stranded-position failsafe (not profit clock)",observed)
-        if observed>=s.min_net_profit:
+        if observed>=s.min_net_profit-1e-9:
             # The original five-second model is NOT sufficient to justify
             # holding; require a distinct, chronologically validated positive
             # lower bound for continuation value versus taking cash now.
