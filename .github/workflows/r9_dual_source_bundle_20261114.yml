@@ -1,0 +1,27 @@
+name: R9 dual entry small source bundle (NO market data)
+on:
+  push:
+    branches:
+      - carson/r9-v194-dual-5s15s-baskets-15s30s-breakouts-cash010-175-20261114
+    paths:
+      - '.github/workflows/r9_dual_source_bundle_20261114.yml'
+  workflow_dispatch:
+jobs:
+  minimal-research-bundle:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Package exact source files, no datasets, one day retention
+        uses: actions/upload-artifact@v4
+        with:
+          name: r9-dual-entry-sources
+          retention-days: 1
+          if-no-files-found: error
+          path: |
+            research/coinexx_r9_chronological/src/coinexx_r9/*.py
+            research/coinexx_r9_chronological/variable_cash_horizon_20261114/cash_ladder.py
+            research/coinexx_r9_chronological/variable_cash_horizon_20261114/on_policy_cash_replay.py
+            research/coinexx_r9_chronological/variable_cash_horizon_20261114/run_coinexx.py
+            research/coinexx_r9_chronological/dual_basket_20261114/*.py
