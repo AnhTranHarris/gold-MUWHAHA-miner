@@ -7,11 +7,20 @@ No fabricated volume, tick reconstruction, or speculative 155-model scores.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from math import sin, cos, tau
 from typing import Optional
 
 from coinexx_r9.models import Tick
 from coinexx_r9.r9_baseline import R9Config, R9HybridGateBaseline
 from on_policy_cash_replay import ManagedR9, ResearchCash
+FEATURE_NAMES = (
+    'side', 'mid_disp_5s_cents', 'mid_disp_15s_cents',
+    'excess_breakout_15s_cents', 'excess_breakout_30s_cents',
+    'spread_cents', 'qualifying_lane_count', 'elapsed_5s', 'elapsed_15s',
+    'm5_atr_cents', 'recent_completed_mid_range_cents',
+    'recent_completed_mid_impulse_cents', 'time_sin', 'time_cos',
+)
+
 from cash_ladder import (
     AccountSnapshot, CashLadderSpec, CurrentPosition, ExitDecision,
     VariableCashHorizonPolicy,
@@ -115,6 +124,8 @@ class DualBasketMixin:
         self._cached_second: Optional[int] = None
         self._cached_windows: dict[int, Optional[tuple[int, int]]] = {}
         self._qualifying_lanes: tuple[str, ...] = ()
+        self._candidate_features: tuple[float, ...] = ()
+        self.entry_selector = None  # Optional frozen training-only gate.
 
     def _starts(self, t: Tick) -> tuple[int, int]:
         return tuple(t.time_s - t.time_s % width
@@ -169,6 +180,36 @@ class DualBasketMixin:
         self._cached_windows[width] = result
         return result
 
+    def entry_features(self, t: Tick, side: int) -> tuple[float, ...]:
+        """Past/current quote-only model inputs evaluated BEFORE trade placement."""
+        mid2 = t.bid_u + t.ask_u
+        a5 = self.baskets[5][1]
+        a15 = self.baskets[15][1]
+        b15 = self._breakout_levels(t.time_s, 15)
+        b30 = self._breakout_levels(t.time_s, 30)
+        def excess(levels):
+            if levels is None:
+                return -999.0  # Explicit unavailable-window sentinel.
+            return (mid2 - levels[0]) / 2 if side > 0 else (levels[1] - mid2) / 2
+        recent = [b for b in self.micro if 0 < t.time_s - b.second <= 5]
+        mids = [(b.bid_close_u + b.ask_close_u) / 2 for b in recent]
+        span = max(mids) - min(mids) if mids else 0.
+        impulse = side * (mids[-1] - mids[0]) if len(mids) > 1 else 0.
+        angle = tau * (t.time_s % 86400) / 86400
+        return (
+            float(side),
+            float(side * (mid2 - a5) / 2),
+            float(side * (mid2 - a15) / 2),
+            float(excess(b15)), float(excess(b30)),
+            float(t.ask_u - t.bid_u),
+            float(len(self._qualifying_lanes)),
+            float(t.time_s - self.baskets[5][0]),
+            float(t.time_s - self.baskets[15][0]),
+            float(self.atr.atr_u) if self.atr.ready else -999.,
+            float(span), float(impulse),
+            sin(angle), cos(angle),
+        )
+
     def _process_entries(self, t: Tick) -> None:
         if self.pending_mode == 0 or self._entries_in_minute >= self._cap():
             self.stats["dual_entry_cap_or_pending"] += 1
@@ -214,10 +255,16 @@ class DualBasketMixin:
             self.stats["dual_gate_s1"] += 1
             return
         self._qualifying_lanes = tuple(votes[side])
+        self._candidate_features = self.entry_features(t, side)
         try:
+            if (self.entry_selector is not None and
+                not self.entry_selector.accept(self._candidate_features)):
+                self.stats["dual_frozen_model_reject"] += 1
+                return
             self._open_trade(t, side)
         finally:
             self._qualifying_lanes = ()
+            self._candidate_features = ()
 
     def _open_trade(self, t: Tick, side: int) -> None:
         if self._entries_in_minute >= self._cap():
@@ -233,6 +280,7 @@ class DualBasketMixin:
             "basket_start_5s": self._last_entry_starts[0],
             "basket_start_15s": self._last_entry_starts[1],
             "breakout_lanes": "|".join(self._qualifying_lanes),
+            "features": list(self._candidate_features),
         })
         for lane in self._qualifying_lanes:
             self.stats[f"accepted_{lane}"] += 1
