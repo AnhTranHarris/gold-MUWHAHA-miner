@@ -1,0 +1,863 @@
+{
+  "title": "R9 v1.94 original-policy conditional 1s/3s hold-vs-liquidate shadow",
+  "asof_date": "2026-11-14",
+  "status": "RESEARCH_ONLY_DO_NOT_ENABLE_EXIT_POLICY",
+  "original_r9_v194_compiled_source_commit": "813baf96f2b381be5fc7896aac8b08a966114948",
+  "frozen_155_model": "original per-month fold weights SHA pinned in source",
+  "research_source": "Original Coinexx only May\u2013Sep ticks and existing frozen original R9 trade ledger",
+  "original_source_opportunity_count": 162312,
+  "no_large_source_rebuild": true,
+  "modeled_account_cash": "K=1 account currency per $1 XAUUSD price movement at 0.01 lot; C=0.20 extra cash round trip; spread once via executable quotes",
+  "conditional_hold_minus_exit_cancels_fixed_roundtrip_cost": true,
+  "snapshot_availability": "first observed same-original-position source quote at/after 1s,3s; max milestone lateness 500ms, max last quote gap 2500ms; original entry and exit ordinal and quote price revalidated",
+  "train": "May through prior held-out fold test month; test June\u2013Sep, four expanding chronological evaluations",
+  "survivor_bias": true,
+  "model_metric_target": "incremental cash at original R9 exit minus current executable liquidation cash; different from frozen 5s barrier label",
+  "not_simulated": [
+    "new entries/rearms on early exit",
+    "portfolio gross-loss governor",
+    "actual Coinexx fills/fees/slippage",
+    "execution time latency",
+    "post-Sept unseen forward data"
+  ],
+  "monthly": [
+    {
+      "month": "05",
+      "original_positions": 31615,
+      "source_rows": 8011360,
+      "original_source_sha256_verified_on_full_source_pass": "3e39c2810a40858f17245f4e07b6e15a0b52bbb48320a94fbe123a77c6343e29",
+      "1s": {
+        "surviving_observable_landmarks": 23372,
+        "coverage_over_original_positions": 0.7392693341768148,
+        "avg_exit_now_quote_cash": -0.3889632884093584,
+        "avg_hold_original_final_quote_cash": -0.40475355125791546,
+        "avg_original_hold_minus_exit_now": -0.015790262848557057,
+        "fraction_hold_beats_exit_now": 0.4355639226424782,
+        "median_original_active_stop_distance_quote_cents": 28.0,
+        "mean_original_active_stop_distance_quote_cents": 27.683637619018555,
+        "p05_hold_minus_exit_now_cash": -0.5399999952316283,
+        "p95_hold_minus_exit_now_cash": 0.6399999769926071
+      },
+      "3s": {
+        "surviving_observable_landmarks": 14568,
+        "coverage_over_original_positions": 0.4607939269334177,
+        "avg_exit_now_quote_cash": -0.38922707205597373,
+        "avg_hold_original_final_quote_cash": -0.40456274025260847,
+        "avg_original_hold_minus_exit_now": -0.01533566819663471,
+        "fraction_hold_beats_exit_now": 0.4345140032948929,
+        "median_original_active_stop_distance_quote_cents": 28.0,
+        "mean_original_active_stop_distance_quote_cents": 27.388385772705078,
+        "p05_hold_minus_exit_now_cash": -0.5300000091195107,
+        "p95_hold_minus_exit_now_cash": 0.620000011086464
+      }
+    },
+    {
+      "month": "06",
+      "original_positions": 33946,
+      "source_rows": 9347508,
+      "original_source_sha256_verified_on_full_source_pass": "3033ccb257d067aecc123f3791d9dddc5c95841b9bba167ff1ca0cf1589dc2b4",
+      "1s": {
+        "surviving_observable_landmarks": 25374,
+        "coverage_over_original_positions": 0.7474812938195958,
+        "avg_exit_now_quote_cash": -0.3868081491055732,
+        "avg_hold_original_final_quote_cash": -0.3773740837077323,
+        "avg_original_hold_minus_exit_now": 0.00943406539784085,
+        "fraction_hold_beats_exit_now": 0.46527941987861593,
+        "median_original_active_stop_distance_quote_cents": 29.0,
+        "mean_original_active_stop_distance_quote_cents": 27.875856399536133,
+        "p05_hold_minus_exit_now_cash": -0.5399999982118606,
+        "p95_hold_minus_exit_now_cash": 0.680000023841858
+      },
+      "3s": {
+        "surviving_observable_landmarks": 15636,
+        "coverage_over_original_positions": 0.4606139162198786,
+        "avg_exit_now_quote_cash": -0.38058454769595135,
+        "avg_hold_original_final_quote_cash": -0.36760168841135843,
+        "avg_original_hold_minus_exit_now": 0.012982859284592939,
+        "fraction_hold_beats_exit_now": 0.46776669224865697,
+        "median_original_active_stop_distance_quote_cents": 28.0,
+        "mean_original_active_stop_distance_quote_cents": 27.69461441040039,
+        "p05_hold_minus_exit_now_cash": -0.5400000023841858,
+        "p95_hold_minus_exit_now_cash": 0.6700000062584877
+      }
+    },
+    {
+      "month": "07",
+      "original_positions": 32536,
+      "source_rows": 8075197,
+      "original_source_sha256_verified_on_full_source_pass": "d9d47d40abb33935414edfb5c11f0c518d8c9cc27221da182dab0bc49b0b708d",
+      "1s": {
+        "surviving_observable_landmarks": 25102,
+        "coverage_over_original_positions": 0.7715146299483648,
+        "avg_exit_now_quote_cash": -0.3820811079749138,
+        "avg_hold_original_final_quote_cash": -0.3774810772050035,
+        "avg_original_hold_minus_exit_now": 0.00460003076991019,
+        "fraction_hold_beats_exit_now": 0.4750219106047327,
+        "median_original_active_stop_distance_quote_cents": 29.0,
+        "mean_original_active_stop_distance_quote_cents": 28.38347625732422,
+        "p05_hold_minus_exit_now_cash": -0.5000000143051146,
+        "p95_hold_minus_exit_now_cash": 0.6099999904632568
+      },
+      "3s": {
+        "surviving_observable_landmarks": 17147,
+        "coverage_over_original_positions": 0.5270162281780182,
+        "avg_exit_now_quote_cash": -0.3791065486133335,
+        "avg_hold_original_final_quote_cash": -0.37672654108590425,
+        "avg_original_hold_minus_exit_now": 0.0023800075274292543,
+        "fraction_hold_beats_exit_now": 0.4715693707354056,
+        "median_original_active_stop_distance_quote_cents": 28.0,
+        "mean_original_active_stop_distance_quote_cents": 27.93240737915039,
+        "p05_hold_minus_exit_now_cash": -0.509999995648861,
+        "p95_hold_minus_exit_now_cash": 0.589999991774559
+      }
+    },
+    {
+      "month": "08",
+      "original_positions": 31214,
+      "source_rows": 7468061,
+      "original_source_sha256_verified_on_full_source_pass": "8e337d18377c318de17ceb72d46bbfc976a29cef4571dfa3457d3ac7fc0e1c17",
+      "1s": {
+        "surviving_observable_landmarks": 23177,
+        "coverage_over_original_positions": 0.7425193823284424,
+        "avg_exit_now_quote_cash": -0.3804974749908716,
+        "avg_hold_original_final_quote_cash": -0.3829033093152695,
+        "avg_original_hold_minus_exit_now": -0.002405834324397856,
+        "fraction_hold_beats_exit_now": 0.4709841653363248,
+        "median_original_active_stop_distance_quote_cents": 29.0,
+        "mean_original_active_stop_distance_quote_cents": 28.46343421936035,
+        "p05_hold_minus_exit_now_cash": -0.5299999856948852,
+        "p95_hold_minus_exit_now_cash": 0.6100000073909759
+      },
+      "3s": {
+        "surviving_observable_landmarks": 14977,
+        "coverage_over_original_positions": 0.47981674889472675,
+        "avg_exit_now_quote_cash": -0.37532549832157264,
+        "avg_hold_original_final_quote_cash": -0.3795733457968886,
+        "avg_original_hold_minus_exit_now": -0.004247847475315947,
+        "fraction_hold_beats_exit_now": 0.46177472123923347,
+        "median_original_active_stop_distance_quote_cents": 29.0,
+        "mean_original_active_stop_distance_quote_cents": 28.005876541137695,
+        "p05_hold_minus_exit_now_cash": -0.5199999916553497,
+        "p95_hold_minus_exit_now_cash": 0.5900000143051147
+      }
+    },
+    {
+      "month": "09",
+      "original_positions": 33001,
+      "source_rows": 7734341,
+      "original_source_sha256_verified_on_full_source_pass": "deaf191f65506178d501256f084a0ff4615fd21946f27ec1d9ee8f5e8c64b8ff",
+      "1s": {
+        "surviving_observable_landmarks": 24895,
+        "coverage_over_original_positions": 0.7543710796642527,
+        "avg_exit_now_quote_cash": -0.3803418346751219,
+        "avg_hold_original_final_quote_cash": -0.3827692307692308,
+        "avg_original_hold_minus_exit_now": -0.002427396094108906,
+        "fraction_hold_beats_exit_now": 0.4647117895159671,
+        "median_original_active_stop_distance_quote_cents": 29.0,
+        "mean_original_active_stop_distance_quote_cents": 28.131914138793945,
+        "p05_hold_minus_exit_now_cash": -0.530000005364418,
+        "p95_hold_minus_exit_now_cash": 0.6199999872446059
+      },
+      "3s": {
+        "surviving_observable_landmarks": 16012,
+        "coverage_over_original_positions": 0.48519741826005275,
+        "avg_exit_now_quote_cash": -0.37808456076932606,
+        "avg_hold_original_final_quote_cash": -0.3807663002747939,
+        "avg_original_hold_minus_exit_now": -0.0026817395054678757,
+        "fraction_hold_beats_exit_now": 0.4590931801149138,
+        "median_original_active_stop_distance_quote_cents": 28.0,
+        "mean_original_active_stop_distance_quote_cents": 27.532976150512695,
+        "p05_hold_minus_exit_now_cash": -0.52999998742342,
+        "p95_hold_minus_exit_now_cash": 0.6199999908804894
+      }
+    }
+  ],
+  "walk_forward": {
+    "classification": "ORIGINAL_POLICY_SURVIVOR_CONDITIONAL_HOLD_CASH_NOT_ON_POLICY_OPTIMAL_STOP",
+    "model": "frozen 155-feature entry-time LightGBM p5 + earlier-fold regularized ridge cash continuation",
+    "model_parameters": {
+      "ridge_alpha": 500,
+      "target_winsor_train_quantiles": [
+        0.001,
+        0.999
+      ],
+      "features": [
+        "cash_now",
+        "stop_distance_cents",
+        "spread",
+        "spread_delta",
+        "MFE_cash",
+        "MAE_cash",
+        "signed_recent_quote_mid_move",
+        "realized_quote_noise",
+        "observed_updates_1s",
+        "recent_quote_efficiency",
+        "quote_gap_ms",
+        "M5_ATR",
+        "R9_S1_eff",
+        "entry_spread",
+        "session",
+        "side",
+        "rearm",
+        "frozen_p5_original_direction"
+      ]
+    },
+    "train_months": "May through previous evaluation month, all original primary scores originally held-out by month",
+    "evaluation_months": "June through September 2026, prior research exposed",
+    "cost_assumptions": {
+      "K": 1.0,
+      "C": 0.2,
+      "C_cancels_in_delta_hold_minus_exit": true
+    },
+    "policy_execution_not_simulated": true,
+    "account_governor_not_simulated": true,
+    "causal_quote_observations_and_original_exit_only": true,
+    "occupancy_cost_not_observable_from_original_ledger": true,
+    "summary": {
+      "1s": {
+        "total_evaluation_landmarks": 98548,
+        "equal_month_mean_hold_better_auc_context": 0.5231929720714684,
+        "equal_month_mean_hold_better_auc_context_plus_frozen_p5": 0.520068450607954,
+        "equal_month_mean_incremental_p5_auc": -0.0031245214635144125,
+        "equal_month_mean_incremental_p5_mae_cash": 3.2377376527906176e-05,
+        "equal_month_mean_observed_hold_cash_advantage": 0.0023002164373110696
+      },
+      "3s": {
+        "total_evaluation_landmarks": 63772,
+        "equal_month_mean_hold_better_auc_context": 0.5052835592081344,
+        "equal_month_mean_hold_better_auc_context_plus_frozen_p5": 0.5045024714016113,
+        "equal_month_mean_incremental_p5_auc": -0.0007810878065232785,
+        "equal_month_mean_incremental_p5_mae_cash": 6.871511817173326e-05,
+        "equal_month_mean_observed_hold_cash_advantage": 0.002108319957809593
+      }
+    },
+    "folds": [
+      {
+        "landmark_seconds": 1,
+        "eval_month": "06",
+        "train_months": [
+          "05"
+        ],
+        "train_landmark_positions": 23372,
+        "quote_context_only": {
+          "positions": 25374,
+          "mean_observed_original_hold_minus_now": 0.00943406539784085,
+          "fraction_original_hold_beat_immediate_exit": 0.46527941987861593,
+          "prediction_auc_for_original_hold_better": 0.4808778113203552,
+          "prediction_mae_cash": 0.35102826416217914,
+          "predicted_mean_hold_advantage": -0.016920162364840508,
+          "p05_observed_hold_minus_exit_cash": -0.5399999982118606,
+          "observed_bottom_5pct_hold_cash_loss": 0.6935460999990843,
+          "mean_quoted_liquidation_now_cash": -0.3868081491055732,
+          "predicted_conditional_cvar95_cash": 0.6803989715016455,
+          "mean_source_quote_age_seconds": 1,
+          "lambda_0_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.07263340427208954,
+            "mean_observed_delta_among_shadow_hold_recommendations": 0.024378729358606535,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.1_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.25_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          }
+        },
+        "quote_context_plus_frozen_p5": {
+          "positions": 25374,
+          "mean_observed_original_hold_minus_now": 0.00943406539784085,
+          "fraction_original_hold_beat_immediate_exit": 0.46527941987861593,
+          "prediction_auc_for_original_hold_better": 0.48666838723174816,
+          "prediction_mae_cash": 0.3510364143365937,
+          "predicted_mean_hold_advantage": -0.015474117361009121,
+          "p05_observed_hold_minus_exit_cash": -0.5399999982118606,
+          "observed_bottom_5pct_hold_cash_loss": 0.6935460999990843,
+          "mean_quoted_liquidation_now_cash": -0.3868081491055732,
+          "predicted_conditional_cvar95_cash": 0.6745116311946687,
+          "mean_source_quote_age_seconds": 1,
+          "lambda_0_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.11594545597856074,
+            "mean_observed_delta_among_shadow_hold_recommendations": 0.030237932614424978,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.1_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.25_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          }
+        },
+        "incremental_p5_auc": 0.005790575911392981,
+        "incremental_p5_mae_cash": 8.150174414578437e-06,
+        "intrinsic_original_survivor_bias": true
+      },
+      {
+        "landmark_seconds": 1,
+        "eval_month": "07",
+        "train_months": [
+          "05",
+          "06"
+        ],
+        "train_landmark_positions": 48746,
+        "quote_context_only": {
+          "positions": 25102,
+          "mean_observed_original_hold_minus_now": 0.00460003076991019,
+          "fraction_original_hold_beat_immediate_exit": 0.4750219106047327,
+          "prediction_auc_for_original_hold_better": 0.5411515494830441,
+          "prediction_mae_cash": 0.3265527222380004,
+          "predicted_mean_hold_advantage": -0.008318116888403893,
+          "p05_observed_hold_minus_exit_cash": -0.5000000143051146,
+          "observed_bottom_5pct_hold_cash_loss": 0.6304060512275738,
+          "mean_quoted_liquidation_now_cash": -0.3820811079749138,
+          "predicted_conditional_cvar95_cash": 0.6810316586430573,
+          "mean_source_quote_age_seconds": 1,
+          "lambda_0_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.18046370807107004,
+            "mean_observed_delta_among_shadow_hold_recommendations": 0.004944811519556089,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.1_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 3.9837463150346584e-05,
+            "mean_observed_delta_among_shadow_hold_recommendations": -0.4099997711181622,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.25_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          }
+        },
+        "quote_context_plus_frozen_p5": {
+          "positions": 25102,
+          "mean_observed_original_hold_minus_now": 0.00460003076991019,
+          "fraction_original_hold_beat_immediate_exit": 0.4750219106047327,
+          "prediction_auc_for_original_hold_better": 0.5351784489402173,
+          "prediction_mae_cash": 0.32658542782050465,
+          "predicted_mean_hold_advantage": -0.008049996569752693,
+          "p05_observed_hold_minus_exit_cash": -0.5000000143051146,
+          "observed_bottom_5pct_hold_cash_loss": 0.6304060512275738,
+          "mean_quoted_liquidation_now_cash": -0.3820811079749138,
+          "predicted_conditional_cvar95_cash": 0.687451321629954,
+          "mean_source_quote_age_seconds": 1,
+          "lambda_0_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.22241255676838498,
+            "mean_observed_delta_among_shadow_hold_recommendations": 0.008595736172546005,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.1_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 3.9837463150346584e-05,
+            "mean_observed_delta_among_shadow_hold_recommendations": -0.4099997711181622,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.25_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          }
+        },
+        "incremental_p5_auc": -0.005973100542826848,
+        "incremental_p5_mae_cash": 3.270558250423328e-05,
+        "intrinsic_original_survivor_bias": true
+      },
+      {
+        "landmark_seconds": 1,
+        "eval_month": "08",
+        "train_months": [
+          "05",
+          "06",
+          "07"
+        ],
+        "train_landmark_positions": 73848,
+        "quote_context_only": {
+          "positions": 23177,
+          "mean_observed_original_hold_minus_now": -0.002405834324397856,
+          "fraction_original_hold_beat_immediate_exit": 0.4709841653363248,
+          "prediction_auc_for_original_hold_better": 0.5395479112854711,
+          "prediction_mae_cash": 0.3304884297355045,
+          "predicted_mean_hold_advantage": -0.0022365350741893053,
+          "p05_observed_hold_minus_exit_cash": -0.5299999856948852,
+          "observed_bottom_5pct_hold_cash_loss": 0.6833045737626637,
+          "mean_quoted_liquidation_now_cash": -0.3804974749908716,
+          "predicted_conditional_cvar95_cash": 0.6667222336062866,
+          "mean_source_quote_age_seconds": 1,
+          "lambda_0_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.38482115890753765,
+            "mean_observed_delta_among_shadow_hold_recommendations": 0.0033019389541430588,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.1_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.25_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          }
+        },
+        "quote_context_plus_frozen_p5": {
+          "positions": 23177,
+          "mean_observed_original_hold_minus_now": -0.002405834324397856,
+          "fraction_original_hold_beat_immediate_exit": 0.4709841653363248,
+          "prediction_auc_for_original_hold_better": 0.5311874285888138,
+          "prediction_mae_cash": 0.33054136565063763,
+          "predicted_mean_hold_advantage": -0.0020012366585433483,
+          "p05_observed_hold_minus_exit_cash": -0.5299999856948852,
+          "observed_bottom_5pct_hold_cash_loss": 0.6833045737626637,
+          "mean_quoted_liquidation_now_cash": -0.3804974749908716,
+          "predicted_conditional_cvar95_cash": 0.6678254387298385,
+          "mean_source_quote_age_seconds": 1,
+          "lambda_0_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.43279975838115375,
+            "mean_observed_delta_among_shadow_hold_recommendations": -0.00024324673145056174,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.1_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.25_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          }
+        },
+        "incremental_p5_auc": -0.008360482696657234,
+        "incremental_p5_mae_cash": 5.293591513311213e-05,
+        "intrinsic_original_survivor_bias": true
+      },
+      {
+        "landmark_seconds": 1,
+        "eval_month": "09",
+        "train_months": [
+          "05",
+          "06",
+          "07",
+          "08"
+        ],
+        "train_landmark_positions": 97025,
+        "quote_context_only": {
+          "positions": 24895,
+          "mean_observed_original_hold_minus_now": -0.002427396094108906,
+          "fraction_original_hold_beat_immediate_exit": 0.4647117895159671,
+          "prediction_auc_for_original_hold_better": 0.5311946161970033,
+          "prediction_mae_cash": 0.3327121818622063,
+          "predicted_mean_hold_advantage": -0.0023584153968840837,
+          "p05_observed_hold_minus_exit_cash": -0.530000005364418,
+          "observed_bottom_5pct_hold_cash_loss": 0.6711325310398057,
+          "mean_quoted_liquidation_now_cash": -0.3803418346751219,
+          "predicted_conditional_cvar95_cash": 0.6713752883153328,
+          "mean_source_quote_age_seconds": 1,
+          "lambda_0_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.3627234384414541,
+            "mean_observed_delta_among_shadow_hold_recommendations": -0.003534884539718519,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.1_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.25_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          }
+        },
+        "quote_context_plus_frozen_p5": {
+          "positions": 24895,
+          "mean_observed_original_hold_minus_now": -0.002427396094108906,
+          "fraction_original_hold_beat_immediate_exit": 0.4647117895159671,
+          "prediction_auc_for_original_hold_better": 0.5272395376710367,
+          "prediction_mae_cash": 0.332747899696266,
+          "predicted_mean_hold_advantage": -0.002175887580960989,
+          "p05_observed_hold_minus_exit_cash": -0.530000005364418,
+          "observed_bottom_5pct_hold_cash_loss": 0.6711325310398057,
+          "mean_quoted_liquidation_now_cash": -0.3803418346751219,
+          "predicted_conditional_cvar95_cash": 0.6716851542729334,
+          "mean_source_quote_age_seconds": 1,
+          "lambda_0_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.38738702550712995,
+            "mean_observed_delta_among_shadow_hold_recommendations": -0.001057653183033305,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.1_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.25_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          }
+        },
+        "incremental_p5_auc": -0.003955078525966549,
+        "incremental_p5_mae_cash": 3.571783405970086e-05,
+        "intrinsic_original_survivor_bias": true
+      },
+      {
+        "landmark_seconds": 3,
+        "eval_month": "06",
+        "train_months": [
+          "05"
+        ],
+        "train_landmark_positions": 14568,
+        "quote_context_only": {
+          "positions": 15636,
+          "mean_observed_original_hold_minus_now": 0.012982859284592939,
+          "fraction_original_hold_beat_immediate_exit": 0.46776669224865697,
+          "prediction_auc_for_original_hold_better": 0.49413000696533826,
+          "prediction_mae_cash": 0.33520183021351113,
+          "predicted_mean_hold_advantage": -0.01417196448892355,
+          "p05_observed_hold_minus_exit_cash": -0.5400000023841858,
+          "observed_bottom_5pct_hold_cash_loss": 0.6852429674912596,
+          "mean_quoted_liquidation_now_cash": -0.38058454769595135,
+          "predicted_conditional_cvar95_cash": 0.6755818296938318,
+          "mean_source_quote_age_seconds": 3,
+          "lambda_0_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.16871322588897417,
+            "mean_observed_delta_among_shadow_hold_recommendations": 0.030053069745984776,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.1_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0001918649270913277,
+            "mean_observed_delta_among_shadow_hold_recommendations": -0.19666665951410925,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.25_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          }
+        },
+        "quote_context_plus_frozen_p5": {
+          "positions": 15636,
+          "mean_observed_original_hold_minus_now": 0.012982859284592939,
+          "fraction_original_hold_beat_immediate_exit": 0.46776669224865697,
+          "prediction_auc_for_original_hold_better": 0.5020576794941531,
+          "prediction_mae_cash": 0.3351259691118691,
+          "predicted_mean_hold_advantage": -0.012236611917614937,
+          "p05_observed_hold_minus_exit_cash": -0.5400000023841858,
+          "observed_bottom_5pct_hold_cash_loss": 0.6852429674912596,
+          "mean_quoted_liquidation_now_cash": -0.38058454769595135,
+          "predicted_conditional_cvar95_cash": 0.670961077382874,
+          "mean_source_quote_age_seconds": 3,
+          "lambda_0_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.21904579176259914,
+            "mean_observed_delta_among_shadow_hold_recommendations": 0.03176642271617468,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.1_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0005755947812739831,
+            "mean_observed_delta_among_shadow_hold_recommendations": -0.002222222752041277,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.25_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          }
+        },
+        "incremental_p5_auc": 0.007927672528814877,
+        "incremental_p5_mae_cash": -7.586110164203852e-05,
+        "intrinsic_original_survivor_bias": true
+      },
+      {
+        "landmark_seconds": 3,
+        "eval_month": "07",
+        "train_months": [
+          "05",
+          "06"
+        ],
+        "train_landmark_positions": 30204,
+        "quote_context_only": {
+          "positions": 17147,
+          "mean_observed_original_hold_minus_now": 0.0023800075274292543,
+          "fraction_original_hold_beat_immediate_exit": 0.4715693707354056,
+          "prediction_auc_for_original_hold_better": 0.5165225740844688,
+          "prediction_mae_cash": 0.3077372267961709,
+          "predicted_mean_hold_advantage": -0.006120813079178333,
+          "p05_observed_hold_minus_exit_cash": -0.509999995648861,
+          "observed_bottom_5pct_hold_cash_loss": 0.6335897433309705,
+          "mean_quoted_liquidation_now_cash": -0.3791065486133335,
+          "predicted_conditional_cvar95_cash": 0.6856734988667643,
+          "mean_source_quote_age_seconds": 3,
+          "lambda_0_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.2591707004140666,
+            "mean_observed_delta_among_shadow_hold_recommendations": 0.009556705033512232,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.1_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0001166384790342334,
+            "mean_observed_delta_among_shadow_hold_recommendations": 0.565,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.25_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          }
+        },
+        "quote_context_plus_frozen_p5": {
+          "positions": 17147,
+          "mean_observed_original_hold_minus_now": 0.0023800075274292543,
+          "fraction_original_hold_beat_immediate_exit": 0.4715693707354056,
+          "prediction_auc_for_original_hold_better": 0.5133870665754244,
+          "prediction_mae_cash": 0.3078218809512765,
+          "predicted_mean_hold_advantage": -0.005613182671368122,
+          "p05_observed_hold_minus_exit_cash": -0.509999995648861,
+          "observed_bottom_5pct_hold_cash_loss": 0.6335897433309705,
+          "mean_quoted_liquidation_now_cash": -0.3791065486133335,
+          "predicted_conditional_cvar95_cash": 0.6824664693748981,
+          "mean_source_quote_age_seconds": 3,
+          "lambda_0_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.3384848661573453,
+            "mean_observed_delta_among_shadow_hold_recommendations": 0.004496898235795536,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.1_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 5.83192395171167e-05,
+            "mean_observed_delta_among_shadow_hold_recommendations": -0.2499999916553497,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.25_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          }
+        },
+        "incremental_p5_auc": -0.003135507509044344,
+        "incremental_p5_mae_cash": 8.465415510561236e-05,
+        "intrinsic_original_survivor_bias": true
+      },
+      {
+        "landmark_seconds": 3,
+        "eval_month": "08",
+        "train_months": [
+          "05",
+          "06",
+          "07"
+        ],
+        "train_landmark_positions": 47351,
+        "quote_context_only": {
+          "positions": 14977,
+          "mean_observed_original_hold_minus_now": -0.004247847475315947,
+          "fraction_original_hold_beat_immediate_exit": 0.46177472123923347,
+          "prediction_auc_for_original_hold_better": 0.4919032824395878,
+          "prediction_mae_cash": 0.31209159349449006,
+          "predicted_mean_hold_advantage": -0.00198859884403646,
+          "p05_observed_hold_minus_exit_cash": -0.5199999916553497,
+          "observed_bottom_5pct_hold_cash_loss": 0.6766622162354645,
+          "mean_quoted_liquidation_now_cash": -0.37532549832157264,
+          "predicted_conditional_cvar95_cash": 0.6659250805101965,
+          "mean_source_quote_age_seconds": 3,
+          "lambda_0_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.41890899379047875,
+            "mean_observed_delta_among_shadow_hold_recommendations": 0.0008065021547150679,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.1_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 6.676904587033452e-05,
+            "mean_observed_delta_among_shadow_hold_recommendations": -0.38999998927116397,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.25_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          }
+        },
+        "quote_context_plus_frozen_p5": {
+          "positions": 14977,
+          "mean_observed_original_hold_minus_now": -0.004247847475315947,
+          "fraction_original_hold_beat_immediate_exit": 0.46177472123923347,
+          "prediction_auc_for_original_hold_better": 0.493679376076101,
+          "prediction_mae_cash": 0.31221888496985994,
+          "predicted_mean_hold_advantage": -0.0013194651110097766,
+          "p05_observed_hold_minus_exit_cash": -0.5199999916553497,
+          "observed_bottom_5pct_hold_cash_loss": 0.6766622162354645,
+          "mean_quoted_liquidation_now_cash": -0.37532549832157264,
+          "predicted_conditional_cvar95_cash": 0.6632921373991602,
+          "mean_source_quote_age_seconds": 3,
+          "lambda_0_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.5034386058623223,
+            "mean_observed_delta_among_shadow_hold_recommendations": -0.0004190989631062684,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.1_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.00020030713761100353,
+            "mean_observed_delta_among_shadow_hold_recommendations": -0.04333333005507789,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.25_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          }
+        },
+        "incremental_p5_auc": 0.0017760936365132096,
+        "incremental_p5_mae_cash": 0.00012729147536988394,
+        "intrinsic_original_survivor_bias": true
+      },
+      {
+        "landmark_seconds": 3,
+        "eval_month": "09",
+        "train_months": [
+          "05",
+          "06",
+          "07",
+          "08"
+        ],
+        "train_landmark_positions": 62328,
+        "quote_context_only": {
+          "positions": 16012,
+          "mean_observed_original_hold_minus_now": -0.0026817395054678757,
+          "fraction_original_hold_beat_immediate_exit": 0.4590931801149138,
+          "prediction_auc_for_original_hold_better": 0.518578373343143,
+          "prediction_mae_cash": 0.31818619021540157,
+          "predicted_mean_hold_advantage": -0.0021091168746352196,
+          "p05_observed_hold_minus_exit_cash": -0.52999998742342,
+          "observed_bottom_5pct_hold_cash_loss": 0.6633458179294989,
+          "mean_quoted_liquidation_now_cash": -0.37808456076932606,
+          "predicted_conditional_cvar95_cash": 0.6700118854958397,
+          "mean_source_quote_age_seconds": 3,
+          "lambda_0_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.37746689982513115,
+            "mean_observed_delta_among_shadow_hold_recommendations": -0.0037425553266262315,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.1_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.25_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          }
+        },
+        "quote_context_plus_frozen_p5": {
+          "positions": 16012,
+          "mean_observed_original_hold_minus_now": -0.0026817395054678757,
+          "fraction_original_hold_beat_immediate_exit": 0.4590931801149138,
+          "prediction_auc_for_original_hold_better": 0.5088857634607662,
+          "prediction_mae_cash": 0.31832496615925504,
+          "predicted_mean_hold_advantage": -0.0016328631900250912,
+          "p05_observed_hold_minus_exit_cash": -0.52999998742342,
+          "observed_bottom_5pct_hold_cash_loss": 0.6633458179294989,
+          "mean_quoted_liquidation_now_cash": -0.37808456076932606,
+          "predicted_conditional_cvar95_cash": 0.6680028688867059,
+          "mean_source_quote_age_seconds": 3,
+          "lambda_0_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.45309767674244317,
+            "mean_observed_delta_among_shadow_hold_recommendations": -0.00567332942077286,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.1_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 6.245316012990258e-05,
+            "mean_observed_delta_among_shadow_hold_recommendations": 0.2600000047683716,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          },
+          "lambda_0.25_eta_zero": {
+            "fraction_shadow_q_hold_above_q_exit": 0.0,
+            "mean_observed_delta_among_shadow_hold_recommendations": null,
+            "original_trade_survivor_selection_only": true,
+            "no_occupancy_penalty_because_not_identifiable": true
+          }
+        },
+        "incremental_p5_auc": -0.009692609882376857,
+        "incremental_p5_mae_cash": 0.00013877594385347525,
+        "intrinsic_original_survivor_bias": true
+      }
+    ]
+  },
+  "paired_source_day_bootstrap": {
+    "1s": {
+      "replicates": 200,
+      "original_equal_month_mean_observed_hold_delta": 0.0023002164373110696,
+      "95pc_day_resampling_interval_for_hold_delta": [
+        -0.0008953658666267316,
+        0.004886870278090026
+      ],
+      "original_equal_month_mean_p5_rank_auc_delta": -0.0031245214635144125,
+      "95pc_day_resampling_interval_for_p5_rank_auc_delta": [
+        -0.005704776007520734,
+        -0.0007610883933606792
+      ],
+      "limitations": "Historical source days resampled within original evaluation month. Conditional on frozen trained models and previous research exposure. Does not model changed trade sequence, account broker fills or rearm."
+    },
+    "3s": {
+      "replicates": 200,
+      "original_equal_month_mean_observed_hold_delta": 0.002108319957809593,
+      "95pc_day_resampling_interval_for_hold_delta": [
+        -0.0007602543068048903,
+        0.005629414849020443
+      ],
+      "original_equal_month_mean_p5_rank_auc_delta": -0.0007810878065232785,
+      "95pc_day_resampling_interval_for_p5_rank_auc_delta": [
+        -0.0032845057092120785,
+        0.0018346514023945889
+      ],
+      "limitations": "Historical source days resampled within original evaluation month. Conditional on frozen trained models and previous research exposure. Does not model changed trade sequence, account broker fills or rearm."
+    }
+  }
+}
