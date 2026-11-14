@@ -32,7 +32,7 @@ for sub in ("src", "variable_cash_horizon_20261114", "dual_basket_20261114"):
 
 from coinexx_r9.r9_baseline import R9Config, R9HybridGateBaseline
 from coinexx_r9.ticks import iter_coinexx_ticks
-from on_policy_cash_replay import ResearchCash
+from on_policy_cash_replay import ResearchCash, QuoteRegime
 from run_coinexx import source_sha, verify_month, reuse_only_identical_market_context
 from dual_basket import DualBasketCash, DualBasketSpec, FEATURE_NAMES
 
@@ -226,7 +226,8 @@ def metrics_by_month(sim, bounds: list[int], cash: ResearchCash) -> dict:
 def original_source_pass(args, receipt: dict, cash: ResearchCash):
     cfg = R9Config()
     control = R9HybridGateBaseline(cfg)
-    cash_arm = DualBasketCash(cfg, cash, protected_stretch=False)
+    regime = QuoteRegime()
+    cash_arm = DualBasketCash(cfg, cash, protected_stretch=False, regime=regime)
     reuse_only_identical_market_context(control, cash_arm)
     bounds = []
     offset = 0
@@ -243,6 +244,7 @@ def original_source_pass(args, receipt: dict, cash: ResearchCash):
         t0 = time.monotonic()
         count = 0
         for tick in iter_coinexx_ticks(src, strict=True, ordinal_offset=offset):
+            regime.update(tick)
             control.on_tick(tick)
             cash_arm.on_tick(tick)
             count += 1
@@ -266,8 +268,9 @@ def on_policy_replay(args, cash: ResearchCash, model: Any,
     """Second exact-source pass; candidate rejection changes subsequent entries."""
     cfg = R9Config()
     market = R9HybridGateBaseline(cfg)
-    harvest = DualBasketCash(cfg, cash, protected_stretch=False)
-    stretch = DualBasketCash(cfg, cash, protected_stretch=True)
+    regime = QuoteRegime()
+    harvest = DualBasketCash(cfg, cash, protected_stretch=False, regime=regime)
+    stretch = DualBasketCash(cfg, cash, protected_stretch=True, regime=regime)
     reuse_only_identical_market_context(market, harvest, stretch)
     if cutoff == float("-inf"):
         selector_h = selector_s = None
@@ -282,6 +285,7 @@ def on_policy_replay(args, cash: ResearchCash, model: Any,
         path = args.data / f"XAUUSD_MT5_BROKER_2026_{mm}_ticks_ALL.csv.gz"
         count = 0
         for tick in iter_coinexx_ticks(path, strict=True, ordinal_offset=offset):
+            regime.update(tick)
             market.on_tick(tick)
             harvest.on_tick(tick)
             stretch.on_tick(tick)
