@@ -327,6 +327,21 @@ def on_policy_replay(args, cash: ResearchCash, model: Any,
     return {
         "cash010_immediate": metrics_by_month(harvest, bounds, cash),
         "cash010_stretch175": metrics_by_month(stretch, bounds, cash),
+        "portfolio": {
+            name: {
+                "total_trades": report.get("trades"),
+                "net_cash": report.get("net_cash"),
+                "gross_realized_losses": report.get("gross_realized_losses"),
+                "closed_trade_cvar95_loss": report.get("closed_trade_cvar95_loss"),
+                "max_account_peak_drawdown_cash": report.get("max_account_peak_drawdown_cash"),
+                "source_day_cash_negative_count": report.get("source_day_cash_negative_count"),
+                "governor_halts": report.get("governor_halts"),
+            }
+            for name, report in (
+                ("cash010_immediate", harvest.report()),
+                ("cash010_stretch175", stretch.report()),
+            )
+        },
         "inference_calls": {
             "cash010": selector_h.queries if selector_h else 0,
             "stretch175": selector_s.queries if selector_s else 0,
