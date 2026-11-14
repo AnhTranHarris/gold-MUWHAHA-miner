@@ -186,14 +186,15 @@ class FrozenAdmission:
         self.rejections = 0
 
     def accept(self, features: tuple[float, ...]) -> bool:
-        import numpy as np
-        if len(features) != len(FEATURE_NAMES):
-            raise ValueError("Unexpected entry feature schema")
+        if len(features) != len(FEATURE_NAMES) or not all(
+                math.isfinite(f) for f in features):
+            raise ValueError("Unexpected or invalid as-of entry feature schema")
         self.queries += 1
         if self.cutoff == float("-inf"):
             return True
-        score = float(self.model.predict(
-            np.asarray([features], dtype=np.float32))[0])
+        # sklearn accepts a 2-D sequence. Keep live candidate inference
+        # lightweight and independent of a needless per-quote numpy import.
+        score = float(self.model.predict([features])[0])
         ok = math.isfinite(score) and score >= self.cutoff
         if not ok:
             self.rejections += 1
