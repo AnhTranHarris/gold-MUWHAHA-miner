@@ -57,8 +57,8 @@ class ProtectedStretchCashPolicy(VariableCashHorizonPolicy):
                evidence=None) -> ExitDecision:
         baseline = super().decide(position, account, evidence)
         if (baseline.action != "CLOSE_NOW"
-            or not baseline.reason.startswith("Take $0.50")
-            or baseline.observed_net_cash >= self.spec.stretch_net_profit - 1e-9):
+            or not baseline.reason.startswith("Take $")
+            or baseline.observed_liquidation_net_cash >= self.spec.stretch_net_profit - 1e-9):
             return baseline
         minimum = self.spec.min_net_profit
         desired = min(self.spec.stretch_net_profit,
@@ -68,15 +68,15 @@ class ProtectedStretchCashPolicy(VariableCashHorizonPolicy):
         if position.stop_is_legal_and_tighter(proposed):
             return ExitDecision(
                 "TIGHTEN_STOP", "Experimental protected stretch, not approved",
-                baseline.observed_net_cash, proposed, desired)
+                baseline.observed_liquidation_net_cash, proposed, desired)
         old = position.original_or_current_stop_price
         if old is not None and position.net_cash(old) >= desired - 1e-9:
             return ExitDecision(
                 "HOLD", "Existing stop protects experimental stretch",
-                baseline.observed_net_cash, old, desired)
+                baseline.observed_liquidation_net_cash, old, desired)
         return ExitDecision(
             "CLOSE_NOW", "Cannot protect $0.10 net; harvest now",
-            baseline.observed_net_cash)
+            baseline.observed_liquidation_net_cash)
 
 
 class DualBasketMixin:
