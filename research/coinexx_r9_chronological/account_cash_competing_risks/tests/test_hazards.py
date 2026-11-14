@@ -58,7 +58,7 @@ class HazardTests(unittest.TestCase):
             episode(2,CAUSE_STOP,3000,0.18),
             episode(3,CAUSE_TIMEOUT,30000,-0.56),
             episode(4,CAUSE_GAP,1500)]
-        m=fit_context_tables(es,by="global",min_group_count=3,risk_lambda=.25)
+        m=fit_context_tables(es,by="global",min_group_count=3,risk_lambda=.25,max_censor_fraction=.30)
         one=m["groups"]["all"]
         self.assertTrue(one["train_eligible"])
         self.assertAlmostEqual(one["mean_account_cash_by_cause"][CAUSE_STOP],0.18)
@@ -66,6 +66,13 @@ class HazardTests(unittest.TestCase):
         self.assertIsNotNone(one["estimated_risk_adjusted_cash"])
         self.assertLessEqual(one["estimated_risk_adjusted_cash"],
                              one["estimated_net_cash_per_entry"])
+
+    def test_default_abstains_when_quote_censoring_exceeds_ten_percent(self):
+        rows=[episode(i,CAUSE_TARGET,1000,2.) for i in range(1,9)]
+        rows += [episode(9,CAUSE_GAP,2000),episode(10,CAUSE_EOF,1000)]
+        table=fit_context_tables(rows,by="global",min_group_count=3)
+        self.assertFalse(table["groups"]["all"]["train_eligible"])
+        self.assertIsNone(table["groups"]["all"]["estimated_net_cash_per_entry"])
 
     def test_no_future_cause_creates_entry_context_key(self):
         a=episode(1,CAUSE_TARGET,1000,1.8)
