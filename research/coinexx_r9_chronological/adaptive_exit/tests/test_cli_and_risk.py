@@ -56,7 +56,6 @@ class SmokeAndStops(unittest.TestCase):
                                 "0.00",0,0,134))
             source_hash=hashlib.sha256(raw.read_bytes()).hexdigest()
             cfg=root/"R9_config.json"
-            cfg.write_text(json.dumps(easy().__dict__),encoding="utf-8")
             # R9Config frozen/slotted? Use dataclasses.asdict for portability.
             from dataclasses import asdict
             cfg.write_text(json.dumps(asdict(easy())),encoding="utf-8")
@@ -101,6 +100,7 @@ class SmokeAndStops(unittest.TestCase):
         cash=CashAssumptions("USD",1.0,0.2)
         sim=AdaptiveR9(cfg,cash,ExitPolicy(
             mode="experimental_wide_stop", maximum_initial_risk_cash=0.55))
+        sim._noise=lambda tick:20.0 # known synthetic pre-entry noise state for cap unit test
         for z in [
             tick(1,120,1000),tick(2,121,1005),
             tick(3,122,1010),tick(4,123,1030)
