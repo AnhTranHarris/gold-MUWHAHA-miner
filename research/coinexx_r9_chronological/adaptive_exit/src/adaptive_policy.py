@@ -39,6 +39,7 @@ class ExitPolicy:
     m1_ema_trend_weight: float = 0.10
     maximum_trail_cents: int = 75
     maximum_initial_stop_cents: int = 60
+    maximum_initial_risk_cash: float = 1.50
     max_quote_gap_ms: int = 2500
 
     def __post_init__(self) -> None:
@@ -47,11 +48,12 @@ class ExitPolicy:
         vals=(self.alpha_spread,self.beta_noise,
               self.activation_cash_buffer,self.minimum_harvest_cash,
               self.continuation_floor,self.m1_std_regime_weight,
-              self.m1_ema_trend_weight)
+              self.m1_ema_trend_weight,self.maximum_initial_risk_cash)
         if not all(isfinite(v) for v in vals):
             raise ValueError("Non-finite research parameters")
         if (self.alpha_spread<0 or self.beta_noise<0
             or self.activation_cash_buffer<0
+            or self.maximum_initial_risk_cash<=0
             or self.minimum_harvest_cash<0
             or self.m1_std_regime_weight<0 or self.m1_std_regime_weight>1
             or self.m1_ema_trend_weight<0 or self.m1_ema_trend_weight>1
@@ -214,6 +216,12 @@ class AdaptiveR9(R9HybridGateBaseline):
         broker=self.cfg.broker_stops_points+self.cfg.tick_size_points
         requested=max(requested,broker)
         stop=t.bid_u-requested if side>0 else t.ask_u+requested
+        # Explicit pessimistic stop-fill cash risk, including spread once and
+        # additional assumed brokerage costs. Never widen without cash cap.
+        potential_loss=self.cash.net_cash(side*(stop-p.entry_price_u))
+        if potential_loss < -self.policy.maximum_initial_risk_cash:
+            self.stats["experimental_initial_risk_cap_refusals"]+=1
+            return
         if (side>0 and stop<p.sl_u) or (side<0 and stop>p.sl_u):
             p.sl_u=stop
             p.initial_sl_u=stop
