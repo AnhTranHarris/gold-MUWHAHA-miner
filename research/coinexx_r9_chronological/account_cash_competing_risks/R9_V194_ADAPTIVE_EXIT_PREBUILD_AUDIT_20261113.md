@@ -1,0 +1,50 @@
+# R9 v1.94 — Adaptive holding/trailing prebuild audit (Coinexx-only)
+Date: 2026-11-13. READ-ONLY source study; no new formula code and no MQL5 changes.
+
+## Exact inspected sources
+- User-compiled standalone EA: Experts/Advisors/GWM_EA/r9_v1_94.mq5, Git blob 0186de6ff624294c617e3aea95cf9b0caa8202b2, branch carson/r9-v194-standalone-compile-repair-20261113.
+- Original chronological Python baseline: research/coinexx_r9_chronological/src/coinexx_r9/r9_baseline.py, blob a760b843577e53a3fa165273421b0270dba4f35e.
+- Cash overlay: account_cash_competing_risks/src/cash_risk_overlay.py, blob 9f3ce825c886edee2efaddd9fdb93823aae3edd1.
+- Existing Aalen–Johansen hazard model: account_cash_competing_risks/src/competing_hazards.py, blob 44f860fcd04e287ee01b56b144709a89af4720e8.
+- January real-source original-exit pilot: account_cash_competing_risks/results/R9_JAN2026_ORIGINAL_COINEXX_REAL_TICK_CASH175_PILOT_20261113.md.
+- January chronological cash-utility test: account_cash_competing_risks/results/R9_JAN2026_CAUSAL_HAZARD_UTILITY_CHRONO_SPLIT_20261113.md.
+- Critical v1.90 rollback commit 8729a6345655a7b4ea31facc81982004ee2b8921 remains unchanged.
+
+## Full source-exact lifecycle
+1. Original entry is midquote minute bracket ±0.15 XAUUSD price, causal S1 direction/efficiency/range, completed M5 ATR and spread/session gate. The v1.94 155-feature classifier is mode 1 SHADOW, not a trade-controlled exit model. Existing M1 ADX/DI, EMA and ATR are observation/rescue-entry context, not currently used to exit; M1 rescue is OFF.
+2. A BUY order initially sets SL at current Bid−0.30 XAU price or broker minimum; SELL sets SL at current Ask+0.30. The Ask/Bid entry spread is in addition to that liquidation-side stop distance when measuring from the filled price. Do not double charge starting spread.
+3. Trailing activates at a favorable liquidation-side quote gain of +0.10 from actual fill. It then tightens to Bid−0.03 for BUY or Ask+0.03 for SELL, constrained by broker minimum stop. This is priced in quoted XAU dollars, not USD account cash, and may realize after-fee losses.
+4. Nominal max hold 30 seconds via OnTick and 1-second OnTimer. Python original baseline advances at source quote events and does NOT simulate independent server timers or order rejection.
+5. After an observed flat transition, rearm opposite within the same minute up to three rearms. Earlier/later exits change future entry direction, total trade count, account fees and risk budget. Freezing old original entries while modifying exits is scientifically invalid.
+6. R9 v1.93/v1.94 account governor ON by default: daily gross realized losses + fees + negative floating PnL, budget 4% equity initial and 12% cap, bounded 25% winner recycling and 10% peak-equity drawdown brake. Existing Python baseline does not simulate it. Run explicit portfolio-capacity overlay after first controlled exit comparisons.
+7. Risk implementation limitations to resolve before promoting MQL5: PLACED/DONE_PARTIAL retcodes treated as accepted; incomplete fill/close lifecycle reconciliation, no explicit freeze-level check in trailing, position selection only one matching magic+symbol, possible NewTick coalescence and broker stop/timeout gaps. Owner reports successful local compilation, not execution certification.
+
+## Existing Coinexx evidence and falsification
+January original-source 7,699,274 quote rows; 32,179 R9 original positions; mean executable quote-side XAU price move −0.18810777 per trade before extra fee, mean duration 5.821 seconds, original 31,498 stop-coded exits (including profitable trailing exits) and 681 timeout exits. Previous illustrative net-cash scenario at 0.01 lot, K=1 account unit per $1 XAU movement and C=0.20 extra roundtrip cost had only 94/32,179 (0.292%) goal-first target observations before original exit. K and C are NOT verified from raw quotes. Previous January Aalen–Johansen estimated 0/14,932 later-period opportunities as positive conditional risk-adjusted utility under unchanged R9 exit; gating on U>0 would eliminate volume. No claim that simply holding longer repairs negative economics.
+
+## Native MQL5 indicators and available proxies — ordered by relevance
+- iATR M1 and existing completed M5: available from historical Bid-derived completed OHLC, provided terminal symbol chart-mode/period parity is verified. Use only as slow regime scaling, not as 1s volatility. Existing M5 ATR already covers gate.
+- iStdDev M1 or iBands width: available using completed Bid-derived closes/high-low; compression/expansion context, prefer one after ablation. No need for both correlated volatility families.
+- Existing iADX M1 +DI/-DI, optionally compare iADXWilder: available completed OHLC; persistent trend/chop context. Original v1.94 has iADX already; DO NOT retrain or invent a new ADX signal before testing it as a *conditioning variable for exit*.
+- iAMA OR iFrAMA M1: available completed bar adaptive trend persistence; compare incremental advantage to existing EMA(20). May be too slow for a median 5.82s holding period.
+- iSAR M1: available quote OHLC trailing-level reference but not inherently an executable 30s stop; shadow benchmark only.
+- iVolumes VOLUME_TICK: only a BROKER QUOTE/UPDATE-count proxy, reconstructable from source-row quote activity if identical definition verified. Raw Coinexx tick logger Last, volume and volume_real were zero across original nine months. MT5 tick volume is not executed traded quantity. iOBV/iMFI with tick-volume inputs are secondary correlated price×quote-count proxies, not real aggressor flow.
+- Unavailable and invalid: genuine transaction-volume VWAP, VPIN, L2 order-book imbalance, true microprice, signed aggressor trade flow, executable depth. Native indicators cannot recreate them.
+- Critical 0.25s to 5s non-native but MQL5-implementable *quote-only* proxies: spread shock/z-score and spread recovery, past-only bid/ask mid realized volatility, quote freshness, signed price revision count, joint Bid/Ask revisions, quote-arrival duration, path directional efficiency, MFE/MAE, active stop distance in CASH and time since entry. Reuse existing event-time and quote-state formulas instead of regenerating feature caches.
+
+## Three pre-registered Python policy families after audit (NO IMPLEMENTATION YET)
+P0: source-ordinal original R9 baseline, bitwise same entry/exit ordinals and rearm sequence; explicit separate conservative broker execution scenario.
+P1: volatility/spread-normalized trailing distance: d(t)=max(broker_stop+tick, alpha*current_spread, beta*asof_realized_1s_volatility); choose alpha,beta from PREVIOUS train periods, keep monotonic stop tightening only, no newly permissive stop widening. Evaluate survival, spread exposure, stop/trailing frequency and future rearm entries.
+P2: cost-aware staged holding: stage 0 original hard protective stop; stage 1 activate trail only once actual quote-side available cash exceeds assumed commissions plus safe buffer; stage 2 choose harvest-now vs runner based on as-of momentum continuation/reversal; no hold beyond nominal 30s. The $1.75 cash objective is a whole-system mean target, not a forced TP for every position.
+P3 (subsequent, conditional on P1/P2): dynamic policy-specific competing risks, under complete on-policy replay. State x_t includes quote-side liquidation cash, spread, past realized volatility, min legal stop, MFE/MAE, quote freshness, elapsed/remaining life, last stop, completed M1 regime and account capacity. Actions CLOSE NOW, HOLD WITH CURRENT SL, or MONOTONIC TIGHTEN TO ALLOWED SL. Target Q_t(a)=expected terminal account-cash PnL conditioned on as-of state and chosen action MINUS lambda * downside cash CVaR95 MINUS ETA * occupancy opportunity cost. Mandatory gross-loss hard governor sits OUTSIDE action optimizer. Original-policy hazard rates cannot predict outcomes past original policy stop; full policy-specific quote replay is required to identify counterfactuals.
+
+## Mandatory evaluation protocol
+- Reuse EXISTING Coinexx reader, exact equal-ms source-ordinal iteration and original R9 state machine. Patch ONLY the position management decision hook inside a Python research copy; assert OFF mode parity to frozen baseline; never create a fresh data engine or second tick archive.
+- At each quote: broker stop first; update past-only features and existing minute/ATR state; 30s deadline; chose legal exit/hold/stop candidate; then reconcile close/rearm and subsequent new entries. Every policy must independently produce its own on-policy entry list, exits, occupancy, and fees.
+- Intraday/session and time-of-day grouped only using Coinexx source timestamp (UTC offset must be verified); full chronological train/test with no future leakage, embargo >=30s and day-block uncertainty; Jan-Sep already historically exposed.
+- Broker contract must be calibrated with OrderCalcProfit at exact lot, actual account currency, fee/slippage cost and stop/freeze values. Until then label monetary values illustrative, never certified.
+- Whole-system monthly/day/hour outputs: realized after-cost account cash per ACTUAL date/hour, active hours, total positions and volume retention, cash per completed trade, mean hold <=30sec and tail duration, gross daily loss, drawdown, risk governor halts, expected remaining budget, modification requests/rejects, loss-tail CVaR and rearm distribution. Must not optimize per-trade profit at expense of hourly throughput.
+- Source-read-only audit: no MQL5 modifications, raw archive rebuild or training now.
+
+## External documentation
+MetaQuotes: https://www.mql5.com/en/docs/event_handlers/ontick ; https://www.mql5.com/en/docs/indicators/iatr ; https://www.mql5.com/en/docs/indicators/istddev ; https://www.mql5.com/en/docs/indicators/iadx ; https://www.mql5.com/en/docs/indicators/iadxwilder ; https://www.mql5.com/en/docs/indicators/iama ; https://www.mql5.com/en/docs/indicators/iframa ; https://www.mql5.com/en/docs/indicators/ivolumes ; https://www.mql5.com/en/docs/constants/environment_state/marketinfoconstants .
