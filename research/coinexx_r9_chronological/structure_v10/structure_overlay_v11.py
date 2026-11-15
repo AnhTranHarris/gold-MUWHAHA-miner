@@ -32,7 +32,8 @@ class StructureShadowV11(StructureShadowV10):
         if len(self.entries)==was:
             return
         snap=self.structure.snapshot(t)
-        profile=self.structure.profile(snap,side)
+        legacy_specialist=self.entries[-1]["v10_specialist"]
+        profile=self.structure.profile(snap,side,legacy_specialist)
         frozen=freeze_thesis(self.structure,side,t)
         self.v11_thesis=frozen
         self.v11_invalidation=InvalidationObserver(frozen)
@@ -40,7 +41,7 @@ class StructureShadowV11(StructureShadowV10):
         self.v11_entry_profile_counts[profile.subtype]+=1
         self.v11_anchor_counts["valid_spatial_zone" if frozen.anchored
                                else "no_eligible_structural_zone"]+=1
-        if snap.pattern in ("UNKNOWN","UNKNOWN_STALE"):
+        if legacy_specialist=="UNRESOLVED":
             self.v11_unresolved_reasons[profile.subtype]+=1
         self.entries[-1]["v11_profile"]=profile.record()
         self.entries[-1]["v11_frozen_thesis"]=frozen.record()
