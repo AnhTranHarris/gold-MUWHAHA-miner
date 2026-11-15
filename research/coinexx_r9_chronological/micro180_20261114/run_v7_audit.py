@@ -48,6 +48,10 @@ def execute():
         'v7_matched_gate_profit_floor':SetupConditionedMicroV7(cfg,cash(),s,v6=v6,
             v7=V7Spec(enable_cash_gate=True,min_effective_samples=4.0,
             min_buy_penalized_cash=0.,min_sell_penalized_cash=0.)),
+        'v7_conditioned_hold_protected':SetupConditionedMicroV7(cfg,cash(),
+            replace(s,experimental_runner=True),
+            v5=V5Spec(enable_protected_continuation=True),v6=v6,
+            v7=V7Spec(enable_conditioned_holding=True)),
     }
     start=time.perf_counter();n=0
     for n,t in enumerate(iter_coinexx_ticks(a.ticks,strict=True),1):
