@@ -1,0 +1,25 @@
+name: R9 Micro180 V3 asymmetric research invariants
+on:
+  push:
+    branches:
+      - carson/r9-micro180-v3-quant-objective-audit-20261114
+    paths:
+      - 'research/coinexx_r9_chronological/micro180_20261114/**'
+      - '.github/workflows/r9_micro180_v3_asymmetric_ci.yml'
+  workflow_dispatch:
+jobs:
+  python-research-invariants:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile Python only, never live MQL5 trade
+        run: |
+          python -m compileall -q research/coinexx_r9_chronological/micro180_20261114
+      - name: Existing and new causal synthetic invariants
+        run: |
+          python -m unittest discover -s research/coinexx_r9_chronological/micro180_20261114 -p 'test_*.py' -v
