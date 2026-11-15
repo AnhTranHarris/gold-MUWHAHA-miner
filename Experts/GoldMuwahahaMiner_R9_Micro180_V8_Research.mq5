@@ -153,7 +153,7 @@ int SecFromLatest(const int offset)
    return i%MICRO_SECS;
 }
 #include "GoldMuwahahaR9V6PastOnlyCash.mqh"
-#include "GoldMuwahahaR9V7ConditionedCash.mqh"
+#include "GoldMuwahahaR9V8ConditionedCash.mqh"
 long g_v6LastCashComputeSecond=-1,g_v6LastCashLogMinute=-1;
 bool g_v6BuyReady=false,g_v6SellReady=false;
 V6CashHistory g_v6Buy,g_v6Sell;
