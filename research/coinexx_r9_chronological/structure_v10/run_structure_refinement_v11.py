@@ -78,6 +78,12 @@ def run(ticks:Path,limit:int,expected_sha="",capital=100000.,governor=False):
     p=r11["v11_entry_subtypes"]
     if sum(p.values())!=len(baseline.entries):
         raise AssertionError("V11 profile coverage not one-to-one with entries")
+    unresolved10=r10["specialist_counts"].get("UNRESOLVED",0)
+    unresolved11=sum(r11["v11_unresolved_reasons"].values())
+    if unresolved11!=unresolved10:
+        raise AssertionError(
+          "UNRESOLVED denominator mismatch: V10 router %d != V11 diagnostics %d"
+          %(unresolved10,unresolved11))
     return {
       "source":ticks.name,
       "source_sha_verified":bool(expected_sha),
