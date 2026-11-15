@@ -28,7 +28,7 @@ class V6Spec:
     uncertainty_scale: float = 1.0
     min_buy_cash_edge: float = -0.35
     min_sell_cash_edge: float = -0.35
-    audit_only: bool = False
+    audit_only: bool = True  # A losing/unvalidated cash prior must not gate by default
     enable_holding_utility: bool = False
     min_hold_increment: float = 0.0
     hold_horizon_seconds: int = 3
