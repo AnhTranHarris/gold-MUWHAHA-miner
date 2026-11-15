@@ -82,12 +82,14 @@ class ZoneBankTests(unittest.TestCase):
 
     def test_frozen_level_does_not_mutate_with_zone_merge(self):
         s=RefinedStructure()
-        s.bank.add(300000,"SUPPORT",9980,10,4,1000)
+        # The entry-bound max-span is 20 cents without ATR warmup.
+        # A closer level qualifies; distant 9980 is deliberately rejected.
+        s.bank.add(300000,"SUPPORT",9986,10,4,1000)
         s.now_ms=2000
         orig=freeze_thesis(s,1,t(2000))
         self.assertTrue(orig.anchored)
         first=orig.invalidation_level
-        s.bank.add(300000,"SUPPORT",9977,12,4,3000)
+        s.bank.add(300000,"SUPPORT",9984,12,4,3000)
         self.assertEqual(orig.invalidation_level,first)
 
     def test_no_stale_micro_backup_from_an_ancient_zone(self):
