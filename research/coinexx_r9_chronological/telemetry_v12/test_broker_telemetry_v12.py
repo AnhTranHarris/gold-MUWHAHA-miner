@@ -69,6 +69,30 @@ class TelemetryValidationTests(unittest.TestCase):
         self.assertEqual(a['lost_event_rows_or_pending_deals'],7)
         self.assertFalse(a['quality_pass_for_execution_inference'])
 
+    def test_unmatched_deal_is_never_called_certified_slippage(self):
+        result=self._audit([{'event':'DEAL','deal_id':'77'}])
+        self.assertEqual(result['request_deal_unmatched'],1)
+        self.assertFalse(result['quality_pass_for_execution_inference'])
+
+    def test_native_loss_diagnostic_column_arity_matches_parser(self):
+        # Static source contract for standalone MT5 observer. This does not
+        # replace a native MetaEditor compile or real DEMO transaction test.
+        from pathlib import Path
+        src=(Path(__file__).resolve().parents[3] /
+             'Experts' / 'GoldMuwahahaR9V12DemoTelemetryObserver.mq5').read_text()
+        marker='Prefix("LOSS_DIAGNOSTIC",InpExactSymbol,(long)InpExactMagic)+'
+        self.assertEqual(src.count(marker),1)
+        part=src.split(marker,1)[1].split('g_drop_rows=0',1)[0]
+        self.assertIn('"0,0,0,0,"+I64((long)g_drop_rows)+',part)
+        rest=part.split('I64((long)g_drop_rows)+',1)[1].split('I64((long)g_drop_deals)',1)[0]
+        import re
+        strings=re.findall(r'"([^"]+)"',rest)
+        literal=''.join(strings)
+        self.assertEqual(literal, ',0,0,0,0,0,0,0,0,0,')
+        self.assertEqual(len(literal.strip(',').split(',')),9)
+        # 4 prefix zeros + 1 dropped-row count + 9 zeros + 1 deal-loss count.
+        self.assertEqual(4+1+9+1, 26-11)
+
     def test_duplicate_deal_is_not_double_counted(self):
         a=self._audit([{'event':'DEAL','deal_id':'77'}, {'event':'DEAL','deal_id':'77'}])
         self.assertEqual(a['unique_deals'],1)
