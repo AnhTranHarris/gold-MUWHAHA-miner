@@ -30,6 +30,11 @@ class Micro180Spec:
     min_complete_30s: int = 18
     max_second_age_ms: int = 2_500
     max_quote_gap_ms: int = 2_500
+    # A 5/15s wall-clock bucket alone does not prove observed quote duration.
+    min_5s_observed_span_ms: int = 1_500
+    min_completed15_observed_span_ms: int = 9_000
+    min_active15_observed_span_ms: int = 3_000
+    max_completed15_tail_ms: int = 2_500
     min_efficiency_15s: float = .55
     min_normalized_breakout: float = .25
     # Strict pre-existing control, plus explicit UNVALIDATED throughput alternatives.
@@ -62,6 +67,10 @@ class Micro180Spec:
             or self.min_5s_mid_move_u <= 0 or self.min_15s_confirm_u < 0
             or self.breakout_buffer_u < 0 or self.max_second_age_ms <= 0
             or self.max_quote_gap_ms <= 0 or self.min_quote_updates_5s < 1
+            or not 0 < self.min_5s_observed_span_ms < self.basket5_ms
+            or not 0 < self.min_completed15_observed_span_ms < self.basket15_ms
+            or not 0 < self.min_active15_observed_span_ms < self.basket15_ms
+            or not 0 < self.max_completed15_tail_ms <= self.basket15_ms
             or not 0.0 < self.min_efficiency_15s <= 1.0
             or self.min_normalized_breakout < 0.0 or self.spread_shock_ratio < 1.0
             or self.breakout_router not in ("balanced_30s_veto", "strict_30s")
@@ -76,19 +85,21 @@ class Micro180Spec:
 
 
 class Candle:
-    __slots__ = ('start_ms', 'first_ms', 'last_ms', 'n', 'bid_open', 'bid_hi',
+    __slots__ = ('start_ms', 'first_ms', 'last_ms', 'max_gap_ms', 'n', 'bid_open', 'bid_hi',
                  'bid_lo', 'bid_close', 'ask_open', 'ask_hi', 'ask_lo', 'ask_close',
                  'spread_close')
 
     def __init__(self, t: Tick, start_ms: int):
         self.start_ms = start_ms
         self.first_ms = self.last_ms = t.time_msc
+        self.max_gap_ms = 0
         self.n = 1
         self.bid_open = self.bid_hi = self.bid_lo = self.bid_close = t.bid_u
         self.ask_open = self.ask_hi = self.ask_lo = self.ask_close = t.ask_u
         self.spread_close = t.spread_points
 
     def update(self, t: Tick):
+        self.max_gap_ms = max(self.max_gap_ms, t.time_msc-self.last_ms)
         self.n += 1
         self.last_ms = t.time_msc
         self.bid_hi = max(self.bid_hi, t.bid_u)
@@ -305,6 +316,14 @@ class Micro180R9(ManagedR9):
         super()._push_second(t)
         self.rolling.update(t)
 
+    def _rearm_ready(self,t:Tick)->bool:
+        if self._last_exit_ms is None:
+            return True
+        # A new minute cannot bypass the 3s cooldown or both 5s/15s clocks.
+        return (t.time_msc-self._last_exit_ms>=3_000
+                and self.rolling.current[5000].start_ms!=self._last_closed_basket
+                and self.rolling.current[15000].start_ms!=self._last_closed_15s_basket)
+
     def _start_minute_cycle(self,t:Tick):
         minute=t.time_s//60
         if minute!=self._entry_minute:
@@ -312,14 +331,10 @@ class Micro180R9(ManagedR9):
             self.cycle_minute=minute*60
             self._entries_this_minute=0
             self.rearms=0
-            self.pending_mode=2
-        # Rearm only after BOTH clocks have rolled past the last exit and
-        # a deliberate 3s cool-down. A 5s reset by itself grants nothing.
+            self.pending_mode=2 if self._rearm_ready(t) else 0
         if (self.pending_mode==0 and self.position is None
             and self._last_exit_ms is not None
-            and t.time_msc-self._last_exit_ms>=3000
-            and self.rolling.current[5000].start_ms!=self._last_closed_basket
-            and self.rolling.current[15000].start_ms!=self._last_closed_15s_basket
+            and self._rearm_ready(t)
             and self._entries_this_minute<self.micro_spec.max_entries_per_source_minute):
             self.pending_mode=2
             self.stats['micro_explicit_rearm']+=1
@@ -351,6 +366,9 @@ class Micro180R9(ManagedR9):
             self.stats['micro_quote_gap']+=1;return
         # Step 1: 5-second basket is an observation ONLY, no automatic order.
         b5=self.rolling.current[5000]
+        if (b5.last_ms-b5.first_ms<s.min_5s_observed_span_ms
+                or b5.max_gap_ms>s.max_quote_gap_ms):
+            self.stats['micro_5s_effective_age_reject']+=1;return
         move2=t.bid_u+t.ask_u-b5.mid_anchor2
         side=1 if move2>=2*s.min_5s_mid_move_u else -1 if move2<=-2*s.min_5s_mid_move_u else 0
         if not side:return
@@ -361,10 +379,15 @@ class Micro180R9(ManagedR9):
         b15=self.rolling.last_closed(15,t.time_msc)
         active15=self.rolling.current[15000]
         live15=(s.structural_confirmation=="causal_active_or_completed"
-                and active15.last_ms-active15.first_ms>=3000
+                and active15.last_ms-active15.first_ms>=s.min_active15_observed_span_ms
+                and active15.max_gap_ms<=s.max_quote_gap_ms
                 and active15.n>=5
                 and side*active15.mid_displacement2>=2*s.min_15s_confirm_u)
-        completed15=(b15 is not None and side*b15.mid_displacement2>=2*s.min_15s_confirm_u)
+        completed15=(b15 is not None
+                and b15.last_ms-b15.first_ms>=s.min_completed15_observed_span_ms
+                and b15.max_gap_ms<=s.max_quote_gap_ms
+                and b15.start_ms+s.basket15_ms-b15.last_ms<=s.max_completed15_tail_ms
+                and side*b15.mid_displacement2>=2*s.min_15s_confirm_u)
         if not live15 and not completed15:
             self.stats['micro_15s_structure_reject']+=1;return
         b15_source=active15 if live15 else b15
