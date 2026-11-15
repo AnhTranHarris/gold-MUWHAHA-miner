@@ -35,6 +35,7 @@ class V7Spec:
     # Do not silently alter V6's profit lock/horizon or $2 intended risk.
     enable_conditioned_holding: bool = False
     min_hold_increment: float = 0.0
+    hold_horizon_seconds: int = 3
 
     def __post_init__(self):
         n=(self.min_effective_samples,self.similarity_width,
@@ -47,7 +48,8 @@ class V7Spec:
             not 0<=self.uncertainty_multiplier<=4 or
             any(not isfinite(v) for v in n) or
             any(not -2<=v<=2 for v in n[3:]) or
-            not -.5<=self.min_hold_increment<=1.75):
+            not -.5<=self.min_hold_increment<=1.75 or
+            not 1<=self.hold_horizon_seconds<=10):
             raise ValueError('Invalid frozen V7 conditioned-cash settings')
 
 
@@ -163,6 +165,45 @@ def conditioned_cash_first_passage(r:RollingThreeMinute,t:Tick,side:int,
             effective>=spec.min_effective_samples)
 
 
+def conditioned_incremental_hold(r:RollingThreeMinute,t:Tick,side:int,
+       *,k:float=1.0,spec:V7Spec=V7Spec()) -> Optional[float]:
+    """Past-only *incremental* cash utility of holding versus exit NOW.
+
+    A trade has already paid entry spread/fee; the historical hold path starts
+    from an executable *liquidation* quote and never charges the old fee twice.
+    The sample is matched to the CURRENT SIDE-SPECIFIC setup, not unconditional.
+    """
+    if side not in (-1,1) or k<=0:raise ValueError('side/k')
+    q=r.closes(t.time_msc,180_000)
+    h=spec.hold_horizon_seconds
+    if len(q)<30 or t.time_msc-q[-1].last_ms>2500 or not _contiguous(q,len(q)-15,len(q)-1):
+        return None
+    cur=_setup(q,len(q),side,t.bid_u,t.ask_u,
+           r.current[1000].n if 1000 in r.current else 1)
+    if cur is None:return None
+    weights=[];increment=[]
+    for i in range(15,len(q)-h,spec.anchor_stride_seconds):
+        if not _contiguous(q,i-15,i+h):continue
+        anchor=q[i]
+        a=_setup(q,i,side,anchor.bid_close,anchor.ask_close,anchor.n)
+        if a is None or a.eff5*cur.eff5<0 or a.eff15*cur.eff15<0:continue
+        dd=((a.eff5-cur.eff5)/spec.similarity_width,
+            (a.eff15-cur.eff15)/spec.similarity_width,
+            (a.spread_ratio-cur.spread_ratio)/.5,
+            (a.quote_intensity-cur.quote_intensity)/1.5)
+        w=exp(-.5*sum(d*d for d in dd))
+        if w<.01:continue
+        before=anchor.bid_close if side>0 else anchor.ask_close
+        after=q[i+h].bid_close if side>0 else q[i+h].ask_close
+        weights.append(w);increment.append(side*(after-before)*k/100.)
+    if not weights:return None
+    sumw=sum(weights); effective=sumw*sumw/sum(w*w for w in weights)
+    if effective<spec.min_effective_samples:return None
+    mean=sum(w*x for w,x in zip(weights,increment))/sumw
+    var=sum(w*(x-mean)**2 for w,x in zip(weights,increment))/sumw
+    return mean-spec.uncertainty_multiplier*sqrt(var/max(1.,effective))
+
+
 class SetupConditionedMicroV7(PastOnlyCashMicroV6):
     """Research-only extension preserving the full V6 risk/hold lifecycle.
 
@@ -173,6 +214,8 @@ class SetupConditionedMicroV7(PastOnlyCashMicroV6):
                  v6:V6Spec=V6Spec(),v7:V7Spec=V7Spec()):
         from v5_path_lifecycle import V5Spec
         v5=v5 if v5 is not None else V5Spec()
+        if v7.enable_conditioned_holding and not (micro_spec.experimental_runner and v5.enable_protected_continuation):
+            raise ValueError("V7 conditional hold requires an enabled, stop-protected V5/V6 runner")
         from dataclasses import replace
         super().__init__(cfg,cash,micro_spec,v5=v5,v6=replace(v6,audit_only=True))
         self.v7=v7
@@ -203,6 +246,27 @@ class SetupConditionedMicroV7(PastOnlyCashMicroV6):
               v7_gate_enabled=self.v7.enable_cash_gate)
         return super()._open_trade(t,side)
 
+    def _manage_position(self,t:Tick):
+        p=self.position
+        if p is not None and self.v7.enable_conditioned_holding:
+            liq=t.bid_u if p.side>0 else t.ask_u
+            net=p.side*(liq-p.entry_price_u)*self.cash.k/100.-self.cash.cost
+            age=t.time_msc-p.entry_time_msc
+            s=self.micro_spec
+            forced=(age>=s.max_lifetime_ms or net<=-s.hard_risk_cash or
+                    net>=s.preferred_max_net_cash or
+                    self.rolling.last_gap_ms>s.max_quote_gap_ms or
+                    (self.cash.governor and (self.account.day_lock or self.account.permanent_lock)))
+            if not forced and s.min_net_cash<=net<s.preferred_max_net_cash:
+                self.stats['v7_hold_evaluations']+=1
+                utility=conditioned_incremental_hold(self.rolling,t,p.side,
+                           k=self.cash.k,spec=self.v7)
+                if utility is None or utility<=self.v7.min_hold_increment:
+                    self.stats['v7_hold_not_positive']+=1
+                    self._record_close(t,'v7_conditioned_hold_harvest',liq)
+                    return
+        return super()._manage_position(t)
+
     def report(self):
         r=super().report()
         r['v7_setup_conditioned']={
@@ -216,6 +280,9 @@ class SetupConditionedMicroV7(PastOnlyCashMicroV6):
             'cash_175_preferred':self.micro_spec.preferred_max_net_cash,
             'volume_rule_max_entries_minute':self.micro_spec.max_entries_per_source_minute,
             'shadow_only':not self.v7.enable_cash_gate,
+            'conditional_hold_enabled':self.v7.enable_conditioned_holding,
+            'conditional_hold_evaluations':self.stats['v7_hold_evaluations'],
+            'conditional_hold_not_positive':self.stats['v7_hold_not_positive'],
             'v7_conditioned_candidate_evaluations':self.stats['v7_candidate_evaluations'],
             'v7_sparse_conditional':self.stats['v7_sparse_conditional'],
             'v7_nonpositive_conditional':self.stats['v7_nonpositive_conditional']}
