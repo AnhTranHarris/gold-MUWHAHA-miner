@@ -100,6 +100,9 @@ class Micro180Tests(unittest.TestCase):
         # sec136 is in same 5s basket as 135, but close price not changed by a single
         # earlier period; current bid +30 should exceed the last completed Bid 30s high.
         sim.on_tick(q(1000,136100,1100))
+        # New 5s age repair: one-second burst is not a mature basket.
+        self.assertEqual(sim.stats['micro_positions'],0)
+        sim.on_tick(q(1001,137900,1120))
         self.assertEqual(sim.stats['micro_positions'],1)
         self.assertEqual(sim.entries[-1]['side'],1)
 
@@ -207,7 +210,9 @@ class Micro180Tests(unittest.TestCase):
                 sim._push_second(t);sim.atr.update(t);sim._start_minute_cycle(t)
             t=q(140,140100,1120)
             sim._push_second(t);sim._start_minute_cycle(t)
-            now=q(141,140500,1160)
+            interim=q(141,141100,1180)
+            sim._push_second(interim);sim._start_minute_cycle(interim)
+            now=q(142,142100,1200)
             sim._push_second(now);sim._start_minute_cycle(now)
             sim._process_entries(now)
             return sim
