@@ -138,6 +138,46 @@ class Micro180Tests(unittest.TestCase):
         sim._open_trade(q(4,121100,1000,20),1)
         self.assertIsNone(sim.position)
 
+    def test_30s_window_is_stable_throughout_current_partial_second(self):
+        r=RollingThreeMinute()
+        for sec in range(45):r.update(q(sec,sec*1000+800,1000+sec))
+        before=r.price_levels(44801,10,18,2500)
+        after=r.price_levels(44999,10,18,2500)
+        self.assertEqual(before[1][0],after[1][0])
+        self.assertEqual(before[1][1],after[1][1])
+        self.assertEqual(before[1][2],after[1][2])
+
+    def test_protected_runner_tightens_cash_sl_for_buy_and_sell(self):
+        for side in (1,-1):
+            sim=Micro180R9(cfg(),ResearchCash(governor=True),
+                           Micro180Spec(experimental_runner=True))
+            first=q(1,120000,1000,10)
+            sim.on_tick(first)
+            sim._open_trade(first,side)
+            self.assertIsNotNone(sim.position)
+            old_sl=sim.position.sl_u
+            sim._signed_trend_score=lambda direction,t:1.0
+            entry=sim.position.entry_price_u
+            more=q(2,120100,entry+70 if side==1 else entry-80,10)
+            sim.on_tick(more)
+            self.assertIsNotNone(sim.position)
+            new_sl=sim.position.sl_u
+            self.assertGreater((new_sl-old_sl)*side,0)
+            protected_cash=side*(new_sl-entry)*sim.cash.k/100-sim.cash.cost
+            self.assertGreaterEqual(protected_cash,.10-1e-8)
+            self.assertEqual(sim.stats['micro_protected_runner_hold'],1)
+
+    def test_capital_loss_gov_locks_at_25_percent_even_between_days(self):
+        sim=Micro180R9(cfg(),ResearchCash(governor=True,initial_capital=100))
+        t=q(1,120000,1000,10)
+        sim.on_tick(t)
+        sim.account.equity=74.9
+        later=q(2,86400100,1000,10)
+        sim.account.begin_tick(later,0)
+        self.assertTrue(sim.account.permanent_lock)
+        sim._open_trade(later,1)
+        self.assertIsNone(sim.position)
+
     def test_unvalidated_runner_never_automatically_activated(self):
         self.assertFalse(Micro180Spec().experimental_runner)
         self.assertTrue(Micro180Spec(experimental_runner=True).experimental_runner)
