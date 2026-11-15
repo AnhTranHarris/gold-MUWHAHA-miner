@@ -41,3 +41,25 @@ Original files reused read-only from prior source-verified Coinexx Jan/Sep 2026 
 6. MQL5: MetaEditor compile + zero warnings, exact broker margin/stops/freeze/lot constraints, CopyTicks catch-up/equal-ms test, on-quote race/transaction latency, demo-only test and source-parity reports. Existing GitHub Actions Python tests **are not a MetaEditor compile**.
 
 **Disposition: V5 engineering fork created; research pilot FAILS positive-net gate. No live/demo deployment promotion; a large in-sample threshold search would make the evidence less trustworthy.**
+
+
+## 250ms chronology repair, same-source re-evaluation (2026-11-14)
+
+**Why:** Completed 1s-close sequences alone hide intrasecond quote path order; prior R9 v2 feature collisions make this a specific known failure mode. `v5_ms_path.py` now accumulates exact source-order same-millisecond Bid and Ask movements into **at most 720 finished quarter-second bins plus an active bin**, producing an observed 5s quote-path efficiency and simultaneous-quote-direction coherence. No synthetic 250ms bars for no-update intervals; gaps >2500ms invalidate the 250ms path signal. A 180-second lookback remains available from the original `RollingThreeMinute` and the 250ms ring. The BUY/SSELL path score adds **+0.12 quote-path efficiency +0.08 × (quote coherence − 0.50)** to the previous separately weighted BUY and SELL scores. Coefficients are explicit **unfitted hypotheses**.
+
+A new `GoldMuwahahaR9Micro250.mqh` source-exact bounded ring is wired into the demo-disabled `GoldMuwahahaMiner_R9_Micro180_V5_Research.mq5` fork using `CopyTicks` source-order update. The old production R9 EA and previous Micro180 research fork are untouched. The MQL5 250ms implementation is **NOT MetaEditor compiled**, and cross-implementation indicator/structural-gate parity remains unverified; differences are expected, not concealed.
+
+The original first 200,000 Coinexx January and first 200,000 September source quotes were replayed **without rereading or reconstructing historical tick files**. Exact same profile/assumed cost model as prior pilot. Independent 250ms cash-first and runner arms:
+
+| Model arm | January completed trades | January modeled NET | September completed trades | September modeled NET |
+|---|---:|---:|---:|---:|
+| Existing fast Micro180 with cash-first exits | 1,316 | -$491.09 | 1,682 | -$673.05 |
+| V5 250ms ordered-path cash-first harvest | 912 | -$350.04 | 1,116 | -$453.51 |
+| V5 250ms ordered-path early-adverse cut | 923 | -$358.60 | 1,123 | -$456.40 |
+| V5 250ms ordered-path optional protected runner | 884 | -$330.62 | 1,093 | -$450.24 |
+
+A comparable prior R9 first-200k source replay completed **938 / -$343.74** January, **835 / -$343.98** September, original 30s exits. Neither V5 configuration reaches **positive** modeled net in either inspected slice. Optional early-adverse cut **worsens** both; this optional exit stays OFF. At least the research runner must later prove **>=303,934 completed trades over identical January–September** *and* positive full-system after-cost net **jointly** before calling high-volume profitability achieved. The two slices cannot certify that.
+
+**Scope limitations:** Exposed January/September snapshots are not out-of-sample, the result is not a nine-month replay, no binding account governor was enabled in these cash-economics pilots, `K=1/C=$0.20` remain broker-unverified, and quotes are not fills. A requested $2 hard first-available exit or 25% equity governor is an **intended risk-control objective**, not an actual realized loss guarantee in gaps. New old-AUC training remains excluded.
+
+**Verification:** local original/V5/ms source contract tests **9/9 PASS**; latest GitHub Actions original/V3/V5/250ms workflow **SUCCESS**. This is not an MT5 compile or profitability test.
