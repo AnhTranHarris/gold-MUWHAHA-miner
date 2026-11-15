@@ -1,0 +1,2018 @@
+{
+  "scope": "Profit-first experimental V13, full source exact quote observation, original on-policy V9 signal cohort only, not full independent strategy signal simulation",
+  "data_months": "2026-01 through 2026-09",
+  "original_pinned_quotes": 72129347,
+  "baseline_winners": 128203,
+  "baseline_completed": 338064,
+  "baseline_mean": -0.4003,
+  "primary_lattice_results": {
+    "E_micro180_fib236": {
+      "n": 57430,
+      "winners": 22381,
+      "win_fraction": 0.389709,
+      "net": -22353.14,
+      "mean": -0.389224,
+      "positive_months": 0,
+      "months": {
+        "01": {
+          "trades": 6133,
+          "net": -2382.47,
+          "mean": -0.38847,
+          "win": 0.38089
+        },
+        "02": {
+          "trades": 6594,
+          "net": -2533.58,
+          "mean": -0.38423,
+          "win": 0.421444
+        },
+        "03": {
+          "trades": 8851,
+          "net": -3183.92,
+          "mean": -0.35972,
+          "win": 0.42933
+        },
+        "04": {
+          "trades": 7011,
+          "net": -2668.43,
+          "mean": -0.38061,
+          "win": 0.402082
+        },
+        "05": {
+          "trades": 5296,
+          "net": -2140.86,
+          "mean": -0.40424,
+          "win": 0.371224
+        },
+        "06": {
+          "trades": 3459,
+          "net": -1400.57,
+          "mean": -0.40491,
+          "win": 0.376698
+        },
+        "07": {
+          "trades": 6961,
+          "net": -2740.78,
+          "mean": -0.39373,
+          "win": 0.367332
+        },
+        "08": {
+          "trades": 6448,
+          "net": -2608.37,
+          "mean": -0.40452,
+          "win": 0.363524
+        },
+        "09": {
+          "trades": 6677,
+          "net": -2694.16,
+          "mean": -0.4035,
+          "win": 0.370975
+        }
+      },
+      "config": {
+        "name": "E_micro180_fib236",
+        "swing": "MICRO180",
+        "ema": 20,
+        "sma": 20,
+        "fib": 0.236,
+        "expiry_ms": 45000,
+        "rebound_c": 10,
+        "max_zone_width_c": 30,
+        "max_dislocation_c": 500,
+        "min_swing_c": 90,
+        "target_cash": 0.1,
+        "stop_c": 30,
+        "hold_ms": 30000,
+        "use_anchor": true,
+        "min_anchor_age_ms": 300000,
+        "lattice": "recent_extreme",
+        "trend_rule": "soft",
+        "anchor_rule": "none"
+      }
+    },
+    "F_micro180_fib382": {
+      "n": 43383,
+      "winners": 16819,
+      "win_fraction": 0.387686,
+      "net": -16918.51,
+      "mean": -0.38998,
+      "positive_months": 0,
+      "months": {
+        "01": {
+          "trades": 4723,
+          "net": -1755.72,
+          "mean": -0.37174,
+          "win": 0.393606
+        },
+        "02": {
+          "trades": 4960,
+          "net": -1955.63,
+          "mean": -0.39428,
+          "win": 0.408468
+        },
+        "03": {
+          "trades": 6760,
+          "net": -2446.46,
+          "mean": -0.3619,
+          "win": 0.426479
+        },
+        "04": {
+          "trades": 5316,
+          "net": -2041.15,
+          "mean": -0.38396,
+          "win": 0.396727
+        },
+        "05": {
+          "trades": 3934,
+          "net": -1566.74,
+          "mean": -0.39826,
+          "win": 0.378495
+        },
+        "06": {
+          "trades": 2535,
+          "net": -1034.23,
+          "mean": -0.40798,
+          "win": 0.376331
+        },
+        "07": {
+          "trades": 5292,
+          "net": -2087.95,
+          "mean": -0.39455,
+          "win": 0.365457
+        },
+        "08": {
+          "trades": 4832,
+          "net": -1958.64,
+          "mean": -0.40535,
+          "win": 0.36279
+        },
+        "09": {
+          "trades": 5031,
+          "net": -2071.99,
+          "mean": -0.41184,
+          "win": 0.360167
+        }
+      },
+      "config": {
+        "name": "F_micro180_fib382",
+        "swing": "MICRO180",
+        "ema": 20,
+        "sma": 20,
+        "fib": 0.382,
+        "expiry_ms": 45000,
+        "rebound_c": 10,
+        "max_zone_width_c": 30,
+        "max_dislocation_c": 500,
+        "min_swing_c": 90,
+        "target_cash": 0.1,
+        "stop_c": 30,
+        "hold_ms": 30000,
+        "use_anchor": true,
+        "min_anchor_age_ms": 300000,
+        "lattice": "recent_extreme",
+        "trend_rule": "soft",
+        "anchor_rule": "none"
+      }
+    },
+    "G_signal_fib236_step": {
+      "n": 38214,
+      "winners": 15444,
+      "win_fraction": 0.404145,
+      "net": -14388.51,
+      "mean": -0.376525,
+      "positive_months": 0,
+      "months": {
+        "01": {
+          "trades": 4144,
+          "net": -1558.96,
+          "mean": -0.3762,
+          "win": 0.396477
+        },
+        "02": {
+          "trades": 5053,
+          "net": -1810.0,
+          "mean": -0.3582,
+          "win": 0.441916
+        },
+        "03": {
+          "trades": 7045,
+          "net": -2453.92,
+          "mean": -0.34832,
+          "win": 0.438893
+        },
+        "04": {
+          "trades": 4856,
+          "net": -1808.4,
+          "mean": -0.37241,
+          "win": 0.417422
+        },
+        "05": {
+          "trades": 3232,
+          "net": -1212.41,
+          "mean": -0.37513,
+          "win": 0.404703
+        },
+        "06": {
+          "trades": 720,
+          "net": -261.06,
+          "mean": -0.36258,
+          "win": 0.409722
+        },
+        "07": {
+          "trades": 4421,
+          "net": -1779.63,
+          "mean": -0.40254,
+          "win": 0.362588
+        },
+        "08": {
+          "trades": 4308,
+          "net": -1738.97,
+          "mean": -0.40366,
+          "win": 0.365831
+        },
+        "09": {
+          "trades": 4435,
+          "net": -1765.16,
+          "mean": -0.39801,
+          "win": 0.375874
+        }
+      },
+      "config": {
+        "name": "G_signal_fib236_step",
+        "swing": "MICRO180",
+        "ema": 20,
+        "sma": 20,
+        "fib": 0.236,
+        "expiry_ms": 45000,
+        "rebound_c": 10,
+        "max_zone_width_c": 30,
+        "max_dislocation_c": 500,
+        "min_swing_c": 90,
+        "target_cash": 0.1,
+        "stop_c": 30,
+        "hold_ms": 30000,
+        "use_anchor": true,
+        "min_anchor_age_ms": 300000,
+        "lattice": "signal_step",
+        "trend_rule": "soft",
+        "anchor_rule": "none"
+      }
+    },
+    "H_equal_25c_step": {
+      "n": 58021,
+      "winners": 23262,
+      "win_fraction": 0.400924,
+      "net": -22009.6,
+      "mean": -0.379339,
+      "positive_months": 0,
+      "months": {
+        "01": {
+          "trades": 6300,
+          "net": -2384.41,
+          "mean": -0.37848,
+          "win": 0.396667
+        },
+        "02": {
+          "trades": 7089,
+          "net": -2584.46,
+          "mean": -0.36457,
+          "win": 0.433347
+        },
+        "03": {
+          "trades": 9817,
+          "net": -3516.49,
+          "mean": -0.3582,
+          "win": 0.430987
+        },
+        "04": {
+          "trades": 7423,
+          "net": -2766.75,
+          "mean": -0.37273,
+          "win": 0.411155
+        },
+        "05": {
+          "trades": 5089,
+          "net": -1988.01,
+          "mean": -0.39065,
+          "win": 0.390057
+        },
+        "06": {
+          "trades": 1906,
+          "net": -749.84,
+          "mean": -0.39341,
+          "win": 0.38405
+        },
+        "07": {
+          "trades": 6897,
+          "net": -2693.68,
+          "mean": -0.39056,
+          "win": 0.374076
+        },
+        "08": {
+          "trades": 6546,
+          "net": -2620.92,
+          "mean": -0.40038,
+          "win": 0.37183
+        },
+        "09": {
+          "trades": 6954,
+          "net": -2705.04,
+          "mean": -0.38899,
+          "win": 0.384958
+        }
+      },
+      "config": {
+        "name": "H_equal_25c_step",
+        "swing": "MICRO180",
+        "ema": 20,
+        "sma": 20,
+        "fib": 0.236,
+        "expiry_ms": 45000,
+        "rebound_c": 10,
+        "max_zone_width_c": 30,
+        "max_dislocation_c": 500,
+        "min_swing_c": 90,
+        "target_cash": 0.1,
+        "stop_c": 30,
+        "hold_ms": 30000,
+        "use_anchor": true,
+        "min_anchor_age_ms": 300000,
+        "lattice": "equal_step",
+        "trend_rule": "soft",
+        "anchor_rule": "none"
+      }
+    },
+    "P_fib382_structural_R10_T3_10m": {
+      "n": 32353,
+      "winners": 8348,
+      "win_fraction": 0.258029,
+      "net": -12272.99,
+      "mean": -0.379346,
+      "positive_months": 0,
+      "months": {
+        "01": {
+          "trades": 3506,
+          "net": -1457.42,
+          "mean": -0.41569,
+          "win": 0.247576
+        },
+        "02": {
+          "trades": 3929,
+          "net": -1411.71,
+          "mean": -0.35931,
+          "win": 0.267753
+        },
+        "03": {
+          "trades": 5194,
+          "net": -1720.78,
+          "mean": -0.3313,
+          "win": 0.267039
+        },
+        "04": {
+          "trades": 3959,
+          "net": -1660.16,
+          "mean": -0.41934,
+          "win": 0.242991
+        },
+        "05": {
+          "trades": 2949,
+          "net": -1286.19,
+          "mean": -0.43614,
+          "win": 0.245846
+        },
+        "06": {
+          "trades": 1879,
+          "net": -741.95,
+          "mean": -0.39486,
+          "win": 0.253326
+        },
+        "07": {
+          "trades": 3754,
+          "net": -1391.5,
+          "mean": -0.37067,
+          "win": 0.262653
+        },
+        "08": {
+          "trades": 3555,
+          "net": -1347.61,
+          "mean": -0.37907,
+          "win": 0.259072
+        },
+        "09": {
+          "trades": 3628,
+          "net": -1255.67,
+          "mean": -0.34611,
+          "win": 0.267641
+        }
+      },
+      "config": {
+        "name": "P_fib382_structural_R10_T3_10m",
+        "swing": "MICRO180",
+        "ema": 20,
+        "sma": 20,
+        "fib": 0.382,
+        "expiry_ms": 60000,
+        "rebound_c": 15,
+        "max_zone_width_c": 30,
+        "max_dislocation_c": 500,
+        "min_swing_c": 90,
+        "target_cash": 3.0,
+        "stop_c": 100,
+        "hold_ms": 600000,
+        "use_anchor": true,
+        "min_anchor_age_ms": 300000,
+        "lattice": "recent_extreme",
+        "trend_rule": "soft",
+        "anchor_rule": "none"
+      }
+    }
+  },
+  "profitable_trade_map": {
+    "source": "Nine original pinned Coinexx months + original V12 entry/exit snapshots",
+    "entries": 338065,
+    "completed": 338064,
+    "winning_entries": 128203,
+    "baseline": {
+      "trades": 338064,
+      "winners": 128203,
+      "win_pct": 37.92,
+      "net": -135317.63,
+      "net_per_trade": -0.4003
+    },
+    "definitions": "All groups use as-of-entry causal features, outcomes are original V9 simulated cash with cost. No group is an executable altered strategy.",
+    "by_feature": {
+      "micro_twap_location": [
+        {
+          "trades": 20915,
+          "winners": 8808,
+          "win_pct": 42.11,
+          "net": -7986.43,
+          "net_per_trade": -0.3819,
+          "group": "(-100000000.001, -150.0]",
+          "share_of_profitable_V9_trades_pct": 6.87,
+          "jan_apr_net_per_trade": -0.3652,
+          "jul_sep_net_per_trade": -0.39315
+        },
+        {
+          "trades": 18945,
+          "winners": 7357,
+          "win_pct": 38.83,
+          "net": -7632.27,
+          "net_per_trade": -0.4029,
+          "group": "(-150.0, -75.0]",
+          "share_of_profitable_V9_trades_pct": 5.74,
+          "jan_apr_net_per_trade": -0.38909,
+          "jul_sep_net_per_trade": -0.40641
+        },
+        {
+          "trades": 19671,
+          "winners": 7432,
+          "win_pct": 37.78,
+          "net": -7894.25,
+          "net_per_trade": -0.4013,
+          "group": "(-75.0, -30.0]",
+          "share_of_profitable_V9_trades_pct": 5.8,
+          "jan_apr_net_per_trade": -0.39596,
+          "jul_sep_net_per_trade": -0.39551
+        },
+        {
+          "trades": 18046,
+          "winners": 6718,
+          "win_pct": 37.23,
+          "net": -7190.71,
+          "net_per_trade": -0.3985,
+          "group": "(-30.0, 0.0]",
+          "share_of_profitable_V9_trades_pct": 5.24,
+          "jan_apr_net_per_trade": -0.38082,
+          "jul_sep_net_per_trade": -0.40404
+        },
+        {
+          "trades": 24461,
+          "winners": 8757,
+          "win_pct": 35.8,
+          "net": -9814.1,
+          "net_per_trade": -0.4012,
+          "group": "(0.0, 30.0]",
+          "share_of_profitable_V9_trades_pct": 6.83,
+          "jan_apr_net_per_trade": -0.38581,
+          "jul_sep_net_per_trade": -0.40365
+        },
+        {
+          "trades": 51819,
+          "winners": 18140,
+          "win_pct": 35.01,
+          "net": -20859.08,
+          "net_per_trade": -0.4025,
+          "group": "(30.0, 75.0]",
+          "share_of_profitable_V9_trades_pct": 14.15,
+          "jan_apr_net_per_trade": -0.39534,
+          "jul_sep_net_per_trade": -0.40311
+        },
+        {
+          "trades": 65737,
+          "winners": 24278,
+          "win_pct": 36.93,
+          "net": -26648.84,
+          "net_per_trade": -0.4054,
+          "group": "(75.0, 150.0]",
+          "share_of_profitable_V9_trades_pct": 18.94,
+          "jan_apr_net_per_trade": -0.39573,
+          "jul_sep_net_per_trade": -0.40979
+        },
+        {
+          "trades": 117514,
+          "winners": 46403,
+          "win_pct": 39.49,
+          "net": -46911.93,
+          "net_per_trade": -0.3992,
+          "group": "(150.0, 100000000.0]",
+          "share_of_profitable_V9_trades_pct": 36.19,
+          "jan_apr_net_per_trade": -0.38556,
+          "jul_sep_net_per_trade": -0.40304
+        },
+        {
+          "trades": 956,
+          "winners": 310,
+          "win_pct": 32.43,
+          "net": -380.02,
+          "net_per_trade": -0.3975,
+          "group": "nan",
+          "share_of_profitable_V9_trades_pct": 0.24,
+          "jan_apr_net_per_trade": -0.39867,
+          "jul_sep_net_per_trade": -0.38635
+        }
+      ],
+      "session_anchor_location": [
+        {
+          "trades": 130899,
+          "winners": 49872,
+          "win_pct": 38.1,
+          "net": -52504.48,
+          "net_per_trade": -0.4011,
+          "group": "(-100000000.001, -500.0]",
+          "share_of_profitable_V9_trades_pct": 38.9,
+          "jan_apr_net_per_trade": -0.38729,
+          "jul_sep_net_per_trade": -0.40597
+        },
+        {
+          "trades": 18082,
+          "winners": 6659,
+          "win_pct": 36.83,
+          "net": -7278.48,
+          "net_per_trade": -0.4025,
+          "group": "(-500.0, -200.0]",
+          "share_of_profitable_V9_trades_pct": 5.19,
+          "jan_apr_net_per_trade": -0.38923,
+          "jul_sep_net_per_trade": -0.40587
+        },
+        {
+          "trades": 7831,
+          "winners": 2813,
+          "win_pct": 35.92,
+          "net": -3187.93,
+          "net_per_trade": -0.4071,
+          "group": "(-200.0, -75.0]",
+          "share_of_profitable_V9_trades_pct": 2.19,
+          "jan_apr_net_per_trade": -0.40164,
+          "jul_sep_net_per_trade": -0.40691
+        },
+        {
+          "trades": 4691,
+          "winners": 1706,
+          "win_pct": 36.37,
+          "net": -1900.13,
+          "net_per_trade": -0.4051,
+          "group": "(-75.0, 0.0]",
+          "share_of_profitable_V9_trades_pct": 1.33,
+          "jan_apr_net_per_trade": -0.39662,
+          "jul_sep_net_per_trade": -0.40641
+        },
+        {
+          "trades": 4796,
+          "winners": 1713,
+          "win_pct": 35.72,
+          "net": -1962.67,
+          "net_per_trade": -0.4092,
+          "group": "(0.0, 75.0]",
+          "share_of_profitable_V9_trades_pct": 1.34,
+          "jan_apr_net_per_trade": -0.40662,
+          "jul_sep_net_per_trade": -0.39835
+        },
+        {
+          "trades": 8060,
+          "winners": 2994,
+          "win_pct": 37.15,
+          "net": -3182.8,
+          "net_per_trade": -0.3949,
+          "group": "(75.0, 200.0]",
+          "share_of_profitable_V9_trades_pct": 2.34,
+          "jan_apr_net_per_trade": -0.39146,
+          "jul_sep_net_per_trade": -0.38611
+        },
+        {
+          "trades": 19050,
+          "winners": 6969,
+          "win_pct": 36.58,
+          "net": -7708.24,
+          "net_per_trade": -0.4046,
+          "group": "(200.0, 500.0]",
+          "share_of_profitable_V9_trades_pct": 5.44,
+          "jan_apr_net_per_trade": -0.40083,
+          "jul_sep_net_per_trade": -0.39952
+        },
+        {
+          "trades": 143701,
+          "winners": 55080,
+          "win_pct": 38.33,
+          "net": -57268.55,
+          "net_per_trade": -0.3985,
+          "group": "(500.0, 100000000.0]",
+          "share_of_profitable_V9_trades_pct": 42.96,
+          "jan_apr_net_per_trade": -0.38529,
+          "jul_sep_net_per_trade": -0.40279
+        },
+        {
+          "trades": 954,
+          "winners": 397,
+          "win_pct": 41.61,
+          "net": -324.35,
+          "net_per_trade": -0.34,
+          "group": "nan",
+          "share_of_profitable_V9_trades_pct": 0.31,
+          "jan_apr_net_per_trade": -0.25255,
+          "jul_sep_net_per_trade": -0.532
+        }
+      ],
+      "fib_m1_nearest": [
+        {
+          "trades": 81962,
+          "winners": 32195,
+          "win_pct": 39.28,
+          "net": -32656.07,
+          "net_per_trade": -0.3984,
+          "group": "(-100000000.001, -150.0]",
+          "share_of_profitable_V9_trades_pct": 25.11,
+          "jan_apr_net_per_trade": -0.383,
+          "jul_sep_net_per_trade": -0.40447
+        },
+        {
+          "trades": 29490,
+          "winners": 10758,
+          "win_pct": 36.48,
+          "net": -11907.08,
+          "net_per_trade": -0.4038,
+          "group": "(-150.0, -50.0]",
+          "share_of_profitable_V9_trades_pct": 8.39,
+          "jan_apr_net_per_trade": -0.39296,
+          "jul_sep_net_per_trade": -0.40181
+        },
+        {
+          "trades": 8737,
+          "winners": 3158,
+          "win_pct": 36.15,
+          "net": -3512.92,
+          "net_per_trade": -0.4021,
+          "group": "(-50.0, -25.0]",
+          "share_of_profitable_V9_trades_pct": 2.46,
+          "jan_apr_net_per_trade": -0.38801,
+          "jul_sep_net_per_trade": -0.40947
+        },
+        {
+          "trades": 9157,
+          "winners": 3337,
+          "win_pct": 36.44,
+          "net": -3656.77,
+          "net_per_trade": -0.3993,
+          "group": "(-25.0, 0.0]",
+          "share_of_profitable_V9_trades_pct": 2.6,
+          "jan_apr_net_per_trade": -0.39639,
+          "jul_sep_net_per_trade": -0.40347
+        },
+        {
+          "trades": 9456,
+          "winners": 3413,
+          "win_pct": 36.09,
+          "net": -3792.13,
+          "net_per_trade": -0.401,
+          "group": "(0.0, 25.0]",
+          "share_of_profitable_V9_trades_pct": 2.66,
+          "jan_apr_net_per_trade": -0.39836,
+          "jul_sep_net_per_trade": -0.3989
+        },
+        {
+          "trades": 9972,
+          "winners": 3572,
+          "win_pct": 35.82,
+          "net": -3996.72,
+          "net_per_trade": -0.4008,
+          "group": "(25.0, 50.0]",
+          "share_of_profitable_V9_trades_pct": 2.79,
+          "jan_apr_net_per_trade": -0.40042,
+          "jul_sep_net_per_trade": -0.39355
+        },
+        {
+          "trades": 39981,
+          "winners": 14503,
+          "win_pct": 36.27,
+          "net": -16066.35,
+          "net_per_trade": -0.4018,
+          "group": "(50.0, 150.0]",
+          "share_of_profitable_V9_trades_pct": 11.31,
+          "jan_apr_net_per_trade": -0.39616,
+          "jul_sep_net_per_trade": -0.39983
+        },
+        {
+          "trades": 144983,
+          "winners": 55626,
+          "win_pct": 38.37,
+          "net": -57999.88,
+          "net_per_trade": -0.4,
+          "group": "(150.0, 100000000.0]",
+          "share_of_profitable_V9_trades_pct": 43.39,
+          "jan_apr_net_per_trade": -0.38581,
+          "jul_sep_net_per_trade": -0.40681
+        },
+        {
+          "trades": 4326,
+          "winners": 1641,
+          "win_pct": 37.93,
+          "net": -1729.71,
+          "net_per_trade": -0.3998,
+          "group": "nan",
+          "share_of_profitable_V9_trades_pct": 1.28,
+          "jan_apr_net_per_trade": -0.38226,
+          "jul_sep_net_per_trade": -0.39634
+        }
+      ],
+      "fib_m5_nearest": [
+        {
+          "trades": 110612,
+          "winners": 42839,
+          "win_pct": 38.73,
+          "net": -44391.98,
+          "net_per_trade": -0.4013,
+          "group": "(-100000000.001, -250.0]",
+          "share_of_profitable_V9_trades_pct": 33.41,
+          "jan_apr_net_per_trade": -0.38742,
+          "jul_sep_net_per_trade": -0.40607
+        },
+        {
+          "trades": 22616,
+          "winners": 7968,
+          "win_pct": 35.23,
+          "net": -9361.29,
+          "net_per_trade": -0.4139,
+          "group": "(-250.0, -100.0]",
+          "share_of_profitable_V9_trades_pct": 6.22,
+          "jan_apr_net_per_trade": -0.41292,
+          "jul_sep_net_per_trade": -0.4025
+        },
+        {
+          "trades": 8228,
+          "winners": 2999,
+          "win_pct": 36.45,
+          "net": -3274.65,
+          "net_per_trade": -0.398,
+          "group": "(-100.0, -50.0]",
+          "share_of_profitable_V9_trades_pct": 2.34,
+          "jan_apr_net_per_trade": -0.39121,
+          "jul_sep_net_per_trade": -0.39916
+        },
+        {
+          "trades": 8481,
+          "winners": 3086,
+          "win_pct": 36.39,
+          "net": -3419.05,
+          "net_per_trade": -0.4031,
+          "group": "(-50.0, 0.0]",
+          "share_of_profitable_V9_trades_pct": 2.41,
+          "jan_apr_net_per_trade": -0.39515,
+          "jul_sep_net_per_trade": -0.40538
+        },
+        {
+          "trades": 8537,
+          "winners": 3019,
+          "win_pct": 35.36,
+          "net": -3497.11,
+          "net_per_trade": -0.4096,
+          "group": "(0.0, 50.0]",
+          "share_of_profitable_V9_trades_pct": 2.35,
+          "jan_apr_net_per_trade": -0.39589,
+          "jul_sep_net_per_trade": -0.41212
+        },
+        {
+          "trades": 8849,
+          "winners": 3165,
+          "win_pct": 35.77,
+          "net": -3577.19,
+          "net_per_trade": -0.4042,
+          "group": "(50.0, 100.0]",
+          "share_of_profitable_V9_trades_pct": 2.47,
+          "jan_apr_net_per_trade": -0.40048,
+          "jul_sep_net_per_trade": -0.40164
+        },
+        {
+          "trades": 25136,
+          "winners": 8965,
+          "win_pct": 35.67,
+          "net": -10224.0,
+          "net_per_trade": -0.4067,
+          "group": "(100.0, 250.0]",
+          "share_of_profitable_V9_trades_pct": 6.99,
+          "jan_apr_net_per_trade": -0.39497,
+          "jul_sep_net_per_trade": -0.40513
+        },
+        {
+          "trades": 137872,
+          "winners": 53117,
+          "win_pct": 38.53,
+          "net": -54583.4,
+          "net_per_trade": -0.3959,
+          "group": "(250.0, 100000000.0]",
+          "share_of_profitable_V9_trades_pct": 41.43,
+          "jan_apr_net_per_trade": -0.38162,
+          "jul_sep_net_per_trade": -0.40303
+        },
+        {
+          "trades": 7733,
+          "winners": 3045,
+          "win_pct": 39.38,
+          "net": -2988.96,
+          "net_per_trade": -0.3865,
+          "group": "nan",
+          "share_of_profitable_V9_trades_pct": 2.38,
+          "jan_apr_net_per_trade": -0.38218,
+          "jul_sep_net_per_trade": -0.38932
+        }
+      ],
+      "ema20_sma20_divergence": [
+        {
+          "trades": 116311,
+          "winners": 45132,
+          "win_pct": 38.8,
+          "net": -46465.66,
+          "net_per_trade": -0.3995,
+          "group": "(-100000000.001, -300.0]",
+          "share_of_profitable_V9_trades_pct": 35.2,
+          "jan_apr_net_per_trade": -0.3866,
+          "jul_sep_net_per_trade": -0.40466
+        },
+        {
+          "trades": 35542,
+          "winners": 12790,
+          "win_pct": 35.99,
+          "net": -14479.01,
+          "net_per_trade": -0.4074,
+          "group": "(-300.0, -100.0]",
+          "share_of_profitable_V9_trades_pct": 9.98,
+          "jan_apr_net_per_trade": -0.39326,
+          "jul_sep_net_per_trade": -0.41082
+        },
+        {
+          "trades": 14034,
+          "winners": 5065,
+          "win_pct": 36.09,
+          "net": -5676.46,
+          "net_per_trade": -0.4045,
+          "group": "(-100.0, -25.0]",
+          "share_of_profitable_V9_trades_pct": 3.95,
+          "jan_apr_net_per_trade": -0.39514,
+          "jul_sep_net_per_trade": -0.4021
+        },
+        {
+          "trades": 4695,
+          "winners": 1731,
+          "win_pct": 36.87,
+          "net": -1880.88,
+          "net_per_trade": -0.4006,
+          "group": "(-25.0, 0.0]",
+          "share_of_profitable_V9_trades_pct": 1.35,
+          "jan_apr_net_per_trade": -0.39693,
+          "jul_sep_net_per_trade": -0.3857
+        },
+        {
+          "trades": 4821,
+          "winners": 1719,
+          "win_pct": 35.66,
+          "net": -1964.86,
+          "net_per_trade": -0.4076,
+          "group": "(0.0, 25.0]",
+          "share_of_profitable_V9_trades_pct": 1.34,
+          "jan_apr_net_per_trade": -0.3905,
+          "jul_sep_net_per_trade": -0.41414
+        },
+        {
+          "trades": 13951,
+          "winners": 4976,
+          "win_pct": 35.67,
+          "net": -5696.05,
+          "net_per_trade": -0.4083,
+          "group": "(25.0, 100.0]",
+          "share_of_profitable_V9_trades_pct": 3.88,
+          "jan_apr_net_per_trade": -0.40366,
+          "jul_sep_net_per_trade": -0.39756
+        },
+        {
+          "trades": 35173,
+          "winners": 12693,
+          "win_pct": 36.09,
+          "net": -14282.86,
+          "net_per_trade": -0.4061,
+          "group": "(100.0, 300.0]",
+          "share_of_profitable_V9_trades_pct": 9.9,
+          "jan_apr_net_per_trade": -0.39581,
+          "jul_sep_net_per_trade": -0.40441
+        },
+        {
+          "trades": 113310,
+          "winners": 44014,
+          "win_pct": 38.84,
+          "net": -44783.85,
+          "net_per_trade": -0.3952,
+          "group": "(300.0, 100000000.0]",
+          "share_of_profitable_V9_trades_pct": 34.33,
+          "jan_apr_net_per_trade": -0.38241,
+          "jul_sep_net_per_trade": -0.4019
+        },
+        {
+          "trades": 227,
+          "winners": 83,
+          "win_pct": 36.56,
+          "net": -88.0,
+          "net_per_trade": -0.3877,
+          "group": "nan",
+          "share_of_profitable_V9_trades_pct": 0.06,
+          "jan_apr_net_per_trade": -0.37623,
+          "jul_sep_net_per_trade": -0.37073
+        }
+      ],
+      "micro_range": [
+        {
+          "trades": 33,
+          "winners": 8,
+          "win_pct": 24.24,
+          "net": -13.07,
+          "net_per_trade": -0.3961,
+          "group": "(-1.0, 50.0]",
+          "share_of_profitable_V9_trades_pct": 0.01,
+          "jan_apr_net_per_trade": -0.32417,
+          "jul_sep_net_per_trade": -0.32286
+        },
+        {
+          "trades": 10968,
+          "winners": 3026,
+          "win_pct": 27.59,
+          "net": -4480.08,
+          "net_per_trade": -0.4085,
+          "group": "(50.0, 100.0]",
+          "share_of_profitable_V9_trades_pct": 2.36,
+          "jan_apr_net_per_trade": -0.40109,
+          "jul_sep_net_per_trade": -0.40984
+        },
+        {
+          "trades": 33853,
+          "winners": 11265,
+          "win_pct": 33.28,
+          "net": -13502.79,
+          "net_per_trade": -0.3989,
+          "group": "(100.0, 200.0]",
+          "share_of_profitable_V9_trades_pct": 8.79,
+          "jan_apr_net_per_trade": -0.38716,
+          "jul_sep_net_per_trade": -0.4076
+        },
+        {
+          "trades": 111711,
+          "winners": 40870,
+          "win_pct": 36.59,
+          "net": -45482.55,
+          "net_per_trade": -0.4071,
+          "group": "(200.0, 400.0]",
+          "share_of_profitable_V9_trades_pct": 31.88,
+          "jan_apr_net_per_trade": -0.4004,
+          "jul_sep_net_per_trade": -0.40373
+        },
+        {
+          "trades": 123816,
+          "winners": 48474,
+          "win_pct": 39.15,
+          "net": -50046.29,
+          "net_per_trade": -0.4042,
+          "group": "(400.0, 800.0]",
+          "share_of_profitable_V9_trades_pct": 37.81,
+          "jan_apr_net_per_trade": -0.39175,
+          "jul_sep_net_per_trade": -0.40376
+        },
+        {
+          "trades": 45730,
+          "winners": 19276,
+          "win_pct": 42.15,
+          "net": -17537.38,
+          "net_per_trade": -0.3835,
+          "group": "(800.0, 1600.0]",
+          "share_of_profitable_V9_trades_pct": 15.04,
+          "jan_apr_net_per_trade": -0.37416,
+          "jul_sep_net_per_trade": -0.39438
+        },
+        {
+          "trades": 10997,
+          "winners": 4974,
+          "win_pct": 45.23,
+          "net": -3875.45,
+          "net_per_trade": -0.3524,
+          "group": "(1600.0, 100000000.0]",
+          "share_of_profitable_V9_trades_pct": 3.88,
+          "jan_apr_net_per_trade": -0.34468,
+          "jul_sep_net_per_trade": -0.39198
+        },
+        {
+          "trades": 956,
+          "winners": 310,
+          "win_pct": 32.43,
+          "net": -380.02,
+          "net_per_trade": -0.3975,
+          "group": "nan",
+          "share_of_profitable_V9_trades_pct": 0.24,
+          "jan_apr_net_per_trade": -0.39867,
+          "jul_sep_net_per_trade": -0.38635
+        }
+      ],
+      "micro_position_frac": [
+        {
+          "trades": 8545,
+          "winners": 3426,
+          "win_pct": 40.09,
+          "net": -3323.29,
+          "net_per_trade": -0.3889,
+          "group": "(-1.001, 0.2]",
+          "share_of_profitable_V9_trades_pct": 2.67,
+          "jan_apr_net_per_trade": -0.36945,
+          "jul_sep_net_per_trade": -0.39975
+        },
+        {
+          "trades": 47764,
+          "winners": 18615,
+          "win_pct": 38.97,
+          "net": -18925.02,
+          "net_per_trade": -0.3962,
+          "group": "(0.2, 0.4]",
+          "share_of_profitable_V9_trades_pct": 14.52,
+          "jan_apr_net_per_trade": -0.38023,
+          "jul_sep_net_per_trade": -0.40151
+        },
+        {
+          "trades": 51513,
+          "winners": 19886,
+          "win_pct": 38.6,
+          "net": -20484.71,
+          "net_per_trade": -0.3977,
+          "group": "(0.4, 0.6]",
+          "share_of_profitable_V9_trades_pct": 15.51,
+          "jan_apr_net_per_trade": -0.38554,
+          "jul_sep_net_per_trade": -0.40029
+        },
+        {
+          "trades": 52323,
+          "winners": 20031,
+          "win_pct": 38.28,
+          "net": -21027.51,
+          "net_per_trade": -0.4019,
+          "group": "(0.6, 0.8]",
+          "share_of_profitable_V9_trades_pct": 15.62,
+          "jan_apr_net_per_trade": -0.39316,
+          "jul_sep_net_per_trade": -0.40397
+        },
+        {
+          "trades": 176963,
+          "winners": 65935,
+          "win_pct": 37.26,
+          "net": -71177.08,
+          "net_per_trade": -0.4022,
+          "group": "(0.8, 1.0]",
+          "share_of_profitable_V9_trades_pct": 51.43,
+          "jan_apr_net_per_trade": -0.38942,
+          "jul_sep_net_per_trade": -0.40578
+        },
+        {
+          "trades": 956,
+          "winners": 310,
+          "win_pct": 32.43,
+          "net": -380.02,
+          "net_per_trade": -0.3975,
+          "group": "nan",
+          "share_of_profitable_V9_trades_pct": 0.24,
+          "jan_apr_net_per_trade": -0.39867,
+          "jul_sep_net_per_trade": -0.38635
+        }
+      ],
+      "session_hour_utc": [
+        {
+          "trades": 11201,
+          "winners": 4240,
+          "win_pct": 37.85,
+          "net": -4340.81,
+          "net_per_trade": -0.3875,
+          "group": "1.0",
+          "share_of_profitable_V9_trades_pct": 3.31,
+          "jan_apr_net_per_trade": -0.35671,
+          "jul_sep_net_per_trade": -0.44303
+        },
+        {
+          "trades": 12947,
+          "winners": 5057,
+          "win_pct": 39.06,
+          "net": -4934.85,
+          "net_per_trade": -0.3812,
+          "group": "2.0",
+          "share_of_profitable_V9_trades_pct": 3.94,
+          "jan_apr_net_per_trade": -0.36698,
+          "jul_sep_net_per_trade": -0.39957
+        },
+        {
+          "trades": 17059,
+          "winners": 6761,
+          "win_pct": 39.63,
+          "net": -6723.47,
+          "net_per_trade": -0.3941,
+          "group": "3.0",
+          "share_of_profitable_V9_trades_pct": 5.27,
+          "jan_apr_net_per_trade": -0.38043,
+          "jul_sep_net_per_trade": -0.39486
+        },
+        {
+          "trades": 17355,
+          "winners": 6970,
+          "win_pct": 40.16,
+          "net": -6843.81,
+          "net_per_trade": -0.3943,
+          "group": "4.0",
+          "share_of_profitable_V9_trades_pct": 5.44,
+          "jan_apr_net_per_trade": -0.39316,
+          "jul_sep_net_per_trade": -0.38241
+        },
+        {
+          "trades": 15354,
+          "winners": 5938,
+          "win_pct": 38.67,
+          "net": -6038.42,
+          "net_per_trade": -0.3933,
+          "group": "5.0",
+          "share_of_profitable_V9_trades_pct": 4.63,
+          "jan_apr_net_per_trade": -0.37873,
+          "jul_sep_net_per_trade": -0.39905
+        },
+        {
+          "trades": 12669,
+          "winners": 4533,
+          "win_pct": 35.78,
+          "net": -5083.97,
+          "net_per_trade": -0.4013,
+          "group": "6.0",
+          "share_of_profitable_V9_trades_pct": 3.54,
+          "jan_apr_net_per_trade": -0.38905,
+          "jul_sep_net_per_trade": -0.40747
+        },
+        {
+          "trades": 11910,
+          "winners": 4106,
+          "win_pct": 34.48,
+          "net": -4821.64,
+          "net_per_trade": -0.4048,
+          "group": "7.0",
+          "share_of_profitable_V9_trades_pct": 3.2,
+          "jan_apr_net_per_trade": -0.39425,
+          "jul_sep_net_per_trade": -0.41189
+        },
+        {
+          "trades": 15282,
+          "winners": 5934,
+          "win_pct": 38.83,
+          "net": -5960.44,
+          "net_per_trade": -0.39,
+          "group": "8.0",
+          "share_of_profitable_V9_trades_pct": 4.63,
+          "jan_apr_net_per_trade": -0.38687,
+          "jul_sep_net_per_trade": -0.38242
+        },
+        {
+          "trades": 15238,
+          "winners": 5703,
+          "win_pct": 37.43,
+          "net": -6269.41,
+          "net_per_trade": -0.4114,
+          "group": "9.0",
+          "share_of_profitable_V9_trades_pct": 4.45,
+          "jan_apr_net_per_trade": -0.39401,
+          "jul_sep_net_per_trade": -0.41891
+        },
+        {
+          "trades": 16212,
+          "winners": 6266,
+          "win_pct": 38.65,
+          "net": -6430.34,
+          "net_per_trade": -0.3966,
+          "group": "10.0",
+          "share_of_profitable_V9_trades_pct": 4.89,
+          "jan_apr_net_per_trade": -0.37728,
+          "jul_sep_net_per_trade": -0.40445
+        },
+        {
+          "trades": 15262,
+          "winners": 5724,
+          "win_pct": 37.5,
+          "net": -6197.06,
+          "net_per_trade": -0.406,
+          "group": "11.0",
+          "share_of_profitable_V9_trades_pct": 4.46,
+          "jan_apr_net_per_trade": -0.39406,
+          "jul_sep_net_per_trade": -0.40666
+        },
+        {
+          "trades": 14484,
+          "winners": 5281,
+          "win_pct": 36.46,
+          "net": -5981.99,
+          "net_per_trade": -0.413,
+          "group": "12.0",
+          "share_of_profitable_V9_trades_pct": 4.12,
+          "jan_apr_net_per_trade": -0.39966,
+          "jul_sep_net_per_trade": -0.42837
+        },
+        {
+          "trades": 13888,
+          "winners": 5030,
+          "win_pct": 36.22,
+          "net": -5628.31,
+          "net_per_trade": -0.4053,
+          "group": "13.0",
+          "share_of_profitable_V9_trades_pct": 3.92,
+          "jan_apr_net_per_trade": -0.38687,
+          "jul_sep_net_per_trade": -0.42262
+        },
+        {
+          "trades": 15308,
+          "winners": 5738,
+          "win_pct": 37.48,
+          "net": -6192.5,
+          "net_per_trade": -0.4045,
+          "group": "14.0",
+          "share_of_profitable_V9_trades_pct": 4.48,
+          "jan_apr_net_per_trade": -0.39607,
+          "jul_sep_net_per_trade": -0.39923
+        },
+        {
+          "trades": 17675,
+          "winners": 7035,
+          "win_pct": 39.8,
+          "net": -7001.73,
+          "net_per_trade": -0.3961,
+          "group": "15.0",
+          "share_of_profitable_V9_trades_pct": 5.49,
+          "jan_apr_net_per_trade": -0.38488,
+          "jul_sep_net_per_trade": -0.3969
+        },
+        {
+          "trades": 17881,
+          "winners": 7243,
+          "win_pct": 40.51,
+          "net": -7070.93,
+          "net_per_trade": -0.3954,
+          "group": "16.0",
+          "share_of_profitable_V9_trades_pct": 5.65,
+          "jan_apr_net_per_trade": -0.3872,
+          "jul_sep_net_per_trade": -0.39299
+        },
+        {
+          "trades": 17645,
+          "winners": 6996,
+          "win_pct": 39.65,
+          "net": -7049.27,
+          "net_per_trade": -0.3995,
+          "group": "17.0",
+          "share_of_profitable_V9_trades_pct": 5.46,
+          "jan_apr_net_per_trade": -0.38848,
+          "jul_sep_net_per_trade": -0.39956
+        },
+        {
+          "trades": 16401,
+          "winners": 6494,
+          "win_pct": 39.6,
+          "net": -6461.51,
+          "net_per_trade": -0.394,
+          "group": "18.0",
+          "share_of_profitable_V9_trades_pct": 5.07,
+          "jan_apr_net_per_trade": -0.38183,
+          "jul_sep_net_per_trade": -0.39845
+        },
+        {
+          "trades": 14928,
+          "winners": 5467,
+          "win_pct": 36.62,
+          "net": -6250.05,
+          "net_per_trade": -0.4187,
+          "group": "19.0",
+          "share_of_profitable_V9_trades_pct": 4.26,
+          "jan_apr_net_per_trade": -0.40822,
+          "jul_sep_net_per_trade": -0.41793
+        },
+        {
+          "trades": 14236,
+          "winners": 5186,
+          "win_pct": 36.43,
+          "net": -5864.66,
+          "net_per_trade": -0.412,
+          "group": "20.0",
+          "share_of_profitable_V9_trades_pct": 4.05,
+          "jan_apr_net_per_trade": -0.40263,
+          "jul_sep_net_per_trade": -0.40502
+        },
+        {
+          "trades": 13367,
+          "winners": 4856,
+          "win_pct": 36.33,
+          "net": -5366.11,
+          "net_per_trade": -0.4014,
+          "group": "21.0",
+          "share_of_profitable_V9_trades_pct": 3.79,
+          "jan_apr_net_per_trade": -0.39349,
+          "jul_sep_net_per_trade": -0.401
+        },
+        {
+          "trades": 13742,
+          "winners": 5062,
+          "win_pct": 36.84,
+          "net": -5546.43,
+          "net_per_trade": -0.4036,
+          "group": "22.0",
+          "share_of_profitable_V9_trades_pct": 3.95,
+          "jan_apr_net_per_trade": -0.39226,
+          "jul_sep_net_per_trade": -0.39927
+        },
+        {
+          "trades": 8020,
+          "winners": 2583,
+          "win_pct": 32.21,
+          "net": -3259.92,
+          "net_per_trade": -0.4065,
+          "group": "23.0",
+          "share_of_profitable_V9_trades_pct": 2.01,
+          "jan_apr_net_per_trade": -0.38189,
+          "jul_sep_net_per_trade": -0.44347
+        }
+      ],
+      "pivot_direction_M1": [
+        {
+          "trades": 166154,
+          "winners": 62791,
+          "win_pct": 37.79,
+          "net": -66714.29,
+          "net_per_trade": -0.4015,
+          "group": "-1.0",
+          "share_of_profitable_V9_trades_pct": 48.98,
+          "jan_apr_net_per_trade": -0.38916,
+          "jul_sep_net_per_trade": -0.40615
+        },
+        {
+          "trades": 167584,
+          "winners": 63771,
+          "win_pct": 38.05,
+          "net": -66873.63,
+          "net_per_trade": -0.399,
+          "group": "1.0",
+          "share_of_profitable_V9_trades_pct": 49.74,
+          "jan_apr_net_per_trade": -0.38613,
+          "jul_sep_net_per_trade": -0.40191
+        },
+        {
+          "trades": 4326,
+          "winners": 1641,
+          "win_pct": 37.93,
+          "net": -1729.71,
+          "net_per_trade": -0.3998,
+          "group": "nan",
+          "share_of_profitable_V9_trades_pct": 1.28,
+          "jan_apr_net_per_trade": -0.38226,
+          "jul_sep_net_per_trade": -0.39634
+        }
+      ],
+      "pivot_direction_M5": [
+        {
+          "trades": 163963,
+          "winners": 62062,
+          "win_pct": 37.85,
+          "net": -65629.58,
+          "net_per_trade": -0.4003,
+          "group": "-1.0",
+          "share_of_profitable_V9_trades_pct": 48.41,
+          "jan_apr_net_per_trade": -0.38811,
+          "jul_sep_net_per_trade": -0.40324
+        },
+        {
+          "trades": 166368,
+          "winners": 63096,
+          "win_pct": 37.93,
+          "net": -66699.09,
+          "net_per_trade": -0.4009,
+          "group": "1.0",
+          "share_of_profitable_V9_trades_pct": 49.22,
+          "jan_apr_net_per_trade": -0.38728,
+          "jul_sep_net_per_trade": -0.40539
+        },
+        {
+          "trades": 7733,
+          "winners": 3045,
+          "win_pct": 39.38,
+          "net": -2988.96,
+          "net_per_trade": -0.3865,
+          "group": "nan",
+          "share_of_profitable_V9_trades_pct": 2.38,
+          "jan_apr_net_per_trade": -0.38218,
+          "jul_sep_net_per_trade": -0.38932
+        }
+      ],
+      "ema_slope": [
+        {
+          "trades": 38154,
+          "winners": 16013,
+          "win_pct": 41.97,
+          "net": -14866.56,
+          "net_per_trade": -0.3896,
+          "group": "(-100000000.0, -50.0]",
+          "share_of_profitable_V9_trades_pct": 12.49,
+          "jan_apr_net_per_trade": -0.37443,
+          "jul_sep_net_per_trade": -0.40533
+        },
+        {
+          "trades": 93299,
+          "winners": 34908,
+          "win_pct": 37.42,
+          "net": -37736.42,
+          "net_per_trade": -0.4045,
+          "group": "(-50.0, -10.0]",
+          "share_of_profitable_V9_trades_pct": 27.23,
+          "jan_apr_net_per_trade": -0.39294,
+          "jul_sep_net_per_trade": -0.40381
+        },
+        {
+          "trades": 39039,
+          "winners": 13926,
+          "win_pct": 35.67,
+          "net": -15821.7,
+          "net_per_trade": -0.4053,
+          "group": "(-10.0, 0.0]",
+          "share_of_profitable_V9_trades_pct": 10.86,
+          "jan_apr_net_per_trade": -0.39599,
+          "jul_sep_net_per_trade": -0.405
+        },
+        {
+          "trades": 39143,
+          "winners": 14051,
+          "win_pct": 35.9,
+          "net": -15886.19,
+          "net_per_trade": -0.4059,
+          "group": "(0.0, 10.0]",
+          "share_of_profitable_V9_trades_pct": 10.96,
+          "jan_apr_net_per_trade": -0.40433,
+          "jul_sep_net_per_trade": -0.401
+        },
+        {
+          "trades": 92778,
+          "winners": 34954,
+          "win_pct": 37.67,
+          "net": -37158.0,
+          "net_per_trade": -0.4005,
+          "group": "(10.0, 50.0]",
+          "share_of_profitable_V9_trades_pct": 27.26,
+          "jan_apr_net_per_trade": -0.38876,
+          "jul_sep_net_per_trade": -0.40325
+        },
+        {
+          "trades": 35651,
+          "winners": 14351,
+          "win_pct": 40.25,
+          "net": -13848.76,
+          "net_per_trade": -0.3885,
+          "group": "(50.0, 100000000.0]",
+          "share_of_profitable_V9_trades_pct": 11.19,
+          "jan_apr_net_per_trade": -0.37108,
+          "jul_sep_net_per_trade": -0.40952
+        }
+      ],
+      "sma_slope": [
+        {
+          "trades": 46099,
+          "winners": 18874,
+          "win_pct": 40.94,
+          "net": -17875.58,
+          "net_per_trade": -0.3878,
+          "group": "(-100000000.0, -100.0]",
+          "share_of_profitable_V9_trades_pct": 14.72,
+          "jan_apr_net_per_trade": -0.37165,
+          "jul_sep_net_per_trade": -0.40364
+        },
+        {
+          "trades": 83060,
+          "winners": 30825,
+          "win_pct": 37.11,
+          "net": -33816.46,
+          "net_per_trade": -0.4071,
+          "group": "(-100.0, -25.0]",
+          "share_of_profitable_V9_trades_pct": 24.04,
+          "jan_apr_net_per_trade": -0.3969,
+          "jul_sep_net_per_trade": -0.40586
+        },
+        {
+          "trades": 40860,
+          "winners": 14804,
+          "win_pct": 36.23,
+          "net": -16529.29,
+          "net_per_trade": -0.4045,
+          "group": "(-25.0, 0.0]",
+          "share_of_profitable_V9_trades_pct": 11.55,
+          "jan_apr_net_per_trade": -0.39194,
+          "jul_sep_net_per_trade": -0.40776
+        },
+        {
+          "trades": 41146,
+          "winners": 14784,
+          "win_pct": 35.93,
+          "net": -16795.26,
+          "net_per_trade": -0.4082,
+          "group": "(0.0, 25.0]",
+          "share_of_profitable_V9_trades_pct": 11.53,
+          "jan_apr_net_per_trade": -0.40392,
+          "jul_sep_net_per_trade": -0.39946
+        },
+        {
+          "trades": 81998,
+          "winners": 30606,
+          "win_pct": 37.33,
+          "net": -32986.73,
+          "net_per_trade": -0.4023,
+          "group": "(25.0, 100.0]",
+          "share_of_profitable_V9_trades_pct": 23.87,
+          "jan_apr_net_per_trade": -0.39346,
+          "jul_sep_net_per_trade": -0.40282
+        },
+        {
+          "trades": 44674,
+          "winners": 18227,
+          "win_pct": 40.8,
+          "net": -17226.31,
+          "net_per_trade": -0.3856,
+          "group": "(100.0, 100000000.0]",
+          "share_of_profitable_V9_trades_pct": 14.22,
+          "jan_apr_net_per_trade": -0.37014,
+          "jul_sep_net_per_trade": -0.40259
+        },
+        {
+          "trades": 227,
+          "winners": 83,
+          "win_pct": 36.56,
+          "net": -88.0,
+          "net_per_trade": -0.3877,
+          "group": "nan",
+          "share_of_profitable_V9_trades_pct": 0.06,
+          "jan_apr_net_per_trade": -0.37623,
+          "jul_sep_net_per_trade": -0.37073
+        }
+      ]
+    }
+  },
+  "chronological_statistical_map": {
+    "snapshot_count": 338064,
+    "candidate_source_sha_pins_verified": true,
+    "features": [
+      "hour_utc",
+      "lane_count",
+      "spread_c",
+      "prequotes1s",
+      "v9_quant",
+      "v9_z15",
+      "v9_direction_bias",
+      "micro_range_c",
+      "micro_position_frac",
+      "micro_return_c",
+      "micro_efficiency",
+      "micro_twap_dev_c",
+      "session_twap_dev_c",
+      "ema9_dev_c",
+      "ema20_dev_c",
+      "ema20_slope_c",
+      "m5_sma12_dev_c",
+      "m5_sma20_dev_c",
+      "m5_sma20_slope_c",
+      "ema20_sma20_spread_c",
+      "fib_m1_dist_382_c",
+      "fib_m1_dist_50_c",
+      "fib_m1_dist_618_c",
+      "fib_m1_swing_c",
+      "fib_m1_direction",
+      "fib_m5_dist_382_c",
+      "fib_m5_dist_50_c",
+      "fib_m5_dist_618_c",
+      "fib_m5_swing_c",
+      "fib_m5_direction",
+      "elapsed_since_last_gap_ms",
+      "side"
+    ],
+    "train_months": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "calibration_months": [
+      5,
+      6
+    ],
+    "later_months": [
+      7,
+      8,
+      9
+    ],
+    "no_leak_future_measures_in_training": true,
+    "qualification": "Existing V9 outcome associations only. Changing entry signals changes future on-policy rearm/cap, so this is not new strategy PnL.",
+    "note": "All Jan-Sep dates are prior development data; later is chronologically separated but not independent untouched OOS.",
+    "calibration_thresholds": {
+      "0.9": -0.38570486275668237,
+      "0.95": -0.37395761014136014,
+      "0.99": -0.3393089726572652
+    },
+    "training": [
+      {
+        "tier": "ALL",
+        "n": 167423,
+        "share": 1.0,
+        "modeled_net_sum": -64889.05,
+        "modeled_mean_net": -0.38758,
+        "positive_frac": 0.39938,
+        "mean_pred_net": -0.38758,
+        "by_month": {
+          "1": {
+            "n": 35500,
+            "mean_net": -0.39297,
+            "net": -13950.31,
+            "win": 0.37673
+          },
+          "2": {
+            "n": 42742,
+            "mean_net": -0.38824,
+            "net": -16594.0,
+            "win": 0.41215
+          },
+          "3": {
+            "n": 51841,
+            "mean_net": -0.37293,
+            "net": -19332.95,
+            "win": 0.4194
+          },
+          "4": {
+            "n": 37340,
+            "mean_net": -0.40203,
+            "net": -15011.79,
+            "win": 0.37852
+          }
+        }
+      },
+      {
+        "tier": "CAL_TOP_90PCT",
+        "n": 55439,
+        "share": 0.33113,
+        "modeled_net_sum": -17269.64,
+        "modeled_mean_net": -0.31151,
+        "positive_frac": 0.46527,
+        "mean_pred_net": -0.36071,
+        "by_month": {
+          "1": {
+            "n": 6101,
+            "mean_net": -0.30656,
+            "net": -1870.34,
+            "win": 0.46369
+          },
+          "2": {
+            "n": 13172,
+            "mean_net": -0.27349,
+            "net": -3602.36,
+            "win": 0.49658
+          },
+          "3": {
+            "n": 30254,
+            "mean_net": -0.32631,
+            "net": -9872.31,
+            "win": 0.45485
+          },
+          "4": {
+            "n": 5912,
+            "mean_net": -0.32555,
+            "net": -1924.63,
+            "win": 0.45044
+          }
+        }
+      },
+      {
+        "tier": "CAL_TOP_95PCT",
+        "n": 33455,
+        "share": 0.19982,
+        "modeled_net_sum": -9195.8,
+        "modeled_mean_net": -0.27487,
+        "positive_frac": 0.49353,
+        "mean_pred_net": -0.34773,
+        "by_month": {
+          "1": {
+            "n": 3479,
+            "mean_net": -0.28068,
+            "net": -976.5,
+            "win": 0.4875
+          },
+          "2": {
+            "n": 8462,
+            "mean_net": -0.22414,
+            "net": -1896.65,
+            "win": 0.52683
+          },
+          "3": {
+            "n": 18478,
+            "mean_net": -0.29436,
+            "net": -5439.24,
+            "win": 0.48241
+          },
+          "4": {
+            "n": 3036,
+            "mean_net": -0.29098,
+            "net": -883.41,
+            "win": 0.4753
+          }
+        }
+      },
+      {
+        "tier": "CAL_TOP_99PCT",
+        "n": 8975,
+        "share": 0.05361,
+        "modeled_net_sum": -1496.68,
+        "modeled_mean_net": -0.16676,
+        "positive_frac": 0.56178,
+        "mean_pred_net": -0.31354,
+        "by_month": {
+          "1": {
+            "n": 894,
+            "mean_net": -0.16962,
+            "net": -151.64,
+            "win": 0.55928
+          },
+          "2": {
+            "n": 2169,
+            "mean_net": -0.08398,
+            "net": -182.16,
+            "win": 0.59613
+          },
+          "3": {
+            "n": 5311,
+            "mean_net": -0.1963,
+            "net": -1042.56,
+            "win": 0.55093
+          },
+          "4": {
+            "n": 601,
+            "mean_net": -0.2002,
+            "net": -120.32,
+            "win": 0.53744
+          }
+        }
+      }
+    ],
+    "calibration": [
+      {
+        "tier": "ALL",
+        "n": 69704,
+        "share": 1.0,
+        "modeled_net_sum": -29659.72,
+        "modeled_mean_net": -0.42551,
+        "positive_frac": 0.35372,
+        "mean_pred_net": -0.40141,
+        "by_month": {
+          "5": {
+            "n": 32514,
+            "mean_net": -0.43978,
+            "net": -14299.1,
+            "win": 0.33561
+          },
+          "6": {
+            "n": 37190,
+            "mean_net": -0.41303,
+            "net": -15360.62,
+            "win": 0.36956
+          }
+        }
+      },
+      {
+        "tier": "CAL_TOP_90PCT",
+        "n": 6971,
+        "share": 0.10001,
+        "modeled_net_sum": -2918.81,
+        "modeled_mean_net": -0.41871,
+        "positive_frac": 0.36939,
+        "mean_pred_net": -0.36633,
+        "by_month": {
+          "5": {
+            "n": 2919,
+            "mean_net": -0.4323,
+            "net": -1261.89,
+            "win": 0.35218
+          },
+          "6": {
+            "n": 4052,
+            "mean_net": -0.40891,
+            "net": -1656.92,
+            "win": 0.38179
+          }
+        }
+      },
+      {
+        "tier": "CAL_TOP_95PCT",
+        "n": 3486,
+        "share": 0.05001,
+        "modeled_net_sum": -1432.71,
+        "modeled_mean_net": -0.41099,
+        "positive_frac": 0.38009,
+        "mean_pred_net": -0.35178,
+        "by_month": {
+          "5": {
+            "n": 1386,
+            "mean_net": -0.42473,
+            "net": -588.68,
+            "win": 0.36508
+          },
+          "6": {
+            "n": 2100,
+            "mean_net": -0.40192,
+            "net": -844.03,
+            "win": 0.39
+          }
+        }
+      },
+      {
+        "tier": "CAL_TOP_99PCT",
+        "n": 698,
+        "share": 0.01001,
+        "modeled_net_sum": -287.97,
+        "modeled_mean_net": -0.41256,
+        "positive_frac": 0.36819,
+        "mean_pred_net": -0.31234,
+        "by_month": {
+          "5": {
+            "n": 255,
+            "mean_net": -0.48337,
+            "net": -123.26,
+            "win": 0.3098
+          },
+          "6": {
+            "n": 443,
+            "mean_net": -0.37181,
+            "net": -164.71,
+            "win": 0.40181
+          }
+        }
+      }
+    ],
+    "later": [
+      {
+        "tier": "ALL",
+        "n": 100937,
+        "share": 1.0,
+        "modeled_net_sum": -40768.86,
+        "modeled_mean_net": -0.4039,
+        "positive_frac": 0.3634,
+        "mean_pred_net": -0.40242,
+        "by_month": {
+          "7": {
+            "n": 33758,
+            "mean_net": -0.39494,
+            "net": -13332.26,
+            "win": 0.36439
+          },
+          "8": {
+            "n": 32896,
+            "mean_net": -0.40564,
+            "net": -13344.02,
+            "win": 0.36372
+          },
+          "9": {
+            "n": 34283,
+            "mean_net": -0.41107,
+            "net": -14092.58,
+            "win": 0.36213
+          }
+        }
+      },
+      {
+        "tier": "CAL_TOP_90PCT",
+        "n": 8265,
+        "share": 0.08188,
+        "modeled_net_sum": -3327.93,
+        "modeled_mean_net": -0.40265,
+        "positive_frac": 0.37314,
+        "mean_pred_net": -0.36553,
+        "by_month": {
+          "7": {
+            "n": 2665,
+            "mean_net": -0.39466,
+            "net": -1051.78,
+            "win": 0.37598
+          },
+          "8": {
+            "n": 3129,
+            "mean_net": -0.40921,
+            "net": -1280.43,
+            "win": 0.36913
+          },
+          "9": {
+            "n": 2471,
+            "mean_net": -0.40296,
+            "net": -995.72,
+            "win": 0.37515
+          }
+        }
+      },
+      {
+        "tier": "CAL_TOP_95PCT",
+        "n": 4157,
+        "share": 0.04118,
+        "modeled_net_sum": -1685.91,
+        "modeled_mean_net": -0.40556,
+        "positive_frac": 0.36998,
+        "mean_pred_net": -0.35058,
+        "by_month": {
+          "7": {
+            "n": 1360,
+            "mean_net": -0.40032,
+            "net": -544.43,
+            "win": 0.36985
+          },
+          "8": {
+            "n": 1589,
+            "mean_net": -0.41553,
+            "net": -660.28,
+            "win": 0.36564
+          },
+          "9": {
+            "n": 1208,
+            "mean_net": -0.39834,
+            "net": -481.2,
+            "win": 0.37583
+          }
+        }
+      },
+      {
+        "tier": "CAL_TOP_99PCT",
+        "n": 1009,
+        "share": 0.01,
+        "modeled_net_sum": -407.67,
+        "modeled_mean_net": -0.40403,
+        "positive_frac": 0.34886,
+        "mean_pred_net": -0.31636,
+        "by_month": {
+          "7": {
+            "n": 327,
+            "mean_net": -0.3948,
+            "net": -129.1,
+            "win": 0.35168
+          },
+          "8": {
+            "n": 347,
+            "mean_net": -0.40092,
+            "net": -139.12,
+            "win": 0.35447
+          },
+          "9": {
+            "n": 335,
+            "mean_net": -0.41627,
+            "net": -139.45,
+            "win": 0.3403
+          }
+        }
+      }
+    ],
+    "metrics": {
+      "train": {
+        "rmse": 0.59476,
+        "win_auc": 0.56724,
+        "pred_net_spearman": 0.09565
+      },
+      "cal": {
+        "rmse": 0.49782,
+        "win_auc": 0.52637,
+        "pred_net_spearman": 0.0068
+      },
+      "later": {
+        "rmse": 0.48577,
+        "win_auc": 0.53615,
+        "pred_net_spearman": 0.01028
+      }
+    }
+  },
+  "spread_and_additional_cash_cost_mode": "BUY at observed Ask, SELL at observed Bid, exit using liquidation side, extra fixed $0.20 roundtrip cash (k=1)",
+  "no_broker_fill_or_slippage_model": true,
+  "no_new_market_data_created": true,
+  "qualification": "Alternative fills and exits applied only to historical V9 on-policy signal cohort; a changed entry/exit policy changes future signals and rearming. NO production performance claims.",
+  "parameter_selection": "No candidate passed positive net expectancy across the nine months; none authorized for MT5 trading"
+}
