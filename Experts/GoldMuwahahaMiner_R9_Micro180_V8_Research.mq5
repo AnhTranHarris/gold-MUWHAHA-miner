@@ -26,6 +26,16 @@ input int    InpMinBasketMovePoints     = 10;
 input int    InpMin15sStructurePoints  = 6;
 input int    InpBreakoutBufferPoints   = 1;
 input int    InpMaxQuoteGapMs          = 2500;
+input int    InpMin5sObservedSpanMs    = 1500;
+input int    InpMinCompleted15SpanMs  = 9000;
+input int    InpMinActive15SpanMs     = 3000;
+input int    InpMaxCompleted15TailMs  = 2500;
+input bool   InpAllowCausalActive15   = false;
+input bool   InpMicroOnlyS1           = false;
+input bool   InpBalanced30sVeto       = false;
+input double InpMinBuyStrong15sZ      = 0.55;
+input double InpMinSellStrong15sZ     = 0.55;
+input double InpMaxAdverse30sZ        = 0.10;
 input int    InpMaxSpreadPoints        = 25;
 input double InpMaxSpreadShockRatio    = 1.35;
 input double InpMinDirectionalEff      = 0.55;
@@ -35,7 +45,7 @@ input int    InpMinCompleted30s        = 18;
 input int    InpMinQuotes5s            = 5;
 
 input group "V5 RESEARCH QUOTE PATH (DEFAULT OFF)"
-input bool   InpV5PathResearch           = false;
+input bool   InpV5PathResearch           = true; // Python V7 already uses V5 quote-path gate
 input double InpV5MinBuyPath             = -0.05;
 input double InpV5MinSellPath            = -0.05;
 input double InpV5MinCoherence           = 0.25;
@@ -91,6 +101,7 @@ struct QBar
    long firstMs;
    long lastMs;
    int n;
+   long maxGapMs;
    double bo,bh,bl,bc,ao,ah,al,ac,spread;
 };
 QBar g_second, g_5s, g_15s, g_30s, g_closed15;
@@ -117,12 +128,13 @@ bool g_riskHalt=false,g_dayHalt=false;
 
 void BarReset(QBar &b,const MqlTick &t,const long start)
 {
-   b.startMs=start;b.firstMs=(long)t.time_msc;b.lastMs=(long)t.time_msc;b.n=1;
+   b.startMs=start;b.firstMs=(long)t.time_msc;b.lastMs=(long)t.time_msc;b.maxGapMs=0;b.n=1;
    b.bo=t.bid;b.bh=t.bid;b.bl=t.bid;b.bc=t.bid;
    b.ao=t.ask;b.ah=t.ask;b.al=t.ask;b.ac=t.ask;b.spread=t.ask-t.bid;
 }
 void BarQuote(QBar &b,const MqlTick &t)
 {
+   b.maxGapMs=MathMax(b.maxGapMs,(long)t.time_msc-b.lastMs);
    b.lastMs=(long)t.time_msc;b.n++;
    b.bh=MathMax(b.bh,t.bid);b.bl=MathMin(b.bl,t.bid);b.bc=t.bid;
    b.ah=MathMax(b.ah,t.ask);b.al=MathMin(b.al,t.ask);b.ac=t.ask;
@@ -145,7 +157,9 @@ int SecFromLatest(const int offset)
 long g_v6LastCashComputeSecond=-1,g_v6LastCashLogMinute=-1;
 bool g_v6BuyReady=false,g_v6SellReady=false;
 V6CashHistory g_v6Buy,g_v6Sell;
-long g_v7LastComputeSec=-1,g_v7LastLogMinute=-1;
+long g_v7LastComputeMs=-1,g_v7LastLogMinute=-1;
+double g_v7LastComputeBid=0,g_v7LastComputeAsk=0;
+int g_v7LastComputeQuoteN=-1;
 bool g_v7BuyReady=false,g_v7SellReady=false;
 V7ConditionedResult g_v7Buy,g_v7Sell;
 void AcceptHistoricalQuote(const MqlTick &t)
