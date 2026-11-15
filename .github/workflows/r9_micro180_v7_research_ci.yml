@@ -1,0 +1,36 @@
+name: R9 Micro180 V7 research tests (Python, not MT5 compile)
+on:
+  push:
+    branches:
+      - carson/r9-micro180-v7-conditioned-cash-ms180-20261114
+    paths:
+      - 'research/coinexx_r9_chronological/micro180_20261114/**'
+      - 'Experts/GoldMuwahahaMiner_R9_Micro180_V7_Research.mq5'
+      - 'Experts/GoldMuwahahaR9V7ConditionedCash.mqh'
+      - '.github/workflows/r9_micro180_v7_research_ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  causal-unit-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run V3-V7 existing causal contracts (no source market data)
+        shell: bash
+        run: |
+          cd research/coinexx_r9_chronological
+          PYTHONPATH=src:variable_cash_horizon_20261114:micro180_20261114 \
+          python -m unittest discover -s micro180_20261114 -p 'test_*.py' -v
+      - name: Verify MQL5 gate OFF and original R9 stays unchanged
+        shell: bash
+        run: |
+          grep -q 'InpEnableDemoOrders        = false' Experts/GoldMuwahahaMiner_R9_Micro180_V7_Research.mq5
+          grep -q 'InpV7ConditionalGateResearch   = false' Experts/GoldMuwahahaMiner_R9_Micro180_V7_Research.mq5
+          grep -q 'InpV7ConditionalShadowResearch = true' Experts/GoldMuwahahaMiner_R9_Micro180_V7_Research.mq5
+          grep -q 'GoldMuwahahaR9V7ConditionedCash.mqh' Experts/GoldMuwahahaMiner_R9_Micro180_V7_Research.mq5
+          grep -q 'InpMaxIntendedLossCash     = 2.00' Experts/GoldMuwahahaMiner_R9_Micro180_V7_Research.mq5
+          grep -q 'InpCapitalFloorPct        = 25.0' Experts/GoldMuwahahaMiner_R9_Micro180_V7_Research.mq5
