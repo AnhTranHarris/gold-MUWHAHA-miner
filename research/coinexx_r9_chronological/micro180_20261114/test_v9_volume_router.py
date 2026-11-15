@@ -114,6 +114,34 @@ class VolumeV9Contract(unittest.TestCase):
         self.assertEqual(s.micro_spec.preferred_max_net_cash,1.75)
         self.assertEqual(s.micro_spec.max_lifetime_ms,30000)
 
+    def test_polymorphic_model_is_not_misreported_as_frozen_baseline(self):
+        from coinexx_r9.r9_baseline import R9HybridGateBaseline
+        from dual_basket import DualBasketBaseline
+        model=VolumePreservingMicroV9(cfg(),ResearchCash(governor=False))
+        self.assertIsInstance(model,R9HybridGateBaseline)
+        self.assertNotIn(type(model),(R9HybridGateBaseline,DualBasketBaseline))
+
+    def test_native_v9_fork_static_source_guard_and_four_lane_logic(self):
+        # Native code is not available in the local lightweight source bundle.
+        # In GitHub Actions the full repo provides the real separate V9 fork.
+        repo=Path(__file__).resolve().parents[3]
+        ea=repo/'Experts'/'GoldMuwahahaMiner_R9_Micro180_V9_Research.mq5'
+        if not ea.exists():self.skipTest('V9 MT5 source not in local lightweight Python checkout')
+        code=ea.read_text()
+        for required in (
+            'InpEnableDemoOrders        = false',
+            'InpV9QuantScoreVeto        = false',
+            'InpV9RearmCooldownMs       = 1500',
+            'V5QuarterUpdate(t);',
+            'V5QuarterEvidence(side,(long)t.time_msc',
+            'iADXWilder', 'iATR','iMA', 'SyncQuoteHistory',
+            'const bool buy15=', 'const bool buy30=',
+            'const bool sell15=', 'const bool sell30=',
+            'g_5s.startMs==g_exit5 && g_15s.startMs==g_exit15',
+            'OrderCalcProfit',
+        ):
+            with self.subTest(required=required):self.assertIn(required,code)
+
     def test_cash_target_liquidation_quotes_sell_and_buy(self):
         # This invariant is about exact *quote sides* rather than fabricated fills.
         for side in (-1,1):
