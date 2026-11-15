@@ -43,5 +43,17 @@ jobs:
           grep -q 'R9V10StructureShadow' Experts/GoldMuwahahaMiner_R9_Micro180_V9_Research.mq5
           ! grep -qE 'OrderSend|PositionClose|CTrade|trade.Buy|trade.Sell' Experts/GoldMuwahahaR9V10StructureShadow.mqh
           ! grep -qE 'DownloadTicks|Downloader|CreateRawTickCache' research/coinexx_r9_chronological/structure_v10/*.py
+      - name: Package exact pinned research source (NO market data)
+        uses: actions/upload-artifact@v4
+        with:
+          name: r9-v10-python-source-exact
+          retention-days: 1
+          if-no-files-found: error
+          path: |
+            research/coinexx_r9_chronological/src/
+            research/coinexx_r9_chronological/micro180_20261114/*.py
+            research/coinexx_r9_chronological/dual_basket_20261114/*.py
+            research/coinexx_r9_chronological/variable_cash_horizon_20261114/*.py
+            research/coinexx_r9_chronological/structure_v10/*.py
       - name: Qualification scope
         run: echo 'Python unit/source contracts only. Native MetaEditor compilation, full-month structure metrics, and broker-side parity NOT certified.'
