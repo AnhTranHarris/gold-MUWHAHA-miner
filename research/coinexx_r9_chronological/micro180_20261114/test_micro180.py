@@ -178,6 +178,55 @@ class Micro180Tests(unittest.TestCase):
         sim._open_trade(later,1)
         self.assertIsNone(sim.position)
 
+    def test_strict_default_and_experimental_router_inputs_guarded(self):
+        d=Micro180Spec()
+        self.assertEqual((d.breakout_router,d.s1_mode,d.structural_confirmation),
+                         ('strict_30s','strict_r9','completed_only'))
+        self.assertFalse(d.experimental_runner)
+        self.assertEqual((d.min_net_cash,d.preferred_max_net_cash,d.hard_risk_cash),(.10,1.75,2.))
+        for invalid in ({'breakout_router':'random'},{'s1_mode':'skip_all'},
+                        {'structural_confirmation':'future_bar'},
+                        {'min_buy_strong_15s_z':-1.},
+                        {'min_sell_strong_15s_z':-1.},
+                        {'max_adverse_30s_z':-1.}):
+            with self.subTest(invalid=invalid), self.assertRaises(ValueError):
+                Micro180Spec(**invalid)
+
+    def test_explicit_active_15s_causal_reversal_does_not_leak_to_strict_control(self):
+        active=Micro180Spec(breakout_router='balanced_30s_veto',
+                            s1_mode='micro_only',
+                            structural_confirmation='causal_active_or_completed',
+                            use_m1_directional_veto=False)
+        strict=Micro180Spec(use_m1_directional_veto=False)
+        def run(spec):
+            sim=Micro180R9(cfg(),ResearchCash(governor=False),spec)
+            sim._gate=lambda t:True
+            for sec in range(90,140):
+                bid=(1000 if sec<120 else 1000-(sec-120)*3) if sec<135 else 1000+(sec-135)*20
+                t=q(sec,sec*1000+100,bid)
+                sim._push_second(t);sim.atr.update(t);sim._start_minute_cycle(t)
+            t=q(140,140100,1120)
+            sim._push_second(t);sim._start_minute_cycle(t)
+            now=q(141,140500,1160)
+            sim._push_second(now);sim._start_minute_cycle(now)
+            sim._process_entries(now)
+            return sim
+        original=run(strict)
+        candidate=run(active)
+        self.assertEqual(len(original.entries),0)
+        self.assertEqual(len(candidate.entries),1)
+        self.assertEqual(candidate.entries[-1]['side'],1)
+        self.assertEqual(candidate.entries[-1]['structure_source'],'active_causal')
+        self.assertGreaterEqual(candidate.entries[-1]['z15'],0.)
+
+    def test_quote_arrivals_are_not_treated_as_traded_volume(self):
+        r=RollingThreeMinute()
+        r.update(q(1,1000,1000,10,volume=0,last=0))
+        r.update(q(2,1000,1001,10,volume=0,last=0))
+        r.update(q(3,1100,1003,10,volume=0,last=0))
+        self.assertEqual((r.nonzero_last,r.nonzero_volume),(0,0))
+        self.assertEqual((r.current[1000].n,r.current[5000].n),(3,3))
+
     def test_unvalidated_runner_never_automatically_activated(self):
         self.assertFalse(Micro180Spec().experimental_runner)
         self.assertTrue(Micro180Spec(experimental_runner=True).experimental_runner)
