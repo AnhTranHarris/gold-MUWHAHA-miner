@@ -61,6 +61,14 @@ def execute():
             out[key]['sells']=sum(x.side<0 for x in m.trades)
             out[key]['buy_net_cash']=round(sum((x.net_price_u/100.*m.cash.k-m.cash.cost) for x in m.trades if x.side>0),3)
             out[key]['sell_net_cash']=round(sum((x.net_price_u/100.*m.cash.k-m.cash.cost) for x in m.trades if x.side<0),3)
+            out[key]['research_account']={
+                'governor_enabled':m.cash.governor,
+                'day_lock_at_end':bool(m.account.day_lock),
+                'permanent_lock_at_end':bool(m.account.permanent_lock),
+                'equity_cash':round(m.account.equity,3),
+                'daily_gross_consumed_cash':round(m.account.consumed(),3),
+                'daily_budget_cash':round(m.account.allowed_budget(),3),
+            }
     result={'scope':'IN_SAMPLE_FIRST_SOURCE_RECORDS_NOT_OOS','source':args.ticks.name,'n':n,
             'elapsed_s':round(time.perf_counter()-start,2),
             'raw_data_created':False,'unverified_k':1.,'unverified_cost':.20,
