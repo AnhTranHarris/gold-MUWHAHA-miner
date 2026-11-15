@@ -134,7 +134,8 @@ void BarReset(QBar &b,const MqlTick &t,const long start)
 }
 void BarQuote(QBar &b,const MqlTick &t)
 {
-   b.maxGapMs=MathMax(b.maxGapMs,(long)t.time_msc-b.lastMs);
+   const long observedGap=(long)t.time_msc-b.lastMs;
+   if(observedGap>b.maxGapMs)b.maxGapMs=observedGap;
    b.lastMs=(long)t.time_msc;b.n++;
    b.bh=MathMax(b.bh,t.bid);b.bl=MathMin(b.bl,t.bid);b.bc=t.bid;
    b.ah=MathMax(b.ah,t.ask);b.al=MathMin(b.al,t.ask);b.ac=t.ask;
@@ -433,7 +434,6 @@ bool MicroSignal(const MqlTick &t,int &side)
    }
    if(recentLast<0 || now-recentLast>2500 || n15<InpMinCompleted15s ||
       n30<InpMinCompleted30s || n5<InpMinQuotes5s)return false;
-   const double buffer=InpBreakoutBufferPoints*point;
    double exc15=0.0,exc30=0.0;
    if(side>0)
    {
