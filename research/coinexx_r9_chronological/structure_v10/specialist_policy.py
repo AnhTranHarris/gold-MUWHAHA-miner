@@ -46,6 +46,10 @@ class HierarchicalPolicy:
         if snap.pattern=="UNKNOWN_STALE":
             return SpecialistPlan("DATA_QUALITY","WAIT",side,snap.time_msc,
                                   None,None,"stale quote not an eligible pattern")
+        if snap.pattern=="EXHAUSTION_WARNING" and snap.micro_direction==side:
+            return SpecialistPlan("TREND_EXHAUSTION","WAIT_IMPULSE_RENEWAL",
+                                  side,snap.time_msc,protection,obstacle,
+                                  "prior impulse fades near confirmed opposing zone")
         if snap.breakout_side==side and snap.breakout_phase=="PROBE":
             return SpecialistPlan("BREAKOUT_INITIATION","WAIT_CONFIRM",side,
                                   snap.time_msc,protection,obstacle,
@@ -115,6 +119,9 @@ class HierarchicalPolicy:
             plan.specialist in ("TREND_CONTINUATION","BREAKOUT_ACCEPTANCE",
                                 "BREAKOUT_RETEST")):
             return LifecycleReview("DEFEND","parent and micro directions oppose thesis",
+                                   plan.specialist,plan.structural_stop)
+        if snap.pattern=="EXHAUSTION_WARNING" and snap.micro_direction==side:
+            return LifecycleReview("DEFEND","current impulse decelerates near opposing zone",
                                    plan.specialist,plan.structural_stop)
         if snap.pattern in ("REVERSAL_CANDIDATE","REVERSAL_CONFIRMED") and snap.micro_direction==-side:
             return LifecycleReview("DEFEND","recent opposite directional change",
