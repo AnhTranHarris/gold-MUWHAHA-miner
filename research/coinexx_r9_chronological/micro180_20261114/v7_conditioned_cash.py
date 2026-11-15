@@ -76,12 +76,15 @@ class _Setup:
 
 def _contiguous(q, first: int, last: int, max_gap_ms: int=2_000) -> bool:
     return (first>=0 and last<len(q) and all(
-        0 < q[j].start_ms - q[j-1].start_ms<=max_gap_ms
+        0 < q[j].start_ms-q[j-1].start_ms<=max_gap_ms
+        and 0 < q[j].first_ms-q[j-1].last_ms<=max_gap_ms
         for j in range(first+1,last+1)))
 
 
 def _setup(q, i: int, side: int, bid_now: int, ask_now: int, count_now: int) -> Optional[_Setup]:
-    if i<15 or not _contiguous(q,i-15,i-1): return None
+    # Validate the real quote link INTO a historical anchor, not only its
+    # preceding 15 observed seconds. i=len(q) is the LIVE candidate.
+    if i<15 or not _contiguous(q,i-15,min(i,len(q)-1)): return None
     side_closes=[x.bid_close if side>0 else x.ask_close for x in q[i-15:i]]
     liq=bid_now if side>0 else ask_now
     def eff(seq):
@@ -123,7 +126,7 @@ def conditioned_cash_first_passage(r:RollingThreeMinute,t:Tick,side:int,
     # Anchor i's conditioning input consists ONLY of q[:i] and q[i]'s close;
     # all q[i+1:i+h] are past relative to CURRENT tick, never current labels.
     for i in range(15,len(q)-horizon,spec.anchor_stride_seconds):
-        if not _contiguous(q,i,i+horizon):
+        if not _contiguous(q,i-15,i+horizon):
             gap_count+=1;continue
         anchor=q[i]
         ctx=_setup(q,i,side,anchor.bid_close,anchor.ask_close,anchor.n)
@@ -219,14 +222,17 @@ class SetupConditionedMicroV7(PastOnlyCashMicroV6):
         from dataclasses import replace
         super().__init__(cfg,cash,micro_spec,v5=v5,v6=replace(v6,audit_only=True))
         self.v7=v7
-        self._v7_second=-1
+        self._v7_entry_quote_key=None
         self._v7_evidence={}
-        self._v7_hold_second=-1
+        self._v7_hold_quote_key=None
         self._v7_hold_cache={}
 
     def _open_trade(self,t:Tick,side:int):
-        if self._v7_second!=t.time_msc//1000:
-            self._v7_second=t.time_msc//1000
+        # Same second / even same millisecond is not the same candidate.
+        quote_key=(t.ordinal,t.time_msc,t.bid_u,t.ask_u,
+                   self.rolling.current[1000].n)
+        if self._v7_entry_quote_key!=quote_key:
+            self._v7_entry_quote_key=quote_key
             self._v7_evidence={}
         for d in (1,-1):
             if d not in self._v7_evidence:
@@ -261,11 +267,12 @@ class SetupConditionedMicroV7(PastOnlyCashMicroV6):
                     (self.cash.governor and (self.account.day_lock or self.account.permanent_lock)))
             if not forced and s.min_net_cash<=net<s.preferred_max_net_cash:
                 self.stats['v7_hold_evaluations']+=1
-                # No repeated 180s kernel on every raw quote within the same
-                # source second: O(1) per quote, bounded one calculation/sec.
-                second=t.time_msc//1000
-                if second!=self._v7_hold_second:
-                    self._v7_hold_second=second
+                # Exact executable-quote cache; never reuse a stale same-ms
+                # hold forecast after price/spread/quote-count changes.
+                quote_key=(t.ordinal,t.time_msc,t.bid_u,t.ask_u,
+                           self.rolling.current[1000].n)
+                if quote_key!=self._v7_hold_quote_key:
+                    self._v7_hold_quote_key=quote_key
                     self._v7_hold_cache={}
                 if p.side not in self._v7_hold_cache:
                     self._v7_hold_cache[p.side]=conditioned_incremental_hold(
