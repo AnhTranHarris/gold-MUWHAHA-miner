@@ -755,7 +755,14 @@ int OnInit()
        (!InpV5PathResearch || !InpExperimentalRunner)) ||
       InpV5HoldBuyScore< -2 || InpV5HoldBuyScore>2 ||
       InpV5HoldSellScore< -2 || InpV5HoldSellScore>2 ||
-      InpMinM5ATRPrice<0 || InpDailyGrossBasePct<=0 ||
+      InpV6MinBuyPastCash< -2 || InpV6MinBuyPastCash>2 ||
+       InpV6MinSellPastCash< -2 || InpV6MinSellPastCash>2 ||
+       InpV6UncertaintyMultiplier<0 || InpV6UncertaintyMultiplier>5 ||
+       InpV6MinHoldIncrementCash< -0.5 || InpV6MinHoldIncrementCash>1.75 ||
+       (InpV6CashGateResearch && !InpV5PathResearch) ||
+       (InpV6HoldUtilityResearch &&
+        (!InpExperimentalRunner || !InpV5PathResearch || !InpV5ProtectedHoldResearch)) ||
+       InpMinM5ATRPrice<0 || InpDailyGrossBasePct<=0 ||
       InpDailyGrossMaxPct<InpDailyGrossBasePct ||
       InpProfitRecycleFrac<0 || InpProfitRecycleFrac>1 ||
       InpMinMarginLevelPct<=0)return INIT_PARAMETERS_INCORRECT;
@@ -779,7 +786,7 @@ int OnInit()
    if(g_accountBase<=0 || g_accountPeak<=0)return INIT_FAILED;
    RefreshRisk(true);
    if(!EventSetTimer(1))return INIT_FAILED;
-   Print("R9 MICRO180: isolated demo-only research fork; 5/15/30ms candle streams, 180s buffer; old model OFF; real volume unavailable; live NOT certified");
+   Print("R9 MICRO180 V6: 180s cash utility shadow; 250ms chronology; old high AUC OFF; quote count is NOT real volume; no MQL5 compile/parity certification");
    return INIT_SUCCEEDED;
 }
 void OnDeinit(const int reason)
