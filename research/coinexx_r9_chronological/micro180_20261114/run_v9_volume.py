@@ -43,7 +43,7 @@ def execute():
         if n>=args.limit:break
     out={}
     for key,m in models.items():
-        if isinstance(m,(DualBasketBaseline,R9HybridGateBaseline)):
+        if type(m) in (DualBasketBaseline,R9HybridGateBaseline):
             vals=[x.net_price_u/100.-.20 for x in m.trades]
             out[key]={'trades':len(vals),'net_cash':round(sum(vals),3),
                       'net_per_trade':round(sum(vals)/max(1,len(vals)),6),
