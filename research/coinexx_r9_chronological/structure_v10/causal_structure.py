@@ -401,6 +401,26 @@ class CausalMarketStructure:
         if abs(delta)<max(3.,(self.vol[tf] or 0.)*.8):return 0
         return 1 if delta>0 else -1
 
+    def _exhaustion_warning(self,side,t):
+        """Causal slowdown near a previously CONFIRMED opposing zone.
+
+        A warning, not a forecast, reversal label or trained exhaustion model.
+        """
+        if not side:return False
+        q=self.closed[1000]
+        if len(q)<8:return False
+        w=list(q)[-8:]
+        if any(w[i+1].start_ms-w[i].start_ms!=1000 for i in range(7)):
+            return False
+        first_leg=side*(w[3].c-w[0].c)
+        last_leg=side*(w[7].c-w[4].c)
+        scale=max(2.,float(self.spread),.20*(self.vol[1000] or 0.))
+        opposing=self.nearest["RESISTANCE" if side>0 else "SUPPORT"]
+        if opposing is None:return False
+        now_mid=(t.bid_u+t.ask_u)/2.
+        near=abs(now_mid-opposing.center)<=max(5.,3.*opposing.half)
+        return near and first_leg>scale and last_leg < -scale*.5
+
     def snapshot(self,t):
         if self.now_ms!=t.time_msc:
             raise ValueError("Call on_quote first; decision is as-of-source-tick")
@@ -439,6 +459,8 @@ class CausalMarketStructure:
         elif parent and micro and parent!=micro:
             pattern="NESTED_PULLBACK"
         elif consolidation:pattern="CONSOLIDATION"
+        elif parent and parent==micro and self._exhaustion_warning(micro,t):
+            pattern="EXHAUSTION_WARNING"
         elif parent and parent==micro:pattern="TREND_CONTINUATION"
         elif alert:pattern="REGIME_TRANSITION"
         else:pattern="UNKNOWN"
@@ -464,6 +486,8 @@ class CausalMarketStructure:
             return "WAIT_RETEST_RESOLUTION"
         if snap.pattern=="REVERSAL_CONFIRMED" and snap.micro_direction==side:
             return "CONFIRMED_REVERSAL_SPECIALIST"
+        if snap.pattern=="EXHAUSTION_WARNING" and snap.micro_direction==side:
+            return "WAIT_EXHAUSTION_RESOLUTION"
         if snap.breakout_phase=="PROBE" and side==snap.breakout_side:
             return "PENDING_CONFIRMATION"
         if snap.pattern=="FAILED_BREAKOUT" and side==snap.breakout_side:
@@ -484,4 +508,6 @@ class CausalMarketStructure:
             return "PARENT_OPPOSED_REVIEW"
         if snap.pattern in ("REVERSAL_CANDIDATE","REVERSAL_CONFIRMED") and snap.micro_direction==-entry_side:
             return "REVERSAL_DEFENSE_REVIEW"
+        if snap.pattern=="EXHAUSTION_WARNING" and snap.micro_direction==entry_side:
+            return "EXHAUSTION_DEFENSE_REVIEW"
         return "HOLD_STRUCTURE_OBSERVE"
