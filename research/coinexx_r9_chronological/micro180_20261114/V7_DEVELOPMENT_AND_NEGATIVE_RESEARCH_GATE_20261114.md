@@ -49,3 +49,19 @@ The *shadow* preserves exact entry/exit model scores, proving it is observation-
 4. Separately assess account constraints at $100/$500, true stop/freeze distances, actual Coinexx broker fees/slippage, and full nine-month original trade count. If all candidate modes remain negative, **REJECT**. Do not loosen risk rules or change sign of cash to force a positive label.
 
 **Status: V7 code integrated as separate research overlay with MT5 price indicators/proxies; no demonstrated positive net, no live/demo trading authorization, no full nine-month V7 run, no MT5 compile/parity certification.**
+
+
+## Follow-up V7 optional conditional hold: active code, still negative (2026-11-14)
+
+The first V7 Python build contained an unused `enable_conditioned_holding` option. **This dead/inert flag has now been repaired** without touching V6: `conditioned_incremental_hold` matches past completed 5s/15s executable-side configurations, evaluates a 3s future-liquidation-price increment **strictly within already completed historical quotes**, and charges **no second commission**. It can request cash harvest at >=$0.10 observed net when continuation is not supported. It cannot execute unless *both* the existing experimental runner and legal protected V5 stop logic are enabled. It retains the inherited $1.75 maximum, 30s timeout, $2 first-available cash emergency and account governors. The estimator is cached **once per observed second**, rather than recomputing on every source tick; 49 local and 49 GitHub Actions regression contracts passed.
+
+New bounded **first 50,000** original quote checks (separate from the above first-200,000 results), fixed original fast profile and ungoverned economics for comparison:
+
+| Slice | V5 unchanged first harvest | V7 conditional protected hold (no V7 entry gate) |
+|---|---:|---:|
+| January first 50k | 216 trades / **-$72.21** | 215 / **-$70.49** |
+| September first 50k | 232 / **-$96.54** | 232 / **-$97.16** |
+
+January reduces gross model loss slightly; September worsens, so this **does not demonstrate stable positive expectancy or full-system profitability**. The native V7 MQL5 fork presently includes V7 **entry-conditioned cash SHADOW**, not a separately compiled/parity-proven V7 hold model; its original V6/V5 cash exits remain the native comparator. **Do not claim end-to-end Python/MT5 V7 exit parity.**
+
+The 200k Jan/Sep conditional entry gating, 50k hold experiments and their negative results are all research-exposed in-sample. No full nine-month V7 replay or real fill/commission certification has occurred.
