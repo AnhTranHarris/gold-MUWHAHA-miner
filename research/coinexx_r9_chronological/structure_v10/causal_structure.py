@@ -172,9 +172,13 @@ class CausalMarketStructure:
     def _complete(self, tf, b, observed_at):
         q = self.closed[tf]
         previous = q[-1] if q else None
-        tr = (b.h-b.l if previous is None else
+        contiguous=(previous is not None and
+                    b.start_ms-previous.start_ms==tf)
+        # Never synthesize overnight/weekend true range from a missing interval.
+        # Reset Wilder volatility seed after an observed time discontinuity.
+        tr = (b.h-b.l if not contiguous else
               max(b.h-b.l,abs(b.h-previous.c),abs(b.l-previous.c)))
-        a = self.vol[tf]
+        a = self.vol[tf] if contiguous else None
         self.vol[tf] = tr if a is None else (13.*a+tr)/14.
         q.append(b)
         self.counters["closed_"+NAMES[tf]] += 1
