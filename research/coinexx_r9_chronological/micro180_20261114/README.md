@@ -36,7 +36,7 @@ The MQL5 code is **a separate demo-disabled fork** `Experts/GoldMuwahahaMiner_R9
 ## Important experiment controls
 
 - New parameters are **engineering hypotheses**, not selected for nine-month profitability. Prior nine-month dual-OR baseline: 419,389 trades and -$162,656.05 modeled cash after historical spread plus illustrative $0.20 extra fee; this micro180 candidate has **not** undergone an equivalent nine-month source-exact evaluation.
-- Source January first 200,000 quote smoke test: 82 completed experimental trades, -$29.90 modeled net, 200,000 source records, ~98 MB peak runtime memory. The first sample has zero historical `last` and executed-volume records. No profitable claim or comparative inference from a 200k slice.
+- Source January first 200,000 quote smoke test: 81 completed experimental trades, -$30.43 modeled net, 200,000 source records, ~98 MB peak runtime memory in the first build. The first sample has zero historical `last` and executed-volume records. No profitable claim or comparative inference from a 200k slice.
 - All cash values depend on broker `OrderCalcProfit`, commission and slippage; Python K=1 and C=0.20 are illustrative. The $0.10 positive target is a *close request threshold*, not a guarantee of realized minimum; $1.75 cannot be guaranteed as a hard realized upper maximum.
 - A $2 stop order and 25% account equity boundary can be overrun in gaps. The governors target risk containment, not guaranteed liquidation prices.
 
