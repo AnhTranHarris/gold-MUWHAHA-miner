@@ -1,0 +1,893 @@
+#property strict
+#property version "2.00"
+#property description "R9 Micro180 V9 four-lane executable OR research; DEMO ORDERS OFF; not parity-certified."
+#include <Trade/Trade.mqh>
+
+// V9 RESEARCH FORK: original R9 v1.94, dual basket Python, and native V8 remain unmodified.
+// NOT COMPILED BY METAEDITOR / NOT FOR LIVE. Do not enable without source-exact parity.
+input group "SAFE RESEARCH EXECUTION"
+input bool   InpEnableDemoOrders        = false;  // OFF until MetaEditor & demo validated
+input ulong  InpMagic                   = 559180;
+input double InpLots                    = 0.01;
+input int    InpDeviationPoints         = 20;
+input int    InpMaxEntriesPerMinute     = 4;
+input int    InpMaxHoldMs               = 30000;
+input double InpAdditionalCostCash      = 0.20;   // broker-UNVERIFIED, beyond Bid/Ask spread
+input double InpExtraSlipReserveCash    = 0.10;   // research allowance; not a fill guarantee
+input double InpMinNetProfitCash        = 0.10;
+input double InpPreferredNetProfitCash  = 1.75;
+input double InpMaxIntendedLossCash     = 2.00;
+input bool   InpExperimentalRunner      = false;  // OFF: continuation unvalidated
+input double InpRunnerTrailingCash      = 0.25;
+input int    InpBaseStopPricePoints     = 30;     // R9 0.30 quote-price distance
+
+input group "MICRO180 ASYMMETRIC SIGNAL"
+input int    InpMinBasketMovePoints     = 10;
+input int    InpMin15sStructurePoints  = 6;
+input int    InpBreakoutBufferPoints   = 1;
+input int    InpMaxQuoteGapMs          = 2500;
+input int    InpMin5sObservedSpanMs    = 1500;
+input int    InpMinCompleted15SpanMs  = 9000;
+input int    InpMinActive15SpanMs     = 3000;
+input int    InpMaxCompleted15TailMs  = 2500;
+input bool   InpAllowCausalActive15   = false;
+input bool   InpMicroOnlyS1           = false;
+input bool   InpBalanced30sVeto       = false;
+input double InpMinBuyStrong15sZ      = 0.55;
+input double InpMinSellStrong15sZ     = 0.55;
+input double InpMaxAdverse30sZ        = 0.10;
+input int    InpMaxSpreadPoints        = 25;
+input double InpMaxSpreadShockRatio    = 1.35;
+input double InpMinDirectionalEff      = 0.55;
+input double InpMinNormalizedBreakout  = 0.25;
+input int    InpMinCompleted15s        = 10;
+input int    InpMinCompleted30s        = 18;
+input int    InpMinQuotes5s            = 5;
+
+input group "V5 RESEARCH QUOTE PATH (DEFAULT OFF)"
+input bool   InpV5PathResearch           = false; // OFF: unvalidated throughput veto; V9 uses quote score SHADOW
+input double InpV5MinBuyPath             = -0.05;
+input double InpV5MinSellPath            = -0.05;
+input double InpV5MinCoherence           = 0.25;
+input int    InpV5MinHistorySeconds      = 30;
+input double InpV5MaxSpreadRelative      = 1.50;
+input bool   InpV5EarlyAdverseResearch   = false;
+input double InpV5AdverseNetCash         = -0.45;
+input double InpV5AdversePathScore       = -0.45;
+input int    InpV5MinAdverseAgeMs        = 1500;
+input bool   InpV5ProtectedHoldResearch = false;
+input double InpV5HoldBuyScore           = 0.25;
+input double InpV5HoldSellScore          = 0.25;
+
+input group "V6 PAST-ONLY CASH PRIOR (DEFAULT SHADOW)"
+input bool   InpV6CashShadowResearch    = false;
+input bool   InpV6CashGateResearch      = false;  // OFF until source parity
+input double InpV6MinBuyPastCash        = -0.35;
+input double InpV6MinSellPastCash       = -0.35;
+input double InpV6UncertaintyMultiplier = 1.0;
+input bool   InpV6HoldUtilityResearch   = false;
+input double InpV6MinHoldIncrementCash  = 0.0;
+input group "V7 SETUP-CONDITIONED CASH (SHADOW, GATE OFF)"
+input bool   InpV7ConditionalShadowResearch = false;
+input bool   InpV7ConditionalGateResearch   = false;
+input double InpV7MinBuyCash                = 0.0;
+input double InpV7MinSellCash               = 0.0;
+input double InpV7SimilarityWidth           = 0.55;
+input double InpV7MinEffectiveSamples       = 4.0;
+input double InpV7UncertaintyMultiplier     = 1.0;
+
+input group "NATIVE MT5 PRICE INDICATORS + QUOTE PROXY"
+input bool   InpM1DirectionalVeto      = false; // score shadow; source-parity not certified
+input int    InpADXWilderPeriod        = 14;
+input int    InpEMAPeriod              = 20;
+input int    InpATRPeriod              = 14;
+input double InpMinM5ATRPrice          = 1.75;  // frozen pilot, not original session-adaptive parity
+
+input group "V9 FOUR-LANE EXECUTABLE RESEARCH"
+input int    InpV9Min5ObservedMs        = 1000; // source-millisecond maturity, no same-ms fake impulse
+input int    InpV9Min15ObservedMs       = 2500;
+input int    InpV9RearmCooldownMs       = 1500;
+input bool   InpV9QuantScoreVeto        = false; // strictly opt-in; nine-prefix result still net-negative
+input double InpV9MinBuyScore          = -0.25;
+input double InpV9MinSellScore         = -0.25;
+
+input group "ACCOUNT RISK GOVERNOR"
+input double InpCapitalFloorPct        = 25.0;  // persistent loss from starting equity
+input double InpMaxPeakDrawdownPct     = 10.0;  // stricter preexisting R9 protection
+input double InpDailyGrossBasePct      = 4.0;
+input double InpDailyGrossMaxPct       = 12.0;
+input double InpProfitRecycleFrac      = 0.25;
+input double InpMinMarginLevelPct      = 150.0;
+
+CTrade g_trade;
+#define MICRO_SECS 192
+#define MICRO_BATCH 1024
+
+struct QBar
+{
+   long startMs;
+   long firstMs;
+   long lastMs;
+   int n;
+   long maxGapMs;
+   double bo,bh,bl,bc,ao,ah,al,ac,spread;
+};
+QBar g_second, g_5s, g_15s, g_30s, g_closed15;
+QBar g_s[ MICRO_SECS ];
+int g_sh=0,g_sn=0;
+bool g_haveSecond=false,g_have5=false,g_have15=false,g_have30=false,g_haveClosed15=false;
+ulong g_cursorMs=0;
+int g_cursorAtSameMs=0;
+long g_lastQuoteMs=0,g_prevQuoteMs=0;
+int g_lastQuoteGap=0;
+bool g_dataFault=false;
+int g_entriesThisMinute=0;
+long g_entryMinute=-1,g_exitMs=-1,g_exit5=-1,g_exit15=-1;
+long g_entryMs=0;
+double g_peakObservedNet=-1e30;
+int g_hADX=INVALID_HANDLE,g_hEMA=INVALID_HANDLE,g_hATR1=INVALID_HANDLE,g_hATR5=INVALID_HANDLE;
+string g_riskKey="";
+double g_accountBase=0,g_accountPeak=0,g_dayStartEquity=0;
+double g_dayGrossLoss=0,g_dayGrossProfit=0,g_dayCharges=0;
+long g_lastRiskRefresh=0;
+long g_dayNumber=-1;
+bool g_riskHalt=false,g_dayHalt=false;
+#include "GoldMuwahahaR9Micro250.mqh"
+
+void BarReset(QBar &b,const MqlTick &t,const long start)
+{
+   b.startMs=start;b.firstMs=(long)t.time_msc;b.lastMs=(long)t.time_msc;b.maxGapMs=0;b.n=1;
+   b.bo=t.bid;b.bh=t.bid;b.bl=t.bid;b.bc=t.bid;
+   b.ao=t.ask;b.ah=t.ask;b.al=t.ask;b.ac=t.ask;b.spread=t.ask-t.bid;
+}
+void BarQuote(QBar &b,const MqlTick &t)
+{
+   const long observedGap=(long)t.time_msc-b.lastMs;
+   if(observedGap>b.maxGapMs)b.maxGapMs=observedGap;
+   b.lastMs=(long)t.time_msc;b.n++;
+   b.bh=MathMax(b.bh,t.bid);b.bl=MathMin(b.bl,t.bid);b.bc=t.bid;
+   b.ah=MathMax(b.ah,t.ask);b.al=MathMin(b.al,t.ask);b.ac=t.ask;
+   b.spread=t.ask-t.bid;
+}
+void PushSecond()
+{
+   g_s[g_sh]=g_second;
+   g_sh=(g_sh+1)%MICRO_SECS;
+   if(g_sn<MICRO_SECS) g_sn++;
+}
+int SecFromLatest(const int offset)
+{
+   int i=g_sh-1-offset;
+   while(i<0)i+=MICRO_SECS;
+   return i%MICRO_SECS;
+}
+#include "GoldMuwahahaR9V6PastOnlyCash.mqh"
+#include "GoldMuwahahaR9V8ConditionedCash.mqh"
+long g_v6LastCashComputeSecond=-1,g_v6LastCashLogMinute=-1;
+bool g_v6BuyReady=false,g_v6SellReady=false;
+V6CashHistory g_v6Buy,g_v6Sell;
+long g_v7LastComputeMs=-1,g_v7LastLogMinute=-1;
+double g_v7LastComputeBid=0,g_v7LastComputeAsk=0;
+int g_v7LastComputeQuoteN=-1;
+bool g_v7BuyReady=false,g_v7SellReady=false;
+V7ConditionedResult g_v7Buy,g_v7Sell;
+void AcceptHistoricalQuote(const MqlTick &t)
+{
+   const long ms=(long)t.time_msc;
+   if(g_lastQuoteMs>0 && ms<g_lastQuoteMs){g_dataFault=true;return;}
+   g_lastQuoteGap=(g_lastQuoteMs>0?(int)(ms-g_lastQuoteMs):0);
+   g_prevQuoteMs=g_lastQuoteMs;g_lastQuoteMs=ms;
+   if(InpV5PathResearch)V5QuarterUpdate(t);
+   const long s=ms/1000*1000, f=ms/5000*5000,
+              q=ms/15000*15000, h=ms/30000*30000;
+   if(!g_haveSecond){BarReset(g_second,t,s);g_haveSecond=true;}
+   else if(s==g_second.startMs)BarQuote(g_second,t);
+   else {PushSecond();BarReset(g_second,t,s);}
+   if(!g_have5){BarReset(g_5s,t,f);g_have5=true;}
+   else if(f==g_5s.startMs)BarQuote(g_5s,t);
+   else BarReset(g_5s,t,f);
+   if(!g_have15){BarReset(g_15s,t,q);g_have15=true;}
+   else if(q==g_15s.startMs)BarQuote(g_15s,t);
+   else {g_closed15=g_15s;g_haveClosed15=true;BarReset(g_15s,t,q);}
+   if(!g_have30){BarReset(g_30s,t,h);g_have30=true;}
+   else if(h==g_30s.startMs)BarQuote(g_30s,t);
+   else BarReset(g_30s,t,h);
+}
+
+// CopyTicks is required because OnTick does NOT guarantee one callback per tick.
+// At equal time_msc the cursor stores the number of previously consumed source
+// records at that millisecond. Unknown/incomplete pagination fails CLOSED.
+bool SyncQuoteHistory(const MqlTick &latest)
+{
+   if(g_dataFault)return false;
+   MqlTick copied[];
+   ArrayResize(copied,MICRO_BATCH);
+   if(g_cursorMs==0)
+   {
+      const ulong now=(ulong)latest.time_msc;
+      g_cursorMs=(now>180000?now-180000:1);
+      g_cursorAtSameMs=0;
+   }
+   for(int batch=0;batch<8;++batch)
+   {
+      const int n=CopyTicks(_Symbol,copied,COPY_TICKS_ALL,g_cursorMs,MICRO_BATCH);
+      if(n<0){g_dataFault=true;return false;}
+      int oldSkipped=0,processed=0;
+      for(int i=0;i<n;++i)
+      {
+         const ulong ms=(ulong)copied[i].time_msc;
+         if(ms==g_cursorMs && oldSkipped<g_cursorAtSameMs){oldSkipped++;continue;}
+         if(ms<g_cursorMs){g_dataFault=true;return false;}
+         if(copied[i].bid<=0 || copied[i].ask<copied[i].bid)continue;
+         AcceptHistoricalQuote(copied[i]);
+         if(g_dataFault)return false;
+         if(ms==g_cursorMs)g_cursorAtSameMs++;
+         else {g_cursorMs=ms;g_cursorAtSameMs=1;}
+         processed++;
+      }
+      if(n==MICRO_BATCH && processed==0){g_dataFault=true;return false;}
+      if(n<MICRO_BATCH)return g_lastQuoteMs>0 && g_lastQuoteMs>=(long)latest.time_msc;
+   }
+   // Excessive backlog: no trading until the cursor catches up, no data loss.
+   return false;
+}
+
+bool Read1(const int handle,const int buffer,const int shift,double &out)
+{
+   if(handle==INVALID_HANDLE)return false;
+   double x[1];
+   if(CopyBuffer(handle,buffer,shift,1,x)!=1 || !MathIsValidNumber(x[0]))return false;
+   out=x[0];return true;
+}
+
+bool NativeDirectionAllows(const int side)
+{
+   double atr5=0;
+   if(!Read1(g_hATR5,0,1,atr5))return false; // fail CLOSED on missing M5 regime
+   if(atr5<InpMinM5ATRPrice)return false;
+   double pd=0,md=0,ema1=0,ema2=0,atr1=0;
+   if(Read1(g_hADX,1,1,pd) && Read1(g_hADX,2,1,md) &&
+      Read1(g_hEMA,0,1,ema1) && Read1(g_hEMA,0,2,ema2) &&
+      Read1(g_hATR1,0,1,atr1) && atr1>0)
+   {
+      const double di=side*(pd-md);
+      const double slope=side*(ema1-ema2)/atr1;
+      const double score=MathMax(-1,MathMin(1,0.7*di/20.0+0.3*slope/0.05));
+      return (!InpM1DirectionalVeto || score>=-0.25);
+   }
+   // Explicit quote-only proxy fallback: S1 + both executable breakouts remain
+   // required; no claim of missing native DI/EMA having been reconstructed.
+   return true;
+}
+
+bool S1Quality(const int side,const long nowMs)
+{
+   if(g_sn<11)return false;
+   double prev=0,start=0,travel=0,hi=-DBL_MAX,lo=DBL_MAX;
+   long prevSecond=-1;
+   int turns=0,lastSign=0;
+   for(int off=9;off>=0;--off)
+   {
+      QBar b=g_s[SecFromLatest(off)];
+      if(nowMs-b.lastMs>15000)return false;
+      if(prevSecond>=0 && b.startMs-prevSecond>2000)return false;
+      if(off==9){start=b.bc;prev=b.bc;}
+      else
+      {
+         const double delta=b.bc-prev;
+         travel+=MathAbs(delta);
+         const int sign=delta>0?1:delta<0?-1:0;
+         if(sign!=0){if(lastSign!=0 && sign!=lastSign)turns++;lastSign=sign;}
+         prev=b.bc;
+      }
+      prevSecond=b.startMs;
+      hi=MathMax(hi,b.bh);lo=MathMin(lo,b.bl);
+   }
+   if(turns>9 || hi-lo<0.50)return false;
+   const double net=prev-start;
+   if(side*net<0.15)return false;
+   return MathAbs(net)/(travel+1e-9)>=0.70;
+}
+
+// V5 opt-in: order-sensitive past CLOSED seconds, real ms, executable-side.
+bool V5QuotePathScore(const int side,const MqlTick &t,double &score,
+                      double &coherence,double &tailScore,double &spreadRatio)
+{
+   score=0.0;coherence=0.0;tailScore=0.0;spreadRatio=0.0;
+   const double point=SymbolInfoDouble(_Symbol,SYMBOL_POINT);
+   if(point<=0 || (side!=1 && side!=-1))return false;
+   const long now=(long)t.time_msc;
+   const long floor=now/1000*1000;
+   double bids[18],asks[18],spreads[18],steps[18];
+   int n15=0,n5=0,n30=0,n180=0,nSteps=0,updates5=0,updates180=0;
+   long last30=-1,last5=-1;
+   for(int off=g_sn-1;off>=0;--off)
+   {
+      QBar b=g_s[SecFromLatest(off)];
+      if(b.startMs<floor-180000 || b.startMs>=floor)continue;
+      n180++;updates180+=b.n;
+      if(b.startMs>=floor-30000)
+      {
+         if(last30>=0 && b.startMs-last30>2500)return false;
+         last30=b.startMs;n30++;
+      }
+      if(b.startMs>=floor-15000)
+      {
+         if(n15>=18)return false;
+         bids[n15]=b.bc;asks[n15]=b.ac;
+         spreads[n15]=(b.ac-b.bc)/point;
+         n15++;
+      }
+      if(b.startMs>=floor-5000){n5++;updates5+=b.n;last5=b.lastMs;}
+   }
+   if(n5<2 || n15<7 || n30<12 || n180<InpV5MinHistorySeconds ||
+      last5<0 || now-last5>2500)return false;
+   double path=0.0,netMove=0.0;
+   int joined=0;
+   for(int i=1;i<n15;++i)
+   {
+      const double prev=(side>0?bids[i-1]:asks[i-1]);
+      const double next=(side>0?bids[i]:asks[i]);
+      const double step=side*(next-prev)/point;
+      steps[nSteps++]=step;path+=MathAbs(step);netMove+=step;
+      if(side*(bids[i]-bids[i-1])>0.0 &&
+         side*(asks[i]-asks[i-1])>0.0)joined++;
+   }
+   const double current=(side>0?t.bid:t.ask);
+   const double prev=(side>0?bids[n15-1]:asks[n15-1]);
+   const double last=side*(current-prev)/point;
+   steps[nSteps++]=last;path+=MathAbs(last);netMove+=last;
+   double tail=0.0,tailAbs=0.0,reversal=0.0;
+   int tailStart=nSteps-3;if(tailStart<0)tailStart=0;
+   for(int i=tailStart;i<nSteps;++i)
+   {
+      tail+=steps[i];tailAbs+=MathAbs(steps[i]);
+      if(steps[i]<0.0)reversal-=steps[i];
+   }
+   const double eff=netMove/MathMax(1.0,path);
+   tailScore=tail/MathMax(1.0,tailAbs);
+   const double rev=reversal/MathMax(1.0,tailAbs);
+   coherence=(double)joined/(n15-1);
+   for(int i=1;i<n15;++i)
+   {
+      const double v=spreads[i];int j=i-1;
+      while(j>=0 && spreads[j]>v){spreads[j+1]=spreads[j];j--;}
+      spreads[j+1]=v;
+   }
+   const double medianSpread=(n15%2?spreads[n15/2]:
+                              0.5*(spreads[n15/2-1]+spreads[n15/2]));
+   spreadRatio=((t.ask-t.bid)/point)/MathMax(1.0,medianSpread);
+   const double intensity=MathMin(3.0,
+      (updates5/5.0)/MathMax(0.05,updates180/180.0));
+   double microEff=0.0,microCoh=0.0;
+   V5QuarterEvidence(side,now,microEff,microCoh); // no synthetic missing quotes
+   double bias=0.0,pdi=0.0,mdi=0.0,ema1=0.0,ema2=0.0,atr1=0.0;
+   if(Read1(g_hADX,1,1,pdi) && Read1(g_hADX,2,1,mdi) &&
+      Read1(g_hEMA,0,1,ema1) && Read1(g_hEMA,0,2,ema2) &&
+      Read1(g_hATR1,0,1,atr1) && atr1>0.0)
+   {
+      const double di=side*(pdi-mdi);
+      const double slope=side*(ema1-ema2)/MathMax(point,atr1);
+      bias=MathMax(-1.0,MathMin(1.0,0.7*di/20.0+0.3*slope/0.05));
+   }
+   if(side>0)
+      score=0.36*eff+0.24*tailScore+0.28*coherence+0.10*bias+
+            0.05*MathMin(2.0,intensity-1.0)-
+            0.27*MathMax(0.0,spreadRatio-1.0)-0.20*rev+
+            0.12*microEff+0.08*(microCoh-0.50);
+   else
+      score=0.34*eff+0.26*tailScore+0.26*coherence+0.12*bias+
+            0.06*MathMin(2.0,intensity-1.0)-
+            0.30*MathMax(0.0,spreadRatio-1.0)-0.20*rev+
+            0.12*microEff+0.08*(microCoh-0.50);
+   return true;
+}
+
+// V9 does NOT call the old V8 strict-15-and-30 breakout selector.
+// V9 directional scores are causal INDICES, not calibrated cash or AUC.
+double V9DirectionalQuoteScore(const int side,const MqlTick &t,
+                               const double breakout15,const double breakout30,
+                               const double execEfficiency,const double spreadStress)
+{
+   const double point=SymbolInfoDouble(_Symbol,SYMBOL_POINT);
+   double pdi=0,mdi=0,ema1=0,ema2=0,atr1=0;
+   double nativeBias=0;
+   if(point>0 && Read1(g_hADX,1,1,pdi) && Read1(g_hADX,2,1,mdi) &&
+      Read1(g_hEMA,0,1,ema1) && Read1(g_hEMA,0,2,ema2) &&
+      Read1(g_hATR1,0,1,atr1) && atr1>0)
+   {
+      const double directionalDI=side*(pdi-mdi)/20.0;
+      const double normalizedSlope=side*(ema1-ema2)/MathMax(point,atr1)/0.05;
+      nativeBias=MathMax(-1.0,MathMin(1.0,0.7*directionalDI+0.3*normalizedSlope));
+   }
+   // 180s prior CLOSED 1s history is already stored in g_s. Score uses the
+   // nearest 15/30 causal extremes, real executable sides and M1 indicators.
+   const double x15=MathMax(-3.0,MathMin(3.0,breakout15/3.0));
+   const double x30=MathMax(-3.0,MathMin(3.0,breakout30/3.0));
+   if(side>0)
+      return 0.27*x15+0.08*x30+0.45*execEfficiency+0.08*nativeBias-
+             0.20*MathMax(0,spreadStress-1.0);
+   return 0.22*x15+0.12*x30+0.46*execEfficiency+0.10*nativeBias-
+          0.24*MathMax(0,spreadStress-1.0);
+}
+bool MicroSignal(const MqlTick &t,int &side)
+{
+   side=0;
+   if(g_dataFault || !g_have5 || !g_have15 ||
+      g_sn<InpMinCompleted30s || t.bid<=0 || t.ask<=t.bid ||
+      g_lastQuoteGap>InpMaxQuoteGapMs)return false;
+   const long now=(long)t.time_msc;
+   const long floorSecond=now/1000*1000;
+   const double point=SymbolInfoDouble(_Symbol,SYMBOL_POINT);
+   if(point<=0 || (t.ask-t.bid)/point>InpMaxSpreadPoints)return false;
+   const bool mature5=(g_5s.n>=2 &&
+      g_5s.lastMs-g_5s.firstMs>=InpV9Min5ObservedMs &&
+      g_5s.maxGapMs<=InpMaxQuoteGapMs);
+   const bool mature15=(g_15s.n>=5 &&
+      g_15s.lastMs-g_15s.firstMs>=InpV9Min15ObservedMs &&
+      g_15s.maxGapMs<=InpMaxQuoteGapMs);
+   if(!mature5 && !mature15)return false;
+   const double move5=(g_5s.bc+g_5s.ac-g_5s.bo-g_5s.ao)/(2.0*point);
+   const double move15=(g_15s.bc+g_15s.ac-g_15s.bo-g_15s.ao)/(2.0*point);
+   double highB15=-DBL_MAX,highB30=-DBL_MAX,lowA15=DBL_MAX,lowA30=DBL_MAX;
+   double spreadSum=0,travel=0;
+   double oldestB=0,oldestA=0,newestB=0,newestA=0;
+   long recentQuote=-1,previousStart=-1;
+   int n15=0,n30=0;
+   for(int off=0;off<g_sn;++off)
+   {
+      QBar b=g_s[SecFromLatest(off)];
+      if(b.startMs>=floorSecond || b.startMs<floorSecond-30000)continue;
+      if(previousStart>=0 && previousStart-b.startMs>2000)return false;
+      if(recentQuote<0){recentQuote=b.lastMs;newestB=b.bc;newestA=b.ac;}
+      previousStart=b.startMs;
+      if(n30>0)travel+=MathAbs(b.bc-newestB)+MathAbs(b.ac-newestA);
+      oldestB=b.bc;oldestA=b.ac;
+      highB30=MathMax(highB30,b.bc);lowA30=MathMin(lowA30,b.ac);n30++;
+      if(b.startMs>=floorSecond-15000)
+      {
+         highB15=MathMax(highB15,b.bc);lowA15=MathMin(lowA15,b.ac);
+         spreadSum+=(b.ac-b.bc)/point;n15++;
+      }
+   }
+   if(n15<InpMinCompleted15s || n30<InpMinCompleted30s ||
+      recentQuote<0 || now-recentQuote>2500)return false;
+   const double stress=((t.ask-t.bid)/point)/
+      MathMax(1.0,spreadSum/MathMax(1,n15));
+   if(stress>InpMaxSpreadShockRatio)return false;
+   const double efficiencyB=MathMax(-1.0,MathMin(1.0,
+      (t.bid-oldestB)/MathMax(point,travel)));
+   const double efficiencyS=MathMax(-1.0,MathMin(1.0,
+      (oldestA-t.ask)/MathMax(point,travel)));
+   bool permitBuy=false,permitSell=false;
+   // Each independent basket can authorize either executable-side breakout
+   // horizon. Four-lane OR: 5x15 | 5x30 | 15x15 | 15x30.
+   const bool buy15=(t.bid>=highB15+InpBreakoutBufferPoints*point);
+   const bool buy30=(t.bid>=highB30+InpBreakoutBufferPoints*point);
+   const bool sell15=(t.ask<=lowA15-InpBreakoutBufferPoints*point);
+   const bool sell30=(t.ask<=lowA30-InpBreakoutBufferPoints*point);
+   const bool basketBuy=(mature5 && move5>=InpMinBasketMovePoints) ||
+      (mature15 && move15>=InpMinBasketMovePoints);
+   const bool basketSell=(mature5 && move5<=-InpMinBasketMovePoints) ||
+      (mature15 && move15<=-InpMinBasketMovePoints);
+   permitBuy=basketBuy && (buy15 || buy30);
+   permitSell=basketSell && (sell15 || sell30);
+   if(permitBuy && permitSell)return false; // conflicting side must abstain
+   const int chosen=permitBuy?1:permitSell?-1:0;
+   if(chosen==0)return false;
+   if(!S1Quality(chosen,now) || !NativeDirectionAllows(chosen))return false;
+   const double e15=chosen>0?(t.bid-highB15)/point:(lowA15-t.ask)/point;
+   const double e30=chosen>0?(t.bid-highB30)/point:(lowA30-t.ask)/point;
+   const double eff=chosen>0?efficiencyB:efficiencyS;
+   const double score=V9DirectionalQuoteScore(chosen,t,e15,e30,eff,stress);
+   // Default SHADOW preserves opportunity throughput; opt-in cuts trades and
+   // must not be considered a profitable calibration without full OOS tests.
+   if(InpV9QuantScoreVeto &&
+      score<(chosen>0?InpV9MinBuyScore:InpV9MinSellScore))return false;
+   side=chosen;
+   return true;
+}
+
+double ExecNet(const int side,const double vol,const double openPrice,const double closePrice)
+{
+   double gross=0;
+   const ENUM_ORDER_TYPE type=(side>0?ORDER_TYPE_BUY:ORDER_TYPE_SELL);
+   if(!OrderCalcProfit(type,_Symbol,vol,openPrice,closePrice,gross))return -DBL_MAX;
+   return gross-InpAdditionalCostCash;
+}
+
+bool OwnPosition(ulong &ticket,ENUM_POSITION_TYPE &type,double &open,double &stop,double &volume,long &openedMs)
+{
+   ticket=0;open=0;stop=0;volume=0;openedMs=0;
+   for(int i=PositionsTotal()-1;i>=0;--i)
+   {
+      const ulong id=PositionGetTicket(i);
+      if(id==0 || PositionGetString(POSITION_SYMBOL)!=_Symbol ||
+         (ulong)PositionGetInteger(POSITION_MAGIC)!=InpMagic)continue;
+      ticket=id;type=(ENUM_POSITION_TYPE)PositionGetInteger(POSITION_TYPE);
+      open=PositionGetDouble(POSITION_PRICE_OPEN);
+      stop=PositionGetDouble(POSITION_SL);
+      volume=PositionGetDouble(POSITION_VOLUME);
+      openedMs=(long)PositionGetInteger(POSITION_TIME_MSC);
+      return true;
+   }
+   return false;
+}
+
+bool GVEnsure(const string key,const double initial)
+{
+   if(GlobalVariableCheck(key))return true;
+   return GlobalVariableSet(key,initial)!=0;
+}
+
+void RefreshRisk(const bool force)
+{
+   const long now=(long)TimeTradeServer();
+   if(now<=0){g_riskHalt=true;return;}
+   const double equity=AccountInfoDouble(ACCOUNT_EQUITY);
+   if(equity<=0){g_riskHalt=true;return;}
+   if(equity>g_accountPeak)
+   {
+      g_accountPeak=equity;
+      if(GlobalVariableSet(g_riskKey+".peak",equity)==0)g_riskHalt=true;
+   }
+   if(GlobalVariableCheck(g_riskKey+".halt") && GlobalVariableGet(g_riskKey+".halt")>0.5)g_riskHalt=true;
+   if(equity<=(1-InpCapitalFloorPct/100.0)*g_accountBase ||
+      equity<=(1-InpMaxPeakDrawdownPct/100.0)*g_accountPeak)g_riskHalt=true;
+   const long day=(long)(now/86400);
+   if(day!=g_dayNumber)
+   {
+      g_dayNumber=day;
+      const string dkey=g_riskKey+".day."+IntegerToString(day);
+      if(!GVEnsure(dkey,equity))g_riskHalt=true;
+      g_dayStartEquity=GlobalVariableGet(dkey);
+      g_dayHalt=(GlobalVariableCheck(dkey+".halt") && GlobalVariableGet(dkey+".halt")>0.5);
+      g_lastRiskRefresh=0;
+   }
+   if(g_riskHalt){GlobalVariableSet(g_riskKey+".halt",1);return;}
+   if(!force && now-g_lastRiskRefresh<5)return;
+   g_lastRiskRefresh=now;
+   if(!HistorySelect((datetime)(day*86400),(datetime)now))
+   {g_riskHalt=true;GlobalVariableSet(g_riskKey+".halt",1);return;}
+   g_dayGrossLoss=0;g_dayGrossProfit=0;g_dayCharges=0;
+   for(int i=0;i<HistoryDealsTotal();++i)
+   {
+      const ulong id=HistoryDealGetTicket(i);
+      if(id==0)continue;
+      const ENUM_DEAL_TYPE k=(ENUM_DEAL_TYPE)HistoryDealGetInteger(id,DEAL_TYPE);
+      if(k!=DEAL_TYPE_BUY && k!=DEAL_TYPE_SELL)
+      {
+         // Broker-side cash charge ledger may create a separate commission deal.
+         if(k==DEAL_TYPE_COMMISSION || k==DEAL_TYPE_COMMISSION_DAILY ||
+            k==DEAL_TYPE_COMMISSION_MONTHLY || k==DEAL_TYPE_CHARGE)
+            g_dayCharges+=MathMax(0,-HistoryDealGetDouble(id,DEAL_PROFIT));
+         continue;
+      }
+      const double pnl=HistoryDealGetDouble(id,DEAL_PROFIT)+HistoryDealGetDouble(id,DEAL_SWAP);
+      if(pnl<0)g_dayGrossLoss-=pnl;else g_dayGrossProfit+=pnl;
+      g_dayCharges+=MathMax(0,-HistoryDealGetDouble(id,DEAL_COMMISSION));
+      g_dayCharges+=MathMax(0,-HistoryDealGetDouble(id,DEAL_FEE));
+   }
+   double floatingLoss=0;
+   for(int i=PositionsTotal()-1;i>=0;--i)
+   {
+      if(PositionGetTicket(i)==0)continue;
+      floatingLoss+=MathMax(0,-PositionGetDouble(POSITION_PROFIT)-PositionGetDouble(POSITION_SWAP));
+   }
+   const double limit=MathMin(InpDailyGrossMaxPct*.01*g_dayStartEquity,
+                     InpDailyGrossBasePct*.01*g_dayStartEquity+
+                     InpProfitRecycleFrac*g_dayGrossProfit);
+   if(g_dayGrossLoss+g_dayCharges+floatingLoss>=limit ||
+      (AccountInfoDouble(ACCOUNT_MARGIN)>0 &&
+       AccountInfoDouble(ACCOUNT_MARGIN_LEVEL)<InpMinMarginLevelPct))
+   {
+      g_dayHalt=true;
+      const string dkey=g_riskKey+".day."+IntegerToString(day);
+      GlobalVariableSet(dkey+".halt",1);
+   }
+}
+
+void CloseOwnOnRisk()
+{
+   if(!InpEnableDemoOrders)return;
+   if(!g_riskHalt && !g_dayHalt)return;
+   ulong ticket;ENUM_POSITION_TYPE type;double open,stop,volume;long opened;
+   if(OwnPosition(ticket,type,open,stop,volume,opened))g_trade.PositionClose(ticket);
+}
+
+bool RiskAllowsNew(const int side,const double vol,const double entry,const double sl)
+{
+   RefreshRisk(false);
+   if(g_riskHalt || g_dayHalt)return false;
+   const ENUM_ORDER_TYPE kind=side>0?ORDER_TYPE_BUY:ORDER_TYPE_SELL;
+   double pl=0,margin=0;
+   if(!OrderCalcProfit(kind,_Symbol,vol,entry,sl,pl) ||
+      !OrderCalcMargin(kind,_Symbol,vol,entry,margin))return false;
+   const double risk=MathMax(0,-pl)+InpAdditionalCostCash+InpExtraSlipReserveCash;
+   if(risk>InpMaxIntendedLossCash)return false;
+   if(AccountInfoDouble(ACCOUNT_MARGIN_FREE)-margin<0.10*AccountInfoDouble(ACCOUNT_EQUITY))return false;
+   const double maxBudget=MathMin(InpDailyGrossMaxPct*.01*g_dayStartEquity,
+                       InpDailyGrossBasePct*.01*g_dayStartEquity+InpProfitRecycleFrac*g_dayGrossProfit);
+   if(g_dayGrossLoss+g_dayCharges+risk>=maxBudget)return false;
+   if(AccountInfoDouble(ACCOUNT_EQUITY)-risk<=(1-InpCapitalFloorPct/100.0)*g_accountBase)return false;
+   if(AccountInfoDouble(ACCOUNT_EQUITY)-risk<=(1-InpMaxPeakDrawdownPct/100.0)*g_accountPeak)return false;
+   return true;
+}
+
+void MicroSendEntry(const MqlTick &tick,const int side)
+{
+   if(!InpEnableDemoOrders || g_dataFault || g_entriesThisMinute>=InpMaxEntriesPerMinute)return;
+   if((ENUM_ACCOUNT_TRADE_MODE)AccountInfoInteger(ACCOUNT_TRADE_MODE)!=ACCOUNT_TRADE_MODE_DEMO)return;
+   const double tickSize=SymbolInfoDouble(_Symbol,SYMBOL_TRADE_TICK_SIZE);
+   const double point=SymbolInfoDouble(_Symbol,SYMBOL_POINT);
+   if(tickSize<=0 || point<=0)return;
+   double volume=InpLots;
+   const double minv=SymbolInfoDouble(_Symbol,SYMBOL_VOLUME_MIN);
+   const double step=SymbolInfoDouble(_Symbol,SYMBOL_VOLUME_STEP);
+   const double maxv=SymbolInfoDouble(_Symbol,SYMBOL_VOLUME_MAX);
+   if(volume<minv || volume>maxv || step<=0 || MathAbs(MathRound(volume/step)*step-volume)>1e-7)return;
+   const double stopMin=(double)SymbolInfoInteger(_Symbol,SYMBOL_TRADE_STOPS_LEVEL)*point+tickSize;
+   const double dist=MathMax(InpBaseStopPricePoints*point,stopMin);
+   const double entry=side>0?tick.ask:tick.bid;
+   double sl=side>0?tick.bid-dist:tick.ask+dist;
+   sl=side>0?MathFloor(sl/tickSize)*tickSize:MathCeil(sl/tickSize)*tickSize;
+   if(!RiskAllowsNew(side,volume,entry,sl))return;
+   const bool sent=side>0?g_trade.Buy(volume,_Symbol,0,sl,0,"R9 MICRO180 BUY"):
+                             g_trade.Sell(volume,_Symbol,0,sl,0,"R9 MICRO180 SELL");
+   const uint code=g_trade.ResultRetcode();
+   if(sent && (code==TRADE_RETCODE_DONE || code==TRADE_RETCODE_DONE_PARTIAL))
+   {
+      g_entriesThisMinute++;
+      g_entryMs=(long)tick.time_msc;
+      g_peakObservedNet=-1e30;
+   }
+}
+
+bool StopProtectsCash(const int side,const double vol,const double open,const double sl,const double goal)
+{
+   return sl>0 && ExecNet(side,vol,open,sl)>=goal-1e-8;
+}
+
+void ManageOwnPosition(const MqlTick &tick)
+{
+   if(!InpEnableDemoOrders)return;
+   ulong ticket;ENUM_POSITION_TYPE type;double open,sl,vol;long openedMs;
+   if(!OwnPosition(ticket,type,open,sl,vol,openedMs))return;
+   const int side=type==POSITION_TYPE_BUY?1:-1;
+   const double exit=side>0?tick.bid:tick.ask;
+   const double net=ExecNet(side,vol,open,exit);
+   if(net==-DBL_MAX)return;
+   g_peakObservedNet=MathMax(net,g_peakObservedNet);
+   const long nowMs=(long)tick.time_msc;
+   if(g_entryMs<=0)g_entryMs=openedMs;
+   const long age=nowMs-openedMs;
+   if(g_riskHalt || g_dayHalt || age>=InpMaxHoldMs ||
+      net<=-InpMaxIntendedLossCash || g_lastQuoteGap>InpMaxQuoteGapMs)
+   {
+      g_trade.PositionClose(ticket);return;
+   }
+   if(net>=InpPreferredNetProfitCash)
+   {
+      g_trade.PositionClose(ticket);return;
+   }
+   if(net<InpMinNetProfitCash-1e-8)
+   {
+      if(InpV5PathResearch && InpV5EarlyAdverseResearch &&
+         age>=InpV5MinAdverseAgeMs && net<=InpV5AdverseNetCash)
+      {
+         double v5score=0.0,coh=0.0,tail=0.0,spr=0.0;
+         if(V5QuotePathScore(side,tick,v5score,coh,tail,spr) &&
+            v5score<=InpV5AdversePathScore && tail<0.0)
+            g_trade.PositionClose(ticket);
+      }
+      return;
+   }
+   if(InpV6HoldUtilityResearch && InpExperimentalRunner)
+   {
+      double incremental=-DBL_MAX;
+      if(!V6PastHoldIncrement(side,tick,vol,incremental) ||
+         incremental<=InpV6MinHoldIncrementCash)
+      {g_trade.PositionClose(ticket);return;}
+   }
+   if(!InpExperimentalRunner)
+   {
+      g_trade.PositionClose(ticket);return;
+   }
+   if(InpV5PathResearch && InpV5ProtectedHoldResearch)
+   {
+      double v5score=0.0,coh=0.0,tail=0.0,spr=0.0;
+      if(!V5QuotePathScore(side,tick,v5score,coh,tail,spr) ||
+         tail<0.0 ||
+         v5score<(side>0?InpV5HoldBuyScore:InpV5HoldSellScore))
+      {g_trade.PositionClose(ticket);return;}
+   }
+   // Runner must be independently certified before enabling this parameter.
+   // Short 5s executable-side trend is an observational score, not an AUC claim.
+   if(g_sn<3){g_trade.PositionClose(ticket);return;}
+   const QBar b=g_s[SecFromLatest(2)];
+   const double prev=(side>0?b.bc:b.ac);
+   const double signedDist=side*(exit-prev);
+   if(signedDist<=0){g_trade.PositionClose(ticket);return;}
+   const double lock=MathMax(InpMinNetProfitCash,g_peakObservedNet-InpRunnerTrailingCash);
+   const ENUM_ORDER_TYPE kind=side>0?ORDER_TYPE_BUY:ORDER_TYPE_SELL;
+   double unitGain=0;
+   if(!OrderCalcProfit(kind,_Symbol,vol,open,open+side*1.0,unitGain) || unitGain<=0)
+   {g_trade.PositionClose(ticket);return;}
+   const double tickSize=SymbolInfoDouble(_Symbol,SYMBOL_TRADE_TICK_SIZE);
+   const double point=SymbolInfoDouble(_Symbol,SYMBOL_POINT);
+   if(tickSize<=0 || point<=0){g_trade.PositionClose(ticket);return;}
+   const double wanted=(lock+InpAdditionalCostCash)/unitGain;
+   double next=side>0?MathCeil((open+wanted)/tickSize)*tickSize:
+                      MathFloor((open-wanted)/tickSize)*tickSize;
+   const double stopMinimum=(double)SymbolInfoInteger(_Symbol,SYMBOL_TRADE_STOPS_LEVEL)*point+tickSize;
+   const bool legal=(side>0?next<=tick.bid-stopMinimum:next>=tick.ask+stopMinimum);
+   const bool tighter=(side>0?next>sl+tickSize*.5:next<sl-tickSize*.5);
+   if(legal && tighter)
+   {
+      if(!g_trade.PositionModify(ticket,next,0) ||
+         (g_trade.ResultRetcode()!=TRADE_RETCODE_DONE &&
+          g_trade.ResultRetcode()!=TRADE_RETCODE_NO_CHANGES))g_trade.PositionClose(ticket);
+   }
+   else if(!StopProtectsCash(side,vol,open,sl,lock))
+      g_trade.PositionClose(ticket);
+}
+
+void MicroCurrentTick(const MqlTick &tick)
+{
+   const long m=(long)tick.time_msc/60000;
+   if(m!=g_entryMinute){g_entryMinute=m;g_entriesThisMinute=0;}
+   RefreshRisk(false);
+   // Read-only V7 shadow can evaluate eligible candidate signals with all
+   // order sending disabled. This does NOT imply MT5 compile or source parity.
+   if(!InpEnableDemoOrders)
+   {
+      if(InpV7ConditionalShadowResearch && !g_dataFault)
+      {
+         int candidate=0;
+         MicroSignal(tick,candidate);
+      }
+      return;
+   }
+   if(g_riskHalt || g_dayHalt){CloseOwnOnRisk();return;}
+   ulong ticket;ENUM_POSITION_TYPE type;double open,stop,vol;long openedMs;
+   if(OwnPosition(ticket,type,open,stop,vol,openedMs))
+   {ManageOwnPosition(tick);return;}
+   if(!InpEnableDemoOrders || g_dataFault || g_entriesThisMinute>=InpMaxEntriesPerMinute)return;
+   // Closed position does not automatically rearm on 5s only.
+   if(g_exitMs>0 && ((long)tick.time_msc-g_exitMs<InpV9RearmCooldownMs ||
+       (g_5s.startMs==g_exit5 && g_15s.startMs==g_exit15)))return;
+   int side=0;
+   if(MicroSignal(tick,side))MicroSendEntry(tick,side);
+}
+
+int OnInit()
+{
+   if(_Symbol!="XAUUSD" || InpLots<=0 || InpMaxEntriesPerMinute<1 || InpMaxEntriesPerMinute>4 ||
+      InpMaxHoldMs<1000 || InpBaseStopPricePoints<=0 ||
+      InpMaxIntendedLossCash<=InpMinNetProfitCash ||
+      InpPreferredNetProfitCash<=InpMinNetProfitCash ||
+      InpCapitalFloorPct<=0 || InpCapitalFloorPct>=100 ||
+      InpMaxPeakDrawdownPct<=0 || InpMaxPeakDrawdownPct>InpCapitalFloorPct ||
+      InpAdditionalCostCash<0 || InpExtraSlipReserveCash<0 ||
+      InpMaxQuoteGapMs<=0 || InpMaxSpreadPoints<=0 ||
+      InpMin5sObservedSpanMs<=0 || InpMin5sObservedSpanMs>=5000 ||
+      InpMinCompleted15SpanMs<=0 || InpMinCompleted15SpanMs>=15000 ||
+      InpMinActive15SpanMs<=0 || InpMinActive15SpanMs>=15000 ||
+      InpMaxCompleted15TailMs<=0 || InpMaxCompleted15TailMs>15000 ||
+      InpMinBuyStrong15sZ<0 || InpMinSellStrong15sZ<0 ||
+      InpMaxAdverse30sZ<0 ||
+      InpV9Min5ObservedMs<0 || InpV9Min5ObservedMs>=5000 ||
+      InpV9Min15ObservedMs<0 || InpV9Min15ObservedMs>=15000 ||
+      InpV9RearmCooldownMs<500 || InpV9RearmCooldownMs>3000 ||
+      InpV9MinBuyScore< -5 || InpV9MinSellScore< -5 ||
+      InpMinBasketMovePoints<=0 || InpMin15sStructurePoints<0 ||
+      InpBreakoutBufferPoints<0 || InpMinCompleted15s<2 ||
+      InpMinCompleted30s<InpMinCompleted15s || InpMinQuotes5s<1 ||
+      InpMaxSpreadShockRatio<1.0 || InpMinNormalizedBreakout<0 ||
+      InpMinDirectionalEff<=0 || InpMinDirectionalEff>1 ||
+      InpATRPeriod<2 || InpADXWilderPeriod<2 || InpEMAPeriod<2 ||
+      InpV5MinHistorySeconds<15 || InpV5MinHistorySeconds>180 ||
+      InpV5MinBuyPath< -2 || InpV5MinBuyPath>2 ||
+      InpV5MinSellPath< -2 || InpV5MinSellPath>2 ||
+      InpV5MinCoherence<0 || InpV5MinCoherence>1 ||
+      InpV5MaxSpreadRelative<1 ||
+      InpV5MinAdverseAgeMs<0 || InpV5MinAdverseAgeMs>30000 ||
+      InpV5AdversePathScore< -2 || InpV5AdversePathScore>0 ||
+      InpV5AdverseNetCash< -InpMaxIntendedLossCash || InpV5AdverseNetCash>0 ||
+      (InpV5EarlyAdverseResearch && !InpV5PathResearch) ||
+      (InpV5ProtectedHoldResearch &&
+       (!InpV5PathResearch || !InpExperimentalRunner)) ||
+      InpV5HoldBuyScore< -2 || InpV5HoldBuyScore>2 ||
+      InpV5HoldSellScore< -2 || InpV5HoldSellScore>2 ||
+      InpV6MinBuyPastCash< -2 || InpV6MinBuyPastCash>2 ||
+       InpV6MinSellPastCash< -2 || InpV6MinSellPastCash>2 ||
+       InpV6UncertaintyMultiplier<0 || InpV6UncertaintyMultiplier>5 ||
+       InpV6MinHoldIncrementCash< -0.5 || InpV6MinHoldIncrementCash>1.75 ||
+       (InpV6CashGateResearch && !InpV5PathResearch) ||
+       (InpV6HoldUtilityResearch &&
+        (!InpExperimentalRunner || !InpV5PathResearch || !InpV5ProtectedHoldResearch)) ||
+       InpV7MinBuyCash< -2 || InpV7MinBuyCash>2 ||
+        InpV7MinSellCash< -2 || InpV7MinSellCash>2 ||
+        InpV7SimilarityWidth<0.15 || InpV7SimilarityWidth>2.0 ||
+        InpV7MinEffectiveSamples<2 || InpV7MinEffectiveSamples>24 ||
+        InpV7UncertaintyMultiplier<0 || InpV7UncertaintyMultiplier>4 ||
+        (InpV7ConditionalGateResearch && !InpV5PathResearch) ||
+        InpMinM5ATRPrice<0 || InpDailyGrossBasePct<=0 ||
+      InpDailyGrossMaxPct<InpDailyGrossBasePct ||
+      InpProfitRecycleFrac<0 || InpProfitRecycleFrac>1 ||
+      InpMinMarginLevelPct<=0)return INIT_PARAMETERS_INCORRECT;
+   if(InpEnableDemoOrders &&
+     (ENUM_ACCOUNT_TRADE_MODE)AccountInfoInteger(ACCOUNT_TRADE_MODE)!=ACCOUNT_TRADE_MODE_DEMO)
+   {Print("R9 micro180: DEMO ONLY; production order mode refused");return INIT_PARAMETERS_INCORRECT;}
+   g_trade.SetExpertMagicNumber(InpMagic);
+   g_trade.SetDeviationInPoints(InpDeviationPoints);
+   g_trade.SetAsyncMode(false);
+   if(!g_trade.SetTypeFillingBySymbol(_Symbol))return INIT_FAILED;
+   g_hADX=iADXWilder(_Symbol,PERIOD_M1,InpADXWilderPeriod);
+   g_hEMA=iMA(_Symbol,PERIOD_M1,InpEMAPeriod,0,MODE_EMA,PRICE_CLOSE);
+   g_hATR1=iATR(_Symbol,PERIOD_M1,InpATRPeriod);
+   g_hATR5=iATR(_Symbol,PERIOD_M5,InpATRPeriod);
+   if(g_hATR5==INVALID_HANDLE)return INIT_FAILED;
+   g_riskKey="R9M180."+IntegerToString(AccountInfoInteger(ACCOUNT_LOGIN));
+   const double equity=AccountInfoDouble(ACCOUNT_EQUITY);
+   if(equity<=0 || !GVEnsure(g_riskKey+".base",equity) || !GVEnsure(g_riskKey+".peak",equity))return INIT_FAILED;
+   g_accountBase=GlobalVariableGet(g_riskKey+".base");
+   g_accountPeak=GlobalVariableGet(g_riskKey+".peak");
+   if(g_accountBase<=0 || g_accountPeak<=0)return INIT_FAILED;
+   RefreshRisk(true);
+   if(!EventSetTimer(1))return INIT_FAILED;
+   Print("R9 MICRO180 V9: four-lane executable OR, 180s source-ms, M1/M5 indicators shadow; MetaEditor compile/Python parity NOT certified");
+   return INIT_SUCCEEDED;
+}
+void OnDeinit(const int reason)
+{
+   EventKillTimer();
+   if(g_hADX!=INVALID_HANDLE)IndicatorRelease(g_hADX);
+   if(g_hEMA!=INVALID_HANDLE)IndicatorRelease(g_hEMA);
+   if(g_hATR1!=INVALID_HANDLE)IndicatorRelease(g_hATR1);
+   if(g_hATR5!=INVALID_HANDLE)IndicatorRelease(g_hATR5);
+   GlobalVariablesFlush();
+}
+void OnTick()
+{
+   MqlTick latest;
+   if(!SymbolInfoTick(_Symbol,latest) || latest.bid<=0 || latest.ask<latest.bid)return;
+   // Backfill every available real tick for features, but trade ONLY the latest.
+   if(!SyncQuoteHistory(latest))return;
+   if(g_lastQuoteMs!=(long)latest.time_msc)return;
+   MqlTick current;
+   if(!SymbolInfoTick(_Symbol,current) || current.time_msc!=latest.time_msc ||
+      current.bid!=latest.bid || current.ask!=latest.ask)return;
+   MicroCurrentTick(current);
+}
+void OnTimer()
+{
+   RefreshRisk(false);
+   if(!InpEnableDemoOrders)return;
+   if(g_riskHalt || g_dayHalt)CloseOwnOnRisk();
+   MqlTick latest;
+   if(!SymbolInfoTick(_Symbol,latest))return;
+   // Failsafe holding-time check even if no NewTick event is enqueued.
+   ulong ticket;ENUM_POSITION_TYPE type;double open,sl,vol;long openedMs;
+   if(OwnPosition(ticket,type,open,sl,vol,openedMs))
+   {
+      if((long)TimeTradeServer()*1000-openedMs>=InpMaxHoldMs ||
+         (g_riskHalt || g_dayHalt))g_trade.PositionClose(ticket);
+   }
+}
+void OnTradeTransaction(const MqlTradeTransaction &trans,
+                        const MqlTradeRequest &request,
+                        const MqlTradeResult &result)
+{
+   if(trans.type!=TRADE_TRANSACTION_DEAL_ADD || trans.deal==0)return;
+   if(!HistoryDealSelect(trans.deal))return;
+   if(HistoryDealGetString(trans.deal,DEAL_SYMBOL)!=_Symbol ||
+      (ulong)HistoryDealGetInteger(trans.deal,DEAL_MAGIC)!=InpMagic)return;
+   const ENUM_DEAL_ENTRY state=(ENUM_DEAL_ENTRY)HistoryDealGetInteger(trans.deal,DEAL_ENTRY);
+   if(state==DEAL_ENTRY_OUT || state==DEAL_ENTRY_OUT_BY || state==DEAL_ENTRY_INOUT)
+   {
+      g_exitMs=(long)HistoryDealGetInteger(trans.deal,DEAL_TIME_MSC);
+      g_exit5=g_5s.startMs;g_exit15=g_15s.startMs;
+      g_entryMs=0;g_peakObservedNet=-1e30;
+   }
+}
