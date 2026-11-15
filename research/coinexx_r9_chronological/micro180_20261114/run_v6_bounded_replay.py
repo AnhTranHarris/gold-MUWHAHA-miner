@@ -45,7 +45,7 @@ def execute():
     cfg=R9Config()
     def cash():return ResearchCash(k=1.,cost=.20,initial_capital=a.initial_capital,
                                     governor=not a.economic_control_ungoverned)
-    v6=V6Spec(min_buy_cash_edge=-.35,min_sell_cash_edge=-.35)
+    v6=V6Spec(min_buy_cash_edge=-.35,min_sell_cash_edge=-.35,audit_only=False)
     models={
         'v5_250ms_frozen_cash':PathLifecycleV5(cfg,cash(),spec,v5=V5Spec()),
         'v6_cash_prior_relaxed':PastOnlyCashMicroV6(cfg,cash(),spec,v6=v6),
