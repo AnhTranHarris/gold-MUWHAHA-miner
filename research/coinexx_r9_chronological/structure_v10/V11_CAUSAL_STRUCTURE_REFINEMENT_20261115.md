@@ -20,12 +20,20 @@ files are unchanged, enabling apples-to-apples experimental comparison.
 
 ### 1. Unresolved entry evidence rather than forced positive labels
 
-`RefinedStructure.profile(snapshot, side)` examines only **already completed**
-and contiguous S15, M1, and M5 observations. It assigns an uncertainty
-subtype when the existing V10 primary is UNKNOWN:
+`RefinedStructure.profile(snapshot, side, legacy_specialist)` examines
+the exact **V10 specialist router fallback**, which can be UNRESOLVED
+even when the primary market pattern is already recognised. It also uses
+only **already completed**, contiguous S15, M1 and M5 observations to
+subdivide remaining truly ambiguous cases. Its diagnostic categories are:
 
 | Subtype | Observable requirement |
 |---|---|
+| CHANGE_ALARM_NO_CONFIRMED_THESIS | Recognised CUSUM transition without a matched entry thesis |
+| ENTRY_SIDE_OPPOSES_CONFIRMED_TREND | Existing V9 entry direction opposes the observed micro trend |
+| NESTED_STRUCTURE_SIDE_MISMATCH | Nested HTF/micro structure exists, but V9 side is not covered by original router |
+| STRUCTURAL_EVENT_SIDE_MISMATCH | Breakout/retest/failure event exists on the other side of this V9 entry |
+| REVERSAL_CANDIDATE_NOT_CONFIRMED | Causal reversal candidate lacks completed specialist-side evidence |
+| BREAKOUT_PROBE_EXPIRED_UNCONFIRMED | Frozen breakout probe expired before confirmed acceptance |
 | QUOTE_DISCONTINUITY | Current quote gap invalid |
 | INSUFFICIENT_MICRO_EVIDENCE | Fewer than eight contiguous closed S15 bars |
 | INSUFFICIENT_PARENT_EVIDENCE | M5 unavailable and micro evidence weak/mixed |
@@ -37,9 +45,11 @@ subtype when the existing V10 primary is UNKNOWN:
 | MICRO_EXPANSION_PARENT_BALANCED | Strong S15, near-zero M5 |
 | MIXED_STRUCTURE_INSUFFICIENT | None of the above can justify a firm inference |
 
-These are *reasons* for the previously unresolved state, not profitable
-trading signals. **We do not report a fake reduction in the 48.01% primary
-UNKNOWN without independent label-quality evidence.** Each existing V9
+These are *reasons* for the previously unresolved **specialist router**
+state, not profitable trading signals. **The 48.01% was the share of V9
+entries with specialist=UNRESOLVED, not the share whose primary price
+pattern was literally UNKNOWN.** We do not present extra subtype names as
+an accuracy improvement without independent label-quality evidence. Each existing V9
 entry receives exactly one V11 profile record, which preserves its
 as-of-time snapshot and the evidence-source names.
 
