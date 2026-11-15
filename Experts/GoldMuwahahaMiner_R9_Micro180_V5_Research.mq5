@@ -1,6 +1,6 @@
 #property strict
 #property version "1.96"
-#property description "R9 micro180 research fork. Demo trading disabled by default. Millisecond CopyTicks, executable-side breakout, 180s bounded quote windows."
+#property description "R9 micro180 research fork. Demo trading disabled by default. Millisecond CopyTicks, executable-side breakout, 180s bounded 1s/250ms quote windows."
 #include <Trade/Trade.mqh>
 
 // RESEARCH FORK: original R9 v1.94 and its rollback remain unmodified.
@@ -96,6 +96,7 @@ double g_dayGrossLoss=0,g_dayGrossProfit=0,g_dayCharges=0;
 long g_lastRiskRefresh=0;
 long g_dayNumber=-1;
 bool g_riskHalt=false,g_dayHalt=false;
+#include "GoldMuwahahaR9Micro250.mqh"
 
 void BarReset(QBar &b,const MqlTick &t,const long start)
 {
@@ -128,6 +129,7 @@ void AcceptHistoricalQuote(const MqlTick &t)
    if(g_lastQuoteMs>0 && ms<g_lastQuoteMs){g_dataFault=true;return;}
    g_lastQuoteGap=(g_lastQuoteMs>0?(int)(ms-g_lastQuoteMs):0);
    g_prevQuoteMs=g_lastQuoteMs;g_lastQuoteMs=ms;
+   if(InpV5PathResearch)V5QuarterUpdate(t);
    const long s=ms/1000*1000, f=ms/5000*5000,
               q=ms/15000*15000, h=ms/30000*30000;
    if(!g_haveSecond){BarReset(g_second,t,s);g_haveSecond=true;}
@@ -309,6 +311,8 @@ bool V5QuotePathScore(const int side,const MqlTick &t,double &score,
    spreadRatio=((t.ask-t.bid)/point)/MathMax(1.0,medianSpread);
    const double intensity=MathMin(3.0,
       (updates5/5.0)/MathMax(0.05,updates180/180.0));
+   double microEff=0.0,microCoh=0.0;
+   V5QuarterEvidence(side,now,microEff,microCoh); // no synthetic missing quotes
    double bias=0.0,pdi=0.0,mdi=0.0,ema1=0.0,ema2=0.0,atr1=0.0;
    if(Read1(g_hADX,1,1,pdi) && Read1(g_hADX,2,1,mdi) &&
       Read1(g_hEMA,0,1,ema1) && Read1(g_hEMA,0,2,ema2) &&
@@ -321,11 +325,13 @@ bool V5QuotePathScore(const int side,const MqlTick &t,double &score,
    if(side>0)
       score=0.36*eff+0.24*tailScore+0.28*coherence+0.10*bias+
             0.05*MathMin(2.0,intensity-1.0)-
-            0.27*MathMax(0.0,spreadRatio-1.0)-0.20*rev;
+            0.27*MathMax(0.0,spreadRatio-1.0)-0.20*rev+
+            0.12*microEff+0.08*(microCoh-0.50);
    else
       score=0.34*eff+0.26*tailScore+0.26*coherence+0.12*bias+
             0.06*MathMin(2.0,intensity-1.0)-
-            0.30*MathMax(0.0,spreadRatio-1.0)-0.20*rev;
+            0.30*MathMax(0.0,spreadRatio-1.0)-0.20*rev+
+            0.12*microEff+0.08*(microCoh-0.50);
    return true;
 }
 
