@@ -1,0 +1,40 @@
+name: R9 Micro180 V9 executable OR contracts (research only)
+on:
+  push:
+    branches:
+      - carson/r9-micro180-v9-volume-executable-or-20261114
+    paths:
+      - 'research/coinexx_r9_chronological/micro180_20261114/**'
+      - 'Experts/GoldMuwahahaMiner_R9_Micro180_V9_Research.mq5'
+      - '.github/workflows/r9_micro180_v9_volume_executable_contracts.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded-source-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run inherited Micro180 and new V9 deterministic contract tests (NO market-data downloads)
+        shell: bash
+        run: |
+          cd research/coinexx_r9_chronological
+          PYTHONPATH=src:variable_cash_horizon_20261114:dual_basket_20261114:micro180_20261114 \
+            python -m unittest discover -s micro180_20261114 -p 'test_*.py' -v
+      - name: Guard original production source and demo-disabled research forks
+        shell: bash
+        run: |
+          test "$(git rev-parse HEAD:Experts/GoldMuwahahaMiner_R9_HybridGate.mq5)" = "07222b1a3800c9cc826abe10a4ce6afbd97b0af5"
+          test "$(git rev-parse HEAD:Experts/GoldMuwahahaMiner_R9_Micro180_V8_Research.mq5)" = "0c52da7ea7e22701e607181380a4f49f9aad78eb"
+          grep -q 'InpEnableDemoOrders        = false' Experts/GoldMuwahahaMiner_R9_Micro180_V9_Research.mq5
+          grep -q 'InpV9QuantScoreVeto        = false' Experts/GoldMuwahahaMiner_R9_Micro180_V9_Research.mq5
+          grep -q 'InpMaxIntendedLossCash     = 2.00' Experts/GoldMuwahahaMiner_R9_Micro180_V9_Research.mq5
+          grep -q 'InpCapitalFloorPct        = 25.0' Experts/GoldMuwahahaMiner_R9_Micro180_V9_Research.mq5
+          grep -q 'iADXWilder' Experts/GoldMuwahahaMiner_R9_Micro180_V9_Research.mq5
+          grep -q 'CopyTicks' Experts/GoldMuwahahaMiner_R9_Micro180_V9_Research.mq5
+          ! grep -qE 'DownloadTicks|Downloader|CreateRawTickCache' research/coinexx_r9_chronological/micro180_20261114/v9_volume_router.py
+      - name: State native compiler and live-fills NOT verified
+        run: echo "CI verifies Python and source contracts only; real MetaEditor compile and Coinexx demo parity remain blocked."
