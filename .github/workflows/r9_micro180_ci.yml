@@ -1,0 +1,34 @@
+name: R9 micro180 deterministic source checks
+on:
+  push:
+    branches: [carson/r9-micro180-asymmetric-entry-exit-indicators-20261114]
+    paths:
+      - 'research/coinexx_r9_chronological/micro180_20261114/**'
+      - 'Experts/GoldMuwahahaMiner_R9_Micro180_Research.mq5'
+      - '.github/workflows/r9_micro180_ci.yml'
+  workflow_dispatch:
+jobs:
+  python-research-invariants:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Source-state static checks and Python syntax
+        run: |
+          python -m compileall -q research/coinexx_r9_chronological/micro180_20261114
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('Experts/GoldMuwahahaMiner_R9_Micro180_Research.mq5').read_text()
+          assert 'InpEnableDemoOrders        = false' in p
+          assert 'ACCOUNT_TRADE_MODE_DEMO' in p
+          assert 'CopyTicks' in p and 'iADXWilder' in p and 'OrderCalcProfit' in p
+          assert p.count('{')==p.count('}')
+          PY
+      - name: Invariants (no market downloads)
+        env:
+          PYTHONPATH: research/coinexx_r9_chronological/src:research/coinexx_r9_chronological/variable_cash_horizon_20261114
+        run: python -m unittest discover -s research/coinexx_r9_chronological/micro180_20261114 -p 'test_micro180.py' -v
