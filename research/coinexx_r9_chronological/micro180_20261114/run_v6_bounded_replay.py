@@ -25,7 +25,11 @@ def execute():
     p.add_argument('--sha256',default='',help='Optional expected SHA256 for whole original compressed file')
     p.add_argument('--output',required=True,type=Path)
     p.add_argument('--profile',choices=('fast','strict'),default='fast')
+    p.add_argument('--initial-capital',type=float,default=100_000.)
+    p.add_argument('--economic-control-ungoverned',action='store_true',
+        help='Explicit ungoverned comparator ONLY; not deployment comparable')
     a=p.parse_args()
+    if a.initial_capital<=0:raise ValueError('capital must be positive')
     if a.limit<=0:raise ValueError('Whole-month execution is a separate approved workload; use a bounded limit')
     if a.sha256:
         observed=hashlib.file_digest(a.ticks.open('rb'),'sha256').hexdigest()
@@ -39,7 +43,8 @@ def execute():
         use_m1_directional_veto=False)
     spec=base if a.profile=='strict' else fast
     cfg=R9Config()
-    def cash():return ResearchCash(k=1.,cost=.20,initial_capital=100_000.,governor=False)
+    def cash():return ResearchCash(k=1.,cost=.20,initial_capital=a.initial_capital,
+                                    governor=not a.economic_control_ungoverned)
     v6=V6Spec(min_buy_cash_edge=-.35,min_sell_cash_edge=-.35)
     models={
         'v5_250ms_frozen_cash':PathLifecycleV5(cfg,cash(),spec,v5=V5Spec()),
@@ -78,7 +83,9 @@ def execute():
         'elapsed_s':round(time.perf_counter()-start,2),
         'cost_in_account_currency':.20,
         'k_in_account_currency_per_one_xau_move':1.,
-        'governor_on':False,'actual_broker_fills':False,'auc_used':False,
+        'governor_on':not a.economic_control_ungoverned,
+        'initial_capital_cash':a.initial_capital,
+        'actual_broker_fills':False,'auc_used':False,
         'all_months_tested':False,'in_sample':True,
         'claim':'NO POSITIVE-NET OR WHOLE-SYSTEM THROUGHPUT CERTIFICATION',
         'arms':result}
