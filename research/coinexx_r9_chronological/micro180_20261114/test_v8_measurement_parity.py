@@ -102,7 +102,7 @@ class MeasurementParityV8(unittest.TestCase):
     def test_mt5_native_repair_default_and_expression_contract(self):
         repo=Path(__file__).resolve().parents[3]
         ea=repo/'Experts'/'GoldMuwahahaMiner_R9_Micro180_V8_Research.mq5'
-        inc=repo/'Experts'/'GoldMuwahahaR9V7ConditionedCash.mqh'
+        inc=repo/'Experts'/'GoldMuwahahaR9V8ConditionedCash.mqh'
         if not ea.exists() or not inc.exists():
             self.skipTest('native files not present in local code-only checkout; CI verifies')
         text=ea.read_text()
@@ -124,6 +124,7 @@ class MeasurementParityV8(unittest.TestCase):
             'g_exitMs>0',
             'iADXWilder','iATR','iMA'):
             with self.subTest(token=token):self.assertIn(token,text)
+        self.assertIn('GoldMuwahahaR9V8ConditionedCash.mqh',text)
         header=inc.read_text()
         self.assertIn('q[i].firstMs-q[i-1].lastMs>2000',header)
         self.assertIn('ArrayResize(history,n)',header)
