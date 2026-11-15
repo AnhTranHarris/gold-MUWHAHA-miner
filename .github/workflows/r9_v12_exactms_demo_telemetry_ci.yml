@@ -40,5 +40,18 @@ jobs:
           grep -Fq 'ACCOUNT_TRADE_MODE_DEMO' Experts/GoldMuwahahaR9V12DemoTelemetryObserver.mq5
           grep -Fq 'PrefixAt("DEAL"' Experts/GoldMuwahahaR9V12DemoTelemetryObserver.mq5
           ! grep -E 'OrderSend\(|OrderSendAsync\(|PositionClose\(|OrderModify\(|trade\.Buy\(|trade\.Sell\(' Experts/GoldMuwahahaR9V12DemoTelemetryObserver.mq5
+      - name: Package exact Python V12 source only (no market data)
+        uses: actions/upload-artifact@v4
+        with:
+          name: v12-exact-source-20261115
+          retention-days: 1
+          if-no-files-found: error
+          path: |
+            research/coinexx_r9_chronological/src/
+            research/coinexx_r9_chronological/variable_cash_horizon_20261114/*.py
+            research/coinexx_r9_chronological/dual_basket_20261114/*.py
+            research/coinexx_r9_chronological/micro180_20261114/*.py
+            research/coinexx_r9_chronological/structure_v10/*.py
+            research/coinexx_r9_chronological/telemetry_v12/*.py
       - name: Scope
         run: echo 'Research-only exact-ms simulation and read-only demo telemetry tests. No MetaEditor compile, broker deal data, live trading, or independent OOS certification.'
