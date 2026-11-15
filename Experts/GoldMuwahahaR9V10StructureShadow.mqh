@@ -26,7 +26,7 @@ private:
    bool m_ready;
    long m_lastSecond,m_lastQuoteMs,m_probeMs,m_lastLogMinute;
    double m_prevBid,m_prevAsk,m_boundary,m_zoneLow,m_zoneHigh;
-   int m_probeSide,m_phase,m_confirm,m_parent,m_micro;
+   int m_probeSide,m_phase,m_confirm,m_parent,m_micro,m_m1Dir;
    double m_bbRatio,m_adxValue;
 
    bool BufferOne(const int handle,const int buffer,const int shift,double &value)
@@ -149,12 +149,22 @@ private:
    void RefreshIndicators()
    {
       double adx=0.,atr=0.,upper=0.,lower=0.;
-      m_adxValue=0.;m_bbRatio=-1.;
+      m_adxValue=0.;m_bbRatio=-1.;m_m1Dir=0;
       if(BufferOne(m_adx,0,1,adx))m_adxValue=adx;
       if(BufferOne(m_atr[0],0,1,atr) && atr>0 &&
          BufferOne(m_bands,1,1,upper) &&
          BufferOne(m_bands,2,1,lower))
          m_bbRatio=(upper-lower)/atr;
+      double plusDI=0.,minusDI=0.,emaNow=0.,emaPrior=0.;
+      if(atr>0 && BufferOne(m_adx,1,1,plusDI) &&
+         BufferOne(m_adx,2,1,minusDI) &&
+         BufferOne(m_ema,0,1,emaNow) && BufferOne(m_ema,0,2,emaPrior))
+      {
+         const double score=0.7*(plusDI-minusDI)/20.+
+                            0.3*((emaNow-emaPrior)/atr)/0.05;
+         if(score>0.25)m_m1Dir=1;
+         else if(score< -0.25)m_m1Dir=-1;
+      }
    }
 
 public:
@@ -164,7 +174,7 @@ public:
       m_probeMs=-1;m_lastLogMinute=-1;
       m_prevBid=0.;m_prevAsk=0.;m_boundary=0.;
       m_zoneLow=0.;m_zoneHigh=0.;
-      m_probeSide=0;m_phase=0;m_confirm=0;m_parent=0;m_micro=0;
+      m_probeSide=0;m_phase=0;m_confirm=0;m_parent=0;m_micro=0;m_m1Dir=0;
       m_bbRatio=-1.;m_adxValue=0.;
       for(int f=0;f<5;++f)
       {m_atr[f]=INVALID_HANDLE;m_ownAtr[f]=false;m_lastClosedBar[f]=0;}
@@ -206,6 +216,7 @@ public:
       if(!m_ready)return;
       const long now=(long)tick.time_msc;
       if(now<m_lastQuoteMs || tick.bid<=0 || tick.ask<tick.bid)return;
+      const int priorPhase=m_phase;
       if(m_lastQuoteMs>0 && now-m_lastQuoteMs>2500)
       {m_phase=0;m_confirm=0;}
       const long minute=now/60000;
@@ -237,7 +248,6 @@ public:
       }
       if(m_phase!=0 && now-m_probeMs>30000)
       {m_phase=0;m_confirm=0;}
-      const int priorPhase=m_phase;
       if(m_phase==0 && m_prevBid>0.)
       {
          const double mid=(tick.bid+tick.ask)*.5;
@@ -268,8 +278,8 @@ public:
                                  m_adxValue>0 && m_adxValue<18.);
          const int nested=(m_parent!=0 && m_micro!=0?
                            (m_parent==m_micro?1:-1):0);
-         PrintFormat("R9 V10 STRUCTURE SHADOW ms=%I64d phase=%d side=%d zones=%d parent=%d micro=%d nested=%d compression=%d bbATR=%.3f adx=%.2f Bid=%.5f Ask=%.5f NO ORDER",
-                    now,m_phase,m_probeSide,m_zones,m_parent,m_micro,nested,
+         PrintFormat("R9 V10 STRUCTURE SHADOW ms=%I64d phase=%d side=%d zones=%d parentM5=%d m1=%d micro=%d nested=%d compression=%d bbATR=%.3f adx=%.2f Bid=%.5f Ask=%.5f NO ORDER",
+                    now,m_phase,m_probeSide,m_zones,m_parent,m_m1Dir,m_micro,nested,
                     (int)compression,m_bbRatio,m_adxValue,tick.bid,tick.ask);
       }
       m_lastSecond=second;m_lastQuoteMs=now;m_prevBid=tick.bid;m_prevAsk=tick.ask;
