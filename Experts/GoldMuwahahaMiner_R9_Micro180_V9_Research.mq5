@@ -131,6 +131,7 @@ double g_accountBase=0,g_accountPeak=0,g_dayStartEquity=0;
 double g_dayGrossLoss=0,g_dayGrossProfit=0,g_dayCharges=0;
 long g_lastRiskRefresh=0;
 long g_dayNumber=-1;
+long g_v9LastShadowLoggedSecond=-1;
 bool g_riskHalt=false,g_dayHalt=false;
 #include "GoldMuwahahaR9Micro250.mqh"
 
@@ -431,7 +432,7 @@ bool MicroSignal(const MqlTick &t,int &side)
    const double move15=(g_15s.bc+g_15s.ac-g_15s.bo-g_15s.ao)/(2.0*point);
    double highB15=-DBL_MAX,highB30=-DBL_MAX,lowA15=DBL_MAX,lowA30=DBL_MAX;
    double spreadSum=0,travel=0;
-   double oldestB=0,oldestA=0,newestB=0,newestA=0;
+   double oldestB=0,oldestA=0,newestB=0,newestA=0,previousBid=0,previousAsk=0;
    long recentQuote=-1,previousStart=-1;
    int n15=0,n30=0;
    for(int off=0;off<g_sn;++off)
@@ -441,7 +442,8 @@ bool MicroSignal(const MqlTick &t,int &side)
       if(previousStart>=0 && previousStart-b.startMs>2000)return false;
       if(recentQuote<0){recentQuote=b.lastMs;newestB=b.bc;newestA=b.ac;}
       previousStart=b.startMs;
-      if(n30>0)travel+=MathAbs(b.bc-newestB)+MathAbs(b.ac-newestA);
+      if(n30>0)travel+=MathAbs(b.bc-previousBid)+MathAbs(b.ac-previousAsk);
+      previousBid=b.bc;previousAsk=b.ac;
       oldestB=b.bc;oldestA=b.ac;
       highB30=MathMax(highB30,b.bc);lowA30=MathMin(lowA30,b.ac);n30++;
       if(b.startMs>=floorSecond-15000)
@@ -737,14 +739,23 @@ void MicroCurrentTick(const MqlTick &tick)
    const long m=(long)tick.time_msc/60000;
    if(m!=g_entryMinute){g_entryMinute=m;g_entriesThisMinute=0;}
    RefreshRisk(false);
-   // Read-only V7 shadow can evaluate eligible candidate signals with all
-   // order sending disabled. This does NOT imply MT5 compile or source parity.
+   // Read-only V9 shadow evaluates actual source-executable BUY/SELL
+   // candidates but cannot send orders unless demo trading is explicitly ON.
    if(!InpEnableDemoOrders)
    {
-      if(InpV7ConditionalShadowResearch && !g_dataFault)
+      if(!g_dataFault)
       {
          int candidate=0;
-         MicroSignal(tick,candidate);
+         if(MicroSignal(tick,candidate))
+         {
+            const long candidateSecond=(long)tick.time_msc/1000;
+            if(candidateSecond!=g_v9LastShadowLoggedSecond)
+            {
+               g_v9LastShadowLoggedSecond=candidateSecond;
+               PrintFormat("V9 SHADOW ms=%I64d side=%d Bid=%.5f Ask=%.5f, original source quotes, NO ORDER",
+                  (long)tick.time_msc,candidate,tick.bid,tick.ask);
+            }
+         }
       }
       return;
    }
