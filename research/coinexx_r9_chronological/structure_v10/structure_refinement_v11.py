@@ -269,6 +269,8 @@ class InvalidationObserver:
         self.max_gap_ms=max_gap_ms
         self.current_second=None
         self.current_liquidation=None
+        self.current_mid=None
+        self.current_spread=None
         self.current_last_ms=None
         self.consecutive_closed=0
         self.confirmed=False
@@ -283,11 +285,29 @@ class InvalidationObserver:
         now=t.time_msc
         second=now//1000
         value=t.bid_u if self.thesis.side>0 else t.ask_u
+        mid=(t.bid_u+t.ask_u)/2.
+        spread=t.ask_u-t.bid_u
+        if spread<0:raise ValueError("Invalid crossed Bid/Ask")
+        entry_spread=abs(self.thesis.entry_execution-self.thesis.entry_liquidation)
+        # Quote widening is not evidence of a structural market break.
+        # Existing broker hard stops remain fully independent of this observer.
+        if spread>max(6.,3.*entry_spread):
+            self.current_second=second
+            self.current_liquidation=value
+            self.current_mid=mid
+            self.current_spread=spread
+            self.current_last_ms=now
+            self.consecutive_closed=0
+            self.first_breach_ms=None
+            self.reasons["SPREAD_STRESS_RESET"]+=1
+            return "SPREAD_STRESS_UNCERTAIN"
         if self.current_last_ms is not None:
             if now<self.current_last_ms:raise ValueError("Nonmonotone quote")
             if now-self.current_last_ms>self.max_gap_ms:
                 self.current_second=second
                 self.current_liquidation=value
+                self.current_mid=mid
+                self.current_spread=spread
                 self.current_last_ms=now
                 self.consecutive_closed=0
                 self.first_breach_ms=None
@@ -298,7 +318,8 @@ class InvalidationObserver:
         if second!=self.current_second:
             if second-self.current_second!=1:
                 self.consecutive_closed=0
-            elif self._breached(self.current_liquidation):
+            elif self._breached(self.current_liquidation,
+                                self.current_mid,self.current_spread):
                 self.consecutive_closed+=1
             else:
                 self.consecutive_closed=0
@@ -308,19 +329,27 @@ class InvalidationObserver:
                 self.reasons["CONFIRMED"]+=1
                 self.current_last_ms=now
                 self.current_liquidation=value
+                self.current_mid=mid
+                self.current_spread=spread
                 return "CONFIRMED_INVALIDATION"
         self.current_last_ms=now
         self.current_liquidation=value
-        if self._breached(value):
+        self.current_mid=mid
+        self.current_spread=spread
+        if self._breached(value,mid,spread):
             if self.first_breach_ms is None:self.first_breach_ms=now
             return "BREACH_PENDING_CLOSED_CONFIRMATION"
         self.first_breach_ms=None
         return "STRUCTURE_INTACT"
 
-    def _breached(self,liq):
+    def _breached(self,liq,mid,spread):
         s=self.thesis
-        return (liq<s.invalidation_level if s.side>0 else
-                liq>s.invalidation_level)
+        if liq is None or mid is None or spread is None:return False
+        entry_spread=abs(s.entry_execution-s.entry_liquidation)
+        if spread>max(6.,3.*entry_spread):return False
+        if s.side>0:
+            return liq<s.invalidation_level and mid<s.frozen_low
+        return liq>s.invalidation_level and mid>s.frozen_high
 
 
 def freeze_thesis(structure:RefinedStructure,side,t):
