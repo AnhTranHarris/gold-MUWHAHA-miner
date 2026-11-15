@@ -37,5 +37,17 @@ jobs:
           grep -q 'InpV10StructureShadow     = false' Experts/GoldMuwahahaMiner_R9_Micro180_V9_Research.mq5
           grep -q 'SHADOW_NO_ORDER_OR_EXIT_EFFECT' research/coinexx_r9_chronological/structure_v10/structure_overlay_v11.py
           ! grep -rE 'download_ticks|ticks\.download|OrderSend|CTrade|PositionClose' research/coinexx_r9_chronological/structure_v10/structure_refinement_v11.py
+      - name: Package exact source only for bounded local Coinexx validation
+        uses: actions/upload-artifact@v4
+        with:
+          name: r9-v11-source-exact-no-market-data
+          retention-days: 1
+          if-no-files-found: error
+          path: |
+            research/coinexx_r9_chronological/src/
+            research/coinexx_r9_chronological/micro180_20261114/*.py
+            research/coinexx_r9_chronological/dual_basket_20261114/*.py
+            research/coinexx_r9_chronological/variable_cash_horizon_20261114/*.py
+            research/coinexx_r9_chronological/structure_v10/*.py
       - name: Qualification
         run: echo 'No MetaEditor compile or real Coinexx nine-month re-evaluation in this CI.'
