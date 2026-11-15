@@ -125,6 +125,7 @@ class ProtectedZoneBank:
               for z in self.active(now,kind)]
         for z in base_zones:
             if z.kind!=kind or z.confirmed_ms>now:continue
+            if now-z.last_ms>180_000:continue  # micro levels need recency
             # Low-timeframe fallback only; high timeframes live in their
             # own protected bank. Avoid duplicate unversioned HTF entries.
             if set(z.sources).intersection(TF_NAMES.values()):continue
@@ -324,8 +325,13 @@ class InvalidationObserver:
 
 def freeze_thesis(structure:RefinedStructure,side,t):
     if side not in (-1,1):raise ValueError("side")
+    # Research-zone reference is not broker SL: ignore far, nonlocal levels.
+    # Normalize the maximum plausible structural reference by completed M1
+    # volatility without searching hyperparameters on realized PnL.
+    atr_m1=structure.vol[60_000] or 0.
+    max_span=min(300.,max(20.,3.*atr_m1))
     ref=structure.bank.frozen_reference(side,t.bid_u,t.ask_u,t.time_msc,
-                                        structure.zones)
+                                        structure.zones,max_span=max_span)
     liq=t.bid_u if side>0 else t.ask_u
     execution=t.ask_u if side>0 else t.bid_u
     if ref is None:
