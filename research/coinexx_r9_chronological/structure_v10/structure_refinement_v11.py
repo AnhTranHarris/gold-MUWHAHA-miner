@@ -47,6 +47,8 @@ class PersistentZone:
 @dataclass(frozen=True)
 class EvidenceProfile:
     primary: str
+    original_specialist: str
+    unresolved_at_router: bool
     subtype: str
     reason: str
     evidence_sources: tuple[str,...]
@@ -185,9 +187,17 @@ class RefinedStructure(CausalMarketStructure):
         travel=sum(abs(w[i+1].c-w[i].c) for i in range(need-1))
         return (w[-1].c-w[0].c)/max(1.,travel)
 
-    def profile(self,snap,side):
-        """Subtype UNKNOWN without manufacturing a strong directional label."""
+    def profile(self,snap,side,legacy_specialist=None):
+        """Explain the actual V10 *router* fallback, not merely UNKNOWN pattern.
+
+        The original audit counts legacy_specialist==UNRESOLVED. V10 can
+        observe a REGIME_TRANSITION, REVERSAL_CANDIDATE, or trend state
+        yet still fall into the UNRESOLVED specialist default. Treating
+        only snap.pattern==UNKNOWN as unresolved was an attribution bug.
+        """
         if side not in (-1,1):raise ValueError("side")
+        unresolved=(legacy_specialist=="UNRESOLVED" if legacy_specialist is not None
+                    else snap.pattern in ("UNKNOWN","UNKNOWN_STALE"))
         micro=self._efficiency(15_000)
         parent=self._efficiency(300_000)
         sources=[]
@@ -198,12 +208,31 @@ class RefinedStructure(CausalMarketStructure):
             q=self.closed[tf]
             if q and self.now_ms is not None and self.now_ms-q[-1].last_ms<3*tf:
                 sources.append("COMPLETED_"+name)
-        if snap.pattern!="UNKNOWN" and snap.pattern!="UNKNOWN_STALE":
-            subtype="PREVIOUSLY_RESOLVED"
-            reason="Original V10 specialist classification retained"
+        if not unresolved:
+            subtype="PREVIOUSLY_ROUTED"
+            reason="Original V10 specialist has a named routing decision"
         elif snap.pattern=="UNKNOWN_STALE":
             subtype="QUOTE_DISCONTINUITY"
             reason="Current quote gap violates original V10 observation clock"
+        elif snap.pattern=="REGIME_TRANSITION":
+            subtype="CHANGE_ALARM_NO_CONFIRMED_THESIS"
+            reason="CUSUM alarm observed but no confirmed matching entry specialist"
+        elif snap.pattern=="REVERSAL_CANDIDATE":
+            subtype="REVERSAL_CANDIDATE_NOT_CONFIRMED"
+            reason="Local reversal signal lacks complete specialist-side evidence"
+        elif snap.pattern=="BREAKOUT_UNCONFIRMED":
+            subtype="BREAKOUT_PROBE_EXPIRED_UNCONFIRMED"
+            reason="Past-only breakout probe expired without acceptance"
+        elif snap.pattern=="TREND_CONTINUATION" and snap.micro_direction==-side:
+            subtype="ENTRY_SIDE_OPPOSES_CONFIRMED_TREND"
+            reason="Existing V9 entry opposes observed micro trend direction"
+        elif snap.pattern=="NESTED_PULLBACK":
+            subtype="NESTED_STRUCTURE_SIDE_MISMATCH"
+            reason="Parent/micro disagreement not routed for this actual V9 side"
+        elif snap.pattern in ("BREAKOUT_PROBE","BREAKOUT_RETEST",
+                             "FAILED_BREAKOUT","BREAKOUT_ACCEPTED"):
+            subtype="STRUCTURAL_EVENT_SIDE_MISMATCH"
+            reason="Observed breakout phase is not approved for this entry side"
         elif micro is None:
             subtype="INSUFFICIENT_MICRO_EVIDENCE"
             reason="Insufficient contiguous completed S15 observations"
@@ -232,9 +261,10 @@ class RefinedStructure(CausalMarketStructure):
         else:
             subtype="MIXED_STRUCTURE_INSUFFICIENT"
             reason="Confirmed observations do not isolate a single mechanism"
-        self.profile_counts[snap.pattern]+=1
+        self.profile_counts[(snap.pattern,legacy_specialist)]+=1
         self.subtype_counts[subtype]+=1
-        return EvidenceProfile(snap.pattern,subtype,reason,tuple(sources),
+        return EvidenceProfile(snap.pattern,legacy_specialist or "UNSPECIFIED",
+                               bool(unresolved),subtype,reason,tuple(sources),
                                None if micro is None else round(micro,4),
                                None if parent is None else round(parent,4),
                                snap.quote_gap_ms,
