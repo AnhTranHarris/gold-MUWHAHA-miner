@@ -178,7 +178,7 @@ void AcceptHistoricalQuote(const MqlTick &t)
    if(g_lastQuoteMs>0 && ms<g_lastQuoteMs){g_dataFault=true;return;}
    g_lastQuoteGap=(g_lastQuoteMs>0?(int)(ms-g_lastQuoteMs):0);
    g_prevQuoteMs=g_lastQuoteMs;g_lastQuoteMs=ms;
-   if(InpV5PathResearch)V5QuarterUpdate(t);
+   V5QuarterUpdate(t); // always maintain bounded source-observed 250ms candles for V9 indicator shadow
    const long s=ms/1000*1000, f=ms/5000*5000,
               q=ms/15000*15000, h=ms/30000*30000;
    if(!g_haveSecond){BarReset(g_second,t,s);g_haveSecond=true;}
@@ -403,12 +403,16 @@ double V9DirectionalQuoteScore(const int side,const MqlTick &t,
    }
    // 180s prior CLOSED 1s history is already stored in g_s. Score uses the
    // nearest 15/30 causal extremes, real executable sides and M1 indicators.
+   double quarterEff=0.0,quarterCoh=0.0;
+   V5QuarterEvidence(side,(long)t.time_msc,quarterEff,quarterCoh);
    const double x15=MathMax(-3.0,MathMin(3.0,breakout15/3.0));
    const double x30=MathMax(-3.0,MathMin(3.0,breakout30/3.0));
    if(side>0)
-      return 0.27*x15+0.08*x30+0.45*execEfficiency+0.08*nativeBias-
+      return 0.27*x15+0.08*x30+0.45*execEfficiency+0.08*nativeBias+
+             0.12*quarterEff+0.08*(quarterCoh-0.50)-
              0.20*MathMax(0,spreadStress-1.0);
-   return 0.22*x15+0.12*x30+0.46*execEfficiency+0.10*nativeBias-
+   return 0.22*x15+0.12*x30+0.46*execEfficiency+0.10*nativeBias+
+          0.12*quarterEff+0.08*(quarterCoh-0.50)-
           0.24*MathMax(0,spreadStress-1.0);
 }
 bool MicroSignal(const MqlTick &t,int &side)
