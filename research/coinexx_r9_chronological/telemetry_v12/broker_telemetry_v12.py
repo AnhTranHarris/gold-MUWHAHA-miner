@@ -122,7 +122,9 @@ def audit(path:Path)->dict:
       'latency_unavailable_reason':'Request send timestamp not captured; REQUEST callback is after trade-server response. Local monotonic callback clocks cannot be joined to server deal milliseconds without independent clock synchronization.',
       'callback_quote_not_authoritative_deal_quote':True,
       'actual_strategy_automation_not_enabled':True,
-      'quality_pass_for_execution_inference':bool(deals and not dropped and not issues and observed),
+      'quality_pass_for_execution_inference':bool(deals and not dropped and not issues
+                                         and not unmatched and not ambiguous
+                                         and len(observed)==len(deals)),
       'not_financial_performance_or_order_execution':True,
     }
 
