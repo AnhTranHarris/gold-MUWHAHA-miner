@@ -126,6 +126,7 @@ class CausalMarketStructure:
         self.spread = 0
         self.breakout = None
         self.last_zone_attempt = {}
+        self._zone_inside = {}  # bounded by surviving zone ids
         self.dc_direction = 0
         self.dc_extreme = None
         self.dc_last_change_ms = -1
@@ -227,7 +228,8 @@ class CausalMarketStructure:
         if len(self.zones)>self.zone_cap:
             self.zones.sort(key=lambda z:(len(z.sources)*2+min(z.touches,8),
                                           z.last_ms))
-            self.zones.pop(0)
+            expired=self.zones.pop(0)
+            self._zone_inside.pop(expired.id,None)
         self.counters["confirmed_"+kind]+=1
 
     def _refresh_nearest(self, mid, now):
@@ -237,6 +239,15 @@ class CausalMarketStructure:
                    and now-z.last_ms <= 14*86400000]
             self.nearest[kind]=(min(valid,key=lambda z:abs(z.center-mid))
                                 if valid else None)
+            z=self.nearest[kind]
+            if z is not None:
+                inside=(z.low<=mid<=z.high)
+                was_inside=self._zone_inside.get(z.id,False)
+                if inside and not was_inside and now-z.last_test_ms>=5000:
+                    z.last_test_ms=now
+                    z.touches+=1
+                    self.counters["zone_retest_"+kind]+=1
+                self._zone_inside[z.id]=inside
 
     def _directional_change(self,t):
         mid=(t.bid_u+t.ask_u)/2.
@@ -299,15 +310,29 @@ class CausalMarketStructure:
                 else:return
             elif age>30000:
                 self.breakout=None
-            elif e["phase"]=="PROBE":
+            elif e["phase"] in ("PROBE","ACCEPTED","RETEST","RETEST_CONFIRMED"):
                 failed=(t.bid_u<e["zone_low"] if e["side"]>0
                         else t.ask_u>e["zone_high"])
                 if failed:
                     e["phase"]="FAILED"
                     self.counters["false_break_detected"]+=1
                     return
-                if age>15000:
+                if e["phase"]=="PROBE" and age>15000:
                     e["phase"]="EXPIRED";return
+                # Retest is a price-side OBSERVATION after acceptance.
+                # The previously frozen boundary and zone do not move.
+                width=max(1.,e["zone_high"]-e["zone_low"])
+                price=t.bid_u if e["side"]>0 else t.ask_u
+                approach=(price<=e["boundary"]+.5*width if e["side"]>0
+                          else price>=e["boundary"]-.5*width)
+                resume=(price>e["boundary"]+width if e["side"]>0
+                        else price<e["boundary"]-width)
+                if e["phase"]=="ACCEPTED" and approach:
+                    e["phase"]="RETEST"
+                    self.counters["breakout_retest_seen"]+=1
+                elif e["phase"]=="RETEST" and resume:
+                    e["phase"]="RETEST_CONFIRMED"
+                    self.counters["breakout_retest_resumed"]+=1
         if self.breakout is not None or self.last_bid is None:return
         for kind,side in (("RESISTANCE",1),("SUPPORT",-1)):
             z=self.nearest[kind]
@@ -327,7 +352,20 @@ class CausalMarketStructure:
                 self.counters["breakout_probed"]+=1
                 return
 
+    def _swing_direction(self,tf):
+        s=self.swings[tf]
+        highs=s["RESISTANCE"]
+        lows=s["SUPPORT"]
+        if len(highs)>=2 and len(lows)>=2:
+            if highs[-1][0]>highs[-2][0] and lows[-1][0]>lows[-2][0]:
+                return 1
+            if highs[-1][0]<highs[-2][0] and lows[-1][0]<lows[-2][0]:
+                return -1
+        return 0
+
     def _direction(self,tf):
+        topology=self._swing_direction(tf)
+        if topology:return topology
         s=self.swings[tf]
         highs=s["RESISTANCE"]
         lows=s["SUPPORT"]
@@ -373,8 +411,13 @@ class CausalMarketStructure:
             pattern="UNKNOWN_STALE"
         elif phase=="PROBE":pattern="BREAKOUT_PROBE"
         elif phase=="ACCEPTED":pattern="BREAKOUT_ACCEPTED"
+        elif phase=="RETEST":pattern="BREAKOUT_RETEST"
+        elif phase=="RETEST_CONFIRMED":pattern="RETEST_RESUMPTION"
         elif phase=="FAILED":pattern="FAILED_BREAKOUT"
         elif phase=="EXPIRED":pattern="BREAKOUT_UNCONFIRMED"
+        elif (parent and micro and parent!=micro and
+              self._swing_direction(15000)==micro and alert):
+            pattern="REVERSAL_CONFIRMED"
         elif parent and micro and parent!=micro and alert:
             pattern="REVERSAL_CANDIDATE"
         elif parent and micro and parent!=micro:
@@ -399,6 +442,12 @@ class CausalMarketStructure:
         if snap.pattern=="UNKNOWN_STALE":return "WAIT_STALE"
         if snap.breakout_phase=="ACCEPTED" and side==snap.breakout_side:
             return "BREAKOUT_ACCEPTANCE"
+        if snap.breakout_phase=="RETEST_CONFIRMED" and side==snap.breakout_side:
+            return "BREAKOUT_RETEST_RESUMPTION"
+        if snap.breakout_phase=="RETEST" and side==snap.breakout_side:
+            return "WAIT_RETEST_RESOLUTION"
+        if snap.pattern=="REVERSAL_CONFIRMED" and snap.micro_direction==side:
+            return "CONFIRMED_REVERSAL_SPECIALIST"
         if snap.breakout_phase=="PROBE" and side==snap.breakout_side:
             return "PENDING_CONFIRMATION"
         if snap.pattern=="FAILED_BREAKOUT" and side==snap.breakout_side:
@@ -417,6 +466,6 @@ class CausalMarketStructure:
             return "THESIS_INVALIDATION_REVIEW"
         if snap.parent_direction==-entry_side and snap.micro_direction==-entry_side:
             return "PARENT_OPPOSED_REVIEW"
-        if snap.pattern=="REVERSAL_CANDIDATE" and snap.micro_direction==-entry_side:
+        if snap.pattern in ("REVERSAL_CANDIDATE","REVERSAL_CONFIRMED") and snap.micro_direction==-entry_side:
             return "REVERSAL_DEFENSE_REVIEW"
         return "HOLD_STRUCTURE_OBSERVE"
