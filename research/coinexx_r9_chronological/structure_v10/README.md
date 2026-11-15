@@ -79,6 +79,7 @@ closed-bar direction-efficiency proxy. Stale trends expire.
 | NESTED_COUNTERTREND | Parent direction opposes micro direction | WAIT_PARENT_RESOLUTION |
 | RANGE_BOUNDARY | Compression and near a support/resistance zone | WAIT_REJECTION |
 | STRUCTURAL_REVERSAL | Opposed confirmed micro swing topology plus change alarm | STRUCTURAL_CANDIDATE |
+| TREND_EXHAUSTION | Earlier 1s impulse weakens near confirmed opposing zone | WAIT_IMPULSE_RENEWAL |
 | UNRESOLVED | Insufficient causal evidence | OBSERVE_ONLY |
 
 The `STRUCTURAL_CANDIDATE` label is an **unfitted research proposal**,
