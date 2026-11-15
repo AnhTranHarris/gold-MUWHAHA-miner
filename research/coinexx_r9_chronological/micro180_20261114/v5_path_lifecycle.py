@@ -13,6 +13,7 @@ from statistics import median
 from coinexx_r9.models import Tick
 from micro180 import Micro180R9
 from asymmetric_v3 import AsymmetricMicroR9, AsymSpec
+from v5_ms_path import MsQuarterPath
 
 
 @dataclass(frozen=True)
@@ -57,9 +58,12 @@ class PathEvidence:
     spread_relative: float
     quote_activity_ratio: float
     native_price_bias: float
+    ms250_efficiency: float=0.0
+    ms250_coherence: float=0.0
 
 
-def path_evidence(ring, t:Tick, side:int, min_history:int=30)->Optional[PathEvidence]:
+def path_evidence(ring, t:Tick, side:int, min_history:int=30,
+                  ms250:Optional[MsQuarterPath]=None)->Optional[PathEvidence]:
     """Previous CLOSED second Bid/Ask quotes only; t is current executable quote.
 
     Unlike a sorted price-feature vector, this stores the ORDER of signs and
@@ -102,14 +106,20 @@ def path_evidence(ring, t:Tick, side:int, min_history:int=30)->Optional[PathEvid
     intensity=min(3.,qrate5/max(.05,qrate180))
     bias=ring.m1.bias(side)
     bias=0.0 if bias is None else bias
+    # Separate order-sensitive within-second path; no future/current-second OHLC.
+    micro=ms250.signature(t.time_msc,side) if ms250 is not None else None
+    ms_eff=micro.efficiency if micro is not None else 0.0
+    ms_coh=micro.coherence if micro is not None else 0.0
     # Asymmetric coefficients are deliberately small and research-unfitted.
     if side>0:
         score=(.36*eff+.24*signed_tail+.28*coherent+.10*bias
-               +.05*min(2.,intensity-1.)-.27*max(0.,spr-1.)-.20*reversal)
+               +.05*min(2.,intensity-1.)-.27*max(0.,spr-1.)-.20*reversal
+               +.12*ms_eff+.08*(ms_coh-.50))
     else:
         score=(.34*eff+.26*signed_tail+.26*coherent+.12*bias
-               +.06*min(2.,intensity-1.)-.30*max(0.,spr-1.)-.20*reversal)
-    return PathEvidence(side,score,coherent,eff,signed_tail,reversal,spr,intensity,bias)
+               +.06*min(2.,intensity-1.)-.30*max(0.,spr-1.)-.20*reversal
+               +.12*ms_eff+.08*(ms_coh-.50))
+    return PathEvidence(side,score,coherent,eff,signed_tail,reversal,spr,intensity,bias,ms_eff,ms_coh)
 
 
 class PathLifecycleV5(AsymmetricMicroR9):
@@ -121,9 +131,14 @@ class PathLifecycleV5(AsymmetricMicroR9):
     def __init__(self,cfg,cash,spec,quant:AsymSpec=AsymSpec(active=False),v5:V5Spec=V5Spec()):
         super().__init__(cfg,cash,spec,quant)
         self.v5=v5
+        self.ms250=MsQuarterPath()
+
+    def _push_second(self,t:Tick):
+        super()._push_second(t)
+        self.ms250.update(t)
 
     def _open_trade(self,t:Tick,side:int):
-        e=path_evidence(self.rolling,t,side,self.v5.min_history)
+        e=path_evidence(self.rolling,t,side,self.v5.min_history,self.ms250)
         if e is None:
             self.stats['v5_sparse_path']+=1;return
         required=self.v5.min_buy_path if side>0 else self.v5.min_sell_path
@@ -141,6 +156,8 @@ class PathLifecycleV5(AsymmetricMicroR9):
             v5_tail=round(e.tail_persistence,5),v5_rev=round(e.recent_reversal,5),
             v5_spread_ratio=round(e.spread_relative,5),
             v5_quote_activity=round(e.quote_activity_ratio,5),
+            v5_ms250_efficiency=round(e.ms250_efficiency,5),
+            v5_ms250_coherence=round(e.ms250_coherence,5),
             v5_price_indicator='completed_m1' if bias is not None else 'quote_only_proxy')
         # Skip AsymmetricMicroR9's older aggregate feature gate. We have a
         # distinct, explicitly order-sensitive eligibility test above.
@@ -162,14 +179,14 @@ class PathLifecycleV5(AsymmetricMicroR9):
             return Micro180R9._manage_position(self,t)
         if (self.v5.permit_early_adverse_exit and age>=self.v5.min_adverse_age_ms
                 and net<=self.v5.adverse_net_cash):
-            e=path_evidence(self.rolling,t,p.side,self.v5.min_history)
+            e=path_evidence(self.rolling,t,p.side,self.v5.min_history,self.ms250)
             if e is not None and e.score<=self.v5.adverse_path_max and e.tail_persistence<0:
                 self._record_close(t,'v5_adverse_path',liq);return
         if net<s.min_net_cash:
             return # Base protective stop is independent and checked before EA.
         if not self.v5.enable_protected_continuation:
             return Micro180R9._manage_position(self,t)
-        e=path_evidence(self.rolling,t,p.side,self.v5.min_history)
+        e=path_evidence(self.rolling,t,p.side,self.v5.min_history,self.ms250)
         target=self.v5.hold_buy_path if p.side>0 else self.v5.hold_sell_path
         if e is None or e.score<target or e.tail_persistence<0:
             self._record_close(t,'v5_cash_harvest',liq);return
@@ -192,7 +209,7 @@ class PathLifecycleV5(AsymmetricMicroR9):
     def report(self):
         r=super().report()
         r['v5_lifecycle']={
-          'research_only':True,'asymmetric':True,'ordered_quote_path':True,
+          'research_only':True,'asymmetric':True,'ordered_quote_path':True,'observed_250ms_bins':self.ms250.rows>0,
           'no_AUC':True,'real_volume':False,'native_MT5_parity':False,
           'cash_risk_objective':self.micro_spec.hard_risk_cash,
           'cash_first_harvest':self.micro_spec.min_net_cash,
