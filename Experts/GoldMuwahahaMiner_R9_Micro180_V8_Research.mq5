@@ -516,10 +516,15 @@ bool MicroSignal(const MqlTick &t,int &side)
    }
    if(InpV7ConditionalShadowResearch || InpV7ConditionalGateResearch)
    {
-      const long sec=(long)t.time_msc/1000;
-      if(g_v7LastComputeSec!=sec)
+      // Same-second and same-millisecond source quote prices differ.
+      // Only an identical quote state may reuse the V7 conditional forecast.
+      const long ms=(long)t.time_msc;
+      if(g_v7LastComputeMs!=ms || g_v7LastComputeBid!=t.bid ||
+         g_v7LastComputeAsk!=t.ask || g_v7LastComputeQuoteN!=g_second.n)
       {
-         g_v7LastComputeSec=sec;
+         g_v7LastComputeMs=ms;
+         g_v7LastComputeBid=t.bid;g_v7LastComputeAsk=t.ask;
+         g_v7LastComputeQuoteN=g_second.n;
          g_v7BuyReady=V7PastConditioned(+1,t,InpLots,g_v7Buy);
          g_v7SellReady=V7PastConditioned(-1,t,InpLots,g_v7Sell);
       }
@@ -826,6 +831,12 @@ int OnInit()
       InpMaxPeakDrawdownPct<=0 || InpMaxPeakDrawdownPct>InpCapitalFloorPct ||
       InpAdditionalCostCash<0 || InpExtraSlipReserveCash<0 ||
       InpMaxQuoteGapMs<=0 || InpMaxSpreadPoints<=0 ||
+      InpMin5sObservedSpanMs<=0 || InpMin5sObservedSpanMs>=5000 ||
+      InpMinCompleted15SpanMs<=0 || InpMinCompleted15SpanMs>=15000 ||
+      InpMinActive15SpanMs<=0 || InpMinActive15SpanMs>=15000 ||
+      InpMaxCompleted15TailMs<=0 || InpMaxCompleted15TailMs>15000 ||
+      InpMinBuyStrong15sZ<0 || InpMinSellStrong15sZ<0 ||
+      InpMaxAdverse30sZ<0 ||
       InpMinBasketMovePoints<=0 || InpMin15sStructurePoints<0 ||
       InpBreakoutBufferPoints<0 || InpMinCompleted15s<2 ||
       InpMinCompleted30s<InpMinCompleted15s || InpMinQuotes5s<1 ||
@@ -882,7 +893,7 @@ int OnInit()
    if(g_accountBase<=0 || g_accountPeak<=0)return INIT_FAILED;
    RefreshRisk(true);
    if(!EventSetTimer(1))return INIT_FAILED;
-   Print("R9 MICRO180 V7: setup-conditioned cash SHADOW; 250ms and native Wilder/EMA/ATR; no old AUC, no MQL5 compile/parity or profitable-volume certificate");
+   Print("R9 MICRO180 V8: observed basket age, ms quote gaps and per-candidate cash forecast; native compile/indicator parity NOT certified");
    return INIT_SUCCEEDED;
 }
 void OnDeinit(const int reason)
