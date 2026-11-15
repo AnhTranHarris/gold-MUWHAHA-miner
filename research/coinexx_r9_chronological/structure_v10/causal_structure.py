@@ -140,6 +140,8 @@ class CausalMarketStructure:
         now = int(t.time_msc)
         if now < 0 or t.bid_u <= 0 or t.ask_u < t.bid_u:
             raise ValueError("Invalid observed Bid/Ask")
+        if getattr(t,"time_s",now//1000)!=now//1000:
+            raise ValueError("Inconsistent source second/millisecond timestamp")
         if self.now_ms is not None and now < self.now_ms:
             raise ValueError("Nonmonotonic original quote chronology")
         self.gap_ms = 0 if self.now_ms is None else now - self.now_ms
@@ -248,6 +250,9 @@ class CausalMarketStructure:
                     z.touches+=1
                     self.counters["zone_retest_"+kind]+=1
                 self._zone_inside[z.id]=inside
+        live_ids={z.id for z in self.nearest.values() if z is not None}
+        for zone_id in self._zone_inside:
+            if zone_id not in live_ids:self._zone_inside[zone_id]=False
 
     def _directional_change(self,t):
         mid=(t.bid_u+t.ask_u)/2.
@@ -356,7 +361,10 @@ class CausalMarketStructure:
         s=self.swings[tf]
         highs=s["RESISTANCE"]
         lows=s["SUPPORT"]
-        if len(highs)>=2 and len(lows)>=2:
+        now=self.now_ms
+        fresh=(now is not None and len(highs)>=2 and len(lows)>=2 and
+               now-highs[-1][1]<=24*tf and now-lows[-1][1]<=24*tf)
+        if fresh:
             if highs[-1][0]>highs[-2][0] and lows[-1][0]>lows[-2][0]:
                 return 1
             if highs[-1][0]<highs[-2][0] and lows[-1][0]<lows[-2][0]:
@@ -364,6 +372,10 @@ class CausalMarketStructure:
         return 0
 
     def _direction(self,tf):
+        q=self.closed[tf]
+        if (not q or self.now_ms is None or
+                self.now_ms-q[-1].last_ms>max(3*tf,2500)):
+            return 0  # never reuse a stale parent/child trend across sessions
         topology=self._swing_direction(tf)
         if topology:return topology
         s=self.swings[tf]
