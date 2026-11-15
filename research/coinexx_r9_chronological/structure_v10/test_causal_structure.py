@@ -63,6 +63,16 @@ class StructureCausalityTests(unittest.TestCase):
         self.assertEqual(eng.breakout["phase"],"FAILED")
         self.assertEqual(eng.snapshot(tick(30800,9990)).pattern,"FAILED_BREAKOUT")
 
+    def test_exhaustion_warning_requires_prior_zone_and_path_fade(self):
+        levels=[10000,10005,10010,10015,10015,10012,10010,10007,10007]
+        e=CausalMarketStructure()
+        for sec,mid in enumerate(levels):
+            e.on_quote(tick(sec*1000,mid))
+        self.assertFalse(e._exhaustion_warning(1,tick(8000,10007)))
+        e._add_zone("RESISTANCE",5000,10010,8000)
+        e._refresh_nearest(10007,8000)
+        self.assertTrue(e._exhaustion_warning(1,tick(8000,10007)))
+
     def test_same_millisecond_source_order(self):
         e=CausalMarketStructure()
         e.on_quote(tick(1000,10000))
