@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import sys
 import unittest
+from dataclasses import replace
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -180,6 +181,16 @@ class EvidenceTests(unittest.TestCase):
         self.assertEqual(p.subtype,"INSUFFICIENT_MICRO_EVIDENCE")
         self.assertEqual(snap.pattern,"UNKNOWN")
 
+    def test_router_unresolved_even_when_primary_pattern_is_recognized(self):
+        s=RefinedStructure()
+        s.on_quote(t(1000))
+        snap=s.snapshot(t(1000))
+        snap=replace(snap,pattern="REGIME_TRANSITION")
+        profile=s.profile(snap,1,legacy_specialist="UNRESOLVED")
+        self.assertTrue(profile.unresolved_at_router)
+        self.assertEqual(profile.subtype,"CHANGE_ALARM_NO_CONFIRMED_THESIS")
+        self.assertEqual(profile.primary,"REGIME_TRANSITION")
+
     def test_original_v9_events_unchanged_under_v11(self):
         c=R9Config(use_regime_gate=False)
         original=VolumePreservingMicroV9(c,ResearchCash(governor=False))
@@ -203,6 +214,10 @@ class EvidenceTests(unittest.TestCase):
           len(refined.entries),
           sum(refined.report()["structure_v11"]["v11_entry_subtypes"].values()))
         self.assertTrue(all(x["v11_shadow_only"] for x in refined.entries))
+        old_fallback=sum(e["v10_specialist"]=="UNRESOLVED"
+                         for e in refined.entries)
+        new_reasons=sum(refined.v11_unresolved_reasons.values())
+        self.assertEqual(old_fallback,new_reasons)
 
 
 if __name__=="__main__":unittest.main()
