@@ -5,7 +5,7 @@ from coinexx_r9.r9_baseline import R9Config
 from on_policy_cash_replay import ResearchCash
 from micro180 import RollingThreeMinute,Micro180Spec
 from v5_path_lifecycle import V5Spec
-from v7_conditioned_cash import V7Spec,conditioned_cash_first_passage,SetupConditionedMicroV7
+from v7_conditioned_cash import V7Spec,conditioned_cash_first_passage,conditioned_incremental_hold,SetupConditionedMicroV7
 
 
 def q(i,bid,ask=None,origin=1000):
@@ -22,7 +22,8 @@ class TestV7(unittest.TestCase):
     def test_invalid_specs(self):
         for x in ({'min_effective_samples':0},{'anchor_stride_seconds':3},
                   {'similarity_width':0},{'uncertainty_multiplier':5},
-                  {'min_buy_penalized_cash':float('nan')}):
+                  {'min_buy_penalized_cash':float('nan')},
+                  {'hold_horizon_seconds':0}):
             with self.assertRaises(ValueError):V7Spec(**x)
 
     def test_buy_and_sell_cash_profit_are_not_swapped(self):
@@ -61,6 +62,21 @@ class TestV7(unittest.TestCase):
         z=conditioned_cash_first_passage(r,
               Tick(999,1224,1224_010,10_200,10_210),+1)
         self.assertFalse(z.usable)
+
+    def test_hold_increment_is_directional_and_no_repeated_commission(self):
+        r=ring([10_000+i*6 for i in range(160)])
+        t=q(160,10_960)
+        b=conditioned_incremental_hold(r,t,+1,spec=V7Spec(min_effective_samples=2))
+        s=conditioned_incremental_hold(r,t,-1,spec=V7Spec(min_effective_samples=2))
+        self.assertIsNotNone(b)
+        self.assertGreater(b,0.0)
+        self.assertIsNotNone(s)
+        self.assertLess(s,0.0)
+
+    def test_reject_unprotected_v7_holding(self):
+        with self.assertRaises(ValueError):
+            SetupConditionedMicroV7(R9Config(),ResearchCash(governor=False),
+              Micro180Spec(),v7=V7Spec(enable_conditioned_holding=True))
 
     def test_full_previous_v6_governor_and_cash_constraints_remain(self):
         m=SetupConditionedMicroV7(R9Config(),ResearchCash(governor=True,
