@@ -34,10 +34,14 @@ class StructureCausalityTests(unittest.TestCase):
         eng=seeded()
         self.assertFalse(any(z.kind=="RESISTANCE" for z in eng.zones))
         step(eng,25,10002)
+        # A completed 5s basket is published only when its final 1s child
+        # closes; 25s is insufficient because that one-second bar is active.
+        self.assertFalse(any(z.kind=="RESISTANCE" for z in eng.zones))
+        step(eng,26,10002)
         r=[z for z in eng.zones if z.kind=="RESISTANCE"]
         self.assertTrue(r)
         self.assertAlmostEqual(r[0].center,10080)
-        self.assertGreaterEqual(r[0].confirmed_ms,25000)
+        self.assertGreaterEqual(r[0].confirmed_ms,26000)
 
     def test_executable_buy_break_and_two_second_acceptance(self):
         eng=seeded()
