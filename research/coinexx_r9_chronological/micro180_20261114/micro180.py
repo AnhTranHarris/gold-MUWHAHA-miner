@@ -217,11 +217,15 @@ class RollingThreeMinute:
         self.m1.update(t)
 
     def closes(self, now_ms:int, lookback_ms:int)->list[Candle]:
-        candles=self.finished[1000]
+        # Use wall-clock completed SECOND windows, not a sliding fractional
+        # millisecond cutoff against each candle's last update. This makes
+        # cache-by-current-second exact and matches the MQL5 comparator.
+        current_s_start = now_ms//1000*1000
+        floor_start = current_s_start-lookback_ms
         out=[]
-        for bar in reversed(candles):
-            if bar.start_ms < now_ms-lookback_ms-1000: break
-            if bar.start_ms+1000<=now_ms and bar.last_ms>=now_ms-lookback_ms:
+        for bar in reversed(self.finished[1000]):
+            if bar.start_ms < floor_start:break
+            if bar.start_ms < current_s_start:
                 out.append(bar)
         out.reverse()
         return out
@@ -389,6 +393,9 @@ class Micro180R9(ManagedR9):
         self._open_trade(t,side)
 
     def _open_trade(self,t:Tick,side:int):
+        if self._entries_this_minute>=self.micro_spec.max_entries_per_source_minute:
+            self.stats['micro_trade_cap_block']+=1
+            return
         before=self.position
         super()._open_trade(t,side)
         if self.position is None or self.position is before:return
