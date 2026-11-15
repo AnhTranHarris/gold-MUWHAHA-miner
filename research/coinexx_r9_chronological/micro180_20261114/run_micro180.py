@@ -30,6 +30,9 @@ def main():
     ap.add_argument('--cash-per-one-dollar-xau',type=float,default=1.)
     ap.add_argument('--roundtrip-extra-cost',type=float,default=.20)
     ap.add_argument('--runner-experimental',action='store_true')
+    ap.add_argument('--throughput-profile',choices=('strict','balanced','micro','active'),
+                    default='strict',
+                    help='strict is frozen control; all other profiles are unvalidated research only')
     ap.add_argument('--disable-account-governor-research-only',action='store_true')
     ap.add_argument('--disable-m1-veto',action='store_true')
     ap.add_argument('--output',type=Path)
@@ -41,8 +44,16 @@ def main():
                       cost=args.roundtrip_extra_cost,
                       initial_capital=args.initial_equity,
                       governor=not args.disable_account_governor_research_only)
-    spec=Micro180Spec(experimental_runner=args.runner_experimental,
-                      use_m1_directional_veto=not args.disable_m1_veto)
+    base=dict(experimental_runner=args.runner_experimental,
+              use_m1_directional_veto=not args.disable_m1_veto)
+    profiles={
+        'strict':{},
+        'balanced':dict(breakout_router='balanced_30s_veto'),
+        'micro':dict(breakout_router='balanced_30s_veto',s1_mode='micro_only'),
+        'active':dict(breakout_router='balanced_30s_veto',s1_mode='micro_only',
+                      structural_confirmation='causal_active_or_completed'),
+    }
+    spec=Micro180Spec(**base,**profiles[args.throughput_profile])
     engine=Micro180R9(cfg,cash,spec)
     start=time.perf_counter()
     last=None
@@ -59,6 +70,7 @@ def main():
                 'elapsed_wall_seconds':round(time.perf_counter()-start,3),
                 'source_integrity':'iter_coinexx_ticks strict in-order; source SHA check separately',
                 'runner_is_unvalidated':args.runner_experimental,
+                'throughput_profile':args.throughput_profile,
                 'end_state_position_open':engine.position is not None,
                 'spec':asdict(spec),
                 'baseline':'R9 dual 5s/15s OR entry Jan–Sep frozen, not replaced',
