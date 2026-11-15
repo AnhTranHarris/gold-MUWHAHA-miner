@@ -221,6 +221,8 @@ class SetupConditionedMicroV7(PastOnlyCashMicroV6):
         self.v7=v7
         self._v7_second=-1
         self._v7_evidence={}
+        self._v7_hold_second=-1
+        self._v7_hold_cache={}
 
     def _open_trade(self,t:Tick,side:int):
         if self._v7_second!=t.time_msc//1000:
@@ -259,8 +261,16 @@ class SetupConditionedMicroV7(PastOnlyCashMicroV6):
                     (self.cash.governor and (self.account.day_lock or self.account.permanent_lock)))
             if not forced and s.min_net_cash<=net<s.preferred_max_net_cash:
                 self.stats['v7_hold_evaluations']+=1
-                utility=conditioned_incremental_hold(self.rolling,t,p.side,
-                           k=self.cash.k,spec=self.v7)
+                # No repeated 180s kernel on every raw quote within the same
+                # source second: O(1) per quote, bounded one calculation/sec.
+                second=t.time_msc//1000
+                if second!=self._v7_hold_second:
+                    self._v7_hold_second=second
+                    self._v7_hold_cache={}
+                if p.side not in self._v7_hold_cache:
+                    self._v7_hold_cache[p.side]=conditioned_incremental_hold(
+                         self.rolling,t,p.side,k=self.cash.k,spec=self.v7)
+                utility=self._v7_hold_cache[p.side]
                 if utility is None or utility<=self.v7.min_hold_increment:
                     self.stats['v7_hold_not_positive']+=1
                     self._record_close(t,'v7_conditioned_hold_harvest',liq)
