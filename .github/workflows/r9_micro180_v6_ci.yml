@@ -1,0 +1,34 @@
+name: R9 Micro180 V6 causal cash-prior tests and source bundle
+on:
+  push:
+    branches:
+      - carson/r9-micro180-v6-past-only-cash-utility-20261114
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  causal-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test existing and V6 source-exact causal contracts
+        env:
+          PYTHONPATH: research/coinexx_r9_chronological/src:research/coinexx_r9_chronological/variable_cash_horizon_20261114:research/coinexx_r9_chronological/micro180_20261114
+        run: |
+          python -m unittest discover -v -s research/coinexx_r9_chronological/micro180_20261114 -p 'test_*.py'
+          python -m py_compile research/coinexx_r9_chronological/micro180_20261114/v6_past_only_utility.py
+          python -m py_compile research/coinexx_r9_chronological/micro180_20261114/run_v6_bounded_replay.py
+      - name: Make small existing-source-code bundle (never market data)
+        uses: actions/upload-artifact@v4
+        with:
+          name: r9-micro180-v6-code-only
+          retention-days: 1
+          if-no-files-found: error
+          path: |
+            research/coinexx_r9_chronological/src/coinexx_r9/*.py
+            research/coinexx_r9_chronological/variable_cash_horizon_20261114/cash_ladder.py
+            research/coinexx_r9_chronological/variable_cash_horizon_20261114/on_policy_cash_replay.py
+            research/coinexx_r9_chronological/micro180_20261114/*.py
