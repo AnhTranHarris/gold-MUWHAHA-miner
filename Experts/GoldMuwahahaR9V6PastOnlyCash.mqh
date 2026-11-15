@@ -24,10 +24,18 @@ bool V6PastFirstPassage(const int side,const MqlTick &now,
    out.skippedGaps=0;
    if(side!=1 && side!=-1)return false;
    if(g_sn<V6_HORIZON+V6_MIN_OBS*V6_STRIDE)return false;
+   const long floorMs=(long)now.time_msc/1000*1000-180000;
+   int oldest=-1;
+   for(int k=0;k<g_sn;k++)
+   {
+      QBar candidate=g_s[SecFromLatest(g_sn-1-k)];
+      if(candidate.startMs>=floorMs){oldest=k;break;}
+   }
+   if(oldest<0)return false;
    double total=0.0,sq=0.0;
    int hitProfit=0,hitLoss=0;
    const ENUM_ORDER_TYPE kind=(side>0?ORDER_TYPE_BUY:ORDER_TYPE_SELL);
-   for(int i=0;i+V6_HORIZON<g_sn;i+=V6_STRIDE)
+   for(int i=oldest;i+V6_HORIZON<g_sn;i+=V6_STRIDE)
    {
       QBar anchor=g_s[SecFromLatest(g_sn-1-i)];
       if((long)now.time_msc-anchor.startMs>180000)continue;
@@ -73,10 +81,18 @@ bool V6PastHoldIncrement(const int side,const MqlTick &now,const double vol,
                          double &penalizedIncrement)
 {
    penalizedIncrement=-DBL_MAX;
-   if(side!=1 && side!=-1 || g_sn<32)return false;
+   if((side!=1 && side!=-1) || g_sn<32)return false;
+   const long floorMs=(long)now.time_msc/1000*1000-180000;
+   int oldest=-1;
+   for(int k=0;k<g_sn;k++)
+   {
+      QBar candidate=g_s[SecFromLatest(g_sn-1-k)];
+      if(candidate.startMs>=floorMs){oldest=k;break;}
+   }
+   if(oldest<0)return false;
    const ENUM_ORDER_TYPE kind=(side>0?ORDER_TYPE_BUY:ORDER_TYPE_SELL);
    int count=0;double total=0.0,sq=0.0;
-   for(int i=0;i+3<g_sn;i+=V6_STRIDE)
+   for(int i=oldest;i+3<g_sn;i+=V6_STRIDE)
    {
       QBar start=g_s[SecFromLatest(g_sn-1-i)];
       if((long)now.time_msc-start.startMs>180000)continue;
