@@ -23,14 +23,24 @@ bool V7Continuous(QBar &q[],const int lo,const int hi)
 {
    if(lo<0 || hi>=ArraySize(q) || hi<lo)return false;
    for(int i=lo+1;i<=hi;++i)
-      if(q[i].startMs<=q[i-1].startMs || q[i].startMs-q[i-1].startMs>2000)return false;
+   {
+      // Calendar-window continuity alone misses a real quote gap across an
+      // anchor. Preserve the actual first/last millisecond observation gap.
+      if(q[i].startMs<=q[i-1].startMs ||
+         q[i].startMs-q[i-1].startMs>2000 ||
+         q[i].firstMs<=q[i-1].lastMs ||
+         q[i].firstMs-q[i-1].lastMs>2000)return false;
+   }
    return true;
 }
 bool V7Setup(QBar &q[],const int i,const int side,
              const double bid,const double ask,const int quoteCount,
              V7QuoteSetup &f)
 {
-   if(i<15 || !V7Continuous(q,i-15,i-1))return false;
+   // i==ArraySize(q) means the CURRENT live quote. Historical anchors
+   // i<ArraySize(q) must also have a continuous link INTO their anchor.
+   if(i<15 || !V7Continuous(q,i-15,
+           i<ArraySize(q)?i:i-1))return false;
    double liq=(side>0?bid:ask);
    double first5=(side>0?q[i-5].bc:q[i-5].ac);
    double first15=(side>0?q[i-15].bc:q[i-15].ac);
@@ -77,6 +87,9 @@ bool V7PastConditioned(const int side,const MqlTick &now,
       if(n>=V7_MAX_BARS)return false;
       history[n]=v;n++;
    }
+   // Dynamic array must reflect populated length. Otherwise V7Setup with
+   // i==n can accidentally inspect the empty preallocated QBar slot.
+   ArrayResize(history,n);
    if(n<30 || (long)now.time_msc-history[n-1].lastMs>2500)return false;
    if(!V7Continuous(history,n-15,n-1))return false;
    V7QuoteSetup current;
