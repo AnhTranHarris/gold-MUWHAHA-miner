@@ -1,0 +1,55 @@
+name: R9 V13 source-exact profit-first research (no market data)
+on:
+  push:
+    branches: [carson/r9-v13-causal-fib-anchor-profitfirst-research-20261115]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  causal-lattice:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install only research unit dependencies (no data downloads)
+        run: python -m pip install --disable-pip-version-check numpy==1.26.4 pandas==2.2.3
+      - name: V13 causal source-order unit tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          root=research/coinexx_r9_chronological
+          export PYTHONPATH="$root/src:$root/variable_cash_horizon_20261114:$root/dual_basket_20261114:$root/micro180_20261114:$root/cfael_v13"
+          python -m py_compile "$root/cfael_v13/"*.py
+          python -m unittest discover -s "$root/cfael_v13" -p 'test_*.py' -v
+      - name: Cross-check published frozen quantitative evidence
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('research/coinexx_r9_chronological/cfael_v13')
+          a=json.loads((p/'V13_FULL_NINE_MONTH_PROFIT_FIRST_REPORT.json').read_text())
+          b=json.loads((p/'V13_INDEPENDENT_CLOSED_LOOP_DEVELOPMENT_RESULTS.json').read_text())
+          assert a['original_pinned_quotes']==72_129_347
+          assert a['baseline_completed']==338_064
+          assert a['baseline_winners']==128_203
+          assert len(a['primary_lattice_results'])==5
+          assert all(x['mean']<0 and x['positive_months']==0 for x in a['primary_lattice_results'].values())
+          assert len(b['results'])==6
+          assert all(x['net']<0 and x['months_positive']==0 for x in b['results'].values())
+          assert b['no_MT5_settings_promoted'] is True
+          print("V13 source-level and result-contract checks passed; NO profitability certification")
+          PY
+      - name: Frozen source and no native-trading changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD:Experts/GoldMuwahahaMiner_R9_HybridGate.mq5)" = "07222b1a3800c9cc826abe10a4ce6afbd97b0af5"
+          test "$(git rev-parse HEAD:Experts/GoldMuwahahaMiner_R9_Micro180_V8_Research.mq5)" = "0c52da7ea7e22701e607181380a4f49f9aad78eb"
+          test "$(git rev-parse HEAD:research/coinexx_r9_chronological/micro180_20261114/v9_volume_router.py)" = "036c5ae716aae7688bd55703ace415ec56c2e4d6"
+          test "$(git rev-parse HEAD:research/coinexx_r9_chronological/structure_v10/causal_structure.py)" = "f21a70ad44194d5c09be98a52f1e97793d9eb2c1"
+          grep -Fq 'InpEnableDemoOrders        = false' Experts/GoldMuwahahaMiner_R9_Micro180_V9_Research.mq5
+          grep -Fq 'InpEnableObserver       = false;' Experts/GoldMuwahahaR9V12DemoTelemetryObserver.mq5
+          echo 'Research only: no market-data downloads or MT5 execution'
