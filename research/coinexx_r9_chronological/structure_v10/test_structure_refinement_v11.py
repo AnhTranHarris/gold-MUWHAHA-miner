@@ -151,8 +151,18 @@ class InvalidationTests(unittest.TestCase):
                                     "M15:1",900000,10020,10030,10035)
         s=InvalidationObserver(sell)
         for ms in (1000,2000,3000):
-            s.observe(t(ms,9990,ask=10036))
+            s.observe(t(ms,10032,ask=10036))
         self.assertTrue(s.confirmed)
+
+    def test_widened_ask_alone_is_not_a_structural_break(self):
+        sell=FrozenStructuralThesis(-1,1000,10004,10000,
+                                    "M15:1",900000,10020,10030,10035)
+        s=InvalidationObserver(sell)
+        for ms in (1000,2000,3000):
+            self.assertEqual(s.observe(t(ms,9990,ask=10036)),
+                             "SPREAD_STRESS_UNCERTAIN")
+        self.assertFalse(s.confirmed)
+        self.assertEqual(s.reasons["SPREAD_STRESS_RESET"],3)
 
     def test_unanchored_is_uncertainty_not_false_exit(self):
         s=InvalidationObserver(FrozenStructuralThesis(1,1000,10000,
