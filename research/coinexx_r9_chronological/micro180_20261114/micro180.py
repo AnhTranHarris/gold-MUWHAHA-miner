@@ -32,6 +32,13 @@ class Micro180Spec:
     max_quote_gap_ms: int = 2_500
     min_efficiency_15s: float = .55
     min_normalized_breakout: float = .25
+    # Strict pre-existing control, plus explicit UNVALIDATED throughput alternatives.
+    breakout_router: str = "strict_30s"
+    s1_mode: str = "strict_r9"
+    structural_confirmation: str = "completed_only"
+    min_buy_strong_15s_z: float = .55
+    min_sell_strong_15s_z: float = .55
+    max_adverse_30s_z: float = .10
     spread_shock_ratio: float = 1.35
     min_quote_updates_5s: int = 5
     max_entries_per_source_minute: int = 4
@@ -57,6 +64,11 @@ class Micro180Spec:
             or self.max_quote_gap_ms <= 0 or self.min_quote_updates_5s < 1
             or not 0.0 < self.min_efficiency_15s <= 1.0
             or self.min_normalized_breakout < 0.0 or self.spread_shock_ratio < 1.0
+            or self.breakout_router not in ("balanced_30s_veto", "strict_30s")
+            or self.s1_mode not in ("micro_only", "strict_r9")
+            or self.structural_confirmation not in ("causal_active_or_completed", "completed_only")
+            or min(self.min_buy_strong_15s_z,self.min_sell_strong_15s_z) < 0
+            or self.max_adverse_30s_z < 0
             or not 1 <= self.max_entries_per_source_minute <= 4
             or not 0.0 < self.min_net_cash < self.preferred_max_net_cash
             or self.hard_risk_cash <= self.min_net_cash or self.max_lifetime_ms < 1_000):
@@ -342,21 +354,40 @@ class Micro180R9(ManagedR9):
         move2=t.bid_u+t.ask_u-b5.mid_anchor2
         side=1 if move2>=2*s.min_5s_mid_move_u else -1 if move2<=-2*s.min_5s_mid_move_u else 0
         if not side:return
-        if not self._quality(side):
+        if s.s1_mode=="strict_r9" and not self._quality(side):
             self.stats['micro_s1_reject']+=1;return
-        # Step 2: 15s completed candle validates directional persistence.
+        # Step 2: a completed 15s candle is the strict control. The optional
+        # active candle uses only ticks observed so far and requires >=3s history.
         b15=self.rolling.last_closed(15,t.time_msc)
-        if b15 is None or side*b15.mid_displacement2<2*s.min_15s_confirm_u:
+        active15=self.rolling.current[15000]
+        live15=(s.structural_confirmation=="causal_active_or_completed"
+                and active15.last_ms-active15.first_ms>=3000
+                and active15.n>=5
+                and side*active15.mid_displacement2>=2*s.min_15s_confirm_u)
+        completed15=(b15 is not None and side*b15.mid_displacement2>=2*s.min_15s_confirm_u)
+        if not live15 and not completed15:
             self.stats['micro_15s_structure_reject']+=1;return
-        # Step 3: BOTH executable-side breakout horizons must confirm.
+        b15_source=active15 if live15 else b15
+        # Step 3: BUY checks executable Bid; SELL checks executable Ask.
+        # Balanced mode keeps a 30s signed-trend veto if no new 30s extreme.
         p15,p30=self.rolling.price_levels(t.time_msc,s.min_complete_15s,
                                           s.min_complete_30s,s.max_second_age_ms)
         if p15 is None or p30 is None:
             self.stats['micro_incomplete_seconds']+=1;return
+        if s.s1_mode=="micro_only" and any(
+            b.start_ms-a.start_ms>2000 for a,b in zip(p30[2],p30[2][1:])
+        ):
+            self.stats['micro_gap_in_completed_seconds']+=1;return
         if side>0:
-            if t.bid_u<p15[0]+s.breakout_buffer_u or t.bid_u<p30[0]+s.breakout_buffer_u:return
+            exc15=t.bid_u-p15[0]
+            exc30=t.bid_u-p30[0]
         else:
-            if t.ask_u>p15[1]-s.breakout_buffer_u or t.ask_u>p30[1]-s.breakout_buffer_u:return
+            exc15=p15[1]-t.ask_u
+            exc30=p30[1]-t.ask_u
+        if exc15<s.breakout_buffer_u:
+            self.stats['micro_15s_no_executable_breakout']+=1;return
+        if s.breakout_router=="strict_30s" and exc30<s.breakout_buffer_u:
+            self.stats['micro_30s_no_new_extreme']+=1;return
         # Robust 1s efficiency and normalized breakouts; no current-bar maxima.
         q=p15[2]
         mid=[x.bid_close+x.ask_close for x in q]
@@ -367,10 +398,20 @@ class Micro180R9(ManagedR9):
         returns=[(y-x)/2.0 for x,y in zip(mid,mid[1:])]
         sigma=math.sqrt(sum(x*x for x in returns)/max(1,len(returns)))
         sigma=max(1.,sigma)
-        delta=(t.bid_u-p30[0]) if side>0 else (p30[1]-t.ask_u)
-        z=delta/sigma
+        z15=exc15/sigma
+        z30=exc30/sigma
+        z=z30 if s.breakout_router=="strict_30s" else z15
         if z<s.min_normalized_breakout:
             self.stats['micro_z_reject']+=1;return
+        if s.breakout_router=="balanced_30s_veto" and exc30<s.breakout_buffer_u:
+            threshold=s.min_buy_strong_15s_z if side>0 else s.min_sell_strong_15s_z
+            q30=p30[2]
+            older_liq=q30[0].bid_close if side>0 else q30[0].ask_close
+            latest_liq=q30[-1].bid_close if side>0 else q30[-1].ask_close
+            trend30_z=side*(latest_liq-older_liq)/sigma
+            if z15<threshold or trend30_z < -s.max_adverse_30s_z:
+                self.stats['micro_30s_veto']+=1;return
+        # z is a normalized executable-side price statistic, never P(win).
         if self.rolling.five_second_updates(t.time_msc)<s.min_quote_updates_5s:
             self.stats['micro_activity_reject']+=1;return
         spread_stress,quote_intensity=self.rolling.intensity_and_spread(q,t.spread_points)
@@ -386,10 +427,14 @@ class Micro180R9(ManagedR9):
             self.indicator_sources['closed_m1_ema20_wilder_di14']+=1
             if s.use_m1_directional_veto and bias<-.25:
                 self.stats['micro_m1_directional_veto']+=1;return
-        self._signal_meta=dict(side=side,z=round(z,4),efficiency=round(abs(net)/max(1.,travel),4),
+        self._signal_meta=dict(side=side,z=round(z,4),z15=round(z15,4),
+                               z30=round(z30,4),router=s.breakout_router,
+                               efficiency=round(abs(net)/max(1.,travel),4),
                                spread_stress=round(spread_stress,4),quote_count_per_second=round(quote_intensity,3),
                                indicator_bias=round(bias,4) if bias is not None else 'proxy',
-                               first_5s_ms=b5.first_ms,completed_15s_start_ms=b15.start_ms)
+                               first_5s_ms=b5.first_ms,
+                               structure_15s_start_ms=b15_source.start_ms,
+                               structure_source="active_causal" if live15 else "completed")
         self._open_trade(t,side)
 
     def _open_trade(self,t:Tick,side:int):
@@ -418,14 +463,31 @@ class Micro180R9(ManagedR9):
         super()._record_close(t,reason,exit_u)
 
     def _signed_trend_score(self,side:int,t:Tick)->float:
-        last=self.rolling.closes(t.time_msc,5000)
-        if len(last)<3 or t.time_msc-last[-1].last_ms>2500:return -1.0
-        prev=last[0]
+        """Asymmetric quote-executable 5/15/30s continuation utility PROXY.
+
+        Uses only real observed previous-second closes; never a calibrated
+        probability or proof of positive incremental holding expectancy.
+        """
+        q5=self.rolling.closes(t.time_msc,5000)
+        q15=self.rolling.closes(t.time_msc,15000)
+        q30=self.rolling.closes(t.time_msc,30000)
+        if len(q5)<3 or len(q15)<8 or len(q30)<15:
+            return -1.0
+        if t.time_msc-q5[-1].last_ms>2500:
+            return -1.0
         now=t.bid_u if side>0 else t.ask_u
-        signed=side*(now-(prev.bid_close if side>0 else prev.ask_close))
-        travel=sum(abs((b.bid_close if side>0 else b.ask_close)-
-                       (a.bid_close if side>0 else a.ask_close)) for a,b in zip(last,last[1:]))
-        return signed/max(1.,travel)
+        def efficient(q):
+            values=[z.bid_close if side>0 else z.ask_close for z in q]
+            signed=side*(now-values[0])
+            travel=sum(abs(y-x) for x,y in zip(values,values[1:]))
+            travel+=abs(now-values[-1])
+            return max(-1.,min(1.,signed/max(1.,travel)))
+        spread_stress,_=self.rolling.intensity_and_spread(q15,t.spread_points)
+        bias=self.rolling.m1.bias(side)
+        score=(.45*efficient(q5)+.35*efficient(q15)+.20*efficient(q30)
+               +.10*(bias if bias is not None else 0.0)
+               -.15*max(0.,spread_stress-1.0))
+        return max(-1.0,min(1.0,score))
 
     def _manage_position(self,t:Tick):
         p=self.position
@@ -481,6 +543,7 @@ class Micro180R9(ManagedR9):
         out['hard_risk_cash']=self.micro_spec.hard_risk_cash
         out['experimental_runner_enabled']=self.micro_spec.experimental_runner
         out['native_MQL5_indicator_parity_verified']=False
+        out['entry_gate_stats']={k:int(v) for k,v in self.stats.items() if k.startswith(('micro_', 'gate_'))}
         out['indicator_sources']=dict(self.indicator_sources)
         out['last_and_volume_nonzero_quotes']={'last':self.rolling.nonzero_last,'volume':self.rolling.nonzero_volume}
         out['research_account_governor_enabled']=self.cash.governor
