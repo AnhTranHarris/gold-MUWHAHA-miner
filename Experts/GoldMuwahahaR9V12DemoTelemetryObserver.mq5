@@ -200,7 +200,7 @@ void FlushRows()
    if(g_drop_rows>0 || g_drop_deals>0)
      {
       FileWriteString(g_file,Prefix("LOSS_DIAGNOSTIC",InpExactSymbol,(long)InpExactMagic)+
-         "0,0,0,0,"+I64((long)g_drop_rows)+",0,0,0,0,0,0,0,0,0,0,"+
+         "0,0,0,0,"+I64((long)g_drop_rows)+",0,0,0,0,0,0,0,0,0,"+
          I64((long)g_drop_deals)+"\r\n");
       g_drop_rows=0;g_drop_deals=0;
      }
