@@ -1,0 +1,38 @@
+name: R9 Micro180 V8 measurement and parity contracts
+on:
+  push:
+    branches:
+      - carson/r9-micro180-v8-measurement-parity-repair-20261114
+    paths:
+      - 'research/coinexx_r9_chronological/micro180_20261114/**'
+      - 'Experts/GoldMuwahahaMiner_R9_Micro180_V8_Research.mq5'
+      - 'Experts/GoldMuwahahaR9V8ConditionedCash.mqh'
+      - '.github/workflows/r9_micro180_v8_measurement_parity.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  python-source-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run full inherited Micro180 causal suite including V8 synthetic parity fixtures
+        shell: bash
+        run: |
+          cd research/coinexx_r9_chronological
+          PYTHONPATH=src:variable_cash_horizon_20261114:micro180_20261114 \
+            python -m unittest discover -s micro180_20261114 -p 'test_*.py' -v
+      - name: Enforce original R9 and V7 source-blob rollback safety
+        shell: bash
+        run: |
+          test "$(git rev-parse HEAD:Experts/GoldMuwahahaMiner_R9_HybridGate.mq5)" = "07222b1a3800c9cc826abe10a4ce6afbd97b0af5"
+          test "$(git rev-parse HEAD:Experts/GoldMuwahahaMiner_R9_Micro180_V7_Research.mq5)" = "716c21f415e8def3adf987385bf509ff70f49137"
+          test "$(git rev-parse HEAD:Experts/GoldMuwahahaR9V7ConditionedCash.mqh)" = "ee945d8e2a3dda669b4aa8405c43ea38d1b1a78e"
+          grep -q 'InpEnableDemoOrders        = false' Experts/GoldMuwahahaMiner_R9_Micro180_V8_Research.mq5
+          grep -q 'InpV7ConditionalGateResearch   = false' Experts/GoldMuwahahaMiner_R9_Micro180_V8_Research.mq5
+          grep -q 'GoldMuwahahaR9V8ConditionedCash.mqh' Experts/GoldMuwahahaMiner_R9_Micro180_V8_Research.mq5
+          grep -q 'InpMaxIntendedLossCash     = 2.00' Experts/GoldMuwahahaMiner_R9_Micro180_V8_Research.mq5
+          grep -q 'InpCapitalFloorPct        = 25.0' Experts/GoldMuwahahaMiner_R9_Micro180_V8_Research.mq5
