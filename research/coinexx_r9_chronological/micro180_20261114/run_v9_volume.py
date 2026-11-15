@@ -9,7 +9,7 @@ if not (PROJECT/'src').is_dir():
 for p in (PROJECT/'src',PROJECT/'variable_cash_horizon_20261114',
           PROJECT/'dual_basket_20261114',ROOT):sys.path.insert(0,str(p))
 from coinexx_r9.ticks import iter_coinexx_ticks
-from coinexx_r9.r9_baseline import R9Config
+from coinexx_r9.r9_baseline import R9Config,R9HybridGateBaseline
 from on_policy_cash_replay import ResearchCash
 from dual_basket import DualBasketBaseline
 from v9_volume_router import VolumePreservingMicroV9,V9Spec
@@ -31,6 +31,7 @@ def execute():
     cfg=R9Config()
     cash=lambda:ResearchCash(k=1.,cost=.20,initial_capital=args.capital,governor=args.governor)
     models={
+      'r9_original_60s':R9HybridGateBaseline(cfg),
       'dual_original_exit':DualBasketBaseline(cfg),
       'v9_high_volume_first_cash010':VolumePreservingMicroV9(cfg,cash()),
       'v9_defensive_micro_loss':VolumePreservingMicroV9(cfg,cash(),V9Spec(exit_action='early_path_defense')),
@@ -42,11 +43,13 @@ def execute():
         if n>=args.limit:break
     out={}
     for key,m in models.items():
-        if isinstance(m,DualBasketBaseline):
+        if isinstance(m,(DualBasketBaseline,R9HybridGateBaseline)):
             vals=[x.net_price_u/100.-.20 for x in m.trades]
             out[key]={'trades':len(vals),'net_cash':round(sum(vals),3),
                       'net_per_trade':round(sum(vals)/max(1,len(vals)),6),
                       'buys':sum(x.side>0 for x in m.trades),'sells':sum(x.side<0 for x in m.trades),
+                      'buy_net_cash':round(sum(v for x,v in zip(m.trades,vals) if x.side>0),3),
+                      'sell_net_cash':round(sum(v for x,v in zip(m.trades,vals) if x.side<0),3),
                       'open_position_at_end':bool(m.position)}
         else:
             r=m.report()
@@ -56,6 +59,8 @@ def execute():
             out[key]['open_position_at_end']=bool(m.position)
             out[key]['buys']=sum(x.side>0 for x in m.trades)
             out[key]['sells']=sum(x.side<0 for x in m.trades)
+            out[key]['buy_net_cash']=round(sum((x.net_price_u/100.*m.cash.k-m.cash.cost) for x in m.trades if x.side>0),3)
+            out[key]['sell_net_cash']=round(sum((x.net_price_u/100.*m.cash.k-m.cash.cost) for x in m.trades if x.side<0),3)
     result={'scope':'IN_SAMPLE_FIRST_SOURCE_RECORDS_NOT_OOS','source':args.ticks.name,'n':n,
             'elapsed_s':round(time.perf_counter()-start,2),
             'raw_data_created':False,'unverified_k':1.,'unverified_cost':.20,
