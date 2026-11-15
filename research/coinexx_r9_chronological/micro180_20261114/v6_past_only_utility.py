@@ -10,7 +10,7 @@ uncertainty penalty is deliberately a heuristic, NOT a calibrated CI.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from math import isfinite, sqrt
+from math import isfinite, sqrt, ceil as math_ceil
 from typing import Optional
 from statistics import mean
 
@@ -195,30 +195,61 @@ class PastOnlyCashMicroV6(PathLifecycleV5):
         })
         super()._open_trade(t,side)
 
+    def _v6_ratchet(self,t:Tick,p,observed_net:float):
+        """Correct V5 Python runner's missing high-watermark cash trail.
+
+        V5 experimental runner protected the first +$0.10 but did not ratchet
+        with MFE; native V5 MQL5 already computes a high-water mark. Never
+        widen the SL or assume an actual broker stop fill is guaranteed.
+        """
+        if self.position is not p or not self.v5.enable_protected_continuation:
+            return
+        if not self.micro_spec.experimental_runner or observed_net<self.micro_spec.min_net_cash:
+            return
+        peak=self._current_peak_cash
+        lock=max(self.micro_spec.min_net_cash,peak-self.micro_spec.runner_trail_cash)
+        lock=min(lock,self.micro_spec.preferred_max_net_cash)
+        price_move=math_ceil((lock+self.cash.cost+self.v5.protect_cost_cash)/
+                             self.cash.k*100.-1.e-10)
+        wanted=p.entry_price_u+p.side*price_move
+        min_distance=self.cfg.tick_size_points+(
+            self.cfg.broker_stops_points if self.cfg.respect_broker_stops else 0)
+        liquidation=t.bid_u if p.side>0 else t.ask_u
+        legal=(wanted<=liquidation-min_distance if p.side>0
+               else wanted>=liquidation+min_distance)
+        tighter=(wanted>p.sl_u if p.side>0 else wanted<p.sl_u)
+        already=p.side*(p.sl_u-p.entry_price_u)*self.cash.k/100.-self.cash.cost
+        if legal and tighter:
+            p.sl_u=wanted
+            self.stats['v6_highwater_stop_ratchet']+=1
+        elif already+1e-9<lock:
+            self._record_close(t,'v6_highwater_not_protectable',liquidation)
+
     def _manage_position(self,t:Tick):
         p=self.position
         if p is None:return
-        if not self.v6.enable_holding_utility:
-            return super()._manage_position(t)
         liq=t.bid_u if p.side>0 else t.ask_u
         net=p.side*(liq-p.entry_price_u)*self.cash.k/100.-self.cash.cost
-        # Parent handles hard stop, gaps, timeout, account, cap *before* any
-        # discretionary runner. Never defer it to a historical utility probe.
-        if net>=self.micro_spec.min_net_cash and net<self.micro_spec.preferred_max_net_cash:
+        # Source-exact CURRENT executable quote, before any early return.
+        # Base V5 lost MFE tracking in its overridden hold management.
+        self._current_peak_cash=max(net,
+            self._current_peak_cash if self._current_peak_cash is not None else float('-inf'))
+        if self.v6.enable_holding_utility and (
+            self.micro_spec.min_net_cash<=net<self.micro_spec.preferred_max_net_cash):
             utility=incremental_hold_prior(self.rolling,t.time_msc,p.side,
                           cash_per_price_dollar=self.cash.k,spec=self.v6)
             if utility is None or utility<=self.v6.min_hold_increment:
-                # Respect mandatory forced-exit precedence: if any forced limit
-                # has tripped, parent must close for that reason.
                 age=t.time_msc-p.entry_time_msc
-                if (net<=-self.micro_spec.hard_risk_cash or
-                    age>=self.micro_spec.max_lifetime_ms or
-                    self.rolling.last_gap_ms>self.micro_spec.max_quote_gap_ms or
-                    (self.cash.governor and (self.account.day_lock or self.account.permanent_lock))):
-                    return super()._manage_position(t)
-                self._record_close(t,'v6_hold_no_positive_increment',liq)
-                return
-        return super()._manage_position(t)
+                forced=(net<=-self.micro_spec.hard_risk_cash or
+                        age>=self.micro_spec.max_lifetime_ms or
+                        self.rolling.last_gap_ms>self.micro_spec.max_quote_gap_ms or
+                        (self.cash.governor and
+                         (self.account.day_lock or self.account.permanent_lock)))
+                if not forced:
+                    self._record_close(t,'v6_hold_no_positive_increment',liq)
+                    return
+        super()._manage_position(t)
+        self._v6_ratchet(t,p,net)
 
     def report(self):
         r=super().report()
