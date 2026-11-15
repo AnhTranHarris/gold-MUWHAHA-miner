@@ -228,6 +228,7 @@ bool MicroSignal(const MqlTick &t,int &side)
 {
    side=0;
    const long now=(long)t.time_msc;
+   const long secondFloor=now/1000*1000;
    if(!g_haveClosed15 || !g_have5 || g_sn<InpMinCompleted30s ||
       g_lastQuoteGap>InpMaxQuoteGapMs || t.ask<=0 || t.bid<=0)return false;
    const double point=SymbolInfoDouble(_Symbol,SYMBOL_POINT);
@@ -252,17 +253,17 @@ bool MicroSignal(const MqlTick &t,int &side)
       QBar b=g_s[SecFromLatest(off)];
       const long age=now-b.lastMs;
       if(age<0){g_dataFault=true;return false;}
-      if(age>30000)break;
-      if(age<=30000)
+      if(b.startMs<secondFloor-30000)break;
+      if(b.startMs>=secondFloor-30000)
       {
          highB30=MathMax(highB30,b.bc);lowA30=MathMin(lowA30,b.ac);n30++;
       }
-      if(age<=15000)
+      if(b.startMs>=secondFloor-15000)
       {
          highB15=MathMax(highB15,b.bc);lowA15=MathMin(lowA15,b.ac);n15++;
          if(nsp<32){lastSpreads[nsp]=(b.ac-b.bc)/point;lastMid[nsp]=(b.bc+b.ac)/2;nsp++;}
       }
-      if(age<=5000)n5+=b.n;
+      if(b.startMs>=secondFloor-5000)n5+=b.n;
       if(recentLast<0)recentLast=b.lastMs;
    }
    if(recentLast<0 || now-recentLast>2500 || n15<InpMinCompleted15s ||
@@ -549,7 +550,18 @@ int OnInit()
       InpPreferredNetProfitCash<=InpMinNetProfitCash ||
       InpCapitalFloorPct<=0 || InpCapitalFloorPct>=100 ||
       InpMaxPeakDrawdownPct<=0 || InpMaxPeakDrawdownPct>InpCapitalFloorPct ||
-      InpAdditionalCostCash<0 || InpExtraSlipReserveCash<0)return INIT_PARAMETERS_INCORRECT;
+      InpAdditionalCostCash<0 || InpExtraSlipReserveCash<0 ||
+      InpMaxQuoteGapMs<=0 || InpMaxSpreadPoints<=0 ||
+      InpMinBasketMovePoints<=0 || InpMin15sStructurePoints<0 ||
+      InpBreakoutBufferPoints<0 || InpMinCompleted15s<2 ||
+      InpMinCompleted30s<InpMinCompleted15s || InpMinQuotes5s<1 ||
+      InpMaxSpreadShockRatio<1.0 || InpMinNormalizedBreakout<0 ||
+      InpMinDirectionalEff<=0 || InpMinDirectionalEff>1 ||
+      InpATRPeriod<2 || InpADXWilderPeriod<2 || InpEMAPeriod<2 ||
+      InpMinM5ATRPrice<0 || InpDailyGrossBasePct<=0 ||
+      InpDailyGrossMaxPct<InpDailyGrossBasePct ||
+      InpProfitRecycleFrac<0 || InpProfitRecycleFrac>1 ||
+      InpMinMarginLevelPct<=0)return INIT_PARAMETERS_INCORRECT;
    if(InpEnableDemoOrders &&
      (ENUM_ACCOUNT_TRADE_MODE)AccountInfoInteger(ACCOUNT_TRADE_MODE)!=ACCOUNT_TRADE_MODE_DEMO)
    {Print("R9 micro180: DEMO ONLY; production order mode refused");return INIT_PARAMETERS_INCORRECT;}
