@@ -43,6 +43,13 @@ class SpecialistTests(unittest.TestCase):
              breakout_side=1,breakout_phase="RETEST_CONFIRMED"),1,10000,10004)
         self.assertEqual(y.proposal,"STRUCTURAL_CANDIDATE")
 
+    def test_exhaustion_is_observation_not_blind_entry(self):
+        s=snapshot(pattern="EXHAUSTION_WARNING")
+        plan=self.router.propose(s,1,10000,10004)
+        self.assertEqual(plan.specialist,"TREND_EXHAUSTION")
+        self.assertEqual(plan.proposal,"WAIT_IMPULSE_RENEWAL")
+        self.assertEqual(self.router.review(plan,s,1,10000,10004).action,"DEFEND")
+
     def test_nested_countertrend_distinguished(self):
         x=self.router.propose(snapshot(pattern="NESTED_PULLBACK",
                                       parent_direction=-1,micro_direction=1),
