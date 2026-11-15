@@ -88,6 +88,9 @@ input int    InpV9Min5ObservedMs        = 1000; // source-millisecond maturity, 
 input int    InpV9Min15ObservedMs       = 2500;
 input int    InpV9RearmCooldownMs       = 1500;
 input bool   InpV9QuantScoreVeto        = false; // strictly opt-in; nine-prefix result still net-negative
+
+input group "V10 CAUSAL MARKET-STRUCTURE RESEARCH"
+input bool   InpV10StructureShadow     = false; // OFF preserves V9; diagnostics ONLY when enabled
 input double InpV9MinBuyScore          = -0.25;
 input double InpV9MinSellScore         = -0.25;
 
@@ -164,6 +167,9 @@ int SecFromLatest(const int offset)
 }
 #include "GoldMuwahahaR9V6PastOnlyCash.mqh"
 #include "GoldMuwahahaR9V8ConditionedCash.mqh"
+#include "GoldMuwahahaR9V10StructureShadow.mqh"
+R9V10StructureShadow g_v10Structure;
+bool g_v10StructureReady=false;
 long g_v6LastCashComputeSecond=-1,g_v6LastCashLogMinute=-1;
 bool g_v6BuyReady=false,g_v6SellReady=false;
 V6CashHistory g_v6Buy,g_v6Sell;
@@ -743,6 +749,15 @@ void MicroCurrentTick(const MqlTick &tick)
    const long m=(long)tick.time_msc/60000;
    if(m!=g_entryMinute){g_entryMinute=m;g_entriesThisMinute=0;}
    RefreshRisk(false);
+   // Research-only: terminal's LAST synchronized quote, never historical
+   // backfill plus unanchored CopyRates. No changes to order path or exits.
+   if(InpV10StructureShadow && g_v10StructureReady)
+   {
+      const double move5=g_5s.bc+g_5s.ac-g_5s.bo-g_5s.ao;
+      const double p=SymbolInfoDouble(_Symbol,SYMBOL_POINT);
+      const int micro=(move5>2.*p?1:(move5< -2.*p?-1:0));
+      g_v10Structure.OnQuote(tick,micro);
+   }
    // Read-only V9 shadow evaluates actual source-executable BUY/SELL
    // candidates but cannot send orders unless demo trading is explicitly ON.
    if(!InpEnableDemoOrders)
@@ -843,6 +858,12 @@ int OnInit()
    g_hATR1=iATR(_Symbol,PERIOD_M1,InpATRPeriod);
    g_hATR5=iATR(_Symbol,PERIOD_M5,InpATRPeriod);
    if(g_hATR5==INVALID_HANDLE)return INIT_FAILED;
+   if(InpV10StructureShadow)
+   {
+      g_v10StructureReady=g_v10Structure.Init(g_hATR1,g_hATR5,g_hADX,g_hEMA);
+      if(!g_v10StructureReady)
+         Print("R9 V10 shadow indicator data unavailable: V9 unchanged, V10 disabled");
+   }
    g_riskKey="R9M180."+IntegerToString(AccountInfoInteger(ACCOUNT_LOGIN));
    const double equity=AccountInfoDouble(ACCOUNT_EQUITY);
    if(equity<=0 || !GVEnsure(g_riskKey+".base",equity) || !GVEnsure(g_riskKey+".peak",equity))return INIT_FAILED;
@@ -857,6 +878,7 @@ int OnInit()
 void OnDeinit(const int reason)
 {
    EventKillTimer();
+   if(g_v10StructureReady)g_v10Structure.Release();
    if(g_hADX!=INVALID_HANDLE)IndicatorRelease(g_hADX);
    if(g_hEMA!=INVALID_HANDLE)IndicatorRelease(g_hEMA);
    if(g_hATR1!=INVALID_HANDLE)IndicatorRelease(g_hATR1);
