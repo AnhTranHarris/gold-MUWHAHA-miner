@@ -20,6 +20,10 @@ string g_rows[V12_ROWS];
 int    g_rows_count=0;
 ulong  g_deals[V12_DEALS];
 ulong  g_deal_queued_ms[V12_DEALS];
+long   g_deal_callback_server_s[V12_DEALS];
+long   g_deal_quote_ms[V12_DEALS];
+double g_deal_bid[V12_DEALS];
+double g_deal_ask[V12_DEALS];
 int    g_deal_count=0;
 int    g_drop_rows=0;
 int    g_drop_deals=0;
@@ -43,15 +47,23 @@ void QuoteSnapshot(long &quote_msc,double &bid,double &ask)
      }
   }
 
+string PrefixAt(const string kind,const string symbol,const long magic,
+                const ulong callback_mono_ms,const long callback_server_s,
+                const long quote_msc,const double bid,const double ask)
+  {
+   return "V12,"+g_session+",DEMO,"+kind+","+
+      U64(callback_mono_ms)+","+I64(callback_server_s)+","+
+      I64(quote_msc)+","+F64(bid)+","+F64(ask)+","+
+      symbol+","+I64(magic)+",";
+  }
+
 string Prefix(const string kind,const string symbol,const long magic)
   {
    long quote_msc;double bid,ask;
    QuoteSnapshot(quote_msc,bid,ask);
    // Server seconds are RECEIPT context, never a deal or request send time.
-   return "V12,"+g_session+",DEMO,"+kind+","+
-      U64(GetTickCount64())+","+I64((long)TimeTradeServer())+","+
-      I64(quote_msc)+","+F64(bid)+","+F64(ask)+","+
-      symbol+","+I64(magic)+",";
+   return PrefixAt(kind,symbol,magic,GetTickCount64(),
+                   (long)TimeTradeServer(),quote_msc,bid,ask);
   }
 
 void QueueLine(const string line)
@@ -68,7 +80,12 @@ void QueueDeal(const ulong id)
    for(int k=0;k<g_deal_count;k++)if(g_deals[k]==id)return;
    if(g_deal_count>=V12_DEALS)
      {g_drop_deals++;return;}
-   g_deals[g_deal_count]=id;g_deal_queued_ms[g_deal_count]=GetTickCount64();g_deal_count++;
+   g_deals[g_deal_count]=id;
+   g_deal_queued_ms[g_deal_count]=GetTickCount64();
+   g_deal_callback_server_s[g_deal_count]=(long)TimeTradeServer();
+   QuoteSnapshot(g_deal_quote_ms[g_deal_count],
+                 g_deal_bid[g_deal_count],g_deal_ask[g_deal_count]);
+   g_deal_count++;
   }
 
 int OnInit()
@@ -144,13 +161,20 @@ void FlushPendingDeals()
            {g_drop_deals++;continue;}
          g_deals[retained]=id;
          g_deal_queued_ms[retained]=g_deal_queued_ms[i];
+         g_deal_callback_server_s[retained]=g_deal_callback_server_s[i];
+         g_deal_quote_ms[retained]=g_deal_quote_ms[i];
+         g_deal_bid[retained]=g_deal_bid[i];
+         g_deal_ask[retained]=g_deal_ask[i];
          retained++;
          continue;
         }
       string symbol=HistoryDealGetString(id,DEAL_SYMBOL);
       long magic=HistoryDealGetInteger(id,DEAL_MAGIC);
       if(symbol!=InpExactSymbol || magic!=(long)InpExactMagic)continue;
-      string row=Prefix("DEAL",symbol,magic)+
+      // Original event callback snapshot, NOT this OnTimer flush timestamp.
+      string row=PrefixAt("DEAL",symbol,magic,g_deal_queued_ms[i],
+         g_deal_callback_server_s[i],g_deal_quote_ms[i],
+         g_deal_bid[i],g_deal_ask[i])+
          U64((ulong)HistoryDealGetInteger(id,DEAL_ORDER))+","+U64(id)+","+
          U64((ulong)HistoryDealGetInteger(id,DEAL_POSITION_ID))+
          ",0,0,0,"+
