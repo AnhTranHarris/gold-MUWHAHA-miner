@@ -381,6 +381,8 @@ bool MicroSignal(const MqlTick &t,int &side)
    const long secondFloor=now/1000*1000;
    if(!g_haveClosed15 || !g_have5 || g_sn<InpMinCompleted30s ||
       g_lastQuoteGap>InpMaxQuoteGapMs || t.ask<=0 || t.bid<=0)return false;
+   if(g_5s.lastMs-g_5s.firstMs<InpMin5sObservedSpanMs ||
+      g_5s.maxGapMs>InpMaxQuoteGapMs)return false;
    const double point=SymbolInfoDouble(_Symbol,SYMBOL_POINT);
    if(point<=0)return false;
    const double spread=(t.ask-t.bid)/point;
@@ -389,12 +391,21 @@ bool MicroSignal(const MqlTick &t,int &side)
    if(move>=InpMinBasketMovePoints)side=1;
    else if(move<=-InpMinBasketMovePoints)side=-1;
    else return false;
-   if(now-(g_closed15.startMs+15000)>15000 ||
-      side*(g_closed15.bc+g_closed15.ac-g_closed15.bo-g_closed15.ao)/(2*point)<InpMin15sStructurePoints)
-      return false;
-   if(!S1Quality(side,now))return false;
+   const bool closed15=(now-(g_closed15.startMs+15000)<=15000 &&
+      g_closed15.lastMs-g_closed15.firstMs>=InpMinCompleted15SpanMs &&
+      g_closed15.maxGapMs<=InpMaxQuoteGapMs &&
+      g_closed15.startMs+15000-g_closed15.lastMs<=InpMaxCompleted15TailMs &&
+      side*(g_closed15.bc+g_closed15.ac-g_closed15.bo-g_closed15.ao)/(2*point)>=InpMin15sStructurePoints);
+   const bool active15=(InpAllowCausalActive15 &&
+      g_15s.lastMs-g_15s.firstMs>=InpMinActive15SpanMs &&
+      g_15s.maxGapMs<=InpMaxQuoteGapMs && g_15s.n>=5 &&
+      side*(g_15s.bc+g_15s.ac-g_15s.bo-g_15s.ao)/(2*point)>=InpMin15sStructurePoints);
+   if(!active15 && !closed15)return false;
+   if(!InpMicroOnlyS1 && !S1Quality(side,now))return false;
 
    double highB15=-DBL_MAX,highB30=-DBL_MAX,lowA15=DBL_MAX,lowA30=DBL_MAX;
+   double newestBid30=0,newestAsk30=0,oldestBid30=0,oldestAsk30=0;
+   long prevStart30=-1;
    int n15=0,n30=0,n5=0;
    double lastSpreads[32],lastMid[32];int nsp=0;
    long recentLast=-1;
@@ -406,6 +417,10 @@ bool MicroSignal(const MqlTick &t,int &side)
       if(b.startMs<secondFloor-30000)break;
       if(b.startMs>=secondFloor-30000)
       {
+         if(InpMicroOnlyS1 && prevStart30>=0 && prevStart30-b.startMs>2000)return false;
+         prevStart30=b.startMs;
+         if(n30==0){newestBid30=b.bc;newestAsk30=b.ac;}
+         oldestBid30=b.bc;oldestAsk30=b.ac;
          highB30=MathMax(highB30,b.bc);lowA30=MathMin(lowA30,b.ac);n30++;
       }
       if(b.startMs>=secondFloor-15000)
@@ -419,17 +434,19 @@ bool MicroSignal(const MqlTick &t,int &side)
    if(recentLast<0 || now-recentLast>2500 || n15<InpMinCompleted15s ||
       n30<InpMinCompleted30s || n5<InpMinQuotes5s)return false;
    const double buffer=InpBreakoutBufferPoints*point;
-   double delta=0;
+   double exc15=0.0,exc30=0.0;
    if(side>0)
    {
-      if(t.bid<highB15+buffer || t.bid<highB30+buffer)return false;
-      delta=(t.bid-highB30)/point;
+      exc15=(t.bid-highB15)/point;
+      exc30=(t.bid-highB30)/point;
    }
    else
    {
-      if(t.ask>lowA15-buffer || t.ask>lowA30-buffer)return false;
-      delta=(lowA30-t.ask)/point;
+      exc15=(lowA15-t.ask)/point;
+      exc30=(lowA30-t.ask)/point;
    }
+   if(exc15<InpBreakoutBufferPoints)return false;
+   if(!InpBalanced30sVeto && exc30<InpBreakoutBufferPoints)return false;
    if(nsp<3)return false;
    // Reverse-history arrays are newest first. Direction sign reflects oldest
    // to newest, while efficiency and volatility are time-order symmetric.
@@ -443,7 +460,16 @@ bool MicroSignal(const MqlTick &t,int &side)
    }
    if(signedMove<=0 || MathAbs(signedMove)/MathMax(point,travel*point)<InpMinDirectionalEff)return false;
    const double sigma=MathMax(1.0,MathSqrt(sumSq/(nsp-1)));
-   if(delta/sigma<InpMinNormalizedBreakout)return false;
+   const double z15=exc15/sigma,z30=exc30/sigma;
+   if((InpBalanced30sVeto?z15:z30)<InpMinNormalizedBreakout)return false;
+   if(InpBalanced30sVeto && exc30<InpBreakoutBufferPoints)
+   {
+      const double older=(side>0?oldestBid30:oldestAsk30);
+      const double newest=(side>0?newestBid30:newestAsk30);
+      const double trend30=side*(newest-older)/point/sigma;
+      const double required=(side>0?InpMinBuyStrong15sZ:InpMinSellStrong15sZ);
+      if(z15<required || trend30< -InpMaxAdverse30sZ)return false;
+   }
    // Sort only the populated observed seconds, not the unused 32-slot tail.
    for(int i=1;i<nsp;++i)
    {
