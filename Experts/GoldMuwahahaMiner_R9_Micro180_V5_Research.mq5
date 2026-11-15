@@ -288,7 +288,8 @@ bool V5QuotePathScore(const int side,const MqlTick &t,double &score,
    const double last=side*(current-prev)/point;
    steps[nSteps++]=last;path+=MathAbs(last);netMove+=last;
    double tail=0.0,tailAbs=0.0,reversal=0.0;
-   for(int i=MathMax(0,nSteps-3);i<nSteps;++i)
+   int tailStart=nSteps-3;if(tailStart<0)tailStart=0;
+   for(int i=tailStart;i<nSteps;++i)
    {
       tail+=steps[i];tailAbs+=MathAbs(steps[i]);
       if(steps[i]<0.0)reversal-=steps[i];
