@@ -703,6 +703,10 @@ int OnInit()
       InpV5MaxSpreadRelative<1 ||
       InpV5MinAdverseAgeMs<0 || InpV5MinAdverseAgeMs>30000 ||
       InpV5AdversePathScore< -2 || InpV5AdversePathScore>0 ||
+      InpV5AdverseNetCash< -InpMaxIntendedLossCash || InpV5AdverseNetCash>0 ||
+      (InpV5EarlyAdverseResearch && !InpV5PathResearch) ||
+      (InpV5ProtectedHoldResearch &&
+       (!InpV5PathResearch || !InpExperimentalRunner)) ||
       InpV5HoldBuyScore< -2 || InpV5HoldBuyScore>2 ||
       InpV5HoldSellScore< -2 || InpV5HoldSellScore>2 ||
       InpMinM5ATRPrice<0 || InpDailyGrossBasePct<=0 ||
