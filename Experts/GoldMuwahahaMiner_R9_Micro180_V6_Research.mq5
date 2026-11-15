@@ -434,6 +434,33 @@ bool MicroSignal(const MqlTick &t,int &side)
       if(coh<InpV5MinCoherence || spr>InpV5MaxSpreadRelative)return false;
       if(v5score<(side>0?InpV5MinBuyPath:InpV5MinSellPath))return false;
    }
+   if(InpV6CashShadowResearch || InpV6CashGateResearch)
+   {
+      const long second=(long)t.time_msc/1000;
+      if(g_v6LastCashComputeSecond!=second)
+      {
+         g_v6LastCashComputeSecond=second;
+         g_v6BuyReady=V6PastFirstPassage(+1,t,InpLots,g_v6Buy);
+         g_v6SellReady=V6PastFirstPassage(-1,t,InpLots,g_v6Sell);
+      }
+      // Independently assess executable BUY/SELL cash priors before deciding
+      // whether the already-structurally-eligible direction may execute.
+      const bool chosenReady=(side>0?g_v6BuyReady:g_v6SellReady);
+      const double chosen=(side>0?g_v6Buy.penalizedNet:g_v6Sell.penalizedNet);
+      if(InpV6CashShadowResearch)
+      {
+         const long minute=(long)t.time_msc/60000;
+         if(minute!=g_v6LastCashLogMinute)
+         {
+            g_v6LastCashLogMinute=minute;
+            PrintFormat("R9 V6 CASH PRIOR shadow side=%d ready=%d BUY=%.4f SELL=%.4f n_buy=%d n_sell=%d; past-only UNFITTED proxy",
+                       side,(int)chosenReady,g_v6Buy.penalizedNet,g_v6Sell.penalizedNet,g_v6Buy.n,g_v6Sell.n);
+         }
+      }
+      if(InpV6CashGateResearch &&
+         (!chosenReady || chosen<(side>0?InpV6MinBuyPastCash:InpV6MinSellPastCash)))
+         return false;
+   }
    return true;
 }
 
@@ -630,6 +657,13 @@ void ManageOwnPosition(const MqlTick &tick)
             g_trade.PositionClose(ticket);
       }
       return;
+   }
+   if(InpV6HoldUtilityResearch && InpExperimentalRunner)
+   {
+      double incremental=-DBL_MAX;
+      if(!V6PastHoldIncrement(side,tick,vol,incremental) ||
+         incremental<=InpV6MinHoldIncrementCash)
+      {g_trade.PositionClose(ticket);return;}
    }
    if(!InpExperimentalRunner)
    {
