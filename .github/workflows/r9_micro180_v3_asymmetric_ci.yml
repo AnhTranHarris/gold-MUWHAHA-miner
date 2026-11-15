@@ -23,3 +23,13 @@ jobs:
       - name: Existing and new causal synthetic invariants
         run: |
           python -m unittest discover -s research/coinexx_r9_chronological/micro180_20261114 -p 'test_*.py' -v
+      - name: Export exact research Python overlay only (NO quote data)
+        uses: actions/upload-artifact@v4
+        with:
+          name: r9-micro180-v3-source-only
+          retention-days: 1
+          if-no-files-found: error
+          path: |
+            research/coinexx_r9_chronological/micro180_20261114/asymmetric_v3.py
+            research/coinexx_r9_chronological/micro180_20261114/test_asymmetric_v3.py
+            research/coinexx_r9_chronological/micro180_20261114/run_asymmetric_v3.py
