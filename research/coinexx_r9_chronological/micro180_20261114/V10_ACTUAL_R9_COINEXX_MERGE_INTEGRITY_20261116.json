@@ -1,0 +1,42 @@
+{
+  "dataset": "r9_synthetic_teacher_to_original_REAL_TickLogger_9m_trade_marks.csv.gz",
+  "verified_sha256": "9c9ebf5889c309a10e4370e355b99d75ae54cf5ccfdaa5ebab9042206f3f8cc5",
+  "verified_bytes": 11233746,
+  "source_drive_url": "https://drive.google.com/file/d/1CC30szLw0_R9UpaRScPJZamgasqGjEsm/view",
+  "rows": 272352,
+  "unique_minute_leg_side_keys": 272352,
+  "teacher_entry_legs": {
+    "first": 192487,
+    "second": 79865
+  },
+  "side_counts": {
+    "buy": 135471,
+    "sell": 136881
+  },
+  "observed_entry_quote_marks_all_rows": 272352,
+  "original_rule": "Coinexx event mark is first actual source quote after NEXT completed second boundary; lag is quote_ms-(teacher_second_ms+1000). Quote entry uses BUY Ask/SELL Bid.",
+  "source_entry_quote_lag_le_2000_ms": 271544,
+  "source_exit_quote_lag_le_2000_ms": 271523,
+  "source_both_entry_and_exit_lag_le_2000_ms": 270776,
+  "source_outside_2s_both_window": 1576,
+  "entry_over_2s": 808,
+  "exit_over_2s": 829,
+  "both_over_2s": 61,
+  "all_quote_timestamps_reconciled_to_original_entry_exit_next_second_and_lag": true,
+  "original_r9_net_usd": "360693.05",
+  "monthly_original_trade_counts": {
+    "2026-01": 27980,
+    "2026-02": 33523,
+    "2026-03": 40985,
+    "2026-04": 31758,
+    "2026-05": 28913,
+    "2026-06": 31801,
+    "2026-07": 25277,
+    "2026-08": 25663,
+    "2026-09": 26452
+  },
+  "original_economics_changed": false,
+  "has_independent_micro180_quote_replay_entries": false,
+  "causal_entry_price_parity_to_r9_coinexx_merged": null,
+  "status": "SOURCE INTEGRITY PASSED; INDEPENDENT 9-MONTH ENTRY PARITY NOT MEASURED; NO HISTORIC LABEL-DRIVEN ENTRY RETROFITTING"
+}
