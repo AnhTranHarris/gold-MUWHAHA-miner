@@ -6,7 +6,9 @@ on:
       - carson/micro180-v10-r9-coinexx-causal-rebuild-20261116
     paths:
       - 'research/coinexx_r9_chronological/micro180_20261114/v10_*.py'
+      - 'research/coinexx_r9_chronological/micro180_20261114/v11_*.py'
       - 'research/coinexx_r9_chronological/micro180_20261114/test_v10_*.py'
+      - 'research/coinexx_r9_chronological/micro180_20261114/test_v11_*.py'
       - '.github/workflows/r9_micro180_v10_causal_concordance.yml'
   workflow_dispatch:
 
@@ -25,6 +27,7 @@ jobs:
         run: |
           python -m py_compile \
             research/coinexx_r9_chronological/micro180_20261114/v10_r9_dual_concordance.py \
+            research/coinexx_r9_chronological/micro180_20261114/v11_micro180_independent_dual_entry.py \
             research/coinexx_r9_chronological/micro180_20261114/v10_merged_entry_concordance.py \
             research/coinexx_r9_chronological/micro180_20261114/run_v10_r9_merged_concordance.py \
             research/coinexx_r9_chronological/micro180_20261114/test_v10_r9_dual_concordance.py
@@ -33,6 +36,11 @@ jobs:
           cd research/coinexx_r9_chronological
           PYTHONPATH=src:variable_cash_horizon_20261114:dual_basket_20261114:micro180_20261114 \
             python micro180_20261114/test_v10_r9_dual_concordance.py -v
+      - name: Verify independent dual-basket decisions including early B/C minute entries
+        run: |
+          cd research/coinexx_r9_chronological
+          PYTHONPATH=src:variable_cash_horizon_20261114:dual_basket_20261114:micro180_20261114 \
+            python micro180_20261114/test_v11_micro180_independent_dual_entry.py -v
       - name: Preserve original working V9 contract
         run: |
           cd research/coinexx_r9_chronological
