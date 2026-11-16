@@ -93,6 +93,8 @@ def compare_merged_entries(
     original_net_by_month: dict[str, Decimal] = {}
     used_keys: set[tuple[int, int, int]] = set()
     original_keys: set[tuple[int, int, int]] = set()
+    # Classification is strictly ex-post for scoring; entry controller never sees it.
+    cycle_index: dict[int, dict[int, dict[str, Any]]] = {}
     mark_time_errors: list[int] = []
     teacher_time_errors: list[int] = []
     price_errors: list[int] = []
@@ -145,6 +147,16 @@ def compare_merged_entries(
             c["fully_mapped_trade_window"] += 1
         else:
             c["trade_window_not_fully_mapped"] += 1
+        leg_map = cycle_index.setdefault(minute, {})
+        if leg in leg_map:
+            raise ValueError("Duplicate minute leg in original R9 teacher")
+        leg_map[leg] = {
+            "net": original_net,
+            "entry_mark_mapped": entry_mapped,
+            "full_window_mapped": entry_mapped and exit_mapped,
+            "candidate_matched": False,
+            "quote_time_price_equal": False,
+        }
 
         candidate = index.get(key)
         if candidate is None:
@@ -161,6 +173,7 @@ def compare_merged_entries(
                 })
             continue
         used_keys.add(key)
+        leg_map[leg]["candidate_matched"] = True
         c["same_minute_leg_side"] += 1
         candidate_time = int(candidate["time_msc"])
         candidate_price = int(candidate["price_u"])
@@ -189,6 +202,7 @@ def compare_merged_entries(
                 c["equal_quote_price_within_tolerance"] += 1
         if delta_mark_ms == 0 and delta_price == 0:
             c["exact_mapped_quote_time_and_price"] += 1
+            leg_map[leg]["quote_time_price_equal"] = True
         if len(sample_misses) < 20 and (delta_mark_ms != 0 or delta_price != 0):
             sample_misses.append({
                 "reason": "causal_entry_differs_from_post_second_quote_mark",
@@ -206,6 +220,53 @@ def compare_merged_entries(
     if (expected_fully_mapped_rows is not None
             and c["fully_mapped_trade_window"] != expected_fully_mapped_rows):
         raise AssertionError("Full-window source mapping count changed")
+    # Family is assigned only AFTER the entire reference cycle's outcomes are
+    # known. Per-family precision/recall uses autonomous entry observations.
+    families: dict[str, dict[str, Any]] = {}
+    for source_minute, legs in cycle_index.items():
+        first = legs.get(1)
+        if first is None or any(n not in (1, 2) for n in legs):
+            raise ValueError(f"Unsupported R9 teacher cycle legs: {source_minute}")
+        second = legs.get(2)
+        if second is None:
+            name = "A_single_leg_all_outcomes"
+        elif first["net"] > 0 and second["net"] > 0:
+            name = "B_favorable_first_developed_reversal"
+        elif first["net"] <= 0 and second["net"] > 0:
+            name = "C_adverse_first_rapid_recovery"
+        else:
+            name = "other_two_leg_outcomes"
+        if name not in families:
+            families[name] = {
+                "cycles": 0, "reference_entries": 0,
+                "source_entry_marks_le_2s": 0,
+                "source_fully_mapped_windows": 0,
+                "independent_same_minute_leg_side": 0,
+                "independent_exact_quote_mark_time_and_price": 0,
+                "original_r9_net_usd": Decimal("0"),
+            }
+        row = families[name]
+        row["cycles"] += 1
+        row["reference_entries"] += len(legs)
+        for leg_record in legs.values():
+            row["original_r9_net_usd"] += leg_record["net"]
+            row["source_entry_marks_le_2s"] += int(leg_record["entry_mark_mapped"])
+            row["source_fully_mapped_windows"] += int(leg_record["full_window_mapped"])
+            row["independent_same_minute_leg_side"] += int(leg_record["candidate_matched"])
+            row["independent_exact_quote_mark_time_and_price"] += int(
+                leg_record["quote_time_price_equal"]
+            )
+    for values in families.values():
+        values["original_r9_net_usd"] = str(values["original_r9_net_usd"])
+        values["entry_recall"] = round(
+            values["independent_same_minute_leg_side"]
+            / max(1, values["reference_entries"]), 6
+        )
+        values["exact_quote_mark_fraction_of_source_eligible"] = round(
+            values["independent_exact_quote_mark_time_and_price"]
+            / max(1, values["source_entry_marks_le_2s"]), 6
+        )
+
     total = c["original_teacher_rows"]
     eligible = c["entry_quote_mapped_le_2s"]
     exact = c["exact_mapped_quote_time_and_price"]
@@ -217,6 +278,8 @@ def compare_merged_entries(
         "clock_offset_minutes_explicit": clock_offset_minutes,
         "mapped_mark_tolerance_ms": max_anchor_distance_ms,
         "counts": dict(c),
+        "by_original_historical_cycle_family": families,
+        "family_labels_available_to_entry_logic": False,
         "candidate_total": candidate_count,
         "unmatched_candidate_entries": candidate_count - len(used_keys),
         "original_r9_net_usd_unchanged": str(source_net),
