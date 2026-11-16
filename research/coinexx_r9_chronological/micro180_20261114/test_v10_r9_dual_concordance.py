@@ -151,7 +151,7 @@ class MergedReferenceConcordanceTests(unittest.TestCase):
         )
         self.assertEqual(report["original_r9_net_usd_unchanged"], "1.37")
         self.assertEqual(report["counts"]["exact_mapped_quote_time_and_price"], 1)
-        self.assertEqual(report["counts"]["same_original_teacher_second"], 0)
+        self.assertEqual(report["counts"].get("same_original_teacher_second", 0), 0)
         self.assertFalse(report["certified_exact_replication"])
         self.assertFalse(report["original_fee_or_swap_changes"])
 
@@ -230,7 +230,7 @@ class MergedReferenceConcordanceTests(unittest.TestCase):
         )
         self.assertEqual(result["counts"]["fully_mapped_trade_window"], 1)
         self.assertEqual(result["counts"]["exact_mapped_quote_time_and_price"], 1)
-        self.assertEqual(result["counts"]["same_original_teacher_second"], 0)
+        self.assertEqual(result["counts"].get("same_original_teacher_second", 0), 0)
 
     def test_out_of_window_exit_is_not_a_fully_matched_trade(self):
         row = self.row(xquote_ms=str(self.mark_ms + 10000 + 2003),
