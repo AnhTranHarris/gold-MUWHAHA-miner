@@ -7,6 +7,7 @@ Only compact JSON metrics are emitted, never duplicate tick or trade archives.
 from __future__ import annotations
 
 import argparse
+from decimal import Decimal
 import json
 import sys
 from dataclasses import replace
@@ -83,6 +84,7 @@ def run(
         candidate.entries,
         clock_offset_minutes=clock_offset_minutes,
         expected_teacher_rows=expected,
+        expected_teacher_net_usd=Decimal('360693.05') if require_full_272352 else None,
     )
     result.update({
         "source_ticks_processed": n,
