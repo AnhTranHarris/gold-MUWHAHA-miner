@@ -248,6 +248,42 @@ class MergedReferenceConcordanceTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             compare_merged_entries([row], [self.candidate()], expected_teacher_rows=1)
 
+    def test_family_A_single_entry_not_confused_with_B_C_outcomes(self):
+        report = compare_merged_entries([self.row()], [self.candidate()])
+        fam = report["by_original_historical_cycle_family"]
+        self.assertEqual(fam["A_single_leg_all_outcomes"]["cycles"], 1)
+        self.assertEqual(fam["A_single_leg_all_outcomes"]["reference_entries"], 1)
+        self.assertEqual(fam["A_single_leg_all_outcomes"]["entry_recall"], 1.0)
+
+    def test_family_B_and_C_labels_are_posthoc_scoring_only(self):
+        second = self.row(leg="2", side="sell", net_usd="0.40",
+                          equote_ms=str(self.mark_ms + 250),
+                          elag_ms="250", q_entry_u="12280")
+        cands = [self.candidate(),
+                 self.candidate(rearm_number=1, side=-1,
+                                time_msc=self.mark_ms + 250, price_u=12280)]
+        favorable = compare_merged_entries(
+            [self.row(net_usd="1.37"), second], cands, expected_teacher_rows=2
+        )
+        adverse = compare_merged_entries(
+            [self.row(net_usd="-0.75"), second], cands, expected_teacher_rows=2
+        )
+        self.assertEqual(
+            favorable["by_original_historical_cycle_family"]
+            ["B_favorable_first_developed_reversal"]["reference_entries"], 2
+        )
+        self.assertEqual(
+            adverse["by_original_historical_cycle_family"]
+            ["C_adverse_first_rapid_recovery"]["reference_entries"], 2
+        )
+        self.assertFalse(favorable["family_labels_available_to_entry_logic"])
+        self.assertFalse(adverse["family_labels_available_to_entry_logic"])
+        self.assertEqual(
+            favorable["by_original_historical_cycle_family"]
+            ["B_favorable_first_developed_reversal"]
+            ["independent_exact_quote_mark_time_and_price"], 2
+        )
+
     def test_duplicate_quote_candidate_is_not_double_counted(self):
         with self.assertRaises(ValueError):
             compare_merged_entries([self.row()],
