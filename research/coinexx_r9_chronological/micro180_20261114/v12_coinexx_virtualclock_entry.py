@@ -264,6 +264,8 @@ class Micro180V12VirtualClock(Micro180V11DualEntry):
             self._open_trade(t, pending.side)
             if len(self.entries) > before:
                 self.entries[-1].update({
+                    "v10_entry_authority": "v12_independent_micro180_multi_horizon_hazard",
+                    "v11_entry_route": "v12_multi_horizon_virtual_real_quote_clock",
                     "v12_independent_hazard_score": pending.hazard_score,
                     "v12_signal_ms": pending.signal_ms,
                     "v12_target_second_start_ms": pending.next_second_start_ms,
