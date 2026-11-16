@@ -92,9 +92,9 @@ class VirtualClockContracts(unittest.TestCase):
 
     def test_signal_minute_expiry_prohibits_next_minute_fill(self):
         m = self.make()
-        m.on_tick(tick(0, 59915, 10000))
+        m.on_tick(tick(0, 119915, 10000))
         self.assertIsNotNone(m.entry_intent)
-        m.on_tick(tick(1, 60009, 10002))
+        m.on_tick(tick(1, 120009, 10002))
         self.assertEqual(len(m.entries), 0)
         self.assertEqual(m.v12_counts["prior_minute_intent_expired"], 1)
 
@@ -106,7 +106,7 @@ class VirtualClockContracts(unittest.TestCase):
             h.update(tick(i, s * 1000 + 35, b))
         self.assertEqual(len(h.completed_bid), 3)
         self.assertEqual(len(h.seconds), 3)
-        self.assertEqual(h._past(12, 3), 10011 + 9.5)  # sec 5 is TOO stale? see below
+        self.assertIsNone(h._past(12, 3))  # sec 5 is too stale; no fabricated 1s bars
 
     def test_feature_vector_current_price_only_and_previous_history(self):
         m = self.make()
