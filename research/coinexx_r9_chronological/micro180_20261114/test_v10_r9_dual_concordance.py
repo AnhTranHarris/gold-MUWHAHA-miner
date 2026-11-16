@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import sys
 import unittest
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -123,9 +123,12 @@ class MergedReferenceConcordanceTests(unittest.TestCase):
     def row(self, **changes):
         item = {
             "entry_time_broker": self.dt.strftime("%Y-%m-%d %H:%M:%S"),
-            "side": "buy", "leg": "1",
+            "exit_time_broker": (self.dt + timedelta(seconds=10)).strftime("%Y-%m-%d %H:%M:%S"),
+            "month": "2026-01", "side": "buy", "leg": "1",
             "equote_ms": str(self.mark_ms),
-            "q_entry_u": "12345",
+            "xquote_ms": str(self.mark_ms + 10000),
+            "elag_ms": "0", "xlag_ms": "0",
+            "q_entry_u": "12345", "q_exit_u": "12350",
             "net_usd": "1.37",
         }
         item.update(changes)
@@ -147,16 +150,17 @@ class MergedReferenceConcordanceTests(unittest.TestCase):
             [self.row()], [self.candidate()], expected_teacher_rows=1
         )
         self.assertEqual(report["original_r9_net_usd_unchanged"], "1.37")
-        self.assertEqual(report["counts"]["exact_executable_quote_price_and_clock"], 1)
-        self.assertTrue(report["certified_exact_replication"])
+        self.assertEqual(report["counts"]["exact_mapped_quote_time_and_price"], 1)
+        self.assertEqual(report["counts"]["same_original_teacher_second"], 0)
+        self.assertFalse(report["certified_exact_replication"])
         self.assertFalse(report["original_fee_or_swap_changes"])
 
     def test_wrong_quote_price_is_not_declared_equal(self):
         result = compare_merged_entries(
             [self.row()], [self.candidate(price_u=12346)], expected_teacher_rows=1
         )
-        self.assertEqual(result["counts"].get("exact_executable_quote_price_and_clock", 0), 0)
-        self.assertEqual(result["counts"]["clock_match_quote_price_differs"], 1)
+        self.assertEqual(result["counts"].get("exact_mapped_quote_time_and_price", 0), 0)
+        self.assertEqual(result["counts"]["exact_mapped_quote_millisecond"], 1)
         self.assertFalse(result["certified_exact_replication"])
 
     def test_missing_original_quote_keeps_net_in_denominator(self):
@@ -179,13 +183,13 @@ class MergedReferenceConcordanceTests(unittest.TestCase):
         mixed = [
             self.row(net_usd="-2.00", leg="1"),
             self.row(net_usd="0.40", leg="2", side="sell",
-                     equote_ms=str(self.mark_ms + 2000), q_entry_u="12280"),
+                     equote_ms=str(self.mark_ms + 2000), elag_ms="2000", q_entry_u="12280"),
         ]
         cands = [self.candidate(),
                  self.candidate(rearm_number=1, side=-1,
                                 time_msc=self.mark_ms + 2000, price_u=12280)]
         report = compare_merged_entries(mixed, cands, expected_teacher_rows=2)
-        self.assertEqual(report["counts"]["exact_executable_quote_price_and_clock"], 2)
+        self.assertEqual(report["counts"]["exact_mapped_quote_time_and_price"], 2)
         self.assertEqual(report["original_r9_net_usd_unchanged"], "-1.60")
         self.assertEqual(report["same_cycle_entry_coverage"], 1.0)
 
@@ -197,11 +201,11 @@ class MergedReferenceConcordanceTests(unittest.TestCase):
             expected_teacher_rows=1,
             max_anchor_distance_ms=3000,
         )
-        self.assertEqual(report["counts"]["anchor_time_within_tolerance"], 1)
-        self.assertEqual(report["counts"]["exact_price_within_clock_tolerance"], 1)
-        self.assertEqual(report["counts"].get("exact_executable_quote_price_and_clock", 0), 0)
+        self.assertEqual(report["counts"]["within_mapped_quote_time_tolerance"], 1)
+        self.assertEqual(report["counts"]["equal_quote_price_within_tolerance"], 1)
+        self.assertEqual(report["counts"].get("exact_mapped_quote_time_and_price", 0), 0)
         self.assertEqual(report["quote_exact_and_time_coverage"], 0.0)
-        self.assertEqual(report["median_absolute_time_difference_ms"], 1250)
+        self.assertEqual(report["median_abs_mapped_quote_delta_ms"], 1250)
         self.assertFalse(report["certified_exact_replication"])
 
     def test_rejects_modified_full_ledger_profit_without_repricing(self):
@@ -212,6 +216,37 @@ class MergedReferenceConcordanceTests(unittest.TestCase):
                 expected_teacher_rows=1,
                 expected_teacher_net_usd=Decimal("1.37"),
             )
+
+
+    def test_next_full_second_quote_lag_and_nonadjusted_source_window(self):
+        from v10_merged_entry_concordance import compare_merged_entries
+        row = self.row(equote_ms=str(self.mark_ms + 304),
+                       elag_ms="304", xquote_ms=str(self.mark_ms + 10027),
+                       xlag_ms="27")
+        candidate = self.candidate(time_msc=self.mark_ms + 304)
+        result = compare_merged_entries(
+            [row], [candidate], expected_teacher_rows=1,
+            expected_fully_mapped_rows=1,
+        )
+        self.assertEqual(result["counts"]["fully_mapped_trade_window"], 1)
+        self.assertEqual(result["counts"]["exact_mapped_quote_time_and_price"], 1)
+        self.assertEqual(result["counts"]["same_original_teacher_second"], 0)
+
+    def test_out_of_window_exit_is_not_a_fully_matched_trade(self):
+        row = self.row(xquote_ms=str(self.mark_ms + 10000 + 2003),
+                       xlag_ms="2003")
+        r = compare_merged_entries([row], [self.candidate()], expected_teacher_rows=1,
+                                   expected_fully_mapped_rows=0)
+        self.assertEqual(r["counts"]["entry_quote_mapped_le_2s"], 1)
+        self.assertEqual(r["counts"]["exit_quote_outside_2s_or_missing"], 1)
+        self.assertEqual(r["counts"]["trade_window_not_fully_mapped"], 1)
+        self.assertEqual(r["original_r9_net_usd_unchanged"], "1.37")
+
+    def test_rejects_malformed_quote_mapping_timestamp(self):
+        row = self.row(equote_ms=str(self.mark_ms + 100),
+                       elag_ms="0")
+        with self.assertRaises(ValueError):
+            compare_merged_entries([row], [self.candidate()], expected_teacher_rows=1)
 
     def test_duplicate_quote_candidate_is_not_double_counted(self):
         with self.assertRaises(ValueError):
