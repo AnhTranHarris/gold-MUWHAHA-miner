@@ -1,0 +1,41 @@
+name: Micro180 positive-cycle real-quote entry clock (research)
+
+on:
+  push:
+    branches:
+      - carson/micro180-positive-cycle-entry-clock-20261116
+    paths:
+      - 'research/coinexx_r9_chronological/micro180_20261114/v12_positive_*.py'
+      - 'research/coinexx_r9_chronological/micro180_20261114/test_v12_positive_*.py'
+      - '.github/workflows/micro180_positive_cycle_clock_ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  positive-cycle-clock-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify source parsability without market data download
+        run: |
+          python -m py_compile research/coinexx_r9_chronological/micro180_20261114/v12_positive_cycle_targets.py
+          python -m py_compile research/coinexx_r9_chronological/micro180_20261114/v12_positive_clock_router.py
+          python -m py_compile research/coinexx_r9_chronological/micro180_20261114/test_v12_positive_clock_router.py
+      - name: Verify independent clock and positive A/B/C label contracts
+        run: |
+          cd research/coinexx_r9_chronological
+          PYTHONPATH=src:variable_cash_horizon_20261114:dual_basket_20261114:micro180_20261114 \
+            python micro180_20261114/test_v12_positive_clock_router.py -v
+      - name: Preserve frozen R9, V9 and V11 research code
+        run: |
+          test "$(git rev-parse HEAD:Experts/GoldMuwahahaMiner_R9_HybridGate.mq5)" = "07222b1a3800c9cc826abe10a4ce6afbd97b0af5"
+          test "$(git rev-parse HEAD:research/coinexx_r9_chronological/src/coinexx_r9/r9_baseline.py)" = "a760b843577e53a3fa165273421b0270dba4f35e"
+          test "$(git rev-parse HEAD:research/coinexx_r9_chronological/micro180_20261114/v9_volume_router.py)" = "036c5ae716aae7688bd55703ace415ec56c2e4d6"
+          grep -q 'InpEnableDemoOrders        = false' Experts/GoldMuwahahaMiner_R9_Micro180_V9_Research.mq5
+      - name: State scope
+        run: echo "Offline Python source contracts only. No native MetaEditor compile, broker fill or full 9-month replay implied."
