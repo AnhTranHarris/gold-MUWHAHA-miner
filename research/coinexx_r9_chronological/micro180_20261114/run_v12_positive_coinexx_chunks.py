@@ -61,7 +61,8 @@ def _sha(path: Path) -> str:
     return h.hexdigest()
 
 
-def _manifest(sources: list[Path], first: Path, second: Path) -> dict:
+def _manifest(sources: list[Path], first: Path, second: Path,
+              first_delay_seconds: int) -> dict:
     return {
         "source_parts": [
             {"path": str(p.resolve()), "size": p.stat().st_size,
@@ -72,12 +73,15 @@ def _manifest(sources: list[Path], first: Path, second: Path) -> dict:
         "second_model_sha256": _sha(second),
         "first_threshold": 0.60,
         "second_threshold": 0.50,
+        "first_delay_seconds": first_delay_seconds,
+        "second_delay_seconds": 1,
         "model_signals_use_R9_teacher_event_times": False,
         "source_ticklogger_events_used_to_train_online": False,
     }
 
 
-def _make_engine(first: Path, second: Path) -> Micro180V12PositiveClock:
+def _make_engine(first: Path, second: Path,
+                 first_delay_seconds: int = 1) -> Micro180V12PositiveClock:
     cfg = R9Config(
         use_regime_gate=False,
         max_same_minute_rearms=1,
@@ -89,6 +93,8 @@ def _make_engine(first: Path, second: Path) -> Micro180V12PositiveClock:
         second_model=FrozenLightGBM(second),
         spec=V12PositiveClockSpec(
             first_threshold=0.60, second_threshold=0.50,
+            first_execution_delay_seconds=first_delay_seconds,
+            second_execution_delay_seconds=1,
         ),
     )
 
@@ -144,13 +150,14 @@ def run_one_batch(
     sources: list[Path], first_model: Path, second_model: Path,
     workdir: Path, max_quotes: int, *,
     resume: bool,
+    first_delay_seconds: int = 1,
 ) -> dict:
     if max_quotes < 1 or max_quotes > 500_000:
         raise ValueError("Use bounded source batches of 1..500000 quotes")
     if not sources or any(not p.is_file() for p in sources):
         raise FileNotFoundError("Already-existing chronological REAL TickLogger source required")
     workdir.mkdir(parents=True, exist_ok=True)
-    identity = _manifest(sources, first_model, second_model)
+    identity = _manifest(sources, first_model, second_model, first_delay_seconds)
     receipt = workdir / "v12_receipt.json"
     if resume:
         if not receipt.is_file():
@@ -169,7 +176,7 @@ def run_one_batch(
     else:
         if receipt.exists():
             raise FileExistsError("Existing checkpoint; use --resume or a new workdir")
-        engine = _make_engine(first_model, second_model)
+        engine = _make_engine(first_model, second_model, first_delay_seconds)
         cursor = {"part": 0, "row": 0, "source_ordinal": 0,
                   "last_time_msc": -1, "chunk_index": 0}
         completed_chunks = []
@@ -303,6 +310,8 @@ def main() -> None:
     parser.add_argument("--workdir", type=Path, required=True)
     parser.add_argument("--max-quotes-per-call", type=int, default=200000)
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--first-delay-seconds", type=int, choices=(1, 2), default=1,
+                        help="Validation-selected optional 2s persistence clock; 1s is original baseline")
     parser.add_argument("--score", action="store_true")
     a = parser.parse_args()
     if a.score:
@@ -313,6 +322,7 @@ def main() -> None:
         result = run_one_batch(
             a.ticks, a.first_model, a.second_model, a.workdir,
             a.max_quotes_per_call, resume=a.resume,
+            first_delay_seconds=a.first_delay_seconds,
         )
     print(json.dumps(result, indent=2))
 
