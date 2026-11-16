@@ -299,7 +299,7 @@ def run(args):
             'max_spread_cents':args.max_spread_u,
             'entry_records_total':len(engine.entries),'close_records_total':len(engine.close_records),
             'engine_counters':dict(engine.stats),'elapsed_s':round(time.time()-start,2),
-            'metrics_after_frozen_model_train_source':score(engine.entries,refs,family,args.eval_start_ms,end_ms),
+            'metrics_after_frozen_model_train_source':score(engine.entries,refs,family,max(args.eval_start_ms,first_ms),end_ms),
             'limit_note':'Full 9-month match NOT measured; this reads one original Coinexx ticklogger part, not the full ten.'}
     Path(args.out).write_text(json.dumps(result,indent=2))
     print('FINAL',json.dumps({k:result[k] for k in ('source_rows','entry_records_total','close_records_total','metrics_after_frozen_model_train_source','elapsed_s')},indent=2),flush=True)
