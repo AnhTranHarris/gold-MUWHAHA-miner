@@ -155,7 +155,9 @@ def compare_merged_entries(
             "entry_mark_mapped": entry_mapped,
             "full_window_mapped": entry_mapped and exit_mapped,
             "candidate_matched": False,
+            "same_teacher_entry_second": False,
             "quote_time_price_equal": False,
+            "quote_price_within_5c": False,
         }
 
         candidate = index.get(key)
@@ -181,6 +183,7 @@ def compare_merged_entries(
         teacher_time_errors.append(abs(delta_teacher_ms))
         if candidate_time // 1000 == teacher_ms // 1000:
             c["same_original_teacher_second"] += 1
+            leg_map[leg]["same_teacher_entry_second"] = True
         if candidate_time == teacher_ms:
             c["exact_original_teacher_second_boundary_ms"] += 1
 
@@ -192,6 +195,11 @@ def compare_merged_entries(
         delta_price = candidate_price - q_entry
         mark_time_errors.append(abs(delta_mark_ms))
         price_errors.append(abs(delta_price))
+        for threshold in (0, 1, 3, 5, 10, 25):
+            if abs(delta_price) <= threshold:
+                c[f"mapped_quote_price_within_{threshold}c"] += 1
+        if abs(delta_price) <= 5:
+            leg_map[leg]["quote_price_within_5c"] = True
         if candidate_time == e_mark:
             c["exact_mapped_quote_millisecond"] += 1
         if candidate_price == q_entry:
@@ -242,6 +250,8 @@ def compare_merged_entries(
                 "source_entry_marks_le_2s": 0,
                 "source_fully_mapped_windows": 0,
                 "independent_same_minute_leg_side": 0,
+                "independent_same_original_entry_second": 0,
+                "independent_mapped_quote_price_within_5c": 0,
                 "independent_exact_quote_mark_time_and_price": 0,
                 "original_r9_net_usd": Decimal("0"),
             }
@@ -253,6 +263,12 @@ def compare_merged_entries(
             row["source_entry_marks_le_2s"] += int(leg_record["entry_mark_mapped"])
             row["source_fully_mapped_windows"] += int(leg_record["full_window_mapped"])
             row["independent_same_minute_leg_side"] += int(leg_record["candidate_matched"])
+            row["independent_same_original_entry_second"] += int(
+                leg_record["same_teacher_entry_second"]
+            )
+            row["independent_mapped_quote_price_within_5c"] += int(
+                leg_record["quote_price_within_5c"]
+            )
             row["independent_exact_quote_mark_time_and_price"] += int(
                 leg_record["quote_time_price_equal"]
             )
@@ -261,6 +277,14 @@ def compare_merged_entries(
         values["entry_recall"] = round(
             values["independent_same_minute_leg_side"]
             / max(1, values["reference_entries"]), 6
+        )
+        values["teacher_entry_second_recall"] = round(
+            values["independent_same_original_entry_second"]
+            / max(1, values["reference_entries"]), 6
+        )
+        values["mapped_quote_price_within_5c_fraction"] = round(
+            values["independent_mapped_quote_price_within_5c"]
+            / max(1, values["source_entry_marks_le_2s"]), 6
         )
         values["exact_quote_mark_fraction_of_source_eligible"] = round(
             values["independent_exact_quote_mark_time_and_price"]
@@ -295,6 +319,18 @@ def compare_merged_entries(
         "exact_entry_quote_price_coverage": round(
             c["exact_mapped_quote_price_any_time"] / max(1, eligible), 6
         ),
+        "mapped_quote_price_within_1c_fraction": round(
+            c["mapped_quote_price_within_1c"] / max(1, eligible), 6
+        ),
+        "mapped_quote_price_within_3c_fraction": round(
+            c["mapped_quote_price_within_3c"] / max(1, eligible), 6
+        ),
+        "mapped_quote_price_within_5c_fraction": round(
+            c["mapped_quote_price_within_5c"] / max(1, eligible), 6
+        ),
+        "mapped_quote_price_within_10c_fraction": round(
+            c["mapped_quote_price_within_10c"] / max(1, eligible), 6
+        ),
         "median_abs_teacher_second_delta_ms": _percentile(teacher_time_errors, 50),
         "p95_abs_teacher_second_delta_ms": _percentile(teacher_time_errors, 95),
         "median_abs_mapped_quote_delta_ms": _percentile(mark_time_errors, 50),
@@ -302,11 +338,15 @@ def compare_merged_entries(
         "median_abs_quote_price_difference_cents": _percentile(price_errors, 50),
         "p95_abs_quote_price_difference_cents": _percentile(price_errors, 95),
         "limited_mismatch_examples": sample_misses,
-        "certified_exact_replication": bool(
-            total > 0 and candidate_count == total
-            and c["same_original_teacher_second"] == total
-            and c["entry_quote_mapped_le_2s"] == total
-            and exact == total
+        "certified_exact_replication": False,
+        "certification_scope_warning": (
+            "The teacher entry is a whole-second synthetic event; the mapped "
+            "Coinexx quote is the FIRST quote AFTER the NEXT full second. "
+            "Equal candidate entry-second and equal next-second timestamp "
+            "are incompatible criteria and never combined into a fake "
+            "execution-parity certification. Judge independently measured "
+            "same-original-second entry coverage and mapped quote price "
+            "distance; native broker fills are unverified."
         ),
         "limitations": (
             "Event-marked merged CSV has no independent V10 candidate entries. "
