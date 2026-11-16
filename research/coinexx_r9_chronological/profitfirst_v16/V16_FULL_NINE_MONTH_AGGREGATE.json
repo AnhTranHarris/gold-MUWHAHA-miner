@@ -1,0 +1,832 @@
+{
+  "baseline": {
+    "closed_trades": 338064,
+    "entries": 338065,
+    "total_net": -135317.63,
+    "win_rate_pct": 37.923,
+    "winning_completed": 128203
+  },
+  "fully_rearmed_vs_changed_v9_signals": false,
+  "high_trade_volume": {
+    "baseline_closed_trades": 338064,
+    "full_capacity_replay_required": true
+  },
+  "native_mt5_parity_certified": false,
+  "one_second_independent_prototype_diagnostic": {
+    "months": [
+      "01",
+      "05",
+      "09"
+    ],
+    "not_admitted_to_trading": true,
+    "research_only": true,
+    "trades_by_month": [
+      {
+        "family": "SWEEP_15S_T035_R040_H5",
+        "month": "01",
+        "net": -1438.77,
+        "positive": 991,
+        "trades": 3471
+      },
+      {
+        "family": "SWEEP_30S_T075_R060_H10",
+        "month": "01",
+        "net": -564.78,
+        "positive": 437,
+        "trades": 1377
+      },
+      {
+        "family": "IMPULSE_15S_T075_R060_H10",
+        "month": "01",
+        "net": -11042.17,
+        "positive": 7352,
+        "trades": 26454
+      },
+      {
+        "family": "IMPULSE_30S_T035_R040_H5",
+        "month": "01",
+        "net": -9274.56,
+        "positive": 5162,
+        "trades": 22546
+      },
+      {
+        "family": "SWEEP_15S_T035_R040_H5",
+        "month": "05",
+        "net": -1356.29,
+        "positive": 824,
+        "trades": 3271
+      },
+      {
+        "family": "SWEEP_30S_T075_R060_H10",
+        "month": "05",
+        "net": -582.78,
+        "positive": 356,
+        "trades": 1266
+      },
+      {
+        "family": "IMPULSE_15S_T075_R060_H10",
+        "month": "05",
+        "net": -10973.82,
+        "positive": 5867,
+        "trades": 24293
+      },
+      {
+        "family": "IMPULSE_30S_T035_R040_H5",
+        "month": "05",
+        "net": -9499.04,
+        "positive": 4384,
+        "trades": 22009
+      },
+      {
+        "family": "SWEEP_15S_T035_R040_H5",
+        "month": "09",
+        "net": -1144.41,
+        "positive": 698,
+        "trades": 2723
+      },
+      {
+        "family": "SWEEP_30S_T075_R060_H10",
+        "month": "09",
+        "net": -485.25,
+        "positive": 313,
+        "trades": 1061
+      },
+      {
+        "family": "IMPULSE_15S_T075_R060_H10",
+        "month": "09",
+        "net": -9081.51,
+        "positive": 5760,
+        "trades": 22179
+      },
+      {
+        "family": "IMPULSE_30S_T035_R040_H5",
+        "month": "09",
+        "net": -8448.98,
+        "positive": 3859,
+        "trades": 20108
+      },
+      {
+        "family": "FADE_1S_BREAKOUT_15S_TARGET035",
+        "month": "01",
+        "net": -10993.62,
+        "positive": 7322,
+        "trades": 28534
+      },
+      {
+        "family": "FADE_1S_BREAKOUT_30S_TARGET035",
+        "month": "01",
+        "net": -8741.18,
+        "positive": 5711,
+        "trades": 22818
+      },
+      {
+        "family": "FOLLOW_1S_FAILED_RECLAIM_15S_TARGET035",
+        "month": "01",
+        "net": -1304.84,
+        "positive": 1059,
+        "trades": 3451
+      },
+      {
+        "family": "FADE_1S_BREAKOUT_15S_TARGET075",
+        "month": "01",
+        "net": -10109.84,
+        "positive": 8241,
+        "trades": 26818
+      },
+      {
+        "family": "FADE_1S_BREAKOUT_15S_TARGET035",
+        "month": "05",
+        "net": -10075.43,
+        "positive": 6184,
+        "trades": 26196
+      },
+      {
+        "family": "FADE_1S_BREAKOUT_30S_TARGET035",
+        "month": "05",
+        "net": -8543.1,
+        "positive": 5105,
+        "trades": 22228
+      },
+      {
+        "family": "FOLLOW_1S_FAILED_RECLAIM_15S_TARGET035",
+        "month": "05",
+        "net": -1325.77,
+        "positive": 833,
+        "trades": 3266
+      },
+      {
+        "family": "FADE_1S_BREAKOUT_15S_TARGET075",
+        "month": "05",
+        "net": -9217.42,
+        "positive": 7245,
+        "trades": 24636
+      },
+      {
+        "family": "FADE_1S_BREAKOUT_15S_TARGET035",
+        "month": "09",
+        "net": -9652.31,
+        "positive": 5069,
+        "trades": 24038
+      },
+      {
+        "family": "FADE_1S_BREAKOUT_30S_TARGET035",
+        "month": "09",
+        "net": -8119.23,
+        "positive": 4158,
+        "trades": 20334
+      },
+      {
+        "family": "FOLLOW_1S_FAILED_RECLAIM_15S_TARGET035",
+        "month": "09",
+        "net": -1132.54,
+        "positive": 671,
+        "trades": 2713
+      },
+      {
+        "family": "FADE_1S_BREAKOUT_15S_TARGET075",
+        "month": "09",
+        "net": -9268.16,
+        "positive": 5911,
+        "trades": 22567
+      }
+    ]
+  },
+  "out_of_sample_certified": false,
+  "raw_tick_files_copied": false,
+  "real_broker_fills": false,
+  "reproducibility_files": {
+    "aggregate_v16.py": "68be60dd23622d93588064308b0345d9012f22ec3c2f3909dc662c6c8ab6ed83",
+    "causal_lifecycle_v16.py": "fe02d13608ad57a61e4616c2061955ed0789c7f20f538c3400b3d07113d7baac",
+    "harvest_extension_v16.py": "45b99fae41a937abf05212fb2a10ba8bdf253684ab628df231e720d5d5b5c120",
+    "recovery_salvage_v16.py": "e958a26060194ea8397c963a00d105d085b6bea6d3a10a2813297ba5c0e3a638",
+    "source_1s_reversal.py": "0600feb91d3cbba761c7403a2379b6762e0e0664eb9848364387b462cb2c520e",
+    "source_1s_specialists.py": "c473bf9cb84e5d0755f73d2bb26bf4bf69e46c3d88e02e483bd5656aac5805f1",
+    "test_v16_profitfirst.py": "042e8aedfd6a25b3f64a0eebad2659a5ef3964831029b6fa95ed8513188cd09d"
+  },
+  "scope": "Jan-Sep 2026 original Coinexx source-exact, reused in-sample only",
+  "source_pins_verified": true,
+  "tested_early_exit_policies": [
+    {
+      "delta": 44.66,
+      "modified_exits": 35237,
+      "net": -135272.97,
+      "positive_months": 6,
+      "trades": 338064,
+      "variant": "C250_CUT_ADVERSE_ONLY"
+    },
+    {
+      "delta": 36.01,
+      "modified_exits": 19091,
+      "net": -135281.62,
+      "positive_months": 6,
+      "trades": 338064,
+      "variant": "D250_1000_TWO_STAGE"
+    },
+    {
+      "delta": 26.29,
+      "modified_exits": 14123,
+      "net": -135291.34,
+      "positive_months": 6,
+      "trades": 338064,
+      "variant": "R1000_ALLOW_RECOVERY"
+    }
+  ],
+  "tested_harvest_extensions": {
+    "C_CLEAN_1S": {
+      "fixed_entry_uplift": 1185.31,
+      "incremental_net": 1185.31,
+      "months": [
+        {
+          "exit_changes": 7969,
+          "fixed_entry_uplift": 232.74,
+          "fixed_entry_win_pct": 32.718,
+          "incremental_net": 232.74,
+          "max_closed_trade_dd": 13728.25,
+          "month": "01",
+          "net": -13717.57,
+          "retained_pct": 100.0,
+          "trades": 35500,
+          "wins": 11615
+        },
+        {
+          "exit_changes": 10757,
+          "fixed_entry_uplift": 291.78,
+          "fixed_entry_win_pct": 35.012,
+          "incremental_net": 291.78,
+          "max_closed_trade_dd": 16306.9,
+          "month": "02",
+          "net": -16302.22,
+          "retained_pct": 100.0,
+          "trades": 42742,
+          "wins": 14965
+        },
+        {
+          "exit_changes": 13995,
+          "fixed_entry_uplift": 395.66,
+          "fixed_entry_win_pct": 35.024,
+          "incremental_net": 395.66,
+          "max_closed_trade_dd": 18938.14,
+          "month": "03",
+          "net": -18937.29,
+          "retained_pct": 100.0,
+          "trades": 51841,
+          "wins": 18157
+        },
+        {
+          "exit_changes": 8270,
+          "fixed_entry_uplift": 118.01,
+          "fixed_entry_win_pct": 32.242,
+          "incremental_net": 118.01,
+          "max_closed_trade_dd": 14893.98,
+          "month": "04",
+          "net": -14893.78,
+          "retained_pct": 100.0,
+          "trades": 37340,
+          "wins": 12039
+        },
+        {
+          "exit_changes": 5875,
+          "fixed_entry_uplift": -25.88,
+          "fixed_entry_win_pct": 28.394,
+          "incremental_net": -25.88,
+          "max_closed_trade_dd": 14324.98,
+          "month": "05",
+          "net": -14324.98,
+          "retained_pct": 100.0,
+          "trades": 32514,
+          "wins": 9232
+        },
+        {
+          "exit_changes": 7779,
+          "fixed_entry_uplift": 152.25,
+          "fixed_entry_win_pct": 31.869,
+          "incremental_net": 152.25,
+          "max_closed_trade_dd": 15208.43,
+          "month": "06",
+          "net": -15208.37,
+          "retained_pct": 100.0,
+          "trades": 37190,
+          "wins": 11852
+        },
+        {
+          "exit_changes": 6756,
+          "fixed_entry_uplift": 18.72,
+          "fixed_entry_win_pct": 31.427,
+          "incremental_net": 18.72,
+          "max_closed_trade_dd": 13314.15,
+          "month": "07",
+          "net": -13313.54,
+          "retained_pct": 100.0,
+          "trades": 33758,
+          "wins": 10609
+        },
+        {
+          "exit_changes": 6653,
+          "fixed_entry_uplift": -4.68,
+          "fixed_entry_win_pct": 31.204,
+          "incremental_net": -4.68,
+          "max_closed_trade_dd": 13348.7,
+          "month": "08",
+          "net": -13348.7,
+          "retained_pct": 100.0,
+          "trades": 32896,
+          "wins": 10265
+        },
+        {
+          "exit_changes": 6872,
+          "fixed_entry_uplift": 6.71,
+          "fixed_entry_win_pct": 31.409,
+          "incremental_net": 6.71,
+          "max_closed_trade_dd": 14085.87,
+          "month": "09",
+          "net": -14085.87,
+          "retained_pct": 100.0,
+          "trades": 34283,
+          "wins": 10768
+        }
+      ],
+      "net": -134132.32,
+      "positive_increment_months": 7,
+      "retention_pct": 100.0,
+      "trades": 338064,
+      "win_rate_pct": 32.391
+    },
+    "C_CLEAN_3S": {
+      "fixed_entry_uplift": 1449.12,
+      "incremental_net": 2488.24,
+      "months": [
+        {
+          "exit_changes": 8226,
+          "fixed_entry_uplift": 274.39,
+          "fixed_entry_win_pct": 31.135,
+          "incremental_net": 396.48,
+          "max_closed_trade_dd": 13564.63,
+          "month": "01",
+          "net": -13553.83,
+          "retained_pct": 99.101,
+          "trades": 35181,
+          "wins": 10945
+        },
+        {
+          "exit_changes": 11731,
+          "fixed_entry_uplift": 454.64,
+          "fixed_entry_win_pct": 32.144,
+          "incremental_net": 617.84,
+          "max_closed_trade_dd": 15980.84,
+          "month": "02",
+          "net": -15976.16,
+          "retained_pct": 98.947,
+          "trades": 42292,
+          "wins": 13587
+        },
+        {
+          "exit_changes": 14900,
+          "fixed_entry_uplift": 582.51,
+          "fixed_entry_win_pct": 32.21,
+          "incremental_net": 761.09,
+          "max_closed_trade_dd": 18572.71,
+          "month": "03",
+          "net": -18571.86,
+          "retained_pct": 99.08,
+          "trades": 51364,
+          "wins": 16535
+        },
+        {
+          "exit_changes": 8511,
+          "fixed_entry_uplift": 61.04,
+          "fixed_entry_win_pct": 30.589,
+          "incremental_net": 179.77,
+          "max_closed_trade_dd": 14832.32,
+          "month": "04",
+          "net": -14832.02,
+          "retained_pct": 99.274,
+          "trades": 37069,
+          "wins": 11341
+        },
+        {
+          "exit_changes": 5996,
+          "fixed_entry_uplift": -60.08,
+          "fixed_entry_win_pct": 27.647,
+          "incremental_net": 11.11,
+          "max_closed_trade_dd": 14287.99,
+          "month": "05",
+          "net": -14287.99,
+          "retained_pct": 99.437,
+          "trades": 32331,
+          "wins": 8929
+        },
+        {
+          "exit_changes": 7941,
+          "fixed_entry_uplift": 162.07,
+          "fixed_entry_win_pct": 30.57,
+          "incremental_net": 265.98,
+          "max_closed_trade_dd": 15094.7,
+          "month": "06",
+          "net": -15094.64,
+          "retained_pct": 99.293,
+          "trades": 36927,
+          "wins": 11280
+        },
+        {
+          "exit_changes": 6881,
+          "fixed_entry_uplift": -15.55,
+          "fixed_entry_win_pct": 30.316,
+          "incremental_net": 83.56,
+          "max_closed_trade_dd": 13249.02,
+          "month": "07",
+          "net": -13248.7,
+          "retained_pct": 99.304,
+          "trades": 33523,
+          "wins": 10168
+        },
+        {
+          "exit_changes": 6808,
+          "fixed_entry_uplift": -20.37,
+          "fixed_entry_win_pct": 30.171,
+          "incremental_net": 73.17,
+          "max_closed_trade_dd": 13270.85,
+          "month": "08",
+          "net": -13270.85,
+          "retained_pct": 99.304,
+          "trades": 32667,
+          "wins": 9856
+        },
+        {
+          "exit_changes": 7011,
+          "fixed_entry_uplift": 10.47,
+          "fixed_entry_win_pct": 30.269,
+          "incremental_net": 99.24,
+          "max_closed_trade_dd": 13993.34,
+          "month": "09",
+          "net": -13993.34,
+          "retained_pct": 99.317,
+          "trades": 34049,
+          "wins": 10300
+        }
+      ],
+      "net": -132829.39,
+      "positive_increment_months": 9,
+      "retention_pct": 99.213,
+      "trades": 335403,
+      "win_rate_pct": 30.692
+    },
+    "C_CLEAN_5S": {
+      "fixed_entry_uplift": 1545.9,
+      "incremental_net": 3825.26,
+      "months": [
+        {
+          "exit_changes": 8300,
+          "fixed_entry_uplift": 303.62,
+          "fixed_entry_win_pct": 32.913,
+          "incremental_net": 545.05,
+          "max_closed_trade_dd": 13421.33,
+          "month": "01",
+          "net": -13405.26,
+          "retained_pct": 98.124,
+          "trades": 34834,
+          "wins": 11446
+        },
+        {
+          "exit_changes": 12007,
+          "fixed_entry_uplift": 483.1,
+          "fixed_entry_win_pct": 32.928,
+          "incremental_net": 856.79,
+          "max_closed_trade_dd": 15741.89,
+          "month": "02",
+          "net": -15737.21,
+          "retained_pct": 97.663,
+          "trades": 41743,
+          "wins": 13721
+        },
+        {
+          "exit_changes": 15112,
+          "fixed_entry_uplift": 655.49,
+          "fixed_entry_win_pct": 33.562,
+          "incremental_net": 1086.68,
+          "max_closed_trade_dd": 18247.12,
+          "month": "03",
+          "net": -18246.27,
+          "retained_pct": 97.706,
+          "trades": 50652,
+          "wins": 16986
+        },
+        {
+          "exit_changes": 8573,
+          "fixed_entry_uplift": 24.29,
+          "fixed_entry_win_pct": 32.442,
+          "incremental_net": 282.02,
+          "max_closed_trade_dd": 14729.95,
+          "month": "04",
+          "net": -14729.77,
+          "retained_pct": 98.407,
+          "trades": 36745,
+          "wins": 11929
+        },
+        {
+          "exit_changes": 6020,
+          "fixed_entry_uplift": -30.88,
+          "fixed_entry_win_pct": 29.556,
+          "incremental_net": 119.64,
+          "max_closed_trade_dd": 14179.46,
+          "month": "05",
+          "net": -14179.46,
+          "retained_pct": 98.865,
+          "trades": 32145,
+          "wins": 9489
+        },
+        {
+          "exit_changes": 7968,
+          "fixed_entry_uplift": 119.26,
+          "fixed_entry_win_pct": 32.619,
+          "incremental_net": 360.54,
+          "max_closed_trade_dd": 15000.14,
+          "month": "06",
+          "net": -15000.08,
+          "retained_pct": 98.462,
+          "trades": 36618,
+          "wins": 11933
+        },
+        {
+          "exit_changes": 6896,
+          "fixed_entry_uplift": 9.29,
+          "fixed_entry_win_pct": 32.449,
+          "incremental_net": 206.37,
+          "max_closed_trade_dd": 13126.21,
+          "month": "07",
+          "net": -13125.89,
+          "retained_pct": 98.584,
+          "trades": 33280,
+          "wins": 10812
+        },
+        {
+          "exit_changes": 6837,
+          "fixed_entry_uplift": -26.29,
+          "fixed_entry_win_pct": 32.101,
+          "incremental_net": 157.13,
+          "max_closed_trade_dd": 13186.89,
+          "month": "08",
+          "net": -13186.89,
+          "retained_pct": 98.571,
+          "trades": 32426,
+          "wins": 10400
+        },
+        {
+          "exit_changes": 7029,
+          "fixed_entry_uplift": 8.02,
+          "fixed_entry_win_pct": 32.211,
+          "incremental_net": 211.04,
+          "max_closed_trade_dd": 13881.54,
+          "month": "09",
+          "net": -13881.54,
+          "retained_pct": 98.518,
+          "trades": 33775,
+          "wins": 10867
+        }
+      ],
+      "net": -131492.37,
+      "positive_increment_months": 9,
+      "retention_pct": 98.271,
+      "trades": 332218,
+      "win_rate_pct": 32.383
+    },
+    "C_FAST_PROTECTED_1500MS": {
+      "fixed_entry_uplift": 509.2,
+      "incremental_net": 509.2,
+      "months": [
+        {
+          "exit_changes": 1738,
+          "fixed_entry_uplift": 73.09,
+          "fixed_entry_win_pct": 37.011,
+          "incremental_net": 73.09,
+          "max_closed_trade_dd": 13887.22,
+          "month": "01",
+          "net": -13877.22,
+          "retained_pct": 100.0,
+          "trades": 35500,
+          "wins": 13139
+        },
+        {
+          "exit_changes": 3617,
+          "fixed_entry_uplift": 107.84,
+          "fixed_entry_win_pct": 39.526,
+          "incremental_net": 107.84,
+          "max_closed_trade_dd": 16491.34,
+          "month": "02",
+          "net": -16486.16,
+          "retained_pct": 100.0,
+          "trades": 42742,
+          "wins": 16894
+        },
+        {
+          "exit_changes": 4908,
+          "fixed_entry_uplift": 210.45,
+          "fixed_entry_win_pct": 40.252,
+          "incremental_net": 210.45,
+          "max_closed_trade_dd": 19123.35,
+          "month": "03",
+          "net": -19122.5,
+          "retained_pct": 100.0,
+          "trades": 51841,
+          "wins": 20867
+        },
+        {
+          "exit_changes": 1929,
+          "fixed_entry_uplift": 31.94,
+          "fixed_entry_win_pct": 36.955,
+          "incremental_net": 31.94,
+          "max_closed_trade_dd": 14980.12,
+          "month": "04",
+          "net": -14979.85,
+          "retained_pct": 100.0,
+          "trades": 37340,
+          "wins": 13799
+        },
+        {
+          "exit_changes": 1271,
+          "fixed_entry_uplift": 3.37,
+          "fixed_entry_win_pct": 32.977,
+          "incremental_net": 3.37,
+          "max_closed_trade_dd": 14295.73,
+          "month": "05",
+          "net": -14295.73,
+          "retained_pct": 100.0,
+          "trades": 32514,
+          "wins": 10722
+        },
+        {
+          "exit_changes": 1549,
+          "fixed_entry_uplift": 64.22,
+          "fixed_entry_win_pct": 36.443,
+          "incremental_net": 64.22,
+          "max_closed_trade_dd": 15296.58,
+          "month": "06",
+          "net": -15296.4,
+          "retained_pct": 100.0,
+          "trades": 37190,
+          "wins": 13553
+        },
+        {
+          "exit_changes": 1087,
+          "fixed_entry_uplift": 18.66,
+          "fixed_entry_win_pct": 36.036,
+          "incremental_net": 18.66,
+          "max_closed_trade_dd": 13314.16,
+          "month": "07",
+          "net": -13313.6,
+          "retained_pct": 100.0,
+          "trades": 33758,
+          "wins": 12165
+        },
+        {
+          "exit_changes": 1160,
+          "fixed_entry_uplift": 1.72,
+          "fixed_entry_win_pct": 35.91,
+          "incremental_net": 1.72,
+          "max_closed_trade_dd": 13342.3,
+          "month": "08",
+          "net": -13342.3,
+          "retained_pct": 100.0,
+          "trades": 32896,
+          "wins": 11813
+        },
+        {
+          "exit_changes": 1066,
+          "fixed_entry_uplift": -2.09,
+          "fixed_entry_win_pct": 35.808,
+          "incremental_net": -2.09,
+          "max_closed_trade_dd": 14094.67,
+          "month": "09",
+          "net": -14094.67,
+          "retained_pct": 100.0,
+          "trades": 34283,
+          "wins": 12276
+        }
+      ],
+      "net": -134808.43,
+      "positive_increment_months": 8,
+      "retention_pct": 100.0,
+      "trades": 338064,
+      "win_rate_pct": 37.043
+    },
+    "R_RECOVERY_3S": {
+      "fixed_entry_uplift": 448.85,
+      "incremental_net": 811.71,
+      "months": [
+        {
+          "exit_changes": 3577,
+          "fixed_entry_uplift": 75.68,
+          "fixed_entry_win_pct": 34.777,
+          "incremental_net": 103.95,
+          "max_closed_trade_dd": 13856.7,
+          "month": "01",
+          "net": -13846.36,
+          "retained_pct": 99.763,
+          "trades": 35416,
+          "wins": 12315
+        },
+        {
+          "exit_changes": 4107,
+          "fixed_entry_uplift": 139.48,
+          "fixed_entry_win_pct": 38.061,
+          "incremental_net": 186.77,
+          "max_closed_trade_dd": 16417.21,
+          "month": "02",
+          "net": -16407.23,
+          "retained_pct": 99.761,
+          "trades": 42640,
+          "wins": 16231
+        },
+        {
+          "exit_changes": 5465,
+          "fixed_entry_uplift": 189.1,
+          "fixed_entry_win_pct": 38.34,
+          "incremental_net": 234.55,
+          "max_closed_trade_dd": 19101.07,
+          "month": "03",
+          "net": -19098.4,
+          "retained_pct": 99.747,
+          "trades": 51710,
+          "wins": 19825
+        },
+        {
+          "exit_changes": 4171,
+          "fixed_entry_uplift": 25.05,
+          "fixed_entry_win_pct": 34.304,
+          "incremental_net": 57.54,
+          "max_closed_trade_dd": 14954.52,
+          "month": "04",
+          "net": -14954.25,
+          "retained_pct": 99.788,
+          "trades": 37261,
+          "wins": 12782
+        },
+        {
+          "exit_changes": 3559,
+          "fixed_entry_uplift": -54.86,
+          "fixed_entry_win_pct": 30.104,
+          "incremental_net": -10.74,
+          "max_closed_trade_dd": 14309.84,
+          "month": "05",
+          "net": -14309.84,
+          "retained_pct": 99.763,
+          "trades": 32437,
+          "wins": 9772
+        },
+        {
+          "exit_changes": 4220,
+          "fixed_entry_uplift": 131.8,
+          "fixed_entry_win_pct": 33.697,
+          "incremental_net": 180.41,
+          "max_closed_trade_dd": 15180.39,
+          "month": "06",
+          "net": -15180.21,
+          "retained_pct": 99.688,
+          "trades": 37074,
+          "wins": 12491
+        },
+        {
+          "exit_changes": 3452,
+          "fixed_entry_uplift": -20.78,
+          "fixed_entry_win_pct": 33.352,
+          "incremental_net": 24.05,
+          "max_closed_trade_dd": 13308.45,
+          "month": "07",
+          "net": -13308.21,
+          "retained_pct": 99.707,
+          "trades": 33659,
+          "wins": 11230
+        },
+        {
+          "exit_changes": 3597,
+          "fixed_entry_uplift": -36.75,
+          "fixed_entry_win_pct": 32.961,
+          "incremental_net": 0.65,
+          "max_closed_trade_dd": 13343.37,
+          "month": "08",
+          "net": -13343.37,
+          "retained_pct": 99.714,
+          "trades": 32802,
+          "wins": 10809
+        },
+        {
+          "exit_changes": 3731,
+          "fixed_entry_uplift": 0.13,
+          "fixed_entry_win_pct": 33.002,
+          "incremental_net": 34.53,
+          "max_closed_trade_dd": 14058.05,
+          "month": "09",
+          "net": -14058.05,
+          "retained_pct": 99.74,
+          "trades": 34194,
+          "wins": 11281
+        }
+      ],
+      "net": -134505.92,
+      "positive_increment_months": 8,
+      "retention_pct": 99.742,
+      "trades": 337193,
+      "win_rate_pct": 34.62
+    }
+  },
+  "version": "V16_PROFIT_FIRST"
+}
