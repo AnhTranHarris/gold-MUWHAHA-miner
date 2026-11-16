@@ -30,7 +30,8 @@ export V12_EVENT_LEDGER_ROOT=/path/to/existing/v12/derived_events
 export V16_RESEARCH_OUT=/path/to/small/derived/results
 python research/coinexx_r9_chronological/profitfirst_v16/harvest_extension_v16.py 01 05 09
 python research/coinexx_r9_chronological/profitfirst_v16/causal_lifecycle_v16.py 01 05 09
-python research/coinexx_r9_chronological/profitfirst_v16/aggregate_v16.py
+# Run the SAME commands for the other six months before aggregation:
+# python research/coinexx_r9_chronological/profitfirst_v16/aggregate_v16.py
 ```
 
 For full nine-month aggregation, repeat the **same frozen code** for months `01` through `09` before calling aggregate. Note that the aggregate currently also expects small independent 1s development artifacts from Jan/May/Sep. Complete exact nine-month full-period result is preserved in the local downloadable V16 evidence package; **no original tick rows are placed in GitHub**.
