@@ -213,6 +213,10 @@ class V12PositiveClockSpec:
     second_threshold: float = 0.50
     max_next_quote_delay_ms: int = 2000
     max_spread_points_at_execution: int = 25
+    # Validation-locked source-clock options: 1s baseline; 2s first-leg
+    # variant improved A / overall near-price matching but affects B/C.
+    first_execution_delay_seconds: int = 1
+    second_execution_delay_seconds: int = 1
     live_orders_enabled: bool = False
     allow_historical_event_intervention: bool = False
 
@@ -221,6 +225,8 @@ class V12PositiveClockSpec:
                 or not 0.0 < self.second_threshold <= 1
                 or not 0 <= self.max_next_quote_delay_ms <= 2000
                 or self.max_spread_points_at_execution < 1
+                or self.first_execution_delay_seconds not in (1, 2)
+                or self.second_execution_delay_seconds != 1
                 or self.live_orders_enabled
                 or self.allow_historical_event_intervention):
             raise ValueError("Research-only positive-clock controls invalid")
@@ -262,8 +268,10 @@ class Micro180V12PositiveClock(Micro180V11DualEntry):
             return
         if self._pending is not None:
             decision_s, side, leg, source_minute = self._pending
-            if t.time_s > decision_s:
-                next_ms = (decision_s + 1) * 1000
+            delay = (self.positive_spec.first_execution_delay_seconds
+                     if leg == 1 else self.positive_spec.second_execution_delay_seconds)
+            if t.time_s >= decision_s + delay:
+                next_ms = (decision_s + delay) * 1000
                 self._pending = None
                 if (t.time_s // 60 == source_minute
                         and 0 <= t.time_msc - next_ms <= self.positive_spec.max_next_quote_delay_ms
@@ -273,6 +281,7 @@ class Micro180V12PositiveClock(Micro180V11DualEntry):
                     self._open_trade(t, side)
                     self.entries[-1]["v12_entry_authority"] = "frozen_positive_cycle_clock"
                     self.entries[-1]["v12_signal_second"] = decision_s
+                    self.entries[-1]["v12_precommitted_delay_seconds"] = delay
                     self.entries[-1]["v12_inherited_first_entry_family"] = "UNKNOWN"
                 return
         if not self.clock.first_tick_new_second or self._last_scored_second == t.time_s:
@@ -303,6 +312,8 @@ class Micro180V12PositiveClock(Micro180V11DualEntry):
             "inherited_R9_process_entries_not_called": True,
             "future_trade_outcomes_available_to_router": False,
             "one_quote_later_at_actual_bid_ask": True,
+            "first_execution_delay_seconds": self.positive_spec.first_execution_delay_seconds,
+            "second_execution_delay_seconds": self.positive_spec.second_execution_delay_seconds,
             "original_R9_fees_or_trade_labels_modified": False,
             "model_feature_lengths": (len(FIRST_FEATURES), len(SECOND_FEATURES)),
             "optional_same_quote_completed_M5_ATR_snapshot": (
