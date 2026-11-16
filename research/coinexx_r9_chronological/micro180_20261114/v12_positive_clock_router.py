@@ -50,14 +50,13 @@ class FrozenLightGBM:
     """Read a frozen LightGBM text file; no fitting or training in execution."""
     def __init__(self, path: Path):
         import lightgbm as lgb  # Optional Python research dependency.
-        import numpy as np
         if not path.is_file():
             raise FileNotFoundError(path)
-        self._numpy = np
         self._model = lgb.Booster(model_file=str(path))
 
     def score(self, row: tuple[float, ...]) -> float:
-        matrix = self._numpy.asarray([row], dtype=self._numpy.float32)
+        import numpy as np  # Import per scoring call; do not pickle module objects.
+        matrix = np.asarray([row], dtype=np.float32)
         return float(self._model.predict(matrix, num_threads=1)[0])
 
 
