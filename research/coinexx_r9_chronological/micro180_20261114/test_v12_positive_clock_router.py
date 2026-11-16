@@ -121,6 +121,64 @@ class PositiveRouter(unittest.TestCase):
         self.assertEqual(expected,b.entries[:len(expected)])
 
 
+class ChunkedOriginalREALSource(unittest.TestCase):
+    def test_resume_uses_original_quote_rows_and_retains_single_inventory(self):
+        from run_v12_positive_coinexx_chunks import run_one_batch
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)
+            source=p/"existing_REAL_part01.csv.gz"
+            fields=("run_label","time_msc","bid","ask","atr")
+            rows=[
+                ("REAL","60010","100.00","100.20","2.50"),
+                ("REAL","61007","100.00","100.20","2.50"),
+                ("REAL","62005","100.05","100.25","2.50"),
+            ]
+            with gzip.open(source,"wt",newline="") as f:
+                writer=csv.writer(f);writer.writerow(fields);writer.writerows(rows)
+            # FixedModel implements exactly the frozen-model score interface.
+            sim=Micro180V12PositiveClock(cfg(),
+                first_model=FixedModel(),second_model=FixedModel())
+            dummy1=p/"frozen_first.txt";dummy2=p/"frozen_second.txt"
+            dummy1.write_text("fixture");dummy2.write_text("fixture")
+            work=p/"outputs"
+            with patch(
+                "run_v12_positive_coinexx_chunks._make_engine",
+                return_value=sim,
+            ):
+                a=run_one_batch([source],dummy1,dummy2,work,1,resume=False)
+            self.assertEqual(a["total_source_quotes"],1)
+            self.assertEqual(a["total_entry_candidates"],0)
+            b=run_one_batch([source],dummy1,dummy2,work,2,resume=True)
+            self.assertEqual(b["total_source_quotes"],3)
+            self.assertEqual(b["total_entry_candidates"],1)
+            self.assertTrue(b["finished_all_parts"] is False or b["finished_all_parts"])
+            path=work/"v12_independent_entries_chunk_00002.csv.gz"
+            with gzip.open(path,"rt") as f:
+                records=list(csv.DictReader(f))
+            self.assertEqual(len(records),1)
+            self.assertEqual(records[0]["entry_time_msc"],"61007")
+            self.assertEqual(records[0]["executable_price_cents"],"10020")
+            self.assertEqual(records[0]["source_quote_bid_ask"],"BUY_ASK")
+            self.assertEqual(records[0]["original_R9_future_family_used"],"False")
+
+    def test_SYNTH_log_is_never_accepted_as_REAL_Coinexx_quotes(self):
+        from run_v12_positive_coinexx_chunks import run_one_batch
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)
+            source=p/"source.csv.gz"
+            with gzip.open(source,"wt",newline="") as f:
+                writer=csv.writer(f)
+                writer.writerow(["run_label","time_msc","bid","ask","atr"])
+                writer.writerow(["SYNTH","60010","100.00","100.20","2.50"])
+            first=p/"first.txt";second=p/"second.txt"
+            first.write_text("fixture");second.write_text("fixture")
+            with patch("run_v12_positive_coinexx_chunks._make_engine",
+                       return_value=Micro180V12PositiveClock(
+                           cfg(),first_model=FixedModel(),second_model=FixedModel())):
+                with self.assertRaises(ValueError):
+                    run_one_batch([source],first,second,p/"work",1,resume=False)
+
+
 class PositiveSourceTargets(unittest.TestCase):
     def test_A_B_C_C_first_loss_positive_cycle_precursor(self):
         headers = ("entry_time_broker","leg","side","net_usd","quote_net",
