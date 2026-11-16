@@ -7,6 +7,7 @@ on:
     paths:
       - 'research/coinexx_r9_chronological/micro180_20261114/v12_positive_*.py'
       - 'research/coinexx_r9_chronological/micro180_20261114/test_v12_positive_*.py'
+      - 'research/coinexx_r9_chronological/micro180_20261114/run_v12_positive_*.py'
       - '.github/workflows/micro180_positive_cycle_clock_ci.yml'
   workflow_dispatch:
 
@@ -25,6 +26,7 @@ jobs:
         run: |
           python -m py_compile research/coinexx_r9_chronological/micro180_20261114/v12_positive_cycle_targets.py
           python -m py_compile research/coinexx_r9_chronological/micro180_20261114/v12_positive_clock_router.py
+          python -m py_compile research/coinexx_r9_chronological/micro180_20261114/run_v12_positive_coinexx_chunks.py
           python -m py_compile research/coinexx_r9_chronological/micro180_20261114/test_v12_positive_clock_router.py
       - name: Verify independent clock and positive A/B/C label contracts
         run: |
