@@ -117,7 +117,8 @@ class CausalV12Tests(unittest.TestCase):
 
     def test_rearm_only_after_observed_first_close(self):
         sim = Micro180V12QuantEntry()
-        sim.on_tick(tick(1, 240001))
+        with patch("v12_micro180_quant_entry.factor_probability", return_value=.001):
+            sim.on_tick(tick(1, 240001))
         sim.rearms = 1
         sim.pending_mode = -1
         with patch("v12_micro180_quant_entry.factor_probability", return_value=.99):
