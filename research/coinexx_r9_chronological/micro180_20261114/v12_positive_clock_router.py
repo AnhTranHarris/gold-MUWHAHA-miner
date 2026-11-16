@@ -241,6 +241,9 @@ class Micro180V12PositiveClock(Micro180V11DualEntry):
         self.clock = CompletedMultiScaleClock()
         self._pending: tuple[int, int, int, int] | None = None
         self._last_scored_second: int | None = None
+        # Optional read-only completed-M5 ATR snapshot supplied by the ORIGINAL
+        # REAL TickLogger at the SAME quote; never a future M5/current M5 close.
+        self.asof_source_completed_m5_atr_u: float | None = None
 
     def _push_second(self, t: Tick) -> None:
         super()._push_second(t)
@@ -272,7 +275,11 @@ class Micro180V12PositiveClock(Micro180V11DualEntry):
         if not self.clock.first_tick_new_second or self._last_scored_second == t.time_s:
             return
         self._last_scored_second = t.time_s
-        atr_u = float(self.atr.atr_u or 0.0)
+        atr_u = float(
+            self.asof_source_completed_m5_atr_u
+            if self.asof_source_completed_m5_atr_u is not None
+            else (self.atr.atr_u or 0.0)
+        )
         leg = 1 if self.pending_mode == 2 else 2
         model = self.model_first if leg == 1 else self.model_second
         scores: list[tuple[float, int]] = []
@@ -295,5 +302,8 @@ class Micro180V12PositiveClock(Micro180V11DualEntry):
             "one_quote_later_at_actual_bid_ask": True,
             "original_R9_fees_or_trade_labels_modified": False,
             "model_feature_lengths": (len(FIRST_FEATURES), len(SECOND_FEATURES)),
+            "optional_same_quote_completed_M5_ATR_snapshot": (
+                self.asof_source_completed_m5_atr_u is not None
+            ),
         })
         return z
