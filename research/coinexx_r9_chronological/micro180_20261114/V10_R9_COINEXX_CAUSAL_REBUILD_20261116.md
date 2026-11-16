@@ -17,8 +17,12 @@
   (SHA-256 9c9ebf5889c309a10e4370e355b99d75ae54cf5ccfdaa5ebab9042206f3f8cc5).
   Original teacher 272,352 trade references and 192,487 minute-cycles,
   **+$360,693.05 original MT5 net**, $0.01 entry/$0.01 exit commission and
-  unchanged recorded swaps. The merge contains 270,776 original paired quote marks,
-  1,576 unmatched rows, and 190,937 fully quote-matched cycles.
+  unchanged recorded swaps. Direct source audit (2026-11-16): all 272,352
+  teacher rows include Coinexx quote marks; 271,544 entry marks are within
+  the archive's <=2-second next-full-second matching lag, while 270,776
+  trade records satisfy the lag rule for BOTH entry and exit; the remaining
+  1,576 are out-of-window, not fabricated missing trades. The original
+  190,937 complete cycles have both legs fully mapped.
 - Research labels: (A) single-leg persistence, (B) favorable first-leg
   capture then developed reversal and opposite capture, (C) adverse initial
   movement followed by rapid opposite recovery. These are EX-POST outcome
@@ -73,11 +77,14 @@ and Micro180V10R9Causal must produce identical time_msc, side, quote-side
 entry cents, initial SL, source minute, rearm number, close order/price/reason.
 This is an executable reference *algorithm equivalence*, not teacher SYNTH match.
 
-**Gate 2 — merged R9 SYNTH mapped-entry concordance.**
+**Gate 2 — merged R9 SYNTH mapped-entry concordance (corrected source contract).**
 With the **existing merged file**, measure EVERY reference row:
-(a) availability of a mapped real quote; (b) same cycle minute, leg, direction;
-(c) absolute millisecond gap to legacy matched entry mark; (d) exact BUY Ask /
-SELL Bid source quote-price cents. Report complete-population recall AND the
+(a) next-full-second entry quote mapping lag <=2,000ms AND full-trade
+entry+exit mapping eligibility (distinct denominators); (b) same cycle minute,
+leg and direction; (c) candidate original R9 teacher SECOND agreement,
+separately from the mapped quote time; (d) exact candidate BUY Ask/SELL Bid
+price cents compared with the existing mapped quote reference, reporting
+exact-millisecond and timestamp-tolerance results separately. Report complete-population recall AND the
 exact price fraction. Unmatched rows remain in the 272,352 denominator, with
 their original net unchanged. No alternate commission scenario.
 
@@ -106,11 +113,30 @@ in chronological order and add --require-full-272352. No new tick archives,
 M1/OHLC rebuild, duplicate combined datasets, hyperparameter sweep or extra
 fee scenarios are authorized. Result is one compact metrics JSON.
 
+## Confirmed actual merged-file source audit and remaining boundaries
+
+- Original file copied to primary Google Drive TRADING_RESEARCH:
+  https://drive.google.com/file/d/1CC30szLw0_R9UpaRScPJZamgasqGjEsm/view
+- SHA-256 confirmed: 9c9ebf5889c309a10e4370e355b99d75ae54cf5ccfdaa5ebab9042206f3f8cc5.
+- 272,352 original rows, 192,487 first legs, 79,865 opposite second legs,
+  unique (source minute, leg, side) keys in every case.
+- 271,544 entry quote lag <=2s; 271,523 exit quote lag <=2s;
+  270,776 records satisfy BOTH; 808 entry lags >2s, 829 exit lags >2s,
+  61 fail both; the union totals 1,576 out-of-window records.
+- Every entry and exit quote timestamp agrees exactly with its archived
+  next-full-second anchor plus recorded lag, across all nine months.
+- Original all-row R9 net retained: +$360,693.05, no fee replacement.
+- The merged file contains teacher-selected event marks, not an unlabelled
+  complete real-tick event stream or independent micro180/V10 entry observations.
+  Therefore exact entry/price coverage remains a **not-yet-measured gate**, not a
+  value that can truthfully be forced or asserted from marks alone.
+
 ## What we have NOT established yet
 
 - FULL 272,352-row merged R9 entry recall or same-price concordance on Coinexx.
-  Neither the combined rows nor full original quote source is mounted in this
-  GitHub CI environment. Fixture tests do not supply this evidence.
+  The 11.23MB exact merged CSV HAS been reopened and source-integrity-verified
+  in the current research environment; the independent 71.8M-tick source replay
+  and new V10 candidate-entry ledger remain unavailable in GitHub CI. Fixture tests do not supply this evidence.
 - Newly profitable independent complete-cycle system performance. The previous
   R9-on-real quote positive subsets were retrospective; new causal V10
   lifecycle families must be scored over the whole source and full accounting.
