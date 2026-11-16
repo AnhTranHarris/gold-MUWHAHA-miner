@@ -150,10 +150,15 @@ def candidate_events(tape,pre,rule):
     # Only check completed bar history and the already-observed last-to-first gap.
     crossing_gap=ms[signal_tick]-ms[pre['ends'][:-1]]
     clean=(pre['maxima'][:-1]<=rule.max_hold_quote_gap_ms)&(crossing_gap<=rule.max_hold_quote_gap_ms)
+    # Structural rail must offer enough remaining EXECUTABLE room for the
+    # proposed target plus additional costs and half the observed spread.
+    # It is an as-of-entry feasibility gate, not an optimized signal.
+    required_room=np.maximum(rule.min_room_c,
+        np.ceil(100*(rule.target_cash+.20)+.5*spread))
     signalokay=(pre['valid_span'][:-1] & (span>=120)&(span<=3500) &
        ((b_hi-b_lo)>=rule.min_completed_5s_range_c) &
        (delay<=1500)&(tape.ms[fill]-tape.ms[signal_tick]<=1500) & validfill &
-       (spread>=0)&(spread<=rule.max_spread_c)&(target_geo>=rule.min_room_c)&
+       (spread>=0)&(spread<=rule.max_spread_c)&(target_geo>=required_room)&
        (side!=0)&trailing&clean)
     if rule.require_parent:
         signalokay &= pre['parent']*side>0
@@ -202,7 +207,8 @@ def candidate_events(tape,pre,rule):
                 # The very same frozen previous structure must still offer
                 # prospective payoff room after the delay.
                 target_prior=p_hi[kk] if di>0 else p_lo[kk]
-                if di*(target_prior-ask_price)<rule.min_room_c:continue
+                future_room=max(rule.min_room_c,100*(rule.target_cash+.20)+.5*(tape.ask[after]-tape.bid[after]))
+                if di*(target_prior-ask_price)<future_room:continue
             keep_fill.append(after);keep_side.append(di);keep_rail.append(r);keep_stop.append(sd)
         selected_fill=np.array(keep_fill,dtype=np.int64)
         selected_side=np.array(keep_side,dtype=np.int8)
