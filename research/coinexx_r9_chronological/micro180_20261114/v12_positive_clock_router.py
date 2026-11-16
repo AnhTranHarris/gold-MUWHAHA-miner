@@ -212,6 +212,7 @@ class V12PositiveClockSpec:
     first_threshold: float = 0.60
     second_threshold: float = 0.50
     max_next_quote_delay_ms: int = 2000
+    max_spread_points_at_execution: int = 25
     live_orders_enabled: bool = False
     allow_historical_event_intervention: bool = False
 
@@ -219,6 +220,7 @@ class V12PositiveClockSpec:
         if (not 0.0 < self.first_threshold <= 1
                 or not 0.0 < self.second_threshold <= 1
                 or not 0 <= self.max_next_quote_delay_ms <= 2000
+                or self.max_spread_points_at_execution < 1
                 or self.live_orders_enabled
                 or self.allow_historical_event_intervention):
             raise ValueError("Research-only positive-clock controls invalid")
@@ -265,6 +267,7 @@ class Micro180V12PositiveClock(Micro180V11DualEntry):
                 self._pending = None
                 if (t.time_s // 60 == source_minute
                         and 0 <= t.time_msc - next_ms <= self.positive_spec.max_next_quote_delay_ms
+                        and t.spread_points <= self.positive_spec.max_spread_points_at_execution
                         and self._gate(t)
                         and (self.pending_mode == 2 or self.pending_mode == side)):
                     self._open_trade(t, side)
