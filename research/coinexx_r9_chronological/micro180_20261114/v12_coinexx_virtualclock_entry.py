@@ -44,7 +44,7 @@ class FrozenLightGBMScore:
     """A serialized training model; never fit/update on incoming future ticks."""
     def __init__(self, model_file: str):
         import lightgbm as lgb
-        self.booster = lgb.Booster(model_file=model_file)
+        self.booster = lgb.Booster(model_file=model_file, params={"num_threads": 2})
         if self.booster.num_feature() != len(FEATURE_NAMES):
             raise ValueError("Frozen hazard feature dimensionality mismatch")
 
@@ -52,7 +52,7 @@ class FrozenLightGBMScore:
         import numpy as np
         # Deliberately a frozen single quote; infer once per source second.
         a = np.asarray([features], dtype=np.float32)
-        return float(self.booster.predict(a)[0])
+        return float(self.booster.predict(a, num_threads=2)[0])
 
 
 @dataclass(frozen=True)
