@@ -1,0 +1,119 @@
+{
+  "research_version": "Micro180 V13 independent positive-cycle source-quote entry clock",
+  "research_status": "development_only_actual_real_ticklogger_forward_tests_complete_for_3_bounded_windows",
+  "original_merged_reference_file": "r9_synthetic_teacher_to_original_REAL_TickLogger_9m_trade_marks.csv.gz",
+  "original_merged_reference_sha256": "9c9ebf5889c309a10e4370e355b99d75ae54cf5ccfdaa5ebab9042206f3f8cc5",
+  "original_total_trade_rows": 272352,
+  "historical_full_population_r9_net_usd": "360693.05",
+  "positive_selection": "original completed-minute-cycle net>0, reconstructed mapped Coinexx complete-cycle quote_net>0; all entry/exit mapping lags 0..2000ms; family is ex-post training label only",
+  "selected_positive_complete_cycles": 105985,
+  "selected_positive_cycle_entries": 145100,
+  "selected_positive_cycle_original_r9_net_usd": "244415.87",
+  "selected_positive_cycle_quote_net_usd": "128995.58",
+  "target_cycle_families": {
+    "A": 66870,
+    "B": 29215,
+    "C": 9900
+  },
+  "trained_quote_rows_from_part01": 900000,
+  "frozen_models": {
+    "first": {
+      "sha256": "a062537dce775dfdb4497ccbc4eaadff06e4132485feef2ee04b3a43651f743b",
+      "score_threshold": 0.6
+    },
+    "second": {
+      "sha256": "67832f0a1e1f07fff843bcd68c0016f111f79baec57a16b1daeae23a0e157b93",
+      "score_threshold": 0.5
+    }
+  },
+  "indicators_and_causal_features": "Previous completed observed one-second S1 efficiency/velocity/range, real forming 5s/15s baskets, returns/acceleration 1,3,5,10,15,30,60,180,300 seconds, source prior-completed M5 ATR, Bid/Ask spread, minute anchor/price barrier and minute phase",
+  "runtime": "First candidate hazard generates BUY/SELL using actual Coinexx quote, executes at next observed second first quote; second conditional on OWN prior first trade close and opposite direction, maximum one position. No teacher timestamps, family labels, P&L or R9 REAL event used at runtime.",
+  "bounded_forward_results": [
+    {
+      "source_part": "01_of_10",
+      "source_rows_seen": 1800000,
+      "training_rows_excluded_from_forward_score": 900000,
+      "source_window": "Jan 2026",
+      "positive_target_entries": 1563,
+      "independent_candidate_entries_in_forward": 2757,
+      "same_minute_leg": 1099,
+      "correct_side": 855,
+      "mapped_quote_time_within_2s_price_within_5c": 192,
+      "exact_mapped_quote_time_and_price": 132,
+      "extra_candidates_not_in_positive_reference": 1658,
+      "by_family": {
+        "A": {
+          "target": 801,
+          "correct_side": 562
+        },
+        "B": {
+          "target": 580,
+          "correct_side": 239
+        },
+        "C": {
+          "target": 182,
+          "correct_side": 54
+        }
+      }
+    },
+    {
+      "source_part": "05_of_10",
+      "source_rows_seen": 400000,
+      "source_window": "Apr 21-22 2026",
+      "positive_target_entries": 763,
+      "independent_candidate_entries": 1270,
+      "same_minute_leg": 539,
+      "correct_side": 420,
+      "mapped_quote_time_within_2s_price_within_5c": 85,
+      "exact_mapped_quote_time_and_price": 55,
+      "extra_candidates_not_in_positive_reference": 731,
+      "by_family": {
+        "A": {
+          "target": 367,
+          "correct_side": 285
+        },
+        "B": {
+          "target": 274,
+          "correct_side": 103
+        },
+        "C": {
+          "target": 122,
+          "correct_side": 32
+        }
+      }
+    },
+    {
+      "source_part": "10_of_10",
+      "source_rows_seen": 400000,
+      "source_window": "Sep 2026",
+      "positive_target_entries": 849,
+      "independent_candidate_entries": 1360,
+      "same_minute_leg": 620,
+      "correct_side": 470,
+      "mapped_quote_time_within_2s_price_within_5c": 103,
+      "exact_mapped_quote_time_and_price": 73,
+      "extra_candidates_not_in_positive_reference": 740,
+      "by_family": {
+        "A": {
+          "target": 377,
+          "correct_side": 274
+        },
+        "B": {
+          "target": 366,
+          "correct_side": 169
+        },
+        "C": {
+          "target": 106,
+          "correct_side": 27
+        }
+      }
+    }
+  ],
+  "positive_targets_withheld_from_runtime": true,
+  "source_quote_prices_are_not_actual_broker_deals": true,
+  "frozen_models_do_not_predict_deployable_full_system_profit": true,
+  "full_71794750_quote_replication_verified": false,
+  "other_gate_experiments_not_promoted": "Early/mature split, minute-start prior gate and B/C early expert were examined locally; none was promoted over the frozen baseline without robust improvements to positive-cycle recall and entry-price concordance.",
+  "engineering_safety": "Original R9, V9, V11 and native MQL5 untouched; new isolated research branch only, no orders; outputs are compact JSON and two ~0.29MB LightGBM text models, no duplicate tick warehouses.",
+  "next_entry_development_gate": "Optimize early B/C and second-leg on-policy event-clock precision using as-of first-leg exit and multihorizon information, frozen chronological validation before wider 10-part replay."
+}
