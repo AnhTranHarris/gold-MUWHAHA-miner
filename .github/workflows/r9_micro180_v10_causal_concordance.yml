@@ -1,0 +1,53 @@
+name: Micro180 V10 causal R9 / Coinexx entry concordance (research only)
+
+on:
+  push:
+    branches:
+      - carson/micro180-v10-r9-coinexx-causal-rebuild-20261116
+    paths:
+      - 'research/coinexx_r9_chronological/micro180_20261114/v10_*.py'
+      - 'research/coinexx_r9_chronological/micro180_20261114/test_v10_*.py'
+      - '.github/workflows/r9_micro180_v10_causal_concordance.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  causal-entry-parity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile new V10 research-only Python components
+        run: |
+          python -m py_compile \
+            research/coinexx_r9_chronological/micro180_20261114/v10_r9_dual_concordance.py \
+            research/coinexx_r9_chronological/micro180_20261114/v10_merged_entry_concordance.py \
+            research/coinexx_r9_chronological/micro180_20261114/run_v10_r9_merged_concordance.py \
+            research/coinexx_r9_chronological/micro180_20261114/test_v10_r9_dual_concordance.py
+      - name: Prove R9 source-equivalent entry, exit, quote-side and rearm parity
+        run: |
+          cd research/coinexx_r9_chronological
+          PYTHONPATH=src:variable_cash_horizon_20261114:dual_basket_20261114:micro180_20261114 \
+            python micro180_20261114/test_v10_r9_dual_concordance.py -v
+      - name: Preserve original working V9 contract
+        run: |
+          cd research/coinexx_r9_chronological
+          PYTHONPATH=src:variable_cash_horizon_20261114:dual_basket_20261114:micro180_20261114 \
+            python micro180_20261114/test_v9_volume_router.py -v
+      - name: Guard original R9 and Micro180 implementation blobs against mutations
+        shell: bash
+        run: |
+          test "$(git rev-parse HEAD:Experts/GoldMuwahahaMiner_R9_HybridGate.mq5)" = "07222b1a3800c9cc826abe10a4ce6afbd97b0af5"
+          test "$(git rev-parse HEAD:research/coinexx_r9_chronological/src/coinexx_r9/r9_baseline.py)" = "a760b843577e53a3fa165273421b0270dba4f35e"
+          test "$(git rev-parse HEAD:research/coinexx_r9_chronological/micro180_20261114/v9_volume_router.py)" = "036c5ae716aae7688bd55703ace415ec56c2e4d6"
+          grep -q 'InpEnableDemoOrders        = false' Experts/GoldMuwahahaMiner_R9_Micro180_V9_Research.mq5
+      - name: No false profitability certification
+        run: |
+          echo "Fixture tests prove programming/parity contracts only."
+          echo "Full 272352-entry merged-data recall, exact Coinexx price concordance,"
+          echo "and complete-system net profitability require existing source files."
+          echo "Native MT5 compilation and live/demo order execution are not authorized."
