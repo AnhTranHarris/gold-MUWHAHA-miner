@@ -6,6 +6,7 @@ on:
       - carson/micro180-v12-coinexx-causal-eventclock-20261116
     paths:
       - 'research/coinexx_r9_chronological/micro180_20261114/v12_*.py'
+      - 'research/coinexx_r9_chronological/micro180_20261114/train_v12_*.py'
       - 'research/coinexx_r9_chronological/micro180_20261114/test_v12_*.py'
       - '.github/workflows/r9_micro180_v12_causal_entry_virtualclock.yml'
   workflow_dispatch:
@@ -25,6 +26,7 @@ jobs:
         run: |
           python -m py_compile \
             research/coinexx_r9_chronological/micro180_20261114/v12_coinexx_virtualclock_entry.py \
+            research/coinexx_r9_chronological/micro180_20261114/train_v12_coinexx_event_hazard.py \
             research/coinexx_r9_chronological/micro180_20261114/test_v12_coinexx_virtualclock_entry.py
       - name: Verify causal, future-blind next-real-second entry intent
         run: |
