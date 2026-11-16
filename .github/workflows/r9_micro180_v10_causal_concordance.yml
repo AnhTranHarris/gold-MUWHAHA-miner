@@ -1,12 +1,16 @@
-name: Micro180 V10 causal R9 / Coinexx entry concordance (research only)
+name: Micro180 V10–V13 causal R9 / Coinexx entry concordance (research only)
 
 on:
   push:
     branches:
       - carson/micro180-v10-r9-coinexx-causal-rebuild-20261116
+      - carson/micro180-v13-positive-entry-onpolicy-20261116
     paths:
       - 'research/coinexx_r9_chronological/micro180_20261114/v10_*.py'
       - 'research/coinexx_r9_chronological/micro180_20261114/v11_*.py'
+      - 'research/coinexx_r9_chronological/micro180_20261114/v13_*.py'
+      - 'research/coinexx_r9_chronological/micro180_20261114/test_v13_*.py'
+      - 'research/coinexx_r9_chronological/micro180_20261114/positive_cycle_model/*.txt'
       - 'research/coinexx_r9_chronological/micro180_20261114/run_v11_*.py'
       - 'research/coinexx_r9_chronological/micro180_20261114/test_v10_*.py'
       - 'research/coinexx_r9_chronological/micro180_20261114/test_v11_*.py'
@@ -24,7 +28,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Compile new V10 research-only Python components
+      - name: Compile new V10–V13 research-only Python components
         run: |
           python -m py_compile \
             research/coinexx_r9_chronological/micro180_20261114/v10_r9_dual_concordance.py \
@@ -32,7 +36,9 @@ jobs:
             research/coinexx_r9_chronological/micro180_20261114/run_v11_independent_merged_concordance.py \
             research/coinexx_r9_chronological/micro180_20261114/v10_merged_entry_concordance.py \
             research/coinexx_r9_chronological/micro180_20261114/run_v10_r9_merged_concordance.py \
-            research/coinexx_r9_chronological/micro180_20261114/test_v10_r9_dual_concordance.py
+            research/coinexx_r9_chronological/micro180_20261114/test_v10_r9_dual_concordance.py \
+            research/coinexx_r9_chronological/micro180_20261114/v13_positive_cycle_onpolicy_coinexx.py \
+            research/coinexx_r9_chronological/micro180_20261114/test_v13_positive_cycle_onpolicy.py
       - name: Prove R9 source-equivalent entry, exit, quote-side and rearm parity
         run: |
           cd research/coinexx_r9_chronological
@@ -43,6 +49,18 @@ jobs:
           cd research/coinexx_r9_chronological
           PYTHONPATH=src:variable_cash_horizon_20261114:dual_basket_20261114:micro180_20261114 \
             python micro180_20261114/test_v11_micro180_independent_dual_entry.py -v
+      - name: Install source-only V13 quant inference dependency
+        run: |
+          python -m pip install --disable-pip-version-check --quiet numpy==2.2.6 lightgbm==4.6.0
+      - name: V13 independent on-policy entry and first-exit rearm tests
+        run: |
+          cd research/coinexx_r9_chronological/micro180_20261114
+          python test_v13_positive_cycle_onpolicy.py -v
+      - name: Pin frozen positive entry hazard model SHA-256
+        shell: bash
+        run: |
+          echo "a062537dce775dfdb4497ccbc4eaadff06e4132485feef2ee04b3a43651f743b  research/coinexx_r9_chronological/micro180_20261114/positive_cycle_model/micro180_positive_first_hazard_model.txt" | sha256sum -c -
+          echo "67832f0a1e1f07fff843bcd68c0016f111f79baec57a16b1daeae23a0e157b93  research/coinexx_r9_chronological/micro180_20261114/positive_cycle_model/micro180_positive_second_hazard_model.txt" | sha256sum -c -
       - name: Preserve original working V9 contract
         run: |
           cd research/coinexx_r9_chronological
