@@ -284,6 +284,10 @@ class Micro180V12PositiveClock(Micro180V11DualEntry):
                     self.entries[-1]["v12_precommitted_delay_seconds"] = delay
                     self.entries[-1]["v12_inherited_first_entry_family"] = "UNKNOWN"
                 return
+            # One pending intent is immutable until its scheduled quote clock.
+            # Intermediate next-second signals cannot push the scheduled fill
+            # forward or overwrite its decision-side/ordinal state.
+            return
         if not self.clock.first_tick_new_second or self._last_scored_second == t.time_s:
             return
         self._last_scored_second = t.time_s
