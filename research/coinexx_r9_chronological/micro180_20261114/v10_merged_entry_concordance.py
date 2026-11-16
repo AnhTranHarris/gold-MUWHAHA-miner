@@ -47,12 +47,13 @@ def compare_merged_entries(
     clock_offset_minutes: int = 0,
     max_anchor_distance_ms: int = 3000,
     expected_teacher_rows: int | None = None,
+    expected_teacher_net_usd: Decimal | None = None,
 ) -> dict[str, Any]:
     """Complete-population matching with no teacher-to-strategy leakage.
 
     Identity is source-native minute, numbered leg, side. Timing and executable
     price agreement are INDEPENDENT metrics, never combined into an inflated
-    "matched" label. Zero recovered quote references remain in the teacher
+    "matched" label. The timestamp equality gate is exact (0 ms); a ±tolerance\n    gate is reported separately. Zero recovered quote references remain in the teacher
     denominator. No candidate may match twice.
     """
     if not isinstance(clock_offset_minutes, int):
@@ -78,7 +79,8 @@ def compare_merged_entries(
         raise ValueError(f"Duplicate causal candidate keys, first={duplicates[0]}")
     counters: Counter[str] = Counter()
     source_net = Decimal("0")
-    original_economics_present = True
+    price_errors: list[int] = []
+    timing_errors: list[int] = []
     misses: list[dict[str, Any]] = []
     used: set[tuple[int, int, int]] = set()
     for row in teacher_rows:
@@ -93,8 +95,8 @@ def compare_merged_entries(
             int(row["leg"]),
             side,
         )
-        q_ms = int(float(row["equote_ms"]))
-        q_entry = int(float(row["q_entry_u"]))
+        q_ms = int(Decimal(row["equote_ms"]))
+        q_entry = int(Decimal(row["q_entry_u"]))
         if q_ms < 0 or q_entry <= 0:
             counters["source_quote_missing"] += 1
         else:
@@ -113,10 +115,16 @@ def compare_merged_entries(
             continue
         diff_ms = int(candidate["time_msc"]) - q_ms
         delta_price = int(candidate["price_u"]) - q_entry
+        timing_errors.append(abs(diff_ms))
+        price_errors.append(abs(delta_price))
+        if diff_ms == 0:
+            counters["exact_millisecond_timestamp"] += 1
+            if delta_price == 0:
+                counters["exact_executable_quote_price_and_clock"] += 1
         if abs(diff_ms) <= max_anchor_distance_ms:
             counters["anchor_time_within_tolerance"] += 1
             if delta_price == 0:
-                counters["exact_executable_quote_price_and_clock"] += 1
+                counters["exact_price_within_clock_tolerance"] += 1
             else:
                 counters["clock_match_quote_price_differs"] += 1
         if delta_price == 0:
@@ -130,8 +138,15 @@ def compare_merged_entries(
             })
     if expected_teacher_rows is not None and counters["original_teacher_rows"] != expected_teacher_rows:
         raise AssertionError("Reference population is incomplete; no subset passes")
+    if expected_teacher_net_usd is not None and source_net != expected_teacher_net_usd:
+        raise AssertionError("Original R9 economic total differs; no repricing or replacement permitted")
     original_economics_present = (counters["original_teacher_rows"] > 0)
     denominator = counters["source_quote_available"]
+    def percentile(data: list[int], numerator: int, denominator: int = 100) -> int | None:
+        if not data:
+            return None
+        x = sorted(data)
+        return x[((len(x)-1)*numerator)//denominator]
     return {
         "source": "preexisting_r9_coinexx_merged_reference_only",
         "candidate_mode": "causal_R9_v190_quote_entry_plus_dual_basket_evidence",
@@ -144,6 +159,16 @@ def compare_merged_entries(
         "unmatched_candidate_entries": candidate_count - len(used),
         "original_r9_net_usd_unchanged": str(source_net),
         "original_economics_present": original_economics_present,
+        "median_absolute_price_difference_cents": percentile(price_errors, 50),
+        "p95_absolute_price_difference_cents": percentile(price_errors, 95),
+        "median_absolute_time_difference_ms": percentile(timing_errors, 50),
+        "p95_absolute_time_difference_ms": percentile(timing_errors, 95),
+        "exact_price_same_millisecond_fraction_of_quote_eligible": round(
+            counters["exact_executable_quote_price_and_clock"] / max(1, denominator), 6
+        ),
+        "price_equal_within_tolerance_fraction_of_quote_eligible": round(
+            counters["exact_price_within_clock_tolerance"] / max(1, denominator), 6
+        ),
         "same_cycle_entry_coverage": round(
             counters["same_minute_leg_side"] / max(1, counters["original_teacher_rows"]), 6
         ),
@@ -151,6 +176,7 @@ def compare_merged_entries(
             counters["exact_executable_quote_price_and_clock"] / max(1, denominator), 6
         ),
         "limited_mismatch_examples": misses,
+        "reference_event_time_is_not_injected_into_candidate": True,
         "certified_exact_replication": (
             original_economics_present
             and counters["original_teacher_rows"] == candidate_count
