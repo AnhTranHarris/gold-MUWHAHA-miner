@@ -77,6 +77,23 @@ class PositiveRouter(unittest.TestCase):
         self.assertEqual(len(second.rows), 0)
         self.assertFalse(sim.concordance_summary()["future_trade_outcomes_available_to_router"])
 
+    def test_frozen_two_second_entry_clock_uses_future_real_quote_only(self):
+        sim = Micro180V12PositiveClock(
+            cfg(), first_model=FixedModel(), second_model=FixedModel(),
+            spec=V12PositiveClockSpec(first_execution_delay_seconds=2),
+        )
+        sim.on_tick(tick(0, 60, ms=15, bid=10000))
+        self.assertEqual(len(sim.entries), 0)
+        sim.on_tick(tick(1, 61, ms=23, bid=10010))
+        self.assertEqual(len(sim.entries), 0)
+        self.assertEqual(sim._pending[0], 60)
+        sim.on_tick(tick(2, 62, ms=17, bid=10022))
+        self.assertEqual(len(sim.entries), 1)
+        self.assertEqual(sim.entries[0]["time_msc"], 62017)
+        self.assertEqual(sim.entries[0]["price_u"], 10042)
+        self.assertEqual(sim.entries[0]["v12_precommitted_delay_seconds"], 2)
+        self.assertEqual(sim.entries[0]["v12_signal_second"], 60)
+
     def test_no_same_second_fill_or_stale_next_second_fill(self):
         sim = Micro180V12PositiveClock(cfg(), first_model=FixedModel(), second_model=FixedModel())
         sim.on_tick(tick(0, 60, ms=100))
