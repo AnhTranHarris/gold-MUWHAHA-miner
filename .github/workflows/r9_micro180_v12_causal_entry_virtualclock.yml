@@ -1,0 +1,51 @@
+name: Micro180 V12 independent Coinexx causal entry and virtual-second execution
+
+on:
+  push:
+    branches:
+      - carson/micro180-v12-coinexx-causal-eventclock-20261116
+    paths:
+      - 'research/coinexx_r9_chronological/micro180_20261114/v12_*.py'
+      - 'research/coinexx_r9_chronological/micro180_20261114/test_v12_*.py'
+      - '.github/workflows/r9_micro180_v12_causal_entry_virtualclock.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  v12-frozen-signal-source-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile isolated V12 research-only entry source
+        run: |
+          python -m py_compile \
+            research/coinexx_r9_chronological/micro180_20261114/v12_coinexx_virtualclock_entry.py \
+            research/coinexx_r9_chronological/micro180_20261114/test_v12_coinexx_virtualclock_entry.py
+      - name: Verify causal, future-blind next-real-second entry intent
+        run: |
+          cd research/coinexx_r9_chronological
+          PYTHONPATH=src:variable_cash_horizon_20261114:dual_basket_20261114:micro180_20261114 \
+            python micro180_20261114/test_v12_coinexx_virtualclock_entry.py -v
+      - name: Preserve inherited V11 and original R9/V9 contracts
+        run: |
+          cd research/coinexx_r9_chronological
+          PYTHONPATH=src:variable_cash_horizon_20261114:dual_basket_20261114:micro180_20261114 \
+            python micro180_20261114/test_v11_micro180_independent_dual_entry.py -v
+          PYTHONPATH=src:variable_cash_horizon_20261114:dual_basket_20261114:micro180_20261114 \
+            python micro180_20261114/test_v9_volume_router.py -v
+      - name: Original source and native-EA protection
+        run: |
+          test "$(git rev-parse HEAD:Experts/GoldMuwahahaMiner_R9_HybridGate.mq5)" = "07222b1a3800c9cc826abe10a4ce6afbd97b0af5"
+          test "$(git rev-parse HEAD:research/coinexx_r9_chronological/src/coinexx_r9/r9_baseline.py)" = "a760b843577e53a3fa165273421b0270dba4f35e"
+          test "$(git rev-parse HEAD:research/coinexx_r9_chronological/micro180_20261114/v9_volume_router.py)" = "036c5ae716aae7688bd55703ace415ec56c2e4d6"
+          grep -q 'InpEnableDemoOrders        = false' Experts/GoldMuwahahaMiner_R9_Micro180_V9_Research.mq5
+      - name: Distinguish CI fixtures from original Coinexx replay
+        run: |
+          echo "Fixture programming contracts only, no claim of nine-month entry recall."
+          echo "Original 2026 Jan-Sep R9-Coinexx accounting remains unchanged."
+          echo "No native broker order, no synthetic future-quote fill."
