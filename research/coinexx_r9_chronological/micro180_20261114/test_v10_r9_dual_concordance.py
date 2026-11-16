@@ -189,6 +189,30 @@ class MergedReferenceConcordanceTests(unittest.TestCase):
         self.assertEqual(report["original_r9_net_usd_unchanged"], "-1.60")
         self.assertEqual(report["same_cycle_entry_coverage"], 1.0)
 
+
+    def test_same_price_inside_time_tolerance_does_not_count_as_exact_entry(self):
+        report = compare_merged_entries(
+            [self.row()],
+            [self.candidate(time_msc=self.mark_ms + 1250)],
+            expected_teacher_rows=1,
+            max_anchor_distance_ms=3000,
+        )
+        self.assertEqual(report["counts"]["anchor_time_within_tolerance"], 1)
+        self.assertEqual(report["counts"]["exact_price_within_clock_tolerance"], 1)
+        self.assertEqual(report["counts"].get("exact_executable_quote_price_and_clock", 0), 0)
+        self.assertEqual(report["quote_exact_and_time_coverage"], 0.0)
+        self.assertEqual(report["median_absolute_time_difference_ms"], 1250)
+        self.assertFalse(report["certified_exact_replication"])
+
+    def test_rejects_modified_full_ledger_profit_without_repricing(self):
+        from decimal import Decimal
+        with self.assertRaises(AssertionError):
+            compare_merged_entries(
+                [self.row(net_usd="1.38")], [self.candidate()],
+                expected_teacher_rows=1,
+                expected_teacher_net_usd=Decimal("1.37"),
+            )
+
     def test_duplicate_quote_candidate_is_not_double_counted(self):
         with self.assertRaises(ValueError):
             compare_merged_entries([self.row()],
