@@ -175,7 +175,7 @@ class MergedReferenceConcordanceTests(unittest.TestCase):
             expected_teacher_rows=2,
         )
         self.assertEqual(result["counts"]["original_teacher_rows"], 2)
-        self.assertEqual(result["counts"]["source_quote_missing"], 1)
+        self.assertEqual(result["counts"]["entry_quote_outside_2s_or_missing"], 1)
         self.assertEqual(result["original_r9_net_usd_unchanged"], "1.15")
         self.assertFalse(result["certified_exact_replication"])
 
