@@ -19,8 +19,6 @@ import math
 from dataclasses import dataclass
 from typing import Any, Callable, Protocol, Sequence
 
-import numpy as np
-
 from coinexx_r9.models import Tick
 from coinexx_r9.r9_baseline import R9Config
 from v11_micro180_independent_dual_entry import Micro180V11DualEntry
@@ -51,6 +49,7 @@ class FrozenLightGBMScore:
             raise ValueError("Frozen hazard feature dimensionality mismatch")
 
     def score(self, features: Sequence[float]) -> float:
+        import numpy as np
         # Deliberately a frozen single quote; infer once per source second.
         a = np.asarray([features], dtype=np.float32)
         return float(self.booster.predict(a)[0])
