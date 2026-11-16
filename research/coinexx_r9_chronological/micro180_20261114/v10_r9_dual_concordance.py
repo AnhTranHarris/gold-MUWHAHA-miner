@@ -15,7 +15,7 @@ from typing import Any
 from coinexx_r9.models import Tick
 from coinexx_r9.r9_baseline import R9Config, R9HybridGateBaseline
 from dual_basket import DualBasketSpec
-from micro180 import RollingThreeMinute
+from micro180 import Micro180Spec, RollingThreeMinute
 from v5_ms_path import MsQuarterPath
 from v9_volume_router import V9Spec, directional_quant
 
@@ -56,6 +56,7 @@ class Micro180V10R9Causal(R9HybridGateBaseline):
         self.dual_spec = dual or DualBasketSpec()
         self.v9 = v9 or V9Spec()
         self.v10 = spec
+        self.micro_spec = Micro180Spec()
         self.rolling = RollingThreeMinute()
         self.path = MsQuarterPath()
         self.v10_stats: Counter[str] = Counter()
@@ -86,7 +87,7 @@ class Micro180V10R9Causal(R9HybridGateBaseline):
             if bar is None:
                 continue
             if (bar.last_ms - bar.first_ms < minimum_span
-                    or bar.max_gap_ms > self.v9.min_15s_span_ms + 500):
+                    or bar.max_gap_ms > self.micro_spec.max_quote_gap_ms):
                 continue
             movement2 = bar.bid_close + bar.ask_close - bar.bid_open - bar.ask_open
             for age, level in ((15, levels15), (30, levels30)):
