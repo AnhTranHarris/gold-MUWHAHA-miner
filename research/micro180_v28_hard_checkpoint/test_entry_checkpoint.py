@@ -72,6 +72,14 @@ class FrozenPolicyTests(unittest.TestCase):
         self.assertIn('gHaveFirst=true', self.src)
         self.assertIn('gHaveSecond=true', self.src)
 
+    def test_causal_minute_eval_order_and_gap_semantics(self):
+        self.assertIn('evalBeforeMinuteReset', self.src)
+        self.assertLess(self.src.index('bool evalBeforeMinuteReset'), self.src.index('UpdateQuote(q);'))
+        self.assertLess(self.src.index('bool evalBeforeMinuteReset'), self.src.index('if(newMinute){', self.src.index('void OnTick(){')))
+        self.assertIn('if(x==EMPTY_VALUE)return 0.;', self.src)
+        self.assertIn('bool eval=sec!=prevsec', self.cpp)
+        self.assertIn('if(!isfinite(x))return 0.;', self.cpp)
+
     def test_entry_only_and_teacher_blind(self):
         executable = self.src[self.src.index('int OnInit(){'):]
         self.assertFalse(re.search(r'\bOrderSend\s*\(|\bCTrade\b|trade\s*\.\s*(Buy|Sell|PositionClose|PositionModify)\s*\(', executable))
