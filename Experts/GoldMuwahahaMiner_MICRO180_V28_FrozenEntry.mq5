@@ -5,7 +5,7 @@
 //| R9-Coinexx positive-cycle labels NEVER supplied to this EA.     |
 //+------------------------------------------------------------------+
 #property strict
-#property version "28.10"
+#property version "28.11"
 #property description "FROZEN V28 Jan-Jul dual-basket entry shadow. No order routing."
 
 input string InpFrozenV28Weights="MICRO180_Jan_through_07_merged_weights.tsv";
@@ -109,7 +109,7 @@ double BarTR(const int n){double z=0;for(int i=n;i>=1;i--){V28Minute b=GetBarAgo
  z+=MathMax(b.h-b.l,MathMax(MathAbs(b.h-old.c),MathAbs(b.l-old.c)));}return z/n;}
 double Efficiency(const long s,const int n,const int step,const double mid,const int side){
  double sum=0,old=mid,latest=mid;
- for(int i=step;i<=n;i+=step){double x=PastMid(s,i);if(x==EMPTY_VALUE)return EMPTY_VALUE;
+ for(int i=step;i<=n;i+=step){double x=PastMid(s,i);if(x==EMPTY_VALUE)return 0.; // frozen C++ returns zero efficiency on an internal gap
   sum+=MathAbs(old-x);old=x;latest=x;}
  return side*(mid-latest)/MathMax(.01,sum);
 }
@@ -136,7 +136,8 @@ bool Features(const MqlTick &q,int side,double atr,double &v[]){
  double r5=side*(mid-p5)/atr,r15=side*(mid-p15)/atr,r60=side*(mid-p60)/atr;
  double r180=side*(mid-p180)/atr,r300=side*(mid-p300)/atr;
  double eff60=Efficiency(s,60,5,mid,side),eff180=Efficiency(s,180,15,mid,side),eff300=Efficiency(s,300,15,mid,side);
- if(eff60==EMPTY_VALUE||eff180==EMPTY_VALUE||eff300==EMPTY_VALUE)return false;
+ // C++ reference represents missing internal path samples as zero efficiency;
+ // the five explicit lookback endpoints above still must exist.
  double vv1=BarVWAP(1),vv3=BarVWAP(3),vv5=BarVWAP(5),sma3=BarSMA(3),sma5=BarSMA(5);
  double ema3=BarEMA(3),ema8=BarEMA(8),ema21=BarEMA(21);
  double hi1=GetBarAgo(1).h,lo1=GetBarAgo(1).l,hi3=-DBL_MAX,lo3=DBL_MAX,hi5=-DBL_MAX,lo5=DBL_MAX;
@@ -245,14 +246,21 @@ void OnTick(){
   gModelCalendarMonth=monthKey;
  }
  bool newSec=(sec!=gActiveSecond),newMinute=(minute!=gPolicyMinute);
+ int sourceSecond=(int)(sec%60);
+ // Source-exact ordering: the C++ replay determines whether to evaluate
+ // a quote BEFORE resetting the minute's first/second basket state.
+ bool evalBeforeMinuteReset=(newSec &&
+  ((!gHaveFirst && sourceSecond<=44) ||
+   (gHaveFirst && !gHaveSecond && gFirstRole>=2 && gFirstRole<=4
+       && sourceSecond>=18 && sourceSecond<=54)));
  UpdateQuote(q);
  if(newMinute){
   gPolicyMinute=minute;gHaveFirst=false;gHaveSecond=false;gFirstRole=-1;gFirstSide=0;gFirstSecond=0;
   int h=(int)((sec/3600)%24);
   for(int r=0;r<NROLE;r++)gToken[r]=MathMin(3.,gToken[r]+gRate[r][h]);
  }
- if(!newSec)return;
- int s=(int)(sec%60);
+ if(!evalBeforeMinuteReset)return;
+ int s=sourceSecond;
  if(!gHaveFirst && s>44)return;
  if(gHaveFirst && (gFirstRole<0||gFirstRole<=1||gHaveSecond||s<MathMax(18,gFirstSecond+7)||s>54))return;
  double b[];if(CopyBuffer(gAtrHandle,0,1,1,b)!=1||b[0]<=0)return;
