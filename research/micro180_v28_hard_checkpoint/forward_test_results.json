@@ -1,0 +1,189 @@
+{
+  "name": "MICRO180 V28 January-July frozen Aug-Sep forward test",
+  "test_period": [
+    "2026-08",
+    "2026-09"
+  ],
+  "policy_frozen_file": "V28_JAN_JUL_FROZEN.tsv",
+  "policy_sha256": "92719ae1edd78c91e63f151da7d2f3607c7d5f42119b07613b8b20a7cce3997b",
+  "policy_trained_through": "2026-07",
+  "positive_cycle_checklist": "Original nine-month R9 synthetic trade timestamps mapped to Coinexx REAL TickLogger; complete mapped quote_net>0",
+  "targets_total": 29038,
+  "target_first_legs": 21823,
+  "target_second_legs": 7215,
+  "independent_intents_total": 33864,
+  "independent_first_intents": 24553,
+  "independent_conditional_second_intents": 9311,
+  "volume_ratio_to_all_positive_targets": 1.1661960190095737,
+  "without_matching_teacher_minute_leg": 22639,
+  "overall": {
+    "positive_mapped_entry_targets": 29038,
+    "matching_minute_and_leg": 11225,
+    "matching_minute_leg_direction": 6441,
+    "near_10s_50c": 2711,
+    "near_5s_20c": 1267,
+    "near_2s_5c": 227,
+    "exact_mapped_quote": 73,
+    "recall_strict": 0.00781734279220332
+  },
+  "months": {
+    "2026-08": {
+      "positive_mapped_entry_targets": 14285,
+      "matching_minute_and_leg": 5514,
+      "matching_minute_leg_direction": 3166,
+      "near_10s_50c": 1320,
+      "near_5s_20c": 592,
+      "near_2s_5c": 120,
+      "exact_mapped_quote": 43,
+      "recall_strict": 0.00840042002100105,
+      "intents": 16957,
+      "first_intents": 12299,
+      "second_intents": 4658,
+      "volume_ratio": 1.1870493524676233
+    },
+    "2026-09": {
+      "positive_mapped_entry_targets": 14753,
+      "matching_minute_and_leg": 5711,
+      "matching_minute_leg_direction": 3275,
+      "near_10s_50c": 1391,
+      "near_5s_20c": 675,
+      "near_2s_5c": 107,
+      "exact_mapped_quote": 30,
+      "recall_strict": 0.007252762150071172,
+      "intents": 16907,
+      "first_intents": 12254,
+      "second_intents": 4653,
+      "volume_ratio": 1.1460042025350776
+    }
+  },
+  "families": {
+    "A": {
+      "positive_mapped_entry_targets": 14608,
+      "matching_minute_and_leg": 6443,
+      "matching_minute_leg_direction": 3832,
+      "near_10s_50c": 1587,
+      "near_5s_20c": 785,
+      "near_2s_5c": 113,
+      "exact_mapped_quote": 26,
+      "recall_strict": 0.007735487404162103
+    },
+    "B": {
+      "positive_mapped_entry_targets": 5544,
+      "matching_minute_and_leg": 1834,
+      "matching_minute_leg_direction": 1027,
+      "near_10s_50c": 402,
+      "near_5s_20c": 167,
+      "near_2s_5c": 39,
+      "exact_mapped_quote": 19,
+      "recall_strict": 0.007034632034632035
+    },
+    "C": {
+      "positive_mapped_entry_targets": 7674,
+      "matching_minute_and_leg": 2561,
+      "matching_minute_leg_direction": 1366,
+      "near_10s_50c": 648,
+      "near_5s_20c": 280,
+      "near_2s_5c": 61,
+      "exact_mapped_quote": 19,
+      "recall_strict": 0.007948918425853532
+    },
+    "D": {
+      "positive_mapped_entry_targets": 1212,
+      "matching_minute_and_leg": 387,
+      "matching_minute_leg_direction": 216,
+      "near_10s_50c": 74,
+      "near_5s_20c": 35,
+      "near_2s_5c": 14,
+      "exact_mapped_quote": 9,
+      "recall_strict": 0.01155115511551155
+    }
+  },
+  "month_family": {
+    "2026-08/A": {
+      "positive_mapped_entry_targets": 7291,
+      "matching_minute_and_leg": 3198,
+      "matching_minute_leg_direction": 1890,
+      "near_10s_50c": 758,
+      "near_5s_20c": 360,
+      "near_2s_5c": 55,
+      "exact_mapped_quote": 16,
+      "recall_strict": 0.007543546838568098
+    },
+    "2026-08/B": {
+      "positive_mapped_entry_targets": 2656,
+      "matching_minute_and_leg": 876,
+      "matching_minute_leg_direction": 506,
+      "near_10s_50c": 198,
+      "near_5s_20c": 78,
+      "near_2s_5c": 20,
+      "exact_mapped_quote": 7,
+      "recall_strict": 0.007530120481927711
+    },
+    "2026-08/C": {
+      "positive_mapped_entry_targets": 3776,
+      "matching_minute_and_leg": 1260,
+      "matching_minute_leg_direction": 660,
+      "near_10s_50c": 329,
+      "near_5s_20c": 136,
+      "near_2s_5c": 36,
+      "exact_mapped_quote": 13,
+      "recall_strict": 0.009533898305084746
+    },
+    "2026-08/D": {
+      "positive_mapped_entry_targets": 562,
+      "matching_minute_and_leg": 180,
+      "matching_minute_leg_direction": 110,
+      "near_10s_50c": 35,
+      "near_5s_20c": 18,
+      "near_2s_5c": 9,
+      "exact_mapped_quote": 7,
+      "recall_strict": 0.01601423487544484
+    },
+    "2026-09/A": {
+      "positive_mapped_entry_targets": 7317,
+      "matching_minute_and_leg": 3245,
+      "matching_minute_leg_direction": 1942,
+      "near_10s_50c": 829,
+      "near_5s_20c": 425,
+      "near_2s_5c": 58,
+      "exact_mapped_quote": 10,
+      "recall_strict": 0.007926745934126008
+    },
+    "2026-09/B": {
+      "positive_mapped_entry_targets": 2888,
+      "matching_minute_and_leg": 958,
+      "matching_minute_leg_direction": 521,
+      "near_10s_50c": 204,
+      "near_5s_20c": 89,
+      "near_2s_5c": 19,
+      "exact_mapped_quote": 12,
+      "recall_strict": 0.006578947368421052
+    },
+    "2026-09/C": {
+      "positive_mapped_entry_targets": 3898,
+      "matching_minute_and_leg": 1301,
+      "matching_minute_leg_direction": 706,
+      "near_10s_50c": 319,
+      "near_5s_20c": 144,
+      "near_2s_5c": 25,
+      "exact_mapped_quote": 6,
+      "recall_strict": 0.006413545407901488
+    },
+    "2026-09/D": {
+      "positive_mapped_entry_targets": 650,
+      "matching_minute_and_leg": 207,
+      "matching_minute_leg_direction": 106,
+      "near_10s_50c": 39,
+      "near_5s_20c": 17,
+      "near_2s_5c": 5,
+      "exact_mapped_quote": 2,
+      "recall_strict": 0.007692307692307693
+    }
+  },
+  "runtime_uses_teacher_labels": false,
+  "runtime_uses_frozen_Jan_Jul_weights": true,
+  "position_2_intents_are_conditional_on_flat": true,
+  "holding_exit_profitability_simulated": false,
+  "false_positive_estimate_is_intent_without_teacher_minute_leg": true,
+  "source_quote_stream": "Original MT5 REAL_TESTER 20260101 000000 part08, part09, part10 of 10; July warmup only; August/September replay"
+}
