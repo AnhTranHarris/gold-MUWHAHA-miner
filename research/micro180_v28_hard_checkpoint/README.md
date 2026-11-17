@@ -8,7 +8,7 @@ The **immutable behavioral authority** is the original C++ `v28_forward_frozen.c
 
 `92719ae1edd78c91e63f151da7d2f3607c7d5f42119b07613b8b20a7cce3997b`
 
-The source file `GoldMuwahahaMiner_MICRO180_V28_FrozenEntry.mq5` is the native MQL5 port. Model and EA are version-coupled. Do **not** regenerate prototypes, change score weights, "fix" last-prototype selection, change the family's role mapping, or blend monthly specialists. Fork this milestone to experiment; never silently edit the accepted checkpoint.
+The source file `GoldMuwahahaMiner_MICRO180_V28_FrozenEntry.mq5` (native port revision 28.11) is the native MQL5 port. Model and EA are version-coupled. Do **not** regenerate prototypes, change score weights, "fix" last-prototype selection, change the family's role mapping, or blend monthly specialists. Fork this milestone to experiment; never silently edit the accepted checkpoint.
 
 ## Complete policy encoding inventory
 
@@ -24,6 +24,7 @@ The source file `GoldMuwahahaMiner_MICRO180_V28_FrozenEntry.mq5` is the native M
 | Hour/session intensity | `RATE` (24 UTC hours × eight heads) and capped per-role tokens |
 | Synthetic-to-real bridge | First-passage `HitProbability` scoring term and R9 opening ±15-cent geometry |
 | One first entry, conditional opposite second | State `gHaveFirst`, `gHaveSecond`, `gFirstRole`, side/opposite rearm, 7-second minimum spacing; never any fabricated exits |
+| C++ quote evaluation order and internal gaps | Source computes its phase-evaluation eligibility before resetting the minute basket; a missing intermediate efficiency sample yields zero efficiency. Native port preserves both semantics. |
 | Monthly intensity reset | `gModelCalendarMonth` clears tokens at UTC month change, preserves rolling quote history |
 | Auditable quote-level intent | Logs and writes TSV (`ms,minute,leg,side,role,state,score,price_u,conditional_on_flat`) |
 | Original C++ prototype selection nuance | Native port deliberately chooses **last** matching expert in source-file order, because frozen C++ keeps `Candidate.score==-1e9` throughout its prototype loop. Changing to closest expert would alter the accepted test behavior. |
