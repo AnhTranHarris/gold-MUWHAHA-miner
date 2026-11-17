@@ -15,16 +15,16 @@
   "protected_source_base_sha": "f0cf605cbdcbc23f0e7b66dc68fcbf99aa185c88",
   "files": {
     "GoldMuwahahaMiner_MICRO180_V28_FrozenEntry.mq5": {
-      "bytes": 16310,
-      "sha256": "2758eaaa5fcb99bb80a1a0df01a424f4873e3339f77e0bdf4c440070b2e92d4c"
+      "bytes": 16807,
+      "sha256": "e32eb73f7643b07fb042eabe318f987bce8063fbb56c9e772ee34c806acf1a98"
     },
     "MICRO180_Jan_through_07_merged_weights.tsv": {
       "bytes": 1340620,
       "sha256": "92719ae1edd78c91e63f151da7d2f3607c7d5f42119b07613b8b20a7cce3997b"
     },
     "README.md": {
-      "bytes": 7310,
-      "sha256": "6b45f3372493390d203ad1421cb9a56e21e7f9d2dc1066e4ecd3e43e0ba5e23a"
+      "bytes": 7578,
+      "sha256": "212c8f5c3583271064f9d38ce9100da8a01ac21fde157bb25f06553505b7c927"
     },
     "SOURCE_AND_POLICY_SHA256.json": {
       "bytes": 1712,
@@ -39,12 +39,20 @@
       "sha256": "6bc09f84d4fab9f771a3fb849f9edbcec614edfbae7659d23e09121aa90be8b6"
     },
     "test_entry_checkpoint.py": {
-      "bytes": 4287,
-      "sha256": "ebfe68b6d17ebb4beb367f333b511a6b6a42adebf58cdb4255362f3ad429fc1e"
+      "bytes": 4835,
+      "sha256": "66c8618c035ab29e1e28aa2642bb581eee0b990797b84b1bdd56a58a90f6d3d0"
     },
     "v28_forward_frozen.cpp": {
       "bytes": 13325,
       "sha256": "a9e1a54cf003e8cd158d2f0c166b5a3f0e0a592416998e27893e1c9b09d3f2a6"
     }
-  }
+  },
+  "native_port_revision": "28.11",
+  "verification_tests_passed": 8,
+  "fidelity_corrections": [
+    "Selected final matching expert exactly as original C++ quirk",
+    "Quote phase eligibility computed before minute reset as in source",
+    "Missing intermediate path efficiency is 0, matching source",
+    "Month-boundary tokens reset as in original forward C++"
+  ]
 }
