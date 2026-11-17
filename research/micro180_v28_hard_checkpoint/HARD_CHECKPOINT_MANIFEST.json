@@ -1,0 +1,50 @@
+{
+  "milestone": "MICRO180 V28 positive-cycle entry \u2014 owner-accepted hard checkpoint",
+  "date": "2026-11-17",
+  "approved_scope": "Entry intent architecture accepted. Not live profitability or executable trade/exit certification.",
+  "frozen_coefficients_sha256": "92719ae1edd78c91e63f151da7d2f3607c7d5f42119b07613b8b20a7cce3997b",
+  "original_teacher_positive_cycle_entries_9m": 152464,
+  "original_teacher_positive_cycle_entries_jan_jul": 123426,
+  "aug_sep_forward_targets": 29038,
+  "aug_sep_forward_intents": 33864,
+  "aug_sep_strict_matched": 227,
+  "compile_status": "C++ reference g++ -fsyntax-only passed; native MQL5 MetaEditor unavailable, not compiled",
+  "native_parity_status": "SOURCE-PORT INVARIANTS PASS; quote/ATR/S1/native sequence parity unverified",
+  "safety": "entry-only shadow; no OrderSend/CTrade, stops, exits, lot changes or profit simulation",
+  "github_branch": "carson/micro180-v28-entry-milestone-frozen-20261117",
+  "protected_source_base_sha": "f0cf605cbdcbc23f0e7b66dc68fcbf99aa185c88",
+  "files": {
+    "GoldMuwahahaMiner_MICRO180_V28_FrozenEntry.mq5": {
+      "bytes": 16310,
+      "sha256": "2758eaaa5fcb99bb80a1a0df01a424f4873e3339f77e0bdf4c440070b2e92d4c"
+    },
+    "MICRO180_Jan_through_07_merged_weights.tsv": {
+      "bytes": 1340620,
+      "sha256": "92719ae1edd78c91e63f151da7d2f3607c7d5f42119b07613b8b20a7cce3997b"
+    },
+    "README.md": {
+      "bytes": 7310,
+      "sha256": "6b45f3372493390d203ad1421cb9a56e21e7f9d2dc1066e4ecd3e43e0ba5e23a"
+    },
+    "SOURCE_AND_POLICY_SHA256.json": {
+      "bytes": 1712,
+      "sha256": "e500f1c721f3d7683f19e58116e97fbf5b3da8f1eda9a038d20913692d94dba5"
+    },
+    "forward_test_results.json": {
+      "bytes": 6026,
+      "sha256": "e5f498ddb8c71a8ee135650cb07ba3a049102e565fddcf8683cf341c4b276f6c"
+    },
+    "install_frozen_entry.ps1": {
+      "bytes": 2057,
+      "sha256": "6bc09f84d4fab9f771a3fb849f9edbcec614edfbae7659d23e09121aa90be8b6"
+    },
+    "test_entry_checkpoint.py": {
+      "bytes": 4287,
+      "sha256": "ebfe68b6d17ebb4beb367f333b511a6b6a42adebf58cdb4255362f3ad429fc1e"
+    },
+    "v28_forward_frozen.cpp": {
+      "bytes": 13325,
+      "sha256": "a9e1a54cf003e8cd158d2f0c166b5a3f0e0a592416998e27893e1c9b09d3f2a6"
+    }
+  }
+}
