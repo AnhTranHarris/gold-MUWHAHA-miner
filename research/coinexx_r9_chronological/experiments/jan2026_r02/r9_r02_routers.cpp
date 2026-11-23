@@ -326,4 +326,3 @@ int main(int argc,char**argv){try{
   <<",\"gate_low_atr\":"<<st.gate_low_atr<<",\"gate_s1\":"<<st.gate_s1<<"}\n";
  return 0;
  }catch(const std::exception&ex){std::cerr<<"FATAL: "<<ex.what()<<"\n";return 1;}}
- 
