@@ -14,3 +14,6 @@ See `STAGE6D2_QC.md`: linked bounded intent/core commit protocol, storage optimi
 
 ## Stage 6D.4 continuation
 See `STAGE6D4_QC.md`. Source-derived clock and 21-trade fixture dispatch passed; quote-independent safety and late/partial-fill cases strengthened. Native acceptance, startup rescue, safe cancel retry, complete authoritative event journal rotation and performance remain held.
+
+## Stage 6D5 superseding compile-only release
+See `STAGE6D5_QC.md`. Scoped host corrective engineering complete; eligible for full manual MetaEditor compilation and non-trading offline/observation QC. All 33 native tests NOT_RUN; tester order execution, demo/live remain unauthorized. Coalesced execution divergence and native performance/recovery require explicit certification, not fitted-logic changes.

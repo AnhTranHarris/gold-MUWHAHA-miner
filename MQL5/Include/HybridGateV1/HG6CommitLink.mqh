@@ -20,6 +20,11 @@ class HG6CommitLink {
   if(rescue||sequence!=released+1||sequence!=applied||generation<=min_generation)return false;
   released=sequence;min_generation=generation;return true;
  }
+ // External liquidation has no submitted intent sequence, but its verified
+ // core generation must still advance the durable rollback watermark.
+ bool CommitExternal(long applied,long generation){if(rescue||applied!=released||released<=0||generation<=min_generation)return false;min_generation=generation;return true;}
+ long Released()const{return released;}
+ long MinimumGeneration()const{return min_generation;}
  void Quarantine(){rescue=true;}
  bool Rescue()const{return rescue;}
  bool RescueRelease(long sequence){if(!rescue||sequence!=released+1)return false;released=sequence;return true;}

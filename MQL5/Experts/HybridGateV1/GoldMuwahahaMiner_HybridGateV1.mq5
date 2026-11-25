@@ -88,7 +88,7 @@
 #property tester_file "HG5QC\\086_renewal_gate.hg5p"
 #property tester_file "HG5QC\\087_precision_actor.hg5p"
 #property tester_file "HG5QC\\088_regret_head.hg5p"
-#property version   "2.03"
+#property version   "2.05"
 #property description "Human Approved HybridGate V1 — tester-only integration candidate; demo/live execution locked"
 #include <HybridGateV1/HG6Core.mqh>
 #include <HybridGateV1/HG5FileAdapter.mqh>
@@ -124,6 +124,7 @@ input int InpCheckpointSeconds=15;
 input int InpDeviationPoints=10;
 input group "Execution certification lock"
 input bool InpRequestDemoExecution=false; // demo/live remain hard locked
+input bool InpTesterRescueExisting=false; // explicit rescue-only recovery of same tester intent namespace
 input bool InpRequestTesterExecution=false; // explicit simulated orders only in Strategy Tester
 input long InpExpectedFirstQuoteMs=1767315600480; // exact Jan 2026 source anchor
 input int InpExpectedFirstBidCents=432437;
@@ -136,7 +137,7 @@ HG6Core g_core;HG6Cursor g_cursor;HG6Store g_store;HG6Broker g_broker;HG6Telemet
 HG5Window g_windows[];MqlTick g_raw[HG6_TICK_BATCH];HG5Quote g_group[];
 HG5StageEvent g_stage[];HG5Proposal g_proposals[];HG5PathEvent g_paths[];HG5AccountEvent g_accounts[];
 string g_scope="";int g_lock=INVALID_HANDLE;bool g_initialized=false,g_fatal=false,g_caught_up=false,g_dirty=false,g_overdue=false,g_trade_dirty=true;
-long g_applied_seq=0;
+long g_applied_seq=0,g_external_applied=0;
 ulong g_save_count=0,g_save_total_us=0,g_save_max_us=0,g_save_max_bytes=0,g_pump_max_us=0,g_copy_max_us=0;
 long g_last_flat_ms=-1,g_mailbox=0,g_seen_proposals=0,g_suppressed_proposals=0;ulong g_saved_us=0,g_last_service=0,g_last_copy_us=0;
 bool g_tester=false,g_execute=false,g_origin_verified=false;ulong g_trade_first_us=0;long g_dispatched=0,g_gate_blocked=0;
@@ -149,8 +150,8 @@ bool HG6RunIdValid(string id){int n=StringLen(id);if(n<1||n>32)return false;for(
 // SECTION 03 — snapshot identity, explicit field encoding, verified two-slot recovery.
 // ============================================================================
 bool HG6Save(){
- if(!g_initialized||g_fatal||!g_store.Healthy())return false;ulong begin=GetMicrosecondCount();uchar core[],cursor[],all[];HG5StateCodec c;int version=3;
- if(!g_core.ExportState(core)||!c.BeginWrite()||!c.I32(version)||!g_cursor.Transfer(c)||!c.I64(g_applied_seq)||!c.I64(g_last_flat_ms)||!c.Flag(g_overdue)||!c.Flag(g_origin_verified)||!c.Finish(cursor))return false;
+ if(!g_initialized||g_fatal||!g_store.Healthy())return false;ulong begin=GetMicrosecondCount();uchar core[],cursor[],all[];HG5StateCodec c;int version=4;
+ if(!g_core.ExportState(core)||!c.BeginWrite()||!c.I32(version)||!g_cursor.Transfer(c)||!c.I64(g_applied_seq)||!c.I64(g_external_applied)||!c.I64(g_last_flat_ms)||!c.Flag(g_overdue)||!c.Flag(g_origin_verified)||!c.Finish(cursor))return false;
  int a=ArraySize(cursor),b=ArraySize(core);if(a<=0||b<=0||a+b+16>HG6_MAX_ENVELOPE-96||ArrayResize(all,a+b+16)!=a+b+16)return false;
  HG6Put64(all,0,a);HG6Put64(all,8,b);if(ArrayCopy(all,cursor,16,0,a)!=a||ArrayCopy(all,core,16+a,0,b)!=b||!g_store.Save(all))return false;
  g_saved_us=GetMicrosecondCount();ulong elapsed=g_saved_us-begin;g_save_count++;g_save_total_us+=elapsed;if(elapsed>g_save_max_us)g_save_max_us=elapsed;if((ulong)ArraySize(all)>g_save_max_bytes)g_save_max_bytes=(ulong)ArraySize(all);g_dirty=false;return true;
@@ -158,7 +159,7 @@ bool HG6Save(){
 bool HG6Restore(const uchar &all[]){
  int n=ArraySize(all);if(n<18)return false;long a=HG6Get64(all,0),b=HG6Get64(all,8);if(a<=0||b<=0||a>HG5_STATE_MAX||b>HG5_STATE_MAX||a+b+16!=n)return false;
  uchar cursor[],core[];if(ArrayResize(cursor,(int)a)!=(int)a||ArrayResize(core,(int)b)!=(int)b||ArrayCopy(cursor,all,0,16,(int)a)!=(int)a||ArrayCopy(core,all,0,16+(int)a,(int)b)!=(int)b)return false;
- HG5StateCodec c;int v=0;if(!c.BeginRead(cursor)||!c.I32(v)||v!=3||!g_cursor.Transfer(c)||!c.I64(g_applied_seq)||g_applied_seq<0||!c.I64(g_last_flat_ms)||!c.Flag(g_overdue)||!c.Flag(g_origin_verified)||!c.Done()||!g_core.RestoreState(core))return false;
+ HG5StateCodec c;int v=0;if(!c.BeginRead(cursor)||!c.I32(v)||v!=4||!g_cursor.Transfer(c)||!c.I64(g_applied_seq)||g_applied_seq<0||!c.I64(g_external_applied)||g_external_applied<0||!c.I64(g_last_flat_ms)||!c.Flag(g_overdue)||!c.Flag(g_origin_verified)||!c.Done()||!g_core.RestoreState(core))return false;
  long z[];return g_core.Stats(z)&&z[0]==g_cursor.Ordinal()&&g_core.LastGroup()==(g_cursor.Last()>0?g_cursor.Last():-1);
 }
 // ============================================================================
@@ -198,8 +199,9 @@ bool HG6Reconcile(HG6Exposure &x){
  }
  if(x.pending)return false;
  if(x.ticket){if(g_core.ActualState()==0||g_core.ActualId()!=(long)x.identifier||g_core.ActualSide()!=x.side||g_core.ActualMs()!=x.time_ms||g_core.ActualUnits()!=x.units||(g_core.ActualState()!=3&&(!x.anchor_ok||g_core.ActualPx()!=x.price_cents)))return false;}
- else if(g_core.ActualState()!=0){long pos=g_core.ActualId();if(!g_broker.ExternalFlat(pos)||!HG6RecordFlat(pos)||!HG6Save()){g_ops.Disarm();return false;}}
- else if(g_broker.ActiveLedgerPosition()!=0){g_ops.Disarm();return false;}
+ else if(g_core.ActualState()!=0){long pos=g_core.ActualId();if(!g_broker.ExternalFlat(pos)||!HG6RecordFlat(pos)){g_ops.Disarm();return false;}g_external_applied=pos;if(!HG6Save()){HG6Fault("external flat checkpoint failed");return false;}}
+ if(g_broker.ExternalPending()!=0){long pos=g_broker.ExternalPending();if(x.ticket||x.pending||g_core.ActualState()!=0||g_external_applied!=pos||!g_broker.ReleaseExternal(pos,g_applied_seq,g_store.Generation())){HG6Fault("external flat commit mismatch");return false;}}
+ else if(!x.ticket&&g_broker.ActiveLedgerPosition()!=0){g_ops.Disarm();return false;}
  if(!x.ticket&&!x.pending&&g_overdue){g_overdue=false;g_dirty=true;if(!HG6Save()){HG6Fault("flat-state persistence failed");return false;}}
  g_trade_dirty=false;g_mailbox=0;g_trade_first_us=0;return g_broker.Ready();
 }
@@ -237,11 +239,12 @@ bool HG6MaybeClose(const HG6Exposure &x,const MqlTick &latest,int clock_action,b
 void HG6RiskOnly(){
  HG6Exposure x;MqlTick t;HG5Quote q;if(!HG6ExposureRead(_Symbol,InpMagic,x)||x.foreign||x.ambiguous)return;
  if(!g_execute||!InpEmergencyCloseAuthorized||!g_broker.EnterRescue())return;
- if(!x.ticket&&!x.pending&&!g_broker.Outstanding()&&g_broker.ActiveLedgerPosition()==0)return;
+ if(!x.ticket&&!x.pending&&!g_broker.Outstanding()&&g_broker.ActiveLedgerPosition()==0&&g_broker.ExternalPending()==0)return;
  Comment("HG6 QUARANTINE: owned exposure detected; entries disabled");
  if(g_broker.Outstanding()){bool resolved=g_broker.Reconcile(x)&&g_broker.Resolved();if(x.pending){g_broker.CancelPending(x);return;}if(!resolved||!g_broker.ReleaseRescue())return;}
  if(x.pending)return;
  if(!x.ticket&&g_broker.ActiveLedgerPosition()!=0){g_broker.ExternalFlat(g_broker.ActiveLedgerPosition());return;}
+ if(!x.ticket&&g_broker.ExternalPending()!=0){g_broker.ReleaseExternalRescue();return;}
  datetime server=TimeTradeServer();
  if(x.ticket&&g_broker.Ready()&&g_broker.ActiveLedgerPosition()==(long)x.identifier&&SymbolInfoTick(_Symbol,t)&&HG6Normalize(t,q)&&HG6TradeSession(_Symbol,server)&&server>0&&(long)server*1000-t.time_msc<=InpMaxQuoteAgeMs)g_broker.Submit(2,(long)x.identifier,-x.side,x.units,t,x,(ulong)InpDeviationPoints);
 }
@@ -323,6 +326,7 @@ int OnInit(){
  if(StringFind(_Symbol,"XAUUSD")<0||!HG6BrokerSpec(_Symbol)){Print("HG6: incompatible XAUUSD/account grid/contract/currency");return INIT_FAILED;}
  g_tester=MQLInfoInteger(MQL_TESTER)!=0;g_execute=InpRequestTesterExecution&&g_tester&&HG6_TESTER_EXECUTION_ENABLED==1;
  if(InpRequestTesterExecution&&!g_execute)return INIT_PARAMETERS_INCORRECT;
+ if(InpTesterRescueExisting&&!g_execute)return INIT_PARAMETERS_INCORRECT;
  if(g_execute&&(!InpEmergencyCloseAuthorized||!InpClockMappingConfirmed||InpSourceUtcOffsetMinutes!=0||InpExpectedFirstQuoteMs<=0||InpExpectedFirstBidCents<=0||InpExpectedFirstAskCents<InpExpectedFirstBidCents))return INIT_PARAMETERS_INCORRECT;
  if(!HG6Windows(InpWeeklyClock,InpSourceUtcOffsetMinutes,g_windows)||!g_cursor.Init((long)InpHistoryStart*1000))return INIT_FAILED;
  uchar id[],lock_id[];string scope=AccountInfoString(ACCOUNT_SERVER)+"|"+IntegerToString(AccountInfoInteger(ACCOUNT_LOGIN))+"|"+_Symbol+"|"+IntegerToString((long)InpMagic);
@@ -331,16 +335,29 @@ int OnInit(){
  // It does not claim cross-machine mutual exclusion; broker ownership checks remain mandatory.
  if(!g_tester){g_lock=FileOpen("HybridGateV1_"+HG6Hex(lock_id)+".lock",FILE_READ|FILE_WRITE|FILE_BIN|FILE_COMMON);if(g_lock==INVALID_HANDLE){Print("HG6: instance lock unavailable");return INIT_FAILED;}}
  string config=scope+"|"+IntegerToString(InpExpectedFirstQuoteMs)+"|"+IntegerToString(InpExpectedFirstBidCents)+"|"+IntegerToString(InpExpectedFirstAskCents)+"|"+HG6_BUILD_ID+"|"+InpRunId+"|"+IntegerToString((long)InpHistoryStart)+"|"+IntegerToString(InpSourceUtcOffsetMinutes)+"|"+IntegerToString((int)InpClockMappingConfirmed)+"|"+IntegerToString((int)InpWeeklyClock)+"|"+IntegerToString((int)InpUseTradingClock)+"|"+IntegerToString((int)InpLotLadder)+"|"+IntegerToString(InpLadderCapUnits)+"|"+IntegerToString(InpQuoteCapacity)+"|"+IntegerToString((int)g_tester)+"|"+IntegerToString((int)g_execute)+"|"+IntegerToString(InpMaxGroupsPerPump)+"|"+IntegerToString(InpTimerMilliseconds)+"|"+IntegerToString(InpMaxQuoteAgeMs)+"|"+IntegerToString(InpMaxServiceUs)+"|"+IntegerToString(InpCheckpointSeconds)+"|"+IntegerToString(InpDeviationPoints)+"|"+IntegerToString((int)InpEmergencyCloseAuthorized);
- if(g_tester&&(FileIsExist(g_scope+"_state.genesis")||FileIsExist(g_scope+"_state.0.bin")||FileIsExist(g_scope+"_state.1.bin")||FileIsExist(g_scope+"_intent.genesis")||FileIsExist(g_scope+"_intent.0.bin")||FileIsExist(g_scope+"_intent.1.bin")))return INIT_FAILED;
+ // SECTION 07A — independent ownership recovery. Normal tester runs remain fresh.
+ // Explicit rescue-only mode loads existing ownership before ANY model/checkpoint.
+ string intent_scope=g_tester?g_scope:"HybridGateV1_"+HG6Hex(lock_id)+"_OBS_OWNERSHIP";uchar intent_id[];
+ if(!HG6TextDigest(intent_scope+"|HG6D_INTENT_V6",intent_id))return INIT_FAILED;
+ bool existing=FileIsExist(intent_scope+"_intent.genesis")||FileIsExist(intent_scope+"_intent.0.bin")||FileIsExist(intent_scope+"_intent.1.bin");
+ if(InpTesterRescueExisting){
+  if(!existing||!FileIsExist(intent_scope+"_intent.genesis")||!g_broker.Init(_Symbol,InpMagic,intent_scope+"_intent",intent_id,g_execute)||!g_broker.IntegrityHealthy())return INIT_FAILED;
+  HG6Exposure owned;if(!HG6ExposureRead(_Symbol,InpMagic,owned)||owned.foreign||owned.ambiguous)return INIT_FAILED;
+  if(owned.ticket&&!g_broker.Outstanding()&&g_broker.ActiveLedgerPosition()!=(long)owned.identifier)return INIT_FAILED;
+  if(owned.pending&&!g_broker.Outstanding())return INIT_FAILED;
+  if(!g_broker.EnterRescue())return INIT_FAILED;
+  g_fatal=true;g_initialized=true;if(!EventSetMillisecondTimer(InpTimerMilliseconds)){g_initialized=false;return INIT_FAILED;}
+  Print("HG6: explicit tester rescue only; no models, no new entries");return INIT_SUCCEEDED;
+ }
+ if(g_tester&&(existing||FileIsExist(g_scope+"_state.genesis")||FileIsExist(g_scope+"_state.0.bin")||FileIsExist(g_scope+"_state.1.bin")))return INIT_FAILED;
  if(!HG6TextDigest(config,id)||!g_store.Init(g_scope+"_state",id)||!g_log.Open(g_scope+"_events"))return INIT_FAILED;
- // Reconcile actual account even before the model files load; no order can be sent.
- HG6Exposure x;if(!HG6ExposureRead(_Symbol,InpMagic,x))return INIT_FAILED;if(x.ticket||x.pending||x.foreign||x.ambiguous)Print("HG6 startup exposure requires reconciliation; no new orders");
+ HG6Exposure x;if(!HG6ExposureRead(_Symbol,InpMagic,x))return INIT_FAILED;
+ if(x.ticket||x.pending||x.foreign||x.ambiguous){Print("HG6 startup exposure requires reconciliation; no new orders");if(g_tester)return INIT_FAILED;}
  if(ArraySize(HG_ID)!=88||ArraySize(HG_MODEL_SHA)!=88)return INIT_FAILED;
  uchar bytes[];for(int i=0;i<88;i++){if(IsStopped()||!HG5ReadVerified("HG5QC\\"+HG_ID[i]+".hg5p",HG_MODEL_SHA[i],67108864,bytes)||!g_core.Load(i,bytes)){PrintFormat("HG6: model %d integrity/shape failure %s",i,HG_ID[i]);return INIT_FAILED;}ArrayFree(bytes);}
  if(!g_core.Start(g_windows,InpQuoteCapacity))return INIT_FAILED;
  int loaded=g_store.Load(bytes);if(g_tester&&loaded!=0){Print("HG6: tester run ID already used or corrupt; choose fresh run ID");return INIT_FAILED;}if(loaded<0||(loaded>0&&!HG6Restore(bytes))||!g_store.Healthy()){Print("HG6: checkpoint corrupt, ambiguous or incompatible; preserve files and reconcile manually");return INIT_FAILED;}
- ArrayFree(bytes);uchar intent_id[];string intent_scope=g_tester?g_scope:"HybridGateV1_"+HG6Hex(lock_id)+"_OBS_OWNERSHIP";if(!HG6TextDigest(intent_scope+"|HG6D_INTENT_V4",intent_id))return INIT_FAILED;
- if(g_tester&&(FileIsExist(intent_scope+"_intent.genesis")||FileIsExist(intent_scope+"_intent.0.bin")||FileIsExist(intent_scope+"_intent.1.bin")))return INIT_FAILED;
+ ArrayFree(bytes);
  if(!g_broker.Init(_Symbol,InpMagic,intent_scope+"_intent",intent_id,g_execute))return INIT_FAILED;
  if(!g_broker.CheckLink(g_applied_seq,g_store.Generation())){Print("HG6: core/intent generation mismatch or rescue quarantine");return INIT_FAILED;}
  HG5OpsLimits lim;lim.max_quote_age_ms=InpMaxQuoteAgeMs;lim.max_queue_us=InpMaxServiceUs;lim.max_service_us=InpMaxServiceUs;lim.max_trade_lag_ms=InpMaxQuoteAgeMs;lim.max_queue=HG6_TICK_BATCH;lim.max_active=1;lim.max_mailbox=1024;if(!g_ops.Init(lim))return INIT_FAILED;

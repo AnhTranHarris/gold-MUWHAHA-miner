@@ -2,6 +2,7 @@
 #define HG6_BROKER_MQH
 #include "HG6Storage.mqh"
 #include "HG6CommitLink.mqh"
+#include "HG6Journal.mqh"
 #include "HG6Feed.mqh"
 #include "HG5OperationalGate.mqh"
 // SECTION B1: actual broker facts. No modeled trade is ever booked as a real fill.
@@ -53,26 +54,35 @@ struct HG6ActualLedger {
 };
 // SECTION B2: persistent one-attempt order intent; strict FOK candidate until other fill modes certified.
 // Unknown/partial outcomes stay locked. Terminal receipt or bool return never means filled.
-struct HG6TradeIntent {long seq,proposal,created_ms,position_id,order_id,deal_id;int kind,side,units,state,filled_units,retcode;bool cancel_attempt;};
+struct HG6TradeIntent {long seq,proposal,created_ms,position_id,order_id,deal_id;int kind,side,units,state,filled_units,retcode;int cancel_attempts,cancel_retcode;long cancel_ms;};
 class HG6Broker {
- string sym;ulong magic;HG6Store store;HG6TradeIntent intent;HG6ActualLedger ledger;HG6CommitLink link;HG5StateCodec encode_scratch;bool ready,fault,authorized;long sequence;
- bool Encode(uchar &out[]){int version=4;if(!encode_scratch.BeginWrite()||!encode_scratch.I32(version)||!encode_scratch.I64(sequence)||!encode_scratch.I64(intent.seq)||!encode_scratch.I64(intent.proposal)||!encode_scratch.I64(intent.created_ms)||!encode_scratch.I64(intent.position_id)||!encode_scratch.I64(intent.order_id)||!encode_scratch.I64(intent.deal_id)||!encode_scratch.I32(intent.kind)||!encode_scratch.I32(intent.side)||!encode_scratch.I32(intent.units)||!encode_scratch.I32(intent.state)||!encode_scratch.I32(intent.filled_units)||!encode_scratch.I32(intent.retcode)||!encode_scratch.Flag(intent.cancel_attempt)||!ledger.StateFields(encode_scratch)||!link.StateFields(encode_scratch))return false;return encode_scratch.Finish(out);}
- bool Decode(const uchar &in[]){HG5StateCodec c;int version=0;if(!c.BeginRead(in)||!c.I32(version)||version!=4||!c.I64(sequence)||!c.I64(intent.seq)||!c.I64(intent.proposal)||!c.I64(intent.created_ms)||!c.I64(intent.position_id)||!c.I64(intent.order_id)||!c.I64(intent.deal_id)||!c.I32(intent.kind)||!c.I32(intent.side)||!c.I32(intent.units)||!c.I32(intent.state)||!c.I32(intent.filled_units)||!c.I32(intent.retcode)||!c.Flag(intent.cancel_attempt)||!ledger.StateFields(c)||!link.StateFields(c)||!c.Done())return false;return sequence>=0&&intent.seq>=0&&intent.seq<=sequence&&intent.state>=0&&intent.state<=HG5_INTENT_FROZEN&&intent.filled_units>=0&&intent.filled_units<=intent.units&&(!intent.state||(intent.seq==sequence&&intent.units>0&&(intent.kind==1||intent.kind==2)&&(intent.side==1||intent.side==-1)&&intent.created_ms>0));}
+ string sym;ulong magic;HG6Store store;HG6TradeIntent intent;HG6ActualLedger ledger;HG6CommitLink link;HG6Journal journal;HG5StateCodec encode_scratch;bool ready,fault,authorized;long sequence,external_pending;
+ bool Encode(uchar &out[]){int version=6;if(!encode_scratch.BeginWrite()||!encode_scratch.I32(version)||!encode_scratch.I64(sequence)||!encode_scratch.I64(external_pending)||!encode_scratch.I64(intent.seq)||!encode_scratch.I64(intent.proposal)||!encode_scratch.I64(intent.created_ms)||!encode_scratch.I64(intent.position_id)||!encode_scratch.I64(intent.order_id)||!encode_scratch.I64(intent.deal_id)||!encode_scratch.I32(intent.kind)||!encode_scratch.I32(intent.side)||!encode_scratch.I32(intent.units)||!encode_scratch.I32(intent.state)||!encode_scratch.I32(intent.filled_units)||!encode_scratch.I32(intent.retcode)||!encode_scratch.I32(intent.cancel_attempts)||!encode_scratch.I32(intent.cancel_retcode)||!encode_scratch.I64(intent.cancel_ms)||!ledger.StateFields(encode_scratch)||!link.StateFields(encode_scratch)||!journal.StateFields(encode_scratch))return false;return encode_scratch.Finish(out);}
+ bool Decode(const uchar &in[]){HG5StateCodec c;int version=0;if(!c.BeginRead(in)||!c.I32(version)||version!=6||!c.I64(sequence)||!c.I64(external_pending)||!c.I64(intent.seq)||!c.I64(intent.proposal)||!c.I64(intent.created_ms)||!c.I64(intent.position_id)||!c.I64(intent.order_id)||!c.I64(intent.deal_id)||!c.I32(intent.kind)||!c.I32(intent.side)||!c.I32(intent.units)||!c.I32(intent.state)||!c.I32(intent.filled_units)||!c.I32(intent.retcode)||!c.I32(intent.cancel_attempts)||!c.I32(intent.cancel_retcode)||!c.I64(intent.cancel_ms)||!ledger.StateFields(c)||!link.StateFields(c)||!journal.StateFields(c)||!c.Done())return false;return journal.LastSequence()==sequence&&journal.Matches(link.Released(),link.MinimumGeneration(),link.Rescue())&&external_pending>=0&&(external_pending==0||(!intent.state&&ledger.position==0&&ledger.last_closed==external_pending))&&intent.cancel_attempts>=0&&intent.cancel_attempts<=3&&intent.cancel_ms>=0&&(intent.cancel_attempts==0?(intent.cancel_retcode==0&&intent.cancel_ms==0):intent.cancel_ms>0)&&sequence>=0&&intent.seq>=0&&intent.seq<=sequence&&intent.state>=0&&intent.state<=HG5_INTENT_FROZEN&&intent.filled_units>=0&&intent.filled_units<=intent.units&&(!intent.state||(intent.seq==sequence&&intent.units>0&&(intent.kind==1||intent.kind==2)&&(intent.side==1||intent.side==-1)&&intent.created_ms>0));}
+ // J3: record facts at the transition, before the same generation is persisted.
+ bool JournalIntent(int event,long generation=0){HG6JournalRow r={};r.type=event;r.sequence=sequence;r.proposal=intent.proposal;r.ms=intent.created_ms;r.order=intent.order_id;r.deal=intent.deal_id;r.position=intent.position_id;r.generation=generation;r.action=intent.kind;r.side=intent.side;r.units=intent.filled_units;r.retcode=intent.retcode;if(event==HG6_J_INTENT)r.units=intent.units;if(event==HG6_J_CANCEL||event==HG6_J_CANCEL_ACK){r.ms=intent.cancel_ms;r.retcode=intent.cancel_retcode;r.units=intent.cancel_attempts;}if(!journal.Append(r)){fault=true;return false;}return true;}
+ bool JournalDeals(const long &seen[]){for(int i=0;i<ArraySize(seen);i++){ulong d=(ulong)seen[i];HG6JournalRow r={};r.type=HG6_J_DEAL;r.sequence=sequence;r.proposal=intent.proposal;r.ms=HistoryDealGetInteger(d,DEAL_TIME_MSC);r.order=HistoryDealGetInteger(d,DEAL_ORDER);r.deal=seen[i];r.position=HistoryDealGetInteger(d,DEAL_POSITION_ID);long e=HistoryDealGetInteger(d,DEAL_ENTRY),t=HistoryDealGetInteger(d,DEAL_TYPE);if((e!=DEAL_ENTRY_IN&&e!=DEAL_ENTRY_OUT)||(t!=DEAL_TYPE_BUY&&t!=DEAL_TYPE_SELL)){fault=true;return false;}r.action=e==DEAL_ENTRY_IN?1:2;r.side=t==DEAL_TYPE_BUY?1:-1;r.volume=HistoryDealGetDouble(d,DEAL_VOLUME);r.price=HistoryDealGetDouble(d,DEAL_PRICE);r.profit=HistoryDealGetDouble(d,DEAL_PROFIT);r.commission=HistoryDealGetDouble(d,DEAL_COMMISSION);r.swap=HistoryDealGetDouble(d,DEAL_SWAP);r.fee=HistoryDealGetDouble(d,DEAL_FEE);if(!journal.Deal(r)){fault=true;return false;}}return true;}
  bool Persist(){uchar b[];if(!Encode(b)||!store.Save(b)){fault=true;return false;}return true;}
- void ResetIntent(){intent.seq=sequence;intent.proposal=-1;intent.created_ms=intent.position_id=intent.order_id=intent.deal_id=0;intent.kind=intent.side=intent.units=intent.state=intent.filled_units=intent.retcode=0;intent.cancel_attempt=false;}
+ void ResetIntent(){intent.seq=sequence;intent.proposal=-1;intent.created_ms=intent.position_id=intent.order_id=intent.deal_id=0;intent.kind=intent.side=intent.units=intent.state=intent.filled_units=intent.retcode=0;intent.cancel_attempts=intent.cancel_retcode=0;intent.cancel_ms=0;}
  public:
- HG6Broker(){ready=fault=authorized=false;sequence=0;ledger.Reset();ResetIntent();}
+ HG6Broker(){ready=fault=authorized=false;sequence=external_pending=0;ledger.Reset();ResetIntent();}
  bool Init(string symbol,ulong mg,string path,const uchar &identity[],bool permit){
   if(ready||mg==0)return false;sym=symbol;magic=mg;authorized=permit&&HG6_TESTER_EXECUTION_ENABLED==1&&MQLInfoInteger(MQL_TESTER)!=0;
   if(!store.Init(path,identity))return false;uchar b[];int load=store.Load(b);if(load<0||(load>0&&!Decode(b)))return false;
   if(load==0&&!Persist())return false;if(!store.Healthy()||intent.state==HG5_INTENT_FROZEN)fault=true;
   ready=true;return true;
  }
- bool Ready()const{return ready&&!fault&&store.Healthy()&&!Outstanding();}
+ bool Ready()const{return ready&&!fault&&store.Healthy()&&!Outstanding()&&external_pending==0;}
  bool CheckLink(long applied,long generation)const{return ready&&!fault&&link.Check(sequence,Outstanding(),Resolved(),applied,generation);}
  long Sequence()const{return sequence;}
+ long ExternalPending()const{return external_pending;}
+ long JournalLast()const{return journal.Last();}
+ int JournalCurrent()const{return journal.CurrentCount();}
+ int JournalPrevious()const{return journal.PreviousCount();}
+ long JournalDropped()const{return journal.Dropped();}
+ bool JournalRead(long number,HG6JournalRow &row)const{return journal.Read(number,row);}
  bool RescueMode()const{return link.Rescue();}
- bool EnterRescue(){if(!ready||fault)return false;if(link.Rescue())return true;link.Quarantine();return Persist();}
+ bool EnterRescue(){if(!ready||fault)return false;if(link.Rescue())return true;link.Quarantine();return JournalIntent(HG6_J_RESCUE)&&Persist();}
  bool IntegrityHealthy()const{return ready&&!fault&&store.Healthy();}
  bool Outstanding()const{return intent.state!=0;}
  long Proposal()const{return intent.proposal;}
@@ -91,7 +101,7 @@ class HG6Broker {
    long tm=HistoryOrderGetInteger(t,ORDER_TIME_SETUP_MSC),type=HistoryOrderGetInteger(t,ORDER_TYPE);if(tm<intent.created_ms-1000||tm>(long)TimeCurrent()*1000+1000||(intent.kind==2&&HistoryOrderGetInteger(t,ORDER_POSITION_ID)!=intent.position_id)||type!=(intent.side>0?ORDER_TYPE_BUY:ORDER_TYPE_SELL))continue;if(match&&match!=(long)t){fault=true;return false;}match=(long)t;}
   for(int i=0;i<OrdersTotal();i++){ulong t=OrderGetTicket(i);if(!t||!OrderSelect(t))return false;if(OrderGetString(ORDER_SYMBOL)!=sym||(ulong)OrderGetInteger(ORDER_MAGIC)!=magic||OrderGetString(ORDER_COMMENT)!=comment)continue;
    if(OrderGetInteger(ORDER_TIME_SETUP_MSC)<intent.created_ms-1000||OrderGetInteger(ORDER_TIME_SETUP_MSC)>(long)TimeCurrent()*1000+1000||(intent.kind==2&&OrderGetInteger(ORDER_POSITION_ID)!=intent.position_id)||OrderGetInteger(ORDER_TYPE)!=(intent.side>0?ORDER_TYPE_BUY:ORDER_TYPE_SELL))continue;if(match&&match!=(long)t){fault=true;return false;}match=(long)t;}
-  if(!match)return false;intent.order_id=match;return Persist();
+  if(!match)return false;intent.order_id=match;return JournalIntent(HG6_J_CORRELATE)&&Persist();
  }
  bool ExplicitRejection()const{return intent.retcode==TRADE_RETCODE_REQUOTE||intent.retcode==TRADE_RETCODE_PRICE_CHANGED||intent.retcode==TRADE_RETCODE_PRICE_OFF||intent.retcode==TRADE_RETCODE_REJECT||intent.retcode==TRADE_RETCODE_INVALID||intent.retcode==TRADE_RETCODE_INVALID_VOLUME||intent.retcode==TRADE_RETCODE_INVALID_PRICE||intent.retcode==TRADE_RETCODE_TRADE_DISABLED||intent.retcode==TRADE_RETCODE_MARKET_CLOSED||intent.retcode==TRADE_RETCODE_NO_MONEY||intent.retcode==TRADE_RETCODE_INVALID_FILL;}
  bool Reconcile(const HG6Exposure &x){
@@ -101,7 +111,7 @@ class HG6Broker {
   if(intent.retcode==HG6_LOCAL_NOT_SENT)return intent.state==HG5_INTENT_REJECTED&&intent.filled_units==0&&intent.order_id==0&&intent.deal_id==0&&!x.pending&&((intent.kind==1&&!x.ticket)||(intent.kind==2&&(!x.ticket||(x.identifier==(ulong)intent.position_id&&x.units==intent.units&&x.side==-intent.side))));
   if(!HistorySelect((datetime)(intent.created_ms/1000-60),TimeCurrent()+60))return false;
   if(!CorrelateOrder()){
-   if(!fault&&intent.filled_units==0&&intent.deal_id==0&&ExplicitRejection()&&!x.pending&&((intent.kind==1&&x.ticket==0)||(intent.kind==2&&x.identifier==(ulong)intent.position_id&&x.units==intent.units))){intent.state=HG5_INTENT_REJECTED;return Persist();}return false;}
+   if(!fault&&intent.filled_units==0&&intent.deal_id==0&&ExplicitRejection()&&!x.pending&&((intent.kind==1&&x.ticket==0)||(intent.kind==2&&x.identifier==(ulong)intent.position_id&&x.units==intent.units))){if(intent.state==HG5_INTENT_REJECTED)return true;intent.state=HG5_INTENT_REJECTED;return JournalIntent(HG6_J_RESOLVE)&&Persist();}return false;}
   double total=0,weighted=0;long pos_id=0,first_ms=0;long seen[];int n=HistoryDealsTotal();if(n<0||n>100000)return false;
   for(int i=0;i<n;i++){ulong d=HistoryDealGetTicket(i);if(!d)return false;if(HistoryDealGetInteger(d,DEAL_ORDER)!=intent.order_id)continue;
    bool duplicate=false;for(int k=0;k<ArraySize(seen);k++)if(seen[k]==(long)d)duplicate=true;if(duplicate)continue;
@@ -115,45 +125,61 @@ class HG6Broker {
   int units=0;if(total>0&&!HG6VolumeUnits(total,units)){fault=true;return false;}if(units>intent.units||units<intent.filled_units){fault=true;return false;}
   // Read order terminal state only AFTER enumerating deals; pending order may still grow.
   bool terminal=false;if(HistoryOrderSelect((ulong)intent.order_id)){long st=HistoryOrderGetInteger((ulong)intent.order_id,ORDER_STATE);terminal=st==ORDER_STATE_FILLED||st==ORDER_STATE_REJECTED||st==ORDER_STATE_CANCELED||st==ORDER_STATE_EXPIRED;}
-  if(x.pending||(!terminal&&units<intent.units)){if(units>0&&(intent.state!=HG5_INTENT_PARTIAL||units!=intent.filled_units)){intent.state=HG5_INTENT_PARTIAL;intent.filled_units=units;if(!Persist())return false;}return false;}
-  if(units==0){if(terminal&&((intent.kind==1&&x.ticket==0)||(intent.kind==2&&x.identifier==(ulong)intent.position_id&&x.units==intent.units))){intent.state=HG5_INTENT_REJECTED;return Persist();}return false;}
+  if(x.pending||(!terminal&&units<intent.units)){long last=journal.Last();if(!JournalDeals(seen))return false;if(units>0&&(intent.state!=HG5_INTENT_PARTIAL||units!=intent.filled_units)){intent.state=HG5_INTENT_PARTIAL;intent.filled_units=units;if(!JournalIntent(HG6_J_PARTIAL)||!Persist())return false;}else if(journal.Last()!=last&&!Persist())return false;return false;}
+  if(units==0){if(terminal&&((intent.kind==1&&x.ticket==0)||(intent.kind==2&&x.identifier==(ulong)intent.position_id&&x.units==intent.units))){if(intent.state==HG5_INTENT_REJECTED)return true;intent.state=HG5_INTENT_REJECTED;return JournalIntent(HG6_J_RESOLVE)&&Persist();}return false;}
   if(intent.kind==1){if(x.ticket==0||x.identifier!=(ulong)pos_id||x.time_ms!=first_ms||x.side!=intent.side||x.units!=units||MathAbs(weighted/total-x.price)>1e-7)return false;}
   if(intent.kind==2){int remaining=intent.units-units;if((remaining==0&&x.ticket!=0)||(remaining>0&&(x.ticket==0||x.identifier!=(ulong)intent.position_id||x.units!=remaining||x.side!=-intent.side)))return false;}
   // Reconcile all unique matching deals and costs; repeat scans are idempotent.
   // A final close moves the position ledger to realized totals exactly once.
-  if(intent.state==HG5_INTENT_FILLED){if(units!=intent.filled_units)return false;if(ledger.position==pos_id){for(int i=0;i<ArraySize(seen);i++){ulong d=(ulong)seen[i];if(!ledger.Apply(pos_id,seen[i],HistoryDealGetDouble(d,DEAL_PROFIT),HistoryDealGetDouble(d,DEAL_COMMISSION),HistoryDealGetDouble(d,DEAL_SWAP),HistoryDealGetDouble(d,DEAL_FEE))){fault=true;return false;}}}return true;}
+  if(intent.state==HG5_INTENT_FILLED){if(units!=intent.filled_units)return false;long last=journal.Last();if(!JournalDeals(seen)||journal.Last()!=last){fault=true;return false;}if(ledger.position==pos_id){for(int i=0;i<ArraySize(seen);i++){ulong d=(ulong)seen[i];if(!ledger.Apply(pos_id,seen[i],HistoryDealGetDouble(d,DEAL_PROFIT),HistoryDealGetDouble(d,DEAL_COMMISSION),HistoryDealGetDouble(d,DEAL_SWAP),HistoryDealGetDouble(d,DEAL_FEE))){fault=true;return false;}}}return true;}
+  if(!JournalDeals(seen))return false;
   for(int i=0;i<ArraySize(seen);i++){ulong d=(ulong)seen[i];if(!ledger.Apply(pos_id,seen[i],HistoryDealGetDouble(d,DEAL_PROFIT),HistoryDealGetDouble(d,DEAL_COMMISSION),HistoryDealGetDouble(d,DEAL_SWAP),HistoryDealGetDouble(d,DEAL_FEE))){fault=true;return false;}}
   if(intent.kind==2&&units==intent.units&&!ledger.Flat(pos_id)){fault=true;return false;}
-  intent.filled_units=units;intent.state=HG5_INTENT_FILLED;return Persist();
+  intent.filled_units=units;intent.state=HG5_INTENT_FILLED;return JournalIntent(HG6_J_RESOLVE)&&Persist();
  }
- // Cancellation applies only to the known, owned order and is attempted once durably.
+ // SECTION B3A: bounded cancellation retries. Only a durable definitive negative
+ // response plus fresh matching active-order evidence permits a subsequent attempt.
+ // UNKNOWN (including crash before receipt), DONE, timeout and exhaustion stay locked.
  bool CancelPending(const HG6Exposure &x){
-  if(!authorized||!MQLInfoInteger(MQL_TESTER)||!ready||fault||!Outstanding()||!x.pending||x.foreign||x.ambiguous||intent.order_id<=0||x.pending_ticket!=(ulong)intent.order_id||intent.cancel_attempt)return false;
-  HG6Exposure fresh;if(!HG6ExposureRead(sym,magic,fresh)||fresh.foreign||fresh.ambiguous||!fresh.pending||fresh.pending_ticket!=x.pending_ticket)return false;
-  intent.cancel_attempt=true;if(!Persist())return false;MqlTradeRequest req={};MqlTradeResult result={};req.action=TRADE_ACTION_REMOVE;req.order=x.pending_ticket;req.symbol=sym;req.magic=magic;return OrderSend(req,result);
+  if(!authorized||!MQLInfoInteger(MQL_TESTER)||!ready||fault||!Outstanding()||!x.pending||x.foreign||x.ambiguous||intent.order_id<=0||x.pending_ticket!=(ulong)intent.order_id||intent.cancel_attempts>=3)return false;
+  if(!TerminalInfoInteger(TERMINAL_CONNECTED)||!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)||!MQLInfoInteger(MQL_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_EXPERT))return false;
+  datetime server=TimeTradeServer();if(server<=0)return false;long now=(long)server*1000;
+  if(intent.cancel_attempts>0&&(intent.cancel_retcode!=TRADE_RETCODE_REJECT||now-intent.cancel_ms<1000))return false;
+  if(!HistorySelect((datetime)(intent.created_ms/1000-60),TimeCurrent()+60)||HistoryOrderSelect((ulong)intent.order_id))return false;
+  HG6Exposure fresh;if(!HG6ExposureRead(sym,magic,fresh)||fresh.foreign||fresh.ambiguous||!fresh.pending||fresh.pending_ticket!=x.pending_ticket||!OrderSelect(x.pending_ticket)||OrderGetString(ORDER_SYMBOL)!=sym||(ulong)OrderGetInteger(ORDER_MAGIC)!=magic||OrderGetInteger(ORDER_TYPE)!=(intent.side>0?ORDER_TYPE_BUY:ORDER_TYPE_SELL))return false;
+  intent.cancel_attempts++;intent.cancel_retcode=0;intent.cancel_ms=now;if(!JournalIntent(HG6_J_CANCEL)||!Persist())return false;
+  // Recheck the exact active ticket after the durable write; never substitute another order.
+  if(!OrderSelect(x.pending_ticket)||OrderGetString(ORDER_SYMBOL)!=sym||(ulong)OrderGetInteger(ORDER_MAGIC)!=magic)return false;
+  MqlTradeRequest req={};MqlTradeResult result={};req.action=TRADE_ACTION_REMOVE;req.order=x.pending_ticket;req.symbol=sym;req.magic=magic;
+  bool sent=OrderSend(req,result);intent.cancel_retcode=(int)result.retcode;if(!JournalIntent(HG6_J_CANCEL_ACK)||!Persist())return false;return sent;
  }
  // Unexpected broker-side liquidation: verify complete position history before booking flat.
  bool ExternalFlat(long pos){
   if(!ready||fault||Outstanding()||pos<=0||!HistorySelectByPosition((ulong)pos))return false;
-  if(ledger.last_closed==pos&&ledger.position==0)return true;if(ledger.position!=pos)return false;
+  if(ledger.last_closed==pos&&ledger.position==0)return true;if(external_pending!=0||ledger.position!=pos)return false;
   double in_vol=0,out_vol=0;long seen[];int n=HistoryDealsTotal();if(n<1||n>HG6_MAX_POSITION_DEALS)return false;
   for(int i=0;i<n;i++){ulong d=HistoryDealGetTicket(i);if(!d)return false;bool dup=false;for(int k=0;k<ArraySize(seen);k++)if(seen[k]==(long)d)dup=true;if(dup)continue;int j=ArraySize(seen);if(ArrayResize(seen,j+1)!=j+1)return false;seen[j]=(long)d;
    if(HistoryDealGetInteger(d,DEAL_POSITION_ID)!=pos||HistoryDealGetString(d,DEAL_SYMBOL)!=sym)return false;
    long e=HistoryDealGetInteger(d,DEAL_ENTRY);double v=HistoryDealGetDouble(d,DEAL_VOLUME);if(!MathIsValidNumber(v)||v<=0)return false;if(e==DEAL_ENTRY_IN){if((ulong)HistoryDealGetInteger(d,DEAL_MAGIC)!=magic)return false;in_vol+=v;}else if(e==DEAL_ENTRY_OUT)out_vol+=v;else return false;
   }
   if(in_vol<=0||MathAbs(in_vol-out_vol)>1e-7)return false;
+  if(!JournalDeals(seen))return false;
   for(int i=0;i<ArraySize(seen);i++){ulong d=(ulong)seen[i];if(!ledger.Apply(pos,seen[i],HistoryDealGetDouble(d,DEAL_PROFIT),HistoryDealGetDouble(d,DEAL_COMMISSION),HistoryDealGetDouble(d,DEAL_SWAP),HistoryDealGetDouble(d,DEAL_FEE))){fault=true;return false;}}
-  if(!ledger.Flat(pos)){fault=true;return false;}return Persist();
+  if(!ledger.Flat(pos)){fault=true;return false;}external_pending=pos;return JournalExternal(HG6_J_EXTERNAL_FLAT,pos,0)&&Persist();
  }
+ // External flat uses its own pending position token, not a fabricated order.
+ bool JournalExternal(int type,long pos,long generation){HG6JournalRow r={};r.type=type;r.sequence=sequence;r.position=pos;r.generation=generation;r.ms=(long)TimeTradeServer()*1000;if(!journal.Append(r)){fault=true;return false;}return true;}
+ bool ReleaseExternal(long pos,long applied,long generation){if(!ready||fault||Outstanding()||pos<=0||pos!=external_pending||!link.CommitExternal(applied,generation))return false;if(!JournalExternal(HG6_J_EXTERNAL_RELEASE,pos,generation)||!journal.Anchor(sequence,generation,true,true)){fault=true;return false;}external_pending=0;return Persist();}
+ bool ReleaseExternalRescue(){if(!ready||fault||Outstanding()||!link.Rescue()||external_pending<=0)return false;if(!JournalExternal(HG6_J_EXTERNAL_RESCUE,external_pending,0))return false;external_pending=0;return Persist();}
  bool Resolved()const{return intent.state==HG5_INTENT_FILLED||intent.state==HG5_INTENT_REJECTED;}
  bool Filled()const{return intent.state==HG5_INTENT_FILLED;}
  // Release is called after corresponding core/exposure state has been durably saved.
- bool ReleaseApplied(long applied,long generation){if(!Resolved()||!link.Commit(intent.seq,applied,generation))return false;ResetIntent();return Persist();}
- bool ReleaseRescue(){if(!Resolved()||!link.RescueRelease(intent.seq))return false;ResetIntent();return Persist();}
+ bool ReleaseApplied(long applied,long generation){if(!Resolved()||!link.Commit(intent.seq,applied,generation))return false;if(!JournalIntent(HG6_J_RELEASE,generation)||!journal.Anchor(intent.seq,generation,ledger.position==0)){fault=true;return false;}ResetIntent();return Persist();}
+ bool ReleaseRescue(){if(!Resolved()||!link.RescueRelease(intent.seq)||!JournalIntent(HG6_J_RESCUE_RELEASE))return false;ResetIntent();return Persist();}
  // SECTION B4: explicit Strategy Tester only; never send on terminal charts.
  bool Submit(int kind,long proposal,int side,int units,const MqlTick &tick,const HG6Exposure &x,ulong deviation,ulong deadline_us=0){
   if(!authorized||HG6_TESTER_EXECUTION_ENABLED!=1||!MQLInfoInteger(MQL_TESTER)||!Ready()||Outstanding()||(kind!=1&&kind!=2)||(side!=1&&side!=-1)||units<=0||x.foreign||x.ambiguous||x.pending||!TerminalInfoInteger(TERMINAL_CONNECTED)||!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)||!MQLInfoInteger(MQL_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_EXPERT))return false;
-  if((kind==1&&(x.ticket!=0||link.Rescue()))||(kind==2&&(x.ticket==0||units!=x.units||side!=-x.side)))return false;
+  if((kind==1&&(x.ticket!=0||ledger.position!=0||link.Rescue()||!journal.CanBegin()))||(kind==2&&(x.ticket==0||ledger.position!=(long)x.identifier||units!=x.units||side!=-x.side)))return false;
   HG6Exposure fresh;if(!HG6ExposureRead(sym,magic,fresh)||fresh.foreign||fresh.ambiguous||fresh.pending||fresh.ticket!=x.ticket||fresh.identifier!=x.identifier||fresh.units!=x.units||fresh.side!=x.side)return false;
   MqlTick current;if(!SymbolInfoTick(sym,current)||!HG6TickEqual(current,tick))return false;
   if(AccountInfoInteger(ACCOUNT_MARGIN_MODE)!=ACCOUNT_MARGIN_MODE_RETAIL_HEDGING||!HG6BrokerSpec(sym)||!(SymbolInfoInteger(sym,SYMBOL_FILLING_MODE)&SYMBOL_FILLING_FOK))return false;
@@ -162,19 +188,19 @@ class HG6Broker {
   MqlTradeRequest req={};MqlTradeCheckResult chk={};MqlTradeResult result={};req.action=TRADE_ACTION_DEAL;req.symbol=sym;req.magic=magic;req.volume=vol;req.type=side>0?ORDER_TYPE_BUY:ORDER_TYPE_SELL;req.price=side>0?tick.ask:tick.bid;req.deviation=deviation;req.type_filling=ORDER_FILLING_FOK;req.position=kind==2?x.ticket:0;
   if(kind==1){HG6AccountFacts facts;if(!HG6ReadAccount(facts)||!HG6AdmissionAccount(facts))return false;double margin=0;if(!OrderCalcMargin(req.type,sym,vol,req.price,margin)||!MathIsValidNumber(margin)||margin<=0||margin>AccountInfoDouble(ACCOUNT_MARGIN_FREE))return false;}
   req.comment="HG6-"+IntegerToString(sequence+1);if(!OrderCheck(req,chk)||(chk.retcode!=0&&chk.retcode!=TRADE_RETCODE_DONE)||(kind==1&&(!MathIsValidNumber(chk.margin_free)||chk.margin_free<0||!MathIsValidNumber(chk.equity)||chk.equity<=0)))return false;
-  sequence++;intent.seq=sequence;intent.proposal=proposal;intent.created_ms=tick.time_msc;intent.position_id=(long)x.identifier;intent.order_id=intent.deal_id=0;intent.kind=kind;intent.side=side;intent.units=units;intent.state=HG5_INTENT_UNKNOWN;intent.filled_units=intent.retcode=0;intent.cancel_attempt=false;
-  if(!Persist())return false; // before any network call; no resend after a crash.
+  sequence++;intent.seq=sequence;intent.proposal=proposal;intent.created_ms=tick.time_msc;intent.position_id=(long)x.identifier;intent.order_id=intent.deal_id=0;intent.kind=kind;intent.side=side;intent.units=units;intent.state=HG5_INTENT_UNKNOWN;intent.filled_units=intent.retcode=0;intent.cancel_attempts=intent.cancel_retcode=0;intent.cancel_ms=0;
+  if(!JournalIntent(HG6_J_INTENT)||!Persist())return false; // before any network call; no resend after a crash.
   // A quote or budget can become stale during OrderCheck / durable I/O. Only
   // a positively known NO-SEND is released locally. A crash before recording
   // this outcome remains UNKNOWN and cannot be retried automatically.
   MqlTick after;HG6Exposure after_x;
   if((kind==1&&deadline_us>0&&GetMicrosecondCount()>=deadline_us)||!SymbolInfoTick(sym,after)||!HG6TickEqual(after,tick)||!HG6ExposureRead(sym,magic,after_x)||after_x.ticket!=x.ticket||after_x.identifier!=x.identifier||after_x.units!=x.units||after_x.side!=x.side||after_x.pending||after_x.foreign||after_x.ambiguous||!TerminalInfoInteger(TERMINAL_CONNECTED)||!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)||!MQLInfoInteger(MQL_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_EXPERT)){
-   intent.retcode=HG6_LOCAL_NOT_SENT;intent.state=HG5_INTENT_REJECTED;Persist();return false;
+   intent.retcode=HG6_LOCAL_NOT_SENT;intent.state=HG5_INTENT_REJECTED;if(JournalIntent(HG6_J_RESOLVE))Persist();return false;
   }
   ResetLastError();bool sent=OrderSend(req,result);intent.order_id=(long)result.order;intent.deal_id=(long)result.deal;intent.retcode=(int)result.retcode;
   if(intent.order_id==0&&intent.deal_id>0&&HistoryDealSelect((ulong)intent.deal_id))intent.order_id=HistoryDealGetInteger((ulong)intent.deal_id,DEAL_ORDER);
   PrintFormat("HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d",sequence,(int)sent,result.retcode,result.order,result.deal,GetLastError());
-  if(!Persist())return false;return sent;
+  if(!JournalIntent(HG6_J_ACK)||!Persist())return false;return sent;
  }
 };
 #endif

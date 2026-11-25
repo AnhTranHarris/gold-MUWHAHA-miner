@@ -1,5 +1,5 @@
 #ifndef HG6_BUILD_ID_MQH
 #define HG6_BUILD_ID_MQH
-// Stage 6D source+frozen manifest identity. Old checkpoint schemas intentionally incompatible.
-#define HG6_BUILD_ID "c23fa408756394ff999191a6418d3612a5139beee01a5756704063319a4493b6"
+// Stage 6D5 source identity; previous checkpoint schemas incompatible.
+#define HG6_BUILD_ID "ec565706c66b57fc0076a88831de4f6a9dbf2f9ff0accf279af2b705b0bb5216"
 #endif

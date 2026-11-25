@@ -249,3 +249,134 @@ HG6D FULL TESTER MOCK: normal entry/holding/exit, financial reconciliation, fata
 RUN fresh core host compile and replay
 HG5CoreQC quotes=%d stages=%d proposals=%d path_events=%d account_events=%d elapsed_us=%I64u
 HG6 CORE: 131072 quotes, 4171 stages, 440 proposals, 1318 path events, 5220 account events, all arrays and actual path restart PASS
+
+--- Stage6D5 executed final source evidence ---
+
+install_final_d5.log
+{
+  "status": "PASS staged bytes; not native compilation",
+  "files": 240,
+  "model_files": 88,
+  "fixtures": 89,
+  "source_files": 62
+}
+
+final_startup_journal.log
+PASS noledger
+HG6 startup exposure requires reconciliation; no new orders
+PASS foreign
+PASS wrongowner
+PASS ordinary
+HG6: explicit tester rescue only; no models, no new entries
+HG6 end: uncommitted tail/latest=%I64d cursor=%I64d; no invented future quote
+HG6 totals proposals=%I64d suppressed=%I64d gate_blocked=%I64d acknowledged_sends=%I64d closed=%I64d actual_net=%.8f outstanding=%d
+HG6 timing: saves=%I64u save_total_us=%I64u save_max_us=%I64u save_max_bytes=%I64u pump_max_us=%I64u copy_max_us=%I64u
+HG6 deinit reason=%d ordinal=%I64d; no implied liquidation
+PASS explicit independent startup rescue; no models/core, no entry
+PASS rescue
+PASS cancellation retry sends=4
+PASS retry
+PASS cancellation timeout sends=2
+PASS timeout
+PASS cancellation exhaust sends=4
+PASS exhaust
+PASS genesis sequence=0 generation=1 sends=0
+PASS unknown sequence=1 generation=1 sends=1
+PASS resolved sequence=1 generation=1 sends=0
+PASS applied sequence=1 generation=2 sends=0
+PASS release sequence=1 generation=2 sends=0
+PASS verified sequence=1 generation=2 sends=0
+PASS damaged or rolled-back core rejected by joint contract
+PASS damaged or rolled-back core rejected by joint contract
+PASS rescue sequence=1 generation=2 sends=0
+PASS quarantine sequence=1 generation=2 sends=0
+PASS fresh-process protocol: 8 phases, 2 storage fault copies; no recovery sends
+
+rotation_final.log
+PASS actual broker journal: 206 lifecycles, 2 rotations, 206 retained deal records exact, external-flat pending restore and checkpoint watermark; no duplicate sends
+
+final_fault3_normal.log
+HG6 initialized build=%s restored=%d ordinal=%I64d execution_lock=%d
+HG6 FAIL CLOSED: flat-state injected integrity failure
+HG6 totals proposals=%I64d suppressed=%I64d gate_blocked=%I64d acknowledged_sends=%I64d closed=%I64d actual_net=%.8f outstanding=%d
+HG6 timing: saves=%I64u save_total_us=%I64u save_max_us=%I64u save_max_bytes=%I64u pump_max_us=%I64u copy_max_us=%I64u
+HG6 deinit reason=%d ordinal=%I64d; no implied liquidation
+HG6D4 FULL EA: no-quote clock flatten, stale quote, closed session, fresh close, no-quote flat confirmation, durable flat quarantine PASS
+
+final_fault3_external.log
+HG6 initialized build=%s restored=%d ordinal=%I64d execution_lock=%d
+external fatal=0 actual=0 pending=0 applied=108 pos=108 closed=2 generation=7 prior=6 seq=3 sends=3 before=3 healthy=1
+HG6 totals proposals=%I64d suppressed=%I64d gate_blocked=%I64d acknowledged_sends=%I64d closed=%I64d actual_net=%.8f outstanding=%d
+HG6 timing: saves=%I64u save_total_us=%I64u save_max_us=%I64u save_max_bytes=%I64u pump_max_us=%I64u copy_max_us=%I64u
+HG6 deinit reason=%d ordinal=%I64d; no implied liquidation
+PASS full EA external liquidation, no quote, linked checkpoint and no extra send
+
+final_fault3_partial.log
+HG6 initialized build=%s restored=%d ordinal=%I64d execution_lock=%d
+HG6 totals proposals=%I64d suppressed=%I64d gate_blocked=%I64d acknowledged_sends=%I64d closed=%I64d actual_net=%.8f outstanding=%d
+HG6 timing: saves=%I64u save_total_us=%I64u save_max_us=%I64u save_max_bytes=%I64u pump_max_us=%I64u copy_max_us=%I64u
+HG6 deinit reason=%d ordinal=%I64d; no implied liquidation
+HG6D4 PARTIAL ENTRY: no-quote hold deadline cancels remainder, reconciles fill and closes residual at fresh quote PASS
+
+dispatch_final_normal.log
+HG6 initialized build=%s restored=%d ordinal=%I64d execution_lock=%d
+DISPATCH expected=21 actual=21 matched_entry=21 matched_exit=21 matched_net=21 max_decision_to_entry_ms=1470 suppressed=0 blocked=0 closed=21
+HG6 end: uncommitted tail/latest=%I64d cursor=%I64d; no invented future quote
+HG6 totals proposals=%I64d suppressed=%I64d gate_blocked=%I64d acknowledged_sends=%I64d closed=%I64d actual_net=%.8f outstanding=%d
+HG6 timing: saves=%I64u save_total_us=%I64u save_max_us=%I64u save_max_bytes=%I64u pump_max_us=%I64u copy_max_us=%I64u
+HG6 deinit reason=%d ordinal=%I64d; no implied liquidation
+
+dispatch_final_burst.log
+HG6 initialized build=%s restored=%d ordinal=%I64d execution_lock=%d
+DISPATCH expected=21 actual=10 matched_entry=10 matched_exit=3 matched_net=3 max_decision_to_entry_ms=1470 suppressed=11 blocked=0 closed=10
+MISSING_REFERENCE 0
+MISSING_REFERENCE 1
+MISSING_REFERENCE 2
+MISSING_REFERENCE 6
+MISSING_REFERENCE 7
+MISSING_REFERENCE 10
+MISSING_REFERENCE 13
+MISSING_REFERENCE 14
+MISSING_REFERENCE 15
+MISSING_REFERENCE 18
+MISSING_REFERENCE 19
+BURST source proposals=21 committed=15999 retired=0 peak=15999 pump_max_us=32476
+HG6 end: uncommitted tail/latest=%I64d cursor=%I64d; no invented future quote
+HG6 totals proposals=%I64d suppressed=%I64d gate_blocked=%I64d acknowledged_sends=%I64d closed=%I64d actual_net=%.8f outstanding=%d
+HG6 timing: saves=%I64u save_total_us=%I64u save_max_us=%I64u save_max_bytes=%I64u pump_max_us=%I64u copy_max_us=%I64u
+HG6 deinit reason=%d ordinal=%I64d; no implied liquidation
+
+burstqc.log
+BUILD burstqc
+RUN burstqc
+HG6 initialized build=%s restored=%d ordinal=%I64d execution_lock=%d
+BURSTQC quotes=131072 committed=131071 stage=4171 proposal=440 path=1318 account=5220 retired=118666 peak=32768 callbacks=149 drain_timers=456 pump_p50_us=15058 p95=29610 p99=33423 max=47661 backlog_p50=32 p95=4096 p99=4096 max=4096 max_rss_kib=202940 copy_max_us=3992 save_max_us=27251 sends=0
+HG6 end: uncommitted tail/latest=%I64d cursor=%I64d; no invented future quote
+HG6 totals proposals=%I64d suppressed=%I64d gate_blocked=%I64d acknowledged_sends=%I64d closed=%I64d actual_net=%.8f outstanding=%d
+HG6 timing: saves=%I64u save_total_us=%I64u save_max_us=%I64u save_max_bytes=%I64u pump_max_us=%I64u copy_max_us=%I64u
+HG6 deinit reason=%d ordinal=%I64d; no implied liquidation
+PASS host compatibility compilation and fixture tests. Native MetaEditor/terminal not run.
+
+final_full_ea.log
+HG6D4 broker: REQUOTE, PRICE_CHANGED, PRICE_OFF, stale close NOT_SENT, fresh close PASS
+HG6D2 broker: post-persist expired entry NOT_SENT, partial entry, cancellation and residual close PASS
+HG6D broker: explicit tester-only, ambiguous ack+restart, unavailable history, partial close/cancel, residual close, rejection, external flat and ledger idempotence PASS
+HG6: execution release lock; compile and run QC first
+HG6 initialized build=%s restored=%d ordinal=%I64d execution_lock=%d
+pump ordinal=15999 expected=15999 caught=1 fatal=0 last=1767322349807 expected_ms=1767322349807
+HG6 end: uncommitted tail/latest=%I64d cursor=%I64d; no invented future quote
+HG6 totals proposals=%I64d suppressed=%I64d gate_blocked=%I64d acknowledged_sends=%I64d closed=%I64d actual_net=%.8f outstanding=%d
+HG6 timing: saves=%I64u save_total_us=%I64u save_max_us=%I64u save_max_bytes=%I64u pump_max_us=%I64u copy_max_us=%I64u
+HG6 deinit reason=%d ordinal=%I64d; no implied liquidation
+HG6 EA: overlap, same-ms, invalid grid, capacity, cursor restart, state corruption/identity, locked broker, 16000-quote event pump PASS; zero sends
+
+final_full_tester.log
+HG6 initialized build=%s restored=%d ordinal=%I64d execution_lock=%d
+tester proposals=3 suppressed=0 gate_blocked=0 sends=6 closed=3 active=0 ordinal=10876 actual_state=0
+HG6 FAIL CLOSED: host injected model failure
+PERF saves=15 total_us=31126 max_us=10747 max_bytes=278526 pump_max_us=17631 copy_max_us=2046
+HG6 end: uncommitted tail/latest=%I64d cursor=%I64d; no invented future quote
+HG6 totals proposals=%I64d suppressed=%I64d gate_blocked=%I64d acknowledged_sends=%I64d closed=%I64d actual_net=%.8f outstanding=%d
+HG6 timing: saves=%I64u save_total_us=%I64u save_max_us=%I64u save_max_bytes=%I64u pump_max_us=%I64u copy_max_us=%I64u
+HG6 deinit reason=%d ordinal=%I64d; no implied liquidation
+HG6D FULL TESTER MOCK: normal entry/holding/exit, financial reconciliation, fatal-state rescue and no post-quarantine entry PASS
