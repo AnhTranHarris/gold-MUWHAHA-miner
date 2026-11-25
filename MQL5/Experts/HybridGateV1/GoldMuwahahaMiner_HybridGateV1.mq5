@@ -88,7 +88,7 @@
 #property tester_file "HG5QC\\086_renewal_gate.hg5p"
 #property tester_file "HG5QC\\087_precision_actor.hg5p"
 #property tester_file "HG5QC\\088_regret_head.hg5p"
-#property version   "2.05"
+#property version   "2.06"
 #property description "Human Approved HybridGate V1 — tester-only integration candidate; demo/live execution locked"
 #include <HybridGateV1/HG6Core.mqh>
 #include <HybridGateV1/HG5FileAdapter.mqh>
@@ -181,8 +181,10 @@ bool HG6Reconcile(HG6Exposure &x){
   if(!g_broker.Reconcile(x)||!g_broker.Resolved())return false;
   // Replay an unresolved outcome only if its sequence is not already in the verified core checkpoint.
   long seq=g_broker.Sequence();if(!g_broker.CheckLink(g_applied_seq,g_store.Generation())){HG6Fault("transaction watermark mismatch");return false;}
-  if(g_applied_seq!=seq){
-  if(g_broker.Filled()&&g_broker.IntentKind()==1){
+  bool intent_flat=g_broker.IntentAlreadyFlat();long flat_pos=intent_flat?g_broker.PositionId():0;
+  if(g_applied_seq!=seq||(intent_flat&&g_external_applied!=flat_pos)){
+  if(intent_flat){if(x.ticket||x.pending||!HG6RecordFlat(flat_pos))return false;g_external_applied=flat_pos;}
+  else if(g_broker.Filled()&&g_broker.IntentKind()==1){
    if(!x.ticket)return false;
    if(g_core.ActualState()==0){
     bool ok=x.anchor_ok?g_core.BindActual((long)x.identifier,x.time_ms,x.side,x.price_cents,x.units):g_core.BindUnmodeled((long)x.identifier,x.time_ms,x.side,x.units);
@@ -327,6 +329,8 @@ int OnInit(){
  g_tester=MQLInfoInteger(MQL_TESTER)!=0;g_execute=InpRequestTesterExecution&&g_tester&&HG6_TESTER_EXECUTION_ENABLED==1;
  if(InpRequestTesterExecution&&!g_execute)return INIT_PARAMETERS_INCORRECT;
  if(InpTesterRescueExisting&&!g_execute)return INIT_PARAMETERS_INCORRECT;
+ if(g_execute&&AccountInfoInteger(ACCOUNT_MARGIN_MODE)!=ACCOUNT_MARGIN_MODE_RETAIL_HEDGING){Print("HG6: tester execution requires a hedging account; netting is not certified");return INIT_PARAMETERS_INCORRECT;}
+ if(g_execute&&!HG6FokAllowed(_Symbol)){Print("HG6: tester execution requires symbol support for FOK");return INIT_PARAMETERS_INCORRECT;}
  if(g_execute&&(!InpEmergencyCloseAuthorized||!InpClockMappingConfirmed||InpSourceUtcOffsetMinutes!=0||InpExpectedFirstQuoteMs<=0||InpExpectedFirstBidCents<=0||InpExpectedFirstAskCents<InpExpectedFirstBidCents))return INIT_PARAMETERS_INCORRECT;
  if(!HG6Windows(InpWeeklyClock,InpSourceUtcOffsetMinutes,g_windows)||!g_cursor.Init((long)InpHistoryStart*1000))return INIT_FAILED;
  uchar id[],lock_id[];string scope=AccountInfoString(ACCOUNT_SERVER)+"|"+IntegerToString(AccountInfoInteger(ACCOUNT_LOGIN))+"|"+_Symbol+"|"+IntegerToString((long)InpMagic);

@@ -42,6 +42,8 @@ enum{ORDER_SYMBOL=301,ORDER_MAGIC,ORDER_STATE,ORDER_STATE_REJECTED,ORDER_STATE_C
 enum{DEAL_ORDER=401,DEAL_SYMBOL,DEAL_MAGIC,DEAL_ENTRY,DEAL_TYPE,DEAL_POSITION_ID,DEAL_TIME_MSC,DEAL_VOLUME,DEAL_PRICE,DEAL_ENTRY_IN=0,DEAL_ENTRY_OUT=1,DEAL_TYPE_BUY=0,DEAL_TYPE_SELL=1};
 enum{TERMINAL_CONNECTED=501,TERMINAL_TRADE_ALLOWED,MQL_TRADE_ALLOWED,MQL_TESTER,TRADE_ACTION_DEAL,TRADE_RETCODE_DONE=10009,COPY_TICKS_ALL=0};
 enum{ACCOUNT_EQUITY=601,ACCOUNT_MARGIN,ACCOUNT_MARGIN_LEVEL,ACCOUNT_MARGIN_SO_CALL,ACCOUNT_MARGIN_SO_SO,ACCOUNT_MARGIN_SO_MODE,ACCOUNT_STOPOUT_MODE_PERCENT=0,ORDER_STATE_FILLED=701,ORDER_COMMENT,ORDER_TIME_SETUP_MSC,ORDER_TYPE,ORDER_POSITION_ID,DEAL_PROFIT=801,DEAL_COMMISSION,DEAL_SWAP,DEAL_FEE,TRADE_ACTION_REMOVE=901,TRADE_RETCODE_REJECT=10006,TRADE_RETCODE_INVALID=10013,TRADE_RETCODE_INVALID_VOLUME=10014,TRADE_RETCODE_INVALID_PRICE=10015,TRADE_RETCODE_TRADE_DISABLED=10017,TRADE_RETCODE_MARKET_CLOSED=10018,TRADE_RETCODE_NO_MONEY=10019,TRADE_RETCODE_INVALID_FILL=10030,TRADE_RETCODE_REQUOTE=10004,TRADE_RETCODE_PRICE_CHANGED=10020,TRADE_RETCODE_PRICE_OFF=10021};
+enum{SYMBOL_TRADE_EXEMODE=10001,SYMBOL_TRADE_EXECUTION_REQUEST=0,SYMBOL_TRADE_EXECUTION_INSTANT=1,SYMBOL_TRADE_EXECUTION_MARKET=2,SYMBOL_TRADE_EXECUTION_EXCHANGE=3};
+static int mock_execution=SYMBOL_TRADE_EXECUTION_MARKET,mock_fill_flags=SYMBOL_FILLING_FOK;
 static bool mock_tester=false,mock_connected=true,mock_history=true,mock_quote_available=true,mock_session_open=true;static double mock_balance=100.;
 string _Symbol="XAUUSD";static long mock_clock=1767225600;static int send_count=0;static int mock_error=0;static std::vector<MqlTick> mock_ticks;static int mock_visible=0;
 static int mock_advance_on_flush=0;static std::map<int,FILE*> open_files;static int next_handle=1;
@@ -67,7 +69,7 @@ string AccountInfoString(int p){return p==ACCOUNT_CURRENCY?"USD":"HOST-MOCK";}
 long AccountInfoInteger(int p){switch(p){case ACCOUNT_MARGIN_SO_MODE:return ACCOUNT_STOPOUT_MODE_PERCENT;case ACCOUNT_LEVERAGE:return 500;case ACCOUNT_LOGIN:return 10001;case ACCOUNT_TRADE_MODE:return ACCOUNT_TRADE_MODE_DEMO;case ACCOUNT_MARGIN_MODE:return ACCOUNT_MARGIN_MODE_RETAIL_HEDGING;default:return 1;}}
 double AccountInfoDouble(int p){switch(p){case ACCOUNT_BALANCE:case ACCOUNT_EQUITY:return mock_balance;case ACCOUNT_MARGIN:return 0.;case ACCOUNT_MARGIN_SO_CALL:return 100.;case ACCOUNT_MARGIN_SO_SO:return 50.;default:return 1000.;}}
 double SymbolInfoDouble(string s,int p){(void)s;switch(p){case SYMBOL_TRADE_CONTRACT_SIZE:return 100.;case SYMBOL_TRADE_TICK_SIZE:return .01;case SYMBOL_VOLUME_MIN:return .01;case SYMBOL_VOLUME_MAX:return 100.;case SYMBOL_VOLUME_STEP:return .01;default:return 0.;}}
-long SymbolInfoInteger(string s,int p){(void)s;if(p==SYMBOL_DIGITS)return 2;if(p==SYMBOL_FILLING_MODE)return SYMBOL_FILLING_FOK;if(p==SYMBOL_TRADE_MODE)return 4;return 0;}
+long SymbolInfoInteger(string s,int p){(void)s;if(p==SYMBOL_DIGITS)return 2;if(p==SYMBOL_FILLING_MODE)return mock_fill_flags;if(p==SYMBOL_TRADE_EXEMODE)return mock_execution;if(p==SYMBOL_TRADE_MODE)return 4;return 0;}
 long TerminalInfoInteger(int p){return p==TERMINAL_CONNECTED?mock_connected:1;}long MQLInfoInteger(int p){return p==MQL_TESTER?mock_tester:1;}
 struct MockOrder{ulong id,magic,pos;long ms;int type,state;string symbol,comment;bool active;};
 struct MockDeal{ulong id,order,magic,pos;long ms;int entry,type;double volume,price,profit,commission,swap,fee;string symbol;};

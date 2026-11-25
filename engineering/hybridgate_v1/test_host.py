@@ -1,7 +1,7 @@
 """Mechanical C++ compatibility harness. Does NOT compile MQL or test real terminal APIs."""
 from pathlib import Path
 import argparse,hashlib,json,re,subprocess,shutil,os
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--install',type=Path,required=True);p.add_argument('--build',type=Path,required=True);p.add_argument('--targets',nargs='+',choices=['core','ea','tester','journal','fault','dispatch','fill','startup','rotation','burstqc'],default=['core','ea','tester','journal','fault','dispatch','fill','startup','rotation','burstqc']);a=p.parse_args();here=Path(__file__).resolve().parent;out=a.build;out.mkdir(parents=True,exist_ok=False);inc=out/'include';inc.mkdir()
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--install',type=Path,required=True);p.add_argument('--build',type=Path,required=True);p.add_argument('--targets',nargs='+',choices=['core','ea','tester','journal','fault','dispatch','fill','startup','rotation','burstqc','sweep'],default=['core','ea','tester','journal','fault','dispatch','fill','startup','rotation','burstqc','sweep']);a=p.parse_args();here=Path(__file__).resolve().parent;out=a.build;out.mkdir(parents=True,exist_ok=False);inc=out/'include';inc.mkdir()
 # Match prior Stage5 mechanical array transform, adding types used by the terminal adapter.
 types=r'HG[56]\w+|MqlTick|uchar|int|long|double|float|uint|string'
 def trans(s):
@@ -35,6 +35,7 @@ s=trans((a.install/'MQL5/Experts/HybridGateV1/GoldMuwahahaMiner_HybridGateV1.mq5
 (out/'dispatch.cpp').write_text('#include "host_compat.hpp"\n'+s+'\n'+(here/'host_dispatch_tests.cpp').read_text())
 (out/'fault.cpp').write_text('#include "host_compat.hpp"\n'+s+'\n'+(here/'host_fault_tests.cpp').read_text())
 (out/'startup.cpp').write_text('#include "host_compat.hpp"\n'+s+'\n'+(here/'host_startup_cancel_tests.cpp').read_text())
+(out/'sweep.cpp').write_text('#include "host_compat.hpp"\n'+s+'\n'+(here/'host_final_sweep_tests.cpp').read_text())
 hook='g_dirty=true;count++;lo=end;'
 assert s.count(hook)==1
 (out/'burstqc.cpp').write_text('#include "host_compat.hpp"\nvoid HG6HostCheckGroup();\n'+s.replace(hook,hook+'HG6HostCheckGroup();')+'\n'+(here/'host_burst_qc.cpp').read_text())
@@ -47,6 +48,9 @@ files=a.install/'MQL5/Files';work=out/'run';work.mkdir();(work/'HG5QC').symlink_
 for target in a.targets:
  print('RUN',target,flush=True)
  if target=='journal':subprocess.run([os.sys.executable,str(here/'test_journal_processes.py'),'--binary',str((out/target).resolve()),'--work',str((out/'journal_processes').resolve())],check=True)
+ elif target=='sweep':
+  for mode in ['fok','offline','entry_flat','entry_resolved_flat','entry_incomplete','entry_conflict','close_reject_flat','partial_close_flat','prior_external_partial','full_ea_entry','full_ea_reject']:
+   d=out/('sweep_'+mode);d.mkdir();(d/'HG5QC').symlink_to((files/'HG5QC').resolve(),target_is_directory=True);subprocess.run([str((out/target).resolve()),mode],cwd=d,check=True)
  elif target=='startup':
   for mode in ['noledger','foreign','wrongowner','ordinary','rescue','retry','timeout','exhaust']:
    d=out/('startup_'+mode);d.mkdir();subprocess.run([str((out/target).resolve()),mode],cwd=d,check=True)

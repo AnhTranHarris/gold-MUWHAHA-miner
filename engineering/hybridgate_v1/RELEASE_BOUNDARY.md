@@ -17,3 +17,7 @@ See `STAGE6D4_QC.md`. Source-derived clock and 21-trade fixture dispatch passed;
 
 ## Stage 6D5 superseding compile-only release
 See `STAGE6D5_QC.md`. Scoped host corrective engineering complete; eligible for full manual MetaEditor compilation and non-trading offline/observation QC. All 33 native tests NOT_RUN; tester order execution, demo/live remain unauthorized. Coalesced execution divergence and native performance/recovery require explicit certification, not fitted-logic changes.
+
+
+## Stage 6 final trading-reachability sweep — v2.06
+Read `STAGE6_FINAL_TRADING_QC.md`. Supersedes v2.05 for compilation only: tester FOK capability, verified flat-before-reconciliation and rejected-close/external-flat recovery, complete position costs; shipped-default 21-trade parity and new 11-case adversarial suite passed. Burst divergence remains. No native Strategy Tester orders or demo/live execution authorization. Use fresh installation from this commit; leave all three execution/rescue inputs false for compilation and offline QC.

@@ -17,6 +17,8 @@ bool HG6BrokerSpec(const string sym){
   MathAbs(SymbolInfoDouble(sym,SYMBOL_TRADE_CONTRACT_SIZE)-100.0)<1e-8&&
   MathAbs(SymbolInfoDouble(sym,SYMBOL_TRADE_TICK_SIZE)-0.01)<1e-10&&SymbolInfoInteger(sym,SYMBOL_DIGITS)>=2;
 }
+// B1C: preserve FOK-only policy while respecting the execution-mode capability matrix.
+bool HG6FokAllowed(const string sym){long mode=SymbolInfoInteger(sym,SYMBOL_TRADE_EXEMODE);return mode==SYMBOL_TRADE_EXECUTION_REQUEST||mode==SYMBOL_TRADE_EXECUTION_INSTANT||(SymbolInfoInteger(sym,SYMBOL_FILLING_MODE)&SYMBOL_FILLING_FOK)!=0;}
 bool HG6ExposureRead(const string sym,ulong magic,HG6Exposure &x){
  x.ticket=0;x.identifier=0;x.pending_ticket=0;x.time_ms=0;x.side=x.price_cents=x.units=0;x.volume=x.price=0;x.anchor_ok=false;x.foreign=x.pending=x.ambiguous=false;
  for(int i=PositionsTotal()-1;i>=0;i--){ulong t=PositionGetTicket(i);if(t==0||!PositionSelectByTicket(t))return false;if(PositionGetString(POSITION_SYMBOL)!=sym)continue;
@@ -94,24 +96,59 @@ class HG6Broker {
  double ActualNet()const{return ledger.total_profit+ledger.total_commission+ledger.total_swap+ledger.total_fee+ledger.profit+ledger.commission+ledger.swap+ledger.fee;}
  long ClosedPositions()const{return ledger.closed;}
  // SECTION B3: recover missing order identifier only from unique matching broker evidence.
- bool CorrelateOrder(){
-  if(intent.order_id>0)return true;long match=0;string comment="HG6-"+IntegerToString(intent.seq);
+ bool CorrelateOrder(bool &complete){
+  complete=false;if(intent.order_id>0){complete=true;return true;}long match=0;string comment="HG6-"+IntegerToString(intent.seq);
   int n=HistoryOrdersTotal();if(n<0||n>100000)return false;
   for(int i=0;i<n;i++){ulong t=HistoryOrderGetTicket(i);if(!t)return false;if(HistoryOrderGetString(t,ORDER_SYMBOL)!=sym||(ulong)HistoryOrderGetInteger(t,ORDER_MAGIC)!=magic||HistoryOrderGetString(t,ORDER_COMMENT)!=comment)continue;
    long tm=HistoryOrderGetInteger(t,ORDER_TIME_SETUP_MSC),type=HistoryOrderGetInteger(t,ORDER_TYPE);if(tm<intent.created_ms-1000||tm>(long)TimeCurrent()*1000+1000||(intent.kind==2&&HistoryOrderGetInteger(t,ORDER_POSITION_ID)!=intent.position_id)||type!=(intent.side>0?ORDER_TYPE_BUY:ORDER_TYPE_SELL))continue;if(match&&match!=(long)t){fault=true;return false;}match=(long)t;}
   for(int i=0;i<OrdersTotal();i++){ulong t=OrderGetTicket(i);if(!t||!OrderSelect(t))return false;if(OrderGetString(ORDER_SYMBOL)!=sym||(ulong)OrderGetInteger(ORDER_MAGIC)!=magic||OrderGetString(ORDER_COMMENT)!=comment)continue;
    if(OrderGetInteger(ORDER_TIME_SETUP_MSC)<intent.created_ms-1000||OrderGetInteger(ORDER_TIME_SETUP_MSC)>(long)TimeCurrent()*1000+1000||(intent.kind==2&&OrderGetInteger(ORDER_POSITION_ID)!=intent.position_id)||OrderGetInteger(ORDER_TYPE)!=(intent.side>0?ORDER_TYPE_BUY:ORDER_TYPE_SELL))continue;if(match&&match!=(long)t){fault=true;return false;}match=(long)t;}
-  if(!match)return false;intent.order_id=match;return JournalIntent(HG6_J_CORRELATE)&&Persist();
+  complete=true;if(!match)return false;intent.order_id=match;return JournalIntent(HG6_J_CORRELATE)&&Persist();
  }
  bool ExplicitRejection()const{return intent.retcode==TRADE_RETCODE_REQUOTE||intent.retcode==TRADE_RETCODE_PRICE_CHANGED||intent.retcode==TRADE_RETCODE_PRICE_OFF||intent.retcode==TRADE_RETCODE_REJECT||intent.retcode==TRADE_RETCODE_INVALID||intent.retcode==TRADE_RETCODE_INVALID_VOLUME||intent.retcode==TRADE_RETCODE_INVALID_PRICE||intent.retcode==TRADE_RETCODE_TRADE_DISABLED||intent.retcode==TRADE_RETCODE_MARKET_CLOSED||intent.retcode==TRADE_RETCODE_NO_MONEY||intent.retcode==TRADE_RETCODE_INVALID_FILL;}
+ // B3B: a position can be externally liquidated between order execution and
+ // reconciliation. Prove the full owned lifecycle without fabricating a fill.
+ bool ClosedEvidence(long pos,long entry_order,int entry_side,int entry_units,long &seen[]){
+  if(pos<=0||entry_units<=0||(entry_side!=1&&entry_side!=-1)||!HistorySelectByPosition((ulong)pos))return false;
+  if(ArrayResize(seen,0)!=0)return false;int n=HistoryDealsTotal(),in_units=0,out_units=0;
+  if(n<2||n>HG6_MAX_POSITION_DEALS)return false;
+  for(int i=0;i<n;i++){
+   ulong d=HistoryDealGetTicket(i);if(!d)return false;bool dup=false;for(int j=0;j<ArraySize(seen);j++)if(seen[j]==(long)d)dup=true;if(dup)continue;
+   if(HistoryDealGetInteger(d,DEAL_POSITION_ID)!=pos||HistoryDealGetString(d,DEAL_SYMBOL)!=sym||HistoryDealGetInteger(d,DEAL_TIME_MSC)<=0)return false;
+   long e=HistoryDealGetInteger(d,DEAL_ENTRY),type=HistoryDealGetInteger(d,DEAL_TYPE);int u=0;
+   double px=HistoryDealGetDouble(d,DEAL_PRICE);if(!HG6VolumeUnits(HistoryDealGetDouble(d,DEAL_VOLUME),u)||!MathIsValidNumber(px)||px<=0)return false;
+   if(e==DEAL_ENTRY_IN){if((ulong)HistoryDealGetInteger(d,DEAL_MAGIC)!=magic||type!=(entry_side>0?DEAL_TYPE_BUY:DEAL_TYPE_SELL)||(entry_order>0&&HistoryDealGetInteger(d,DEAL_ORDER)!=entry_order))return false;in_units+=u;}
+   else if(e==DEAL_ENTRY_OUT){if(type!=(entry_side>0?DEAL_TYPE_SELL:DEAL_TYPE_BUY))return false;out_units+=u;}
+   else return false;
+   int k=ArraySize(seen);if(ArrayResize(seen,k+1)!=k+1)return false;seen[k]=(long)d;
+  }
+  if(in_units!=out_units||(entry_order>0?in_units!=entry_units:in_units<entry_units))return false;
+  HG6Exposure fresh;return HG6ExposureRead(sym,magic,fresh)&&!fresh.ticket&&!fresh.pending&&!fresh.foreign&&!fresh.ambiguous;
+ }
+ bool RejectedCloseFlat(const HG6Exposure &x){long evidence[];return intent.kind==2&&!x.ticket&&!x.pending&&intent.position_id>0&&ledger.position==intent.position_id&&ClosedEvidence(intent.position_id,0,-intent.side,intent.units,evidence);}
+ bool ResolveEntryFlat(long pos,int units){
+  long evidence[];if((ledger.position!=0&&ledger.position!=pos)||!ClosedEvidence(pos,intent.order_id,intent.side,units,evidence))return false;
+  if(ledger.last_closed==pos&&ledger.position==0){long last=journal.Last();if(intent.state!=HG5_INTENT_FILLED||intent.position_id!=pos||intent.filled_units!=units||!JournalDeals(evidence)||journal.Last()!=last){fault=true;return false;}return true;}
+  if(!JournalDeals(evidence))return false;
+  for(int i=0;i<ArraySize(evidence);i++){ulong d=(ulong)evidence[i];if(!ledger.Apply(pos,evidence[i],HistoryDealGetDouble(d,DEAL_PROFIT),HistoryDealGetDouble(d,DEAL_COMMISSION),HistoryDealGetDouble(d,DEAL_SWAP),HistoryDealGetDouble(d,DEAL_FEE))){fault=true;return false;}}
+  if(!ledger.Flat(pos)){fault=true;return false;}intent.position_id=pos;intent.filled_units=units;intent.state=HG5_INTENT_FILLED;return JournalIntent(HG6_J_RESOLVE)&&Persist();
+ }
+ bool IntentAlreadyFlat()const{return intent.state==HG5_INTENT_FILLED&&intent.position_id>0&&ledger.position==0&&ledger.last_closed==intent.position_id;}
+ bool ResolveCloseFlat(long pos,int units){
+  long evidence[];if(pos!=intent.position_id||(ledger.position!=pos&&ledger.last_closed!=pos)||!ClosedEvidence(pos,0,-intent.side,intent.units,evidence))return false;
+  if(ledger.position==0){long last=journal.Last();if(!IntentAlreadyFlat()||intent.filled_units!=units||!JournalDeals(evidence)||journal.Last()!=last){fault=true;return false;}return true;}
+  if(!JournalDeals(evidence))return false;
+  for(int i=0;i<ArraySize(evidence);i++){ulong d=(ulong)evidence[i];if(!ledger.Apply(pos,evidence[i],HistoryDealGetDouble(d,DEAL_PROFIT),HistoryDealGetDouble(d,DEAL_COMMISSION),HistoryDealGetDouble(d,DEAL_SWAP),HistoryDealGetDouble(d,DEAL_FEE))){fault=true;return false;}}
+  if(!ledger.Flat(pos)){fault=true;return false;}intent.filled_units=units;intent.state=HG5_INTENT_FILLED;return JournalIntent(HG6_J_RESOLVE)&&Persist();
+ }
  bool Reconcile(const HG6Exposure &x){
   if(!ready||fault)return false;if(x.foreign||x.ambiguous)return false;if(!Outstanding())return !x.pending;
   // A locally cancelled entry was explicitly never submitted. An unexpected
   // exposure still requires intervention; no broker outcome is invented.
   if(intent.retcode==HG6_LOCAL_NOT_SENT)return intent.state==HG5_INTENT_REJECTED&&intent.filled_units==0&&intent.order_id==0&&intent.deal_id==0&&!x.pending&&((intent.kind==1&&!x.ticket)||(intent.kind==2&&(!x.ticket||(x.identifier==(ulong)intent.position_id&&x.units==intent.units&&x.side==-intent.side))));
   if(!HistorySelect((datetime)(intent.created_ms/1000-60),TimeCurrent()+60))return false;
-  if(!CorrelateOrder()){
-   if(!fault&&intent.filled_units==0&&intent.deal_id==0&&ExplicitRejection()&&!x.pending&&((intent.kind==1&&x.ticket==0)||(intent.kind==2&&x.identifier==(ulong)intent.position_id&&x.units==intent.units))){if(intent.state==HG5_INTENT_REJECTED)return true;intent.state=HG5_INTENT_REJECTED;return JournalIntent(HG6_J_RESOLVE)&&Persist();}return false;}
+  bool complete=false;if(!CorrelateOrder(complete)){
+   if(complete&&!fault&&intent.filled_units==0&&intent.deal_id==0&&ExplicitRejection()&&!x.pending&&((intent.kind==1&&x.ticket==0)||(intent.kind==2&&((x.identifier==(ulong)intent.position_id&&x.units==intent.units)||RejectedCloseFlat(x))))){if(intent.state==HG5_INTENT_REJECTED)return true;intent.state=HG5_INTENT_REJECTED;return JournalIntent(HG6_J_RESOLVE)&&Persist();}return false;}
   double total=0,weighted=0;long pos_id=0,first_ms=0;long seen[];int n=HistoryDealsTotal();if(n<0||n>100000)return false;
   for(int i=0;i<n;i++){ulong d=HistoryDealGetTicket(i);if(!d)return false;if(HistoryDealGetInteger(d,DEAL_ORDER)!=intent.order_id)continue;
    bool duplicate=false;for(int k=0;k<ArraySize(seen);k++)if(seen[k]==(long)d)duplicate=true;if(duplicate)continue;
@@ -126,15 +163,16 @@ class HG6Broker {
   // Read order terminal state only AFTER enumerating deals; pending order may still grow.
   bool terminal=false;if(HistoryOrderSelect((ulong)intent.order_id)){long st=HistoryOrderGetInteger((ulong)intent.order_id,ORDER_STATE);terminal=st==ORDER_STATE_FILLED||st==ORDER_STATE_REJECTED||st==ORDER_STATE_CANCELED||st==ORDER_STATE_EXPIRED;}
   if(x.pending||(!terminal&&units<intent.units)){long last=journal.Last();if(!JournalDeals(seen))return false;if(units>0&&(intent.state!=HG5_INTENT_PARTIAL||units!=intent.filled_units)){intent.state=HG5_INTENT_PARTIAL;intent.filled_units=units;if(!JournalIntent(HG6_J_PARTIAL)||!Persist())return false;}else if(journal.Last()!=last&&!Persist())return false;return false;}
-  if(units==0){if(terminal&&((intent.kind==1&&x.ticket==0)||(intent.kind==2&&x.identifier==(ulong)intent.position_id&&x.units==intent.units))){if(intent.state==HG5_INTENT_REJECTED)return true;intent.state=HG5_INTENT_REJECTED;return JournalIntent(HG6_J_RESOLVE)&&Persist();}return false;}
-  if(intent.kind==1){if(x.ticket==0||x.identifier!=(ulong)pos_id||x.time_ms!=first_ms||x.side!=intent.side||x.units!=units||MathAbs(weighted/total-x.price)>1e-7)return false;}
+  if(units==0){if(terminal&&((intent.kind==1&&x.ticket==0)||(intent.kind==2&&((x.identifier==(ulong)intent.position_id&&x.units==intent.units)||RejectedCloseFlat(x))))){if(intent.state==HG5_INTENT_REJECTED)return true;intent.state=HG5_INTENT_REJECTED;return JournalIntent(HG6_J_RESOLVE)&&Persist();}return false;}
+  if(intent.kind==1&&x.ticket==0){if(!terminal)return false;return ResolveEntryFlat(pos_id,units);}
+  if(intent.kind==1){if(IntentAlreadyFlat()||x.identifier!=(ulong)pos_id||x.time_ms!=first_ms||x.side!=intent.side||x.units!=units||MathAbs(weighted/total-x.price)>1e-7)return false;}
+  if(intent.kind==2&&!x.ticket){if(!terminal)return false;return ResolveCloseFlat(pos_id,units);}
   if(intent.kind==2){int remaining=intent.units-units;if((remaining==0&&x.ticket!=0)||(remaining>0&&(x.ticket==0||x.identifier!=(ulong)intent.position_id||x.units!=remaining||x.side!=-intent.side)))return false;}
   // Reconcile all unique matching deals and costs; repeat scans are idempotent.
   // A final close moves the position ledger to realized totals exactly once.
   if(intent.state==HG5_INTENT_FILLED){if(units!=intent.filled_units)return false;long last=journal.Last();if(!JournalDeals(seen)||journal.Last()!=last){fault=true;return false;}if(ledger.position==pos_id){for(int i=0;i<ArraySize(seen);i++){ulong d=(ulong)seen[i];if(!ledger.Apply(pos_id,seen[i],HistoryDealGetDouble(d,DEAL_PROFIT),HistoryDealGetDouble(d,DEAL_COMMISSION),HistoryDealGetDouble(d,DEAL_SWAP),HistoryDealGetDouble(d,DEAL_FEE))){fault=true;return false;}}}return true;}
   if(!JournalDeals(seen))return false;
   for(int i=0;i<ArraySize(seen);i++){ulong d=(ulong)seen[i];if(!ledger.Apply(pos_id,seen[i],HistoryDealGetDouble(d,DEAL_PROFIT),HistoryDealGetDouble(d,DEAL_COMMISSION),HistoryDealGetDouble(d,DEAL_SWAP),HistoryDealGetDouble(d,DEAL_FEE))){fault=true;return false;}}
-  if(intent.kind==2&&units==intent.units&&!ledger.Flat(pos_id)){fault=true;return false;}
   intent.filled_units=units;intent.state=HG5_INTENT_FILLED;return JournalIntent(HG6_J_RESOLVE)&&Persist();
  }
  // SECTION B3A: bounded cancellation retries. Only a durable definitive negative
@@ -142,7 +180,7 @@ class HG6Broker {
  // UNKNOWN (including crash before receipt), DONE, timeout and exhaustion stay locked.
  bool CancelPending(const HG6Exposure &x){
   if(!authorized||!MQLInfoInteger(MQL_TESTER)||!ready||fault||!Outstanding()||!x.pending||x.foreign||x.ambiguous||intent.order_id<=0||x.pending_ticket!=(ulong)intent.order_id||intent.cancel_attempts>=3)return false;
-  if(!TerminalInfoInteger(TERMINAL_CONNECTED)||!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)||!MQLInfoInteger(MQL_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_EXPERT))return false;
+  if((!MQLInfoInteger(MQL_TESTER)&&!TerminalInfoInteger(TERMINAL_CONNECTED))||!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)||!MQLInfoInteger(MQL_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_EXPERT))return false;
   datetime server=TimeTradeServer();if(server<=0)return false;long now=(long)server*1000;
   if(intent.cancel_attempts>0&&(intent.cancel_retcode!=TRADE_RETCODE_REJECT||now-intent.cancel_ms<1000))return false;
   if(!HistorySelect((datetime)(intent.created_ms/1000-60),TimeCurrent()+60)||HistoryOrderSelect((ulong)intent.order_id))return false;
@@ -178,11 +216,11 @@ class HG6Broker {
  bool ReleaseRescue(){if(!Resolved()||!link.RescueRelease(intent.seq)||!JournalIntent(HG6_J_RESCUE_RELEASE))return false;ResetIntent();return Persist();}
  // SECTION B4: explicit Strategy Tester only; never send on terminal charts.
  bool Submit(int kind,long proposal,int side,int units,const MqlTick &tick,const HG6Exposure &x,ulong deviation,ulong deadline_us=0){
-  if(!authorized||HG6_TESTER_EXECUTION_ENABLED!=1||!MQLInfoInteger(MQL_TESTER)||!Ready()||Outstanding()||(kind!=1&&kind!=2)||(side!=1&&side!=-1)||units<=0||x.foreign||x.ambiguous||x.pending||!TerminalInfoInteger(TERMINAL_CONNECTED)||!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)||!MQLInfoInteger(MQL_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_EXPERT))return false;
+  if(!authorized||HG6_TESTER_EXECUTION_ENABLED!=1||!MQLInfoInteger(MQL_TESTER)||!Ready()||Outstanding()||(kind!=1&&kind!=2)||(side!=1&&side!=-1)||units<=0||x.foreign||x.ambiguous||x.pending||(!MQLInfoInteger(MQL_TESTER)&&!TerminalInfoInteger(TERMINAL_CONNECTED))||!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)||!MQLInfoInteger(MQL_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_EXPERT))return false;
   if((kind==1&&(x.ticket!=0||ledger.position!=0||link.Rescue()||!journal.CanBegin()))||(kind==2&&(x.ticket==0||ledger.position!=(long)x.identifier||units!=x.units||side!=-x.side)))return false;
   HG6Exposure fresh;if(!HG6ExposureRead(sym,magic,fresh)||fresh.foreign||fresh.ambiguous||fresh.pending||fresh.ticket!=x.ticket||fresh.identifier!=x.identifier||fresh.units!=x.units||fresh.side!=x.side)return false;
   MqlTick current;if(!SymbolInfoTick(sym,current)||!HG6TickEqual(current,tick))return false;
-  if(AccountInfoInteger(ACCOUNT_MARGIN_MODE)!=ACCOUNT_MARGIN_MODE_RETAIL_HEDGING||!HG6BrokerSpec(sym)||!(SymbolInfoInteger(sym,SYMBOL_FILLING_MODE)&SYMBOL_FILLING_FOK))return false;
+  if(AccountInfoInteger(ACCOUNT_MARGIN_MODE)!=ACCOUNT_MARGIN_MODE_RETAIL_HEDGING||!HG6BrokerSpec(sym)||!HG6FokAllowed(sym))return false;
   double vol=(double)units/100.;if(!HG6VolumeAllowed(sym,vol))return false;long mode=SymbolInfoInteger(sym,SYMBOL_TRADE_MODE);
   if(mode==SYMBOL_TRADE_MODE_DISABLED||(kind==1&&(mode==SYMBOL_TRADE_MODE_CLOSEONLY||(side>0&&mode==SYMBOL_TRADE_MODE_SHORTONLY)||(side<0&&mode==SYMBOL_TRADE_MODE_LONGONLY))))return false;
   MqlTradeRequest req={};MqlTradeCheckResult chk={};MqlTradeResult result={};req.action=TRADE_ACTION_DEAL;req.symbol=sym;req.magic=magic;req.volume=vol;req.type=side>0?ORDER_TYPE_BUY:ORDER_TYPE_SELL;req.price=side>0?tick.ask:tick.bid;req.deviation=deviation;req.type_filling=ORDER_FILLING_FOK;req.position=kind==2?x.ticket:0;
@@ -194,7 +232,7 @@ class HG6Broker {
   // a positively known NO-SEND is released locally. A crash before recording
   // this outcome remains UNKNOWN and cannot be retried automatically.
   MqlTick after;HG6Exposure after_x;
-  if((kind==1&&deadline_us>0&&GetMicrosecondCount()>=deadline_us)||!SymbolInfoTick(sym,after)||!HG6TickEqual(after,tick)||!HG6ExposureRead(sym,magic,after_x)||after_x.ticket!=x.ticket||after_x.identifier!=x.identifier||after_x.units!=x.units||after_x.side!=x.side||after_x.pending||after_x.foreign||after_x.ambiguous||!TerminalInfoInteger(TERMINAL_CONNECTED)||!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)||!MQLInfoInteger(MQL_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_EXPERT)){
+  if((kind==1&&deadline_us>0&&GetMicrosecondCount()>=deadline_us)||!SymbolInfoTick(sym,after)||!HG6TickEqual(after,tick)||!HG6ExposureRead(sym,magic,after_x)||after_x.ticket!=x.ticket||after_x.identifier!=x.identifier||after_x.units!=x.units||after_x.side!=x.side||after_x.pending||after_x.foreign||after_x.ambiguous||(!MQLInfoInteger(MQL_TESTER)&&!TerminalInfoInteger(TERMINAL_CONNECTED))||!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)||!MQLInfoInteger(MQL_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_EXPERT)){
    intent.retcode=HG6_LOCAL_NOT_SENT;intent.state=HG5_INTENT_REJECTED;if(JournalIntent(HG6_J_RESOLVE))Persist();return false;
   }
   ResetLastError();bool sent=OrderSend(req,result);intent.order_id=(long)result.order;intent.deal_id=(long)result.deal;intent.retcode=(int)result.retcode;
