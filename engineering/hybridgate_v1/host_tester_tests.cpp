@@ -11,5 +11,5 @@ int main(){
  // Prove fatal-model independent rescue of a known, already reconciled position.
  for(int i=mock_visible+1;i<=n;i++){mock_visible=i;mock_clock=mock_ticks[i-1].time;OnTick();assert(!g_fatal);if(mock_pt&&!g_broker.Outstanding()&&g_broker.ActiveLedgerPosition()==(long)mock_pt)break;}
  assert(mock_pt&&g_broker.ActiveLedgerPosition()==(long)mock_pt);long closed=g_broker.ClosedPositions();int prior=send_count;HG6Fault("host injected model failure");OnTimer();assert(send_count==prior+1&&!mock_pt);OnTimer();assert(g_broker.ClosedPositions()==closed+1&&!g_broker.Outstanding());OnTimer();assert(send_count==prior+1);
- OnDeinit(0);Print("HG6D FULL TESTER MOCK: normal entry/holding/exit, financial reconciliation, fatal-state rescue and no post-quarantine entry PASS");return 0;
+ assert(g_broker.RescueMode()&&!g_broker.CheckLink(g_applied_seq,g_store.Generation()));std::cerr<<"PERF saves="<<g_save_count<<" total_us="<<g_save_total_us<<" max_us="<<g_save_max_us<<" max_bytes="<<g_save_max_bytes<<" pump_max_us="<<g_pump_max_us<<" copy_max_us="<<g_copy_max_us<<"\n";OnDeinit(0);Print("HG6D FULL TESTER MOCK: normal entry/holding/exit, financial reconciliation, fatal-state rescue and no post-quarantine entry PASS");return 0;
 }

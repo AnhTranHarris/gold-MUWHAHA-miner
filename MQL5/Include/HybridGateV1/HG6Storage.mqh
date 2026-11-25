@@ -45,11 +45,14 @@ class HG6Store {
  }
  bool Save(const uchar &payload[]){
   int n=ArraySize(payload);if(!ready||damaged||n<=0||n>HG6_MAX_ENVELOPE-96||gen>=0x7ffffffffffffffe)return false;
-  uchar body[],digest[],out[],check[];if(ArrayResize(body,n+64)!=n+64)return false;
+  uchar body[],digest[],out[];if(ArrayResize(body,n+64)!=n+64)return false;
   HG6Put64(body,0,0x4847365354415445);HG6Put64(body,8,1);HG6Put64(body,16,gen+1);HG6Put64(body,24,n);
   if(ArrayCopy(body,identity,32,0,32)!=32||ArrayCopy(body,payload,64,0,n)!=n||!HG6Hash(body,digest)||ArrayResize(out,n+96)!=n+96||ArrayCopy(out,digest,0,0,32)!=32||ArrayCopy(out,body,32,0,n+64)!=n+64)return false;
   if(gen==0&&!HG6WriteFile(Marker(),identity)){damaged=true;return false;}
-  if(!HG6WriteFile(Slot((int)((gen+1)%2)),out)){damaged=true;return false;}long g=0;if(!Decode(out,g,check)||g!=gen+1||!HG6BytesEqual(payload,check)){damaged=true;return false;}gen=g;return true;
+  if(!HG6WriteFile(Slot((int)((gen+1)%2)),out)){damaged=true;return false;}// HG6WriteFile already performs exact disk readback. The generated envelope
+  // was hashed before the write; decoding the identical in-memory bytes again
+  // adds a redundant full payload copy and SHA pass.
+  gen++;return true;
  }
  bool Healthy()const{return ready&&!damaged;}
  long Generation()const{return gen;}

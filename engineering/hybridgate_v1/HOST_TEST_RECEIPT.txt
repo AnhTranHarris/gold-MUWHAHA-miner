@@ -51,3 +51,65 @@ HG6 totals proposals=%I64d suppressed=%I64d gate_blocked=%I64d acknowledged_send
 HG6 deinit reason=%d ordinal=%I64d; no implied liquidation
 HG6D FULL TESTER MOCK: normal entry/holding/exit, financial reconciliation, fatal-state rescue and no post-quarantine entry PASS
 PASS host compatibility compilation and fixture tests. Native MetaEditor/terminal not run.
+--- Stage 6D2 fresh final host receipt ---
+BUILD core
+RUN core
+HG5CoreQC quotes=%d stages=%d proposals=%d path_events=%d account_events=%d elapsed_us=%I64u
+HG6 CORE: 131072 quotes, 4171 stages, 440 proposals, 1318 path events, 5220 account events, all arrays and actual path restart PASS
+PASS host compatibility compilation and fixture tests. Native MetaEditor/terminal not run.
+BUILD journal
+BUILD ea
+BUILD tester
+RUN journal
+PASS genesis sequence=0 generation=1 sends=0
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+PASS unknown sequence=1 generation=1 sends=1
+PASS resolved sequence=1 generation=1 sends=0
+PASS applied sequence=1 generation=2 sends=0
+PASS release sequence=1 generation=2 sends=0
+PASS verified sequence=1 generation=2 sends=0
+PASS damaged or rolled-back core rejected by joint contract
+PASS damaged or rolled-back core rejected by joint contract
+PASS rescue sequence=1 generation=2 sends=0
+PASS quarantine sequence=1 generation=2 sends=0
+PASS fresh-process protocol: 8 phases, 2 storage fault copies; no recovery sends
+RUN ea
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6D2 broker: post-persist expired entry NOT_SENT, partial entry, cancellation and residual close PASS
+HG6D broker: explicit tester-only, ambiguous ack+restart, unavailable history, partial close/cancel, residual close, rejection, external flat and ledger idempotence PASS
+HG6: execution release lock; compile and run QC first
+HG6 initialized build=%s restored=%d ordinal=%I64d execution_lock=%d
+pump ordinal=15999 expected=15999 caught=1 fatal=0 last=1767322349807 expected_ms=1767322349807
+HG6 end: uncommitted tail/latest=%I64d cursor=%I64d; no invented future quote
+HG6 totals proposals=%I64d suppressed=%I64d gate_blocked=%I64d acknowledged_sends=%I64d closed=%I64d actual_net=%.8f outstanding=%d
+HG6 timing: saves=%I64u save_total_us=%I64u save_max_us=%I64u save_max_bytes=%I64u pump_max_us=%I64u copy_max_us=%I64u
+HG6 deinit reason=%d ordinal=%I64d; no implied liquidation
+HG6 EA: overlap, same-ms, invalid grid, capacity, cursor restart, state corruption/identity, locked broker, 16000-quote event pump PASS; zero sends
+RUN tester
+HG6 initialized build=%s restored=%d ordinal=%I64d execution_lock=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+tester proposals=3 suppressed=0 gate_blocked=0 sends=6 closed=3 active=0 ordinal=10876 actual_state=0
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 FAIL CLOSED: host injected model failure
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+PERF saves=15 total_us=32133 max_us=10253 max_bytes=278518 pump_max_us=18844 copy_max_us=700
+HG6 end: uncommitted tail/latest=%I64d cursor=%I64d; no invented future quote
+HG6 totals proposals=%I64d suppressed=%I64d gate_blocked=%I64d acknowledged_sends=%I64d closed=%I64d actual_net=%.8f outstanding=%d
+HG6 timing: saves=%I64u save_total_us=%I64u save_max_us=%I64u save_max_bytes=%I64u pump_max_us=%I64u copy_max_us=%I64u
+HG6 deinit reason=%d ordinal=%I64d; no implied liquidation
+HG6D FULL TESTER MOCK: normal entry/holding/exit, financial reconciliation, fatal-state rescue and no post-quarantine entry PASS
+PASS host compatibility compilation and fixture tests. Native MetaEditor/terminal not run.
+STORAGE ONLY BENCHMARK
+baseline payload_bytes=4194304 runs=20 median_us=13078 p95_us=13710 max_us=16037 readback=exact
+corrected payload_bytes=4194304 runs=20 median_us=6763 p95_us=7229 max_us=7633 readback=exact

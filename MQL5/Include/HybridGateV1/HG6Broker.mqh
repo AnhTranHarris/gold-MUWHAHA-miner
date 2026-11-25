@@ -1,12 +1,14 @@
 #ifndef HG6_BROKER_MQH
 #define HG6_BROKER_MQH
 #include "HG6Storage.mqh"
+#include "HG6CommitLink.mqh"
 #include "HG6Feed.mqh"
 #include "HG5OperationalGate.mqh"
 // SECTION B1: actual broker facts. No modeled trade is ever booked as a real fill.
 // Explicit Strategy Tester execution only. Demo/live remain hard locked.
 #define HG6_EXECUTION_RELEASED 0
 #define HG6_TESTER_EXECUTION_ENABLED 1
+#define HG6_LOCAL_NOT_SENT -6001 // durable local cancellation, NOT a broker retcode
 struct HG6Exposure {ulong ticket,identifier,pending_ticket;long time_ms;int side,price_cents,units;double volume,price;bool anchor_ok,foreign,pending,ambiguous;};
 bool HG6VolumeUnits(double v,int &units){if(!MathIsValidNumber(v)||v<=0||v>100.0)return false;double q=v*100.0,r=MathRound(q);if(MathAbs(q-r)>0.000001)return false;units=(int)r;return units>0;}
 bool HG6BrokerSpec(const string sym){
@@ -53,9 +55,9 @@ struct HG6ActualLedger {
 // Unknown/partial outcomes stay locked. Terminal receipt or bool return never means filled.
 struct HG6TradeIntent {long seq,proposal,created_ms,position_id,order_id,deal_id;int kind,side,units,state,filled_units,retcode;bool cancel_attempt;};
 class HG6Broker {
- string sym;ulong magic;HG6Store store;HG6TradeIntent intent;HG6ActualLedger ledger;bool ready,fault,authorized;long sequence;
- bool Encode(uchar &out[]){HG5StateCodec c;int version=3;if(!c.BeginWrite()||!c.I32(version)||!c.I64(sequence)||!c.I64(intent.seq)||!c.I64(intent.proposal)||!c.I64(intent.created_ms)||!c.I64(intent.position_id)||!c.I64(intent.order_id)||!c.I64(intent.deal_id)||!c.I32(intent.kind)||!c.I32(intent.side)||!c.I32(intent.units)||!c.I32(intent.state)||!c.I32(intent.filled_units)||!c.I32(intent.retcode)||!c.Flag(intent.cancel_attempt)||!ledger.StateFields(c))return false;return c.Finish(out);}
- bool Decode(const uchar &in[]){HG5StateCodec c;int version=0;if(!c.BeginRead(in)||!c.I32(version)||version!=3||!c.I64(sequence)||!c.I64(intent.seq)||!c.I64(intent.proposal)||!c.I64(intent.created_ms)||!c.I64(intent.position_id)||!c.I64(intent.order_id)||!c.I64(intent.deal_id)||!c.I32(intent.kind)||!c.I32(intent.side)||!c.I32(intent.units)||!c.I32(intent.state)||!c.I32(intent.filled_units)||!c.I32(intent.retcode)||!c.Flag(intent.cancel_attempt)||!ledger.StateFields(c)||!c.Done())return false;return sequence>=0&&intent.seq>=0&&intent.seq<=sequence&&intent.state>=0&&intent.state<=HG5_INTENT_FROZEN&&intent.filled_units>=0&&intent.filled_units<=intent.units&&(!intent.state||(intent.seq==sequence&&intent.units>0&&(intent.kind==1||intent.kind==2)&&(intent.side==1||intent.side==-1)&&intent.created_ms>0));}
+ string sym;ulong magic;HG6Store store;HG6TradeIntent intent;HG6ActualLedger ledger;HG6CommitLink link;HG5StateCodec encode_scratch;bool ready,fault,authorized;long sequence;
+ bool Encode(uchar &out[]){int version=4;if(!encode_scratch.BeginWrite()||!encode_scratch.I32(version)||!encode_scratch.I64(sequence)||!encode_scratch.I64(intent.seq)||!encode_scratch.I64(intent.proposal)||!encode_scratch.I64(intent.created_ms)||!encode_scratch.I64(intent.position_id)||!encode_scratch.I64(intent.order_id)||!encode_scratch.I64(intent.deal_id)||!encode_scratch.I32(intent.kind)||!encode_scratch.I32(intent.side)||!encode_scratch.I32(intent.units)||!encode_scratch.I32(intent.state)||!encode_scratch.I32(intent.filled_units)||!encode_scratch.I32(intent.retcode)||!encode_scratch.Flag(intent.cancel_attempt)||!ledger.StateFields(encode_scratch)||!link.StateFields(encode_scratch))return false;return encode_scratch.Finish(out);}
+ bool Decode(const uchar &in[]){HG5StateCodec c;int version=0;if(!c.BeginRead(in)||!c.I32(version)||version!=4||!c.I64(sequence)||!c.I64(intent.seq)||!c.I64(intent.proposal)||!c.I64(intent.created_ms)||!c.I64(intent.position_id)||!c.I64(intent.order_id)||!c.I64(intent.deal_id)||!c.I32(intent.kind)||!c.I32(intent.side)||!c.I32(intent.units)||!c.I32(intent.state)||!c.I32(intent.filled_units)||!c.I32(intent.retcode)||!c.Flag(intent.cancel_attempt)||!ledger.StateFields(c)||!link.StateFields(c)||!c.Done())return false;return sequence>=0&&intent.seq>=0&&intent.seq<=sequence&&intent.state>=0&&intent.state<=HG5_INTENT_FROZEN&&intent.filled_units>=0&&intent.filled_units<=intent.units&&(!intent.state||(intent.seq==sequence&&intent.units>0&&(intent.kind==1||intent.kind==2)&&(intent.side==1||intent.side==-1)&&intent.created_ms>0));}
  bool Persist(){uchar b[];if(!Encode(b)||!store.Save(b)){fault=true;return false;}return true;}
  void ResetIntent(){intent.seq=sequence;intent.proposal=-1;intent.created_ms=intent.position_id=intent.order_id=intent.deal_id=0;intent.kind=intent.side=intent.units=intent.state=intent.filled_units=intent.retcode=0;intent.cancel_attempt=false;}
  public:
@@ -67,6 +69,10 @@ class HG6Broker {
   ready=true;return true;
  }
  bool Ready()const{return ready&&!fault&&store.Healthy()&&!Outstanding();}
+ bool CheckLink(long applied,long generation)const{return ready&&!fault&&link.Check(sequence,Outstanding(),Resolved(),applied,generation);}
+ long Sequence()const{return sequence;}
+ bool RescueMode()const{return link.Rescue();}
+ bool EnterRescue(){if(!ready||fault)return false;if(link.Rescue())return true;link.Quarantine();return Persist();}
  bool IntegrityHealthy()const{return ready&&!fault&&store.Healthy();}
  bool Outstanding()const{return intent.state!=0;}
  long Proposal()const{return intent.proposal;}
@@ -90,6 +96,9 @@ class HG6Broker {
  bool ExplicitRejection()const{return intent.retcode==TRADE_RETCODE_REJECT||intent.retcode==TRADE_RETCODE_INVALID||intent.retcode==TRADE_RETCODE_INVALID_VOLUME||intent.retcode==TRADE_RETCODE_INVALID_PRICE||intent.retcode==TRADE_RETCODE_TRADE_DISABLED||intent.retcode==TRADE_RETCODE_MARKET_CLOSED||intent.retcode==TRADE_RETCODE_NO_MONEY||intent.retcode==TRADE_RETCODE_INVALID_FILL;}
  bool Reconcile(const HG6Exposure &x){
   if(!ready||fault)return false;if(x.foreign||x.ambiguous)return false;if(!Outstanding())return !x.pending;
+  // A locally cancelled entry was explicitly never submitted. An unexpected
+  // exposure still requires intervention; no broker outcome is invented.
+  if(intent.retcode==HG6_LOCAL_NOT_SENT)return intent.kind==1&&intent.state==HG5_INTENT_REJECTED&&intent.filled_units==0&&intent.order_id==0&&intent.deal_id==0&&!x.ticket&&!x.pending;
   if(!HistorySelect((datetime)(intent.created_ms/1000-60),TimeCurrent()+60))return false;
   if(!CorrelateOrder()){
    if(!fault&&intent.filled_units==0&&ExplicitRejection()&&!x.pending&&((intent.kind==1&&x.ticket==0)||(intent.kind==2&&x.identifier==(ulong)intent.position_id&&x.units==intent.units))){intent.state=HG5_INTENT_REJECTED;return Persist();}return false;}
@@ -139,11 +148,12 @@ class HG6Broker {
  bool Resolved()const{return intent.state==HG5_INTENT_FILLED||intent.state==HG5_INTENT_REJECTED;}
  bool Filled()const{return intent.state==HG5_INTENT_FILLED;}
  // Release is called after corresponding core/exposure state has been durably saved.
- bool Release(){if(!Resolved())return false;ResetIntent();return Persist();}
+ bool ReleaseApplied(long applied,long generation){if(!Resolved()||!link.Commit(intent.seq,applied,generation))return false;ResetIntent();return Persist();}
+ bool ReleaseRescue(){if(!Resolved()||!link.RescueRelease(intent.seq))return false;ResetIntent();return Persist();}
  // SECTION B4: explicit Strategy Tester only; never send on terminal charts.
- bool Submit(int kind,long proposal,int side,int units,const MqlTick &tick,const HG6Exposure &x,ulong deviation){
+ bool Submit(int kind,long proposal,int side,int units,const MqlTick &tick,const HG6Exposure &x,ulong deviation,ulong deadline_us=0){
   if(!authorized||HG6_TESTER_EXECUTION_ENABLED!=1||!MQLInfoInteger(MQL_TESTER)||!Ready()||Outstanding()||(kind!=1&&kind!=2)||(side!=1&&side!=-1)||units<=0||x.foreign||x.ambiguous||x.pending||!TerminalInfoInteger(TERMINAL_CONNECTED)||!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)||!MQLInfoInteger(MQL_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_EXPERT))return false;
-  if((kind==1&&x.ticket!=0)||(kind==2&&(x.ticket==0||units!=x.units||side!=-x.side)))return false;
+  if((kind==1&&(x.ticket!=0||link.Rescue()))||(kind==2&&(x.ticket==0||units!=x.units||side!=-x.side)))return false;
   HG6Exposure fresh;if(!HG6ExposureRead(sym,magic,fresh)||fresh.foreign||fresh.ambiguous||fresh.pending||fresh.ticket!=x.ticket||fresh.identifier!=x.identifier||fresh.units!=x.units||fresh.side!=x.side)return false;
   MqlTick current;if(!SymbolInfoTick(sym,current)||!HG6TickEqual(current,tick))return false;
   if(AccountInfoInteger(ACCOUNT_MARGIN_MODE)!=ACCOUNT_MARGIN_MODE_RETAIL_HEDGING||!HG6BrokerSpec(sym)||!(SymbolInfoInteger(sym,SYMBOL_FILLING_MODE)&SYMBOL_FILLING_FOK))return false;
@@ -154,6 +164,13 @@ class HG6Broker {
   req.comment="HG6-"+IntegerToString(sequence+1);if(!OrderCheck(req,chk)||(chk.retcode!=0&&chk.retcode!=TRADE_RETCODE_DONE)||(kind==1&&(!MathIsValidNumber(chk.margin_free)||chk.margin_free<0||!MathIsValidNumber(chk.equity)||chk.equity<=0)))return false;
   sequence++;intent.seq=sequence;intent.proposal=proposal;intent.created_ms=tick.time_msc;intent.position_id=(long)x.identifier;intent.order_id=intent.deal_id=0;intent.kind=kind;intent.side=side;intent.units=units;intent.state=HG5_INTENT_UNKNOWN;intent.filled_units=intent.retcode=0;intent.cancel_attempt=false;
   if(!Persist())return false; // before any network call; no resend after a crash.
+  // A quote or budget can become stale during OrderCheck / durable I/O. Only
+  // a positively known NO-SEND is released locally. A crash before recording
+  // this outcome remains UNKNOWN and cannot be retried automatically.
+  MqlTick after;HG6Exposure after_x;
+  if(kind==1&&((deadline_us>0&&GetMicrosecondCount()>=deadline_us)||!SymbolInfoTick(sym,after)||!HG6TickEqual(after,tick)||!HG6ExposureRead(sym,magic,after_x)||after_x.ticket||after_x.pending||after_x.foreign||after_x.ambiguous||!TerminalInfoInteger(TERMINAL_CONNECTED)||!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)||!MQLInfoInteger(MQL_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_EXPERT))){
+   intent.retcode=HG6_LOCAL_NOT_SENT;intent.state=HG5_INTENT_REJECTED;Persist();return false;
+  }
   ResetLastError();bool sent=OrderSend(req,result);intent.order_id=(long)result.order;intent.deal_id=(long)result.deal;intent.retcode=(int)result.retcode;
   if(intent.order_id==0&&intent.deal_id>0&&HistoryDealSelect((ulong)intent.deal_id))intent.order_id=HistoryDealGetInteger((ulong)intent.deal_id,DEAL_ORDER);
   PrintFormat("HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d",sequence,(int)sent,result.retcode,result.order,result.deal,GetLastError());

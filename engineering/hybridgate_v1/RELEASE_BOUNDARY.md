@@ -8,3 +8,6 @@ Do not repeat completed research, rerun the entire historical replay, or tune aw
 
 ## Stage 6D superseding implementation boundary
 The original historical scope above is preserved. See `STAGE6D_QC.md` for current tested adapter status. Explicit opt-in simulated execution is available only where `MQL_TESTER` is true; no demo/live execution, no native claims. Compiler handoff remains held pending additional host-remediable recovery/journal and performance work.
+
+## Stage 6D.2/6D.3 continuation
+See `STAGE6D2_QC.md`: linked bounded intent/core commit protocol, storage optimization, and fresh-process host tests passed. Native execution, durability, full event journal, and remaining fault/latency gates still held.
