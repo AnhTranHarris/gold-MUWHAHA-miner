@@ -88,7 +88,7 @@
 #property tester_file "HG5QC\\086_renewal_gate.hg5p"
 #property tester_file "HG5QC\\087_precision_actor.hg5p"
 #property tester_file "HG5QC\\088_regret_head.hg5p"
-#property version   "2.02"
+#property version   "2.03"
 #property description "Human Approved HybridGate V1 — tester-only integration candidate; demo/live execution locked"
 #include <HybridGateV1/HG6Core.mqh>
 #include <HybridGateV1/HG5FileAdapter.mqh>
@@ -140,7 +140,10 @@ long g_applied_seq=0;
 ulong g_save_count=0,g_save_total_us=0,g_save_max_us=0,g_save_max_bytes=0,g_pump_max_us=0,g_copy_max_us=0;
 long g_last_flat_ms=-1,g_mailbox=0,g_seen_proposals=0,g_suppressed_proposals=0;ulong g_saved_us=0,g_last_service=0,g_last_copy_us=0;
 bool g_tester=false,g_execute=false,g_origin_verified=false;ulong g_trade_first_us=0;long g_dispatched=0,g_gate_blocked=0;
-void HG6Fault(string why){if(!g_fatal)Print("HG6 FAIL CLOSED: ",why);g_fatal=true;g_ops.Quarantine();}
+void HG6Fault(string why){if(!g_fatal)Print("HG6 FAIL CLOSED: ",why);g_fatal=true;g_ops.Quarantine();
+ // Persist rescue even if already flat; a fatal model failure is not reset by a restart.
+ if(g_execute&&!g_broker.EnterRescue())Print("HG6: durable quarantine unavailable; operator reconciliation required");
+}
 bool HG6RunIdValid(string id){int n=StringLen(id);if(n<1||n>32)return false;for(int i=0;i<n;i++){ushort c=StringGetCharacter(id,i);if(!((c>=48&&c<=57)||(c>=65&&c<=90)||(c>=97&&c<=122)||c==45||c==95))return false;}return true;}
 // ============================================================================
 // SECTION 03 — snapshot identity, explicit field encoding, verified two-slot recovery.
@@ -162,8 +165,14 @@ bool HG6Restore(const uchar &all[]){
 // SECTION 04 — actual execution reconciliation, never the modeled account ledger.
 // ============================================================================
 bool HG6RecordFlat(long pos){
+ // Establish an observable confirmation epoch BEFORE mutating the core. If quote
+ // retrieval fails, the server clock is still a conservative cooldown boundary.
+ MqlTick t;HG5Quote q;long observed=0;datetime server=TimeTradeServer();
+ if(server>0)observed=(long)server*1000;
+ if(SymbolInfoTick(_Symbol,t)&&HG6Normalize(t,q)&&t.time_msc>observed)observed=t.time_msc;
+ if(observed<=0)return false;
  if(g_core.ActualState()!=0&&!g_core.ConfirmFlat(pos))return false;
- MqlTick t;if(!SymbolInfoTick(_Symbol,t))return false;g_last_flat_ms=t.time_msc;g_overdue=false;g_dirty=true;return true;
+ if(observed>g_last_flat_ms)g_last_flat_ms=observed;g_overdue=false;g_dirty=true;return true;
 }
 bool HG6Reconcile(HG6Exposure &x){
  if(!HG6ExposureRead(_Symbol,InpMagic,x)||x.foreign||x.ambiguous){x.ambiguous=true;g_ops.Disarm();return false;}
@@ -198,22 +207,27 @@ bool HG6Reconcile(HG6Exposure &x){
 // SECTION 05 — clock, account risk and actual-exposure protection.
 // ============================================================================
 int HG6Action(long source_ms,const HG6Exposure &x,bool mapped,bool session){return HG5Clock(source_ms,x.ticket!=0,x.pending,session,mapped,InpUseTradingClock,g_overdue,g_windows,ArraySize(g_windows));}
-bool HG6MaybeClose(const HG6Exposure &x,const MqlTick &latest,int clock_action,bool reconciled){
- if(x.pending&&(clock_action==HG5_DRAIN_CANCEL_PENDING||clock_action==HG5_FLATTEN||g_overdue)){
-  g_ops.Disarm();if(clock_action==HG5_FLATTEN)g_overdue=true;
+// Clock and safety evaluation is independent of tick availability. The frozen
+// clock policy is unchanged. No quote is synthesized for a market close.
+bool HG6MaybeClose(const HG6Exposure &x,const MqlTick &latest,int clock_action,bool reconciled,bool quote_ready=true,bool session_open=true){
+ datetime server=TimeTradeServer();long now=server>0?(long)server*1000:0;
+ if(quote_ready&&latest.time_msc>now)now=latest.time_msc;
+ bool age_due=x.ticket!=0&&now>0&&now-x.time_ms>=30000;
+ HG6AccountFacts facts;bool risk=x.ticket!=0&&HG6ReadAccount(facts)&&HG6AccountUrgent(facts);
+ bool urgent=clock_action==HG5_FLATTEN||age_due||g_overdue||g_core.ActualState()==3||risk;
+ if((x.ticket||x.pending)&&urgent){if(!g_overdue){g_overdue=true;g_dirty=true;}g_ops.Disarm();}
+ if(x.pending&&(clock_action==HG5_DRAIN_CANCEL_PENDING||urgent)){
+  g_ops.Disarm();
   if(g_execute&&InpEmergencyCloseAuthorized&&!x.foreign&&!x.ambiguous)g_broker.CancelPending(x);
   return true;
  }
  if(x.ticket==0)return false;
- bool age_due=latest.time_msc-x.time_ms>=30000;datetime server=TimeTradeServer();if(server>0&&(long)server*1000-x.time_ms>=30000)age_due=true;
- HG6AccountFacts facts;bool risk=HG6ReadAccount(facts)&&HG6AccountUrgent(facts);
- bool urgent=clock_action==HG5_FLATTEN||age_due||g_overdue||g_core.ActualState()==3||risk;
- if(urgent){g_overdue=true;g_dirty=true;g_ops.Disarm();}
  int reason=g_core.ActualReason();if(!urgent&&reason<=0)return false;
- // The source software floor is not a broker stop. Unknown/partial/foreign exposures
- // cannot be guessed closed; report for operator intervention. Demo release locked.
- if(!g_execute||(!reconciled&&!(urgent&&g_broker.Ready()&&g_broker.ActiveLedgerPosition()==(long)x.identifier))||g_broker.Outstanding()||x.foreign||x.ambiguous||x.pending||(!InpEmergencyCloseAuthorized&&urgent&&reason<=0)){
-  g_log.Event("CLOSE_BLOCKED",latest.time_msc,(long)x.identifier,reason,(long)urgent,clock_action);return true;
+ // No market submission from unavailable/stale quote or known closed session.
+ // Leave overdue latched; timer will retry only after fresh observable evidence.
+ bool market_ready=quote_ready&&now>=latest.time_msc&&now-latest.time_msc<=InpMaxQuoteAgeMs&&session_open;
+ if(!market_ready||!g_execute||(!reconciled&&!(urgent&&g_broker.Ready()&&g_broker.ActiveLedgerPosition()==(long)x.identifier))||g_broker.Outstanding()||x.foreign||x.ambiguous||x.pending||(!InpEmergencyCloseAuthorized&&urgent&&reason<=0)){
+  g_log.Event("CLOSE_BLOCKED",now,(long)x.identifier,reason,(long)urgent,clock_action);return true;
  }
  if(!HG6Save()){HG6Fault("cannot persist close intent context");return true;}
  if(!g_broker.Submit(2,g_core.ActualId(),-x.side,x.units,latest,x,(ulong)InpDeviationPoints))g_ops.Disarm();return true;
@@ -221,14 +235,15 @@ bool HG6MaybeClose(const HG6Exposure &x,const MqlTick &latest,int clock_action,b
 // Fatal-state protection never evaluates the failed model or creates an entry.
 // Only a known owned position in the explicitly authorized simulated tester may be closed.
 void HG6RiskOnly(){
- HG6Exposure x;MqlTick t;if(!HG6ExposureRead(_Symbol,InpMagic,x)||x.foreign||x.ambiguous||!SymbolInfoTick(_Symbol,t))return;
+ HG6Exposure x;MqlTick t;HG5Quote q;if(!HG6ExposureRead(_Symbol,InpMagic,x)||x.foreign||x.ambiguous)return;
+ if(!g_execute||!InpEmergencyCloseAuthorized||!g_broker.EnterRescue())return;
  if(!x.ticket&&!x.pending&&!g_broker.Outstanding()&&g_broker.ActiveLedgerPosition()==0)return;
  Comment("HG6 QUARANTINE: owned exposure detected; entries disabled");
- if(!g_execute||!InpEmergencyCloseAuthorized||!g_broker.EnterRescue())return;
  if(g_broker.Outstanding()){bool resolved=g_broker.Reconcile(x)&&g_broker.Resolved();if(x.pending){g_broker.CancelPending(x);return;}if(!resolved||!g_broker.ReleaseRescue())return;}
  if(x.pending)return;
  if(!x.ticket&&g_broker.ActiveLedgerPosition()!=0){g_broker.ExternalFlat(g_broker.ActiveLedgerPosition());return;}
- if(x.ticket&&g_broker.Ready()&&g_broker.ActiveLedgerPosition()==(long)x.identifier)g_broker.Submit(2,(long)x.identifier,-x.side,x.units,t,x,(ulong)InpDeviationPoints);
+ datetime server=TimeTradeServer();
+ if(x.ticket&&g_broker.Ready()&&g_broker.ActiveLedgerPosition()==(long)x.identifier&&SymbolInfoTick(_Symbol,t)&&HG6Normalize(t,q)&&HG6TradeSession(_Symbol,server)&&server>0&&(long)server*1000-t.time_msc<=InpMaxQuoteAgeMs)g_broker.Submit(2,(long)x.identifier,-x.side,x.units,t,x,(ulong)InpDeviationPoints);
 }
 bool HG6CheckReadiness(const HG6Exposure &x,const MqlTick &latest,long now,bool mapped,bool reconciled,bool fresh,int backlog,ulong started){
  HG5OpsSample sample;ulong now_us=GetMicrosecondCount();sample.now_us=(long)now_us;sample.quote_age_ms=now-latest.time_msc;sample.queue_us=(long)g_last_copy_us;sample.service_us=(long)(now_us-started);
@@ -253,13 +268,14 @@ void HG6MaybeEntry(const HG5Proposal &p,const MqlTick &latest,const HG6Exposure 
 // is deliberately withheld until a strictly later timestamp is observed.
 // ============================================================================
 void HG6Pump(){
- if(!g_initialized)return;if(g_fatal){HG6RiskOnly();return;}ulong started=GetMicrosecondCount();MqlTick latest;
- if(!SymbolInfoTick(_Symbol,latest)||latest.time_msc<=0)return;
- if(g_cursor.Last()>latest.time_msc){HG6Fault("terminal history moved behind committed cursor");return;}
+ if(!g_initialized)return;if(g_fatal){HG6RiskOnly();return;}ulong started=GetMicrosecondCount();MqlTick latest={};HG5Quote normalized;
+ bool quote_ready=SymbolInfoTick(_Symbol,latest)&&HG6Normalize(latest,normalized);
  HG6Exposure x;bool reconciled=HG6Reconcile(x);if(g_fatal)return;
  datetime server=TimeTradeServer();bool mapped=HG6ClockMapping(InpSourceUtcOffsetMinutes,InpClockMappingConfirmed,g_tester,server),session=HG6TradeSession(_Symbol,server);
- long now=(long)server*1000;if(now<latest.time_msc)now=latest.time_msc;
- bool close_requested=HG6MaybeClose(x,latest,HG6Action(now,x,mapped,session),reconciled);if(g_fatal)return;
+ long now=server>0?(long)server*1000:0;if(quote_ready&&now<latest.time_msc)now=latest.time_msc;
+ bool close_requested=HG6MaybeClose(x,latest,HG6Action(now,x,mapped,session),reconciled,quote_ready,session);if(g_fatal)return;
+ if(!quote_ready){g_ops.Disarm();g_caught_up=false;if(g_dirty&&!HG6Save())HG6Fault("no-quote safety checkpoint failure");return;}
+ if(g_cursor.Last()>latest.time_msc){HG6Fault("terminal history moved behind committed cursor");return;}
  ulong copy_start=GetMicrosecondCount();ResetLastError();int n=CopyTicks(_Symbol,g_raw,COPY_TICKS_ALL,(ulong)g_cursor.From(),HG6_TICK_BATCH);int err=GetLastError();g_last_copy_us=GetMicrosecondCount()-copy_start;if(g_last_copy_us>g_copy_max_us)g_copy_max_us=g_last_copy_us;
  if(n<0||n>ArraySize(g_raw)||err!=0){g_ops.Disarm();g_caught_up=false;g_log.Event("HISTORY_WAIT",latest.time_msc,0,err,n,0);return;}
  for(int k=1;k<n;k++)if(g_raw[k].time_msc<g_raw[k-1].time_msc){HG6Fault("unordered terminal response");return;}
@@ -278,7 +294,7 @@ void HG6Pump(){
   // Never replay a stale historical proposal. A close/busy epoch cannot admit a new one.
   bool fresh=was_caught&&n<HG6_TICK_BATCH&&g_raw[n-1].time_msc==latest.time_msc&&g_raw[lo].time_msc==latest.time_msc;
   // New holding decisions take priority over admission in the same pump.
-  if(g_core.ActualReason()>0&&!close_requested)close_requested=HG6MaybeClose(x,latest,HG6Action(now,x,mapped,session),reconciled);
+  if(g_core.ActualReason()>0&&!close_requested)close_requested=HG6MaybeClose(x,latest,HG6Action(now,x,mapped,session),reconciled,true,session);
   g_seen_proposals+=ArraySize(g_proposals);
   bool budget=GetMicrosecondCount()-started<=(ulong)InpMaxServiceUs;
   if(!fresh||close_requested||!g_execute||!budget)g_suppressed_proposals+=ArraySize(g_proposals);

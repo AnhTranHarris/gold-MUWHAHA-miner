@@ -11,3 +11,6 @@ The original historical scope above is preserved. See `STAGE6D_QC.md` for curren
 
 ## Stage 6D.2/6D.3 continuation
 See `STAGE6D2_QC.md`: linked bounded intent/core commit protocol, storage optimization, and fresh-process host tests passed. Native execution, durability, full event journal, and remaining fault/latency gates still held.
+
+## Stage 6D.4 continuation
+See `STAGE6D4_QC.md`. Source-derived clock and 21-trade fixture dispatch passed; quote-independent safety and late/partial-fill cases strengthened. Native acceptance, startup rescue, safe cancel retry, complete authoritative event journal rotation and performance remain held.

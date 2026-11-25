@@ -93,15 +93,15 @@ class HG6Broker {
    if(OrderGetInteger(ORDER_TIME_SETUP_MSC)<intent.created_ms-1000||OrderGetInteger(ORDER_TIME_SETUP_MSC)>(long)TimeCurrent()*1000+1000||(intent.kind==2&&OrderGetInteger(ORDER_POSITION_ID)!=intent.position_id)||OrderGetInteger(ORDER_TYPE)!=(intent.side>0?ORDER_TYPE_BUY:ORDER_TYPE_SELL))continue;if(match&&match!=(long)t){fault=true;return false;}match=(long)t;}
   if(!match)return false;intent.order_id=match;return Persist();
  }
- bool ExplicitRejection()const{return intent.retcode==TRADE_RETCODE_REJECT||intent.retcode==TRADE_RETCODE_INVALID||intent.retcode==TRADE_RETCODE_INVALID_VOLUME||intent.retcode==TRADE_RETCODE_INVALID_PRICE||intent.retcode==TRADE_RETCODE_TRADE_DISABLED||intent.retcode==TRADE_RETCODE_MARKET_CLOSED||intent.retcode==TRADE_RETCODE_NO_MONEY||intent.retcode==TRADE_RETCODE_INVALID_FILL;}
+ bool ExplicitRejection()const{return intent.retcode==TRADE_RETCODE_REQUOTE||intent.retcode==TRADE_RETCODE_PRICE_CHANGED||intent.retcode==TRADE_RETCODE_PRICE_OFF||intent.retcode==TRADE_RETCODE_REJECT||intent.retcode==TRADE_RETCODE_INVALID||intent.retcode==TRADE_RETCODE_INVALID_VOLUME||intent.retcode==TRADE_RETCODE_INVALID_PRICE||intent.retcode==TRADE_RETCODE_TRADE_DISABLED||intent.retcode==TRADE_RETCODE_MARKET_CLOSED||intent.retcode==TRADE_RETCODE_NO_MONEY||intent.retcode==TRADE_RETCODE_INVALID_FILL;}
  bool Reconcile(const HG6Exposure &x){
   if(!ready||fault)return false;if(x.foreign||x.ambiguous)return false;if(!Outstanding())return !x.pending;
   // A locally cancelled entry was explicitly never submitted. An unexpected
   // exposure still requires intervention; no broker outcome is invented.
-  if(intent.retcode==HG6_LOCAL_NOT_SENT)return intent.kind==1&&intent.state==HG5_INTENT_REJECTED&&intent.filled_units==0&&intent.order_id==0&&intent.deal_id==0&&!x.ticket&&!x.pending;
+  if(intent.retcode==HG6_LOCAL_NOT_SENT)return intent.state==HG5_INTENT_REJECTED&&intent.filled_units==0&&intent.order_id==0&&intent.deal_id==0&&!x.pending&&((intent.kind==1&&!x.ticket)||(intent.kind==2&&(!x.ticket||(x.identifier==(ulong)intent.position_id&&x.units==intent.units&&x.side==-intent.side))));
   if(!HistorySelect((datetime)(intent.created_ms/1000-60),TimeCurrent()+60))return false;
   if(!CorrelateOrder()){
-   if(!fault&&intent.filled_units==0&&ExplicitRejection()&&!x.pending&&((intent.kind==1&&x.ticket==0)||(intent.kind==2&&x.identifier==(ulong)intent.position_id&&x.units==intent.units))){intent.state=HG5_INTENT_REJECTED;return Persist();}return false;}
+   if(!fault&&intent.filled_units==0&&intent.deal_id==0&&ExplicitRejection()&&!x.pending&&((intent.kind==1&&x.ticket==0)||(intent.kind==2&&x.identifier==(ulong)intent.position_id&&x.units==intent.units))){intent.state=HG5_INTENT_REJECTED;return Persist();}return false;}
   double total=0,weighted=0;long pos_id=0,first_ms=0;long seen[];int n=HistoryDealsTotal();if(n<0||n>100000)return false;
   for(int i=0;i<n;i++){ulong d=HistoryDealGetTicket(i);if(!d)return false;if(HistoryDealGetInteger(d,DEAL_ORDER)!=intent.order_id)continue;
    bool duplicate=false;for(int k=0;k<ArraySize(seen);k++)if(seen[k]==(long)d)duplicate=true;if(duplicate)continue;
@@ -168,7 +168,7 @@ class HG6Broker {
   // a positively known NO-SEND is released locally. A crash before recording
   // this outcome remains UNKNOWN and cannot be retried automatically.
   MqlTick after;HG6Exposure after_x;
-  if(kind==1&&((deadline_us>0&&GetMicrosecondCount()>=deadline_us)||!SymbolInfoTick(sym,after)||!HG6TickEqual(after,tick)||!HG6ExposureRead(sym,magic,after_x)||after_x.ticket||after_x.pending||after_x.foreign||after_x.ambiguous||!TerminalInfoInteger(TERMINAL_CONNECTED)||!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)||!MQLInfoInteger(MQL_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_EXPERT))){
+  if((kind==1&&deadline_us>0&&GetMicrosecondCount()>=deadline_us)||!SymbolInfoTick(sym,after)||!HG6TickEqual(after,tick)||!HG6ExposureRead(sym,magic,after_x)||after_x.ticket!=x.ticket||after_x.identifier!=x.identifier||after_x.units!=x.units||after_x.side!=x.side||after_x.pending||after_x.foreign||after_x.ambiguous||!TerminalInfoInteger(TERMINAL_CONNECTED)||!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)||!MQLInfoInteger(MQL_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_ALLOWED)||!AccountInfoInteger(ACCOUNT_TRADE_EXPERT)){
    intent.retcode=HG6_LOCAL_NOT_SENT;intent.state=HG5_INTENT_REJECTED;Persist();return false;
   }
   ResetLastError();bool sent=OrderSend(req,result);intent.order_id=(long)result.order;intent.deal_id=(long)result.deal;intent.retcode=(int)result.retcode;

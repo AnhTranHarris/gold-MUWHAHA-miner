@@ -1,7 +1,7 @@
 """Mechanical C++ compatibility harness. Does NOT compile MQL or test real terminal APIs."""
 from pathlib import Path
 import argparse,hashlib,json,re,subprocess,shutil,os
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--install',type=Path,required=True);p.add_argument('--build',type=Path,required=True);p.add_argument('--targets',nargs='+',choices=['core','ea','tester','journal'],default=['core','ea','tester','journal']);a=p.parse_args();here=Path(__file__).resolve().parent;out=a.build;out.mkdir(parents=True,exist_ok=False);inc=out/'include';inc.mkdir()
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--install',type=Path,required=True);p.add_argument('--build',type=Path,required=True);p.add_argument('--targets',nargs='+',choices=['core','ea','tester','journal','fault','dispatch','fill'],default=['core','ea','tester','journal','fault','dispatch','fill']);a=p.parse_args();here=Path(__file__).resolve().parent;out=a.build;out.mkdir(parents=True,exist_ok=False);inc=out/'include';inc.mkdir()
 # Match prior Stage5 mechanical array transform, adding types used by the terminal adapter.
 types=r'HG[56]\w+|MqlTick|uchar|int|long|double|float|uint|string'
 def trans(s):
@@ -31,6 +31,9 @@ s=s.replace('if(si!=ns||pi!=np||he!=nh||ae!=na)return false;','if(si!=ns||pi!=np
 s=trans((a.install/'MQL5/Experts/HybridGateV1/GoldMuwahahaMiner_HybridGateV1.mq5').read_text())
 (out/'ea.cpp').write_text('#include "host_compat.hpp"\n'+s+'\n'+(here/'host_ea_tests.cpp').read_text())
 (out/'tester.cpp').write_text('#include "host_compat.hpp"\n'+s+'\n'+(here/'host_tester_tests.cpp').read_text())
+(out/'fill.cpp').write_text((here/'host_actual_fill_tests.cpp').read_text())
+(out/'dispatch.cpp').write_text('#include "host_compat.hpp"\n'+s+'\n'+(here/'host_dispatch_tests.cpp').read_text())
+(out/'fault.cpp').write_text('#include "host_compat.hpp"\n'+s+'\n'+(here/'host_fault_tests.cpp').read_text())
 (out/'journal.cpp').write_text((here/'host_journal_tests.cpp').read_text())
 for target in a.targets:
  cmd=['g++','-std=c++17','-O2','-fno-fast-math','-ffp-contract=off','-Wall','-Wextra','-Werror','-Wno-misleading-indentation','-Wno-unused-parameter','-I'+str(inc),str(out/(target+'.cpp')),'-lcrypto','-o',str(out/target)]
@@ -40,4 +43,6 @@ for target in a.targets:
  print('RUN',target,flush=True)
  if target=='journal':subprocess.run([os.sys.executable,str(here/'test_journal_processes.py'),'--binary',str((out/target).resolve()),'--work',str((out/'journal_processes').resolve())],check=True)
  else:subprocess.run([str((out/target).resolve())],cwd=work,check=True)
+ if target=='fault':
+  partial=out/'partial_run';partial.mkdir();(partial/'HG5QC').symlink_to((files/'HG5QC').resolve(),target_is_directory=True);subprocess.run([str((out/target).resolve()),'partial'],cwd=partial,check=True)
 print('PASS host compatibility compilation and fixture tests. Native MetaEditor/terminal not run.')

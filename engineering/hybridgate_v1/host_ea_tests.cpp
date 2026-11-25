@@ -29,6 +29,15 @@ int main(){
  assert(!extra.Submit(1,11,1,2,ticks[0],x,10,1)&&send_count==before_extra&&extra.Outstanding());assert(extra.Reconcile(x)&&extra.Resolved()&&!extra.Filled()&&extra.ReleaseApplied(1,1));
  mock_send_mode=3;assert(extra.Submit(1,12,1,2,ticks[0],x,10));assert(HG6ExposureRead(_Symbol,9,x)&&x.pending&&x.units==1);assert(!extra.Reconcile(x)&&extra.FilledUnits()==1&&!extra.Ready());assert(extra.CancelPending(x));assert(HG6ExposureRead(_Symbol,9,x)&&!x.pending&&x.units==1);assert(extra.Reconcile(x)&&extra.Filled()&&extra.FilledUnits()==1&&extra.ReleaseApplied(2,2));
  mock_send_mode=0;assert(extra.Submit(2,12,-1,1,ticks[0],x,10));assert(HG6ExposureRead(_Symbol,9,x)&&!x.ticket);assert(extra.Reconcile(x)&&extra.Filled()&&extra.ReleaseApplied(3,3)&&extra.ClosedPositions()==1);
+ // Definitive quote-related rejections cannot indefinitely freeze a known position.
+ HG6Broker quote_broker;assert(quote_broker.Init(_Symbol,23,"quote_reject",identity,true));assert(HG6ExposureRead(_Symbol,23,x));
+ mock_send_mode=0;assert(quote_broker.Submit(1,41,1,1,ticks[0],x,10));assert(HG6ExposureRead(_Symbol,23,x)&&quote_broker.Reconcile(x)&&quote_broker.ReleaseApplied(1,1));
+ for(int mode=4;mode<=6;mode++){mock_send_mode=mode;int sent=send_count;assert(!quote_broker.Submit(2,41,-1,1,ticks[0],x,10)&&send_count==sent+1);assert(quote_broker.Reconcile(x)&&quote_broker.Resolved()&&!quote_broker.Filled()&&quote_broker.ReleaseApplied(mode-2,mode-2));}
+ // Quote changes during persistence: no outbound close using stale price; known no-send resolves.
+ mock_send_mode=0;auto next_tick=ticks[0];next_tick.time_msc=1001;next_tick.bid=2000.02;next_tick.ask=2000.03;mock_ticks.push_back(next_tick);mock_advance_on_flush=1;int old_sends=send_count;
+ assert(!quote_broker.Submit(2,41,-1,1,ticks[0],x,10)&&send_count==old_sends&&mock_visible==2);assert(quote_broker.Reconcile(x)&&!quote_broker.Filled()&&quote_broker.ReleaseApplied(5,5));
+ assert(quote_broker.Submit(2,41,-1,1,next_tick,x,10));assert(HG6ExposureRead(_Symbol,23,x)&&!x.ticket&&quote_broker.Reconcile(x)&&quote_broker.ReleaseApplied(6,6)&&quote_broker.ClosedPositions()==1);
+ Print("HG6D4 broker: REQUOTE, PRICE_CHANGED, PRICE_OFF, stale close NOT_SENT, fresh close PASS");
  Print("HG6D2 broker: post-persist expired entry NOT_SENT, partial entry, cancellation and residual close PASS");
  Print("HG6D broker: explicit tester-only, ambiguous ack+restart, unavailable history, partial close/cancel, residual close, rejection, external flat and ledger idempotence PASS");
  mock_tester=false;mock_send_mode=0;mock_ticks.clear();mock_visible=0;send_count=0;mo.clear();md.clear();mock_clock=1767225600;mock_history=true;

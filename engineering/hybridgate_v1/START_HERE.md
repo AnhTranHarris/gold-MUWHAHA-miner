@@ -1,6 +1,6 @@
 # HybridGate V1 — Stage 6 MT5 source integration candidate
 
-**Stage 6D engineering hold. Native MetaEditor compile and all 33 acceptance rows are still NOT_RUN.** Read `STAGE6D_QC.md` and the superseding `STAGE6D2_QC.md` before any compilation. Explicit tester-only execution is a host-tested candidate; default observation, demo/live locked. This is not a release of a certified trading EA. No EX5 is provided. No claim that native execution or profit parity has passed.
+**Stage 6D engineering hold. Native MetaEditor compile and all 33 acceptance rows are still NOT_RUN.** Read `STAGE6D_QC.md` and the superseding `STAGE6D2_QC.md` and `STAGE6D4_QC.md` before any compilation. Explicit tester-only execution is a host-tested candidate; default observation, demo/live locked. This is not a release of a certified trading EA. No EX5 is provided. No claim that native execution or profit parity has passed.
 
 ## Source authority and preservation
 
@@ -41,3 +41,6 @@ The observation candidate uses an exact-cents XAUUSD grid and USD account assump
 ## External API research (not the trading strategy source)
 
 MetaQuotes official: https://www.mql5.com/en/docs/event_handlers/ontick ; https://www.mql5.com/en/docs/series/copyticks ; https://www.mql5.com/en/docs/series/copyticksrange ; https://www.mql5.com/en/docs/constants/structures/mqltick ; https://www.mql5.com/en/docs/event_handlers/ontradetransaction ; https://www.mql5.com/en/docs/trading/ordersend ; https://www.mql5.com/en/docs/trading/ordercheck ; https://www.mql5.com/en/docs/files/fileflush ; https://www.mql5.com/en/docs/marketinformation/symbolinfosessiontrade ; https://www.mql5.com/en/docs/eventfunctions/eventsetmillisecondtimer . OnTick coalescing and transaction order/queue limitations justify retrieval/reconciliation instead of blindly counting notifications. FileFlush is not proof of system crash atomicity. Community reports reviewed for terminal/account isolation and debugging; community anecdotes do not replace official APIs or frozen source evidence.
+
+
+Stage 6D4 host-only extended QC: `test_host.py --targets fault dispatch fill` runs the missing-quote/partial-entry, original 21-trade dispatch parity, and gap/slipped-fill cases. `verify_frozen_clock.py` verifies the pinned original Python policy and Stage5 transition fixture against the transformed native clock source. See `STAGE6D4_QC.md` for exact remaining gates. Compilation hold and demo/live lock unchanged.

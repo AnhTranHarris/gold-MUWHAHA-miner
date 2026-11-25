@@ -41,16 +41,16 @@ enum{POSITION_SYMBOL=201,POSITION_MAGIC,POSITION_IDENTIFIER,POSITION_TIME_MSC,PO
 enum{ORDER_SYMBOL=301,ORDER_MAGIC,ORDER_STATE,ORDER_STATE_REJECTED,ORDER_STATE_CANCELED,ORDER_STATE_EXPIRED,ORDER_TYPE_BUY=0,ORDER_TYPE_SELL=1,ORDER_FILLING_FOK=0};
 enum{DEAL_ORDER=401,DEAL_SYMBOL,DEAL_MAGIC,DEAL_ENTRY,DEAL_TYPE,DEAL_POSITION_ID,DEAL_TIME_MSC,DEAL_VOLUME,DEAL_PRICE,DEAL_ENTRY_IN=0,DEAL_ENTRY_OUT=1,DEAL_TYPE_BUY=0,DEAL_TYPE_SELL=1};
 enum{TERMINAL_CONNECTED=501,TERMINAL_TRADE_ALLOWED,MQL_TRADE_ALLOWED,MQL_TESTER,TRADE_ACTION_DEAL,TRADE_RETCODE_DONE=10009,COPY_TICKS_ALL=0};
-enum{ACCOUNT_EQUITY=601,ACCOUNT_MARGIN,ACCOUNT_MARGIN_LEVEL,ACCOUNT_MARGIN_SO_CALL,ACCOUNT_MARGIN_SO_SO,ACCOUNT_MARGIN_SO_MODE,ACCOUNT_STOPOUT_MODE_PERCENT=0,ORDER_STATE_FILLED=701,ORDER_COMMENT,ORDER_TIME_SETUP_MSC,ORDER_TYPE,ORDER_POSITION_ID,DEAL_PROFIT=801,DEAL_COMMISSION,DEAL_SWAP,DEAL_FEE,TRADE_ACTION_REMOVE=901,TRADE_RETCODE_REJECT=10006,TRADE_RETCODE_INVALID=10013,TRADE_RETCODE_INVALID_VOLUME=10014,TRADE_RETCODE_INVALID_PRICE=10015,TRADE_RETCODE_TRADE_DISABLED=10017,TRADE_RETCODE_MARKET_CLOSED=10018,TRADE_RETCODE_NO_MONEY=10019,TRADE_RETCODE_INVALID_FILL=10030};
-static bool mock_tester=false,mock_connected=true,mock_history=true;
+enum{ACCOUNT_EQUITY=601,ACCOUNT_MARGIN,ACCOUNT_MARGIN_LEVEL,ACCOUNT_MARGIN_SO_CALL,ACCOUNT_MARGIN_SO_SO,ACCOUNT_MARGIN_SO_MODE,ACCOUNT_STOPOUT_MODE_PERCENT=0,ORDER_STATE_FILLED=701,ORDER_COMMENT,ORDER_TIME_SETUP_MSC,ORDER_TYPE,ORDER_POSITION_ID,DEAL_PROFIT=801,DEAL_COMMISSION,DEAL_SWAP,DEAL_FEE,TRADE_ACTION_REMOVE=901,TRADE_RETCODE_REJECT=10006,TRADE_RETCODE_INVALID=10013,TRADE_RETCODE_INVALID_VOLUME=10014,TRADE_RETCODE_INVALID_PRICE=10015,TRADE_RETCODE_TRADE_DISABLED=10017,TRADE_RETCODE_MARKET_CLOSED=10018,TRADE_RETCODE_NO_MONEY=10019,TRADE_RETCODE_INVALID_FILL=10030,TRADE_RETCODE_REQUOTE=10004,TRADE_RETCODE_PRICE_CHANGED=10020,TRADE_RETCODE_PRICE_OFF=10021};
+static bool mock_tester=false,mock_connected=true,mock_history=true,mock_quote_available=true,mock_session_open=true;static double mock_balance=100.;
 string _Symbol="XAUUSD";static long mock_clock=1767225600;static int send_count=0;static int mock_error=0;static std::vector<MqlTick> mock_ticks;static int mock_visible=0;
-static std::map<int,FILE*> open_files;static int next_handle=1;
+static int mock_advance_on_flush=0;static std::map<int,FILE*> open_files;static int next_handle=1;
 string host_path(string s){std::replace(s.begin(),s.end(),'\\','/');return s;}
 int FileOpen(string p,int flags,int delimiter=0){(void)delimiter;auto path=host_path(p);const char*mode=(flags&FILE_WRITE)?((flags&FILE_READ)?"r+b":"wb"):"rb";FILE*f=fopen(path.c_str(),mode);if(!f&&(flags&FILE_WRITE)&&(flags&FILE_READ))f=fopen(path.c_str(),"w+b");if(!f)return -1;open_files[next_handle]=f;return next_handle++;}
 void FileClose(int h){auto it=open_files.find(h);if(it!=open_files.end()){fclose(it->second);open_files.erase(it);}}
 ulong FileSize(int h){FILE*f=open_files.at(h);auto p=ftell(f);fseek(f,0,SEEK_END);auto n=ftell(f);fseek(f,p,SEEK_SET);return (ulong)n;}
 bool FileSeek(int h,long offset,int origin){return fseek(open_files.at(h),offset,origin)==0;}
-void FileFlush(int h){fflush(open_files.at(h));}
+void FileFlush(int h){fflush(open_files.at(h));if(mock_advance_on_flush>0&&--mock_advance_on_flush==0&&mock_visible<(int)mock_ticks.size())++mock_visible;}
 bool FileIsExist(string p){return std::filesystem::exists(host_path(p));}
 uint FileReadArray(int h,std::vector<uchar>&a,int p,int n){return (uint)fread(a.data()+p,1,n,open_files.at(h));}
 uint FileWriteArray(int h,const std::vector<uchar>&a,int p,int n){return (uint)fwrite(a.data()+p,1,n,open_files.at(h));}
@@ -62,10 +62,10 @@ double MathPow(double x,double y){return std::pow(x,y);}
 double MathRound(double v){return std::round(v);}template<class T,size_t N,size_t M>int ArrayRange(const T(&)[N][M],int d){return d==0?(int)N:(int)M;}
 bool TimeToStruct(datetime t,MqlDateTime&x){std::time_t a=t;auto*b=std::gmtime(&a);if(!b)return false;x={b->tm_year+1900,b->tm_mon+1,b->tm_mday,b->tm_hour,b->tm_min,b->tm_sec,b->tm_wday,b->tm_yday};return true;}
 datetime TimeTradeServer(){return mock_clock;}datetime TimeCurrent(){return mock_clock;}datetime TimeGMT(){return mock_clock;}
-bool SymbolInfoSessionTrade(string s,int d,uint i,datetime&f,datetime&t){(void)s;(void)d;if(i)return false;f=0;t=86400;return true;}
+bool SymbolInfoSessionTrade(string s,int d,uint i,datetime&f,datetime&t){(void)s;(void)d;if(i||!mock_session_open)return false;f=0;t=86400;return true;}
 string AccountInfoString(int p){return p==ACCOUNT_CURRENCY?"USD":"HOST-MOCK";}
 long AccountInfoInteger(int p){switch(p){case ACCOUNT_MARGIN_SO_MODE:return ACCOUNT_STOPOUT_MODE_PERCENT;case ACCOUNT_LEVERAGE:return 500;case ACCOUNT_LOGIN:return 10001;case ACCOUNT_TRADE_MODE:return ACCOUNT_TRADE_MODE_DEMO;case ACCOUNT_MARGIN_MODE:return ACCOUNT_MARGIN_MODE_RETAIL_HEDGING;default:return 1;}}
-double AccountInfoDouble(int p){switch(p){case ACCOUNT_BALANCE:case ACCOUNT_EQUITY:return 100.;case ACCOUNT_MARGIN:return 0.;case ACCOUNT_MARGIN_SO_CALL:return 100.;case ACCOUNT_MARGIN_SO_SO:return 50.;default:return 1000.;}}
+double AccountInfoDouble(int p){switch(p){case ACCOUNT_BALANCE:case ACCOUNT_EQUITY:return mock_balance;case ACCOUNT_MARGIN:return 0.;case ACCOUNT_MARGIN_SO_CALL:return 100.;case ACCOUNT_MARGIN_SO_SO:return 50.;default:return 1000.;}}
 double SymbolInfoDouble(string s,int p){(void)s;switch(p){case SYMBOL_TRADE_CONTRACT_SIZE:return 100.;case SYMBOL_TRADE_TICK_SIZE:return .01;case SYMBOL_VOLUME_MIN:return .01;case SYMBOL_VOLUME_MAX:return 100.;case SYMBOL_VOLUME_STEP:return .01;default:return 0.;}}
 long SymbolInfoInteger(string s,int p){(void)s;if(p==SYMBOL_DIGITS)return 2;if(p==SYMBOL_FILLING_MODE)return SYMBOL_FILLING_FOK;if(p==SYMBOL_TRADE_MODE)return 4;return 0;}
 long TerminalInfoInteger(int p){return p==TERMINAL_CONNECTED?mock_connected:1;}long MQLInfoInteger(int p){return p==MQL_TESTER?mock_tester:1;}
@@ -85,12 +85,12 @@ long HistoryDealGetInteger(ulong t,int p){auto d=find_d(t);if(!d)return 0;switch
 double HistoryDealGetDouble(ulong t,int p){auto d=find_d(t);if(!d)return 0;switch(p){case DEAL_VOLUME:return d->volume;case DEAL_PRICE:return d->price;case DEAL_PROFIT:return d->profit;case DEAL_COMMISSION:return d->commission;case DEAL_SWAP:return d->swap;case DEAL_FEE:return d->fee;default:return 0;}}
 bool HistoryDealSelect(ulong t){return mock_history&&find_d(t);}bool HistoryOrderSelect(ulong t){auto o=find_o(t);return mock_history&&o&&!o->active;}int HistoryOrdersTotal(){return std::count_if(mo.begin(),mo.end(),[](auto&o){return !o.active;});}ulong HistoryOrderGetTicket(int i){for(auto&o:mo)if(!o.active&&i--==0)return o.id;return 0;}long HistoryOrderGetInteger(ulong t,int p){return mock_oi(t,p);}string HistoryOrderGetString(ulong t,int p){return mock_os(t,p);}
 bool OrderCalcMargin(int type,string s,double volume,double price,double&m){(void)type;(void)s;m=volume*price/5;return true;}bool OrderCheck(const MqlTradeRequest&r,MqlTradeCheckResult&c){(void)r;c.retcode=0;return true;}
-bool OrderSend(const MqlTradeRequest&r,MqlTradeResult&v){++send_count;assert(mock_tester);if(r.action==TRADE_ACTION_REMOVE){auto o=find_o(r.order);if(!o||!o->active)return false;o->active=false;o->state=ORDER_STATE_CANCELED;v.retcode=TRADE_RETCODE_DONE;return true;}if(mock_send_mode==1){v.retcode=TRADE_RETCODE_REJECT;return false;}
+bool OrderSend(const MqlTradeRequest&r,MqlTradeResult&v){++send_count;assert(mock_tester);if(r.action==TRADE_ACTION_REMOVE){auto o=find_o(r.order);if(!o||!o->active)return false;o->active=false;o->state=ORDER_STATE_CANCELED;v.retcode=TRADE_RETCODE_DONE;return true;}if(mock_send_mode==1||mock_send_mode==4||mock_send_mode==5||mock_send_mode==6){v.retcode=mock_send_mode==4?TRADE_RETCODE_REQUOTE:mock_send_mode==5?TRADE_RETCODE_PRICE_CHANGED:mock_send_mode==6?TRADE_RETCODE_PRICE_OFF:TRADE_RETCODE_REJECT;return false;}
  bool closing=r.position!=0;double vol=mock_send_mode==3?r.volume/2:r.volume;ulong o=++mock_next,d=++mock_next,pos=closing?mock_pt:++mock_next;long ms=mock_ticks.at(mock_visible-1).time_msc;bool pending=mock_send_mode==3;
  mo.push_back({o,r.magic,pos,ms,r.type,pending?0:ORDER_STATE_FILLED,r.symbol,r.comment,pending});double pnl=closing?(r.price-mock_price)*(mock_side==POSITION_TYPE_BUY?1:-1)*vol*100:0;md.push_back({d,o,r.magic,pos,ms,closing?DEAL_ENTRY_OUT:DEAL_ENTRY_IN,r.type,vol,r.price,pnl,-.01,0,0,r.symbol});
  if(closing){mock_volume-=vol;if(mock_volume<1e-9){mock_volume=0;mock_pt=0;}}else{mock_pt=pos;mock_magic=r.magic;mock_ptime=ms;mock_side=r.type;mock_volume=vol;mock_price=r.price;}
  if(mock_send_mode==2){v.retcode=10012;return false;}v.order=o;v.deal=d;v.retcode=TRADE_RETCODE_DONE;return true;}
-bool SymbolInfoTick(string s,MqlTick&t){(void)s;if(mock_visible<=0)return false;t=mock_ticks.at(mock_visible-1);return true;}
+bool SymbolInfoTick(string s,MqlTick&t){(void)s;if(!mock_quote_available||mock_visible<=0)return false;t=mock_ticks.at(mock_visible-1);return true;}
 int CopyTicks(string sym,std::vector<MqlTick>&out,uint flags,ulong from,uint count){(void)sym;(void)flags;int n=0;for(int i=0;i<mock_visible&&n<(int)std::min(count,(uint)out.size());i++){if(mock_ticks[i].time_msc>=(long)from)out[n++]=mock_ticks[i];}return n;}
 ulong GetMicrosecondCount(){return std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();}bool IsStopped(){return false;}void ResetLastError(){mock_error=0;}int GetLastError(){return mock_error;}
 bool EventSetMillisecondTimer(int n){return n>0;}void EventKillTimer(){}
