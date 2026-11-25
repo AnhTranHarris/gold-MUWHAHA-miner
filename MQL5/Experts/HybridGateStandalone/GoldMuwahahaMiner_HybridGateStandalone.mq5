@@ -1,5 +1,5 @@
 #property strict
-// SECTION 00 — exact tester asset declarations; native transfer still requires QC.
+// SECTION 00 — all 88 frozen model assets embedded at compile time; native QC pending.
 #property version   "2.07"
 #property description "HybridGate V1 standalone embedded model candidate; demo/live execution locked"
 #include <HybridGateV1/HG6Core.mqh>
