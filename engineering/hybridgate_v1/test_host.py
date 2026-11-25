@@ -1,7 +1,7 @@
 """Mechanical C++ compatibility harness. Does NOT compile MQL or test real terminal APIs."""
 from pathlib import Path
 import argparse,hashlib,json,re,subprocess,shutil,os
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--install',type=Path,required=True);p.add_argument('--build',type=Path,required=True);a=p.parse_args();here=Path(__file__).resolve().parent;out=a.build;out.mkdir(parents=True,exist_ok=False);inc=out/'include';inc.mkdir()
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--install',type=Path,required=True);p.add_argument('--build',type=Path,required=True);p.add_argument('--targets',nargs='+',choices=['core','ea','tester'],default=['core','ea','tester']);a=p.parse_args();here=Path(__file__).resolve().parent;out=a.build;out.mkdir(parents=True,exist_ok=False);inc=out/'include';inc.mkdir()
 # Match prior Stage5 mechanical array transform, adding types used by the terminal adapter.
 types=r'HG[56]\w+|MqlTick|uchar|int|long|double|float|uint|string'
 def trans(s):
@@ -18,7 +18,7 @@ shutil.copyfile(here/'host_compat.hpp',inc/'host_compat.hpp')
 # Full original sealed 131072-quote fixture with the new live core, additionally exercise one actual fill path.
 s=trans((a.install/'MQL5/Scripts/HybridGateQC/HG5CoreQC.mq5').read_text()).replace('"HG5Core.mqh"','"HG6Core.mqh"').replace('HG5Core core;','std::unique_ptr<HG6Core> core=std::make_unique<HG6Core>();').replace('core.','core->')
 needle='if(!core->StepGroup(g,s,r,h,a))';assert needle in s
-inject='''if(lo==10640){if(core->BindActual(90001,HGQL(data,qp+16*(lo-1)), -1,g[0].bid,1))return false;if(!core->BindActual(90001,g[0].ms,-1,g[0].bid,1))return false;}
+inject='''if(lo==10641){if(!core->BindActual(90001,HGQL(data,qp+16*10640),-1,(int)HGQI(data,qp+16*10640+8),1)||core->ActualState()!=2)return false;}
  if(lo==10641|| (lo>10640&&lo<10665&&core->ActualState()==2&&!did_restart)){
   if(!did_restart){std::vector<uchar> state,other;if(!core->ExportState(state))return false;auto restored=std::make_unique<HG6Core>();for(int k=0;k<88;k++){if(!HG5ReadVerified("HG5QC\\\\"+HG_ID[k]+".hg5p",HG_MODEL_SHA[k],67108864,bytes)||!restored->Load(k,bytes))return false;}
   if(!restored->Start(w,cap)||!restored->RestoreState(state)||!restored->ExportState(other)||state!=other||restored->ActualId()!=90001)return false;core=std::move(restored);did_restart=true;}}
@@ -27,13 +27,14 @@ s=s.replace('int si=0,pi=0,he=0,ae=0;','bool did_restart=false,actual_match=fals
 s=s.replace('he++;}', '''if(h[i].id==1&&h[i].kind==1){if(core->ActualReason()!=h[i].why||core->ActualId()!=90001)return false;actual_match=true;}if(h[i].id==1&&h[i].kind==2){if(!core->ConfirmFlat(90001)||core->ActualState()!=0)return false;actual_closed=true;}he++;}''')
 s=s.replace('if(si!=ns||pi!=np||he!=nh||ae!=na)return false;','if(si!=ns||pi!=np||he!=nh||ae!=na||!did_restart||!actual_match||!actual_closed)return false;')
 (out/'core.cpp').write_text('#include "host_compat.hpp"\n'+s+'\nint main(){bool ok=HGQTest();Print(ok?"HG6 CORE: 131072 quotes, 4171 stages, 440 proposals, 1318 path events, 5220 account events, all arrays and actual path restart PASS":"HG6 CORE FAIL");return ok?0:1;}\n')
-# Full EA event-pump shim. No trading calls: compile gate remains locked, even requested.
+# Full EA event-pump shim: observation and explicit tester-only mock execution.
 s=trans((a.install/'MQL5/Experts/HybridGateV1/GoldMuwahahaMiner_HybridGateV1.mq5').read_text())
 (out/'ea.cpp').write_text('#include "host_compat.hpp"\n'+s+'\n'+(here/'host_ea_tests.cpp').read_text())
-for target in ['core','ea']:
+(out/'tester.cpp').write_text('#include "host_compat.hpp"\n'+s+'\n'+(here/'host_tester_tests.cpp').read_text())
+for target in a.targets:
  cmd=['g++','-std=c++17','-O2','-fno-fast-math','-ffp-contract=off','-Wall','-Wextra','-Werror','-Wno-misleading-indentation','-Wno-unused-parameter','-I'+str(inc),str(out/(target+'.cpp')),'-lcrypto','-o',str(out/target)]
  print('BUILD',target,flush=True);subprocess.run(cmd,check=True)
 files=a.install/'MQL5/Files';work=out/'run';work.mkdir();(work/'HG5QC').symlink_to((files/'HG5QC').resolve(),target_is_directory=True)
-for target in ['core','ea']:
+for target in a.targets:
  print('RUN',target,flush=True);subprocess.run([str((out/target).resolve())],cwd=work,check=True)
 print('PASS host compatibility compilation and fixture tests. Native MetaEditor/terminal not run.')

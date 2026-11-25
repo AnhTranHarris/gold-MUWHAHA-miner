@@ -24,13 +24,18 @@ class HG6Store {
   if(ArrayResize(payload,(int)len)!=(int)len||ArrayCopy(payload,body,0,64,(int)len)!=(int)len)return false;return true;
  }
  string Slot(int i)const{return stem+"."+IntegerToString(i)+".bin";}
+ string Marker()const{return stem+".genesis";}
  public:
  HG6Store(){gen=0;ready=false;damaged=false;}
  bool Init(string name,const uchar &id[]){if(ready||StringLen(name)==0||ArraySize(id)!=32)return false;stem=name;if(ArrayResize(identity,32)!=32||ArrayCopy(identity,id,0,0,32)!=32)return false;ready=true;return true;}
  // Returns 0 new, 1 recovered, -1 invalid. A damaged slot is latched even with valid fallback.
  int Load(uchar &payload[]){
   if(!ready)return -1;uchar a[],b[],x[],y[];long ga=0,gb=0;
-  bool ea=FileIsExist(Slot(0)),eb=FileIsExist(Slot(1));
+  bool ea=FileIsExist(Slot(0)),eb=FileIsExist(Slot(1)),em=FileIsExist(Marker());
+  uchar marker[];if(em&&(!HG6ReadFile(Marker(),32,marker)||!HG6BytesEqual(marker,identity))){damaged=true;return -1;}
+  // Existing snapshots from older build schemas are not silently adopted.
+  if(!em&&(ea||eb)){damaged=true;return -1;}
+  if(em&&!ea&&!eb){damaged=true;return -1;}
   bool va=ea&&HG6ReadFile(Slot(0),HG6_MAX_ENVELOPE,a)&&Decode(a,ga,x)&&ga%2==0;
   bool vb=eb&&HG6ReadFile(Slot(1),HG6_MAX_ENVELOPE,b)&&Decode(b,gb,y)&&gb%2==1;
   damaged=(ea&&!va)||(eb&&!vb)||(va&&!eb)||(vb&&!ea&&gb!=1);if(!va&&!vb)return ea||eb?-1:0;
@@ -43,6 +48,7 @@ class HG6Store {
   uchar body[],digest[],out[],check[];if(ArrayResize(body,n+64)!=n+64)return false;
   HG6Put64(body,0,0x4847365354415445);HG6Put64(body,8,1);HG6Put64(body,16,gen+1);HG6Put64(body,24,n);
   if(ArrayCopy(body,identity,32,0,32)!=32||ArrayCopy(body,payload,64,0,n)!=n||!HG6Hash(body,digest)||ArrayResize(out,n+96)!=n+96||ArrayCopy(out,digest,0,0,32)!=32||ArrayCopy(out,body,32,0,n+64)!=n+64)return false;
+  if(gen==0&&!HG6WriteFile(Marker(),identity)){damaged=true;return false;}
   if(!HG6WriteFile(Slot((int)((gen+1)%2)),out)){damaged=true;return false;}long g=0;if(!Decode(out,g,check)||g!=gen+1||!HG6BytesEqual(payload,check)){damaged=true;return false;}gen=g;return true;
  }
  bool Healthy()const{return ready&&!damaged;}

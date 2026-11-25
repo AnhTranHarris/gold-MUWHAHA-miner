@@ -40,6 +40,14 @@ class HG6Cursor {
   for(int i=0;i<k;i++)if(!HG6TickEqual(raw[i],tail[i]))return false;
   if(n>k&&raw[k].time_msc<=last_ms)return false;first=k;return true;
  }
+ // SECTION T3: classify incomplete history separately from proven conflict.
+ // 1=verified, 0=wait (no complete overlap), -1=integrity failure.
+ int ClassifyBatch(const MqlTick &raw[],int n,int &first){
+  first=0;if(!valid||n<0||n>ArraySize(raw)||n>HG6_TICK_BATCH)return -1;
+  if(n==0)return 0;int k=ArraySize(tail);
+  if(last_ms>0&&n<k){for(int i=0;i<n;i++)if(!HG6TickEqual(raw[i],tail[i]))return -1;return 0;}
+  return VerifyBatch(raw,n,first)?1:-1;
+ }
  // returns exclusive end of the next complete group; 0 means trailing uncommitted group.
  int NextEnd(const MqlTick &raw[],int n,int lo){
   if(!valid||lo<0||lo>=n||n>ArraySize(raw))return -1;int e=lo+1;long t=raw[lo].time_msc;

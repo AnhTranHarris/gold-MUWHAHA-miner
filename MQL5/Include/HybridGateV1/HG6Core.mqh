@@ -28,21 +28,39 @@ class HG6Core{
  HG5EarlyBank early;HG5MiddleBank middle;HG5LateBank late;HG5HoldingBank hold;
  HG5PhaseObserver v14,v15;HG5V16 v16;HG5V17 v17;HG5V19 v19;HG5V22 v22;HG5StructuralObserver structural;HG5ProxyObserver proxy;
  HG5EarlyRouter r17;HG5V20Router r20;HG5V22Router r22;HG5V23Router r23;HG5V24Router r24;HG5V25Router r25;HG5V26Router r26;
- HG5CandleState candles;HG5ResearchAccount book[12];HG5Window windows[];HG5Quote q[];int n,cap,nw,peak,na,nfree,active_slots[HG5_MAX_ACTIVE],free_slots[HG5_MAX_ACTIVE],entry_local[HG5_MAX_ACTIVE];long path_id[HG5_MAX_ACTIVE];int path_side[HG5_MAX_ACTIVE];HG5HoldingPath paths[HG5_MAX_ACTIVE];HG5Proposal pending[];
+ HG5CandleState candles,retired_candles;HG5ResearchAccount book[12];HG5Window windows[];HG5Quote q[];int n,cap,nw,peak,na,nfree,active_slots[HG5_MAX_ACTIVE],free_slots[HG5_MAX_ACTIVE],entry_local[HG5_MAX_ACTIVE];long path_id[HG5_MAX_ACTIVE];int path_side[HG5_MAX_ACTIVE];HG5HoldingPath paths[HG5_MAX_ACTIVE];HG5Proposal pending[];
  long base,last_group,next_id,groups,observations;bool valid,started,loaded[88];
  // SECTION L1: separate actual broker path; does not affect ancestral shadow decisions.
  HG6ActualHoldingPath actual; int actual_state,actual_side,actual_px,actual_units;long actual_ms,actual_id;
+ // State 3 quarantines only the actual position; it does not invalidate frozen shadows.
+ void QuarantineActual(){actual.Reset();actual_state=3;}
  bool ActualQuote(const HG5Quote &tick,int j){
-  if(actual_state==0)return true;
-  if(actual_state==1&&tick.ms<actual_ms)return true;
-  float c[],raw[];if(!candles.Snapshot(actual_side,c,raw))return false;
-  if(actual_state==1){if(!actual.Init(hold,q,j,actual_side,base,c,actual_ms,actual_px))return false;actual_state=2;}
-  return actual.Step(hold,q,j,c)>=0;
+  if(actual_state!=2)return true;
+  float c[],raw[];if(!candles.Snapshot(actual_side,c,raw)||actual.Step(hold,q,j,c)<0)QuarantineActual();return true;
+ }
+ // Reconstruct as-of candles from an exact retired-prefix accumulator plus retained quotes.
+ // Invoke only at a complete timestamp boundary. Equal-ms fills with >1 observation
+ // are ambiguous without broker intra-ms ordering evidence: quarantine, never guess.
+ bool RecoverActual(){
+  if(actual_state!=1)return actual_state==2;if(n==0||q[n-1].ms<actual_ms)return true;
+  if(actual_ms<q[0].ms){QuarantineActual();return false;}
+  int anchor=HG5Prev(q,n-1,actual_ms);int j=anchor;
+  if(anchor<=0){QuarantineActual();return false;}
+  if(q[anchor].ms==actual_ms){if(q[anchor-1].ms==actual_ms||(anchor+1<n&&q[anchor+1].ms==actual_ms)){QuarantineActual();return false;}}
+  else j=anchor+1;
+  if(j>=n){return true;}
+  if(anchor==n-1&&j==anchor){float c[],raw[];if(!candles.Snapshot(actual_side,c,raw)||!actual.InitAsOf(hold,q,n,anchor,j,actual_side,base,c,actual_ms,actual_px)||actual.Step(hold,q,j,c)<0){QuarantineActual();return false;}actual_state=2;return true;}
+  HG5CandleState replay;HG5StateCodec w,rd;uchar state[];
+  if(!w.BeginWrite()||!retired_candles.StateFields(w)||!w.Finish(state)||!rd.BeginRead(state)||!replay.StateFields(rd)||!rd.Done()){QuarantineActual();return false;}
+  for(int k=0;k<=anchor;k++)if(!replay.Push(q[k].ms,q[k].bid,q[k].ask)){QuarantineActual();return false;}
+  float c[],raw[];if(!replay.Snapshot(actual_side,c,raw)||!actual.InitAsOf(hold,q,n,anchor,j,actual_side,base,c,actual_ms,actual_px)){QuarantineActual();return false;}
+  for(int k=j;k<n;k++){if(k>anchor&&!replay.Push(q[k].ms,q[k].bid,q[k].ask)){QuarantineActual();return false;}if(!replay.Snapshot(actual_side,c,raw)||actual.Step(hold,q,k,c)<0){QuarantineActual();return false;}}
+  actual_state=2;return true;
  }
  bool Stage(HG5StageEvent &o[],int st,long t,int sd,long rank,long src,float confidence=0){int k=ArraySize(o);if(ArrayResize(o,k+1)!=k+1)return false;o[k].stage=st;o[k].ms=t;o[k].side=sd;o[k].rank=rank;o[k].source=src;o[k].confidence=confidence;return true;}
  bool Path(HG5PathEvent &o[],int slot,int kind,long j){int k=ArraySize(o);if(ArrayResize(o,k+1)!=k+1)return false;o[k].id=path_id[slot];o[k].ordinal=j;o[k].kind=kind;o[k].why=paths[slot].why;o[k].net=paths[slot].net;o[k].h4=paths[slot].h4;o[k].v4=paths[slot].v4;o[k].h5=paths[slot].h5;return true;}
  bool Acct(HG5AccountEvent &o[],int k,long id,long j,int kind){int i=ArraySize(o);if(ArrayResize(o,i+1)!=i+1)return false;o[i].account=k;o[i].id=id;o[i].ordinal=j;o[i].kind=kind;return true;}
- bool Room(int count){if(count<1||count>cap)return false;if(n+count<=cap)return true;int drop=HG5Prev(q,n-1,q[n-1].ms-900000);if(drop>n-257)drop=n-257;for(int i=0;i<na;i++)if(entry_local[active_slots[i]]<drop)drop=entry_local[active_slots[i]];if(actual_state==2&&actual.EntryLocal()<drop)drop=actual.EntryLocal();if(drop<=0||n-drop+count>cap)return false;if(actual_state==2&&!actual.Shift(drop))return false;for(int i=0;i<na;i++){int k=active_slots[i];if(!paths[k].Shift(drop))return false;entry_local[k]-=drop;}for(int i=0;i<n-drop;i++)q[i]=q[i+drop];n-=drop;base+=drop;return true;}
+ bool Room(int count){if(count<1||count>cap)return false;if(n+count<=cap)return true;int drop=HG5Prev(q,n-1,q[n-1].ms-900000);if(drop>n-257)drop=n-257;for(int i=0;i<na;i++)if(entry_local[active_slots[i]]<drop)drop=entry_local[active_slots[i]];if(actual_state==2&&actual.EntryLocal()<drop)drop=actual.EntryLocal();if(drop<=0||n-drop+count>cap)return false;if(actual_state==2&&!actual.Shift(drop))return false;for(int i=0;i<na;i++){int k=active_slots[i];if(!paths[k].Shift(drop))return false;entry_local[k]-=drop;}for(int i=0;i<drop;i++)if(!retired_candles.Push(q[i].ms,q[i].bid,q[i].ask))return false;for(int i=0;i<n-drop;i++)q[i]=q[i+drop];n-=drop;base+=drop;return true;}
  bool Observe(const HG5Quote &tick,HG5EarlyRow &a[],HG5EarlyRow &g[],HG5EarlyRow &b[],HG5EarlyRow &c[],HG5EarlyRow &d[],HG5EarlyRow &e[],float &S[],long &so,float &P[],long &po){
   HG5EarlyRow x;int i;
   if(!v14.Push(tick,x))return false;if(x.width){i=ArraySize(a);if(ArrayResize(a,i+1)!=i+1)return false;a[i]=x;}
@@ -75,10 +93,13 @@ public:
   for(int i=0;i<ArraySize(o14);i++)if(!Stage(st,0,t,o14[i].side,o14[i].rank,0))return false;for(int i=0;i<ArraySize(o15);i++)if(!Stage(st,1,t,o15[i].side,o15[i].rank,0))return false;for(int i=0;i<ArraySize(o16);i++)if(!Stage(st,2,t,o16[i].side,o16[i].rank,o16[i].source))return false;for(int i=0;i<ArraySize(o17);i++)if(!Stage(st,3,t,o17[i].side,o17[i].rank,o17[i].source))return false;
   for(int i=0;i<ArraySize(o20);i++)if(!Stage(st,4,t,o20[i].side,0,o20[i].source,o20[i].confidence))return false;for(int i=0;i<ArraySize(o22);i++)if(!Stage(st,5,t,o22[i].side,0,o22[i].source))return false;for(int i=0;i<ArraySize(o23);i++)if(!Stage(st,6,t,o23[i].side,0,o23[i].source))return false;
   for(int i=0;i<ArraySize(o24);i++)if(!Stage(st,7,t,o24[i].side,o24[i].id,(long)o24[i].replaced))return false;for(int i=0;i<ArraySize(o25);i++)if(!Stage(st,8,t,o25[i].side,o25[i].id,(long)o25[i].replaced))return false;for(int i=0;i<ArraySize(o26);i++){if(!Stage(st,9,t,o26[i].side,o26[i].id,0))return false;int k=ArraySize(pending);if(ArrayResize(pending,k+1)!=k+1||ArrayResize(intents,k+1)!=k+1)return false;HG5Proposal p;p.id=next_id++;p.t=t;p.side=o26[i].side;p.origin=o26[i].id;pending[k]=p;intents[k]=p;}
-  last_group=t;groups++;valid=true;return true;
+  last_group=t;groups++;valid=true;if(actual_state==1)RecoverActual();return true;
  }
- // SECTION L2: actual fill binding. A fill already behind committed history is ambiguous.
- bool BindActual(long id,long ms,int side,int cents,int units){if(!valid||!started||actual_state!=0||id<0||ms<=last_group||(side!=1&&side!=-1)||cents<=0||units<=0||units>100)return false;actual_id=id;actual_ms=ms;actual_side=side;actual_px=cents;actual_units=units;actual_state=1;return true;}
+ // SECTION L2: confirmed-fill binding, including delayed confirmation within retained history.
+ // Failure retains identity in state 3 for protection/reconciliation; no new admission.
+ bool BindActual(long id,long ms,int side,int cents,int units){if(!valid||!started||actual_state!=0||id<=0||ms<=0||(side!=1&&side!=-1)||cents<=0||units<=0||units>100)return false;actual_id=id;actual_ms=ms;actual_side=side;actual_px=cents;actual_units=units;actual_state=1;if(ms<=last_group)return RecoverActual();return true;}
+ bool BindUnmodeled(long id,long ms,int side,int units){if(actual_state!=0||id<=0||ms<=0||(side!=1&&side!=-1)||units<=0||units>100)return false;actual_id=id;actual_ms=ms;actual_side=side;actual_px=0;actual_units=units;QuarantineActual();return true;}
+ bool ReduceActual(long id,int units){if(actual_state==0||id!=actual_id||units<=0||units>actual_units)return false;actual_units=units;return true;}
  bool ConfirmFlat(long id){if(actual_state==0||id!=actual_id)return false;actual.Reset();actual_state=actual_side=actual_px=actual_units=0;actual_ms=0;actual_id=-1;return true;}
  int ActualState()const{return actual_state;}
  int ActualReason()const{return actual_state==2?actual.Reason():0;}
@@ -90,22 +111,22 @@ public:
  long LastGroup()const{return last_group;}
  bool Snapshot(int k,double &v[],long &z[])const{return valid&&k>=0&&k<12&&book[k].Snapshot(v,z);}
  bool Stats(long &z[])const{if(!valid||ArrayResize(z,8)!=8)return false;z[0]=base+n;z[1]=base;z[2]=peak;z[3]=na;z[4]=ArraySize(pending);z[5]=next_id;z[6]=groups;z[7]=observations;for(int i=0;i<na;i++)z[7]+=paths[active_slots[i]].observations;return true;}
- // Version 2 payload. Caller must validate a SHA-256 sealed envelope and model/config manifest
+ // Version 3 payload (retired candle accumulator and actual quarantine). Caller must validate a SHA-256 sealed envelope and model/config manifest
  // BEFORE Restore. Restore only into fresh Start() state. Never use a failed restore.
  bool Transfer(HG5StateCodec &c){
-  int version=2,savedcap=cap,savednw=nw;if(!c.I32(version)||version!=2||!c.I32(savedcap)||savedcap!=cap||!c.I32(savednw)||savednw!=nw)return false;
+  int version=3,savedcap=cap,savednw=nw;if(!c.I32(version)||version!=3||!c.I32(savedcap)||savedcap!=cap||!c.I32(savednw)||savednw!=nw)return false;
   if(!c.I32(n)||!c.I32(peak)||!c.I32(na)||!c.I32(nfree)||!c.I64(base)||!c.I64(last_group)||!c.I64(next_id)||!c.I64(groups)||!c.I64(observations))return false;
   if(n<0||n>cap||peak<n||peak>cap||na<0||na>HG5_MAX_ACTIVE||nfree!=HG5_MAX_ACTIVE-na||base<0||next_id<0||groups<0||observations<0||(n==0&&last_group!=-1))return false;
   for(int i=0;i<nw;i++){HG5Window w=windows[i];if(!w.StateFields(c)||w.open_ms!=windows[i].open_ms||w.block_ms!=windows[i].block_ms||w.flatten_ms!=windows[i].flatten_ms||w.close_ms!=windows[i].close_ms)return false;}
   for(int i=0;i<n;i++){if(!q[i].StateFields(c)||q[i].ms<0||q[i].bid<=0||q[i].ask<q[i].bid||(i&&q[i].ms<q[i-1].ms))return false;}if(n&&q[n-1].ms!=last_group)return false;
-  if(!v14.StateFields(c)||!v15.StateFields(c)||!v16.StateFields(c)||!v17.StateFields(c)||!v19.StateFields(c)||!v22.StateFields(c)||!structural.StateFields(c)||!proxy.StateFields(c)||!r17.StateFields(c)||!r20.StateFields(c)||!r22.StateFields(c)||!r23.StateFields(c)||!r24.StateFields(c)||!r25.StateFields(c)||!r26.StateFields(c)||!candles.StateFields(c))return false;
+  if(!v14.StateFields(c)||!v15.StateFields(c)||!v16.StateFields(c)||!v17.StateFields(c)||!v19.StateFields(c)||!v22.StateFields(c)||!structural.StateFields(c)||!proxy.StateFields(c)||!r17.StateFields(c)||!r20.StateFields(c)||!r22.StateFields(c)||!r23.StateFields(c)||!r24.StateFields(c)||!r25.StateFields(c)||!r26.StateFields(c)||!candles.StateFields(c)||!retired_candles.StateFields(c)||retired_candles.Count()!=base||candles.Count()!=base+n)return false;
   for(int i=0;i<12;i++)if(!book[i].StateFields(c)||!book[i].Ready())return false;
   bool seen[HG5_MAX_ACTIVE];for(int i=0;i<HG5_MAX_ACTIVE;i++)seen[i]=false;
   for(int i=0;i<na;i++){if(!c.I32(active_slots[i]))return false;int k=active_slots[i];if(k<0||k>=HG5_MAX_ACTIVE||seen[k])return false;seen[k]=true;if(!c.I32(entry_local[k])||!c.I64(path_id[k])||!c.I32(path_side[k])||!paths[k].StateFields(c))return false;if(entry_local[k]<0||entry_local[k]>=n||path_id[k]<0||path_id[k]>=next_id||(path_side[k]!=1&&path_side[k]!=-1))return false;}
   for(int i=0;i<nfree;i++){if(!c.I32(free_slots[i]))return false;int k=free_slots[i];if(k<0||k>=HG5_MAX_ACTIVE||seen[k])return false;seen[k]=true;}
   int np=ArraySize(pending);if(!c.I32(np)||np<0||np>HG5_MAX_ACTIVE)return false;if(c.Reading()&&ArrayResize(pending,np)!=np)return false;for(int i=0;i<np;i++)if(!pending[i].StateFields(c)||pending[i].id<0||pending[i].id>=next_id||pending[i].t!=last_group||(pending[i].side!=1&&pending[i].side!=-1))return false;
   if(!c.I32(actual_state)||!c.I32(actual_side)||!c.I32(actual_px)||!c.I32(actual_units)||!c.I64(actual_ms)||!c.I64(actual_id)||!actual.StateFields(c))return false;
-  if(actual_state<0||actual_state>2||(actual_state==0&&(actual_id!=-1||actual.Ready()))||(actual_state>0&&(actual_id<0||actual_ms<0||actual_px<=0||actual_units<=0||actual_units>100||(actual_side!=1&&actual_side!=-1)))||(actual_state==1&&(actual_ms<=last_group||actual.Ready()))||(actual_state==2&&(!actual.Validate(n,actual_side,actual_px,actual_ms)||actual_ms>last_group)))return false;
+  if(actual_state<0||actual_state>3||(actual_state==0&&(actual_id!=-1||actual.Ready()))||(actual_state>0&&(actual_id<0||actual_ms<0||(actual_state!=3&&actual_px<=0)||actual_px<0||actual_units<=0||actual_units>100||(actual_side!=1&&actual_side!=-1)))||(actual_state==1&&(actual_ms<=last_group||actual.Ready()))||(actual_state==2&&(!actual.Validate(n,actual_side,actual_px,actual_ms)||actual_ms>last_group))||(actual_state==3&&actual.Ready()))return false;
   return true;
  }
  bool ExportState(uchar &out[]){if(!valid||!started)return false;HG5StateCodec c;return c.BeginWrite()&&Transfer(c)&&c.Finish(out);}

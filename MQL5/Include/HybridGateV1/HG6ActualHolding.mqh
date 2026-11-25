@@ -26,12 +26,16 @@ class HG6ActualHoldingPath {
  public:
  HG6ActualHoldingPath(){Reset();}
  void Reset(){h.ZeroFields();r.ZeroFields();a.ZeroFields();e=s=next=0;ready=false;confirmed_ms=0;confirmed_px=why=0;h4=v4=h5=0;}
- bool Init(const HG5HoldingBank &bank,const HG5Quote &q[],int j,int side,long base,const float &candles[],long fill_ms,int fill_px){
-  Reset();if(j<=0||j>=ArraySize(q)||(side!=1&&side!=-1)||fill_px<=0||fill_ms<=q[j-1].ms||fill_ms>q[j].ms)return false;
-  float rx[];if(!HG5RXFeatures(q,j+1,j,side,j-1,base,rx)||!HG5HoldingPriors(bank,rx,candles,h4,v4,h5))return false;
+ // The prior anchor is the last unambiguous observation at or before the fill.
+ // The first holding observation is at or after fill; no future candle enters priors.
+ bool InitAsOf(const HG5HoldingBank &bank,const HG5Quote &q[],int n,int anchor,int j,int side,long base,const float &candles[],long fill_ms,int fill_px){
+  Reset();if(anchor<=0||j<anchor||j>anchor+1||j>=n||n>ArraySize(q)||(side!=1&&side!=-1)||fill_px<=0||q[anchor].ms>fill_ms||q[j].ms<fill_ms)return false;
+  if(j==anchor&&q[j].ms!=fill_ms)return false;
+  if(j!=anchor&&q[j].ms<=fill_ms)return false;
+  float rx[];if(!HG5RXFeatures(q,anchor+1,anchor,side,anchor-1,base,rx)||!HG5HoldingPriors(bank,rx,candles,h4,v4,h5))return false;
   e=j;s=side;next=j;confirmed_ms=fill_ms;confirmed_px=fill_px;
   h.Init(q,j,s,h5,v4);r.Init(q,j,s,h5,v4);a.Init(q,j,s,30.f,v4);
-  h.px=fill_px;h.fill_ms=fill_ms;r.px=fill_px;r.t0=fill_ms;a.px=fill_px;a.t0=fill_ms;
+  h.px=fill_px;h.fill_ms=fill_ms;h.last=fill_ms-2000;r.px=fill_px;r.t0=fill_ms;r.last=fill_ms-1000;a.px=fill_px;a.t0=fill_ms;a.last=fill_ms-1000;
   ready=true;return true;
  }
  int Step(const HG5HoldingBank &bank,const HG5Quote &q[],int j,const float &candles[]){

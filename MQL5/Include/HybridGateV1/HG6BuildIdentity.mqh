@@ -1,5 +1,5 @@
 #ifndef HG6_BUILD_ID_MQH
 #define HG6_BUILD_ID_MQH
-// Generated build pin; digest of native modules and frozen 204-file install manifest.
-#define HG6_BUILD_ID "b51cbb55bdccebc1e8337c76b6fbddf90140d6cbbc6218cff400986cb43e4e84"
+// Stage 6D source+frozen manifest identity. Old checkpoint schemas intentionally incompatible.
+#define HG6_BUILD_ID "62e923fa46b4d887589cae3c7650b3f5bae625f26aeb84178aeac556826084fe"
 #endif

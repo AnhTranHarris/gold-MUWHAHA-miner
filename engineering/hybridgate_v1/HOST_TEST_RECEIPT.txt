@@ -4,9 +4,50 @@ RUN core
 HG5CoreQC quotes=%d stages=%d proposals=%d path_events=%d account_events=%d elapsed_us=%I64u
 HG6 CORE: 131072 quotes, 4171 stages, 440 proposals, 1318 path events, 5220 account events, all arrays and actual path restart PASS
 RUN ea
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6D broker: explicit tester-only, ambiguous ack+restart, unavailable history, partial close/cancel, residual close, rejection, external flat and ledger idempotence PASS
 HG6: execution release lock; compile and run QC first
 HG6 initialized build=%s restored=%d ordinal=%I64d execution_lock=%d
 pump ordinal=15999 expected=15999 caught=1 fatal=0 last=1767322349807 expected_ms=1767322349807
+HG6 end: uncommitted tail/latest=%I64d cursor=%I64d; no invented future quote
+HG6 totals proposals=%I64d suppressed=%I64d gate_blocked=%I64d acknowledged_sends=%I64d closed=%I64d actual_net=%.8f outstanding=%d
 HG6 deinit reason=%d ordinal=%I64d; no implied liquidation
 HG6 EA: overlap, same-ms, invalid grid, capacity, cursor restart, state corruption/identity, locked broker, 16000-quote event pump PASS; zero sends
+PASS host compatibility compilation and fixture tests. Native MetaEditor/terminal not run.
+BUILD ea
+BUILD tester
+RUN ea
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6D broker: explicit tester-only, ambiguous ack+restart, unavailable history, partial close/cancel, residual close, rejection, external flat and ledger idempotence PASS
+HG6: execution release lock; compile and run QC first
+HG6 initialized build=%s restored=%d ordinal=%I64d execution_lock=%d
+pump ordinal=15999 expected=15999 caught=1 fatal=0 last=1767322349807 expected_ms=1767322349807
+HG6 end: uncommitted tail/latest=%I64d cursor=%I64d; no invented future quote
+HG6 totals proposals=%I64d suppressed=%I64d gate_blocked=%I64d acknowledged_sends=%I64d closed=%I64d actual_net=%.8f outstanding=%d
+HG6 deinit reason=%d ordinal=%I64d; no implied liquidation
+HG6 EA: overlap, same-ms, invalid grid, capacity, cursor restart, state corruption/identity, locked broker, 16000-quote event pump PASS; zero sends
+RUN tester
+HG6 initialized build=%s restored=%d ordinal=%I64d execution_lock=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+tester proposals=3 suppressed=0 gate_blocked=0 sends=6 closed=3 active=0 ordinal=10876 actual_state=0
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 FAIL CLOSED: host injected model failure
+HG6 order attempt seq=%I64d sent=%d retcode=%u order=%I64u deal=%I64u error=%d
+HG6 end: uncommitted tail/latest=%I64d cursor=%I64d; no invented future quote
+HG6 totals proposals=%I64d suppressed=%I64d gate_blocked=%I64d acknowledged_sends=%I64d closed=%I64d actual_net=%.8f outstanding=%d
+HG6 deinit reason=%d ordinal=%I64d; no implied liquidation
+HG6D FULL TESTER MOCK: normal entry/holding/exit, financial reconciliation, fatal-state rescue and no post-quarantine entry PASS
 PASS host compatibility compilation and fixture tests. Native MetaEditor/terminal not run.
