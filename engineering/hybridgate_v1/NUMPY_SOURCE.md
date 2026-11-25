@@ -1,0 +1,6 @@
+# V22 float32 compatibility provenance
+The scalar compatibility implementation adapts the NumPy v2.3.5 float32 SIMD tanh piecewise polynomial and exp Cody–Waite range reduction/rational approximation, with explicit binary32 rounding and a binary64 product/TwoSum midpoint correction. Upstream source:
+- https://github.com/numpy/numpy/blob/v2.3.5/numpy/_core/src/umath/loops_hyperbolic.dispatch.cpp.src
+- https://github.com/numpy/numpy/blob/v2.3.5/numpy/_core/src/umath/loops_exponent_log.dispatch.c.src
+- https://github.com/numpy/numpy/blob/v2.3.5/numpy/_core/src/umath/npy_simd_data.h
+The exact reference polynomial coefficient table is extracted by tools/generate_v22.py from the installed NumPy binary with the pinned SHA-256 in receipts/numpy_table.json. The initial contiguous-table assumption failed because of padding; separate validated anchors correct it. Preserve the attached NumPy license and notices. These are frozen engineering calculations, not learned weights or trading policy changes. Tested with reference NumPy 2.3.5, current x86_64 SIMD dispatch, GCC no fast-math/no contraction; native compiler and other CPU dispatch are not certified. Do not substitute another platform's tanh/exp implementation.

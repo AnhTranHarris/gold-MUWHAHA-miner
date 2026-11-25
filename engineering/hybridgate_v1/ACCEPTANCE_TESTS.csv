@@ -1,0 +1,34 @@
+id,category,fixture,required_result,native_status
+D01,Dependency,Missing or modified model/partition/config; unsupported feature count,"Block startup, report exact missing/hash mismatch; still reconcile owned exposure",NOT_RUN
+D02,Dependency,Clean isolated restore; remove training data and all historical proposal/score witnesses from native inference sandbox,All selected assets resolved; zero production reads from disallowed data; no training import side effects,NOT_RUN
+D03,Inference,Each model: real features and NaN/zero/threshold adjacent input,Output parity including objective and class ordering; exact resulting decisions; document numeric margins,NOT_RUN
+D04,Inference,Generic feature names in model header,"Resolve each index to original feature construction, compare float32 vector and hash",NOT_RUN
+E01,Tick,"Repeated identical ticks, shared ms, burst, CopyTicks inclusive boundary",No loss/duplicate from ingestion; exact order/multiplicity or fail closed,NOT_RUN
+E02,Tick,Truncated/late/backfilled source stream,No future or retroactive proposal dispatch; quarantine inconsistent cursor,NOT_RUN
+E03,Entry,"All stages replay fresh, Jan–Sep exact original month resets","Match fresh 289835 proposal population and ordered side/lineage, including March fresh witness; differences classified not repaired by IDs",NOT_RUN
+E04,Entry,Raw-prefix truncation at equal-ms boundary and every stage,No earlier decision changes with future suffix; record causal equal-ms group lag if needed,NOT_RUN
+E05,Entry,"Reservations at 8s/24s, minute rollover, parent arrival exactly at release","First qualifying release, parent tie priority, cancel/expire, no retroactive intent",NOT_RUN
+E06,Entry,"Clock closed, rejected orders, occupied account, partial fill",Shadow stages unchanged vs reference for same quotes; actual order gating separate,NOT_RUN
+E07,Entry,"Continuous month seam, daily/week reopen, cold start",Explicit warmup/reset vs continuous state receipts; no unapproved state changes,NOT_RUN
+H01,Holding,All fresh entry paths in reference adapter,Match all fresh potential paths including 289557 matched archive exit/net witnesses; no missing close,NOT_RUN
+H02,Holding,Same timestamp ties; independent renewal vs deadline,"Exact source priority and reason codes, no future parent decision access",NOT_RUN
+H03,Holding,"Peak ratchet, missing history, adverse and harvest paths",Exact floors/actor/partition release on reference; state persists,NOT_RUN
+H04,Holding,"Delayed/slipped/partial confirmed fill, fill during gap",Actual fill feedback receipt; no fabricated quote/retroactive exit; risk safety now,NOT_RUN
+X01,Execution,Success return without deal; rejected or timeout with unknown state,No assumption of fill; reconcile before retry; one live reservation only,NOT_RUN
+X02,Execution,Duplicate/out-of-order trade callbacks,Idempotent by deal/order/position identity; ledger exactly once,NOT_RUN
+X03,Execution,"Partial entry, partial close, pending residual, disconnect",Track VWAP and executed volume; no entry until fully flat and later quote,NOT_RUN
+X04,Execution,Entry/exit on same quote; multiple proposals during busy,Reference exact capacity policy; no live same-quote handoff or stale signal queue,NOT_RUN
+X05,Execution,Unknown magic/foreign position/netting conflict,Block owned entry; never close unowned exposure,NOT_RUN
+X06,Execution,Unsupported broker volume/contract/currency/margin,Reject or quarantine; no silent upward lot rounding,NOT_RUN
+A01,Account,"Ladder off and thresholds one cent below/at/above, downscale, 0.10/1.00 caps",Exact integer sizing and fixed per-position volume; broker checks,NOT_RUN
+A02,Account,Reference 12 combinations leverage/clock/size,"Match full recovered account CSV net, trade count, margin skips, DD, clock counts",NOT_RUN
+C01,Clock,"DST transition, daily 15:58/15:59/16:00, 13:00 early close, holidays, Friday close",Clock policy exact; no prohibited entry or carry,NOT_RUN
+C02,Clock,"No quote at liquidation; market closed, late fill after cutoff","Timer latch, cancel/retry, confirmed flat or overdue; block until resolved",NOT_RUN
+C03,Clock,"Unknown server offset/calendar, drift, stale quote",Fail closed for entry; risk management active,NOT_RUN
+R01,Recovery,"Restart during entry request, partial fill, open, exit request, pending reservation",Idempotent reconciliation; recover age/floor/anchor; no double execution,NOT_RUN
+R02,Recovery,Crash between intent persistence and send/ack,Resolve broker order/deal history; no blind duplicate,NOT_RUN
+R03,Recovery,"Corrupt/stale/mismatched checkpoint, missing ticks, unknown ownership","Use verified previous generation or quarantine/owned safety close, never guess",NOT_RUN
+P01,Performance,Burst tick benchmark on target Windows hardware; concurrent timer/transaction workload,"Report p50/p95/p99/max backlog, processing and fill lag; no unbounded backlog or silent loss; agree budget before order arming",NOT_RUN
+B01,Build,"Clean checkout/new branch, MetaEditor build","Pinned assets, zero compile errors/warnings, no old strategy substitution",NOT_RUN
+B02,Build,Native Every tick based on real ticks; separate source-exact custom replay if available,Report parity and any feed/execution differences; synthetic tester not substitute,NOT_RUN
+U01,Human,"Observation-only demo, then explicitly armed isolated demo","Human acceptance before demo orders, no live authorization",NOT_RUN

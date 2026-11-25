@@ -1,0 +1,12 @@
+BUILD core
+BUILD ea
+RUN core
+HG5CoreQC quotes=%d stages=%d proposals=%d path_events=%d account_events=%d elapsed_us=%I64u
+HG6 CORE: 131072 quotes, 4171 stages, 440 proposals, 1318 path events, 5220 account events, all arrays and actual path restart PASS
+RUN ea
+HG6: execution release lock; compile and run QC first
+HG6 initialized build=%s restored=%d ordinal=%I64d execution_lock=%d
+pump ordinal=15999 expected=15999 caught=1 fatal=0 last=1767322349807 expected_ms=1767322349807
+HG6 deinit reason=%d ordinal=%I64d; no implied liquidation
+HG6 EA: overlap, same-ms, invalid grid, capacity, cursor restart, state corruption/identity, locked broker, 16000-quote event pump PASS; zero sends
+PASS host compatibility compilation and fixture tests. Native MetaEditor/terminal not run.

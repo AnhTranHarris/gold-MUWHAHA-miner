@@ -1,0 +1,8 @@
+# Stage 6 failure and correction ledger
+
+- Connector fetch_commit normalized response lacked tree. No repository content was altered by that failed call; raw Git commit tree endpoint provided exact original tree. Original branch untouched.
+- Host shim first lacked `MathPow`, used by released V22 code. Added to shim only. Second host compile found fixed native array vs C++ vector signature mismatch; fixed mechanical host transform and mock CopyTicks, not frozen/native calculations.
+- Initial full EA host test failed because after increasing visible tick count it trusted stale caught-up state and did not wake the pump. Test now explicitly wakes at final batch and verifies committed ordinal and group. This is a harness defect, not evidence of native behavior. Full tests rerun on final pinned source.
+- Snapshot audit added slot parity and missing predecessor checks, rejecting a surviving generation >1 without its predecessor. Tested corruption, deletion, wrong identity and normal generation recovery. Both files missing is indistinguishable from a genuinely new namespace; production intent/ledger namespace must be separately certified. A surviving generation is not permission to trade.
+- Actual broker-confirmed holding path is a new integration adaptation. One exact-price/time fixture path including restart and late-anchor rejection passed. Delayed/slipped/partial/fill-gap cases remain mandatory native acceptance. Execution stays locked.
+- Native compile unavailable by user's chosen human-in-the-loop workflow. No EX5; all native acceptance tests NOT_RUN. Production execution/ledger/watchdog and broker configuration still pending; do not equate host results with production readiness.

@@ -1,0 +1,5 @@
+# Engineering corrections (new supplement only)
+- V22 prior 7,964 scalar mismatches: original NumPy SIMD float32 operations differed from standard double tanh/exp. Reproduce original reference range reduction and coefficient bits. Initial contiguous-table extraction assumption failed on padding; corrected using individual anchors. Corrected strict vector comparison, no fitted policy change.
+- Previous large integrated run timed out; completed new bounded million-quote run with original quote order and no new training.
+- Order intent review: a restored PREPARED record could acquire a fresh permit; freeze the restored record pending authoritative reconciliation instead. A targeted negative test first exposed insufficient validation of nonzero PREPARED fill; the exact guard was added and all 25 cases passed. No real orders executed.
+- Original aggregate script's final text says V22 gate open. That is a stale message in the immutable earlier runner, not the outcome of corrected strict numeric checks. Receipts from corrected run are authoritative for host parity. Do not edit the earlier archive.
