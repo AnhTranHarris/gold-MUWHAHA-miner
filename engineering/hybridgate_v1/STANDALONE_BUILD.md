@@ -1,3 +1,9 @@
+# REJECTED FOR SINGLE-MQ5 DELIVERY
+
+**Do not copy the v2.07 MQ5 alone into MetaEditor.** This historical packaging experiment requires external compile-time headers and resources and does not satisfy the owner's single-file requirement. The frozen v2.06 baseline is unchanged. The corrected v2.08 source assembly and its byte-verification receipt are recorded on [the single-MQ5 correction branch](https://github.com/AnhTranHarris/gold-MUWHAHA-miner/tree/carson/mt5-hybridgate-v1-single-mq5-v208-20261125). Native compilation is NOT_RUN; do not release trading execution.
+
+---
+
 # HybridGate v2.07 — standalone native build candidate (Stage 7A)
 
 **Status: source and packaging candidate; native compilation NOT RUN; execution certification NOT RUN.** Parent: `699da4f68239b8029a9e61e272e650f90c365de5` (v2.06). This branch adds a separate EA; no original strategy, fitted model, data, or release gate is modified.
