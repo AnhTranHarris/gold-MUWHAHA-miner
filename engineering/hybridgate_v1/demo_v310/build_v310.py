@@ -7,5 +7,5 @@ marker=b'// HG10 clean native terminal adapter.'
 assert b.count(marker)==1
 core=b[:b.index(marker)].replace(b'#property version "3.00"',b'#property version "3.10"',1).replace(b'#property description "HybridGate V1 standalone demo and Strategy Tester EA"',b'#property description "HybridGate v3.10 economic competence and capital protection (demo/tester)"',1)
 out=core+Path(__file__).with_name('DemoController.mq5').read_bytes()
-assert hashlib.sha256(out).hexdigest()=='555f78d2630da69147ccdde46b289145c108df9af92469784b426c39b7da22e3'
+assert hashlib.sha256(out).hexdigest()=='8120e2ee26d876403aa6ec0f6abed4cd94fd85d6b48d77a72c3039a08b3f79fc'
 assert not a.out.exists();a.out.write_bytes(out)
