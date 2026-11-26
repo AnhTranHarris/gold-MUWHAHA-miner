@@ -1,0 +1,40 @@
+{
+  "parent_mq5_sha256": "4361dc87eff75c66c900530eba2bc1dc97efd6ba6a694d3d04dc185c6eaa96d3",
+  "candidate_mq5_sha256": "555f78d2630da69147ccdde46b289145c108df9af92469784b426c39b7da22e3",
+  "candidate_bytes": 94136638,
+  "core_and_embedded_model_region": "byte identical excluding version/description metadata",
+  "host_fixture": {
+    "input_quotes": 131072,
+    "committed_quotes": 131071,
+    "proposals": 440,
+    "completed_shadow_paths": 439,
+    "completed_mock_trades": 302,
+    "mock_closed_net_usd": 113.34,
+    "mock_balance_usd": 213.33,
+    "fatal": 0,
+    "notes": "Original archive models loaded by host file shim with SHA checks; not native embedded decoder. Mock broker does not implement server-side SL triggering or actual floating equity."
+  },
+  "injected_loss_fixture": {
+    "completed_mock_trades": 4,
+    "mock_balance_usd": 95.12,
+    "mock_net_usd": -4.88,
+    "stop_budget_blocks": 302,
+    "completed_shadow_paths": 439,
+    "fatal": 0,
+    "note": "Each mocked close artificially set to -1.20 gross, not October replay. Initial test assertion incorrectly expected a daily latch; reserve blocked orders before floor crossing. Corrected assertion passed."
+  },
+  "unit_checks": [
+    "cold abstention",
+    "positive competence",
+    "negative quarantine",
+    "side isolation",
+    "expiry",
+    "daily rollover",
+    "peak halt",
+    "persistent risk state"
+  ],
+  "native_compile": "NOT_RUN",
+  "native_jan_oct": "NOT_RUN",
+  "parameters": "provisional hypothesis; not fitted on October. 24 effective samples, 5 cents score hurdle, 2% position, 5% daily, 10% peak, 7 cents cost allowance per 0.01 lot. Score is a heuristic, not calibrated confidence interval.",
+  "remaining": "No independent price forecasting model trained or validated; estimates conditional realized shadow lifecycle expectancy. Holding model unchanged except independent risk override. Native stop execution, clock mapping, generalization unverified. Start only on flat isolated demo account; do not operate both versions. Real accounts refused."
+}
