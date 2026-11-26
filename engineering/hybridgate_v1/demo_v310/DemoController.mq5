@@ -125,7 +125,7 @@ bool D11Stop(MqlTradeRequest &r,const MqlTick &tick,int units,const HG6AccountFa
  double gross=0;if(!OrderCalcProfit(r.type,_Symbol,r.volume,r.price,price,gross)||!MathIsValidNumber(gross)||gross>=0||-gross+cost>budget+1e-7)return false;
  r.sl=price;return true;
 }
-bool D10DefiniteReject(uint code){return code==TRADE_RETCODE_REQUOTE||code==TRADE_RETCODE_PRICE_CHANGED||code==TRADE_RETCODE_PRICE_OFF||code==TRADE_RETCODE_REJECT||code==TRADE_RETCODE_INVALID||code==TRADE_RETCODE_INVALID_VOLUME||code==TRADE_RETCODE_INVALID_PRICE||code==TRADE_RETCODE_TRADE_DISABLED||code==TRADE_RETCODE_MARKET_CLOSED||code==TRADE_RETCODE_NO_MONEY||code==TRADE_RETCODE_INVALID_FILL;}
+bool D10DefiniteReject(uint code){return code==TRADE_RETCODE_REQUOTE||code==TRADE_RETCODE_PRICE_CHANGED||code==TRADE_RETCODE_PRICE_OFF||code==TRADE_RETCODE_REJECT||code==TRADE_RETCODE_INVALID||code==TRADE_RETCODE_INVALID_VOLUME||code==TRADE_RETCODE_INVALID_PRICE||code==TRADE_RETCODE_INVALID_STOPS||code==TRADE_RETCODE_TRADE_DISABLED||code==TRADE_RETCODE_MARKET_CLOSED||code==TRADE_RETCODE_NO_MONEY||code==TRADE_RETCODE_INVALID_FILL;}
 // Broker entry identity is established from the unique entry order/deal, not a mocked callback or assumed fill price.
 bool D10EntryEvidence(const HG6Exposure &x){
  if(x.ticket==0||x.identifier==0||x.side!=d_side||x.units!=d_units||x.time_ms<d_created||!HistorySelectByPosition(x.identifier))return false;
