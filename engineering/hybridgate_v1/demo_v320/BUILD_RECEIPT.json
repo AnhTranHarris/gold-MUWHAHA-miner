@@ -1,0 +1,38 @@
+{
+  "baseline_sha256": "4361dc87eff75c66c900530eba2bc1dc97efd6ba6a694d3d04dc185c6eaa96d3",
+  "artifact_sha256": "f478df7b14317d421dbb7304edc5a45e29f6e8984ce8a9dba48d4d45cd4eeae2",
+  "size_bytes": 94145266,
+  "controller_sha256": "4d982e1e9e641dba5128d3637f550f8c4e9d4886ef320b0ec9478cf865bde55c",
+  "original_embedded_payload_byte_exact": true,
+  "native_compile": "NOT_RUN",
+  "native_october": "NOT_RUN",
+  "original_october_data_used": false,
+  "known_october_report_v310": {
+    "ticks": 7458956,
+    "trades": 0,
+    "orders": 0,
+    "net": 0
+  },
+  "host_tests": {
+    "short": "HG12 RESULT mode=short quotes=15999 proposals=21 labels=14675 lifecycle=21 missed=0 edge_block=14 risk_block=0 stop_block=0 prior_block=0 route1=0 route2=0 cut=0 broker_stops=0 sends=14 closed=7 net=4.46 balance=104.46 fatal=0",
+    "final": "HG12 RESULT mode=fixture quotes=131071 proposals=440 labels=104372 lifecycle=439 missed=0 edge_block=17 risk_block=0 stop_block=0 prior_block=0 route1=393 route2=0 cut=18 broker_stops=0 sends=825 closed=412 net=149.67 balance=249.66 fatal=0",
+    "stopfinal": "HG12 RESULT mode=stops quotes=131071 proposals=440 labels=104372 lifecycle=439 missed=0 edge_block=17 risk_block=0 stop_block=0 prior_block=0 route1=393 route2=0 cut=18 broker_stops=0 sends=825 closed=412 net=149.67 balance=249.66 fatal=0",
+    "blocked": "HG12 RESULT mode=blocked quotes=131071 proposals=440 labels=104372 lifecycle=439 missed=0 edge_block=17 risk_block=0 stop_block=418 prior_block=0 route1=397 route2=0 cut=0 broker_stops=0 sends=0 closed=0 net=0 balance=100 fatal=0",
+    "economic": "PASS independent mature labels, cold abstention, directional reversal, gap expiry, no proposal dependency",
+    "risk": "PASS budget, daily rollover, permanent drawdown halt and serialized restore"
+  },
+  "risk_settings_provisional": {
+    "position_pct": 2,
+    "daily_pct": 5,
+    "peak_pct": 10
+  },
+  "limitations": [
+    "Host C++ translation with exact original archived model-bank loader and mock MT5 APIs; not native compilation or monthly backtest.",
+    "Known historical fixture is not independent profitability validation.",
+    "New admission may still abstain on an unsupported or negative-expectancy market or infeasible broker stop distance.",
+    "Existing entry router still provides opportunities; no independent new candidate stream.",
+    "Historical broker UTC mapping is not verified by October report.",
+    "Version-specific durable state: upgrade only flat on demo; new baseline, no risk state migrated.",
+    "Real money forbidden."
+  ]
+}
