@@ -1,0 +1,11 @@
+# HybridGate V1 single-MQ5 v2.08 correction
+
+Owner requirement: one MQ5 source file, with all production code and all fitted-model bytes inside the file; no external includes, resource files, DLLs or tester model files at compile time or runtime. The v2.07 modular packaging is rejected for this purpose.
+
+The actual single-file source was generated in the current ChatGPT workspace and delivered as `GoldMuwahahaMiner_HybridGate_SingleFile_v208.mq5`. Exact size **94,183,693 bytes**; SHA-256 `cad4851d91de9cfc4aad434c4bae82faf35f7adc329fbf6cd83b336c29adedb0`. The repository connector does not accept a local file reference for a Git blob, and direct git network access is unavailable in the workspace. Accordingly the generated 94 MB MQ5 is **not yet committed to GitHub**. The reproducible builder and the actual complete model readback receipt are committed here; they are engineering records, not substitutes for the requested one-file deliverable.
+
+Source parent: `699da4f68239b8029a9e61e272e650f90c365de5`. All 39 source pins verified; 30 transitive headers inlined without changing trading logic; all 88 exact model assets (128,494,538 original bytes) verified from the finished source after lossless encode/decode. Zero external compile dependency directives. See [full build receipt](SINGLE_MQ5_BUILD_RECEIPT.json). Runtime still uses MT5's own price history, account and broker APIs, and its own locally generated state/journal files. No supplied model files, Python runtime, external AI service or DLL needed by the source.
+
+Native MetaEditor compiler and native runtime are not available in the workspace; native build and all 33 acceptance rows remain NOT_RUN. This is a large source file; native compiler memory/size limitations, resource-free model decoding, runtime parity and burst handling must still be verified. Retain all execution locks; no tester-order, demo or live certification implied. The 2.06 baseline and all historical evidence are retained. No model training or market dataset reconstruction was performed.
+
+The builder is retained only to reproduce this precise source from the immutable original source checkout and pinned Stage5_base ZIP; it is not required to compile the already-generated MQ5.
