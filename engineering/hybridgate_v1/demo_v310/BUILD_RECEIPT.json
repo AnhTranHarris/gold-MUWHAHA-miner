@@ -1,7 +1,7 @@
 {
   "parent_mq5_sha256": "4361dc87eff75c66c900530eba2bc1dc97efd6ba6a694d3d04dc185c6eaa96d3",
-  "candidate_mq5_sha256": "555f78d2630da69147ccdde46b289145c108df9af92469784b426c39b7da22e3",
-  "candidate_bytes": 94136638,
+  "candidate_mq5_sha256": "8120e2ee26d876403aa6ec0f6abed4cd94fd85d6b48d77a72c3039a08b3f79fc",
+  "candidate_bytes": 94136673,
   "core_and_embedded_model_region": "byte identical excluding version/description metadata",
   "host_fixture": {
     "input_quotes": 131072,
@@ -12,7 +12,7 @@
     "mock_closed_net_usd": 113.34,
     "mock_balance_usd": 213.33,
     "fatal": 0,
-    "notes": "Original archive models loaded by host file shim with SHA checks; not native embedded decoder. Mock broker does not implement server-side SL triggering or actual floating equity."
+    "notes": "Original archive models loaded by host file shim with SHA checks; not native embedded decoder. Mock broker does not implement server-side SL triggering or actual floating equity. Final rerun confirmed identical counts after explicit invalid-stops rejection classification."
   },
   "injected_loss_fixture": {
     "completed_mock_trades": 4,
@@ -21,7 +21,7 @@
     "stop_budget_blocks": 302,
     "completed_shadow_paths": 439,
     "fatal": 0,
-    "note": "Each mocked close artificially set to -1.20 gross, not October replay. Initial test assertion incorrectly expected a daily latch; reserve blocked orders before floor crossing. Corrected assertion passed."
+    "note": "Each mocked close artificially set to -1.20 gross, not October replay. Final rerun used separate loss shim; 4 closures and 95.12 balance verified. Reserve blocked orders before daily floor crossing, not a daily halt. Host fixture does not simulate floating equity or server-side SL triggering."
   },
   "unit_checks": [
     "cold abstention",
@@ -31,7 +31,8 @@
     "expiry",
     "daily rollover",
     "peak halt",
-    "persistent risk state"
+    "persistent risk state",
+    "definitive invalid-stops rejection"
   ],
   "native_compile": "NOT_RUN",
   "native_jan_oct": "NOT_RUN",
