@@ -1,3 +1,9 @@
+# Rejected for ordinary Strategy Tester use
+
+Owner's native v2.08 run reported 200+ compiler warnings and zero trades. This branch retained observation-only defaults and fixed reference-genesis constraints; do not use it as a working trading-enabled tester. The separate [v2.09 rebuild](https://github.com/AnhTranHarris/gold-MUWHAHA-miner/tree/carson/mt5-hybridgate-v1-normal-tester-v209-20261125) has a new normal tester controller and host test receipt. Native v2.09 acceptance remains pending. Frozen v2.06 research baseline is untouched.
+
+---
+
 # HybridGate V1 single-MQ5 v2.08 correction
 
 Owner requirement: one MQ5 source file, with all production code and all fitted-model bytes inside the file; no external includes, resource files, DLLs or tester model files at compile time or runtime. The v2.07 modular packaging is rejected for this purpose.
